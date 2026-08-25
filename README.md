@@ -13,3 +13,47 @@ PSYWERX. The repository is designed for static hosting with GitHub Pages.
 - `data/` contains shared static data files.
 - `drivers/` contains the Driver Explorer application.
 - `shared/` contains styles and other assets reusable across interactives.
+- `source-data/` is the ignored local location for private XLSX taxonomy files.
+- `scripts/` contains local data-import utilities.
+
+## Build driver data locally
+
+The public `data/drivers.json` file is generated locally; the website itself has
+no Python or runtime dependencies.
+
+1. Put one or more `.xlsx` taxonomy files in `source-data/`. Files in this
+   directory are ignored by Git, except for the placeholder `.gitkeep` file.
+2. Create and activate a virtual environment, then install the importer dependency:
+
+   ```powershell
+   py -m venv .venv
+   .\.venv\Scripts\Activate.ps1
+   py -m pip install -r requirements.txt
+   ```
+
+3. Run the importer from the repository root:
+
+   ```powershell
+   py scripts\build_drivers.py
+   ```
+
+   The importer recognizes driver worksheets, ignores known supporting sheets,
+   and can infer a canonical layer from the workbook filename, worksheet name,
+   or workbook title when no layer column is present. The existing public JSON
+   is replaced only after a successful, validated import.
+
+4. Preview the static site with a local HTTP server (opening the HTML file
+   directly will not allow the browser to fetch JSON):
+
+   ```powershell
+   py -m http.server 8000
+   ```
+
+   Then open <http://localhost:8000/drivers/>.
+
+5. Review and commit only the generated public artifact and pipeline changes:
+
+   ```powershell
+   git add data/drivers.json scripts/build_drivers.py requirements.txt README.md .gitignore source-data/.gitkeep
+   git commit -m "Build driver data from local spreadsheets"
+   ```

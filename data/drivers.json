@@ -1,98 +1,3323 @@
 [
   {
-    "id": "bio-sleep-deprivation",
-    "name": "Sleep deprivation",
+    "id": "BIO-PHA-001",
+    "name": "Acute alcohol intoxication",
     "layer": "Biological",
-    "category": "Physiological state",
-    "definition": "Insufficient sleep that alters attention, emotion, and physical functioning.",
-    "mechanism": "Reduced restorative sleep can impair cognitive control and increase sensitivity to stress.",
-    "examples": ["Shift work", "Extended operations"],
-    "aliases": ["Sleep loss"],
-    "relatedDrivers": ["psych-cognitive-load", "physical-environmental-heat-stress"],
-    "evidence": []
+    "familyCode": "BIO-PHA",
+    "category": "Psychoactive & Pharmacologic State",
+    "subcategory": "",
+    "taxonomyStatus": "Core",
+    "driverRole": "Pharmacologic state",
+    "typicalTimeScale": "Minutes–hours",
+    "definition": "Dose-dependent acute central nervous system effects of ethanol.",
+    "mechanism": "GABAergic/glutamatergic and broader neural effects reduce inhibition, psychomotor control, working memory, and response control.",
+    "behavioralConsequences": "Impaired reaction time, working memory, response inhibition, coordination, judgment and risk assessment at sufficient dose.",
+    "behaviorChangeRelevance": "Behavior-change messaging or consent delivered while intoxicated may not be encoded or acted upon reliably.",
+    "contextsBoundaryConditions": "Dose, drinking history, tolerance, sex/body composition, food, and context matter.",
+    "modifiability": "High",
+    "measurementIndicators": "Breath/blood alcohol; observed impairment; dose/time",
+    "evidence": {
+      "grade": "A",
+      "ids": [
+        "SRC081",
+        "SRC082"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/35075512/",
+        "https://pubmed.ncbi.nlm.nih.gov/37277010/"
+      ]
+    },
+    "caveats": "Alcohol does not uniformly increase aggression/risk; social context and expectancy strongly moderate behavior.",
+    "crossLayerInteractions": "Interacts with norms, peers, incentives, environment, and sleep.",
+    "aliases": [
+      "ethanol intoxication",
+      "alcohol impairment"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
   },
   {
-    "id": "psych-cognitive-load",
-    "name": "Cognitive load",
-    "layer": "Psychological",
-    "category": "Cognition",
-    "definition": "The amount of mental effort required to process information and complete a task.",
-    "mechanism": "High demands can consume limited working-memory resources and reduce decision quality.",
-    "examples": ["Multitasking", "Complex instructions"],
-    "aliases": ["Mental workload"],
-    "relatedDrivers": ["bio-sleep-deprivation", "info-information-overload"],
-    "evidence": []
+    "id": "BIO-PHA-004",
+    "name": "Acute caffeine stimulation",
+    "layer": "Biological",
+    "familyCode": "BIO-PHA",
+    "category": "Psychoactive & Pharmacologic State",
+    "subcategory": "",
+    "taxonomyStatus": "Core",
+    "driverRole": "Pharmacologic state",
+    "typicalTimeScale": "Hours",
+    "definition": "Adenosine receptor antagonism following caffeine consumption.",
+    "mechanism": "Reduces sleep pressure signals and increases alertness, vigilance, and reaction speed.",
+    "behavioralConsequences": "Improved alertness and some attention/performance, especially when sleep deprived; high doses can increase jitteriness/anxiety and disrupt later sleep.",
+    "behaviorChangeRelevance": "Can temporarily offset sleepiness but not fully restore sleep-loss deficits; timing may alter subsequent behavior through sleep.",
+    "contextsBoundaryConditions": "Dose, habitual use, withdrawal, timing, and sleep status matter.",
+    "modifiability": "High",
+    "measurementIndicators": "Dose/time; caffeine intake history; performance; sleep timing",
+    "evidence": {
+      "grade": "A",
+      "ids": [
+        "SRC086",
+        "SRC094",
+        "SRC095"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/21531247/",
+        "https://pubmed.ncbi.nlm.nih.gov/15448977/",
+        "https://pubmed.ncbi.nlm.nih.gov/15887055/"
+      ]
+    },
+    "caveats": "Do not treat caffeine as a substitute for sleep; some benefits reflect withdrawal reversal.",
+    "crossLayerInteractions": "Interacts with sleep debt, anxiety, stress, and shift work.",
+    "aliases": [
+      "caffeine",
+      "stimulant beverage"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
   },
   {
-    "id": "social-peer-norms",
-    "name": "Peer norms",
-    "layer": "Social",
-    "category": "Group influence",
-    "definition": "Shared expectations within a peer group about acceptable or typical behavior.",
-    "mechanism": "People adjust behavior to gain approval, avoid sanctions, or follow perceived group practice.",
-    "examples": ["Team safety habits", "Group purchasing patterns"],
-    "aliases": ["Social norms"],
-    "relatedDrivers": ["cultural-collective-values", "institutional-organizational-policy"],
-    "evidence": []
+    "id": "BIO-OXY-001",
+    "name": "Acute hypoxia / reduced oxygen availability",
+    "layer": "Biological",
+    "familyCode": "BIO-OXY",
+    "category": "Oxygenation, Respiratory & Thermoregulatory Strain",
+    "subcategory": "",
+    "taxonomyStatus": "Core",
+    "driverRole": "State / capacity constraint",
+    "typicalTimeScale": "Minutes–hours",
+    "definition": "Reduced inspired or arterial oxygen sufficient to challenge cerebral oxygenation.",
+    "mechanism": "Lower oxygen availability can impair neural energy metabolism and cognitive performance, especially at greater severity/duration.",
+    "behavioralConsequences": "Slower reaction, poorer attention/executive function and memory at sufficient hypoxic dose; motor performance may degrade.",
+    "behaviorChangeRelevance": "Training, communication, and decision support should be simplified under significant hypoxia.",
+    "contextsBoundaryConditions": "Altitude, aviation, confined environments, illness; magnitude depends on saturation, acclimatization, task, and duration.",
+    "modifiability": "Medium",
+    "measurementIndicators": "SpO2; arterial blood gas; altitude; inspired oxygen fraction",
+    "evidence": {
+      "grade": "A",
+      "ids": [
+        "SRC026",
+        "SRC027"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/41672258/",
+        "https://pubmed.ncbi.nlm.nih.gov/28111267/"
+      ]
+    },
+    "caveats": "Mild hypoxia does not uniformly impair all tasks; dose and acclimatization matter.",
+    "crossLayerInteractions": "Interacts with exertion, sleep, respiratory disease, temperature, and fatigue.",
+    "aliases": [
+      "hypoxemia",
+      "altitude hypoxia"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
   },
   {
-    "id": "cultural-collective-values",
-    "name": "Collective values",
-    "layer": "Cultural",
-    "category": "Values and meaning",
-    "definition": "Widely shared ideas about what a community considers important, desirable, or proper.",
-    "mechanism": "Values shape how situations are interpreted and which actions are seen as legitimate.",
-    "examples": ["Attitudes toward authority", "Expectations of reciprocity"],
-    "aliases": ["Shared values"],
-    "relatedDrivers": ["social-peer-norms", "institutional-organizational-policy"],
-    "evidence": []
+    "id": "BIO-IMM-001",
+    "name": "Acute infection / sickness-behavior state",
+    "layer": "Biological",
+    "familyCode": "BIO-IMM",
+    "category": "Immune, Inflammatory & Sickness States",
+    "subcategory": "",
+    "taxonomyStatus": "Core",
+    "driverRole": "State",
+    "typicalTimeScale": "Days–weeks",
+    "definition": "Coordinated behavioral and physiological response to infection or immune activation, often including fatigue, reduced activity, appetite change, sleepiness, and social withdrawal.",
+    "mechanism": "Pro-inflammatory cytokines signal the brain and reorganize motivation toward energy conservation and recovery.",
+    "behavioralConsequences": "Reduced exploration/activity, fatigue, appetite change, social withdrawal, impaired concentration.",
+    "behaviorChangeRelevance": "Behavioral demands may be deprioritized during illness; reduced participation can be adaptive rather than noncompliant.",
+    "contextsBoundaryConditions": "Severity and pathogen vary; fever is not required.",
+    "modifiability": "High",
+    "measurementIndicators": "Symptoms; temperature; inflammatory markers; diagnosis/context",
+    "evidence": {
+      "grade": "A",
+      "ids": [
+        "SRC039",
+        "SRC040"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/12000023/",
+        "https://pubmed.ncbi.nlm.nih.gov/12615196/"
+      ]
+    },
+    "caveats": "Do not pathologize adaptive sickness behavior or infer motivation from activity reduction.",
+    "crossLayerInteractions": "Interacts with social support, work policies, information, medication, and resource access.",
+    "aliases": [
+      "sickness behavior",
+      "acute illness"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
   },
   {
-    "id": "physical-environmental-heat-stress",
-    "name": "Heat stress",
-    "layer": "Physical / Environmental",
-    "category": "Environmental condition",
-    "definition": "Exposure to heat that strains the body's ability to maintain a safe internal temperature.",
-    "mechanism": "Thermal strain can produce fatigue, discomfort, and reduced physical or cognitive performance.",
-    "examples": ["Outdoor work in extreme heat", "Poorly ventilated facilities"],
-    "aliases": ["Thermal stress"],
-    "relatedDrivers": ["bio-sleep-deprivation"],
-    "evidence": []
+    "id": "BIO-FAT-005",
+    "name": "Acute injury / temporary physical impairment",
+    "layer": "Biological",
+    "familyCode": "BIO-FAT",
+    "category": "Fatigue, Pain & Physical Functional Capacity",
+    "subcategory": "",
+    "taxonomyStatus": "Conditional",
+    "driverRole": "Capacity constraint",
+    "typicalTimeScale": "Days–months",
+    "definition": "Temporary bodily damage that limits movement, dexterity, endurance, or sensory function.",
+    "mechanism": "Pain, inflammation, immobilization, and reduced motor capacity constrain action possibilities.",
+    "behavioralConsequences": "Avoidance, compensatory strategies, slower task execution, reduced range of feasible behaviors.",
+    "behaviorChangeRelevance": "A desired behavior may be motivationally intact but physically impossible or costly; intervention must distinguish capability from motivation.",
+    "contextsBoundaryConditions": "Type and severity of injury determine effects.",
+    "modifiability": "Medium–High",
+    "measurementIndicators": "Clinical exam; range of motion; strength; gait; functional task performance",
+    "evidence": {
+      "grade": "B",
+      "ids": [
+        "SRC034",
+        "SRC035"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/30787635/",
+        "https://pubmed.ncbi.nlm.nih.gov/35834441/"
+      ]
+    },
+    "caveats": "Do not infer unwillingness from reduced performance when capability is impaired.",
+    "crossLayerInteractions": "Interacts with environmental accessibility, social assistance, technology, and institutional accommodations.",
+    "aliases": [
+      "injury",
+      "temporary disability"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
   },
   {
-    "id": "institutional-organizational-policy",
-    "name": "Organizational policy",
-    "layer": "Institutional / Structural",
-    "category": "Formal rules",
-    "definition": "A formal rule or procedure that directs behavior within an organization.",
-    "mechanism": "Policies change incentives, permissions, resources, and consequences attached to choices.",
-    "examples": ["Leave policy", "Reporting requirements"],
-    "aliases": ["Institutional policy"],
-    "relatedDrivers": ["social-peer-norms", "cultural-collective-values"],
-    "evidence": []
+    "id": "BIO-PHA-003",
+    "name": "Acute nicotine exposure",
+    "layer": "Biological",
+    "familyCode": "BIO-PHA",
+    "category": "Psychoactive & Pharmacologic State",
+    "subcategory": "",
+    "taxonomyStatus": "Conditional",
+    "driverRole": "Pharmacologic state",
+    "typicalTimeScale": "Minutes–hours",
+    "definition": "Acute nicotinic acetylcholine receptor stimulation from nicotine.",
+    "mechanism": "Nicotine increases arousal and can improve attention/working-memory performance, particularly in deprived or dependent users.",
+    "behavioralConsequences": "Short-term changes in alertness and attention; cardiovascular activation.",
+    "behaviorChangeRelevance": "Can transiently alter performance, but apparent benefits in dependent users may largely reverse withdrawal.",
+    "contextsBoundaryConditions": "Non-smoker effects, dose, tolerance, and delivery method vary.",
+    "modifiability": "High",
+    "measurementIndicators": "Nicotine dose; cotinine for exposure (not acute impairment); heart rate; user dependence",
+    "evidence": {
+      "grade": "A",
+      "ids": [
+        "SRC085",
+        "SRC092"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/20414766/",
+        "https://pubmed.ncbi.nlm.nih.gov/23639437/"
+      ]
+    },
+    "caveats": "Do not present nicotine as a safe cognitive enhancer; dependence and cardiovascular harms matter.",
+    "crossLayerInteractions": "Interacts with withdrawal, stress, social norms, and delivery technology.",
+    "aliases": [
+      "nicotine stimulation"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
   },
   {
-    "id": "info-information-overload",
-    "name": "Information overload",
-    "layer": "Informational",
-    "category": "Information environment",
-    "definition": "Exposure to more information than can be effectively processed or evaluated.",
-    "mechanism": "Excess volume and competing signals make prioritization harder and can encourage shortcuts.",
-    "examples": ["High-volume alerts", "Crowded media environments"],
-    "aliases": ["Information saturation"],
-    "relatedDrivers": ["psych-cognitive-load", "tech-recommendation-systems"],
-    "evidence": []
+    "id": "BIO-FAT-003",
+    "name": "Acute pain",
+    "layer": "Biological",
+    "familyCode": "BIO-FAT",
+    "category": "Fatigue, Pain & Physical Functional Capacity",
+    "subcategory": "",
+    "taxonomyStatus": "Core",
+    "driverRole": "State",
+    "typicalTimeScale": "Minutes–days",
+    "definition": "Short-duration nociceptive experience that competes for attention and motivates protection or escape.",
+    "mechanism": "Nociceptive and salience systems capture attention and alter motor planning, valuation, and threat processing.",
+    "behavioralConsequences": "Attention interference, avoidance, reduced working capacity, protective behavior, altered movement.",
+    "behaviorChangeRelevance": "Can dominate behavior and reduce engagement with non-urgent messages or tasks; pain control may be prerequisite for change.",
+    "contextsBoundaryConditions": "Effects depend on intensity, controllability, location, meaning, and prior pain history.",
+    "modifiability": "Medium–High",
+    "measurementIndicators": "Pain ratings; quantitative sensory testing; behavioral interference measures",
+    "evidence": {
+      "grade": "A",
+      "ids": [
+        "SRC034"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/30787635/"
+      ]
+    },
+    "caveats": "Pain is subjective and context-sensitive; intensity is not the only determinant of behavior.",
+    "crossLayerInteractions": "Interacts with fear, prior experience, social support, medication, and physical environment.",
+    "aliases": [
+      "nociception",
+      "acute pain state"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
   },
   {
-    "id": "tech-recommendation-systems",
-    "name": "Recommendation systems",
-    "layer": "Technological",
-    "category": "Algorithmic mediation",
-    "definition": "Automated systems that select and rank content, products, or actions for a user.",
-    "mechanism": "Ranking and personalization alter which options receive attention and repeated exposure.",
-    "examples": ["Social media feeds", "Product recommendations"],
-    "aliases": ["Recommender systems"],
-    "relatedDrivers": ["info-information-overload"],
-    "evidence": []
+    "id": "BIO-STR-001",
+    "name": "Acute physiological stress response",
+    "layer": "Biological",
+    "familyCode": "BIO-STR",
+    "category": "Stress, Autonomic & Allostatic Physiology",
+    "subcategory": "",
+    "taxonomyStatus": "Core",
+    "driverRole": "State",
+    "typicalTimeScale": "Minutes–hours",
+    "definition": "Short-term activation of stress physiology in response to challenge or threat.",
+    "mechanism": "HPA-axis and sympathetic-adrenomedullary activation changes arousal, attention allocation, memory retrieval, and valuation.",
+    "behavioralConsequences": "Can narrow attention, alter risk-taking and learning, shift decisions under uncertainty, and prioritize threat-relevant action.",
+    "behaviorChangeRelevance": "May either facilitate simple/urgent responses or degrade complex deliberation; intervention design should consider arousal level and task complexity.",
+    "contextsBoundaryConditions": "Effects depend on stressor controllability, timing relative to decision, sex, baseline traits, and task domain.",
+    "modifiability": "Medium",
+    "measurementIndicators": "Heart rate/HRV; blood pressure; salivary cortisol; alpha-amylase; catecholamine proxies",
+    "evidence": {
+      "grade": "A",
+      "ids": [
+        "SRC012",
+        "SRC013",
+        "SRC014",
+        "SRC015"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/22342781/",
+        "https://pubmed.ncbi.nlm.nih.gov/27213236/",
+        "https://pubmed.ncbi.nlm.nih.gov/39070283/",
+        "https://pubmed.ncbi.nlm.nih.gov/15122924/"
+      ]
+    },
+    "caveats": "Stress does not have a single directional effect on risk or performance.",
+    "crossLayerInteractions": "Interacts with threat framing, uncertainty, social evaluation, time pressure, and prior trauma.",
+    "aliases": [
+      "acute stress",
+      "fight-or-flight physiology"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-IMM-002",
+    "name": "Acute systemic inflammatory signaling",
+    "layer": "Biological",
+    "familyCode": "BIO-IMM",
+    "category": "Immune, Inflammatory & Sickness States",
+    "subcategory": "",
+    "taxonomyStatus": "Core",
+    "driverRole": "State",
+    "typicalTimeScale": "Hours–days",
+    "definition": "Transient elevation of systemic inflammatory mediators from infection, injury, or experimental immune challenge.",
+    "mechanism": "Cytokine-to-brain signaling alters reward, fatigue, mood, social motivation, and some cognitive processes.",
+    "behavioralConsequences": "Fatigue, reduced reward sensitivity, altered social approach/withdrawal, impaired performance in some cognitive domains.",
+    "behaviorChangeRelevance": "Can transiently change responsiveness to incentives and willingness to expend effort.",
+    "contextsBoundaryConditions": "Effects vary by inflammatory stimulus and individual susceptibility.",
+    "modifiability": "Medium",
+    "measurementIndicators": "CRP; IL-6; TNF; experimental endotoxin; clinical inflammation markers",
+    "evidence": {
+      "grade": "A",
+      "ids": [
+        "SRC041",
+        "SRC042",
+        "SRC043"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/28183402/",
+        "https://pubmed.ncbi.nlm.nih.gov/34589794/",
+        "https://pubmed.ncbi.nlm.nih.gov/24491305/"
+      ]
+    },
+    "caveats": "Inflammatory biomarkers are nonspecific; a single CRP value does not explain behavior.",
+    "crossLayerInteractions": "Interacts with stress, sleep, obesity/metabolism, infection, and social context.",
+    "aliases": [
+      "inflammation",
+      "cytokine activation"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-PHA-002",
+    "name": "Acute THC/cannabis intoxication",
+    "layer": "Biological",
+    "familyCode": "BIO-PHA",
+    "category": "Psychoactive & Pharmacologic State",
+    "subcategory": "",
+    "taxonomyStatus": "Core",
+    "driverRole": "Pharmacologic state",
+    "typicalTimeScale": "Hours",
+    "definition": "Acute central effects following intoxicating cannabinoid exposure, especially THC.",
+    "mechanism": "CB1 receptor activation alters attention, memory encoding, psychomotor function, and time perception.",
+    "behavioralConsequences": "Impaired learning/working memory, attention, reaction time and psychomotor performance; anxiety or altered perception in some users.",
+    "behaviorChangeRelevance": "Complex instructions, driving, or high-precision behavior may be impaired during acute intoxication.",
+    "contextsBoundaryConditions": "Effects depend on THC dose, CBD ratio, tolerance, route, and time since use.",
+    "modifiability": "High",
+    "measurementIndicators": "Time/dose; toxicology with limitations; performance assessment",
+    "evidence": {
+      "grade": "A",
+      "ids": [
+        "SRC083",
+        "SRC084"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/35048456/",
+        "https://pubmed.ncbi.nlm.nih.gov/26858214/"
+      ]
+    },
+    "caveats": "Detection of THC does not equal current impairment; chronic-use effects differ from acute intoxication.",
+    "crossLayerInteractions": "Interacts with expectation, social setting, alcohol, anxiety, and task demands.",
+    "aliases": [
+      "cannabis intoxication",
+      "THC impairment"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-SLP-001",
+    "name": "Acute total sleep deprivation",
+    "layer": "Biological",
+    "familyCode": "BIO-SLP",
+    "category": "Sleep & Circadian Regulation",
+    "subcategory": "",
+    "taxonomyStatus": "Core",
+    "driverRole": "State",
+    "typicalTimeScale": "Hours–days",
+    "definition": "Extended wakefulness sufficient to eliminate a normal sleep episode.",
+    "mechanism": "Homeostatic sleep pressure and altered cortical/subcortical network function reduce vigilance, executive control, working memory, and response stability.",
+    "behavioralConsequences": "Slower responses, attentional lapses, poorer working memory/executive control, greater performance variability and errors.",
+    "behaviorChangeRelevance": "Can reduce ability to notice, understand, remember, or execute a requested behavior; may increase reliance on habits and salient cues.",
+    "contextsBoundaryConditions": "Effects vary by task, duration awake, circadian phase, stimulant use, and individual vulnerability.",
+    "modifiability": "High",
+    "measurementIndicators": "Sleep/wake history; actigraphy; polysomnography; psychomotor vigilance; subjective sleepiness",
+    "evidence": {
+      "grade": "A",
+      "ids": [
+        "SRC001",
+        "SRC002"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/20438143/",
+        "https://pubmed.ncbi.nlm.nih.gov/28757454/"
+      ]
+    },
+    "caveats": "Do not infer global incompetence from sleep loss; some tasks are more resilient than others.",
+    "crossLayerInteractions": "Interacts strongly with time pressure, stress, workload, information complexity, and technological alerting.",
+    "aliases": [
+      "sleep loss",
+      "all-nighter",
+      "extended wakefulness"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-DEV-002",
+    "name": "Adolescent neurodevelopmental stage",
+    "layer": "Biological",
+    "familyCode": "BIO-DEV",
+    "category": "Lifespan Development & Biological Aging",
+    "subcategory": "",
+    "taxonomyStatus": "Core",
+    "driverRole": "Developmental modifier",
+    "typicalTimeScale": "Years",
+    "definition": "Adolescent period of ongoing maturation in control, reward, social, and affective neural systems.",
+    "mechanism": "Developmental imbalance/specialization across reward, social salience, and control systems changes context sensitivity.",
+    "behavioralConsequences": "Heightened peer/social sensitivity, exploration, reward responsiveness, and variable risk-taking depending on context.",
+    "behaviorChangeRelevance": "Interventions may work differently when social identity, immediate rewards, and peer context are highly salient.",
+    "contextsBoundaryConditions": "Not all adolescents are risk-seeking; context effects are central.",
+    "modifiability": "Low",
+    "measurementIndicators": "Age/developmental stage; executive and reward tasks; pubertal stage",
+    "evidence": {
+      "grade": "A",
+      "ids": [
+        "SRC063",
+        "SRC064",
+        "SRC065"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/27353570/",
+        "https://pubmed.ncbi.nlm.nih.gov/26774291/",
+        "https://pubmed.ncbi.nlm.nih.gov/18509515/"
+      ]
+    },
+    "caveats": "Avoid simplistic 'immature prefrontal cortex' narratives.",
+    "crossLayerInteractions": "Interacts strongly with peers, culture, autonomy, sleep timing, and institutions.",
+    "aliases": [
+      "adolescent brain development",
+      "teen development"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-SLP-005",
+    "name": "Adverse circadian phase / time-of-day vulnerability",
+    "layer": "Biological",
+    "familyCode": "BIO-SLP",
+    "category": "Sleep & Circadian Regulation",
+    "subcategory": "",
+    "taxonomyStatus": "Conditional",
+    "driverRole": "State modifier",
+    "typicalTimeScale": "Minutes–hours",
+    "definition": "Normal within-day variation in alertness and cognitive capacity produced by circadian phase.",
+    "mechanism": "Circadian oscillations influence arousal and cognitive efficiency, creating predictable peaks and troughs.",
+    "behavioralConsequences": "Time-of-day differences in attention, reaction time, inhibition, and decision performance.",
+    "behaviorChangeRelevance": "Behavior-change prompts, training, assessments, or high-stakes choices may perform differently depending on timing.",
+    "contextsBoundaryConditions": "Effects depend on chronotype, sleep pressure, light exposure, and task type.",
+    "modifiability": "Medium",
+    "measurementIndicators": "Clock time; chronotype; sleep history; melatonin phase when available",
+    "evidence": {
+      "grade": "B",
+      "ids": [
+        "SRC009",
+        "SRC011"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/33545116/",
+        "https://pubmed.ncbi.nlm.nih.gov/40293205/"
+      ]
+    },
+    "caveats": "Do not universalize 'morning is better'; optimal time varies by chronotype and task.",
+    "crossLayerInteractions": "Interacts with work schedules, age, chronotype, caffeine, and light.",
+    "aliases": [
+      "time-of-day effect",
+      "circadian phase"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-WDR-003",
+    "name": "Alcohol withdrawal",
+    "layer": "Biological",
+    "familyCode": "BIO-WDR",
+    "category": "Dependence, Tolerance & Withdrawal States",
+    "subcategory": "",
+    "taxonomyStatus": "Core (conditional population)",
+    "driverRole": "Withdrawal state / medical risk",
+    "typicalTimeScale": "Hours–days",
+    "definition": "Physiological state after abrupt reduction of heavy/prolonged alcohol use.",
+    "mechanism": "Neuroadaptation produces autonomic hyperactivity, tremor, anxiety, sleep disturbance, and in severe cases seizures/delirium.",
+    "behavioralConsequences": "Agitation, impaired concentration, autonomic symptoms, sleep disruption; severe withdrawal can be life-threatening.",
+    "behaviorChangeRelevance": "Behavior-change or decision demands are secondary to medical stabilization in significant withdrawal.",
+    "contextsBoundaryConditions": "Relevant only in physiologically dependent users; severity varies.",
+    "modifiability": "High clinically",
+    "measurementIndicators": "Withdrawal scales (e.g. CIWA-Ar); alcohol history; autonomic signs; clinical assessment",
+    "evidence": {
+      "grade": "A",
+      "ids": [
+        "SRC104"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/25013309/"
+      ]
+    },
+    "caveats": "Potential medical emergency; not a routine motivational problem.",
+    "crossLayerInteractions": "Interacts with stress, social support, access to care, medication, and environment.",
+    "aliases": [
+      "alcohol abstinence syndrome",
+      "delirium tremens risk"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-NUT-002",
+    "name": "Anemia / reduced oxygen-carrying capacity",
+    "layer": "Biological",
+    "familyCode": "BIO-NUT",
+    "category": "Nutritional, Metabolic & Hematologic Status",
+    "subcategory": "",
+    "taxonomyStatus": "Conditional",
+    "driverRole": "Capacity constraint",
+    "typicalTimeScale": "Weeks–chronic",
+    "definition": "Reduced hemoglobin or red-cell capacity sufficient to impair oxygen delivery and increase fatigue.",
+    "mechanism": "Lower oxygen delivery and compensatory cardiovascular strain can reduce endurance and may affect cognition.",
+    "behavioralConsequences": "Fatigue, reduced exercise tolerance; observational evidence links anemia with higher cognitive impairment risk.",
+    "behaviorChangeRelevance": "May reduce physical and cognitive capacity to perform or sustain new behaviors.",
+    "contextsBoundaryConditions": "Cause matters: iron deficiency, bleeding, chronic disease, renal disease, etc.",
+    "modifiability": "Medium",
+    "measurementIndicators": "CBC/hemoglobin; iron studies; clinical assessment",
+    "evidence": {
+      "grade": "B",
+      "ids": [
+        "SRC051"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/34208355/"
+      ]
+    },
+    "caveats": "Association with cognition does not prove anemia is the sole cause; confounding is substantial.",
+    "crossLayerInteractions": "Interacts with nutrition, chronic disease, age, workload, and pregnancy.",
+    "aliases": [
+      "low hemoglobin",
+      "anemia"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-STR-002",
+    "name": "Autonomic hyperarousal / sympathetic dominance",
+    "layer": "Biological",
+    "familyCode": "BIO-STR",
+    "category": "Stress, Autonomic & Allostatic Physiology",
+    "subcategory": "",
+    "taxonomyStatus": "Conditional",
+    "driverRole": "State",
+    "typicalTimeScale": "Minutes–days",
+    "definition": "Elevated sympathetic activation or reduced parasympathetic regulation that persists beyond immediate task needs.",
+    "mechanism": "Autonomic state influences vigilance, bodily salience, attention, and readiness for action.",
+    "behavioralConsequences": "Hypervigilance, increased reactivity, difficulty disengaging from threat cues, reduced flexible control in some contexts.",
+    "behaviorChangeRelevance": "May bias what information is noticed and make calming, reflective, or complex behavioral alternatives harder to implement.",
+    "contextsBoundaryConditions": "Can arise from stress, stimulants, pain, illness, sleep loss, or anxiety; etiology matters.",
+    "modifiability": "Medium",
+    "measurementIndicators": "Heart rate; HRV; electrodermal activity; respiration; blood pressure",
+    "evidence": {
+      "grade": "B",
+      "ids": [
+        "SRC014",
+        "SRC015"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/39070283/",
+        "https://pubmed.ncbi.nlm.nih.gov/15122924/"
+      ]
+    },
+    "caveats": "Low HRV or high heart rate alone is not a behavioral diagnosis.",
+    "crossLayerInteractions": "Interacts with psychological threat appraisal, stimulants, sleep, and environmental danger.",
+    "aliases": [
+      "hyperarousal",
+      "sympathetic activation"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-GEN-004",
+    "name": "Biological embedding of early-life adversity",
+    "layer": "Biological",
+    "familyCode": "BIO-GEN",
+    "category": "Stable Biological Susceptibility & Genetic Background",
+    "subcategory": "",
+    "taxonomyStatus": "Background Modifier",
+    "driverRole": "Developmental susceptibility",
+    "typicalTimeScale": "Years–lifespan",
+    "definition": "Long-lasting physiological alterations associated with severe or chronic early-life adversity, including stress, immune, metabolic, and neural pathways.",
+    "mechanism": "Early experience can recalibrate HPA-axis, immune, epigenetic, neural, and metabolic systems during sensitive developmental periods.",
+    "behavioralConsequences": "May alter later stress reactivity, attention, emotion regulation, health, and behavioral vulnerability.",
+    "behaviorChangeRelevance": "Past context can influence present biological response to interventions; early adversity is not destiny and effects are modifiable.",
+    "contextsBoundaryConditions": "Human evidence is strongest for broad associations and physiological embedding; specific causal pathways remain under study.",
+    "modifiability": "Low–Medium",
+    "measurementIndicators": "Exposure history plus stress, immune, epigenetic, or neurodevelopmental measures in research",
+    "evidence": {
+      "grade": "B",
+      "ids": [
+        "SRC072",
+        "SRC073",
+        "SRC074",
+        "SRC100"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/28724431/",
+        "https://pubmed.ncbi.nlm.nih.gov/37586308/",
+        "https://pubmed.ncbi.nlm.nih.gov/25419054/",
+        "https://pubmed.ncbi.nlm.nih.gov/41026956/"
+      ]
+    },
+    "caveats": "Do not infer trauma history from physiology or claim transgenerational epigenetic determinism.",
+    "crossLayerInteractions": "A canonical cross-layer bridge from social/environmental exposures to biological regulation.",
+    "aliases": [
+      "developmental programming",
+      "biological embedding",
+      "early-life stress"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-WDR-002",
+    "name": "Caffeine withdrawal",
+    "layer": "Biological",
+    "familyCode": "BIO-WDR",
+    "category": "Dependence, Tolerance & Withdrawal States",
+    "subcategory": "",
+    "taxonomyStatus": "Core",
+    "driverRole": "Withdrawal state",
+    "typicalTimeScale": "Hours–days",
+    "definition": "Symptoms following abrupt reduction of habitual caffeine consumption.",
+    "mechanism": "Adenosine-system adaptation produces headache, fatigue, reduced alertness, and concentration difficulty.",
+    "behavioralConsequences": "Headache, sleepiness, fatigue, low alertness, reduced performance.",
+    "behaviorChangeRelevance": "Can temporarily reduce engagement or performance and confound comparisons of caffeine users vs abstinent controls.",
+    "contextsBoundaryConditions": "Usually begins within a day and resolves over days; severity depends on habitual intake.",
+    "modifiability": "High",
+    "measurementIndicators": "Habitual dose; time since last caffeine; withdrawal symptoms",
+    "evidence": {
+      "grade": "A",
+      "ids": [
+        "SRC094",
+        "SRC095"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/15448977/",
+        "https://pubmed.ncbi.nlm.nih.gov/15887055/"
+      ]
+    },
+    "caveats": "Withdrawal reversal explains part of caffeine's apparent performance benefit in habitual users.",
+    "crossLayerInteractions": "Interacts with sleep, work schedule, stress, and habitual routines.",
+    "aliases": [
+      "caffeine abstinence",
+      "caffeine withdrawal"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-WDR-004",
+    "name": "Cannabis withdrawal",
+    "layer": "Biological",
+    "familyCode": "BIO-WDR",
+    "category": "Dependence, Tolerance & Withdrawal States",
+    "subcategory": "",
+    "taxonomyStatus": "Conditional",
+    "driverRole": "Withdrawal state",
+    "typicalTimeScale": "Days–weeks",
+    "definition": "Symptoms following cessation or reduction after frequent/prolonged cannabis use.",
+    "mechanism": "Neuroadaptation of endocannabinoid systems can produce irritability, sleep disturbance, appetite change, and craving.",
+    "behavioralConsequences": "Irritability, sleep problems, decreased appetite, restlessness, mood symptoms, craving.",
+    "behaviorChangeRelevance": "Withdrawal can undermine adherence to other changes and temporarily alter sleep/attention.",
+    "contextsBoundaryConditions": "Severity varies with frequency, dose, THC potency, and comorbidity.",
+    "modifiability": "High",
+    "measurementIndicators": "Use history; withdrawal scales; time since cessation",
+    "evidence": {
+      "grade": "B",
+      "ids": [
+        "SRC105"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/32271390/"
+      ]
+    },
+    "caveats": "Not all regular users develop clinically meaningful withdrawal.",
+    "crossLayerInteractions": "Interacts with sleep, stress, peer context, and other substances.",
+    "aliases": [
+      "cannabis abstinence",
+      "marijuana withdrawal"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-STR-004",
+    "name": "Chronic allostatic load / multisystem stress dysregulation",
+    "layer": "Biological",
+    "familyCode": "BIO-STR",
+    "category": "Stress, Autonomic & Allostatic Physiology",
+    "subcategory": "",
+    "taxonomyStatus": "Conditional",
+    "driverRole": "Background modifier",
+    "typicalTimeScale": "Months–years",
+    "definition": "Cumulative multisystem physiological burden associated with repeated or chronic adaptation to stressors.",
+    "mechanism": "Repeated stress can alter neuroendocrine, autonomic, immune, metabolic, and cardiovascular regulation.",
+    "behavioralConsequences": "Associated with poorer health, fatigue, cognitive vulnerability, and reduced adaptive reserve.",
+    "behaviorChangeRelevance": "Can reduce capacity to adopt or maintain new behaviors and change responses to acute stressors.",
+    "contextsBoundaryConditions": "Most human evidence is observational; allostatic-load indices vary by study.",
+    "modifiability": "Low–Medium",
+    "measurementIndicators": "Composite biomarkers: BP, waist/HDL, cortisol, inflammatory markers, autonomic measures",
+    "evidence": {
+      "grade": "B",
+      "ids": [
+        "SRC016",
+        "SRC017",
+        "SRC072"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/28578301/",
+        "https://pubmed.ncbi.nlm.nih.gov/37586308/",
+        "https://pubmed.ncbi.nlm.nih.gov/28724431/"
+      ]
+    },
+    "caveats": "Do not use as a precise individual causal score without context; indices are not standardized.",
+    "crossLayerInteractions": "Strongly cross-layer: chronic structural/social adversity can become biologically embedded.",
+    "aliases": [
+      "allostatic burden",
+      "cumulative physiological stress"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-NUT-005",
+    "name": "Chronic glycemic dysregulation / diabetes-related metabolic burden",
+    "layer": "Biological",
+    "familyCode": "BIO-NUT",
+    "category": "Nutritional, Metabolic & Hematologic Status",
+    "subcategory": "",
+    "taxonomyStatus": "Conditional",
+    "driverRole": "Background modifier / state",
+    "typicalTimeScale": "Months–years",
+    "definition": "Persistent or recurrent abnormal glucose regulation that can affect vascular, neural, and energy systems.",
+    "mechanism": "Hyperglycemia, vascular injury, insulin resistance, and glycemic variability can affect neural and physical function over time.",
+    "behavioralConsequences": "Associations with cognitive decline, fatigue, neuropathy, and variable performance; acute extremes can be more directly impairing.",
+    "behaviorChangeRelevance": "Behavior-change plans must account for treatment burden, energy variability, neuropathy, and risk of hypo/hyperglycemia.",
+    "contextsBoundaryConditions": "Causality and magnitude depend on disease duration, control, comorbidities, and age.",
+    "modifiability": "Medium",
+    "measurementIndicators": "HbA1c; glucose; CGM metrics; complications; clinical diagnosis",
+    "evidence": {
+      "grade": "B",
+      "ids": [
+        "SRC054"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/31430566/"
+      ]
+    },
+    "caveats": "Do not treat modest glucose fluctuations in healthy people as equivalent to diabetes-related dysfunction.",
+    "crossLayerInteractions": "Interacts with medication, diet, stress, sleep, socioeconomic access, and physical activity.",
+    "aliases": [
+      "diabetes",
+      "hyperglycemia",
+      "glycemic variability"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-IMM-003",
+    "name": "Chronic inflammatory burden",
+    "layer": "Biological",
+    "familyCode": "BIO-IMM",
+    "category": "Immune, Inflammatory & Sickness States",
+    "subcategory": "",
+    "taxonomyStatus": "Conditional",
+    "driverRole": "Background modifier",
+    "typicalTimeScale": "Months–years",
+    "definition": "Persistently elevated inflammatory activity associated with chronic disease, adiposity, aging, or prolonged stress.",
+    "mechanism": "Long-term inflammatory signaling can affect energy, vascular and neural function and is associated with cognitive/affective vulnerability.",
+    "behavioralConsequences": "Fatigue, reduced activity, and associations with cognitive decline or mood symptoms.",
+    "behaviorChangeRelevance": "May reduce energy available for sustained behavior change and amplify effects of illness or stress.",
+    "contextsBoundaryConditions": "Causal direction is often uncertain in observational studies.",
+    "modifiability": "Low–Medium",
+    "measurementIndicators": "Repeated CRP/IL-6 and clinical inflammatory markers",
+    "evidence": {
+      "grade": "B",
+      "ids": [
+        "SRC041",
+        "SRC042",
+        "SRC016"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/28183402/",
+        "https://pubmed.ncbi.nlm.nih.gov/34589794/",
+        "https://pubmed.ncbi.nlm.nih.gov/28578301/"
+      ]
+    },
+    "caveats": "Do not use inflammation as a catch-all explanation for complex behavior.",
+    "crossLayerInteractions": "Interacts with metabolic status, stress, sleep, aging, and structural adversity.",
+    "aliases": [
+      "low-grade inflammation",
+      "chronic inflammation"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-NUT-001",
+    "name": "Chronic undernutrition / sustained energy deficiency",
+    "layer": "Biological",
+    "familyCode": "BIO-NUT",
+    "category": "Nutritional, Metabolic & Hematologic Status",
+    "subcategory": "",
+    "taxonomyStatus": "Conditional",
+    "driverRole": "Capacity constraint / background modifier",
+    "typicalTimeScale": "Weeks–months",
+    "definition": "Sustained energy and nutrient intake insufficient to meet physiological requirements.",
+    "mechanism": "Reduced substrate availability and loss of lean mass can impair physical capacity, immune function, and cognitive performance.",
+    "behavioralConsequences": "Fatigue, reduced strength, impaired concentration and learning in severe or prolonged states.",
+    "behaviorChangeRelevance": "Can reduce capability for sustained behavior change and increase competing need salience.",
+    "contextsBoundaryConditions": "Human cognitive evidence varies by age, severity, and comorbidity; much evidence is observational.",
+    "modifiability": "Medium–High",
+    "measurementIndicators": "BMI/weight change; dietary assessment; clinical nutrition markers; functional status",
+    "evidence": {
+      "grade": "B",
+      "ids": [
+        "SRC050"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/38954515/"
+      ]
+    },
+    "caveats": "Do not infer individual cognition from body size alone.",
+    "crossLayerInteractions": "Interacts with food insecurity, illness, culture, poverty, and physical workload.",
+    "aliases": [
+      "malnutrition",
+      "energy deficiency"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-SLP-007",
+    "name": "Chronotype–schedule mismatch / social jetlag",
+    "layer": "Biological",
+    "familyCode": "BIO-SLP",
+    "category": "Sleep & Circadian Regulation",
+    "subcategory": "",
+    "taxonomyStatus": "Conditional",
+    "driverRole": "Background susceptibility / state",
+    "typicalTimeScale": "Days–chronic",
+    "definition": "Persistent mismatch between an individual's preferred biological timing and required social/work timing.",
+    "mechanism": "Mismatch can produce chronic sleep curtailment and repeated circadian misalignment.",
+    "behavioralConsequences": "Lower alertness at required times, sleep debt, and potentially poorer cognitive/health outcomes.",
+    "behaviorChangeRelevance": "May affect when people are most receptive to learning, persuasion, complex decisions, or behavior-change demands.",
+    "contextsBoundaryConditions": "Evidence for specific cognitive effects is heterogeneous and often observational.",
+    "modifiability": "Medium",
+    "measurementIndicators": "Morningness-eveningness scales; midsleep timing; social jetlag metrics",
+    "evidence": {
+      "grade": "B",
+      "ids": [
+        "SRC009",
+        "SRC011"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/33545116/",
+        "https://pubmed.ncbi.nlm.nih.gov/40293205/"
+      ]
+    },
+    "caveats": "Chronotype is not a personality type and does not dictate behavior.",
+    "crossLayerInteractions": "Interacts with age, work schedules, light exposure, family obligations, and technology use.",
+    "aliases": [
+      "chronotype mismatch",
+      "social jetlag"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-SLP-004",
+    "name": "Circadian misalignment / biological-night work",
+    "layer": "Biological",
+    "familyCode": "BIO-SLP",
+    "category": "Sleep & Circadian Regulation",
+    "subcategory": "",
+    "taxonomyStatus": "Core",
+    "driverRole": "State",
+    "typicalTimeScale": "Hours–weeks",
+    "definition": "Behavior occurring at a clock time that is misaligned with internal circadian phase, as in night work or rapid schedule shifts.",
+    "mechanism": "Circadian timing alters arousal, temperature, hormonal rhythms, sleep propensity, and cognitive performance independent of time awake.",
+    "behavioralConsequences": "Reduced alertness and cognitive performance, increased error risk, altered mood and metabolic regulation.",
+    "behaviorChangeRelevance": "Can make the same behavioral demand substantially harder at biological night; timing of interventions and critical decisions matters.",
+    "contextsBoundaryConditions": "Night shift, jet lag, rotating schedules, and forced desynchrony; adaptation varies.",
+    "modifiability": "Medium",
+    "measurementIndicators": "Dim-light melatonin onset; core body temperature; work schedule; actigraphy",
+    "evidence": {
+      "grade": "A",
+      "ids": [
+        "SRC006",
+        "SRC007",
+        "SRC008"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/34204504/",
+        "https://pubmed.ncbi.nlm.nih.gov/30679522/",
+        "https://pubmed.ncbi.nlm.nih.gov/35260480/"
+      ]
+    },
+    "caveats": "Shift work includes social and structural factors beyond circadian physiology.",
+    "crossLayerInteractions": "Interacts with sleep debt, lighting, work design, meal timing, and social obligations.",
+    "aliases": [
+      "circadian misalignment",
+      "shift work",
+      "jet lag"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-HOM-005",
+    "name": "Clinically meaningful hypoglycemia",
+    "layer": "Biological",
+    "familyCode": "BIO-HOM",
+    "category": "Homeostatic & Interoceptive States",
+    "subcategory": "",
+    "taxonomyStatus": "Core",
+    "driverRole": "State",
+    "typicalTimeScale": "Minutes–hours",
+    "definition": "Blood glucose low enough to impair normal brain and autonomic function.",
+    "mechanism": "Reduced glucose availability and counter-regulatory responses can impair attention, speed, executive function, and consciousness as severity increases.",
+    "behavioralConsequences": "Confusion, slower cognition, impaired coordination/judgment; severe cases can cause loss of consciousness or seizure.",
+    "behaviorChangeRelevance": "Makes complex behavioral demands unsafe or unrealistic until physiology is corrected.",
+    "contextsBoundaryConditions": "Most relevant to diabetes treatment, prolonged fasting, or specific metabolic conditions—not ordinary mild hunger.",
+    "modifiability": "High",
+    "measurementIndicators": "Capillary/venous glucose; continuous glucose monitor; symptom context",
+    "evidence": {
+      "grade": "A",
+      "ids": [
+        "SRC022",
+        "SRC023"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/42046322/",
+        "https://pubmed.ncbi.nlm.nih.gov/16050942/"
+      ]
+    },
+    "caveats": "Do not equate normal pre-meal hunger with hypoglycemia.",
+    "crossLayerInteractions": "Interacts with medication, food access, exertion, sleep, and stress.",
+    "aliases": [
+      "low blood glucose",
+      "neuroglycopenia"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-OXY-005",
+    "name": "Cold strain",
+    "layer": "Biological",
+    "familyCode": "BIO-OXY",
+    "category": "Oxygenation, Respiratory & Thermoregulatory Strain",
+    "subcategory": "",
+    "taxonomyStatus": "Core",
+    "driverRole": "State / capacity constraint",
+    "typicalTimeScale": "Minutes–hours",
+    "definition": "Physiological cooling and thermoregulatory activation caused by cold exposure.",
+    "mechanism": "Peripheral vasoconstriction, shivering, discomfort, and reduced dexterity/nerve conduction can impair performance.",
+    "behavioralConsequences": "Reduced manual dexterity, attention, endurance, and task efficiency at sufficient cold exposure.",
+    "behaviorChangeRelevance": "Can change willingness and ability to perform precise, prolonged, or exposed behaviors.",
+    "contextsBoundaryConditions": "Depends on wind, wetness, clothing, acclimatization, body composition, and task.",
+    "modifiability": "High",
+    "measurementIndicators": "Core/skin temperature; thermal sensation; dexterity/performance measures",
+    "evidence": {
+      "grade": "A",
+      "ids": [
+        "SRC028",
+        "SRC029"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/12437852/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC8470111/"
+      ]
+    },
+    "caveats": "Cold effects differ by body region and task; do not infer broad cognitive impairment from mild discomfort.",
+    "crossLayerInteractions": "Interacts with clothing, shelter, workload, and social/organizational requirements.",
+    "aliases": [
+      "cold stress",
+      "cold strain"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-NEU-003",
+    "name": "Delirium / acute encephalopathy",
+    "layer": "Biological",
+    "familyCode": "BIO-NEU",
+    "category": "Neurological Integrity & Acute Brain State",
+    "subcategory": "",
+    "taxonomyStatus": "Core (conditional population)",
+    "driverRole": "Acute brain state",
+    "typicalTimeScale": "Hours–days",
+    "definition": "Acute fluctuating disturbance of attention and cognition caused by medical illness, medication, metabolic disturbance, or other physiological insult.",
+    "mechanism": "Global brain dysfunction disrupts arousal, attention, orientation, memory, and perception.",
+    "behavioralConsequences": "Inattention, confusion, disorganized thinking, fluctuating consciousness, altered behavior.",
+    "behaviorChangeRelevance": "Ordinary persuasion or instruction is unreliable during delirium; treat underlying physiology and ensure safety.",
+    "contextsBoundaryConditions": "Common in hospitalized/older/critically ill patients; reversible causes should be sought urgently.",
+    "modifiability": "High clinically",
+    "measurementIndicators": "Clinical delirium screening (CAM/4AT); medical workup",
+    "evidence": {
+      "grade": "A",
+      "ids": [
+        "SRC078",
+        "SRC079"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/33184265/",
+        "https://pubmed.ncbi.nlm.nih.gov/28601132/"
+      ]
+    },
+    "caveats": "A medical syndrome, not a normal aging effect or personality issue.",
+    "crossLayerInteractions": "Interacts with infection, medication, sleep disruption, sensory loss, and institutional environment.",
+    "aliases": [
+      "acute confusional state",
+      "acute brain failure"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-HOM-007",
+    "name": "Dyspnea / air hunger",
+    "layer": "Biological",
+    "familyCode": "BIO-HOM",
+    "category": "Homeostatic & Interoceptive States",
+    "subcategory": "",
+    "taxonomyStatus": "Core",
+    "driverRole": "State",
+    "typicalTimeScale": "Minutes–chronic",
+    "definition": "Uncomfortable awareness of breathing difficulty or unmet ventilatory demand.",
+    "mechanism": "Respiratory/interoceptive signaling generates powerful aversive motivation and threat-related attention.",
+    "behavioralConsequences": "Activity avoidance, urgency, anxiety-like arousal, reduced cognitive bandwidth, prioritization of breathing/escape.",
+    "behaviorChangeRelevance": "Behavior change requiring exertion or sustained attention may fail when breathlessness is not addressed.",
+    "contextsBoundaryConditions": "May reflect cardiopulmonary disease, hypoxia, anxiety, exertion, or environmental exposure.",
+    "modifiability": "Medium–High",
+    "measurementIndicators": "Dyspnea scales; respiratory rate; oxygen saturation; spirometry/context",
+    "evidence": {
+      "grade": "A",
+      "ids": [
+        "SRC024",
+        "SRC025"
+      ],
+      "urls": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC5448624/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC2763422/"
+      ]
+    },
+    "caveats": "Dyspnea is a symptom state, not a diagnosis; psychological interpretation can amplify or reduce distress.",
+    "crossLayerInteractions": "Interacts with physical environment, exertion, anxiety, smoke/air quality, and illness.",
+    "aliases": [
+      "breathlessness",
+      "air hunger"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-DEV-001",
+    "name": "Early-childhood neurodevelopmental stage",
+    "layer": "Biological",
+    "familyCode": "BIO-DEV",
+    "category": "Lifespan Development & Biological Aging",
+    "subcategory": "",
+    "taxonomyStatus": "Core",
+    "driverRole": "Developmental modifier",
+    "typicalTimeScale": "Years",
+    "definition": "Period of rapid brain, language, motor, executive, and socioemotional development in early childhood.",
+    "mechanism": "Maturing neural systems constrain attention span, inhibition, memory strategies, language comprehension, and learning mechanisms.",
+    "behavioralConsequences": "Greater dependence on caregivers and context, limited executive control, rapid learning and plasticity.",
+    "behaviorChangeRelevance": "Behavior change in children relies more on environmental structuring, repetition, modeling, and caregiver-mediated reinforcement than adult-style reasoning.",
+    "contextsBoundaryConditions": "Development is highly variable; age bands are crude proxies.",
+    "modifiability": "Low",
+    "measurementIndicators": "Developmental assessment; age; language/executive/motor milestones",
+    "evidence": {
+      "grade": "A",
+      "ids": [
+        "SRC074",
+        "SRC100"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/25419054/",
+        "https://pubmed.ncbi.nlm.nih.gov/41026956/"
+      ]
+    },
+    "caveats": "Do not treat developmental limitations as deficits or assume all children of the same age are equivalent.",
+    "crossLayerInteractions": "Interacts with caregiving, education, culture, nutrition, sleep, and stress.",
+    "aliases": [
+      "child development",
+      "early neurodevelopment"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-OXY-003",
+    "name": "Elevated CO₂ / hypercapnic burden",
+    "layer": "Biological",
+    "familyCode": "BIO-OXY",
+    "category": "Oxygenation, Respiratory & Thermoregulatory Strain",
+    "subcategory": "",
+    "taxonomyStatus": "Provisional",
+    "driverRole": "State",
+    "typicalTimeScale": "Minutes–hours",
+    "definition": "Increased inspired or arterial carbon dioxide that can alter cerebral physiology and subjective air quality.",
+    "mechanism": "CO2 changes ventilation and cerebral blood flow; higher levels can cause headache, somnolence, and cognitive impairment.",
+    "behavioralConsequences": "At clearly hypercapnic levels: impaired alertness and cognition; effects of typical indoor elevations on complex cognition remain debated.",
+    "behaviorChangeRelevance": "Potentially relevant in poorly ventilated or confined environments, but should not be overstated.",
+    "contextsBoundaryConditions": "Distinguish clinical hypercapnia from modest indoor CO2 used as a ventilation proxy.",
+    "modifiability": "Medium",
+    "measurementIndicators": "Ambient CO2; end-tidal CO2; arterial blood gas",
+    "evidence": {
+      "grade": "C",
+      "ids": [
+        "SRC031",
+        "SRC032"
+      ],
+      "urls": [
+        "https://doi.org/10.1016/j.buildenv.2023.110331",
+        "https://pubmed.ncbi.nlm.nih.gov/10934900/"
+      ]
+    },
+    "caveats": "Evidence for cognitive effects below occupational limits is mixed; CO2 may proxy for other indoor pollutants.",
+    "crossLayerInteractions": "Interacts with ventilation, occupancy, respiratory disease, and heat.",
+    "aliases": [
+      "hypercapnia",
+      "elevated indoor carbon dioxide"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-NEU-005",
+    "name": "Focal neurological injury / stroke",
+    "layer": "Biological",
+    "familyCode": "BIO-NEU",
+    "category": "Neurological Integrity & Acute Brain State",
+    "subcategory": "",
+    "taxonomyStatus": "Conditional",
+    "driverRole": "Capacity constraint / acute or chronic brain state",
+    "typicalTimeScale": "Days–years",
+    "definition": "Focal disruption of brain function from stroke or other localized neurological injury.",
+    "mechanism": "Lesion location can impair language, attention, memory, motor control, affect, or awareness.",
+    "behavioralConsequences": "Highly specific deficits such as aphasia, neglect, executive dysfunction, weakness, or impulsivity.",
+    "behaviorChangeRelevance": "Behavior-change communication and task design must match preserved abilities and compensate for specific deficits.",
+    "contextsBoundaryConditions": "Effects depend strongly on lesion location, severity, recovery, and rehabilitation.",
+    "modifiability": "Medium",
+    "measurementIndicators": "Neurologic exam; imaging; neuropsychological/functional testing",
+    "evidence": {
+      "grade": "A",
+      "ids": [
+        "SRC077"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/12547981/"
+      ]
+    },
+    "caveats": "Do not generalize one deficit profile to all stroke survivors.",
+    "crossLayerInteractions": "Interacts with assistive technology, rehabilitation, caregiver support, and built environment.",
+    "aliases": [
+      "stroke sequelae",
+      "focal brain lesion"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-DEV-005",
+    "name": "Frailty / accelerated biological aging",
+    "layer": "Biological",
+    "familyCode": "BIO-DEV",
+    "category": "Lifespan Development & Biological Aging",
+    "subcategory": "",
+    "taxonomyStatus": "Conditional",
+    "driverRole": "Background modifier / capacity constraint",
+    "typicalTimeScale": "Months–years",
+    "definition": "State of reduced multisystem physiological reserve and increased vulnerability to stressors, which may diverge from chronological age.",
+    "mechanism": "Loss of muscle, energy, autonomic/metabolic reserve, and recovery capacity increases cost of adaptation.",
+    "behavioralConsequences": "Higher fatigue, slower recovery, mobility limitations, vulnerability to acute stressors and hospitalization.",
+    "behaviorChangeRelevance": "Changes that seem simple may be disproportionately costly; graded support and environmental modification may be necessary.",
+    "contextsBoundaryConditions": "Frailty constructs vary; often overlaps with chronic disease and social vulnerability.",
+    "modifiability": "Medium",
+    "measurementIndicators": "Frailty phenotype/index; gait speed; grip strength; weight loss; exhaustion",
+    "evidence": {
+      "grade": "B",
+      "ids": [
+        "SRC068"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/33886024/"
+      ]
+    },
+    "caveats": "Frailty is not inevitable with age and can be partly modifiable.",
+    "crossLayerInteractions": "Interacts with nutrition, institutions, caregiving, environment, and chronic disease.",
+    "aliases": [
+      "biological age",
+      "frailty syndrome"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-GEN-002",
+    "name": "Gene–environment interaction / differential biological susceptibility",
+    "layer": "Biological",
+    "familyCode": "BIO-GEN",
+    "category": "Stable Biological Susceptibility & Genetic Background",
+    "subcategory": "",
+    "taxonomyStatus": "Background Modifier",
+    "driverRole": "Stable susceptibility",
+    "typicalTimeScale": "Lifespan",
+    "definition": "Variation in how strongly individuals respond biologically or behaviorally to environmental exposures because of genotype or stable biological differences.",
+    "mechanism": "Genetic and regulatory variation can alter sensitivity to stressors, rewards, toxins, nutrition, or social environments.",
+    "behavioralConsequences": "The same exposure can yield different behavioral outcomes across individuals.",
+    "behaviorChangeRelevance": "Supports tailoring and uncertainty: identical interventions need not have identical effects.",
+    "contextsBoundaryConditions": "Robust evidence exists for G×E broadly, but specific candidate-gene claims have often failed replication.",
+    "modifiability": "Low",
+    "measurementIndicators": "Large-sample genomic interaction studies; family/twin designs; measured environment",
+    "evidence": {
+      "grade": "B",
+      "ids": [
+        "SRC069",
+        "SRC070"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/33986517/",
+        "https://www.nature.com/articles/s41562-020-0862-5"
+      ]
+    },
+    "caveats": "Avoid candidate-gene storytelling and deterministic personalization.",
+    "crossLayerInteractions": "Explicitly links biological susceptibility with environmental/social/structural layers.",
+    "aliases": [
+      "GxE",
+      "differential susceptibility",
+      "biological sensitivity to context"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-SEN-001",
+    "name": "Hearing impairment / degraded auditory input",
+    "layer": "Biological",
+    "familyCode": "BIO-SEN",
+    "category": "Sensory, Vestibular & Perceptual Capacity",
+    "subcategory": "",
+    "taxonomyStatus": "Core",
+    "driverRole": "Capacity constraint",
+    "typicalTimeScale": "Chronic / variable",
+    "definition": "Reduced auditory sensitivity or clarity that limits access to spoken or environmental information.",
+    "mechanism": "Degraded sensory input increases listening effort and can reduce communication accuracy and situational awareness.",
+    "behavioralConsequences": "Missed information, slower communication, greater cognitive effort, social withdrawal or misunderstanding.",
+    "behaviorChangeRelevance": "Behavior-change communication may fail if auditory access is poor; redundancy and accessible channels matter.",
+    "contextsBoundaryConditions": "Severity, hearing aids, noise, language, and cognitive reserve moderate effects.",
+    "modifiability": "Medium",
+    "measurementIndicators": "Audiometry; speech-in-noise testing; hearing-device status",
+    "evidence": {
+      "grade": "A",
+      "ids": [
+        "SRC044",
+        "SRC045"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/36004783/",
+        "https://pubmed.ncbi.nlm.nih.gov/40608327/"
+      ]
+    },
+    "caveats": "Do not infer low comprehension or cognition from hearing loss.",
+    "crossLayerInteractions": "Interacts with information design, social exclusion, age, technology, and environmental noise.",
+    "aliases": [
+      "hearing loss",
+      "auditory degradation"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-OXY-004",
+    "name": "Heat strain / hyperthermia",
+    "layer": "Biological",
+    "familyCode": "BIO-OXY",
+    "category": "Oxygenation, Respiratory & Thermoregulatory Strain",
+    "subcategory": "",
+    "taxonomyStatus": "Core",
+    "driverRole": "State / capacity constraint",
+    "typicalTimeScale": "Minutes–hours",
+    "definition": "Physiological heat load sufficient to increase core temperature, cardiovascular strain, dehydration, or thermal discomfort.",
+    "mechanism": "Thermoregulatory demand competes for cardiovascular and attentional resources and increases perceived effort.",
+    "behavioralConsequences": "Reduced endurance, slower/less accurate cognitive performance under sufficient heat strain, irritability and task disengagement.",
+    "behaviorChangeRelevance": "Behavioral interventions requiring sustained effort may fail if thermal strain is not addressed.",
+    "contextsBoundaryConditions": "Effects depend on humidity, acclimatization, hydration, clothing, exertion, and task complexity.",
+    "modifiability": "High",
+    "measurementIndicators": "Core/skin temperature; heart rate; thermal sensation; WBGT; hydration",
+    "evidence": {
+      "grade": "A",
+      "ids": [
+        "SRC028",
+        "SRC030"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/12437852/",
+        "https://pubmed.ncbi.nlm.nih.gov/12745975/"
+      ]
+    },
+    "caveats": "Ambient heat is environmental; heat strain is the biological response.",
+    "crossLayerInteractions": "Interacts with hydration, workload, PPE, infrastructure, and sleep.",
+    "aliases": [
+      "thermal strain",
+      "heat stress",
+      "hyperthermia"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-HOM-001",
+    "name": "Hunger / acute energy-deficit state",
+    "layer": "Biological",
+    "familyCode": "BIO-HOM",
+    "category": "Homeostatic & Interoceptive States",
+    "subcategory": "",
+    "taxonomyStatus": "Core",
+    "driverRole": "State",
+    "typicalTimeScale": "Hours",
+    "definition": "Physiological state associated with energy need and pre-meal hunger signaling.",
+    "mechanism": "Homeostatic and reward systems increase salience and valuation of food-related cues; ghrelin and related signals participate.",
+    "behavioralConsequences": "Greater attention to food, altered food choice and valuation; effects on non-food decisions are less consistent.",
+    "behaviorChangeRelevance": "Behavior-change demands competing with hunger may lose priority, especially when the target behavior is food-related.",
+    "contextsBoundaryConditions": "Strongest evidence is domain-specific to food and reward; generalized 'hungry people make bad decisions' claims are weak.",
+    "modifiability": "High",
+    "measurementIndicators": "Time since meal; hunger ratings; ghrelin; glucose context",
+    "evidence": {
+      "grade": "A",
+      "ids": [
+        "SRC018",
+        "SRC019",
+        "SRC020"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/27871944/",
+        "https://pubmed.ncbi.nlm.nih.gov/37536563/",
+        "https://pubmed.ncbi.nlm.nih.gov/42014776/"
+      ]
+    },
+    "caveats": "Do not generalize food-domain effects to all risk-taking or morality.",
+    "crossLayerInteractions": "Interacts with scarcity, food availability, culture, marketing, and stress.",
+    "aliases": [
+      "hunger",
+      "fasting state"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-HOM-004",
+    "name": "Hypohydration / dehydration",
+    "layer": "Biological",
+    "familyCode": "BIO-HOM",
+    "category": "Homeostatic & Interoceptive States",
+    "subcategory": "",
+    "taxonomyStatus": "Conditional",
+    "driverRole": "State / capacity constraint",
+    "typicalTimeScale": "Hours–days",
+    "definition": "Reduction in total body water sufficient to alter physiological function.",
+    "mechanism": "Changes in osmolality, cardiovascular strain, thermoregulation, and subjective effort can affect performance.",
+    "behavioralConsequences": "Physical performance and discomfort are reliably affected at sufficient levels; generic cognitive impairment at moderate levels is less consistently supported.",
+    "behaviorChangeRelevance": "Can make effortful behavior harder and interact with heat/exertion; hydration interventions should not assume broad cognitive enhancement.",
+    "contextsBoundaryConditions": "Severity, heat, exercise, and baseline hydration determine effects.",
+    "modifiability": "High",
+    "measurementIndicators": "Body mass change; urine/plasma osmolality; urine specific gravity; fluid balance",
+    "evidence": {
+      "grade": "B",
+      "ids": [
+        "SRC021"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/30876770/"
+      ]
+    },
+    "caveats": "Meta-analytic evidence does not support strong universal cognitive impairment from moderate hypohydration.",
+    "crossLayerInteractions": "Interacts with heat, exertion, access, illness, and stimulant/diuretic use.",
+    "aliases": [
+      "dehydration",
+      "hypohydration"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-OXY-002",
+    "name": "Intermittent hypoxemia / sleep-disordered breathing",
+    "layer": "Biological",
+    "familyCode": "BIO-OXY",
+    "category": "Oxygenation, Respiratory & Thermoregulatory Strain",
+    "subcategory": "",
+    "taxonomyStatus": "Conditional",
+    "driverRole": "Chronic/recurrent state",
+    "typicalTimeScale": "Weeks–years",
+    "definition": "Repeated episodes of reduced oxygenation, often during sleep, combined with sleep fragmentation.",
+    "mechanism": "Intermittent hypoxia and fragmented sleep may impair vigilance, executive function, mood, and cardiovascular regulation.",
+    "behavioralConsequences": "Daytime sleepiness, attentional instability, reduced executive capacity.",
+    "behaviorChangeRelevance": "Can undermine learning and adherence; treatment may improve daytime function in affected individuals.",
+    "contextsBoundaryConditions": "Often confounded with obesity, cardiometabolic disease, and sleep fragmentation.",
+    "modifiability": "Medium",
+    "measurementIndicators": "Apnea-hypopnea index; overnight oximetry; polysomnography",
+    "evidence": {
+      "grade": "B",
+      "ids": [
+        "SRC005",
+        "SRC026"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/31879285/",
+        "https://pubmed.ncbi.nlm.nih.gov/41672258/"
+      ]
+    },
+    "caveats": "Separate effects of hypoxemia from sleep fragmentation are difficult to isolate.",
+    "crossLayerInteractions": "Interacts with sleep, obesity/metabolic status, age, and medications.",
+    "aliases": [
+      "sleep apnea",
+      "nocturnal hypoxemia"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-SEN-006",
+    "name": "Intrusive tinnitus / persistent internal auditory signal",
+    "layer": "Biological",
+    "familyCode": "BIO-SEN",
+    "category": "Sensory, Vestibular & Perceptual Capacity",
+    "subcategory": "",
+    "taxonomyStatus": "Conditional",
+    "driverRole": "State / chronic sensory burden",
+    "typicalTimeScale": "Weeks–years",
+    "definition": "Persistent perception of sound without a corresponding external source, when sufficiently salient or distressing to compete for attention.",
+    "mechanism": "Persistent auditory percept can consume attentional resources and interact with sleep, affect, and executive control.",
+    "behavioralConsequences": "Associations with poorer executive function, processing speed, memory, and selective attention; distress varies widely.",
+    "behaviorChangeRelevance": "May reduce concentration or learning capacity and make quiet environments paradoxically more difficult for some people.",
+    "contextsBoundaryConditions": "Effects depend on severity, hearing loss, sleep, anxiety/depression, and distress.",
+    "modifiability": "Medium",
+    "measurementIndicators": "Tinnitus severity/handicap scales; audiology; cognitive testing",
+    "evidence": {
+      "grade": "B",
+      "ids": [
+        "SRC048",
+        "SRC049"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/32436477/",
+        "https://pubmed.ncbi.nlm.nih.gov/27240696/"
+      ]
+    },
+    "caveats": "Many people with tinnitus function normally; avoid treating tinnitus as a uniform cognitive deficit.",
+    "crossLayerInteractions": "Interacts with hearing loss, sleep, stress, and environmental sound.",
+    "aliases": [
+      "tinnitus",
+      "intrusive auditory percept"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-NUT-003",
+    "name": "Iron deficiency",
+    "layer": "Biological",
+    "familyCode": "BIO-NUT",
+    "category": "Nutritional, Metabolic & Hematologic Status",
+    "subcategory": "",
+    "taxonomyStatus": "Conditional",
+    "driverRole": "Capacity constraint",
+    "typicalTimeScale": "Weeks–months",
+    "definition": "Insufficient iron stores, with or without anemia, affecting oxygen transport and iron-dependent neural processes.",
+    "mechanism": "Iron participates in hemoglobin, myelination, and neurotransmitter-related enzymes; deficiency can impair energy and development.",
+    "behavioralConsequences": "Fatigue and, especially in developmental periods, learning/attention vulnerability.",
+    "behaviorChangeRelevance": "Correcting true deficiency can improve capacity; supplementation in iron-replete people should not be treated as a cognitive enhancer.",
+    "contextsBoundaryConditions": "Behavioral evidence differs by age, severity, and presence of anemia.",
+    "modifiability": "High when deficient",
+    "measurementIndicators": "Ferritin; transferrin saturation; hemoglobin; clinical assessment",
+    "evidence": {
+      "grade": "B",
+      "ids": [
+        "SRC051"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/34208355/"
+      ]
+    },
+    "caveats": "Avoid generic supplement claims; diagnose deficiency.",
+    "crossLayerInteractions": "Interacts with diet, menstruation/pregnancy, chronic disease, and socioeconomic access.",
+    "aliases": [
+      "low iron stores",
+      "iron-deficiency anemia"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-PHA-008",
+    "name": "Medication / polypharmacy cognitive-sedative burden",
+    "layer": "Biological",
+    "familyCode": "BIO-PHA",
+    "category": "Psychoactive & Pharmacologic State",
+    "subcategory": "",
+    "taxonomyStatus": "Conditional",
+    "driverRole": "Pharmacologic background modifier",
+    "typicalTimeScale": "Days–chronic",
+    "definition": "Combined cognitive, sedative, anticholinergic, orthostatic, or motor effects arising from multiple medications or high-risk medication classes.",
+    "mechanism": "Additive or interacting drug effects can reduce arousal, memory, balance, reaction speed, or executive function, especially in vulnerable adults.",
+    "behavioralConsequences": "Sedation, attention/memory difficulty, falls risk, slower behavior, reduced adherence complexity and treatment burden.",
+    "behaviorChangeRelevance": "Observed nonadherence or low engagement may reflect medication burden or regimen complexity rather than motivation alone.",
+    "contextsBoundaryConditions": "Most evidence is strongest in older adults; confounding by illness severity and indication is substantial.",
+    "modifiability": "Medium",
+    "measurementIndicators": "Medication reconciliation; anticholinergic/sedative burden scales; timing; cognitive/functional assessment",
+    "evidence": {
+      "grade": "B",
+      "ids": [
+        "SRC090",
+        "SRC091"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/37860872/",
+        "https://pubmed.ncbi.nlm.nih.gov/39111065/"
+      ]
+    },
+    "caveats": "Polypharmacy itself is not always harmful; medication appropriateness and specific pharmacology matter. Never imply medication changes without clinical review.",
+    "crossLayerInteractions": "Interacts with age, neurological status, sleep, substance use, healthcare access, and regimen complexity.",
+    "aliases": [
+      "polypharmacy",
+      "anticholinergic burden",
+      "sedative burden",
+      "medication side-effect load"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-END-005",
+    "name": "Menstrual-cycle hormonal phase",
+    "layer": "Biological",
+    "familyCode": "BIO-END",
+    "category": "Endocrine & Reproductive Physiology",
+    "subcategory": "",
+    "taxonomyStatus": "Provisional",
+    "driverRole": "State modifier",
+    "typicalTimeScale": "Days–weeks",
+    "definition": "Normal cyclic variation in ovarian hormones across the menstrual cycle.",
+    "mechanism": "Estradiol/progesterone variations affect multiple neural and physiological systems, but average cognitive effects in healthy adults are small/inconsistent.",
+    "behavioralConsequences": "Some individuals experience symptom-related changes in pain, mood, sleep, or energy; robust general cognitive impairment is not supported.",
+    "behaviorChangeRelevance": "May matter for symptom-sensitive behaviors in specific individuals, but should not be assumed as a population-wide driver.",
+    "contextsBoundaryConditions": "Large individual differences and methodological limitations.",
+    "modifiability": "Low",
+    "measurementIndicators": "Cycle phase; symptom tracking; hormonal confirmation in research",
+    "evidence": {
+      "grade": "C",
+      "ids": [
+        "SRC059"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/40096188/"
+      ]
+    },
+    "caveats": "Strong caution: do not use menstrual phase to stereotype competence or decision quality.",
+    "crossLayerInteractions": "Interacts with pain, sleep, culture, work demands, and individual symptom burden.",
+    "aliases": [
+      "menstrual cycle",
+      "ovarian hormone phase"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-FAT-002",
+    "name": "Mental / cognitive fatigue",
+    "layer": "Biological",
+    "familyCode": "BIO-FAT",
+    "category": "Fatigue, Pain & Physical Functional Capacity",
+    "subcategory": "",
+    "taxonomyStatus": "Core",
+    "driverRole": "State / capacity constraint",
+    "typicalTimeScale": "Tens of minutes–hours",
+    "definition": "Psychobiological state following prolonged demanding cognitive activity, characterized by weariness and reduced willingness or ability to sustain control.",
+    "mechanism": "Sustained cognitive control changes neural/metabolic and motivational processes, increasing effort cost.",
+    "behavioralConsequences": "Reduced vigilance, slower or less accurate cognition, greater disengagement; can reduce subsequent physical endurance.",
+    "behaviorChangeRelevance": "Complex behavior-change tasks may need simplification, breaks, automation, or timing away from high cognitive load.",
+    "contextsBoundaryConditions": "Task duration and individual expectations affect magnitude.",
+    "modifiability": "High",
+    "measurementIndicators": "Time-on-task; performance decline; fatigue scales; pupillometry/EEG/fMRI in research",
+    "evidence": {
+      "grade": "A",
+      "ids": [
+        "SRC036",
+        "SRC037",
+        "SRC038"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/31873926/",
+        "https://pubmed.ncbi.nlm.nih.gov/35700454/",
+        "https://pubmed.ncbi.nlm.nih.gov/40169294/"
+      ]
+    },
+    "caveats": "Do not equate mental fatigue with generic lack of motivation or 'ego depletion'.",
+    "crossLayerInteractions": "Interacts with workload, sleep loss, stress, interface design, and incentives.",
+    "aliases": [
+      "cognitive fatigue",
+      "time-on-task fatigue"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-NUT-006",
+    "name": "Metabolic reserve / chronic metabolic disease burden",
+    "layer": "Biological",
+    "familyCode": "BIO-NUT",
+    "category": "Nutritional, Metabolic & Hematologic Status",
+    "subcategory": "",
+    "taxonomyStatus": "Conditional",
+    "driverRole": "Background modifier",
+    "typicalTimeScale": "Months–years",
+    "definition": "Reduced physiological flexibility or reserve associated with chronic metabolic disease, obesity-related complications, or multimorbidity.",
+    "mechanism": "Metabolic, vascular, inflammatory, and mechanical pathways can increase fatigue and constrain activity.",
+    "behavioralConsequences": "Higher effort cost, reduced endurance, sleep-disordered breathing risk, and possible cognitive vulnerability.",
+    "behaviorChangeRelevance": "May affect feasibility and persistence of physically or cognitively demanding changes.",
+    "contextsBoundaryConditions": "Body weight alone is not a sufficient measure; disease burden and function matter.",
+    "modifiability": "Medium",
+    "measurementIndicators": "Clinical metabolic profile; functional testing; comorbidity measures",
+    "evidence": {
+      "grade": "C",
+      "ids": [
+        "SRC054",
+        "SRC068"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/31430566/",
+        "https://pubmed.ncbi.nlm.nih.gov/33886024/"
+      ]
+    },
+    "caveats": "Avoid weight-essentialist or stigmatizing causal claims.",
+    "crossLayerInteractions": "Interacts with environment, food access, stigma, sleep, inflammation, and institutional healthcare.",
+    "aliases": [
+      "metabolic syndrome",
+      "cardiometabolic burden"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-NEU-001",
+    "name": "Mild traumatic brain injury / concussion state",
+    "layer": "Biological",
+    "familyCode": "BIO-NEU",
+    "category": "Neurological Integrity & Acute Brain State",
+    "subcategory": "",
+    "taxonomyStatus": "Conditional",
+    "driverRole": "Acute brain state / capacity constraint",
+    "typicalTimeScale": "Days–months",
+    "definition": "Transient or persistent neurobehavioral effects following mild traumatic brain injury.",
+    "mechanism": "Neurometabolic, vestibular, sensory, sleep, and network disturbances can affect cognition and symptom tolerance.",
+    "behavioralConsequences": "Headache, slowed processing, attention/memory problems, fatigue, dizziness, irritability; recovery is usually favorable but variable.",
+    "behaviorChangeRelevance": "Complex learning, multitasking, or high-stimulation environments may need temporary modification.",
+    "contextsBoundaryConditions": "Symptoms overlap with pain, sleep, stress, and vestibular dysfunction.",
+    "modifiability": "Medium",
+    "measurementIndicators": "Clinical concussion assessment; symptom scales; neurocognitive/vestibular testing",
+    "evidence": {
+      "grade": "A",
+      "ids": [
+        "SRC075",
+        "SRC076"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/24581903/",
+        "https://pubmed.ncbi.nlm.nih.gov/24219611/"
+      ]
+    },
+    "caveats": "Do not infer permanent impairment from concussion; prognosis varies and many recover fully.",
+    "crossLayerInteractions": "Interacts with sleep, pain, vestibular function, stress, work demands, and information load.",
+    "aliases": [
+      "concussion",
+      "mTBI"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-NEU-002",
+    "name": "Moderate/severe TBI sequelae",
+    "layer": "Biological",
+    "familyCode": "BIO-NEU",
+    "category": "Neurological Integrity & Acute Brain State",
+    "subcategory": "",
+    "taxonomyStatus": "Conditional",
+    "driverRole": "Chronic neurological capacity constraint",
+    "typicalTimeScale": "Months–years",
+    "definition": "Persistent cognitive, emotional, behavioral, or motor consequences after moderate or severe traumatic brain injury.",
+    "mechanism": "Diffuse/focal neural injury can impair executive functions, memory, inhibition, social cognition, and motor systems.",
+    "behavioralConsequences": "Executive dysfunction, impulsivity, memory problems, reduced initiation, motor limitations.",
+    "behaviorChangeRelevance": "Behavior change may require external structure, cueing, simplified choices, repetition, and caregiver/system support.",
+    "contextsBoundaryConditions": "Profiles vary greatly by lesion, recovery, premorbid function, and rehabilitation.",
+    "modifiability": "Medium",
+    "measurementIndicators": "Neuropsychological testing; imaging; functional assessments",
+    "evidence": {
+      "grade": "A",
+      "ids": [
+        "SRC077"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/12547981/"
+      ]
+    },
+    "caveats": "Avoid treating TBI as a uniform personality change.",
+    "crossLayerInteractions": "Interacts with social support, rehabilitation, substance use, institutions, and technology aids.",
+    "aliases": [
+      "brain injury",
+      "executive dysfunction after TBI"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-HOM-006",
+    "name": "Nausea / visceral malaise",
+    "layer": "Biological",
+    "familyCode": "BIO-HOM",
+    "category": "Homeostatic & Interoceptive States",
+    "subcategory": "",
+    "taxonomyStatus": "Conditional",
+    "driverRole": "State",
+    "typicalTimeScale": "Minutes–days",
+    "definition": "Aversive interoceptive state signaling gastrointestinal or systemic disturbance.",
+    "mechanism": "Brainstem, vagal, vestibular, and interoceptive pathways generate avoidance motivation and attentional capture.",
+    "behavioralConsequences": "Withdrawal from activity, reduced appetite, avoidance, difficulty concentrating, altered risk/effort tolerance.",
+    "behaviorChangeRelevance": "Can dominate motivation and reduce willingness to engage in tasks, travel, learning, or interventions.",
+    "contextsBoundaryConditions": "Etiology matters: illness, medication, motion sickness, toxins, pregnancy, anxiety.",
+    "modifiability": "High",
+    "measurementIndicators": "Symptom scales; emesis; trigger context; clinical measures as appropriate",
+    "evidence": {
+      "grade": "B",
+      "ids": [
+        "SRC024",
+        "SRC047"
+      ],
+      "urls": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC5448624/",
+        "https://pubmed.ncbi.nlm.nih.gov/39016124/"
+      ]
+    },
+    "caveats": "Behavioral consequences are plausible and strong, but direct causal studies of complex decision-making are limited.",
+    "crossLayerInteractions": "Interacts with vestibular state, pregnancy, medication, stress, and environment.",
+    "aliases": [
+      "malaise",
+      "queasiness"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-NEU-006",
+    "name": "Neurodegenerative disease burden",
+    "layer": "Biological",
+    "familyCode": "BIO-NEU",
+    "category": "Neurological Integrity & Acute Brain State",
+    "subcategory": "",
+    "taxonomyStatus": "Conditional",
+    "driverRole": "Progressive neurological modifier",
+    "typicalTimeScale": "Years",
+    "definition": "Progressive neural degeneration that can impair memory, executive control, language, movement, or social cognition.",
+    "mechanism": "Disease-specific neural loss and network dysfunction progressively alter cognitive and motor capacities.",
+    "behavioralConsequences": "Changes in memory, judgment, initiation, inhibition, language, navigation, or motor function depending on disease.",
+    "behaviorChangeRelevance": "Behavior change often requires environmental redesign, cueing, caregiver support, and reduced cognitive complexity.",
+    "contextsBoundaryConditions": "Disease types and stages differ substantially; healthy aging is separate.",
+    "modifiability": "Low–Medium",
+    "measurementIndicators": "Clinical diagnosis; neuropsychology; imaging/biomarkers as appropriate; functional status",
+    "evidence": {
+      "grade": "A",
+      "ids": [
+        "SRC066",
+        "SRC078"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/27516712/",
+        "https://pubmed.ncbi.nlm.nih.gov/33184265/"
+      ]
+    },
+    "caveats": "Avoid equating older age with neurodegeneration.",
+    "crossLayerInteractions": "Interacts with social care, technology, medication, sensory impairment, and institutional context.",
+    "aliases": [
+      "dementia",
+      "neurodegeneration",
+      "Alzheimer's/Parkinsonian burden"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-WDR-001",
+    "name": "Nicotine withdrawal",
+    "layer": "Biological",
+    "familyCode": "BIO-WDR",
+    "category": "Dependence, Tolerance & Withdrawal States",
+    "subcategory": "",
+    "taxonomyStatus": "Core",
+    "driverRole": "Withdrawal state",
+    "typicalTimeScale": "Hours–weeks",
+    "definition": "Physiological and cognitive symptoms following cessation or reduction of nicotine in a dependent user.",
+    "mechanism": "Neuroadaptation to chronic nicotinic stimulation produces withdrawal-related changes in attention, mood, and reward.",
+    "behavioralConsequences": "Irritability, craving, concentration difficulty, reduced attention/working memory, restlessness.",
+    "behaviorChangeRelevance": "Withdrawal can dominate short-term behavior and make unrelated behavior-change tasks harder; cessation support can reduce the barrier.",
+    "contextsBoundaryConditions": "Severity depends on dependence level, time since last use, and replacement therapy.",
+    "modifiability": "High",
+    "measurementIndicators": "Time since nicotine; dependence scales; withdrawal scales",
+    "evidence": {
+      "grade": "A",
+      "ids": [
+        "SRC092",
+        "SRC093"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/23639437/",
+        "https://pubmed.ncbi.nlm.nih.gov/27338804/"
+      ]
+    },
+    "caveats": "Some apparent 'cognitive enhancement' from nicotine in smokers is withdrawal reversal.",
+    "crossLayerInteractions": "Interacts with stress, cues, social environment, and access to nicotine replacement.",
+    "aliases": [
+      "smoking withdrawal",
+      "nicotine abstinence"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-DEV-004",
+    "name": "Normative biological aging",
+    "layer": "Biological",
+    "familyCode": "BIO-DEV",
+    "category": "Lifespan Development & Biological Aging",
+    "subcategory": "",
+    "taxonomyStatus": "Core",
+    "driverRole": "Developmental modifier",
+    "typicalTimeScale": "Years–decades",
+    "definition": "Age-associated changes in neural processing speed, sensory systems, sleep, cardiovascular function, and physiological reserve.",
+    "mechanism": "Gradual changes in brain and body systems alter speed, memory, sensory input, and tolerance for physiological stressors.",
+    "behavioralConsequences": "Slower processing and some memory changes on average, with preserved or improved knowledge in other domains; large individual variability.",
+    "behaviorChangeRelevance": "Behavior-change materials may need accessible sensory design, pacing, and support for working memory/complexity.",
+    "contextsBoundaryConditions": "Healthy aging differs from MCI, dementia, frailty, or disease.",
+    "modifiability": "Low",
+    "measurementIndicators": "Age plus cognitive, sensory, and functional assessment",
+    "evidence": {
+      "grade": "A",
+      "ids": [
+        "SRC066",
+        "SRC067"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/27516712/",
+        "https://pubmed.ncbi.nlm.nih.gov/32297227/"
+      ]
+    },
+    "caveats": "Chronological age alone is a weak individual predictor; avoid ageism.",
+    "crossLayerInteractions": "Interacts with sensory loss, medication, health, technology familiarity, and social structure.",
+    "aliases": [
+      "healthy aging",
+      "cognitive aging"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-SEN-003",
+    "name": "Olfactory impairment",
+    "layer": "Biological",
+    "familyCode": "BIO-SEN",
+    "category": "Sensory, Vestibular & Perceptual Capacity",
+    "subcategory": "",
+    "taxonomyStatus": "Conditional",
+    "driverRole": "Capacity constraint",
+    "typicalTimeScale": "Chronic / variable",
+    "definition": "Reduced ability to detect or identify odors.",
+    "mechanism": "Loss of olfactory sensory input reduces detection of food, smoke, gas, spoilage, and socially meaningful odor cues.",
+    "behavioralConsequences": "Altered food enjoyment/intake, reduced hazard detection, changes in quality of life.",
+    "behaviorChangeRelevance": "Can alter nutrition-related behavior and safety responses; may also be a marker of neurological disease.",
+    "contextsBoundaryConditions": "Direct effects on complex social behavior are less well established.",
+    "modifiability": "Low–Medium",
+    "measurementIndicators": "Odor identification/detection testing; self-report",
+    "evidence": {
+      "grade": "B",
+      "ids": [
+        "SRC101"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/33496882/"
+      ]
+    },
+    "caveats": "Do not infer neurodegenerative disease from olfactory loss alone.",
+    "crossLayerInteractions": "Interacts with food environment, safety systems, illness, and aging.",
+    "aliases": [
+      "anosmia",
+      "hyposmia"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-PHA-006",
+    "name": "Opioid intoxication / opioid-related CNS depression",
+    "layer": "Biological",
+    "familyCode": "BIO-PHA",
+    "category": "Psychoactive & Pharmacologic State",
+    "subcategory": "",
+    "taxonomyStatus": "Conditional",
+    "driverRole": "Pharmacologic state",
+    "typicalTimeScale": "Hours",
+    "definition": "Acute CNS effects of opioid agonists, ranging from analgesia to sedation and respiratory depression depending on dose/tolerance.",
+    "mechanism": "Mu-opioid receptor activation alters pain, reward, arousal, respiration, and psychomotor function.",
+    "behavioralConsequences": "Sedation, slowed reaction and attention; at high dose, respiratory depression and loss of consciousness.",
+    "behaviorChangeRelevance": "High-stakes decisions or tasks may be impaired during sedation; analgesia can simultaneously improve function by reducing pain.",
+    "contextsBoundaryConditions": "Effects depend heavily on dose, tolerance, pain state, chronic use, and co-sedatives.",
+    "modifiability": "Medium",
+    "measurementIndicators": "Medication/dose/time; sedation score; respiratory rate; toxicology context",
+    "evidence": {
+      "grade": "B",
+      "ids": [
+        "SRC088",
+        "SRC089"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/33502504/",
+        "https://pubmed.ncbi.nlm.nih.gov/22771335/"
+      ]
+    },
+    "caveats": "Chronic prescribed opioid use does not uniformly cause major cognitive impairment; pain relief can improve function.",
+    "crossLayerInteractions": "Interacts with pain, benzodiazepines/alcohol, respiratory disease, and dependence.",
+    "aliases": [
+      "opioid sedation",
+      "narcotic intoxication"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-WDR-005",
+    "name": "Opioid withdrawal",
+    "layer": "Biological",
+    "familyCode": "BIO-WDR",
+    "category": "Dependence, Tolerance & Withdrawal States",
+    "subcategory": "",
+    "taxonomyStatus": "Core (conditional population)",
+    "driverRole": "Withdrawal state",
+    "typicalTimeScale": "Hours–days",
+    "definition": "Physiological syndrome following abrupt reduction or antagonism of opioids in a dependent person.",
+    "mechanism": "Noradrenergic and other neuroadaptations produce severe autonomic, gastrointestinal, pain, and craving symptoms.",
+    "behavioralConsequences": "Restlessness, pain, diarrhea, nausea, dysphoria, craving, sleep disruption and strong drug-seeking motivation.",
+    "behaviorChangeRelevance": "Competing behavioral goals may be overwhelmed by withdrawal; evidence-based treatment substantially changes the behavioral landscape.",
+    "contextsBoundaryConditions": "Severity depends on opioid type, dose, duration, and treatment status.",
+    "modifiability": "High clinically",
+    "measurementIndicators": "Clinical Opiate Withdrawal Scale; use history; vitals; symptoms",
+    "evidence": {
+      "grade": "A",
+      "ids": [
+        "SRC106"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/35112746/"
+      ]
+    },
+    "caveats": "Withdrawal is highly aversive but usually not life-threatening; treatment access is a structural factor.",
+    "crossLayerInteractions": "Interacts with pain, social context, treatment access, stigma, and cues.",
+    "aliases": [
+      "opioid abstinence",
+      "opiate withdrawal"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-END-001",
+    "name": "Overt thyroid hormone dysregulation",
+    "layer": "Biological",
+    "familyCode": "BIO-END",
+    "category": "Endocrine & Reproductive Physiology",
+    "subcategory": "",
+    "taxonomyStatus": "Conditional",
+    "driverRole": "State / capacity constraint",
+    "typicalTimeScale": "Weeks–months",
+    "definition": "Clinically significant hypo- or hyperthyroidism producing systemic metabolic and neurological effects.",
+    "mechanism": "Thyroid hormones regulate metabolism, cardiovascular function, arousal, and neural processes.",
+    "behavioralConsequences": "Fatigue/slowing with hypothyroidism; hyperarousal, tremor, sleep disruption or concentration difficulty with hyperthyroidism.",
+    "behaviorChangeRelevance": "Behavior and learning may be affected when overt disease is untreated; treatment can remove a biological constraint.",
+    "contextsBoundaryConditions": "Subclinical thyroid abnormalities show inconsistent cognitive associations.",
+    "modifiability": "High when clinically indicated",
+    "measurementIndicators": "TSH, free T4/T3, clinical symptoms",
+    "evidence": {
+      "grade": "B",
+      "ids": [
+        "SRC055",
+        "SRC056"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/34491268/",
+        "https://pubmed.ncbi.nlm.nih.gov/39111592/"
+      ]
+    },
+    "caveats": "Do not use minor lab variation as a behavioral explanation; subclinical effects are uncertain.",
+    "crossLayerInteractions": "Interacts with sleep, mood, cardiovascular state, medication, and age.",
+    "aliases": [
+      "hypothyroidism",
+      "hyperthyroidism"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-END-004",
+    "name": "Perimenopausal / menopausal transition",
+    "layer": "Biological",
+    "familyCode": "BIO-END",
+    "category": "Endocrine & Reproductive Physiology",
+    "subcategory": "",
+    "taxonomyStatus": "Conditional",
+    "driverRole": "Developmental modifier / state",
+    "typicalTimeScale": "Years",
+    "definition": "Transition involving fluctuating and declining ovarian hormones with changes in thermoregulation, sleep, and other physiological systems.",
+    "mechanism": "Hormonal variability and vasomotor/sleep disturbance may influence attention, memory complaints, and energy.",
+    "behavioralConsequences": "Hot flashes, sleep disruption, fatigue, and modest cognitive changes for some individuals.",
+    "behaviorChangeRelevance": "Behavior-change programs may need to address sleep/thermal symptoms and timing rather than assume motivational causes.",
+    "contextsBoundaryConditions": "Average cognitive effects are generally modest and heterogeneous.",
+    "modifiability": "Medium",
+    "measurementIndicators": "Menopausal stage; symptom scales; sleep; clinical hormone measures when indicated",
+    "evidence": {
+      "grade": "B",
+      "ids": [
+        "SRC058"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/41066270/"
+      ]
+    },
+    "caveats": "Do not treat menopause as cognitive decline; many effects are small and mediated by symptoms.",
+    "crossLayerInteractions": "Interacts with sleep, stress, work environment, culture, and aging.",
+    "aliases": [
+      "perimenopause",
+      "menopause"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-FAT-004",
+    "name": "Persistent / chronic pain burden",
+    "layer": "Biological",
+    "familyCode": "BIO-FAT",
+    "category": "Fatigue, Pain & Physical Functional Capacity",
+    "subcategory": "",
+    "taxonomyStatus": "Core",
+    "driverRole": "Chronic state / capacity constraint",
+    "typicalTimeScale": "Months–years",
+    "definition": "Ongoing or recurrent pain lasting beyond normal tissue healing that can alter attention, sleep, movement, and cognition.",
+    "mechanism": "Persistent nociceptive/salience processing plus sleep disruption and reduced activity can burden executive and attentional systems.",
+    "behavioralConsequences": "Avoidance, reduced activity, attentional capture, executive-function difficulties, altered reward/effort valuation.",
+    "behaviorChangeRelevance": "New behaviors may need reduced physical/cognitive cost and attention to pain-related avoidance or energy limits.",
+    "contextsBoundaryConditions": "Comorbid sleep disturbance, depression, medication, and disability confound many associations.",
+    "modifiability": "Medium",
+    "measurementIndicators": "Pain interference; disability scales; quantitative sensory testing; activity measures",
+    "evidence": {
+      "grade": "B",
+      "ids": [
+        "SRC033",
+        "SRC034"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/25265056/",
+        "https://pubmed.ncbi.nlm.nih.gov/30787635/"
+      ]
+    },
+    "caveats": "Chronic pain is heterogeneous; avoid assuming cognitive deficits in every individual.",
+    "crossLayerInteractions": "Interacts with medication, sleep, mood, work structure, mobility, and social support.",
+    "aliases": [
+      "persistent pain",
+      "chronic pain"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-FAT-001",
+    "name": "Physical / exertional fatigue",
+    "layer": "Biological",
+    "familyCode": "BIO-FAT",
+    "category": "Fatigue, Pain & Physical Functional Capacity",
+    "subcategory": "",
+    "taxonomyStatus": "Core",
+    "driverRole": "State / capacity constraint",
+    "typicalTimeScale": "Minutes–hours",
+    "definition": "Reduced capacity or increased effort following sustained or intense physical work.",
+    "mechanism": "Peripheral and central fatigue processes increase perceived effort and reduce motor output and persistence.",
+    "behavioralConsequences": "Lower endurance, slower movement, reduced precision, altered pacing and willingness to continue.",
+    "behaviorChangeRelevance": "Behavior change that requires physical effort is less likely when effort cost is elevated.",
+    "contextsBoundaryConditions": "Effects on cognitive performance are heterogeneous; distinguish physical from mental fatigue.",
+    "modifiability": "High",
+    "measurementIndicators": "Performance decrement; RPE; force/power; physiological workload",
+    "evidence": {
+      "grade": "A",
+      "ids": [
+        "SRC035"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/35834441/"
+      ]
+    },
+    "caveats": "Fatigue is task-specific and multifactorial; subjective fatigue and performance fatigability are not identical.",
+    "crossLayerInteractions": "Interacts with heat, sleep, nutrition, pain, motivation, and equipment.",
+    "aliases": [
+      "exertional fatigue",
+      "physical exhaustion"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-GEN-001",
+    "name": "Polygenic / heritable predisposition",
+    "layer": "Biological",
+    "familyCode": "BIO-GEN",
+    "category": "Stable Biological Susceptibility & Genetic Background",
+    "subcategory": "",
+    "taxonomyStatus": "Background Modifier",
+    "driverRole": "Stable susceptibility",
+    "typicalTimeScale": "Lifespan",
+    "definition": "Small effects from many genetic variants that contribute probabilistically to behavioral traits or vulnerabilities at the population level.",
+    "mechanism": "Polygenic variation influences neural, endocrine, metabolic, and developmental pathways that interact with environments.",
+    "behavioralConsequences": "Shifts probabilities or trait distributions rather than directly specifying complex behavior.",
+    "behaviorChangeRelevance": "Useful as a background susceptibility concept, not a proximate intervention target in ordinary behavior-change practice.",
+    "contextsBoundaryConditions": "Predictive power varies greatly across traits and populations and is often ancestry-dependent.",
+    "modifiability": "Low",
+    "measurementIndicators": "Genotyping/polygenic scores in research; family/twin designs at population level",
+    "evidence": {
+      "grade": "B",
+      "ids": [
+        "SRC069",
+        "SRC070",
+        "SRC071"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/33986517/",
+        "https://www.nature.com/articles/s41562-020-0862-5",
+        "https://pubmed.ncbi.nlm.nih.gov/9530489/"
+      ]
+    },
+    "caveats": "Heritability is not immutability; polygenic scores are not causal explanations of individual behavior.",
+    "crossLayerInteractions": "Interacts with nearly every layer through gene–environment correlation and interaction.",
+    "aliases": [
+      "heritability",
+      "polygenic propensity",
+      "genetic predisposition"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-IMM-004",
+    "name": "Post-infectious / convalescent fatigue state",
+    "layer": "Biological",
+    "familyCode": "BIO-IMM",
+    "category": "Immune, Inflammatory & Sickness States",
+    "subcategory": "",
+    "taxonomyStatus": "Conditional",
+    "driverRole": "State / capacity constraint",
+    "typicalTimeScale": "Weeks–months",
+    "definition": "Persistent fatigue and reduced capacity after an acute infection has otherwise resolved.",
+    "mechanism": "Multiple mechanisms may contribute, including immune dysregulation, autonomic changes, sleep disturbance, and deconditioning.",
+    "behavioralConsequences": "Reduced endurance, slower recovery, cognitive fatigue, activity limitation.",
+    "behaviorChangeRelevance": "Behavior-change expectations may need pacing and graded capacity assessment rather than assuming resistance.",
+    "contextsBoundaryConditions": "Mechanisms and duration vary widely by pathogen and individual.",
+    "modifiability": "Medium",
+    "measurementIndicators": "Fatigue scales; activity; functional tests; clinical workup",
+    "evidence": {
+      "grade": "C",
+      "ids": [
+        "SRC039",
+        "SRC040",
+        "SRC017"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/12000023/",
+        "https://pubmed.ncbi.nlm.nih.gov/12615196/",
+        "https://pubmed.ncbi.nlm.nih.gov/37586308/"
+      ]
+    },
+    "caveats": "Heterogeneous and not specific to any one diagnosis; avoid unsupported mechanistic certainty.",
+    "crossLayerInteractions": "Interacts with employment demands, social expectations, sleep, and physical conditioning.",
+    "aliases": [
+      "convalescence",
+      "post-viral fatigue"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-END-003",
+    "name": "Pregnancy physiological/endocrine state",
+    "layer": "Biological",
+    "familyCode": "BIO-END",
+    "category": "Endocrine & Reproductive Physiology",
+    "subcategory": "",
+    "taxonomyStatus": "Conditional",
+    "driverRole": "State / developmental transition",
+    "typicalTimeScale": "Months",
+    "definition": "Pregnancy-related endocrine, cardiovascular, metabolic, immune, and sleep changes.",
+    "mechanism": "Large hormonal and physiological shifts affect sleep, fatigue, nausea, thermoregulation, and some cognitive domains.",
+    "behavioralConsequences": "Fatigue, nausea, altered sleep, physical capacity changes; meta-analytic evidence suggests modest cognitive differences in some domains.",
+    "behaviorChangeRelevance": "Behavior-change demands should account for changing energy, symptoms, risk constraints, and physical capability.",
+    "contextsBoundaryConditions": "Effects vary by trimester, symptom burden, parity, sleep, and individual.",
+    "modifiability": "Medium",
+    "measurementIndicators": "Pregnancy stage; symptom measures; clinical markers",
+    "evidence": {
+      "grade": "B",
+      "ids": [
+        "SRC057"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/29320671/"
+      ]
+    },
+    "caveats": "Avoid stereotypes such as universal 'pregnancy brain'; average effects are modest and heterogeneous.",
+    "crossLayerInteractions": "Interacts with work policy, caregiving, nutrition, social support, and medical risk.",
+    "aliases": [
+      "pregnancy",
+      "gestational physiology"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-STR-003",
+    "name": "Prolonged stress recovery / sustained physiological activation",
+    "layer": "Biological",
+    "familyCode": "BIO-STR",
+    "category": "Stress, Autonomic & Allostatic Physiology",
+    "subcategory": "",
+    "taxonomyStatus": "Conditional",
+    "driverRole": "State / regulatory capacity",
+    "typicalTimeScale": "Hours–days",
+    "definition": "Slow return of physiological stress systems toward baseline after a challenge.",
+    "mechanism": "Extended cortisol/autonomic activation increases physiological load and can prolong attentional and emotional consequences of stress.",
+    "behavioralConsequences": "Longer persistence of threat-focused processing, fatigue, irritability, and reduced flexibility after an event.",
+    "behaviorChangeRelevance": "Can prolong windows in which messages, decisions, or social interactions are processed under altered physiological conditions.",
+    "contextsBoundaryConditions": "Recovery trajectories vary substantially among individuals and stressor types.",
+    "modifiability": "Medium",
+    "measurementIndicators": "Post-stressor cortisol/HRV recovery slope; repeated physiological sampling",
+    "evidence": {
+      "grade": "B",
+      "ids": [
+        "SRC014",
+        "SRC015",
+        "SRC016"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/39070283/",
+        "https://pubmed.ncbi.nlm.nih.gov/15122924/",
+        "https://pubmed.ncbi.nlm.nih.gov/28578301/"
+      ]
+    },
+    "caveats": "Recovery is not equivalent to subjective calm and is difficult to infer without repeated measurement.",
+    "crossLayerInteractions": "Interacts with social support, controllability, sleep, prior stress exposure, and coping.",
+    "aliases": [
+      "stress recovery",
+      "physiological recovery"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-END-002",
+    "name": "Pubertal endocrine transition",
+    "layer": "Biological",
+    "familyCode": "BIO-END",
+    "category": "Endocrine & Reproductive Physiology",
+    "subcategory": "",
+    "taxonomyStatus": "Conditional",
+    "driverRole": "Developmental modifier",
+    "typicalTimeScale": "Years",
+    "definition": "Coordinated gonadal and adrenal hormonal maturation during puberty interacting with brain and social development.",
+    "mechanism": "Pubertal hormones influence reward, social salience, body maturation, sleep timing, and stress systems.",
+    "behavioralConsequences": "Changes in social motivation, reward sensitivity, sleep timing, and risk behavior occur alongside neural/social development.",
+    "behaviorChangeRelevance": "Behavior-change approaches for adolescents should account for developmental reward/social sensitivity rather than assume adult motivational architecture.",
+    "contextsBoundaryConditions": "Hormones are only one contributor; peer context and brain maturation are critical.",
+    "modifiability": "Low",
+    "measurementIndicators": "Pubertal stage; age; hormonal assays in research",
+    "evidence": {
+      "grade": "B",
+      "ids": [
+        "SRC063",
+        "SRC064",
+        "SRC065"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/27353570/",
+        "https://pubmed.ncbi.nlm.nih.gov/26774291/",
+        "https://pubmed.ncbi.nlm.nih.gov/18509515/"
+      ]
+    },
+    "caveats": "Avoid 'hormones make teens reckless' explanations; effects are probabilistic and context-dependent.",
+    "crossLayerInteractions": "Interacts with social status, peers, culture, sleep phase, and institutional autonomy.",
+    "aliases": [
+      "puberty",
+      "gonadarche",
+      "adrenarche"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-FAT-006",
+    "name": "Reduced mobility / physical reserve / frailty",
+    "layer": "Biological",
+    "familyCode": "BIO-FAT",
+    "category": "Fatigue, Pain & Physical Functional Capacity",
+    "subcategory": "",
+    "taxonomyStatus": "Conditional",
+    "driverRole": "Capacity constraint / background modifier",
+    "typicalTimeScale": "Months–years",
+    "definition": "Reduced physiological reserve, strength, balance, or mobility that increases the effort and risk of everyday action.",
+    "mechanism": "Lower musculoskeletal and cardiopulmonary reserve makes behaviors more energetically costly and recovery slower.",
+    "behavioralConsequences": "Reduced activity, slower movement, greater fall avoidance, lower tolerance for demanding tasks.",
+    "behaviorChangeRelevance": "Behavior-change plans must account for actual physical capability and effort cost rather than assuming motivation failure.",
+    "contextsBoundaryConditions": "Common in aging/chronic illness but not exclusive to older adults.",
+    "modifiability": "Medium",
+    "measurementIndicators": "Gait speed; grip strength; chair-rise; frailty indices; ADL/IADL measures",
+    "evidence": {
+      "grade": "B",
+      "ids": [
+        "SRC068"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/33886024/"
+      ]
+    },
+    "caveats": "Frailty is multidimensional and partially shaped by social/environmental conditions.",
+    "crossLayerInteractions": "Interacts with built environment, access, caregiving, chronic disease, and age.",
+    "aliases": [
+      "frailty",
+      "low physical reserve",
+      "mobility limitation"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-SLP-002",
+    "name": "Repeated partial sleep restriction",
+    "layer": "Biological",
+    "familyCode": "BIO-SLP",
+    "category": "Sleep & Circadian Regulation",
+    "subcategory": "",
+    "taxonomyStatus": "Core",
+    "driverRole": "State",
+    "typicalTimeScale": "Days–weeks",
+    "definition": "Obtaining less sleep than physiologically needed across multiple consecutive nights.",
+    "mechanism": "Cumulative sleep debt degrades sustained attention, processing efficiency, working memory, and executive function.",
+    "behavioralConsequences": "Progressive vigilance lapses, reduced cognitive throughput, poorer learning and error monitoring.",
+    "behaviorChangeRelevance": "Can gradually erode intervention adherence, training uptake, decision quality, and persistence even when people report adapting.",
+    "contextsBoundaryConditions": "Magnitude depends on nightly sleep opportunity, baseline sleep need, recovery sleep, and task demands.",
+    "modifiability": "High",
+    "measurementIndicators": "Sleep diary; actigraphy; sleep duration; PVT; fatigue scales",
+    "evidence": {
+      "grade": "A",
+      "ids": [
+        "SRC002",
+        "SRC003",
+        "SRC004"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/28757454/",
+        "https://pubmed.ncbi.nlm.nih.gov/38759474/",
+        "https://pubmed.ncbi.nlm.nih.gov/25850114/"
+      ]
+    },
+    "caveats": "Subjective sleepiness may underestimate objective performance decline.",
+    "crossLayerInteractions": "Interacts with shift work, caregiving, operations tempo, family structure, and organizational schedules.",
+    "aliases": [
+      "chronic sleep restriction",
+      "sleep debt"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-HOM-002",
+    "name": "Satiety / postprandial state",
+    "layer": "Biological",
+    "familyCode": "BIO-HOM",
+    "category": "Homeostatic & Interoceptive States",
+    "subcategory": "",
+    "taxonomyStatus": "Conditional",
+    "driverRole": "State",
+    "typicalTimeScale": "Minutes–hours",
+    "definition": "Physiological state following food intake characterized by reduced hunger and altered metabolic/endocrine signals.",
+    "mechanism": "Gut-brain and metabolic signals reduce food reward and can alter arousal or post-meal alertness.",
+    "behavioralConsequences": "Reduced food seeking; possible transient changes in alertness depending on meal size/composition.",
+    "behaviorChangeRelevance": "Can shift responsiveness to food incentives and timing of dietary behavior-change efforts.",
+    "contextsBoundaryConditions": "Effects on non-food cognition are variable and meal-composition dependent.",
+    "modifiability": "High",
+    "measurementIndicators": "Meal timing/composition; satiety ratings; glucose/insulin when relevant",
+    "evidence": {
+      "grade": "B",
+      "ids": [
+        "SRC018",
+        "SRC019"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/27871944/",
+        "https://pubmed.ncbi.nlm.nih.gov/37536563/"
+      ]
+    },
+    "caveats": "Avoid claims that eating generally improves or worsens decision-making.",
+    "crossLayerInteractions": "Interacts with cultural meal patterns, food environment, sleep, and metabolic health.",
+    "aliases": [
+      "fullness",
+      "postprandial state"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-PHA-005",
+    "name": "Sedative-hypnotic / benzodiazepine state",
+    "layer": "Biological",
+    "familyCode": "BIO-PHA",
+    "category": "Psychoactive & Pharmacologic State",
+    "subcategory": "",
+    "taxonomyStatus": "Conditional",
+    "driverRole": "Pharmacologic state",
+    "typicalTimeScale": "Hours–chronic",
+    "definition": "Acute or ongoing CNS depressant effects from benzodiazepines or related sedating medications.",
+    "mechanism": "GABAergic potentiation reduces arousal, reaction speed, memory encoding, and psychomotor coordination.",
+    "behavioralConsequences": "Sedation, slowed reaction, anterograde memory impairment, balance problems and cognitive slowing.",
+    "behaviorChangeRelevance": "May make learning and high-precision behaviors unreliable; medication timing should be considered.",
+    "contextsBoundaryConditions": "Effects vary by agent, half-life, dose, tolerance, age, and concurrent substances.",
+    "modifiability": "Medium",
+    "measurementIndicators": "Medication list; dose/time; clinical sedation/psychomotor assessment",
+    "evidence": {
+      "grade": "A",
+      "ids": [
+        "SRC087",
+        "SRC090"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/34403113/",
+        "https://pubmed.ncbi.nlm.nih.gov/37860872/"
+      ]
+    },
+    "caveats": "Long-term cognitive causality is more uncertain than acute impairment; do not stop medications without medical guidance.",
+    "crossLayerInteractions": "Interacts with age, alcohol/opioids, sleep, falls risk, and polypharmacy.",
+    "aliases": [
+      "benzodiazepine sedation",
+      "hypnotic impairment"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-NEU-004",
+    "name": "Seizure / postictal state",
+    "layer": "Biological",
+    "familyCode": "BIO-NEU",
+    "category": "Neurological Integrity & Acute Brain State",
+    "subcategory": "",
+    "taxonomyStatus": "Conditional",
+    "driverRole": "Acute brain state",
+    "typicalTimeScale": "Minutes–hours",
+    "definition": "Transient period during or after epileptic seizure in which cognition, arousal, memory, language, or behavior may be altered.",
+    "mechanism": "Abnormal neural activity and postictal network suppression/disorganization temporarily impair function.",
+    "behavioralConsequences": "Confusion, amnesia, fatigue, language or focal deficits, behavioral disorganization.",
+    "behaviorChangeRelevance": "Critical instructions and consent/decision demands should account for temporary postictal impairment.",
+    "contextsBoundaryConditions": "Manifestation varies by seizure type and brain region.",
+    "modifiability": "High clinically",
+    "measurementIndicators": "Clinical observation; EEG; seizure history; neurologic exam",
+    "evidence": {
+      "grade": "A",
+      "ids": [
+        "SRC080"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/30978637/"
+      ]
+    },
+    "caveats": "Postictal behavior is not a stable disposition.",
+    "crossLayerInteractions": "Interacts with sleep loss, medication adherence, stress, and safety environment.",
+    "aliases": [
+      "postictal confusion",
+      "epilepsy-related state"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-END-006",
+    "name": "Sexual arousal / reproductive motivational state",
+    "layer": "Biological",
+    "familyCode": "BIO-END",
+    "category": "Endocrine & Reproductive Physiology",
+    "subcategory": "",
+    "taxonomyStatus": "Conditional",
+    "driverRole": "State",
+    "typicalTimeScale": "Minutes–hours",
+    "definition": "Physiological and motivational state associated with sexual arousal and reproductive cues.",
+    "mechanism": "Reward, autonomic, endocrine, and attentional systems increase salience of sexual cues and alter valuation.",
+    "behavioralConsequences": "Attention and choice can shift toward sexual/reproductive incentives; risk tradeoffs may change in context.",
+    "behaviorChangeRelevance": "Can alter message salience and decision context but is highly situation-specific.",
+    "contextsBoundaryConditions": "Most evidence concerns specific sexual contexts; not a general behavior driver.",
+    "modifiability": "High",
+    "measurementIndicators": "Self-report arousal; physiological measures in research",
+    "evidence": {
+      "grade": "B",
+      "ids": [
+        "SRC062"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/10607643/"
+      ]
+    },
+    "caveats": "Do not reduce sexual or social behavior to testosterone or a single hormone.",
+    "crossLayerInteractions": "Interacts with culture, relationship context, norms, identity, alcohol/drugs, and opportunity.",
+    "aliases": [
+      "sexual motivation",
+      "arousal state"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-SLP-003",
+    "name": "Sleep fragmentation / poor sleep continuity",
+    "layer": "Biological",
+    "familyCode": "BIO-SLP",
+    "category": "Sleep & Circadian Regulation",
+    "subcategory": "",
+    "taxonomyStatus": "Core",
+    "driverRole": "State / capacity constraint",
+    "typicalTimeScale": "Days–chronic",
+    "definition": "Repeated awakenings or disrupted sleep architecture that reduces restorative sleep even when total time in bed appears adequate.",
+    "mechanism": "Fragmented sleep alters restorative processes and can reduce daytime attention, memory consolidation, and alertness.",
+    "behavioralConsequences": "Daytime sleepiness, reduced concentration, poorer memory and performance stability.",
+    "behaviorChangeRelevance": "May weaken learning, implementation of new routines, and sustained adherence by reducing cognitive capacity and energy.",
+    "contextsBoundaryConditions": "Common causes include sleep apnea, pain, caregiving, noise, and insomnia; cause matters for intervention.",
+    "modifiability": "Medium–High",
+    "measurementIndicators": "Polysomnography; actigraphy; wake after sleep onset; sleep efficiency; apnea indices",
+    "evidence": {
+      "grade": "B",
+      "ids": [
+        "SRC005",
+        "SRC006"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/31879285/",
+        "https://pubmed.ncbi.nlm.nih.gov/34204504/"
+      ]
+    },
+    "caveats": "Fragmentation is heterogeneous; avoid treating self-reported poor sleep as equivalent to objectively fragmented sleep.",
+    "crossLayerInteractions": "Interacts with environmental noise, pain, respiratory physiology, stress, and age.",
+    "aliases": [
+      "sleep continuity",
+      "disrupted sleep",
+      "poor sleep quality"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-SLP-006",
+    "name": "Sleep inertia",
+    "layer": "Biological",
+    "familyCode": "BIO-SLP",
+    "category": "Sleep & Circadian Regulation",
+    "subcategory": "",
+    "taxonomyStatus": "Core",
+    "driverRole": "State",
+    "typicalTimeScale": "Minutes–hours",
+    "definition": "Transient impairment immediately after awakening, especially from deep sleep or at adverse circadian phases.",
+    "mechanism": "Incomplete restoration of alertness networks after waking causes slowed cognition and impaired vigilance.",
+    "behavioralConsequences": "Reduced reaction speed, working memory, attention, and decision efficiency after awakening.",
+    "behaviorChangeRelevance": "Critical alerts or instructions delivered immediately after awakening may be misunderstood, delayed, or poorly executed.",
+    "contextsBoundaryConditions": "Severity depends on sleep stage, prior sleep deprivation, circadian phase, and nap duration.",
+    "modifiability": "High",
+    "measurementIndicators": "Time since awakening; performance tests; subjective alertness",
+    "evidence": {
+      "grade": "A",
+      "ids": [
+        "SRC010"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/31692489/"
+      ]
+    },
+    "caveats": "Usually transient; avoid treating it as a stable trait.",
+    "crossLayerInteractions": "Interacts with alarms, emergency response, night operations, and sleep restriction.",
+    "aliases": [
+      "post-waking grogginess",
+      "awakening impairment"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-SEN-005",
+    "name": "Somatosensory / proprioceptive impairment",
+    "layer": "Biological",
+    "familyCode": "BIO-SEN",
+    "category": "Sensory, Vestibular & Perceptual Capacity",
+    "subcategory": "",
+    "taxonomyStatus": "Conditional",
+    "driverRole": "Capacity constraint",
+    "typicalTimeScale": "Chronic / variable",
+    "definition": "Reduced tactile or position-sense information needed for coordinated movement and object interaction.",
+    "mechanism": "Peripheral nerve, spinal, or central sensory impairment degrades feedback used for motor control and body awareness.",
+    "behavioralConsequences": "Slower or less accurate movement, increased reliance on vision, fall risk, difficulty manipulating objects.",
+    "behaviorChangeRelevance": "Can make seemingly simple behaviors physically difficult and increase dependence on environmental supports.",
+    "contextsBoundaryConditions": "Often occurs with neuropathy, injury, aging, or neurological disease.",
+    "modifiability": "Medium",
+    "measurementIndicators": "Clinical sensory testing; proprioception; vibration/monofilament; motor tasks",
+    "evidence": {
+      "grade": "B",
+      "ids": [
+        "SRC102",
+        "SRC103"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/25712470/",
+        "https://pubmed.ncbi.nlm.nih.gov/36188962/"
+      ]
+    },
+    "caveats": "Behavioral impact is strongly task-dependent.",
+    "crossLayerInteractions": "Interacts with lighting, footwear, interface design, mobility aids, and neurological state.",
+    "aliases": [
+      "proprioceptive loss",
+      "peripheral sensory loss"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-GEN-003",
+    "name": "Stable individual physiological vulnerability to sleep/stress/load",
+    "layer": "Biological",
+    "familyCode": "BIO-GEN",
+    "category": "Stable Biological Susceptibility & Genetic Background",
+    "subcategory": "",
+    "taxonomyStatus": "Background Modifier",
+    "driverRole": "Stable susceptibility",
+    "typicalTimeScale": "Months–years",
+    "definition": "Relatively repeatable individual differences in performance degradation under sleep loss, stress, heat, or other physiological challenges.",
+    "mechanism": "Trait-like differences in regulatory systems, sleep need, autonomic/endocrine reactivity, and resilience change response to exposure.",
+    "behavioralConsequences": "Some individuals show larger performance or behavioral changes than others under equivalent physiological load.",
+    "behaviorChangeRelevance": "Behavior-change systems should include monitoring and adaptive support rather than assume a uniform exposure-response curve.",
+    "contextsBoundaryConditions": "Mechanisms are often multifactorial and partly genetic/learned.",
+    "modifiability": "Low",
+    "measurementIndicators": "Repeated challenge testing; longitudinal performance; physiological reactivity profiles",
+    "evidence": {
+      "grade": "B",
+      "ids": [
+        "SRC001",
+        "SRC012",
+        "SRC069"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/20438143/",
+        "https://pubmed.ncbi.nlm.nih.gov/22342781/",
+        "https://pubmed.ncbi.nlm.nih.gov/33986517/"
+      ]
+    },
+    "caveats": "Vulnerability is domain-specific and should not be generalized across all stressors.",
+    "crossLayerInteractions": "Interacts with training, experience, genetics, health, and organizational selection.",
+    "aliases": [
+      "trait vulnerability",
+      "resilience phenotype"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-PHA-007",
+    "name": "Stimulant / amphetamine-like pharmacologic state",
+    "layer": "Biological",
+    "familyCode": "BIO-PHA",
+    "category": "Psychoactive & Pharmacologic State",
+    "subcategory": "",
+    "taxonomyStatus": "Conditional",
+    "driverRole": "Pharmacologic state",
+    "typicalTimeScale": "Hours",
+    "definition": "Acute catecholaminergic stimulation from prescription or nonmedical stimulants.",
+    "mechanism": "Increases dopamine/norepinephrine signaling, arousal, wakefulness, and task engagement, with dose-dependent costs.",
+    "behavioralConsequences": "Improved alertness/attention in some contexts; high doses can produce anxiety, perseveration, impulsivity, insomnia, or psychosis.",
+    "behaviorChangeRelevance": "May increase task persistence but can distort confidence or degrade flexible decision-making at high doses.",
+    "contextsBoundaryConditions": "Therapeutic ADHD treatment differs from nonmedical/high-dose use.",
+    "modifiability": "High",
+    "measurementIndicators": "Medication/dose/time; clinical observation; toxicology with context",
+    "evidence": {
+      "grade": "B",
+      "ids": [
+        "SRC085"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/20414766/"
+      ]
+    },
+    "caveats": "Do not generalize therapeutic benefits in diagnosed populations to enhancement in healthy users.",
+    "crossLayerInteractions": "Interacts with sleep, stress, cardiovascular state, incentives, and other substances.",
+    "aliases": [
+      "amphetamine",
+      "methylphenidate",
+      "stimulant state"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-STR-005",
+    "name": "Stress-system hypo-reactivity / blunted response after chronic adversity",
+    "layer": "Biological",
+    "familyCode": "BIO-STR",
+    "category": "Stress, Autonomic & Allostatic Physiology",
+    "subcategory": "",
+    "taxonomyStatus": "Provisional",
+    "driverRole": "Background modifier / response phenotype",
+    "typicalTimeScale": "Months–years",
+    "definition": "Reduced physiological response to acute challenge observed in some chronically stressed or adversity-exposed populations.",
+    "mechanism": "Long-term recalibration of HPA/autonomic systems may produce altered threat and reward responsiveness.",
+    "behavioralConsequences": "May be associated with altered motivation, affective responsiveness, and stress-related behavior, but effects are heterogeneous.",
+    "behaviorChangeRelevance": "Potentially relevant when a person appears behaviorally unresponsive to stressors that strongly affect others.",
+    "contextsBoundaryConditions": "Evidence varies by exposure, developmental timing, disorder status, and measurement method.",
+    "modifiability": "Low",
+    "measurementIndicators": "Cortisol or autonomic reactivity to standardized challenge",
+    "evidence": {
+      "grade": "C",
+      "ids": [
+        "SRC017",
+        "SRC073"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/37586308/",
+        "https://pubmed.ncbi.nlm.nih.gov/37586308/"
+      ]
+    },
+    "caveats": "Not a universal consequence of trauma or chronic stress; avoid diagnostic inference.",
+    "crossLayerInteractions": "Interacts with early-life adversity, social environment, mental health, and genetics.",
+    "aliases": [
+      "blunted cortisol response",
+      "stress hypo-reactivity"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-HOM-003",
+    "name": "Thirst",
+    "layer": "Biological",
+    "familyCode": "BIO-HOM",
+    "category": "Homeostatic & Interoceptive States",
+    "subcategory": "",
+    "taxonomyStatus": "Core",
+    "driverRole": "State",
+    "typicalTimeScale": "Hours",
+    "definition": "Motivational state arising from osmotic/volume signals that drive fluid seeking.",
+    "mechanism": "Hypothalamic and interoceptive signaling increases salience and motivational value of drinking-related cues.",
+    "behavioralConsequences": "Fluid-seeking motivation, attentional capture by thirst, altered effort allocation.",
+    "behaviorChangeRelevance": "Competing behavioral demands may be deprioritized when thirst is strong; access and prompt timing matter.",
+    "contextsBoundaryConditions": "Thirst can occur before clinically meaningful dehydration.",
+    "modifiability": "High",
+    "measurementIndicators": "Thirst ratings; serum/plasma osmolality; fluid intake context",
+    "evidence": {
+      "grade": "B",
+      "ids": [
+        "SRC024",
+        "SRC025"
+      ],
+      "urls": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC5448624/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC2763422/"
+      ]
+    },
+    "caveats": "Thirst and dehydration are related but not synonymous.",
+    "crossLayerInteractions": "Interacts with heat, exertion, access to water, norms, and operational constraints.",
+    "aliases": [
+      "osmotic thirst",
+      "fluid-seeking"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-SEN-004",
+    "name": "Vestibular dysfunction / motion-sickness susceptibility",
+    "layer": "Biological",
+    "familyCode": "BIO-SEN",
+    "category": "Sensory, Vestibular & Perceptual Capacity",
+    "subcategory": "",
+    "taxonomyStatus": "Conditional",
+    "driverRole": "Capacity constraint / state",
+    "typicalTimeScale": "Minutes–chronic",
+    "definition": "Disturbance of balance and spatial-orientation systems, including acute motion sickness or chronic vestibular disease.",
+    "mechanism": "Vestibular signals interact with visual, proprioceptive, autonomic, and hippocampal systems supporting balance and spatial cognition.",
+    "behavioralConsequences": "Dizziness, nausea, avoidance of movement, balance problems, and visuospatial cognitive difficulty.",
+    "behaviorChangeRelevance": "Can strongly constrain travel, training environments, virtual-reality exposure, and tasks requiring movement or spatial orientation.",
+    "contextsBoundaryConditions": "Effects vary across vestibular disorders; cognitive evidence is largely associative.",
+    "modifiability": "Medium",
+    "measurementIndicators": "Vestibular testing; balance; symptom scales; motion-sickness susceptibility",
+    "evidence": {
+      "grade": "B",
+      "ids": [
+        "SRC047"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/39016124/"
+      ]
+    },
+    "caveats": "Separate vestibular effects from anxiety, hearing loss, medication, and age.",
+    "crossLayerInteractions": "Interacts with technology/VR, transportation, visual environment, anxiety, and nausea.",
+    "aliases": [
+      "vertigo",
+      "motion sickness",
+      "vestibular impairment"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-HOM-008",
+    "name": "Visceral urgency / elimination need",
+    "layer": "Biological",
+    "familyCode": "BIO-HOM",
+    "category": "Homeostatic & Interoceptive States",
+    "subcategory": "",
+    "taxonomyStatus": "Conditional",
+    "driverRole": "State",
+    "typicalTimeScale": "Minutes–hours",
+    "definition": "Strong bladder or bowel interoceptive signals that create an immediate need for elimination.",
+    "mechanism": "Visceral afferent signaling captures attention and increases motivation to terminate competing tasks.",
+    "behavioralConsequences": "Distraction, haste, avoidance of contexts without facilities, shortened persistence.",
+    "behaviorChangeRelevance": "Can materially alter compliance, route choice, meeting duration, or attention even when externally invisible.",
+    "contextsBoundaryConditions": "Evidence for effects on complex decisions is limited; most relevance is mechanistic and situational.",
+    "modifiability": "High",
+    "measurementIndicators": "Self-report urgency; time since voiding; clinical urodynamic/GI measures when relevant",
+    "evidence": {
+      "grade": "C",
+      "ids": [
+        "SRC024"
+      ],
+      "urls": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC5448624/"
+      ]
+    },
+    "caveats": "Treat as a context-dependent competing need, not a general behavioral trait.",
+    "crossLayerInteractions": "Interacts with infrastructure, privacy norms, disability, medication, and time pressure.",
+    "aliases": [
+      "bladder urgency",
+      "bowel urgency",
+      "elimination need"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-SEN-002",
+    "name": "Visual impairment / degraded visual input",
+    "layer": "Biological",
+    "familyCode": "BIO-SEN",
+    "category": "Sensory, Vestibular & Perceptual Capacity",
+    "subcategory": "",
+    "taxonomyStatus": "Core",
+    "driverRole": "Capacity constraint",
+    "typicalTimeScale": "Chronic / variable",
+    "definition": "Reduced visual acuity, contrast sensitivity, field, or other visual function that constrains access to visual information.",
+    "mechanism": "Reduced sensory input increases effort and can impair navigation, reading, object recognition, and hazard detection.",
+    "behavioralConsequences": "Missed cues, slower information uptake, navigation difficulty, reduced independence or confidence.",
+    "behaviorChangeRelevance": "Visual behavior-change materials may be ineffective without accessible contrast, size, and alternate channels.",
+    "contextsBoundaryConditions": "Type of impairment matters; acuity alone may not capture function.",
+    "modifiability": "Medium",
+    "measurementIndicators": "Visual acuity; contrast sensitivity; field testing; functional vision",
+    "evidence": {
+      "grade": "A",
+      "ids": [
+        "SRC046"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/40054544/"
+      ]
+    },
+    "caveats": "Associations with cognition may reflect shared causes; visual impairment itself should be treated as access/capability.",
+    "crossLayerInteractions": "Interacts with interface design, lighting, built environment, age, and literacy.",
+    "aliases": [
+      "vision loss",
+      "low vision"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-NUT-004",
+    "name": "Vitamin B12 deficiency",
+    "layer": "Biological",
+    "familyCode": "BIO-NUT",
+    "category": "Nutritional, Metabolic & Hematologic Status",
+    "subcategory": "",
+    "taxonomyStatus": "Conditional",
+    "driverRole": "Capacity constraint",
+    "typicalTimeScale": "Months–years",
+    "definition": "Clinically meaningful cobalamin deficiency capable of causing neurological or hematologic dysfunction.",
+    "mechanism": "B12 is required for myelin and one-carbon metabolism; deficiency can produce neuropathy and cognitive/neuropsychiatric symptoms.",
+    "behavioralConsequences": "Neurological symptoms, sensory change, fatigue, cognitive impairment in sufficiently deficient cases.",
+    "behaviorChangeRelevance": "Identification and correction of actual deficiency can remove a biological barrier to behavior and learning.",
+    "contextsBoundaryConditions": "Supplementation in non-deficient people has not shown reliable cognitive benefit.",
+    "modifiability": "High when deficient",
+    "measurementIndicators": "Serum B12 with MMA/homocysteine as clinically appropriate; CBC; neurologic exam",
+    "evidence": {
+      "grade": "B",
+      "ids": [
+        "SRC052",
+        "SRC053"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/22221769/",
+        "https://pubmed.ncbi.nlm.nih.gov/33809274/"
+      ]
+    },
+    "caveats": "Deficiency is a driver; 'B12 boosts cognition' in replete populations is not supported.",
+    "crossLayerInteractions": "Interacts with diet, malabsorption, medication, aging, and sensory impairment.",
+    "aliases": [
+      "cobalamin deficiency"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
+  },
+  {
+    "id": "BIO-DEV-003",
+    "name": "Young-adult maturation of executive/control systems",
+    "layer": "Biological",
+    "familyCode": "BIO-DEV",
+    "category": "Lifespan Development & Biological Aging",
+    "subcategory": "",
+    "taxonomyStatus": "Conditional",
+    "driverRole": "Developmental modifier",
+    "typicalTimeScale": "Years",
+    "definition": "Continued maturation and stabilization of executive, planning, and self-regulatory capacities into early adulthood.",
+    "mechanism": "Structural/functional brain development and accumulated experience improve some control and planning processes.",
+    "behavioralConsequences": "On average, increasing consistency in planning, inhibition, and long-horizon behavior compared with adolescence.",
+    "behaviorChangeRelevance": "Transition points such as military service, university, or workforce entry may combine biological maturation with major environmental change.",
+    "contextsBoundaryConditions": "Developmental trajectories are gradual and heterogeneous; social role changes are confounded.",
+    "modifiability": "Low",
+    "measurementIndicators": "Age; longitudinal executive-function measures; neuroimaging in research",
+    "evidence": {
+      "grade": "B",
+      "ids": [
+        "SRC064",
+        "SRC066"
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/26774291/",
+        "https://pubmed.ncbi.nlm.nih.gov/27516712/"
+      ]
+    },
+    "caveats": "Do not assign a precise age at which the 'brain becomes adult'.",
+    "crossLayerInteractions": "Interacts with education, responsibility, sleep, substance use, and social roles.",
+    "aliases": [
+      "emerging adulthood",
+      "executive maturation"
+    ],
+    "relatedDrivers": [],
+    "examples": [],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Taxonomy.xlsx",
+      "sheet": "Biological Drivers"
+    }
   }
 ]
