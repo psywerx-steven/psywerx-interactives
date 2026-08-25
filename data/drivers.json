@@ -1,0 +1,98 @@
+[
+  {
+    "id": "bio-sleep-deprivation",
+    "name": "Sleep deprivation",
+    "layer": "Biological",
+    "category": "Physiological state",
+    "definition": "Insufficient sleep that alters attention, emotion, and physical functioning.",
+    "mechanism": "Reduced restorative sleep can impair cognitive control and increase sensitivity to stress.",
+    "examples": ["Shift work", "Extended operations"],
+    "aliases": ["Sleep loss"],
+    "relatedDrivers": ["psych-cognitive-load", "physical-environmental-heat-stress"],
+    "evidence": []
+  },
+  {
+    "id": "psych-cognitive-load",
+    "name": "Cognitive load",
+    "layer": "Psychological",
+    "category": "Cognition",
+    "definition": "The amount of mental effort required to process information and complete a task.",
+    "mechanism": "High demands can consume limited working-memory resources and reduce decision quality.",
+    "examples": ["Multitasking", "Complex instructions"],
+    "aliases": ["Mental workload"],
+    "relatedDrivers": ["bio-sleep-deprivation", "info-information-overload"],
+    "evidence": []
+  },
+  {
+    "id": "social-peer-norms",
+    "name": "Peer norms",
+    "layer": "Social",
+    "category": "Group influence",
+    "definition": "Shared expectations within a peer group about acceptable or typical behavior.",
+    "mechanism": "People adjust behavior to gain approval, avoid sanctions, or follow perceived group practice.",
+    "examples": ["Team safety habits", "Group purchasing patterns"],
+    "aliases": ["Social norms"],
+    "relatedDrivers": ["cultural-collective-values", "institutional-organizational-policy"],
+    "evidence": []
+  },
+  {
+    "id": "cultural-collective-values",
+    "name": "Collective values",
+    "layer": "Cultural",
+    "category": "Values and meaning",
+    "definition": "Widely shared ideas about what a community considers important, desirable, or proper.",
+    "mechanism": "Values shape how situations are interpreted and which actions are seen as legitimate.",
+    "examples": ["Attitudes toward authority", "Expectations of reciprocity"],
+    "aliases": ["Shared values"],
+    "relatedDrivers": ["social-peer-norms", "institutional-organizational-policy"],
+    "evidence": []
+  },
+  {
+    "id": "physical-environmental-heat-stress",
+    "name": "Heat stress",
+    "layer": "Physical / Environmental",
+    "category": "Environmental condition",
+    "definition": "Exposure to heat that strains the body's ability to maintain a safe internal temperature.",
+    "mechanism": "Thermal strain can produce fatigue, discomfort, and reduced physical or cognitive performance.",
+    "examples": ["Outdoor work in extreme heat", "Poorly ventilated facilities"],
+    "aliases": ["Thermal stress"],
+    "relatedDrivers": ["bio-sleep-deprivation"],
+    "evidence": []
+  },
+  {
+    "id": "institutional-organizational-policy",
+    "name": "Organizational policy",
+    "layer": "Institutional / Structural",
+    "category": "Formal rules",
+    "definition": "A formal rule or procedure that directs behavior within an organization.",
+    "mechanism": "Policies change incentives, permissions, resources, and consequences attached to choices.",
+    "examples": ["Leave policy", "Reporting requirements"],
+    "aliases": ["Institutional policy"],
+    "relatedDrivers": ["social-peer-norms", "cultural-collective-values"],
+    "evidence": []
+  },
+  {
+    "id": "info-information-overload",
+    "name": "Information overload",
+    "layer": "Informational",
+    "category": "Information environment",
+    "definition": "Exposure to more information than can be effectively processed or evaluated.",
+    "mechanism": "Excess volume and competing signals make prioritization harder and can encourage shortcuts.",
+    "examples": ["High-volume alerts", "Crowded media environments"],
+    "aliases": ["Information saturation"],
+    "relatedDrivers": ["psych-cognitive-load", "tech-recommendation-systems"],
+    "evidence": []
+  },
+  {
+    "id": "tech-recommendation-systems",
+    "name": "Recommendation systems",
+    "layer": "Technological",
+    "category": "Algorithmic mediation",
+    "definition": "Automated systems that select and rank content, products, or actions for a user.",
+    "mechanism": "Ranking and personalization alter which options receive attention and repeated exposure.",
+    "examples": ["Social media feeds", "Product recommendations"],
+    "aliases": ["Recommender systems"],
+    "relatedDrivers": ["info-information-overload"],
+    "evidence": []
+  }
+]
