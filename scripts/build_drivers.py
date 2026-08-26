@@ -1,8 +1,8 @@
-"""Build data/drivers.json from PSYWERX Driver Schema v1.0 workbooks.
+"""Build data/drivers.json from PSYWERX Driver Schema v1.1 workbooks.
 
 The canonical spreadsheet contract is defined once in DRIVER_SCHEMA below.
 Explicit IDs are preserved verbatim except for trimming surrounding whitespace.
-The fallback ID helper is reserved for a future non-v1 import mode; Schema v1.0
+The fallback ID helper is reserved for a future non-v1 import mode; Schema v1.1
 requires an ID in every driver row.
 """
 
@@ -32,7 +32,7 @@ class FieldSpec:
     required: bool
 
 
-# Canonical PSYWERX Driver Schema v1.0. Header matching is intentionally exact
+# Canonical PSYWERX Driver Schema v1.1. Header matching is intentionally exact
 # after trimming/collapsing whitespace so taxonomy drift is reported.
 DRIVER_SCHEMA: tuple[FieldSpec, ...] = (
     FieldSpec("id", "ID", "scalar", True),
@@ -82,6 +82,7 @@ DRIVER_SCHEMA: tuple[FieldSpec, ...] = (
     ),
     FieldSpec("volatility", "Volatility", "scalar", True),
     FieldSpec("timeScaleOfChange", "Time Scale of Change", "list", True),
+    FieldSpec("timeScaleQualifier", "Time Scale Qualifier", "scalar", False),
     FieldSpec("onsetCausalLag", "Onset / Causal Lag", "list", True),
     FieldSpec(
         "persistenceRecovery",
@@ -113,6 +114,26 @@ DRIVER_SCHEMA: tuple[FieldSpec, ...] = (
     ),
     FieldSpec("keySources", "Key Sources", "list", True),
 )
+
+CANONICAL_TEMPORAL_BANDS = (
+    "Seconds–Minutes",
+    "Minutes–Hours",
+    "Hours–Days",
+    "Days–Weeks",
+    "Weeks–Months",
+    "Months–Years",
+    "Years–Generations",
+)
+MIXED_TEMPORAL_VALUE = "Mixed / Context-dependent"
+STABLE_TEMPORAL_VALUE = "Stable / Not applicable"
+TIME_SCALE_VALUES = CANONICAL_TEMPORAL_BANDS + (
+    MIXED_TEMPORAL_VALUE,
+    STABLE_TEMPORAL_VALUE,
+)
+ONSET_CAUSAL_LAG_VALUES = CANONICAL_TEMPORAL_BANDS + (
+    MIXED_TEMPORAL_VALUE,
+)
+TEMPORAL_FIELDS = {"timeScaleOfChange", "onsetCausalLag"}
 
 CANONICAL_LAYERS = (
     "Biological",
@@ -234,7 +255,7 @@ def declared_title_layer(value: Any) -> str | None:
 def split_list(value: Any) -> list[str]:
     if value is None or not str(value).strip():
         return []
-    # Schema v1.0 list cells are semicolon-separated. Newlines and pipes are
+    # Schema v1.1 prose-list cells are semicolon-separated. Newlines and pipes are
     # accepted as unambiguous alternates; commas remain part of the value.
     return [
         item
@@ -243,8 +264,61 @@ def split_list(value: Any) -> list[str]:
     ]
 
 
+def split_temporal_list(value: Any) -> list[str]:
+    """Split controlled temporal values only on the canonical semicolon delimiter."""
+    if value is None or not str(value).strip():
+        return []
+    return [item for item in (clean(part) for part in str(value).split(";")) if item]
+
+
+def validate_temporal_values(
+    values: list[str],
+    field_name: str,
+    location: str,
+    summary: Summary,
+) -> None:
+    if field_name == "timeScaleOfChange":
+        allowed = TIME_SCALE_VALUES
+        exclusive = (MIXED_TEMPORAL_VALUE, STABLE_TEMPORAL_VALUE)
+        label = "Time Scale of Change"
+    else:
+        allowed = ONSET_CAUSAL_LAG_VALUES
+        exclusive = (MIXED_TEMPORAL_VALUE,)
+        label = "Onset / Causal Lag"
+
+    invalid = [value for value in values if value not in allowed]
+    if invalid:
+        summary.errors.append(
+            f"{location}: {label} contains non-canonical value(s): "
+            + ", ".join(repr(value) for value in invalid)
+        )
+
+    duplicates = sorted({value for value in values if values.count(value) > 1})
+    if duplicates:
+        summary.errors.append(
+            f"{location}: {label} contains duplicate value(s): "
+            + ", ".join(repr(value) for value in duplicates)
+        )
+
+    for value in exclusive:
+        if value in values and len(values) != 1:
+            summary.errors.append(
+                f"{location}: {value!r} must be exclusive in {label}."
+            )
+
+    ordered_bands = [
+        CANONICAL_TEMPORAL_BANDS.index(value)
+        for value in values
+        if value in CANONICAL_TEMPORAL_BANDS
+    ]
+    if ordered_bands != sorted(ordered_bands):
+        summary.errors.append(
+            f"{location}: {label} values must be ordered shortest to longest."
+        )
+
+
 def fallback_id(layer: str, name: str) -> str:
-    """Return a deterministic future-format fallback; unused by strict v1.0."""
+    """Return a deterministic future-format fallback; unused by strict v1.1."""
     value = f"{layer}-{name}"
     ascii_value = unicodedata.normalize("NFKD", value).encode("ascii", "ignore").decode()
     return re.sub(r"[^a-z0-9]+", "-", ascii_value.casefold()).strip("-") or "driver"
@@ -457,6 +531,8 @@ def build_record(
         value = get_cell(row, mapping, spec.json_name)
         if spec.json_name == "id":
             normalized: str | list[str] | None = clean_id(value) or None
+        elif spec.json_name in TEMPORAL_FIELDS:
+            normalized = split_temporal_list(value)
         elif spec.kind == "list":
             normalized = split_list(value)
         else:
@@ -484,6 +560,11 @@ def build_record(
             summary.errors.append(
                 f"{location}: required field {spec.header!r} is empty."
             )
+
+    for field_name in TEMPORAL_FIELDS:
+        validate_temporal_values(
+            record[field_name], field_name, location, summary
+        )
 
     record["source"] = {"workbook": path.name, "sheet": sheet_name}
     return record
