@@ -140,6 +140,22 @@ LAYER_ALIASES = {
     "technological": "Technological",
     "technology": "Technological",
 }
+FILENAME_LAYER_PATTERNS = (
+    (r"(?:^|_)layer_1_biological(?:_|$)", "Biological"),
+    (r"(?:^|_)layer_2_psychological(?:_|$)", "Psychological"),
+    (r"(?:^|_)layer_3_social(?:_|$)", "Social"),
+    (r"(?:^|_)layer_4_cultural(?:_|$)", "Cultural"),
+    (
+        r"(?:^|_)layer_5_physical_environmental(?:_|$)",
+        "Physical / Environmental",
+    ),
+    (
+        r"(?:^|_)layer_6_institutional_structural(?:_|$)",
+        "Institutional / Structural",
+    ),
+    (r"(?:^|_)layer_7_informational(?:_|$)", "Informational"),
+    (r"(?:^|_)layer_8_technological(?:_|$)", "Technological"),
+)
 OUTPUT_KEYS = tuple(spec.json_name for spec in DRIVER_SCHEMA) + ("source",)
 HEADER_SCAN_ROWS = 25
 
@@ -185,6 +201,34 @@ def mentioned_layers(value: Any) -> set[str]:
         if " " not in alias and f" {alias} " in normalized:
             matches.add(canonical)
     return matches
+
+
+def filename_layer(path: Path) -> str | None:
+    """Read a layer only from the canonical PSYWERX filename segment."""
+    filename = path.stem.casefold()
+    matches = {
+        layer
+        for pattern, layer in FILENAME_LAYER_PATTERNS
+        if re.search(pattern, filename)
+    }
+    return next(iter(matches)) if len(matches) == 1 else None
+
+
+def declared_title_layer(value: Any) -> str | None:
+    """Recognize a layer only when a designated title cell declares it."""
+    title = normalized_key(value)
+    if not title:
+        return None
+    for canonical in CANONICAL_LAYERS:
+        label = normalized_key(canonical)
+        declarations = {
+            f"canonical {label} drivers",
+            f"{label} drivers",
+            f"psywerx {label} driver ontology",
+        }
+        if title in declarations:
+            return canonical
+    return None
 
 
 def split_list(value: Any) -> list[str]:
@@ -293,56 +337,99 @@ def validate_headers(
     return mapping, actual
 
 
-def pre_header_text(sheet: Any, header_row: int) -> list[str]:
-    if header_row <= 1:
-        return []
-    return [
-        clean(value)
-        for row in sheet.iter_rows(
-            min_row=1, max_row=header_row - 1, values_only=True
+def explicit_table_layer(
+    path: Path,
+    sheet: Any,
+    mapping: dict[str, int],
+    header_row: int,
+    summary: Summary,
+) -> str | None:
+    """Return the one canonical layer consistently declared by data rows."""
+    layer_index = mapping.get("layer")
+    if layer_index is None:
+        return None
+    location = f"{path.name} / {sheet.title}"
+    layers: set[str] = set()
+    invalid: set[str] = set()
+    for row in sheet.iter_rows(min_row=header_row + 1, values_only=True):
+        if not row_values(row):
+            continue
+        raw = row[layer_index] if layer_index < len(row) else None
+        if not clean(raw):
+            continue
+        canonical = normalize_layer(raw)
+        if canonical is None:
+            invalid.add(clean(raw))
+        else:
+            layers.add(canonical)
+    if invalid:
+        summary.errors.append(
+            f"{location}: explicit Layer field contains unrecognized value(s): "
+            + ", ".join(repr(value) for value in sorted(invalid))
         )
-        for value in row
-        if clean(value)
-    ]
+    if len(layers) > 1:
+        summary.errors.append(
+            f"{location}: explicit Layer field is inconsistent: "
+            + ", ".join(sorted(layers))
+        )
+        return None
+    return next(iter(layers)) if len(layers) == 1 else None
 
 
-def inferred_layer(
+def authoritative_layer(
     path: Path,
     sheet: Any,
     workbook_title: Any,
     header_row: int,
+    mapping: dict[str, int],
     summary: Summary,
 ) -> str | None:
+    """Resolve layer identity using only ordered authoritative declarations."""
     location = f"{path.name} / {sheet.title}"
-    sources = {
-        "workbook filename": mentioned_layers(path.stem),
-        "worksheet name": mentioned_layers(sheet.title),
-        "worksheet/title information": mentioned_layers(
-            " ".join([clean(workbook_title), *pre_header_text(sheet, header_row)])
-        ),
-    }
-    for source_name, matches in sources.items():
-        if len(matches) > 1:
-            summary.errors.append(
-                f"{location}: {source_name} identifies conflicting layers: "
-                + ", ".join(sorted(matches))
-            )
-            return None
-    evidence = {
-        source_name: next(iter(matches))
-        for source_name, matches in sources.items()
-        if matches
-    }
-    distinct = set(evidence.values())
-    if len(distinct) > 1:
-        details = ", ".join(
-            f"{source_name}={layer}" for source_name, layer in evidence.items()
-        )
+    worksheet_matches = mentioned_layers(sheet.title)
+    if len(worksheet_matches) > 1:
         summary.errors.append(
-            f"{location}: conflicting layer inference ({details})."
+            f"{location}: worksheet name declares conflicting layers: "
+            + ", ".join(sorted(worksheet_matches))
         )
         return None
-    return next(iter(distinct)) if distinct else None
+
+    title_cell_layer = declared_title_layer(sheet.cell(row=1, column=1).value)
+    workbook_property_layer = declared_title_layer(workbook_title)
+    if (
+        title_cell_layer
+        and workbook_property_layer
+        and title_cell_layer != workbook_property_layer
+    ):
+        summary.errors.append(
+            f"{location}: designated worksheet title and workbook title "
+            "declare different layers."
+        )
+        return None
+    title_layer = title_cell_layer or workbook_property_layer
+
+    # Dict insertion order is the required precedence order.
+    evidence = {
+        "explicit Layer field": explicit_table_layer(
+            path, sheet, mapping, header_row, summary
+        ),
+        "workbook filename": filename_layer(path),
+        "designated title": title_layer,
+        "worksheet name": (
+            next(iter(worksheet_matches)) if worksheet_matches else None
+        ),
+    }
+    declared = {name: layer for name, layer in evidence.items() if layer}
+    distinct = set(declared.values())
+    if len(distinct) > 1:
+        details = ", ".join(
+            f"{source_name}={layer}" for source_name, layer in declared.items()
+        )
+        summary.errors.append(
+            f"{location}: conflicting authoritative layer declarations ({details})."
+        )
+        return None
+    return next(iter(declared.values())) if declared else None
 
 
 def get_cell(
@@ -467,8 +554,13 @@ def read_workbooks(source_dir: Path, summary: Summary) -> list[dict[str, Any]]:
                     path.name, sheet.title, raw_headers, summary
                 )
                 signatures[path.name] = signature
-                layer = inferred_layer(
-                    path, sheet, workbook.properties.title, header_row, summary
+                layer = authoritative_layer(
+                    path,
+                    sheet,
+                    workbook.properties.title,
+                    header_row,
+                    mapping,
+                    summary,
                 )
                 summary.driver_sheets += 1
                 for row_number, row in enumerate(

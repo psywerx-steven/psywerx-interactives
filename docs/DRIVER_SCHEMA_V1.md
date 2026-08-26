@@ -15,7 +15,7 @@ warnings and missing required columns as errors.
 | id | ID | string | Required | Permanent unique driver identifier. | Preserve the explicit cell value exactly; never case-fold, slug, or otherwise regenerate it. |
 | name | Name | string | Required | Canonical variable name. | Trim and collapse whitespace. |
 | aliases | Other Names / Aliases | array of strings | Optional | Alternative and legacy terms. | Split on semicolons, pipes, or line breaks; otherwise preserve text. |
-| layer | Layer | string | Required | Primary layer assignment. | Normalize to one of the eight canonical layer values. May be inferred only when the column is absent and filename/title evidence is unambiguous. |
+| layer | Layer | string | Required | Primary layer assignment. | Normalize to one of the eight canonical layer values. Resolve from the explicit column, canonical filename, designated title cell, or layer-bearing worksheet name, in that order. Never infer from descriptive content. |
 | family | Family | string | Required | Canonical primary family name. | Trim and collapse whitespace. |
 | definition | Definition | string | Required | Concise statement of what varies. | Trim and collapse whitespace. |
 | dataType | Data Type | string | Required | General variable type. | Trim and collapse whitespace; preserve workbook terminology. |
