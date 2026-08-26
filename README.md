@@ -15,6 +15,8 @@ PSYWERX. The repository is designed for static hosting with GitHub Pages.
 - `shared/` contains styles and other assets reusable across interactives.
 - `source-data/` is the ignored local location for private XLSX taxonomy files.
 - `scripts/` contains local data-import utilities.
+- `docs/DRIVER_SCHEMA_V1.md` defines the canonical spreadsheet-to-JSON
+  contract enforced by the importer.
 
 ## Build driver data locally
 
@@ -37,10 +39,12 @@ no Python or runtime dependencies.
    py scripts\build_drivers.py
    ```
 
-   The importer recognizes driver worksheets, ignores known supporting sheets,
-   and can infer a canonical layer from the workbook filename, worksheet name,
-   or workbook title when no layer column is present. The existing public JSON
-   is replaced only after a successful, validated import.
+   The importer validates each workbook against the canonical
+   [PSYWERX Driver Schema v1.0](./docs/DRIVER_SCHEMA_V1.md), combines all valid
+   layers, and intentionally skips non-driver worksheets. It can infer a
+   canonical layer from the workbook filename or worksheet/title information
+   when no layer column is present. The existing public JSON is replaced only
+   after a successful, validated import.
 
 4. Preview the static site with a local HTTP server (opening the HTML file
    directly will not allow the browser to fetch JSON):

@@ -1,8 +1,9 @@
-"""Build public Driver Explorer JSON from local PSYWERX XLSX workbooks.
+"""Build data/drivers.json from PSYWERX Driver Schema v1.0 workbooks.
 
-Explicit Driver IDs are preserved after whitespace cleanup. When absent, the
-stable fallback is a slug of canonical layer plus driver name; it never depends
-on a workbook, sheet, or row position.
+The canonical spreadsheet contract is defined once in DRIVER_SCHEMA below.
+Explicit IDs are preserved verbatim except for trimming surrounding whitespace.
+The fallback ID helper is reserved for a future non-v1 import mode; Schema v1.0
+requires an ID in every driver row.
 """
 
 from __future__ import annotations
@@ -15,47 +16,113 @@ import unicodedata
 from collections import defaultdict
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any
+from typing import Any, Literal
 
 from openpyxl import load_workbook
 
 
-# Central mapping to extend as future layer workbook headers become known.
-HEADER_ALIASES: dict[str, set[str]] = {
-    "id": {"id", "driver id", "driver identifier", "unique id"},
-    "name": {"name", "driver", "driver name", "driver title", "canonical driver"},
-    "layer": {"layer", "driver layer", "taxonomy layer", "domain"},
-    "familyCode": {"family code"},
-    "category": {"category", "driver category", "family"},
-    "subcategory": {"subcategory", "sub category", "driver subcategory"},
-    "taxonomyStatus": {"taxonomy status"},
-    "driverRole": {"driver role"},
-    "typicalTimeScale": {"typical time scale", "time scale", "timescale"},
-    "definition": {"definition", "driver definition", "description"},
-    "mechanism": {"mechanism", "mechanisms", "causal mechanism", "mechanism pathway"},
-    "behavioralConsequences": {"primary behavioral consequences", "behavioral consequences"},
-    "behaviorChangeRelevance": {"behavior change relevance"},
-    "contextsBoundaryConditions": {
-        "typical contexts boundary conditions", "contexts boundary conditions", "boundary conditions"
-    },
-    "modifiability": {"modifiability"},
-    "measurementIndicators": {"measurement indicators", "measurement", "indicators"},
-    "evidenceGrade": {"evidence grade"},
-    "evidenceIds": {"key evidence ids", "evidence ids", "evidence id"},
-    "evidenceUrls": {"representative source urls", "source urls", "evidence urls"},
-    "caveats": {"important caveats misuse risk", "caveats", "misuse risk"},
-    "crossLayerInteractions": {"cross layer interactions"},
-    "aliases": {
-        "aliases", "alias", "alternate names", "alternative names", "related constructs aliases"
-    },
-    "relatedDrivers": {"related drivers", "related driver", "relateddrivers"},
-    "examples": {"examples", "example"},
-}
+ValueKind = Literal["scalar", "list"]
+
+
+@dataclass(frozen=True)
+class FieldSpec:
+    json_name: str
+    header: str
+    kind: ValueKind
+    required: bool
+
+
+# Canonical PSYWERX Driver Schema v1.0. Header matching is intentionally exact
+# after trimming/collapsing whitespace so taxonomy drift is reported.
+DRIVER_SCHEMA: tuple[FieldSpec, ...] = (
+    FieldSpec("id", "ID", "scalar", True),
+    FieldSpec("name", "Name", "scalar", True),
+    FieldSpec("aliases", "Other Names / Aliases", "list", False),
+    FieldSpec("layer", "Layer", "scalar", True),
+    FieldSpec("family", "Family", "scalar", True),
+    FieldSpec("definition", "Definition", "scalar", True),
+    FieldSpec("dataType", "Data Type", "scalar", True),
+    FieldSpec("representationScale", "Representation / Scale", "scalar", True),
+    FieldSpec(
+        "polarityDirection",
+        "Polarity / Direction of Interpretation",
+        "scalar",
+        True,
+    ),
+    FieldSpec("mechanism", "Mechanism", "scalar", True),
+    FieldSpec(
+        "likelyUpstreamInfluences",
+        "Likely Upstream Influences",
+        "list",
+        False,
+    ),
+    FieldSpec(
+        "likelyDownstreamInfluences",
+        "Likely Downstream Influences",
+        "list",
+        False,
+    ),
+    FieldSpec(
+        "moderatorsBoundaryConditions",
+        "Moderators / Boundary Conditions",
+        "scalar",
+        True,
+    ),
+    FieldSpec(
+        "typicalInteractionCandidates",
+        "Typical Interaction Candidates",
+        "list",
+        False,
+    ),
+    FieldSpec(
+        "modifiability",
+        "Modifiability / Malleability",
+        "scalar",
+        True,
+    ),
+    FieldSpec("volatility", "Volatility", "scalar", True),
+    FieldSpec("timeScaleOfChange", "Time Scale of Change", "list", True),
+    FieldSpec("onsetCausalLag", "Onset / Causal Lag", "list", True),
+    FieldSpec(
+        "persistenceRecovery",
+        "Persistence / Recovery",
+        "scalar",
+        True,
+    ),
+    FieldSpec("indicators", "Indicators", "list", False),
+    FieldSpec(
+        "measurementAssessmentMethods",
+        "Measurement / Assessment Methods",
+        "scalar",
+        True,
+    ),
+    FieldSpec("observability", "Observability", "scalar", True),
+    FieldSpec(
+        "measurementCaveats",
+        "Measurement Caveats",
+        "scalar",
+        True,
+    ),
+    FieldSpec("evidenceStrength", "Evidence Strength", "scalar", True),
+    FieldSpec("evidenceNotes", "Evidence Notes", "scalar", True),
+    FieldSpec(
+        "commonMisinterpretations",
+        "Common Misinterpretations",
+        "scalar",
+        True,
+    ),
+    FieldSpec("keySources", "Key Sources", "list", True),
+)
 
 CANONICAL_LAYERS = (
-    "Biological", "Psychological", "Social", "Cultural",
-    "Physical / Environmental", "Institutional / Structural",
-    "Informational", "Technological",
+    "Biological",
+    "Psychological",
+    "Social",
+    "Cultural",
+    "Physical / Environmental",
+    "Institutional / Structural",
+    "Informational",
+    "Technological",
 )
 LAYER_ALIASES = {
     "biological": "Biological",
@@ -73,29 +140,17 @@ LAYER_ALIASES = {
     "technological": "Technological",
     "technology": "Technological",
 }
-OUTPUT_FIELDS = (
-    "id", "name", "layer", "familyCode", "category", "subcategory",
-    "taxonomyStatus", "driverRole", "typicalTimeScale", "definition",
-    "mechanism", "behavioralConsequences", "behaviorChangeRelevance",
-    "contextsBoundaryConditions", "modifiability", "measurementIndicators",
-    "evidence", "caveats", "crossLayerInteractions", "aliases",
-    "relatedDrivers", "examples", "source",
-)
-KNOWN_SUPPORT_SHEETS = {
-    "summary", "families", "evidence library", "cautions boundaries", "taxonomy guide"
-}
-DRIVER_SIGNALS = {"id", "name", "category", "definition", "mechanism", "taxonomyStatus"}
+OUTPUT_KEYS = tuple(spec.json_name for spec in DRIVER_SCHEMA) + ("source",)
 HEADER_SCAN_ROWS = 25
 
 
 @dataclass
 class Summary:
-    files: int = 0
-    sheets: int = 0
-    sheets_ignored: int = 0
-    rows_processed: int = 0
+    workbooks: int = 0
+    driver_sheets: int = 0
     rows_skipped: int = 0
-    ignored: list[str] = field(default_factory=list)
+    skipped_worksheets: list[str] = field(default_factory=list)
+    drivers_per_layer: dict[str, int] = field(default_factory=dict)
     warnings: list[str] = field(default_factory=list)
     errors: list[str] = field(default_factory=list)
 
@@ -104,63 +159,23 @@ def clean(value: Any) -> str:
     return "" if value is None else re.sub(r"\s+", " ", str(value)).strip()
 
 
-def key(value: Any) -> str:
+def clean_id(value: Any) -> str:
+    # Explicit IDs are immutable identifiers: do not case-fold, slug, or alter
+    # whitespace. Validation still rejects an empty or whitespace-only value.
+    return "" if value is None else str(value)
+
+
+def normalized_key(value: Any) -> str:
     text = unicodedata.normalize("NFKC", clean(value)).casefold()
     return re.sub(r"[^\w]+", " ", text, flags=re.UNICODE).strip()
 
 
 def normalize_layer(value: Any) -> str | None:
-    return LAYER_ALIASES.get(key(value))
-
-
-def alias_lookup() -> dict[str, str]:
-    result: dict[str, str] = {}
-    for field_name, aliases in HEADER_ALIASES.items():
-        for alias in aliases:
-            normalized = key(alias)
-            if normalized in result and result[normalized] != field_name:
-                raise ValueError(f"Header alias {alias!r} maps to multiple fields.")
-            result[normalized] = field_name
-    return result
-
-
-def map_headers(values: tuple[Any, ...]) -> tuple[dict[str, int], list[str]]:
-    lookup = alias_lookup()
-    mapping: dict[str, int] = {}
-    discovered: list[str] = []
-    for index, value in enumerate(values):
-        heading = clean(value)
-        if not heading:
-            continue
-        discovered.append(heading)
-        normalized = key(heading)
-        field_name = lookup.get(normalized)
-        if field_name is None and normalized.endswith(" mechanism pathway"):
-            prefix = normalized.removesuffix(" mechanism pathway")
-            if normalize_layer(prefix):
-                field_name = "mechanism"
-        if field_name and field_name not in mapping:
-            mapping[field_name] = index
-    return mapping, discovered
-
-
-def find_header_row(sheet: Any) -> tuple[int, dict[str, int], list[str]] | None:
-    best = None
-    best_score = -1
-    for number, row in enumerate(
-        sheet.iter_rows(min_row=1, max_row=HEADER_SCAN_ROWS, values_only=True), start=1
-    ):
-        mapping, discovered = map_headers(row)
-        if discovered and len(mapping) > best_score:
-            best = (number, mapping, discovered)
-            best_score = len(mapping)
-        if "name" in mapping and len(mapping) >= 2:
-            return number, mapping, discovered
-    return best
+    return LAYER_ALIASES.get(normalized_key(value))
 
 
 def mentioned_layers(value: Any) -> set[str]:
-    normalized = f" {key(value)} "
+    normalized = f" {normalized_key(value)} "
     matches: set[str] = set()
     for compound in ("physical environmental", "institutional structural"):
         if f" {compound} " in normalized:
@@ -172,250 +187,388 @@ def mentioned_layers(value: Any) -> set[str]:
     return matches
 
 
-def infer_layer(
-    workbook_path: Path, sheet: Any, workbook_title: Any, title_text: list[str], summary: Summary
-) -> str | None:
-    sources = {
-        "workbook filename": mentioned_layers(workbook_path.stem),
-        "worksheet name": mentioned_layers(sheet.title),
-        "workbook/title text": mentioned_layers(" ".join([clean(workbook_title), *title_text])),
-    }
-    location = f"{workbook_path.name} / {sheet.title}"
-    for source_name, matches in sources.items():
-        if len(matches) > 1:
-            summary.errors.append(
-                f"{location}: {source_name} identifies conflicting layers: {', '.join(sorted(matches))}"
-            )
-            return None
-    inferred = {next(iter(matches)) for matches in sources.values() if matches}
-    if len(inferred) > 1:
-        details = ", ".join(
-            f"{name}={next(iter(matches))}" for name, matches in sources.items() if matches
-        )
-        summary.errors.append(f"{location}: conflicting layer inference sources ({details}).")
-        return None
-    return next(iter(inferred)) if inferred else None
-
-
 def split_list(value: Any) -> list[str]:
     if value is None or not str(value).strip():
         return []
-    # Commas are deliberately not split because they are often part of citations or URLs.
-    return [item for item in (clean(part) for part in re.split(r"[\r\n;|]+", str(value))) if item]
+    # Schema v1.0 list cells are semicolon-separated. Newlines and pipes are
+    # accepted as unambiguous alternates; commas remain part of the value.
+    return [
+        item
+        for item in (clean(part) for part in re.split(r"[;|\r\n]+", str(value)))
+        if item
+    ]
 
 
-def slug(value: str) -> str:
+def fallback_id(layer: str, name: str) -> str:
+    """Return a deterministic future-format fallback; unused by strict v1.0."""
+    value = f"{layer}-{name}"
     ascii_value = unicodedata.normalize("NFKD", value).encode("ascii", "ignore").decode()
     return re.sub(r"[^a-z0-9]+", "-", ascii_value.casefold()).strip("-") or "driver"
 
 
-def get_cell(row: tuple[Any, ...], mapping: dict[str, int], field_name: str) -> Any:
-    index = mapping.get(field_name)
+def row_values(row: tuple[Any, ...]) -> list[str]:
+    return [clean(value) for value in row if clean(value)]
+
+
+def find_driver_sheets(workbook: Any) -> list[Any]:
+    named = [
+        sheet for sheet in workbook.worksheets
+        if normalized_key(sheet.title) == "drivers"
+    ]
+    if named:
+        return named
+    candidates = []
+    for sheet in workbook.worksheets:
+        for row in sheet.iter_rows(
+            min_row=1, max_row=HEADER_SCAN_ROWS, values_only=True
+        ):
+            values = set(row_values(row))
+            if {"ID", "Name"}.issubset(values):
+                candidates.append(sheet)
+                break
+    return candidates
+
+
+def find_header_row(sheet: Any) -> tuple[int, tuple[Any, ...]] | None:
+    expected = {spec.header for spec in DRIVER_SCHEMA}
+    best: tuple[int, tuple[Any, ...]] | None = None
+    best_score = 0
+    for number, row in enumerate(
+        sheet.iter_rows(
+            min_row=1, max_row=HEADER_SCAN_ROWS, values_only=True
+        ),
+        start=1,
+    ):
+        score = len(expected.intersection(row_values(row)))
+        if score > best_score:
+            best = (number, row)
+            best_score = score
+    return best
+
+
+def validate_headers(
+    workbook_name: str,
+    sheet_name: str,
+    row: tuple[Any, ...],
+    summary: Summary,
+) -> tuple[dict[str, int], tuple[str, ...]]:
+    location = f"{workbook_name} / {sheet_name}"
+    actual = tuple(clean(value) for value in row if clean(value))
+    counts: dict[str, int] = defaultdict(int)
+    positions: dict[str, int] = {}
+    for index, value in enumerate(row):
+        header = clean(value)
+        if header:
+            counts[header] += 1
+            positions.setdefault(header, index)
+    for header, count in sorted(counts.items()):
+        if count > 1:
+            summary.errors.append(
+                f"{location}: duplicate driver-table header {header!r}."
+            )
+
+    expected_headers = {spec.header for spec in DRIVER_SCHEMA}
+    for spec in DRIVER_SCHEMA:
+        if spec.header in positions:
+            continue
+        if spec.json_name == "layer":
+            # Layer is a required output value but its column may be replaced
+            # by unambiguous workbook/sheet/title inference.
+            continue
+        message = f"{location}: missing {'required' if spec.required else 'optional'} header {spec.header!r}."
+        if spec.required:
+            summary.errors.append(message)
+        else:
+            summary.warnings.append(message)
+    for header in actual:
+        if header not in expected_headers:
+            summary.warnings.append(
+                f"{location}: unexpected driver-table header {header!r}."
+            )
+    mapping = {
+        spec.json_name: positions[spec.header]
+        for spec in DRIVER_SCHEMA
+        if spec.header in positions
+    }
+    return mapping, actual
+
+
+def pre_header_text(sheet: Any, header_row: int) -> list[str]:
+    if header_row <= 1:
+        return []
+    return [
+        clean(value)
+        for row in sheet.iter_rows(
+            min_row=1, max_row=header_row - 1, values_only=True
+        )
+        for value in row
+        if clean(value)
+    ]
+
+
+def inferred_layer(
+    path: Path,
+    sheet: Any,
+    workbook_title: Any,
+    header_row: int,
+    summary: Summary,
+) -> str | None:
+    location = f"{path.name} / {sheet.title}"
+    sources = {
+        "workbook filename": mentioned_layers(path.stem),
+        "worksheet name": mentioned_layers(sheet.title),
+        "worksheet/title information": mentioned_layers(
+            " ".join([clean(workbook_title), *pre_header_text(sheet, header_row)])
+        ),
+    }
+    for source_name, matches in sources.items():
+        if len(matches) > 1:
+            summary.errors.append(
+                f"{location}: {source_name} identifies conflicting layers: "
+                + ", ".join(sorted(matches))
+            )
+            return None
+    evidence = {
+        source_name: next(iter(matches))
+        for source_name, matches in sources.items()
+        if matches
+    }
+    distinct = set(evidence.values())
+    if len(distinct) > 1:
+        details = ", ".join(
+            f"{source_name}={layer}" for source_name, layer in evidence.items()
+        )
+        summary.errors.append(
+            f"{location}: conflicting layer inference ({details})."
+        )
+        return None
+    return next(iter(distinct)) if distinct else None
+
+
+def get_cell(
+    row: tuple[Any, ...], mapping: dict[str, int], json_name: str
+) -> Any:
+    index = mapping.get(json_name)
     return row[index] if index is not None and index < len(row) else None
 
 
-def row_layer(
-    row: tuple[Any, ...], mapping: dict[str, int], inferred: str | None,
-    location: str, summary: Summary
-) -> str | None:
-    raw = clean(get_cell(row, mapping, "layer"))
-    if raw:
-        explicit = normalize_layer(raw)
-        if explicit is None:
-            summary.errors.append(f"{location}: unrecognized explicit layer {raw!r}.")
-            return None
-        if inferred and explicit != inferred:
-            summary.errors.append(
-                f"{location}: explicit layer {explicit!r} conflicts with inferred layer {inferred!r}."
-            )
-            return None
-        return explicit
-    if inferred is None:
-        summary.errors.append(f"{location}: layer is absent and could not be inferred.")
-    return inferred
-
-
-def make_record(
-    row: tuple[Any, ...], mapping: dict[str, int], inferred: str | None,
-    workbook_path: Path, sheet_name: str, row_number: int, summary: Summary
+def build_record(
+    row: tuple[Any, ...],
+    mapping: dict[str, int],
+    inferred: str | None,
+    path: Path,
+    sheet_name: str,
+    row_number: int,
+    summary: Summary,
 ) -> dict[str, Any] | None:
-    if not any(clean(value) for value in row):
+    if not row_values(row):
         summary.rows_skipped += 1
         return None
-    location = f"{workbook_path.name} / {sheet_name} / row {row_number}"
-    name = clean(get_cell(row, mapping, "name"))
-    if not name:
-        summary.errors.append(f"{location}: missing required driver name.")
-        summary.rows_skipped += 1
-        return None
-    layer = row_layer(row, mapping, inferred, location, summary)
-    if layer is None:
-        summary.rows_skipped += 1
-        return None
-    explicit_id = clean(get_cell(row, mapping, "id"))
-    record = {
-        "id": explicit_id or slug(f"{layer}-{name}"),
-        "name": name,
-        "layer": layer,
-        "familyCode": clean(get_cell(row, mapping, "familyCode")),
-        "category": clean(get_cell(row, mapping, "category")),
-        "subcategory": clean(get_cell(row, mapping, "subcategory")),
-        "taxonomyStatus": clean(get_cell(row, mapping, "taxonomyStatus")),
-        "driverRole": clean(get_cell(row, mapping, "driverRole")),
-        "typicalTimeScale": clean(get_cell(row, mapping, "typicalTimeScale")),
-        "definition": clean(get_cell(row, mapping, "definition")),
-        "mechanism": clean(get_cell(row, mapping, "mechanism")),
-        "behavioralConsequences": clean(get_cell(row, mapping, "behavioralConsequences")),
-        "behaviorChangeRelevance": clean(get_cell(row, mapping, "behaviorChangeRelevance")),
-        "contextsBoundaryConditions": clean(get_cell(row, mapping, "contextsBoundaryConditions")),
-        "modifiability": clean(get_cell(row, mapping, "modifiability")),
-        "measurementIndicators": clean(get_cell(row, mapping, "measurementIndicators")),
-        "evidence": {
-            "grade": clean(get_cell(row, mapping, "evidenceGrade")),
-            "ids": split_list(get_cell(row, mapping, "evidenceIds")),
-            "urls": split_list(get_cell(row, mapping, "evidenceUrls")),
-        },
-        "caveats": clean(get_cell(row, mapping, "caveats")),
-        "crossLayerInteractions": clean(get_cell(row, mapping, "crossLayerInteractions")),
-        "aliases": split_list(get_cell(row, mapping, "aliases")),
-        "relatedDrivers": split_list(get_cell(row, mapping, "relatedDrivers")),
-        "examples": split_list(get_cell(row, mapping, "examples")),
-        "source": {"workbook": workbook_path.name, "sheet": sheet_name},
-    }
-    summary.rows_processed += 1
+    location = f"{path.name} / {sheet_name} / row {row_number}"
+    record: dict[str, Any] = {}
+    for spec in DRIVER_SCHEMA:
+        value = get_cell(row, mapping, spec.json_name)
+        if spec.json_name == "id":
+            normalized: str | list[str] | None = clean_id(value) or None
+        elif spec.kind == "list":
+            normalized = split_list(value)
+        else:
+            normalized = clean(value) or None
+        record[spec.json_name] = normalized
+
+    explicit_layer = normalize_layer(record["layer"]) if record["layer"] else None
+    if record["layer"] and explicit_layer is None:
+        summary.errors.append(
+            f"{location}: unrecognized explicit layer {record['layer']!r}."
+        )
+    elif explicit_layer and inferred and explicit_layer != inferred:
+        summary.errors.append(
+            f"{location}: explicit layer {explicit_layer!r} conflicts with "
+            f"inferred layer {inferred!r}."
+        )
+    record["layer"] = explicit_layer or inferred
+
+    for spec in DRIVER_SCHEMA:
+        value = record[spec.json_name]
+        absent = value is None or value == []
+        if spec.json_name == "id":
+            absent = not clean(value)
+        if spec.required and absent:
+            summary.errors.append(
+                f"{location}: required field {spec.header!r} is empty."
+            )
+
+    record["source"] = {"workbook": path.name, "sheet": sheet_name}
     return record
 
 
-def report_duplicates(records: list[dict[str, Any]], summary: Summary) -> None:
-    names: dict[str, list[dict[str, Any]]] = defaultdict(list)
-    layer_names: dict[tuple[str, str], list[dict[str, Any]]] = defaultdict(list)
-    ids: dict[str, list[dict[str, Any]]] = defaultdict(list)
-    for record in records:
-        normalized_name = key(record["name"])
-        names[normalized_name].append(record)
-        layer_names[(record["layer"], normalized_name)].append(record)
-        ids[record["id"]].append(record)
-    for normalized_name, matches in sorted(names.items()):
-        if len(matches) > 1:
-            summary.warnings.append(
-                f"Potential duplicate normalized name {normalized_name!r}: "
-                + ", ".join(item["id"] for item in matches)
-            )
-    for (layer, normalized_name), matches in sorted(layer_names.items()):
-        if len(matches) > 1:
-            summary.warnings.append(
-                f"Potential duplicate name in {layer} ({normalized_name!r}): "
-                + ", ".join(item["id"] for item in matches)
-            )
-    for driver_id, matches in sorted(ids.items()):
-        if len(matches) > 1:
-            summary.errors.append(f"Duplicate Driver ID {driver_id!r} ({len(matches)} records).")
+def report_header_discrepancies(
+    signatures: dict[str, tuple[str, ...]], summary: Summary
+) -> None:
+    if len(set(signatures.values())) <= 1:
+        return
+    baseline_name, baseline = next(iter(signatures.items()))
+    baseline_set = set(baseline)
+    for workbook_name, headers in list(signatures.items())[1:]:
+        if headers == baseline:
+            continue
+        missing = [header for header in baseline if header not in headers]
+        added = [header for header in headers if header not in baseline_set]
+        order_changed = not missing and not added and headers != baseline
+        summary.errors.append(
+            f"Driver schema discrepancy: {workbook_name} differs from "
+            f"{baseline_name}; missing={missing or 'none'}, "
+            f"extra={added or 'none'}, order_changed={order_changed}."
+        )
 
 
 def read_workbooks(source_dir: Path, summary: Summary) -> list[dict[str, Any]]:
     records: list[dict[str, Any]] = []
-    files = sorted(
+    signatures: dict[str, tuple[str, ...]] = {}
+    paths = sorted(
         path for path in source_dir.rglob("*")
-        if path.is_file() and path.suffix.casefold() == ".xlsx" and not path.name.startswith("~$")
+        if path.is_file()
+        and path.suffix.casefold() == ".xlsx"
+        and not path.name.startswith("~$")
     )
-    summary.files = len(files)
-    if not files:
-        summary.errors.append(f"No XLSX files found in {source_dir}.")
+    summary.workbooks = len(paths)
+    if not paths:
+        summary.errors.append(f"No XLSX workbooks found in {source_dir}.")
         return records
-    for path in files:
+
+    for path in paths:
         try:
             workbook = load_workbook(path, read_only=True, data_only=True)
         except Exception as exc:
             summary.errors.append(f"{path.name}: could not open workbook: {exc}")
             continue
         try:
+            driver_sheets = find_driver_sheets(workbook)
+            if len(driver_sheets) != 1:
+                summary.errors.append(
+                    f"{path.name}: expected exactly one driver worksheet; "
+                    f"found {len(driver_sheets)}."
+                )
+            driver_sheet_ids = {id(sheet) for sheet in driver_sheets}
             for sheet in workbook.worksheets:
-                location = f"{path.name} / {sheet.title}"
-                if key(sheet.title) in KNOWN_SUPPORT_SHEETS:
-                    summary.sheets_ignored += 1
-                    summary.ignored.append(f"{location}: known supporting sheet")
-                    continue
+                if id(sheet) not in driver_sheet_ids:
+                    summary.skipped_worksheets.append(
+                        f"{path.name} / {sheet.title}"
+                    )
+            for sheet in driver_sheets:
                 header = find_header_row(sheet)
                 if header is None:
-                    summary.sheets_ignored += 1
-                    summary.ignored.append(f"{location}: empty sheet")
+                    summary.errors.append(
+                        f"{path.name} / {sheet.title}: no driver header row found."
+                    )
                     continue
-                header_row, mapping, discovered = header
-                if "name" not in mapping:
-                    message = (
-                        f"{location}: missing mapped field name. "
-                        f"Discovered headers: {discovered or ['(none)']}"
-                    )
-                    looks_like_drivers = (
-                        "driver" in key(sheet.title).split()
-                        or len(DRIVER_SIGNALS.intersection(mapping)) >= 3
-                    )
-                    if looks_like_drivers:
-                        summary.warnings.append(message)
-                    else:
-                        summary.sheets_ignored += 1
-                        summary.ignored.append(f"{location}: non-driver sheet")
-                    continue
-                title_text = [
-                    clean(value)
-                    for row in sheet.iter_rows(
-                        min_row=1, max_row=max(1, header_row - 1), values_only=True
-                    )
-                    for value in row if clean(value)
-                ]
-                inferred = infer_layer(
-                    path, sheet, workbook.properties.title, title_text, summary
+                header_row, raw_headers = header
+                mapping, signature = validate_headers(
+                    path.name, sheet.title, raw_headers, summary
                 )
-                summary.sheets += 1
+                signatures[path.name] = signature
+                layer = inferred_layer(
+                    path, sheet, workbook.properties.title, header_row, summary
+                )
+                summary.driver_sheets += 1
                 for row_number, row in enumerate(
-                    sheet.iter_rows(min_row=header_row + 1, values_only=True),
+                    sheet.iter_rows(
+                        min_row=header_row + 1, values_only=True
+                    ),
                     start=header_row + 1,
                 ):
-                    record = make_record(
-                        row, mapping, inferred, path, sheet.title, row_number, summary
+                    record = build_record(
+                        row,
+                        mapping,
+                        layer,
+                        path,
+                        sheet.title,
+                        row_number,
+                        summary,
                     )
                     if record is not None:
                         records.append(record)
         except Exception as exc:
-            summary.errors.append(f"{path.name}: error while reading workbook: {exc}")
+            summary.errors.append(
+                f"{path.name}: error while reading workbook: {exc}"
+            )
         finally:
             workbook.close()
-    if summary.sheets == 0:
-        summary.errors.append("No recognizable driver taxonomy worksheet was found.")
+    report_header_discrepancies(signatures, summary)
     return records
 
 
-def validate(records: list[dict[str, Any]], summary: Summary) -> None:
+def validate_records(
+    records: list[dict[str, Any]], summary: Summary
+) -> None:
     if not records:
         summary.errors.append("No valid driver records were produced.")
         return
+    ids: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    layer_names: dict[tuple[str, str], list[dict[str, Any]]] = defaultdict(list)
+    counts: dict[str, int] = defaultdict(int)
+    scalar_fields = {
+        spec.json_name for spec in DRIVER_SCHEMA if spec.kind == "scalar"
+    }
+    list_fields = {
+        spec.json_name for spec in DRIVER_SCHEMA if spec.kind == "list"
+    }
     for record in records:
-        missing = [field_name for field_name in OUTPUT_FIELDS if field_name not in record]
-        if missing:
-            summary.errors.append(f"Record {record.get('id')!r} lacks: {', '.join(missing)}")
-        if not clean(record.get("id")):
-            summary.errors.append("A driver has an empty ID.")
-        if not clean(record.get("name")):
-            summary.errors.append(f"Driver {record.get('id')!r} has an empty name.")
-        if record.get("layer") not in CANONICAL_LAYERS:
-            summary.errors.append(f"Driver {record.get('id')!r} has a non-canonical layer.")
-        evidence = record.get("evidence")
-        if (
-            not isinstance(evidence, dict)
-            or set(evidence) != {"grade", "ids", "urls"}
-            or not isinstance(evidence.get("ids"), list)
-            or not isinstance(evidence.get("urls"), list)
-        ):
-            summary.errors.append(f"Driver {record.get('id')!r} has invalid evidence.")
-        for field_name in ("aliases", "relatedDrivers", "examples"):
-            if not isinstance(record.get(field_name), list):
+        if tuple(record) != OUTPUT_KEYS:
+            summary.errors.append(
+                f"Record {record.get('id')!r} has a non-canonical key structure."
+            )
+        for field_name in scalar_fields:
+            if record.get(field_name) is not None and not isinstance(
+                record[field_name], str
+            ):
                 summary.errors.append(
-                    f"Driver {record.get('id')!r} has non-list field {field_name!r}."
+                    f"Record {record.get('id')!r}: {field_name} must be string or null."
                 )
+        for field_name in list_fields:
+            value = record.get(field_name)
+            if not isinstance(value, list) or not all(
+                isinstance(item, str) for item in value
+            ):
+                summary.errors.append(
+                    f"Record {record.get('id')!r}: {field_name} must be a string list."
+                )
+        if record.get("layer") not in CANONICAL_LAYERS:
+            summary.errors.append(
+                f"Record {record.get('id')!r} has a non-canonical layer."
+            )
+            continue
         source = record.get("source")
-        if not isinstance(source, dict) or set(source) != {"workbook", "sheet"}:
-            summary.errors.append(f"Driver {record.get('id')!r} has invalid source provenance.")
-    report_duplicates(records, summary)
+        if (
+            not isinstance(source, dict)
+            or set(source) != {"workbook", "sheet"}
+            or any("\\" in str(value) for value in source.values())
+        ):
+            summary.errors.append(
+                f"Record {record.get('id')!r} has invalid public provenance."
+            )
+        driver_id = record.get("id")
+        if driver_id:
+            ids[driver_id].append(record)
+        name = record.get("name")
+        if name:
+            layer_names[(record["layer"], normalized_key(name))].append(record)
+        counts[record["layer"]] += 1
+
+    for driver_id, matches in sorted(ids.items()):
+        if len(matches) > 1:
+            summary.errors.append(
+                f"Duplicate Driver ID {driver_id!r} ({len(matches)} records)."
+            )
+    for (layer, name), matches in sorted(layer_names.items()):
+        if len(matches) > 1:
+            summary.warnings.append(
+                f"Potential duplicate normalized name in {layer} {name!r}: "
+                + ", ".join(record["id"] for record in matches)
+            )
+    summary.drivers_per_layer = {
+        layer: counts[layer] for layer in CANONICAL_LAYERS if counts[layer]
+    }
 
 
 def write_atomically(records: list[dict[str, Any]], output: Path) -> None:
@@ -423,8 +576,13 @@ def write_atomically(records: list[dict[str, Any]], output: Path) -> None:
     temporary: Path | None = None
     try:
         with tempfile.NamedTemporaryFile(
-            "w", encoding="utf-8", newline="\n", dir=output.parent,
-            prefix=f".{output.name}.", suffix=".tmp", delete=False
+            mode="w",
+            encoding="utf-8",
+            newline="\n",
+            dir=output.parent,
+            prefix=f".{output.name}.",
+            suffix=".tmp",
+            delete=False,
         ) as handle:
             handle.write(content)
             temporary = Path(handle.name)
@@ -435,23 +593,30 @@ def write_atomically(records: list[dict[str, Any]], output: Path) -> None:
 
 
 def print_summary(summary: Summary, output: Path, wrote: bool) -> None:
+    print("Import statistics")
+    print(f"  Workbooks: {summary.workbooks}")
+    print(f"  Driver worksheets: {summary.driver_sheets}")
+    print(f"  Layers: {len(summary.drivers_per_layer)}")
+    for layer, count in summary.drivers_per_layer.items():
+        print(f"  Drivers / {layer}: {count}")
+    print(f"  Total drivers: {sum(summary.drivers_per_layer.values())}")
+    print(f"  Rows skipped: {summary.rows_skipped}")
+    print(f"  Warnings: {len(summary.warnings)}")
+    print(f"  Errors: {len(summary.errors)}")
     print(
-        f"Import summary: files={summary.files}, sheets={summary.sheets}, "
-        f"supporting_sheets_ignored={summary.sheets_ignored}, "
-        f"rows_processed={summary.rows_processed}, rows_skipped={summary.rows_skipped}, "
-        f"warnings={len(summary.warnings)}, errors={len(summary.errors)}"
+        "  Intentionally skipped worksheets: "
+        f"{len(summary.skipped_worksheets)}"
     )
-    for message in summary.ignored:
-        print(f"IGNORED: {message}")
-    for message in summary.warnings:
-        print(f"WARNING: {message}")
-    for message in summary.errors:
-        print(f"ERROR: {message}", file=sys.stderr)
-    print(
-        f"Wrote {summary.rows_processed} drivers to {output}."
-        if wrote else f"Did not modify {output}.",
-        file=sys.stdout if wrote else sys.stderr,
-    )
+    for worksheet in summary.skipped_worksheets:
+        print(f"SKIPPED: {worksheet}")
+    for warning in summary.warnings:
+        print(f"WARNING: {warning}")
+    for error in summary.errors:
+        print(f"ERROR: {error}", file=sys.stderr)
+    if wrote:
+        print(f"Wrote validated data to {output}.")
+    else:
+        print(f"Did not modify {output}.", file=sys.stderr)
 
 
 def main() -> int:
@@ -459,10 +624,12 @@ def main() -> int:
     output = root / "data" / "drivers.json"
     summary = Summary()
     records = read_workbooks(root / "source-data", summary)
-    validate(records, summary)
+    validate_records(records, summary)
     records.sort(
-        key=lambda item: (
-            CANONICAL_LAYERS.index(item["layer"]), key(item["name"]), item["id"]
+        key=lambda record: (
+            CANONICAL_LAYERS.index(record["layer"]),
+            normalized_key(record["name"]),
+            record["id"],
         )
     )
     wrote = False
