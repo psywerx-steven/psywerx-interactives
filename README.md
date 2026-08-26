@@ -18,6 +18,8 @@ PSYWERX. The repository is designed for static hosting with GitHub Pages.
 - `docs/DRIVER_SCHEMA_V1_1.md` defines the current canonical
   spreadsheet-to-JSON contract enforced by the importer.
 - `docs/DRIVER_SCHEMA_V1.md` preserves the historical Schema v1.0 contract.
+- `docs/FAMILY_SCHEMA_V1.md` defines the canonical Family Schema v1.0 and its
+  Driver-to-Family validation rules.
 
 ## Build driver data locally
 
@@ -59,18 +61,47 @@ no Python or runtime dependencies.
    The migration stages and validates all eight workbooks before replacing any
    source file. It preserves Driver IDs and unrelated taxonomy content.
 
-4. Preview the static site with a local HTTP server (opening the HTML file
-   directly will not allow the browser to fetch JSON):
+## Build Family data locally
 
-   ```powershell
-   py -m http.server 8000
-   ```
+The public `data/families.json` file is generated from the `Families`
+worksheet in each source workbook. Build `drivers.json` first because Family
+validation uses it as the authoritative Driver dataset.
 
-   Then open <http://localhost:8000/drivers/>.
+```powershell
+py scripts\build_drivers.py
+py scripts\build_families.py
+```
 
-5. Review and commit only the generated public artifact and pipeline changes:
+The Family importer enforces [Family Schema v1.0](./docs/FAMILY_SCHEMA_V1.md),
+globally unique permanent Family IDs and names, exact Driver-to-Family
+coverage, source Driver Count assertions, and representative Driver linkage.
+It preserves representative Driver names and derives their stable Driver IDs.
+The generated JSON is deterministic and is replaced only after complete
+validation succeeds.
 
-   ```powershell
-   git add data/drivers.json scripts/build_drivers.py scripts/migrate_driver_schema_v1_1.py docs/DRIVER_SCHEMA_V1_1.md requirements.txt README.md .gitignore source-data/.gitkeep
-   git commit -m "Build driver data from local spreadsheets"
-   ```
+For standardized workbooks whose Codebooks do not yet contain the canonical
+Family ID and Driver Count governance rows, run this once before importing:
+
+```powershell
+py scripts\migrate_family_governance_v1.py
+```
+
+## Preview the static site
+
+Opening the HTML file directly will not allow the browser to fetch JSON. Start
+a local HTTP server from the repository root:
+
+```powershell
+py -m http.server 8000
+```
+
+Then open <http://localhost:8000/drivers/>.
+
+## Commit generated data
+
+Review and commit only the generated public artifacts and pipeline changes:
+
+```powershell
+git add data/drivers.json data/families.json scripts/build_drivers.py scripts/build_families.py scripts/migrate_driver_schema_v1_1.py scripts/migrate_family_governance_v1.py docs/DRIVER_SCHEMA_V1_1.md docs/FAMILY_SCHEMA_V1.md requirements.txt README.md .gitignore source-data/.gitkeep
+git commit -m "Build ontology data from local spreadsheets"
+```

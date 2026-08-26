@@ -1,0 +1,3093 @@
+{
+  "schemaVersion": "1.0",
+  "families": [
+    {
+      "id": "BIO-F14",
+      "name": "Dependence & Withdrawal Physiology",
+      "layer": "Biological",
+      "definition": "Physiological adaptation and withdrawal severity following reduction or cessation of repeated substance exposure.",
+      "includes": "Nicotine, caffeine, alcohol, cannabis, and opioid withdrawal severity.",
+      "exclusions": "Addiction identity, access, stigma, or treatment systems.",
+      "representativeDrivers": [
+        "Nicotine Withdrawal Severity",
+        "Caffeine Withdrawal Severity",
+        "Alcohol Withdrawal Severity",
+        "Cannabis Withdrawal Severity",
+        "Opioid Withdrawal Severity"
+      ],
+      "representativeDriverIds": [
+        "BIO-065",
+        "BIO-066",
+        "BIO-067",
+        "BIO-068",
+        "BIO-069"
+      ],
+      "driverCount": 5,
+      "source": {
+        "workbook": "PSYWERX_Layer_1_Biological_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 18
+      }
+    },
+    {
+      "id": "BIO-F09",
+      "name": "Endocrine & Reproductive Physiology",
+      "layer": "Biological",
+      "definition": "Endocrine and reproductive physiological variables that alter bodily regulation and functional capacity.",
+      "includes": "Thyroid status, maturation, pregnancy-related load, menopausal transition, reproductive hormonal state, and physiological arousal.",
+      "exclusions": "Sex/gender categories or simplistic single-hormone explanations of complex behavior.",
+      "representativeDrivers": [
+        "Thyroid Hormone Status",
+        "Pubertal Maturation",
+        "Pregnancy-Related Physiological Load",
+        "Menopausal Transition State",
+        "Reproductive Hormonal State",
+        "Sexual Arousal Intensity"
+      ],
+      "representativeDriverIds": [
+        "BIO-043",
+        "BIO-044",
+        "BIO-045",
+        "BIO-046",
+        "BIO-047",
+        "BIO-048"
+      ],
+      "driverCount": 6,
+      "source": {
+        "workbook": "PSYWERX_Layer_1_Biological_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 13
+      }
+    },
+    {
+      "id": "BIO-F05",
+      "name": "Fatigue, Pain & Physical Capacity",
+      "layer": "Biological",
+      "definition": "Bodily capacity and burden variables that alter effort, attention, movement, and protective responding.",
+      "includes": "Physical and cognitive fatigue, acute and persistent pain, and physical functional capacity.",
+      "exclusions": "Workload or task demands themselves; diagnoses without a specified functional state.",
+      "representativeDrivers": [
+        "Physical Fatigue",
+        "Cognitive Fatigue",
+        "Acute Pain Intensity",
+        "Persistent Pain Burden",
+        "Physical Functional Capacity"
+      ],
+      "representativeDriverIds": [
+        "BIO-025",
+        "BIO-026",
+        "BIO-027",
+        "BIO-028",
+        "BIO-029"
+      ],
+      "driverCount": 5,
+      "source": {
+        "workbook": "PSYWERX_Layer_1_Biological_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 9
+      }
+    },
+    {
+      "id": "BIO-F03",
+      "name": "Homeostatic & Interoceptive Regulation",
+      "layer": "Biological",
+      "definition": "Internal physiological need and visceral states that signal departures from bodily equilibrium.",
+      "includes": "Hunger, satiety, thirst, hydration, glucose availability, nausea, breathlessness, and visceral urgency.",
+      "exclusions": "Food access, ambient conditions, preferences, and beliefs about bodily states.",
+      "representativeDrivers": [
+        "Hunger Intensity",
+        "Satiety Signal Intensity",
+        "Thirst Intensity",
+        "Hydration Status",
+        "Blood Glucose Availability",
+        "Nausea Intensity"
+      ],
+      "representativeDriverIds": [
+        "BIO-012",
+        "BIO-013",
+        "BIO-014",
+        "BIO-015",
+        "BIO-016",
+        "BIO-017"
+      ],
+      "driverCount": 8,
+      "source": {
+        "workbook": "PSYWERX_Layer_1_Biological_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 7
+      }
+    },
+    {
+      "id": "BIO-F06",
+      "name": "Immune & Inflammatory Physiology",
+      "layer": "Biological",
+      "definition": "Immune signaling and coordinated sickness responses that reallocate energy and alter activity and social motivation.",
+      "includes": "Systemic inflammatory activity and sickness-response intensity.",
+      "exclusions": "A named infection alone, psychiatric symptoms, or inflammation used as a catch-all explanation.",
+      "representativeDrivers": [
+        "Sickness Response Intensity",
+        "Systemic Inflammatory Activity"
+      ],
+      "representativeDriverIds": [
+        "BIO-030",
+        "BIO-031"
+      ],
+      "driverCount": 2,
+      "source": {
+        "workbook": "PSYWERX_Layer_1_Biological_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 10
+      }
+    },
+    {
+      "id": "BIO-F10",
+      "name": "Neurodevelopment, Aging & Reserve",
+      "layer": "Biological",
+      "definition": "Developmental maturation, aging burden, and reserve variables that alter behavioral capacities and susceptibility.",
+      "includes": "Neurodevelopmental maturity, biological aging burden, and frailty severity.",
+      "exclusions": "Chronological age alone or cohort effects.",
+      "representativeDrivers": [
+        "Neurodevelopmental Maturity",
+        "Biological Aging Burden",
+        "Frailty Severity"
+      ],
+      "representativeDriverIds": [
+        "BIO-049",
+        "BIO-050",
+        "BIO-051"
+      ],
+      "driverCount": 3,
+      "source": {
+        "workbook": "PSYWERX_Layer_1_Biological_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 14
+      }
+    },
+    {
+      "id": "BIO-F12",
+      "name": "Neurological Integrity & Brain State",
+      "layer": "Biological",
+      "definition": "Functional consequences of acute or chronic disruption to brain integrity and arousal.",
+      "includes": "TBI burden, acute encephalopathy, postictal impairment, focal neurological impairment, and neurodegenerative impairment.",
+      "exclusions": "A diagnosis without specified functional burden; normal cognitive differences; imaging activation as a driver.",
+      "representativeDrivers": [
+        "Traumatic Brain Injury Burden",
+        "Acute Encephalopathy Severity",
+        "Postictal Impairment Severity",
+        "Focal Neurological Impairment",
+        "Neurodegenerative Impairment"
+      ],
+      "representativeDriverIds": [
+        "BIO-053",
+        "BIO-054",
+        "BIO-055",
+        "BIO-056",
+        "BIO-057"
+      ],
+      "driverCount": 5,
+      "source": {
+        "workbook": "PSYWERX_Layer_1_Biological_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 16
+      }
+    },
+    {
+      "id": "BIO-F08",
+      "name": "Nutritional, Metabolic & Hematologic Status",
+      "layer": "Biological",
+      "definition": "Longer-duration biological variables governing energy sufficiency, oxygen transport, micronutrient status, and glucose regulation.",
+      "includes": "Nutritional energy sufficiency, oxygen-carrying capacity, iron/B12 status, and glycemic regulation.",
+      "exclusions": "Short-term hunger; BMI; broad metabolic-disease labels without a specified variable.",
+      "representativeDrivers": [
+        "Nutritional Energy Sufficiency",
+        "Blood Oxygen-Carrying Capacity",
+        "Iron Status",
+        "Vitamin B12 Status",
+        "Glycemic Regulation"
+      ],
+      "representativeDriverIds": [
+        "BIO-038",
+        "BIO-039",
+        "BIO-040",
+        "BIO-041",
+        "BIO-042"
+      ],
+      "driverCount": 5,
+      "source": {
+        "workbook": "PSYWERX_Layer_1_Biological_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 12
+      }
+    },
+    {
+      "id": "BIO-F04",
+      "name": "Oxygenation & Thermoregulatory Physiology",
+      "layer": "Biological",
+      "definition": "Internal oxygenation, carbon-dioxide, and thermal-strain variables affecting neural and physical function.",
+      "includes": "Tissue oxygen availability, intermittent hypoxemia, carbon-dioxide burden, heat strain, and cold strain.",
+      "exclusions": "Altitude, ventilation, weather, or temperature as external exposures.",
+      "representativeDrivers": [
+        "Tissue Oxygen Availability",
+        "Intermittent Hypoxemia Burden",
+        "Carbon Dioxide Burden",
+        "Heat Strain",
+        "Cold Strain"
+      ],
+      "representativeDriverIds": [
+        "BIO-020",
+        "BIO-021",
+        "BIO-022",
+        "BIO-023",
+        "BIO-024"
+      ],
+      "driverCount": 5,
+      "source": {
+        "workbook": "PSYWERX_Layer_1_Biological_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 8
+      }
+    },
+    {
+      "id": "BIO-F13",
+      "name": "Psychoactive & Pharmacologic Effects",
+      "layer": "Biological",
+      "definition": "Current dose-related physiological and neurobehavioral effects of substances and medications.",
+      "includes": "Alcohol, THC, nicotine, caffeine, sedative, opioid, stimulant, and aggregate medication burdens.",
+      "exclusions": "Substance availability, social meaning, identity, or legal status.",
+      "representativeDrivers": [
+        "Alcohol Effect Level",
+        "THC Effect Level",
+        "Nicotine Effect Level",
+        "Caffeine Effect Level",
+        "Sedative–Hypnotic Effect Level",
+        "Opioid Effect Level"
+      ],
+      "representativeDriverIds": [
+        "BIO-058",
+        "BIO-059",
+        "BIO-060",
+        "BIO-061",
+        "BIO-062",
+        "BIO-063"
+      ],
+      "driverCount": 8,
+      "source": {
+        "workbook": "PSYWERX_Layer_1_Biological_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 17
+      }
+    },
+    {
+      "id": "BIO-F07",
+      "name": "Sensory & Vestibular Capacity",
+      "layer": "Biological",
+      "definition": "Biological capacities and internal sensory burdens governing access to auditory, visual, olfactory, balance, and bodily-position information.",
+      "includes": "Auditory, visual, olfactory, vestibular, somatosensory/proprioceptive capacity, and tinnitus burden.",
+      "exclusions": "External information quality or device/interface accessibility.",
+      "representativeDrivers": [
+        "Auditory Capacity",
+        "Visual Capacity",
+        "Olfactory Capacity",
+        "Vestibular Stability",
+        "Somatosensory–Proprioceptive Capacity",
+        "Tinnitus Burden"
+      ],
+      "representativeDriverIds": [
+        "BIO-032",
+        "BIO-033",
+        "BIO-034",
+        "BIO-035",
+        "BIO-036",
+        "BIO-037"
+      ],
+      "driverCount": 6,
+      "source": {
+        "workbook": "PSYWERX_Layer_1_Biological_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 11
+      }
+    },
+    {
+      "id": "BIO-F01",
+      "name": "Sleep & Circadian Regulation",
+      "layer": "Biological",
+      "definition": "Variables governing sleep amount, continuity, circadian timing, and sleep–wake transitions.",
+      "includes": "Sleep quantity or continuity, endogenous phase, alignment, chronotype fit, and awakening impairment.",
+      "exclusions": "External schedules and light conditions themselves; subjective fatigue when modeled separately.",
+      "representativeDrivers": [
+        "Sleep Quantity",
+        "Sleep Continuity",
+        "Circadian Alignment",
+        "Circadian Phase",
+        "Sleep Inertia Severity",
+        "Chronotype–Schedule Alignment"
+      ],
+      "representativeDriverIds": [
+        "BIO-001",
+        "BIO-002",
+        "BIO-003",
+        "BIO-004",
+        "BIO-005",
+        "BIO-006"
+      ],
+      "driverCount": 6,
+      "source": {
+        "workbook": "PSYWERX_Layer_1_Biological_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 5
+      }
+    },
+    {
+      "id": "BIO-F11",
+      "name": "Stable Biological Susceptibility",
+      "layer": "Biological",
+      "definition": "Relatively stable inherited biological profiles that modify susceptibility without determining behavior.",
+      "includes": "Trait- or outcome-specific polygenic liability profiles when appropriately validated.",
+      "exclusions": "Race/ancestry essentialism, single-gene explanations, heritability as destiny, or gene–environment interaction treated as a node.",
+      "representativeDrivers": [
+        "Polygenic Liability Profile"
+      ],
+      "representativeDriverIds": [
+        "BIO-052"
+      ],
+      "driverCount": 1,
+      "source": {
+        "workbook": "PSYWERX_Layer_1_Biological_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 15
+      }
+    },
+    {
+      "id": "BIO-F02",
+      "name": "Stress, Autonomic & Allostatic Physiology",
+      "layer": "Biological",
+      "definition": "Physiological activation, regulation, recovery, and cumulative burden of stress-response systems.",
+      "includes": "HPA/SAM activation, autonomic arousal, recovery, reactivity, and multisystem allostatic burden.",
+      "exclusions": "Psychological appraisal, external threat, or broad psychiatric diagnoses.",
+      "representativeDrivers": [
+        "Physiological Stress Activation",
+        "Autonomic Arousal",
+        "Physiological Stress Recovery Rate",
+        "Allostatic Load",
+        "Physiological Stress Reactivity"
+      ],
+      "representativeDriverIds": [
+        "BIO-007",
+        "BIO-008",
+        "BIO-009",
+        "BIO-010",
+        "BIO-011"
+      ],
+      "driverCount": 5,
+      "source": {
+        "workbook": "PSYWERX_Layer_1_Biological_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 6
+      }
+    },
+    {
+      "id": "PSY-F05",
+      "name": "Affect & Emotion",
+      "layer": "Psychological",
+      "definition": "Subjective affective states whose intensity, valence, or activation can alter appraisal, attention, choice, and action readiness.",
+      "includes": "Discrete emotions, mood valence, subjective arousal, stress, frustration, empathy-related affect, and enjoyment.",
+      "exclusions": "Physiological arousal as a biological variable, emotion-regulation processes, and stable affective traits.",
+      "representativeDrivers": [
+        "Fear Intensity",
+        "Anxiety Intensity",
+        "Anger Intensity",
+        "Disgust Intensity",
+        "Shame Intensity",
+        "Guilt Intensity"
+      ],
+      "representativeDriverIds": [
+        "PSY-041",
+        "PSY-042",
+        "PSY-043",
+        "PSY-044",
+        "PSY-045",
+        "PSY-046"
+      ],
+      "driverCount": 14,
+      "source": {
+        "workbook": "PSYWERX_Layer_2_Psychological_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 9
+      }
+    },
+    {
+      "id": "PSY-F12",
+      "name": "Agency, Attribution & Moral Judgment",
+      "layer": "Psychological",
+      "definition": "Appraisals of agency, responsibility, intention, freedom, accountability, and moral obligation that shape blame, sanction, resistance, and principled action.",
+      "includes": "Agency, causal and responsibility attribution, intentionality, freedom threat, reactance, moral conviction, and moral obligation.",
+      "exclusions": "Formal accountability systems, social sanctions themselves, or identity centrality.",
+      "representativeDrivers": [
+        "Perceived Agency",
+        "Responsibility Attribution",
+        "Causal Attribution Locus",
+        "Intentionality Attribution",
+        "Perceived Freedom Threat",
+        "Psychological Reactance Intensity"
+      ],
+      "representativeDriverIds": [
+        "PSY-104",
+        "PSY-105",
+        "PSY-106",
+        "PSY-107",
+        "PSY-108",
+        "PSY-109"
+      ],
+      "driverCount": 9,
+      "source": {
+        "workbook": "PSYWERX_Layer_2_Psychological_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 16
+      }
+    },
+    {
+      "id": "PSY-F06",
+      "name": "Attention & Cognitive Processing",
+      "layer": "Psychological",
+      "definition": "State variables governing allocation of attention, available processing capacity, representational framing, elaboration, and processing ease or flexibility.",
+      "includes": "Attention allocation, salience, cognitive load, working-memory availability, elaboration, construal, fluency, and cognitive flexibility.",
+      "exclusions": "Stored knowledge or memory representations (F07), executive self-regulation (F09), and stable need for cognition (F14).",
+      "representativeDrivers": [
+        "Selective Attention Allocation",
+        "Attentional Salience",
+        "Cognitive Load",
+        "Working Memory Availability",
+        "Elaboration Depth",
+        "Construal Frame"
+      ],
+      "representativeDriverIds": [
+        "PSY-055",
+        "PSY-056",
+        "PSY-057",
+        "PSY-058",
+        "PSY-059",
+        "PSY-060"
+      ],
+      "driverCount": 8,
+      "source": {
+        "workbook": "PSYWERX_Layer_2_Psychological_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 10
+      }
+    },
+    {
+      "id": "PSY-F01",
+      "name": "Beliefs, Attitudes & Outcome Expectancies",
+      "layer": "Psychological",
+      "definition": "Evaluative and propositional variables representing what a person believes about an action, its consequences, and its personal relevance.",
+      "includes": "Behavior-specific evaluations, belief confidence, expected consequences, expected success, relevance, and outcome value.",
+      "exclusions": "Threat/coping appraisals (F02), source judgments (F13), knowledge structures (F07), and goals or intentions (F04).",
+      "representativeDrivers": [
+        "Attitude Valence",
+        "Attitude Strength",
+        "Belief Strength",
+        "Outcome Expectancy",
+        "Outcome Valuation",
+        "Success Expectancy"
+      ],
+      "representativeDriverIds": [
+        "PSY-001",
+        "PSY-002",
+        "PSY-003",
+        "PSY-004",
+        "PSY-005",
+        "PSY-006"
+      ],
+      "driverCount": 7,
+      "source": {
+        "workbook": "PSYWERX_Layer_2_Psychological_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 5
+      }
+    },
+    {
+      "id": "PSY-F10",
+      "name": "Decision Valuation Across Risk, Time & Effort",
+      "layer": "Psychological",
+      "definition": "Parameters and state-dependent valuations that shape choice under gains, losses, delay, effort, risk, ambiguity, and default structures.",
+      "includes": "Loss sensitivity, reference points, probability weighting, risk/ambiguity preference, temporal and effort discounting, present bias, decision conflict, and default preference.",
+      "exclusions": "Objective payoffs, choice architecture outside the person, or broad attitudes toward a behavior.",
+      "representativeDrivers": [
+        "Loss Aversion",
+        "Reference Point",
+        "Risk Preference",
+        "Probability Weighting",
+        "Ambiguity Aversion",
+        "Delay Discounting"
+      ],
+      "representativeDriverIds": [
+        "PSY-084",
+        "PSY-085",
+        "PSY-086",
+        "PSY-087",
+        "PSY-088",
+        "PSY-089"
+      ],
+      "driverCount": 10,
+      "source": {
+        "workbook": "PSYWERX_Layer_2_Psychological_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 14
+      }
+    },
+    {
+      "id": "PSY-F13",
+      "name": "Epistemic Trust & Persuasion",
+      "layer": "Psychological",
+      "definition": "Judgments and motivational states governing acceptance, rejection, search, confidence, and resistance when evaluating information and sources.",
+      "includes": "Source credibility, perceived argument strength, counterarguing, metacognitive confidence, resistance motivation, epistemic trust, and perceived information sufficiency.",
+      "exclusions": "Objective source properties, information quality, channel affordances, and general cognitive capacity.",
+      "representativeDrivers": [
+        "Perceived Source Credibility",
+        "Perceived Argument Strength",
+        "Counterarguing Intensity",
+        "Metacognitive Confidence",
+        "Resistance Motivation",
+        "Epistemic Trust"
+      ],
+      "representativeDriverIds": [
+        "PSY-113",
+        "PSY-114",
+        "PSY-115",
+        "PSY-116",
+        "PSY-117",
+        "PSY-118"
+      ],
+      "driverCount": 7,
+      "source": {
+        "workbook": "PSYWERX_Layer_2_Psychological_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 17
+      }
+    },
+    {
+      "id": "PSY-F07",
+      "name": "Knowledge, Memory & Mental Representation",
+      "layer": "Psychological",
+      "definition": "Variables describing accessible knowledge, remembered familiarity and confidence, causal beliefs, and the coherence of internal situation models.",
+      "includes": "Causal-belief strength, mental-model coherence, domain knowledge, memory accessibility, familiarity, memory confidence, and prior-belief congruence.",
+      "exclusions": "Information properties outside the person, processing operations, and reinforcement contingencies.",
+      "representativeDrivers": [
+        "Causal Belief Strength",
+        "Mental Model Coherence",
+        "Domain Knowledge",
+        "Memory Accessibility",
+        "Familiarity",
+        "Memory Confidence"
+      ],
+      "representativeDriverIds": [
+        "PSY-063",
+        "PSY-064",
+        "PSY-065",
+        "PSY-066",
+        "PSY-067",
+        "PSY-068"
+      ],
+      "driverCount": 7,
+      "source": {
+        "workbook": "PSYWERX_Layer_2_Psychological_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 11
+      }
+    },
+    {
+      "id": "PSY-F08",
+      "name": "Learning, Habit & Automaticity",
+      "layer": "Psychological",
+      "definition": "Learned action propensities and associations that permit cues and expected reinforcement to guide behavior with reduced deliberation.",
+      "includes": "Habit strength, automaticity, cue-response associations, reinforcement expectations, and socially learned expectancies.",
+      "exclusions": "The learning mechanism itself, raw repetition counts, or deliberate implementation plans.",
+      "representativeDrivers": [
+        "Habit Strength",
+        "Behavioral Automaticity",
+        "Cue–Response Association Strength",
+        "Reinforcement Expectancy",
+        "Observationally Learned Expectancy"
+      ],
+      "representativeDriverIds": [
+        "PSY-070",
+        "PSY-071",
+        "PSY-072",
+        "PSY-073",
+        "PSY-074"
+      ],
+      "driverCount": 5,
+      "source": {
+        "workbook": "PSYWERX_Layer_2_Psychological_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 12
+      }
+    },
+    {
+      "id": "PSY-F04",
+      "name": "Motivation, Goals & Psychological Needs",
+      "layer": "Psychological",
+      "definition": "Variables that energize, direct, prioritize, and sustain intended action, including goal properties and experienced need satisfaction.",
+      "includes": "Intentions, goal attributes, motivational regulation, approach/avoidance orientation, need satisfaction, and anticipated regret.",
+      "exclusions": "Action plans and monitoring processes (F09), trait dispositions (F14), or outcome expectancies (F01).",
+      "representativeDrivers": [
+        "Intention Strength",
+        "Goal Commitment",
+        "Goal Specificity",
+        "Goal Difficulty",
+        "Goal Conflict",
+        "Goal Priority"
+      ],
+      "representativeDriverIds": [
+        "PSY-026",
+        "PSY-027",
+        "PSY-028",
+        "PSY-029",
+        "PSY-030",
+        "PSY-031"
+      ],
+      "driverCount": 15,
+      "source": {
+        "workbook": "PSYWERX_Layer_2_Psychological_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 8
+      }
+    },
+    {
+      "id": "PSY-F03",
+      "name": "Normative & Relational Perceptions",
+      "layer": "Psychological",
+      "definition": "Internal perceptions of what others do or approve, and of the quality, fairness, legitimacy, support, and standing experienced in relationships or groups.",
+      "includes": "Perceived norms, approval, support, belonging, trust, fairness, legitimacy, exclusion, and status.",
+      "exclusions": "Actual network structure, observed group behavior, institutional rules, or cultural norms as external conditions.",
+      "representativeDrivers": [
+        "Perceived Descriptive Norm",
+        "Perceived Injunctive Norm",
+        "Anticipated Social Approval",
+        "Perceived Social Support",
+        "Perceived Belonging",
+        "Interpersonal Trust"
+      ],
+      "representativeDriverIds": [
+        "PSY-016",
+        "PSY-017",
+        "PSY-018",
+        "PSY-019",
+        "PSY-020",
+        "PSY-021"
+      ],
+      "driverCount": 10,
+      "source": {
+        "workbook": "PSYWERX_Layer_2_Psychological_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 7
+      }
+    },
+    {
+      "id": "PSY-F09",
+      "name": "Planning, Self-Regulation & Executive Control",
+      "layer": "Psychological",
+      "definition": "Variables enabling prospective planning, monitoring, inhibition, attentional control, emotion management, and correction of goal-directed action.",
+      "includes": "Implementation intentions, plan specificity, monitoring, goal discrepancy, regulatory capacity, inhibitory control, and coping flexibility.",
+      "exclusions": "Goal content or motivation (F04), momentary cognitive load (F06), and stable trait self-control (F14).",
+      "representativeDrivers": [
+        "Implementation Intention Strength",
+        "Action Plan Specificity",
+        "Self-Monitoring Intensity",
+        "Goal–State Discrepancy",
+        "Emotion Regulation Capacity",
+        "Attentional Control Capacity"
+      ],
+      "representativeDriverIds": [
+        "PSY-075",
+        "PSY-076",
+        "PSY-077",
+        "PSY-078",
+        "PSY-079",
+        "PSY-080"
+      ],
+      "driverCount": 9,
+      "source": {
+        "workbook": "PSYWERX_Layer_2_Psychological_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 13
+      }
+    },
+    {
+      "id": "PSY-F02",
+      "name": "Risk, Threat & Coping Appraisal",
+      "layer": "Psychological",
+      "definition": "Subjective appraisals of likelihood, severity, control, efficacy, capability, and helplessness in relation to threats or difficult demands.",
+      "includes": "Perceived vulnerability, severity, controllability, response efficacy, personal capability, and coping capacity.",
+      "exclusions": "Objective hazards, physiological stress responses, general affect, and stable punishment sensitivity.",
+      "representativeDrivers": [
+        "Perceived Outcome Likelihood",
+        "Perceived Threat Severity",
+        "Response Efficacy",
+        "Self-Efficacy",
+        "Perceived Behavioral Control",
+        "Perceived Controllability"
+      ],
+      "representativeDriverIds": [
+        "PSY-008",
+        "PSY-009",
+        "PSY-010",
+        "PSY-011",
+        "PSY-012",
+        "PSY-013"
+      ],
+      "driverCount": 8,
+      "source": {
+        "workbook": "PSYWERX_Layer_2_Psychological_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 6
+      }
+    },
+    {
+      "id": "PSY-F11",
+      "name": "Self-Concept, Identity & Consistency",
+      "layer": "Psychological",
+      "definition": "Variables describing the salience, centrality, clarity, fusion, and threatened or inconsistent state of personal and social self-representations.",
+      "includes": "Behavioral self-identity, identity salience/centrality, social identification, fusion, self-concept clarity, integrity or identity threat, and dissonance.",
+      "exclusions": "Demographic labels, group membership itself, cultural identity content, and moral judgments about particular acts.",
+      "representativeDrivers": [
+        "Behavioral Self-Identity",
+        "Identity Salience",
+        "Identity Centrality",
+        "Social Identification Strength",
+        "Identity Fusion",
+        "Self-Concept Clarity"
+      ],
+      "representativeDriverIds": [
+        "PSY-094",
+        "PSY-095",
+        "PSY-096",
+        "PSY-097",
+        "PSY-098",
+        "PSY-099"
+      ],
+      "driverCount": 10,
+      "source": {
+        "workbook": "PSYWERX_Layer_2_Psychological_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 15
+      }
+    },
+    {
+      "id": "PSY-F14",
+      "name": "Stable Dispositions & Temperament",
+      "layer": "Psychological",
+      "definition": "Relatively enduring individual-difference parameters that systematically bias appraisal, motivation, affect, and self-regulation across situations.",
+      "includes": "Broad personality traits, impulsivity, sensation seeking, reward/punishment sensitivity, need for cognition, need for closure, and intolerance of uncertainty.",
+      "exclusions": "Demographic labels, diagnoses, transient states, or claims that traits determine behavior regardless of context.",
+      "representativeDrivers": [
+        "Conscientiousness",
+        "Neuroticism",
+        "Extraversion",
+        "Agreeableness",
+        "Openness to Experience",
+        "Trait Impulsivity"
+      ],
+      "representativeDriverIds": [
+        "PSY-120",
+        "PSY-121",
+        "PSY-122",
+        "PSY-123",
+        "PSY-124",
+        "PSY-125"
+      ],
+      "driverCount": 12,
+      "source": {
+        "workbook": "PSYWERX_Layer_2_Psychological_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 18
+      }
+    },
+    {
+      "id": "SOC-F11",
+      "name": "Audience & Social Evaluation",
+      "layer": "Social",
+      "definition": "Observable social-evaluation conditions created when other people can witness, identify, monitor, or evaluate an actor and an action.",
+      "includes": "Audience presence and size, actor identifiability, action publicness, evaluation exposure, and peer monitoring intensity.",
+      "exclusions": "Evaluation apprehension or reputational concern (Psychological), sensor surveillance (Technological), and formal audit regimes (Institutional / Structural).",
+      "representativeDrivers": [
+        "Audience Presence",
+        "Audience Size",
+        "Actor Identifiability",
+        "Action Publicness",
+        "Evaluation Exposure",
+        "Peer Monitoring Intensity"
+      ],
+      "representativeDriverIds": [
+        "SOC-082",
+        "SOC-083",
+        "SOC-084",
+        "SOC-085",
+        "SOC-086",
+        "SOC-087"
+      ],
+      "driverCount": 6,
+      "source": {
+        "workbook": "PSYWERX_Layer_3_Social_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 15
+      }
+    },
+    {
+      "id": "SOC-F05",
+      "name": "Cooperation, Reciprocity & Mutual Dependence",
+      "layer": "Social",
+      "definition": "Relational conditions governing reliable exchange, mutual aid, repeated cooperation, resource sharing, and vulnerability to free riding.",
+      "includes": "Partner reliability, cooperation prevalence, reciprocity balance, repeated interaction, mutual aid, resource sharing, and free-riding prevalence.",
+      "exclusions": "Interpersonal trust or fairness appraisals, prosocial traits, formal contracts, and cooperation as an unanalyzed behavioral outcome.",
+      "representativeDrivers": [
+        "Partner Reliability",
+        "Cooperation Prevalence",
+        "Reciprocity Balance",
+        "Repeated Interaction Probability",
+        "Mutual Aid Frequency",
+        "Resource-Sharing Rate"
+      ],
+      "representativeDriverIds": [
+        "SOC-033",
+        "SOC-034",
+        "SOC-035",
+        "SOC-036",
+        "SOC-037",
+        "SOC-038"
+      ],
+      "driverCount": 7,
+      "source": {
+        "workbook": "PSYWERX_Layer_3_Social_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 9
+      }
+    },
+    {
+      "id": "SOC-F10",
+      "name": "Coordination, Accountability & Collective Capacity",
+      "layer": "Social",
+      "definition": "Group-level conditions that make coordinated action feasible by aligning goals, expectations, knowledge, roles, responsibility, and answerability.",
+      "includes": "Task interdependence, goal alignment, common knowledge, expectation alignment, collective efficacy, role clarity, identifiable contributions, responsibility concentration, and peer accountability.",
+      "exclusions": "Individual self-efficacy or intentions, formal compliance systems, communication-channel properties, and collective action outcomes.",
+      "representativeDrivers": [
+        "Task Interdependence",
+        "Goal Alignment",
+        "Common Knowledge Degree",
+        "Mutual Expectation Alignment",
+        "Collective Efficacy",
+        "Role Clarity"
+      ],
+      "representativeDriverIds": [
+        "SOC-073",
+        "SOC-074",
+        "SOC-075",
+        "SOC-076",
+        "SOC-077",
+        "SOC-078"
+      ],
+      "driverCount": 9,
+      "source": {
+        "workbook": "PSYWERX_Layer_3_Social_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 14
+      }
+    },
+    {
+      "id": "SOC-F02",
+      "name": "Direct Social Influence Conditions",
+      "layer": "Social",
+      "definition": "Observable properties of other people and influence settings that change the social evidence, pressure, or models available to an actor.",
+      "includes": "Majority size and unanimity, minority consistency, peer presence and exposure, and socially relevant model similarity or status.",
+      "exclusions": "Conformity itself, internal normative or informational influence mechanisms, persuasion judgments, and message-content properties.",
+      "representativeDrivers": [
+        "Majority Signal Size",
+        "Majority Unanimity",
+        "Minority Consistency",
+        "Peer Presence",
+        "Peer Behavior Exposure Frequency",
+        "Social Model Similarity"
+      ],
+      "representativeDriverIds": [
+        "SOC-009",
+        "SOC-010",
+        "SOC-011",
+        "SOC-012",
+        "SOC-013",
+        "SOC-014"
+      ],
+      "driverCount": 7,
+      "source": {
+        "workbook": "PSYWERX_Layer_3_Social_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 6
+      }
+    },
+    {
+      "id": "SOC-F09",
+      "name": "Group Composition, Cohesion & Deliberation",
+      "layer": "Social",
+      "definition": "Properties of bounded groups that shape participation, information pooling, dissent, subgroup formation, and sustained joint activity.",
+      "includes": "Group size, cohesion, turnover, roles, opinion diversity, dissent availability, participation equality, shared-information coverage, and factionalization.",
+      "exclusions": "Individual identity or emotion, performance outcomes, formal governance rules, and group labels without a varying property.",
+      "representativeDrivers": [
+        "Group Size",
+        "Group Cohesion",
+        "Member Turnover Rate",
+        "Role Differentiation",
+        "Opinion Diversity",
+        "Dissent Availability"
+      ],
+      "representativeDriverIds": [
+        "SOC-064",
+        "SOC-065",
+        "SOC-066",
+        "SOC-067",
+        "SOC-068",
+        "SOC-069"
+      ],
+      "driverCount": 9,
+      "source": {
+        "workbook": "PSYWERX_Layer_3_Social_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 13
+      }
+    },
+    {
+      "id": "SOC-F04",
+      "name": "Inclusion, Support & Social Integration",
+      "layer": "Social",
+      "definition": "Observable access to relationships, supportive transactions, participation, and exclusion that embed or isolate an actor within a social system.",
+      "includes": "Personal-network size and breadth, support availability and receipt, inclusion and ostracism events, and objective social isolation.",
+      "exclusions": "Perceived support, loneliness, belonging, attachment needs, and clinical or health outcomes.",
+      "representativeDrivers": [
+        "Personal Network Size",
+        "Social Integration Breadth",
+        "Support Provider Availability",
+        "Received Emotional Support",
+        "Received Instrumental Support",
+        "Received Informational Support"
+      ],
+      "representativeDriverIds": [
+        "SOC-024",
+        "SOC-025",
+        "SOC-026",
+        "SOC-027",
+        "SOC-028",
+        "SOC-029"
+      ],
+      "driverCount": 9,
+      "source": {
+        "workbook": "PSYWERX_Layer_3_Social_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 8
+      }
+    },
+    {
+      "id": "SOC-F03",
+      "name": "Interaction & Relational Embeddedness",
+      "layer": "Social",
+      "definition": "Properties of recurring interpersonal interaction and dyadic ties that determine access, obligation, familiarity, and relational constraint.",
+      "includes": "Interaction amount, relationship duration and stability, closeness, reciprocity, multiplexity, and negative interaction frequency.",
+      "exclusions": "Perceived belonging or trust, network-wide topology, formal role assignments, and one-off behavior without a relational state.",
+      "representativeDrivers": [
+        "Interaction Frequency",
+        "Interaction Duration",
+        "Relationship Duration",
+        "Relational Closeness",
+        "Tie Reciprocity",
+        "Tie Multiplexity"
+      ],
+      "representativeDriverIds": [
+        "SOC-016",
+        "SOC-017",
+        "SOC-018",
+        "SOC-019",
+        "SOC-020",
+        "SOC-021"
+      ],
+      "driverCount": 8,
+      "source": {
+        "workbook": "PSYWERX_Layer_3_Social_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 7
+      }
+    },
+    {
+      "id": "SOC-F12",
+      "name": "Intergroup Contact, Boundaries & Competition",
+      "layer": "Social",
+      "definition": "Relational conditions connecting or separating social groups and governing contact, friendship, cooperation, competition, interdependence, and relative position between them.",
+      "includes": "Intergroup contact and friendship, cross-group ties, competition and cooperation, resource interdependence, boundary permeability, inequality, and cross-cutting memberships.",
+      "exclusions": "Threat, prejudice, anxiety, identification, or outgroup evaluation (Psychological), cultural meanings, and formal segregation policies.",
+      "representativeDrivers": [
+        "Intergroup Contact Frequency",
+        "Intergroup Contact Quality",
+        "Cross-Group Friendship Prevalence",
+        "Intergroup Cooperation",
+        "Intergroup Competition Intensity",
+        "Intergroup Resource Interdependence"
+      ],
+      "representativeDriverIds": [
+        "SOC-088",
+        "SOC-089",
+        "SOC-090",
+        "SOC-091",
+        "SOC-092",
+        "SOC-093"
+      ],
+      "driverCount": 10,
+      "source": {
+        "workbook": "PSYWERX_Layer_3_Social_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 16
+      }
+    },
+    {
+      "id": "SOC-F08",
+      "name": "Network Exposure & Social Diffusion",
+      "layer": "Social",
+      "definition": "Relational exposure conditions through which behaviors, practices, and social signals reach an actor through a network.",
+      "includes": "Proportion, frequency, independence, reinforcement, referent influence, and cross-cluster composition of network exposure.",
+      "exclusions": "Information accuracy or framing, algorithmic ranking, adoption behavior itself, and influence inferred from observational similarity alone.",
+      "representativeDrivers": [
+        "Network Exposure Proportion",
+        "Exposure Frequency",
+        "Independent Exposure Source Count",
+        "Social Reinforcement Multiplicity",
+        "Influential-Referent Exposure",
+        "Cross-Cluster Exposure"
+      ],
+      "representativeDriverIds": [
+        "SOC-058",
+        "SOC-059",
+        "SOC-060",
+        "SOC-061",
+        "SOC-062",
+        "SOC-063"
+      ],
+      "driverCount": 6,
+      "source": {
+        "workbook": "PSYWERX_Layer_3_Social_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 12
+      }
+    },
+    {
+      "id": "SOC-F07",
+      "name": "Network Structure & Position",
+      "layer": "Social",
+      "definition": "Graph-level and actor-position variables describing connectivity, closure, brokerage, assortative mixing, and separation in social networks.",
+      "includes": "Recognized network measures with explicit relational meaning, including centrality, density, clustering, constraint, cross-cluster ties, and segregation.",
+      "exclusions": "Platform algorithms, raw trace counts without a defined network, perceived network position, and diffusion outcomes.",
+      "representativeDrivers": [
+        "Degree Centrality",
+        "Betweenness Centrality",
+        "Eigenvector Centrality",
+        "Network Density",
+        "Local Clustering",
+        "Network Assortativity"
+      ],
+      "representativeDriverIds": [
+        "SOC-049",
+        "SOC-050",
+        "SOC-051",
+        "SOC-052",
+        "SOC-053",
+        "SOC-054"
+      ],
+      "driverCount": 9,
+      "source": {
+        "workbook": "PSYWERX_Layer_3_Social_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 11
+      }
+    },
+    {
+      "id": "SOC-F01",
+      "name": "Normative Climate & Informal Enforcement",
+      "layer": "Social",
+      "definition": "Group-level behavioral regularities, expressed approval patterns, and informal reinforcement conditions that make conduct more or less socially expected.",
+      "includes": "Observed behavioral prevalence, publicly expressed approval, consensus, trends, visibility, and informal social rewards or sanctions.",
+      "exclusions": "An individual's perceived norms (Psychological), deeply shared cultural meanings (Cultural), and formal rules or penalties (Institutional / Structural).",
+      "representativeDrivers": [
+        "Behavioral Prevalence",
+        "Expressed Approval Prevalence",
+        "Norm Consensus",
+        "Norm Change Rate",
+        "Norm Visibility",
+        "Informal Sanction Probability"
+      ],
+      "representativeDriverIds": [
+        "SOC-001",
+        "SOC-002",
+        "SOC-003",
+        "SOC-004",
+        "SOC-005",
+        "SOC-006"
+      ],
+      "driverCount": 8,
+      "source": {
+        "workbook": "PSYWERX_Layer_3_Social_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 5
+      }
+    },
+    {
+      "id": "SOC-F06",
+      "name": "Status, Reputation & Relational Power",
+      "layer": "Social",
+      "definition": "Socially conferred rank, standing, deference, and asymmetric control that structure whose preferences and actions carry weight.",
+      "includes": "Status rank and hierarchy shape, reputation, deference, resource or dependence asymmetry, and informal authority.",
+      "exclusions": "Status motives or perceived status (Psychological), demographic labels, and authority defined solely by law or office (Institutional / Structural).",
+      "representativeDrivers": [
+        "Status Rank",
+        "Status Hierarchy Steepness",
+        "Status Mobility Rate",
+        "Reputation Valence",
+        "Reputation Visibility",
+        "Deference Received"
+      ],
+      "representativeDriverIds": [
+        "SOC-040",
+        "SOC-041",
+        "SOC-042",
+        "SOC-043",
+        "SOC-044",
+        "SOC-045"
+      ],
+      "driverCount": 9,
+      "source": {
+        "workbook": "PSYWERX_Layer_3_Social_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 10
+      }
+    },
+    {
+      "id": "CUL-F07",
+      "name": "Collective Memory, Narrative & Symbolic Meaning",
+      "layer": "Cultural",
+      "definition": "Durable shared representations of history, group continuity, causal stories, symbols, and interpretive schemas.",
+      "includes": "Culture-level salience, centrality, consensus, and persistence of memories, narratives, myths, schemas, and symbolic boundaries.",
+      "exclusions": "Individual memory accessibility or belief (Psychological) and properties of a specific message or artifact (Informational).",
+      "representativeDrivers": [
+        "Collective Memory Salience",
+        "Canonical Narrative Centrality",
+        "Historical Grievance Narrative Centrality",
+        "Founding Narrative Centrality",
+        "Cultural Schema Consensus",
+        "Symbolic Boundary Salience"
+      ],
+      "representativeDriverIds": [
+        "CUL-033",
+        "CUL-034",
+        "CUL-035",
+        "CUL-036",
+        "CUL-037",
+        "CUL-038"
+      ],
+      "driverCount": 9,
+      "source": {
+        "workbook": "PSYWERX_Layer_4_Cultural_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 11
+      }
+    },
+    {
+      "id": "CUL-F13",
+      "name": "Cultural Identity, Boundaries & Change",
+      "layer": "Cultural",
+      "definition": "Shared cultural representations that define collective continuity, prototypes, boundaries, accommodation, and receptivity to change.",
+      "includes": "Culture-level identity narratives, prototype consensus, boundary rigidity, assimilation expectations, continuity norms, and generational cultural distance.",
+      "exclusions": "Individual identity salience or acculturation orientation (Psychological), group membership (Social), and citizenship status (Institutional / Structural).",
+      "representativeDrivers": [
+        "Collective Identity Narrative Centrality",
+        "Cultural Prototype Consensus",
+        "Cultural Boundary Rigidity",
+        "Assimilation Expectation Strength",
+        "Multicultural Accommodation Norm Strength",
+        "Heritage Continuity Norm Strength"
+      ],
+      "representativeDriverIds": [
+        "CUL-082",
+        "CUL-083",
+        "CUL-084",
+        "CUL-085",
+        "CUL-086",
+        "CUL-087"
+      ],
+      "driverCount": 7,
+      "source": {
+        "workbook": "PSYWERX_Layer_4_Cultural_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 17
+      }
+    },
+    {
+      "id": "CUL-F06",
+      "name": "Cultural Transmission & Social Learning",
+      "layer": "Cultural",
+      "definition": "Culture-level rates and patterned pathways through which variants are copied, retained, and transmitted across people and generations.",
+      "includes": "Observable transmission prevalence, fidelity, and weighting toward majority, prestige, success, parent, or elder models.",
+      "exclusions": "Learning as an unmeasured mechanism, individual observational expectancies (Psychological), and platform recommendation properties (Technological).",
+      "representativeDrivers": [
+        "Conformist Transmission Prevalence",
+        "Prestige-Biased Transmission Prevalence",
+        "Success-Biased Transmission Prevalence",
+        "Vertical Cultural Transmission Prevalence",
+        "Elder-Model Transmission Prevalence",
+        "Cultural Transmission Fidelity"
+      ],
+      "representativeDriverIds": [
+        "CUL-028",
+        "CUL-029",
+        "CUL-030",
+        "CUL-031",
+        "CUL-032",
+        "CUL-069"
+      ],
+      "driverCount": 6,
+      "source": {
+        "workbook": "PSYWERX_Layer_4_Cultural_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 10
+      }
+    },
+    {
+      "id": "CUL-F10",
+      "name": "Emotion Culture & Display Rules",
+      "layer": "Cultural",
+      "definition": "Culturally transmitted expectations about desirable emotions and the appropriate expression, restraint, or regulation of affect.",
+      "includes": "Shared ideal-affect priorities and domain-specific display, restraint, anger, and shame norms.",
+      "exclusions": "Experienced emotion intensity and regulation capacity, which remain Psychological.",
+      "representativeDrivers": [
+        "High-Arousal Positive Ideal-Affect Prominence",
+        "Low-Arousal Positive Ideal-Affect Prominence",
+        "Emotional Display-Rule Strength",
+        "Emotional Restraint Norm Strength",
+        "Anger Expression Legitimacy",
+        "Shame-Regulation Norm Strength"
+      ],
+      "representativeDriverIds": [
+        "CUL-047",
+        "CUL-048",
+        "CUL-049",
+        "CUL-050",
+        "CUL-051",
+        "CUL-076"
+      ],
+      "driverCount": 6,
+      "source": {
+        "workbook": "PSYWERX_Layer_4_Cultural_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 14
+      }
+    },
+    {
+      "id": "CUL-F11",
+      "name": "Epistemic, Cognitive & Temporal Conventions",
+      "layer": "Cultural",
+      "definition": "Shared interpretive conventions about attention, explanation, knowledge legitimacy, contradiction, time, and fate.",
+      "includes": "Culture-level prevalence of reasoning, attribution, epistemic-authority, temporal, and fatalistic conventions.",
+      "exclusions": "Individual attention, attribution, cognitive style, risk preference, or belief strength (Psychological).",
+      "representativeDrivers": [
+        "Contextual Attention Convention Prevalence",
+        "Object-Focused Attention Convention Prevalence",
+        "Dialectical Reasoning Convention Prevalence",
+        "Contextual Causal-Explanation Convention",
+        "Tradition-Based Epistemic Authority",
+        "Authority-Based Knowledge Legitimacy"
+      ],
+      "representativeDriverIds": [
+        "CUL-052",
+        "CUL-053",
+        "CUL-054",
+        "CUL-055",
+        "CUL-056",
+        "CUL-077"
+      ],
+      "driverCount": 8,
+      "source": {
+        "workbook": "PSYWERX_Layer_4_Cultural_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 15
+      }
+    },
+    {
+      "id": "CUL-F04",
+      "name": "Honor, Face, Dignity & Hierarchy Logics",
+      "layer": "Cultural",
+      "definition": "Shared systems defining how social worth is established, threatened, defended, and recognized.",
+      "includes": "Culture-level honor, face, dignity, prestige, deference, and reputation-defense expectations.",
+      "exclusions": "Personal status motives or threat appraisals (Psychological), actual rank and reputation (Social), and formal authority (Institutional / Structural).",
+      "representativeDrivers": [
+        "Honor Norm Strength",
+        "Face-Preservation Norm Strength",
+        "Dignity Norm Strength",
+        "Prestige Valuation Prominence",
+        "Authority Deference Norm Strength",
+        "Reputation-Defense Obligation Strength"
+      ],
+      "representativeDriverIds": [
+        "CUL-019",
+        "CUL-020",
+        "CUL-021",
+        "CUL-022",
+        "CUL-023",
+        "CUL-065"
+      ],
+      "driverCount": 6,
+      "source": {
+        "workbook": "PSYWERX_Layer_4_Cultural_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 8
+      }
+    },
+    {
+      "id": "CUL-F05",
+      "name": "Kinship, Family & Communal Obligation",
+      "layer": "Cultural",
+      "definition": "Culturally transmitted expectations governing duties to kin, family roles, lineage, guests, and the wider community.",
+      "includes": "Shared obligation strength, role prescriptiveness, loyalty, hospitality, and communal resource-sharing expectations.",
+      "exclusions": "Demographic family labels, actual network ties (Social), private attachment or belonging (Psychological), and family law (Institutional / Structural).",
+      "representativeDrivers": [
+        "Kinship Obligation Strength",
+        "Filial Obligation Strength",
+        "Lineage Loyalty Norm Strength",
+        "Family Obligation Strength",
+        "Hospitality Obligation Strength",
+        "Communal Resource-Sharing Obligation"
+      ],
+      "representativeDriverIds": [
+        "CUL-024",
+        "CUL-025",
+        "CUL-026",
+        "CUL-027",
+        "CUL-066",
+        "CUL-067"
+      ],
+      "driverCount": 7,
+      "source": {
+        "workbook": "PSYWERX_Layer_4_Cultural_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 9
+      }
+    },
+    {
+      "id": "CUL-F12",
+      "name": "Language & Communication Conventions",
+      "layer": "Cultural",
+      "definition": "Culturally shared pragmatic rules governing directness, politeness, status marking, explicitness, silence, and euphemism.",
+      "includes": "Stable communication conventions that can be assessed across interactions, corpora, and community judgments.",
+      "exclusions": "Language identity labels, properties of a specific message (Informational), and transmission-channel features (Technological).",
+      "representativeDrivers": [
+        "Communication Directness Convention",
+        "Politeness Convention Strength",
+        "Honorific Use Norm Strength",
+        "Euphemism Use Norm Strength",
+        "Silence Appropriateness Norm",
+        "Communication Explicitness Convention"
+      ],
+      "representativeDriverIds": [
+        "CUL-057",
+        "CUL-058",
+        "CUL-059",
+        "CUL-060",
+        "CUL-080",
+        "CUL-081"
+      ],
+      "driverCount": 6,
+      "source": {
+        "workbook": "PSYWERX_Layer_4_Cultural_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 16
+      }
+    },
+    {
+      "id": "CUL-F03",
+      "name": "Norm Strength & Informal Rules",
+      "layer": "Cultural",
+      "definition": "Durable, widely transmitted properties of informal rules that govern the strength, scope, persistence, and acceptability of deviation.",
+      "includes": "Culture-level norm entrenchment, tightness, scope, deviance tolerance, and domain-specific informal rules.",
+      "exclusions": "Immediate-group prevalence and sanctions (Social), perceived norms (Psychological), and codified rules or penalties (Institutional / Structural).",
+      "representativeDrivers": [
+        "Cultural Tightness",
+        "Cultural Deviance Tolerance",
+        "Cultural Norm Entrenchment",
+        "Normative Scope Breadth",
+        "Tradition Continuity Norm Strength",
+        "Corruption Tolerance Norm Strength"
+      ],
+      "representativeDriverIds": [
+        "CUL-017",
+        "CUL-018",
+        "CUL-061",
+        "CUL-062",
+        "CUL-063",
+        "CUL-064"
+      ],
+      "driverCount": 6,
+      "source": {
+        "workbook": "PSYWERX_Layer_4_Cultural_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 7
+      }
+    },
+    {
+      "id": "CUL-F08",
+      "name": "Ritual, Tradition & Cultural Practice",
+      "layer": "Cultural",
+      "definition": "Culturally shared expectations and properties that give recurring rituals, traditions, and practices behavioral force.",
+      "includes": "Ritual obligation, significance, synchronization, cost, and the entrenchment of customary practice.",
+      "exclusions": "A single performance treated merely as behavior, physiological synchrony (Biological), or formal ceremonial requirements (Institutional / Structural).",
+      "representativeDrivers": [
+        "Ritual Participation Expectation",
+        "Ritual Synchronization Degree",
+        "Ritual Participation Cost",
+        "Ritual Significance",
+        "Customary Practice Entrenchment"
+      ],
+      "representativeDriverIds": [
+        "CUL-039",
+        "CUL-040",
+        "CUL-041",
+        "CUL-073",
+        "CUL-074"
+      ],
+      "driverCount": 5,
+      "source": {
+        "workbook": "PSYWERX_Layer_4_Cultural_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 12
+      }
+    },
+    {
+      "id": "CUL-F09",
+      "name": "Sacredness, Taboo & Moral Boundaries",
+      "layer": "Cultural",
+      "definition": "Shared cultural conditions that mark objects, values, acts, or categories as sacred, prohibited, polluted, or non-negotiable.",
+      "includes": "Culture-level sacred commitment, taboo strength, purity norms, moralization, and trade-off prohibitions.",
+      "exclusions": "An individual's moral conviction (Psychological), legal prohibition (Institutional / Structural), and taboo-violating content (Informational).",
+      "representativeDrivers": [
+        "Shared Sacred-Value Commitment Prevalence",
+        "Sacred Trade-Off Prohibition Strength",
+        "Purity Norm Strength",
+        "Taboo Strength",
+        "Cultural Moralization Degree",
+        "Sacred Boundary Rigidity"
+      ],
+      "representativeDriverIds": [
+        "CUL-042",
+        "CUL-043",
+        "CUL-044",
+        "CUL-045",
+        "CUL-046",
+        "CUL-075"
+      ],
+      "driverCount": 6,
+      "source": {
+        "workbook": "PSYWERX_Layer_4_Cultural_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 13
+      }
+    },
+    {
+      "id": "CUL-F02",
+      "name": "Selfhood, Agency & Relational Models",
+      "layer": "Cultural",
+      "definition": "Shared cultural models of what a person is, how agency should be expressed, and how selves should relate to others.",
+      "includes": "Publicly reproduced models of autonomous, relational, or collective personhood and culturally favored ways of exercising agency.",
+      "exclusions": "An individual's self-construal, identity salience, perceived agency, or motivation, which remain Psychological.",
+      "representativeDrivers": [
+        "Autonomous Selfhood Model Prevalence",
+        "Interdependent Selfhood Model Prevalence",
+        "Relational Selfhood Model Prevalence",
+        "Collective Selfhood Model Prevalence",
+        "Influence-as-Agency Norm Strength",
+        "Adjustment-as-Agency Norm Strength"
+      ],
+      "representativeDriverIds": [
+        "CUL-011",
+        "CUL-012",
+        "CUL-013",
+        "CUL-014",
+        "CUL-015",
+        "CUL-016"
+      ],
+      "driverCount": 6,
+      "source": {
+        "workbook": "PSYWERX_Layer_4_Cultural_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 6
+      }
+    },
+    {
+      "id": "CUL-F01",
+      "name": "Shared Values & Moral Priorities",
+      "layer": "Cultural",
+      "definition": "Culture-level prominence of broadly desirable goals and moral priorities that organize collective judgments and trade-offs.",
+      "includes": "Shared value emphases measured at a specified community, subculture, organization, region, nation, or transnational cultural level.",
+      "exclusions": "Individual value endorsement (Psychological), formal policy priorities (Institutional / Structural), and observed behavior without evidence of shared valuation.",
+      "representativeDrivers": [
+        "Shared Self-Direction Value Prominence",
+        "Shared Stimulation Value Prominence",
+        "Shared Hedonism Value Prominence",
+        "Shared Achievement Value Prominence",
+        "Shared Power Value Prominence",
+        "Shared Security Value Prominence"
+      ],
+      "representativeDriverIds": [
+        "CUL-001",
+        "CUL-002",
+        "CUL-003",
+        "CUL-004",
+        "CUL-005",
+        "CUL-006"
+      ],
+      "driverCount": 10,
+      "source": {
+        "workbook": "PSYWERX_Layer_4_Cultural_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 5
+      }
+    },
+    {
+      "id": "ENV-F06",
+      "name": "Acoustic, Visual & Vibrational Conditions",
+      "layer": "Physical / Environmental",
+      "definition": "Ambient sound, light, visual complexity, and mechanical vibration exposures.",
+      "includes": "Include sound level and pattern, speech masking, illuminance, daylight, spectrum, glare, clutter, and vibration.",
+      "exclusions": "Exclude hearing damage, fatigue, alertness, and perceived annoyance as internal responses.",
+      "representativeDrivers": [
+        "Ambient Noise Level",
+        "Speech Intelligibility",
+        "Noise Intermittency",
+        "Illuminance",
+        "Daylight Availability",
+        "Light Spectral Composition"
+      ],
+      "representativeDriverIds": [
+        "ENV-039",
+        "ENV-040",
+        "ENV-041",
+        "ENV-042",
+        "ENV-043",
+        "ENV-044"
+      ],
+      "driverCount": 9,
+      "source": {
+        "workbook": "PSYWERX_Layer_5_Physical_Environmental_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 10
+      }
+    },
+    {
+      "id": "ENV-F08",
+      "name": "Air, Chemical & Environmental Quality",
+      "layer": "Physical / Environmental",
+      "definition": "Airflow, pollutant, odor, sanitation, dampness, allergen, radiation, smoke, and contamination exposures.",
+      "includes": "Include measurable environmental concentrations and material cleanliness conditions.",
+      "exclusions": "Exclude biomarkers, symptoms, disease, and beliefs about contamination.",
+      "representativeDrivers": [
+        "Ventilation Rate",
+        "Indoor Carbon-Dioxide Concentration",
+        "Particulate-Matter Concentration",
+        "Nitrogen Oxides Concentration",
+        "Ozone Concentration",
+        "Volatile Organic Compound Concentration"
+      ],
+      "representativeDriverIds": [
+        "ENV-055",
+        "ENV-056",
+        "ENV-057",
+        "ENV-058",
+        "ENV-059",
+        "ENV-060"
+      ],
+      "driverCount": 13,
+      "source": {
+        "workbook": "PSYWERX_Layer_5_Physical_Environmental_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 12
+      }
+    },
+    {
+      "id": "ENV-F03",
+      "name": "Built Form & Spatial Configuration",
+      "layer": "Physical / Environmental",
+      "definition": "Physical geometry and arrangement of buildings, rooms, entries, exits, circulation, furniture, and enclosure.",
+      "includes": "Include layout complexity, sightlines, entry/egress geometry, vertical circulation, seating, openness, and structural integrity.",
+      "exclusions": "Exclude authorization rules, social meaning, and subjective safety or preference.",
+      "representativeDrivers": [
+        "Internal Layout Complexity",
+        "Sightline Visibility",
+        "Entrance Placement and Physical Permeability",
+        "Exit Placement and Distribution",
+        "Vertical-Circulation Placement",
+        "Seating and Furniture Arrangement"
+      ],
+      "representativeDriverIds": [
+        "ENV-018",
+        "ENV-019",
+        "ENV-020",
+        "ENV-021",
+        "ENV-022",
+        "ENV-023"
+      ],
+      "driverCount": 8,
+      "source": {
+        "workbook": "PSYWERX_Layer_5_Physical_Environmental_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 7
+      }
+    },
+    {
+      "id": "ENV-F05",
+      "name": "Density, Confinement & Privacy Conditions",
+      "layer": "Physical / Environmental",
+      "definition": "Objective occupancy, spacing, flow restriction, enclosure, and acoustic or visual separation conditions.",
+      "includes": "Include occupancy density, interpersonal distance, privacy affordances, queues, bottlenecks, and confinement.",
+      "exclusions": "Exclude perceived crowding, relational closeness, preferences, and social monitoring itself.",
+      "representativeDrivers": [
+        "Objective Occupancy Density",
+        "Interpersonal Physical Proximity",
+        "Acoustic Privacy",
+        "Visual Privacy",
+        "Queue Length and Waiting-Space Density",
+        "Bottleneck Flow Constraint"
+      ],
+      "representativeDriverIds": [
+        "ENV-033",
+        "ENV-034",
+        "ENV-035",
+        "ENV-036",
+        "ENV-037",
+        "ENV-038"
+      ],
+      "driverCount": 6,
+      "source": {
+        "workbook": "PSYWERX_Layer_5_Physical_Environmental_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 9
+      }
+    },
+    {
+      "id": "ENV-F04",
+      "name": "Environmental Affordances & Legibility",
+      "layer": "Physical / Environmental",
+      "definition": "Physically instantiated cues, placements, obstacles, and choice-set features that make actions visible, intelligible, easy, or difficult.",
+      "includes": "Include landmark salience, physical signage placement, option visibility/proximity/availability, and obstacles.",
+      "exclusions": "Exclude message wording, subjective salience, perceived ease, and broad friction catch-alls.",
+      "representativeDrivers": [
+        "Wayfinding Signage Placement",
+        "Physical Landmark Salience",
+        "Environmental Legibility",
+        "Option Visibility",
+        "Option Proximity and Placement",
+        "Physical Option Availability"
+      ],
+      "representativeDriverIds": [
+        "ENV-026",
+        "ENV-027",
+        "ENV-028",
+        "ENV-029",
+        "ENV-030",
+        "ENV-031"
+      ],
+      "driverCount": 7,
+      "source": {
+        "workbook": "PSYWERX_Layer_5_Physical_Environmental_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 8
+      }
+    },
+    {
+      "id": "ENV-F11",
+      "name": "Hazards, Safety & Physical Security",
+      "layer": "Physical / Environmental",
+      "definition": "Material hazard intensity, proximity, visibility, refuge, access-control, and evacuation-route conditions.",
+      "includes": "Include hazard distance/intensity, illumination, passive observability, barriers, exits, shelter, flood, fire, and structural hazards.",
+      "exclusions": "Exclude perceived threat, warnings, policing, credentials, and formal emergency orders.",
+      "representativeDrivers": [
+        "Public-Space Illumination",
+        "Passive Visual Observability",
+        "Physical Access-Control Strength",
+        "Hazard Proximity",
+        "Exit Visibility",
+        "Evacuation-Route Accessibility"
+      ],
+      "representativeDriverIds": [
+        "ENV-074",
+        "ENV-075",
+        "ENV-076",
+        "ENV-077",
+        "ENV-078",
+        "ENV-079"
+      ],
+      "driverCount": 11,
+      "source": {
+        "workbook": "PSYWERX_Layer_5_Physical_Environmental_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 15
+      }
+    },
+    {
+      "id": "ENV-F12",
+      "name": "Material Resources & Shelter",
+      "layer": "Physical / Environmental",
+      "definition": "Physical presence, quantity, location, and usability of food, water, sanitation, shelter, energy, fuel, medical material, and equipment.",
+      "includes": "Include resource availability, point-of-use placement, and housing or shelter condition.",
+      "exclusions": "Exclude affordability, allocation policy, entitlement, subjective scarcity, and digital capability.",
+      "representativeDrivers": [
+        "Food Availability",
+        "Potable-Water Availability",
+        "Sanitation-Facility Availability",
+        "Housing Physical Quality",
+        "Tool and Equipment Availability",
+        "Point-of-Use Resource Proximity"
+      ],
+      "representativeDriverIds": [
+        "ENV-082",
+        "ENV-083",
+        "ENV-084",
+        "ENV-085",
+        "ENV-086",
+        "ENV-087"
+      ],
+      "driverCount": 9,
+      "source": {
+        "workbook": "PSYWERX_Layer_5_Physical_Environmental_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 16
+      }
+    },
+    {
+      "id": "ENV-F02",
+      "name": "Mobility & Transport Infrastructure",
+      "layer": "Physical / Environmental",
+      "definition": "Material transport facilities and traffic conditions that alter movement feasibility, safety, delay, and mode choice.",
+      "includes": "Include paths, crossings, cycling facilities, transit-stop access, parking, traffic, congestion, and route redundancy.",
+      "exclusions": "Exclude fares, schedules, service policy, enforcement, and app-based routing.",
+      "representativeDrivers": [
+        "Sidewalk Continuity and Quality",
+        "Pedestrian Crossing Safety",
+        "Cycling Infrastructure Availability",
+        "Public-Transport Stop Accessibility",
+        "Parking Availability and Proximity",
+        "Traffic Volume"
+      ],
+      "representativeDriverIds": [
+        "ENV-009",
+        "ENV-010",
+        "ENV-011",
+        "ENV-012",
+        "ENV-013",
+        "ENV-014"
+      ],
+      "driverCount": 10,
+      "source": {
+        "workbook": "PSYWERX_Layer_5_Physical_Environmental_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 6
+      }
+    },
+    {
+      "id": "ENV-F09",
+      "name": "Natural Environment & Ecological Exposure",
+      "layer": "Physical / Environmental",
+      "definition": "Availability, accessibility, quality, and dose of natural settings and ecological features.",
+      "includes": "Include green/blue space, vegetation, natural views, biodiversity, and nature-exposure dose.",
+      "exclusions": "Exclude affinity for nature, restorative feeling, and environmental identity.",
+      "representativeDrivers": [
+        "Green-Space Availability",
+        "Green-Space Accessibility",
+        "Green-Space Quality",
+        "Vegetation and Tree-Canopy Coverage",
+        "Natural-View Availability",
+        "Blue-Space Exposure"
+      ],
+      "representativeDriverIds": [
+        "ENV-066",
+        "ENV-067",
+        "ENV-068",
+        "ENV-069",
+        "ENV-070",
+        "ENV-071"
+      ],
+      "driverCount": 8,
+      "source": {
+        "workbook": "PSYWERX_Layer_5_Physical_Environmental_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 13
+      }
+    },
+    {
+      "id": "ENV-F13",
+      "name": "Physical Disruption & Passability",
+      "layer": "Physical / Environmental",
+      "definition": "Event-driven loss of material system function, passability, access, or environmental continuity.",
+      "includes": "Include specified infrastructure functionality, route blockage, debris, and materially caused access loss.",
+      "exclusions": "Exclude administrative closure, supply-chain governance, displacement as an outcome, and vague instability.",
+      "representativeDrivers": [
+        "Physical Infrastructure Functionality",
+        "Transport-Route Blockage",
+        "Debris Obstruction"
+      ],
+      "representativeDriverIds": [
+        "ENV-089",
+        "ENV-090",
+        "ENV-091"
+      ],
+      "driverCount": 3,
+      "source": {
+        "workbook": "PSYWERX_Layer_5_Physical_Environmental_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 17
+      }
+    },
+    {
+      "id": "ENV-F01",
+      "name": "Spatial Access & Proximity",
+      "layer": "Physical / Environmental",
+      "definition": "Spatial distance, reach, connectivity, and isolation conditions that determine whether destinations can be reached.",
+      "includes": "Include objective distance, directness, connectivity, density, remoteness, and barrier-free reach.",
+      "exclusions": "Exclude perceived distance, relational closeness, formal access rules, and navigation algorithms.",
+      "representativeDrivers": [
+        "Destination Proximity",
+        "Travel Distance",
+        "Route Directness",
+        "Street and Path Connectivity",
+        "Destination Density",
+        "Land-Use Mix"
+      ],
+      "representativeDriverIds": [
+        "ENV-001",
+        "ENV-002",
+        "ENV-003",
+        "ENV-004",
+        "ENV-005",
+        "ENV-006"
+      ],
+      "driverCount": 8,
+      "source": {
+        "workbook": "PSYWERX_Layer_5_Physical_Environmental_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 5
+      }
+    },
+    {
+      "id": "ENV-F10",
+      "name": "Terrain, Topography & Geographic Barriers",
+      "layer": "Physical / Environmental",
+      "definition": "Landform and elevation conditions that alter physical effort, visibility, access, and movement options.",
+      "includes": "Include slope, ruggedness, altitude, water barriers, and chokepoints.",
+      "exclusions": "Exclude map information, border policy, capability limitations, and physiological hypoxia.",
+      "representativeDrivers": [
+        "Terrain Slope",
+        "Terrain Ruggedness",
+        "Environmental Oxygen Availability",
+        "Water-Barrier Permeability"
+      ],
+      "representativeDriverIds": [
+        "ENV-097",
+        "ENV-098",
+        "ENV-099",
+        "ENV-100"
+      ],
+      "driverCount": 4,
+      "source": {
+        "workbook": "PSYWERX_Layer_5_Physical_Environmental_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 14
+      }
+    },
+    {
+      "id": "ENV-F07",
+      "name": "Thermal, Atmospheric & Weather Conditions",
+      "layer": "Physical / Environmental",
+      "definition": "External thermal and meteorological exposures that alter comfort, effort, performance, and protective behavior.",
+      "includes": "Include heat, cold, humidity, precipitation, wind, solar load, day length, and severe-weather intensity.",
+      "exclusions": "Exclude thermoregulation, heat strain, hypothermia, and risk perception.",
+      "representativeDrivers": [
+        "Ambient Heat Exposure",
+        "Ambient Cold Exposure",
+        "Thermal Variability",
+        "Relative Humidity",
+        "Precipitation Intensity",
+        "Wind Exposure"
+      ],
+      "representativeDriverIds": [
+        "ENV-047",
+        "ENV-048",
+        "ENV-049",
+        "ENV-050",
+        "ENV-051",
+        "ENV-052"
+      ],
+      "driverCount": 9,
+      "source": {
+        "workbook": "PSYWERX_Layer_5_Physical_Environmental_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 11
+      }
+    },
+    {
+      "id": "INS-F03",
+      "name": "Administrative Burden & Procedural Friction",
+      "layer": "Institutional / Structural",
+      "definition": "Learning, documentation, procedural, timing, compliance, renewal, and channel requirements created by formal systems.",
+      "includes": "Include required steps, forms, delays, deadlines, recertification, and default enrollment rules.",
+      "exclusions": "Exclude physical distance, subjective effort alone, and information complexity not created by institutional procedure.",
+      "representativeDrivers": [
+        "Administrative Learning Cost",
+        "Documentation Burden",
+        "Procedural Complexity",
+        "Institutional Processing Delay",
+        "Compliance Cost",
+        "Recertification Frequency"
+      ],
+      "representativeDriverIds": [
+        "INS-020",
+        "INS-021",
+        "INS-022",
+        "INS-023",
+        "INS-024",
+        "INS-025"
+      ],
+      "driverCount": 9,
+      "source": {
+        "workbook": "PSYWERX_Layer_6_Institutional_Structural_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 7
+      }
+    },
+    {
+      "id": "INS-F10",
+      "name": "Corruption, Patronage & Institutional Integrity",
+      "layer": "Institutional / Structural",
+      "definition": "Misuse of formal authority, private-interest capture, patronage, clientelism, bribery opportunity, and integrity safeguards.",
+      "includes": "Include corrupt practice prevalence, patronage allocation, clientelist exchange, procurement transparency, and conflict-of-interest controls.",
+      "exclusions": "Exclude generalized mistrust, informal reciprocity, criminal outcomes, and cultural tolerance of corruption.",
+      "representativeDrivers": [
+        "Patronage Allocation Prevalence",
+        "Clientelist Exchange Prevalence",
+        "Institutional Corruption Prevalence",
+        "Bribery Opportunity Prevalence",
+        "Conflict-of-Interest Control Strength"
+      ],
+      "representativeDriverIds": [
+        "INS-077",
+        "INS-078",
+        "INS-079",
+        "INS-080",
+        "INS-101"
+      ],
+      "driverCount": 5,
+      "source": {
+        "workbook": "PSYWERX_Layer_6_Institutional_Structural_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 14
+      }
+    },
+    {
+      "id": "INS-F01",
+      "name": "Formal Rules & Authority Allocation",
+      "layer": "Institutional / Structural",
+      "definition": "Formal permissions, obligations, prohibitions, eligibility boundaries, roles, and allocations of decision authority.",
+      "includes": "Include formal rule content, decision rights, discretion, review rights, and property or control rights.",
+      "exclusions": "Exclude informal cultural norms, individual perceived authority, and immediate interpersonal influence.",
+      "representativeDrivers": [
+        "Formal Obligation Strength",
+        "Formal Restriction Scope",
+        "Eligibility-Rule Restrictiveness",
+        "Formal Role Specification",
+        "Decision-Authority Concentration",
+        "Frontline Discretion"
+      ],
+      "representativeDriverIds": [
+        "INS-001",
+        "INS-002",
+        "INS-003",
+        "INS-004",
+        "INS-005",
+        "INS-006"
+      ],
+      "driverCount": 10,
+      "source": {
+        "workbook": "PSYWERX_Layer_6_Institutional_Structural_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 5
+      }
+    },
+    {
+      "id": "INS-F02",
+      "name": "Incentives, Sanctions & Payoffs",
+      "layer": "Institutional / Structural",
+      "definition": "Institutionally specified rewards, costs, benefits, penalties, liability, and contingency structures.",
+      "includes": "Include tax rates, fees, subsidies, sanctions, reward magnitude, sanction graduation, and liability allocation.",
+      "exclusions": "Exclude intrinsic motivation, market prices absent institutional design, and informal social approval.",
+      "representativeDrivers": [
+        "Monetary Reward Magnitude",
+        "Tax Rate",
+        "Administrative Fee Magnitude",
+        "Subsidy and Benefit Magnitude",
+        "Formal Sanction Severity",
+        "Sanction Graduation"
+      ],
+      "representativeDriverIds": [
+        "INS-011",
+        "INS-012",
+        "INS-013",
+        "INS-014",
+        "INS-015",
+        "INS-016"
+      ],
+      "driverCount": 9,
+      "source": {
+        "workbook": "PSYWERX_Layer_6_Institutional_Structural_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 6
+      }
+    },
+    {
+      "id": "INS-F11",
+      "name": "Interorganizational & Multilevel Governance",
+      "layer": "Institutional / Structural",
+      "definition": "Formal dependencies, overlaps, pressures, and coordination arrangements among organizations and jurisdictions.",
+      "includes": "Include resource dependence, interdependence, jurisdictional overlap, coordination fragmentation, and coercive, mimetic, or professional pressure.",
+      "exclusions": "Exclude social-network ties and information exchange not embedded in formal arrangements.",
+      "representativeDrivers": [
+        "Organizational Resource Dependence",
+        "Interorganizational Interdependence",
+        "Jurisdictional Overlap",
+        "Coordination Fragmentation",
+        "Coercive Institutional Pressure",
+        "Mimetic Institutional Pressure"
+      ],
+      "representativeDriverIds": [
+        "INS-082",
+        "INS-083",
+        "INS-084",
+        "INS-085",
+        "INS-086",
+        "INS-087"
+      ],
+      "driverCount": 7,
+      "source": {
+        "workbook": "PSYWERX_Layer_6_Institutional_Structural_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 15
+      }
+    },
+    {
+      "id": "INS-F08",
+      "name": "Market, Labor & Transaction Structure",
+      "layer": "Institutional / Structural",
+      "definition": "Formal economic rules governing exchange, entry, competition, contracting, ownership, procurement, and employment.",
+      "includes": "Include transaction costs, competition, concentration, entry barriers, procurement, contract rules, and employment protections.",
+      "exclusions": "Exclude individual prices or preferences and purely technological platforms.",
+      "representativeDrivers": [
+        "Institutional Transaction Cost",
+        "Market Competition Intensity",
+        "Market Concentration",
+        "Formal Entry-Barrier Magnitude",
+        "Procurement and Ownership-Governance Structure",
+        "Employment Protection Strength"
+      ],
+      "representativeDriverIds": [
+        "INS-065",
+        "INS-066",
+        "INS-067",
+        "INS-068",
+        "INS-069",
+        "INS-070"
+      ],
+      "driverCount": 8,
+      "source": {
+        "workbook": "PSYWERX_Layer_6_Institutional_Structural_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 12
+      }
+    },
+    {
+      "id": "INS-F05",
+      "name": "Monitoring, Enforcement & Accountability",
+      "layer": "Institutional / Structural",
+      "definition": "Formal monitoring, enforcement, disclosure, performance-control, oversight, surveillance-mandate, and consequence systems.",
+      "includes": "Include audit intensity, sanction certainty, reporting, transparency rules, performance regimes, feedback, oversight, and accountability consequences.",
+      "exclusions": "Exclude technological sensor capability, peer observation, perceived surveillance, and reputational sanctions.",
+      "representativeDrivers": [
+        "Monitoring and Audit Intensity",
+        "Sanction-Enforcement Probability",
+        "Reporting Requirement Burden",
+        "Disclosure-Rule Strength",
+        "Performance-Target Intensity",
+        "Formal Performance-Feedback Timeliness"
+      ],
+      "representativeDriverIds": [
+        "INS-040",
+        "INS-041",
+        "INS-042",
+        "INS-043",
+        "INS-044",
+        "INS-045"
+      ],
+      "driverCount": 9,
+      "source": {
+        "workbook": "PSYWERX_Layer_6_Institutional_Structural_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 9
+      }
+    },
+    {
+      "id": "INS-F04",
+      "name": "Organizational Structure & Work Design",
+      "layer": "Institutional / Structural",
+      "definition": "Formal organizational configuration, division of labor, hierarchy, formalization, workload, and coordination design.",
+      "includes": "Include centralization, formalization, standardization, specialization, hierarchy, span, departments, role clarity, mandate conflict, and caseload.",
+      "exclusions": "Exclude informal culture, friendship networks, personality, and physical workspace design.",
+      "representativeDrivers": [
+        "Organizational Centralization",
+        "Organizational Formalization",
+        "Procedure Standardization",
+        "Task Specialization",
+        "Hierarchy Depth",
+        "Span of Control"
+      ],
+      "representativeDriverIds": [
+        "INS-029",
+        "INS-030",
+        "INS-031",
+        "INS-032",
+        "INS-033",
+        "INS-034"
+      ],
+      "driverCount": 12,
+      "source": {
+        "workbook": "PSYWERX_Layer_6_Institutional_Structural_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 8
+      }
+    },
+    {
+      "id": "INS-F06",
+      "name": "Participation, Procedural Governance & Redress",
+      "layer": "Institutional / Structural",
+      "definition": "Formal voice, representation, inclusion, impartial procedure, explanation, appeals, grievance, and self-governance arrangements.",
+      "includes": "Include collective-choice participation, representation, procedural consistency, reason-giving, redress, and local autonomy.",
+      "exclusions": "Exclude felt fairness, cultural democratic values, and informal conflict mediation.",
+      "representativeDrivers": [
+        "Collective-Choice Participation Rights",
+        "Representation Structure",
+        "Stakeholder Inclusion Breadth",
+        "Procedural Impartiality",
+        "Formal Voice Opportunity",
+        "Reason-Giving Requirement Strength"
+      ],
+      "representativeDriverIds": [
+        "INS-048",
+        "INS-049",
+        "INS-050",
+        "INS-051",
+        "INS-052",
+        "INS-053"
+      ],
+      "driverCount": 8,
+      "source": {
+        "workbook": "PSYWERX_Layer_6_Institutional_Structural_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 10
+      }
+    },
+    {
+      "id": "INS-F12",
+      "name": "Policy Stability & Institutional Change",
+      "layer": "Institutional / Structural",
+      "definition": "Temporal durability, review, emergency authority, switching cost, precedent, and learning properties of formal systems.",
+      "includes": "Include policy stability, switching costs, emergency powers, sunset clauses, precedent strength, and organizational learning capacity.",
+      "exclusions": "Exclude path dependence and policy feedback when used only as explanatory frameworks or mechanisms.",
+      "representativeDrivers": [
+        "Policy Stability",
+        "Institutional Switching Cost",
+        "Emergency-Authority Breadth",
+        "Mandatory Review Frequency",
+        "Precedent Strength",
+        "Organizational Learning Capacity"
+      ],
+      "representativeDriverIds": [
+        "INS-089",
+        "INS-090",
+        "INS-091",
+        "INS-092",
+        "INS-093",
+        "INS-094"
+      ],
+      "driverCount": 6,
+      "source": {
+        "workbook": "PSYWERX_Layer_6_Institutional_Structural_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 16
+      }
+    },
+    {
+      "id": "INS-F09",
+      "name": "Political Power, Rights & Differential Treatment",
+      "layer": "Institutional / Structural",
+      "definition": "Formal and de facto allocations of political power, legal status, rights, exclusion, segregation, and unequal application.",
+      "includes": "Include political power, discrimination, differential enforcement, segregation, rights deprivation, veto points, censorship, and border controls.",
+      "exclusions": "Exclude personal prejudice, cultural hierarchy norms, and physical separation without institutional production.",
+      "representativeDrivers": [
+        "Formal Political-Power Allocation",
+        "De Facto Political-Power Concentration",
+        "Institutional Discrimination Prevalence",
+        "Differential Enforcement Magnitude",
+        "Institutional Segregation Strength",
+        "Rights-Deprivation Scope"
+      ],
+      "representativeDriverIds": [
+        "INS-072",
+        "INS-073",
+        "INS-074",
+        "INS-075",
+        "INS-076",
+        "INS-081"
+      ],
+      "driverCount": 9,
+      "source": {
+        "workbook": "PSYWERX_Layer_6_Institutional_Structural_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 13
+      }
+    },
+    {
+      "id": "INS-F07",
+      "name": "Resource Distribution, Eligibility & Service Access",
+      "layer": "Institutional / Structural",
+      "definition": "Formal allocation, rationing, priority, jurisdictional coverage, gatekeeping, and distributional arrangements.",
+      "includes": "Include budget allocation, structural service coverage, quotas, queue rules, geographic allocation, gatekeeping, and distributional inequality.",
+      "exclusions": "Exclude material stocks and distance, subjective scarcity, and interpersonal resource sharing.",
+      "representativeDrivers": [
+        "Budget Allocation",
+        "Structural Service Coverage",
+        "Rationing Restrictiveness",
+        "Priority-Rule Structure",
+        "Jurisdictional Service Coverage",
+        "Gatekeeping Authority Concentration"
+      ],
+      "representativeDriverIds": [
+        "INS-056",
+        "INS-057",
+        "INS-058",
+        "INS-059",
+        "INS-060",
+        "INS-061"
+      ],
+      "driverCount": 7,
+      "source": {
+        "workbook": "PSYWERX_Layer_6_Institutional_Structural_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 11
+      }
+    },
+    {
+      "id": "INS-F13",
+      "name": "State Capacity & Legal-Institutional Quality",
+      "layer": "Institutional / Structural",
+      "definition": "Institutional ability to raise resources, staff functions, administer territory, enforce law, deliver services, and sustain impartial legal order.",
+      "includes": "Include fiscal, personnel, administrative, analytic, territorial, judicial, and regulatory capacities.",
+      "exclusions": "Exclude physical infrastructure stock, perceived legitimacy or trust, and broad country labels.",
+      "representativeDrivers": [
+        "Service-Delivery Capacity",
+        "Contract Enforceability",
+        "Fiscal Capacity",
+        "Staffing Adequacy",
+        "Bureaucratic Meritocracy",
+        "Judicial Independence"
+      ],
+      "representativeDriverIds": [
+        "INS-063",
+        "INS-064",
+        "INS-102",
+        "INS-103",
+        "INS-104",
+        "INS-105"
+      ],
+      "driverCount": 10,
+      "source": {
+        "workbook": "PSYWERX_Layer_6_Institutional_Structural_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 17
+      }
+    },
+    {
+      "id": "INF-F13",
+      "name": "Action Guidance & Instructional Content",
+      "layer": "Informational",
+      "definition": "Message features that specify a recommended action, implementation steps, timing, and decision-relevant constraints.",
+      "includes": "Include recommendation specificity, calls to action, step completeness, and deadline specificity.",
+      "exclusions": "Exclude behavior itself, opportunity, enforcement, and interface affordances.",
+      "representativeDrivers": [
+        "Action-Guidance Completeness",
+        "Action-Time Specificity",
+        "Call-to-Action Presence",
+        "Implementation-Step Completeness",
+        "Recommendation Specificity"
+      ],
+      "representativeDriverIds": [
+        "INF-069",
+        "INF-070",
+        "INF-071",
+        "INF-072",
+        "INF-073"
+      ],
+      "driverCount": 5,
+      "source": {
+        "workbook": "PSYWERX_Layer_7_Informational_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 17
+      }
+    },
+    {
+      "id": "INF-F05",
+      "name": "Argument & Evidence Quality",
+      "layer": "Informational",
+      "definition": "Strength, amount, type, traceability, and explanatory structure of reasons and evidence supporting a claim.",
+      "includes": "Include logical strength, evidence quality and amount, quantitative or exemplar evidence, citations, and causal explanation.",
+      "exclusions": "Exclude recipient elaboration and institutional evidence rules.",
+      "representativeDrivers": [
+        "Argument Logical Strength",
+        "Causal-Explanation Depth",
+        "Citation Traceability",
+        "Counterargument Inclusion",
+        "Evidence Amount",
+        "Evidence Quality",
+        "Quantitative Evidence Presence"
+      ],
+      "representativeDriverIds": [
+        "INF-022",
+        "INF-023",
+        "INF-024",
+        "INF-025",
+        "INF-026",
+        "INF-027",
+        "INF-028"
+      ],
+      "driverCount": 8,
+      "source": {
+        "workbook": "PSYWERX_Layer_7_Informational_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 9
+      }
+    },
+    {
+      "id": "INF-F03",
+      "name": "Clarity, Complexity & Completeness",
+      "layer": "Informational",
+      "definition": "Linguistic and structural properties governing how explicit, readable, ambiguous, conflicting, or complete a message is.",
+      "includes": "Include readability, complexity, ambiguity, completeness, contradiction, and uncertainty expression.",
+      "exclusions": "Exclude comprehension, confusion, numeracy, and perceived uncertainty.",
+      "representativeDrivers": [
+        "Information Completeness",
+        "Internal Message Contradiction",
+        "Message Ambiguity",
+        "Message Complexity",
+        "Message Readability",
+        "Uncertainty Disclosure"
+      ],
+      "representativeDriverIds": [
+        "INF-010",
+        "INF-011",
+        "INF-012",
+        "INF-013",
+        "INF-014",
+        "INF-015"
+      ],
+      "driverCount": 6,
+      "source": {
+        "workbook": "PSYWERX_Layer_7_Informational_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 7
+      }
+    },
+    {
+      "id": "INF-F11",
+      "name": "Feedback, Comparison & Norm Claims",
+      "layer": "Informational",
+      "definition": "Communicated information about performance, progress, benchmarks, prevalence, approval, or consensus.",
+      "includes": "Include performance feedback, comparative benchmarks, descriptive-norm claims, and consensus claims.",
+      "exclusions": "Exclude actual norms, social approval, rank, and feedback-delivery technology.",
+      "representativeDrivers": [
+        "Comparative Benchmark Information",
+        "Consensus Claim Strength",
+        "Norm-Prevalence Claim",
+        "Performance-Feedback Content"
+      ],
+      "representativeDriverIds": [
+        "INF-059",
+        "INF-060",
+        "INF-061",
+        "INF-062"
+      ],
+      "driverCount": 4,
+      "source": {
+        "workbook": "PSYWERX_Layer_7_Informational_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 15
+      }
+    },
+    {
+      "id": "INF-F04",
+      "name": "Framing & Presentation",
+      "layer": "Informational",
+      "definition": "How substantively similar content is worded, ordered, formatted, or visually represented.",
+      "includes": "Include gain/loss and attribute frames, probability formats, metaphors, ordering, and graphics.",
+      "exclusions": "Exclude interface ranking and any claim that one frame is universally superior.",
+      "representativeDrivers": [
+        "Attribute Framing",
+        "Gain–Loss Framing",
+        "Information Sequence",
+        "Metaphorical Framing",
+        "Risk-Presentation Format",
+        "Visual Representation Format"
+      ],
+      "representativeDriverIds": [
+        "INF-016",
+        "INF-017",
+        "INF-018",
+        "INF-019",
+        "INF-020",
+        "INF-021"
+      ],
+      "driverCount": 6,
+      "source": {
+        "workbook": "PSYWERX_Layer_7_Informational_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 8
+      }
+    },
+    {
+      "id": "INF-F01",
+      "name": "Information Availability & Exposure",
+      "layer": "Informational",
+      "definition": "Whether behavior-relevant information is present, discoverable, noticeable, current, and encountered for sufficient time at a decision point.",
+      "includes": "Include message availability, salience, recency, cues, and exposure duration.",
+      "exclusions": "Exclude platform access and ranking, physical placement, and the recipient’s attention state.",
+      "representativeDrivers": [
+        "Exposure Duration",
+        "Information Availability",
+        "Information Recency",
+        "Message Prominence",
+        "Prompt Cue Presence"
+      ],
+      "representativeDriverIds": [
+        "INF-001",
+        "INF-002",
+        "INF-003",
+        "INF-004",
+        "INF-005"
+      ],
+      "driverCount": 5,
+      "source": {
+        "workbook": "PSYWERX_Layer_7_Informational_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 5
+      }
+    },
+    {
+      "id": "INF-F02",
+      "name": "Information Volume, Density & Load",
+      "layer": "Informational",
+      "definition": "Objective amount, rate, density, and length of information presented within a defined exposure window.",
+      "includes": "Include item count, arrival rate, message length, and content density.",
+      "exclusions": "Exclude subjective overload and cognitive capacity, which are Psychological.",
+      "representativeDrivers": [
+        "Information Arrival Rate",
+        "Information Density",
+        "Information Volume Relative to Exposure Window",
+        "Message Length"
+      ],
+      "representativeDriverIds": [
+        "INF-006",
+        "INF-007",
+        "INF-008",
+        "INF-009"
+      ],
+      "driverCount": 4,
+      "source": {
+        "workbook": "PSYWERX_Layer_7_Informational_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 6
+      }
+    },
+    {
+      "id": "INF-F08",
+      "name": "Narrative, Exemplification & Vividness",
+      "layer": "Informational",
+      "definition": "Message features that organize information as stories, cases, concrete imagery, emotional content, or warnings.",
+      "includes": "Include narrative form and coherence, exemplars, vividness, emotional valence/intensity, and warning content.",
+      "exclusions": "Exclude narrative transportation, emotion experienced, and culturally shared master narratives.",
+      "representativeDrivers": [
+        "Content Emotional Intensity",
+        "Content Emotional Valence",
+        "Content Vividness",
+        "Identifiable-Case Evidence",
+        "Narrative Causal Structure",
+        "Narrative Coherence",
+        "Narrative Evidence Presence"
+      ],
+      "representativeDriverIds": [
+        "INF-044",
+        "INF-045",
+        "INF-046",
+        "INF-047",
+        "INF-048",
+        "INF-049",
+        "INF-050"
+      ],
+      "driverCount": 8,
+      "source": {
+        "workbook": "PSYWERX_Layer_7_Informational_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 12
+      }
+    },
+    {
+      "id": "INF-F09",
+      "name": "Relevance, Tailoring & Audience Match",
+      "layer": "Informational",
+      "definition": "Message adaptations that align content with a specified person, location, language, culture, or audience context.",
+      "includes": "Include personalization, local specificity, linguistic accessibility, and cultural-context match.",
+      "exclusions": "Exclude felt self-relevance, identity, and automated targeting systems.",
+      "representativeDrivers": [
+        "Cultural-Context Match",
+        "Linguistic Accessibility",
+        "Local Specificity",
+        "Message Personalization"
+      ],
+      "representativeDriverIds": [
+        "INF-052",
+        "INF-053",
+        "INF-054",
+        "INF-055"
+      ],
+      "driverCount": 4,
+      "source": {
+        "workbook": "PSYWERX_Layer_7_Informational_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 13
+      }
+    },
+    {
+      "id": "INF-F07",
+      "name": "Repetition, Timing & Sequence",
+      "layer": "Informational",
+      "definition": "Frequency, spacing, timing, ordering, and cross-source convergence of exposures.",
+      "includes": "Include repetition, spacing, correction delay, sequence, and convergence across identifiable sources.",
+      "exclusions": "Exclude algorithmic amplification and memory or familiarity states.",
+      "representativeDrivers": [
+        "Correction Delay",
+        "Cross-Source Consistency",
+        "Message Exposure Frequency",
+        "Repetition Spacing",
+        "Source Independence"
+      ],
+      "representativeDriverIds": [
+        "INF-039",
+        "INF-040",
+        "INF-041",
+        "INF-042",
+        "INF-043"
+      ],
+      "driverCount": 5,
+      "source": {
+        "workbook": "PSYWERX_Layer_7_Informational_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 11
+      }
+    },
+    {
+      "id": "INF-F10",
+      "name": "Risk, Threat & Efficacy Content",
+      "layer": "Informational",
+      "definition": "Stated information about severity, likelihood, susceptibility, response efficacy, and uncertainty of consequential outcomes.",
+      "includes": "Include communicated threat, vulnerability, efficacy, and risk magnitude.",
+      "exclusions": "Exclude fear, perceived threat, perceived vulnerability, and efficacy beliefs.",
+      "representativeDrivers": [
+        "Response-Efficacy Claim",
+        "Susceptibility Claim",
+        "Threat-Severity Claim"
+      ],
+      "representativeDriverIds": [
+        "INF-056",
+        "INF-057",
+        "INF-058"
+      ],
+      "driverCount": 3,
+      "source": {
+        "workbook": "PSYWERX_Layer_7_Informational_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 14
+      }
+    },
+    {
+      "id": "INF-F06",
+      "name": "Source Disclosure & Provenance",
+      "layer": "Informational",
+      "definition": "Information conveyed about who produced a claim, their relevant qualifications and interests, and the claim’s origin and processing history.",
+      "includes": "Include identity, credentials, track record, motive, conflicts, provenance, process transparency, and consensus cues.",
+      "exclusions": "Exclude perceived credibility or trust and actual interpersonal relationships.",
+      "representativeDrivers": [
+        "Conflict-of-Interest Disclosure",
+        "Evidence-Process Transparency",
+        "Expertise Credential Evidence",
+        "Limitation Disclosure",
+        "Provenance Traceability",
+        "Source Identity Disclosure",
+        "Source Motive Disclosure"
+      ],
+      "representativeDriverIds": [
+        "INF-030",
+        "INF-031",
+        "INF-032",
+        "INF-033",
+        "INF-034",
+        "INF-035",
+        "INF-036"
+      ],
+      "driverCount": 9,
+      "source": {
+        "workbook": "PSYWERX_Layer_7_Informational_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 10
+      }
+    },
+    {
+      "id": "INF-F12",
+      "name": "Veracity, Omission & Correction",
+      "layer": "Informational",
+      "definition": "Accuracy, misleadingness, omission, correction, retraction, and explanatory content that updates a claim.",
+      "includes": "Include factual veracity, omission magnitude, correction presence/detail/specificity, and alternative explanations.",
+      "exclusions": "Exclude belief accuracy and deliberate intent unless separately evidenced.",
+      "representativeDrivers": [
+        "Alternative-Explanation Provision",
+        "Correction Detail",
+        "Correction or Retraction Presence",
+        "Correction Specificity",
+        "Factual Veracity",
+        "Selective-Omission Magnitude"
+      ],
+      "representativeDriverIds": [
+        "INF-063",
+        "INF-064",
+        "INF-065",
+        "INF-066",
+        "INF-067",
+        "INF-068"
+      ],
+      "driverCount": 6,
+      "source": {
+        "workbook": "PSYWERX_Layer_7_Informational_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 16
+      }
+    },
+    {
+      "id": "TEC-F01",
+      "name": "Access, Infrastructure & Interoperability",
+      "layer": "Technological",
+      "definition": "Technical capabilities that determine whether a digital function is available, reachable, compatible, mobile, accessible, and usable under varying connectivity conditions.",
+      "includes": "Include devices, network capacity, uptime, functional reliability, compatibility, interoperability, offline operation, and assistive-technology support.",
+      "exclusions": "Exclude affordability and distribution rules, physical distance, and user skill.",
+      "representativeDrivers": [
+        "Assistive-Technology Compatibility",
+        "Compatible Device Availability",
+        "Connection Bandwidth",
+        "Data Interoperability",
+        "Device and Platform Compatibility",
+        "Functional Reliability",
+        "Mobile Access Continuity"
+      ],
+      "representativeDriverIds": [
+        "TEC-001",
+        "TEC-002",
+        "TEC-003",
+        "TEC-004",
+        "TEC-005",
+        "TEC-006",
+        "TEC-007"
+      ],
+      "driverCount": 11,
+      "source": {
+        "workbook": "PSYWERX_Layer_8_Technological_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 5
+      }
+    },
+    {
+      "id": "TEC-F04",
+      "name": "Algorithmic Curation & Adaptive Delivery",
+      "layer": "Technological",
+      "definition": "Computational selection, ranking, amplification, filtering, personalization, and context-responsive delivery of options or information.",
+      "includes": "Include measurable allocation weights, filters, personalization intensity, and update sensitivity.",
+      "exclusions": "Exclude message meaning, user preference, and causal feedback-loop narratives without a specified system parameter.",
+      "representativeDrivers": [
+        "Adaptive Delivery Personalization",
+        "Algorithmic Amplification Intensity",
+        "Algorithmic Filtering Restrictiveness",
+        "Algorithmic Ranking Weight",
+        "Just-in-Time Adaptation Responsiveness",
+        "Personalization Update Sensitivity",
+        "Recommendation Personalization Intensity"
+      ],
+      "representativeDriverIds": [
+        "TEC-027",
+        "TEC-028",
+        "TEC-029",
+        "TEC-030",
+        "TEC-031",
+        "TEC-032",
+        "TEC-033"
+      ],
+      "driverCount": 7,
+      "source": {
+        "workbook": "PSYWERX_Layer_8_Technological_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 8
+      }
+    },
+    {
+      "id": "TEC-F03",
+      "name": "Attention, Interruption & Temporal Control",
+      "layer": "Technological",
+      "definition": "System features governing alerts, prompts, interruption intensity, delivery timing, automatic continuation, feed endpoints, and stopping cues.",
+      "includes": "Include technological cue delivery and temporal interaction structure.",
+      "exclusions": "Exclude prompt wording, attention state, habit, and campaign policy.",
+      "representativeDrivers": [
+        "Automated Prompt Scheduling",
+        "Automatic Continuation",
+        "Context-Sensitive Notification Timing",
+        "Feed Continuity",
+        "Interruption Modality Intensity",
+        "Push-Notification Enablement",
+        "Stopping-Cue Availability"
+      ],
+      "representativeDriverIds": [
+        "TEC-020",
+        "TEC-021",
+        "TEC-022",
+        "TEC-023",
+        "TEC-024",
+        "TEC-025",
+        "TEC-026"
+      ],
+      "driverCount": 7,
+      "source": {
+        "workbook": "PSYWERX_Layer_8_Technological_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 7
+      }
+    },
+    {
+      "id": "TEC-F05",
+      "name": "Automation Reliability & Decision Support",
+      "layer": "Technological",
+      "definition": "System performance and automation properties that determine what decision work is automated and how reliable recommendations and alarms are.",
+      "includes": "Include automation level, decision-aid reliability, recommendation availability, and alarm error rates.",
+      "exclusions": "Exclude human trust, automation bias, and institutional authority to deploy the system.",
+      "representativeDrivers": [
+        "Alarm False-Positive Rate",
+        "Automated Recommendation Availability",
+        "Automation Level",
+        "Decision-Aid Reliability"
+      ],
+      "representativeDriverIds": [
+        "TEC-034",
+        "TEC-035",
+        "TEC-036",
+        "TEC-037"
+      ],
+      "driverCount": 4,
+      "source": {
+        "workbook": "PSYWERX_Layer_8_Technological_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 9
+      }
+    },
+    {
+      "id": "TEC-F08",
+      "name": "Digital Feedback, Rewards & Gamification",
+      "layer": "Technological",
+      "definition": "Digitally implemented reactions, status metrics, rankings, rewards, streaks, schedules, and progress displays.",
+      "includes": "Include technical feedback and reinforcement structures.",
+      "exclusions": "Exclude social approval, intrinsic motivation, subjective progress, and reward policy outside the system.",
+      "representativeDrivers": [
+        "Badge and Achievement Signaling",
+        "Continuity Counter Visibility",
+        "Digital Point-Reward Availability",
+        "Digital Reward Schedule Density",
+        "Leaderboard Visibility",
+        "Popularity Metric Visibility",
+        "Progress Visualization Availability"
+      ],
+      "representativeDriverIds": [
+        "TEC-053",
+        "TEC-054",
+        "TEC-055",
+        "TEC-056",
+        "TEC-057",
+        "TEC-058",
+        "TEC-059"
+      ],
+      "driverCount": 8,
+      "source": {
+        "workbook": "PSYWERX_Layer_8_Technological_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 12
+      }
+    },
+    {
+      "id": "TEC-F10",
+      "name": "Human–AI Social Interaction",
+      "layer": "Technological",
+      "definition": "AI interface properties that instantiate humanlike cues, reciprocal dialogue, persistent relational memory, affective response, and identity continuity.",
+      "includes": "Include AI-specific interaction capabilities that can elicit social responses.",
+      "exclusions": "Exclude the user’s anthropomorphism, trust, attachment, or felt social presence.",
+      "representativeDrivers": [
+        "AI Affective Responsiveness",
+        "AI Identity Consistency",
+        "Anthropomorphic Interface-Cue Intensity",
+        "Conversational Reciprocity Capability",
+        "Persistent AI Memory Capacity"
+      ],
+      "representativeDriverIds": [
+        "TEC-066",
+        "TEC-067",
+        "TEC-068",
+        "TEC-069",
+        "TEC-070"
+      ],
+      "driverCount": 5,
+      "source": {
+        "workbook": "PSYWERX_Layer_8_Technological_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 14
+      }
+    },
+    {
+      "id": "TEC-F06",
+      "name": "Human Control, Explainability & AI Collaboration",
+      "layer": "Technological",
+      "definition": "Technical controls and interaction features supporting uncertainty display, explanation, verification, override, approval, and collaborative division of work.",
+      "includes": "Include machine-confidence displays, explanation interfaces, verifiability tools, override controls, approval gates, and interaction-pattern flexibility.",
+      "exclusions": "Exclude perceived control, trust, comprehension, and legal accountability.",
+      "representativeDrivers": [
+        "Explanation Interface Availability",
+        "Human Approval-Gate Configurability",
+        "Human Override Availability",
+        "Human–AI Interaction-Pattern Flexibility",
+        "Machine-Confidence Display Availability",
+        "Machine-Uncertainty Display Granularity",
+        "Recommendation Verifiability Support"
+      ],
+      "representativeDriverIds": [
+        "TEC-038",
+        "TEC-039",
+        "TEC-040",
+        "TEC-041",
+        "TEC-042",
+        "TEC-043",
+        "TEC-044"
+      ],
+      "driverCount": 7,
+      "source": {
+        "workbook": "PSYWERX_Layer_8_Technological_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 10
+      }
+    },
+    {
+      "id": "TEC-F11",
+      "name": "Immersion, Embodiment & Representation",
+      "layer": "Technological",
+      "definition": "Technical properties governing sensory envelopment, avatar control, sensorimotor coupling, modality breadth, fidelity, realism, and remote interaction synchrony.",
+      "includes": "Include mediated representation and immersive-system capabilities.",
+      "exclusions": "Exclude felt presence, body ownership, identity meaning, and cultural stereotypes.",
+      "representativeDrivers": [
+        "Avatar Self-Representation Configuration",
+        "Avatar Sensorimotor Coupling",
+        "Display Immersion Capability",
+        "Remote Interaction Synchrony",
+        "Representational Realism",
+        "Sensory Modality Count",
+        "Sensory Presentation Fidelity"
+      ],
+      "representativeDriverIds": [
+        "TEC-071",
+        "TEC-072",
+        "TEC-073",
+        "TEC-074",
+        "TEC-075",
+        "TEC-076",
+        "TEC-077"
+      ],
+      "driverCount": 7,
+      "source": {
+        "workbook": "PSYWERX_Layer_8_Technological_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 15
+      }
+    },
+    {
+      "id": "TEC-F02",
+      "name": "Interface Choice Architecture",
+      "layer": "Technological",
+      "definition": "Interface configurations that alter defaults, ordering, friction, prominence, simplification, active choice, and disclosure encounter.",
+      "includes": "Include measurable UI states and interaction pathways that shape feasible selections.",
+      "exclusions": "Exclude semantic content, recipient perception, and broad labels such as dark patterns when no atomic feature is specified.",
+      "representativeDrivers": [
+        "Active-Choice Requirement",
+        "Default-State Configuration",
+        "Interface Disclosure Placement",
+        "Interface Disclosure Timing",
+        "Interface Interaction Friction",
+        "Interface Option Ordering",
+        "Interface Task Simplification"
+      ],
+      "representativeDriverIds": [
+        "TEC-012",
+        "TEC-013",
+        "TEC-014",
+        "TEC-015",
+        "TEC-016",
+        "TEC-017",
+        "TEC-018"
+      ],
+      "driverCount": 8,
+      "source": {
+        "workbook": "PSYWERX_Layer_8_Technological_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 6
+      }
+    },
+    {
+      "id": "TEC-F07",
+      "name": "Platform Social Affordances",
+      "layer": "Technological",
+      "definition": "Platform action possibilities for visibility, persistence, search, replication, reach, association, identity disclosure, and editing.",
+      "includes": "Include technical affordances that enable social action and information movement.",
+      "exclusions": "Exclude the resulting network structure, norms, identity meaning, and content itself.",
+      "representativeDrivers": [
+        "Content Editability Affordance",
+        "Content Persistence Affordance",
+        "Content Replication Affordance",
+        "Dissemination Reach Scaling",
+        "Identity Disclosure Level",
+        "Platform Searchability Affordance",
+        "User Association Affordance"
+      ],
+      "representativeDriverIds": [
+        "TEC-045",
+        "TEC-046",
+        "TEC-047",
+        "TEC-048",
+        "TEC-049",
+        "TEC-050",
+        "TEC-051"
+      ],
+      "driverCount": 8,
+      "source": {
+        "workbook": "PSYWERX_Layer_8_Technological_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 11
+      }
+    },
+    {
+      "id": "TEC-F12",
+      "name": "Privacy, Security & Identity Architecture",
+      "layer": "Technological",
+      "definition": "Technical configurations controlling data collection, privacy choice, authentication burden, identity verification, access restriction, and retention.",
+      "includes": "Include system-enforced privacy, authentication, authorization, and retention parameters.",
+      "exclusions": "Exclude privacy concern, organizational policy, legal requirements, and threat intent.",
+      "representativeDrivers": [
+        "Access-Control Restrictiveness",
+        "Authentication Friction",
+        "Data-Collection Scope",
+        "Identity-Verification Strength",
+        "Privacy-Control Granularity",
+        "Technical Data-Retention Duration"
+      ],
+      "representativeDriverIds": [
+        "TEC-078",
+        "TEC-079",
+        "TEC-080",
+        "TEC-081",
+        "TEC-082",
+        "TEC-083"
+      ],
+      "driverCount": 6,
+      "source": {
+        "workbook": "PSYWERX_Layer_8_Technological_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 16
+      }
+    },
+    {
+      "id": "TEC-F09",
+      "name": "Sensing, Monitoring & Traceability",
+      "layer": "Technological",
+      "definition": "Technical capability to sense, log, display, observe, and reconstruct behavior or system events.",
+      "includes": "Include self-monitoring, automated feedback, tracking visibility, third-party observability, and event logs.",
+      "exclusions": "Exclude surveillance authority, sanctions, and perceived surveillance.",
+      "representativeDrivers": [
+        "Automated Performance-Feedback Capability",
+        "Behavioral-Tracking User Visibility",
+        "Event-Log Traceability",
+        "Self-Monitoring Capability",
+        "Third-Party Behavioral Observability"
+      ],
+      "representativeDriverIds": [
+        "TEC-061",
+        "TEC-062",
+        "TEC-063",
+        "TEC-064",
+        "TEC-065"
+      ],
+      "driverCount": 5,
+      "source": {
+        "workbook": "PSYWERX_Layer_8_Technological_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 13
+      }
+    },
+    {
+      "id": "TEC-F13",
+      "name": "Synthetic Media & Agentic Capabilities",
+      "layer": "Technological",
+      "definition": "Technical capabilities for autonomous action, external tool use, synthetic-content generation, scalable production, representational fidelity, and provenance signaling.",
+      "includes": "Include measurable autonomy and generative-system capabilities.",
+      "exclusions": "Exclude the veracity or meaning of generated content, user belief, and institutional authorization.",
+      "representativeDrivers": [
+        "Automated Content-Generation Scale",
+        "Autonomous Action Scope",
+        "Content-Provenance Signaling Capability",
+        "External Tool-Use Permission",
+        "Synthetic-Content Generation Capability",
+        "Synthetic-Media Fidelity"
+      ],
+      "representativeDriverIds": [
+        "TEC-084",
+        "TEC-085",
+        "TEC-086",
+        "TEC-087",
+        "TEC-088",
+        "TEC-089"
+      ],
+      "driverCount": 6,
+      "source": {
+        "workbook": "PSYWERX_Layer_8_Technological_Driver_Ontology_v1.0.xlsx",
+        "sheet": "Families",
+        "row": 17
+      }
+    }
+  ]
+}
