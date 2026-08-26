@@ -2,14 +2,32 @@
 
 const PAGE_SIZE = 24;
 const DRIVER_QUERY_PARAMETER = "driver";
+const FACETS = [
+  { field: "layer", label: "Layer" },
+  { field: "family", label: "Family" },
+  { field: "dataType", label: "Data type" },
+  { field: "modifiability", label: "Modifiability" },
+  { field: "volatility", label: "Volatility" },
+  { field: "observability", label: "Observability" },
+  { field: "evidenceStrength", label: "Evidence strength" },
+];
 
+const browseModeButton = document.querySelector("#browse-mode-button");
+const searchModeButton = document.querySelector("#search-mode-button");
+const browsePanel = document.querySelector("#browse-panel");
+const searchPanel = document.querySelector("#search-panel");
+const browseBreadcrumbs = document.querySelector("#browse-breadcrumbs");
+const browseSummary = document.querySelector("#browse-summary");
+const browseKicker = document.querySelector("#browse-kicker");
+const browseHeading = document.querySelector("#browse-heading");
+const browseDescription = document.querySelector("#browse-description");
+const browseContent = document.querySelector("#browse-content");
 const searchInput = document.querySelector("#driver-search");
-const familyFilter = document.querySelector("#family-filter");
 const clearFiltersButton = document.querySelector("#clear-filters");
-const layerCheckboxes = [...document.querySelectorAll('input[name="layer"]')];
-const layerOptions = [...document.querySelectorAll(".layer-option")];
-const activeLayerSummary = document.querySelector("#active-layer-summary");
+const facetFilters = document.querySelector("#facet-filters");
+const activeFilters = document.querySelector("#active-filters");
 const totalDriverCount = document.querySelector("#total-driver-count");
+const totalLayerCount = document.querySelector("#total-layer-count");
 const resultSummary = document.querySelector("#result-summary");
 const driverList = document.querySelector("#driver-list");
 const loadMoreButton = document.querySelector("#load-more");
@@ -26,15 +44,20 @@ const copyStatus = document.querySelector("#copy-status");
 
 let drivers = [];
 let driverById = new Map();
+let hierarchy = new Map();
 let filteredDrivers = [];
+let detailDrivers = [];
 let visibleCount = PAGE_SIZE;
 let currentDriverId = null;
-let detailOpenedFromList = false;
+let detailOpenedFromExplorer = false;
+let activeMode = "browse";
+let selectedBrowseLayer = null;
+let selectedBrowseFamily = null;
 let searchTimer;
 
-layerCheckboxes.forEach((checkbox) => {
-  checkbox.disabled = true;
-});
+const facetSelections = Object.fromEntries(
+  FACETS.map(({ field }) => [field, new Set()])
+);
 
 function normalizeSearchText(value) {
   return String(value || "")
@@ -52,14 +75,6 @@ function searchableText(driver) {
       driver.definition,
       driver.mechanism,
     ].join(" ")
-  );
-}
-
-function selectedLayers() {
-  return new Set(
-    layerCheckboxes
-      .filter((checkbox) => checkbox.checked)
-      .map((checkbox) => checkbox.value)
   );
 }
 
@@ -85,84 +100,295 @@ function setLayerIdentity(node, layer) {
   node.dataset.layer = layer;
 }
 
-function initializeLayerFilters() {
-  const counts = new Map();
+function sortText(values) {
+  return values.sort((a, b) =>
+    a.localeCompare(b, undefined, { sensitivity: "base", numeric: true })
+  );
+}
+
+function uniqueValues(field, sourceDrivers = drivers) {
+  return sortText(
+    [...new Set(sourceDrivers.map((driver) => driver[field]).filter(hasValue))]
+  );
+}
+
+function buildHierarchy() {
+  hierarchy = new Map();
   drivers.forEach((driver) => {
-    counts.set(driver.layer, (counts.get(driver.layer) || 0) + 1);
-  });
-
-  layerOptions.forEach((option) => {
-    const layer = option.dataset.layer;
-    const count = option.querySelector("[data-layer-count]");
-    count.textContent = String(counts.get(layer) || 0);
+    if (!hierarchy.has(driver.layer)) {
+      hierarchy.set(driver.layer, new Map());
+    }
+    const families = hierarchy.get(driver.layer);
+    if (!families.has(driver.family)) {
+      families.set(driver.family, []);
+    }
+    families.get(driver.family).push(driver);
   });
 }
 
-function updateFamilyChoices() {
-  const layers = selectedLayers();
-  const currentFamily = familyFilter.value;
-  const families = new Set(
-    drivers
-      .filter((driver) => layers.size === 0 || layers.has(driver.layer))
-      .map((driver) => driver.family)
-      .filter(hasValue)
-  );
-  const sortedFamilies = [...families].sort((a, b) =>
-    a.localeCompare(b, undefined, { sensitivity: "base" })
-  );
+function setMode(mode, options = {}) {
+  activeMode = mode === "search" ? "search" : "browse";
+  const browsing = activeMode === "browse";
+  browsePanel.hidden = !browsing;
+  searchPanel.hidden = browsing;
+  browseModeButton.setAttribute("aria-pressed", String(browsing));
+  searchModeButton.setAttribute("aria-pressed", String(!browsing));
+  if (options.focus) {
+    (browsing ? browseHeading : searchInput).focus();
+  }
+}
 
+function hierarchyButton(title, meta, type, value, layer) {
+  const article = element("article", "hierarchy-card");
+  if (layer) {
+    setLayerIdentity(article, layer);
+  }
+  const button = element("button", "hierarchy-card__button");
+  button.type = "button";
+  button.dataset[type] = value;
+  const titleNode = element("span", "hierarchy-card__title", title);
+  const metaNode = element("span", "hierarchy-card__meta", meta);
+  const action = element("span", "hierarchy-card__action", "Explore");
+  action.setAttribute("aria-hidden", "true");
+  action.append(" \u2192");
+  button.append(titleNode, metaNode, action);
+  article.append(button);
+  return article;
+}
+
+function breadcrumbButton(label, level) {
+  const button = element("button", "breadcrumbs__button", label);
+  button.type = "button";
+  button.dataset.browseLevel = level;
+  return button;
+}
+
+function renderBrowse() {
   const fragment = document.createDocumentFragment();
-  fragment.append(element("option", "", "All families"));
-  fragment.firstChild.value = "";
-  sortedFamilies.forEach((family) => {
-    const option = element("option", "", family);
-    option.value = family;
-    fragment.append(option);
-  });
-  familyFilter.replaceChildren(fragment);
-  familyFilter.value = families.has(currentFamily) ? currentFamily : "";
-}
+  const crumbs = document.createDocumentFragment();
+  crumbs.append(breadcrumbButton("All layers", "root"));
 
-function updateFilterSummary() {
-  const layers = selectedLayers();
-  if (layers.size === 0) {
-    activeLayerSummary.textContent = "All eight layers";
-  } else if (layers.size === 1) {
-    activeLayerSummary.textContent = [...layers][0];
+  if (!selectedBrowseLayer) {
+    browseKicker.textContent = "Layer \u2192 Family \u2192 Driver";
+    browseHeading.textContent = "Choose a layer";
+    browseDescription.textContent = "Start with one of the eight interacting layers.";
+    browseSummary.textContent =
+      hierarchy.size.toLocaleString() + " layers \u00b7 " +
+      drivers.length.toLocaleString() + " drivers";
+    browseContent.className = "hierarchy-grid";
+
+    hierarchy.forEach((families, layer) => {
+      const count = [...families.values()].reduce(
+        (total, familyDrivers) => total + familyDrivers.length,
+        0
+      );
+      fragment.append(
+        hierarchyButton(
+          layer,
+          families.size.toLocaleString() + " families \u00b7 " +
+            count.toLocaleString() + " drivers",
+          "browseLayer",
+          layer,
+          layer
+        )
+      );
+    });
+  } else if (!selectedBrowseFamily) {
+    const families = hierarchy.get(selectedBrowseLayer);
+    crumbs.append(" / ", breadcrumbButton(selectedBrowseLayer, "layer"));
+    browseKicker.textContent = selectedBrowseLayer + " layer";
+    browseHeading.textContent = "Choose a family";
+    browseDescription.textContent =
+      "Families group closely related drivers within this layer.";
+    const layerCount = [...families.values()].reduce(
+      (total, familyDrivers) => total + familyDrivers.length,
+      0
+    );
+    browseSummary.textContent =
+      families.size.toLocaleString() + " families \u00b7 " +
+      layerCount.toLocaleString() + " drivers";
+    browseContent.className = "hierarchy-grid";
+
+    sortText([...families.keys()]).forEach((family) => {
+      const familyDrivers = families.get(family);
+      fragment.append(
+        hierarchyButton(
+          family,
+          familyDrivers.length.toLocaleString() +
+            (familyDrivers.length === 1 ? " driver" : " drivers"),
+          "browseFamily",
+          family,
+          selectedBrowseLayer
+        )
+      );
+    });
   } else {
-    activeLayerSummary.textContent = String(layers.size) + " layers selected";
+    const familyDrivers = hierarchy
+      .get(selectedBrowseLayer)
+      .get(selectedBrowseFamily);
+    crumbs.append(
+      " / ",
+      breadcrumbButton(selectedBrowseLayer, "layer"),
+      " / ",
+      element("span", "breadcrumbs__current", selectedBrowseFamily)
+    );
+    browseKicker.textContent = selectedBrowseLayer + " layer";
+    browseHeading.textContent = selectedBrowseFamily;
+    browseDescription.textContent =
+      "Select a driver to view its complete taxonomy record.";
+    browseSummary.textContent =
+      familyDrivers.length.toLocaleString() +
+      (familyDrivers.length === 1 ? " driver" : " drivers");
+    browseContent.className = "driver-list";
+    familyDrivers.forEach((driver) => fragment.append(createDriverCard(driver)));
   }
 
+  browseBreadcrumbs.replaceChildren(crumbs);
+  browseContent.replaceChildren(fragment);
+}
+
+function facetSourceDrivers(field) {
+  if (field !== "family" || facetSelections.layer.size === 0) {
+    return drivers;
+  }
+  return drivers.filter((driver) => facetSelections.layer.has(driver.layer));
+}
+
+function renderFacet(field) {
+  const config = FACETS.find((facet) => facet.field === field);
+  const old = facetFilters.querySelector('[data-facet="' + field + '"]');
+  const wasOpen = old ? old.open : field === "layer" || field === "family";
+  const details = element("details", "facet");
+  details.dataset.facet = field;
+  details.open = wasOpen;
+
+  const summary = element("summary", "facet__summary");
+  summary.append(
+    element("span", "", config.label),
+    element("span", "facet__selected-count")
+  );
+  details.append(summary);
+
+  const values = uniqueValues(field, facetSourceDrivers(field));
+  const counts = new Map();
+  facetSourceDrivers(field).forEach((driver) => {
+    if (hasValue(driver[field])) {
+      counts.set(driver[field], (counts.get(driver[field]) || 0) + 1);
+    }
+  });
+
+  const choices = element("div", "facet__choices");
+  values.forEach((value, index) => {
+    const label = element("label", "facet-option");
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.value = value;
+    checkbox.dataset.facetField = field;
+    checkbox.id = "facet-" + field + "-" + index;
+    checkbox.checked = facetSelections[field].has(value);
+    label.htmlFor = checkbox.id;
+    label.append(
+      checkbox,
+      element("span", "facet-option__label", value),
+      element("span", "facet-option__count", String(counts.get(value) || 0))
+    );
+    choices.append(label);
+  });
+  details.append(choices);
+
+  if (old) {
+    old.replaceWith(details);
+  } else {
+    facetFilters.append(details);
+  }
+}
+
+function renderFacets() {
+  facetFilters.replaceChildren();
+  FACETS.forEach(({ field }) => renderFacet(field));
+  updateFacetSelectedCounts();
+}
+
+function updateFacetSelectedCounts() {
+  FACETS.forEach(({ field }) => {
+    const countNode = facetFilters.querySelector(
+      '[data-facet="' + field + '"] .facet__selected-count'
+    );
+    const count = facetSelections[field].size;
+    if (countNode) {
+      countNode.textContent = count ? String(count) + " selected" : "Any";
+    }
+  });
+}
+
+function syncAvailableFamilies() {
+  const available = new Set(uniqueValues("family", facetSourceDrivers("family")));
+  [...facetSelections.family].forEach((family) => {
+    if (!available.has(family)) {
+      facetSelections.family.delete(family);
+    }
+  });
+  renderFacet("family");
+}
+
+function matchesFacet(driver, field) {
+  const selected = facetSelections[field];
+  return selected.size === 0 || selected.has(driver[field]);
+}
+
+function applyFilters(options = {}) {
+  if (options.resetLimit !== false) {
+    visibleCount = PAGE_SIZE;
+  }
+  const query = normalizeSearchText(searchInput.value.trim());
+  filteredDrivers = drivers.filter(
+    (driver) =>
+      (!query || driver._searchText.includes(query)) &&
+      FACETS.every(({ field }) => matchesFacet(driver, field))
+  );
+  updateFacetSelectedCounts();
+  renderActiveFilters();
+  renderResults();
+}
+
+function renderActiveFilters() {
+  const fragment = document.createDocumentFragment();
+  const query = searchInput.value.trim();
+
+  if (query) {
+    fragment.append(filterChip("Search", query, "search", query));
+  }
+  FACETS.forEach(({ field, label }) => {
+    facetSelections[field].forEach((value) => {
+      fragment.append(filterChip(label, value, field, value));
+    });
+  });
+
+  activeFilters.replaceChildren(fragment);
   const filtersActive =
-    layers.size > 0 || Boolean(familyFilter.value) || Boolean(searchInput.value.trim());
+    Boolean(query) || FACETS.some(({ field }) => facetSelections[field].size > 0);
   clearFiltersButton.disabled = !filtersActive;
 }
 
-function applyFilters(options) {
-  const shouldResetLimit = !options || options.resetLimit !== false;
-  if (shouldResetLimit) {
-    visibleCount = PAGE_SIZE;
-  }
-
-  const layers = selectedLayers();
-  const family = familyFilter.value;
-  const query = normalizeSearchText(searchInput.value.trim());
-
-  filteredDrivers = drivers.filter((driver) => {
-    const matchesLayer = layers.size === 0 || layers.has(driver.layer);
-    const matchesFamily = !family || driver.family === family;
-    const matchesSearch = !query || driver._searchText.includes(query);
-    return matchesLayer && matchesFamily && matchesSearch;
-  });
-
-  updateFilterSummary();
-  renderResults();
+function filterChip(label, value, field, rawValue) {
+  const button = element(
+    "button",
+    "filter-chip",
+    label + ": " + value + " "
+  );
+  button.type = "button";
+  button.dataset.clearFacet = field;
+  button.dataset.clearValue = rawValue;
+  button.setAttribute("aria-label", "Remove " + label + " filter: " + value);
+  const mark = element("span", "", "\u00d7");
+  mark.setAttribute("aria-hidden", "true");
+  button.append(mark);
+  return button;
 }
 
 function createDriverCard(driver) {
   const article = element("article", "driver-card");
   setLayerIdentity(article, driver.layer);
-
   const button = element("button", "driver-card__button");
   button.type = "button";
   button.dataset.driverId = driver.id;
@@ -171,24 +397,13 @@ function createDriverCard(driver) {
   const meta = element("div", "driver-card__meta");
   const layer = element("span", "layer-badge", driver.layer);
   setLayerIdentity(layer, driver.layer);
-  meta.append(layer);
-  if (hasValue(driver.evidenceStrength)) {
-    meta.append(
-      element(
-        "span",
-        "evidence-badge",
-        driver.evidenceStrength + " evidence"
-      )
-    );
-  }
+  meta.append(layer, element("span", "family-badge", driver.family));
 
   const heading = element("h3", "driver-card__title", driver.name);
-  const family = element("p", "driver-card__family", driver.family);
   const definition = element("p", "driver-card__definition", driver.definition);
   const action = element("span", "driver-card__action", "View driver record");
-  action.append(element("span", "", " →"));
-
-  button.append(meta, heading, family, definition, action);
+  action.append(element("span", "", " \u2192"));
+  button.append(meta, heading, definition, action);
   article.append(button);
   return article;
 }
@@ -205,29 +420,21 @@ function renderResults() {
       element(
         "p",
         "",
-        "Try a broader search, choose another family, or clear the active filters."
+        "Try a broader search or remove one or more active filters."
       )
     );
     fragment.append(emptyState);
   } else {
-    shownDrivers.forEach((driver) => {
-      fragment.append(createDriverCard(driver));
-    });
+    shownDrivers.forEach((driver) => fragment.append(createDriverCard(driver)));
   }
-
   driverList.replaceChildren(fragment);
-  const noun = total === 1 ? "driver" : "drivers";
-  if (total > shownDrivers.length) {
-    resultSummary.textContent =
-      total.toLocaleString() +
-      " " +
-      noun +
-      " found · Showing " +
-      shownDrivers.length.toLocaleString();
-  } else {
-    resultSummary.textContent = total.toLocaleString() + " " + noun + " found";
-  }
 
+  const noun = total === 1 ? "driver" : "drivers";
+  resultSummary.textContent =
+    total > shownDrivers.length
+      ? total.toLocaleString() + " " + noun + " found \u00b7 Showing " +
+        shownDrivers.length.toLocaleString()
+      : total.toLocaleString() + " " + noun + " found";
   loadMoreButton.hidden = shownDrivers.length >= total;
 }
 
@@ -241,17 +448,13 @@ function appendDetailField(list, label, value, options) {
   );
   wrapper.append(element("dt", "", label));
   const description = element("dd");
-
   if (Array.isArray(value)) {
     const values = element("ul", "detail-value-list");
-    value.forEach((item) => {
-      values.append(element("li", "", item));
-    });
+    value.forEach((item) => values.append(element("li", "", item)));
     description.append(values);
   } else {
     description.textContent = value;
   }
-
   wrapper.append(description);
   list.append(wrapper);
   return true;
@@ -263,9 +466,8 @@ function createDetailSection(title, fields) {
   let populated = false;
   fields.forEach((field) => {
     populated =
-      appendDetailField(list, field.label, field.value, {
-        wide: field.wide,
-      }) || populated;
+      appendDetailField(list, field.label, field.value, { wide: field.wide }) ||
+      populated;
   });
   if (!populated) {
     return null;
@@ -302,75 +504,35 @@ function renderDriverDetail(driver) {
     ]),
     createDetailSection("Causal logic", [
       { label: "Mechanism", value: driver.mechanism, wide: true },
-      {
-        label: "Likely upstream influences",
-        value: driver.likelyUpstreamInfluences,
-        wide: true,
-      },
-      {
-        label: "Likely downstream influences",
-        value: driver.likelyDownstreamInfluences,
-        wide: true,
-      },
-      {
-        label: "Moderators / boundary conditions",
-        value: driver.moderatorsBoundaryConditions,
-        wide: true,
-      },
-      {
-        label: "Typical interaction candidates",
-        value: driver.typicalInteractionCandidates,
-        wide: true,
-      },
+      { label: "Likely upstream influences", value: driver.likelyUpstreamInfluences, wide: true },
+      { label: "Likely downstream influences", value: driver.likelyDownstreamInfluences, wide: true },
+      { label: "Moderators / boundary conditions", value: driver.moderatorsBoundaryConditions, wide: true },
+      { label: "Typical interaction candidates", value: driver.typicalInteractionCandidates, wide: true },
     ]),
     createDetailSection("Dynamics", [
       { label: "Modifiability", value: driver.modifiability },
       { label: "Volatility", value: driver.volatility },
       { label: "Time scale of change", value: driver.timeScaleOfChange },
       { label: "Onset / causal lag", value: driver.onsetCausalLag },
-      {
-        label: "Persistence / recovery",
-        value: driver.persistenceRecovery,
-        wide: true,
-      },
+      { label: "Persistence / recovery", value: driver.persistenceRecovery, wide: true },
     ]),
     createDetailSection("Observation & measurement", [
       { label: "Indicators", value: driver.indicators, wide: true },
-      {
-        label: "Measurement / assessment methods",
-        value: driver.measurementAssessmentMethods,
-        wide: true,
-      },
+      { label: "Measurement / assessment methods", value: driver.measurementAssessmentMethods, wide: true },
       { label: "Observability", value: driver.observability },
-      {
-        label: "Measurement caveats",
-        value: driver.measurementCaveats,
-        wide: true,
-      },
+      { label: "Measurement caveats", value: driver.measurementCaveats, wide: true },
     ]),
     createDetailSection("Evidence & interpretation", [
       { label: "Evidence strength", value: driver.evidenceStrength },
       { label: "Evidence notes", value: driver.evidenceNotes, wide: true },
-      {
-        label: "Common misinterpretations",
-        value: driver.commonMisinterpretations,
-        wide: true,
-      },
+      { label: "Common misinterpretations", value: driver.commonMisinterpretations, wide: true },
       { label: "Key sources", value: driver.keySources, wide: true },
     ]),
     createDetailSection("Provenance", [
-      {
-        label: "Source workbook",
-        value: driver.source && driver.source.workbook,
-        wide: true,
-      },
-      {
-        label: "Source worksheet",
-        value: driver.source && driver.source.sheet,
-      },
+      { label: "Source workbook", value: driver.source && driver.source.workbook, wide: true },
+      { label: "Source worksheet", value: driver.source && driver.source.sheet },
     ]),
   ];
-
   sections.filter(Boolean).forEach((section) => fragment.append(section));
   driverDetail.replaceChildren(fragment);
 }
@@ -382,15 +544,12 @@ function driverUrl(driverId) {
 }
 
 function updateDetailNavigation() {
-  const index = filteredDrivers.findIndex(
-    (driver) => driver.id === currentDriverId
-  );
+  const index = detailDrivers.findIndex((driver) => driver.id === currentDriverId);
   const hasPosition = index !== -1;
   previousDriverButton.disabled = !hasPosition || index === 0;
-  nextDriverButton.disabled =
-    !hasPosition || index === filteredDrivers.length - 1;
+  nextDriverButton.disabled = !hasPosition || index === detailDrivers.length - 1;
   detailPosition.textContent = hasPosition
-    ? String(index + 1) + " of " + filteredDrivers.length
+    ? String(index + 1) + " of " + detailDrivers.length
     : "Linked driver";
 }
 
@@ -416,10 +575,15 @@ function hideDialog() {
   }
 }
 
-function openDriver(driverId, urlAction) {
+function openDriver(driverId, urlAction, contextDrivers) {
   const driver = driverById.get(driverId);
   if (!driver) {
     return false;
+  }
+  if (contextDrivers) {
+    detailDrivers = contextDrivers;
+  } else if (detailDrivers.length === 0) {
+    detailDrivers = drivers;
   }
   currentDriverId = driverId;
   renderDriverDetail(driver);
@@ -430,14 +594,14 @@ function openDriver(driverId, urlAction) {
 
   if (urlAction === "push") {
     history.pushState(
-      { driverId: driverId, fromExplorer: true },
+      { driverId, fromExplorer: true },
       "",
       driverUrl(driverId)
     );
-    detailOpenedFromList = true;
+    detailOpenedFromExplorer = true;
   } else if (urlAction === "replace") {
     history.replaceState(
-      { driverId: driverId, fromExplorer: detailOpenedFromList },
+      { driverId, fromExplorer: detailOpenedFromExplorer },
       "",
       driverUrl(driverId)
     );
@@ -452,8 +616,11 @@ function urlWithoutDriver() {
 }
 
 function closeDriverDetail() {
-  if (detailOpenedFromList && new URL(window.location.href).searchParams.has(DRIVER_QUERY_PARAMETER)) {
-    detailOpenedFromList = false;
+  if (
+    detailOpenedFromExplorer &&
+    new URL(window.location.href).searchParams.has(DRIVER_QUERY_PARAMETER)
+  ) {
+    detailOpenedFromExplorer = false;
     history.back();
     return;
   }
@@ -463,10 +630,8 @@ function closeDriverDetail() {
 }
 
 function moveWithinResults(offset) {
-  const index = filteredDrivers.findIndex(
-    (driver) => driver.id === currentDriverId
-  );
-  const destination = filteredDrivers[index + offset];
+  const index = detailDrivers.findIndex((driver) => driver.id === currentDriverId);
+  const destination = detailDrivers[index + offset];
   if (destination) {
     openDriver(destination.id, "replace");
     driverDetail.scrollTop = 0;
@@ -503,6 +668,7 @@ function openDriverFromUrl() {
   if (!driverId) {
     return;
   }
+  detailDrivers = drivers;
   if (!openDriver(driverId, null)) {
     linkNotice.textContent =
       "The linked driver " + driverId + " was not found in this taxonomy.";
@@ -510,12 +676,11 @@ function openDriverFromUrl() {
   }
 }
 
-function enableExplorer() {
-  searchInput.disabled = false;
-  familyFilter.disabled = false;
-  layerCheckboxes.forEach((checkbox) => {
-    checkbox.disabled = false;
-  });
+function clearAllFilters() {
+  searchInput.value = "";
+  FACETS.forEach(({ field }) => facetSelections[field].clear());
+  renderFacets();
+  applyFilters();
 }
 
 async function loadDrivers() {
@@ -526,60 +691,126 @@ async function loadDrivers() {
         "Driver data request failed with status " + response.status + "."
       );
     }
-
     const data = await response.json();
     if (!Array.isArray(data)) {
       throw new Error("Driver data is not an array.");
     }
-
     drivers = data.map((driver) =>
       Object.assign({}, driver, { _searchText: searchableText(driver) })
     );
     driverById = new Map(drivers.map((driver) => [driver.id, driver]));
-
+    buildHierarchy();
     totalDriverCount.textContent = drivers.length.toLocaleString();
-    initializeLayerFilters();
-    updateFamilyChoices();
-    enableExplorer();
+    totalLayerCount.textContent = hierarchy.size.toLocaleString();
+    searchInput.disabled = false;
+    renderBrowse();
+    renderFacets();
     applyFilters();
     openDriverFromUrl();
   } catch (error) {
     console.error("Unable to load driver taxonomy:", error);
+    browseSummary.textContent = "Driver taxonomy unavailable";
     resultSummary.textContent = "Driver taxonomy unavailable";
+    browseContent.replaceChildren();
     driverList.replaceChildren();
     loadError.hidden = false;
   }
 }
+
+browseModeButton.addEventListener("click", () => setMode("browse", { focus: true }));
+searchModeButton.addEventListener("click", () => setMode("search", { focus: true }));
+
+browseContent.addEventListener("click", (event) => {
+  const layerButton = event.target.closest("[data-browse-layer]");
+  const familyButton = event.target.closest("[data-browse-family]");
+  const driverButton = event.target.closest("[data-driver-id]");
+  if (layerButton) {
+    selectedBrowseLayer = layerButton.dataset.browseLayer;
+    selectedBrowseFamily = null;
+    renderBrowse();
+    browseHeading.focus();
+  } else if (familyButton) {
+    selectedBrowseFamily = familyButton.dataset.browseFamily;
+    renderBrowse();
+    browseHeading.focus();
+  } else if (driverButton) {
+    const familyDrivers = hierarchy
+      .get(selectedBrowseLayer)
+      .get(selectedBrowseFamily);
+    openDriver(driverButton.dataset.driverId, "push", familyDrivers);
+  }
+});
+
+browseBreadcrumbs.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-browse-level]");
+  if (!button) {
+    return;
+  }
+  if (button.dataset.browseLevel === "root") {
+    selectedBrowseLayer = null;
+    selectedBrowseFamily = null;
+  } else {
+    selectedBrowseFamily = null;
+  }
+  renderBrowse();
+  browseHeading.focus();
+});
 
 searchInput.addEventListener("input", () => {
   window.clearTimeout(searchTimer);
   searchTimer = window.setTimeout(() => applyFilters(), 80);
 });
 
-familyFilter.addEventListener("change", () => applyFilters());
+facetFilters.addEventListener("change", (event) => {
+  const checkbox = event.target.closest("[data-facet-field]");
+  if (!checkbox) {
+    return;
+  }
+  const selected = facetSelections[checkbox.dataset.facetField];
+  if (checkbox.checked) {
+    selected.add(checkbox.value);
+  } else {
+    selected.delete(checkbox.value);
+  }
+  if (checkbox.dataset.facetField === "layer") {
+    syncAvailableFamilies();
+  }
+  applyFilters();
+});
 
-layerCheckboxes.forEach((checkbox) => {
-  checkbox.addEventListener("change", () => {
-    updateFamilyChoices();
-    applyFilters();
-  });
+activeFilters.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-clear-facet]");
+  if (!button) {
+    return;
+  }
+  if (button.dataset.clearFacet === "search") {
+    searchInput.value = "";
+  } else {
+    facetSelections[button.dataset.clearFacet].delete(button.dataset.clearValue);
+    const checkbox = [...facetFilters.querySelectorAll("[data-facet-field]")].find(
+      (input) =>
+        input.dataset.facetField === button.dataset.clearFacet &&
+        input.value === button.dataset.clearValue
+    );
+    if (checkbox) {
+      checkbox.checked = false;
+    }
+    if (button.dataset.clearFacet === "layer") {
+      syncAvailableFamilies();
+    }
+  }
+  applyFilters();
 });
 
 clearFiltersButton.addEventListener("click", () => {
-  searchInput.value = "";
-  familyFilter.value = "";
-  layerCheckboxes.forEach((checkbox) => {
-    checkbox.checked = false;
-  });
-  updateFamilyChoices();
-  applyFilters();
+  clearAllFilters();
   searchInput.focus();
 });
 
 driverList.addEventListener("click", (event) => {
   const button = event.target.closest("[data-driver-id]");
   if (button) {
-    openDriver(button.dataset.driverId, "push");
+    openDriver(button.dataset.driverId, "push", filteredDrivers);
   }
 });
 
@@ -608,7 +839,7 @@ window.addEventListener("popstate", (event) => {
   const driverId = new URL(window.location.href).searchParams.get(
     DRIVER_QUERY_PARAMETER
   );
-  detailOpenedFromList = Boolean(event.state && event.state.fromExplorer);
+  detailOpenedFromExplorer = Boolean(event.state && event.state.fromExplorer);
   if (driverId && driverById.has(driverId)) {
     openDriver(driverId, null);
   } else {

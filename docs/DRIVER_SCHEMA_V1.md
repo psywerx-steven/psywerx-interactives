@@ -1,9 +1,8 @@
 # PSYWERX Driver Schema v1.0
 
 This canonical public-driver schema is derived from the common Drivers table
-and embedded Codebook in the standardized Biological, Psychological, and
-Social ontology workbooks. All three workbooks use the same 27 spreadsheet
-columns in the same order.
+and embedded Codebook in the standardized PSYWERX ontology workbooks. The
+common 27-field schema has been validated across all eight canonical layers.
 
 Every generated record has every canonical JSON key. An absent optional scalar
 is null; an absent optional list is an empty array. Required values must be
