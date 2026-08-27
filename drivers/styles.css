@@ -375,6 +375,169 @@
   font-weight: 760;
 }
 
+.family-card__button {
+  min-height: 17rem;
+}
+
+.family-card__definition {
+  display: -webkit-box;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  color: #4c6874;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.family-view,
+.family-overview,
+.family-drivers {
+  min-width: 0;
+}
+
+.family-overview {
+  --layer-color: var(--psywerx-blue);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #b7d4e1;
+  border-radius: var(--radius-large);
+  background: var(--psywerx-white);
+  box-shadow: var(--shadow-small);
+}
+
+.family-overview::before {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 0.3rem;
+  background: var(--layer-color);
+  content: "";
+}
+
+.family-overview__identity {
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border-bottom: 1px solid var(--psywerx-border);
+  background: linear-gradient(120deg, var(--psywerx-white), var(--psywerx-pale-blue));
+}
+
+.family-overview__identity .eyebrow {
+  margin-bottom: 0.8rem;
+}
+
+.family-overview__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.family-overview__identity h4 {
+  max-width: 30ch;
+  margin: 1rem 0 0;
+  color: var(--psywerx-navy);
+  font-size: clamp(1.55rem, 3vw, 2.25rem);
+  font-weight: 720;
+  overflow-wrap: anywhere;
+}
+
+.family-overview__section {
+  display: grid;
+  grid-template-columns: minmax(9rem, 0.24fr) minmax(0, 1fr);
+  gap: 2rem;
+  padding: 1.75rem clamp(1.5rem, 4vw, 2.5rem);
+  border-bottom: 1px solid var(--psywerx-border);
+}
+
+.family-overview__section:last-child {
+  border-bottom: 0;
+}
+
+.family-overview__section > h5 {
+  margin: 0;
+  color: var(--psywerx-blue);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  line-height: 1.45;
+  text-transform: uppercase;
+}
+
+.family-overview__section > p,
+.family-scope__item p {
+  margin: 0;
+  color: var(--psywerx-text);
+  font-size: 0.92rem;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.family-scope {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.family-scope__item {
+  min-width: 0;
+  padding: 1rem;
+  border: 1px solid var(--psywerx-border);
+  border-radius: var(--radius-small);
+  background: #f8fbfc;
+}
+
+.family-scope__item h6 {
+  margin: 0 0 0.45rem;
+  color: var(--psywerx-navy);
+  font-size: 0.7rem;
+  font-weight: 780;
+  letter-spacing: 0.045em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.representative-drivers {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 0.55rem;
+  min-width: 0;
+}
+
+.representative-driver {
+  min-height: 2.5rem;
+  max-width: 100%;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid #b8d7e5;
+  border-radius: var(--radius-small);
+  color: var(--psywerx-link);
+  background: #f1f8fb;
+  font-size: 0.8rem;
+  font-weight: 720;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+  text-align: left;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  white-space: normal;
+}
+
+.representative-driver:hover {
+  border-color: var(--psywerx-mid-blue);
+  color: var(--psywerx-navy);
+  background: var(--psywerx-pale-blue);
+}
+
+.family-drivers {
+  padding-top: 2.5rem;
+}
+
+.family-drivers__heading {
+  margin: 0;
+  color: var(--psywerx-navy);
+  font-size: var(--text-subsection-title);
+  font-weight: 710;
+}
+
 /* Layer accents stay within one coherent cool-color family */
 
 [data-layer="Biological"] {
@@ -976,6 +1139,19 @@
   font-weight: 700;
 }
 
+.detail-family-action {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4rem 0.75rem;
+}
+
+.detail-family-action .text-button {
+  min-height: 2.25rem;
+  justify-content: flex-start;
+  text-align: left;
+}
+
 .detail-navigation {
   display: flex;
   align-items: center;
@@ -1115,6 +1291,15 @@
 
   .driver-list {
     grid-template-columns: 1fr;
+  }
+
+  .family-overview__section,
+  .family-scope {
+    grid-template-columns: 1fr;
+  }
+
+  .family-overview__section {
+    gap: 0.85rem;
   }
 
   .driver-card__button {
