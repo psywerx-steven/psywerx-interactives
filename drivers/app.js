@@ -3,6 +3,7 @@
 const PAGE_SIZE = 24;
 const DRIVER_QUERY_PARAMETER = "driver";
 const FAMILY_QUERY_PARAMETER = "family";
+const SVG_NAMESPACE = "http://www.w3.org/2000/svg";
 const FACETS = [
   { field: "layer", label: "Layer" },
   { field: "family", label: "Family" },
@@ -51,6 +52,7 @@ let familyById = new Map();
 let familyByIdentity = new Map();
 let driversByFamilyId = new Map();
 let relationships = [];
+let relationshipById = new Map();
 let incomingRelationshipsByDriverId = new Map();
 let outgoingRelationshipsByDriverId = new Map();
 let hierarchy = new Map();
@@ -323,6 +325,9 @@ function validateTaxonomyData(driverData, familyEnvelope, relationshipEnvelope) 
 }
 
 function buildRelationshipIndexes() {
+  relationshipById = new Map(
+    relationships.map((relationship) => [relationship.id, relationship])
+  );
   incomingRelationshipsByDriverId = new Map(
     drivers.map((driver) => [driver.id, []])
   );
@@ -888,6 +893,662 @@ function createEvidenceIdList(evidenceIds) {
   return list;
 }
 
+function svgElement(tagName, className, attributes = {}) {
+  const node = document.createElementNS(SVG_NAMESPACE, tagName);
+  if (className) {
+    node.setAttribute("class", className);
+  }
+  Object.entries(attributes).forEach(([name, value]) =>
+    node.setAttribute(name, String(value))
+  );
+  return node;
+}
+
+function wrapSvgLabel(value, maximumCharacters = 24) {
+  const words = String(value).trim().split(/\s+/);
+  const lines = [];
+  let currentLine = "";
+  words.forEach((word) => {
+    if (word.length > maximumCharacters) {
+      if (currentLine) {
+        lines.push(currentLine);
+        currentLine = "";
+      }
+      let remainder = word;
+      while (remainder.length > maximumCharacters) {
+        const hyphenBreak = Math.max(
+          remainder.lastIndexOf("-", maximumCharacters - 1),
+          remainder.lastIndexOf("–", maximumCharacters - 1)
+        );
+        const breakAt =
+          hyphenBreak >= Math.floor(maximumCharacters / 2)
+            ? hyphenBreak + 1
+            : maximumCharacters;
+        lines.push(remainder.slice(0, breakAt));
+        remainder = remainder.slice(breakAt);
+      }
+      currentLine = remainder;
+      return;
+    }
+    const candidate = currentLine ? currentLine + " " + word : word;
+    if (candidate.length <= maximumCharacters || currentLine === "") {
+      currentLine = candidate;
+    } else {
+      lines.push(currentLine);
+      currentLine = word;
+    }
+  });
+  if (currentLine) {
+    lines.push(currentLine);
+  }
+  return lines;
+}
+
+function appendSvgTextLines(parent, value, x, y, className, maximumCharacters) {
+  const text = svgElement("text", className, { x, y });
+  wrapSvgLabel(value, maximumCharacters).forEach((line, index) => {
+    const span = svgElement("tspan", "", {
+      x,
+      dy: index === 0 ? 0 : 16,
+    });
+    span.textContent = line;
+    text.append(span);
+  });
+  parent.append(text);
+}
+
+function mapNodeLabel(driver, current) {
+  return (
+    (current ? "Current Driver: " : "Open Driver: ") +
+    driver.name +
+    ", " + driver.layer + " layer, Family: " + driver.family
+  );
+}
+
+function createSvgMapNode(driver, geometry, options = {}) {
+  const current = Boolean(options.current);
+  const node = svgElement(current ? "g" : "a", [
+    "relationship-map-node",
+    current ? "relationship-map-node--current" : "relationship-map-node--neighbor",
+  ].join(" "), {
+    "aria-label": mapNodeLabel(driver, current),
+    "data-driver-id": driver.id,
+    "data-map-direction": options.direction || "current",
+  });
+  if (current) {
+    node.setAttribute("role", "group");
+  } else {
+    node.setAttribute("href", driverUrl(driver.id).toString());
+    node.dataset.relationshipDriverId = driver.id;
+  }
+  setLayerIdentity(node, driver.layer);
+
+  const title = svgElement("title");
+  title.textContent = mapNodeLabel(driver, current);
+  const background = svgElement("rect", "relationship-map-node__background", {
+    x: geometry.x,
+    y: geometry.y,
+    width: geometry.width,
+    height: geometry.height,
+    rx: 9,
+  });
+  const accent = svgElement("rect", "relationship-map-node__accent", {
+    x: geometry.x,
+    y: geometry.y,
+    width: 5,
+    height: geometry.height,
+    rx: 2,
+  });
+  node.append(title, background, accent);
+
+  if (current) {
+    const kicker = svgElement("text", "relationship-map-node__kicker", {
+      x: geometry.x + 18,
+      y: geometry.y + 20,
+    });
+    kicker.textContent = "CURRENT DRIVER";
+    node.append(kicker);
+    appendSvgTextLines(
+      node,
+      driver.name,
+      geometry.x + 18,
+      geometry.y + 43,
+      "relationship-map-node__name",
+      23
+    );
+  } else {
+    appendSvgTextLines(
+      node,
+      driver.name,
+      geometry.x + 16,
+      geometry.y + 25,
+      "relationship-map-node__name",
+      23
+    );
+  }
+
+  const layer = svgElement("text", "relationship-map-node__layer", {
+    x: geometry.x + (current ? 18 : 16),
+    y: geometry.y + geometry.height - 13,
+  });
+  layer.textContent = driver.layer;
+  node.append(layer);
+  return node;
+}
+
+function createSvgMapEdge(relationship, path, markerId, panelId) {
+  const control = svgElement("g", "relationship-map-edge", {
+    role: "button",
+    tabindex: 0,
+    "aria-label":
+      "Show relationship " + relationship.id + ": " +
+      relationship.sourceDriverName + " to " + relationship.targetDriverName,
+    "aria-controls": panelId,
+    "aria-pressed": "false",
+    "data-map-relationship-id": relationship.id,
+    "data-source-driver-id": relationship.sourceDriverId,
+    "data-target-driver-id": relationship.targetDriverId,
+  });
+  const title = svgElement("title");
+  title.textContent =
+    relationship.sourceDriverName + " → " + relationship.targetDriverName +
+    ". Select for relationship details.";
+  const hitArea = svgElement("path", "relationship-map-edge__hit", {
+    d: path.d,
+  });
+  const line = svgElement("path", "relationship-map-edge__line", {
+    d: path.d,
+    "marker-end": "url(#" + markerId + ")",
+  });
+  const informationPoint = svgElement(
+    "circle",
+    "relationship-map-edge__information-point",
+    { cx: path.midpointX, cy: path.midpointY, r: 9 }
+  );
+  const informationLabel = svgElement(
+    "text",
+    "relationship-map-edge__information-label",
+    { x: path.midpointX, y: path.midpointY + 3.5, "text-anchor": "middle" }
+  );
+  informationLabel.textContent = "i";
+  control.append(title, hitArea, line, informationPoint, informationLabel);
+  return control;
+}
+
+function mapNodePositions(count, mapHeight, nodeHeight, gap) {
+  if (count === 0) {
+    return [];
+  }
+  const totalHeight = count * nodeHeight + (count - 1) * gap;
+  const firstY = (mapHeight - totalHeight) / 2;
+  return Array.from(
+    { length: count },
+    (_, index) => firstY + index * (nodeHeight + gap)
+  );
+}
+
+function createDesktopRelationshipMap(driver, incoming, outgoing, panelId) {
+  const width = 760;
+  const neighborWidth = 190;
+  const neighborHeight = 88;
+  const centerWidth = 200;
+  const centerHeight = 112;
+  const gap = 14;
+  const largestNeighborhood = Math.max(incoming.length, outgoing.length);
+  const largestColumnHeight = largestNeighborhood
+    ? largestNeighborhood * neighborHeight + (largestNeighborhood - 1) * gap
+    : 0;
+  const height = Math.max(340, largestColumnHeight + 100);
+  const upstreamX = 15;
+  const centerX = (width - centerWidth) / 2;
+  const downstreamX = width - neighborWidth - 15;
+  const centerY = (height - centerHeight) / 2;
+  const markerId = "relationship-map-arrow-" + driver.id;
+
+  const wrapper = element("div", "relationship-map__desktop");
+  const svg = svgElement("svg", "relationship-map__svg", {
+    viewBox: "0 0 " + width + " " + height,
+    role: "group",
+    "aria-label":
+      "One-hop structured relationship neighborhood for " + driver.name,
+    preserveAspectRatio: "xMidYMid meet",
+  });
+  const title = svgElement("title");
+  title.textContent = "Structured relationship neighborhood for " + driver.name;
+  const description = svgElement("desc");
+  description.textContent =
+    String(incoming.length) + " upstream Drivers connect into the current Driver, and " +
+    String(outgoing.length) + " downstream Drivers connect from it. " +
+    "Arrows run from source Driver to target Driver.";
+
+  const definitions = svgElement("defs");
+  const marker = svgElement("marker", "relationship-map__arrow-marker", {
+    id: markerId,
+    viewBox: "0 0 10 10",
+    refX: 8,
+    refY: 5,
+    markerWidth: 7,
+    markerHeight: 7,
+    orient: "auto-start-reverse",
+  });
+  marker.append(
+    svgElement("path", "", { d: "M 0 0 L 10 5 L 0 10 z" })
+  );
+  definitions.append(marker);
+  svg.append(title, description, definitions);
+
+  [
+    [upstreamX + neighborWidth / 2, "UPSTREAM · INCOMING"],
+    [centerX + centerWidth / 2, "CURRENT DRIVER"],
+    [downstreamX + neighborWidth / 2, "DOWNSTREAM · OUTGOING"],
+  ].forEach(([x, textValue]) => {
+    const label = svgElement("text", "relationship-map__column-label", {
+      x,
+      y: 23,
+      "text-anchor": "middle",
+    });
+    label.textContent = textValue;
+    svg.append(label);
+  });
+
+  const incomingPositions = mapNodePositions(
+    incoming.length,
+    height,
+    neighborHeight,
+    gap
+  );
+  const outgoingPositions = mapNodePositions(
+    outgoing.length,
+    height,
+    neighborHeight,
+    gap
+  );
+
+  incoming.forEach((relationship, index) => {
+    const sourceY = incomingPositions[index] + neighborHeight / 2;
+    const targetY = centerY + centerHeight / 2;
+    const sourceX = upstreamX + neighborWidth;
+    const targetX = centerX;
+    const midpointX = (sourceX + targetX) / 2;
+    const midpointY = (sourceY + targetY) / 2;
+    svg.append(
+      createSvgMapEdge(
+        relationship,
+        {
+          d:
+            "M " + sourceX + " " + sourceY +
+            " C " + midpointX + " " + sourceY +
+            ", " + midpointX + " " + targetY +
+            ", " + targetX + " " + targetY,
+          midpointX,
+          midpointY,
+        },
+        markerId,
+        panelId
+      )
+    );
+  });
+
+  outgoing.forEach((relationship, index) => {
+    const sourceY = centerY + centerHeight / 2;
+    const targetY = outgoingPositions[index] + neighborHeight / 2;
+    const sourceX = centerX + centerWidth;
+    const targetX = downstreamX;
+    const midpointX = (sourceX + targetX) / 2;
+    const midpointY = (sourceY + targetY) / 2;
+    svg.append(
+      createSvgMapEdge(
+        relationship,
+        {
+          d:
+            "M " + sourceX + " " + sourceY +
+            " C " + midpointX + " " + sourceY +
+            ", " + midpointX + " " + targetY +
+            ", " + targetX + " " + targetY,
+          midpointX,
+          midpointY,
+        },
+        markerId,
+        panelId
+      )
+    );
+  });
+
+  incoming.forEach((relationship, index) => {
+    svg.append(
+      createSvgMapNode(
+        driverById.get(relationship.sourceDriverId),
+        {
+          x: upstreamX,
+          y: incomingPositions[index],
+          width: neighborWidth,
+          height: neighborHeight,
+        },
+        { direction: "incoming" }
+      )
+    );
+  });
+  outgoing.forEach((relationship, index) => {
+    svg.append(
+      createSvgMapNode(
+        driverById.get(relationship.targetDriverId),
+        {
+          x: downstreamX,
+          y: outgoingPositions[index],
+          width: neighborWidth,
+          height: neighborHeight,
+        },
+        { direction: "outgoing" }
+      )
+    );
+  });
+  svg.append(
+    createSvgMapNode(
+      driver,
+      { x: centerX, y: centerY, width: centerWidth, height: centerHeight },
+      { current: true }
+    )
+  );
+
+  wrapper.append(svg);
+  return wrapper;
+}
+
+function createHtmlMapNode(driver, options = {}) {
+  const current = Boolean(options.current);
+  const node = element(
+    current ? "div" : "a",
+    "relationship-map-mobile__node" +
+      (current ? " relationship-map-mobile__node--current" : "")
+  );
+  if (!current) {
+    node.href = driverUrl(driver.id).toString();
+    node.dataset.relationshipDriverId = driver.id;
+  } else {
+    node.setAttribute("role", "group");
+  }
+  node.dataset.driverId = driver.id;
+  node.dataset.mapDirection = options.direction || "current";
+  setLayerIdentity(node, driver.layer);
+  if (current) {
+    node.append(element("span", "relationship-map-mobile__kicker", "Current Driver"));
+  }
+  node.append(
+    element("strong", "relationship-map-mobile__name", driver.name),
+    element("span", "relationship-map-mobile__layer", driver.layer),
+    element("span", "relationship-map-mobile__family", driver.family)
+  );
+  node.setAttribute("aria-label", mapNodeLabel(driver, current));
+  return node;
+}
+
+function createMobileMapEdgeButton(relationship, panelId) {
+  const button = element("button", "relationship-map-mobile__edge");
+  button.type = "button";
+  button.dataset.mapRelationshipId = relationship.id;
+  button.dataset.sourceDriverId = relationship.sourceDriverId;
+  button.dataset.targetDriverId = relationship.targetDriverId;
+  button.setAttribute("aria-controls", panelId);
+  button.setAttribute("aria-pressed", "false");
+  button.setAttribute(
+    "aria-label",
+    "Show relationship " + relationship.id + ": " +
+      relationship.sourceDriverName + " to " + relationship.targetDriverName
+  );
+  const direction = element(
+    "span",
+    "relationship-map-mobile__edge-direction",
+    relationship.sourceDriverName + " → " + relationship.targetDriverName
+  );
+  const action = element(
+    "span",
+    "relationship-map-mobile__edge-action",
+    "View edge details"
+  );
+  button.append(direction, action);
+  return button;
+}
+
+function createMobileMapGroup(title, direction, driverRelationships, panelId) {
+  const section = element("section", "relationship-map-mobile__group");
+  section.append(
+    element(
+      "h5",
+      "",
+      title + " (" + String(driverRelationships.length) + ")"
+    )
+  );
+  if (driverRelationships.length === 0) {
+    section.append(
+      element(
+        "p",
+        "relationship-map-mobile__empty",
+        direction === "incoming"
+          ? "No upstream Drivers are currently represented."
+          : "No downstream Drivers are currently represented."
+      )
+    );
+    return section;
+  }
+
+  const branches = element("div", "relationship-map-mobile__branches");
+  driverRelationships.forEach((relationship) => {
+    const branch = element("article", "relationship-map-mobile__branch");
+    const relatedDriver = driverById.get(
+      direction === "incoming"
+        ? relationship.sourceDriverId
+        : relationship.targetDriverId
+    );
+    const node = createHtmlMapNode(relatedDriver, { direction });
+    const edge = createMobileMapEdgeButton(relationship, panelId);
+    if (direction === "incoming") {
+      branch.append(node, edge);
+    } else {
+      branch.append(edge, node);
+    }
+    branches.append(branch);
+  });
+  section.append(branches);
+  return section;
+}
+
+function createMobileRelationshipMap(driver, incoming, outgoing, panelId) {
+  const map = element("div", "relationship-map__mobile");
+  map.append(
+    createMobileMapGroup("Upstream Drivers", "incoming", incoming, panelId)
+  );
+  if (incoming.length > 0) {
+    const incomingCue = element(
+      "p",
+      "relationship-map-mobile__flow",
+      "Flows into the current Driver"
+    );
+    incomingCue.append(element("span", "", " ↓"));
+    map.append(incomingCue);
+  }
+  map.append(createHtmlMapNode(driver, { current: true }));
+  if (outgoing.length > 0) {
+    const outgoingCue = element(
+      "p",
+      "relationship-map-mobile__flow",
+      "Flows toward downstream Drivers"
+    );
+    outgoingCue.append(element("span", "", " ↓"));
+    map.append(outgoingCue);
+  }
+  map.append(
+    createMobileMapGroup("Downstream Drivers", "outgoing", outgoing, panelId)
+  );
+  return map;
+}
+
+function createMapEdgeDetailPanel(driver) {
+  const panel = element("section", "relationship-map-edge-detail");
+  panel.id = "relationship-map-edge-detail-" + driver.id;
+  panel.setAttribute("aria-live", "polite");
+  panel.setAttribute("aria-label", "Selected relationship details");
+  panel.append(
+    element(
+      "p",
+      "relationship-map-edge-detail__placeholder",
+      "Select a relationship line or edge-details control to review its canonical metadata."
+    )
+  );
+  return panel;
+}
+
+function createRelationshipMap(driver, incoming, outgoing) {
+  const map = element("details", "relationship-map");
+  const summary = element("summary", "relationship-map__summary");
+  const summaryText = element("span", "relationship-map__summary-text");
+  summaryText.append(
+    element("strong", "", "View relationship map"),
+    element(
+      "span",
+      "",
+      "One-hop structured relationship neighborhood"
+    )
+  );
+  const summaryCounts = element(
+    "span",
+    "relationship-map__summary-counts",
+    String(incoming.length) + " upstream · " +
+      String(outgoing.length) + " downstream"
+  );
+  summary.append(summaryText, summaryCounts);
+  map.append(summary);
+
+  const body = element("div", "relationship-map__body");
+  const header = element("header", "relationship-map__header");
+  header.append(
+    element("h4", "", "Evidence-bearing relationship neighborhood"),
+    element(
+      "p",
+      "",
+      "The structured relationship graph is curated, conservative, and non-exhaustive. Counts describe only the currently represented one-hop connections; they do not measure importance, centrality, evidence quality, or causal strength."
+    )
+  );
+  const counts = element("div", "relationship-map__counts");
+  counts.setAttribute("aria-label", "Relationship Map counts");
+  counts.append(
+    element("span", "", String(incoming.length) + " upstream"),
+    element("span", "", String(outgoing.length) + " downstream")
+  );
+  header.append(counts);
+  body.append(header);
+
+  if (incoming.length === 0 && outgoing.length === 0) {
+    const emptyState = element("div", "relationship-map__empty");
+    emptyState.append(
+      element(
+        "p",
+        "",
+        "No structured evidence-bearing relationships are currently represented for this Driver."
+      ),
+      element(
+        "p",
+        "",
+        "The structured graph is conservative and non-exhaustive."
+      ),
+      element(
+        "p",
+        "",
+        "This does not imply that the Driver is causally isolated."
+      )
+    );
+    body.append(emptyState);
+  } else {
+    const panel = createMapEdgeDetailPanel(driver);
+    body.append(
+      element(
+        "p",
+        "relationship-map__direction-key",
+        "Direction key: every arrow runs from the canonical source Driver to the canonical target Driver."
+      ),
+      createDesktopRelationshipMap(driver, incoming, outgoing, panel.id),
+      createMobileRelationshipMap(driver, incoming, outgoing, panel.id),
+      panel
+    );
+  }
+
+  map.append(body);
+  return map;
+}
+
+function createMapEdgeDetail(relationship) {
+  const fragment = document.createDocumentFragment();
+  const header = element("header", "relationship-map-edge-detail__header");
+  header.append(
+    element("p", "eyebrow", "Selected canonical relationship"),
+    element(
+      "h5",
+      "",
+      relationship.sourceDriverName + " → " + relationship.targetDriverName
+    )
+  );
+  fragment.append(header);
+
+  const primaryFields = element("dl", "relationship-map-edge-detail__grid");
+  [
+    [
+      "Source Driver",
+      relationship.sourceDriverName + " (" + relationship.sourceDriverId + ")",
+    ],
+    [
+      "Target Driver",
+      relationship.targetDriverName + " (" + relationship.targetDriverId + ")",
+    ],
+    ["Relationship type", relationship.relationshipType],
+    ["Expected direction", relationship.expectedDirection],
+    ["Evidence strength", relationship.evidenceStrength],
+    ["Time lag", relationship.timeLag],
+  ].forEach(([label, value]) =>
+    appendRelationshipField(primaryFields, label, value)
+  );
+  fragment.append(primaryFields);
+
+  const more = element("details", "relationship-map-edge-detail__more");
+  more.append(element("summary", "", "Review full edge evidence"));
+  const additionalFields = element("dl", "relationship-map-edge-detail__grid");
+  appendRelationshipField(
+    additionalFields,
+    "Functional form",
+    relationship.functionalForm
+  );
+  appendRelationshipField(
+    additionalFields,
+    "Moderators / conditions",
+    relationship.moderatorsConditions
+  );
+  appendRelationshipField(
+    additionalFields,
+    "Evidence notes",
+    relationship.evidenceNotes
+  );
+  appendRelationshipField(additionalFields, "Evidence IDs", null, {
+    content: createEvidenceIdList(relationship.evidenceIds),
+  });
+  appendRelationshipField(additionalFields, "Relationship ID", relationship.id);
+  more.append(additionalFields);
+  fragment.append(more);
+  return fragment;
+}
+
+function selectRelationshipMapEdge(control) {
+  const relationship = relationshipById.get(control.dataset.mapRelationshipId);
+  const map = control.closest(".relationship-map");
+  if (!relationship || !map) {
+    return;
+  }
+  map.querySelectorAll("[data-map-relationship-id]").forEach((edgeControl) => {
+    const selected = edgeControl.dataset.mapRelationshipId === relationship.id;
+    edgeControl.classList.toggle("is-selected", selected);
+    edgeControl.setAttribute("aria-pressed", String(selected));
+  });
+  const panel = map.querySelector(".relationship-map-edge-detail");
+  panel.replaceChildren(createMapEdgeDetail(relationship));
+}
+
 function createRelationshipCard(relationship, direction) {
   const incoming = direction === "incoming";
   const relatedDriverId = incoming
@@ -1039,7 +1700,7 @@ function createRelationshipsSection(driver) {
     element("span", "", relationshipCountLabel(incoming.length, "upstream")),
     element("span", "", relationshipCountLabel(outgoing.length, "downstream"))
   );
-  content.append(counts);
+  content.append(counts, createRelationshipMap(driver, incoming, outgoing));
 
   if (incoming.length === 0 && outgoing.length === 0) {
     content.append(
@@ -1666,9 +2327,12 @@ nextDriverButton.addEventListener("click", () => moveWithinResults(1));
 copyLinkButton.addEventListener("click", copyCurrentLink);
 
 driverDetail.addEventListener("click", (event) => {
+  const mapEdgeControl = event.target.closest("[data-map-relationship-id]");
   const relationshipLink = event.target.closest("[data-relationship-driver-id]");
   const familyButton = event.target.closest("[data-view-family-id]");
-  if (
+  if (mapEdgeControl) {
+    selectRelationshipMapEdge(mapEdgeControl);
+  } else if (
     relationshipLink &&
     !event.ctrlKey &&
     !event.metaKey &&
@@ -1680,6 +2344,19 @@ driverDetail.addEventListener("click", (event) => {
     driverDetail.scrollTop = 0;
   } else if (familyButton) {
     showFamily(familyButton.dataset.viewFamilyId, "push", true);
+  }
+});
+
+driverDetail.addEventListener("keydown", (event) => {
+  const mapEdgeControl = event.target.closest(
+    "[data-map-relationship-id][role='button']"
+  );
+  if (
+    mapEdgeControl &&
+    (event.key === "Enter" || event.key === " ")
+  ) {
+    event.preventDefault();
+    selectRelationshipMapEdge(mapEdgeControl);
   }
 });
 
