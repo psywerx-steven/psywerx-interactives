@@ -22,6 +22,8 @@ PSYWERX. The repository is designed for static hosting with GitHub Pages.
   Driver-to-Family validation rules.
 - `docs/CODEBOOK_SCHEMA_V1.md` defines the canonical Codebook Schema v1.0,
   permanent Codebook Term IDs, and controlled-vocabulary validation rules.
+- `docs/RELATIONSHIP_SCHEMA_V1.md` defines the canonical Relationship Schema
+  v1.0, Driver-reference rules, and graph validation requirements.
 
 ## Build driver data locally
 
@@ -127,6 +129,34 @@ workbooks, and validates source-controlled Driver vocabularies against
 `data/drivers.json`. Allowed-but-unused values remain valid. Used-but-undefined
 values stop the import, and failed validation never replaces good public data.
 
+## Build Relationship data locally
+
+The public `data/relationships.json` file is generated from the 13-column
+`Relationships` worksheet in each source workbook. Build Drivers and the
+Codebook first because Relationship validation uses canonical Driver IDs and
+names plus the Codebook-controlled `Expected Direction` and relationship
+`Evidence Strength` vocabularies.
+
+```powershell
+py scripts\build_drivers.py
+py scripts\build_codebook.py
+py scripts\build_relationships.py
+```
+
+The importer enforces
+[Relationship Schema v1.0](./docs/RELATIONSHIP_SCHEMA_V1.md), exact Driver
+ID/name resolution, globally unique Relationship IDs and directed Driver
+pairs, no self-relationships, deterministic output, and public-only source
+provenance. Future explicit cross-layer edges are valid; the current source
+set is within-layer.
+
+The structured `Relationships` worksheets are authoritative for
+evidence-bearing graph edges. Narrative Driver fields such as likely upstream
+or downstream influences and interaction candidates remain descriptive
+metadata and are not converted into edges. The current graph is intentionally
+conservative and non-exhaustive, so a missing edge does not establish that no
+influence exists.
+
 After the one-time workbook migrations have been applied, the exact full
 public-data rebuild order is:
 
@@ -134,6 +164,7 @@ public-data rebuild order is:
 py scripts\build_drivers.py
 py scripts\build_families.py
 py scripts\build_codebook.py
+py scripts\build_relationships.py
 ```
 
 ## Preview the static site
@@ -152,6 +183,6 @@ Then open <http://localhost:8000/drivers/>.
 Review and commit only the generated public artifacts and pipeline changes:
 
 ```powershell
-git add data/drivers.json data/families.json data/codebook.json scripts/build_drivers.py scripts/build_families.py scripts/build_codebook.py scripts/migrate_driver_schema_v1_1.py scripts/migrate_family_governance_v1.py scripts/migrate_codebook_ids_v1.py docs/DRIVER_SCHEMA_V1_1.md docs/FAMILY_SCHEMA_V1.md docs/CODEBOOK_SCHEMA_V1.md requirements.txt README.md .gitignore source-data/.gitkeep
+git add data/drivers.json data/families.json data/codebook.json data/relationships.json scripts/build_drivers.py scripts/build_families.py scripts/build_codebook.py scripts/build_relationships.py scripts/migrate_driver_schema_v1_1.py scripts/migrate_family_governance_v1.py scripts/migrate_codebook_ids_v1.py docs/DRIVER_SCHEMA_V1_1.md docs/FAMILY_SCHEMA_V1.md docs/CODEBOOK_SCHEMA_V1.md docs/RELATIONSHIP_SCHEMA_V1.md requirements.txt README.md .gitignore source-data/.gitkeep
 git commit -m "Build ontology data from local spreadsheets"
 ```
