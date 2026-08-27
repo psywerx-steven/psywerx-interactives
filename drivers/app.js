@@ -50,6 +50,9 @@ let families = [];
 let familyById = new Map();
 let familyByIdentity = new Map();
 let driversByFamilyId = new Map();
+let relationships = [];
+let incomingRelationshipsByDriverId = new Map();
+let outgoingRelationshipsByDriverId = new Map();
 let hierarchy = new Map();
 let filteredDrivers = [];
 let detailDrivers = [];
@@ -128,7 +131,7 @@ function assertString(record, field, label, errors) {
   }
 }
 
-function validateTaxonomyData(driverData, familyEnvelope) {
+function validateTaxonomyData(driverData, familyEnvelope, relationshipEnvelope) {
   const errors = [];
   if (!Array.isArray(driverData)) {
     throw new Error("Driver data is not an array.");
@@ -142,6 +145,16 @@ function validateTaxonomyData(driverData, familyEnvelope) {
   }
   if (familyEnvelope.schemaVersion !== "1.0") {
     throw new Error("Family data does not use Family Schema v1.0.");
+  }
+  if (
+    !relationshipEnvelope ||
+    typeof relationshipEnvelope !== "object" ||
+    !Array.isArray(relationshipEnvelope.relationships)
+  ) {
+    throw new Error("Relationship data does not contain a relationships array.");
+  }
+  if (relationshipEnvelope.schemaVersion !== "1.0") {
+    throw new Error("Relationship data does not use Relationship Schema v1.0.");
   }
 
   const candidateDriverById = new Map();
@@ -239,13 +252,107 @@ function validateTaxonomyData(driverData, familyEnvelope) {
     }
   });
 
+  const candidateRelationshipById = new Map();
+  relationshipEnvelope.relationships.forEach((relationship, index) => {
+    const label = "Relationship record " + String(index + 1);
+    [
+      "id",
+      "sourceDriverId",
+      "sourceDriverName",
+      "targetDriverId",
+      "targetDriverName",
+      "relationshipType",
+      "expectedDirection",
+      "functionalForm",
+      "moderatorsConditions",
+      "timeLag",
+      "evidenceStrength",
+      "evidenceNotes",
+    ].forEach((field) => assertString(relationship, field, label, errors));
+
+    if (candidateRelationshipById.has(relationship.id)) {
+      errors.push("Duplicate Relationship ID: " + relationship.id + ".");
+    }
+    candidateRelationshipById.set(relationship.id, relationship);
+
+    const sourceDriver = candidateDriverById.get(relationship.sourceDriverId);
+    const targetDriver = candidateDriverById.get(relationship.targetDriverId);
+    if (!sourceDriver) {
+      errors.push(
+        "Relationship " + relationship.id + " has an unknown source Driver ID."
+      );
+    } else if (sourceDriver.name !== relationship.sourceDriverName) {
+      errors.push(
+        "Relationship " + relationship.id + " has a source Driver name mismatch."
+      );
+    }
+    if (!targetDriver) {
+      errors.push(
+        "Relationship " + relationship.id + " has an unknown target Driver ID."
+      );
+    } else if (targetDriver.name !== relationship.targetDriverName) {
+      errors.push(
+        "Relationship " + relationship.id + " has a target Driver name mismatch."
+      );
+    }
+    if (
+      hasValue(relationship.sourceDriverId) &&
+      relationship.sourceDriverId === relationship.targetDriverId
+    ) {
+      errors.push("Relationship " + relationship.id + " is a self-relationship.");
+    }
+    if (
+      !Array.isArray(relationship.evidenceIds) ||
+      relationship.evidenceIds.length === 0 ||
+      relationship.evidenceIds.some(
+        (evidenceId) =>
+          typeof evidenceId !== "string" || evidenceId.trim() === ""
+      )
+    ) {
+      errors.push(label + " has invalid evidenceIds.");
+    }
+  });
+
   if (errors.length > 0) {
     throw new Error(
-      "Driver and Family data validation failed: " +
+      "Driver, Family, and Relationship data validation failed: " +
         errors.slice(0, 5).join(" ") +
         (errors.length > 5 ? " " + String(errors.length - 5) + " more errors." : "")
     );
   }
+}
+
+function buildRelationshipIndexes() {
+  incomingRelationshipsByDriverId = new Map(
+    drivers.map((driver) => [driver.id, []])
+  );
+  outgoingRelationshipsByDriverId = new Map(
+    drivers.map((driver) => [driver.id, []])
+  );
+
+  relationships.forEach((relationship) => {
+    incomingRelationshipsByDriverId
+      .get(relationship.targetDriverId)
+      .push(relationship);
+    outgoingRelationshipsByDriverId
+      .get(relationship.sourceDriverId)
+      .push(relationship);
+  });
+
+  const sortRelationshipIndex = (index, relatedDriverNameField) => {
+    index.forEach((driverRelationships) =>
+      driverRelationships.sort(
+        (first, second) =>
+          first[relatedDriverNameField].localeCompare(
+            second[relatedDriverNameField],
+            undefined,
+            { sensitivity: "base", numeric: true }
+          ) || first.id.localeCompare(second.id, undefined, { numeric: true })
+      )
+    );
+  };
+  sortRelationshipIndex(incomingRelationshipsByDriverId, "sourceDriverName");
+  sortRelationshipIndex(outgoingRelationshipsByDriverId, "targetDriverName");
 }
 
 function buildHierarchy() {
@@ -754,6 +861,248 @@ function createFamilyDetailLink(driver) {
   return wrapper;
 }
 
+function relationshipCountLabel(count, direction) {
+  const noun = count === 1 ? "relationship" : "relationships";
+  return String(count) + " " + direction + " " + noun;
+}
+
+function appendRelationshipField(list, label, value, options = {}) {
+  const wrapper = element("div", "relationship-metadata__field");
+  wrapper.append(element("dt", "", label));
+  const description = element("dd");
+  if (options.content) {
+    description.append(options.content);
+  } else {
+    description.textContent = hasValue(value) ? value : "Not specified";
+  }
+  wrapper.append(description);
+  list.append(wrapper);
+}
+
+function createEvidenceIdList(evidenceIds) {
+  if (!Array.isArray(evidenceIds) || evidenceIds.length === 0) {
+    return element("span", "", "None recorded");
+  }
+  const list = element("ul", "relationship-evidence-ids");
+  evidenceIds.forEach((evidenceId) => list.append(element("li", "", evidenceId)));
+  return list;
+}
+
+function createRelationshipCard(relationship, direction) {
+  const incoming = direction === "incoming";
+  const relatedDriverId = incoming
+    ? relationship.sourceDriverId
+    : relationship.targetDriverId;
+  const relatedDriver = driverById.get(relatedDriverId);
+  const article = element("article", "relationship-card");
+  setLayerIdentity(article, relatedDriver.layer);
+
+  const directionLabel = incoming ? "Upstream driver" : "Downstream driver";
+  const directionLine = element("p", "relationship-card__direction");
+  const directionArrow = element("span", "", "\u2192");
+  directionArrow.setAttribute("aria-hidden", "true");
+  if (incoming) {
+    directionLine.append(
+      element("span", "", directionLabel),
+      directionArrow,
+      element("span", "", "This Driver")
+    );
+  } else {
+    directionLine.append(
+      element("span", "", "This Driver"),
+      directionArrow,
+      element("span", "", directionLabel.toLocaleLowerCase())
+    );
+  }
+
+  const driverLink = element(
+    "a",
+    "relationship-card__driver-link",
+    relatedDriver.name
+  );
+  driverLink.href = driverUrl(relatedDriver.id).toString();
+  driverLink.dataset.relationshipDriverId = relatedDriver.id;
+  driverLink.setAttribute(
+    "aria-label",
+    "Open " + directionLabel.toLocaleLowerCase() + ": " + relatedDriver.name
+  );
+
+  const identity = element("div", "relationship-card__identity");
+  const layer = element("span", "layer-badge", relatedDriver.layer);
+  setLayerIdentity(layer, relatedDriver.layer);
+  identity.append(layer, element("span", "family-badge", relatedDriver.family));
+
+  const facts = element("dl", "relationship-card__facts");
+  [
+    ["Relationship type", relationship.relationshipType],
+    ["Expected direction", relationship.expectedDirection],
+    ["Evidence strength", relationship.evidenceStrength],
+  ].forEach(([label, value]) => {
+    const fact = element("div", "relationship-card__fact");
+    fact.append(element("dt", "", label), element("dd", "", value));
+    facts.append(fact);
+  });
+
+  const details = element("details", "relationship-details");
+  details.append(element("summary", "", "View relationship details"));
+  const metadata = element("dl", "relationship-metadata");
+  appendRelationshipField(metadata, "Relationship ID", relationship.id);
+  appendRelationshipField(
+    metadata,
+    "Relationship type",
+    relationship.relationshipType
+  );
+  appendRelationshipField(
+    metadata,
+    "Expected direction",
+    relationship.expectedDirection
+  );
+  appendRelationshipField(metadata, "Functional form", relationship.functionalForm);
+  appendRelationshipField(
+    metadata,
+    "Moderators / conditions",
+    relationship.moderatorsConditions
+  );
+  appendRelationshipField(metadata, "Time lag", relationship.timeLag);
+  appendRelationshipField(
+    metadata,
+    "Evidence strength",
+    relationship.evidenceStrength
+  );
+  appendRelationshipField(metadata, "Evidence notes", relationship.evidenceNotes);
+  appendRelationshipField(metadata, "Evidence IDs", null, {
+    content: createEvidenceIdList(relationship.evidenceIds),
+  });
+  details.append(metadata);
+
+  article.append(directionLine, driverLink, identity, facts, details);
+  return article;
+}
+
+function createRelationshipGroup(title, direction, driverRelationships) {
+  const section = element("section", "relationship-group");
+  const heading = element("h4", "relationship-group__heading");
+  const arrow = element("span", "relationship-group__arrow", "\u2192");
+  arrow.setAttribute("aria-hidden", "true");
+  if (direction === "incoming") {
+    heading.append(arrow, element("span", "", title));
+  } else {
+    heading.append(element("span", "", title), arrow);
+  }
+  heading.append(
+    element(
+      "span",
+      "relationship-group__count",
+      String(driverRelationships.length)
+    )
+  );
+  section.append(heading);
+
+  if (driverRelationships.length === 0) {
+    section.append(
+      element(
+        "p",
+        "relationship-group__empty",
+        direction === "incoming"
+          ? "No incoming structured relationships are currently represented for this Driver."
+          : "No outgoing structured relationships are currently represented for this Driver."
+      )
+    );
+    return section;
+  }
+
+  const list = element("div", "relationship-list");
+  driverRelationships.forEach((relationship) =>
+    list.append(createRelationshipCard(relationship, direction))
+  );
+  section.append(list);
+  return section;
+}
+
+function createRelationshipsSection(driver) {
+  const incoming = incomingRelationshipsByDriverId.get(driver.id) || [];
+  const outgoing = outgoingRelationshipsByDriverId.get(driver.id) || [];
+  const section = element("section", "detail-section relationships-section");
+  section.append(element("h3", "", "Structured relationships"));
+
+  const content = element("div", "relationships-section__content");
+  content.append(
+    element(
+      "p",
+      "relationships-section__intro",
+      "These canonical, evidence-bearing relationships are a curated and non-exhaustive subset of the connections relevant to this Driver."
+    )
+  );
+  const counts = element("div", "relationship-counts", "");
+  counts.setAttribute("aria-label", "Structured relationship counts");
+  counts.append(
+    element("span", "", relationshipCountLabel(incoming.length, "upstream")),
+    element("span", "", relationshipCountLabel(outgoing.length, "downstream"))
+  );
+  content.append(counts);
+
+  if (incoming.length === 0 && outgoing.length === 0) {
+    content.append(
+      element(
+        "p",
+        "relationships-empty",
+        "No structured relationships are currently represented for this Driver."
+      )
+    );
+  } else {
+    const groups = element("div", "relationship-groups");
+    groups.append(
+      createRelationshipGroup("Upstream drivers (incoming)", "incoming", incoming),
+      createRelationshipGroup("Downstream drivers (outgoing)", "outgoing", outgoing)
+    );
+    content.append(groups);
+  }
+
+  section.append(content);
+  return section;
+}
+
+function createCausalNarrativeSection(driver) {
+  const section = createDetailSection("Causal narrative", [
+    { label: "Mechanism", value: driver.mechanism, wide: true },
+    {
+      label: "Other reported upstream influences",
+      value: driver.likelyUpstreamInfluences,
+      wide: true,
+    },
+    {
+      label: "Other reported downstream influences",
+      value: driver.likelyDownstreamInfluences,
+      wide: true,
+    },
+    {
+      label: "Moderators / boundary conditions",
+      value: driver.moderatorsBoundaryConditions,
+      wide: true,
+    },
+    {
+      label: "Interaction candidates",
+      value: driver.typicalInteractionCandidates,
+      wide: true,
+    },
+  ]);
+  if (!section) {
+    return null;
+  }
+  const list = section.querySelector(".detail-grid");
+  const content = element("div", "detail-section__content");
+  content.append(
+    element(
+      "p",
+      "causal-narrative-note",
+      "These source-language fields provide broader reported context. They are not canonical graph edges."
+    ),
+    list
+  );
+  section.append(content);
+  return section;
+}
+
 function renderDriverDetail(driver) {
   const fragment = document.createDocumentFragment();
   const header = element("header", "driver-detail__header");
@@ -784,13 +1133,8 @@ function renderDriverDetail(driver) {
       { label: "Representation / scale", value: driver.representationScale, wide: true },
       { label: "Polarity / direction", value: driver.polarityDirection, wide: true },
     ]),
-    createDetailSection("Causal logic", [
-      { label: "Mechanism", value: driver.mechanism, wide: true },
-      { label: "Likely upstream influences", value: driver.likelyUpstreamInfluences, wide: true },
-      { label: "Likely downstream influences", value: driver.likelyDownstreamInfluences, wide: true },
-      { label: "Moderators / boundary conditions", value: driver.moderatorsBoundaryConditions, wide: true },
-      { label: "Typical interaction candidates", value: driver.typicalInteractionCandidates, wide: true },
-    ]),
+    createRelationshipsSection(driver),
+    createCausalNarrativeSection(driver),
     createDetailSection("Dynamics", [
       { label: "Modifiability", value: driver.modifiability },
       { label: "Volatility", value: driver.volatility },
@@ -1148,11 +1492,12 @@ async function fetchJson(url, label) {
 
 async function loadTaxonomy() {
   try {
-    const [driverData, familyEnvelope] = await Promise.all([
+    const [driverData, familyEnvelope, relationshipEnvelope] = await Promise.all([
       fetchJson("../data/drivers.json", "Driver data"),
       fetchJson("../data/families.json", "Family data"),
+      fetchJson("../data/relationships.json", "Relationship data"),
     ]);
-    validateTaxonomyData(driverData, familyEnvelope);
+    validateTaxonomyData(driverData, familyEnvelope, relationshipEnvelope);
 
     drivers = driverData.map((driver) =>
       Object.assign({}, driver, { _searchText: searchableText(driver) })
@@ -1166,7 +1511,9 @@ async function loadTaxonomy() {
         family,
       ])
     );
+    relationships = relationshipEnvelope.relationships;
     buildHierarchy();
+    buildRelationshipIndexes();
     totalDriverCount.textContent = drivers.length.toLocaleString();
     totalLayerCount.textContent = hierarchy.size.toLocaleString();
     totalFamilyCount.textContent = families.length.toLocaleString();
@@ -1198,7 +1545,7 @@ async function loadTaxonomy() {
     driverList.replaceChildren();
     const message = loadError.querySelector("p");
     message.textContent =
-      "The required Driver and Family datasets could not be loaded or did not agree. " +
+      "The required Driver, Family, and Relationship datasets could not be loaded or did not agree. " +
       "Check the browser console, then reload the page. For local preview, use an HTTP server.";
     loadError.hidden = false;
   }
@@ -1319,8 +1666,19 @@ nextDriverButton.addEventListener("click", () => moveWithinResults(1));
 copyLinkButton.addEventListener("click", copyCurrentLink);
 
 driverDetail.addEventListener("click", (event) => {
+  const relationshipLink = event.target.closest("[data-relationship-driver-id]");
   const familyButton = event.target.closest("[data-view-family-id]");
-  if (familyButton) {
+  if (
+    relationshipLink &&
+    !event.ctrlKey &&
+    !event.metaKey &&
+    !event.shiftKey &&
+    !event.altKey
+  ) {
+    event.preventDefault();
+    openDriver(relationshipLink.dataset.relationshipDriverId, "push");
+    driverDetail.scrollTop = 0;
+  } else if (familyButton) {
     showFamily(familyButton.dataset.viewFamilyId, "push", true);
   }
 });
