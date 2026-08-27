@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Reference the canonical fields, controlled vocabularies, and governance rules used by the PSYWERX Driver Ontology.">
+  <title>PSYWERX Driver Codebook</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="../../shared/psywerx.css">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#codebook-reference">Skip to Codebook reference</a>
+
+  <header class="site-header">
+    <div class="site-container site-header__inner">
+      <a class="wordmark" href="../" aria-label="PSYWERX Driver Explorer home">
+        <img
+          class="wordmark__logo"
+          src="../../shared/assets/psywerx-logo.png"
+          alt="PSYWERX"
+          width="1255"
+          height="350"
+        >
+      </a>
+      <div class="site-header__tools">
+        <span class="site-header__context">Behavioral Driver Taxonomy</span>
+        <nav class="site-nav" aria-label="Primary navigation">
+          <a href="../">Driver Explorer</a>
+          <a href="./" aria-current="page">Codebook</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="codebook-hero">
+      <div class="site-container codebook-hero__inner">
+        <div>
+          <p class="eyebrow">Driver Codebook &middot; Codebook v1.0</p>
+          <h1>Understand the ontology, field by field.</h1>
+          <p class="codebook-hero__lede">
+            This Codebook documents the canonical fields, controlled vocabularies,
+            and governance rules used by the PSYWERX Driver Ontology.
+          </p>
+        </div>
+        <dl class="codebook-hero__stats" aria-label="Codebook summary">
+          <div>
+            <dt id="term-count">48</dt>
+            <dd>canonical terms</dd>
+          </div>
+          <div>
+            <dt id="category-count">7</dt>
+            <dd>source categories</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section id="codebook-reference" class="codebook site-container" aria-labelledby="codebook-heading">
+      <div class="section-heading">
+        <p class="eyebrow">Public reference</p>
+        <h2 id="codebook-heading">Driver Ontology Codebook</h2>
+        <p>Browse by source category or search the full technical reference.</p>
+      </div>
+
+      <div class="search-panel" role="search">
+        <label for="codebook-search">Search Codebook terms</label>
+        <div class="search-panel__controls">
+          <input
+            id="codebook-search"
+            type="search"
+            placeholder="Search fields, definitions, formats, guidance, IDs, or categories"
+            autocomplete="off"
+            disabled
+          >
+          <button id="clear-search" class="secondary-button" type="button" disabled>Clear</button>
+        </div>
+      </div>
+
+      <div id="load-error" class="load-error" role="alert" hidden>
+        <h3>Codebook data could not be loaded</h3>
+        <p>
+          Check your connection and reload the page. When previewing locally,
+          use an HTTP server rather than opening this file directly.
+        </p>
+      </div>
+      <div id="link-notice" class="link-notice" role="status" aria-live="polite" hidden></div>
+
+      <div class="codebook__layout">
+        <aside class="category-panel" aria-labelledby="category-heading">
+          <h3 id="category-heading">Categories</h3>
+          <nav id="category-navigation" class="category-navigation" aria-label="Codebook categories"></nav>
+        </aside>
+
+        <div class="codebook__results">
+          <p id="result-summary" class="result-summary" role="status" aria-live="polite">Loading Codebook&hellip;</p>
+          <div id="category-sections"></div>
+          <div id="empty-state" class="empty-state" hidden>
+            <h3>No matching Codebook terms</h3>
+            <p>Try a different word or clear the search.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-container">
+      <p>PSYWERX Driver Ontology &middot; Public Codebook reference</p>
+    </div>
+  </footer>
+
+  <script src="./app.js" defer></script>
+</body>
+</html>

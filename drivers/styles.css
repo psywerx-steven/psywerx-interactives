@@ -31,6 +31,12 @@
   height: auto;
 }
 
+.site-header__tools {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
 .site-header__context {
   padding-left: 1.25rem;
   border-left: 1px solid var(--psywerx-border);
@@ -1221,6 +1227,10 @@
     display: none;
   }
 
+  .site-header__tools {
+    gap: 0.4rem;
+  }
+
   .wordmark__logo {
     width: 12rem;
   }
@@ -1327,6 +1337,17 @@
 
   .detail-navigation {
     justify-content: space-between;
+  }
+}
+
+@media (max-width: 31rem) {
+  .wordmark__logo {
+    width: 9.5rem;
+  }
+
+  .site-nav a {
+    padding-inline: 0.45rem;
+    font-size: 0.7rem;
   }
 }
 

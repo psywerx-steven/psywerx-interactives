@@ -255,6 +255,37 @@ p {
   text-decoration: none;
 }
 
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.site-nav a {
+  min-height: 2.5rem;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-small);
+  color: var(--psywerx-muted);
+  font-size: 0.78rem;
+  font-weight: 720;
+  line-height: 1.35;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.site-nav a:hover {
+  border-color: var(--psywerx-border);
+  color: var(--psywerx-navy);
+  background: var(--psywerx-pale-blue);
+}
+
+.site-nav a[aria-current="page"] {
+  border-color: #a9c9d8;
+  color: var(--psywerx-navy);
+  background: var(--psywerx-pale-blue);
+}
+
 .card,
 .definition-block {
   border: 1px solid var(--psywerx-border);
