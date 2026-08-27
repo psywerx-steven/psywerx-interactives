@@ -1,0 +1,787 @@
+{
+  "schemaVersion": "1.0",
+  "metadata": {
+    "title": "PSYWERX Driver Ontology Codebook v1.1",
+    "governanceInstruction": "Controlling field definitions and allowed values. Copy unchanged to all eight layer workbooks; layer-specific examples belong outside allowed-value definitions.",
+    "worksheetPopulatedRows": 51,
+    "structuralRows": 3,
+    "termRecords": 48
+  },
+  "entries": [
+    {
+      "id": "CB-LAY-DEFINITION",
+      "sheet": "Layer Summary",
+      "field": "Layer definition",
+      "definition": "Definition of the layer’s variable domain.",
+      "allowedValuesOrFormat": "Free text",
+      "allowedValues": [],
+      "required": true,
+      "guidance": "Describe the nature of included variables, not every upstream source.",
+      "source": {
+        "sheet": "Codebook",
+        "row": 5
+      }
+    },
+    {
+      "id": "CB-LAY-SCOPE",
+      "sheet": "Layer Summary",
+      "field": "Scope",
+      "definition": "Inclusion scope for the layer.",
+      "allowedValuesOrFormat": "Free text",
+      "allowedValues": [],
+      "required": true,
+      "guidance": "State principal included variable classes.",
+      "source": {
+        "sheet": "Codebook",
+        "row": 6
+      }
+    },
+    {
+      "id": "CB-LAY-BOUNDARY",
+      "sheet": "Layer Summary",
+      "field": "Boundary with other layers",
+      "definition": "Primary exclusions and assignment boundaries.",
+      "allowedValuesOrFormat": "Free text",
+      "allowedValues": [],
+      "required": true,
+      "guidance": "Use nature-of-variable assignment rule.",
+      "source": {
+        "sheet": "Codebook",
+        "row": 7
+      }
+    },
+    {
+      "id": "CB-LAY-ONTOLOGY-STANDARD-VERSION",
+      "sheet": "Layer Summary",
+      "field": "Ontology Standard Version",
+      "definition": "Controlling ontology standard.",
+      "allowedValuesOrFormat": "PSYWERX Driver Ontology Standard v1.1",
+      "allowedValues": [],
+      "required": true,
+      "guidance": "Change only through ontology-wide version control.",
+      "source": {
+        "sheet": "Codebook",
+        "row": 8
+      }
+    },
+    {
+      "id": "CB-LAY-TAXONOMY-VERSION",
+      "sheet": "Layer Summary",
+      "field": "Layer Taxonomy Version",
+      "definition": "Version of layer content.",
+      "allowedValuesOrFormat": "Layer name + semantic version",
+      "allowedValues": [],
+      "required": true,
+      "guidance": "Content revisions need not change the ontology standard.",
+      "source": {
+        "sheet": "Codebook",
+        "row": 9
+      }
+    },
+    {
+      "id": "CB-LAY-REVIEW-DATES",
+      "sheet": "Layer Summary",
+      "field": "Creation Date / Last Review Date",
+      "definition": "Version-control dates.",
+      "allowedValuesOrFormat": "ISO date",
+      "allowedValues": [],
+      "required": true,
+      "guidance": "Use real date values.",
+      "source": {
+        "sheet": "Codebook",
+        "row": 10
+      }
+    },
+    {
+      "id": "CB-LAY-KNOWN-GAPS",
+      "sheet": "Layer Summary",
+      "field": "Known gaps",
+      "definition": "Unresolved content or evidence gaps.",
+      "allowedValuesOrFormat": "Free text",
+      "allowedValues": [],
+      "required": true,
+      "guidance": "Do not hide uncertainty.",
+      "source": {
+        "sheet": "Codebook",
+        "row": 11
+      }
+    },
+    {
+      "id": "CB-DRV-ID",
+      "sheet": "Drivers",
+      "field": "ID",
+      "definition": "Permanent unique driver identifier.",
+      "allowedValuesOrFormat": "Layer prefix + three digits (e.g., BIO-001)",
+      "allowedValues": [],
+      "required": true,
+      "guidance": "Never reuse; preserve through revisions.",
+      "source": {
+        "sheet": "Codebook",
+        "row": 12
+      }
+    },
+    {
+      "id": "CB-DRV-NAME",
+      "sheet": "Drivers",
+      "field": "Name",
+      "definition": "Canonical variable name.",
+      "allowedValuesOrFormat": "Concise scientific noun phrase",
+      "allowedValues": [],
+      "required": true,
+      "guidance": "Name the variable, not an adverse state.",
+      "source": {
+        "sheet": "Codebook",
+        "row": 13
+      }
+    },
+    {
+      "id": "CB-DRV-ALIASES",
+      "sheet": "Drivers",
+      "field": "Other Names / Aliases",
+      "definition": "Alternative and legacy terms.",
+      "allowedValuesOrFormat": "Semicolon-separated text",
+      "allowedValues": [],
+      "required": false,
+      "guidance": "Aliases aid retrieval and do not guarantee equivalence.",
+      "source": {
+        "sheet": "Codebook",
+        "row": 14
+      }
+    },
+    {
+      "id": "CB-DRV-LAYER",
+      "sheet": "Drivers",
+      "field": "Layer",
+      "definition": "Primary layer assignment.",
+      "allowedValuesOrFormat": "Biological; Psychological; Social; Cultural; Physical / Environmental; Institutional / Structural; Informational; Technological",
+      "allowedValues": [
+        "Biological",
+        "Psychological",
+        "Social",
+        "Cultural",
+        "Physical / Environmental",
+        "Institutional / Structural",
+        "Informational",
+        "Technological"
+      ],
+      "required": true,
+      "guidance": "Assign by nature of variable.",
+      "source": {
+        "sheet": "Codebook",
+        "row": 15
+      }
+    },
+    {
+      "id": "CB-DRV-FAMILY",
+      "sheet": "Drivers",
+      "field": "Family",
+      "definition": "Canonical primary family.",
+      "allowedValuesOrFormat": "Valid Family Name in Families sheet",
+      "allowedValues": [],
+      "required": true,
+      "guidance": "Exactly one primary family.",
+      "source": {
+        "sheet": "Codebook",
+        "row": 16
+      }
+    },
+    {
+      "id": "CB-DRV-DEFINITION",
+      "sheet": "Drivers",
+      "field": "Definition",
+      "definition": "Concise statement of what varies.",
+      "allowedValuesOrFormat": "Free text",
+      "allowedValues": [],
+      "required": true,
+      "guidance": "Exclude effects from construct definition.",
+      "source": {
+        "sheet": "Codebook",
+        "row": 17
+      }
+    },
+    {
+      "id": "CB-DRV-DATA-TYPE",
+      "sheet": "Drivers",
+      "field": "Data Type",
+      "definition": "General variable type.",
+      "allowedValuesOrFormat": "Binary; Ordinal; Nominal categorical; Unipolar continuous; Bipolar continuous; Count; Frequency; Rate; Proportion; Duration; Magnitude / level; Time; Multidimensional; Other structured type",
+      "allowedValues": [
+        "Binary",
+        "Ordinal",
+        "Nominal categorical",
+        "Unipolar continuous",
+        "Bipolar continuous",
+        "Count",
+        "Frequency",
+        "Rate",
+        "Proportion",
+        "Duration",
+        "Magnitude / level",
+        "Time",
+        "Multidimensional",
+        "Other structured type"
+      ],
+      "required": true,
+      "guidance": "Choose scientifically faithful type; multiple operational representations may exist.",
+      "source": {
+        "sheet": "Codebook",
+        "row": 18
+      }
+    },
+    {
+      "id": "CB-DRV-REPRESENTATION-SCALE",
+      "sheet": "Drivers",
+      "field": "Representation / Scale",
+      "definition": "Plausible encodings.",
+      "allowedValuesOrFormat": "Free text",
+      "allowedValues": [],
+      "required": true,
+      "guidance": "Do not force every variable to continuous form.",
+      "source": {
+        "sheet": "Codebook",
+        "row": 19
+      }
+    },
+    {
+      "id": "CB-DRV-POLARITY-DIRECTION",
+      "sheet": "Drivers",
+      "field": "Polarity / Direction of Interpretation",
+      "definition": "Semantic meaning of movement or categories.",
+      "allowedValuesOrFormat": "Free text",
+      "allowedValues": [],
+      "required": true,
+      "guidance": "Not a universal direction of behavioral effect.",
+      "source": {
+        "sheet": "Codebook",
+        "row": 20
+      }
+    },
+    {
+      "id": "CB-DRV-MECHANISM",
+      "sheet": "Drivers",
+      "field": "Mechanism",
+      "definition": "How a change may affect downstream variables.",
+      "allowedValuesOrFormat": "Free text",
+      "allowedValues": [],
+      "required": true,
+      "guidance": "Explain process, not correlation alone.",
+      "source": {
+        "sheet": "Codebook",
+        "row": 21
+      }
+    },
+    {
+      "id": "CB-DRV-UPSTREAM-INFLUENCES",
+      "sheet": "Drivers",
+      "field": "Likely Upstream Influences",
+      "definition": "Factors likely to change the driver.",
+      "allowedValuesOrFormat": "Semicolon-separated text",
+      "allowedValues": [],
+      "required": false,
+      "guidance": "Use influences, not universal causes.",
+      "source": {
+        "sheet": "Codebook",
+        "row": 22
+      }
+    },
+    {
+      "id": "CB-DRV-DOWNSTREAM-INFLUENCES",
+      "sheet": "Drivers",
+      "field": "Likely Downstream Influences",
+      "definition": "Factors the driver may change.",
+      "allowedValuesOrFormat": "Semicolon-separated text",
+      "allowedValues": [],
+      "required": false,
+      "guidance": "Use structured Relationships for evidence-bearing edges.",
+      "source": {
+        "sheet": "Codebook",
+        "row": 23
+      }
+    },
+    {
+      "id": "CB-DRV-MODERATORS",
+      "sheet": "Drivers",
+      "field": "Moderators / Boundary Conditions",
+      "definition": "Conditions changing effect strength, direction, threshold, or persistence.",
+      "allowedValuesOrFormat": "Free text",
+      "allowedValues": [],
+      "required": true,
+      "guidance": "Avoid universal claims.",
+      "source": {
+        "sheet": "Codebook",
+        "row": 24
+      }
+    },
+    {
+      "id": "CB-DRV-INTERACTION-CANDIDATES",
+      "sheet": "Drivers",
+      "field": "Typical Interaction Candidates",
+      "definition": "Plausible interacting drivers.",
+      "allowedValuesOrFormat": "Semicolon-separated text",
+      "allowedValues": [],
+      "required": false,
+      "guidance": "Candidates are not established edges.",
+      "source": {
+        "sheet": "Codebook",
+        "row": 25
+      }
+    },
+    {
+      "id": "CB-DRV-MODIFIABILITY",
+      "sheet": "Drivers",
+      "field": "Modifiability / Malleability",
+      "definition": "Practical changeability.",
+      "allowedValuesOrFormat": "Very Low; Low; Moderate; High; Very High",
+      "allowedValues": [
+        "Very Low",
+        "Low",
+        "Moderate",
+        "High",
+        "Very High"
+      ],
+      "required": true,
+      "guidance": "Distinguish theoretical from mission-context feasibility.",
+      "source": {
+        "sheet": "Codebook",
+        "row": 26
+      }
+    },
+    {
+      "id": "CB-DRV-VOLATILITY",
+      "sheet": "Drivers",
+      "field": "Volatility",
+      "definition": "Natural fluctuation without deliberate intervention.",
+      "allowedValuesOrFormat": "Very Low; Low; Moderate; High; Very High",
+      "allowedValues": [
+        "Very Low",
+        "Low",
+        "Moderate",
+        "High",
+        "Very High"
+      ],
+      "required": true,
+      "guidance": "Do not collapse with malleability.",
+      "source": {
+        "sheet": "Codebook",
+        "row": 27
+      }
+    },
+    {
+      "id": "CB-DRV-TIME-SCALE",
+      "sheet": "Drivers",
+      "field": "Time Scale of Change",
+      "definition": "Typical elapsed time over which the driver state meaningfully changes.",
+      "allowedValuesOrFormat": "Seconds–Minutes; Minutes–Hours; Hours–Days; Days–Weeks; Weeks–Months; Months–Years; Years–Generations; Mixed / Context-dependent; Stable / Not applicable; semicolon-separated canonical combinations",
+      "allowedValues": [
+        "Seconds–Minutes",
+        "Minutes–Hours",
+        "Hours–Days",
+        "Days–Weeks",
+        "Weeks–Months",
+        "Months–Years",
+        "Years–Generations",
+        "Mixed / Context-dependent",
+        "Stable / Not applicable"
+      ],
+      "required": true,
+      "guidance": "Select one or more canonical bands. Broad contiguous ranges must list every spanned band, separated by semicolons, shortest to longest. Use canonical capitalization and en dashes. Mixed / Context-dependent and Stable / Not applicable are each exclusive. Chronicity and persistence do not themselves define change speed. Use Time Scale Qualifier to preserve narrative nuance.",
+      "source": {
+        "sheet": "Codebook",
+        "row": 28
+      }
+    },
+    {
+      "id": "CB-DRV-TIME-SCALE-QUALIFIER",
+      "sheet": "Drivers",
+      "field": "Time Scale Qualifier",
+      "definition": "Optional narrative information qualifying Time Scale of Change when meaningful timing information cannot be represented fully by canonical bands. It must not replace or redefine Persistence / Recovery.",
+      "allowedValuesOrFormat": "Free text",
+      "allowedValues": [],
+      "required": false,
+      "guidance": "Preserve meaningful temporal nuance such as chronic baseline, developmental course, stable status, cause-dependent timing, or precise bounds. Do not use as a faceted/filtering value.",
+      "source": {
+        "sheet": "Codebook",
+        "row": 29
+      }
+    },
+    {
+      "id": "CB-DRV-ONSET-LAG",
+      "sheet": "Drivers",
+      "field": "Onset / Causal Lag",
+      "definition": "Delay from driver-state change to a downstream consequence.",
+      "allowedValuesOrFormat": "Seconds–Minutes; Minutes–Hours; Hours–Days; Days–Weeks; Weeks–Months; Months–Years; Years–Generations; Mixed / Context-dependent; semicolon-separated canonical combinations",
+      "allowedValues": [
+        "Seconds–Minutes",
+        "Minutes–Hours",
+        "Hours–Days",
+        "Days–Weeks",
+        "Weeks–Months",
+        "Months–Years",
+        "Years–Generations",
+        "Mixed / Context-dependent"
+      ],
+      "required": true,
+      "guidance": "Use the same canonical delimiter, ordering, duplicate, and exclusivity rules as Time Scale of Change, except Stable / Not applicable is not permitted. Broad contiguous ranges must list every band they span. Keep causal lag distinct from driver change speed.",
+      "source": {
+        "sheet": "Codebook",
+        "row": 30
+      }
+    },
+    {
+      "id": "CB-DRV-PERSISTENCE-RECOVERY",
+      "sheet": "Drivers",
+      "field": "Persistence / Recovery",
+      "definition": "Duration or reversibility after initiating condition changes.",
+      "allowedValuesOrFormat": "Free text",
+      "allowedValues": [],
+      "required": true,
+      "guidance": "Describe state/effect persistence and recovery.",
+      "source": {
+        "sheet": "Codebook",
+        "row": 31
+      }
+    },
+    {
+      "id": "CB-DRV-INDICATORS",
+      "sheet": "Drivers",
+      "field": "Indicators",
+      "definition": "Observable signals of driver state.",
+      "allowedValuesOrFormat": "Semicolon-separated text",
+      "allowedValues": [],
+      "required": false,
+      "guidance": "Indicator is not automatically the driver.",
+      "source": {
+        "sheet": "Codebook",
+        "row": 32
+      }
+    },
+    {
+      "id": "CB-DRV-MEASUREMENT-METHODS",
+      "sheet": "Drivers",
+      "field": "Measurement / Assessment Methods",
+      "definition": "Ways to estimate or infer the driver.",
+      "allowedValuesOrFormat": "Free text or link to Operationalizations",
+      "allowedValues": [],
+      "required": true,
+      "guidance": "Avoid collision with PSYWERX Method entity type.",
+      "source": {
+        "sheet": "Codebook",
+        "row": 33
+      }
+    },
+    {
+      "id": "CB-DRV-OBSERVABILITY",
+      "sheet": "Drivers",
+      "field": "Observability",
+      "definition": "General directness of observation.",
+      "allowedValuesOrFormat": "High; Moderate; Low",
+      "allowedValues": [
+        "High",
+        "Moderate",
+        "Low"
+      ],
+      "required": true,
+      "guidance": "Not equivalent to reliability.",
+      "source": {
+        "sheet": "Codebook",
+        "row": 34
+      }
+    },
+    {
+      "id": "CB-DRV-MEASUREMENT-CAVEATS",
+      "sheet": "Drivers",
+      "field": "Measurement Caveats",
+      "definition": "Known assessment limitations.",
+      "allowedValuesOrFormat": "Free text",
+      "allowedValues": [],
+      "required": true,
+      "guidance": "Address validity and context.",
+      "source": {
+        "sheet": "Codebook",
+        "row": 35
+      }
+    },
+    {
+      "id": "CB-DRV-EVIDENCE-STRENGTH",
+      "sheet": "Drivers",
+      "field": "Evidence Strength",
+      "definition": "Overall maturity of support.",
+      "allowedValuesOrFormat": "Strong; Moderate; Emerging; Mixed; Limited",
+      "allowedValues": [
+        "Strong",
+        "Moderate",
+        "Emerging",
+        "Mixed",
+        "Limited"
+      ],
+      "required": true,
+      "guidance": "Grade support, not popularity.",
+      "source": {
+        "sheet": "Codebook",
+        "row": 36
+      }
+    },
+    {
+      "id": "CB-DRV-EVIDENCE-NOTES",
+      "sheet": "Drivers",
+      "field": "Evidence Notes",
+      "definition": "Supported claims and uncertainties.",
+      "allowedValuesOrFormat": "Free text",
+      "allowedValues": [],
+      "required": true,
+      "guidance": "Include transferability limits.",
+      "source": {
+        "sheet": "Codebook",
+        "row": 37
+      }
+    },
+    {
+      "id": "CB-DRV-MISINTERPRETATIONS",
+      "sheet": "Drivers",
+      "field": "Common Misinterpretations",
+      "definition": "Common misuse of construct.",
+      "allowedValuesOrFormat": "Free text",
+      "allowedValues": [],
+      "required": true,
+      "guidance": "Record reductionist or deterministic errors.",
+      "source": {
+        "sheet": "Codebook",
+        "row": 38
+      }
+    },
+    {
+      "id": "CB-DRV-KEY-SOURCES",
+      "sheet": "Drivers",
+      "field": "Key Sources",
+      "definition": "Representative Evidence IDs.",
+      "allowedValuesOrFormat": "Semicolon-separated Evidence IDs",
+      "allowedValues": [],
+      "required": true,
+      "guidance": "Traceability, not exhaustive bibliography.",
+      "source": {
+        "sheet": "Codebook",
+        "row": 39
+      }
+    },
+    {
+      "id": "CB-FAM-ID",
+      "sheet": "Families",
+      "field": "Family ID",
+      "definition": "Permanent globally unique family identifier.",
+      "allowedValuesOrFormat": "Explicit canonical Family ID (e.g., BIO-F01)",
+      "allowedValues": [],
+      "required": true,
+      "guidance": "Preserve exactly; never regenerate, rename, reuse, or reassign. Globally unique across the ontology and suitable as a stable foreign key.",
+      "source": {
+        "sheet": "Codebook",
+        "row": 40
+      }
+    },
+    {
+      "id": "CB-FAM-NAME",
+      "sheet": "Families",
+      "field": "Family Name",
+      "definition": "Canonical family noun phrase.",
+      "allowedValuesOrFormat": "Concise scientific noun phrase",
+      "allowedValues": [],
+      "required": true,
+      "guidance": "Narrower than layer; normally multiple drivers.",
+      "source": {
+        "sheet": "Codebook",
+        "row": 41
+      }
+    },
+    {
+      "id": "CB-FAM-LAYER",
+      "sheet": "Families",
+      "field": "Layer",
+      "definition": "Primary layer.",
+      "allowedValuesOrFormat": "Eight allowed layer values",
+      "allowedValues": [],
+      "required": true,
+      "guidance": "One layer per family.",
+      "source": {
+        "sheet": "Codebook",
+        "row": 42
+      }
+    },
+    {
+      "id": "CB-FAM-DEFINITION",
+      "sheet": "Families",
+      "field": "Definition",
+      "definition": "Class of variables grouped.",
+      "allowedValuesOrFormat": "Free text",
+      "allowedValues": [],
+      "required": true,
+      "guidance": "Explain distinction from neighboring families.",
+      "source": {
+        "sheet": "Codebook",
+        "row": 43
+      }
+    },
+    {
+      "id": "CB-FAM-INCLUSION-RULE",
+      "sheet": "Families",
+      "field": "Inclusion Rule",
+      "definition": "What belongs.",
+      "allowedValuesOrFormat": "Free text",
+      "allowedValues": [],
+      "required": true,
+      "guidance": "Use variable-class criteria.",
+      "source": {
+        "sheet": "Codebook",
+        "row": 44
+      }
+    },
+    {
+      "id": "CB-FAM-EXCLUSION-RULE",
+      "sheet": "Families",
+      "field": "Exclusion / Boundary Rule",
+      "definition": "What does not belong.",
+      "allowedValuesOrFormat": "Free text",
+      "allowedValues": [],
+      "required": true,
+      "guidance": "Name neighboring families/layers where useful.",
+      "source": {
+        "sheet": "Codebook",
+        "row": 45
+      }
+    },
+    {
+      "id": "CB-FAM-REPRESENTATIVE-DRIVERS",
+      "sheet": "Families",
+      "field": "Representative Drivers",
+      "definition": "Illustrative canonical Driver names.",
+      "allowedValuesOrFormat": "Semicolon-separated canonical Driver names",
+      "allowedValues": [],
+      "required": false,
+      "guidance": "Each name must resolve to exactly one canonical Driver in the same Family. Public data derives representative Driver IDs without replacing the source names.",
+      "source": {
+        "sheet": "Codebook",
+        "row": 46
+      }
+    },
+    {
+      "id": "CB-FAM-DRIVER-COUNT",
+      "sheet": "Families",
+      "field": "Driver Count",
+      "definition": "Number of canonical Driver records assigned to the Family.",
+      "allowedValuesOrFormat": "Non-negative integer",
+      "allowedValues": [],
+      "required": true,
+      "guidance": "Required validation/derived field. The workbook value must equal the authoritative count derived from Drivers; mismatches are errors and are never silently corrected.",
+      "source": {
+        "sheet": "Codebook",
+        "row": 47
+      }
+    },
+    {
+      "id": "CB-EVI-EVIDENCE-STRENGTH",
+      "sheet": "Evidence Library",
+      "field": "Evidence Strength",
+      "definition": "Strength of a specific evidence record.",
+      "allowedValuesOrFormat": "Strong; Moderate; Emerging; Mixed; Limited",
+      "allowedValues": [
+        "Strong",
+        "Moderate",
+        "Emerging",
+        "Mixed",
+        "Limited"
+      ],
+      "required": true,
+      "guidance": "Record-level grading may differ from driver-level grade.",
+      "source": {
+        "sheet": "Codebook",
+        "row": 48
+      }
+    },
+    {
+      "id": "CB-REL-EXPECTED-DIRECTION",
+      "sheet": "Relationships",
+      "field": "Expected Direction",
+      "definition": "Direction/form of specific edge.",
+      "allowedValuesOrFormat": "Positive; Negative; Inverted-U; U-shaped; Threshold; Saturating; Contingent; Unknown; Bidirectional",
+      "allowedValues": [
+        "Positive",
+        "Negative",
+        "Inverted-U",
+        "U-shaped",
+        "Threshold",
+        "Saturating",
+        "Contingent",
+        "Unknown",
+        "Bidirectional"
+      ],
+      "required": true,
+      "guidance": "Direction belongs to edge, not driver.",
+      "source": {
+        "sheet": "Codebook",
+        "row": 49
+      }
+    },
+    {
+      "id": "CB-REL-EVIDENCE-STRENGTH",
+      "sheet": "Relationships",
+      "field": "Evidence Strength",
+      "definition": "Support for specific edge.",
+      "allowedValuesOrFormat": "Strong; Moderate; Emerging; Mixed; Limited",
+      "allowedValues": [
+        "Strong",
+        "Moderate",
+        "Emerging",
+        "Mixed",
+        "Limited"
+      ],
+      "required": true,
+      "guidance": "Do not infer from driver-level evidence alone.",
+      "source": {
+        "sheet": "Codebook",
+        "row": 50
+      }
+    },
+    {
+      "id": "CB-OPR-METHOD-TYPE",
+      "sheet": "Operationalizations",
+      "field": "Method Type",
+      "definition": "Class of operationalization.",
+      "allowedValuesOrFormat": "Self-report / assessment; Physiological / sensor; Behavioral / clinical assessment; Administrative / archival; Expert elicitation; Other",
+      "allowedValues": [
+        "Self-report / assessment",
+        "Physiological / sensor",
+        "Behavioral / clinical assessment",
+        "Administrative / archival",
+        "Expert elicitation",
+        "Other"
+      ],
+      "required": true,
+      "guidance": "One operationalization per row.",
+      "source": {
+        "sheet": "Codebook",
+        "row": 51
+      }
+    },
+    {
+      "id": "CB-CAU-DISPOSITION",
+      "sheet": "Cautions & Exclusions",
+      "field": "Disposition",
+      "definition": "Ontology decision.",
+      "allowedValuesOrFormat": "Retained; Renamed / normalized; Merged; Split; Excluded / reclassified; Deprecated; Provisional; Cross-layer review",
+      "allowedValues": [
+        "Retained",
+        "Renamed / normalized",
+        "Merged",
+        "Split",
+        "Excluded / reclassified",
+        "Deprecated",
+        "Provisional",
+        "Cross-layer review"
+      ],
+      "required": true,
+      "guidance": "Always record rationale and target when applicable.",
+      "source": {
+        "sheet": "Codebook",
+        "row": 52
+      }
+    }
+  ]
+}

@@ -20,6 +20,8 @@ PSYWERX. The repository is designed for static hosting with GitHub Pages.
 - `docs/DRIVER_SCHEMA_V1.md` preserves the historical Schema v1.0 contract.
 - `docs/FAMILY_SCHEMA_V1.md` defines the canonical Family Schema v1.0 and its
   Driver-to-Family validation rules.
+- `docs/CODEBOOK_SCHEMA_V1.md` defines the canonical Codebook Schema v1.0,
+  permanent Codebook Term IDs, and controlled-vocabulary validation rules.
 
 ## Build driver data locally
 
@@ -86,6 +88,54 @@ Family ID and Driver Count governance rows, run this once before importing:
 py scripts\migrate_family_governance_v1.py
 ```
 
+## Build Codebook data locally
+
+Each source workbook contains an identical `Codebook` worksheet. The worksheet
+has 51 populated rows: three structural rows (title, governance instruction,
+and headers) and 48 semantic term records. Only the 48 semantic records receive
+permanent, URL-safe Codebook Term IDs and become public entries.
+
+For the current standardized workbooks, run the one-time ID migration before
+the first Codebook import:
+
+```powershell
+py scripts\migrate_codebook_ids_v1.py
+```
+
+The migration verifies that all eight source Codebooks are identical, stages
+all workbook changes, preserves unrelated worksheets, validates all 48 IDs,
+and replaces the source workbooks only after successful validation.
+
+When initializing older standardized workbooks, apply the one-time migrations
+in this order so the permanent Codebook ID column is added last:
+
+```powershell
+py scripts\migrate_driver_schema_v1_1.py
+py scripts\migrate_family_governance_v1.py
+py scripts\migrate_codebook_ids_v1.py
+```
+
+Generate the canonical public `data/codebook.json` file with:
+
+```powershell
+py scripts\build_codebook.py
+```
+
+The importer enforces [Codebook Schema v1.0](./docs/CODEBOOK_SCHEMA_V1.md),
+selects one canonical copy only after confirming equality across all eight
+workbooks, and validates source-controlled Driver vocabularies against
+`data/drivers.json`. Allowed-but-unused values remain valid. Used-but-undefined
+values stop the import, and failed validation never replaces good public data.
+
+After the one-time workbook migrations have been applied, the exact full
+public-data rebuild order is:
+
+```powershell
+py scripts\build_drivers.py
+py scripts\build_families.py
+py scripts\build_codebook.py
+```
+
 ## Preview the static site
 
 Opening the HTML file directly will not allow the browser to fetch JSON. Start
@@ -102,6 +152,6 @@ Then open <http://localhost:8000/drivers/>.
 Review and commit only the generated public artifacts and pipeline changes:
 
 ```powershell
-git add data/drivers.json data/families.json scripts/build_drivers.py scripts/build_families.py scripts/migrate_driver_schema_v1_1.py scripts/migrate_family_governance_v1.py docs/DRIVER_SCHEMA_V1_1.md docs/FAMILY_SCHEMA_V1.md requirements.txt README.md .gitignore source-data/.gitkeep
+git add data/drivers.json data/families.json data/codebook.json scripts/build_drivers.py scripts/build_families.py scripts/build_codebook.py scripts/migrate_driver_schema_v1_1.py scripts/migrate_family_governance_v1.py scripts/migrate_codebook_ids_v1.py docs/DRIVER_SCHEMA_V1_1.md docs/FAMILY_SCHEMA_V1.md docs/CODEBOOK_SCHEMA_V1.md requirements.txt README.md .gitignore source-data/.gitkeep
 git commit -m "Build ontology data from local spreadsheets"
 ```

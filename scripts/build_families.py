@@ -209,9 +209,18 @@ def codebook_signature(workbook: Any, path: Path, summary: Summary) -> tuple[tup
         for row in workbook["Codebook"].iter_rows(values_only=True)
         if any(clean(value) for value in row)
     )
-    governed = {
-        row[1]: row for row in signature if row[0] == "Families" and len(row) >= 6
-    }
+    governed: dict[str, tuple[str, ...]] = {}
+    for row in signature:
+        if len(row) >= 7 and row[1] == "Families":
+            # Codebook Schema v1.0 adds the permanent term ID before the six
+            # substantive source columns. Family governance still compares
+            # the original source-supported content.
+            substantive = row[1:7]
+        elif len(row) >= 6 and row[0] == "Families":
+            substantive = row[:6]
+        else:
+            continue
+        governed[substantive[1]] = substantive
     expected = {
         "Family ID": CODEBOOK_FAMILY_ID_ROW,
         "Representative Drivers": CODEBOOK_REPRESENTATIVE_ROW,
