@@ -1,80 +1,130 @@
 "use strict";
 
+const CONFIG = Object.assign(
+  {
+    causalExplorerEnabled: false,
+    scenarioAiEnabled: false,
+    scenarioApiUrl: "",
+  },
+  window.PSYWERX_CONFIG || {}
+);
+
 const PAGE_SIZE = 24;
 const DRIVER_QUERY_PARAMETER = "driver";
 const FAMILY_QUERY_PARAMETER = "family";
 const VIEW_QUERY_PARAMETER = "view";
-const PATH_SOURCE_QUERY_PARAMETER = "source";
-const PATH_TARGET_QUERY_PARAMETER = "target";
-const PLAIN_LANGUAGE_SCHEMA_VERSION = "1.0";
-const PLAIN_LANGUAGE_STANDARD_VERSION = "1.0";
-const PLAIN_LANGUAGE_EXPECTED_RECORDS = 768;
-const PLAIN_LANGUAGE_RECORD_KEYS = [
-  "driverId",
-  "plainLanguageLabel",
-  "plainLanguageExplanation",
-  "analyticQuestion",
-  "whatThisDoesNotMean",
+const SCENARIO_STORAGE_KEY = "psywerxScenarioV1";
+const DEFAULT_DOCUMENT_TITLE = "PSYWERX Driver Explorer";
+const LAYER_ORDER = [
+  "Biological", "Psychological", "Social", "Cultural",
+  "Physical / Environmental", "Institutional / Structural",
+  "Informational", "Technological",
 ];
-const PLAIN_LANGUAGE_UNDER_REVIEW = "Plain-language explanation under review.";
+const FALLBACK_TIME_ORDER = [
+  "Seconds–Minutes", "Minutes–Hours", "Hours–Days", "Days–Weeks",
+  "Weeks–Months", "Months–Years", "Years–Generations",
+  "Mixed / Context-dependent", "Stable / Not applicable",
+];
 const FACETS = [
-  { field: "layer", label: "Layer" },
-  { field: "family", label: "Family" },
-  { field: "dataType", label: "Data type" },
-  { field: "modifiability", label: "Modifiability" },
-  { field: "volatility", label: "Volatility" },
-  { field: "observability", label: "Observability" },
-  { field: "evidenceStrength", label: "Evidence strength" },
+  { field: "layer", label: "Layer", codebookId: "CB-DRV-LAYER" },
+  { field: "family", label: "Family", codebookId: "CB-DRV-FAMILY" },
+  { field: "dataType", label: "Data type", codebookId: "CB-DRV-DATA-TYPE" },
+  { field: "modifiability", label: "Modifiability", codebookId: "CB-DRV-MODIFIABILITY" },
+  { field: "volatility", label: "Volatility", codebookId: "CB-DRV-VOLATILITY" },
+  { field: "timeScaleOfChange", label: "Time scale", codebookId: "CB-DRV-TIME-SCALE" },
+  { field: "observability", label: "Observability", codebookId: "CB-DRV-OBSERVABILITY" },
+  { field: "evidenceStrength", label: "Evidence strength", codebookId: "CB-DRV-EVIDENCE-STRENGTH" },
 ];
+const PLAIN_LANGUAGE_KEYS = [
+  "driverId", "plainLanguageLabel", "plainLanguageExplanation",
+  "analyticQuestion", "whatThisDoesNotMean",
+];
+const SCENARIO_RESPONSE_KEYS = [
+  "driverId", "scenarioMeaning", "operationalizationExamples",
+  "importantCaveat", "inputSufficiency", "clarificationQuestion",
+];
+const SCENARIO_EXAMPLE_KEYS = [
+  "title", "operationalization", "whatToLookFor", "questionToAsk",
+];
+const SCENARIO_EXAMPLES = {
+  warning: {
+    actor: "Residents in a coastal county",
+    behaviorObjective: "Deciding whether and when to follow an emergency evacuation warning",
+    context: "A fast-moving hurricane threat, uneven access to transportation, and warnings delivered through several local channels",
+  },
+  compliance: {
+    actor: "Personnel in a large operational unit",
+    behaviorObjective: "Following a newly issued safety procedure during routine operations",
+    context: "The procedure changes established practice, supervisors vary in how they explain it, and teams work across several sites",
+  },
+  online: {
+    actor: "Members of an online community during a public-health crisis",
+    behaviorObjective: "Choosing which crisis updates to read, share, or act on",
+    context: "Information is changing quickly, trusted and untrusted accounts post simultaneously, and users have different prior experiences",
+  },
+};
 
-const browseModeButton = document.querySelector("#browse-mode-button");
-const searchModeButton = document.querySelector("#search-mode-button");
-const causalModeButton = document.querySelector("#causal-mode-button");
-const browsePanel = document.querySelector("#browse-panel");
-const searchPanel = document.querySelector("#search-panel");
-const causalPanel = document.querySelector("#causal-panel");
-const causalHeading = document.querySelector("#causal-heading");
-const pathForm = document.querySelector("#path-form");
-const pathSource = document.querySelector("#path-source");
-const pathTarget = document.querySelector("#path-target");
-const pathResults = document.querySelector("#path-results");
-const browseBreadcrumbs = document.querySelector("#browse-breadcrumbs");
-const browseSummary = document.querySelector("#browse-summary");
-const browseKicker = document.querySelector("#browse-kicker");
-const browseHeading = document.querySelector("#browse-heading");
-const browseDescription = document.querySelector("#browse-description");
-const browseContent = document.querySelector("#browse-content");
-const searchInput = document.querySelector("#driver-search");
-const clearFiltersButton = document.querySelector("#clear-filters");
-const facetFilters = document.querySelector("#facet-filters");
-const activeFilters = document.querySelector("#active-filters");
-const totalDriverCount = document.querySelector("#total-driver-count");
-const totalLayerCount = document.querySelector("#total-layer-count");
-const totalFamilyCount = document.querySelector("#total-family-count");
-const resultSummary = document.querySelector("#result-summary");
-const driverList = document.querySelector("#driver-list");
-const loadMoreButton = document.querySelector("#load-more");
-const loadError = document.querySelector("#load-error");
-const linkNotice = document.querySelector("#link-notice");
-const driverDialog = document.querySelector("#driver-dialog");
-const driverDetail = document.querySelector("#driver-detail");
-const closeDetailButton = document.querySelector("#close-detail");
-const previousDriverButton = document.querySelector("#previous-driver");
-const nextDriverButton = document.querySelector("#next-driver");
-const detailPosition = document.querySelector("#detail-position");
-const copyLinkButton = document.querySelector("#copy-link");
-const copyStatus = document.querySelector("#copy-status");
+const $ = (selector) => document.querySelector(selector);
+const browseModeButton = $("#browse-mode-button");
+const searchModeButton = $("#search-mode-button");
+const browsePanel = $("#browse-panel");
+const searchPanel = $("#search-panel");
+const browseBreadcrumbs = $("#browse-breadcrumbs");
+const browseSummary = $("#browse-summary");
+const browseKicker = $("#browse-kicker");
+const browseHeading = $("#browse-heading");
+const browseDescription = $("#browse-description");
+const browseContent = $("#browse-content");
+const searchInput = $("#driver-search");
+const clearFiltersButton = $("#clear-filters");
+const facetFilters = $("#facet-filters");
+const activeFilters = $("#active-filters");
+const totalDriverCount = $("#total-driver-count");
+const totalLayerCount = $("#total-layer-count");
+const totalFamilyCount = $("#total-family-count");
+const resultSummary = $("#result-summary");
+const driverList = $("#driver-list");
+const loadMoreButton = $("#load-more");
+const loadError = $("#load-error");
+const linkNotice = $("#link-notice");
+const driverDialog = $("#driver-dialog");
+const driverDetail = $("#driver-detail");
+const closeDetailButton = $("#close-detail");
+const previousDriverButton = $("#previous-driver");
+const nextDriverButton = $("#next-driver");
+const detailPosition = $("#detail-position");
+const copyLinkButton = $("#copy-link");
+const copyStatus = $("#copy-status");
+const scenarioEntryButton = $("#scenario-entry-button");
+const scenarioBanner = $("#scenario-banner");
+const scenarioBannerActor = $("#scenario-banner-actor");
+const scenarioBannerBehavior = $("#scenario-banner-behavior");
+const scenarioBannerContext = $("#scenario-banner-context");
+const scenarioEditButton = $("#scenario-edit-button");
+const scenarioClearButton = $("#scenario-clear-button");
+const scenarioDialog = $("#scenario-dialog");
+const scenarioForm = $("#scenario-form");
+const scenarioDialogClose = $("#scenario-dialog-close");
+const scenarioFormClear = $("#scenario-form-clear");
+const scenarioActor = $("#scenario-actor");
+const scenarioBehavior = $("#scenario-behavior");
+const scenarioContext = $("#scenario-context");
+const codebookPopover = $("#codebook-popover");
+const codebookPopoverClose = $("#codebook-popover-close");
+const codebookPopoverTitle = $("#codebook-popover-title");
+const codebookPopoverDefinition = $("#codebook-popover-definition");
+const codebookPopoverLink = $("#codebook-popover-link");
 
 let drivers = [];
 let driverById = new Map();
 let families = [];
 let familyById = new Map();
 let familyByIdentity = new Map();
-let plainLanguageByDriverId = new Map();
 let driversByFamilyId = new Map();
 let hierarchy = new Map();
-let relationships = [];
-let relationshipIndex = null;
+let plainLanguageByDriverId = new Map();
+let codebookById = new Map();
+let sourceById = new Map();
 let filteredDrivers = [];
 let detailDrivers = [];
 let visibleCount = PAGE_SIZE;
@@ -83,63 +133,48 @@ let detailOpenedFromExplorer = false;
 let activeMode = "browse";
 let selectedBrowseLayer = null;
 let selectedBrowseFamilyId = null;
-let searchTimer;
+let searchTimer = null;
+let timeScaleOrder = [...FALLBACK_TIME_ORDER];
+let activeInfoButton = null;
+const SCENARIO_AVAILABLE = Boolean(CONFIG.scenarioAiEnabled && CONFIG.scenarioApiUrl);
+let activeScenario = SCENARIO_AVAILABLE ? readStoredScenario() : null;
+if (!SCENARIO_AVAILABLE) {
+  try { sessionStorage.removeItem(SCENARIO_STORAGE_KEY); } catch (_error) { /* no storage access */ }
+}
+let scenarioOutputs = new Map();
+let pendingScenarioDriverId = null;
+let scenarioRevision = 0;
+let activeScenarioRequest = null;
 
 const facetSelections = Object.fromEntries(
   FACETS.map(({ field }) => [field, new Set()])
 );
 
 function normalizeSearchText(value) {
-  return String(value || "")
-    .normalize("NFKD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLocaleLowerCase();
+  return String(value || "").normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase();
 }
 
-function searchableText(driver) {
-  const plainLanguage = driver._plainLanguage;
-  return normalizeSearchText(
-    [
-      plainLanguage && plainLanguage.plainLanguageLabel,
-      plainLanguage && plainLanguage.plainLanguageExplanation,
-      plainLanguage && plainLanguage.analyticQuestion,
-      plainLanguage && plainLanguage.whatThisDoesNotMean,
-      driver.name,
-      ...(driver.aliases || []),
-      driver.family,
-      driver.definition,
-      driver.mechanism,
-    ].join(" ")
-  );
-}
-
-function publicDriverLabel(driver) {
-  return driver._plainLanguage
-    ? driver._plainLanguage.plainLanguageLabel
-    : driver.name;
-}
-
-function publicDriverExplanation(driver) {
-  return driver._plainLanguage
-    ? driver._plainLanguage.plainLanguageExplanation
-    : driver.definition;
+function normalizeComparable(value) {
+  return normalizeSearchText(value).replace(/\s+/g, " ").trim();
 }
 
 function hasValue(value) {
-  if (Array.isArray(value)) {
-    return value.length > 0;
-  }
+  if (Array.isArray(value)) return value.length > 0;
   return value !== null && value !== undefined && String(value).trim() !== "";
+}
+
+function asValues(value, splitSemicolons = false) {
+  const values = Array.isArray(value) ? value : hasValue(value) ? [value] : [];
+  const expanded = splitSemicolons
+    ? values.flatMap((item) => String(item).split(";")) : values;
+  return expanded.map((item) => String(item).trim()).filter(Boolean);
 }
 
 function element(tagName, className, text) {
   const node = document.createElement(tagName);
-  if (className) {
-    node.className = className;
-  }
-  if (text !== undefined) {
-    node.textContent = text;
-  }
+  if (className) node.className = className;
+  if (text !== undefined) node.textContent = text;
   return node;
 }
 
@@ -147,20 +182,12 @@ function setLayerIdentity(node, layer) {
   node.dataset.layer = layer;
 }
 
-function sortText(values) {
-  return values.sort((a, b) =>
-    a.localeCompare(b, undefined, { sensitivity: "base", numeric: true })
-  );
-}
-
-function uniqueValues(field, sourceDrivers = drivers) {
-  return sortText(
-    [...new Set(sourceDrivers.map((driver) => driver[field]).filter(hasValue))]
-  );
-}
-
-function familyIdentityKey(layer, familyName) {
-  return JSON.stringify([layer, familyName]);
+function sameKeys(record, expectedKeys) {
+  if (!record || typeof record !== "object" || Array.isArray(record)) return false;
+  const actual = Object.keys(record).sort();
+  const expected = [...expectedKeys].sort();
+  return actual.length === expected.length &&
+    actual.every((key, index) => key === expected[index]);
 }
 
 function assertString(record, field, label, errors) {
@@ -169,275 +196,200 @@ function assertString(record, field, label, errors) {
   }
 }
 
-function sameKeys(record, expectedKeys) {
-  const actual = Object.keys(record).sort();
-  const expected = [...expectedKeys].sort();
-  return actual.length === expected.length &&
-    actual.every((key, index) => key === expected[index]);
+function familyIdentityKey(layer, familyName) {
+  return JSON.stringify([layer, familyName]);
 }
 
-function validatePlainLanguageData(driverData, envelope) {
-  const errors = [];
-  const envelopeKeys = [
-    "schemaVersion",
-    "contentVersion",
-    "standardVersion",
-    "drivers",
-  ];
-  if (!envelope || typeof envelope !== "object" || Array.isArray(envelope)) {
-    throw new Error("Plain-language data is not an object.");
-  }
-  if (!sameKeys(envelope, envelopeKeys)) {
-    errors.push("Plain-language data has unexpected or missing envelope keys.");
-  }
-  if (envelope.schemaVersion !== PLAIN_LANGUAGE_SCHEMA_VERSION) {
-    errors.push("Plain-language data does not use Schema v1.0.");
-  }
-  if (
-    typeof envelope.contentVersion !== "string" ||
-    envelope.contentVersion.trim() === ""
-  ) {
-    errors.push("Plain-language data has no valid content version.");
-  }
-  if (envelope.standardVersion !== PLAIN_LANGUAGE_STANDARD_VERSION) {
-    errors.push("Plain-language data does not use Plain-Language Standard v1.0.");
-  }
-  if (!Array.isArray(envelope.drivers)) {
-    errors.push("Plain-language data does not contain a drivers array.");
-  } else if (envelope.drivers.length !== PLAIN_LANGUAGE_EXPECTED_RECORDS) {
-    errors.push(
-      "Plain-language data must contain " +
-        String(PLAIN_LANGUAGE_EXPECTED_RECORDS) +
-        " approved records."
-    );
-  }
-  if (errors.length > 0) {
-    throw new Error("Plain-language data validation failed: " + errors.join(" "));
-  }
-
-  const canonicalIds = new Set(driverData.map((driver) => driver.id));
-  const indexed = new Map();
-  envelope.drivers.forEach((record, index) => {
-    const label = "Plain-language record " + String(index + 1);
-    if (!record || typeof record !== "object" || Array.isArray(record)) {
-      errors.push(label + " is not an object.");
-      return;
-    }
-    if (!sameKeys(record, PLAIN_LANGUAGE_RECORD_KEYS)) {
-      errors.push(label + " has unexpected or missing fields.");
-    }
-    [
-      "driverId",
-      "plainLanguageLabel",
-      "plainLanguageExplanation",
-      "analyticQuestion",
-    ].forEach((field) => assertString(record, field, label, errors));
-    if (
-      record.whatThisDoesNotMean !== null &&
-      (typeof record.whatThisDoesNotMean !== "string" ||
-        record.whatThisDoesNotMean.trim() === "")
-    ) {
-      errors.push(label + " has an invalid whatThisDoesNotMean value.");
-    }
-    if (!canonicalIds.has(record.driverId)) {
-      errors.push(label + " references an unknown Driver ID.");
-    }
-    if (indexed.has(record.driverId)) {
-      errors.push("Duplicate plain-language Driver ID: " + record.driverId + ".");
-    }
-    indexed.set(record.driverId, record);
-  });
-
-  if (errors.length > 0) {
-    throw new Error(
-      "Plain-language data validation failed: " +
-        errors.slice(0, 5).join(" ") +
-        (errors.length > 5 ? " " + String(errors.length - 5) + " more errors." : "")
-    );
-  }
-  return indexed;
+function sortByName(records) {
+  return records.sort((a, b) => a.name.localeCompare(
+    b.name, undefined, { sensitivity: "base", numeric: true }
+  ));
 }
 
 function validateTaxonomyData(driverData, familyEnvelope) {
-  const errors = [];
-  if (!Array.isArray(driverData)) {
-    throw new Error("Driver data is not an array.");
-  }
-  if (
-    !familyEnvelope ||
-    typeof familyEnvelope !== "object" ||
-    !Array.isArray(familyEnvelope.families)
-  ) {
-    throw new Error("Family data does not contain a families array.");
-  }
-  if (familyEnvelope.schemaVersion !== "1.0") {
+  if (!Array.isArray(driverData)) throw new Error("Driver data is not an array.");
+  if (!familyEnvelope || familyEnvelope.schemaVersion !== "1.0" ||
+      !Array.isArray(familyEnvelope.families)) {
     throw new Error("Family data does not use Family Schema v1.0.");
   }
-  const candidateDriverById = new Map();
+  const errors = [];
+  const candidateDrivers = new Map();
   driverData.forEach((driver, index) => {
     const label = "Driver record " + String(index + 1);
-    ["id", "name", "layer", "family"].forEach((field) =>
-      assertString(driver, field, label, errors)
-    );
-    if (candidateDriverById.has(driver.id)) {
-      errors.push("Duplicate Driver ID: " + driver.id + ".");
-    }
-    candidateDriverById.set(driver.id, driver);
+    ["id", "name", "layer", "family", "definition"].forEach((field) =>
+      assertString(driver, field, label, errors));
+    if (candidateDrivers.has(driver.id)) errors.push("Duplicate Driver ID: " + driver.id + ".");
+    candidateDrivers.set(driver.id, driver);
   });
-
-  const candidateFamilyById = new Map();
-  const candidateFamilyByIdentity = new Map();
-  const candidateFamilyNames = new Set();
+  const candidateFamilies = new Map();
+  const candidateIdentities = new Map();
   familyEnvelope.families.forEach((family, index) => {
     const label = "Family record " + String(index + 1);
-    ["id", "name", "layer", "definition", "includes", "exclusions"].forEach(
-      (field) => assertString(family, field, label, errors)
-    );
+    ["id", "name", "layer", "definition"].forEach((field) =>
+      assertString(family, field, label, errors));
     if (!Number.isInteger(family.driverCount) || family.driverCount < 1) {
       errors.push(label + " has no valid driverCount.");
     }
-    if (
-      !Array.isArray(family.representativeDrivers) ||
-      !Array.isArray(family.representativeDriverIds)
-    ) {
-      errors.push(label + " has invalid representative Driver arrays.");
-    } else if (
-      family.representativeDrivers.length !== family.representativeDriverIds.length
-    ) {
-      errors.push(
-        "Family " + family.id + " has misaligned representative Driver arrays."
-      );
-    }
-    if (candidateFamilyById.has(family.id)) {
-      errors.push("Duplicate Family ID: " + family.id + ".");
-    }
-    candidateFamilyById.set(family.id, family);
-    if (candidateFamilyNames.has(family.name)) {
-      errors.push("Duplicate Family name: " + family.name + ".");
-    }
-    candidateFamilyNames.add(family.name);
+    if (candidateFamilies.has(family.id)) errors.push("Duplicate Family ID: " + family.id + ".");
+    candidateFamilies.set(family.id, family);
     const identity = familyIdentityKey(family.layer, family.name);
-    if (candidateFamilyByIdentity.has(identity)) {
-      errors.push(
-        "Duplicate Family identity: " + family.layer + " / " + family.name + "."
-      );
-    }
-    candidateFamilyByIdentity.set(identity, family);
+    if (candidateIdentities.has(identity)) errors.push("Duplicate Family identity: " + identity + ".");
+    candidateIdentities.set(identity, family);
   });
-
-  const actualCounts = new Map();
+  const counts = new Map();
   driverData.forEach((driver) => {
-    const family = candidateFamilyByIdentity.get(
-      familyIdentityKey(driver.layer, driver.family)
-    );
-    if (!family) {
-      errors.push(
-        "Driver " + driver.id + " does not resolve to an exact Layer + Family."
-      );
-      return;
-    }
-    actualCounts.set(family.id, (actualCounts.get(family.id) || 0) + 1);
+    const family = candidateIdentities.get(familyIdentityKey(driver.layer, driver.family));
+    if (!family) errors.push("Driver " + driver.id + " does not resolve to an exact Layer + Family.");
+    else counts.set(family.id, (counts.get(family.id) || 0) + 1);
   });
-
   familyEnvelope.families.forEach((family) => {
-    const actualCount = actualCounts.get(family.id) || 0;
-    if (actualCount !== family.driverCount) {
-      errors.push(
-        "Family " + family.id + " declares " + family.driverCount +
-          " Drivers but resolves to " + actualCount + "."
-      );
-    }
-    if (
-      Array.isArray(family.representativeDrivers) &&
-      Array.isArray(family.representativeDriverIds)
-    ) {
-      family.representativeDriverIds.forEach((driverId, position) => {
-        const driver = candidateDriverById.get(driverId);
-        if (
-          !driver ||
-          driver.layer !== family.layer ||
-          driver.family !== family.name ||
-          driver.name !== family.representativeDrivers[position]
-        ) {
-          errors.push(
-            "Family " + family.id + " has an invalid representative Driver link at position " +
-              String(position + 1) + "."
-          );
-        }
-      });
+    if ((counts.get(family.id) || 0) !== family.driverCount) {
+      errors.push("Family " + family.id + " Driver count does not reconcile.");
     }
   });
-
-  if (errors.length > 0) {
-    throw new Error(
-      "Driver and Family data validation failed: " +
-        errors.slice(0, 5).join(" ") +
-        (errors.length > 5 ? " " + String(errors.length - 5) + " more errors." : "")
-    );
+  if (errors.length) {
+    throw new Error(errors.slice(0, 8).join(" ") +
+      (errors.length > 8 ? " " + String(errors.length - 8) + " more errors." : ""));
   }
 }
 
-function buildHierarchy() {
+function validatePlainLanguageData(driverData, envelope) {
+  if (!envelope || envelope.schemaVersion !== "1.0" || !Array.isArray(envelope.drivers)) {
+    throw new Error("Public explanation data does not use Schema v1.0.");
+  }
+  const errors = [];
+  const canonicalIds = new Set(driverData.map((driver) => driver.id));
+  const indexed = new Map();
+  envelope.drivers.forEach((record, index) => {
+    const label = "Public explanation record " + String(index + 1);
+    if (!sameKeys(record, PLAIN_LANGUAGE_KEYS)) errors.push(label + " has unexpected fields.");
+    ["driverId", "plainLanguageLabel", "plainLanguageExplanation", "analyticQuestion"]
+      .forEach((field) => assertString(record, field, label, errors));
+    if (record.whatThisDoesNotMean !== null &&
+        (typeof record.whatThisDoesNotMean !== "string" || !record.whatThisDoesNotMean.trim())) {
+      errors.push(label + " has an invalid whatThisDoesNotMean value.");
+    }
+    if (!canonicalIds.has(record.driverId)) errors.push(label + " references an unknown Driver.");
+    if (indexed.has(record.driverId)) errors.push("Duplicate explanation Driver ID: " + record.driverId + ".");
+    indexed.set(record.driverId, record);
+  });
+  if (errors.length) throw new Error(errors.slice(0, 8).join(" "));
+  return indexed;
+}
+
+function validateCodebook(envelope) {
+  if (!envelope || envelope.schemaVersion !== "1.0" || !Array.isArray(envelope.entries)) {
+    throw new Error("Codebook data does not use Schema v1.0.");
+  }
+  const indexed = new Map();
+  envelope.entries.forEach((entry) => {
+    ["id", "field", "definition"].forEach((field) => {
+      if (typeof entry[field] !== "string" || !entry[field].trim()) {
+        throw new Error("Codebook entry has no valid " + field + ".");
+      }
+    });
+    if (indexed.has(entry.id)) throw new Error("Duplicate Codebook ID: " + entry.id + ".");
+    indexed.set(entry.id, entry);
+  });
+  return indexed;
+}
+
+function validateSources(envelope) {
+  if (!envelope || envelope.schemaVersion !== "1.0" || !Array.isArray(envelope.sources)) {
+    throw new Error("Source data does not use Source Schema v1.0.");
+  }
+  const indexed = new Map();
+  envelope.sources.forEach((source) => {
+    if (typeof source.id !== "string" || !source.id.trim() ||
+        typeof source.citationText !== "string" || !source.citationText.trim()) {
+      throw new Error("Source data contains an invalid record.");
+    }
+    if (indexed.has(source.id)) throw new Error("Duplicate Source ID: " + source.id + ".");
+    indexed.set(source.id, source);
+  });
+  return indexed;
+}
+
+function driverSearchFields(driver) {
+  const plain = driver._plainLanguage;
+  return [
+    { weight: 0, values: [driver.name] },
+    { weight: 10, values: driver.aliases || [] },
+    { weight: 20, values: [driver.definition] },
+    { weight: 30, values: [plain && plain.plainLanguageExplanation] },
+    { weight: 40, values: [plain && plain.analyticQuestion] },
+    { weight: 50, values: [driver.family] },
+    { weight: 60, values: [driver.layer] },
+    { weight: 70, values: [plain && plain.plainLanguageLabel] },
+  ].map((group) => ({
+    weight: group.weight,
+    values: group.values.filter(hasValue).map(normalizeSearchText),
+  }));
+}
+
+function searchRank(driver, query) {
+  if (!query) return 0;
+  let best = Number.POSITIVE_INFINITY;
+  driver._searchFields.forEach((group) => group.values.forEach((value) => {
+    const position = value.indexOf(query);
+    if (position === -1) return;
+    const penalty = value === query ? 0 : position === 0 ? 1 : 2;
+    best = Math.min(best, group.weight + penalty);
+  }));
+  return best;
+}
+
+function buildIndexes() {
+  driverById = new Map(drivers.map((driver) => [driver.id, driver]));
+  familyById = new Map(families.map((family) => [family.id, family]));
+  familyByIdentity = new Map(families.map((family) => [
+    familyIdentityKey(family.layer, family.name), family,
+  ]));
   hierarchy = new Map();
   driversByFamilyId = new Map(families.map((family) => [family.id, []]));
-
   families.forEach((family) => {
-    if (!hierarchy.has(family.layer)) {
-      hierarchy.set(family.layer, []);
-    }
+    if (!hierarchy.has(family.layer)) hierarchy.set(family.layer, []);
     hierarchy.get(family.layer).push(family);
   });
-
+  hierarchy.forEach((layerFamilies) => sortByName(layerFamilies));
   drivers.forEach((driver) => {
-    const family = familyByIdentity.get(
-      familyIdentityKey(driver.layer, driver.family)
-    );
+    const family = familyByIdentity.get(familyIdentityKey(driver.layer, driver.family));
     driversByFamilyId.get(family.id).push(driver);
   });
-
-  hierarchy.forEach((layerFamilies) =>
-    layerFamilies.sort((a, b) =>
-      a.name.localeCompare(b.name, undefined, { sensitivity: "base", numeric: true })
-    )
-  );
+  driversByFamilyId.forEach((familyDrivers) => sortByName(familyDrivers));
+  const timeEntry = codebookById.get("CB-DRV-TIME-SCALE");
+  if (timeEntry && Array.isArray(timeEntry.allowedValues) && timeEntry.allowedValues.length) {
+    timeScaleOrder = [...timeEntry.allowedValues];
+  }
 }
 
 function setMode(mode, options = {}) {
-  activeMode = ["search", "causal"].includes(mode) ? mode : "browse";
+  activeMode = mode === "search" ? "search" : "browse";
   const browsing = activeMode === "browse";
-  const searching = activeMode === "search";
-  const exploringCausality = activeMode === "causal";
   browsePanel.hidden = !browsing;
-  searchPanel.hidden = !searching;
-  causalPanel.hidden = !exploringCausality;
+  searchPanel.hidden = browsing;
   browseModeButton.setAttribute("aria-pressed", String(browsing));
-  searchModeButton.setAttribute("aria-pressed", String(searching));
-  causalModeButton.setAttribute("aria-pressed", String(exploringCausality));
-  if (options.focus) {
-    (browsing ? browseHeading : searching ? searchInput : causalHeading).focus();
-  }
+  searchModeButton.setAttribute("aria-pressed", String(!browsing));
+  if (options.focus) (browsing ? browseHeading : searchInput).focus();
+}
+
+function driverCountLabel(count) {
+  return count.toLocaleString() + (count === 1 ? " Driver" : " Drivers");
 }
 
 function hierarchyButton(title, meta, type, value, layer) {
   const article = element("article", "hierarchy-card");
-  if (layer) {
-    setLayerIdentity(article, layer);
-  }
+  if (layer) setLayerIdentity(article, layer);
   const button = element("button", "hierarchy-card__button");
   button.type = "button";
   button.dataset[type] = value;
-  const titleNode = element("span", "hierarchy-card__title", title);
-  const metaNode = element("span", "hierarchy-card__meta", meta);
-  const action = element("span", "hierarchy-card__action", "Explore");
+  button.append(element("span", "hierarchy-card__title", title),
+    element("span", "hierarchy-card__meta", meta));
+  const action = element("span", "hierarchy-card__action", "Explore →");
   action.setAttribute("aria-hidden", "true");
-  action.append(" \u2192");
-  button.append(titleNode, metaNode, action);
+  button.append(action);
   article.append(button);
   return article;
-}
-
-function driverCountLabel(count) {
-  return count.toLocaleString() + (count === 1 ? " driver" : " drivers");
 }
 
 function createFamilyCard(family) {
@@ -446,113 +398,30 @@ function createFamilyCard(family) {
   const button = element("button", "hierarchy-card__button family-card__button");
   button.type = "button";
   button.dataset.browseFamily = family.id;
-  button.setAttribute(
-    "aria-label",
-    "Explore family " + family.name + ", " + driverCountLabel(family.driverCount)
-  );
-  const title = element("span", "hierarchy-card__title", family.name);
-  const definition = element(
-    "span",
-    "family-card__definition",
-    family.definition
-  );
-  const meta = element(
-    "span",
-    "hierarchy-card__meta",
-    driverCountLabel(family.driverCount)
-  );
-  const action = element("span", "hierarchy-card__action", "Explore family");
+  button.setAttribute("aria-label", "Explore Family " + family.name + ", " + driverCountLabel(family.driverCount));
+  button.append(element("span", "hierarchy-card__title", family.name),
+    element("span", "family-card__definition", family.definition),
+    element("span", "hierarchy-card__meta", driverCountLabel(family.driverCount)));
+  const action = element("span", "hierarchy-card__action", "Explore Family →");
   action.setAttribute("aria-hidden", "true");
-  action.append(" \u2192");
-  button.append(title, definition, meta, action);
+  button.append(action);
   article.append(button);
   return article;
 }
 
-function createFamilyTextSection(title, value, className) {
-  if (!hasValue(value)) {
-    return null;
-  }
-  const section = element("section", className || "family-overview__section");
-  section.append(element("h5", "", title), element("p", "", value));
-  return section;
-}
-
 function createFamilyOverview(family) {
-  const article = element("article", "family-overview");
+  const article = element("article", "family-overview family-overview--public");
   setLayerIdentity(article, family.layer);
-
   const identity = element("header", "family-overview__identity");
-  identity.append(element("p", "eyebrow", "Family record"));
+  identity.append(element("p", "eyebrow", "Driver Family"));
   const badges = element("div", "family-overview__badges");
   const layer = element("span", "layer-badge", family.layer);
   setLayerIdentity(layer, family.layer);
-  badges.append(
-    layer,
-    element("span", "driver-id", family.id),
-    element("span", "family-badge", driverCountLabel(family.driverCount))
-  );
-  identity.append(badges, element("h4", "", family.name));
+  badges.append(layer, element("span", "driver-id", family.id),
+    element("span", "family-badge", driverCountLabel(family.driverCount)));
+  identity.append(badges, element("h4", "", family.name),
+    element("p", "family-overview__definition", family.definition));
   article.append(identity);
-
-  const definition = createFamilyTextSection("Definition", family.definition);
-  if (definition) {
-    article.append(definition);
-  }
-
-  if (hasValue(family.includes) || hasValue(family.exclusions)) {
-    const scope = element("section", "family-overview__section");
-    scope.append(element("h5", "", "Scope"));
-    const scopeGrid = element("div", "family-scope");
-    if (hasValue(family.includes)) {
-      const inclusion = element("div", "family-scope__item");
-      inclusion.append(
-        element("h6", "", "Inclusion rule"),
-        element("p", "", family.includes)
-      );
-      scopeGrid.append(inclusion);
-    }
-    if (hasValue(family.exclusions)) {
-      const exclusion = element("div", "family-scope__item");
-      exclusion.append(
-        element("h6", "", "Exclusion / boundary rule"),
-        element("p", "", family.exclusions)
-      );
-      scopeGrid.append(exclusion);
-    }
-    scope.append(scopeGrid);
-    article.append(scope);
-  }
-
-  if (family.representativeDriverIds.length > 0) {
-    const representatives = element("section", "family-overview__section");
-    representatives.append(element("h5", "", "Representative drivers"));
-    const links = element("div", "representative-drivers");
-    family.representativeDriverIds.forEach((driverId, index) => {
-      const representativeDriver = driverById.get(driverId);
-      const representativeLabel = representativeDriver
-        ? publicDriverLabel(representativeDriver)
-        : family.representativeDrivers[index];
-      const button = element(
-        "button",
-        "representative-driver",
-        representativeLabel
-      );
-      button.type = "button";
-      button.dataset.driverId = driverId;
-      button.setAttribute(
-        "aria-label",
-        "Open representative Driver: " + representativeLabel
-      );
-      const arrow = element("span", "", " \u2192");
-      arrow.setAttribute("aria-hidden", "true");
-      button.append(arrow);
-      links.append(button);
-    });
-    representatives.append(links);
-    article.append(representatives);
-  }
-
   return article;
 }
 
@@ -564,113 +433,117 @@ function breadcrumbButton(label, level) {
 }
 
 function renderBrowse() {
-  const fragment = document.createDocumentFragment();
+  const content = document.createDocumentFragment();
   const crumbs = document.createDocumentFragment();
-  crumbs.append(breadcrumbButton("All layers", "root"));
-
+  crumbs.append(breadcrumbButton("All Layers", "root"));
   if (!selectedBrowseLayer) {
-    browseKicker.textContent = "Layer \u2192 Family \u2192 Driver";
-    browseHeading.textContent = "Choose a layer";
-    browseDescription.textContent = "Start with one of the eight interacting layers.";
-    browseSummary.textContent =
-      hierarchy.size.toLocaleString() + " layers \u00b7 " +
-      drivers.length.toLocaleString() + " drivers";
+    browseKicker.textContent = "Layer → Family → Driver";
+    browseHeading.textContent = "Choose a Layer";
+    browseDescription.textContent = "Start with one of the eight interacting Layers.";
+    browseSummary.textContent = hierarchy.size.toLocaleString() + " Layers · " + drivers.length.toLocaleString() + " Drivers";
     browseContent.className = "hierarchy-grid";
-
-    hierarchy.forEach((layerFamilies, layer) => {
-      const count = layerFamilies.reduce(
-        (total, family) => total + family.driverCount,
-        0
-      );
-      fragment.append(
-        hierarchyButton(
-          layer,
-          layerFamilies.length.toLocaleString() + " families \u00b7 " +
-            count.toLocaleString() + " drivers",
-          "browseLayer",
-          layer,
-          layer
-        )
-      );
+    LAYER_ORDER.filter((layer) => hierarchy.has(layer)).forEach((layer) => {
+      const layerFamilies = hierarchy.get(layer);
+      const count = layerFamilies.reduce((total, family) => total + family.driverCount, 0);
+      content.append(hierarchyButton(layer,
+        layerFamilies.length.toLocaleString() + " Families · " + count.toLocaleString() + " Drivers",
+        "browseLayer", layer, layer));
     });
   } else if (!selectedBrowseFamilyId) {
-    const layerFamilies = hierarchy.get(selectedBrowseLayer);
-    crumbs.append(" / ", breadcrumbButton(selectedBrowseLayer, "layer"));
-    browseKicker.textContent = selectedBrowseLayer + " layer";
-    browseHeading.textContent = "Choose a family";
-    browseDescription.textContent =
-      "Families group closely related drivers within this layer.";
-    const layerCount = layerFamilies.reduce(
-      (total, family) => total + family.driverCount,
-      0
-    );
-    browseSummary.textContent =
-      layerFamilies.length.toLocaleString() + " families \u00b7 " +
-      layerCount.toLocaleString() + " drivers";
+    const layerFamilies = hierarchy.get(selectedBrowseLayer) || [];
+    crumbs.append(" / ", element("span", "breadcrumbs__current", selectedBrowseLayer));
+    browseKicker.textContent = selectedBrowseLayer + " Layer";
+    browseHeading.textContent = "Choose a Family";
+    browseDescription.textContent = "Families group closely related Drivers within this Layer.";
+    const count = layerFamilies.reduce((total, family) => total + family.driverCount, 0);
+    browseSummary.textContent = layerFamilies.length.toLocaleString() + " Families · " + count.toLocaleString() + " Drivers";
     browseContent.className = "hierarchy-grid";
-
-    layerFamilies.forEach((family) => fragment.append(createFamilyCard(family)));
+    layerFamilies.forEach((family) => content.append(createFamilyCard(family)));
   } else {
     const family = familyById.get(selectedBrowseFamilyId);
-    const familyDrivers = driversByFamilyId.get(family.id);
-    crumbs.append(
-      " / ",
-      breadcrumbButton(selectedBrowseLayer, "layer"),
-      " / ",
-      element("span", "breadcrumbs__current", family.name)
-    );
-    browseKicker.textContent = selectedBrowseLayer + " layer";
+    const familyDrivers = driversByFamilyId.get(family.id) || [];
+    crumbs.append(" / ", breadcrumbButton(selectedBrowseLayer, "layer"), " / ",
+      element("span", "breadcrumbs__current", family.name));
+    browseKicker.textContent = selectedBrowseLayer + " Layer";
     browseHeading.textContent = family.name;
-    browseDescription.textContent =
-      "Review this Family record, then select a Driver for its complete taxonomy record.";
-    browseSummary.textContent = family.id + " \u00b7 " + driverCountLabel(familyDrivers.length);
+    browseDescription.textContent = "Explore all Drivers governed within this Family.";
+    browseSummary.textContent = family.id + " · " + driverCountLabel(familyDrivers.length);
     browseContent.className = "family-view";
-    fragment.append(createFamilyOverview(family));
-
+    content.append(createFamilyOverview(family));
     const driverSection = element("section", "family-drivers");
-    driverSection.append(
-      element("h4", "family-drivers__heading", "Drivers in this family")
-    );
+    driverSection.append(element("h4", "family-drivers__heading", "Drivers in this Family"));
     const list = element("div", "driver-list");
     familyDrivers.forEach((driver) => list.append(createDriverCard(driver)));
     driverSection.append(list);
-    fragment.append(driverSection);
+    content.append(driverSection);
   }
-
   browseBreadcrumbs.replaceChildren(crumbs);
-  browseContent.replaceChildren(fragment);
+  browseContent.replaceChildren(content);
+}
+
+function driverFacetValues(driver, field) {
+  return field === "timeScaleOfChange" ? asValues(driver[field], true) : asValues(driver[field]);
 }
 
 function facetSourceDrivers(field) {
-  if (field !== "family" || facetSelections.layer.size === 0) {
-    return drivers;
-  }
+  if (field !== "family" || facetSelections.layer.size === 0) return drivers;
   return drivers.filter((driver) => facetSelections.layer.has(driver.layer));
+}
+
+function sortFacetValues(field, values) {
+  if (field === "layer") return values.sort((a, b) => LAYER_ORDER.indexOf(a) - LAYER_ORDER.indexOf(b));
+  if (field === "timeScaleOfChange") {
+    return values.sort((a, b) => {
+      const ai = timeScaleOrder.indexOf(a);
+      const bi = timeScaleOrder.indexOf(b);
+      return (ai === -1 ? 999 : ai) - (bi === -1 ? 999 : bi) || a.localeCompare(b);
+    });
+  }
+  return values.sort((a, b) => a.localeCompare(b, undefined, { sensitivity: "base", numeric: true }));
+}
+
+function uniqueFacetValues(field, sourceDrivers = drivers) {
+  const values = new Set();
+  sourceDrivers.forEach((driver) => driverFacetValues(driver, field).forEach((value) => values.add(value)));
+  return sortFacetValues(field, [...values]);
+}
+
+function createInfoButton(codebookId, label) {
+  if (!codebookById.has(codebookId)) return null;
+  const button = element("button", "info-button", "i");
+  button.type = "button";
+  button.dataset.codebookId = codebookId;
+  button.setAttribute("aria-label", "Codebook help for " + label);
+  button.setAttribute("aria-expanded", "false");
+  button.setAttribute("aria-controls", "codebook-popover");
+  return button;
+}
+
+function appendConceptHeading(container, tagName, label, codebookId) {
+  const heading = element(tagName, "concept-heading");
+  heading.append(element("span", "", label));
+  const info = createInfoButton(codebookId, label);
+  if (info) heading.append(info);
+  container.append(heading);
+  return heading;
 }
 
 function renderFacet(field) {
   const config = FACETS.find((facet) => facet.field === field);
   const old = facetFilters.querySelector('[data-facet="' + field + '"]');
-  const wasOpen = old ? old.open : field === "layer" || field === "family";
   const details = element("details", "facet");
   details.dataset.facet = field;
-  details.open = wasOpen;
-
+  details.open = old ? old.open : field === "layer" || field === "family";
   const summary = element("summary", "facet__summary");
-  summary.append(
-    element("span", "", config.label),
-    element("span", "facet__selected-count")
-  );
+  summary.append(element("span", "", config.label), element("span", "facet__selected-count"));
   details.append(summary);
-
-  const values = uniqueValues(field, facetSourceDrivers(field));
-  const counts = new Map();
-  facetSourceDrivers(field).forEach((driver) => {
-    if (hasValue(driver[field])) {
-      counts.set(driver[field], (counts.get(driver[field]) || 0) + 1);
-    }
-  });
-
+  const info = createInfoButton(config.codebookId, config.label);
+  if (info) { info.classList.add("facet__info"); details.append(info); }
+  const sourceDrivers = facetSourceDrivers(field);
+  const values = uniqueFacetValues(field, sourceDrivers);
+  const counts = new Map(values.map((value) => [value, 0]));
+  sourceDrivers.forEach((driver) => new Set(driverFacetValues(driver, field)).forEach((value) =>
+    counts.set(value, (counts.get(value) || 0) + 1)));
   const choices = element("div", "facet__choices");
   values.forEach((value, index) => {
     const label = element("label", "facet-option");
@@ -678,23 +551,15 @@ function renderFacet(field) {
     checkbox.type = "checkbox";
     checkbox.value = value;
     checkbox.dataset.facetField = field;
-    checkbox.id = "facet-" + field + "-" + index;
+    checkbox.id = "facet-" + field + "-" + String(index);
     checkbox.checked = facetSelections[field].has(value);
     label.htmlFor = checkbox.id;
-    label.append(
-      checkbox,
-      element("span", "facet-option__label", value),
-      element("span", "facet-option__count", String(counts.get(value) || 0))
-    );
+    label.append(checkbox, element("span", "facet-option__label", value),
+      element("span", "facet-option__count", String(counts.get(value) || 0)));
     choices.append(label);
   });
   details.append(choices);
-
-  if (old) {
-    old.replaceWith(details);
-  } else {
-    facetFilters.append(details);
-  }
+  if (old) old.replaceWith(details); else facetFilters.append(details);
 }
 
 function renderFacets() {
@@ -705,79 +570,62 @@ function renderFacets() {
 
 function updateFacetSelectedCounts() {
   FACETS.forEach(({ field }) => {
-    const countNode = facetFilters.querySelector(
-      '[data-facet="' + field + '"] .facet__selected-count'
-    );
-    const count = facetSelections[field].size;
-    if (countNode) {
-      countNode.textContent = count ? String(count) + " selected" : "Any";
-    }
+    const node = facetFilters.querySelector('[data-facet="' + field + '"] .facet__selected-count');
+    if (node) node.textContent = facetSelections[field].size
+      ? String(facetSelections[field].size) + " selected" : "Any";
   });
 }
 
 function syncAvailableFamilies() {
-  const available = new Set(uniqueValues("family", facetSourceDrivers("family")));
+  const available = new Set(uniqueFacetValues("family", facetSourceDrivers("family")));
   [...facetSelections.family].forEach((family) => {
-    if (!available.has(family)) {
-      facetSelections.family.delete(family);
-    }
+    if (!available.has(family)) facetSelections.family.delete(family);
   });
   renderFacet("family");
 }
 
 function matchesFacet(driver, field) {
   const selected = facetSelections[field];
-  return selected.size === 0 || selected.has(driver[field]);
+  return selected.size === 0 || driverFacetValues(driver, field).some((value) => selected.has(value));
 }
 
 function applyFilters(options = {}) {
-  if (options.resetLimit !== false) {
-    visibleCount = PAGE_SIZE;
-  }
+  if (options.resetLimit !== false) visibleCount = PAGE_SIZE;
   const query = normalizeSearchText(searchInput.value.trim());
-  filteredDrivers = drivers.filter(
-    (driver) =>
-      (!query || driver._searchText.includes(query)) &&
-      FACETS.every(({ field }) => matchesFacet(driver, field))
-  );
+  filteredDrivers = drivers.map((driver) => ({ driver, rank: searchRank(driver, query) }))
+    .filter(({ driver, rank }) => Number.isFinite(rank) && FACETS.every(({ field }) => matchesFacet(driver, field)))
+    .sort((a, b) => a.rank - b.rank || a.driver.name.localeCompare(
+      b.driver.name, undefined, { sensitivity: "base", numeric: true }
+    )).map(({ driver }) => driver);
   updateFacetSelectedCounts();
   renderActiveFilters();
   renderResults();
 }
 
-function renderActiveFilters() {
-  const fragment = document.createDocumentFragment();
-  const query = searchInput.value.trim();
-
-  if (query) {
-    fragment.append(filterChip("Search", query, "search", query));
-  }
-  FACETS.forEach(({ field, label }) => {
-    facetSelections[field].forEach((value) => {
-      fragment.append(filterChip(label, value, field, value));
-    });
-  });
-
-  activeFilters.replaceChildren(fragment);
-  const filtersActive =
-    Boolean(query) || FACETS.some(({ field }) => facetSelections[field].size > 0);
-  clearFiltersButton.disabled = !filtersActive;
-}
-
-function filterChip(label, value, field, rawValue) {
-  const button = element(
-    "button",
-    "filter-chip",
-    label + ": " + value + " "
-  );
+function filterChip(label, value, field) {
+  const button = element("button", "filter-chip", label + ": " + value + " ");
   button.type = "button";
   button.dataset.clearFacet = field;
-  button.dataset.clearValue = rawValue;
+  button.dataset.clearValue = value;
   button.setAttribute("aria-label", "Remove " + label + " filter: " + value);
-  const mark = element("span", "", "\u00d7");
+  const mark = element("span", "", "×");
   mark.setAttribute("aria-hidden", "true");
   button.append(mark);
   return button;
+}
+
+function renderActiveFilters() {
+  const fragment = document.createDocumentFragment();
+  const query = searchInput.value.trim();
+  if (query) fragment.append(filterChip("Search", query, "search"));
+  FACETS.forEach(({ field, label }) => facetSelections[field].forEach((value) =>
+    fragment.append(filterChip(label, value, field))));
+  activeFilters.replaceChildren(fragment);
+  clearFiltersButton.disabled = !query && !FACETS.some(({ field }) => facetSelections[field].size);
+}
+
+function formatValues(value) {
+  return asValues(value, true).join("; ");
 }
 
 function createDriverCard(driver) {
@@ -786,945 +634,502 @@ function createDriverCard(driver) {
   const button = element("button", "driver-card__button");
   button.type = "button";
   button.dataset.driverId = driver.id;
-  button.setAttribute("aria-label", "Open " + publicDriverLabel(driver));
-
+  button.setAttribute("aria-label", "Open Driver " + driver.name);
   const meta = element("div", "driver-card__meta");
   const layer = element("span", "layer-badge", driver.layer);
   setLayerIdentity(layer, driver.layer);
-  meta.append(layer, element("span", "family-badge", driver.family));
-
-  const heading = element(
-    "h3",
-    "driver-card__title",
-    publicDriverLabel(driver)
-  );
-  const definition = element(
-    "p",
-    "driver-card__definition",
-    publicDriverExplanation(driver)
-  );
-  const action = element("span", "driver-card__action", "View driver record");
-  action.append(element("span", "", " \u2192"));
-  button.append(meta, heading, definition, action);
+  meta.append(layer, element("span", "driver-id", driver.id));
+  button.append(meta, element("h3", "driver-card__title", driver.name),
+    element("p", "driver-card__taxonomy", driver.family),
+    element("p", "driver-card__definition", driver.definition));
+  const attributes = element("div", "driver-card__attributes");
+  if (hasValue(driver.dataType)) attributes.append(element("span", "", driver.dataType));
+  if (hasValue(driver.timeScaleOfChange)) attributes.append(element("span", "", formatValues(driver.timeScaleOfChange)));
+  if (hasValue(driver.evidenceStrength)) attributes.append(element("span", "", driver.evidenceStrength + " evidence"));
+  if (attributes.children.length) button.append(attributes);
+  const action = element("span", "driver-card__action", "View Driver record →");
+  action.setAttribute("aria-hidden", "true");
+  button.append(action);
   article.append(button);
   return article;
 }
 
 function renderResults() {
   const total = filteredDrivers.length;
-  const shownDrivers = filteredDrivers.slice(0, visibleCount);
+  const shown = filteredDrivers.slice(0, visibleCount);
   const fragment = document.createDocumentFragment();
-
-  if (total === 0) {
-    const emptyState = element("div", "empty-state");
-    emptyState.append(
-      element("h3", "", "No drivers match these filters"),
-      element(
-        "p",
-        "",
-        "Try a broader search or remove one or more active filters."
-      )
-    );
-    fragment.append(emptyState);
-  } else {
-    shownDrivers.forEach((driver) => fragment.append(createDriverCard(driver)));
-  }
+  if (!total) {
+    const empty = element("div", "empty-state");
+    empty.append(element("h3", "", "No Drivers match these filters"),
+      element("p", "", "Try a broader search or remove one or more active filters."));
+    fragment.append(empty);
+  } else shown.forEach((driver) => fragment.append(createDriverCard(driver)));
   driverList.replaceChildren(fragment);
-
-  const noun = total === 1 ? "driver" : "drivers";
-  resultSummary.textContent =
-    total > shownDrivers.length
-      ? total.toLocaleString() + " " + noun + " found \u00b7 Showing " +
-        shownDrivers.length.toLocaleString()
-      : total.toLocaleString() + " " + noun + " found";
-  loadMoreButton.hidden = shownDrivers.length >= total;
+  resultSummary.textContent = total > shown.length
+    ? total.toLocaleString() + " Drivers found · Showing " + shown.length.toLocaleString()
+    : total.toLocaleString() + (total === 1 ? " Driver found" : " Drivers found");
+  loadMoreButton.hidden = shown.length >= total;
 }
 
-function appendDetailField(list, label, value, options) {
-  if (!hasValue(value) && !(options && options.content)) {
-    return false;
+function createPublicSection(title, className = "") {
+  const section = element("section", "detail-section public-detail-section " + className);
+  section.append(element("h3", "", title));
+  return section;
+}
+
+function appendTextOrList(container, value, className = "") {
+  const values = asValues(value);
+  if (!values.length) return false;
+  if (values.length === 1) container.append(element("p", className, values[0]));
+  else {
+    const list = element("ul", className ? className + " detail-value-list" : "detail-value-list");
+    values.forEach((item) => list.append(element("li", "", item)));
+    container.append(list);
   }
-  const wrapper = element(
-    "div",
-    "detail-field" + (options && options.wide ? " detail-field--wide" : "")
-  );
-  wrapper.append(element("dt", "", label));
-  const description = element("dd");
-  if (options && options.content) {
-    description.append(options.content);
-  } else if (Array.isArray(value)) {
-    const values = element("ul", "detail-value-list");
-    value.forEach((item) => values.append(element("li", "", item)));
-    description.append(values);
-  } else {
-    description.textContent = value;
-  }
-  wrapper.append(description);
-  list.append(wrapper);
   return true;
 }
 
-function createDetailSection(title, fields) {
-  const section = element("section", "detail-section");
-  const list = element("dl", "detail-grid");
-  let populated = false;
-  fields.forEach((field) => {
-    populated =
-      appendDetailField(list, field.label, field.value, {
-        wide: field.wide,
-        content: field.content,
-      }) ||
-      populated;
-  });
-  if (!populated) {
-    return null;
-  }
-  section.append(element("h3", "", title), list);
+function createDefinitionSection(driver) {
+  const section = createPublicSection("Definition", "definition-section");
+  section.append(element("p", "section-context", "Canonical scientific definition"),
+    element("p", "canonical-definition", driver.definition));
   return section;
 }
 
-function createFamilyDetailLink(driver) {
-  const family = familyByIdentity.get(
-    familyIdentityKey(driver.layer, driver.family)
-  );
-  const wrapper = element("span", "detail-family-action");
-  wrapper.append(element("span", "", driver.family));
-  if (family) {
-    const button = element("button", "text-button", "View family \u2192");
-    button.type = "button";
-    button.dataset.viewFamilyId = family.id;
-    button.setAttribute("aria-label", "View Family: " + family.name);
-    wrapper.append(button);
+function createInBriefSection(driver) {
+  const section = createPublicSection("In brief", "in-brief-section");
+  if (!driver._plainLanguage) {
+    const notice = element("div", "review-notice");
+    notice.append(element("strong", "", "Explanation under review."),
+      element("p", "", "The canonical definition remains available above."));
+    section.append(notice);
+    return section;
   }
+  section.append(element("p", "in-brief-copy", driver._plainLanguage.plainLanguageExplanation));
+  if (hasValue(driver._plainLanguage.whatThisDoesNotMean)) {
+    const boundary = element("div", "meaning-boundary");
+    boundary.append(element("h4", "", "What this doesn’t mean"),
+      element("p", "", driver._plainLanguage.whatThisDoesNotMean));
+    section.append(boundary);
+  }
+  return section;
+}
+
+function createQuestionSection(driver) {
+  if (!driver._plainLanguage || !hasValue(driver._plainLanguage.analyticQuestion)) return null;
+  const section = createPublicSection("Question to investigate", "question-section");
+  section.append(element("p", "analytic-question", driver._plainLanguage.analyticQuestion));
+  return section;
+}
+
+function createDynamicsFact(label, value, codebookId) {
+  if (!hasValue(value)) return null;
+  const item = element("li", "dynamics-fact");
+  const term = element("span", "dynamics-fact__term", label);
+  const info = createInfoButton(codebookId, label);
+  if (info) term.append(info);
+  item.append(term, element("span", "dynamics-fact__value", value));
+  return item;
+}
+
+function createHowItOperatesSection(driver) {
+  const section = createPublicSection("How it operates", "operations-section");
+  if (hasValue(driver.mechanism)) {
+    const mechanism = element("div", "operations-block");
+    appendConceptHeading(mechanism, "h4", "Mechanism", "CB-DRV-MECHANISM");
+    mechanism.append(element("p", "", driver.mechanism));
+    section.append(mechanism);
+  }
+  const dynamics = element("div", "operations-block dynamics-block");
+  dynamics.append(element("h4", "", "Dynamics"));
+  const facts = element("ul", "dynamics-list");
+  const temporal = formatValues(driver.timeScaleOfChange) +
+    (hasValue(driver.timeScaleQualifier) ? ". " + driver.timeScaleQualifier : "");
+  [
+    createDynamicsFact("Data type", driver.dataType, "CB-DRV-DATA-TYPE"),
+    createDynamicsFact("Polarity / direction", driver.polarityDirection, "CB-DRV-POLARITY-DIRECTION"),
+    createDynamicsFact("Time scale of change", temporal, "CB-DRV-TIME-SCALE"),
+    createDynamicsFact("Onset / causal lag", formatValues(driver.onsetCausalLag), "CB-DRV-ONSET-LAG"),
+    createDynamicsFact("Persistence / recovery", driver.persistenceRecovery, "CB-DRV-PERSISTENCE-RECOVERY"),
+    createDynamicsFact("Volatility", driver.volatility, "CB-DRV-VOLATILITY"),
+    createDynamicsFact("Modifiability", driver.modifiability, "CB-DRV-MODIFIABILITY"),
+  ].filter(Boolean).forEach((fact) => facts.append(fact));
+  if (facts.children.length) dynamics.append(facts);
+  section.append(dynamics);
+  return section;
+}
+
+function createContextSection(driver) {
+  if (!hasValue(driver.moderatorsBoundaryConditions)) return null;
+  const section = createPublicSection("Context and conditions", "context-section");
+  appendConceptHeading(section, "h4", "Moderators / boundary conditions", "CB-DRV-MODERATORS");
+  appendTextOrList(section, driver.moderatorsBoundaryConditions);
+  return section;
+}
+
+function createObservationBlock(label, value, codebookId) {
+  if (!hasValue(value)) return null;
+  const block = element("div", "observation-block");
+  appendConceptHeading(block, "h4", label, codebookId);
+  appendTextOrList(block, value);
+  return block;
+}
+
+function createObservationSection(driver) {
+  const blocks = [
+    createObservationBlock("Possible indicators", driver.indicators, "CB-DRV-INDICATORS"),
+    createObservationBlock("Assessment approaches", driver.measurementAssessmentMethods, "CB-DRV-MEASUREMENT-METHODS"),
+    createObservationBlock("Observability", driver.observability, "CB-DRV-OBSERVABILITY"),
+    createObservationBlock("Measurement considerations", driver.measurementCaveats, "CB-DRV-MEASUREMENT-CAVEATS"),
+  ].filter(Boolean);
+  if (!blocks.length) return null;
+  const section = createPublicSection("How to observe it", "observation-section");
+  blocks.forEach((block) => section.append(block));
+  return section;
+}
+
+function createEvidenceSection(driver) {
+  if (!hasValue(driver.evidenceStrength) && !hasValue(driver.evidenceNotes)) return null;
+  const section = createPublicSection("Evidence", "evidence-section");
+  if (hasValue(driver.evidenceStrength)) {
+    const strength = element("div", "evidence-strength");
+    appendConceptHeading(strength, "h4", "Evidence strength", "CB-DRV-EVIDENCE-STRENGTH");
+    strength.append(element("p", "evidence-strength__value", driver.evidenceStrength));
+    section.append(strength);
+  }
+  if (hasValue(driver.evidenceNotes)) {
+    const notes = element("div", "evidence-notes");
+    notes.append(element("h4", "", "Evidence notes"), element("p", "", driver.evidenceNotes));
+    section.append(notes);
+  }
+  return section;
+}
+
+function safeExternalHref(value) {
+  if (!hasValue(value)) return null;
+  try {
+    const url = new URL(value);
+    return ["https:", "http:"].includes(url.protocol) ? url.href : null;
+  } catch (_error) { return null; }
+}
+
+function createSourcesSection(driver) {
+  if (!Array.isArray(driver.keySources) || !driver.keySources.length) return null;
+  const section = createPublicSection("Key sources", "sources-section");
+  const list = element("ol", "source-list");
+  driver.keySources.forEach((sourceId) => {
+    const source = sourceById.get(sourceId);
+    const item = element("li", "source-item");
+    if (!source) {
+      item.append(element("p", "source-item__citation",
+        "Citation details are unavailable for this governed source reference."));
+      list.append(item);
+      return;
+    }
+    item.append(element("p", "source-item__citation", source.citationText));
+    const href = safeExternalHref(source.href);
+    if (href) {
+      const link = element("a", "source-item__link", source.linkLabel ||
+        (source.resolutionType === "SEARCH" ? "Search for source ↗" : "View source ↗"));
+      link.href = href;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      if (source.resolutionType === "SEARCH") link.classList.add("source-item__link--search");
+      item.append(link);
+    } else item.append(element("span", "source-item__unresolved", "Direct link unavailable"));
+    list.append(item);
+  });
+  section.append(list);
+  return section;
+}
+
+function createDriverBreadcrumbs(driver, family) {
+  const nav = element("nav", "driver-breadcrumbs");
+  nav.setAttribute("aria-label", "Driver hierarchy");
+  const layer = element("button", "driver-breadcrumbs__link", driver.layer);
+  layer.type = "button";
+  layer.dataset.driverLayer = driver.layer;
+  const familyButton = element("button", "driver-breadcrumbs__link", driver.family);
+  familyButton.type = "button";
+  if (family) familyButton.dataset.driverFamily = family.id;
+  const separatorOne = element("span", "driver-breadcrumbs__separator", "›");
+  separatorOne.setAttribute("aria-hidden", "true");
+  nav.append(layer, separatorOne, familyButton, separatorOne.cloneNode(true),
+    element("span", "driver-breadcrumbs__current", driver.id));
+  return nav;
+}
+
+function createScenarioSection(driver) {
+  if (!activeScenario) return null;
+  const section = createPublicSection("Applied to this scenario", "scenario-application");
+  section.dataset.scenarioSection = driver.id;
+  section.append(element("p", "scenario-analysis-label", "AI-assisted illustrative analysis"),
+    element("p", "scenario-disclaimer",
+      "This AI-assisted operationalization identifies ways a Driver could be defined, observed, or investigated in the scenario. It does not establish that the Driver is present or that it caused the behavior."));
+  const outputState = scenarioOutputs.get(driver.id);
+  if (outputState && outputState.result) section.append(renderScenarioResult(outputState));
+  const actions = element("div", "scenario-application__actions");
+  const generate = element("button", "primary-button", outputState && outputState.result
+    ? "Regenerate analysis" : "Operationalize this Driver");
+  generate.type = "button";
+  generate.dataset.operationalizeDriver = driver.id;
+  generate.disabled = !SCENARIO_AVAILABLE || pendingScenarioDriverId !== null;
+  if (pendingScenarioDriverId === driver.id) generate.textContent = "Generating…";
+  actions.append(generate);
+  if (!CONFIG.scenarioAiEnabled || !CONFIG.scenarioApiUrl) {
+    actions.append(element("p", "scenario-unavailable",
+      "Scenario operationalization is not enabled for this deployment. The taxonomy remains fully available."));
+  }
+  section.append(actions);
+  const status = element("p", "scenario-request-status");
+  status.dataset.scenarioStatus = driver.id;
+  status.setAttribute("role", "status");
+  status.setAttribute("aria-live", "polite");
+  if (outputState && outputState.error) status.textContent = outputState.error;
+  section.append(status);
+  return section;
+}
+
+function renderScenarioResult(outputState) {
+  const result = outputState.result;
+  const wrapper = element("div", "scenario-result");
+  const meaning = element("section", "scenario-result__meaning");
+  meaning.append(element("h4", "", "What this Driver means here"),
+    element("p", "", result.scenarioMeaning));
+  wrapper.append(meaning);
+  const examples = element("section", "scenario-result__examples");
+  examples.append(element("h4", "", "Operationalization examples"));
+  const grid = element("div", "operationalization-grid");
+  result.operationalizationExamples.forEach((example, index) => {
+    const card = element("article", "operationalization-card");
+    card.append(element("p", "operationalization-card__number", "Example " + String(index + 1)),
+      element("h5", "", example.title), element("h6", "", "Operationalization"),
+      element("p", "", example.operationalization), element("h6", "", "What to look for"));
+    const indicators = element("ul", "");
+    example.whatToLookFor.forEach((indicator) => indicators.append(element("li", "", indicator)));
+    card.append(indicators, element("h6", "", "Question to ask"),
+      element("p", "operationalization-card__question", example.questionToAsk));
+    grid.append(card);
+  });
+  examples.append(grid);
+  wrapper.append(examples);
+  const caveat = element("section", "scenario-result__caveat");
+  caveat.append(element("h4", "", "Important caveat"), element("p", "", result.importantCaveat));
+  wrapper.append(caveat);
+  const sufficiency = element("section", "scenario-result__sufficiency");
+  sufficiency.append(element("h4", "", "Input sufficiency"),
+    element("p", "sufficiency-badge", result.inputSufficiency.replaceAll("_", " ")));
+  if (result.clarificationQuestion && !outputState.clarificationSkipped) {
+    const form = element("form", "clarification-form");
+    form.dataset.clarificationForm = result.driverId;
+    const label = element("label", "", result.clarificationQuestion);
+    const input = document.createElement("textarea");
+    input.name = "clarificationAnswer";
+    input.rows = 2;
+    input.maxLength = 400;
+    input.required = true;
+    label.append(input);
+    const actions = element("div", "clarification-form__actions");
+    const submit = element("button", "primary-button", "Answer and regenerate");
+    submit.type = "submit";
+    const skip = element("button", "text-button", "Skip and keep this analysis");
+    skip.type = "button";
+    skip.dataset.skipClarification = result.driverId;
+    actions.append(submit, skip);
+    form.append(label, actions);
+    sufficiency.append(form);
+  } else if (result.clarificationQuestion) {
+    sufficiency.append(element("p", "clarification-skipped",
+      "Clarification skipped; the general analysis is retained."));
+  }
+  wrapper.append(sufficiency);
   return wrapper;
 }
 
-function createMechanismSection(driver) {
-  return createDetailSection("Mechanism & context", [
-    { label: "Mechanism", value: driver.mechanism, wide: true },
-    {
-      label: "Moderators / boundary conditions",
-      value: driver.moderatorsBoundaryConditions,
-      wide: true,
-    },
-  ]);
-}
-
-function createPlainLanguageSection(driver) {
-  if (!driver._plainLanguage) {
-    return createDetailSection("Plain-language guide", [
-      {
-        label: "Status",
-        value: PLAIN_LANGUAGE_UNDER_REVIEW,
-        wide: true,
-      },
-    ]);
-  }
-  return createDetailSection("Plain-language guide", [
-    {
-      label: "Analytic question",
-      value: driver._plainLanguage.analyticQuestion,
-      wide: true,
-    },
-    {
-      label: "What this does not mean",
-      value: driver._plainLanguage.whatThisDoesNotMean,
-      wide: true,
-    },
-  ]);
-}
-
-function displayControlledValue(value) {
-  return String(value || "")
-    .toLocaleLowerCase()
-    .replaceAll("_", " ")
-    .replace(/^./, (letter) => letter.toLocaleUpperCase());
-}
-
-function createRelationshipBadge(value, className) {
-  return element(
-    "span",
-    "relationship-badge " + (className || ""),
-    displayControlledValue(value)
-  );
-}
-
-function createLayerRoute(relationship) {
-  const route = element("span", "layer-route");
-  const source = driverById.get(relationship.sourceDriverId);
-  const target = driverById.get(relationship.targetDriverId);
-  const sourceLayer = element("span", "layer-route__layer", source.layer);
-  const targetLayer = element("span", "layer-route__layer", target.layer);
-  setLayerIdentity(sourceLayer, source.layer);
-  setLayerIdentity(targetLayer, target.layer);
-  route.append(sourceLayer, element("span", "layer-route__arrow", "→"), targetLayer);
-  return route;
-}
-
-function createRelationshipCard(relationship, selectedDriverId, options = {}) {
-  const upstream = relationship.targetDriverId === selectedDriverId;
-  const relatedId = upstream
-    ? relationship.sourceDriverId : relationship.targetDriverId;
-  const related = driverById.get(relatedId);
-  const article = element("article", "relationship-card");
-  article.dataset.relationshipId = relationship.id;
-  const heading = element("div", "relationship-card__heading");
-  const direction = element(
-    "span",
-    "relationship-direction",
-    upstream ? "Upstream Driver" : "Downstream Driver"
-  );
-  const link = element("button", "relationship-driver-link", publicDriverLabel(related));
-  link.type = "button";
-  link.dataset.relatedDriverId = related.id;
-  link.setAttribute("aria-label", "Open related Driver: " + publicDriverLabel(related));
-  const identity = element("div", "relationship-card__identity");
-  identity.append(link, element("span", "driver-id", related.id));
-  heading.append(direction, identity);
-
-  const badges = element("div", "relationship-card__badges");
-  badges.append(
-    createRelationshipBadge(relationship.causalRole, "relationship-badge--role"),
-    createRelationshipBadge(relationship.polarity),
-    createRelationshipBadge(relationship.directness),
-    createRelationshipBadge(relationship.confidence, "relationship-badge--confidence"),
-    createRelationshipBadge(relationship.evidenceStrength)
-  );
-  if (relationship.governanceClass === "CONTEXT_DEPENDENT") {
-    badges.append(createRelationshipBadge("Context dependent", "relationship-badge--caution"));
-  }
-  if (relationship.reciprocalProcessId) {
-    badges.append(createRelationshipBadge("Reciprocal dynamic", "relationship-badge--reciprocal"));
-  }
-  if (driverById.get(relationship.sourceDriverId).layer !==
-      driverById.get(relationship.targetDriverId).layer) {
-    badges.append(createLayerRoute(relationship));
-  } else {
-    const layer = element("span", "layer-badge relationship-layer", related.layer);
-    setLayerIdentity(layer, related.layer);
-    badges.append(layer);
-  }
-
-  const mechanism = element("p", "relationship-card__mechanism", relationship.mechanism);
-  article.append(heading, badges, mechanism);
-
-  const disclosure = element("details", "relationship-disclosure");
-  const summary = element("summary", "", "Evidence, timing & context");
-  const details = element("dl", "relationship-detail-grid");
-  const fields = [
-    ["Directed assertion", relationship.sourceDriverName + " → " + relationship.targetDriverName],
-    ["Relationship ID", relationship.id],
-    ["Conditions / moderators", relationship.conditionsModerators],
-    ["Generalizability / context", relationship.generalizabilityContext],
-    ["Lag profile", relationship.lagProfile.map(displayControlledValue).join("; ")],
-    ["Lag narrative", relationship.lagNarrative],
-    ["Exposure pattern", displayControlledValue(relationship.exposurePattern)],
-    ["Effect persistence", relationship.effectPersistence],
-    ["Endpoint levels", displayControlledValue(relationship.sourceLevel) + " → " + displayControlledValue(relationship.targetLevel)],
-    ["Level-transition mechanism", relationship.levelTransitionMechanism],
-    ["Moderator Driver IDs", relationship.moderatorDriverIds.join("; ")],
-    ["Supporting Evidence IDs", relationship.supportingEvidenceIds.join("; ")],
-    ["Source record", relationship.source.workbook + " / " + relationship.source.worksheet + " row " + String(relationship.source.row)],
-    ["Governance class", displayControlledValue(relationship.governanceClass)],
-    ["Notes / caveats", relationship.notesCaveats],
-  ];
-  fields.forEach(([label, value]) => {
-    if (!hasValue(value)) return;
-    const wrapper = element("div");
-    wrapper.append(element("dt", "", label), element("dd", "", value));
-    details.append(wrapper);
-  });
-  if (relationship.directness === "MEDIATED_PATH") {
-    const notice = element(
-      "p",
-      "relationship-notice",
-      "This governed edge is one segment of a mediated path; it is not an unmediated source-to-outcome shortcut."
-    );
-    disclosure.append(summary, notice, details);
-  } else {
-    disclosure.append(summary, details);
-  }
-  article.append(disclosure);
-  if (options.compact) article.classList.add("relationship-card--compact");
-  return article;
-}
-
-function selectControl(label, values, selectedValue) {
-  const wrapper = element("label", "graph-control");
-  wrapper.append(element("span", "", label));
-  const select = element("select");
-  values.forEach(([value, text]) => {
-    const option = element("option", "", text);
-    option.value = value;
-    option.selected = value === selectedValue;
-    select.append(option);
-  });
-  wrapper.append(select);
-  return { wrapper, select };
-}
-
-function svgElement(tagName, attributes = {}) {
-  const node = document.createElementNS("http://www.w3.org/2000/svg", tagName);
-  Object.entries(attributes).forEach(([name, value]) => node.setAttribute(name, value));
-  return node;
-}
-
-function renderNeighborhoodGraph(driver, controls, stage, status, selection) {
-  const options = {
-    maxHops: Number(controls.hops.value),
-    direction: controls.direction.value,
-    layer: controls.layer.value,
-    governanceClasses: controls.governance.value ? [controls.governance.value] : [],
-    roles: controls.role.value ? [controls.role.value] : [],
-    directness: controls.directness.value ? [controls.directness.value] : [],
-  };
-  const graph = PsywerxCausal.boundedNeighborhood(
-    relationshipIndex, driver.id, options, driverById
-  );
-  const groups = new Map();
-  graph.nodeDepths.forEach((depth, driverId) => {
-    if (!groups.has(depth)) groups.set(depth, []);
-    groups.get(depth).push(driverId);
-  });
-  groups.forEach((ids) => ids.sort((a, b) =>
-    publicDriverLabel(driverById.get(a)).localeCompare(publicDriverLabel(driverById.get(b)))
-  ));
-  const maxPerColumn = Math.max(...[...groups.values()].map((group) => group.length), 1);
-  const height = Math.max(360, maxPerColumn * 82 + 70);
-  const width = 980;
-  const svg = svgElement("svg", {
-    viewBox: "0 0 " + width + " " + height,
-    role: "img",
-    "aria-label": "Bounded causal neighborhood centered on " + publicDriverLabel(driver),
-  });
-  const defs = svgElement("defs");
-  const markerId = "arrow-" + driver.id.replace(/[^A-Za-z0-9]/g, "");
-  const marker = svgElement("marker", {
-    id: markerId, viewBox: "0 0 10 10", refX: "9", refY: "5",
-    markerWidth: "7", markerHeight: "7", orient: "auto-start-reverse",
-  });
-  marker.append(svgElement("path", { d: "M 0 0 L 10 5 L 0 10 z" }));
-  defs.append(marker);
-  svg.append(defs);
-
-  const positions = new Map();
-  groups.forEach((ids, depth) => {
-    const x = 490 + depth * 205;
-    ids.forEach((driverId, index) => {
-      const y = ((index + 1) * height) / (ids.length + 1);
-      positions.set(driverId, { x, y });
-    });
-  });
-  const edgeLayer = svgElement("g", { class: "graph-edges" });
-  graph.edges.forEach((relationship) => {
-    const start = positions.get(relationship.sourceDriverId);
-    const end = positions.get(relationship.targetDriverId);
-    if (!start || !end) return;
-    const startX = start.x + (end.x >= start.x ? 82 : -82);
-    const endX = end.x + (end.x >= start.x ? -82 : 82);
-    const d = "M " + startX + " " + start.y + " L " + endX + " " + end.y;
-    const visible = svgElement("path", {
-      d,
-      class: "graph-edge graph-edge--" + relationship.governanceClass.toLocaleLowerCase(),
-      "marker-end": "url(#" + markerId + ")",
-    });
-    const target = svgElement("path", {
-      d, class: "graph-edge-target", tabindex: "0", role: "button",
-      "aria-label": "Inspect relationship " + relationship.sourceDriverName + " to " + relationship.targetDriverName,
-    });
-    const choose = () => {
-      selection.replaceChildren(
-        element("h4", "", "Selected relationship"),
-        createRelationshipCard(relationship, driver.id, { compact: true })
-      );
-      selection.scrollIntoView({ behavior: "smooth", block: "nearest" });
-    };
-    target.addEventListener("click", choose);
-    target.addEventListener("keydown", (event) => {
-      if (event.key === "Enter" || event.key === " ") {
-        event.preventDefault(); choose();
-      }
-    });
-    edgeLayer.append(visible, target);
-  });
-  svg.append(edgeLayer);
-
-  const nodeLayer = svgElement("g", { class: "graph-nodes" });
-  positions.forEach((position, driverId) => {
-    const related = driverById.get(driverId);
-    const group = svgElement("g", {
-      class: "graph-node" + (driverId === driver.id ? " graph-node--center" : ""),
-      transform: "translate(" + String(position.x - 82) + " " + String(position.y - 29) + ")",
-      tabindex: driverId === driver.id ? "-1" : "0",
-      role: driverId === driver.id ? "img" : "button",
-      "aria-label": (driverId === driver.id ? "Selected Driver: " : "Open Driver: ") + publicDriverLabel(related),
-      "data-layer": related.layer,
-    });
-    group.append(svgElement("rect", { width: "164", height: "58", rx: "8" }));
-    const label = publicDriverLabel(related);
-    const firstLine = label.length > 27 ? label.slice(0, 26).trimEnd() + "…" : label;
-    const text = svgElement("text", { x: "82", y: "25", "text-anchor": "middle" });
-    const title = svgElement("tspan", { x: "82", dy: "0" });
-    title.textContent = firstLine;
-    const id = svgElement("tspan", { x: "82", dy: "18", class: "graph-node__id" });
-    id.textContent = related.id;
-    text.append(title, id);
-    group.append(text);
-    if (driverId !== driver.id) {
-      const open = () => openDriver(driverId, "push", drivers);
-      group.addEventListener("click", open);
-      group.addEventListener("keydown", (event) => {
-        if (event.key === "Enter" || event.key === " ") {
-          event.preventDefault(); open();
-        }
-      });
-    }
-    nodeLayer.append(group);
-  });
-  svg.append(nodeLayer);
-  stage.replaceChildren(svg);
-  status.textContent =
-    String(graph.nodeDepths.size) + " Drivers and " + String(graph.edges.length) +
-    " governed relationships shown" +
-    (graph.truncated ? " · View limited to " + graph.maxNodes + " Drivers and " + graph.maxEdges + " relationships; refine the filters to narrow it." : ".");
-  selection.replaceChildren(element("p", "", "Select an arrow to inspect its governed relationship record."));
-}
-
-function createLocalGraphSection(driver) {
-  const section = element("section", "detail-section local-graph-section");
-  section.append(
-    element("h3", "", "Local causal network"),
-    element(
-      "p",
-      "graph-framing",
-      "A bounded view of governed ontology relationships around this Driver. It is not an effect estimate, complete scenario model, or prediction."
-    )
-  );
-  const controlsNode = element("div", "graph-controls");
-  const controls = {
-    hops: selectControl("Depth", [["1", "1 hop"], ["2", "2 hops"]], "1"),
-    direction: selectControl("Direction", [["both", "Upstream + downstream"], ["upstream", "Upstream only"], ["downstream", "Downstream only"]], "both"),
-    layer: selectControl("Related Layer", [["", "All Layers"], ...[...hierarchy.keys()].map((layer) => [layer, layer])], ""),
-    governance: selectControl("Governance", [["", "All public classes"], ["CORE", "Core"], ["CONTEXT_DEPENDENT", "Context-dependent"]], ""),
-    role: selectControl("Causal role", [["", "All roles"], ["CAUSES", "Causes"], ["ENABLES", "Enables"], ["CONSTRAINS", "Constrains"], ["MODERATES", "Moderates"]], ""),
-    directness: selectControl("Directness", [["", "All values"], ["DIRECT_AT_STATED_RESOLUTION", "Direct at stated resolution"], ["MEDIATED_PATH", "Mediated-path segment"], ["UNKNOWN", "Unknown"]], ""),
-  };
-  Object.values(controls).forEach((control) => controlsNode.append(control.wrapper));
-  const status = element("p", "graph-status");
-  status.setAttribute("role", "status");
-  status.setAttribute("aria-live", "polite");
-  const stage = element("div", "graph-stage");
-  const selection = element("div", "graph-selection");
-  const update = () => renderNeighborhoodGraph(
-    driver,
-    Object.fromEntries(Object.entries(controls).map(([key, value]) => [key, value.select])),
-    stage,
-    status,
-    selection
-  );
-  Object.values(controls).forEach((control) => control.select.addEventListener("change", update));
-  section.append(controlsNode, status, stage, selection);
-  update();
-  return section;
-}
-
-function createRelationshipsSection(driver) {
-  const incoming = relationshipIndex.upstream.get(driver.id) || [];
-  const outgoing = relationshipIndex.downstream.get(driver.id) || [];
-  const section = element("section", "detail-section relationships-section");
-  section.append(
-    element("h3", "", "Governed Driver relationships"),
-    element(
-      "p",
-      "relationship-framing",
-      "These directed records describe evidence-bearing ontology relationships. They do not estimate effect size, guarantee an outcome, or replace a scenario-specific causal model."
-    )
-  );
-  const counts = element("div", "relationship-counts");
-  counts.append(
-    element("span", "", String(incoming.length) + " upstream"),
-    element("span", "", String(outgoing.length) + " downstream")
-  );
-  const governanceGuide = element("details", "governance-guide");
-  governanceGuide.append(
-    element("summary", "", "What relationship governance classes mean"),
-    element("p", "", "Core relationships are broadly reusable backbone assertions. Context-dependent relationships are defensible only with their stated conditions, mechanism, evidence, and context."),
-    element("p", "", "Scenario-specific and hypothesized relationships are not part of this public canonical graph; they belong in governed model packages or research queues.")
-  );
-  section.append(counts, governanceGuide);
-  if (incoming.length === 0 && outgoing.length === 0) {
-    section.append(element(
-      "p", "empty-relationships",
-      "No public governed relationships currently connect this Driver. This indicates graph coverage, not causal isolation."
-    ));
-    return section;
-  }
-  [["Likely Upstream Drivers", incoming], ["Likely Downstream Drivers", outgoing]].forEach(([title, records]) => {
-    if (!records.length) return;
-    const group = element("section", "relationship-group");
-    group.append(element("h4", "", title));
-    const list = element("div", "relationship-list");
-    records.forEach((relationship) => list.append(createRelationshipCard(relationship, driver.id)));
-    group.append(list);
-    section.append(group);
-  });
-  return section;
-}
-
 function renderDriverDetail(driver) {
+  const family = familyByIdentity.get(familyIdentityKey(driver.layer, driver.family));
   const fragment = document.createDocumentFragment();
-  const header = element("header", "driver-detail__header");
-  const badges = element("div", "driver-detail__badges");
-  const layer = element("span", "layer-badge", driver.layer);
-  setLayerIdentity(layer, driver.layer);
-  badges.append(layer, element("span", "driver-id", driver.id));
-  const title = element("h2", "", publicDriverLabel(driver));
+  const header = element("header", "driver-detail__header driver-detail__header--public");
+  header.append(createDriverBreadcrumbs(driver, family));
+  const title = element("h2", "", driver.name);
   title.id = "detail-title";
-  header.append(
-    badges,
-    title,
-    element("p", "", publicDriverExplanation(driver))
-  );
+  header.append(title);
+  const aliases = (driver.aliases || []).filter((alias) =>
+    normalizeComparable(alias) !== normalizeComparable(driver.name));
+  if (aliases.length) {
+    const aliasLine = element("p", "driver-aliases");
+    aliasLine.append(element("span", "", "Also known as "), document.createTextNode(aliases.join(" · ")));
+    header.append(aliasLine);
+  }
   fragment.append(header);
-
-  const sections = [
-    createPlainLanguageSection(driver),
-    createDetailSection("Identity", [
-      { label: "Canonical name", value: driver.name },
-      { label: "Aliases", value: driver.aliases, wide: true },
-      { label: "Layer", value: driver.layer },
-      {
-        label: "Family",
-        value: driver.family,
-        content: createFamilyDetailLink(driver),
-      },
-      { label: "Driver ID", value: driver.id },
-    ]),
-    createDetailSection("Definition & representation", [
-      { label: "Definition", value: driver.definition, wide: true },
-      { label: "Data type", value: driver.dataType },
-      { label: "Representation / scale", value: driver.representationScale, wide: true },
-      { label: "Polarity / direction", value: driver.polarityDirection, wide: true },
-    ]),
-    createMechanismSection(driver),
-    createRelationshipsSection(driver),
-    createLocalGraphSection(driver),
-    createDetailSection("Dynamics", [
-      { label: "Modifiability", value: driver.modifiability },
-      { label: "Volatility", value: driver.volatility },
-      { label: "Time scale of change", value: driver.timeScaleOfChange },
-      { label: "Onset / causal lag", value: driver.onsetCausalLag },
-      { label: "Persistence / recovery", value: driver.persistenceRecovery, wide: true },
-    ]),
-    createDetailSection("Observation & measurement", [
-      { label: "Indicators", value: driver.indicators, wide: true },
-      { label: "Measurement / assessment methods", value: driver.measurementAssessmentMethods, wide: true },
-      { label: "Observability", value: driver.observability },
-      { label: "Measurement caveats", value: driver.measurementCaveats, wide: true },
-    ]),
-    createDetailSection("Evidence & interpretation", [
-      { label: "Evidence strength", value: driver.evidenceStrength },
-      { label: "Evidence notes", value: driver.evidenceNotes, wide: true },
-      { label: "Common misinterpretations", value: driver.commonMisinterpretations, wide: true },
-      { label: "Key sources", value: driver.keySources, wide: true },
-    ]),
-    createDetailSection("Provenance", [
-      { label: "Source workbook", value: driver.source && driver.source.workbook, wide: true },
-      { label: "Source worksheet", value: driver.source && driver.source.sheet },
-    ]),
-  ];
-  sections.filter(Boolean).forEach((section) => fragment.append(section));
+  [
+    createDefinitionSection(driver), createInBriefSection(driver),
+    createQuestionSection(driver), createHowItOperatesSection(driver),
+    createContextSection(driver), createObservationSection(driver),
+    createEvidenceSection(driver), createSourcesSection(driver),
+    createScenarioSection(driver),
+  ].filter(Boolean).forEach((section) => fragment.append(section));
   driverDetail.replaceChildren(fragment);
+  document.title = driver.name + " | " + DEFAULT_DOCUMENT_TITLE;
 }
 
 function taxonomyUrl(parameters = {}) {
   const url = new URL(window.location.href);
-  url.searchParams.delete(DRIVER_QUERY_PARAMETER);
-  url.searchParams.delete(FAMILY_QUERY_PARAMETER);
-  url.searchParams.delete(VIEW_QUERY_PARAMETER);
-  url.searchParams.delete(PATH_SOURCE_QUERY_PARAMETER);
-  url.searchParams.delete(PATH_TARGET_QUERY_PARAMETER);
-  if (parameters.familyId) {
-    url.searchParams.set(FAMILY_QUERY_PARAMETER, parameters.familyId);
-  }
-  if (parameters.driverId) {
-    url.searchParams.set(DRIVER_QUERY_PARAMETER, parameters.driverId);
-  }
-  if (parameters.view === "causal") {
-    url.searchParams.set(VIEW_QUERY_PARAMETER, "causal");
-    if (parameters.sourceId) {
-      url.searchParams.set(PATH_SOURCE_QUERY_PARAMETER, parameters.sourceId);
-    }
-    if (parameters.targetId) {
-      url.searchParams.set(PATH_TARGET_QUERY_PARAMETER, parameters.targetId);
-    }
-  }
+  [DRIVER_QUERY_PARAMETER, FAMILY_QUERY_PARAMETER, VIEW_QUERY_PARAMETER, "source", "target"]
+    .forEach((parameter) => url.searchParams.delete(parameter));
+  if (parameters.familyId) url.searchParams.set(FAMILY_QUERY_PARAMETER, parameters.familyId);
+  if (parameters.driverId) url.searchParams.set(DRIVER_QUERY_PARAMETER, parameters.driverId);
+  if (parameters.view === "search") url.searchParams.set(VIEW_QUERY_PARAMETER, "search");
+  url.hash = "";
   return url;
 }
 
-function driverUrl(driverId) {
-  return taxonomyUrl({ driverId });
-}
-
-function familyUrl(familyId) {
-  return taxonomyUrl({ familyId });
-}
-
-function baseUrl() {
-  return taxonomyUrl();
-}
-
-function causalUrl(sourceId, targetId) {
-  return taxonomyUrl({ view: "causal", sourceId, targetId });
-}
-
 function writeHistory(action, state, url) {
-  if (action === "push") {
-    history.pushState(state, "", url);
-  } else if (action === "replace") {
-    history.replaceState(state, "", url);
-  }
+  if (action === "push") history.pushState(state, "", url);
+  else if (action === "replace") history.replaceState(state, "", url);
 }
 
 function currentBackgroundState() {
-  if (activeMode === "search") {
-    return { view: "search" };
-  }
-  if (activeMode === "causal") {
-    return { view: "causal" };
-  }
-  if (selectedBrowseFamilyId) {
-    return {
-      view: "family",
-      layer: selectedBrowseLayer,
-      familyId: selectedBrowseFamilyId,
-    };
-  }
-  if (selectedBrowseLayer) {
-    return { view: "layer", layer: selectedBrowseLayer };
-  }
+  if (activeMode === "search") return { view: "search" };
+  if (selectedBrowseFamilyId) return { view: "family", familyId: selectedBrowseFamilyId };
+  if (selectedBrowseLayer) return { view: "layer", layer: selectedBrowseLayer };
   return { view: "root" };
 }
 
 function showBrowseRoot(urlAction, focus) {
-  currentDriverId = null;
-  hideDialog();
+  hideDriverDialog();
   setMode("browse");
   selectedBrowseLayer = null;
   selectedBrowseFamilyId = null;
   renderBrowse();
-  writeHistory(urlAction, { view: "root" }, baseUrl());
-  if (focus) {
-    browseHeading.focus();
-  }
+  detailDrivers = drivers;
+  document.title = DEFAULT_DOCUMENT_TITLE;
+  writeHistory(urlAction, { view: "root" }, taxonomyUrl());
+  if (focus) browseHeading.focus();
 }
 
 function showBrowseLayer(layer, urlAction, focus) {
-  if (!hierarchy.has(layer)) {
-    return false;
-  }
-  currentDriverId = null;
-  hideDialog();
+  if (!hierarchy.has(layer)) return false;
+  hideDriverDialog();
   setMode("browse");
   selectedBrowseLayer = layer;
   selectedBrowseFamilyId = null;
   renderBrowse();
-  writeHistory(urlAction, { view: "layer", layer }, baseUrl());
-  if (focus) {
-    browseHeading.focus();
-  }
+  detailDrivers = drivers.filter((driver) => driver.layer === layer);
+  document.title = layer + " | " + DEFAULT_DOCUMENT_TITLE;
+  writeHistory(urlAction, { view: "layer", layer }, taxonomyUrl());
+  if (focus) browseHeading.focus();
   return true;
 }
 
 function showFamily(familyId, urlAction, focus) {
   const family = familyById.get(familyId);
-  if (!family) {
-    return false;
-  }
-  currentDriverId = null;
-  detailOpenedFromExplorer = false;
-  hideDialog();
+  if (!family) return false;
+  hideDriverDialog();
   setMode("browse");
   selectedBrowseLayer = family.layer;
   selectedBrowseFamilyId = family.id;
   renderBrowse();
-  writeHistory(
-    urlAction,
-    { view: "family", layer: family.layer, familyId: family.id },
-    familyUrl(family.id)
-  );
-  if (focus) {
-    browseHeading.focus();
-  }
+  detailDrivers = driversByFamilyId.get(family.id);
+  document.title = family.name + " | " + DEFAULT_DOCUMENT_TITLE;
+  writeHistory(urlAction, { view: "family", familyId }, taxonomyUrl({ familyId }));
+  if (focus) browseHeading.focus();
   return true;
 }
 
 function showSearch(urlAction, focus) {
-  currentDriverId = null;
-  hideDialog();
-  setMode("search", { focus });
-  writeHistory(urlAction, { view: "search" }, baseUrl());
+  hideDriverDialog();
+  setMode("search");
+  detailDrivers = filteredDrivers;
+  document.title = "Search | " + DEFAULT_DOCUMENT_TITLE;
+  writeHistory(urlAction, { view: "search" }, taxonomyUrl({ view: "search" }));
+  if (focus) searchInput.focus();
 }
 
-function showCausal(urlAction, focus) {
-  currentDriverId = null;
-  hideDialog();
-  setMode("causal", { focus });
-  writeHistory(
-    urlAction,
-    { view: "causal", sourceId: pathSource.value, targetId: pathTarget.value },
-    causalUrl(pathSource.value, pathTarget.value)
-  );
+function showDriverDialog() {
+  if (driverDialog.open) return;
+  if (typeof driverDialog.showModal === "function") driverDialog.showModal();
+  else driverDialog.setAttribute("open", "");
 }
 
-function populatePathDriverSelect(select) {
-  const placeholder = select.firstElementChild;
-  const fragment = document.createDocumentFragment();
-  fragment.append(placeholder);
-  hierarchy.forEach((layerFamilies, layer) => {
-    const group = element("optgroup");
-    group.label = layer;
-    const layerDrivers = drivers.filter((driver) => driver.layer === layer);
-    layerDrivers.sort((a, b) => publicDriverLabel(a).localeCompare(publicDriverLabel(b)));
-    layerDrivers.forEach((driver) => {
-      const option = element(
-        "option",
-        "",
-        publicDriverLabel(driver) + " · " + driver.id
-      );
-      option.value = driver.id;
-      group.append(option);
-    });
-    fragment.append(group);
-  });
-  select.replaceChildren(fragment);
-  select.disabled = false;
-}
-
-function selectedPathFilters() {
-  const selected = (selector) => document.querySelector(selector).value;
-  const single = (selector) => {
-    const value = selected(selector);
-    return value ? [value] : [];
-  };
-  return {
-    maxHops: Number(selected("#path-max-hops")),
-    maxPaths: 5,
-    governanceClasses: single("#path-governance"),
-    roles: single("#path-role"),
-    polarities: single("#path-polarity"),
-    directness: single("#path-directness"),
-    confidence: single("#path-confidence"),
-    evidenceStrength: single("#path-evidence"),
-  };
-}
-
-function createPathNode(driver, position, total) {
-  const item = element("li", "path-node");
-  setLayerIdentity(item, driver.layer);
-  const link = element("button", "path-node__link", publicDriverLabel(driver));
-  link.type = "button";
-  link.dataset.relatedDriverId = driver.id;
-  link.setAttribute("aria-label", "Open Driver: " + publicDriverLabel(driver));
-  const layer = element("span", "layer-badge", driver.layer);
-  setLayerIdentity(layer, driver.layer);
-  item.append(
-    element("span", "path-node__position", String(position + 1) + " of " + String(total)),
-    link,
-    element("span", "driver-id", driver.id),
-    layer
-  );
-  return item;
-}
-
-function renderPathResults(result, sourceId, targetId) {
-  const source = driverById.get(sourceId);
-  const target = driverById.get(targetId);
-  if (result.paths.length === 0) {
-    pathResults.replaceChildren(
-      element("h4", "", "No governed path found within the selected limit"),
-      element(
-        "p",
-        "",
-        "No directed path from " + publicDriverLabel(source) + " to " +
-          publicDriverLabel(target) + " was found within " + String(result.maxHops) +
-          " edges under these filters. This may reflect graph scope or governance coverage; it does not establish causal independence."
-      )
-    );
-    return;
-  }
-  const fragment = document.createDocumentFragment();
-  const edgeCount = result.paths[0].edges.length;
-  fragment.append(
-    element("h4", "", String(result.paths.length) + (result.paths.length === 1 ? " shortest governed path" : " tied shortest governed paths")),
-    element(
-      "p",
-      "path-result-framing",
-      "Shortest here means fewest governed directed edges (" + String(edgeCount) +
-        "). It does not mean strongest, fastest, most probable, or sufficient for a scenario model."
-    )
-  );
-  result.paths.forEach((path, index) => {
-    const article = element("article", "causal-path");
-    article.append(element("h5", "", "Path " + String(index + 1)));
-    const nodes = element("ol", "path-node-list");
-    path.nodes.forEach((driverId, position) =>
-      nodes.append(createPathNode(driverById.get(driverId), position, path.nodes.length))
-    );
-    article.append(nodes);
-    const edgeList = element("div", "path-edge-list");
-    path.edges.forEach((relationship, edgeIndex) => {
-      const segment = element("section", "path-edge-segment");
-      segment.append(
-        element("h6", "", "Edge " + String(edgeIndex + 1) + " · " +
-          displayControlledValue(relationship.causalRole)),
-        createRelationshipCard(relationship, relationship.sourceDriverId, { compact: true })
-      );
-      edgeList.append(segment);
-    });
-    article.append(edgeList);
-    fragment.append(article);
-  });
-  if (result.truncated) {
-    fragment.append(element(
-      "p", "relationship-notice",
-      "Search stopped at the conservative traversal limit; additional tied paths may exist."
-    ));
-  }
-  pathResults.replaceChildren(fragment);
+function hideDriverDialog() {
+  closeCodebookPopover(false);
+  if (!driverDialog.open) return;
+  if (typeof driverDialog.close === "function") driverDialog.close();
+  else driverDialog.removeAttribute("open");
 }
 
 function updateDetailNavigation() {
   const index = detailDrivers.findIndex((driver) => driver.id === currentDriverId);
-  const hasPosition = index !== -1;
-  previousDriverButton.disabled = !hasPosition || index === 0;
-  nextDriverButton.disabled = !hasPosition || index === detailDrivers.length - 1;
-  detailPosition.textContent = hasPosition
-    ? String(index + 1) + " of " + detailDrivers.length
-    : "Linked driver";
-}
-
-function showDialog() {
-  if (driverDialog.open) {
-    return;
-  }
-  if (typeof driverDialog.showModal === "function") {
-    driverDialog.showModal();
-  } else {
-    driverDialog.setAttribute("open", "");
-  }
-}
-
-function hideDialog() {
-  if (!driverDialog.open) {
-    return;
-  }
-  if (typeof driverDialog.close === "function") {
-    driverDialog.close();
-  } else {
-    driverDialog.removeAttribute("open");
-  }
+  const found = index !== -1;
+  previousDriverButton.disabled = !found || index === 0;
+  nextDriverButton.disabled = !found || index === detailDrivers.length - 1;
+  detailPosition.textContent = found
+    ? String(index + 1) + " of " + String(detailDrivers.length) : "Linked Driver";
 }
 
 function openDriver(driverId, urlAction, contextDrivers) {
   const driver = driverById.get(driverId);
-  if (!driver) {
-    return false;
-  }
-  if (contextDrivers) {
-    detailDrivers = contextDrivers;
-  } else if (detailDrivers.length === 0) {
-    detailDrivers = drivers;
-  }
+  if (!driver) return false;
+  if (contextDrivers) detailDrivers = contextDrivers;
+  else if (!detailDrivers.length) detailDrivers = drivers;
   currentDriverId = driverId;
   renderDriverDetail(driver);
   updateDetailNavigation();
   copyLinkButton.textContent = "Copy driver link";
   copyStatus.textContent = "";
-  showDialog();
-
+  showDriverDialog();
   if (urlAction === "push") {
-    const background = currentBackgroundState();
-    history.pushState(
-      { view: "driver", driverId, fromExplorer: true, background },
-      "",
-      driverUrl(driverId)
-    );
+    history.pushState({ view: "driver", driverId, fromExplorer: true,
+      background: currentBackgroundState() }, "", taxonomyUrl({ driverId }));
     detailOpenedFromExplorer = true;
   } else if (urlAction === "replace") {
-    const background =
-      history.state && history.state.background
-        ? history.state.background
-        : currentBackgroundState();
-    history.replaceState(
-      {
-        view: "driver",
-        driverId,
-        fromExplorer: detailOpenedFromExplorer,
-        background,
-      },
-      "",
-      driverUrl(driverId)
-    );
+    history.replaceState({ view: "driver", driverId,
+      fromExplorer: detailOpenedFromExplorer,
+      background: history.state && history.state.background
+        ? history.state.background : currentBackgroundState() }, "", taxonomyUrl({ driverId }));
   }
   return true;
 }
 
 function closeDriverDetail() {
-  if (
-    detailOpenedFromExplorer &&
-    new URL(window.location.href).searchParams.has(DRIVER_QUERY_PARAMETER)
-  ) {
+  if (detailOpenedFromExplorer && new URL(window.location.href).searchParams.has(DRIVER_QUERY_PARAMETER)) {
     detailOpenedFromExplorer = false;
     history.back();
     return;
   }
-  const background =
-    history.state && history.state.background
-      ? history.state.background
-      : { view: "root" };
-  if (background.view === "family" && familyById.has(background.familyId)) {
-    showFamily(background.familyId, "replace", true);
-  } else if (background.view === "layer" && hierarchy.has(background.layer)) {
-    showBrowseLayer(background.layer, "replace", true);
-  } else if (background.view === "search") {
-    showSearch("replace", true);
-  } else if (background.view === "causal") {
-    showCausal("replace", true);
-  } else {
-    showBrowseRoot("replace", true);
-  }
+  const background = history.state && history.state.background
+    ? history.state.background : { view: "root" };
+  if (background.view === "family") showFamily(background.familyId, "replace", true);
+  else if (background.view === "layer") showBrowseLayer(background.layer, "replace", true);
+  else if (background.view === "search") showSearch("replace", true);
+  else showBrowseRoot("replace", true);
 }
 
 function moveWithinResults(offset) {
   const index = detailDrivers.findIndex((driver) => driver.id === currentDriverId);
   const destination = detailDrivers[index + offset];
-  if (destination) {
-    openDriver(destination.id, "replace");
-    driverDetail.scrollTop = 0;
-  }
+  if (destination) { openDriver(destination.id, "replace"); driverDetail.scrollTop = 0; }
 }
 
 async function copyCurrentLink() {
-  const url = driverUrl(currentDriverId).toString();
+  const url = taxonomyUrl({ driverId: currentDriverId }).toString();
   try {
-    if (navigator.clipboard && window.isSecureContext) {
-      await navigator.clipboard.writeText(url);
-    } else {
-      const temporaryInput = element("textarea", "clipboard-fallback");
-      temporaryInput.value = url;
-      temporaryInput.setAttribute("readonly", "");
-      document.body.append(temporaryInput);
-      temporaryInput.select();
+    if (navigator.clipboard && window.isSecureContext) await navigator.clipboard.writeText(url);
+    else {
+      const temporary = element("textarea", "clipboard-fallback");
+      temporary.value = url;
+      temporary.setAttribute("readonly", "");
+      document.body.append(temporary);
+      temporary.select();
       document.execCommand("copy");
-      temporaryInput.remove();
+      temporary.remove();
     }
     copyLinkButton.textContent = "Link copied";
     copyStatus.textContent = "Driver link copied to clipboard.";
-  } catch (error) {
-    console.error("Unable to copy driver link:", error);
+  } catch (_error) {
     copyLinkButton.textContent = "Copy failed";
-    copyStatus.textContent = "The driver link could not be copied.";
+    copyStatus.textContent = "The Driver link could not be copied.";
   }
 }
 
@@ -1741,13 +1146,10 @@ function restoreBackground(background) {
     selectedBrowseLayer = background.layer;
     selectedBrowseFamilyId = null;
     renderBrowse();
-    detailDrivers = drivers;
+    detailDrivers = drivers.filter((driver) => driver.layer === background.layer);
   } else if (background && background.view === "search") {
     setMode("search");
     detailDrivers = filteredDrivers;
-  } else if (background && background.view === "causal") {
-    setMode("causal");
-    detailDrivers = drivers;
   } else {
     setMode("browse");
     selectedBrowseLayer = null;
@@ -1762,64 +1164,35 @@ function applyLocationState(state) {
   const driverId = url.searchParams.get(DRIVER_QUERY_PARAMETER);
   const familyId = url.searchParams.get(FAMILY_QUERY_PARAMETER);
   const requestedView = url.searchParams.get(VIEW_QUERY_PARAMETER);
-  const requestedPathSource = url.searchParams.get(PATH_SOURCE_QUERY_PARAMETER);
-  const requestedPathTarget = url.searchParams.get(PATH_TARGET_QUERY_PARAMETER);
   linkNotice.hidden = true;
-
   if (driverId) {
-    const background =
-      state && state.background
-        ? state.background
-        : familyId && familyById.has(familyId)
-          ? { view: "family", familyId }
-          : { view: "root" };
+    const background = state && state.background ? state.background
+      : familyId && familyById.has(familyId) ? { view: "family", familyId } : { view: "root" };
     restoreBackground(background);
     detailOpenedFromExplorer = Boolean(state && state.fromExplorer);
     if (!openDriver(driverId, null)) {
-      linkNotice.textContent =
-        "The linked Driver " + driverId + " was not found in this taxonomy.";
+      linkNotice.textContent = "The linked Driver " + driverId + " was not found in this taxonomy.";
       linkNotice.hidden = false;
-      hideDialog();
+      hideDriverDialog();
     }
     return;
   }
-
   detailOpenedFromExplorer = false;
   currentDriverId = null;
-  hideDialog();
-
-  if (requestedView === "causal" || (state && state.view === "causal")) {
-    const sourceId = requestedPathSource || (state && state.sourceId) || "";
-    const targetId = requestedPathTarget || (state && state.targetId) || "";
-    pathSource.value = driverById.has(sourceId) ? sourceId : "";
-    pathTarget.value = driverById.has(targetId) ? targetId : "";
-    showCausal(null, false);
-    if (pathSource.value && pathTarget.value && pathSource.value !== pathTarget.value) {
-      renderPathResults(
-        PsywerxCausal.shortestPaths(
-          relationshipIndex,
-          pathSource.value,
-          pathTarget.value,
-          selectedPathFilters(),
-          driverById
-        ),
-        pathSource.value,
-        pathTarget.value
-      );
-    }
-  } else if (familyId) {
+  hideDriverDialog();
+  if (familyId) {
     if (!showFamily(familyId, null, false)) {
-      linkNotice.textContent =
-        "The linked Family " + familyId + " was not found in this taxonomy.";
+      linkNotice.textContent = "The linked Family " + familyId + " was not found in this taxonomy.";
       linkNotice.hidden = false;
       showBrowseRoot(null, false);
     }
-  } else if (state && state.view === "layer") {
-    showBrowseLayer(state.layer, null, false);
-  } else if (state && state.view === "search") {
-    showSearch(null, false);
-  } else {
+  } else if (state && state.view === "layer") showBrowseLayer(state.layer, null, false);
+  else if (requestedView === "search" || state && state.view === "search") showSearch(null, false);
+  else {
     showBrowseRoot(null, false);
+    if (requestedView || url.searchParams.has("source") || url.searchParams.has("target")) {
+      history.replaceState({ view: "root" }, "", taxonomyUrl());
+    }
   }
 }
 
@@ -1830,81 +1203,324 @@ function clearAllFilters() {
   applyFilters();
 }
 
+function codebookEntryUrl(termId) {
+  const url = new URL("./codebook/", window.location.href);
+  url.searchParams.set("term", termId);
+  url.hash = "term-" + termId;
+  return url.toString();
+}
+
+function positionCodebookPopover() {
+  if (!activeInfoButton || codebookPopover.hidden) return;
+  const rect = activeInfoButton.getBoundingClientRect();
+  const margin = 12;
+  const width = Math.min(360, window.innerWidth - margin * 2);
+  codebookPopover.style.width = width + "px";
+  codebookPopover.style.left = Math.max(
+    margin, Math.min(rect.left, window.innerWidth - width - margin)
+  ) + "px";
+  const measuredHeight = codebookPopover.offsetHeight || 220;
+  const below = rect.bottom + 10;
+  codebookPopover.style.top = (below + measuredHeight <= window.innerHeight - margin
+    ? below : Math.max(margin, rect.top - measuredHeight - 10)) + "px";
+}
+
+function openCodebookPopover(button) {
+  const entry = codebookById.get(button.dataset.codebookId);
+  if (!entry) return;
+  closeCodebookPopover(false);
+  activeInfoButton = button;
+  button.setAttribute("aria-expanded", "true");
+  (button.closest("dialog") || document.body).append(codebookPopover);
+  codebookPopoverTitle.textContent = entry.field;
+  codebookPopoverDefinition.textContent = entry.definition;
+  codebookPopoverLink.href = codebookEntryUrl(entry.id);
+  codebookPopover.hidden = false;
+  positionCodebookPopover();
+  codebookPopoverClose.focus();
+}
+
+function closeCodebookPopover(returnFocus = true) {
+  if (activeInfoButton) {
+    activeInfoButton.setAttribute("aria-expanded", "false");
+    if (returnFocus && activeInfoButton.isConnected) activeInfoButton.focus();
+  }
+  activeInfoButton = null;
+  codebookPopover.hidden = true;
+}
+
+function readStoredScenario() {
+  try {
+    const raw = sessionStorage.getItem(SCENARIO_STORAGE_KEY);
+    if (!raw) return null;
+    const candidate = JSON.parse(raw);
+    return validScenario(candidate) ? candidate : null;
+  } catch (_error) { return null; }
+}
+
+function validScenario(candidate) {
+  return candidate && ["actor", "behaviorObjective", "context"].every((field) =>
+    typeof candidate[field] === "string" && candidate[field].trim());
+}
+
+function showScenarioDialog() {
+  if (!SCENARIO_AVAILABLE) return;
+  scenarioActor.value = activeScenario ? activeScenario.actor : "";
+  scenarioBehavior.value = activeScenario ? activeScenario.behaviorObjective : "";
+  scenarioContext.value = activeScenario ? activeScenario.context : "";
+  if (typeof scenarioDialog.showModal === "function") scenarioDialog.showModal();
+  else scenarioDialog.setAttribute("open", "");
+  window.setTimeout(() => scenarioActor.focus(), 0);
+}
+
+function hideScenarioDialog() {
+  if (!scenarioDialog.open) return;
+  if (typeof scenarioDialog.close === "function") scenarioDialog.close();
+  else scenarioDialog.removeAttribute("open");
+}
+
+function updateScenarioUi() {
+  const active = Boolean(activeScenario);
+  scenarioBanner.hidden = !active;
+  scenarioEntryButton.disabled = !SCENARIO_AVAILABLE;
+  scenarioEntryButton.title = SCENARIO_AVAILABLE
+    ? "" : "A secure Scenario service is not configured for this deployment.";
+  if (!SCENARIO_AVAILABLE) {
+    scenarioEntryButton.textContent = "Scenario application unavailable";
+    if (currentDriverId && driverDialog.open) renderDriverDetail(driverById.get(currentDriverId));
+    return;
+  }
+  if (active) {
+    scenarioBannerActor.textContent = activeScenario.actor;
+    scenarioBannerBehavior.textContent = activeScenario.behaviorObjective;
+    scenarioBannerContext.textContent = activeScenario.context;
+    scenarioEntryButton.textContent = "Edit scenario";
+  } else scenarioEntryButton.textContent = "Apply to a scenario";
+  if (currentDriverId && driverDialog.open) renderDriverDetail(driverById.get(currentDriverId));
+}
+
+function invalidatePendingScenarioRequest() {
+  scenarioRevision += 1;
+  if (activeScenarioRequest) activeScenarioRequest.controller.abort();
+  activeScenarioRequest = null;
+  pendingScenarioDriverId = null;
+}
+
+function saveScenarioFromForm() {
+  if (!SCENARIO_AVAILABLE) return false;
+  const candidate = {
+    actor: scenarioActor.value.trim(),
+    behaviorObjective: scenarioBehavior.value.trim(),
+    context: scenarioContext.value.trim(),
+  };
+  if (!validScenario(candidate)) return false;
+  invalidatePendingScenarioRequest();
+  activeScenario = candidate;
+  scenarioOutputs.clear();
+  sessionStorage.setItem(SCENARIO_STORAGE_KEY, JSON.stringify(candidate));
+  hideScenarioDialog();
+  updateScenarioUi();
+  return true;
+}
+
+function clearScenario() {
+  invalidatePendingScenarioRequest();
+  activeScenario = null;
+  scenarioOutputs.clear();
+  sessionStorage.removeItem(SCENARIO_STORAGE_KEY);
+  scenarioForm.reset();
+  hideScenarioDialog();
+  updateScenarioUi();
+  scenarioEntryButton.focus();
+}
+
+function scenarioRequestPayload(driver, clarificationAnswer = null, scenario = activeScenario) {
+  const family = familyByIdentity.get(familyIdentityKey(driver.layer, driver.family));
+  const plain = driver._plainLanguage;
+  return {
+    actor: scenario.actor,
+    behaviorObjective: scenario.behaviorObjective,
+    context: scenario.context,
+    clarificationAnswer: clarificationAnswer || null,
+    driver: {
+      id: driver.id,
+      name: driver.name,
+      definition: driver.definition,
+      plainLanguageExplanation: plain ? plain.plainLanguageExplanation : null,
+      analyticQuestion: plain ? plain.analyticQuestion : null,
+      whatThisDoesNotMean: plain ? plain.whatThisDoesNotMean : null,
+      layer: driver.layer,
+      family: driver.family,
+      familyDefinition: family ? family.definition : null,
+      familyIncludes: family ? family.includes : null,
+      familyExclusions: family ? family.exclusions : null,
+      mechanism: driver.mechanism,
+      moderatorsBoundaryConditions: driver.moderatorsBoundaryConditions,
+      indicators: driver.indicators,
+      measurementAssessmentMethods: driver.measurementAssessmentMethods,
+      observability: driver.observability,
+      measurementCaveats: driver.measurementCaveats,
+      dataType: driver.dataType,
+      timeScaleOfChange: driver.timeScaleOfChange,
+      onsetCausalLag: driver.onsetCausalLag,
+      commonMisinterpretations: driver.commonMisinterpretations,
+      evidenceNotes: driver.evidenceNotes,
+    },
+  };
+}
+
+function validateScenarioResponse(candidate, driverId) {
+  if (!sameKeys(candidate, SCENARIO_RESPONSE_KEYS)) {
+    throw new Error("The service returned an unexpected response shape.");
+  }
+  if (candidate.driverId !== driverId) throw new Error("The service response does not match this Driver.");
+  ["scenarioMeaning", "importantCaveat"].forEach((field) => {
+    if (typeof candidate[field] !== "string" || !candidate[field].trim()) {
+      throw new Error("The service response is missing " + field + ".");
+    }
+  });
+  if (!Array.isArray(candidate.operationalizationExamples) ||
+      candidate.operationalizationExamples.length !== 3) {
+    throw new Error("The service must return exactly three operationalization examples.");
+  }
+  candidate.operationalizationExamples.forEach((example) => {
+    if (!sameKeys(example, SCENARIO_EXAMPLE_KEYS)) {
+      throw new Error("An operationalization example has an unexpected shape.");
+    }
+    ["title", "operationalization", "questionToAsk"].forEach((field) => {
+      if (typeof example[field] !== "string" || !example[field].trim()) {
+        throw new Error("An operationalization example is incomplete.");
+      }
+    });
+    if (!Array.isArray(example.whatToLookFor) || example.whatToLookFor.length < 2 ||
+        example.whatToLookFor.length > 4 || example.whatToLookFor.some((item) =>
+          typeof item !== "string" || !item.trim())) {
+      throw new Error("Each example must provide two to four observable items.");
+    }
+  });
+  const allowed = ["SUFFICIENT", "PARTIALLY_SUFFICIENT", "INSUFFICIENT"];
+  if (!allowed.includes(candidate.inputSufficiency)) {
+    throw new Error("The service returned an invalid sufficiency value.");
+  }
+  if (candidate.inputSufficiency === "SUFFICIENT") {
+    if (candidate.clarificationQuestion !== null) {
+      throw new Error("A sufficient response cannot request clarification.");
+    }
+  } else if (typeof candidate.clarificationQuestion !== "string" ||
+      !candidate.clarificationQuestion.trim()) {
+    throw new Error("The service must return exactly one clarification question when input is incomplete.");
+  }
+  return candidate;
+}
+
+async function requestOperationalization(driver, clarificationAnswer = null) {
+  if (!activeScenario || !SCENARIO_AVAILABLE || pendingScenarioDriverId !== null) return;
+  const requestRevision = scenarioRevision;
+  const scenarioSnapshot = Object.assign({}, activeScenario);
+  pendingScenarioDriverId = driver.id;
+  const existing = scenarioOutputs.get(driver.id);
+  scenarioOutputs.set(driver.id, { result: existing && existing.result || null, error: null });
+  renderDriverDetail(driver);
+  const controller = new AbortController();
+  const requestToken = { controller, driverId: driver.id, revision: requestRevision };
+  activeScenarioRequest = requestToken;
+  const timer = window.setTimeout(() => controller.abort(), 35000);
+  try {
+    const response = await fetch(CONFIG.scenarioApiUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(scenarioRequestPayload(driver, clarificationAnswer, scenarioSnapshot)),
+      signal: controller.signal,
+    });
+    let body = null;
+    try { body = await response.json(); } catch (_error) { body = null; }
+    if (!response.ok) {
+      throw new Error(body && typeof body.error === "string"
+        ? body.error : "Scenario operationalization is temporarily unavailable.");
+    }
+    if (activeScenarioRequest !== requestToken || scenarioRevision !== requestRevision) return;
+    scenarioOutputs.set(driver.id, {
+      result: validateScenarioResponse(body, driver.id),
+      clarificationSkipped: false,
+      error: null,
+    });
+  } catch (error) {
+    if (activeScenarioRequest !== requestToken || scenarioRevision !== requestRevision) return;
+    const message = error && error.name === "AbortError"
+      ? "The scenario request timed out. Please try again."
+      : error && error.message ? error.message
+        : "Scenario operationalization is temporarily unavailable.";
+    const prior = scenarioOutputs.get(driver.id);
+    scenarioOutputs.set(driver.id, {
+      result: prior && prior.result || null,
+      clarificationSkipped: false,
+      error: message,
+    });
+  } finally {
+    window.clearTimeout(timer);
+    if (activeScenarioRequest !== requestToken || scenarioRevision !== requestRevision) return;
+    activeScenarioRequest = null;
+    pendingScenarioDriverId = null;
+    if (currentDriverId === driver.id) {
+      renderDriverDetail(driver);
+      const section = driverDetail.querySelector(
+        '[data-scenario-section="' + CSS.escape(driver.id) + '"]'
+      );
+      if (section) section.scrollIntoView({ block: "start" });
+    }
+  }
+}
+
 async function fetchJson(url, label) {
   const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error(label + " request failed with status " + response.status + ".");
-  }
+  if (!response.ok) throw new Error(label + " request failed with status " + String(response.status) + ".");
   return response.json();
 }
 
 async function loadTaxonomy() {
   try {
-    const [driverData, familyEnvelope, plainLanguageEnvelope, relationshipEnvelope] = await Promise.all([
+    const [driverData, familyEnvelope, plainEnvelope] = await Promise.all([
       fetchJson("../data/drivers.json", "Driver data"),
       fetchJson("../data/families.json", "Family data"),
-      fetchJson("../data/plain_language.json", "Plain-language data"),
-      fetchJson("../data/relationships.json", "Relationship data"),
+      fetchJson("../data/plain_language.json", "Public explanation data"),
     ]);
     validateTaxonomyData(driverData, familyEnvelope);
-    plainLanguageByDriverId = validatePlainLanguageData(
-      driverData,
-      plainLanguageEnvelope
-    );
-    if (!window.PsywerxCausal) {
-      throw new Error("Causal Explorer support code did not load.");
-    }
-    relationships = PsywerxCausal.validate(
-      relationshipEnvelope,
-      new Map(driverData.map((driver) => [driver.id, driver]))
-    );
-
+    plainLanguageByDriverId = validatePlainLanguageData(driverData, plainEnvelope);
+    const supplemental = await Promise.allSettled([
+      fetchJson("../data/codebook.json", "Codebook data"),
+      fetchJson("../data/sources.json", "Source data"),
+    ]);
+    if (supplemental[0].status === "fulfilled") {
+      codebookById = validateCodebook(supplemental[0].value);
+    } else console.warn("Codebook help is unavailable:", supplemental[0].reason);
+    if (supplemental[1].status === "fulfilled") {
+      sourceById = validateSources(supplemental[1].value);
+    } else console.warn("Governed source links are unavailable:", supplemental[1].reason);
     drivers = driverData.map((driver) => {
       const enriched = Object.assign({}, driver, {
         _plainLanguage: plainLanguageByDriverId.get(driver.id) || null,
       });
-      enriched._searchText = searchableText(enriched);
+      enriched._searchFields = driverSearchFields(enriched);
       return enriched;
     });
-    driverById = new Map(drivers.map((driver) => [driver.id, driver]));
-    relationshipIndex = PsywerxCausal.createIndex(relationships);
     families = familyEnvelope.families;
-    familyById = new Map(families.map((family) => [family.id, family]));
-    familyByIdentity = new Map(
-      families.map((family) => [
-        familyIdentityKey(family.layer, family.name),
-        family,
-      ])
-    );
-    buildHierarchy();
-    populatePathDriverSelect(pathSource);
-    populatePathDriverSelect(pathTarget);
+    buildIndexes();
     totalDriverCount.textContent = drivers.length.toLocaleString();
     totalLayerCount.textContent = hierarchy.size.toLocaleString();
     totalFamilyCount.textContent = families.length.toLocaleString();
     searchInput.disabled = false;
     renderFacets();
     applyFilters();
+    updateScenarioUi();
     const url = new URL(window.location.href);
     const initialDriverId = url.searchParams.get(DRIVER_QUERY_PARAMETER);
     const initialFamilyId = url.searchParams.get(FAMILY_QUERY_PARAMETER);
-    const initialView = url.searchParams.get(VIEW_QUERY_PARAMETER);
-    const initialPathSource = url.searchParams.get(PATH_SOURCE_QUERY_PARAMETER);
-    const initialPathTarget = url.searchParams.get(PATH_TARGET_QUERY_PARAMETER);
+    const requestedView = url.searchParams.get(VIEW_QUERY_PARAMETER);
     const initialState = initialDriverId
-      ? {
-          view: "driver",
-          driverId: initialDriverId,
-          fromExplorer: false,
-          background: initialFamilyId
-            ? { view: "family", familyId: initialFamilyId }
-            : { view: "root" },
-        }
-      : initialFamilyId
-        ? { view: "family", familyId: initialFamilyId }
-        : initialView === "causal"
-          ? { view: "causal", sourceId: initialPathSource, targetId: initialPathTarget }
-        : { view: "root" };
+      ? { view: "driver", driverId: initialDriverId, fromExplorer: false,
+          background: initialFamilyId ? { view: "family", familyId: initialFamilyId } : { view: "root" } }
+      : initialFamilyId ? { view: "family", familyId: initialFamilyId }
+        : requestedView === "search" ? { view: "search" } : { view: "root" };
     history.replaceState(initialState, "", window.location.href);
     applyLocationState(initialState);
   } catch (error) {
@@ -1913,190 +1529,155 @@ async function loadTaxonomy() {
     resultSummary.textContent = "Taxonomy unavailable";
     browseContent.replaceChildren();
     driverList.replaceChildren();
-    const message = loadError.querySelector("p");
-    message.textContent =
-      "The required Driver, Family, plain-language, and Relationship datasets could not be loaded or did not agree. " +
+    loadError.querySelector("p").textContent =
+      "The required Driver, Family, and public explanation datasets could not be loaded or did not agree. " +
       "Check the browser console, then reload the page. For local preview, use an HTTP server.";
     loadError.hidden = false;
   }
 }
 
 browseModeButton.addEventListener("click", () => {
-  if (activeMode === "browse") {
-    browseHeading.focus();
-  } else if (selectedBrowseFamilyId) {
-    showFamily(selectedBrowseFamilyId, "push", true);
-  } else if (selectedBrowseLayer) {
-    showBrowseLayer(selectedBrowseLayer, "push", true);
-  } else {
-    showBrowseRoot("push", true);
-  }
+  if (activeMode === "browse") browseHeading.focus();
+  else if (selectedBrowseFamilyId) showFamily(selectedBrowseFamilyId, "push", true);
+  else if (selectedBrowseLayer) showBrowseLayer(selectedBrowseLayer, "push", true);
+  else showBrowseRoot("push", true);
 });
-
 searchModeButton.addEventListener("click", () => {
-  if (activeMode === "search") {
-    searchInput.focus();
-  } else {
-    showSearch("push", true);
-  }
+  if (activeMode === "search") searchInput.focus(); else showSearch("push", true);
 });
-
-causalModeButton.addEventListener("click", () => {
-  if (activeMode === "causal") {
-    causalHeading.focus();
-  } else {
-    showCausal("push", true);
-  }
-});
-
-pathForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const sourceId = pathSource.value;
-  const targetId = pathTarget.value;
-  if (!sourceId || !targetId) {
-    pathResults.replaceChildren(element("p", "relationship-notice", "Choose both a starting and destination Driver."));
-    return;
-  }
-  if (sourceId === targetId) {
-    pathResults.replaceChildren(element("p", "relationship-notice", "Choose two different Drivers to explore a directed path."));
-    return;
-  }
-  const result = PsywerxCausal.shortestPaths(
-    relationshipIndex,
-    sourceId,
-    targetId,
-    selectedPathFilters(),
-    driverById
-  );
-  renderPathResults(result, sourceId, targetId);
-  history.pushState(
-    { view: "causal", sourceId, targetId },
-    "",
-    causalUrl(sourceId, targetId)
-  );
-});
-
-pathResults.addEventListener("click", (event) => {
-  const button = event.target.closest("[data-related-driver-id]");
-  if (button) openDriver(button.dataset.relatedDriverId, "push", drivers);
-});
-
 browseContent.addEventListener("click", (event) => {
   const layerButton = event.target.closest("[data-browse-layer]");
   const familyButton = event.target.closest("[data-browse-family]");
   const driverButton = event.target.closest("[data-driver-id]");
-  if (layerButton) {
-    showBrowseLayer(layerButton.dataset.browseLayer, "push", true);
-  } else if (familyButton) {
-    showFamily(familyButton.dataset.browseFamily, "push", true);
-  } else if (driverButton) {
-    const familyDrivers = driversByFamilyId.get(selectedBrowseFamilyId);
-    openDriver(driverButton.dataset.driverId, "push", familyDrivers);
+  if (layerButton) showBrowseLayer(layerButton.dataset.browseLayer, "push", true);
+  else if (familyButton) showFamily(familyButton.dataset.browseFamily, "push", true);
+  else if (driverButton) {
+    openDriver(driverButton.dataset.driverId, "push", driversByFamilyId.get(selectedBrowseFamilyId));
   }
 });
-
 browseBreadcrumbs.addEventListener("click", (event) => {
   const button = event.target.closest("[data-browse-level]");
-  if (!button) {
-    return;
-  }
-  if (button.dataset.browseLevel === "root") {
-    showBrowseRoot("push", true);
-  } else {
-    showBrowseLayer(selectedBrowseLayer, "push", true);
-  }
+  if (!button) return;
+  if (button.dataset.browseLevel === "root") showBrowseRoot("push", true);
+  else showBrowseLayer(selectedBrowseLayer, "push", true);
 });
-
 searchInput.addEventListener("input", () => {
   window.clearTimeout(searchTimer);
   searchTimer = window.setTimeout(() => applyFilters(), 80);
 });
-
 facetFilters.addEventListener("change", (event) => {
   const checkbox = event.target.closest("[data-facet-field]");
-  if (!checkbox) {
-    return;
-  }
+  if (!checkbox) return;
   const selected = facetSelections[checkbox.dataset.facetField];
-  if (checkbox.checked) {
-    selected.add(checkbox.value);
-  } else {
-    selected.delete(checkbox.value);
-  }
-  if (checkbox.dataset.facetField === "layer") {
-    syncAvailableFamilies();
-  }
+  if (checkbox.checked) selected.add(checkbox.value); else selected.delete(checkbox.value);
+  if (checkbox.dataset.facetField === "layer") syncAvailableFamilies();
   applyFilters();
 });
-
 activeFilters.addEventListener("click", (event) => {
   const button = event.target.closest("[data-clear-facet]");
-  if (!button) {
-    return;
-  }
-  if (button.dataset.clearFacet === "search") {
-    searchInput.value = "";
-  } else {
+  if (!button) return;
+  if (button.dataset.clearFacet === "search") searchInput.value = "";
+  else {
     facetSelections[button.dataset.clearFacet].delete(button.dataset.clearValue);
-    const checkbox = [...facetFilters.querySelectorAll("[data-facet-field]")].find(
-      (input) =>
-        input.dataset.facetField === button.dataset.clearFacet &&
-        input.value === button.dataset.clearValue
-    );
-    if (checkbox) {
-      checkbox.checked = false;
-    }
-    if (button.dataset.clearFacet === "layer") {
-      syncAvailableFamilies();
-    }
+    if (button.dataset.clearFacet === "layer") syncAvailableFamilies();
+    const checkbox = [...facetFilters.querySelectorAll("[data-facet-field]")].find((input) =>
+      input.dataset.facetField === button.dataset.clearFacet && input.value === button.dataset.clearValue);
+    if (checkbox) checkbox.checked = false;
   }
   applyFilters();
 });
-
-clearFiltersButton.addEventListener("click", () => {
-  clearAllFilters();
-  searchInput.focus();
-});
-
+clearFiltersButton.addEventListener("click", () => { clearAllFilters(); searchInput.focus(); });
 driverList.addEventListener("click", (event) => {
   const button = event.target.closest("[data-driver-id]");
-  if (button) {
-    openDriver(button.dataset.driverId, "push", filteredDrivers);
-  }
+  if (button) openDriver(button.dataset.driverId, "push", filteredDrivers);
 });
-
 loadMoreButton.addEventListener("click", () => {
   visibleCount += PAGE_SIZE;
   applyFilters({ resetLimit: false });
 });
-
 closeDetailButton.addEventListener("click", closeDriverDetail);
 previousDriverButton.addEventListener("click", () => moveWithinResults(-1));
 nextDriverButton.addEventListener("click", () => moveWithinResults(1));
 copyLinkButton.addEventListener("click", copyCurrentLink);
 
 driverDetail.addEventListener("click", (event) => {
-  const familyButton = event.target.closest("[data-view-family-id]");
-  const relatedDriverButton = event.target.closest("[data-related-driver-id]");
-  if (familyButton) {
-    showFamily(familyButton.dataset.viewFamilyId, "push", true);
-  } else if (relatedDriverButton) {
-    openDriver(relatedDriverButton.dataset.relatedDriverId, "push", drivers);
-    driverDetail.scrollTop = 0;
+  const layerButton = event.target.closest("[data-driver-layer]");
+  const familyButton = event.target.closest("[data-driver-family]");
+  const operationalizeButton = event.target.closest("[data-operationalize-driver]");
+  const skipButton = event.target.closest("[data-skip-clarification]");
+  if (layerButton) showBrowseLayer(layerButton.dataset.driverLayer, "push", true);
+  else if (familyButton) showFamily(familyButton.dataset.driverFamily, "push", true);
+  else if (operationalizeButton) {
+    requestOperationalization(driverById.get(operationalizeButton.dataset.operationalizeDriver));
+  } else if (skipButton) {
+    const state = scenarioOutputs.get(skipButton.dataset.skipClarification);
+    if (state) {
+      state.clarificationSkipped = true;
+      renderDriverDetail(driverById.get(skipButton.dataset.skipClarification));
+    }
   }
 });
-
+driverDetail.addEventListener("submit", (event) => {
+  const form = event.target.closest("[data-clarification-form]");
+  if (!form) return;
+  event.preventDefault();
+  const answer = new FormData(form).get("clarificationAnswer");
+  requestOperationalization(driverById.get(form.dataset.clarificationForm), String(answer || "").trim());
+});
 driverDialog.addEventListener("cancel", (event) => {
   event.preventDefault();
-  closeDriverDetail();
+  if (!codebookPopover.hidden) closeCodebookPopover(); else closeDriverDetail();
+});
+driverDialog.addEventListener("click", (event) => {
+  if (event.target === driverDialog) closeDriverDetail();
 });
 
-driverDialog.addEventListener("click", (event) => {
-  if (event.target === driverDialog) {
-    closeDriverDetail();
+document.addEventListener("click", (event) => {
+  const infoButton = event.target.closest("[data-codebook-id]");
+  if (infoButton) {
+    event.preventDefault();
+    if (activeInfoButton === infoButton && !codebookPopover.hidden) closeCodebookPopover();
+    else openCodebookPopover(infoButton);
+    return;
   }
+  if (!codebookPopover.hidden && !codebookPopover.contains(event.target)) {
+    closeCodebookPopover(false);
+  }
+});
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && !codebookPopover.hidden) {
+    event.preventDefault();
+    event.stopPropagation();
+    closeCodebookPopover();
+  }
+});
+codebookPopoverClose.addEventListener("click", () => closeCodebookPopover());
+window.addEventListener("resize", positionCodebookPopover);
+
+scenarioEntryButton.addEventListener("click", showScenarioDialog);
+scenarioEditButton.addEventListener("click", showScenarioDialog);
+scenarioClearButton.addEventListener("click", clearScenario);
+scenarioDialogClose.addEventListener("click", hideScenarioDialog);
+scenarioFormClear.addEventListener("click", () => { scenarioForm.reset(); scenarioActor.focus(); });
+scenarioForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  if (scenarioForm.reportValidity()) saveScenarioFromForm();
+});
+scenarioForm.addEventListener("click", (event) => {
+  const exampleButton = event.target.closest("[data-scenario-example]");
+  if (!exampleButton) return;
+  const example = SCENARIO_EXAMPLES[exampleButton.dataset.scenarioExample];
+  scenarioActor.value = example.actor;
+  scenarioBehavior.value = example.behaviorObjective;
+  scenarioContext.value = example.context;
+  scenarioActor.focus();
+});
+scenarioDialog.addEventListener("cancel", (event) => { event.preventDefault(); hideScenarioDialog(); });
+scenarioDialog.addEventListener("click", (event) => {
+  if (event.target === scenarioDialog) hideScenarioDialog();
 });
 
 window.addEventListener("popstate", (event) => applyLocationState(event.state));
 
+updateScenarioUi();
 loadTaxonomy();

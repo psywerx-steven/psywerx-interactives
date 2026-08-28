@@ -6,8 +6,10 @@ PSYWERX. The repository is designed for static hosting with GitHub Pages.
 ## Interactives
 
 - [Driver Explorer](./drivers/) — browses the governed Layer → Family → Driver
-  taxonomy and supports bounded causal relationship/path exploration using
-  dependency-free static assets.
+  taxonomy using dependency-free static assets. Canonical Driver names remain
+  the public names, with reviewed explanations as supporting context.
+- [Driver Codebook](./drivers/codebook/) — documents governed taxonomy fields
+  and controlled vocabularies.
 
 ## Repository structure
 
@@ -16,6 +18,8 @@ PSYWERX. The repository is designed for static hosting with GitHub Pages.
 - `shared/` contains styles and other assets reusable across interactives.
 - `source-data/` is the ignored local location for private XLSX taxonomy files.
 - `scripts/` contains local data-import utilities.
+- `scenario-service/` contains the optional secure server-side Scenario
+  operationalization service. It is not required by GitHub Pages.
 - `docs/DRIVER_SCHEMA_V1_1.md` defines the current canonical
   spreadsheet-to-JSON contract enforced by the importer.
 - `docs/DRIVER_SCHEMA_V1.md` preserves the historical Schema v1.0 contract.
@@ -30,6 +34,12 @@ PSYWERX. The repository is designed for static hosting with GitHub Pages.
   standard for public Driver explanations.
 - `docs/PLAIN_LANGUAGE_SCHEMA_V1.md` defines the independently versioned public
   plain-language data contract.
+- `docs/PUBLIC_TAXONOMY_EXPLORER_V1.md` defines the public information
+  architecture and causal-feature-off boundary.
+- `docs/SOURCE_SCHEMA_V1.md` defines the governed public source registry.
+- `docs/SCENARIO_OPERATIONALIZATION_SCHEMA_V1.md` and
+  `docs/SCENARIO_SERVICE_SETUP.md` define the optional Scenario service contract
+  and deployment boundary.
 
 ## Build driver data locally
 
@@ -203,6 +213,7 @@ py scripts\build_plain_language.py
 py scripts\build_families.py
 py scripts\build_codebook.py
 py scripts\build_relationships.py
+py scripts\build_sources.py
 ```
 
 The governed ontology-remediation release v1 was applied once with:
@@ -214,15 +225,37 @@ py scripts\migrate_ontology_remediation_v1.py
 That migration depends on the private, ignored remediation release-candidate
 package. It creates a complete proposed diff, ID manifest, rollback copies, and
 staged validation before replacing any canonical workbook; it is not part of a
-routine public-data rebuild. The normal repeatable workflow is the five-builder
+routine public-data rebuild. The normal repeatable workflow is the six-builder
 sequence above.
+
+## Build governed source links locally
+
+The public `data/sources.json` registry is generated from the Evidence Library
+worksheets and resolves every Driver `keySources` identifier to governed
+citation text and a safe link. Direct links use only explicit DOI, URL, or
+supported scholarly identifiers from source data. A citation without a direct
+link receives a clearly labeled scholarly-search fallback; the builder never
+invents a DOI or bibliographic URL.
+
+Build canonical Driver and Relationship data first, then run:
+
+```powershell
+py scripts\build_sources.py
+```
+
+The builder validates all public Driver and Relationship evidence references,
+reports duplicate URLs without merging permanent Source IDs, produces
+deterministic UTF-8 JSON, and replaces the existing registry only after a
+successful full validation.
 
 ## Preview the static site
 
 Opening the HTML file directly will not allow the browser to fetch JSON. Start
-a local HTTP server from the repository root. The Explorer loads
-`data/drivers.json`, `data/families.json`, `data/plain_language.json`, and
-`data/relationships.json` using GitHub Pages-compatible relative paths.
+a local HTTP server from the repository root. The Explorer loads Driver,
+Family, approved explanation, Codebook, and Source JSON using GitHub
+Pages-compatible relative paths. It does not fetch Relationship data during
+normal public startup; relationship infrastructure remains preserved for a
+future graph-complete release.
 
 ```powershell
 py -m http.server 8000
@@ -230,11 +263,18 @@ py -m http.server 8000
 
 Then open <http://localhost:8000/drivers/>.
 
+The static taxonomy works without Scenario AI. On localhost,
+`drivers/config.js` points to the optional service at
+`http://localhost:8787/v1/operationalize`; follow
+[`docs/SCENARIO_SERVICE_SETUP.md`](./docs/SCENARIO_SERVICE_SETUP.md) to run it.
+Production Scenario AI stays disabled until a secure endpoint is deployed and
+configured. No API secret belongs in browser code.
+
 ## Commit generated data
 
 Review and commit only the generated public artifacts and pipeline changes:
 
 ```powershell
-git add data/drivers.json data/families.json data/codebook.json data/relationships.json scripts/build_codebook.py scripts/build_plain_language.py scripts/build_relationships.py scripts/migrate_ontology_remediation_v1.py docs/CODEBOOK_SCHEMA_V1.md docs/RELATIONSHIP_SCHEMA_V2.md README.md
-git commit -m "Publish ontology and approved plain-language data"
+git add data/ drivers/ shared/ scripts/ docs/ scenario-service/ README.md .gitignore requirements.txt
+git commit -m "Publish PSYWERX taxonomy Explorer release"
 ```

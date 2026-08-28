@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Explore 793 behavioral drivers and governed causal relationships across the eight interacting layers of the PSYWERX taxonomy.">
+  <meta name="description" content="Explore the PSYWERX behavioral Driver taxonomy across eight interacting layers and 105 governed Families.">
   <title>PSYWERX Driver Explorer</title>
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="../shared/psywerx.css">
@@ -37,13 +37,16 @@
     <section class="hero">
       <div class="site-container hero__inner">
         <div class="hero__copy">
-          <p class="eyebrow">Driver Explorer &middot; Causal Explorer v1</p>
-          <h1>Map the forces that shape behavior.</h1>
+          <p class="eyebrow">PSYWERX Driver Taxonomy</p>
+          <h1>Understand the forces that shape behavior.</h1>
           <p class="hero__lede">
             Explore a structured taxonomy of behavioral drivers spanning eight
             interacting layers&mdash;from biological capacity to technological systems.
           </p>
-          <a class="hero__action" href="#explorer">Explore the taxonomy</a>
+          <div class="hero__actions">
+            <a class="hero__action" href="#explorer">Explore the taxonomy</a>
+            <button id="scenario-entry-button" class="secondary-button" type="button" disabled>Apply to a scenario</button>
+          </div>
         </div>
         <dl class="hero__stats" aria-label="Taxonomy summary">
           <div>
@@ -62,6 +65,23 @@
       </div>
     </section>
 
+    <section id="scenario-banner" class="scenario-banner" aria-labelledby="scenario-banner-title" hidden>
+      <div class="site-container scenario-banner__inner">
+        <div>
+          <p id="scenario-banner-title" class="scenario-banner__title">Scenario active</p>
+          <dl class="scenario-banner__values">
+            <div><dt>Actor</dt><dd id="scenario-banner-actor"></dd></div>
+            <div><dt>Behavior / Objective</dt><dd id="scenario-banner-behavior"></dd></div>
+            <div><dt>Context</dt><dd id="scenario-banner-context"></dd></div>
+          </dl>
+        </div>
+        <div class="scenario-banner__actions">
+          <button id="scenario-edit-button" class="secondary-button" type="button">Edit</button>
+          <button id="scenario-clear-button" class="text-button" type="button">Clear</button>
+        </div>
+      </div>
+    </section>
+
     <section id="explorer" class="explorer site-container" aria-labelledby="explorer-heading">
       <div class="section-heading">
         <p class="eyebrow">Explore the ontology</p>
@@ -75,9 +95,6 @@
         </button>
         <button id="search-mode-button" class="mode-switch__button" type="button" aria-pressed="false">
           Search &amp; Filter
-        </button>
-        <button id="causal-mode-button" class="mode-switch__button" type="button" aria-pressed="false">
-          Explore Causal Paths
         </button>
       </div>
 
@@ -115,7 +132,7 @@
             <input
               id="driver-search"
               type="search"
-              placeholder="Search public labels, explanations, canonical names, families, or mechanisms"
+              placeholder="Search canonical names, aliases, definitions, explanations, families, or layers"
               autocomplete="off"
               disabled
             >
@@ -148,63 +165,6 @@
         </div>
       </section>
 
-      <section id="causal-panel" class="mode-panel causal-panel" aria-labelledby="causal-heading" hidden>
-        <div class="causal-introduction">
-          <p class="eyebrow">Governed relationship graph</p>
-          <h3 id="causal-heading" tabindex="-1">Explore plausible causal paths</h3>
-          <p>
-            Trace the shortest governed directed paths between two Drivers. This is ontology-based
-            path exploration&mdash;not an effect estimate, forecast, or scenario-specific causal model.
-          </p>
-        </div>
-        <form id="path-form" class="path-form">
-          <div class="path-endpoints">
-            <label>
-              Driver A
-              <select id="path-source" required disabled>
-                <option value="">Choose a starting Driver</option>
-              </select>
-            </label>
-            <span class="path-arrow" aria-hidden="true">&rarr;</span>
-            <label>
-              Driver B
-              <select id="path-target" required disabled>
-                <option value="">Choose a destination Driver</option>
-              </select>
-            </label>
-          </div>
-          <fieldset class="path-filters">
-            <legend>Relationship filters</legend>
-            <label>Maximum edges
-              <select id="path-max-hops">
-                <option value="4" selected>4</option><option value="5">5</option><option value="6">6</option>
-              </select>
-            </label>
-            <label>Governance class
-              <select id="path-governance"><option value="">All public classes</option><option value="CORE">Core</option><option value="CONTEXT_DEPENDENT">Context-dependent</option></select>
-            </label>
-            <label>Causal role
-              <select id="path-role"><option value="">All roles</option><option value="CAUSES">Causes</option><option value="ENABLES">Enables</option><option value="CONSTRAINS">Constrains</option><option value="MODERATES">Moderates</option></select>
-            </label>
-            <label>Polarity
-              <select id="path-polarity"><option value="">All polarities</option><option value="POSITIVE">Positive</option><option value="NEGATIVE">Negative</option><option value="NON_MONOTONIC">Non-monotonic</option><option value="CONTEXT_DEPENDENT">Context-dependent</option><option value="UNSIGNED">Unsigned</option></select>
-            </label>
-            <label>Directness
-              <select id="path-directness"><option value="">All directness values</option><option value="DIRECT_AT_STATED_RESOLUTION">Direct at stated resolution</option><option value="MEDIATED_PATH">Mediated-path segment</option><option value="UNKNOWN">Unknown</option></select>
-            </label>
-            <label>Confidence
-              <select id="path-confidence"><option value="">All confidence levels</option><option value="HIGH">High</option><option value="MODERATE">Moderate</option><option value="LOW">Low</option></select>
-            </label>
-            <label>Evidence strength
-              <select id="path-evidence"><option value="">All evidence levels</option><option value="Strong">Strong</option><option value="Moderate">Moderate</option><option value="Mixed">Mixed</option><option value="Limited">Limited</option><option value="Emerging">Emerging</option></select>
-            </label>
-          </fieldset>
-          <button class="primary-button" type="submit">Find governed paths</button>
-        </form>
-        <div id="path-results" class="path-results" role="region" aria-label="Causal path results" aria-live="polite">
-          <p>Choose two Drivers to begin.</p>
-        </div>
-      </section>
     </section>
   </main>
 
@@ -238,7 +198,67 @@
     </div>
   </dialog>
 
-  <script src="./causal.js" defer></script>
+  <dialog id="scenario-dialog" class="scenario-dialog" aria-labelledby="scenario-dialog-title">
+    <form id="scenario-form" class="scenario-form" method="dialog">
+      <div class="scenario-dialog__topbar">
+        <div>
+          <p class="eyebrow">Scenario application</p>
+          <h2 id="scenario-dialog-title">Apply Drivers to a scenario</h2>
+        </div>
+        <button id="scenario-dialog-close" class="icon-button" type="button" aria-label="Close scenario form">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5 19 19M19 5 5 19"></path></svg>
+        </button>
+      </div>
+      <p class="scenario-form__intro">
+        Define the situation once, then explicitly operationalize individual Drivers as you review them.
+        Scenario text is stored only in this browser tab session. When you request an
+        operationalization, it is sent transiently to the configured Scenario service and its AI
+        provider; it is not saved by this Explorer. Do not enter classified, controlled,
+        personally identifying, or otherwise sensitive information.
+      </p>
+      <label for="scenario-actor">
+        Actor
+        <span>Who or what population are you analyzing?</span>
+      </label>
+      <input id="scenario-actor" name="actor" type="text" maxlength="200" required autocomplete="off">
+
+      <label for="scenario-behavior">
+        Behavior / Objective
+        <span>What behavior, decision, response, or objective are you examining?</span>
+      </label>
+      <textarea id="scenario-behavior" name="behaviorObjective" rows="3" maxlength="400" required></textarea>
+
+      <label for="scenario-context">
+        Context
+        <span>What circumstances are important to the situation?</span>
+      </label>
+      <textarea id="scenario-context" name="context" rows="4" maxlength="800" required></textarea>
+
+      <details class="scenario-examples">
+        <summary>See hypothetical examples</summary>
+        <div class="scenario-examples__list">
+          <button type="button" data-scenario-example="warning">Emergency warning response</button>
+          <button type="button" data-scenario-example="compliance">Organizational compliance</button>
+          <button type="button" data-scenario-example="online">Online crisis information behavior</button>
+        </div>
+      </details>
+
+      <div class="scenario-form__actions">
+        <button class="primary-button" type="submit">Use this scenario</button>
+        <button id="scenario-form-clear" class="text-button" type="button">Clear fields</button>
+      </div>
+    </form>
+  </dialog>
+
+  <aside id="codebook-popover" class="codebook-popover" role="dialog" aria-modal="false" aria-labelledby="codebook-popover-title" hidden>
+    <button id="codebook-popover-close" class="codebook-popover__close" type="button" aria-label="Close Codebook help">&times;</button>
+    <p id="codebook-popover-kicker" class="eyebrow">Codebook definition</p>
+    <h3 id="codebook-popover-title"></h3>
+    <p id="codebook-popover-definition"></p>
+    <a id="codebook-popover-link" href="./codebook/">Open Codebook entry &rarr;</a>
+  </aside>
+
+  <script src="./config.js" defer></script>
   <script src="./app.js" defer></script>
 </body>
 </html>

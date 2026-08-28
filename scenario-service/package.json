@@ -1,0 +1,19 @@
+{
+  "name": "psywerx-scenario-service",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Secure server-side PSYWERX scenario operationalization service.",
+  "type": "module",
+  "engines": {
+    "node": ">=20.11"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "start:env": "node --env-file=.env src/server.js",
+    "test": "node --test",
+    "test:watch": "node --test --watch"
+  },
+  "dependencies": {
+    "openai": "^6.0.0"
+  }
+}
