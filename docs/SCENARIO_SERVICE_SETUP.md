@@ -93,12 +93,12 @@ The current local Driver Explorer configuration targets
 `http://localhost:8787/v1/operationalize`. Start the repository's static HTTP
 preview separately, then exercise a Driver in scenario mode.
 
-When no secure endpoint is configured, the production Explorer labels the
-Scenario action unavailable and cannot issue a request. Scenario form text is
-stored only in the current tab session; an explicit operationalization request
-sends it transiently to this service and the configured model provider. The
-form warns users not to enter classified, controlled, personally identifying,
-or otherwise sensitive information.
+When no secure endpoint is configured, the production Explorer presents the
+Scenario action as an intentional disabled coming-soon feature and cannot issue
+a request. Scenario form text is stored only in the current tab session; an
+explicit operationalization request sends it transiently to this service and
+the configured model provider. The form warns users not to enter classified,
+controlled, personally identifying, or otherwise sensitive information.
 
 ## Tests
 

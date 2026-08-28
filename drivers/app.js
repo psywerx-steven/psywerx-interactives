@@ -96,6 +96,7 @@ const detailPosition = $("#detail-position");
 const copyLinkButton = $("#copy-link");
 const copyStatus = $("#copy-status");
 const scenarioEntryButton = $("#scenario-entry-button");
+const scenarioComingSoon = $("#scenario-coming-soon");
 const scenarioBanner = $("#scenario-banner");
 const scenarioBannerActor = $("#scenario-banner-actor");
 const scenarioBannerBehavior = $("#scenario-banner-behavior");
@@ -699,9 +700,9 @@ function createDefinitionSection(driver) {
 function createInBriefSection(driver) {
   const section = createPublicSection("In brief", "in-brief-section");
   if (!driver._plainLanguage) {
-    const notice = element("div", "review-notice");
-    notice.append(element("strong", "", "Explanation under review."),
-      element("p", "", "The canonical definition remains available above."));
+    const notice = element("div", "explanation-placeholder");
+    notice.append(element("p", "",
+      "Additional explanatory description is not yet available for this Driver."));
     section.append(notice);
     return section;
   }
@@ -876,10 +877,6 @@ function createScenarioSection(driver) {
   generate.disabled = !SCENARIO_AVAILABLE || pendingScenarioDriverId !== null;
   if (pendingScenarioDriverId === driver.id) generate.textContent = "Generating…";
   actions.append(generate);
-  if (!CONFIG.scenarioAiEnabled || !CONFIG.scenarioApiUrl) {
-    actions.append(element("p", "scenario-unavailable",
-      "Scenario operationalization is not enabled for this deployment. The taxonomy remains fully available."));
-  }
   section.append(actions);
   const status = element("p", "scenario-request-status");
   status.dataset.scenarioStatus = driver.id;
@@ -1283,13 +1280,14 @@ function updateScenarioUi() {
   const active = Boolean(activeScenario);
   scenarioBanner.hidden = !active;
   scenarioEntryButton.disabled = !SCENARIO_AVAILABLE;
-  scenarioEntryButton.title = SCENARIO_AVAILABLE
-    ? "" : "A secure Scenario service is not configured for this deployment.";
+  scenarioComingSoon.hidden = SCENARIO_AVAILABLE;
   if (!SCENARIO_AVAILABLE) {
-    scenarioEntryButton.textContent = "Scenario application unavailable";
+    scenarioEntryButton.textContent = "Apply to a scenario";
+    scenarioEntryButton.setAttribute("aria-describedby", "scenario-coming-soon");
     if (currentDriverId && driverDialog.open) renderDriverDetail(driverById.get(currentDriverId));
     return;
   }
+  scenarioEntryButton.removeAttribute("aria-describedby");
   if (active) {
     scenarioBannerActor.textContent = activeScenario.actor;
     scenarioBannerBehavior.textContent = activeScenario.behaviorObjective;

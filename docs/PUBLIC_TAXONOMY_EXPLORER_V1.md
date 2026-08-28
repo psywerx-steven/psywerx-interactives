@@ -33,7 +33,8 @@ Driver ID, and canonical name. Nonempty aliases may appear beneath the name.
 The public sections are:
 
 1. Definition — the unchanged canonical scientific definition.
-2. In brief — the approved explanation, or a neutral under-review notice.
+2. In brief — the approved explanation, or a neutral notice that an additional
+   explanatory description is not yet available.
 3. Question to investigate — the approved analytic question when available.
 4. How it operates — governed Mechanism content and exact structured dynamics.
 5. Context and conditions — governed moderators and boundary conditions.
@@ -95,4 +96,7 @@ boundary explicitly disabled.
 The Explorer remains a dependency-free static GitHub Pages application.
 Scenario operationalization is a separate optional service and is disabled on
 the production static configuration until a secure endpoint is deployed. The
-browser never contains an AI API secret.
+same public control presents an intentional coming-soon state while disabled;
+enabling `scenarioAiEnabled` with a secure endpoint activates the existing
+Scenario experience without a UI redesign. The browser never contains an AI
+API secret.

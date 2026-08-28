@@ -45,7 +45,22 @@
           </p>
           <div class="hero__actions">
             <a class="hero__action" href="#explorer">Explore the taxonomy</a>
-            <button id="scenario-entry-button" class="secondary-button" type="button" disabled>Apply to a scenario</button>
+            <div class="scenario-entry">
+              <button
+                id="scenario-entry-button"
+                class="secondary-button"
+                type="button"
+                aria-describedby="scenario-coming-soon"
+                disabled
+              >Apply to a scenario</button>
+              <div id="scenario-coming-soon" class="scenario-coming-soon">
+                <p><strong>AI-assisted operationalization &mdash; Coming soon</strong></p>
+                <p>
+                  Scenario AI will help apply this Driver to a specific actor, behavior or objective,
+                  and context, with concrete operationalization examples and questions to investigate.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
         <dl class="hero__stats" aria-label="Taxonomy summary">

@@ -44,11 +44,11 @@ these release-source dispositions:
 - `EDITORIAL_RELEASE_CANDIDATE`
 - `EDITORIAL_REVISED_CANDIDATE`
 
-The 22 `BLOCKED_ON_ONTOLOGY_REVIEW` records and three
-`SUBJECT_MATTER_REVIEW_REQUIRED` records are excluded. In particular, provisional
-SME-review wording is not public. Their absence from this editorial dataset does
-not remove the corresponding canonical Drivers from `data/drivers.json`; the
-Explorer displays a neutral under-review notice and retains the canonical record.
+The 25 records without a governed public approval disposition are excluded.
+Provisional editorial wording is not public. Their absence from this editorial
+dataset does not remove the corresponding canonical Drivers from
+`data/drivers.json`; the Explorer displays a neutral explanatory-availability
+notice and retains the canonical record.
 
 Private governance fields—including risk, QA findings, release-source status,
 human decision, notes, and review priority—must not appear in the public JSON.

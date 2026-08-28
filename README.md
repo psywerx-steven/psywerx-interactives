@@ -268,7 +268,8 @@ The static taxonomy works without Scenario AI. On localhost,
 `http://localhost:8787/v1/operationalize`; follow
 [`docs/SCENARIO_SERVICE_SETUP.md`](./docs/SCENARIO_SERVICE_SETUP.md) to run it.
 Production Scenario AI stays disabled until a secure endpoint is deployed and
-configured. No API secret belongs in browser code.
+configured. Until then, the Explorer presents the Scenario action as a visible,
+noninteractive coming-soon feature. No API secret belongs in browser code.
 
 ## Commit generated data
 
