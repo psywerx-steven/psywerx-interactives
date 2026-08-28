@@ -213,7 +213,7 @@
 
 .mode-switch {
   display: inline-grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   padding: 0.25rem;
   margin-bottom: 2.2rem;
   border: 1px solid var(--psywerx-border);
@@ -1186,6 +1186,503 @@
   left: -10000px;
 }
 
+/* Governed causal exploration */
+
+.causal-panel {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.causal-introduction {
+  max-width: 56rem;
+}
+
+.causal-introduction h3 {
+  margin: 0.3rem 0 0.7rem;
+  color: var(--psywerx-navy);
+  font-size: clamp(1.65rem, 3vw, 2.35rem);
+  letter-spacing: -0.04em;
+}
+
+.causal-introduction p:last-child,
+.graph-framing,
+.relationship-framing,
+.path-result-framing {
+  color: var(--psywerx-muted);
+  line-height: 1.7;
+}
+
+.path-form {
+  display: grid;
+  gap: 1.25rem;
+  padding: clamp(1.2rem, 3vw, 2rem);
+  border: 1px solid var(--psywerx-border);
+  border-radius: var(--radius-large);
+  background: var(--psywerx-white);
+  box-shadow: var(--shadow-small);
+}
+
+.path-form > .primary-button {
+  justify-self: start;
+}
+
+.path-endpoints {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: end;
+  gap: 1rem;
+}
+
+.path-endpoints label,
+.path-filters label,
+.graph-control {
+  display: grid;
+  gap: 0.4rem;
+  color: var(--psywerx-text);
+  font-size: 0.75rem;
+  font-weight: 750;
+}
+
+.path-arrow {
+  padding-bottom: 0.75rem;
+  color: var(--psywerx-mid-blue);
+  font-size: 1.5rem;
+}
+
+.path-filters {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(9rem, 1fr));
+  gap: 0.85rem;
+  padding: 1rem;
+  border: 1px solid var(--psywerx-border);
+  border-radius: var(--radius-medium);
+}
+
+.path-filters legend {
+  padding-inline: 0.35rem;
+  color: var(--psywerx-blue);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.path-results {
+  display: grid;
+  gap: 1rem;
+  min-height: 8rem;
+  padding: clamp(1.2rem, 3vw, 2rem);
+  border: 1px solid var(--psywerx-border);
+  border-radius: var(--radius-large);
+  background: #f9fcfd;
+}
+
+.path-results > h4 {
+  margin: 0;
+  color: var(--psywerx-navy);
+  font-size: 1.25rem;
+}
+
+.causal-path {
+  padding: 1.25rem;
+  border: 1px solid #b9d5e1;
+  border-radius: var(--radius-medium);
+  background: var(--psywerx-white);
+}
+
+.causal-path h5,
+.path-edge-segment h6 {
+  margin: 0 0 0.85rem;
+  color: var(--psywerx-blue);
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.path-node-list {
+  display: flex;
+  gap: 0.6rem;
+  padding: 0 0 1rem;
+  margin: 0;
+  overflow-x: auto;
+  list-style: none;
+}
+
+.path-node {
+  position: relative;
+  display: grid;
+  min-width: 12.5rem;
+  align-content: start;
+  gap: 0.4rem;
+  padding: 0.85rem;
+  border-left: 0.25rem solid var(--layer-color, var(--psywerx-blue));
+  border-radius: var(--radius-small);
+  background: var(--psywerx-pale-blue);
+}
+
+.path-node:not(:last-child)::after {
+  position: absolute;
+  top: 50%;
+  right: -0.6rem;
+  color: var(--psywerx-mid-blue);
+  content: "→";
+  transform: translate(50%, -50%);
+}
+
+.path-node__position {
+  color: var(--psywerx-muted);
+  font-size: 0.65rem;
+  font-weight: 750;
+  text-transform: uppercase;
+}
+
+.path-node__link,
+.relationship-driver-link {
+  padding: 0;
+  border: 0;
+  color: var(--psywerx-blue);
+  background: transparent;
+  font: inherit;
+  font-weight: 760;
+  text-align: left;
+  text-decoration: underline;
+  text-decoration-color: rgb(0 84 120 / 25%);
+  text-underline-offset: 0.18em;
+}
+
+.path-node__link:hover,
+.relationship-driver-link:hover {
+  color: var(--psywerx-navy);
+  text-decoration-color: currentcolor;
+}
+
+.path-edge-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.path-edge-segment {
+  padding-top: 1rem;
+  border-top: 1px solid var(--psywerx-border);
+}
+
+.relationships-section > :not(h3),
+.local-graph-section > :not(h3) {
+  grid-column: 2;
+}
+
+.relationship-framing,
+.graph-framing {
+  margin: 0;
+}
+
+.relationship-counts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.relationship-counts span {
+  padding: 0.35rem 0.65rem;
+  border: 1px solid #bbd5e1;
+  border-radius: 999px;
+  color: var(--psywerx-blue);
+  background: var(--psywerx-pale-blue);
+  font-size: 0.74rem;
+  font-weight: 760;
+}
+
+.governance-guide {
+  padding: 0.75rem 0.9rem;
+  border: 1px solid #c6dbe4;
+  border-radius: var(--radius-small);
+  background: #f8fbfc;
+}
+
+.governance-guide summary {
+  color: var(--psywerx-blue);
+  font-size: 0.75rem;
+  font-weight: 780;
+  cursor: pointer;
+}
+
+.governance-guide p {
+  margin: 0.65rem 0 0;
+  color: var(--psywerx-muted);
+  font-size: 0.8rem;
+  line-height: 1.55;
+}
+
+.relationship-group {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.relationship-group h4,
+.graph-selection h4 {
+  margin: 0;
+  color: var(--psywerx-navy);
+  font-size: 1rem;
+}
+
+.relationship-list {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.relationship-card {
+  display: grid;
+  gap: 0.7rem;
+  padding: 1rem;
+  border: 1px solid #bfd6e1;
+  border-radius: var(--radius-medium);
+  background: var(--psywerx-white);
+  box-shadow: 0 0.2rem 0.75rem rgb(0 55 84 / 5%);
+  min-width: 0;
+}
+
+.relationship-card--compact {
+  box-shadow: none;
+}
+
+.relationship-card__heading {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.relationship-card__identity,
+.relationship-card__badges,
+.layer-route {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.relationship-direction {
+  color: var(--psywerx-muted);
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.065em;
+  text-transform: uppercase;
+}
+
+.relationship-card__mechanism {
+  margin: 0;
+  color: var(--psywerx-text);
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+.relationship-badge {
+  display: inline-flex;
+  min-height: 1.55rem;
+  align-items: center;
+  padding: 0.18rem 0.48rem;
+  border: 1px solid #c5d8e1;
+  border-radius: 999px;
+  color: #3b5967;
+  background: #f5f9fb;
+  font-size: 0.63rem;
+  font-weight: 740;
+}
+
+.relationship-badge--role,
+.relationship-badge--confidence {
+  border-color: #a9cedf;
+  color: var(--psywerx-blue);
+  background: #edf7fb;
+}
+
+.relationship-badge--caution {
+  border-color: #d8c998;
+  color: #69540d;
+  background: #fffbea;
+}
+
+.relationship-badge--reciprocal {
+  border-color: #b8c7e3;
+  color: #38548a;
+  background: #f1f5fc;
+}
+
+.relationship-layer {
+  min-height: 1.55rem;
+  font-size: 0.63rem;
+}
+
+.layer-route__layer {
+  padding: 0.18rem 0.4rem;
+  border-left: 0.2rem solid var(--layer-color, var(--psywerx-blue));
+  color: var(--psywerx-text);
+  background: #f5f9fb;
+  font-size: 0.61rem;
+  font-weight: 720;
+}
+
+.layer-route__arrow {
+  color: var(--psywerx-muted);
+  font-size: 0.75rem;
+}
+
+.relationship-disclosure {
+  border-top: 1px solid var(--psywerx-border);
+}
+
+.relationship-disclosure summary {
+  padding-top: 0.7rem;
+  color: var(--psywerx-blue);
+  font-size: 0.72rem;
+  font-weight: 760;
+  cursor: pointer;
+}
+
+.relationship-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem 1.2rem;
+  margin: 1rem 0 0;
+}
+
+.relationship-detail-grid div {
+  min-width: 0;
+}
+
+.relationship-detail-grid dt {
+  margin-bottom: 0.2rem;
+  color: var(--psywerx-muted);
+  font-size: 0.63rem;
+  font-weight: 780;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.relationship-detail-grid dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+  font-size: 0.8rem;
+  line-height: 1.55;
+}
+
+.relationship-notice,
+.empty-relationships {
+  padding: 0.75rem;
+  margin: 0.8rem 0 0;
+  border-left: 0.25rem solid var(--psywerx-mid-blue);
+  color: #405c68;
+  background: var(--psywerx-pale-blue);
+  font-size: 0.8rem;
+  line-height: 1.55;
+}
+
+.graph-controls {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(9rem, 1fr));
+  gap: 0.75rem;
+}
+
+.graph-status {
+  margin: 0;
+  color: var(--psywerx-muted);
+  font-size: 0.74rem;
+}
+
+.graph-stage {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: auto;
+  border: 1px solid #bdd5e0;
+  border-radius: var(--radius-medium);
+  background:
+    linear-gradient(rgb(255 255 255 / 90%), rgb(255 255 255 / 90%)),
+    radial-gradient(circle, #b9d1dc 1px, transparent 1px);
+  background-size: auto, 18px 18px;
+}
+
+.graph-stage svg {
+  display: block;
+  min-width: 52rem;
+  width: 100%;
+  height: auto;
+}
+
+.graph-edge {
+  fill: none;
+  stroke: #4e7d91;
+  stroke-width: 2;
+}
+
+.graph-edge--context_dependent {
+  stroke-dasharray: 6 4;
+}
+
+.graph-edge-target {
+  fill: none;
+  stroke: transparent;
+  stroke-width: 16;
+  cursor: pointer;
+}
+
+.graph-edges marker path {
+  fill: #4e7d91;
+}
+
+.graph-node {
+  cursor: pointer;
+}
+
+.graph-node rect {
+  fill: color-mix(in srgb, var(--layer-color, var(--psywerx-blue)) 84%, white);
+  stroke: color-mix(in srgb, var(--layer-color, var(--psywerx-blue)) 70%, black);
+  stroke-width: 1.5;
+}
+
+.graph-node--center rect {
+  fill: var(--psywerx-navy);
+  stroke: var(--psywerx-sky);
+  stroke-width: 3;
+}
+
+.graph-node text {
+  fill: white;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 720;
+  pointer-events: none;
+}
+
+.graph-node__id {
+  font-size: 9px;
+  font-weight: 600;
+  opacity: 0.85;
+}
+
+.graph-node:focus rect {
+  stroke: var(--psywerx-focus);
+  stroke-width: 4;
+}
+
+.graph-edge-target:focus {
+  stroke: var(--psywerx-focus);
+  opacity: 0.28;
+}
+
+.graph-selection {
+  display: grid;
+  gap: 0.7rem;
+  padding: 1rem;
+  border: 1px dashed #adcbd8;
+  border-radius: var(--radius-medium);
+  background: #f8fbfc;
+}
+
+.graph-selection > p {
+  margin: 0;
+  color: var(--psywerx-muted);
+  font-size: 0.8rem;
+}
+
 /* Footer */
 
 .site-footer {
@@ -1204,6 +1701,11 @@
 /* Responsive composition */
 
 @media (max-width: 64rem) {
+  .path-filters,
+  .graph-controls {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .hierarchy-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1297,6 +1799,15 @@
   .mode-switch {
     display: grid;
     width: 100%;
+    grid-template-columns: 1fr;
+  }
+
+  .path-endpoints {
+    grid-template-columns: 1fr;
+  }
+
+  .path-arrow {
+    display: none;
   }
 
   .browse-toolbar {
@@ -1327,7 +1838,8 @@
   }
 
   .driver-dialog {
-    width: 100%;
+    width: 100vw;
+    max-width: 100vw;
     height: 100%;
     max-height: 100%;
     margin: 0;
@@ -1335,9 +1847,33 @@
     border-radius: 0;
   }
 
+  .driver-dialog__shell,
+  .driver-dialog__topbar,
+  .driver-dialog__footer,
+  .driver-detail,
+  .relationships-section,
+  .local-graph-section,
+  .relationship-group,
+  .relationship-list,
+  .graph-controls,
+  .graph-control,
+  .graph-control select {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .driver-detail {
+    overflow-x: hidden;
+  }
+
   .detail-section {
     grid-template-columns: 1fr;
     gap: 1.2rem;
+  }
+
+  .relationships-section > :not(h3),
+  .local-graph-section > :not(h3) {
+    grid-column: 1;
   }
 
   .driver-dialog__footer {
@@ -1367,6 +1903,12 @@
 }
 
 @media (max-width: 36rem) {
+  .path-filters,
+  .graph-controls,
+  .relationship-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
   .hierarchy-grid {
     grid-template-columns: 1fr;
   }

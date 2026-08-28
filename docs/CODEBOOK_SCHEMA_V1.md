@@ -21,14 +21,15 @@ The public artifact uses this envelope:
 The canonical source worksheet distinguishes structural documentation from
 semantic Codebook terms:
 
-- `worksheetPopulatedRows = 51`
+- `worksheetPopulatedRows = 59`
 - `structuralRows = 3`
-- `termRecords = 48`
+- `termRecords = 56`
 
 The three populated structural rows are the Codebook title in row 1, the
 governance instruction in row 2, and the column headers in row 4. Row 3 is
-blank. Rows 5-52 contain the 48 semantic term records. Structural and blank
-rows never receive Codebook Term IDs and never become entries.
+blank. Rows 5-60 contain the 56 semantic term records. Structural and blank
+rows never receive Codebook Term IDs and never become entries. The final eight
+semantic rows govern Relationship Schema v2 controlled fields.
 
 The title and governance instruction are preserved as public metadata along
 with the three diagnostic counts.
@@ -77,7 +78,7 @@ must not replace them with an unrelated category system.
 
 ## Permanent Codebook Term IDs
 
-Schema v1.0 has 48 explicit, globally unique IDs. IDs are permanent, identical
+Schema v1.0 has 56 explicit, globally unique IDs. IDs are permanent, identical
 across all eight workbook copies, and suitable for future URLs such as
 `?term=CB-DRV-MODIFIABILITY`.
 
@@ -100,7 +101,9 @@ row does not authorize changing its ID.
 list that can be split without interpretation. Schema v1.0 structures the
 source-supported vocabularies for Driver Layer, Data Type, Modifiability,
 Volatility, Time Scale of Change, Onset / Causal Lag, Observability, Driver and
-supporting Evidence Strength, Relationship Expected Direction,
+supporting Evidence Strength, Relationship Expected Direction, Relationship
+Causal Role, Polarity, Directness, Level, Lag Profile, Exposure Pattern,
+Confidence, and Governance Class,
 Operationalization Method Type, and Cautions & Exclusions Disposition.
 
 For Time Scale of Change and Onset / Causal Lag, the phrase
@@ -116,8 +119,8 @@ Used-but-undefined controlled values are errors.
 ## Validation and output safety
 
 The importer requires eight workbooks and one `Codebook` worksheet in each. It
-requires exact headers, 51 populated worksheet rows, three structural rows,
-48 semantic records, populated URL-safe IDs, unique IDs, identical content
+requires exact headers, 59 populated worksheet rows, three structural rows,
+56 semantic records, populated URL-safe IDs, unique IDs, identical content
 across all eight copies, canonical source classifications, and valid required
 flags.
 

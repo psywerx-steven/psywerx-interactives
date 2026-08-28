@@ -14,7 +14,7 @@ definition, Layer, Family, or technical fields in `data/drivers.json`.
 | Key | Type | Requirement | Meaning |
 | --- | --- | --- | --- |
 | `schemaVersion` | string | Required | Public data-contract version. Schema v1.0 uses `1.0`. |
-| `contentVersion` | string | Required | Independently governed wording release. The approved initial release uses `1.0`. |
+| `contentVersion` | string | Required | Independently governed wording release. The current approved release uses `1.1`. |
 | `standardVersion` | string | Required | Plain-Language Standard used for the content. The initial release uses `1.0`. |
 | `drivers` | array | Required | Publication-approved plain-language Driver records. |
 
@@ -32,10 +32,13 @@ Every published record has exactly the following keys.
 
 ## Publication eligibility
 
-The governed private release source is
+The governed private base release source is
 `analysis/plain_language_release_candidate_v2/plain_language_release_candidate_v2.csv`.
-The initial public release contains the 737 records with an `APPROVED` human
-decision and one of these release-source dispositions:
+The 31 Drivers added by ontology-remediation release v1 have a separately
+governed supplement at
+`analysis/causal_explorer_release_v1/new_driver_plain_language_review.csv`.
+Content version 1.1 contains 768 records with an `APPROVED` decision and one of
+these release-source dispositions:
 
 - `CALIBRATED_APPROVED`
 - `EDITORIAL_RELEASE_CANDIDATE`
@@ -55,11 +58,11 @@ Inclusion in this release is the public approval signal.
 
 Run `py scripts\build_plain_language.py` from the repository root. The exporter:
 
-- reads the complete approved release into memory;
-- requires all 762 source rows and unique permanent Driver IDs;
+- reads the complete base release and 31-record supplement into memory;
+- requires all 793 combined source rows and unique permanent Driver IDs;
 - compares the canonical name, definition, Layer, and Family snapshots exactly
   with `data/drivers.json`;
-- requires exactly 737 approved records and withholds exactly 22 ontology-blocked
+- requires exactly 768 approved records and withholds exactly 22 ontology-blocked
   and three SME-review records;
 - requires the three permanent fields for every published record;
 - converts only an empty optional boundary statement to `null`;
@@ -68,7 +71,7 @@ Run `py scripts\build_plain_language.py` from the repository root. The exporter:
 - rejects private/local paths and non-schema fields; and
 - builds and validates completely before atomically replacing the public file.
 
-The private CSV remains the governed editorial source, just as ignored XLSX
+The private CSV files remain the governed editorial sources, just as ignored XLSX
 workbooks remain the local source for the canonical taxonomy. The generated JSON
 is the repository-controlled static artifact used by GitHub Pages.
 

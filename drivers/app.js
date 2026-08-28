@@ -3,9 +3,12 @@
 const PAGE_SIZE = 24;
 const DRIVER_QUERY_PARAMETER = "driver";
 const FAMILY_QUERY_PARAMETER = "family";
+const VIEW_QUERY_PARAMETER = "view";
+const PATH_SOURCE_QUERY_PARAMETER = "source";
+const PATH_TARGET_QUERY_PARAMETER = "target";
 const PLAIN_LANGUAGE_SCHEMA_VERSION = "1.0";
 const PLAIN_LANGUAGE_STANDARD_VERSION = "1.0";
-const PLAIN_LANGUAGE_EXPECTED_RECORDS = 737;
+const PLAIN_LANGUAGE_EXPECTED_RECORDS = 768;
 const PLAIN_LANGUAGE_RECORD_KEYS = [
   "driverId",
   "plainLanguageLabel",
@@ -26,8 +29,15 @@ const FACETS = [
 
 const browseModeButton = document.querySelector("#browse-mode-button");
 const searchModeButton = document.querySelector("#search-mode-button");
+const causalModeButton = document.querySelector("#causal-mode-button");
 const browsePanel = document.querySelector("#browse-panel");
 const searchPanel = document.querySelector("#search-panel");
+const causalPanel = document.querySelector("#causal-panel");
+const causalHeading = document.querySelector("#causal-heading");
+const pathForm = document.querySelector("#path-form");
+const pathSource = document.querySelector("#path-source");
+const pathTarget = document.querySelector("#path-target");
+const pathResults = document.querySelector("#path-results");
 const browseBreadcrumbs = document.querySelector("#browse-breadcrumbs");
 const browseSummary = document.querySelector("#browse-summary");
 const browseKicker = document.querySelector("#browse-kicker");
@@ -63,6 +73,8 @@ let familyByIdentity = new Map();
 let plainLanguageByDriverId = new Map();
 let driversByFamilyId = new Map();
 let hierarchy = new Map();
+let relationships = [];
+let relationshipIndex = null;
 let filteredDrivers = [];
 let detailDrivers = [];
 let visibleCount = PAGE_SIZE;
@@ -391,14 +403,18 @@ function buildHierarchy() {
 }
 
 function setMode(mode, options = {}) {
-  activeMode = mode === "search" ? "search" : "browse";
+  activeMode = ["search", "causal"].includes(mode) ? mode : "browse";
   const browsing = activeMode === "browse";
+  const searching = activeMode === "search";
+  const exploringCausality = activeMode === "causal";
   browsePanel.hidden = !browsing;
-  searchPanel.hidden = browsing;
+  searchPanel.hidden = !searching;
+  causalPanel.hidden = !exploringCausality;
   browseModeButton.setAttribute("aria-pressed", String(browsing));
-  searchModeButton.setAttribute("aria-pressed", String(!browsing));
+  searchModeButton.setAttribute("aria-pressed", String(searching));
+  causalModeButton.setAttribute("aria-pressed", String(exploringCausality));
   if (options.focus) {
-    (browsing ? browseHeading : searchInput).focus();
+    (browsing ? browseHeading : searching ? searchInput : causalHeading).focus();
   }
 }
 
@@ -918,6 +934,343 @@ function createPlainLanguageSection(driver) {
   ]);
 }
 
+function displayControlledValue(value) {
+  return String(value || "")
+    .toLocaleLowerCase()
+    .replaceAll("_", " ")
+    .replace(/^./, (letter) => letter.toLocaleUpperCase());
+}
+
+function createRelationshipBadge(value, className) {
+  return element(
+    "span",
+    "relationship-badge " + (className || ""),
+    displayControlledValue(value)
+  );
+}
+
+function createLayerRoute(relationship) {
+  const route = element("span", "layer-route");
+  const source = driverById.get(relationship.sourceDriverId);
+  const target = driverById.get(relationship.targetDriverId);
+  const sourceLayer = element("span", "layer-route__layer", source.layer);
+  const targetLayer = element("span", "layer-route__layer", target.layer);
+  setLayerIdentity(sourceLayer, source.layer);
+  setLayerIdentity(targetLayer, target.layer);
+  route.append(sourceLayer, element("span", "layer-route__arrow", "→"), targetLayer);
+  return route;
+}
+
+function createRelationshipCard(relationship, selectedDriverId, options = {}) {
+  const upstream = relationship.targetDriverId === selectedDriverId;
+  const relatedId = upstream
+    ? relationship.sourceDriverId : relationship.targetDriverId;
+  const related = driverById.get(relatedId);
+  const article = element("article", "relationship-card");
+  article.dataset.relationshipId = relationship.id;
+  const heading = element("div", "relationship-card__heading");
+  const direction = element(
+    "span",
+    "relationship-direction",
+    upstream ? "Upstream Driver" : "Downstream Driver"
+  );
+  const link = element("button", "relationship-driver-link", publicDriverLabel(related));
+  link.type = "button";
+  link.dataset.relatedDriverId = related.id;
+  link.setAttribute("aria-label", "Open related Driver: " + publicDriverLabel(related));
+  const identity = element("div", "relationship-card__identity");
+  identity.append(link, element("span", "driver-id", related.id));
+  heading.append(direction, identity);
+
+  const badges = element("div", "relationship-card__badges");
+  badges.append(
+    createRelationshipBadge(relationship.causalRole, "relationship-badge--role"),
+    createRelationshipBadge(relationship.polarity),
+    createRelationshipBadge(relationship.directness),
+    createRelationshipBadge(relationship.confidence, "relationship-badge--confidence"),
+    createRelationshipBadge(relationship.evidenceStrength)
+  );
+  if (relationship.governanceClass === "CONTEXT_DEPENDENT") {
+    badges.append(createRelationshipBadge("Context dependent", "relationship-badge--caution"));
+  }
+  if (relationship.reciprocalProcessId) {
+    badges.append(createRelationshipBadge("Reciprocal dynamic", "relationship-badge--reciprocal"));
+  }
+  if (driverById.get(relationship.sourceDriverId).layer !==
+      driverById.get(relationship.targetDriverId).layer) {
+    badges.append(createLayerRoute(relationship));
+  } else {
+    const layer = element("span", "layer-badge relationship-layer", related.layer);
+    setLayerIdentity(layer, related.layer);
+    badges.append(layer);
+  }
+
+  const mechanism = element("p", "relationship-card__mechanism", relationship.mechanism);
+  article.append(heading, badges, mechanism);
+
+  const disclosure = element("details", "relationship-disclosure");
+  const summary = element("summary", "", "Evidence, timing & context");
+  const details = element("dl", "relationship-detail-grid");
+  const fields = [
+    ["Directed assertion", relationship.sourceDriverName + " → " + relationship.targetDriverName],
+    ["Relationship ID", relationship.id],
+    ["Conditions / moderators", relationship.conditionsModerators],
+    ["Generalizability / context", relationship.generalizabilityContext],
+    ["Lag profile", relationship.lagProfile.map(displayControlledValue).join("; ")],
+    ["Lag narrative", relationship.lagNarrative],
+    ["Exposure pattern", displayControlledValue(relationship.exposurePattern)],
+    ["Effect persistence", relationship.effectPersistence],
+    ["Endpoint levels", displayControlledValue(relationship.sourceLevel) + " → " + displayControlledValue(relationship.targetLevel)],
+    ["Level-transition mechanism", relationship.levelTransitionMechanism],
+    ["Moderator Driver IDs", relationship.moderatorDriverIds.join("; ")],
+    ["Supporting Evidence IDs", relationship.supportingEvidenceIds.join("; ")],
+    ["Source record", relationship.source.workbook + " / " + relationship.source.worksheet + " row " + String(relationship.source.row)],
+    ["Governance class", displayControlledValue(relationship.governanceClass)],
+    ["Notes / caveats", relationship.notesCaveats],
+  ];
+  fields.forEach(([label, value]) => {
+    if (!hasValue(value)) return;
+    const wrapper = element("div");
+    wrapper.append(element("dt", "", label), element("dd", "", value));
+    details.append(wrapper);
+  });
+  if (relationship.directness === "MEDIATED_PATH") {
+    const notice = element(
+      "p",
+      "relationship-notice",
+      "This governed edge is one segment of a mediated path; it is not an unmediated source-to-outcome shortcut."
+    );
+    disclosure.append(summary, notice, details);
+  } else {
+    disclosure.append(summary, details);
+  }
+  article.append(disclosure);
+  if (options.compact) article.classList.add("relationship-card--compact");
+  return article;
+}
+
+function selectControl(label, values, selectedValue) {
+  const wrapper = element("label", "graph-control");
+  wrapper.append(element("span", "", label));
+  const select = element("select");
+  values.forEach(([value, text]) => {
+    const option = element("option", "", text);
+    option.value = value;
+    option.selected = value === selectedValue;
+    select.append(option);
+  });
+  wrapper.append(select);
+  return { wrapper, select };
+}
+
+function svgElement(tagName, attributes = {}) {
+  const node = document.createElementNS("http://www.w3.org/2000/svg", tagName);
+  Object.entries(attributes).forEach(([name, value]) => node.setAttribute(name, value));
+  return node;
+}
+
+function renderNeighborhoodGraph(driver, controls, stage, status, selection) {
+  const options = {
+    maxHops: Number(controls.hops.value),
+    direction: controls.direction.value,
+    layer: controls.layer.value,
+    governanceClasses: controls.governance.value ? [controls.governance.value] : [],
+    roles: controls.role.value ? [controls.role.value] : [],
+    directness: controls.directness.value ? [controls.directness.value] : [],
+  };
+  const graph = PsywerxCausal.boundedNeighborhood(
+    relationshipIndex, driver.id, options, driverById
+  );
+  const groups = new Map();
+  graph.nodeDepths.forEach((depth, driverId) => {
+    if (!groups.has(depth)) groups.set(depth, []);
+    groups.get(depth).push(driverId);
+  });
+  groups.forEach((ids) => ids.sort((a, b) =>
+    publicDriverLabel(driverById.get(a)).localeCompare(publicDriverLabel(driverById.get(b)))
+  ));
+  const maxPerColumn = Math.max(...[...groups.values()].map((group) => group.length), 1);
+  const height = Math.max(360, maxPerColumn * 82 + 70);
+  const width = 980;
+  const svg = svgElement("svg", {
+    viewBox: "0 0 " + width + " " + height,
+    role: "img",
+    "aria-label": "Bounded causal neighborhood centered on " + publicDriverLabel(driver),
+  });
+  const defs = svgElement("defs");
+  const markerId = "arrow-" + driver.id.replace(/[^A-Za-z0-9]/g, "");
+  const marker = svgElement("marker", {
+    id: markerId, viewBox: "0 0 10 10", refX: "9", refY: "5",
+    markerWidth: "7", markerHeight: "7", orient: "auto-start-reverse",
+  });
+  marker.append(svgElement("path", { d: "M 0 0 L 10 5 L 0 10 z" }));
+  defs.append(marker);
+  svg.append(defs);
+
+  const positions = new Map();
+  groups.forEach((ids, depth) => {
+    const x = 490 + depth * 205;
+    ids.forEach((driverId, index) => {
+      const y = ((index + 1) * height) / (ids.length + 1);
+      positions.set(driverId, { x, y });
+    });
+  });
+  const edgeLayer = svgElement("g", { class: "graph-edges" });
+  graph.edges.forEach((relationship) => {
+    const start = positions.get(relationship.sourceDriverId);
+    const end = positions.get(relationship.targetDriverId);
+    if (!start || !end) return;
+    const startX = start.x + (end.x >= start.x ? 82 : -82);
+    const endX = end.x + (end.x >= start.x ? -82 : 82);
+    const d = "M " + startX + " " + start.y + " L " + endX + " " + end.y;
+    const visible = svgElement("path", {
+      d,
+      class: "graph-edge graph-edge--" + relationship.governanceClass.toLocaleLowerCase(),
+      "marker-end": "url(#" + markerId + ")",
+    });
+    const target = svgElement("path", {
+      d, class: "graph-edge-target", tabindex: "0", role: "button",
+      "aria-label": "Inspect relationship " + relationship.sourceDriverName + " to " + relationship.targetDriverName,
+    });
+    const choose = () => {
+      selection.replaceChildren(
+        element("h4", "", "Selected relationship"),
+        createRelationshipCard(relationship, driver.id, { compact: true })
+      );
+      selection.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    };
+    target.addEventListener("click", choose);
+    target.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault(); choose();
+      }
+    });
+    edgeLayer.append(visible, target);
+  });
+  svg.append(edgeLayer);
+
+  const nodeLayer = svgElement("g", { class: "graph-nodes" });
+  positions.forEach((position, driverId) => {
+    const related = driverById.get(driverId);
+    const group = svgElement("g", {
+      class: "graph-node" + (driverId === driver.id ? " graph-node--center" : ""),
+      transform: "translate(" + String(position.x - 82) + " " + String(position.y - 29) + ")",
+      tabindex: driverId === driver.id ? "-1" : "0",
+      role: driverId === driver.id ? "img" : "button",
+      "aria-label": (driverId === driver.id ? "Selected Driver: " : "Open Driver: ") + publicDriverLabel(related),
+      "data-layer": related.layer,
+    });
+    group.append(svgElement("rect", { width: "164", height: "58", rx: "8" }));
+    const label = publicDriverLabel(related);
+    const firstLine = label.length > 27 ? label.slice(0, 26).trimEnd() + "…" : label;
+    const text = svgElement("text", { x: "82", y: "25", "text-anchor": "middle" });
+    const title = svgElement("tspan", { x: "82", dy: "0" });
+    title.textContent = firstLine;
+    const id = svgElement("tspan", { x: "82", dy: "18", class: "graph-node__id" });
+    id.textContent = related.id;
+    text.append(title, id);
+    group.append(text);
+    if (driverId !== driver.id) {
+      const open = () => openDriver(driverId, "push", drivers);
+      group.addEventListener("click", open);
+      group.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault(); open();
+        }
+      });
+    }
+    nodeLayer.append(group);
+  });
+  svg.append(nodeLayer);
+  stage.replaceChildren(svg);
+  status.textContent =
+    String(graph.nodeDepths.size) + " Drivers and " + String(graph.edges.length) +
+    " governed relationships shown" +
+    (graph.truncated ? " · View limited to " + graph.maxNodes + " Drivers and " + graph.maxEdges + " relationships; refine the filters to narrow it." : ".");
+  selection.replaceChildren(element("p", "", "Select an arrow to inspect its governed relationship record."));
+}
+
+function createLocalGraphSection(driver) {
+  const section = element("section", "detail-section local-graph-section");
+  section.append(
+    element("h3", "", "Local causal network"),
+    element(
+      "p",
+      "graph-framing",
+      "A bounded view of governed ontology relationships around this Driver. It is not an effect estimate, complete scenario model, or prediction."
+    )
+  );
+  const controlsNode = element("div", "graph-controls");
+  const controls = {
+    hops: selectControl("Depth", [["1", "1 hop"], ["2", "2 hops"]], "1"),
+    direction: selectControl("Direction", [["both", "Upstream + downstream"], ["upstream", "Upstream only"], ["downstream", "Downstream only"]], "both"),
+    layer: selectControl("Related Layer", [["", "All Layers"], ...[...hierarchy.keys()].map((layer) => [layer, layer])], ""),
+    governance: selectControl("Governance", [["", "All public classes"], ["CORE", "Core"], ["CONTEXT_DEPENDENT", "Context-dependent"]], ""),
+    role: selectControl("Causal role", [["", "All roles"], ["CAUSES", "Causes"], ["ENABLES", "Enables"], ["CONSTRAINS", "Constrains"], ["MODERATES", "Moderates"]], ""),
+    directness: selectControl("Directness", [["", "All values"], ["DIRECT_AT_STATED_RESOLUTION", "Direct at stated resolution"], ["MEDIATED_PATH", "Mediated-path segment"], ["UNKNOWN", "Unknown"]], ""),
+  };
+  Object.values(controls).forEach((control) => controlsNode.append(control.wrapper));
+  const status = element("p", "graph-status");
+  status.setAttribute("role", "status");
+  status.setAttribute("aria-live", "polite");
+  const stage = element("div", "graph-stage");
+  const selection = element("div", "graph-selection");
+  const update = () => renderNeighborhoodGraph(
+    driver,
+    Object.fromEntries(Object.entries(controls).map(([key, value]) => [key, value.select])),
+    stage,
+    status,
+    selection
+  );
+  Object.values(controls).forEach((control) => control.select.addEventListener("change", update));
+  section.append(controlsNode, status, stage, selection);
+  update();
+  return section;
+}
+
+function createRelationshipsSection(driver) {
+  const incoming = relationshipIndex.upstream.get(driver.id) || [];
+  const outgoing = relationshipIndex.downstream.get(driver.id) || [];
+  const section = element("section", "detail-section relationships-section");
+  section.append(
+    element("h3", "", "Governed Driver relationships"),
+    element(
+      "p",
+      "relationship-framing",
+      "These directed records describe evidence-bearing ontology relationships. They do not estimate effect size, guarantee an outcome, or replace a scenario-specific causal model."
+    )
+  );
+  const counts = element("div", "relationship-counts");
+  counts.append(
+    element("span", "", String(incoming.length) + " upstream"),
+    element("span", "", String(outgoing.length) + " downstream")
+  );
+  const governanceGuide = element("details", "governance-guide");
+  governanceGuide.append(
+    element("summary", "", "What relationship governance classes mean"),
+    element("p", "", "Core relationships are broadly reusable backbone assertions. Context-dependent relationships are defensible only with their stated conditions, mechanism, evidence, and context."),
+    element("p", "", "Scenario-specific and hypothesized relationships are not part of this public canonical graph; they belong in governed model packages or research queues.")
+  );
+  section.append(counts, governanceGuide);
+  if (incoming.length === 0 && outgoing.length === 0) {
+    section.append(element(
+      "p", "empty-relationships",
+      "No public governed relationships currently connect this Driver. This indicates graph coverage, not causal isolation."
+    ));
+    return section;
+  }
+  [["Likely Upstream Drivers", incoming], ["Likely Downstream Drivers", outgoing]].forEach(([title, records]) => {
+    if (!records.length) return;
+    const group = element("section", "relationship-group");
+    group.append(element("h4", "", title));
+    const list = element("div", "relationship-list");
+    records.forEach((relationship) => list.append(createRelationshipCard(relationship, driver.id)));
+    group.append(list);
+    section.append(group);
+  });
+  return section;
+}
+
 function renderDriverDetail(driver) {
   const fragment = document.createDocumentFragment();
   const header = element("header", "driver-detail__header");
@@ -954,6 +1307,8 @@ function renderDriverDetail(driver) {
       { label: "Polarity / direction", value: driver.polarityDirection, wide: true },
     ]),
     createMechanismSection(driver),
+    createRelationshipsSection(driver),
+    createLocalGraphSection(driver),
     createDetailSection("Dynamics", [
       { label: "Modifiability", value: driver.modifiability },
       { label: "Volatility", value: driver.volatility },
@@ -986,11 +1341,23 @@ function taxonomyUrl(parameters = {}) {
   const url = new URL(window.location.href);
   url.searchParams.delete(DRIVER_QUERY_PARAMETER);
   url.searchParams.delete(FAMILY_QUERY_PARAMETER);
+  url.searchParams.delete(VIEW_QUERY_PARAMETER);
+  url.searchParams.delete(PATH_SOURCE_QUERY_PARAMETER);
+  url.searchParams.delete(PATH_TARGET_QUERY_PARAMETER);
   if (parameters.familyId) {
     url.searchParams.set(FAMILY_QUERY_PARAMETER, parameters.familyId);
   }
   if (parameters.driverId) {
     url.searchParams.set(DRIVER_QUERY_PARAMETER, parameters.driverId);
+  }
+  if (parameters.view === "causal") {
+    url.searchParams.set(VIEW_QUERY_PARAMETER, "causal");
+    if (parameters.sourceId) {
+      url.searchParams.set(PATH_SOURCE_QUERY_PARAMETER, parameters.sourceId);
+    }
+    if (parameters.targetId) {
+      url.searchParams.set(PATH_TARGET_QUERY_PARAMETER, parameters.targetId);
+    }
   }
   return url;
 }
@@ -1007,6 +1374,10 @@ function baseUrl() {
   return taxonomyUrl();
 }
 
+function causalUrl(sourceId, targetId) {
+  return taxonomyUrl({ view: "causal", sourceId, targetId });
+}
+
 function writeHistory(action, state, url) {
   if (action === "push") {
     history.pushState(state, "", url);
@@ -1018,6 +1389,9 @@ function writeHistory(action, state, url) {
 function currentBackgroundState() {
   if (activeMode === "search") {
     return { view: "search" };
+  }
+  if (activeMode === "causal") {
+    return { view: "causal" };
   }
   if (selectedBrowseFamilyId) {
     return {
@@ -1090,6 +1464,134 @@ function showSearch(urlAction, focus) {
   hideDialog();
   setMode("search", { focus });
   writeHistory(urlAction, { view: "search" }, baseUrl());
+}
+
+function showCausal(urlAction, focus) {
+  currentDriverId = null;
+  hideDialog();
+  setMode("causal", { focus });
+  writeHistory(
+    urlAction,
+    { view: "causal", sourceId: pathSource.value, targetId: pathTarget.value },
+    causalUrl(pathSource.value, pathTarget.value)
+  );
+}
+
+function populatePathDriverSelect(select) {
+  const placeholder = select.firstElementChild;
+  const fragment = document.createDocumentFragment();
+  fragment.append(placeholder);
+  hierarchy.forEach((layerFamilies, layer) => {
+    const group = element("optgroup");
+    group.label = layer;
+    const layerDrivers = drivers.filter((driver) => driver.layer === layer);
+    layerDrivers.sort((a, b) => publicDriverLabel(a).localeCompare(publicDriverLabel(b)));
+    layerDrivers.forEach((driver) => {
+      const option = element(
+        "option",
+        "",
+        publicDriverLabel(driver) + " · " + driver.id
+      );
+      option.value = driver.id;
+      group.append(option);
+    });
+    fragment.append(group);
+  });
+  select.replaceChildren(fragment);
+  select.disabled = false;
+}
+
+function selectedPathFilters() {
+  const selected = (selector) => document.querySelector(selector).value;
+  const single = (selector) => {
+    const value = selected(selector);
+    return value ? [value] : [];
+  };
+  return {
+    maxHops: Number(selected("#path-max-hops")),
+    maxPaths: 5,
+    governanceClasses: single("#path-governance"),
+    roles: single("#path-role"),
+    polarities: single("#path-polarity"),
+    directness: single("#path-directness"),
+    confidence: single("#path-confidence"),
+    evidenceStrength: single("#path-evidence"),
+  };
+}
+
+function createPathNode(driver, position, total) {
+  const item = element("li", "path-node");
+  setLayerIdentity(item, driver.layer);
+  const link = element("button", "path-node__link", publicDriverLabel(driver));
+  link.type = "button";
+  link.dataset.relatedDriverId = driver.id;
+  link.setAttribute("aria-label", "Open Driver: " + publicDriverLabel(driver));
+  const layer = element("span", "layer-badge", driver.layer);
+  setLayerIdentity(layer, driver.layer);
+  item.append(
+    element("span", "path-node__position", String(position + 1) + " of " + String(total)),
+    link,
+    element("span", "driver-id", driver.id),
+    layer
+  );
+  return item;
+}
+
+function renderPathResults(result, sourceId, targetId) {
+  const source = driverById.get(sourceId);
+  const target = driverById.get(targetId);
+  if (result.paths.length === 0) {
+    pathResults.replaceChildren(
+      element("h4", "", "No governed path found within the selected limit"),
+      element(
+        "p",
+        "",
+        "No directed path from " + publicDriverLabel(source) + " to " +
+          publicDriverLabel(target) + " was found within " + String(result.maxHops) +
+          " edges under these filters. This may reflect graph scope or governance coverage; it does not establish causal independence."
+      )
+    );
+    return;
+  }
+  const fragment = document.createDocumentFragment();
+  const edgeCount = result.paths[0].edges.length;
+  fragment.append(
+    element("h4", "", String(result.paths.length) + (result.paths.length === 1 ? " shortest governed path" : " tied shortest governed paths")),
+    element(
+      "p",
+      "path-result-framing",
+      "Shortest here means fewest governed directed edges (" + String(edgeCount) +
+        "). It does not mean strongest, fastest, most probable, or sufficient for a scenario model."
+    )
+  );
+  result.paths.forEach((path, index) => {
+    const article = element("article", "causal-path");
+    article.append(element("h5", "", "Path " + String(index + 1)));
+    const nodes = element("ol", "path-node-list");
+    path.nodes.forEach((driverId, position) =>
+      nodes.append(createPathNode(driverById.get(driverId), position, path.nodes.length))
+    );
+    article.append(nodes);
+    const edgeList = element("div", "path-edge-list");
+    path.edges.forEach((relationship, edgeIndex) => {
+      const segment = element("section", "path-edge-segment");
+      segment.append(
+        element("h6", "", "Edge " + String(edgeIndex + 1) + " · " +
+          displayControlledValue(relationship.causalRole)),
+        createRelationshipCard(relationship, relationship.sourceDriverId, { compact: true })
+      );
+      edgeList.append(segment);
+    });
+    article.append(edgeList);
+    fragment.append(article);
+  });
+  if (result.truncated) {
+    fragment.append(element(
+      "p", "relationship-notice",
+      "Search stopped at the conservative traversal limit; additional tied paths may exist."
+    ));
+  }
+  pathResults.replaceChildren(fragment);
 }
 
 function updateDetailNavigation() {
@@ -1187,6 +1689,8 @@ function closeDriverDetail() {
     showBrowseLayer(background.layer, "replace", true);
   } else if (background.view === "search") {
     showSearch("replace", true);
+  } else if (background.view === "causal") {
+    showCausal("replace", true);
   } else {
     showBrowseRoot("replace", true);
   }
@@ -1241,6 +1745,9 @@ function restoreBackground(background) {
   } else if (background && background.view === "search") {
     setMode("search");
     detailDrivers = filteredDrivers;
+  } else if (background && background.view === "causal") {
+    setMode("causal");
+    detailDrivers = drivers;
   } else {
     setMode("browse");
     selectedBrowseLayer = null;
@@ -1254,6 +1761,9 @@ function applyLocationState(state) {
   const url = new URL(window.location.href);
   const driverId = url.searchParams.get(DRIVER_QUERY_PARAMETER);
   const familyId = url.searchParams.get(FAMILY_QUERY_PARAMETER);
+  const requestedView = url.searchParams.get(VIEW_QUERY_PARAMETER);
+  const requestedPathSource = url.searchParams.get(PATH_SOURCE_QUERY_PARAMETER);
+  const requestedPathTarget = url.searchParams.get(PATH_TARGET_QUERY_PARAMETER);
   linkNotice.hidden = true;
 
   if (driverId) {
@@ -1278,7 +1788,26 @@ function applyLocationState(state) {
   currentDriverId = null;
   hideDialog();
 
-  if (familyId) {
+  if (requestedView === "causal" || (state && state.view === "causal")) {
+    const sourceId = requestedPathSource || (state && state.sourceId) || "";
+    const targetId = requestedPathTarget || (state && state.targetId) || "";
+    pathSource.value = driverById.has(sourceId) ? sourceId : "";
+    pathTarget.value = driverById.has(targetId) ? targetId : "";
+    showCausal(null, false);
+    if (pathSource.value && pathTarget.value && pathSource.value !== pathTarget.value) {
+      renderPathResults(
+        PsywerxCausal.shortestPaths(
+          relationshipIndex,
+          pathSource.value,
+          pathTarget.value,
+          selectedPathFilters(),
+          driverById
+        ),
+        pathSource.value,
+        pathTarget.value
+      );
+    }
+  } else if (familyId) {
     if (!showFamily(familyId, null, false)) {
       linkNotice.textContent =
         "The linked Family " + familyId + " was not found in this taxonomy.";
@@ -1311,15 +1840,23 @@ async function fetchJson(url, label) {
 
 async function loadTaxonomy() {
   try {
-    const [driverData, familyEnvelope, plainLanguageEnvelope] = await Promise.all([
+    const [driverData, familyEnvelope, plainLanguageEnvelope, relationshipEnvelope] = await Promise.all([
       fetchJson("../data/drivers.json", "Driver data"),
       fetchJson("../data/families.json", "Family data"),
       fetchJson("../data/plain_language.json", "Plain-language data"),
+      fetchJson("../data/relationships.json", "Relationship data"),
     ]);
     validateTaxonomyData(driverData, familyEnvelope);
     plainLanguageByDriverId = validatePlainLanguageData(
       driverData,
       plainLanguageEnvelope
+    );
+    if (!window.PsywerxCausal) {
+      throw new Error("Causal Explorer support code did not load.");
+    }
+    relationships = PsywerxCausal.validate(
+      relationshipEnvelope,
+      new Map(driverData.map((driver) => [driver.id, driver]))
     );
 
     drivers = driverData.map((driver) => {
@@ -1330,6 +1867,7 @@ async function loadTaxonomy() {
       return enriched;
     });
     driverById = new Map(drivers.map((driver) => [driver.id, driver]));
+    relationshipIndex = PsywerxCausal.createIndex(relationships);
     families = familyEnvelope.families;
     familyById = new Map(families.map((family) => [family.id, family]));
     familyByIdentity = new Map(
@@ -1339,6 +1877,8 @@ async function loadTaxonomy() {
       ])
     );
     buildHierarchy();
+    populatePathDriverSelect(pathSource);
+    populatePathDriverSelect(pathTarget);
     totalDriverCount.textContent = drivers.length.toLocaleString();
     totalLayerCount.textContent = hierarchy.size.toLocaleString();
     totalFamilyCount.textContent = families.length.toLocaleString();
@@ -1348,6 +1888,9 @@ async function loadTaxonomy() {
     const url = new URL(window.location.href);
     const initialDriverId = url.searchParams.get(DRIVER_QUERY_PARAMETER);
     const initialFamilyId = url.searchParams.get(FAMILY_QUERY_PARAMETER);
+    const initialView = url.searchParams.get(VIEW_QUERY_PARAMETER);
+    const initialPathSource = url.searchParams.get(PATH_SOURCE_QUERY_PARAMETER);
+    const initialPathTarget = url.searchParams.get(PATH_TARGET_QUERY_PARAMETER);
     const initialState = initialDriverId
       ? {
           view: "driver",
@@ -1359,6 +1902,8 @@ async function loadTaxonomy() {
         }
       : initialFamilyId
         ? { view: "family", familyId: initialFamilyId }
+        : initialView === "causal"
+          ? { view: "causal", sourceId: initialPathSource, targetId: initialPathTarget }
         : { view: "root" };
     history.replaceState(initialState, "", window.location.href);
     applyLocationState(initialState);
@@ -1370,7 +1915,7 @@ async function loadTaxonomy() {
     driverList.replaceChildren();
     const message = loadError.querySelector("p");
     message.textContent =
-      "The required Driver, Family, and plain-language datasets could not be loaded or did not agree. " +
+      "The required Driver, Family, plain-language, and Relationship datasets could not be loaded or did not agree. " +
       "Check the browser console, then reload the page. For local preview, use an HTTP server.";
     loadError.hidden = false;
   }
@@ -1394,6 +1939,46 @@ searchModeButton.addEventListener("click", () => {
   } else {
     showSearch("push", true);
   }
+});
+
+causalModeButton.addEventListener("click", () => {
+  if (activeMode === "causal") {
+    causalHeading.focus();
+  } else {
+    showCausal("push", true);
+  }
+});
+
+pathForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const sourceId = pathSource.value;
+  const targetId = pathTarget.value;
+  if (!sourceId || !targetId) {
+    pathResults.replaceChildren(element("p", "relationship-notice", "Choose both a starting and destination Driver."));
+    return;
+  }
+  if (sourceId === targetId) {
+    pathResults.replaceChildren(element("p", "relationship-notice", "Choose two different Drivers to explore a directed path."));
+    return;
+  }
+  const result = PsywerxCausal.shortestPaths(
+    relationshipIndex,
+    sourceId,
+    targetId,
+    selectedPathFilters(),
+    driverById
+  );
+  renderPathResults(result, sourceId, targetId);
+  history.pushState(
+    { view: "causal", sourceId, targetId },
+    "",
+    causalUrl(sourceId, targetId)
+  );
+});
+
+pathResults.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-related-driver-id]");
+  if (button) openDriver(button.dataset.relatedDriverId, "push", drivers);
 });
 
 browseContent.addEventListener("click", (event) => {
@@ -1492,8 +2077,12 @@ copyLinkButton.addEventListener("click", copyCurrentLink);
 
 driverDetail.addEventListener("click", (event) => {
   const familyButton = event.target.closest("[data-view-family-id]");
+  const relatedDriverButton = event.target.closest("[data-related-driver-id]");
   if (familyButton) {
     showFamily(familyButton.dataset.viewFamilyId, "push", true);
+  } else if (relatedDriverButton) {
+    openDriver(relatedDriverButton.dataset.relatedDriverId, "push", drivers);
+    driverDetail.scrollTop = 0;
   }
 });
 

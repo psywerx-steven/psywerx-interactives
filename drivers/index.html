@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Explore 762 behavioral drivers across the eight interacting layers of the PSYWERX taxonomy.">
+  <meta name="description" content="Explore 793 behavioral drivers and governed causal relationships across the eight interacting layers of the PSYWERX taxonomy.">
   <title>PSYWERX Driver Explorer</title>
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="../shared/psywerx.css">
@@ -37,7 +37,7 @@
     <section class="hero">
       <div class="site-container hero__inner">
         <div class="hero__copy">
-          <p class="eyebrow">Driver Explorer &middot; Version 1.5</p>
+          <p class="eyebrow">Driver Explorer &middot; Causal Explorer v1</p>
           <h1>Map the forces that shape behavior.</h1>
           <p class="hero__lede">
             Explore a structured taxonomy of behavioral drivers spanning eight
@@ -47,7 +47,7 @@
         </div>
         <dl class="hero__stats" aria-label="Taxonomy summary">
           <div>
-            <dt id="total-driver-count">762</dt>
+            <dt id="total-driver-count">793</dt>
             <dd>canonical drivers</dd>
           </div>
           <div>
@@ -75,6 +75,9 @@
         </button>
         <button id="search-mode-button" class="mode-switch__button" type="button" aria-pressed="false">
           Search &amp; Filter
+        </button>
+        <button id="causal-mode-button" class="mode-switch__button" type="button" aria-pressed="false">
+          Explore Causal Paths
         </button>
       </div>
 
@@ -144,6 +147,64 @@
           </div>
         </div>
       </section>
+
+      <section id="causal-panel" class="mode-panel causal-panel" aria-labelledby="causal-heading" hidden>
+        <div class="causal-introduction">
+          <p class="eyebrow">Governed relationship graph</p>
+          <h3 id="causal-heading" tabindex="-1">Explore plausible causal paths</h3>
+          <p>
+            Trace the shortest governed directed paths between two Drivers. This is ontology-based
+            path exploration&mdash;not an effect estimate, forecast, or scenario-specific causal model.
+          </p>
+        </div>
+        <form id="path-form" class="path-form">
+          <div class="path-endpoints">
+            <label>
+              Driver A
+              <select id="path-source" required disabled>
+                <option value="">Choose a starting Driver</option>
+              </select>
+            </label>
+            <span class="path-arrow" aria-hidden="true">&rarr;</span>
+            <label>
+              Driver B
+              <select id="path-target" required disabled>
+                <option value="">Choose a destination Driver</option>
+              </select>
+            </label>
+          </div>
+          <fieldset class="path-filters">
+            <legend>Relationship filters</legend>
+            <label>Maximum edges
+              <select id="path-max-hops">
+                <option value="4" selected>4</option><option value="5">5</option><option value="6">6</option>
+              </select>
+            </label>
+            <label>Governance class
+              <select id="path-governance"><option value="">All public classes</option><option value="CORE">Core</option><option value="CONTEXT_DEPENDENT">Context-dependent</option></select>
+            </label>
+            <label>Causal role
+              <select id="path-role"><option value="">All roles</option><option value="CAUSES">Causes</option><option value="ENABLES">Enables</option><option value="CONSTRAINS">Constrains</option><option value="MODERATES">Moderates</option></select>
+            </label>
+            <label>Polarity
+              <select id="path-polarity"><option value="">All polarities</option><option value="POSITIVE">Positive</option><option value="NEGATIVE">Negative</option><option value="NON_MONOTONIC">Non-monotonic</option><option value="CONTEXT_DEPENDENT">Context-dependent</option><option value="UNSIGNED">Unsigned</option></select>
+            </label>
+            <label>Directness
+              <select id="path-directness"><option value="">All directness values</option><option value="DIRECT_AT_STATED_RESOLUTION">Direct at stated resolution</option><option value="MEDIATED_PATH">Mediated-path segment</option><option value="UNKNOWN">Unknown</option></select>
+            </label>
+            <label>Confidence
+              <select id="path-confidence"><option value="">All confidence levels</option><option value="HIGH">High</option><option value="MODERATE">Moderate</option><option value="LOW">Low</option></select>
+            </label>
+            <label>Evidence strength
+              <select id="path-evidence"><option value="">All evidence levels</option><option value="Strong">Strong</option><option value="Moderate">Moderate</option><option value="Mixed">Mixed</option><option value="Limited">Limited</option><option value="Emerging">Emerging</option></select>
+            </label>
+          </fieldset>
+          <button class="primary-button" type="submit">Find governed paths</button>
+        </form>
+        <div id="path-results" class="path-results" role="region" aria-label="Causal path results" aria-live="polite">
+          <p>Choose two Drivers to begin.</p>
+        </div>
+      </section>
     </section>
   </main>
 
@@ -177,6 +238,7 @@
     </div>
   </dialog>
 
+  <script src="./causal.js" defer></script>
   <script src="./app.js" defer></script>
 </body>
 </html>

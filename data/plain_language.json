@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0",
-  "contentVersion": "1.0",
+  "contentVersion": "1.1",
   "standardVersion": "1.0",
   "drivers": [
     {
@@ -102,6 +102,13 @@
       "whatThisDoesNotMean": null
     },
     {
+      "driverId": "BIO-071",
+      "plainLanguageLabel": "Available heart and lung reserve",
+      "plainLanguageExplanation": "The amount of combined heart and lung capacity a person can draw on above resting demand. More reserve can support sustained oxygen delivery and physical work when exertion, heat, illness, or stress increases demand. It is a current functional capacity, assessed for a particular person and situation.",
+      "analyticQuestion": "How much heart-and-lung capacity is available above this person's resting demand?",
+      "whatThisDoesNotMean": "This is not current oxygen availability, general fitness, or the amount of work already being performed."
+    },
+    {
       "driverId": "BIO-006",
       "plainLanguageLabel": "Fit between body clock and required schedule",
       "plainLanguageExplanation": "How well a person's preferred biological timing fits the schedule they are required to follow. Interpretation depends on recent sleep, circadian timing, light exposure, health, substances, schedule demands, and the method and time of assessment. Poor fit can exist even when sleep duration seems adequate.",
@@ -184,6 +191,13 @@
       "plainLanguageExplanation": "The person's current fluid balance and whether body water is adequate, deficient, or excessive for physiological needs. Assess it at a specified time because recent intake, exertion, illness, medication, and individual physiology can change the state and its functional effect.",
       "analyticQuestion": "Do current fluid-balance measures indicate adequate hydration, deficit, or excess?",
       "whatThisDoesNotMean": null
+    },
+    {
+      "driverId": "BIO-072",
+      "plainLanguageLabel": "Amount of active infectious pathogen",
+      "plainLanguageExplanation": "The amount of biologically active infectious material currently present in a person or defined population. A larger burden can trigger stronger immune and sickness responses and reduce functioning, but the response also depends on the pathogen, host susceptibility, treatment, and timing. This measures the infectious burden, not its symptoms.",
+      "analyticQuestion": "How much active infectious-agent burden is present in the specified person or population now?",
+      "whatThisDoesNotMean": "This is not exposure opportunity, inflammation, or sickness symptoms; those are separate stages of the pathway."
     },
     {
       "driverId": "BIO-021",
@@ -844,6 +858,13 @@
       "whatThisDoesNotMean": null
     },
     {
+      "driverId": "PSY-133",
+      "plainLanguageLabel": "Felt unfair disadvantage to one's group",
+      "plainLanguageExplanation": "The degree to which a person believes their group is unfairly worse off than a relevant comparison group or reference condition. The comparison and perceived injustice can shape anger, withdrawal, hostility, or collective action. It is a group-referenced psychological appraisal, not the measured size of an objective inequality alone.",
+      "analyticQuestion": "How strongly is the person's group perceived as unfairly disadvantaged, and relative to which comparison group or baseline?",
+      "whatThisDoesNotMean": "This is not generic unfairness, personal deprivation, or objective inequality without a group comparison and perceived injustice."
+    },
+    {
       "driverId": "PSY-046",
       "plainLanguageLabel": "How intense guilt is",
       "plainLanguageExplanation": "The present strength of negative evaluation of a specific action or omission for which the person feels responsible. Tie the assessment to a specific trigger and time. Intensity and behavior can differ with emotion regulation, culture, current goals, certainty, and perceived control.",
@@ -891,6 +912,13 @@
       "plainLanguageExplanation": "The strength and accessibility of a commitment linking a specified situational cue to a specified goal-directed response. Assess it against a specific goal and set of demands. Cognitive load, fatigue, stress, task complexity, available cues, motivation, and plan quality can change the capacity.",
       "analyticQuestion": "How strong and accessible is the person's commitment to make the specified response when the cue occurs?",
       "whatThisDoesNotMean": null
+    },
+    {
+      "driverId": "PSY-134",
+      "plainLanguageLabel": "Trust in a specified institution",
+      "plainLanguageExplanation": "The degree to which a person currently expects a particular institution to act competently, reliably, fairly, openly, and with integrity. That expectation can affect willingness to rely on its information, cooperate, or comply. Trust must be assessed for a named institution and should not be assumed from general social trust.",
+      "analyticQuestion": "How much does the person trust the specified institution to act competently, reliably, fairly, openly, and with integrity?",
+      "whatThisDoesNotMean": "This is not interpersonal trust, trust in a particular message source, or the institution's objective performance itself."
     },
     {
       "driverId": "PSY-026",
@@ -1194,6 +1222,13 @@
       "whatThisDoesNotMean": null
     },
     {
+      "driverId": "PSY-135",
+      "plainLanguageLabel": "Ability to understand another viewpoint",
+      "plainLanguageExplanation": "A person's current ability to represent what another actor sees, knows, intends, and is constrained by. Greater capacity can support more accurate interpretation, coordination, empathy, or negotiation, especially when actions are ambiguous. It concerns understanding another perspective and does not require agreeing with it or sharing the other person's feelings.",
+      "analyticQuestion": "How well can the person represent the other actor's viewpoint, knowledge, intentions, and constraints in this situation?",
+      "whatThisDoesNotMean": "This is not agreement, sympathy, moral approval, or certainty that the inferred perspective is correct."
+    },
+    {
       "driverId": "PSY-090",
       "plainLanguageLabel": "Extra weight given to immediate outcomes",
       "plainLanguageExplanation": "How much extra importance is given to outcomes available now relative to outcomes delayed by any positive amount. Assess it for a specific choice because framing, domain, stakes, emotion, resources, and experience can change the pattern; one choice should not be treated as a fixed trait.",
@@ -1383,6 +1418,13 @@
       "whatThisDoesNotMean": null
     },
     {
+      "driverId": "PSY-132",
+      "plainLanguageLabel": "How uncertain the situation feels",
+      "plainLanguageExplanation": "The degree to which a person currently lacks confidence about relevant facts, causes, possible outcomes, or their probabilities. Greater felt uncertainty can change information seeking, vigilance, reliance on authorities, or decision delay. It is a present appraisal of a situation, not a person's general discomfort with uncertainty.",
+      "analyticQuestion": "How uncertain does the person currently feel about the facts, causes, outcomes, or probabilities that matter?",
+      "whatThisDoesNotMean": "This is not intolerance of uncertainty as a relatively stable disposition, and it is not missing information itself."
+    },
+    {
       "driverId": "PSY-006",
       "plainLanguageLabel": "Expected chance of completing the task or goal",
       "plainLanguageExplanation": "The judged likelihood of successfully completing a specified task or attaining a specified goal. The specific behavior, proposition, action, or outcome must be named. Direct experience, available information, competing goals, opportunity, and time can change the judgment. This is expected success, not the person's actual capability or performance.",
@@ -1451,6 +1493,13 @@
       "plainLanguageExplanation": "It describes how much actors can enter, leave, or move across a specified social-group boundary in practice. Define the groups, boundary, interaction or resource at issue, and time window. This is an observable relation between groups, not a measure of prejudice, threat, anxiety, cultural difference, or formal segregation policy.",
       "analyticQuestion": "How easily can people enter, leave, or move across the specified social-group boundary in practice?",
       "whatThisDoesNotMean": null
+    },
+    {
+      "driverId": "SOC-099",
+      "plainLanguageLabel": "Population thresholds for joining collective action",
+      "plainLanguageExplanation": "The distribution of how much visible participation by others different people require before they become willing to join a specified collective action. A population with many low thresholds may cascade after a small start, while high or widely dispersed thresholds may stall participation. This is a population distribution, not one person's willingness.",
+      "analyticQuestion": "What distribution of participation thresholds exists for this population, action, network, and time period?",
+      "whatThisDoesNotMean": "This is not the current participation rate, collective efficacy, or a claim that observing others automatically causes participation."
     },
     {
       "driverId": "SOC-077",
@@ -1696,6 +1745,13 @@
       "plainLanguageExplanation": "It records the share or strength of interactions in which members of different groups contribute toward a shared goal or mutual benefit. Define the groups, boundary, interaction or resource at issue, and time window. This is an observable relation between groups, not a measure of prejudice, threat, anxiety, cultural difference, or formal segregation policy.",
       "analyticQuestion": "What share or intensity of cross-group interactions contributes toward a shared goal or mutual benefit?",
       "whatThisDoesNotMean": null
+    },
+    {
+      "driverId": "SOC-098",
+      "plainLanguageLabel": "How widespread intergroup hostility is",
+      "plainLanguageExplanation": "The prevalence and intensity of openly hostile attitudes or conduct between specified social groups. A higher level can alter contact, sanctions, threat interpretation, mobilization, and violence risk across the groups. The measure must identify the groups, behavior or orientation counted as hostile, population boundary, and observation period.",
+      "analyticQuestion": "How prevalent and intense is openly hostile orientation or conduct between the specified groups during the reference period?",
+      "whatThisDoesNotMean": "This is not an individual's private dislike, ordinary competition, or evidence that every member of either group is hostile."
     },
     {
       "driverId": "SOC-093",
@@ -2083,6 +2139,13 @@
       "whatThisDoesNotMean": null
     },
     {
+      "driverId": "SOC-100",
+      "plainLanguageLabel": "Rate of sharing unverified claims",
+      "plainLanguageExplanation": "The rate at which people who encounter an unverified claim pass it to others through a specified network, channel, population, and time interval. A higher rate can expand exposure more quickly, depending on network structure and correction. It measures retransmission behavior, not whether the claim is ultimately true or believed.",
+      "analyticQuestion": "At what rate are exposed recipients retransmitting the unverified claim within the defined network and interval?",
+      "whatThisDoesNotMean": "This is not total exposure, belief in the claim, factual falsity, or the number of messages produced by automated systems."
+    },
+    {
       "driverId": "CUL-016",
       "plainLanguageLabel": "How much agency means adapting oneself",
       "plainLanguageExplanation": "It describes how strongly the community tends to value adapting the self to social or environmental demands rather than changing them. It is a shared cultural model, not a claim about how every member understands or behaves as a self. The pattern can vary by role, situation, subculture, migration history, and resource dependence.",
@@ -2130,6 +2193,13 @@
       "plainLanguageExplanation": "It describes widely shared story structures that organize group identity, causality, heroes, villains, threats, and expected futures. It is a shared cultural representation, not proof of historical accuracy or uniform belief. Specify the community and period because competing narratives, generation, direct experience, source legitimacy, crisis, censorship, and subcultures can change its prominence.",
       "analyticQuestion": "How strongly do widely shared stories organize group identity, causal explanations, heroes, villains, threats, and expected futures?",
       "whatThisDoesNotMean": "Cultural prominence does not establish historical accuracy or uniform belief among community members."
+    },
+    {
+      "driverId": "CUL-091",
+      "plainLanguageLabel": "Shared sense of civic obligation",
+      "plainLanguageExplanation": "The strength of a shared expectation that members should contribute to public goods, institutions, collective defense, or civic life. A stronger duty norm can support costly participation beyond immediate personal benefit. The specific obligation and cultural unit must be identified; the norm does not show whether people actually comply.",
+      "analyticQuestion": "How strongly does the specified cultural group treat this civic contribution as an obligation?",
+      "whatThisDoesNotMean": "This is not actual civic participation, legal compulsion, institutional trust, or an individual person's private moral commitment."
     },
     {
       "driverId": "CUL-078",
@@ -2489,6 +2559,13 @@
       "whatThisDoesNotMean": "This shared cultural logic is not a measure of any person's inherent worth or proof of how an individual will respond."
     },
     {
+      "driverId": "CUL-090",
+      "plainLanguageLabel": "Shared expectations for reconciliation after harm",
+      "plainLanguageExplanation": "The strength of shared expectations favoring forgiveness, restored relations, coexistence, or reintegration after harm. Stronger norms can influence retaliation, trust rebuilding, reintegration, and conflict termination, but their meaning depends on what repair is expected and from whom. This is a cultural norm, not proof that reconciliation has occurred.",
+      "analyticQuestion": "How strongly do shared expectations favor forgiveness, restoration, coexistence, or reintegration after the specified harm?",
+      "whatThisDoesNotMean": "This is not actual forgiveness, restored trust, absence of accountability, or uniform endorsement by every group member."
+    },
+    {
       "driverId": "CUL-013",
       "plainLanguageLabel": "How often identity centers on close relationships",
       "plainLanguageExplanation": "It describes how often identity and action are organized around specific close relationships rather than personal or broad group identities. It is a shared cultural model, not a claim about how every member understands or behaves as a self. The pattern can vary by role, situation, subculture, migration history, and resource dependence.",
@@ -2671,6 +2748,13 @@
       "whatThisDoesNotMean": "This records a culture-level transmission pattern, not proof that social learning caused any particular person's adoption."
     },
     {
+      "driverId": "CUL-089",
+      "plainLanguageLabel": "Shared acceptance of violence as legitimate",
+      "plainLanguageExplanation": "The strength of shared cultural expectations that accept or reject violence as a legitimate means under specified circumstances. Stronger acceptance can weaken moral restraint and affect sanctioning, recruitment, retaliation, or support for coercion. It is a group-level norm whose content and conditions must be stated, not an assumed trait of every member.",
+      "analyticQuestion": "How strongly does the cultural group accept or reject violence as legitimate under the specified conditions?",
+      "whatThisDoesNotMean": "This is not the prevalence of violent behavior, personal aggression, or a permanent characteristic of a culture or its members."
+    },
+    {
       "driverId": "ENV-035",
       "plainLanguageLabel": "Protection from being overheard",
       "plainLanguageExplanation": "How well conversations and other sounds are shielded from people who are not intended to hear them. Assess speech transmission, how far intelligible speech carries, and privacy from relevant listening positions within a defined setting and time. This is distinct from the overall noise level or whether anyone deliberately listens.",
@@ -2732,6 +2816,13 @@
       "plainLanguageExplanation": "A narrow or capacity-limited passage that restricts how many people or vehicles can move through a setting. Assess its width, throughput, crowd density, and speed–flow pattern at the relevant time and demand level. The bottleneck is the physical constraint, not the queue or delay that may form around it.",
       "analyticQuestion": "How much does the narrowest or capacity-limited passage restrict movement through the setting?",
       "whatThisDoesNotMean": null
+    },
+    {
+      "driverId": "ENV-108",
+      "plainLanguageLabel": "Independent backup routes for critical utilities",
+      "plainLanguageExplanation": "The degree to which essential power, water, communications, transport, or shelter functions have physically independent substitute pathways. Greater redundancy can limit common-mode failure and shorten service loss after disruption. The measure should distinguish truly independent alternatives from nominal backups that depend on the same vulnerable component.",
+      "analyticQuestion": "How many genuinely independent substitute pathways support each critical utility function in the specified system?",
+      "whatThisDoesNotMean": "This is not current service availability, spare capacity alone, or multiple backups that share one point of failure."
     },
     {
       "driverId": "ENV-011",
@@ -2809,6 +2900,13 @@
       "plainLanguageExplanation": "It describes oxygen availability in the external environment as determined primarily by barometric pressure and elevation. Ways to assess it include altitude, barometric pressure, and inspired oxygen partial pressure. Define the route or place, season, and relevant users before comparing the physical barrier.",
       "analyticQuestion": "How much oxygen is available in the surrounding air at the specified elevation and pressure?",
       "whatThisDoesNotMean": "This is oxygen available in the environment, not oxygenation inside the body or physiological hypoxia."
+    },
+    {
+      "driverId": "ENV-109",
+      "plainLanguageLabel": "Continuity of essential supply delivery",
+      "plainLanguageExplanation": "The reliability over time of physically delivering food, water, fuel, medicine, or equipment to where it is needed. Higher continuity means that nominal supplies continue reaching users despite shocks, delay, or distribution failure. It must be assessed for a specified commodity, service standard, destination, and time window.",
+      "analyticQuestion": "How reliably is the specified essential supply reaching the point of need throughout the required time window?",
+      "whatThisDoesNotMean": "This is not the amount of stock that exists, institutional service capacity, or one successful delivery."
     },
     {
       "driverId": "ENV-079",
@@ -3035,6 +3133,13 @@
       "whatThisDoesNotMean": "Passive observability is a property of physical design, not proof that anyone is watching or that surveillance occurs."
     },
     {
+      "driverId": "ENV-106",
+      "plainLanguageLabel": "Intensity of environmental pathogen exposure",
+      "plainLanguageExplanation": "The combined concentration, duration, and opportunity for contact with infectious agents in a physical setting. Greater exposure intensity can raise infection probability, depending on the pathogen, protective measures, route of contact, and host susceptibility. It describes the external exposure condition before infection, biological burden, or symptoms occur.",
+      "analyticQuestion": "What concentration, duration, and contact opportunity characterize pathogen exposure in the specified setting and period?",
+      "whatThisDoesNotMean": "This is not infection, infectious burden inside a person, immune response, or the severity of resulting illness."
+    },
+    {
       "driverId": "ENV-010",
       "plainLanguageLabel": "Physical protection at pedestrian crossings",
       "plainLanguageExplanation": "The physical design features that limit a pedestrian's exposure to vehicle conflict while crossing a road, such as marked crossings, refuge islands, signal timing, sightlines, and crossing distance. Assess the specified crossing for relevant users and traffic periods. These features do not establish perceived safety or guarantee that a collision will be prevented.",
@@ -3082,6 +3187,13 @@
       "plainLanguageExplanation": "The degree to which safe water is physically present, reachable, sufficient, and reliable at the time and place it is needed. Indicators may include distance to a water point, litres available per person, waiting time, and service reliability. This external resource condition can constrain hydration or hygiene, but it is separate from affordability, entitlement, allocation policy, and a person's current hydration state.",
       "analyticQuestion": "How much safe, reachable, and reliable water is available where and when it is needed?",
       "whatThisDoesNotMean": "It is not the same as affordability, legal entitlement, service eligibility, or current hydration status."
+    },
+    {
+      "driverId": "ENV-107",
+      "plainLanguageLabel": "Contamination in drinking water",
+      "plainLanguageExplanation": "The amount of biological or chemical contamination in water intended for drinking or food preparation. Higher contamination can increase illness risk and prompt avoidance, substitution, or movement, depending on the contaminant, dose, and available alternatives. The contaminant, water source, measurement unit, and reference period should be specified.",
+      "analyticQuestion": "What contaminants are present in the drinking-water supply, at what measured levels, and over what period?",
+      "whatThisDoesNotMean": "This is not water availability, perceived water safety, or illness caused by the exposure."
     },
     {
       "driverId": "ENV-051",
@@ -3434,6 +3546,13 @@
       "whatThisDoesNotMean": "Rule scope is not the same as enforcement, actual information access, legality, or public acceptance."
     },
     {
+      "driverId": "INS-111",
+      "plainLanguageLabel": "Openness for independent civic action",
+      "plainLanguageExplanation": "The extent to which law and practice allow people and civil-society organizations to associate, assemble, advocate, monitor institutions, and act independently. More open civic space expands nonviolent channels for organization and grievance expression. It must be assessed across both formal protections and actual enforcement in the specified jurisdiction and period.",
+      "analyticQuestion": "How open are the legal and practical conditions for independent association, assembly, advocacy, and civil-society action?",
+      "whatThisDoesNotMean": "This is not the amount of civic participation, public agreement with civic groups, or formal rights that cannot be exercised in practice."
+    },
+    {
       "driverId": "INS-086",
       "plainLanguageLabel": "Pressure to comply with powerful requirements",
       "plainLanguageExplanation": "It tracks pressure on organizations to conform because powerful actors, laws, funders, or dependencies require particular structures or practices. Ways to assess it include mandated standards, funding conditions, and regulatory templates. Define the organizations, shared resource or task, governance setting, and period; pressure or dependence does not prove a response.",
@@ -3553,6 +3672,13 @@
       "whatThisDoesNotMean": null
     },
     {
+      "driverId": "INS-110",
+      "plainLanguageLabel": "Integrity of the electoral process",
+      "plainLanguageExplanation": "The degree to which electoral rules and administration enable genuine, inclusive, accurately counted, and contestable choice. Higher integrity can support legitimacy, participation, peaceful competition, and acceptance of outcomes, although those effects remain context-dependent. Assessment should cover the relevant stages and institutions rather than relying on a single irregularity or outcome.",
+      "analyticQuestion": "How well do the relevant electoral rules and administrative stages support genuine, inclusive, accurate, and contestable choice?",
+      "whatThisDoesNotMean": "This is not whether a preferred candidate won, public trust in the result, or the absence of every procedural error."
+    },
+    {
       "driverId": "INS-003",
       "plainLanguageLabel": "Restrictiveness of eligibility rules",
       "plainLanguageExplanation": "It shows how institutional criteria determine who is authorized, entitled, admitted, excluded, or eligible for benefits, roles, or resources. Ways to assess it include eligibility criteria, membership rules, and citizenship/residency requirements. Assess the named rule system, covered actors and decisions, and period; formal provisions may differ from implementation.",
@@ -3565,6 +3691,13 @@
       "plainLanguageExplanation": "How broadly temporary crisis powers can alter normal rights, procedures, procurement, or decision authority. Examine which actors can activate the powers, which rules they can suspend or change, who is covered, and for how long. Breadth does not establish that the powers are lawful, justified, implemented, or effective.",
       "analyticQuestion": "Which normal rights, procedures, or decision powers can emergency authorities alter, and how broadly?",
       "whatThisDoesNotMean": "The breadth of emergency authority does not establish whether the powers are lawful, justified, implemented, or effective."
+    },
+    {
+      "driverId": "INS-114",
+      "plainLanguageLabel": "Institutional capacity for emergency response",
+      "plainLanguageExplanation": "The current institutional ability to detect an acute disruption, coordinate actors, communicate, mobilize resources, and sustain response operations. Greater capacity can limit how hazards become losses or scarcity, depending on the event and access conditions. It concerns organized response capability, not legal authority, routine service output, or the outcome of one incident.",
+      "analyticQuestion": "How much capacity do responsible institutions currently have to detect, coordinate, communicate, mobilize, and sustain the required response?",
+      "whatThisDoesNotMean": "This is not emergency authority, physical infrastructure condition, available supplies, or evidence that a response succeeded."
     },
     {
       "driverId": "INS-070",
@@ -3812,6 +3945,13 @@
       "whatThisDoesNotMean": null
     },
     {
+      "driverId": "INS-112",
+      "plainLanguageLabel": "Independence of news organizations",
+      "plainLanguageExplanation": "The degree to which news organizations can choose, investigate, and publish material without coercive political control or concentrated private interference. Greater independence can support diverse information, scrutiny, and credibility, but it does not guarantee accuracy. Assessment should specify the organizations, controlling actors, decisions, and jurisdiction involved.",
+      "analyticQuestion": "How independently can the specified news organizations select, investigate, and publish without coercive political or concentrated private control?",
+      "whatThisDoesNotMean": "This is not factual accuracy, viewpoint diversity in the available content, or public trust in the media."
+    },
+    {
       "driverId": "INS-087",
       "plainLanguageLabel": "Pressure to imitate peer organizations",
       "plainLanguageExplanation": "This Driver measures the degree to which organizations imitate peers they see as successful or legitimate when outcomes or appropriate practices are uncertain. Specify the organizations, peer group, practice, institutional setting, and period. It captures pressure toward imitation, not proof that copying occurs or improves performance.",
@@ -3873,6 +4013,13 @@
       "plainLanguageExplanation": "How demanding formal performance indicators, quotas, scorecards, rankings, or thresholds are for a defined unit or person. Assess the target level relative to the relevant baseline, workload, resources, and period. This describes the pressure encoded in the target, not actual performance, motivation, or the consequences attached to missing it.",
       "analyticQuestion": "What targets and thresholds are used, and how demanding are they for the evaluated unit or person?",
       "whatThisDoesNotMean": null
+    },
+    {
+      "driverId": "INS-113",
+      "plainLanguageLabel": "How faithfully policy is carried out",
+      "plainLanguageExplanation": "The degree to which an adopted policy is implemented as specified across responsible organizations, places, and time. Higher fidelity means that procedures, services, incentives, or enforcement more closely match the authorized design. It does not establish whether the policy itself is effective, appropriate, or producing the intended outcomes.",
+      "analyticQuestion": "How closely does implementation match the adopted policy across responsible organizations, locations, and time periods?",
+      "whatThisDoesNotMean": "This is not policy quality, policy effectiveness, legal compliance by the public, or general government capacity."
     },
     {
       "driverId": "INS-089",
@@ -4211,6 +4358,13 @@
       "whatThisDoesNotMean": "Cultural-context fit does not imply that all group members share one interpretation or response."
     },
     {
+      "driverId": "INF-076",
+      "plainLanguageLabel": "Intensity of dehumanizing content",
+      "plainLanguageExplanation": "The degree to which content denies, diminishes, or excludes the humanity and moral standing of a specified group. Greater intensity may weaken moral inhibition and contribute to hostility or support for violence, but exposure does not determine response. Assessment should distinguish dehumanization from ordinary criticism, dislike, or negative emotional tone.",
+      "analyticQuestion": "How strongly does the content deny or diminish the target group's humanity or moral standing?",
+      "whatThisDoesNotMean": "This is not any negative description, criticism, hostility, or evidence that an audience accepts the message."
+    },
+    {
       "driverId": "INF-026",
       "plainLanguageLabel": "Amount of evidence presented",
       "plainLanguageExplanation": "How many reasons, studies, facts, examples, or other supporting points a message presents for a claim. The amount can be counted or compared within a defined message or set of messages. More evidence is not necessarily better evidence: quantity does not establish methodological quality, relevance, independence, or persuasive effect.",
@@ -4307,6 +4461,13 @@
       "plainLanguageExplanation": "Where claims, evidence, caveats, and source cues appear and the order in which a person encounters them. For example, a caveat may precede a claim or appear only after supporting evidence. The measure concerns message arrangement, not the amount or quality of the content and not whether the sequence changes audience response.",
       "analyticQuestion": "In what order are the claims, evidence, caveats, and source cues presented?",
       "whatThisDoesNotMean": "Message order does not establish which elements an audience notices, remembers, or finds persuasive."
+    },
+    {
+      "driverId": "INF-074",
+      "plainLanguageLabel": "Gap in needed credible information",
+      "plainLanguageExplanation": "The size of the gap between what an audience needs to know for a behavior or decision and the timely, credible information available to it. A larger void can increase uncertainty and leave more room for rumor, speculation, or adversarial narratives. The audience, information need, credibility standard, and deadline must be specified.",
+      "analyticQuestion": "How large is the gap between this audience's behavior-relevant information need and timely credible information?",
+      "whatThisDoesNotMean": "This is not information volume, subjective uncertainty, or proof that rumors will fill the gap."
     },
     {
       "driverId": "INF-008",
@@ -4554,6 +4715,13 @@
       "whatThisDoesNotMean": null
     },
     {
+      "driverId": "INF-075",
+      "plainLanguageLabel": "Diversity of accessible relevant viewpoints",
+      "plainLanguageExplanation": "The breadth of substantively different, relevant perspectives available within an audience's accessible information set. Greater diversity can enable comparison and cross-checking, but it does not guarantee quality, balance, or reduced polarization. Assessment must define the issue, audience, access boundary, and what counts as a meaningfully distinct viewpoint.",
+      "analyticQuestion": "How broad is the range of substantively distinct relevant viewpoints accessible to the specified audience?",
+      "whatThisDoesNotMean": "This is not the number of sources, factual accuracy, equal representation, or diversity of opinions held by the audience."
+    },
+    {
       "driverId": "INF-021",
       "plainLanguageLabel": "Visual form used to present information",
       "plainLanguageExplanation": "The type of visual display used to communicate information, such as a chart, map, diagram, icon array, photograph, or other graphic. Different formats organize the same content in different ways. The measure identifies the form and configuration of the display, not its factual accuracy, readability, or effect on an audience.",
@@ -4608,6 +4776,13 @@
       "plainLanguageExplanation": "How much a computational system increases an item's distribution or exposure compared with a defined baseline for how widely it would otherwise be shown. This describes what the system allocates, not the item's popularity, quality, or behavioral effect. Its meaning depends on the baseline, ranking objective, user choices, network structure, and how exposure is measured.",
       "analyticQuestion": "How much additional distribution or exposure does the system give this item relative to the baseline?",
       "whatThisDoesNotMean": "It is not the same as content quality, organic popularity, engagement, or a guaranteed user response."
+    },
+    {
+      "driverId": "TEC-091",
+      "plainLanguageLabel": "Size of systematic algorithmic disparities",
+      "plainLanguageExplanation": "The magnitude of systematic differences in algorithmic selection, ranking, prediction, or error across relevant groups or contexts. Larger disparities can reallocate exposure, opportunity, burden, or error. Interpretation requires a defined outcome, comparison groups, denominator, baseline, and performance context; disparity alone does not identify intent or cause.",
+      "analyticQuestion": "How large are systematic differences in the algorithm's outputs or errors across the defined groups, contexts, and baseline?",
+      "whatThisDoesNotMean": "This is not proof of discriminatory intent, overall model inaccuracy, or every difference between groups."
     },
     {
       "driverId": "TEC-029",
@@ -4680,6 +4855,13 @@
       "whatThisDoesNotMean": "Automatic continuation does not establish that the user attends to or wants the next item."
     },
     {
+      "driverId": "TEC-092",
+      "plainLanguageLabel": "Match between system confidence and accuracy",
+      "plainLanguageExplanation": "The degree to which a system's stated confidence or alert strength matches how often it is actually correct. Good calibration means outcomes labeled with a given confidence occur at about that rate. It is distinct from overall accuracy: a system can be accurate on average while expressing confidence poorly.",
+      "analyticQuestion": "How closely does each stated confidence or alert level match the observed frequency of correct outcomes?",
+      "whatThisDoesNotMean": "This is not overall accuracy, reliability, explanation quality, or whether users rely on the system appropriately."
+    },
+    {
       "driverId": "TEC-036",
       "plainLanguageLabel": "How much of the task technology performs",
       "plainLanguageExplanation": "How far technology takes over one or more stages of a task: gathering information, analyzing it, selecting a decision, or carrying out an action. Automation can be high at one stage and low at another, so the profile should not be reduced to a single vague label. It concerns task allocation, not reliability or performance quality.",
@@ -4722,6 +4904,13 @@
       "whatThisDoesNotMean": "Tracking may occur without being visible to users; visibility does not establish consent, legitimacy, or a particular behavioral response."
     },
     {
+      "driverId": "TEC-094",
+      "plainLanguageLabel": "Protection of communication from observation",
+      "plainLanguageExplanation": "The degree to which communication content and metadata are protected from unauthorized observation while moving through systems and while stored. Greater confidentiality can reduce surveillance exposure and change disclosure or coordination risk. The protected data, authorized parties, technical boundary, and lifecycle stage must be specified.",
+      "analyticQuestion": "How well are the specified communication content and metadata protected from unauthorized observation in transit and storage?",
+      "whatThisDoesNotMean": "This is not anonymity, message integrity, device security, or a guarantee that authorized recipients will keep information private."
+    },
+    {
       "driverId": "TEC-002",
       "plainLanguageLabel": "Availability of compatible device when needed",
       "plainLanguageExplanation": "Whether a person can practically obtain and use a device capable of supporting the target digital behavior when it is needed. Access depends on availability, affordability, sharing arrangements, device capability, and the task’s requirements. It concerns practical device access, not whether the person uses the device or successfully completes the behavior.",
@@ -4741,6 +4930,13 @@
       "plainLanguageExplanation": "How much a platform enables someone to preview, revise, curate, or remove a digital communication before or after it becomes visible. Editability depends on which changes are allowed, when, and whether prior versions persist. It concerns available controls, not whether people use them or whether edits prevent exposure, misunderstanding, or later redistribution.",
       "analyticQuestion": "What can a user preview, revise, curate, or remove before and after the content becomes visible?",
       "whatThisDoesNotMean": "Editability is a platform capability, not evidence that content is edited or that earlier versions disappear."
+    },
+    {
+      "driverId": "TEC-093",
+      "plainLanguageLabel": "Technical capacity to enforce content rules",
+      "plainLanguageExplanation": "The technical capacity of a platform to detect, prioritize, label, restrict, or remove governed content at the scale and speed its policy requires. Greater capacity expands what enforcement can accomplish, subject to detection error and adversarial adaptation. It measures capability, not the policy's legitimacy, actual enforcement decisions, or their effects.",
+      "analyticQuestion": "How much governed content can the platform accurately detect and act on within the required scale and time?",
+      "whatThisDoesNotMean": "This is not moderation policy strictness, actual enforcement frequency, absence of errors, or evidence that moderation changes behavior."
     },
     {
       "driverId": "TEC-046",
@@ -4776,6 +4972,13 @@
       "plainLanguageExplanation": "How visibly a system shows the number of consecutive days or sessions in which a target behavior occurred. The display depends on what counts as completion, the reset rule, and where the counter appears. It concerns visibility of the continuity count, not whether the count is accurate, motivating, or important to the user.",
       "analyticQuestion": "How prominently does the interface display the consecutive-day or session count for the target behavior?",
       "whatThisDoesNotMean": "A visible continuity counter does not establish that the record is accurate or that users value or maintain the streak."
+    },
+    {
+      "driverId": "TEC-096",
+      "plainLanguageLabel": "Capacity to run coordinated inauthentic accounts",
+      "plainLanguageExplanation": "The operational capacity to deploy and coordinate automated or partly automated accounts that falsely appear to be independent human participants. Greater capacity can manufacture visibility, repetition, apparent consensus, targeting, or harassment at scale. It measures available operational capability within a specified platform and period, not whether audiences are persuaded.",
+      "analyticQuestion": "How much coordinated inauthentic account activity could the operator sustain on the specified platform and time scale?",
+      "whatThisDoesNotMean": "This is not content-generation capacity, ordinary automation, actual audience exposure, or the behavioral effect of the operation."
     },
     {
       "driverId": "TEC-080",
@@ -5135,11 +5338,25 @@
       "whatThisDoesNotMean": "An available system may still be slow, inaccurate, difficult to use, or unsuitable for the task."
     },
     {
+      "driverId": "TEC-090",
+      "plainLanguageLabel": "Severity of technological system compromise",
+      "plainLanguageExplanation": "The extent to which unauthorized actors can control, alter, observe, or disrupt a technological system or its data. Greater compromise can damage integrity, confidentiality, availability, and provenance. The assessment should specify affected components, privileges, data, duration, and realized access rather than treating the mere presence of a vulnerability as compromise.",
+      "analyticQuestion": "How much unauthorized control, alteration, observation, or disruption has occurred across the specified system and data?",
+      "whatThisDoesNotMean": "This is not vulnerability, attack attempt, outage severity from another cause, or the likelihood of future compromise."
+    },
+    {
       "driverId": "TEC-083",
       "plainLanguageLabel": "How long stored data remain retrievable",
       "plainLanguageExplanation": "How long data remain technically stored and retrievable under the active system configuration. The interval begins with storage and ends when the data can no longer be recovered through the relevant system. It concerns technical retention, not the legal policy, practical use, backup copies outside scope, or whether anyone accesses the data.",
       "analyticQuestion": "For how long do the specified data remain stored and retrievable under the active configuration?",
       "whatThisDoesNotMean": "Technical retention duration is not necessarily the stated policy, legal requirement, or period of active use."
+    },
+    {
+      "driverId": "TEC-095",
+      "plainLanguageLabel": "Dependence on single failure points",
+      "plainLanguageExplanation": "The degree to which essential digital functions depend on components whose individual loss could disable the system. Greater concentration creates more correlated outage risk and fewer recovery options during attack or failure. Assessment should identify functions, dependencies, substitute paths, and whether apparently separate components share a common vulnerable dependency.",
+      "analyticQuestion": "How concentrated are essential digital functions in components whose individual failure could disable the system?",
+      "whatThisDoesNotMean": "This is not current outage severity, general system complexity, or every important component in a system."
     },
     {
       "driverId": "TEC-065",

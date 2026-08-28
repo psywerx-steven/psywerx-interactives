@@ -833,6 +833,66 @@
     }
   },
   {
+    "id": "BIO-071",
+    "name": "Cardiorespiratory Functional Reserve",
+    "aliases": [
+      "Cardiovascular Functional Reserve"
+    ],
+    "layer": "Biological",
+    "family": "Fatigue, Pain & Physical Capacity",
+    "definition": "Current integrated cardiac and pulmonary reserve available to sustain oxygen delivery and physical work above resting demand for a specified person and context.",
+    "dataType": "Magnitude / level",
+    "representationScale": "Continuous or ordinal construct-specific measure with population, setting, reference period, and unit explicitly specified.",
+    "polarityDirection": "Higher values = greater cardiorespiratory functional reserve.",
+    "mechanism": "Reserve constrains effort tolerance and recovery under heat, stress, exertion, illness, and aging.",
+    "likelyUpstreamInfluences": [
+      "Cardiovascular health",
+      "training",
+      "aging",
+      "medication",
+      "heat strain"
+    ],
+    "likelyDownstreamInfluences": [
+      "Physical functional capacity",
+      "fatigue",
+      "tolerance of sustained operations"
+    ],
+    "moderatorsBoundaryConditions": "Interpret only for the specified population, unit, setting, exposure, reference period, and measurement method; effects may vary across contexts.",
+    "typicalInteractionCandidates": [
+      "Cardiovascular health",
+      "training",
+      "Physical functional capacity",
+      "fatigue"
+    ],
+    "modifiability": "Moderate",
+    "volatility": "Moderate",
+    "timeScaleOfChange": [
+      "Hours–Days"
+    ],
+    "timeScaleQualifier": "Typical state-change speed is context-dependent; do not infer persistence from this band.",
+    "onsetCausalLag": [
+      "Mixed / Context-dependent"
+    ],
+    "persistenceRecovery": "Persistence and recovery depend on exposure, baseline state, intervention, and system feedback.",
+    "indicators": [
+      "Construct-valid indicators of cardiorespiratory functional reserve measured for the specified unit, setting, and reference period"
+    ],
+    "measurementAssessmentMethods": "Use a validated construct-specific instrument, administrative or sensor measure, or transparent composite with explicit unit and reference period.",
+    "observability": "Moderate",
+    "measurementCaveats": "Feasible With Explicit Unit; proxy measures require construct-validity review.",
+    "evidenceStrength": "Moderate",
+    "evidenceNotes": "Rename to Cardiorespiratory Functional Reserve and place only after confirming separation from BIO-024 and oxygen-transport Drivers.",
+    "commonMisinterpretations": "Do not treat Cardiorespiratory Functional Reserve as interchangeable with BIO-024; BIO-019; BIO-020 or as a universal, context-free cause.",
+    "keySources": [
+      "SRC-499",
+      "SRC-508"
+    ],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Ontology_v1.0.xlsx",
+      "sheet": "Drivers"
+    }
+  },
+  {
     "id": "BIO-006",
     "name": "Chronotype–Schedule Alignment",
     "aliases": [
@@ -1557,6 +1617,64 @@
     "commonMisinterpretations": "Meta-analytic evidence does not support strong universal cognitive impairment from moderate hypohydration.",
     "keySources": [
       "SRC021"
+    ],
+    "source": {
+      "workbook": "PSYWERX_Layer_1_Biological_Driver_Ontology_v1.0.xlsx",
+      "sheet": "Drivers"
+    }
+  },
+  {
+    "id": "BIO-072",
+    "name": "Infectious Pathogen Burden",
+    "aliases": [],
+    "layer": "Biological",
+    "family": "Immune & Inflammatory Physiology",
+    "definition": "Current magnitude of biologically active infectious-agent burden in a person or population unit.",
+    "dataType": "Magnitude / level",
+    "representationScale": "Continuous or ordinal construct-specific measure with population, setting, reference period, and unit explicitly specified.",
+    "polarityDirection": "Higher values = greater infectious pathogen burden.",
+    "mechanism": "Pathogen burden initiates immune activation, sickness behavior, fatigue, and functional impairment.",
+    "likelyUpstreamInfluences": [
+      "Exposure intensity",
+      "immunity",
+      "prevention",
+      "treatment"
+    ],
+    "likelyDownstreamInfluences": [
+      "Inflammation",
+      "sickness response",
+      "absence",
+      "reduced interaction"
+    ],
+    "moderatorsBoundaryConditions": "Interpret only for the specified population, unit, setting, exposure, reference period, and measurement method; effects may vary across contexts.",
+    "typicalInteractionCandidates": [
+      "Exposure intensity",
+      "immunity",
+      "Inflammation",
+      "sickness response"
+    ],
+    "modifiability": "Moderate",
+    "volatility": "Moderate",
+    "timeScaleOfChange": [
+      "Hours–Days"
+    ],
+    "timeScaleQualifier": "Typical state-change speed is context-dependent; do not infer persistence from this band.",
+    "onsetCausalLag": [
+      "Mixed / Context-dependent"
+    ],
+    "persistenceRecovery": "Persistence and recovery depend on exposure, baseline state, intervention, and system feedback.",
+    "indicators": [
+      "Construct-valid indicators of infectious pathogen burden measured for the specified unit, setting, and reference period"
+    ],
+    "measurementAssessmentMethods": "Use a validated construct-specific instrument, administrative or sensor measure, or transparent composite with explicit unit and reference period.",
+    "observability": "Moderate",
+    "measurementCaveats": "Feasible With Explicit Unit; proxy measures require construct-validity review.",
+    "evidenceStrength": "Strong",
+    "evidenceNotes": "Separates infectious agent burden from host response and creates the missing exposure → burden → immune response chain.",
+    "commonMisinterpretations": "Do not treat Infectious Pathogen Burden as interchangeable with BIO-008; BIO-030; PDC-017 or as a universal, context-free cause.",
+    "keySources": [
+      "SRC-508",
+      "SRC-516"
     ],
     "source": {
       "workbook": "PSYWERX_Layer_1_Biological_Driver_Ontology_v1.0.xlsx",
@@ -7700,6 +7818,64 @@
     }
   },
   {
+    "id": "PSY-133",
+    "name": "Group-Based Relative Deprivation",
+    "aliases": [],
+    "layer": "Psychological",
+    "family": "Normative & Relational Perceptions",
+    "definition": "Perceived unjust disadvantage of one's group relative to a salient comparison group or reference condition.",
+    "dataType": "Magnitude / level",
+    "representationScale": "Continuous or ordinal construct-specific measure with population, setting, reference period, and unit explicitly specified.",
+    "polarityDirection": "Higher values = greater group-based relative deprivation.",
+    "mechanism": "Comparison plus perceived injustice and affect can motivate collective action, hostility, withdrawal, or support for change.",
+    "likelyUpstreamInfluences": [
+      "Material inequality",
+      "status comparison",
+      "identity salience",
+      "framing"
+    ],
+    "likelyDownstreamInfluences": [
+      "Anger",
+      "collective action",
+      "intergroup attitudes",
+      "institutional trust"
+    ],
+    "moderatorsBoundaryConditions": "Interpret only for the specified population, unit, setting, exposure, reference period, and measurement method; effects may vary across contexts.",
+    "typicalInteractionCandidates": [
+      "Material inequality",
+      "status comparison",
+      "Anger",
+      "collective action"
+    ],
+    "modifiability": "Moderate",
+    "volatility": "Moderate",
+    "timeScaleOfChange": [
+      "Hours–Days"
+    ],
+    "timeScaleQualifier": "Typical state-change speed is context-dependent; do not infer persistence from this band.",
+    "onsetCausalLag": [
+      "Mixed / Context-dependent"
+    ],
+    "persistenceRecovery": "Persistence and recovery depend on exposure, baseline state, intervention, and system feedback.",
+    "indicators": [
+      "Construct-valid indicators of group-based relative deprivation measured for the specified unit, setting, and reference period"
+    ],
+    "measurementAssessmentMethods": "Use a validated construct-specific instrument, administrative or sensor measure, or transparent composite with explicit unit and reference period.",
+    "observability": "Moderate",
+    "measurementCaveats": "Feasible With Explicit Unit; proxy measures require construct-validity review.",
+    "evidenceStrength": "Strong",
+    "evidenceNotes": "Group comparison plus perceived injustice is not represented by generic fairness and is a supported collective-action mediator.",
+    "commonMisinterpretations": "Do not treat Group-Based Relative Deprivation as interchangeable with PSY-022; PSY-097; SOC-096 or as a universal, context-free cause.",
+    "keySources": [
+      "SRC-500",
+      "SRC-501"
+    ],
+    "source": {
+      "workbook": "PSYWERX_Layer_2_Psychological_Driver_Ontology_v1.0.xlsx",
+      "sheet": "Drivers"
+    }
+  },
+  {
     "id": "PSY-046",
     "name": "Guilt Intensity",
     "aliases": [
@@ -8162,6 +8338,66 @@
       "SRC114",
       "SRC120",
       "SRC155"
+    ],
+    "source": {
+      "workbook": "PSYWERX_Layer_2_Psychological_Driver_Ontology_v1.0.xlsx",
+      "sheet": "Drivers"
+    }
+  },
+  {
+    "id": "PSY-134",
+    "name": "Institutional Trust",
+    "aliases": [],
+    "layer": "Psychological",
+    "family": "Normative & Relational Perceptions",
+    "definition": "Current expectation that a specified institution will act competently, reliably, fairly, openly, and with integrity.",
+    "dataType": "Magnitude / level",
+    "representationScale": "Continuous or ordinal construct-specific measure with population, setting, reference period, and unit explicitly specified.",
+    "polarityDirection": "Higher values = greater institutional trust.",
+    "mechanism": "Trust changes compliance, information acceptance, cooperation, and willingness to rely on institutional action.",
+    "likelyUpstreamInfluences": [
+      "Service performance",
+      "fairness",
+      "corruption",
+      "transparency",
+      "experience"
+    ],
+    "likelyDownstreamInfluences": [
+      "Compliance",
+      "legitimacy",
+      "information acceptance",
+      "participation"
+    ],
+    "moderatorsBoundaryConditions": "Interpret only for the specified population, unit, setting, exposure, reference period, and measurement method; effects may vary across contexts.",
+    "typicalInteractionCandidates": [
+      "Service performance",
+      "fairness",
+      "Compliance",
+      "legitimacy"
+    ],
+    "modifiability": "Moderate",
+    "volatility": "Moderate",
+    "timeScaleOfChange": [
+      "Hours–Days"
+    ],
+    "timeScaleQualifier": "Typical state-change speed is context-dependent; do not infer persistence from this band.",
+    "onsetCausalLag": [
+      "Mixed / Context-dependent"
+    ],
+    "persistenceRecovery": "Persistence and recovery depend on exposure, baseline state, intervention, and system feedback.",
+    "indicators": [
+      "Construct-valid indicators of institutional trust measured for the specified unit, setting, and reference period"
+    ],
+    "measurementAssessmentMethods": "Use a validated construct-specific instrument, administrative or sensor measure, or transparent composite with explicit unit and reference period.",
+    "observability": "Moderate",
+    "measurementCaveats": "Feasible With Explicit Unit; proxy measures require construct-validity review.",
+    "evidenceStrength": "Strong",
+    "evidenceNotes": "The object is an institution, unlike interpersonal or source trust; it bridges institutional performance to compliance and cooperation.",
+    "commonMisinterpretations": "Do not treat Institutional Trust as interchangeable with PSY-021; PSY-023; PSY-118 or as a universal, context-free cause.",
+    "keySources": [
+      "SRC-502",
+      "SRC-503",
+      "SRC-504"
     ],
     "source": {
       "workbook": "PSYWERX_Layer_2_Psychological_Driver_Ontology_v1.0.xlsx",
@@ -11037,6 +11273,64 @@
     }
   },
   {
+    "id": "PSY-135",
+    "name": "Perspective-Taking Capacity",
+    "aliases": [],
+    "layer": "Psychological",
+    "family": "Agency, Attribution & Moral Judgment",
+    "definition": "Current capacity to infer and represent another actor's viewpoint, knowledge, intentions, and constraints.",
+    "dataType": "Magnitude / level",
+    "representationScale": "Continuous or ordinal construct-specific measure with population, setting, reference period, and unit explicitly specified.",
+    "polarityDirection": "Higher values = greater perspective-taking capacity.",
+    "mechanism": "Perspective taking affects attribution, coordination, empathy, negotiation, and interpretation of ambiguous action.",
+    "likelyUpstreamInfluences": [
+      "Cognitive load",
+      "knowledge",
+      "motivation",
+      "intergroup contact"
+    ],
+    "likelyDownstreamInfluences": [
+      "Attribution accuracy",
+      "empathy",
+      "cooperation",
+      "conflict"
+    ],
+    "moderatorsBoundaryConditions": "Interpret only for the specified population, unit, setting, exposure, reference period, and measurement method; effects may vary across contexts.",
+    "typicalInteractionCandidates": [
+      "Cognitive load",
+      "knowledge",
+      "Attribution accuracy",
+      "empathy"
+    ],
+    "modifiability": "Moderate",
+    "volatility": "Moderate",
+    "timeScaleOfChange": [
+      "Hours–Days"
+    ],
+    "timeScaleQualifier": "Typical state-change speed is context-dependent; do not infer persistence from this band.",
+    "onsetCausalLag": [
+      "Mixed / Context-dependent"
+    ],
+    "persistenceRecovery": "Persistence and recovery depend on exposure, baseline state, intervention, and system feedback.",
+    "indicators": [
+      "Construct-valid indicators of perspective-taking capacity measured for the specified unit, setting, and reference period"
+    ],
+    "measurementAssessmentMethods": "Use a validated construct-specific instrument, administrative or sensor measure, or transparent composite with explicit unit and reference period.",
+    "observability": "Moderate",
+    "measurementCaveats": "Feasible With Explicit Unit; proxy measures require construct-validity review.",
+    "evidenceStrength": "Moderate",
+    "evidenceNotes": "Cognitive perspective representation is distinct from affective empathic concern and supports multi-actor coordination models.",
+    "commonMisinterpretations": "Do not treat Perspective-Taking Capacity as interchangeable with PSY-047; PSY-048 or as a universal, context-free cause.",
+    "keySources": [
+      "SRC-494",
+      "SRC-495"
+    ],
+    "source": {
+      "workbook": "PSYWERX_Layer_2_Psychological_Driver_Ontology_v1.0.xlsx",
+      "sheet": "Drivers"
+    }
+  },
+  {
     "id": "PSY-090",
     "name": "Present Bias",
     "aliases": [
@@ -12858,6 +13152,65 @@
     }
   },
   {
+    "id": "PSY-132",
+    "name": "Subjective Uncertainty",
+    "aliases": [],
+    "layer": "Psychological",
+    "family": "Risk, Threat & Coping Appraisal",
+    "definition": "Current perceived lack of confidence about relevant states, causes, outcomes, or probabilities.",
+    "dataType": "Magnitude / level",
+    "representationScale": "Continuous or ordinal construct-specific measure with population, setting, reference period, and unit explicitly specified.",
+    "polarityDirection": "Higher values = greater subjective uncertainty.",
+    "mechanism": "State uncertainty changes search, vigilance, delay, reliance on authorities, and susceptibility to closure cues.",
+    "likelyUpstreamInfluences": [
+      "Ambiguous information",
+      "inconsistent sources",
+      "novelty",
+      "low knowledge"
+    ],
+    "likelyDownstreamInfluences": [
+      "Information seeking",
+      "anxiety",
+      "confidence",
+      "decision delay"
+    ],
+    "moderatorsBoundaryConditions": "Interpret only for the specified population, unit, setting, exposure, reference period, and measurement method; effects may vary across contexts.",
+    "typicalInteractionCandidates": [
+      "Ambiguous information",
+      "inconsistent sources",
+      "Information seeking",
+      "anxiety"
+    ],
+    "modifiability": "Moderate",
+    "volatility": "Moderate",
+    "timeScaleOfChange": [
+      "Hours–Days"
+    ],
+    "timeScaleQualifier": "Typical state-change speed is context-dependent; do not infer persistence from this band.",
+    "onsetCausalLag": [
+      "Mixed / Context-dependent"
+    ],
+    "persistenceRecovery": "Persistence and recovery depend on exposure, baseline state, intervention, and system feedback.",
+    "indicators": [
+      "Construct-valid indicators of subjective uncertainty measured for the specified unit, setting, and reference period"
+    ],
+    "measurementAssessmentMethods": "Use a validated construct-specific instrument, administrative or sensor measure, or transparent composite with explicit unit and reference period.",
+    "observability": "Moderate",
+    "measurementCaveats": "Feasible With Explicit Unit; proxy measures require construct-validity review.",
+    "evidenceStrength": "Strong",
+    "evidenceNotes": "A dynamic perceived-uncertainty state is distinct from PSY-131 intolerance of uncertainty and INF-015 disclosure.",
+    "commonMisinterpretations": "Do not treat Subjective Uncertainty as interchangeable with PSY-131; INF-015; PSY-116 or as a universal, context-free cause.",
+    "keySources": [
+      "SRC-494",
+      "SRC-496",
+      "SRC-505"
+    ],
+    "source": {
+      "workbook": "PSYWERX_Layer_2_Psychological_Driver_Ontology_v1.0.xlsx",
+      "sheet": "Drivers"
+    }
+  },
+  {
     "id": "PSY-006",
     "name": "Success Expectancy",
     "aliases": [
@@ -13546,6 +13899,66 @@
       "SRC216",
       "SRC268",
       "SRC273"
+    ],
+    "source": {
+      "workbook": "PSYWERX_Layer_3_Social_Driver_Ontology_v1.0.xlsx",
+      "sheet": "Drivers"
+    }
+  },
+  {
+    "id": "SOC-099",
+    "name": "Collective-Action Participation Threshold Distribution",
+    "aliases": [
+      "Collective-Action Threshold Distribution"
+    ],
+    "layer": "Social",
+    "family": "Coordination, Accountability & Collective Capacity",
+    "definition": "Distribution of participation thresholds at which members of a specified population become willing to join a collective action given observed participation by others.",
+    "dataType": "Multidimensional",
+    "representationScale": "Continuous or ordinal construct-specific measure with population, setting, reference period, and unit explicitly specified.",
+    "polarityDirection": "Higher values = greater collective-action participation threshold distribution.",
+    "mechanism": "Threshold heterogeneity determines whether early participation stalls or cascades.",
+    "likelyUpstreamInfluences": [
+      "Risk",
+      "norms",
+      "efficacy",
+      "network exposure",
+      "repression"
+    ],
+    "likelyDownstreamInfluences": [
+      "Mobilization size",
+      "cascade probability",
+      "tipping dynamics"
+    ],
+    "moderatorsBoundaryConditions": "Interpret only for the specified population, unit, setting, exposure, reference period, and measurement method; effects may vary across contexts.",
+    "typicalInteractionCandidates": [
+      "Risk",
+      "norms",
+      "Mobilization size",
+      "cascade probability"
+    ],
+    "modifiability": "Moderate",
+    "volatility": "Moderate",
+    "timeScaleOfChange": [
+      "Hours–Days"
+    ],
+    "timeScaleQualifier": "Typical state-change speed is context-dependent; do not infer persistence from this band.",
+    "onsetCausalLag": [
+      "Mixed / Context-dependent"
+    ],
+    "persistenceRecovery": "Persistence and recovery depend on exposure, baseline state, intervention, and system feedback.",
+    "indicators": [
+      "Construct-valid indicators of collective-action participation threshold distribution measured for the specified unit, setting, and reference period"
+    ],
+    "measurementAssessmentMethods": "Use a validated construct-specific instrument, administrative or sensor measure, or transparent composite with explicit unit and reference period.",
+    "observability": "Moderate",
+    "measurementCaveats": "Feasible With Explicit Unit; proxy measures require construct-validity review.",
+    "evidenceStrength": "Moderate",
+    "evidenceNotes": "Retain only as a population distribution with explicit target action, threshold definition, and unit; it is primarily useful for ABM/cascade models.",
+    "commonMisinterpretations": "Do not treat Collective-Action Participation Threshold Distribution as interchangeable with SOC-009; SOC-077; PSY-016 or as a universal, context-free cause.",
+    "keySources": [
+      "SRC-501",
+      "SRC-509"
     ],
     "source": {
       "workbook": "PSYWERX_Layer_3_Social_Driver_Ontology_v1.0.xlsx",
@@ -16047,6 +16460,65 @@
       "SRC244",
       "SRC268",
       "SRC273"
+    ],
+    "source": {
+      "workbook": "PSYWERX_Layer_3_Social_Driver_Ontology_v1.0.xlsx",
+      "sheet": "Drivers"
+    }
+  },
+  {
+    "id": "SOC-098",
+    "name": "Intergroup Hostility Prevalence",
+    "aliases": [],
+    "layer": "Social",
+    "family": "Intergroup Contact, Boundaries & Competition",
+    "definition": "Prevalence and intensity of openly hostile orientations or conduct between specified social groups.",
+    "dataType": "Magnitude / level",
+    "representationScale": "Continuous or ordinal construct-specific measure with population, setting, reference period, and unit explicitly specified.",
+    "polarityDirection": "Higher values = greater intergroup hostility prevalence.",
+    "mechanism": "Hostility changes contact, sanctioning, threat interpretation, mobilization, and violence risk at group level.",
+    "likelyUpstreamInfluences": [
+      "Competition",
+      "segregation",
+      "dehumanization",
+      "grievance",
+      "elite cues"
+    ],
+    "likelyDownstreamInfluences": [
+      "Contact quality",
+      "cooperation",
+      "violence support",
+      "diffusion"
+    ],
+    "moderatorsBoundaryConditions": "Interpret only for the specified population, unit, setting, exposure, reference period, and measurement method; effects may vary across contexts.",
+    "typicalInteractionCandidates": [
+      "Competition",
+      "segregation",
+      "Contact quality",
+      "cooperation"
+    ],
+    "modifiability": "Moderate",
+    "volatility": "Moderate",
+    "timeScaleOfChange": [
+      "Hours–Days"
+    ],
+    "timeScaleQualifier": "Typical state-change speed is context-dependent; do not infer persistence from this band.",
+    "onsetCausalLag": [
+      "Mixed / Context-dependent"
+    ],
+    "persistenceRecovery": "Persistence and recovery depend on exposure, baseline state, intervention, and system feedback.",
+    "indicators": [
+      "Construct-valid indicators of intergroup hostility prevalence measured for the specified unit, setting, and reference period"
+    ],
+    "measurementAssessmentMethods": "Use a validated construct-specific instrument, administrative or sensor measure, or transparent composite with explicit unit and reference period.",
+    "observability": "Moderate",
+    "measurementCaveats": "Feasible With Explicit Unit; proxy measures require construct-validity review.",
+    "evidenceStrength": "Strong",
+    "evidenceNotes": "A group-level prevalence state bridges individual hostility/dehumanization and collective conflict behavior.",
+    "commonMisinterpretations": "Do not treat Intergroup Hostility Prevalence as interchangeable with SOC-088; SOC-089; SOC-096 or as a universal, context-free cause.",
+    "keySources": [
+      "SRC-506",
+      "SRC-507"
     ],
     "source": {
       "workbook": "PSYWERX_Layer_3_Social_Driver_Ontology_v1.0.xlsx",
@@ -19935,6 +20407,66 @@
     }
   },
   {
+    "id": "SOC-100",
+    "name": "Unverified-Claim Retransmission Rate",
+    "aliases": [
+      "Rumor Transmission Rate"
+    ],
+    "layer": "Social",
+    "family": "Network Exposure & Social Diffusion",
+    "definition": "Rate at which exposed recipients retransmit an unverified claim through a specified social network, population, channel, and interval.",
+    "dataType": "Rate",
+    "representationScale": "Continuous or ordinal construct-specific measure with population, setting, reference period, and unit explicitly specified.",
+    "polarityDirection": "Higher values = greater unverified-claim retransmission rate.",
+    "mechanism": "Transmission rate determines exposure growth and interacts with network structure, credibility, and correction.",
+    "likelyUpstreamInfluences": [
+      "Emotionality",
+      "uncertainty",
+      "network structure",
+      "platform reach"
+    ],
+    "likelyDownstreamInfluences": [
+      "Exposure frequency",
+      "familiarity",
+      "belief diffusion"
+    ],
+    "moderatorsBoundaryConditions": "Interpret only for the specified population, unit, setting, exposure, reference period, and measurement method; effects may vary across contexts.",
+    "typicalInteractionCandidates": [
+      "Emotionality",
+      "uncertainty",
+      "Exposure frequency",
+      "familiarity"
+    ],
+    "modifiability": "Moderate",
+    "volatility": "Moderate",
+    "timeScaleOfChange": [
+      "Hours–Days"
+    ],
+    "timeScaleQualifier": "Typical state-change speed is context-dependent; do not infer persistence from this band.",
+    "onsetCausalLag": [
+      "Mixed / Context-dependent"
+    ],
+    "persistenceRecovery": "Persistence and recovery depend on exposure, baseline state, intervention, and system feedback.",
+    "indicators": [
+      "Construct-valid indicators of unverified-claim retransmission rate measured for the specified unit, setting, and reference period"
+    ],
+    "measurementAssessmentMethods": "Use a validated construct-specific instrument, administrative or sensor measure, or transparent composite with explicit unit and reference period.",
+    "observability": "Moderate",
+    "measurementCaveats": "Feasible With Explicit Unit; proxy measures require construct-validity review.",
+    "evidenceStrength": "Moderate",
+    "evidenceNotes": "Rename to Unverified-Claim Retransmission Rate, define numerator/denominator/network/interval, and avoid treating all rumors as false.",
+    "commonMisinterpretations": "Do not treat Unverified-Claim Retransmission Rate as interchangeable with SOC-059; INF-041; TEC-047 or as a universal, context-free cause.",
+    "keySources": [
+      "SRC-505",
+      "SRC-509",
+      "SRC-511"
+    ],
+    "source": {
+      "workbook": "PSYWERX_Layer_3_Social_Driver_Ontology_v1.0.xlsx",
+      "sheet": "Drivers"
+    }
+  },
+  {
     "id": "CUL-016",
     "name": "Adjustment-as-Agency Norm Strength",
     "aliases": [
@@ -20394,6 +20926,64 @@
       "SRC274",
       "SRC292",
       "SRC306"
+    ],
+    "source": {
+      "workbook": "PSYWERX_Layer_4_Cultural_Driver_Ontology_v1.0.xlsx",
+      "sheet": "Drivers"
+    }
+  },
+  {
+    "id": "CUL-091",
+    "name": "Civic-Duty Norm Strength",
+    "aliases": [],
+    "layer": "Cultural",
+    "family": "Shared Values & Moral Priorities",
+    "definition": "Strength of shared obligation to contribute to public goods, institutions, defense, or collective civic life.",
+    "dataType": "Magnitude / level",
+    "representationScale": "Continuous or ordinal construct-specific measure with population, setting, reference period, and unit explicitly specified.",
+    "polarityDirection": "Higher values = greater civic-duty norm strength.",
+    "mechanism": "Duty norms can motivate costly participation beyond immediate material payoff.",
+    "likelyUpstreamInfluences": [
+      "Civic education",
+      "collective memory",
+      "institutional legitimacy",
+      "identity"
+    ],
+    "likelyDownstreamInfluences": [
+      "Compliance",
+      "participation",
+      "service",
+      "collective action"
+    ],
+    "moderatorsBoundaryConditions": "Interpret only for the specified population, unit, setting, exposure, reference period, and measurement method; effects may vary across contexts.",
+    "typicalInteractionCandidates": [
+      "Civic education",
+      "collective memory",
+      "Compliance",
+      "participation"
+    ],
+    "modifiability": "Moderate",
+    "volatility": "Moderate",
+    "timeScaleOfChange": [
+      "Hours–Days"
+    ],
+    "timeScaleQualifier": "Typical state-change speed is context-dependent; do not infer persistence from this band.",
+    "onsetCausalLag": [
+      "Mixed / Context-dependent"
+    ],
+    "persistenceRecovery": "Persistence and recovery depend on exposure, baseline state, intervention, and system feedback.",
+    "indicators": [
+      "Construct-valid indicators of civic-duty norm strength measured for the specified unit, setting, and reference period"
+    ],
+    "measurementAssessmentMethods": "Use a validated construct-specific instrument, administrative or sensor measure, or transparent composite with explicit unit and reference period.",
+    "observability": "Moderate",
+    "measurementCaveats": "Feasible With Explicit Unit; proxy measures require construct-validity review.",
+    "evidenceStrength": "Moderate",
+    "evidenceNotes": "Civic obligation toward impersonal public goods is distinct from kin/community obligation when the polity is specified.",
+    "commonMisinterpretations": "Do not treat Civic-Duty Norm Strength as interchangeable with CUL-067; CUL-009 or as a universal, context-free cause.",
+    "keySources": [
+      "SRC-501",
+      "SRC-502"
     ],
     "source": {
       "workbook": "PSYWERX_Layer_4_Cultural_Driver_Ontology_v1.0.xlsx",
@@ -23861,11 +24451,11 @@
     ],
     "layer": "Cultural",
     "family": "Sacredness, Taboo & Moral Boundaries",
-    "definition": "Culturally shared prohibitions and contamination concerns that mark certain acts, objects, foods, bodies, or relationships as morally or symbolically unacceptable. Canonicalized here as a culture-level condition for a specified cultural unit rather than an assumption about every individual member.",
+    "definition": "Strength of shared norms that morally evaluate purity, sanctity, or contamination for a specified object or practice in a cultural unit.",
     "dataType": "Magnitude / level",
     "representationScale": "0–1, 1–5 or 1–7 aggregate, or low–moderate–high estimate at a specified cultural level with aggregation uncertainty reported.",
     "polarityDirection": "Higher values = greater purity norm strength within the specified cultural unit, domain, and time window.",
-    "mechanism": "Taboos create strong avoidance, disgust, identity, and sanction responses that can resist ordinary utilitarian trade-offs.",
+    "mechanism": "Purity framing can evoke moralized contamination appraisal and culturally patterned avoidance or sanctioning; effects depend on the specified object and audience.",
     "likelyUpstreamInfluences": [
       "Religious and moral traditions",
       "identity narratives",
@@ -23882,7 +24472,7 @@
       "compromise resistance",
       "sacrifice"
     ],
-    "moderatorsBoundaryConditions": "Issue domain; personal endorsement; identity; symbolic concessions; material stakes; authority; intergroup conflict",
+    "moderatorsBoundaryConditions": "Purity is one possible basis for a taboo; code CUL-044 only for purity/sanctity content and CUL-045 for the prohibition's strength. Do not infer individual disgust from either cultural state.",
     "typicalInteractionCandidates": [
       "Sacred commitment × taboo trade-off",
       "moralization × informal sanction severity"
@@ -23905,14 +24495,73 @@
     ],
     "measurementAssessmentMethods": "MFQ-2 purity items; taboo inventories; ethnography; behavioral avoidance tasks.; Protected-value scales; taboo-tradeoff experiments; ethnography; discourse analysis; vignettes; behavioral choice",
     "observability": "Low",
-    "measurementCaveats": "Purity should not be reduced to one universal scale; local ethnographic content matters.; Separate culture-level sacredness from personal moral conviction and do not infer extremity or irrationality from sacred status alone.",
+    "measurementCaveats": "Retain as separate cultural nodes only when models can separately observe moral-purity content and prohibition/enforcement.",
     "evidenceStrength": "Moderate",
     "evidenceNotes": "Scientifically defensible with substantial supporting literature, while construct boundaries, causal identification, aggregation, or transferability remain context dependent. Representative records: SRC297; SRC295; SRC293.",
-    "commonMisinterpretations": "Treating sacred values as infinite utilities or assuming material incentives always backfire.",
+    "commonMisinterpretations": "Purity is one possible basis for a taboo; code CUL-044 only for purity/sanctity content and CUL-045 for the prohibition's strength. Do not infer individual disgust from either cultural state.",
     "keySources": [
       "SRC297",
       "SRC295",
-      "SRC293"
+      "SRC293",
+      "SRC-522",
+      "SRC-523"
+    ],
+    "source": {
+      "workbook": "PSYWERX_Layer_4_Cultural_Driver_Ontology_v1.0.xlsx",
+      "sheet": "Drivers"
+    }
+  },
+  {
+    "id": "CUL-090",
+    "name": "Reconciliation and Forgiveness Norm Strength",
+    "aliases": [],
+    "layer": "Cultural",
+    "family": "Cultural Identity, Boundaries & Change",
+    "definition": "Strength of shared expectations favoring restoration, forgiveness, coexistence, or reintegration after harm.",
+    "dataType": "Magnitude / level",
+    "representationScale": "Continuous or ordinal construct-specific measure with population, setting, reference period, and unit explicitly specified.",
+    "polarityDirection": "Higher values = greater reconciliation and forgiveness norm strength.",
+    "mechanism": "Such norms affect retaliation cycles, reintegration, trust rebuilding, and conflict termination.",
+    "likelyUpstreamInfluences": [
+      "Religious and civic traditions",
+      "leadership narratives",
+      "transitional justice"
+    ],
+    "likelyDownstreamInfluences": [
+      "Contact quality",
+      "retaliation",
+      "cooperation",
+      "identity boundaries"
+    ],
+    "moderatorsBoundaryConditions": "Interpret only for the specified population, unit, setting, exposure, reference period, and measurement method; effects may vary across contexts.",
+    "typicalInteractionCandidates": [
+      "Religious and civic traditions",
+      "leadership narratives",
+      "Contact quality",
+      "retaliation"
+    ],
+    "modifiability": "Moderate",
+    "volatility": "Moderate",
+    "timeScaleOfChange": [
+      "Hours–Days"
+    ],
+    "timeScaleQualifier": "Typical state-change speed is context-dependent; do not infer persistence from this band.",
+    "onsetCausalLag": [
+      "Mixed / Context-dependent"
+    ],
+    "persistenceRecovery": "Persistence and recovery depend on exposure, baseline state, intervention, and system feedback.",
+    "indicators": [
+      "Construct-valid indicators of reconciliation and forgiveness norm strength measured for the specified unit, setting, and reference period"
+    ],
+    "measurementAssessmentMethods": "Use a validated construct-specific instrument, administrative or sensor measure, or transparent composite with explicit unit and reference period.",
+    "observability": "Moderate",
+    "measurementCaveats": "Feasible With Explicit Unit; proxy measures require construct-validity review.",
+    "evidenceStrength": "Moderate",
+    "evidenceNotes": "Provides a balancing-loop cultural state for post-harm reintegration, distinct from generic accommodation.",
+    "commonMisinterpretations": "Do not treat Reconciliation and Forgiveness Norm Strength as interchangeable with CUL-086; CUL-087 or as a universal, context-free cause.",
+    "keySources": [
+      "SRC-506",
+      "SRC-510"
     ],
     "source": {
       "workbook": "PSYWERX_Layer_4_Cultural_Driver_Ontology_v1.0.xlsx",
@@ -25496,11 +26145,11 @@
     ],
     "layer": "Cultural",
     "family": "Sacredness, Taboo & Moral Boundaries",
-    "definition": "Culturally shared prohibitions and contamination concerns that mark certain acts, objects, foods, bodies, or relationships as morally or symbolically unacceptable. Canonicalized here as a culture-level condition for a specified cultural unit rather than an assumption about every individual member.",
+    "definition": "Strength and enforceability of a shared prohibition against a specified act, object, topic, person-category, or exchange in a cultural unit, whether or not purity is the justification.",
     "dataType": "Magnitude / level",
     "representationScale": "0–1, 1–5 or 1–7 aggregate, or low–moderate–high estimate at a specified cultural level with aggregation uncertainty reported.",
     "polarityDirection": "Higher values = greater taboo strength within the specified cultural unit, domain, and time window.",
-    "mechanism": "Taboos create strong avoidance, disgust, identity, and sanction responses that can resist ordinary utilitarian trade-offs.",
+    "mechanism": "A taboo raises anticipated social or sacred sanctions for transgression, suppressing discussion, exchange, or conduct and sometimes intensifying reactance or clandestine behavior.",
     "likelyUpstreamInfluences": [
       "Religious and moral traditions",
       "identity narratives",
@@ -25517,7 +26166,7 @@
       "compromise resistance",
       "sacrifice"
     ],
-    "moderatorsBoundaryConditions": "Issue domain; personal endorsement; identity; symbolic concessions; material stakes; authority; intergroup conflict",
+    "moderatorsBoundaryConditions": "Purity is one possible basis for a taboo; code CUL-044 only for purity/sanctity content and CUL-045 for the prohibition's strength. Do not infer individual disgust from either cultural state.",
     "typicalInteractionCandidates": [
       "Sacred commitment × taboo trade-off",
       "moralization × informal sanction severity"
@@ -25540,14 +26189,16 @@
     ],
     "measurementAssessmentMethods": "MFQ-2 purity items; taboo inventories; ethnography; behavioral avoidance tasks.; Protected-value scales; taboo-tradeoff experiments; ethnography; discourse analysis; vignettes; behavioral choice",
     "observability": "Low",
-    "measurementCaveats": "Purity should not be reduced to one universal scale; local ethnographic content matters.; Separate culture-level sacredness from personal moral conviction and do not infer extremity or irrationality from sacred status alone.",
+    "measurementCaveats": "Retain as separate cultural nodes only when models can separately observe moral-purity content and prohibition/enforcement.",
     "evidenceStrength": "Moderate",
     "evidenceNotes": "Scientifically defensible with substantial supporting literature, while construct boundaries, causal identification, aggregation, or transferability remain context dependent. Representative records: SRC297; SRC295; SRC293.",
-    "commonMisinterpretations": "Treating sacred values as infinite utilities or assuming material incentives always backfire.",
+    "commonMisinterpretations": "Purity is one possible basis for a taboo; code CUL-044 only for purity/sanctity content and CUL-045 for the prohibition's strength. Do not infer individual disgust from either cultural state.",
     "keySources": [
       "SRC297",
       "SRC295",
-      "SRC293"
+      "SRC293",
+      "SRC-522",
+      "SRC-523"
     ],
     "source": {
       "workbook": "PSYWERX_Layer_4_Cultural_Driver_Ontology_v1.0.xlsx",
@@ -25747,6 +26398,65 @@
       "SRC289",
       "SRC298",
       "SRC306"
+    ],
+    "source": {
+      "workbook": "PSYWERX_Layer_4_Cultural_Driver_Ontology_v1.0.xlsx",
+      "sheet": "Drivers"
+    }
+  },
+  {
+    "id": "CUL-089",
+    "name": "Violence-Legitimacy Norm Strength",
+    "aliases": [],
+    "layer": "Cultural",
+    "family": "Sacredness, Taboo & Moral Boundaries",
+    "definition": "Strength of shared cultural acceptance or rejection of violence as a legitimate means under specified conditions.",
+    "dataType": "Magnitude / level",
+    "representationScale": "Continuous or ordinal construct-specific measure with population, setting, reference period, and unit explicitly specified.",
+    "polarityDirection": "Higher values = greater violence-legitimacy norm strength.",
+    "mechanism": "Legitimacy norms shape moral inhibition, sanctioning, recruitment, retaliation, and support for coercion.",
+    "likelyUpstreamInfluences": [
+      "Collective memory",
+      "sacred values",
+      "authority",
+      "threat",
+      "conflict history"
+    ],
+    "likelyDownstreamInfluences": [
+      "Moral obligation",
+      "hostility",
+      "sanctioning",
+      "violence support"
+    ],
+    "moderatorsBoundaryConditions": "Interpret only for the specified population, unit, setting, exposure, reference period, and measurement method; effects may vary across contexts.",
+    "typicalInteractionCandidates": [
+      "Collective memory",
+      "sacred values",
+      "Moral obligation",
+      "hostility"
+    ],
+    "modifiability": "Moderate",
+    "volatility": "Moderate",
+    "timeScaleOfChange": [
+      "Hours–Days"
+    ],
+    "timeScaleQualifier": "Typical state-change speed is context-dependent; do not infer persistence from this band.",
+    "onsetCausalLag": [
+      "Mixed / Context-dependent"
+    ],
+    "persistenceRecovery": "Persistence and recovery depend on exposure, baseline state, intervention, and system feedback.",
+    "indicators": [
+      "Construct-valid indicators of violence-legitimacy norm strength measured for the specified unit, setting, and reference period"
+    ],
+    "measurementAssessmentMethods": "Use a validated construct-specific instrument, administrative or sensor measure, or transparent composite with explicit unit and reference period.",
+    "observability": "Moderate",
+    "measurementCaveats": "Feasible With Explicit Unit; proxy measures require construct-validity review.",
+    "evidenceStrength": "Strong",
+    "evidenceNotes": "A culturally shared conditional legitimacy of violence is a slow moderator not captured by honor or general moral priorities.",
+    "commonMisinterpretations": "Do not treat Violence-Legitimacy Norm Strength as interchangeable with CUL-019; CUL-043; CUL-044 or as a universal, context-free cause.",
+    "keySources": [
+      "SRC-506",
+      "SRC-507"
     ],
     "source": {
       "workbook": "PSYWERX_Layer_4_Cultural_Driver_Ontology_v1.0.xlsx",
@@ -26303,6 +27013,63 @@
     "keySources": [
       "SRC338",
       "SRC357"
+    ],
+    "source": {
+      "workbook": "PSYWERX_Layer_5_Physical_Environmental_Driver_Ontology_v1.0.xlsx",
+      "sheet": "Drivers"
+    }
+  },
+  {
+    "id": "ENV-108",
+    "name": "Critical Utility Redundancy",
+    "aliases": [],
+    "layer": "Physical / Environmental",
+    "family": "Physical Disruption & Passability",
+    "definition": "Degree to which power, water, communications, transport, or shelter functions have independent substitute physical pathways.",
+    "dataType": "Magnitude / level",
+    "representationScale": "Continuous or ordinal construct-specific measure with population, setting, reference period, and unit explicitly specified.",
+    "polarityDirection": "Higher values = greater critical utility redundancy.",
+    "mechanism": "Redundancy reduces common-mode failure and shortens loss of essential capability after disruption.",
+    "likelyUpstreamInfluences": [
+      "Investment",
+      "design",
+      "geography",
+      "maintenance"
+    ],
+    "likelyDownstreamInfluences": [
+      "Infrastructure functionality",
+      "service continuity",
+      "recovery"
+    ],
+    "moderatorsBoundaryConditions": "Interpret only for the specified population, unit, setting, exposure, reference period, and measurement method; effects may vary across contexts.",
+    "typicalInteractionCandidates": [
+      "Investment",
+      "design",
+      "Infrastructure functionality",
+      "service continuity"
+    ],
+    "modifiability": "Moderate",
+    "volatility": "Moderate",
+    "timeScaleOfChange": [
+      "Hours–Days"
+    ],
+    "timeScaleQualifier": "Typical state-change speed is context-dependent; do not infer persistence from this band.",
+    "onsetCausalLag": [
+      "Mixed / Context-dependent"
+    ],
+    "persistenceRecovery": "Persistence and recovery depend on exposure, baseline state, intervention, and system feedback.",
+    "indicators": [
+      "Construct-valid indicators of critical utility redundancy measured for the specified unit, setting, and reference period"
+    ],
+    "measurementAssessmentMethods": "Use a validated construct-specific instrument, administrative or sensor measure, or transparent composite with explicit unit and reference period.",
+    "observability": "Moderate",
+    "measurementCaveats": "Feasible With Explicit Unit; proxy measures require construct-validity review.",
+    "evidenceStrength": "Strong",
+    "evidenceNotes": "Redundancy is a structural cause of continuity under failure, not the same as current infrastructure functionality.",
+    "commonMisinterpretations": "Do not treat Critical Utility Redundancy as interchangeable with ENV-089; TEC-011; PDC-035 or as a universal, context-free cause.",
+    "keySources": [
+      "SRC-508",
+      "SRC-514"
     ],
     "source": {
       "workbook": "PSYWERX_Layer_5_Physical_Environmental_Driver_Ontology_v1.0.xlsx",
@@ -26989,6 +27756,65 @@
     "commonMisinterpretations": "Treating the external condition as identical to its physiological or psychological response, or assuming one universal behavioral effect.",
     "keySources": [
       "SRC371"
+    ],
+    "source": {
+      "workbook": "PSYWERX_Layer_5_Physical_Environmental_Driver_Ontology_v1.0.xlsx",
+      "sheet": "Drivers"
+    }
+  },
+  {
+    "id": "ENV-109",
+    "name": "Essential Supply Continuity",
+    "aliases": [],
+    "layer": "Physical / Environmental",
+    "family": "Material Resources & Shelter",
+    "definition": "Reliability over time of physically delivering essential food, water, fuel, medicine, and equipment to the point of need.",
+    "dataType": "Magnitude / level",
+    "representationScale": "Continuous or ordinal construct-specific measure with population, setting, reference period, and unit explicitly specified.",
+    "polarityDirection": "Higher values = greater essential supply continuity.",
+    "mechanism": "Continuity determines whether nominal resource availability survives shocks, delay, and distribution failure.",
+    "likelyUpstreamInfluences": [
+      "Transport",
+      "inventory",
+      "production",
+      "security",
+      "infrastructure"
+    ],
+    "likelyDownstreamInfluences": [
+      "Scarcity",
+      "health",
+      "service delivery",
+      "competition"
+    ],
+    "moderatorsBoundaryConditions": "Interpret only for the specified population, unit, setting, exposure, reference period, and measurement method; effects may vary across contexts.",
+    "typicalInteractionCandidates": [
+      "Transport",
+      "inventory",
+      "Scarcity",
+      "health"
+    ],
+    "modifiability": "Moderate",
+    "volatility": "Moderate",
+    "timeScaleOfChange": [
+      "Hours–Days"
+    ],
+    "timeScaleQualifier": "Typical state-change speed is context-dependent; do not infer persistence from this band.",
+    "onsetCausalLag": [
+      "Mixed / Context-dependent"
+    ],
+    "persistenceRecovery": "Persistence and recovery depend on exposure, baseline state, intervention, and system feedback.",
+    "indicators": [
+      "Construct-valid indicators of essential supply continuity measured for the specified unit, setting, and reference period"
+    ],
+    "measurementAssessmentMethods": "Use a validated construct-specific instrument, administrative or sensor measure, or transparent composite with explicit unit and reference period.",
+    "observability": "Moderate",
+    "measurementCaveats": "Feasible With Explicit Unit; proxy measures require construct-validity review.",
+    "evidenceStrength": "Strong",
+    "evidenceNotes": "A cross-commodity continuity state links infrastructure and institutional capacity to household/organizational functioning.",
+    "commonMisinterpretations": "Do not treat Essential Supply Continuity as interchangeable with ENV-082; ENV-083; ENV-088; ENV-105 or as a universal, context-free cause.",
+    "keySources": [
+      "SRC-508",
+      "SRC-514"
     ],
     "source": {
       "workbook": "PSYWERX_Layer_5_Physical_Environmental_Driver_Ontology_v1.0.xlsx",
@@ -27931,11 +28757,11 @@
     ],
     "layer": "Physical / Environmental",
     "family": "Air, Chemical & Environmental Quality",
-    "definition": "Persistent moisture, microbial growth, or allergen burden in indoor environments.",
+    "definition": "Degree of persistent excess moisture in an indoor environment, indicated by humidity, condensation, water intrusion, or damp building materials.",
     "dataType": "Magnitude / level",
     "representationScale": "SI unit, count, proportion, GIS metric, or low–moderate–high category with spatial and temporal reference",
     "polarityDirection": "Higher values = greater indoor dampness level under the specified spatial, temporal, and exposure frame.",
-    "mechanism": "Adverse respiratory and comfort effects can reduce wellbeing, attendance, concentration, and willingness to occupy a space.",
+    "mechanism": "Persistent moisture enables microbial growth and allergen accumulation and degrades materials; it is an upstream building condition rather than the biological load itself.",
     "likelyUpstreamInfluences": [
       "Emissions",
       "ventilation",
@@ -27947,7 +28773,7 @@
       "performance",
       "health"
     ],
-    "moderatorsBoundaryConditions": "User capability; task; duration; adaptation; culture; social context; institutional rules; weather; time of day",
+    "moderatorsBoundaryConditions": "Dampness is a moisture condition; mould/allergen load is a biological-contaminant state. Dampness may cause load, but either can be observed without treating them as identical.",
     "typicalInteractionCandidates": [
       "Indoor Dampness Level × perceived threat",
       "Indoor Dampness Level × mobility capability",
@@ -27971,13 +28797,14 @@
     ],
     "measurementAssessmentMethods": "Environmental sensors or monitors; GIS/network analysis; structured audit; administrative records; direct observation; exposure assessment",
     "observability": "High",
-    "measurementCaveats": "Spatial scale, time window, personal exposure, mobility selection, measurement error, and subjective appraisal may differ; avoid ecological inference.",
+    "measurementCaveats": "Encode ENV-064 → ENV-065 where exposure setting and evidence support it; retain both for remediation-versus-exposure interventions.",
     "evidenceStrength": "Moderate",
     "evidenceNotes": "Moderate evidence for the construct or closely related behavioral pathways. Effects remain conditional and relationship-specific. Representative records: SRC349; SRC366.",
-    "commonMisinterpretations": "Treating the external condition as identical to its physiological or psychological response, or assuming one universal behavioral effect.",
+    "commonMisinterpretations": "Dampness is a moisture condition; mould/allergen load is a biological-contaminant state. Dampness may cause load, but either can be observed without treating them as identical.",
     "keySources": [
       "SRC349",
-      "SRC366"
+      "SRC366",
+      "SRC-519"
     ],
     "source": {
       "workbook": "PSYWERX_Layer_5_Physical_Environmental_Driver_Ontology_v1.0.xlsx",
@@ -28424,11 +29251,11 @@
     ],
     "layer": "Physical / Environmental",
     "family": "Air, Chemical & Environmental Quality",
-    "definition": "Persistent moisture, microbial growth, or allergen burden in indoor environments.",
+    "definition": "Concentration or burden of mould-derived material and specified indoor biological allergens in air, dust, surfaces, or building materials.",
     "dataType": "Magnitude / level",
     "representationScale": "SI unit, count, proportion, GIS metric, or low–moderate–high category with spatial and temporal reference",
     "polarityDirection": "Higher values = greater mould and allergen load under the specified spatial, temporal, and exposure frame.",
-    "mechanism": "Adverse respiratory and comfort effects can reduce wellbeing, attendance, concentration, and willingness to occupy a space.",
+    "mechanism": "Mould spores, fragments, metabolites, and allergens create exposure that can provoke respiratory, allergic, and comfort effects conditional on susceptibility and contact.",
     "likelyUpstreamInfluences": [
       "Emissions",
       "ventilation",
@@ -28440,7 +29267,7 @@
       "performance",
       "health"
     ],
-    "moderatorsBoundaryConditions": "User capability; task; duration; adaptation; culture; social context; institutional rules; weather; time of day",
+    "moderatorsBoundaryConditions": "Dampness is a moisture condition; mould/allergen load is a biological-contaminant state. Dampness may cause load, but either can be observed without treating them as identical.",
     "typicalInteractionCandidates": [
       "Mould and Allergen Load × perceived threat",
       "Mould and Allergen Load × mobility capability",
@@ -28464,13 +29291,14 @@
     ],
     "measurementAssessmentMethods": "Environmental sensors or monitors; GIS/network analysis; structured audit; administrative records; direct observation; exposure assessment",
     "observability": "High",
-    "measurementCaveats": "Spatial scale, time window, personal exposure, mobility selection, measurement error, and subjective appraisal may differ; avoid ecological inference.",
+    "measurementCaveats": "Encode ENV-064 → ENV-065 where exposure setting and evidence support it; retain both for remediation-versus-exposure interventions.",
     "evidenceStrength": "Moderate",
     "evidenceNotes": "Moderate evidence for the construct or closely related behavioral pathways. Effects remain conditional and relationship-specific. Representative records: SRC349; SRC366.",
-    "commonMisinterpretations": "Treating the external condition as identical to its physiological or psychological response, or assuming one universal behavioral effect.",
+    "commonMisinterpretations": "Dampness is a moisture condition; mould/allergen load is a biological-contaminant state. Dampness may cause load, but either can be observed without treating them as identical.",
     "keySources": [
       "SRC349",
-      "SRC366"
+      "SRC366",
+      "SRC-519"
     ],
     "source": {
       "workbook": "PSYWERX_Layer_5_Physical_Environmental_Driver_Ontology_v1.0.xlsx",
@@ -28613,11 +29441,11 @@
     ],
     "layer": "Physical / Environmental",
     "family": "Air, Chemical & Environmental Quality",
-    "definition": "Ambient or indoor concentrations of gaseous pollutants such as nitrogen oxides and ozone.",
+    "definition": "Ambient or indoor concentration of nitrogen oxides, with the measured species, averaging interval, and location specified.",
     "dataType": "Magnitude / level",
     "representationScale": "SI unit, count, proportion, GIS metric, or low–moderate–high category with spatial and temporal reference",
     "polarityDirection": "Higher values = greater nitrogen oxides concentration under the specified spatial, temporal, and exposure frame.",
-    "mechanism": "Pollutants affect respiratory/neurological function and comfort, potentially changing performance, activity, and avoidance.",
+    "mechanism": "Inhaled nitrogen oxides irritate airways and contribute to respiratory effects; sources and atmospheric chemistry differ from ozone.",
     "likelyUpstreamInfluences": [
       "Emissions",
       "ventilation",
@@ -28629,7 +29457,7 @@
       "performance",
       "health"
     ],
-    "moderatorsBoundaryConditions": "User capability; task; duration; adaptation; culture; social context; institutional rules; weather; time of day",
+    "moderatorsBoundaryConditions": "Never combine NOx and ozone in one value. Require pollutant-specific units and averaging periods; model co-exposure separately.",
     "typicalInteractionCandidates": [
       "Nitrogen Oxides Concentration × perceived threat",
       "Nitrogen Oxides Concentration × mobility capability",
@@ -28651,12 +29479,13 @@
     ],
     "measurementAssessmentMethods": "Environmental sensors or monitors; GIS/network analysis; structured audit; administrative records; direct observation; exposure assessment",
     "observability": "High",
-    "measurementCaveats": "Spatial scale, time window, personal exposure, mobility selection, measurement error, and subjective appraisal may differ; avoid ecological inference.",
+    "measurementCaveats": "Distinct exposure nodes permit pollutant-specific sensors, interventions, dose-response functions, and mixtures.",
     "evidenceStrength": "Moderate",
     "evidenceNotes": "Moderate evidence for the construct or closely related behavioral pathways. Effects remain conditional and relationship-specific. Representative records: SRC348.",
-    "commonMisinterpretations": "Treating the external condition as identical to its physiological or psychological response, or assuming one universal behavioral effect.",
+    "commonMisinterpretations": "Never combine NOx and ozone in one value. Require pollutant-specific units and averaging periods; model co-exposure separately.",
     "keySources": [
-      "SRC348"
+      "SRC348",
+      "SRC-520"
     ],
     "source": {
       "workbook": "PSYWERX_Layer_5_Physical_Environmental_Driver_Ontology_v1.0.xlsx",
@@ -28923,11 +29752,11 @@
     ],
     "layer": "Physical / Environmental",
     "family": "Air, Chemical & Environmental Quality",
-    "definition": "Ambient or indoor concentrations of gaseous pollutants such as nitrogen oxides and ozone.",
+    "definition": "Ambient or indoor concentration of ozone, with averaging interval, location, and exposure context specified.",
     "dataType": "Magnitude / level",
     "representationScale": "SI unit, count, proportion, GIS metric, or low–moderate–high category with spatial and temporal reference",
     "polarityDirection": "Higher values = greater ozone concentration under the specified spatial, temporal, and exposure frame.",
-    "mechanism": "Pollutants affect respiratory/neurological function and comfort, potentially changing performance, activity, and avoidance.",
+    "mechanism": "Inhaled ozone causes oxidative airway injury and respiratory effects; concentration varies with photochemical formation and transport.",
     "likelyUpstreamInfluences": [
       "Emissions",
       "ventilation",
@@ -28939,7 +29768,7 @@
       "performance",
       "health"
     ],
-    "moderatorsBoundaryConditions": "User capability; task; duration; adaptation; culture; social context; institutional rules; weather; time of day",
+    "moderatorsBoundaryConditions": "Never combine NOx and ozone in one value. Require pollutant-specific units and averaging periods; model co-exposure separately.",
     "typicalInteractionCandidates": [
       "Ozone Concentration × perceived threat",
       "Ozone Concentration × mobility capability",
@@ -28961,12 +29790,13 @@
     ],
     "measurementAssessmentMethods": "Environmental sensors or monitors; GIS/network analysis; structured audit; administrative records; direct observation; exposure assessment",
     "observability": "High",
-    "measurementCaveats": "Spatial scale, time window, personal exposure, mobility selection, measurement error, and subjective appraisal may differ; avoid ecological inference.",
+    "measurementCaveats": "Distinct exposure nodes permit pollutant-specific sensors, interventions, dose-response functions, and mixtures.",
     "evidenceStrength": "Moderate",
     "evidenceNotes": "Moderate evidence for the construct or closely related behavioral pathways. Effects remain conditional and relationship-specific. Representative records: SRC348.",
-    "commonMisinterpretations": "Treating the external condition as identical to its physiological or psychological response, or assuming one universal behavioral effect.",
+    "commonMisinterpretations": "Never combine NOx and ozone in one value. Require pollutant-specific units and averaging periods; model co-exposure separately.",
     "keySources": [
-      "SRC348"
+      "SRC348",
+      "SRC-520"
     ],
     "source": {
       "workbook": "PSYWERX_Layer_5_Physical_Environmental_Driver_Ontology_v1.0.xlsx",
@@ -29151,6 +29981,65 @@
     "keySources": [
       "SRC356",
       "SRC355"
+    ],
+    "source": {
+      "workbook": "PSYWERX_Layer_5_Physical_Environmental_Driver_Ontology_v1.0.xlsx",
+      "sheet": "Drivers"
+    }
+  },
+  {
+    "id": "ENV-106",
+    "name": "Pathogen Exposure Intensity",
+    "aliases": [],
+    "layer": "Physical / Environmental",
+    "family": "Air, Chemical & Environmental Quality",
+    "definition": "Concentration, duration, and contact opportunity for infectious agents in a physical setting.",
+    "dataType": "Magnitude / level",
+    "representationScale": "Continuous or ordinal construct-specific measure with population, setting, reference period, and unit explicitly specified.",
+    "polarityDirection": "Higher values = greater pathogen exposure intensity.",
+    "mechanism": "Environmental exposure raises infection probability conditional on host competence and protective behavior.",
+    "likelyUpstreamInfluences": [
+      "Ventilation",
+      "crowding",
+      "sanitation",
+      "prevalence",
+      "climate"
+    ],
+    "likelyDownstreamInfluences": [
+      "Infectious burden",
+      "avoidance",
+      "sickness",
+      "service demand"
+    ],
+    "moderatorsBoundaryConditions": "Interpret only for the specified population, unit, setting, exposure, reference period, and measurement method; effects may vary across contexts.",
+    "typicalInteractionCandidates": [
+      "Ventilation",
+      "crowding",
+      "Infectious burden",
+      "avoidance"
+    ],
+    "modifiability": "Moderate",
+    "volatility": "Moderate",
+    "timeScaleOfChange": [
+      "Hours–Days"
+    ],
+    "timeScaleQualifier": "Typical state-change speed is context-dependent; do not infer persistence from this band.",
+    "onsetCausalLag": [
+      "Mixed / Context-dependent"
+    ],
+    "persistenceRecovery": "Persistence and recovery depend on exposure, baseline state, intervention, and system feedback.",
+    "indicators": [
+      "Construct-valid indicators of pathogen exposure intensity measured for the specified unit, setting, and reference period"
+    ],
+    "measurementAssessmentMethods": "Use a validated construct-specific instrument, administrative or sensor measure, or transparent composite with explicit unit and reference period.",
+    "observability": "Moderate",
+    "measurementCaveats": "Feasible With Explicit Unit; proxy measures require construct-validity review.",
+    "evidenceStrength": "Strong",
+    "evidenceNotes": "Environmental infectious exposure is distinct from pollution and from biological infection burden.",
+    "commonMisinterpretations": "Do not treat Pathogen Exposure Intensity as interchangeable with ENV-063; BIO-030 or as a universal, context-free cause.",
+    "keySources": [
+      "SRC-508",
+      "SRC-516"
     ],
     "source": {
       "workbook": "PSYWERX_Layer_5_Physical_Environmental_Driver_Ontology_v1.0.xlsx",
@@ -29663,6 +30552,63 @@
     }
   },
   {
+    "id": "ENV-107",
+    "name": "Potable-Water Contamination Level",
+    "aliases": [],
+    "layer": "Physical / Environmental",
+    "family": "Air, Chemical & Environmental Quality",
+    "definition": "Magnitude of biological or chemical contamination in water intended for drinking or food preparation.",
+    "dataType": "Magnitude / level",
+    "representationScale": "Continuous or ordinal construct-specific measure with population, setting, reference period, and unit explicitly specified.",
+    "polarityDirection": "Higher values = greater potable-water contamination level.",
+    "mechanism": "Contamination affects illness risk, trust, avoidance, migration, and resource substitution.",
+    "likelyUpstreamInfluences": [
+      "Infrastructure failure",
+      "flooding",
+      "treatment capacity",
+      "conflict"
+    ],
+    "likelyDownstreamInfluences": [
+      "Disease burden",
+      "water avoidance",
+      "institutional demand",
+      "unrest"
+    ],
+    "moderatorsBoundaryConditions": "Interpret only for the specified population, unit, setting, exposure, reference period, and measurement method; effects may vary across contexts.",
+    "typicalInteractionCandidates": [
+      "Infrastructure failure",
+      "flooding",
+      "Disease burden",
+      "water avoidance"
+    ],
+    "modifiability": "Moderate",
+    "volatility": "Moderate",
+    "timeScaleOfChange": [
+      "Hours–Days"
+    ],
+    "timeScaleQualifier": "Typical state-change speed is context-dependent; do not infer persistence from this band.",
+    "onsetCausalLag": [
+      "Mixed / Context-dependent"
+    ],
+    "persistenceRecovery": "Persistence and recovery depend on exposure, baseline state, intervention, and system feedback.",
+    "indicators": [
+      "Construct-valid indicators of potable-water contamination level measured for the specified unit, setting, and reference period"
+    ],
+    "measurementAssessmentMethods": "Use a validated construct-specific instrument, administrative or sensor measure, or transparent composite with explicit unit and reference period.",
+    "observability": "Moderate",
+    "measurementCaveats": "Feasible With Explicit Unit; proxy measures require construct-validity review.",
+    "evidenceStrength": "Strong",
+    "evidenceNotes": "Water availability and chemical potability are separable; contamination is needed for exposure and service-risk models.",
+    "commonMisinterpretations": "Do not treat Potable-Water Contamination Level as interchangeable with ENV-083; ENV-084 or as a universal, context-free cause.",
+    "keySources": [
+      "SRC-508"
+    ],
+    "source": {
+      "workbook": "PSYWERX_Layer_5_Physical_Environmental_Driver_Ontology_v1.0.xlsx",
+      "sheet": "Drivers"
+    }
+  },
+  {
     "id": "ENV-051",
     "name": "Precipitation Intensity",
     "aliases": [
@@ -30047,11 +30993,11 @@
     ],
     "layer": "Physical / Environmental",
     "family": "Mobility & Transport Infrastructure",
-    "definition": "Delay and movement restriction created by high demand relative to transport capacity.",
+    "definition": "Degree to which road demand and disruptions reduce operating performance relative to available capacity for a specified network and period.",
     "dataType": "Magnitude / level",
     "representationScale": "SI unit, count, proportion, GIS metric, or low–moderate–high category with spatial and temporal reference",
     "polarityDirection": "Higher values = greater road congestion level under the specified spatial, temporal, and exposure frame.",
-    "mechanism": "Congestion increases time cost, uncertainty, frustration, and exposure, altering departure time, route, destination, and mode choices.",
+    "mechanism": "Demand-capacity imbalance and incidents reduce speed and reliability, producing queues and variable delay.",
     "likelyUpstreamInfluences": [
       "Infrastructure investment",
       "demand",
@@ -30063,7 +31009,7 @@
       "delay",
       "exposure"
     ],
-    "moderatorsBoundaryConditions": "User capability; task; duration; adaptation; culture; social context; institutional rules; weather; time of day",
+    "moderatorsBoundaryConditions": "Congestion is a system condition; delay is a traveler- or flow-weighted consequence. State the reference condition for delay.",
     "typicalInteractionCandidates": [
       "Road Congestion Level × perceived threat",
       "Road Congestion Level × mobility capability",
@@ -30086,13 +31032,14 @@
     ],
     "measurementAssessmentMethods": "Environmental sensors or monitors; GIS/network analysis; structured audit; administrative records; direct observation; exposure assessment",
     "observability": "High",
-    "measurementCaveats": "Spatial scale, time window, personal exposure, mobility selection, measurement error, and subjective appraisal may differ; avoid ecological inference.",
+    "measurementCaveats": "Use congestion upstream of delay; do not double-count both as interchangeable predictors.",
     "evidenceStrength": "Emerging",
     "evidenceNotes": "Emerging evidence for the construct or closely related behavioral pathways. Effects remain conditional and relationship-specific. Representative records: SRC362; SRC338.",
-    "commonMisinterpretations": "Treating the external condition as identical to its physiological or psychological response, or assuming one universal behavioral effect.",
+    "commonMisinterpretations": "Congestion is a system condition; delay is a traveler- or flow-weighted consequence. State the reference condition for delay.",
     "keySources": [
       "SRC362",
-      "SRC338"
+      "SRC338",
+      "SRC-521"
     ],
     "source": {
       "workbook": "PSYWERX_Layer_5_Physical_Environmental_Driver_Ontology_v1.0.xlsx",
@@ -31159,11 +32106,11 @@
     ],
     "layer": "Physical / Environmental",
     "family": "Air, Chemical & Environmental Quality",
-    "definition": "Presence of volatile organic compounds, solvents, or other airborne chemical contaminants in occupied environments.",
+    "definition": "Concentration of specified toxic chemical agents not represented by a more specific PSYWERX pollutant Driver, with agent, medium, and averaging interval identified.",
     "dataType": "Magnitude / level",
     "representationScale": "SI unit, count, proportion, GIS metric, or low–moderate–high category with spatial and temporal reference",
     "polarityDirection": "Higher values = greater toxic chemical concentration under the specified spatial, temporal, and exposure frame.",
-    "mechanism": "Chemical exposure can alter comfort, symptoms, cognition, and willingness to remain in or use a space.",
+    "mechanism": "Chemical exposure produces agent- and dose-specific toxic effects that can alter health, performance, avoidance, and use of space.",
     "likelyUpstreamInfluences": [
       "Emissions",
       "ventilation",
@@ -31175,7 +32122,7 @@
       "performance",
       "health"
     ],
-    "moderatorsBoundaryConditions": "User capability; task; duration; adaptation; culture; social context; institutional rules; weather; time of day",
+    "moderatorsBoundaryConditions": "Treat ENV-061 as a governed residual parent/category and prohibit duplicate coding when a compound is represented by ENV-060 or another specific pollutant Driver.",
     "typicalInteractionCandidates": [
       "Toxic Chemical Concentration × perceived threat",
       "Toxic Chemical Concentration × mobility capability",
@@ -31198,13 +32145,14 @@
     ],
     "measurementAssessmentMethods": "Environmental sensors or monitors; GIS/network analysis; structured audit; administrative records; direct observation; exposure assessment",
     "observability": "High",
-    "measurementCaveats": "Spatial scale, time window, personal exposure, mobility selection, measurement error, and subjective appraisal may differ; avoid ecological inference.",
+    "measurementCaveats": "Prefer specific chemical nodes; use ENV-061 only when evidence or scenario data cannot support a narrower construct.",
     "evidenceStrength": "Emerging",
     "evidenceNotes": "Emerging evidence for the construct or closely related behavioral pathways. Effects remain conditional and relationship-specific. Representative records: SRC346; SRC366.",
-    "commonMisinterpretations": "Treating the external condition as identical to its physiological or psychological response, or assuming one universal behavioral effect.",
+    "commonMisinterpretations": "Treat ENV-061 as a governed residual parent/category and prohibit duplicate coding when a compound is represented by ENV-060 or another specific pollutant Driver.",
     "keySources": [
       "SRC346",
-      "SRC366"
+      "SRC366",
+      "SRC-520"
     ],
     "source": {
       "workbook": "PSYWERX_Layer_5_Physical_Environmental_Driver_Ontology_v1.0.xlsx",
@@ -31221,11 +32169,11 @@
     ],
     "layer": "Physical / Environmental",
     "family": "Mobility & Transport Infrastructure",
-    "definition": "Amount and speed of motorized traffic encountered in a movement environment.",
+    "definition": "Distribution or summary of vehicle travel speeds on a specified road segment and interval relative to applicable reference conditions.",
     "dataType": "Magnitude / level",
     "representationScale": "SI unit, count, proportion, GIS metric, or low–moderate–high category with spatial and temporal reference",
     "polarityDirection": "Higher values = greater traffic speed under the specified spatial, temporal, and exposure frame.",
-    "mechanism": "High traffic raises crossing difficulty, noise, pollution, and perceived/actual danger, which can discourage walking and cycling.",
+    "mechanism": "Vehicle speed changes collision severity, crossing difficulty, noise, travel time, and perceived danger.",
     "likelyUpstreamInfluences": [
       "Infrastructure investment",
       "demand",
@@ -31237,7 +32185,7 @@
       "delay",
       "exposure"
     ],
-    "moderatorsBoundaryConditions": "User capability; task; duration; adaptation; culture; social context; institutional rules; weather; time of day",
+    "moderatorsBoundaryConditions": "Volume is a flow quantity and speed is a movement rate; model their interaction and congestion relationship explicitly.",
     "typicalInteractionCandidates": [
       "Traffic Speed × perceived threat",
       "Traffic Speed × mobility capability",
@@ -31260,14 +32208,15 @@
     ],
     "measurementAssessmentMethods": "Environmental sensors or monitors; GIS/network analysis; structured audit; administrative records; direct observation; exposure assessment",
     "observability": "High",
-    "measurementCaveats": "Spatial scale, time window, personal exposure, mobility selection, measurement error, and subjective appraisal may differ; avoid ecological inference.",
+    "measurementCaveats": "Separate nodes support interventions that change flow without speed or speed without flow.",
     "evidenceStrength": "Moderate",
     "evidenceNotes": "Moderate evidence for the construct or closely related behavioral pathways. Effects remain conditional and relationship-specific. Representative records: SRC327; SRC328; SRC330.",
-    "commonMisinterpretations": "Treating the external condition as identical to its physiological or psychological response, or assuming one universal behavioral effect.",
+    "commonMisinterpretations": "Volume is a flow quantity and speed is a movement rate; model their interaction and congestion relationship explicitly.",
     "keySources": [
       "SRC327",
       "SRC328",
-      "SRC330"
+      "SRC330",
+      "SRC-521"
     ],
     "source": {
       "workbook": "PSYWERX_Layer_5_Physical_Environmental_Driver_Ontology_v1.0.xlsx",
@@ -31284,11 +32233,11 @@
     ],
     "layer": "Physical / Environmental",
     "family": "Mobility & Transport Infrastructure",
-    "definition": "Amount and speed of motorized traffic encountered in a movement environment.",
+    "definition": "Count or flow rate of motorized vehicles crossing a specified point or road segment during a defined interval, optionally stratified by vehicle class.",
     "dataType": "Multidimensional",
     "representationScale": "Structured component profile with each component separately defined; optionally a validated index",
     "polarityDirection": "Higher values = greater traffic volume under the specified spatial, temporal, and exposure frame.",
-    "mechanism": "High traffic raises crossing difficulty, noise, pollution, and perceived/actual danger, which can discourage walking and cycling.",
+    "mechanism": "Vehicle flow changes crossing opportunities, emissions, noise, collision exposure, and demand relative to capacity.",
     "likelyUpstreamInfluences": [
       "Infrastructure investment",
       "demand",
@@ -31300,7 +32249,7 @@
       "delay",
       "exposure"
     ],
-    "moderatorsBoundaryConditions": "User capability; task; duration; adaptation; culture; social context; institutional rules; weather; time of day",
+    "moderatorsBoundaryConditions": "Volume is a flow quantity and speed is a movement rate; model their interaction and congestion relationship explicitly.",
     "typicalInteractionCandidates": [
       "Traffic Volume × perceived threat",
       "Traffic Volume × mobility capability",
@@ -31323,14 +32272,15 @@
     ],
     "measurementAssessmentMethods": "Environmental sensors or monitors; GIS/network analysis; structured audit; administrative records; direct observation; exposure assessment",
     "observability": "High",
-    "measurementCaveats": "Spatial scale, time window, personal exposure, mobility selection, measurement error, and subjective appraisal may differ; avoid ecological inference.",
+    "measurementCaveats": "Separate nodes support interventions that change flow without speed or speed without flow.",
     "evidenceStrength": "Moderate",
     "evidenceNotes": "Moderate evidence for the construct or closely related behavioral pathways. Effects remain conditional and relationship-specific. Representative records: SRC327; SRC328; SRC330.",
-    "commonMisinterpretations": "Treating the external condition as identical to its physiological or psychological response, or assuming one universal behavioral effect.",
+    "commonMisinterpretations": "Volume is a flow quantity and speed is a movement rate; model their interaction and congestion relationship explicitly.",
     "keySources": [
       "SRC327",
       "SRC328",
-      "SRC330"
+      "SRC330",
+      "SRC-521"
     ],
     "source": {
       "workbook": "PSYWERX_Layer_5_Physical_Environmental_Driver_Ontology_v1.0.xlsx",
@@ -31472,11 +32422,11 @@
     ],
     "layer": "Physical / Environmental",
     "family": "Mobility & Transport Infrastructure",
-    "definition": "Delay and movement restriction created by high demand relative to transport capacity.",
+    "definition": "Additional elapsed travel time relative to a stated reference trip or free-flow condition for a specified route, population, and period.",
     "dataType": "Magnitude / level",
     "representationScale": "SI unit, count, proportion, GIS metric, or low–moderate–high category with spatial and temporal reference",
     "polarityDirection": "Higher values = greater travel-time delay under the specified spatial, temporal, and exposure frame.",
-    "mechanism": "Congestion increases time cost, uncertainty, frustration, and exposure, altering departure time, route, destination, and mode choices.",
+    "mechanism": "Added travel time changes time cost, schedule reliability, exposure, and the feasibility of destinations or modes.",
     "likelyUpstreamInfluences": [
       "Infrastructure investment",
       "demand",
@@ -31488,7 +32438,7 @@
       "delay",
       "exposure"
     ],
-    "moderatorsBoundaryConditions": "User capability; task; duration; adaptation; culture; social context; institutional rules; weather; time of day",
+    "moderatorsBoundaryConditions": "Congestion is a system condition; delay is a traveler- or flow-weighted consequence. State the reference condition for delay.",
     "typicalInteractionCandidates": [
       "Travel-Time Delay × perceived threat",
       "Travel-Time Delay × mobility capability",
@@ -31511,13 +32461,14 @@
     ],
     "measurementAssessmentMethods": "Environmental sensors or monitors; GIS/network analysis; structured audit; administrative records; direct observation; exposure assessment",
     "observability": "High",
-    "measurementCaveats": "Spatial scale, time window, personal exposure, mobility selection, measurement error, and subjective appraisal may differ; avoid ecological inference.",
+    "measurementCaveats": "Use congestion upstream of delay; do not double-count both as interchangeable predictors.",
     "evidenceStrength": "Emerging",
     "evidenceNotes": "Emerging evidence for the construct or closely related behavioral pathways. Effects remain conditional and relationship-specific. Representative records: SRC362; SRC338.",
-    "commonMisinterpretations": "Treating the external condition as identical to its physiological or psychological response, or assuming one universal behavioral effect.",
+    "commonMisinterpretations": "Congestion is a system condition; delay is a traveler- or flow-weighted consequence. State the reference condition for delay.",
     "keySources": [
       "SRC362",
-      "SRC338"
+      "SRC338",
+      "SRC-521"
     ],
     "source": {
       "workbook": "PSYWERX_Layer_5_Physical_Environmental_Driver_Ontology_v1.0.xlsx",
@@ -31847,11 +32798,11 @@
     ],
     "layer": "Physical / Environmental",
     "family": "Air, Chemical & Environmental Quality",
-    "definition": "Presence of volatile organic compounds, solvents, or other airborne chemical contaminants in occupied environments.",
+    "definition": "Concentration of one or more specified volatile organic compounds in a defined environmental medium, location, and averaging interval.",
     "dataType": "Magnitude / level",
     "representationScale": "SI unit, count, proportion, GIS metric, or low–moderate–high category with spatial and temporal reference",
     "polarityDirection": "Higher values = greater volatile organic compound concentration under the specified spatial, temporal, and exposure frame.",
-    "mechanism": "Chemical exposure can alter comfort, symptoms, cognition, and willingness to remain in or use a space.",
+    "mechanism": "VOC exposure can cause compound- and dose-dependent sensory, neurological, respiratory, or systemic effects.",
     "likelyUpstreamInfluences": [
       "Emissions",
       "ventilation",
@@ -31863,7 +32814,7 @@
       "performance",
       "health"
     ],
-    "moderatorsBoundaryConditions": "User capability; task; duration; adaptation; culture; social context; institutional rules; weather; time of day",
+    "moderatorsBoundaryConditions": "Treat ENV-061 as a governed residual parent/category and prohibit duplicate coding when a compound is represented by ENV-060 or another specific pollutant Driver.",
     "typicalInteractionCandidates": [
       "Volatile Organic Compound Concentration × perceived threat",
       "Volatile Organic Compound Concentration × mobility capability",
@@ -31886,13 +32837,14 @@
     ],
     "measurementAssessmentMethods": "Environmental sensors or monitors; GIS/network analysis; structured audit; administrative records; direct observation; exposure assessment",
     "observability": "High",
-    "measurementCaveats": "Spatial scale, time window, personal exposure, mobility selection, measurement error, and subjective appraisal may differ; avoid ecological inference.",
+    "measurementCaveats": "Prefer specific chemical nodes; use ENV-061 only when evidence or scenario data cannot support a narrower construct.",
     "evidenceStrength": "Emerging",
     "evidenceNotes": "Emerging evidence for the construct or closely related behavioral pathways. Effects remain conditional and relationship-specific. Representative records: SRC346; SRC366.",
-    "commonMisinterpretations": "Treating the external condition as identical to its physiological or psychological response, or assuming one universal behavioral effect.",
+    "commonMisinterpretations": "Treat ENV-061 as a governed residual parent/category and prohibit duplicate coding when a compound is represented by ENV-060 or another specific pollutant Driver.",
     "keySources": [
       "SRC346",
-      "SRC366"
+      "SRC366",
+      "SRC-520"
     ],
     "source": {
       "workbook": "PSYWERX_Layer_5_Physical_Environmental_Driver_Ontology_v1.0.xlsx",
@@ -32399,11 +33351,11 @@
     ],
     "layer": "Institutional / Structural",
     "family": "Incentives, Sanctions & Payoffs",
-    "definition": "Institutional charges that increase the financial cost of an action or option.",
+    "definition": "Required fixed or variable charge attached to a specified administrative service, filing, license, permit, or transaction.",
     "dataType": "Magnitude / level",
     "representationScale": "Count, probability, proportion, duration, monetary/administrative magnitude, index, or low–moderate–high rating for a specified institution and period",
     "polarityDirection": "Higher values = greater administrative fee magnitude for the specified rule system, organization, jurisdiction, population, and time period.",
-    "mechanism": "Changes relative prices and expected utility, often reducing demand or shifting behavior toward substitutes.",
+    "mechanism": "Fees add a discrete or graduated monetary burden to accessing a process or service, affecting take-up and substitution.",
     "likelyUpstreamInfluences": [
       "Policy design",
       "budgets",
@@ -32415,7 +33367,7 @@
       "substitution",
       "effort"
     ],
-    "moderatorsBoundaryConditions": "Institutional level; implementation fidelity; enforcement; affected population; political context; culture; economic conditions; crisis; time horizon",
+    "moderatorsBoundaryConditions": "Tax rate requires a tax base; fee magnitude is a charge for a process/service. INS-024 Compliance Cost includes money, time, learning, and psychological burdens and must not be equated with either.",
     "typicalInteractionCandidates": [
       "Administrative Fee Magnitude × enforcement probability",
       "Administrative Fee Magnitude × administrative capacity",
@@ -32436,13 +33388,14 @@
     ],
     "measurementAssessmentMethods": "Legal and policy coding; administrative records; organizational audit; budget and personnel data; structured expert assessment; survey or field study with level explicitly specified",
     "observability": "High",
-    "measurementCaveats": "Formal rule, implementation, enforcement, and perceived experience may diverge. Specify jurisdiction, organizational level, population, denominator, time window, and measurement source.",
+    "measurementCaveats": "Distinct policy levers with different incidence, salience, and behavioral elasticities.",
     "evidenceStrength": "Strong",
     "evidenceNotes": "Strong support for the construct or a closely related institutional pathway. Relationship direction remains conditional. Representative records: SRC374; SRC389.",
-    "commonMisinterpretations": "Treating a formal rule as identical to implementation, enforcement, cultural acceptance, perceived legitimacy, or a universal behavioral effect.",
+    "commonMisinterpretations": "Tax rate requires a tax base; fee magnitude is a charge for a process/service. INS-024 Compliance Cost includes money, time, learning, and psychological burdens and must not be equated with either.",
     "keySources": [
       "SRC374",
-      "SRC389"
+      "SRC389",
+      "SRC-517"
     ],
     "source": {
       "workbook": "PSYWERX_Layer_6_Institutional_Structural_Driver_Ontology_v1.0.xlsx",
@@ -32770,11 +33723,11 @@
     ],
     "layer": "Institutional / Structural",
     "family": "Corruption, Patronage & Institutional Integrity",
-    "definition": "Institutional conditions permitting private exchange for official decisions, access, enforcement, or resource allocation.",
+    "definition": "Prevalence of decision points where an actor can solicit, offer, or exchange an unauthorized payment or benefit for official action, access, allocation, or forbearance.",
     "dataType": "Magnitude / level",
     "representationScale": "Count, probability, proportion, duration, monetary/administrative magnitude, index, or low–moderate–high rating for a specified institution and period",
     "polarityDirection": "Higher values = greater bribery opportunity prevalence for the specified rule system, organization, jurisdiction, population, and time period.",
-    "mechanism": "Changes expected payoffs by creating unofficial prices and incentives for both officials and clients.",
+    "mechanism": "Bribery opportunities create unofficial prices and reciprocal incentives; opportunity need not imply a completed bribe.",
     "likelyUpstreamInfluences": [
       "Discretion",
       "transparency",
@@ -32787,7 +33740,7 @@
       "rule evasion",
       "trustworthiness"
     ],
-    "moderatorsBoundaryConditions": "Institutional level; implementation fidelity; enforcement; affected population; political context; culture; economic conditions; crisis; time horizon",
+    "moderatorsBoundaryConditions": "Bribery opportunity is a specific opportunity structure within the broader corruption domain; distinguish opportunity from observed transaction prevalence.",
     "typicalInteractionCandidates": [
       "Bribery Opportunity Prevalence × enforcement probability",
       "Bribery Opportunity Prevalence × administrative capacity",
@@ -32808,14 +33761,16 @@
     ],
     "measurementAssessmentMethods": "Legal and policy coding; administrative records; organizational audit; budget and personnel data; structured expert assessment; survey or field study with level explicitly specified",
     "observability": "High",
-    "measurementCaveats": "Formal rule, implementation, enforcement, and perceived experience may diverge. Specify jurisdiction, organizational level, population, denominator, time window, and measurement source.",
+    "measurementCaveats": "Retain the broad institutional state and the actionable opportunity mechanism, linked without treating one as a synonym for the other.",
     "evidenceStrength": "Moderate",
     "evidenceNotes": "Moderate support for the construct or a closely related institutional pathway. Relationship direction remains conditional. Representative records: SRC374; SRC375; SRC388.",
-    "commonMisinterpretations": "Treating a formal rule as identical to implementation, enforcement, cultural acceptance, perceived legitimacy, or a universal behavioral effect.",
+    "commonMisinterpretations": "Bribery opportunity is a specific opportunity structure within the broader corruption domain; distinguish opportunity from observed transaction prevalence.",
     "keySources": [
       "SRC374",
       "SRC375",
-      "SRC388"
+      "SRC388",
+      "SRC-517",
+      "SRC-524"
     ],
     "source": {
       "workbook": "PSYWERX_Layer_6_Institutional_Structural_Driver_Ontology_v1.0.xlsx",
@@ -33071,6 +34026,64 @@
     }
   },
   {
+    "id": "INS-111",
+    "name": "Civic-Space Openness",
+    "aliases": [],
+    "layer": "Institutional / Structural",
+    "family": "Participation, Procedural Governance & Redress",
+    "definition": "Extent to which law and practice permit association, assembly, advocacy, and independent civil-society action.",
+    "dataType": "Magnitude / level",
+    "representationScale": "Continuous or ordinal construct-specific measure with population, setting, reference period, and unit explicitly specified.",
+    "polarityDirection": "Higher values = greater civic-space openness.",
+    "mechanism": "Civic space controls collective organization, grievance expression, monitoring, and nonviolent alternatives.",
+    "likelyUpstreamInfluences": [
+      "Rights protection",
+      "coercion",
+      "registration rules",
+      "surveillance"
+    ],
+    "likelyDownstreamInfluences": [
+      "Mobilization",
+      "dissent",
+      "redress",
+      "accountability"
+    ],
+    "moderatorsBoundaryConditions": "Interpret only for the specified population, unit, setting, exposure, reference period, and measurement method; effects may vary across contexts.",
+    "typicalInteractionCandidates": [
+      "Rights protection",
+      "coercion",
+      "Mobilization",
+      "dissent"
+    ],
+    "modifiability": "Moderate",
+    "volatility": "Moderate",
+    "timeScaleOfChange": [
+      "Hours–Days"
+    ],
+    "timeScaleQualifier": "Typical state-change speed is context-dependent; do not infer persistence from this band.",
+    "onsetCausalLag": [
+      "Mixed / Context-dependent"
+    ],
+    "persistenceRecovery": "Persistence and recovery depend on exposure, baseline state, intervention, and system feedback.",
+    "indicators": [
+      "Construct-valid indicators of civic-space openness measured for the specified unit, setting, and reference period"
+    ],
+    "measurementAssessmentMethods": "Use a validated construct-specific instrument, administrative or sensor measure, or transparent composite with explicit unit and reference period.",
+    "observability": "Moderate",
+    "measurementCaveats": "Feasible With Explicit Unit; proxy measures require construct-validity review.",
+    "evidenceStrength": "Strong",
+    "evidenceNotes": "Civic-space openness captures practical association, assembly, and expression conditions not represented by isolated formal rights.",
+    "commonMisinterpretations": "Do not treat Civic-Space Openness as interchangeable with INS-048; INS-052; INS-099 or as a universal, context-free cause.",
+    "keySources": [
+      "SRC-502",
+      "SRC-510"
+    ],
+    "source": {
+      "workbook": "PSYWERX_Layer_6_Institutional_Structural_Driver_Ontology_v1.0.xlsx",
+      "sheet": "Drivers"
+    }
+  },
+  {
     "id": "INS-078",
     "name": "Clientelist Exchange Prevalence",
     "aliases": [
@@ -33082,11 +34095,11 @@
     ],
     "layer": "Institutional / Structural",
     "family": "Corruption, Patronage & Institutional Integrity",
-    "definition": "Allocation of jobs, benefits, protection, or resources in exchange for loyalty, support, or personal ties rather than impersonal criteria.",
+    "definition": "Prevalence of contingent, particularistic exchanges in which political support or participation is traded for targeted goods, services, protection, or access through a broker or patron.",
     "dataType": "Magnitude / level",
     "representationScale": "Count, probability, proportion, duration, monetary/administrative magnitude, index, or low–moderate–high rating for a specified institution and period",
     "polarityDirection": "Higher values = greater clientelist exchange prevalence for the specified rule system, organization, jurisdiction, population, and time period.",
-    "mechanism": "Creates reciprocal dependence and redirects behavior toward maintaining patron relationships.",
+    "mechanism": "Clientelism makes benefits conditional on political support and monitoring, shaping turnout, allegiance, and accountability.",
     "likelyUpstreamInfluences": [
       "Discretion",
       "transparency",
@@ -33099,7 +34112,7 @@
       "rule evasion",
       "trustworthiness"
     ],
-    "moderatorsBoundaryConditions": "Institutional level; implementation fidelity; enforcement; affected population; political context; culture; economic conditions; crisis; time horizon",
+    "moderatorsBoundaryConditions": "Patronage concerns allocation by loyalty; clientelism requires contingent political exchange. They may co-occur but must be coded from distinct evidence.",
     "typicalInteractionCandidates": [
       "Clientelist Exchange Prevalence × enforcement probability",
       "Clientelist Exchange Prevalence × administrative capacity",
@@ -33120,13 +34133,16 @@
     ],
     "measurementAssessmentMethods": "Legal and policy coding; administrative records; organizational audit; budget and personnel data; structured expert assessment; survey or field study with level explicitly specified",
     "observability": "High",
-    "measurementCaveats": "Formal rule, implementation, enforcement, and perceived experience may diverge. Specify jurisdiction, organizational level, population, denominator, time window, and measurement source.",
+    "measurementCaveats": "Separate nodes are useful for administrative-capacity versus electoral-mobilization mechanisms; SME review should confirm intended jurisdictional scope.",
     "evidenceStrength": "Moderate",
     "evidenceNotes": "Moderate support for the construct or a closely related institutional pathway. Relationship direction remains conditional. Representative records: SRC374; SRC388.",
-    "commonMisinterpretations": "Treating a formal rule as identical to implementation, enforcement, cultural acceptance, perceived legitimacy, or a universal behavioral effect.",
+    "commonMisinterpretations": "Patronage concerns allocation by loyalty; clientelism requires contingent political exchange. They may co-occur but must be coded from distinct evidence.",
     "keySources": [
       "SRC374",
-      "SRC388"
+      "SRC388",
+      "SRC-517",
+      "SRC-524",
+      "SRC-525"
     ],
     "source": {
       "workbook": "PSYWERX_Layer_6_Institutional_Structural_Driver_Ontology_v1.0.xlsx",
@@ -33208,11 +34224,11 @@
     ],
     "layer": "Institutional / Structural",
     "family": "Market, Labor & Transaction Structure",
-    "definition": "Formal rules governing hiring, firing, wages, benefits, working conditions, mobility, and bargaining.",
+    "definition": "Proportion of eligible employees whose terms and conditions are governed by one or more collective agreements in force.",
     "dataType": "Magnitude / level",
     "representationScale": "Count, probability, proportion, duration, monetary/administrative magnitude, index, or low–moderate–high rating for a specified institution and period",
     "polarityDirection": "Higher values = greater collective-bargaining coverage for the specified rule system, organization, jurisdiction, population, and time period.",
-    "mechanism": "Shapes job security, effort incentives, exit/voice choices, mobility, and employer behavior.",
+    "mechanism": "Bargaining coverage changes how negotiated wages, conditions, and protections apply across workers and firms.",
     "likelyUpstreamInfluences": [
       "Law",
       "regulation",
@@ -33225,7 +34241,7 @@
       "investment",
       "employment behavior"
     ],
-    "moderatorsBoundaryConditions": "Institutional level; implementation fidelity; enforcement; affected population; political context; culture; economic conditions; crisis; time horizon",
+    "moderatorsBoundaryConditions": "Protection strength is a rule/strictness construct; bargaining coverage is a population coverage rate. Neither is a proxy for union density.",
     "typicalInteractionCandidates": [
       "Collective-Bargaining Coverage × enforcement probability",
       "Collective-Bargaining Coverage × administrative capacity",
@@ -33246,13 +34262,15 @@
     ],
     "measurementAssessmentMethods": "Legal and policy coding; administrative records; organizational audit; budget and personnel data; structured expert assessment; survey or field study with level explicitly specified",
     "observability": "High",
-    "measurementCaveats": "Formal rule, implementation, enforcement, and perceived experience may diverge. Specify jurisdiction, organizational level, population, denominator, time window, and measurement source.",
+    "measurementCaveats": "Retain independently because policy changes can move one without the other.",
     "evidenceStrength": "Moderate",
     "evidenceNotes": "Moderate support for the construct or a closely related institutional pathway. Relationship direction remains conditional. Representative records: SRC374; SRC388.",
-    "commonMisinterpretations": "Treating a formal rule as identical to implementation, enforcement, cultural acceptance, perceived legitimacy, or a universal behavioral effect.",
+    "commonMisinterpretations": "Protection strength is a rule/strictness construct; bargaining coverage is a population coverage rate. Neither is a proxy for union density.",
     "keySources": [
       "SRC374",
-      "SRC388"
+      "SRC388",
+      "SRC-526",
+      "SRC-527"
     ],
     "source": {
       "workbook": "PSYWERX_Layer_6_Institutional_Structural_Driver_Ontology_v1.0.xlsx",
@@ -34193,6 +35211,65 @@
     }
   },
   {
+    "id": "INS-110",
+    "name": "Electoral Process Integrity",
+    "aliases": [],
+    "layer": "Institutional / Structural",
+    "family": "Political Power, Rights & Differential Treatment",
+    "definition": "Degree to which electoral rules and administration permit genuine, inclusive, accurately counted, and contestable choice.",
+    "dataType": "Magnitude / level",
+    "representationScale": "Continuous or ordinal construct-specific measure with population, setting, reference period, and unit explicitly specified.",
+    "polarityDirection": "Higher values = greater electoral process integrity.",
+    "mechanism": "Integrity shapes legitimacy, peaceful competition, participation, grievance, and acceptance of outcomes.",
+    "likelyUpstreamInfluences": [
+      "Legal safeguards",
+      "administrative capacity",
+      "coercion",
+      "media",
+      "monitoring"
+    ],
+    "likelyDownstreamInfluences": [
+      "Institutional trust",
+      "participation",
+      "protest",
+      "stability"
+    ],
+    "moderatorsBoundaryConditions": "Interpret only for the specified population, unit, setting, exposure, reference period, and measurement method; effects may vary across contexts.",
+    "typicalInteractionCandidates": [
+      "Legal safeguards",
+      "administrative capacity",
+      "Institutional trust",
+      "participation"
+    ],
+    "modifiability": "Moderate",
+    "volatility": "Moderate",
+    "timeScaleOfChange": [
+      "Hours–Days"
+    ],
+    "timeScaleQualifier": "Typical state-change speed is context-dependent; do not infer persistence from this band.",
+    "onsetCausalLag": [
+      "Mixed / Context-dependent"
+    ],
+    "persistenceRecovery": "Persistence and recovery depend on exposure, baseline state, intervention, and system feedback.",
+    "indicators": [
+      "Construct-valid indicators of electoral process integrity measured for the specified unit, setting, and reference period"
+    ],
+    "measurementAssessmentMethods": "Use a validated construct-specific instrument, administrative or sensor measure, or transparent composite with explicit unit and reference period.",
+    "observability": "Moderate",
+    "measurementCaveats": "Feasible With Explicit Unit; proxy measures require construct-validity review.",
+    "evidenceStrength": "Strong",
+    "evidenceNotes": "Electoral integrity is a process-quality state distinct from formal participation rights and outcome legitimacy.",
+    "commonMisinterpretations": "Do not treat Electoral Process Integrity as interchangeable with INS-048; INS-051; INS-106 or as a universal, context-free cause.",
+    "keySources": [
+      "SRC-502",
+      "SRC-503"
+    ],
+    "source": {
+      "workbook": "PSYWERX_Layer_6_Institutional_Structural_Driver_Ontology_v1.0.xlsx",
+      "sheet": "Drivers"
+    }
+  },
+  {
     "id": "INS-003",
     "name": "Eligibility-Rule Restrictiveness",
     "aliases": [
@@ -34320,6 +35397,66 @@
     }
   },
   {
+    "id": "INS-114",
+    "name": "Emergency Response Capacity",
+    "aliases": [],
+    "layer": "Institutional / Structural",
+    "family": "State Capacity & Legal-Institutional Quality",
+    "definition": "Current institutional capacity to detect, coordinate, communicate, mobilize resources, and sustain response during acute disruption.",
+    "dataType": "Magnitude / level",
+    "representationScale": "Continuous or ordinal construct-specific measure with population, setting, reference period, and unit explicitly specified.",
+    "polarityDirection": "Higher values = greater emergency response capacity.",
+    "mechanism": "Response capacity moderates how hazards become losses, scarcity, displacement, and trust change.",
+    "likelyUpstreamInfluences": [
+      "Preparedness",
+      "staffing",
+      "authority",
+      "logistics",
+      "information"
+    ],
+    "likelyDownstreamInfluences": [
+      "Service continuity",
+      "mortality",
+      "trust",
+      "compliance",
+      "recovery"
+    ],
+    "moderatorsBoundaryConditions": "Interpret only for the specified population, unit, setting, exposure, reference period, and measurement method; effects may vary across contexts.",
+    "typicalInteractionCandidates": [
+      "Preparedness",
+      "staffing",
+      "Service continuity",
+      "mortality"
+    ],
+    "modifiability": "Moderate",
+    "volatility": "Moderate",
+    "timeScaleOfChange": [
+      "Hours–Days"
+    ],
+    "timeScaleQualifier": "Typical state-change speed is context-dependent; do not infer persistence from this band.",
+    "onsetCausalLag": [
+      "Mixed / Context-dependent"
+    ],
+    "persistenceRecovery": "Persistence and recovery depend on exposure, baseline state, intervention, and system feedback.",
+    "indicators": [
+      "Construct-valid indicators of emergency response capacity measured for the specified unit, setting, and reference period"
+    ],
+    "measurementAssessmentMethods": "Use a validated construct-specific instrument, administrative or sensor measure, or transparent composite with explicit unit and reference period.",
+    "observability": "Moderate",
+    "measurementCaveats": "Feasible With Explicit Unit; proxy measures require construct-validity review.",
+    "evidenceStrength": "Strong",
+    "evidenceNotes": "Emergency response capacity is a deployable institutional capability, not authority breadth or routine service-delivery capacity.",
+    "commonMisinterpretations": "Do not treat Emergency Response Capacity as interchangeable with INS-063; INS-085; INS-091 or as a universal, context-free cause.",
+    "keySources": [
+      "SRC-503",
+      "SRC-508"
+    ],
+    "source": {
+      "workbook": "PSYWERX_Layer_6_Institutional_Structural_Driver_Ontology_v1.0.xlsx",
+      "sheet": "Drivers"
+    }
+  },
+  {
     "id": "INS-070",
     "name": "Employment Protection Strength",
     "aliases": [
@@ -34332,11 +35469,11 @@
     ],
     "layer": "Institutional / Structural",
     "family": "Market, Labor & Transaction Structure",
-    "definition": "Formal rules governing hiring, firing, wages, benefits, working conditions, mobility, and bargaining.",
+    "definition": "Strength and scope of formal protections governing dismissal, termination costs, notice, remedies, and employment-contract security for a specified worker population.",
     "dataType": "Magnitude / level",
     "representationScale": "Count, probability, proportion, duration, monetary/administrative magnitude, index, or low–moderate–high rating for a specified institution and period",
     "polarityDirection": "Higher values = greater employment protection strength for the specified rule system, organization, jurisdiction, population, and time period.",
-    "mechanism": "Shapes job security, effort incentives, exit/voice choices, mobility, and employer behavior.",
+    "mechanism": "Dismissal protections change expected job security, employer adjustment costs, worker voice, and mobility incentives.",
     "likelyUpstreamInfluences": [
       "Law",
       "regulation",
@@ -34349,7 +35486,7 @@
       "investment",
       "employment behavior"
     ],
-    "moderatorsBoundaryConditions": "Institutional level; implementation fidelity; enforcement; affected population; political context; culture; economic conditions; crisis; time horizon",
+    "moderatorsBoundaryConditions": "Protection strength is a rule/strictness construct; bargaining coverage is a population coverage rate. Neither is a proxy for union density.",
     "typicalInteractionCandidates": [
       "Employment Protection Strength × enforcement probability",
       "Employment Protection Strength × administrative capacity",
@@ -34370,13 +35507,15 @@
     ],
     "measurementAssessmentMethods": "Legal and policy coding; administrative records; organizational audit; budget and personnel data; structured expert assessment; survey or field study with level explicitly specified",
     "observability": "High",
-    "measurementCaveats": "Formal rule, implementation, enforcement, and perceived experience may diverge. Specify jurisdiction, organizational level, population, denominator, time window, and measurement source.",
+    "measurementCaveats": "Retain independently because policy changes can move one without the other.",
     "evidenceStrength": "Moderate",
     "evidenceNotes": "Moderate support for the construct or a closely related institutional pathway. Relationship direction remains conditional. Representative records: SRC374; SRC388.",
-    "commonMisinterpretations": "Treating a formal rule as identical to implementation, enforcement, cultural acceptance, perceived legitimacy, or a universal behavioral effect.",
+    "commonMisinterpretations": "Protection strength is a rule/strictness construct; bargaining coverage is a population coverage rate. Neither is a proxy for union density.",
     "keySources": [
       "SRC374",
-      "SRC388"
+      "SRC388",
+      "SRC-526",
+      "SRC-527"
     ],
     "source": {
       "workbook": "PSYWERX_Layer_6_Institutional_Structural_Driver_Ontology_v1.0.xlsx",
@@ -35272,11 +36411,11 @@
     ],
     "layer": "Institutional / Structural",
     "family": "Organizational Structure & Work Design",
-    "definition": "Extent to which formal objectives are unclear, multidimensional, or mutually inconsistent.",
+    "definition": "Degree to which an organization's authoritative goals lack specificity, observability, prioritization, or stable interpretation.",
     "dataType": "Magnitude / level",
     "representationScale": "Count, probability, proportion, duration, monetary/administrative magnitude, index, or low–moderate–high rating for a specified institution and period",
     "polarityDirection": "Higher values = greater goal ambiguity for the specified rule system, organization, jurisdiction, population, and time period.",
-    "mechanism": "Increases discretion, selective attention, symbolic compliance, conflict, and metric gaming.",
+    "mechanism": "Ambiguity increases interpretive discretion, search, selective attention, and difficulty evaluating performance.",
     "likelyUpstreamInfluences": [
       "Leadership",
       "mission",
@@ -35289,7 +36428,7 @@
       "performance",
       "error"
     ],
-    "moderatorsBoundaryConditions": "Institutional level; implementation fidelity; enforcement; affected population; political context; culture; economic conditions; crisis; time horizon",
+    "moderatorsBoundaryConditions": "Ambiguity is uncertainty about what a goal means or how to assess it; conflict is incompatibility among sufficiently understood mandates. Both may coexist.",
     "typicalInteractionCandidates": [
       "Goal Ambiguity × enforcement probability",
       "Goal Ambiguity × administrative capacity",
@@ -35310,13 +36449,14 @@
     ],
     "measurementAssessmentMethods": "Legal and policy coding; administrative records; organizational audit; budget and personnel data; structured expert assessment; survey or field study with level explicitly specified",
     "observability": "Moderate",
-    "measurementCaveats": "Formal rule, implementation, enforcement, and perceived experience may diverge. Specify jurisdiction, organizational level, population, denominator, time window, and measurement source.",
+    "measurementCaveats": "Distinct mechanisms support different interventions: clarification versus priority/resolution governance.",
     "evidenceStrength": "Moderate",
     "evidenceNotes": "Moderate support for the construct or a closely related institutional pathway. Relationship direction remains conditional. Representative records: SRC380; SRC382.",
-    "commonMisinterpretations": "Treating a formal rule as identical to implementation, enforcement, cultural acceptance, perceived legitimacy, or a universal behavioral effect.",
+    "commonMisinterpretations": "Ambiguity is uncertainty about what a goal means or how to assess it; conflict is incompatibility among sufficiently understood mandates. Both may coexist.",
     "keySources": [
       "SRC380",
-      "SRC382"
+      "SRC382",
+      "SRC-518"
     ],
     "source": {
       "workbook": "PSYWERX_Layer_6_Institutional_Structural_Driver_Ontology_v1.0.xlsx",
@@ -35397,11 +36537,11 @@
     ],
     "layer": "Institutional / Structural",
     "family": "Corruption, Patronage & Institutional Integrity",
-    "definition": "Institutional conditions permitting private exchange for official decisions, access, enforcement, or resource allocation.",
+    "definition": "Prevalence of entrusted institutional power being used for unauthorized private, political, or organizational benefit within a specified domain and period.",
     "dataType": "Magnitude / level",
     "representationScale": "Count, probability, proportion, duration, monetary/administrative magnitude, index, or low–moderate–high rating for a specified institution and period",
     "polarityDirection": "Higher values = greater institutional corruption prevalence for the specified rule system, organization, jurisdiction, population, and time period.",
-    "mechanism": "Changes expected payoffs by creating unofficial prices and incentives for both officials and clients.",
+    "mechanism": "Corrupt practice distorts allocation, enforcement, accountability, and perceived integrity through multiple forms including bribery, capture, favoritism, and embezzlement.",
     "likelyUpstreamInfluences": [
       "Discretion",
       "transparency",
@@ -35414,7 +36554,7 @@
       "rule evasion",
       "trustworthiness"
     ],
-    "moderatorsBoundaryConditions": "Institutional level; implementation fidelity; enforcement; affected population; political context; culture; economic conditions; crisis; time horizon",
+    "moderatorsBoundaryConditions": "Bribery opportunity is a specific opportunity structure within the broader corruption domain; distinguish opportunity from observed transaction prevalence.",
     "typicalInteractionCandidates": [
       "Institutional Corruption Prevalence × enforcement probability",
       "Institutional Corruption Prevalence × administrative capacity",
@@ -35435,14 +36575,16 @@
     ],
     "measurementAssessmentMethods": "Legal and policy coding; administrative records; organizational audit; budget and personnel data; structured expert assessment; survey or field study with level explicitly specified",
     "observability": "High",
-    "measurementCaveats": "Formal rule, implementation, enforcement, and perceived experience may diverge. Specify jurisdiction, organizational level, population, denominator, time window, and measurement source.",
+    "measurementCaveats": "Retain the broad institutional state and the actionable opportunity mechanism, linked without treating one as a synonym for the other.",
     "evidenceStrength": "Moderate",
     "evidenceNotes": "Moderate support for the construct or a closely related institutional pathway. Relationship direction remains conditional. Representative records: SRC374; SRC375; SRC388.",
-    "commonMisinterpretations": "Treating a formal rule as identical to implementation, enforcement, cultural acceptance, perceived legitimacy, or a universal behavioral effect.",
+    "commonMisinterpretations": "Bribery opportunity is a specific opportunity structure within the broader corruption domain; distinguish opportunity from observed transaction prevalence.",
     "keySources": [
       "SRC374",
       "SRC375",
-      "SRC388"
+      "SRC388",
+      "SRC-517",
+      "SRC-524"
     ],
     "source": {
       "workbook": "PSYWERX_Layer_6_Institutional_Structural_Driver_Ontology_v1.0.xlsx",
@@ -36333,11 +37475,11 @@
     ],
     "layer": "Institutional / Structural",
     "family": "Organizational Structure & Work Design",
-    "definition": "Extent to which formal objectives are unclear, multidimensional, or mutually inconsistent.",
+    "definition": "Degree to which authoritative mandates impose mutually incompatible objectives, duties, constraints, or success criteria on an organization.",
     "dataType": "Magnitude / level",
     "representationScale": "Count, probability, proportion, duration, monetary/administrative magnitude, index, or low–moderate–high rating for a specified institution and period",
     "polarityDirection": "Higher values = greater mandate conflict for the specified rule system, organization, jurisdiction, population, and time period.",
-    "mechanism": "Increases discretion, selective attention, symbolic compliance, conflict, and metric gaming.",
+    "mechanism": "Conflict forces trade-offs among incompatible obligations, producing prioritization contests, delay, symbolic compliance, or inconsistent implementation.",
     "likelyUpstreamInfluences": [
       "Leadership",
       "mission",
@@ -36350,7 +37492,7 @@
       "performance",
       "error"
     ],
-    "moderatorsBoundaryConditions": "Institutional level; implementation fidelity; enforcement; affected population; political context; culture; economic conditions; crisis; time horizon",
+    "moderatorsBoundaryConditions": "Ambiguity is uncertainty about what a goal means or how to assess it; conflict is incompatibility among sufficiently understood mandates. Both may coexist.",
     "typicalInteractionCandidates": [
       "Mandate Conflict × enforcement probability",
       "Mandate Conflict × administrative capacity",
@@ -36371,13 +37513,14 @@
     ],
     "measurementAssessmentMethods": "Legal and policy coding; administrative records; organizational audit; budget and personnel data; structured expert assessment; survey or field study with level explicitly specified",
     "observability": "Moderate",
-    "measurementCaveats": "Formal rule, implementation, enforcement, and perceived experience may diverge. Specify jurisdiction, organizational level, population, denominator, time window, and measurement source.",
+    "measurementCaveats": "Distinct mechanisms support different interventions: clarification versus priority/resolution governance.",
     "evidenceStrength": "Moderate",
     "evidenceNotes": "Moderate support for the construct or a closely related institutional pathway. Relationship direction remains conditional. Representative records: SRC380; SRC382.",
-    "commonMisinterpretations": "Treating a formal rule as identical to implementation, enforcement, cultural acceptance, perceived legitimacy, or a universal behavioral effect.",
+    "commonMisinterpretations": "Ambiguity is uncertainty about what a goal means or how to assess it; conflict is incompatibility among sufficiently understood mandates. Both may coexist.",
     "keySources": [
       "SRC380",
-      "SRC382"
+      "SRC382",
+      "SRC-518"
     ],
     "source": {
       "workbook": "PSYWERX_Layer_6_Institutional_Structural_Driver_Ontology_v1.0.xlsx",
@@ -36565,6 +37708,64 @@
     "keySources": [
       "SRC387",
       "SRC388"
+    ],
+    "source": {
+      "workbook": "PSYWERX_Layer_6_Institutional_Structural_Driver_Ontology_v1.0.xlsx",
+      "sheet": "Drivers"
+    }
+  },
+  {
+    "id": "INS-112",
+    "name": "Media Institutional Independence",
+    "aliases": [],
+    "layer": "Institutional / Structural",
+    "family": "Political Power, Rights & Differential Treatment",
+    "definition": "Degree to which news organizations can select, investigate, and publish without coercive political or concentrated private control.",
+    "dataType": "Magnitude / level",
+    "representationScale": "Continuous or ordinal construct-specific measure with population, setting, reference period, and unit explicitly specified.",
+    "polarityDirection": "Higher values = greater media institutional independence.",
+    "mechanism": "Independence affects information diversity, scrutiny, agenda setting, and credibility.",
+    "likelyUpstreamInfluences": [
+      "Ownership",
+      "censorship",
+      "law",
+      "funding",
+      "intimidation"
+    ],
+    "likelyDownstreamInfluences": [
+      "Viewpoint diversity",
+      "corruption exposure",
+      "institutional trust"
+    ],
+    "moderatorsBoundaryConditions": "Interpret only for the specified population, unit, setting, exposure, reference period, and measurement method; effects may vary across contexts.",
+    "typicalInteractionCandidates": [
+      "Ownership",
+      "censorship",
+      "Viewpoint diversity",
+      "corruption exposure"
+    ],
+    "modifiability": "Moderate",
+    "volatility": "Moderate",
+    "timeScaleOfChange": [
+      "Hours–Days"
+    ],
+    "timeScaleQualifier": "Typical state-change speed is context-dependent; do not infer persistence from this band.",
+    "onsetCausalLag": [
+      "Mixed / Context-dependent"
+    ],
+    "persistenceRecovery": "Persistence and recovery depend on exposure, baseline state, intervention, and system feedback.",
+    "indicators": [
+      "Construct-valid indicators of media institutional independence measured for the specified unit, setting, and reference period"
+    ],
+    "measurementAssessmentMethods": "Use a validated construct-specific instrument, administrative or sensor measure, or transparent composite with explicit unit and reference period.",
+    "observability": "Moderate",
+    "measurementCaveats": "Feasible With Explicit Unit; proxy measures require construct-validity review.",
+    "evidenceStrength": "Strong",
+    "evidenceNotes": "Media independence is an organizational/institutional condition distinct from message provenance or viewpoint diversity.",
+    "commonMisinterpretations": "Do not treat Media Institutional Independence as interchangeable with INS-043; INS-099; INF-034 or as a universal, context-free cause.",
+    "keySources": [
+      "SRC-505",
+      "SRC-510"
     ],
     "source": {
       "workbook": "PSYWERX_Layer_6_Institutional_Structural_Driver_Ontology_v1.0.xlsx",
@@ -36959,11 +38160,11 @@
     ],
     "layer": "Institutional / Structural",
     "family": "Policy Stability & Institutional Change",
-    "definition": "Prior decisions and accumulated routines that establish expectations for how similar future cases will be handled.",
+    "definition": "Current organizational capacity to acquire, interpret, retain, share, and apply experience or evidence to change routines, decisions, and performance.",
     "dataType": "Magnitude / level",
     "representationScale": "Count, probability, proportion, duration, monetary/administrative magnitude, index, or low–moderate–high rating for a specified institution and period",
     "polarityDirection": "Higher values = greater organizational learning capacity for the specified rule system, organization, jurisdiction, population, and time period.",
-    "mechanism": "Reduces uncertainty and search costs but can reproduce earlier assumptions or biases.",
+    "mechanism": "Learning capacity converts feedback and experience into updated mental models, procedures, resource allocation, and adaptive performance.",
     "likelyUpstreamInfluences": [
       "Political turnover",
       "crisis",
@@ -36975,7 +38176,7 @@
       "investment",
       "institutional adaptation"
     ],
-    "moderatorsBoundaryConditions": "Institutional level; implementation fidelity; enforcement; affected population; political context; culture; economic conditions; crisis; time horizon",
+    "moderatorsBoundaryConditions": "Precedent is accumulated constraint or guidance from prior decisions; learning capacity is an adaptive capability. Learning may revise precedent, and precedent may constrain learning.",
     "typicalInteractionCandidates": [
       "Organizational Learning Capacity × enforcement probability",
       "Organizational Learning Capacity × administrative capacity",
@@ -36996,13 +38197,15 @@
     ],
     "measurementAssessmentMethods": "Legal and policy coding; administrative records; organizational audit; budget and personnel data; structured expert assessment; survey or field study with level explicitly specified",
     "observability": "Moderate",
-    "measurementCaveats": "Formal rule, implementation, enforcement, and perceived experience may diverge. Specify jurisdiction, organizational level, population, denominator, time window, and measurement source.",
+    "measurementCaveats": "Retain both IDs and replace INS-094's copied fields; consider reciprocal links through feedback and institutional change.",
     "evidenceStrength": "Moderate",
     "evidenceNotes": "Moderate support for the construct or a closely related institutional pathway. Relationship direction remains conditional. Representative records: SRC382; SRC396.",
-    "commonMisinterpretations": "Treating a formal rule as identical to implementation, enforcement, cultural acceptance, perceived legitimacy, or a universal behavioral effect.",
+    "commonMisinterpretations": "Precedent is accumulated constraint or guidance from prior decisions; learning capacity is an adaptive capability. Learning may revise precedent, and precedent may constrain learning.",
     "keySources": [
       "SRC382",
-      "SRC396"
+      "SRC396",
+      "SRC-528",
+      "SRC-529"
     ],
     "source": {
       "workbook": "PSYWERX_Layer_6_Institutional_Structural_Driver_Ontology_v1.0.xlsx",
@@ -37081,11 +38284,11 @@
     ],
     "layer": "Institutional / Structural",
     "family": "Corruption, Patronage & Institutional Integrity",
-    "definition": "Allocation of jobs, benefits, protection, or resources in exchange for loyalty, support, or personal ties rather than impersonal criteria.",
+    "definition": "Prevalence of discretionary allocation of public jobs, contracts, protection, or benefits on the basis of partisan, factional, family, or personal loyalty rather than impersonal criteria.",
     "dataType": "Magnitude / level",
     "representationScale": "Count, probability, proportion, duration, monetary/administrative magnitude, index, or low–moderate–high rating for a specified institution and period",
     "polarityDirection": "Higher values = greater patronage allocation prevalence for the specified rule system, organization, jurisdiction, population, and time period.",
-    "mechanism": "Creates reciprocal dependence and redirects behavior toward maintaining patron relationships.",
+    "mechanism": "Patronage embeds loyalty criteria in staffing and allocation, changing organizational competence, dependency, and distribution.",
     "likelyUpstreamInfluences": [
       "Discretion",
       "transparency",
@@ -37098,7 +38301,7 @@
       "rule evasion",
       "trustworthiness"
     ],
-    "moderatorsBoundaryConditions": "Institutional level; implementation fidelity; enforcement; affected population; political context; culture; economic conditions; crisis; time horizon",
+    "moderatorsBoundaryConditions": "Patronage concerns allocation by loyalty; clientelism requires contingent political exchange. They may co-occur but must be coded from distinct evidence.",
     "typicalInteractionCandidates": [
       "Patronage Allocation Prevalence × enforcement probability",
       "Patronage Allocation Prevalence × administrative capacity",
@@ -37119,13 +38322,16 @@
     ],
     "measurementAssessmentMethods": "Legal and policy coding; administrative records; organizational audit; budget and personnel data; structured expert assessment; survey or field study with level explicitly specified",
     "observability": "High",
-    "measurementCaveats": "Formal rule, implementation, enforcement, and perceived experience may diverge. Specify jurisdiction, organizational level, population, denominator, time window, and measurement source.",
+    "measurementCaveats": "Separate nodes are useful for administrative-capacity versus electoral-mobilization mechanisms; SME review should confirm intended jurisdictional scope.",
     "evidenceStrength": "Moderate",
     "evidenceNotes": "Moderate support for the construct or a closely related institutional pathway. Relationship direction remains conditional. Representative records: SRC374; SRC388.",
-    "commonMisinterpretations": "Treating a formal rule as identical to implementation, enforcement, cultural acceptance, perceived legitimacy, or a universal behavioral effect.",
+    "commonMisinterpretations": "Patronage concerns allocation by loyalty; clientelism requires contingent political exchange. They may co-occur but must be coded from distinct evidence.",
     "keySources": [
       "SRC374",
-      "SRC388"
+      "SRC388",
+      "SRC-517",
+      "SRC-524",
+      "SRC-525"
     ],
     "source": {
       "workbook": "PSYWERX_Layer_6_Institutional_Structural_Driver_Ontology_v1.0.xlsx",
@@ -37260,6 +38466,65 @@
     }
   },
   {
+    "id": "INS-113",
+    "name": "Policy Implementation Fidelity",
+    "aliases": [],
+    "layer": "Institutional / Structural",
+    "family": "State Capacity & Legal-Institutional Quality",
+    "definition": "Degree to which an adopted policy is executed as specified across responsible organizations, places, and time.",
+    "dataType": "Magnitude / level",
+    "representationScale": "Continuous or ordinal construct-specific measure with population, setting, reference period, and unit explicitly specified.",
+    "polarityDirection": "Higher values = greater policy implementation fidelity.",
+    "mechanism": "Implementation fidelity determines whether formal rules produce intended services, incentives, and enforcement.",
+    "likelyUpstreamInfluences": [
+      "Staffing",
+      "resources",
+      "coordination",
+      "discretion",
+      "monitoring"
+    ],
+    "likelyDownstreamInfluences": [
+      "Service outcomes",
+      "trust",
+      "compliance",
+      "policy effectiveness"
+    ],
+    "moderatorsBoundaryConditions": "Interpret only for the specified population, unit, setting, exposure, reference period, and measurement method; effects may vary across contexts.",
+    "typicalInteractionCandidates": [
+      "Staffing",
+      "resources",
+      "Service outcomes",
+      "trust"
+    ],
+    "modifiability": "Moderate",
+    "volatility": "Moderate",
+    "timeScaleOfChange": [
+      "Hours–Days"
+    ],
+    "timeScaleQualifier": "Typical state-change speed is context-dependent; do not infer persistence from this band.",
+    "onsetCausalLag": [
+      "Mixed / Context-dependent"
+    ],
+    "persistenceRecovery": "Persistence and recovery depend on exposure, baseline state, intervention, and system feedback.",
+    "indicators": [
+      "Construct-valid indicators of policy implementation fidelity measured for the specified unit, setting, and reference period"
+    ],
+    "measurementAssessmentMethods": "Use a validated construct-specific instrument, administrative or sensor measure, or transparent composite with explicit unit and reference period.",
+    "observability": "Moderate",
+    "measurementCaveats": "Feasible With Explicit Unit; proxy measures require construct-validity review.",
+    "evidenceStrength": "Strong",
+    "evidenceNotes": "Implementation fidelity distinguishes policy on paper from realized execution and is necessary for policy-to-outcome chains.",
+    "commonMisinterpretations": "Do not treat Policy Implementation Fidelity as interchangeable with INS-063; INS-040 or as a universal, context-free cause.",
+    "keySources": [
+      "SRC-502",
+      "SRC-503"
+    ],
+    "source": {
+      "workbook": "PSYWERX_Layer_6_Institutional_Structural_Driver_Ontology_v1.0.xlsx",
+      "sheet": "Drivers"
+    }
+  },
+  {
     "id": "INS-089",
     "name": "Policy Stability",
     "aliases": [
@@ -37335,11 +38600,11 @@
     ],
     "layer": "Institutional / Structural",
     "family": "Policy Stability & Institutional Change",
-    "definition": "Prior decisions and accumulated routines that establish expectations for how similar future cases will be handled.",
+    "definition": "Degree to which prior authoritative decisions or established interpretations constrain or predict handling of analogous future cases.",
     "dataType": "Magnitude / level",
     "representationScale": "Count, probability, proportion, duration, monetary/administrative magnitude, index, or low–moderate–high rating for a specified institution and period",
     "polarityDirection": "Higher values = greater precedent strength for the specified rule system, organization, jurisdiction, population, and time period.",
-    "mechanism": "Reduces uncertainty and search costs but can reproduce earlier assumptions or biases.",
+    "mechanism": "Strong precedent reduces search and uncertainty and stabilizes expectations, while potentially locking in earlier assumptions or inequities.",
     "likelyUpstreamInfluences": [
       "Political turnover",
       "crisis",
@@ -37351,7 +38616,7 @@
       "investment",
       "institutional adaptation"
     ],
-    "moderatorsBoundaryConditions": "Institutional level; implementation fidelity; enforcement; affected population; political context; culture; economic conditions; crisis; time horizon",
+    "moderatorsBoundaryConditions": "Precedent is accumulated constraint or guidance from prior decisions; learning capacity is an adaptive capability. Learning may revise precedent, and precedent may constrain learning.",
     "typicalInteractionCandidates": [
       "Precedent Strength × enforcement probability",
       "Precedent Strength × administrative capacity",
@@ -37372,13 +38637,15 @@
     ],
     "measurementAssessmentMethods": "Legal and policy coding; administrative records; organizational audit; budget and personnel data; structured expert assessment; survey or field study with level explicitly specified",
     "observability": "Moderate",
-    "measurementCaveats": "Formal rule, implementation, enforcement, and perceived experience may diverge. Specify jurisdiction, organizational level, population, denominator, time window, and measurement source.",
+    "measurementCaveats": "Retain both IDs and replace INS-094's copied fields; consider reciprocal links through feedback and institutional change.",
     "evidenceStrength": "Moderate",
     "evidenceNotes": "Moderate support for the construct or a closely related institutional pathway. Relationship direction remains conditional. Representative records: SRC382; SRC396.",
-    "commonMisinterpretations": "Treating a formal rule as identical to implementation, enforcement, cultural acceptance, perceived legitimacy, or a universal behavioral effect.",
+    "commonMisinterpretations": "Precedent is accumulated constraint or guidance from prior decisions; learning capacity is an adaptive capability. Learning may revise precedent, and precedent may constrain learning.",
     "keySources": [
       "SRC382",
-      "SRC396"
+      "SRC396",
+      "SRC-528",
+      "SRC-529"
     ],
     "source": {
       "workbook": "PSYWERX_Layer_6_Institutional_Structural_Driver_Ontology_v1.0.xlsx",
@@ -38962,11 +40229,11 @@
     ],
     "layer": "Institutional / Structural",
     "family": "Incentives, Sanctions & Payoffs",
-    "definition": "Institutional charges that increase the financial cost of an action or option.",
+    "definition": "Statutory or effective tax liability expressed relative to its defined base for a specified taxpayer, transaction, good, or activity.",
     "dataType": "Magnitude / level",
     "representationScale": "Count, probability, proportion, duration, monetary/administrative magnitude, index, or low–moderate–high rating for a specified institution and period",
     "polarityDirection": "Higher values = greater tax rate for the specified rule system, organization, jurisdiction, population, and time period.",
-    "mechanism": "Changes relative prices and expected utility, often reducing demand or shifting behavior toward substitutes.",
+    "mechanism": "Tax rates alter after-tax prices, income, expected returns, and incentives, conditional on salience, incidence, enforcement, and alternatives.",
     "likelyUpstreamInfluences": [
       "Policy design",
       "budgets",
@@ -38978,7 +40245,7 @@
       "substitution",
       "effort"
     ],
-    "moderatorsBoundaryConditions": "Institutional level; implementation fidelity; enforcement; affected population; political context; culture; economic conditions; crisis; time horizon",
+    "moderatorsBoundaryConditions": "Tax rate requires a tax base; fee magnitude is a charge for a process/service. INS-024 Compliance Cost includes money, time, learning, and psychological burdens and must not be equated with either.",
     "typicalInteractionCandidates": [
       "Tax Rate × enforcement probability",
       "Tax Rate × administrative capacity",
@@ -38999,13 +40266,14 @@
     ],
     "measurementAssessmentMethods": "Legal and policy coding; administrative records; organizational audit; budget and personnel data; structured expert assessment; survey or field study with level explicitly specified",
     "observability": "High",
-    "measurementCaveats": "Formal rule, implementation, enforcement, and perceived experience may diverge. Specify jurisdiction, organizational level, population, denominator, time window, and measurement source.",
+    "measurementCaveats": "Distinct policy levers with different incidence, salience, and behavioral elasticities.",
     "evidenceStrength": "Strong",
     "evidenceNotes": "Strong support for the construct or a closely related institutional pathway. Relationship direction remains conditional. Representative records: SRC374; SRC389.",
-    "commonMisinterpretations": "Treating a formal rule as identical to implementation, enforcement, cultural acceptance, perceived legitimacy, or a universal behavioral effect.",
+    "commonMisinterpretations": "Tax rate requires a tax base; fee magnitude is a charge for a process/service. INS-024 Compliance Cost includes money, time, learning, and psychological burdens and must not be equated with either.",
     "keySources": [
       "SRC374",
-      "SRC389"
+      "SRC389",
+      "SRC-517"
     ],
     "source": {
       "workbook": "PSYWERX_Layer_6_Institutional_Structural_Driver_Ontology_v1.0.xlsx",
@@ -40410,6 +41678,63 @@
     }
   },
   {
+    "id": "INF-076",
+    "name": "Dehumanizing Content Intensity",
+    "aliases": [],
+    "layer": "Informational",
+    "family": "Narrative, Exemplification & Vividness",
+    "definition": "Degree to which content denies, diminishes, or excludes the humanity and moral standing of a target group.",
+    "dataType": "Magnitude / level",
+    "representationScale": "Continuous or ordinal construct-specific measure with population, setting, reference period, and unit explicitly specified.",
+    "polarityDirection": "Higher values = greater dehumanizing content intensity.",
+    "mechanism": "Dehumanizing content can reduce moral inhibition and increase hostility and support for intergroup violence.",
+    "likelyUpstreamInfluences": [
+      "Conflict narratives",
+      "elite cues",
+      "identity threat",
+      "platform amplification"
+    ],
+    "likelyDownstreamInfluences": [
+      "Outgroup hostility",
+      "violence legitimacy",
+      "sanction support"
+    ],
+    "moderatorsBoundaryConditions": "Interpret only for the specified population, unit, setting, exposure, reference period, and measurement method; effects may vary across contexts.",
+    "typicalInteractionCandidates": [
+      "Conflict narratives",
+      "elite cues",
+      "Outgroup hostility",
+      "violence legitimacy"
+    ],
+    "modifiability": "Moderate",
+    "volatility": "Moderate",
+    "timeScaleOfChange": [
+      "Hours–Days"
+    ],
+    "timeScaleQualifier": "Typical state-change speed is context-dependent; do not infer persistence from this band.",
+    "onsetCausalLag": [
+      "Mixed / Context-dependent"
+    ],
+    "persistenceRecovery": "Persistence and recovery depend on exposure, baseline state, intervention, and system feedback.",
+    "indicators": [
+      "Construct-valid indicators of dehumanizing content intensity measured for the specified unit, setting, and reference period"
+    ],
+    "measurementAssessmentMethods": "Use a validated construct-specific instrument, administrative or sensor measure, or transparent composite with explicit unit and reference period.",
+    "observability": "Moderate",
+    "measurementCaveats": "Feasible With Explicit Unit; proxy measures require construct-validity review.",
+    "evidenceStrength": "Strong",
+    "evidenceNotes": "Dehumanizing content is measurable information content and a plausible antecedent of outgroup dehumanization/aggression, not equivalent to hostility itself.",
+    "commonMisinterpretations": "Do not treat Dehumanizing Content Intensity as interchangeable with INF-044; SOC-088; PDC-009 or as a universal, context-free cause.",
+    "keySources": [
+      "SRC-506",
+      "SRC-507"
+    ],
+    "source": {
+      "workbook": "PSYWERX_Layer_7_Informational_Driver_Ontology_v1.0.xlsx",
+      "sheet": "Drivers"
+    }
+  },
+  {
     "id": "INF-026",
     "name": "Evidence Amount",
     "aliases": [
@@ -41357,6 +42682,64 @@
     "keySources": [
       "SRC-406",
       "SRC-435"
+    ],
+    "source": {
+      "workbook": "PSYWERX_Layer_7_Informational_Driver_Ontology_v1.0.xlsx",
+      "sheet": "Drivers"
+    }
+  },
+  {
+    "id": "INF-074",
+    "name": "Information-Void Magnitude",
+    "aliases": [],
+    "layer": "Informational",
+    "family": "Information Availability & Exposure",
+    "definition": "Size of the gap between an audience's behavior-relevant information need and the timely credible information available to meet it.",
+    "dataType": "Magnitude / level",
+    "representationScale": "Continuous or ordinal construct-specific measure with population, setting, reference period, and unit explicitly specified.",
+    "polarityDirection": "Higher values = greater information-void magnitude.",
+    "mechanism": "Voids increase uncertainty and create opportunity for rumor, speculation, and adversarial narratives.",
+    "likelyUpstreamInfluences": [
+      "Event novelty",
+      "journalism capacity",
+      "censorship",
+      "response delay"
+    ],
+    "likelyDownstreamInfluences": [
+      "Search",
+      "rumor exposure",
+      "uncertainty",
+      "misinformation uptake"
+    ],
+    "moderatorsBoundaryConditions": "Interpret only for the specified population, unit, setting, exposure, reference period, and measurement method; effects may vary across contexts.",
+    "typicalInteractionCandidates": [
+      "Event novelty",
+      "journalism capacity",
+      "Search",
+      "rumor exposure"
+    ],
+    "modifiability": "Moderate",
+    "volatility": "Moderate",
+    "timeScaleOfChange": [
+      "Hours–Days"
+    ],
+    "timeScaleQualifier": "Typical state-change speed is context-dependent; do not infer persistence from this band.",
+    "onsetCausalLag": [
+      "Mixed / Context-dependent"
+    ],
+    "persistenceRecovery": "Persistence and recovery depend on exposure, baseline state, intervention, and system feedback.",
+    "indicators": [
+      "Construct-valid indicators of information-void magnitude measured for the specified unit, setting, and reference period"
+    ],
+    "measurementAssessmentMethods": "Use a validated construct-specific instrument, administrative or sensor measure, or transparent composite with explicit unit and reference period.",
+    "observability": "Moderate",
+    "measurementCaveats": "Feasible With Explicit Unit; proxy measures require construct-validity review.",
+    "evidenceStrength": "Strong",
+    "evidenceNotes": "An information void is a system-level absence relative to demand; it enables uncertainty, rumor, and substitution dynamics.",
+    "commonMisinterpretations": "Do not treat Information-Void Magnitude as interchangeable with INF-002; INF-008; PDC-012 or as a universal, context-free cause.",
+    "keySources": [
+      "SRC-505",
+      "SRC-510"
     ],
     "source": {
       "workbook": "PSYWERX_Layer_7_Informational_Driver_Ontology_v1.0.xlsx",
@@ -43626,6 +45009,64 @@
     }
   },
   {
+    "id": "INF-075",
+    "name": "Viewpoint Diversity",
+    "aliases": [],
+    "layer": "Informational",
+    "family": "Information Availability & Exposure",
+    "definition": "Breadth of substantively distinct relevant perspectives present in an audience's accessible information set.",
+    "dataType": "Magnitude / level",
+    "representationScale": "Continuous or ordinal construct-specific measure with population, setting, reference period, and unit explicitly specified.",
+    "polarityDirection": "Higher values = greater viewpoint diversity.",
+    "mechanism": "Diversity affects uncertainty, cross-checking, polarization, and resistance to single-source capture.",
+    "likelyUpstreamInfluences": [
+      "Media independence",
+      "curation",
+      "network segregation",
+      "censorship"
+    ],
+    "likelyDownstreamInfluences": [
+      "Mental-model breadth",
+      "confidence",
+      "polarization",
+      "correction"
+    ],
+    "moderatorsBoundaryConditions": "Interpret only for the specified population, unit, setting, exposure, reference period, and measurement method; effects may vary across contexts.",
+    "typicalInteractionCandidates": [
+      "Media independence",
+      "curation",
+      "Mental-model breadth",
+      "confidence"
+    ],
+    "modifiability": "Moderate",
+    "volatility": "Moderate",
+    "timeScaleOfChange": [
+      "Hours–Days"
+    ],
+    "timeScaleQualifier": "Typical state-change speed is context-dependent; do not infer persistence from this band.",
+    "onsetCausalLag": [
+      "Mixed / Context-dependent"
+    ],
+    "persistenceRecovery": "Persistence and recovery depend on exposure, baseline state, intervention, and system feedback.",
+    "indicators": [
+      "Construct-valid indicators of viewpoint diversity measured for the specified unit, setting, and reference period"
+    ],
+    "measurementAssessmentMethods": "Use a validated construct-specific instrument, administrative or sensor measure, or transparent composite with explicit unit and reference period.",
+    "observability": "Moderate",
+    "measurementCaveats": "Feasible With Explicit Unit; proxy measures require construct-validity review.",
+    "evidenceStrength": "Strong",
+    "evidenceNotes": "Viewpoint diversity is a property of available information, distinct from group opinion diversity and volume.",
+    "commonMisinterpretations": "Do not treat Viewpoint Diversity as interchangeable with INF-002; SOC-068 or as a universal, context-free cause.",
+    "keySources": [
+      "SRC-505",
+      "SRC-509"
+    ],
+    "source": {
+      "workbook": "PSYWERX_Layer_7_Informational_Driver_Ontology_v1.0.xlsx",
+      "sheet": "Drivers"
+    }
+  },
+  {
     "id": "INF-021",
     "name": "Visual Representation Format",
     "aliases": [
@@ -44194,6 +45635,65 @@
     "keySources": [
       "SRC-455",
       "SRC-463"
+    ],
+    "source": {
+      "workbook": "PSYWERX_Layer_8_Technological_Driver_Ontology_v1.0.xlsx",
+      "sheet": "Drivers"
+    }
+  },
+  {
+    "id": "TEC-091",
+    "name": "Algorithmic Bias Magnitude",
+    "aliases": [],
+    "layer": "Technological",
+    "family": "Algorithmic Curation & Adaptive Delivery",
+    "definition": "Magnitude of systematic disparity in algorithmic selection, ranking, prediction, or error across relevant groups or contexts.",
+    "dataType": "Magnitude / level",
+    "representationScale": "Continuous or ordinal construct-specific measure with population, setting, reference period, and unit explicitly specified.",
+    "polarityDirection": "Higher values = greater algorithmic bias magnitude.",
+    "mechanism": "Bias reallocates exposure, opportunity, burden, and error in ways that can reinforce inequality and distrust.",
+    "likelyUpstreamInfluences": [
+      "Training data",
+      "objectives",
+      "design",
+      "feedback",
+      "deployment context"
+    ],
+    "likelyDownstreamInfluences": [
+      "Differential exposure",
+      "discrimination",
+      "trust",
+      "behavioral opportunity"
+    ],
+    "moderatorsBoundaryConditions": "Interpret only for the specified population, unit, setting, exposure, reference period, and measurement method; effects may vary across contexts.",
+    "typicalInteractionCandidates": [
+      "Training data",
+      "objectives",
+      "Differential exposure",
+      "discrimination"
+    ],
+    "modifiability": "Moderate",
+    "volatility": "Moderate",
+    "timeScaleOfChange": [
+      "Hours–Days"
+    ],
+    "timeScaleQualifier": "Typical state-change speed is context-dependent; do not infer persistence from this band.",
+    "onsetCausalLag": [
+      "Mixed / Context-dependent"
+    ],
+    "persistenceRecovery": "Persistence and recovery depend on exposure, baseline state, intervention, and system feedback.",
+    "indicators": [
+      "Construct-valid indicators of algorithmic bias magnitude measured for the specified unit, setting, and reference period"
+    ],
+    "measurementAssessmentMethods": "Use a validated construct-specific instrument, administrative or sensor measure, or transparent composite with explicit unit and reference period.",
+    "observability": "Moderate",
+    "measurementCaveats": "Feasible With Explicit Unit; proxy measures require construct-validity review.",
+    "evidenceStrength": "Strong",
+    "evidenceNotes": "Algorithmic bias magnitude is an output-disparity/error state distinct from ranking weight or personalization intensity.",
+    "commonMisinterpretations": "Do not treat Algorithmic Bias Magnitude as interchangeable with TEC-030; TEC-033; INS-074 or as a universal, context-free cause.",
+    "keySources": [
+      "SRC-512",
+      "SRC-513"
     ],
     "source": {
       "workbook": "PSYWERX_Layer_8_Technological_Driver_Ontology_v1.0.xlsx",
@@ -44823,6 +46323,64 @@
     }
   },
   {
+    "id": "TEC-092",
+    "name": "Automation Calibration Quality",
+    "aliases": [],
+    "layer": "Technological",
+    "family": "Automation Reliability & Decision Support",
+    "definition": "Correspondence between a system's expressed confidence or alert strength and its observed probability of being correct.",
+    "dataType": "Magnitude / level",
+    "representationScale": "Continuous or ordinal construct-specific measure with population, setting, reference period, and unit explicitly specified.",
+    "polarityDirection": "Higher values = greater automation calibration quality.",
+    "mechanism": "Calibration governs appropriate reliance, override, verification, and false-alarm response.",
+    "likelyUpstreamInfluences": [
+      "Model quality",
+      "data shift",
+      "interface",
+      "validation"
+    ],
+    "likelyDownstreamInfluences": [
+      "Automation trust",
+      "reliance",
+      "monitoring",
+      "decision error"
+    ],
+    "moderatorsBoundaryConditions": "Interpret only for the specified population, unit, setting, exposure, reference period, and measurement method; effects may vary across contexts.",
+    "typicalInteractionCandidates": [
+      "Model quality",
+      "data shift",
+      "Automation trust",
+      "reliance"
+    ],
+    "modifiability": "Moderate",
+    "volatility": "Moderate",
+    "timeScaleOfChange": [
+      "Hours–Days"
+    ],
+    "timeScaleQualifier": "Typical state-change speed is context-dependent; do not infer persistence from this band.",
+    "onsetCausalLag": [
+      "Mixed / Context-dependent"
+    ],
+    "persistenceRecovery": "Persistence and recovery depend on exposure, baseline state, intervention, and system feedback.",
+    "indicators": [
+      "Construct-valid indicators of automation calibration quality measured for the specified unit, setting, and reference period"
+    ],
+    "measurementAssessmentMethods": "Use a validated construct-specific instrument, administrative or sensor measure, or transparent composite with explicit unit and reference period.",
+    "observability": "Moderate",
+    "measurementCaveats": "Feasible With Explicit Unit; proxy measures require construct-validity review.",
+    "evidenceStrength": "Strong",
+    "evidenceNotes": "Calibration quality links machine confidence to observed correctness and is distinct from reliability or confidence-display availability.",
+    "commonMisinterpretations": "Do not treat Automation Calibration Quality as interchangeable with TEC-037; TEC-042; TEC-043 or as a universal, context-free cause.",
+    "keySources": [
+      "SRC-512",
+      "SRC-513"
+    ],
+    "source": {
+      "workbook": "PSYWERX_Layer_8_Technological_Driver_Ontology_v1.0.xlsx",
+      "sheet": "Drivers"
+    }
+  },
+  {
     "id": "TEC-036",
     "name": "Automation Level",
     "aliases": [
@@ -45191,6 +46749,64 @@
     }
   },
   {
+    "id": "TEC-094",
+    "name": "Communication Confidentiality",
+    "aliases": [],
+    "layer": "Technological",
+    "family": "Privacy, Security & Identity Architecture",
+    "definition": "Degree to which communication content and metadata are protected from unauthorized observation in transit and storage.",
+    "dataType": "Magnitude / level",
+    "representationScale": "Continuous or ordinal construct-specific measure with population, setting, reference period, and unit explicitly specified.",
+    "polarityDirection": "Higher values = greater communication confidentiality.",
+    "mechanism": "Confidentiality changes disclosure, coordination, surveillance exposure, and participation risk.",
+    "likelyUpstreamInfluences": [
+      "Encryption",
+      "access control",
+      "endpoint security",
+      "retention"
+    ],
+    "likelyDownstreamInfluences": [
+      "Self-censorship",
+      "coordination",
+      "trust",
+      "adversary awareness"
+    ],
+    "moderatorsBoundaryConditions": "Interpret only for the specified population, unit, setting, exposure, reference period, and measurement method; effects may vary across contexts.",
+    "typicalInteractionCandidates": [
+      "Encryption",
+      "access control",
+      "Self-censorship",
+      "coordination"
+    ],
+    "modifiability": "Moderate",
+    "volatility": "Moderate",
+    "timeScaleOfChange": [
+      "Hours–Days"
+    ],
+    "timeScaleQualifier": "Typical state-change speed is context-dependent; do not infer persistence from this band.",
+    "onsetCausalLag": [
+      "Mixed / Context-dependent"
+    ],
+    "persistenceRecovery": "Persistence and recovery depend on exposure, baseline state, intervention, and system feedback.",
+    "indicators": [
+      "Construct-valid indicators of communication confidentiality measured for the specified unit, setting, and reference period"
+    ],
+    "measurementAssessmentMethods": "Use a validated construct-specific instrument, administrative or sensor measure, or transparent composite with explicit unit and reference period.",
+    "observability": "Moderate",
+    "measurementCaveats": "Feasible With Explicit Unit; proxy measures require construct-validity review.",
+    "evidenceStrength": "Strong",
+    "evidenceNotes": "Actual confidentiality protection is distinct from user controls, perceived privacy, and disclosure level.",
+    "commonMisinterpretations": "Do not treat Communication Confidentiality as interchangeable with TEC-049; TEC-080; TEC-082 or as a universal, context-free cause.",
+    "keySources": [
+      "SRC-512",
+      "SRC-513"
+    ],
+    "source": {
+      "workbook": "PSYWERX_Layer_8_Technological_Driver_Ontology_v1.0.xlsx",
+      "sheet": "Drivers"
+    }
+  },
+  {
     "id": "TEC-002",
     "name": "Compatible Device Availability",
     "aliases": [
@@ -45366,6 +46982,68 @@
     "commonMisinterpretations": "Treating content editability affordance as a universal behavioral effect, or confusing the technical property with the user’s perception or response.",
     "keySources": [
       "SRC-463"
+    ],
+    "source": {
+      "workbook": "PSYWERX_Layer_8_Technological_Driver_Ontology_v1.0.xlsx",
+      "sheet": "Drivers"
+    }
+  },
+  {
+    "id": "TEC-093",
+    "name": "Content-Moderation Technical Enforcement Capacity",
+    "aliases": [
+      "Content-Moderation Enforcement Capability"
+    ],
+    "layer": "Technological",
+    "family": "Platform Social Affordances",
+    "definition": "Technical capacity of a platform or system to detect, prioritize, restrict, label, or remove governed content at the scale and speed required by its policy.",
+    "dataType": "Magnitude / level",
+    "representationScale": "Continuous or ordinal construct-specific measure with population, setting, reference period, and unit explicitly specified.",
+    "polarityDirection": "Higher values = greater content-moderation technical enforcement capacity.",
+    "mechanism": "Capability shapes exposure, adaptation by adversaries, error burden, and platform norms.",
+    "likelyUpstreamInfluences": [
+      "Detection systems",
+      "staffing tools",
+      "policy",
+      "language coverage",
+      "adversarial adaptation"
+    ],
+    "likelyDownstreamInfluences": [
+      "Content availability",
+      "reach",
+      "migration",
+      "trust",
+      "false positives"
+    ],
+    "moderatorsBoundaryConditions": "Interpret only for the specified population, unit, setting, exposure, reference period, and measurement method; effects may vary across contexts.",
+    "typicalInteractionCandidates": [
+      "Detection systems",
+      "staffing tools",
+      "Content availability",
+      "reach"
+    ],
+    "modifiability": "Moderate",
+    "volatility": "Moderate",
+    "timeScaleOfChange": [
+      "Hours–Days"
+    ],
+    "timeScaleQualifier": "Typical state-change speed is context-dependent; do not infer persistence from this band.",
+    "onsetCausalLag": [
+      "Mixed / Context-dependent"
+    ],
+    "persistenceRecovery": "Persistence and recovery depend on exposure, baseline state, intervention, and system feedback.",
+    "indicators": [
+      "Construct-valid indicators of content-moderation technical enforcement capacity measured for the specified unit, setting, and reference period"
+    ],
+    "measurementAssessmentMethods": "Use a validated construct-specific instrument, administrative or sensor measure, or transparent composite with explicit unit and reference period.",
+    "observability": "Moderate",
+    "measurementCaveats": "Feasible With Explicit Unit; proxy measures require construct-validity review.",
+    "evidenceStrength": "Moderate",
+    "evidenceNotes": "Rename to Content-Moderation Technical Enforcement Capacity and exclude policy strictness, staffing authority, and realized content prevalence.",
+    "commonMisinterpretations": "Do not treat Content-Moderation Technical Enforcement Capacity as interchangeable with TEC-029; INS-099; INF-002 or as a universal, context-free cause.",
+    "keySources": [
+      "SRC-505",
+      "SRC-512"
     ],
     "source": {
       "workbook": "PSYWERX_Layer_8_Technological_Driver_Ontology_v1.0.xlsx",
@@ -45732,6 +47410,67 @@
     "keySources": [
       "SRC-478",
       "SRC-474"
+    ],
+    "source": {
+      "workbook": "PSYWERX_Layer_8_Technological_Driver_Ontology_v1.0.xlsx",
+      "sheet": "Drivers"
+    }
+  },
+  {
+    "id": "TEC-096",
+    "name": "Coordinated Inauthentic Account Operation Capacity",
+    "aliases": [
+      "Coordinated Automated Account Capacity"
+    ],
+    "layer": "Technological",
+    "family": "Synthetic Media & Agentic Capabilities",
+    "definition": "Operational capacity to deploy and coordinate automated or semi-automated accounts that misrepresent independent human participation across a specified platform and period.",
+    "dataType": "Magnitude / level",
+    "representationScale": "Continuous or ordinal construct-specific measure with population, setting, reference period, and unit explicitly specified.",
+    "polarityDirection": "Higher values = greater coordinated inauthentic account operation capacity.",
+    "mechanism": "Coordinated accounts can manufacture visibility, repetition, apparent consensus, targeting, and harassment at scale.",
+    "likelyUpstreamInfluences": [
+      "Automation",
+      "account access",
+      "orchestration",
+      "generation capability"
+    ],
+    "likelyDownstreamInfluences": [
+      "Exposure",
+      "norm claims",
+      "agenda prominence",
+      "network manipulation"
+    ],
+    "moderatorsBoundaryConditions": "Interpret only for the specified population, unit, setting, exposure, reference period, and measurement method; effects may vary across contexts.",
+    "typicalInteractionCandidates": [
+      "Automation",
+      "account access",
+      "Exposure",
+      "norm claims"
+    ],
+    "modifiability": "Moderate",
+    "volatility": "Moderate",
+    "timeScaleOfChange": [
+      "Hours–Days"
+    ],
+    "timeScaleQualifier": "Typical state-change speed is context-dependent; do not infer persistence from this band.",
+    "onsetCausalLag": [
+      "Mixed / Context-dependent"
+    ],
+    "persistenceRecovery": "Persistence and recovery depend on exposure, baseline state, intervention, and system feedback.",
+    "indicators": [
+      "Construct-valid indicators of coordinated inauthentic account operation capacity measured for the specified unit, setting, and reference period"
+    ],
+    "measurementAssessmentMethods": "Use a validated construct-specific instrument, administrative or sensor measure, or transparent composite with explicit unit and reference period.",
+    "observability": "Moderate",
+    "measurementCaveats": "Feasible With Explicit Unit; proxy measures require construct-validity review.",
+    "evidenceStrength": "Moderate",
+    "evidenceNotes": "Specify coordinated inauthentic account operation capacity, including automation, orchestration, account stock, and platform context.",
+    "commonMisinterpretations": "Do not treat Coordinated Inauthentic Account Operation Capacity as interchangeable with TEC-084; TEC-048; TEC-047 or as a universal, context-free cause.",
+    "keySources": [
+      "SRC-510",
+      "SRC-511",
+      "SRC-513"
     ],
     "source": {
       "workbook": "PSYWERX_Layer_8_Technological_Driver_Ontology_v1.0.xlsx",
@@ -49026,6 +50765,64 @@
     }
   },
   {
+    "id": "TEC-090",
+    "name": "System Compromise Severity",
+    "aliases": [],
+    "layer": "Technological",
+    "family": "Privacy, Security & Identity Architecture",
+    "definition": "Extent to which unauthorized actors control, alter, observe, or disrupt a technological system or its data.",
+    "dataType": "Magnitude / level",
+    "representationScale": "Continuous or ordinal construct-specific measure with population, setting, reference period, and unit explicitly specified.",
+    "polarityDirection": "Higher values = greater system compromise severity.",
+    "mechanism": "Compromise changes integrity, confidentiality, availability, provenance, and user risk.",
+    "likelyUpstreamInfluences": [
+      "Vulnerabilities",
+      "adversary capability",
+      "access control",
+      "monitoring"
+    ],
+    "likelyDownstreamInfluences": [
+      "Reliability loss",
+      "information manipulation",
+      "privacy harm",
+      "trust"
+    ],
+    "moderatorsBoundaryConditions": "Interpret only for the specified population, unit, setting, exposure, reference period, and measurement method; effects may vary across contexts.",
+    "typicalInteractionCandidates": [
+      "Vulnerabilities",
+      "adversary capability",
+      "Reliability loss",
+      "information manipulation"
+    ],
+    "modifiability": "Moderate",
+    "volatility": "Moderate",
+    "timeScaleOfChange": [
+      "Hours–Days"
+    ],
+    "timeScaleQualifier": "Typical state-change speed is context-dependent; do not infer persistence from this band.",
+    "onsetCausalLag": [
+      "Mixed / Context-dependent"
+    ],
+    "persistenceRecovery": "Persistence and recovery depend on exposure, baseline state, intervention, and system feedback.",
+    "indicators": [
+      "Construct-valid indicators of system compromise severity measured for the specified unit, setting, and reference period"
+    ],
+    "measurementAssessmentMethods": "Use a validated construct-specific instrument, administrative or sensor measure, or transparent composite with explicit unit and reference period.",
+    "observability": "Moderate",
+    "measurementCaveats": "Feasible With Explicit Unit; proxy measures require construct-validity review.",
+    "evidenceStrength": "Strong",
+    "evidenceNotes": "Compromise severity captures realized loss of confidentiality, integrity, or availability; vulnerability and system availability are not substitutes.",
+    "commonMisinterpretations": "Do not treat System Compromise Severity as interchangeable with TEC-011; TEC-006; TEC-080 or as a universal, context-free cause.",
+    "keySources": [
+      "SRC-512",
+      "SRC-513"
+    ],
+    "source": {
+      "workbook": "PSYWERX_Layer_8_Technological_Driver_Ontology_v1.0.xlsx",
+      "sheet": "Drivers"
+    }
+  },
+  {
     "id": "TEC-083",
     "name": "Technical Data-Retention Duration",
     "aliases": [
@@ -49085,6 +50882,63 @@
       "SRC-463",
       "SRC-490",
       "SRC-492"
+    ],
+    "source": {
+      "workbook": "PSYWERX_Layer_8_Technological_Driver_Ontology_v1.0.xlsx",
+      "sheet": "Drivers"
+    }
+  },
+  {
+    "id": "TEC-095",
+    "name": "Technical Single-Point-of-Failure Concentration",
+    "aliases": [],
+    "layer": "Technological",
+    "family": "Access, Infrastructure & Interoperability",
+    "definition": "Degree to which essential digital functions depend on components whose loss alone can disable the system.",
+    "dataType": "Magnitude / level",
+    "representationScale": "Continuous or ordinal construct-specific measure with population, setting, reference period, and unit explicitly specified.",
+    "polarityDirection": "Higher values = greater technical single-point-of-failure concentration.",
+    "mechanism": "Concentration increases correlated outage risk and reduces resilience under attack or failure.",
+    "likelyUpstreamInfluences": [
+      "Architecture",
+      "dependency",
+      "centralization",
+      "redundancy"
+    ],
+    "likelyDownstreamInfluences": [
+      "System availability",
+      "information access",
+      "service continuity"
+    ],
+    "moderatorsBoundaryConditions": "Interpret only for the specified population, unit, setting, exposure, reference period, and measurement method; effects may vary across contexts.",
+    "typicalInteractionCandidates": [
+      "Architecture",
+      "dependency",
+      "System availability",
+      "information access"
+    ],
+    "modifiability": "Moderate",
+    "volatility": "Moderate",
+    "timeScaleOfChange": [
+      "Hours–Days"
+    ],
+    "timeScaleQualifier": "Typical state-change speed is context-dependent; do not infer persistence from this band.",
+    "onsetCausalLag": [
+      "Mixed / Context-dependent"
+    ],
+    "persistenceRecovery": "Persistence and recovery depend on exposure, baseline state, intervention, and system feedback.",
+    "indicators": [
+      "Construct-valid indicators of technical single-point-of-failure concentration measured for the specified unit, setting, and reference period"
+    ],
+    "measurementAssessmentMethods": "Use a validated construct-specific instrument, administrative or sensor measure, or transparent composite with explicit unit and reference period.",
+    "observability": "Moderate",
+    "measurementCaveats": "Feasible With Explicit Unit; proxy measures require construct-validity review.",
+    "evidenceStrength": "Strong",
+    "evidenceNotes": "Dependency concentration is a structural cause of correlated outages, distinct from current availability and generic interoperability.",
+    "commonMisinterpretations": "Do not treat Technical Single-Point-of-Failure Concentration as interchangeable with TEC-011; TEC-008; ENV-089 or as a universal, context-free cause.",
+    "keySources": [
+      "SRC-512",
+      "SRC-514"
     ],
     "source": {
       "workbook": "PSYWERX_Layer_8_Technological_Driver_Ontology_v1.0.xlsx",

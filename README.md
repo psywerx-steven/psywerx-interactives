@@ -5,8 +5,9 @@ PSYWERX. The repository is designed for static hosting with GitHub Pages.
 
 ## Interactives
 
-- [Driver Explorer](./drivers/) — an early placeholder that renders a small
-  sample of behavioral drivers.
+- [Driver Explorer](./drivers/) — browses the governed Layer → Family → Driver
+  taxonomy and supports bounded causal relationship/path exploration using
+  dependency-free static assets.
 
 ## Repository structure
 
@@ -22,8 +23,9 @@ PSYWERX. The repository is designed for static hosting with GitHub Pages.
   Driver-to-Family validation rules.
 - `docs/CODEBOOK_SCHEMA_V1.md` defines the canonical Codebook Schema v1.0,
   permanent Codebook Term IDs, and controlled-vocabulary validation rules.
-- `docs/RELATIONSHIP_SCHEMA_V1.md` defines the canonical Relationship Schema
-  v1.0, Driver-reference rules, and graph validation requirements.
+- `docs/RELATIONSHIP_SCHEMA_V2.md` defines the current canonical causal-edge
+  contract and governance classes. `docs/RELATIONSHIP_SCHEMA_V1.md` preserves
+  the historical migration source contract.
 - `docs/PLAIN_LANGUAGE_STANDARD_V1.md` defines the governed writing and review
   standard for public Driver explanations.
 - `docs/PLAIN_LANGUAGE_SCHEMA_V1.md` defines the independently versioned public
@@ -75,10 +77,12 @@ The public `data/plain_language.json` file is an independently versioned
 editorial layer keyed to permanent Driver IDs. It does not add fields to the
 canonical Driver Schema or modify `data/drivers.json`.
 
-The governed, human-approved source for content version 1.0 is the private local
-file:
+Content version 1.1 combines the governed base editorial source and the private
+31-Driver ontology-release supplement:
 
 `analysis/plain_language_release_candidate_v2/plain_language_release_candidate_v2.csv`
+
+`analysis/causal_explorer_release_v1/new_driver_plain_language_review.csv`
 
 The `analysis/` directory is ignored and must remain private unless publication
 is explicitly approved. Build canonical Driver data first, then export only the
@@ -91,10 +95,11 @@ py scripts\build_plain_language.py
 
 The exporter enforces
 [Plain-Language Data Schema v1.0](./docs/PLAIN_LANGUAGE_SCHEMA_V1.md), verifies
-all 762 source IDs and canonical snapshots, and writes 737 approved public
-records. It withholds the 22 ontology-blocked and three subject-matter-review
-records, including any provisional wording, and never publishes editorial QA or
-human-review metadata. Failed validation does not replace good public data.
+the 793 combined governed editorial-source IDs and stable identity snapshots,
+and writes 768 approved public records. The exporter withholds the 22 ontology-blocked and three
+subject-matter-review records, including provisional wording, and never
+publishes editorial QA or human-review metadata. Failed validation does not
+replace good public data.
 
 ## Build Family data locally
 
@@ -124,8 +129,8 @@ py scripts\migrate_family_governance_v1.py
 ## Build Codebook data locally
 
 Each source workbook contains an identical `Codebook` worksheet. The worksheet
-has 51 populated rows: three structural rows (title, governance instruction,
-and headers) and 48 semantic term records. Only the 48 semantic records receive
+has 59 populated rows: three structural rows (title, governance instruction,
+and headers) and 56 semantic term records. Only the 56 semantic records receive
 permanent, URL-safe Codebook Term IDs and become public entries.
 
 For the current standardized workbooks, run the one-time ID migration before
@@ -136,7 +141,7 @@ py scripts\migrate_codebook_ids_v1.py
 ```
 
 The migration verifies that all eight source Codebooks are identical, stages
-all workbook changes, preserves unrelated worksheets, validates all 48 IDs,
+all workbook changes, preserves unrelated worksheets, validates the original 48 IDs,
 and replaces the source workbooks only after successful validation.
 
 When initializing older standardized workbooks, apply the one-time migrations
@@ -162,11 +167,10 @@ values stop the import, and failed validation never replaces good public data.
 
 ## Build Relationship data locally
 
-The public `data/relationships.json` file is generated from the 13-column
-`Relationships` worksheet in each source workbook. Build Drivers and the
-Codebook first because Relationship validation uses canonical Driver IDs and
-names plus the Codebook-controlled `Expected Direction` and relationship
-`Evidence Strength` vocabularies.
+The public `data/relationships.json` file is generated from the 28-column
+Relationship Schema v2 worksheet in each source workbook. Build Drivers and
+the Codebook first because Relationship validation uses canonical Driver IDs,
+names, Evidence IDs, and controlled causal/governance vocabularies.
 
 ```powershell
 py scripts\build_drivers.py
@@ -175,11 +179,13 @@ py scripts\build_relationships.py
 ```
 
 The importer enforces
-[Relationship Schema v1.0](./docs/RELATIONSHIP_SCHEMA_V1.md), exact Driver
+[Relationship Schema v2.0](./docs/RELATIONSHIP_SCHEMA_V2.md), exact Driver
 ID/name resolution, globally unique Relationship IDs and directed Driver
 pairs, no self-relationships, deterministic output, and public-only source
-provenance. Future explicit cross-layer edges are valid; the current source
-set is within-layer.
+provenance. Cross-level edges require a transition mechanism. Only `CORE` and
+well-specified `CONTEXT_DEPENDENT` edges enter the canonical public graph;
+`SCENARIO_SPECIFIC` and `HYPOTHESIZED` edges remain governed research/model
+artifacts.
 
 The structured `Relationships` worksheets are authoritative for
 evidence-bearing graph edges. Narrative Driver fields such as likely upstream
@@ -199,12 +205,24 @@ py scripts\build_codebook.py
 py scripts\build_relationships.py
 ```
 
+The governed ontology-remediation release v1 was applied once with:
+
+```powershell
+py scripts\migrate_ontology_remediation_v1.py
+```
+
+That migration depends on the private, ignored remediation release-candidate
+package. It creates a complete proposed diff, ID manifest, rollback copies, and
+staged validation before replacing any canonical workbook; it is not part of a
+routine public-data rebuild. The normal repeatable workflow is the five-builder
+sequence above.
+
 ## Preview the static site
 
 Opening the HTML file directly will not allow the browser to fetch JSON. Start
 a local HTTP server from the repository root. The Explorer loads
-`data/drivers.json`, `data/families.json`, and `data/plain_language.json` using
-GitHub Pages-compatible relative paths.
+`data/drivers.json`, `data/families.json`, `data/plain_language.json`, and
+`data/relationships.json` using GitHub Pages-compatible relative paths.
 
 ```powershell
 py -m http.server 8000
@@ -217,6 +235,6 @@ Then open <http://localhost:8000/drivers/>.
 Review and commit only the generated public artifacts and pipeline changes:
 
 ```powershell
-git add data/drivers.json data/plain_language.json data/families.json data/codebook.json data/relationships.json scripts/build_drivers.py scripts/build_plain_language.py scripts/build_families.py scripts/build_codebook.py scripts/build_relationships.py scripts/migrate_driver_schema_v1_1.py scripts/migrate_family_governance_v1.py scripts/migrate_codebook_ids_v1.py docs/DRIVER_SCHEMA_V1_1.md docs/PLAIN_LANGUAGE_STANDARD_V1.md docs/PLAIN_LANGUAGE_SCHEMA_V1.md docs/FAMILY_SCHEMA_V1.md docs/CODEBOOK_SCHEMA_V1.md docs/RELATIONSHIP_SCHEMA_V1.md requirements.txt README.md .gitignore source-data/.gitkeep
+git add data/drivers.json data/families.json data/codebook.json data/relationships.json scripts/build_codebook.py scripts/build_plain_language.py scripts/build_relationships.py scripts/migrate_ontology_remediation_v1.py docs/CODEBOOK_SCHEMA_V1.md docs/RELATIONSHIP_SCHEMA_V2.md README.md
 git commit -m "Publish ontology and approved plain-language data"
 ```

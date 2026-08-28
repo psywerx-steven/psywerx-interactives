@@ -19,7 +19,7 @@ from typing import Any
 
 
 SCHEMA_VERSION = "1.0"
-CONTENT_VERSION = "1.0"
+CONTENT_VERSION = "1.1"
 STANDARD_VERSION = "1.0"
 
 EXPECTED_SOURCE_COLUMNS = (
@@ -43,11 +43,37 @@ EXPECTED_SOURCE_COLUMNS = (
     "plainnessQaFindings",
 )
 
+EXPECTED_SUPPLEMENT_COLUMNS = (
+    "driverId",
+    "canonicalName",
+    "layer",
+    "family",
+    "canonicalDefinition",
+    "plainLanguageLabel",
+    "plainLanguageExplanation",
+    "analyticQuestion",
+    "whatThisDoesNotMean",
+    "meaningPreservationRisk",
+    "plainnessStatus",
+    "constructFidelityStatus",
+    "neighborDiscriminationStatus",
+    "causalUsefulnessStatus",
+    "analyticQuestionStatus",
+    "boundaryQualityStatus",
+    "terminologyConsistencyStatus",
+    "releaseStatus",
+    "reviewDecision",
+    "reviewRationale",
+    "labelWordCount",
+    "explanationWordCount",
+    "questionWordCount",
+    "nearbyDrivers",
+)
+
 CANONICAL_SNAPSHOT_FIELDS = {
     "canonicalName": "name",
     "layer": "layer",
     "family": "family",
-    "canonicalDefinition": "definition",
 }
 
 PUBLIC_FIELDS = (
@@ -67,9 +93,16 @@ PROTECTED_RELEASE_STATUSES = {
     "BLOCKED_ON_ONTOLOGY_REVIEW",
     "SUBJECT_MATTER_REVIEW_REQUIRED",
 }
-EXPECTED_COUNTS = {
+EXPECTED_BASE_COUNTS = {
     "source": 762,
     "approved": 737,
+    "blocked": 22,
+    "sme": 3,
+}
+EXPECTED_SUPPLEMENT_COUNT = 31
+EXPECTED_COUNTS = {
+    "source": 793,
+    "approved": 768,
     "blocked": 22,
     "sme": 3,
 }
@@ -117,6 +150,84 @@ def load_release_rows(path: Path) -> list[dict[str, str]]:
         raise ReleaseValidationError(
             "Approved release source contains a row with missing or unexpected columns."
         )
+    return rows
+
+
+def load_supplemental_reviews(path: Path) -> list[dict[str, str]]:
+    """Load the governed 31-Driver ontology-release editorial supplement."""
+    try:
+        with path.open(encoding="utf-8-sig", newline="") as handle:
+            reader = csv.DictReader(handle)
+            headers = tuple(reader.fieldnames or ())
+            if headers != EXPECTED_SUPPLEMENT_COLUMNS:
+                raise ReleaseValidationError(
+                    "Supplemental review headers do not match the governed "
+                    f"contract. Expected {list(EXPECTED_SUPPLEMENT_COLUMNS)}; "
+                    f"discovered {list(headers)}."
+                )
+            reviews = list(reader)
+    except (OSError, UnicodeError, csv.Error) as exc:
+        raise ReleaseValidationError(
+            f"Could not read supplemental review source {path.name}: {exc}"
+        ) from exc
+
+    if len(reviews) != EXPECTED_SUPPLEMENT_COUNT:
+        raise ReleaseValidationError(
+            f"Expected {EXPECTED_SUPPLEMENT_COUNT} supplemental reviews; "
+            f"found {len(reviews)}."
+        )
+
+    qa_fields = (
+        "plainnessStatus",
+        "constructFidelityStatus",
+        "neighborDiscriminationStatus",
+        "causalUsefulnessStatus",
+        "analyticQuestionStatus",
+        "boundaryQualityStatus",
+        "terminologyConsistencyStatus",
+    )
+    rows: list[dict[str, str]] = []
+    for line_number, review in enumerate(reviews, start=2):
+        if None in review or any(value is None for value in review.values()):
+            raise ReleaseValidationError(
+                f"Supplemental review row {line_number} has missing or extra columns."
+            )
+        driver_id = review["driverId"] or f"row {line_number}"
+        failed = [field for field in qa_fields if review[field] != "PASS"]
+        if failed:
+            raise ReleaseValidationError(
+                f"{driver_id}: supplemental QA has not passed: {failed}."
+            )
+        if review["reviewDecision"] != "APPROVED":
+            raise ReleaseValidationError(
+                f"{driver_id}: supplemental review lacks an APPROVED decision."
+            )
+        if review["releaseStatus"] not in APPROVED_RELEASE_STATUSES:
+            raise ReleaseValidationError(
+                f"{driver_id}: unsupported supplemental release status "
+                f"{review['releaseStatus']!r}."
+            )
+        rows.append({
+            "driverId": review["driverId"],
+            "canonicalName": review["canonicalName"],
+            "layer": review["layer"],
+            "family": review["family"],
+            "canonicalDefinition": review["canonicalDefinition"],
+            "plainLanguageLabel": review["plainLanguageLabel"],
+            "plainLanguageExplanation": review["plainLanguageExplanation"],
+            "analyticQuestion": review["analyticQuestion"],
+            "whatThisDoesNotMean": review["whatThisDoesNotMean"],
+            "meaningPreservationRisk": review["meaningPreservationRisk"],
+            "releaseStatus": review["releaseStatus"],
+            "finalQaFindings": review["reviewRationale"],
+            "revisionFromPreviousCandidate": "NEW_ONTOLOGY_RELEASE_V1",
+            "reviewPriority": review["meaningPreservationRisk"],
+            "humanDecision": review["reviewDecision"],
+            "humanNotes": "",
+            "plainnessQaStatus": review["plainnessStatus"],
+            "plainnessQaFindings": "",
+            "_supplemental": "true",
+        })
     return rows
 
 
@@ -193,6 +304,14 @@ def build_public_payload(
                     f"{driver_id}: {source_field} does not exactly match canonical "
                     f"{canonical_field}."
                 )
+        if (
+            row.get("_supplemental") == "true"
+            and row["canonicalDefinition"] != canonical.get("definition")
+        ):
+            errors.append(
+                f"{driver_id}: supplemental canonicalDefinition does not "
+                "exactly match the canonical definition."
+            )
 
         status = row["releaseStatus"]
         decision = row["humanDecision"]
@@ -225,10 +344,10 @@ def build_public_payload(
     release_ids = set(release_by_id)
     missing = sorted(canonical_ids - release_ids)
     unexpected = sorted(release_ids - canonical_ids)
-    if missing:
-        errors.append(f"Release source is missing canonical IDs: {missing}.")
     if unexpected:
         errors.append(f"Release source contains unknown IDs: {unexpected}.")
+    if missing:
+        errors.append(f"Canonical Drivers lack governed release rows: {missing}.")
     if len(canonical_drivers) != EXPECTED_COUNTS["source"]:
         errors.append(
             f"Expected {EXPECTED_COUNTS['source']} canonical Drivers; "
@@ -251,7 +370,9 @@ def build_public_payload(
 
     public_records: list[dict[str, Any]] = []
     for canonical in canonical_drivers:
-        row = release_by_id[canonical["id"]]
+        row = release_by_id.get(canonical["id"])
+        if row is None:
+            continue
         if row["releaseStatus"] in PROTECTED_RELEASE_STATUSES:
             continue
         boundary = row["whatThisDoesNotMean"]
@@ -289,6 +410,7 @@ def build_public_payload(
         "drivers": public_records,
     }
     validate_no_private_paths(payload, "plain-language release")
+    status_counts["canonicalWithoutGovernedCopy"] = len(missing)
     return payload, status_counts
 
 
@@ -321,12 +443,25 @@ def main() -> int:
         / "plain_language_release_candidate_v2"
         / "plain_language_release_candidate_v2.csv"
     )
+    supplemental_source = (
+        root
+        / "analysis"
+        / "causal_explorer_release_v1"
+        / "new_driver_plain_language_review.csv"
+    )
     canonical_path = root / "data" / "drivers.json"
     output = root / "data" / "plain_language.json"
 
     try:
         canonical_drivers = load_canonical_drivers(canonical_path)
-        release_rows = load_release_rows(source)
+        base_rows = load_release_rows(source)
+        if len(base_rows) != EXPECTED_BASE_COUNTS["source"]:
+            raise ReleaseValidationError(
+                f"Expected {EXPECTED_BASE_COUNTS['source']} base release rows; "
+                f"found {len(base_rows)}."
+            )
+        supplemental_rows = load_supplemental_reviews(supplemental_source)
+        release_rows = base_rows + supplemental_rows
         payload, counts = build_public_payload(canonical_drivers, release_rows)
         write_atomically(payload, output)
     except ReleaseValidationError as exc:
@@ -339,7 +474,9 @@ def main() -> int:
         return 1
 
     print("Plain-language release statistics")
-    print(f"  Source Drivers: {len(release_rows)}")
+    print(f"  Base governed source Drivers: {len(base_rows)}")
+    print(f"  Approved ontology-release supplement: {len(supplemental_rows)}")
+    print(f"  Combined source Drivers: {len(release_rows)}")
     print(f"  Approved public records: {counts['approved']}")
     print(f"  Ontology-blocked records withheld: {counts['blocked']}")
     print(f"  SME-review records withheld: {counts['sme']}")

@@ -3,9 +3,9 @@
   "metadata": {
     "title": "PSYWERX Driver Ontology Codebook v1.1",
     "governanceInstruction": "Controlling field definitions and allowed values. Copy unchanged to all eight layer workbooks; layer-specific examples belong outside allowed-value definitions.",
-    "worksheetPopulatedRows": 51,
+    "worksheetPopulatedRows": 59,
     "structuralRows": 3,
-    "termRecords": 48
+    "termRecords": 56
   },
   "entries": [
     {
@@ -737,6 +737,172 @@
       "source": {
         "sheet": "Codebook",
         "row": 50
+      }
+    },
+    {
+      "id": "CB-REL-CAUSAL-ROLE",
+      "sheet": "Relationships",
+      "field": "Causal Role",
+      "definition": "Minimal causal semantic class.",
+      "allowedValuesOrFormat": "CAUSES; ENABLES; CONSTRAINS; MODERATES",
+      "allowedValues": [
+        "CAUSES",
+        "ENABLES",
+        "CONSTRAINS",
+        "MODERATES"
+      ],
+      "required": true,
+      "guidance": "Use exact controlled values; preserve narrative qualifications in the dedicated context or notes field.",
+      "source": {
+        "sheet": "Codebook",
+        "row": 53
+      }
+    },
+    {
+      "id": "CB-REL-POLARITY",
+      "sheet": "Relationships",
+      "field": "Polarity",
+      "definition": "Expected local sign or form under stated conditions.",
+      "allowedValuesOrFormat": "POSITIVE; NEGATIVE; NON_MONOTONIC; CONTEXT_DEPENDENT; UNSIGNED",
+      "allowedValues": [
+        "POSITIVE",
+        "NEGATIVE",
+        "NON_MONOTONIC",
+        "CONTEXT_DEPENDENT",
+        "UNSIGNED"
+      ],
+      "required": true,
+      "guidance": "Use exact controlled values; preserve narrative qualifications in the dedicated context or notes field.",
+      "source": {
+        "sheet": "Codebook",
+        "row": 54
+      }
+    },
+    {
+      "id": "CB-REL-DIRECTNESS",
+      "sheet": "Relationships",
+      "field": "Directness",
+      "definition": "Whether the edge is direct at its governed resolution or a mediated-path segment.",
+      "allowedValuesOrFormat": "DIRECT_AT_STATED_RESOLUTION; MEDIATED_PATH; UNKNOWN",
+      "allowedValues": [
+        "DIRECT_AT_STATED_RESOLUTION",
+        "MEDIATED_PATH",
+        "UNKNOWN"
+      ],
+      "required": true,
+      "guidance": "Use exact controlled values; preserve narrative qualifications in the dedicated context or notes field.",
+      "source": {
+        "sheet": "Codebook",
+        "row": 55
+      }
+    },
+    {
+      "id": "CB-REL-LEVEL",
+      "sheet": "Relationships",
+      "field": "Source Level / Target Level",
+      "definition": "Entity or system level instantiated by an edge endpoint.",
+      "allowedValuesOrFormat": "PERSON; DYAD_INTERPERSONAL; SMALL_GROUP; NETWORK; COMMUNITY; ORGANIZATION; INSTITUTIONAL_FIELD; SOCIETY; STATE_JURISDICTION; INFORMATION_OBJECT_CORPUS; INFORMATION_SYSTEM; TECHNOLOGICAL_SYSTEM; PHYSICAL_SETTING; ECOLOGICAL_SYSTEM",
+      "allowedValues": [
+        "PERSON",
+        "DYAD_INTERPERSONAL",
+        "SMALL_GROUP",
+        "NETWORK",
+        "COMMUNITY",
+        "ORGANIZATION",
+        "INSTITUTIONAL_FIELD",
+        "SOCIETY",
+        "STATE_JURISDICTION",
+        "INFORMATION_OBJECT_CORPUS",
+        "INFORMATION_SYSTEM",
+        "TECHNOLOGICAL_SYSTEM",
+        "PHYSICAL_SETTING",
+        "ECOLOGICAL_SYSTEM"
+      ],
+      "required": true,
+      "guidance": "Use exact controlled values; preserve narrative qualifications in the dedicated context or notes field.",
+      "source": {
+        "sheet": "Codebook",
+        "row": 56
+      }
+    },
+    {
+      "id": "CB-REL-LAG-PROFILE",
+      "sheet": "Relationships",
+      "field": "Lag Profile",
+      "definition": "Categorical source-to-target onset lag, distinct from Driver change speed.",
+      "allowedValuesOrFormat": "IMMEDIATE; SHORT; INTERMEDIATE; DELAYED; LONG; STRUCTURAL; INTERGENERATIONAL; MIXED_CONTEXT_DEPENDENT",
+      "allowedValues": [
+        "IMMEDIATE",
+        "SHORT",
+        "INTERMEDIATE",
+        "DELAYED",
+        "LONG",
+        "STRUCTURAL",
+        "INTERGENERATIONAL",
+        "MIXED_CONTEXT_DEPENDENT"
+      ],
+      "required": true,
+      "guidance": "Use exact controlled values; preserve narrative qualifications in the dedicated context or notes field.",
+      "source": {
+        "sheet": "Codebook",
+        "row": 57
+      }
+    },
+    {
+      "id": "CB-REL-EXPOSURE-PATTERN",
+      "sheet": "Relationships",
+      "field": "Exposure Pattern",
+      "definition": "Pattern by which the source acts over the governed edge.",
+      "allowedValuesOrFormat": "PULSE; SUSTAINED; CUMULATIVE; REPEATED; NOT_SPECIFIED",
+      "allowedValues": [
+        "PULSE",
+        "SUSTAINED",
+        "CUMULATIVE",
+        "REPEATED",
+        "NOT_SPECIFIED"
+      ],
+      "required": true,
+      "guidance": "Use exact controlled values; preserve narrative qualifications in the dedicated context or notes field.",
+      "source": {
+        "sheet": "Codebook",
+        "row": 58
+      }
+    },
+    {
+      "id": "CB-REL-CONFIDENCE",
+      "sheet": "Relationships",
+      "field": "Confidence",
+      "definition": "Governance confidence in the edge specification.",
+      "allowedValuesOrFormat": "HIGH; MODERATE; LOW",
+      "allowedValues": [
+        "HIGH",
+        "MODERATE",
+        "LOW"
+      ],
+      "required": true,
+      "guidance": "Use exact controlled values; preserve narrative qualifications in the dedicated context or notes field.",
+      "source": {
+        "sheet": "Codebook",
+        "row": 59
+      }
+    },
+    {
+      "id": "CB-REL-GOVERNANCE-CLASS",
+      "sheet": "Relationships",
+      "field": "Governance Class",
+      "definition": "Controls whether and how an edge belongs in the canonical graph.",
+      "allowedValuesOrFormat": "CORE; CONTEXT_DEPENDENT; SCENARIO_SPECIFIC; HYPOTHESIZED",
+      "allowedValues": [
+        "CORE",
+        "CONTEXT_DEPENDENT",
+        "SCENARIO_SPECIFIC",
+        "HYPOTHESIZED"
+      ],
+      "required": true,
+      "guidance": "Use exact controlled values; preserve narrative qualifications in the dedicated context or notes field.",
+      "source": {
+        "sheet": "Codebook",
+        "row": 60
       }
     },
     {
