@@ -24,6 +24,10 @@ PSYWERX. The repository is designed for static hosting with GitHub Pages.
   permanent Codebook Term IDs, and controlled-vocabulary validation rules.
 - `docs/RELATIONSHIP_SCHEMA_V1.md` defines the canonical Relationship Schema
   v1.0, Driver-reference rules, and graph validation requirements.
+- `docs/PLAIN_LANGUAGE_STANDARD_V1.md` defines the governed writing and review
+  standard for public Driver explanations.
+- `docs/PLAIN_LANGUAGE_SCHEMA_V1.md` defines the independently versioned public
+  plain-language data contract.
 
 ## Build driver data locally
 
@@ -64,6 +68,33 @@ no Python or runtime dependencies.
 
    The migration stages and validates all eight workbooks before replacing any
    source file. It preserves Driver IDs and unrelated taxonomy content.
+
+## Build approved plain-language data locally
+
+The public `data/plain_language.json` file is an independently versioned
+editorial layer keyed to permanent Driver IDs. It does not add fields to the
+canonical Driver Schema or modify `data/drivers.json`.
+
+The governed, human-approved source for content version 1.0 is the private local
+file:
+
+`analysis/plain_language_release_candidate_v2/plain_language_release_candidate_v2.csv`
+
+The `analysis/` directory is ignored and must remain private unless publication
+is explicitly approved. Build canonical Driver data first, then export only the
+approved fields:
+
+```powershell
+py scripts\build_drivers.py
+py scripts\build_plain_language.py
+```
+
+The exporter enforces
+[Plain-Language Data Schema v1.0](./docs/PLAIN_LANGUAGE_SCHEMA_V1.md), verifies
+all 762 source IDs and canonical snapshots, and writes 737 approved public
+records. It withholds the 22 ontology-blocked and three subject-matter-review
+records, including any provisional wording, and never publishes editorial QA or
+human-review metadata. Failed validation does not replace good public data.
 
 ## Build Family data locally
 
@@ -162,6 +193,7 @@ public-data rebuild order is:
 
 ```powershell
 py scripts\build_drivers.py
+py scripts\build_plain_language.py
 py scripts\build_families.py
 py scripts\build_codebook.py
 py scripts\build_relationships.py
@@ -170,7 +202,9 @@ py scripts\build_relationships.py
 ## Preview the static site
 
 Opening the HTML file directly will not allow the browser to fetch JSON. Start
-a local HTTP server from the repository root:
+a local HTTP server from the repository root. The Explorer loads
+`data/drivers.json`, `data/families.json`, and `data/plain_language.json` using
+GitHub Pages-compatible relative paths.
 
 ```powershell
 py -m http.server 8000
@@ -183,6 +217,6 @@ Then open <http://localhost:8000/drivers/>.
 Review and commit only the generated public artifacts and pipeline changes:
 
 ```powershell
-git add data/drivers.json data/families.json data/codebook.json data/relationships.json scripts/build_drivers.py scripts/build_families.py scripts/build_codebook.py scripts/build_relationships.py scripts/migrate_driver_schema_v1_1.py scripts/migrate_family_governance_v1.py scripts/migrate_codebook_ids_v1.py docs/DRIVER_SCHEMA_V1_1.md docs/FAMILY_SCHEMA_V1.md docs/CODEBOOK_SCHEMA_V1.md docs/RELATIONSHIP_SCHEMA_V1.md requirements.txt README.md .gitignore source-data/.gitkeep
-git commit -m "Build ontology data from local spreadsheets"
+git add data/drivers.json data/plain_language.json data/families.json data/codebook.json data/relationships.json scripts/build_drivers.py scripts/build_plain_language.py scripts/build_families.py scripts/build_codebook.py scripts/build_relationships.py scripts/migrate_driver_schema_v1_1.py scripts/migrate_family_governance_v1.py scripts/migrate_codebook_ids_v1.py docs/DRIVER_SCHEMA_V1_1.md docs/PLAIN_LANGUAGE_STANDARD_V1.md docs/PLAIN_LANGUAGE_SCHEMA_V1.md docs/FAMILY_SCHEMA_V1.md docs/CODEBOOK_SCHEMA_V1.md docs/RELATIONSHIP_SCHEMA_V1.md requirements.txt README.md .gitignore source-data/.gitkeep
+git commit -m "Publish ontology and approved plain-language data"
 ```

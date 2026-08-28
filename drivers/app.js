@@ -3,6 +3,17 @@
 const PAGE_SIZE = 24;
 const DRIVER_QUERY_PARAMETER = "driver";
 const FAMILY_QUERY_PARAMETER = "family";
+const PLAIN_LANGUAGE_SCHEMA_VERSION = "1.0";
+const PLAIN_LANGUAGE_STANDARD_VERSION = "1.0";
+const PLAIN_LANGUAGE_EXPECTED_RECORDS = 737;
+const PLAIN_LANGUAGE_RECORD_KEYS = [
+  "driverId",
+  "plainLanguageLabel",
+  "plainLanguageExplanation",
+  "analyticQuestion",
+  "whatThisDoesNotMean",
+];
+const PLAIN_LANGUAGE_UNDER_REVIEW = "Plain-language explanation under review.";
 const FACETS = [
   { field: "layer", label: "Layer" },
   { field: "family", label: "Family" },
@@ -49,6 +60,7 @@ let driverById = new Map();
 let families = [];
 let familyById = new Map();
 let familyByIdentity = new Map();
+let plainLanguageByDriverId = new Map();
 let driversByFamilyId = new Map();
 let hierarchy = new Map();
 let filteredDrivers = [];
@@ -73,8 +85,13 @@ function normalizeSearchText(value) {
 }
 
 function searchableText(driver) {
+  const plainLanguage = driver._plainLanguage;
   return normalizeSearchText(
     [
+      plainLanguage && plainLanguage.plainLanguageLabel,
+      plainLanguage && plainLanguage.plainLanguageExplanation,
+      plainLanguage && plainLanguage.analyticQuestion,
+      plainLanguage && plainLanguage.whatThisDoesNotMean,
       driver.name,
       ...(driver.aliases || []),
       driver.family,
@@ -82,6 +99,18 @@ function searchableText(driver) {
       driver.mechanism,
     ].join(" ")
   );
+}
+
+function publicDriverLabel(driver) {
+  return driver._plainLanguage
+    ? driver._plainLanguage.plainLanguageLabel
+    : driver.name;
+}
+
+function publicDriverExplanation(driver) {
+  return driver._plainLanguage
+    ? driver._plainLanguage.plainLanguageExplanation
+    : driver.definition;
 }
 
 function hasValue(value) {
@@ -126,6 +155,95 @@ function assertString(record, field, label, errors) {
   if (typeof record[field] !== "string" || record[field].trim() === "") {
     errors.push(label + " has no valid " + field + ".");
   }
+}
+
+function sameKeys(record, expectedKeys) {
+  const actual = Object.keys(record).sort();
+  const expected = [...expectedKeys].sort();
+  return actual.length === expected.length &&
+    actual.every((key, index) => key === expected[index]);
+}
+
+function validatePlainLanguageData(driverData, envelope) {
+  const errors = [];
+  const envelopeKeys = [
+    "schemaVersion",
+    "contentVersion",
+    "standardVersion",
+    "drivers",
+  ];
+  if (!envelope || typeof envelope !== "object" || Array.isArray(envelope)) {
+    throw new Error("Plain-language data is not an object.");
+  }
+  if (!sameKeys(envelope, envelopeKeys)) {
+    errors.push("Plain-language data has unexpected or missing envelope keys.");
+  }
+  if (envelope.schemaVersion !== PLAIN_LANGUAGE_SCHEMA_VERSION) {
+    errors.push("Plain-language data does not use Schema v1.0.");
+  }
+  if (
+    typeof envelope.contentVersion !== "string" ||
+    envelope.contentVersion.trim() === ""
+  ) {
+    errors.push("Plain-language data has no valid content version.");
+  }
+  if (envelope.standardVersion !== PLAIN_LANGUAGE_STANDARD_VERSION) {
+    errors.push("Plain-language data does not use Plain-Language Standard v1.0.");
+  }
+  if (!Array.isArray(envelope.drivers)) {
+    errors.push("Plain-language data does not contain a drivers array.");
+  } else if (envelope.drivers.length !== PLAIN_LANGUAGE_EXPECTED_RECORDS) {
+    errors.push(
+      "Plain-language data must contain " +
+        String(PLAIN_LANGUAGE_EXPECTED_RECORDS) +
+        " approved records."
+    );
+  }
+  if (errors.length > 0) {
+    throw new Error("Plain-language data validation failed: " + errors.join(" "));
+  }
+
+  const canonicalIds = new Set(driverData.map((driver) => driver.id));
+  const indexed = new Map();
+  envelope.drivers.forEach((record, index) => {
+    const label = "Plain-language record " + String(index + 1);
+    if (!record || typeof record !== "object" || Array.isArray(record)) {
+      errors.push(label + " is not an object.");
+      return;
+    }
+    if (!sameKeys(record, PLAIN_LANGUAGE_RECORD_KEYS)) {
+      errors.push(label + " has unexpected or missing fields.");
+    }
+    [
+      "driverId",
+      "plainLanguageLabel",
+      "plainLanguageExplanation",
+      "analyticQuestion",
+    ].forEach((field) => assertString(record, field, label, errors));
+    if (
+      record.whatThisDoesNotMean !== null &&
+      (typeof record.whatThisDoesNotMean !== "string" ||
+        record.whatThisDoesNotMean.trim() === "")
+    ) {
+      errors.push(label + " has an invalid whatThisDoesNotMean value.");
+    }
+    if (!canonicalIds.has(record.driverId)) {
+      errors.push(label + " references an unknown Driver ID.");
+    }
+    if (indexed.has(record.driverId)) {
+      errors.push("Duplicate plain-language Driver ID: " + record.driverId + ".");
+    }
+    indexed.set(record.driverId, record);
+  });
+
+  if (errors.length > 0) {
+    throw new Error(
+      "Plain-language data validation failed: " +
+        errors.slice(0, 5).join(" ") +
+        (errors.length > 5 ? " " + String(errors.length - 5) + " more errors." : "")
+    );
+  }
+  return indexed;
 }
 
 function validateTaxonomyData(driverData, familyEnvelope) {
@@ -395,16 +513,20 @@ function createFamilyOverview(family) {
     representatives.append(element("h5", "", "Representative drivers"));
     const links = element("div", "representative-drivers");
     family.representativeDriverIds.forEach((driverId, index) => {
+      const representativeDriver = driverById.get(driverId);
+      const representativeLabel = representativeDriver
+        ? publicDriverLabel(representativeDriver)
+        : family.representativeDrivers[index];
       const button = element(
         "button",
         "representative-driver",
-        family.representativeDrivers[index]
+        representativeLabel
       );
       button.type = "button";
       button.dataset.driverId = driverId;
       button.setAttribute(
         "aria-label",
-        "Open representative Driver: " + family.representativeDrivers[index]
+        "Open representative Driver: " + representativeLabel
       );
       const arrow = element("span", "", " \u2192");
       arrow.setAttribute("aria-hidden", "true");
@@ -648,15 +770,23 @@ function createDriverCard(driver) {
   const button = element("button", "driver-card__button");
   button.type = "button";
   button.dataset.driverId = driver.id;
-  button.setAttribute("aria-label", "Open " + driver.name);
+  button.setAttribute("aria-label", "Open " + publicDriverLabel(driver));
 
   const meta = element("div", "driver-card__meta");
   const layer = element("span", "layer-badge", driver.layer);
   setLayerIdentity(layer, driver.layer);
   meta.append(layer, element("span", "family-badge", driver.family));
 
-  const heading = element("h3", "driver-card__title", driver.name);
-  const definition = element("p", "driver-card__definition", driver.definition);
+  const heading = element(
+    "h3",
+    "driver-card__title",
+    publicDriverLabel(driver)
+  );
+  const definition = element(
+    "p",
+    "driver-card__definition",
+    publicDriverExplanation(driver)
+  );
   const action = element("span", "driver-card__action", "View driver record");
   action.append(element("span", "", " \u2192"));
   button.append(meta, heading, definition, action);
@@ -764,6 +894,30 @@ function createMechanismSection(driver) {
   ]);
 }
 
+function createPlainLanguageSection(driver) {
+  if (!driver._plainLanguage) {
+    return createDetailSection("Plain-language guide", [
+      {
+        label: "Status",
+        value: PLAIN_LANGUAGE_UNDER_REVIEW,
+        wide: true,
+      },
+    ]);
+  }
+  return createDetailSection("Plain-language guide", [
+    {
+      label: "Analytic question",
+      value: driver._plainLanguage.analyticQuestion,
+      wide: true,
+    },
+    {
+      label: "What this does not mean",
+      value: driver._plainLanguage.whatThisDoesNotMean,
+      wide: true,
+    },
+  ]);
+}
+
 function renderDriverDetail(driver) {
   const fragment = document.createDocumentFragment();
   const header = element("header", "driver-detail__header");
@@ -771,12 +925,17 @@ function renderDriverDetail(driver) {
   const layer = element("span", "layer-badge", driver.layer);
   setLayerIdentity(layer, driver.layer);
   badges.append(layer, element("span", "driver-id", driver.id));
-  const title = element("h2", "", driver.name);
+  const title = element("h2", "", publicDriverLabel(driver));
   title.id = "detail-title";
-  header.append(badges, title, element("p", "", driver.definition));
+  header.append(
+    badges,
+    title,
+    element("p", "", publicDriverExplanation(driver))
+  );
   fragment.append(header);
 
   const sections = [
+    createPlainLanguageSection(driver),
     createDetailSection("Identity", [
       { label: "Canonical name", value: driver.name },
       { label: "Aliases", value: driver.aliases, wide: true },
@@ -1152,15 +1311,24 @@ async function fetchJson(url, label) {
 
 async function loadTaxonomy() {
   try {
-    const [driverData, familyEnvelope] = await Promise.all([
+    const [driverData, familyEnvelope, plainLanguageEnvelope] = await Promise.all([
       fetchJson("../data/drivers.json", "Driver data"),
       fetchJson("../data/families.json", "Family data"),
+      fetchJson("../data/plain_language.json", "Plain-language data"),
     ]);
     validateTaxonomyData(driverData, familyEnvelope);
-
-    drivers = driverData.map((driver) =>
-      Object.assign({}, driver, { _searchText: searchableText(driver) })
+    plainLanguageByDriverId = validatePlainLanguageData(
+      driverData,
+      plainLanguageEnvelope
     );
+
+    drivers = driverData.map((driver) => {
+      const enriched = Object.assign({}, driver, {
+        _plainLanguage: plainLanguageByDriverId.get(driver.id) || null,
+      });
+      enriched._searchText = searchableText(enriched);
+      return enriched;
+    });
     driverById = new Map(drivers.map((driver) => [driver.id, driver]));
     families = familyEnvelope.families;
     familyById = new Map(families.map((family) => [family.id, family]));
@@ -1202,7 +1370,7 @@ async function loadTaxonomy() {
     driverList.replaceChildren();
     const message = loadError.querySelector("p");
     message.textContent =
-      "The required Driver and Family datasets could not be loaded or did not agree. " +
+      "The required Driver, Family, and plain-language datasets could not be loaded or did not agree. " +
       "Check the browser console, then reload the page. For local preview, use an HTTP server.";
     loadError.hidden = false;
   }
