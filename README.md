@@ -5,6 +5,10 @@ PSYWERX. The repository is designed for static hosting with GitHub Pages.
 
 ## Interactives
 
+- [Cognitive Security Practitioner Discourse Map](./cognitive-security/) —
+  explores the governed public synthesis of practitioner discourse through
+  categories, meta-clusters, clusters, cross-cutting themes, tensions,
+  meta-narratives, scenarios, search, and methodology.
 - [Driver Explorer](./drivers/) — browses the governed Layer → Family → Driver
   taxonomy using dependency-free static assets. Canonical Driver names remain
   the public names, with reviewed explanations as supporting context.
@@ -14,10 +18,15 @@ PSYWERX. The repository is designed for static hosting with GitHub Pages.
 ## Repository structure
 
 - `data/` contains shared static data files.
+- `data/cognitive-security/` contains the generated public-safe Cognitive
+  Security Practitioner Discourse Map package.
+- `cognitive-security/` contains the static Cognitive Security Explorer.
 - `drivers/` contains the Driver Explorer application.
 - `shared/` contains styles and other assets reusable across interactives.
 - `source-data/` is the ignored local location for private XLSX taxonomy files.
 - `scripts/` contains local data-import utilities.
+- `scripts/build_cognitive_security.py` builds and validates the governed
+  Cognitive Security Map data foundation.
 - `scenario-service/` contains the optional secure server-side Scenario
   operationalization service. It is not required by GitHub Pages.
 - `docs/DRIVER_SCHEMA_V1_1.md` defines the current canonical
@@ -40,6 +49,10 @@ PSYWERX. The repository is designed for static hosting with GitHub Pages.
 - `docs/SCENARIO_OPERATIONALIZATION_SCHEMA_V1.md` and
   `docs/SCENARIO_SERVICE_SETUP.md` define the optional Scenario service contract
   and deployment boundary.
+- `docs/cognitive-security/` defines the standalone Cognitive Security Map
+  schema, Explorer architecture, provenance rules, methodology boundaries, and
+  ingestion results. Its discourse entities are not part of the PSYWERX Driver
+  Ontology.
 
 ## Build driver data locally
 
@@ -248,6 +261,62 @@ reports duplicate URLs without merging permanent Source IDs, produces
 deterministic UTF-8 JSON, and replaces the existing registry only after a
 successful full validation.
 
+## Build the Cognitive Security Map data locally
+
+The PSYWERX Cognitive Security Practitioner Discourse Map is a standalone map
+of practitioner discourse across podcast episodes. It is not a definitive
+taxonomy, causal model, consensus measure, or extension of the Driver Ontology.
+The Phase 2 static Explorer at [`cognitive-security/`](./cognitive-security/)
+provides Overview, Browse, Cross-Cutting Themes, Tensions & Debates,
+Meta-Narratives, Future Scenarios, public-package Search, and Methodology
+views. Category → Meta-cluster → Cluster browsing preserves governed unmapped
+records rather than filling source gaps.
+
+Counts in the Explorer describe discourse salience and corpus coverage, not
+importance, consensus, prevalence, or scientific evidence strength.
+Relationships are semantic cross-navigation links, not causal claims, and
+scenarios are plausible futures rather than predictions. See the
+[Explorer architecture](./docs/cognitive-security/EXPLORER_ARCHITECTURE.md),
+[Cognitive Security Schema v1.0](./docs/cognitive-security/COGNITIVE_SECURITY_SCHEMA_V1.md),
+and [build and provenance methodology](./docs/cognitive-security/BUILD_AND_PROVENANCE.md)
+for the governed contracts and interpretive rules.
+
+Place the eight canonical workbooks in the ignored local directory:
+
+```text
+source-data/ipa-podcast/
+```
+
+Install the existing Python requirement, then build from the repository root:
+
+```powershell
+py -m pip install -r requirements.txt
+py scripts\build_cognitive_security.py
+```
+
+Run the standard-library validation suite with:
+
+```powershell
+py -m unittest discover -s tests/cognitive_security -p "test_*.py"
+```
+
+The build writes the complete normalized QA release candidate to the ignored
+`analysis/cognitive-security/normalized/` directory and the conservative,
+public-safe static JSON package to `data/cognitive-security/`. Public output is
+constructed from explicit field allowlists and excludes evidence quotations,
+detailed assignment rationales, internal notes, and detailed review queues.
+The builder stages and validates all data before replacing valid generated
+files, uses deterministic ordering and UTF-8 JSON, and produces byte-identical
+output when inputs are unchanged.
+
+The Explorer fetches only this public package. It does not load transcripts,
+the private item corpus, speakers, quotations, evidence excerpts, internal
+review material, ignored analysis outputs, or source workbooks. Source-linked
+item and quotation browsing remains held for a separate publication and
+attribution review. The Cognitive Security discourse entities remain separate
+from PSYWERX behavioral Drivers and do not extend or modify the Driver
+Ontology.
+
 ## Preview the static site
 
 Opening the HTML file directly will not allow the browser to fetch JSON. Start
@@ -262,6 +331,10 @@ py -m http.server 8000
 ```
 
 Then open <http://localhost:8000/drivers/>.
+
+The Cognitive Security Explorer is available from the same local server at
+<http://127.0.0.1:8000/cognitive-security/>. Its paths and query-parameter deep
+links are GitHub Pages-safe; no backend is required.
 
 The static taxonomy works without Scenario AI. On localhost,
 `drivers/config.js` points to the optional service at

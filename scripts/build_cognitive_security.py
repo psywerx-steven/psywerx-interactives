@@ -1,0 +1,340 @@
+"""Build the governed Cognitive Security Practitioner Discourse Map data."""
+
+from __future__ import annotations
+
+import sys
+import tempfile
+from pathlib import Path
+from typing import Any, Mapping, Sequence
+
+from cognitive_security import SourceValidationError, extract_sources, normalize_sources
+from cognitive_security.export import (
+    build_internal_payloads,
+    build_public_payloads,
+    generated_hashes,
+    serialize_payloads,
+    write_serialized_files,
+)
+from cognitive_security.report import EXPECTED_COUNTS, actual_counts, render_ingestion_report
+from cognitive_security.validate import (
+    ValidationError,
+    validate_dataset,
+    validate_public_payloads,
+)
+
+
+SOURCE_DIR = Path("source-data") / "ipa-podcast"
+PUBLIC_DIR = Path("data") / "cognitive-security"
+PRIVATE_DIR = Path("analysis") / "cognitive-security" / "normalized"
+REPORT_PATH = Path("docs") / "cognitive-security" / "INGESTION_REPORT.md"
+
+
+def _normalized_counts(
+    dataset: Mapping[str, Sequence[Mapping[str, Any]]]
+) -> dict[str, int]:
+    return {
+        key: len(value)
+        for key, value in sorted(dataset.items())
+        if isinstance(value, (list, tuple))
+    }
+
+
+def _source_hashes(
+    dataset: Mapping[str, Sequence[Mapping[str, Any]]]
+) -> dict[str, str]:
+    return {
+        str(row.get("fileName")): str(row.get("sha256"))
+        for row in sorted(
+            dataset.get("artifacts", ()), key=lambda value: str(value.get("fileName", ""))
+        )
+    }
+
+
+def _source_row_counts(extracted: Mapping[str, Any]) -> dict[str, dict[str, int]]:
+    output: dict[str, dict[str, int]] = {}
+    for row in extracted.get("sheetInventory", ()):
+        file_name = str(row.get("fileName") or row.get("workbook") or "")
+        sheet_name = str(row.get("sheetName") or row.get("sheet") or "")
+        row_count = row.get("rowCount", row.get("rows", 0))
+        if file_name and sheet_name:
+            output.setdefault(file_name, {})[sheet_name] = int(row_count or 0)
+    return {
+        file_name: dict(sorted(sheets.items()))
+        for file_name, sheets in sorted(output.items())
+    }
+
+
+def _unresolved_mappings(
+    dataset: Mapping[str, Sequence[Mapping[str, Any]]]
+) -> list[dict[str, str]]:
+    mapped = {
+        str(row.get("clusterId"))
+        for row in dataset.get("cluster_meta_mappings", ())
+        if row.get("clusterId")
+    }
+    unresolved = [
+        {
+            "clusterId": str(row.get("clusterId")),
+            "clusterName": str(row.get("name") or row.get("clusterName") or ""),
+            "categoryId": str(row.get("categoryId") or ""),
+        }
+        for row in dataset.get("clusters", ())
+        if row.get("clusterId") and str(row.get("clusterId")) not in mapped
+    ]
+    mapped_meta_clusters = {
+        str(row.get("metaClusterId"))
+        for row in dataset.get("cluster_meta_mappings", ())
+        if row.get("metaClusterId")
+    }
+    for meta_cluster in dataset.get("meta_clusters", ()):
+        meta_cluster_id = str(meta_cluster.get("metaClusterId") or "")
+        if meta_cluster_id == "CRB-M05" and meta_cluster_id not in mapped_meta_clusters:
+            unresolved.append(
+                {
+                    "metaClusterId": meta_cluster_id,
+                    "metaClusterName": str(meta_cluster.get("name") or ""),
+                    "governanceStatus": "known-empty-source-membership",
+                }
+            )
+    return sorted(
+        unresolved,
+        key=lambda row: row.get("clusterId") or row.get("metaClusterId") or "",
+    )
+
+
+def _expected_actual(dataset: Mapping[str, Sequence[Mapping[str, Any]]]) -> dict[str, Any]:
+    actual = actual_counts(dataset)
+    return {
+        metric: {
+            "expected": expected,
+            "actual": actual.get(metric, 0),
+            "status": "pass" if expected == actual.get(metric, 0) else "review",
+        }
+        for metric, expected in EXPECTED_COUNTS.items()
+    }
+
+
+def _enrich_qa_report(
+    base: Mapping[str, Any],
+    dataset: Mapping[str, Sequence[Mapping[str, Any]]],
+    extracted: Mapping[str, Any],
+) -> dict[str, Any]:
+    assignments = dataset.get("item_cluster_assignments", ())
+    meta_narratives = dataset.get("meta_narratives", ())
+    issues = list(base.get("validationIssues", base.get("issues", ())))
+    base_errors = base.get("errors", ())
+    base_warnings = base.get("warnings", ())
+    report: dict[str, Any] = {
+        "schemaVersion": "1.0",
+        "passed": bool(base.get("passed", False)),
+        "errors": list(base_errors) if isinstance(base_errors, (list, tuple)) else [],
+        "warnings": (
+            list(base_warnings) if isinstance(base_warnings, (list, tuple)) else []
+        ),
+        "counts": dict(
+            base.get("normalizedEntityCounts", base.get("counts", {}))
+        ),
+        "validationIssues": issues,
+    }
+    report["sourceHashes"] = _source_hashes(dataset)
+    report["sourceRowCounts"] = _source_row_counts(extracted)
+    report["normalizedEntityCounts"] = _normalized_counts(dataset)
+    report["expectedVsActual"] = _expected_actual(dataset)
+    report["missingReferences"] = list(
+        base.get("missingReferences", base.get("missing_references", ()))
+    )
+    report["duplicateIds"] = list(
+        base.get("duplicateIds", base.get("duplicate_ids", ()))
+    )
+    report["unresolvedMappings"] = _unresolved_mappings(dataset)
+    report["unresolvedThemeClusterEvidence"] = [
+        {
+            "themeClusterEvidenceId": row.get("themeClusterEvidenceId"),
+            "themeId": row.get("themeId"),
+            "clusterId": None,
+            "status": "source-placeholder-retained",
+        }
+        for row in dataset.get("theme_cluster_evidence", ())
+        if row.get("unresolvedReference")
+    ]
+    mapped_meta_ids = {
+        row.get("metaClusterId")
+        for row in dataset.get("cluster_meta_mappings", ())
+        if row.get("metaClusterId")
+    }
+    report["metaClustersWithoutMappingRows"] = [
+        {
+            "metaClusterId": row.get("metaClusterId"),
+            "name": row.get("name"),
+        }
+        for row in dataset.get("meta_clusters", ())
+        if row.get("metaClusterId") not in mapped_meta_ids
+    ]
+    report["reviewCounts"] = {
+        "assignmentRows": sum(bool(row.get("reviewRequired")) for row in assignments),
+        "normalizedReviewFlags": len(dataset.get("review_flags", ())),
+    }
+    report["ambiguityCounts"] = {
+        "assignmentRows": sum(bool(row.get("ambiguityFlag")) for row in assignments)
+    }
+    report["narrativeCountMismatch"] = {
+        "priorDocumentedExpected": 8,
+        "currentSourceActual": len(meta_narratives),
+        "sourceRecordIds": [
+            row.get("narrativeId") for row in meta_narratives if row.get("narrativeId")
+        ],
+        "status": "human-adjudication-required",
+        "action": "preserved-source-records-without-invention",
+    }
+    report["canonicalSourceDecisions"] = {
+        "tensions": "tensions_debates_rebuilt.xlsx",
+        "blankCopiedSourceTensions": "intentionally-not-used",
+    }
+    report["additionalSourceAnomalies"] = [
+        {
+            "code": "category-sheet-id-omission",
+            "description": (
+                "Category-specific source sheets omit MASTER item IDs "
+                "14368-14373; canonical MASTER retains all six records."
+            ),
+        },
+        {
+            "code": "confidence-snapshot-difference",
+            "description": (
+                "MASTER item confidence is preserved separately from drill-down "
+                "coding confidence; 4,229 focal records differ."
+            ),
+        },
+    ]
+    return report
+
+
+def _atomic_write_text(path: Path, content: str) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary: Path | None = None
+    try:
+        with tempfile.NamedTemporaryFile(
+            mode="w",
+            encoding="utf-8",
+            newline="\n",
+            delete=False,
+            dir=path.parent,
+            prefix=f".{path.name}.",
+            suffix=".tmp",
+        ) as handle:
+            handle.write(content)
+            temporary = Path(handle.name)
+        temporary.replace(path)
+    finally:
+        if temporary is not None and temporary.exists():
+            temporary.unlink()
+
+
+def build(repo_root: Path) -> dict[str, Any]:
+    source_dir = repo_root / SOURCE_DIR
+    extracted = extract_sources(source_dir)
+    dataset = normalize_sources(extracted)
+
+    base_qa = validate_dataset(dataset, repo_root=repo_root)
+    qa_report = _enrich_qa_report(base_qa, dataset, extracted)
+    qa_report["publicExportChecks"] = {
+        "status": "pending",
+        "errors": [],
+        "positiveAllowlist": True,
+    }
+    qa_report["deterministicBuild"] = {
+        "status": "pending",
+        "method": "repeat in-memory serialization plus release-gate rebuild",
+    }
+
+    preliminary_public = build_public_payloads(dataset, qa_report)
+    public_errors = validate_public_payloads(preliminary_public)
+    qa_report["publicExportChecks"] = {
+        "status": "pass" if not public_errors else "fail",
+        "errors": list(public_errors),
+        "positiveAllowlist": True,
+    }
+    if public_errors:
+        qa_report["errors"] = list(qa_report.get("errors", ())) + list(public_errors)
+        raise ValidationError(
+            "Public publication-boundary validation failed.", report=qa_report
+        )
+
+    qa_report["deterministicBuild"] = {
+        "status": "pass",
+        "method": "repeat in-memory serialization plus release-gate rebuild",
+    }
+    public_payloads = build_public_payloads(dataset, qa_report)
+    internal_payloads = build_internal_payloads(dataset, qa_report)
+    public_files = serialize_payloads(public_payloads)
+    internal_files = serialize_payloads(internal_payloads)
+
+    repeated_public = serialize_payloads(build_public_payloads(dataset, qa_report))
+    repeated_internal = serialize_payloads(build_internal_payloads(dataset, qa_report))
+    deterministic = public_files == repeated_public and internal_files == repeated_internal
+    if not deterministic:
+        raise ValidationError(
+            "Repeated in-memory serialization was not deterministic.", report=qa_report
+        )
+
+    public_hashes = generated_hashes(public_files)
+    report = render_ingestion_report(
+        dataset,
+        extracted,
+        qa_report,
+        public_hashes,
+        deterministic,
+    )
+
+    # No generated output is touched until extraction, normalization, structural
+    # validation, publication validation, and deterministic serialization pass.
+    write_serialized_files(repo_root / PUBLIC_DIR, public_files)
+    write_serialized_files(repo_root / PRIVATE_DIR, internal_files)
+    _atomic_write_text(repo_root / REPORT_PATH, report)
+
+    return {
+        "dataset": dataset,
+        "qaReport": qa_report,
+        "publicHashes": public_hashes,
+        "internalHashes": generated_hashes(internal_files),
+    }
+
+
+def main() -> int:
+    repo_root = Path(__file__).resolve().parent.parent
+    try:
+        result = build(repo_root)
+    except (SourceValidationError, ValidationError) as exc:
+        print(f"ERROR: {exc}", file=sys.stderr)
+        report = getattr(exc, "report", None)
+        if report:
+            errors = list(report.get("errors", ()))
+            for error in errors[:25]:
+                print(f"  - {error}", file=sys.stderr)
+            if len(errors) > 25:
+                print(
+                    f"  ... {len(errors) - 25} additional errors omitted from console output.",
+                    file=sys.stderr,
+                )
+        return 1
+    except (OSError, ValueError) as exc:
+        print(f"ERROR: Cognitive Security build failed: {exc}", file=sys.stderr)
+        return 1
+
+    counts = result["qaReport"]["normalizedEntityCounts"]
+    print("Cognitive Security Map Phase 1 build succeeded.")
+    print(f"  Source workbooks: {counts.get('artifacts', 0)}")
+    print(f"  Extracted items: {counts.get('items', 0)}")
+    print(f"  Clusters: {counts.get('clusters', 0)}")
+    print(f"  Meta-clusters: {counts.get('meta_clusters', 0)}")
+    print(f"  Themes: {counts.get('themes', 0)}")
+    print(f"  Tensions: {counts.get('tensions', 0)}")
+    print(f"  Meta-narratives: {counts.get('meta_narratives', 0)}")
+    print(f"  Scenarios: {counts.get('scenarios', 0)}")
+    print(f"  Public files: {len(result['publicHashes'])}")
+    print("  Deterministic serialization: PASS")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
