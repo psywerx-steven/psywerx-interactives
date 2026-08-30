@@ -26,6 +26,12 @@ from .utils import (
 )
 
 
+def _exact_name_key(value: Any) -> str:
+    """Case-insensitive display-name key without fuzzy punctuation folding."""
+
+    return (normalize_text(value) or "").casefold()
+
+
 COLLECTION_KEYS = (
     "artifacts",
     "episodes",
@@ -852,12 +858,17 @@ def normalize_sources(extracted: Mapping[str, Any]) -> dict[str, list[dict[str, 
     tensions: list[dict[str, Any]] = []
     tension_ids: set[str] = set()
     tension_id_by_name: dict[str, str] = {}
+    tension_id_by_exact_name: dict[str, str] = {}
     for row in tables["tensions"]:
         tension_id = _required_id(row, "tension_id", "tension")
         tension_ids.add(tension_id)
         name = normalize_text(row.get("tension_name"))
         if name:
             tension_id_by_name[normalized_key(name)] = tension_id
+            # Theme prose labels are linked only when their normalized display
+            # text is an exact case-insensitive name match.  Broader semantic
+            # association comes exclusively from explicit tension mappings.
+            tension_id_by_exact_name[_exact_name_key(name)] = tension_id
         cluster_names = _reference_names(row.get("clusters_involved"))
         cluster_ids = stable_unique(
             cluster_ids_by_name[normalized_key(cluster_name)][0]
@@ -917,9 +928,9 @@ def normalize_sources(extracted: Mapping[str, Any]) -> dict[str, list[dict[str, 
 
     for theme in themes:
         theme["relatedTensionIds"] = stable_unique(
-            tension_id_by_name[normalized_key(name)]
+            tension_id_by_exact_name[_exact_name_key(name)]
             for name in theme["relatedTensionNames"]
-            if normalized_key(name) in tension_id_by_name
+            if _exact_name_key(name) in tension_id_by_exact_name
         )
 
     tension_mappings: list[dict[str, Any]] = []

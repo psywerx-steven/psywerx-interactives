@@ -64,7 +64,7 @@ def _source_row_counts(extracted: Mapping[str, Any]) -> dict[str, dict[str, int]
     }
 
 
-def _unresolved_clusters(
+def _unresolved_mappings(
     dataset: Mapping[str, Sequence[Mapping[str, Any]]]
 ) -> list[dict[str, str]]:
     mapped = {
@@ -81,7 +81,25 @@ def _unresolved_clusters(
         for row in dataset.get("clusters", ())
         if row.get("clusterId") and str(row.get("clusterId")) not in mapped
     ]
-    return sorted(unresolved, key=lambda row: row["clusterId"])
+    mapped_meta_clusters = {
+        str(row.get("metaClusterId"))
+        for row in dataset.get("cluster_meta_mappings", ())
+        if row.get("metaClusterId")
+    }
+    for meta_cluster in dataset.get("meta_clusters", ()):
+        meta_cluster_id = str(meta_cluster.get("metaClusterId") or "")
+        if meta_cluster_id == "CRB-M05" and meta_cluster_id not in mapped_meta_clusters:
+            unresolved.append(
+                {
+                    "metaClusterId": meta_cluster_id,
+                    "metaClusterName": str(meta_cluster.get("name") or ""),
+                    "governanceStatus": "known-empty-source-membership",
+                }
+            )
+    return sorted(
+        unresolved,
+        key=lambda row: row.get("clusterId") or row.get("metaClusterId") or "",
+    )
 
 
 def _expected_actual(dataset: Mapping[str, Sequence[Mapping[str, Any]]]) -> dict[str, Any]:
@@ -128,7 +146,7 @@ def _enrich_qa_report(
     report["duplicateIds"] = list(
         base.get("duplicateIds", base.get("duplicate_ids", ()))
     )
-    report["unresolvedMappings"] = _unresolved_clusters(dataset)
+    report["unresolvedMappings"] = _unresolved_mappings(dataset)
     report["unresolvedThemeClusterEvidence"] = [
         {
             "themeClusterEvidenceId": row.get("themeClusterEvidenceId"),

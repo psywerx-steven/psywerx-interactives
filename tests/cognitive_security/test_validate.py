@@ -7,6 +7,7 @@ from pathlib import Path
 import unittest
 
 from scripts.cognitive_security.export import PUBLIC_FIELDS
+from scripts.cognitive_security.normalize import _exact_name_key
 from scripts.cognitive_security.validate import (
     KNOWN_UNMAPPED_CLUSTERS,
     REQUIRED_COLLECTIONS,
@@ -134,11 +135,19 @@ def minimal_dataset() -> dict[str, list[dict]]:
                 {
                     "tensionMappingId": "TNM-1",
                     "tensionId": "TN-1",
-                    "mappingType": "cluster",
-                    "mappedId": "CL-1",
+                    "mappedEntityType": "meta_cluster",
+                    "mappedId": "MC-1",
                 }
             ],
             "meta_narratives": [{"narrativeId": "N01", "name": "Narrative"}],
+            "category_summaries": [
+                {
+                    "categorySummaryId": "CGS-1",
+                    "categoryId": "CAT-F",
+                    "summary": "Focal category summary.",
+                    "soWhat": "Why this focal category matters.",
+                }
+            ],
             "category_findings": [
                 {
                     "findingId": "F-1",
@@ -174,6 +183,11 @@ def minimal_dataset() -> dict[str, list[dict]]:
 
 
 class NormalizedValidationTests(unittest.TestCase):
+    def test_related_tension_name_matching_is_exact_not_fuzzy(self) -> None:
+        self.assertEqual(_exact_name_key("  Rights   vs Restraint  "), "rights vs restraint")
+        self.assertEqual(_exact_name_key("RIGHTS VS RESTRAINT"), "rights vs restraint")
+        self.assertNotEqual(_exact_name_key("Rights-vs-Restraint"), "rights vs restraint")
+
     def test_valid_camel_case_contract(self) -> None:
         report = validate_normalized_dataset(minimal_dataset(), expected_counts={})
         self.assertTrue(report.passed, [issue.as_dict() for issue in report.errors])
@@ -229,6 +243,8 @@ class NormalizedValidationTests(unittest.TestCase):
         dataset["clusters"] = []
         dataset["cluster_summaries"] = []
         dataset["cluster_meta_mappings"] = []
+        dataset["meta_clusters"] = []
+        dataset["theme_meta_mappings"] = []
         dataset["item_cluster_assignments"] = []
         dataset["items"] = dataset["items"][1:]
         dataset["item_tags"] = []
@@ -299,6 +315,111 @@ class NormalizedValidationTests(unittest.TestCase):
         self.assertEqual(report.comparisons["items"]["status"], "mismatch")
         self.assertTrue(any(issue.code == "expected_count_mismatch" for issue in report.warnings))
 
+    def test_category_summaries_are_required_unique_and_category_bound(self) -> None:
+        absent = minimal_dataset()
+        absent.pop("category_summaries")
+        absent_report = validate_normalized_dataset(absent, expected_counts={})
+        self.assertTrue(
+            any(
+                issue.code == "missing_collection"
+                and issue.context.get("collection") == "category_summaries"
+                for issue in absent_report.errors
+            )
+        )
+
+        missing = minimal_dataset()
+        missing["category_summaries"] = []
+        missing_report = validate_normalized_dataset(missing, expected_counts={})
+        self.assertTrue(
+            any(issue.code == "missing_focal_category_summary" for issue in missing_report.errors)
+        )
+
+        duplicate = minimal_dataset()
+        duplicate["category_summaries"].append(
+            {
+                "categorySummaryId": "CGS-2",
+                "categoryId": "CAT-F",
+                "summary": "Duplicate",
+                "soWhat": "Duplicate",
+            }
+        )
+        duplicate_report = validate_normalized_dataset(duplicate, expected_counts={})
+        self.assertTrue(
+            any(
+                issue.code == "duplicate_category_summary_assignment"
+                for issue in duplicate_report.errors
+            )
+        )
+
+        invalid_fk = minimal_dataset()
+        invalid_fk["category_summaries"][0]["categoryId"] = "CAT-MISSING"
+        invalid_report = validate_normalized_dataset(invalid_fk, expected_counts={})
+        self.assertTrue(
+            any(issue.code == "missing_foreign_key" for issue in invalid_report.errors)
+        )
+
+    def test_tension_mapping_polymorphic_targets_and_types_are_strict(self) -> None:
+        valid = minimal_dataset()
+        valid["tension_mappings"].append(
+            {
+                "tensionMappingId": "TNM-2",
+                "tensionId": "TN-1",
+                "mappedEntityType": "cross_cutting_theme",
+                "mappedId": "TH-1",
+            }
+        )
+        valid_report = validate_normalized_dataset(valid, expected_counts={})
+        self.assertTrue(valid_report.passed, [issue.as_dict() for issue in valid_report.errors])
+
+        unsupported = minimal_dataset()
+        unsupported["tension_mappings"][0]["mappedEntityType"] = "cluster"
+        unsupported_report = validate_normalized_dataset(unsupported, expected_counts={})
+        self.assertTrue(
+            any(
+                issue.code == "unsupported_tension_mapping_type"
+                for issue in unsupported_report.errors
+            )
+        )
+
+        unresolved = minimal_dataset()
+        unresolved["tension_mappings"][0]["mappedId"] = "MC-MISSING"
+        unresolved_report = validate_normalized_dataset(unresolved, expected_counts={})
+        self.assertTrue(
+            any(issue.code == "missing_foreign_key" for issue in unresolved_report.errors)
+        )
+
+        missing_theme = minimal_dataset()
+        missing_theme["tension_mappings"][0].update(
+            {"mappedEntityType": "cross_cutting_theme", "mappedId": "XTHEME-MISSING"}
+        )
+        missing_theme_report = validate_normalized_dataset(
+            missing_theme, expected_counts={}
+        )
+        self.assertTrue(
+            any(issue.code == "missing_foreign_key" for issue in missing_theme_report.errors)
+        )
+
+    def test_crb_m05_empty_membership_is_explicit_governance_warning(self) -> None:
+        dataset = minimal_dataset()
+        dataset["meta_clusters"].append(
+            {
+                "metaClusterId": "CRB-M05",
+                "categoryId": "CAT-F",
+                "name": "Strategic synthesis lens",
+            }
+        )
+        report = validate_normalized_dataset(dataset, expected_counts={})
+        self.assertTrue(report.passed, [issue.as_dict() for issue in report.errors])
+        self.assertTrue(
+            any(issue.code == "known_empty_meta_cluster" for issue in report.warnings)
+        )
+        self.assertTrue(
+            any(
+                row.get("meta_cluster_id") == "CRB-M05"
+                for row in report.unresolved_mappings
+            )
+        )
+
 
 class PublicationBoundaryTests(unittest.TestCase):
     def test_exporter_projection_fields_match_validator_allowlists(self) -> None:
@@ -337,6 +458,59 @@ class PublicationBoundaryTests(unittest.TestCase):
         self.assertIn("forbidden_public_field", codes)
         self.assertIn("public_field_not_allowlisted", codes)
 
+    def test_public_relationship_types_and_endpoints_are_canonical(self) -> None:
+        payloads = {
+            "categories.json": [{"categoryId": "CAT-1", "name": "Category"}],
+            "clusters.json": [
+                {
+                    "clusterId": "CL-1", "categoryId": "CAT-1",
+                    "name": "Cluster", "definition": "Definition",
+                }
+            ],
+            "meta_clusters.json": [
+                {"metaClusterId": "MC-1", "categoryId": "CAT-1", "name": "Meta"}
+            ],
+            "themes.json": [{"themeId": "TH-1", "name": "Theme"}],
+            "tensions.json": [
+                {
+                    "tensionId": "TN-1", "name": "Tension",
+                    "poleALabel": "A", "poleBLabel": "B",
+                }
+            ],
+            "relationships.json": [
+                {
+                    "relationshipId": "REL-1",
+                    "relationshipType": "tension-maps-to-cross-cutting-theme",
+                    "sourceType": "tension",
+                    "sourceId": "TN-1",
+                    "targetType": "theme",
+                    "targetId": "TH-1",
+                    "interpretation": "semantic",
+                },
+                {
+                    "relationshipId": "REL-2",
+                    "relationshipType": "tension-maps-to-meta-cluster",
+                    "sourceType": "tension",
+                    "sourceId": "TN-1",
+                    "targetType": "metaCluster",
+                    "targetId": "MC-1",
+                    "interpretation": "semantic",
+                },
+            ],
+        }
+        report = validate_public_outputs(payloads)
+        self.assertTrue(report.passed, [issue.as_dict() for issue in report.errors])
+
+        invalid = copy.deepcopy(payloads)
+        invalid["relationships.json"][0]["relationshipType"] = "tension-links-entity"
+        invalid["relationships.json"][1]["targetId"] = "MC-MISSING"
+        invalid["relationships.json"][1]["interpretation"] = "causal"
+        invalid_report = validate_public_outputs(invalid)
+        codes = {issue.code for issue in invalid_report.errors}
+        self.assertIn("unsupported_public_relationship_type", codes)
+        self.assertIn("public_relationship_endpoint_unresolved", codes)
+        self.assertIn("public_relationship_not_semantic", codes)
+
     @unittest.skipUnless(PUBLIC_DIR.is_dir(), "public package has not been built")
     def test_real_public_package_has_no_private_fields_or_xlsx_blobs(self) -> None:
         payloads = {
@@ -345,6 +519,17 @@ class PublicationBoundaryTests(unittest.TestCase):
         }
         report = validate_public_outputs(payloads)
         self.assertTrue(report.passed, [issue.as_dict() for issue in report.errors])
+        qa = payloads["qa_report.json"]
+        self.assertTrue(
+            any("known_empty_meta_cluster" in warning for warning in qa["warnings"])
+        )
+        self.assertTrue(
+            any(
+                row.get("metaClusterId") == "CRB-M05"
+                and row.get("governanceStatus") == "known-empty-source-membership"
+                for row in qa["unresolvedMappings"]
+            )
+        )
 
 
 class SourceProtectionAndDeterminismTests(unittest.TestCase):

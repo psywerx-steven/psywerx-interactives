@@ -174,7 +174,9 @@ invented.
 `CRB-M05` is a source meta-cluster candidate with no cluster-mapping rows. Its
 source rationale describes it as a cross-cutting synthesis lens rather than a
 separate problem family. The record and empty membership are preserved; the
-pipeline does not manufacture membership.
+pipeline does not manufacture membership. Validation emits the explicit
+governance warning `known_empty_meta_cluster` and carries the record into the
+machine-readable unresolved-mapping review state.
 
 ### Explicit theme/cluster placeholders
 
@@ -212,7 +214,8 @@ source and contains 30 final tensions.
 The orchestrator runs normalized integrity checks before publication. Checks
 cover required files, hashes, sheet/header contracts, unique IDs, category and
 episode reconciliation, one primary assignment per focal item, controlled
-secondary `NONE`, foreign keys, review/ambiguity retention, unmapped clusters,
+secondary `NONE`, category-summary completeness, polymorphic foreign keys,
+review/ambiguity retention, unmapped clusters, public relationship endpoints,
 theme/tension/synthesis references, and the seven-narrative discrepancy.
 
 Generated content is serialized in memory and staged before existing valid

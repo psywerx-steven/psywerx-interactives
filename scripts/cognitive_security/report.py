@@ -225,10 +225,29 @@ def render_ingestion_report(
     for row in unresolved:
         if isinstance(row, str):
             lines.append(f"- `{_escape(row)}`")
-        else:
+        elif _value(row, "clusterId", "cluster_id"):
             lines.append(
                 f"- `{_escape(_value(row, 'clusterId', 'cluster_id'))}` — "
                 f"{_escape(_value(row, 'clusterName', 'cluster_name'))}"
+            )
+
+    empty_meta_clusters = [
+        row for row in unresolved
+        if isinstance(row, Mapping)
+        and _value(row, "metaClusterId", "meta_cluster_id")
+    ]
+    if empty_meta_clusters:
+        lines += [
+            "",
+            "### Meta-clusters with no source membership rows",
+            "",
+            "The following governed meta-clusters are retained without invented cluster membership:",
+            "",
+        ]
+        for row in empty_meta_clusters:
+            lines.append(
+                f"- `{_escape(_value(row, 'metaClusterId', 'meta_cluster_id'))}` — "
+                f"{_escape(_value(row, 'metaClusterName', 'meta_cluster_name'))}"
             )
 
     lines += [

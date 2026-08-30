@@ -60,6 +60,23 @@ PUBLIC_FILE_ORDER = (
     "qa_report.json",
 )
 
+# Canonical public graph vocabulary.  Internal source mapping labels remain
+# snake_case; public relationship and endpoint types are deliberately stable.
+PUBLIC_RELATIONSHIP_SCHEMA: dict[str, tuple[str, str]] = {
+    "cluster-belongs-to-category": ("cluster", "category"),
+    "meta-cluster-belongs-to-category": ("metaCluster", "category"),
+    "cluster-belongs-to-meta-cluster": ("cluster", "metaCluster"),
+    "theme-connects-meta-cluster": ("theme", "metaCluster"),
+    "theme-supported-by-cluster": ("theme", "cluster"),
+    "tension-maps-to-cross-cutting-theme": ("tension", "theme"),
+    "tension-maps-to-meta-cluster": ("tension", "metaCluster"),
+}
+
+TENSION_MAPPING_PUBLIC_RELATIONSHIPS: dict[str, tuple[str, str]] = {
+    "cross_cutting_theme": ("tension-maps-to-cross-cutting-theme", "theme"),
+    "meta_cluster": ("tension-maps-to-meta-cluster", "metaCluster"),
+}
+
 # Public records are created from these positive allowlists. Adding an internal
 # field never makes it public unless it is deliberately added here as well.
 PUBLIC_FIELDS: dict[str, tuple[str, ...]] = {
@@ -382,10 +399,15 @@ def build_public_relationships(
         "cluster",
     )
     for row in dataset.get("tension_mappings", ()):
-        target_type = str(row.get("mappedEntityType") or "entity").strip()
-        normalized_type = target_type.replace("_", "-").replace(" ", "-").casefold()
+        mapping_type = str(row.get("mappedEntityType") or "").strip().casefold()
+        contract = TENSION_MAPPING_PUBLIC_RELATIONSHIPS.get(mapping_type)
+        if contract is None:
+            raise ValueError(
+                f"Unsupported tension mapping type for public export: {mapping_type!r}."
+            )
+        relationship_type, target_type = contract
         relationships += _relations_from_pairs(
-            f"tension-maps-to-{normalized_type}",
+            relationship_type,
             ((row.get("tensionId"), row.get("mappedId")),),
             "tension",
             target_type,

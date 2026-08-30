@@ -30,6 +30,8 @@ import shutil
 import subprocess
 from typing import Any, Iterable, Mapping, Sequence
 
+from .export import PUBLIC_RELATIONSHIP_SCHEMA
+
 
 REQUIRED_WORKBOOKS = (
     "codebook.xlsx",
@@ -59,6 +61,7 @@ REQUIRED_COLLECTIONS = (
     "tensions",
     "tension_mappings",
     "meta_narratives",
+    "category_summaries",
     "category_findings",
     "scenarios",
     "scenario_pathways",
@@ -88,6 +91,7 @@ EXPECTED_BASELINE_COUNTS = {
     "theme_cluster_evidence": 302,
     "tensions": 30,
     "meta_narratives": 7,
+    "category_summaries": 7,
     "scenarios": 6,
 }
 
@@ -95,6 +99,10 @@ KNOWN_UNMAPPED_CLUSTERS = {
     "CRB-10": "Forecasting, Complexity & Uncertainty",
     "FTP-13": "Societal Transformation, Identity, & Social Cohesion",
     "KCFT-20": "Strategic Culture & Ideological Competition",
+}
+
+KNOWN_EMPTY_META_CLUSTERS = {
+    "CRB-M05": "Strategic synthesis lens without source cluster-mapping rows",
 }
 
 ENTITY_ID_FIELDS = {
@@ -114,6 +122,7 @@ ENTITY_ID_FIELDS = {
     "tensions": ("tension_id", "id"),
     "tension_mappings": ("tension_mapping_id", "id"),
     "meta_narratives": ("meta_narrative_id", "narrative_id", "id"),
+    "category_summaries": ("category_summary_id", "id"),
     "category_findings": ("finding_id", "category_finding_id", "id"),
     "scenarios": ("scenario_id", "id"),
     "scenario_pathways": ("pathway_id", "scenario_pathway_id", "id"),
@@ -586,6 +595,7 @@ def _validate_foreign_keys(dataset: Mapping[str, Any], report: ValidationReport)
         ),
         "tension_mappings": (("tension_id", "tensions", True),),
         "category_findings": (("category_id", "categories", True),),
+        "category_summaries": (("category_id", "categories", True),),
         "scenario_pathways": (("scenario_id", "scenarios", True),),
         "scenario_indicators": (
             ("scenario_id", "scenarios", True),
@@ -672,11 +682,8 @@ def _validate_foreign_keys(dataset: Mapping[str, Any], report: ValidationReport)
                     )
 
     mapping_targets = {
-        "cluster": ids.get("clusters", set()),
-        "item": ids.get("items", set()),
+        "cross_cutting_theme": ids.get("themes", set()),
         "meta_cluster": ids.get("meta_clusters", set()),
-        "theme": ids.get("themes", set()),
-        "category": ids.get("categories", set()),
     }
     for row, record in enumerate(collection_records(dataset, "tension_mappings"), 1):
         mapping_type = _text(
@@ -684,11 +691,18 @@ def _validate_foreign_keys(dataset: Mapping[str, Any], report: ValidationReport)
         ).casefold().replace("-", "_").replace(" ", "_")
         mapped_id = record.get("mapped_id")
         target_ids = mapping_targets.get(mapping_type)
-        if target_ids is not None:
-            _check_fk(
-                report, "tension_mappings", row, "mapped_id", mapped_id,
-                target_ids, required=True,
+        if target_ids is None:
+            report.add(
+                "error", "unsupported_tension_mapping_type",
+                "Tension mapping type must be cross_cutting_theme or meta_cluster.",
+                row=row, mapping_type=mapping_type,
+                tension_id=_text(record.get("tension_id")),
             )
+            continue
+        _check_fk(
+            report, "tension_mappings", row, "mapped_id", mapped_id,
+            target_ids, required=True,
+        )
 
 
 def _item_is_focal(record: Mapping[str, Any]) -> bool:
@@ -876,6 +890,47 @@ def _validate_cluster_content(dataset: Mapping[str, Any], report: ValidationRepo
                 )
 
 
+def _validate_category_summaries(
+    dataset: Mapping[str, Any], report: ValidationReport
+) -> None:
+    categories = collection_records(dataset, "categories")
+    summaries = collection_records(dataset, "category_summaries")
+    focal_category_ids = {
+        _first(category, ENTITY_ID_FIELDS["categories"])[1]
+        for category in categories
+        if _text(category.get("scope")).casefold() == "focal"
+        and _first(category, ENTITY_ID_FIELDS["categories"])[1]
+    }
+    summary_counts = Counter(
+        _text(summary.get("category_id")) for summary in summaries
+        if _text(summary.get("category_id"))
+    )
+    for category_id, count in sorted(summary_counts.items()):
+        if count > 1:
+            report.add(
+                "error", "duplicate_category_summary_assignment",
+                "A category may have at most one canonical category summary.",
+                category_id=category_id, summary_count=count,
+            )
+    for category_id in sorted(focal_category_ids):
+        if summary_counts.get(category_id, 0) != 1:
+            report.add(
+                "error", "missing_focal_category_summary",
+                "Every focal category must have exactly one category summary.",
+                category_id=category_id,
+                summary_count=summary_counts.get(category_id, 0),
+            )
+    for row, summary in enumerate(summaries, 1):
+        summary_id = _first(summary, ENTITY_ID_FIELDS["category_summaries"])[1]
+        for field_name in ("summary", "so_what"):
+            if not _text(summary.get(field_name)):
+                report.add(
+                    "error", "category_summary_content_missing",
+                    f"Category summary must retain nonblank {field_name}.",
+                    row=row, category_summary_id=summary_id, field=field_name,
+                )
+
+
 def _validate_meta_coverage(dataset: Mapping[str, Any], report: ValidationReport) -> None:
     cluster_ids = _id_set(dataset, "clusters")
     mapped_ids = {
@@ -896,6 +951,33 @@ def _validate_meta_coverage(dataset: Mapping[str, Any], report: ValidationReport
             "warning" if known else "error",
             "known_unmapped_cluster" if known else "unexpected_unmapped_cluster",
             "Intermediate cluster has no meta-cluster assignment.", **record,
+        )
+
+    meta_records = {
+        _first(meta_cluster, ENTITY_ID_FIELDS["meta_clusters"])[1]: meta_cluster
+        for meta_cluster in collection_records(dataset, "meta_clusters")
+        if _first(meta_cluster, ENTITY_ID_FIELDS["meta_clusters"])[1]
+    }
+    mapped_meta_ids = {
+        _text(row.get("meta_cluster_id"))
+        for row in collection_records(dataset, "cluster_meta_mappings")
+        if _text(row.get("meta_cluster_id"))
+    }
+    for meta_cluster_id in sorted(set(meta_records) - mapped_meta_ids):
+        known = meta_cluster_id in KNOWN_EMPTY_META_CLUSTERS
+        record = {
+            "entity_type": "meta_cluster",
+            "meta_cluster_id": meta_cluster_id,
+            "meta_cluster_name": _text(meta_records[meta_cluster_id].get("name")),
+            "governance_known": known,
+            "governance_note": KNOWN_EMPTY_META_CLUSTERS.get(meta_cluster_id),
+        }
+        report.unresolved_mappings.append(record)
+        report.add(
+            "warning" if known else "error",
+            "known_empty_meta_cluster" if known else "unexpected_empty_meta_cluster",
+            "Meta-cluster has no source cluster-mapping rows; membership was not invented.",
+            **record,
         )
 
 
@@ -994,6 +1076,7 @@ def validate_normalized_dataset(
     _validate_foreign_keys(dataset, report)
     _validate_assignments(dataset, report)
     _validate_cluster_content(dataset, report)
+    _validate_category_summaries(dataset, report)
     _validate_meta_coverage(dataset, report)
     _validate_tensions(dataset, report)
     _compare_expected(
@@ -1024,6 +1107,112 @@ def _public_record_list(payload: Any, collection: str) -> list[dict[str, Any]]:
         if isinstance(rows, list):
             return [row for row in rows if isinstance(row, dict)]
     return []
+
+
+PUBLIC_ENDPOINT_COLLECTIONS = {
+    "category": ("categories.json", "categories", "categoryId"),
+    "cluster": ("clusters.json", "clusters", "clusterId"),
+    "metaCluster": ("meta_clusters.json", "meta_clusters", "metaClusterId"),
+    "theme": ("themes.json", "themes", "themeId"),
+    "tension": ("tensions.json", "tensions", "tensionId"),
+}
+
+
+def _payload_by_basename(public_outputs: Mapping[str, Any], filename: str) -> Any:
+    for supplied_name, payload in public_outputs.items():
+        if Path(str(supplied_name)).name == filename:
+            return payload
+    return None
+
+
+def _validate_public_relationships(
+    public_outputs: Mapping[str, Any], report: ValidationReport
+) -> int:
+    payload = _payload_by_basename(public_outputs, "relationships.json")
+    if payload is None:
+        return 0
+    relationships = _public_record_list(payload, "relationships")
+    endpoint_ids: dict[str, set[str]] = {}
+    for entity_type, (filename, collection, id_field) in PUBLIC_ENDPOINT_COLLECTIONS.items():
+        entity_payload = _payload_by_basename(public_outputs, filename)
+        endpoint_ids[entity_type] = {
+            _text(record.get(id_field))
+            for record in _public_record_list(entity_payload, collection)
+            if _text(record.get(id_field))
+        }
+
+    errors_before = len(report.errors)
+    relationship_ids: dict[str, int] = {}
+    for row, relationship in enumerate(relationships, 1):
+        relationship_id = _text(relationship.get("relationshipId"))
+        if not relationship_id:
+            report.add(
+                "error", "public_relationship_id_missing",
+                "Public relationship must have a stable nonblank relationshipId.",
+                row=row,
+            )
+        elif relationship_id in relationship_ids:
+            report.add(
+                "error", "duplicate_public_relationship_id",
+                "Public relationshipId must be unique.", row=row,
+                relationship_id=relationship_id,
+                first_row=relationship_ids[relationship_id],
+            )
+        else:
+            relationship_ids[relationship_id] = row
+
+        relationship_type = _text(relationship.get("relationshipType"))
+        contract = PUBLIC_RELATIONSHIP_SCHEMA.get(relationship_type)
+        if contract is None:
+            report.add(
+                "error", "unsupported_public_relationship_type",
+                "Public relationshipType is outside the canonical vocabulary.",
+                row=row, relationship_id=relationship_id,
+                relationship_type=relationship_type,
+            )
+            continue
+        expected_source_type, expected_target_type = contract
+        source_type = _text(relationship.get("sourceType"))
+        target_type = _text(relationship.get("targetType"))
+        if (source_type, target_type) != contract:
+            report.add(
+                "error", "public_relationship_endpoint_type_mismatch",
+                "Relationship endpoint types do not match relationshipType.",
+                row=row, relationship_id=relationship_id,
+                relationship_type=relationship_type,
+                expected_source_type=expected_source_type,
+                actual_source_type=source_type,
+                expected_target_type=expected_target_type,
+                actual_target_type=target_type,
+            )
+            continue
+        interpretation = _text(relationship.get("interpretation")).casefold()
+        if interpretation != "semantic":
+            report.add(
+                "error", "public_relationship_not_semantic",
+                "Public relationships must be explicitly labeled semantic, never causal.",
+                row=row, relationship_id=relationship_id,
+                interpretation=interpretation,
+            )
+        for endpoint, entity_type in (
+            ("source", source_type), ("target", target_type)
+        ):
+            endpoint_id = _text(relationship.get(f"{endpoint}Id"))
+            if not endpoint_id:
+                report.add(
+                    "error", "public_relationship_endpoint_missing",
+                    "Public relationship endpoint ID is blank.",
+                    row=row, relationship_id=relationship_id, endpoint=endpoint,
+                    entity_type=entity_type,
+                )
+            elif endpoint_id not in endpoint_ids.get(entity_type, set()):
+                report.add(
+                    "error", "public_relationship_endpoint_unresolved",
+                    "Public relationship endpoint does not resolve to a public entity.",
+                    row=row, relationship_id=relationship_id, endpoint=endpoint,
+                    entity_type=entity_type, endpoint_id=endpoint_id,
+                )
+    return len(report.errors) - errors_before
 
 
 def validate_public_outputs(public_outputs: Mapping[str, Any]) -> ValidationReport:
@@ -1071,12 +1260,16 @@ def validate_public_outputs(public_outputs: Mapping[str, Any]) -> ValidationRepo
                     **hit,
                 )
 
+    relationship_errors = _validate_public_relationships(public_outputs, report)
     report.public_export_checks = {
         "files_checked": len(public_outputs),
         "forbidden_field_hits": len(forbidden_hits),
         "allowlist_violations": len(allowlist_hits),
         "xlsx_blob_hits": len(xlsx_blob_hits),
-        "passed": not (forbidden_hits or allowlist_hits or xlsx_blob_hits),
+        "relationship_errors": relationship_errors,
+        "passed": not (
+            forbidden_hits or allowlist_hits or xlsx_blob_hits or relationship_errors
+        ),
     }
     return report
 

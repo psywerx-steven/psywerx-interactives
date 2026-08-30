@@ -21,6 +21,7 @@
     "artifacts": 8,
     "categories": 10,
     "category_findings": 42,
+    "category_summaries": 7,
     "cluster_meta_mappings": 124,
     "cluster_summaries": 127,
     "clusters": 127,
@@ -316,6 +317,11 @@
       "clusterName": "Forecasting, Complexity & Uncertainty"
     },
     {
+      "governanceStatus": "known-empty-source-membership",
+      "metaClusterId": "CRB-M05",
+      "metaClusterName": "Strategic asymmetry and contested operating conditions"
+    },
+    {
       "categoryId": "CAT-DA4674EEAB83CDA9",
       "clusterId": "FTP-13",
       "clusterName": "Societal Transformation, Identity, & Social Cohesion"
@@ -384,6 +390,18 @@
       "severity": "warning"
     },
     {
+      "code": "known_empty_meta_cluster",
+      "context": {
+        "entity_type": "meta_cluster",
+        "governance_known": true,
+        "governance_note": "Strategic synthesis lens without source cluster-mapping rows",
+        "meta_cluster_id": "CRB-M05",
+        "meta_cluster_name": "Strategic asymmetry and contested operating conditions"
+      },
+      "message": "Meta-cluster has no source cluster-mapping rows; membership was not invented.",
+      "severity": "warning"
+    },
+    {
       "code": "known_meta_narrative_count_mismatch",
       "context": {
         "actual": 7,
@@ -430,6 +448,7 @@
     "known_unmapped_cluster: Intermediate cluster has no meta-cluster assignment. ({\"cluster_id\": \"CRB-10\", \"cluster_name\": \"Forecasting, Complexity & Uncertainty\", \"governance_known\": true})",
     "known_unmapped_cluster: Intermediate cluster has no meta-cluster assignment. ({\"cluster_id\": \"FTP-13\", \"cluster_name\": \"Societal Transformation, Identity, & Social Cohesion\", \"governance_known\": true})",
     "known_unmapped_cluster: Intermediate cluster has no meta-cluster assignment. ({\"cluster_id\": \"KCFT-20\", \"cluster_name\": \"Strategic Culture & Ideological Competition\", \"governance_known\": true})",
+    "known_empty_meta_cluster: Meta-cluster has no source cluster-mapping rows; membership was not invented. ({\"entity_type\": \"meta_cluster\", \"governance_known\": true, \"governance_note\": \"Strategic synthesis lens without source cluster-mapping rows\", \"meta_cluster_id\": \"CRB-M05\", \"meta_cluster_name\": \"Strategic asymmetry and contested operating conditions\"})",
     "known_meta_narrative_count_mismatch: Source contains seven meta-narratives (N01-N07); prior project documentation expected eight. ({\"actual\": 7, \"expected\": 8})"
   ]
 }

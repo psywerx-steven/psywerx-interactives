@@ -198,7 +198,10 @@ the provenance shape above.
 - `crossCategoryLogic`, `cooccurrenceEvidence`, `strategicSignificance`,
   `operationalImplications`, `boundaryConditions: string?`.
 - `relatedTensionNames: string[]` preserves source debate labels;
-  `relatedTensionIds: string[]` is derived only from explicit tension mappings.
+  `relatedTensionIds: string[]` is derived from either an exact
+  whitespace-normalized, case-insensitive match to a canonical tension name or
+  an explicit `cross_cutting_theme` tension mapping. Similar wording is never
+  treated as a match.
 - `representativeItemIds: string[]`, `evidenceStrength`, `reviewPriority`,
   `reviewNotes`, `humanReviewStatus`, `humanThemeName`, `humanNotes: string?`,
   `reviewRequired: boolean`.
@@ -342,12 +345,34 @@ contains numbers, capitalization variants, and labels such as `moderate` and
 `medium-high`. It is preserved as source text and must not be used as a public
 facet without later governance.
 
+Public `relationships.json` uses this closed relationship vocabulary and
+canonical endpoint types:
+
+| `relationshipType` | `sourceType` | `targetType` |
+|---|---|---|
+| `cluster-belongs-to-category` | `cluster` | `category` |
+| `meta-cluster-belongs-to-category` | `metaCluster` | `category` |
+| `cluster-belongs-to-meta-cluster` | `cluster` | `metaCluster` |
+| `theme-connects-meta-cluster` | `theme` | `metaCluster` |
+| `theme-supported-by-cluster` | `theme` | `cluster` |
+| `tension-maps-to-cross-cutting-theme` | `tension` | `theme` |
+| `tension-maps-to-meta-cluster` | `tension` | `metaCluster` |
+
+Relationship IDs are unique and every source and target ID must resolve to the
+corresponding public entity collection. Every public relationship has
+`interpretation: "semantic"`; causal interpretation values are invalid.
+
 ## Foreign-key and unresolved-reference rules
 
 - All focal items have one assignment row and exactly one primary cluster.
 - `secondaryClusterId` is either a canonical cluster ID or `null`; the 416
   explicit source `NONE` values are not converted into a fabricated cluster.
 - Contextual items do not require cluster assignments.
+- Every focal category has exactly one `category_summaries` record with a
+  stable `categorySummaryId`, a valid `categoryId`, `summary`, and `soWhat`.
+- Tension mappings are polymorphic but closed: `cross_cutting_theme` targets
+  `themes`, while `meta_cluster` targets `meta_clusters`; other mapping types
+  are validation errors.
 - Evidence and representative-item references resolve to canonical `MASTER`
   item IDs; copied item prose never creates another item entity.
 - Three source theme/cluster evidence placeholders have no cluster ID. They are

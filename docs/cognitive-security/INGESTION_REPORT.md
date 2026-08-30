@@ -163,6 +163,12 @@ The following clusters are preserved without invented meta-cluster assignments:
 - `FTP-13` — Societal Transformation, Identity, & Social Cohesion
 - `KCFT-20` — Strategic Culture & Ideological Competition
 
+### Meta-clusters with no source membership rows
+
+The following governed meta-clusters are retained without invented cluster membership:
+
+- `CRB-M05` — Strategic asymmetry and contested operating conditions
+
 ### Meta-narrative count
 
 The canonical worksheet contains seven records (`N01`–`N07`). Earlier project documentation described eight. The build preserves seven, creates no replacement record, and reports the discrepancy for human adjudication.
@@ -185,7 +191,7 @@ Three source-authored placeholder rows for `XTHEME-007`, `XTHEME-008`, and `XTHE
 ## Validation
 
 - Structural errors: 0
-- Warnings/review findings: 7
+- Warnings/review findings: 8
 - Deterministic in-memory serialization: PASS
 - Public files generated: 15
 
@@ -197,6 +203,7 @@ Warnings and review findings:
 - known_unmapped_cluster: Intermediate cluster has no meta-cluster assignment. ({"cluster_id": "CRB-10", "cluster_name": "Forecasting, Complexity & Uncertainty", "governance_known": true})
 - known_unmapped_cluster: Intermediate cluster has no meta-cluster assignment. ({"cluster_id": "FTP-13", "cluster_name": "Societal Transformation, Identity, & Social Cohesion", "governance_known": true})
 - known_unmapped_cluster: Intermediate cluster has no meta-cluster assignment. ({"cluster_id": "KCFT-20", "cluster_name": "Strategic Culture & Ideological Competition", "governance_known": true})
+- known_empty_meta_cluster: Meta-cluster has no source cluster-mapping rows; membership was not invented. ({"entity_type": "meta_cluster", "governance_known": true, "governance_note": "Strategic synthesis lens without source cluster-mapping rows", "meta_cluster_id": "CRB-M05", "meta_cluster_name": "Strategic asymmetry and contested operating conditions"})
 - known_meta_narrative_count_mismatch: Source contains seven meta-narratives (N01-N07); prior project documentation expected eight. ({"actual": 7, "expected": 8})
 
 ## Generated public-file hashes
@@ -212,9 +219,9 @@ Warnings and review findings:
 | `manifest.json` | `65fcc230cf2bf6a9fc8fe8d677731337a635cd58d2747dc54e3ab038aa3282db` |
 | `meta_clusters.json` | `49b668c65fbc7706be5455d2ce46696e66dc1be299d3f475ce441ecdf2ad81f9` |
 | `meta_narratives.json` | `d93f8ea23d78cf892bb3031a17aa2caf6ad38d87dea42df648a56d5bb20e3be4` |
-| `qa_report.json` | `89b168f88b6634dd2239a0e67b82855f3f5d2a345a7421ae5d62650fdf9f0e9f` |
-| `relationships.json` | `d8d58595c4517061d3ea70d0cb8c926ea8ae9e51a2f5516b9502d2abaa3c7c83` |
-| `review_summary.json` | `c3cad6f0951696bf979d137e798ae9086484168b7250933f5c47e694e24c7c4c` |
+| `qa_report.json` | `894375c4e4342209086e9991b24c8329cb27614ed901c0a855c7a3e2cf7a2c12` |
+| `relationships.json` | `5cc83e56457d274139511d2efa83079fc00aea48d2d7ab62cb882c5fef350714` |
+| `review_summary.json` | `a36853f154200f8e91efbaf460f2b9490c24d171aa6650df1d0547c1d93cfa26` |
 | `scenarios.json` | `f2996cdbed109d617b0acb58b84e41e37cf0b0b73be6fd371d32ecc20f3931d6` |
 | `tensions.json` | `0de9d67bc58c46fbb09b6728efef2a1c9760f8227464bb061446a84f1b724447` |
 | `themes.json` | `bbd5539e57c6e9b9f16e398b13a7c40e4bfa6b321a51adec783cd6f349a6bb5c` |
