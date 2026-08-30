@@ -50,9 +50,9 @@ PSYWERX. The repository is designed for static hosting with GitHub Pages.
   `docs/SCENARIO_SERVICE_SETUP.md` define the optional Scenario service contract
   and deployment boundary.
 - `docs/cognitive-security/` defines the standalone Cognitive Security Map
-  schema, Explorer architecture, provenance rules, methodology boundaries, and
-  ingestion results. Its discourse entities are not part of the PSYWERX Driver
-  Ontology.
+  schemas, Explorer architecture, provenance rules, corpus reconciliation,
+  methodology boundaries, and ingestion results. Its discourse entities are
+  not part of the PSYWERX Driver Ontology.
 
 ## Build driver data locally
 
@@ -272,14 +272,29 @@ Meta-Narratives, Future Scenarios, public-package Search, and Methodology
 views. Category → Meta-cluster → Cluster browsing preserves governed unmapped
 records rather than filling source gaps.
 
+The public corpus model contains 242 canonical public-feed episode releases.
+The historical extraction dataset contained 269 transcript/source identities;
+27 confirmed alias identities are excluded only from a separately labeled
+12,978-item reconciled sensitivity view. The original 14,397-item analytic
+release remains preserved and reproducible. Episode 000 is retained, and a
+separately published re-release remains a distinct feed release even where
+content is reused.
+
+The sensitivity audit recommends a future full-pipeline reanalysis because 13
+higher-order entities are highly sensitive to canonical-source selection. This
+release does not regenerate or replace the historical synthesis, and the
+sensitivity finding does not by itself invalidate an existing entity.
+
 Counts in the Explorer describe discourse salience and corpus coverage, not
 importance, consensus, prevalence, or scientific evidence strength.
 Relationships are semantic cross-navigation links, not causal claims, and
 scenarios are plausible futures rather than predictions. See the
 [Explorer architecture](./docs/cognitive-security/EXPLORER_ARCHITECTURE.md),
-[Cognitive Security Schema v1.0](./docs/cognitive-security/COGNITIVE_SECURITY_SCHEMA_V1.md),
-and [build and provenance methodology](./docs/cognitive-security/BUILD_AND_PROVENANCE.md)
-for the governed contracts and interpretive rules.
+[Cognitive Security Schema v1.1](./docs/cognitive-security/COGNITIVE_SECURITY_SCHEMA_V1_1.md),
+[historical Schema v1.0](./docs/cognitive-security/COGNITIVE_SECURITY_SCHEMA_V1.md),
+[corpus reconciliation](./docs/cognitive-security/CORPUS_RECONCILIATION.md), and
+[build and provenance methodology](./docs/cognitive-security/BUILD_AND_PROVENANCE.md)
+for the governed contracts, decision rules, and interpretive limits.
 
 Place the eight canonical workbooks in the ignored local directory:
 
@@ -301,15 +316,21 @@ py -m unittest discover -s tests/cognitive_security -p "test_*.py"
 ```
 
 The build writes the complete normalized QA release candidate to the ignored
-`analysis/cognitive-security/normalized/` directory and the conservative,
-public-safe static JSON package to `data/cognitive-security/`. Public output is
-constructed from explicit field allowlists and excludes evidence quotations,
-detailed assignment rationales, internal notes, and detailed review queues.
+`analysis/cognitive-security/normalized/` directory, private reconciliation
+and sensitivity outputs beneath the ignored
+`analysis/cognitive-security/corpus-reconciliation/` directory, and the
+conservative, public-safe static JSON package to `data/cognitive-security/`.
+Public output is constructed from explicit field allowlists and excludes
+evidence quotations, detailed assignment rationales, internal notes, and
+detailed review queues.
 The builder stages and validates all data before replacing valid generated
 files, uses deterministic ordering and UTF-8 JSON, and produces byte-identical
 output when inputs are unchanged.
 
-The Explorer fetches only this public package. It does not load transcripts,
+The Explorer fetches only this public package. The dedicated public
+`corpus_reconciliation.json` contains aggregate counts and interpretation, not
+the private identity ledger or item-level sensitivity tables. The Explorer
+does not load transcripts,
 the private item corpus, speakers, quotations, evidence excerpts, internal
 review material, ignored analysis outputs, or source workbooks. Source-linked
 item and quotation browsing remains held for a separate publication and

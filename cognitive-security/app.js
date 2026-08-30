@@ -3,6 +3,7 @@
 const DATA_BASE = "../data/cognitive-security/";
 const PUBLIC_DATA_FILES = Object.freeze([
   "manifest.json",
+  "corpus_reconciliation.json",
   "categories.json",
   "clusters.json",
   "cluster_summaries.json",
@@ -451,8 +452,8 @@ function sameStringSet(left, right) {
 
 function validatePublicData() {
   const manifest = data["manifest.json"];
-  if (!manifest || manifest.schemaVersion !== "1.0") {
-    throw new Error("The public package does not use Cognitive Security Schema v1.0.");
+  if (!manifest || manifest.schemaVersion !== "1.1") {
+    throw new Error("The public package does not use Cognitive Security Schema v1.1.");
   }
   if (manifest.productId !== "psywerx-cognitive-security-practitioner-discourse-map" ||
       manifest.knowledgeProductType !== "practitioner-discourse-map") {
@@ -472,7 +473,7 @@ function validatePublicData() {
   ].forEach(requireArray);
 
   const qa = data["qa_report.json"];
-  if (!qa || qa.schemaVersion !== "1.0" || qa.passed !== true ||
+  if (!qa || qa.schemaVersion !== "1.1" || qa.passed !== true ||
       !Array.isArray(qa.errors) || qa.errors.length ||
       !Array.isArray(qa.missingReferences) || qa.missingReferences.length ||
       !Array.isArray(qa.duplicateIds) || qa.duplicateIds.length ||
@@ -485,13 +486,20 @@ function validatePublicData() {
     throw new Error("The governed QA report does not authorize this public package.");
   }
   const coverage = data["coverage.json"];
+  const reconciliation = data["corpus_reconciliation.json"];
   const reviewSummary = data["review_summary.json"];
   if (!coverage || !coverage.totals || !coverage.itemsByCategory ||
-      !coverage.primaryAssignmentsByCluster || !coverage.secondaryAssignmentsByCluster) {
+      !coverage.primaryAssignmentsByCluster || !coverage.secondaryAssignmentsByCluster ||
+      !coverage.originalAnalyticRelease || !coverage.reconciledSensitivityDataset) {
     throw new Error("coverage.json is missing required aggregate coverage fields.");
   }
   if (!reviewSummary || !reviewSummary.metaNarrativeCountIssue) {
     throw new Error("review_summary.json is missing governed review metadata.");
+  }
+  if (!reconciliation || reconciliation.schemaVersion !== "1.1" ||
+      reconciliation.status !== "complete" || !reconciliation.counts ||
+      reconciliation.counts.pendingDecisionRecords !== 0) {
+    throw new Error("corpus_reconciliation.json does not authorize a canonical public episode count.");
   }
 
   const entityMaps = {
@@ -610,6 +618,15 @@ function validatePublicData() {
       throw new Error("Governed count mismatch for " + entry[0] + ".");
     }
   });
+  if (Number(reconciliation.counts.canonicalEpisodes) !== entityMaps.episode.size ||
+      Number(reconciliation.counts.originalSourceIdentities) !==
+        Number(coverage.originalAnalyticRelease.sourceIdentities) ||
+      Number(reconciliation.counts.originalItems) !==
+        Number(coverage.originalAnalyticRelease.items) ||
+      Number(reconciliation.counts.reconciledSensitivityItems) !==
+        Number(coverage.reconciledSensitivityDataset.items)) {
+    throw new Error("Corpus reconciliation counts do not match the governed public package.");
+  }
   if (Number(reviewSummary.metaNarrativeCountIssue.currentSourceActual) !==
       entityMaps.metaNarrative.size) {
     throw new Error("The governed Meta-narrative review count is inconsistent.");
@@ -751,6 +768,7 @@ function buildIndexes() {
     return record.scope === "contextual";
   });
   const coverageByCategory = data["coverage.json"].itemsByCategory;
+  const reconciliationCounts = data["corpus_reconciliation.json"].counts;
   indexes.counts = Object.freeze({
     categories: data["categories.json"].length,
     focalCategories: focalCategoryRecords.length,
@@ -763,6 +781,15 @@ function buildIndexes() {
     categoryFindings: data["category_findings.json"].length,
     scenarios: data["scenarios.json"].length,
     episodes: data["episodes.json"].length,
+    sourceIdentities: Number(reconciliationCounts.originalSourceIdentities),
+    confirmedAliasGroups: Number(reconciliationCounts.confirmedAliasGroups),
+    sensitivityItems: Number(reconciliationCounts.reconciledSensitivityItems),
+    sensitivityFocalItems: Number(
+      reconciliationCounts.reconciledSensitivityFocalItems
+    ),
+    sensitivityContextualItems: Number(
+      reconciliationCounts.reconciledSensitivityContextualItems
+    ),
     relationships: data["relationships.json"].length,
     items: Object.values(coverageByCategory).reduce(function (total, value) {
       return total + Number(value || 0);
@@ -1150,8 +1177,8 @@ async function initialize() {
     setLoading(true);
     const manifest = await fetchPublicJson("manifest.json");
     data["manifest.json"] = manifest;
-    if (!manifest || manifest.schemaVersion !== "1.0") {
-      throw new Error("The public manifest is missing Cognitive Security Schema v1.0.");
+    if (!manifest || manifest.schemaVersion !== "1.1") {
+      throw new Error("The public manifest is missing Cognitive Security Schema v1.1.");
     }
     const remaining = PUBLIC_DATA_FILES.filter(function (file) {
       return file !== "manifest.json";
@@ -1318,8 +1345,10 @@ function renderOverview() {
   stats.appendChild(element("h2", "section-title", "Current corpus at a glance"));
   const statGrid = element("div", "stat-grid");
   [
-    [indexes.counts.episodes, "episodes / source files"],
-    [indexes.counts.items, "extracted items"],
+    [indexes.counts.episodes, "canonical public-feed releases"],
+    [indexes.counts.sourceIdentities, "historical transcript / source identities"],
+    [indexes.counts.items, "original analytic extraction items"],
+    [indexes.counts.sensitivityItems, "reconciled sensitivity items"],
     [indexes.counts.focalItems, "focal items"],
     [indexes.counts.clusters, "intermediate clusters"],
     [indexes.counts.metaClusters, "meta-clusters"],
@@ -1332,6 +1361,17 @@ function renderOverview() {
   });
   stats.appendChild(statGrid);
   content.appendChild(stats);
+  content.appendChild(cautionBox(
+    "Original analysis and sensitivity view",
+    "The original analytic release contains " + formatNumber(indexes.counts.items) +
+      " items from " + formatNumber(indexes.counts.sourceIdentities) +
+      " historical transcript/source identities. The separate reconciled sensitivity dataset retains " +
+      formatNumber(indexes.counts.sensitivityItems) +
+      " items after selecting one canonical source identity for each of " +
+      formatNumber(indexes.counts.episodes) +
+      " public-feed episodes. Neither denominator replaces the other.",
+    "quiet"
+  ));
 
   const hierarchy = element("section", "overview-section hierarchy-explainer");
   hierarchy.appendChild(element("h2", "section-title", "How the analytical structure works"));
@@ -1342,7 +1382,7 @@ function renderOverview() {
   ));
   const flow = element("ol", "hierarchy-flow");
   [
-    ["1", "Episode / extracted material", "Source episodes and interpretive extraction units"],
+    ["1", "Canonical episode / extracted material", "Public feed releases, source identities, and interpretive extraction units"],
     ["2", "Category", "One of " + formatNumber(indexes.counts.focalCategories) + " focal analytical lenses"],
     ["3", "Meta-cluster", "A within-category family of related patterns"],
     ["4", "Intermediate cluster", "A governed recurring discourse concept"],
@@ -2505,7 +2545,13 @@ function searchResultCard(documentRecord, query) {
   });
   if (documentRecord.type === "episode") {
     if (record.podcast) context.appendChild(chip(record.podcast, "quiet"));
-    context.appendChild(chip(formatNumber(record.itemCount) + " extracted items"));
+    context.appendChild(chip(
+      formatNumber(record.originalItemCount) + " original items"
+    ));
+    context.appendChild(chip(
+      formatNumber(record.reconciledSensitivityItemCount) + " sensitivity items",
+      "quiet"
+    ));
   }
   card.appendChild(context);
   return card;
@@ -2637,7 +2683,7 @@ function renderEpisode(route) {
     "Corpus episode · " + episode.episodeId,
     episode.episodeTitle,
     episode.podcast || "Podcast episode retained in the public corpus catalog.",
-    formatNumber(episode.itemCount) + " extracted items"
+    formatNumber(episode.originalItemCount) + " original analytic items"
   );
   setBreadcrumbs([
     { label: "Search", view: "search" },
@@ -2648,12 +2694,14 @@ function renderEpisode(route) {
   lead.appendChild(definitionList([
     { label: "Episode ID", value: episode.episodeId },
     { label: "Podcast", value: episode.podcast },
-    { label: "Extracted-item count", value: formatNumber(episode.itemCount) },
+    { label: "Historical source identities", value: formatNumber(episode.sourceIdentityCount) },
+    { label: "Original analytic item count", value: formatNumber(episode.originalItemCount) },
+    { label: "Reconciled sensitivity item count", value: formatNumber(episode.reconciledSensitivityItemCount) },
   ]));
   content.appendChild(lead);
   content.appendChild(cautionBox(
     "Public corpus catalog only",
-    "This page identifies the source episode and aggregate extraction count. Full transcript search, item-level evidence, quotations, speakers, and coding rationales are outside the current publication boundary.",
+    "This page identifies one canonical public-feed episode and keeps the historical and sensitivity denominators separate. Full transcript search, source-identity pairings, item-level evidence, quotations, speakers, and coding rationales are outside the current publication boundary.",
     "quiet"
   ));
   viewContent.appendChild(content);
@@ -2681,11 +2729,11 @@ function renderMethodology() {
     "How the map was produced and how to interpret it",
     "Methodology",
     "Understand the corpus, human-guided and AI-assisted synthesis workflow, traceability model, analytical hierarchy, and publication boundaries.",
-    "Cognitive Security Map Schema v1.0"
+    "Cognitive Security Map Schema v1.1"
   );
   setBreadcrumbs([{ label: "Methodology", current: true }]);
   const schemaLink = element("a", "secondary-button", "Read the data schema");
-  schemaLink.href = "../docs/cognitive-security/COGNITIVE_SECURITY_SCHEMA_V1.md";
+  schemaLink.href = "../docs/cognitive-security/COGNITIVE_SECURITY_SCHEMA_V1_1.md";
   viewActions.appendChild(schemaLink);
 
   const content = fragment();
@@ -2714,11 +2762,30 @@ function renderMethodology() {
     "p",
     "section-intro",
     "The current package represents " + formatNumber(indexes.counts.episodes) +
-      " podcast episodes / source files and " + formatNumber(indexes.counts.items) +
-      " extracted interpretive items. Extraction organized material into " +
+      " canonical episodes as distinct public feed releases, reconciled from " +
+      formatNumber(indexes.counts.sourceIdentities) +
+      " historical transcript/source identities. The original analytic release preserves " +
+      formatNumber(indexes.counts.items) +
+      " extracted interpretive items. The separate reconciled sensitivity dataset contains " +
+      formatNumber(indexes.counts.sensitivityItems) +
+      " items. Extraction organized material into " +
       formatNumber(indexes.counts.categories) + " categories."
   ));
+  corpus.appendChild(cautionBox(
+    "Governed corpus reconciliation",
+    "The 269 historical source identities include 27 confirmed alias pairs. The canonical count is therefore 242 distinct public feed releases. This is a publication-unit count: a content-equivalent re-release remains a separate feed episode, so the stricter unique-recording count is 241. Episode zero is retained as a feed trailer. Pair-level evidence and filenames remain private.",
+    "quiet",
+    "h3"
+  ));
   const corpusGrid = element("div", "methodology-grid");
+  corpusGrid.appendChild(methodologyCard(
+    "Research purpose",
+    "The project maps recurring practitioner discourse across the corpus. It does not summarize each episode or treat an episode as one observation. Its purpose is to expose recurring concepts, structures, tensions, and possible implications for investigation."
+  ));
+  corpusGrid.appendChild(methodologyCard(
+    "Transcript processing and unit of analysis",
+    "Transcript files were processed through a structured Python/API workflow. The unit of analysis is an extracted analytic item: an interpretive unit representing one concept, claim, example, actor, technology, challenge, trend, or proposed action. Items are not paragraphs, speakers, episodes, or statistically independent observations."
+  ));
   corpusGrid.appendChild(methodologyCard(
     formatNumber(indexes.counts.focalCategories) + " focal categories",
     "Technologies / Tools / Platforms; Organizations / Actors / Communities; Challenges / Risks / Barriers; Key Concepts / Frameworks / Theories; Key Events / Historical Examples; Future Trends / Predictions; and Opportunities / Recommended Actions. These " +
@@ -2741,7 +2808,7 @@ function renderMethodology() {
     "The governed codebook contains " + formatNumber(indexes.counts.clusters) +
       " intermediate clusters developed for the " +
       formatNumber(indexes.counts.focalCategories) +
-      " focal categories. Definitions, inclusion and exclusion criteria, near-neighbor distinctions, and anchor examples preserve cluster boundaries."
+      " focal categories. Within each category, approximately 100 randomly sampled items were examined in three rounds: candidate-code discovery, merge/split/refinement and boundary clarification, then a saturation-style stability check. This supports practical codebook stability but is not formal proof of saturation. Definitions, inclusion and exclusion criteria, near-neighbor distinctions, and anchor examples preserve cluster boundaries."
   ));
   codingGrid.appendChild(methodologyCard(
     "Primary assignment",
@@ -2753,7 +2820,7 @@ function renderMethodology() {
   ));
   codingGrid.appendChild(methodologyCard(
     "Cluster synthesis",
-    "Primary and secondary assignments support cluster summaries, recurring subthemes, strategic significance, operational implications, and the distinction between primary meaning and adjacency."
+    "All material associated with a cluster informed drill-up synthesis. The governed historical method weighted primary assignments 2:1 relative to secondary assignments so dominant meaning carried more influence than adjacency. The weighting describes analytic emphasis, not scientific evidence strength."
   ));
   codingGrid.appendChild(methodologyCard(
     "Meta-clustering",
@@ -2761,14 +2828,24 @@ function renderMethodology() {
       " meta-clusters organize related intermediate clusters within each category. They are within-category families, not cross-category causal mechanisms."
   ));
   codingGrid.appendChild(methodologyCard(
-    "Higher-order synthesis",
+    "Cross-cutting themes",
     formatNumber(indexes.counts.themes) +
-      " cross-cutting themes connect categories; " +
-      formatNumber(indexes.counts.tensions) +
-      " tensions preserve competing assumptions; " +
-      formatNumber(indexes.counts.metaNarratives) +
-      " meta-narratives organize interpretive storylines; and " +
-      formatNumber(indexes.counts.scenarios) + " scenarios explore plausible futures."
+      " themes integrate recurring patterns across categories. Unlike meta-clusters, they are cross-category interpretive structures rather than within-category families."
+  ));
+  codingGrid.appendChild(methodologyCard(
+    "Tensions and debates",
+    formatNumber(indexes.counts.tensions) +
+      " tensions were developed separately to retain tradeoffs, competing assumptions, contradictions, and unresolved differences instead of smoothing them into themes."
+  ));
+  codingGrid.appendChild(methodologyCard(
+    "Meta-narratives",
+    formatNumber(indexes.counts.metaNarratives) +
+      " source meta-narratives organize higher-level interpretive storylines. Their greater abstraction places them farther from item-level evidence and requires correspondingly cautious interpretation."
+  ));
+  codingGrid.appendChild(methodologyCard(
+    "Future scenarios",
+    formatNumber(indexes.counts.scenarios) +
+      " scenarios combine mapped forces into structured plausibility exercises. They are not predictions, probability estimates, or forecasts."
   ));
   coding.appendChild(codingGrid);
   content.appendChild(coding);
@@ -2778,11 +2855,11 @@ function renderMethodology() {
   const roleGrid = element("div", "detail-grid");
   roleGrid.appendChild(section(
     "Human role",
-    "Humans defined the research purpose, source scope, extraction and synthesis architecture, governance boundaries, validation requirements, and public/private release decisions. Human review remains necessary for unresolved mappings, interpretation, and any future evidence publication."
+    "The researcher retained responsibility for the research purpose, corpus scope, extraction ontology, category selection, codebook development, code refinement, ambiguity and review handling, interpretation, final claims, governance boundaries, and public/private release decisions."
   ));
   roleGrid.appendChild(section(
     "AI-assisted role",
-    "AI systems supported structured extraction, candidate coding, clustering, synthesis, and consistency checks under the governed workflow. AI assistance does not make the corpus representative, the results causal, or the synthesis scientifically validated."
+    "AI systems served as research-assistant and scaling mechanisms for structured extraction, candidate coding, clustering, synthesis, and consistency checks. Model assistance introduces prompt sensitivity, model dependence, semantic smoothing, overgeneralization, and hidden-bias risks; it does not make the corpus representative or the results causal or scientifically validated."
   ));
   roles.appendChild(roleGrid);
   content.appendChild(roles);
@@ -2813,6 +2890,32 @@ function renderMethodology() {
   distinctions.appendChild(distinctionGrid);
   content.appendChild(distinctions);
 
+  const sensitivity = element("section", "overview-section methodology-callout");
+  sensitivity.appendChild(element("h2", "section-title", "Reconciliation sensitivity audit"));
+  sensitivity.appendChild(element(
+    "p", "section-intro",
+    "The original analytic release remains unchanged at " +
+      formatNumber(indexes.counts.items) + " items. Selecting one canonical source identity for each public-feed episode produces a separate reconciled sensitivity dataset of " +
+      formatNumber(indexes.counts.sensitivityItems) + " items (" +
+      formatNumber(indexes.counts.sensitivityFocalItems) + " focal and " +
+      formatNumber(indexes.counts.sensitivityContextualItems) + " contextual)."
+  ));
+  const sensitivityGrid = element("div", "methodology-grid");
+  sensitivityGrid.appendChild(methodologyCard(
+    "Cluster-count sensitivity",
+    "All 127 clusters retain primary support. The largest weighted-count changes are OPP-04 (-119; -10.37%), KCFT-06 (-103; -14.23%), KE-03 (-96; -14.26%), ORG-ACT-02 (-90; -11.90%), and ORG-ACT-04 (-86; -11.07%). Count changes describe denominator sensitivity, not substantive validity."
+  ));
+  sensitivityGrid.appendChild(methodologyCard(
+    "Higher-order support sensitivity",
+    "Across 132 higher-order records, 44 are stable, 2 mildly sensitive, 18 moderately sensitive, 13 highly sensitive, and 55 cannot be assessed from available item-level provenance. Two tensions lose all of their explicitly linked item support; narratives, category findings, and scenarios lack enough direct item provenance for a support classification."
+  ));
+  sensitivityGrid.appendChild(methodologyCard(
+    "Governed recommendation",
+    "A future full pipeline re-analysis is recommended because some higher-order records are materially sensitive to source-identity selection. This release does not regenerate or silently replace the historical synthesis. Loss of traceable support is a reason to reassess, not proof that a claim is invalid."
+  ));
+  sensitivity.appendChild(sensitivityGrid);
+  content.appendChild(sensitivity);
+
   const unresolved = element("section", "overview-section governed-unresolved");
   unresolved.appendChild(element("h2", "section-title", "Governed unresolved source conditions"));
   unresolved.appendChild(textList([
@@ -2838,19 +2941,24 @@ function renderMethodology() {
   ));
   traceability.appendChild(element(
     "p", null,
-    "The public application joins records by stable ID, validates every public endpoint, and never guesses a link from similar wording."
+    "The intended evidence chain is source identity to extracted item to primary/secondary assignment to cluster and, where source lineage exists, to meta-cluster, theme, tension, narrative, finding, or scenario. The public application joins governed records by stable ID, validates every public endpoint, and never guesses a link from similar wording. Greater abstraction means greater interpretive distance from the source."
   ));
   content.appendChild(traceability);
 
   const caveats = element("section", "overview-section");
   caveats.appendChild(element("h2", "section-title", "Interpretive cautions"));
   caveats.appendChild(textList([
-    "Counts represent corpus discourse salience, not importance.",
+    "One practitioner-facing podcast corpus is not representative of the entire cognitive-security field.",
+    "Counts represent corpus discourse salience, not objective importance, prevalence, or consensus.",
     "Extracted items are interpretive units, not statistically independent observations.",
-    "Co-occurrence and mappings are semantic, not causal.",
-    "Coding confidence is not scientific evidence strength.",
+    "Different extraction categories, prompts, models, codebooks, or coding choices could yield different structures.",
+    "Model-assisted analysis is vulnerable to prompt sensitivity, model dependence, semantic smoothing, overgeneralization, and hidden bias.",
+    "Transcript wording does not guarantee accurate speaker or quotation attribution; item-level evidence remains private pending a separate review.",
+    "Co-occurrence and mappings are semantic, not causal; correlation or proximity does not establish causation.",
+    "Coding confidence is a workflow judgment, not scientific evidence strength.",
     "Scenarios are plausible futures, not forecasts.",
     "Discourse clusters are not PSYWERX behavioral Drivers.",
+    "Higher abstraction increases interpretive distance from the source material.",
     "Frequency is not consensus, and absence from the map is not evidence that a concept is absent from the field.",
   ]));
   content.appendChild(caveats);

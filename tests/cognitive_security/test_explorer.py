@@ -21,6 +21,7 @@ PUBLIC_DIR = REPO_ROOT / "data" / "cognitive-security"
 
 REQUIRED_EXPLORER_FILES = ("index.html", "app.js", "styles.css")
 REQUIRED_CONTENT_FILES = {
+    "corpus_reconciliation.json",
     "categories.json",
     "clusters.json",
     "cluster_summaries.json",
@@ -36,6 +37,7 @@ REQUIRED_CONTENT_FILES = {
 }
 EXPECTED_PUBLIC_FILES = {
     "manifest.json",
+    "corpus_reconciliation.json",
     "categories.json",
     "clusters.json",
     "cluster_summaries.json",
@@ -62,7 +64,7 @@ EXPECTED_COUNTS = {
     "meta_narratives": 7,
     "category_findings": 42,
     "scenarios": 6,
-    "episodes": 269,
+    "episodes": 242,
     "relationships": 975,
 }
 EXPECTED_RELATIONSHIP_COUNTS = {
@@ -140,7 +142,8 @@ PUBLIC_RECORD_FIELDS = {
         "forecastDisclaimer",
     },
     "episodes.json": {
-        "episodeId", "podcast", "episodeTitle", "itemCount",
+        "episodeId", "podcast", "episodeTitle", "sourceIdentityCount",
+        "originalItemCount", "reconciledSensitivityItemCount",
     },
     "relationships.json": {
         "relationshipId", "relationshipType", "sourceId", "sourceType",
@@ -329,6 +332,32 @@ class ExplorerStaticContractTests(unittest.TestCase):
             with self.subTest(token=token):
                 self.assertIn(token, self.javascript)
 
+    def test_corpus_language_distinguishes_analysis_from_reconciliation(self):
+        public_copy = "\n".join((self.html, self.javascript)).casefold()
+        for term in (
+            "original analytic release",
+            "reconciled sensitivity dataset",
+            "source identities",
+            "canonical episodes",
+        ):
+            with self.subTest(term=term):
+                self.assertIn(term, public_copy)
+        for misleading in (
+            "269 episodes",
+            "269 podcast episodes",
+            "269 canonical episodes",
+        ):
+            with self.subTest(misleading=misleading):
+                self.assertNotIn(misleading, public_copy)
+        self.assertIn("originalItemCount", self.javascript)
+        self.assertIn("reconciledSensitivityItemCount", self.javascript)
+        self.assertNotRegex(self.javascript, r"\b(?:episode|record)\.itemCount\b")
+        self.assertNotIn("schema v1.0", public_copy)
+        self.assertIn(
+            "../docs/cognitive-security/COGNITIVE_SECURITY_SCHEMA_V1_1.md",
+            self.javascript,
+        )
+
 
 class PublicDataContractTests(unittest.TestCase):
     @classmethod
@@ -404,7 +433,26 @@ class PublicDataContractTests(unittest.TestCase):
 
         coverage = self.payloads["coverage.json"]
         self.assertEqual(14_397, coverage["totals"]["items"])
-        self.assertEqual(269, coverage["totals"]["episodes"])
+        self.assertEqual(242, coverage["totals"]["episodes"])
+        self.assertEqual(
+            {
+                "sourceIdentities": 269,
+                "items": 14_397,
+                "focalItems": 10_940,
+                "contextualItems": 3_457,
+            },
+            coverage["originalAnalyticRelease"],
+        )
+        self.assertEqual(
+            {
+                "canonicalEpisodes": 242,
+                "retainedSourceIdentities": 242,
+                "items": 12_978,
+                "focalItems": 9_855,
+                "contextualItems": 3_123,
+            },
+            coverage["reconciledSensitivityDataset"],
+        )
         focal_ids = {
             row["categoryId"] for row in self.categories if row["scope"] == "focal"
         }

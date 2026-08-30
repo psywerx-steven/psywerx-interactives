@@ -11,13 +11,16 @@ from pathlib import Path
 from typing import Any, Iterable, Mapping, Sequence
 
 
-SCHEMA_VERSION = "1.0"
+SCHEMA_VERSION = "1.1"
 PRODUCT_ID = "psywerx-cognitive-security-practitioner-discourse-map"
 PRODUCT_NAME = "PSYWERX Cognitive Security Practitioner Discourse Map"
 
 INTERNAL_COLLECTION_ORDER = (
     "artifacts",
     "episodes",
+    "episode_source_identities",
+    "episode_source_mappings",
+    "episode_reconciliation_flags",
     "items",
     "item_tags",
     "categories",
@@ -44,6 +47,7 @@ INTERNAL_COLLECTION_ORDER = (
 
 PUBLIC_FILE_ORDER = (
     "manifest.json",
+    "corpus_reconciliation.json",
     "categories.json",
     "clusters.json",
     "cluster_summaries.json",
@@ -196,6 +200,9 @@ PUBLIC_FIELDS: dict[str, tuple[str, ...]] = {
         "episodeId",
         "podcast",
         "episodeTitle",
+        "sourceIdentityCount",
+        "originalItemCount",
+        "reconciledSensitivityItemCount",
     ),
 }
 
@@ -457,16 +464,10 @@ def _scenario_records(
 def _episode_records(
     dataset: Mapping[str, Sequence[Mapping[str, Any]]]
 ) -> list[dict[str, Any]]:
-    item_counts = Counter(
-        str(row.get("episodeId"))
-        for row in dataset.get("items", ())
-        if row.get("episodeId")
-    )
     records: list[dict[str, Any]] = []
     for source in dataset.get("episodes", ()):
         record = _project(source, PUBLIC_FIELDS["episodes"])
         record["episodeTitle"] = source.get("episodeTitle") or source.get("title")
-        record["itemCount"] = item_counts.get(str(record.get("episodeId")), 0)
         records.append(record)
     return _sorted(records)
 
@@ -487,14 +488,54 @@ def _coverage(dataset: Mapping[str, Sequence[Mapping[str, Any]]]) -> dict[str, A
         for row in dataset.get("item_cluster_assignments", ())
         if row.get("secondaryClusterId")
     )
+    canonical_source_ids = {
+        str(row.get("sourceIdentityId"))
+        for row in dataset.get("episode_source_mappings", ())
+        if row.get("mappingRole") == "canonical" and row.get("canonicalEpisodeId")
+    }
+    retained_item_ids = {
+        str(row.get("itemId"))
+        for row in dataset.get("items", ())
+        if row.get("itemId") and str(row.get("sourceIdentityId")) in canonical_source_ids
+    }
+    reconciled_items_by_category = Counter(
+        str(row.get("categoryId"))
+        for row in dataset.get("items", ())
+        if row.get("categoryId") and str(row.get("itemId")) in retained_item_ids
+    )
+    reconciled_primary_by_cluster = Counter(
+        str(row.get("primaryClusterId"))
+        for row in dataset.get("item_cluster_assignments", ())
+        if row.get("primaryClusterId") and str(row.get("itemId")) in retained_item_ids
+    )
+    reconciled_secondary_by_cluster = Counter(
+        str(row.get("secondaryClusterId"))
+        for row in dataset.get("item_cluster_assignments", ())
+        if row.get("secondaryClusterId") and str(row.get("itemId")) in retained_item_ids
+    )
+    items = list(dataset.get("items", ()))
+    focal_items = [row for row in items if row.get("scope") == "focal"]
+    contextual_items = [row for row in items if row.get("scope") == "contextual"]
+    retained_items = [row for row in items if str(row.get("itemId")) in retained_item_ids]
+    retained_focal = [row for row in retained_items if row.get("scope") == "focal"]
+    retained_contextual = [row for row in retained_items if row.get("scope") == "contextual"]
     return {
         "methodologyCaution": (
             "Counts describe discourse salience in this corpus; they do not measure "
             "importance, consensus, prevalence, or scientific evidence strength."
         ),
         "itemsByCategory": dict(sorted(items_by_category.items())),
+        "reconciledSensitivityItemsByCategory": dict(
+            sorted(reconciled_items_by_category.items())
+        ),
         "primaryAssignmentsByCluster": dict(sorted(primary_by_cluster.items())),
         "secondaryAssignmentsByCluster": dict(sorted(secondary_by_cluster.items())),
+        "reconciledSensitivityPrimaryAssignmentsByCluster": dict(
+            sorted(reconciled_primary_by_cluster.items())
+        ),
+        "reconciledSensitivitySecondaryAssignmentsByCluster": dict(
+            sorted(reconciled_secondary_by_cluster.items())
+        ),
         "totals": {
             key: len(dataset.get(key, ()))
             for key in (
@@ -507,6 +548,19 @@ def _coverage(dataset: Mapping[str, Sequence[Mapping[str, Any]]]) -> dict[str, A
                 "meta_narratives",
                 "scenarios",
             )
+        },
+        "originalAnalyticRelease": {
+            "sourceIdentities": len(dataset.get("episode_source_identities", ())),
+            "items": len(items),
+            "focalItems": len(focal_items),
+            "contextualItems": len(contextual_items),
+        },
+        "reconciledSensitivityDataset": {
+            "canonicalEpisodes": len(dataset.get("episodes", ())),
+            "retainedSourceIdentities": len(canonical_source_ids),
+            "items": len(retained_items),
+            "focalItems": len(retained_focal),
+            "contextualItems": len(retained_contextual),
         },
     }
 
@@ -534,6 +588,7 @@ def _review_summary(
 def build_public_payloads(
     dataset: Mapping[str, Sequence[Mapping[str, Any]]],
     qa_report: Mapping[str, Any],
+    corpus_reconciliation: Mapping[str, Any],
 ) -> dict[str, Any]:
     """Return the complete conservative public JSON package in memory."""
     canonical_roles = {
@@ -570,6 +625,7 @@ def build_public_payloads(
 
     return {
         "manifest.json": manifest,
+        "corpus_reconciliation.json": dict(corpus_reconciliation),
         "categories.json": _category_records(dataset),
         "clusters.json": _project_collection(dataset, "clusters"),
         "cluster_summaries.json": _cluster_summary_records(dataset),

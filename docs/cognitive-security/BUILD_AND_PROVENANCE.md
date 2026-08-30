@@ -5,11 +5,13 @@ internal normalized dataset and conservative static JSON package for the
 PSYWERX Cognitive Security Practitioner Discourse Map.
 
 The workbooks are successive stages of one analytic lineage, not eight
-independent datasets:
+independent datasets. Schema v1.1 adds a reconciliation layer between the
+historical source identities and canonical public-feed episode releases:
 
 ```text
-episodes
-  -> extracted items
+canonical episodes
+  -> transcript/source identities
+    -> extracted items
   -> intermediate clusters and item assignments
   -> cluster synthesis
   -> within-category meta-clusters
@@ -66,10 +68,14 @@ required workbook, worksheet, unique header row, required header, or canonical
 data table is missing. All current canonical table headers are centralized in
 `scripts/cognitive_security/sources.py`.
 
-`normalize_sources(extracted)` returns the entity collections defined in
-`COGNITIVE_SECURITY_SCHEMA_V1.md`. It fails on missing source IDs or duplicate
-canonical IDs. It preserves explicit unresolved records where the workbook
-itself marks a missing link rather than inventing a target.
+`normalize_sources(extracted)` first recreates the historical entity
+collections defined in `COGNITIVE_SECURITY_SCHEMA_V1.md`. The reconciliation
+stage then applies the governed source-identity rules and produces the
+Schema v1.1 collections defined in
+`COGNITIVE_SECURITY_SCHEMA_V1_1.md`. It fails on missing source IDs, duplicate
+canonical IDs, unmapped identities, or a collapse that does not meet the
+confirmation rule. It preserves explicit unresolved records where the source
+marks a missing link rather than inventing a target.
 
 ## Extraction and normalization decisions
 
@@ -90,9 +96,11 @@ itself marks a missing link rather than inventing a target.
    a second item.
 7. Focal categories are those governed by the Codebook and present in the
    coded master subset. The three additional master categories are contextual.
-8. Episode IDs are deterministic from `source_file`; podcast and episode title
-   are a fallback only when that file key is absent. A source-file collision
-   with inconsistent metadata is an error.
+8. Historical source-identity IDs are deterministic from `source_file`;
+   podcast and episode title are a fallback only when that file key is absent.
+   A source-file collision with inconsistent metadata is an error. Schema v1.1
+   preserves that ID as `sourceIdentityId` and links it to a separate canonical
+   `episodeId`.
 9. Explicit cluster, meta-cluster, theme, tension, narrative, finding, and
    scenario IDs are preserved. Generated IDs use stable semantic fields, not
    row number, random state, or time.
@@ -114,6 +122,17 @@ itself marks a missing link rather than inventing a target.
     because wording is similar. Theme/tension IDs are derived only from the
     explicit canonical `Tension Mapping` sheet. Unresolved narrative/scenario
     labels remain narrative text.
+15. Source identities are reconciled after historical normalization. Only a
+    single modern/legacy pair with the same governed episode number and
+    corroborating title tokens is automatically confirmed. Fuzzy similarity,
+    re-release wording, or the desired corpus count is not sufficient.
+16. Every item retains its historical `sourceIdentityId`. Its `episodeId`
+    resolves to the canonical public-feed episode. Episode `#000 Trailer`
+    remains public-feed episode 000; no current source identity is dropped as a
+    non-episode.
+17. The reconciled sensitivity dataset selects the modern source identity in
+    each confirmed pair. It never merges or rewrites item text and never
+    overwrites the historical item collection.
 
 ## Portable provenance
 
@@ -132,13 +151,35 @@ They do not determine generated IDs and are excluded from public allowlists.
 
 ## Current source reconciliation
 
-| Metric | Actual source-derived count |
+The original analytic release and reconciled corpus interpretation are both
+governed facts. They must not be collapsed into one unlabeled count.
+
+| Corpus metric | Original analytic release | Reconciled interpretation |
+| --- | ---: | ---: |
+| Workbooks | 8 | 8 |
+| Transcript/source identities | 269 | 269 preserved; 242 selected |
+| Canonical public-feed episode releases | Not separately modeled | 242 |
+| Confirmed alias groups | Not separately modeled | 27 |
+| Excluded non-episode identities | Not separately modeled | 0 |
+| Items | 14,397 | 12,978 sensitivity items |
+| Focal items and assignment rows | 10,940 | 9,855 sensitivity items |
+| Contextual items | 3,457 | 3,123 sensitivity items |
+
+The 242 releases comprise 215 one-to-one identities and 27 confirmed alias
+groups. Twenty-six pairs cover episodes 2 through 27; each includes one modern
+`#N ...` identity and one legacy `The Cognitive Crucible Episode NNN ...`
+identity. A twenty-seventh group links a precursor/source recording to public
+episode 186. Episode `#000 Trailer` is retained as episode 000. The episode 83
+re-release remains a distinct public-feed release despite documented content
+reuse, so a stricter unique-recording/content unit would yield 241. No likely,
+ambiguous, or unresolved mapping is collapsed in the current build. Detailed
+rules and evidence boundaries are in
+[Corpus reconciliation](./CORPUS_RECONCILIATION.md).
+
+The following historical synthesis counts remain unchanged:
+
+| Analytic entity | Historical count |
 | --- | ---: |
-| Workbooks | 8 |
-| Episodes/source files | 269 |
-| Items | 14,397 |
-| Focal items and assignment rows | 10,940 |
-| Contextual items | 3,457 |
 | Substantive secondary assignments | 10,524 |
 | Explicit secondary `NONE` rows | 416 |
 | Review-required assignment rows | 514 |
@@ -156,9 +197,35 @@ They do not determine generated IDs and are excluded from public allowlists.
 | Scenarios | 6 |
 
 These are comparisons used by QA. The pipeline reports deviations and does not
-alter source truth to force a target count.
+alter source truth to force a target count. The sensitivity layer measures
+support change; it does not regenerate or independently validate any
+higher-order entity.
+
+The support audit classifies 44 of 132 higher-order entities as stable, two as
+mildly sensitive, 18 as moderately sensitive, 13 as highly sensitive, and 55
+as unassessable from available item-level provenance. Among the highly
+sensitive records, `TD-024` loses all 12 directly traceable supporting items
+and `TD-026` loses all 14 after canonical-source selection. Several other
+tensions lose category breadth. These conditions trigger the governed
+`full-pipeline-reanalysis-recommended` result; they do not establish that the
+historical entities are invalid.
 
 ## Known source anomalies and governance state
+
+### Transcript/source lineage limits
+
+Locally available historical materials identify raw source names for episodes
+`#109` and `#127` without corresponding normalized transcript artifacts and
+record a filename/title change for episode `#73` between raw and normalized
+conventions. The canonical workbooks nevertheless contain the analytic records
+and portable workbook provenance used by this build. The pipeline reports the
+lineage gap; it does not reconstruct missing transcript files, substitute a
+different source, or alter an episode identity to conceal the condition.
+
+Private transcript comparison supports the episode-186 precursor/source alias
+and documents content reuse in the episode-83 re-release. The latter remains a
+distinct episode because the governed corpus unit is a public-feed release.
+Transcript text, comparison details, and hashes are not public.
 
 ### Unmapped intermediate clusters
 
@@ -212,15 +279,16 @@ source and contains 30 final tensions.
 ## Validation and failure safety
 
 The orchestrator runs normalized integrity checks before publication. Checks
-cover required files, hashes, sheet/header contracts, unique IDs, category and
-episode reconciliation, one primary assignment per focal item, controlled
+cover required files, hashes, sheet/header contracts, unique IDs, complete
+source-identity-to-episode reconciliation, one primary assignment per focal
+item, controlled
 secondary `NONE`, category-summary completeness, polymorphic foreign keys,
 review/ambiguity retention, unmapped clusters, public relationship endpoints,
 theme/tension/synthesis references, and the seven-narrative discrepancy.
 
 Generated content is serialized in memory and staged before existing valid
-output is replaced. Any source, normalization, validation, or public-boundary
-error aborts the write. Reproducible JSON uses UTF-8, sorted keys, fixed
+output is replaced. Any source, normalization, reconciliation, sensitivity,
+validation, or public-boundary error aborts the write. Reproducible JSON uses UTF-8, sorted keys, fixed
 indentation, trailing newlines, deterministic record order, and no generated
 timestamp. Two builds from unchanged sources must be byte-identical.
 
@@ -239,8 +307,9 @@ excerpts, speakers, full assignments, coding rationales, model/coder fields,
 human notes, detailed review flags, and complete provenance.
 
 The static public package under `data/cognitive-security/` is created only from
-positive field allowlists. It contains governed high-level entities, episode
-labels, aggregate coverage/review/QA information, and semantic relationships.
+positive field allowlists. It contains governed high-level entities, canonical
+public-feed episode labels, aggregate coverage/review/QA information,
+`corpus_reconciliation.json`, and semantic relationships.
 It excludes:
 
 - workbook files and workbook data blobs;
@@ -251,24 +320,248 @@ It excludes:
 - internal human notes and detailed review queues; and
 - absolute paths or private source locations.
 
+The public reconciliation aggregate contains counts, method versions,
+automatic rules, interpretation, limitations, and the governed reanalysis
+recommendation only. It excludes source
+filenames,
+alias-pair detail, normalized comparison values, transcript details, workbook
+hashes, item IDs, and the private sensitivity tables.
+
 Adding a field to the internal schema never publishes it automatically. A
 human-approved public allowlist change is required.
 
-## Methodology cautions
+## Research design and analytic workflow
 
-1. This is a practitioner-discourse map, not a definitive taxonomy.
-2. Counts indicate corpus discourse salience, not importance or consensus.
-3. Extracted items are interpretive units, not independent observations.
-4. Primary assignment records dominant analytic meaning.
-5. Secondary assignment records substantive conceptual adjacency.
-6. Primary/secondary co-occurrence is semantic, not causal.
-7. A discourse cluster is not automatically a behavioral Driver.
-8. A meta-cluster is a within-category family.
-9. A cross-cutting theme connects patterns across categories.
-10. A tension retains an unresolved tradeoff or competing assumption.
-11. A meta-narrative is a high-level interpretive storyline.
-12. A scenario is a plausibility exercise, not a forecast.
-13. Model coding confidence is not scientific evidence strength.
-14. Frequency is not consensus.
-15. Higher-order synthesis must remain traceable to lower-level source IDs
-    where the workbook lineage supplies them.
+### 1. Research purpose
+
+This project is a field-mapping exercise. It asks what concepts, practices,
+risks, opportunities, disagreements, and future possibilities recur in a
+practitioner-facing podcast corpus. It does not summarize each episode and is
+not a definitive taxonomy, representative survey, causal model, competency
+framework, or scientific evidence review.
+
+### 2. Corpus and reconciliation
+
+The governed corpus unit is a distinct public-feed episode release. The
+historical workflow produced records for 269 transcript/source identities.
+Forensic reconciliation maps those identities to 242 public-feed releases:
+215 one-to-one identities and 27 confirmed alias groups. The alias groups
+comprise the 26 legacy/modern pairs for episodes 2–27 and one precursor/source
+recording for episode 186.
+
+Episode `#000 Trailer` counts as release 000. Episode 83 is a separately
+published re-release and is retained even though private comparison documents
+content reuse; a unique-recording/content definition would yield 241. This
+unit decision is disclosed so 242 is not mistaken for a count of independent
+recordings or unique transcript content.
+
+### 3. Transcript processing
+
+The historical transcript files were processed through a structured
+Python/API workflow that turned source material into consistently shaped
+extraction records. The current repository starts from the eight canonical
+XLSX outputs of that workflow; it does not rerun the historical model calls.
+The importer validates the workbook lineage and preserves source-authored IDs
+and portable row provenance. Private transcript material, prompts, detailed
+extraction traces, and credentials are not published.
+
+### 4. Unit of analysis
+
+The analytic unit is an **extracted item**: a bounded, interpretive statement
+about one concept, actor, event, risk, opportunity, prediction, or other
+governed category. It is not an episode, paragraph, speaker, quotation, or
+statistically independent observation. One episode can yield many items, and
+items from the same episode may be related.
+
+### 5. Ten extraction categories
+
+Every item belongs to one of ten source-authored categories:
+
+1. Key Concepts / Frameworks / Theories
+2. Technologies / Tools / Platforms
+3. Organizations / Actors / Communities
+4. Key Events / Historical Examples
+5. Future Trends / Predictions
+6. Challenges / Risks / Barriers
+7. Opportunities / Recommended Actions
+8. Memorable Insights / Quotes
+9. Strategic Landscape / Times
+10. Guest Background / Experience
+
+The categories are extraction lenses, not claims that the underlying subject
+matter falls into mutually exclusive natural kinds.
+
+### 6. Seven focal and three contextual categories
+
+The first seven categories proceeded into the formal deep-coding and cluster
+pipeline because they directly captured the concepts, actors, examples,
+forecasts, problems, and actions needed for the field map. The remaining three
+provided interpretive context—memorable language, strategic setting, and guest
+background—but were not assigned to the 127 intermediate clusters. Their
+3,457 historical items remain in the corpus and are not treated as failed or
+missing coding.
+
+### 7. Inductive codebook development
+
+Intermediate cluster codes were developed separately within each focal
+category. The source methodology records approximately three rounds of about
+100 randomly sampled items per category:
+
+- **Round 1 — discovery:** identify candidate codes and recurring distinctions;
+- **Round 2 — refinement:** merge, split, rename, and clarify candidate-code
+  boundaries; and
+- **Round 3 — saturation-style stability check:** test whether another sample
+  materially changes the working code structure.
+
+This is a practical stability procedure, not formal proof of qualitative
+saturation. The resulting codebook fixed cluster IDs, names, definitions,
+inclusion and exclusion criteria, near-neighbor distinctions, and anchor
+examples before full-corpus assignment.
+
+### 8. Primary and secondary coding
+
+Every focal item received exactly one primary cluster. The primary code records
+the item's dominant analytic meaning. A secondary code was optional and marks
+substantive conceptual adjacency that would be analytically useful to retain;
+it is not merely a lower-confidence or second-best guess. An explicit `NONE`
+means that no secondary assignment was made. Primary/secondary co-occurrence
+is a semantic relationship, not evidence that one concept causes another.
+
+### 9. Cluster synthesis and weighting
+
+All items associated with an intermediate cluster informed its synthesis.
+Source methodology documents a 2:1 primary-to-secondary weighting: a primary
+assignment contributes two weighted units and a secondary assignment one. The
+governed comparison formula is therefore `2 × primary + secondary` where that
+measure is used. Weighting prioritizes dominant meaning during synthesis;
+it does not make items independent, establish effect size, or convert a
+frequency into evidence strength.
+
+Cluster summaries capture recurring subthemes, strategic significance,
+operational implications, edge cases, and representative source IDs. The 127
+clusters were inductively developed analytic groupings, not pre-existing
+scientific constructs.
+
+### 10. Within-category meta-clusters
+
+The 36 meta-clusters were built within categories before cross-category
+synthesis. This preserves each extraction category's analytic meaning and
+prevents superficially similar language from being merged across different
+questions too early. A meta-cluster is a within-category family of clusters,
+not an additional observation or behavioral Driver.
+
+### 11. Cross-cutting themes
+
+The 11 cross-cutting themes integrate patterns that recur across categories.
+They differ from meta-clusters: a meta-cluster organizes related material
+inside one category, while a theme expresses a supported cross-category
+pattern. Theme links are semantic and source-governed; they are not causal
+edges or proof of consensus.
+
+### 12. Tensions and debates
+
+The 30 tensions/debates were developed as a separate analytic product rather
+than as negative themes. Their purpose is to retain competing assumptions,
+tradeoffs, disagreements, and unresolved choices that a smoother synthesis
+might erase. The two poles describe the source debate and do not imply equal
+empirical support or endorse either side.
+
+### 13. Meta-narratives and category findings
+
+Meta-narratives are higher-order interpretive storylines that connect themes,
+tensions, meta-clusters, and categories. They carry more interpretive distance
+from the extracted items than clusters do and therefore require especially
+cautious reading. The canonical final-synthesis workbook contains seven source
+meta-narratives (`N01`–`N07`), despite an earlier expectation of eight; no
+eighth record is invented. Category findings preserve additional synthesis
+within the seven focal categories.
+
+### 14. Scenarios
+
+The six scenarios are structured plausibility exercises. They explore how
+identified forces, tensions, and uncertainties might combine and identify
+possible pathways, indicators, and actions. They are not predictions,
+probability estimates, or statements that an outcome will occur.
+
+### 15. Human role
+
+Human judgment governed the research purpose, extraction ontology, selection
+of focal categories, inductive codebook development, merge/split decisions,
+code boundaries, ambiguity and review handling, reconciliation unit and rules,
+interpretation, publication boundary, and final claims. Automation does not
+remove researcher responsibility for those decisions.
+
+### 16. AI role
+
+AI served as a research assistant and scaling mechanism for structured
+extraction, coding assistance, and synthesis support. It did not independently
+define the research purpose or turn outputs into validated scientific facts.
+Model outputs remain vulnerable to prompt sensitivity, model dependence,
+semantic smoothing, overgeneralization, and hidden bias. Coding confidence is
+workflow metadata, not scientific evidence strength.
+
+### 17. Traceability and reconciliation sensitivity
+
+Where the workbook lineage supports it, the evidence chain is:
+
+```text
+public-feed episode
+  -> historical source identity
+    -> extracted item
+      -> primary / optional secondary cluster assignment
+        -> cluster synthesis
+          -> within-category meta-cluster
+            -> cross-cutting or higher-order synthesis
+```
+
+Explicit IDs and workbook-row provenance preserve this chain privately.
+Public files expose only an allowlisted subset and aggregate coverage. The
+reconciled sensitivity dataset removes one confirmed alias identity per group
+and recalculates traceable support metrics without overwriting the historical
+analysis. Support retention does not validate an entity; it shows only how
+available within-corpus support changes under the declared source selection.
+
+### 18. Limitations
+
+- A single practitioner-facing podcast corpus is not representative of the
+  entire cognitive-security field or its affected populations.
+- Discourse salience is not objective importance, prevalence, quality, or
+  policy priority.
+- Frequency is not consensus; repeated or duplicated discourse can increase a
+  count without increasing agreement.
+- Extracted items are interpretive and are not independent statistical
+  observations.
+- Results depend on the extraction ontology, codebook, prompts, models,
+  sampling choices, and human interpretive decisions; another defensible
+  design could yield different structures.
+- AI-assisted processing is susceptible to prompt sensitivity, model
+  dependence, semantic smoothing, overgeneralization, omissions, and hidden
+  bias.
+- Speaker labels, punctuation, and quotation boundaries inherit the source
+  transcript's attribution limits; extracted wording should not be treated as
+  a publication-ready verified quotation without separate review.
+- Coding confidence records workflow certainty, not source credibility or
+  scientific evidence strength.
+- Primary/secondary co-occurrence and other semantic mappings do not establish
+  causation, direction, or effect size.
+- Interpretive distance increases at higher levels: meta-clusters, themes,
+  tensions, meta-narratives, and scenarios are progressively farther from the
+  source item and require correspondingly greater caution.
+- The public-feed release unit retains content reuse such as the episode 83
+  re-release. A unique-recording/content unit would produce a different count.
+- Two raw source names (`#109`, `#127`) lack corresponding normalized
+  transcript artifacts in the locally reviewed lineage, and episode `#73` was
+  renamed between raw and normalized conventions.
+- Some higher-order provenance is indirect or incomplete. `cannot assess from
+  available provenance` is a valid sensitivity result and must not be replaced
+  with an inferred link.
+- The support-sensitivity audit does not regenerate the historical synthesis
+  and cannot establish that a theme or other entity is scientifically valid.
+
+The governed recommendation is **full-pipeline reanalysis recommended**. Use
+the reconciled episode and coverage metrics now, preserve the original
+synthesis as a historical output, and disclose its support sensitivity. This
+release does not regenerate extraction, coding, clusters, or synthesis; that
+future rerun should occur only through a separately governed project. Loss of
+traceable support in this audit is a reason to rerun and compare, not proof
+that an existing entity is invalid.
