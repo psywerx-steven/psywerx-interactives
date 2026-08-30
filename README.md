@@ -14,10 +14,14 @@ PSYWERX. The repository is designed for static hosting with GitHub Pages.
 ## Repository structure
 
 - `data/` contains shared static data files.
+- `data/cognitive-security/` contains the generated public-safe Cognitive
+  Security Practitioner Discourse Map package.
 - `drivers/` contains the Driver Explorer application.
 - `shared/` contains styles and other assets reusable across interactives.
 - `source-data/` is the ignored local location for private XLSX taxonomy files.
 - `scripts/` contains local data-import utilities.
+- `scripts/build_cognitive_security.py` builds and validates the governed
+  Cognitive Security Map data foundation.
 - `scenario-service/` contains the optional secure server-side Scenario
   operationalization service. It is not required by GitHub Pages.
 - `docs/DRIVER_SCHEMA_V1_1.md` defines the current canonical
@@ -40,6 +44,9 @@ PSYWERX. The repository is designed for static hosting with GitHub Pages.
 - `docs/SCENARIO_OPERATIONALIZATION_SCHEMA_V1.md` and
   `docs/SCENARIO_SERVICE_SETUP.md` define the optional Scenario service contract
   and deployment boundary.
+- `docs/cognitive-security/` defines the standalone Cognitive Security Map
+  schema, provenance rules, and ingestion results. Its discourse entities are
+  not part of the PSYWERX Driver Ontology.
 
 ## Build driver data locally
 
@@ -247,6 +254,42 @@ The builder validates all public Driver and Relationship evidence references,
 reports duplicate URLs without merging permanent Source IDs, produces
 deterministic UTF-8 JSON, and replaces the existing registry only after a
 successful full validation.
+
+## Build the Cognitive Security Map data locally
+
+The PSYWERX Cognitive Security Practitioner Discourse Map is a standalone map
+of practitioner discourse across podcast episodes. It is not a definitive
+taxonomy, causal model, consensus measure, or extension of the Driver Ontology.
+Phase 1 provides its governed data foundation only; the public explorer UI is a
+separate follow-on phase.
+
+Place the eight canonical workbooks in the ignored local directory:
+
+```text
+source-data/ipa-podcast/
+```
+
+Install the existing Python requirement, then build from the repository root:
+
+```powershell
+py -m pip install -r requirements.txt
+py scripts\build_cognitive_security.py
+```
+
+Run the standard-library validation suite with:
+
+```powershell
+py -m unittest discover -s tests/cognitive_security -p "test_*.py"
+```
+
+The build writes the complete normalized QA release candidate to the ignored
+`analysis/cognitive-security/normalized/` directory and the conservative,
+public-safe static JSON package to `data/cognitive-security/`. Public output is
+constructed from explicit field allowlists and excludes evidence quotations,
+detailed assignment rationales, internal notes, and detailed review queues.
+The builder stages and validates all data before replacing valid generated
+files, uses deterministic ordering and UTF-8 JSON, and produces byte-identical
+output when inputs are unchanged.
 
 ## Preview the static site
 
