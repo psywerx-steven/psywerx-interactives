@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="description"
+    content="Explore the PSYWERX Cognitive Security Practitioner Discourse Map across categories, clusters, themes, tensions, narratives, and scenarios."
+  >
+  <title>PSYWERX Cognitive Security Map</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="../shared/psywerx.css">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#map-app">Skip to the Cognitive Security Map</a>
+
+  <header class="site-header">
+    <div class="site-container site-header__inner">
+      <a class="wordmark" href="./" aria-label="PSYWERX Cognitive Security Map home">
+        <img
+          class="wordmark__logo"
+          src="../shared/assets/psywerx-logo.png"
+          alt="PSYWERX"
+          width="1255"
+          height="350"
+        >
+      </a>
+      <div class="site-header__tools">
+        <span class="site-header__context">Practitioner Discourse Map</span>
+        <nav class="site-nav" aria-label="PSYWERX interactives">
+          <a href="../drivers/">Driver Explorer</a>
+          <a href="../drivers/codebook/">Codebook</a>
+          <a href="./" aria-current="page">Cognitive Security Map</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main id="map-app" tabindex="-1">
+    <section class="hero" aria-labelledby="page-title">
+      <div class="site-container hero__inner">
+        <div class="hero__copy">
+          <p class="eyebrow">PSYWERX Cognitive Security</p>
+          <h1 id="page-title">Map the ideas shaping cognitive security practice.</h1>
+          <p class="hero__lede">
+            Explore a governed synthesis of practitioner discourse across podcast
+            episodes&mdash;from recurring concepts and institutional challenges to
+            cross-cutting themes, tensions, narratives, and plausible scenarios.
+          </p>
+          <p id="methodology-caution" class="hero__caution">
+            This map describes discourse in the source corpus. It is not a definitive
+            taxonomy, causal model, prevalence estimate, consensus measure, or forecast.
+          </p>
+        </div>
+
+        <dl class="hero__stats" aria-label="Corpus and map summary">
+          <div>
+            <dt id="total-episode-count">269</dt>
+            <dd>podcast episodes</dd>
+          </div>
+          <div>
+            <dt id="total-item-count">14,397</dt>
+            <dd>discourse items</dd>
+          </div>
+          <div>
+            <dt id="total-cluster-count">127</dt>
+            <dd>concept clusters</dd>
+          </div>
+          <div>
+            <dt id="total-theme-count">11</dt>
+            <dd>cross-cutting themes</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <div class="view-navigation-shell">
+      <nav id="view-navigation" class="view-navigation site-container" aria-label="Cognitive Security Map sections">
+        <ul>
+          <li><a href="?view=overview" data-view-link="overview" data-route-view="overview" aria-current="page">Overview</a></li>
+          <li><a href="?view=browse" data-view-link="browse" data-route-view="browse">Browse</a></li>
+          <li><a href="?view=themes" data-view-link="themes" data-route-view="themes">Themes</a></li>
+          <li><a href="?view=tensions" data-view-link="tensions" data-route-view="tensions">Tensions</a></li>
+          <li><a href="?view=narratives" data-view-link="narratives" data-route-view="narratives">Narratives</a></li>
+          <li><a href="?view=scenarios" data-view-link="scenarios" data-route-view="scenarios">Scenarios</a></li>
+          <li><a href="?view=search" data-view-link="search" data-route-view="search">Search</a></li>
+          <li><a href="?view=methodology" data-view-link="methodology" data-route-view="methodology">Methodology</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <section class="workspace site-container" aria-labelledby="view-title">
+      <p id="app-status" class="sr-only" role="status" aria-live="polite"></p>
+
+      <div id="load-error" class="state-message state-message--error" role="alert" hidden>
+        <div>
+          <p class="state-message__eyebrow">Data unavailable</p>
+          <h2>The Cognitive Security Map could not be loaded</h2>
+          <p id="load-error-message">
+            Check your connection and reload the page. For local preview, use an
+            HTTP server rather than opening this file directly.
+          </p>
+        </div>
+        <button class="secondary-button" type="button" data-action="retry-load">Try again</button>
+      </div>
+
+      <div id="link-notice" class="state-message state-message--notice" role="alert" hidden></div>
+
+      <nav id="view-breadcrumbs" class="breadcrumbs" aria-label="Map breadcrumb" hidden></nav>
+
+      <header class="view-header">
+        <div class="view-header__copy">
+          <p id="view-kicker" class="eyebrow">Practitioner discourse map</p>
+          <h2 id="view-title" tabindex="-1">Overview</h2>
+          <p id="view-description">
+            See how the governed categories and higher-order synthesis fit together.
+          </p>
+        </div>
+        <div id="view-actions" class="view-header__actions"></div>
+      </header>
+
+      <div class="view-toolbar">
+        <p id="view-summary" class="view-summary" role="status" aria-live="polite">
+          Loading the public map&hellip;
+        </p>
+      </div>
+
+      <section id="search-controls" class="search-panel" aria-labelledby="search-controls-heading" hidden>
+        <div class="search-panel__heading">
+          <div>
+            <p class="eyebrow">Search and filter</p>
+            <h3 id="search-controls-heading">Find concepts across the map</h3>
+          </div>
+          <button id="search-clear" class="text-button" type="button" disabled>Clear all</button>
+        </div>
+
+        <form id="search-form" class="search-form" role="search">
+          <div class="search-form__query-row">
+            <div class="search-form__query">
+              <label for="search-input">Search the public map</label>
+              <div class="search-input-wrap">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <circle cx="11" cy="11" r="7"></circle>
+                  <path d="m16 16 5 5"></path>
+                </svg>
+                <input
+                  id="search-input"
+                  name="q"
+                  type="search"
+                  placeholder="Search names, definitions, summaries, and implications"
+                  autocomplete="off"
+                  disabled
+                >
+              </div>
+            </div>
+            <button class="primary-button search-form__submit" type="submit">Search</button>
+          </div>
+
+          <div class="search-form__facets" aria-label="Search filters">
+            <label for="search-entity-type">
+              Entity type
+              <select id="search-entity-type" name="type" disabled>
+                <option value="">All entity types</option>
+              </select>
+            </label>
+            <label for="search-category">
+              Category
+              <select id="search-category" name="category" disabled>
+                <option value="">All categories</option>
+              </select>
+            </label>
+            <label for="search-meta-cluster">
+              Meta-cluster
+              <select id="search-meta-cluster" name="meta" disabled>
+                <option value="">All meta-clusters</option>
+              </select>
+            </label>
+            <label for="search-cluster">
+              Cluster
+              <select id="search-cluster" name="cluster" disabled>
+                <option value="">All clusters</option>
+              </select>
+            </label>
+          </div>
+        </form>
+        <div id="search-active-filters" class="active-filters" aria-label="Active search filters"></div>
+      </section>
+
+      <div id="loading-state" class="loading-state" role="status" aria-live="polite">
+        <span class="loading-state__indicator" aria-hidden="true"></span>
+        <div>
+          <h3>Loading the discourse map</h3>
+          <p>Preparing governed categories, clusters, and synthesis records&hellip;</p>
+        </div>
+      </div>
+
+      <div id="empty-state" class="empty-state" hidden>
+        <p class="eyebrow">No results</p>
+        <h3 id="empty-state-title">Nothing matched this view</h3>
+        <p id="empty-state-message">Try changing the current filters or return to the overview.</p>
+      </div>
+
+      <div id="view-content" class="view-content" aria-busy="true"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-container site-footer__inner">
+      <p>
+        PSYWERX Cognitive Security Practitioner Discourse Map &middot; A governed
+        synthesis of practitioner discourse, separate from the Driver Ontology.
+      </p>
+      <a href="?view=methodology" data-view-link="methodology" data-route-view="methodology">Read the methodology</a>
+    </div>
+  </footer>
+
+  <dialog id="entity-dialog" class="entity-dialog" aria-labelledby="entity-dialog-title">
+    <div class="entity-dialog__shell">
+      <div class="entity-dialog__topbar">
+        <p id="entity-dialog-label">Cognitive Security Map record</p>
+        <button id="entity-dialog-close" class="icon-button" type="button" aria-label="Close record details">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5 19 19M19 5 5 19"></path></svg>
+        </button>
+      </div>
+      <article id="entity-detail" class="entity-detail">
+        <h2 id="entity-dialog-title">Record details</h2>
+      </article>
+      <div class="entity-dialog__footer">
+        <button id="copy-link" class="text-button" type="button">Copy link</button>
+        <span id="copy-status" class="sr-only" aria-live="polite"></span>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="./app.js" defer></script>
+</body>
+</html>
