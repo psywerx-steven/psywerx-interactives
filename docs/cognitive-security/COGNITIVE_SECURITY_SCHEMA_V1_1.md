@@ -80,6 +80,8 @@ private.
 | Collection | Primary key | Principal foreign keys | Records | Publication class |
 | --- | --- | --- | ---: | --- |
 | `episodes` | `episodeId` | `canonicalSourceIdentityId` | 242 | Public allowlisted subset |
+| `episode_summaries` | `episodeId` | Canonical public episode | 242 | Public reviewed/frozen product |
+| `episode_relationships` | `relationshipId` | Canonical public episode and public analytical entity | 21,855 | Public standalone derived product |
 | `episode_source_identities` | `sourceIdentityId` | Source provenance | 269 | Private/internal |
 | `episode_source_mappings` | `episodeSourceMappingId` | `sourceIdentityId`, nullable `canonicalEpisodeId` | 269 | Private/internal; public aggregates only |
 | `episode_reconciliation_flags` | `episodeReconciliationFlagId` | Source-identity and candidate-episode IDs | Source-derived | Private/internal; public aggregates only |
@@ -113,9 +115,60 @@ scenarios.
 - `source: provenance` — private normalized record only.
 
 The public episode allowlist is intentionally smaller: `episodeId`, `podcast`,
-`episodeTitle`, `sourceIdentityCount`, `originalItemCount`, and
-`reconciledSensitivityItemCount`. It contains no source filename, alias-member
-ID, transcript detail, or row-level provenance.
+`episodeTitle`, `parsedEpisodeNumber`, `sourceIdentityCount`,
+`originalItemCount`, and `reconciledSensitivityItemCount`. It contains no
+source filename, alias-member ID, transcript detail, or row-level provenance.
+
+### `episode_summaries` public product
+
+`episode_summaries.json` contains exactly one record for each public episode:
+
+- `episodeId: string` — canonical public-feed release ID.
+- `summary: string` — reviewed 100–180-word grounded synthesis.
+- `keyTopics: string[]` — three to six concise grounded topics.
+- `whyItMatters: string` — concise interpretive relevance statement grounded
+  in the same selected inputs.
+- `sourceItemCount`, `focalItemCount`, `contextualItemCount: integer` — safe
+  aggregate counts from the retained canonical source; the focal and contextual
+  counts sum to the source-item count.
+- `generationMethod: string` — frozen authoring-method label.
+
+The product is authored from an ignored source package and reviewed before it
+is frozen. An ordinary website build treats this JSON as an input, validates
+complete episode coverage and its allowlist, and does not regenerate prose or
+call an API.
+
+### `episode_relationships` public product
+
+`episode_relationships.json` is separate from the historical
+`relationships.json`. Every record has these common fields:
+
+- `relationshipId: string` — stable ID derived from relationship type, episode,
+  and target.
+- `relationshipType: string` — one value from the closed vocabulary below.
+- `sourceType: "episode"`, `sourceId: string` — canonical public episode.
+- `targetType: "category" | "cluster" | "metaCluster" | "theme" |
+  "tension"`, `targetId: string` — existing public entity.
+- `relationshipSemantics: string` — explicit direct, derived, or aggregation
+  interpretation.
+
+| `relationshipType` | `relationshipSemantics` | Required support fields |
+| --- | --- | --- |
+| `episode-participates-in-category` | `direct-item-aggregation` | `itemCount`, `focalItemCount`, `contextualItemCount` |
+| `episode-coded-to-cluster` | `direct-coded-relationship` | `primaryCount`, `secondaryCount`, `weightedCount` |
+| `episode-derived-to-meta-cluster` | `derived-through-cluster-membership` | coding counts plus `supportingClusterIds` |
+| `episode-derived-to-theme` | `derived-analytical-connection` | coding counts, supporting cluster/meta-cluster IDs, and `derivationPaths` |
+| `episode-has-theme-lineage` | `direct-item-lineage` | derived support fields plus public-safe `itemCount` |
+| `episode-has-tension-lineage` | `direct-item-lineage` | `itemCount`, `poleASupportCount`, `poleBSupportCount`, and `interpretiveCaveat` |
+
+Cluster, meta-cluster, and theme weighted counts use the existing
+`2 × primary + secondary` rule. Direct theme lineage requires a retained item
+listed in governed theme representative evidence. Direct tension lineage
+requires a retained item listed in governed pole evidence. Tension connections
+are not derived through broader theme or meta-cluster closure; the public
+product intentionally omits those non-discriminating links. Item and pole
+counts describe traceable lineage and never imply endorsement, consensus, or
+causation.
 
 ### `episode_source_identities`
 
@@ -222,6 +275,12 @@ Support-sensitivity metrics test how traceable support counts change under the
 selection rule. They do not independently validate a cluster, theme, tension,
 narrative, or scenario, and they do not convert frequency into consensus.
 
+The episode products apply a stricter canonical-source selection at their
+input boundary: an item is retained only when its historical
+`sourceIdentityId` equals the episode's `canonicalSourceIdentityId`. A remapped
+`episodeId` alone is not sufficient. This prevents excluded alias-source items
+from contributing to summary inputs or episode relationship counts.
+
 ## Public reconciliation aggregate
 
 `data/cognitive-security/corpus_reconciliation.json` is the only dedicated
@@ -239,6 +298,13 @@ public reconciliation file. It provides:
 It must not expose source filenames, alias-pair details, workbook hashes,
 transcript hashes or text, normalized matching strings, item IDs, detailed
 review evidence, local paths, or private analysis filenames.
+
+The browser-loaded `manifest.json` identifies each governed source with only
+an opaque `artifactId` and `canonicalRole`. Public `qa_report.json` uses the
+same IDs and exposes only `worksheetCount`, `aggregateRowCount`, and
+`integrityVerified` for source QA. Exact source filenames, hashes, worksheet
+names, and row-level provenance remain in the ignored private normalized
+release.
 
 The exact top-level fields are `schemaVersion`, `methodVersion`, `status`,
 `counts`, `interpretation`, `automaticRules`, `limitations`, and
@@ -273,6 +339,14 @@ A v1.1 build fails before publication unless all of the following hold:
 - the episode-zero trailer remains represented as episode 000;
 - original counts remain 14,397 / 10,940 / 3,457;
 - sensitivity counts are 12,978 / 9,855 / 3,123;
+- frozen summaries cover all 242 canonical episodes exactly once and retain
+  valid public-safe source counts;
+- every episode relationship starts at a canonical episode, resolves to an
+  existing public entity, and declares the correct direct or derived semantics;
+- episode tension links have direct retained-item lineage and are never
+  inferred through broad analytical closure;
+- the historical public `relationships.json` is byte-equivalent to the
+  governed historical release;
 - no public file exposes a private field or absolute local path; and
 - two builds from unchanged inputs produce byte-identical JSON.
 
@@ -287,3 +361,7 @@ all directly traceable item support—the governed result is **full-pipeline
 reanalysis recommended**. That future rerun is outside this migration and
 requires a separately governed project. Sensitivity does not prove that an
 existing entity is invalid.
+
+An unfinished v2 analytical effort is not part of the v1.1 authority chain and
+is not used to create these episode products. Any future migration to a v2
+source package requires its own governed release and validation decision.

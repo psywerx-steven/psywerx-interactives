@@ -32,6 +32,8 @@ REQUIRED_CONTENT_FILES = {
     "category_findings.json",
     "scenarios.json",
     "episodes.json",
+    "episode_summaries.json",
+    "episode_relationships.json",
     "relationships.json",
     "coverage.json",
 }
@@ -48,6 +50,8 @@ EXPECTED_PUBLIC_FILES = {
     "category_findings.json",
     "scenarios.json",
     "episodes.json",
+    "episode_summaries.json",
+    "episode_relationships.json",
     "relationships.json",
     "coverage.json",
     "review_summary.json",
@@ -144,6 +148,12 @@ PUBLIC_RECORD_FIELDS = {
     "episodes.json": {
         "episodeId", "podcast", "episodeTitle", "sourceIdentityCount",
         "originalItemCount", "reconciledSensitivityItemCount",
+        "parsedEpisodeNumber",
+    },
+    "episode_summaries.json": {
+        "episodeId", "summary", "keyTopics", "whyItMatters",
+        "sourceItemCount", "focalItemCount", "contextualItemCount",
+        "generationMethod",
     },
     "relationships.json": {
         "relationshipId", "relationshipType", "sourceId", "sourceType",
@@ -160,10 +170,11 @@ DETAIL_ROUTES = {
     "meta-narrative": ("meta_narratives.json", "narrativeId"),
     "category-finding": ("category_findings.json", "findingId"),
     "scenario": ("scenarios.json", "scenarioId"),
+    "episode": ("episodes.json", "episodeId"),
 }
 EXPECTED_DEEP_LINK_ENTITY_TYPES = [
     "category", "metaCluster", "cluster", "theme", "tension",
-    "metaNarrative", "categoryFinding", "scenario",
+    "metaNarrative", "categoryFinding", "scenario", "episode",
 ]
 
 
@@ -664,24 +675,59 @@ class PublicDataContractTests(unittest.TestCase):
             "modelrationale",
             "rawtext",
             "fulltext",
+            "filename",
+            "sourcehash",
+            "sourcerowcounts",
         )
         violations = []
         for filename, payload in self.payloads.items():
             for path, _value in recursively_walk(payload):
                 if not path:
                     continue
-                # The QA report exposes aggregate source worksheet row counts.
-                # Worksheet titles such as "Review Queue" and "Memorable
-                # Quotes" describe what was withheld; their numeric counts are
-                # not review-queue records, items, or quotation content.
-                if filename == "qa_report.json" and path[0] == "sourceRowCounts":
-                    if len(path) >= 3:
-                        self.assertIsInstance(_value, int)
-                    continue
                 key = re.sub(r"[^a-z]", "", path[-1].casefold())
                 if any(fragment in key for fragment in prohibited_key_fragments):
                     violations.append(f"{filename}:{'.'.join(path)}")
         self.assertEqual([], violations, "Private/detail keys escaped: " + repr(violations))
+
+    def test_public_source_metadata_is_opaque_and_aggregate_only(self):
+        manifest = self.payloads["manifest.json"]
+        qa_report = self.payloads["qa_report.json"]
+        manifest_artifacts = manifest["sourceArtifacts"]
+        source_qa = qa_report["sourceArtifactQa"]
+
+        self.assertEqual(8, len(manifest_artifacts))
+        self.assertTrue(
+            all(
+                set(row) == {"artifactId", "canonicalRole"}
+                for row in manifest_artifacts
+            )
+        )
+        self.assertEqual(
+            {row["artifactId"] for row in manifest_artifacts},
+            {row["artifactId"] for row in source_qa},
+        )
+        self.assertTrue(
+            all(
+                set(row)
+                == {
+                    "artifactId",
+                    "canonicalRole",
+                    "worksheetCount",
+                    "aggregateRowCount",
+                    "integrityVerified",
+                }
+                for row in source_qa
+            )
+        )
+        self.assertNotIn("sourceHashes", qa_report)
+        self.assertNotIn("sourceRowCounts", qa_report)
+        self.assertEqual(
+            "ART-tensions",
+            qa_report["canonicalSourceDecisions"]["tensionsArtifactId"],
+        )
+        serialized = json.dumps(self.payloads, ensure_ascii=False)
+        self.assertNotRegex(serialized, r"(?i)\.xlsx\b")
+        self.assertNotRegex(serialized, r"[A-Za-z]:[\\/]")
 
     def test_all_detail_route_ids_are_url_safe_and_round_trip(self):
         for route, (filename, id_field) in DETAIL_ROUTES.items():

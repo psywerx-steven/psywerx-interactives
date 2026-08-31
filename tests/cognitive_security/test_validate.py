@@ -6,7 +6,7 @@ import json
 from pathlib import Path
 import unittest
 
-from scripts.cognitive_security.export import PUBLIC_FIELDS
+from scripts.cognitive_security.export import PUBLIC_FIELDS, _public_qa_report
 from scripts.cognitive_security.normalize import _exact_name_key
 from scripts.cognitive_security.validate import (
     KNOWN_UNMAPPED_CLUSTERS,
@@ -452,6 +452,52 @@ class NormalizedValidationTests(unittest.TestCase):
 
 
 class PublicationBoundaryTests(unittest.TestCase):
+    def test_public_qa_projection_preserves_private_source_provenance(self) -> None:
+        dataset = {
+            "artifacts": [
+                {
+                    "artifactId": "ART-tensions",
+                    "fileName": "tensions_debates_rebuilt.xlsx",
+                    "sha256": "f" * 64,
+                }
+            ]
+        }
+        private_qa = {
+            "sourceHashes": {"tensions_debates_rebuilt.xlsx": "f" * 64},
+            "sourceRowCounts": {
+                "tensions_debates_rebuilt.xlsx": {
+                    "Tensions Debates": 31,
+                    "Tension Mapping": 301,
+                }
+            },
+            "canonicalSourceDecisions": {
+                "tensions": "tensions_debates_rebuilt.xlsx",
+                "blankCopiedSourceTensions": "intentionally-not-used",
+            },
+        }
+        before = copy.deepcopy(private_qa)
+        public_qa = _public_qa_report(dataset, private_qa)
+
+        self.assertEqual(before, private_qa)
+        self.assertNotIn("sourceHashes", public_qa)
+        self.assertNotIn("sourceRowCounts", public_qa)
+        self.assertEqual(
+            [
+                {
+                    "artifactId": "ART-tensions",
+                    "canonicalRole": "canonical-tensions-and-debates",
+                    "worksheetCount": 2,
+                    "aggregateRowCount": 332,
+                    "integrityVerified": True,
+                }
+            ],
+            public_qa["sourceArtifactQa"],
+        )
+        self.assertEqual(
+            "ART-tensions",
+            public_qa["canonicalSourceDecisions"]["tensionsArtifactId"],
+        )
+
     def test_exporter_projection_fields_match_validator_allowlists(self) -> None:
         filenames = {
             "categories": "categories.json",
@@ -489,6 +535,53 @@ class PublicationBoundaryTests(unittest.TestCase):
         codes = {issue.code for issue in report.errors}
         self.assertIn("forbidden_public_field", codes)
         self.assertIn("public_field_not_allowlisted", codes)
+
+    def test_public_source_metadata_requires_opaque_ids_and_safe_aggregates(self) -> None:
+        payloads = {
+            "manifest.json": {
+                "sourceArtifacts": [
+                    {
+                        "artifactId": "ART-tensions",
+                        "canonicalRole": "canonical-tensions-and-debates",
+                    }
+                ]
+            },
+            "qa_report.json": {
+                "sourceArtifactQa": [
+                    {
+                        "artifactId": "ART-tensions",
+                        "canonicalRole": "canonical-tensions-and-debates",
+                        "worksheetCount": 8,
+                        "aggregateRowCount": 1400,
+                        "integrityVerified": True,
+                    }
+                ]
+            },
+        }
+        report = validate_public_outputs(payloads)
+        self.assertTrue(report.passed, [issue.as_dict() for issue in report.errors])
+
+        invalid = copy.deepcopy(payloads)
+        invalid["manifest.json"]["sourceArtifacts"][0].update(
+            {
+                "fileName": "tensions_debates_rebuilt.xlsx",
+                "sha256": "f" * 64,
+            }
+        )
+        invalid["qa_report.json"]["sourceHashes"] = {
+            "tensions_debates_rebuilt.xlsx": "f" * 64
+        }
+        invalid["qa_report.json"]["localReference"] = (
+            r"C:\private\tensions_debates_rebuilt.xlsx"
+        )
+        invalid_report = validate_public_outputs(invalid)
+        codes = {issue.code for issue in invalid_report.errors}
+        self.assertIn("forbidden_public_field", codes)
+        self.assertIn("private_source_filename_published", codes)
+        self.assertIn("private_source_fingerprint_published", codes)
+        self.assertIn("local_path_value_published", codes)
+        self.assertIn("public_source_artifact_shape_invalid", codes)
+        self.assertIn("private_source_qa_published", codes)
 
     def test_public_relationship_types_and_endpoints_are_canonical(self) -> None:
         payloads = {
@@ -544,6 +637,45 @@ class PublicationBoundaryTests(unittest.TestCase):
         self.assertIn("public_relationship_endpoint_unresolved", codes)
         self.assertIn("public_relationship_not_semantic", codes)
 
+    def test_public_episode_summary_grounding_contract_is_enforced(self) -> None:
+        payloads = {
+            "episodes.json": [
+                {
+                    "episodeId": "EP-1",
+                    "episodeTitle": "Grounded episode",
+                    "reconciledSensitivityItemCount": 6,
+                }
+            ],
+            "episode_summaries.json": [
+                {
+                    "episodeId": "EP-1",
+                    "summary": " ".join(["grounded"] * 100),
+                    "keyTopics": ["Topic one", "Topic two", "Topic three"],
+                    "whyItMatters": "This synthesis explains why the grounded discourse matters.",
+                    "sourceItemCount": 6,
+                    "focalItemCount": 4,
+                    "contextualItemCount": 2,
+                    "generationMethod": "codex-grounded-synthesis-v1",
+                }
+            ],
+        }
+        report = validate_public_outputs(payloads)
+        self.assertTrue(report.passed, [issue.as_dict() for issue in report.errors])
+
+        invalid = copy.deepcopy(payloads)
+        summary = invalid["episode_summaries.json"][0]
+        summary["summary"] = "Too short."
+        summary["keyTopics"] = ["Duplicate", "duplicate", "Third topic"]
+        summary["sourceItemCount"] = 7
+        summary["focalItemCount"] = 5
+        summary["generationMethod"] = "unreviewed-method"
+        invalid_report = validate_public_outputs(invalid)
+        codes = {issue.code for issue in invalid_report.errors}
+        self.assertIn("episode_summary_word_count_invalid", codes)
+        self.assertIn("episode_summary_topics_duplicate", codes)
+        self.assertIn("episode_summary_canonical_count_mismatch", codes)
+        self.assertIn("episode_summary_generation_method_invalid", codes)
+
     def test_public_reconciliation_rejects_pair_level_identity_detail(self) -> None:
         payload = minimal_public_reconciliation()
         payload["sourceIdentityId"] = "EPI-PRIVATE"
@@ -561,6 +693,22 @@ class PublicationBoundaryTests(unittest.TestCase):
         report = validate_public_outputs(payloads)
         self.assertTrue(report.passed, [issue.as_dict() for issue in report.errors])
         qa = payloads["qa_report.json"]
+        manifest = payloads["manifest.json"]
+        self.assertNotIn("sourceHashes", qa)
+        self.assertNotIn("sourceRowCounts", qa)
+        self.assertEqual(
+            {row["artifactId"] for row in manifest["sourceArtifacts"]},
+            {row["artifactId"] for row in qa["sourceArtifactQa"]},
+        )
+        self.assertTrue(
+            all(
+                set(row) == {"artifactId", "canonicalRole"}
+                for row in manifest["sourceArtifacts"]
+            )
+        )
+        serialized = json.dumps(payloads, ensure_ascii=False)
+        self.assertNotRegex(serialized, r"(?i)\.xlsx\b")
+        self.assertNotRegex(serialized, r"[A-Za-z]:[\\/]")
         self.assertTrue(
             all(
                 comparison.get("status") == "pass"

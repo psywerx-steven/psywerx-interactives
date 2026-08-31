@@ -4,6 +4,10 @@ This document defines how the eight private workbooks become the governed
 internal normalized dataset and conservative static JSON package for the
 PSYWERX Cognitive Security Practitioner Discourse Map.
 
+This release uses the governed historical v1.1 package described below. A
+separate v2 analytical effort is underway, but unfinished v2 outputs are not
+source inputs, comparison authorities, or fallback material for this build.
+
 The workbooks are successive stages of one analytic lineage, not eight
 independent datasets. Schema v1.1 adds a reconciliation layer between the
 historical source identities and canonical public-feed episode releases:
@@ -79,8 +83,11 @@ marks a missing link rather than inventing a target.
 
 ## Extraction and normalization decisions
 
-1. Each workbook is hashed with SHA-256 before semantic extraction. Hashes are
-   reported in the manifest and QA outputs; workbook bytes are not published.
+1. Each workbook is hashed with SHA-256 before semantic extraction. Exact
+   hashes and filenames are retained in the ignored private normalized
+   manifest and QA outputs. The public manifest exposes only opaque artifact
+   IDs and canonical roles; public QA exposes verification status and aggregate
+   worksheet/row counts without workbook names, worksheet names, or hashes.
 2. Workbooks open read-only with cached formula results. Canonical sources do
    not rely on formula/working sheets.
 3. Source strings are trimmed and internal whitespace is collapsed. Empty
@@ -133,6 +140,11 @@ marks a missing link rather than inventing a target.
 17. The reconciled sensitivity dataset selects the modern source identity in
     each confirmed pair. It never merges or rewrites item text and never
     overwrites the historical item collection.
+18. Public episode products apply the canonical selection again at their input
+    boundary. An item contributes only when its `sourceIdentityId` equals the
+    episode's `canonicalSourceIdentityId`; an `episodeId` remapping by itself is
+    insufficient. This prevents an excluded alias member from entering episode
+    summary inputs or episode relationship aggregates.
 
 ## Portable provenance
 
@@ -210,6 +222,54 @@ tensions lose category breadth. These conditions trigger the governed
 `full-pipeline-reanalysis-recommended` result; they do not establish that the
 historical entities are invalid.
 
+## Episode products and freeze boundary
+
+Episode summaries and episode relationships are public companion products;
+they do not regenerate the historical extraction, coding, clusters, or
+higher-order synthesis.
+
+`scripts/build_episode_products.py` is the separate authoring workflow. It
+reads the ignored normalized v1.1 package, enforces canonical-source-only item
+selection, and writes full source packages and authoring QA beneath the ignored
+`analysis/cognitive-security/eod-explorer/` directory. The public summary
+record contains only the canonical episode ID, reviewed summary prose, three to
+six key topics, a why-it-matters statement, safe aggregate source counts, and a
+generation-method label. Item IDs, item text, source identities, evidence
+excerpts, authoring prompts, raw responses, and credentials remain private.
+
+Summary authoring is review-gated and occurs before an ordinary website build.
+A reviewed set can be validated and published with:
+
+```powershell
+py scripts\build_episode_products.py --summaries-from <reviewed-summary-json>
+```
+
+The resulting `data/cognitive-security/episode_summaries.json` is then a frozen
+input to `scripts/build_cognitive_security.py`. The ordinary build requires
+complete coverage, validates the frozen file, carries it into the deterministic
+public package, and makes no API calls. Missing or invalid frozen summaries stop
+publication instead of triggering implicit generation.
+
+`episode_relationships.json` is rebuilt deterministically from the same
+canonical-source-only inputs:
+
+- Category relationships directly aggregate retained items by category and
+  focal/contextual scope.
+- Cluster relationships directly aggregate actual primary and secondary codes,
+  retaining the governed `2 × primary + secondary` weighted count.
+- Meta-cluster relationships are derived through governed cluster membership.
+- Theme relationships distinguish direct representative-item lineage from
+  connections derived through governed cluster or meta-cluster paths.
+- Tension relationships require direct retained-item evidence in at least one
+  tension pole. Broader theme/meta-cluster closure is intentionally omitted
+  because it would be analytically non-discriminating; direct lineage never
+  means endorsement of either pole.
+
+The episode graph is stored separately so its source selection and support
+semantics remain explicit. The historical `relationships.json` stays
+byte-equivalent to the governed historical release and is neither appended to
+nor rewritten by episode-product generation.
+
 ## Known source anomalies and governance state
 
 ### Transcript/source lineage limits
@@ -285,6 +345,10 @@ item, controlled
 secondary `NONE`, category-summary completeness, polymorphic foreign keys,
 review/ambiguity retention, unmapped clusters, public relationship endpoints,
 theme/tension/synthesis references, and the seven-narrative discrepancy.
+Public-product checks additionally require one frozen summary per canonical
+episode, safe and internally consistent summary counts, valid episode
+relationship endpoints and semantics, and direct item lineage for every
+published episode-tension connection.
 
 Generated content is serialized in memory and staged before existing valid
 output is replaced. Any source, normalization, reconciliation, sensitivity,
@@ -308,11 +372,13 @@ human notes, detailed review flags, and complete provenance.
 
 The static public package under `data/cognitive-security/` is created only from
 positive field allowlists. It contains governed high-level entities, canonical
-public-feed episode labels, aggregate coverage/review/QA information,
+public-feed episode labels, reviewed episode synthesis prose, public-safe
+episode relationship aggregates, aggregate coverage/review/QA information,
 `corpus_reconciliation.json`, and semantic relationships.
 It excludes:
 
 - workbook files and workbook data blobs;
+- source-workbook filenames, exact source hashes, and worksheet names;
 - full transcripts and full item corpus;
 - unrestricted quotations or evidence-excerpt dumps;
 - primary/secondary coding rationales;
@@ -320,12 +386,16 @@ It excludes:
 - internal human notes and detailed review queues; and
 - absolute paths or private source locations.
 
+The public `manifest.json` represents each source artifact with exactly
+`artifactId` and `canonicalRole`. Public `qa_report.json` uses the same opaque
+IDs with `worksheetCount`, `aggregateRowCount`, and `integrityVerified`; the
+exact filename-to-hash and worksheet inventory remains private.
+
 The public reconciliation aggregate contains counts, method versions,
 automatic rules, interpretation, limitations, and the governed reanalysis
-recommendation only. It excludes source
-filenames,
-alias-pair detail, normalized comparison values, transcript details, workbook
-hashes, item IDs, and the private sensitivity tables.
+recommendation only. It excludes source filenames, alias-pair detail,
+normalized comparison values, transcript details, workbook hashes, item IDs,
+and the private sensitivity tables.
 
 Adding a field to the internal schema never publishes it automatically. A
 human-approved public allowlist change is required.
@@ -336,9 +406,11 @@ human-approved public allowlist change is required.
 
 This project is a field-mapping exercise. It asks what concepts, practices,
 risks, opportunities, disagreements, and future possibilities recur in a
-practitioner-facing podcast corpus. It does not summarize each episode and is
-not a definitive taxonomy, representative survey, causal model, competency
-framework, or scientific evidence review.
+practitioner-facing podcast corpus. The public companion product now summarizes
+each canonical release for navigation, but an episode is not the analytic unit
+used to construct the map. The project is not a definitive taxonomy,
+representative survey, causal model, competency framework, or scientific
+evidence review.
 
 ### 2. Corpus and reconciliation
 
@@ -500,6 +572,13 @@ Model outputs remain vulnerable to prompt sensitivity, model dependence,
 semantic smoothing, overgeneralization, and hidden bias. Coding confidence is
 workflow metadata, not scientific evidence strength.
 
+Episode summary authoring is also a separate grounded synthesis task whose
+inputs are restricted to each release's retained canonical-source package. The
+reviewed output is frozen before the ordinary build; the ordinary build performs
+no model or API call. A generation-method label documents how the public prose
+was produced without publishing prompts, raw responses, credentials, or private
+source material.
+
 ### 17. Traceability and reconciliation sensitivity
 
 Where the workbook lineage supports it, the evidence chain is:
@@ -520,6 +599,14 @@ reconciled sensitivity dataset removes one confirmed alias identity per group
 and recalculates traceable support metrics without overwriting the historical
 analysis. Support retention does not validate an entity; it shows only how
 available within-corpus support changes under the declared source selection.
+
+The public episode graph makes the final steps explicit without exposing the
+items: category and cluster support is direct aggregation, meta-cluster and
+some theme support is derived through governed mappings, and direct theme or
+tension labels require representative-item or pole-evidence lineage. Derived
+paths describe analytical traceability, not causal influence. Tension links are
+direct-only because broad closure would not provide useful episode-level
+discrimination.
 
 ### 18. Limitations
 
@@ -565,3 +652,8 @@ release does not regenerate extraction, coding, clusters, or synthesis; that
 future rerun should occur only through a separately governed project. Loss of
 traceable support in this audit is a reason to rerun and compare, not proof
 that an existing entity is invalid.
+
+The underway v2 effort may eventually provide a separately governed basis for
+comparison or replacement. Until that work is complete and approved, no v2
+artifact contributes to this release, its episode summaries, or its episode
+relationships.

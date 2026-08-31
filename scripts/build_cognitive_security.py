@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import hashlib
+import json
 import sys
 import tempfile
 from pathlib import Path
@@ -33,6 +34,9 @@ RECONCILIATION_DIR = (
     Path("analysis") / "cognitive-security" / "corpus-reconciliation"
 )
 REPORT_PATH = Path("docs") / "cognitive-security" / "INGESTION_REPORT.md"
+FROZEN_EPISODE_SUMMARIES_PATH = (
+    Path("data") / "cognitive-security" / "episode_summaries.json"
+)
 
 
 def _normalized_counts(
@@ -45,7 +49,7 @@ def _normalized_counts(
     }
 
 
-def _source_hashes(
+def _private_source_hashes(
     dataset: Mapping[str, Sequence[Mapping[str, Any]]]
 ) -> dict[str, str]:
     return {
@@ -56,7 +60,9 @@ def _source_hashes(
     }
 
 
-def _source_row_counts(extracted: Mapping[str, Any]) -> dict[str, dict[str, int]]:
+def _private_source_row_counts(
+    extracted: Mapping[str, Any]
+) -> dict[str, dict[str, int]]:
     output: dict[str, dict[str, int]] = {}
     for row in extracted.get("sheetInventory", ()):
         file_name = str(row.get("fileName") or row.get("workbook") or "")
@@ -126,6 +132,8 @@ def _enrich_qa_report(
     extracted: Mapping[str, Any],
     corpus_reconciliation: Mapping[str, Any],
 ) -> dict[str, Any]:
+    # This is the complete maintainer QA record. The public exporter projects
+    # it to opaque artifact IDs and aggregate counts before browser publication.
     assignments = dataset.get("item_cluster_assignments", ())
     meta_narratives = dataset.get("meta_narratives", ())
     issues = list(base.get("validationIssues", base.get("issues", ())))
@@ -143,8 +151,8 @@ def _enrich_qa_report(
         ),
         "validationIssues": issues,
     }
-    report["sourceHashes"] = _source_hashes(dataset)
-    report["sourceRowCounts"] = _source_row_counts(extracted)
+    report["sourceHashes"] = _private_source_hashes(dataset)
+    report["sourceRowCounts"] = _private_source_row_counts(extracted)
     report["normalizedEntityCounts"] = _normalized_counts(dataset)
     governed_counts = dict(
         base.get("normalizedEntityCounts", base.get("counts", {}))
@@ -296,8 +304,26 @@ def build(repo_root: Path) -> dict[str, Any]:
         "method": "repeat in-memory serialization plus release-gate rebuild",
     }
 
+    frozen_summary_path = repo_root / FROZEN_EPISODE_SUMMARIES_PATH
+    if not frozen_summary_path.is_file():
+        raise ValidationError(
+            "Frozen episode summary product is missing.",
+            {
+                "errors": [
+                    "Run scripts/build_episode_products.py against the governed "
+                    "private normalized release and review the frozen summaries first."
+                ]
+            },
+        )
+    frozen_episode_summaries = json.loads(
+        frozen_summary_path.read_text(encoding="utf-8")
+    )
+
     preliminary_public = build_public_payloads(
-        dataset, qa_report, reconciliation_products["publicAggregate"]
+        dataset,
+        qa_report,
+        reconciliation_products["publicAggregate"],
+        frozen_episode_summaries,
     )
     public_errors = validate_public_payloads(preliminary_public)
     qa_report["publicExportChecks"] = {
@@ -316,7 +342,10 @@ def build(repo_root: Path) -> dict[str, Any]:
         "method": "repeat in-memory serialization plus release-gate rebuild",
     }
     public_payloads = build_public_payloads(
-        dataset, qa_report, reconciliation_products["publicAggregate"]
+        dataset,
+        qa_report,
+        reconciliation_products["publicAggregate"],
+        frozen_episode_summaries,
     )
     internal_payloads = build_internal_payloads(dataset, qa_report)
     reconciliation_payloads = reconciliation_products["privatePayloads"]
@@ -330,6 +359,7 @@ def build(repo_root: Path) -> dict[str, Any]:
             repeated_products["reconciledDataset"],
             qa_report,
             repeated_products["publicAggregate"],
+            frozen_episode_summaries,
         )
     )
     repeated_internal = serialize_payloads(

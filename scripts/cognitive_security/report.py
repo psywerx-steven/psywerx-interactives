@@ -172,42 +172,47 @@ def render_ingestion_report(
         "",
         "This release preserves the historical analytical dataset while adding a canonical public-feed episode model and a separate reconciled sensitivity dataset.",
         "",
-        "## Source package manifest",
+        "## Source package inventory",
         "",
-        "| Artifact | Canonical role | SHA-256 |",
+        "| Opaque artifact ID | Canonical role | Integrity verified |",
         "|---|---|---|",
     ]
-    for artifact in sorted(artifacts, key=lambda row: str(row.get("fileName", ""))):
+    for artifact in sorted(artifacts, key=lambda row: str(row.get("artifactId", ""))):
         lines.append(
-            "| {file} | {role} | `{sha}` |".format(
-                file=_escape(artifact.get("fileName")),
+            "| `{artifact}` | {role} | {verified} |".format(
+                artifact=_escape(artifact.get("artifactId")),
                 role=_escape(artifact.get("canonicalRole")),
-                sha=_escape(artifact.get("sha256")),
+                verified="yes" if artifact.get("sha256") else "no",
             )
         )
 
     lines += [
         "",
-        "All source files are local, ignored XLSX artifacts. Public JSON contains filenames and integrity hashes, never local paths or workbook binaries.",
+        "Exact source-workbook filenames, integrity hashes, and row-level provenance remain in the ignored private normalized release. Public products identify sources only by opaque artifact ID and publish safe aggregate QA.",
         "",
-        "## Workbook and worksheet inventory",
+        "## Aggregate source inventory",
         "",
-        "| Workbook | Worksheet | Rows | Columns |",
-        "|---|---|---:|---:|",
+        "| Opaque artifact ID | Worksheets | Aggregate rows |",
+        "|---|---:|---:|",
     ]
-    for sheet in sorted(
-        inventory,
-        key=lambda row: (
-            str(_value(row, "fileName", "workbook", default="")),
-            str(_value(row, "sheetName", "sheet", default="")),
-        ),
-    ):
+    inventory_by_artifact: dict[str, dict[str, int]] = {}
+    for sheet in inventory:
+        artifact_id = str(_value(sheet, "artifactId", "artifact_id", default=""))
+        if not artifact_id:
+            continue
+        aggregate = inventory_by_artifact.setdefault(
+            artifact_id, {"worksheetCount": 0, "aggregateRowCount": 0}
+        )
+        aggregate["worksheetCount"] += 1
+        aggregate["aggregateRowCount"] += int(
+            _value(sheet, "rowCount", "rows", default=0) or 0
+        )
+    for artifact_id, aggregate in sorted(inventory_by_artifact.items()):
         lines.append(
-            "| {file} | {sheet} | {rows} | {columns} |".format(
-                file=_escape(_value(sheet, "fileName", "workbook")),
-                sheet=_escape(_value(sheet, "sheetName", "sheet")),
-                rows=_escape(_value(sheet, "rowCount", "rows")),
-                columns=_escape(_value(sheet, "columnCount", "columns")),
+            "| `{artifact}` | {worksheets} | {rows} |".format(
+                artifact=_escape(artifact_id),
+                worksheets=aggregate["worksheetCount"],
+                rows=aggregate["aggregateRowCount"],
             )
         )
 
@@ -296,7 +301,7 @@ def render_ingestion_report(
         "",
         "### Canonical tension source",
         "",
-        "`final_synthesis.xlsx` contains a blank copied `Source Tensions` worksheet. The 30 governed tension records come from `tensions_debates_rebuilt.xlsx`.",
+        "Opaque artifact `ART-final-synthesis` contains a blank copied source-tension table. The 30 governed tension records come from `ART-tensions`.",
         "",
         "### Unresolved theme-to-cluster evidence",
         "",
@@ -341,7 +346,7 @@ def render_ingestion_report(
     lines += [
         "## Public/private boundary",
         "",
-        "Public export uses positive field allowlists. It includes governed high-level entities, semantic mappings, aggregate coverage, source integrity hashes, and aggregate QA. It excludes item text, evidence quotations, detailed rationales, internal notes, detailed review queues, hidden source metadata, and all workbook content blobs.",
+        "Public export uses positive field allowlists. It includes governed high-level entities, semantic mappings, aggregate coverage, opaque source artifact IDs, and safe aggregate QA. It excludes source-workbook filenames and fingerprints, item text, evidence quotations, detailed rationales, internal notes, detailed review queues, hidden source metadata, and all workbook content blobs.",
         "",
         "The complete normalized QA layer—including item records, evidence excerpts, rationales, ambiguity details, and review flags—is written only to ignored `analysis/cognitive-security/normalized/`.",
         "",

@@ -267,10 +267,12 @@ The PSYWERX Cognitive Security Practitioner Discourse Map is a standalone map
 of practitioner discourse across podcast episodes. It is not a definitive
 taxonomy, causal model, consensus measure, or extension of the Driver Ontology.
 The Phase 2 static Explorer at [`cognitive-security/`](./cognitive-security/)
-provides Overview, Browse, Cross-Cutting Themes, Tensions & Debates,
-Meta-Narratives, Future Scenarios, public-package Search, and Methodology
-views. Category → Meta-cluster → Cluster browsing preserves governed unmapped
-records rather than filling source gaps.
+provides nine primary views: Overview, Browse, Cross-Cutting Themes, Tensions
+& Debates, Meta-Narratives, Future Scenarios, Episodes, public-package Search,
+and Methodology. Category → Meta-cluster → Cluster browsing preserves
+governed unmapped records rather than filling source gaps. The Episodes view
+provides searchable, URL-addressable cards and detail pages for every canonical
+release.
 
 The public corpus model contains 242 canonical public-feed episode releases.
 The historical extraction dataset contained 269 transcript/source identities;
@@ -279,6 +281,26 @@ The historical extraction dataset contained 269 transcript/source identities;
 release remains preserved and reproducible. Episode 000 is retained, and a
 separately published re-release remains a distinct feed release even where
 content is reused.
+
+Episode presentation is split across three deliberately narrow public files.
+`episodes.json` contains identity and aggregate coverage fields;
+`episode_summaries.json` contains one reviewed, grounded summary with key topics
+and a why-it-matters statement per release; and `episode_relationships.json`
+contains public-safe category, cluster, meta-cluster, theme, and tension links.
+Every summary input and relationship aggregate uses only the source identity
+governed as canonical for that release. Confirmed alias-source items never enter
+these episode products.
+
+The episode relationship file distinguishes its evidence semantics. Category
+links aggregate retained items directly; cluster links use actual primary and
+secondary coding; meta-cluster links are derived through governed cluster
+membership; and theme links distinguish direct representative-item lineage
+from governed cluster-derived paths. Tension links are published only when a
+retained item has direct tension-pole evidence lineage. Broader derived tension
+closure is intentionally omitted because it is not discriminating evidence and
+could overstate what the source lineage supports. These episode links remain
+separate from the historical `relationships.json`, which is preserved
+unchanged.
 
 The sensitivity audit recommends a future full-pipeline reanalysis because 13
 higher-order entities are highly sensitive to canonical-source selection. This
@@ -322,21 +344,37 @@ and sensitivity outputs beneath the ignored
 conservative, public-safe static JSON package to `data/cognitive-security/`.
 Public output is constructed from explicit field allowlists and excludes
 evidence quotations, detailed assignment rationales, internal notes, and
-detailed review queues.
+detailed review queues. Browser-loaded source metadata uses opaque `ART-*`
+identifiers and safe aggregate QA only; source-workbook filenames, exact source
+hashes, worksheet names, and local paths remain in the ignored private release.
 The builder stages and validates all data before replacing valid generated
 files, uses deterministic ordering and UTF-8 JSON, and produces byte-identical
 output when inputs are unchanged.
 
+Episode-summary authoring is a separate, review-gated workflow. The authoring
+command `py scripts\build_episode_products.py` reads the ignored governed
+normalized package, creates private source packages beneath `analysis/`, and
+can validate and publish a reviewed summary set with `--summaries-from`. Once
+reviewed, `episode_summaries.json` is frozen as an input to ordinary website
+builds. `py scripts\build_cognitive_security.py` validates and carries that
+frozen artifact forward; it does not call an API or generate new summary prose.
+No credential, private source package, or raw authoring response is published.
+
+A separate v2 analytical effort is underway, but its unfinished outputs are
+not inputs to this release. The public Explorer and its episode products use
+only the governed historical v1.1 package described here.
+
 The Explorer fetches only this public package. The dedicated public
 `corpus_reconciliation.json` contains aggregate counts and interpretation, not
 the private identity ledger or item-level sensitivity tables. The Explorer
-does not load transcripts,
-the private item corpus, speakers, quotations, evidence excerpts, internal
-review material, ignored analysis outputs, or source workbooks. Source-linked
-item and quotation browsing remains held for a separate publication and
-attribution review. The Cognitive Security discourse entities remain separate
-from PSYWERX behavioral Drivers and do not extend or modify the Driver
-Ontology.
+does not load transcripts, the private item corpus, speakers, quotations,
+evidence excerpts, source identities, internal review material, ignored
+analysis outputs, or source workbooks. Public episode summaries expose only
+reviewed synthesis prose, safe aggregate counts, and public entity IDs;
+source-linked item and quotation browsing remains held for a separate
+publication and attribution review. The Cognitive Security discourse entities
+remain separate from PSYWERX behavioral Drivers and do not extend or modify the
+Driver Ontology.
 
 ## Preview the static site
 

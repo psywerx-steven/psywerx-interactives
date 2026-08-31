@@ -27,7 +27,7 @@ the [Ingestion Report](./INGESTION_REPORT.md) and forensic decisions in
 
 ## Information architecture
 
-The Explorer has eight primary modes:
+The Explorer has nine primary modes:
 
 1. **Overview** introduces the product, corpus coverage, analytical hierarchy,
    cautions, and major entry points.
@@ -40,11 +40,15 @@ The Explorer has eight primary modes:
 5. **Meta-Narratives** presents the seven records in the canonical source.
 6. **Future Scenarios** presents six plausible scenarios, each explicitly
    labeled as a scenario rather than a prediction.
-7. **Search** searches the public package, not transcripts or the private item
+7. **Episodes** provides a searchable, progressively disclosed index of all
+   242 canonical public-feed releases and a substantive detail page for each
+   release.
+8. **Search** searches the public package, not transcripts or the private item
    corpus.
-8. **Methodology** explains the 242-release/269-source-identity distinction,
+9. **Methodology** explains the 242-release/269-source-identity distinction,
    original and sensitivity count bases, analytical process, human and
-   AI-assisted roles, traceability, and interpretive limits.
+   AI-assisted roles, episode-product lineage, traceability, and interpretive
+   limits.
 
 The seven focal categories are the main Browse entry points. The three
 contextual extraction categories remain visible in corpus scope and
@@ -81,6 +85,8 @@ The Explorer may fetch only files named by
 - `category_findings.json`
 - `scenarios.json`
 - `episodes.json`
+- `episode_summaries.json`
+- `episode_relationships.json`
 - `corpus_reconciliation.json`
 - `relationships.json`
 - `coverage.json`
@@ -100,9 +106,22 @@ repeated full-dataset scans.
 
 `episodes.json` represents 242 canonical public-feed episode releases, not the
 269 transcript/source identities present in the historical extraction
-dataset. Episode records expose only canonical labels and aggregate original
-versus reconciled-sensitivity item coverage. Source filenames, alias members,
-and detailed evidence remain private.
+dataset. Episode records expose only canonical labels, parsed episode numbers,
+and aggregate original versus reconciled-sensitivity item coverage.
+
+`episode_summaries.json` contains exactly one reviewed, grounded summary record
+per canonical release. Each record provides a 100–180-word summary, three to six
+key topics, a why-it-matters statement, safe source-item counts, and the frozen
+generation-method label. The prose is authored from a private package built
+only from the selected canonical source identity. The public file contains no
+item IDs, item text, source identities, source filenames, or raw authoring
+responses.
+
+`episode_relationships.json` is a standalone episode-to-analysis graph. It is
+rebuilt deterministically from retained canonical-source items and governed
+coding or evidence paths. Keeping it separate prevents episode additions from
+changing the historical `relationships.json`; that historical graph remains
+the preserved source-derived contract.
 
 `corpus_reconciliation.json` is an aggregate explanatory dataset. It states the
 unit definition, reconciliation-rule version, historical and reconciled
@@ -153,6 +172,7 @@ Top-level view state uses `view`:
 ?view=tensions
 ?view=narratives
 ?view=scenarios
+?view=episodes
 ?view=search
 ?view=methodology
 ```
@@ -169,10 +189,8 @@ There is no separate `entity` query parameter:
 ?view=meta-narrative&id=N01
 ?view=category-finding&id=CRB-F01
 ?view=scenario&id=S01
+?view=episode&id=EPI-...
 ```
-
-An episode may use the auxiliary detail route `?view=episode&id=EPI-...` when
-episode detail navigation is exposed.
 
 Search uses this parameter contract:
 
@@ -199,7 +217,9 @@ or unsupported parameters are ignored safely.
 
 Relationships provide cross-navigation and describe source-supported semantic
 connections. They do not represent causation, direction of influence, effect
-size, endorsement, consensus, or scientific evidence.
+size, endorsement, consensus, or scientific evidence. The historical entity
+graph and the episode graph are separate public products with separate closed
+vocabularies.
 
 The public relationship vocabulary is:
 
@@ -212,6 +232,27 @@ The public relationship vocabulary is:
 | `theme-supported-by-cluster` | `theme` | `cluster` |
 | `tension-maps-to-cross-cutting-theme` | `tension` | `theme` |
 | `tension-maps-to-meta-cluster` | `tension` | `metaCluster` |
+
+The standalone episode relationship vocabulary is:
+
+| `relationshipType` | `targetType` | `relationshipSemantics` | Basis |
+|---|---|---|---|
+| `episode-participates-in-category` | `category` | `direct-item-aggregation` | Counts retained canonical items by their coded category and scope. |
+| `episode-coded-to-cluster` | `cluster` | `direct-coded-relationship` | Counts actual primary and secondary assignments; weighted count is `2 × primary + secondary`. |
+| `episode-derived-to-meta-cluster` | `metaCluster` | `derived-through-cluster-membership` | Follows supported episode clusters through governed cluster-to-meta-cluster membership. |
+| `episode-derived-to-theme` | `theme` | `derived-analytical-connection` | Follows supported clusters through governed cluster/theme or cluster/meta-cluster/theme paths. |
+| `episode-has-theme-lineage` | `theme` | `direct-item-lineage` | A retained episode item is listed as representative evidence for the theme. |
+| `episode-has-tension-lineage` | `tension` | `direct-item-lineage` | A retained episode item is listed as evidence for at least one tension pole. |
+
+All episode relationship records use `sourceType: "episode"` and a canonical
+`episodeId`. Category and cluster links are direct aggregates of retained
+items; meta-cluster and most theme links are derived through governed mappings.
+A theme relationship is labeled direct only where representative-item lineage
+exists. Tension relationships are deliberately direct-only: broader closure
+through themes or meta-clusters is not published because it would be
+analytically non-discriminating and could imply support that the item-level
+lineage does not establish. Pole counts indicate evidence lineage, not speaker
+or episode endorsement.
 
 Public language should use **semantic relationship**, **connected to**,
 **mapped to**, and **supported by**. It must not substitute **causes**,
@@ -250,17 +291,19 @@ to determine whether a record is unresolved.
 ## Evidence and publication boundary
 
 Phase 2 does not publish or load the private item corpus, transcripts,
-quotations, evidence excerpts, speakers, assignment rationales, internal
-notes, or detailed review queues. Episode titles and aggregate corpus counts
-are public because they support navigation and coverage context without
-exposing item-level material.
+quotations, evidence excerpts, speakers, assignment rationales, source
+identities, internal notes, raw authoring responses, or detailed review queues.
+Episode titles, reviewed summary prose, key topics, why-it-matters statements,
+public entity IDs, and aggregate corpus counts are public because they support
+navigation and coverage context without exposing item-level material.
 
 Corpus reconciliation does not expand this boundary. Source filenames,
 pair-level alias evidence, normalized comparison strings, transcript-level
 details and hashes, and private sensitivity records remain private. The public
 reconciliation file contains aggregates only. The existing manifest and QA
-products continue to expose source-workbook basenames and SHA-256 integrity
-fingerprints, never workbook content or local paths.
+products expose opaque artifact IDs, canonical roles, integrity-verification
+status, and aggregate worksheet/row counts. Source-workbook filenames, exact
+hashes, worksheet names, workbook content, and local paths remain private.
 
 Where evidence access would otherwise be expected, Methodology may state:
 
@@ -270,6 +313,13 @@ Where evidence access would otherwise be expected, Methodology may state:
 The Explorer must not show disabled evidence controls or imply that private
 evidence is available. Expanding this boundary requires a separate governed
 publication decision and data contract.
+
+Episode summary authoring occurs outside the ordinary website build. The
+reviewed `episode_summaries.json` is frozen before publication; subsequent
+ordinary builds validate and reuse it and make no API calls. Any private source
+packages, prompts, credentials, and raw responses remain ignored. An unfinished
+v2 analytical effort is outside this release's source authority and is not
+used by the Explorer or either episode product.
 
 ## Accessibility expectations
 
@@ -307,12 +357,13 @@ publication decision and data contract.
 
 ## Current Phase 2 scope
 
-The current static release covers the eight primary modes, responsive
+The current static release covers the nine primary modes, responsive
 Category -> Meta-cluster -> Cluster browsing, substantial entity details,
-public-package search, focused facets, semantic cross-links, canonical episode
-coverage, aggregate reconciliation interpretation, stable query deep links,
-and a public Methodology experience.
+public-package search, focused facets, semantic cross-links, a searchable
+episode index, grounded episode details, canonical-only episode relationships,
+aggregate reconciliation interpretation, stable query deep links, and a public
+Methodology experience.
 
 It intentionally does not include transcript search, item-level evidence,
-quotation browsing, a force-directed or causal graph, AI-generated content, a
+quotation browsing, a force-directed or causal graph, runtime AI generation, a
 runtime backend, or integration with the PSYWERX Driver Ontology.

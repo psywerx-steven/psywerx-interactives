@@ -14,13 +14,14 @@ const PUBLIC_DATA_FILES = Object.freeze([
   "category_findings.json",
   "scenarios.json",
   "episodes.json",
+  "episode_summaries.json",
+  "episode_relationships.json",
   "relationships.json",
   "coverage.json",
   "review_summary.json",
   "qa_report.json",
 ]);
-const DEEP_LINK_ENTITY_TYPES = Object.freeze(["category", "metaCluster", "cluster", "theme", "tension", "metaNarrative", "categoryFinding", "scenario"]);
-const AUXILIARY_ENTITY_TYPES = Object.freeze(["episode"]);
+const DEEP_LINK_ENTITY_TYPES = Object.freeze(["category", "metaCluster", "cluster", "theme", "tension", "metaNarrative", "categoryFinding", "scenario", "episode"]);
 const ENTITY_ROUTES = Object.freeze({
   category: "category",
   metaCluster: "meta-cluster",
@@ -38,13 +39,23 @@ const ROUTE_ENTITIES = Object.freeze(
   }))
 );
 const PRIMARY_VIEWS = Object.freeze([
-  "overview", "browse", "themes", "tensions", "narratives",
-  "scenarios", "search", "methodology",
+  "overview", "browse", "themes", "tensions", "narratives", "scenarios",
+  "episodes", "search", "methodology",
 ]);
 const SEARCH_ENTITY_TYPES = Object.freeze([
   "category", "metaCluster", "cluster", "theme", "tension",
-  "metaNarrative", "categoryFinding", "scenario", "episode",
+  "metaNarrative", "scenario", "episode",
 ]);
+const SEARCH_TYPE_LABELS = Object.freeze({
+  category: "Categories",
+  metaCluster: "Meta-clusters",
+  cluster: "Clusters",
+  theme: "Themes",
+  tension: "Tensions",
+  metaNarrative: "Narratives",
+  scenario: "Scenarios",
+  episode: "Episodes",
+});
 const ENTITY_LABELS = Object.freeze({
   category: "Category",
   metaCluster: "Meta-cluster",
@@ -65,10 +76,11 @@ const ENTITY_INDEX_VIEWS = Object.freeze({
   metaNarrative: "narratives",
   categoryFinding: "browse",
   scenario: "scenarios",
-  episode: "search",
+  episode: "episodes",
 });
 const ENTITY_INDEX_LABELS = Object.freeze({
   browse: "Browse the map",
+  episodes: "Episodes",
   themes: "Cross-cutting themes",
   tensions: "Tensions & debates",
   narratives: "Meta-narratives",
@@ -83,6 +95,14 @@ const RELATIONSHIP_SCHEMA = Object.freeze({
   "theme-supported-by-cluster": ["theme", "cluster"],
   "tension-maps-to-cross-cutting-theme": ["tension", "theme"],
   "tension-maps-to-meta-cluster": ["tension", "metaCluster"],
+});
+const EPISODE_RELATIONSHIP_SCHEMA = Object.freeze({
+  "episode-participates-in-category": ["category", "direct-item-aggregation"],
+  "episode-coded-to-cluster": ["cluster", "direct-coded-relationship"],
+  "episode-derived-to-meta-cluster": ["metaCluster", "derived-through-cluster-membership"],
+  "episode-derived-to-theme": ["theme", "derived-analytical-connection"],
+  "episode-has-theme-lineage": ["theme", "direct-item-lineage"],
+  "episode-has-tension-lineage": ["tension", "direct-item-lineage"],
 });
 const DEFAULT_TITLE = "PSYWERX Cognitive Security Practitioner Discourse Map";
 
@@ -237,6 +257,133 @@ function entityChipList(type, ids, emptyMessage) {
   return wrapper;
 }
 
+function episodeSort(left, right) {
+  const leftNumber = left.parsedEpisodeNumber;
+  const rightNumber = right.parsedEpisodeNumber;
+  if (hasValue(leftNumber) && hasValue(rightNumber) &&
+      Number(leftNumber) !== Number(rightNumber)) {
+    return Number(leftNumber) - Number(rightNumber);
+  }
+  if (hasValue(leftNumber)) return -1;
+  if (hasValue(rightNumber)) return 1;
+  return String(left.episodeTitle || "").localeCompare(String(right.episodeTitle || ""));
+}
+
+function episodeRelationshipsForTarget(targetType, targetId) {
+  return relationshipsTo(targetType, targetId).filter(function (relationship) {
+    return relationship.sourceType === "episode";
+  }).sort(function (left, right) {
+    return episodeSort(
+      getEntity("episode", left.sourceId),
+      getEntity("episode", right.sourceId)
+    );
+  });
+}
+
+function relationshipSupportLabel(relationship) {
+  if (relationship.relationshipType === "episode-participates-in-category") {
+    return formatNumber(relationship.itemCount) + " retained items";
+  }
+  if (relationship.relationshipType === "episode-coded-to-cluster") {
+    return formatNumber(relationship.primaryCount) + " primary · " +
+      formatNumber(relationship.secondaryCount) + " secondary · " +
+      formatNumber(relationship.weightedCount) + " weighted";
+  }
+  if (relationship.relationshipType === "episode-derived-to-meta-cluster" ||
+      relationship.targetType === "theme") {
+    const prefix = relationship.relationshipSemantics === "direct-item-lineage"
+      ? "Direct lineage · " + formatNumber(relationship.itemCount) + " items · "
+      : "Derived · ";
+    return prefix + formatNumber(relationship.weightedCount) + " weighted cluster support";
+  }
+  if (relationship.relationshipType === "episode-has-tension-lineage") {
+    return formatNumber(relationship.itemCount) + " direct-lineage items";
+  }
+  return sentenceCase(relationship.relationshipSemantics || "semantic connection");
+}
+
+function episodeRelationshipList(relationships, targetType, emptyMessage) {
+  const list = element("ul", "relationship-list");
+  asArray(relationships).slice().sort(function (left, right) {
+    return entityName(targetType, getEntity(targetType, left.targetId)).localeCompare(
+      entityName(targetType, getEntity(targetType, right.targetId))
+    );
+  }).forEach(function (relationship) {
+    const target = getEntity(targetType, relationship.targetId);
+    if (!target) return;
+    const item = element("li", "relationship-list__item");
+    item.appendChild(entityLink(
+      targetType,
+      relationship.targetId,
+      entityName(targetType, target)
+    ));
+    item.appendChild(element(
+      "span", "relationship-list__meta", relationshipSupportLabel(relationship)
+    ));
+    list.appendChild(item);
+  });
+  if (!list.children.length) {
+    list.appendChild(element("li", "quiet-note", emptyMessage));
+  }
+  return list;
+}
+
+function episodeCoverageSection(targetType, targetId, options) {
+  const settings = options || {};
+  const relationships = episodeRelationshipsForTarget(targetType, targetId);
+  const block = element("section", "overview-section episode-coverage");
+  block.appendChild(element("h2", "section-title", settings.title || "Episode coverage"));
+  block.appendChild(element(
+    "p", "section-intro",
+    relationships.length
+      ? formatNumber(relationships.length) +
+        " canonical public-feed releases have the governed relationship shown below. " +
+        (settings.caveat || "Counts describe corpus coverage, not importance or evidence strength.")
+      : (settings.emptyMessage ||
+        "No retained canonical episode has this direct or governed derived relationship. No link has been inferred.")
+  ));
+  if (!relationships.length) return block;
+
+  const list = element("ul", "relationship-list relationship-list--episodes");
+  const controls = element("div", "load-more-row");
+  let visible = 12;
+  function draw(focusControl) {
+    list.replaceChildren();
+    relationships.slice(0, visible).forEach(function (relationship) {
+      const episode = getEntity("episode", relationship.sourceId);
+      if (!episode) return;
+      const item = element("li", "relationship-list__item");
+      item.appendChild(entityLink("episode", episode.episodeId, episode.episodeTitle));
+      item.appendChild(element(
+        "span", "relationship-list__meta", relationshipSupportLabel(relationship)
+      ));
+      list.appendChild(item);
+    });
+    controls.replaceChildren();
+    if (visible < relationships.length) {
+      const more = element(
+        "button", "text-button",
+        "Show more related episodes (" +
+          formatNumber(relationships.length - visible) + " remaining)"
+      );
+      more.type = "button";
+      more.addEventListener("click", function () {
+        visible += 12;
+        draw(true);
+      });
+      controls.appendChild(more);
+      if (focusControl) more.focus();
+    } else if (focusControl && list.lastElementChild) {
+      const lastLink = list.lastElementChild.querySelector("a");
+      if (lastLink) lastLink.focus();
+    }
+  }
+  draw(false);
+  block.appendChild(list);
+  block.appendChild(controls);
+  return block;
+}
+
 function textList(values, ordered) {
   const list = element(ordered ? "ol" : "ul", ordered ? "numbered-list" : "plain-list");
   asArray(values).forEach(function (value) {
@@ -320,7 +467,10 @@ function setBreadcrumbs(items) {
     return;
   }
   viewBreadcrumbs.hidden = false;
-  items.forEach(function (item, index) {
+  const entries = [
+    { label: "Cognitive Security Map", view: "overview" },
+  ].concat(items);
+  entries.forEach(function (item, index) {
     if (index) {
       viewBreadcrumbs.appendChild(element("span", "breadcrumb-separator", "›"));
     }
@@ -376,6 +526,7 @@ function updateActiveNavigation(view) {
     const isActive = link.dataset.viewLink === view ||
       (view === "theme" && link.dataset.viewLink === "themes") ||
       (view === "tension" && link.dataset.viewLink === "tensions") ||
+      (view === "episode" && link.dataset.viewLink === "episodes") ||
       (view === "meta-narrative" && link.dataset.viewLink === "narratives") ||
       (view === "scenario" && link.dataset.viewLink === "scenarios") ||
       (["category", "meta-cluster", "cluster", "category-finding"].includes(view) &&
@@ -469,7 +620,8 @@ function validatePublicData() {
     "categories.json", "clusters.json", "cluster_summaries.json",
     "meta_clusters.json", "themes.json", "tensions.json",
     "meta_narratives.json", "category_findings.json", "scenarios.json",
-    "episodes.json", "relationships.json",
+    "episodes.json", "episode_summaries.json", "episode_relationships.json",
+    "relationships.json",
   ].forEach(requireArray);
 
   const qa = data["qa_report.json"];
@@ -519,6 +671,24 @@ function validatePublicData() {
   if (summaryMap.size !== entityMaps.cluster.size) {
     throw new Error("Every public Cluster must have exactly one Cluster summary.");
   }
+  const episodeSummaryMap = uniqueIdMap(
+    data["episode_summaries.json"], "episodeId", "Episode summary"
+  );
+  if (episodeSummaryMap.size !== entityMaps.episode.size) {
+    throw new Error("Every canonical public Episode must have exactly one grounded summary.");
+  }
+  data["episodes.json"].forEach(function (episode) {
+    const summary = episodeSummaryMap.get(episode.episodeId);
+    if (!summary || !String(summary.summary || "").trim() ||
+        !String(summary.whyItMatters || "").trim() ||
+        asArray(summary.keyTopics).length < 3 || asArray(summary.keyTopics).length > 6 ||
+        Number(summary.sourceItemCount) <= 0 ||
+        Number(summary.sourceItemCount) !== Number(summary.focalItemCount) +
+          Number(summary.contextualItemCount) ||
+        Number(summary.sourceItemCount) !== Number(episode.reconciledSensitivityItemCount)) {
+      throw new Error("Episode summary grounding metadata is invalid for " + episode.episodeId + ".");
+    }
+  });
 
   data["clusters.json"].forEach(function (record) {
     if (!entityMaps.category.has(record.categoryId)) {
@@ -683,6 +853,42 @@ function validatePublicData() {
     relationshipKeys.add(key);
   });
 
+  const episodeRelationshipIds = new Set();
+  data["episode_relationships.json"].forEach(function (relationship) {
+    const contract = EPISODE_RELATIONSHIP_SCHEMA[relationship.relationshipType];
+    if (!contract) {
+      throw new Error(
+        "Unsupported standalone episode relationship type: " +
+        relationship.relationshipType + "."
+      );
+    }
+    if (episodeRelationshipIds.has(relationship.relationshipId)) {
+      throw new Error("Duplicate episode relationship ID: " + relationship.relationshipId + ".");
+    }
+    episodeRelationshipIds.add(relationship.relationshipId);
+    if (relationship.sourceType !== "episode" ||
+        relationship.targetType !== contract[0] ||
+        relationship.relationshipSemantics !== contract[1] ||
+        !entityMaps.episode.has(relationship.sourceId) ||
+        !entityMaps[relationship.targetType].has(relationship.targetId)) {
+      throw new Error(
+        "Episode relationship " + relationship.relationshipId +
+        " has invalid semantics or an unresolved endpoint."
+      );
+    }
+    if (relationship.relationshipType === "episode-coded-to-cluster") {
+      const primary = Number(relationship.primaryCount || 0);
+      const secondary = Number(relationship.secondaryCount || 0);
+      if (primary + secondary <= 0 ||
+          Number(relationship.weightedCount) !== 2 * primary + secondary) {
+        throw new Error(
+          "Episode cluster relationship " + relationship.relationshipId +
+          " has invalid support counts."
+        );
+      }
+    }
+  });
+
   function requireRelationship(type, sourceType, sourceId, targetType, targetId) {
     const key = [type, sourceType + ":" + sourceId, targetType + ":" + targetId].join("|");
     if (!relationshipKeys.has(key)) {
@@ -724,6 +930,12 @@ function validatePublicData() {
 }
 
 function buildIndexes() {
+  indexes.episodeSummary = uniqueIdMap(
+    data["episode_summaries.json"], "episodeId", "Episode summary"
+  );
+  data["episodes.json"].forEach(function (episode) {
+    Object.assign(episode, indexes.episodeSummary.get(episode.episodeId));
+  });
   indexes.category = uniqueIdMap(data["categories.json"], "categoryId", "Category");
   indexes.cluster = uniqueIdMap(data["clusters.json"], "clusterId", "Cluster");
   indexes.clusterSummary = uniqueIdMap(
@@ -791,6 +1003,7 @@ function buildIndexes() {
       reconciliationCounts.reconciledSensitivityContextualItems
     ),
     relationships: data["relationships.json"].length,
+    episodeRelationships: data["episode_relationships.json"].length,
     items: Object.values(coverageByCategory).reduce(function (total, value) {
       return total + Number(value || 0);
     }, 0),
@@ -823,7 +1036,7 @@ function buildIndexes() {
     }
     indexes.findingsByCategory.get(record.categoryId).push(record);
   });
-  data["relationships.json"].forEach(function (record) {
+  data["relationships.json"].concat(data["episode_relationships.json"]).forEach(function (record) {
     const sourceKey = record.sourceType + ":" + record.sourceId;
     const targetKey = record.targetType + ":" + record.targetId;
     if (!indexes.relationshipsBySource.has(sourceKey)) {
@@ -897,6 +1110,9 @@ function relatedSourceIds(type, id, sourceType, relationshipType) {
 function categoryIdsForRecord(type, record) {
   if (!record) return [];
   if (type === "category") return [record.categoryId];
+  if (type === "episode") {
+    return relatedTargetIds("episode", record.episodeId, "category");
+  }
   if (type === "cluster" || type === "metaCluster" || type === "categoryFinding") {
     return record.categoryId ? [record.categoryId] : [];
   }
@@ -906,6 +1122,9 @@ function categoryIdsForRecord(type, record) {
 function metaIdsForRecord(type, record) {
   if (!record) return [];
   if (type === "metaCluster") return [record.metaClusterId];
+  if (type === "episode") {
+    return relatedTargetIds("episode", record.episodeId, "metaCluster");
+  }
   if (type === "cluster") {
     const meta = indexes.metaByCluster.get(record.clusterId);
     return meta ? [meta.metaClusterId] : [];
@@ -926,6 +1145,9 @@ function metaIdsForRecord(type, record) {
 function clusterIdsForRecord(type, record) {
   if (!record) return [];
   if (type === "cluster") return [record.clusterId];
+  if (type === "episode") {
+    return relatedTargetIds("episode", record.episodeId, "cluster");
+  }
   if (type === "metaCluster") return asArray(record.includedClusterIds);
   if (type === "theme") return asArray(record.linkedClusterIds);
   if (type === "tension") return asArray(record.clusterIds);
@@ -967,7 +1189,9 @@ function buildSearchDocuments() {
       "name", "coreScenario", "drivingForces", "strategicImplications",
       "operationalImplications", "researchQuestions", "alternativeOutcomes",
     ]],
-    ["episode", data["episodes.json"], ["episodeTitle", "podcast"]],
+    ["episode", data["episodes.json"], [
+      "episodeTitle", "podcast", "summary", "whyItMatters", "keyTopics",
+    ]],
   ];
   const documents = [];
   specs.forEach(function (spec) {
@@ -1031,7 +1255,7 @@ function populateSearchFilters() {
   allTypes.value = "";
   searchEntityType.appendChild(allTypes);
   SEARCH_ENTITY_TYPES.forEach(function (type) {
-    const option = element("option", null, ENTITY_LABELS[type]);
+    const option = element("option", null, SEARCH_TYPE_LABELS[type]);
     option.value = type;
     searchEntityType.appendChild(option);
   });
@@ -1150,6 +1374,7 @@ async function renderRoute(options) {
   const renderers = {
     overview: renderOverview,
     browse: renderBrowse,
+    episodes: renderEpisodes,
     category: renderCategory,
     "meta-cluster": renderMetaCluster,
     cluster: renderCluster,
@@ -1168,6 +1393,9 @@ async function renderRoute(options) {
   };
   renderers[route.view](route);
   if (token !== routeRenderToken) return;
+  if (route.id && ROUTE_ENTITIES[route.view]) {
+    renderCopyLinkAction();
+  }
   if (settings.focus !== false) focusViewHeading();
   appStatus.textContent = viewTitle.textContent + " loaded.";
 }
@@ -1349,6 +1577,7 @@ function renderOverview() {
     [indexes.counts.sourceIdentities, "historical transcript / source identities"],
     [indexes.counts.items, "original analytic extraction items"],
     [indexes.counts.sensitivityItems, "reconciled sensitivity items"],
+    [indexes.counts.focalCategories, "focal analytical categories"],
     [indexes.counts.focalItems, "focal items"],
     [indexes.counts.clusters, "intermediate clusters"],
     [indexes.counts.metaClusters, "meta-clusters"],
@@ -1372,6 +1601,35 @@ function renderOverview() {
       " public-feed episodes. Neither denominator replaces the other.",
     "quiet"
   ));
+
+  const entryPoints = element("section", "overview-section");
+  entryPoints.appendChild(element("h2", "section-title", "Choose an entry point"));
+  const entryGrid = element("div", "map-card-grid map-card-grid--three");
+  const browseEntry = cardShell(
+    "Categories",
+    viewLink("browse", "Browse the field", "entity-link"),
+    "Move from the seven focal categories into governed meta-clusters and concept clusters.",
+    "entry-point"
+  );
+  entryGrid.appendChild(browseEntry);
+  const crossEntry = cardShell(
+    "Themes & tensions",
+    viewLink("themes", "See what cuts across the field", "entity-link"),
+    "Trace cross-category themes and the debates that preserve competing assumptions.",
+    "entry-point"
+  );
+  crossEntry.appendChild(viewLink("tensions", "Explore tensions & debates", "text-link"));
+  entryGrid.appendChild(crossEntry);
+  const futuresEntry = cardShell(
+    "Narratives & scenarios",
+    viewLink("narratives", "Explore where the discourse points", "entity-link"),
+    "Review higher-order storylines and plausible futures without treating scenarios as predictions.",
+    "entry-point"
+  );
+  futuresEntry.appendChild(viewLink("scenarios", "Explore future scenarios", "text-link"));
+  entryGrid.appendChild(futuresEntry);
+  entryPoints.appendChild(entryGrid);
+  content.appendChild(entryPoints);
 
   const hierarchy = element("section", "overview-section hierarchy-explainer");
   hierarchy.appendChild(element("h2", "section-title", "How the analytical structure works"));
@@ -1513,6 +1771,10 @@ function renderCategory(route) {
       "quiet"
     ));
     content.appendChild(coverageChart([category]));
+    content.appendChild(episodeCoverageSection(
+      "category", category.categoryId,
+      { caveat: "Category counts aggregate actual retained canonical structured items." }
+    ));
     viewContent.appendChild(content);
     return;
   }
@@ -1545,6 +1807,22 @@ function renderCategory(route) {
   metaSection.appendChild(metaGrid);
   content.appendChild(metaSection);
 
+  const clusterSection = element("section", "overview-section");
+  clusterSection.appendChild(element("h2", "section-title", "Intermediate clusters"));
+  clusterSection.appendChild(element(
+    "p", "section-intro",
+    "Every governed cluster in this category is linked here, including records without a current meta-cluster assignment."
+  ));
+  const clusterGrid = element("div", "map-card-grid");
+  clusters.forEach(function (cluster) {
+    clusterGrid.appendChild(clusterCard(
+      cluster,
+      indexes.unmappedClusterIds.has(cluster.clusterId) ? "unmapped" : null
+    ));
+  });
+  clusterSection.appendChild(clusterGrid);
+  content.appendChild(clusterSection);
+
   if (unmapped.length) {
     const unmappedSection = element("section", "overview-section governed-unresolved");
     unmappedSection.appendChild(element(
@@ -1554,11 +1832,11 @@ function renderCategory(route) {
       "p", "section-intro",
       "These source clusters do not currently have a meta-cluster mapping. They remain fully discoverable; no assignment has been guessed."
     ));
-    const unmappedGrid = element("div", "map-card-grid");
-    unmapped.forEach(function (cluster) {
-      unmappedGrid.appendChild(clusterCard(cluster, "unmapped"));
-    });
-    unmappedSection.appendChild(unmappedGrid);
+    unmappedSection.appendChild(entityChipList(
+      "cluster",
+      unmapped.map(function (cluster) { return cluster.clusterId; }),
+      "No unmapped clusters."
+    ));
     content.appendChild(unmappedSection);
   }
 
@@ -1588,6 +1866,11 @@ function renderCategory(route) {
   split.appendChild(tensionColumn);
   connections.appendChild(split);
   content.appendChild(connections);
+
+  content.appendChild(episodeCoverageSection(
+    "category", category.categoryId,
+    { caveat: "Category counts aggregate actual retained canonical structured items." }
+  ));
 
   viewContent.appendChild(content);
 }
@@ -1674,6 +1957,13 @@ function renderMetaCluster(route) {
   split.appendChild(tensions);
   connections.appendChild(split);
   content.appendChild(connections);
+  content.appendChild(episodeCoverageSection(
+    "metaCluster", meta.metaClusterId,
+    {
+      caveat: "Coverage is derived only through actual episode cluster support and governed cluster membership.",
+      emptyMessage: "No episode resolves through an actual cluster into this meta-cluster. This may reflect the governed unresolved membership condition.",
+    }
+  ));
   viewContent.appendChild(content);
 }
 
@@ -1752,6 +2042,11 @@ function renderCluster(route) {
       "Secondary count",
       "Items where this cluster represented substantive conceptual adjacency."
     ));
+    counts.appendChild(countMetric(
+      summary.weightedCount,
+      "Weighted count",
+      "Two times the primary count plus the secondary count."
+    ));
     lead.appendChild(counts);
   }
   content.appendChild(lead);
@@ -1762,7 +2057,7 @@ function renderCluster(route) {
     synthesis.appendChild(element("p", null, summary.summary));
     const synthesisGrid = element("div", "detail-grid");
     appendChildren(synthesisGrid, [
-      section("Strategic significance", summary.strategicSignificance),
+      section("Why this matters", summary.strategicSignificance),
       section("Operational implications", summary.operationalImplications),
       section(
         "Primary-versus-secondary distinction",
@@ -1846,6 +2141,11 @@ function renderCluster(route) {
   columns.appendChild(findingColumn);
   related.appendChild(columns);
   content.appendChild(related);
+
+  content.appendChild(episodeCoverageSection(
+    "cluster", cluster.clusterId,
+    { caveat: "Each relationship corresponds to at least one actual retained primary or secondary item code; weighted counts use 2:1 weighting." }
+  ));
 
   content.appendChild(cautionBox(
     "Public evidence boundary",
@@ -1976,11 +2276,11 @@ function renderTheme(route) {
   content.appendChild(lead);
 
   const logic = element("section", "overview-section");
-  logic.appendChild(element("h2", "section-title", "Cross-category logic"));
+  logic.appendChild(element("h2", "section-title", "Theme summary"));
   logic.appendChild(element("p", null, theme.crossCategoryLogic));
   const grid = element("div", "detail-grid");
   appendChildren(grid, [
-    section("Strategic significance", theme.strategicSignificance),
+    section("Why this matters", theme.strategicSignificance),
     section("Operational implications", theme.operationalImplications),
     section("Boundary conditions", theme.boundaryConditions),
   ]);
@@ -2009,6 +2309,13 @@ function renderTheme(route) {
   });
   mapped.appendChild(columns);
   content.appendChild(mapped);
+
+  content.appendChild(episodeCoverageSection(
+    "theme", theme.themeId,
+    {
+      caveat: "Direct lineage is labeled separately from connections derived through actual coded clusters; neither establishes consensus or causal influence.",
+    }
+  ));
 
   content.appendChild(cautionBox(
     "Evidence publication boundary",
@@ -2108,6 +2415,16 @@ function renderTension(route) {
   ]));
   content.appendChild(interpret);
 
+  const significance = element("section", "overview-section");
+  significance.appendChild(element("h2", "section-title", "Strategic significance"));
+  significance.appendChild(element("p", null, tension.description));
+  significance.appendChild(element(
+    "p",
+    "evidence-boundary-note",
+    "The governed tension record has no separate strategic-significance field; this section uses its source description without adding an inferred claim."
+  ));
+  content.appendChild(significance);
+
   const context = element("section", "overview-section");
   context.appendChild(element("h2", "section-title", "Where this tension is represented"));
   context.appendChild(definitionList([
@@ -2129,6 +2446,14 @@ function renderTension(route) {
     },
   ], "metadata-list metadata-list--wide"));
   content.appendChild(context);
+
+  content.appendChild(episodeCoverageSection(
+    "tension", tension.tensionId,
+    {
+      caveat: "Only direct retained-item evidence lineage is published. A relationship does not mean the episode or speaker endorses either pole.",
+      emptyMessage: "No retained canonical item has direct evidence lineage to this tension. Broad derived closures are intentionally not published.",
+    }
+  ));
 
   const labels = element("section", "overview-section");
   labels.appendChild(element("h2", "section-title", "Source synthesis labels"));
@@ -2419,7 +2744,7 @@ function renderScenario(route) {
 
   const content = fragment();
   const disclaimer = element("div", "scenario-disclaimer");
-  disclaimer.appendChild(element("strong", null, "Plausible scenario — not a prediction."));
+  disclaimer.appendChild(element("strong", null, "Plausibility exercise — not a prediction."));
   disclaimer.appendChild(element(
     "span", null,
     " Use this scenario to examine assumptions, indicators, and possible responses."
@@ -2501,8 +2826,15 @@ function renderScenario(route) {
 
 function textMatchesQuery(text, query) {
   if (!query) return true;
-  if (query.length > 2 || query.includes(" ")) return text.includes(query);
-  return text.split(/[^a-z0-9]+/).includes(query);
+  const textTokens = new Set(text.split(/[^a-z0-9]+/).filter(Boolean));
+  const queryTokens = query.split(/[^a-z0-9]+/).filter(Boolean);
+  if (queryTokens.length === 1 && queryTokens[0].length <= 2) {
+    return textTokens.has(queryTokens[0]);
+  }
+  if (text.includes(query)) return true;
+  return queryTokens.length > 0 && queryTokens.every(function (token) {
+    return textTokens.has(token);
+  });
 }
 
 function searchRank(documentRecord, query) {
@@ -2564,6 +2896,46 @@ function activeFilterChip(label, value) {
   return item;
 }
 
+async function copyCurrentLink() {
+  const value = window.location.href;
+  if (navigator.clipboard && typeof navigator.clipboard.writeText === "function") {
+    try {
+      await navigator.clipboard.writeText(value);
+      return true;
+    } catch (_error) {
+      // Continue to the synchronous selection fallback below.
+    }
+  }
+  const field = element("textarea", "clipboard-fallback");
+  field.value = value;
+  field.setAttribute("readonly", "");
+  field.setAttribute("aria-hidden", "true");
+  document.body.appendChild(field);
+  field.select();
+  field.setSelectionRange(0, value.length);
+  let copied = false;
+  try {
+    copied = document.execCommand("copy");
+  } catch (_error) {
+    copied = false;
+  }
+  field.remove();
+  return copied;
+}
+
+function renderCopyLinkAction() {
+  const existing = viewActions.querySelector("[data-copy-link]");
+  if (existing) return;
+  const button = element("button", "secondary-button", "Copy Link");
+  button.type = "button";
+  button.dataset.copyLink = "true";
+  button.addEventListener("click", async function () {
+    const copied = await copyCurrentLink();
+    showNotice(copied ? "Link copied" : "Copy the current URL from the browser address bar.");
+  });
+  viewActions.appendChild(button);
+}
+
 function renderSearchResults(results, query, container) {
   let visible = 60;
   function draw(focusResultIndex) {
@@ -2595,11 +2967,132 @@ function renderSearchResults(results, query, container) {
   draw();
 }
 
+function renderEpisodes(route) {
+  const query = normalizeText(route.q || "");
+  const episodes = data["episodes.json"].slice().sort(function (left, right) {
+    const leftNumber = left.parsedEpisodeNumber;
+    const rightNumber = right.parsedEpisodeNumber;
+    if (leftNumber !== null && leftNumber !== undefined &&
+        rightNumber !== null && rightNumber !== undefined &&
+        Number(leftNumber) !== Number(rightNumber)) {
+      return Number(leftNumber) - Number(rightNumber);
+    }
+    if (leftNumber !== null && leftNumber !== undefined) return -1;
+    if (rightNumber !== null && rightNumber !== undefined) return 1;
+    return String(left.episodeTitle || "").localeCompare(String(right.episodeTitle || ""));
+  }).filter(function (episode) {
+    if (!query) return true;
+    return textMatchesQuery(normalizeText([
+      episode.episodeTitle,
+      episode.podcast,
+      episode.summary,
+      episode.whyItMatters,
+      asArray(episode.keyTopics).join(" "),
+      hasValue(episode.parsedEpisodeNumber) ? String(episode.parsedEpisodeNumber) : "",
+    ].join(" ")), query);
+  });
+  setHeader(
+    "Public episode archive",
+    "Episodes",
+    "Browse grounded, public-safe summaries for all canonical public-feed releases. Raw items, transcripts, private source identities, and excluded aliases remain outside the public package.",
+    query
+      ? formatNumber(episodes.length) + " matching releases"
+      : formatNumber(indexes.counts.episodes) + " canonical public-feed releases"
+  );
+  setBreadcrumbs([{ label: "Episodes", current: true }]);
+
+  const form = element("form", "episode-filter");
+  form.setAttribute("role", "search");
+  const label = element("label", null);
+  label.appendChild(element("span", null, "Search episodes"));
+  const input = element("input");
+  input.type = "search";
+  input.name = "q";
+  input.value = route.q || "";
+  input.placeholder = "Search titles, summaries, or key topics";
+  label.appendChild(input);
+  form.appendChild(label);
+  const submit = element("button", "secondary-button", "Search");
+  submit.type = "submit";
+  form.appendChild(submit);
+  if (query) {
+    const clear = viewLink("episodes", "Clear", "text-link");
+    form.appendChild(clear);
+  }
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+    navigate({ view: "episodes", q: input.value.trim() });
+  });
+  viewContent.appendChild(form);
+
+  const resultStatus = element(
+    "p", "section-intro",
+    formatNumber(episodes.length) + (episodes.length === 1 ? " release" : " releases") +
+      (query ? " match this filter." : " available.")
+  );
+  resultStatus.setAttribute("role", "status");
+  viewContent.appendChild(resultStatus);
+  if (!episodes.length) {
+    viewContent.appendChild(cautionBox(
+      "No episode matches this search",
+      "Try a title word, topic, acronym, or a broader phrase.",
+      "quiet"
+    ));
+    return;
+  }
+
+  const container = element("div", "map-card-grid");
+  const controls = element("div", "load-more-row");
+  let visible = 36;
+  function draw() {
+    container.replaceChildren();
+    episodes.slice(0, visible).forEach(function (episode) {
+      const numberLabel = hasValue(episode.parsedEpisodeNumber)
+        ? "Episode #" + String(episode.parsedEpisodeNumber).padStart(3, "0")
+        : "Unnumbered public release";
+      const card = cardShell(
+        numberLabel,
+        entityLink("episode", episode.episodeId, episode.episodeTitle),
+        truncate(episode.summary, 220),
+        "episode"
+      );
+      const metrics = element("div", "card-metrics");
+      asArray(episode.keyTopics).slice(0, 3).forEach(function (topic) {
+        metrics.appendChild(chip(topic, "quiet"));
+      });
+      card.appendChild(metrics);
+      container.appendChild(card);
+    });
+    controls.replaceChildren();
+    if (visible < episodes.length) {
+      const more = element(
+        "button", "secondary-button",
+        "Show more episodes (" + formatNumber(episodes.length - visible) + " remaining)"
+      );
+      more.type = "button";
+      more.addEventListener("click", function () {
+        visible += 36;
+        draw();
+        const nextControl = controls.querySelector("button");
+        if (nextControl) nextControl.focus();
+        else if (container.lastElementChild) {
+          const lastLink = container.lastElementChild.querySelector("a");
+          if (lastLink) lastLink.focus();
+        }
+      });
+      controls.appendChild(more);
+    }
+  }
+  draw();
+  viewContent.appendChild(container);
+  viewContent.appendChild(controls);
+}
+
 function renderSearch(route) {
   setHeader(
     "Search the governed public package",
     "Search the discourse map",
-    "Search names, definitions, syntheses, findings, scenarios, and episode titles. Full transcripts and the private item corpus are not searched.",
+    "Search names, definitions, syntheses, findings, scenarios, episode summaries, and episode key topics. Full transcripts and the private item corpus are not searched.",
     "Public map entities and episode catalog only"
   );
   setBreadcrumbs([{ label: "Search", current: true }]);
@@ -2679,29 +3172,127 @@ function renderSearch(route) {
 
 function renderEpisode(route) {
   const episode = getEntity("episode", route.id);
+  const episodeRelationships = relationshipsFrom("episode", episode.episodeId);
+  const byTargetType = function (targetType) {
+    return episodeRelationships.filter(function (relationship) {
+      return relationship.targetType === targetType;
+    });
+  };
+  const categoryRelationships = byTargetType("category");
+  const clusterRelationships = byTargetType("cluster");
+  const metaRelationships = byTargetType("metaCluster");
+  const themeRelationships = byTargetType("theme");
+  const tensionRelationships = byTargetType("tension");
+  const episodeLabel = hasValue(episode.parsedEpisodeNumber)
+    ? "Episode #" + String(episode.parsedEpisodeNumber).padStart(3, "0")
+    : "Unnumbered public release";
   setHeader(
-    "Corpus episode · " + episode.episodeId,
+    episodeLabel + " · " + episode.episodeId,
     episode.episodeTitle,
     episode.podcast || "Podcast episode retained in the public corpus catalog.",
-    formatNumber(episode.originalItemCount) + " original analytic items"
+    formatNumber(episode.sourceItemCount) + " retained canonical structured items"
   );
   setBreadcrumbs([
-    { label: "Search", view: "search" },
+    { label: "Episodes", view: "episodes" },
     { label: episode.episodeTitle, current: true },
   ]);
   const content = fragment();
   const lead = element("section", "detail-lead");
   lead.appendChild(definitionList([
+    {
+      label: "Episode number",
+      value: hasValue(episode.parsedEpisodeNumber)
+        ? episode.parsedEpisodeNumber
+        : "Not available",
+    },
     { label: "Episode ID", value: episode.episodeId },
     { label: "Podcast", value: episode.podcast },
     { label: "Historical source identities", value: formatNumber(episode.sourceIdentityCount) },
     { label: "Original analytic item count", value: formatNumber(episode.originalItemCount) },
     { label: "Reconciled sensitivity item count", value: formatNumber(episode.reconciledSensitivityItemCount) },
+    { label: "Summary method", value: episode.generationMethod },
   ]));
   content.appendChild(lead);
+
+  const summaryBlock = element("section", "overview-section");
+  summaryBlock.appendChild(element("h2", "section-title", "Episode summary"));
+  summaryBlock.appendChild(element("p", null, episode.summary));
+  content.appendChild(summaryBlock);
+
+  const topics = element("section", "overview-section");
+  topics.appendChild(element("h2", "section-title", "Key topics"));
+  topics.appendChild(element(
+    "p", "section-intro",
+    "These topics come from recurring coded clusters and retained canonical relevance tags."
+  ));
+  const topicList = element("div", "entity-chip-list");
+  asArray(episode.keyTopics).forEach(function (topic) {
+    topicList.appendChild(chip(topic));
+  });
+  topics.appendChild(topicList);
+  content.appendChild(topics);
+
+  const matters = element("section", "overview-section");
+  matters.appendChild(element("h2", "section-title", "Why this episode matters"));
+  matters.appendChild(element("p", null, episode.whyItMatters));
+  content.appendChild(matters);
+
+  const relationshipBlock = element("section", "overview-section");
+  relationshipBlock.appendChild(element("h2", "section-title", "Public-safe analytical relationships"));
+  relationshipBlock.appendChild(element(
+    "p",
+    "section-intro",
+    "Category and cluster links aggregate retained canonical items. Meta-cluster and theme links follow governed paths. Tensions appear only where retained items have direct tension-evidence lineage; no stance or endorsement is implied."
+  ));
+  const relationshipColumns = element("div", "connection-columns");
+  const categories = element("div");
+  categories.appendChild(element("h3", null, "Categories represented"));
+  categories.appendChild(episodeRelationshipList(
+    categoryRelationships, "category", "No retained canonical category support."
+  ));
+  relationshipColumns.appendChild(categories);
+  const metas = element("div");
+  metas.appendChild(element("h3", null, "Derived meta-clusters"));
+  metas.appendChild(episodeRelationshipList(
+    metaRelationships, "metaCluster", "No governed meta-cluster path is available."
+  ));
+  relationshipColumns.appendChild(metas);
+  const themes = element("div");
+  themes.appendChild(element("h3", null, "Safe themes"));
+  themes.appendChild(episodeRelationshipList(
+    themeRelationships, "theme", "No direct or governed derived theme path is available."
+  ));
+  relationshipColumns.appendChild(themes);
+  const tensions = element("div");
+  tensions.appendChild(element("h3", null, "Safe tensions"));
+  tensions.appendChild(episodeRelationshipList(
+    tensionRelationships,
+    "tension",
+    "No retained item from this episode has direct tension-evidence lineage."
+  ));
+  relationshipColumns.appendChild(tensions);
+  relationshipBlock.appendChild(relationshipColumns);
+  content.appendChild(relationshipBlock);
+
+  const clusterSection = element("section", "overview-section");
+  clusterSection.appendChild(element(
+    "h2", "section-title",
+    "Actual coded clusters (" + formatNumber(clusterRelationships.length) + ")"
+  ));
+  clusterSection.appendChild(element(
+    "p", "section-intro",
+    "Every listed cluster has retained primary or secondary item support. Weighted count uses the governed 2:1 primary-to-secondary rule."
+  ));
+  clusterSection.appendChild(episodeRelationshipList(
+    clusterRelationships,
+    "cluster",
+    "This episode has no focal cluster assignments."
+  ));
+  content.appendChild(clusterSection);
+
   content.appendChild(cautionBox(
     "Public corpus catalog only",
-    "This page identifies one canonical public-feed episode and keeps the historical and sensitivity denominators separate. Full transcript search, source-identity pairings, item-level evidence, quotations, speakers, and coding rationales are outside the current publication boundary.",
+    "This page summarizes one canonical public-feed release from its selected structured historical source. Full transcript search, raw items, source-identity pairings, quotations, speakers, raw model output, and coding rationales remain private. Frequency reflects discourse prevalence within this corpus, not importance, consensus, or evidence strength.",
     "quiet"
   ));
   viewContent.appendChild(content);
@@ -2725,6 +3316,13 @@ function renderMethodology() {
     return record.metaClusterId;
   }).join(", ");
   const unresolvedThemePlaceholderCount = qa.unresolvedThemeClusterEvidence.length;
+  const episodeRelationshipCounts = data["episode_relationships.json"].reduce(
+    function (counts, relationship) {
+      counts[relationship.relationshipType] =
+        Number(counts[relationship.relationshipType] || 0) + 1;
+      return counts;
+    }, {}
+  );
   setHeader(
     "How the map was produced and how to interpret it",
     "Methodology",
@@ -2780,7 +3378,7 @@ function renderMethodology() {
   const corpusGrid = element("div", "methodology-grid");
   corpusGrid.appendChild(methodologyCard(
     "Research purpose",
-    "The project maps recurring practitioner discourse across the corpus. It does not summarize each episode or treat an episode as one observation. Its purpose is to expose recurring concepts, structures, tensions, and possible implications for investigation."
+    "The project maps recurring practitioner discourse across the corpus and provides a grounded public summary for each canonical release. An episode is a publication and navigation unit, not one statistically independent analytical observation. The higher-order analysis still rests on structured items and governed coding."
   ));
   corpusGrid.appendChild(methodologyCard(
     "Transcript processing and unit of analysis",
@@ -2864,6 +3462,48 @@ function renderMethodology() {
   roles.appendChild(roleGrid);
   content.appendChild(roles);
 
+  const episodeProducts = element("section", "overview-section");
+  episodeProducts.appendChild(element(
+    "h2", "section-title", "Grounded episode products"
+  ));
+  const episodeProductGrid = element("div", "methodology-grid");
+  episodeProductGrid.appendChild(methodologyCard(
+    "Frozen episode summaries",
+    "Each of the 242 public summaries was authored only from the selected canonical source identity’s structured item summaries, categories, primary and secondary clusters, strategic significance, operational implications, relevance tags, and time horizons. Outside knowledge, transcripts, raw item text, and excluded aliases were not inputs. Accepted summaries are frozen; ordinary website builds validate and copy them without making an API call."
+  ));
+  episodeProductGrid.appendChild(methodologyCard(
+    "Direct category and cluster aggregation",
+    formatNumber(episodeRelationshipCounts["episode-participates-in-category"] || 0) +
+      " episode-category records aggregate retained items by category. " +
+      formatNumber(episodeRelationshipCounts["episode-coded-to-cluster"] || 0) +
+      " episode-cluster records reproduce every actual retained primary or secondary assignment combination, including exact 2:1 weighted counts."
+  ));
+  episodeProductGrid.appendChild(methodologyCard(
+    "Governed meta-cluster and theme derivation",
+    formatNumber(episodeRelationshipCounts["episode-derived-to-meta-cluster"] || 0) +
+      " episode-meta-cluster records follow actual supported clusters into governed membership. The " +
+      formatNumber(
+        Number(episodeRelationshipCounts["episode-derived-to-theme"] || 0) +
+        Number(episodeRelationshipCounts["episode-has-theme-lineage"] || 0)
+      ) +
+      " episode-theme pairs distinguish explicit item lineage from connections derived through governed cluster paths."
+  ));
+  episodeProductGrid.appendChild(methodologyCard(
+    "Conservative tension lineage",
+    formatNumber(episodeRelationshipCounts["episode-has-tension-lineage"] || 0) +
+      " episode-tension records have retained item evidence lineage. Broader theme/meta-cluster closure would connect every episode to every tension, so those analytically non-discriminating derived links are not published. A direct lineage does not indicate endorsement of either pole."
+  ));
+  episodeProductGrid.appendChild(methodologyCard(
+    "Public/private boundary",
+    "Public episode products contain canonical episode IDs, summaries, key topics, why-it-matters statements, public entity IDs, safe aggregate counts, and relationship semantics. They exclude item IDs and text, quotations, transcripts, source filenames, alias records, private notes, raw model output, credentials, review queues, and local paths."
+  ));
+  episodeProductGrid.appendChild(methodologyCard(
+    "Historical release and v2 work",
+    "This Explorer preserves the reconciled historical higher-order analysis. A separate full-v2 reanalysis is currently underway in another worktree; unfinished v2 outputs were not consumed by this release and will require their own governance before publication."
+  ));
+  episodeProducts.appendChild(episodeProductGrid);
+  content.appendChild(episodeProducts);
+
   const distinctions = element("section", "overview-section");
   distinctions.appendChild(element("h2", "section-title", "Four different signals"));
   distinctions.appendChild(element(
@@ -2941,6 +3581,12 @@ function renderMethodology() {
   ));
   traceability.appendChild(element(
     "p", null,
+    "A separate episode relationship product contains " +
+      formatNumber(indexes.counts.episodeRelationships) +
+      " public-safe records with explicit direct, derived, and aggregation semantics. Keeping it separate preserves the historical relationships graph byte-for-byte."
+  ));
+  traceability.appendChild(element(
+    "p", null,
     "The intended evidence chain is source identity to extracted item to primary/secondary assignment to cluster and, where source lineage exists, to meta-cluster, theme, tension, narrative, finding, or scenario. The public application joins governed records by stable ID, validates every public endpoint, and never guesses a link from similar wording. Greater abstraction means greater interpretive distance from the source."
   ));
   content.appendChild(traceability);
@@ -2948,6 +3594,11 @@ function renderMethodology() {
   const caveats = element("section", "overview-section");
   caveats.appendChild(element("h2", "section-title", "Interpretive cautions"));
   caveats.appendChild(textList([
+    "Practitioner discourse is not field consensus.",
+    "Frequency is not importance.",
+    "Co-occurrence is not causation.",
+    "A semantic relationship is not causal influence.",
+    "A scenario is not a prediction.",
     "One practitioner-facing podcast corpus is not representative of the entire cognitive-security field.",
     "Counts represent corpus discourse salience, not objective importance, prevalence, or consensus.",
     "Extracted items are interpretive units, not statistically independent observations.",
@@ -2975,6 +3626,10 @@ function installEventHandlers() {
   document.addEventListener("click", function (event) {
     const entityAnchor = event.target.closest("[data-entity-type][data-entity-id]");
     if (entityAnchor) {
+      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey ||
+          event.altKey || (entityAnchor.target && entityAnchor.target !== "_self")) {
+        return;
+      }
       const type = entityAnchor.dataset.entityType;
       const id = entityAnchor.dataset.entityId;
       if (ENTITY_ROUTES[type] && getEntity(type, id)) {
@@ -2985,12 +3640,20 @@ function installEventHandlers() {
     }
     const routeAnchor = event.target.closest("[data-route-view]");
     if (routeAnchor) {
+      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey ||
+          event.altKey || (routeAnchor.target && routeAnchor.target !== "_self")) {
+        return;
+      }
       event.preventDefault();
       navigate({ view: routeAnchor.dataset.routeView });
       return;
     }
     const viewAnchor = event.target.closest("[data-view-link]");
     if (viewAnchor) {
+      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey ||
+          event.altKey || (viewAnchor.target && viewAnchor.target !== "_self")) {
+        return;
+      }
       event.preventDefault();
       navigate({ view: viewAnchor.dataset.viewLink });
       return;
@@ -3018,8 +3681,12 @@ function installEventHandlers() {
         cluster: searchCluster.value,
       });
     });
-    searchForm.addEventListener("change", function () {
+    searchForm.addEventListener("change", function (event) {
       if (!initialized || parseRoute().view !== "search") return;
+      // Text queries are committed by the explicit Search submit. Ignoring the
+      // search input's blur/change event prevents two identical history entries
+      // when a user types and then activates the submit button.
+      if (event.target === searchInput) return;
       navigate({
         view: "search",
         q: searchInput.value.trim(),
@@ -3046,12 +3713,10 @@ function installEventHandlers() {
   }
   if (copyLinkButton) {
     copyLinkButton.addEventListener("click", async function () {
-      try {
-        await navigator.clipboard.writeText(window.location.href);
-        copyStatus.textContent = "Link copied.";
-      } catch (_error) {
-        copyStatus.textContent = "Copy the link from the browser address bar.";
-      }
+      const copied = await copyCurrentLink();
+      copyStatus.textContent = copied
+        ? "Link copied"
+        : "Copy the link from the browser address bar.";
     });
   }
 }

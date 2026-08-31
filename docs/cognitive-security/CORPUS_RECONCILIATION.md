@@ -49,9 +49,10 @@ provenance it can actually inspect.
 Raw transcripts, source-file inventories outside the governed public
 allowlist, normalized comparison strings, detailed pair evidence, transcript
 hashes, and source-level item records remain private. The existing public
-provenance contract retains only source-workbook basenames and SHA-256 integrity
-fingerprints; it does not expose workbook content or local paths. No API key,
-token, or credential is part of the reconciliation data or public package.
+provenance contract uses opaque `ART-*` identifiers, canonical roles, and safe
+aggregate QA only; it does not expose source-workbook filenames, exact source
+hashes, worksheet names, workbook content, or local paths. No API key, token,
+or credential is part of the reconciliation data or public package.
 
 ## What was reconciled
 
@@ -281,8 +282,9 @@ the decision, counts, rules, limitations, and governed reanalysis
 recommendation. The public reconciliation aggregate does not contain transcript
 details, source filenames, pair-level identity evidence, workbook hashes, item
 IDs, quotations, or private local paths. The separate governed manifest and QA
-products continue to publish source-workbook basenames and integrity fingerprints
-for reproducibility.
+products publish opaque artifact IDs, canonical roles, integrity-verification
+status, and aggregate dimensions. Exact names, hashes, and provenance remain
+in the ignored private normalized release for reproducibility.
 
 ## Reproducibility and change control
 
