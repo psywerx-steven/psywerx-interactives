@@ -232,8 +232,8 @@ PUBLIC_RECORD_ALLOWLISTS = {
     },
     "episodes": {
         "id", "episode_id", "podcast", "episode_title", "title",
-        "source_label", "item_count", "focal_item_count",
-        "contextual_item_count", "category_ids", "source_artifact_id",
+        "source_identity_count", "original_item_count",
+        "reconciled_sensitivity_item_count",
     },
     "relationships": {
         "id", "relationship_id", "source_type", "source_id", "target_type",
@@ -246,11 +246,41 @@ PUBLIC_RECORD_ALLOWLISTS = {
 # are allowlisted explicitly alongside the projection fields above.
 PUBLIC_DERIVED_RECORD_FIELDS = {
     "scenarios": {"pathway", "indicators", "actions", "forecastDisclaimer"},
-    "episodes": {"itemCount"},
+    "episodes": set(),
     "relationships": {
         "relationshipId", "relationshipType", "sourceId", "targetId",
         "interpretation",
     },
+}
+
+PUBLIC_RECONCILIATION_FIELDS = {
+    "schemaVersion",
+    "methodVersion",
+    "status",
+    "counts",
+    "interpretation",
+    "automaticRules",
+    "limitations",
+    "reanalysisRecommendation",
+}
+
+PUBLIC_RECONCILIATION_COUNT_FIELDS = {
+    "canonicalEpisodes",
+    "originalSourceIdentities",
+    "confirmedAliasGroups",
+    "sourceIdentitiesInConfirmedAliasGroups",
+    "excludedConfirmedAliasSourceIdentities",
+    "excludedNonEpisodeSourceIdentities",
+    "likelyAliasSourceIdentities",
+    "ambiguousSourceIdentities",
+    "unresolvedSourceIdentities",
+    "pendingDecisionRecords",
+    "originalItems",
+    "reconciledSensitivityItems",
+    "originalFocalItems",
+    "reconciledSensitivityFocalItems",
+    "originalContextualItems",
+    "reconciledSensitivityContextualItems",
 }
 
 PUBLIC_WRAPPER_KEYS = {
@@ -1215,6 +1245,118 @@ def _validate_public_relationships(
     return len(report.errors) - errors_before
 
 
+def _validate_public_corpus_reconciliation(
+    payload: Any, report: ValidationReport
+) -> int:
+    """Validate the deliberately small public reconciliation aggregate."""
+
+    errors_before = len(report.errors)
+    if not isinstance(payload, Mapping):
+        report.add(
+            "error",
+            "public_reconciliation_not_object",
+            "corpus_reconciliation.json must contain one aggregate object.",
+        )
+        return len(report.errors) - errors_before
+
+    unexpected = sorted(set(payload) - PUBLIC_RECONCILIATION_FIELDS)
+    missing = sorted(PUBLIC_RECONCILIATION_FIELDS - set(payload))
+    for field_name in unexpected:
+        report.add(
+            "error",
+            "public_reconciliation_field_not_allowlisted",
+            "Public reconciliation aggregate contains an unexpected field.",
+            field=field_name,
+        )
+    for field_name in missing:
+        report.add(
+            "error",
+            "public_reconciliation_field_missing",
+            "Public reconciliation aggregate is missing a required field.",
+            field=field_name,
+        )
+
+    counts = payload.get("counts")
+    if not isinstance(counts, Mapping):
+        report.add(
+            "error",
+            "public_reconciliation_counts_not_object",
+            "Public reconciliation counts must be an object.",
+        )
+    else:
+        unexpected_counts = sorted(
+            set(counts) - PUBLIC_RECONCILIATION_COUNT_FIELDS
+        )
+        missing_counts = sorted(
+            PUBLIC_RECONCILIATION_COUNT_FIELDS - set(counts)
+        )
+        for field_name in unexpected_counts:
+            report.add(
+                "error",
+                "public_reconciliation_count_not_allowlisted",
+                "Public reconciliation counts contain an unexpected field.",
+                field=field_name,
+            )
+        for field_name in missing_counts:
+            report.add(
+                "error",
+                "public_reconciliation_count_missing",
+                "Public reconciliation counts are missing a required field.",
+                field=field_name,
+            )
+        for field_name, value in counts.items():
+            if field_name in PUBLIC_RECONCILIATION_COUNT_FIELDS and (
+                isinstance(value, bool) or not isinstance(value, int) or value < 0
+            ):
+                report.add(
+                    "error",
+                    "public_reconciliation_count_invalid",
+                    "Public reconciliation counts must be non-negative integers.",
+                    field=field_name,
+                )
+
+    if payload.get("schemaVersion") != "1.1":
+        report.add(
+            "error",
+            "public_reconciliation_schema_mismatch",
+            "Public reconciliation aggregate must use Schema v1.1.",
+        )
+    if payload.get("status") not in {"complete", "human-review-required"}:
+        report.add(
+            "error",
+            "public_reconciliation_status_invalid",
+            "Public reconciliation status is not governed.",
+        )
+    if payload.get("reanalysisRecommendation") not in {
+        "full-pipeline-reanalysis-recommended",
+        "partial-count-and-coverage-remediation-warranted",
+        "human-adjudication-required-before-public-count-change",
+    }:
+        report.add(
+            "error",
+            "public_reanalysis_recommendation_invalid",
+            "Public reconciliation re-analysis recommendation is not governed.",
+        )
+
+    private_tokens = {
+        "sourceIdentityId",
+        "sourceFile",
+        "candidateCanonicalEpisodeId",
+        "mappingBasis",
+        "confidence",
+        "aliasGroupId",
+    }
+    for path, key, _value in _walk_keys(payload):
+        if key in private_tokens:
+            report.add(
+                "error",
+                "private_reconciliation_detail_published",
+                "Public reconciliation aggregate exposes private pair-level detail.",
+                path=".".join(path + (key,)),
+            )
+    return len(report.errors) - errors_before
+
+
 def validate_public_outputs(public_outputs: Mapping[str, Any]) -> ValidationReport:
     """Validate public JSON payloads against the conservative publication boundary."""
 
@@ -1261,14 +1403,24 @@ def validate_public_outputs(public_outputs: Mapping[str, Any]) -> ValidationRepo
                 )
 
     relationship_errors = _validate_public_relationships(public_outputs, report)
+    reconciliation_errors = 0
+    if "corpus_reconciliation.json" in public_outputs:
+        reconciliation_errors = _validate_public_corpus_reconciliation(
+            public_outputs["corpus_reconciliation.json"], report
+        )
     report.public_export_checks = {
         "files_checked": len(public_outputs),
         "forbidden_field_hits": len(forbidden_hits),
         "allowlist_violations": len(allowlist_hits),
         "xlsx_blob_hits": len(xlsx_blob_hits),
         "relationship_errors": relationship_errors,
+        "reconciliation_errors": reconciliation_errors,
         "passed": not (
-            forbidden_hits or allowlist_hits or xlsx_blob_hits or relationship_errors
+            forbidden_hits
+            or allowlist_hits
+            or xlsx_blob_hits
+            or relationship_errors
+            or reconciliation_errors
         ),
     }
     return report
@@ -1287,6 +1439,293 @@ def merge_reports(*reports: ValidationReport) -> ValidationReport:
         merged.unresolved_mappings.extend(report.unresolved_mappings)
         merged.public_export_checks.update(report.public_export_checks)
     return merged
+
+
+def validate_reconciliation_dataset(
+    historical_dataset: Mapping[str, Any],
+    reconciled_dataset: Mapping[str, Any],
+    private_payloads: Mapping[str, Any],
+    public_aggregate: Mapping[str, Any],
+) -> list[str]:
+    """Validate Schema v1.1 reconciliation without rewriting v1.0 history."""
+
+    errors: list[str] = []
+
+    def fail(message: str) -> None:
+        errors.append(message)
+
+    historical_episodes = list(historical_dataset.get("episodes", ()))
+    source_identities = list(
+        reconciled_dataset.get("episode_source_identities", ())
+    )
+    mappings = list(reconciled_dataset.get("episode_source_mappings", ()))
+    episodes = list(reconciled_dataset.get("episodes", ()))
+    flags = list(reconciled_dataset.get("episode_reconciliation_flags", ()))
+
+    historical_source_ids = [
+        str(row.get("episodeId") or "") for row in historical_episodes
+    ]
+    source_ids = [
+        str(row.get("sourceIdentityId") or "") for row in source_identities
+    ]
+    mapping_source_ids = [
+        str(row.get("sourceIdentityId") or "") for row in mappings
+    ]
+    episode_ids = [str(row.get("episodeId") or "") for row in episodes]
+
+    for label, values in (
+        ("historical source identity", historical_source_ids),
+        ("source identity", source_ids),
+        ("source mapping", mapping_source_ids),
+        ("canonical episode", episode_ids),
+    ):
+        if any(not value for value in values):
+            fail(f"A {label} has a blank stable ID.")
+        if len(values) != len(set(values)):
+            fail(f"Duplicate {label} IDs were generated.")
+
+    if set(source_ids) != set(historical_source_ids):
+        fail("Source-identity reconciliation dropped or invented a historical identity.")
+    if set(mapping_source_ids) != set(source_ids):
+        fail("Every source identity must have exactly one reconciliation mapping.")
+
+    allowed_statuses = {
+        "unique", "confirmed-alias", "likely-alias", "ambiguous",
+        "unresolved", "excluded-non-episode",
+    }
+    episode_id_set = set(episode_ids)
+    mapping_by_source = {
+        str(row.get("sourceIdentityId")): row for row in mappings
+    }
+    for row in mappings:
+        source_id = str(row.get("sourceIdentityId") or "")
+        status = str(row.get("mappingStatus") or "")
+        canonical_id = row.get("canonicalEpisodeId")
+        if status not in allowed_statuses:
+            fail(f"Source identity {source_id} has unsupported status {status!r}.")
+        if status in {"likely-alias", "ambiguous", "unresolved"} and row.get(
+            "collapseEligible"
+        ):
+            fail(f"Unconfirmed source identity {source_id} is collapse-eligible.")
+        if canonical_id and str(canonical_id) not in episode_id_set:
+            fail(f"Source identity {source_id} maps to an unknown canonical episode.")
+
+    source_membership_counts: Counter[str] = Counter()
+    for episode in episodes:
+        episode_id = str(episode.get("episodeId") or "")
+        canonical_source = str(episode.get("canonicalSourceIdentityId") or "")
+        source_members = [str(value) for value in episode.get("sourceIdentityIds", ())]
+        if canonical_source != episode_id:
+            fail(f"Canonical episode {episode_id} does not preserve its selected EPI ID.")
+        if canonical_source not in source_members or not source_members:
+            fail(f"Canonical episode {episode_id} has no canonical source member.")
+        if len(source_members) != len(set(source_members)):
+            fail(f"Canonical episode {episode_id} repeats a source identity.")
+        for source_id in source_members:
+            source_membership_counts[source_id] += 1
+            mapping = mapping_by_source.get(source_id)
+            if not mapping or str(mapping.get("canonicalEpisodeId") or "") != episode_id:
+                fail(
+                    f"Canonical episode {episode_id} has an inconsistent source mapping."
+                )
+        canonical_mapping = mapping_by_source.get(canonical_source, {})
+        episode_status = str(episode.get("reconciliationStatus") or "")
+        expected_role = (
+            "candidate"
+            if episode_status in {"likely-alias", "ambiguous", "unresolved"}
+            else "canonical"
+        )
+        if canonical_mapping.get("mappingRole") != expected_role:
+            fail(
+                f"Episode {episode_id} requires {expected_role!r} mapping role "
+                f"for reconciliation status {episode_status!r}."
+            )
+
+    for mapping in mappings:
+        source_id = str(mapping.get("sourceIdentityId") or "")
+        status = str(mapping.get("mappingStatus") or "")
+        if status == "excluded-non-episode":
+            if source_membership_counts[source_id]:
+                fail(f"Excluded source identity {source_id} appears in an episode.")
+            continue
+        if source_membership_counts[source_id] != 1:
+            fail(
+                f"Source identity {source_id} must appear exactly once in canonical "
+                "episode membership."
+            )
+        if status in {"likely-alias", "ambiguous", "unresolved"} and mapping.get(
+            "mappingRole"
+        ) != "candidate":
+            fail(f"Unconfirmed source identity {source_id} must have candidate role.")
+
+    historical_items = {
+        str(row.get("itemId")): row for row in historical_dataset.get("items", ())
+    }
+    reconciled_items = {
+        str(row.get("itemId")): row for row in reconciled_dataset.get("items", ())
+    }
+    if set(historical_items) != set(reconciled_items):
+        fail("Reconciliation changed the historical item ID set.")
+    for item_id, historical in historical_items.items():
+        reconciled = reconciled_items.get(item_id, {})
+        source_id = str(reconciled.get("sourceIdentityId") or "")
+        if source_id != str(historical.get("episodeId") or ""):
+            fail(f"Item {item_id} lost its historical source-identity provenance.")
+            continue
+        mapping = mapping_by_source.get(source_id)
+        if not mapping or reconciled.get("episodeId") != mapping.get(
+            "canonicalEpisodeId"
+        ):
+            fail(f"Item {item_id} has an inconsistent canonical episode mapping.")
+
+    required_private_files = {
+        "episode_source_reconciliation.json",
+        "alias_groups.json",
+        "reconciliation_review_queue.json",
+        "item_sensitivity_summary.json",
+        "cluster_sensitivity.json",
+        "higher_order_support_sensitivity.json",
+        "corpus_reconciliation_report.json",
+    }
+    if set(private_payloads) != required_private_files:
+        fail("Private reconciliation output set does not match the governed contract.")
+
+    alias_groups = private_payloads.get("alias_groups.json", [])
+    if not isinstance(alias_groups, list):
+        fail("alias_groups.json must contain a list.")
+        alias_groups = []
+    alias_group_ids = [str(group.get("aliasGroupId") or "") for group in alias_groups]
+    if any(not alias_group_id for alias_group_id in alias_group_ids):
+        fail("A confirmed alias group has a blank stable ID.")
+    if len(alias_group_ids) != len(set(alias_group_ids)):
+        fail("Duplicate confirmed alias-group IDs were generated.")
+    grouped_source_ids: set[str] = set()
+    for group in alias_groups:
+        alias_group_id = str(group.get("aliasGroupId") or "")
+        members = [str(member) for member in group.get("sourceIdentityIds", ())]
+        canonical_source = str(group.get("canonicalSourceIdentityId") or "")
+        if len(members) < 2:
+            fail("A confirmed alias group has fewer than two source identities.")
+        if len(members) != len(set(members)):
+            fail(f"Confirmed alias group {alias_group_id} repeats a source identity.")
+        overlapping = sorted(set(members) & grouped_source_ids)
+        if overlapping:
+            fail(
+                f"Confirmed alias groups overlap on source identities: "
+                f"{', '.join(overlapping)}."
+            )
+        grouped_source_ids.update(members)
+        if members.count(canonical_source) != 1:
+            fail("A confirmed alias group does not have exactly one canonical source.")
+        member_mappings = [mapping_by_source.get(member, {}) for member in members]
+        if any(row.get("mappingStatus") != "confirmed-alias" for row in member_mappings):
+            fail(f"Alias-group {alias_group_id} member lacks confirmed-alias status.")
+        if any(str(row.get("aliasGroupId") or "") != alias_group_id for row in member_mappings):
+            fail(f"Alias-group {alias_group_id} membership disagrees with its mappings.")
+        if sum(row.get("mappingRole") == "canonical" for row in member_mappings) != 1:
+            fail(f"Alias-group {alias_group_id} does not have one canonical mapping role.")
+        canonical_episode = str(group.get("canonicalEpisodeId") or "")
+        if any(
+            str(row.get("canonicalEpisodeId") or "") != canonical_episode
+            for row in member_mappings
+        ):
+            fail(f"Alias-group {alias_group_id} mappings target different episodes.")
+
+    confirmed_mapping_ids = {
+        str(row.get("sourceIdentityId") or "")
+        for row in mappings
+        if row.get("mappingStatus") == "confirmed-alias"
+    }
+    if grouped_source_ids != confirmed_mapping_ids:
+        fail("Confirmed-alias mappings and alias-group membership are not equivalent.")
+
+    review_queue = private_payloads.get("reconciliation_review_queue.json", [])
+    if not isinstance(review_queue, list):
+        fail("reconciliation_review_queue.json must contain a list.")
+        review_queue = []
+    pending_flags = [row for row in flags if row.get("status") == "pending"]
+    review_ids = [
+        str(row.get("episodeReconciliationFlagId") or "") for row in review_queue
+    ]
+    pending_ids = [
+        str(row.get("episodeReconciliationFlagId") or "") for row in pending_flags
+    ]
+    if any(not flag_id for flag_id in review_ids + pending_ids):
+        fail("A pending reconciliation flag or review record has a blank stable ID.")
+    if len(review_ids) != len(set(review_ids)) or len(pending_ids) != len(set(pending_ids)):
+        fail("Duplicate pending reconciliation flag IDs were generated.")
+    if set(review_ids) != set(pending_ids):
+        fail("The reconciliation review queue does not match pending flags.")
+    elif (
+        {str(row.get("episodeReconciliationFlagId") or ""): row for row in review_queue}
+        != {
+            str(row.get("episodeReconciliationFlagId") or ""): row
+            for row in pending_flags
+        }
+    ):
+        fail("The reconciliation review queue does not exactly preserve pending flags.")
+
+    counts = public_aggregate.get("counts", {})
+    if not isinstance(counts, Mapping):
+        fail("Public reconciliation aggregate has no counts object.")
+        counts = {}
+    expected_counts = {
+        "canonicalEpisodes": len(episodes),
+        "originalSourceIdentities": len(source_identities),
+        "confirmedAliasGroups": len(alias_groups),
+        "pendingDecisionRecords": len(review_queue),
+        "originalItems": len(historical_items),
+    }
+    for key, expected in expected_counts.items():
+        if counts.get(key) != expected:
+            fail(f"Public reconciliation count {key} does not reproduce exactly.")
+
+    item_summary = private_payloads.get("item_sensitivity_summary.json", {})
+    original_summary = item_summary.get("original", {}) if isinstance(
+        item_summary, Mapping
+    ) else {}
+    reconciled_summary = item_summary.get("reconciled", {}) if isinstance(
+        item_summary, Mapping
+    ) else {}
+    for key, public_key in (
+        ("items", "Items"),
+        ("focalItems", "FocalItems"),
+        ("contextualItems", "ContextualItems"),
+    ):
+        if counts.get(f"original{public_key}") != original_summary.get(key):
+            fail(f"Original sensitivity count {key} does not match the public aggregate.")
+        if counts.get(f"reconciledSensitivity{public_key}") != reconciled_summary.get(key):
+            fail(f"Reconciled sensitivity count {key} does not match the public aggregate.")
+
+    cluster_rows = private_payloads.get("cluster_sensitivity.json", [])
+    if isinstance(cluster_rows, list):
+        for row in cluster_rows:
+            primary = int(row.get("reconciledPrimaryCount") or 0)
+            secondary = int(row.get("reconciledSecondaryCount") or 0)
+            if row.get("reconciledWeightedCount") != 2 * primary + secondary:
+                fail(
+                    f"Cluster {row.get('clusterId')} does not reproduce the governed 2:1 weight."
+                )
+
+    if len(historical_source_ids) == 269:
+        governed = {
+            "canonicalEpisodes": 242,
+            "confirmedAliasGroups": 27,
+            "originalItems": 14397,
+            "reconciledSensitivityItems": 12978,
+            "originalFocalItems": 10940,
+            "reconciledSensitivityFocalItems": 9855,
+            "originalContextualItems": 3457,
+            "reconciledSensitivityContextualItems": 3123,
+        }
+        for key, expected in governed.items():
+            if counts.get(key) != expected:
+                fail(
+                    f"Governed corpus reconciliation expectation failed for {key}: "
+                    f"expected {expected}, got {counts.get(key)!r}."
+                )
+
+    return sorted(set(errors))
 
 
 def tracked_xlsx_files(repo_root: Path) -> list[str]:

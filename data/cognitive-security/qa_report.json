@@ -16,6 +16,28 @@
     "blankCopiedSourceTensions": "intentionally-not-used",
     "tensions": "tensions_debates_rebuilt.xlsx"
   },
+  "corpusReconciliation": {
+    "counts": {
+      "ambiguousSourceIdentities": 0,
+      "canonicalEpisodes": 242,
+      "confirmedAliasGroups": 27,
+      "excludedConfirmedAliasSourceIdentities": 27,
+      "excludedNonEpisodeSourceIdentities": 0,
+      "likelyAliasSourceIdentities": 0,
+      "originalContextualItems": 3457,
+      "originalFocalItems": 10940,
+      "originalItems": 14397,
+      "originalSourceIdentities": 269,
+      "pendingDecisionRecords": 0,
+      "reconciledSensitivityContextualItems": 3123,
+      "reconciledSensitivityFocalItems": 9855,
+      "reconciledSensitivityItems": 12978,
+      "sourceIdentitiesInConfirmedAliasGroups": 54,
+      "unresolvedSourceIdentities": 0
+    },
+    "methodVersion": "1.0",
+    "status": "complete"
+  },
   "counts": {
     "ambiguity_flagged_assignments": 158,
     "artifacts": 8,
@@ -26,7 +48,10 @@
     "cluster_summaries": 127,
     "clusters": 127,
     "contextual_items": 3457,
-    "episodes": 269,
+    "episode_reconciliation_flags": 2,
+    "episode_source_identities": 269,
+    "episode_source_mappings": 269,
+    "episodes": 242,
     "evidence_links": 12606,
     "focal_items": 10940,
     "item_cluster_assignments": 10940,
@@ -85,8 +110,8 @@
       "status": "pass"
     },
     "episodes": {
-      "actual": 269,
-      "expected": 269,
+      "actual": 242,
+      "expected": 242,
       "status": "pass"
     },
     "extractedItems": {
@@ -114,6 +139,21 @@
       "expected": 10940,
       "status": "pass"
     },
+    "reconciledSensitivityContextualItems": {
+      "actual": 3123,
+      "expected": 3123,
+      "status": "pass"
+    },
+    "reconciledSensitivityFocalItems": {
+      "actual": 9855,
+      "expected": 9855,
+      "status": "pass"
+    },
+    "reconciledSensitivityItems": {
+      "actual": 12978,
+      "expected": 12978,
+      "status": "pass"
+    },
     "scenarios": {
       "actual": 6,
       "expected": 6,
@@ -127,6 +167,11 @@
     "secondaryNone": {
       "actual": 416,
       "expected": 416,
+      "status": "pass"
+    },
+    "sourceIdentities": {
+      "actual": 269,
+      "expected": 269,
       "status": "pass"
     },
     "tensions": {
@@ -180,7 +225,10 @@
     "cluster_meta_mappings": 124,
     "cluster_summaries": 127,
     "clusters": 127,
-    "episodes": 269,
+    "episode_reconciliation_flags": 2,
+    "episode_source_identities": 269,
+    "episode_source_mappings": 269,
+    "episodes": 242,
     "evidence_links": 12606,
     "item_cluster_assignments": 10940,
     "item_tags": 52458,
@@ -208,7 +256,7 @@
     "assignmentRows": 514,
     "normalizedReviewFlags": 860
   },
-  "schemaVersion": "1.0",
+  "schemaVersion": "1.1",
   "sourceHashes": {
     "codebook.xlsx": "a578d408c6bbaa42b0cde5738418b86f73fa51bf75646e4462a452f12d09af1e",
     "cross_cutting_themes.xlsx": "cd9540c3b2b780088d64a9b463cea3773e946cad33d42641f69aafc190f2cc17",

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import sys
 import tempfile
 from pathlib import Path
@@ -16,16 +17,21 @@ from cognitive_security.export import (
     write_serialized_files,
 )
 from cognitive_security.report import EXPECTED_COUNTS, actual_counts, render_ingestion_report
+from cognitive_security.sensitivity import build_reconciliation_products
 from cognitive_security.validate import (
     ValidationError,
     validate_dataset,
     validate_public_payloads,
+    validate_reconciliation_dataset,
 )
 
 
 SOURCE_DIR = Path("source-data") / "ipa-podcast"
 PUBLIC_DIR = Path("data") / "cognitive-security"
 PRIVATE_DIR = Path("analysis") / "cognitive-security" / "normalized"
+RECONCILIATION_DIR = (
+    Path("analysis") / "cognitive-security" / "corpus-reconciliation"
+)
 REPORT_PATH = Path("docs") / "cognitive-security" / "INGESTION_REPORT.md"
 
 
@@ -118,6 +124,7 @@ def _enrich_qa_report(
     base: Mapping[str, Any],
     dataset: Mapping[str, Sequence[Mapping[str, Any]]],
     extracted: Mapping[str, Any],
+    corpus_reconciliation: Mapping[str, Any],
 ) -> dict[str, Any]:
     assignments = dataset.get("item_cluster_assignments", ())
     meta_narratives = dataset.get("meta_narratives", ())
@@ -125,7 +132,7 @@ def _enrich_qa_report(
     base_errors = base.get("errors", ())
     base_warnings = base.get("warnings", ())
     report: dict[str, Any] = {
-        "schemaVersion": "1.0",
+        "schemaVersion": "1.1",
         "passed": bool(base.get("passed", False)),
         "errors": list(base_errors) if isinstance(base_errors, (list, tuple)) else [],
         "warnings": (
@@ -139,6 +146,14 @@ def _enrich_qa_report(
     report["sourceHashes"] = _source_hashes(dataset)
     report["sourceRowCounts"] = _source_row_counts(extracted)
     report["normalizedEntityCounts"] = _normalized_counts(dataset)
+    governed_counts = dict(
+        base.get("normalizedEntityCounts", base.get("counts", {}))
+    )
+    governed_counts.update(report["normalizedEntityCounts"])
+    report["counts"] = governed_counts
+    # Schema v1.1 expectations include canonical releases, source identities,
+    # and sensitivity counts that exist only after reconciliation. Compare the
+    # governed reconciled dataset, never the historical v1.0 normalization.
     report["expectedVsActual"] = _expected_actual(dataset)
     report["missingReferences"] = list(
         base.get("missingReferences", base.get("missing_references", ()))
@@ -190,6 +205,11 @@ def _enrich_qa_report(
         "tensions": "tensions_debates_rebuilt.xlsx",
         "blankCopiedSourceTensions": "intentionally-not-used",
     }
+    report["corpusReconciliation"] = {
+        "status": corpus_reconciliation.get("status"),
+        "methodVersion": corpus_reconciliation.get("methodVersion"),
+        "counts": dict(corpus_reconciliation.get("counts", {})),
+    }
     report["additionalSourceAnomalies"] = [
         {
             "code": "category-sheet-id-omission",
@@ -230,13 +250,42 @@ def _atomic_write_text(path: Path, content: str) -> None:
             temporary.unlink()
 
 
+def _current_source_hashes(source_dir: Path) -> dict[str, str]:
+    return {
+        path.name: hashlib.sha256(path.read_bytes()).hexdigest()
+        for path in sorted(source_dir.glob("*.xlsx"), key=lambda value: value.name)
+        if path.is_file()
+    }
+
+
 def build(repo_root: Path) -> dict[str, Any]:
     source_dir = repo_root / SOURCE_DIR
+    source_hashes_before = _current_source_hashes(source_dir)
     extracted = extract_sources(source_dir)
-    dataset = normalize_sources(extracted)
+    historical_dataset = normalize_sources(extracted)
 
-    base_qa = validate_dataset(dataset, repo_root=repo_root)
-    qa_report = _enrich_qa_report(base_qa, dataset, extracted)
+    # The historical v1.0 normalized release is validated before any episode
+    # semantics are changed. Reconciliation then operates on a deep copy.
+    base_qa = validate_dataset(historical_dataset, repo_root=repo_root)
+    reconciliation_products = build_reconciliation_products(historical_dataset)
+    dataset = reconciliation_products["reconciledDataset"]
+    reconciliation_errors = validate_reconciliation_dataset(
+        historical_dataset,
+        dataset,
+        reconciliation_products["privatePayloads"],
+        reconciliation_products["publicAggregate"],
+    )
+    if reconciliation_errors:
+        raise ValidationError(
+            "Corpus reconciliation validation failed.",
+            {"errors": reconciliation_errors},
+        )
+    qa_report = _enrich_qa_report(
+        base_qa,
+        dataset,
+        extracted,
+        reconciliation_products["publicAggregate"],
+    )
     qa_report["publicExportChecks"] = {
         "status": "pending",
         "errors": [],
@@ -247,7 +296,9 @@ def build(repo_root: Path) -> dict[str, Any]:
         "method": "repeat in-memory serialization plus release-gate rebuild",
     }
 
-    preliminary_public = build_public_payloads(dataset, qa_report)
+    preliminary_public = build_public_payloads(
+        dataset, qa_report, reconciliation_products["publicAggregate"]
+    )
     public_errors = validate_public_payloads(preliminary_public)
     qa_report["publicExportChecks"] = {
         "status": "pass" if not public_errors else "fail",
@@ -264,14 +315,34 @@ def build(repo_root: Path) -> dict[str, Any]:
         "status": "pass",
         "method": "repeat in-memory serialization plus release-gate rebuild",
     }
-    public_payloads = build_public_payloads(dataset, qa_report)
+    public_payloads = build_public_payloads(
+        dataset, qa_report, reconciliation_products["publicAggregate"]
+    )
     internal_payloads = build_internal_payloads(dataset, qa_report)
+    reconciliation_payloads = reconciliation_products["privatePayloads"]
     public_files = serialize_payloads(public_payloads)
     internal_files = serialize_payloads(internal_payloads)
+    reconciliation_files = serialize_payloads(reconciliation_payloads)
 
-    repeated_public = serialize_payloads(build_public_payloads(dataset, qa_report))
-    repeated_internal = serialize_payloads(build_internal_payloads(dataset, qa_report))
-    deterministic = public_files == repeated_public and internal_files == repeated_internal
+    repeated_products = build_reconciliation_products(historical_dataset)
+    repeated_public = serialize_payloads(
+        build_public_payloads(
+            repeated_products["reconciledDataset"],
+            qa_report,
+            repeated_products["publicAggregate"],
+        )
+    )
+    repeated_internal = serialize_payloads(
+        build_internal_payloads(repeated_products["reconciledDataset"], qa_report)
+    )
+    repeated_reconciliation = serialize_payloads(
+        repeated_products["privatePayloads"]
+    )
+    deterministic = (
+        public_files == repeated_public
+        and internal_files == repeated_internal
+        and reconciliation_files == repeated_reconciliation
+    )
     if not deterministic:
         raise ValidationError(
             "Repeated in-memory serialization was not deterministic.", report=qa_report
@@ -286,10 +357,37 @@ def build(repo_root: Path) -> dict[str, Any]:
         deterministic,
     )
 
+    source_hashes_after = _current_source_hashes(source_dir)
+    if source_hashes_before != source_hashes_after:
+        raise ValidationError(
+            "A governed source workbook changed during the build.",
+            {"errors": ["Source workbook hashes changed during reconciliation."]},
+        )
+
+    public_dir = repo_root / PUBLIC_DIR
+    unexpected_public_files = sorted(
+        path.name
+        for path in public_dir.glob("*.json")
+        if path.name not in public_files
+    )
+    if unexpected_public_files:
+        raise ValidationError(
+            "Unexpected stale public JSON files would survive this build.",
+            {
+                "errors": [
+                    "Remove or govern these files before publication: "
+                    + ", ".join(unexpected_public_files)
+                ]
+            },
+        )
+
     # No generated output is touched until extraction, normalization, structural
     # validation, publication validation, and deterministic serialization pass.
-    write_serialized_files(repo_root / PUBLIC_DIR, public_files)
+    write_serialized_files(public_dir, public_files)
     write_serialized_files(repo_root / PRIVATE_DIR, internal_files)
+    write_serialized_files(
+        repo_root / RECONCILIATION_DIR, reconciliation_files
+    )
     _atomic_write_text(repo_root / REPORT_PATH, report)
 
     return {
@@ -297,6 +395,8 @@ def build(repo_root: Path) -> dict[str, Any]:
         "qaReport": qa_report,
         "publicHashes": public_hashes,
         "internalHashes": generated_hashes(internal_files),
+        "reconciliationHashes": generated_hashes(reconciliation_files),
+        "corpusReconciliation": reconciliation_products["publicAggregate"],
     }
 
 
@@ -322,9 +422,19 @@ def main() -> int:
         return 1
 
     counts = result["qaReport"]["normalizedEntityCounts"]
-    print("Cognitive Security Map Phase 1 build succeeded.")
+    print("Cognitive Security Map Schema v1.1 build succeeded.")
     print(f"  Source workbooks: {counts.get('artifacts', 0)}")
     print(f"  Extracted items: {counts.get('items', 0)}")
+    print(f"  Canonical public feed episodes: {counts.get('episodes', 0)}")
+    print(
+        "  Historical source identities: "
+        f"{counts.get('episode_source_identities', 0)}"
+    )
+    reconciliation_counts = result["corpusReconciliation"]["counts"]
+    print(
+        "  Reconciled sensitivity items: "
+        f"{reconciliation_counts.get('reconciledSensitivityItems', 0)}"
+    )
     print(f"  Clusters: {counts.get('clusters', 0)}")
     print(f"  Meta-clusters: {counts.get('meta_clusters', 0)}")
     print(f"  Themes: {counts.get('themes', 0)}")

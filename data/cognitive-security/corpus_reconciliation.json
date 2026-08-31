@@ -1,0 +1,39 @@
+{
+  "automaticRules": [
+    "Preserve every historical source identity and stable EPI identifier.",
+    "Retain the episode-zero trailer as a distinct public feed release.",
+    "Confirm only modern-versus-legacy pairs numbered 2 through 27 when normalized title tokens corroborate the shared episode number.",
+    "Prefer the modern #N source identity as the canonical representative.",
+    "Apply separately governed transcript-forensic alias decisions only when explicitly approved.",
+    "Retain governed content-equivalent re-releases as distinct public-feed publication units.",
+    "Never collapse a fuzzy-title candidate automatically."
+  ],
+  "counts": {
+    "ambiguousSourceIdentities": 0,
+    "canonicalEpisodes": 242,
+    "confirmedAliasGroups": 27,
+    "excludedConfirmedAliasSourceIdentities": 27,
+    "excludedNonEpisodeSourceIdentities": 0,
+    "likelyAliasSourceIdentities": 0,
+    "originalContextualItems": 3457,
+    "originalFocalItems": 10940,
+    "originalItems": 14397,
+    "originalSourceIdentities": 269,
+    "pendingDecisionRecords": 0,
+    "reconciledSensitivityContextualItems": 3123,
+    "reconciledSensitivityFocalItems": 9855,
+    "reconciledSensitivityItems": 12978,
+    "sourceIdentitiesInConfirmedAliasGroups": 54,
+    "unresolvedSourceIdentities": 0
+  },
+  "interpretation": "The historical analytical release retains every extracted item. The reconciled sensitivity dataset selects one canonical source identity per canonical public-feed release. Distinct releases remain separate even when their content is reused.",
+  "limitations": [
+    "Item-overlap similarity is diagnostic and is never used to deduplicate individual items.",
+    "Sensitivity counts do not establish the validity of a cluster or higher-order synthesis.",
+    "Narrative and scenario stability cannot be assessed directly from the available item-level provenance."
+  ],
+  "methodVersion": "1.0",
+  "reanalysisRecommendation": "full-pipeline-reanalysis-recommended",
+  "schemaVersion": "1.1",
+  "status": "complete"
+}

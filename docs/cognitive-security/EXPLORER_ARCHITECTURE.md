@@ -16,11 +16,14 @@ ranking. It is also separate from the PSYWERX Driver Ontology: discourse
 clusters are not behavioral Drivers, and no cross-product identity or causal
 mapping is implied.
 
-The governing data contract is documented in
-[Cognitive Security Schema v1.0](./COGNITIVE_SECURITY_SCHEMA_V1.md). Source
-selection, transformation, and publication boundaries are documented in
+The current governing data contract is documented in
+[Cognitive Security Schema v1.1](./COGNITIVE_SECURITY_SCHEMA_V1_1.md), while
+[Schema v1.0](./COGNITIVE_SECURITY_SCHEMA_V1.md) preserves the historical
+source-identity model. Source selection, transformation, and publication
+boundaries are documented in
 [Build and Provenance](./BUILD_AND_PROVENANCE.md), with current build results in
-the [Ingestion Report](./INGESTION_REPORT.md).
+the [Ingestion Report](./INGESTION_REPORT.md) and forensic decisions in
+[Corpus reconciliation](./CORPUS_RECONCILIATION.md).
 
 ## Information architecture
 
@@ -39,7 +42,8 @@ The Explorer has eight primary modes:
    labeled as a scenario rather than a prediction.
 7. **Search** searches the public package, not transcripts or the private item
    corpus.
-8. **Methodology** explains the corpus, analytical process, human and
+8. **Methodology** explains the 242-release/269-source-identity distinction,
+   original and sensitivity count bases, analytical process, human and
    AI-assisted roles, traceability, and interpretive limits.
 
 The seven focal categories are the main Browse entry points. The three
@@ -47,13 +51,15 @@ contextual extraction categories remain visible in corpus scope and
 methodology, but the interface must not make them appear to have missing
 cluster data.
 
-The principal within-category hierarchy is:
+The corpus and within-category hierarchies are:
 
 ```text
-Episode / extracted material
-  -> Category
-    -> Meta-cluster
-      -> Intermediate cluster
+Canonical public-feed episode
+  -> historical source identity (private)
+    -> extracted material (private)
+      -> Category
+        -> Meta-cluster
+          -> Intermediate cluster
 ```
 
 Cross-cutting themes, tensions, meta-narratives, category findings, and
@@ -75,6 +81,7 @@ The Explorer may fetch only files named by
 - `category_findings.json`
 - `scenarios.json`
 - `episodes.json`
+- `corpus_reconciliation.json`
 - `relationships.json`
 - `coverage.json`
 - `review_summary.json`
@@ -91,6 +98,20 @@ IDs and common relationships; the search index is also created once after
 loading. Rendering and filter operations should use those indexes rather than
 repeated full-dataset scans.
 
+`episodes.json` represents 242 canonical public-feed episode releases, not the
+269 transcript/source identities present in the historical extraction
+dataset. Episode records expose only canonical labels and aggregate original
+versus reconciled-sensitivity item coverage. Source filenames, alias members,
+and detailed evidence remain private.
+
+`corpus_reconciliation.json` is an aggregate explanatory dataset. It states the
+unit definition, reconciliation-rule version, historical and reconciled
+counts, automatic rules, limitations, and governed reanalysis recommendation.
+It must never become a
+browser-accessible source-pair ledger. Public copy should distinguish the
+14,397-item original analytic release from the 12,978-item reconciled
+sensitivity dataset and must not call the latter a corrected original dataset.
+
 ## Canonical public entity types
 
 These names are the closed public entity-type vocabulary used by URL state,
@@ -106,7 +127,7 @@ cross-navigation, and relationship endpoints:
 | `metaNarrative` | `meta_narratives.json` | `narrativeId` |
 | `categoryFinding` | `category_findings.json` | `findingId` |
 | `scenario` | `scenarios.json` | `scenarioId` |
-| `episode` | `episodes.json` | `episodeId` |
+| `episode` | `episodes.json` | `episodeId` (canonical public-feed release) |
 
 Source-native labels such as `cross_cutting_theme` and `meta_cluster` remain
 valid inside the normalized private data model, but they are not public
@@ -234,6 +255,13 @@ notes, or detailed review queues. Episode titles and aggregate corpus counts
 are public because they support navigation and coverage context without
 exposing item-level material.
 
+Corpus reconciliation does not expand this boundary. Source filenames,
+pair-level alias evidence, normalized comparison strings, transcript-level
+details and hashes, and private sensitivity records remain private. The public
+reconciliation file contains aggregates only. The existing manifest and QA
+products continue to expose source-workbook basenames and SHA-256 integrity
+fingerprints, never workbook content or local paths.
+
 Where evidence access would otherwise be expected, Methodology may state:
 
 > Source-linked item and quotation browsing is being held for a separate
@@ -279,10 +307,11 @@ publication decision and data contract.
 
 ## Current Phase 2 scope
 
-The Phase 2 MVP covers the eight primary modes, responsive Category ->
-Meta-cluster -> Cluster browsing, substantial entity details, public-package
-search, focused facets, semantic cross-links, corpus coverage, stable query
-deep links, and a public Methodology experience.
+The current static release covers the eight primary modes, responsive
+Category -> Meta-cluster -> Cluster browsing, substantial entity details,
+public-package search, focused facets, semantic cross-links, canonical episode
+coverage, aggregate reconciliation interpretation, stable query deep links,
+and a public Methodology experience.
 
 It intentionally does not include transcript search, item-level evidence,
 quotation browsing, a force-directed or causal graph, AI-generated content, a

@@ -10,7 +10,11 @@ EXPECTED_COUNTS = {
     "extractedItems": 14397,
     "focalItems": 10940,
     "contextualItems": 3457,
-    "episodes": 269,
+    "episodes": 242,
+    "sourceIdentities": 269,
+    "reconciledSensitivityItems": 12978,
+    "reconciledSensitivityFocalItems": 9855,
+    "reconciledSensitivityContextualItems": 3123,
     "clusters": 127,
     "primaryAssignments": 10940,
     "secondaryAssignments": 10524,
@@ -50,11 +54,30 @@ def actual_counts(
     contextual_items = [
         row for row in items if _value(row, "scope", "itemScope") == "contextual"
     ]
+    canonical_source_ids = {
+        str(row.get("sourceIdentityId"))
+        for row in dataset.get("episode_source_mappings", ())
+        if row.get("mappingRole") == "canonical" and row.get("canonicalEpisodeId")
+    }
+    sensitivity_items = [
+        row for row in items
+        if str(row.get("sourceIdentityId")) in canonical_source_ids
+    ]
     return {
         "extractedItems": len(items),
         "focalItems": len(focal_items),
         "contextualItems": len(contextual_items),
         "episodes": len(dataset.get("episodes", ())),
+        "sourceIdentities": len(dataset.get("episode_source_identities", ())),
+        "reconciledSensitivityItems": len(sensitivity_items),
+        "reconciledSensitivityFocalItems": sum(
+            _value(row, "scope", "itemScope") == "focal"
+            for row in sensitivity_items
+        ),
+        "reconciledSensitivityContextualItems": sum(
+            _value(row, "scope", "itemScope") == "contextual"
+            for row in sensitivity_items
+        ),
         "clusters": len(dataset.get("clusters", ())),
         "primaryAssignments": sum(
             bool(_value(row, "primaryClusterId")) for row in assignments
@@ -87,7 +110,11 @@ def _display_metric(metric: str) -> str:
         "extractedItems": "Extracted items",
         "focalItems": "Focal items",
         "contextualItems": "Contextual items",
-        "episodes": "Distinct episodes/source files",
+        "episodes": "Canonical public feed episodes",
+        "sourceIdentities": "Historical transcript/source identities",
+        "reconciledSensitivityItems": "Reconciled sensitivity items",
+        "reconciledSensitivityFocalItems": "Reconciled sensitivity focal items",
+        "reconciledSensitivityContextualItems": "Reconciled sensitivity contextual items",
         "clusters": "Intermediate clusters",
         "primaryAssignments": "Primary focal-item assignments",
         "secondaryAssignments": "Substantive secondary assignments",
@@ -133,17 +160,17 @@ def render_ingestion_report(
     }
 
     lines = [
-        "# Cognitive Security Map Phase 1 Ingestion Report",
+        "# Cognitive Security Map Schema v1.1 Ingestion Report",
         "",
         "## Release conclusion",
         "",
         (
-            "Phase 1 passed its governed ingestion and publication-boundary gate."
+            "Schema v1.1 passed its governed ingestion, reconciliation, sensitivity, and publication-boundary gate."
             if not qa_report.get("errors") and deterministic
             else "Phase 1 did not pass all governed release checks."
         ),
         "",
-        "This release builds the data foundation only. It does not add a public user interface.",
+        "This release preserves the historical analytical dataset while adding a canonical public-feed episode model and a separate reconciled sensitivity dataset.",
         "",
         "## Source package manifest",
         "",
@@ -198,6 +225,17 @@ def render_ingestion_report(
         lines.append(
             f"| {_display_metric(metric)} | {expected:,} | {actual:,} | {_status(expected, actual)} |"
         )
+
+    lines += [
+        "",
+        "## Corpus reconciliation",
+        "",
+        "The historical extraction contains 269 transcript/source identities. Forensic review supports 27 confirmed alias groups and 242 distinct public feed releases. The 242 count is a publication-unit count, not a unique-recording count: the episode 83 re-release is retained as a separate feed release while its content reuse remains privately flagged.",
+        "",
+        "The original 14,397 extracted items remain unchanged. The separate reconciled sensitivity dataset selects one canonical source identity per confirmed feed-release episode and contains 12,978 items (9,855 focal and 3,123 contextual). It is not a corrected replacement for the historical analytical release.",
+        "",
+        "The 27 confirmed groups are the legacy/modern episode-number pairs 2-27 plus the Brown Bag precursor to edited public episode 186. No likely, ambiguous, or unresolved mapping remains under the governed public-feed-release definition.",
+    ]
 
     lines += [
         "",
@@ -334,7 +372,7 @@ def render_ingestion_report(
         "",
         "## Known limitations",
         "",
-        "Phase 1 does not adjudicate source review queues, infer causal relationships, publish evidence excerpts, or implement the explorer interface. Those are intentionally deferred to governed follow-on phases.",
+        "The reconciliation audit does not regenerate higher-order synthesis, infer causal relationships, or publish private evidence. Support sensitivity describes traceable coverage after alias-source exclusion; it is not a validity judgment.",
         "",
     ]
     return "\n".join(lines)

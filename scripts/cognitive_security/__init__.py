@@ -7,6 +7,8 @@ building the governed normalized entity collections.
 
 from .extract import extract_sources
 from .normalize import normalize_sources
+from .reconcile import build_episode_reconciliation
+from .sensitivity import build_reconciliation_products
 from .sources import SourceValidationError
 
 
@@ -19,6 +21,8 @@ def build_normalized_dataset(source_dir):
 __all__ = (
     "SourceValidationError",
     "build_normalized_dataset",
+    "build_episode_reconciliation",
+    "build_reconciliation_products",
     "extract_sources",
     "normalize_sources",
 )

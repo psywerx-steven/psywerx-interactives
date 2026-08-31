@@ -182,6 +182,36 @@ def minimal_dataset() -> dict[str, list[dict]]:
     return dataset
 
 
+def minimal_public_reconciliation() -> dict[str, object]:
+    return {
+        "schemaVersion": "1.1",
+        "methodVersion": "1.0",
+        "status": "complete",
+        "counts": {
+            "canonicalEpisodes": 0,
+            "originalSourceIdentities": 0,
+            "confirmedAliasGroups": 0,
+            "sourceIdentitiesInConfirmedAliasGroups": 0,
+            "excludedConfirmedAliasSourceIdentities": 0,
+            "excludedNonEpisodeSourceIdentities": 0,
+            "likelyAliasSourceIdentities": 0,
+            "ambiguousSourceIdentities": 0,
+            "unresolvedSourceIdentities": 0,
+            "pendingDecisionRecords": 0,
+            "originalItems": 0,
+            "reconciledSensitivityItems": 0,
+            "originalFocalItems": 0,
+            "reconciledSensitivityFocalItems": 0,
+            "originalContextualItems": 0,
+            "reconciledSensitivityContextualItems": 0,
+        },
+        "interpretation": "Aggregate fixture.",
+        "reanalysisRecommendation": "partial-count-and-coverage-remediation-warranted",
+        "automaticRules": [],
+        "limitations": [],
+    }
+
+
 class NormalizedValidationTests(unittest.TestCase):
     def test_related_tension_name_matching_is_exact_not_fuzzy(self) -> None:
         self.assertEqual(_exact_name_key("  Rights   vs Restraint  "), "rights vs restraint")
@@ -439,10 +469,12 @@ class PublicationBoundaryTests(unittest.TestCase):
             filenames[collection]: [{field: None for field in fields}]
             for collection, fields in PUBLIC_FIELDS.items()
         }
+        payloads["corpus_reconciliation.json"] = minimal_public_reconciliation()
         self.assertEqual(validate_public_payloads(payloads), [])
 
     def test_forbidden_public_fields_and_unknown_fields_fail(self) -> None:
         payloads = {
+            "corpus_reconciliation.json": minimal_public_reconciliation(),
             "clusters.json": [
                 {
                     "clusterId": "CL-1",
@@ -460,6 +492,7 @@ class PublicationBoundaryTests(unittest.TestCase):
 
     def test_public_relationship_types_and_endpoints_are_canonical(self) -> None:
         payloads = {
+            "corpus_reconciliation.json": minimal_public_reconciliation(),
             "categories.json": [{"categoryId": "CAT-1", "name": "Category"}],
             "clusters.json": [
                 {
@@ -511,6 +544,14 @@ class PublicationBoundaryTests(unittest.TestCase):
         self.assertIn("public_relationship_endpoint_unresolved", codes)
         self.assertIn("public_relationship_not_semantic", codes)
 
+    def test_public_reconciliation_rejects_pair_level_identity_detail(self) -> None:
+        payload = minimal_public_reconciliation()
+        payload["sourceIdentityId"] = "EPI-PRIVATE"
+        report = validate_public_outputs({"corpus_reconciliation.json": payload})
+        codes = {issue.code for issue in report.errors}
+        self.assertIn("public_reconciliation_field_not_allowlisted", codes)
+        self.assertIn("private_reconciliation_detail_published", codes)
+
     @unittest.skipUnless(PUBLIC_DIR.is_dir(), "public package has not been built")
     def test_real_public_package_has_no_private_fields_or_xlsx_blobs(self) -> None:
         payloads = {
@@ -520,6 +561,13 @@ class PublicationBoundaryTests(unittest.TestCase):
         report = validate_public_outputs(payloads)
         self.assertTrue(report.passed, [issue.as_dict() for issue in report.errors])
         qa = payloads["qa_report.json"]
+        self.assertTrue(
+            all(
+                comparison.get("status") == "pass"
+                for comparison in qa["expectedVsActual"].values()
+            ),
+            qa["expectedVsActual"],
+        )
         self.assertTrue(
             any("known_empty_meta_cluster" in warning for warning in qa["warnings"])
         )

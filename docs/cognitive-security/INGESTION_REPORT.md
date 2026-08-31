@@ -1,10 +1,10 @@
-# Cognitive Security Map Phase 1 Ingestion Report
+# Cognitive Security Map Schema v1.1 Ingestion Report
 
 ## Release conclusion
 
-Phase 1 passed its governed ingestion and publication-boundary gate.
+Schema v1.1 passed its governed ingestion, reconciliation, sensitivity, and publication-boundary gate.
 
-This release builds the data foundation only. It does not add a public user interface.
+This release preserves the historical analytical dataset while adding a canonical public-feed episode model and a separate reconciled sensitivity dataset.
 
 ## Source package manifest
 
@@ -108,7 +108,11 @@ Expected values are validation baselines, not targets that the importer forces t
 | Extracted items | 14,397 | 14,397 | PASS |
 | Focal items | 10,940 | 10,940 | PASS |
 | Contextual items | 3,457 | 3,457 | PASS |
-| Distinct episodes/source files | 269 | 269 | PASS |
+| Canonical public feed episodes | 242 | 242 | PASS |
+| Historical transcript/source identities | 269 | 269 | PASS |
+| Reconciled sensitivity items | 12,978 | 12,978 | PASS |
+| Reconciled sensitivity focal items | 9,855 | 9,855 | PASS |
+| Reconciled sensitivity contextual items | 3,123 | 3,123 | PASS |
 | Intermediate clusters | 127 | 127 | PASS |
 | Primary focal-item assignments | 10,940 | 10,940 | PASS |
 | Substantive secondary assignments | 10,524 | 10,524 | PASS |
@@ -124,6 +128,14 @@ Expected values are validation baselines, not targets that the importer forces t
 | Meta-narratives in current source | 7 | 7 | PASS |
 | Future scenarios | 6 | 6 | PASS |
 
+## Corpus reconciliation
+
+The historical extraction contains 269 transcript/source identities. Forensic review supports 27 confirmed alias groups and 242 distinct public feed releases. The 242 count is a publication-unit count, not a unique-recording count: the episode 83 re-release is retained as a separate feed release while its content reuse remains privately flagged.
+
+The original 14,397 extracted items remain unchanged. The separate reconciled sensitivity dataset selects one canonical source identity per confirmed feed-release episode and contains 12,978 items (9,855 focal and 3,123 contextual). It is not a corrected replacement for the historical analytical release.
+
+The 27 confirmed groups are the legacy/modern episode-number pairs 2-27 plus the Brown Bag precursor to edited public episode 186. No likely, ambiguous, or unresolved mapping remains under the governed public-feed-release definition.
+
 ## Normalized entity counts
 
 | Collection | Records |
@@ -135,7 +147,10 @@ Expected values are validation baselines, not targets that the importer forces t
 | `cluster_meta_mappings` | 124 |
 | `cluster_summaries` | 127 |
 | `clusters` | 127 |
-| `episodes` | 269 |
+| `episode_reconciliation_flags` | 2 |
+| `episode_source_identities` | 269 |
+| `episode_source_mappings` | 269 |
+| `episodes` | 242 |
 | `evidence_links` | 12,606 |
 | `item_cluster_assignments` | 10,940 |
 | `item_tags` | 52,458 |
@@ -193,7 +208,7 @@ Three source-authored placeholder rows for `XTHEME-007`, `XTHEME-008`, and `XTHE
 - Structural errors: 0
 - Warnings/review findings: 8
 - Deterministic in-memory serialization: PASS
-- Public files generated: 15
+- Public files generated: 16
 
 Warnings and review findings:
 
@@ -214,12 +229,13 @@ Warnings and review findings:
 | `category_findings.json` | `f36ba877492faf91a76af198a9b9b1c6b5805cc8fde7b47e15baeba1f8a02e31` |
 | `cluster_summaries.json` | `a4ecc3640c647f3f7bfb48cbcd48f738dcb5aeed39b7be54a6ac634ff7414dc3` |
 | `clusters.json` | `8267f35b49000502477f3bad4f172caef726c456a5ff3e0abbece8b22f812095` |
-| `coverage.json` | `127238b85efd14ffd45bf708f38a143b455c25e9233800725c65b0112dd09dac` |
-| `episodes.json` | `47139afb4c8f306c7eb5ea6f9af07e9ae9f9eb355ea75ce6e8cbdadb77f80ba3` |
-| `manifest.json` | `65fcc230cf2bf6a9fc8fe8d677731337a635cd58d2747dc54e3ab038aa3282db` |
+| `corpus_reconciliation.json` | `b183c0dc2cbee7974f6576835e466159f2105a3e23a5e5c754b29678562ec5cc` |
+| `coverage.json` | `3303e346d16ac4cfeee65bce2f221f75bdbb06d9e6d26847307ab206cbe8543e` |
+| `episodes.json` | `f2efaf3947e974b53467cfc7b479fbb59aa8cc64368bc3df1b09f2b4c011935e` |
+| `manifest.json` | `58b797f73b2be7beef8f55c90be0e93cf37aa24d7190d570aa5bba0028850175` |
 | `meta_clusters.json` | `49b668c65fbc7706be5455d2ce46696e66dc1be299d3f475ce441ecdf2ad81f9` |
 | `meta_narratives.json` | `d93f8ea23d78cf892bb3031a17aa2caf6ad38d87dea42df648a56d5bb20e3be4` |
-| `qa_report.json` | `894375c4e4342209086e9991b24c8329cb27614ed901c0a855c7a3e2cf7a2c12` |
+| `qa_report.json` | `7c8915cff4c635758fc379958be4088198664973dde3a6b2c21f2365e1fce90f` |
 | `relationships.json` | `5cc83e56457d274139511d2efa83079fc00aea48d2d7ab62cb882c5fef350714` |
 | `review_summary.json` | `a36853f154200f8e91efbaf460f2b9490c24d171aa6650df1d0547c1d93cfa26` |
 | `scenarios.json` | `f2996cdbed109d617b0acb58b84e41e37cf0b0b73be6fd371d32ecc20f3931d6` |
@@ -259,4 +275,4 @@ The complete normalized QA layer—including item records, evidence excerpts, ra
 
 ## Known limitations
 
-Phase 1 does not adjudicate source review queues, infer causal relationships, publish evidence excerpts, or implement the explorer interface. Those are intentionally deferred to governed follow-on phases.
+The reconciliation audit does not regenerate higher-order synthesis, infer causal relationships, or publish private evidence. Support sensitivity describes traceable coverage after alias-source exclusion; it is not a validity judgment.
