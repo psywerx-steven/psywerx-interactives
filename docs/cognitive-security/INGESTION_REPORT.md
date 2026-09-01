@@ -6,98 +6,33 @@ Schema v1.1 passed its governed ingestion, reconciliation, sensitivity, and publ
 
 This release preserves the historical analytical dataset while adding a canonical public-feed episode model and a separate reconciled sensitivity dataset.
 
-## Source package manifest
+## Source package inventory
 
-| Artifact | Canonical role | SHA-256 |
+| Opaque artifact ID | Canonical role | Integrity verified |
 |---|---|---|
-| codebook.xlsx | canonical-cluster-codebook | `a578d408c6bbaa42b0cde5738418b86f73fa51bf75646e4462a452f12d09af1e` |
-| cross_cutting_themes.xlsx | canonical-cross-cutting-themes | `cd9540c3b2b780088d64a9b463cea3773e946cad33d42641f69aafc190f2cc17` |
-| drill_down.xlsx | canonical-item-cluster-assignments | `e85a038144e2ffc3ed65061490bb25e006c6205e3a88be07edd08cf706eff8df` |
-| drill_up_cluster_summaries.xlsx | canonical-cluster-synthesis | `6e806e87a1f50f7ca57367865ee0148abdbde24c15b3669b96352ca1e0c5a737` |
-| drill_up_meta_clusters.xlsx | canonical-meta-clusters-and-mappings | `a7b436c18f5d1a40ef664da87c5b5e9f92f145cfd76972a9947a538e9c7f0afa` |
-| final_synthesis.xlsx | canonical-narratives-findings-and-scenarios | `9e1a39755fe5397f4395c1019203db80ebe0123e25fea70a4e88001eec8f4ff2` |
-| master_extractions.xlsx | canonical-items-and-episode-provenance | `974aa0b8b83371681b3a921d6f2bface2befa680db1f0b68954a6c48487f4d0f` |
-| tensions_debates_rebuilt.xlsx | canonical-tensions-and-debates | `60b3ce533852fda1e47afee687e7e9b5f5838c2691006e28c3477b25dea65394` |
+| `ART-cluster-summaries` | canonical-cluster-synthesis | yes |
+| `ART-codebook` | canonical-cluster-codebook | yes |
+| `ART-cross-cutting-themes` | canonical-cross-cutting-themes | yes |
+| `ART-drill-down` | canonical-item-cluster-assignments | yes |
+| `ART-final-synthesis` | canonical-narratives-findings-and-scenarios | yes |
+| `ART-master-extractions` | canonical-items-and-episode-provenance | yes |
+| `ART-meta-clusters` | canonical-meta-clusters-and-mappings | yes |
+| `ART-tensions` | canonical-tensions-and-debates | yes |
 
-All source files are local, ignored XLSX artifacts. Public JSON contains filenames and integrity hashes, never local paths or workbook binaries.
+Exact source-workbook filenames, integrity hashes, and row-level provenance remain in the ignored private normalized release. Public products identify sources only by opaque artifact ID and publish safe aggregate QA.
 
-## Workbook and worksheet inventory
+## Aggregate source inventory
 
-| Workbook | Worksheet | Rows | Columns |
-|---|---|---:|---:|
-| codebook.xlsx | Sheet1 | 128 | 8 |
-| cross_cutting_themes.xlsx | Computed Cooccurrence | 1331 | 5 |
-| cross_cutting_themes.xlsx | Cooccurrence Evidence | 133 | 7 |
-| cross_cutting_themes.xlsx | Cross-Cutting Themes | 12 | 22 |
-| cross_cutting_themes.xlsx | Representative Items | 111 | 13 |
-| cross_cutting_themes.xlsx | Review Queue | 8 | 7 |
-| cross_cutting_themes.xlsx | Run Summary | 16 | 2 |
-| cross_cutting_themes.xlsx | Source Cluster Summaries | 128 | 11 |
-| cross_cutting_themes.xlsx | Source Meta-Clusters | 37 | 19 |
-| cross_cutting_themes.xlsx | Theme-to-Cluster Evidence | 303 | 9 |
-| cross_cutting_themes.xlsx | Theme-to-Meta Mapping | 90 | 10 |
-| drill_down.xlsx | Codebook Used | 128 | 8 |
-| drill_down.xlsx | Drill Down | 10941 | 34 |
-| drill_down.xlsx | Primary Frequencies | 128 | 4 |
-| drill_down.xlsx | Primary-Secondary Matrix | 128 | 128 |
-| drill_down.xlsx | Rep Items | 63 | 18 |
-| drill_down.xlsx | Review Queue | 515 | 34 |
-| drill_down.xlsx | Run Summary | 13 | 2 |
-| drill_down.xlsx | Secondary Frequencies | 128 | 4 |
-| drill_up_cluster_summaries.xlsx | Cluster Summaries | 128 | 15 |
-| drill_up_cluster_summaries.xlsx | Codebook Used | 128 | 11 |
-| drill_up_cluster_summaries.xlsx | Representative Items | 1362 | 12 |
-| drill_up_cluster_summaries.xlsx | Run Summary | 2 | 12 |
-| drill_up_cluster_summaries.xlsx | Theme Details | 950 | 10 |
-| drill_up_meta_clusters.xlsx | Candidate Meta-Clusters | 37 | 16 |
-| drill_up_meta_clusters.xlsx | Category Inputs | 8 | 7 |
-| drill_up_meta_clusters.xlsx | Cluster-to-Meta Mapping | 125 | 10 |
-| drill_up_meta_clusters.xlsx | Meta-Cluster Evidence | 221 | 6 |
-| drill_up_meta_clusters.xlsx | Review Queue | 52 | 8 |
-| drill_up_meta_clusters.xlsx | Run Summary | 8 | 9 |
-| final_synthesis.xlsx | Category Findings | 43 | 12 |
-| final_synthesis.xlsx | Category Summaries | 8 | 3 |
-| final_synthesis.xlsx | Corpus Meta-Narratives | 8 | 14 |
-| final_synthesis.xlsx | Future Scenarios | 7 | 16 |
-| final_synthesis.xlsx | Review Queue | 32 | 4 |
-| final_synthesis.xlsx | Run Summary | 13 | 2 |
-| final_synthesis.xlsx | Scenario Actions | 31 | 2 |
-| final_synthesis.xlsx | Scenario Indicators | 37 | 2 |
-| final_synthesis.xlsx | Scenario Pathways | 43 | 3 |
-| final_synthesis.xlsx | Source Cluster Summaries | 128 | 15 |
-| final_synthesis.xlsx | Source Cross Themes | 12 | 22 |
-| final_synthesis.xlsx | Source Drill Down Preview | 502 | 34 |
-| final_synthesis.xlsx | Source Meta-Clusters | 37 | 16 |
-| final_synthesis.xlsx | Source Tensions | 1 | 1 |
-| master_extractions.xlsx | Analysis | 15 | 2 |
-| master_extractions.xlsx | Challenges, Risks, Barriers | 1872 | 17 |
-| master_extractions.xlsx | Codebook | 128 | 11 |
-| master_extractions.xlsx | Concepts, Frameworks, Theories | 1886 | 17 |
-| master_extractions.xlsx | Future Trends & Predictions | 940 | 17 |
-| master_extractions.xlsx | Guest Background | 874 | 17 |
-| master_extractions.xlsx | Key Events & Historical Example | 1305 | 17 |
-| master_extractions.xlsx | MASTER | 14398 | 17 |
-| master_extractions.xlsx | MASTER (only coded cats) | 14398 | 17 |
-| master_extractions.xlsx | Memorable Quotes & Insights | 1616 | 17 |
-| master_extractions.xlsx | Opportunities & Recs | 1807 | 17 |
-| master_extractions.xlsx | Organizations & Actors | 1887 | 17 |
-| master_extractions.xlsx | Sheet1 | 63 | 2 |
-| master_extractions.xlsx | Strategic Landscape | 970 | 17 |
-| master_extractions.xlsx | Tags (final) | 128 | 8 |
-| master_extractions.xlsx | Tags (working) | 153 | 7 |
-| master_extractions.xlsx | Tech, Tools, & Platforms | 1244 | 17 |
-| master_extractions.xlsx | Working | 101 | 26 |
-| tensions_debates_rebuilt.xlsx | Batch Candidates | 866 | 20 |
-| tensions_debates_rebuilt.xlsx | Category Distribution | 8 | 2 |
-| tensions_debates_rebuilt.xlsx | Cluster Distribution | 128 | 4 |
-| tensions_debates_rebuilt.xlsx | Review Queue | 29 | 11 |
-| tensions_debates_rebuilt.xlsx | Run Summary | 16 | 2 |
-| tensions_debates_rebuilt.xlsx | Source Cluster Summaries | 128 | 15 |
-| tensions_debates_rebuilt.xlsx | Source Cross Themes | 12 | 22 |
-| tensions_debates_rebuilt.xlsx | Source Meta-Clusters | 37 | 16 |
-| tensions_debates_rebuilt.xlsx | Tension Evidence | 44 | 16 |
-| tensions_debates_rebuilt.xlsx | Tension Mapping | 301 | 8 |
-| tensions_debates_rebuilt.xlsx | Tensions Debates | 31 | 25 |
+| Opaque artifact ID | Worksheets | Aggregate rows |
+|---|---:|---:|
+| `ART-cluster-summaries` | 5 | 2570 |
+| `ART-codebook` | 1 | 128 |
+| `ART-cross-cutting-themes` | 10 | 2169 |
+| `ART-drill-down` | 8 | 12044 |
+| `ART-final-synthesis` | 14 | 902 |
+| `ART-master-extractions` | 18 | 43785 |
+| `ART-meta-clusters` | 6 | 451 |
+| `ART-tensions` | 11 | 1600 |
 
 ## Expected versus actual baseline
 
@@ -190,7 +125,7 @@ The canonical worksheet contains seven records (`N01`–`N07`). Earlier project 
 
 ### Canonical tension source
 
-`final_synthesis.xlsx` contains a blank copied `Source Tensions` worksheet. The 30 governed tension records come from `tensions_debates_rebuilt.xlsx`.
+Opaque artifact `ART-final-synthesis` contains a blank copied source-tension table. The 30 governed tension records come from `ART-tensions`.
 
 ### Unresolved theme-to-cluster evidence
 
@@ -208,7 +143,7 @@ Three source-authored placeholder rows for `XTHEME-007`, `XTHEME-008`, and `XTHE
 - Structural errors: 0
 - Warnings/review findings: 8
 - Deterministic in-memory serialization: PASS
-- Public files generated: 16
+- Public files generated: 18
 
 Warnings and review findings:
 
@@ -231,11 +166,13 @@ Warnings and review findings:
 | `clusters.json` | `8267f35b49000502477f3bad4f172caef726c456a5ff3e0abbece8b22f812095` |
 | `corpus_reconciliation.json` | `b183c0dc2cbee7974f6576835e466159f2105a3e23a5e5c754b29678562ec5cc` |
 | `coverage.json` | `3303e346d16ac4cfeee65bce2f221f75bdbb06d9e6d26847307ab206cbe8543e` |
-| `episodes.json` | `f2efaf3947e974b53467cfc7b479fbb59aa8cc64368bc3df1b09f2b4c011935e` |
-| `manifest.json` | `58b797f73b2be7beef8f55c90be0e93cf37aa24d7190d570aa5bba0028850175` |
+| `episode_relationships.json` | `6c6542a276dfae5a5566408ebce3c80631047a14cd7f393e357e3a3e8fc97487` |
+| `episode_summaries.json` | `b157e9539bed0aa37ceea2db0952c8b52e887928e4c3419077e1e9f23ec39583` |
+| `episodes.json` | `7483f14da002c0f561bcb4913681f8dcde0d5cfa0630c0ab6995a99c598b4da1` |
+| `manifest.json` | `7005f4d56d83a8f69c576a5e00b686f87a7a94dc5c6ce86e55c2a23cf73356ab` |
 | `meta_clusters.json` | `49b668c65fbc7706be5455d2ce46696e66dc1be299d3f475ce441ecdf2ad81f9` |
 | `meta_narratives.json` | `d93f8ea23d78cf892bb3031a17aa2caf6ad38d87dea42df648a56d5bb20e3be4` |
-| `qa_report.json` | `7c8915cff4c635758fc379958be4088198664973dde3a6b2c21f2365e1fce90f` |
+| `qa_report.json` | `248883d1c049b7e0ad6a226d0b1ddb50410dd4e0128a71ed93582c2b4ede7c11` |
 | `relationships.json` | `5cc83e56457d274139511d2efa83079fc00aea48d2d7ab62cb882c5fef350714` |
 | `review_summary.json` | `a36853f154200f8e91efbaf460f2b9490c24d171aa6650df1d0547c1d93cfa26` |
 | `scenarios.json` | `f2996cdbed109d617b0acb58b84e41e37cf0b0b73be6fd371d32ecc20f3931d6` |
@@ -244,7 +181,7 @@ Warnings and review findings:
 
 ## Public/private boundary
 
-Public export uses positive field allowlists. It includes governed high-level entities, semantic mappings, aggregate coverage, source integrity hashes, and aggregate QA. It excludes item text, evidence quotations, detailed rationales, internal notes, detailed review queues, hidden source metadata, and all workbook content blobs.
+Public export uses positive field allowlists. It includes governed high-level entities, semantic mappings, aggregate coverage, opaque source artifact IDs, and safe aggregate QA. It excludes source-workbook filenames and fingerprints, item text, evidence quotations, detailed rationales, internal notes, detailed review queues, hidden source metadata, and all workbook content blobs.
 
 The complete normalized QA layer—including item records, evidence excerpts, rationales, ambiguity details, and review flags—is written only to ignored `analysis/cognitive-security/normalized/`.
 

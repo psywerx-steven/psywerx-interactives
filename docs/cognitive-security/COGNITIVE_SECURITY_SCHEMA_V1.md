@@ -51,7 +51,7 @@ locations, and Run Summary path cells are excluded.
 
 | Collection | Primary key | Principal foreign keys | Current records | Publication class |
 | --- | --- | --- | ---: | --- |
-| `artifacts` | `artifactId` | None | 8 | Internal manifest; hashes summarized publicly |
+| `artifacts` | `artifactId` | None | 8 | Internal manifest; public release exposes opaque IDs and canonical roles only |
 | `episodes` | `episodeId` | Provenance to artifact | 269 | Public subset |
 | `items` | `itemId` | `episodeId`, `categoryId` | 14,397 | Private/internal |
 | `item_tags` | `itemTagId` | `itemId` | 52,458 | Private/internal |

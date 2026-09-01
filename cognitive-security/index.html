@@ -80,10 +80,11 @@
         <ul>
           <li><a href="?view=overview" data-view-link="overview" data-route-view="overview" aria-current="page">Overview</a></li>
           <li><a href="?view=browse" data-view-link="browse" data-route-view="browse">Browse</a></li>
-          <li><a href="?view=themes" data-view-link="themes" data-route-view="themes">Themes</a></li>
-          <li><a href="?view=tensions" data-view-link="tensions" data-route-view="tensions">Tensions</a></li>
-          <li><a href="?view=narratives" data-view-link="narratives" data-route-view="narratives">Narratives</a></li>
-          <li><a href="?view=scenarios" data-view-link="scenarios" data-route-view="scenarios">Scenarios</a></li>
+          <li><a href="?view=themes" data-view-link="themes" data-route-view="themes">Cross-Cutting Themes</a></li>
+          <li><a href="?view=tensions" data-view-link="tensions" data-route-view="tensions">Tensions &amp; Debates</a></li>
+          <li><a href="?view=narratives" data-view-link="narratives" data-route-view="narratives">Meta-Narratives</a></li>
+          <li><a href="?view=scenarios" data-view-link="scenarios" data-route-view="scenarios">Future Scenarios</a></li>
+          <li><a href="?view=episodes" data-view-link="episodes" data-route-view="episodes">Episodes</a></li>
           <li><a href="?view=search" data-view-link="search" data-route-view="search">Search</a></li>
           <li><a href="?view=methodology" data-view-link="methodology" data-route-view="methodology">Methodology</a></li>
         </ul>
@@ -105,7 +106,7 @@
         <button class="secondary-button" type="button" data-action="retry-load">Try again</button>
       </div>
 
-      <div id="link-notice" class="state-message state-message--notice" role="alert" hidden></div>
+      <div id="link-notice" class="state-message state-message--notice" role="status" aria-live="polite" hidden></div>
 
       <nav id="view-breadcrumbs" class="breadcrumbs" aria-label="Map breadcrumb" hidden></nav>
 
@@ -123,6 +124,10 @@
       <div class="view-toolbar">
         <p id="view-summary" class="view-summary" role="status" aria-live="polite">
           Loading the public map&hellip;
+        </p>
+        <p class="view-count-caveat">
+          Frequency reflects discourse prevalence within this corpus, not importance,
+          consensus, or evidence strength.
         </p>
       </div>
 

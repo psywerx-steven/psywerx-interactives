@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import copy
 import hashlib
 import json
 import os
@@ -10,10 +11,29 @@ from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any, Iterable, Mapping, Sequence
 
+from .episode_products import (
+    episode_relationship_payload,
+    validate_frozen_summaries,
+)
+
 
 SCHEMA_VERSION = "1.1"
 PRODUCT_ID = "psywerx-cognitive-security-practitioner-discourse-map"
 PRODUCT_NAME = "PSYWERX Cognitive Security Practitioner Discourse Map"
+
+# Public source references use stable opaque IDs. Workbook basenames, byte
+# fingerprints, and detailed worksheet provenance stay in the ignored
+# normalized release; they are not part of the browser data contract.
+PUBLIC_ARTIFACT_ROLES = {
+    "ART-codebook": "canonical-cluster-codebook",
+    "ART-master-extractions": "canonical-items-and-episode-provenance",
+    "ART-drill-down": "canonical-item-cluster-assignments",
+    "ART-cluster-summaries": "canonical-cluster-synthesis",
+    "ART-meta-clusters": "canonical-meta-clusters-and-mappings",
+    "ART-cross-cutting-themes": "canonical-cross-cutting-themes",
+    "ART-tensions": "canonical-tensions-and-debates",
+    "ART-final-synthesis": "canonical-narratives-findings-and-scenarios",
+}
 
 INTERNAL_COLLECTION_ORDER = (
     "artifacts",
@@ -58,6 +78,8 @@ PUBLIC_FILE_ORDER = (
     "category_findings.json",
     "scenarios.json",
     "episodes.json",
+    "episode_summaries.json",
+    "episode_relationships.json",
     "relationships.json",
     "coverage.json",
     "review_summary.json",
@@ -203,6 +225,7 @@ PUBLIC_FIELDS: dict[str, tuple[str, ...]] = {
         "sourceIdentityCount",
         "originalItemCount",
         "reconciledSensitivityItemCount",
+        "parsedEpisodeNumber",
     ),
 }
 
@@ -585,28 +608,81 @@ def _review_summary(
     }
 
 
+def _public_qa_report(
+    dataset: Mapping[str, Sequence[Mapping[str, Any]]],
+    qa_report: Mapping[str, Any],
+) -> dict[str, Any]:
+    """Project private build QA into a filename-free public aggregate.
+
+    The internal QA report remains unchanged and retains the exact source
+    hashes and workbook/worksheet inventory needed by maintainers. Public QA
+    identifies sources only by stable artifact ID and publishes aggregate
+    dimensions that cannot reveal a local or source workbook filename.
+    """
+
+    public_report = copy.deepcopy(dict(qa_report))
+    source_hashes = public_report.pop("sourceHashes", {})
+    source_row_counts = public_report.pop("sourceRowCounts", {})
+
+    source_artifact_qa: list[dict[str, Any]] = []
+    for artifact in sorted(
+        dataset.get("artifacts", ()), key=lambda row: str(row.get("artifactId", ""))
+    ):
+        artifact_id = str(artifact.get("artifactId") or "")
+        if not artifact_id:
+            continue
+        # Workbook names are used only for the private in-memory lookup. They
+        # never enter the projected record.
+        private_file_name = str(artifact.get("fileName") or "")
+        worksheet_counts = source_row_counts.get(private_file_name, {})
+        numeric_counts = (
+            [
+                int(value)
+                for value in worksheet_counts.values()
+                if isinstance(value, (int, float)) and not isinstance(value, bool)
+            ]
+            if isinstance(worksheet_counts, Mapping)
+            else []
+        )
+        source_artifact_qa.append(
+            {
+                "artifactId": artifact_id,
+                "canonicalRole": PUBLIC_ARTIFACT_ROLES.get(artifact_id),
+                "worksheetCount": len(numeric_counts),
+                "aggregateRowCount": sum(numeric_counts),
+                "integrityVerified": bool(
+                    private_file_name
+                    and isinstance(source_hashes, Mapping)
+                    and source_hashes.get(private_file_name)
+                ),
+            }
+        )
+    public_report["sourceArtifactQa"] = source_artifact_qa
+
+    private_decisions = public_report.get("canonicalSourceDecisions", {})
+    blank_source_decision = (
+        private_decisions.get("blankCopiedSourceTensions")
+        if isinstance(private_decisions, Mapping)
+        else None
+    )
+    public_report["canonicalSourceDecisions"] = {
+        "tensionsArtifactId": "ART-tensions",
+        "blankCopiedSourceTensions": blank_source_decision,
+    }
+    return public_report
+
+
 def build_public_payloads(
     dataset: Mapping[str, Sequence[Mapping[str, Any]]],
     qa_report: Mapping[str, Any],
     corpus_reconciliation: Mapping[str, Any],
+    frozen_episode_summaries: Sequence[Mapping[str, Any]] | None = None,
 ) -> dict[str, Any]:
     """Return the complete conservative public JSON package in memory."""
-    canonical_roles = {
-        "codebook.xlsx": "canonical-cluster-codebook",
-        "master_extractions.xlsx": "canonical-items-and-episode-provenance",
-        "drill_down.xlsx": "canonical-item-cluster-assignments",
-        "drill_up_cluster_summaries.xlsx": "canonical-cluster-synthesis",
-        "drill_up_meta_clusters.xlsx": "canonical-meta-clusters-and-mappings",
-        "cross_cutting_themes.xlsx": "canonical-cross-cutting-themes",
-        "tensions_debates_rebuilt.xlsx": "canonical-tensions-and-debates",
-        "final_synthesis.xlsx": "canonical-narratives-findings-and-scenarios",
-    }
     artifacts = [
         {
             "artifactId": row.get("artifactId"),
-            "fileName": row.get("fileName"),
-            "sha256": row.get("sha256"),
-            "canonicalRole": canonical_roles.get(str(row.get("fileName"))),
+            "canonicalRole": PUBLIC_ARTIFACT_ROLES.get(str(row.get("artifactId"))),
         }
         for row in dataset.get("artifacts", ())
     ]
@@ -623,6 +699,14 @@ def build_public_payloads(
         "publicFiles": list(PUBLIC_FILE_ORDER),
     }
 
+    summaries = (
+        []
+        if frozen_episode_summaries is None
+        else validate_frozen_summaries(
+            frozen_episode_summaries, dataset.get("episodes", ())
+        )
+    )
+
     return {
         "manifest.json": manifest,
         "corpus_reconciliation.json": dict(corpus_reconciliation),
@@ -636,10 +720,12 @@ def build_public_payloads(
         "category_findings.json": _project_collection(dataset, "category_findings"),
         "scenarios.json": _scenario_records(dataset),
         "episodes.json": _episode_records(dataset),
+        "episode_summaries.json": summaries,
+        "episode_relationships.json": episode_relationship_payload(dataset),
         "relationships.json": build_public_relationships(dataset),
         "coverage.json": _coverage(dataset),
         "review_summary.json": _review_summary(dataset, qa_report),
-        "qa_report.json": dict(qa_report),
+        "qa_report.json": _public_qa_report(dataset, qa_report),
     }
 
 

@@ -30,6 +30,7 @@ import shutil
 import subprocess
 from typing import Any, Iterable, Mapping, Sequence
 
+from .episode_products import EPISODE_RELATIONSHIP_SCHEMA, REVIEWED_SUMMARY_METHOD
 from .export import PUBLIC_RELATIONSHIP_SCHEMA
 
 
@@ -155,6 +156,8 @@ PUBLIC_FILE_COLLECTIONS = {
     "category_findings.json": "category_findings",
     "scenarios.json": "scenarios",
     "episodes.json": "episodes",
+    "episode_summaries.json": "episode_summaries",
+    "episode_relationships.json": "episode_relationships",
     "relationships.json": "relationships",
 }
 
@@ -233,7 +236,21 @@ PUBLIC_RECORD_ALLOWLISTS = {
     "episodes": {
         "id", "episode_id", "podcast", "episode_title", "title",
         "source_identity_count", "original_item_count",
-        "reconciled_sensitivity_item_count",
+        "reconciled_sensitivity_item_count", "parsed_episode_number",
+    },
+    "episode_summaries": {
+        "episode_id", "summary", "key_topics", "why_it_matters",
+        "source_item_count", "focal_item_count", "contextual_item_count",
+        "generation_method",
+    },
+    "episode_relationships": {
+        "relationship_id", "relationship_type", "source_type", "source_id",
+        "target_type", "target_id", "relationship_semantics",
+        "item_count", "focal_item_count", "contextual_item_count",
+        "primary_count", "secondary_count", "weighted_count",
+        "supporting_cluster_ids", "supporting_meta_cluster_ids",
+        "supporting_theme_ids", "derivation_paths", "pole_a_support_count",
+        "pole_b_support_count", "interpretive_caveat",
     },
     "relationships": {
         "id", "relationship_id", "source_type", "source_id", "target_type",
@@ -247,6 +264,8 @@ PUBLIC_RECORD_ALLOWLISTS = {
 PUBLIC_DERIVED_RECORD_FIELDS = {
     "scenarios": {"pathway", "indicators", "actions", "forecastDisclaimer"},
     "episodes": set(),
+    "episode_summaries": set(),
+    "episode_relationships": set(),
     "relationships": {
         "relationshipId", "relationshipType", "sourceId", "targetId",
         "interpretation",
@@ -289,8 +308,8 @@ PUBLIC_WRAPPER_KEYS = {
     "summary", "records", "entries", "relationships", "categories", "clusters",
     "cluster_summaries", "meta_clusters", "themes", "tensions",
     "meta_narratives", "category_findings", "scenarios", "episodes", "coverage",
-    "review_summary", "qa_report", "manifest", "files", "source_hashes",
-    "source_row_counts", "normalized_entity_counts", "expected_vs_actual",
+    "review_summary", "qa_report", "manifest", "files", "source_artifact_qa",
+    "normalized_entity_counts", "expected_vs_actual",
     "missing_references", "duplicate_ids", "unresolved_mappings",
     "review_counts", "ambiguity_counts", "narrative_count_mismatch",
     "public_export_checks", "deterministic_build", "status", "passed",
@@ -305,8 +324,26 @@ FORBIDDEN_PUBLIC_KEY_PATTERNS = (
     re.compile(r"(?:^|_)(?:human|internal|reviewer|model)_notes?(?:$|_)", re.I),
     re.compile(r"review_queue", re.I),
     re.compile(r"(?:^|_)(?:coder|prompt_version|coded_timestamp)(?:$|_)", re.I),
-    re.compile(r"(?:^|_)(?:source_file|local_path|workbook_path)(?:$|_)", re.I),
+    re.compile(
+        r"(?:^|_)(?:file_name|source_file|source_filename|local_path|workbook_path)(?:$|_)",
+        re.I,
+    ),
 )
+
+PRIVATE_SOURCE_FILENAME_PATTERN = re.compile(r"\.xlsx(?:$|[?#\s,;:)\]])", re.I)
+PRIVATE_SOURCE_FINGERPRINT_PATTERN = re.compile(r"^[0-9a-f]{64}$", re.I)
+LOCAL_PATH_VALUE_PATTERN = re.compile(
+    r"(?:[A-Za-z]:[\\/]|(?:^|\s)/(?:Users|home|mnt|tmp)/|source-data[\\/]|ipa-podcast[\\/])",
+    re.I,
+)
+PUBLIC_MANIFEST_ARTIFACT_FIELDS = {"artifactId", "canonicalRole"}
+PUBLIC_SOURCE_ARTIFACT_QA_FIELDS = {
+    "artifactId",
+    "canonicalRole",
+    "worksheetCount",
+    "aggregateRowCount",
+    "integrityVerified",
+}
 
 
 @dataclass(frozen=True)
@@ -1140,6 +1177,7 @@ def _public_record_list(payload: Any, collection: str) -> list[dict[str, Any]]:
 
 
 PUBLIC_ENDPOINT_COLLECTIONS = {
+    "episode": ("episodes.json", "episodes", "episodeId"),
     "category": ("categories.json", "categories", "categoryId"),
     "cluster": ("clusters.json", "clusters", "clusterId"),
     "metaCluster": ("meta_clusters.json", "meta_clusters", "metaClusterId"),
@@ -1242,6 +1280,188 @@ def _validate_public_relationships(
                     row=row, relationship_id=relationship_id, endpoint=endpoint,
                     entity_type=entity_type, endpoint_id=endpoint_id,
                 )
+    return len(report.errors) - errors_before
+
+
+def _validate_public_episode_relationships(
+    public_outputs: Mapping[str, Any], report: ValidationReport
+) -> int:
+    payload = _payload_by_basename(public_outputs, "episode_relationships.json")
+    if payload is None:
+        return 0
+    relationships = _public_record_list(payload, "episode_relationships")
+    endpoint_ids: dict[str, set[str]] = {}
+    for entity_type, (filename, collection, id_field) in PUBLIC_ENDPOINT_COLLECTIONS.items():
+        entity_payload = _payload_by_basename(public_outputs, filename)
+        endpoint_ids[entity_type] = {
+            _text(record.get(id_field))
+            for record in _public_record_list(entity_payload, collection)
+            if _text(record.get(id_field))
+        }
+
+    errors_before = len(report.errors)
+    seen_ids: set[str] = set()
+    for row, relationship in enumerate(relationships, 1):
+        relationship_id = _text(relationship.get("relationshipId"))
+        if not relationship_id:
+            report.add(
+                "error", "episode_relationship_id_missing",
+                "Episode relationship must have a stable nonblank relationshipId.",
+                row=row,
+            )
+        elif relationship_id in seen_ids:
+            report.add(
+                "error", "duplicate_episode_relationship_id",
+                "Episode relationshipId must be unique.",
+                row=row, relationship_id=relationship_id,
+            )
+        seen_ids.add(relationship_id)
+
+        relationship_type = _text(relationship.get("relationshipType"))
+        contract = EPISODE_RELATIONSHIP_SCHEMA.get(relationship_type)
+        if contract is None:
+            report.add(
+                "error", "unsupported_episode_relationship_type",
+                "Episode relationshipType is outside the standalone vocabulary.",
+                row=row, relationship_id=relationship_id,
+                relationship_type=relationship_type,
+            )
+            continue
+        expected_target_type, expected_semantics, _description = contract
+        if _text(relationship.get("sourceType")) != "episode":
+            report.add(
+                "error", "episode_relationship_source_type_invalid",
+                "Standalone episode relationships must originate at an episode.",
+                row=row, relationship_id=relationship_id,
+            )
+        if _text(relationship.get("targetType")) != expected_target_type:
+            report.add(
+                "error", "episode_relationship_target_type_invalid",
+                "Episode relationship target type does not match its vocabulary entry.",
+                row=row, relationship_id=relationship_id,
+                expected_target_type=expected_target_type,
+            )
+        if _text(relationship.get("relationshipSemantics")) != expected_semantics:
+            report.add(
+                "error", "episode_relationship_semantics_invalid",
+                "Episode relationship semantics do not match the governed method.",
+                row=row, relationship_id=relationship_id,
+                expected_semantics=expected_semantics,
+            )
+        source_id = _text(relationship.get("sourceId"))
+        target_id = _text(relationship.get("targetId"))
+        if source_id not in endpoint_ids.get("episode", set()):
+            report.add(
+                "error", "episode_relationship_source_unresolved",
+                "Episode relationship source does not resolve.",
+                row=row, relationship_id=relationship_id, source_id=source_id,
+            )
+        if target_id not in endpoint_ids.get(expected_target_type, set()):
+            report.add(
+                "error", "episode_relationship_target_unresolved",
+                "Episode relationship target does not resolve.",
+                row=row, relationship_id=relationship_id, target_id=target_id,
+                target_type=expected_target_type,
+            )
+        if relationship_type == "episode-coded-to-cluster":
+            primary = int(relationship.get("primaryCount") or 0)
+            secondary = int(relationship.get("secondaryCount") or 0)
+            weighted = int(relationship.get("weightedCount") or 0)
+            if primary + secondary <= 0 or weighted != 2 * primary + secondary:
+                report.add(
+                    "error", "episode_cluster_counts_invalid",
+                    "Episode cluster counts must have real support and exact 2:1 weighting.",
+                    row=row, relationship_id=relationship_id,
+                )
+    return len(report.errors) - errors_before
+
+
+def _validate_public_episode_summaries(
+    public_outputs: Mapping[str, Any], report: ValidationReport
+) -> int:
+    payload = _payload_by_basename(public_outputs, "episode_summaries.json")
+    if payload is None:
+        return 0
+    summaries = _public_record_list(payload, "episode_summaries")
+    episode_payload = _payload_by_basename(public_outputs, "episodes.json")
+    episodes_by_id = {
+        _text(record.get("episodeId")): record
+        for record in _public_record_list(episode_payload, "episodes")
+        if _text(record.get("episodeId"))
+    }
+    episode_ids = set(episodes_by_id)
+    errors_before = len(report.errors)
+    summary_ids = [_text(record.get("episodeId")) for record in summaries]
+    if len(summary_ids) != len(set(summary_ids)):
+        report.add(
+            "error", "duplicate_episode_summary",
+            "Each canonical episode may have only one frozen public summary.",
+        )
+    if set(summary_ids) != episode_ids:
+        report.add(
+            "error", "episode_summary_coverage_incomplete",
+            "Frozen public summaries must cover every canonical episode exactly once.",
+            expected=len(episode_ids), actual=len(set(summary_ids)),
+        )
+    for row, summary in enumerate(summaries, 1):
+        episode_id = _text(summary.get("episodeId"))
+        text_value = _text(summary.get("summary"))
+        topics = [
+            _text(value) for value in summary.get("keyTopics", ()) if _text(value)
+        ]
+        why_it_matters = _text(summary.get("whyItMatters"))
+        source_count = int(summary.get("sourceItemCount") or 0)
+        focal_count = int(summary.get("focalItemCount") or 0)
+        contextual_count = int(summary.get("contextualItemCount") or 0)
+        generation_method = _text(summary.get("generationMethod"))
+        if not text_value or not why_it_matters or not generation_method:
+            report.add(
+                "error", "episode_summary_incomplete",
+                "Episode summary, why-it-matters, and generation method must be nonblank.",
+                row=row, episode_id=episode_id,
+            )
+        word_count = len(text_value.split())
+        if not 100 <= word_count <= 180:
+            report.add(
+                "error", "episode_summary_word_count_invalid",
+                "Episode summaries must contain 100-180 words.",
+                row=row, episode_id=episode_id, words=word_count,
+            )
+        if not 3 <= len(topics) <= 6:
+            report.add(
+                "error", "episode_summary_topics_invalid",
+                "Episode summaries must contain three to six grounded key topics.",
+                row=row, episode_id=episode_id, topics=len(topics),
+            )
+        if len({topic.casefold() for topic in topics}) != len(topics):
+            report.add(
+                "error", "episode_summary_topics_duplicate",
+                "Episode summary key topics must be unique.",
+                row=row, episode_id=episode_id,
+            )
+        if source_count <= 0 or source_count != focal_count + contextual_count:
+            report.add(
+                "error", "episode_summary_grounding_count_invalid",
+                "Episode summary input counts must be nonzero and internally consistent.",
+                row=row, episode_id=episode_id,
+            )
+        canonical_count = int(
+            episodes_by_id.get(episode_id, {}).get("reconciledSensitivityItemCount") or 0
+        )
+        if episode_id in episodes_by_id and source_count != canonical_count:
+            report.add(
+                "error", "episode_summary_canonical_count_mismatch",
+                "Episode summary input count must match its canonical episode.",
+                row=row, episode_id=episode_id,
+                expected=canonical_count, actual=source_count,
+            )
+        if generation_method != REVIEWED_SUMMARY_METHOD:
+            report.add(
+                "error", "episode_summary_generation_method_invalid",
+                "Episode summaries must use the frozen reviewed synthesis method.",
+                row=row, episode_id=episode_id,
+                expected=REVIEWED_SUMMARY_METHOD, actual=generation_method,
+            )
     return len(report.errors) - errors_before
 
 
@@ -1357,6 +1577,162 @@ def _validate_public_corpus_reconciliation(
     return len(report.errors) - errors_before
 
 
+def _validate_public_source_metadata(
+    public_outputs: Mapping[str, Any], report: ValidationReport
+) -> int:
+    """Enforce the opaque, aggregate-only public source metadata contract."""
+
+    errors_before = len(report.errors)
+    manifest = _payload_by_basename(public_outputs, "manifest.json")
+    qa_report = _payload_by_basename(public_outputs, "qa_report.json")
+
+    manifest_ids: set[str] = set()
+    if isinstance(manifest, Mapping) and "sourceArtifacts" in manifest:
+        artifacts = manifest.get("sourceArtifacts")
+        if not isinstance(artifacts, list):
+            report.add(
+                "error",
+                "public_source_artifacts_not_array",
+                "Manifest sourceArtifacts must be an array.",
+            )
+        else:
+            for row_number, artifact in enumerate(artifacts, 1):
+                if not isinstance(artifact, Mapping):
+                    report.add(
+                        "error",
+                        "public_source_artifact_not_object",
+                        "Each public source artifact must be an object.",
+                        row=row_number,
+                    )
+                    continue
+                unexpected = sorted(set(artifact) - PUBLIC_MANIFEST_ARTIFACT_FIELDS)
+                missing = sorted(PUBLIC_MANIFEST_ARTIFACT_FIELDS - set(artifact))
+                if unexpected or missing:
+                    report.add(
+                        "error",
+                        "public_source_artifact_shape_invalid",
+                        "Public source artifacts expose only artifactId and canonicalRole.",
+                        row=row_number,
+                        unexpected=unexpected,
+                        missing=missing,
+                    )
+                artifact_id = artifact.get("artifactId")
+                if not isinstance(artifact_id, str) or not re.fullmatch(
+                    r"ART-[a-z0-9-]+", artifact_id
+                ):
+                    report.add(
+                        "error",
+                        "public_source_artifact_id_invalid",
+                        "Public source artifacts require an opaque ART-* identifier.",
+                        row=row_number,
+                    )
+                elif artifact_id in manifest_ids:
+                    report.add(
+                        "error",
+                        "public_source_artifact_id_duplicate",
+                        "Public source artifact IDs must be unique.",
+                        artifactId=artifact_id,
+                    )
+                else:
+                    manifest_ids.add(artifact_id)
+                if not isinstance(artifact.get("canonicalRole"), str) or not artifact.get(
+                    "canonicalRole"
+                ):
+                    report.add(
+                        "error",
+                        "public_source_artifact_role_invalid",
+                        "Public source artifacts require a non-empty canonical role.",
+                        row=row_number,
+                    )
+
+    qa_ids: set[str] = set()
+    if isinstance(qa_report, Mapping):
+        for private_field in ("sourceHashes", "sourceRowCounts"):
+            if private_field in qa_report:
+                report.add(
+                    "error",
+                    "private_source_qa_published",
+                    "Public QA must not expose exact source hashes or detailed worksheet maps.",
+                    field=private_field,
+                )
+        source_qa = qa_report.get("sourceArtifactQa")
+        if source_qa is not None and not isinstance(source_qa, list):
+            report.add(
+                "error",
+                "public_source_artifact_qa_not_array",
+                "Public sourceArtifactQa must be an array.",
+            )
+        elif isinstance(source_qa, list):
+            for row_number, artifact in enumerate(source_qa, 1):
+                if not isinstance(artifact, Mapping):
+                    report.add(
+                        "error",
+                        "public_source_artifact_qa_not_object",
+                        "Each public source QA record must be an object.",
+                        row=row_number,
+                    )
+                    continue
+                unexpected = sorted(
+                    set(artifact) - PUBLIC_SOURCE_ARTIFACT_QA_FIELDS
+                )
+                missing = sorted(PUBLIC_SOURCE_ARTIFACT_QA_FIELDS - set(artifact))
+                if unexpected or missing:
+                    report.add(
+                        "error",
+                        "public_source_artifact_qa_shape_invalid",
+                        "Public source QA exposes only opaque IDs and safe aggregates.",
+                        row=row_number,
+                        unexpected=unexpected,
+                        missing=missing,
+                    )
+                artifact_id = artifact.get("artifactId")
+                if isinstance(artifact_id, str):
+                    if artifact_id in qa_ids:
+                        report.add(
+                            "error",
+                            "public_source_artifact_qa_id_duplicate",
+                            "Public source QA artifact IDs must be unique.",
+                            artifactId=artifact_id,
+                        )
+                    qa_ids.add(artifact_id)
+                if not isinstance(artifact.get("canonicalRole"), str) or not artifact.get(
+                    "canonicalRole"
+                ):
+                    report.add(
+                        "error",
+                        "public_source_artifact_qa_role_invalid",
+                        "Public source QA requires a non-empty canonical role.",
+                        row=row_number,
+                    )
+                for count_field in ("worksheetCount", "aggregateRowCount"):
+                    count = artifact.get(count_field)
+                    if isinstance(count, bool) or not isinstance(count, int) or count < 0:
+                        report.add(
+                            "error",
+                            "public_source_artifact_qa_count_invalid",
+                            "Public source QA counts must be non-negative integers.",
+                            row=row_number,
+                            field=count_field,
+                        )
+                if not isinstance(artifact.get("integrityVerified"), bool):
+                    report.add(
+                        "error",
+                        "public_source_artifact_qa_integrity_invalid",
+                        "Public source integrity status must be boolean.",
+                        row=row_number,
+                    )
+
+    if manifest_ids and qa_ids and manifest_ids != qa_ids:
+        report.add(
+            "error",
+            "public_source_artifact_coverage_mismatch",
+            "Manifest and public QA must cover the same opaque artifact IDs.",
+            manifestCount=len(manifest_ids),
+            qaCount=len(qa_ids),
+        )
+    return len(report.errors) - errors_before
+
+
 def validate_public_outputs(public_outputs: Mapping[str, Any]) -> ValidationReport:
     """Validate public JSON payloads against the conservative publication boundary."""
 
@@ -1364,6 +1740,9 @@ def validate_public_outputs(public_outputs: Mapping[str, Any]) -> ValidationRepo
     forbidden_hits: list[dict[str, Any]] = []
     allowlist_hits: list[dict[str, Any]] = []
     xlsx_blob_hits: list[dict[str, Any]] = []
+    private_source_filename_hits: list[dict[str, Any]] = []
+    private_source_fingerprint_hits: list[dict[str, Any]] = []
+    local_path_value_hits: list[dict[str, Any]] = []
     for supplied_name, payload in sorted(public_outputs.items()):
         filename = Path(str(supplied_name)).name
         for path, key, value in _walk_keys(payload):
@@ -1381,6 +1760,37 @@ def validate_public_outputs(public_outputs: Mapping[str, Any]) -> ValidationRepo
                 report.add(
                     "error", "xlsx_blob_in_public_output",
                     "Public output appears to contain an XLSX/ZIP data blob.", **hit,
+                )
+            if PRIVATE_SOURCE_FILENAME_PATTERN.search(key) or (
+                isinstance(value, str) and PRIVATE_SOURCE_FILENAME_PATTERN.search(value)
+            ):
+                hit = {"file": filename, "path": ".".join(path + (key,))}
+                private_source_filename_hits.append(hit)
+                report.add(
+                    "error",
+                    "private_source_filename_published",
+                    "Public output contains a private source workbook filename.",
+                    **hit,
+                )
+            if isinstance(value, str) and PRIVATE_SOURCE_FINGERPRINT_PATTERN.fullmatch(
+                value
+            ):
+                hit = {"file": filename, "path": ".".join(path + (key,))}
+                private_source_fingerprint_hits.append(hit)
+                report.add(
+                    "error",
+                    "private_source_fingerprint_published",
+                    "Public output contains an exact private-style source fingerprint.",
+                    **hit,
+                )
+            if isinstance(value, str) and LOCAL_PATH_VALUE_PATTERN.search(value):
+                hit = {"file": filename, "path": ".".join(path + (key,))}
+                local_path_value_hits.append(hit)
+                report.add(
+                    "error",
+                    "local_path_value_published",
+                    "Public output contains a local or private source path.",
+                    **hit,
                 )
 
         collection = PUBLIC_FILE_COLLECTIONS.get(filename)
@@ -1403,24 +1813,39 @@ def validate_public_outputs(public_outputs: Mapping[str, Any]) -> ValidationRepo
                 )
 
     relationship_errors = _validate_public_relationships(public_outputs, report)
+    relationship_errors += _validate_public_episode_relationships(
+        public_outputs, report
+    )
+    summary_errors = _validate_public_episode_summaries(public_outputs, report)
     reconciliation_errors = 0
     if "corpus_reconciliation.json" in public_outputs:
         reconciliation_errors = _validate_public_corpus_reconciliation(
             public_outputs["corpus_reconciliation.json"], report
         )
+    source_metadata_errors = _validate_public_source_metadata(public_outputs, report)
     report.public_export_checks = {
         "files_checked": len(public_outputs),
         "forbidden_field_hits": len(forbidden_hits),
         "allowlist_violations": len(allowlist_hits),
         "xlsx_blob_hits": len(xlsx_blob_hits),
+        "private_source_filename_hits": len(private_source_filename_hits),
+        "private_source_fingerprint_hits": len(private_source_fingerprint_hits),
+        "local_path_value_hits": len(local_path_value_hits),
         "relationship_errors": relationship_errors,
+        "episode_summary_errors": summary_errors,
         "reconciliation_errors": reconciliation_errors,
+        "source_metadata_errors": source_metadata_errors,
         "passed": not (
             forbidden_hits
             or allowlist_hits
             or xlsx_blob_hits
+            or private_source_filename_hits
+            or private_source_fingerprint_hits
+            or local_path_value_hits
             or relationship_errors
+            or summary_errors
             or reconciliation_errors
+            or source_metadata_errors
         ),
     }
     return report
