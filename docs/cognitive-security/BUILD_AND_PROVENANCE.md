@@ -228,20 +228,39 @@ Episode summaries and episode relationships are public companion products;
 they do not regenerate the historical extraction, coding, clusters, or
 higher-order synthesis.
 
-`scripts/build_episode_products.py` is the separate authoring workflow. It
-reads the ignored normalized v1.1 package, enforces canonical-source-only item
-selection, and writes full source packages and authoring QA beneath the ignored
-`analysis/cognitive-security/eod-explorer/` directory. The public summary
-record contains only the canonical episode ID, reviewed summary prose, three to
-six key topics, a why-it-matters statement, safe aggregate source counts, and a
-generation-method label. Item IDs, item text, source identities, evidence
-excerpts, authoring prompts, raw responses, and credentials remain private.
+`scripts/build_transcript_summaries.py` is the separate summary authoring
+workflow. It joins the ignored transcript corpus to the governed v1.1
+reconciliation, selects one canonical readable transcript for each of the 242
+public releases, records complete sequential chunk coverage, and keeps the
+manifest, transcript paths and hashes, source identities, alias decisions,
+authoring checkpoints, comparisons, and QA beneath the ignored
+`analysis/cognitive-security/transcript-summaries-v1/` directory. The public
+summary record contains only the canonical episode ID, number and title,
+reviewed summary prose, three to six transcript-derived key topics, a
+why-it-matters statement, the frozen summary-method token, and safe transcript
+and summary word counts. Transcript text, item IDs and text, source identities,
+evidence excerpts, authoring prompts, raw responses, and credentials remain
+private.
 
 Summary authoring is review-gated and occurs before an ordinary website build.
-A reviewed set can be validated and published with:
+First run deterministic corpus QA against the reviewed private candidate (not
+the currently published file):
 
 ```powershell
-py scripts\build_episode_products.py --summaries-from <reviewed-summary-json>
+py scripts\build_transcript_summaries.py qa `
+  --summaries <reviewed-summary-json>
+```
+
+Review and adjudicate every resulting review-level flag, complete the deep
+transcript-grounding sample, and then publish that same reviewed candidate
+with:
+
+```powershell
+py scripts\build_transcript_summaries.py publish `
+  --summaries-from <reviewed-summary-json> `
+  --qa-report <automatic-qa-json> `
+  --adjudication-report <review-flag-dispositions-json> `
+  --deep-qa-report <deep-transcript-qa-json>
 ```
 
 The resulting `data/cognitive-security/episode_summaries.json` is then a frozen
@@ -249,6 +268,21 @@ input to `scripts/build_cognitive_security.py`. The ordinary build requires
 complete coverage, validates the frozen file, carries it into the deterministic
 public package, and makes no API calls. Missing or invalid frozen summaries stop
 publication instead of triggering implicit generation.
+
+The transcript publisher permits an ignored private candidate before QA. A
+write to the public frozen path is atomic and additionally requires an
+automatic QA report whose payload hash matches the candidate, complete
+adjudication of every review-level flag, and a payload-matched deep grounding
+review of at least 24 releases with no unresolved major issue. The legacy
+structured-item episode-product command rejects summary publication so it
+cannot bypass these transcript gates or rewrite relationships as a side effect.
+
+Public episode summaries are transcript-grounded syntheses generated from the
+canonical episode transcripts. The analytical relationships shown elsewhere
+in the map are derived from the separately governed structured coding pipeline.
+The transcript summary and analytical map relationship are separate products;
+summary authoring does not change categories, clusters, themes, tensions,
+narratives, scenarios, or either relationship graph.
 
 `episode_relationships.json` is rebuilt deterministically from the same
 canonical-source-only inputs:
@@ -573,11 +607,13 @@ semantic smoothing, overgeneralization, and hidden bias. Coding confidence is
 workflow metadata, not scientific evidence strength.
 
 Episode summary authoring is also a separate grounded synthesis task whose
-inputs are restricted to each release's retained canonical-source package. The
-reviewed output is frozen before the ordinary build; the ordinary build performs
-no model or API call. A generation-method label documents how the public prose
-was produced without publishing prompts, raw responses, credentials, or private
-source material.
+authoritative input is each release's selected canonical transcript. Structured
+analytical records may be consulted only after a transcript-first draft for QA
+and identity checking; they do not determine summary content. The reviewed
+output is frozen before the ordinary build, which performs no model or API
+call. A summary-method token documents how the public prose was produced
+without publishing prompts, raw responses, credentials, transcript text or
+paths, or other private source material.
 
 ### 17. Traceability and reconciliation sensitivity
 

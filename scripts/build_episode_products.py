@@ -1,9 +1,10 @@
-"""Build frozen grounded episode summaries and standalone relationships.
+"""Build legacy private episode pilots and standalone relationships.
 
 This authoring command is intentionally separate from the ordinary website
 build.  It may read the ignored normalized historical release and writes its
-full source packages only beneath ``analysis/``.  The public output contains
-no item IDs, item text, source identities, filenames, or raw model responses.
+full source packages only beneath ``analysis/``. Transcript-summary publication
+has moved to ``build_transcript_summaries.py`` and is blocked here so the
+transcript manifest and grounding-QA release gate cannot be bypassed.
 """
 
 from __future__ import annotations
@@ -68,6 +69,12 @@ def _relationship_counts(records: list[dict[str, Any]]) -> dict[str, int]:
 
 
 def build(args: argparse.Namespace) -> dict[str, Any]:
+    if args.summaries_from:
+        raise ValueError(
+            "Transcript-summary publication is not supported by this legacy "
+            "structured-item command. Use scripts/build_transcript_summaries.py "
+            "and its manifest, QA, and publish workflow."
+        )
     dataset = _load_dataset(args.normalized_dir)
     packages = build_private_source_packages(dataset)
     authoring_inputs = build_summary_authoring_inputs(packages)
@@ -106,7 +113,7 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
     }
     if reviewed_summaries is not None:
         provenance["acceptedGenerationMethods"] = sorted(
-            {row["generationMethod"] for row in reviewed_summaries}
+            {row["summaryMethod"] for row in reviewed_summaries}
         )
         provenance["acceptedSummaryCount"] = len(reviewed_summaries)
 
@@ -133,8 +140,9 @@ def build(args: argparse.Namespace) -> dict[str, Any]:
 
     if reviewed_summaries is None:
         raise ValueError(
-            "Public summary publication requires one or more reviewed files via "
-            "--summaries-from. Use --pilot-only to prepare private authoring inputs."
+            "This legacy command only prepares private structured-item pilots. "
+            "Use --pilot-only here, and use scripts/build_transcript_summaries.py "
+            "for transcript-summary publication."
         )
     summaries = reviewed_summaries
     relationships = episode_relationship_payload(dataset)
@@ -189,8 +197,8 @@ def _parser() -> argparse.ArgumentParser:
         type=Path,
         nargs="+",
         help=(
-            "One or more reviewed frozen summary JSON fragments to merge, validate, "
-            "and publish. Required unless --pilot-only is used."
+            "Retired compatibility option. Transcript-summary publication is "
+            "QA-gated by scripts/build_transcript_summaries.py and is rejected here."
         ),
     )
     parser.add_argument(

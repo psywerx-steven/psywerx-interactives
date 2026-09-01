@@ -13,10 +13,16 @@ from collections import Counter, defaultdict
 from copy import deepcopy
 from typing import Any, Iterable, Mapping, Sequence
 
+from .transcript_summaries import (
+    PUBLIC_SUMMARY_FIELDS,
+    TRANSCRIPT_SUMMARY_METHOD,
+    is_single_why_sentence,
+)
+
 
 EPISODE_PRODUCT_SCHEMA_VERSION = "1.0"
 SUMMARY_METHOD = "deterministic-grounded-extractive-synthesis-v1"
-REVIEWED_SUMMARY_METHOD = "codex-grounded-synthesis-v1"
+REVIEWED_SUMMARY_METHOD = TRANSCRIPT_SUMMARY_METHOD
 
 EPISODE_RELATIONSHIP_SCHEMA: dict[str, tuple[str, str, str]] = {
     "episode-participates-in-category": (
@@ -941,37 +947,72 @@ def validate_frozen_summaries(
         raise ValueError("Frozen summaries must cover every canonical episode exactly once.")
     if len(summary_ids) != len(set(summary_ids)):
         raise ValueError("Frozen episode summary IDs must be unique.")
-    allowed_fields = {
-        "episodeId",
-        "summary",
-        "keyTopics",
-        "whyItMatters",
-        "sourceItemCount",
-        "focalItemCount",
-        "contextualItemCount",
-        "generationMethod",
-    }
     validated: list[dict[str, Any]] = []
     for source in summaries:
-        missing = allowed_fields - set(source)
-        unexpected = set(source) - allowed_fields
+        missing = PUBLIC_SUMMARY_FIELDS - set(source)
+        unexpected = set(source) - PUBLIC_SUMMARY_FIELDS
         if missing or unexpected:
             raise ValueError(
                 f"Frozen summary {_identifier(source, 'episodeId')} has an invalid field set; "
                 f"missing: {', '.join(sorted(missing)) or 'none'}; "
                 f"unexpected: {', '.join(sorted(unexpected)) or 'none'}."
             )
+        string_fields = (
+            "episodeId",
+            "episodeTitle",
+            "summary",
+            "whyItMatters",
+            "summaryMethod",
+        )
+        if any(type(source.get(field)) is not str for field in string_fields):
+            raise ValueError(
+                f"Frozen summary {_identifier(source, 'episodeId')} has a non-string "
+                "public text field."
+            )
+        raw_topics = source.get("keyTopics")
+        if (
+            type(raw_topics) is not list
+            or not all(type(value) is str and value.strip() for value in raw_topics)
+        ):
+            raise ValueError(
+                f"Frozen summary {_identifier(source, 'episodeId')} keyTopics must be "
+                "a JSON array of nonblank strings."
+            )
+        episode_number = source.get("episodeNumber")
+        if episode_number is not None and type(episode_number) is not int:
+            raise ValueError(
+                f"Frozen summary {_identifier(source, 'episodeId')} episodeNumber must "
+                "be an integer or null."
+            )
+        transcript_word_count = source.get("transcriptWordCount")
+        if type(transcript_word_count) is not int or transcript_word_count <= 0:
+            raise ValueError(
+                f"Frozen summary {_identifier(source, 'episodeId')} "
+                "transcriptWordCount must be a positive integer."
+            )
+        supplied_summary_word_count = source.get("summaryWordCount")
+        if type(supplied_summary_word_count) is not int:
+            raise ValueError(
+                f"Frozen summary {_identifier(source, 'episodeId')} summaryWordCount "
+                "must be an integer."
+            )
         episode_id = _identifier(source, "episodeId")
+        episode_title = _text(source.get("episodeTitle"))
         summary = _text(source.get("summary"))
-        topics = [_text(value) for value in source.get("keyTopics", ()) if _text(value)]
+        topics = [_text(value) for value in raw_topics]
         why_it_matters = _text(source.get("whyItMatters"))
-        source_item_count = int(source.get("sourceItemCount") or 0)
-        focal_item_count = int(source.get("focalItemCount") or 0)
-        contextual_item_count = int(source.get("contextualItemCount") or 0)
-        generation_method = _text(source.get("generationMethod"))
-        if not summary or not topics or not why_it_matters or source_item_count <= 0:
+        summary_method = _text(source.get("summaryMethod"))
+        if not summary or not topics or not why_it_matters or transcript_word_count <= 0:
             raise ValueError(
                 f"Frozen summary {episode_id} is incomplete or ungrounded."
+            )
+        why_word_count = len(why_it_matters.split())
+        if not 10 <= why_word_count <= 45 or not is_single_why_sentence(
+            why_it_matters
+        ):
+            raise ValueError(
+                f"Frozen summary {episode_id} whyItMatters must be one concise "
+                "10-45-word sentence."
             )
         word_count = len(summary.split())
         if not 100 <= word_count <= 180:
@@ -984,36 +1025,35 @@ def validate_frozen_summaries(
             )
         if len({topic.casefold() for topic in topics}) != len(topics):
             raise ValueError(f"Frozen summary {episode_id} contains duplicate key topics.")
-        if (
-            focal_item_count < 0
-            or contextual_item_count < 0
-            or source_item_count != focal_item_count + contextual_item_count
-        ):
+        episode = episodes_by_id[episode_id]
+        if episode_number != episode.get("parsedEpisodeNumber"):
             raise ValueError(
-                f"Frozen summary {episode_id} has inconsistent grounding counts."
+                f"Frozen summary {episode_id} has the wrong canonical episode number."
             )
-        expected_item_count = int(
-            episodes_by_id[episode_id].get("reconciledSensitivityItemCount") or 0
-        )
-        if source_item_count != expected_item_count:
+        if episode_title != _text(episode.get("episodeTitle")):
             raise ValueError(
-                f"Frozen summary {episode_id} grounding count does not match its canonical episode."
+                f"Frozen summary {episode_id} has the wrong canonical episode title."
             )
-        if generation_method != REVIEWED_SUMMARY_METHOD:
+        if supplied_summary_word_count != word_count:
             raise ValueError(
-                f"Frozen summary {episode_id} must use generation method "
+                f"Frozen summary {episode_id} has an incorrect summaryWordCount."
+            )
+        if source.get("summaryMethod") != REVIEWED_SUMMARY_METHOD:
+            raise ValueError(
+                f"Frozen summary {episode_id} must use summary method "
                 f"{REVIEWED_SUMMARY_METHOD}."
             )
         validated.append(
             {
                 "episodeId": episode_id,
+                "episodeNumber": episode_number,
+                "episodeTitle": episode_title,
                 "summary": summary,
                 "keyTopics": topics,
                 "whyItMatters": why_it_matters,
-                "sourceItemCount": source_item_count,
-                "focalItemCount": focal_item_count,
-                "contextualItemCount": contextual_item_count,
-                "generationMethod": generation_method,
+                "summaryMethod": summary_method,
+                "transcriptWordCount": transcript_word_count,
+                "summaryWordCount": supplied_summary_word_count,
             }
         )
     return sorted(validated, key=lambda row: row["episodeId"])

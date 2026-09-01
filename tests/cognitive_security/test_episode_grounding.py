@@ -26,6 +26,7 @@ from scripts.cognitive_security.episode_products import (  # noqa: E402
     canonical_episode_sources,
     retained_canonical_items,
 )
+from scripts.cognitive_security.transcript_summaries import word_count  # noqa: E402
 
 
 REQUIRED_COLLECTIONS = (
@@ -117,33 +118,55 @@ class EpisodeGroundingTests(unittest.TestCase):
                 {item["sourceIdentityId"] for item in items},
             )
 
-    def test_every_public_summary_resolves_to_full_canonical_package(self):
+    def test_every_public_summary_resolves_to_canonical_episode(self):
         package_by_id = {row["episodeId"]: row for row in self.packages}
-        inputs_by_id = {row["episodeId"]: row for row in self.authoring_inputs}
         self.assertEqual(242, len(package_by_id))
         self.assertEqual(set(package_by_id), {row["episodeId"] for row in self.public_summaries})
 
         for summary in self.public_summaries:
             episode_id = summary["episodeId"]
             package = package_by_id[episode_id]
-            authoring_input = inputs_by_id[episode_id]
             with self.subTest(episode_id=episode_id):
                 self.assertGreater(package["itemCount"], 0)
                 self.assertEqual(package["itemCount"], len(package["structuredItems"]))
-                self.assertEqual(package["itemCount"], summary["sourceItemCount"])
-                self.assertEqual(package["focalItemCount"], summary["focalItemCount"])
-                self.assertEqual(
-                    package["contextualItemCount"], summary["contextualItemCount"]
-                )
-                self.assertTrue(
-                    set(summary["keyTopics"]) <= set(authoring_input["topicCandidates"])
-                )
                 self.assertEqual(
                     0,
                     package["summaryGenerationProvenance"][
                         "excludedAliasContribution"
                     ],
                 )
+
+    def test_every_public_summary_matches_private_transcript_manifest(self):
+        private_dir = (
+            REPO_ROOT
+            / "analysis"
+            / "cognitive-security"
+            / "transcript-summaries-v1"
+        )
+        manifest_path = private_dir / "transcript_manifest.json"
+        coverage_path = private_dir / "chunk_coverage.json"
+        if not manifest_path.is_file() or not coverage_path.is_file():
+            self.skipTest("Private transcript-summary manifest is unavailable.")
+        manifest = _load_json(manifest_path)
+        coverage = _load_json(coverage_path)
+        manifest_by_id = {row["episodeId"]: row for row in manifest}
+        self.assertEqual(242, len(manifest_by_id))
+        self.assertEqual(
+            set(manifest_by_id), {row["episodeId"] for row in self.public_summaries}
+        )
+        self.assertEqual(242, len(coverage))
+        self.assertTrue(all(row["cleanedSequentialCoverageComplete"] for row in coverage))
+        for summary in self.public_summaries:
+            source = manifest_by_id[summary["episodeId"]]
+            transcript_path = Path(source["selectedTranscriptPath"])
+            with self.subTest(episode_id=summary["episodeId"]):
+                self.assertTrue(transcript_path.is_file())
+                self.assertEqual(
+                    word_count(transcript_path.read_text(encoding="utf-8")),
+                    summary["transcriptWordCount"],
+                )
+                self.assertNotIn("selectedTranscriptPath", summary)
+                self.assertNotIn("transcriptSha256", summary)
 
     def test_published_relationships_equal_full_private_recomputation(self):
         recomputed = build_episode_relationships(self.dataset)

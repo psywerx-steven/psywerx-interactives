@@ -679,13 +679,16 @@ function validatePublicData() {
   }
   data["episodes.json"].forEach(function (episode) {
     const summary = episodeSummaryMap.get(episode.episodeId);
+    const summaryWords = String(summary && summary.summary || "").trim()
+      .split(/\s+/).filter(Boolean).length;
     if (!summary || !String(summary.summary || "").trim() ||
         !String(summary.whyItMatters || "").trim() ||
         asArray(summary.keyTopics).length < 3 || asArray(summary.keyTopics).length > 6 ||
-        Number(summary.sourceItemCount) <= 0 ||
-        Number(summary.sourceItemCount) !== Number(summary.focalItemCount) +
-          Number(summary.contextualItemCount) ||
-        Number(summary.sourceItemCount) !== Number(episode.reconciledSensitivityItemCount)) {
+        summary.summaryMethod !== "transcript-grounded-synthesis-v1" ||
+        Number(summary.transcriptWordCount) <= 0 ||
+        Number(summary.summaryWordCount) !== summaryWords ||
+        summary.episodeNumber !== episode.parsedEpisodeNumber ||
+        summary.episodeTitle !== episode.episodeTitle) {
       throw new Error("Episode summary grounding metadata is invalid for " + episode.episodeId + ".");
     }
   });
@@ -3190,7 +3193,7 @@ function renderEpisode(route) {
     episodeLabel + " · " + episode.episodeId,
     episode.episodeTitle,
     episode.podcast || "Podcast episode retained in the public corpus catalog.",
-    formatNumber(episode.sourceItemCount) + " retained canonical structured items"
+    formatNumber(episode.transcriptWordCount) + " transcript words"
   );
   setBreadcrumbs([
     { label: "Episodes", view: "episodes" },
@@ -3210,7 +3213,9 @@ function renderEpisode(route) {
     { label: "Historical source identities", value: formatNumber(episode.sourceIdentityCount) },
     { label: "Original analytic item count", value: formatNumber(episode.originalItemCount) },
     { label: "Reconciled sensitivity item count", value: formatNumber(episode.reconciledSensitivityItemCount) },
-    { label: "Summary method", value: episode.generationMethod },
+    { label: "Summary method", value: "Transcript-grounded episode summary" },
+    { label: "Transcript length", value: formatNumber(episode.transcriptWordCount) + " words" },
+    { label: "Summary length", value: formatNumber(episode.summaryWordCount) + " words" },
   ]));
   content.appendChild(lead);
 
@@ -3223,7 +3228,7 @@ function renderEpisode(route) {
   topics.appendChild(element("h2", "section-title", "Key topics"));
   topics.appendChild(element(
     "p", "section-intro",
-    "These topics come from recurring coded clusters and retained canonical relevance tags."
+    "These reader-facing topics were synthesized directly from the canonical episode transcript."
   ));
   const topicList = element("div", "entity-chip-list");
   asArray(episode.keyTopics).forEach(function (topic) {
@@ -3292,7 +3297,7 @@ function renderEpisode(route) {
 
   content.appendChild(cautionBox(
     "Public corpus catalog only",
-    "This page summarizes one canonical public-feed release from its selected structured historical source. Full transcript search, raw items, source-identity pairings, quotations, speakers, raw model output, and coding rationales remain private. Frequency reflects discourse prevalence within this corpus, not importance, consensus, or evidence strength.",
+    "This page summarizes one canonical public-feed release from its selected transcript. Full transcript search, raw transcript text, raw items, source-identity pairings, quotations, speakers, raw model output, and coding rationales remain private. The analytical relationships below come from the separately governed structured coding pipeline and do not derive from this summary.",
     "quiet"
   ));
   viewContent.appendChild(content);
@@ -3468,8 +3473,8 @@ function renderMethodology() {
   ));
   const episodeProductGrid = element("div", "methodology-grid");
   episodeProductGrid.appendChild(methodologyCard(
-    "Frozen episode summaries",
-    "Each of the 242 public summaries was authored only from the selected canonical source identity’s structured item summaries, categories, primary and secondary clusters, strategic significance, operational implications, relevance tags, and time horizons. Outside knowledge, transcripts, raw item text, and excluded aliases were not inputs. Accepted summaries are frozen; ordinary website builds validate and copy them without making an API call."
+    "Transcript-grounded episode summaries",
+    "Public episode summaries are transcript-grounded syntheses generated from the canonical episode transcripts. The analytical relationships shown elsewhere in the map are derived from the separately governed structured coding pipeline. Transcript summaries and analytical map relationships are separate products. Outside knowledge, structured analytical items, and excluded aliases were not summary inputs. Accepted summaries are frozen; ordinary website builds validate and copy them without making an API call."
   ));
   episodeProductGrid.appendChild(methodologyCard(
     "Direct category and cluster aggregation",
@@ -3495,7 +3500,7 @@ function renderMethodology() {
   ));
   episodeProductGrid.appendChild(methodologyCard(
     "Public/private boundary",
-    "Public episode products contain canonical episode IDs, summaries, key topics, why-it-matters statements, public entity IDs, safe aggregate counts, and relationship semantics. They exclude item IDs and text, quotations, transcripts, source filenames, alias records, private notes, raw model output, credentials, review queues, and local paths."
+    "Public episode products contain canonical episode IDs and titles, transcript-grounded summaries, key topics, why-it-matters statements, safe word counts, public entity IDs, safe aggregate relationship counts, and relationship semantics. They exclude transcript text, transcript paths and hashes, item IDs and text, quotations, source filenames, alias records, private notes, raw model output, credentials, review queues, and local paths."
   ));
   episodeProductGrid.appendChild(methodologyCard(
     "Historical release and v2 work",
