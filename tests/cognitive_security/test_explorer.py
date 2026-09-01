@@ -151,9 +151,9 @@ PUBLIC_RECORD_FIELDS = {
         "parsedEpisodeNumber",
     },
     "episode_summaries.json": {
-        "episodeId", "summary", "keyTopics", "whyItMatters",
-        "sourceItemCount", "focalItemCount", "contextualItemCount",
-        "generationMethod",
+        "episodeId", "episodeNumber", "episodeTitle", "summary", "keyTopics",
+        "whyItMatters", "summaryMethod", "transcriptWordCount",
+        "summaryWordCount",
     },
     "relationships.json": {
         "relationshipId", "relationshipType", "sourceId", "sourceType",
@@ -685,6 +685,8 @@ class PublicDataContractTests(unittest.TestCase):
                 if not path:
                     continue
                 key = re.sub(r"[^a-z]", "", path[-1].casefold())
+                if key == "transcriptwordcount":
+                    continue
                 if any(fragment in key for fragment in prohibited_key_fragments):
                     violations.append(f"{filename}:{'.'.join(path)}")
         self.assertEqual([], violations, "Private/detail keys escaped: " + repr(violations))

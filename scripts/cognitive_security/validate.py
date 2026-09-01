@@ -30,8 +30,14 @@ import shutil
 import subprocess
 from typing import Any, Iterable, Mapping, Sequence
 
-from .episode_products import EPISODE_RELATIONSHIP_SCHEMA, REVIEWED_SUMMARY_METHOD
+from .episode_products import EPISODE_RELATIONSHIP_SCHEMA
 from .export import PUBLIC_RELATIONSHIP_SCHEMA
+from .transcript_summaries import (
+    PUBLIC_SUMMARY_FIELDS,
+    TRANSCRIPT_SUMMARY_METHOD,
+    is_single_why_sentence,
+    why_sentence_count,
+)
 
 
 REQUIRED_WORKBOOKS = (
@@ -239,9 +245,9 @@ PUBLIC_RECORD_ALLOWLISTS = {
         "reconciled_sensitivity_item_count", "parsed_episode_number",
     },
     "episode_summaries": {
-        "episode_id", "summary", "key_topics", "why_it_matters",
-        "source_item_count", "focal_item_count", "contextual_item_count",
-        "generation_method",
+        "episode_id", "episode_number", "episode_title", "summary", "key_topics",
+        "why_it_matters", "summary_method", "transcript_word_count",
+        "summary_word_count",
     },
     "episode_relationships": {
         "relationship_id", "relationship_type", "source_type", "source_id",
@@ -317,7 +323,10 @@ PUBLIC_WRAPPER_KEYS = {
 }
 
 FORBIDDEN_PUBLIC_KEY_PATTERNS = (
-    re.compile(r"transcript", re.I),
+    re.compile(
+        r"(?:^|_)(?:transcript(?:$|_(?:text|content|path|file|filename|hash|sha256|excerpt|quote|segments?)(?:$|_))|raw_transcript(?:$|_))",
+        re.I,
+    ),
     re.compile(r"(?:^|_)evidence_(?:quote|excerpt)(?:$|_)", re.I),
     re.compile(r"(?:^|_)(?:full_text|item_text|raw_text)(?:$|_)", re.I),
     re.compile(r"rationale", re.I),
@@ -1382,6 +1391,22 @@ def _validate_public_episode_summaries(
     payload = _payload_by_basename(public_outputs, "episode_summaries.json")
     if payload is None:
         return 0
+    errors_before = len(report.errors)
+    raw_summaries: list[Any] = []
+    if isinstance(payload, list):
+        raw_summaries = payload
+    elif isinstance(payload, dict):
+        for key in ("episode_summaries", "records", "entries"):
+            if isinstance(payload.get(key), list):
+                raw_summaries = payload[key]
+                break
+    for row, summary in enumerate(raw_summaries, 1):
+        if not isinstance(summary, dict):
+            report.add(
+                "error", "episode_summary_record_type_invalid",
+                "Every episode summary entry must be a JSON object.",
+                row=row,
+            )
     summaries = _public_record_list(payload, "episode_summaries")
     episode_payload = _payload_by_basename(public_outputs, "episodes.json")
     episodes_by_id = {
@@ -1390,7 +1415,6 @@ def _validate_public_episode_summaries(
         if _text(record.get("episodeId"))
     }
     episode_ids = set(episodes_by_id)
-    errors_before = len(report.errors)
     summary_ids = [_text(record.get("episodeId")) for record in summaries]
     if len(summary_ids) != len(set(summary_ids)):
         report.add(
@@ -1404,21 +1428,80 @@ def _validate_public_episode_summaries(
             expected=len(episode_ids), actual=len(set(summary_ids)),
         )
     for row, summary in enumerate(summaries, 1):
-        episode_id = _text(summary.get("episodeId"))
-        text_value = _text(summary.get("summary"))
-        topics = [
-            _text(value) for value in summary.get("keyTopics", ()) if _text(value)
+        missing = sorted(PUBLIC_SUMMARY_FIELDS - set(summary))
+        unexpected = sorted(set(summary) - PUBLIC_SUMMARY_FIELDS)
+        if missing or unexpected:
+            report.add(
+                "error", "episode_summary_field_set_invalid",
+                "Episode summaries must contain exactly the nine public fields.",
+                row=row, missing=missing, unexpected=unexpected,
+            )
+        string_fields = (
+            "episodeId",
+            "episodeTitle",
+            "summary",
+            "whyItMatters",
+            "summaryMethod",
+        )
+        invalid_string_fields = [
+            field for field in string_fields
+            if type(summary.get(field)) is not str
         ]
+        if invalid_string_fields:
+            report.add(
+                "error", "episode_summary_text_type_invalid",
+                "Episode summary text fields must be JSON strings.",
+                row=row, fields=invalid_string_fields,
+            )
+        episode_id = _text(summary.get("episodeId"))
+        episode_number = summary.get("episodeNumber")
+        episode_number_type_valid = (
+            episode_number is None or type(episode_number) is int
+        )
+        if not episode_number_type_valid:
+            report.add(
+                "error", "episode_summary_number_type_invalid",
+                "episodeNumber must be a JSON integer or null.",
+                row=row, episode_id=episode_id, actual=episode_number,
+            )
+        episode_title = _text(summary.get("episodeTitle"))
+        text_value = _text(summary.get("summary"))
+        raw_topics = summary.get("keyTopics")
+        topics_type_valid = (
+            type(raw_topics) is list
+            and all(type(value) is str and value.strip() for value in raw_topics)
+        )
+        if not topics_type_valid:
+            report.add(
+                "error", "episode_summary_topics_type_invalid",
+                "keyTopics must be a JSON array of nonblank strings.",
+                row=row, episode_id=episode_id,
+            )
+        topics = [_text(value) for value in raw_topics] if topics_type_valid else []
         why_it_matters = _text(summary.get("whyItMatters"))
-        source_count = int(summary.get("sourceItemCount") or 0)
-        focal_count = int(summary.get("focalItemCount") or 0)
-        contextual_count = int(summary.get("contextualItemCount") or 0)
-        generation_method = _text(summary.get("generationMethod"))
-        if not text_value or not why_it_matters or not generation_method:
+        summary_method = _text(summary.get("summaryMethod"))
+        transcript_word_count = summary.get("transcriptWordCount")
+        transcript_count_valid = (
+            type(transcript_word_count) is int and transcript_word_count > 0
+        )
+        supplied_summary_word_count = summary.get("summaryWordCount")
+        summary_count_type_valid = type(supplied_summary_word_count) is int
+        if not text_value or not why_it_matters or not summary_method:
             report.add(
                 "error", "episode_summary_incomplete",
-                "Episode summary, why-it-matters, and generation method must be nonblank.",
+                "Episode summary, why-it-matters, and summary method must be nonblank.",
                 row=row, episode_id=episode_id,
+            )
+        why_word_count = len(why_it_matters.split())
+        sentence_boundaries = why_sentence_count(why_it_matters)
+        if not 10 <= why_word_count <= 45 or not is_single_why_sentence(
+            why_it_matters
+        ):
+            report.add(
+                "error", "episode_summary_why_it_matters_invalid",
+                "whyItMatters must be one concise 10-45-word sentence.",
+                row=row, episode_id=episode_id,
+                words=why_word_count, sentence_boundaries=sentence_boundaries,
             )
         word_count = len(text_value.split())
         if not 100 <= word_count <= 180:
@@ -1426,6 +1509,17 @@ def _validate_public_episode_summaries(
                 "error", "episode_summary_word_count_invalid",
                 "Episode summaries must contain 100-180 words.",
                 row=row, episode_id=episode_id, words=word_count,
+            )
+        if (
+            not summary_count_type_valid
+            or supplied_summary_word_count != word_count
+        ):
+            report.add(
+                "error", "episode_summary_reported_word_count_invalid",
+                "summaryWordCount must be a JSON integer equal to the summary's "
+                "whitespace-token count.",
+                row=row, episode_id=episode_id,
+                expected=word_count, actual=supplied_summary_word_count,
             )
         if not 3 <= len(topics) <= 6:
             report.add(
@@ -1439,28 +1533,37 @@ def _validate_public_episode_summaries(
                 "Episode summary key topics must be unique.",
                 row=row, episode_id=episode_id,
             )
-        if source_count <= 0 or source_count != focal_count + contextual_count:
+        if not transcript_count_valid:
             report.add(
-                "error", "episode_summary_grounding_count_invalid",
-                "Episode summary input counts must be nonzero and internally consistent.",
+                "error", "episode_summary_transcript_count_invalid",
+                "transcriptWordCount must be a positive JSON integer.",
+                row=row, episode_id=episode_id, actual=transcript_word_count,
+            )
+        canonical_episode = episodes_by_id.get(episode_id)
+        if (
+            canonical_episode
+            and episode_number_type_valid
+            and episode_number != canonical_episode.get("parsedEpisodeNumber")
+        ):
+            report.add(
+                "error", "episode_summary_number_mismatch",
+                "Episode summary number must match its canonical public episode.",
+                row=row, episode_id=episode_id,
+                expected=canonical_episode.get("parsedEpisodeNumber"), actual=episode_number,
+            )
+        if canonical_episode and episode_title != _text(canonical_episode.get("episodeTitle")):
+            report.add(
+                "error", "episode_summary_title_mismatch",
+                "Episode summary title must match its canonical public episode.",
                 row=row, episode_id=episode_id,
             )
-        canonical_count = int(
-            episodes_by_id.get(episode_id, {}).get("reconciledSensitivityItemCount") or 0
-        )
-        if episode_id in episodes_by_id and source_count != canonical_count:
+        if summary.get("summaryMethod") != TRANSCRIPT_SUMMARY_METHOD:
             report.add(
-                "error", "episode_summary_canonical_count_mismatch",
-                "Episode summary input count must match its canonical episode.",
-                row=row, episode_id=episode_id,
-                expected=canonical_count, actual=source_count,
-            )
-        if generation_method != REVIEWED_SUMMARY_METHOD:
-            report.add(
-                "error", "episode_summary_generation_method_invalid",
+                "error", "episode_summary_method_invalid",
                 "Episode summaries must use the frozen reviewed synthesis method.",
                 row=row, episode_id=episode_id,
-                expected=REVIEWED_SUMMARY_METHOD, actual=generation_method,
+                expected=TRANSCRIPT_SUMMARY_METHOD,
+                actual=summary.get("summaryMethod"),
             )
     return len(report.errors) - errors_before
 

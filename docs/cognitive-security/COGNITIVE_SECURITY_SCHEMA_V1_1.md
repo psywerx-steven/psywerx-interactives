@@ -124,19 +124,27 @@ source filename, alias-member ID, transcript detail, or row-level provenance.
 `episode_summaries.json` contains exactly one record for each public episode:
 
 - `episodeId: string` — canonical public-feed release ID.
+- `episodeNumber: integer | null` — canonical parsed episode number; retained as
+  `null` for the five governed unnumbered releases.
+- `episodeTitle: string` — canonical public title copied exactly from
+  `episodes.json`.
 - `summary: string` — reviewed 100–180-word grounded synthesis.
-- `keyTopics: string[]` — three to six concise grounded topics.
-- `whyItMatters: string` — concise interpretive relevance statement grounded
-  in the same selected inputs.
-- `sourceItemCount`, `focalItemCount`, `contextualItemCount: integer` — safe
-  aggregate counts from the retained canonical source; the focal and contextual
-  counts sum to the source-item count.
-- `generationMethod: string` — frozen authoring-method label.
+- `keyTopics: string[]` — three to six concise transcript-derived topics.
+- `whyItMatters: string` — exactly one complete 10–45-word interpretive
+  relevance sentence grounded in the same transcript.
+- `summaryMethod: "transcript-grounded-synthesis-v1"` — internal frozen
+  authoring-method token. The Explorer presents the reader-facing label
+  **Transcript-grounded episode summary**.
+- `transcriptWordCount: integer` — positive word count for the privately
+  selected canonical transcript; no transcript path, hash, or text is public.
+- `summaryWordCount: integer` — exact whitespace-token count of `summary`.
 
-The product is authored from an ignored source package and reviewed before it
-is frozen. An ordinary website build treats this JSON as an input, validates
-complete episode coverage and its allowlist, and does not regenerate prose or
-call an API.
+The product is authored from the ignored canonical transcript corpus and
+reviewed before it is frozen. Existing structured analytical items may be used
+only after drafting for identity and omission QA; they are not summary inputs.
+An ordinary website build treats this JSON as an input, validates complete
+episode coverage and its allowlist, and does not regenerate prose or call an
+API.
 
 ### `episode_relationships` public product
 

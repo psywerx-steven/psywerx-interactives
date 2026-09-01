@@ -284,12 +284,12 @@ content is reused.
 
 Episode presentation is split across three deliberately narrow public files.
 `episodes.json` contains identity and aggregate coverage fields;
-`episode_summaries.json` contains one reviewed, grounded summary with key topics
-and a why-it-matters statement per release; and `episode_relationships.json`
+`episode_summaries.json` contains one reviewed, transcript-grounded summary with
+transcript-derived key topics and a why-it-matters statement per release; and `episode_relationships.json`
 contains public-safe category, cluster, meta-cluster, theme, and tension links.
-Every summary input and relationship aggregate uses only the source identity
-governed as canonical for that release. Confirmed alias-source items never enter
-these episode products.
+Every summary uses only the transcript governed as canonical for that release;
+relationship aggregates separately use retained structured items from the
+governed canonical source identity. Confirmed aliases enter neither product.
 
 The episode relationship file distinguishes its evidence semantics. Category
 links aggregate retained items directly; cluster links use actual primary and
@@ -351,14 +351,23 @@ The builder stages and validates all data before replacing valid generated
 files, uses deterministic ordering and UTF-8 JSON, and produces byte-identical
 output when inputs are unchanged.
 
-Episode-summary authoring is a separate, review-gated workflow. The authoring
-command `py scripts\build_episode_products.py` reads the ignored governed
-normalized package, creates private source packages beneath `analysis/`, and
-can validate and publish a reviewed summary set with `--summaries-from`. Once
-reviewed, `episode_summaries.json` is frozen as an input to ordinary website
-builds. `py scripts\build_cognitive_security.py` validates and carries that
+Episode-summary authoring is a separate, review-gated workflow. The command
+`py scripts\build_transcript_summaries.py manifest --transcript-root <private-root>`
+builds the ignored 242-release transcript manifest and complete chunk-coverage
+records; its `publish` command validates a reviewed summary set against that
+manifest. A private candidate can be written before QA, but publication to the
+frozen public path additionally requires a matching passing automatic QA
+report, complete dispositions for every automatic review flag, and a matching
+deep transcript-grounding report covering at least 24 releases. The legacy
+structured-item authoring command cannot publish transcript summaries. Once
+reviewed, `episode_summaries.json` is frozen as an input to
+ordinary website builds. Public episode summaries are transcript-grounded
+syntheses generated from canonical episode transcripts. Analytical map
+relationships remain a separate product of the governed structured coding
+pipeline. `py scripts\build_cognitive_security.py` validates and carries the
 frozen artifact forward; it does not call an API or generate new summary prose.
-No credential, private source package, or raw authoring response is published.
+No transcript text or path, credential, private source package, or raw
+authoring response is published.
 
 A separate v2 analytical effort is underway, but its unfinished outputs are
 not inputs to this release. The public Explorer and its episode products use

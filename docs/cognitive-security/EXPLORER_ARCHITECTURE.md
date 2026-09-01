@@ -111,11 +111,17 @@ and aggregate original versus reconciled-sensitivity item coverage.
 
 `episode_summaries.json` contains exactly one reviewed, grounded summary record
 per canonical release. Each record provides a 100–180-word summary, three to six
-key topics, a why-it-matters statement, safe source-item counts, and the frozen
-generation-method label. The prose is authored from a private package built
-only from the selected canonical source identity. The public file contains no
-item IDs, item text, source identities, source filenames, or raw authoring
-responses.
+transcript-derived key topics, a why-it-matters statement, safe transcript and
+summary word counts, and the frozen transcript-grounded method token. The prose
+is authored from the privately selected canonical transcript. The public file
+contains no transcript text, path or hash, item IDs or text, source identities,
+source filenames, or raw authoring responses.
+
+Public episode summaries are transcript-grounded syntheses generated from the
+canonical episode transcripts. The analytical relationships shown elsewhere
+in the map are derived from the separately governed structured coding pipeline.
+The Explorer joins these separate products by canonical `episodeId`; it never
+derives analytical links from summary prose.
 
 `episode_relationships.json` is a standalone episode-to-analysis graph. It is
 rebuilt deterministically from retained canonical-source items and governed
@@ -294,8 +300,9 @@ Phase 2 does not publish or load the private item corpus, transcripts,
 quotations, evidence excerpts, speakers, assignment rationales, source
 identities, internal notes, raw authoring responses, or detailed review queues.
 Episode titles, reviewed summary prose, key topics, why-it-matters statements,
-public entity IDs, and aggregate corpus counts are public because they support
-navigation and coverage context without exposing item-level material.
+safe transcript and summary word counts, public entity IDs, and aggregate
+corpus counts are public because they support navigation and coverage context
+without exposing transcript or item-level material.
 
 Corpus reconciliation does not expand this boundary. Source filenames,
 pair-level alias evidence, normalized comparison strings, transcript-level
@@ -317,9 +324,13 @@ publication decision and data contract.
 Episode summary authoring occurs outside the ordinary website build. The
 reviewed `episode_summaries.json` is frozen before publication; subsequent
 ordinary builds validate and reuse it and make no API calls. Any private source
-packages, prompts, credentials, and raw responses remain ignored. An unfinished
-v2 analytical effort is outside this release's source authority and is not
-used by the Explorer or either episode product.
+packages, transcript manifests and text, prompts, credentials, and raw
+responses remain ignored. Publication of the frozen file requires payload-
+matched automatic QA, explicit dispositions for review flags, and a deep
+transcript-grounding sample of at least 24 releases; the structured-item legacy
+builder cannot publish summaries. An unfinished v2 analytical effort is outside
+this release's source authority and is not used by the Explorer or either
+episode product.
 
 ## Accessibility expectations
 

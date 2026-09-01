@@ -76,13 +76,14 @@ class EpisodeAcceptanceTests(unittest.TestCase):
                 self.assertEqual(
                     {
                         "episodeId",
+                        "episodeNumber",
+                        "episodeTitle",
                         "summary",
                         "keyTopics",
                         "whyItMatters",
-                        "sourceItemCount",
-                        "focalItemCount",
-                        "contextualItemCount",
-                        "generationMethod",
+                        "summaryMethod",
+                        "transcriptWordCount",
+                        "summaryWordCount",
                     },
                     set(row),
                 )
@@ -92,15 +93,18 @@ class EpisodeAcceptanceTests(unittest.TestCase):
                 self.assertLessEqual(len(row["keyTopics"]), 6)
                 self.assertTrue(all(topic.strip() for topic in row["keyTopics"]))
                 self.assertGreaterEqual(len(row["whyItMatters"].split()), 12)
-                self.assertEqual("codex-grounded-synthesis-v1", row["generationMethod"])
                 self.assertEqual(
-                    row["sourceItemCount"],
-                    row["focalItemCount"] + row["contextualItemCount"],
+                    "transcript-grounded-synthesis-v1", row["summaryMethod"]
                 )
+                self.assertGreater(row["transcriptWordCount"], 0)
                 self.assertEqual(
-                    episodes_by_id[row["episodeId"]]["reconciledSensitivityItemCount"],
-                    row["sourceItemCount"],
+                    len(row["summary"].split()), row["summaryWordCount"]
                 )
+                episode = episodes_by_id[row["episodeId"]]
+                self.assertEqual(
+                    episode["parsedEpisodeNumber"], row["episodeNumber"]
+                )
+                self.assertEqual(episode["episodeTitle"], row["episodeTitle"])
 
     def test_summaries_are_not_a_repeated_template(self):
         normalized = [
@@ -159,13 +163,14 @@ class EpisodeAcceptanceTests(unittest.TestCase):
                 cluster_totals[row["sourceId"]]["primary"] += row["primaryCount"]
                 cluster_totals[row["sourceId"]]["secondary"] += row["secondaryCount"]
 
-        summaries_by_id = {row["episodeId"]: row for row in self.summaries}
-        for episode_id, summary in summaries_by_id.items():
-            self.assertEqual(summary["focalItemCount"], category_totals[episode_id]["focal"])
+        episodes_by_id = {row["episodeId"]: row for row in self.episodes}
+        for episode_id, episode in episodes_by_id.items():
             self.assertEqual(
-                summary["contextualItemCount"],
-                category_totals[episode_id]["contextual"],
+                episode["reconciledSensitivityItemCount"],
+                category_totals[episode_id]["focal"]
+                + category_totals[episode_id]["contextual"],
             )
+            self.assertGreater(category_totals[episode_id]["focal"], 0)
         self.assertEqual(9_855, sum(row["primary"] for row in cluster_totals.values()))
         self.assertEqual(9_473, sum(row["secondary"] for row in cluster_totals.values()))
 
@@ -212,6 +217,24 @@ class EpisodeAcceptanceTests(unittest.TestCase):
             check=False,
         )
         self.assertEqual(0, result.returncode, result.stdout + result.stderr)
+
+        episode_result = subprocess.run(
+            [
+                "git",
+                "diff",
+                "--exit-code",
+                "origin/main",
+                "--",
+                "data/cognitive-security/episode_relationships.json",
+            ],
+            cwd=REPO_ROOT,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        self.assertEqual(
+            0, episode_result.returncode, episode_result.stdout + episode_result.stderr
+        )
 
     def test_manifest_and_browser_load_separate_episode_products(self):
         manifest_files = set(self.manifest["publicFiles"])
@@ -262,6 +285,17 @@ class EpisodeAcceptanceTests(unittest.TestCase):
             with self.subTest(token=token):
                 self.assertIn(token, self.app_js)
 
+        self.assertIn("Transcript-grounded episode summary", self.app_js)
+        self.assertIn(
+            "Public episode summaries are transcript-grounded syntheses generated from the canonical episode transcripts.",
+            self.app_js,
+        )
+        self.assertIn(
+            "The analytical relationships shown elsewhere in the map are derived from the separately governed structured coding pipeline.",
+            self.app_js,
+        )
+        self.assertNotIn("codex-grounded-synthesis-v1", self.app_js)
+
     def test_search_filter_is_governed_and_does_not_expose_private_records(self):
         for label in (
             "Categories",
@@ -285,6 +319,27 @@ class EpisodeAcceptanceTests(unittest.TestCase):
             "assignmentrationale",
         ):
             self.assertNotIn(forbidden, public_blob)
+
+    def test_global_and_episode_search_index_every_new_summary_field(self):
+        global_search = self.app_js[
+            self.app_js.index("function buildSearchDocuments()") :
+            self.app_js.index("function searchRank(")
+        ]
+        self.assertIn(
+            '"episodeTitle", "podcast", "summary", "whyItMatters", "keyTopics"',
+            global_search,
+        )
+        episode_search = self.app_js[
+            self.app_js.index("function renderEpisodes(") :
+            self.app_js.index("function renderSearch(")
+        ]
+        for expression in (
+            "episode.summary",
+            "episode.whyItMatters",
+            'asArray(episode.keyTopics).join(" ")',
+        ):
+            with self.subTest(expression=expression):
+                self.assertIn(expression, episode_search)
 
     def test_no_arbitrary_assignment_implementation(self):
         implementation = "\n".join(

@@ -310,8 +310,9 @@ def build(repo_root: Path) -> dict[str, Any]:
             "Frozen episode summary product is missing.",
             {
                 "errors": [
-                    "Run scripts/build_episode_products.py against the governed "
-                    "private normalized release and review the frozen summaries first."
+                    "Build and review the governed transcript manifest with "
+                    "scripts/build_transcript_summaries.py, then use its QA-gated "
+                    "publish workflow to freeze episode_summaries.json first."
                 ]
             },
         )

@@ -6,8 +6,14 @@ import json
 from pathlib import Path
 import unittest
 
+from scripts.cognitive_security.episode_products import validate_frozen_summaries
 from scripts.cognitive_security.export import PUBLIC_FIELDS, _public_qa_report
 from scripts.cognitive_security.normalize import _exact_name_key
+from scripts.cognitive_security.transcript_summaries import (
+    is_single_why_sentence,
+    validate_public_transcript_summaries,
+    why_sentence_count,
+)
 from scripts.cognitive_security.validate import (
     KNOWN_UNMAPPED_CLUSTERS,
     REQUIRED_COLLECTIONS,
@@ -643,19 +649,24 @@ class PublicationBoundaryTests(unittest.TestCase):
                 {
                     "episodeId": "EP-1",
                     "episodeTitle": "Grounded episode",
+                    "parsedEpisodeNumber": 1,
                     "reconciledSensitivityItemCount": 6,
                 }
             ],
             "episode_summaries.json": [
                 {
                     "episodeId": "EP-1",
+                    "episodeNumber": 1,
+                    "episodeTitle": "Grounded episode",
                     "summary": " ".join(["grounded"] * 100),
                     "keyTopics": ["Topic one", "Topic two", "Topic three"],
-                    "whyItMatters": "This synthesis explains why the grounded discourse matters.",
-                    "sourceItemCount": 6,
-                    "focalItemCount": 4,
-                    "contextualItemCount": 2,
-                    "generationMethod": "codex-grounded-synthesis-v1",
+                    "whyItMatters": (
+                        "This synthesis explains why the grounded episode discourse matters "
+                        "to practitioners."
+                    ),
+                    "summaryMethod": "transcript-grounded-synthesis-v1",
+                    "transcriptWordCount": 6000,
+                    "summaryWordCount": 100,
                 }
             ],
         }
@@ -666,15 +677,21 @@ class PublicationBoundaryTests(unittest.TestCase):
         summary = invalid["episode_summaries.json"][0]
         summary["summary"] = "Too short."
         summary["keyTopics"] = ["Duplicate", "duplicate", "Third topic"]
-        summary["sourceItemCount"] = 7
-        summary["focalItemCount"] = 5
-        summary["generationMethod"] = "unreviewed-method"
+        summary["whyItMatters"] = "Too short. It is also two sentences."
+        summary["episodeNumber"] = 2
+        summary["episodeTitle"] = "Wrong episode"
+        summary["transcriptWordCount"] = 0
+        summary["summaryMethod"] = "unreviewed-method"
         invalid_report = validate_public_outputs(invalid)
         codes = {issue.code for issue in invalid_report.errors}
         self.assertIn("episode_summary_word_count_invalid", codes)
+        self.assertIn("episode_summary_reported_word_count_invalid", codes)
         self.assertIn("episode_summary_topics_duplicate", codes)
-        self.assertIn("episode_summary_canonical_count_mismatch", codes)
-        self.assertIn("episode_summary_generation_method_invalid", codes)
+        self.assertIn("episode_summary_why_it_matters_invalid", codes)
+        self.assertIn("episode_summary_transcript_count_invalid", codes)
+        self.assertIn("episode_summary_number_mismatch", codes)
+        self.assertIn("episode_summary_title_mismatch", codes)
+        self.assertIn("episode_summary_method_invalid", codes)
 
     def test_public_reconciliation_rejects_pair_level_identity_detail(self) -> None:
         payload = minimal_public_reconciliation()
@@ -726,6 +743,182 @@ class PublicationBoundaryTests(unittest.TestCase):
                 for row in qa["unresolvedMappings"]
             )
         )
+
+
+class EpisodeSummaryContractTests(unittest.TestCase):
+    @staticmethod
+    def _fixtures() -> tuple[list[dict], list[dict], dict[str, int]]:
+        episodes = []
+        summaries = []
+        transcript_words_by_id = {}
+        for index in range(1, 243):
+            episode_id = f"EP-{index:03d}"
+            episode_number = index if index < 242 else None
+            episode_title = f"Grounded episode {index}"
+            transcript_words = 6000 + index
+            episodes.append(
+                {
+                    "episodeId": episode_id,
+                    "episodeTitle": episode_title,
+                    "parsedEpisodeNumber": episode_number,
+                }
+            )
+            summaries.append(
+                {
+                    "episodeId": episode_id,
+                    "episodeNumber": episode_number,
+                    "episodeTitle": episode_title,
+                    "summary": " ".join(
+                        [f"episode{index}"] + ["grounded"] * 99
+                    ),
+                    "keyTopics": ["Topic one", "Topic two", "Topic three"],
+                    "whyItMatters": (
+                        "This U.S. synthesis helps practitioners understand episode risks "
+                        "and make careful decisions."
+                    ),
+                    "summaryMethod": "transcript-grounded-synthesis-v1",
+                    "transcriptWordCount": transcript_words,
+                    "summaryWordCount": 100,
+                }
+            )
+            transcript_words_by_id[episode_id] = transcript_words
+        return episodes, summaries, transcript_words_by_id
+
+    def _assert_rejected_everywhere(
+        self,
+        mutation,
+        central_error_code: str,
+        *,
+        index: int = 0,
+    ) -> None:
+        episodes, summaries, transcript_words_by_id = self._fixtures()
+        candidate = copy.deepcopy(summaries[index])
+        mutation(candidate)
+
+        report = validate_public_outputs(
+            {
+                "episodes.json": [episodes[index]],
+                "episode_summaries.json": [copy.deepcopy(candidate)],
+            }
+        )
+        self.assertIn(
+            central_error_code,
+            {issue.code for issue in report.errors},
+            [issue.as_dict() for issue in report.errors],
+        )
+        with self.assertRaises(ValueError):
+            validate_frozen_summaries(
+                [copy.deepcopy(candidate)],
+                [episodes[index]],
+            )
+        summaries[index] = candidate
+        with self.assertRaises(ValueError):
+            validate_public_transcript_summaries(
+                summaries,
+                episodes,
+                transcript_words_by_id,
+            )
+
+    def test_valid_exact_contract_is_accepted_by_all_three_validators(self) -> None:
+        episodes, summaries, transcript_words_by_id = self._fixtures()
+        public_report = validate_public_outputs(
+            {
+                "episodes.json": [episodes[0]],
+                "episode_summaries.json": [summaries[0]],
+            }
+        )
+        self.assertTrue(
+            public_report.passed,
+            [issue.as_dict() for issue in public_report.errors],
+        )
+        self.assertEqual(
+            1,
+            len(validate_frozen_summaries([summaries[0]], [episodes[0]])),
+        )
+        self.assertEqual(
+            242,
+            len(
+                validate_public_transcript_summaries(
+                    summaries,
+                    episodes,
+                    transcript_words_by_id,
+                )
+            ),
+        )
+
+    def test_sentence_rule_requires_one_terminal_boundary(self) -> None:
+        for value in (
+            "This U.S. synthesis helps practitioners understand grounded risks and make careful decisions.",
+            "This synthesis helps practitioners understand grounded risks and make careful decisions?!",
+            "This synthesis helps practitioners understand grounded risks and make careful decisions.\u201d",
+            "This synthesis helps practitioners understand grounded risks and make careful decisions?)",
+        ):
+            with self.subTest(value=value):
+                self.assertTrue(is_single_why_sentence(value))
+                self.assertEqual(1, why_sentence_count(value))
+        for value in (
+            "This synthesis has no terminal boundary",
+            "First complete sentence. Second complete sentence.",
+            "This synthesis helps practitioners understand operational risks. and make better decisions",
+        ):
+            with self.subTest(value=value):
+                self.assertFalse(is_single_why_sentence(value))
+        self._assert_rejected_everywhere(
+            lambda row: row.update(
+                {
+                    "whyItMatters": (
+                        "This synthesis helps practitioners understand operational risks. "
+                        "and make better decisions"
+                    )
+                }
+            ),
+            "episode_summary_why_it_matters_invalid",
+        )
+
+    def test_missing_episode_number_on_unnumbered_release_is_rejected(self) -> None:
+        self._assert_rejected_everywhere(
+            lambda row: row.pop("episodeNumber"),
+            "episode_summary_field_set_invalid",
+            index=-1,
+        )
+
+    def test_topics_must_be_an_array_of_nonblank_strings(self) -> None:
+        for invalid_topics in ("ABC", ["One", "Two", "Three", ""], [1, 2, 3]):
+            with self.subTest(invalid_topics=invalid_topics):
+                self._assert_rejected_everywhere(
+                    lambda row, value=invalid_topics: row.update(
+                        {"keyTopics": value}
+                    ),
+                    "episode_summary_topics_type_invalid",
+                )
+
+    def test_episode_number_rejects_boolean_and_float_values(self) -> None:
+        for invalid_number in (True, 1.0):
+            with self.subTest(invalid_number=invalid_number):
+                self._assert_rejected_everywhere(
+                    lambda row, value=invalid_number: row.update(
+                        {"episodeNumber": value}
+                    ),
+                    "episode_summary_number_type_invalid",
+                )
+
+    def test_count_fields_reject_coercible_or_boolean_values(self) -> None:
+        cases = (
+            ("transcriptWordCount", "6001", "episode_summary_transcript_count_invalid"),
+            ("transcriptWordCount", True, "episode_summary_transcript_count_invalid"),
+            ("transcriptWordCount", 6001.0, "episode_summary_transcript_count_invalid"),
+            ("summaryWordCount", "100", "episode_summary_reported_word_count_invalid"),
+            ("summaryWordCount", True, "episode_summary_reported_word_count_invalid"),
+            ("summaryWordCount", 100.0, "episode_summary_reported_word_count_invalid"),
+        )
+        for field, invalid_value, expected_code in cases:
+            with self.subTest(field=field, invalid_value=invalid_value):
+                self._assert_rejected_everywhere(
+                    lambda row, name=field, value=invalid_value: row.update(
+                        {name: value}
+                    ),
+                    expected_code,
+                )
 
 
 class SourceProtectionAndDeterminismTests(unittest.TestCase):
