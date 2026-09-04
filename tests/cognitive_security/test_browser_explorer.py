@@ -304,6 +304,83 @@ class CanonicalExplorerBrowserTests(unittest.TestCase):
         self.assertEqual(2, self.page.locator("nav.evidence-trail .breadcrumb-current, nav.evidence-trail a").count())
         self.assertIn("no arrow or causal direction", self.page.locator(".evidence-explorer").inner_text())
 
+    def test_public_terminology_and_entity_specific_support_panels(self) -> None:
+        self._open(expected_title=PRIMARY_ROUTES["start"], view="start")
+        hero = self.page.locator(".hero__lede").inner_text()
+        self.assertIn("Explore the canonical synthesis", hero)
+        self.assertNotIn("approved canonical synthesis", hero.casefold())
+
+        generic = (
+            "Primary support represents the governed evidence designated as primary "
+            "for this entity. The evidence path depends on entity type."
+        )
+        cases = (
+            (1280, "cluster", "clusters.json", "clusterId", "retained items directly coded to that cluster"),
+            (1280, "family", "families.json", "familyId", "primary support comes from its member clusters"),
+            (500, "theme", "themes.json", "themeId", "primary support comes from primary-support families and clusters"),
+            (500, "tension", "tensions.json", "tensionId", "evidence directly allocated to Pole A or Pole B"),
+            (390, "narrative", "narratives.json", "narrativeId", "primary evidence is inherited through integrated canonical constructs"),
+            (390, "category-finding", "category_findings.json", "findingId", "primary evidence is traced through supporting families and clusters"),
+            (390, "scenario", "scenarios.json", "scenarioId", "primary evidence is traced through relevant canonical constructs"),
+        )
+        for width, view, file_name, id_field, clarification in cases:
+            with self.subTest(view=view, width=width):
+                self.page.set_viewport_size({"width": width, "height": 900})
+                entity_id = self.record_cache[file_name][0][id_field]
+                self._open(view=view, id=entity_id)
+                panel = self.page.locator(".support-panel")
+                self.assertEqual(1, panel.count())
+                text = panel.inner_text()
+                self.assertIn(generic, text)
+                self.assertIn(clarification, text)
+                self.assertIn("primary-support content units", text)
+                self.assertNotIn("direct content units", text.casefold())
+                self._assert_no_page_overflow()
+
+    def test_tension_and_cluster_evidence_paths_use_governed_roles(self) -> None:
+        provenance = json.loads(
+            (PUBLIC_DATA_DIR / "provenance.json").read_text(encoding="utf-8")
+        )
+        tension_id, dual_link = next(
+            (tension_id, link)
+            for tension_id, links in provenance["tensionToReleases"].items()
+            for link in links
+            if len(link["relationships"]) == 2
+        )
+        episode_id = dual_link["episodeId"]
+        episode_title = next(
+            row["episodeTitle"]
+            for row in self.record_cache["episodes.json"]
+            if row["episodeId"] == episode_id
+        )
+
+        self._open(view="tension", id=tension_id)
+        self.page.get_by_role("button", name="Load public support paths").click()
+        explorer = self.page.locator(".evidence-explorer")
+        explorer.locator("nav.evidence-trail").wait_for(timeout=20_000)
+        while explorer.locator(".evidence-choice-list__more button").count():
+            explorer.locator(".evidence-choice-list__more button").first.click()
+        matching_rows = explorer.locator("a.evidence-choice").evaluate_all(
+            """(links, title) => links
+              .filter(link => link.textContent.trim() === title)
+              .map(link => link.closest('li').innerText)""",
+            episode_title,
+        )
+        self.assertEqual(2, len(matching_rows), matching_rows)
+        pole_text = "\n".join(matching_rows).casefold()
+        self.assertIn("tension evidence pole a", pole_text)
+        self.assertIn("tension evidence pole b", pole_text)
+        self.assertIn("pole a analytical weight", pole_text)
+        self.assertIn("pole b analytical weight", pole_text)
+        self.assertNotIn("direct coded support", pole_text)
+
+        cluster_id = self.record_cache["clusters.json"][0]["clusterId"]
+        self._open(view="cluster", id=cluster_id)
+        self.page.get_by_role("button", name="Load public support paths").click()
+        cluster_explorer = self.page.locator(".evidence-explorer")
+        cluster_explorer.locator("nav.evidence-trail").wait_for(timeout=20_000)
+        self.assertIn("direct coded support", cluster_explorer.inner_text().casefold())
+
     def test_heatmap_is_complete_textual_and_keyboard_actionable(self) -> None:
         self._open(expected_title="Themes", view="themes")
         table = self.page.locator("table.heatmap-table")

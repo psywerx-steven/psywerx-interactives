@@ -4,7 +4,7 @@
 
 This is the active build contract for the canonical public Cognitive Security
 Practitioner Discourse Map. The public site is a static projection of an
-approved private analytical package. Private canonical analysis remains the
+governed private analytical package. Private canonical analysis remains the
 reproducible source of truth; its draft JSON is never copied directly into the
 public directory.
 
@@ -27,7 +27,7 @@ importance, prevalence, or real-world effect size.
 
 The public projector reads three governed inputs:
 
-1. the approved private canonical re-synthesis checkpoint;
+1. the governed private canonical re-synthesis checkpoint;
 2. the private normalized Cognitive Security release used to reconstruct
    safe aggregate support and release provenance;
 3. the frozen, reviewed public episode summaries.
@@ -41,7 +41,7 @@ worktrees.
 ## Approval gate
 
 The private analytical records deliberately retain draft/review status. Public
-promotion is a separate explicit action. The projector requires the approved
+promotion is a separate explicit action. The projector requires the governed
 analytical checkpoint identity and verifies the governed method, counts, and
 invariants before constructing fresh public records. A mismatch fails before
 any public file is replaced.
@@ -105,10 +105,17 @@ canonical public manifest. Canonical publication is performed only through
 
 Support is multidimensional and has no composite score.
 
-The public `primarySupport` layer contains only governed direct or primary
-measures that exist for the entity: directly allocated items, primary families
-and clusters, direct content-unit breadth, primary category breadth, pole
-allocation, and concentration.
+The public `primarySupport` layer represents the governed evidence designated
+as primary for an entity. Its path depends on entity type: clusters trace to
+directly coded item evidence; families to member clusters; themes to
+primary-support families and clusters; tensions to directly allocated pole
+evidence; narratives to integrated canonical constructs; findings to supporting
+families and clusters; and scenarios to relevant canonical constructs.
+Higher-order entities are not described as directly coded at item level.
+
+The public field `primaryContentUnitCount` reports analytical content-unit
+breadth along that primary evidence path. The former name
+`directContentUnitCount` is not part of the canonical public schema.
 
 The subordinate `broaderTraceableReach` layer may contain secondary support,
 conceptual framing, future extension, derived semantic reach, total reachable
@@ -127,6 +134,14 @@ Public paths can move among episodes, clusters, families, themes, tensions,
 narratives, findings, and scenarios. They stop at public releases. Relationship
 direction organizes traversal; it does not imply causal direction. No edge is
 created from lexical similarity or from episode-summary prose.
+
+Release-to-cluster provenance uses `direct-coded-support` exclusively because
+the retained items were directly coded to that cluster. Release-to-tension
+provenance instead emits `tension-evidence-pole-a` when Pole A has positive
+analytical weight and `tension-evidence-pole-b` when Pole B has positive
+analytical weight. A release with positive weight on both poles exposes both
+relationships, each with its relevant weight. All of these provenance
+relationships retain `causalClaim: false`.
 
 ## Heatmap normalization
 

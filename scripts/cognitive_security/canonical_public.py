@@ -254,11 +254,11 @@ def _support(
     primary_concentration = metrics.get("concentration")
     if primary_concentration is None and derived == 0:
         primary_concentration = concentration
-    direct_content_count = metrics.get("directContentUnitCount")
-    if direct_content_count is None and derived == 0:
-        direct_content_count = profile.get("uniqueContentUnitSupportCount")
-    if direct_content_count is None and direct == 0:
-        direct_content_count = 0
+    primary_content_count = metrics.get("primaryContentUnitCount")
+    if primary_content_count is None and derived == 0:
+        primary_content_count = profile.get("uniqueContentUnitSupportCount")
+    if primary_content_count is None and direct == 0:
+        primary_content_count = 0
     primary_item_count = metrics.get("itemCount", direct)
     derived_or_broader_count = total - primary_item_count
     if primary_item_count < 0 or derived_or_broader_count < 0:
@@ -269,7 +269,7 @@ def _support(
         "primarySupport": {
             "itemCount": primary_item_count,
             "share": round(primary_item_count / total, 6) if total else 0.0,
-            "directContentUnitCount": direct_content_count,
+            "primaryContentUnitCount": primary_content_count,
             "primaryClusterCount": metrics.get("primaryClusterCount", profile.get("clusterSupportCount")),
             "primaryFamilyCount": metrics.get("primaryFamilyCount", profile.get("familySupportCount")),
             "categoryBreadth": metrics.get("categoryBreadth", profile.get("categoryBreadth")),
@@ -347,7 +347,7 @@ def _support_metrics_for_items(
                   if item_id in item_by_id and item_by_id[item_id].get("scope") == "focal"}
     return {
         "itemCount": len(item_ids),
-        "directContentUnitCount": len(content_counts),
+        "primaryContentUnitCount": len(content_counts),
         "primaryClusterCount": primary_cluster_count,
         "primaryFamilyCount": primary_family_count,
         "categoryBreadth": len(categories),
@@ -361,7 +361,7 @@ def _support_metrics_for_items(
 
 
 def _build_support_metrics(inputs: Mapping[str, Any]) -> dict[str, dict[str, Any]]:
-    """Reconstruct direct evidence breadth without exposing source or item identities."""
+    """Reconstruct governed primary evidence breadth without exposing private identities."""
     selected = {str(value) for value in inputs["selection"]["selectedItemIds"]}
     item_by_id = {str(row["itemId"]): row
                   for row in _records(inputs["normalized_items"], "items")}
@@ -405,33 +405,33 @@ def _build_support_metrics(inputs: Mapping[str, Any]) -> dict[str, dict[str, Any
                             if rel["semanticRole"] == "primary-theme-support"}
         primary_clusters = {str(cid) for cid in row["primaryClusterIds"]
                             if cluster_family.get(str(cid)) in primary_families}
-        direct_items = set().union(*(retained_by_cluster[cid] for cid in primary_clusters))
+        primary_items = set().union(*(retained_by_cluster[cid] for cid in primary_clusters))
         metrics[theme_id] = _support_metrics_for_items(
-            direct_items, item_by_id, len(primary_clusters), len(primary_families))
+            primary_items, item_by_id, len(primary_clusters), len(primary_families))
     for row in _records(inputs["narratives"], "narratives"):
-        direct_items = set().union(*(tension_items[str(tid)] for tid in row["integratesTensionIds"]))
+        primary_items = set().union(*(tension_items[str(tid)] for tid in row["integratesTensionIds"]))
         clusters = {str(cid) for tid in row["integratesTensionIds"]
                     for cid in next(t for t in _records(inputs["tensions"], "tensions")
                                     if t["tensionId"] == tid)["supportingClusterIds"]}
-        families_direct = {cluster_family[cid] for cid in clusters if cid in cluster_family}
+        primary_families = {cluster_family[cid] for cid in clusters if cid in cluster_family}
         metrics[str(row["narrativeId"])] = _support_metrics_for_items(
-            direct_items, item_by_id, len(clusters), len(families_direct))
+            primary_items, item_by_id, len(clusters), len(primary_families))
     for row in _records(inputs["findings"], "findings"):
-        direct_items = (set() if row["findingType"] == "open-question" else
-                        set().union(*(retained_by_cluster[str(cid)] for cid in row["supportingClusterIds"])))
+        primary_items = (set() if row["findingType"] == "open-question" else
+                         set().union(*(retained_by_cluster[str(cid)] for cid in row["supportingClusterIds"])))
         metrics[str(row["findingId"])] = _support_metrics_for_items(
-            direct_items, item_by_id,
+            primary_items, item_by_id,
             0 if row["findingType"] == "open-question" else len(row["supportingClusterIds"]),
             0 if row["findingType"] == "open-question" else len(row["supportingFamilyIds"]),
         )
     for row in _records(inputs["scenarios"], "scenarios"):
-        direct_items = set().union(*(tension_items[str(tid)] for tid in row["relevantTensionIds"]))
+        primary_items = set().union(*(tension_items[str(tid)] for tid in row["relevantTensionIds"]))
         clusters = {str(cid) for tid in row["relevantTensionIds"]
                     for cid in next(t for t in _records(inputs["tensions"], "tensions")
                                     if t["tensionId"] == tid)["supportingClusterIds"]}
-        families_direct = {cluster_family[cid] for cid in clusters if cid in cluster_family}
+        primary_families = {cluster_family[cid] for cid in clusters if cid in cluster_family}
         metrics[str(row["scenarioId"])] = _support_metrics_for_items(
-            direct_items, item_by_id, len(clusters), len(families_direct))
+            primary_items, item_by_id, len(clusters), len(primary_families))
     return metrics
 
 
@@ -847,10 +847,21 @@ def _project_provenance(inputs: Mapping[str, Any]) -> dict[str, Any]:
     for (tension_id, content_id), weights in sorted(
         tension_weights.items(), key=lambda pair: (_natural(pair[0][0]), _natural(pair[0][1]))
     ):
+        relationships = []
+        for pole, semantic_role in (
+            ("A", "tension-evidence-pole-a"),
+            ("B", "tension-evidence-pole-b"),
+        ):
+            analytical_weight = round(weights[pole], 6)
+            if analytical_weight > 0:
+                relationships.append({
+                    "semanticRole": semantic_role,
+                    "analyticalWeight": analytical_weight,
+                    "causalClaim": False,
+                })
         tension_to_releases[tension_id].append({
             "episodeId": release_by_content[content_id],
-            "poleAAnalyticalWeight": round(weights["A"], 6),
-            "poleBAnalyticalWeight": round(weights["B"], 6),
+            "relationships": relationships,
         })
     shared = [{
         "relationshipId": _relationship_id(
@@ -873,6 +884,10 @@ def _project_provenance(inputs: Mapping[str, Any]) -> dict[str, Any]:
             "clusterReleaseLinkCount": cluster_rows,
             "tensionReleaseLinkCount": tension_rows,
             "sharedContentRelationshipCount": len(shared),
+        },
+        "clusterRelationship": {
+            "semanticRole": "direct-coded-support",
+            "causalClaim": False,
         },
         "clusterToReleases": {key: value for key, value in sorted(
             cluster_to_releases.items(), key=lambda pair: _natural(pair[0]))},
@@ -960,8 +975,9 @@ def _coverage(counts: Mapping[str, int]) -> dict[str, Any]:
         "supportModel": {
             "layers": ["primarySupport", "broaderTraceableReach"],
             "primaryMeaning": (
-                "Direct, governed evidence breadth with explicit item, content-unit, "
-                "cluster, family, category, and concentration measures."
+                "Governed evidence designated as primary for the entity. The evidence path "
+                "depends on entity type; item, content-unit, cluster, family, category, and "
+                "concentration measures describe its breadth."
             ),
             "broaderMeaning": (
                 "Total traceable analytical reach, including governed secondary, "
@@ -1097,7 +1113,7 @@ CONCENTRATION_SCHEMA = {
 }
 SUPPORT_SCHEMA = {
     "primarySupport": {
-        "itemCount": INT, "share": NUMBER, "directContentUnitCount": INT,
+        "itemCount": INT, "share": NUMBER, "primaryContentUnitCount": INT,
         "primaryClusterCount": INT, "primaryFamilyCount": INT,
         "categoryBreadth": INT, "concentration": CONCENTRATION_SCHEMA,
     },
@@ -1245,13 +1261,17 @@ PUBLIC_SCHEMAS: dict[str, Any] = {
     "provenance.json": {
         "schemaVersion": TEXT, "interpretation": TEXT,
         "counts": PROVENANCE_COUNTS_SCHEMA,
+        "clusterRelationship": {"semanticRole": TEXT, "causalClaim": BOOL},
         "clusterToReleases": ("map", [{
             "episodeId": TEXT, "primaryItemCount": INT, "secondaryItemCount": INT,
             "governedWeightedCount": INT,
         }]),
         "tensionToReleases": ("map", [{
-            "episodeId": TEXT, "poleAAnalyticalWeight": NUMBER,
-            "poleBAnalyticalWeight": NUMBER,
+            "episodeId": TEXT,
+            "relationships": [{
+                "semanticRole": TEXT, "analyticalWeight": NUMBER,
+                "causalClaim": BOOL,
+            }],
         }]),
         "sharedContentRelationships": [{
             "relationshipId": TEXT, "sourceEpisodeId": TEXT, "targetEpisodeId": TEXT,
@@ -1376,8 +1396,8 @@ def _validate_supports(payloads: Mapping[str, Any]) -> None:
             broader = support["broaderTraceableReach"]
             if primary["itemCount"] + broader["derivedItemCount"] != broader["itemCount"]:
                 raise PublicProjectionError(f"{filename}[{index}] support layers do not reconcile")
-            if primary["directContentUnitCount"] > broader["contentUnitCount"]:
-                raise PublicProjectionError(f"{filename}[{index}] direct breadth exceeds total")
+            if primary["primaryContentUnitCount"] > broader["contentUnitCount"]:
+                raise PublicProjectionError(f"{filename}[{index}] primary breadth exceeds total")
             for layer in (primary["concentration"], broader["concentration"]):
                 if not (0 <= layer["topOneContentUnitShare"]
                         <= layer["topTwoContentUnitShare"]
@@ -1441,6 +1461,66 @@ def _validate_invariants(payloads: Mapping[str, Any]) -> None:
             raise PublicProjectionError(f"Relationship role is not governed: {row['semanticRole']}")
         if row["causalClaim"]:
             raise PublicProjectionError("Canonical public relationships cannot assert causality")
+    cluster_relationship = provenance["clusterRelationship"]
+    if cluster_relationship["semanticRole"] != "direct-coded-support" \
+            or cluster_relationship["causalClaim"]:
+        raise PublicProjectionError(
+            "Direct-coded-support is reserved for noncausal cluster provenance")
+    cluster_provenance_count = 0
+    for cluster_id, links in provenance["clusterToReleases"].items():
+        if cluster_id not in ids["cluster"]:
+            raise PublicProjectionError(f"Cluster provenance endpoint does not resolve: {cluster_id}")
+        seen_episode_ids: set[str] = set()
+        for link in links:
+            episode_id = link["episodeId"]
+            if episode_id not in ids["episode"] or episode_id in seen_episode_ids:
+                raise PublicProjectionError(
+                    f"Cluster provenance release is missing or duplicated: {cluster_id}/{episode_id}")
+            seen_episode_ids.add(episode_id)
+            cluster_provenance_count += 1
+    tension_provenance_count = 0
+    tension_weight_totals: dict[str, Counter[str]] = defaultdict(Counter)
+    pole_roles = {
+        "tension-evidence-pole-a": "A",
+        "tension-evidence-pole-b": "B",
+    }
+    for tension_id, links in provenance["tensionToReleases"].items():
+        if tension_id not in ids["tension"]:
+            raise PublicProjectionError(f"Tension provenance endpoint does not resolve: {tension_id}")
+        seen_episode_ids = set()
+        for link in links:
+            episode_id = link["episodeId"]
+            if episode_id not in ids["episode"] or episode_id in seen_episode_ids:
+                raise PublicProjectionError(
+                    f"Tension provenance release is missing or duplicated: {tension_id}/{episode_id}")
+            seen_episode_ids.add(episode_id)
+            relationship_roles = [row["semanticRole"] for row in link["relationships"]]
+            if not relationship_roles or len(relationship_roles) != len(set(relationship_roles)):
+                raise PublicProjectionError(
+                    f"Tension provenance roles are empty or duplicated: {tension_id}/{episode_id}")
+            if any(role not in pole_roles or role not in role_ids for role in relationship_roles):
+                raise PublicProjectionError(
+                    f"Tension provenance uses a nongoverned pole role: {tension_id}/{episode_id}")
+            for relationship in link["relationships"]:
+                if relationship["causalClaim"] or relationship["analyticalWeight"] <= 0:
+                    raise PublicProjectionError(
+                        f"Tension provenance must be noncausal with positive weight: {tension_id}/{episode_id}")
+                tension_weight_totals[tension_id][pole_roles[relationship["semanticRole"]]] += float(
+                    relationship["analyticalWeight"])
+            tension_provenance_count += 1
+    if cluster_provenance_count != provenance["counts"]["clusterReleaseLinkCount"]:
+        raise PublicProjectionError("Cluster provenance link count changed")
+    if tension_provenance_count != provenance["counts"]["tensionReleaseLinkCount"]:
+        raise PublicProjectionError("Tension provenance link count changed")
+    for tension in tensions:
+        tension_id = tension["tensionId"]
+        expected_balance = tension["poleBalance"]
+        for pole, key in (("A", "poleAAnalyticalWeight"), ("B", "poleBAnalyticalWeight")):
+            if not math.isclose(
+                tension_weight_totals[tension_id][pole], expected_balance[key], abs_tol=1e-9
+            ):
+                raise PublicProjectionError(
+                    f"Tension provenance {pole} weight does not reconcile: {tension_id}")
     if Counter(row["findingType"] for row in findings) != Counter({
         "family-finding": 50, "integrative-category-finding": 7, "open-question": 7,
     }):
@@ -1466,11 +1546,11 @@ def _validate_invariants(payloads: Mapping[str, Any]) -> None:
             or shared[0]["semanticRole"] != "shared-content-inheritance" \
             or shared[0]["contributesAnalyticalWeight"]:
         raise PublicProjectionError("Episode 83 inheritance edge changed")
-    direct_provenance_ids = {row["episodeId"] for values in provenance["clusterToReleases"].values()
-                             for row in values} | {
+    analytical_provenance_ids = {row["episodeId"] for values in provenance["clusterToReleases"].values()
+                                 for row in values} | {
         row["episodeId"] for values in provenance["tensionToReleases"].values() for row in values}
-    if inherited in direct_provenance_ids:
-        raise PublicProjectionError("Episode 83 inherited release has direct analytical provenance")
+    if inherited in analytical_provenance_ids:
+        raise PublicProjectionError("Episode 83 inherited release has analytical provenance")
     expected_pairs = {(category_id, theme_id) for category_id in ids["category"]
                       for theme_id in ids["theme"]}
     actual_pairs = {(row["categoryId"], row["themeId"]) for row in heatmap["cells"]}

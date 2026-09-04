@@ -113,6 +113,8 @@ REQUIRED_ROLES = {
     "secondary-theme-support",
     "conceptual-framing",
     "future-extension",
+    "tension-evidence-pole-a",
+    "tension-evidence-pole-b",
     "activated-tension",
     "contextual-connection",
     "shared-content-inheritance",
@@ -193,6 +195,8 @@ class ExplorerStaticContractTests(unittest.TestCase):
             "Search the map",
         ):
             self.assertIn(entry, self.javascript)
+        self.assertIn("Explore the canonical synthesis", self.html)
+        self.assertNotIn("approved canonical synthesis", self.html.lower())
 
     def test_support_display_is_two_layer_noncomposite_and_interpreted(self):
         self.assertIn(SUPPORT_INTERPRETATION, " ".join(self.html.split()))
@@ -203,6 +207,24 @@ class ExplorerStaticContractTests(unittest.TestCase):
         self.assertIn("primary family", self.javascript.lower())
         self.assertIn("primary cluster", self.javascript.lower())
         self.assertIn("support concentration", self.javascript.lower())
+        self.assertIn("primaryContentUnitCount", self.javascript)
+        self.assertIn("primary-support content units", self.javascript)
+        self.assertNotIn("directContentUnitCount", self.javascript)
+        self.assertNotIn("direct content units", self.javascript.lower())
+        self.assertIn(
+            "Primary support represents the governed evidence designated as primary for this entity. The evidence path depends on entity type.",
+            self.javascript,
+        )
+        for clarification in (
+            "retained items directly coded to that cluster",
+            "primary support comes from its member clusters",
+            "primary support comes from primary-support families and clusters",
+            "evidence directly allocated to Pole A or Pole B",
+            "primary evidence is inherited through integrated canonical constructs",
+            "primary evidence is traced through supporting families and clusters",
+            "primary evidence is traced through relevant canonical constructs",
+        ):
+            self.assertIn(clarification, self.javascript)
         for prohibited in (
             "importance score",
             "consensus score",
@@ -462,7 +484,7 @@ class PublicCanonicalPackageTests(unittest.TestCase):
                 for key in (
                     "itemCount",
                     "share",
-                    "directContentUnitCount",
+                    "primaryContentUnitCount",
                     "primaryClusterCount",
                     "primaryFamilyCount",
                     "categoryBreadth",
@@ -471,7 +493,7 @@ class PublicCanonicalPackageTests(unittest.TestCase):
                     self.assertIn(key, primary)
                 self.assertLessEqual(primary["itemCount"], broader["itemCount"])
                 self.assertLessEqual(
-                    primary["directContentUnitCount"], broader["contentUnitCount"]
+                    primary["primaryContentUnitCount"], broader["contentUnitCount"]
                 )
         all_keys = {
             key.lower()
@@ -524,14 +546,48 @@ class PublicCanonicalPackageTests(unittest.TestCase):
 
     def test_public_provenance_resolves_and_episode_83_has_one_weight(self):
         provenance = self.payloads["provenance.json"]
+        self.assertEqual(
+            {"semanticRole": "direct-coded-support", "causalClaim": False},
+            provenance["clusterRelationship"],
+        )
         for cluster_id, links in provenance["clusterToReleases"].items():
             self.assertIn(cluster_id, self.ids["cluster"])
             for link in links:
                 self.assertIn(link["episodeId"], self.ids["episode"])
+                self.assertNotIn("relationship", link)
+        tension_roles = set()
+        dual_pole_rows = []
         for tension_id, links in provenance["tensionToReleases"].items():
             self.assertIn(tension_id, self.ids["tension"])
             for link in links:
                 self.assertIn(link["episodeId"], self.ids["episode"])
+                relationships = link["relationships"]
+                self.assertIn(len(relationships), (1, 2))
+                roles = [relationship["semanticRole"] for relationship in relationships]
+                self.assertEqual(len(roles), len(set(roles)))
+                self.assertNotIn("direct-coded-support", roles)
+                self.assertTrue(
+                    set(roles).issubset(
+                        {"tension-evidence-pole-a", "tension-evidence-pole-b"}
+                    )
+                )
+                for relationship in relationships:
+                    self.assertGreater(relationship["analyticalWeight"], 0)
+                    self.assertFalse(relationship["causalClaim"])
+                tension_roles.update(roles)
+                if len(roles) == 2:
+                    dual_pole_rows.append((tension_id, link["episodeId"], set(roles)))
+        self.assertEqual(
+            {"tension-evidence-pole-a", "tension-evidence-pole-b"},
+            tension_roles,
+        )
+        self.assertTrue(dual_pole_rows, "Expected at least one dual-pole episode link")
+        self.assertTrue(
+            all(
+                roles == {"tension-evidence-pole-a", "tension-evidence-pole-b"}
+                for _, _, roles in dual_pole_rows
+            )
+        )
         original = "EPI-72E94D7AF43A4BD3"
         inherited = "EPI-9960393907F71603"
         episodes = {

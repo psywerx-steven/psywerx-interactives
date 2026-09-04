@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from collections import Counter, defaultdict
 import json
 import math
 import os
@@ -56,7 +57,7 @@ SUPPORT_FILES = (
 PRIMARY_SUPPORT_KEYS = {
     "itemCount",
     "share",
-    "directContentUnitCount",
+    "primaryContentUnitCount",
     "primaryClusterCount",
     "primaryFamilyCount",
     "categoryBreadth",
@@ -245,6 +246,7 @@ class CanonicalPublicProjectionTests(unittest.TestCase):
         for name, content in rebuilt_bytes.items():
             self.assertTrue(content.endswith(b"\n"), name)
             self.assertEqual(rebuilt_payloads[name], json.loads(content), name)
+            self.assertEqual((PUBLIC_DIR / name).read_bytes(), content, name)
 
     def test_approved_checkpoint_is_fixed_and_verifiable(self) -> None:
         self.assertEqual(
@@ -412,6 +414,9 @@ class CanonicalPublicProjectionTests(unittest.TestCase):
             SUPPORT_INTERPRETATION,
             coverage["supportModel"]["interpretation"],
         )
+        primary_meaning = coverage["supportModel"]["primaryMeaning"]
+        self.assertIn("evidence path depends on entity type", primary_meaning)
+        self.assertNotRegex(primary_meaning, r"(?i)\bdirect(?:ly)?\b")
         for filename in SUPPORT_FILES:
             for record in self.payloads[filename]:
                 support = record["support"]
@@ -451,6 +456,7 @@ class CanonicalPublicProjectionTests(unittest.TestCase):
                         else 0.0
                     )
                     self.assertEqual(expected_share, primary["share"])
+                    self.assertNotIn("directContentUnitCount", primary)
 
         allowed_score_flags = {"compositeScoreProhibited", "compositeScoreAbsent"}
         score_keys = {
@@ -459,6 +465,110 @@ class CanonicalPublicProjectionTests(unittest.TestCase):
             if "score" in "".join(character for character in key if character.isalnum()).lower()
         }
         self.assertLessEqual(score_keys, allowed_score_flags)
+
+    def test_tension_evidence_paths_never_use_direct_coded_support(self) -> None:
+        provenance = self.payloads["provenance.json"]
+        relationships = [
+            relationship
+            for links in provenance["tensionToReleases"].values()
+            for link in links
+            for relationship in link["relationships"]
+        ]
+        self.assertTrue(relationships)
+        self.assertNotIn(
+            "direct-coded-support",
+            {relationship["semanticRole"] for relationship in relationships},
+        )
+        self.assertTrue(all(relationship["causalClaim"] is False for relationship in relationships))
+
+    def test_tension_pole_a_evidence_uses_governed_pole_a_role(self) -> None:
+        relationships = [
+            relationship
+            for links in self.payloads["provenance.json"]["tensionToReleases"].values()
+            for link in links
+            for relationship in link["relationships"]
+            if relationship["semanticRole"] == "tension-evidence-pole-a"
+        ]
+        self.assertTrue(relationships)
+        self.assertTrue(all(relationship["analyticalWeight"] > 0 for relationship in relationships))
+
+    def test_tension_pole_b_evidence_uses_governed_pole_b_role(self) -> None:
+        relationships = [
+            relationship
+            for links in self.payloads["provenance.json"]["tensionToReleases"].values()
+            for link in links
+            for relationship in link["relationships"]
+            if relationship["semanticRole"] == "tension-evidence-pole-b"
+        ]
+        self.assertTrue(relationships)
+        self.assertTrue(all(relationship["analyticalWeight"] > 0 for relationship in relationships))
+
+    def test_dual_pole_episode_support_exposes_both_roles(self) -> None:
+        dual_pole_links = [
+            link
+            for links in self.payloads["provenance.json"]["tensionToReleases"].values()
+            for link in links
+            if len(link["relationships"]) == 2
+        ]
+        self.assertTrue(dual_pole_links)
+        for link in dual_pole_links:
+            self.assertEqual(
+                {"tension-evidence-pole-a", "tension-evidence-pole-b"},
+                {relationship["semanticRole"] for relationship in link["relationships"]},
+            )
+
+    def test_tension_provenance_matches_governed_pole_allocations(self) -> None:
+        if self.inputs is None:
+            self.skipTest("Governed private build inputs are unavailable")
+        release_by_content = {
+            str(row["canonicalContentUnitId"]): str(row["selectedRepresentationId"])
+            for row in self.inputs["selection"]["canonicalContentUnitSelection"]
+            if row["contributesAnalyticalWeight"]
+        }
+        expected: dict[tuple[str, str], Counter[str]] = defaultdict(Counter)
+        roles = {
+            "A": "tension-evidence-pole-a",
+            "B": "tension-evidence-pole-b",
+        }
+        for row in _records(self.inputs["tension_allocation"]):
+            weight = float(row.get("analyticalSupportWeight") or 0)
+            if not row.get("included") or weight <= 0:
+                continue
+            expected[
+                (
+                    str(row["canonicalTensionId"]),
+                    release_by_content[str(row["canonicalContentUnitId"])],
+                )
+            ][roles[str(row["normalizedPole"])]] += weight
+        expected_normalized = {
+            key: {role: round(weight, 6) for role, weight in weights.items()}
+            for key, weights in expected.items()
+        }
+        actual = {
+            (tension_id, link["episodeId"]): {
+                relationship["semanticRole"]: relationship["analyticalWeight"]
+                for relationship in link["relationships"]
+            }
+            for tension_id, links in self.payloads["provenance.json"][
+                "tensionToReleases"
+            ].items()
+            for link in links
+        }
+        self.assertEqual(expected_normalized, actual)
+
+    def test_cluster_provenance_still_uses_direct_coded_support(self) -> None:
+        provenance = self.payloads["provenance.json"]
+        self.assertEqual(
+            {"semanticRole": "direct-coded-support", "causalClaim": False},
+            provenance["clusterRelationship"],
+        )
+        links = [
+            link
+            for cluster_links in provenance["clusterToReleases"].values()
+            for link in cluster_links
+        ]
+        self.assertTrue(links)
+        self.assertTrue(all("relationship" not in link for link in links))
 
     def test_episode_83_has_two_releases_one_weight_and_one_inheritance_edge(self) -> None:
         episodes = {row["episodeId"]: row for row in self.payloads["episodes.json"]}

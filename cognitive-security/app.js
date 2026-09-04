@@ -427,7 +427,7 @@ function validateSupport(support, label) {
   assert(isObject(reach), label + " support.broaderTraceableReach is missing.");
   assertExactInteger(primary.itemCount, label + " primary item count must be an integer.");
   assert(typeof primary.share === "number" && Number.isFinite(primary.share), label + " primary share must be numeric.");
-  ["directContentUnitCount", "primaryClusterCount", "primaryFamilyCount", "categoryBreadth"].forEach(function (key) {
+  ["primaryContentUnitCount", "primaryClusterCount", "primaryFamilyCount", "categoryBreadth"].forEach(function (key) {
     assertExactInteger(primary[key], label + " primary " + key + " must be an integer.");
   });
   ["itemCount", "derivedItemCount", "contentUnitCount", "publicReleaseCount",
@@ -523,7 +523,7 @@ function validateInitialData() {
   scenarios.forEach(function (scenario) {
     validateSupport(scenario.support, "Scenario " + scenario.scenarioId);
     if (scenario.scenarioId === "SC-04") {
-      assert(scenario.publicNotice === SC04_PUBLIC_NOTICE, "SC-04 must carry the approved public governance notice.");
+      assert(scenario.publicNotice === SC04_PUBLIC_NOTICE, "SC-04 must carry the required public governance notice.");
     } else {
       assert(scenario.publicNotice === null, "Only SC-04 may carry a public governance notice.");
     }
@@ -871,24 +871,35 @@ function supportReach(record) {
   return record && record.support && record.support.broaderTraceableReach;
 }
 
-function renderSupportPanel(record) {
+const SUPPORT_DERIVATION = Object.freeze({
+  cluster: "For a cluster, primary support comes from retained items directly coded to that cluster.",
+  family: "For a family, primary support comes from its member clusters; the family was not directly coded at item level.",
+  theme: "For a theme, primary support comes from primary-support families and clusters; the theme was not directly coded at item level.",
+  tension: "For a tension, primary support comes from evidence directly allocated to Pole A or Pole B.",
+  narrative: "For a narrative, primary evidence is inherited through integrated canonical constructs; the narrative was not directly coded at item level.",
+  finding: "For a finding, primary evidence is traced through supporting families and clusters; the finding was not directly coded at item level.",
+  scenario: "For a scenario, primary evidence is traced through relevant canonical constructs; the scenario was not directly coded at item level.",
+});
+
+function renderSupportPanel(record, entityType) {
   if (!record || !record.support) return null;
   const support = record.support;
   const primary = support.primarySupport;
   const reach = support.broaderTraceableReach;
   const section = sectionBlock(
     "Corpus support",
-    "Support is shown in two layers. Primary support describes directly coded focal material; broader traceable reach describes where that material recurs. " + SUPPORT_INTERPRETATION,
+    "Support is shown in two layers. Primary support represents the governed evidence designated as primary for this entity. The evidence path depends on entity type. Broader traceable reach describes where that evidence can be traced. " + SUPPORT_INTERPRETATION,
     "support-panel"
   );
   section.appendChild(element("h3", "support-layer-title", "Primary corpus support"));
+  section.appendChild(element("p", "evidence-boundary-note", SUPPORT_DERIVATION[entityType] || "Primary support follows the governed evidence path for this entity type."));
   const summary = element("div", "support-summary");
-  summary.appendChild(statCard(formatNumber(primary.itemCount), "primary-support items", "directly coded focal support"));
-  summary.appendChild(statCard(formatPercent(primary.share), "primary-support share", "share of this record’s traceable item support"));
-  summary.appendChild(statCard(formatNumber(primary.directContentUnitCount), "direct content units", "primary-support breadth"));
-  summary.appendChild(statCard(formatNumber(primary.primaryFamilyCount), "primary families", "direct primary support"));
-  summary.appendChild(statCard(formatNumber(primary.primaryClusterCount), "primary clusters", "direct primary support"));
-  summary.appendChild(statCard(formatNumber(primary.categoryBreadth), "primary category breadth", "direct primary support only"));
+  summary.appendChild(statCard(formatNumber(primary.itemCount), "primary-support items", "governed primary evidence"));
+  summary.appendChild(statCard(formatPercent(primary.share), "primary-support share", "share of this entity’s traceable item support"));
+  summary.appendChild(statCard(formatNumber(primary.primaryContentUnitCount), "primary-support content units", "primary evidence breadth"));
+  summary.appendChild(statCard(formatNumber(primary.primaryFamilyCount), "primary families", "families in the primary evidence path"));
+  summary.appendChild(statCard(formatNumber(primary.primaryClusterCount), "primary clusters", "clusters in the primary evidence path"));
+  summary.appendChild(statCard(formatNumber(primary.categoryBreadth), "primary category breadth", "categories in the primary evidence path"));
   section.appendChild(summary);
   if (isObject(primary.concentration)) {
     const primaryConcentration = element("div", "primary-concentration");
@@ -1088,6 +1099,9 @@ async function ensureRelationships() {
 function validateProvenance(payload) {
   assert(isObject(payload), "provenance.json must be an object.");
   assertNoForbiddenRecordKeys(payload, "provenance.json");
+  assert(isObject(payload.clusterRelationship), "Cluster provenance relationship descriptor is missing.");
+  assert(payload.clusterRelationship.semanticRole === "direct-coded-support", "Cluster provenance must use direct-coded-support.");
+  assert(payload.clusterRelationship.causalClaim === false, "Cluster provenance must be noncausal.");
   assert(isObject(payload.clusterToReleases), "Provenance clusterToReleases is missing.");
   assert(isObject(payload.tensionToReleases), "Provenance tensionToReleases is missing.");
   assert(Array.isArray(payload.sharedContentRelationships), "Provenance shared-content relationships are missing.");
@@ -1108,8 +1122,15 @@ function validateProvenance(payload) {
     assert(Array.isArray(entry[1]), "Tension provenance rows must be an array.");
     entry[1].forEach(function (row) {
       assert(getEntity("episode", row.episodeId), "Tension provenance references an unknown release.");
-      ["poleAAnalyticalWeight", "poleBAnalyticalWeight"].forEach(function (key) {
-        assert(typeof row[key] === "number" && Number.isFinite(row[key]), "Tension provenance weight must be numeric.");
+      assert(Array.isArray(row.relationships) && row.relationships.length >= 1 && row.relationships.length <= 2, "Tension provenance must expose one or two pole relationships.");
+      const roles = new Set();
+      row.relationships.forEach(function (relationship) {
+        assert(isObject(relationship), "Tension provenance relationship must be an object.");
+        assert(relationship.semanticRole === "tension-evidence-pole-a" || relationship.semanticRole === "tension-evidence-pole-b", "Tension provenance must use a governed pole role.");
+        assert(!roles.has(relationship.semanticRole), "Tension provenance repeats a pole role.");
+        roles.add(relationship.semanticRole);
+        assert(typeof relationship.analyticalWeight === "number" && Number.isFinite(relationship.analyticalWeight) && relationship.analyticalWeight > 0, "Tension provenance analytical weight must be positive and numeric.");
+        assert(relationship.causalClaim === false, "Tension provenance must be noncausal.");
       });
       directlyWeightedEpisodes.add(row.episodeId);
     });
@@ -1129,17 +1150,23 @@ function buildProvenanceIndex(payload) {
   Object.entries(payload.clusterToReleases).forEach(function (entry) {
     entry[1].forEach(function (row) {
       const detail = formatNumber(row.primaryItemCount) + " primary · " + formatNumber(row.secondaryItemCount) + " secondary · governed weight " + formatNumber(row.governedWeightedCount);
-      const relationship = { semanticRole: "direct-coded-support", qualifier: detail, causalClaim: false };
+      const relationship = { semanticRole: payload.clusterRelationship.semanticRole, qualifier: detail, causalClaim: payload.clusterRelationship.causalClaim };
       addAdjacency(state.provenanceAdjacency, "cluster", entry[0], { otherType: "episode", otherId: row.episodeId, direction: "from", relationship: relationship });
       addAdjacency(state.provenanceAdjacency, "episode", row.episodeId, { otherType: "cluster", otherId: entry[0], direction: "to", relationship: relationship });
     });
   });
   Object.entries(payload.tensionToReleases).forEach(function (entry) {
     entry[1].forEach(function (row) {
-      const detail = "Pole A weight " + formatNumber(row.poleAAnalyticalWeight) + " · Pole B weight " + formatNumber(row.poleBAnalyticalWeight);
-      const relationship = { semanticRole: "direct-coded-support", qualifier: detail, causalClaim: false };
-      addAdjacency(state.provenanceAdjacency, "tension", entry[0], { otherType: "episode", otherId: row.episodeId, direction: "from", relationship: relationship });
-      addAdjacency(state.provenanceAdjacency, "episode", row.episodeId, { otherType: "tension", otherId: entry[0], direction: "to", relationship: relationship });
+      row.relationships.forEach(function (sourceRelationship) {
+        const pole = sourceRelationship.semanticRole === "tension-evidence-pole-a" ? "Pole A" : "Pole B";
+        const relationship = {
+          semanticRole: sourceRelationship.semanticRole,
+          qualifier: pole + " analytical weight " + formatNumber(sourceRelationship.analyticalWeight),
+          causalClaim: sourceRelationship.causalClaim,
+        };
+        addAdjacency(state.provenanceAdjacency, "tension", entry[0], { otherType: "episode", otherId: row.episodeId, direction: "from", relationship: relationship });
+        addAdjacency(state.provenanceAdjacency, "episode", row.episodeId, { otherType: "tension", otherId: entry[0], direction: "to", relationship: relationship });
+      });
     });
   });
   payload.sharedContentRelationships.forEach(function (row) {
@@ -1418,7 +1445,7 @@ function renderStart() {
   const grid = element("div", "map-card-grid");
   [
     ["families", "Categories & families", "Browse the complete Category → Family → Cluster hierarchy.", "Explore Categories"],
-    ["themes", "Category × Theme heatmap", "Compare direct primary-family support across all 77 category/theme cells.", "Explore Themes"],
+    ["themes", "Category × Theme heatmap", "Compare governed primary-support breadth across all 77 category/theme cells.", "Explore Themes"],
     ["tensions", "Tension matrix", "Compare twenty neutral two-pole constructs and filter their traceable breadth.", "Explore Tensions"],
     ["narratives", "Narratives", "Read five integrative claims and the boundaries around them.", "Explore Narratives"],
     ["scenarios", "Scenarios", "Explore six plausible futures, branch points, indicators, and response options.", "Explore Scenarios"],
@@ -1556,7 +1583,7 @@ async function renderCategory(route) {
   if (findings.length) {
     const findingGroups = element("div", "finding-groups");
     [
-      ["family-finding", "Family findings", "Findings tied to one canonical family and its directly governed support."],
+      ["family-finding", "Family findings", "Findings tied to one canonical family and its governed primary support."],
       ["integrative-category-finding", "Integrative category finding", "A category-level synthesis across related families."],
       ["open-question", "Open question", "An unresolved question retained for inquiry rather than presented as a finding."],
     ].forEach(function (groupDefinition) {
@@ -1570,7 +1597,7 @@ async function renderCategory(route) {
       group.appendChild(findingGrid);
       findingGroups.appendChild(group);
     });
-    record.appendChild(detailSection("Findings and open questions", findingGroups, "Finding types are separated so direct family synthesis, category integration, and unresolved questions remain visibly distinct."));
+    record.appendChild(detailSection("Findings and open questions", findingGroups, "Finding types are separated so family synthesis, category integration, and unresolved questions remain visibly distinct."));
   }
   await appendEvidenceExplorer(record, "category", category.categoryId, route);
   viewContent.appendChild(record);
@@ -1608,7 +1635,7 @@ async function renderFamily(route) {
   record.appendChild(detailSection("Related canonical synthesis", definitionRows([
     { label: "Themes", value: entityChipList("theme", relatedThemes) },
     { label: "Tensions", value: entityChipList("tension", relatedTensions) },
-  ]), "Semantic roles distinguish direct support, secondary support, conceptual framing, future extension, and tension support."));
+  ]), "Semantic roles distinguish primary support, secondary support, conceptual framing, future extension, and tension support."));
   const familyFinding = state.records.categoryFinding.find(function (finding) {
     return finding.findingType === "family-finding" && asArray(finding.supportingFamilyIds).includes(family.familyId);
   });
@@ -1617,11 +1644,11 @@ async function renderFamily(route) {
   }
   const supportingEpisodes = supportingEpisodeIdsForFamily(family);
   const episodeDisclosure = element("details", "support-details supporting-episodes");
-  episodeDisclosure.appendChild(element("summary", null, formatNumber(supportingEpisodes.length) + " directly supporting public releases"));
+  episodeDisclosure.appendChild(element("summary", null, formatNumber(supportingEpisodes.length) + " primary-support public releases"));
   episodeDisclosure.appendChild(entityChipList("episode", supportingEpisodes));
   episodeDisclosure.appendChild(element("p", "evidence-boundary-note", "Releases are deduplicated across member clusters. Shared-content inheritance adds public coverage but contributes zero additional analytical weight."));
   record.appendChild(detailSection("Supporting episodes", episodeDisclosure, "Open this aggregate list to browse release summaries; item-level evidence remains private."));
-  record.appendChild(renderSupportPanel(family));
+  record.appendChild(renderSupportPanel(family, "family"));
   await appendEvidenceExplorer(record, "family", family.familyId, route);
   viewContent.appendChild(record);
 }
@@ -1652,7 +1679,7 @@ async function renderCluster(route) {
     { label: "Operational implications", value: cluster.operationalImplications },
     { label: "Primary / secondary distinction", value: cluster.primarySecondaryDistinction },
   ])));
-  record.appendChild(renderSupportPanel(cluster));
+  record.appendChild(renderSupportPanel(cluster, "cluster"));
   await appendEvidenceExplorer(record, "cluster", cluster.clusterId, route);
   viewContent.appendChild(record);
 }
@@ -1664,7 +1691,7 @@ function renderCategoryThemeHeatmap() {
   region.setAttribute("role", "region");
   region.setAttribute("aria-label", "Scrollable Theme by Category heatmap");
   const table = element("table", "heatmap-table");
-  const caption = element("caption", null, payload.interpretation || "Direct primary-family support breadth by category and theme.");
+  const caption = element("caption", null, payload.interpretation || "Governed primary-support breadth by category and theme.");
   table.appendChild(caption);
   const head = element("thead");
   const headRow = element("tr");
@@ -1701,9 +1728,9 @@ function renderCategoryThemeHeatmap() {
   region.appendChild(table);
   const legend = element("div", "heatmap-legend");
   legend.appendChild(element("strong", null, "Cell meaning:"));
-  legend.appendChild(document.createTextNode(" normalized direct primary-support breadth. Focus a cell for its family, cluster, and content-unit counts. Every cell includes a percentage; color is only a secondary cue."));
+  legend.appendChild(document.createTextNode(" normalized governed primary-support breadth. Focus a cell for its family, cluster, and content-unit counts. Every cell includes a percentage; color is only a secondary cue."));
   region.appendChild(legend);
-  region.appendChild(element("p", "evidence-boundary-note", "The matrix excludes secondary-theme-support, conceptual-framing, and future-extension relationships. Zero means no governed direct primary-family support in this corpus, not that the category is irrelevant."));
+  region.appendChild(element("p", "evidence-boundary-note", "The matrix excludes secondary-theme-support, conceptual-framing, and future-extension relationships. Zero means no governed primary-theme support in this corpus, not that the category is irrelevant."));
   return region;
 }
 
@@ -1722,7 +1749,7 @@ function themeCard(theme) {
 function renderThemes(route) {
   const query = normalizeText(route.q);
   const themes = state.records.theme.filter(function (theme) { return recordMatches(theme, "theme", query); });
-  setHeader("Cross-cutting synthesis", "Themes", "Eleven themes connect recurring patterns across categories. All themes occupy one public level; direct support and conceptual relationships remain distinct.", formatNumber(themes.length) + " matching themes");
+  setHeader("Cross-cutting synthesis", "Themes", "Eleven themes connect recurring patterns across categories. All themes occupy one public level; primary support and conceptual relationships remain distinct.", formatNumber(themes.length) + " matching themes");
   setBreadcrumbs([{ label: "Themes", current: true }]);
   viewContent.appendChild(modeFilterForm(route, {
     view: "themes",
@@ -1730,7 +1757,7 @@ function renderThemes(route) {
     placeholder: "Search theme definitions and implications",
     filters: [],
   }));
-  const matrix = sectionBlock("Category × Theme heatmap", "Compare direct primary-family support across all seven focal categories and eleven themes.");
+  const matrix = sectionBlock("Category × Theme heatmap", "Compare governed primary-support breadth across all seven focal categories and eleven themes.");
   matrix.appendChild(renderCategoryThemeHeatmap());
   viewContent.appendChild(matrix);
   if (!themes.length) {
@@ -1766,7 +1793,7 @@ async function renderTheme(route) {
   const primary = primarySupport(theme);
   setHeader("Theme", theme.name, theme.definition, primary ? formatNumber(primary.itemCount) + " primary-support items" : "Canonical theme");
   setBreadcrumbs([{ label: "Themes", view: "themes" }, { label: theme.name, current: true }]);
-  if (selectedCategory) showNotice("This theme view is focused on " + getEntity("category", selectedCategory).name + ". Direct support roles remain labelled.");
+  if (selectedCategory) showNotice("This theme view is focused on " + getEntity("category", selectedCategory).name + ". Primary-support roles remain labelled.");
   const record = element("div", "record-detail");
   record.appendChild(detailHero("theme", theme, theme.definition));
   record.appendChild(detailSection("Significance and boundaries", definitionRows([
@@ -1775,15 +1802,15 @@ async function renderTheme(route) {
     { label: "Boundary conditions", value: theme.boundaryConditions },
     { label: "Limitations", value: theme.limitations },
   ])));
-  record.appendChild(detailSection("Primary-support families", entityChipList("family", primaryFamilies), "Only direct primary-theme-support families are shown in the heatmap."));
-  if (secondaryFamilies.length) record.appendChild(detailSection("Secondary-support families", entityChipList("family", secondaryFamilies), "Secondary support is public but excluded from direct heatmap breadth."));
+  record.appendChild(detailSection("Primary-support families", entityChipList("family", primaryFamilies), "Only families with the governed primary-theme-support role are shown in the heatmap."));
+  if (secondaryFamilies.length) record.appendChild(detailSection("Secondary-support families", entityChipList("family", secondaryFamilies), "Secondary support is public but excluded from primary-support heatmap breadth."));
   if (conceptualFamilies.length || futureFamilies.length) {
     record.appendChild(detailSection("Broader conceptual reach", definitionRows([
       { label: "Conceptual framing", value: entityChipList("family", conceptualFamilies) },
       { label: "Future extension", value: entityChipList("family", futureFamilies) },
-    ]), "These governed relationships broaden interpretation but are not direct theme support and are excluded from the heatmap."));
+    ]), "These governed relationships broaden interpretation but are not primary theme support and are excluded from the heatmap."));
   }
-  record.appendChild(renderSupportPanel(theme));
+  record.appendChild(renderSupportPanel(theme, "theme"));
   await appendEvidenceExplorer(record, "theme", theme.themeId, route);
   viewContent.appendChild(record);
 }
@@ -2120,17 +2147,17 @@ async function renderTension(route) {
     { label: "Pole B share", value: formatPercent(balance.poleBShare) },
     { label: "Shared across poles", value: formatNumber(balance.sharedAcrossPolesItemCount) },
     { label: "Total analytical weight", value: formatNumber(balance.totalAnalyticalWeight) },
-    { label: "Both poles", value: balance.bothPolesDirectlySupported === true ? "Both poles have direct support" : "Not established" },
+    { label: "Both poles", value: balance.bothPolesDirectlySupported === true ? "Both poles have directly allocated evidence" : "Not established" },
     { label: "Evidence assessment", value: tension.evidenceAssessment },
   ]), "These values describe the corpus; they do not resolve or rank the poles."));
   record.appendChild(detailSection("Traceable connections", definitionRows([
-    { label: "Direct supporting families", value: entityChipList("family", relationIdsForTension(tension, "family")) },
-    { label: "Direct supporting clusters", value: entityChipList("cluster", relationIdsForTension(tension, "cluster")) },
+    { label: "Supporting families", value: entityChipList("family", relationIdsForTension(tension, "family")) },
+    { label: "Supporting clusters", value: entityChipList("cluster", relationIdsForTension(tension, "cluster")) },
     { label: "Themes", value: entityChipList("theme", relationIdsForTension(tension, "theme")) },
     { label: "Narratives", value: entityChipList("narrative", relationIdsForTension(tension, "narrative")) },
     { label: "Scenarios", value: entityChipList("scenario", relationIdsForTension(tension, "scenario")) },
   ]), "Theme connections are derived only from shared governed cluster support and are labelled contextual, not direct tension evidence."));
-  record.appendChild(renderSupportPanel(tension));
+  record.appendChild(renderSupportPanel(tension, "tension"));
   await appendEvidenceExplorer(record, "tension", tension.tensionId, route);
   viewContent.appendChild(record);
 }
@@ -2193,7 +2220,7 @@ async function renderNarrative(route) {
     { label: "Families", value: entityChipList("family", familyIds) },
     { label: "Clusters", value: entityChipList("cluster", relatedIds("narrative", narrative.narrativeId, "cluster")) },
   ]), "Integration is an interpretive relationship, not a causal chain."));
-  record.appendChild(renderSupportPanel(narrative));
+  record.appendChild(renderSupportPanel(narrative, "narrative"));
   await appendEvidenceExplorer(record, "narrative", narrative.narrativeId, route);
   viewContent.appendChild(record);
 }
@@ -2220,7 +2247,7 @@ async function renderCategoryFinding(route) {
     open.appendChild(textList(questions, false));
     record.appendChild(detailSection("Open questions", open, "These questions remain open; the finding does not resolve them."));
   }
-  record.appendChild(renderSupportPanel(finding));
+  record.appendChild(renderSupportPanel(finding, "finding"));
   await appendEvidenceExplorer(record, "categoryFinding", finding.findingId, route);
   viewContent.appendChild(record);
 }
@@ -2364,7 +2391,7 @@ async function renderScenario(route) {
   ])));
   record.appendChild(detailSection("Related scenarios", renderRelatedScenarios(scenario), "These governed semantic relationships provide context only; none is a causal claim."));
   if (scenario.limitations) record.appendChild(detailSection("Limitations", textList(scenario.limitations, false)));
-  record.appendChild(renderSupportPanel(scenario));
+  record.appendChild(renderSupportPanel(scenario, "scenario"));
   await appendEvidenceExplorer(record, "scenario", scenario.scenarioId, route);
   viewContent.appendChild(record);
 }
@@ -2586,7 +2613,7 @@ function renderMethodology() {
     ["Corpus accounting", "This is one practitioner podcast corpus. " + formatNumber(counts.publicReleaseCount) + " public releases represent " + formatNumber(counts.canonicalContentUnitCount) + " canonical content units. The selected canonical corpus contains " + formatNumber(counts.canonicalItemCount) + " items, including " + formatNumber(counts.canonicalFocalItemCount) + " focal and " + formatNumber(counts.canonicalContextualItemCount) + " contextual items. Duplicate-source analytical weight was removed. Separately, one shared-content rerelease inherits public coverage but adds zero analytical weight."],
     ["Synthesis process", "The analytical architecture is a human-guided, AI-assisted synthesis. Governed definitions, boundaries, assignments, adjudications, and validation constrain the synthesis; human review remains responsible for analytical judgment."],
     ["Distinct evidence pipelines", "Transcript → public episode summary is the release-reading pipeline. Structured qualitative analysis → analytical map relationships is the synthesis pipeline. Episode summaries do not independently generate or validate map relationships."],
-    ["Two support layers", "Primary support counts directly coded focal material and its share of traceable support. Broader traceable reach reports items, derived items, content units, public releases, inherited coverage, clusters, families, category breadth, and concentration. No composite evidence score is produced. " + SUPPORT_INTERPRETATION],
+    ["Two support layers", "Primary support represents the governed evidence designated as primary for an entity; its evidence path depends on entity type. A cluster traces to directly coded items, while higher-order entities trace through their governed supporting constructs or, for tensions, directly allocated pole evidence. Broader traceable reach reports items, derived items, content units, public releases, inherited coverage, clusters, families, category breadth, and concentration. No composite evidence score is produced. " + SUPPORT_INTERPRETATION],
     ["Theme heatmap", "The 11 × 7 matrix reports normalized primary-support breadth. Only primary-theme-support relationships contribute. Secondary support, conceptual framing, and future extension remain visible elsewhere but do not inflate heatmap breadth."],
     ["Tension interpretation", "Tensions are neutral two-pole constructs. Pole balance describes this corpus and does not declare a winner. Theme filters use a labelled contextual connection derived from shared governed cluster support; that connection is not direct tension evidence."],
     ["Scenarios", "Scenarios are plausible analytical constructions, not forecasts, causal models, permissions, or validated recommendations. Triggers, branch points, indicators, counter-signposts, mitigations, and response options preserve uncertainty. SC-04 carries an additional public governance and rights notice."],

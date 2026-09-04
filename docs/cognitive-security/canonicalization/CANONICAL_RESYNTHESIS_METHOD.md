@@ -111,9 +111,9 @@ Theme adjudication must establish primary and secondary family and cluster
 support, category breadth, support concentration, boundary conditions, and
 limitations. Key Concepts and Future Trends are legitimate contributors and
 must be actively assessed rather than omitted because of historical mapping
-gaps. Because `conceptual-framing` and `future-extension` are not direct
+gaps. Because `conceptual-framing` and `future-extension` are not primary theme
 evidence, they contribute to traceability and total support but not to a
-theme's direct-support category-breadth count.
+theme's primary-support category-breadth count.
 
 ### 5. Allocate and adjudicate tensions
 
@@ -144,7 +144,7 @@ item-level adjudication may therefore route evidence outside a proposed legacy
 target when the surviving proposition supports a different canonical tension;
 the departure remains explicit in private lineage. Construct records distinguish
 design-proposal ancestry from the historical tensions that retain positive-weight
-evidence after allocation. Historical TD-024 pole
+evidence after allocation. The affected historical pole's
 orientation is reversed deterministically when translated to its canonical
 tension.
 
@@ -210,6 +210,13 @@ vocabulary is:
 More specific scenario qualifiers may be retained as metadata, but they do not
 override the governed semantic role or establish causation.
 
+`direct-coded-support` is reserved for direct item-to-cluster coding
+provenance. Episode-to-tension provenance uses
+`tension-evidence-pole-a` for positive Pole A weight and
+`tension-evidence-pole-b` for positive Pole B weight. When an episode carries
+positive weight for both poles, both noncausal semantic relationships are
+preserved with their respective analytical weights.
+
 ## Corpus support profiles
 
 Corpus support is reported as dimensions, not a composite evidence-quality
@@ -229,6 +236,15 @@ score. Where applicable, each higher-order entity reports:
 
 Inherited shared-content relationships affect discoverability but do not
 increase item support or content-unit support.
+
+In the public projection, primary support means the governed evidence
+designated as primary for the entity; it does not mean that every entity was
+directly coded at item level. Clusters trace to directly coded items; families
+to member clusters; themes to primary-support families and clusters; tensions
+to directly allocated pole evidence; narratives to integrated constructs;
+findings to supporting families and clusters; and scenarios to relevant
+canonical constructs. The public content-unit breadth field is named
+`primaryContentUnitCount`.
 
 Every public interpretation of these measures must preserve this caveat:
 
@@ -321,4 +337,4 @@ feature branch. The process then stops for human review.
 
 No canonical draft may replace live public data, and no public-interface
 implementation may begin, until the analytical checkpoint has been explicitly
-approved.
+frozen.

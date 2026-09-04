@@ -36,7 +36,7 @@ Allowed values:
 - `revised` — evidence review changed the proposal;
 - `recomputed` — support was deterministically recalculated from the governed
   canonical selection; or
-- `canonical` — approved for canonical publication.
+- `canonical` — governed and eligible for canonical publication.
 
 ### Confidence labels
 
@@ -264,7 +264,7 @@ private metadata and cannot create a visible hierarchy.
 
 Primary and secondary lists are mutually exclusive at each entity level.
 `categoryBreadth` must equal the distinct focal categories represented by
-traceable direct support, not conceptual framing alone.
+traceable governed primary support, not conceptual framing alone.
 
 ## Canonical tensions
 
@@ -510,6 +510,31 @@ shared-content-inheritance
 as “may enable” or “may worsen” remain conditional descriptions and do not
 assert causation.
 
+Public release provenance applies the vocabulary as follows:
+
+- the provenance collection has one `clusterRelationship` descriptor using
+  `direct-coded-support` and `causalClaim: false`, applied to every
+  release-to-cluster record;
+- a release-to-tension record has a `relationships` array containing
+  `tension-evidence-pole-a` when Pole A weight is positive and
+  `tension-evidence-pole-b` when Pole B weight is positive;
+- each tension relationship carries its positive `analyticalWeight` and
+  `causalClaim: false`; and
+- positive support for both poles produces both roles in the same
+  release-to-tension record.
+
+`direct-coded-support` is reserved for direct cluster coding provenance and is
+never used for a tension evidence path.
+
+### Public primary-support projection
+
+The canonical public projection names content-unit breadth
+`primaryContentUnitCount`. This measure follows the governed primary evidence
+path for each entity type. Direct item coding applies only to clusters;
+families, themes, narratives, findings, and scenarios derive primary evidence
+through their governed supporting constructs, while tensions use directly
+allocated pole evidence.
+
 ## Public allowlist and privacy boundary
 
 Public-safe canonical entities may expose:
@@ -518,7 +543,7 @@ Public-safe canonical entities may expose:
 - canonical entity-to-entity relationships;
 - aggregate support dimensions and limitations;
 - public-release links; and
-- adjudication status approved for publication.
+- governed adjudication status establishing publication eligibility.
 
 Public artifacts must exclude:
 

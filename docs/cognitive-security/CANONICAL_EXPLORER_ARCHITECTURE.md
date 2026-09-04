@@ -3,7 +3,7 @@
 ## Purpose and interpretation
 
 The PSYWERX Cognitive Security Practitioner Discourse Map is a dependency-free
-static application at `/cognitive-security/`. It presents the approved
+static application at `/cognitive-security/`. It presents the governed
 canonical synthesis of one practitioner podcast corpus. It is not a definitive
 taxonomy, representative survey, scientific evidence review, consensus
 measure, causal model, prevalence estimate, or forecast. It remains separate
@@ -133,11 +133,20 @@ table or historical identifier is rendered.
 
 Every higher-order entity exposes support without a single score.
 
-**Primary corpus support** may include direct item allocation, primary family
-and cluster breadth, directly allocated tension evidence, primary category
-breadth, direct content-unit breadth, and concentration. A value is omitted or
-described as not independently coded when the governed source does not support
-it.
+**Primary corpus support** represents the governed evidence designated as
+primary for an entity. The evidence path depends on entity type:
+
+- clusters use directly coded item evidence;
+- families use evidence from member clusters;
+- themes use evidence from primary-support families and clusters;
+- tensions use directly allocated Pole A and Pole B evidence;
+- narratives use primary evidence through integrated canonical constructs;
+- findings use evidence through supporting families and clusters; and
+- scenarios use primary evidence through relevant canonical constructs.
+
+The public `primaryContentUnitCount` field reports content-unit breadth along
+that primary evidence path. Higher-order entities are not represented as
+directly coded at item level.
 
 **Broader traceable reach** is subordinate and progressively disclosed. It may
 include secondary-family relationships, conceptual framing, future extension,
@@ -183,7 +192,7 @@ screens.
 ## Canonical tension matrix
 
 The tension matrix groups all 20 tensions by governed analytical type and can
-filter by type, category, theme, scenario, and direct support breadth. Both
+filter by type, category, theme, scenario, and primary-support breadth. Both
 poles use neutral presentation. Pole allocation describes direct evidence
 lineage, not endorsement or a preferred answer. Detail pages retain definition,
 assumptions, conditions favoring each pole, complementarity/false-dichotomy
@@ -203,9 +212,15 @@ Each connection exposes its governed semantic role, including
 `direct-coded-support`, `primary-family-membership`,
 `secondary-family-relationship`, `primary-theme-support`,
 `secondary-theme-support`, `conceptual-framing`, `future-extension`,
-`activated-tension`, `contextual-connection`, and
+`tension-evidence-pole-a`, `tension-evidence-pole-b`, `activated-tension`,
+`contextual-connection`, and
 `shared-content-inheritance`. The interface uses no causal arrows. All scenario
 relationships retain `causalClaim: false`.
+
+`direct-coded-support` is reserved for release-to-cluster provenance. A
+release-to-tension path uses the Pole A role, the Pole B role, or both when the
+release has positive analytical weight on both poles. Each displayed pole path
+retains the weight for that pole and `causalClaim: false`.
 
 ## Search contract
 
