@@ -1,4 +1,9 @@
-# Cognitive Security Explorer architecture
+# Cognitive Security Explorer architecture (historical)
+
+> This document preserves the superseded pre-canonical Explorer contract for
+> private reproducibility. It is not the current public presentation. See
+> [Canonical Explorer architecture](./CANONICAL_EXPLORER_ARCHITECTURE.md) for
+> the active canonical-only contract.
 
 ## Status and purpose
 

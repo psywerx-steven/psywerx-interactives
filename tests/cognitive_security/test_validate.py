@@ -707,6 +707,10 @@ class PublicationBoundaryTests(unittest.TestCase):
             path.name: json.loads(path.read_text(encoding="utf-8"))
             for path in PUBLIC_DIR.glob("*.json")
         }
+        if payloads.get("manifest.json", {}).get("schemaVersion") == "2.0":
+            self.skipTest(
+                "Canonical schema 2.0 is validated by test_canonical_public.py."
+            )
         report = validate_public_outputs(payloads)
         self.assertTrue(report.passed, [issue.as_dict() for issue in report.errors])
         qa = payloads["qa_report.json"]

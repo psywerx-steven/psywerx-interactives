@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta
     name="description"
-    content="Explore the PSYWERX Cognitive Security Practitioner Discourse Map across categories, clusters, themes, tensions, narratives, and scenarios."
+    content="Explore the canonical PSYWERX Cognitive Security map across categories, families, clusters, themes, tensions, narratives, scenarios, and public releases."
   >
   <title>PSYWERX Cognitive Security Map</title>
   <link rel="icon" href="data:,">
@@ -27,7 +27,18 @@
         >
       </a>
       <div class="site-header__tools">
-        <span class="site-header__context">Practitioner Discourse Map</span>
+        <form id="global-search-form" class="global-search" role="search" aria-label="Search the canonical Cognitive Security map">
+          <label class="sr-only" for="global-search-input">Search the entire canonical map</label>
+          <input
+            id="global-search-input"
+            name="q"
+            type="search"
+            placeholder="Search the map"
+            autocomplete="off"
+            disabled
+          >
+          <button type="submit" disabled>Search</button>
+        </form>
         <nav class="site-nav" aria-label="PSYWERX interactives">
           <a href="../drivers/">Driver Explorer</a>
           <a href="../drivers/codebook/">Codebook</a>
@@ -41,16 +52,17 @@
     <section class="hero" aria-labelledby="page-title">
       <div class="site-container hero__inner">
         <div class="hero__copy">
-          <p class="eyebrow">PSYWERX Cognitive Security</p>
-          <h1 id="page-title">Map the ideas shaping cognitive security practice.</h1>
+          <p class="eyebrow">PSYWERX Cognitive Security · Start Here</p>
+          <h1 id="page-title">Follow practitioner ideas from synthesis to support.</h1>
           <p class="hero__lede">
-            Explore a governed synthesis of practitioner discourse across public podcast
-            releases&mdash;from recurring concepts and institutional challenges to
-            cross-cutting themes, tensions, narratives, and plausible scenarios.
+            Explore the canonical synthesis through categories, families,
+            clusters, cross-cutting themes, tensions, narratives, scenarios, and the
+            public releases that support them.
           </p>
           <p id="methodology-caution" class="hero__caution">
-            This map describes discourse in the source corpus. It is not a definitive
-            taxonomy, causal model, prevalence estimate, consensus measure, or forecast.
+            Corpus support reflects recurrence and breadth within this practitioner
+            discourse corpus. It does not indicate scientific validity, consensus,
+            importance, prevalence, or real-world effect size.
           </p>
         </div>
 
@@ -60,8 +72,8 @@
             <dd>canonical public-feed releases</dd>
           </div>
           <div>
-            <dt id="total-item-count">14,397</dt>
-            <dd>original extracted items</dd>
+            <dt id="total-family-count">50</dt>
+            <dd>canonical families</dd>
           </div>
           <div>
             <dt id="total-cluster-count">127</dt>
@@ -78,12 +90,12 @@
     <div class="view-navigation-shell">
       <nav id="view-navigation" class="view-navigation site-container" aria-label="Cognitive Security Map sections">
         <ul>
-          <li><a href="?view=overview" data-view-link="overview" data-route-view="overview" aria-current="page">Overview</a></li>
-          <li><a href="?view=browse" data-view-link="browse" data-route-view="browse">Browse</a></li>
-          <li><a href="?view=themes" data-view-link="themes" data-route-view="themes">Cross-Cutting Themes</a></li>
-          <li><a href="?view=tensions" data-view-link="tensions" data-route-view="tensions">Tensions &amp; Debates</a></li>
-          <li><a href="?view=narratives" data-view-link="narratives" data-route-view="narratives">Meta-Narratives</a></li>
-          <li><a href="?view=scenarios" data-view-link="scenarios" data-route-view="scenarios">Future Scenarios</a></li>
+          <li><a href="?view=start" data-view-link="start" data-route-view="start" aria-current="page">Start Here</a></li>
+          <li><a href="?view=families" data-view-link="families" data-route-view="families">Categories &amp; Families</a></li>
+          <li><a href="?view=themes" data-view-link="themes" data-route-view="themes">Themes</a></li>
+          <li><a href="?view=tensions" data-view-link="tensions" data-route-view="tensions">Tensions</a></li>
+          <li><a href="?view=narratives" data-view-link="narratives" data-route-view="narratives">Narratives</a></li>
+          <li><a href="?view=scenarios" data-view-link="scenarios" data-route-view="scenarios">Scenarios</a></li>
           <li><a href="?view=episodes" data-view-link="episodes" data-route-view="episodes">Episodes</a></li>
           <li><a href="?view=search" data-view-link="search" data-route-view="search">Search</a></li>
           <li><a href="?view=methodology" data-view-link="methodology" data-route-view="methodology">Methodology</a></li>
@@ -112,10 +124,10 @@
 
       <header class="view-header">
         <div class="view-header__copy">
-          <p id="view-kicker" class="eyebrow">Practitioner discourse map</p>
-          <h2 id="view-title" tabindex="-1">Overview</h2>
+          <p id="view-kicker" class="eyebrow">Canonical practitioner discourse map</p>
+          <h2 id="view-title" tabindex="-1">Start Here</h2>
           <p id="view-description">
-            See how the governed categories and higher-order synthesis fit together.
+            Learn how to move through the canonical map without mistaking support for proof.
           </p>
         </div>
         <div id="view-actions" class="view-header__actions"></div>
@@ -126,8 +138,8 @@
           Loading the public map&hellip;
         </p>
         <p class="view-count-caveat">
-          Frequency reflects discourse prevalence within this corpus, not importance,
-          consensus, or evidence strength.
+          Corpus support reflects recurrence and breadth within this practitioner discourse corpus.
+          It does not indicate scientific validity, consensus, importance, prevalence, or real-world effect size.
         </p>
       </div>
 
@@ -175,10 +187,10 @@
                 <option value="">All categories</option>
               </select>
             </label>
-            <label for="search-meta-cluster">
-              Meta-cluster
-              <select id="search-meta-cluster" name="meta" disabled>
-                <option value="">All meta-clusters</option>
+            <label for="search-family">
+              Family
+              <select id="search-family" name="family" disabled>
+                <option value="">All families</option>
               </select>
             </label>
             <label for="search-cluster">
@@ -196,7 +208,7 @@
         <span class="loading-state__indicator" aria-hidden="true"></span>
         <div>
           <h3>Loading the discourse map</h3>
-          <p>Preparing governed categories, clusters, and synthesis records&hellip;</p>
+          <p>Preparing canonical categories, families, clusters, and synthesis records&hellip;</p>
         </div>
       </div>
 
@@ -219,24 +231,6 @@
       <a href="?view=methodology" data-view-link="methodology" data-route-view="methodology">Read the methodology</a>
     </div>
   </footer>
-
-  <dialog id="entity-dialog" class="entity-dialog" aria-labelledby="entity-dialog-title">
-    <div class="entity-dialog__shell">
-      <div class="entity-dialog__topbar">
-        <p id="entity-dialog-label">Cognitive Security Map record</p>
-        <button id="entity-dialog-close" class="icon-button" type="button" aria-label="Close record details">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5 19 19M19 5 5 19"></path></svg>
-        </button>
-      </div>
-      <article id="entity-detail" class="entity-detail">
-        <h2 id="entity-dialog-title">Record details</h2>
-      </article>
-      <div class="entity-dialog__footer">
-        <button id="copy-link" class="text-button" type="button">Copy link</button>
-        <span id="copy-status" class="sr-only" aria-live="polite"></span>
-      </div>
-    </div>
-  </dialog>
 
   <script src="./app.js" defer></script>
 </body>

@@ -1,781 +1,2086 @@
 [
   {
-    "categoryIds": [
-      "CAT-0800ED7E6EC3DE0B",
-      "CAT-E7C7BCBA9D42BBC1",
-      "CAT-DA4674EEAB83CDA9"
+    "conditionsFavoringA": [
+      "High-volume, repeatable tasks have measurable error and reversible outputs.",
+      "The tempo penalty is documented and monitoring and circuit-breakers are available."
     ],
-    "clusterIds": [
-      "TTP-06",
-      "TTP-02",
-      "TTP-07",
-      "OPP-10",
-      "OPP-08",
-      "OPP-09",
-      "OPP-03",
-      "OPP-15",
-      "OPP-07",
-      "FTP-10",
-      "FTP-02",
-      "FTP-03",
-      "FTP-05",
-      "FTP-09",
-      "FTP-13"
+    "conditionsFavoringB": [
+      "Outputs affect targeting, safety, rights, or public legitimacy.",
+      "Provenance, data quality, failure modes, or transfer remain uncertain."
     ],
-    "confidence": "high",
-    "description": "The batch repeatedly frames AI and automation as necessary to compete at adversary tempo, generate content, summarize media, code tools, and lower capability costs. At the same time, several items warn that AI/ML outputs are brittle, misleading, over-abstracted, or unable to replace contextual human judgment, especially in noisy social or security environments. This grouping consolidates 3 related batch-level candidate tensions. It appears across: Technologies / Tools / Platforms, Opportunities / Recommended Actions, Future Trends / Predictions.",
-    "evidenceStrength": "high",
-    "name": "AI speed and scale vs human judgment and reliability",
-    "poleAAssumption": "Information competition is moving too fast and at too large a scale for manual processes; AI-enabled generation, summarization, software development, model distillation, and rapid response are required to close operational gaps.",
-    "poleALabel": "Automate to match tempo and scale",
-    "poleBAssumption": "AI and ML are useful aids but cannot reliably infer meaning, predict rare human behavior, or manage complex operational context without human validation, simpler architectures, and governance.",
-    "poleBLabel": "Keep humans central to reliability and context",
-    "tensionId": "TD-001",
-    "tensionLevel": "between_clusters"
-  },
-  {
-    "categoryIds": [
-      "CAT-9ACE5E33E3E9B1A7",
-      "CAT-6B9656F5CB18167A",
-      "CAT-96588CC421196A9A"
+    "definition": "How far should organizations automate analysis, content, targeting, and decisions when increased tempo may also introduce brittleness, opacity, cascading error, and loss of contextual control?",
+    "evidenceAssessment": "Broad and direct; some pole-B evidence also concerns adoption discipline.",
+    "falseDichotomyCaveat": "Automation can be tiered by task and consequence, with human-on-loop or human-in-loop controls.",
+    "limitations": [
+      "Use cases have materially different failure costs.",
+      "The corpus does not establish a universal automation threshold."
     ],
-    "clusterIds": [
-      "KCFT-23",
-      "KCFT-13",
-      "KCFT-29",
-      "KCFT-07",
-      "KCFT-05",
-      "KCFT-12",
-      "ORG-ACT-01",
-      "ORG-ACT-02",
-      "ORG-ACT-03",
-      "ORG-ACT-14",
-      "CRM-02",
+    "name": "AI-Enabled Operational Tempo and Scale vs Reliable Human Control",
+    "neighborDistinctions": [
+      {
+        "distinction": "Concerns epistemic work allocation rather than automated operational control.",
+        "tensionId": "CT-002"
+      },
+      {
+        "distinction": "Concerns procedural tempo bounded by legitimacy rather than control of automation.",
+        "tensionId": "CT-019"
+      }
+    ],
+    "poleAAssumption": "Volume and latency exceed unaided capacity, and bounded automation can be monitored, reversed, and contained.",
+    "poleALabel": "Automate to increase tempo, scale, and responsiveness",
+    "poleBAssumption": "Ambiguous social meaning, opaque models, contaminated data, or consequential decisions require accountable validation.",
+    "poleBLabel": "Retain validation, explainability, and human control",
+    "poleBalance": {
+      "bothPolesDirectlySupported": true,
+      "poleAAnalyticalWeight": 40.0,
+      "poleAItemCount": 40,
+      "poleAShare": 0.555556,
+      "poleBAnalyticalWeight": 32.0,
+      "poleBItemCount": 32,
+      "poleBShare": 0.444444,
+      "sharedAcrossPolesItemCount": 0,
+      "totalAnalyticalWeight": 72.0
+    },
+    "support": {
+      "broaderTraceableReach": {
+        "categoryBreadth": 5,
+        "clusterCount": 25,
+        "concentration": {
+          "effectiveContentUnitCount": 17.165563,
+          "topFiveContentUnitShare": 0.430556,
+          "topOneContentUnitShare": 0.138889,
+          "topTwoContentUnitShare": 0.236111
+        },
+        "contentUnitCount": 32,
+        "derivedItemCount": 0,
+        "familyCount": 20,
+        "inheritedPublicReleaseCount": 0,
+        "itemCount": 72,
+        "publicReleaseCount": 32,
+        "secondaryOrDerivedClusterCount": 0,
+        "secondaryOrDerivedFamilyCount": 0
+      },
+      "interpretation": "Corpus support reflects recurrence and breadth within this practitioner discourse corpus. It does not indicate scientific validity, consensus, importance, prevalence, or real-world effect size.",
+      "limitations": [
+        "Use cases have materially different failure costs.",
+        "The corpus does not establish a universal automation threshold."
+      ],
+      "primarySupport": {
+        "categoryBreadth": 5,
+        "concentration": {
+          "effectiveContentUnitCount": 17.165563,
+          "topFiveContentUnitShare": 0.430556,
+          "topOneContentUnitShare": 0.138889,
+          "topTwoContentUnitShare": 0.236111
+        },
+        "itemCount": 72,
+        "primaryClusterCount": 25,
+        "primaryContentUnitCount": 32,
+        "primaryFamilyCount": 20,
+        "share": 1.0
+      }
+    },
+    "supportingClusterIds": [
       "CRB-03",
-      "CRM-04",
-      "CRB-02",
-      "CRM-08",
-      "CRM-10"
-    ],
-    "confidence": "high",
-    "description": "Several items emphasize doctrine, convergence, synchronized messaging, unified planning, and whole-of-government or coalition coordination. Others highlight distributed, attritable, modular systems, frontline laboratories, cheap dispersed emitters, and societal mobilization. The unresolved tradeoff is whether information and multi-domain competition should be optimized through centralized alignment and governance or through decentralized experimentation and local adaptation under contested conditions. This grouping consolidates 3 related batch-level candidate tensions. It appears across: Key Concepts / Frameworks / Theories, Organizations / Actors / Communities, Challenges / Risks / Barriers.",
-    "evidenceStrength": "high",
-    "name": "Centralized integration vs distributed adaptation",
-    "poleAAssumption": "Information power requires coordinated doctrine, integrated messages, aligned actors, synchronized activities, and cross-domain convergence to prevent stovepipes and create coherent effects.",
-    "poleALabel": "Doctrine-led convergence and alignment",
-    "poleBAssumption": "Survivability and tempo in contested environments depend on cheap, modular, distributed, locally assembled capabilities and society-wide adaptation that cannot wait for centralized control.",
-    "poleBLabel": "Distributed modular resilience and local improvisation",
-    "tensionId": "TD-002",
-    "tensionLevel": "between_clusters"
-  },
-  {
-    "categoryIds": [
-      "CAT-0800ED7E6EC3DE0B",
-      "CAT-E7C7BCBA9D42BBC1"
-    ],
-    "clusterIds": [
-      "TTP-06",
-      "TTP-02",
-      "TTP-13",
-      "TTP-05",
-      "TTP-12",
-      "TTP-01",
-      "OPP-08",
-      "OPP-14",
-      "OPP-10",
-      "OPP-01",
-      "OPP-02",
-      "OPP-11"
-    ],
-    "confidence": "high",
-    "description": "AI, streaming analytics, and automated decision systems are framed as essential for speed and scale in future competition, but the batch also implies that machine-speed systems need explainability, data integrity, and engineered pauses to prevent opaque or cascading failures. This grouping consolidates 3 related batch-level candidate tensions. It appears across: Technologies / Tools / Platforms, Opportunities / Recommended Actions.",
-    "evidenceStrength": "medium",
-    "name": "Machine-Speed Decision Advantage vs Deliberate Control",
-    "poleAAssumption": "Strategic advantage depends on AI-enabled prediction, streaming analytics, sensor-to-shooter compression, and decision support that can operate faster than human cognition.",
-    "poleALabel": "Accelerate to machine tempo",
-    "poleBAssumption": "AI-enabled speed is dangerous without transparent frameworks, trustworthy data inputs, human-understandable outputs, and circuit-breaker-like mechanisms for reorientation under volatility.",
-    "poleBLabel": "Govern, explain, and brake automation",
-    "tensionId": "TD-003",
-    "tensionLevel": "between_clusters"
-  },
-  {
-    "categoryIds": [
-      "CAT-BCE660BDEB8D30BC"
-    ],
-    "clusterIds": [
-      "KE-03",
-      "KE-06",
-      "KE-10",
-      "KE-07",
-      "KE-04",
-      "KE-14",
-      "KE-11"
-    ],
-    "confidence": "high",
-    "description": "The batch contains a clear debate over where counter-influence attention should be concentrated. Some items frame Russian, Chinese, Taliban, ISIS, and other external actors as primary information threats, while others argue that domestic disinformation and homegrown extremism can produce larger institutional legitimacy effects than foreign operations. This grouping consolidates 2 related batch-level candidate tensions. It appears across: Key Events / Historical Examples.",
-    "evidenceStrength": "low",
-    "name": "Foreign influence threat focus vs domestic epistemic vulnerability",
-    "poleAAssumption": "Information operations are chiefly instruments of hostile states, proxies, or transnational extremist movements seeking to weaken democracies and project power.",
-    "poleALabel": "Foreign adversaries as the primary information threat",
-    "poleBAssumption": "The most consequential epistemic damage may come from domestic political actors, homegrown extremism, and internal identity fractures that foreign actors can exploit but do not necessarily control.",
-    "poleBLabel": "Domestic actors and internal fragmentation as equal or greater threats",
-    "tensionId": "TD-004",
-    "tensionLevel": "corpus_level_candidate"
-  },
-  {
-    "categoryIds": [
-      "CAT-96588CC421196A9A",
-      "CAT-0800ED7E6EC3DE0B"
-    ],
-    "clusterIds": [
-      "CRM-05",
       "CRB-04",
       "CRB-06",
+      "CRM-03",
       "CRM-04",
-      "CRB-03",
-      "TTP-06",
+      "CRM-05",
+      "FTP-02",
+      "FTP-10",
+      "KCFT-21",
+      "OPP-01",
+      "OPP-02",
+      "OPP-04",
+      "OPP-05",
+      "OPP-06",
+      "OPP-08",
+      "OPP-09",
+      "OPP-10",
+      "OPP-11",
+      "OPP-14",
       "TTP-02",
-      "TTP-01"
+      "TTP-05",
+      "TTP-06",
+      "TTP-07",
+      "TTP-12",
+      "TTP-13"
     ],
-    "confidence": "high",
-    "description": "The batch frames AI as necessary to close tempo, scale, and human-capability gaps in influence and cognitive security, while also presenting current AI systems as unreliable, opaque, unsafe, and data-exposing. The strategic question is how fast institutions should adopt AI-enabled influence and decision-support tools when the same tools can hallucinate, leak sensitive context, fail under abstraction, or be driven by unsafe market incentives. This grouping consolidates 2 related batch-level candidate tensions. It appears across: Challenges / Risks / Barriers, Technologies / Tools / Platforms.",
-    "evidenceStrength": "medium",
-    "name": "AI acceleration versus AI brittleness and exposure",
-    "poleAAssumption": "Adversary tempo and AI-enabled manipulation require rapid adoption of AI for message generation, analytic support, and AI-on-AI defense; human-only workflows will be too slow or outmatched.",
-    "poleALabel": "Accelerate AI-enabled influence and defense",
-    "poleBAssumption": "Operational AI must be limited, locally controlled, independently evaluated, and paired with deterministic processes because unreliable or exposed systems can create mission, credibility, and security failures.",
-    "poleBLabel": "Constrain, verify, and simplify AI use",
-    "tensionId": "TD-005",
-    "tensionLevel": "between_clusters"
+    "supportingFamilyIds": [
+      "CRB-F01",
+      "CRB-F02",
+      "CRB-F03",
+      "CRB-F04",
+      "CRB-F05",
+      "FTP-F01",
+      "FTP-F03",
+      "KCF-F01",
+      "OPP-F01",
+      "OPP-F02",
+      "OPP-F03",
+      "OPP-F04",
+      "OPP-F06",
+      "OPP-F07",
+      "OPP-F08",
+      "TTP-F01",
+      "TTP-F02",
+      "TTP-F03",
+      "TTP-F05",
+      "TTP-F06"
+    ],
+    "tensionId": "CT-001",
+    "tensionType": "operational_tradeoff"
   },
   {
-    "categoryIds": [
-      "CAT-BCE660BDEB8D30BC",
-      "CAT-DA4674EEAB83CDA9"
+    "conditionsFavoringA": [
+      "The task is well specified, data are sufficient, and outputs can be benchmarked.",
+      "The primary bottleneck is ingestion, counting, correlation, or triage."
     ],
-    "clusterIds": [
+    "conditionsFavoringB": [
+      "The problem depends on local language, history, tacit knowledge, intent, or contested causality.",
+      "Errors arise from the wrong question or concept rather than insufficient processing volume."
+    ],
+    "definition": "Can computational throughput substitute for specialist knowledge, language, intuition, social science, and strategic concepts, or does technology create value only when subordinated to trained human interpretation?",
+    "evidenceAssessment": "Direct evidence spans infrastructure, tradecraft, workforce, and concepts.",
+    "falseDichotomyCaveat": "Machines can handle scale while people frame, interpret, and challenge the analysis.",
+    "limitations": [
+      "The corpus does not quantify comparative performance by task."
+    ],
+    "name": "Computational Analytic Scale vs Human Tradecraft and Conceptual Primacy",
+    "neighborDistinctions": [
+      {
+        "distinction": "Concerns epistemic work allocation rather than automated operational control.",
+        "tensionId": "CT-001"
+      },
+      {
+        "distinction": "Concerns division of analytic labor rather than the validity of behavioral standardization.",
+        "tensionId": "CT-016"
+      }
+    ],
+    "poleAAssumption": "Large, repetitive, multilingual, or high-velocity data contain patterns that computation can surface consistently.",
+    "poleALabel": "Scale sensemaking through computation and automation",
+    "poleBAssumption": "Intent, culture, rare events, strategy, and ambiguity require situated concepts and expertise.",
+    "poleBLabel": "Keep expertise, concepts, and contextual judgment decisive",
+    "poleBalance": {
+      "bothPolesDirectlySupported": true,
+      "poleAAnalyticalWeight": 17.0,
+      "poleAItemCount": 17,
+      "poleAShare": 0.566667,
+      "poleBAnalyticalWeight": 13.0,
+      "poleBItemCount": 13,
+      "poleBShare": 0.433333,
+      "sharedAcrossPolesItemCount": 0,
+      "totalAnalyticalWeight": 30.0
+    },
+    "support": {
+      "broaderTraceableReach": {
+        "categoryBreadth": 4,
+        "clusterCount": 17,
+        "concentration": {
+          "effectiveContentUnitCount": 12.5,
+          "topFiveContentUnitShare": 0.533333,
+          "topOneContentUnitShare": 0.133333,
+          "topTwoContentUnitShare": 0.233333
+        },
+        "contentUnitCount": 17,
+        "derivedItemCount": 0,
+        "familyCount": 11,
+        "inheritedPublicReleaseCount": 0,
+        "itemCount": 30,
+        "publicReleaseCount": 17,
+        "secondaryOrDerivedClusterCount": 0,
+        "secondaryOrDerivedFamilyCount": 0
+      },
+      "interpretation": "Corpus support reflects recurrence and breadth within this practitioner discourse corpus. It does not indicate scientific validity, consensus, importance, prevalence, or real-world effect size.",
+      "limitations": [
+        "The corpus does not quantify comparative performance by task."
+      ],
+      "primarySupport": {
+        "categoryBreadth": 4,
+        "concentration": {
+          "effectiveContentUnitCount": 12.5,
+          "topFiveContentUnitShare": 0.533333,
+          "topOneContentUnitShare": 0.133333,
+          "topTwoContentUnitShare": 0.233333
+        },
+        "itemCount": 30,
+        "primaryClusterCount": 17,
+        "primaryContentUnitCount": 17,
+        "primaryFamilyCount": 11,
+        "share": 1.0
+      }
+    },
+    "supportingClusterIds": [
+      "CRB-01",
+      "CRB-06",
+      "FTP-07",
+      "FTP-10",
+      "KCFT-01",
+      "KCFT-10",
+      "KCFT-11",
+      "KCFT-13",
+      "KCFT-14",
+      "KCFT-21",
+      "KCFT-28",
+      "OPP-02",
+      "OPP-03",
+      "OPP-07",
+      "OPP-08",
+      "OPP-10",
+      "OPP-11"
+    ],
+    "supportingFamilyIds": [
+      "CRB-F04",
+      "FTP-F03",
+      "FTP-F04",
+      "KCF-F01",
+      "KCF-F04",
+      "KCF-F05",
+      "KCF-F07",
+      "OPP-F01",
+      "OPP-F02",
+      "OPP-F05",
+      "OPP-F06"
+    ],
+    "tensionId": "CT-002",
+    "tensionType": "capability_balance"
+  },
+  {
+    "conditionsFavoringA": [
+      "Provenance, evaluation, and calibrated uncertainty are reliable.",
+      "The capability augments cross-source verification rather than becoming unverified authority."
+    ],
+    "conditionsFavoringB": [
+      "Generation costs fall faster than verification or adversaries adapt to detection.",
+      "Low-quality volume raises the cost of all sensemaking."
+    ],
+    "definition": "The same technology can improve sensing and analysis while lowering the cost of synthetic content, identity spoofing, manipulation, and ambient uncertainty.",
+    "evidenceAssessment": "Direct capability and degradation evidence; one substantive bridge shares a unit weight.",
+    "falseDichotomyCaveat": "Both poles can intensify together; analytic gains do not cancel epistemic degradation.",
+    "limitations": [
+      "The corpus provides no comparative offense-defense performance measure."
+    ],
+    "name": "AI as Analytic Capability vs Epistemic Degradation",
+    "neighborDistinctions": [
+      {
+        "distinction": "Concerns simultaneous environmental effects rather than an organization's automation choice.",
+        "tensionId": "CT-001"
+      },
+      {
+        "distinction": "Concerns technology-mediated degradation rather than campaign credibility and deception logic.",
+        "tensionId": "CT-014"
+      }
+    ],
+    "poleAAssumption": "Machine processing can detect artifacts, correlate sources, filter noise, and expose coordination at scale.",
+    "poleALabel": "Use AI to detect, filter, verify, and understand",
+    "poleBAssumption": "Cheap generation, spoofed identity, automated persuasion, and poisoned environments can outpace verification.",
+    "poleBLabel": "Manage AI-driven deception, noise, and uncertainty",
+    "poleBalance": {
+      "bothPolesDirectlySupported": true,
+      "poleAAnalyticalWeight": 12.5,
+      "poleAItemCount": 13,
+      "poleAShare": 0.446429,
+      "poleBAnalyticalWeight": 15.5,
+      "poleBItemCount": 16,
+      "poleBShare": 0.553571,
+      "sharedAcrossPolesItemCount": 1,
+      "totalAnalyticalWeight": 28.0
+    },
+    "support": {
+      "broaderTraceableReach": {
+        "categoryBreadth": 3,
+        "clusterCount": 7,
+        "concentration": {
+          "effectiveContentUnitCount": 11.878788,
+          "topFiveContentUnitShare": 0.5,
+          "topOneContentUnitShare": 0.142857,
+          "topTwoContentUnitShare": 0.285714
+        },
+        "contentUnitCount": 15,
+        "derivedItemCount": 0,
+        "familyCount": 6,
+        "inheritedPublicReleaseCount": 0,
+        "itemCount": 28,
+        "publicReleaseCount": 15,
+        "secondaryOrDerivedClusterCount": 0,
+        "secondaryOrDerivedFamilyCount": 0
+      },
+      "interpretation": "Corpus support reflects recurrence and breadth within this practitioner discourse corpus. It does not indicate scientific validity, consensus, importance, prevalence, or real-world effect size.",
+      "limitations": [
+        "The corpus provides no comparative offense-defense performance measure."
+      ],
+      "primarySupport": {
+        "categoryBreadth": 3,
+        "concentration": {
+          "effectiveContentUnitCount": 11.878788,
+          "topFiveContentUnitShare": 0.5,
+          "topOneContentUnitShare": 0.142857,
+          "topTwoContentUnitShare": 0.285714
+        },
+        "itemCount": 28,
+        "primaryClusterCount": 7,
+        "primaryContentUnitCount": 15,
+        "primaryFamilyCount": 6,
+        "share": 1.0
+      }
+    },
+    "supportingClusterIds": [
+      "FTP-02",
+      "FTP-05",
+      "OPP-08",
+      "TTP-02",
+      "TTP-03",
+      "TTP-06",
+      "TTP-11"
+    ],
+    "supportingFamilyIds": [
+      "FTP-F01",
+      "FTP-F02",
+      "OPP-F06",
+      "TTP-F01",
+      "TTP-F02",
+      "TTP-F03"
+    ],
+    "tensionId": "CT-003",
+    "tensionType": "dual_use_paradox"
+  },
+  {
+    "conditionsFavoringA": [
+      "Participation is informed and revocable, with bounded purpose, retention, and independent review.",
+      "Use is proportionate, privacy-preserving, and does not exploit vulnerable people."
+    ],
+    "conditionsFavoringB": [
+      "Collection is covert or identity and biometric data are repurposed or exposed.",
+      "The persuader is hidden, identity is fabricated, vulnerability is exploited, or refusal is unavailable."
+    ],
+    "definition": "How far should actors use AI, identity data, biometrics, XR, and microtargeting when those same capabilities increase surveillance, covert manipulation, identity exposure, and trust risks?",
+    "evidenceAssessment": "Pole A is specific; pole B combines privacy law, research ethics, harm, authenticity, and detection, with a same-pole duplicate half-weighted.",
+    "falseDichotomyCaveat": "Data minimization, disclosure, consent, audit, and explicit red lines can bound some forms of personalization.",
+    "limitations": [
+      "The safeguard mechanisms represented in pole B are not interchangeable.",
+      "The corpus establishes no sufficient safeguard threshold."
+    ],
+    "name": "Personalized and Immersive Influence vs Privacy, Authenticity, and Consent Safeguards",
+    "neighborDistinctions": [
+      {
+        "distinction": "Concerns intimate targeting and autonomy rather than systemic AI dual use.",
+        "tensionId": "CT-003"
+      },
+      {
+        "distinction": "Concerns data and manipulation safeguards regardless of actor rather than democratic authorization of deception.",
+        "tensionId": "CT-011"
+      }
+    ],
+    "poleAAssumption": "Fine-grained data can improve relevance or protection when their use is authorized, bounded, and testable.",
+    "poleALabel": "Exploit personalization, biometrics, and immersive systems for tailored effects",
+    "poleBAssumption": "Intimate data, covert adaptation, and synthetic identity create autonomy and trust harms that ordinary notice cannot control.",
+    "poleBLabel": "Protect privacy, consent, authenticity, and autonomy",
+    "poleBalance": {
+      "bothPolesDirectlySupported": true,
+      "poleAAnalyticalWeight": 9.0,
+      "poleAItemCount": 9,
+      "poleAShare": 0.5,
+      "poleBAnalyticalWeight": 9.0,
+      "poleBItemCount": 9,
+      "poleBShare": 0.5,
+      "sharedAcrossPolesItemCount": 0,
+      "totalAnalyticalWeight": 18.0
+    },
+    "support": {
+      "broaderTraceableReach": {
+        "categoryBreadth": 4,
+        "clusterCount": 11,
+        "concentration": {
+          "effectiveContentUnitCount": 4.764706,
+          "topFiveContentUnitShare": 0.833333,
+          "topOneContentUnitShare": 0.388889,
+          "topTwoContentUnitShare": 0.5
+        },
+        "contentUnitCount": 8,
+        "derivedItemCount": 0,
+        "familyCount": 8,
+        "inheritedPublicReleaseCount": 0,
+        "itemCount": 18,
+        "publicReleaseCount": 8,
+        "secondaryOrDerivedClusterCount": 0,
+        "secondaryOrDerivedFamilyCount": 0
+      },
+      "interpretation": "Corpus support reflects recurrence and breadth within this practitioner discourse corpus. It does not indicate scientific validity, consensus, importance, prevalence, or real-world effect size.",
+      "limitations": [
+        "The safeguard mechanisms represented in pole B are not interchangeable.",
+        "The corpus establishes no sufficient safeguard threshold."
+      ],
+      "primarySupport": {
+        "categoryBreadth": 4,
+        "concentration": {
+          "effectiveContentUnitCount": 4.764706,
+          "topFiveContentUnitShare": 0.833333,
+          "topOneContentUnitShare": 0.388889,
+          "topTwoContentUnitShare": 0.5
+        },
+        "itemCount": 18,
+        "primaryClusterCount": 11,
+        "primaryContentUnitCount": 8,
+        "primaryFamilyCount": 8,
+        "share": 1.0
+      }
+    },
+    "supportingClusterIds": [
+      "CRB-02",
+      "CRB-06",
+      "KCFT-22",
+      "OPP-03",
+      "OPP-07",
+      "OPP-15",
+      "TTP-03",
+      "TTP-05",
+      "TTP-06",
+      "TTP-10",
+      "TTP-11"
+    ],
+    "supportingFamilyIds": [
+      "CRB-F02",
+      "CRB-F04",
+      "KCF-F02",
+      "OPP-F05",
+      "OPP-F06",
+      "TTP-F02",
+      "TTP-F03",
+      "TTP-F04"
+    ],
+    "tensionId": "CT-004",
+    "tensionType": "ethical_governance_dilemma"
+  },
+  {
+    "conditionsFavoringA": [
+      "Cross-theater or cross-agency inconsistency creates enterprise risk.",
+      "Scarce capability, authority, or infrastructure requires prioritization."
+    ],
+    "conditionsFavoringB": [
+      "Local language, relationships, and partner legitimacy determine success.",
+      "Change outruns approval while bounded deviations remain possible."
+    ],
+    "definition": "How should information activity balance enterprise-level coherence with the contextual knowledge, speed, access, and credibility of decentralized operators and partners?",
+    "evidenceAssessment": "Strong and balanced but content-unit concentrated; one genuine bridge shares its unit weight.",
+    "falseDichotomyCaveat": "Central intent and standards can coexist with decentralized execution, feedback, and exceptions.",
+    "limitations": [
+      "Concentration in seven content units is not evidence of broad consensus."
+    ],
+    "name": "Enterprise Coherence vs Local and Partner Adaptation",
+    "neighborDistinctions": [
+      {
+        "distinction": "Concerns allocation of control rather than institutional versus network ownership.",
+        "tensionId": "CT-006"
+      },
+      {
+        "distinction": "Concerns vertical delegation rather than the crisis-to-institution sequence.",
+        "tensionId": "CT-020"
+      }
+    ],
+    "poleAAssumption": "Common intent, doctrine, standards, resources, and authority prevent contradiction, duplication, and drift.",
+    "poleALabel": "Coordinate strategy, standards, authorities, and resources centrally",
+    "poleBAssumption": "Context, access, credibility, and tempo reside locally and require adaptation within intent.",
+    "poleBLabel": "Delegate execution to local units, allies, and partners",
+    "poleBalance": {
+      "bothPolesDirectlySupported": true,
+      "poleAAnalyticalWeight": 10.5,
+      "poleAItemCount": 11,
+      "poleAShare": 0.525,
+      "poleBAnalyticalWeight": 9.5,
+      "poleBItemCount": 10,
+      "poleBShare": 0.475,
+      "sharedAcrossPolesItemCount": 1,
+      "totalAnalyticalWeight": 20.0
+    },
+    "support": {
+      "broaderTraceableReach": {
+        "categoryBreadth": 3,
+        "clusterCount": 13,
+        "concentration": {
+          "effectiveContentUnitCount": 5.882353,
+          "topFiveContentUnitShare": 0.85,
+          "topOneContentUnitShare": 0.25,
+          "topTwoContentUnitShare": 0.45
+        },
+        "contentUnitCount": 7,
+        "derivedItemCount": 0,
+        "familyCount": 9,
+        "inheritedPublicReleaseCount": 0,
+        "itemCount": 20,
+        "publicReleaseCount": 7,
+        "secondaryOrDerivedClusterCount": 0,
+        "secondaryOrDerivedFamilyCount": 0
+      },
+      "interpretation": "Corpus support reflects recurrence and breadth within this practitioner discourse corpus. It does not indicate scientific validity, consensus, importance, prevalence, or real-world effect size.",
+      "limitations": [
+        "Concentration in seven content units is not evidence of broad consensus."
+      ],
+      "primarySupport": {
+        "categoryBreadth": 3,
+        "concentration": {
+          "effectiveContentUnitCount": 5.882353,
+          "topFiveContentUnitShare": 0.85,
+          "topOneContentUnitShare": 0.25,
+          "topTwoContentUnitShare": 0.45
+        },
+        "itemCount": 20,
+        "primaryClusterCount": 13,
+        "primaryContentUnitCount": 7,
+        "primaryFamilyCount": 9,
+        "share": 1.0
+      }
+    },
+    "supportingClusterIds": [
+      "KCFT-01",
+      "KCFT-05",
+      "KCFT-06",
+      "KCFT-07",
+      "KCFT-13",
+      "KCFT-23",
+      "KCFT-29",
+      "KE-02",
+      "KE-04",
+      "KE-05",
+      "KE-07",
+      "KE-12",
+      "OPP-04"
+    ],
+    "supportingFamilyIds": [
+      "KCF-F01",
+      "KCF-F03",
+      "KCF-F05",
+      "KCF-F07",
+      "KCF-F08",
+      "KEH-F02",
+      "KEH-F03",
+      "KEH-F05",
+      "OPP-F03"
+    ],
+    "tensionId": "CT-005",
+    "tensionType": "governance_design_choice"
+  },
+  {
+    "conditionsFavoringA": [
+      "The capability needs classified access, coercive authority, appropriation, command accountability, or security.",
+      "The field lacks minimum doctrine, careers, standards, or a responsible center."
+    ],
+    "conditionsFavoringB": [
+      "Infrastructure and audiences span commercial, civic, allied, academic, and community domains.",
+      "Independent credibility, local access, expertise, and voluntary participation are capability inputs."
+    ],
+    "definition": "Should information power be concentrated in formal institutions with clear authority and resources, or organized through a broader ecosystem whose participants retain separate legitimacy, access, and capabilities?",
+    "evidenceAssessment": "The broadest governance tension; shared half-weights prevent repeated lineage from inflating support.",
+    "falseDichotomyCaveat": "A formal backbone can fund, convene, and set bounds while a network retains distinct authorities and roles.",
+    "limitations": [
+      "Whole-of-society language can conceal unequal power or ambiguous accountability."
+    ],
+    "name": "Formal Institutional Ownership vs Networked Whole-of-Society Capability",
+    "neighborDistinctions": [
+      {
+        "distinction": "Concerns institutional and network ownership rather than enterprise intent and local execution.",
+        "tensionId": "CT-005"
+      },
+      {
+        "distinction": "Concerns the institution-network model rather than the limits imposed by plural mandates.",
+        "tensionId": "CT-007"
+      }
+    ],
+    "poleAAssumption": "Capability decays without an owner able to authorize, fund, professionalize, secure, and sustain it.",
+    "poleALabel": "Build durable state or command ownership",
+    "poleBAssumption": "No owner has all necessary data, access, trust, expertise, and legitimacy, and concentration can crowd them out.",
+    "poleBLabel": "Coordinate distributed public-private, allied, civic, and expert networks",
+    "poleBalance": {
+      "bothPolesDirectlySupported": true,
+      "poleAAnalyticalWeight": 36.0,
+      "poleAItemCount": 36,
+      "poleAShare": 0.493151,
+      "poleBAnalyticalWeight": 37.0,
+      "poleBItemCount": 37,
+      "poleBShare": 0.506849,
+      "sharedAcrossPolesItemCount": 0,
+      "totalAnalyticalWeight": 73.0
+    },
+    "support": {
+      "broaderTraceableReach": {
+        "categoryBreadth": 4,
+        "clusterCount": 23,
+        "concentration": {
+          "effectiveContentUnitCount": 18.698246,
+          "topFiveContentUnitShare": 0.39726,
+          "topOneContentUnitShare": 0.109589,
+          "topTwoContentUnitShare": 0.191781
+        },
+        "contentUnitCount": 28,
+        "derivedItemCount": 0,
+        "familyCount": 15,
+        "inheritedPublicReleaseCount": 0,
+        "itemCount": 73,
+        "publicReleaseCount": 28,
+        "secondaryOrDerivedClusterCount": 0,
+        "secondaryOrDerivedFamilyCount": 0
+      },
+      "interpretation": "Corpus support reflects recurrence and breadth within this practitioner discourse corpus. It does not indicate scientific validity, consensus, importance, prevalence, or real-world effect size.",
+      "limitations": [
+        "Whole-of-society language can conceal unequal power or ambiguous accountability."
+      ],
+      "primarySupport": {
+        "categoryBreadth": 4,
+        "concentration": {
+          "effectiveContentUnitCount": 18.698246,
+          "topFiveContentUnitShare": 0.39726,
+          "topOneContentUnitShare": 0.109589,
+          "topTwoContentUnitShare": 0.191781
+        },
+        "itemCount": 73,
+        "primaryClusterCount": 23,
+        "primaryContentUnitCount": 28,
+        "primaryFamilyCount": 15,
+        "share": 1.0
+      }
+    },
+    "supportingClusterIds": [
+      "FTP-07",
+      "FTP-09",
+      "FTP-14",
+      "FTP-17",
       "KE-04",
       "KE-05",
       "KE-07",
       "KE-08",
-      "KE-09",
-      "FTP-07",
-      "FTP-06",
-      "FTP-14",
-      "FTP-08",
-      "FTP-13",
-      "FTP-17",
-      "FTP-09"
+      "OPP-01",
+      "OPP-04",
+      "OPP-12",
+      "ORG-ACT-01",
+      "ORG-ACT-02",
+      "ORG-ACT-03",
+      "ORG-ACT-04",
+      "ORG-ACT-05",
+      "ORG-ACT-06",
+      "ORG-ACT-07",
+      "ORG-ACT-08",
+      "ORG-ACT-10",
+      "ORG-ACT-11",
+      "ORG-ACT-12",
+      "ORG-ACT-14"
     ],
-    "confidence": "high",
-    "description": "The batch repeatedly treats information and cognitive security as requiring formal organizations, billets, doctrine, and command structures, but also uses civil-defense, victory-garden, protest, and starfish examples to argue that resilience depends on decentralized actors aligned by purpose rather than directed by hierarchy. The unresolved issue is how much cognitive security should be centralized into formal state capability versus cultivated as distributed societal practice. This grouping consolidates 2 related batch-level candidate tensions. It appears across: Key Events / Historical Examples, Future Trends / Predictions.",
-    "evidenceStrength": "medium",
-    "name": "Institutionalized capability vs distributed whole-of-nation mobilization",
-    "poleAAssumption": "Information power becomes operationally meaningful only when it is resourced, institutionalized, and placed into durable formations or command structures.",
-    "poleALabel": "Build formal information forces and command structures",
-    "poleBAssumption": "Cognitive resilience and influence adaptation are strongest when many actors act voluntarily within their own lanes, without centralized control.",
-    "poleBLabel": "Mobilize decentralized networks around shared purpose",
-    "tensionId": "TD-006",
-    "tensionLevel": "between_clusters"
+    "supportingFamilyIds": [
+      "FTP-F01",
+      "FTP-F04",
+      "FTP-F06",
+      "KEH-F03",
+      "KEH-F05",
+      "KEH-F06",
+      "OPP-F01",
+      "OPP-F03",
+      "ORG-F01",
+      "ORG-F02",
+      "ORG-F03",
+      "ORG-F04",
+      "ORG-F05",
+      "ORG-F06",
+      "ORG-F07"
+    ],
+    "tensionId": "CT-006",
+    "tensionType": "governance_design_choice"
   },
   {
-    "categoryIds": [
-      "CAT-E7C7BCBA9D42BBC1",
-      "CAT-96588CC421196A9A"
+    "conditionsFavoringA": [
+      "An agreed external mission is defeated by contradiction, authority gaps, or duplication.",
+      "Integration is bounded by law and review without subordinating independent institutions."
     ],
-    "clusterIds": [
-      "OPP-08",
-      "OPP-07",
-      "OPP-10",
-      "OPP-11",
-      "OPP-02",
-      "OPP-03",
-      "CRB-06",
-      "CRB-01",
-      "CRM-04",
-      "CRM-11",
-      "CRM-05",
+    "conditionsFavoringB": [
+      "Activity affects domestic audiences, rights, evaluation, journalism, diplomacy, or elections.",
+      "Operational unity would erase legally distinct checks or credibility."
+    ],
+    "definition": "How far should democratic systems integrate information power when agencies, diplomats, legislatures, courts, journalists, firms, and publics have different legal duties and legitimacy constraints?",
+    "evidenceAssessment": "Pole A is direct; pole B mixes direct regulation with indirect actor examples.",
+    "falseDichotomyCaveat": "Integration can mean shared awareness, deconfliction, and common intent rather than centralized command.",
+    "limitations": [
+      "Several actor records support pole B only indirectly.",
+      "Direct evidence is concentrated in two focal categories."
+    ],
+    "name": "Integrated Information Power vs Plural Democratic and Interagency Mandates",
+    "neighborDistinctions": [
+      {
+        "distinction": "Concerns constitutional, professional, and interagency constraints rather than ownership.",
+        "tensionId": "CT-006"
+      },
+      {
+        "distinction": "Concerns mandate distribution rather than campaign-cycle speed and safeguards.",
+        "tensionId": "CT-019"
+      }
+    ],
+    "poleAAssumption": "Fragmentation, ambiguous authority, and unequal resources prevent coherent and timely action.",
+    "poleALabel": "Create stronger integration, authorities, and operational parity",
+    "poleBAssumption": "Independent mandates, oversight, norms, and separation are safeguards rather than mere friction.",
+    "poleBLabel": "Preserve civilian oversight, institutional independence, and heterogeneous mandates",
+    "poleBalance": {
+      "bothPolesDirectlySupported": true,
+      "poleAAnalyticalWeight": 14.0,
+      "poleAItemCount": 14,
+      "poleAShare": 0.482759,
+      "poleBAnalyticalWeight": 15.0,
+      "poleBItemCount": 15,
+      "poleBShare": 0.517241,
+      "sharedAcrossPolesItemCount": 0,
+      "totalAnalyticalWeight": 29.0
+    },
+    "support": {
+      "broaderTraceableReach": {
+        "categoryBreadth": 2,
+        "clusterCount": 9,
+        "concentration": {
+          "effectiveContentUnitCount": 8.165049,
+          "topFiveContentUnitShare": 0.724138,
+          "topOneContentUnitShare": 0.172414,
+          "topTwoContentUnitShare": 0.344828
+        },
+        "contentUnitCount": 11,
+        "derivedItemCount": 0,
+        "familyCount": 7,
+        "inheritedPublicReleaseCount": 0,
+        "itemCount": 29,
+        "publicReleaseCount": 11,
+        "secondaryOrDerivedClusterCount": 0,
+        "secondaryOrDerivedFamilyCount": 0
+      },
+      "interpretation": "Corpus support reflects recurrence and breadth within this practitioner discourse corpus. It does not indicate scientific validity, consensus, importance, prevalence, or real-world effect size.",
+      "limitations": [
+        "Several actor records support pole B only indirectly.",
+        "Direct evidence is concentrated in two focal categories."
+      ],
+      "primarySupport": {
+        "categoryBreadth": 2,
+        "concentration": {
+          "effectiveContentUnitCount": 8.165049,
+          "topFiveContentUnitShare": 0.724138,
+          "topOneContentUnitShare": 0.172414,
+          "topTwoContentUnitShare": 0.344828
+        },
+        "itemCount": 29,
+        "primaryClusterCount": 9,
+        "primaryContentUnitCount": 11,
+        "primaryFamilyCount": 7,
+        "share": 1.0
+      }
+    },
+    "supportingClusterIds": [
       "CRB-02",
-      "CRB-03"
+      "CRB-03",
+      "CRM-02",
+      "CRM-10",
+      "ORG-ACT-01",
+      "ORG-ACT-02",
+      "ORG-ACT-03",
+      "ORG-ACT-04",
+      "ORG-ACT-10"
     ],
-    "confidence": "high",
-    "description": "The batch presents AI, OSINT stacks, entropy metrics, and automated assessment as ways to close sensemaking gaps at scale. At the same time, multiple items insist that people, tradecraft, intuition, language skills, structured reasoning, and social science remain decisive. The debate is not whether technology matters, but whether scale can substitute for judgment or must remain subordinate to trained human interpretation. This grouping consolidates 2 related batch-level candidate tensions. It appears across: Opportunities / Recommended Actions, Challenges / Risks / Barriers.",
-    "evidenceStrength": "medium",
-    "name": "AI-enabled analytic scale vs human tradecraft and judgment",
-    "poleAAssumption": "Complex information environments require computational infrastructure, AI, OSINT correlation, automated social media assessment, and quantitative metrics to produce timely, actionable understanding.",
-    "poleALabel": "Scale sensemaking through tools and automation",
-    "poleBAssumption": "Tools only create advantage when skilled humans can operate, interpret, question, and contextualize them through training, intuition, critical thinking, and interdisciplinary knowledge.",
-    "poleBLabel": "Keep humans and tradecraft decisive",
-    "tensionId": "TD-007",
-    "tensionLevel": "between_clusters"
+    "supportingFamilyIds": [
+      "CRB-F01",
+      "CRB-F02",
+      "CRB-F03",
+      "CRB-F07",
+      "ORG-F01",
+      "ORG-F02",
+      "ORG-F06"
+    ],
+    "tensionId": "CT-007",
+    "tensionType": "governance_constraint"
   },
   {
-    "categoryIds": [
-      "CAT-0800ED7E6EC3DE0B"
+    "conditionsFavoringA": [
+      "Tasking, financing, infrastructure, or coordination ties activity to foreign strategy.",
+      "Cross-border harms require national-security authorities."
     ],
-    "clusterIds": [
-      "TTP-06",
-      "TTP-02",
-      "TTP-11",
-      "TTP-03",
-      "TTP-04",
-      "TTP-09"
+    "conditionsFavoringB": [
+      "Domestic actors originate or amplify activity without decisive foreign direction.",
+      "Internal fractures explain impact better than foreign reach."
     ],
-    "confidence": "high",
-    "description": "AI is presented both as the necessary tool for keeping pace with high-volume, high-velocity information environments and as a driver of synthetic deception, trust erosion, and automated persuasion that worsens the very environment it helps analyze. This grouping consolidates 2 related batch-level candidate tensions. It appears across: Technologies / Tools / Platforms.",
-    "evidenceStrength": "low",
-    "name": "AI as analytic overmatch vs AI as reality-degradation engine",
-    "poleAAssumption": "AI can reduce manpower burdens, filter noise, detect narratives, verify incidents, support acquisition, improve wargaming, and turn data streams into actionable insight at operational tempo.",
-    "poleALabel": "AI accelerates sensing, analysis, and decision cycles",
-    "poleBAssumption": "AI lowers the cost of creating convincing synthetic content, curated influence, identity spoofing, and ambient uncertainty, making trust and authenticity harder to sustain.",
-    "poleBLabel": "AI scales deception, manipulation, and uncertainty",
-    "tensionId": "TD-008",
-    "tensionLevel": "within_cluster"
+    "definition": "Where should counter-influence attention concentrate when foreign actors exploit domestic conditions but consequential epistemic damage may also originate internally?",
+    "evidenceAssessment": "Balanced and case-grounded, though all evidence is coded as historical events.",
+    "falseDichotomyCaveat": "Foreign actors exploit domestic vulnerabilities and domestic actors reuse foreign narratives; resources should follow mechanism and harm.",
+    "limitations": [
+      "Historical cases do not establish the current relative magnitude of foreign and domestic threats."
+    ],
+    "name": "Foreign Threat Focus vs Domestic Epistemic Vulnerability",
+    "neighborDistinctions": [
+      {
+        "distinction": "Concerns threat locus rather than restriction versus resilience.",
+        "tensionId": "CT-010"
+      },
+      {
+        "distinction": "Concerns foreign versus domestic priority rather than supply-side versus demand-side intervention.",
+        "tensionId": "CT-017"
+      }
+    ],
+    "poleAAssumption": "Foreign services, proxies, and extremists show intent and coordination warranting specialized resources.",
+    "poleALabel": "Prioritize hostile states, proxies, and transnational extremists",
+    "poleBAssumption": "Domestic polarization, distrust, identity conflict, and homegrown actors can cause equal or greater harm and enable foreign efforts.",
+    "poleBLabel": "Prioritize domestic actors, internal fractures, and homegrown vulnerability",
+    "poleBalance": {
+      "bothPolesDirectlySupported": true,
+      "poleAAnalyticalWeight": 12.0,
+      "poleAItemCount": 12,
+      "poleAShare": 0.521739,
+      "poleBAnalyticalWeight": 11.0,
+      "poleBItemCount": 11,
+      "poleBShare": 0.478261,
+      "sharedAcrossPolesItemCount": 0,
+      "totalAnalyticalWeight": 23.0
+    },
+    "support": {
+      "broaderTraceableReach": {
+        "categoryBreadth": 1,
+        "clusterCount": 8,
+        "concentration": {
+          "effectiveContentUnitCount": 8.396825,
+          "topFiveContentUnitShare": 0.695652,
+          "topOneContentUnitShare": 0.173913,
+          "topTwoContentUnitShare": 0.347826
+        },
+        "contentUnitCount": 11,
+        "derivedItemCount": 0,
+        "familyCount": 4,
+        "inheritedPublicReleaseCount": 0,
+        "itemCount": 23,
+        "publicReleaseCount": 11,
+        "secondaryOrDerivedClusterCount": 0,
+        "secondaryOrDerivedFamilyCount": 0
+      },
+      "interpretation": "Corpus support reflects recurrence and breadth within this practitioner discourse corpus. It does not indicate scientific validity, consensus, importance, prevalence, or real-world effect size.",
+      "limitations": [
+        "Historical cases do not establish the current relative magnitude of foreign and domestic threats."
+      ],
+      "primarySupport": {
+        "categoryBreadth": 1,
+        "concentration": {
+          "effectiveContentUnitCount": 8.396825,
+          "topFiveContentUnitShare": 0.695652,
+          "topOneContentUnitShare": 0.173913,
+          "topTwoContentUnitShare": 0.347826
+        },
+        "itemCount": 23,
+        "primaryClusterCount": 8,
+        "primaryContentUnitCount": 11,
+        "primaryFamilyCount": 4,
+        "share": 1.0
+      }
+    },
+    "supportingClusterIds": [
+      "KE-03",
+      "KE-04",
+      "KE-06",
+      "KE-07",
+      "KE-09",
+      "KE-10",
+      "KE-12",
+      "KE-13"
+    ],
+    "supportingFamilyIds": [
+      "KEH-F01",
+      "KEH-F03",
+      "KEH-F04",
+      "KEH-F05"
+    ],
+    "tensionId": "CT-008",
+    "tensionType": "prioritization_tension"
   },
   {
-    "categoryIds": [
-      "CAT-9ACE5E33E3E9B1A7",
-      "CAT-DA4674EEAB83CDA9"
+    "conditionsFavoringA": [
+      "The phenomenon recurs, the data process is stable, and out-of-sample performance is monitored.",
+      "The method uses probabilistic ranges and challengeable assumptions."
     ],
-    "clusterIds": [
-      "KCFT-11",
-      "KCFT-14",
-      "KCFT-01",
-      "KCFT-28",
-      "KCFT-13",
-      "KCFT-10",
+    "conditionsFavoringB": [
+      "Structural change occurs or actors adapt to the model or intervention.",
+      "Tail risks, cascades, or missing variables dominate averages."
+    ],
+    "definition": "How confidently can organizations anticipate narratives, effects, and technological change in complex information environments without overcommitting to brittle models?",
+    "evidenceAssessment": "Symmetric direct evidence with wide content-unit coverage.",
+    "falseDichotomyCaveat": "Models can support ranges, indicators, and updating without making deterministic claims.",
+    "limitations": [
+      "The corpus provides no forecast-skill comparison by method or horizon."
+    ],
+    "name": "Predictive Sensemaking Confidence vs Complex-System Uncertainty",
+    "neighborDistinctions": [
+      {
+        "distinction": "Concerns prediction confidence rather than capability-development method.",
+        "tensionId": "CT-015"
+      },
+      {
+        "distinction": "Concerns system uncertainty rather than behavioral-construct validity.",
+        "tensionId": "CT-016"
+      }
+    ],
+    "poleAAssumption": "Recurring patterns, quality data, validated models, and explicit uncertainty can improve anticipation.",
+    "poleALabel": "Use data, models, and standard methods to forecast and assess",
+    "poleBAssumption": "Adaptive actors, nonlinear feedback, regime change, sparse data, and model effects make precision fragile.",
+    "poleBLabel": "Assume emergence, nonlinearity, and incomplete knowledge",
+    "poleBalance": {
+      "bothPolesDirectlySupported": true,
+      "poleAAnalyticalWeight": 8.0,
+      "poleAItemCount": 8,
+      "poleAShare": 0.5,
+      "poleBAnalyticalWeight": 8.0,
+      "poleBItemCount": 8,
+      "poleBShare": 0.5,
+      "sharedAcrossPolesItemCount": 0,
+      "totalAnalyticalWeight": 16.0
+    },
+    "support": {
+      "broaderTraceableReach": {
+        "categoryBreadth": 3,
+        "clusterCount": 11,
+        "concentration": {
+          "effectiveContentUnitCount": 11.636364,
+          "topFiveContentUnitShare": 0.5,
+          "topOneContentUnitShare": 0.125,
+          "topTwoContentUnitShare": 0.25
+        },
+        "contentUnitCount": 13,
+        "derivedItemCount": 0,
+        "familyCount": 10,
+        "inheritedPublicReleaseCount": 0,
+        "itemCount": 16,
+        "publicReleaseCount": 13,
+        "secondaryOrDerivedClusterCount": 0,
+        "secondaryOrDerivedFamilyCount": 0
+      },
+      "interpretation": "Corpus support reflects recurrence and breadth within this practitioner discourse corpus. It does not indicate scientific validity, consensus, importance, prevalence, or real-world effect size.",
+      "limitations": [
+        "The corpus provides no forecast-skill comparison by method or horizon."
+      ],
+      "primarySupport": {
+        "categoryBreadth": 3,
+        "concentration": {
+          "effectiveContentUnitCount": 11.636364,
+          "topFiveContentUnitShare": 0.5,
+          "topOneContentUnitShare": 0.125,
+          "topTwoContentUnitShare": 0.25
+        },
+        "itemCount": 16,
+        "primaryClusterCount": 11,
+        "primaryContentUnitCount": 13,
+        "primaryFamilyCount": 10,
+        "share": 1.0
+      }
+    },
+    "supportingClusterIds": [
+      "FTP-01",
       "FTP-02",
       "FTP-03",
-      "KCFT-22",
       "FTP-07",
-      "FTP-05"
-    ],
-    "confidence": "high",
-    "description": "AI, deepfakes, and automation are framed as force multipliers that alter the cost, speed, and scale of influence competition, but other items caution against technological determinism by emphasizing ends, operational concepts, classical theory, specialist knowledge, and people as the decisive center of gravity. This grouping consolidates 2 related batch-level candidate tensions. It appears across: Key Concepts / Frameworks / Theories, Future Trends / Predictions.",
-    "evidenceStrength": "medium",
-    "name": "AI-enabled scale vs. human and conceptual primacy",
-    "poleAAssumption": "Competitive advantage increasingly comes from using AI and synthetic systems to accelerate production, targeting, detection, and cross-domain cognitive operations at machine scale.",
-    "poleALabel": "Scale through AI and automation",
-    "poleBAssumption": "Technology is only a means; durable advantage depends on clear ends, superior operational concepts, human capital, specialist expertise, and enduring strategic principles.",
-    "poleBLabel": "Win through concepts, expertise, and people",
-    "tensionId": "TD-009",
-    "tensionLevel": "cross_category"
-  },
-  {
-    "categoryIds": [
-      "CAT-DA4674EEAB83CDA9",
-      "CAT-BCE660BDEB8D30BC"
-    ],
-    "clusterIds": [
-      "FTP-10",
-      "FTP-03",
-      "FTP-01",
-      "FTP-09",
       "FTP-11",
       "FTP-16",
-      "KE-08",
-      "KE-11",
-      "KE-13",
       "KE-02",
+      "KE-08",
+      "KE-13",
       "KE-14",
-      "KE-09"
+      "TTP-02"
     ],
-    "confidence": "high",
-    "description": "The batch contains strong optimism about data lakes, geospatial narrative analytics, standardized wargaming, and measurable soft-power effects, but also repeated warnings that complex, nonlinear, early-stage, or poorly understood technological systems resist confident prediction. The tension concerns how far information operators should trust predictive tools and standardized methods in environments characterized by emergence and uncertainty. This grouping consolidates 2 related batch-level candidate tensions. It appears across: Future Trends / Predictions, Key Events / Historical Examples.",
-    "evidenceStrength": "medium",
-    "name": "Predictive Sensemaking Confidence vs Complex-System Uncertainty",
-    "poleAAssumption": "With sufficient data, analytic tooling, and standardized methods, organizations can anticipate narratives, assess effects, and justify influence investments more rigorously.",
-    "poleALabel": "Make influence measurable and forecastable",
-    "poleBAssumption": "Future information and technology environments are too complex, nonlinear, and immature for confident prediction; institutions must avoid overcommitting to brittle models or single use cases.",
-    "poleBLabel": "Assume uncertainty, emergence, and incomplete knowledge",
-    "tensionId": "TD-010",
-    "tensionLevel": "between_clusters"
+    "supportingFamilyIds": [
+      "FTP-F01",
+      "FTP-F03",
+      "FTP-F04",
+      "FTP-F06",
+      "FTP-F07",
+      "KEH-F01",
+      "KEH-F02",
+      "KEH-F04",
+      "KEH-F06",
+      "TTP-F01"
+    ],
+    "tensionId": "CT-009",
+    "tensionType": "epistemic_uncertainty"
   },
   {
-    "categoryIds": [
-      "CAT-E7C7BCBA9D42BBC1",
-      "CAT-0800ED7E6EC3DE0B",
-      "CAT-6B9656F5CB18167A"
+    "conditionsFavoringA": [
+      "A specific mechanism creates demonstrable and disproportionate risk.",
+      "Restriction is lawful, targeted, reviewable, and less intrusive means are inadequate."
     ],
-    "clusterIds": [
-      "OPP-09",
-      "OPP-12",
-      "OPP-03",
+    "conditionsFavoringB": [
+      "Pathways are diffuse or substitutable and durable protection depends on practice.",
+      "Restriction carries substantial speech, access, privacy, or legitimacy costs."
+    ],
+    "definition": "Should protection come primarily from controlling hazardous information pathways or from building verification habits, media literacy, and resilience within an open environment?",
+    "evidenceAssessment": "Direct and balanced but small, recommendation-only, and concentrated.",
+    "falseDichotomyCaveat": "Targeted controls, safer platform design, and population resilience can be layered.",
+    "limitations": [
+      "Support is small and confined to one focal category.",
+      "The corpus does not assess policy efficacy or legality."
+    ],
+    "name": "Information-Environment Control vs Open-Society Resilience",
+    "neighborDistinctions": [
+      {
+        "distinction": "Concerns intervention design rather than threat nationality.",
+        "tensionId": "CT-008"
+      },
+      {
+        "distinction": "Concerns structural restriction versus resilience rather than producer versus reception locus.",
+        "tensionId": "CT-017"
+      }
+    ],
+    "poleAAssumption": "Some ownership, access, amplification, or design hazards cannot be offset by education alone.",
+    "poleALabel": "Restrict risky platforms, ownership, access, or amplification",
+    "poleBAssumption": "Threats route around controls while restrictions can damage rights, access, innovation, and trust.",
+    "poleBLabel": "Preserve openness by strengthening citizens and institutions",
+    "poleBalance": {
+      "bothPolesDirectlySupported": true,
+      "poleAAnalyticalWeight": 4.0,
+      "poleAItemCount": 4,
+      "poleAShare": 0.444444,
+      "poleBAnalyticalWeight": 5.0,
+      "poleBItemCount": 5,
+      "poleBShare": 0.555556,
+      "sharedAcrossPolesItemCount": 0,
+      "totalAnalyticalWeight": 9.0
+    },
+    "support": {
+      "broaderTraceableReach": {
+        "categoryBreadth": 1,
+        "clusterCount": 3,
+        "concentration": {
+          "effectiveContentUnitCount": 2.076923,
+          "topFiveContentUnitShare": 1.0,
+          "topOneContentUnitShare": 0.666667,
+          "topTwoContentUnitShare": 0.777778
+        },
+        "contentUnitCount": 4,
+        "derivedItemCount": 0,
+        "familyCount": 3,
+        "inheritedPublicReleaseCount": 0,
+        "itemCount": 9,
+        "publicReleaseCount": 4,
+        "secondaryOrDerivedClusterCount": 0,
+        "secondaryOrDerivedFamilyCount": 0
+      },
+      "interpretation": "Corpus support reflects recurrence and breadth within this practitioner discourse corpus. It does not indicate scientific validity, consensus, importance, prevalence, or real-world effect size.",
+      "limitations": [
+        "Support is small and confined to one focal category.",
+        "The corpus does not assess policy efficacy or legality."
+      ],
+      "primarySupport": {
+        "categoryBreadth": 1,
+        "concentration": {
+          "effectiveContentUnitCount": 2.076923,
+          "topFiveContentUnitShare": 1.0,
+          "topOneContentUnitShare": 0.666667,
+          "topTwoContentUnitShare": 0.777778
+        },
+        "itemCount": 9,
+        "primaryClusterCount": 3,
+        "primaryContentUnitCount": 4,
+        "primaryFamilyCount": 3,
+        "share": 1.0
+      }
+    },
+    "supportingClusterIds": [
       "OPP-02",
-      "OPP-04"
+      "OPP-03",
+      "OPP-09"
     ],
-    "confidence": "high",
-    "description": "Some recommendations favor restricting, filtering, divesting, surveilling, or moderating risky information channels and platforms. Others argue that, especially under U.S. free speech constraints, the only durable defense is to educate citizens and organizations to verify, triangulate, and resist manipulation themselves. The unresolved question is how much protection should come from controlling the information environment versus strengthening users within an open environment. It appears across: Opportunities / Recommended Actions, Technologies / Tools / Platforms, Organizations / Actors / Communities.",
-    "evidenceStrength": "high",
-    "name": "Technical and Regulatory Control vs Societal Cognitive Resilience",
-    "poleAAssumption": "Adversary influence and data access can be reduced by platform cooperation, takedowns, divestment, age limits, institutional filtering, and migration away from compromised platforms.",
-    "poleALabel": "Control risky platforms, ownership, and amplification pathways",
-    "poleBAssumption": "Because democratic societies cannot and should not censor comprehensively, defense must be distributed through media literacy, verification habits, triangulation, and cognitive security hygiene.",
-    "poleBLabel": "Harden citizens and organizations through resilience training",
-    "tensionId": "TD-011",
-    "tensionLevel": "cross_category"
+    "supportingFamilyIds": [
+      "OPP-F01",
+      "OPP-F05",
+      "OPP-F07"
+    ],
+    "tensionId": "CT-010",
+    "tensionType": "intervention_strategy"
   },
   {
-    "categoryIds": [
-      "CAT-0800ED7E6EC3DE0B",
-      "CAT-6B9656F5CB18167A"
+    "conditionsFavoringA": [
+      "Activity reaches domestic or allied publics or depends on enduring trust.",
+      "Exposure would undermine the mission, coalition, rights, or rule of law."
     ],
-    "clusterIds": [
-      "TTP-06",
-      "TTP-11",
-      "TTP-10",
-      "TTP-03",
-      "TTP-04",
-      "ORG-ACT-06",
-      "TTP-05",
-      "TTP-01"
+    "conditionsFavoringB": [
+      "The target is hostile and external, with lawful authority and independent oversight.",
+      "Alternatives cannot address imminent harm and escalation can be contained."
     ],
-    "confidence": "high",
-    "description": "Advanced AI, VR, affective computing, biometric sensing, and synthetic media promise highly personalized influence at scale. But the same capabilities intensify risks of covert manipulation, synthetic authenticity collapse, surveillance overreach, and the need for detection and governance. The debate is whether these tools should be treated primarily as competitive capabilities or as hazardous attack surfaces requiring restraint and verification infrastructure. It appears across: Technologies / Tools / Platforms, Organizations / Actors / Communities.",
-    "evidenceStrength": "medium",
-    "name": "AI-personalized influence advantage versus authenticity, privacy, and manipulation safeguards",
-    "poleAAssumption": "Operational advantage comes from using AI, VR, biometric sensing, A/B testing, gaze control, morphing, and LLMs to tailor messages to individuals and micro-audiences in real time.",
-    "poleALabel": "Exploit personalization and immersive AI for influence effects",
-    "poleBAssumption": "The same systems erode authenticity, privacy, consent, and public trust, so detection capabilities, ethical safeguards, platform policies, and legal governance must bound their use.",
-    "poleBLabel": "Constrain, detect, and govern manipulative synthetic systems",
-    "tensionId": "TD-012",
-    "tensionLevel": "cross_category"
-  },
-  {
-    "categoryIds": [
-      "CAT-6B9656F5CB18167A",
-      "CAT-0800ED7E6EC3DE0B"
+    "definition": "How far may democratic actors emulate adversary methods without undermining the legal legitimacy, trust, alliances, and accountability that constitute their own strategic advantages?",
+    "evidenceAssessment": "Pole B is direct; pole A relies partly on institution and training proxies.",
+    "falseDichotomyCaveat": "This is an analytical ethical problem, not an endorsement; law, oversight, proportionality, and red lines continue to govern either approach.",
+    "limitations": [
+      "Pole A needs more direct propositions.",
+      "Examples do not establish efficacy, legality, or acceptability."
     ],
-    "clusterIds": [
-      "ORG-ACT-03",
-      "ORG-ACT-05",
-      "ORG-ACT-11",
-      "ORG-ACT-07",
-      "TTP-04",
-      "TTP-09",
-      "TTP-03",
-      "TTP-07"
+    "name": "Democratic Legitimacy vs Covert or Deceptive Gray-Zone Tactics",
+    "neighborDistinctions": [
+      {
+        "distinction": "Concerns democratic authorization rather than the credibility and saturation mechanism.",
+        "tensionId": "CT-014"
+      },
+      {
+        "distinction": "Concerns authorization of covert or deceptive methods rather than tempo within a legitimate process.",
+        "tensionId": "CT-019"
+      }
     ],
-    "confidence": "high",
-    "description": "The batch repeatedly presents covert, deceptive, or disruptive techniques as potentially useful against adversary influence, while also emphasizing legal, ethical, reputational, and civil-liberties constraints. The unresolved debate is how far democratic actors should go in adopting methods resembling those of adversaries without damaging the trust and legitimacy that make their information power effective. It appears across: Organizations / Actors / Communities, Technologies / Tools / Platforms.",
-    "evidenceStrength": "medium",
-    "name": "Fight gray-zone influence with gray tactics or preserve democratic legitimacy",
-    "poleAAssumption": "Democratic actors derive strategic advantage from credibility, alliances, legal process, and oversight; information activity that violates these norms risks self-harm.",
-    "poleALabel": "Legitimacy, oversight, and rule-bound communication",
-    "poleBAssumption": "Adversaries exploit speed, deniability, and manipulation, so defenders may need bots, false personas, cloned sites, opaque funding, covert tradecraft, or cyber disruption to compete effectively.",
-    "poleBLabel": "Covert, deceptive, or disruptive counter-influence",
-    "tensionId": "TD-013",
-    "tensionLevel": "cross_category"
-  },
-  {
-    "categoryIds": [
-      "CAT-9ACE5E33E3E9B1A7",
-      "CAT-BCE660BDEB8D30BC"
-    ],
-    "clusterIds": [
-      "KCFT-03",
-      "KCFT-20",
-      "KCFT-06",
-      "KE-10",
-      "KE-07",
-      "KE-03",
-      "KE-09"
-    ],
-    "confidence": "high",
-    "description": "The batch repeatedly suggests that influence campaigns need affirmative identity, belonging, and a credible future, yet many successful or attempted campaigns also rely on enemy construction, outrage, humiliation, and visceral threat imagery. The debate is not simply positive versus negative messaging, but how much mobilization depends on shared aspiration versus defining an enemy. It appears across: Key Concepts / Frameworks / Theories, Key Events / Historical Examples.",
-    "evidenceStrength": "medium",
-    "name": "Positive Identity-Building vs Enemy-Centered Derogation",
-    "poleAAssumption": "Durable influence requires a credible positive identity narrative that gives audiences belonging, purpose, and a shared future.",
-    "poleALabel": "Build belonging and affirmative identity",
-    "poleBAssumption": "Influence can mobilize rapidly by dramatizing threat, grievance, betrayal, humiliation, or enemy cruelty, especially in conflict or polarized settings.",
-    "poleBLabel": "Mobilize through enemies, grievance, and visceral symbols",
-    "tensionId": "TD-014",
-    "tensionLevel": "cross_category"
-  },
-  {
-    "categoryIds": [
-      "CAT-6B9656F5CB18167A",
-      "CAT-E7C7BCBA9D42BBC1"
-    ],
-    "clusterIds": [
-      "ORG-ACT-03",
+    "poleAAssumption": "Credibility, authority, alliance confidence, accountability, and rights are operational assets whose loss can outweigh short-term effects.",
+    "poleALabel": "Compete through rule-bound, credible, and accountable means",
+    "poleBAssumption": "Against hostile actors in denied settings, attribution, disruption, concealment, or deception can enable otherwise unavailable effects.",
+    "poleBLabel": "Use covert, deceptive, disruptive, or deniable methods when necessary",
+    "poleBalance": {
+      "bothPolesDirectlySupported": true,
+      "poleAAnalyticalWeight": 4.0,
+      "poleAItemCount": 4,
+      "poleAShare": 0.4,
+      "poleBAnalyticalWeight": 6.0,
+      "poleBItemCount": 6,
+      "poleBShare": 0.6,
+      "sharedAcrossPolesItemCount": 0,
+      "totalAnalyticalWeight": 10.0
+    },
+    "support": {
+      "broaderTraceableReach": {
+        "categoryBreadth": 3,
+        "clusterCount": 9,
+        "concentration": {
+          "effectiveContentUnitCount": 3.125,
+          "topFiveContentUnitShare": 1.0,
+          "topOneContentUnitShare": 0.5,
+          "topTwoContentUnitShare": 0.7
+        },
+        "contentUnitCount": 5,
+        "derivedItemCount": 0,
+        "familyCount": 7,
+        "inheritedPublicReleaseCount": 0,
+        "itemCount": 10,
+        "publicReleaseCount": 5,
+        "secondaryOrDerivedClusterCount": 0,
+        "secondaryOrDerivedFamilyCount": 0
+      },
+      "interpretation": "Corpus support reflects recurrence and breadth within this practitioner discourse corpus. It does not indicate scientific validity, consensus, importance, prevalence, or real-world effect size.",
+      "limitations": [
+        "Pole A needs more direct propositions.",
+        "Examples do not establish efficacy, legality, or acceptability."
+      ],
+      "primarySupport": {
+        "categoryBreadth": 3,
+        "concentration": {
+          "effectiveContentUnitCount": 3.125,
+          "topFiveContentUnitShare": 1.0,
+          "topOneContentUnitShare": 0.5,
+          "topTwoContentUnitShare": 0.7
+        },
+        "itemCount": 10,
+        "primaryClusterCount": 9,
+        "primaryContentUnitCount": 5,
+        "primaryFamilyCount": 7,
+        "share": 1.0
+      }
+    },
+    "supportingClusterIds": [
+      "OPP-02",
+      "ORG-ACT-01",
       "ORG-ACT-02",
       "ORG-ACT-04",
-      "ORG-ACT-10",
-      "OPP-04",
-      "OPP-13"
+      "TTP-01",
+      "TTP-04",
+      "TTP-07",
+      "TTP-09",
+      "TTP-14"
     ],
-    "confidence": "high",
-    "description": "The batch repeatedly contrasts democratic legal, policy, and journalistic constraints with adversaries’ freedom to monitor, target, amplify, and manipulate information environments. The unresolved debate is how far democratic governments should reform authorities or expand state-backed influence capabilities without undermining the legitimacy that distinguishes them from adversaries. It appears across: Organizations / Actors / Communities, Opportunities / Recommended Actions.",
-    "evidenceStrength": "medium",
-    "name": "Legal-Journalistic Constraint vs Competitive Information Parity",
-    "poleAAssumption": "Restrictions on monitoring, government messaging, and state media preserve civil liberties, independent journalism, and democratic legitimacy.",
-    "poleALabel": "Constraint-preserving democratic legitimacy",
-    "poleBAssumption": "Adversaries exploit these constraints, so democratic actors need clearer authorities, faster monitoring, sharper campaigns, and integrated government capabilities to compete.",
-    "poleBLabel": "Policy-enabled operational parity",
-    "tensionId": "TD-015",
-    "tensionLevel": "cross_category"
+    "supportingFamilyIds": [
+      "OPP-F01",
+      "ORG-F01",
+      "ORG-F02",
+      "TTP-F01",
+      "TTP-F02",
+      "TTP-F04",
+      "TTP-F05"
+    ],
+    "tensionId": "CT-011",
+    "tensionType": "ethical_dilemma"
   },
   {
-    "categoryIds": [
-      "CAT-E7C7BCBA9D42BBC1",
-      "CAT-6B9656F5CB18167A"
+    "conditionsFavoringA": [
+      "The objective is long-term governance, reconciliation, coalition durability, or inclusion.",
+      "Enemy framing would deepen fractures or create a post-conflict identity vacuum."
     ],
-    "clusterIds": [
-      "OPP-01",
-      "OPP-04",
-      "OPP-12",
-      "OPP-02",
-      "OPP-03"
+    "conditionsFavoringB": [
+      "A concrete and immediate threat requires defensive mobilization.",
+      "Analysis preserves controls against dehumanization, indiscriminate blame, escalation, and exclusion."
     ],
-    "confidence": "high",
-    "description": "The batch repeatedly calls for formal branches, doctrine, lead entities, and new intelligence disciplines, but also argues that information competition depends on coordinators, embedded liaisons, public-private cooperation, and distributed resilience rather than single-owner control. The unresolved issue is whether effectiveness comes primarily from institutional consolidation or from flexible orchestration across actors that retain separate authorities and cultures. It appears across: Opportunities / Recommended Actions, Organizations / Actors / Communities.",
-    "evidenceStrength": "medium",
-    "name": "Centralized Ownership vs Networked Coordination of Information Power",
-    "poleAAssumption": "Information warfare and cognitive security require durable institutional homes, doctrine, authorities, resourcing, and clear lead entities to overcome stovepipes and coordination voids.",
-    "poleALabel": "Formalize and centralize capability ownership",
-    "poleBAssumption": "No single organization owns the information environment; success depends on convening authority, liaison networks, public-private alignment, and population-level resilience across distributed actors.",
-    "poleBLabel": "Coordinate distributed capabilities without owning them",
-    "tensionId": "TD-016",
-    "tensionLevel": "cross_category"
+    "definition": "Does durable mobilization depend more on shared aspiration and identity or on dramatizing an adversary and activating grievance?",
+    "evidenceAssessment": "Coherent with a genuine bridge, but concentrated in four historical content units.",
+    "falseDichotomyCaveat": "Threat recognition can coexist with affirmative identity; the distinction concerns the organizing and persistent logic.",
+    "limitations": [
+      "A small set of cases cannot establish comparative durability.",
+      "Pole B is descriptive rather than recommended."
+    ],
+    "name": "Positive Identity-Building vs Enemy-Centered Mobilization",
+    "neighborDistinctions": [
+      {
+        "distinction": "Concerns the identity basis of mobilization rather than institutional communication posture.",
+        "tensionId": "CT-013"
+      },
+      {
+        "distinction": "Concerns the logic of belonging rather than truth and deception mechanisms.",
+        "tensionId": "CT-014"
+      }
+    ],
+    "poleAAssumption": "Durable cohesion requires a believable shared identity, purpose, and future beyond opposition to an enemy.",
+    "poleALabel": "Build belonging, purpose, and an affirmative future",
+    "poleBAssumption": "Acute threat, humiliation, grievance, and out-groups create rapid salience when shared identity is weak.",
+    "poleBLabel": "Mobilize through threat, grievance, humiliation, and enemy construction",
+    "poleBalance": {
+      "bothPolesDirectlySupported": true,
+      "poleAAnalyticalWeight": 5.5,
+      "poleAItemCount": 6,
+      "poleAShare": 0.55,
+      "poleBAnalyticalWeight": 4.5,
+      "poleBItemCount": 5,
+      "poleBShare": 0.45,
+      "sharedAcrossPolesItemCount": 1,
+      "totalAnalyticalWeight": 10.0
+    },
+    "support": {
+      "broaderTraceableReach": {
+        "categoryBreadth": 2,
+        "clusterCount": 4,
+        "concentration": {
+          "effectiveContentUnitCount": 2.941176,
+          "topFiveContentUnitShare": 1.0,
+          "topOneContentUnitShare": 0.5,
+          "topTwoContentUnitShare": 0.7
+        },
+        "contentUnitCount": 4,
+        "derivedItemCount": 0,
+        "familyCount": 3,
+        "inheritedPublicReleaseCount": 0,
+        "itemCount": 10,
+        "publicReleaseCount": 4,
+        "secondaryOrDerivedClusterCount": 0,
+        "secondaryOrDerivedFamilyCount": 0
+      },
+      "interpretation": "Corpus support reflects recurrence and breadth within this practitioner discourse corpus. It does not indicate scientific validity, consensus, importance, prevalence, or real-world effect size.",
+      "limitations": [
+        "A small set of cases cannot establish comparative durability.",
+        "Pole B is descriptive rather than recommended."
+      ],
+      "primarySupport": {
+        "categoryBreadth": 2,
+        "concentration": {
+          "effectiveContentUnitCount": 2.941176,
+          "topFiveContentUnitShare": 1.0,
+          "topOneContentUnitShare": 0.5,
+          "topTwoContentUnitShare": 0.7
+        },
+        "itemCount": 10,
+        "primaryClusterCount": 4,
+        "primaryContentUnitCount": 4,
+        "primaryFamilyCount": 3,
+        "share": 1.0
+      }
+    },
+    "supportingClusterIds": [
+      "KCFT-03",
+      "KE-03",
+      "KE-06",
+      "KE-10"
+    ],
+    "supportingFamilyIds": [
+      "KCF-F02",
+      "KEH-F01",
+      "KEH-F04"
+    ],
+    "tensionId": "CT-012",
+    "tensionType": "competing_strategic_logics"
   },
   {
-    "categoryIds": [
-      "CAT-9ACE5E33E3E9B1A7",
-      "CAT-BCE660BDEB8D30BC"
+    "conditionsFavoringA": [
+      "Legitimacy depends on neutrality, fairness, statistical integrity, or service across groups.",
+      "Persuasive simplification would hide material evidence or uncertainty."
     ],
-    "clusterIds": [
-      "KCFT-23",
-      "KCFT-13",
-      "KCFT-29",
-      "KE-04",
-      "KE-12",
-      "KE-07"
+    "conditionsFavoringB": [
+      "An authorized communication mission has an explicit audience and end state.",
+      "Values, action, and evidence align without creating false certainty."
     ],
-    "confidence": "high",
-    "description": "Information operations are framed as requiring centralized strategic coherence, authorities, and synchronization, but also as depending on decentralized execution by field units, allies, platforms, and civil society actors who possess local access, tempo, and credibility. The unresolved issue is how much control should sit at the enterprise level versus how much autonomy should be delegated to operators and partners. It appears across: Key Concepts / Frameworks / Theories, Key Events / Historical Examples.",
-    "evidenceStrength": "medium",
-    "name": "Enterprise Coherence vs Local and Partner Agility",
-    "poleAAssumption": "Influence power becomes strategically effective only when messaging, authorities, standards, and resources are coordinated through empowered institutional mechanisms.",
-    "poleALabel": "Centralized coordination and empowered governance",
-    "poleBAssumption": "Influence succeeds when local actors, liaison teams, allies, and civil society networks can tailor activity rapidly to context without waiting for enterprise-level control.",
-    "poleBLabel": "Decentralized execution and distributed adaptation",
-    "tensionId": "TD-017",
-    "tensionLevel": "cross_category"
-  },
-  {
-    "categoryIds": [
-      "CAT-E7C7BCBA9D42BBC1",
-      "CAT-0800ED7E6EC3DE0B"
+    "definition": "How can institutions remain credible while communicating with enough narrative clarity, emotion, and audience relevance to shape understanding and behavior?",
+    "evidenceAssessment": "Pole B is direct and cross-category; pole A is thin and proxy-coded.",
+    "falseDichotomyCaveat": "Objectivity need not be passive, and persuasion need not be deceptive.",
+    "limitations": [
+      "Pole A needs more direct communication-posture evidence.",
+      "The corpus establishes no universal boundary between explanation and advocacy."
     ],
-    "clusterIds": [
-      "OPP-08",
+    "name": "Institutional Objectivity vs Persuasive Narrative Positioning",
+    "neighborDistinctions": [
+      {
+        "distinction": "Concerns institutional posture rather than the identity basis of mobilization.",
+        "tensionId": "CT-012"
+      },
+      {
+        "distinction": "Concerns truthful explanation and positioning rather than truth versus falsehood.",
+        "tensionId": "CT-014"
+      }
+    ],
+    "poleAAssumption": "Evidence-assessing, scientific, diplomatic, and public-service institutions preserve trust through evidence, uncertainty, and fidelity to mandate.",
+    "poleALabel": "Protect credibility through institutional objectivity and careful explanation",
+    "poleBAssumption": "Facts without purpose, audience framing, emotion, or connection to action can cede interpretation to others.",
+    "poleBLabel": "Take an audience-centered, values-forward, strategically persuasive position",
+    "poleBalance": {
+      "bothPolesDirectlySupported": true,
+      "poleAAnalyticalWeight": 3.0,
+      "poleAItemCount": 3,
+      "poleAShare": 0.333333,
+      "poleBAnalyticalWeight": 6.0,
+      "poleBItemCount": 6,
+      "poleBShare": 0.666667,
+      "sharedAcrossPolesItemCount": 0,
+      "totalAnalyticalWeight": 9.0
+    },
+    "support": {
+      "broaderTraceableReach": {
+        "categoryBreadth": 4,
+        "clusterCount": 8,
+        "concentration": {
+          "effectiveContentUnitCount": 3.0,
+          "topFiveContentUnitShare": 1.0,
+          "topOneContentUnitShare": 0.444444,
+          "topTwoContentUnitShare": 0.777778
+        },
+        "contentUnitCount": 4,
+        "derivedItemCount": 0,
+        "familyCount": 6,
+        "inheritedPublicReleaseCount": 0,
+        "itemCount": 9,
+        "publicReleaseCount": 4,
+        "secondaryOrDerivedClusterCount": 0,
+        "secondaryOrDerivedFamilyCount": 0
+      },
+      "interpretation": "Corpus support reflects recurrence and breadth within this practitioner discourse corpus. It does not indicate scientific validity, consensus, importance, prevalence, or real-world effect size.",
+      "limitations": [
+        "Pole A needs more direct communication-posture evidence.",
+        "The corpus establishes no universal boundary between explanation and advocacy."
+      ],
+      "primarySupport": {
+        "categoryBreadth": 4,
+        "concentration": {
+          "effectiveContentUnitCount": 3.0,
+          "topFiveContentUnitShare": 1.0,
+          "topOneContentUnitShare": 0.444444,
+          "topTwoContentUnitShare": 0.777778
+        },
+        "itemCount": 9,
+        "primaryClusterCount": 8,
+        "primaryContentUnitCount": 4,
+        "primaryFamilyCount": 6,
+        "share": 1.0
+      }
+    },
+    "supportingClusterIds": [
+      "CRB-09",
+      "KCFT-22",
       "OPP-05",
       "OPP-06",
-      "OPP-10",
-      "OPP-07",
-      "OPP-09",
-      "OPP-02"
-    ],
-    "confidence": "high",
-    "description": "The batch contains strong enthusiasm for AI-enabled small teams, real-time narrative detection, algorithmic content optimization, gaming-space engagement, and offensive/defensive IO. At the same time, other items warn that AI-assisted analysis must remain iterative, perspective-seeking, governed by speed-quality-cost constraints, and grounded in critical understanding of what AI is not. The tension concerns whether AI should primarily compress operational cycles or slow analysts into better questioning and tradeoff management. It appears across: Opportunities / Recommended Actions, Technologies / Tools / Platforms.",
-    "evidenceStrength": "medium",
-    "name": "AI-Accelerated Influence Tempo vs Deliberative Analytic Quality",
-    "poleAAssumption": "AI can empower small teams, detect narratives in real time, recommend messages, optimize content for algorithms, and provide parity in offensive and defensive information operations.",
-    "poleALabel": "Use AI to scale speed, reach, and effects",
-    "poleBAssumption": "AI outputs are brittle if treated as answers; organizations must force iterative questioning, acknowledge speed-quality-cost tradeoffs, and train users not to anthropomorphize or overtrust AI.",
-    "poleBLabel": "Use governance and tradecraft to protect quality and judgment",
-    "tensionId": "TD-018",
-    "tensionLevel": "between_clusters"
-  },
-  {
-    "categoryIds": [
-      "CAT-6B9656F5CB18167A",
-      "CAT-E7C7BCBA9D42BBC1"
-    ],
-    "clusterIds": [
-      "OPP-06",
-      "OPP-05",
+      "ORG-ACT-01",
       "ORG-ACT-03",
       "ORG-ACT-05",
-      "ORG-ACT-01"
+      "ORG-ACT-10"
     ],
-    "confidence": "high",
-    "description": "Several items imply that Western institutions often prize objectivity, neutrality, or self-explanation, while effective influence requires taking a clear position, defining desired endstates, and building audience-centered narratives. The tension is whether democratic actors can remain credible and truthful while also being vivid, values-forward, and strategically persuasive. It appears across: Organizations / Actors / Communities, Opportunities / Recommended Actions.",
-    "evidenceStrength": "medium",
-    "name": "Objective Neutrality vs Persuasive Narrative Positioning",
-    "poleAAssumption": "Credibility is preserved by avoiding overt persuasion, maintaining objectivity, and explaining institutional positions carefully.",
-    "poleALabel": "Neutral, objective, institution-centered communication",
-    "poleBAssumption": "Influence succeeds only when messages are designed around audience interests, identity, emotion, and coherent strategic narratives.",
-    "poleBLabel": "Audience-centered, position-taking narrative strategy",
-    "tensionId": "TD-019",
-    "tensionLevel": "cross_category"
+    "supportingFamilyIds": [
+      "CRB-F06",
+      "KCF-F02",
+      "OPP-F04",
+      "ORG-F01",
+      "ORG-F03",
+      "ORG-F06"
+    ],
+    "tensionId": "CT-013",
+    "tensionType": "communication_posture"
   },
   {
-    "categoryIds": [
-      "CAT-BCE660BDEB8D30BC",
-      "CAT-E7C7BCBA9D42BBC1"
+    "conditionsFavoringA": [
+      "The relationship is repeated, attribution is likely, and future access depends on accuracy.",
+      "Audiences can compare claims with behavior."
     ],
-    "clusterIds": [
+    "conditionsFavoringB": [
+      "Descriptively, closed channels, verification failure, crisis, or repetition enable manipulation.",
+      "Analysis separates observed effect from legality, ethics, and acceptability."
+    ],
+    "definition": "Is long-term trustworthiness the decisive source of influence, or can speed, saturation, and manipulation create meaningful advantage despite weak credibility?",
+    "evidenceAssessment": "Pole B has direct historical deception evidence; pole A is coherent but represented by three items.",
+    "falseDichotomyCaveat": "Credible actors still need reach, while deceptive systems often borrow credibility; these are organizing logics rather than pure types.",
+    "limitations": [
+      "Pole A needs more direct evidence.",
+      "Cases do not establish durable or acceptable deceptive effects."
+    ],
+    "name": "Credibility-Based Influence vs Falsehood and Saturation",
+    "neighborDistinctions": [
+      {
+        "distinction": "Concerns influence mechanism and time horizon rather than democratic authorization.",
+        "tensionId": "CT-011"
+      },
+      {
+        "distinction": "Concerns truth and falsehood logic rather than objectivity and truthful positioning.",
+        "tensionId": "CT-013"
+      }
+    ],
+    "poleAAssumption": "Consistency between words and actions, truthful reporting, and authentic values create compounding trust.",
+    "poleALabel": "Build durable influence through truth, consistency, and authentic values",
+    "poleBAssumption": "Channel control, low verification, repetition, and acute fear can enable short-term deceptive effects.",
+    "poleBLabel": "Generate effects through deception, volume, controlled channels, and cognitive exploitation",
+    "poleBalance": {
+      "bothPolesDirectlySupported": true,
+      "poleAAnalyticalWeight": 3.0,
+      "poleAItemCount": 3,
+      "poleAShare": 0.375,
+      "poleBAnalyticalWeight": 5.0,
+      "poleBItemCount": 5,
+      "poleBShare": 0.625,
+      "sharedAcrossPolesItemCount": 0,
+      "totalAnalyticalWeight": 8.0
+    },
+    "support": {
+      "broaderTraceableReach": {
+        "categoryBreadth": 3,
+        "clusterCount": 5,
+        "concentration": {
+          "effectiveContentUnitCount": 4.0,
+          "topFiveContentUnitShare": 1.0,
+          "topOneContentUnitShare": 0.375,
+          "topTwoContentUnitShare": 0.625
+        },
+        "contentUnitCount": 5,
+        "derivedItemCount": 0,
+        "familyCount": 5,
+        "inheritedPublicReleaseCount": 0,
+        "itemCount": 8,
+        "publicReleaseCount": 5,
+        "secondaryOrDerivedClusterCount": 0,
+        "secondaryOrDerivedFamilyCount": 0
+      },
+      "interpretation": "Corpus support reflects recurrence and breadth within this practitioner discourse corpus. It does not indicate scientific validity, consensus, importance, prevalence, or real-world effect size.",
+      "limitations": [
+        "Pole A needs more direct evidence.",
+        "Cases do not establish durable or acceptable deceptive effects."
+      ],
+      "primarySupport": {
+        "categoryBreadth": 3,
+        "concentration": {
+          "effectiveContentUnitCount": 4.0,
+          "topFiveContentUnitShare": 1.0,
+          "topOneContentUnitShare": 0.375,
+          "topTwoContentUnitShare": 0.625
+        },
+        "itemCount": 8,
+        "primaryClusterCount": 5,
+        "primaryContentUnitCount": 5,
+        "primaryFamilyCount": 5,
+        "share": 1.0
+      }
+    },
+    "supportingClusterIds": [
       "KE-03",
-      "KE-08",
+      "KE-05",
       "KE-07",
       "OPP-06",
-      "OPP-03"
+      "ORG-ACT-10"
     ],
-    "confidence": "high",
-    "description": "The batch juxtaposes a democratic tradition of persuasive credibility, truthful reporting, values-based messaging, and authentic narratives against adversary and historical models that gain effects through volume, deception, controlled channels, or culturally targeted manipulation. At stake is whether influence effectiveness depends primarily on trustworthiness over time or on speed, saturation, and exploitation of cognitive vulnerabilities. It appears across: Key Events / Historical Examples, Opportunities / Recommended Actions.",
-    "evidenceStrength": "medium",
-    "name": "Credibility-Based Influence vs Falsehood-Scale Propaganda",
-    "poleAAssumption": "Audiences can be durably persuaded and mobilized through truthful, values-grounded, culturally authentic communication that preserves legitimacy and long-term trust.",
-    "poleALabel": "Truth and credibility as strategic advantage",
-    "poleBAssumption": "Influence effects can be generated by controlling information flows, exploiting beliefs, flooding the environment with falsehoods, or manipulating perception regardless of truth.",
-    "poleBLabel": "Deception, falsehood, and saturation as operational advantage",
-    "tensionId": "TD-020",
-    "tensionLevel": "cross_category"
+    "supportingFamilyIds": [
+      "KEH-F03",
+      "KEH-F04",
+      "KEH-F05",
+      "OPP-F04",
+      "ORG-F06"
+    ],
+    "tensionId": "CT-014",
+    "tensionType": "competing_influence_logics"
   },
   {
-    "categoryIds": [
-      "CAT-E7C7BCBA9D42BBC1"
+    "conditionsFavoringA": [
+      "Tasks recur, failures are observable, and safety, interoperability, or comparison matters.",
+      "Measures capture mission outcomes and are revalidated."
     ],
-    "clusterIds": [
+    "conditionsFavoringB": [
+      "Problems, technologies, or actors are novel and causal knowledge is weak.",
+      "Diversity, probes, and surprise-driven learning outperform local optimization."
+    ],
+    "definition": "How should a professionalizing field build evidence and capability without overfitting to what can be measured, standardized, or optimized in advance?",
+    "evidenceAssessment": "Symmetric and direct within Opportunities, though not cross-category.",
+    "falseDichotomyCaveat": "Exploration can generate candidates for proving, while tests can reserve space for novelty and challenge.",
+    "limitations": [
+      "Single-category evidence does not compare the outcomes of the two methods."
+    ],
+    "name": "Standardized Proving and Optimization vs Complexity-Aware Exploration",
+    "neighborDistinctions": [
+      {
+        "distinction": "Concerns capability learning rather than forecast confidence.",
+        "tensionId": "CT-009"
+      },
+      {
+        "distinction": "Concerns development method rather than the crisis-to-institution time horizon.",
+        "tensionId": "CT-020"
+      }
+    ],
+    "poleAAssumption": "Repeatable processes, tests, standards, and optimization make performance governable and improvable.",
+    "poleALabel": "Standardize, test, benchmark, and optimize",
+    "poleBAssumption": "Adaptive systems make fixed metrics suppress novelty, miss emergence, and create fragility.",
+    "poleBLabel": "Explore, adapt, seek novelty, and manage emergence",
+    "poleBalance": {
+      "bothPolesDirectlySupported": true,
+      "poleAAnalyticalWeight": 6.0,
+      "poleAItemCount": 6,
+      "poleAShare": 0.5,
+      "poleBAnalyticalWeight": 6.0,
+      "poleBItemCount": 6,
+      "poleBShare": 0.5,
+      "sharedAcrossPolesItemCount": 0,
+      "totalAnalyticalWeight": 12.0
+    },
+    "support": {
+      "broaderTraceableReach": {
+        "categoryBreadth": 1,
+        "clusterCount": 7,
+        "concentration": {
+          "effectiveContentUnitCount": 3.789474,
+          "topFiveContentUnitShare": 0.916667,
+          "topOneContentUnitShare": 0.416667,
+          "topTwoContentUnitShare": 0.666667
+        },
+        "contentUnitCount": 6,
+        "derivedItemCount": 0,
+        "familyCount": 5,
+        "inheritedPublicReleaseCount": 0,
+        "itemCount": 12,
+        "publicReleaseCount": 6,
+        "secondaryOrDerivedClusterCount": 0,
+        "secondaryOrDerivedFamilyCount": 0
+      },
+      "interpretation": "Corpus support reflects recurrence and breadth within this practitioner discourse corpus. It does not indicate scientific validity, consensus, importance, prevalence, or real-world effect size.",
+      "limitations": [
+        "Single-category evidence does not compare the outcomes of the two methods."
+      ],
+      "primarySupport": {
+        "categoryBreadth": 1,
+        "concentration": {
+          "effectiveContentUnitCount": 3.789474,
+          "topFiveContentUnitShare": 0.916667,
+          "topOneContentUnitShare": 0.416667,
+          "topTwoContentUnitShare": 0.666667
+        },
+        "itemCount": 12,
+        "primaryClusterCount": 7,
+        "primaryContentUnitCount": 6,
+        "primaryFamilyCount": 5,
+        "share": 1.0
+      }
+    },
+    "supportingClusterIds": [
+      "OPP-01",
+      "OPP-02",
+      "OPP-04",
       "OPP-07",
       "OPP-10",
-      "OPP-02",
-      "OPP-01",
-      "OPP-04",
-      "OPP-15",
       "OPP-11",
       "OPP-14"
     ],
-    "confidence": "high",
-    "description": "One strand of the batch seeks rigorous evaluation, benchmarks, process mapping, simulation, and doctrine models that can make influence capabilities measurable and governable. Another strand argues that complex adaptive environments require novelty-seeking, antifragile organizations, system interventions, boundary management, and team variety rather than rigid goal optimization. The unresolved question is how to professionalize and measure the field without overfitting to what can be tested, standardized, or optimized in advance. It appears across: Opportunities / Recommended Actions.",
-    "evidenceStrength": "low",
-    "name": "Objective proving and optimization vs complexity-aware exploration",
-    "poleAAssumption": "Information and cognitive capabilities mature through objective T&E, proving grounds, benchmarks, process mapping, simulations, and doctrinal models that reduce uncertainty before deployment.",
-    "poleALabel": "Standardize, test, and optimize",
-    "poleBAssumption": "In complex systems, rigid optimization and reductionist metrics can trap organizations in local optima; success requires novelty, requisite variety, adaptive teams, and attention to emergent transitions.",
-    "poleBLabel": "Explore, adapt, and manage emergence",
-    "tensionId": "TD-021",
-    "tensionLevel": "between_clusters"
+    "supportingFamilyIds": [
+      "OPP-F01",
+      "OPP-F02",
+      "OPP-F03",
+      "OPP-F06",
+      "OPP-F08"
+    ],
+    "tensionId": "CT-015",
+    "tensionType": "capability_development_method"
   },
   {
-    "categoryIds": [
-      "CAT-9ACE5E33E3E9B1A7"
+    "conditionsFavoringA": [
+      "Cross-cultural invariance and outcome links are demonstrated with uncertainty.",
+      "Use is aggregate and exploratory rather than high-stakes inference about a person."
     ],
-    "clusterIds": [
+    "conditionsFavoringB": [
+      "Identity, language, subculture, trauma, or structure changes the meaning of the signal.",
+      "A method infers private cognition or intent without validation."
+    ],
+    "definition": "To what extent can language, attitudes, and behavior be standardized across populations when identity, inner speech, culture, and social context reshape meaning?",
+    "evidenceAssessment": "Both positions are direct, but evidence is severely concentrated by content unit and framework.",
+    "falseDichotomyCaveat": "Mixed methods can locate patterns and then interpret, revise, or reject constructs in context.",
+    "limitations": [
+      "Three content units cannot establish broad recurrence.",
+      "The corpus validates or invalidates no particular model."
+    ],
+    "name": "Codified Behavioral Measurement vs Contextual Meaning-Making",
+    "neighborDistinctions": [
+      {
+        "distinction": "Concerns validity of standardized meaning rather than division of computational and human labor.",
+        "tensionId": "CT-002"
+      },
+      {
+        "distinction": "Concerns observability of human meaning rather than system-level forecast uncertainty.",
+        "tensionId": "CT-009"
+      }
+    ],
+    "poleAAssumption": "Communication attributes can be operationalized sufficiently to aggregate, compare, and link them to outcomes.",
+    "poleALabel": "Measure and generalize communication and behavioral attributes",
+    "poleBAssumption": "Identity, culture, structure, memory, and inner speech alter meaning, so observable language is only partial.",
+    "poleBLabel": "Treat meaning as contextual, internal, and only partially observable",
+    "poleBalance": {
+      "bothPolesDirectlySupported": true,
+      "poleAAnalyticalWeight": 5.0,
+      "poleAItemCount": 5,
+      "poleAShare": 0.454545,
+      "poleBAnalyticalWeight": 6.0,
+      "poleBItemCount": 6,
+      "poleBShare": 0.545455,
+      "sharedAcrossPolesItemCount": 0,
+      "totalAnalyticalWeight": 11.0
+    },
+    "support": {
+      "broaderTraceableReach": {
+        "categoryBreadth": 1,
+        "clusterCount": 5,
+        "concentration": {
+          "effectiveContentUnitCount": 2.688889,
+          "topFiveContentUnitShare": 1.0,
+          "topOneContentUnitShare": 0.454545,
+          "topTwoContentUnitShare": 0.818182
+        },
+        "contentUnitCount": 3,
+        "derivedItemCount": 0,
+        "familyCount": 3,
+        "inheritedPublicReleaseCount": 0,
+        "itemCount": 11,
+        "publicReleaseCount": 3,
+        "secondaryOrDerivedClusterCount": 0,
+        "secondaryOrDerivedFamilyCount": 0
+      },
+      "interpretation": "Corpus support reflects recurrence and breadth within this practitioner discourse corpus. It does not indicate scientific validity, consensus, importance, prevalence, or real-world effect size.",
+      "limitations": [
+        "Three content units cannot establish broad recurrence.",
+        "The corpus validates or invalidates no particular model."
+      ],
+      "primarySupport": {
+        "categoryBreadth": 1,
+        "concentration": {
+          "effectiveContentUnitCount": 2.688889,
+          "topFiveContentUnitShare": 1.0,
+          "topOneContentUnitShare": 0.454545,
+          "topTwoContentUnitShare": 0.818182
+        },
+        "itemCount": 11,
+        "primaryClusterCount": 5,
+        "primaryContentUnitCount": 3,
+        "primaryFamilyCount": 3,
+        "share": 1.0
+      }
+    },
+    "supportingClusterIds": [
+      "KCFT-03",
       "KCFT-09",
       "KCFT-10",
-      "KCFT-21",
-      "KCFT-17",
-      "KCFT-28",
-      "KCFT-30",
-      "KCFT-02",
-      "KCFT-03",
       "KCFT-20",
-      "KCFT-12"
+      "KCFT-21"
     ],
-    "confidence": "high",
-    "description": "Some items present communication as measurable, outcome-linked, and potentially universal across channels and geographies; others emphasize that cognition, inner speech, identity filters, and social context are compressed, idiosyncratic, and not directly inferable from public language. The stakes are whether influence design can rely on standardized behavioral analytics or must remain deeply contextual and interpretive. It appears across: Key Concepts / Frameworks / Theories.",
-    "evidenceStrength": "low",
-    "name": "Codified behavioral measurement vs idiosyncratic meaning-making",
-    "poleAAssumption": "Human communication contains measurable attributes that can be scored, linked statistically to outcomes, and generalized across cultures with calibration.",
-    "poleALabel": "Communication can be standardized, measured, and scaled",
-    "poleBAssumption": "Public expression is not a transparent window into thought; inner speech, identity-based filtering, and social context reshape meaning in ways that resist simple universal measurement.",
-    "poleBLabel": "Meaning is contextual, internal, and only partially observable",
-    "tensionId": "TD-022",
-    "tensionLevel": "between_clusters"
+    "supportingFamilyIds": [
+      "KCF-F01",
+      "KCF-F02",
+      "KCF-F04"
+    ],
+    "tensionId": "CT-016",
+    "tensionType": "epistemic_method_tension"
   },
   {
-    "categoryIds": [
-      "CAT-6B9656F5CB18167A"
+    "conditionsFavoringA": [
+      "A few identifiable nodes enable coordination, finance, or distribution and can be addressed lawfully.",
+      "Disruption imposes time, cost, or reach penalties rather than merely displacing activity."
     ],
-    "clusterIds": [
+    "conditionsFavoringB": [
+      "Narratives recur across sources or uptake is driven by grievance, identity, incentives, or trust.",
+      "Platforms, influencers, standards, literacy, or intermediaries can alter reception durably."
+    ],
+    "definition": "Should counter-influence efforts target the producers and infrastructure of harmful content or the demand-side vulnerabilities that persist when particular sources disappear?",
+    "evidenceAssessment": "Coherent with one genuine bridge, but mostly actor proxies and entirely Organizations evidence.",
+    "falseDichotomyCaveat": "Supply disruption can create room for resilience, while resilience can lower returns to hostile supply.",
+    "limitations": [
+      "Actor labels do not prove an intervention preference or effect.",
+      "A future pass needs more explicit mechanism claims."
+    ],
+    "name": "Supply-Side Disruption vs Demand-Side Susceptibility",
+    "neighborDistinctions": [
+      {
+        "distinction": "Concerns intervention locus independent of nationality rather than foreign versus domestic priority.",
+        "tensionId": "CT-008"
+      },
+      {
+        "distinction": "Concerns producer versus susceptibility locus rather than structural restriction versus resilience.",
+        "tensionId": "CT-010"
+      }
+    ],
+    "poleAAssumption": "Producers, infrastructure, finance, accounts, or channels are concentrated enough that disruption can reduce reach.",
+    "poleALabel": "Identify, attribute, and disrupt hostile actors and channels",
+    "poleBAssumption": "Replacement sources emerge while incentives, identity needs, and trust deficits continue to generate traction.",
+    "poleBLabel": "Change audience, platform, and community conditions that create traction",
+    "poleBalance": {
+      "bothPolesDirectlySupported": true,
+      "poleAAnalyticalWeight": 8.5,
+      "poleAItemCount": 9,
+      "poleAShare": 0.607143,
+      "poleBAnalyticalWeight": 5.5,
+      "poleBItemCount": 6,
+      "poleBShare": 0.392857,
+      "sharedAcrossPolesItemCount": 1,
+      "totalAnalyticalWeight": 14.0
+    },
+    "support": {
+      "broaderTraceableReach": {
+        "categoryBreadth": 1,
+        "clusterCount": 7,
+        "concentration": {
+          "effectiveContentUnitCount": 5.157895,
+          "topFiveContentUnitShare": 0.928571,
+          "topOneContentUnitShare": 0.285714,
+          "topTwoContentUnitShare": 0.5
+        },
+        "contentUnitCount": 6,
+        "derivedItemCount": 0,
+        "familyCount": 6,
+        "inheritedPublicReleaseCount": 0,
+        "itemCount": 14,
+        "publicReleaseCount": 6,
+        "secondaryOrDerivedClusterCount": 0,
+        "secondaryOrDerivedFamilyCount": 0
+      },
+      "interpretation": "Corpus support reflects recurrence and breadth within this practitioner discourse corpus. It does not indicate scientific validity, consensus, importance, prevalence, or real-world effect size.",
+      "limitations": [
+        "Actor labels do not prove an intervention preference or effect.",
+        "A future pass needs more explicit mechanism claims."
+      ],
+      "primarySupport": {
+        "categoryBreadth": 1,
+        "concentration": {
+          "effectiveContentUnitCount": 5.157895,
+          "topFiveContentUnitShare": 0.928571,
+          "topOneContentUnitShare": 0.285714,
+          "topTwoContentUnitShare": 0.5
+        },
+        "itemCount": 14,
+        "primaryClusterCount": 7,
+        "primaryContentUnitCount": 6,
+        "primaryFamilyCount": 6,
+        "share": 1.0
+      }
+    },
+    "supportingClusterIds": [
       "ORG-ACT-02",
-      "ORG-ACT-01",
-      "ORG-ACT-11",
-      "ORG-ACT-12",
-      "ORG-ACT-06",
-      "ORG-ACT-14",
-      "ORG-ACT-05"
-    ],
-    "confidence": "high",
-    "description": "The items point both toward centralized, state-led coordination mechanisms and toward looser public-private, civil-society, and allied networks as the operating model for information competition. At stake is whether information operations should be organized through formal command and interagency hubs or through flexible ecosystems that can mobilize non-state capacity faster than bureaucracy allows. It appears across: Organizations / Actors / Communities.",
-    "evidenceStrength": "low",
-    "name": "Centralized coordination vs distributed hive models",
-    "poleAAssumption": "Information competition requires designated government anchors, command structures, and trusted intelligence-sharing arrangements to coordinate action, attribution, legality, and operational coherence.",
-    "poleALabel": "Centralized state-led coordination",
-    "poleBAssumption": "Effective cognitive and information operations increasingly depend on distributed actors—NGOs, hacktivists, OSINT communities, private firms, professional networks, and allies—that hold access, credibility, technical capacity, or local knowledge the state lacks.",
-    "poleBLabel": "Distributed public-private and civil-society networks",
-    "tensionId": "TD-023",
-    "tensionLevel": "between_clusters"
-  },
-  {
-    "categoryIds": [
-      "CAT-6B9656F5CB18167A"
-    ],
-    "clusterIds": [
-      "ORG-ACT-14",
-      "ORG-ACT-08",
-      "ORG-ACT-12",
-      "ORG-ACT-11",
-      "ORG-ACT-02",
-      "ORG-ACT-01",
-      "ORG-ACT-03"
-    ],
-    "confidence": "high",
-    "description": "The batch repeatedly frames cognitive security and information competition as requiring cross-sector convening among government, academia, industry, platforms, and civil society, while also emphasizing the need for formal government commands, mandates, and oversight bodies that can authorize, fund, and sustain action. The tension is over whether durable capability is best built through networked collaboration or through clearer centralized institutional ownership. It appears across: Organizations / Actors / Communities.",
-    "evidenceStrength": "low",
-    "name": "Distributed whole-of-society coordination vs formal state command ownership",
-    "poleAAssumption": "No single state entity controls the full information environment, so effective cognitive security depends on trusted public-private, academic, civil-society, and practitioner networks that can share knowledge, rehearse roles, and mobilize distributed legitimacy.",
-    "poleALabel": "Networked cross-sector ecosystem",
-    "poleBAssumption": "Information power becomes operationally usable only when embedded in formal commands, statutory mandates, oversight structures, and lead agencies with authority to coordinate, resource, and direct action.",
-    "poleBLabel": "Formal state-led institutional command",
-    "tensionId": "TD-024",
-    "tensionLevel": "between_clusters"
-  },
-  {
-    "categoryIds": [
-      "CAT-6B9656F5CB18167A"
-    ],
-    "clusterIds": [
       "ORG-ACT-04",
-      "ORG-ACT-02",
-      "ORG-ACT-10",
       "ORG-ACT-06",
+      "ORG-ACT-08",
+      "ORG-ACT-09",
       "ORG-ACT-13",
-      "ORG-ACT-15",
-      "ORG-ACT-08"
+      "ORG-ACT-15"
     ],
-    "confidence": "high",
-    "description": "Several items foreground adversary organizations, state media, cyber actors, and influence nodes as the main target of counter-influence work, while others argue that focusing on supply alone misses how audiences, platforms, expectations, and micro-communities make narratives effective. The unresolved debate is whether counter-disinformation should prioritize identifying and disrupting sources or reshaping the reception environment that gives influence traction. It appears across: Organizations / Actors / Communities.",
-    "evidenceStrength": "low",
-    "name": "Supply-side attribution vs demand-side susceptibility",
-    "poleAAssumption": "Influence threats can be managed by identifying hostile actors, attributing activity, monitoring adversary infrastructure, and countering state or proxy information channels.",
-    "poleALabel": "Track and disrupt adversary supply nodes",
-    "poleBAssumption": "Influence succeeds because platforms, recommender systems, expectations, identity, trusted influencers, and audience psychology create demand-side vulnerabilities that persist even when particular adversary nodes disappear.",
-    "poleBLabel": "Address audience, platform, and community demand conditions",
-    "tensionId": "TD-025",
-    "tensionLevel": "between_clusters"
+    "supportingFamilyIds": [
+      "ORG-F01",
+      "ORG-F02",
+      "ORG-F04",
+      "ORG-F05",
+      "ORG-F06",
+      "ORG-F08"
+    ],
+    "tensionId": "CT-017",
+    "tensionType": "intervention_locus"
   },
   {
-    "categoryIds": [
-      "CAT-9ACE5E33E3E9B1A7"
+    "conditionsFavoringA": [
+      "The main deficit is provenance, reliability, or consistency and trusted intermediaries can restore it.",
+      "The institution's mandate rests on neutral verification."
     ],
-    "clusterIds": [
-      "KCFT-10",
-      "KCFT-18",
+    "conditionsFavoringB": [
+      "Frames are set before verification and silence communicates an absence of purpose.",
+      "A lawful mission has an explicit audience and objective, and narrative aligns with action."
+    ],
+    "definition": "How should democratic actors balance defensive truth infrastructure with active efforts to influence interpretation and behavior?",
+    "evidenceAssessment": "Balanced, direct, and cross-category.",
+    "falseDichotomyCaveat": "Coordinated but separate functions can combine verification and active influence, with truth constraining both.",
+    "limitations": [
+      "The corpus establishes no optimal resource split or organizational placement."
+    ],
+    "name": "Truth-Verification Infrastructure vs Proactive Cognitive Shaping",
+    "neighborDistinctions": [
+      {
+        "distinction": "Shaping need not be covert or deceptive; CT-011 governs those methods.",
+        "tensionId": "CT-011"
+      },
+      {
+        "distinction": "Concerns resource allocation between verification and shaping rather than communication posture.",
+        "tensionId": "CT-013"
+      }
+    ],
+    "poleAAssumption": "Verification, provenance, certification, and consistency between words and actions underpin durable trust and decisions.",
+    "poleALabel": "Prioritize trust, verification, and alignment between words and actions",
+    "poleBAssumption": "Verification reacts late and leaves others to set agendas, so lawful actors need affirmative narratives.",
+    "poleBLabel": "Proactively shape narratives, attention, and cognitive conditions",
+    "poleBalance": {
+      "bothPolesDirectlySupported": true,
+      "poleAAnalyticalWeight": 7.0,
+      "poleAItemCount": 7,
+      "poleAShare": 0.5,
+      "poleBAnalyticalWeight": 7.0,
+      "poleBItemCount": 7,
+      "poleBShare": 0.5,
+      "sharedAcrossPolesItemCount": 0,
+      "totalAnalyticalWeight": 14.0
+    },
+    "support": {
+      "broaderTraceableReach": {
+        "categoryBreadth": 3,
+        "clusterCount": 9,
+        "concentration": {
+          "effectiveContentUnitCount": 4.9,
+          "topFiveContentUnitShare": 0.928571,
+          "topOneContentUnitShare": 0.285714,
+          "topTwoContentUnitShare": 0.5
+        },
+        "contentUnitCount": 6,
+        "derivedItemCount": 0,
+        "familyCount": 7,
+        "inheritedPublicReleaseCount": 0,
+        "itemCount": 14,
+        "publicReleaseCount": 6,
+        "secondaryOrDerivedClusterCount": 0,
+        "secondaryOrDerivedFamilyCount": 0
+      },
+      "interpretation": "Corpus support reflects recurrence and breadth within this practitioner discourse corpus. It does not indicate scientific validity, consensus, importance, prevalence, or real-world effect size.",
+      "limitations": [
+        "The corpus establishes no optimal resource split or organizational placement."
+      ],
+      "primarySupport": {
+        "categoryBreadth": 3,
+        "concentration": {
+          "effectiveContentUnitCount": 4.9,
+          "topFiveContentUnitShare": 0.928571,
+          "topOneContentUnitShare": 0.285714,
+          "topTwoContentUnitShare": 0.5
+        },
+        "itemCount": 14,
+        "primaryClusterCount": 9,
+        "primaryContentUnitCount": 6,
+        "primaryFamilyCount": 7,
+        "share": 1.0
+      }
+    },
+    "supportingClusterIds": [
+      "FTP-06",
+      "KCFT-03",
       "KCFT-06",
-      "KCFT-02",
+      "KCFT-10",
+      "KCFT-11",
       "KCFT-15",
       "KCFT-17",
-      "KCFT-13"
+      "KCFT-18",
+      "OPP-03"
     ],
-    "confidence": "high",
-    "description": "Several items argue that trust, verification, and truthful alignment are the center of gravity, while others advocate proactive, psychologically informed, and sometimes manipulative influence techniques. The unresolved question is how democratic actors can compete aggressively in the information environment without eroding the legitimacy and trust that make their influence durable. It appears across: Key Concepts / Frameworks / Theories.",
-    "evidenceStrength": "low",
-    "name": "Truth Infrastructure vs Offensive Influence",
-    "poleAAssumption": "Influence succeeds only when institutions preserve trust, align words with actions, verify claims, and create mechanisms for impartial truth assessment.",
-    "poleALabel": "Legitimacy through truth, verification, and alignment",
-    "poleBAssumption": "Adversaries operate continuously and offensively, so defenders must also shape narratives, prime attention, exploit cognitive levers, and use cyber or media systems for cognitive effects.",
-    "poleBLabel": "Proactive cognitive shaping and offensive influence",
-    "tensionId": "TD-026",
-    "tensionLevel": "between_clusters"
+    "supportingFamilyIds": [
+      "FTP-F05",
+      "KCF-F01",
+      "KCF-F02",
+      "KCF-F03",
+      "KCF-F04",
+      "KCF-F07",
+      "OPP-F05"
+    ],
+    "tensionId": "CT-018",
+    "tensionType": "portfolio_balance"
   },
   {
-    "categoryIds": [
-      "CAT-6B9656F5CB18167A"
+    "conditionsFavoringA": [
+      "Activity is reversible, bounded, observable, and preauthorized with failure limits.",
+      "Delay has a documented cost and measurement can terminate the activity."
     ],
-    "clusterIds": [
-      "ORG-ACT-01",
-      "ORG-ACT-02",
-      "ORG-ACT-03",
-      "ORG-ACT-14",
-      "ORG-ACT-11",
-      "ORG-ACT-06",
-      "ORG-ACT-10"
+    "conditionsFavoringB": [
+      "Activity affects domestic publics, vulnerable groups, rights, markets, or durable credibility.",
+      "Automation or experimentation obscures responsibility, consent, attribution, or effect."
     ],
-    "confidence": "high",
-    "description": "The batch repeatedly points to a governance gap in U.S. information power, but offers two partially competing models for closing it: a centralized state or command-level lead that can align authorities and operations, versus a distributed public-private/civil-society network that gains legitimacy, reach, and sector-specific access. The unresolved issue is whether information competition is best institutionalized through hierarchical ownership or through convening architectures that preserve non-governmental credibility. It appears across: Organizations / Actors / Communities.",
-    "evidenceStrength": "low",
-    "name": "Centralized Information-Power Lead vs Distributed Whole-of-Society Network",
-    "poleAAssumption": "Information power requires a clearly empowered institutional owner with doctrine, authorities, and command-level integration to overcome fragmentation and act at strategic tempo.",
-    "poleALabel": "Centralize leadership inside state or command structures",
-    "poleBAssumption": "Information threats exceed the national security community’s reach and legitimacy; effective response depends on trusted non-governmental, platform, commercial, and civil-society actors operating through collaborative networks.",
-    "poleBLabel": "Coordinate through cross-sector and civil-society networks",
-    "tensionId": "TD-027",
-    "tensionLevel": "cross_category"
-  },
-  {
-    "categoryIds": [
-      "CAT-6B9656F5CB18167A"
+    "definition": "How much risk and procedural compression can information operations accept before short-term tempo damages oversight, credibility, or public trust?",
+    "evidenceAssessment": "Pole A is direct and varied; pole B is direct but the smallest and most imbalanced of the retained tensions.",
+    "falseDichotomyCaveat": "Preauthorization, red teams, circuit-breakers, logs, and escalation thresholds can create fast lanes inside safeguards.",
+    "limitations": [
+      "Pole B is too thin for a strong recurrence claim.",
+      "All direct evidence is in Opportunities."
     ],
-    "clusterIds": [
-      "ORG-ACT-01",
-      "ORG-ACT-02",
-      "ORG-ACT-03",
-      "ORG-ACT-14",
-      "ORG-ACT-06",
-      "ORG-ACT-05",
-      "ORG-ACT-12"
+    "name": "Operational Speed and Optimization vs Legitimacy-Preserving Guardrails",
+    "neighborDistinctions": [
+      {
+        "distinction": "Concerns approval and experimentation tempo regardless of AI rather than automation control.",
+        "tensionId": "CT-001"
+      },
+      {
+        "distinction": "Concerns the operational cycle inside a mission rather than separation of institutional mandates.",
+        "tensionId": "CT-007"
+      }
     ],
-    "confidence": "high",
-    "description": "The corpus presents a recurring tradeoff between concentrating cyber and information power in specialized commands for speed, secrecy, and coherence, versus distributing capability across public-private, interagency, allied, and civic networks because the operating environment spans society and infrastructure. It appears across: Organizations / Actors / Communities.",
-    "evidenceStrength": "low",
-    "name": "Centralized Operational Authority vs Distributed Whole-of-Nation Coordination",
-    "poleAAssumption": "High-tempo information, cyber, and multi-domain operations require specialized command nodes, clear authorities, and concentrated expertise to integrate effects and manage operational risk.",
-    "poleALabel": "Centralized command concentration",
-    "poleBAssumption": "Because information and cyber conflict run through private infrastructure, platforms, allies, civil society, and local institutions, resilience and innovation require broad coordination beyond military or federal enclaves.",
-    "poleBLabel": "Distributed ecosystem alignment",
-    "tensionId": "TD-028",
-    "tensionLevel": "cross_category"
-  },
-  {
-    "categoryIds": [
-      "CAT-E7C7BCBA9D42BBC1"
-    ],
-    "clusterIds": [
-      "OPP-05",
-      "OPP-08",
+    "poleAAssumption": "Adversary adaptation and fleeting opportunities impose costs on slow approval and sequential planning.",
+    "poleALabel": "Compress sensing, approval, experimentation, and adjustment cycles",
+    "poleBAssumption": "Hard-to-reverse influence makes compressed decisions externalize legal, ethical, and trust harms.",
+    "poleBLabel": "Preserve legal, ethical, procedural, and values-based controls",
+    "poleBalance": {
+      "bothPolesDirectlySupported": true,
+      "poleAAnalyticalWeight": 7.0,
+      "poleAItemCount": 7,
+      "poleAShare": 0.7,
+      "poleBAnalyticalWeight": 3.0,
+      "poleBItemCount": 3,
+      "poleBShare": 0.3,
+      "sharedAcrossPolesItemCount": 0,
+      "totalAnalyticalWeight": 10.0
+    },
+    "support": {
+      "broaderTraceableReach": {
+        "categoryBreadth": 1,
+        "clusterCount": 7,
+        "concentration": {
+          "effectiveContentUnitCount": 5.555556,
+          "topFiveContentUnitShare": 0.8,
+          "topOneContentUnitShare": 0.3,
+          "topTwoContentUnitShare": 0.5
+        },
+        "contentUnitCount": 7,
+        "derivedItemCount": 0,
+        "familyCount": 6,
+        "inheritedPublicReleaseCount": 0,
+        "itemCount": 10,
+        "publicReleaseCount": 7,
+        "secondaryOrDerivedClusterCount": 0,
+        "secondaryOrDerivedFamilyCount": 0
+      },
+      "interpretation": "Corpus support reflects recurrence and breadth within this practitioner discourse corpus. It does not indicate scientific validity, consensus, importance, prevalence, or real-world effect size.",
+      "limitations": [
+        "Pole B is too thin for a strong recurrence claim.",
+        "All direct evidence is in Opportunities."
+      ],
+      "primarySupport": {
+        "categoryBreadth": 1,
+        "concentration": {
+          "effectiveContentUnitCount": 5.555556,
+          "topFiveContentUnitShare": 0.8,
+          "topOneContentUnitShare": 0.3,
+          "topTwoContentUnitShare": 0.5
+        },
+        "itemCount": 10,
+        "primaryClusterCount": 7,
+        "primaryContentUnitCount": 7,
+        "primaryFamilyCount": 6,
+        "share": 1.0
+      }
+    },
+    "supportingClusterIds": [
       "OPP-01",
-      "OPP-10",
-      "OPP-09",
-      "OPP-16",
+      "OPP-03",
+      "OPP-04",
+      "OPP-05",
       "OPP-06",
-      "OPP-02"
+      "OPP-09",
+      "OPP-10"
     ],
-    "confidence": "high",
-    "description": "The batch repeatedly recommends compressing planning, approval, experimentation, and campaign adjustment cycles to match adversary tempo, but also stresses that influence capabilities remain usable only if bounded by ethical, legal, and procedural guardrails. The unresolved issue is how much risk, automation, and experimentation democratic actors can accept before speed undermines credibility, oversight, or public trust. It appears across: Opportunities / Recommended Actions.",
-    "evidenceStrength": "low",
-    "name": "Speed and Optimization vs Legitimacy-Preserving Control",
-    "poleAAssumption": "Information competition is won by actors that can sense, decide, test, and adjust faster than adversaries; delays caused by approvals, manpower shortages, or slow assessment processes create exploitable narrative windows.",
-    "poleALabel": "Accelerate decisions, experimentation, and in-flight optimization",
-    "poleBAssumption": "Influence activity that bypasses checks, lacks guardrails, or is detached from values can erode legitimacy and become strategically self-defeating even if it improves short-term tempo.",
-    "poleBLabel": "Preserve guardrails, values, and ethical constraints",
-    "tensionId": "TD-029",
-    "tensionLevel": "cross_category"
+    "supportingFamilyIds": [
+      "OPP-F01",
+      "OPP-F02",
+      "OPP-F03",
+      "OPP-F04",
+      "OPP-F05",
+      "OPP-F07"
+    ],
+    "tensionId": "CT-019",
+    "tensionType": "operational_tradeoff"
   },
   {
-    "categoryIds": [
-      "CAT-BCE660BDEB8D30BC"
+    "conditionsFavoringA": [
+      "The threat is novel and urgent and no standing capability can respond in time.",
+      "A pilot is bounded by learning goals and a path to transfer."
     ],
-    "clusterIds": [
-      "KE-10",
-      "KE-03",
-      "KE-05",
-      "KE-12",
+    "conditionsFavoringB": [
+      "Demand recurs and improvisation repeatedly recreates the same needs.",
+      "Failure to formalize causes attrition, gaps, inconsistency, or knowledge loss."
+    ],
+    "definition": "How can institutions preserve crisis agility while converting recurring improvisation into durable capability rather than repeatedly cannibalizing long-term development?",
+    "evidenceAssessment": "Both poles are direct; pole B is larger because institutional milestones are recorded discretely.",
+    "falseDichotomyCaveat": "The sequence is often complementary: improvisation discovers practice, and selective institutionalization sustains it while preserving adaptation.",
+    "limitations": [
+      "Institutional milestones do not prove outcomes.",
+      "Institutions can preserve obsolete practice without feedback."
+    ],
+    "name": "Crisis-Driven Improvisation vs Durable Institutionalization",
+    "neighborDistinctions": [
+      {
+        "distinction": "Concerns the crisis-to-sustainment sequence rather than central versus local control.",
+        "tensionId": "CT-005"
+      },
+      {
+        "distinction": "Concerns institutional time horizon rather than proving versus exploration method.",
+        "tensionId": "CT-015"
+      }
+    ],
+    "poleAAssumption": "Novel crises reveal requirements faster than standing systems respond, requiring pilots, temporary cells, and improvisation.",
+    "poleALabel": "Use rapid pilots, self-training, and surge adaptation during crises",
+    "poleBAssumption": "Recurring demand cannot rely on surge labor and personal networks; it needs authority, funding, careers, governance, and lesson capture.",
+    "poleBLabel": "Build standing organizations, doctrine, authorities, and professional communities",
+    "poleBalance": {
+      "bothPolesDirectlySupported": true,
+      "poleAAnalyticalWeight": 5.0,
+      "poleAItemCount": 5,
+      "poleAShare": 0.357143,
+      "poleBAnalyticalWeight": 9.0,
+      "poleBItemCount": 9,
+      "poleBShare": 0.642857,
+      "sharedAcrossPolesItemCount": 0,
+      "totalAnalyticalWeight": 14.0
+    },
+    "support": {
+      "broaderTraceableReach": {
+        "categoryBreadth": 2,
+        "clusterCount": 7,
+        "concentration": {
+          "effectiveContentUnitCount": 5.157895,
+          "topFiveContentUnitShare": 0.857143,
+          "topOneContentUnitShare": 0.285714,
+          "topTwoContentUnitShare": 0.5
+        },
+        "contentUnitCount": 7,
+        "derivedItemCount": 0,
+        "familyCount": 4,
+        "inheritedPublicReleaseCount": 0,
+        "itemCount": 14,
+        "publicReleaseCount": 7,
+        "secondaryOrDerivedClusterCount": 0,
+        "secondaryOrDerivedFamilyCount": 0
+      },
+      "interpretation": "Corpus support reflects recurrence and breadth within this practitioner discourse corpus. It does not indicate scientific validity, consensus, importance, prevalence, or real-world effect size.",
+      "limitations": [
+        "Institutional milestones do not prove outcomes.",
+        "Institutions can preserve obsolete practice without feedback."
+      ],
+      "primarySupport": {
+        "categoryBreadth": 2,
+        "concentration": {
+          "effectiveContentUnitCount": 5.157895,
+          "topFiveContentUnitShare": 0.857143,
+          "topOneContentUnitShare": 0.285714,
+          "topTwoContentUnitShare": 0.5
+        },
+        "itemCount": 14,
+        "primaryClusterCount": 7,
+        "primaryContentUnitCount": 7,
+        "primaryFamilyCount": 4,
+        "share": 1.0
+      }
+    },
+    "supportingClusterIds": [
+      "KCFT-01",
       "KE-04",
-      "KE-07"
+      "KE-05",
+      "KE-07",
+      "KE-10",
+      "KE-12",
+      "KE-13"
     ],
-    "confidence": "high",
-    "description": "Information-related work often advances through urgent crises and operator improvisation, but the batch also repeatedly shows that sustainable capability requires formal authorities, statutes, career fields, interagency bodies, commands, and professional communities. The unresolved question is how to preserve crisis agility without repeatedly cannibalizing long-term program-building. It appears across: Key Events / Historical Examples.",
-    "evidenceStrength": "low",
-    "name": "Reactive Crisis Surge vs Durable Institutionalization",
-    "poleAAssumption": "Fast-moving threats require rapid pivots, self-training, pilot programs, and surge responses that can act before doctrine and bureaucracy catch up.",
-    "poleALabel": "Crisis-driven improvisation and rapid pilots",
-    "poleBAssumption": "Information power becomes strategically consequential only when embedded in durable organizations, statutes, doctrine, communities, and workforce structures.",
-    "poleBLabel": "Standing institutions and professionalized capability",
-    "tensionId": "TD-030",
-    "tensionLevel": "corpus_level_candidate"
+    "supportingFamilyIds": [
+      "KCF-F01",
+      "KEH-F01",
+      "KEH-F03",
+      "KEH-F05"
+    ],
+    "tensionId": "CT-020",
+    "tensionType": "temporal_capability_tension"
   }
 ]

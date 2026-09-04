@@ -1,61 +1,123 @@
 {
-  "interpretation": "A governed synthesis of practitioner discourse, not a definitive taxonomy, causal model, prevalence estimate, or consensus measure.",
-  "knowledgeProductType": "practitioner-discourse-map",
-  "productId": "psywerx-cognitive-security-practitioner-discourse-map",
-  "productName": "PSYWERX Cognitive Security Practitioner Discourse Map",
+  "contentVersion": "canonical-resynthesis",
+  "counts": {
+    "canonicalContentUnitCount": 241,
+    "canonicalContextualItemCount": 3111,
+    "canonicalFocalItemCount": 9822,
+    "canonicalItemCount": 12933,
+    "categoryCount": 7,
+    "categoryFindingCount": 64,
+    "clusterCount": 127,
+    "clusterReleaseLinkCount": 10715,
+    "clusterSummaryCount": 127,
+    "episodeSummaryCount": 242,
+    "familyCount": 50,
+    "heatmapCellCount": 77,
+    "narrativeCount": 5,
+    "publicReleaseCount": 242,
+    "relationshipCount": 2649,
+    "relationshipSemanticRoleCount": 16,
+    "scenarioCount": 6,
+    "sharedContentRelationshipCount": 1,
+    "tensionCount": 20,
+    "tensionReleaseLinkCount": 199,
+    "themeCount": 11
+  },
+  "fileCount": 18,
+  "files": [
+    {
+      "bytes": 1753,
+      "name": "coverage.json"
+    },
+    {
+      "bytes": 11294,
+      "name": "categories.json"
+    },
+    {
+      "bytes": 139131,
+      "name": "clusters.json"
+    },
+    {
+      "bytes": 899961,
+      "name": "cluster_summaries.json"
+    },
+    {
+      "bytes": 118787,
+      "name": "families.json"
+    },
+    {
+      "bytes": 68180,
+      "name": "themes.json"
+    },
+    {
+      "bytes": 81398,
+      "name": "tensions.json"
+    },
+    {
+      "bytes": 26571,
+      "name": "narratives.json"
+    },
+    {
+      "bytes": 137709,
+      "name": "category_findings.json"
+    },
+    {
+      "bytes": 73306,
+      "name": "scenarios.json"
+    },
+    {
+      "bytes": 60474,
+      "name": "episodes.json"
+    },
+    {
+      "bytes": 452534,
+      "name": "episode_summaries.json"
+    },
+    {
+      "bytes": 713382,
+      "name": "relationships.json"
+    },
+    {
+      "bytes": 2765,
+      "name": "relationship_semantics.json"
+    },
+    {
+      "bytes": 1784891,
+      "name": "provenance.json"
+    },
+    {
+      "bytes": 34664,
+      "name": "heatmap.json"
+    },
+    {
+      "bytes": 1391,
+      "name": "qa_report.json"
+    }
+  ],
+  "lazyFiles": [
+    "relationships.json",
+    "provenance.json"
+  ],
+  "methodVersion": "deduplicated-canonical-resynthesis",
   "publicFiles": [
     "manifest.json",
-    "corpus_reconciliation.json",
+    "coverage.json",
     "categories.json",
     "clusters.json",
     "cluster_summaries.json",
-    "meta_clusters.json",
+    "families.json",
     "themes.json",
     "tensions.json",
-    "meta_narratives.json",
+    "narratives.json",
     "category_findings.json",
     "scenarios.json",
     "episodes.json",
     "episode_summaries.json",
-    "episode_relationships.json",
     "relationships.json",
-    "coverage.json",
-    "review_summary.json",
+    "relationship_semantics.json",
+    "provenance.json",
+    "heatmap.json",
     "qa_report.json"
   ],
-  "schemaVersion": "1.1",
-  "sourceArtifacts": [
-    {
-      "artifactId": "ART-cluster-summaries",
-      "canonicalRole": "canonical-cluster-synthesis"
-    },
-    {
-      "artifactId": "ART-codebook",
-      "canonicalRole": "canonical-cluster-codebook"
-    },
-    {
-      "artifactId": "ART-cross-cutting-themes",
-      "canonicalRole": "canonical-cross-cutting-themes"
-    },
-    {
-      "artifactId": "ART-drill-down",
-      "canonicalRole": "canonical-item-cluster-assignments"
-    },
-    {
-      "artifactId": "ART-final-synthesis",
-      "canonicalRole": "canonical-narratives-findings-and-scenarios"
-    },
-    {
-      "artifactId": "ART-master-extractions",
-      "canonicalRole": "canonical-items-and-episode-provenance"
-    },
-    {
-      "artifactId": "ART-meta-clusters",
-      "canonicalRole": "canonical-meta-clusters-and-mappings"
-    },
-    {
-      "artifactId": "ART-tensions",
-      "canonicalRole": "canonical-tensions-and-debates"
-    }
-  ]
+  "schemaVersion": "2.0"
 }

@@ -6,9 +6,9 @@ PSYWERX. The repository is designed for static hosting with GitHub Pages.
 ## Interactives
 
 - [Cognitive Security Practitioner Discourse Map](./cognitive-security/) —
-  explores the governed public synthesis of practitioner discourse through
-  categories, meta-clusters, clusters, cross-cutting themes, tensions,
-  meta-narratives, scenarios, search, and methodology.
+  explores the canonical public synthesis of practitioner discourse through
+  categories, canonical families, clusters, flat themes, canonical tensions,
+  narratives, findings, scenarios, evidence paths, episodes, and search.
 - [Driver Explorer](./drivers/) — browses the governed Layer → Family → Driver
   taxonomy using dependency-free static assets. Canonical Driver names remain
   the public names, with reviewed explanations as supporting context.
@@ -266,69 +266,51 @@ successful full validation.
 The PSYWERX Cognitive Security Practitioner Discourse Map is a standalone map
 of practitioner discourse across podcast episodes. It is not a definitive
 taxonomy, causal model, consensus measure, or extension of the Driver Ontology.
-The Phase 2 static Explorer at [`cognitive-security/`](./cognitive-security/)
-provides nine primary views: Overview, Browse, Cross-Cutting Themes, Tensions
-& Debates, Meta-Narratives, Future Scenarios, Episodes, public-package Search,
-and Methodology. Category → Meta-cluster → Cluster browsing preserves
-governed unmapped records rather than filling source gaps. The Episodes view
+The canonical static Explorer at [`cognitive-security/`](./cognitive-security/)
+provides Start Here, Categories and Families, Themes, Tensions, Narratives,
+Scenarios, Episodes, Search, and Methodology views, with progressive evidence
+paths. Category → Family → Cluster browsing preserves
+all 127 stable cluster identities and places each in one governed primary
+canonical family. The Episodes view
 provides searchable, URL-addressable cards and detail pages for every canonical
 release.
 
-The public corpus model contains 242 canonical public-feed episode releases.
-The historical extraction dataset contained 269 transcript/source identities;
-27 confirmed alias identities are excluded only from a separately labeled
-12,978-item reconciled sensitivity view. The original 14,397-item analytic
-release remains preserved and reproducible. Episode 000 is retained, and a
-separately published re-release remains a distinct feed release even where
-content is reused.
+The public corpus model contains 242 canonical public-feed releases representing
+241 unique analytical recording/content units and 12,933 corrected analytical
+items. Historical source identities remain private. Both episode-83 releases
+remain visible, but shared content contributes analytical support once; the
+second release is represented by a zero-weight `shared-content-inheritance`
+relationship.
 
-Episode presentation is split across three deliberately narrow public files.
-`episodes.json` contains identity and aggregate coverage fields;
-`episode_summaries.json` contains one reviewed, transcript-grounded summary with
-transcript-derived key topics and a why-it-matters statement per release; and `episode_relationships.json`
-contains public-safe category, cluster, meta-cluster, theme, and tension links.
-Every summary uses only the transcript governed as canonical for that release;
-relationship aggregates separately use retained structured items from the
-governed canonical source identity. Confirmed aliases enter neither product.
+Episode presentation is deliberately narrow. `episodes.json` contains the
+public release catalog; `episode_summaries.json` contains one reviewed,
+transcript-grounded summary with transcript-derived key topics and a
+why-it-matters statement per release; and the lazy `provenance.json` index
+connects public releases to supported clusters without exposing item records.
+Every summary uses only the transcript governed for that release. Analytical
+relationships are produced separately from the corrected structured analysis.
 
-The episode relationship file distinguishes its evidence semantics. Category
-links aggregate retained items directly; cluster links use actual primary and
-secondary coding; meta-cluster links are derived through governed cluster
-membership; and theme links distinguish direct representative-item lineage
-from governed cluster-derived paths. Tension links are published only when a
-retained item has direct tension-pole evidence lineage. Broader derived tension
-closure is intentionally omitted because it is not discriminating evidence and
-could overstate what the source lineage supports. These episode links remain
-separate from the historical `relationships.json`, which is preserved
-unchanged.
+Canonical relationships distinguish direct coding, family membership, primary
+and secondary theme support, conceptual framing, future extension, activated
+tensions, contextual connections, and shared-content inheritance. The
+relationship graph is semantic, not causal. Progressive paths stop at public
+releases and never expose private items, evidence excerpts, or source identities.
 
-The sensitivity audit recommends a future full-pipeline reanalysis because 13
-higher-order entities are highly sensitive to canonical-source selection. This
-release does not regenerate or replace the historical synthesis, and the
-sensitivity finding does not by itself invalidate an existing entity.
-
-Counts in the Explorer describe discourse salience and corpus coverage, not
-importance, consensus, prevalence, or scientific evidence strength.
+Counts in the Explorer describe recurrence and breadth in this practitioner
+corpus, not scientific validity, importance, consensus, prevalence, or
+real-world effect size.
 Relationships are semantic cross-navigation links, not causal claims, and
-scenarios are plausible futures rather than predictions. See the
-[Explorer architecture](./docs/cognitive-security/EXPLORER_ARCHITECTURE.md),
-[Cognitive Security Schema v1.1](./docs/cognitive-security/COGNITIVE_SECURITY_SCHEMA_V1_1.md),
-[historical Schema v1.0](./docs/cognitive-security/COGNITIVE_SECURITY_SCHEMA_V1.md),
-[corpus reconciliation](./docs/cognitive-security/CORPUS_RECONCILIATION.md), and
-[build and provenance methodology](./docs/cognitive-security/BUILD_AND_PROVENANCE.md)
-for the governed contracts, decision rules, and interpretive limits.
+scenarios are conditional plausibility exercises rather than predictions. See
+the [canonical Explorer architecture](./docs/cognitive-security/CANONICAL_EXPLORER_ARCHITECTURE.md)
+and [canonical build and provenance methodology](./docs/cognitive-security/CANONICAL_BUILD_AND_PROVENANCE.md)
+for the active public contract and interpretive limits.
 
-Place the eight canonical workbooks in the ignored local directory:
-
-```text
-source-data/ipa-podcast/
-```
-
-Install the existing Python requirement, then build from the repository root:
+The canonical projector requires explicit paths to the approved ignored
+checkpoint and normalized private input package. Inspect its required approval
+and source arguments from the repository root:
 
 ```powershell
-py -m pip install -r requirements.txt
-py scripts\build_cognitive_security.py
+py scripts\build_canonical_public.py --help
 ```
 
 Run the standard-library validation suite with:
@@ -337,19 +319,13 @@ Run the standard-library validation suite with:
 py -m unittest discover -s tests/cognitive_security -p "test_*.py"
 ```
 
-The build writes the complete normalized QA release candidate to the ignored
-`analysis/cognitive-security/normalized/` directory, private reconciliation
-and sensitivity outputs beneath the ignored
-`analysis/cognitive-security/corpus-reconciliation/` directory, and the
-conservative, public-safe static JSON package to `data/cognitive-security/`.
-Public output is constructed from explicit field allowlists and excludes
-evidence quotations, detailed assignment rationales, internal notes, and
-detailed review queues. Browser-loaded source metadata uses opaque `ART-*`
-identifiers and safe aggregate QA only; source-workbook filenames, exact source
-hashes, worksheet names, and local paths remain in the ignored private release.
-The builder stages and validates all data before replacing valid generated
-files, uses deterministic ordering and UTF-8 JSON, and produces byte-identical
-output when inputs are unchanged.
+The projector constructs fresh records from exact recursive field allowlists,
+validates every payload in memory, compares deterministic serializations, and
+only then atomically replaces `data/cognitive-security/`. It excludes raw
+items, transcript text and paths, evidence excerpts, source filenames and
+hashes, private adjudication and review records, migration tables, and secrets.
+The legacy historical builder fails closed when a canonical public manifest is
+present so it cannot roll the public package backward.
 
 Episode-summary authoring is a separate, review-gated workflow. The command
 `py scripts\build_transcript_summaries.py manifest --transcript-root <private-root>`
@@ -364,35 +340,34 @@ reviewed, `episode_summaries.json` is frozen as an input to
 ordinary website builds. Public episode summaries are transcript-grounded
 syntheses generated from canonical episode transcripts. Analytical map
 relationships remain a separate product of the governed structured coding
-pipeline. `py scripts\build_cognitive_security.py` validates and carries the
-frozen artifact forward; it does not call an API or generate new summary prose.
+pipeline. The canonical public projector validates and carries the frozen
+artifact forward; it does not call an API or generate new summary prose.
 No transcript text or path, credential, private source package, or raw
 authoring response is published.
 
-A separate v2 analytical effort is underway, but its unfinished outputs are
-not inputs to this release. The public Explorer and its episode products use
-only the governed historical v1.1 package described here.
+A separate analytical effort in another worktree is not an input to this
+release and is not modified by the canonical public build.
 
-The Explorer fetches only this public package. The dedicated public
-`corpus_reconciliation.json` contains aggregate counts and interpretation, not
-the private identity ledger or item-level sensitivity tables. The Explorer
+The Explorer fetches only its canonical public package. The aggregate corpus
+record contains counts and interpretation, not the private identity ledger or
+item-level selection tables. The Explorer
 does not load transcripts, the private item corpus, speakers, quotations,
 evidence excerpts, source identities, internal review material, ignored
 analysis outputs, or source workbooks. Public episode summaries expose only
 reviewed synthesis prose, safe aggregate counts, and public entity IDs;
 source-linked item and quotation browsing remains held for a separate
-publication and attribution review. The Cognitive Security discourse entities
+publication and attribution review. Private historical provenance remains
+reproducible outside the public package. The Cognitive Security discourse entities
 remain separate from PSYWERX behavioral Drivers and do not extend or modify the
 Driver Ontology.
 
 ## Preview the static site
 
 Opening the HTML file directly will not allow the browser to fetch JSON. Start
-a local HTTP server from the repository root. The Explorer loads Driver,
-Family, approved explanation, Codebook, and Source JSON using GitHub
-Pages-compatible relative paths. It does not fetch Relationship data during
-normal public startup; relationship infrastructure remains preserved for a
-future graph-complete release.
+a local HTTP server from the repository root. Both public Explorers use GitHub
+Pages-compatible relative paths. The Cognitive Security Explorer eagerly loads
+its compact canonical entity records and loads semantic relationships and
+release provenance only when a detail or evidence-path interaction needs them.
 
 ```powershell
 py -m http.server 8000

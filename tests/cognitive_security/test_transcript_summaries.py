@@ -55,7 +55,7 @@ class TranscriptSummaryPublicTests(unittest.TestCase):
                     episodes[episode_id]["parsedEpisodeNumber"], row["episodeNumber"]
                 )
                 self.assertEqual(episodes[episode_id]["episodeTitle"], row["episodeTitle"])
-                self.assertEqual("transcript-grounded-synthesis-v1", row["summaryMethod"])
+                self.assertEqual("transcript-grounded-synthesis", row["summaryMethod"])
                 self.assertEqual(len(row["summary"].split()), row["summaryWordCount"])
                 self.assertGreaterEqual(row["summaryWordCount"], 100)
                 self.assertLessEqual(row["summaryWordCount"], 180)
