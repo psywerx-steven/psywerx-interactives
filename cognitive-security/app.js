@@ -1,6 +1,18 @@
 "use strict";
 
 const DATA_BASE = "../data/cognitive-security/";
+const DISCOVERY_BASE = "../data/cognitive-security-discovery/";
+const ICON_BASE = "./assets/entry-icons/";
+const DISCOVERY_DATA_FILES = Object.freeze([
+  "episode_metadata.json",
+  "episode_discovery.json",
+  "topic_episode_index.json",
+  "similarity_data.json",
+  "presentation_copy.json",
+]);
+const EAGER_DISCOVERY_FILES = Object.freeze([
+  "episode_metadata.json", "episode_discovery.json", "topic_episode_index.json",
+]);
 const PUBLIC_DATA_FILES = Object.freeze([
   "manifest.json",
   "coverage.json",
@@ -93,25 +105,25 @@ const ENTITY_INDEX_VIEWS = Object.freeze({
 });
 const ENTITY_LABELS = Object.freeze({
   category: "Category",
-  family: "Canonical family",
-  cluster: "Cluster",
+  family: "Subcategory",
+  cluster: "Topic",
   theme: "Theme",
   tension: "Tension",
   narrative: "Narrative",
-  categoryFinding: "Category finding",
+  categoryFinding: "Finding or open question",
   scenario: "Scenario",
-  episode: "Public release",
+  episode: "Episode",
 });
 const ENTITY_PLURAL_LABELS = Object.freeze({
   category: "Categories",
-  family: "Canonical families",
-  cluster: "Clusters",
+  family: "Subcategories",
+  cluster: "Topics",
   theme: "Themes",
   tension: "Tensions",
   narrative: "Narratives",
-  categoryFinding: "Category findings",
+  categoryFinding: "Findings and open questions",
   scenario: "Scenarios",
-  episode: "Public releases",
+  episode: "Episodes",
 });
 const SEARCH_ENTITY_TYPES = Object.freeze(DEEP_LINK_ENTITY_TYPES.slice());
 const ID_FIELDS = Object.freeze({
@@ -138,7 +150,8 @@ const RECORD_FILES = Object.freeze({
 });
 const ROUTE_PARAMETER_ORDER = Object.freeze([
   "view", "id", "q", "type", "category", "family", "theme", "scenario",
-  "tensionType", "support", "display", "path",
+  "tensionType", "support", "display", "path", "range", "sort", "number",
+  "position", "topic",
 ]);
 const LEGACY_VIEW_ALIASES = Object.freeze({
   overview: "start",
@@ -244,6 +257,12 @@ const state = {
   relationshipSemantics: new Map(),
   provenanceAdjacency: new Map(),
   lazyPromises: new Map(),
+  discoveryData: new Map(),
+  discoveryManifestFiles: new Set(),
+  discoveryPromises: new Map(),
+  iconRegistry: new Map(),
+  discoveryMethod: null,
+  similarityMethod: null,
   initialized: false,
   renderToken: 0,
 };
@@ -252,6 +271,9 @@ const $ = function (selector) { return document.querySelector(selector); };
 const globalSearchForm = $("#global-search-form");
 const globalSearchInput = $("#global-search-input");
 const viewNavigation = $("#view-navigation");
+const landingHero = $("#landing-hero");
+const viewHeader = $("#view-header");
+const viewToolbar = $("#view-toolbar");
 const appStatus = $("#app-status");
 const loadError = $("#load-error");
 const loadErrorMessage = $("#load-error-message");
@@ -405,6 +427,136 @@ async function fetchPublicJson(fileName) {
   const payload = await response.json();
   state.data.set(fileName, payload);
   return payload;
+}
+
+async function ensureDiscoveryManifest() {
+  if (state.discoveryData.has("discovery_manifest.json")) return state.discoveryData.get("discovery_manifest.json");
+  if (!state.discoveryPromises.has("discovery_manifest.json")) {
+    state.discoveryPromises.set("discovery_manifest.json", fetch(DISCOVERY_BASE + "discovery_manifest.json", { cache: "default" }).then(async function (response) {
+      if (!response.ok) throw new Error("Unable to load the episode discovery manifest (HTTP " + response.status + ").");
+      const manifest = await response.json();
+      assert(isObject(manifest), "The discovery manifest is missing.");
+      assert(manifest.schemaVersion === "1.0", "Unsupported discovery schema.");
+      assert(Array.isArray(manifest.publicFiles) && sameStringSet(manifest.publicFiles, DISCOVERY_DATA_FILES), "The discovery allowlist is invalid.");
+      assert(manifest.fileCount === DISCOVERY_DATA_FILES.length, "The discovery file count is invalid.");
+      assert(manifest.counts.publicReleaseCount === EXPECTED_COUNTS.episode, "The discovery release count changed.");
+      manifest.publicFiles.forEach(function (fileName) { state.discoveryManifestFiles.add(fileName); });
+      state.discoveryData.set("discovery_manifest.json", manifest);
+      return manifest;
+    }));
+  }
+  return state.discoveryPromises.get("discovery_manifest.json");
+}
+
+async function fetchDiscoveryJson(fileName) {
+  assert(DISCOVERY_DATA_FILES.includes(fileName), "Blocked non-discovery file request: " + fileName);
+  await ensureDiscoveryManifest();
+  assert(state.discoveryManifestFiles.has(fileName), "File is not declared by the discovery manifest: " + fileName);
+  if (state.discoveryData.has(fileName)) return state.discoveryData.get(fileName);
+  if (!state.discoveryPromises.has(fileName)) {
+    state.discoveryPromises.set(fileName, fetch(DISCOVERY_BASE + fileName, { cache: "default" }).then(async function (response) {
+      if (!response.ok) throw new Error("Unable to load " + fileName + " (HTTP " + response.status + ").");
+      const payload = await response.json();
+      assertNoForbiddenRecordKeys(payload, fileName);
+      state.discoveryData.set(fileName, payload);
+      return payload;
+    }));
+  }
+  return state.discoveryPromises.get(fileName);
+}
+
+async function ensureIconRegistry() {
+  if (state.iconRegistry.size) return;
+  const response = await fetch(ICON_BASE + "icon_registry.json", { cache: "default" });
+  if (!response.ok) throw new Error("Unable to load the entry icon registry (HTTP " + response.status + ").");
+  const payload = await response.json();
+  assert(payload.schemaVersion === "1.0" && Array.isArray(payload.icons) && payload.icons.length === 11, "The entry icon registry is invalid.");
+  payload.icons.forEach(function (icon) {
+    assert(typeof icon.key === "string" && !state.iconRegistry.has(icon.key), "Duplicate or missing entry icon key.");
+    assert(icon.width === 256 && icon.height === 256, "Entry icon dimensions must be 256 by 256.");
+    assert(/^png\/[a-z-]+\.png$/.test(icon.png) && /^webp\/[a-z-]+\.webp$/.test(icon.webp), "Entry icon path is invalid.");
+    state.iconRegistry.set(icon.key, icon);
+  });
+}
+
+function entryIcon(key, size, className) {
+  const icon = state.iconRegistry.get(key);
+  assert(icon, "Missing entry icon: " + key);
+  const picture = element("picture", "entry-icon" + (className ? " " + className : ""));
+  const source = element("source");
+  source.srcset = ICON_BASE + icon.webp;
+  source.type = "image/webp";
+  const image = element("img");
+  image.src = ICON_BASE + icon.png;
+  image.width = icon.width;
+  image.height = icon.height;
+  image.alt = "";
+  image.decoding = "async";
+  image.style.width = Math.min(128, size || 80) + "px";
+  image.style.height = Math.min(128, size || 80) + "px";
+  picture.appendChild(source);
+  picture.appendChild(image);
+  return picture;
+}
+
+function validateEpisodeMetadata(records) {
+  assert(Array.isArray(records) && records.length === EXPECTED_COUNTS.episode, "Episode metadata must cover all releases.");
+  const seen = new Set();
+  records.forEach(function (record) {
+    assert(isObject(record) && sameStringSet(Object.keys(record), ["episodeId", "publishedAt", "guests", "officialEpisodeUrl"]), "Episode metadata field allowlist mismatch.");
+    assert(getEntity("episode", record.episodeId) && !seen.has(record.episodeId), "Episode metadata has an unknown or duplicate ID.");
+    seen.add(record.episodeId);
+    assert(record.publishedAt === null || /^\d{4}-\d{2}-\d{2}$/.test(record.publishedAt), "Invalid publication date.");
+    assert(record.guests === null || (Array.isArray(record.guests) && record.guests.length && record.guests.every(hasValue)), "Invalid guest metadata.");
+    if (record.officialEpisodeUrl !== null) {
+      const url = new URL(record.officialEpisodeUrl);
+      assert(url.protocol === "https:" && url.hostname === "information-professionals.org", "Episode source URL is outside the official publisher domain.");
+    }
+  });
+  return records;
+}
+
+async function ensureEpisodeMetadata() {
+  if (state.maps.metadataByEpisode) return;
+  const records = validateEpisodeMetadata(await fetchDiscoveryJson("episode_metadata.json"));
+  state.maps.metadataByEpisode = uniqueRecordMap(records, "episodeId", "Episode metadata");
+}
+
+async function ensureEpisodeDiscovery() {
+  if (state.maps.discoveryByEpisode && state.maps.topicEpisodes) return;
+  const payloads = await Promise.all(EAGER_DISCOVERY_FILES.map(fetchDiscoveryJson));
+  validateEpisodeMetadata(payloads[0]);
+  const discovery = payloads[1];
+  const topicIndex = payloads[2];
+  assert(discovery.schemaVersion === "1.0" && Array.isArray(discovery.records) && discovery.records.length === EXPECTED_COUNTS.episode, "Episode discovery records are invalid.");
+  assert(topicIndex.schemaVersion === "1.0" && Array.isArray(topicIndex.records) && topicIndex.records.length === EXPECTED_COUNTS.cluster, "Topic episode index is invalid.");
+  state.maps.metadataByEpisode = uniqueRecordMap(payloads[0], "episodeId", "Episode metadata");
+  state.maps.discoveryByEpisode = uniqueRecordMap(discovery.records, "episodeId", "Episode discovery");
+  state.discoveryMethod = discovery.method;
+  state.maps.topicEpisodes = new Map();
+  topicIndex.records.forEach(function (record) {
+    assert(getEntity("cluster", record.topicId) && !state.maps.topicEpisodes.has(record.topicId), "Unknown or duplicate topic index ID.");
+    assert(Array.isArray(record.episodeIds) && record.episodeIds.every(function (id) { return Boolean(getEntity("episode", id)); }), "Topic index has an unknown episode.");
+    state.maps.topicEpisodes.set(record.topicId, record.episodeIds.slice());
+  });
+}
+
+async function ensureSimilarityData() {
+  if (state.maps.similarityProfiles) return;
+  await ensureEpisodeDiscovery();
+  const payload = await fetchDiscoveryJson("similarity_data.json");
+  assert(payload.schemaVersion === "1.0" && payload.contentUnitCount === 241 && Array.isArray(payload.profiles) && payload.profiles.length === 241, "Similarity profiles are invalid.");
+  state.similarityMethod = payload.method;
+  state.maps.similarityProfiles = new Map();
+  payload.profiles.forEach(function (profile) {
+    assert(getEntity("episode", profile.contentEpisodeId) && !state.maps.similarityProfiles.has(profile.contentEpisodeId), "Unknown or duplicate similarity profile.");
+    const vector = new Map();
+    asArray(profile.topics).forEach(function (topic) {
+      assert(getEntity("cluster", topic.topicId) && Number.isFinite(topic.normalizedWeight) && topic.normalizedWeight > 0, "Invalid similarity topic vector.");
+      vector.set(topic.topicId, topic.normalizedWeight);
+    });
+    state.maps.similarityProfiles.set(profile.contentEpisodeId, vector);
+  });
 }
 
 function validateManifest(manifest) {
@@ -761,7 +913,13 @@ function showEmpty(title, message) {
 }
 
 function focusViewHeading() {
-  requestAnimationFrame(function () { viewTitle.focus({ preventScroll: false }); });
+  requestAnimationFrame(function () {
+    const target = landingHero.hidden ? viewTitle : $("#page-title");
+    if (target) {
+      target.tabIndex = -1;
+      target.focus({ preventScroll: false });
+    }
+  });
 }
 
 function setLoading(active) {
@@ -772,7 +930,7 @@ function setLoading(active) {
 
 function showLoadError(error) {
   setLoading(false);
-  loadErrorMessage.textContent = error && error.message ? error.message : "The canonical public package could not be loaded.";
+  loadErrorMessage.textContent = error && error.message ? error.message : "The public map data could not be loaded.";
   loadError.hidden = false;
   appStatus.textContent = "The Cognitive Security map could not be loaded.";
 }
@@ -789,13 +947,13 @@ function statCard(value, label, detail) {
   return card;
 }
 
-function cardShell(type, record, bodyText) {
+function cardShell(type, record, bodyText, stretched) {
   const card = element("article", "map-card map-card--" + type);
   card.dataset.entityType = type;
   const id = entityId(type, record);
-  card.appendChild(element("p", "map-card__kicker", ENTITY_LABELS[type] + " · " + id));
+  card.appendChild(element("p", "map-card__kicker", ENTITY_LABELS[type]));
   const heading = element("h3", "map-card__title");
-  heading.appendChild(entityLink(type, id, entityName(type, record)));
+  heading.appendChild(entityLink(type, id, entityName(type, record), "entity-link" + (stretched ? " map-card__stretched-link" : "")));
   card.appendChild(heading);
   if (bodyText) card.appendChild(element("p", "map-card__body", truncate(bodyText, 260)));
   return card;
@@ -857,7 +1015,7 @@ function definitionRows(rows) {
 
 function entityChipList(type, ids, emptyText) {
   const valid = Array.from(new Set(asArray(ids))).filter(function (id) { return getEntity(type, id); });
-  if (!valid.length) return element("p", "quiet-note", emptyText || "No canonical links are recorded.");
+  if (!valid.length) return element("p", "quiet-note", emptyText || "No links are recorded.");
   const list = element("div", "entity-chip-list");
   valid.sort(function (left, right) {
     return entityName(type, getEntity(type, left)).localeCompare(entityName(type, getEntity(type, right)), undefined, { numeric: true });
@@ -873,32 +1031,32 @@ function supportReach(record) {
 
 const SUPPORT_DERIVATION = Object.freeze({
   cluster: "For a cluster, primary support comes from retained items directly coded to that cluster.",
-  family: "For a family, primary support comes from its member clusters; the family was not directly coded at item level.",
-  theme: "For a theme, primary support comes from primary-support families and clusters; the theme was not directly coded at item level.",
+  family: "For a subcategory, primary support comes from its member topics; the subcategory was not directly coded at item level.",
+  theme: "For a theme, primary support comes from primary-support subcategories and topics; the theme was not directly coded at item level.",
   tension: "For a tension, primary support comes from evidence directly allocated to Pole A or Pole B.",
-  narrative: "For a narrative, primary evidence is inherited through integrated canonical constructs; the narrative was not directly coded at item level.",
-  finding: "For a finding, primary evidence is traced through supporting families and clusters; the finding was not directly coded at item level.",
-  scenario: "For a scenario, primary evidence is traced through relevant canonical constructs; the scenario was not directly coded at item level.",
+  narrative: "For a narrative, primary evidence is inherited through integrated map constructs; the narrative was not directly coded at item level.",
+  finding: "For a finding, primary evidence is traced through supporting subcategories and topics; the finding was not directly coded at item level.",
+  scenario: "For a scenario, primary evidence is traced through relevant map constructs; the scenario was not directly coded at item level.",
 });
 
-function renderSupportPanel(record, entityType) {
+function renderSupportPanel(record, entityType, extraContent) {
   if (!record || !record.support) return null;
   const support = record.support;
   const primary = support.primarySupport;
   const reach = support.broaderTraceableReach;
-  const section = sectionBlock(
-    "Corpus support",
-    "Support is shown in two layers. Primary support represents the governed evidence designated as primary for this entity. The evidence path depends on entity type. Broader traceable reach describes where that evidence can be traced. " + SUPPORT_INTERPRETATION,
-    "support-panel"
-  );
+  const disclosure = element("details", "support-panel analytical-details");
+  disclosure.appendChild(element("summary", null, "Analytical details"));
+  const section = element("div", "analytical-details__body");
+  section.appendChild(element("p", "section-intro", "Primary support is the evidence designated as primary for this entity. Its path depends on entity type; broader reach describes where that evidence can be traced."));
+  asArray(extraContent).forEach(function (node) { if (node) section.appendChild(node); });
   section.appendChild(element("h3", "support-layer-title", "Primary corpus support"));
   section.appendChild(element("p", "evidence-boundary-note", SUPPORT_DERIVATION[entityType] || "Primary support follows the governed evidence path for this entity type."));
   const summary = element("div", "support-summary");
   summary.appendChild(statCard(formatNumber(primary.itemCount), "primary-support items", "governed primary evidence"));
   summary.appendChild(statCard(formatPercent(primary.share), "primary-support share", "share of this entity’s traceable item support"));
   summary.appendChild(statCard(formatNumber(primary.primaryContentUnitCount), "primary-support content units", "primary evidence breadth"));
-  summary.appendChild(statCard(formatNumber(primary.primaryFamilyCount), "primary families", "families in the primary evidence path"));
-  summary.appendChild(statCard(formatNumber(primary.primaryClusterCount), "primary clusters", "clusters in the primary evidence path"));
+  summary.appendChild(statCard(formatNumber(primary.primaryFamilyCount), "primary subcategories", "subcategories in the primary evidence path"));
+  summary.appendChild(statCard(formatNumber(primary.primaryClusterCount), "primary topics", "topics in the primary evidence path"));
   summary.appendChild(statCard(formatNumber(primary.categoryBreadth), "primary category breadth", "categories in the primary evidence path"));
   section.appendChild(summary);
   if (isObject(primary.concentration)) {
@@ -920,8 +1078,8 @@ function renderSupportPanel(record, entityType) {
     { label: "Content units", value: formatNumber(reach.contentUnitCount) },
     { label: "Public releases", value: formatNumber(reach.publicReleaseCount) },
     { label: "Inherited release coverage", value: formatNumber(reach.inheritedPublicReleaseCount) },
-    { label: "Clusters", value: formatNumber(reach.clusterCount) },
-    { label: "Families", value: formatNumber(reach.familyCount) },
+    { label: "Topics", value: formatNumber(reach.clusterCount) },
+    { label: "Subcategories", value: formatNumber(reach.familyCount) },
     { label: "Category breadth", value: formatNumber(reach.categoryBreadth) },
     { label: "Interpretation", value: support.interpretation },
     { label: "Limitations", value: support.limitations },
@@ -936,7 +1094,8 @@ function renderSupportPanel(record, entityType) {
     ]));
   }
   section.appendChild(details);
-  return section;
+  disclosure.appendChild(section);
+  return disclosure;
 }
 
 function searchFieldsFor(type, record) {
@@ -1245,11 +1404,11 @@ async function canonicalizeRoute(input) {
     return {
       route: { view: LEGACY_DETAIL_FALLBACKS[route.view] },
       replace: true,
-      notice: "This link points to content that has been reorganized. No single successor was inferred; the canonical index is shown.",
+      notice: "This link points to content that has been reorganized. No single successor was inferred; the relevant index is shown.",
     };
   }
   if (!PRIMARY_VIEWS.includes(route.view) && !ROUTE_ENTITIES[route.view]) {
-    return { route: { view: "start" }, replace: true, notice: "That view is not part of the canonical public map. Start Here is shown." };
+    return { route: { view: "start" }, replace: true, notice: "That view is not part of this public map. Start Here is shown." };
   }
   const type = ROUTE_ENTITIES[route.view];
   if (type && (!route.id || !getEntity(type, route.id))) {
@@ -1258,7 +1417,7 @@ async function canonicalizeRoute(input) {
     return {
       route: { view: ENTITY_INDEX_VIEWS[type] },
       replace: true,
-      notice: "This link points to content that has been reorganized. The relevant canonical index is shown without inferring a replacement.",
+      notice: "This link points to content that has been reorganized. The relevant index is shown without inferring a replacement.",
     };
   }
   return { route: route, replace: false, notice: "" };
@@ -1295,12 +1454,13 @@ async function copyCurrentLink() {
   return copied;
 }
 
-function renderCopyLinkAction() {
-  const button = element("button", "secondary-button", "Copy link");
+function renderCopyLinkAction(route) {
+  const isEpisode = route && route.view === "episode";
+  const button = element("button", isEpisode ? "text-button" : "secondary-button", isEpisode ? "Share this summary" : "Copy link");
   button.type = "button";
   button.addEventListener("click", async function () {
     const copied = await copyCurrentLink();
-    showNotice(copied ? "Canonical link copied." : "Copy the canonical URL from the browser address bar.");
+    showNotice(copied ? "Link copied." : "Copy the URL from the browser address bar.");
   });
   viewActions.appendChild(button);
 }
@@ -1353,16 +1513,26 @@ function modeFilterForm(route, config) {
   return form;
 }
 
-function detailHero(type, record, lede) {
-  const article = element("article", "record-detail__hero");
-  article.dataset.entityType = type;
-  const meta = element("div", "detail-meta");
-  meta.appendChild(chip(ENTITY_LABELS[type]));
-  meta.appendChild(chip(entityId(type, record)));
-  article.appendChild(meta);
-  article.appendChild(element("h3", null, entityName(type, record)));
-  if (lede) article.appendChild(element("p", "record-detail__lede", lede));
-  return article;
+function iconKeyForEntity(type) {
+  return {
+    category: "categories",
+    family: "subcategories",
+    cluster: "topics",
+    theme: "themes",
+    tension: "tensions",
+    narrative: "narratives",
+    categoryFinding: "findings-open-questions",
+    scenario: "scenarios",
+    episode: "episodes",
+  }[type];
+}
+
+function detailHero(type, record) {
+  const marker = element("div", "record-detail__marker");
+  marker.dataset.entityType = type;
+  marker.appendChild(entryIcon(iconKeyForEntity(type), 52, "entry-icon--heading"));
+  marker.appendChild(element("p", "map-card__kicker", ENTITY_LABELS[type]));
+  return marker;
 }
 
 function detailSection(title, content, introduction) {
@@ -1409,62 +1579,89 @@ function renderStart() {
   const counts = state.data.get("manifest.json").counts;
   setHeader(
     "Start Here",
-    "Read the canonical map from structure to support",
-    "Begin with the Category → Family → Cluster hierarchy, then compare cross-cutting themes, tensions, narratives, and scenarios. Open any record to follow its traceable public support.",
-    "One governed canonical public architecture"
+    "Cognitive Security Explorer",
+    "Explore recurring subjects, cross-cutting interpretations, possible futures, and the conversations behind the map.",
+    ""
   );
-  setBreadcrumbs([{ label: "Start Here", current: true }]);
+  setBreadcrumbs([]);
 
-  const metrics = element("div", "stat-grid start-metrics");
-  metrics.appendChild(statCard(formatNumber(counts.categoryCount), "focal categories", "the top-level analytic lenses"));
-  metrics.appendChild(statCard(formatNumber(counts.familyCount), "canonical families", "within-category groupings"));
-  metrics.appendChild(statCard(formatNumber(counts.clusterCount), "clusters", "the stable concept layer"));
-  metrics.appendChild(statCard(formatNumber(counts.publicReleaseCount), "public releases", formatNumber(counts.canonicalContentUnitCount) + " unique content units"));
-  viewContent.appendChild(metrics);
+  const entryDefinitions = [
+    { key: "categories", label: "Categories", route: { view: "families" }, description: "Broad areas of the analysis.", count: counts.categoryCount },
+    { key: "subcategories", label: "Subcategories", route: { view: "families", display: "subcategories" }, description: "Related subjects grouped inside a category.", count: counts.familyCount },
+    { key: "topics", label: "Topics", route: { view: "families", display: "topics" }, description: "Specific recurring subjects.", count: counts.clusterCount },
+    { key: "themes", label: "Themes", route: { view: "themes" }, description: "Patterns spanning different areas.", count: counts.themeCount },
+    { key: "tensions", label: "Tensions", route: { view: "tensions" }, description: "Competing priorities, assumptions, or approaches.", count: counts.tensionCount },
+    { key: "narratives", label: "Narratives", route: { view: "narratives" }, description: "Broader interpretations integrating multiple findings.", count: counts.narrativeCount },
+    { key: "findings-open-questions", label: "Findings & Open Questions", route: { view: "search", type: "categoryFinding" }, description: "Specific takeaways and unresolved questions.", count: counts.categoryFindingCount },
+    { key: "scenarios", label: "Scenarios", route: { view: "scenarios" }, description: "Possible future situations for exploration.", count: counts.scenarioCount },
+    { key: "episodes", label: "Episodes", route: { view: "episodes" }, description: "Individual conversations and original sources.", count: counts.publicReleaseCount },
+    { key: "search", label: "Search", route: { view: "search" }, description: "Find subjects across the entire map." },
+    { key: "methodology", label: "Methodology", route: { view: "methodology" }, description: "Understand the process, evidence, and limits." },
+  ];
 
-  const path = sectionBlock("How to move through the map", "Each level answers a different question. The hierarchy is organizational; cross-cutting products are interpretive connections, not causal steps.");
-  const journey = element("ol", "start-journey");
-  [
-    ["1", "Choose a category", "Locate the part of practice or discourse you want to understand."],
-    ["2", "Open a family", "See a coherent within-category grouping and its inclusion boundaries."],
-    ["3", "Inspect a cluster", "Read the stable concept definition and transcript-grounded synthesis."],
-    ["4", "Follow support", "Move one public relationship slice at a time to families, clusters, and releases."],
-  ].forEach(function (step) {
-    const item = element("li");
-    item.appendChild(element("span", "start-journey__number", step[0]));
-    const copy = element("div");
-    copy.appendChild(element("strong", null, step[1]));
-    copy.appendChild(element("p", null, step[2]));
-    item.appendChild(copy);
-    journey.appendChild(item);
-  });
-  path.appendChild(journey);
-  viewContent.appendChild(path);
-
-  const entries = sectionBlock("Choose an entry point", "You can begin with the hierarchy or enter through a cross-cutting analytical product.");
-  const grid = element("div", "map-card-grid");
-  [
-    ["families", "Categories & families", "Browse the complete Category → Family → Cluster hierarchy.", "Explore Categories"],
-    ["themes", "Category × Theme heatmap", "Compare governed primary-support breadth across all 77 category/theme cells.", "Explore Themes"],
-    ["tensions", "Tension matrix", "Compare twenty neutral two-pole constructs and filter their traceable breadth.", "Explore Tensions"],
-    ["narratives", "Narratives", "Read five integrative claims and the boundaries around them.", "Explore Narratives"],
-    ["scenarios", "Scenarios", "Explore six plausible futures, branch points, indicators, and response options.", "Explore Scenarios"],
-    ["episodes", "Public releases", "Browse transcript-grounded summaries for all 242 public releases.", "Browse Episodes"],
-    ["search", "Search", "Search canonical names, definitions, synthesis prose, scenarios, and release summaries.", "Search"],
-  ].forEach(function (entry) {
-    const card = element("article", "map-card");
-    card.appendChild(element("h3", "map-card__title", entry[1]));
-    card.appendChild(element("p", null, entry[2]));
-    card.appendChild(routeLink({ view: entry[0] }, entry[3], "card-link"));
+  const entries = sectionBlock("Choose an entry point", "Start with a broad area, a cross-cutting interpretation, a possible future, or an individual conversation.");
+  const grid = element("div", "entry-grid");
+  entryDefinitions.forEach(function (entry) {
+    const card = routeLink(entry.route, "", "entry-card");
+    card.appendChild(entryIcon(entry.key, 88, "entry-icon--tile"));
+    const copy = element("span", "entry-card__copy");
+    copy.appendChild(element("strong", "entry-card__title", entry.label));
+    copy.appendChild(element("span", "entry-card__description", entry.description));
+    if (Number.isInteger(entry.count)) copy.appendChild(element("span", "entry-card__count", formatNumber(entry.count)));
+    card.appendChild(copy);
     grid.appendChild(card);
   });
   entries.appendChild(grid);
   viewContent.appendChild(entries);
-  viewContent.appendChild(cautionBox(
-    "How to interpret support",
-    SUPPORT_INTERPRETATION,
-    "quiet"
-  ));
+
+  function overviewNode(key) {
+    const entry = entryDefinitions.find(function (item) { return item.key === key; });
+    const link = routeLink(entry.route, "", "overview-node overview-node--" + key);
+    link.appendChild(entryIcon(key, 60, "entry-icon--overview"));
+    link.appendChild(element("span", null, entry.label));
+    return link;
+  }
+
+  const overview = sectionBlock("How the Explorer fits together", "The connections below organize browsing; they do not assert causation or imply that every record connects to every other record.", "functional-overview");
+  const map = element("div", "overview-map");
+  const sources = element("section", "overview-group overview-group--sources");
+  sources.appendChild(element("h4", null, "Source conversations"));
+  sources.appendChild(overviewNode("episodes"));
+  const hierarchy = element("section", "overview-group overview-group--hierarchy");
+  hierarchy.appendChild(element("h4", null, "Organizational hierarchy"));
+  const hierarchyNodes = element("div", "overview-hierarchy");
+  hierarchyNodes.appendChild(overviewNode("categories"));
+  hierarchyNodes.appendChild(element("span", "overview-relation", "contains"));
+  hierarchyNodes.appendChild(overviewNode("subcategories"));
+  hierarchyNodes.appendChild(element("span", "overview-relation", "contains"));
+  hierarchyNodes.appendChild(overviewNode("topics"));
+  hierarchy.appendChild(hierarchyNodes);
+  const cross = element("section", "overview-group overview-group--cross");
+  cross.appendChild(element("h4", null, "Cross-cutting interpretations"));
+  append(cross, overviewNode("themes"), overviewNode("tensions"));
+  const synthesis = element("section", "overview-group overview-group--synthesis");
+  synthesis.appendChild(element("h4", null, "Synthesis and exploration"));
+  append(synthesis, overviewNode("narratives"), overviewNode("scenarios"));
+  const findings = element("section", "overview-group overview-group--findings");
+  findings.appendChild(element("h4", null, "Contextual takeaways"));
+  findings.appendChild(overviewNode("findings-open-questions"));
+  append(map, sources, hierarchy, cross, synthesis, findings);
+  overview.appendChild(map);
+
+  const alternative = element("details", "overview-text");
+  alternative.appendChild(element("summary", null, "Text version of this overview"));
+  const textNav = element("nav");
+  textNav.setAttribute("aria-label", "Explorer overview destinations");
+  const list = element("ul", "plain-list");
+  entryDefinitions.forEach(function (entry) {
+    const item = element("li");
+    item.appendChild(routeLink(entry.route, entry.label + " — " + entry.description, "entity-link"));
+    list.appendChild(item);
+  });
+  textNav.appendChild(list);
+  alternative.appendChild(textNav);
+  overview.appendChild(alternative);
+  viewContent.appendChild(overview);
 }
 
 function familyCard(family) {
@@ -1472,15 +1669,10 @@ function familyCard(family) {
   const metrics = element("div", "card-metrics");
   const category = getEntity("category", family.categoryId);
   if (category) metrics.appendChild(entityLink("category", category.categoryId, category.name, "entity-chip"));
-  metrics.appendChild(chip(formatNumber(memberClusterIds(family).length) + " clusters"));
-  const primary = primarySupport(family);
-  if (primary) metrics.appendChild(chip(formatNumber(primary.itemCount) + " primary items", "quiet"));
+  metrics.appendChild(chip(formatNumber(memberClusterIds(family).length) + " topics"));
   if (state.relationshipAdjacency.size) {
     metrics.appendChild(chip(formatNumber(relatedIds("family", family.familyId, "theme").length) + " themes", "theme"));
     metrics.appendChild(chip(formatNumber(relatedIds("family", family.familyId, "tension").length) + " tensions", "tension"));
-  }
-  if (state.provenanceAdjacency.size) {
-    metrics.appendChild(chip(formatNumber(supportingEpisodeIdsForFamily(family).length) + " supporting releases", "quiet"));
   }
   card.appendChild(metrics);
   return card;
@@ -1490,34 +1682,27 @@ function categoryCard(category) {
   const families = state.maps.familyByCategory.get(category.categoryId) || [];
   const card = cardShell("category", category, firstValue(category, ["summary", "soWhat"], ""));
   const metrics = element("div", "card-metrics");
-  metrics.appendChild(chip(formatNumber(families.length) + " families"));
+  metrics.appendChild(chip(formatNumber(families.length) + " subcategories"));
   const clusterCount = families.reduce(function (sum, family) { return sum + memberClusterIds(family).length; }, 0);
-  metrics.appendChild(chip(formatNumber(clusterCount) + " clusters", "quiet"));
+  metrics.appendChild(chip(formatNumber(clusterCount) + " topics", "quiet"));
   card.appendChild(metrics);
   return card;
 }
 
 async function renderFamilies(route) {
-  await Promise.all([ensureRelationships(), ensureProvenance()]);
   const query = normalizeText(route.q);
   const selectedCategory = state.maps.category.has(route.category) ? route.category : "";
-  const categories = state.records.category.filter(function (category) {
-    return (!selectedCategory || category.categoryId === selectedCategory) && recordMatches(category, "category", query);
-  });
-  const families = state.records.family.filter(function (family) {
-    return (!selectedCategory || family.categoryId === selectedCategory) && recordMatches(family, "family", query);
-  });
   setHeader(
-    "Canonical hierarchy",
-    "Categories & families",
-    "Browse seven focal categories, fifty canonical families, and the 127 stable clusters assigned exactly once to their primary family.",
-    formatNumber(families.length) + " matching families · " + formatNumber(categories.length) + " matching categories"
+    "Browse the hierarchy",
+    "Categories, subcategories, and topics",
+    "Start with seven broad categories, then expand a category to discover its subcategories and topics.",
+    "7 categories · 50 subcategories · 127 topics"
   );
-  setBreadcrumbs([{ label: "Categories & families", current: true }]);
+  setBreadcrumbs([{ label: "Categories", current: true }]);
   viewContent.appendChild(modeFilterForm(route, {
     view: "families",
-    label: "Search and filter categories and families",
-    placeholder: "Search family definitions and boundaries",
+    label: "Search and filter categories, subcategories, and topics",
+    placeholder: "Search names and short descriptions",
     filters: [{
       name: "category",
       label: "Category",
@@ -1526,31 +1711,126 @@ async function renderFamilies(route) {
     }],
   }));
 
-  if (!query && !selectedCategory) {
-    const categorySection = sectionBlock("Seven focal categories", "Categories are the public top level. Open one to see its families, clusters, findings, and open questions.");
-    const categoryGrid = element("div", "map-card-grid map-card-grid--categories");
-    sortByName("category", state.records.category).forEach(function (category) { categoryGrid.appendChild(categoryCard(category)); });
-    categorySection.appendChild(categoryGrid);
-    viewContent.appendChild(categorySection);
+  const firstCategory = sortByName("category", state.records.category)[0];
+  const firstFamily = sortByName("family", state.maps.familyByCategory.get(firstCategory.categoryId) || [])[0];
+  const firstTopic = firstFamily && sortByName("cluster", memberClusterIds(firstFamily).map(function (id) { return getEntity("cluster", id); }).filter(Boolean))[0];
+  if (firstCategory && firstFamily && firstTopic) {
+    viewContent.appendChild(element("p", "hierarchy-example", "Example: “" + firstCategory.name + "” is a category; “" + firstFamily.name + "” is one of its subcategories; and “" + firstTopic.name + "” is a topic inside that subcategory."));
   }
 
-  if (!families.length && !categories.length) {
-    showEmpty("No canonical family matched", "Try a broader term or remove the category filter.");
+  let stored = { categories: [], families: [] };
+  try {
+    const parsed = JSON.parse(localStorage.getItem("cognitive-security-hierarchy-expanded") || "{}");
+    stored.categories = asArray(parsed.categories);
+    stored.families = asArray(parsed.families);
+  } catch (_error) {
+    stored = { categories: [], families: [] };
+  }
+  const openCategories = new Set(stored.categories);
+  const openFamilies = new Set(stored.families);
+  function remember() {
+    try {
+      localStorage.setItem("cognitive-security-hierarchy-expanded", JSON.stringify({
+        categories: Array.from(openCategories).sort(),
+        families: Array.from(openFamilies).sort(),
+      }));
+    } catch (_error) {
+      // Browsing still works when storage is unavailable.
+    }
+  }
+
+  const categoryContainer = element("div", "hierarchy-browser");
+  let visibleCategoryCount = 0;
+  sortByName("category", state.records.category).forEach(function (category) {
+    if (selectedCategory && category.categoryId !== selectedCategory) return;
+    const families = sortByName("family", state.maps.familyByCategory.get(category.categoryId) || []);
+    const familyMatches = new Map();
+    let descendantMatch = false;
+    families.forEach(function (family) {
+      const topics = sortByName("cluster", memberClusterIds(family).map(function (id) { return getEntity("cluster", id); }).filter(Boolean));
+      const matchingTopics = topics.filter(function (topic) { return recordMatches(topic, "cluster", query); });
+      const familyMatch = recordMatches(family, "family", query);
+      if (familyMatch || matchingTopics.length) descendantMatch = true;
+      familyMatches.set(family.familyId, { familyMatch: familyMatch, topics: topics, matchingTopics: matchingTopics });
+    });
+    const categoryMatch = recordMatches(category, "category", query);
+    if (query && !categoryMatch && !descendantMatch) return;
+    visibleCategoryCount += 1;
+
+    const categoryDetails = element("details", "hierarchy-category");
+    categoryDetails.dataset.categoryId = category.categoryId;
+    categoryDetails.open = Boolean(
+      query || selectedCategory || route.display === "subcategories" || route.display === "topics" || openCategories.has(category.categoryId)
+    );
+    const summary = element("summary", "hierarchy-category__summary");
+    summary.appendChild(entryIcon("categories", 64, "entry-icon--hierarchy"));
+    const summaryCopy = element("span");
+    summaryCopy.appendChild(element("strong", null, category.name));
+    summaryCopy.appendChild(element("span", null, truncate(firstValue(category, ["summary", "soWhat"], ""), 180)));
+    summaryCopy.appendChild(element("small", null, formatNumber(families.length) + " subcategories"));
+    summary.appendChild(summaryCopy);
+    categoryDetails.appendChild(summary);
+    const categoryBody = element("div", "hierarchy-category__body");
+    categoryBody.appendChild(entityLink("category", category.categoryId, "Read category overview", "card-link"));
+    const familyList = element("div", "hierarchy-family-list");
+    families.forEach(function (family, familyIndex) {
+      const match = familyMatches.get(family.familyId);
+      if (query && !categoryMatch && !match.familyMatch && !match.matchingTopics.length) return;
+      const familyDetails = element("details", "hierarchy-family");
+      familyDetails.dataset.familyId = family.familyId;
+      familyDetails.open = Boolean(
+        (query && (match.familyMatch || match.matchingTopics.length))
+        || openFamilies.has(family.familyId)
+        || (route.display === "topics" && familyIndex === 0)
+      );
+      const familySummary = element("summary", "hierarchy-family__summary");
+      familySummary.appendChild(element("strong", null, family.name));
+      familySummary.appendChild(element("span", null, truncate(family.definition, 165)));
+      familySummary.appendChild(element("small", null, formatNumber(match.topics.length) + " topics"));
+      familyDetails.appendChild(familySummary);
+      const familyBody = element("div", "hierarchy-family__body");
+      familyBody.appendChild(entityLink("family", family.familyId, "Read subcategory overview", "card-link"));
+      const topicList = element("ul", "hierarchy-topic-list");
+      const topicsToShow = query && !categoryMatch && !match.familyMatch ? match.matchingTopics : match.topics;
+      topicsToShow.forEach(function (topic) {
+        const item = element("li");
+        item.appendChild(entityLink("cluster", topic.clusterId, topic.name, "entity-link"));
+        item.appendChild(element("span", null, truncate(topic.summary || topic.definition, 150)));
+        topicList.appendChild(item);
+      });
+      familyBody.appendChild(topicList);
+      familyDetails.appendChild(familyBody);
+      familyDetails.addEventListener("toggle", function () {
+        if (familyDetails.open) openFamilies.add(family.familyId);
+        else openFamilies.delete(family.familyId);
+        remember();
+      });
+      familyList.appendChild(familyDetails);
+    });
+    categoryBody.appendChild(familyList);
+    categoryDetails.appendChild(categoryBody);
+    categoryDetails.addEventListener("toggle", function () {
+      if (categoryDetails.open) openCategories.add(category.categoryId);
+      else openCategories.delete(category.categoryId);
+      remember();
+    });
+    categoryContainer.appendChild(categoryDetails);
+  });
+  if (!visibleCategoryCount) {
+    showEmpty("No category, subcategory, or topic matched", "Try a broader term or remove the category filter.");
     return;
   }
-  const familySection = sectionBlock("Canonical families", "Families organize related clusters within one category; they do not imply a causal or chronological sequence.");
-  const familyGrid = element("div", "map-card-grid");
-  sortByName("family", families).forEach(function (family) { familyGrid.appendChild(familyCard(family)); });
-  familySection.appendChild(familyGrid);
-  viewContent.appendChild(familySection);
+  viewSummary.textContent = formatNumber(visibleCategoryCount) + " matching categories";
+  viewContent.appendChild(categoryContainer);
 }
 
-function renderFindingInline(finding) {
+function renderFindingInline(finding, options) {
+  const settings = options || {};
   const article = element("article", "finding-card");
   if (finding.findingType === "open-question") article.classList.add("finding-card--open-question");
   if (finding.findingType === "integrative-category-finding") article.classList.add("finding-card--integrative");
   article.appendChild(element("p", "map-card__kicker", humanize(firstValue(finding, ["findingType"], "Category finding"))));
-  article.appendChild(element("h4", null, entityName("categoryFinding", finding)));
+  if (!settings.hideTitle) article.appendChild(element("h4", null, entityName("categoryFinding", finding)));
   article.appendChild(element("p", null, firstValue(finding, ["finding", "coreFinding"], "")));
   const questions = firstValue(finding, ["openQuestions", "unresolvedQuestions"], []);
   if (asArray(questions).length) {
@@ -1568,23 +1848,23 @@ async function renderCategory(route) {
   await Promise.all([ensureRelationships(), ensureProvenance()]);
   const families = state.maps.familyByCategory.get(category.categoryId) || [];
   const findings = state.maps.findingsByCategory.get(category.categoryId) || [];
-  setHeader("Category", category.name, category.summary || "A focal category in the canonical practitioner discourse map.", formatNumber(families.length) + " families");
+  setHeader("Category", category.name, category.summary || "A broad area of the practitioner discourse map.", formatNumber(families.length) + " subcategories");
   setBreadcrumbs([
-    { label: "Categories & families", view: "families" },
+    { label: "Categories", view: "families" },
     { label: category.name, current: true },
   ]);
   const record = element("div", "record-detail");
   record.appendChild(detailHero("category", category, category.summary));
   if (category.soWhat) record.appendChild(detailSection("Why this category matters", category.soWhat));
-  const familySection = detailSection("Canonical families", element("div", "map-card-grid"), "Every cluster has one primary family; secondary relationships are labelled separately.");
+  const familySection = detailSection("Explore subcategories", element("div", "map-card-grid"), "Each subcategory groups related topics within this category.");
   const grid = familySection.querySelector(".map-card-grid");
   sortByName("family", families).forEach(function (family) { grid.appendChild(familyCard(family)); });
   record.appendChild(familySection);
   if (findings.length) {
     const findingGroups = element("div", "finding-groups");
     [
-      ["family-finding", "Family findings", "Findings tied to one canonical family and its governed primary support."],
-      ["integrative-category-finding", "Integrative category finding", "A category-level synthesis across related families."],
+      ["family-finding", "Subcategory findings", "Findings tied to one subcategory and its primary evidence."],
+      ["integrative-category-finding", "Integrative category finding", "A category-level synthesis across related subcategories."],
       ["open-question", "Open question", "An unresolved question retained for inquiry rather than presented as a finding."],
     ].forEach(function (groupDefinition) {
       const groupFindings = findings.filter(function (finding) { return finding.findingType === groupDefinition[0]; });
@@ -1608,46 +1888,48 @@ async function renderFamily(route) {
   await Promise.all([ensureRelationships(), ensureProvenance()]);
   const category = getEntity("category", family.categoryId);
   const clusters = memberClusterIds(family).map(function (id) { return getEntity("cluster", id); }).filter(Boolean);
-  setHeader("Canonical family", family.name, family.definition, formatNumber(clusters.length) + " primary clusters");
+  setHeader("Subcategory", family.name, family.definition, formatNumber(clusters.length) + " topics");
   setBreadcrumbs([
-    { label: "Categories & families", view: "families" },
+    { label: "Categories", view: "families" },
     { label: category.name, route: routeForEntity("category", category.categoryId) },
     { label: family.name, current: true },
   ]);
   const record = element("div", "record-detail");
   record.appendChild(detailHero("family", family, family.definition));
-  record.appendChild(detailSection("Scope and boundaries", definitionRows([
-    { label: "Include", value: family.inclusionRules },
-    { label: "Exclude", value: family.exclusionRules },
-    { label: "Distinguishing boundaries", value: family.distinguishingBoundaries },
-    { label: "Limitations", value: family.limitations },
-  ])));
-  const clusterGrid = element("div", "map-card-grid");
-  sortByName("cluster", clusters).forEach(function (cluster) {
-    clusterGrid.appendChild(cardShell("cluster", cluster, cluster.summary || cluster.definition));
-  });
-  record.appendChild(detailSection("Primary member clusters", clusterGrid, "These clusters have exactly one primary family assignment."));
-  if (secondaryClusterIds(family).length) {
-    record.appendChild(detailSection("Secondary cluster relationships", entityChipList("cluster", secondaryClusterIds(family)), "Secondary relationships preserve adjacency without changing primary membership."));
-  }
-  const relatedThemes = relatedIds("family", family.familyId, "theme");
-  const relatedTensions = relatedIds("family", family.familyId, "tension");
-  record.appendChild(detailSection("Related canonical synthesis", definitionRows([
-    { label: "Themes", value: entityChipList("theme", relatedThemes) },
-    { label: "Tensions", value: entityChipList("tension", relatedTensions) },
-  ]), "Semantic roles distinguish primary support, secondary support, conceptual framing, future extension, and tension support."));
   const familyFinding = state.records.categoryFinding.find(function (finding) {
     return finding.findingType === "family-finding" && asArray(finding.supportingFamilyIds).includes(family.familyId);
   });
   if (familyFinding) {
-    record.appendChild(detailSection("Family finding", renderFindingInline(familyFinding), "The corresponding finding is also shown on its category page."));
+    record.appendChild(detailSection("What the corpus says", renderFindingInline(familyFinding, { hideTitle: true })));
   }
+  const clusterGrid = element("div", "map-card-grid");
+  sortByName("cluster", clusters).forEach(function (cluster) {
+    clusterGrid.appendChild(cardShell("cluster", cluster, cluster.summary || cluster.definition));
+  });
+  record.appendChild(detailSection("Member topics", clusterGrid, "These topics are grouped here as their primary subcategory."));
+  if (secondaryClusterIds(family).length) {
+    record.appendChild(detailSection("Related topics", entityChipList("cluster", secondaryClusterIds(family)), "These secondary connections preserve useful adjacency without changing topic membership."));
+  }
+  const relatedThemes = relatedIds("family", family.familyId, "theme");
+  const relatedTensions = relatedIds("family", family.familyId, "tension");
+  record.appendChild(detailSection("Related themes and tensions", definitionRows([
+    { label: "Themes", value: entityChipList("theme", relatedThemes) },
+    { label: "Tensions", value: entityChipList("tension", relatedTensions) },
+  ])));
   const supportingEpisodes = supportingEpisodeIdsForFamily(family);
   const episodeDisclosure = element("details", "support-details supporting-episodes");
-  episodeDisclosure.appendChild(element("summary", null, formatNumber(supportingEpisodes.length) + " primary-support public releases"));
+  episodeDisclosure.appendChild(element("summary", null, formatNumber(supportingEpisodes.length) + " source episodes"));
   episodeDisclosure.appendChild(entityChipList("episode", supportingEpisodes));
-  episodeDisclosure.appendChild(element("p", "evidence-boundary-note", "Releases are deduplicated across member clusters. Shared-content inheritance adds public coverage but contributes zero additional analytical weight."));
-  record.appendChild(detailSection("Supporting episodes", episodeDisclosure, "Open this aggregate list to browse release summaries; item-level evidence remains private."));
+  record.appendChild(detailSection("Source episodes", episodeDisclosure, "Open the list to browse the conversations connected through member topics."));
+  const scope = element("details", "scope-details");
+  scope.appendChild(element("summary", null, "Scope and coding boundaries"));
+  scope.appendChild(definitionRows([
+    { label: "Include", value: family.inclusionRules },
+    { label: "Exclude", value: family.exclusionRules },
+    { label: "Distinguishing boundaries", value: family.distinguishingBoundaries },
+    { label: "Limitations", value: family.limitations },
+  ]));
+  record.appendChild(scope);
   record.appendChild(renderSupportPanel(family, "family"));
   await appendEvidenceExplorer(record, "family", family.familyId, route);
   viewContent.appendChild(record);
@@ -1657,28 +1939,39 @@ async function renderCluster(route) {
   const cluster = getEntity("cluster", route.id);
   const category = getEntity("category", cluster.categoryId);
   const family = state.maps.familyByCluster.get(cluster.clusterId);
-  setHeader("Cluster", cluster.name, cluster.summary || cluster.definition, family ? family.name : "Canonical cluster");
+  setHeader("Topic", cluster.name, cluster.summary || cluster.definition, family ? "In “" + family.name + "”" : "Topic");
   setBreadcrumbs([
-    { label: "Categories & families", view: "families" },
+    { label: "Categories", view: "families" },
     { label: category.name, route: routeForEntity("category", category.categoryId) },
     { label: family.name, route: routeForEntity("family", family.familyId) },
     { label: cluster.name, current: true },
   ]);
   const record = element("div", "record-detail");
   record.appendChild(detailHero("cluster", cluster, cluster.summary || cluster.definition));
-  record.appendChild(detailSection("Definition and coding boundary", definitionRows([
-    { label: "Definition", value: cluster.definition },
-    { label: "Include", value: cluster.inclusionCriteria },
-    { label: "Exclude", value: cluster.exclusionCriteria },
-    { label: "Near neighbors", value: cluster.nearNeighborDistinctions },
-    { label: "Primary family", value: entityLink("family", family.familyId, family.name, "entity-chip") },
-  ])));
-  if (cluster.recurringThemes) record.appendChild(detailSection("Recurring patterns in the cluster", textList(cluster.recurringThemes, false)));
+  if (cluster.definition && normalizeText(cluster.definition) !== normalizeText(cluster.summary)) {
+    record.appendChild(detailSection("Definition", cluster.definition));
+  }
+  if (cluster.recurringThemes) record.appendChild(detailSection("Recurring patterns", textList(cluster.recurringThemes, false)));
   record.appendChild(detailSection("Why it matters", definitionRows([
     { label: "Strategic significance", value: cluster.strategicSignificance },
     { label: "Operational implications", value: cluster.operationalImplications },
-    { label: "Primary / secondary distinction", value: cluster.primarySecondaryDistinction },
   ])));
+  record.appendChild(detailSection("Where this topic sits", definitionRows([
+    { label: "Category", value: entityLink("category", category.categoryId, category.name, "entity-chip") },
+    { label: "Subcategory", value: entityLink("family", family.familyId, family.name, "entity-chip") },
+  ])));
+  const episodePath = element("p", "topic-episode-path");
+  episodePath.appendChild(routeLink({ view: "episodes", topic: cluster.clusterId, range: "all", sort: "earliest" }, "More on this topic in Episodes", "secondary-button"));
+  record.appendChild(detailSection("Explore related conversations", episodePath, "Shows episodes where this topic meets the documented main-topic threshold."));
+  const boundaries = element("details", "scope-details");
+  boundaries.appendChild(element("summary", null, "Scope and coding boundaries"));
+  boundaries.appendChild(definitionRows([
+    { label: "Include", value: cluster.inclusionCriteria },
+    { label: "Exclude", value: cluster.exclusionCriteria },
+    { label: "Near neighbors", value: cluster.nearNeighborDistinctions },
+    { label: "Primary / secondary distinction", value: cluster.primarySecondaryDistinction },
+  ]));
+  record.appendChild(boundaries);
   record.appendChild(renderSupportPanel(cluster, "cluster"));
   await appendEvidenceExplorer(record, "cluster", cluster.clusterId, route);
   viewContent.appendChild(record);
@@ -1691,7 +1984,7 @@ function renderCategoryThemeHeatmap() {
   region.setAttribute("role", "region");
   region.setAttribute("aria-label", "Scrollable Theme by Category heatmap");
   const table = element("table", "heatmap-table");
-  const caption = element("caption", null, payload.interpretation || "Governed primary-support breadth by category and theme.");
+  const caption = element("caption", null, "Normalized primary-support breadth by category and theme.");
   table.appendChild(caption);
   const head = element("thead");
   const headRow = element("tr");
@@ -1709,8 +2002,7 @@ function renderCategoryThemeHeatmap() {
     const row = element("tr");
     const rowHeader = element("th");
     rowHeader.scope = "row";
-    const themeLink = entityLink("theme", theme.themeId, theme.themeId, "heatmap-theme-link");
-    themeLink.appendChild(element("span", "heatmap-theme-link__name", theme.name));
+    const themeLink = entityLink("theme", theme.themeId, theme.name, "heatmap-theme-link");
     rowHeader.appendChild(themeLink);
     row.appendChild(rowHeader);
     sortByName("category", state.records.category).forEach(function (category) {
@@ -1718,7 +2010,7 @@ function renderCategoryThemeHeatmap() {
       const dataCell = element("td", "heatmap-cell heatmap-cell--" + Math.max(0, Math.min(5, Math.round(cell.normalizedPrimarySupportBreadth * 5))));
       const label = formatPercent(cell.normalizedPrimarySupportBreadth);
       const link = routeLink({ view: "theme", id: theme.themeId, category: category.categoryId }, label, "heatmap-cell__link");
-      link.setAttribute("aria-label", theme.name + " in " + category.name + ": normalized primary-support breadth " + label + "; " + formatNumber(cell.primaryFamilyCount) + " primary families; " + formatNumber(cell.primaryClusterCount) + " primary clusters; " + formatNumber(cell.primaryContentUnitCount) + " primary-support content units. Corpus support is descriptive, not evidence strength. Open focused support.");
+      link.setAttribute("aria-label", theme.name + " in " + category.name + ": normalized primary-support breadth " + label + "; " + formatNumber(cell.primaryFamilyCount) + " primary subcategories; " + formatNumber(cell.primaryClusterCount) + " primary topics; " + formatNumber(cell.primaryContentUnitCount) + " primary-support content units. Corpus support is descriptive, not evidence strength. Open focused support.");
       dataCell.appendChild(link);
       row.appendChild(dataCell);
     });
@@ -1728,28 +2020,20 @@ function renderCategoryThemeHeatmap() {
   region.appendChild(table);
   const legend = element("div", "heatmap-legend");
   legend.appendChild(element("strong", null, "Cell meaning:"));
-  legend.appendChild(document.createTextNode(" normalized governed primary-support breadth. Focus a cell for its family, cluster, and content-unit counts. Every cell includes a percentage; color is only a secondary cue."));
+  legend.appendChild(document.createTextNode(" normalized primary-support breadth. Focus a cell for its subcategory, topic, and content-unit counts. Every cell includes a percentage; color is only a secondary cue."));
   region.appendChild(legend);
-  region.appendChild(element("p", "evidence-boundary-note", "The matrix excludes secondary-theme-support, conceptual-framing, and future-extension relationships. Zero means no governed primary-theme support in this corpus, not that the category is irrelevant."));
+  region.appendChild(element("p", "evidence-boundary-note", "The matrix excludes secondary-theme-support, conceptual-framing, and future-extension relationships. Zero means no primary-theme support in this corpus, not that the category is irrelevant."));
   return region;
 }
 
 function themeCard(theme) {
-  const card = cardShell("theme", theme, theme.definition);
-  const metrics = element("div", "card-metrics");
-  const primary = primarySupport(theme);
-  if (primary) {
-    metrics.appendChild(chip(formatNumber(primary.itemCount) + " primary items"));
-    metrics.appendChild(chip(formatPercent(primary.share) + " primary share", "quiet"));
-  }
-  card.appendChild(metrics);
-  return card;
+  return cardShell("theme", theme, theme.definition, true);
 }
 
 function renderThemes(route) {
   const query = normalizeText(route.q);
   const themes = state.records.theme.filter(function (theme) { return recordMatches(theme, "theme", query); });
-  setHeader("Cross-cutting synthesis", "Themes", "Eleven themes connect recurring patterns across categories. All themes occupy one public level; primary support and conceptual relationships remain distinct.", formatNumber(themes.length) + " matching themes");
+  setHeader("Cross-cutting patterns", "Themes", "Eleven themes connect recurring patterns across categories. All themes appear at the same public level.", formatNumber(themes.length) + " matching themes");
   setBreadcrumbs([{ label: "Themes", current: true }]);
   viewContent.appendChild(modeFilterForm(route, {
     view: "themes",
@@ -1757,18 +2041,20 @@ function renderThemes(route) {
     placeholder: "Search theme definitions and implications",
     filters: [],
   }));
-  const matrix = sectionBlock("Category × Theme heatmap", "Compare governed primary-support breadth across all seven focal categories and eleven themes.");
-  matrix.appendChild(renderCategoryThemeHeatmap());
-  viewContent.appendChild(matrix);
   if (!themes.length) {
     showEmpty("No theme matched", "Try a broader term.");
     return;
   }
-  const cards = sectionBlock("Theme records", "Open a theme to see its boundaries, implications, support layers, and progressive relationship paths.");
+  const cards = sectionBlock("Explore themes", "Open a theme to read the common pattern, why it matters, and where it appears.");
   const grid = element("div", "map-card-grid");
   sortByName("theme", themes).forEach(function (theme) { grid.appendChild(themeCard(theme)); });
   cards.appendChild(grid);
   viewContent.appendChild(cards);
+  const comparison = element("details", "comparison-disclosure");
+  comparison.appendChild(element("summary", null, "Compare themes"));
+  comparison.appendChild(element("p", "section-intro", "The optional heatmap compares primary-support breadth across all seven categories and eleven themes."));
+  comparison.appendChild(renderCategoryThemeHeatmap());
+  viewContent.appendChild(comparison);
 }
 
 async function renderTheme(route) {
@@ -1790,25 +2076,26 @@ async function renderTheme(route) {
     conceptualFamilies = conceptualFamilies.filter(function (id) { return getEntity("family", id).categoryId === selectedCategory; });
     futureFamilies = futureFamilies.filter(function (id) { return getEntity("family", id).categoryId === selectedCategory; });
   }
-  const primary = primarySupport(theme);
-  setHeader("Theme", theme.name, theme.definition, primary ? formatNumber(primary.itemCount) + " primary-support items" : "Canonical theme");
+  setHeader("Theme", theme.name, theme.definition, "Cross-cutting pattern");
   setBreadcrumbs([{ label: "Themes", view: "themes" }, { label: theme.name, current: true }]);
   if (selectedCategory) showNotice("This theme view is focused on " + getEntity("category", selectedCategory).name + ". Primary-support roles remain labelled.");
   const record = element("div", "record-detail");
   record.appendChild(detailHero("theme", theme, theme.definition));
-  record.appendChild(detailSection("Significance and boundaries", definitionRows([
+  record.appendChild(detailSection("Why it matters", definitionRows([
     { label: "Strategic significance", value: theme.strategicSignificance },
     { label: "Operational implications", value: theme.operationalImplications },
+  ])));
+  record.appendChild(detailSection("Boundaries", definitionRows([
     { label: "Boundary conditions", value: theme.boundaryConditions },
     { label: "Limitations", value: theme.limitations },
   ])));
-  record.appendChild(detailSection("Primary-support families", entityChipList("family", primaryFamilies), "Only families with the governed primary-theme-support role are shown in the heatmap."));
-  if (secondaryFamilies.length) record.appendChild(detailSection("Secondary-support families", entityChipList("family", secondaryFamilies), "Secondary support is public but excluded from primary-support heatmap breadth."));
+  record.appendChild(detailSection("Where it appears", entityChipList("family", primaryFamilies), "These subcategories form the theme's primary evidence path."));
+  if (secondaryFamilies.length) record.appendChild(detailSection("Additional subcategory connections", entityChipList("family", secondaryFamilies)));
   if (conceptualFamilies.length || futureFamilies.length) {
     record.appendChild(detailSection("Broader conceptual reach", definitionRows([
       { label: "Conceptual framing", value: entityChipList("family", conceptualFamilies) },
       { label: "Future extension", value: entityChipList("family", futureFamilies) },
-    ]), "These governed relationships broaden interpretation but are not primary theme support and are excluded from the heatmap."));
+    ])));
   }
   record.appendChild(renderSupportPanel(theme, "theme"));
   await appendEvidenceExplorer(record, "theme", theme.themeId, route);
@@ -1955,17 +2242,17 @@ async function appendEvidenceExplorer(container, type, id, route) {
     section.appendChild(element("p", "inline-loading", "Loading the requested public relationship slice…"));
     await Promise.all([ensureRelationships(), ensureProvenance()]);
     const validPath = pathsAreAdjacent(root, requestedPath) ? requestedPath : [];
-    if (!validPath.length && requestedPath.length) showNotice("The requested support path is not valid for this canonical record. The root slice is shown.");
+    if (!validPath.length && requestedPath.length) showNotice("The requested connection path is not valid for this record. The starting view is shown.");
     renderEvidenceSlice(section, root, validPath, route);
     return;
   }
-  section.appendChild(element("h3", "section-title", "Explore support and relationships"));
-  section.appendChild(element("p", "section-intro", "Load the public relationship and provenance layers only when you are ready to move through them. The explorer reveals one directly connected slice at a time."));
-  const load = element("button", "secondary-button", "Load public support paths");
+  section.appendChild(element("h3", "section-title", "Explore connections & sources"));
+  section.appendChild(element("p", "section-intro", "Open a connected slice of topics, interpretations, and source episodes. Formal roles and weights remain available inside the explorer."));
+  const load = element("button", "secondary-button", "Open connections & sources");
   load.type = "button";
   load.addEventListener("click", async function () {
     load.disabled = true;
-    load.textContent = "Loading public paths…";
+    load.textContent = "Loading connections…";
     try {
       await Promise.all([ensureRelationships(), ensureProvenance()]);
       renderEvidenceSlice(section, root, [], route);
@@ -1975,7 +2262,7 @@ async function appendEvidenceExplorer(container, type, id, route) {
         heading.focus();
       }
     } catch (error) {
-      section.replaceChildren(cautionBox("Support paths unavailable", error.message, "warning"));
+      section.replaceChildren(cautionBox("Connections unavailable", error.message, "warning"));
     }
   });
   section.appendChild(load);
@@ -2015,12 +2302,12 @@ function renderTensionMatrix(tensions) {
   const region = element("div", "matrix-region");
   region.tabIndex = 0;
   region.setAttribute("role", "region");
-  region.setAttribute("aria-label", "Scrollable canonical tension matrix");
+  region.setAttribute("aria-label", "Scrollable tension comparison");
   const table = element("table", "tension-matrix");
-  table.appendChild(element("caption", null, "Twenty canonical tensions shown as neutral two-pole constructs. Pole balance reports corpus support, not a preferred position."));
+  table.appendChild(element("caption", null, "Tensions shown as neutral two-position constructs. Neither position is ranked or preferred."));
   const head = element("thead");
   const row = element("tr");
-  ["Tension", "Type", "Pole A", "Pole B", "Corpus pole balance", "Primary support", "Primary category breadth"].forEach(function (label) {
+  ["Tension", "Type", "Position A", "Position B"].forEach(function (label) {
     const header = element("th", null, label);
     header.scope = "col";
     row.appendChild(header);
@@ -2029,8 +2316,6 @@ function renderTensionMatrix(tensions) {
   table.appendChild(head);
   const body = element("tbody");
   sortByName("tension", tensions).forEach(function (tension) {
-    const balance = tensionBalance(tension);
-    const primary = primarySupport(tension);
     const tableRow = element("tr");
     const nameCell = element("th");
     nameCell.scope = "row";
@@ -2039,24 +2324,27 @@ function renderTensionMatrix(tensions) {
     tableRow.appendChild(element("td", null, humanize(tension.tensionType)));
     tableRow.appendChild(element("td", "pole-cell pole-cell--a", tension.poleALabel));
     tableRow.appendChild(element("td", "pole-cell pole-cell--b", tension.poleBLabel));
-    const balanceText = Number.isFinite(balance.poleAShare) && Number.isFinite(balance.poleBShare)
-      ? "A " + formatPercent(balance.poleAShare) + " · B " + formatPercent(balance.poleBShare)
-      : "Not quantified";
-    tableRow.appendChild(element("td", "matrix-number", balanceText));
-    tableRow.appendChild(element("td", "matrix-number", primary ? formatNumber(primary.itemCount) + " items · " + formatPercent(primary.share) : "—"));
-    tableRow.appendChild(element("td", "matrix-number", formatNumber(primaryCategoryBreadth(tension)) + " categories"));
     body.appendChild(tableRow);
   });
   table.appendChild(body);
   region.appendChild(table);
-  region.appendChild(element("p", "evidence-boundary-note", "The matrix uses symmetric A/B labels and numbers. It does not rank, endorse, or imply that either pole resolves the tension. Theme filters use traceable shared-cluster context, not direct tension evidence."));
+  region.appendChild(element("p", "evidence-boundary-note", "The comparison is descriptive and noncausal. It does not rank or endorse either position."));
   return region;
 }
 
+function tensionCard(tension) {
+  const card = cardShell("tension", tension, tension.definition, true);
+  const positions = element("div", "tension-card__positions");
+  positions.appendChild(element("p", null, "A · " + tension.poleALabel));
+  positions.appendChild(element("p", null, "B · " + tension.poleBLabel));
+  card.appendChild(positions);
+  return card;
+}
+
 async function renderTensions(route) {
-  setHeader("Canonical comparison", "Tensions", "Compare twenty governed two-pole constructs without treating either pole as a winner, recommendation, or causal endpoint.", "Loading traceable filters…");
+  setHeader("Competing priorities and approaches", "Tensions", "Explore twenty two-position constructs without treating either position as a winner, recommendation, or causal endpoint.", "Loading filters…");
   setBreadcrumbs([{ label: "Tensions", current: true }]);
-  viewContent.appendChild(element("p", "inline-loading", "Loading public semantic relationships for the matrix filters…"));
+  viewContent.appendChild(element("p", "inline-loading", "Loading connections for the filters…"));
   await ensureRelationships();
   viewContent.replaceChildren();
   const query = normalizeText(route.q);
@@ -2076,7 +2364,7 @@ async function renderTensions(route) {
   });
   viewContent.appendChild(modeFilterForm(normalizedRoute, {
     view: "tensions",
-    label: "Search and filter the canonical tension matrix",
+    label: "Search and filter tensions",
     placeholder: "Search tension names, poles, and conditions",
     filters: [
       { name: "tensionType", label: "Type", allLabel: "All types", options: typeValues.map(function (value) { return { value: value, label: humanize(value) }; }) },
@@ -2098,22 +2386,28 @@ async function renderTensions(route) {
     if (validScenario && !relationIdsForTension(tension, "scenario").includes(validScenario)) return false;
     return tensionMatchesBreadth(tension, validBreadth);
   });
-  viewSummary.textContent = formatNumber(tensions.length) + " of 20 canonical tensions";
+  viewSummary.textContent = formatNumber(tensions.length) + " of 20 tensions";
   if (!tensions.length) {
     showEmpty("No tension matched", "Remove a filter or try a broader search term.");
     return;
   }
-  viewContent.appendChild(renderTensionMatrix(tensions));
+  const grid = element("div", "map-card-grid");
+  sortByName("tension", tensions).forEach(function (tension) { grid.appendChild(tensionCard(tension)); });
+  viewContent.appendChild(grid);
+  const comparison = element("details", "optional-analysis");
+  comparison.appendChild(element("summary", null, "Compare tensions"));
+  comparison.appendChild(renderTensionMatrix(tensions));
+  viewContent.appendChild(comparison);
 }
 
 async function renderTension(route) {
   const tension = getEntity("tension", route.id);
   await ensureRelationships();
-  const primary = primarySupport(tension);
-  setHeader("Canonical tension", tension.name, tension.definition, primary ? formatNumber(primary.itemCount) + " primary-support items" : "Canonical tension");
+  setHeader("Tension", tension.name, tension.definition, humanize(tension.tensionType));
   setBreadcrumbs([{ label: "Tensions", view: "tensions" }, { label: tension.name, current: true }]);
   const record = element("div", "record-detail");
   record.appendChild(detailHero("tension", tension, tension.definition));
+  if (tension.strategicSignificance) record.appendChild(detailSection("Why it matters", tension.strategicSignificance));
   const poles = element("div", "two-pole canonical-poles");
   const poleA = element("article", "pole-card pole-card--a");
   poleA.appendChild(element("p", "map-card__kicker", "Pole A"));
@@ -2130,7 +2424,9 @@ async function renderTension(route) {
   poleB.appendChild(element("h5", null, "Conditions that favor this pole"));
   poleB.appendChild(textList(tension.conditionsFavoringB, false));
   append(poles, poleA, neutral, poleB);
-  record.appendChild(detailSection("Two neutral poles", poles, "The construct preserves competing assumptions. It does not prescribe a midpoint or declare a winner."));
+  record.appendChild(detailSection("Two positions", poles, "The construct preserves competing assumptions. It does not prescribe a midpoint or declare a winner."));
+  const practitionerQuestion = "When might " + tension.poleALabel.toLocaleLowerCase() + " be more useful, when might " + tension.poleBLabel.toLocaleLowerCase() + " be more useful, and what conditions could make the choice a false dichotomy?";
+  record.appendChild(detailSection("A question for practitioners", practitionerQuestion));
   record.appendChild(detailSection("Construct boundaries", definitionRows([
     { label: "Type", value: humanize(tension.tensionType) },
     { label: "False-dichotomy caveat", value: tension.falseDichotomyCaveat },
@@ -2138,7 +2434,7 @@ async function renderTension(route) {
     { label: "Limitations", value: tension.limitations },
   ])));
   const balance = tensionBalance(tension);
-  record.appendChild(detailSection("Corpus pole balance", definitionRows([
+  const balanceDetails = detailSection("Pole balance in this corpus", definitionRows([
     { label: "Pole A items", value: formatNumber(balance.poleAItemCount) },
     { label: "Pole A analytical weight", value: formatNumber(balance.poleAAnalyticalWeight) },
     { label: "Pole A share", value: formatPercent(balance.poleAShare) },
@@ -2149,35 +2445,27 @@ async function renderTension(route) {
     { label: "Total analytical weight", value: formatNumber(balance.totalAnalyticalWeight) },
     { label: "Both poles", value: balance.bothPolesDirectlySupported === true ? "Both poles have directly allocated evidence" : "Not established" },
     { label: "Evidence assessment", value: tension.evidenceAssessment },
-  ]), "These values describe the corpus; they do not resolve or rank the poles."));
-  record.appendChild(detailSection("Traceable connections", definitionRows([
-    { label: "Supporting families", value: entityChipList("family", relationIdsForTension(tension, "family")) },
-    { label: "Supporting clusters", value: entityChipList("cluster", relationIdsForTension(tension, "cluster")) },
+  ]), "These values describe the corpus; they do not resolve or rank the positions.");
+  record.appendChild(detailSection("Related ideas", definitionRows([
+    { label: "Subcategories", value: entityChipList("family", relationIdsForTension(tension, "family")) },
+    { label: "Topics", value: entityChipList("cluster", relationIdsForTension(tension, "cluster")) },
     { label: "Themes", value: entityChipList("theme", relationIdsForTension(tension, "theme")) },
     { label: "Narratives", value: entityChipList("narrative", relationIdsForTension(tension, "narrative")) },
     { label: "Scenarios", value: entityChipList("scenario", relationIdsForTension(tension, "scenario")) },
-  ]), "Theme connections are derived only from shared governed cluster support and are labelled contextual, not direct tension evidence."));
-  record.appendChild(renderSupportPanel(tension, "tension"));
+  ]), "Theme connections provide context through shared topics; they are not direct tension evidence."));
+  record.appendChild(renderSupportPanel(tension, "tension", balanceDetails));
   await appendEvidenceExplorer(record, "tension", tension.tensionId, route);
   viewContent.appendChild(record);
 }
 
 function narrativeCard(narrative) {
-  const card = cardShell("narrative", narrative, narrative.shortVersion || narrative.coreClaim);
-  const primary = primarySupport(narrative);
-  const metrics = element("div", "card-metrics");
-  if (primary) {
-    metrics.appendChild(chip(formatNumber(primary.itemCount) + " primary items"));
-    metrics.appendChild(chip(formatPercent(primary.share) + " primary share", "quiet"));
-  }
-  card.appendChild(metrics);
-  return card;
+  return cardShell("narrative", narrative, narrative.shortVersion || narrative.coreClaim, true);
 }
 
 function renderNarratives(route) {
   const query = normalizeText(route.q);
   const narratives = state.records.narrative.filter(function (narrative) { return recordMatches(narrative, "narrative", query); });
-  setHeader("Integrative synthesis", "Narratives", "Five canonical narratives connect themes, tensions, families, and clusters while preserving unresolved issues and boundary conditions.", formatNumber(narratives.length) + " of 5 narratives");
+  setHeader("Broader interpretations", "Narratives", "Five narratives connect themes, tensions, subcategories, and topics while preserving unresolved issues and boundaries.", formatNumber(narratives.length) + " of 5 narratives");
   setBreadcrumbs([{ label: "Narratives", current: true }]);
   viewContent.appendChild(modeFilterForm(route, {
     view: "narratives",
@@ -2197,17 +2485,19 @@ function renderNarratives(route) {
 async function renderNarrative(route) {
   const narrative = getEntity("narrative", route.id);
   await ensureRelationships();
-  const primary = primarySupport(narrative);
   const familyIds = relatedIds("narrative", narrative.narrativeId, "family");
   const categoryIds = Array.from(new Set(familyIds.map(function (familyId) {
     const family = getEntity("family", familyId);
     return family && family.categoryId;
   }).filter(Boolean)));
-  setHeader("Canonical narrative", narrative.name, narrative.shortVersion || narrative.coreClaim, primary ? formatNumber(primary.itemCount) + " primary-support items" : "Canonical narrative");
+  setHeader("Narrative", narrative.name, narrative.shortVersion || narrative.coreClaim, "Integrative interpretation");
   setBreadcrumbs([{ label: "Narratives", view: "narratives" }, { label: narrative.name, current: true }]);
   const record = element("div", "record-detail");
   record.appendChild(detailHero("narrative", narrative, narrative.shortVersion || narrative.coreClaim));
-  record.appendChild(detailSection("Core claim", narrative.coreClaim));
+  if (normalizeText(narrative.coreClaim) !== normalizeText(narrative.shortVersion)) record.appendChild(detailSection("Narrative arc", narrative.coreClaim));
+  if (narrative.strategicSignificance) record.appendChild(detailSection("Why it matters", narrative.strategicSignificance));
+  const embeddedTensions = relatedIds("narrative", narrative.narrativeId, "tension");
+  if (embeddedTensions.length) record.appendChild(detailSection("Tensions inside the interpretation", entityChipList("tension", embeddedTensions)));
   record.appendChild(detailSection("Boundaries and unresolved issue", definitionRows([
     { label: "Boundary conditions", value: narrative.boundaryConditions },
     { label: "Unresolved issue", value: narrative.unresolvedIssue },
@@ -2217,8 +2507,8 @@ async function renderNarrative(route) {
     { label: "Themes", value: entityChipList("theme", relatedIds("narrative", narrative.narrativeId, "theme")) },
     { label: "Tensions", value: entityChipList("tension", relatedIds("narrative", narrative.narrativeId, "tension")) },
     { label: "Categories", value: entityChipList("category", categoryIds) },
-    { label: "Families", value: entityChipList("family", familyIds) },
-    { label: "Clusters", value: entityChipList("cluster", relatedIds("narrative", narrative.narrativeId, "cluster")) },
+    { label: "Subcategories", value: entityChipList("family", familyIds) },
+    { label: "Topics", value: entityChipList("cluster", relatedIds("narrative", narrative.narrativeId, "cluster")) },
   ]), "Integration is an interpretive relationship, not a causal chain."));
   record.appendChild(renderSupportPanel(narrative, "narrative"));
   await appendEvidenceExplorer(record, "narrative", narrative.narrativeId, route);
@@ -2228,19 +2518,23 @@ async function renderNarrative(route) {
 async function renderCategoryFinding(route) {
   const finding = getEntity("categoryFinding", route.id);
   const category = getEntity("category", finding.categoryId);
-  setHeader("Category finding", entityName("categoryFinding", finding), firstValue(finding, ["finding", "coreFinding"], ""), category.name);
+  const isQuestion = finding.findingType === "open-question";
+  setHeader(isQuestion ? "Open question" : "Finding", entityName("categoryFinding", finding), isQuestion ? "An unresolved question preserved in its category context." : "A specific takeaway preserved in its category context.", category.name);
   setBreadcrumbs([
-    { label: "Categories & families", view: "families" },
+    { label: "Categories", view: "families" },
     { label: category.name, route: routeForEntity("category", category.categoryId) },
     { label: entityName("categoryFinding", finding), current: true },
   ]);
   const record = element("div", "record-detail");
   record.appendChild(detailHero("categoryFinding", finding, firstValue(finding, ["finding", "coreFinding"], "")));
-  record.appendChild(detailSection("Interpretation", definitionRows([
-    { label: "Strategic significance", value: finding.strategicSignificance },
-    { label: "Operational implications", value: finding.operationalImplications },
-    { label: "Limitations", value: finding.limitations },
+  const findingLabel = isQuestion ? "Open question" : "Finding";
+  record.appendChild(detailSection(findingLabel, finding.finding));
+  record.appendChild(detailSection("Where it sits", definitionRows([
+    { label: "Category", value: entityChipList("category", [finding.categoryId]) },
+    { label: "Subcategories", value: entityChipList("family", finding.supportingFamilyIds) },
+    { label: "Topics", value: entityChipList("cluster", finding.supportingClusterIds) },
   ])));
+  if (asArray(finding.limitations).length) record.appendChild(detailSection("Interpretation limits", textList(finding.limitations, false)));
   const questions = firstValue(finding, ["openQuestions", "unresolvedQuestions"], []);
   if (asArray(questions).length) {
     const open = element("div", "open-questions open-questions--detail");
@@ -2253,12 +2547,11 @@ async function renderCategoryFinding(route) {
 }
 
 function scenarioCard(scenario) {
-  const card = cardShell("scenario", scenario, scenario.description);
+  const card = cardShell("scenario", scenario, scenario.description, true);
   const meta = element("div", "card-metrics");
   meta.appendChild(chip(humanize(scenario.scenarioType)));
-  const primary = primarySupport(scenario);
-  if (primary) meta.appendChild(chip(formatNumber(primary.itemCount) + " primary items", "quiet"));
-  if (scenario.publicNotice) meta.appendChild(chip("Governance notice", "warning"));
+  meta.appendChild(chip("Possible future, not a prediction", "quiet"));
+  if (scenario.publicNotice) meta.appendChild(chip("Rights and governance safeguards", "warning"));
   card.appendChild(meta);
   return card;
 }
@@ -2270,7 +2563,7 @@ function renderScenarios(route) {
   const scenarios = state.records.scenario.filter(function (scenario) {
     return (!selectedType || scenario.scenarioType === selectedType) && recordMatches(scenario, "scenario", query);
   });
-  setHeader("Plausible futures", "Scenarios", "Six analytical scenarios organize triggers, branch points, pathways, indicators, counter-signposts, mitigations, implications, and response options. They are not forecasts or deployment recommendations.", formatNumber(scenarios.length) + " of 6 scenarios");
+  setHeader("Possible futures for exploration", "Scenarios", "Six scenarios connect triggers, branches, pathways, signals, implications, and response options without predicting what will happen.", formatNumber(scenarios.length) + " of 6 scenarios");
   setBreadcrumbs([{ label: "Scenarios", current: true }]);
   viewContent.appendChild(modeFilterForm(Object.assign({}, route, { type: selectedType }), {
     view: "scenarios",
@@ -2354,8 +2647,7 @@ function renderRelatedScenarios(scenario) {
 async function renderScenario(route) {
   const scenario = getEntity("scenario", route.id);
   await ensureRelationships();
-  const primary = primarySupport(scenario);
-  setHeader("Analytical scenario", entityName("scenario", scenario), scenario.description, primary ? formatNumber(primary.itemCount) + " primary-support items" : "Canonical scenario");
+  setHeader("Possible future, not a prediction", entityName("scenario", scenario), scenario.description, humanize(scenario.scenarioType));
   setBreadcrumbs([{ label: "Scenarios", view: "scenarios" }, { label: entityName("scenario", scenario), current: true }]);
   const record = element("div", "record-detail");
   record.appendChild(detailHero("scenario", scenario, scenario.description));
@@ -2363,33 +2655,35 @@ async function renderScenario(route) {
     const warning = element("aside", "scenario-governance-notice");
     warning.setAttribute("role", "note");
     warning.setAttribute("aria-label", "Governance and rights notice");
-    warning.appendChild(element("h3", null, "Governance and rights review required"));
-    warning.appendChild(element("p", null, scenario.publicNotice));
+    warning.appendChild(element("h3", null, "Rights and governance safeguards are essential"));
+    warning.appendChild(element("p", null, "Any operational consideration requires legal, privacy, civil-liberties, ethics, consent, and affected-community review."));
+    const fullSafeguard = element("details", "scenario-safeguard");
+    fullSafeguard.appendChild(element("summary", null, "Read the full safeguard"));
+    fullSafeguard.appendChild(element("p", null, scenario.publicNotice));
+    warning.appendChild(fullSafeguard);
     record.appendChild(warning);
   }
-  record.appendChild(cautionBox("Not a forecast or recommendation", scenario.uncertaintyStatement || "This scenario is an analytical possibility, not a prediction or recommendation.", "warning"));
-  record.appendChild(detailSection("Conditions and branches", [
-    element("h4", null, "Trigger conditions"), textList(scenario.triggerConditions, false),
-    element("h4", null, "Branch points"), textList(scenario.branchPoints, false),
-    element("h4", null, "Mitigating conditions"), textList(scenario.mitigatingConditions, false),
-  ]));
-  record.appendChild(detailSection("Plausible pathways", textList(scenario.plausiblePathways, true), "These pathways are plausible sequences, not causal predictions."));
-  record.appendChild(detailSection("What to observe", [
-    element("h4", null, "Indicators"), textList(scenario.indicators, false),
-    element("h4", null, "Counter-signposts"), textList(scenario.counterSignposts, false),
-  ]));
+  record.appendChild(detailSection("What this scenario explores", scenario.uncertaintyStatement || "A structured possibility for inquiry and preparation, not a forecast or recommendation."));
+  record.appendChild(detailSection("Triggers", textList(scenario.triggerConditions, false)));
+  record.appendChild(detailSection("Plausible unfolding", textList(scenario.plausiblePathways, true), "These pathways are plausible sequences, not causal predictions."));
+  record.appendChild(detailSection("Branches", textList(scenario.branchPoints, false)));
+  record.appendChild(detailSection("What to watch", textList(scenario.indicators, false)));
   record.appendChild(detailSection("Tension dynamics", textList(scenario.tensionPoleDynamics, false), "Directions describe how scenario conditions could favor a pole; they do not endorse that pole."));
   record.appendChild(detailSection("Implications and response options", [
     element("h4", null, "Strategic implications"), textList(scenario.strategicImplications, false),
     element("h4", null, "Response options"), textList(scenario.responseOptions, false),
   ], "Response options are analytical possibilities, not validated recommendations."));
+  record.appendChild(detailSection("Counter-signposts and mitigating conditions", [
+    element("h4", null, "Counter-signposts"), textList(scenario.counterSignposts, false),
+    element("h4", null, "Mitigating conditions"), textList(scenario.mitigatingConditions, false),
+  ]));
   record.appendChild(detailSection("Research questions", textList(scenario.researchQuestions, false), "These questions mark evidence and decision gaps."));
-  record.appendChild(detailSection("Canonical connections", definitionRows([
+  record.appendChild(detailSection("Connections", definitionRows([
     { label: "Themes", value: entityChipList("theme", scenarioEntityIds(scenario, "theme")) },
     { label: "Tensions", value: entityChipList("tension", scenarioEntityIds(scenario, "tension")) },
-    { label: "Families", value: entityChipList("family", scenarioEntityIds(scenario, "family")) },
+    { label: "Subcategories", value: entityChipList("family", scenarioEntityIds(scenario, "family")) },
   ])));
-  record.appendChild(detailSection("Related scenarios", renderRelatedScenarios(scenario), "These governed semantic relationships provide context only; none is a causal claim."));
+  record.appendChild(detailSection("Related scenarios", renderRelatedScenarios(scenario), "These relationships provide context only; none is a causal claim."));
   if (scenario.limitations) record.appendChild(detailSection("Limitations", textList(scenario.limitations, false)));
   record.appendChild(renderSupportPanel(scenario, "scenario"));
   await appendEvidenceExplorer(record, "scenario", scenario.scenarioId, route);
@@ -2406,14 +2700,114 @@ function episodeSort(left, right) {
   return byName || left.episodeId.localeCompare(right.episodeId);
 }
 
-function episodeCard(episode) {
-  const card = cardShell("episode", episode, episode.summary);
-  const metrics = element("div", "card-metrics");
-  if (episode.podcast) metrics.appendChild(chip(episode.podcast));
-  if (hasValue(episode.parsedEpisodeNumber)) metrics.appendChild(chip("Episode " + episode.parsedEpisodeNumber, "quiet"));
-  if (episode.contentRole === "shared-content-inheritance") metrics.appendChild(chip("Shared-content inheritance", "warning"));
-  card.appendChild(metrics);
-  return card;
+function formatPublishedDate(value) {
+  if (!value) return "";
+  const date = new Date(value + "T00:00:00Z");
+  return Number.isNaN(date.getTime()) ? "" : new Intl.DateTimeFormat("en-US", {
+    year: "numeric", month: "long", day: "numeric", timeZone: "UTC",
+  }).format(date);
+}
+
+function episodeRangeOptions() {
+  const numbers = state.records.episode.map(function (episode) { return episode.parsedEpisodeNumber; }).filter(Number.isFinite);
+  const maximum = Math.max.apply(null, numbers);
+  const options = [
+    { value: "all", label: "All episodes" },
+    { value: "intro", label: "Trailer, introduction & unnumbered" },
+    { value: "1-29", label: "Episodes 1–29" },
+  ];
+  for (let start = 30; start <= maximum; start += 30) {
+    const end = Math.min(start + 29, maximum);
+    options.push({ value: start + "-" + end, label: "Episodes " + start + "–" + end });
+  }
+  return options;
+}
+
+function episodeInRange(episode, range) {
+  if (!range || range === "all") return true;
+  const number = episode.parsedEpisodeNumber;
+  if (range === "intro") return !Number.isFinite(number) || number < 1;
+  const parts = range.split("-").map(Number);
+  return parts.length === 2 && Number.isFinite(number) && number >= parts[0] && number <= parts[1];
+}
+
+function episodeSortMode(route) {
+  if (route.sort === "earliest" || route.sort === "newest") return route.sort;
+  try {
+    const saved = window.localStorage.getItem("psywerx-episode-sort");
+    if (saved === "earliest" || saved === "newest") return saved;
+  } catch (_error) {
+    // Storage is optional.
+  }
+  return "earliest";
+}
+
+function sortEpisodes(records, mode) {
+  return records.slice().sort(function (left, right) {
+    const leftNumbered = Number.isFinite(left.parsedEpisodeNumber) && left.parsedEpisodeNumber >= 1;
+    const rightNumbered = Number.isFinite(right.parsedEpisodeNumber) && right.parsedEpisodeNumber >= 1;
+    if (leftNumbered !== rightNumbered) return leftNumbered ? -1 : 1;
+    if (leftNumbered && rightNumbered && left.parsedEpisodeNumber !== right.parsedEpisodeNumber) {
+      return mode === "newest" ? right.parsedEpisodeNumber - left.parsedEpisodeNumber : left.parsedEpisodeNumber - right.parsedEpisodeNumber;
+    }
+    return entityName("episode", left).localeCompare(entityName("episode", right), undefined, { numeric: true }) || left.episodeId.localeCompare(right.episodeId);
+  });
+}
+
+function episodeListRoute(route, overrides) {
+  const next = { view: "episodes" };
+  ["q", "range", "sort", "number", "position", "topic"].forEach(function (key) {
+    if (route && hasValue(route[key])) next[key] = route[key];
+  });
+  return Object.assign(next, overrides || {});
+}
+
+function episodeDetailRoute(episode, route, position) {
+  const next = episodeListRoute(route, { view: "episode", id: episode.episodeId, position: position });
+  delete next.number;
+  return next;
+}
+
+function episodeBrowseRecords(route) {
+  const query = normalizeText(route.q);
+  const range = episodeRangeOptions().some(function (option) { return option.value === route.range; }) ? route.range : "all";
+  const topicIds = route.topic && state.maps.topicEpisodes ? new Set(state.maps.topicEpisodes.get(route.topic) || []) : null;
+  const exactNumber = hasValue(route.number) && /^\d+$/.test(route.number) ? Number(route.number) : null;
+  return sortEpisodes(state.records.episode.filter(function (episode) {
+    if (exactNumber !== null && episode.parsedEpisodeNumber !== exactNumber) return false;
+    if (!episodeInRange(episode, range)) return false;
+    if (topicIds && !topicIds.has(episode.episodeId)) return false;
+    return recordMatches(episode, "episode", query);
+  }), episodeSortMode(route));
+}
+
+function episodeMetadataLine(episode) {
+  const metadata = state.maps.metadataByEpisode && state.maps.metadataByEpisode.get(episode.episodeId);
+  if (!metadata) return "";
+  const pieces = [];
+  const date = formatPublishedDate(metadata.publishedAt);
+  if (date) pieces.push(date);
+  if (metadata.guests) pieces.push(metadata.guests.join("; "));
+  return pieces.join(" · ");
+}
+
+function episodeCard(episode, route, position) {
+  const link = routeLink(episodeDetailRoute(episode, route, position), "", "episode-card-link");
+  link.id = "episode-card-" + episode.episodeId;
+  link.appendChild(element("span", "episode-card-link__type", "Episode"));
+  link.appendChild(element("strong", "episode-card-link__title", entityName("episode", episode)));
+  const metadata = episodeMetadataLine(episode);
+  if (metadata) link.appendChild(element("span", "episode-card-link__meta", metadata));
+  link.appendChild(element("span", "episode-card-link__summary", truncate(episode.summary, 240)));
+  if (episode.contentRole === "shared-content-inheritance") link.appendChild(element("span", "episode-card-link__note", "Re-release"));
+  else {
+    const relatedRerelease = state.records.episode.some(function (candidate) {
+      const candidateDiscovery = state.maps.discoveryByEpisode && state.maps.discoveryByEpisode.get(candidate.episodeId);
+      return candidateDiscovery && candidateDiscovery.isSharedContentRelease && candidateDiscovery.contentEpisodeId === episode.episodeId;
+    });
+    if (relatedRerelease) link.appendChild(element("span", "episode-card-link__note", "Original release · also re-released"));
+  }
+  return link;
 }
 
 function renderIncrementalCards(records, container, renderer, pageSize) {
@@ -2442,38 +2836,447 @@ function renderIncrementalCards(records, container, renderer, pageSize) {
   return controls;
 }
 
-function renderEpisodes(route) {
-  const query = normalizeText(route.q);
-  const episodes = state.records.episode.slice().sort(episodeSort).filter(function (episode) { return recordMatches(episode, "episode", query); });
-  setHeader("Public release archive", "Episodes", "Search transcript-grounded summaries for all canonical public releases. Full transcripts, source-identity reconciliation, raw items, and private attribution material are not loaded.", formatNumber(episodes.length) + " matching releases");
+function episodeBrowseForm(route) {
+  const form = element("form", "episode-browser");
+  form.setAttribute("role", "search");
+  form.setAttribute("aria-label", "Browse episodes");
+  const searchLabel = element("label");
+  searchLabel.appendChild(element("span", null, "Search titles, summaries, and key topics"));
+  const search = element("input");
+  search.type = "search";
+  search.value = route.q || "";
+  search.placeholder = "Search the episode library";
+  searchLabel.appendChild(search);
+  form.appendChild(searchLabel);
+  const rangeLabel = element("label");
+  rangeLabel.appendChild(element("span", null, "Episode range"));
+  const range = element("select");
+  episodeRangeOptions().forEach(function (entry) {
+    const option = element("option", null, entry.label);
+    option.value = entry.value;
+    range.appendChild(option);
+  });
+  range.value = episodeRangeOptions().some(function (entry) { return entry.value === route.range; }) ? route.range : "all";
+  rangeLabel.appendChild(range);
+  form.appendChild(rangeLabel);
+  const sortLabel = element("label");
+  sortLabel.appendChild(element("span", null, "Order"));
+  const sort = element("select");
+  [{ value: "earliest", label: "Earliest first" }, { value: "newest", label: "Newest first" }].forEach(function (entry) {
+    const option = element("option", null, entry.label);
+    option.value = entry.value;
+    sort.appendChild(option);
+  });
+  sort.value = episodeSortMode(route);
+  sortLabel.appendChild(sort);
+  form.appendChild(sortLabel);
+  const apply = element("button", "secondary-button", "Apply");
+  apply.type = "submit";
+  form.appendChild(apply);
+  if (route.q || route.range || route.number || route.topic) form.appendChild(routeLink({ view: "episodes", sort: sort.value }, "Clear filters", "text-link"));
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+    try { window.localStorage.setItem("psywerx-episode-sort", sort.value); } catch (_error) { /* Optional. */ }
+    navigate({ view: "episodes", q: search.value.trim(), range: range.value, sort: sort.value, topic: route.topic || "" });
+  });
+  return form;
+}
+
+function episodeJumpForm(route) {
+  const form = element("form", "episode-jump");
+  form.setAttribute("aria-label", "Jump to episode number");
+  const label = element("label");
+  label.appendChild(element("span", null, "Jump to episode number"));
+  const input = element("input");
+  input.type = "number";
+  input.min = "1";
+  input.step = "1";
+  input.inputMode = "numeric";
+  label.appendChild(input);
+  form.appendChild(label);
+  const submit = element("button", "secondary-button", "Go");
+  submit.type = "submit";
+  form.appendChild(submit);
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+    const number = Number(input.value);
+    if (!Number.isInteger(number) || number < 1) {
+      showNotice("Enter a positive episode number.");
+      return;
+    }
+    const matches = state.records.episode.filter(function (episode) { return episode.parsedEpisodeNumber === number; });
+    if (matches.length === 1) {
+      navigate(episodeDetailRoute(matches[0], { sort: episodeSortMode(route), range: "all" }, 0));
+    } else if (matches.length > 1) {
+      navigate({ view: "episodes", number: String(number), range: "all", sort: episodeSortMode(route) });
+    } else {
+      showNotice("No release is recorded as episode " + number + ". Numbering gaps are preserved.");
+    }
+  });
+  return form;
+}
+
+async function renderEpisodes(route) {
+  await ensureEpisodeDiscovery();
+  const episodes = episodeBrowseRecords(route);
+  const topic = route.topic ? getEntity("cluster", route.topic) : null;
+  setHeader("The Cognitive Crucible", "Episodes", "Browse individual conversations and their transcript-grounded PSYWERX summaries.", formatNumber(episodes.length) + " matching releases");
   setBreadcrumbs([{ label: "Episodes", current: true }]);
-  viewContent.appendChild(modeFilterForm(route, {
-    view: "episodes",
-    label: "Search public releases",
-    placeholder: "Search titles, summaries, and key topics",
-    filters: [],
-  }));
+  viewContent.appendChild(episodeBrowseForm(route));
+  viewContent.appendChild(episodeJumpForm(route));
+  if (topic) {
+    const topicContext = element("div", "active-topic-filter");
+    topicContext.appendChild(element("span", null, "More on this topic: "));
+    topicContext.appendChild(entityLink("cluster", topic.clusterId, topic.name));
+    topicContext.appendChild(routeLink(episodeListRoute(route, { topic: "", position: "" }), "Remove topic filter", "text-link"));
+    viewContent.appendChild(topicContext);
+  }
+  if (route.number && episodes.length > 1) {
+    viewContent.appendChild(cautionBox("More than one matching release", "Episode number " + route.number + " appears on multiple catalog records. Choose the title you intended; no record was guessed.", "quiet"));
+  }
   if (!episodes.length) {
-    showEmpty("No release matched", "Try a broader title word or topic.");
+    showEmpty("No episode matched", "Try another title word, topic, range, or episode number.");
     return;
   }
-  const grid = element("div", "map-card-grid");
+  const grid = element("div", "episode-card-grid");
+  episodes.forEach(function (episode, index) { grid.appendChild(episodeCard(episode, route, index)); });
   viewContent.appendChild(grid);
-  viewContent.appendChild(renderIncrementalCards(episodes, grid, episodeCard, 36));
+  const position = Number(route.position);
+  if (Number.isInteger(position) && episodes[position]) {
+    requestAnimationFrame(function () {
+      const target = document.getElementById("episode-card-" + episodes[position].episodeId);
+      if (target) target.scrollIntoView({ block: "center" });
+    });
+  }
+}
+
+function episodeNavigation(episode, route, records, index) {
+  const nav = element("nav", "episode-navigation");
+  nav.setAttribute("aria-label", "Episode navigation");
+  nav.appendChild(routeLink(episodeListRoute(route, { position: Math.max(index, 0), number: "" }), "Back to episode list", "episode-navigation__back"));
+  const siblings = element("div", "episode-navigation__siblings");
+  if (index > 0) siblings.appendChild(routeLink(episodeDetailRoute(records[index - 1], route, index - 1), "← Previous", "secondary-button"));
+  else {
+    const previous = element("button", "secondary-button", "← Previous");
+    previous.type = "button";
+    previous.disabled = true;
+    siblings.appendChild(previous);
+  }
+  if (index >= 0 && index < records.length - 1) siblings.appendChild(routeLink(episodeDetailRoute(records[index + 1], route, index + 1), "Next →", "secondary-button"));
+  else {
+    const next = element("button", "secondary-button", "Next →");
+    next.type = "button";
+    next.disabled = true;
+    siblings.appendChild(next);
+  }
+  nav.appendChild(siblings);
+  return nav;
+}
+
+function episodeTopicList(topicIds, route, includeMoreControl) {
+  const container = element("div", "episode-topic-list");
+  topicIds.forEach(function (topicId) {
+    const topic = getEntity("cluster", topicId);
+    if (!topic) return;
+    const group = element("span", "episode-topic-list__item");
+    group.appendChild(entityLink("cluster", topicId, topic.name, "entity-chip"));
+    if (includeMoreControl) group.appendChild(routeLink({ view: "episodes", topic: topicId, sort: episodeSortMode(route), range: "all" }, "More on this topic", "topic-more-link"));
+    container.appendChild(group);
+  });
+  return container;
+}
+
+function similarEpisodeCards(episode, route) {
+  const discovery = state.maps.discoveryByEpisode.get(episode.episodeId);
+  const section = sectionBlock("Similar episodes", "Recommendations use repeated, eligible topics shared by both episodes. They indicate topic overlap, not agreement, importance, or truth.");
+  if (!discovery || !discovery.similarOverall.length) {
+    section.appendChild(element("p", "quiet-note", "No episode meets the current two-topic and similarity thresholds for this release."));
+    return section;
+  }
+  const grid = element("div", "similar-episode-grid");
+  discovery.similarOverall.forEach(function (recommendation, index) {
+    const candidate = getEntity("episode", recommendation.episodeId);
+    if (!candidate) return;
+    const card = element("article", "similar-episode-card");
+    const heading = element("h4");
+    heading.appendChild(routeLink(episodeDetailRoute(candidate, route, index), entityName("episode", candidate), "entity-link"));
+    card.appendChild(heading);
+    const topics = recommendation.sharedTopicIds.map(function (id) { return entityName("cluster", getEntity("cluster", id)); });
+    card.appendChild(element("p", null, "Shared main topics: " + topics.join(" · ")));
+    grid.appendChild(card);
+  });
+  section.appendChild(grid);
+  return section;
+}
+
+function weightedJaccard(left, right) {
+  if (!left || !right || !left.size || !right.size) return null;
+  const ids = new Set(Array.from(left.keys()).concat(Array.from(right.keys())));
+  let minimum = 0;
+  let maximum = 0;
+  ids.forEach(function (id) {
+    const a = left.get(id) || 0;
+    const b = right.get(id) || 0;
+    minimum += Math.min(a, b);
+    maximum += Math.max(a, b);
+  });
+  return maximum > 0 ? minimum / maximum : null;
+}
+
+function sharedSimilarityTopics(left, right) {
+  if (!left || !right) return [];
+  return Array.from(left.keys()).filter(function (id) { return right.has(id); }).sort(function (a, b) {
+    const overlap = Math.min(left.get(b), right.get(b)) - Math.min(left.get(a), right.get(a));
+    return overlap || entityName("cluster", getEntity("cluster", a)).localeCompare(entityName("cluster", getEntity("cluster", b)));
+  });
+}
+
+function episodeMatrixLabel(episode) {
+  return Number.isFinite(episode.parsedEpisodeNumber) && episode.parsedEpisodeNumber >= 1
+    ? "#" + episode.parsedEpisodeNumber
+    : truncate(entityName("episode", episode), 22);
+}
+
+async function renderEpisodeSimilarityMatrix(container, episode, route) {
+  container.replaceChildren(element("p", "inline-loading", "Loading comparison data…"));
+  try {
+    await ensureSimilarityData();
+    const discovery = state.maps.discoveryByEpisode.get(episode.episodeId);
+    const currentContentId = discovery && discovery.contentEpisodeId;
+    const currentVector = state.maps.similarityProfiles.get(currentContentId);
+    if (!currentVector || !currentVector.size) {
+      container.replaceChildren(element("p", "quiet-note", "Comparison is unavailable because this release has no qualifying topic profile."));
+      return;
+    }
+    const method = state.similarityMethod || state.discoveryMethod || {};
+    const eligible = [];
+    state.maps.similarityProfiles.forEach(function (vector, contentEpisodeId) {
+      if (contentEpisodeId === currentContentId) return;
+      const shared = sharedSimilarityTopics(currentVector, vector);
+      const score = weightedJaccard(currentVector, vector);
+      if (shared.length >= (method.sharedTopicMinimum || 2) && score !== null && score >= (method.similarityMinimum || 0.15)) {
+        const candidate = getEntity("episode", contentEpisodeId);
+        if (candidate) eligible.push({ contentEpisodeId: contentEpisodeId, episode: candidate, score: score, sharedTopicIds: shared });
+      }
+    });
+    eligible.sort(function (left, right) { return right.score - left.score || episodeSort(left.episode, right.episode); });
+    const candidates = eligible.slice(0, 14);
+    if (!candidates.length) {
+      container.replaceChildren(element("p", "quiet-note", "No genuine comparison neighbor meets the current two-topic and similarity thresholds."));
+      return;
+    }
+    const controls = element("fieldset", "matrix-selector");
+    controls.appendChild(element("legend", null, "Choose up to 14 related episodes to compare with this one"));
+    const selected = new Set(candidates.slice(0, 8).map(function (entry) { return entry.contentEpisodeId; }));
+    const status = element("p", "quiet-note");
+    status.setAttribute("aria-live", "polite");
+    candidates.forEach(function (entry) {
+      const label = element("label", "matrix-selector__option");
+      const checkbox = element("input");
+      checkbox.type = "checkbox";
+      checkbox.checked = selected.has(entry.contentEpisodeId);
+      checkbox.value = entry.contentEpisodeId;
+      label.appendChild(checkbox);
+      label.appendChild(document.createTextNode(entityName("episode", entry.episode)));
+      controls.appendChild(label);
+      checkbox.addEventListener("change", function () {
+        if (checkbox.checked && selected.size >= 14) {
+          checkbox.checked = false;
+          status.textContent = "The comparison is limited to 15 unique content units including the current episode.";
+          return;
+        }
+        if (checkbox.checked) selected.add(checkbox.value);
+        else selected.delete(checkbox.value);
+        status.textContent = formatNumber(selected.size + 1) + " episodes selected.";
+        draw();
+      });
+    });
+    controls.appendChild(status);
+    const output = element("div", "episode-matrix-output");
+    const pairDetail = element("div", "matrix-pair-detail");
+    pairDetail.setAttribute("aria-live", "polite");
+    container.replaceChildren(
+      element("p", "section-intro", "Values are normalized IDF-weighted Jaccard topic overlap. They do not measure agreement, importance, or truth."),
+      controls,
+      output,
+      pairDetail
+    );
+
+    function showPair(leftEntry, rightEntry, score, shared) {
+      pairDetail.replaceChildren();
+      const heading = element("h4", null, "Compared episodes");
+      pairDetail.appendChild(heading);
+      const links = element("p");
+      links.appendChild(entityLink("episode", leftEntry.episode.episodeId, entityName("episode", leftEntry.episode)));
+      links.appendChild(document.createTextNode(" and "));
+      links.appendChild(entityLink("episode", rightEntry.episode.episodeId, entityName("episode", rightEntry.episode)));
+      pairDetail.appendChild(links);
+      pairDetail.appendChild(element("p", null, "Topic-overlap value: " + score.toFixed(2) + ". Shared eligible topics: " + (shared.length ? shared.map(function (id) { return entityName("cluster", getEntity("cluster", id)); }).join(" · ") : "none") + "."));
+    }
+
+    function draw() {
+      output.replaceChildren();
+      pairDetail.replaceChildren();
+      const entries = [{ contentEpisodeId: currentContentId, episode: episode }].concat(candidates.filter(function (entry) { return selected.has(entry.contentEpisodeId); }));
+      const matrixRegion = element("div", "episode-matrix-region");
+      matrixRegion.tabIndex = 0;
+      matrixRegion.setAttribute("role", "region");
+      matrixRegion.setAttribute("aria-label", "Scrollable episode topic-overlap matrix");
+      const table = element("table", "episode-similarity-matrix");
+      const caption = element("caption", null, "Pairwise topic overlap for selected episodes");
+      table.appendChild(caption);
+      const head = element("thead");
+      const headRow = element("tr");
+      headRow.appendChild(element("th", null, "Episode"));
+      entries.forEach(function (entry) {
+        const header = element("th", null, episodeMatrixLabel(entry.episode));
+        header.scope = "col";
+        header.title = entityName("episode", entry.episode);
+        header.setAttribute("aria-label", entityName("episode", entry.episode));
+        headRow.appendChild(header);
+      });
+      head.appendChild(headRow);
+      table.appendChild(head);
+      const body = element("tbody");
+      const pairList = element("ul", "matrix-pair-list");
+      entries.forEach(function (rowEntry, rowIndex) {
+        const row = element("tr");
+        const rowHeader = element("th", null, episodeMatrixLabel(rowEntry.episode));
+        rowHeader.scope = "row";
+        rowHeader.title = entityName("episode", rowEntry.episode);
+        rowHeader.setAttribute("aria-label", entityName("episode", rowEntry.episode));
+        row.appendChild(rowHeader);
+        entries.forEach(function (columnEntry, columnIndex) {
+          const cell = element("td");
+          if (rowIndex === columnIndex) {
+            cell.appendChild(element("span", "matrix-same", "Same episode"));
+          } else {
+            const leftVector = state.maps.similarityProfiles.get(rowEntry.contentEpisodeId);
+            const rightVector = state.maps.similarityProfiles.get(columnEntry.contentEpisodeId);
+            const score = weightedJaccard(leftVector, rightVector);
+            const shared = sharedSimilarityTopics(leftVector, rightVector);
+            if (score === null) {
+              cell.appendChild(element("span", "quiet-note", "Unavailable"));
+            } else {
+              const button = element("button", "matrix-value", score.toFixed(2));
+              button.type = "button";
+              button.setAttribute("aria-label", entityName("episode", rowEntry.episode) + " and " + entityName("episode", columnEntry.episode) + ": topic-overlap value " + score.toFixed(2));
+              button.addEventListener("click", function () { showPair(rowEntry, columnEntry, score, shared); });
+              button.addEventListener("focus", function () { showPair(rowEntry, columnEntry, score, shared); });
+              cell.appendChild(button);
+              if (rowIndex < columnIndex) pairList.appendChild(element("li", null, episodeMatrixLabel(rowEntry.episode) + " ↔ " + episodeMatrixLabel(columnEntry.episode) + ": " + score.toFixed(2) + "; " + (shared.length ? shared.map(function (id) { return entityName("cluster", getEntity("cluster", id)); }).join(", ") : "no shared eligible topics")));
+            }
+          }
+          row.appendChild(cell);
+        });
+        body.appendChild(row);
+      });
+      table.appendChild(body);
+      matrixRegion.appendChild(table);
+      output.appendChild(matrixRegion);
+      const alternative = element("details", "matrix-list-alternative");
+      alternative.appendChild(element("summary", null, "Read the comparison as a list"));
+      alternative.appendChild(pairList);
+      output.appendChild(alternative);
+    }
+    draw();
+  } catch (error) {
+    container.replaceChildren(cautionBox("Comparison unavailable", error.message, "warning"));
+  }
 }
 
 async function renderEpisode(route) {
+  await ensureEpisodeDiscovery();
   const episode = getEntity("episode", route.id);
-  setHeader("Public release", entityName("episode", episode), episode.summary, hasValue(episode.parsedEpisodeNumber) ? "Episode " + episode.parsedEpisodeNumber : "Canonical public release");
-  setBreadcrumbs([{ label: "Episodes", view: "episodes" }, { label: entityName("episode", episode), current: true }]);
-  const record = element("div", "record-detail");
-  record.appendChild(detailHero("episode", episode, episode.summary));
+  const metadata = state.maps.metadataByEpisode.get(episode.episodeId);
+  let records = episodeBrowseRecords(route);
+  let index = records.findIndex(function (entry) { return entry.episodeId === episode.episodeId; });
+  if (index < 0) {
+    records = sortEpisodes(state.records.episode, episodeSortMode(route));
+    index = records.findIndex(function (entry) { return entry.episodeId === episode.episodeId; });
+  }
+  setHeader("Episode", entityName("episode", episode), episode.summary, episodeMetadataLine(episode) || "The Cognitive Crucible");
+  setBreadcrumbs([{ label: "Episodes", route: episodeListRoute(route, { position: Math.max(index, 0), number: "" }) }, { label: entityName("episode", episode), current: true }]);
+  if (metadata && metadata.officialEpisodeUrl) {
+    const listen = element("a", "primary-button", "Listen & show notes ↗");
+    listen.href = metadata.officialEpisodeUrl;
+    listen.target = "_blank";
+    listen.rel = "noopener noreferrer";
+    viewActions.appendChild(listen);
+  } else {
+    viewActions.appendChild(element("span", "quiet-note", "Verified source page unavailable"));
+  }
+  const record = element("div", "record-detail record-detail--episode");
+  record.appendChild(detailHero("episode", episode));
+  record.appendChild(episodeNavigation(episode, route, records, index));
+  if (metadata && (metadata.publishedAt || metadata.guests)) {
+    const facts = element("dl", "episode-metadata");
+    if (metadata.publishedAt) {
+      facts.appendChild(element("dt", null, "Published"));
+      facts.appendChild(element("dd", null, formatPublishedDate(metadata.publishedAt)));
+    }
+    if (metadata.guests) {
+      facts.appendChild(element("dt", null, "Guests"));
+      facts.appendChild(element("dd", null, metadata.guests.join("; ")));
+    }
+    record.appendChild(facts);
+  }
+  const discovery = state.maps.discoveryByEpisode.get(episode.episodeId);
   if (episode.contentRole === "shared-content-inheritance") {
-    record.appendChild(cautionBox("Shared public content", "This release shares recording content represented elsewhere in the corpus. Inherited coverage contributes zero additional analytical weight.", "warning"));
+    const notice = element("p", "episode-rerelease-note", "Re-release · This catalog page preserves a distinct public release of a conversation represented elsewhere in the library.");
+    record.appendChild(notice);
+  } else {
+    const rerelease = state.records.episode.find(function (candidate) {
+      const entry = state.maps.discoveryByEpisode.get(candidate.episodeId);
+      return entry && entry.isSharedContentRelease && entry.contentEpisodeId === episode.episodeId;
+    });
+    if (rerelease) {
+      const note = element("p", "episode-rerelease-note", "This conversation also appears as a ");
+      note.appendChild(entityLink("episode", rerelease.episodeId, "re-release"));
+      note.appendChild(document.createTextNode(" in the public catalog."));
+      record.appendChild(note);
+    }
   }
   record.appendChild(detailSection("Why it matters", episode.whyItMatters));
-  record.appendChild(detailSection("Key topics", textList(episode.keyTopics, false)));
-  record.appendChild(element("p", "evidence-boundary-note", "This page contains a public transcript-grounded summary, not transcript text or a quotation record. Private source identities, paths, item IDs, speakers, and review notes are not published."));
+  const keyTopics = element("div", "key-topic-links");
+  asArray(episode.keyTopics).forEach(function (topic) {
+    keyTopics.appendChild(routeLink({ view: "episodes", q: topic, sort: episodeSortMode(route), range: "all" }, topic, "entity-chip"));
+  });
+  record.appendChild(detailSection("Key topics", keyTopics, "These phrases come from the transcript-grounded episode summary; selecting one searches the library text."));
+  const mainTopicSection = sectionBlock("Main topics in the map", "These topics meet the documented repeated-coding and within-episode prominence thresholds. They are a browsing aid, not a claim of guest agreement.");
+  const defaultTopicIds = discovery ? discovery.defaultMainTopicIds : [];
+  const allTopicIds = discovery ? discovery.mainTopicIds : [];
+  if (defaultTopicIds.length) mainTopicSection.appendChild(episodeTopicList(defaultTopicIds, route, true));
+  else mainTopicSection.appendChild(element("p", "quiet-note", "No topic has sufficiently repeated primary coding to appear in this release's default main-topic list."));
+  if (allTopicIds.length > defaultTopicIds.length) {
+    const more = element("details", "more-main-topics");
+    more.appendChild(element("summary", null, "Show all qualifying topics"));
+    more.appendChild(episodeTopicList(allTopicIds.slice(defaultTopicIds.length), route, true));
+    mainTopicSection.appendChild(more);
+  }
+  record.appendChild(mainTopicSection);
+  record.appendChild(similarEpisodeCards(episode, route));
+  const compare = element("details", "episode-comparison");
+  compare.appendChild(element("summary", null, "Compare related episodes"));
+  const comparisonBody = element("div", "episode-comparison__body");
+  compare.appendChild(comparisonBody);
+  let comparisonLoaded = false;
+  compare.addEventListener("toggle", function () {
+    if (compare.open && !comparisonLoaded) {
+      comparisonLoaded = true;
+      renderEpisodeSimilarityMatrix(comparisonBody, episode, route);
+    }
+  });
+  record.appendChild(compare);
+  const sourceSection = sectionBlock("Original source", "The publisher link is verified bibliographic metadata and opens in a new tab.");
+  if (metadata && metadata.officialEpisodeUrl) {
+    const source = element("a", "secondary-button", "Listen & show notes ↗");
+    source.href = metadata.officialEpisodeUrl;
+    source.target = "_blank";
+    source.rel = "noopener noreferrer";
+    sourceSection.appendChild(source);
+  } else sourceSection.appendChild(element("p", "quiet-note", "A verified publisher episode page is unavailable for this release."));
+  record.appendChild(sourceSection);
   await appendEvidenceExplorer(record, "episode", episode.episodeId, route);
   viewContent.appendChild(record);
 }
@@ -2525,18 +3328,11 @@ function searchSnippet(documentRecord, query) {
 
 function searchResultCard(documentRecord, query) {
   const card = element("article", "map-card map-card--search-result");
-  card.appendChild(element("p", "map-card__kicker", ENTITY_LABELS[documentRecord.type] + " · " + documentRecord.id));
+  card.appendChild(element("p", "map-card__kicker", ENTITY_LABELS[documentRecord.type]));
   const title = element("h3", "map-card__title");
-  title.appendChild(entityLink(documentRecord.type, documentRecord.id, documentRecord.name));
+  title.appendChild(entityLink(documentRecord.type, documentRecord.id, documentRecord.name, "entity-link map-card__stretched-link"));
   card.appendChild(title);
   card.appendChild(element("p", null, searchSnippet(documentRecord, query)));
-  const primary = primarySupport(documentRecord.record);
-  if (primary) {
-    const metrics = element("div", "card-metrics");
-    metrics.appendChild(chip(formatNumber(primary.itemCount) + " primary items"));
-    metrics.appendChild(chip(formatPercent(primary.share) + " primary share", "quiet"));
-    card.appendChild(metrics);
-  }
   return card;
 }
 
@@ -2548,7 +3344,7 @@ function activeFilter(label, value) {
 }
 
 async function renderSearch(route) {
-  setHeader("Canonical public package", "Search the map", "Search canonical definitions, syntheses, support interpretations, findings, open questions, tension poles, scenario paths, and public release summaries. Private transcripts and item records are never searched.", "Canonical records only");
+  setHeader("Find ideas and conversations", "Search the map", "Search definitions, syntheses, findings, open questions, tension positions, scenario paths, and episode summaries.", "Public map records");
   setBreadcrumbs([{ label: "Search", current: true }]);
   searchControls.hidden = false;
   const typeFilter = SEARCH_ENTITY_TYPES.includes(route.type) ? route.type : "";
@@ -2585,35 +3381,39 @@ async function renderSearch(route) {
   if (route.q) searchActiveFilters.appendChild(activeFilter("Search", route.q));
   if (typeFilter) searchActiveFilters.appendChild(activeFilter("Type", ENTITY_LABELS[typeFilter]));
   if (categoryFilter) searchActiveFilters.appendChild(activeFilter("Category", entityName("category", getEntity("category", categoryFilter))));
-  if (familyFilter) searchActiveFilters.appendChild(activeFilter("Family", entityName("family", getEntity("family", familyFilter))));
-  if (clusterFilter) searchActiveFilters.appendChild(activeFilter("Cluster", entityName("cluster", getEntity("cluster", clusterFilter))));
-  viewSummary.textContent = formatNumber(results.length) + " matching canonical records";
+  if (familyFilter) searchActiveFilters.appendChild(activeFilter("Subcategory", entityName("family", getEntity("family", familyFilter))));
+  if (clusterFilter) searchActiveFilters.appendChild(activeFilter("Topic", entityName("cluster", getEntity("cluster", clusterFilter))));
+  viewSummary.textContent = formatNumber(results.length) + " matching records";
   if (!results.length) {
-    showEmpty("No canonical records matched", "Try a broader phrase or remove a facet.");
+    showEmpty("No records matched", "Try a broader phrase or remove a facet.");
     return;
   }
   if (!route.q && !typeFilter && !categoryFilter && !familyFilter && !clusterFilter) {
-    viewContent.appendChild(cautionBox("Search scope", "With no criteria, the complete canonical entity and public-release catalog is shown. Search reads only the allowlisted public fields loaded by this Explorer.", "quiet"));
+    viewContent.appendChild(cautionBox("Search scope", "With no criteria, the complete public map and episode catalog is shown.", "quiet"));
   }
   const grid = element("div", "map-card-grid search-results");
   viewContent.appendChild(grid);
   viewContent.appendChild(renderIncrementalCards(results, grid, function (documentRecord) { return searchResultCard(documentRecord, query); }, 60));
 }
 
-function renderMethodology() {
+async function renderMethodology() {
+  await ensureEpisodeDiscovery();
   const manifest = state.data.get("manifest.json");
   const counts = manifest.counts;
   const coverage = state.data.get("coverage.json");
   const qa = state.data.get("qa_report.json");
-  setHeader("Method and limits", "Methodology", "How the canonical synthesis, two-layer support model, public relationships, privacy boundary, and release accounting should be interpreted.", "Schema " + manifest.schemaVersion + " · canonical QA passed");
+  const discoveryManifest = await ensureDiscoveryManifest();
+  setHeader("Method and limits", "Methodology", "How the synthesis, support model, relationships, privacy boundary, release accounting, and discovery aids should be interpreted.", "Core schema " + manifest.schemaVersion + " · QA passed");
   setBreadcrumbs([{ label: "Methodology", current: true }]);
   const grid = element("div", "methodology-grid");
   const cards = [
-    ["Canonical architecture", "The canonical-only public hierarchy is Category → Family → Cluster: " + formatNumber(counts.categoryCount) + " focal categories, " + formatNumber(counts.familyCount) + " families, and " + formatNumber(counts.clusterCount) + " clusters. The cross-cutting layer contains " + formatNumber(counts.themeCount) + " themes, " + formatNumber(counts.tensionCount) + " tensions, " + formatNumber(counts.narrativeCount) + " narratives, " + formatNumber(counts.categoryFindingCount) + " findings and open questions, and " + formatNumber(counts.scenarioCount) + " scenarios. This is the one governed public architecture."],
+    ["Canonical architecture", "The public hierarchy is Category → Subcategory → Topic: " + formatNumber(counts.categoryCount) + " categories, " + formatNumber(counts.familyCount) + " subcategories, and " + formatNumber(counts.clusterCount) + " topics. The cross-cutting layer contains " + formatNumber(counts.themeCount) + " themes, " + formatNumber(counts.tensionCount) + " tensions, " + formatNumber(counts.narrativeCount) + " narratives, " + formatNumber(counts.categoryFindingCount) + " findings and open questions, and " + formatNumber(counts.scenarioCount) + " scenarios."],
     ["Corpus accounting", "This is one practitioner podcast corpus. " + formatNumber(counts.publicReleaseCount) + " public releases represent " + formatNumber(counts.canonicalContentUnitCount) + " canonical content units. The selected canonical corpus contains " + formatNumber(counts.canonicalItemCount) + " items, including " + formatNumber(counts.canonicalFocalItemCount) + " focal and " + formatNumber(counts.canonicalContextualItemCount) + " contextual items. Duplicate-source analytical weight was removed. Separately, one shared-content rerelease inherits public coverage but adds zero analytical weight."],
     ["Synthesis process", "The analytical architecture is a human-guided, AI-assisted synthesis. Governed definitions, boundaries, assignments, adjudications, and validation constrain the synthesis; human review remains responsible for analytical judgment."],
     ["Distinct evidence pipelines", "Transcript → public episode summary is the release-reading pipeline. Structured qualitative analysis → analytical map relationships is the synthesis pipeline. Episode summaries do not independently generate or validate map relationships."],
     ["Two support layers", "Primary support represents the governed evidence designated as primary for an entity; its evidence path depends on entity type. A cluster traces to directly coded items, while higher-order entities trace through their governed supporting constructs or, for tensions, directly allocated pole evidence. Broader traceable reach reports items, derived items, content units, public releases, inherited coverage, clusters, families, category breadth, and concentration. No composite evidence score is produced. " + SUPPORT_INTERPRETATION],
+    ["Episode discovery", "Main topics require at least two primary coded items and at least a 0.05 share of an episode's governed weighted topic count; up to six are shown by default. Similar overall uses all qualifying topics across " + formatNumber(discoveryManifest.counts.contentUnitCount) + " unique content units, normalized IDF-weighted Jaccard, at least two shared topics, and a 0.15 minimum. Recommendations are browsing aids, not evidence edges or claims of agreement."],
+    ["Verified episode metadata", formatNumber(discoveryManifest.counts.verifiedPublishedDateCount) + " of " + formatNumber(counts.publicReleaseCount) + " releases have a verified publisher date, " + formatNumber(discoveryManifest.counts.verifiedGuestLineCount) + " have a verified guest line, and " + formatNumber(discoveryManifest.counts.verifiedSourceUrlCount) + " have a verified official source URL. Missing values remain unavailable rather than guessed."],
     ["Theme heatmap", "The 11 × 7 matrix reports normalized primary-support breadth. Only primary-theme-support relationships contribute. Secondary support, conceptual framing, and future extension remain visible elsewhere but do not inflate heatmap breadth."],
     ["Tension interpretation", "Tensions are neutral two-pole constructs. Pole balance describes this corpus and does not declare a winner. Theme filters use a labelled contextual connection derived from shared governed cluster support; that connection is not direct tension evidence."],
     ["Scenarios", "Scenarios are plausible analytical constructions, not forecasts, causal models, permissions, or validated recommendations. Triggers, branch points, indicators, counter-signposts, mitigations, and response options preserve uncertainty. SC-04 carries an additional public governance and rights notice."],
@@ -2665,6 +3465,9 @@ async function renderRoute(options) {
   const route = resolved.route;
   if (resolved.replace) history.replaceState({ route: route }, "", new URL(routeHref(route), window.location.href));
   clearSurface();
+  landingHero.hidden = route.view !== "start";
+  viewHeader.hidden = route.view === "start";
+  viewToolbar.hidden = route.view === "start";
   updateActiveNavigation(route.view);
   if (resolved.notice) showNotice(resolved.notice);
   viewContent.hidden = false;
@@ -2672,7 +3475,7 @@ async function renderRoute(options) {
   try {
     await RENDERERS[route.view](route);
     if (token !== state.renderToken) return;
-    renderCopyLinkAction();
+    renderCopyLinkAction(route);
     viewContent.setAttribute("aria-busy", "false");
     if (settings.focus !== false) focusViewHeading();
     appStatus.textContent = viewTitle.textContent + " loaded.";
@@ -2734,10 +3537,12 @@ async function initialize() {
     setLoading(true);
     const manifest = await fetchPublicJson("manifest.json");
     validateManifest(manifest);
+    const iconPromise = ensureIconRegistry();
     const payloads = await Promise.all(EAGER_PUBLIC_FILES.map(fetchPublicJson));
     EAGER_PUBLIC_FILES.forEach(function (fileName, index) { state.data.set(fileName, payloads[index]); });
     validateInitialData();
     buildIndexes();
+    await iconPromise;
     populateSearchFilters();
     updateHeroStats();
     state.initialized = true;

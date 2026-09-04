@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta
     name="description"
-    content="Explore the canonical PSYWERX Cognitive Security map across categories, families, clusters, themes, tensions, narratives, scenarios, and public releases."
+    content="Explore the PSYWERX Cognitive Security map across categories, subcategories, topics, themes, tensions, narratives, scenarios, and episodes."
   >
   <title>PSYWERX Cognitive Security Map</title>
   <link rel="icon" href="data:,">
@@ -27,8 +27,8 @@
         >
       </a>
       <div class="site-header__tools">
-        <form id="global-search-form" class="global-search" role="search" aria-label="Search the canonical Cognitive Security map">
-          <label class="sr-only" for="global-search-input">Search the entire canonical map</label>
+        <form id="global-search-form" class="global-search" role="search" aria-label="Search the Cognitive Security map">
+          <label class="sr-only" for="global-search-input">Search the entire map</label>
           <input
             id="global-search-input"
             name="q"
@@ -49,35 +49,29 @@
   </header>
 
   <main id="map-app" tabindex="-1">
-    <section class="hero" aria-labelledby="page-title">
+    <section id="landing-hero" class="hero" aria-labelledby="page-title">
       <div class="site-container hero__inner">
         <div class="hero__copy">
-          <p class="eyebrow">PSYWERX Cognitive Security · Start Here</p>
-          <h1 id="page-title">Follow practitioner ideas from synthesis to support.</h1>
+          <p class="eyebrow">PSYWERX Cognitive Security</p>
+          <h1 id="page-title">Explore the ideas, connections, and conversations.</h1>
           <p class="hero__lede">
-            Explore the canonical synthesis through categories, families,
-            clusters, cross-cutting themes, tensions, narratives, scenarios, and the
-            public releases that support them.
-          </p>
-          <p id="methodology-caution" class="hero__caution">
-            Corpus support reflects recurrence and breadth within this practitioner
-            discourse corpus. It does not indicate scientific validity, consensus,
-            importance, prevalence, or real-world effect size.
+            Browse categories, subcategories, and topics; compare themes and
+            tensions; and return to the episodes behind the map.
           </p>
         </div>
 
         <dl class="hero__stats" aria-label="Corpus and map summary">
           <div>
             <dt id="total-episode-count">242</dt>
-            <dd>canonical public-feed releases</dd>
+            <dd>public episodes</dd>
           </div>
           <div>
             <dt id="total-family-count">50</dt>
-            <dd>canonical families</dd>
+            <dd>subcategories</dd>
           </div>
           <div>
             <dt id="total-cluster-count">127</dt>
-            <dd>concept clusters</dd>
+            <dd>topics</dd>
           </div>
           <div>
             <dt id="total-theme-count">11</dt>
@@ -91,7 +85,7 @@
       <nav id="view-navigation" class="view-navigation site-container" aria-label="Cognitive Security Map sections">
         <ul>
           <li><a href="?view=start" data-view-link="start" data-route-view="start" aria-current="page">Start Here</a></li>
-          <li><a href="?view=families" data-view-link="families" data-route-view="families">Categories &amp; Families</a></li>
+          <li><a href="?view=families" data-view-link="families" data-route-view="families">Categories</a></li>
           <li><a href="?view=themes" data-view-link="themes" data-route-view="themes">Themes</a></li>
           <li><a href="?view=tensions" data-view-link="tensions" data-route-view="tensions">Tensions</a></li>
           <li><a href="?view=narratives" data-view-link="narratives" data-route-view="narratives">Narratives</a></li>
@@ -122,24 +116,20 @@
 
       <nav id="view-breadcrumbs" class="breadcrumbs" aria-label="Map breadcrumb" hidden></nav>
 
-      <header class="view-header">
+      <header id="view-header" class="view-header">
         <div class="view-header__copy">
-          <p id="view-kicker" class="eyebrow">Canonical practitioner discourse map</p>
+          <p id="view-kicker" class="eyebrow">Practitioner discourse map</p>
           <h2 id="view-title" tabindex="-1">Start Here</h2>
           <p id="view-description">
-            Learn how to move through the canonical map without mistaking support for proof.
+            Learn how the map is organized and choose a place to begin.
           </p>
         </div>
         <div id="view-actions" class="view-header__actions"></div>
       </header>
 
-      <div class="view-toolbar">
+      <div id="view-toolbar" class="view-toolbar">
         <p id="view-summary" class="view-summary" role="status" aria-live="polite">
           Loading the public map&hellip;
-        </p>
-        <p class="view-count-caveat">
-          Corpus support reflects recurrence and breadth within this practitioner discourse corpus.
-          It does not indicate scientific validity, consensus, importance, prevalence, or real-world effect size.
         </p>
       </div>
 
@@ -188,15 +178,15 @@
               </select>
             </label>
             <label for="search-family">
-              Family
+              Subcategory
               <select id="search-family" name="family" disabled>
-                <option value="">All families</option>
+                <option value="">All subcategories</option>
               </select>
             </label>
             <label for="search-cluster">
-              Cluster
+              Topic
               <select id="search-cluster" name="cluster" disabled>
-                <option value="">All clusters</option>
+                <option value="">All topics</option>
               </select>
             </label>
           </div>
@@ -208,7 +198,7 @@
         <span class="loading-state__indicator" aria-hidden="true"></span>
         <div>
           <h3>Loading the discourse map</h3>
-          <p>Preparing canonical categories, families, clusters, and synthesis records&hellip;</p>
+          <p>Preparing categories, subcategories, topics, and synthesis records&hellip;</p>
         </div>
       </div>
 
@@ -225,8 +215,8 @@
   <footer class="site-footer">
     <div class="site-container site-footer__inner">
       <p>
-        PSYWERX Cognitive Security Practitioner Discourse Map &middot; A governed
-        synthesis of practitioner discourse, separate from the Driver Ontology.
+        PSYWERX Cognitive Security Practitioner Discourse Map &middot; A synthesis of
+        practitioner discourse, separate from the Driver Ontology.
       </p>
       <a href="?view=methodology" data-view-link="methodology" data-route-view="methodology">Read the methodology</a>
     </div>

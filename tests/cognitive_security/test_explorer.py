@@ -171,7 +171,7 @@ class ExplorerStaticContractTests(unittest.TestCase):
     def test_start_here_and_primary_navigation_are_complete(self):
         expected = [
             ("start", "Start Here"),
-            ("families", "Categories &amp; Families"),
+            ("families", "Categories"),
             ("themes", "Themes"),
             ("tensions", "Tensions"),
             ("narratives", "Narratives"),
@@ -186,43 +186,42 @@ class ExplorerStaticContractTests(unittest.TestCase):
                 rf'data-route-view="{re.escape(view)}"[^>]*>{label}</a>',
             )
         for entry in (
-            "Explore Categories",
-            "Explore Themes",
-            "Explore Tensions",
-            "Explore Narratives",
-            "Explore Scenarios",
-            "Browse Episodes",
-            "Search the map",
+            "Choose an entry point",
+            "Categories",
+            "Subcategories",
+            "Topics",
+            "Findings & Open Questions",
+            "How the Explorer fits together",
         ):
             self.assertIn(entry, self.javascript)
-        self.assertIn("Explore the canonical synthesis", self.html)
+        self.assertIn("Explore the ideas, connections, and conversations", self.html)
         self.assertNotIn("approved canonical synthesis", self.html.lower())
 
     def test_support_display_is_two_layer_noncomposite_and_interpreted(self):
-        self.assertIn(SUPPORT_INTERPRETATION, " ".join(self.html.split()))
         self.assertIn(SUPPORT_INTERPRETATION, self.javascript)
+        self.assertIn("Analytical details", self.javascript)
         self.assertIn("Primary corpus support", self.javascript)
         self.assertIn("Broader traceable reach", self.javascript)
         self.assertIn('"details"', self.javascript)
-        self.assertIn("primary family", self.javascript.lower())
-        self.assertIn("primary cluster", self.javascript.lower())
+        self.assertIn("primary subcategories", self.javascript.lower())
+        self.assertIn("primary topics", self.javascript.lower())
         self.assertIn("support concentration", self.javascript.lower())
         self.assertIn("primaryContentUnitCount", self.javascript)
         self.assertIn("primary-support content units", self.javascript)
         self.assertNotIn("directContentUnitCount", self.javascript)
         self.assertNotIn("direct content units", self.javascript.lower())
         self.assertIn(
-            "Primary support represents the governed evidence designated as primary for this entity. The evidence path depends on entity type.",
+            "Primary support is the evidence designated as primary for this entity. Its path depends on entity type",
             self.javascript,
         )
         for clarification in (
             "retained items directly coded to that cluster",
-            "primary support comes from its member clusters",
-            "primary support comes from primary-support families and clusters",
+            "primary support comes from its member topics",
+            "primary support comes from primary-support subcategories and topics",
             "evidence directly allocated to Pole A or Pole B",
-            "primary evidence is inherited through integrated canonical constructs",
-            "primary evidence is traced through supporting families and clusters",
-            "primary evidence is traced through relevant canonical constructs",
+            "primary evidence is inherited through integrated map constructs",
+            "primary evidence is traced through supporting subcategories and topics",
+            "primary evidence is traced through relevant map constructs",
         ):
             self.assertIn(clarification, self.javascript)
         for prohibited in (
@@ -251,17 +250,17 @@ class ExplorerStaticContractTests(unittest.TestCase):
 
     def test_entity_details_expose_required_canonical_context(self):
         for token in (
-            "Related canonical synthesis",
+            "Related ideas",
             '{ label: "Themes"',
             '{ label: "Tensions"',
-            "Supporting episodes",
-            "Family finding",
+            "Source episodes",
+            "What the corpus says",
             '{ label: "Narratives"',
             "Related scenarios",
             "Response options are analytical possibilities, not validated recommendations.",
         ):
             self.assertIn(token, self.javascript)
-        self.assertIn("Governance and rights review required", self.javascript)
+        self.assertIn("Rights and governance safeguards are essential", self.javascript)
         for token in (
             "legal",
             "privacy",
@@ -282,11 +281,11 @@ class ExplorerStaticContractTests(unittest.TestCase):
             "parseRoute",
             "routeHref",
             "canonicalizeRoute",
-            "That view is not part of the canonical public map",
+            "That view is not part of this public map",
         ):
             self.assertIn(token, self.javascript)
         self.assertIn("Copy link", self.javascript)
-        self.assertIn("The relevant canonical index is shown", self.javascript)
+        self.assertIn("The relevant index is shown", self.javascript)
         self.assertIn("window.location.href", self.javascript)
 
     def test_legacy_links_are_privacy_safe_and_fail_gracefully(self):
@@ -319,7 +318,7 @@ class ExplorerStaticContractTests(unittest.TestCase):
         ):
             self.assertIn(f'"{field}"', self.javascript)
         self.assertIn("SEARCH_ENTITY_TYPES", self.javascript)
-        self.assertIn("Canonical records only", self.javascript)
+        self.assertIn("Public map records", self.javascript)
         self.assertNotIn("historicalThemeIds", self.javascript.partition(
             "const FORBIDDEN_PUBLIC_RECORD_KEYS"
         )[0])
@@ -331,12 +330,14 @@ class ExplorerStaticContractTests(unittest.TestCase):
             "human-guided, AI-assisted synthesis",
             "Transcript → public episode summary",
             "Structured qualitative analysis → analytical map relationships",
-            "canonical architecture only",
+            "Canonical architecture",
             "Private provenance remains preserved and reproducible",
+            "Episode discovery",
+            "normalized IDF-weighted Jaccard",
         ):
             self.assertIn(token, self.javascript)
         self.assertIn("finding-card--open-question", self.javascript)
-        self.assertIn("Family findings", self.javascript)
+        self.assertIn("Subcategory findings", self.javascript)
         self.assertIn("Integrative category finding", self.javascript)
 
     def test_accessibility_and_mobile_contract_is_explicit(self):
