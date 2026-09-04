@@ -37,6 +37,52 @@ REPORT_PATH = Path("docs") / "cognitive-security" / "INGESTION_REPORT.md"
 FROZEN_EPISODE_SUMMARIES_PATH = (
     Path("data") / "cognitive-security" / "episode_summaries.json"
 )
+CANONICAL_PUBLIC_CONTENT_VERSION = "canonical-resynthesis"
+RETIRED_CANONICAL_PUBLIC_CONTENT_VERSIONS = {"canonical-resynthesis-v1"}
+
+
+def _guard_against_canonical_public_overwrite(repo_root: Path) -> None:
+    """Refuse to let the legacy builder replace the canonical public package."""
+
+    manifest_path = repo_root / PUBLIC_DIR / "manifest.json"
+    if not manifest_path.exists():
+        return
+    try:
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise ValidationError(
+            "Cannot safely identify the existing public Cognitive Security package.",
+            {
+                "errors": [
+                    f"Refusing legacy overwrite because {manifest_path} could not "
+                    f"be read as JSON: {exc}"
+                ]
+            },
+        ) from exc
+    if not isinstance(manifest, Mapping):
+        raise ValidationError(
+            "Cannot safely identify the existing public Cognitive Security package.",
+            {
+                "errors": [
+                    f"Refusing legacy overwrite because {manifest_path} is not a "
+                    "JSON object."
+                ]
+            },
+        )
+    if manifest.get("contentVersion") in {
+        CANONICAL_PUBLIC_CONTENT_VERSION,
+        *RETIRED_CANONICAL_PUBLIC_CONTENT_VERSIONS,
+    }:
+        raise ValidationError(
+            "The legacy Cognitive Security builder cannot overwrite the canonical "
+            "public package.",
+            {
+                "errors": [
+                    "Use scripts/build_canonical_public.py to rebuild "
+                    f"{CANONICAL_PUBLIC_CONTENT_VERSION}."
+                ]
+            },
+        )
 
 
 def _normalized_counts(
@@ -267,6 +313,7 @@ def _current_source_hashes(source_dir: Path) -> dict[str, str]:
 
 
 def build(repo_root: Path) -> dict[str, Any]:
+    _guard_against_canonical_public_overwrite(repo_root)
     source_dir = repo_root / SOURCE_DIR
     source_hashes_before = _current_source_hashes(source_dir)
     extracted = extract_sources(source_dir)

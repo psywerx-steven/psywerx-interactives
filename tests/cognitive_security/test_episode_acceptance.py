@@ -39,6 +39,10 @@ def load_json(filename: str):
     return json.loads((PUBLIC_DIR / filename).read_text(encoding="utf-8"))
 
 
+@unittest.skipUnless(
+    (PUBLIC_DIR / "episode_relationships.json").is_file(),
+    "Superseded legacy episode graph; canonical provenance has separate tests.",
+)
 class EpisodeAcceptanceTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):

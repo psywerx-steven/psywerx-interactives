@@ -1,4 +1,8 @@
-# Cognitive Security Map Build and Provenance
+# Cognitive Security Map Build and Provenance (historical)
+
+> This document preserves the superseded pre-canonical build contract. See
+> [Canonical build and provenance](./CANONICAL_BUILD_AND_PROVENANCE.md) for the
+> active public projection, corpus accounting, privacy boundary, and QA gates.
 
 This document defines how the eight private workbooks become the governed
 internal normalized dataset and conservative static JSON package for the

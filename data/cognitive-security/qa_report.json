@@ -1,459 +1,50 @@
 {
-  "additionalSourceAnomalies": [
-    {
-      "code": "category-sheet-id-omission",
-      "description": "Category-specific source sheets omit MASTER item IDs 14368-14373; canonical MASTER retains all six records."
-    },
-    {
-      "code": "confidence-snapshot-difference",
-      "description": "MASTER item confidence is preserved separately from drill-down coding confidence; 4,229 focal records differ."
-    }
-  ],
-  "ambiguityCounts": {
-    "assignmentRows": 158
-  },
-  "canonicalSourceDecisions": {
-    "blankCopiedSourceTensions": "intentionally-not-used",
-    "tensionsArtifactId": "ART-tensions"
-  },
-  "corpusReconciliation": {
-    "counts": {
-      "ambiguousSourceIdentities": 0,
-      "canonicalEpisodes": 242,
-      "confirmedAliasGroups": 27,
-      "excludedConfirmedAliasSourceIdentities": 27,
-      "excludedNonEpisodeSourceIdentities": 0,
-      "likelyAliasSourceIdentities": 0,
-      "originalContextualItems": 3457,
-      "originalFocalItems": 10940,
-      "originalItems": 14397,
-      "originalSourceIdentities": 269,
-      "pendingDecisionRecords": 0,
-      "reconciledSensitivityContextualItems": 3123,
-      "reconciledSensitivityFocalItems": 9855,
-      "reconciledSensitivityItems": 12978,
-      "sourceIdentitiesInConfirmedAliasGroups": 54,
-      "unresolvedSourceIdentities": 0
-    },
-    "methodVersion": "1.0",
-    "status": "complete"
+  "checks": {
+    "canonicalCounts": true,
+    "compositeScoreAbsent": true,
+    "deterministicSerialization": true,
+    "episode83InheritanceEdge": true,
+    "episode83SingleAnalyticalWeight": true,
+    "governedInputContract": true,
+    "heatmapComplete": true,
+    "privacyGuard": true,
+    "recursiveAllowlist": true,
+    "relationshipEndpointsResolve": true
   },
   "counts": {
-    "ambiguity_flagged_assignments": 158,
-    "artifacts": 8,
-    "categories": 10,
-    "category_findings": 42,
-    "category_summaries": 7,
-    "cluster_meta_mappings": 124,
-    "cluster_summaries": 127,
-    "clusters": 127,
-    "contextual_items": 3457,
-    "episode_reconciliation_flags": 2,
-    "episode_source_identities": 269,
-    "episode_source_mappings": 269,
-    "episodes": 242,
-    "evidence_links": 12606,
-    "focal_items": 10940,
-    "item_cluster_assignments": 10940,
-    "item_tags": 52458,
-    "items": 14397,
-    "meta_clusters": 36,
-    "meta_narratives": 7,
-    "present_workbooks": 8,
-    "primary_assignments": 10940,
-    "required_workbooks": 8,
-    "review_flags": 860,
-    "review_required_assignments": 514,
-    "scenario_actions": 30,
-    "scenario_indicators": 36,
-    "scenario_pathways": 42,
-    "scenarios": 6,
-    "secondary_none": 416,
-    "substantive_secondary_assignments": 10524,
-    "tension_mappings": 300,
-    "tensions": 30,
-    "theme_cluster_evidence": 302,
-    "theme_meta_mappings": 89,
-    "themes": 11,
-    "tracked_xlsx_files": 0
+    "canonicalContentUnitCount": 241,
+    "canonicalContextualItemCount": 3111,
+    "canonicalFocalItemCount": 9822,
+    "canonicalItemCount": 12933,
+    "categoryCount": 7,
+    "categoryFindingCount": 64,
+    "clusterCount": 127,
+    "clusterReleaseLinkCount": 10715,
+    "clusterSummaryCount": 127,
+    "episodeSummaryCount": 242,
+    "familyCount": 50,
+    "heatmapCellCount": 77,
+    "narrativeCount": 5,
+    "publicReleaseCount": 242,
+    "relationshipCount": 2649,
+    "relationshipSemanticRoleCount": 16,
+    "scenarioCount": 6,
+    "sharedContentRelationshipCount": 1,
+    "tensionCount": 20,
+    "tensionReleaseLinkCount": 199,
+    "themeCount": 11
   },
-  "deterministicBuild": {
-    "method": "repeat in-memory serialization plus release-gate rebuild",
-    "status": "pass"
+  "provenanceCounts": {
+    "clusterReleaseLinkCount": 10715,
+    "sharedContentRelationshipCount": 1,
+    "tensionReleaseLinkCount": 199
   },
-  "duplicateIds": [],
-  "errors": [],
-  "expectedVsActual": {
-    "assignmentAmbiguity": {
-      "actual": 158,
-      "expected": 158,
-      "status": "pass"
-    },
-    "assignmentReviewRequired": {
-      "actual": 514,
-      "expected": 514,
-      "status": "pass"
-    },
-    "clusterMetaMappings": {
-      "actual": 124,
-      "expected": 124,
-      "status": "pass"
-    },
-    "clusters": {
-      "actual": 127,
-      "expected": 127,
-      "status": "pass"
-    },
-    "contextualItems": {
-      "actual": 3457,
-      "expected": 3457,
-      "status": "pass"
-    },
-    "episodes": {
-      "actual": 242,
-      "expected": 242,
-      "status": "pass"
-    },
-    "extractedItems": {
-      "actual": 14397,
-      "expected": 14397,
-      "status": "pass"
-    },
-    "focalItems": {
-      "actual": 10940,
-      "expected": 10940,
-      "status": "pass"
-    },
-    "metaClusters": {
-      "actual": 36,
-      "expected": 36,
-      "status": "pass"
-    },
-    "metaNarratives": {
-      "actual": 7,
-      "expected": 7,
-      "status": "pass"
-    },
-    "primaryAssignments": {
-      "actual": 10940,
-      "expected": 10940,
-      "status": "pass"
-    },
-    "reconciledSensitivityContextualItems": {
-      "actual": 3123,
-      "expected": 3123,
-      "status": "pass"
-    },
-    "reconciledSensitivityFocalItems": {
-      "actual": 9855,
-      "expected": 9855,
-      "status": "pass"
-    },
-    "reconciledSensitivityItems": {
-      "actual": 12978,
-      "expected": 12978,
-      "status": "pass"
-    },
-    "scenarios": {
-      "actual": 6,
-      "expected": 6,
-      "status": "pass"
-    },
-    "secondaryAssignments": {
-      "actual": 10524,
-      "expected": 10524,
-      "status": "pass"
-    },
-    "secondaryNone": {
-      "actual": 416,
-      "expected": 416,
-      "status": "pass"
-    },
-    "sourceIdentities": {
-      "actual": 269,
-      "expected": 269,
-      "status": "pass"
-    },
-    "tensions": {
-      "actual": 30,
-      "expected": 30,
-      "status": "pass"
-    },
-    "themeClusterEvidence": {
-      "actual": 302,
-      "expected": 302,
-      "status": "pass"
-    },
-    "themeMetaMappings": {
-      "actual": 89,
-      "expected": 89,
-      "status": "pass"
-    },
-    "themes": {
-      "actual": 11,
-      "expected": 11,
-      "status": "pass"
-    }
+  "redundancyResolution": {
+    "comparisonCount": 3511,
+    "flaggedPairCount": 7,
+    "resolvedDistinctPairCount": 7,
+    "unresolvedPairCount": 0
   },
-  "metaClustersWithoutMappingRows": [
-    {
-      "metaClusterId": "CRB-M05",
-      "name": "Strategic asymmetry and contested operating conditions"
-    }
-  ],
-  "missingReferences": [],
-  "narrativeCountMismatch": {
-    "action": "preserved-source-records-without-invention",
-    "currentSourceActual": 7,
-    "priorDocumentedExpected": 8,
-    "sourceRecordIds": [
-      "N01",
-      "N02",
-      "N03",
-      "N04",
-      "N05",
-      "N06",
-      "N07"
-    ],
-    "status": "human-adjudication-required"
-  },
-  "normalizedEntityCounts": {
-    "artifacts": 8,
-    "categories": 10,
-    "category_findings": 42,
-    "category_summaries": 7,
-    "cluster_meta_mappings": 124,
-    "cluster_summaries": 127,
-    "clusters": 127,
-    "episode_reconciliation_flags": 2,
-    "episode_source_identities": 269,
-    "episode_source_mappings": 269,
-    "episodes": 242,
-    "evidence_links": 12606,
-    "item_cluster_assignments": 10940,
-    "item_tags": 52458,
-    "items": 14397,
-    "meta_clusters": 36,
-    "meta_narratives": 7,
-    "review_flags": 860,
-    "scenario_actions": 30,
-    "scenario_indicators": 36,
-    "scenario_pathways": 42,
-    "scenarios": 6,
-    "tension_mappings": 300,
-    "tensions": 30,
-    "theme_cluster_evidence": 302,
-    "theme_meta_mappings": 89,
-    "themes": 11
-  },
-  "passed": true,
-  "publicExportChecks": {
-    "errors": [],
-    "positiveAllowlist": true,
-    "status": "pass"
-  },
-  "reviewCounts": {
-    "assignmentRows": 514,
-    "normalizedReviewFlags": 860
-  },
-  "schemaVersion": "1.1",
-  "sourceArtifactQa": [
-    {
-      "aggregateRowCount": 2570,
-      "artifactId": "ART-cluster-summaries",
-      "canonicalRole": "canonical-cluster-synthesis",
-      "integrityVerified": true,
-      "worksheetCount": 5
-    },
-    {
-      "aggregateRowCount": 128,
-      "artifactId": "ART-codebook",
-      "canonicalRole": "canonical-cluster-codebook",
-      "integrityVerified": true,
-      "worksheetCount": 1
-    },
-    {
-      "aggregateRowCount": 2169,
-      "artifactId": "ART-cross-cutting-themes",
-      "canonicalRole": "canonical-cross-cutting-themes",
-      "integrityVerified": true,
-      "worksheetCount": 10
-    },
-    {
-      "aggregateRowCount": 12044,
-      "artifactId": "ART-drill-down",
-      "canonicalRole": "canonical-item-cluster-assignments",
-      "integrityVerified": true,
-      "worksheetCount": 8
-    },
-    {
-      "aggregateRowCount": 902,
-      "artifactId": "ART-final-synthesis",
-      "canonicalRole": "canonical-narratives-findings-and-scenarios",
-      "integrityVerified": true,
-      "worksheetCount": 14
-    },
-    {
-      "aggregateRowCount": 43785,
-      "artifactId": "ART-master-extractions",
-      "canonicalRole": "canonical-items-and-episode-provenance",
-      "integrityVerified": true,
-      "worksheetCount": 18
-    },
-    {
-      "aggregateRowCount": 451,
-      "artifactId": "ART-meta-clusters",
-      "canonicalRole": "canonical-meta-clusters-and-mappings",
-      "integrityVerified": true,
-      "worksheetCount": 6
-    },
-    {
-      "aggregateRowCount": 1600,
-      "artifactId": "ART-tensions",
-      "canonicalRole": "canonical-tensions-and-debates",
-      "integrityVerified": true,
-      "worksheetCount": 11
-    }
-  ],
-  "unresolvedMappings": [
-    {
-      "categoryId": "CAT-96588CC421196A9A",
-      "clusterId": "CRB-10",
-      "clusterName": "Forecasting, Complexity & Uncertainty"
-    },
-    {
-      "governanceStatus": "known-empty-source-membership",
-      "metaClusterId": "CRB-M05",
-      "metaClusterName": "Strategic asymmetry and contested operating conditions"
-    },
-    {
-      "categoryId": "CAT-DA4674EEAB83CDA9",
-      "clusterId": "FTP-13",
-      "clusterName": "Societal Transformation, Identity, & Social Cohesion"
-    },
-    {
-      "categoryId": "CAT-9ACE5E33E3E9B1A7",
-      "clusterId": "KCFT-20",
-      "clusterName": "Strategic Culture & Ideological Competition"
-    }
-  ],
-  "unresolvedThemeClusterEvidence": [
-    {
-      "clusterId": null,
-      "status": "source-placeholder-retained",
-      "themeClusterEvidenceId": "TCE-3DD5B03492D35CC9",
-      "themeId": "XTHEME-008"
-    },
-    {
-      "clusterId": null,
-      "status": "source-placeholder-retained",
-      "themeClusterEvidenceId": "TCE-918A450C1C9EDDB5",
-      "themeId": "XTHEME-010"
-    },
-    {
-      "clusterId": null,
-      "status": "source-placeholder-retained",
-      "themeClusterEvidenceId": "TCE-352194A468D7CC72",
-      "themeId": "XTHEME-007"
-    }
-  ],
-  "validationIssues": [
-    {
-      "code": "explicit_unresolved_reference",
-      "context": {
-        "collection": "theme_cluster_evidence",
-        "field": "cluster_id",
-        "governance_known": false,
-        "row": 154,
-        "status": "explicitly-unresolved-source-reference"
-      },
-      "message": "theme_cluster_evidence.cluster_id is unresolved in the source and was preserved without invention.",
-      "severity": "warning"
-    },
-    {
-      "code": "explicit_unresolved_reference",
-      "context": {
-        "collection": "theme_cluster_evidence",
-        "field": "cluster_id",
-        "governance_known": false,
-        "row": 183,
-        "status": "explicitly-unresolved-source-reference"
-      },
-      "message": "theme_cluster_evidence.cluster_id is unresolved in the source and was preserved without invention.",
-      "severity": "warning"
-    },
-    {
-      "code": "explicit_unresolved_reference",
-      "context": {
-        "collection": "theme_cluster_evidence",
-        "field": "cluster_id",
-        "governance_known": false,
-        "row": 34,
-        "status": "explicitly-unresolved-source-reference"
-      },
-      "message": "theme_cluster_evidence.cluster_id is unresolved in the source and was preserved without invention.",
-      "severity": "warning"
-    },
-    {
-      "code": "known_empty_meta_cluster",
-      "context": {
-        "entity_type": "meta_cluster",
-        "governance_known": true,
-        "governance_note": "Strategic synthesis lens without source cluster-mapping rows",
-        "meta_cluster_id": "CRB-M05",
-        "meta_cluster_name": "Strategic asymmetry and contested operating conditions"
-      },
-      "message": "Meta-cluster has no source cluster-mapping rows; membership was not invented.",
-      "severity": "warning"
-    },
-    {
-      "code": "known_meta_narrative_count_mismatch",
-      "context": {
-        "actual": 7,
-        "expected": 8
-      },
-      "message": "Source contains seven meta-narratives (N01-N07); prior project documentation expected eight.",
-      "severity": "warning"
-    },
-    {
-      "code": "known_unmapped_cluster",
-      "context": {
-        "cluster_id": "CRB-10",
-        "cluster_name": "Forecasting, Complexity & Uncertainty",
-        "governance_known": true
-      },
-      "message": "Intermediate cluster has no meta-cluster assignment.",
-      "severity": "warning"
-    },
-    {
-      "code": "known_unmapped_cluster",
-      "context": {
-        "cluster_id": "FTP-13",
-        "cluster_name": "Societal Transformation, Identity, & Social Cohesion",
-        "governance_known": true
-      },
-      "message": "Intermediate cluster has no meta-cluster assignment.",
-      "severity": "warning"
-    },
-    {
-      "code": "known_unmapped_cluster",
-      "context": {
-        "cluster_id": "KCFT-20",
-        "cluster_name": "Strategic Culture & Ideological Competition",
-        "governance_known": true
-      },
-      "message": "Intermediate cluster has no meta-cluster assignment.",
-      "severity": "warning"
-    }
-  ],
-  "warnings": [
-    "explicit_unresolved_reference: theme_cluster_evidence.cluster_id is unresolved in the source and was preserved without invention. ({\"collection\": \"theme_cluster_evidence\", \"field\": \"cluster_id\", \"governance_known\": false, \"row\": 34, \"status\": \"explicitly-unresolved-source-reference\"})",
-    "explicit_unresolved_reference: theme_cluster_evidence.cluster_id is unresolved in the source and was preserved without invention. ({\"collection\": \"theme_cluster_evidence\", \"field\": \"cluster_id\", \"governance_known\": false, \"row\": 154, \"status\": \"explicitly-unresolved-source-reference\"})",
-    "explicit_unresolved_reference: theme_cluster_evidence.cluster_id is unresolved in the source and was preserved without invention. ({\"collection\": \"theme_cluster_evidence\", \"field\": \"cluster_id\", \"governance_known\": false, \"row\": 183, \"status\": \"explicitly-unresolved-source-reference\"})",
-    "known_unmapped_cluster: Intermediate cluster has no meta-cluster assignment. ({\"cluster_id\": \"CRB-10\", \"cluster_name\": \"Forecasting, Complexity & Uncertainty\", \"governance_known\": true})",
-    "known_unmapped_cluster: Intermediate cluster has no meta-cluster assignment. ({\"cluster_id\": \"FTP-13\", \"cluster_name\": \"Societal Transformation, Identity, & Social Cohesion\", \"governance_known\": true})",
-    "known_unmapped_cluster: Intermediate cluster has no meta-cluster assignment. ({\"cluster_id\": \"KCFT-20\", \"cluster_name\": \"Strategic Culture & Ideological Competition\", \"governance_known\": true})",
-    "known_empty_meta_cluster: Meta-cluster has no source cluster-mapping rows; membership was not invented. ({\"entity_type\": \"meta_cluster\", \"governance_known\": true, \"governance_note\": \"Strategic synthesis lens without source cluster-mapping rows\", \"meta_cluster_id\": \"CRB-M05\", \"meta_cluster_name\": \"Strategic asymmetry and contested operating conditions\"})",
-    "known_meta_narrative_count_mismatch: Source contains seven meta-narratives (N01-N07); prior project documentation expected eight. ({\"actual\": 7, \"expected\": 8})"
-  ]
+  "schemaVersion": "2.0",
+  "status": "pass"
 }

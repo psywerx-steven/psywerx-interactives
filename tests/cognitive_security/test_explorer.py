@@ -1,14 +1,15 @@
-"""Static and public-data contract tests for the Cognitive Security Explorer.
+"""Canonical public-data and static Explorer acceptance tests.
 
-The Explorer is intentionally dependency-free, so these tests use only the
-Python standard library.  They validate the publication boundary as well as
-the relationships and identifiers that the browser application navigates.
+The production application is dependency-free. These tests intentionally use
+only the Python standard library and validate the shipped projection, browser
+contract, privacy boundary, routes, visualizations, and accessibility hooks.
 """
 
 from __future__ import annotations
 
-from collections import Counter, defaultdict
+from collections import Counter
 import json
+import math
 from pathlib import Path
 import re
 import unittest
@@ -19,733 +20,643 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 EXPLORER_DIR = REPO_ROOT / "cognitive-security"
 PUBLIC_DIR = REPO_ROOT / "data" / "cognitive-security"
 
-REQUIRED_EXPLORER_FILES = ("index.html", "app.js", "styles.css")
-REQUIRED_CONTENT_FILES = {
-    "corpus_reconciliation.json",
-    "categories.json",
-    "clusters.json",
-    "cluster_summaries.json",
-    "meta_clusters.json",
-    "themes.json",
-    "tensions.json",
-    "meta_narratives.json",
-    "category_findings.json",
-    "scenarios.json",
-    "episodes.json",
-    "episode_summaries.json",
-    "episode_relationships.json",
-    "relationships.json",
-    "coverage.json",
-}
-EXPECTED_PUBLIC_FILES = {
+SUPPORT_INTERPRETATION = (
+    "Corpus support reflects recurrence and breadth within this practitioner "
+    "discourse corpus. It does not indicate scientific validity, consensus, "
+    "importance, prevalence, or real-world effect size."
+)
+PUBLIC_FILES = (
     "manifest.json",
-    "corpus_reconciliation.json",
+    "coverage.json",
     "categories.json",
     "clusters.json",
     "cluster_summaries.json",
-    "meta_clusters.json",
+    "families.json",
     "themes.json",
     "tensions.json",
-    "meta_narratives.json",
+    "narratives.json",
     "category_findings.json",
     "scenarios.json",
     "episodes.json",
     "episode_summaries.json",
-    "episode_relationships.json",
     "relationships.json",
-    "coverage.json",
-    "review_summary.json",
+    "relationship_semantics.json",
+    "provenance.json",
+    "heatmap.json",
     "qa_report.json",
+)
+RETIRED_FILES = {
+    "corpus_reconciliation.json",
+    "meta_clusters.json",
+    "meta_narratives.json",
+    "episode_relationships.json",
+    "review_summary.json",
 }
-
-EXPECTED_COUNTS = {
-    "categories": 10,
-    "clusters": 127,
-    "cluster_summaries": 127,
-    "meta_clusters": 36,
-    "themes": 11,
-    "tensions": 30,
-    "meta_narratives": 7,
-    "category_findings": 42,
-    "scenarios": 6,
-    "episodes": 242,
-    "relationships": 975,
-}
-EXPECTED_RELATIONSHIP_COUNTS = {
-    "cluster-belongs-to-category": 127,
-    "cluster-belongs-to-meta-cluster": 124,
-    "meta-cluster-belongs-to-category": 36,
-    "theme-connects-meta-cluster": 89,
-    "theme-supported-by-cluster": 299,
-    "tension-maps-to-cross-cutting-theme": 120,
-    "tension-maps-to-meta-cluster": 180,
-}
-RELATIONSHIP_ENDPOINT_TYPES = {
-    "cluster-belongs-to-category": ("cluster", "category"),
-    "cluster-belongs-to-meta-cluster": ("cluster", "metaCluster"),
-    "meta-cluster-belongs-to-category": ("metaCluster", "category"),
-    "theme-connects-meta-cluster": ("theme", "metaCluster"),
-    "theme-supported-by-cluster": ("theme", "cluster"),
-    "tension-maps-to-cross-cutting-theme": ("tension", "theme"),
-    "tension-maps-to-meta-cluster": ("tension", "metaCluster"),
-}
-UNMAPPED_CLUSTER_IDS = {"CRB-10", "FTP-13", "KCFT-20"}
-KNOWN_EMPTY_META_CLUSTER_ID = "CRB-M05"
-
-# Exact positive allowlists for entity records.  Aggregate release metadata has
-# separate shapes and is checked for prohibited detail below.
-PUBLIC_RECORD_FIELDS = {
-    "categories.json": {
-        "categoryId", "name", "scope", "summary", "soWhat",
-    },
-    "clusters.json": {
-        "clusterId", "categoryId", "name", "definition",
-        "inclusionCriteria", "exclusionCriteria", "nearNeighborDistinctions",
-        "anchorExamples",
-    },
-    "cluster_summaries.json": {
-        "clusterId", "categoryId", "clusterName", "primaryCount",
-        "secondaryCount", "weightedCount", "summary", "recurringThemes",
-        "strategicSignificance", "operationalImplications",
-        "primarySecondaryDistinction",
-    },
-    "meta_clusters.json": {
-        "metaClusterId", "categoryId", "name", "definition",
-        "includedClusterIds", "nearNeighborDistinctions", "salience",
-        "categorySynthesis",
-    },
-    "themes.json": {
-        "themeId", "name", "definition", "categoryIds",
-        "linkedMetaClusterIds", "linkedClusterIds", "crossCategoryLogic",
-        "strategicSignificance", "operationalImplications",
-        "boundaryConditions", "relatedTensionIds", "evidenceStrength",
-    },
-    "tensions.json": {
-        "tensionId", "name", "description", "poleALabel", "poleBLabel",
-        "poleAAssumption", "poleBAssumption", "tensionLevel", "categoryIds",
-        "clusterIds", "evidenceStrength", "confidence",
-    },
-    "meta_narratives.json": {
-        "narrativeId", "name", "shortVersion", "coreClaim",
-        "supportingThemeIds", "supportingTensionIds",
-        "supportingMetaClusterIds", "categoryIds", "strategicSignificance",
-        "operationalImplications", "caveats", "confidence",
-    },
-    "category_findings.json": {
-        "findingId", "categoryId", "name", "coreFinding",
-        "supportingMetaClusterIds", "supportingClusterIds",
-        "strategicSignificance", "operationalImplications",
-        "unresolvedQuestions", "caveats", "confidence",
-    },
-    "scenarios.json": {
-        "scenarioId", "name", "timeframe", "scenarioType", "coreScenario",
-        "drivingForces", "categoryIds", "themeIds", "tensionIds",
-        "strategicImplications", "operationalImplications",
-        "researchQuestions", "uncertaintyLevel", "assumptions",
-        "alternativeOutcomes", "pathway", "indicators", "actions",
-        "forecastDisclaimer",
-    },
-    "episodes.json": {
-        "episodeId", "podcast", "episodeTitle", "sourceIdentityCount",
-        "originalItemCount", "reconciledSensitivityItemCount",
-        "parsedEpisodeNumber",
-    },
-    "episode_summaries.json": {
-        "episodeId", "episodeNumber", "episodeTitle", "summary", "keyTopics",
-        "whyItMatters", "summaryMethod", "transcriptWordCount",
-        "summaryWordCount",
-    },
-    "relationships.json": {
-        "relationshipId", "relationshipType", "sourceId", "sourceType",
-        "targetId", "targetType", "interpretation",
-    },
-}
-
-DETAIL_ROUTES = {
+COLLECTIONS = {
     "category": ("categories.json", "categoryId"),
-    "meta-cluster": ("meta_clusters.json", "metaClusterId"),
     "cluster": ("clusters.json", "clusterId"),
+    "family": ("families.json", "familyId"),
     "theme": ("themes.json", "themeId"),
     "tension": ("tensions.json", "tensionId"),
-    "meta-narrative": ("meta_narratives.json", "narrativeId"),
-    "category-finding": ("category_findings.json", "findingId"),
+    "narrative": ("narratives.json", "narrativeId"),
+    "finding": ("category_findings.json", "findingId"),
     "scenario": ("scenarios.json", "scenarioId"),
     "episode": ("episodes.json", "episodeId"),
 }
-EXPECTED_DEEP_LINK_ENTITY_TYPES = [
-    "category", "metaCluster", "cluster", "theme", "tension",
-    "metaNarrative", "categoryFinding", "scenario", "episode",
-]
+ROUTE_TYPES = {
+    "category": "category",
+    "family": "family",
+    "cluster": "cluster",
+    "theme": "theme",
+    "tension": "tension",
+    "narrative": "narrative",
+    "finding": "category-finding",
+    "scenario": "scenario",
+    "episode": "episode",
+}
+EXPECTED_COUNTS = {
+    "categoryCount": 7,
+    "familyCount": 50,
+    "clusterCount": 127,
+    "clusterSummaryCount": 127,
+    "themeCount": 11,
+    "tensionCount": 20,
+    "narrativeCount": 5,
+    "categoryFindingCount": 64,
+    "scenarioCount": 6,
+    "publicReleaseCount": 242,
+    "episodeSummaryCount": 242,
+    "canonicalContentUnitCount": 241,
+    "canonicalItemCount": 12933,
+    "canonicalFocalItemCount": 9822,
+    "canonicalContextualItemCount": 3111,
+    "heatmapCellCount": 77,
+}
+EXPECTED_THEME_NAMES = {
+    "TH-01": "Institutionalized Information Capability",
+    "TH-02": "Epistemic Infrastructure for Contested Reality",
+    "TH-03": "Platform Architecture as the Terrain of Influence",
+    "TH-04": "AI-Enabled Scale as Both Overmatch and Exposure",
+    "TH-05": "Human Reception and Societal Resilience",
+    "TH-06": "Datafied Identity as Security Asset and Attack Surface",
+    "TH-07": "Multi-Actor Alignment and Networked Execution",
+    "TH-08": "Mission Continuity on a Contested Technical Substrate",
+    "TH-09": "Knowledge-to-Practice Pipelines for a Professionalizing Field",
+    "TH-10": "Asymmetric Tempo, Cost, and Constraint in Gray-Zone Competition",
+    "TH-11": "Legitimacy-Preserving Governance of Information Power",
+}
+REQUIRED_ROLES = {
+    "direct-coded-support",
+    "primary-family-membership",
+    "secondary-family-relationship",
+    "primary-theme-support",
+    "secondary-theme-support",
+    "conceptual-framing",
+    "future-extension",
+    "activated-tension",
+    "contextual-connection",
+    "shared-content-inheritance",
+}
 
 
 def load_json(filename: str):
     return json.loads((PUBLIC_DIR / filename).read_text(encoding="utf-8"))
 
 
-def recursively_walk(value, path: tuple[str, ...] = ()):
-    """Yield ``(path, value)`` for every node in a JSON-compatible value."""
+def walk(value, path: tuple[str, ...] = ()):
     yield path, value
     if isinstance(value, dict):
         for key, child in value.items():
-            yield from recursively_walk(child, path + (str(key),))
+            yield from walk(child, path + (str(key),))
     elif isinstance(value, list):
         for index, child in enumerate(value):
-            yield from recursively_walk(child, path + (str(index),))
+            yield from walk(child, path + (str(index),))
 
 
 class ExplorerStaticContractTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.manifest = load_json("manifest.json")
         cls.html = (EXPLORER_DIR / "index.html").read_text(encoding="utf-8")
         cls.javascript = (EXPLORER_DIR / "app.js").read_text(encoding="utf-8")
         cls.css = (EXPLORER_DIR / "styles.css").read_text(encoding="utf-8")
+        cls.combined = "\n".join((cls.html, cls.javascript, cls.css))
 
-    def test_required_explorer_files_and_shared_assets_exist(self):
-        for filename in REQUIRED_EXPLORER_FILES:
-            with self.subTest(filename=filename):
-                path = EXPLORER_DIR / filename
-                self.assertTrue(path.is_file(), f"Missing Explorer file: {path}")
-
-        self.assertRegex(
-            self.html,
-            r"href=[\"']\.\./shared/psywerx\.css[\"']",
-            "Explorer must reuse the shared PSYWERX stylesheet.",
-        )
-        self.assertRegex(self.html, r"href=[\"']\./styles\.css[\"']")
-        self.assertRegex(self.html, r"src=[\"']\./app\.js[\"']")
-
-        asset_references = re.findall(
-            r"(?:src|href)=[\"']([^\"']+\.(?:css|js|png|svg|webp|ico))[\"']",
-            self.html,
-            flags=re.IGNORECASE,
-        )
-        self.assertTrue(asset_references, "Expected local Explorer asset references.")
-        for reference in asset_references:
-            with self.subTest(asset=reference):
-                self.assertFalse(re.match(r"(?:https?:)?//", reference))
-                target = (EXPLORER_DIR / reference.split("?", 1)[0]).resolve()
-                self.assertTrue(target.is_file(), f"Missing referenced asset: {reference}")
-
-    def test_explorer_has_no_private_or_third_party_references(self):
-        combined = "\n".join((self.html, self.javascript, self.css))
-        lowered = combined.casefold().replace("\\", "/")
-        for prohibited_path in (
-            "analysis/",
-            "source-data/",
-            "ipa-podcast/",
-            "master_extractions.xlsx",
-            "items.json",
-            "item_tags.json",
-            "item_cluster_assignments.json",
-            "evidence_links.json",
-            "review_flags.json",
-        ):
-            with self.subTest(path=prohibited_path):
-                self.assertNotIn(prohibited_path, lowered)
-
-        external_urls = re.findall(r"(?:https?:)?//[^\s\"')]+", combined)
-        self.assertEqual([], external_urls, "Explorer must not use third-party URLs.")
-
-    def test_explorer_json_references_are_public_allowlisted_files(self):
-        manifest_files = set(self.manifest["publicFiles"])
-        self.assertEqual(EXPECTED_PUBLIC_FILES, manifest_files)
-
-        references = {
-            Path(match).name
-            for match in re.findall(
-                r"[\"']([^\"']+\.json(?:\?[^\"']*)?)[\"']",
-                self.javascript,
-                flags=re.IGNORECASE,
-            )
-        }
-        self.assertTrue(
-            REQUIRED_CONTENT_FILES <= references,
-            "Explorer must load every governed content dataset needed by its views; "
-            f"missing {sorted(REQUIRED_CONTENT_FILES - references)}",
-        )
-        self.assertFalse(
-            references - manifest_files,
-            f"Explorer references non-public JSON: {sorted(references - manifest_files)}",
+    def test_required_assets_are_local_and_dependency_free(self):
+        for filename in ("index.html", "app.js", "styles.css"):
+            self.assertTrue((EXPLORER_DIR / filename).is_file(), filename)
+        self.assertIn('href="../shared/psywerx.css"', self.html)
+        self.assertIn('src="./app.js"', self.html)
+        self.assertIn('src="../shared/assets/psywerx-logo.png"', self.html)
+        self.assertNotRegex(
+            self.combined,
+            r"https?://|cdnjs|unpkg|jsdelivr|googleapis|analytics",
         )
 
-    def test_deep_link_contract_and_history_support_are_explicit(self):
-        constant_match = re.search(
-            r"const\s+DEEP_LINK_ENTITY_TYPES\s*=\s*Object\.freeze\(\s*(\[[^;]+?\])\s*\)\s*;",
+    def test_browser_inventory_matches_the_closed_public_manifest(self):
+        for filename in PUBLIC_FILES:
+            self.assertIn(f'"{filename}"', self.javascript, filename)
+        for filename in RETIRED_FILES:
+            self.assertNotIn(filename, self.javascript, filename)
+        self.assertIn(
+            'const LAZY_PUBLIC_FILES = Object.freeze(["relationships.json", "provenance.json"])',
             self.javascript,
-            flags=re.DOTALL,
         )
-        self.assertIsNotNone(
-            constant_match,
-            "app.js must expose the governed DEEP_LINK_ENTITY_TYPES constant.",
-        )
-        self.assertEqual(
-            EXPECTED_DEEP_LINK_ENTITY_TYPES,
-            json.loads(constant_match.group(1)),
-        )
+        self.assertIn("PUBLIC_DATA_FILES.filter", self.javascript)
+        self.assertIn("EAGER_PUBLIC_FILES.map(fetchPublicJson)", self.javascript)
+        self.assertIn("ensureRelationships", self.javascript)
+        self.assertIn("ensureProvenance", self.javascript)
 
+    def test_start_here_and_primary_navigation_are_complete(self):
+        expected = [
+            ("start", "Start Here"),
+            ("families", "Categories &amp; Families"),
+            ("themes", "Themes"),
+            ("tensions", "Tensions"),
+            ("narratives", "Narratives"),
+            ("scenarios", "Scenarios"),
+            ("episodes", "Episodes"),
+            ("search", "Search"),
+            ("methodology", "Methodology"),
+        ]
+        for view, label in expected:
+            self.assertRegex(
+                self.html,
+                rf'data-route-view="{re.escape(view)}"[^>]*>{label}</a>',
+            )
+        for entry in (
+            "Explore Categories",
+            "Explore Themes",
+            "Explore Tensions",
+            "Explore Narratives",
+            "Explore Scenarios",
+            "Browse Episodes",
+            "Search the map",
+        ):
+            self.assertIn(entry, self.javascript)
+
+    def test_support_display_is_two_layer_noncomposite_and_interpreted(self):
+        self.assertIn(SUPPORT_INTERPRETATION, " ".join(self.html.split()))
+        self.assertIn(SUPPORT_INTERPRETATION, self.javascript)
+        self.assertIn("Primary corpus support", self.javascript)
+        self.assertIn("Broader traceable reach", self.javascript)
+        self.assertIn('"details"', self.javascript)
+        self.assertIn("primary family", self.javascript.lower())
+        self.assertIn("primary cluster", self.javascript.lower())
+        self.assertIn("support concentration", self.javascript.lower())
+        for prohibited in (
+            "importance score",
+            "consensus score",
+            "evidence quality score",
+            "prevalence score",
+        ):
+            self.assertNotIn(prohibited, self.combined.lower())
+        self.assertNotIn("Frequency reflects discourse prevalence", self.html)
+
+    def test_visualizations_have_complete_controls_and_noncolor_semantics(self):
+        self.assertIn("function renderCategoryThemeHeatmap", self.javascript)
+        self.assertIn('element("table", "heatmap-table")', self.javascript)
+        self.assertIn("normalizedPrimarySupportBreadth", self.javascript)
+        self.assertIn("primaryFamilyCount", self.javascript)
+        self.assertIn("primaryClusterCount", self.javascript)
+        self.assertIn("primaryContentUnitCount", self.javascript)
+        self.assertIn("color is only a secondary cue", self.javascript)
+        self.assertIn("function renderTensionMatrix", self.javascript)
+        for name in ("tensionType", "category", "theme", "scenario", "support"):
+            self.assertIn(f'name: "{name}"', self.javascript)
+        self.assertIn("function renderEvidenceSlice", self.javascript)
+        self.assertIn("one public relationship slice at a time", self.javascript)
+        self.assertIn("no arrow or causal direction is asserted", self.javascript)
+
+    def test_entity_details_expose_required_canonical_context(self):
         for token in (
-            "URLSearchParams",
+            "Related canonical synthesis",
+            '{ label: "Themes"',
+            '{ label: "Tensions"',
+            "Supporting episodes",
+            "Family finding",
+            '{ label: "Narratives"',
+            "Related scenarios",
+            "Response options are analytical possibilities, not validated recommendations.",
+        ):
+            self.assertIn(token, self.javascript)
+        self.assertIn("Governance and rights review required", self.javascript)
+        for token in (
+            "legal",
+            "privacy",
+            "civil-liberties",
+            "ethics",
+            "consent",
+            "affected-community",
+        ):
+            self.assertIn(token, self.javascript.lower())
+
+    def test_routes_history_copy_refresh_and_not_found_contract(self):
+        for token in (
             "history.pushState",
             "history.replaceState",
-            "popstate",
+            'window.addEventListener("popstate"',
+            "navigator.clipboard.writeText",
+            "renderCopyLinkAction",
+            "parseRoute",
+            "routeHref",
+            "canonicalizeRoute",
+            "That view is not part of the canonical public map",
         ):
-            with self.subTest(token=token):
-                self.assertIn(token, self.javascript)
+            self.assertIn(token, self.javascript)
+        self.assertIn("Copy link", self.javascript)
+        self.assertIn("The relevant canonical index is shown", self.javascript)
+        self.assertIn("window.location.href", self.javascript)
 
-        for parameter in ("view", "id", "q", "type", "category", "meta", "cluster"):
-            with self.subTest(query_parameter=parameter):
-                self.assertRegex(
-                    self.javascript,
-                    rf"[\"']{re.escape(parameter)}[\"']",
-                    f"Missing query-state token {parameter!r}.",
-                )
-        for route in DETAIL_ROUTES:
-            with self.subTest(route=route):
-                self.assertRegex(self.javascript, rf"[\"']{re.escape(route)}[\"']")
-
-    def test_governed_unresolved_states_and_not_found_routes_are_data_driven(self):
-        for token in (
-            'data["qa_report.json"]',
-            "unresolvedMappings",
-            "metaClustersWithoutMappingRows",
-            "renderMissingEntity",
-            "No record has been inferred or substituted.",
-        ):
-            with self.subTest(token=token):
-                self.assertIn(token, self.javascript)
-        self.assertNotIn("UNMAPPED_CLUSTER_IDS", self.javascript)
-        self.assertNotIn("EMPTY_META_CLUSTER_ID", self.javascript)
-
-    def test_search_has_an_explicit_submit_and_filter_changes_add_history(self):
-        self.assertRegex(
-            self.html,
-            r'<button[^>]*class="primary-button search-form__submit"[^>]*type="submit"',
-        )
-        change_handler = re.search(
-            r'searchForm\.addEventListener\("change".*?\n\s*}\);',
+    def test_legacy_links_are_privacy_safe_and_fail_gracefully(self):
+        self.assertIn('crypto.subtle.digest("SHA-256"', self.javascript)
+        self.assertIn("LEGACY_SUCCESSOR_HASHES", self.javascript)
+        hashes = re.findall(
+            r'"([a-f0-9]{64})": Object\.freeze\(\{ view: "(?:theme|tension|narrative|scenario|family)"',
             self.javascript,
-            flags=re.DOTALL,
         )
-        self.assertIsNotNone(change_handler)
-        self.assertNotIn("replace: true", change_handler.group(0))
-        self.assertIn("firstNewResultIndex", self.javascript)
-
-    def test_browser_initialization_enforces_governed_release_metadata(self):
-        for token in (
-            "qa.passed !== true",
-            "qa.deterministicBuild.status",
-            "qa.publicExportChecks.status",
-            "Governed count mismatch",
-            "Missing public semantic relationship",
-            "Coverage keys do not match",
-        ):
-            with self.subTest(token=token):
-                self.assertIn(token, self.javascript)
-
-    def test_corpus_language_distinguishes_analysis_from_reconciliation(self):
-        public_copy = "\n".join((self.html, self.javascript)).casefold()
-        for term in (
-            "original analytic release",
-            "reconciled sensitivity dataset",
-            "source identities",
-            "canonical episodes",
-        ):
-            with self.subTest(term=term):
-                self.assertIn(term, public_copy)
-        for misleading in (
-            "269 episodes",
-            "269 podcast episodes",
-            "269 canonical episodes",
-        ):
-            with self.subTest(misleading=misleading):
-                self.assertNotIn(misleading, public_copy)
-        self.assertIn("originalItemCount", self.javascript)
-        self.assertIn("reconciledSensitivityItemCount", self.javascript)
-        self.assertNotRegex(self.javascript, r"\b(?:episode|record)\.itemCount\b")
-        self.assertNotIn("schema v1.0", public_copy)
+        self.assertEqual(68, len(hashes))
+        self.assertEqual(68, len(set(hashes)))
         self.assertIn(
-            "../docs/cognitive-security/COGNITIVE_SECURITY_SCHEMA_V1_1.md",
+            "This link points to content that has been reorganized",
             self.javascript,
         )
+        self.assertNotRegex(self.javascript, r"\bTD-\d{3}\b")
+        self.assertNotRegex(self.javascript, r"\b[A-Z]{2,6}-M\d{2}\b")
+
+    def test_search_indexes_only_canonical_public_fields(self):
+        for field in (
+            "definition",
+            "poleALabel",
+            "poleBLabel",
+            "coreClaim",
+            "finding",
+            "responseOptions",
+            "summary",
+            "keyTopics",
+            "whyItMatters",
+        ):
+            self.assertIn(f'"{field}"', self.javascript)
+        self.assertIn("SEARCH_ENTITY_TYPES", self.javascript)
+        self.assertIn("Canonical records only", self.javascript)
+        self.assertNotIn("historicalThemeIds", self.javascript.partition(
+            "const FORBIDDEN_PUBLIC_RECORD_KEYS"
+        )[0])
+
+    def test_methodology_covers_corpus_process_and_pipeline_boundaries(self):
+        for token in (
+            "one practitioner podcast corpus",
+            "Duplicate-source analytical weight was removed",
+            "human-guided, AI-assisted synthesis",
+            "Transcript → public episode summary",
+            "Structured qualitative analysis → analytical map relationships",
+            "canonical architecture only",
+            "Private provenance remains preserved and reproducible",
+        ):
+            self.assertIn(token, self.javascript)
+        self.assertIn("finding-card--open-question", self.javascript)
+        self.assertIn("Family findings", self.javascript)
+        self.assertIn("Integrative category finding", self.javascript)
+
+    def test_accessibility_and_mobile_contract_is_explicit(self):
+        for token in (
+            'class="skip-link"',
+            'role="search"',
+            'aria-live="polite"',
+            'aria-labelledby="view-title"',
+            'lang="en"',
+        ):
+            self.assertIn(token, self.html)
+        self.assertIn(":focus-visible", self.css)
+        self.assertIn("@media (prefers-reduced-motion: reduce)", self.css)
+        self.assertIn("@media (forced-colors: active)", self.css)
+        self.assertRegex(self.css, r"@media \(max-width: 31\.25rem\)")
+        self.assertRegex(self.css, r"@media \(max-width: 48rem\)")
+        self.assertIn("overflow-x: auto", self.css)
+        self.assertIn('role", "region"', self.javascript)
+        self.assertIn("aria-label", self.javascript)
 
 
-class PublicDataContractTests(unittest.TestCase):
+class PublicCanonicalPackageTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.payloads = {
-            filename: load_json(filename) for filename in EXPECTED_PUBLIC_FILES
-        }
-        cls.categories = cls.payloads["categories.json"]
-        cls.clusters = cls.payloads["clusters.json"]
-        cls.cluster_summaries = cls.payloads["cluster_summaries.json"]
-        cls.meta_clusters = cls.payloads["meta_clusters.json"]
-        cls.themes = cls.payloads["themes.json"]
-        cls.tensions = cls.payloads["tensions.json"]
-        cls.narratives = cls.payloads["meta_narratives.json"]
-        cls.findings = cls.payloads["category_findings.json"]
-        cls.scenarios = cls.payloads["scenarios.json"]
-        cls.relationships = cls.payloads["relationships.json"]
-
-        cls.ids_by_type = {
-            "category": {row["categoryId"] for row in cls.categories},
-            "cluster": {row["clusterId"] for row in cls.clusters},
-            "metaCluster": {row["metaClusterId"] for row in cls.meta_clusters},
-            "theme": {row["themeId"] for row in cls.themes},
-            "tension": {row["tensionId"] for row in cls.tensions},
-            "metaNarrative": {row["narrativeId"] for row in cls.narratives},
-            "categoryFinding": {row["findingId"] for row in cls.findings},
-            "scenario": {row["scenarioId"] for row in cls.scenarios},
-            "episode": {
-                row["episodeId"] for row in cls.payloads["episodes.json"]
-            },
+        cls.payloads = {name: load_json(name) for name in PUBLIC_FILES}
+        cls.manifest = cls.payloads["manifest.json"]
+        cls.ids = {
+            kind: {row[id_field] for row in cls.payloads[filename]}
+            for kind, (filename, id_field) in COLLECTIONS.items()
         }
 
-    def assert_ids_resolve(self, records, field, valid_ids, record_id_field):
-        for record in records:
-            values = record.get(field)
-            self.assertIsInstance(
-                values,
-                list,
-                f"{record_id_field}={record.get(record_id_field)}: {field} must be a list",
-            )
-            missing = set(values) - valid_ids
-            self.assertFalse(
-                missing,
-                f"{record_id_field}={record.get(record_id_field)}: "
-                f"{field} has missing IDs {sorted(missing)}",
-            )
+    def test_exact_inventory_counts_and_performance_partition(self):
+        self.assertEqual("canonical-resynthesis", self.manifest["contentVersion"])
+        self.assertEqual("deduplicated-canonical-resynthesis", self.manifest["methodVersion"])
+        self.assertEqual(list(PUBLIC_FILES), self.manifest["publicFiles"])
+        self.assertEqual(["relationships.json", "provenance.json"], self.manifest["lazyFiles"])
+        self.assertEqual(len(PUBLIC_FILES), self.manifest["fileCount"])
+        self.assertEqual(set(PUBLIC_FILES), {path.name for path in PUBLIC_DIR.glob("*.json")})
+        for filename in RETIRED_FILES:
+            self.assertFalse((PUBLIC_DIR / filename).exists(), filename)
+        for key, expected in EXPECTED_COUNTS.items():
+            self.assertEqual(expected, self.manifest["counts"][key], key)
+        byte_sizes = {row["name"]: row["bytes"] for row in self.manifest["files"]}
+        self.assertLess(sum(byte_sizes.values()), 6_000_000)
+        eager_bytes = sum(
+            size
+            for filename, size in byte_sizes.items()
+            if filename not in self.manifest["lazyFiles"]
+        )
+        self.assertLess(eager_bytes, 3_000_000)
 
-    def test_governed_entity_counts_and_corpus_totals(self):
-        filenames = {
-            "categories": "categories.json",
-            "clusters": "clusters.json",
-            "cluster_summaries": "cluster_summaries.json",
-            "meta_clusters": "meta_clusters.json",
-            "themes": "themes.json",
-            "tensions": "tensions.json",
-            "meta_narratives": "meta_narratives.json",
-            "category_findings": "category_findings.json",
-            "scenarios": "scenarios.json",
-            "episodes": "episodes.json",
-            "relationships": "relationships.json",
-        }
-        for entity, expected in EXPECTED_COUNTS.items():
-            with self.subTest(entity=entity):
-                self.assertEqual(expected, len(self.payloads[filenames[entity]]))
-
-        scopes = Counter(row["scope"] for row in self.categories)
-        self.assertEqual({"focal": 7, "contextual": 3}, dict(scopes))
-        governed_summaries = [
-            row for row in self.categories
-            if row.get("summary") not in (None, "") and row.get("soWhat") not in (None, "")
-        ]
-        self.assertEqual(7, len(governed_summaries))
-
-        coverage = self.payloads["coverage.json"]
-        self.assertEqual(14_397, coverage["totals"]["items"])
-        self.assertEqual(242, coverage["totals"]["episodes"])
+    def test_exact_canonical_collections_and_flat_themes(self):
+        self.assertEqual(7, len(self.ids["category"]))
+        self.assertEqual(50, len(self.ids["family"]))
+        self.assertEqual(127, len(self.ids["cluster"]))
+        self.assertEqual(11, len(self.ids["theme"]))
+        self.assertEqual(20, len(self.ids["tension"]))
+        self.assertEqual(5, len(self.ids["narrative"]))
+        self.assertEqual(64, len(self.ids["finding"]))
+        self.assertEqual(6, len(self.ids["scenario"]))
+        self.assertEqual(242, len(self.ids["episode"]))
         self.assertEqual(
-            {
-                "sourceIdentities": 269,
-                "items": 14_397,
-                "focalItems": 10_940,
-                "contextualItems": 3_457,
-            },
-            coverage["originalAnalyticRelease"],
+            EXPECTED_THEME_NAMES,
+            {row["themeId"]: row["name"] for row in self.payloads["themes.json"]},
         )
+        for theme in self.payloads["themes.json"]:
+            self.assertNotIn("parentThemeId", theme)
+            self.assertNotIn("subthemeIds", theme)
+            self.assertNotIn("level", theme)
+
+    def test_family_hierarchy_partitions_all_clusters_without_orphans(self):
+        clusters = {row["clusterId"]: row for row in self.payloads["clusters.json"]}
+        categories = self.ids["category"]
+        membership = []
+        for family in self.payloads["families.json"]:
+            self.assertIn(family["categoryId"], categories)
+            self.assertTrue(family["memberClusterIds"], family["familyId"])
+            for cluster_id in family["memberClusterIds"]:
+                self.assertIn(cluster_id, clusters)
+                self.assertEqual(family["categoryId"], clusters[cluster_id]["categoryId"])
+                membership.append(cluster_id)
+        self.assertEqual(127, len(membership))
+        self.assertEqual(127, len(set(membership)))
+        self.assertEqual(set(clusters), set(membership))
         self.assertEqual(
-            {
-                "canonicalEpisodes": 242,
-                "retainedSourceIdentities": 242,
-                "items": 12_978,
-                "focalItems": 9_855,
-                "contextualItems": 3_123,
-            },
-            coverage["reconciledSensitivityDataset"],
+            set(clusters),
+            {row["clusterId"] for row in self.payloads["cluster_summaries.json"]},
         )
-        focal_ids = {
-            row["categoryId"] for row in self.categories if row["scope"] == "focal"
-        }
-        focal_item_count = sum(
-            count for category_id, count in coverage["itemsByCategory"].items()
-            if category_id in focal_ids
+
+    def test_findings_narratives_and_scenarios_retain_required_structure(self):
+        self.assertEqual(
+            Counter({
+                "family-finding": 50,
+                "integrative-category-finding": 7,
+                "open-question": 7,
+            }),
+            Counter(row["findingType"] for row in self.payloads["category_findings.json"]),
         )
-        self.assertEqual(10_940, focal_item_count)
+        for narrative in self.payloads["narratives.json"]:
+            self.assertGreater(len(narrative["integratesThemeIds"]), 1)
+            self.assertTrue(narrative["integratesTensionIds"])
+            self.assertTrue(narrative["supportingFamilyIds"])
+        for scenario in self.payloads["scenarios.json"]:
+            self.assertTrue(scenario["uncertaintyStatement"])
+            self.assertTrue(scenario["branchPoints"])
+            self.assertTrue(scenario["counterSignposts"])
+            self.assertTrue(scenario["mitigatingConditions"])
+            self.assertTrue(scenario["researchQuestions"])
+            for relation in scenario["relationshipsToOtherScenarios"]:
+                self.assertFalse(relation["causalClaim"])
+        sc04 = next(
+            row for row in self.payloads["scenarios.json"] if row["scenarioId"] == "SC-04"
+        )
+        for term in (
+            "legal",
+            "privacy",
+            "civil-liberties",
+            "ethics",
+            "consent",
+            "affected-community",
+            "not validated recommendations",
+        ):
+            self.assertIn(term, sc04["publicNotice"].lower())
 
-    def test_category_meta_cluster_cluster_hierarchy_resolves(self):
-        categories = self.ids_by_type["category"]
-        clusters = self.ids_by_type["cluster"]
-        cluster_category = {
-            row["clusterId"]: row["categoryId"] for row in self.clusters
-        }
-        meta_by_id = {row["metaClusterId"]: row for row in self.meta_clusters}
-
-        for cluster in self.clusters:
-            self.assertIn(cluster["categoryId"], categories)
-        for meta_cluster in self.meta_clusters:
-            self.assertIn(meta_cluster["categoryId"], categories)
-            included = meta_cluster["includedClusterIds"]
-            self.assertEqual(len(included), len(set(included)))
-            self.assertFalse(set(included) - clusters)
-            for cluster_id in included:
+    def test_support_is_multidimensional_with_broader_reach_subordinate(self):
+        support_files = (
+            "cluster_summaries.json",
+            "families.json",
+            "themes.json",
+            "tensions.json",
+            "narratives.json",
+            "category_findings.json",
+            "scenarios.json",
+        )
+        for filename in support_files:
+            for record in self.payloads[filename]:
+                support = record["support"]
                 self.assertEqual(
-                    meta_cluster["categoryId"],
-                    cluster_category[cluster_id],
-                    f"Cross-category hierarchy mapping for {cluster_id}",
+                    {"primarySupport", "broaderTraceableReach", "interpretation", "limitations"},
+                    set(support),
                 )
+                self.assertEqual(SUPPORT_INTERPRETATION, support["interpretation"])
+                primary = support["primarySupport"]
+                broader = support["broaderTraceableReach"]
+                for key in (
+                    "itemCount",
+                    "share",
+                    "directContentUnitCount",
+                    "primaryClusterCount",
+                    "primaryFamilyCount",
+                    "categoryBreadth",
+                    "concentration",
+                ):
+                    self.assertIn(key, primary)
+                self.assertLessEqual(primary["itemCount"], broader["itemCount"])
+                self.assertLessEqual(
+                    primary["directContentUnitCount"], broader["contentUnitCount"]
+                )
+        all_keys = {
+            key.lower()
+            for payload in self.payloads.values()
+            for path, _ in walk(payload)
+            for key in path[-1:]
+        }
+        self.assertFalse(
+            any(
+                "score" in key
+                for key in all_keys
+                if key not in {"compositescoreprohibited", "compositescoreabsent"}
+            )
+        )
 
-        parent_relationships = [
-            row for row in self.relationships
-            if row["relationshipType"] == "cluster-belongs-to-meta-cluster"
-        ]
-        parents_by_cluster = defaultdict(list)
-        for relationship in parent_relationships:
-            parents_by_cluster[relationship["sourceId"]].append(
-                relationship["targetId"]
+    def test_relationship_endpoints_roles_and_noncausal_semantics_resolve(self):
+        semantics = {
+            row["semanticRole"]: row
+            for row in self.payloads["relationship_semantics.json"]
+        }
+        self.assertTrue(REQUIRED_ROLES.issubset(semantics))
+        relationships = self.payloads["relationships.json"]
+        self.assertEqual(
+            len(relationships),
+            len({row["relationshipId"] for row in relationships}),
+        )
+        for relationship in relationships:
+            self.assertIn(relationship["sourceType"], self.ids)
+            self.assertIn(
+                relationship["sourceId"], self.ids[relationship["sourceType"]]
+            )
+            self.assertIn(relationship["targetType"], self.ids)
+            self.assertIn(
+                relationship["targetId"], self.ids[relationship["targetType"]]
+            )
+            self.assertIn(relationship["semanticRole"], semantics)
+            self.assertFalse(relationship["causalClaim"])
+            self.assertNotEqual(
+                (relationship["sourceType"], relationship["sourceId"]),
+                (relationship["targetType"], relationship["targetId"]),
             )
         self.assertEqual(
-            UNMAPPED_CLUSTER_IDS,
-            clusters - set(parents_by_cluster),
+            50,
+            sum(
+                row["sourceType"] == "family"
+                and row["targetType"] == "category"
+                for row in relationships
+            ),
         )
-        for cluster_id, parent_ids in parents_by_cluster.items():
-            self.assertEqual(1, len(parent_ids), f"Multiple parents for {cluster_id}")
-            parent = meta_by_id[parent_ids[0]]
-            self.assertIn(cluster_id, parent["includedClusterIds"])
 
-    def test_unmapped_clusters_and_crb_m05_are_preserved(self):
-        cluster_ids = self.ids_by_type["cluster"]
-        self.assertTrue(UNMAPPED_CLUSTER_IDS <= cluster_ids)
-
-        meta = next(
-            row for row in self.meta_clusters
-            if row["metaClusterId"] == KNOWN_EMPTY_META_CLUSTER_ID
-        )
-        self.assertEqual([], meta["includedClusterIds"])
-        mapped_targets = {
-            row["targetId"] for row in self.relationships
-            if row["relationshipType"] == "cluster-belongs-to-meta-cluster"
+    def test_public_provenance_resolves_and_episode_83_has_one_weight(self):
+        provenance = self.payloads["provenance.json"]
+        for cluster_id, links in provenance["clusterToReleases"].items():
+            self.assertIn(cluster_id, self.ids["cluster"])
+            for link in links:
+                self.assertIn(link["episodeId"], self.ids["episode"])
+        for tension_id, links in provenance["tensionToReleases"].items():
+            self.assertIn(tension_id, self.ids["tension"])
+            for link in links:
+                self.assertIn(link["episodeId"], self.ids["episode"])
+        original = "EPI-72E94D7AF43A4BD3"
+        inherited = "EPI-9960393907F71603"
+        episodes = {
+            row["episodeId"]: row for row in self.payloads["episodes.json"]
         }
-        self.assertNotIn(KNOWN_EMPTY_META_CLUSTER_ID, mapped_targets)
-
-        qa_report = self.payloads["qa_report.json"]
-        issue_codes = {
-            issue.get("code") for issue in qa_report.get("validationIssues", [])
-        }
-        self.assertIn("known_empty_meta_cluster", issue_codes)
-        unresolved = qa_report.get("unresolvedMappings", [])
-        self.assertTrue(
-            any(row.get("metaClusterId") == KNOWN_EMPTY_META_CLUSTER_ID for row in unresolved)
-        )
-        unresolved_cluster_ids = {
-            row.get("clusterId") for row in unresolved if row.get("clusterId")
-        }
-        self.assertEqual(UNMAPPED_CLUSTER_IDS, unresolved_cluster_ids)
-
-    def test_cluster_summaries_resolve_and_match_cluster_categories(self):
-        clusters = {row["clusterId"]: row for row in self.clusters}
-        seen = set()
-        for summary in self.cluster_summaries:
-            cluster_id = summary["clusterId"]
-            self.assertIn(cluster_id, clusters)
-            self.assertNotIn(cluster_id, seen)
-            seen.add(cluster_id)
-            self.assertEqual(clusters[cluster_id]["categoryId"], summary["categoryId"])
-        self.assertEqual(set(clusters), seen)
-
-    def test_synthesis_embedded_foreign_keys_resolve(self):
-        categories = self.ids_by_type["category"]
-        clusters = self.ids_by_type["cluster"]
-        meta_clusters = self.ids_by_type["metaCluster"]
-        themes = self.ids_by_type["theme"]
-        tensions = self.ids_by_type["tension"]
-
-        for field, valid_ids in (
-            ("categoryIds", categories),
-            ("linkedMetaClusterIds", meta_clusters),
-            ("linkedClusterIds", clusters),
-            ("relatedTensionIds", tensions),
-        ):
-            self.assert_ids_resolve(self.themes, field, valid_ids, "themeId")
-
-        self.assert_ids_resolve(self.tensions, "categoryIds", categories, "tensionId")
-        self.assert_ids_resolve(self.tensions, "clusterIds", clusters, "tensionId")
-
-        for field, valid_ids in (
-            ("supportingThemeIds", themes),
-            ("supportingTensionIds", tensions),
-            ("supportingMetaClusterIds", meta_clusters),
-            ("categoryIds", categories),
-        ):
-            self.assert_ids_resolve(self.narratives, field, valid_ids, "narrativeId")
-
-        for finding in self.findings:
-            self.assertIn(finding["categoryId"], categories)
-        self.assert_ids_resolve(
-            self.findings, "supportingMetaClusterIds", meta_clusters, "findingId"
-        )
-        self.assert_ids_resolve(
-            self.findings, "supportingClusterIds", clusters, "findingId"
-        )
-
-        for field, valid_ids in (
-            ("categoryIds", categories),
-            ("themeIds", themes),
-            ("tensionIds", tensions),
-        ):
-            self.assert_ids_resolve(self.scenarios, field, valid_ids, "scenarioId")
-
-    def test_all_975_semantic_relationships_and_endpoints_resolve(self):
-        relationship_ids = [row["relationshipId"] for row in self.relationships]
-        self.assertEqual(len(relationship_ids), len(set(relationship_ids)))
+        self.assertEqual("direct-content-representation", episodes[original]["contentRole"])
+        self.assertEqual("shared-content-inheritance", episodes[inherited]["contentRole"])
         self.assertEqual(
-            EXPECTED_RELATIONSHIP_COUNTS,
-            dict(Counter(row["relationshipType"] for row in self.relationships)),
+            241,
+            sum(
+                row["contentRole"] == "direct-content-representation"
+                for row in episodes.values()
+            ),
         )
-
-        for relationship in self.relationships:
-            relationship_type = relationship["relationshipType"]
-            with self.subTest(relationshipId=relationship["relationshipId"]):
-                self.assertIn(relationship_type, RELATIONSHIP_ENDPOINT_TYPES)
-                expected_source_type, expected_target_type = (
-                    RELATIONSHIP_ENDPOINT_TYPES[relationship_type]
-                )
-                self.assertEqual(expected_source_type, relationship["sourceType"])
-                self.assertEqual(expected_target_type, relationship["targetType"])
-                self.assertEqual("semantic", relationship["interpretation"])
-                self.assertIn(
-                    relationship["sourceId"],
-                    self.ids_by_type[expected_source_type],
-                )
-                self.assertIn(
-                    relationship["targetId"],
-                    self.ids_by_type[expected_target_type],
-                )
-
-        theme_meta = {
-            (row["sourceId"], row["targetId"])
-            for row in self.relationships
-            if row["relationshipType"] == "theme-connects-meta-cluster"
-        }
-        embedded_theme_meta = {
-            (row["themeId"], meta_id)
-            for row in self.themes for meta_id in row["linkedMetaClusterIds"]
-        }
-        self.assertEqual(embedded_theme_meta, theme_meta)
-
-        theme_cluster = {
-            (row["sourceId"], row["targetId"])
-            for row in self.relationships
-            if row["relationshipType"] == "theme-supported-by-cluster"
-        }
-        embedded_theme_cluster = {
-            (row["themeId"], cluster_id)
-            for row in self.themes for cluster_id in row["linkedClusterIds"]
-        }
-        self.assertEqual(embedded_theme_cluster, theme_cluster)
-
-    def test_public_entity_allowlists_and_no_item_or_quote_payloads(self):
-        for filename, allowed_fields in PUBLIC_RECORD_FIELDS.items():
-            for index, record in enumerate(self.payloads[filename]):
-                with self.subTest(filename=filename, index=index):
-                    self.assertEqual(allowed_fields, set(record))
-
-        prohibited_public_files = {
-            "items.json",
-            "item_tags.json",
-            "item_cluster_assignments.json",
-            "evidence_links.json",
-            "review_flags.json",
-            "review_queue.json",
-            "quotations.json",
-            "evidence_quotes.json",
-        }
-        existing_files = {path.name for path in PUBLIC_DIR.glob("*.json")}
-        self.assertFalse(prohibited_public_files & existing_files)
-
-        prohibited_key_fragments = (
-            "quote",
-            "quotation",
-            "excerpt",
-            "transcript",
-            "speaker",
-            "assignmentrationale",
-            "reviewernotes",
-            "reviewqueue",
-            "modelrationale",
-            "rawtext",
-            "fulltext",
-            "filename",
-            "sourcehash",
-            "sourcerowcounts",
+        self.assertEqual(
+            [{
+                "relationshipId": provenance["sharedContentRelationships"][0]["relationshipId"],
+                "sourceEpisodeId": inherited,
+                "targetEpisodeId": original,
+                "semanticRole": "shared-content-inheritance",
+                "contributesAnalyticalWeight": False,
+            }],
+            provenance["sharedContentRelationships"],
         )
-        violations = []
+        direct_episode_ids = {
+            link["episodeId"]
+            for mapping in (
+                provenance["clusterToReleases"],
+                provenance["tensionToReleases"],
+            )
+            for links in mapping.values()
+            for link in links
+        }
+        self.assertIn(original, direct_episode_ids)
+        self.assertNotIn(inherited, direct_episode_ids)
+
+    def test_heatmap_is_complete_normalized_and_reconstructable(self):
+        cells = self.payloads["heatmap.json"]["cells"]
+        self.assertEqual(77, len(cells))
+        self.assertEqual(
+            {
+                (category_id, theme_id)
+                for category_id in self.ids["category"]
+                for theme_id in self.ids["theme"]
+            },
+            {(cell["categoryId"], cell["themeId"]) for cell in cells},
+        )
+        for cell in cells:
+            shares = (
+                cell["primaryFamilyCount"] / cell["categoryFamilyCount"],
+                cell["primaryClusterCount"] / cell["categoryClusterCount"],
+                cell["primaryContentUnitCount"] / cell["categoryContentUnitCount"],
+            )
+            self.assertEqual(round(shares[0], 6), cell["primaryFamilyShare"])
+            self.assertEqual(round(shares[1], 6), cell["primaryClusterShare"])
+            self.assertEqual(round(shares[2], 6), cell["primaryContentUnitShare"])
+            self.assertTrue(
+                math.isclose(
+                    round(sum(shares) / 3, 6),
+                    cell["normalizedPrimarySupportBreadth"],
+                    abs_tol=1e-9,
+                )
+            )
+
+    def test_public_projection_contains_no_private_payload_or_readable_legacy_ids(self):
+        prohibited_keys = {
+            "itemid",
+            "itemids",
+            "transcripttext",
+            "transcriptpath",
+            "localpath",
+            "workbookname",
+            "workbookhash",
+            "sourcefilename",
+            "adjudicationid",
+            "adjudicationrationale",
+            "reviewnotes",
+            "reviewflags",
+            "evidenceexcerpt",
+            "migrationtable",
+        }
+        secret_patterns = (
+            r"(?i)[a-z]:\\users\\",
+            r"(?i)/users/",
+            r"(?i)\.xlsx\b",
+            r"\bTD-\d{3}\b",
+            r"\b[A-Z]{2,6}-M\d{2}\b",
+            r"\bgh[pousr]_[A-Za-z0-9]{20,}\b",
+            r"\bAKIA[0-9A-Z]{16}\b",
+            r"\bsk-[A-Za-z0-9_-]{20,}\b",
+            r"-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----",
+        )
         for filename, payload in self.payloads.items():
-            for path, _value in recursively_walk(payload):
-                if not path:
-                    continue
-                key = re.sub(r"[^a-z]", "", path[-1].casefold())
-                if key == "transcriptwordcount":
-                    continue
-                if any(fragment in key for fragment in prohibited_key_fragments):
-                    violations.append(f"{filename}:{'.'.join(path)}")
-        self.assertEqual([], violations, "Private/detail keys escaped: " + repr(violations))
+            serialized = json.dumps(payload, ensure_ascii=False)
+            for pattern in secret_patterns:
+                self.assertNotRegex(serialized, pattern, filename)
+            for path, _ in walk(payload):
+                for key in path[-1:]:
+                    normalized = re.sub(r"[^a-z0-9]", "", key.lower())
+                    self.assertNotIn(normalized, prohibited_keys, f"{filename}: {path}")
 
-    def test_public_source_metadata_is_opaque_and_aggregate_only(self):
-        manifest = self.payloads["manifest.json"]
-        qa_report = self.payloads["qa_report.json"]
-        manifest_artifacts = manifest["sourceArtifacts"]
-        source_qa = qa_report["sourceArtifactQa"]
-
-        self.assertEqual(8, len(manifest_artifacts))
-        self.assertTrue(
-            all(
-                set(row) == {"artifactId", "canonicalRole"}
-                for row in manifest_artifacts
-            )
-        )
-        self.assertEqual(
-            {row["artifactId"] for row in manifest_artifacts},
-            {row["artifactId"] for row in source_qa},
-        )
-        self.assertTrue(
-            all(
-                set(row)
-                == {
-                    "artifactId",
-                    "canonicalRole",
-                    "worksheetCount",
-                    "aggregateRowCount",
-                    "integrityVerified",
-                }
-                for row in source_qa
-            )
-        )
-        self.assertNotIn("sourceHashes", qa_report)
-        self.assertNotIn("sourceRowCounts", qa_report)
-        self.assertEqual(
-            "ART-tensions",
-            qa_report["canonicalSourceDecisions"]["tensionsArtifactId"],
-        )
-        serialized = json.dumps(self.payloads, ensure_ascii=False)
-        self.assertNotRegex(serialized, r"(?i)\.xlsx\b")
-        self.assertNotRegex(serialized, r"[A-Za-z]:[\\/]")
-
-    def test_all_detail_route_ids_are_url_safe_and_round_trip(self):
-        for route, (filename, id_field) in DETAIL_ROUTES.items():
-            records = self.payloads[filename]
-            ids = [record[id_field] for record in records]
-            self.assertEqual(len(ids), len(set(ids)), f"Duplicate IDs for {route}")
+    def test_episode_summary_and_deep_link_contract_is_complete(self):
+        summaries = self.payloads["episode_summaries.json"]
+        self.assertEqual(self.ids["episode"], {row["episodeId"] for row in summaries})
+        for summary in summaries:
+            self.assertTrue(summary["summary"].strip())
+            self.assertTrue(summary["whyItMatters"].strip())
+            self.assertTrue(summary["keyTopics"])
+        for kind, ids in self.ids.items():
+            route_type = ROUTE_TYPES[kind]
             for entity_id in ids:
-                with self.subTest(route=route, entity_id=entity_id):
-                    self.assertIsInstance(entity_id, str)
-                    self.assertTrue(entity_id.strip())
-                    self.assertEqual(entity_id, unquote(quote(entity_id, safe="")))
-                    query = urlencode({"view": route, "id": entity_id})
-                    parsed = parse_qs(query, strict_parsing=True)
-                    self.assertEqual([route], parsed["view"])
-                    self.assertEqual([entity_id], parsed["id"])
-                    self.assertRegex(entity_id, r"^[A-Za-z0-9][A-Za-z0-9._~-]*$")
+                query = urlencode({"view": route_type, "id": entity_id})
+                parsed = parse_qs(query)
+                self.assertEqual(route_type, parsed["view"][0])
+                self.assertEqual(entity_id, unquote(quote(parsed["id"][0], safe="")))
+
+    def test_redundancy_and_public_qa_are_closed(self):
+        qa = self.payloads["qa_report.json"]
+        self.assertEqual("pass", qa["status"])
+        self.assertTrue(all(qa["checks"].values()))
+        self.assertEqual(0, qa["redundancyResolution"]["unresolvedPairCount"])
+        self.assertEqual(
+            qa["redundancyResolution"]["flaggedPairCount"],
+            qa["redundancyResolution"]["resolvedDistinctPairCount"],
+        )
 
 
 if __name__ == "__main__":
