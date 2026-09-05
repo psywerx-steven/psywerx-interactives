@@ -1,0 +1,229 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://psywerx.org/schemas/proposed/causal-pathway-v1.schema.json",
+  "title": "PSYWERX governed-design CausalPathway V1 draft",
+  "description": "Non-production draft for a separately governed pathway composed of contiguous governed causal relationships.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "id",
+    "revision",
+    "startEntityId",
+    "endEntityId",
+    "orderedRelationshipIds",
+    "intermediateEntities",
+    "mediationClassification",
+    "temporalOrderRationale",
+    "populationOrSystem",
+    "context",
+    "pathwayEvidenceAssessment",
+    "supportingSourceIds",
+    "governance"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "GOVERNED-DESIGN-1.0-DRAFT"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^CPW-[0-9]{5}$"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "startEntityId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "endEntityId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "orderedRelationshipIds": {
+      "type": "array",
+      "minItems": 2,
+      "uniqueItems": true,
+      "description": "Ordered governed causal edge IDs; consecutive edges must be contiguous.",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "intermediateEntities": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "entityId",
+          "role"
+        ],
+        "properties": {
+          "entityId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "role": {
+            "enum": [
+              "MEDIATOR",
+              "MECHANISTIC_INTERMEDIATE"
+            ]
+          }
+        }
+      }
+    },
+    "mediationClassification": {
+      "enum": [
+        "PARTIAL",
+        "FULL",
+        "UNDETERMINED"
+      ]
+    },
+    "temporalOrderRationale": {
+      "type": "string",
+      "minLength": 1
+    },
+    "populationOrSystem": {
+      "type": "string",
+      "minLength": 1
+    },
+    "context": {
+      "type": "string",
+      "minLength": 1
+    },
+    "pathwayEvidenceAssessment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evidenceStrength",
+        "confidence",
+        "evidenceDisposition",
+        "evidenceRationale",
+        "conflictingSourceIds",
+        "uncertainty"
+      ],
+      "properties": {
+        "evidenceStrength": {
+          "enum": [
+            "STRONG",
+            "MODERATE",
+            "MIXED",
+            "LIMITED",
+            "EMERGING",
+            "NOT_ASSESSED"
+          ]
+        },
+        "confidence": {
+          "enum": [
+            "HIGH",
+            "MODERATE",
+            "LOW",
+            "NOT_ASSESSED"
+          ]
+        },
+        "evidenceDisposition": {
+          "enum": [
+            "NOT_ASSESSED",
+            "SUPPORTS",
+            "MIXED",
+            "CONTRADICTED",
+            "INSUFFICIENT"
+          ]
+        },
+        "evidenceRationale": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "conflictingSourceIds": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "uncertainty": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "supportingSourceIds": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "duplicateCountingControl": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Declares path propagation, total-effect use, or explicit reconciliation; graph reachability alone never establishes mediation."
+    },
+    "governance": {
+      "$ref": "relationship-v1.schema.json#/$defs/governance"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "governance": {
+            "properties": {
+              "lifecycleStatus": {
+                "const": "GOVERNED"
+              },
+              "activationStatus": {
+                "const": "ACTIVE"
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "duplicateCountingControl"
+        ],
+        "properties": {
+          "supportingSourceIds": {
+            "minItems": 1
+          },
+          "pathwayEvidenceAssessment": {
+            "properties": {
+              "evidenceStrength": {
+                "not": {
+                  "const": "NOT_ASSESSED"
+                }
+              },
+              "confidence": {
+                "not": {
+                  "const": "NOT_ASSESSED"
+                }
+              },
+              "evidenceDisposition": {
+                "not": {
+                  "const": "NOT_ASSESSED"
+                }
+              },
+              "evidenceRationale": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,547 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://psywerx.org/schemas/proposed/intervention-effect-v1.schema.json",
+  "title": "PSYWERX governed-design InterventionEffect V1 draft",
+  "description": "Non-production draft for one bounded intervention-to-Driver or intervention-to-causal-relationship effect assertion. RDS and generic context targets are prohibited.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "id",
+    "revision",
+    "interventionId",
+    "targetKind",
+    "mechanisticDriverIds",
+    "effectMode",
+    "intendedDirection",
+    "mechanismOfAction",
+    "targetPopulationOrAudience",
+    "populationScope",
+    "context",
+    "contextScope",
+    "scale",
+    "boundaryConditions",
+    "implementers",
+    "deliveryModalities",
+    "channels",
+    "prerequisites",
+    "moderatorEntityIds",
+    "outcomeEntityIds",
+    "measuresOfEffect",
+    "unintendedEffects",
+    "risks",
+    "ethicalLegalConstraints",
+    "evidenceAssessment",
+    "supportingSourceIds",
+    "governance"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "GOVERNED-DESIGN-1.0-DRAFT"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^IEF-[0-9]{6}$"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "interventionId": {
+      "type": "string",
+      "pattern": "^INT-[0-9]{5}$"
+    },
+    "targetKind": {
+      "enum": [
+        "DRIVER",
+        "RELATIONSHIP"
+      ]
+    },
+    "targetDriverId": {
+      "type": "string",
+      "pattern": "^[A-Z]{3}-[0-9]{3}$",
+      "description": "Must resolve to a canonical Driver; an RDS ID is invalid without exception."
+    },
+    "targetDriverType": {
+      "const": "DRIVER"
+    },
+    "targetRelationshipId": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Must resolve to one governed causal Relationship."
+    },
+    "mechanisticDriverIds": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Z]{3}-[0-9]{3}$"
+      },
+      "description": "Each ID must resolve to a canonical Driver; an RDS never satisfies this linkage."
+    },
+    "effectMode": {
+      "enum": [
+        "CHANGE_LEVEL",
+        "STABILIZE",
+        "DISRUPT",
+        "MODIFY_RELATIONSHIP"
+      ]
+    },
+    "intendedDirection": {
+      "enum": [
+        "INCREASE",
+        "DECREASE",
+        "CONTEXT_DEPENDENT",
+        "MOVE_TOWARD_RANGE",
+        "MAINTAIN_RANGE",
+        "REDUCE_OR_INTERRUPT",
+        "AMPLIFY",
+        "ATTENUATE",
+        "SUPPRESS",
+        "REVERSE"
+      ]
+    },
+    "mechanismOfAction": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Intervention-to-target mechanism; distinct from causal Relationship mechanism."
+    },
+    "targetPopulationOrAudience": {
+      "type": "string",
+      "minLength": 1
+    },
+    "populationScope": {
+      "enum": [
+        "UNIVERSAL_WITHIN_SCOPE",
+        "SUBGROUP_TARGETED",
+        "INDIVIDUALIZED",
+        "SYSTEM_OR_NONHUMAN",
+        "MIXED"
+      ]
+    },
+    "context": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Setting, jurisdiction, implementation conditions, and scenario applicability; never a generic target."
+    },
+    "contextScope": {
+      "enum": [
+        "CORE_REUSABLE",
+        "CONTEXT_DEPENDENT",
+        "SCENARIO_SPECIFIC"
+      ]
+    },
+    "scale": {
+      "enum": [
+        "PERSON",
+        "SMALL_GROUP",
+        "COMMUNITY",
+        "INSTITUTIONAL_FIELD",
+        "INFORMATION_OBJECT_CORPUS",
+        "PHYSICAL_SETTING",
+        "TECHNOLOGICAL_SYSTEM",
+        "MULTILEVEL"
+      ]
+    },
+    "boundaryConditions": {
+      "type": "string",
+      "minLength": 1
+    },
+    "implementers": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "deliveryModalities": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "HUMAN_DELIVERED",
+          "DIGITAL_OR_AUTOMATED",
+          "PHYSICAL_ENVIRONMENT",
+          "ORGANIZATIONAL_OR_POLICY_PROCESS",
+          "MIXED",
+          "NOT_APPLICABLE",
+          "OTHER_SPECIFIED"
+        ]
+      }
+    },
+    "deliveryModalitySpecification": {
+      "type": "string",
+      "minLength": 1
+    },
+    "channels": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "exposure": {
+      "type": "object",
+      "description": "Dose, intensity, frequency, and duration when meaningful."
+    },
+    "timing": {
+      "type": "object",
+      "description": "Onset, persistence, and reversibility when supported."
+    },
+    "prerequisites": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "moderatorEntityIds": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "outcomeEntityIds": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "description": "May include RDS as downstream outcomes, never as direct targets."
+    },
+    "measuresOfEffect": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "unintendedEffects": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "risks": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "ethicalLegalConstraints": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "feasibility": {
+      "type": "object"
+    },
+    "evidenceAssessment": {
+      "$ref": "#/$defs/evidenceAssessment"
+    },
+    "supportingSourceIds": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "governance": {
+      "$ref": "relationship-v1.schema.json#/$defs/governance"
+    }
+  },
+  "$defs": {
+    "evidenceAssessment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evidenceStrength",
+        "confidence",
+        "evidenceDisposition",
+        "evidenceRationale",
+        "conflictingSourceIds",
+        "uncertainty"
+      ],
+      "properties": {
+        "evidenceStrength": {
+          "enum": [
+            "STRONG",
+            "MODERATE",
+            "MIXED",
+            "LIMITED",
+            "EMERGING",
+            "NOT_ASSESSED"
+          ]
+        },
+        "confidence": {
+          "enum": [
+            "HIGH",
+            "MODERATE",
+            "LOW",
+            "NOT_ASSESSED"
+          ]
+        },
+        "evidenceDisposition": {
+          "enum": [
+            "NOT_ASSESSED",
+            "SUPPORTS",
+            "MIXED",
+            "CONTRADICTED",
+            "INSUFFICIENT"
+          ]
+        },
+        "evidenceRationale": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "conflictingSourceIds": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "uncertainty": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "effectEstimate": {
+          "type": "object"
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "targetKind": {
+            "const": "DRIVER"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "targetDriverId",
+          "targetDriverType"
+        ],
+        "properties": {
+          "effectMode": {
+            "enum": [
+              "CHANGE_LEVEL",
+              "STABILIZE",
+              "DISRUPT"
+            ]
+          }
+        },
+        "not": {
+          "required": [
+            "targetRelationshipId"
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "deliveryModalities": {
+            "contains": {
+              "const": "OTHER_SPECIFIED"
+            }
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "deliveryModalitySpecification"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "targetKind": {
+            "const": "RELATIONSHIP"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "targetRelationshipId"
+        ],
+        "properties": {
+          "effectMode": {
+            "const": "MODIFY_RELATIONSHIP"
+          },
+          "intendedDirection": {
+            "enum": [
+              "AMPLIFY",
+              "ATTENUATE",
+              "SUPPRESS",
+              "REVERSE",
+              "CONTEXT_DEPENDENT"
+            ]
+          }
+        },
+        "not": {
+          "anyOf": [
+            {
+              "required": [
+                "targetDriverId"
+              ]
+            },
+            {
+              "required": [
+                "targetDriverType"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "effectMode": {
+            "const": "CHANGE_LEVEL"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "intendedDirection": {
+            "enum": [
+              "INCREASE",
+              "DECREASE",
+              "CONTEXT_DEPENDENT"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "effectMode": {
+            "const": "STABILIZE"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "intendedDirection": {
+            "enum": [
+              "MOVE_TOWARD_RANGE",
+              "MAINTAIN_RANGE"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "effectMode": {
+            "const": "DISRUPT"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "intendedDirection": {
+            "const": "REDUCE_OR_INTERRUPT"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "targetKind": {
+            "const": "RELATIONSHIP"
+          },
+          "governance": {
+            "properties": {
+              "lifecycleStatus": {
+                "const": "GOVERNED"
+              },
+              "activationStatus": {
+                "const": "ACTIVE"
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "mechanisticDriverIds": {
+            "minItems": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "governance": {
+            "properties": {
+              "lifecycleStatus": {
+                "const": "GOVERNED"
+              },
+              "activationStatus": {
+                "const": "ACTIVE"
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "supportingSourceIds": {
+            "minItems": 1
+          },
+          "risks": {
+            "minItems": 1
+          },
+          "evidenceAssessment": {
+            "properties": {
+              "evidenceStrength": {
+                "not": {
+                  "const": "NOT_ASSESSED"
+                }
+              },
+              "confidence": {
+                "not": {
+                  "const": "NOT_ASSESSED"
+                }
+              },
+              "evidenceDisposition": {
+                "not": {
+                  "const": "NOT_ASSESSED"
+                }
+              },
+              "evidenceRationale": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
