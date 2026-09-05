@@ -72,7 +72,6 @@ REPRESENTATIVE_DETAIL_SPECS = (
     ("category", "categories.json", "categoryId", "category"),
     ("family", "families.json", "familyId", "family"),
     ("cluster", "clusters.json", "clusterId", "cluster"),
-    ("category-finding", "category_findings.json", "findingId", "categoryFinding"),
     ("episode", "episodes.json", "episodeId", "episode"),
 )
 
@@ -130,7 +129,7 @@ class CanonicalExplorerBrowserTests(unittest.TestCase):
             file_name: _records(file_name)
             for file_name in {
                 spec[1] for spec in DETAIL_SPECS + REPRESENTATIVE_DETAIL_SPECS
-            }
+            } | {"category_findings.json", "cluster_summaries.json"}
         }
         cls.discovery_records = {
             row["episodeId"]: row
@@ -276,7 +275,7 @@ class CanonicalExplorerBrowserTests(unittest.TestCase):
         self.page.screenshot(path=str(target / name), full_page=True)
 
     def test_all_primary_and_required_detail_routes_render(self) -> None:
-        """Visit 56 routes, including every governed synthesis detail record."""
+        """Visit 55 public routes, including every governed synthesis detail record."""
         self._open(expected_title=PRIMARY_ROUTES["start"], view="start")
         visited = 1
         for view, title in PRIMARY_ROUTES.items():
@@ -298,7 +297,7 @@ class CanonicalExplorerBrowserTests(unittest.TestCase):
             self._assert_detail(route, record[id_field], entity_type)
             visited += 1
 
-        self.assertEqual(56, visited)
+        self.assertEqual(55, visited)
 
     def test_startup_is_eager_only_and_evidence_paths_are_progressive(self) -> None:
         self._open(expected_title=PRIMARY_ROUTES["start"], view="start")
@@ -344,7 +343,6 @@ class CanonicalExplorerBrowserTests(unittest.TestCase):
             (500, "theme", "themes.json", "themeId", "primary support comes from primary-support subcategories and topics"),
             (500, "tension", "tensions.json", "tensionId", "evidence directly allocated to Pole A or Pole B"),
             (390, "narrative", "narratives.json", "narrativeId", "primary evidence is inherited through integrated map constructs"),
-            (390, "category-finding", "category_findings.json", "findingId", "primary evidence is traced through supporting subcategories and topics"),
             (390, "scenario", "scenarios.json", "scenarioId", "primary evidence is traced through relevant map constructs"),
         )
         for width, view, file_name, id_field, clarification in cases:
@@ -615,21 +613,28 @@ class CanonicalExplorerBrowserTests(unittest.TestCase):
     def test_landing_icons_and_functional_overview_are_complete(self) -> None:
         self._open(expected_title=PRIMARY_ROUTES["start"], view="start")
         cards = self.page.locator("a.entry-card")
-        self.assertEqual(11, cards.count())
+        self.assertEqual(10, cards.count())
         icons = cards.locator("picture.entry-icon img")
-        self.assertEqual(11, icons.count())
+        self.assertEqual(10, icons.count())
         image_state = icons.evaluate_all(
             "images => images.map(image => ({complete: image.complete, width: image.naturalWidth, height: image.naturalHeight, alt: image.alt}))"
         )
         self.assertTrue(all(row == {"complete": True, "width": 256, "height": 256, "alt": ""} for row in image_state), image_state)
-        self.assertEqual(9, self.page.locator(".overview-map a.overview-node").count())
+        self.assertEqual(8, self.page.locator(".overview-map a.overview-node").count())
+        self.assertEqual(0, self.page.locator('a[href*="category-finding"], a[href*="categoryFinding"]').count())
+        self.assertNotIn("Findings & Open Questions", self.page.locator("#view-content").inner_text())
         alternative = self.page.locator("details.overview-text")
         alternative.locator("summary").click()
-        self.assertEqual(11, alternative.locator("a").count())
+        self.assertEqual(10, alternative.locator("a").count())
         self.assertIn("do not assert causation", self.page.locator(".functional-overview").inner_text())
         self._save_phase_a_screenshot("phase-a-landing.png")
 
     def test_embedded_hierarchy_expands_and_search_reveals_ancestors(self) -> None:
+        self._open(expected_title=PRIMARY_ROUTES["start"], view="start")
+        self.page.evaluate(
+            "localStorage.setItem('cognitive-security-hierarchy-expanded', "
+            "JSON.stringify({categories: ['CRB'], families: ['CRB-F01']}))"
+        )
         self._open(expected_title=PRIMARY_ROUTES["families"], view="families")
         categories = self.page.locator("details.hierarchy-category")
         self.assertEqual(7, categories.count())
@@ -642,6 +647,19 @@ class CanonicalExplorerBrowserTests(unittest.TestCase):
         self.assertGreater(first_family.locator(".hierarchy-topic-list a").count(), 0)
         self._save_phase_a_screenshot("phase-a-nested-hierarchy.png")
 
+        self._open(expected_title=PRIMARY_ROUTES["families"], view="families", display="subcategories")
+        self.assertEqual(7, self.page.locator("details.hierarchy-category[open]").count())
+        self.assertEqual(0, self.page.locator("details.hierarchy-family[open]").count())
+
+        self._open(expected_title=PRIMARY_ROUTES["families"], view="families", display="topics")
+        self.assertEqual(7, self.page.locator("details.hierarchy-category[open]").count())
+        self.assertEqual(7, self.page.locator("details.hierarchy-family[open]").count())
+
+        category_id = self.record_cache["categories.json"][0]["categoryId"]
+        self._open(expected_title=PRIMARY_ROUTES["families"], view="families", category=category_id)
+        self.assertEqual(1, self.page.locator("details.hierarchy-category[open]").count())
+
+        self._open(expected_title=PRIMARY_ROUTES["families"], view="families")
         topic_name = self.record_cache["clusters.json"][-1]["name"]
         form = self.page.get_by_role("search", name="Search and filter categories, subcategories, and topics")
         form.locator('input[name="q"]').fill(topic_name)
@@ -649,6 +667,53 @@ class CanonicalExplorerBrowserTests(unittest.TestCase):
         self._wait_ready()
         self.assertGreater(self.page.locator("details.hierarchy-category[open] details.hierarchy-family[open]").count(), 0)
         self.assertIn(topic_name, self.page.locator(".hierarchy-browser").inner_text())
+
+    def test_recurring_pattern_prose_has_no_description_label(self) -> None:
+        summary = next(row for row in self.record_cache["cluster_summaries.json"] if row.get("recurringThemes"))
+        pattern = summary["recurringThemes"][0]
+        self._open(view="cluster", id=summary["clusterId"])
+        section = self.page.locator("section.detail-section").filter(
+            has=self.page.get_by_role("heading", name="Recurring patterns", exact=True)
+        )
+        self.assertEqual(1, section.count())
+        self.assertIn(pattern["name"], section.inner_text())
+        self.assertIn(pattern["description"], section.inner_text())
+        self.assertEqual(0, section.locator("dt").count())
+        self.assertNotIn("Description", section.inner_text())
+
+    def test_findings_are_absent_publicly_and_legacy_urls_redirect(self) -> None:
+        finding = self.record_cache["category_findings.json"][0]
+        category = next(
+            row for row in self.record_cache["categories.json"]
+            if row["categoryId"] == finding["categoryId"]
+        )
+
+        self._open(view="category", id=category["categoryId"])
+        category_text = self.page.locator("#view-content").inner_text()
+        self.assertNotIn("Findings and open questions", category_text)
+        self.assertNotIn("Subcategory findings", category_text)
+        self.assertNotIn("Integrative category finding", category_text)
+        self.page.get_by_role("button", name="Open connections & sources").click()
+        self.page.locator("nav.evidence-trail").wait_for(timeout=20_000)
+        self.assertEqual(0, self.page.locator('a.evidence-choice[href*="category-finding"]').count())
+
+        family_id = self.record_cache["families.json"][0]["familyId"]
+        self._open(view="family", id=family_id)
+        self.assertNotIn("What the corpus says", self.page.locator("#view-content").inner_text())
+
+        self._open(view="search")
+        self.assertNotIn("categoryFinding", self.page.locator("#search-entity-type option").evaluate_all("nodes => nodes.map(node => node.value)"))
+        self.assertEqual(0, self.page.locator('.search-results a[href*="category-finding"]').count())
+
+        self._open(view="category-finding", id=finding["findingId"])
+        query = parse_qs(urlparse(self.page.url).query)
+        self.assertEqual(["category"], query["view"])
+        self.assertEqual([category["categoryId"]], query["id"])
+        self.assertEqual(category["name"], self.page.locator("#view-title").inner_text())
+        self.assertEqual(0, self.page.locator('[data-entity-type="categoryFinding"]').count())
+
+        self._open(expected_title=PRIMARY_ROUTES["families"], view="category-finding", id="UNKNOWN-FINDING")
+        self.assertEqual(["families"], parse_qs(urlparse(self.page.url).query)["view"])
 
     def test_episode_library_ranges_sort_jump_and_context(self) -> None:
         self._open(expected_title="Episodes", view="episodes")

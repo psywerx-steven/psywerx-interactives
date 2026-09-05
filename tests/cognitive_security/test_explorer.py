@@ -70,7 +70,6 @@ ROUTE_TYPES = {
     "theme": "theme",
     "tension": "tension",
     "narrative": "narrative",
-    "finding": "category-finding",
     "scenario": "scenario",
     "episode": "episode",
 }
@@ -190,10 +189,18 @@ class ExplorerStaticContractTests(unittest.TestCase):
             "Categories",
             "Subcategories",
             "Topics",
-            "Findings & Open Questions",
             "How the Explorer fits together",
         ):
             self.assertIn(entry, self.javascript)
+        for removed in (
+            "Findings & Open Questions",
+            "Contextual takeaways",
+            "Findings and open questions",
+            "Subcategory findings",
+            "Integrative category finding",
+            "What the corpus says",
+        ):
+            self.assertNotIn(removed, self.javascript)
         self.assertIn("Explore the ideas, connections, and conversations", self.html)
         self.assertNotIn("approved canonical synthesis", self.html.lower())
 
@@ -254,7 +261,6 @@ class ExplorerStaticContractTests(unittest.TestCase):
             '{ label: "Themes"',
             '{ label: "Tensions"',
             "Source episodes",
-            "What the corpus says",
             '{ label: "Narratives"',
             "Related scenarios",
             "Response options are analytical possibilities, not validated recommendations.",
@@ -310,7 +316,6 @@ class ExplorerStaticContractTests(unittest.TestCase):
             "poleALabel",
             "poleBLabel",
             "coreClaim",
-            "finding",
             "responseOptions",
             "summary",
             "keyTopics",
@@ -319,6 +324,10 @@ class ExplorerStaticContractTests(unittest.TestCase):
             self.assertIn(f'"{field}"', self.javascript)
         self.assertIn("SEARCH_ENTITY_TYPES", self.javascript)
         self.assertIn("Public map records", self.javascript)
+        search_fields = self.javascript.partition("function searchFieldsFor")[2].partition("function familyIdsForRecord")[0]
+        self.assertNotIn("categoryFinding", search_fields)
+        deep_link_types = self.javascript.partition("const DEEP_LINK_ENTITY_TYPES")[2].partition(");")[0]
+        self.assertNotIn("categoryFinding", deep_link_types)
         self.assertNotIn("historicalThemeIds", self.javascript.partition(
             "const FORBIDDEN_PUBLIC_RECORD_KEYS"
         )[0])
@@ -336,9 +345,34 @@ class ExplorerStaticContractTests(unittest.TestCase):
             "normalized IDF-weighted Jaccard",
         ):
             self.assertIn(token, self.javascript)
-        self.assertIn("finding-card--open-question", self.javascript)
-        self.assertIn("Subcategory findings", self.javascript)
-        self.assertIn("Integrative category finding", self.javascript)
+        self.assertNotIn("findings and open questions", self.javascript.lower())
+        self.assertNotIn("64 findings", self.javascript.lower())
+
+    def test_recurring_patterns_use_a_prose_first_renderer(self):
+        renderer = self.javascript.partition("function recurringPatternList")[2].partition("function definitionRows")[0]
+        self.assertIn('["description"]', renderer)
+        self.assertIn('element("p", null, description)', renderer)
+        self.assertNotIn('element("dt"', renderer)
+        self.assertIn(
+            'detailSection("Recurring patterns", recurringPatternList(cluster.recurringThemes))',
+            self.javascript,
+        )
+
+    def test_category_hierarchy_does_not_restore_expansion_state(self):
+        hierarchy = self.javascript.partition("async function renderFamilies")[2].partition("async function renderCategory")[0]
+        self.assertNotIn("localStorage", hierarchy)
+        self.assertNotIn("cognitive-security-hierarchy-expanded", hierarchy)
+        self.assertIn('route.display === "subcategories"', hierarchy)
+        self.assertIn('route.display === "topics"', hierarchy)
+
+    def test_findings_remain_internal_but_have_no_public_renderer(self):
+        self.assertIn('"category_findings.json"', self.javascript)
+        self.assertIn('categoryFinding: 64', self.javascript)
+        self.assertIn('if (route.view === "category-finding")', self.javascript)
+        self.assertIn('getEntity("categoryFinding", route.id)', self.javascript)
+        self.assertNotIn('"category-finding": renderCategoryFinding', self.javascript)
+        self.assertNotIn("function renderCategoryFinding", self.javascript)
+        self.assertIn('if (entry.otherType === "categoryFinding") return false;', self.javascript)
 
     def test_episode_cleanup_keeps_methodology_precise_but_secondary(self):
         self.assertNotIn("episode-card-link__type", self.javascript)
@@ -718,8 +752,8 @@ class PublicCanonicalPackageTests(unittest.TestCase):
             self.assertTrue(summary["summary"].strip())
             self.assertTrue(summary["whyItMatters"].strip())
             self.assertTrue(summary["keyTopics"])
-        for kind, ids in self.ids.items():
-            route_type = ROUTE_TYPES[kind]
+        for kind, route_type in ROUTE_TYPES.items():
+            ids = self.ids[kind]
             for entity_id in ids:
                 query = urlencode({"view": route_type, "id": entity_id})
                 parsed = parse_qs(query)

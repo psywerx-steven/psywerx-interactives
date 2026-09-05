@@ -2887,13 +2887,12 @@ button.filter-chip:hover {
   text-transform: uppercase;
 }
 
-.overview-group--sources,
-.overview-group--findings {
-  grid-column: span 3;
+.overview-group--sources {
+  grid-column: span 4;
 }
 
 .overview-group--hierarchy {
-  grid-column: span 6;
+  grid-column: span 8;
 }
 
 .overview-group--cross,
@@ -3307,7 +3306,6 @@ button.filter-chip:hover {
 
 @media (max-width: 64rem) {
   .overview-group--sources,
-  .overview-group--findings,
   .overview-group--hierarchy,
   .overview-group--cross,
   .overview-group--synthesis {
@@ -3326,7 +3324,6 @@ button.filter-chip:hover {
   }
 
   .overview-group--sources,
-  .overview-group--findings,
   .overview-group--hierarchy,
   .overview-group--cross,
   .overview-group--synthesis {
