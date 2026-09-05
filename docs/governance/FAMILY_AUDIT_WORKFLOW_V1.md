@@ -1,7 +1,10 @@
 # PSYWERX Family Audit Workflow V1
 
-**Status:** Proposed production workflow; do not begin systematic population
-until approved
+**Status:** Governed workflow design; execution and systematic population not
+authorized
+
+**Decision record:**
+[`GOV-REL-INT-V1-2026-09-05`](RELATIONSHIP_INTERVENTION_V1_GOVERNANCE_DECISION.md)
 
 **Unit of work:** One Family at one frozen audit version
 
@@ -152,8 +155,7 @@ A Family is complete for an audit version only when:
 - every RDS has a verified derivation trace and no unexplained executable root
   treatment;
 - all nominated relationship candidates have a lifecycle status, evidence
-  packet or research-needed reason, and no candidate is active without
-  approval;
+  packet or research-needed reason, and no candidate is `GOVERNED + ACTIVE`;
 - every in-scope modifiable Driver was searched for interventions, even when
   the defensible result is “none found”;
 - every intervention effect has an exact Driver target or permitted exact edge

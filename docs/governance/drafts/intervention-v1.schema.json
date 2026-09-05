@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://psywerx.org/schemas/proposed/intervention-v1.schema.json",
-  "title": "Proposed PSYWERX governed Intervention V1",
-  "description": "Non-production design draft for Intervention identity and package composition.",
+  "title": "PSYWERX governed-design Intervention V1 draft",
+  "description": "Non-production schema draft for Intervention identity and package composition. Scientific target/effect claims belong to InterventionEffect.",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -21,7 +21,7 @@
   ],
   "properties": {
     "schemaVersion": {
-      "const": "PROPOSED-1.0"
+      "const": "GOVERNED-DESIGN-1.0-DRAFT"
     },
     "id": {
       "type": "string",
@@ -59,8 +59,13 @@
         "CONSTRAINT_OR_ENFORCEMENT",
         "TECHNOLOGY_OR_CONFIGURATION",
         "SERVICE_OR_SUPPORT",
-        "BIOLOGICAL_OR_CLINICAL"
+        "BIOLOGICAL_OR_CLINICAL",
+        "OTHER_SPECIFIED"
       ]
+    },
+    "categorySpecification": {
+      "type": "string",
+      "minLength": 1
     },
     "description": {
       "type": "string",
@@ -75,16 +80,36 @@
       }
     },
     "packageSpecification": {
-      "type": [
-        "object",
-        "null"
-      ]
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "componentRoles",
+        "deliveryRelationship"
+      ],
+      "properties": {
+        "componentRoles": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "object"
+          }
+        },
+        "deliveryRelationship": {
+          "enum": [
+            "ORDERED",
+            "CONCURRENT",
+            "MIXED",
+            "NOT_SPECIFIED"
+          ]
+        },
+        "interactionNotes": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
     },
     "generalImplementationNotes": {
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "minLength": 1
     },
     "identitySourceIds": {
@@ -131,55 +156,7 @@
       }
     },
     "governance": {
-      "$ref": "#/$defs/governance"
-    }
-  },
-  "$defs": {
-    "governance": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "status",
-        "decisionRecord",
-        "approvedBy",
-        "decisionDate",
-        "effectiveVersion",
-        "decisionRationale",
-        "supersedesIds"
-      ],
-      "properties": {
-        "status": {
-          "const": "GOVERNED_ACTIVE"
-        },
-        "decisionRecord": {
-          "type": "string",
-          "minLength": 1
-        },
-        "approvedBy": {
-          "type": "string",
-          "minLength": 1
-        },
-        "decisionDate": {
-          "type": "string",
-          "format": "date"
-        },
-        "effectiveVersion": {
-          "type": "string",
-          "minLength": 1
-        },
-        "decisionRationale": {
-          "type": "string",
-          "minLength": 1
-        },
-        "supersedesIds": {
-          "type": "array",
-          "uniqueItems": true,
-          "items": {
-            "type": "string",
-            "minLength": 1
-          }
-        }
-      }
+      "$ref": "relationship-v1.schema.json#/$defs/governance"
     }
   },
   "allOf": [
@@ -192,27 +169,40 @@
         }
       },
       "then": {
+        "required": [
+          "packageSpecification"
+        ],
         "properties": {
           "componentInterventionIds": {
             "minItems": 2
-          },
-          "packageSpecification": {
-            "type": "object"
           }
-        },
-        "required": [
-          "packageSpecification"
-        ]
+        }
       },
       "else": {
         "properties": {
           "componentInterventionIds": {
             "maxItems": 0
-          },
-          "packageSpecification": {
-            "type": "null"
+          }
+        },
+        "not": {
+          "required": [
+            "packageSpecification"
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "category": {
+            "const": "OTHER_SPECIFIED"
           }
         }
+      },
+      "then": {
+        "required": [
+          "categorySpecification"
+        ]
       }
     }
   ]

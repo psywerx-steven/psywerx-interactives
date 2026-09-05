@@ -1,6 +1,9 @@
 # PSYWERX Relationship + Intervention Governance V1
 
-**Status:** Proposed governance model; approval required
+**Status:** Governed architecture; production implementation not authorized
+
+**Decision record:**
+[`GOV-REL-INT-V1-2026-09-05`](RELATIONSHIP_INTERVENTION_V1_GOVERNANCE_DECISION.md)
 
 **Current protection:** Driver/RDS v0.3 data and the 431 governed causal
 relationships remain protected and unchanged
@@ -27,14 +30,29 @@ V1 separates workflow state from the state of the evidence.
 | `CANDIDATE` | Proposition or intervention/effect has been captured but not researched | No |
 | `RESEARCH_NEEDED` | Required evidence, scope, mechanism, or field work is incomplete | No |
 | `REVIEW_READY` | Required structure and source packet are complete for a human decision | No |
-| `GOVERNED_ACTIVE` | Authorized governance decision approved this exact revision and scope | Yes, subject to type-specific executable rules |
-| `GOVERNED_INACTIVE` | Governed record is retained but deliberately excluded from default execution | No |
-| `BLOCKED_NEEDS_GOVERNANCE_INPUT` | A specific policy/ontology decision is necessary before review can proceed | No |
+| `GOVERNED` | Authorized human governance approved this exact revision and scope | Only when `activationStatus: ACTIVE` and type-specific executable rules pass |
 | `REJECTED` | Reviewed proposition was not accepted; rationale retained | No |
 | `DEPRECATED` | Previously governed revision has been retired or superseded | No |
 
 `REVIEW_READY` is intentionally not called “reviewed.” Review is not complete
 until a disposition is recorded.
+
+### Activation status
+
+| Status | Meaning |
+| --- | --- |
+| `NOT_ELIGIBLE` | Non-governed research record; cannot enter production scientific use |
+| `ACTIVE` | Governed record is eligible for default production scientific use subject to type-specific rules |
+| `INACTIVE` | Governed or deprecated record is deliberately excluded from default production use |
+
+`CANDIDATE`, `RESEARCH_NEEDED`, `REVIEW_READY`, and `REJECTED` require
+`NOT_ELIGIBLE`. `DEPRECATED` requires `INACTIVE`. Only `GOVERNED + ACTIVE` is
+eligible for default production scientific use.
+
+### Block status
+
+`blockStatus` is `NONE` or `NEEDS_GOVERNANCE_INPUT`. A block is an orthogonal
+condition, not a lifecycle stage, and never grants canonical authority.
 
 ### Evidence disposition
 
@@ -83,7 +101,8 @@ increments the revision. History is append-only.
 - candidate pilot priorities and completeness flags.
 
 All AI proposals start as `CANDIDATE` or `RESEARCH_NEEDED`, carry generation
-provenance, and remain outside active canonical collections.
+provenance, remain `NOT_ELIGIBLE`, and stay outside active canonical
+collections.
 
 ### AI MAY RESEARCH
 
@@ -106,12 +125,26 @@ claims from synthesis or inference.
 - draft records with missing fields explicitly marked; and
 - implement an already recorded governance decision exactly.
 
+AI/automation may autonomously manage the non-governed workflow transitions
+`none → CANDIDATE`, `CANDIDATE ↔ RESEARCH_NEEDED`,
+`RESEARCH_NEEDED → REVIEW_READY`, and `REVIEW_READY → RESEARCH_NEEDED` when
+rationale, actor class, timestamp, object/revision, and provenance are recorded
+and `activationStatus` remains `NOT_ELIGIBLE`.
+
+Every lifecycle or activation transition records actor class, rationale,
+timestamp, object ID/revision, and provenance, plus a governance-decision
+reference where required. Automation may mechanically materialize an already
+authorized exact human decision only when that decision specifies the exact
+object, revision, content, or deterministic transformation; automation may not
+broaden or reinterpret it.
+
 ### AI MAY NOT GOVERN
 
 AI may not:
 
-- set `GOVERNED_ACTIVE` or create the equivalent by moving a record into an
-  active bucket;
+- move a record from `REVIEW_READY` to `GOVERNED` or `REJECTED`;
+- set or change `ACTIVE`/`INACTIVE`, deprecate governed content, resolve a block
+  by changing canonical meaning, or approve a substantive governed revision;
 - decide that association, temporal order, derivation, or realization proves
   causality;
 - reclassify a Driver/RDS, resolve a boundary dispute, or relax a protected
@@ -130,9 +163,10 @@ A relationship can move to `REVIEW_READY` only when its proposition identity,
 relation family, endpoint typing, scope, evidence rationale, sources,
 uncertainty/conflict disposition, and required type-specific fields are
 complete. Causal relationships additionally require direction, polarity,
-mechanism, directness, boundary conditions, evidence strength, and confidence.
+mechanism, causal claim role, boundary conditions, evidence strength, and
+confidence.
 
-Before `GOVERNED_ACTIVE`, an authorized reviewer must explicitly decide:
+Before `GOVERNED + ACTIVE`, an authorized human governor must explicitly decide:
 
 1. causal versus noncausal interpretation;
 2. Driver/RDS endpoint legitimacy and double-counting risk;
@@ -144,14 +178,14 @@ Before `GOVERNED_ACTIVE`, an authorized reviewer must explicitly decide:
 ### Intervention gate
 
 An Intervention and each Effect are governed separately. The Intervention
-identity may be approved as `GOVERNED_INACTIVE` while every effect remains
-research-needed; it cannot become `GOVERNED_ACTIVE` without an active effect.
+identity may be approved as `GOVERNED + INACTIVE` while every effect remains
+research-needed; it cannot become `GOVERNED + ACTIVE` without an active effect.
 An Effect can move to `REVIEW_READY` only when it has an exact primary target,
 Driver-centered mechanism/linkage, bounded population/context/scale, direction
 or pathway mode, evidence rationale and sources, risk assessment,
 uncertainty/conflict disposition, and required provenance.
 
-Before `GOVERNED_ACTIVE`, an authorized reviewer must explicitly decide:
+Before `GOVERNED + ACTIVE`, an authorized human governor must explicitly decide:
 
 1. whether the object is an intervention rather than a measure or outcome;
 2. whether its exact Driver or relationship target is correct;
@@ -166,10 +200,10 @@ No automatic migration is authorized. A future approved migration may map:
 
 | Current V3 | Proposed lifecycle starting point |
 | --- | --- |
-| Active governed legacy relationship | `GOVERNED_ACTIVE`, preserving exact proposition and prior provenance |
+| Active governed legacy relationship | `GOVERNED + ACTIVE`, preserving exact proposition and prior provenance |
 | `PROPOSED` candidate | `CANDIDATE` or `RESEARCH_NEEDED` after explicit migration review |
-| `BLOCKED_NEEDS_GOVERNANCE_INPUT` | Same status |
-| Deprecated relationship | `DEPRECATED` |
+| Blocked candidate | Existing lifecycle plus `blockStatus: NEEDS_GOVERNANCE_INPUT` and `activationStatus: NOT_ELIGIBLE` |
+| Deprecated relationship | `DEPRECATED + INACTIVE` |
 
 The 431 current causal records are not re-reviewed by adopting this
 architecture. Their field upgrades happen only through the later systematic
@@ -180,8 +214,8 @@ Family workflow and explicit decisions.
 Future implementation should enforce:
 
 1. candidate and active collections are physically or logically separated;
-2. only a signed/identified governance decision can change a record to
-   `GOVERNED_ACTIVE`;
+2. only an identified authorized human governance decision can change a record
+   to `GOVERNED` or change its `ACTIVE`/`INACTIVE` status;
 3. pull requests show candidate-to-active transitions explicitly;
 4. schema checks reject AI-generation provenance as approval provenance;
 5. references, IDs, revisions, crosswalks, and supersession chains resolve;
@@ -203,22 +237,11 @@ safety, rights, or legal risk, an authorized maintainer may follow the
 repository's emergency inactivation process, but the decision and rationale
 must still be recorded and later reviewed.
 
-## 9. Decisions reserved for explicit approval
+## 9. Governed decisions and remaining implementation gate
 
-The following cannot be implemented from this proposal alone:
-
-- adoption of the relationship-family/predicate vocabulary;
-- permission to add association and temporal-transition records;
-- the edge-target representation for moderation and the pathway representation
-  for mediation;
-- changes to current `directness` semantics;
-- the canonical Intervention, Effect, Package, and crosswalk datasets;
-- intervention category/effect-mode vocabularies;
-- the no-direct-RDS-target rule and executable RDS validation;
-- lifecycle/evidence-disposition names and authorized approval roles;
-- migration of any V3 record or workbook Operationalization;
-- resolution of the current `NON_AUTHORITATIVE_MIGRATION_PREVIEW` authority
-  label relative to the CI-protected v0.3 artifacts;
-- thresholds used as governance gates rather than review flags; and
-- any change to application behavior, scenario contracts, source workbooks, or
-  current governed ontology content.
+D01–D14 are governed by the linked decision record. That approval does not
+authorize production schemas or datasets, migration of V3 records or workbook
+Operationalizations, Family audits, scientific population, modeling/application
+changes, or deployment. The migration-preview authority label is handled only
+through the separately authorized baseline-adoption action. Production V1
+implementation remains a separate governance action.

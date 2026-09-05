@@ -1,6 +1,9 @@
 # PSYWERX Intervention Architecture V1
 
-**Status:** Proposed architecture; governance approval required
+**Status:** Governed architecture; production implementation not authorized
+
+**Decision record:**
+[`GOV-REL-INT-V1-2026-09-05`](RELATIONSHIP_INTERVENTION_V1_GOVERNANCE_DECISION.md)
 
 **Production catalog:** Does not yet exist
 
@@ -69,7 +72,7 @@ Intervention
   governance and revision provenance
 ```
 
-Proposed high-level categories are deliberately broad:
+Governed high-level categories are deliberately broad:
 
 - `COMMUNICATION_OR_INFORMATION`
 - `TRAINING_OR_SKILL`
@@ -80,6 +83,7 @@ Proposed high-level categories are deliberately broad:
 - `TECHNOLOGY_OR_CONFIGURATION`
 - `SERVICE_OR_SUPPORT`
 - `BIOLOGICAL_OR_CLINICAL`
+- `OTHER_SPECIFIED`, with a required nonempty specification
 
 Category supports discovery, not scientific inference. Delivery modality and
 channel belong on effect profiles when they change implementation or evidence.
@@ -104,15 +108,20 @@ Intervention Effect
 
 The target kinds are:
 
-- `DRIVER`: increase, decrease, stabilize, or disrupt one exact Driver;
-- `RELATIONSHIP`: buffer, amplify, or suppress one exact causal relationship;
-  and
-- `CONTEXT_CONDITION`: change a named, bounded external condition that is not
-  yet a canonical entity.
+- `DRIVER`: increase, decrease, stabilize, or disrupt one exact Driver; and
+- `RELATIONSHIP`: modify one exact governed causal relationship.
 
-Relationship- and context-targeted records must also identify at least one
-`mechanisticDriverId` when a canonical Driver carries the effect. If no such
-Driver can yet be identified, the record remains research-needed and is not
+V1 has no generic context target. Context, scope, boundary conditions,
+prerequisites, implementation conditions, moderators, population/system,
+setting/jurisdiction, and scenario applicability remain effect fields. If a
+context feature is manipulated causally, it must resolve to a governed Driver
+or relationship mechanism/moderator, or remain research metadata pending
+ontology governance.
+
+A relationship-targeted record must identify at least one canonical Driver in
+`mechanisticDriverIds` before it can become `GOVERNED + ACTIVE`. A governed
+moderator Driver may satisfy that requirement. If no legitimate Driver can be
+identified, the record remains `RESEARCH_NEEDED` or blocked and is not
 executable.
 
 ### 3.3 Intervention Package
@@ -125,13 +134,13 @@ package specification. Cycles and self-membership are prohibited.
 
 ## 4. Targeting rules
 
-| Proposed target | V1 decision | Rule |
+| Target | V1 decision | Rule |
 | --- | --- | --- |
 | Driver | Yes; primary case | Exact canonical Driver ID and bounded effect record required |
-| RDS | No direct target in V1 | May be a desired/reported outcome or MOE; intervention effects must map to constituent Driver(s), relationship(s), or context and then recalculate the RDS |
-| Relationship/edge | Yes, conditionally | Use only for buffer/amplify/suppress claims about an exact governed causal edge; identify mechanism and evidence |
-| Moderator | Yes, through its representation | If the moderator is a Driver, target that Driver; if it is an external condition, use a context-condition effect; do not target an unlabeled “moderator” slot |
-| Context/boundary condition | Yes, conditionally | Bounded contextual effect, never a silent global edge rewrite; promote to a Driver only through separate ontology governance |
+| RDS | No direct target in V1 | May be a desired/reported outcome or MOE; intervention effects must map to constituent Driver(s) or governed causal relationship(s) and then recalculate the RDS |
+| Relationship/edge | Yes, conditionally | Use `MODIFY_RELATIONSHIP` for an exact governed causal edge; require mechanism, evidence, and at least one canonical mechanistic Driver before active governance |
+| Moderator | Yes, through its representation | Target the moderator when it is a Driver, or target the moderated relationship and name a governed moderator Driver in `mechanisticDriverIds`; do not target an unlabeled slot |
+| Context/boundary condition | No generic target in V1 | Keep as scoped effect metadata unless it resolves to a governed Driver or relationship mechanism/moderator |
 | Multiple Drivers | Yes | One effect record per Driver; optional shared study/package linkage preserves common evidence |
 
 RDS can appear in `outcomeEntityIds` or `measureOfEffect` when it is recalculated
@@ -149,16 +158,16 @@ before creating an executable recommendation.
 | Intervention decreases Driver | `targetKind: DRIVER`, `effectMode: CHANGE_LEVEL`, `intendedDirection: DECREASE` |
 | Intervention stabilizes Driver | `targetKind: DRIVER`, `effectMode: STABILIZE`, with target range/baseline in conditions |
 | Intervention disrupts Driver | `targetKind: DRIVER`, `effectMode: DISRUPT`, with the process being interrupted stated explicitly |
-| Intervention buffers a causal influence | `targetKind: RELATIONSHIP`, `effectMode: BUFFER`, exact target relationship ID |
-| Intervention amplifies a pathway | One or more relationship-targeted `AMPLIFY` effects; never a package-wide weight without edge-level claims |
-| Intervention suppresses a pathway | One or more relationship-targeted `SUPPRESS` effects |
-| Intervention changes a moderator | Driver-targeted effect when canonical; otherwise context-condition effect, linked to affected relationship IDs |
-| Intervention changes environment/context | Driver-targeted effect if the condition is already a Driver; otherwise context-condition effect |
+| Intervention buffers a causal influence | `targetKind: RELATIONSHIP`, `effectMode: MODIFY_RELATIONSHIP`, `intendedDirection: ATTENUATE`, exact target relationship ID, and mechanistic Driver linkage |
+| Intervention amplifies a pathway | One or more relationship-targeted `MODIFY_RELATIONSHIP` effects with `intendedDirection: AMPLIFY`; never a package-wide weight without edge-level claims |
+| Intervention suppresses a pathway | One or more relationship-targeted `MODIFY_RELATIONSHIP` effects with `intendedDirection: SUPPRESS` |
+| Intervention changes a moderator | Driver-targeted effect when the moderator is a Driver, or relationship-targeted effect with the moderator Driver in `mechanisticDriverIds` |
+| Intervention changes environment/context | Driver-targeted effect if the feature is a governed Driver; otherwise research metadata pending ontology governance |
 | Multi-target intervention | Multiple effect records linked to one Intervention |
 | Package containing methods | Package Intervention plus component IDs and separately supported package effects |
 
-`BUFFER` and `SUPPRESS` are not synonyms. Buffering reduces sensitivity or harm
-under exposure; suppression reduces transmission of the specified relationship.
+`ATTENUATE` and `SUPPRESS` are not synonyms. Attenuation reduces sensitivity or
+strength; suppression reduces or interrupts transmission of the specified relationship.
 `STABILIZE` must name a range or reference and cannot mean “improve.”
 
 ## 6. Field classification
@@ -177,7 +186,7 @@ material; it must not be filled with boilerplate.
 | Intervention category/type | REQUIRED | Intervention; one broad discovery category |
 | Description | REQUIRED | Intervention; defines what is implemented and its boundaries |
 | Target Driver(s) | REQUIRED | Effect; one primary Driver per Driver-targeted record; every governed intervention needs at least one Driver-centered effect or mechanistic Driver linkage |
-| Target relationship(s) | CONTEXT-DEPENDENT | Effect; exact edge required for buffer/amplify/suppress |
+| Target relationship(s) | CONTEXT-DEPENDENT | Effect; exact governed causal edge, `MODIFY_RELATIONSHIP`, and nonempty canonical `mechanisticDriverIds` required before active governance |
 | Intended direction of change | REQUIRED | Effect; direction relative to canonical target scale |
 | Mechanism of action | REQUIRED | Effect; explains intervention -> target, not Driver -> Driver |
 | Actor / implementer | RECOMMENDED | Effect; feasibility and authority depend on who acts |
@@ -213,15 +222,17 @@ material; it must not be filled with boilerplate.
 
 ### Minimum governed Intervention
 
-An Intervention cannot become governed active without identity, name, kind,
+An Intervention cannot become `GOVERNED + ACTIVE` without identity, name, kind,
 category, description, governance/revision provenance, and at least one
-governed active Intervention Effect connected to an exact Driver or to an exact
+`GOVERNED + ACTIVE` Intervention Effect connected to an exact Driver or to an exact
 relationship with a mechanistic Driver linkage.
 
 ### Minimum governed Intervention Effect
 
-An active effect requires identity, Intervention ID, target kind and exact
-target, intended mode/direction, mechanism of action, target population,
+An active relationship-targeted effect additionally requires one or more
+canonical mechanistic Driver IDs. Every active effect requires identity,
+Intervention ID, target kind and exact target, intended mode/direction,
+mechanism of action, target population,
 context, scale, boundary conditions, evidence strength and rationale,
 confidence, source IDs, risk assessment, and governance/revision provenance.
 

@@ -1,9 +1,10 @@
-# Proposed machine-readable drafts
+# Governed-design machine-readable drafts
 
-These JSON Schemas are design-review artifacts, not production contracts:
+These JSON Schemas materialize the governed architecture for validation and
+later implementation planning; they are not production contracts:
 
-- `relationship-v1.schema.json` describes the proposed normalized relationship
-  record, including entity- and relationship-targeted claims;
+- `relationship-v1.schema.json` describes the governed-design normalized
+  relationship record, including entity- and relationship-targeted claims;
 - `causal-pathway-v1.schema.json` describes a governed mediation/mechanistic
   pathway assembled from governed causal edge IDs;
 - `intervention-v1.schema.json` describes Intervention identity and package
@@ -12,6 +13,5 @@ These JSON Schemas are design-review artifacts, not production contracts:
   intervention-to-target effect assertion.
 
 They intentionally do not validate or replace current `data/*.json` files.
-Candidate-record relaxation, final controlled vocabularies, canonical file
-locations, migration rules, and production validation require explicit
-governance approval.
+Production locations, data generation, migration execution, population, and
+activation remain separately unauthorized.

@@ -1,40 +1,42 @@
 # PSYWERX Relationship + Intervention Architecture V1 Decision Package
 
-**Status:** Proposed decisions for explicit governance review
+**Status:** Governed architecture decisions; production implementation not
+authorized
 
 **Baseline:** Commit `dfa4a854a580e1470abfd62a306cbce3412f0074`,
 Relationship Schema V3, the v0.3 migration artifacts and CI protections (with
 their explicit non-authoritative preview designation retained), and the
 existing `docs/governance/` architecture package
 
-**Authority:** Every recommendation below is non-authoritative. No value becomes
-canonical until an authorized governance decision approves the exact rule.
+**Authority:** D01–D14 are governed by
+[`GOV-REL-INT-V1-2026-09-05`](RELATIONSHIP_INTERVENTION_V1_GOVERNANCE_DECISION.md).
+The governed rules apply to architecture only and do not activate scientific
+content or production V1 behavior.
 
-**Review finding:** PR #11 correctly separates the current governed state from
-the proposed architecture and limits its changes to documentation and draft
-schemas. Its unresolved choices are material enough that implementation should
-remain blocked until D01–D14 are adjudicated. This package narrows those choices
-without modifying the baseline proposal, production schemas, or scientific
-records.
+**Review finding:** PR #11 separates the current governed state from the V1
+architecture and limits its changes to documentation and draft schemas.
+D01–D14 have now been adjudicated; production implementation remains blocked
+pending separate authorization. This package does not modify production
+schemas or scientific records.
 
 ## Decision table
 
 | ID | Governance Decision | Recommended Option | Compatibility Risk | Governance Decision |
 | --- | --- | --- | --- | --- |
-| D01 | Relation-family vocabulary | Seven top-level families; predicate is the subtype; pathways are separate | Medium | `PENDING` |
-| D02 | Association records | First-class symmetric noncausal Relationship records | Low | `PENDING` |
-| D03 | Temporal-transition records | First-class noncausal records for reusable sequence claims; causal lag remains edge metadata | Low | `PENDING` |
-| D04 | Moderation representation | Normalized n-ary Moderation assertion targeting one causal edge | Medium | `PENDING` |
-| D05 | Mediation and causal pathways | Ordinary causal edges plus a separately governed CausalPathway assertion | Medium | `PENDING` |
-| D06 | Directness semantics | Deprecate the overloaded field; add causal-claim role and evidence estimand | High | `PENDING` |
-| D07 | Canonical Intervention architecture | Intervention and InterventionEffect objects; Package as a governed Intervention subtype | Medium | `PENDING` |
-| D08 | Intervention vocabulary | Adopt the minimum controlled vocabularies specified below | Medium | `PENDING` |
-| D09 | Intervention target rules | Absolute V1 prohibition on direct RDS targets; no exceptions | Medium | `PENDING` |
-| D10 | Driver/RDS causal safeguards | Standard, heightened, and exceptional endpoint review gates | High | `PENDING` |
-| D11 | Lifecycle vocabulary | Six lifecycle states plus separate activation and block fields | High | `PENDING` |
-| D12 | Governance authority | Human-only governance/activation; automation limited to candidate capture, validation, and approved execution | High | `PENDING` |
-| D13 | V3 to V1 migration behavior | Lossless, ID-stable projection with nulls and dual-version compatibility | High | `PENDING` |
-| D14 | `NON_AUTHORITATIVE_MIGRATION_PREVIEW` | Retain now; replace only through a separate baseline-adoption decision | High | `PENDING` |
+| D01 | Relation-family vocabulary | Seven top-level families; predicate is the subtype; pathways are separate | Medium | `APPROVE` |
+| D02 | Association records | First-class symmetric noncausal Relationship records | Low | `APPROVE` |
+| D03 | Temporal-transition records | Qualified-state `PRECEDES` and `TRANSITIONS_TO` records; causal lag remains effect evidence | Low | `MODIFY` |
+| D04 | Moderation representation | Normalized n-ary Moderation assertion targeting one causal edge | Medium | `APPROVE` |
+| D05 | Mediation and causal pathways | Ordinary causal edges plus a separately governed CausalPathway assertion | Medium | `APPROVE` |
+| D06 | Directness semantics | Split the overloaded field; use `MODELED_LOCAL_LINK` as the local claim role | High | `MODIFY` |
+| D07 | Canonical Intervention architecture | Intervention and InterventionEffect objects; Package as a governed Intervention subtype | Medium | `APPROVE` |
+| D08 | Intervention vocabulary | Adopt minimum vocabularies without generic context-target semantics | Medium | `MODIFY` |
+| D09 | Intervention target rules | Driver/Relationship targets only; prohibit RDS and require relationship mechanistic Drivers | Medium | `MODIFY` |
+| D10 | Driver/RDS causal safeguards | Standard, heightened, and exceptional endpoint review gates | High | `APPROVE` |
+| D11 | Lifecycle vocabulary | Six lifecycle states plus separate activation and block fields | High | `APPROVE` |
+| D12 | Governance authority | Permit automated non-governed workflow; human-only governance and activation | High | `MODIFY` |
+| D13 | V3 to V1 migration behavior | Lossless, ID-stable projection with nulls and dual-version compatibility | High | `APPROVE` |
+| D14 | `NON_AUTHORITATIVE_MIGRATION_PREVIEW` | Replace only through the separately authorized baseline-adoption action | High | `APPROVE` |
 
 ## Decision D01 — Relation-family vocabulary
 
@@ -132,7 +134,7 @@ field.
   `DERIVED_FROM`; an implementation prerequisite is an InterventionEffect
   field. Otherwise it remains narrative research metadata.
 
-**Governance Decision:** `PENDING` — select `APPROVE / MODIFY / REJECT`.
+**Governance Decision:** `APPROVE` — seven relation families and predicate semantics adopted.
 
 ## Decision D02 — Association records
 
@@ -209,7 +211,7 @@ and non-derivationality gate. Defer directed predictive associations.
   `relatedRelationshipIds`, retain their own scopes/evidence, and cannot both
   contribute weights to one causal computation.
 
-**Governance Decision:** `PENDING` — select `APPROVE / MODIFY / REJECT`.
+**Governance Decision:** `APPROVE` — symmetric first-class noncausal Association records adopted.
 
 ## Decision D03 — Temporal-transition records
 
@@ -223,8 +225,9 @@ graph.
 ### 2. Proposed V1 behavior
 
 Use first-class `EMPIRICAL_NONCAUSAL` relationships with predicates `PRECEDES`
-and `TRANSITIONS_TO` for reusable temporal propositions. Keep causal onset lag
-on the causal evidence/profile and sequence within a governed CausalPathway.
+and `TRANSITIONS_TO` for reusable temporal propositions about qualified
+states. Keep causal onset lag on the causal evidence/profile and sequence
+within a governed CausalPathway.
 
 ### 3. Why the change is needed
 
@@ -261,14 +264,21 @@ causal study or pathway.
 
 ### 9. Exact proposed canonical rule/vocabulary/schema semantics
 
-- `PRECEDES`: source state is observed earlier than target more often or more
-  reliably than a declared comparison, without a causal assertion.
-- `TRANSITIONS_TO`: units in a declared source state enter a declared target
-  state over a specified horizon/risk set, without a causal assertion.
-- Both are directed and require `causalClaim: false`, observation unit,
-  source/target state definitions, time origin, observation window/horizon,
-  lag band or distribution description, population/system, context, evidence
-  rationale, sources, uncertainty, and governance provenance.
+- `PRECEDES`: a qualified source state is observed earlier than a qualified
+  target state more often or more reliably than a declared comparison,
+  without a causal assertion.
+- `TRANSITIONS_TO`: observation units in a qualified source state enter a
+  qualified target state over a specified horizon/risk set, without implying
+  that one ontology construct literally transforms into another.
+- Both are directed and require `causalClaim: false`, `sourceEntityId`,
+  `sourceStateDefinition`, `targetEntityId`, `targetStateDefinition`,
+  observation unit, time origin, observation window/horizon or risk set,
+  population/system, context, evidence, uncertainty, and governance
+  provenance.
+- A bare `Entity A TRANSITIONS_TO Entity B` without governed source and target
+  state definitions is invalid. The source and target entity may be the same
+  entity when different governed states, such as low X and high X, are being
+  modeled.
 - Transition probability is optional. If populated, it requires numerator,
   denominator/risk set, horizon, censoring/competing-state treatment, estimate,
   and uncertainty interval. A qualitative `TRANSITIONS_TO` claim must not
@@ -280,7 +290,7 @@ causal study or pathway.
 - Timing specific to A's causal effect on B remains causal-edge evidence;
   timing that orders multiple edges remains pathway metadata.
 
-**Governance Decision:** `PENDING` — select `APPROVE / MODIFY / REJECT`.
+**Governance Decision:** `MODIFY` — approved with the qualified-state rule above; `TRANSITIONS_TO` never asserts literal entity transformation.
 
 ## Decision D04 — Moderation representation
 
@@ -356,7 +366,7 @@ Approve the normalized Moderation assertion as a Relationship record variant.
 - Moderation never creates an ordinary M→A or M→B edge. Such edges require
   their own causal evidence and IDs.
 
-**Governance Decision:** `PENDING` — select `APPROVE / MODIFY / REJECT`.
+**Governance Decision:** `APPROVE` — normalized n-ary Moderation assertions adopted.
 
 ## Decision D05 — Mediation and causal pathways
 
@@ -428,7 +438,7 @@ causal edge IDs.
 - A pathway is annotation/analysis structure, not another causal influence in
   degree counts or FCM adjacency.
 
-**Governance Decision:** `PENDING` — select `APPROVE / MODIFY / REJECT`.
+**Governance Decision:** `APPROVE` — governed causal segments plus a separate CausalPathway assertion adopted.
 
 ## Decision D06 — Directness semantics
 
@@ -468,7 +478,7 @@ and can cause a shortcut edge to be counted with its pathway.
 
 All V3 values remain available as `legacyDirectness`. No V3 value is used to
 infer mechanistic directness or an estimand. `DIRECT_AT_STATED_RESOLUTION` may
-be provisionally projected as `LOCAL_LINK` only where the proposition is
+be provisionally projected as `MODELED_LOCAL_LINK` only where the proposition is
 unchanged; the 39 `MEDIATED_PATH` records remain V1-incomplete until reviewed.
 V3 readers continue to receive the old field during dual-version operation.
 
@@ -486,11 +496,12 @@ compatibility period.
 
 ### 9. Exact proposed canonical rule/vocabulary/schema semantics
 
-- Core causal Relationship requires `causalClaimRole`: `LOCAL_LINK`,
+- Core causal Relationship requires `causalClaimRole`: `MODELED_LOCAL_LINK`,
   `TOTAL_EFFECT`, or `UNRESOLVED_SHORTCUT`.
-- `LOCAL_LINK` means the relationship is intended as one modeled causal link
-  at the declared ontology resolution. It does not assert biological or
-  mechanistic immediacy.
+- `MODELED_LOCAL_LINK` means the assertion represents one causal link at the
+  declared ontology/model resolution. It explicitly does not mean biologically
+  immediate, mechanistically mediator-free, statistically estimated direct
+  effect, or proof that no unrepresented intermediate exists.
 - `TOTAL_EFFECT` means the relationship represents a source-to-target total
   effect that may include transmitted paths. A model must not use it together
   with constituent paths without an explicit reconciliation rule.
@@ -506,7 +517,7 @@ compatibility period.
 - `legacyDirectness` is read-only migration provenance and must not control V1
   calculations.
 
-**Governance Decision:** `PENDING` — select `APPROVE / MODIFY / REJECT`.
+**Governance Decision:** `MODIFY` — approved with `MODELED_LOCAL_LINK` replacing `LOCAL_LINK` and the definition above.
 
 ## Decision D07 — Canonical Intervention architecture
 
@@ -580,7 +591,7 @@ Package as a governed Intervention subtype in V1.
   least one governed InterventionEffect before it can be `ACTIVE` for
   recommendation or scenario use.
 
-**Governance Decision:** `PENDING` — select `APPROVE / MODIFY / REJECT`.
+**Governance Decision:** `APPROVE` — Intervention and InterventionEffect adopted; Package is an Intervention subtype.
 
 ## Decision D08 — Intervention vocabulary
 
@@ -635,8 +646,8 @@ Approve the following minimum vocabularies, subject to D11 for lifecycle.
 | --- | --- |
 | `interventionKind` | `ATOMIC`, `PACKAGE` |
 | `category` | `COMMUNICATION_OR_INFORMATION`, `TRAINING_OR_SKILL`, `ENVIRONMENTAL_OR_CHOICE_ARCHITECTURE`, `POLICY_RULE_OR_STANDARD`, `INCENTIVE_OR_RESOURCE`, `CONSTRAINT_OR_ENFORCEMENT`, `TECHNOLOGY_OR_CONFIGURATION`, `SERVICE_OR_SUPPORT`, `BIOLOGICAL_OR_CLINICAL`, `OTHER_SPECIFIED` |
-| `targetKind` | `DRIVER`, `RELATIONSHIP`, `CONTEXT_CONDITION` |
-| `effectMode` | `CHANGE_LEVEL`, `STABILIZE`, `DISRUPT`, `MODIFY_RELATIONSHIP`, `ALTER_CONTEXT` |
+| `targetKind` | `DRIVER`, `RELATIONSHIP` |
+| `effectMode` | `CHANGE_LEVEL`, `STABILIZE`, `DISRUPT`, `MODIFY_RELATIONSHIP` |
 | `intendedDirection` | Mode-constrained values below |
 | `deliveryModality` | `HUMAN_DELIVERED`, `DIGITAL_OR_AUTOMATED`, `PHYSICAL_ENVIRONMENT`, `ORGANIZATIONAL_OR_POLICY_PROCESS`, `MIXED`, `NOT_APPLICABLE`, `OTHER_SPECIFIED` |
 | `scale` | Existing Relationship endpoint-level vocabulary plus `MULTILEVEL` |
@@ -652,14 +663,17 @@ Direction is constrained by effect mode:
 - `DISRUPT`: `REDUCE_OR_INTERRUPT`.
 - `MODIFY_RELATIONSHIP`: `AMPLIFY`, `ATTENUATE`, `SUPPRESS`, `REVERSE`,
   `CONTEXT_DEPENDENT`.
-- `ALTER_CONTEXT`: `INCREASE`, `DECREASE`, `ENABLE`, `CONSTRAIN`,
-  `CONTEXT_DEPENDENT`.
-
 `NOT_ASSESSED` is allowed only before governance. `OTHER_SPECIFIED` requires a
 nonempty specification. `SCENARIO_SPECIFIC` effects cannot be generalized as
 core recommendations without a separate governed synthesis.
 
-**Governance Decision:** `PENDING` — select `APPROVE / MODIFY / REJECT`.
+Context, boundary conditions, prerequisites, implementation conditions,
+moderators, population/system, setting/jurisdiction, and scenario applicability
+remain scoped fields. If a context feature is manipulated causally, it must
+resolve to a governed Driver or relationship mechanism/moderator, or remain
+research metadata pending ontology governance.
+
+**Governance Decision:** `MODIFY` — approved with `CONTEXT_CONDITION` and `ALTER_CONTEXT` removed from the V1 vocabulary.
 
 ## Decision D09 — Intervention target rules
 
@@ -673,9 +687,9 @@ cause.
 ### 2. Proposed V1 behavior
 
 Make “RDS cannot be a direct InterventionEffect target” an absolute V1 schema
-rule, with no governed exception path. Direct target kinds are Driver,
-Relationship, or Context Condition. Edge/context effects must still identify
-the mechanistic Driver or Drivers changed when known.
+rule, with no governed exception path. Direct target kinds are Driver and
+Relationship only. A relationship-targeted effect must identify the
+mechanistic Driver or Drivers before it can become governed-active.
 
 ### 3. Why the change is needed
 
@@ -717,11 +731,14 @@ real counterexample.
 
 - `InterventionEffect.targetKind: DRIVER` requires a canonical Driver ID and
   may use level-change, stabilize, or disrupt modes.
-- `targetKind: RELATIONSHIP` requires one governed causal Relationship ID and
-  uses `MODIFY_RELATIONSHIP`; it does not create a new causal entity edge.
-- `targetKind: CONTEXT_CONDITION` requires a controlled or explicitly scoped
-  condition and uses `ALTER_CONTEXT`. It must link affected causal edges or
-  target Drivers where known.
+- `targetKind: RELATIONSHIP` requires one governed causal Relationship ID,
+  uses `MODIFY_RELATIONSHIP`, and does not create a new causal entity edge.
+  Before `GOVERNED + ACTIVE`, `mechanisticDriverIds` must contain at least one
+  canonical Driver explaining the route by which the intervention alters that
+  relationship. A governed moderator Driver may satisfy this requirement.
+- An RDS or unmodeled context condition cannot satisfy the mechanistic Driver
+  requirement. If no legitimate Driver is known, the record remains
+  `RESEARCH_NEEDED` or blocked and cannot be active.
 - An RDS ID is invalid in the direct target field in V1. There is no exception
   flag or governor override in the record schema.
 - A colloquial goal such as improving Sleep Sufficiency, Readability, or a
@@ -735,7 +752,7 @@ real counterexample.
   configurable state, any reclassification is a separate ontology governance
   decision; an InterventionEffect cannot make that decision implicitly.
 
-**Governance Decision:** `PENDING` — select `APPROVE / MODIFY / REJECT`.
+**Governance Decision:** `MODIFY` — approved with Driver/Relationship-only targets and mandatory mechanistic Driver linkage for active relationship effects.
 
 ## Decision D10 — Driver/RDS causal safeguards
 
@@ -818,7 +835,7 @@ conflicts, provenance, and explicit governance. Additional rules are:
   aggregate shortcut, or declare a governed reconciliation rule; it cannot
   use both blindly.
 
-**Governance Decision:** `PENDING` — select `APPROVE / MODIFY / REJECT`.
+**Governance Decision:** `APPROVE` — standard, heightened, and exceptional Driver/RDS causal gates adopted.
 
 ## Decision D11 — Lifecycle vocabulary
 
@@ -893,7 +910,7 @@ InterventionEffects, and CausalPathways.
   `supersededById`. Reopening a rejected proposition creates a new candidate
   revision with an explicit link to the rejected decision.
 
-**Governance Decision:** `PENDING` — select `APPROVE / MODIFY / REJECT`.
+**Governance Decision:** `APPROVE` — six lifecycle states plus orthogonal activation and block fields adopted.
 
 ## Decision D12 — Governance authority
 
@@ -906,11 +923,11 @@ all new object types.
 
 ### 2. Proposed V1 behavior
 
-Authorize automated processes and AI to capture candidates, research,
-structure, compare, validate, and materialize an already approved decision.
-Reserve all transitions into canonical governance, all activation changes,
-and deprecation decisions for an authorized governor. Preserve a separate
-researcher/reviewer role for evidence preparation and review readiness.
+Authorize automated processes and AI to manage the non-governed research
+workflow while every affected object remains `NOT_ELIGIBLE`, and to
+materialize an already approved exact decision. Reserve all transitions into
+canonical governance, all activation changes, rejection, deprecation, and
+substantive governed revisions for an authorized human governor.
 
 ### 3. Why the change is needed
 
@@ -950,17 +967,19 @@ resolvable governance decision provenance.
 | From | To | Automated process / AI | Researcher/reviewer | Authorized governor |
 | --- | --- | --- | --- | --- |
 | none | `CANDIDATE` | May create, always `NOT_ELIGIBLE` | May create | May create |
-| `CANDIDATE` | `RESEARCH_NEEDED` | May recommend/structure; no autonomous scientific transition | May transition with rationale | May transition |
-| `RESEARCH_NEEDED` | `REVIEW_READY` | May recommend and prepare evidence | May transition with review signoff | May transition |
-| `REVIEW_READY` | `RESEARCH_NEEDED` | May flag; no autonomous transition | May return with rationale | May return |
+| `CANDIDATE` | `RESEARCH_NEEDED` | May transition with rationale/provenance, always `NOT_ELIGIBLE` | May transition | May transition |
+| `RESEARCH_NEEDED` | `CANDIDATE` | May transition with rationale/provenance, always `NOT_ELIGIBLE` | May transition | May transition |
+| `RESEARCH_NEEDED` | `REVIEW_READY` | May transition after validation with rationale/provenance, always `NOT_ELIGIBLE` | May transition | May transition |
+| `REVIEW_READY` | `RESEARCH_NEEDED` | May transition with rationale/provenance, always `NOT_ELIGIBLE` | May return | May return |
 | `REVIEW_READY` | `GOVERNED` | Prohibited unless exactly materializing an already authorized decision | Prohibited | Required |
 | `REVIEW_READY` | `REJECTED` | Prohibited unless exactly materializing an already authorized decision | May recommend | Required |
 | `GOVERNED` | `ACTIVE` / `INACTIVE` | Prohibited unless exactly materializing an already authorized decision | May recommend | Required |
 | `GOVERNED` | `DEPRECATED` | Prohibited unless exactly materializing an already authorized decision | May recommend | Required |
 
-- AI/automation may set validation flags and recommend `blockStatus`, but an
-  authorized governor resolves `NEEDS_GOVERNANCE_INPUT` when the resolution
-  changes governed meaning.
+- AI/automation may validate, flag, deduplicate, research, enrich, recommend
+  decisions, and manage the transitions above while records remain
+  non-governed and `NOT_ELIGIBLE`. An authorized governor resolves
+  `NEEDS_GOVERNANCE_INPUT` when the resolution changes canonical meaning.
 - Every transition records prior/new state, object ID/revision, actor class,
   rationale, timestamp, source commit, and decision-record ID where required.
 - “Materializing an approved decision” means the exact object revision,
@@ -969,7 +988,7 @@ resolvable governance decision provenance.
 - Substantive changes to a governed object create a candidate new revision;
   metadata-only corrections follow a governed correction procedure.
 
-**Governance Decision:** `PENDING` — select `APPROVE / MODIFY / REJECT`.
+**Governance Decision:** `MODIFY` — approved with autonomous non-governed research transitions and human-only governance/activation.
 
 ## Decision D13 — V3 to V1 migration behavior
 
@@ -1051,7 +1070,7 @@ compatibility tests, and explicit incompleteness.
   authority may be inferred from `ACTIVE` alone. D14 governs the authority
   designation of the generated migration baseline as a whole.
 
-**Governance Decision:** `PENDING` — select `APPROVE / MODIFY / REJECT`.
+**Governance Decision:** `APPROVE` — lossless, ID-stable, null- and provenance-preserving migration adopted.
 
 ## Decision D14 — `NON_AUTHORITATIVE_MIGRATION_PREVIEW`
 
@@ -1132,9 +1151,10 @@ If approved, use:
 
 The replacement labels describe migration authority only; each scientific
 record still requires its own lifecycle/activation provenance under D11–D12.
-Removing the preview designation is not appropriate in this task.
+Removing the preview designation is not appropriate in PR #11; it belongs to
+the separately authorized baseline-adoption action.
 
-**Governance Decision:** `PENDING` — select `APPROVE / MODIFY / REJECT`.
+**Governance Decision:** `APPROVE` — separate baseline adoption is required and separately authorized by the source instruction.
 
 ## Normalized placement of Intervention scientific fields
 
@@ -1185,7 +1205,7 @@ boundary references, evidence-assessment links, and governance/provenance.
 Scientific detail belongs in core only when it defines the proposition or
 controls safe traversal.
 
-## Recommended minimum V1
+## Governed minimum V1 architecture
 
 Only the following components are necessary to begin the Family-by-Family
 relationship/intervention audit:
@@ -1251,9 +1271,10 @@ flowchart TD
 D14 need not approve the baseline in this PR, but its rule must be resolved
 before V3 authority is mapped or V1 becomes the production source.
 
-## Proposed implementation sequence
+## Governed future implementation sequence
 
-After, and only after, explicit approval of the affected decisions:
+The architecture decisions are approved, but this sequence may begin only
+after separate production V1 implementation authorization:
 
 1. Record the D01–D14 governance outcomes and exact approved vocabulary.
 2. Resolve D14 through its separate baseline-adoption decision before any
@@ -1276,9 +1297,10 @@ After, and only after, explicit approval of the affected decisions:
 10. Present the pilot and implementation evidence for a separate authorization
     to activate V1. Do not infer activation from schema completion or CI.
 
-## Governance review instruction
+## Governance materialization
 
-For each D01–D14 section, replace only its final `PENDING` with an explicit
-`APPROVE`, `MODIFY`, or `REJECT` decision and attach the decision record. A
-`MODIFY` decision must quote the replacement canonical rule. Until then, all
-recommendations in this package remain non-authoritative.
+D01–D14 were explicitly authorized by an authorized human governor on
+2026-09-05. The final outcomes and modified canonical rules above are governed
+by [Relationship + Intervention V1 Governance Decision](RELATIONSHIP_INTERVENTION_V1_GOVERNANCE_DECISION.md).
+This approval governs the architecture; it does not approve scientific records,
+authorize population, or activate a production V1 implementation.

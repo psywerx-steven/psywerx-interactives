@@ -1,6 +1,9 @@
 # PSYWERX Relationship Architecture V1
 
-**Status:** Proposed architecture; governance approval required
+**Status:** Governed architecture; production implementation not authorized
+
+**Decision record:**
+[`GOV-REL-INT-V1-2026-09-05`](RELATIONSHIP_INTERVENTION_V1_GOVERNANCE_DECISION.md)
 
 **Relationship Schema v3 status:** Current production contract; unchanged
 
@@ -130,12 +133,17 @@ not automatically require separate top-level relation families.
 | Realization | `REALIZATION` / `REALIZES` for a lower-level configuration or process that instantiates a higher-level state | Yes | Excluded unless a separate causal claim is independently supported |
 | Measurement / indicator | An Operationalization record linked to the entity; use `MEASURES` or `INDICATES` only when both endpoints are canonical objects and the distinction is needed | Usually another catalog | Excluded |
 | Placement / classification | Existing `primaryFamilyId`, `relatedFamilyIds`, Layer, subtype, and crosswalk fields | No | Excluded; do not duplicate taxonomy as graph edges |
-| Temporal transition | `TEMPORAL` / `TRANSITIONS_TO` or `TENDS_TO_PRECEDE` with an explicit time basis | Yes, when scientifically material | Excluded unless a distinct causal edge is governed |
-| Association | `EMPIRICAL_ASSOCIATION` / `ASSOCIATED_WITH`, canonical endpoint order, and `symmetry: SYMMETRIC` | Yes, when evidence is useful but noncausal | Excluded and visually labeled noncausal |
-| Moderation | Reified record whose subject is the moderator entity and whose object is a relationship ID | Yes | Modifies a governed edge; is not an ordinary entity-to-entity edge |
+| Temporal transition | `EMPIRICAL_NONCAUSAL` / `PRECEDES` or qualified-state `TRANSITIONS_TO` with explicit states and time basis | Yes, when scientifically material | Excluded unless a distinct causal edge is governed |
+| Association | `EMPIRICAL_NONCAUSAL` / `ASSOCIATED_WITH`, canonical endpoint order, and `symmetry: SYMMETRIC` | Yes, when evidence is useful but noncausal | Excluded and visually labeled noncausal |
+| Moderation | Normalized n-ary `MODERATION` / `MODERATES` assertion targeting one causal relationship ID | Yes | Modifies a governed edge; is not an ordinary entity-to-entity edge |
 | Mediation / mechanistic pathway | A pathway record that orders two or more governed causal edge IDs and identifies mediator entity IDs | Yes as a pathway, not an edge type | Traverse constituent causal edges; never add an unqualified shortcut |
 
-### Vocabulary decisions
+### Governed vocabulary decisions
+
+The seven V1 top-level families are `CAUSAL`, `EMPIRICAL_NONCAUSAL`,
+`MODERATION`, `DERIVATIONAL`, `COMPOSITIONAL`, `REALIZATION`, and `SEMANTIC`.
+`predicate` is the single relationship subtype; V1 does not add
+`relationshipSubtype`.
 
 1. `CONSTRAINS` remains a causal predicate; `CONSTRAINT` should not also be a
    top-level family for the same claim.
@@ -144,8 +152,11 @@ not automatically require separate top-level relation families.
 4. Measurement normally belongs to the existing Operationalization domain.
    The 2,335 private workbook operationalization rows are candidate measures,
    not interventions and not proof of causal effects.
-5. Association and temporal transition are worth first-class noncausal records
-   because otherwise analysts are pressured to overstate them as causal.
+5. Association and temporal transition are first-class
+   `EMPIRICAL_NONCAUSAL` records because otherwise analysts are pressured to
+   overstate them as causal. `TRANSITIONS_TO` always relates qualified states;
+   a bare entity-to-entity transition is invalid, and the two entity IDs may
+   be identical when their governed state definitions differ.
 6. Moderation targets an edge. Mediation groups edges. Treating either as an
    ordinary A-to-B causal predicate loses the proposition being qualified.
 7. Semantic mappings such as narrower-than, overlap, equivalent-under-
@@ -154,7 +165,7 @@ not automatically require separate top-level relation families.
 ## 3. Causal relationship contract
 
 The classifications below apply to a relationship at the point it is proposed
-for `GOVERNED_ACTIVE`. Candidate records may be incomplete if missing fields
+for `GOVERNED + ACTIVE`. Candidate records may be incomplete if missing fields
 are explicit and route the record to research or governance review.
 
 | Field or concept | Classification | Rule |
@@ -166,20 +177,20 @@ are explicit and route the record to research or governance review.
 | Causal predicate | REQUIRED | `CAUSES`, `ENABLES`, or `CONSTRAINS`; moderation is reified |
 | Polarity/sign | REQUIRED | Positive, negative, non-monotonic, or context-dependent; unsigned is not sufficient for an executable active edge |
 | Mechanism | REQUIRED | Edge-specific process connecting source change to target change; not merely co-occurrence or a restatement |
-| Directness at stated resolution | REQUIRED | Direct, total/indirect estimate, or unknown; new path segments are direct at their stated resolution |
+| Causal claim role | REQUIRED | `MODELED_LOCAL_LINK`, `TOTAL_EFFECT`, or `UNRESOLVED_SHORTCUT`; distinct from an evidence estimand, mechanistic directness, and computed graph adjacency |
 | Boundary/context conditions | REQUIRED | Conditions under which the causal interpretation is asserted |
 | Population/unit/context specificity | REQUIRED | Analytic unit, population/system, setting, and scope or an explicit justified general scope |
 | Evidence strength | REQUIRED | Quality/consistency of the evidence body for this proposition, not effect magnitude |
 | Confidence | REQUIRED | Curatorial confidence in this encoded proposition and its transferability |
 | Evidence rationale | REQUIRED | Concise explanation connecting cited evidence to direction, mechanism, scope, and limitations |
 | Supporting sources | REQUIRED | One or more resolvable evidence records for governed active causal claims |
-| Governance lifecycle status | REQUIRED | Only explicit governance may assign `GOVERNED_ACTIVE` |
+| Lifecycle, activation, and block status | REQUIRED | Only explicit human governance may assign `GOVERNED` or change `ACTIVE`/`INACTIVE`; research workflow remains `NOT_ELIGIBLE` |
 | Governance class | REQUIRED | Preserve `CORE` versus `CONTEXT_DEPENDENT`; neither substitutes for lifecycle status |
 | Version/review provenance | REQUIRED | Schema version, record revision, reviewed date, reviewer/decision record, and supersession link where applicable |
 | Record creation/source provenance | REQUIRED | Workbook row, decision record, or other origin of the structured record, distinct from scientific supporting sources |
 | Causal lag profile | RECOMMENDED | Use bands when supported; never invent numeric precision |
 | Effect persistence/recovery | RECOMMENDED | Edge-level persistence, distinct from entity persistence |
-| Moderator entity IDs | RECOMMENDED | Use only for canonical moderators supported for this edge |
+| Moderator linkage | RECOMMENDED | Governed moderation uses a separate normalized assertion; inline V3 moderator IDs are migration provenance or candidate linkage only |
 | Narrative moderators | RECOMMENDED | Preserve unmodeled moderators without pretending they are canonical entities |
 | Conflicting evidence | RECOMMENDED | Structured citations and a disposition (`MIXED`, `CONTRADICTED`, or unresolved) |
 | Uncertainty | RECOMMENDED | Directional, magnitude, timing, measurement, and transfer uncertainty as applicable |
@@ -216,12 +227,15 @@ strengths and must retain transformation provenance.
 
 A moderation assertion has:
 
-- a moderator `subjectEntityId`;
-- `predicate: MODERATES_RELATIONSHIP`;
-- exactly one governed `objectRelationshipId` and no object entity;
-- effect on edge strength/direction (`AMPLIFIES`, `ATTENUATES`, `REVERSES`, or
-  `CONTEXT_DEPENDENT`);
-- moderator range/state, conditions, evidence, confidence, and governance
+- `relationFamily: MODERATION` and `predicate: MODERATES`;
+- exactly one `moderatedRelationshipId` resolving to a governed causal edge;
+- one or more `moderatorSpecifications`, each naming a canonical entity and
+  governed state/range and scale interpretation;
+- `combinationRule: INDIVIDUAL` for a single moderator or `JOINT` only for an
+  evidence-supported multi-moderator interaction;
+- `moderationDirection`: `AMPLIFIES`, `ATTENUATES`, `REVERSES`,
+  `NON_MONOTONIC`, or `CONTEXT_DEPENDENT`; and
+- its own mechanism, conditions, evidence, confidence, lifecycle, and
   provenance.
 
 It must not be flattened to “moderator causes target.” An unmodeled condition
@@ -231,8 +245,8 @@ can remain narrative until it becomes a governed entity.
 
 A causal pathway is a separately identified ordered sequence of governed
 causal edges. It records mediator entity IDs, temporal order, scope, evidence
-for the mediated interpretation, and whether the mediation is partial, full,
-or unknown. Every segment keeps its own evidence and fields. A total-effect
+for the mediated interpretation, and whether the mediation is `PARTIAL`,
+`FULL`, or `UNDETERMINED`. Every segment keeps its own evidence and fields. A total-effect
 source-to-outcome record may coexist only when it represents an independently
 estimated claim and is explicitly marked as total/indirect, preventing double
 counting with its segments.
@@ -260,7 +274,7 @@ All executable uses must follow these rules:
    measured value with derivation/scope provenance; it is never an unexplained
    root cause.
 2. An intervention does not directly manipulate an RDS. It changes one or more
-   constituent Drivers, a relationship, or a context condition, after which
+   constituent Drivers or a governed causal relationship, after which
    the RDS is recalculated.
 3. A model must choose either constituent propagation into an RDS or an
    independently estimated aggregate effect for the same causal contribution,
@@ -279,12 +293,14 @@ now.
 
 ## 6. Proposed changes relative to Relationship Schema v3
 
-V1 recommends an additive, versioned successor after approval:
+V1 governs an additive, versioned successor design for later implementation:
 
 1. Reconcile documented and implemented relation-family names, using current
    artifact terms as compatibility anchors.
-2. Add explicit noncausal association and temporal-transition families.
-3. Make the object a tagged union: exactly one entity ID or relationship ID.
+2. Add the explicit `EMPIRICAL_NONCAUSAL` family for Association and qualified-
+   state Temporal records.
+3. Use family-specific endpoint shapes, including n-ary edge-targeted
+   Moderation assertions.
 4. Reify moderation and add a causal-pathway container for mediation.
 5. Add evidence rationale, conflicting-evidence disposition, uncertainty, and
    complete decision/revision provenance.
@@ -296,8 +312,8 @@ V1 recommends an additive, versioned successor after approval:
 9. Preserve the V3 active/deprecated/candidate separation and the 431-edge
    legacy compatibility view until an approved migration replaces it.
 
-No recommendation in this document changes current governed relationship
-content.
+No architecture rule in this document changes current governed relationship
+content. Production V1 implementation remains separately unauthorized.
 
 ## 7. Internal critique and resulting simplifications
 

@@ -1,16 +1,20 @@
 # Relationship + Intervention Architecture V1
 
-**Package status:** Proposed for governance approval
+**Package status:** Governed architecture; production implementation not
+authorized
 
 **Prepared:** 2026-09-05
 
 **Production impact:** None
 
-This directory is a governance proposal. It does not replace Relationship
-Schema v3, change any canonical entity or relationship, publish an intervention
-catalog, or change application behavior. Until an authorized PSYWERX
-governance decision adopts some or all of this package, the current governed
-artifacts and contracts remain authoritative.
+This directory contains the governed Relationship + Intervention Architecture
+V1 design and its non-production schema drafts. The architecture decision does
+not replace Relationship Schema v3, change any canonical entity or
+relationship, publish an intervention catalog, or change application behavior.
+Production V1 implementation remains separately unauthorized.
+
+**Decision record:**
+[`GOV-REL-INT-V1-2026-09-05`](RELATIONSHIP_INTERVENTION_V1_GOVERNANCE_DECISION.md)
 
 ## Current governed baseline
 
@@ -24,11 +28,11 @@ artifacts and contracts remain authoritative.
 
 The repository's `data/migration-manifest.json` still labels v0.3 a
 `NON_AUTHORITATIVE_MIGRATION_PREVIEW`, while CI mechanically protects its exact
-partition, counts, and 431 causal propositions. This package preserves that
-status language; declaring the preview fully authoritative is a separate
-governance decision.
+partition, counts, and 431 causal propositions. PR #11 preserves that status
+language. Migration-baseline adoption is a separate authorized governance
+action with its own branch, decision record, validation, and pull request.
 
-## Proposed V1 package
+## Governed V1 architecture package
 
 1. [Relationship Architecture V1](RELATIONSHIP_ARCHITECTURE_V1.md) defines the
    meanings of relationship, causal field requirements, RDS participation, and
@@ -44,14 +48,19 @@ governance decision.
    Families for a later pilot; it does not execute the pilot.
 6. [`drafts/`](drafts/) contains non-production JSON Schema drafts for design
    review and tooling experiments.
+7. [Decision Package](RELATIONSHIP_INTERVENTION_V1_DECISION_PACKAGE.md) records
+   the D01–D14 analysis and final outcomes.
+8. [Governance Decision](RELATIONSHIP_INTERVENTION_V1_GOVERNANCE_DECISION.md)
+   records the human authorization and scope limits.
 
-## Non-authoritative draft rule
+## Non-production draft-schema rule
 
-Files under `docs/governance/drafts/` are proposals only. Their presence does
-not authorize generation of production data, migration of existing records,
-or activation of candidates. A later approved implementation must choose
-canonical file locations, controlled vocabularies, migration behavior, and CI
-gates explicitly.
+Files under `docs/governance/drafts/` materialize the governed design for
+validation and later implementation planning, but they are not production
+schemas. Their presence does not authorize generation of production data,
+migration of existing records, population, or activation of candidates. A
+later approved implementation must establish canonical locations, data flows,
+compatibility behavior, and CI gates.
 
 ## Internal critique record
 

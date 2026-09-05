@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://psywerx.org/schemas/proposed/relationship-v1.schema.json",
-  "title": "Proposed PSYWERX governed relationship record V1",
-  "description": "Non-production design draft for a governed active relationship record.",
+  "title": "PSYWERX governed-design Relationship V1 draft",
+  "description": "Non-production schema draft materializing governed decisions D01-D06 and D10-D13.",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -11,26 +11,17 @@
     "revision",
     "relationFamily",
     "predicate",
-    "subjectEntityId",
-    "subjectEntityType",
-    "objectEntityId",
-    "objectEntityType",
-    "objectRelationshipId",
     "symmetry",
-    "polarity",
-    "directness",
-    "moderationEffect",
-    "mechanism",
+    "causalClaim",
     "boundaryConditions",
     "applicability",
     "evidenceAssessment",
     "supportingSourceIds",
-    "pathwayIds",
     "governance"
   ],
   "properties": {
     "schemaVersion": {
-      "const": "PROPOSED-1.0"
+      "const": "GOVERNED-DESIGN-1.0-DRAFT"
     },
     "id": {
       "type": "string",
@@ -43,14 +34,12 @@
     "relationFamily": {
       "enum": [
         "CAUSAL",
-        "CAUSAL_MODERATION",
+        "EMPIRICAL_NONCAUSAL",
+        "MODERATION",
         "DERIVATIONAL",
         "COMPOSITIONAL",
         "REALIZATION",
-        "SEMANTIC_MAPPING",
-        "EMPIRICAL_ASSOCIATION",
-        "TEMPORAL",
-        "MEASUREMENT"
+        "SEMANTIC"
       ]
     },
     "predicate": {
@@ -58,22 +47,30 @@
         "CAUSES",
         "ENABLES",
         "CONSTRAINS",
-        "MODERATES_RELATIONSHIP",
+        "ASSOCIATED_WITH",
+        "PRECEDES",
+        "TRANSITIONS_TO",
+        "MODERATES",
         "DERIVED_FROM",
         "CONSTITUENT_OF",
+        "MEMBER_OF",
         "REALIZES",
         "NARROWER_THAN",
         "BROADER_THAN",
         "OVERLAPS_WITH",
         "EQUIVALENT_UNDER_CONDITIONS",
         "INVERSE_UNDER_ALIGNED_SCOPE",
-        "RELATED_METRIC",
-        "ASSOCIATED_WITH",
-        "TRANSITIONS_TO",
-        "TENDS_TO_PRECEDE",
-        "MEASURES",
-        "INDICATES"
+        "RELATED_METRIC"
       ]
+    },
+    "symmetry": {
+      "enum": [
+        "DIRECTED",
+        "SYMMETRIC"
+      ]
+    },
+    "causalClaim": {
+      "type": "boolean"
     },
     "subjectEntityId": {
       "type": "string",
@@ -86,85 +83,124 @@
       ]
     },
     "objectEntityId": {
-      "type": [
-        "string",
-        "null"
-      ],
+      "type": "string",
       "minLength": 1
     },
     "objectEntityType": {
-      "type": [
-        "string",
-        "null"
-      ],
       "enum": [
         "DRIVER",
-        "RELATIONAL_DERIVED_STATE",
-        null
+        "RELATIONAL_DERIVED_STATE"
       ]
     },
-    "objectRelationshipId": {
-      "type": [
-        "string",
-        "null"
-      ],
-      "minLength": 1
-    },
-    "symmetry": {
+    "causalClaimRole": {
       "enum": [
-        "DIRECTED",
-        "SYMMETRIC"
+        "MODELED_LOCAL_LINK",
+        "TOTAL_EFFECT",
+        "UNRESOLVED_SHORTCUT"
       ]
+    },
+    "legacyDirectness": {
+      "enum": [
+        "DIRECT_AT_STATED_RESOLUTION",
+        "MEDIATED_PATH",
+        "UNKNOWN",
+        null
+      ],
+      "description": "Read-only V3 migration provenance; never V1 scientific semantics."
     },
     "polarity": {
-      "type": [
-        "string",
-        "null"
-      ],
       "enum": [
         "POSITIVE",
         "NEGATIVE",
         "NON_MONOTONIC",
-        "CONTEXT_DEPENDENT",
-        null
+        "CONTEXT_DEPENDENT"
       ]
     },
-    "directness": {
-      "type": [
-        "string",
-        "null"
-      ],
+    "mechanism": {
+      "type": "string",
+      "minLength": 1
+    },
+    "associationSpecification": {
+      "$ref": "#/$defs/associationSpecification"
+    },
+    "sourceStateDefinition": {
+      "type": "string",
+      "minLength": 1
+    },
+    "targetStateDefinition": {
+      "type": "string",
+      "minLength": 1
+    },
+    "temporalSpecification": {
+      "$ref": "#/$defs/temporalSpecification"
+    },
+    "moderatedRelationshipId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "moderatorSpecifications": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/moderatorSpecification"
+      }
+    },
+    "combinationRule": {
       "enum": [
-        "DIRECT_AT_STATED_RESOLUTION",
-        "TOTAL_OR_INDIRECT_EFFECT",
-        "UNKNOWN",
-        null
+        "INDIVIDUAL",
+        "JOINT"
       ]
     },
-    "moderationEffect": {
-      "type": [
-        "string",
-        "null"
-      ],
+    "moderationDirection": {
       "enum": [
         "AMPLIFIES",
         "ATTENUATES",
         "REVERSES",
-        "CONTEXT_DEPENDENT",
-        null
+        "NON_MONOTONIC",
+        "CONTEXT_DEPENDENT"
       ]
-    },
-    "mechanism": {
-      "type": [
-        "string",
-        "null"
-      ],
-      "minLength": 1
     },
     "boundaryConditions": {
       "type": "string",
       "minLength": 1
     },
+    "applicability": {
+      "$ref": "#/$defs/applicability"
+    },
+    "causalReviewGate": {
+      "enum": [
+        "STANDARD_CAUSAL",
+        "HEIGHTENED_CAUSAL",
+        "EXCEPTIONAL_CAUSAL"
+      ]
+    },
+    "rdsSafeguards": {
+      "$ref": "#/$defs/rdsSafeguards"
+    },
+    "evidenceAssessment": {
+      "$ref": "#/$defs/evidenceAssessment"
+    },
+    "supportingSourceIds": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "pathwayIds": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "governance": {
+      "$ref": "#/$defs/governance"
+    }
+  },
+  "$defs": {
     "applicability": {
       "type": "object",
       "additionalProperties": false,
@@ -188,74 +224,137 @@
         }
       }
     },
-    "moderatorEntityIds": {
-      "type": "array",
-      "uniqueItems": true,
-      "items": {
-        "type": "string",
-        "minLength": 1
-      },
-      "default": []
-    },
-    "narrativeModerators": {
-      "type": "array",
-      "uniqueItems": true,
-      "items": {
-        "type": "string",
-        "minLength": 1
-      },
-      "default": []
-    },
-    "lag": {
-      "type": [
-        "object",
-        "null"
-      ]
-    },
-    "persistence": {
-      "type": [
-        "string",
-        "null"
+    "associationSpecification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "temporalScope",
+        "constituentOverlapCheck"
       ],
-      "minLength": 1
-    },
-    "functionalForm": {
-      "type": [
-        "object",
-        "null"
+      "properties": {
+        "temporalScope": {
+          "enum": [
+            "CROSS_SECTIONAL",
+            "CONTEMPORANEOUS_LONGITUDINAL",
+            "REPEATED_MIXED",
+            "NOT_ESTABLISHED"
+          ]
+        },
+        "qualitativeStatement": {
+          "type": "string",
+          "minLength": 1
+        },
+        "strengthEstimate": {
+          "type": "object",
+          "description": "Measure, estimate, unit/scale, uncertainty, design, population, and period; never a generic graph weight."
+        },
+        "constituentOverlapCheck": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "anyOf": [
+        {
+          "required": [
+            "qualitativeStatement"
+          ]
+        },
+        {
+          "required": [
+            "strengthEstimate"
+          ]
+        }
       ]
     },
-    "effectEstimate": {
-      "type": [
-        "object",
-        "null"
-      ]
-    },
-    "evidenceAssessment": {
-      "$ref": "#/$defs/evidenceAssessment"
-    },
-    "supportingSourceIds": {
-      "type": "array",
-      "minItems": 1,
-      "uniqueItems": true,
-      "items": {
-        "type": "string",
-        "minLength": 1
+    "temporalSpecification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "observationUnit",
+        "timeOrigin",
+        "horizonOrRiskSet"
+      ],
+      "properties": {
+        "observationUnit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "timeOrigin": {
+          "type": "string",
+          "minLength": 1
+        },
+        "horizonOrRiskSet": {
+          "type": "string",
+          "minLength": 1
+        },
+        "transitionProbability": {
+          "type": "object"
+        }
       }
     },
-    "pathwayIds": {
-      "type": "array",
-      "uniqueItems": true,
-      "items": {
-        "type": "string",
-        "minLength": 1
+    "moderatorSpecification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "entityId",
+        "entityType",
+        "stateOrRange",
+        "scaleInterpretation"
+      ],
+      "properties": {
+        "entityId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "entityType": {
+          "enum": [
+            "DRIVER",
+            "RELATIONAL_DERIVED_STATE"
+          ]
+        },
+        "stateOrRange": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scaleInterpretation": {
+          "type": "string",
+          "minLength": 1
+        }
       }
     },
-    "governance": {
-      "$ref": "#/$defs/governance"
-    }
-  },
-  "$defs": {
+    "rdsSafeguards": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "derivationCheck",
+        "temporalIndependence",
+        "mechanisticIndependence",
+        "constituentOverlapCheck",
+        "doubleCountingControl"
+      ],
+      "properties": {
+        "derivationCheck": {
+          "type": "string",
+          "minLength": 1
+        },
+        "temporalIndependence": {
+          "type": "string",
+          "minLength": 1
+        },
+        "mechanisticIndependence": {
+          "type": "string",
+          "minLength": 1
+        },
+        "constituentOverlapCheck": {
+          "type": "string",
+          "minLength": 1
+        },
+        "doubleCountingControl": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
     "evidenceAssessment": {
       "type": "object",
       "additionalProperties": false,
@@ -265,27 +364,32 @@
         "evidenceDisposition",
         "evidenceRationale",
         "conflictingSourceIds",
-        "uncertainty"
+        "uncertainty",
+        "estimandType",
+        "mechanisticDirectness"
       ],
       "properties": {
         "evidenceStrength": {
           "enum": [
             "STRONG",
             "MODERATE",
+            "MIXED",
             "LIMITED",
             "EMERGING",
-            "MIXED"
+            "NOT_ASSESSED"
           ]
         },
         "confidence": {
           "enum": [
             "HIGH",
             "MODERATE",
-            "LOW"
+            "LOW",
+            "NOT_ASSESSED"
           ]
         },
         "evidenceDisposition": {
           "enum": [
+            "NOT_ASSESSED",
             "SUPPORTS",
             "MIXED",
             "CONTRADICTED",
@@ -293,7 +397,10 @@
           ]
         },
         "evidenceRationale": {
-          "type": "string",
+          "type": [
+            "string",
+            "null"
+          ],
           "minLength": 1
         },
         "conflictingSourceIds": {
@@ -311,6 +418,23 @@
             "type": "string",
             "minLength": 1
           }
+        },
+        "estimandType": {
+          "enum": [
+            "DIRECT_EFFECT",
+            "INDIRECT_EFFECT",
+            "TOTAL_EFFECT",
+            "OTHER",
+            "NOT_ESTIMATED"
+          ]
+        },
+        "mechanisticDirectness": {
+          "enum": [
+            "DIRECT",
+            "INDIRECT",
+            "UNKNOWN",
+            "NOT_APPLICABLE"
+          ]
         }
       }
     },
@@ -318,36 +442,74 @@
       "type": "object",
       "additionalProperties": false,
       "required": [
-        "status",
+        "lifecycleStatus",
+        "activationStatus",
+        "blockStatus",
         "decisionRecord",
-        "approvedBy",
+        "authorizedBy",
         "decisionDate",
         "effectiveVersion",
         "decisionRationale",
-        "supersedesIds"
+        "supersedesIds",
+        "transitionProvenance"
       ],
       "properties": {
-        "status": {
-          "const": "GOVERNED_ACTIVE"
+        "lifecycleStatus": {
+          "enum": [
+            "CANDIDATE",
+            "RESEARCH_NEEDED",
+            "REVIEW_READY",
+            "GOVERNED",
+            "REJECTED",
+            "DEPRECATED"
+          ]
+        },
+        "activationStatus": {
+          "enum": [
+            "NOT_ELIGIBLE",
+            "ACTIVE",
+            "INACTIVE"
+          ]
+        },
+        "blockStatus": {
+          "enum": [
+            "NONE",
+            "NEEDS_GOVERNANCE_INPUT"
+          ]
         },
         "decisionRecord": {
-          "type": "string",
+          "type": [
+            "string",
+            "null"
+          ],
           "minLength": 1
         },
-        "approvedBy": {
-          "type": "string",
+        "authorizedBy": {
+          "type": [
+            "string",
+            "null"
+          ],
           "minLength": 1
         },
         "decisionDate": {
-          "type": "string",
+          "type": [
+            "string",
+            "null"
+          ],
           "format": "date"
         },
         "effectiveVersion": {
-          "type": "string",
+          "type": [
+            "string",
+            "null"
+          ],
           "minLength": 1
         },
         "decisionRationale": {
-          "type": "string",
+          "type": [
+            "string",
+            "null"
+          ],
           "minLength": 1
         },
         "supersedesIds": {
@@ -357,50 +519,163 @@
             "type": "string",
             "minLength": 1
           }
+        },
+        "transitionProvenance": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/workflowTransition"
+          }
         }
-      }
-    }
-  },
-  "allOf": [
-    {
-      "oneOf": [
+      },
+      "allOf": [
         {
-          "properties": {
-            "objectEntityId": {
-              "type": "string"
-            },
-            "objectEntityType": {
-              "enum": [
-                "DRIVER",
-                "RELATIONAL_DERIVED_STATE"
-              ]
-            },
-            "objectRelationshipId": {
-              "type": "null"
+          "if": {
+            "properties": {
+              "lifecycleStatus": {
+                "enum": [
+                  "CANDIDATE",
+                  "RESEARCH_NEEDED",
+                  "REVIEW_READY",
+                  "REJECTED"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "activationStatus": {
+                "const": "NOT_ELIGIBLE"
+              }
             }
           }
         },
         {
-          "properties": {
-            "objectEntityId": {
-              "type": "null"
-            },
-            "objectEntityType": {
-              "type": "null"
-            },
-            "objectRelationshipId": {
-              "type": "string"
-            },
-            "relationFamily": {
-              "const": "CAUSAL_MODERATION"
-            },
-            "predicate": {
-              "const": "MODERATES_RELATIONSHIP"
+          "if": {
+            "properties": {
+              "lifecycleStatus": {
+                "const": "GOVERNED"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "activationStatus": {
+                "enum": [
+                  "ACTIVE",
+                  "INACTIVE"
+                ]
+              },
+              "decisionRecord": {
+                "type": "string"
+              },
+              "authorizedBy": {
+                "type": "string"
+              },
+              "decisionDate": {
+                "type": "string"
+              },
+              "effectiveVersion": {
+                "type": "string"
+              },
+              "decisionRationale": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "lifecycleStatus": {
+                "const": "DEPRECATED"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "activationStatus": {
+                "const": "INACTIVE"
+              }
             }
           }
         }
       ]
     },
+    "workflowTransition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "fromStatus",
+        "toStatus",
+        "actorClass",
+        "rationale",
+        "timestamp",
+        "objectId",
+        "revision",
+        "provenance",
+        "governanceDecisionRecord"
+      ],
+      "properties": {
+        "fromStatus": {
+          "enum": [
+            "NONE",
+            "CANDIDATE",
+            "RESEARCH_NEEDED",
+            "REVIEW_READY",
+            "GOVERNED",
+            "REJECTED",
+            "DEPRECATED"
+          ]
+        },
+        "toStatus": {
+          "enum": [
+            "CANDIDATE",
+            "RESEARCH_NEEDED",
+            "REVIEW_READY",
+            "GOVERNED",
+            "REJECTED",
+            "DEPRECATED"
+          ]
+        },
+        "actorClass": {
+          "enum": [
+            "AUTOMATED_PROCESS_OR_AI",
+            "RESEARCHER_REVIEWER",
+            "AUTHORIZED_HUMAN_GOVERNOR"
+          ]
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 1
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "objectId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "provenance": {
+          "type": "string",
+          "minLength": 1
+        },
+        "governanceDecisionRecord": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      },
+      "description": "Automation may autonomously use only NONE→CANDIDATE, CANDIDATE↔RESEARCH_NEEDED, RESEARCH_NEEDED→REVIEW_READY, and REVIEW_READY→RESEARCH_NEEDED while activation remains NOT_ELIGIBLE. Human authorization is mandatory for governance, rejection, activation, inactivation, deprecation, and substantive governed revision."
+    }
+  },
+  "allOf": [
     {
       "if": {
         "properties": {
@@ -410,6 +685,16 @@
         }
       },
       "then": {
+        "required": [
+          "subjectEntityId",
+          "subjectEntityType",
+          "objectEntityId",
+          "objectEntityType",
+          "causalClaimRole",
+          "polarity",
+          "mechanism",
+          "causalReviewGate"
+        ],
         "properties": {
           "predicate": {
             "enum": [
@@ -418,27 +703,31 @@
               "CONSTRAINS"
             ]
           },
-          "polarity": {
-            "enum": [
-              "POSITIVE",
-              "NEGATIVE",
-              "NON_MONOTONIC",
-              "CONTEXT_DEPENDENT"
-            ]
-          },
-          "directness": {
-            "enum": [
-              "DIRECT_AT_STATED_RESOLUTION",
-              "TOTAL_OR_INDIRECT_EFFECT",
-              "UNKNOWN"
-            ]
-          },
-          "mechanism": {
-            "type": "string"
-          },
           "symmetry": {
             "const": "DIRECTED"
+          },
+          "causalClaim": {
+            "const": true
           }
+        },
+        "not": {
+          "anyOf": [
+            {
+              "required": [
+                "moderatedRelationshipId"
+              ]
+            },
+            {
+              "required": [
+                "associationSpecification"
+              ]
+            },
+            {
+              "required": [
+                "temporalSpecification"
+              ]
+            }
+          ]
         }
       }
     },
@@ -446,44 +735,47 @@
       "if": {
         "properties": {
           "relationFamily": {
-            "const": "CAUSAL_MODERATION"
+            "const": "MODERATION"
           }
         }
       },
       "then": {
+        "required": [
+          "moderatedRelationshipId",
+          "moderatorSpecifications",
+          "combinationRule",
+          "moderationDirection",
+          "mechanism"
+        ],
         "properties": {
           "predicate": {
-            "const": "MODERATES_RELATIONSHIP"
-          },
-          "objectEntityId": {
-            "type": "null"
-          },
-          "objectEntityType": {
-            "type": "null"
-          },
-          "objectRelationshipId": {
-            "type": "string"
+            "const": "MODERATES"
           },
           "symmetry": {
             "const": "DIRECTED"
           },
-          "polarity": {
-            "type": "null"
-          },
-          "directness": {
-            "type": "null"
-          },
-          "moderationEffect": {
-            "enum": [
-              "AMPLIFIES",
-              "ATTENUATES",
-              "REVERSES",
-              "CONTEXT_DEPENDENT"
-            ]
-          },
-          "mechanism": {
-            "type": "string"
+          "causalClaim": {
+            "const": false
           }
+        },
+        "not": {
+          "anyOf": [
+            {
+              "required": [
+                "subjectEntityId"
+              ]
+            },
+            {
+              "required": [
+                "objectEntityId"
+              ]
+            },
+            {
+              "required": [
+                "causalClaimRole"
+              ]
+            }
+          ]
         }
       }
     },
@@ -491,28 +783,70 @@
       "if": {
         "properties": {
           "relationFamily": {
+            "const": "EMPIRICAL_NONCAUSAL"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "subjectEntityId",
+          "subjectEntityType",
+          "objectEntityId",
+          "objectEntityType"
+        ],
+        "properties": {
+          "predicate": {
             "enum": [
-              "DERIVATIONAL",
-              "COMPOSITIONAL",
-              "REALIZATION",
-              "SEMANTIC_MAPPING",
-              "EMPIRICAL_ASSOCIATION",
-              "TEMPORAL",
-              "MEASUREMENT"
+              "ASSOCIATED_WITH",
+              "PRECEDES",
+              "TRANSITIONS_TO"
+            ]
+          },
+          "causalClaim": {
+            "const": false
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "predicate": {
+            "const": "ASSOCIATED_WITH"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "associationSpecification"
+        ],
+        "properties": {
+          "symmetry": {
+            "const": "SYMMETRIC"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "predicate": {
+            "enum": [
+              "PRECEDES",
+              "TRANSITIONS_TO"
             ]
           }
         }
       },
       "then": {
+        "required": [
+          "sourceStateDefinition",
+          "targetStateDefinition",
+          "temporalSpecification"
+        ],
         "properties": {
-          "polarity": {
-            "type": "null"
-          },
-          "directness": {
-            "type": "null"
-          },
-          "moderationEffect": {
-            "type": "null"
+          "symmetry": {
+            "const": "DIRECTED"
           }
         }
       }
@@ -526,9 +860,18 @@
         }
       },
       "then": {
+        "required": [
+          "subjectEntityId",
+          "subjectEntityType",
+          "objectEntityId",
+          "objectEntityType"
+        ],
         "properties": {
           "predicate": {
             "const": "DERIVED_FROM"
+          },
+          "causalClaim": {
+            "const": false
           }
         }
       }
@@ -542,9 +885,21 @@
         }
       },
       "then": {
+        "required": [
+          "subjectEntityId",
+          "subjectEntityType",
+          "objectEntityId",
+          "objectEntityType"
+        ],
         "properties": {
           "predicate": {
-            "const": "CONSTITUENT_OF"
+            "enum": [
+              "CONSTITUENT_OF",
+              "MEMBER_OF"
+            ]
+          },
+          "causalClaim": {
+            "const": false
           }
         }
       }
@@ -558,9 +913,18 @@
         }
       },
       "then": {
+        "required": [
+          "subjectEntityId",
+          "subjectEntityType",
+          "objectEntityId",
+          "objectEntityType"
+        ],
         "properties": {
           "predicate": {
             "const": "REALIZES"
+          },
+          "causalClaim": {
+            "const": false
           }
         }
       }
@@ -569,11 +933,17 @@
       "if": {
         "properties": {
           "relationFamily": {
-            "const": "SEMANTIC_MAPPING"
+            "const": "SEMANTIC"
           }
         }
       },
       "then": {
+        "required": [
+          "subjectEntityId",
+          "subjectEntityType",
+          "objectEntityId",
+          "objectEntityType"
+        ],
         "properties": {
           "predicate": {
             "enum": [
@@ -584,47 +954,114 @@
               "INVERSE_UNDER_ALIGNED_SCOPE",
               "RELATED_METRIC"
             ]
-          }
-        }
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "relationFamily": {
-            "const": "EMPIRICAL_ASSOCIATION"
-          }
-        }
-      },
-      "then": {
-        "properties": {
-          "predicate": {
-            "const": "ASSOCIATED_WITH"
           },
-          "symmetry": {
-            "const": "SYMMETRIC"
+          "causalClaim": {
+            "const": false
           }
         }
       }
     },
     {
       "if": {
+        "required": [
+          "subjectEntityType",
+          "objectEntityType"
+        ],
         "properties": {
           "relationFamily": {
-            "const": "TEMPORAL"
-          }
-        }
-      },
-      "then": {
-        "properties": {
-          "predicate": {
-            "enum": [
-              "TRANSITIONS_TO",
-              "TENDS_TO_PRECEDE"
-            ]
+            "const": "CAUSAL"
           },
-          "symmetry": {
-            "const": "DIRECTED"
+          "subjectEntityType": {
+            "const": "DRIVER"
+          },
+          "objectEntityType": {
+            "const": "DRIVER"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "causalReviewGate": {
+            "const": "STANDARD_CAUSAL"
+          }
+        },
+        "not": {
+          "required": [
+            "rdsSafeguards"
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "subjectEntityType",
+          "objectEntityType"
+        ],
+        "properties": {
+          "relationFamily": {
+            "const": "CAUSAL"
+          },
+          "subjectEntityType": {
+            "const": "RELATIONAL_DERIVED_STATE"
+          },
+          "objectEntityType": {
+            "const": "RELATIONAL_DERIVED_STATE"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "rdsSafeguards"
+        ],
+        "properties": {
+          "causalReviewGate": {
+            "const": "EXCEPTIONAL_CAUSAL"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "subjectEntityType",
+          "objectEntityType"
+        ],
+        "properties": {
+          "relationFamily": {
+            "const": "CAUSAL"
+          }
+        },
+        "anyOf": [
+          {
+            "properties": {
+              "subjectEntityType": {
+                "const": "DRIVER"
+              },
+              "objectEntityType": {
+                "const": "RELATIONAL_DERIVED_STATE"
+              }
+            }
+          },
+          {
+            "properties": {
+              "subjectEntityType": {
+                "const": "RELATIONAL_DERIVED_STATE"
+              },
+              "objectEntityType": {
+                "const": "DRIVER"
+              }
+            }
+          }
+        ]
+      },
+      "then": {
+        "required": [
+          "rdsSafeguards"
+        ],
+        "properties": {
+          "causalReviewGate": {
+            "const": "HEIGHTENED_CAUSAL"
           }
         }
       }
@@ -632,18 +1069,44 @@
     {
       "if": {
         "properties": {
-          "relationFamily": {
-            "const": "MEASUREMENT"
+          "governance": {
+            "properties": {
+              "lifecycleStatus": {
+                "const": "GOVERNED"
+              },
+              "activationStatus": {
+                "const": "ACTIVE"
+              }
+            }
           }
         }
       },
       "then": {
         "properties": {
-          "predicate": {
-            "enum": [
-              "MEASURES",
-              "INDICATES"
-            ]
+          "supportingSourceIds": {
+            "minItems": 1
+          },
+          "evidenceAssessment": {
+            "properties": {
+              "evidenceStrength": {
+                "not": {
+                  "const": "NOT_ASSESSED"
+                }
+              },
+              "confidence": {
+                "not": {
+                  "const": "NOT_ASSESSED"
+                }
+              },
+              "evidenceDisposition": {
+                "not": {
+                  "const": "NOT_ASSESSED"
+                }
+              },
+              "evidenceRationale": {
+                "type": "string"
+              }
+            }
           }
         }
       }
