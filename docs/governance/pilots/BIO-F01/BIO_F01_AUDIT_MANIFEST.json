@@ -1,0 +1,235 @@
+{
+  "schemaVersion": "1.0.0",
+  "auditId": "AUD-BIO-F01-RI-V1-20260905-001",
+  "auditType": "GOVERNED_FAMILY_PILOT_CANDIDATES_ONLY",
+  "family": {
+    "id": "BIO-F01",
+    "name": "Sleep & Circadian Regulation",
+    "layer": "Biological"
+  },
+  "status": "AWAITING_HUMAN_SCIENTIFIC_GOVERNANCE",
+  "productionGraphEligible": false,
+  "baseline": {
+    "commit": "5001611852107f2b95b8f722c71224dc7a538d47",
+    "entityContracts": [
+      "DRIVER_SCHEMA_V1_1",
+      "RELATIONAL_DERIVED_STATE_SCHEMA_V0_1"
+    ],
+    "relationshipSchema": "RELATIONSHIP_V1_1.0.0",
+    "interventionSchema": "INTERVENTION_V1_1.0.0",
+    "sourceRegister": {
+      "schemaVersion": "1.0",
+      "recordCount": 529,
+      "sha256": "f1aae4135ac049e223ae65a66a24a6dfc2c28e911add59ce11df34e9c0af3615"
+    },
+    "entityDatasetSha256": "74f88110911280bc6d508da56af824b63db4c11d741223b694aa7ac18734cf99",
+    "relationshipDatasetSha256": "759f90446ff5f6e27d496e3e3603bb44045f7f0abf4770e4c012c5e4d974ba51"
+  },
+  "membership": {
+    "driverIds": [
+      "BIO-073",
+      "BIO-004",
+      "BIO-074",
+      "BIO-002",
+      "BIO-001",
+      "BIO-005"
+    ],
+    "rdsIds": [
+      "BIO-006",
+      "BIO-003",
+      "RDS-0004",
+      "RDS-0002",
+      "RDS-0003"
+    ],
+    "driverCount": 6,
+    "rdsCount": 5,
+    "total": 11
+  },
+  "rdsDerivations": [
+    {
+      "entityId": "BIO-006",
+      "derivationSchemaVersion": "0.1",
+      "derivationBaselineCommit": "5001611852107f2b95b8f722c71224dc7a538d47",
+      "derivationType": "FIT",
+      "inputEntityIds": [
+        "BIO-073"
+      ],
+      "externalParameterTypes": [
+        "REQUIRED_SCHEDULE"
+      ]
+    },
+    {
+      "entityId": "BIO-003",
+      "derivationSchemaVersion": "0.1",
+      "derivationBaselineCommit": "5001611852107f2b95b8f722c71224dc7a538d47",
+      "derivationType": "ALIGNMENT",
+      "inputEntityIds": [
+        "BIO-004"
+      ],
+      "externalParameterTypes": [
+        "EXTERNAL_TIMING_REQUIREMENTS"
+      ]
+    },
+    {
+      "entityId": "RDS-0004",
+      "derivationSchemaVersion": "0.1",
+      "derivationBaselineCommit": "5001611852107f2b95b8f722c71224dc7a538d47",
+      "derivationType": "TEMPORAL_PATTERN",
+      "inputEntityIds": [
+        "BIO-001",
+        "BIO-074"
+      ],
+      "externalParameterTypes": [
+        "ACCUMULATION_RECOVERY_RULE"
+      ]
+    },
+    {
+      "entityId": "RDS-0002",
+      "derivationSchemaVersion": "0.1",
+      "derivationBaselineCommit": "5001611852107f2b95b8f722c71224dc7a538d47",
+      "derivationType": "TEMPORAL_PATTERN",
+      "inputEntityIds": [],
+      "externalParameterTypes": [
+        "SLEEP_STAGE_TIME_SERIES"
+      ]
+    },
+    {
+      "entityId": "RDS-0003",
+      "derivationSchemaVersion": "0.1",
+      "derivationBaselineCommit": "5001611852107f2b95b8f722c71224dc7a538d47",
+      "derivationType": "RATIO",
+      "inputEntityIds": [
+        "BIO-001",
+        "BIO-074"
+      ],
+      "externalParameterTypes": []
+    }
+  ],
+  "incidentRelationshipIds": [
+    "REL-BIO-001",
+    "REL-BIO-002",
+    "REL-BIO-003",
+    "REL-BIO-009",
+    "REL-BIO-021",
+    "REL-ENV-040",
+    "REL-RDS-0016",
+    "REL-RDS-0017",
+    "REL-RDS-0018",
+    "REL-RDS-0019",
+    "REL-RDS-0020"
+  ],
+  "incidentRelationshipCounts": {
+    "total": 11,
+    "causal": 6,
+    "derivational": 5
+  },
+  "existingRelationshipAudit": {
+    "RETAIN_AS_IS": [
+      "REL-RDS-0016",
+      "REL-RDS-0017",
+      "REL-RDS-0018",
+      "REL-RDS-0019",
+      "REL-RDS-0020"
+    ],
+    "RETAIN_BUT_V1_INCOMPLETE": [
+      "REL-BIO-002"
+    ],
+    "REVISION_CANDIDATE": [
+      "REL-BIO-001",
+      "REL-BIO-003",
+      "REL-BIO-009",
+      "REL-BIO-021",
+      "REL-ENV-040"
+    ],
+    "RETYPE_CANDIDATE": [],
+    "SPLIT_CANDIDATE": [],
+    "MERGE_OR_DUPLICATE_CANDIDATE": [],
+    "DEPRECATION_CANDIDATE": [],
+    "RESEARCH_NEEDED": [],
+    "BLOCKED": []
+  },
+  "relationshipResearch": {
+    "hypothesesTriaged": 20,
+    "causalCandidates": 5,
+    "associationCandidates": 2,
+    "temporalCandidates": 0,
+    "moderationCandidates": 1,
+    "pathwayCandidates": 0,
+    "otherNoncausalCandidates": 1,
+    "rejected": 5,
+    "researchNeeded": 9,
+    "blocked": 0
+  },
+  "candidateCounts": {
+    "relationships": 9,
+    "evidenceAssessments": 18,
+    "causalPathways": 0,
+    "interventions": 10,
+    "interventionEffects": 9
+  },
+  "candidateLifecycleCounts": {
+    "REVIEW_READY": 33,
+    "RESEARCH_NEEDED": 13
+  },
+  "governanceBlockedCount": 0,
+  "interventionResearch": {
+    "driversSearched": 6,
+    "interventionIdentities": 10,
+    "interventionEffects": 9,
+    "deliveryModalitiesRepresented": [
+      "HUMAN_DELIVERED",
+      "DIGITAL_OR_AUTOMATED",
+      "ORGANIZATIONAL_OR_POLICY_PROCESS",
+      "PHYSICAL_ENVIRONMENT"
+    ],
+    "driversWithNoSupportedDirectIntervention": [
+      "BIO-073",
+      "BIO-074"
+    ],
+    "rdsDirectTargetViolations": 0,
+    "distinctRdsOutcomeIds": [
+      "BIO-003",
+      "BIO-006",
+      "RDS-0003",
+      "RDS-0004"
+    ],
+    "rdsOutcomeReferenceCount": 9
+  },
+  "evidenceSummary": {
+    "governedSourcesReviewed": 16,
+    "supplementalSourcesReviewed": 25,
+    "distinctSourcesReviewed": 41,
+    "supplementalSourceLog": "BIO_F01_RESEARCH_LOG.md",
+    "supplementalSourceRegistrationStatus": "NON_GOVERNED_AUDIT_REFERENCES",
+    "evidenceAssessments": 18,
+    "assessmentsWithCanonicalSourceIds": 7,
+    "assessmentsPendingCanonicalSourceRegistration": 11
+  },
+  "newGovernedRecords": 0,
+  "newActiveRecords": 0,
+  "canonicalIntegrity": {
+    "drivers": 770,
+    "rds": 41,
+    "entities": 811,
+    "activeRelationships": 450,
+    "activeCausalRelationships": 431
+  },
+  "researchMethod": "Structured evidence search/audit; not a formal systematic review",
+  "researchDate": "2026-09-05",
+  "documents": [
+    "BIO_F01_BASELINE.md",
+    "BIO_F01_EXISTING_RELATIONSHIP_AUDIT.md",
+    "BIO_F01_RELATIONSHIP_CANDIDATES.md",
+    "BIO_F01_INTERVENTION_CANDIDATES.md",
+    "BIO_F01_EVIDENCE_SUMMARY.md",
+    "BIO_F01_COMPLETENESS_REPORT.md",
+    "BIO_F01_GOVERNANCE_DECISION_PACKAGE.md",
+    "BIO_F01_RESEARCH_LOG.md"
+  ],
+  "openItems": [
+    "Register supplemental pilot sources canonically only after source-governance review.",
+    "Resolve endpoint alignment for the proposed circadian-phase moderation of REL-BIO-002.",
+    "Determine whether continuity-specific evidence justifies BIO-002 to BIO-028 causality.",
+    "No CausalPathway met pathway-specific evidence requirements in this pilot pass."
+  ]
+}

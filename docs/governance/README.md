@@ -66,6 +66,14 @@ records beyond the exact migration decisions it names.
     records the production schema/tooling materialization and its continuing
     scientific-population stop gate.
 
+## Authorized Family pilots
+
+- [`BIO-F01 — Sleep & Circadian Regulation`](pilots/BIO-F01/BIO_F01_GOVERNANCE_DECISION_PACKAGE.md)
+  is the first structured scientific audit under V1. Its Relationship,
+  EvidenceAssessment, Intervention, and InterventionEffect records are
+  non-governed candidates only. The pilot PR must not be merged before human
+  scientific governance.
+
 ## Non-production draft-schema rule
 
 Files under `docs/governance/drafts/` preserve the reviewed design-stage
