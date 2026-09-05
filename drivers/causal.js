@@ -156,15 +156,15 @@
       const source = driverById.get(relationship.sourceDriverId);
       const target = driverById.get(relationship.targetDriverId);
       if (!source || source.name !== relationship.sourceDriverName) {
-        errors.push(label + " has an unresolved or mismatched source Driver.");
+        errors.push(label + " has an unresolved or mismatched source Entity.");
       }
       if (!target || target.name !== relationship.targetDriverName) {
-        errors.push(label + " has an unresolved or mismatched target Driver.");
+        errors.push(label + " has an unresolved or mismatched target Entity.");
       }
       (Array.isArray(relationship.moderatorDriverIds)
         ? relationship.moderatorDriverIds : []).forEach((driverId) => {
         if (!driverById.has(driverId)) {
-          errors.push(label + " references an unknown moderator Driver.");
+          errors.push(label + " references an unknown moderator Entity.");
         }
       });
       if (relationship.sourceDriverId === relationship.targetDriverId) {

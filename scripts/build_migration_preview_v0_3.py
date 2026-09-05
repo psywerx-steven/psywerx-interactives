@@ -10,6 +10,7 @@ from __future__ import annotations
 import hashlib
 import json
 import re
+import subprocess
 import tempfile
 import unicodedata
 from collections import Counter, defaultdict
@@ -55,6 +56,17 @@ POSITIVE_CONTROL_DRIVERS = frozenset({
     "TEC-013",
 })
 REQUIRED_DRIVER_IDS = POSITIVE_CONTROL_DRIVERS | {"SOC-036", "INS-102"}
+
+GOVERNED_HANDOFF_FILES = (
+    "CODEX_START_PROMPT.md",
+    "GOVERNANCE_SOURCE_INDEX.md",
+    "MIGRATION_DECISIONS_SUMMARY.md",
+    "RDS_POSITIVE_CONTROL_CALIBRATION.md",
+    "README_CODEX_HANDOFF.md",
+    "SECONDARY_BOUNDARY_AUDIT_ADDENDUM.md",
+    "VALIDATION_CHECKLIST.md",
+    "migration_manifest_seed.json",
+)
 
 RENAME_MAP = {
     "INF-010": "Decision-Relevant Information Completeness",
@@ -1014,6 +1026,84 @@ def sha256_file(path: Path) -> str:
     return sha256_bytes(path.read_bytes())
 
 
+def baseline_bytes(name: str) -> bytes:
+    """Read a frozen baseline artifact from the governed Git commit."""
+    try:
+        completed = subprocess.run(
+            ["git", "show", f"{BASELINE_COMMIT}:data/{name}"],
+            cwd=ROOT,
+            check=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+        )
+    except (OSError, subprocess.CalledProcessError) as exc:
+        detail = getattr(exc, "stderr", b"")
+        message = detail.decode("utf-8", errors="replace").strip()
+        raise ValueError(
+            f"Could not read governed baseline artifact data/{name} from "
+            f"commit {BASELINE_COMMIT}: {message or exc}"
+        ) from exc
+    return completed.stdout
+
+
+def load_baseline_json(name: str) -> Any:
+    return json.loads(baseline_bytes(name).decode("utf-8"))
+
+
+def validate_governance_seed(seed: dict[str, Any]) -> None:
+    retypes = seed.get("retypes")
+    if not isinstance(retypes, list):
+        raise ValueError("The handoff seed has no governed retype list")
+    retype_ids = [row.get("id") for row in retypes]
+    if (
+        len(retype_ids) != len(APPROVED_RETYPES)
+        or len(set(retype_ids)) != len(retype_ids)
+        or set(retype_ids) != APPROVED_RETYPES
+    ):
+        raise ValueError("The handoff seed does not contain the exact 34-ID retype set")
+    for row in retypes:
+        identifier = row["id"]
+        if row.get("new_entity_type") != "RELATIONAL_DERIVED_STATE":
+            raise ValueError(f"The handoff seed changes the governed type for {identifier}")
+        expected_name = RENAME_MAP.get(identifier)
+        if row.get("new_name") != expected_name:
+            raise ValueError(f"The handoff seed changes the governed name for {identifier}")
+
+    expected_new_drivers = {
+        (row["name"], row["layer"], row["familyId"])
+        for row in NEW_DRIVER_SPECS
+    }
+    actual_new_drivers = {
+        (row.get("name"), row.get("layer"), row.get("family"))
+        for row in seed.get("newDrivers", [])
+    }
+    if (
+        len(seed.get("newDrivers", [])) != len(expected_new_drivers)
+        or actual_new_drivers != expected_new_drivers
+    ):
+        raise ValueError("The handoff seed changes the governed new-Driver identities")
+
+    expected_new_rds = {
+        (row["name"], row["entitySubtype"])
+        for row in NEW_RDS_SPECS
+    }
+    actual_new_rds = {
+        (row.get("name"), row.get("subtype"))
+        for row in seed.get("newRDS", [])
+    }
+    if (
+        len(seed.get("newRDS", [])) != len(expected_new_rds)
+        or actual_new_rds != expected_new_rds
+    ):
+        raise ValueError("The handoff seed changes the governed new-RDS identities")
+
+    if (
+        seed.get("baseline") != BASELINE_COUNTS
+        or seed.get("preview_target") != TARGET_COUNTS
+    ):
+        raise ValueError("The handoff seed changes governed baseline or target counts")
+
+
 def normalized_text(value: str) -> str:
     text = unicodedata.normalize("NFKC", value).casefold()
     return re.sub(r"[^\w]+", " ", text, flags=re.UNICODE).strip()
@@ -1100,10 +1190,7 @@ def governed_new_entity(
         "representationScale": spec["representationScale"],
         "polarityDirection": spec["polarityDirection"],
         "measurementCaveats": spec.get("measurementCaveats"),
-        "evidenceNotes": (
-            "Admitted for the governed non-authoritative migration preview by "
-            "the cited decision record."
-        ),
+        "evidenceNotes": None,
         "source": {
             "decisionRecord": decision,
             "specification": "_migration_handoff_v0.3",
@@ -1128,6 +1215,7 @@ def governed_new_entity(
         "measurementAssessmentMethods",
         "observability",
         "evidenceStrength",
+        "evidenceNotes",
         "keySources",
     ]
     return result
@@ -1555,13 +1643,6 @@ def build_relationships(
             None, CROSS_FAMILY_DECISION,
         ),
         (
-            "REL-RDS-0009", "INS-028", "CONSTRAINS", "TEC-013", "CAUSAL",
-            "The institutional default rule limits permissible interface default "
-            "configurations.",
-            "Only where the rule governs the specified interface decision.",
-            "UNSIGNED", CROSS_FAMILY_DECISION,
-        ),
-        (
             "REL-RDS-0010", "SOC-036", "OVERLAPS_WITH", "SOC-022",
             "SEMANTIC_MAPPING",
             "Repeated Interaction Probability overlaps Tie Survival Probability "
@@ -1910,6 +1991,7 @@ def migrate_families(
 def validate_outputs(
     outputs: dict[str, Any],
     baseline_ids: set[str],
+    baseline_relationships: dict[str, Any],
 ) -> None:
     drivers = outputs["drivers.json"]
     rds = outputs["relational-derived-states.json"]
@@ -2074,6 +2156,49 @@ def validate_outputs(
                         "lag/polarity"
                     )
 
+    baseline_relationship_by_id = {
+        row["id"]: row for row in baseline_relationships["relationships"]
+    }
+    expected_active_causal_ids = (
+        set(baseline_relationship_by_id)
+        - DEPRECATED_RELATIONSHIP_IDS
+        - BLOCKED_RELATIONSHIP_IDS
+    )
+    active_causal = {
+        row["id"]: row
+        for row in relationships["relationships"]
+        if row["relationFamily"] == "CAUSAL"
+    }
+    if set(active_causal) != expected_active_causal_ids or len(active_causal) != 431:
+        raise ValueError(
+            "Active causal relationships differ from the 431 governed baseline "
+            "propositions"
+        )
+    for identifier, row in active_causal.items():
+        baseline = baseline_relationship_by_id[identifier]
+        preserved = (
+            row["subjectEntityId"],
+            row["objectEntityId"],
+            row["predicate"],
+            row["polarity"],
+            row["directness"],
+            row["mechanism"],
+            row["conditionsModerators"],
+        )
+        expected = (
+            baseline["sourceDriverId"],
+            baseline["targetDriverId"],
+            baseline["causalRole"],
+            baseline["polarity"],
+            baseline["directness"],
+            baseline["mechanism"],
+            baseline["conditionsModerators"],
+        )
+        if preserved != expected:
+            raise ValueError(
+                f"Active causal relationship {identifier} changed proposition identity"
+            )
+
     crosswalk_rows = outputs["crosswalks.json"]["crosswalks"]
     migrated = {
         row["legacyId"]
@@ -2115,29 +2240,18 @@ def validate_outputs(
 def main() -> int:
     try:
         seed = load_json(SEED)
-        seed_retypes = {row["id"] for row in seed.get("retypes", [])}
-        if (
-            seed_retypes != APPROVED_RETYPES
-            or seed.get("preview_target") != TARGET_COUNTS
-        ):
-            raise ValueError(
-                "The handoff seed does not match the hard governance boundary"
-            )
+        validate_governance_seed(seed)
 
-        baseline_drivers = load_json(DATA / "drivers.json")
-        baseline_families = load_json(DATA / "families.json")
-        baseline_relationships = load_json(DATA / "relationships.json")
+        baseline_drivers = load_baseline_json("drivers.json")
+        baseline_families = load_baseline_json("families.json")
+        baseline_relationships = load_baseline_json("relationships.json")
         if (
             not isinstance(baseline_drivers, list)
             or len(baseline_drivers) != BASELINE_COUNTS["drivers"]
         ):
             raise ValueError(
-                "Run the baseline Driver build first; expected exactly 793 "
-                "Drivers"
-            )
-        if any("entityType" in row for row in baseline_drivers):
-            raise ValueError(
-                "Run the baseline builders before rerunning the migration preview"
+                f"Governed baseline commit {BASELINE_COMMIT} must contain "
+                "exactly 793 Drivers"
             )
         original_by_id = {row["id"]: row for row in baseline_drivers}
         if (
@@ -2152,7 +2266,7 @@ def main() -> int:
             baseline_families
         )
         baseline_hashes = {
-            name: sha256_file(DATA / name)
+            name: sha256_bytes(baseline_bytes(name))
             for name in (
                 "drivers.json",
                 "families.json",
@@ -2371,6 +2485,14 @@ def main() -> int:
             "baselineGitCommit": BASELINE_COMMIT,
             "baselineCounts": BASELINE_COUNTS,
             "baselineArtifactSha256": baseline_hashes,
+            "governedInputSha256": {
+                f"_migration_handoff_v0.3/{name}": sha256_file(HANDOFF / name)
+                for name in GOVERNED_HANDOFF_FILES
+            },
+            "migrationImplementation": {
+                "path": "scripts/build_migration_preview_v0_3.py",
+                "sha256": sha256_file(Path(__file__)),
+            },
             "previewCounts": TARGET_COUNTS,
             "idAssignments": {
                 "newDrivers": [
@@ -2424,7 +2546,11 @@ def main() -> int:
             ],
         }
         outputs["migration-manifest.json"] = manifest
-        validate_outputs(outputs, set(original_by_id))
+        validate_outputs(
+            outputs,
+            set(original_by_id),
+            baseline_relationships,
+        )
 
         payloads = {
             name: json_bytes(value)

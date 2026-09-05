@@ -4,12 +4,12 @@
 
 **Endpoint:** `POST /v1/operationalize`
 **Purpose:** Return a bounded, illustrative operationalization of one canonical
-PSYWERX Driver for one user-supplied scenario.
+PSYWERX Entity (Driver or relational/derived state) for one user-supplied scenario.
 
-This contract is separate from the canonical Driver, Family, Relationship, and
+This contract is separate from the canonical Entity, Family, Relationship, and
 plain-language schemas. A scenario result is transient analytical support. It
-does not amend the ontology, establish that a Driver is present, or establish
-that the Driver caused an observed outcome.
+does not amend the ontology, establish that an Entity is present, or establish
+that the Entity caused an observed outcome.
 
 ## Request envelope
 
@@ -21,19 +21,21 @@ The request is an exact object with no additional properties.
 | `behaviorObjective` | string | Yes | Trimmed, 1–400 characters. States the behavior, decision, response, or objective being examined. |
 | `context` | string | Yes | Trimmed, 1–800 characters. States the circumstances that bound the scenario. |
 | `clarificationAnswer` | string or `null` | Yes | `null` on the initial request; otherwise trimmed, 1–400 characters. |
-| `driver` | object | Yes | Exact browser snapshot described below. |
+| `driver` | object | Yes | Exact Entity snapshot described below. The legacy wire-field name is retained for API compatibility. |
 
 The service does not accept a prompt, system message, instruction, template,
 model name, schema, tool choice, or arbitrary additional field from the
 browser.
 
-### Driver snapshot
+### Entity snapshot
 
 The `driver` object must contain exactly these fields:
 
 | Field | Type |
 | --- | --- |
-| `id` | canonical Driver ID string |
+| `id` | canonical Entity ID string (`AAA-000` or `RDS-0000`) |
+| `entityType` | `DRIVER` or `RELATIONAL_DERIVED_STATE` |
+| `entitySubtype` | string or `null` |
 | `name` | string |
 | `definition` | string |
 | `plainLanguageExplanation` | string or `null` |
@@ -44,17 +46,21 @@ The `driver` object must contain exactly these fields:
 | `familyDefinition` | string or `null` |
 | `familyIncludes` | string or `null` |
 | `familyExclusions` | string or `null` |
-| `mechanism` | string |
-| `moderatorsBoundaryConditions` | string |
+| `mechanism` | string or `null` |
+| `moderatorsBoundaryConditions` | string or `null` |
 | `indicators` | array of strings |
-| `measurementAssessmentMethods` | string |
-| `observability` | string |
-| `measurementCaveats` | string |
+| `measurementAssessmentMethods` | string or `null` |
+| `observability` | string or `null` |
+| `measurementCaveats` | string or `null` |
 | `dataType` | string |
 | `timeScaleOfChange` | array of strings |
 | `onsetCausalLag` | array of strings |
-| `commonMisinterpretations` | string |
-| `evidenceNotes` | string |
+| `commonMisinterpretations` | string or `null` |
+| `evidenceNotes` | string or `null` |
+| `constituentSpecifications` | array; empty for Drivers, governed specifications for RDS |
+| `derivationType`, `derivationLogic`, `scopeRequirements` | strings for RDS, otherwise `null` |
+| `directManipulability`, `recalculationBehavior`, `uncertaintyPropagation` | strings for RDS, otherwise `null` |
+| `compositeSpecification`, `differenceSpecification`, `networkMetricSpecification`, `ratioSpecification`, `temporalSpecification` | governed object or `null` |
 
 The snapshot is an integrity assertion, not an authority boundary. The service
 resolves the ID against its own loaded `data/entities.json`,
@@ -62,9 +68,9 @@ resolves the ID against its own loaded `data/entities.json`,
 value to match. It then constructs model context from the server-resolved
 record. Unknown IDs and stale or modified snapshots are rejected.
 
-A canonical Driver without a public plain-language record remains eligible.
-For such a Driver, all three browser-supplied editorial fields and the optional
-boundary field must be `null`, and the service uses canonical Driver and Family
+A canonical Entity without a public plain-language record remains eligible.
+For such an Entity, all three browser-supplied editorial fields and the optional
+boundary field must be `null`, and the service uses canonical Entity and Family
 context without inventing replacement permanent plain-language content.
 
 ## Successful response
@@ -73,8 +79,8 @@ The response is an exact object with no additional properties.
 
 | Field | Type | Required | Validation and meaning |
 | --- | --- | --- | --- |
-| `driverId` | string | Yes | Must equal the requested canonical Driver ID. |
-| `scenarioMeaning` | string | Yes | 40–900 characters. Explains the selected Driver's variable in the bounded scenario without asserting presence or causality. |
+| `driverId` | string | Yes | Legacy response-field name; must equal the requested canonical Entity ID. |
+| `scenarioMeaning` | string | Yes | 40–900 characters. Explains the selected Entity's variable in the bounded scenario without asserting presence or causality. |
 | `operationalizationExamples` | array | Yes | Exactly three objects using the example schema below. |
 | `importantCaveat` | string | Yes | 20–500 characters. States the most important interpretive boundary. |
 | `inputSufficiency` | enum | Yes | `SUFFICIENT`, `PARTIALLY_SUFFICIENT`, or `INSUFFICIENT`. |
@@ -87,7 +93,7 @@ Every one of the three examples contains exactly:
 | Field | Type | Validation and meaning |
 | --- | --- | --- |
 | `title` | string | 3–100 characters; concise name for the approach. |
-| `operationalization` | string | 30–700 characters; a bounded way to define, observe, compare, classify, or investigate the Driver. |
+| `operationalization` | string | 30–700 characters; a bounded way to define, derive, observe, compare, classify, or investigate the Entity. |
 | `whatToLookFor` | array of strings | Two to four observable items; each at most 200 characters. |
 | `questionToAsk` | string | 8–300 characters, ending in `?`, with exactly one question mark. |
 
@@ -175,10 +181,10 @@ Expected status classes include:
 | `403` | Browser Origin is not allowlisted. |
 | `404` | Unknown endpoint. |
 | `405` | Unsupported method. |
-| `409` | Browser Driver snapshot is stale or does not match governed server data. |
+| `409` | Browser Entity snapshot is stale or does not match governed server data. |
 | `413` | Request exceeds the configured byte limit. |
 | `415` | Unsupported content type or content encoding. |
-| `422` | Unknown Driver or a model refusal that cannot produce a governed result. |
+| `422` | Unknown Entity or a model refusal that cannot produce a governed result. |
 | `429` | In-memory request limit exceeded. |
 | `502` | Upstream failure, incomplete response, or invalid structured output. |
 | `504` | Upstream generation timeout. |
@@ -188,9 +194,10 @@ provenance, or local paths.
 
 ## Model boundary
 
-The server sends only the selected canonical Driver, its Family boundary, any
+The server sends only the selected canonical Entity, its type and governed RDS
+derivation metadata where applicable, its Family boundary, any
 available reviewed plain-language content, and the scenario fields. It does not
-send Relationship data, other Drivers, the whole ontology, source provenance,
+send Relationship data, other Entities, the whole ontology, source provenance,
 or local paths. System instructions and the response schema are fixed in
 server code. The OpenAI API request uses the Responses API, strict JSON Schema
 Structured Outputs, no tools, and `store: false`.

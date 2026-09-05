@@ -221,15 +221,17 @@ influence exists.
 
 ## Build the governed v0.3 Driver/RDS migration
 
-The ordinary source importers produce the frozen 793-Driver baseline. After
-that pipeline succeeds, run the governed migration generator:
+The governed migration generator reads the frozen 793-Driver baseline directly
+from commit `580d59c`, so a clean checkout does not require private ignored
+workbooks or a manual baseline restore:
 
 ```powershell
 py scripts\build_migration_preview_v0_3.py
 py -m unittest discover -s tests -p "test_migration_v0_3.py"
 ```
 
-The generator treats `_migration_handoff_v0.3/` as authoritative, performs only
+The generator treats `_migration_handoff_v0.3/` as authoritative, records
+baseline, handoff, implementation, and generated-artifact SHA-256 hashes, performs only
 the explicitly approved 34 Driver-to-RDS retypes, and emits 770 Drivers, 41 RDS,
 and 811 total entities. It also writes `data/entities.json`, typed aliases,
 crosswalks, Relationship Schema v3, and `data/migration-manifest.json`. Items

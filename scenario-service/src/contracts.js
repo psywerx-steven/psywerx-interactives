@@ -6,8 +6,10 @@ export const REQUEST_KEYS = Object.freeze([
   "driver",
 ]);
 
-export const DRIVER_SNAPSHOT_KEYS = Object.freeze([
+export const ENTITY_SNAPSHOT_KEYS = Object.freeze([
   "id",
+  "entityType",
+  "entitySubtype",
   "name",
   "definition",
   "plainLanguageExplanation",
@@ -29,7 +31,25 @@ export const DRIVER_SNAPSHOT_KEYS = Object.freeze([
   "onsetCausalLag",
   "commonMisinterpretations",
   "evidenceNotes",
+  "constituentSpecifications",
+  "derivationType",
+  "derivationLogic",
+  "scopeRequirements",
+  "directManipulability",
+  "recalculationBehavior",
+  "uncertaintyPropagation",
+  "compositeSpecification",
+  "differenceSpecification",
+  "networkMetricSpecification",
+  "ratioSpecification",
+  "temporalSpecification",
 ]);
+
+// Preserve the prior module export while the v1 wire field remains `driver`.
+export const DRIVER_SNAPSHOT_KEYS = ENTITY_SNAPSHOT_KEYS;
+
+// Retained for consumers that imported the v1 constant name.
+export const DRIVER_SNAPSHOT_KEYS = ENTITY_SNAPSHOT_KEYS;
 
 export const RESPONSE_KEYS = Object.freeze([
   "driverId",
@@ -118,6 +138,61 @@ function stringArray(value, field, minimumItems, maximumItems, maximumLength = 5
   return value;
 }
 
+function nullableMetadata(value, field) {
+  if (value === null) return null;
+  if (!isPlainObject(value)) {
+    throw new ContractError(`${field} must be an object or null.`);
+  }
+  const serialized = JSON.stringify(value);
+  if (serialized.length > 12000 || PRIVATE_PATH_PATTERN.test(serialized)) {
+    throw new ContractError(`${field} contains invalid metadata.`);
+  }
+  return value;
+}
+
+function constituentSpecifications(value) {
+  if (!Array.isArray(value) || value.length > 64) {
+    throw new ContractError("driver.constituentSpecifications must be an array.");
+  }
+  const keys = [
+    "entityId", "externalParameterType", "role", "required",
+    "unitScaleExpectations", "alignmentRequirements",
+  ];
+  for (const [index, specification] of value.entries()) {
+    if (!sameKeys(specification, keys)) {
+      throw new ContractError(
+        `driver.constituentSpecifications[${index}] has an unexpected shape.`
+      );
+    }
+    nullableText(specification.entityId, `driver.constituentSpecifications[${index}].entityId`, 1, 32);
+    nullableText(
+      specification.externalParameterType,
+      `driver.constituentSpecifications[${index}].externalParameterType`,
+      1,
+      200
+    );
+    text(specification.role, `driver.constituentSpecifications[${index}].role`, 1, 100);
+    if (typeof specification.required !== "boolean") {
+      throw new ContractError(
+        `driver.constituentSpecifications[${index}].required must be boolean.`
+      );
+    }
+    text(
+      specification.unitScaleExpectations,
+      `driver.constituentSpecifications[${index}].unitScaleExpectations`,
+      1,
+      500
+    );
+    text(
+      specification.alignmentRequirements,
+      `driver.constituentSpecifications[${index}].alignmentRequirements`,
+      1,
+      500
+    );
+  }
+  return value;
+}
+
 export function validateOperationalizationRequest(value) {
   if (!sameKeys(value, REQUEST_KEYS)) {
     throw new ContractError("The request has an unexpected shape.", "INVALID_REQUEST");
@@ -126,31 +201,43 @@ export function validateOperationalizationRequest(value) {
   text(value.behaviorObjective, "behaviorObjective", 1, 400);
   text(value.context, "context", 1, 800);
   nullableText(value.clarificationAnswer, "clarificationAnswer", 1, 400);
-  if (!sameKeys(value.driver, DRIVER_SNAPSHOT_KEYS)) {
+  if (!sameKeys(value.driver, ENTITY_SNAPSHOT_KEYS)) {
     throw new ContractError(
-      "The Driver snapshot has an unexpected shape.",
+      "The Entity snapshot has an unexpected shape.",
       "INVALID_REQUEST"
     );
   }
   const driver = value.driver;
   text(driver.id, "driver.id", 7, 32);
-  if (!/^[A-Z]{3}-\d{3}$/.test(driver.id)) {
+  if (!/^(?:[A-Z]{3}-\d{3}|RDS-\d{4})$/.test(driver.id)) {
     throw new ContractError("driver.id has an invalid format.", "INVALID_REQUEST");
   }
+  if (!["DRIVER", "RELATIONAL_DERIVED_STATE"].includes(driver.entityType)) {
+    throw new ContractError("driver.entityType is invalid.", "INVALID_REQUEST");
+  }
+  nullableText(driver.entitySubtype, "driver.entitySubtype", 1, 100);
   [
     "name",
     "definition",
     "layer",
     "family",
+    "dataType",
+  ].forEach((field) => text(driver[field], `driver.${field}`, 1, 8000));
+  [
     "mechanism",
     "moderatorsBoundaryConditions",
     "measurementAssessmentMethods",
     "observability",
     "measurementCaveats",
-    "dataType",
     "commonMisinterpretations",
     "evidenceNotes",
-  ].forEach((field) => text(driver[field], `driver.${field}`, 1, 8000));
+    "derivationType",
+    "derivationLogic",
+    "scopeRequirements",
+    "directManipulability",
+    "recalculationBehavior",
+    "uncertaintyPropagation",
+  ].forEach((field) => nullableText(driver[field], `driver.${field}`, 1, 8000));
   ["plainLanguageExplanation", "analyticQuestion"].forEach((field) =>
     nullableText(driver[field], `driver.${field}`, 1, 4000)
   );
@@ -159,8 +246,34 @@ export function validateOperationalizationRequest(value) {
     nullableText(driver[field], `driver.${field}`, 1, 8000)
   );
   stringArray(driver.indicators, "driver.indicators", 0, 64, 1000);
-  stringArray(driver.timeScaleOfChange, "driver.timeScaleOfChange", 1, 9, 100);
-  stringArray(driver.onsetCausalLag, "driver.onsetCausalLag", 1, 8, 100);
+  stringArray(driver.timeScaleOfChange, "driver.timeScaleOfChange", 0, 9, 100);
+  stringArray(driver.onsetCausalLag, "driver.onsetCausalLag", 0, 8, 100);
+  constituentSpecifications(driver.constituentSpecifications);
+  [
+    "compositeSpecification",
+    "differenceSpecification",
+    "networkMetricSpecification",
+    "ratioSpecification",
+    "temporalSpecification",
+  ].forEach((field) => nullableMetadata(driver[field], `driver.${field}`));
+  if (driver.entityType === "DRIVER") {
+    if (
+      driver.entitySubtype !== null ||
+      driver.constituentSpecifications.length !== 0 ||
+      driver.derivationType !== null ||
+      driver.derivationLogic !== null
+    ) {
+      throw new ContractError("A Driver cannot carry RDS derivation metadata.", "INVALID_REQUEST");
+    }
+  } else if (
+    driver.entitySubtype === null ||
+    driver.constituentSpecifications.length === 0 ||
+    driver.derivationType === null ||
+    driver.derivationLogic === null ||
+    driver.scopeRequirements === null
+  ) {
+    throw new ContractError("An RDS snapshot is missing derivation metadata.", "INVALID_REQUEST");
+  }
   return value;
 }
 
@@ -169,7 +282,7 @@ export function validateOperationalizationResponse(value, expectedDriverId) {
     throw new ContractError("The model response has an unexpected shape.", "INVALID_MODEL_OUTPUT");
   }
   if (value.driverId !== expectedDriverId) {
-    throw new ContractError("The model response has the wrong Driver ID.", "INVALID_MODEL_OUTPUT");
+    throw new ContractError("The model response has the wrong Entity ID.", "INVALID_MODEL_OUTPUT");
   }
   text(value.scenarioMeaning, "scenarioMeaning", 40, 900);
   text(value.importantCaveat, "importantCaveat", 20, 500);
@@ -230,7 +343,7 @@ export const SCENARIO_RESPONSE_SCHEMA = Object.freeze({
   type: "object",
   additionalProperties: false,
   properties: {
-    driverId: { type: "string", pattern: "^[A-Z]{3}-[0-9]{3}$" },
+    driverId: { type: "string", pattern: "^(?:[A-Z]{3}-[0-9]{3}|RDS-[0-9]{4})$" },
     scenarioMeaning: { type: "string", minLength: 40, maxLength: 900 },
     operationalizationExamples: {
       type: "array",

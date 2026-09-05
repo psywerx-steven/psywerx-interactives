@@ -147,7 +147,7 @@ it with a managed distributed limiter before horizontally scaling the service.
   code when applicable.
 - Logs never contain request bodies, Driver prose, scenario text, model output,
   API keys, stack traces, source provenance, or local paths.
-- The model receives one selected Driver and Family, never Relationships or the
+- The model receives one selected Entity, its governed RDS derivation context when applicable, and its Family, never Relationships or the
   whole ontology.
 
 The public UI should continue warning users not to enter classified,

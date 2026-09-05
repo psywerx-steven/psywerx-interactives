@@ -41,6 +41,8 @@ test("every current canonical Entity resolves against the exact browser contract
       clarificationAnswer: null,
       driver: {
         id: driver.id,
+        entityType: driver.entityType,
+        entitySubtype: driver.entitySubtype ?? null,
         name: driver.name,
         definition: driver.definition,
         plainLanguageExplanation: plain ? plain.plainLanguageExplanation : null,
@@ -62,6 +64,18 @@ test("every current canonical Entity resolves against the exact browser contract
         onsetCausalLag: driver.onsetCausalLag,
         commonMisinterpretations: driver.commonMisinterpretations,
         evidenceNotes: driver.evidenceNotes,
+        constituentSpecifications: driver.constituentSpecifications || [],
+        derivationType: driver.derivationType ?? null,
+        derivationLogic: driver.derivationLogic ?? null,
+        scopeRequirements: driver.scopeRequirements ?? null,
+        directManipulability: driver.directManipulability ?? null,
+        recalculationBehavior: driver.recalculationBehavior ?? null,
+        uncertaintyPropagation: driver.uncertaintyPropagation ?? null,
+        compositeSpecification: driver.compositeSpecification ?? null,
+        differenceSpecification: driver.differenceSpecification ?? null,
+        networkMetricSpecification: driver.networkMetricSpecification ?? null,
+        ratioSpecification: driver.ratioSpecification ?? null,
+        temporalSpecification: driver.temporalSpecification ?? null,
       },
     };
     validateOperationalizationRequest(request);

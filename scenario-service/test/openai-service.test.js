@@ -2,9 +2,9 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { createCatalog } from "../src/catalog.js";
 import { createOperationalizer, ScenarioServiceError } from "../src/openai-service.js";
-import { fixtureData, validRequest, validResponse } from "./fixtures.js";
+import { fixtureData, rdsFixtureData, validRequest, validResponse } from "./fixtures.js";
 
-function setup(outputs) {
+function setup(outputs, data = fixtureData()) {
   const calls = [];
   const client = {
     responses: {
@@ -16,7 +16,6 @@ function setup(outputs) {
       },
     },
   };
-  const data = fixtureData();
   const request = validRequest(data);
   const context = createCatalog(data.drivers, data.families, data.plainLanguage).resolve(request);
   const operationalize = createOperationalizer({
@@ -40,6 +39,19 @@ test("Responses API request is stateless, schema-strict, and server controlled",
   assert.equal(testCase.calls[0].text.format.type, "json_schema");
   assert.equal(testCase.calls[0].text.format.strict, true);
   assert.equal(Object.hasOwn(testCase.calls[0], "prompt"), false);
+});
+
+test("RDS model context is labeled as an Entity and includes governed derivation metadata", async () => {
+  const expected = { ...validResponse(), driverId: "RDS-0001" };
+  const testCase = setup(
+    [{ status: "completed", output_text: JSON.stringify(expected) }],
+    rdsFixtureData()
+  );
+  await testCase.operationalize(testCase.context, testCase.request);
+  const modelInput = JSON.parse(testCase.calls[0].input[0].content[0].text);
+  assert.equal(Object.hasOwn(modelInput, "selectedDriver"), false);
+  assert.equal(modelInput.selectedEntity.entityType, "RELATIONAL_DERIVED_STATE");
+  assert.equal(modelInput.selectedEntity.derivationType, "COMPOSITE");
 });
 
 test("malformed structured output is retried once", async () => {

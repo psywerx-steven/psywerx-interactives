@@ -49,14 +49,38 @@ function familyKey(layer, family) {
 }
 
 function sameValue(actual, expected) {
-  if (Array.isArray(expected)) {
-    return (
-      Array.isArray(actual) &&
+  if (Array.isArray(actual) || Array.isArray(expected)) {
+    return Array.isArray(actual) && Array.isArray(expected) &&
       actual.length === expected.length &&
-      actual.every((value, index) => value === expected[index])
-    );
+      actual.every((value, index) => sameValue(value, expected[index]));
+  }
+  if (actual && expected && typeof actual === "object" && typeof expected === "object") {
+    const actualKeys = Object.keys(actual).sort();
+    const expectedKeys = Object.keys(expected).sort();
+    return actualKeys.length === expectedKeys.length &&
+      actualKeys.every((key, index) => key === expectedKeys[index] &&
+        sameValue(actual[key], expected[key]));
   }
   return actual === expected;
+}
+
+function rdsContext(entity) {
+  return {
+    entityType: entity.entityType,
+    entitySubtype: entity.entitySubtype ?? null,
+    constituentSpecifications: entity.constituentSpecifications || [],
+    derivationType: entity.derivationType ?? null,
+    derivationLogic: entity.derivationLogic ?? null,
+    scopeRequirements: entity.scopeRequirements ?? null,
+    directManipulability: entity.directManipulability ?? null,
+    recalculationBehavior: entity.recalculationBehavior ?? null,
+    uncertaintyPropagation: entity.uncertaintyPropagation ?? null,
+    compositeSpecification: entity.compositeSpecification ?? null,
+    differenceSpecification: entity.differenceSpecification ?? null,
+    networkMetricSpecification: entity.networkMetricSpecification ?? null,
+    ratioSpecification: entity.ratioSpecification ?? null,
+    temporalSpecification: entity.temporalSpecification ?? null,
+  };
 }
 
 export function createCatalog(driverData, familyData, plainLanguageData) {
@@ -137,6 +161,7 @@ export function createCatalog(driverData, familyData, plainLanguageData) {
 
     const expected = {
       id: driver.id,
+      ...rdsContext(driver),
       name: driver.name,
       definition: driver.definition,
       plainLanguageExplanation: plain ? plain.plainLanguageExplanation : null,
@@ -172,6 +197,7 @@ export function createCatalog(driverData, familyData, plainLanguageData) {
     return {
       driver: {
         id: driver.id,
+        ...rdsContext(driver),
         name: driver.name,
         definition: driver.definition,
         layer: driver.layer,

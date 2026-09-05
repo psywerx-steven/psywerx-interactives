@@ -17,6 +17,20 @@
     "codebook.json": "4dd0ffe790b2b08180777d7ef0ca681eda1e7f72ce1d8e7fc8304a8aad131508",
     "sources.json": "f1aae4135ac049e223ae65a66a24a6dfc2c28e911add59ce11df34e9c0af3615"
   },
+  "governedInputSha256": {
+    "_migration_handoff_v0.3/CODEX_START_PROMPT.md": "d2acc643c805e00e66174f60cff6b632ee7842a53c18c6bed289bafa83a38563",
+    "_migration_handoff_v0.3/GOVERNANCE_SOURCE_INDEX.md": "b4b05f07daae9b02391c15426496c5e483d63fd7cfdf5f679a17c523315771c5",
+    "_migration_handoff_v0.3/MIGRATION_DECISIONS_SUMMARY.md": "8c7c3622bd387189b872f67aeb21a30db1bc2e2d65d2aabffea5cf5e7188bc8d",
+    "_migration_handoff_v0.3/RDS_POSITIVE_CONTROL_CALIBRATION.md": "883ca0d0fac0dff866a8246741b0d93391b246cf7a812a95771e4998ee148454",
+    "_migration_handoff_v0.3/README_CODEX_HANDOFF.md": "bf8427460cbf75b842711dc7887bce42c6c617354b76bf5da50b04b06d262d16",
+    "_migration_handoff_v0.3/SECONDARY_BOUNDARY_AUDIT_ADDENDUM.md": "b1f87266394d316efa3a51b5112c688334265dc73eb87e65071d976a6a3f3fff",
+    "_migration_handoff_v0.3/VALIDATION_CHECKLIST.md": "4e08d998d63e8feae9ed444955e6f9ecbb209c52b74bbf9b4d609e8781674592",
+    "_migration_handoff_v0.3/migration_manifest_seed.json": "0608bc1f1e855f312ed39310193dc5722a84c203cf7b5a6b462a1a31e559253a"
+  },
+  "migrationImplementation": {
+    "path": "scripts/build_migration_preview_v0_3.py",
+    "sha256": "cfacc17d0a5eaaa4a25c1314e901cd80d64374bf75f84d92de4291d0643749b1"
+  },
   "previewCounts": {
     "drivers": 770,
     "relationalDerivedStates": 41,
@@ -283,7 +297,7 @@
     }
   ],
   "relationshipActions": {
-    "active": 451,
+    "active": 450,
     "deprecated": 6,
     "proposedOrBlocked": 5
   },
@@ -352,10 +366,10 @@
   "generatedArtifactSha256": {
     "aliases.json": "e14f9ba67d51d4f0a18cc05ad029da08f7d206dda1c636fbbd866b16ed1b7fb9",
     "crosswalks.json": "8583159cbdd9bc00cc912e367a53515511709ef7796119ecfa10d0145f1ad7c5",
-    "drivers.json": "0332622a24118c7f50df2b77f12c55ac61ff9f01d00fe3377058ae8edbdfaadc",
-    "entities.json": "29f6d5250f4ba281d073c517a7728aa00e1feed514dcdb0cd29ea2f964313856",
+    "drivers.json": "017a79d1f33230e788fe82175d74714f28e7e0af18878fa718c971a0e101534b",
+    "entities.json": "74f88110911280bc6d508da56af824b63db4c11d741223b694aa7ac18734cf99",
     "families.json": "8fc4b3f08de1b27850fb460d528c3d95a6d9ea858bb1e55ca687722af80d7f9d",
-    "relational-derived-states.json": "b303b373fbe7137336c25203f72694f4d2f3a8deb1e35239a995d1a6982d62d4",
-    "relationships.json": "4d716e98f3c0699d5d21279a89f9e6e33128bc71d059f4f8153de033d9a732d4"
+    "relational-derived-states.json": "126ee66cfed4833603376bec5e0eb4da39f37eec8605480c82ebada70641d333",
+    "relationships.json": "759f90446ff5f6e27d496e3e3603bb44045f7f0abf4770e4c012c5e4d974ba51"
   }
 }

@@ -333,11 +333,42 @@ function validateSources(envelope) {
   return indexed;
 }
 
+function validateAliases(entityData, envelope) {
+  if (!envelope || envelope.schemaVersion !== "1.0" || !Array.isArray(envelope.aliases)) {
+    throw new Error("Alias data does not use Alias Schema v1.0.");
+  }
+  const entityIds = new Set(entityData.map((entity) => entity.id));
+  const aliasIds = new Set();
+  const indexed = new Map(entityData.map((entity) => [entity.id, {
+    search: [], display: [],
+  }]));
+  envelope.aliases.forEach((alias) => {
+    if (typeof alias.aliasId !== "string" || !alias.aliasId.trim() ||
+        typeof alias.text !== "string" || !alias.text.trim() ||
+        !Array.isArray(alias.entityIds) || alias.entityIds.length === 0 ||
+        alias.entityIds.some((entityId) => !entityIds.has(entityId))) {
+      throw new Error("Alias data contains an invalid or dangling record.");
+    }
+    if (aliasIds.has(alias.aliasId)) throw new Error("Duplicate Alias ID: " + alias.aliasId + ".");
+    aliasIds.add(alias.aliasId);
+    alias.entityIds.forEach((entityId) => {
+      const target = indexed.get(entityId);
+      target.search.push(alias.text);
+      if (alias.publicDisplayRule === "DISPLAY_ON_ENTITY") target.display.push(alias.text);
+    });
+  });
+  indexed.forEach((value) => {
+    value.search = [...new Set(value.search)];
+    value.display = [...new Set(value.display)];
+  });
+  return indexed;
+}
+
 function driverSearchFields(driver) {
   const plain = driver._plainLanguage;
   return [
     { weight: 0, values: [driver.name] },
-    { weight: 10, values: driver.aliases || [] },
+    { weight: 10, values: driver._searchAliases || driver.aliases || [] },
     { weight: 20, values: [driver.definition] },
     { weight: 30, values: [plain && plain.plainLanguageExplanation] },
     { weight: 40, values: [plain && plain.analyticQuestion] },
@@ -439,7 +470,7 @@ function createFamilyOverview(family) {
   const article = element("article", "family-overview family-overview--public");
   setLayerIdentity(article, family.layer);
   const identity = element("header", "family-overview__identity");
-  identity.append(element("p", "eyebrow", "Driver Family"));
+  identity.append(element("p", "eyebrow", "Entity Family"));
   const badges = element("div", "family-overview__badges");
   const layer = element("span", "layer-badge", family.layer);
   setLayerIdentity(layer, family.layer);
@@ -1035,7 +1066,7 @@ function renderDriverDetail(driver) {
   const title = element("h2", "", driver.name);
   title.id = "detail-title";
   header.append(title);
-  const aliases = (driver.aliases || []).filter((alias) =>
+  const aliases = (driver._displayAliases || driver.aliases || []).filter((alias) =>
     normalizeComparable(alias) !== normalizeComparable(driver.name));
   if (aliases.length) {
     const aliasLine = element("p", "driver-aliases");
@@ -1427,6 +1458,8 @@ function scenarioRequestPayload(driver, clarificationAnswer = null, scenario = a
     clarificationAnswer: clarificationAnswer || null,
     driver: {
       id: driver.id,
+      entityType: driver.entityType,
+      entitySubtype: driver.entitySubtype ?? null,
       name: driver.name,
       definition: driver.definition,
       plainLanguageExplanation: plain ? plain.plainLanguageExplanation : null,
@@ -1448,6 +1481,18 @@ function scenarioRequestPayload(driver, clarificationAnswer = null, scenario = a
       onsetCausalLag: driver.onsetCausalLag,
       commonMisinterpretations: driver.commonMisinterpretations,
       evidenceNotes: driver.evidenceNotes,
+      constituentSpecifications: driver.constituentSpecifications || [],
+      derivationType: driver.derivationType ?? null,
+      derivationLogic: driver.derivationLogic ?? null,
+      scopeRequirements: driver.scopeRequirements ?? null,
+      directManipulability: driver.directManipulability ?? null,
+      recalculationBehavior: driver.recalculationBehavior ?? null,
+      uncertaintyPropagation: driver.uncertaintyPropagation ?? null,
+      compositeSpecification: driver.compositeSpecification ?? null,
+      differenceSpecification: driver.differenceSpecification ?? null,
+      networkMetricSpecification: driver.networkMetricSpecification ?? null,
+      ratioSpecification: driver.ratioSpecification ?? null,
+      temporalSpecification: driver.temporalSpecification ?? null,
     },
   };
 }
@@ -1562,13 +1607,15 @@ async function fetchJson(url, label) {
 
 async function loadTaxonomy() {
   try {
-    const [driverData, familyEnvelope, plainEnvelope] = await Promise.all([
+    const [driverData, familyEnvelope, plainEnvelope, aliasEnvelope] = await Promise.all([
       fetchJson("../data/entities.json", "Entity data"),
       fetchJson("../data/families.json", "Family data"),
       fetchJson("../data/plain_language.json", "Public explanation data"),
+      fetchJson("../data/aliases.json", "Alias data"),
     ]);
     validateTaxonomyData(driverData, familyEnvelope);
     plainLanguageByDriverId = validatePlainLanguageData(driverData, plainEnvelope);
+    const aliasesByEntityId = validateAliases(driverData, aliasEnvelope);
     const supplemental = await Promise.allSettled([
       fetchJson("../data/codebook.json", "Codebook data"),
       fetchJson("../data/sources.json", "Source data"),
@@ -1582,6 +1629,8 @@ async function loadTaxonomy() {
     drivers = driverData.map((driver) => {
       const enriched = Object.assign({}, driver, {
         _plainLanguage: plainLanguageByDriverId.get(driver.id) || null,
+        _searchAliases: aliasesByEntityId.get(driver.id).search,
+        _displayAliases: aliasesByEntityId.get(driver.id).display,
       });
       enriched._searchFields = driverSearchFields(enriched);
       return enriched;

@@ -5,11 +5,21 @@ import {
   validateOperationalizationRequest,
   validateOperationalizationResponse,
 } from "../src/contracts.js";
-import { validRequest, validResponse } from "./fixtures.js";
+import { rdsFixtureData, validRequest, validResponse } from "./fixtures.js";
 
 test("request validation accepts the exact frontend contract", () => {
   const request = validRequest();
   assert.equal(validateOperationalizationRequest(request), request);
+});
+
+test("request validation accepts governed RDS IDs, derivation metadata, and null peripheral metadata", () => {
+  const request = validRequest(rdsFixtureData());
+  assert.equal(validateOperationalizationRequest(request), request);
+  request.driver.derivationLogic = null;
+  assert.throws(
+    () => validateOperationalizationRequest(request),
+    /missing derivation metadata/
+  );
 });
 
 test("request validation rejects extra keys and oversized scenario input", () => {
