@@ -1,0 +1,91 @@
+name: PSYWERX Governance CI
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  linux-validation:
+    name: Linux governance and service validation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository history
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: "20"
+          package-manager-cache: false
+
+      - name: Install scenario-service dependencies
+        working-directory: scenario-service
+        run: npm install --ignore-scripts --no-audit --no-fund --no-package-lock
+
+      - name: Regenerate governed migration artifacts
+        run: python scripts/build_migration_preview_v0_3.py
+
+      - name: Verify generated artifacts are byte-identical
+        run: git diff --exit-code -- data
+
+      - name: Run migration governance and integrity tests
+        run: python -m unittest discover -s tests -p "test_migration_v0_3.py"
+
+      - name: Verify migration tests leave artifacts unchanged
+        run: git diff --exit-code -- data
+
+      - name: Run scenario-service contract tests
+        working-directory: scenario-service
+        run: npm test
+
+      - name: Compile Python code
+        run: python -m compileall -q scripts tests
+
+      - name: Parse JavaScript
+        shell: bash
+        run: git ls-files -z -- '*.js' '*.mjs' '*.cjs' | xargs -0 -r -n 1 node --check
+
+  windows-determinism:
+    name: Windows migration determinism
+    runs-on: windows-latest
+
+    steps:
+      - name: Check out repository history
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Regenerate governed migration artifacts
+        run: python scripts/build_migration_preview_v0_3.py
+
+      - name: Verify generated artifacts are byte-identical
+        run: git diff --exit-code -- data
+
+      - name: Run migration determinism and governance tests
+        run: python -m unittest discover -s tests -p "test_migration_v0_3.py"
+
+      - name: Verify migration tests leave artifacts unchanged
+        run: git diff --exit-code -- data
