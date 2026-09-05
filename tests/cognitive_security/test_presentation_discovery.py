@@ -234,6 +234,15 @@ class DiscoveryPackageTests(unittest.TestCase):
             self.assertEqual(entry["bytes"], len(payload))
             self.assertEqual(entry["sha256"], hashlib.sha256(payload).hexdigest())
 
+    def test_presentation_copy_omits_the_retained_internal_finding_layer(self):
+        copy = load(DISCOVERY / "presentation_copy.json")
+        keys = [entry["key"] for entry in copy["entries"]]
+        self.assertEqual(10, len(keys))
+        self.assertNotIn("findings-open-questions", keys)
+        serialized = json.dumps(copy, ensure_ascii=False).casefold()
+        self.assertNotIn("findings & open questions", serialized)
+        self.assertNotIn("multiple findings", serialized)
+
     def test_metadata_is_complete_nullable_and_official_only(self):
         self.assertEqual(242, len(self.metadata))
         self.assertEqual({episode["episodeId"] for episode in self.episodes}, {row["episodeId"] for row in self.metadata})

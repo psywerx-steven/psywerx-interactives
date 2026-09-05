@@ -70,6 +70,10 @@ const SC04_PUBLIC_NOTICE = "Legal, privacy, civil-liberties, ethics, consent, an
 
 const DEEP_LINK_ENTITY_TYPES = Object.freeze([
   "category", "family", "cluster", "theme", "tension", "narrative",
+  "scenario", "episode",
+]);
+const DATA_ENTITY_TYPES = Object.freeze([
+  "category", "family", "cluster", "theme", "tension", "narrative",
   "categoryFinding", "scenario", "episode",
 ]);
 const ENTITY_ROUTES = Object.freeze({
@@ -79,7 +83,6 @@ const ENTITY_ROUTES = Object.freeze({
   theme: "theme",
   tension: "tension",
   narrative: "narrative",
-  categoryFinding: "category-finding",
   scenario: "scenario",
   episode: "episode",
 });
@@ -99,7 +102,6 @@ const ENTITY_INDEX_VIEWS = Object.freeze({
   theme: "themes",
   tension: "tensions",
   narrative: "narratives",
-  categoryFinding: "families",
   scenario: "scenarios",
   episode: "episodes",
 });
@@ -121,7 +123,6 @@ const ENTITY_PLURAL_LABELS = Object.freeze({
   theme: "Themes",
   tension: "Tensions",
   narrative: "Narratives",
-  categoryFinding: "Findings and open questions",
   scenario: "Scenarios",
   episode: "Episodes",
 });
@@ -770,7 +771,7 @@ function buildIndexes() {
     scenario: scenarios,
     episode: episodes,
   };
-  DEEP_LINK_ENTITY_TYPES.forEach(function (type) {
+  DATA_ENTITY_TYPES.forEach(function (type) {
     state.maps[type] = uniqueRecordMap(state.records[type], ID_FIELDS[type], ENTITY_LABELS[type]);
   });
   state.maps.familyByCategory = new Map();
@@ -798,9 +799,6 @@ function buildIndexes() {
     assert(Array.from(state.maps.familyByCluster.values()).includes(family), "Every canonical family must contain at least one cluster.");
   });
 
-  state.maps.findingsByCategory = new Map();
-  categories.forEach(function (category) { state.maps.findingsByCategory.set(category.categoryId, []); });
-  findings.forEach(function (finding) { state.maps.findingsByCategory.get(finding.categoryId).push(finding); });
   state.maps.heatmap = new Map();
   state.data.get("heatmap.json").cells.forEach(function (cell) {
     state.maps.heatmap.set(cell.categoryId + "\u0000" + cell.themeId, cell);
@@ -1001,6 +999,25 @@ function textList(values, ordered, className) {
   return list;
 }
 
+function recurringPatternList(values) {
+  const patterns = asArray(values).filter(hasValue);
+  if (!patterns.length) return element("p", "quiet-note", "No additional public detail is recorded.");
+  const list = element("ul", "plain-list recurring-pattern-list");
+  patterns.forEach(function (pattern) {
+    const item = element("li");
+    if (isObject(pattern)) {
+      const name = firstValue(pattern, ["title", "name"], "");
+      const description = firstValue(pattern, ["description"], "");
+      if (name) item.appendChild(element("strong", null, name));
+      if (description) item.appendChild(element("p", null, description));
+    } else {
+      item.textContent = String(pattern);
+    }
+    list.appendChild(item);
+  });
+  return list;
+}
+
 function definitionRows(rows) {
   const list = element("dl", "definition-list");
   rows.filter(function (row) { return hasValue(row.value); }).forEach(function (row) {
@@ -1100,13 +1117,12 @@ function renderSupportPanel(record, entityType, extraContent) {
 
 function searchFieldsFor(type, record) {
   const fields = {
-    category: ["name", "summary", "soWhat", "openQuestions", "limitations"],
+    category: ["name", "summary", "soWhat", "limitations"],
     family: ["name", "definition", "inclusionRules", "exclusionRules", "distinguishingBoundaries", "limitations"],
     cluster: ["name", "definition", "inclusionCriteria", "exclusionCriteria", "nearNeighborDistinctions", "anchorExamples", "summary", "strategicSignificance", "operationalImplications", "primarySecondaryDistinction", "recurringThemes", "limitations"],
     theme: ["name", "definition", "strategicSignificance", "operationalImplications", "boundaryConditions", "limitations"],
     tension: ["name", "definition", "tensionType", "poleALabel", "poleAAssumption", "poleBLabel", "poleBAssumption", "conditionsFavoringA", "conditionsFavoringB", "falseDichotomyCaveat", "neighborDistinctions", "limitations"],
     narrative: ["name", "shortVersion", "coreClaim", "unresolvedIssue", "boundaryConditions", "limitations"],
-    categoryFinding: ["title", "name", "finding", "coreFinding", "strategicSignificance", "operationalImplications", "openQuestions", "unresolvedQuestions", "limitations"],
     scenario: ["title", "description", "scenarioType", "triggerConditions", "branchPoints", "plausiblePathways", "indicators", "counterSignposts", "mitigatingConditions", "tensionPoleDynamics", "strategicImplications", "responseOptions", "researchQuestions", "uncertaintyStatement", "limitations", "publicNotice"],
     episode: ["episodeTitle", "podcast", "summary", "whyItMatters", "keyTopics"],
   };
@@ -1213,8 +1229,8 @@ function validateRelationships(payload) {
     ids.add(relationship.relationshipId);
     const sourceType = canonicalEntityType(relationship.sourceType);
     const targetType = canonicalEntityType(relationship.targetType);
-    assert(DEEP_LINK_ENTITY_TYPES.includes(sourceType), "Unknown relationship source type.");
-    assert(DEEP_LINK_ENTITY_TYPES.includes(targetType), "Unknown relationship target type.");
+    assert(DATA_ENTITY_TYPES.includes(sourceType), "Unknown relationship source type.");
+    assert(DATA_ENTITY_TYPES.includes(targetType), "Unknown relationship target type.");
     assert(getEntity(sourceType, relationship.sourceId), "Relationship has an unknown source endpoint.");
     assert(getEntity(targetType, relationship.targetId), "Relationship has an unknown target endpoint.");
     assert(state.relationshipSemantics.has(relationship.semanticRole), "Relationship uses an unknown semantic role.");
@@ -1393,6 +1409,17 @@ async function governedLegacySuccessor(view, id) {
 
 async function canonicalizeRoute(input) {
   const route = Object.assign({}, input);
+  if (route.view === "category-finding") {
+    const finding = route.id ? getEntity("categoryFinding", route.id) : null;
+    const category = finding ? getEntity("category", finding.categoryId) : null;
+    return {
+      route: category ? { view: "category", id: category.categoryId } : { view: "families" },
+      replace: true,
+      notice: category
+        ? "This former link now opens its parent category."
+        : "This former link now opens Categories.",
+    };
+  }
   if (LEGACY_VIEW_ALIASES[route.view]) {
     route.view = LEGACY_VIEW_ALIASES[route.view];
     delete route.id;
@@ -1521,7 +1548,6 @@ function iconKeyForEntity(type) {
     theme: "themes",
     tension: "tensions",
     narrative: "narratives",
-    categoryFinding: "findings-open-questions",
     scenario: "scenarios",
     episode: "episodes",
   }[type];
@@ -1591,8 +1617,7 @@ function renderStart() {
     { key: "topics", label: "Topics", route: { view: "families", display: "topics" }, description: "Specific recurring subjects.", count: counts.clusterCount },
     { key: "themes", label: "Themes", route: { view: "themes" }, description: "Patterns spanning different areas.", count: counts.themeCount },
     { key: "tensions", label: "Tensions", route: { view: "tensions" }, description: "Competing priorities, assumptions, or approaches.", count: counts.tensionCount },
-    { key: "narratives", label: "Narratives", route: { view: "narratives" }, description: "Broader interpretations integrating multiple findings.", count: counts.narrativeCount },
-    { key: "findings-open-questions", label: "Findings & Open Questions", route: { view: "search", type: "categoryFinding" }, description: "Specific takeaways and unresolved questions.", count: counts.categoryFindingCount },
+    { key: "narratives", label: "Narratives", route: { view: "narratives" }, description: "Broader interpretations integrating multiple analytical threads.", count: counts.narrativeCount },
     { key: "scenarios", label: "Scenarios", route: { view: "scenarios" }, description: "Possible future situations for exploration.", count: counts.scenarioCount },
     { key: "episodes", label: "Episodes", route: { view: "episodes" }, description: "Individual conversations and original sources.", count: counts.publicReleaseCount },
     { key: "search", label: "Search", route: { view: "search" }, description: "Find subjects across the entire map." },
@@ -1642,10 +1667,7 @@ function renderStart() {
   const synthesis = element("section", "overview-group overview-group--synthesis");
   synthesis.appendChild(element("h4", null, "Synthesis and exploration"));
   append(synthesis, overviewNode("narratives"), overviewNode("scenarios"));
-  const findings = element("section", "overview-group overview-group--findings");
-  findings.appendChild(element("h4", null, "Contextual takeaways"));
-  findings.appendChild(overviewNode("findings-open-questions"));
-  append(map, sources, hierarchy, cross, synthesis, findings);
+  append(map, sources, hierarchy, cross, synthesis);
   overview.appendChild(map);
 
   const alternative = element("details", "overview-text");
@@ -1718,27 +1740,6 @@ async function renderFamilies(route) {
     viewContent.appendChild(element("p", "hierarchy-example", "Example: “" + firstCategory.name + "” is a category; “" + firstFamily.name + "” is one of its subcategories; and “" + firstTopic.name + "” is a topic inside that subcategory."));
   }
 
-  let stored = { categories: [], families: [] };
-  try {
-    const parsed = JSON.parse(localStorage.getItem("cognitive-security-hierarchy-expanded") || "{}");
-    stored.categories = asArray(parsed.categories);
-    stored.families = asArray(parsed.families);
-  } catch (_error) {
-    stored = { categories: [], families: [] };
-  }
-  const openCategories = new Set(stored.categories);
-  const openFamilies = new Set(stored.families);
-  function remember() {
-    try {
-      localStorage.setItem("cognitive-security-hierarchy-expanded", JSON.stringify({
-        categories: Array.from(openCategories).sort(),
-        families: Array.from(openFamilies).sort(),
-      }));
-    } catch (_error) {
-      // Browsing still works when storage is unavailable.
-    }
-  }
-
   const categoryContainer = element("div", "hierarchy-browser");
   let visibleCategoryCount = 0;
   sortByName("category", state.records.category).forEach(function (category) {
@@ -1760,7 +1761,7 @@ async function renderFamilies(route) {
     const categoryDetails = element("details", "hierarchy-category");
     categoryDetails.dataset.categoryId = category.categoryId;
     categoryDetails.open = Boolean(
-      query || selectedCategory || route.display === "subcategories" || route.display === "topics" || openCategories.has(category.categoryId)
+      query || selectedCategory || route.display === "subcategories" || route.display === "topics"
     );
     const summary = element("summary", "hierarchy-category__summary");
     summary.appendChild(entryIcon("categories", 64, "entry-icon--hierarchy"));
@@ -1780,7 +1781,6 @@ async function renderFamilies(route) {
       familyDetails.dataset.familyId = family.familyId;
       familyDetails.open = Boolean(
         (query && (match.familyMatch || match.matchingTopics.length))
-        || openFamilies.has(family.familyId)
         || (route.display === "topics" && familyIndex === 0)
       );
       const familySummary = element("summary", "hierarchy-family__summary");
@@ -1800,20 +1800,10 @@ async function renderFamilies(route) {
       });
       familyBody.appendChild(topicList);
       familyDetails.appendChild(familyBody);
-      familyDetails.addEventListener("toggle", function () {
-        if (familyDetails.open) openFamilies.add(family.familyId);
-        else openFamilies.delete(family.familyId);
-        remember();
-      });
       familyList.appendChild(familyDetails);
     });
     categoryBody.appendChild(familyList);
     categoryDetails.appendChild(categoryBody);
-    categoryDetails.addEventListener("toggle", function () {
-      if (categoryDetails.open) openCategories.add(category.categoryId);
-      else openCategories.delete(category.categoryId);
-      remember();
-    });
     categoryContainer.appendChild(categoryDetails);
   });
   if (!visibleCategoryCount) {
@@ -1824,30 +1814,10 @@ async function renderFamilies(route) {
   viewContent.appendChild(categoryContainer);
 }
 
-function renderFindingInline(finding, options) {
-  const settings = options || {};
-  const article = element("article", "finding-card");
-  if (finding.findingType === "open-question") article.classList.add("finding-card--open-question");
-  if (finding.findingType === "integrative-category-finding") article.classList.add("finding-card--integrative");
-  article.appendChild(element("p", "map-card__kicker", humanize(firstValue(finding, ["findingType"], "Category finding"))));
-  if (!settings.hideTitle) article.appendChild(element("h4", null, entityName("categoryFinding", finding)));
-  article.appendChild(element("p", null, firstValue(finding, ["finding", "coreFinding"], "")));
-  const questions = firstValue(finding, ["openQuestions", "unresolvedQuestions"], []);
-  if (asArray(questions).length) {
-    const open = element("div", "open-questions");
-    open.appendChild(element("h5", null, "Open questions"));
-    open.appendChild(textList(questions, false));
-    article.appendChild(open);
-  }
-  article.appendChild(entityLink("categoryFinding", finding.findingId, "View finding and support", "card-link"));
-  return article;
-}
-
 async function renderCategory(route) {
   const category = getEntity("category", route.id);
   await Promise.all([ensureRelationships(), ensureProvenance()]);
   const families = state.maps.familyByCategory.get(category.categoryId) || [];
-  const findings = state.maps.findingsByCategory.get(category.categoryId) || [];
   setHeader("Category", category.name, category.summary || "A broad area of the practitioner discourse map.", formatNumber(families.length) + " subcategories");
   setBreadcrumbs([
     { label: "Categories", view: "families" },
@@ -1860,25 +1830,6 @@ async function renderCategory(route) {
   const grid = familySection.querySelector(".map-card-grid");
   sortByName("family", families).forEach(function (family) { grid.appendChild(familyCard(family)); });
   record.appendChild(familySection);
-  if (findings.length) {
-    const findingGroups = element("div", "finding-groups");
-    [
-      ["family-finding", "Subcategory findings", "Findings tied to one subcategory and its primary evidence."],
-      ["integrative-category-finding", "Integrative category finding", "A category-level synthesis across related subcategories."],
-      ["open-question", "Open question", "An unresolved question retained for inquiry rather than presented as a finding."],
-    ].forEach(function (groupDefinition) {
-      const groupFindings = findings.filter(function (finding) { return finding.findingType === groupDefinition[0]; });
-      if (!groupFindings.length) return;
-      const group = element("section", "finding-group finding-group--" + groupDefinition[0]);
-      group.appendChild(element("h4", null, groupDefinition[1]));
-      group.appendChild(element("p", "section-intro", groupDefinition[2]));
-      const findingGrid = element("div", "finding-grid");
-      groupFindings.forEach(function (finding) { findingGrid.appendChild(renderFindingInline(finding)); });
-      group.appendChild(findingGrid);
-      findingGroups.appendChild(group);
-    });
-    record.appendChild(detailSection("Findings and open questions", findingGroups, "Finding types are separated so family synthesis, category integration, and unresolved questions remain visibly distinct."));
-  }
   await appendEvidenceExplorer(record, "category", category.categoryId, route);
   viewContent.appendChild(record);
 }
@@ -1896,12 +1847,6 @@ async function renderFamily(route) {
   ]);
   const record = element("div", "record-detail");
   record.appendChild(detailHero("family", family, family.definition));
-  const familyFinding = state.records.categoryFinding.find(function (finding) {
-    return finding.findingType === "family-finding" && asArray(finding.supportingFamilyIds).includes(family.familyId);
-  });
-  if (familyFinding) {
-    record.appendChild(detailSection("What the corpus says", renderFindingInline(familyFinding, { hideTitle: true })));
-  }
   const clusterGrid = element("div", "map-card-grid");
   sortByName("cluster", clusters).forEach(function (cluster) {
     clusterGrid.appendChild(cardShell("cluster", cluster, cluster.summary || cluster.definition));
@@ -1951,7 +1896,7 @@ async function renderCluster(route) {
   if (cluster.definition && normalizeText(cluster.definition) !== normalizeText(cluster.summary)) {
     record.appendChild(detailSection("Definition", cluster.definition));
   }
-  if (cluster.recurringThemes) record.appendChild(detailSection("Recurring patterns", textList(cluster.recurringThemes, false)));
+  if (cluster.recurringThemes) record.appendChild(detailSection("Recurring patterns", recurringPatternList(cluster.recurringThemes)));
   record.appendChild(detailSection("Why it matters", definitionRows([
     { label: "Strategic significance", value: cluster.strategicSignificance },
     { label: "Operational implications", value: cluster.operationalImplications },
@@ -2124,13 +2069,14 @@ function evidenceNeighbors(type, id) {
   ];
   const seen = new Set();
   return combined.filter(function (entry) {
+    if (entry.otherType === "categoryFinding") return false;
     if (!getEntity(entry.otherType, entry.otherId)) return false;
     const key = entry.otherType + "\u0000" + entry.otherId + "\u0000" + entry.relationship.semanticRole;
     if (seen.has(key)) return false;
     seen.add(key);
     return true;
   }).sort(function (left, right) {
-    const typeOrder = ["category", "family", "cluster", "theme", "tension", "narrative", "categoryFinding", "scenario", "episode"];
+    const typeOrder = ["category", "family", "cluster", "theme", "tension", "narrative", "scenario", "episode"];
     const byType = typeOrder.indexOf(left.otherType) - typeOrder.indexOf(right.otherType);
     if (byType) return byType;
     return entityName(left.otherType, getEntity(left.otherType, left.otherId)).localeCompare(
@@ -2512,37 +2458,6 @@ async function renderNarrative(route) {
   ]), "Integration is an interpretive relationship, not a causal chain."));
   record.appendChild(renderSupportPanel(narrative, "narrative"));
   await appendEvidenceExplorer(record, "narrative", narrative.narrativeId, route);
-  viewContent.appendChild(record);
-}
-
-async function renderCategoryFinding(route) {
-  const finding = getEntity("categoryFinding", route.id);
-  const category = getEntity("category", finding.categoryId);
-  const isQuestion = finding.findingType === "open-question";
-  setHeader(isQuestion ? "Open question" : "Finding", entityName("categoryFinding", finding), isQuestion ? "An unresolved question preserved in its category context." : "A specific takeaway preserved in its category context.", category.name);
-  setBreadcrumbs([
-    { label: "Categories", view: "families" },
-    { label: category.name, route: routeForEntity("category", category.categoryId) },
-    { label: entityName("categoryFinding", finding), current: true },
-  ]);
-  const record = element("div", "record-detail");
-  record.appendChild(detailHero("categoryFinding", finding, firstValue(finding, ["finding", "coreFinding"], "")));
-  const findingLabel = isQuestion ? "Open question" : "Finding";
-  record.appendChild(detailSection(findingLabel, finding.finding));
-  record.appendChild(detailSection("Where it sits", definitionRows([
-    { label: "Category", value: entityChipList("category", [finding.categoryId]) },
-    { label: "Subcategories", value: entityChipList("family", finding.supportingFamilyIds) },
-    { label: "Topics", value: entityChipList("cluster", finding.supportingClusterIds) },
-  ])));
-  if (asArray(finding.limitations).length) record.appendChild(detailSection("Interpretation limits", textList(finding.limitations, false)));
-  const questions = firstValue(finding, ["openQuestions", "unresolvedQuestions"], []);
-  if (asArray(questions).length) {
-    const open = element("div", "open-questions open-questions--detail");
-    open.appendChild(textList(questions, false));
-    record.appendChild(detailSection("Open questions", open, "These questions remain open; the finding does not resolve them."));
-  }
-  record.appendChild(renderSupportPanel(finding, "finding"));
-  await appendEvidenceExplorer(record, "categoryFinding", finding.findingId, route);
   viewContent.appendChild(record);
 }
 
@@ -3346,7 +3261,7 @@ function activeFilter(label, value) {
 }
 
 async function renderSearch(route) {
-  setHeader("Find ideas and conversations", "Search the map", "Search definitions, syntheses, findings, open questions, tension positions, scenario paths, and episode summaries.", "Public map records");
+  setHeader("Find ideas and conversations", "Search the map", "Search definitions, themes, tension positions, narrative interpretations, scenario paths, and episode summaries.", "Public map records");
   setBreadcrumbs([{ label: "Search", current: true }]);
   searchControls.hidden = false;
   const typeFilter = SEARCH_ENTITY_TYPES.includes(route.type) ? route.type : "";
@@ -3409,7 +3324,7 @@ async function renderMethodology() {
   setBreadcrumbs([{ label: "Methodology", current: true }]);
   const grid = element("div", "methodology-grid");
   const cards = [
-    ["Canonical architecture", "The public hierarchy is Category → Subcategory → Topic: " + formatNumber(counts.categoryCount) + " categories, " + formatNumber(counts.familyCount) + " subcategories, and " + formatNumber(counts.clusterCount) + " topics. The cross-cutting layer contains " + formatNumber(counts.themeCount) + " themes, " + formatNumber(counts.tensionCount) + " tensions, " + formatNumber(counts.narrativeCount) + " narratives, " + formatNumber(counts.categoryFindingCount) + " findings and open questions, and " + formatNumber(counts.scenarioCount) + " scenarios."],
+    ["Canonical architecture", "The public hierarchy is Category → Subcategory → Topic: " + formatNumber(counts.categoryCount) + " categories, " + formatNumber(counts.familyCount) + " subcategories, and " + formatNumber(counts.clusterCount) + " topics. The cross-cutting layer contains " + formatNumber(counts.themeCount) + " themes, " + formatNumber(counts.tensionCount) + " tensions, " + formatNumber(counts.narrativeCount) + " narratives, and " + formatNumber(counts.scenarioCount) + " scenarios."],
     ["Corpus accounting", "This is one practitioner podcast corpus. " + formatNumber(counts.publicReleaseCount) + " public releases represent " + formatNumber(counts.canonicalContentUnitCount) + " canonical content units. The selected canonical corpus contains " + formatNumber(counts.canonicalItemCount) + " items, including " + formatNumber(counts.canonicalFocalItemCount) + " focal and " + formatNumber(counts.canonicalContextualItemCount) + " contextual items. Duplicate-source analytical weight was removed. Separately, one shared-content rerelease inherits public coverage but adds zero analytical weight."],
     ["Synthesis process", "The analytical architecture is a human-guided, AI-assisted synthesis. Governed definitions, boundaries, assignments, adjudications, and validation constrain the synthesis; human review remains responsible for analytical judgment."],
     ["Distinct evidence pipelines", "Transcript → public episode summary is the release-reading pipeline. Structured qualitative analysis → analytical map relationships is the synthesis pipeline. Episode summaries do not independently generate or validate map relationships."],
@@ -3449,7 +3364,6 @@ const RENDERERS = Object.freeze({
   tension: renderTension,
   narratives: renderNarratives,
   narrative: renderNarrative,
-  "category-finding": renderCategoryFinding,
   scenarios: renderScenarios,
   scenario: renderScenario,
   episodes: renderEpisodes,
