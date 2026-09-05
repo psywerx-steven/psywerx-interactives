@@ -1,0 +1,206 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://psywerx.org/schemas/relationship-intervention/v1/relationship-v1.schema.json",
+  "title": "PSYWERX Relationship V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion", "id", "revision", "relationFamily", "predicate",
+    "symmetry", "causalClaim", "sourceEntityId", "sourceEntityType",
+    "targetEntityId", "targetEntityType", "causalClaimRole",
+    "legacyDirectness", "polarity", "mechanism", "boundaryConditions",
+    "applicability", "associationSpecification", "temporalSpecification",
+    "moderatedRelationshipId", "moderatorSpecifications", "combinationRule",
+    "moderationDirection", "causalReviewGate", "rdsSafeguards",
+    "functionalForm", "exposurePattern", "causalLag", "persistence",
+    "evidenceAssessmentIds", "sourceIds", "governance", "compatibility"
+  ],
+  "properties": {
+    "schemaVersion": {"const": "1.0.0"},
+    "id": {"type": "string", "minLength": 1},
+    "revision": {"type": "integer", "minimum": 1},
+    "relationFamily": {"enum": ["CAUSAL", "EMPIRICAL_NONCAUSAL", "MODERATION", "DERIVATIONAL", "COMPOSITIONAL", "REALIZATION", "SEMANTIC"]},
+    "predicate": {"enum": ["CAUSES", "ENABLES", "CONSTRAINS", "ASSOCIATED_WITH", "PRECEDES", "TRANSITIONS_TO", "MODERATES", "DERIVED_FROM", "CONSTITUENT_OF", "MEMBER_OF", "REALIZES", "NARROWER_THAN", "BROADER_THAN", "OVERLAPS_WITH", "EQUIVALENT_UNDER_CONDITIONS", "INVERSE_UNDER_ALIGNED_SCOPE", "RELATED_METRIC"]},
+    "symmetry": {"enum": ["DIRECTED", "SYMMETRIC"]},
+    "causalClaim": {"type": "boolean"},
+    "sourceEntityId": {"type": ["string", "null"], "minLength": 1},
+    "sourceEntityType": {"type": ["string", "null"], "enum": [null, "DRIVER", "RELATIONAL_DERIVED_STATE"]},
+    "targetEntityId": {"type": ["string", "null"], "minLength": 1},
+    "targetEntityType": {"type": ["string", "null"], "enum": [null, "DRIVER", "RELATIONAL_DERIVED_STATE"]},
+    "causalClaimRole": {"type": ["string", "null"], "enum": [null, "MODELED_LOCAL_LINK", "TOTAL_EFFECT", "UNRESOLVED_SHORTCUT"]},
+    "legacyDirectness": {"type": ["string", "null"]},
+    "polarity": {"type": ["string", "null"], "enum": [null, "POSITIVE", "NEGATIVE", "NON_MONOTONIC", "CONTEXT_DEPENDENT"]},
+    "mechanism": {"type": ["string", "null"], "minLength": 1},
+    "boundaryConditions": {"type": ["string", "null"], "minLength": 1},
+    "applicability": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["analyticUnit", "populationOrSystem", "context"],
+      "properties": {
+        "analyticUnit": {"type": ["string", "null"], "minLength": 1},
+        "populationOrSystem": {"type": ["string", "null"], "minLength": 1},
+        "context": {"type": ["string", "null"], "minLength": 1}
+      }
+    },
+    "associationSpecification": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["temporalScope", "qualitativeStatement", "strengthEstimate", "constituentOverlapCheck"],
+      "properties": {
+        "temporalScope": {"enum": ["CROSS_SECTIONAL", "CONTEMPORANEOUS_LONGITUDINAL", "REPEATED_MIXED", "NOT_ESTABLISHED"]},
+        "qualitativeStatement": {"type": ["string", "null"], "minLength": 1},
+        "strengthEstimate": {
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "required": ["measure", "estimate", "unitOrScale", "uncertainty", "designContext", "population", "period"],
+          "properties": {
+            "measure": {"type": "string", "minLength": 1},
+            "estimate": {"type": ["number", "string"]},
+            "unitOrScale": {"type": "string", "minLength": 1},
+            "uncertainty": {"type": ["string", "null"], "minLength": 1},
+            "designContext": {"type": "string", "minLength": 1},
+            "population": {"type": "string", "minLength": 1},
+            "period": {"type": "string", "minLength": 1}
+          }
+        },
+        "constituentOverlapCheck": {"type": "string", "minLength": 1}
+      },
+      "anyOf": [
+        {"properties": {"qualitativeStatement": {"type": "string"}}},
+        {"properties": {"strengthEstimate": {"type": "object"}}}
+      ]
+    },
+    "temporalSpecification": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["sourceStateDefinition", "targetStateDefinition", "observationUnit", "timeOrigin", "horizonOrRiskSet", "populationOrSystem", "context", "transitionProbability"],
+      "properties": {
+        "sourceStateDefinition": {"type": ["string", "null"], "minLength": 1},
+        "targetStateDefinition": {"type": ["string", "null"], "minLength": 1},
+        "observationUnit": {"type": "string", "minLength": 1},
+        "timeOrigin": {"type": "string", "minLength": 1},
+        "horizonOrRiskSet": {"type": "string", "minLength": 1},
+        "populationOrSystem": {"type": "string", "minLength": 1},
+        "context": {"type": "string", "minLength": 1},
+        "transitionProbability": {
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "required": ["estimate", "horizon", "uncertainty"],
+          "properties": {
+            "estimate": {"type": "number", "minimum": 0, "maximum": 1},
+            "horizon": {"type": "string", "minLength": 1},
+            "uncertainty": {"type": ["string", "null"], "minLength": 1}
+          }
+        }
+      }
+    },
+    "moderatedRelationshipId": {"type": ["string", "null"], "minLength": 1},
+    "moderatorSpecifications": {
+      "type": "array", "uniqueItems": true,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["entityId", "entityType", "stateOrRange", "scaleInterpretation"],
+        "properties": {
+          "entityId": {"type": "string", "minLength": 1},
+          "entityType": {"enum": ["DRIVER", "RELATIONAL_DERIVED_STATE"]},
+          "stateOrRange": {"type": "string", "minLength": 1},
+          "scaleInterpretation": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "combinationRule": {"type": ["string", "null"], "enum": [null, "INDIVIDUAL", "JOINT"]},
+    "moderationDirection": {"type": ["string", "null"], "enum": [null, "AMPLIFIES", "ATTENUATES", "REVERSES", "NON_MONOTONIC", "CONTEXT_DEPENDENT"]},
+    "causalReviewGate": {"type": ["string", "null"], "enum": [null, "STANDARD_CAUSAL", "HEIGHTENED_CAUSAL", "EXCEPTIONAL_CAUSAL"]},
+    "rdsSafeguards": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/rdsSafeguards"}]},
+    "functionalForm": {"type": ["object", "null"]},
+    "exposurePattern": {"type": ["object", "null"]},
+    "causalLag": {"type": ["object", "null"]},
+    "persistence": {"type": ["object", "null"]},
+    "evidenceAssessmentIds": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "sourceIds": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "governance": {"$ref": "governance-v1.schema.json"},
+    "compatibility": {"$ref": "#/$defs/compatibility"}
+  },
+  "$defs": {
+    "rdsSafeguards": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["derivationVersion", "derivationInputIds", "calculationWindow", "temporalIndependence", "mechanisticIndependence", "constituentOverlap", "sharedDenominatorCheck", "definitionalEntailment", "duplicatePropagationControl", "exogenousUse"],
+      "properties": {
+        "derivationVersion": {"type": ["string", "null"], "minLength": 1},
+        "derivationInputIds": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "calculationWindow": {"type": ["string", "null"], "minLength": 1},
+        "temporalIndependence": {"enum": ["CONFIRMED", "NOT_CONFIRMED", "NOT_APPLICABLE", "NOT_ASSESSED"]},
+        "mechanisticIndependence": {"enum": ["CONFIRMED", "NOT_CONFIRMED", "NOT_APPLICABLE", "NOT_ASSESSED"]},
+        "constituentOverlap": {"enum": ["NONE", "ASSESSED_AND_CONTROLLED", "PRESENT_REQUIRES_RECONCILIATION", "NOT_ASSESSED"]},
+        "sharedDenominatorCheck": {"enum": ["NONE", "ASSESSED_AND_CONTROLLED", "PRESENT_REQUIRES_RECONCILIATION", "NOT_ASSESSED"]},
+        "definitionalEntailment": {"enum": ["ABSENT", "PRESENT_INVALID_CAUSAL_CLAIM", "NOT_ASSESSED"]},
+        "duplicatePropagationControl": {"type": ["string", "null"], "minLength": 1},
+        "exogenousUse": {"enum": ["NOT_EXOGENOUS", "DERIVED_WITH_PROVENANCE", "MEASURED_WITH_PROVENANCE", "UNRESOLVED"]}
+      }
+    },
+    "compatibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sourceSchema", "authorityStatus", "migrationCompleteness", "v1Executability", "blockedFields", "legacyRelationFamily", "legacyScientificFields", "legacyRecordHash", "legacyRecord"],
+      "properties": {
+        "sourceSchema": {"enum": ["RELATIONSHIP_V1", "RELATIONSHIP_SCHEMA_V3"]},
+        "authorityStatus": {"enum": ["V1_LIFECYCLE", "PRESERVED_V3_GOVERNED_ACTIVE", "PRESERVED_V3_INACTIVE", "PRESERVED_V3_CANDIDATE"]},
+        "migrationCompleteness": {"enum": ["COMPLETE", "INCOMPLETE"]},
+        "v1Executability": {"enum": ["EXECUTABLE", "NOT_EXECUTABLE", "LEGACY_ONLY"]},
+        "blockedFields": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "legacyRelationFamily": {"type": ["string", "null"], "minLength": 1},
+        "legacyScientificFields": {"type": ["object", "null"]},
+        "legacyRecordHash": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"},
+        "legacyRecord": {"type": ["object", "null"]}
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"relationFamily": {"const": "CAUSAL"}}},
+      "then": {
+        "properties": {"predicate": {"enum": ["CAUSES", "ENABLES", "CONSTRAINS"]}, "symmetry": {"const": "DIRECTED"}, "causalClaim": {"const": true}},
+        "not": {"anyOf": [{"properties": {"moderatedRelationshipId": {"type": "string"}}}, {"properties": {"associationSpecification": {"type": "object"}}}, {"properties": {"temporalSpecification": {"type": "object"}}}]}
+      }
+    },
+    {
+      "if": {"properties": {"relationFamily": {"const": "EMPIRICAL_NONCAUSAL"}}},
+      "then": {"properties": {"predicate": {"enum": ["ASSOCIATED_WITH", "PRECEDES", "TRANSITIONS_TO"]}, "causalClaim": {"const": false}}}
+    },
+    {
+      "if": {"properties": {"predicate": {"const": "ASSOCIATED_WITH"}}},
+      "then": {"properties": {"symmetry": {"const": "SYMMETRIC"}, "associationSpecification": {"type": "object"}}}
+    },
+    {
+      "if": {"properties": {"predicate": {"enum": ["PRECEDES", "TRANSITIONS_TO"]}}},
+      "then": {"properties": {"symmetry": {"const": "DIRECTED"}, "temporalSpecification": {"type": "object"}}}
+    },
+    {
+      "if": {"properties": {"predicate": {"const": "TRANSITIONS_TO"}}},
+      "then": {"properties": {"temporalSpecification": {"properties": {"sourceStateDefinition": {"type": "string"}, "targetStateDefinition": {"type": "string"}}}}}
+    },
+    {
+      "if": {"properties": {"relationFamily": {"const": "MODERATION"}}},
+      "then": {
+        "properties": {"predicate": {"const": "MODERATES"}, "symmetry": {"const": "DIRECTED"}, "causalClaim": {"const": false}, "moderatedRelationshipId": {"type": "string"}, "moderatorSpecifications": {"minItems": 1}, "combinationRule": {"type": "string"}, "moderationDirection": {"type": "string"}, "mechanism": {"type": "string"}, "sourceEntityId": {"type": "null"}, "sourceEntityType": {"type": "null"}, "targetEntityId": {"type": "null"}, "targetEntityType": {"type": "null"}, "causalClaimRole": {"type": "null"}, "polarity": {"type": "null"}, "causalReviewGate": {"type": "null"}, "rdsSafeguards": {"type": "null"}}
+      }
+    },
+    {
+      "if": {"properties": {"relationFamily": {"const": "DERIVATIONAL"}}},
+      "then": {"properties": {"predicate": {"const": "DERIVED_FROM"}, "symmetry": {"const": "DIRECTED"}, "causalClaim": {"const": false}}}
+    },
+    {
+      "if": {"properties": {"relationFamily": {"const": "COMPOSITIONAL"}}},
+      "then": {"properties": {"predicate": {"enum": ["CONSTITUENT_OF", "MEMBER_OF"]}, "symmetry": {"const": "DIRECTED"}, "causalClaim": {"const": false}}}
+    },
+    {
+      "if": {"properties": {"relationFamily": {"const": "REALIZATION"}}},
+      "then": {"properties": {"predicate": {"const": "REALIZES"}, "symmetry": {"const": "DIRECTED"}, "causalClaim": {"const": false}}}
+    },
+    {
+      "if": {"properties": {"relationFamily": {"const": "SEMANTIC"}}},
+      "then": {"properties": {"predicate": {"enum": ["NARROWER_THAN", "BROADER_THAN", "OVERLAPS_WITH", "EQUIVALENT_UNDER_CONDITIONS", "INVERSE_UNDER_ALIGNED_SCOPE", "RELATED_METRIC"]}, "causalClaim": {"const": false}}}
+    }
+  ]
+}

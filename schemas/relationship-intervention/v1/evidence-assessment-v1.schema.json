@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://psywerx.org/schemas/relationship-intervention/v1/evidence-assessment-v1.schema.json",
+  "title": "PSYWERX EvidenceAssessment V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion", "id", "revision", "assertion", "sourceIds",
+    "evidenceRationale", "evidenceStrength", "confidence",
+    "evidenceDisposition", "population", "context",
+    "studyDesignCharacterizations", "quantitativeEstimate", "uncertainty",
+    "conflictingEvidence", "limitations", "reviewProvenance", "governance"
+  ],
+  "properties": {
+    "schemaVersion": {"const": "1.0.0"},
+    "id": {"type": "string", "minLength": 1},
+    "revision": {"type": "integer", "minimum": 1},
+    "assertion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["objectType", "objectId"],
+      "properties": {
+        "objectType": {"enum": ["RELATIONSHIP", "MODERATION", "CAUSAL_PATHWAY", "INTERVENTION_EFFECT", "INTERVENTION_IDENTITY"]},
+        "objectId": {"type": "string", "minLength": 1}
+      }
+    },
+    "sourceIds": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "evidenceRationale": {"type": ["string", "null"], "minLength": 1},
+    "evidenceStrength": {"enum": ["STRONG", "MODERATE", "MIXED", "LIMITED", "EMERGING", "NOT_ASSESSED"]},
+    "confidence": {"enum": ["HIGH", "MODERATE", "LOW", "NOT_ASSESSED"]},
+    "evidenceDisposition": {"enum": ["NOT_ASSESSED", "SUPPORTS", "MIXED", "CONTRADICTED", "INSUFFICIENT"]},
+    "population": {"type": ["string", "null"], "minLength": 1},
+    "context": {"type": ["string", "null"], "minLength": 1},
+    "studyDesignCharacterizations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["designType", "specification"],
+        "properties": {
+          "designType": {"enum": ["EXPERIMENTAL", "QUASI_EXPERIMENTAL", "OBSERVATIONAL_LONGITUDINAL", "OBSERVATIONAL_CROSS_SECTIONAL", "QUALITATIVE", "SYNTHESIS", "THEORETICAL", "OTHER_SPECIFIED", "NOT_CHARACTERIZED"]},
+          "specification": {"type": ["string", "null"], "minLength": 1}
+        },
+        "allOf": [{
+          "if": {"properties": {"designType": {"const": "OTHER_SPECIFIED"}}},
+          "then": {"properties": {"specification": {"type": "string"}}}
+        }]
+      }
+    },
+    "quantitativeEstimate": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["estimandType", "estimate", "unitOrScale", "uncertaintyInterval", "mechanisticDirectness"],
+      "properties": {
+        "estimandType": {"enum": ["DIRECT_EFFECT", "INDIRECT_EFFECT", "TOTAL_EFFECT", "ASSOCIATION", "TRANSITION_PROBABILITY", "OTHER_SPECIFIED", "NOT_ESTIMATED"]},
+        "estimate": {"type": ["number", "null"]},
+        "unitOrScale": {"type": ["string", "null"], "minLength": 1},
+        "uncertaintyInterval": {"type": ["string", "null"], "minLength": 1},
+        "mechanisticDirectness": {"enum": ["DIRECT", "INDIRECT", "UNKNOWN", "NOT_APPLICABLE"]},
+        "estimandSpecification": {"type": ["string", "null"], "minLength": 1}
+      },
+      "allOf": [{
+        "if": {"properties": {"estimandType": {"const": "OTHER_SPECIFIED"}}},
+        "then": {"properties": {"estimandSpecification": {"type": "string"}}}
+      }]
+    },
+    "uncertainty": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "conflictingEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sourceIds", "summary"],
+      "properties": {
+        "sourceIds": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "summary": {"type": ["string", "null"], "minLength": 1}
+      }
+    },
+    "limitations": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "reviewProvenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["createdAt", "createdByActorClass", "reviewedAt", "reviewedBy", "sourceSchema"],
+      "properties": {
+        "createdAt": {"type": "string", "format": "date-time"},
+        "createdByActorClass": {"enum": ["AUTOMATED_PROCESS_OR_AI", "RESEARCHER_REVIEWER", "AUTHORIZED_HUMAN_GOVERNOR"]},
+        "reviewedAt": {"type": ["string", "null"], "format": "date-time"},
+        "reviewedBy": {"type": ["string", "null"], "minLength": 1},
+        "sourceSchema": {"type": "string", "minLength": 1}
+      }
+    },
+    "governance": {"$ref": "governance-v1.schema.json"}
+  }
+}

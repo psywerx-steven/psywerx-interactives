@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://psywerx.org/schemas/relationship-intervention/v1/governance-v1.schema.json",
+  "title": "PSYWERX Governance State V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "lifecycleStatus",
+    "activationStatus",
+    "blockStatus",
+    "decisionOutcome",
+    "authorityBasis",
+    "decisionRecord",
+    "authorizedBy",
+    "decisionDate",
+    "effectiveVersion",
+    "decisionRationale",
+    "supersedesIds",
+    "transitionProvenance"
+  ],
+  "properties": {
+    "lifecycleStatus": {
+      "enum": ["CANDIDATE", "RESEARCH_NEEDED", "REVIEW_READY", "GOVERNED", "REJECTED", "DEPRECATED"]
+    },
+    "activationStatus": {"enum": ["NOT_ELIGIBLE", "ACTIVE", "INACTIVE"]},
+    "blockStatus": {"enum": ["NONE", "NEEDS_GOVERNANCE_INPUT"]},
+    "decisionOutcome": {"enum": ["NOT_DECIDED", "APPROVED", "REJECTED", "SUPERSEDED"]},
+    "authorityBasis": {"enum": ["V1_NATIVE", "PRESERVED_V3"]},
+    "decisionRecord": {"type": ["string", "null"], "minLength": 1},
+    "authorizedBy": {"type": ["string", "null"], "minLength": 1},
+    "decisionDate": {"type": ["string", "null"], "format": "date"},
+    "effectiveVersion": {"type": ["string", "null"], "minLength": 1},
+    "decisionRationale": {"type": ["string", "null"], "minLength": 1},
+    "supersedesIds": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "transitionProvenance": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/transition"}
+    }
+  },
+  "$defs": {
+    "state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["lifecycleStatus", "activationStatus"],
+      "properties": {
+        "lifecycleStatus": {
+          "type": ["string", "null"],
+          "enum": [null, "CANDIDATE", "RESEARCH_NEEDED", "REVIEW_READY", "GOVERNED", "REJECTED", "DEPRECATED"]
+        },
+        "activationStatus": {"enum": ["NOT_ELIGIBLE", "ACTIVE", "INACTIVE"]}
+      }
+    },
+    "transition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "fromState", "toState", "actorClass", "rationale", "timestamp",
+        "objectId", "revision", "provenance", "governanceDecisionRecord",
+        "exactDecisionMaterialization"
+      ],
+      "properties": {
+        "fromState": {"$ref": "#/$defs/state"},
+        "toState": {"$ref": "#/$defs/state"},
+        "actorClass": {
+          "enum": ["AUTOMATED_PROCESS_OR_AI", "RESEARCHER_REVIEWER", "AUTHORIZED_HUMAN_GOVERNOR"]
+        },
+        "rationale": {"type": "string", "minLength": 1},
+        "timestamp": {"type": "string", "format": "date-time"},
+        "objectId": {"type": "string", "minLength": 1},
+        "revision": {"type": "integer", "minimum": 1},
+        "provenance": {"type": "string", "minLength": 1},
+        "governanceDecisionRecord": {"type": ["string", "null"], "minLength": 1},
+        "exactDecisionMaterialization": {"type": "boolean"}
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"lifecycleStatus": {"enum": ["CANDIDATE", "RESEARCH_NEEDED", "REVIEW_READY", "REJECTED"]}}},
+      "then": {"properties": {"activationStatus": {"const": "NOT_ELIGIBLE"}}}
+    },
+    {
+      "if": {"properties": {"lifecycleStatus": {"const": "GOVERNED"}}},
+      "then": {
+        "properties": {
+          "activationStatus": {"enum": ["ACTIVE", "INACTIVE"]},
+          "decisionOutcome": {"const": "APPROVED"},
+          "decisionRecord": {"type": "string"},
+          "authorizedBy": {"type": "string"},
+          "decisionDate": {"type": "string"},
+          "effectiveVersion": {"type": "string"},
+          "decisionRationale": {"type": "string"}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"lifecycleStatus": {"const": "REJECTED"}}},
+      "then": {"properties": {"decisionOutcome": {"const": "REJECTED"}}}
+    },
+    {
+      "if": {"properties": {"lifecycleStatus": {"const": "DEPRECATED"}}},
+      "then": {"properties": {"activationStatus": {"const": "INACTIVE"}}}
+    }
+  ]
+}
