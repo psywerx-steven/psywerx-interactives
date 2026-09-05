@@ -17,9 +17,12 @@
 | RDS contract | Relational/Derived State Schema v0.1 |
 | Relationship contract | Relationship V1 `1.0.0`; V3 remains the current scientific corpus |
 | Intervention contract | Intervention V1 `1.0.0` |
-| Source register | v1.0; 529 records; SHA-256 `f1aae4135ac049e223ae65a66a24a6dfc2c28e911add59ce11df34e9c0af3615` |
-| Entity dataset | SHA-256 `74f88110911280bc6d508da56af824b63db4c11d741223b694aa7ac18734cf99` |
-| Relationship dataset | SHA-256 `759f90446ff5f6e27d496e3e3603bb44045f7f0abf4770e4c012c5e4d974ba51` |
+| Source register | v1.0; 529 records; canonical-LF SHA-256 `f1aae4135ac049e223ae65a66a24a6dfc2c28e911add59ce11df34e9c0af3615` |
+| Entity dataset | canonical-LF SHA-256 `74f88110911280bc6d508da56af824b63db4c11d741223b694aa7ac18734cf99` |
+| Relationship dataset | canonical-LF SHA-256 `759f90446ff5f6e27d496e3e3603bb44045f7f0abf4770e4c012c5e4d974ba51` |
+
+Canonical-LF hashes normalize `CRLF` to `LF` before hashing so this frozen
+state is identical across governed Linux and Windows checkouts.
 
 The Family definition is “Variables governing sleep amount, continuity,
 circadian timing, and sleep–wake transitions.” Its governed exclusion places

@@ -30,8 +30,9 @@ def read_json(path: Path):
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-def sha256(path: Path) -> str:
-    return hashlib.sha256(path.read_bytes()).hexdigest()
+def canonical_lf_sha256(path: Path) -> str:
+    payload = path.read_bytes().replace(b"\r\n", b"\n")
+    return hashlib.sha256(payload).hexdigest()
 
 
 class BioF01PilotTests(unittest.TestCase):
@@ -142,9 +143,18 @@ class BioF01PilotTests(unittest.TestCase):
 
     def test_canonical_baseline_hashes_and_counts_are_unchanged(self):
         baseline = self.manifest["baseline"]
-        self.assertEqual(sha256(ROOT / "data" / "entities.json"), baseline["entityDatasetSha256"])
-        self.assertEqual(sha256(ROOT / "data" / "relationships.json"), baseline["relationshipDatasetSha256"])
-        self.assertEqual(sha256(ROOT / "data" / "sources.json"), baseline["sourceRegister"]["sha256"])
+        self.assertEqual(
+            canonical_lf_sha256(ROOT / "data" / "entities.json"),
+            baseline["entityDatasetCanonicalLfSha256"],
+        )
+        self.assertEqual(
+            canonical_lf_sha256(ROOT / "data" / "relationships.json"),
+            baseline["relationshipDatasetCanonicalLfSha256"],
+        )
+        self.assertEqual(
+            canonical_lf_sha256(ROOT / "data" / "sources.json"),
+            baseline["sourceRegister"]["canonicalLfSha256"],
+        )
         counts = V1.validate_repository()
         self.assertEqual(counts["entities"], 811)
         self.assertEqual(counts["activeRelationships"], 450)

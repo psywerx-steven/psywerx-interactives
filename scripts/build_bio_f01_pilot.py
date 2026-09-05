@@ -24,8 +24,10 @@ def _read(path: str):
     return json.loads((ROOT / path).read_text(encoding="utf-8"))
 
 
-def _sha256(path: str) -> str:
-    return hashlib.sha256((ROOT / path).read_bytes()).hexdigest()
+def _canonical_lf_sha256(path: str) -> str:
+    """Hash governed JSON text without platform checkout line-ending variance."""
+    payload = (ROOT / path).read_bytes().replace(b"\r\n", b"\n")
+    return hashlib.sha256(payload).hexdigest()
 
 
 def _transition(object_id: str, lifecycle: str) -> list[dict]:
@@ -548,9 +550,9 @@ def build_manifest(workspace: dict) -> dict:
             "entityContracts": ["DRIVER_SCHEMA_V1_1", "RELATIONAL_DERIVED_STATE_SCHEMA_V0_1"],
             "relationshipSchema": "RELATIONSHIP_V1_1.0.0",
             "interventionSchema": "INTERVENTION_V1_1.0.0",
-            "sourceRegister": {"schemaVersion": _read("data/sources.json")["schemaVersion"], "recordCount": len(_read("data/sources.json")["sources"]), "sha256": _sha256("data/sources.json")},
-            "entityDatasetSha256": _sha256("data/entities.json"),
-            "relationshipDatasetSha256": _sha256("data/relationships.json"),
+            "sourceRegister": {"schemaVersion": _read("data/sources.json")["schemaVersion"], "recordCount": len(_read("data/sources.json")["sources"]), "canonicalLfSha256": _canonical_lf_sha256("data/sources.json")},
+            "entityDatasetCanonicalLfSha256": _canonical_lf_sha256("data/entities.json"),
+            "relationshipDatasetCanonicalLfSha256": _canonical_lf_sha256("data/relationships.json"),
         },
         "membership": {
             "driverIds": [row["id"] for row in members if row["entityType"] == "DRIVER"],
