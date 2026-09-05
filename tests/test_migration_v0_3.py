@@ -33,6 +33,21 @@ POSITIVE_CONTROLS = {
 }
 REQUIRED_DRIVERS = POSITIVE_CONTROLS | {"SOC-036", "INS-102"}
 BLOCKED_STATUS = "BLOCKED_NEEDS_GOVERNANCE_INPUT"
+FROZEN_BASELINE_COMMIT = "580d59c451765e9f4d65b517f538a495fa93bda5"
+SPECIFICATION_STATUS = "GOVERNED_MIGRATION_SPECIFICATION"
+BASELINE_STATUS = "GOVERNED_MIGRATION_BASELINE"
+AUTHORITY_DECISION_RECORD = "docs/governance/MIGRATION_BASELINE_ADOPTION_V0_3.md"
+EFFECTIVE_COMMIT = "6cf34a029a9dc6e099628e86dfb9f42b53bd8d13"
+EFFECTIVE_DATE = "2026-09-05"
+OPEN_GOVERNANCE_ITEMS = [
+    "INS-102",
+    "REL-SOC-028",
+    "REL-TEC-049",
+    "REL-MIG-CAND-0001",
+    "REL-MIG-CAND-0002",
+    "REL-MIG-CAND-0003",
+    "NEW-ENTITIES-V0.3",
+]
 
 
 def load(name):
@@ -41,7 +56,7 @@ def load(name):
 
 def baseline_bytes(name):
     return subprocess.run(
-        ["git", "show", f"580d59c:data/{name}"],
+        ["git", "show", f"{FROZEN_BASELINE_COMMIT}:data/{name}"],
         cwd=ROOT,
         check=True,
         stdout=subprocess.PIPE,
@@ -81,6 +96,52 @@ class GovernedMigrationV03Tests(unittest.TestCase):
         self.assertTrue(all(
             row["entityType"] == "RELATIONAL_DERIVED_STATE" for row in self.rds
         ))
+
+    def test_adopted_migration_authority_is_exact_and_resolvable(self):
+        seed = json.loads(SEED.read_text(encoding="utf-8"))
+        self.assertEqual(seed["status"], SPECIFICATION_STATUS)
+        self.assertEqual(self.manifest["specificationStatus"], SPECIFICATION_STATUS)
+        self.assertEqual(self.manifest["status"], BASELINE_STATUS)
+        self.assertEqual(self.manifest["baselineGitCommit"], FROZEN_BASELINE_COMMIT)
+        for record in (seed, self.manifest):
+            self.assertEqual(record["authorityDecisionRecord"], AUTHORITY_DECISION_RECORD)
+            self.assertEqual(record["effectiveCommit"], EFFECTIVE_COMMIT)
+            self.assertEqual(record["effectiveDate"], EFFECTIVE_DATE)
+            self.assertEqual(record["openGovernanceItems"], OPEN_GOVERNANCE_ITEMS)
+        decision_path = ROOT / AUTHORITY_DECISION_RECORD
+        self.assertTrue(decision_path.is_file())
+        decision_text = decision_path.read_text(encoding="utf-8")
+        self.assertIn("MIGRATION_BASELINE_ADOPTION_V0_3-2026-09-05", decision_text)
+        self.assertIn(EFFECTIVE_COMMIT, decision_text)
+        self.assertIn(AUTHORITY_DECISION_RECORD, self.manifest["governanceDecisionRecords"])
+
+    def test_preview_authority_labels_cannot_return(self):
+        seed_text = SEED.read_text(encoding="utf-8")
+        manifest_text = (DATA / "migration-manifest.json").read_text(encoding="utf-8")
+        for retired_label in (
+            "NON_AUTHORITATIVE_PREVIEW_SEED",
+            "NON_AUTHORITATIVE_MIGRATION_PREVIEW",
+        ):
+            self.assertNotIn(retired_label, seed_text)
+            self.assertNotIn(retired_label, manifest_text)
+
+    def test_governance_seed_rejects_authority_tampering(self):
+        seed = json.loads(SEED.read_text(encoding="utf-8"))
+        tampered_values = {
+            "status": "NON_AUTHORITATIVE_PREVIEW_SEED",
+            "authorityDecisionRecord": "docs/governance/UNKNOWN.md",
+            "effectiveCommit": "580d59c451765e9f4d65b517f538a495fa93bda5",
+            "effectiveDate": "2026-09-06",
+            "openGovernanceItems": OPEN_GOVERNANCE_ITEMS[:-1],
+        }
+        for field, value in tampered_values.items():
+            with self.subTest(field=field):
+                tampered = copy.deepcopy(seed)
+                tampered[field] = value
+                with self.assertRaisesRegex(
+                    ValueError, f"migration authority field {field}"
+                ):
+                    MIGRATION.validate_governance_seed(tampered)
 
     def test_only_approved_baseline_ids_were_retyped(self):
         rds_ids = {row["id"] for row in self.rds}
@@ -197,6 +258,7 @@ class GovernedMigrationV03Tests(unittest.TestCase):
             row for row in self.relationships["relationships"]
             if row["relationFamily"] == "CAUSAL"
         ]
+        self.assertEqual(len(self.relationships["relationships"]), 450)
         self.assertEqual(len(active), 431)
         self.assertEqual({row["id"] for row in active}, set(baseline_by_id) - inactive_ids)
         for row in active:
@@ -266,6 +328,20 @@ class GovernedMigrationV03Tests(unittest.TestCase):
             self.assertTrue(set(source["relationshipIds"]) <= relationship_ids)
         for record in self.plain_language:
             self.assertIn(record["driverId"], entity_ids)
+        crosswalk_ids = [row["crosswalkId"] for row in self.crosswalks]
+        self.assertEqual(len(crosswalk_ids), len(set(crosswalk_ids)))
+        for crosswalk in self.crosswalks:
+            if crosswalk["resourceType"] == "ENTITY":
+                self.assertIn(crosswalk["legacyId"], entity_ids)
+                self.assertTrue(set(crosswalk["successorIds"]) <= entity_ids)
+            elif crosswalk["resourceType"] == "RELATIONSHIP":
+                self.assertIn(crosswalk["legacyId"], relationship_ids)
+                self.assertTrue(set(crosswalk["successorIds"]) <= relationship_ids)
+            else:
+                self.fail(
+                    f"Unsupported crosswalk resource type: "
+                    f"{crosswalk['resourceType']}"
+                )
 
     def test_noncausal_relationships_do_not_carry_causal_fields(self):
         causal_fields = (

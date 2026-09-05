@@ -1,8 +1,9 @@
-"""Build the governed Driver/RDS migration preview v0.3.
+"""Build the governed Driver/RDS migration baseline v0.3.
 
 The existing XLSX importers first recreate the 793-Driver baseline. This
 post-generation step then atomically emits the governed 770 Driver / 41 RDS /
-811 entity preview. Generated JSON is never hand-edited.
+811 entity baseline. The historical filename is retained for compatibility.
+Generated JSON is never hand-edited.
 """
 
 from __future__ import annotations
@@ -24,13 +25,27 @@ DATA = ROOT / "data"
 HANDOFF = ROOT / "_migration_handoff_v0.3"
 SEED = HANDOFF / "migration_manifest_seed.json"
 VERSION = "0.3"
-BASELINE_COMMIT = "580d59c"
+BASELINE_COMMIT = "580d59c451765e9f4d65b517f538a495fa93bda5"
 BASELINE_COUNTS = {"drivers": 793, "families": 105, "relationships": 439}
 TARGET_COUNTS = {
     "drivers": 770,
     "relationalDerivedStates": 41,
     "totalCanonicalEntities": 811,
 }
+SPECIFICATION_STATUS = "GOVERNED_MIGRATION_SPECIFICATION"
+BASELINE_STATUS = "GOVERNED_MIGRATION_BASELINE"
+AUTHORITY_DECISION_RECORD = "docs/governance/MIGRATION_BASELINE_ADOPTION_V0_3.md"
+EFFECTIVE_COMMIT = "6cf34a029a9dc6e099628e86dfb9f42b53bd8d13"
+EFFECTIVE_DATE = "2026-09-05"
+OPEN_GOVERNANCE_ITEMS = (
+    "INS-102",
+    "REL-SOC-028",
+    "REL-TEC-049",
+    "REL-MIG-CAND-0001",
+    "REL-MIG-CAND-0002",
+    "REL-MIG-CAND-0003",
+    "NEW-ENTITIES-V0.3",
+)
 
 ARCHITECTURE_DECISION = "https://app.notion.com/p/3cdf827a3d158103b02efcf83c197519"
 RDS_SCHEMA_DECISION = "https://app.notion.com/p/3cdf827a3d1581329f44cb36344c0409"
@@ -1051,6 +1066,25 @@ def load_baseline_json(name: str) -> Any:
 
 
 def validate_governance_seed(seed: dict[str, Any]) -> None:
+    expected_authority = {
+        "status": SPECIFICATION_STATUS,
+        "authorityDecisionRecord": AUTHORITY_DECISION_RECORD,
+        "effectiveCommit": EFFECTIVE_COMMIT,
+        "effectiveDate": EFFECTIVE_DATE,
+        "openGovernanceItems": list(OPEN_GOVERNANCE_ITEMS),
+    }
+    for field, expected in expected_authority.items():
+        if seed.get(field) != expected:
+            raise ValueError(
+                f"The handoff seed changes governed migration authority field {field}"
+            )
+    decision_path = ROOT / AUTHORITY_DECISION_RECORD
+    if not decision_path.is_file():
+        raise ValueError(
+            f"The migration authority decision record does not resolve: "
+            f"{AUTHORITY_DECISION_RECORD}"
+        )
+
     retypes = seed.get("retypes")
     if not isinstance(retypes, list):
         raise ValueError("The handoff seed has no governed retype list")
@@ -2467,6 +2501,11 @@ def main() -> int:
                 "sourceDecisionRecord": GAP_DECISION,
             },
         ]
+        blocked_item_ids = tuple(item["itemId"] for item in blocked_items)
+        if blocked_item_ids != OPEN_GOVERNANCE_ITEMS:
+            raise ValueError(
+                "Generated blocked items differ from the adopted open governance items"
+            )
 
         outputs: dict[str, Any] = {
             "drivers.json": drivers,
@@ -2480,8 +2519,13 @@ def main() -> int:
         manifest = {
             "schemaVersion": "1.0",
             "migrationVersion": VERSION,
-            "status": "NON_AUTHORITATIVE_MIGRATION_PREVIEW",
+            "status": BASELINE_STATUS,
             "specification": "_migration_handoff_v0.3",
+            "specificationStatus": SPECIFICATION_STATUS,
+            "authorityDecisionRecord": AUTHORITY_DECISION_RECORD,
+            "effectiveCommit": EFFECTIVE_COMMIT,
+            "effectiveDate": EFFECTIVE_DATE,
+            "openGovernanceItems": list(OPEN_GOVERNANCE_ITEMS),
             "baselineGitCommit": BASELINE_COMMIT,
             "baselineCounts": BASELINE_COUNTS,
             "baselineArtifactSha256": baseline_hashes,
@@ -2534,6 +2578,7 @@ def main() -> int:
             },
             "blockedItems": blocked_items,
             "governanceDecisionRecords": [
+                AUTHORITY_DECISION_RECORD,
                 ARCHITECTURE_DECISION,
                 RDS_SCHEMA_DECISION,
                 RELATIONSHIP_SCHEMA_DECISION,
@@ -2576,7 +2621,7 @@ def main() -> int:
         print(f"ERROR: {exc}")
         return 1
 
-    print("Governed migration preview v0.3 built and validated")
+    print("Governed migration baseline v0.3 built and validated")
     print("  Drivers: 770")
     print("  Relational & Derived States: 41")
     print("  Canonical entities: 811")

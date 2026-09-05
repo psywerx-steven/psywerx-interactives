@@ -13,8 +13,10 @@ not replace Relationship Schema v3, change any canonical entity or
 relationship, publish an intervention catalog, or change application behavior.
 Production V1 implementation remains separately unauthorized.
 
-**Decision record:**
-[`GOV-REL-INT-V1-2026-09-05`](RELATIONSHIP_INTERVENTION_V1_GOVERNANCE_DECISION.md)
+**Decision records:**
+
+- [`GOV-REL-INT-V1-2026-09-05`](RELATIONSHIP_INTERVENTION_V1_GOVERNANCE_DECISION.md)
+- [`MIGRATION_BASELINE_ADOPTION_V0_3-2026-09-05`](MIGRATION_BASELINE_ADOPTION_V0_3.md)
 
 ## Current governed baseline
 
@@ -26,11 +28,13 @@ Production V1 implementation remains separately unauthorized.
 - a separate Scenario Operationalization v1 service contract that produces
   transient analytical examples, not interventions or canonical knowledge.
 
-The repository's `data/migration-manifest.json` still labels v0.3 a
-`NON_AUTHORITATIVE_MIGRATION_PREVIEW`, while CI mechanically protects its exact
-partition, counts, and 431 causal propositions. PR #11 preserves that status
-language. Migration-baseline adoption is a separate authorized governance
-action with its own branch, decision record, validation, and pull request.
+PR #11 preserved the then-current `NON_AUTHORITATIVE_MIGRATION_PREVIEW`
+designation and required a separate governance action before it could change.
+The linked Migration Baseline Adoption V0.3 decision now adopts the exact v0.3
+specification as `GOVERNED_MIGRATION_SPECIFICATION` and its deterministic output
+as `GOVERNED_MIGRATION_BASELINE`. That adoption has its own branch, decision
+record, validation, and pull request; it does not govern individual scientific
+records beyond the exact migration decisions it names.
 
 ## Governed V1 architecture package
 
@@ -52,6 +56,9 @@ action with its own branch, decision record, validation, and pull request.
    the D01–D14 analysis and final outcomes.
 8. [Governance Decision](RELATIONSHIP_INTERVENTION_V1_GOVERNANCE_DECISION.md)
    records the human authorization and scope limits.
+9. [Migration Baseline Adoption V0.3](MIGRATION_BASELINE_ADOPTION_V0_3.md)
+   separately records authority for the exact v0.3 migration specification and
+   generated baseline while preserving all listed open governance items.
 
 ## Non-production draft-schema rule
 

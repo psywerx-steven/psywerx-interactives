@@ -107,9 +107,13 @@ This assessment is a corpus profile, not a relationship audit.
   `REALIZATION`, and `SEMANTIC_MAPPING`; documentation also mentions
   `SEMANTIC` and `CONSTRAINT`. This vocabulary drift should be resolved by a
   governance decision, not by rewriting data incidentally.
-- The migration manifest calls v0.3 a non-authoritative preview even though CI
-  protects its exact Driver/RDS partition and 431 causal propositions. This
-  proposal does not silently change that authority designation.
+- At the time of this architecture assessment, the migration manifest called
+  v0.3 a non-authoritative preview even though CI protected its exact
+  Driver/RDS partition and 431 causal propositions. PR #11 did not change that
+  designation. The later, separate
+  [Migration Baseline Adoption V0.3](MIGRATION_BASELINE_ADOPTION_V0_3.md)
+  governs the exact specification and deterministic baseline without changing
+  this assessment or individual relationship content.
 - `objectRelationshipId` anticipates edge-to-edge claims, but current records
   and validators still require an entity object. Moderation therefore has no
   complete executable representation.
