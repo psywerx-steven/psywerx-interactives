@@ -1,0 +1,446 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://psywerx.org/schemas/proposed/intervention-effect-v1.schema.json",
+  "title": "Proposed PSYWERX governed Intervention Effect V1",
+  "description": "Non-production design draft for one bounded intervention-to-target effect assertion.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "id",
+    "revision",
+    "interventionId",
+    "targetKind",
+    "targetDriverId",
+    "targetRelationshipId",
+    "contextCondition",
+    "mechanisticDriverIds",
+    "affectedRelationshipIds",
+    "effectMode",
+    "intendedDirection",
+    "mechanismOfAction",
+    "targetPopulationOrAudience",
+    "context",
+    "scale",
+    "boundaryConditions",
+    "implementers",
+    "deliveryModalities",
+    "channels",
+    "exposure",
+    "timing",
+    "prerequisites",
+    "moderatorEntityIds",
+    "outcomeEntityIds",
+    "measuresOfEffect",
+    "unintendedEffects",
+    "risks",
+    "ethicalLegalConstraints",
+    "feasibility",
+    "evidenceAssessment",
+    "supportingSourceIds",
+    "governance"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "PROPOSED-1.0"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^IEF-[0-9]{6}$"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "interventionId": {
+      "type": "string",
+      "pattern": "^INT-[0-9]{5}$"
+    },
+    "targetKind": {
+      "enum": [
+        "DRIVER",
+        "RELATIONSHIP",
+        "CONTEXT_CONDITION"
+      ]
+    },
+    "targetDriverId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[A-Z]{3}-[0-9]{3}$"
+    },
+    "targetRelationshipId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "contextCondition": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "mechanisticDriverIds": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Z]{3}-[0-9]{3}$"
+      }
+    },
+    "affectedRelationshipIds": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "effectMode": {
+      "enum": [
+        "CHANGE_LEVEL",
+        "STABILIZE",
+        "DISRUPT",
+        "BUFFER",
+        "AMPLIFY",
+        "SUPPRESS",
+        "ALTER_CONTEXT"
+      ]
+    },
+    "intendedDirection": {
+      "enum": [
+        "INCREASE",
+        "DECREASE",
+        "MOVE_TOWARD_RANGE",
+        "CONTEXT_DEPENDENT",
+        "NOT_APPLICABLE"
+      ]
+    },
+    "mechanismOfAction": {
+      "type": "string",
+      "minLength": 1
+    },
+    "targetPopulationOrAudience": {
+      "type": "string",
+      "minLength": 1
+    },
+    "context": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scale": {
+      "type": "string",
+      "minLength": 1
+    },
+    "boundaryConditions": {
+      "type": "string",
+      "minLength": 1
+    },
+    "implementers": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "deliveryModalities": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "channels": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "exposure": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "description": "Dose, intensity, frequency, and duration when meaningful."
+    },
+    "timing": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "description": "Onset, persistence, and reversibility when supported."
+    },
+    "prerequisites": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "moderatorEntityIds": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "outcomeEntityIds": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "measuresOfEffect": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "unintendedEffects": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "risks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "ethicalLegalConstraints": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "feasibility": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "evidenceAssessment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evidenceStrength",
+        "confidence",
+        "evidenceDisposition",
+        "evidenceRationale",
+        "conflictingSourceIds",
+        "uncertainty"
+      ],
+      "properties": {
+        "evidenceStrength": {
+          "enum": [
+            "STRONG",
+            "MODERATE",
+            "LIMITED",
+            "EMERGING",
+            "MIXED"
+          ]
+        },
+        "confidence": {
+          "enum": [
+            "HIGH",
+            "MODERATE",
+            "LOW"
+          ]
+        },
+        "evidenceDisposition": {
+          "enum": [
+            "SUPPORTS",
+            "MIXED",
+            "CONTRADICTED",
+            "INSUFFICIENT"
+          ]
+        },
+        "evidenceRationale": {
+          "type": "string",
+          "minLength": 1
+        },
+        "conflictingSourceIds": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "uncertainty": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "supportingSourceIds": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "governance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "decisionRecord",
+        "approvedBy",
+        "decisionDate",
+        "effectiveVersion",
+        "decisionRationale",
+        "supersedesIds"
+      ],
+      "properties": {
+        "status": {
+          "const": "GOVERNED_ACTIVE"
+        },
+        "decisionRecord": {
+          "type": "string",
+          "minLength": 1
+        },
+        "approvedBy": {
+          "type": "string",
+          "minLength": 1
+        },
+        "decisionDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "effectiveVersion": {
+          "type": "string",
+          "minLength": 1
+        },
+        "decisionRationale": {
+          "type": "string",
+          "minLength": 1
+        },
+        "supersedesIds": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "targetKind": {
+            "const": "DRIVER"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "targetDriverId": {
+            "type": "string"
+          },
+          "targetRelationshipId": {
+            "type": "null"
+          },
+          "contextCondition": {
+            "type": "null"
+          },
+          "effectMode": {
+            "enum": [
+              "CHANGE_LEVEL",
+              "STABILIZE",
+              "DISRUPT"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "targetKind": {
+            "const": "RELATIONSHIP"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "targetDriverId": {
+            "type": "null"
+          },
+          "targetRelationshipId": {
+            "type": "string"
+          },
+          "contextCondition": {
+            "type": "null"
+          },
+          "mechanisticDriverIds": {
+            "minItems": 1
+          },
+          "effectMode": {
+            "enum": [
+              "BUFFER",
+              "AMPLIFY",
+              "SUPPRESS"
+            ]
+          },
+          "intendedDirection": {
+            "const": "NOT_APPLICABLE"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "targetKind": {
+            "const": "CONTEXT_CONDITION"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "targetDriverId": {
+            "type": "null"
+          },
+          "targetRelationshipId": {
+            "type": "null"
+          },
+          "contextCondition": {
+            "type": "string"
+          },
+          "mechanisticDriverIds": {
+            "minItems": 1
+          },
+          "affectedRelationshipIds": {
+            "minItems": 1
+          },
+          "effectMode": {
+            "const": "ALTER_CONTEXT"
+          }
+        }
+      }
+    }
+  ]
+}

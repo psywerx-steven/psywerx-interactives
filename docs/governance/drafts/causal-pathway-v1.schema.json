@@ -1,0 +1,140 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://psywerx.org/schemas/proposed/causal-pathway-v1.schema.json",
+  "title": "Proposed PSYWERX governed causal pathway V1",
+  "description": "Non-production design draft for an ordered mediation or mechanistic pathway composed of governed causal relationships.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "id",
+    "revision",
+    "orderedRelationshipIds",
+    "mediatorEntityIds",
+    "mediationType",
+    "temporalOrderRationale",
+    "populationOrSystem",
+    "context",
+    "evidenceRationale",
+    "supportingSourceIds",
+    "conflictingSourceIds",
+    "uncertainty",
+    "governance"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "PROPOSED-1.0"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^CPW-[0-9]{5}$"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "orderedRelationshipIds": {
+      "type": "array",
+      "minItems": 2,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "mediatorEntityIds": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "mediationType": {
+      "enum": [
+        "PARTIAL",
+        "FULL",
+        "UNKNOWN"
+      ]
+    },
+    "temporalOrderRationale": {
+      "type": "string",
+      "minLength": 1
+    },
+    "populationOrSystem": {
+      "type": "string",
+      "minLength": 1
+    },
+    "context": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidenceRationale": {
+      "type": "string",
+      "minLength": 1
+    },
+    "supportingSourceIds": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "conflictingSourceIds": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "uncertainty": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "governance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "decisionRecord",
+        "approvedBy",
+        "decisionDate",
+        "effectiveVersion",
+        "decisionRationale"
+      ],
+      "properties": {
+        "status": {
+          "const": "GOVERNED_ACTIVE"
+        },
+        "decisionRecord": {
+          "type": "string",
+          "minLength": 1
+        },
+        "approvedBy": {
+          "type": "string",
+          "minLength": 1
+        },
+        "decisionDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "effectiveVersion": {
+          "type": "string",
+          "minLength": 1
+        },
+        "decisionRationale": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}

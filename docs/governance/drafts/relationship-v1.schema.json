@@ -1,0 +1,652 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://psywerx.org/schemas/proposed/relationship-v1.schema.json",
+  "title": "Proposed PSYWERX governed relationship record V1",
+  "description": "Non-production design draft for a governed active relationship record.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "id",
+    "revision",
+    "relationFamily",
+    "predicate",
+    "subjectEntityId",
+    "subjectEntityType",
+    "objectEntityId",
+    "objectEntityType",
+    "objectRelationshipId",
+    "symmetry",
+    "polarity",
+    "directness",
+    "moderationEffect",
+    "mechanism",
+    "boundaryConditions",
+    "applicability",
+    "evidenceAssessment",
+    "supportingSourceIds",
+    "pathwayIds",
+    "governance"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "PROPOSED-1.0"
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "relationFamily": {
+      "enum": [
+        "CAUSAL",
+        "CAUSAL_MODERATION",
+        "DERIVATIONAL",
+        "COMPOSITIONAL",
+        "REALIZATION",
+        "SEMANTIC_MAPPING",
+        "EMPIRICAL_ASSOCIATION",
+        "TEMPORAL",
+        "MEASUREMENT"
+      ]
+    },
+    "predicate": {
+      "enum": [
+        "CAUSES",
+        "ENABLES",
+        "CONSTRAINS",
+        "MODERATES_RELATIONSHIP",
+        "DERIVED_FROM",
+        "CONSTITUENT_OF",
+        "REALIZES",
+        "NARROWER_THAN",
+        "BROADER_THAN",
+        "OVERLAPS_WITH",
+        "EQUIVALENT_UNDER_CONDITIONS",
+        "INVERSE_UNDER_ALIGNED_SCOPE",
+        "RELATED_METRIC",
+        "ASSOCIATED_WITH",
+        "TRANSITIONS_TO",
+        "TENDS_TO_PRECEDE",
+        "MEASURES",
+        "INDICATES"
+      ]
+    },
+    "subjectEntityId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subjectEntityType": {
+      "enum": [
+        "DRIVER",
+        "RELATIONAL_DERIVED_STATE"
+      ]
+    },
+    "objectEntityId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "objectEntityType": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "DRIVER",
+        "RELATIONAL_DERIVED_STATE",
+        null
+      ]
+    },
+    "objectRelationshipId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "symmetry": {
+      "enum": [
+        "DIRECTED",
+        "SYMMETRIC"
+      ]
+    },
+    "polarity": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "POSITIVE",
+        "NEGATIVE",
+        "NON_MONOTONIC",
+        "CONTEXT_DEPENDENT",
+        null
+      ]
+    },
+    "directness": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "DIRECT_AT_STATED_RESOLUTION",
+        "TOTAL_OR_INDIRECT_EFFECT",
+        "UNKNOWN",
+        null
+      ]
+    },
+    "moderationEffect": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "AMPLIFIES",
+        "ATTENUATES",
+        "REVERSES",
+        "CONTEXT_DEPENDENT",
+        null
+      ]
+    },
+    "mechanism": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "boundaryConditions": {
+      "type": "string",
+      "minLength": 1
+    },
+    "applicability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "analyticUnit",
+        "populationOrSystem",
+        "context"
+      ],
+      "properties": {
+        "analyticUnit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "populationOrSystem": {
+          "type": "string",
+          "minLength": 1
+        },
+        "context": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "moderatorEntityIds": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "default": []
+    },
+    "narrativeModerators": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "default": []
+    },
+    "lag": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "persistence": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "functionalForm": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "effectEstimate": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "evidenceAssessment": {
+      "$ref": "#/$defs/evidenceAssessment"
+    },
+    "supportingSourceIds": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "pathwayIds": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "governance": {
+      "$ref": "#/$defs/governance"
+    }
+  },
+  "$defs": {
+    "evidenceAssessment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evidenceStrength",
+        "confidence",
+        "evidenceDisposition",
+        "evidenceRationale",
+        "conflictingSourceIds",
+        "uncertainty"
+      ],
+      "properties": {
+        "evidenceStrength": {
+          "enum": [
+            "STRONG",
+            "MODERATE",
+            "LIMITED",
+            "EMERGING",
+            "MIXED"
+          ]
+        },
+        "confidence": {
+          "enum": [
+            "HIGH",
+            "MODERATE",
+            "LOW"
+          ]
+        },
+        "evidenceDisposition": {
+          "enum": [
+            "SUPPORTS",
+            "MIXED",
+            "CONTRADICTED",
+            "INSUFFICIENT"
+          ]
+        },
+        "evidenceRationale": {
+          "type": "string",
+          "minLength": 1
+        },
+        "conflictingSourceIds": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "uncertainty": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "governance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "decisionRecord",
+        "approvedBy",
+        "decisionDate",
+        "effectiveVersion",
+        "decisionRationale",
+        "supersedesIds"
+      ],
+      "properties": {
+        "status": {
+          "const": "GOVERNED_ACTIVE"
+        },
+        "decisionRecord": {
+          "type": "string",
+          "minLength": 1
+        },
+        "approvedBy": {
+          "type": "string",
+          "minLength": 1
+        },
+        "decisionDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "effectiveVersion": {
+          "type": "string",
+          "minLength": 1
+        },
+        "decisionRationale": {
+          "type": "string",
+          "minLength": 1
+        },
+        "supersedesIds": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "oneOf": [
+        {
+          "properties": {
+            "objectEntityId": {
+              "type": "string"
+            },
+            "objectEntityType": {
+              "enum": [
+                "DRIVER",
+                "RELATIONAL_DERIVED_STATE"
+              ]
+            },
+            "objectRelationshipId": {
+              "type": "null"
+            }
+          }
+        },
+        {
+          "properties": {
+            "objectEntityId": {
+              "type": "null"
+            },
+            "objectEntityType": {
+              "type": "null"
+            },
+            "objectRelationshipId": {
+              "type": "string"
+            },
+            "relationFamily": {
+              "const": "CAUSAL_MODERATION"
+            },
+            "predicate": {
+              "const": "MODERATES_RELATIONSHIP"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "if": {
+        "properties": {
+          "relationFamily": {
+            "const": "CAUSAL"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "predicate": {
+            "enum": [
+              "CAUSES",
+              "ENABLES",
+              "CONSTRAINS"
+            ]
+          },
+          "polarity": {
+            "enum": [
+              "POSITIVE",
+              "NEGATIVE",
+              "NON_MONOTONIC",
+              "CONTEXT_DEPENDENT"
+            ]
+          },
+          "directness": {
+            "enum": [
+              "DIRECT_AT_STATED_RESOLUTION",
+              "TOTAL_OR_INDIRECT_EFFECT",
+              "UNKNOWN"
+            ]
+          },
+          "mechanism": {
+            "type": "string"
+          },
+          "symmetry": {
+            "const": "DIRECTED"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "relationFamily": {
+            "const": "CAUSAL_MODERATION"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "predicate": {
+            "const": "MODERATES_RELATIONSHIP"
+          },
+          "objectEntityId": {
+            "type": "null"
+          },
+          "objectEntityType": {
+            "type": "null"
+          },
+          "objectRelationshipId": {
+            "type": "string"
+          },
+          "symmetry": {
+            "const": "DIRECTED"
+          },
+          "polarity": {
+            "type": "null"
+          },
+          "directness": {
+            "type": "null"
+          },
+          "moderationEffect": {
+            "enum": [
+              "AMPLIFIES",
+              "ATTENUATES",
+              "REVERSES",
+              "CONTEXT_DEPENDENT"
+            ]
+          },
+          "mechanism": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "relationFamily": {
+            "enum": [
+              "DERIVATIONAL",
+              "COMPOSITIONAL",
+              "REALIZATION",
+              "SEMANTIC_MAPPING",
+              "EMPIRICAL_ASSOCIATION",
+              "TEMPORAL",
+              "MEASUREMENT"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "polarity": {
+            "type": "null"
+          },
+          "directness": {
+            "type": "null"
+          },
+          "moderationEffect": {
+            "type": "null"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "relationFamily": {
+            "const": "DERIVATIONAL"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "predicate": {
+            "const": "DERIVED_FROM"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "relationFamily": {
+            "const": "COMPOSITIONAL"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "predicate": {
+            "const": "CONSTITUENT_OF"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "relationFamily": {
+            "const": "REALIZATION"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "predicate": {
+            "const": "REALIZES"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "relationFamily": {
+            "const": "SEMANTIC_MAPPING"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "predicate": {
+            "enum": [
+              "NARROWER_THAN",
+              "BROADER_THAN",
+              "OVERLAPS_WITH",
+              "EQUIVALENT_UNDER_CONDITIONS",
+              "INVERSE_UNDER_ALIGNED_SCOPE",
+              "RELATED_METRIC"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "relationFamily": {
+            "const": "EMPIRICAL_ASSOCIATION"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "predicate": {
+            "const": "ASSOCIATED_WITH"
+          },
+          "symmetry": {
+            "const": "SYMMETRIC"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "relationFamily": {
+            "const": "TEMPORAL"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "predicate": {
+            "enum": [
+              "TRANSITIONS_TO",
+              "TENDS_TO_PRECEDE"
+            ]
+          },
+          "symmetry": {
+            "const": "DIRECTED"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "relationFamily": {
+            "const": "MEASUREMENT"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "predicate": {
+            "enum": [
+              "MEASURES",
+              "INDICATES"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,219 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://psywerx.org/schemas/proposed/intervention-v1.schema.json",
+  "title": "Proposed PSYWERX governed Intervention V1",
+  "description": "Non-production design draft for Intervention identity and package composition.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "id",
+    "revision",
+    "canonicalName",
+    "aliases",
+    "interventionKind",
+    "category",
+    "description",
+    "componentInterventionIds",
+    "identitySourceIds",
+    "externalCrosswalks",
+    "governance"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "PROPOSED-1.0"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^INT-[0-9]{5}$"
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "canonicalName": {
+      "type": "string",
+      "minLength": 1
+    },
+    "aliases": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "interventionKind": {
+      "enum": [
+        "ATOMIC",
+        "PACKAGE"
+      ]
+    },
+    "category": {
+      "enum": [
+        "COMMUNICATION_OR_INFORMATION",
+        "TRAINING_OR_SKILL",
+        "ENVIRONMENTAL_OR_CHOICE_ARCHITECTURE",
+        "POLICY_RULE_OR_STANDARD",
+        "INCENTIVE_OR_RESOURCE",
+        "CONSTRAINT_OR_ENFORCEMENT",
+        "TECHNOLOGY_OR_CONFIGURATION",
+        "SERVICE_OR_SUPPORT",
+        "BIOLOGICAL_OR_CLINICAL"
+      ]
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1
+    },
+    "componentInterventionIds": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^INT-[0-9]{5}$"
+      }
+    },
+    "packageSpecification": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "generalImplementationNotes": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "identitySourceIds": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "externalCrosswalks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "taxonomy",
+          "externalId",
+          "mappingType",
+          "sourceId"
+        ],
+        "properties": {
+          "taxonomy": {
+            "type": "string",
+            "minLength": 1
+          },
+          "externalId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "mappingType": {
+            "enum": [
+              "EXACT",
+              "NARROWER",
+              "BROADER",
+              "OVERLAPPING"
+            ]
+          },
+          "sourceId": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "governance": {
+      "$ref": "#/$defs/governance"
+    }
+  },
+  "$defs": {
+    "governance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "decisionRecord",
+        "approvedBy",
+        "decisionDate",
+        "effectiveVersion",
+        "decisionRationale",
+        "supersedesIds"
+      ],
+      "properties": {
+        "status": {
+          "const": "GOVERNED_ACTIVE"
+        },
+        "decisionRecord": {
+          "type": "string",
+          "minLength": 1
+        },
+        "approvedBy": {
+          "type": "string",
+          "minLength": 1
+        },
+        "decisionDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "effectiveVersion": {
+          "type": "string",
+          "minLength": 1
+        },
+        "decisionRationale": {
+          "type": "string",
+          "minLength": 1
+        },
+        "supersedesIds": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "interventionKind": {
+            "const": "PACKAGE"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "componentInterventionIds": {
+            "minItems": 2
+          },
+          "packageSpecification": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "packageSpecification"
+        ]
+      },
+      "else": {
+        "properties": {
+          "componentInterventionIds": {
+            "maxItems": 0
+          },
+          "packageSpecification": {
+            "type": "null"
+          }
+        }
+      }
+    }
+  ]
+}
