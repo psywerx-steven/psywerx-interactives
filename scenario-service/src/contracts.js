@@ -45,9 +45,6 @@ export const ENTITY_SNAPSHOT_KEYS = Object.freeze([
   "temporalSpecification",
 ]);
 
-// Preserve the prior module export while the v1 wire field remains `driver`.
-export const DRIVER_SNAPSHOT_KEYS = ENTITY_SNAPSHOT_KEYS;
-
 // Retained for consumers that imported the v1 constant name.
 export const DRIVER_SNAPSHOT_KEYS = ENTITY_SNAPSHOT_KEYS;
 
