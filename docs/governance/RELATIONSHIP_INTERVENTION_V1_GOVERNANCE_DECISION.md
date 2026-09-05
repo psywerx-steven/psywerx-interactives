@@ -76,10 +76,11 @@ human decision without broadening or interpreting it.
 ## Separate baseline action
 
 D14 authorizes the rule requiring a separate baseline-adoption decision. The
-source authorization also authorizes a later, separate branch and pull request
-to adopt the exact v0.3 migration baseline. That action must not be combined
-with PR #11 and must retain its own decision record, validation, and merge
-history.
+source authorization also authorizes a separate branch and pull request to
+adopt the exact v0.3 migration baseline. That action is recorded in
+[Migration Baseline Adoption V0.3](MIGRATION_BASELINE_ADOPTION_V0_3.md); it was
+not combined with PR #11 and retains its own decision record, validation, and
+merge history.
 
 ## Implementation gate
 

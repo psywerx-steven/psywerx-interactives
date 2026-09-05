@@ -1,9 +1,22 @@
 {
   "schemaVersion": "1.0",
   "migrationVersion": "0.3",
-  "status": "NON_AUTHORITATIVE_MIGRATION_PREVIEW",
+  "status": "GOVERNED_MIGRATION_BASELINE",
   "specification": "_migration_handoff_v0.3",
-  "baselineGitCommit": "580d59c",
+  "specificationStatus": "GOVERNED_MIGRATION_SPECIFICATION",
+  "authorityDecisionRecord": "docs/governance/MIGRATION_BASELINE_ADOPTION_V0_3.md",
+  "effectiveCommit": "6cf34a029a9dc6e099628e86dfb9f42b53bd8d13",
+  "effectiveDate": "2026-09-05",
+  "openGovernanceItems": [
+    "INS-102",
+    "REL-SOC-028",
+    "REL-TEC-049",
+    "REL-MIG-CAND-0001",
+    "REL-MIG-CAND-0002",
+    "REL-MIG-CAND-0003",
+    "NEW-ENTITIES-V0.3"
+  ],
+  "baselineGitCommit": "580d59c451765e9f4d65b517f538a495fa93bda5",
   "baselineCounts": {
     "drivers": 793,
     "families": 105,
@@ -25,11 +38,11 @@
     "_migration_handoff_v0.3/README_CODEX_HANDOFF.md": "bf8427460cbf75b842711dc7887bce42c6c617354b76bf5da50b04b06d262d16",
     "_migration_handoff_v0.3/SECONDARY_BOUNDARY_AUDIT_ADDENDUM.md": "b1f87266394d316efa3a51b5112c688334265dc73eb87e65071d976a6a3f3fff",
     "_migration_handoff_v0.3/VALIDATION_CHECKLIST.md": "4e08d998d63e8feae9ed444955e6f9ecbb209c52b74bbf9b4d609e8781674592",
-    "_migration_handoff_v0.3/migration_manifest_seed.json": "0608bc1f1e855f312ed39310193dc5722a84c203cf7b5a6b462a1a31e559253a"
+    "_migration_handoff_v0.3/migration_manifest_seed.json": "1490e87f7daac48a79af1d87554ba7d2ca4cbc4c80af729d79fcb1e27d398b7c"
   },
   "migrationImplementation": {
     "path": "scripts/build_migration_preview_v0_3.py",
-    "sha256": "cfacc17d0a5eaaa4a25c1314e901cd80d64374bf75f84d92de4291d0643749b1"
+    "sha256": "ecc6ced1061b94ee5a4afc4b761a9e1cef0b238b7c6221fe60bce8ae8cacecc4"
   },
   "previewCounts": {
     "drivers": 770,
@@ -353,6 +366,7 @@
     }
   ],
   "governanceDecisionRecords": [
+    "docs/governance/MIGRATION_BASELINE_ADOPTION_V0_3.md",
     "https://app.notion.com/p/3cdf827a3d158103b02efcf83c197519",
     "https://app.notion.com/p/3cdf827a3d1581329f44cb36344c0409",
     "https://app.notion.com/p/3cdf827a3d1581a08906ebe4ab9feded",

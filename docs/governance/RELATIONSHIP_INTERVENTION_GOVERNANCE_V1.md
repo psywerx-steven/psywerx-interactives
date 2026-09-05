@@ -243,5 +243,7 @@ D01–D14 are governed by the linked decision record. That approval does not
 authorize production schemas or datasets, migration of V3 records or workbook
 Operationalizations, Family audits, scientific population, modeling/application
 changes, or deployment. The migration-preview authority label is handled only
-through the separately authorized baseline-adoption action. Production V1
+through the separate
+[Migration Baseline Adoption V0.3](MIGRATION_BASELINE_ADOPTION_V0_3.md)
+governance action and not by the architecture approval. Production V1
 implementation remains a separate governance action.
