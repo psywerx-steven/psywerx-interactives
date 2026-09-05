@@ -284,7 +284,7 @@ class RelationshipInterventionV1Tests(unittest.TestCase):
             callable_()
 
     def test_all_seven_production_schemas_meta_validate(self):
-        self.assertEqual(len(self.schemas.schemas), 7)
+        self.assertEqual(len(self.schemas.schemas), 8)
 
     def test_family_predicate_compatibility(self):
         invalid = relationship()

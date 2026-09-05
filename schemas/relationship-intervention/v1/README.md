@@ -12,7 +12,10 @@ These are the production contracts for the governed V1 infrastructure:
 - `intervention-effect-v1.schema.json` — one contextual effect on one exact
   Driver or causal Relationship target; and
 - `candidate-workspace-v1.schema.json` — the physically separated,
-  non-production-eligible candidate envelope.
+  non-production-eligible candidate envelope; and
+- `source-record-v1.schema.json` — verified native V1 scientific sources
+  registered by an explicit governance action without altering the governed
+  v0.3 workbook-derived source baseline.
 
 JSON Schema validates record shape. Cross-record and governance semantics are
 enforced by `scripts/relationship_intervention_v1.py`.

@@ -15,3 +15,10 @@ only. They remain `NOT_ELIGIBLE`, contribute no production causal traversal,
 and require human scientific governance before any canonical materialization.
 The auditable review package is in
 `docs/governance/pilots/BIO-F01/`.
+
+BIO-F01 Governance Decision 001 materializes selected approved records under
+new canonical IDs in `data/relationship-intervention-v1/`. Candidate copies
+remain here solely for audit lineage; the materialization manifest prevents
+them from being interpreted as separate authoritative propositions. The
+generic acoustic umbrella, its receiver-level replacement candidate, and all
+other research-needed records remain non-governed and `NOT_ELIGIBLE`.

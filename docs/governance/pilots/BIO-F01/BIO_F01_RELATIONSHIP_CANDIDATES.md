@@ -1,5 +1,11 @@
 # BIO-F01 relationship candidates
 
+> Governance checkpoint 001 materialized approved propositions under new
+> canonical `REL-V1-*` IDs while retaining these candidate copies for lineage.
+> The authoritative mappings and inactive status are recorded in
+> `data/relationship-intervention-v1/materialization-manifest.json`.
+> Candidates `005`, `007`, and `008` remain non-governed.
+
 All records are non-governed, `NOT_ELIGIBLE`, and excluded from production
 causal traversal. “Review ready” means the AI-prepared packet is ready for
 human adjudication; it does not mean accepted science.

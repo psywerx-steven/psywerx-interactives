@@ -7,7 +7,7 @@
     "name": "Sleep & Circadian Regulation",
     "layer": "Biological"
   },
-  "status": "AWAITING_HUMAN_SCIENTIFIC_GOVERNANCE",
+  "status": "GOVERNANCE_MATERIALIZED_AWAITING_ACTIVATION_REVIEW",
   "productionGraphEligible": false,
   "baseline": {
     "commit": "5001611852107f2b95b8f722c71224dc7a538d47",
@@ -164,17 +164,17 @@
     "relationships": 9,
     "evidenceAssessments": 18,
     "causalPathways": 0,
-    "interventions": 10,
+    "interventions": 11,
     "interventionEffects": 9
   },
   "candidateLifecycleCounts": {
-    "REVIEW_READY": 33,
-    "RESEARCH_NEEDED": 13
+    "REVIEW_READY": 30,
+    "RESEARCH_NEEDED": 17
   },
   "governanceBlockedCount": 0,
   "interventionResearch": {
     "driversSearched": 6,
-    "interventionIdentities": 10,
+    "interventionIdentities": 11,
     "interventionEffects": 9,
     "deliveryModalitiesRepresented": [
       "HUMAN_DELIVERED",
@@ -200,12 +200,15 @@
     "supplementalSourcesReviewed": 25,
     "distinctSourcesReviewed": 41,
     "supplementalSourceLog": "BIO_F01_RESEARCH_LOG.md",
-    "supplementalSourceRegistrationStatus": "NON_GOVERNED_AUDIT_REFERENCES",
+    "supplementalSourceRegistrationStatus": "SELECTIVELY_CANONICALIZED_FOR_GOVERNED_INACTIVE_ASSERTIONS",
     "evidenceAssessments": 18,
-    "assessmentsWithCanonicalSourceIds": 7,
-    "assessmentsPendingCanonicalSourceRegistration": 11
+    "assessmentsWithCanonicalSourceIds": 11,
+    "assessmentsPendingCanonicalSourceRegistration": 0,
+    "supplementalSourcesRegistered": 20,
+    "governedEvidenceAssessments": 11,
+    "nonGovernedEvidenceAssessments": 7
   },
-  "newGovernedRecords": 0,
+  "newGovernedRecords": 31,
   "newActiveRecords": 0,
   "canonicalIntegrity": {
     "drivers": 770,
@@ -224,12 +227,30 @@
     "BIO_F01_EVIDENCE_SUMMARY.md",
     "BIO_F01_COMPLETENESS_REPORT.md",
     "BIO_F01_GOVERNANCE_DECISION_PACKAGE.md",
-    "BIO_F01_RESEARCH_LOG.md"
+    "BIO_F01_RESEARCH_LOG.md",
+    "BIO_F01_GOVERNANCE_DECISION_001.md",
+    "BIO_F01_EXISTING_RELATIONSHIP_REVISION_PROPOSALS.md",
+    "BIO_F01_SOURCE_REGISTRATION_MANIFEST.json"
   ],
   "openItems": [
-    "Register supplemental pilot sources canonically only after source-governance review.",
     "Resolve endpoint alignment for the proposed circadian-phase moderation of REL-BIO-002.",
     "Determine whether continuity-specific evidence justifies BIO-002 to BIO-028 causality.",
-    "No CausalPathway met pathway-specific evidence requirements in this pilot pass."
-  ]
+    "No CausalPathway met pathway-specific evidence requirements in this pilot pass.",
+    "Five supplemental references used only for research-needed, background, or non-created assertions remain audit-log references and were not canonically registered."
+  ],
+  "governanceCheckpoint": {
+    "decisionId": "GOV-BIO-F01-001-2026-09-05",
+    "decisionRecord": "BIO_F01_GOVERNANCE_DECISION_001.md",
+    "effectiveDate": "2026-09-05",
+    "pilotHeadBeforeGovernance": "0cb77c4722b0d4c474f307d8ae527b8fa6f652cf",
+    "activationAuthorized": false
+  },
+  "newInactiveRecords": 31,
+  "sourceRegistration": {
+    "reviewedForRegistration": 20,
+    "registered": 20,
+    "duplicates": 0,
+    "rejectedOrUnverified": 0,
+    "manifest": "BIO_F01_SOURCE_REGISTRATION_MANIFEST.json"
+  }
 }

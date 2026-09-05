@@ -11,6 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 WORKSPACE = ROOT / "data" / "candidates" / "relationship-intervention-v1" / "workspace.json"
 PILOT_DIR = ROOT / "docs" / "governance" / "pilots" / "BIO-F01"
 MANIFEST = PILOT_DIR / "BIO_F01_AUDIT_MANIFEST.json"
+MATERIALIZER = ROOT / "scripts" / "materialize_bio_f01_governance_001.py"
 
 
 def load_module(name: str, path: Path):
@@ -82,16 +83,16 @@ class BioF01PilotTests(unittest.TestCase):
             "relationships": 9,
             "evidenceAssessments": 18,
             "causalPathways": 0,
-            "interventions": 10,
+            "interventions": 11,
             "interventionEffects": 9,
         }
         self.assertEqual(self.manifest["candidateCounts"], expected)
         all_records = [
             row for key in expected for row in self.workspace[key]
         ]
-        self.assertEqual(len(all_records), 46)
-        self.assertEqual(sum(row["governance"]["lifecycleStatus"] == "REVIEW_READY" for row in all_records), 33)
-        self.assertEqual(sum(row["governance"]["lifecycleStatus"] == "RESEARCH_NEEDED" for row in all_records), 13)
+        self.assertEqual(len(all_records), 47)
+        self.assertEqual(sum(row["governance"]["lifecycleStatus"] == "REVIEW_READY" for row in all_records), 30)
+        self.assertEqual(sum(row["governance"]["lifecycleStatus"] == "RESEARCH_NEEDED" for row in all_records), 17)
         self.assertTrue(all(row["governance"]["activationStatus"] == "NOT_ELIGIBLE" for row in all_records))
         self.assertTrue(all(row["governance"]["lifecycleStatus"] not in {"GOVERNED", "DEPRECATED", "REJECTED"} for row in all_records))
 
@@ -163,10 +164,10 @@ class BioF01PilotTests(unittest.TestCase):
     def test_builder_is_deterministic(self):
         before = (WORKSPACE.read_bytes(), MANIFEST.read_bytes())
         result = subprocess.run(
-            [sys.executable, str(ROOT / "scripts" / "build_bio_f01_pilot.py")],
+            [sys.executable, str(MATERIALIZER)],
             cwd=ROOT, check=True, capture_output=True, text=True,
         )
-        self.assertIn("BIO_F01_AUDIT_MANIFEST.json", result.stdout)
+        self.assertIn("GOV-BIO-F01-001-2026-09-05", result.stdout)
         after = (WORKSPACE.read_bytes(), MANIFEST.read_bytes())
         self.assertEqual(before, after)
 

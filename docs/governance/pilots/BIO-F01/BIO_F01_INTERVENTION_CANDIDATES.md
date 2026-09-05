@@ -1,5 +1,10 @@
 # BIO-F01 intervention candidates
 
+> Governance checkpoint 001 materialized approved identities/effects under
+> canonical `INT-V1-*` and `IE-V1-*` IDs. These candidate copies remain for
+> lineage only. The generic acoustic umbrella and receiver-level replacement
+> candidate remain non-governed.
+
 The search began with each BIO-F01 Driver and its mechanism. External method
 taxonomies were not used as the organizing hierarchy. Every identity and
 effect below is non-governed and `NOT_ELIGIBLE`.
@@ -30,8 +35,9 @@ fillers. Their ontology metadata remains unchanged.
 | `INT-CAND-BIO-F01-006` | Cognitive behavioral therapy for insomnia package | Package / Service or support | `REVIEW_READY` | Composes `004` and `005`; package effect has its own evidence. The component list is minimum V1 identity, not a claim that CBT-I has only two possible components. |
 | `INT-CAND-BIO-F01-007` | Timed bright-light exposure | Atomic / Biological or clinical | `REVIEW_READY` | One reusable action identity supports separate phase and sleep-inertia effects. Timing/intensity/spectrum/duration stay effect-specific. |
 | `INT-CAND-BIO-F01-008` | Timed exogenous melatonin administration | Atomic / Biological or clinical | `REVIEW_READY` | Dose, formulation, timing, population, and target remain effect context. |
-| `INT-CAND-BIO-F01-009` | Nighttime acoustic attenuation | Atomic / Environmental or choice architecture | `REVIEW_READY` | Reduces sound at source/path/receiver; personal protection and facility controls are delivery variants unless governance later finds material identity differences. |
+| `INT-CAND-BIO-F01-009` | Nighttime acoustic attenuation | Atomic / Environmental or choice architecture | `RESEARCH_NEEDED` | Unresolved umbrella spanning source, transmission/path, and receiver mechanisms; not governed. |
 | `INT-CAND-BIO-F01-010` | Pre-awakening timed caffeine delivery | Atomic / Biological or clinical | `REVIEW_READY` | Distinct from ordinary post-awakening caffeine because delayed release/timing is part of the action. |
+| `INT-CAND-BIO-F01-011` | Nighttime personal acoustic protection | Atomic / Environmental or choice architecture | `RESEARCH_NEEDED` | Receiver-level candidate split from `009`; evidence and alarm-safety boundaries remain under review. |
 
 ## InterventionEffect candidates
 
@@ -43,7 +49,7 @@ fillers. Their ontology metadata remains unchanged.
 | `IE-CAND-BIO-F01-004` | `BIO-002` | Change level / increase | Adults with chronic insomnia receiving clinician-led or validated digital CBT-I | Strong subjective-continuity evidence; objective PSG/actigraphy changes are smaller or inconsistent. Initial time-in-bed restriction can increase sleepiness. | `REVIEW_READY` |
 | `IE-CAND-BIO-F01-005` | `BIO-004` | Change level / context-dependent | People requiring a defined phase shift under a timed-light protocol | Experimental phase resetting is established; desired direction depends on phase-response timing. | `REVIEW_READY` |
 | `IE-CAND-BIO-F01-006` | `BIO-004` | Change level / context-dependent | Delayed or otherwise mistimed phase under timed dosing | Meta-analysis/RCT evidence supports selected populations; phase-shifting and sleep-promoting effects must be separated. | `REVIEW_READY` |
-| `IE-CAND-BIO-F01-007` | `BIO-002` | Change level / increase | Noise-exposed sleepers; strongest direct intervention evidence is ICU-specific | Systematic reviews and trials support fewer awakenings/improved sleep, with tolerance, alarm audibility, and subjective/objective differences. | `REVIEW_READY` |
+| `IE-CAND-BIO-F01-007` | `BIO-002` | Change level / increase | Noise-exposed sleepers; receiver-level personal protection only | Evidence is ICU-heavy; identity, tolerance, alarm audibility, and subjective/objective differences remain unresolved. It does not apply to source/path controls. | `RESEARCH_NEEDED` |
 | `IE-CAND-BIO-F01-008` | `BIO-005` | Change level / decrease | Sleep-restricted healthy adults with a planned awakening | One small crossover trial and a review; formulation-specific with subsequent-sleep and adverse-effect risks. | `RESEARCH_NEEDED` |
 | `IE-CAND-BIO-F01-009` | `BIO-005` | Change level / decrease | Adults exposed to bright light just after awakening | Subjective alertness may improve, but objective performance benefit is not convincing. | `RESEARCH_NEEDED` |
 

@@ -73,6 +73,9 @@ records beyond the exact migration decisions it names.
   EvidenceAssessment, Intervention, and InterventionEffect records are
   non-governed candidates only. The pilot PR must not be merged before human
   scientific governance.
+  [`Governance Decision 001`](pilots/BIO-F01/BIO_F01_GOVERNANCE_DECISION_001.md)
+  selectively materializes approved records as `GOVERNED + INACTIVE`; it does
+  not authorize activation or merging PR #14.
 
 ## Non-production draft-schema rule
 

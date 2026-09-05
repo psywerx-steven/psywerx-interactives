@@ -1,5 +1,15 @@
 # BIO-F01 evidence summary
 
+## Governance checkpoint 001
+
+Twenty supplemental sources needed for governed-inactive assertions,
+Intervention identities, or exact existing-edge revision proposals were
+verified and registered as `SRC-530` through `SRC-549`. Eleven exact
+EvidenceAssessment revisions were materialized `GOVERNED + INACTIVE`; all 11
+resolve only canonical source IDs. Five background/research-only supplemental
+references remain unregistered. The registration mapping is in
+`BIO_F01_SOURCE_REGISTRATION_MANIFEST.json`.
+
 This summary supports candidate review; it does not confer scientific
 authority. Full search provenance is in [BIO_F01_RESEARCH_LOG.md](BIO_F01_RESEARCH_LOG.md).
 

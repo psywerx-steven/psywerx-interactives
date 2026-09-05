@@ -2,115 +2,120 @@
 
 **Audit ID:** `AUD-BIO-F01-RI-V1-20260905-001`
 
-**Decision authority:** Authorized human governor
-**Current status:** Candidate review only; every decision is `PENDING`
+**Decision record:** [`GOV-BIO-F01-001-2026-09-05`](BIO_F01_GOVERNANCE_DECISION_001.md)
 
-An `APPROVE` entry would authorize a later deterministic governance
-materialization only to the exact proposition/revision specified by the
-decision. It would not, by itself, authorize deployment or another Family
-audit. CI success validates structure, not scientific truth.
+**Effective date:** 2026-09-05
 
-## A. Existing relationships proposed to remain scientifically unchanged
+**Authority:** Explicit decision of an `authorized human governor`
 
-| Decision ID | Relationship | Recommendation | Reason | Governance decision |
-| --- | --- | --- | --- | --- |
-| `BIOF01-D-A01` | `REL-BIO-002` | Retain current proposition; keep V1 incomplete pending field-level completion | Duration→Cognitive Fatigue is defensible, but numeric lag, persistence, boundaries, normalized evidence, and conflicts are incomplete. | `PENDING — APPROVE / MODIFY / REJECT` |
-| `BIOF01-D-A02` | `REL-RDS-0016` | Retain as-is | Correct noncausal dependency from Chronotype–Schedule Fit to Chronotype. | `PENDING — APPROVE / MODIFY / REJECT` |
-| `BIOF01-D-A03` | `REL-RDS-0017` | Retain as-is | Correct Sleep Sufficiency duration input. | `PENDING — APPROVE / MODIFY / REJECT` |
-| `BIOF01-D-A04` | `REL-RDS-0018` | Retain as-is | Correct Sleep Sufficiency need/reference input. | `PENDING — APPROVE / MODIFY / REJECT` |
-| `BIOF01-D-A05` | `REL-RDS-0019` | Retain as-is | Correct serial-duration input for Cumulative Sleep Deficit. | `PENDING — APPROVE / MODIFY / REJECT` |
-| `BIOF01-D-A06` | `REL-RDS-0020` | Retain as-is | Correct need/reference input for Cumulative Sleep Deficit. | `PENDING — APPROVE / MODIFY / REJECT` |
+**Activation:** Not authorized. Every newly governed object is `INACTIVE`.
 
-## B. Existing relationships needing revision review
+The table below records the final checkpoint decisions. Existing V3 records
+retain their current authority and activation unless the decision explicitly
+creates a separate revision proposal. Successful CI is structural validation,
+not a later activation decision.
 
-Approval here should authorize preparation of an exact revision proposal, not
-silent mutation of the current record.
+## A. Existing relationships retained
 
-| Decision ID | Relationship | Recommended review | Primary risk | Governance decision |
-| --- | --- | --- | --- | --- |
-| `BIOF01-D-B01` | `REL-BIO-001` | Require heightened RDS safeguards and clarify whether the causal source should remain the alignment RDS or be represented by exact constituent/environmental mechanisms. | Exogenous RDS and aggregate/constituent double counting. | `PENDING — APPROVE / MODIFY / REJECT` |
-| `BIOF01-D-B02` | `REL-BIO-003` | Replace/augment evidence with continuity-specific fragmentation evidence and tighten Cognitive Fatigue outcome language. | Current sources do not isolate the proposition; null task effects exist. | `PENDING — APPROVE / MODIFY / REJECT` |
-| `BIOF01-D-B03` | `REL-BIO-009` | Add direction-specific pain→continuity evidence and boundaries. | Current sources concern pain/cognition, not sleep continuity. | `PENDING — APPROVE / MODIFY / REJECT` |
-| `BIOF01-D-B04` | `REL-BIO-021` | Adjudicate whether endpoint is experienced load, working-memory availability, or performance under load before any V1 revision. | Cognitive load may be conflated with capacity/performance. | `PENDING — APPROVE / MODIFY / REJECT` |
-| `BIOF01-D-B05` | `REL-ENV-040` | Add direct sleep-noise sources and distinguish average ambient level from event intermittency. | Generic source and exposure semantics. | `PENDING — APPROVE / MODIFY / REJECT` |
+| Decision | Relationship | Final outcome |
+| --- | --- | --- |
+| `BIOF01-D-A01` | `REL-BIO-002` | **APPROVE disposition.** Retain the existing governed proposition unchanged and V1-incomplete. Do not manufacture lag, persistence, functional form, mediation, moderation, effect size, or missing evidence. |
+| `BIOF01-D-A02` | `REL-RDS-0016` | **APPROVE.** Retain unchanged as a noncausal derivational dependency. |
+| `BIOF01-D-A03` | `REL-RDS-0017` | **APPROVE.** Retain unchanged as a noncausal derivational dependency. |
+| `BIOF01-D-A04` | `REL-RDS-0018` | **APPROVE.** Retain unchanged as a noncausal derivational dependency. |
+| `BIOF01-D-A05` | `REL-RDS-0019` | **APPROVE.** Retain unchanged as a noncausal derivational dependency. |
+| `BIOF01-D-A06` | `REL-RDS-0020` | **APPROVE.** Retain unchanged as a noncausal derivational dependency. |
 
-No existing edge is proposed for automatic retype, split, merge, or
-deprecation in this pilot.
+The five derivational records never enter causal traversal. No duplicate V1
+proposition was created merely to record this review.
 
-## C. New causal candidates
+## B. Existing relationships authorized for revision review
 
-| Decision ID | Candidate | Recommendation | Key boundary | Governance decision |
-| --- | --- | --- | --- | --- |
-| `BIOF01-D-C01` | `REL-CAND-BIO-F01-001` Sleep Duration→Sleep Inertia Severity | Review for future V1 governance | Prior restriction, sleep stage, phase, task, and assessment window | `PENDING — APPROVE / MODIFY / REJECT` |
-| `BIOF01-D-C02` | `REL-CAND-BIO-F01-002` Endogenous Circadian Phase→Sleep Inertia Severity | Review with context-dependent/cyclic polarity | Phase at awakening; no universal high/low direction | `PENDING — APPROVE / MODIFY / REJECT` |
-| `BIOF01-D-C03` | `REL-CAND-BIO-F01-003` Caffeine Effect Level→Sleep Duration | Review for future governance | Dose, timing, metabolism, tolerance, formulation | `PENDING — APPROVE / MODIFY / REJECT` |
-| `BIOF01-D-C04` | `REL-CAND-BIO-F01-004` Noise Intermittency→Sleep Continuity | Review after supplemental-source registration | Transportation-noise evidence may not generalize to all sounds | `PENDING — APPROVE / MODIFY / REJECT` |
-| `BIOF01-D-C05` | `REL-CAND-BIO-F01-005` Sleep Continuity→Persistent Pain Burden | Keep `RESEARCH_NEEDED` | Broad observational sleep problems do not isolate continuity causality | `PENDING — APPROVE / MODIFY / REJECT` |
+| Decision | Relationship | Final outcome |
+| --- | --- | --- |
+| `BIOF01-D-B01` | `REL-BIO-001` | **APPROVE revision review only.** Prepare alternatives addressing RDS exogeneity, derivation grounding, temporal/mechanistic independence, external schedule inputs, and duplicate propagation. Do not choose an endpoint model yet. |
+| `BIOF01-D-B02` | `REL-BIO-003` | **APPROVE revision review only.** Prepare continuity-specific evidence, null/conflicting task findings, tighter Cognitive Fatigue interpretation, and scope. |
+| `BIOF01-D-B03` | `REL-BIO-009` | **APPROVE revision review only.** Prepare direction-specific pain-to-continuity evidence and clinical/medication boundaries. Do not infer a reverse edge. |
+| `BIOF01-D-B04` | `REL-BIO-021` | **APPROVE revision review only.** Preserve alternatives distinguishing perceived load, resource availability, and performance under load; do not substitute endpoints. |
+| `BIOF01-D-B05` | `REL-ENV-040` | **APPROVE revision review only.** Distinguish average level, event intermittency, and exposure/response context using direct sleep-noise evidence. |
 
-## D. New noncausal candidates
+All five exact proposals are in
+[`BIO_F01_EXISTING_RELATIONSHIP_REVISION_PROPOSALS.md`](BIO_F01_EXISTING_RELATIONSHIP_REVISION_PROPOSALS.md).
+They remain non-governed and `NOT_ELIGIBLE`; no existing record was mutated or
+superseded.
 
-| Decision ID | Candidate | Recommendation | Safeguard | Governance decision |
-| --- | --- | --- | --- | --- |
-| `BIOF01-D-D01` | `REL-CAND-BIO-F01-006` Endogenous Circadian Phase `ASSOCIATED_WITH` Chronotype | Review as association only | Never substitute chronotype for phase without instrument/protocol qualification | `PENDING — APPROVE / MODIFY / REJECT` |
-| `BIOF01-D-D02` | `REL-CAND-BIO-F01-007` Sleep Duration `ASSOCIATED_WITH` Sleep Continuity | Keep `RESEARCH_NEEDED` | Shared epochs and denominators can manufacture association | `PENDING — APPROVE / MODIFY / REJECT` |
-| `BIOF01-D-D03` | `REL-CAND-BIO-F01-009` Circadian Timing Alignment `DERIVED_FROM` Endogenous Circadian Phase | Review as missing derivational dependency | External timing parameter remains required | `PENDING — APPROVE / MODIFY / REJECT` |
+## C. New causal Relationships
 
-No temporal-transition candidate is recommended. Do not infer a temporal
-record from prior-sleep ordering or causal lag.
+| Decision | Candidate | Final outcome |
+| --- | --- | --- |
+| `BIOF01-D-C01` | `REL-CAND-BIO-F01-001` | **APPROVE.** Materialized as `REL-V1-BIO-F01-001`, `GOVERNED + INACTIVE`, with prior sleep, phase, stage, task, and assessment-window boundaries and no universal linear form. |
+| `BIOF01-D-C02` | `REL-CAND-BIO-F01-002` | **MODIFY AND APPROVE.** Materialized as `REL-V1-BIO-F01-002`, `GOVERNED + INACTIVE`, with `CONTEXT_DEPENDENT` polarity and explicit cyclic/state-dependent phase-at-awakening semantics. Biological phase is not wall-clock time and no global monotonic sign exists. |
+| `BIOF01-D-C03` | `REL-CAND-BIO-F01-003` | **APPROVE.** Materialized as `REL-V1-BIO-F01-003`, `GOVERNED + INACTIVE`, bounded by dose, timing, metabolism, tolerance, formulation, population, and context. |
+| `BIOF01-D-C04` | `REL-CAND-BIO-F01-004` | **CONDITIONAL APPROVAL SATISFIED.** `SRC-530` and `SRC-531` were verified and registered; event/intermittency evidence remained supportive and distinct from `ENV-039`. Materialized as `REL-V1-BIO-F01-004`, `GOVERNED + INACTIVE`. |
+| `BIOF01-D-C05` | `REL-CAND-BIO-F01-005` | **APPROVE CURRENT DISPOSITION ONLY.** Remains `RESEARCH_NEEDED`; no causal record was governed. |
 
-## E. Moderation and pathway candidates
+## D. New noncausal Relationships
 
-| Decision ID | Candidate | Recommendation | Reason | Governance decision |
-| --- | --- | --- | --- | --- |
-| `BIOF01-D-E01` | `REL-CAND-BIO-F01-008` Endogenous Circadian Phase moderates `REL-BIO-002` | Keep `RESEARCH_NEEDED` | Experimental moderation outcome is vigilance performance, not yet aligned to Cognitive Fatigue. | `PENDING — APPROVE / MODIFY / REJECT` |
-| `BIOF01-D-E02` | Noise→Continuity→Cognitive Fatigue pathway hypothesis | Do not create a pathway yet | No aligned pathway-specific mediation evidence. | `PENDING — APPROVE / MODIFY / REJECT` |
-| `BIOF01-D-E03` | Pain→Continuity→Cognitive Fatigue pathway hypothesis | Do not create a pathway yet | Graph reachability and separate segment evidence do not establish mediation. | `PENDING — APPROVE / MODIFY / REJECT` |
+| Decision | Candidate | Final outcome |
+| --- | --- | --- |
+| `BIOF01-D-D01` | `REL-CAND-BIO-F01-006` | **APPROVE.** Materialized as symmetric, noncausal `REL-V1-BIO-F01-005`, `GOVERNED + INACTIVE`; instrument/protocol qualification is mandatory and chronotype is not asserted to measure physiological phase directly. |
+| `BIOF01-D-D02` | `REL-CAND-BIO-F01-007` | **APPROVE CURRENT DISPOSITION ONLY.** Remains `RESEARCH_NEEDED` pending sufficiently non-overlapping operationalizations and a scoped estimate. |
+| `BIOF01-D-D03` | `REL-CAND-BIO-F01-009` | **APPROVE.** Materialized as noncausal derivational `REL-V1-BIO-F01-006`, `GOVERNED + INACTIVE`; external timing/schedule information remains required and was not invented as an entity. |
+
+## E. Moderation and pathways
+
+| Decision | Candidate | Final outcome |
+| --- | --- | --- |
+| `BIOF01-D-E01` | `REL-CAND-BIO-F01-008` | **APPROVE CURRENT DISPOSITION ONLY.** Remains `RESEARCH_NEEDED`; vigilance evidence was not generalized to Cognitive Fatigue. |
+| `BIOF01-D-E02` | Noise → Continuity → Cognitive Fatigue | **APPROVE NON-CREATION.** No CausalPathway was created. |
+| `BIOF01-D-E03` | Pain → Continuity → Cognitive Fatigue | **APPROVE NON-CREATION.** No CausalPathway was created; reachability is not mediation. |
 
 ## F. Intervention identities
 
-| Decision ID | Candidate IDs | Recommendation | Governance decision |
-| --- | --- | --- | --- |
-| `BIOF01-D-F01` | `INT-CAND-BIO-F01-001`–`003` | Review the three distinct duration/schedule intervention identities. | `PENDING — APPROVE / MODIFY / REJECT` |
-| `BIOF01-D-F02` | `INT-CAND-BIO-F01-004`, `005` | Review CBT-I component identities; approval must not infer component effects. | `PENDING — APPROVE / MODIFY / REJECT` |
-| `BIOF01-D-F03` | `INT-CAND-BIO-F01-006` | Review CBT-I as a package containing at least components `004` and `005`; package effect requires separate approval. | `PENDING — APPROVE / MODIFY / REJECT` |
-| `BIOF01-D-F04` | `INT-CAND-BIO-F01-007`, `008` | Review timed light and timed melatonin as reusable phase-manipulation identities. | `PENDING — APPROVE / MODIFY / REJECT` |
-| `BIOF01-D-F05` | `INT-CAND-BIO-F01-009` | Review acoustic attenuation identity and whether source/path/receiver variants remain one identity. | `PENDING — APPROVE / MODIFY / REJECT` |
-| `BIOF01-D-F06` | `INT-CAND-BIO-F01-010` | Review pre-awakening caffeine as distinct from ordinary caffeine consumption. | `PENDING — APPROVE / MODIFY / REJECT` |
+| Decision | Candidate IDs | Final outcome |
+| --- | --- | --- |
+| `BIOF01-D-F01` | `INT-CAND-BIO-F01-001`–`003` | **APPROVE.** Materialized as `INT-V1-BIO-F01-001`–`003`, all `GOVERNED + INACTIVE`. Effect governance remains separate. |
+| `BIOF01-D-F02` | `INT-CAND-BIO-F01-004`, `005` | **APPROVE.** Materialized as distinct `INT-V1-BIO-F01-004`, `005`, both `GOVERNED + INACTIVE`; no component effect was inferred. |
+| `BIOF01-D-F03` | `INT-CAND-BIO-F01-006` | **MODIFY AND APPROVE.** Materialized as package `INT-V1-BIO-F01-006`, `GOVERNED + INACTIVE`. Components `004` and `005` are included known/core modeled components, explicitly not an exhaustive CBT-I definition; package effects require separate evidence. |
+| `BIOF01-D-F04` | `INT-CAND-BIO-F01-007`, `008` | **APPROVE.** Materialized as `INT-V1-BIO-F01-007`, `008`, both `GOVERNED + INACTIVE`; dose, timing, formulation, spectrum, population, and target remain effect-specific. |
+| `BIOF01-D-F05` | `INT-CAND-BIO-F01-009` | **MODIFY — DO NOT GOVERN.** The generic acoustic umbrella remains `RESEARCH_NEEDED`. Existing evidence justified candidate `INT-CAND-BIO-F01-011` for receiver-level personal protection only; source- and path-control identities were not created. Both candidates remain non-governed and linked through the materialization manifest. |
+| `BIOF01-D-F06` | `INT-CAND-BIO-F01-010` | **APPROVE.** Materialized as `INT-V1-BIO-F01-010`, `GOVERNED + INACTIVE`, distinct from ordinary caffeine use because pre-awakening timing/delivery defines the action. |
 
-## G. InterventionEffect candidates
+## G. InterventionEffects
 
-| Decision ID | Effects | Recommendation | Governance decision |
-| --- | --- | --- | --- |
-| `BIOF01-D-G01` | `IE-CAND-BIO-F01-001` behavioral sleep extension→Sleep Duration | Review with heterogeneity and insomnia boundary. | `PENDING — APPROVE / MODIFY / REJECT` |
-| `BIOF01-D-G02` | `IE-CAND-BIO-F01-002` protected scheduling→Sleep Duration | Keep `RESEARCH_NEEDED`; roster-specific certainty is low. | `PENDING — APPROVE / MODIFY / REJECT` |
-| `BIOF01-D-G03` | `IE-CAND-BIO-F01-003` delayed school start→Sleep Duration | Review for adolescent education context only. | `PENDING — APPROVE / MODIFY / REJECT` |
-| `BIOF01-D-G04` | `IE-CAND-BIO-F01-004` CBT-I package→Sleep Continuity | Review with subjective/objective measurement conflict and transient-sleepiness risk. | `PENDING — APPROVE / MODIFY / REJECT` |
-| `BIOF01-D-G05` | `IE-CAND-BIO-F01-005` timed light→Endogenous Circadian Phase | Review only with phase-response timing and safety constraints. | `PENDING — APPROVE / MODIFY / REJECT` |
-| `BIOF01-D-G06` | `IE-CAND-BIO-F01-006` timed melatonin→Endogenous Circadian Phase | Review with population, timing, formulation, quality, and interaction constraints. | `PENDING — APPROVE / MODIFY / REJECT` |
-| `BIOF01-D-G07` | `IE-CAND-BIO-F01-007` acoustic attenuation→Sleep Continuity | Review for stated noise-exposed contexts; preserve alarm-audibility risk. | `PENDING — APPROVE / MODIFY / REJECT` |
-| `BIOF01-D-G08` | `IE-CAND-BIO-F01-008` pre-awakening caffeine→Sleep Inertia Severity | Keep `RESEARCH_NEEDED`; evidence is small and formulation-specific. | `PENDING — APPROVE / MODIFY / REJECT` |
-| `BIOF01-D-G09` | `IE-CAND-BIO-F01-009` post-awakening light→Sleep Inertia Severity | Keep `RESEARCH_NEEDED`; objective-performance evidence is insufficient. | `PENDING — APPROVE / MODIFY / REJECT` |
+| Decision | Candidate | Final outcome |
+| --- | --- | --- |
+| `BIOF01-D-G01` | `IE-CAND-BIO-F01-001` | **APPROVE.** Materialized as `IE-V1-BIO-F01-001`, `GOVERNED + INACTIVE`, with heterogeneity, reporting, short-sleeper/opportunity, and insomnia boundaries. |
+| `BIOF01-D-G02` | `IE-CAND-BIO-F01-002` | **APPROVE CURRENT DISPOSITION ONLY.** Remains `RESEARCH_NEEDED`. |
+| `BIOF01-D-G03` | `IE-CAND-BIO-F01-003` | **APPROVE.** Materialized as `IE-V1-BIO-F01-003`, `GOVERNED + INACTIVE`, limited to supported adolescent education contexts and not generalized to adult work. |
+| `BIOF01-D-G04` | `IE-CAND-BIO-F01-004` | **MODIFY AND APPROVE.** Materialized as `IE-V1-BIO-F01-004`, `GOVERNED + INACTIVE`; clinical/subjective continuity improvement is distinguished from smaller, mixed, or nonparallel PSG/actigraphy change. Transient sleepiness and sleep-restriction risks remain explicit. |
+| `BIOF01-D-G05` | `IE-CAND-BIO-F01-005` | **APPROVE.** Materialized as `IE-V1-BIO-F01-005`, `GOVERNED + INACTIVE`, with phase-response timing, exposure, population, safety, and context-dependent advance/delay direction. |
+| `BIOF01-D-G06` | `IE-CAND-BIO-F01-006` | **APPROVE.** Materialized as `IE-V1-BIO-F01-006`, `GOVERNED + INACTIVE`, with timing, dose/formulation, population, interactions, product quality, and phase-shift/sleep-promotion separation. |
+| `BIOF01-D-G07` | `IE-CAND-BIO-F01-007` | **DO NOT GOVERN YET.** Remapped to receiver-level candidate `INT-CAND-BIO-F01-011` and remains `RESEARCH_NEEDED`; no effect is generalized across source, path, and receiver mechanisms. |
+| `BIOF01-D-G08` | `IE-CAND-BIO-F01-008` | **APPROVE CURRENT DISPOSITION ONLY.** Remains `RESEARCH_NEEDED`. |
+| `BIOF01-D-G09` | `IE-CAND-BIO-F01-009` | **APPROVE CURRENT DISPOSITION ONLY.** Remains `RESEARCH_NEEDED`. |
 
-All nine target Drivers. No RDS or generic context object is a direct target.
+All direct targets remain Drivers. No RDS is a direct InterventionEffect target.
 
 ## H. Rejected/not-supported hypotheses
 
-| Decision ID | Hypothesis | Recommendation | Governance decision |
-| --- | --- | --- | --- |
-| `BIOF01-D-H01` | Sleep Duration causally changes Sleep Sufficiency | Reject causal representation; retain derivation only. | `PENDING — APPROVE / MODIFY / REJECT` |
-| `BIOF01-D-H02` | Sleep Duration causally changes Cumulative Sleep Deficit | Reject causal representation; retain serial derivation only. | `PENDING — APPROVE / MODIFY / REJECT` |
-| `BIOF01-D-H03` | Physiological Sleep Need causally changes either sleep RDS | Reject causal representation; preserve denominator/input dependencies. | `PENDING — APPROVE / MODIFY / REJECT` |
-| `BIOF01-D-H04` | Low Sleep Duration `TRANSITIONS_TO` high Sleep Inertia | Reject transition record; constructs do not transform into one another. | `PENDING — APPROVE / MODIFY / REJECT` |
-| `BIOF01-D-H05` | Add another Circadian Timing Alignment→Sleep Duration edge | Reject duplicate; handle through the existing-edge revision process. | `PENDING — APPROVE / MODIFY / REJECT` |
+| Decision | Hypothesis | Final outcome |
+| --- | --- | --- |
+| `BIOF01-D-H01` | Sleep Duration causes Sleep Sufficiency | **REJECT CAUSAL REPRESENTATION.** Retain derivation only. |
+| `BIOF01-D-H02` | Sleep Duration causes Cumulative Sleep Deficit | **REJECT CAUSAL REPRESENTATION.** Retain serial derivation only. |
+| `BIOF01-D-H03` | Physiological Sleep Need causes either sleep RDS | **REJECT CAUSAL REPRESENTATION.** Preserve denominator/reference-input dependencies. |
+| `BIOF01-D-H04` | Low Sleep Duration `TRANSITIONS_TO` high Sleep Inertia | **REJECT TEMPORAL-TRANSITION REPRESENTATION.** Different constructs do not transform into one another. |
+| `BIOF01-D-H05` | Second Circadian Timing Alignment → Sleep Duration edge | **REJECT DUPLICATE.** Any change belongs to the `REL-BIO-001` revision-review path. |
 
-## I. Research-needed and governance-blocked summary
+These rejection decisions are encoded in the materialization manifest so the
+same category errors cannot silently reappear as active candidates.
 
-Thirteen machine records remain `RESEARCH_NEEDED`: three Relationships, six
-EvidenceAssessments, one Intervention identity, and three InterventionEffects.
-Additional pathway and ontology-alignment questions are documented in the
-research queue. No record is marked `NEEDS_GOVERNANCE_INPUT`; none of the open
-questions prevented a conservative non-governed disposition.
+## Checkpoint totals
 
-Supplemental pilot sources must not be silently appended to the governed
-source register. Source registration, if desired, is a later explicit
-governance/materialization step.
+- Governed inactive Relationships: 6 (4 causal, 2 noncausal)
+- Governed inactive Interventions: 9
+- Governed inactive InterventionEffects: 5
+- Governed inactive EvidenceAssessments: 11
+- Total new governed/inactive scientific records: 31
+- New active scientific records: 0
+- Existing active V3 Relationships: unchanged

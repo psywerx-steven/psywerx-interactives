@@ -60,11 +60,11 @@ need inputs; no candidate propagates both an RDS and its constituents.
 | BIO-F01 Drivers searched | 6/6 |
 | Drivers with effect candidates | 4/6 |
 | Drivers with documented no adequately supported direct intervention | 2: Chronotype and Physiological Sleep Need |
-| Intervention identities | 10 |
+| Intervention identities | 11 candidate identities; 9 governed inactive identities |
 | InterventionEffect candidates | 9 |
 | Governed delivery modalities represented | 4 |
 | Governed identity categories represented | 5 |
-| Identities with no direct effect record | 2: CBT-I components `004` and `005`; intentionally not inferred from package evidence |
+| Identities with no direct effect record | 3 candidate identities: CBT-I components `004` and `005`, plus unresolved acoustic umbrella `009` |
 | Effects lacking exact Driver target | 0 |
 | Effects lacking required mechanistic Driver linkage | 0; no relationship-targeted effect exists |
 | Direct RDS target violations | 0 |
@@ -95,29 +95,34 @@ not be collapsed to graph weights.
 
 ## Lifecycle and governance
 
-Across 46 candidate records:
+Across 47 candidate records after the acoustic identity review:
 
 | State | Count |
 | --- | ---: |
 | `CANDIDATE` | 0 |
-| `RESEARCH_NEEDED` | 13 |
-| `REVIEW_READY` | 33 |
+| `RESEARCH_NEEDED` | 17 |
+| `REVIEW_READY` | 30 |
 | `NEEDS_GOVERNANCE_INPUT` | 0 |
 | New `GOVERNED` | 0 |
 | New `ACTIVE` | 0 |
 
-All 46 have `activationStatus: NOT_ELIGIBLE` and automated transition
+All 47 have `activationStatus: NOT_ELIGIBLE` and automated transition
 provenance. The candidate workspace is `productionGraphEligible: false`; V1
 validation confirms it contributes no production causal traversal.
+
+Separately, governance checkpoint 001 created 31 `GOVERNED + INACTIVE`
+scientific records: six Relationships, nine Interventions, five
+InterventionEffects, and 11 EvidenceAssessments. It created zero active
+records, so production traversal and active counts remain unchanged.
 
 ## Open flags for human review
 
 - Five existing causal records have revision-candidate dispositions, chiefly
   for source fit, endpoint semantics, or RDS safeguards.
 - One missing derivational record is review-ready.
-- Two causal candidates rely on supplemental sources not yet in the governed
-  register; all supplemental-source effects likewise require source governance
-  before activation.
+- Twenty selected supplemental sources are now verified native V1 source
+  records. The acoustic effect source remains deliberately unregistered while
+  its identity boundary is unresolved.
 - The phase moderation record and continuity→persistent-pain record remain
   research-needed.
 - No CausalPathway met D05 evidence requirements.

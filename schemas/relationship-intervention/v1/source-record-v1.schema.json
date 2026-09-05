@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://psywerx.org/schemas/relationship-intervention/v1/source-record-v1.schema.json",
+  "title": "PSYWERX Native Scientific Source Record V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion", "id", "citationText", "title", "authors", "year",
+    "publication", "doi", "pmid", "url", "sourceType", "verification",
+    "governanceDecisionRecord", "auditId"
+  ],
+  "properties": {
+    "schemaVersion": {"const": "1.0.0"},
+    "id": {"type": "string", "pattern": "^SRC-[0-9]{3,}$"},
+    "citationText": {"type": "string", "minLength": 1},
+    "title": {"type": "string", "minLength": 1},
+    "authors": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "year": {"type": "integer", "minimum": 1800, "maximum": 2100},
+    "publication": {"type": "string", "minLength": 1},
+    "doi": {"type": ["string", "null"], "minLength": 1},
+    "pmid": {"type": ["string", "null"], "pattern": "^[0-9]+$"},
+    "url": {"type": "string", "format": "uri"},
+    "sourceType": {"type": "string", "minLength": 1},
+    "verification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "system", "verifiedDate", "identifierChecked"],
+      "properties": {
+        "status": {"const": "VERIFIED"},
+        "system": {"const": "PUBMED_NCBI_EUTILITIES"},
+        "verifiedDate": {"type": "string", "format": "date"},
+        "identifierChecked": {"type": "string", "minLength": 1}
+      }
+    },
+    "governanceDecisionRecord": {"type": "string", "minLength": 1},
+    "auditId": {"type": "string", "minLength": 1}
+  },
+  "anyOf": [
+    {"properties": {"doi": {"type": "string"}}},
+    {"properties": {"pmid": {"type": "string"}}}
+  ]
+}

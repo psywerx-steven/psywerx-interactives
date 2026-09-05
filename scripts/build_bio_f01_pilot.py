@@ -422,8 +422,9 @@ def build_workspace() -> dict:
         intervention("INT-CAND-BIO-F01-006", "Cognitive behavioral therapy for insomnia package", "SERVICE_OR_SUPPORT", "A multicomponent insomnia treatment package containing at least stimulus control and sleep-restriction therapy.", kind="PACKAGE", components=["INT-CAND-BIO-F01-004", "INT-CAND-BIO-F01-005"]),
         intervention("INT-CAND-BIO-F01-007", "Timed bright-light exposure", "BIOLOGICAL_OR_CLINICAL", "Exposure to controlled bright light at a specified circadian time, intensity, spectrum, and duration."),
         intervention("INT-CAND-BIO-F01-008", "Timed exogenous melatonin administration", "BIOLOGICAL_OR_CLINICAL", "Administration of exogenous melatonin at a specified dose and circadian/clock time."),
-        intervention("INT-CAND-BIO-F01-009", "Nighttime acoustic attenuation", "ENVIRONMENTAL_OR_CHOICE_ARCHITECTURE", "Reduction of sound reaching a sleeper through source control, insulation, masking, or personal hearing protection."),
+        intervention("INT-CAND-BIO-F01-009", "Nighttime acoustic attenuation", "ENVIRONMENTAL_OR_CHOICE_ARCHITECTURE", "Umbrella candidate spanning source control, transmission/path attenuation, and receiver protection; the identity boundary remains unresolved and cannot support a governed effect.", lifecycle="RESEARCH_NEEDED"),
         intervention("INT-CAND-BIO-F01-010", "Pre-awakening timed caffeine delivery", "BIOLOGICAL_OR_CLINICAL", "A formulation or delivery schedule designed to produce caffeine exposure shortly before planned awakening."),
+        intervention("INT-CAND-BIO-F01-011", "Nighttime personal acoustic protection", "ENVIRONMENTAL_OR_CHOICE_ARCHITECTURE", "Receiver-level reduction of sound reaching a sleeper through personal hearing protection; evidence and safety boundaries remain under review.", lifecycle="RESEARCH_NEEDED"),
     ]
 
     effects = [
@@ -466,11 +467,11 @@ def build_workspace() -> dict:
                "Dose, formulation, timing, product quality, age, comorbidity, and concurrent medicines affect benefit and risk.",
                ["HUMAN_DELIVERED"], [], ["BIO-003"], implementers=["Clinician or protocol-trained individual"],
                prerequisites=["Medication and timing review"], risks=["Daytime sleepiness", "Drug interactions", "Product-quality variation"]),
-        effect(7, "INT-CAND-BIO-F01-009", "BIO-002", "CHANGE_LEVEL", "INCREASE",
-               "Reducing nighttime sound-event exposure reduces noise-triggered arousals and awakenings.",
-               "Sleepers exposed to modifiable environmental noise", "Home, hospital, transport, or operational sleep setting",
-               "Personal hearing protection may be intolerable or unsafe where alarms must remain audible; ICU evidence is context-specific.",
-               ["PHYSICAL_ENVIRONMENT"], [], [], scale="PHYSICAL_SETTING",
+        effect(7, "INT-CAND-BIO-F01-011", "BIO-002", "CHANGE_LEVEL", "INCREASE",
+               "Receiver-level personal protection may reduce sound reaching the sleeper and thereby reduce noise-triggered arousals and awakenings.",
+               "Noise-exposed sleepers", "Nighttime environmental or care-setting noise",
+               "Identity and evidence are receiver-specific; do not generalize to source or transmission controls. Evidence is strongest in ICU settings, intervention components and objective outcomes vary, and alarm audibility is safety-critical.",
+               ["PHYSICAL_ENVIRONMENT"], [], [], lifecycle="RESEARCH_NEEDED", scale="PHYSICAL_SETTING",
                implementers=["Facility, household, or individual"], risks=["Missed alarms or warning signals", "Discomfort"]),
         effect(8, "INT-CAND-BIO-F01-010", "BIO-005", "CHANGE_LEVEL", "DECREASE",
                "Pre-awakening caffeine antagonizes adenosine receptors near waking and may accelerate restoration of alert performance.",

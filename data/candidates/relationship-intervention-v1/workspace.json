@@ -2694,7 +2694,7 @@
         "sourceSchema": "AUD-BIO-F01-RI-V1-20260905-001:structured-evidence-search"
       },
       "governance": {
-        "lifecycleStatus": "REVIEW_READY",
+        "lifecycleStatus": "RESEARCH_NEEDED",
         "activationStatus": "NOT_ELIGIBLE",
         "blockStatus": "NONE",
         "decisionOutcome": "NOT_DECIDED",
@@ -2739,24 +2739,6 @@
             "objectId": "EVA-CAND-BIO-F01-IE-007",
             "revision": 1,
             "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
-            "governanceDecisionRecord": null,
-            "exactDecisionMaterialization": false
-          },
-          {
-            "fromState": {
-              "lifecycleStatus": "RESEARCH_NEEDED",
-              "activationStatus": "NOT_ELIGIBLE"
-            },
-            "toState": {
-              "lifecycleStatus": "REVIEW_READY",
-              "activationStatus": "NOT_ELIGIBLE"
-            },
-            "actorClass": "AUTOMATED_PROCESS_OR_AI",
-            "rationale": "Structured evidence audit completed the candidate packet for human scientific review.",
-            "timestamp": "2026-09-05T12:00:00Z",
-            "objectId": "EVA-CAND-BIO-F01-IE-007",
-            "revision": 1,
-            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-3",
             "governanceDecisionRecord": null,
             "exactDecisionMaterialization": false
           }
@@ -3609,12 +3591,12 @@
       "interventionKind": "ATOMIC",
       "category": "ENVIRONMENTAL_OR_CHOICE_ARCHITECTURE",
       "categorySpecification": null,
-      "description": "Reduction of sound reaching a sleeper through source control, insulation, masking, or personal hearing protection.",
+      "description": "Umbrella candidate spanning source control, transmission/path attenuation, and receiver protection; the identity boundary remains unresolved and cannot support a governed effect.",
       "componentInterventionIds": [],
       "identitySourceIds": [],
       "externalCrosswalks": [],
       "governance": {
-        "lifecycleStatus": "REVIEW_READY",
+        "lifecycleStatus": "RESEARCH_NEEDED",
         "activationStatus": "NOT_ELIGIBLE",
         "blockStatus": "NONE",
         "decisionOutcome": "NOT_DECIDED",
@@ -3659,24 +3641,6 @@
             "objectId": "INT-CAND-BIO-F01-009",
             "revision": 1,
             "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
-            "governanceDecisionRecord": null,
-            "exactDecisionMaterialization": false
-          },
-          {
-            "fromState": {
-              "lifecycleStatus": "RESEARCH_NEEDED",
-              "activationStatus": "NOT_ELIGIBLE"
-            },
-            "toState": {
-              "lifecycleStatus": "REVIEW_READY",
-              "activationStatus": "NOT_ELIGIBLE"
-            },
-            "actorClass": "AUTOMATED_PROCESS_OR_AI",
-            "rationale": "Structured evidence audit completed the candidate packet for human scientific review.",
-            "timestamp": "2026-09-05T12:00:00Z",
-            "objectId": "INT-CAND-BIO-F01-009",
-            "revision": 1,
-            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-3",
             "governanceDecisionRecord": null,
             "exactDecisionMaterialization": false
           }
@@ -3760,6 +3724,71 @@
             "objectId": "INT-CAND-BIO-F01-010",
             "revision": 1,
             "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          }
+        ]
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "INT-CAND-BIO-F01-011",
+      "revision": 1,
+      "canonicalName": "Nighttime personal acoustic protection",
+      "aliases": [],
+      "interventionKind": "ATOMIC",
+      "category": "ENVIRONMENTAL_OR_CHOICE_ARCHITECTURE",
+      "categorySpecification": null,
+      "description": "Receiver-level reduction of sound reaching a sleeper through personal hearing protection; evidence and safety boundaries remain under review.",
+      "componentInterventionIds": [],
+      "identitySourceIds": [],
+      "externalCrosswalks": [],
+      "governance": {
+        "lifecycleStatus": "RESEARCH_NEEDED",
+        "activationStatus": "NOT_ELIGIBLE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "NOT_DECIDED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": null,
+        "authorizedBy": null,
+        "decisionDate": null,
+        "effectiveVersion": null,
+        "decisionRationale": null,
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Created as a non-governed BIO-F01 pilot candidate.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "INT-CAND-BIO-F01-011",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit indicated additional research or qualification was required.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "INT-CAND-BIO-F01-011",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
             "governanceDecisionRecord": null,
             "exactDecisionMaterialization": false
           }
@@ -4451,20 +4480,20 @@
       "schemaVersion": "1.0.0",
       "id": "IE-CAND-BIO-F01-007",
       "revision": 1,
-      "interventionId": "INT-CAND-BIO-F01-009",
+      "interventionId": "INT-CAND-BIO-F01-011",
       "targetKind": "DRIVER",
       "targetDriverId": "BIO-002",
       "targetRelationshipId": null,
       "mechanisticDriverIds": [],
       "effectMode": "CHANGE_LEVEL",
       "intendedDirection": "INCREASE",
-      "mechanismOfAction": "Reducing nighttime sound-event exposure reduces noise-triggered arousals and awakenings.",
-      "targetPopulationOrAudience": "Sleepers exposed to modifiable environmental noise",
+      "mechanismOfAction": "Receiver-level personal protection may reduce sound reaching the sleeper and thereby reduce noise-triggered arousals and awakenings.",
+      "targetPopulationOrAudience": "Noise-exposed sleepers",
       "populationScope": "SUBGROUP_TARGETED",
-      "context": "Home, hospital, transport, or operational sleep setting",
+      "context": "Nighttime environmental or care-setting noise",
       "contextScope": "CONTEXT_DEPENDENT",
       "scale": "PHYSICAL_SETTING",
-      "boundaryConditions": "Personal hearing protection may be intolerable or unsafe where alarms must remain audible; ICU evidence is context-specific.",
+      "boundaryConditions": "Identity and evidence are receiver-specific; do not generalize to source or transmission controls. Evidence is strongest in ICU settings, intervention components and objective outcomes vary, and alarm audibility is safety-critical.",
       "implementers": [
         "Facility, household, or individual"
       ],
@@ -4490,7 +4519,7 @@
       ],
       "sourceIds": [],
       "governance": {
-        "lifecycleStatus": "REVIEW_READY",
+        "lifecycleStatus": "RESEARCH_NEEDED",
         "activationStatus": "NOT_ELIGIBLE",
         "blockStatus": "NONE",
         "decisionOutcome": "NOT_DECIDED",
@@ -4535,24 +4564,6 @@
             "objectId": "IE-CAND-BIO-F01-007",
             "revision": 1,
             "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
-            "governanceDecisionRecord": null,
-            "exactDecisionMaterialization": false
-          },
-          {
-            "fromState": {
-              "lifecycleStatus": "RESEARCH_NEEDED",
-              "activationStatus": "NOT_ELIGIBLE"
-            },
-            "toState": {
-              "lifecycleStatus": "REVIEW_READY",
-              "activationStatus": "NOT_ELIGIBLE"
-            },
-            "actorClass": "AUTOMATED_PROCESS_OR_AI",
-            "rationale": "Structured evidence audit completed the candidate packet for human scientific review.",
-            "timestamp": "2026-09-05T12:00:00Z",
-            "objectId": "IE-CAND-BIO-F01-007",
-            "revision": 1,
-            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-3",
             "governanceDecisionRecord": null,
             "exactDecisionMaterialization": false
           }
