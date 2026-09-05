@@ -34,6 +34,7 @@ except ImportError:  # The browser suite is optional in dependency-light CI.
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 PUBLIC_DATA_DIR = REPO_ROOT / "data" / "cognitive-security"
+DISCOVERY_DATA_DIR = REPO_ROOT / "data" / "cognitive-security-discovery"
 APP_PATH = "cognitive-security/"
 
 SUPPORT_INTERPRETATION = (
@@ -49,8 +50,8 @@ SC04_NOTICE = (
 )
 
 PRIMARY_ROUTES = {
-    "start": "Read the canonical map from structure to support",
-    "families": "Categories & families",
+    "start": "Cognitive Security Explorer",
+    "families": "Categories, subcategories, and topics",
     "themes": "Themes",
     "tensions": "Tensions",
     "narratives": "Narratives",
@@ -130,6 +131,14 @@ class CanonicalExplorerBrowserTests(unittest.TestCase):
             for file_name in {
                 spec[1] for spec in DETAIL_SPECS + REPRESENTATIVE_DETAIL_SPECS
             }
+        }
+        cls.discovery_records = {
+            row["episodeId"]: row
+            for row in json.loads((DISCOVERY_DATA_DIR / "episode_discovery.json").read_text(encoding="utf-8"))["records"]
+        }
+        cls.metadata_records = {
+            row["episodeId"]: row
+            for row in json.loads((DISCOVERY_DATA_DIR / "episode_metadata.json").read_text(encoding="utf-8"))
         }
 
     @classmethod
@@ -232,11 +241,18 @@ class CanonicalExplorerBrowserTests(unittest.TestCase):
 
     def _assert_detail(self, route: str, entity_id: str, entity_type: str) -> None:
         self._navigate({"view": route, "id": entity_id})
-        hero = self.page.locator(
-            f'.record-detail__hero[data-entity-type="{entity_type}"]'
+        marker = self.page.locator(
+            f'.record-detail__marker[data-entity-type="{entity_type}"]'
         )
-        self.assertEqual(1, hero.count(), f"Missing {route} detail for {entity_id}")
-        self.assertIn(entity_id, hero.inner_text())
+        self.assertEqual(1, marker.count(), f"Missing {route} detail for {entity_id}")
+        title = self.page.locator("#view-title").inner_text().strip()
+        self.assertTrue(title)
+        matching_headings = self.page.locator("h1, h2, h3, h4, h5").evaluate_all(
+            "(nodes, title) => nodes.filter(node => node.textContent.trim() === title).length",
+            title,
+        )
+        self.assertEqual(1, matching_headings, f"Duplicate detail title for {entity_id}")
+        self.assertNotIn(entity_id, self.page.locator("#view-content").inner_text())
         self.assertEqual("false", self.page.locator("#view-content").get_attribute("aria-busy"))
 
     def _assert_no_page_overflow(self) -> dict[str, int]:
@@ -250,6 +266,14 @@ class CanonicalExplorerBrowserTests(unittest.TestCase):
         self.assertLessEqual(dimensions["document"], dimensions["viewport"] + 1)
         self.assertLessEqual(dimensions["body"], dimensions["viewport"] + 1)
         return dimensions
+
+    def _save_phase_a_screenshot(self, name: str) -> None:
+        directory = os.environ.get("PSYWERX_QA_SCREENSHOT_DIR")
+        if not directory:
+            return
+        target = Path(directory)
+        target.mkdir(parents=True, exist_ok=True)
+        self.page.screenshot(path=str(target / name), full_page=True)
 
     def test_all_primary_and_required_detail_routes_render(self) -> None:
         """Visit 56 routes, including every governed synthesis detail record."""
@@ -287,7 +311,7 @@ class CanonicalExplorerBrowserTests(unittest.TestCase):
         self._navigate({"view": "family", "id": family_id})
         # The hierarchy view may already have loaded lazy data in another flow;
         # this fresh page verifies explicit disclosure behavior on a detail route.
-        load = self.page.get_by_role("button", name="Load public support paths")
+        load = self.page.get_by_role("button", name="Open connections & sources")
         self.assertEqual(1, load.count())
         load.click()
         self.page.locator("nav.evidence-trail").wait_for(timeout=20_000)
@@ -307,21 +331,21 @@ class CanonicalExplorerBrowserTests(unittest.TestCase):
     def test_public_terminology_and_entity_specific_support_panels(self) -> None:
         self._open(expected_title=PRIMARY_ROUTES["start"], view="start")
         hero = self.page.locator(".hero__lede").inner_text()
-        self.assertIn("Explore the canonical synthesis", hero)
-        self.assertNotIn("approved canonical synthesis", hero.casefold())
+        self.assertIn("categories, subcategories, and topics", hero)
+        self.assertNotIn("approved", hero.casefold())
 
         generic = (
-            "Primary support represents the governed evidence designated as primary "
-            "for this entity. The evidence path depends on entity type."
+            "Primary support is the evidence designated as primary for this entity. "
+            "Its path depends on entity type"
         )
         cases = (
             (1280, "cluster", "clusters.json", "clusterId", "retained items directly coded to that cluster"),
-            (1280, "family", "families.json", "familyId", "primary support comes from its member clusters"),
-            (500, "theme", "themes.json", "themeId", "primary support comes from primary-support families and clusters"),
+            (1280, "family", "families.json", "familyId", "primary support comes from its member topics"),
+            (500, "theme", "themes.json", "themeId", "primary support comes from primary-support subcategories and topics"),
             (500, "tension", "tensions.json", "tensionId", "evidence directly allocated to Pole A or Pole B"),
-            (390, "narrative", "narratives.json", "narrativeId", "primary evidence is inherited through integrated canonical constructs"),
-            (390, "category-finding", "category_findings.json", "findingId", "primary evidence is traced through supporting families and clusters"),
-            (390, "scenario", "scenarios.json", "scenarioId", "primary evidence is traced through relevant canonical constructs"),
+            (390, "narrative", "narratives.json", "narrativeId", "primary evidence is inherited through integrated map constructs"),
+            (390, "category-finding", "category_findings.json", "findingId", "primary evidence is traced through supporting subcategories and topics"),
+            (390, "scenario", "scenarios.json", "scenarioId", "primary evidence is traced through relevant map constructs"),
         )
         for width, view, file_name, id_field, clarification in cases:
             with self.subTest(view=view, width=width):
@@ -330,6 +354,7 @@ class CanonicalExplorerBrowserTests(unittest.TestCase):
                 self._open(view=view, id=entity_id)
                 panel = self.page.locator(".support-panel")
                 self.assertEqual(1, panel.count())
+                panel.locator("summary").first.click()
                 text = panel.inner_text()
                 self.assertIn(generic, text)
                 self.assertIn(clarification, text)
@@ -355,7 +380,7 @@ class CanonicalExplorerBrowserTests(unittest.TestCase):
         )
 
         self._open(view="tension", id=tension_id)
-        self.page.get_by_role("button", name="Load public support paths").click()
+        self.page.get_by_role("button", name="Open connections & sources").click()
         explorer = self.page.locator(".evidence-explorer")
         explorer.locator("nav.evidence-trail").wait_for(timeout=20_000)
         while explorer.locator(".evidence-choice-list__more button").count():
@@ -376,13 +401,14 @@ class CanonicalExplorerBrowserTests(unittest.TestCase):
 
         cluster_id = self.record_cache["clusters.json"][0]["clusterId"]
         self._open(view="cluster", id=cluster_id)
-        self.page.get_by_role("button", name="Load public support paths").click()
+        self.page.get_by_role("button", name="Open connections & sources").click()
         cluster_explorer = self.page.locator(".evidence-explorer")
         cluster_explorer.locator("nav.evidence-trail").wait_for(timeout=20_000)
         self.assertIn("direct coded support", cluster_explorer.inner_text().casefold())
 
     def test_heatmap_is_complete_textual_and_keyboard_actionable(self) -> None:
         self._open(expected_title="Themes", view="themes")
+        self.page.get_by_text("Compare themes", exact=True).click()
         table = self.page.locator("table.heatmap-table")
         self.assertEqual(1, table.count())
         self.assertEqual(11, table.locator("tbody tr").count())
@@ -393,8 +419,8 @@ class CanonicalExplorerBrowserTests(unittest.TestCase):
             link = links.nth(index)
             self.assertRegex(link.inner_text(), r"^\d+(?:\.\d+)?%$")
             accessible_name = link.get_attribute("aria-label") or ""
-            self.assertIn("primary families", accessible_name)
-            self.assertIn("primary clusters", accessible_name)
+            self.assertIn("primary subcategories", accessible_name)
+            self.assertIn("primary topics", accessible_name)
             self.assertIn("primary-support content units", accessible_name)
             self.assertIn("descriptive, not evidence strength", accessible_name)
 
@@ -406,21 +432,25 @@ class CanonicalExplorerBrowserTests(unittest.TestCase):
 
     def test_tension_matrix_filters_preserve_neutral_poles(self) -> None:
         self._open(expected_title="Tensions", view="tensions")
+        self.page.get_by_text("Compare tensions", exact=True).click()
         matrix = self.page.locator("table.tension-matrix")
         self.assertEqual(20, matrix.locator("tbody tr").count())
-        self.assertIn("neutral two-pole constructs", matrix.locator("caption").inner_text())
+        self.assertIn("neutral two-position constructs", matrix.locator("caption").inner_text())
         self.assertEqual(20, matrix.locator("td.pole-cell--a").count())
         self.assertEqual(20, matrix.locator("td.pole-cell--b").count())
+        self.assertEqual(4, matrix.locator("thead th").count())
+        self._save_phase_a_screenshot("phase-a-tensions.png")
 
-        form = self.page.get_by_role("search", name="Search and filter the canonical tension matrix")
+        form = self.page.get_by_role("search", name="Search and filter tensions")
         form.locator('select[name="support"]').select_option("broad")
         form.get_by_role("button", name="Apply").click()
         self._wait_ready()
+        self.page.get_by_text("Compare tensions", exact=True).click()
         filtered_count = self.page.locator("table.tension-matrix tbody tr").count()
         self.assertGreater(filtered_count, 0)
         self.assertLessEqual(filtered_count, 20)
         self.assertEqual("broad", parse_qs(urlparse(self.page.url).query)["support"][0])
-        self.assertIn("of 20 canonical tensions", self.page.locator("#view-summary").inner_text())
+        self.assertIn("of 20 tensions", self.page.locator("#view-summary").inner_text())
 
     def test_search_global_query_facets_and_empty_state(self) -> None:
         self._open(expected_title=PRIMARY_ROUTES["start"], view="start")
@@ -461,17 +491,18 @@ class CanonicalExplorerBrowserTests(unittest.TestCase):
         self._wait_ready()
         self.page.locator("#empty-state").wait_for(state="visible")
         self.assertTrue(self.page.locator("#empty-state").is_visible())
-        self.assertIn("No canonical records matched", self.page.locator("#empty-state").inner_text())
+        self.assertIn("No records matched", self.page.locator("#empty-state").inner_text())
 
     def test_sc04_carries_explicit_governance_and_rights_warning(self) -> None:
         self._open(view="scenario", id="SC-04")
         notice = self.page.locator('.scenario-governance-notice[role="note"]')
         self.assertEqual(1, notice.count())
         self.assertEqual("Governance and rights notice", notice.get_attribute("aria-label"))
+        notice.locator("summary").click()
         self.assertIn(SC04_NOTICE, notice.inner_text())
         body = self.page.locator("#view-content").inner_text()
         self.assertIn("Response options are analytical possibilities, not validated recommendations.", body)
-        self.assertIn("Not a forecast or recommendation", body)
+        self.assertIn("possible future, not a prediction", self.page.locator("#view-kicker").inner_text().casefold())
 
     def test_legacy_redirects_are_governed_and_unknown_ids_fail_safe(self) -> None:
         # These are individual formerly public URLs, not a published migration table.
@@ -497,13 +528,13 @@ class CanonicalExplorerBrowserTests(unittest.TestCase):
             self.page.locator("#link-notice").inner_text(),
         )
 
-        self._open(expected_title="Categories & families", view="meta-cluster", id="TTP-M02")
+        self._open(expected_title="Categories, subcategories, and topics", view="meta-cluster", id="TTP-M02")
         self.assertIn("No single successor was inferred", self.page.locator("#link-notice").inner_text())
 
         self._open(expected_title="Themes", view="theme", id="UNKNOWN-PUBLIC-ID")
-        self.assertIn("relevant canonical index", self.page.locator("#link-notice").inner_text())
+        self.assertIn("relevant index", self.page.locator("#link-notice").inner_text())
         self._open(expected_title=PRIMARY_ROUTES["start"], view="unknown-view")
-        self.assertIn("not part of the canonical public map", self.page.locator("#link-notice").inner_text())
+        self.assertIn("not part of this public map", self.page.locator("#link-notice").inner_text())
 
     def test_copy_link_history_forward_back_and_refresh(self) -> None:
         self._open(expected_title=PRIMARY_ROUTES["start"], view="start")
@@ -522,7 +553,7 @@ class CanonicalExplorerBrowserTests(unittest.TestCase):
 
         self.page.get_by_role("button", name="Copy link").click()
         self.page.locator("#link-notice").wait_for(state="visible")
-        self.assertIn("Canonical link copied", self.page.locator("#link-notice").inner_text())
+        self.assertIn("Link copied", self.page.locator("#link-notice").inner_text())
         self.assertEqual(detail_url, self.page.evaluate("navigator.clipboard.readText()"))
 
         self.page.go_back(wait_until="domcontentloaded")
@@ -551,7 +582,7 @@ class CanonicalExplorerBrowserTests(unittest.TestCase):
         # Browsers may focus the main target itself or its already focusable view
         # heading; both land keyboard users at the beginning of the map content.
         self.assertIn(
-            self.page.evaluate("document.activeElement.id"), ("map-app", "view-title")
+            self.page.evaluate("document.activeElement.id"), ("map-app", "view-title", "page-title")
         )
 
         self.assertEqual(1, self.page.locator("main").count())
@@ -563,7 +594,8 @@ class CanonicalExplorerBrowserTests(unittest.TestCase):
             """() => Array.from(document.querySelectorAll('a, button, input, select, summary'))
               .filter(node => {
                 const style = getComputedStyle(node);
-                return !node.disabled && style.display !== 'none' && style.visibility !== 'hidden';
+                const hiddenInDisclosure = node.closest('details:not([open])') && node.tagName !== 'SUMMARY';
+                return !node.disabled && !hiddenInDisclosure && node.getClientRects().length > 0 && style.display !== 'none' && style.visibility !== 'hidden';
               })
               .filter(node => {
                 const labels = node.labels ? Array.from(node.labels).map(label => label.innerText).join(' ') : '';
@@ -578,7 +610,151 @@ class CanonicalExplorerBrowserTests(unittest.TestCase):
         self.assertEqual([], unnamed, "Visible interactive controls need accessible names")
 
         body_text = self.page.locator("body").inner_text()
-        self.assertGreaterEqual(body_text.count(SUPPORT_INTERPRETATION), 2)
+        self.assertNotIn("approved canonical synthesis", body_text.casefold())
+
+    def test_landing_icons_and_functional_overview_are_complete(self) -> None:
+        self._open(expected_title=PRIMARY_ROUTES["start"], view="start")
+        cards = self.page.locator("a.entry-card")
+        self.assertEqual(11, cards.count())
+        icons = cards.locator("picture.entry-icon img")
+        self.assertEqual(11, icons.count())
+        image_state = icons.evaluate_all(
+            "images => images.map(image => ({complete: image.complete, width: image.naturalWidth, height: image.naturalHeight, alt: image.alt}))"
+        )
+        self.assertTrue(all(row == {"complete": True, "width": 256, "height": 256, "alt": ""} for row in image_state), image_state)
+        self.assertEqual(9, self.page.locator(".overview-map a.overview-node").count())
+        alternative = self.page.locator("details.overview-text")
+        alternative.locator("summary").click()
+        self.assertEqual(11, alternative.locator("a").count())
+        self.assertIn("do not assert causation", self.page.locator(".functional-overview").inner_text())
+        self._save_phase_a_screenshot("phase-a-landing.png")
+
+    def test_embedded_hierarchy_expands_and_search_reveals_ancestors(self) -> None:
+        self._open(expected_title=PRIMARY_ROUTES["families"], view="families")
+        categories = self.page.locator("details.hierarchy-category")
+        self.assertEqual(7, categories.count())
+        self.assertEqual(0, self.page.locator("details.hierarchy-category[open]").count())
+        first_category = categories.first
+        first_category.locator(":scope > summary").click()
+        self.assertGreater(first_category.locator("details.hierarchy-family").count(), 0)
+        first_family = first_category.locator("details.hierarchy-family").first
+        first_family.locator(":scope > summary").click()
+        self.assertGreater(first_family.locator(".hierarchy-topic-list a").count(), 0)
+        self._save_phase_a_screenshot("phase-a-nested-hierarchy.png")
+
+        topic_name = self.record_cache["clusters.json"][-1]["name"]
+        form = self.page.get_by_role("search", name="Search and filter categories, subcategories, and topics")
+        form.locator('input[name="q"]').fill(topic_name)
+        form.get_by_role("button", name="Apply").click()
+        self._wait_ready()
+        self.assertGreater(self.page.locator("details.hierarchy-category[open] details.hierarchy-family[open]").count(), 0)
+        self.assertIn(topic_name, self.page.locator(".hierarchy-browser").inner_text())
+
+    def test_episode_library_ranges_sort_jump_and_context(self) -> None:
+        self._open(expected_title="Episodes", view="episodes")
+        self.assertEqual(242, self.page.locator("a.episode-card-link").count())
+        self.assertEqual(0, self.page.locator(".episode-card-link__type").count())
+        self.assertEqual(0, self.page.locator("a.episode-card-link .entity-badge").count())
+        card_states = self.page.locator("a.episode-card-link").evaluate_all(
+            "links => links.map(link => ({text: link.innerText, href: link.getAttribute('href'), tag: link.tagName}))"
+        )
+        self.assertTrue(all("EPI-" not in row["text"] for row in card_states))
+        self.assertTrue(all(row["tag"] == "A" and row["href"] for row in card_states))
+        self.assertEqual(1, self.page.get_by_text("The Cognitive Crucible", exact=True).count())
+        self._save_phase_a_screenshot("phase-a-episode-library.png")
+        form = self.page.get_by_role("search", name="Browse episodes")
+        form.locator("select").nth(0).select_option("1-29")
+        form.locator("select").nth(1).select_option("newest")
+        form.get_by_role("button", name="Apply").click()
+        self._wait_ready()
+        titles = self.page.locator(".episode-card-link__title").all_inner_texts()
+        self.assertEqual(29, len(titles))
+        self.assertTrue(titles[0].startswith("#29"), titles[0])
+        self.assertEqual("newest", self.page.evaluate("localStorage.getItem('psywerx-episode-sort')"))
+
+        jump = self.page.get_by_role("form", name="Jump to episode number")
+        jump.locator("input").fill("52")
+        jump.get_by_role("button", name="Go").click()
+        self.assertIn("No release is recorded as episode 52", self.page.locator("#link-notice").inner_text())
+
+        first = self.page.locator("a.episode-card-link").first
+        expected_href = first.get_attribute("href")
+        first.click()
+        self._wait_ready()
+        self.assertIn("range=1-29", self.page.url)
+        self.assertIn("sort=newest", self.page.url)
+        self.page.get_by_role("link", name="Back to episode list").click()
+        self._wait_ready()
+        self.assertIn("range=1-29", self.page.url)
+        self.assertIn("sort=newest", self.page.url)
+        self.assertIsNotNone(expected_href)
+
+    def test_episode_metadata_topics_recommendations_and_lazy_matrix(self) -> None:
+        episode_id = next(
+            episode_id
+            for episode_id, discovery in self.discovery_records.items()
+            if discovery["similarOverall"]
+            and discovery["defaultMainTopicIds"]
+            and self.metadata_records[episode_id]["officialEpisodeUrl"]
+            and self.metadata_records[episode_id]["guests"]
+        )
+        episode = next(row for row in self.record_cache["episodes.json"] if row["episodeId"] == episode_id)
+        self._open(view="episode", id=episode_id, range="all", sort="earliest", position="0")
+        self.assertEqual(episode["episodeTitle"], self.page.locator("#view-title").inner_text())
+        listen = self.page.locator('.view-header__actions a:has-text("Listen & show notes")')
+        self.assertEqual(self.metadata_records[episode_id]["officialEpisodeUrl"], listen.get_attribute("href"))
+        self.assertEqual("_blank", listen.get_attribute("target"))
+        self.assertEqual("noopener noreferrer", listen.get_attribute("rel"))
+        self.assertEqual(1, self.page.locator('a:has-text("Listen & show notes")').count())
+        source = self.page.locator(".source-citation a")
+        self.assertEqual("Information Professionals Association", source.inner_text())
+        self.assertEqual(self.metadata_records[episode_id]["officialEpisodeUrl"], source.get_attribute("href"))
+        self.assertIn(self.metadata_records[episode_id]["guests"][0], self.page.locator(".episode-metadata").inner_text())
+        self.assertEqual(1, self.page.get_by_role("heading", name="Main topics in this episode", exact=True).count())
+        self.assertGreater(self.page.locator(".episode-topic-list .entity-chip").count(), 0)
+        self.assertGreater(self.page.locator(".similar-episode-card").count(), 0)
+        default_text = self.page.locator("main").inner_text()
+        self.assertIn("sustained attention", default_text)
+        self.assertIn("substantial overlap", default_text)
+        for advanced_phrase in (
+            "documented repeated-coding",
+            "prominence cutoff",
+            "weighted Jaccard",
+            "IDF",
+            "similarity cutoff",
+        ):
+            self.assertNotIn(advanced_phrase, default_text)
+        self.assertIn("Shared main topics", self.page.locator(".similar-episode-card").first.inner_text())
+        self.assertNotIn("/data/cognitive-security-discovery/similarity_data.json", self.requested_paths)
+        self._save_phase_a_screenshot("phase-a-episode.png")
+
+        self.page.get_by_text("Compare related episodes", exact=True).click()
+        matrix = self.page.locator("table.episode-similarity-matrix")
+        matrix.wait_for(timeout=20_000)
+        self.assertIn("normalized IDF-weighted Jaccard", self.page.locator(".episode-comparison").inner_text())
+        self.assertIn("/data/cognitive-security-discovery/similarity_data.json", self.requested_paths)
+        self.assertGreater(matrix.locator("tbody tr").count(), 1)
+        self.assertLessEqual(matrix.locator("tbody tr").count(), 15)
+        self.assertGreater(matrix.get_by_role("button").count(), 0)
+        matrix_values = matrix.evaluate(
+            """table => Array.from(table.tBodies[0].rows).map(row =>
+              Array.from(row.cells).slice(1).map(cell => {
+                const button = cell.querySelector('button');
+                return button ? Number(button.textContent) : null;
+              }))"""
+        )
+        for row_index, row in enumerate(matrix_values):
+            for column_index, value in enumerate(row):
+                if value is None:
+                    continue
+                self.assertGreaterEqual(value, 0)
+                self.assertLessEqual(value, 1)
+                self.assertEqual(value, matrix_values[column_index][row_index])
+        matrix.get_by_role("button").first.focus()
+        self.assertIn("Topic-overlap value", self.page.locator(".matrix-pair-detail").inner_text())
+        self.assertEqual(1, self.page.locator("details.matrix-list-alternative").count())
+        self._assert_no_page_overflow()
+        self._save_phase_a_screenshot("phase-a-similarity.png")
 
     def test_reduced_motion_disables_the_only_continuous_animation(self) -> None:
         reduced = self.browser.new_context(

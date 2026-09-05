@@ -774,7 +774,10 @@ class CanonicalPublicProjectionTests(unittest.TestCase):
             [row["name"] for row in manifest["files"]],
         )
         for row in manifest["files"]:
-            self.assertEqual(len(self.serialized[row["name"]]), row["bytes"])
+            # Git may materialize tracked JSON with CRLF on Windows while the
+            # deterministic package and manifest are canonical LF bytes.
+            canonical_bytes = self.serialized[row["name"]].replace(b"\r\n", b"\n")
+            self.assertEqual(len(canonical_bytes), row["bytes"])
             self.assertEqual({"name", "bytes"}, set(row))
 
         manifest_text = json.dumps(manifest, sort_keys=True).lower()
