@@ -842,6 +842,7 @@
 .layer-badge,
 .family-badge,
 .evidence-badge,
+.entity-type-badge,
 .driver-id {
   display: inline-flex;
   min-height: 1.65rem;
@@ -868,6 +869,33 @@
   border-color: #d2e2e9;
   color: #4a6876;
   background: #f3f7f9;
+}
+
+.entity-type-badge {
+  border-color: #b8d2df;
+  color: var(--psywerx-navy);
+  background: #eaf4f8;
+}
+
+.derivation-facts {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+}
+
+.derivation-fact {
+  display: grid;
+  grid-template-columns: minmax(9rem, 0.35fr) 1fr;
+  gap: 0.8rem;
+}
+
+.derivation-fact dt {
+  color: var(--psywerx-muted);
+  font-weight: 700;
+}
+
+.derivation-fact dd {
+  margin: 0;
 }
 
 .driver-card__title {
@@ -1763,7 +1791,7 @@
 
   .hero__stats {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .hero__stats::before {

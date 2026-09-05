@@ -1,0 +1,822 @@
+{
+  "schemaVersion": "1.0",
+  "crosswalks": [
+    {
+      "resourceType": "ENTITY",
+      "legacyId": "BIO-003",
+      "successorIds": [
+        "BIO-003"
+      ],
+      "migrationType": "RETYPE",
+      "effectiveVersion": "0.3",
+      "oldName": "Circadian Alignment",
+      "newName": "Circadian Timing Alignment",
+      "oldEntityType": "DRIVER",
+      "newEntityType": "RELATIONAL_DERIVED_STATE",
+      "rationale": "Explicit governed Driver→RDS retype in migration handoff v0.3.",
+      "compatibilityBehavior": "Preserve the permanent ID and resolve legacy deep links to the RDS entity record.",
+      "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d158103b02efcf83c197519",
+      "crosswalkId": "CW-0001"
+    },
+    {
+      "resourceType": "ENTITY",
+      "legacyId": "BIO-006",
+      "successorIds": [
+        "BIO-006"
+      ],
+      "migrationType": "RETYPE",
+      "effectiveVersion": "0.3",
+      "oldName": "Chronotype–Schedule Alignment",
+      "newName": "Chronotype–Schedule Fit",
+      "oldEntityType": "DRIVER",
+      "newEntityType": "RELATIONAL_DERIVED_STATE",
+      "rationale": "Explicit governed Driver→RDS retype in migration handoff v0.3.",
+      "compatibilityBehavior": "Preserve the permanent ID and resolve legacy deep links to the RDS entity record.",
+      "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d158103b02efcf83c197519",
+      "crosswalkId": "CW-0002"
+    },
+    {
+      "resourceType": "ENTITY",
+      "legacyId": "CUL-088",
+      "successorIds": [
+        "CUL-088"
+      ],
+      "migrationType": "RETYPE",
+      "effectiveVersion": "0.3",
+      "oldName": "Generational Cultural Distance",
+      "newName": "Generational Cultural Distance",
+      "oldEntityType": "DRIVER",
+      "newEntityType": "RELATIONAL_DERIVED_STATE",
+      "rationale": "Explicit governed Driver→RDS retype in migration handoff v0.3.",
+      "compatibilityBehavior": "Preserve the permanent ID and resolve legacy deep links to the RDS entity record.",
+      "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d15819cbba3e6a60464ef38",
+      "crosswalkId": "CW-0003"
+    },
+    {
+      "resourceType": "ENTITY",
+      "legacyId": "INF-004",
+      "successorIds": [
+        "INF-004"
+      ],
+      "migrationType": "RETYPE",
+      "effectiveVersion": "0.3",
+      "oldName": "Message Prominence",
+      "newName": "Information-Item Prominence",
+      "oldEntityType": "DRIVER",
+      "newEntityType": "RELATIONAL_DERIVED_STATE",
+      "rationale": "Explicit governed Driver→RDS retype in migration handoff v0.3.",
+      "compatibilityBehavior": "Preserve the permanent ID and resolve legacy deep links to the RDS entity record.",
+      "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d158103b02efcf83c197519",
+      "crosswalkId": "CW-0004"
+    },
+    {
+      "resourceType": "ENTITY",
+      "legacyId": "INF-010",
+      "successorIds": [
+        "INF-010"
+      ],
+      "migrationType": "RETYPE",
+      "effectiveVersion": "0.3",
+      "oldName": "Information Completeness",
+      "newName": "Decision-Relevant Information Completeness",
+      "oldEntityType": "DRIVER",
+      "newEntityType": "RELATIONAL_DERIVED_STATE",
+      "rationale": "Explicit governed Driver→RDS retype in migration handoff v0.3.",
+      "compatibilityBehavior": "Preserve the permanent ID and resolve legacy deep links to the RDS entity record.",
+      "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d158103b02efcf83c197519",
+      "crosswalkId": "CW-0005"
+    },
+    {
+      "resourceType": "ENTITY",
+      "legacyId": "INF-011",
+      "successorIds": [
+        "INF-011"
+      ],
+      "migrationType": "RETYPE",
+      "effectiveVersion": "0.3",
+      "oldName": "Internal Message Contradiction",
+      "newName": "Information-Set Contradiction",
+      "oldEntityType": "DRIVER",
+      "newEntityType": "RELATIONAL_DERIVED_STATE",
+      "rationale": "Explicit governed Driver→RDS retype in migration handoff v0.3.",
+      "compatibilityBehavior": "Preserve the permanent ID and resolve legacy deep links to the RDS entity record.",
+      "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d158103b02efcf83c197519",
+      "crosswalkId": "CW-0006"
+    },
+    {
+      "resourceType": "ENTITY",
+      "legacyId": "INF-014",
+      "successorIds": [
+        "INF-014"
+      ],
+      "migrationType": "RETYPE",
+      "effectiveVersion": "0.3",
+      "oldName": "Message Readability",
+      "newName": "Message–Audience Readability",
+      "oldEntityType": "DRIVER",
+      "newEntityType": "RELATIONAL_DERIVED_STATE",
+      "rationale": "Explicit governed Driver→RDS retype in migration handoff v0.3.",
+      "compatibilityBehavior": "Preserve the permanent ID and resolve legacy deep links to the RDS entity record.",
+      "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d158103b02efcf83c197519",
+      "crosswalkId": "CW-0007"
+    },
+    {
+      "resourceType": "ENTITY",
+      "legacyId": "INF-053",
+      "successorIds": [
+        "INF-053"
+      ],
+      "migrationType": "RETYPE",
+      "effectiveVersion": "0.3",
+      "oldName": "Linguistic Accessibility",
+      "newName": "Message–Audience Language Accessibility",
+      "oldEntityType": "DRIVER",
+      "newEntityType": "RELATIONAL_DERIVED_STATE",
+      "rationale": "Explicit governed Driver→RDS retype in migration handoff v0.3.",
+      "compatibilityBehavior": "Preserve the permanent ID and resolve legacy deep links to the RDS entity record.",
+      "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d158103b02efcf83c197519",
+      "crosswalkId": "CW-0008"
+    },
+    {
+      "resourceType": "ENTITY",
+      "legacyId": "INF-068",
+      "successorIds": [
+        "INF-068"
+      ],
+      "migrationType": "RETYPE",
+      "effectiveVersion": "0.3",
+      "oldName": "Selective-Omission Magnitude",
+      "newName": "Material Selective-Omission Degree",
+      "oldEntityType": "DRIVER",
+      "newEntityType": "RELATIONAL_DERIVED_STATE",
+      "rationale": "Explicit governed Driver→RDS retype in migration handoff v0.3.",
+      "compatibilityBehavior": "Preserve the permanent ID and resolve legacy deep links to the RDS entity record.",
+      "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d158103b02efcf83c197519",
+      "crosswalkId": "CW-0009"
+    },
+    {
+      "resourceType": "ENTITY",
+      "legacyId": "INS-024",
+      "successorIds": [
+        "INS-024"
+      ],
+      "migrationType": "RETYPE",
+      "effectiveVersion": "0.3",
+      "oldName": "Compliance Cost",
+      "newName": "Administrative Compliance Burden",
+      "oldEntityType": "DRIVER",
+      "newEntityType": "RELATIONAL_DERIVED_STATE",
+      "rationale": "Explicit governed Driver→RDS retype in migration handoff v0.3.",
+      "compatibilityBehavior": "Preserve the permanent ID and resolve legacy deep links to the RDS entity record.",
+      "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d158103b02efcf83c197519",
+      "crosswalkId": "CW-0010"
+    },
+    {
+      "resourceType": "ENTITY",
+      "legacyId": "INS-039",
+      "successorIds": [
+        "INS-039"
+      ],
+      "migrationType": "RETYPE",
+      "effectiveVersion": "0.3",
+      "oldName": "Caseload Pressure",
+      "newName": "Caseload Pressure",
+      "oldEntityType": "DRIVER",
+      "newEntityType": "RELATIONAL_DERIVED_STATE",
+      "rationale": "Explicit governed Driver→RDS retype in migration handoff v0.3.",
+      "compatibilityBehavior": "Preserve the permanent ID and resolve legacy deep links to the RDS entity record.",
+      "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d15819cbba3e6a60464ef38",
+      "crosswalkId": "CW-0011"
+    },
+    {
+      "resourceType": "ENTITY",
+      "legacyId": "INS-103",
+      "successorIds": [
+        "INS-103"
+      ],
+      "migrationType": "RETYPE",
+      "effectiveVersion": "0.3",
+      "oldName": "Staffing Adequacy",
+      "newName": "Staffing Adequacy",
+      "oldEntityType": "DRIVER",
+      "newEntityType": "RELATIONAL_DERIVED_STATE",
+      "rationale": "Explicit governed Driver→RDS retype in migration handoff v0.3.",
+      "compatibilityBehavior": "Preserve the permanent ID and resolve legacy deep links to the RDS entity record.",
+      "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d15819cbba3e6a60464ef38",
+      "crosswalkId": "CW-0012"
+    },
+    {
+      "resourceType": "ENTITY",
+      "legacyId": "INS-113",
+      "successorIds": [
+        "INS-113"
+      ],
+      "migrationType": "RETYPE",
+      "effectiveVersion": "0.3",
+      "oldName": "Policy Implementation Fidelity",
+      "newName": "Policy/Rule Implementation Fidelity",
+      "oldEntityType": "DRIVER",
+      "newEntityType": "RELATIONAL_DERIVED_STATE",
+      "rationale": "Explicit governed Driver→RDS retype in migration handoff v0.3.",
+      "compatibilityBehavior": "Preserve the permanent ID and resolve legacy deep links to the RDS entity record.",
+      "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d158103b02efcf83c197519",
+      "crosswalkId": "CW-0013"
+    },
+    {
+      "resourceType": "ENTITY",
+      "legacyId": "PSY-078",
+      "successorIds": [
+        "PSY-078"
+      ],
+      "migrationType": "RETYPE",
+      "effectiveVersion": "0.3",
+      "oldName": "Goal–State Discrepancy",
+      "newName": "Perceived Goal–State Discrepancy",
+      "oldEntityType": "DRIVER",
+      "newEntityType": "RELATIONAL_DERIVED_STATE",
+      "rationale": "Explicit governed Driver→RDS retype in migration handoff v0.3.",
+      "compatibilityBehavior": "Preserve the permanent ID and resolve legacy deep links to the RDS entity record.",
+      "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d15819cbba3e6a60464ef38",
+      "crosswalkId": "CW-0014"
+    },
+    {
+      "resourceType": "ENTITY",
+      "legacyId": "SOC-018",
+      "successorIds": [
+        "SOC-018"
+      ],
+      "migrationType": "RETYPE",
+      "effectiveVersion": "0.3",
+      "oldName": "Relationship Duration",
+      "newName": "Tie Age / Relationship Duration",
+      "oldEntityType": "DRIVER",
+      "newEntityType": "RELATIONAL_DERIVED_STATE",
+      "rationale": "Explicit governed Driver→RDS retype in migration handoff v0.3.",
+      "compatibilityBehavior": "Preserve the permanent ID and resolve legacy deep links to the RDS entity record.",
+      "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d15819cbba3e6a60464ef38",
+      "crosswalkId": "CW-0015"
+    },
+    {
+      "resourceType": "ENTITY",
+      "legacyId": "SOC-022",
+      "successorIds": [
+        "SOC-022"
+      ],
+      "migrationType": "RETYPE",
+      "effectiveVersion": "0.3",
+      "oldName": "Relationship Stability",
+      "newName": "Tie Survival Probability",
+      "oldEntityType": "DRIVER",
+      "newEntityType": "RELATIONAL_DERIVED_STATE",
+      "rationale": "Explicit governed Driver→RDS retype in migration handoff v0.3.",
+      "compatibilityBehavior": "Preserve the permanent ID and resolve legacy deep links to the RDS entity record.",
+      "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d158103b02efcf83c197519",
+      "crosswalkId": "CW-0016"
+    },
+    {
+      "resourceType": "ENTITY",
+      "legacyId": "SOC-024",
+      "successorIds": [
+        "SOC-024"
+      ],
+      "migrationType": "RETYPE",
+      "effectiveVersion": "0.3",
+      "oldName": "Personal Network Size",
+      "newName": "Active Personal Network Size",
+      "oldEntityType": "DRIVER",
+      "newEntityType": "RELATIONAL_DERIVED_STATE",
+      "rationale": "Explicit governed Driver→RDS retype in migration handoff v0.3.",
+      "compatibilityBehavior": "Preserve the permanent ID and resolve legacy deep links to the RDS entity record.",
+      "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d158103b02efcf83c197519",
+      "crosswalkId": "CW-0017"
+    },
+    {
+      "resourceType": "ENTITY",
+      "legacyId": "SOC-035",
+      "successorIds": [
+        "SOC-035"
+      ],
+      "migrationType": "RETYPE",
+      "effectiveVersion": "0.3",
+      "oldName": "Reciprocity Balance",
+      "newName": "Reciprocity Balance",
+      "oldEntityType": "DRIVER",
+      "newEntityType": "RELATIONAL_DERIVED_STATE",
+      "rationale": "Explicit governed Driver→RDS retype in migration handoff v0.3.",
+      "compatibilityBehavior": "Preserve the permanent ID and resolve legacy deep links to the RDS entity record.",
+      "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d15819cbba3e6a60464ef38",
+      "crosswalkId": "CW-0018"
+    },
+    {
+      "resourceType": "ENTITY",
+      "legacyId": "SOC-041",
+      "successorIds": [
+        "SOC-041"
+      ],
+      "migrationType": "RETYPE",
+      "effectiveVersion": "0.3",
+      "oldName": "Status Hierarchy Steepness",
+      "newName": "Status Hierarchy Steepness",
+      "oldEntityType": "DRIVER",
+      "newEntityType": "RELATIONAL_DERIVED_STATE",
+      "rationale": "Explicit governed Driver→RDS retype in migration handoff v0.3.",
+      "compatibilityBehavior": "Preserve the permanent ID and resolve legacy deep links to the RDS entity record.",
+      "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d15819cbba3e6a60464ef38",
+      "crosswalkId": "CW-0019"
+    },
+    {
+      "resourceType": "ENTITY",
+      "legacyId": "SOC-046",
+      "successorIds": [
+        "SOC-046"
+      ],
+      "migrationType": "RETYPE",
+      "effectiveVersion": "0.3",
+      "oldName": "Resource Control Asymmetry",
+      "newName": "Resource Control Asymmetry",
+      "oldEntityType": "DRIVER",
+      "newEntityType": "RELATIONAL_DERIVED_STATE",
+      "rationale": "Explicit governed Driver→RDS retype in migration handoff v0.3.",
+      "compatibilityBehavior": "Preserve the permanent ID and resolve legacy deep links to the RDS entity record.",
+      "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d15819cbba3e6a60464ef38",
+      "crosswalkId": "CW-0020"
+    },
+    {
+      "resourceType": "ENTITY",
+      "legacyId": "SOC-047",
+      "successorIds": [
+        "SOC-047"
+      ],
+      "migrationType": "RETYPE",
+      "effectiveVersion": "0.3",
+      "oldName": "Dependence Asymmetry",
+      "newName": "Dependence Asymmetry",
+      "oldEntityType": "DRIVER",
+      "newEntityType": "RELATIONAL_DERIVED_STATE",
+      "rationale": "Explicit governed Driver→RDS retype in migration handoff v0.3.",
+      "compatibilityBehavior": "Preserve the permanent ID and resolve legacy deep links to the RDS entity record.",
+      "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d15819cbba3e6a60464ef38",
+      "crosswalkId": "CW-0021"
+    },
+    {
+      "resourceType": "ENTITY",
+      "legacyId": "SOC-049",
+      "successorIds": [
+        "SOC-049"
+      ],
+      "migrationType": "RETYPE",
+      "effectiveVersion": "0.3",
+      "oldName": "Degree Centrality",
+      "newName": "Degree Centrality",
+      "oldEntityType": "DRIVER",
+      "newEntityType": "RELATIONAL_DERIVED_STATE",
+      "rationale": "Explicit governed Driver→RDS retype in migration handoff v0.3.",
+      "compatibilityBehavior": "Preserve the permanent ID and resolve legacy deep links to the RDS entity record.",
+      "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d158103b02efcf83c197519",
+      "crosswalkId": "CW-0022"
+    },
+    {
+      "resourceType": "ENTITY",
+      "legacyId": "SOC-050",
+      "successorIds": [
+        "SOC-050"
+      ],
+      "migrationType": "RETYPE",
+      "effectiveVersion": "0.3",
+      "oldName": "Betweenness Centrality",
+      "newName": "Betweenness Centrality",
+      "oldEntityType": "DRIVER",
+      "newEntityType": "RELATIONAL_DERIVED_STATE",
+      "rationale": "Explicit governed Driver→RDS retype in migration handoff v0.3.",
+      "compatibilityBehavior": "Preserve the permanent ID and resolve legacy deep links to the RDS entity record.",
+      "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d158103b02efcf83c197519",
+      "crosswalkId": "CW-0023"
+    },
+    {
+      "resourceType": "ENTITY",
+      "legacyId": "SOC-051",
+      "successorIds": [
+        "SOC-051"
+      ],
+      "migrationType": "RETYPE",
+      "effectiveVersion": "0.3",
+      "oldName": "Eigenvector Centrality",
+      "newName": "Eigenvector Centrality",
+      "oldEntityType": "DRIVER",
+      "newEntityType": "RELATIONAL_DERIVED_STATE",
+      "rationale": "Explicit governed Driver→RDS retype in migration handoff v0.3.",
+      "compatibilityBehavior": "Preserve the permanent ID and resolve legacy deep links to the RDS entity record.",
+      "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d158103b02efcf83c197519",
+      "crosswalkId": "CW-0024"
+    },
+    {
+      "resourceType": "ENTITY",
+      "legacyId": "SOC-052",
+      "successorIds": [
+        "SOC-052"
+      ],
+      "migrationType": "RETYPE",
+      "effectiveVersion": "0.3",
+      "oldName": "Network Density",
+      "newName": "Network Density",
+      "oldEntityType": "DRIVER",
+      "newEntityType": "RELATIONAL_DERIVED_STATE",
+      "rationale": "Explicit governed Driver→RDS retype in migration handoff v0.3.",
+      "compatibilityBehavior": "Preserve the permanent ID and resolve legacy deep links to the RDS entity record.",
+      "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d158103b02efcf83c197519",
+      "crosswalkId": "CW-0025"
+    },
+    {
+      "resourceType": "ENTITY",
+      "legacyId": "SOC-053",
+      "successorIds": [
+        "SOC-053"
+      ],
+      "migrationType": "RETYPE",
+      "effectiveVersion": "0.3",
+      "oldName": "Local Clustering",
+      "newName": "Local Clustering",
+      "oldEntityType": "DRIVER",
+      "newEntityType": "RELATIONAL_DERIVED_STATE",
+      "rationale": "Explicit governed Driver→RDS retype in migration handoff v0.3.",
+      "compatibilityBehavior": "Preserve the permanent ID and resolve legacy deep links to the RDS entity record.",
+      "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d158103b02efcf83c197519",
+      "crosswalkId": "CW-0026"
+    },
+    {
+      "resourceType": "ENTITY",
+      "legacyId": "SOC-054",
+      "successorIds": [
+        "SOC-054"
+      ],
+      "migrationType": "RETYPE",
+      "effectiveVersion": "0.3",
+      "oldName": "Network Assortativity",
+      "newName": "Network Assortativity",
+      "oldEntityType": "DRIVER",
+      "newEntityType": "RELATIONAL_DERIVED_STATE",
+      "rationale": "Explicit governed Driver→RDS retype in migration handoff v0.3.",
+      "compatibilityBehavior": "Preserve the permanent ID and resolve legacy deep links to the RDS entity record.",
+      "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d158103b02efcf83c197519",
+      "crosswalkId": "CW-0027"
+    },
+    {
+      "resourceType": "ENTITY",
+      "legacyId": "SOC-055",
+      "successorIds": [
+        "SOC-055"
+      ],
+      "migrationType": "RETYPE",
+      "effectiveVersion": "0.3",
+      "oldName": "Structural Constraint",
+      "newName": "Structural Constraint",
+      "oldEntityType": "DRIVER",
+      "newEntityType": "RELATIONAL_DERIVED_STATE",
+      "rationale": "Explicit governed Driver→RDS retype in migration handoff v0.3.",
+      "compatibilityBehavior": "Preserve the permanent ID and resolve legacy deep links to the RDS entity record.",
+      "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d158103b02efcf83c197519",
+      "crosswalkId": "CW-0028"
+    },
+    {
+      "resourceType": "ENTITY",
+      "legacyId": "SOC-056",
+      "successorIds": [
+        "SOC-056"
+      ],
+      "migrationType": "RETYPE",
+      "effectiveVersion": "0.3",
+      "oldName": "Cross-Cluster Tie Prevalence",
+      "newName": "Cross-Cluster Tie Prevalence",
+      "oldEntityType": "DRIVER",
+      "newEntityType": "RELATIONAL_DERIVED_STATE",
+      "rationale": "Explicit governed Driver→RDS retype in migration handoff v0.3.",
+      "compatibilityBehavior": "Preserve the permanent ID and resolve legacy deep links to the RDS entity record.",
+      "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d158103b02efcf83c197519",
+      "crosswalkId": "CW-0029"
+    },
+    {
+      "resourceType": "ENTITY",
+      "legacyId": "SOC-057",
+      "successorIds": [
+        "SOC-057"
+      ],
+      "migrationType": "RETYPE",
+      "effectiveVersion": "0.3",
+      "oldName": "Network Segregation",
+      "newName": "Network Segregation",
+      "oldEntityType": "DRIVER",
+      "newEntityType": "RELATIONAL_DERIVED_STATE",
+      "rationale": "Explicit governed Driver→RDS retype in migration handoff v0.3.",
+      "compatibilityBehavior": "Preserve the permanent ID and resolve legacy deep links to the RDS entity record.",
+      "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d158103b02efcf83c197519",
+      "crosswalkId": "CW-0030"
+    },
+    {
+      "resourceType": "ENTITY",
+      "legacyId": "SOC-074",
+      "successorIds": [
+        "SOC-074"
+      ],
+      "migrationType": "RETYPE",
+      "effectiveVersion": "0.3",
+      "oldName": "Goal Alignment",
+      "newName": "Goal Alignment",
+      "oldEntityType": "DRIVER",
+      "newEntityType": "RELATIONAL_DERIVED_STATE",
+      "rationale": "Explicit governed Driver→RDS retype in migration handoff v0.3.",
+      "compatibilityBehavior": "Preserve the permanent ID and resolve legacy deep links to the RDS entity record.",
+      "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d15819cbba3e6a60464ef38",
+      "crosswalkId": "CW-0031"
+    },
+    {
+      "resourceType": "ENTITY",
+      "legacyId": "SOC-076",
+      "successorIds": [
+        "SOC-076"
+      ],
+      "migrationType": "RETYPE",
+      "effectiveVersion": "0.3",
+      "oldName": "Mutual Expectation Alignment",
+      "newName": "Mutual Expectation Alignment",
+      "oldEntityType": "DRIVER",
+      "newEntityType": "RELATIONAL_DERIVED_STATE",
+      "rationale": "Explicit governed Driver→RDS retype in migration handoff v0.3.",
+      "compatibilityBehavior": "Preserve the permanent ID and resolve legacy deep links to the RDS entity record.",
+      "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d15819cbba3e6a60464ef38",
+      "crosswalkId": "CW-0032"
+    },
+    {
+      "resourceType": "ENTITY",
+      "legacyId": "SOC-090",
+      "successorIds": [
+        "SOC-090"
+      ],
+      "migrationType": "RETYPE",
+      "effectiveVersion": "0.3",
+      "oldName": "Cross-Group Friendship Prevalence",
+      "newName": "Member-Level Cross-Group Friendship Prevalence",
+      "oldEntityType": "DRIVER",
+      "newEntityType": "RELATIONAL_DERIVED_STATE",
+      "rationale": "Explicit governed Driver→RDS retype in migration handoff v0.3.",
+      "compatibilityBehavior": "Preserve the permanent ID and resolve legacy deep links to the RDS entity record.",
+      "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d158103b02efcf83c197519",
+      "crosswalkId": "CW-0033"
+    },
+    {
+      "resourceType": "ENTITY",
+      "legacyId": "SOC-096",
+      "successorIds": [
+        "SOC-096"
+      ],
+      "migrationType": "RETYPE",
+      "effectiveVersion": "0.3",
+      "oldName": "Intergroup Status Inequality",
+      "newName": "Intergroup Status Inequality",
+      "oldEntityType": "DRIVER",
+      "newEntityType": "RELATIONAL_DERIVED_STATE",
+      "rationale": "Explicit governed Driver→RDS retype in migration handoff v0.3.",
+      "compatibilityBehavior": "Preserve the permanent ID and resolve legacy deep links to the RDS entity record.",
+      "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d15819cbba3e6a60464ef38",
+      "crosswalkId": "CW-0034"
+    },
+    {
+      "resourceType": "ENTITY",
+      "legacyId": "BIO-001",
+      "successorIds": [
+        "BIO-001"
+      ],
+      "migrationType": "RENAME",
+      "effectiveVersion": "0.3",
+      "oldName": "Sleep Quantity",
+      "newName": "Sleep Duration",
+      "oldEntityType": "DRIVER",
+      "newEntityType": "DRIVER",
+      "rationale": "Explicit governed canonical rename in migration handoff v0.3.",
+      "compatibilityBehavior": "Preserve the permanent ID and resolve legacy names through typed aliases.",
+      "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d1581e49a9ac152355b1caa",
+      "crosswalkId": "CW-0035"
+    },
+    {
+      "resourceType": "ENTITY",
+      "legacyId": "BIO-004",
+      "successorIds": [
+        "BIO-004"
+      ],
+      "migrationType": "RENAME",
+      "effectiveVersion": "0.3",
+      "oldName": "Circadian Phase",
+      "newName": "Endogenous Circadian Phase",
+      "oldEntityType": "DRIVER",
+      "newEntityType": "DRIVER",
+      "rationale": "Explicit governed canonical rename in migration handoff v0.3.",
+      "compatibilityBehavior": "Preserve the permanent ID and resolve legacy names through typed aliases.",
+      "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d1581e49a9ac152355b1caa",
+      "crosswalkId": "CW-0036"
+    },
+    {
+      "resourceType": "ENTITY",
+      "legacyId": "INF-013",
+      "successorIds": [
+        "INF-013"
+      ],
+      "migrationType": "RENAME",
+      "effectiveVersion": "0.3",
+      "oldName": "Message Complexity",
+      "newName": "Message Conceptual Complexity",
+      "oldEntityType": "DRIVER",
+      "newEntityType": "DRIVER",
+      "rationale": "Explicit governed canonical rename in migration handoff v0.3.",
+      "compatibilityBehavior": "Preserve the permanent ID and resolve legacy names through typed aliases.",
+      "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d1581e49a9ac152355b1caa",
+      "crosswalkId": "CW-0037"
+    },
+    {
+      "resourceType": "ENTITY",
+      "legacyId": "INF-015",
+      "successorIds": [
+        "INF-015"
+      ],
+      "migrationType": "RENAME",
+      "effectiveVersion": "0.3",
+      "oldName": "Uncertainty Disclosure",
+      "newName": "Claim Uncertainty Disclosure",
+      "oldEntityType": "DRIVER",
+      "newEntityType": "DRIVER",
+      "rationale": "Explicit governed canonical rename in migration handoff v0.3.",
+      "compatibilityBehavior": "Preserve the permanent ID and resolve legacy names through typed aliases.",
+      "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d1581e49a9ac152355b1caa",
+      "crosswalkId": "CW-0038"
+    },
+    {
+      "resourceType": "ENTITY",
+      "legacyId": "INF-033",
+      "successorIds": [
+        "INF-033"
+      ],
+      "migrationType": "RENAME",
+      "effectiveVersion": "0.3",
+      "oldName": "Limitation Disclosure",
+      "newName": "Methodological & Applicability Limitation Disclosure",
+      "oldEntityType": "DRIVER",
+      "newEntityType": "DRIVER",
+      "rationale": "Explicit governed canonical rename in migration handoff v0.3.",
+      "compatibilityBehavior": "Preserve the permanent ID and resolve legacy names through typed aliases.",
+      "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d1581e49a9ac152355b1caa",
+      "crosswalkId": "CW-0039"
+    },
+    {
+      "resourceType": "ENTITY",
+      "legacyId": "INS-028",
+      "successorIds": [
+        "INS-028"
+      ],
+      "migrationType": "RENAME",
+      "effectiveVersion": "0.3",
+      "oldName": "Default Enrollment Rule",
+      "newName": "Institutional Default Rule",
+      "oldEntityType": "DRIVER",
+      "newEntityType": "DRIVER",
+      "rationale": "Explicit governed canonical rename in migration handoff v0.3.",
+      "compatibilityBehavior": "Preserve the permanent ID and resolve legacy names through typed aliases.",
+      "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d1581e49a9ac152355b1caa",
+      "crosswalkId": "CW-0040"
+    },
+    {
+      "resourceType": "ENTITY",
+      "legacyId": "TEC-013",
+      "successorIds": [
+        "TEC-013"
+      ],
+      "migrationType": "RENAME",
+      "effectiveVersion": "0.3",
+      "oldName": "Default-State Configuration",
+      "newName": "Interface Default-State Configuration",
+      "oldEntityType": "DRIVER",
+      "newEntityType": "DRIVER",
+      "rationale": "Explicit governed canonical rename in migration handoff v0.3.",
+      "compatibilityBehavior": "Preserve the permanent ID and resolve legacy names through typed aliases.",
+      "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d1581e49a9ac152355b1caa",
+      "crosswalkId": "CW-0041"
+    },
+    {
+      "resourceType": "ENTITY",
+      "legacyId": "TEC-018",
+      "successorIds": [
+        "TEC-018"
+      ],
+      "migrationType": "RENAME",
+      "effectiveVersion": "0.3",
+      "oldName": "Interface Task Simplification",
+      "newName": "Interface Task Complexity",
+      "oldEntityType": "DRIVER",
+      "newEntityType": "DRIVER",
+      "rationale": "Explicit governed canonical rename in migration handoff v0.3.",
+      "compatibilityBehavior": "Preserve the permanent ID and resolve legacy names through typed aliases.",
+      "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d1581e49a9ac152355b1caa",
+      "crosswalkId": "CW-0042"
+    },
+    {
+      "resourceType": "RELATIONSHIP",
+      "legacyId": "REL-INF-023",
+      "successorIds": [
+        "REL-RDS-0001",
+        "REL-RDS-0002"
+      ],
+      "migrationType": "REPLACED_BY",
+      "effectiveVersion": "0.3",
+      "oldName": null,
+      "newName": null,
+      "oldEntityType": "RELATIONSHIP",
+      "newEntityType": "RELATIONSHIP",
+      "rationale": "The governed proposition became semantic/derivational or materially changed target and polarity.",
+      "compatibilityBehavior": "Retain the deprecated relationship in provenance and exclude it from the active graph.",
+      "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d1581e49a9ac152355b1caa",
+      "crosswalkId": "CW-0043"
+    },
+    {
+      "resourceType": "RELATIONSHIP",
+      "legacyId": "REL-INF-029",
+      "successorIds": [
+        "REL-RDS-0003"
+      ],
+      "migrationType": "REPLACED_BY",
+      "effectiveVersion": "0.3",
+      "oldName": null,
+      "newName": null,
+      "oldEntityType": "RELATIONSHIP",
+      "newEntityType": "RELATIONSHIP",
+      "rationale": "The governed proposition became semantic/derivational or materially changed target and polarity.",
+      "compatibilityBehavior": "Retain the deprecated relationship in provenance and exclude it from the active graph.",
+      "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d1581e49a9ac152355b1caa",
+      "crosswalkId": "CW-0044"
+    },
+    {
+      "resourceType": "RELATIONSHIP",
+      "legacyId": "REL-SOC-013",
+      "successorIds": [
+        "REL-MIG-CAND-0001"
+      ],
+      "migrationType": "REPLACED_BY",
+      "effectiveVersion": "0.3",
+      "oldName": null,
+      "newName": null,
+      "oldEntityType": "RELATIONSHIP",
+      "newEntityType": "RELATIONSHIP",
+      "rationale": "The governed proposition became semantic/derivational or materially changed target and polarity.",
+      "compatibilityBehavior": "Retain the deprecated relationship in provenance and exclude it from the active graph.",
+      "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d1581ad9d14fdac9e859818",
+      "crosswalkId": "CW-0045"
+    },
+    {
+      "resourceType": "RELATIONSHIP",
+      "legacyId": "REL-SOC-014",
+      "successorIds": [
+        "REL-MIG-CAND-0002"
+      ],
+      "migrationType": "REPLACED_BY",
+      "effectiveVersion": "0.3",
+      "oldName": null,
+      "newName": null,
+      "oldEntityType": "RELATIONSHIP",
+      "newEntityType": "RELATIONSHIP",
+      "rationale": "The governed proposition became semantic/derivational or materially changed target and polarity.",
+      "compatibilityBehavior": "Retain the deprecated relationship in provenance and exclude it from the active graph.",
+      "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d1581ad9d14fdac9e859818",
+      "crosswalkId": "CW-0046"
+    },
+    {
+      "resourceType": "RELATIONSHIP",
+      "legacyId": "REL-SOC-015",
+      "successorIds": [
+        "REL-MIG-CAND-0003"
+      ],
+      "migrationType": "REPLACED_BY",
+      "effectiveVersion": "0.3",
+      "oldName": null,
+      "newName": null,
+      "oldEntityType": "RELATIONSHIP",
+      "newEntityType": "RELATIONSHIP",
+      "rationale": "The governed proposition became semantic/derivational or materially changed target and polarity.",
+      "compatibilityBehavior": "Retain the deprecated relationship in provenance and exclude it from the active graph.",
+      "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d1581ad9d14fdac9e859818",
+      "crosswalkId": "CW-0047"
+    },
+    {
+      "resourceType": "RELATIONSHIP",
+      "legacyId": "REL-SOC-056",
+      "successorIds": [
+        "REL-RDS-0005"
+      ],
+      "migrationType": "REPLACED_BY",
+      "effectiveVersion": "0.3",
+      "oldName": null,
+      "newName": null,
+      "oldEntityType": "RELATIONSHIP",
+      "newEntityType": "RELATIONSHIP",
+      "rationale": "The governed proposition became semantic/derivational or materially changed target and polarity.",
+      "compatibilityBehavior": "Retain the deprecated relationship in provenance and exclude it from the active graph.",
+      "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d1581e49a9ac152355b1caa",
+      "crosswalkId": "CW-0048"
+    }
+  ]
+}

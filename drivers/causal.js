@@ -44,7 +44,49 @@
     return typeof value === "string" && value.trim() !== "";
   }
 
+  function causalEnvelope(envelope) {
+    if (!envelope || envelope.schemaVersion !== "3.0") return envelope;
+    const relationships = Array.isArray(envelope.relationships)
+      ? envelope.relationships.filter((relationship) =>
+        relationship.relationFamily === "CAUSAL" &&
+        relationship.governanceStatus === "ACTIVE" &&
+        relationship.legacyRelationship !== null
+      ).map((relationship) => ({
+        id: relationship.id,
+        sourceDriverId: relationship.subjectEntityId,
+        sourceDriverName: relationship.subjectEntityName,
+        targetDriverId: relationship.objectEntityId,
+        targetDriverName: relationship.objectEntityName,
+        causalRole: relationship.predicate,
+        polarity: relationship.polarity,
+        directness: relationship.directness,
+        mechanism: relationship.mechanism,
+        conditionsModerators: relationship.conditionsModerators,
+        moderatorDriverIds: relationship.moderatorEntityIds,
+        sourceLevel: relationship.subjectLevel,
+        targetLevel: relationship.objectLevel,
+        levelTransitionMechanism: relationship.levelTransitionMechanism,
+        lagProfile: relationship.lagProfile,
+        lagLowerBound: relationship.lagLowerBound,
+        lagUpperBound: relationship.lagUpperBound,
+        lagUnit: relationship.lagUnit,
+        lagNarrative: relationship.lagNarrative,
+        exposurePattern: relationship.exposurePattern,
+        effectPersistence: relationship.effectPersistence,
+        evidenceStrength: relationship.evidenceStrength,
+        confidence: relationship.confidence,
+        generalizabilityContext: relationship.generalizabilityContext,
+        reciprocalProcessId: relationship.reciprocalProcessId,
+        governanceClass: relationship.governanceClass,
+        supportingEvidenceIds: relationship.supportingEvidenceIds,
+        notesCaveats: relationship.notesCaveats,
+        source: relationship.source,
+      })) : [];
+    return { schemaVersion: "2.0", relationships };
+  }
+
   function validate(envelope, driverById) {
+    envelope = causalEnvelope(envelope);
     const errors = [];
     if (!envelope || typeof envelope !== "object" || Array.isArray(envelope)) {
       throw new Error("Relationship data is not an object.");
@@ -114,15 +156,15 @@
       const source = driverById.get(relationship.sourceDriverId);
       const target = driverById.get(relationship.targetDriverId);
       if (!source || source.name !== relationship.sourceDriverName) {
-        errors.push(label + " has an unresolved or mismatched source Driver.");
+        errors.push(label + " has an unresolved or mismatched source Entity.");
       }
       if (!target || target.name !== relationship.targetDriverName) {
-        errors.push(label + " has an unresolved or mismatched target Driver.");
+        errors.push(label + " has an unresolved or mismatched target Entity.");
       }
       (Array.isArray(relationship.moderatorDriverIds)
         ? relationship.moderatorDriverIds : []).forEach((driverId) => {
         if (!driverById.has(driverId)) {
-          errors.push(label + " references an unknown moderator Driver.");
+          errors.push(label + " references an unknown moderator Entity.");
         }
       });
       if (relationship.sourceDriverId === relationship.targetDriverId) {

@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Explore the PSYWERX behavioral Driver taxonomy across eight interacting layers and 105 governed Families.">
-  <title>PSYWERX Driver Explorer</title>
+  <meta name="description" content="Explore PSYWERX behavioral Drivers and relational/derived states across eight interacting layers and 105 governed Families.">
+  <title>PSYWERX Ontology Explorer</title>
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="../shared/psywerx.css">
   <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-  <a class="skip-link" href="#explorer">Skip to Driver Explorer</a>
+  <a class="skip-link" href="#explorer">Skip to Ontology Explorer</a>
 
   <header class="site-header">
     <div class="site-container site-header__inner">
-      <a class="wordmark" href="./" aria-label="PSYWERX Driver Explorer home">
+      <a class="wordmark" href="./" aria-label="PSYWERX Ontology Explorer home">
         <img
           class="wordmark__logo"
           src="../shared/assets/psywerx-logo.png"
@@ -24,9 +24,9 @@
         >
       </a>
       <div class="site-header__tools">
-        <span class="site-header__context">Behavioral Driver Taxonomy</span>
+        <span class="site-header__context">Behavioral Ontology</span>
         <nav class="site-nav" aria-label="Primary navigation">
-          <a href="./" aria-current="page">Driver Explorer</a>
+          <a href="./" aria-current="page">Ontology Explorer</a>
           <a href="./codebook/">Codebook</a>
         </nav>
       </div>
@@ -37,11 +37,11 @@
     <section class="hero">
       <div class="site-container hero__inner">
         <div class="hero__copy">
-          <p class="eyebrow">PSYWERX Driver Taxonomy</p>
-          <h1>Understand the forces that shape behavior.</h1>
+          <p class="eyebrow">PSYWERX Behavioral Ontology</p>
+          <h1>Understand the forces and states that shape behavior.</h1>
           <p class="hero__lede">
-            Explore a structured taxonomy of behavioral drivers spanning eight
-            interacting layers&mdash;from biological capacity to technological systems.
+            Explore governed behavioral Drivers and relational/derived states spanning
+            eight interacting layers&mdash;from biological capacity to technological systems.
           </p>
           <div class="hero__actions">
             <a class="hero__action" href="#explorer">Explore the taxonomy</a>
@@ -56,7 +56,7 @@
               <div id="scenario-coming-soon" class="scenario-coming-soon">
                 <p><strong>AI-assisted operationalization &mdash; Coming soon</strong></p>
                 <p>
-                  Scenario AI will help apply this Driver to a specific actor, behavior or objective,
+                  Scenario AI will help apply a selected entity to a specific actor, behavior or objective,
                   and context, with concrete operationalization examples and questions to investigate.
                 </p>
               </div>
@@ -65,16 +65,20 @@
         </div>
         <dl class="hero__stats" aria-label="Taxonomy summary">
           <div>
-            <dt id="total-driver-count">793</dt>
+            <dt id="total-entity-count">811</dt>
+            <dd>canonical entities</dd>
+          </div>
+          <div>
+            <dt id="total-driver-count">770</dt>
             <dd>canonical drivers</dd>
           </div>
           <div>
-            <dt id="total-layer-count">8</dt>
-            <dd>interacting layers</dd>
+            <dt id="total-rds-count">41</dt>
+            <dd>relational / derived states</dd>
           </div>
           <div>
             <dt id="total-family-count">105</dt>
-            <dd>driver families</dd>
+            <dd>governed families</dd>
           </div>
         </dl>
       </div>
@@ -100,7 +104,7 @@
     <section id="explorer" class="explorer site-container" aria-labelledby="explorer-heading">
       <div class="section-heading">
         <p class="eyebrow">Explore the ontology</p>
-        <h2 id="explorer-heading">Driver Explorer</h2>
+        <h2 id="explorer-heading">Ontology Explorer</h2>
         <p>Browse the taxonomy as a hierarchy or combine structured facets with keyword search.</p>
       </div>
 
@@ -128,7 +132,7 @@
           <p id="browse-summary" class="browse-summary" role="status" aria-live="polite">Loading taxonomy&hellip;</p>
         </div>
         <div class="browse-heading">
-          <p id="browse-kicker" class="eyebrow">Layer &rarr; Family &rarr; Driver</p>
+          <p id="browse-kicker" class="eyebrow">Layer &rarr; Family &rarr; Entity</p>
           <h3 id="browse-heading" tabindex="-1">Choose a layer</h3>
           <p id="browse-description">Start with one of the eight interacting layers.</p>
         </div>
@@ -136,9 +140,9 @@
       </section>
 
       <section id="search-panel" class="mode-panel" aria-labelledby="search-heading" hidden>
-        <h3 id="search-heading" class="sr-only">Search and filter drivers</h3>
+        <h3 id="search-heading" class="sr-only">Search and filter entities</h3>
         <div class="search-control">
-          <label for="driver-search">Search drivers</label>
+          <label for="driver-search">Search entities</label>
           <div class="search-control__input-wrap">
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <circle cx="11" cy="11" r="7"></circle>
@@ -169,12 +173,12 @@
 
           <div class="results">
             <div class="results__header">
-              <p id="result-summary" role="status" aria-live="polite">Loading driver taxonomy&hellip;</p>
+              <p id="result-summary" role="status" aria-live="polite">Loading ontology&hellip;</p>
               <div id="active-filters" class="active-filters" aria-label="Active filters"></div>
             </div>
             <div id="driver-list" class="driver-list" aria-live="polite"></div>
             <div class="results__footer">
-              <button id="load-more" class="secondary-button" type="button" hidden>Show more drivers</button>
+              <button id="load-more" class="secondary-button" type="button" hidden>Show more entities</button>
             </div>
           </div>
         </div>
@@ -186,8 +190,8 @@
   <footer class="site-footer">
     <div class="site-container">
       <p>
-        PSYWERX Driver Explorer &middot; A structured taxonomy for examining the
-        interacting forces that shape behavior.
+        PSYWERX Ontology Explorer &middot; A structured ontology for examining the
+        interacting forces and states that shape behavior.
       </p>
     </div>
   </footer>
@@ -195,19 +199,19 @@
   <dialog id="driver-dialog" class="driver-dialog" aria-labelledby="detail-title">
     <div class="driver-dialog__shell">
       <div class="driver-dialog__topbar">
-        <p>PSYWERX Driver Record</p>
-        <button id="close-detail" class="icon-button" type="button" aria-label="Close driver details">
+        <p>PSYWERX Entity Record</p>
+        <button id="close-detail" class="icon-button" type="button" aria-label="Close entity details">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5 19 19M19 5 5 19"></path></svg>
         </button>
       </div>
       <article id="driver-detail" class="driver-detail"></article>
       <div class="driver-dialog__footer">
-        <div class="detail-navigation" aria-label="Navigate drivers in the current view">
+        <div class="detail-navigation" aria-label="Navigate entities in the current view">
           <button id="previous-driver" class="secondary-button" type="button"><span aria-hidden="true">&larr;</span> Previous</button>
           <span id="detail-position"></span>
           <button id="next-driver" class="secondary-button" type="button">Next <span aria-hidden="true">&rarr;</span></button>
         </div>
-        <button id="copy-link" class="text-button" type="button">Copy driver link</button>
+        <button id="copy-link" class="text-button" type="button">Copy entity link</button>
         <span id="copy-status" class="sr-only" aria-live="polite"></span>
       </div>
     </div>
@@ -218,14 +222,14 @@
       <div class="scenario-dialog__topbar">
         <div>
           <p class="eyebrow">Scenario application</p>
-          <h2 id="scenario-dialog-title">Apply Drivers to a scenario</h2>
+          <h2 id="scenario-dialog-title">Apply entities to a scenario</h2>
         </div>
         <button id="scenario-dialog-close" class="icon-button" type="button" aria-label="Close scenario form">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5 19 19M19 5 5 19"></path></svg>
         </button>
       </div>
       <p class="scenario-form__intro">
-        Define the situation once, then explicitly operationalize individual Drivers as you review them.
+        Define the situation once, then explicitly operationalize individual entities as you review them.
         Scenario text is stored only in this browser tab session. When you request an
         operationalization, it is sent transiently to the configured Scenario service and its AI
         provider; it is not saved by this Explorer. Do not enter classified, controlled,

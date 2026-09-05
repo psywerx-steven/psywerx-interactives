@@ -1,0 +1,21 @@
+# Validation Checklist
+
+- [ ] Exactly 770 Drivers
+- [ ] Exactly 41 RDS
+- [ ] Exactly 811 canonical entities
+- [ ] Global ID uniqueness
+- [ ] No canonical duplication across Driver/RDS
+- [ ] Every migrated ID has a crosswalk
+- [ ] Every relationship endpoint resolves
+- [ ] Family counts reconcile
+- [ ] Exact aliases do not ambiguously map to multiple active entities unless explicitly governed
+- [ ] Semantic mappings excluded from causal traversal/simulation
+- [ ] Noncausal relationships do not carry inappropriate lag/polarity
+- [ ] RDS derivations expose constituents and logic
+- [ ] Network metrics expose boundary/tie/formula metadata
+- [ ] Ratios expose numerator/denominator
+- [ ] Temporal states expose window/update rule
+- [ ] Two clean builds produce identical hashes
+- [ ] Existing public IDs/deep links resolve
+- [ ] Explorer search/filter/family/detail/export regression tests pass
+- [ ] Production `main` remains untouched during preview

@@ -5,7 +5,7 @@ import { loadCatalog } from "../src/catalog.js";
 import { validateOperationalizationRequest } from "../src/contracts.js";
 
 const DATA_URLS = Object.freeze({
-  drivers: new URL("../../data/drivers.json", import.meta.url),
+  drivers: new URL("../../data/entities.json", import.meta.url),
   families: new URL("../../data/families.json", import.meta.url),
   plainLanguage: new URL("../../data/plain_language.json", import.meta.url),
 });
@@ -14,7 +14,7 @@ function readJson(url) {
   return JSON.parse(readFileSync(url, "utf8"));
 }
 
-test("every current canonical Driver resolves against the exact browser contract", () => {
+test("every current canonical Entity resolves against the exact browser contract", () => {
   const drivers = readJson(DATA_URLS.drivers);
   const familyData = readJson(DATA_URLS.families);
   const plainLanguageData = readJson(DATA_URLS.plainLanguage);
@@ -41,6 +41,8 @@ test("every current canonical Driver resolves against the exact browser contract
       clarificationAnswer: null,
       driver: {
         id: driver.id,
+        entityType: driver.entityType,
+        entitySubtype: driver.entitySubtype ?? null,
         name: driver.name,
         definition: driver.definition,
         plainLanguageExplanation: plain ? plain.plainLanguageExplanation : null,
@@ -62,12 +64,24 @@ test("every current canonical Driver resolves against the exact browser contract
         onsetCausalLag: driver.onsetCausalLag,
         commonMisinterpretations: driver.commonMisinterpretations,
         evidenceNotes: driver.evidenceNotes,
+        constituentSpecifications: driver.constituentSpecifications || [],
+        derivationType: driver.derivationType ?? null,
+        derivationLogic: driver.derivationLogic ?? null,
+        scopeRequirements: driver.scopeRequirements ?? null,
+        directManipulability: driver.directManipulability ?? null,
+        recalculationBehavior: driver.recalculationBehavior ?? null,
+        uncertaintyPropagation: driver.uncertaintyPropagation ?? null,
+        compositeSpecification: driver.compositeSpecification ?? null,
+        differenceSpecification: driver.differenceSpecification ?? null,
+        networkMetricSpecification: driver.networkMetricSpecification ?? null,
+        ratioSpecification: driver.ratioSpecification ?? null,
+        temporalSpecification: driver.temporalSpecification ?? null,
       },
     };
     validateOperationalizationRequest(request);
     assert.equal(catalog.resolve(request).driver.id, driver.id);
   }
 
-  assert.equal(drivers.length, 793);
-  assert.equal(protectedDriverCount, 25);
+  assert.equal(drivers.length, 811);
+  assert.equal(protectedDriverCount, 43);
 });

@@ -311,7 +311,7 @@ def read_workbooks(source_dir: Path, summary: Summary) -> list[dict[str, Any]]:
     codebook_signatures: dict[str, tuple[tuple[str, ...], ...]] = {}
     paths = sorted(
         path
-        for path in source_dir.rglob("*")
+        for path in source_dir.glob("*")
         if path.is_file()
         and path.suffix.casefold() == ".xlsx"
         and not path.name.startswith("~$")

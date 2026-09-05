@@ -58,6 +58,17 @@ The authoritative Driver Count is derived from the canonical Driver records in
 must equal that derived value. A mismatch is an import error; the importer does
 not repair or overwrite the source value.
 
+### Governed v0.3 entity-count extension
+
+The Driver/RDS migration preserves the Schema v1.0 envelope and adds derived
+union fields without changing workbook content: `primaryLayer`,
+`memberCountsByType`, `relationalDerivedStateCount`, `totalEntityCount`, and
+`representativeEntityIds`. After migration, `driverCount` means Drivers only;
+`relationalDerivedStateCount` means RDS only; their sum must equal
+`totalEntityCount`. All three totals are reconciled against `data/entities.json`.
+Legacy `representativeDriverIds` is filtered to Drivers, while
+`representativeEntityIds` preserves governed representatives of either type.
+
 ## Representative Driver linkage
 
 `representativeDrivers` preserves the canonical Driver names written in the

@@ -1,6 +1,8 @@
 export function fixtureData({ includePlainLanguage = true } = {}) {
   const driver = {
     id: "BIO-001",
+    entityType: "DRIVER",
+    entitySubtype: null,
     name: "Sleep Quantity",
     definition: "The amount of sleep obtained over a defined interval relative to physiological sleep need.",
     layer: "Biological",
@@ -16,6 +18,18 @@ export function fixtureData({ includePlainLanguage = true } = {}) {
     onsetCausalLag: ["Hours–Days"],
     commonMisinterpretations: "Sleep quantity is not sleep quality.",
     evidenceNotes: "Interpret effects in relation to task and individual susceptibility.",
+    constituentSpecifications: [],
+    derivationType: null,
+    derivationLogic: null,
+    scopeRequirements: null,
+    directManipulability: null,
+    recalculationBehavior: null,
+    uncertaintyPropagation: null,
+    compositeSpecification: null,
+    differenceSpecification: null,
+    networkMetricSpecification: null,
+    ratioSpecification: null,
+    temporalSpecification: null,
   };
   const family = {
     id: "BIO-F01",
@@ -54,6 +68,8 @@ export function validRequest(data = fixtureData()) {
     clarificationAnswer: null,
     driver: {
       id: driver.id,
+      entityType: driver.entityType,
+      entitySubtype: driver.entitySubtype,
       name: driver.name,
       definition: driver.definition,
       plainLanguageExplanation: plain ? plain.plainLanguageExplanation : null,
@@ -75,8 +91,56 @@ export function validRequest(data = fixtureData()) {
       onsetCausalLag: [...driver.onsetCausalLag],
       commonMisinterpretations: driver.commonMisinterpretations,
       evidenceNotes: driver.evidenceNotes,
+      constituentSpecifications: [...driver.constituentSpecifications],
+      derivationType: driver.derivationType,
+      derivationLogic: driver.derivationLogic,
+      scopeRequirements: driver.scopeRequirements,
+      directManipulability: driver.directManipulability,
+      recalculationBehavior: driver.recalculationBehavior,
+      uncertaintyPropagation: driver.uncertaintyPropagation,
+      compositeSpecification: driver.compositeSpecification,
+      differenceSpecification: driver.differenceSpecification,
+      networkMetricSpecification: driver.networkMetricSpecification,
+      ratioSpecification: driver.ratioSpecification,
+      temporalSpecification: driver.temporalSpecification,
     },
   };
+}
+
+export function rdsFixtureData() {
+  const data = fixtureData({ includePlainLanguage: false });
+  Object.assign(data.driver, {
+    id: "RDS-0001",
+    entityType: "RELATIONAL_DERIVED_STATE",
+    entitySubtype: "RELATIONAL_DERIVED_STATE",
+    name: "Message Cohesion",
+    definition: "The derived coherence of a message from governed message constituents.",
+    mechanism: null,
+    moderatorsBoundaryConditions: null,
+    indicators: [],
+    measurementAssessmentMethods: null,
+    observability: null,
+    measurementCaveats: null,
+    timeScaleOfChange: [],
+    onsetCausalLag: [],
+    commonMisinterpretations: null,
+    evidenceNotes: null,
+    constituentSpecifications: [{
+      entityId: "INF-013",
+      externalParameterType: null,
+      role: "CONSTITUENT_OR_INPUT",
+      required: true,
+      unitScaleExpectations: "Aligned with derivation logic",
+      alignmentRequirements: "Match analytic level, scope, and time window",
+    }],
+    derivationType: "COMPOSITE",
+    derivationLogic: "Derive cohesion from the governed message constituents.",
+    scopeRequirements: "Use the same message and observation window.",
+    directManipulability: "VIA_CONSTITUENTS",
+    recalculationBehavior: "Recalculate when a constituent changes.",
+    uncertaintyPropagation: "Preserve constituent uncertainty.",
+  });
+  return data;
 }
 
 export function validResponse() {
