@@ -40,6 +40,10 @@ PSYWERX. The repository is designed for static hosting with GitHub Pages.
   contract and Driver/RDS partition.
 - `docs/RELATIONSHIP_SCHEMA_V3.md` defines the canonical generic relationship
   contract. Schema v2 remains the governed workbook-source contract.
+- `docs/RELATIONSHIP_INTERVENTION_SCHEMA_V1.md` documents the production
+  Relationship + Intervention V1 schemas, validators, conservative V3 adapter,
+  and isolated candidate workspace. The infrastructure contains no new
+  scientific population.
 - `docs/MIGRATION_V0_3.md` documents the governed migration build and checks.
 - `docs/PLAIN_LANGUAGE_STANDARD_V1.md` defines the governed writing and review
   standard for public Driver explanations.

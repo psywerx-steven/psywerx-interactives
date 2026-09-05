@@ -1,22 +1,25 @@
 # Relationship + Intervention Architecture V1
 
-**Package status:** Governed architecture; production implementation not
-authorized
+**Package status:** Governed architecture with production infrastructure;
+scientific population not authorized
 
 **Prepared:** 2026-09-05
 
-**Production impact:** None
+**Scientific data/application behavior impact:** None
 
 This directory contains the governed Relationship + Intervention Architecture
 V1 design and its non-production schema drafts. The architecture decision does
 not replace Relationship Schema v3, change any canonical entity or
 relationship, publish an intervention catalog, or change application behavior.
-Production V1 implementation remains separately unauthorized.
+Production V1 infrastructure is recorded separately below. Scientific
+population, Family audits, application behavior changes, and deployment remain
+unauthorized.
 
 **Decision records:**
 
 - [`GOV-REL-INT-V1-2026-09-05`](RELATIONSHIP_INTERVENTION_V1_GOVERNANCE_DECISION.md)
 - [`MIGRATION_BASELINE_ADOPTION_V0_3-2026-09-05`](MIGRATION_BASELINE_ADOPTION_V0_3.md)
+- [`RELATIONSHIP_INTERVENTION_V1_IMPLEMENTATION-2026-09-05`](RELATIONSHIP_INTERVENTION_V1_IMPLEMENTATION_RECORD.md)
 
 ## Current governed baseline
 
@@ -59,15 +62,16 @@ records beyond the exact migration decisions it names.
 9. [Migration Baseline Adoption V0.3](MIGRATION_BASELINE_ADOPTION_V0_3.md)
    separately records authority for the exact v0.3 migration specification and
    generated baseline while preserving all listed open governance items.
+10. [V1 Implementation Record](RELATIONSHIP_INTERVENTION_V1_IMPLEMENTATION_RECORD.md)
+    records the production schema/tooling materialization and its continuing
+    scientific-population stop gate.
 
 ## Non-production draft-schema rule
 
-Files under `docs/governance/drafts/` materialize the governed design for
-validation and later implementation planning, but they are not production
-schemas. Their presence does not authorize generation of production data,
-migration of existing records, population, or activation of candidates. A
-later approved implementation must establish canonical locations, data flows,
-compatibility behavior, and CI gates.
+Files under `docs/governance/drafts/` preserve the reviewed design-stage
+materialization but are not production schemas. The implemented contracts are
+under `schemas/relationship-intervention/v1/`; their presence does not authorize
+scientific population, Family audits, or activation of candidates.
 
 ## Internal critique record
 

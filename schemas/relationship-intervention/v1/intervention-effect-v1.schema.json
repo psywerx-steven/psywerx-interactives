@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://psywerx.org/schemas/relationship-intervention/v1/intervention-effect-v1.schema.json",
+  "title": "PSYWERX InterventionEffect V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion", "id", "revision", "interventionId", "targetKind",
+    "targetDriverId", "targetRelationshipId", "mechanisticDriverIds",
+    "effectMode", "intendedDirection", "mechanismOfAction",
+    "targetPopulationOrAudience", "populationScope", "context", "contextScope",
+    "scale", "boundaryConditions", "implementers", "deliveryModalities",
+    "deliveryModalitySpecification", "channels", "prerequisites",
+    "moderatorEntityIds", "outcomeEntityIds", "measureOfEffectIds",
+    "unintendedEffects", "risks", "ethicalLegalConstraints",
+    "evidenceAssessmentIds", "sourceIds", "governance"
+  ],
+  "properties": {
+    "schemaVersion": {"const": "1.0.0"},
+    "id": {"type": "string", "minLength": 1},
+    "revision": {"type": "integer", "minimum": 1},
+    "interventionId": {"type": "string", "minLength": 1},
+    "targetKind": {"enum": ["DRIVER", "RELATIONSHIP"]},
+    "targetDriverId": {"type": ["string", "null"], "minLength": 1},
+    "targetRelationshipId": {"type": ["string", "null"], "minLength": 1},
+    "mechanisticDriverIds": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "effectMode": {"enum": ["CHANGE_LEVEL", "STABILIZE", "DISRUPT", "MODIFY_RELATIONSHIP"]},
+    "intendedDirection": {"enum": ["INCREASE", "DECREASE", "CONTEXT_DEPENDENT", "MOVE_TOWARD_RANGE", "MAINTAIN_RANGE", "REDUCE_OR_INTERRUPT", "AMPLIFY", "ATTENUATE", "SUPPRESS", "REVERSE"]},
+    "mechanismOfAction": {"type": "string", "minLength": 1},
+    "targetPopulationOrAudience": {"type": "string", "minLength": 1},
+    "populationScope": {"enum": ["UNIVERSAL_WITHIN_SCOPE", "SUBGROUP_TARGETED", "INDIVIDUALIZED", "SYSTEM_OR_NONHUMAN", "MIXED"]},
+    "context": {"type": "string", "minLength": 1},
+    "contextScope": {"enum": ["CORE_REUSABLE", "CONTEXT_DEPENDENT", "SCENARIO_SPECIFIC"]},
+    "scale": {"enum": ["PERSON", "SMALL_GROUP", "COMMUNITY", "INSTITUTIONAL_FIELD", "INFORMATION_OBJECT_CORPUS", "PHYSICAL_SETTING", "TECHNOLOGICAL_SYSTEM", "MULTILEVEL"]},
+    "boundaryConditions": {"type": "string", "minLength": 1},
+    "implementers": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "deliveryModalities": {"type": "array", "uniqueItems": true, "items": {"enum": ["HUMAN_DELIVERED", "DIGITAL_OR_AUTOMATED", "PHYSICAL_ENVIRONMENT", "ORGANIZATIONAL_OR_POLICY_PROCESS", "MIXED", "NOT_APPLICABLE", "OTHER_SPECIFIED"]}},
+    "deliveryModalitySpecification": {"type": ["string", "null"], "minLength": 1},
+    "channels": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "prerequisites": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "moderatorEntityIds": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "outcomeEntityIds": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "measureOfEffectIds": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "unintendedEffects": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "risks": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "ethicalLegalConstraints": {"type": "array", "items": {"type": "string", "minLength": 1}},
+    "evidenceAssessmentIds": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "sourceIds": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "governance": {"$ref": "governance-v1.schema.json"}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"targetKind": {"const": "DRIVER"}}},
+      "then": {
+        "properties": {
+          "targetDriverId": {"type": "string"},
+          "targetRelationshipId": {"type": "null"},
+          "effectMode": {"enum": ["CHANGE_LEVEL", "STABILIZE", "DISRUPT"]}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"targetKind": {"const": "RELATIONSHIP"}}},
+      "then": {
+        "properties": {
+          "targetDriverId": {"type": "null"},
+          "targetRelationshipId": {"type": "string"},
+          "effectMode": {"const": "MODIFY_RELATIONSHIP"},
+          "intendedDirection": {"enum": ["AMPLIFY", "ATTENUATE", "SUPPRESS", "REVERSE", "CONTEXT_DEPENDENT"]}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"effectMode": {"const": "CHANGE_LEVEL"}}},
+      "then": {"properties": {"intendedDirection": {"enum": ["INCREASE", "DECREASE", "CONTEXT_DEPENDENT"]}}}
+    },
+    {
+      "if": {"properties": {"effectMode": {"const": "STABILIZE"}}},
+      "then": {"properties": {"intendedDirection": {"enum": ["MOVE_TOWARD_RANGE", "MAINTAIN_RANGE"]}}}
+    },
+    {
+      "if": {"properties": {"effectMode": {"const": "DISRUPT"}}},
+      "then": {"properties": {"intendedDirection": {"const": "REDUCE_OR_INTERRUPT"}}}
+    },
+    {
+      "if": {"properties": {"deliveryModalities": {"contains": {"const": "OTHER_SPECIFIED"}}}},
+      "then": {"properties": {"deliveryModalitySpecification": {"type": "string"}}},
+      "else": {"properties": {"deliveryModalitySpecification": {"type": "null"}}}
+    }
+  ]
+}
