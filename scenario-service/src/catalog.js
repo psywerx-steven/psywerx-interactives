@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 
 const DEFAULT_DATA_URLS = Object.freeze({
-  drivers: new URL("../../data/drivers.json", import.meta.url),
+  drivers: new URL("../../data/entities.json", import.meta.url),
   families: new URL("../../data/families.json", import.meta.url),
   plainLanguage: new URL("../../data/plain_language.json", import.meta.url),
 });
@@ -61,7 +61,7 @@ function sameValue(actual, expected) {
 
 export function createCatalog(driverData, familyData, plainLanguageData) {
   if (!Array.isArray(driverData)) {
-    throw new CatalogError("CATALOG_INVALID", "The public Driver catalog is invalid.", 503);
+    throw new CatalogError("CATALOG_INVALID", "The public Entity catalog is invalid.", 503);
   }
   if (!familyData || familyData.schemaVersion !== "1.0" || !Array.isArray(familyData.families)) {
     throw new CatalogError("CATALOG_INVALID", "The public Family catalog is invalid.", 503);
@@ -78,7 +78,7 @@ export function createCatalog(driverData, familyData, plainLanguageData) {
     );
   }
 
-  const drivers = uniqueMap(driverData, "id", "Driver");
+  const drivers = uniqueMap(driverData, "id", "Entity");
   const plainLanguage = uniqueMap(
     plainLanguageData.drivers,
     "driverId",
@@ -122,7 +122,7 @@ export function createCatalog(driverData, familyData, plainLanguageData) {
     if (!driver) {
       throw new CatalogError(
         "DRIVER_NOT_AVAILABLE",
-        "This Driver is not available for scenario operationalization."
+        "This Entity is not available for scenario operationalization."
       );
     }
     const plain = plainLanguage.get(driver.id) || null;
@@ -130,7 +130,7 @@ export function createCatalog(driverData, familyData, plainLanguageData) {
     if (!family) {
       throw new CatalogError(
         "DRIVER_CONTEXT_UNAVAILABLE",
-        "The governed Family context for this Driver is unavailable.",
+        "The governed Family context for this Entity is unavailable.",
         503
       );
     }
@@ -164,7 +164,7 @@ export function createCatalog(driverData, familyData, plainLanguageData) {
     ) {
       throw new CatalogError(
         "STALE_DRIVER_CONTEXT",
-        "Driver context is stale or invalid. Reload the Explorer and try again.",
+        "Entity context is stale or invalid. Reload the Explorer and try again.",
         409
       );
     }

@@ -33,6 +33,11 @@ The public artifact uses this envelope:
 | `relationshipIds` | Derived from `data/relationships.json` | array of strings | Required | Canonical Relationships that cite this Evidence ID in `supportingEvidenceIds`. Sort deterministically; use `[]` when unused. |
 | `source` | Generated provenance | object | Required | Workbook basename, worksheet name, and one-based row number. Never include an absolute or local directory path. |
 
+In the governed v0.3 preview, `driverIds` remains a legacy field name for
+backward compatibility. Its permanent IDs resolve against `data/entities.json`
+and may therefore identify a Driver or a retyped RDS. No source linkage is
+renamed or discarded during retyping.
+
 Every record contains every canonical key. The registry intentionally omits
 workbook-only analytical fields such as population, findings, effect direction,
 limitations, and verification notes. Those fields remain governed source data;

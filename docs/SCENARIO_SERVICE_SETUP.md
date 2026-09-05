@@ -16,7 +16,7 @@ conventions: `responses.create`, `text.format` with a strict JSON Schema,
 - Node.js 20.11 or later
 - An OpenAI API key held only by the server environment
 - A configured OpenAI model that supports Structured Outputs
-- The repository's generated `data/drivers.json`, `data/families.json`, and
+- The repository's generated `data/entities.json`, `data/families.json`, and
   `data/plain_language.json` available at their normal paths
 
 The service has one runtime dependency: the official `openai` JavaScript SDK.

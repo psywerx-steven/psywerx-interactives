@@ -206,7 +206,7 @@ def read_codebooks(
 ) -> tuple[list[dict[str, Any]], dict[str, Any]]:
     paths = sorted(
         path
-        for path in source_dir.rglob("*.xlsx")
+        for path in source_dir.glob("*.xlsx")
         if path.is_file() and not path.name.startswith("~$")
     )
     summary.workbooks = len(paths)

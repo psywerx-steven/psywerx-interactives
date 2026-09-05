@@ -5,7 +5,7 @@ import { loadCatalog } from "../src/catalog.js";
 import { validateOperationalizationRequest } from "../src/contracts.js";
 
 const DATA_URLS = Object.freeze({
-  drivers: new URL("../../data/drivers.json", import.meta.url),
+  drivers: new URL("../../data/entities.json", import.meta.url),
   families: new URL("../../data/families.json", import.meta.url),
   plainLanguage: new URL("../../data/plain_language.json", import.meta.url),
 });
@@ -14,7 +14,7 @@ function readJson(url) {
   return JSON.parse(readFileSync(url, "utf8"));
 }
 
-test("every current canonical Driver resolves against the exact browser contract", () => {
+test("every current canonical Entity resolves against the exact browser contract", () => {
   const drivers = readJson(DATA_URLS.drivers);
   const familyData = readJson(DATA_URLS.families);
   const plainLanguageData = readJson(DATA_URLS.plainLanguage);
@@ -68,6 +68,6 @@ test("every current canonical Driver resolves against the exact browser contract
     assert.equal(catalog.resolve(request).driver.id, driver.id);
   }
 
-  assert.equal(drivers.length, 793);
-  assert.equal(protectedDriverCount, 25);
+  assert.equal(drivers.length, 811);
+  assert.equal(protectedDriverCount, 43);
 });

@@ -1,0 +1,361 @@
+{
+  "schemaVersion": "1.0",
+  "migrationVersion": "0.3",
+  "status": "NON_AUTHORITATIVE_MIGRATION_PREVIEW",
+  "specification": "_migration_handoff_v0.3",
+  "baselineGitCommit": "580d59c",
+  "baselineCounts": {
+    "drivers": 793,
+    "families": 105,
+    "relationships": 439
+  },
+  "baselineArtifactSha256": {
+    "drivers.json": "55fcd27e7a45218721dbe02efda518f77ed4d53c54031f5b8aeea3c0433b3c8f",
+    "families.json": "ac81d446dc664497104a6ef3e23f0768eaf3aa632dab57c970edaab7df7dfc7c",
+    "relationships.json": "27c6ebcfdeb481d2577e823792204dc74d05e1b894d397aa5417fb99ebc431db",
+    "plain_language.json": "7d042a2dd3dd2994eec50b9cc97e9200265177194e40030223888bdcaebd8743",
+    "codebook.json": "4dd0ffe790b2b08180777d7ef0ca681eda1e7f72ce1d8e7fc8304a8aad131508",
+    "sources.json": "f1aae4135ac049e223ae65a66a24a6dfc2c28e911add59ce11df34e9c0af3615"
+  },
+  "previewCounts": {
+    "drivers": 770,
+    "relationalDerivedStates": 41,
+    "totalCanonicalEntities": 811
+  },
+  "idAssignments": {
+    "newDrivers": [
+      {
+        "id": "INF-077",
+        "name": "Message Surface-Linguistic Complexity",
+        "familyId": "INF-F03"
+      },
+      {
+        "id": "BIO-073",
+        "name": "Chronotype",
+        "familyId": "BIO-F01"
+      },
+      {
+        "id": "BIO-074",
+        "name": "Physiological Sleep Need",
+        "familyId": "BIO-F01"
+      },
+      {
+        "id": "TEC-097",
+        "name": "Presented Choice-Set Size",
+        "familyId": "TEC-F02"
+      },
+      {
+        "id": "TEC-098",
+        "name": "Interface Option Grouping Configuration",
+        "familyId": "TEC-F02"
+      },
+      {
+        "id": "TEC-099",
+        "name": "System-Gated Interaction Delay",
+        "familyId": "TEC-F03"
+      },
+      {
+        "id": "INS-115",
+        "name": "Administrative Scheduling Flexibility",
+        "familyId": "INS-F03"
+      },
+      {
+        "id": "INS-116",
+        "name": "Administrative Recovery Opportunity",
+        "familyId": "INS-F03"
+      },
+      {
+        "id": "SOC-101",
+        "name": "Social Tie Formation Rate",
+        "familyId": "SOC-F03"
+      },
+      {
+        "id": "SOC-102",
+        "name": "Triadic Closure Rate",
+        "familyId": "SOC-F07"
+      },
+      {
+        "id": "SOC-103",
+        "name": "Tie Dissolution Rate",
+        "familyId": "SOC-F03"
+      }
+    ],
+    "newRelationalDerivedStates": [
+      {
+        "id": "RDS-0001",
+        "name": "Message Cohesion",
+        "familyId": "INF-F03"
+      },
+      {
+        "id": "RDS-0002",
+        "name": "Sleep Architecture Composition",
+        "familyId": "BIO-F01"
+      },
+      {
+        "id": "RDS-0003",
+        "name": "Sleep Sufficiency",
+        "familyId": "BIO-F01"
+      },
+      {
+        "id": "RDS-0004",
+        "name": "Cumulative Sleep Deficit",
+        "familyId": "BIO-F01"
+      },
+      {
+        "id": "RDS-0005",
+        "name": "Distance-Based Closeness Centrality",
+        "familyId": "SOC-F07"
+      },
+      {
+        "id": "RDS-0006",
+        "name": "Network Centralization",
+        "familyId": "SOC-F07"
+      },
+      {
+        "id": "RDS-0007",
+        "name": "Network Component Fragmentation",
+        "familyId": "SOC-F07"
+      }
+    ]
+  },
+  "retypedEntityIds": [
+    "BIO-003",
+    "BIO-006",
+    "CUL-088",
+    "INF-004",
+    "INF-010",
+    "INF-011",
+    "INF-014",
+    "INF-053",
+    "INF-068",
+    "INS-024",
+    "INS-039",
+    "INS-103",
+    "INS-113",
+    "PSY-078",
+    "SOC-018",
+    "SOC-022",
+    "SOC-024",
+    "SOC-035",
+    "SOC-041",
+    "SOC-046",
+    "SOC-047",
+    "SOC-049",
+    "SOC-050",
+    "SOC-051",
+    "SOC-052",
+    "SOC-053",
+    "SOC-054",
+    "SOC-055",
+    "SOC-056",
+    "SOC-057",
+    "SOC-074",
+    "SOC-076",
+    "SOC-090",
+    "SOC-096"
+  ],
+  "keptDriverIds": [
+    "ENV-015",
+    "ENV-025",
+    "ENV-050",
+    "INS-102",
+    "PSY-011",
+    "SOC-036",
+    "SOC-043",
+    "SOC-085",
+    "TEC-013"
+  ],
+  "renames": [
+    {
+      "id": "BIO-001",
+      "oldName": "Sleep Quantity",
+      "newName": "Sleep Duration"
+    },
+    {
+      "id": "BIO-003",
+      "oldName": "Circadian Alignment",
+      "newName": "Circadian Timing Alignment"
+    },
+    {
+      "id": "BIO-004",
+      "oldName": "Circadian Phase",
+      "newName": "Endogenous Circadian Phase"
+    },
+    {
+      "id": "BIO-006",
+      "oldName": "Chronotype–Schedule Alignment",
+      "newName": "Chronotype–Schedule Fit"
+    },
+    {
+      "id": "INF-004",
+      "oldName": "Message Prominence",
+      "newName": "Information-Item Prominence"
+    },
+    {
+      "id": "INF-010",
+      "oldName": "Information Completeness",
+      "newName": "Decision-Relevant Information Completeness"
+    },
+    {
+      "id": "INF-011",
+      "oldName": "Internal Message Contradiction",
+      "newName": "Information-Set Contradiction"
+    },
+    {
+      "id": "INF-013",
+      "oldName": "Message Complexity",
+      "newName": "Message Conceptual Complexity"
+    },
+    {
+      "id": "INF-014",
+      "oldName": "Message Readability",
+      "newName": "Message–Audience Readability"
+    },
+    {
+      "id": "INF-015",
+      "oldName": "Uncertainty Disclosure",
+      "newName": "Claim Uncertainty Disclosure"
+    },
+    {
+      "id": "INF-033",
+      "oldName": "Limitation Disclosure",
+      "newName": "Methodological & Applicability Limitation Disclosure"
+    },
+    {
+      "id": "INF-053",
+      "oldName": "Linguistic Accessibility",
+      "newName": "Message–Audience Language Accessibility"
+    },
+    {
+      "id": "INF-068",
+      "oldName": "Selective-Omission Magnitude",
+      "newName": "Material Selective-Omission Degree"
+    },
+    {
+      "id": "INS-024",
+      "oldName": "Compliance Cost",
+      "newName": "Administrative Compliance Burden"
+    },
+    {
+      "id": "INS-028",
+      "oldName": "Default Enrollment Rule",
+      "newName": "Institutional Default Rule"
+    },
+    {
+      "id": "INS-113",
+      "oldName": "Policy Implementation Fidelity",
+      "newName": "Policy/Rule Implementation Fidelity"
+    },
+    {
+      "id": "PSY-078",
+      "oldName": "Goal–State Discrepancy",
+      "newName": "Perceived Goal–State Discrepancy"
+    },
+    {
+      "id": "SOC-018",
+      "oldName": "Relationship Duration",
+      "newName": "Tie Age / Relationship Duration"
+    },
+    {
+      "id": "SOC-022",
+      "oldName": "Relationship Stability",
+      "newName": "Tie Survival Probability"
+    },
+    {
+      "id": "SOC-024",
+      "oldName": "Personal Network Size",
+      "newName": "Active Personal Network Size"
+    },
+    {
+      "id": "SOC-090",
+      "oldName": "Cross-Group Friendship Prevalence",
+      "newName": "Member-Level Cross-Group Friendship Prevalence"
+    },
+    {
+      "id": "TEC-013",
+      "oldName": "Default-State Configuration",
+      "newName": "Interface Default-State Configuration"
+    },
+    {
+      "id": "TEC-018",
+      "oldName": "Interface Task Simplification",
+      "newName": "Interface Task Complexity"
+    }
+  ],
+  "relationshipActions": {
+    "active": 451,
+    "deprecated": 6,
+    "proposedOrBlocked": 5
+  },
+  "blockedItems": [
+    {
+      "itemType": "ENTITY",
+      "itemId": "INS-102",
+      "status": "BLOCKED_NEEDS_GOVERNANCE_INPUT",
+      "issue": "Fiscal Capacity remains in the governed lower-priority boundary queue and is unchanged as a Driver.",
+      "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d15819cbba3e6a60464ef38"
+    },
+    {
+      "itemType": "RELATIONSHIP",
+      "itemId": "REL-SOC-028",
+      "status": "BLOCKED_NEEDS_GOVERNANCE_INPUT",
+      "issue": "Resource Control Asymmetry → Dependence Asymmetry requires re-research to distinguish causal constituent changes from shortcut double counting.",
+      "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d15819cbba3e6a60464ef38"
+    },
+    {
+      "itemType": "RELATIONSHIP",
+      "itemId": "REL-TEC-049",
+      "status": "BLOCKED_NEEDS_GOVERNANCE_INPUT",
+      "issue": "Algorithmic Ranking Weight → Information-Item Prominence requires reassessment as realization/placement logic after retype.",
+      "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d1581e49a9ac152355b1caa"
+    },
+    {
+      "itemType": "RELATIONSHIP_CANDIDATE",
+      "itemId": "REL-MIG-CAND-0001",
+      "status": "BLOCKED_NEEDS_GOVERNANCE_INPUT",
+      "issue": "Replacement dissolution-process proposition requires governed longitudinal evidence review before activation.",
+      "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d1581ad9d14fdac9e859818"
+    },
+    {
+      "itemType": "RELATIONSHIP_CANDIDATE",
+      "itemId": "REL-MIG-CAND-0002",
+      "status": "BLOCKED_NEEDS_GOVERNANCE_INPUT",
+      "issue": "Replacement dissolution-process proposition requires governed longitudinal evidence review before activation.",
+      "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d1581ad9d14fdac9e859818"
+    },
+    {
+      "itemType": "RELATIONSHIP_CANDIDATE",
+      "itemId": "REL-MIG-CAND-0003",
+      "status": "BLOCKED_NEEDS_GOVERNANCE_INPUT",
+      "issue": "Replacement dissolution-process proposition requires governed longitudinal evidence review before activation.",
+      "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d1581ad9d14fdac9e859818"
+    },
+    {
+      "itemType": "SCIENTIFIC_METADATA",
+      "itemId": "NEW-ENTITIES-V0.3",
+      "status": "BLOCKED_NEEDS_GOVERNANCE_INPUT",
+      "issue": "The 18 admitted new entities have governed identities, definitions, representations, boundaries, and RDS derivations, but the handoff does not supply complete mechanism, temporal, observability, evidence-strength, or source-register fields. Those fields remain null/empty and are listed per record instead of being invented.",
+      "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d15815897b1fb28cfa20fe5"
+    }
+  ],
+  "governanceDecisionRecords": [
+    "https://app.notion.com/p/3cdf827a3d158103b02efcf83c197519",
+    "https://app.notion.com/p/3cdf827a3d1581329f44cb36344c0409",
+    "https://app.notion.com/p/3cdf827a3d1581a08906ebe4ab9feded",
+    "https://app.notion.com/p/3cdf827a3d1581ca8fa8ff0fd5520103",
+    "https://app.notion.com/p/3cdf827a3d1581e49a9ac152355b1caa",
+    "https://app.notion.com/p/3cdf827a3d15815897b1fb28cfa20fe5",
+    "https://app.notion.com/p/3cdf827a3d1581ad9d14fdac9e859818",
+    "https://app.notion.com/p/3cdf827a3d15819cbba3e6a60464ef38",
+    "https://app.notion.com/p/3d2f827a3d1581ad8e1cf403ed02198d"
+  ],
+  "generatedArtifactSha256": {
+    "aliases.json": "e14f9ba67d51d4f0a18cc05ad029da08f7d206dda1c636fbbd866b16ed1b7fb9",
+    "crosswalks.json": "8583159cbdd9bc00cc912e367a53515511709ef7796119ecfa10d0145f1ad7c5",
+    "drivers.json": "0332622a24118c7f50df2b77f12c55ac61ff9f01d00fe3377058ae8edbdfaadc",
+    "entities.json": "29f6d5250f4ba281d073c517a7728aa00e1feed514dcdb0cd29ea2f964313856",
+    "families.json": "8fc4b3f08de1b27850fb460d528c3d95a6d9ea858bb1e55ca687722af80d7f9d",
+    "relational-derived-states.json": "b303b373fbe7137336c25203f72694f4d2f3a8deb1e35239a995d1a6982d62d4",
+    "relationships.json": "4d716e98f3c0699d5d21279a89f9e6e33128bc71d059f4f8153de033d9a732d4"
+  }
+}

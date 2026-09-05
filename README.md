@@ -9,9 +9,9 @@ PSYWERX. The repository is designed for static hosting with GitHub Pages.
   explores the canonical public synthesis of practitioner discourse through
   categories, canonical families, clusters, flat themes, canonical tensions,
   narratives, findings, scenarios, evidence paths, episodes, and search.
-- [Driver Explorer](./drivers/) — browses the governed Layer → Family → Driver
-  taxonomy using dependency-free static assets. Canonical Driver names remain
-  the public names, with reviewed explanations as supporting context.
+- [Ontology Explorer](./drivers/) — browses the governed Layer → Family → Entity
+  ontology using dependency-free static assets. It distinguishes independent
+  behavioral Drivers from relational/derived states (RDS).
 - [Driver Codebook](./drivers/codebook/) — documents governed taxonomy fields
   and controlled vocabularies.
 
@@ -21,7 +21,7 @@ PSYWERX. The repository is designed for static hosting with GitHub Pages.
 - `data/cognitive-security/` contains the generated public-safe Cognitive
   Security Practitioner Discourse Map package.
 - `cognitive-security/` contains the static Cognitive Security Explorer.
-- `drivers/` contains the Driver Explorer application.
+- `drivers/` contains the Ontology Explorer application.
 - `shared/` contains styles and other assets reusable across interactives.
 - `source-data/` is the ignored local location for private XLSX taxonomy files.
 - `scripts/` contains local data-import utilities.
@@ -36,9 +36,11 @@ PSYWERX. The repository is designed for static hosting with GitHub Pages.
   Driver-to-Family validation rules.
 - `docs/CODEBOOK_SCHEMA_V1.md` defines the canonical Codebook Schema v1.0,
   permanent Codebook Term IDs, and controlled-vocabulary validation rules.
-- `docs/RELATIONSHIP_SCHEMA_V2.md` defines the current canonical causal-edge
-  contract and governance classes. `docs/RELATIONSHIP_SCHEMA_V1.md` preserves
-  the historical migration source contract.
+- `docs/RELATIONAL_DERIVED_STATE_SCHEMA_V0_1.md` defines the canonical RDS
+  contract and Driver/RDS partition.
+- `docs/RELATIONSHIP_SCHEMA_V3.md` defines the canonical generic relationship
+  contract. Schema v2 remains the governed workbook-source contract.
+- `docs/MIGRATION_V0_3.md` documents the governed migration build and checks.
 - `docs/PLAIN_LANGUAGE_STANDARD_V1.md` defines the governed writing and review
   standard for public Driver explanations.
 - `docs/PLAIN_LANGUAGE_SCHEMA_V1.md` defines the independently versioned public
@@ -217,6 +219,22 @@ metadata and are not converted into edges. The current graph is intentionally
 conservative and non-exhaustive, so a missing edge does not establish that no
 influence exists.
 
+## Build the governed v0.3 Driver/RDS migration
+
+The ordinary source importers produce the frozen 793-Driver baseline. After
+that pipeline succeeds, run the governed migration generator:
+
+```powershell
+py scripts\build_migration_preview_v0_3.py
+py -m unittest discover -s tests -p "test_migration_v0_3.py"
+```
+
+The generator treats `_migration_handoff_v0.3/` as authoritative, performs only
+the explicitly approved 34 Driver-to-RDS retypes, and emits 770 Drivers, 41 RDS,
+and 811 total entities. It also writes `data/entities.json`, typed aliases,
+crosswalks, Relationship Schema v3, and `data/migration-manifest.json`. Items
+that lack a governed decision remain `BLOCKED_NEEDS_GOVERNANCE_INPUT`.
+
 After the one-time workbook migrations have been applied, the exact full
 public-data rebuild order is:
 
@@ -227,6 +245,7 @@ py scripts\build_families.py
 py scripts\build_codebook.py
 py scripts\build_relationships.py
 py scripts\build_sources.py
+py scripts\build_migration_preview_v0_3.py
 ```
 
 The governed ontology-remediation release v1 was applied once with:

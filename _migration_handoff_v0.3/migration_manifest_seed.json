@@ -1,0 +1,382 @@
+{
+  "status": "NON_AUTHORITATIVE_PREVIEW_SEED",
+  "baseline": {
+    "drivers": 793,
+    "families": 105,
+    "relationships": 439
+  },
+  "preview_target": {
+    "drivers": 770,
+    "relationalDerivedStates": 41,
+    "totalCanonicalEntities": 811
+  },
+  "identifier_policy": {
+    "existing_ids_preserved_on_rename_or_retype": true,
+    "new_driver_ids": "allocate next unused layer-prefixed ID deterministically",
+    "new_rds_ids": "allocate RDS-xxxx deterministically",
+    "never_recycle_ids": true
+  },
+  "retypes": [
+    {
+      "id": "INF-010",
+      "new_entity_type": "RELATIONAL_DERIVED_STATE",
+      "new_name": "Decision-Relevant Information Completeness"
+    },
+    {
+      "id": "INF-011",
+      "new_entity_type": "RELATIONAL_DERIVED_STATE",
+      "new_name": "Information-Set Contradiction"
+    },
+    {
+      "id": "INF-014",
+      "new_entity_type": "RELATIONAL_DERIVED_STATE",
+      "new_name": "Message–Audience Readability"
+    },
+    {
+      "id": "INS-024",
+      "new_entity_type": "RELATIONAL_DERIVED_STATE",
+      "new_name": "Administrative Compliance Burden"
+    },
+    {
+      "id": "BIO-003",
+      "new_entity_type": "RELATIONAL_DERIVED_STATE",
+      "new_name": "Circadian Timing Alignment"
+    },
+    {
+      "id": "BIO-006",
+      "new_entity_type": "RELATIONAL_DERIVED_STATE",
+      "new_name": "Chronotype–Schedule Fit"
+    },
+    {
+      "id": "SOC-049",
+      "new_entity_type": "RELATIONAL_DERIVED_STATE",
+      "new_name": null
+    },
+    {
+      "id": "SOC-050",
+      "new_entity_type": "RELATIONAL_DERIVED_STATE",
+      "new_name": null
+    },
+    {
+      "id": "SOC-051",
+      "new_entity_type": "RELATIONAL_DERIVED_STATE",
+      "new_name": null
+    },
+    {
+      "id": "SOC-052",
+      "new_entity_type": "RELATIONAL_DERIVED_STATE",
+      "new_name": null
+    },
+    {
+      "id": "SOC-053",
+      "new_entity_type": "RELATIONAL_DERIVED_STATE",
+      "new_name": null
+    },
+    {
+      "id": "SOC-054",
+      "new_entity_type": "RELATIONAL_DERIVED_STATE",
+      "new_name": null
+    },
+    {
+      "id": "SOC-055",
+      "new_entity_type": "RELATIONAL_DERIVED_STATE",
+      "new_name": null
+    },
+    {
+      "id": "SOC-056",
+      "new_entity_type": "RELATIONAL_DERIVED_STATE",
+      "new_name": null
+    },
+    {
+      "id": "SOC-057",
+      "new_entity_type": "RELATIONAL_DERIVED_STATE",
+      "new_name": null
+    },
+    {
+      "id": "INF-053",
+      "new_entity_type": "RELATIONAL_DERIVED_STATE",
+      "new_name": "Message–Audience Language Accessibility"
+    },
+    {
+      "id": "INF-068",
+      "new_entity_type": "RELATIONAL_DERIVED_STATE",
+      "new_name": "Material Selective-Omission Degree"
+    },
+    {
+      "id": "SOC-024",
+      "new_entity_type": "RELATIONAL_DERIVED_STATE",
+      "new_name": "Active Personal Network Size"
+    },
+    {
+      "id": "SOC-090",
+      "new_entity_type": "RELATIONAL_DERIVED_STATE",
+      "new_name": "Member-Level Cross-Group Friendship Prevalence"
+    },
+    {
+      "id": "INF-004",
+      "new_entity_type": "RELATIONAL_DERIVED_STATE",
+      "new_name": "Information-Item Prominence"
+    },
+    {
+      "id": "INS-113",
+      "new_entity_type": "RELATIONAL_DERIVED_STATE",
+      "new_name": "Policy/Rule Implementation Fidelity"
+    },
+    {
+      "id": "SOC-022",
+      "new_entity_type": "RELATIONAL_DERIVED_STATE",
+      "new_name": "Tie Survival Probability"
+    },
+    {
+      "id": "SOC-018",
+      "new_entity_type": "RELATIONAL_DERIVED_STATE",
+      "new_name": "Tie Age / Relationship Duration"
+    },
+    {
+      "id": "SOC-035",
+      "new_entity_type": "RELATIONAL_DERIVED_STATE",
+      "new_name": "Reciprocity Balance"
+    },
+    {
+      "id": "SOC-041",
+      "new_entity_type": "RELATIONAL_DERIVED_STATE",
+      "new_name": "Status Hierarchy Steepness"
+    },
+    {
+      "id": "SOC-046",
+      "new_entity_type": "RELATIONAL_DERIVED_STATE",
+      "new_name": "Resource Control Asymmetry"
+    },
+    {
+      "id": "SOC-047",
+      "new_entity_type": "RELATIONAL_DERIVED_STATE",
+      "new_name": "Dependence Asymmetry"
+    },
+    {
+      "id": "SOC-074",
+      "new_entity_type": "RELATIONAL_DERIVED_STATE",
+      "new_name": "Goal Alignment"
+    },
+    {
+      "id": "SOC-076",
+      "new_entity_type": "RELATIONAL_DERIVED_STATE",
+      "new_name": "Mutual Expectation Alignment"
+    },
+    {
+      "id": "SOC-096",
+      "new_entity_type": "RELATIONAL_DERIVED_STATE",
+      "new_name": "Intergroup Status Inequality"
+    },
+    {
+      "id": "CUL-088",
+      "new_entity_type": "RELATIONAL_DERIVED_STATE",
+      "new_name": "Generational Cultural Distance"
+    },
+    {
+      "id": "PSY-078",
+      "new_entity_type": "RELATIONAL_DERIVED_STATE",
+      "new_name": "Perceived Goal–State Discrepancy"
+    },
+    {
+      "id": "INS-039",
+      "new_entity_type": "RELATIONAL_DERIVED_STATE",
+      "new_name": "Caseload Pressure"
+    },
+    {
+      "id": "INS-103",
+      "new_entity_type": "RELATIONAL_DERIVED_STATE",
+      "new_name": "Staffing Adequacy"
+    }
+  ],
+  "newDrivers": [
+    {
+      "name": "Message Surface-Linguistic Complexity",
+      "layer": "Informational",
+      "family": "INF-F03"
+    },
+    {
+      "name": "Chronotype",
+      "layer": "Biological",
+      "family": "BIO-F01"
+    },
+    {
+      "name": "Physiological Sleep Need",
+      "layer": "Biological",
+      "family": "BIO-F01"
+    },
+    {
+      "name": "Presented Choice-Set Size",
+      "layer": "Technological",
+      "family": "TEC-F02"
+    },
+    {
+      "name": "Interface Option Grouping Configuration",
+      "layer": "Technological",
+      "family": "TEC-F02"
+    },
+    {
+      "name": "System-Gated Interaction Delay",
+      "layer": "Technological",
+      "family": "TEC-F03"
+    },
+    {
+      "name": "Administrative Scheduling Flexibility",
+      "layer": "Institutional / Structural",
+      "family": "INS-F03"
+    },
+    {
+      "name": "Administrative Recovery Opportunity",
+      "layer": "Institutional / Structural",
+      "family": "INS-F03"
+    },
+    {
+      "name": "Social Tie Formation Rate",
+      "layer": "Social",
+      "family": "SOC-F03"
+    },
+    {
+      "name": "Triadic Closure Rate",
+      "layer": "Social",
+      "family": "SOC-F07"
+    },
+    {
+      "name": "Tie Dissolution Rate",
+      "layer": "Social",
+      "family": "SOC-F03"
+    }
+  ],
+  "newRDS": [
+    {
+      "name": "Message Cohesion",
+      "subtype": "RELATIONAL_DERIVED_STATE"
+    },
+    {
+      "name": "Sleep Architecture Composition",
+      "subtype": "TEMPORAL_PATTERN_STATE"
+    },
+    {
+      "name": "Sleep Sufficiency",
+      "subtype": "RELATIONAL_DERIVED_STATE"
+    },
+    {
+      "name": "Cumulative Sleep Deficit",
+      "subtype": "TEMPORAL_PATTERN_STATE"
+    },
+    {
+      "name": "Distance-Based Closeness Centrality",
+      "subtype": "DERIVED_STRUCTURAL_STATE"
+    },
+    {
+      "name": "Network Centralization",
+      "subtype": "DERIVED_STRUCTURAL_STATE"
+    },
+    {
+      "name": "Network Component Fragmentation",
+      "subtype": "DERIVED_STRUCTURAL_STATE"
+    }
+  ],
+  "renamesAndMajorRepairs": [
+    {
+      "id": "TEC-018",
+      "new_name": "Interface Task Complexity"
+    },
+    {
+      "id": "BIO-001",
+      "new_name": "Sleep Duration"
+    },
+    {
+      "id": "BIO-004",
+      "new_name": "Endogenous Circadian Phase"
+    },
+    {
+      "id": "INF-013",
+      "new_name": "Message Conceptual Complexity"
+    },
+    {
+      "id": "INF-015",
+      "new_name": "Claim Uncertainty Disclosure"
+    },
+    {
+      "id": "INF-033",
+      "new_name": "Methodological & Applicability Limitation Disclosure"
+    },
+    {
+      "id": "INS-028",
+      "new_name": "Institutional Default Rule"
+    },
+    {
+      "id": "TEC-013",
+      "new_name": "Interface Default-State Configuration"
+    }
+  ],
+  "requiredDatasets": [
+    "drivers.json",
+    "relational-derived-states.json",
+    "entities.json",
+    "families.json",
+    "relationships.json",
+    "aliases.json",
+    "crosswalks.json",
+    "migration-manifest.json"
+  ],
+  "relationshipPredicates": [
+    "CAUSES",
+    "ENABLES",
+    "CONSTRAINS",
+    "MODERATES_RELATIONSHIP",
+    "DERIVED_FROM",
+    "CONSTITUENT_OF",
+    "INDICATES",
+    "MEASURES",
+    "REALIZES"
+  ],
+  "semanticMappingPredicates": [
+    "EQUIVALENT_UNDER_CONDITIONS",
+    "NARROWER_THAN",
+    "BROADER_THAN",
+    "OVERLAPS_WITH",
+    "INVERSE_UNDER_ALIGNED_SCOPE",
+    "RELATED_METRIC"
+  ],
+  "aliasTypes": [
+    "EXACT_SYNONYM",
+    "ABBREVIATION",
+    "LEGACY_UMBRELLA",
+    "RELATED_SEARCH",
+    "DEPRECATED_TERM",
+    "INVERSE_OR_OPPOSITE",
+    "MEASUREMENT_OR_INDICATOR",
+    "INTERVENTION_OR_EXPOSURE"
+  ],
+  "hardConstraints": [
+    "Do not modify main or production artifacts during preview.",
+    "Do not manually edit generated JSON if source/build pipeline should generate it.",
+    "Do not invent scientific definitions or resolve missing governance decisions silently.",
+    "Flag unresolved items as BLOCKED_NEEDS_GOVERNANCE_INPUT.",
+    "Repeated clean builds must be deterministic."
+  ],
+  "secondary_boundary_audit": {
+    "decision_record": "https://app.notion.com/p/3cdf827a3d15819cbba3e6a60464ef38",
+    "retyped_ids": [
+      "SOC-018",
+      "SOC-035",
+      "SOC-041",
+      "SOC-046",
+      "SOC-047",
+      "SOC-074",
+      "SOC-076",
+      "SOC-096",
+      "CUL-088",
+      "PSY-078",
+      "INS-039",
+      "INS-103"
+    ],
+    "keep_driver_ids": [
+      "SOC-036"
+    ],
+    "lower_priority_boundary_queue": [
+      "INS-102"
+    ],
+    "count_effect": "No new entities; 12 existing Drivers retyped to RDS; total remains 811."
+  }
+}

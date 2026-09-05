@@ -5,9 +5,11 @@ layer for PSYWERX Drivers. It implements the writing requirements in the
 [PSYWERX Plain-Language Standard v1.0](./PLAIN_LANGUAGE_STANDARD_V1.md) without
 changing the canonical Driver Schema or the scientific ontology.
 
-The public artifact is `data/plain_language.json`. Content is joined to a
-canonical Driver by permanent `driverId`; it never replaces the canonical name,
-definition, Layer, Family, or technical fields in `data/drivers.json`.
+The public artifact is `data/plain_language.json`. Content is joined by the
+permanent, legacy-named `driverId` field. In the governed v0.3 migration this ID
+resolves against `data/entities.json`, so an approved explanation follows a
+retyped entity without changing its ID. It never replaces canonical ontology
+content.
 
 ## Envelope
 
@@ -24,7 +26,7 @@ Every published record has exactly the following keys.
 
 | Field | JSON type | Requirement | Meaning and normalization |
 | --- | --- | --- | --- |
-| `driverId` | string | Required | Permanent canonical Driver ID. Preserve exactly and resolve to one record in `data/drivers.json`. |
+| `driverId` | string | Required | Permanent canonical entity ID (legacy field name). Preserve exactly and resolve to one record in `data/entities.json` after migration. |
 | `plainLanguageLabel` | string | Required | Approved public label. Preserve the approved UTF-8 wording exactly. |
 | `plainLanguageExplanation` | string | Required | Approved public explanation. Preserve the approved UTF-8 wording exactly. |
 | `analyticQuestion` | string | Required | Approved question that helps a practitioner investigate the Driver state. Preserve exactly. |
@@ -46,8 +48,8 @@ these release-source dispositions:
 
 The 25 records without a governed public approval disposition are excluded.
 Provisional editorial wording is not public. Their absence from this editorial
-dataset does not remove the corresponding canonical Drivers from
-`data/drivers.json`; the Explorer displays a neutral explanatory-availability
+dataset does not remove the corresponding canonical entities from
+`data/entities.json`; the Explorer displays a neutral explanatory-availability
 notice and retains the canonical record.
 
 Private governance fields—including risk, QA findings, release-source status,

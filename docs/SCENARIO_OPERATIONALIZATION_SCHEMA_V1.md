@@ -57,7 +57,7 @@ The `driver` object must contain exactly these fields:
 | `evidenceNotes` | string |
 
 The snapshot is an integrity assertion, not an authority boundary. The service
-resolves the ID against its own loaded `data/drivers.json`,
+resolves the ID against its own loaded `data/entities.json`,
 `data/families.json`, and `data/plain_language.json` and requires every supplied
 value to match. It then constructs model context from the server-resolved
 record. Unknown IDs and stale or modified snapshots are rejected.
