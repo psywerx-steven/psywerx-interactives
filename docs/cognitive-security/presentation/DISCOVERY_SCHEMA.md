@@ -27,11 +27,18 @@ filenames, private mappings, review notes, prompts, or credentials.
 ## Frozen publisher metadata
 
 The metadata projection was matched to the Information Professionals
-Association's official Cognitive Crucible archive using episode number and
-title, or a unique normalized-title match for a nonnumbered source record.
-Publication dates are publisher post dates, not recording dates. Guest lines
-are taken only from the official title's text before an explicit “on” delimiter.
-Ordinary builds never request the web.
+Association's official Cognitive Crucible archive. A unique episode number is
+a strong candidate key, but its catalog and publisher titles must also be
+compatible. Compatibility is recorded in the private audit and is limited to
+exact normalized titles, safe title prefixes, or structured guest/topic
+agreement that permits punctuation and shortened-name differences. Three known
+spelling/transcription discrepancies are governed by an explicit
+episode-number and official-post-ID exception allowlist with a recorded reason.
+A materially conflicting numbered title remains unresolved. A unique exact
+normalized-title match may be used when a catalog record has no usable episode
+number. Publication dates are publisher post dates, not recording dates. Guest
+lines are taken only from the official title's text before an explicit “on”
+delimiter. Ordinary builds never request the web.
 
 The frozen projection has 242 records: 237 verified official URLs and publisher
 dates, 229 verified guest lines, and 5 deliberately null source matches. Missing

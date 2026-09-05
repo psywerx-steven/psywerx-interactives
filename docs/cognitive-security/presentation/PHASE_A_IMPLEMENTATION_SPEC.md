@@ -41,8 +41,11 @@ semantics.
   as optional comparison views.
 - [x] Make episode cards native links and add range, query, oldest/newest, jump,
   trailer/nonnumbered, browse-context, previous/next, and return-state behavior.
+- [x] Omit redundant episode-card labels, keep one prominent publisher action,
+  and use practitioner-facing discovery copy in the default reading flow.
 - [x] Add a frozen, validated metadata overlay with nullable publication date,
-  guests, and verified official publisher URL; never guess missing values.
+  guests, and verified official publisher URL; require title compatibility for
+  numbered candidates, audit governed exceptions, and never guess missing values.
 - [x] Add a separate deterministic discovery overlay for calibrated main topics,
   topic indexes, explained similar episodes, and a lazy optional comparison
   matrix. Discovery links never become analytical evidence edges.

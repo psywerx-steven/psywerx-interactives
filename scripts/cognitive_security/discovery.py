@@ -53,6 +53,11 @@ CORE_COUNT_INVARIANTS = {
 METADATA_FIELDS = frozenset(
     {"episodeId", "publishedAt", "guests", "officialEpisodeUrl"}
 )
+GOVERNED_TITLE_EXCEPTIONS = {
+    (28, 9621): "The catalog and publisher spell the guest surname Mushtare/Mushatare differently; the remaining title is exact.",
+    (131, 13574): "The catalog contains the one-character Ghost Tean/Team transcription error; the remaining title is exact.",
+    (159, 14768): "The catalog and publisher spell the guest surname Schiovani/Schiavoni differently; the remaining title is exact.",
+}
 
 
 class DiscoveryError(ValueError):
@@ -94,9 +99,73 @@ def _assert(condition: bool, message: str) -> None:
 
 def _normalized_title(value: str) -> str:
     value = html.unescape(value).replace("：", ":").replace("／", "/")
-    value = re.sub(r"^#\d+\s*[:\-]?\s*", "", value.strip())
+    value = re.sub(r"^#?\d+\s*[:\-–—]?\s*", "", value.strip())
     value = value.casefold()
     return re.sub(r"[^a-z0-9]+", " ", value).strip()
+
+
+def _token_prefix(left: tuple[str, ...], right: tuple[str, ...]) -> bool:
+    shorter, longer = (left, right) if len(left) <= len(right) else (right, left)
+    return len(shorter) >= 2 and longer[: len(shorter)] == shorter
+
+
+def _split_on(tokens: tuple[str, ...]) -> tuple[tuple[str, ...], tuple[str, ...]] | None:
+    try:
+        index = tokens.index("on")
+    except ValueError:
+        return None
+    if index == 0 or index == len(tokens) - 1:
+        return None
+    return tokens[:index], tokens[index + 1 :]
+
+
+def _guest_names_compatible(left: tuple[str, ...], right: tuple[str, ...]) -> bool:
+    if left == right:
+        return True
+    left_set = set(left)
+    right_set = set(right)
+    if left_set <= right_set or right_set <= left_set:
+        return True
+    return bool(
+        len(left) == 2
+        and len(right) == 2
+        and left[-1] == right[-1]
+        and left[0][0] == right[0][0]
+    )
+
+
+def _title_compatibility(catalog_title: str, official_title: str) -> dict[str, Any]:
+    catalog_normalized = _normalized_title(catalog_title)
+    official_normalized = _normalized_title(official_title)
+    result = {
+        "status": "conflict",
+        "method": "material-title-conflict",
+        "catalogNormalizedTitle": catalog_normalized,
+        "officialNormalizedTitle": official_normalized,
+    }
+    if not catalog_normalized or not official_normalized:
+        return result
+    if catalog_normalized == official_normalized:
+        result.update(status="compatible", method="exact-normalized-title")
+        return result
+
+    catalog_tokens = tuple(catalog_normalized.split())
+    official_tokens = tuple(official_normalized.split())
+    if _token_prefix(catalog_tokens, official_tokens):
+        result.update(status="compatible", method="normalized-title-prefix")
+        return result
+
+    catalog_parts = _split_on(catalog_tokens)
+    official_parts = _split_on(official_tokens)
+    if catalog_parts and official_parts:
+        catalog_guests, catalog_topic = catalog_parts
+        official_guests, official_topic = official_parts
+        topic_compatible = catalog_topic == official_topic or _token_prefix(
+            catalog_topic, official_topic
+        )
+        if topic_compatible and _guest_names_compatible(catalog_guests, official_guests):
+            result.update(status="compatible", method="structured-guest-and-topic")
+    return result
 
 
 def _official_number(title: str) -> int | None:
@@ -165,15 +234,51 @@ def freeze_episode_metadata(
         number = episode.get("parsedEpisodeNumber")
         match: dict[str, Any] | None = None
         method: str | None = None
+        number_candidate: dict[str, Any] | None = None
+        title_compatibility: dict[str, Any] | None = None
+        unresolved_reason = "No unique official publisher record matched without guessing."
         if isinstance(number, int) and number > 0:
-            match = by_number.get(number)
-            method = "episode-number-and-title" if match else None
-        if match is None:
+            number_candidate = by_number.get(number)
+            if number_candidate is not None:
+                candidate_title = html.unescape(
+                    number_candidate.get("title", {}).get("rendered", "")
+                ).strip()
+                title_compatibility = _title_compatibility(
+                    episode["episodeTitle"], candidate_title
+                )
+                exception_reason = GOVERNED_TITLE_EXCEPTIONS.get(
+                    (number, number_candidate.get("id"))
+                )
+                if title_compatibility["status"] == "compatible":
+                    match = number_candidate
+                    method = (
+                        "episode-number-and-exact-normalized-title"
+                        if title_compatibility["method"] == "exact-normalized-title"
+                        else "episode-number-and-compatible-title"
+                    )
+                elif exception_reason:
+                    title_compatibility.update(
+                        status="compatible",
+                        method="governed-title-exception",
+                        exceptionReason=exception_reason,
+                    )
+                    match = number_candidate
+                    method = "episode-number-and-governed-title-exception"
+                else:
+                    unresolved_reason = (
+                        "Official episode number matched, but title compatibility "
+                        "was not established; no metadata was published."
+                    )
+        if match is None and number_candidate is None:
             candidates = by_normalized_title.get(_normalized_title(episode["episodeTitle"]), [])
             candidates = [item for item in candidates if item["id"] not in matched_post_ids]
             if len(candidates) == 1:
                 match = candidates[0]
                 method = "exact-normalized-title"
+                title_compatibility = _title_compatibility(
+                    episode["episodeTitle"],
+                    html.unescape(match.get("title", {}).get("rendered", "")).strip(),
+                )
 
         if match is None:
             public_records.append(
@@ -184,16 +289,23 @@ def freeze_episode_metadata(
                     "officialEpisodeUrl": None,
                 }
             )
-            audit_records.append(
-                {
-                    "episodeId": episode_id,
-                    "episodeTitle": episode["episodeTitle"],
-                    "matchMethod": None,
-                    "retrievedAt": retrieved_at,
-                    "sourceFields": {},
-                    "unresolvedReason": "No unique official publisher record matched without guessing.",
-                }
-            )
+            audit_record = {
+                "episodeId": episode_id,
+                "episodeTitle": episode["episodeTitle"],
+                "matchMethod": None,
+                "titleCompatibility": title_compatibility,
+                "retrievedAt": retrieved_at,
+                "sourceFields": {},
+                "unresolvedReason": unresolved_reason,
+            }
+            if number_candidate is not None:
+                audit_record.update(
+                    officialCandidatePostId=number_candidate.get("id"),
+                    officialCandidateTitle=html.unescape(
+                        number_candidate.get("title", {}).get("rendered", "")
+                    ).strip(),
+                )
+            audit_records.append(audit_record)
             continue
 
         matched_post_ids.add(match["id"])
@@ -217,6 +329,7 @@ def freeze_episode_metadata(
                 "episodeId": episode_id,
                 "episodeTitle": episode["episodeTitle"],
                 "matchMethod": method,
+                "titleCompatibility": title_compatibility,
                 "officialPostId": match["id"],
                 "officialTitle": official_title,
                 "retrievedAt": retrieved_at,

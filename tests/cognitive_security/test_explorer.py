@@ -340,6 +340,27 @@ class ExplorerStaticContractTests(unittest.TestCase):
         self.assertIn("Subcategory findings", self.javascript)
         self.assertIn("Integrative category finding", self.javascript)
 
+    def test_episode_cleanup_keeps_methodology_precise_but_secondary(self):
+        self.assertNotIn("episode-card-link__type", self.javascript)
+        self.assertEqual(1, self.javascript.count("Listen & show notes"))
+        self.assertIn("Main topics in this episode", self.javascript)
+        self.assertIn("Source: ", self.javascript)
+        self.assertIn("Information Professionals Association", self.javascript)
+        for removed_copy in (
+            "documented repeated-coding",
+            "Recommendations use repeated, eligible topics",
+            "meets the documented main-topic threshold",
+        ):
+            self.assertNotIn(removed_copy, self.javascript)
+        for retained_method in (
+            "at least two primary coded items",
+            "at least a 0.05 share",
+            "normalized IDF-weighted Jaccard",
+            "at least two shared topics",
+            "a 0.15 minimum",
+        ):
+            self.assertIn(retained_method, self.javascript)
+
     def test_accessibility_and_mobile_contract_is_explicit(self):
         for token in (
             'class="skip-link"',

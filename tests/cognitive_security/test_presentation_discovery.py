@@ -11,6 +11,7 @@ import tempfile
 import unittest
 
 from scripts.cognitive_security.discovery import (
+    DiscoveryError,
     MAIN_TOPIC_DISPLAY_LIMIT,
     PRIMARY_ITEM_MINIMUM,
     PROMINENCE_SHARE_MINIMUM,
@@ -19,6 +20,7 @@ from scripts.cognitive_security.discovery import (
     TopicCount,
     boolean_jaccard,
     build_discovery_package,
+    freeze_episode_metadata,
     qualified_topics,
     weighted_jaccard,
 )
@@ -62,6 +64,146 @@ class DiscoveryNumericTests(unittest.TestCase):
             primary_minimum=PRIMARY_ITEM_MINIMUM,
         )
         self.assertEqual(["primary"], [item.topic_id for item in selected])
+
+
+class EpisodeMetadataMatchingTests(unittest.TestCase):
+    def _freeze(
+        self,
+        *,
+        catalog_title,
+        official_title,
+        parsed_number,
+        official_url="https://information-professionals.org/episode/test/",
+        official_post_id=9001,
+    ):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            core = root / "core"
+            cache = root / "cache"
+            core.mkdir()
+            cache.mkdir()
+            (core / "episodes.json").write_text(
+                json.dumps(
+                    [
+                        {
+                            "episodeId": "EPI-TEST",
+                            "episodeTitle": catalog_title,
+                            "parsedEpisodeNumber": parsed_number,
+                        }
+                    ]
+                ),
+                encoding="utf-8",
+            )
+            (cache / "podcasts-page-1.json").write_text(
+                json.dumps(
+                    [
+                        {
+                            "id": official_post_id,
+                            "date": "2024-01-02T12:00:00",
+                            "link": official_url,
+                            "title": {"rendered": official_title},
+                        }
+                    ]
+                ),
+                encoding="utf-8",
+            )
+            public_output = root / "episode_metadata.json"
+            audit_output = root / "metadata_audit.json"
+            audit = freeze_episode_metadata(
+                core_dir=core,
+                cache_dir=cache,
+                public_output=public_output,
+                private_audit_output=audit_output,
+                retrieved_at="2026-09-04",
+            )
+            return load(public_output), audit
+
+    def test_number_and_exact_compatible_title_match(self):
+        public, audit = self._freeze(
+            catalog_title="#12 Tammekänd on Deepfakes",
+            official_title="#12 Tammekänd on Deepfakes",
+            parsed_number=12,
+        )
+        self.assertIsNotNone(public[0]["officialEpisodeUrl"])
+        self.assertEqual(
+            "episode-number-and-exact-normalized-title",
+            audit["records"][0]["matchMethod"],
+        )
+
+    def test_number_and_compatible_shortened_name_match(self):
+        public, audit = self._freeze(
+            catalog_title="#65 Sean Guillory on Cognitive Neuroscience Applications",
+            official_title="#65 Guillory on Cognitive Neuroscience Applications",
+            parsed_number=65,
+        )
+        self.assertIsNotNone(public[0]["officialEpisodeUrl"])
+        self.assertEqual(
+            "episode-number-and-compatible-title", audit["records"][0]["matchMethod"]
+        )
+        self.assertEqual("compatible", audit["records"][0]["titleCompatibility"]["status"])
+
+    def test_number_and_materially_conflicting_title_remain_unresolved(self):
+        public, audit = self._freeze(
+            catalog_title="#65 Guillory on Cognitive Neuroscience Applications",
+            official_title="#65 Different Guest on Unrelated Operations",
+            parsed_number=65,
+        )
+        self.assertIsNone(public[0]["officialEpisodeUrl"])
+        self.assertIsNone(audit["records"][0]["matchMethod"])
+        self.assertEqual("conflict", audit["records"][0]["titleCompatibility"]["status"])
+        self.assertIn("title compatibility", audit["records"][0]["unresolvedReason"])
+
+    def test_normalized_punctuation_difference_matches(self):
+        public, audit = self._freeze(
+            catalog_title="#12 Tammekänd on “Deepfakes”",
+            official_title="#12 Tammekänd on Deepfakes",
+            parsed_number=12,
+        )
+        self.assertIsNotNone(public[0]["officialEpisodeUrl"])
+        self.assertEqual(
+            "episode-number-and-exact-normalized-title",
+            audit["records"][0]["matchMethod"],
+        )
+
+    def test_governed_title_exception_is_explicit_and_audited(self):
+        public, audit = self._freeze(
+            catalog_title="#28 Mushtare and Branch on PSYOP, Manpower, and IO Initiatives",
+            official_title="#28 Mushatare and Branch on PSYOP, Manpower, and IO Initiatives",
+            parsed_number=28,
+            official_post_id=9621,
+        )
+        self.assertIsNotNone(public[0]["officialEpisodeUrl"])
+        record = audit["records"][0]
+        self.assertEqual("episode-number-and-governed-title-exception", record["matchMethod"])
+        self.assertEqual("governed-title-exception", record["titleCompatibility"]["method"])
+        self.assertTrue(record["titleCompatibility"]["exceptionReason"])
+
+    def test_exact_normalized_title_fallback_matches_without_episode_number(self):
+        public, audit = self._freeze(
+            catalog_title="Arun Seraphin on the SASC and Emerging Technology",
+            official_title="#98 Arun Seraphin on the SASC and Emerging Technology",
+            parsed_number=None,
+        )
+        self.assertIsNotNone(public[0]["officialEpisodeUrl"])
+        self.assertEqual("exact-normalized-title", audit["records"][0]["matchMethod"])
+
+    def test_unmatched_title_remains_unresolved(self):
+        public, audit = self._freeze(
+            catalog_title="Unnumbered private event",
+            official_title="#77 Lopata on Quantum",
+            parsed_number=None,
+        )
+        self.assertIsNone(public[0]["officialEpisodeUrl"])
+        self.assertIsNone(audit["records"][0]["matchMethod"])
+
+    def test_matched_record_rejects_nonofficial_host(self):
+        with self.assertRaisesRegex(DiscoveryError, "Unapproved official host"):
+            self._freeze(
+                catalog_title="#12 Tammekänd on Deepfakes",
+                official_title="#12 Tammekänd on Deepfakes",
+                parsed_number=12,
+                official_url="https://example.com/episode/test/",
+            )
 
 
 class DiscoveryPackageTests(unittest.TestCase):

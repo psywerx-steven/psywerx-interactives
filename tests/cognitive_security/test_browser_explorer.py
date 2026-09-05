@@ -653,7 +653,15 @@ class CanonicalExplorerBrowserTests(unittest.TestCase):
     def test_episode_library_ranges_sort_jump_and_context(self) -> None:
         self._open(expected_title="Episodes", view="episodes")
         self.assertEqual(242, self.page.locator("a.episode-card-link").count())
+        self.assertEqual(0, self.page.locator(".episode-card-link__type").count())
+        self.assertEqual(0, self.page.locator("a.episode-card-link .entity-badge").count())
+        card_states = self.page.locator("a.episode-card-link").evaluate_all(
+            "links => links.map(link => ({text: link.innerText, href: link.getAttribute('href'), tag: link.tagName}))"
+        )
+        self.assertTrue(all("EPI-" not in row["text"] for row in card_states))
+        self.assertTrue(all(row["tag"] == "A" and row["href"] for row in card_states))
         self.assertEqual(1, self.page.get_by_text("The Cognitive Crucible", exact=True).count())
+        self._save_phase_a_screenshot("phase-a-episode-library.png")
         form = self.page.get_by_role("search", name="Browse episodes")
         form.locator("select").nth(0).select_option("1-29")
         form.locator("select").nth(1).select_option("newest")
@@ -697,9 +705,25 @@ class CanonicalExplorerBrowserTests(unittest.TestCase):
         self.assertEqual(self.metadata_records[episode_id]["officialEpisodeUrl"], listen.get_attribute("href"))
         self.assertEqual("_blank", listen.get_attribute("target"))
         self.assertEqual("noopener noreferrer", listen.get_attribute("rel"))
+        self.assertEqual(1, self.page.locator('a:has-text("Listen & show notes")').count())
+        source = self.page.locator(".source-citation a")
+        self.assertEqual("Information Professionals Association", source.inner_text())
+        self.assertEqual(self.metadata_records[episode_id]["officialEpisodeUrl"], source.get_attribute("href"))
         self.assertIn(self.metadata_records[episode_id]["guests"][0], self.page.locator(".episode-metadata").inner_text())
+        self.assertEqual(1, self.page.get_by_role("heading", name="Main topics in this episode", exact=True).count())
         self.assertGreater(self.page.locator(".episode-topic-list .entity-chip").count(), 0)
         self.assertGreater(self.page.locator(".similar-episode-card").count(), 0)
+        default_text = self.page.locator("main").inner_text()
+        self.assertIn("sustained attention", default_text)
+        self.assertIn("substantial overlap", default_text)
+        for advanced_phrase in (
+            "documented repeated-coding",
+            "prominence cutoff",
+            "weighted Jaccard",
+            "IDF",
+            "similarity cutoff",
+        ):
+            self.assertNotIn(advanced_phrase, default_text)
         self.assertIn("Shared main topics", self.page.locator(".similar-episode-card").first.inner_text())
         self.assertNotIn("/data/cognitive-security-discovery/similarity_data.json", self.requested_paths)
         self._save_phase_a_screenshot("phase-a-episode.png")
@@ -707,6 +731,7 @@ class CanonicalExplorerBrowserTests(unittest.TestCase):
         self.page.get_by_text("Compare related episodes", exact=True).click()
         matrix = self.page.locator("table.episode-similarity-matrix")
         matrix.wait_for(timeout=20_000)
+        self.assertIn("normalized IDF-weighted Jaccard", self.page.locator(".episode-comparison").inner_text())
         self.assertIn("/data/cognitive-security-discovery/similarity_data.json", self.requested_paths)
         self.assertGreater(matrix.locator("tbody tr").count(), 1)
         self.assertLessEqual(matrix.locator("tbody tr").count(), 15)

@@ -1962,7 +1962,7 @@ async function renderCluster(route) {
   ])));
   const episodePath = element("p", "topic-episode-path");
   episodePath.appendChild(routeLink({ view: "episodes", topic: cluster.clusterId, range: "all", sort: "earliest" }, "More on this topic in Episodes", "secondary-button"));
-  record.appendChild(detailSection("Explore related conversations", episodePath, "Shows episodes where this topic meets the documented main-topic threshold."));
+  record.appendChild(detailSection("Explore related conversations", episodePath, "Shows episodes where this topic received sustained attention in the structured analysis."));
   const boundaries = element("details", "scope-details");
   boundaries.appendChild(element("summary", null, "Scope and coding boundaries"));
   boundaries.appendChild(definitionRows([
@@ -2794,7 +2794,6 @@ function episodeMetadataLine(episode) {
 function episodeCard(episode, route, position) {
   const link = routeLink(episodeDetailRoute(episode, route, position), "", "episode-card-link");
   link.id = "episode-card-" + episode.episodeId;
-  link.appendChild(element("span", "episode-card-link__type", "Episode"));
   link.appendChild(element("strong", "episode-card-link__title", entityName("episode", episode)));
   const metadata = episodeMetadataLine(episode);
   if (metadata) link.appendChild(element("span", "episode-card-link__meta", metadata));
@@ -2988,9 +2987,9 @@ function episodeTopicList(topicIds, route, includeMoreControl) {
 
 function similarEpisodeCards(episode, route) {
   const discovery = state.maps.discoveryByEpisode.get(episode.episodeId);
-  const section = sectionBlock("Similar episodes", "Recommendations use repeated, eligible topics shared by both episodes. They indicate topic overlap, not agreement, importance, or truth.");
+  const section = sectionBlock("Similar episodes", "Other conversations with substantial overlap in their main topics. Topic overlap does not imply agreement, importance, or truth.");
   if (!discovery || !discovery.similarOverall.length) {
-    section.appendChild(element("p", "quiet-note", "No episode meets the current two-topic and similarity thresholds for this release."));
+    section.appendChild(element("p", "quiet-note", "No other conversation has enough main-topic overlap for this release."));
     return section;
   }
   const grid = element("div", "similar-episode-grid");
@@ -3062,7 +3061,7 @@ async function renderEpisodeSimilarityMatrix(container, episode, route) {
     eligible.sort(function (left, right) { return right.score - left.score || episodeSort(left.episode, right.episode); });
     const candidates = eligible.slice(0, 14);
     if (!candidates.length) {
-      container.replaceChildren(element("p", "quiet-note", "No genuine comparison neighbor meets the current two-topic and similarity thresholds."));
+      container.replaceChildren(element("p", "quiet-note", "No related conversation has enough main-topic overlap for comparison."));
       return;
     }
     const controls = element("fieldset", "matrix-selector");
@@ -3111,7 +3110,7 @@ async function renderEpisodeSimilarityMatrix(container, episode, route) {
       links.appendChild(document.createTextNode(" and "));
       links.appendChild(entityLink("episode", rightEntry.episode.episodeId, entityName("episode", rightEntry.episode)));
       pairDetail.appendChild(links);
-      pairDetail.appendChild(element("p", null, "Topic-overlap value: " + score.toFixed(2) + ". Shared eligible topics: " + (shared.length ? shared.map(function (id) { return entityName("cluster", getEntity("cluster", id)); }).join(" · ") : "none") + "."));
+      pairDetail.appendChild(element("p", null, "Topic-overlap value: " + score.toFixed(2) + ". Shared main topics: " + (shared.length ? shared.map(function (id) { return entityName("cluster", getEntity("cluster", id)); }).join(" · ") : "none") + "."));
     }
 
     function draw() {
@@ -3164,7 +3163,7 @@ async function renderEpisodeSimilarityMatrix(container, episode, route) {
               button.addEventListener("click", function () { showPair(rowEntry, columnEntry, score, shared); });
               button.addEventListener("focus", function () { showPair(rowEntry, columnEntry, score, shared); });
               cell.appendChild(button);
-              if (rowIndex < columnIndex) pairList.appendChild(element("li", null, episodeMatrixLabel(rowEntry.episode) + " ↔ " + episodeMatrixLabel(columnEntry.episode) + ": " + score.toFixed(2) + "; " + (shared.length ? shared.map(function (id) { return entityName("cluster", getEntity("cluster", id)); }).join(", ") : "no shared eligible topics")));
+              if (rowIndex < columnIndex) pairList.appendChild(element("li", null, episodeMatrixLabel(rowEntry.episode) + " ↔ " + episodeMatrixLabel(columnEntry.episode) + ": " + score.toFixed(2) + "; " + (shared.length ? shared.map(function (id) { return entityName("cluster", getEntity("cluster", id)); }).join(", ") : "no shared main topics")));
             }
           }
           row.appendChild(cell);
@@ -3243,14 +3242,14 @@ async function renderEpisode(route) {
     keyTopics.appendChild(routeLink({ view: "episodes", q: topic, sort: episodeSortMode(route), range: "all" }, topic, "entity-chip"));
   });
   record.appendChild(detailSection("Key topics", keyTopics, "These phrases come from the transcript-grounded episode summary; selecting one searches the library text."));
-  const mainTopicSection = sectionBlock("Main topics in the map", "These topics meet the documented repeated-coding and within-episode prominence thresholds. They are a browsing aid, not a claim of guest agreement.");
+  const mainTopicSection = sectionBlock("Main topics in this episode", "Topics that received sustained attention in the structured analysis. They are a browsing aid, not a claim of guest agreement.");
   const defaultTopicIds = discovery ? discovery.defaultMainTopicIds : [];
   const allTopicIds = discovery ? discovery.mainTopicIds : [];
   if (defaultTopicIds.length) mainTopicSection.appendChild(episodeTopicList(defaultTopicIds, route, true));
-  else mainTopicSection.appendChild(element("p", "quiet-note", "No topic has sufficiently repeated primary coding to appear in this release's default main-topic list."));
+  else mainTopicSection.appendChild(element("p", "quiet-note", "No topic received enough sustained attention to appear in this release's main-topic list."));
   if (allTopicIds.length > defaultTopicIds.length) {
     const more = element("details", "more-main-topics");
-    more.appendChild(element("summary", null, "Show all qualifying topics"));
+    more.appendChild(element("summary", null, "Show more main topics"));
     more.appendChild(episodeTopicList(allTopicIds.slice(defaultTopicIds.length), route, true));
     mainTopicSection.appendChild(more);
   }
@@ -3268,13 +3267,16 @@ async function renderEpisode(route) {
     }
   });
   record.appendChild(compare);
-  const sourceSection = sectionBlock("Original source", "The publisher link is verified bibliographic metadata and opens in a new tab.");
+  const sourceSection = sectionBlock("Source", "Verified publisher attribution for this release.");
   if (metadata && metadata.officialEpisodeUrl) {
-    const source = element("a", "secondary-button", "Listen & show notes ↗");
+    const citation = element("p", "source-citation");
+    citation.appendChild(document.createTextNode("Source: "));
+    const source = element("a", "text-link", "Information Professionals Association");
     source.href = metadata.officialEpisodeUrl;
     source.target = "_blank";
     source.rel = "noopener noreferrer";
-    sourceSection.appendChild(source);
+    citation.appendChild(source);
+    sourceSection.appendChild(citation);
   } else sourceSection.appendChild(element("p", "quiet-note", "A verified publisher episode page is unavailable for this release."));
   record.appendChild(sourceSection);
   await appendEvidenceExplorer(record, "episode", episode.episodeId, route);
