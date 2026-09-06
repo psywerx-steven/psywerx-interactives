@@ -33,7 +33,7 @@ template. Resolved output paths are confined to this experiment. Existing
 regeneration tests run in an isolated copy; actual results are recorded in
 [TEST_RESULTS.json](TEST_RESULTS.json).
 
-Local validation passed: **49 prototype tests, 96 existing Python tests and
+Local validation passed: **51 prototype tests, 96 existing Python tests and
 21 scenario-service tests**, including the exact 811-entity catalog sweep.
 Schema/meta-validation, local links, Python/JavaScript checks and deterministic
 regeneration passed. All 234 protected files stayed byte-identical. The saved

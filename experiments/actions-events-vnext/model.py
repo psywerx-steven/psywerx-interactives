@@ -46,6 +46,10 @@ def validate_bundle(bundle):
         return ["bundle requires type/occurrence/effect/evidence/reference arrays"]
     if bundle.get("label") != "SYNTHETIC / NON_PRODUCTION":
         errors.append("bundle must be SYNTHETIC / NON_PRODUCTION")
+    if any(not isinstance(r, dict) for key in (*SCHEMAS, "entities", "relationships", "sources") for r in bundle[key]):
+        return ["every record/reference must be an object"]
+    if any(not isinstance(r.get("id"), str) for key in (*SCHEMAS, "entities", "relationships", "sources") for r in bundle[key]):
+        return ["every record/reference requires a string identity"]
     validators = schema_validators()
     records = [r for key in SCHEMAS for r in bundle.get(key, [])]
     ids = [r.get("id") for r in records]
@@ -56,9 +60,21 @@ def validate_bundle(bundle):
             for error in validator.iter_errors(record):
                 errors.append(f"{record.get('id')}: {list(error.path)} {error.message}")
     for key in ("entities", "relationships", "sources"):
+        reference_ids = [item.get("id") for item in bundle[key]]
+        if len(reference_ids) != len(set(reference_ids)):
+            errors.append(key + ": duplicate reference identity")
         for item in bundle.get(key, []):
-            if not item.get("id", "").startswith("SYN-") or item.get("label") != "SYNTHETIC / NON_PRODUCTION":
+            if not isinstance(item.get("id"), str) or not item["id"].startswith("SYN-") or item.get("label") != "SYNTHETIC / NON_PRODUCTION":
                 errors.append(f"{key} contains non-synthetic reference")
+    entity_references = {r.get("id"): r for r in bundle["entities"]}
+    for item in bundle["entities"]:
+        if item.get("entityType") not in ("DRIVER", "RDS") or item.get("layer") not in LAYERS:
+            errors.append("entity reference requires valid type and Layer")
+    for item in bundle["relationships"]:
+        if any(not isinstance(item.get(k), str) or item[k] not in entity_references for k in ("sourceId", "targetId")):
+            errors.append("relationship reference has dangling entity endpoint")
+        if not isinstance(item.get("governed"), bool) or not isinstance(item.get("family"), str):
+            errors.append("relationship reference requires family and fictional governed flag")
     if errors:
         return sorted(errors)
     entities = {r["id"]: r for r in bundle["entities"]}

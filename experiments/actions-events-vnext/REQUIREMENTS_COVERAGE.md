@@ -43,7 +43,7 @@ changes, readiness of type/evidence dependencies, and model inferences that use
 experimental source inputs without being mislabeled observations. See the actual
 test results for pass/fail status; these findings are not hidden by schema text.
 
-Final local acceptance: 49 prototype tests and 96 existing Python regressions
+Final local acceptance: 51 prototype tests and 96 existing Python regressions
 passed, as did 21 scenario-service tests (including 811 entities), schema/meta
 validation, 19 JavaScript parses, Python compilation, local links and deterministic
 regeneration. All 45 regenerated scientific files and 234 original protected
@@ -51,6 +51,10 @@ files were unchanged. The saved synthetic dry run reports zero status changes.
 An independent recheck confirmed the semantic fixes; no governance approval is
 implied. Current production CI does not run the experimental suite; local results
 and any later CI results must be reported separately.
+
+Final reference-hardening review added two failure regressions: dangling causal
+reference endpoints and malformed/duplicate fictional reference objects fail
+closed. The final 41 semantic + 10 inventory tests all pass.
 
 ## Deliberate limits
 

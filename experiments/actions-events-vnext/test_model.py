@@ -128,6 +128,20 @@ class ModelTests(unittest.TestCase):
     def test_missing_bundle_fields_fail_cleanly(self):
         self.assertTrue(model.validate_bundle({}))
 
+    def test_dangling_reference_endpoints_fail_cleanly(self):
+        self.bundle["relationships"][0]["sourceId"] = "SYN-MISSING"
+        self.invalid("dangling entity endpoint")
+        self.assertEqual(model.dry_run(self.bundle, self.decisions())["scientificSimulationEligibleEffectIds"], [])
+
+    def test_malformed_and_duplicate_references_fail_cleanly(self):
+        self.bundle["entities"].append(copy.deepcopy(self.bundle["entities"][0]))
+        self.invalid("duplicate reference identity")
+        self.bundle["entities"].append(None)
+        self.invalid("every record/reference must be an object")
+        self.bundle["entities"].pop()
+        self.bundle["entities"][0]["id"] = []
+        self.invalid("requires a string identity")
+
     def test_supported_null_requires_null_source(self):
         self.bundle["effects"][0]["knowledgeStatus"] = "SUPPORTED_NULL"
         self.bundle["effects"][0]["change"] = "NO_DETECTED_CHANGE"

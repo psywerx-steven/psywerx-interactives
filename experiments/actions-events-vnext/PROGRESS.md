@@ -48,3 +48,16 @@
 - GitHub API recheck on 2026-09-06: main remains `2636dd9a8b7bad1da3d7dfa21db5fe877f4de4e1`; remote governance workflow exactly matches inspected local definition; only governance CI and main-sourced dynamic Pages workflows are configured.
 - Pages remains legacy build from main `/`, status built. Hook response is exactly `[]` (zero hooks). A PowerShell wrapper initially counted the empty JSON array as one container; direct response verification resolved that display artifact.
 - This feature branch does not change the Pages source. Feature push has no workflow trigger; draft PR runs validation only, with no publishing step/downstream call. Safe to push this unmerged proposal and open one draft PR. No settings or workflows changed.
+
+## Milestone 7 complete: draft handoff and final hardening
+
+- Initial package commit: `24bfc44c89ee2c114d7754885ae7ca74a48f62f1` on `proposal/actions-events-vnext`.
+- Draft PR [#15](https://github.com/psywerx-steven/psywerx-interactives/pull/15) opened against main; intentionally unmerged. Only the dedicated experimental directory is changed.
+- Initial-head Linux governance/service and Windows determinism CI both passed in [run 34014639550](https://github.com/psywerx-steven/psywerx-interactives/actions/runs/34014639550). These are existing baseline regressions, not experimental-suite CI coverage.
+- Final maintainer review added fail-closed handling for dangling relationship-reference endpoints and malformed/duplicate synthetic reference objects. Two regression tests added; final local run passed all **51 prototype tests**, **96 existing Python tests**, **21 scenario-service tests**, schema/meta checks, links, compilation/parsing and deterministic regeneration. All 234 protected files and 45 regenerated data files remain unchanged.
+- Saved reports retain their point-in-time baseline commit. The inventory can be rerun with any canonical Family ID; it performs no research. Raw-byte integrity snapshots describe this checkout; another platform may report line-ending differences and must not silently replace the frozen snapshot.
+- Git's commit-time automatic maintenance reported permission warnings for old PR9 worktree metadata. Commit/push succeeded; no worktree metadata, permission, Git setting or external directory was manually changed.
+- Pages latest build still targets the original main baseline (created 2026-09-06T02:00:46Z), not this proposal. No deployment, merge, scientific activation, second Family audit or population occurred.
+- Deliverables complete. Unresolved choices: AE01–AE12 all PENDING; source-access and prototype limitations recorded in the architecture/requirements documents.
+- Exact next executable step: human review of AE01–AE12, followed by a separately authorized bounded production-contract/compatibility implementation and synthetic integration pilot. Do not execute that next phase under this assignment.
+- Final repository handoff: this documentation/hardening commit follows the initial package commit; its exact SHA and final-head CI results are provided in the final response/PR checks to avoid a self-referential commit hash.
