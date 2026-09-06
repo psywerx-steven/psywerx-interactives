@@ -1,0 +1,261 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://psywerx.org/schemas/actions-events/v1/common-v1.schema.json",
+  "title": "PSYWERX Actions & Events common V1",
+  "$defs": {
+    "text": {
+      "type": "string",
+      "minLength": 1
+    },
+    "nullableText": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "ids": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "layers": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "BIO",
+          "PSY",
+          "SOC",
+          "CUL",
+          "ENV",
+          "INS",
+          "INF",
+          "TEC"
+        ]
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "population",
+        "context",
+        "boundaryConditions",
+        "timing",
+        "measurement"
+      ],
+      "properties": {
+        "population": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "context": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "boundaryConditions": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "timing": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "measurement": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      }
+    },
+    "control": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "actorId",
+        "extent",
+        "capabilities",
+        "population",
+        "context",
+        "conditions",
+        "provenance"
+      ],
+      "properties": {
+        "actorId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "extent": {
+          "enum": [
+            "FULL",
+            "PARTIAL",
+            "INFLUENCE_ONLY",
+            "NONE",
+            "UNKNOWN"
+          ]
+        },
+        "capabilities": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "INITIATE",
+              "PREVENT",
+              "TIME",
+              "TUNE",
+              "BUFFER",
+              "RESPOND"
+            ]
+          }
+        },
+        "population": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "context": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "conditions": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "provenance": {
+          "$ref": "https://psywerx.org/schemas/actions-events/v1/common-v1.schema.json#/$defs/provenance"
+        }
+      }
+    },
+    "profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "timing",
+        "doseIntensity",
+        "duration",
+        "frequency",
+        "reach"
+      ],
+      "properties": {
+        "timing": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "doseIntensity": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "duration": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "frequency": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "reach": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "actorClass",
+        "method",
+        "recordedAt",
+        "originReferences",
+        "limitations"
+      ],
+      "properties": {
+        "actorClass": {
+          "enum": [
+            "AUTOMATED_PROCESS_OR_AI",
+            "RESEARCHER_REVIEWER",
+            "AUTHORIZED_HUMAN_GOVERNOR"
+          ]
+        },
+        "method": {
+          "type": "string",
+          "minLength": 1
+        },
+        "recordedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "originReferences": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "pattern": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "DISCRETE",
+          "REPEATED",
+          "CONTINUOUS",
+          "GRADUAL",
+          "CUMULATIVE",
+          "CYCLIC"
+        ]
+      }
+    }
+  }
+}

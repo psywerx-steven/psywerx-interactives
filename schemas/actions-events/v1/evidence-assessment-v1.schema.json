@@ -1,0 +1,251 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://psywerx.org/schemas/actions-events/v1/evidence-assessment-v1.schema.json",
+  "title": "PSYWERX Actions & Events evidence-assessment V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "id",
+    "revision",
+    "recordClass",
+    "provenance",
+    "governance",
+    "assertion",
+    "sourceFindings",
+    "synthesis",
+    "completeness"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "recordClass": {
+      "enum": [
+        "SCIENTIFIC_RECORD",
+        "SYNTHETIC / NON_PRODUCTION"
+      ]
+    },
+    "provenance": {
+      "$ref": "common-v1.schema.json#/$defs/provenance"
+    },
+    "governance": {
+      "$ref": "https://psywerx.org/schemas/relationship-intervention/v1/governance-v1.schema.json"
+    },
+    "assertion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "objectType",
+        "objectId"
+      ],
+      "properties": {
+        "objectType": {
+          "enum": [
+            "HAPPENING_TYPE",
+            "OCCURRENCE",
+            "EFFECT_ASSERTION"
+          ]
+        },
+        "objectId": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "sourceFindings": {
+      "type": "array",
+      "items": {
+        "$ref": "source-finding-v1.schema.json"
+      }
+    },
+    "synthesis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sourceFindingIds",
+        "disposition",
+        "evidenceStrength",
+        "confidence",
+        "rationale",
+        "confidenceRationale",
+        "conflicts",
+        "contraryEvidenceSearch",
+        "generalizationLimits",
+        "datasetOverlap"
+      ],
+      "properties": {
+        "sourceFindingIds": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "disposition": {
+          "enum": [
+            "SUPPORTS",
+            "MIXED",
+            "CONTRADICTED",
+            "INSUFFICIENT",
+            "NOT_ASSESSED"
+          ]
+        },
+        "evidenceStrength": {
+          "enum": [
+            "STRONG",
+            "MODERATE",
+            "MIXED",
+            "LIMITED",
+            "EMERGING",
+            "NOT_ASSESSED"
+          ]
+        },
+        "confidence": {
+          "enum": [
+            "HIGH",
+            "MODERATE",
+            "LOW",
+            "NOT_ASSESSED"
+          ]
+        },
+        "rationale": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "confidenceRationale": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "conflicts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "findingId",
+              "dispositionRationale"
+            ],
+            "properties": {
+              "findingId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "dispositionRationale": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "contraryEvidenceSearch": {
+          "enum": [
+            "ASSESSED",
+            "NOT_INVESTIGATED"
+          ]
+        },
+        "generalizationLimits": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "datasetOverlap": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      }
+    },
+    "completeness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target",
+        "direction",
+        "mechanism",
+        "population",
+        "context",
+        "timing",
+        "measurement",
+        "boundaries"
+      ],
+      "properties": {
+        "target": {
+          "enum": [
+            "SPECIFIED",
+            "MISSING",
+            "NOT_APPLICABLE"
+          ]
+        },
+        "direction": {
+          "enum": [
+            "SPECIFIED",
+            "MISSING",
+            "NOT_APPLICABLE"
+          ]
+        },
+        "mechanism": {
+          "enum": [
+            "SPECIFIED",
+            "MISSING",
+            "NOT_APPLICABLE"
+          ]
+        },
+        "population": {
+          "enum": [
+            "SPECIFIED",
+            "MISSING",
+            "NOT_APPLICABLE"
+          ]
+        },
+        "context": {
+          "enum": [
+            "SPECIFIED",
+            "MISSING",
+            "NOT_APPLICABLE"
+          ]
+        },
+        "timing": {
+          "enum": [
+            "SPECIFIED",
+            "MISSING",
+            "NOT_APPLICABLE"
+          ]
+        },
+        "measurement": {
+          "enum": [
+            "SPECIFIED",
+            "MISSING",
+            "NOT_APPLICABLE"
+          ]
+        },
+        "boundaries": {
+          "enum": [
+            "SPECIFIED",
+            "MISSING",
+            "NOT_APPLICABLE"
+          ]
+        }
+      }
+    }
+  }
+}

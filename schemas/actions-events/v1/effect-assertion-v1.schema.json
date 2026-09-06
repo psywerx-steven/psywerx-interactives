@@ -1,0 +1,929 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://psywerx.org/schemas/actions-events/v1/effect-assertion-v1.schema.json",
+  "title": "PSYWERX Actions & Events effect-assertion V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "id",
+    "revision",
+    "recordClass",
+    "provenance",
+    "governance",
+    "typeId",
+    "occurrenceId",
+    "targetKind",
+    "targetId",
+    "targetLayers",
+    "claimSemantics",
+    "productionMethod",
+    "property",
+    "change",
+    "otherSpecified",
+    "intendedChange",
+    "observedChange",
+    "knowledgeStatus",
+    "scope",
+    "exposureProfile",
+    "mechanism",
+    "mechanismStatus",
+    "mechanisticDriverIds",
+    "grounding",
+    "contribution",
+    "moderatorLinks",
+    "interaction",
+    "qualifiers",
+    "outcomes",
+    "evidenceAssessmentIds",
+    "uncertainty",
+    "inferenceProvenance"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "recordClass": {
+      "enum": [
+        "SCIENTIFIC_RECORD",
+        "SYNTHETIC / NON_PRODUCTION"
+      ]
+    },
+    "provenance": {
+      "$ref": "common-v1.schema.json#/$defs/provenance"
+    },
+    "governance": {
+      "$ref": "https://psywerx.org/schemas/relationship-intervention/v1/governance-v1.schema.json"
+    },
+    "typeId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "occurrenceId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "targetKind": {
+      "enum": [
+        "DRIVER",
+        "RELATIONSHIP"
+      ]
+    },
+    "targetId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "targetLayers": {
+      "$ref": "https://psywerx.org/schemas/actions-events/v1/common-v1.schema.json#/$defs/layers"
+    },
+    "claimSemantics": {
+      "enum": [
+        "CAUSAL",
+        "ASSOCIATION",
+        "MODERATION",
+        "TEMPORAL",
+        "DERIVATIONAL",
+        "COMPOSITIONAL",
+        "REALIZATION",
+        "SEMANTIC",
+        "PATHWAY"
+      ]
+    },
+    "productionMethod": {
+      "enum": [
+        "SOURCE_EXTRACTION",
+        "SYNTHESIS",
+        "MODEL_INFERENCE",
+        "HYPOTHESIS"
+      ]
+    },
+    "property": {
+      "enum": [
+        "LEVEL",
+        "VARIABILITY",
+        "RATE",
+        "THRESHOLD",
+        "TIMING",
+        "PERSISTENCE",
+        "RELATIONSHIP_STRENGTH",
+        "RELATIONSHIP_DIRECTION",
+        "ENABLEMENT",
+        "FUNCTIONAL_SHAPE",
+        "STRUCTURE"
+      ]
+    },
+    "change": {
+      "enum": [
+        "INCREASE",
+        "DECREASE",
+        "STATE_DEPENDENT",
+        "STABILIZE",
+        "DESTABILIZE",
+        "ACCELERATE",
+        "DECELERATE",
+        "RAISE",
+        "LOWER",
+        "EARLIER",
+        "LATER",
+        "SHORTER_LAG",
+        "LONGER_LAG",
+        "PROLONG",
+        "SHORTEN",
+        "ACCUMULATE",
+        "DECAY",
+        "ALTER_RECOVERY",
+        "ALTER_REVERSIBILITY",
+        "AMPLIFY",
+        "ATTENUATE",
+        "BUFFER",
+        "SUPPRESS",
+        "REVERSE",
+        "ENABLE",
+        "DISABLE",
+        "LINEAR",
+        "THRESHOLD",
+        "SATURATING",
+        "U_SHAPED",
+        "INVERTED_U",
+        "CYCLIC",
+        "NON_MONOTONIC",
+        "OTHER_SPECIFIED",
+        "RECONFIGURE",
+        "UNKNOWN",
+        "NO_DETECTED_CHANGE"
+      ]
+    },
+    "otherSpecified": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "intendedChange": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        null,
+        "INCREASE",
+        "DECREASE",
+        "STATE_DEPENDENT",
+        "STABILIZE",
+        "DESTABILIZE",
+        "ACCELERATE",
+        "DECELERATE",
+        "RAISE",
+        "LOWER",
+        "EARLIER",
+        "LATER",
+        "SHORTER_LAG",
+        "LONGER_LAG",
+        "PROLONG",
+        "SHORTEN",
+        "ACCUMULATE",
+        "DECAY",
+        "ALTER_RECOVERY",
+        "ALTER_REVERSIBILITY",
+        "AMPLIFY",
+        "ATTENUATE",
+        "BUFFER",
+        "SUPPRESS",
+        "REVERSE",
+        "ENABLE",
+        "DISABLE",
+        "LINEAR",
+        "THRESHOLD",
+        "SATURATING",
+        "U_SHAPED",
+        "INVERTED_U",
+        "CYCLIC",
+        "NON_MONOTONIC",
+        "OTHER_SPECIFIED",
+        "RECONFIGURE",
+        "UNKNOWN",
+        "NO_DETECTED_CHANGE"
+      ]
+    },
+    "observedChange": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        null,
+        "INCREASE",
+        "DECREASE",
+        "STATE_DEPENDENT",
+        "STABILIZE",
+        "DESTABILIZE",
+        "ACCELERATE",
+        "DECELERATE",
+        "RAISE",
+        "LOWER",
+        "EARLIER",
+        "LATER",
+        "SHORTER_LAG",
+        "LONGER_LAG",
+        "PROLONG",
+        "SHORTEN",
+        "ACCUMULATE",
+        "DECAY",
+        "ALTER_RECOVERY",
+        "ALTER_REVERSIBILITY",
+        "AMPLIFY",
+        "ATTENUATE",
+        "BUFFER",
+        "SUPPRESS",
+        "REVERSE",
+        "ENABLE",
+        "DISABLE",
+        "LINEAR",
+        "THRESHOLD",
+        "SATURATING",
+        "U_SHAPED",
+        "INVERTED_U",
+        "CYCLIC",
+        "NON_MONOTONIC",
+        "OTHER_SPECIFIED",
+        "RECONFIGURE",
+        "UNKNOWN",
+        "NO_DETECTED_CHANGE"
+      ]
+    },
+    "knowledgeStatus": {
+      "enum": [
+        "NOT_INVESTIGATED",
+        "NOT_APPLICABLE",
+        "INSUFFICIENT_EVIDENCE",
+        "SUPPORTED_EFFECT",
+        "SUPPORTED_NULL"
+      ]
+    },
+    "scope": {
+      "$ref": "https://psywerx.org/schemas/actions-events/v1/common-v1.schema.json#/$defs/scope"
+    },
+    "exposureProfile": {
+      "$ref": "https://psywerx.org/schemas/actions-events/v1/common-v1.schema.json#/$defs/profile"
+    },
+    "mechanism": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "mechanismStatus": {
+      "enum": [
+        "SPECIFIED",
+        "PARTIAL",
+        "UNKNOWN"
+      ]
+    },
+    "mechanisticDriverIds": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "grounding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "causalIdentificationRationale",
+        "derivationEntailed",
+        "representedDriverId",
+        "duplicatePropagationControl"
+      ],
+      "properties": {
+        "causalIdentificationRationale": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "derivationEntailed": {
+          "enum": [
+            "NO",
+            "YES",
+            "UNRESOLVED"
+          ]
+        },
+        "representedDriverId": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "duplicatePropagationControl": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      }
+    },
+    "contribution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "groupId",
+        "role",
+        "relatedAssertionIds",
+        "reconciliation"
+      ],
+      "properties": {
+        "groupId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "role": {
+          "enum": [
+            "PRIMARY",
+            "DESCRIPTIVE_ONLY",
+            "ALTERNATIVE"
+          ]
+        },
+        "relatedAssertionIds": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "reconciliation": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      }
+    },
+    "moderatorLinks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "driverId",
+          "driverEffectId",
+          "moderationRelationshipId",
+          "stateOrRange"
+        ],
+        "properties": {
+          "driverId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "driverEffectId": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1
+          },
+          "moderationRelationshipId": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1
+          },
+          "stateOrRange": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "interaction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "otherEffectIds",
+        "evidenceAssessmentIds"
+      ],
+      "properties": {
+        "mode": {
+          "enum": [
+            "NONE",
+            "SYNERGY",
+            "ANTAGONISM",
+            "JOINT_UNDETERMINED"
+          ]
+        },
+        "otherEffectIds": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "evidenceAssessmentIds": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "qualifiers": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reach",
+        "distribution",
+        "subgroups",
+        "unintendedConsequences",
+        "risks",
+        "prerequisites",
+        "evaluation"
+      ],
+      "properties": {
+        "reach": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "distribution": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "subgroups": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "population",
+              "description",
+              "evidenceAssessmentIds"
+            ],
+            "properties": {
+              "population": {
+                "type": "string",
+                "minLength": 1
+              },
+              "description": {
+                "type": "string",
+                "minLength": 1
+              },
+              "evidenceAssessmentIds": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          }
+        },
+        "unintendedConsequences": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "risks": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "prerequisites": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "evaluation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "valence",
+            "stakeholder",
+            "criterion"
+          ],
+          "properties": {
+            "valence": {
+              "enum": [
+                "BENEFICIAL",
+                "HARMFUL",
+                "MIXED",
+                "NULL",
+                "NOT_EVALUATED"
+              ]
+            },
+            "stakeholder": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "minLength": 1
+            },
+            "criterion": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "minLength": 1
+            }
+          }
+        }
+      }
+    },
+    "outcomes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "entityId",
+          "role",
+          "handling"
+        ],
+        "properties": {
+          "entityId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "role": {
+            "enum": [
+              "RECALCULATED_OUTCOME",
+              "MOE",
+              "MEASUREMENT",
+              "DERIVED_DOWNSTREAM_STATE"
+            ]
+          },
+          "handling": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "evidenceAssessmentIds": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "uncertainty": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "inferenceProvenance": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "required": [
+        "modelOrPathwayId",
+        "inputEvidenceIds",
+        "assumptions"
+      ],
+      "properties": {
+        "modelOrPathwayId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "inputEvidenceIds": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "assumptions": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "property": {
+            "const": "LEVEL"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "change": {
+            "enum": [
+              "INCREASE",
+              "DECREASE",
+              "STATE_DEPENDENT",
+              "UNKNOWN",
+              "NO_DETECTED_CHANGE"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "property": {
+            "const": "VARIABILITY"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "change": {
+            "enum": [
+              "INCREASE",
+              "DECREASE",
+              "STABILIZE",
+              "DESTABILIZE",
+              "UNKNOWN",
+              "NO_DETECTED_CHANGE"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "property": {
+            "const": "RATE"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "change": {
+            "enum": [
+              "ACCELERATE",
+              "DECELERATE",
+              "UNKNOWN",
+              "NO_DETECTED_CHANGE"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "property": {
+            "const": "THRESHOLD"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "change": {
+            "enum": [
+              "RAISE",
+              "LOWER",
+              "UNKNOWN",
+              "NO_DETECTED_CHANGE"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "property": {
+            "const": "TIMING"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "change": {
+            "enum": [
+              "EARLIER",
+              "LATER",
+              "SHORTER_LAG",
+              "LONGER_LAG",
+              "UNKNOWN",
+              "NO_DETECTED_CHANGE"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "property": {
+            "const": "PERSISTENCE"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "change": {
+            "enum": [
+              "PROLONG",
+              "SHORTEN",
+              "ACCUMULATE",
+              "DECAY",
+              "ALTER_RECOVERY",
+              "ALTER_REVERSIBILITY",
+              "UNKNOWN",
+              "NO_DETECTED_CHANGE"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "property": {
+            "const": "RELATIONSHIP_STRENGTH"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "change": {
+            "enum": [
+              "AMPLIFY",
+              "ATTENUATE",
+              "BUFFER",
+              "SUPPRESS",
+              "UNKNOWN",
+              "NO_DETECTED_CHANGE"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "property": {
+            "const": "RELATIONSHIP_DIRECTION"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "change": {
+            "enum": [
+              "REVERSE",
+              "STATE_DEPENDENT",
+              "UNKNOWN",
+              "NO_DETECTED_CHANGE"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "property": {
+            "const": "ENABLEMENT"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "change": {
+            "enum": [
+              "ENABLE",
+              "DISABLE",
+              "UNKNOWN",
+              "NO_DETECTED_CHANGE"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "property": {
+            "const": "FUNCTIONAL_SHAPE"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "change": {
+            "enum": [
+              "LINEAR",
+              "THRESHOLD",
+              "SATURATING",
+              "U_SHAPED",
+              "INVERTED_U",
+              "CYCLIC",
+              "NON_MONOTONIC",
+              "OTHER_SPECIFIED",
+              "UNKNOWN",
+              "NO_DETECTED_CHANGE"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "property": {
+            "const": "STRUCTURE"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "change": {
+            "enum": [
+              "RECONFIGURE",
+              "INCREASE",
+              "DECREASE",
+              "ENABLE",
+              "DISABLE",
+              "UNKNOWN",
+              "NO_DETECTED_CHANGE"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "change": {
+            "const": "OTHER_SPECIFIED"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "otherSpecified": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "claimSemantics": {
+            "const": "MODERATION"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "targetKind": {
+            "const": "RELATIONSHIP"
+          }
+        }
+      }
+    }
+  ]
+}

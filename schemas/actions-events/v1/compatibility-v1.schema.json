@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://psywerx.org/schemas/actions-events/v1/compatibility-v1.schema.json",
+  "title": "PSYWERX Actions & Events compatibility V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "id",
+    "revision",
+    "viewType",
+    "sourceObjectType",
+    "identitySemantics",
+    "additionalScientificPropositions",
+    "sourceRecordHash",
+    "sourceRecord",
+    "normalized",
+    "incompleteFields",
+    "governance"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "viewType": {
+      "enum": [
+        "HAPPENING_TYPE",
+        "EFFECT_ASSERTION",
+        "EVIDENCE_ASSESSMENT"
+      ]
+    },
+    "sourceObjectType": {
+      "enum": [
+        "INTERVENTION",
+        "INTERVENTION_EFFECT",
+        "EVIDENCE_ASSESSMENT"
+      ]
+    },
+    "identitySemantics": {
+      "const": "SAME_IDENTITY"
+    },
+    "additionalScientificPropositions": {
+      "const": 0
+    },
+    "sourceRecordHash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "sourceRecord": {
+      "type": "object"
+    },
+    "normalized": {
+      "type": "object"
+    },
+    "incompleteFields": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "governance": {
+      "$ref": "https://psywerx.org/schemas/relationship-intervention/v1/governance-v1.schema.json"
+    }
+  }
+}

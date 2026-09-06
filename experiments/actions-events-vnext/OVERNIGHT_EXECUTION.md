@@ -59,3 +59,76 @@ local links, diff scope and Linux/Windows CI. Tests are never weakened to pass.
   a relaxation of scientific integrity.
 - Exact next step: commit/push governance milestone, inspect final-head Linux/
   Windows CI and complete PR diff, mark PR ready and merge using exact head gate.
+
+## Milestone 1 completed; implementation checkpoint
+
+- PR #15 merged after exact-head review and Linux/Windows CI run 34015912810
+  both succeeded. Governance commits: 903eae1aaaf56adf9e7871dbcdce2b15c26b116b
+  and 1baa2b1bb0d8a821c59a3129a41510e3814901a4. Merge:
+  f573074029642a0dfc1c91a401ae5f54dcf792a1. Local/remote main reconciled.
+- Branch implementation/actions-events-v1 created from that merged main.
+- Added eleven modular contracts, empty native/candidate envelopes, same-ID read
+  bridge, evidence/overlap/lifecycle/eligibility checks, safe generic Family runner,
+  synthetic eight-Layer fixtures, production documentation and five full prompts.
+- No old scientific records, schemas, consumers, permissions or deployment logic
+  changed. CI additions are validation steps only.
+- Local new tests: 60 Actions & Events and 13 Family runner tests pass; Windows
+  runner symlink test skips when privilege is unavailable. Linux CI will exercise it.
+- Native AE records = 0. Compatibility = 25 same-identity views, zero new science.
+  Recorded baseline remains 770/41/811 entities and 456/435 active relationships.
+- Current milestone: 2/3 infrastructure checkpoint, before complete isolated
+  regressions and maintainer review. No known governance blocker.
+- Exact restart: run scripts/validate_actions_events_v1.py against committed head,
+  address in-scope defects; inspect full diff; push/open implementation PR; await
+  Linux/Windows gates before authorized merge. Then merged-state readiness package.
+
+## Milestone 2 implementation saved and regression result
+
+- Implementation checkpoint e1747d30f6820db3c9c0304ab3bee2a8199ae5a6 saved.
+- Complete isolated run at that commit passed: 60 AE + 13 runner (one Windows
+  symlink skip) + 96 existing Python + 21 scenario tests; all schema/reference,
+  Python/19 JavaScript parse, links and deterministic regeneration checks passed.
+- Maintainer second-pass review added three tests (63 AE total), observed event
+  time/system qualification and shared-dataset synthesis notes. These new tests
+  pass locally. Full final-head validation will be rerun before merge.
+- No scientific data changed. reports/actions-events-v1/IMPLEMENTATION_REVIEW.md
+  maps all 24 milestones to deliverables and gates; post-merge items remain future.
+- Exact next step: commit reviewed implementation, run final-head isolated checks,
+  then push implementation PR and require both Linux/Windows jobs green.
+
+## Final implementation local gate
+
+- a9202eb final executable contracts passed complete isolated validation:
+  63 AE + 13 runner + 96 existing Python = 172 tests discovered (one local
+  Windows symlink privilege skip), 21 scenario tests including all 811 entities.
+- All eleven production meta-schemas, exact source/evidence references, D12,
+  compatibility, 45 scientific raw-byte files, deterministic regeneration,
+  Python compilation, 19 JavaScript files and local Markdown links passed.
+- Review found no unrelated change or scientific scope expansion. New arrays
+  remain empty; all real statuses preserved. No B01-B05 or v0.3 item resolved.
+- Pre-existing Pages run 34015969504 automatically succeeded after PR #15 merge.
+  No manual deploy or deployment configuration/permission change was made.
+- Exact next step: push reviewed implementation, open bounded PR, inspect both
+  CI jobs and exact head, merge if green; then generate merged-state readiness.
+
+## Implementation PR #16 final-review hardening
+
+- PR #16 opened at 71fecc8258eafc03130bd391fb4797a55cf46968. No merge yet.
+- Final path review found a symlinked allowlisted root could resolve to data;
+  fixed without broadening output access. Added a second symlink regression
+  (Linux exercises; Windows without link privilege skips both safely).
+- Final suite size now 63 AE + 14 Family + 96 existing Python = 173, plus 21
+  scenario tests. Final-head local/CI gates must pass before merge.
+- Exact next step: commit/push this bounded fix, complete isolated validation,
+  inspect fresh PR CI, then exact-head merge if all gates pass.
+
+## Implementation final executable head passed
+
+- fd3d686074ed9cc789ada3ffb9090fd2df64ddf8 passed all 173 Python tests discovered
+  locally (171 passed, two Windows symlink privilege skips), 21 scenario tests,
+  isolated regeneration, schema/reference/provenance, parse, links and integrity.
+- PR #16 CI run 34017688723 passed Linux and Windows. Both symlink defenses
+  are exercised on Linux. Final review confirms scope and old-data preservation.
+- This commit saves test evidence only; no executable/scientific change.
+- Exact next step: require CI green for this documentation/report head, merge
+  PR #16 at exact SHA, update main and generate final readiness handoff.

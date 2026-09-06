@@ -1,0 +1,273 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://psywerx.org/schemas/actions-events/v1/source-finding-v1.schema.json",
+  "title": "PSYWERX Actions & Events source-finding V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "sourceId",
+    "locator",
+    "accessDepth",
+    "population",
+    "context",
+    "basis",
+    "supportedSemantics",
+    "inputRole",
+    "design",
+    "exposure",
+    "comparator",
+    "measurement",
+    "timing",
+    "result",
+    "disposition",
+    "quantitativeEstimate",
+    "uncertainty",
+    "limitations",
+    "datasetIds",
+    "overlapNotes",
+    "nullInterpretation",
+    "provenance"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "sourceId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "locator": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "accessDepth": {
+      "enum": [
+        "FULL_TEXT",
+        "SELECTED_FULL_TEXT",
+        "ABSTRACT",
+        "DOCUMENTATION",
+        "METADATA",
+        "SYNTHETIC"
+      ]
+    },
+    "population": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "context": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "basis": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "EXPERIMENTAL",
+          "QUASI_EXPERIMENTAL",
+          "OBSERVATIONAL_LONGITUDINAL",
+          "OBSERVATIONAL_CROSS_SECTIONAL",
+          "QUALITATIVE",
+          "HISTORICAL_CASE",
+          "EVIDENCE_SYNTHESIS",
+          "THEORETICAL_MECHANISTIC",
+          "DEFINITIONAL_CALCULATIONAL",
+          "MODEL_SIMULATION",
+          "EXPERT_JUDGMENT",
+          "UNTESTED_HYPOTHESIS"
+        ]
+      }
+    },
+    "supportedSemantics": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "CAUSAL",
+          "ASSOCIATION",
+          "MODERATION",
+          "TEMPORAL",
+          "DERIVATIONAL",
+          "COMPOSITIONAL",
+          "REALIZATION",
+          "SEMANTIC",
+          "PATHWAY",
+          "OCCURRENCE"
+        ]
+      }
+    },
+    "inputRole": {
+      "enum": [
+        "DIRECT_FINDING",
+        "MODEL_INPUT"
+      ]
+    },
+    "design": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "exposure": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "comparator": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "measurement": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "timing": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "result": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "disposition": {
+      "enum": [
+        "SUPPORTS",
+        "NULL_FINDING",
+        "MIXED",
+        "CONTRADICTED",
+        "INSUFFICIENT",
+        "NOT_ASSESSED"
+      ]
+    },
+    "quantitativeEstimate": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "required": [
+        "estimate",
+        "unitOrScale",
+        "estimand",
+        "uncertaintyInterval",
+        "sourceLocator"
+      ],
+      "properties": {
+        "estimate": {
+          "type": "number"
+        },
+        "unitOrScale": {
+          "type": "string",
+          "minLength": 1
+        },
+        "estimand": {
+          "type": "string",
+          "minLength": 1
+        },
+        "uncertaintyInterval": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "sourceLocator": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "uncertainty": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "datasetIds": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "overlapNotes": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "nullInterpretation": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "required": [
+        "contrast",
+        "precisionAssessment",
+        "interpretation",
+        "rationale"
+      ],
+      "properties": {
+        "contrast": {
+          "type": "string",
+          "minLength": 1
+        },
+        "precisionAssessment": {
+          "type": "string",
+          "minLength": 1
+        },
+        "interpretation": {
+          "enum": [
+            "NO_DETECTED_DIFFERENCE",
+            "BOUNDED_NULL_SUPPORTED"
+          ]
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "provenance": {
+      "$ref": "https://psywerx.org/schemas/actions-events/v1/common-v1.schema.json#/$defs/provenance"
+    }
+  }
+}

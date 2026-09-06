@@ -1,0 +1,177 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://psywerx.org/schemas/actions-events/v1/occurrence-v1.schema.json",
+  "title": "PSYWERX Actions & Events occurrence V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "id",
+    "revision",
+    "recordClass",
+    "provenance",
+    "governance",
+    "typeId",
+    "episodeKey",
+    "epistemicStatus",
+    "originLayers",
+    "actorsOrSourceSystems",
+    "populationOrSystem",
+    "placeOrSystem",
+    "timeWindow",
+    "scope",
+    "boundary",
+    "intentionality",
+    "controlProfiles",
+    "pattern",
+    "exposureProfile",
+    "evidenceAssessmentIds"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "recordClass": {
+      "enum": [
+        "SCIENTIFIC_RECORD",
+        "SYNTHETIC / NON_PRODUCTION"
+      ]
+    },
+    "provenance": {
+      "$ref": "common-v1.schema.json#/$defs/provenance"
+    },
+    "governance": {
+      "$ref": "https://psywerx.org/schemas/relationship-intervention/v1/governance-v1.schema.json"
+    },
+    "typeId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "episodeKey": {
+      "type": "string",
+      "minLength": 1
+    },
+    "epistemicStatus": {
+      "enum": [
+        "OBSERVED",
+        "PLANNED",
+        "HYPOTHETICAL"
+      ]
+    },
+    "originLayers": {
+      "$ref": "https://psywerx.org/schemas/actions-events/v1/common-v1.schema.json#/$defs/layers"
+    },
+    "actorsOrSourceSystems": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "populationOrSystem": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "placeOrSystem": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "timeWindow": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "scope": {
+      "$ref": "https://psywerx.org/schemas/actions-events/v1/common-v1.schema.json#/$defs/scope"
+    },
+    "boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "system",
+        "position",
+        "causalExogeneity"
+      ],
+      "properties": {
+        "system": {
+          "type": "string",
+          "minLength": 1
+        },
+        "position": {
+          "enum": [
+            "INTERNAL",
+            "EXTERNAL",
+            "MIXED",
+            "UNKNOWN"
+          ]
+        },
+        "causalExogeneity": {
+          "const": "NOT_INFERRED_FROM_EXTERNALITY"
+        }
+      }
+    },
+    "intentionality": {
+      "enum": [
+        "DELIBERATE",
+        "UNINTENDED",
+        "NON_AGENTIC",
+        "UNKNOWN"
+      ]
+    },
+    "controlProfiles": {
+      "type": "array",
+      "items": {
+        "$ref": "https://psywerx.org/schemas/actions-events/v1/common-v1.schema.json#/$defs/control"
+      }
+    },
+    "pattern": {
+      "$ref": "https://psywerx.org/schemas/actions-events/v1/common-v1.schema.json#/$defs/pattern"
+    },
+    "exposureProfile": {
+      "$ref": "https://psywerx.org/schemas/actions-events/v1/common-v1.schema.json#/$defs/profile"
+    },
+    "evidenceAssessmentIds": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "epistemicStatus": {
+            "const": "OBSERVED"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "evidenceAssessmentIds": {
+            "minItems": 1
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://psywerx.org/schemas/actions-events/v1/catalog-v1.schema.json",
+  "title": "PSYWERX Actions & Events catalog V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "happeningTypes",
+    "occurrences",
+    "effectAssertions",
+    "evidenceAssessments",
+    "authorizations"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "happeningTypes": {
+      "type": "array",
+      "items": {
+        "$ref": "happening-type-v1.schema.json"
+      }
+    },
+    "occurrences": {
+      "type": "array",
+      "items": {
+        "$ref": "occurrence-v1.schema.json"
+      }
+    },
+    "effectAssertions": {
+      "type": "array",
+      "items": {
+        "$ref": "effect-assertion-v1.schema.json"
+      }
+    },
+    "evidenceAssessments": {
+      "type": "array",
+      "items": {
+        "$ref": "evidence-assessment-v1.schema.json"
+      }
+    },
+    "authorizations": {
+      "type": "array",
+      "items": {
+        "$ref": "authorization-v1.schema.json"
+      }
+    }
+  }
+}
