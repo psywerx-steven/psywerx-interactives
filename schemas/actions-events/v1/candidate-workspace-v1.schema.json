@@ -1,0 +1,561 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://psywerx.org/schemas/actions-events/v1/candidate-workspace-v1.schema.json",
+  "title": "PSYWERX Actions & Events candidate-workspace V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "workspaceClass",
+    "activationStatus",
+    "productionEligible",
+    "familyId",
+    "baselineCommit",
+    "passA",
+    "passB",
+    "readiness",
+    "noFindings",
+    "handoffs"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "workspaceClass": {
+      "const": "NON_GOVERNED_RESEARCH"
+    },
+    "activationStatus": {
+      "const": "NOT_ELIGIBLE"
+    },
+    "productionEligible": {
+      "const": false
+    },
+    "familyId": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "baselineCommit": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "passA": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "existingDispositions",
+        "gapQuestions",
+        "sourceQueue",
+        "relationshipCandidates",
+        "evidence",
+        "ownership",
+        "unresolved"
+      ],
+      "properties": {
+        "existingDispositions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "questionOrDisposition",
+              "ownerFamilyId",
+              "consultedFamilyIds",
+              "recordIds",
+              "rationale",
+              "status"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "questionOrDisposition": {
+                "type": "string",
+                "minLength": 1
+              },
+              "ownerFamilyId": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "minLength": 1
+              },
+              "consultedFamilyIds": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "recordIds": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "rationale": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "minLength": 1
+              },
+              "status": {
+                "enum": [
+                  "UNASSESSED",
+                  "RESEARCH_NEEDED",
+                  "REVIEW_READY",
+                  "BLOCKED_NEEDS_GOVERNANCE_INPUT",
+                  "REJECTED_HYPOTHESIS"
+                ]
+              }
+            }
+          }
+        },
+        "gapQuestions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "questionOrDisposition",
+              "ownerFamilyId",
+              "consultedFamilyIds",
+              "recordIds",
+              "rationale",
+              "status"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "questionOrDisposition": {
+                "type": "string",
+                "minLength": 1
+              },
+              "ownerFamilyId": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "minLength": 1
+              },
+              "consultedFamilyIds": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "recordIds": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "rationale": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "minLength": 1
+              },
+              "status": {
+                "enum": [
+                  "UNASSESSED",
+                  "RESEARCH_NEEDED",
+                  "REVIEW_READY",
+                  "BLOCKED_NEEDS_GOVERNANCE_INPUT",
+                  "REJECTED_HYPOTHESIS"
+                ]
+              }
+            }
+          }
+        },
+        "sourceQueue": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "questionOrDisposition",
+              "ownerFamilyId",
+              "consultedFamilyIds",
+              "recordIds",
+              "rationale",
+              "status"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "questionOrDisposition": {
+                "type": "string",
+                "minLength": 1
+              },
+              "ownerFamilyId": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "minLength": 1
+              },
+              "consultedFamilyIds": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "recordIds": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "rationale": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "minLength": 1
+              },
+              "status": {
+                "enum": [
+                  "UNASSESSED",
+                  "RESEARCH_NEEDED",
+                  "REVIEW_READY",
+                  "BLOCKED_NEEDS_GOVERNANCE_INPUT",
+                  "REJECTED_HYPOTHESIS"
+                ]
+              }
+            }
+          }
+        },
+        "relationshipCandidates": {
+          "type": "array",
+          "items": {
+            "$ref": "https://psywerx.org/schemas/relationship-intervention/v1/relationship-v1.schema.json"
+          }
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "https://psywerx.org/schemas/relationship-intervention/v1/evidence-assessment-v1.schema.json"
+          }
+        },
+        "ownership": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "questionOrDisposition",
+              "ownerFamilyId",
+              "consultedFamilyIds",
+              "recordIds",
+              "rationale",
+              "status"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "questionOrDisposition": {
+                "type": "string",
+                "minLength": 1
+              },
+              "ownerFamilyId": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "minLength": 1
+              },
+              "consultedFamilyIds": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "recordIds": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "rationale": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "minLength": 1
+              },
+              "status": {
+                "enum": [
+                  "UNASSESSED",
+                  "RESEARCH_NEEDED",
+                  "REVIEW_READY",
+                  "BLOCKED_NEEDS_GOVERNANCE_INPUT",
+                  "REJECTED_HYPOTHESIS"
+                ]
+              }
+            }
+          }
+        },
+        "unresolved": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "questionOrDisposition",
+              "ownerFamilyId",
+              "consultedFamilyIds",
+              "recordIds",
+              "rationale",
+              "status"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "questionOrDisposition": {
+                "type": "string",
+                "minLength": 1
+              },
+              "ownerFamilyId": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "minLength": 1
+              },
+              "consultedFamilyIds": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "recordIds": {
+                "type": "array",
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "rationale": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "minLength": 1
+              },
+              "status": {
+                "enum": [
+                  "UNASSESSED",
+                  "RESEARCH_NEEDED",
+                  "REVIEW_READY",
+                  "BLOCKED_NEEDS_GOVERNANCE_INPUT",
+                  "REJECTED_HYPOTHESIS"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "passB": {
+      "$ref": "catalog-v1.schema.json"
+    },
+    "readiness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "membershipDefinitions",
+        "incidentDispositions",
+        "rdsDerivations",
+        "relationshipScope",
+        "gapsAndDeferrals"
+      ],
+      "properties": {
+        "membershipDefinitions": {
+          "type": "boolean"
+        },
+        "incidentDispositions": {
+          "type": "boolean"
+        },
+        "rdsDerivations": {
+          "type": "boolean"
+        },
+        "relationshipScope": {
+          "type": "boolean"
+        },
+        "gapsAndDeferrals": {
+          "type": "boolean"
+        }
+      }
+    },
+    "noFindings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "questionOrDisposition",
+          "ownerFamilyId",
+          "consultedFamilyIds",
+          "recordIds",
+          "rationale",
+          "status"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "questionOrDisposition": {
+            "type": "string",
+            "minLength": 1
+          },
+          "ownerFamilyId": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1
+          },
+          "consultedFamilyIds": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "recordIds": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "rationale": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1
+          },
+          "status": {
+            "enum": [
+              "UNASSESSED",
+              "RESEARCH_NEEDED",
+              "REVIEW_READY",
+              "BLOCKED_NEEDS_GOVERNANCE_INPUT",
+              "REJECTED_HYPOTHESIS"
+            ]
+          }
+        }
+      }
+    },
+    "handoffs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "questionOrDisposition",
+          "ownerFamilyId",
+          "consultedFamilyIds",
+          "recordIds",
+          "rationale",
+          "status"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "questionOrDisposition": {
+            "type": "string",
+            "minLength": 1
+          },
+          "ownerFamilyId": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1
+          },
+          "consultedFamilyIds": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "recordIds": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "rationale": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1
+          },
+          "status": {
+            "enum": [
+              "UNASSESSED",
+              "RESEARCH_NEEDED",
+              "REVIEW_READY",
+              "BLOCKED_NEEDS_GOVERNANCE_INPUT",
+              "REJECTED_HYPOTHESIS"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

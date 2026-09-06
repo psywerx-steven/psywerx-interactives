@@ -59,3 +59,25 @@ local links, diff scope and Linux/Windows CI. Tests are never weakened to pass.
   a relaxation of scientific integrity.
 - Exact next step: commit/push governance milestone, inspect final-head Linux/
   Windows CI and complete PR diff, mark PR ready and merge using exact head gate.
+
+## Milestone 1 completed; implementation checkpoint
+
+- PR #15 merged after exact-head review and Linux/Windows CI run 34015912810
+  both succeeded. Governance commits: 903eae1aaaf56adf9e7871dbcdce2b15c26b116b
+  and 1baa2b1bb0d8a821c59a3129a41510e3814901a4. Merge:
+  f573074029642a0dfc1c91a401ae5f54dcf792a1. Local/remote main reconciled.
+- Branch implementation/actions-events-v1 created from that merged main.
+- Added eleven modular contracts, empty native/candidate envelopes, same-ID read
+  bridge, evidence/overlap/lifecycle/eligibility checks, safe generic Family runner,
+  synthetic eight-Layer fixtures, production documentation and five full prompts.
+- No old scientific records, schemas, consumers, permissions or deployment logic
+  changed. CI additions are validation steps only.
+- Local new tests: 60 Actions & Events and 13 Family runner tests pass; Windows
+  runner symlink test skips when privilege is unavailable. Linux CI will exercise it.
+- Native AE records = 0. Compatibility = 25 same-identity views, zero new science.
+  Recorded baseline remains 770/41/811 entities and 456/435 active relationships.
+- Current milestone: 2/3 infrastructure checkpoint, before complete isolated
+  regressions and maintainer review. No known governance blocker.
+- Exact restart: run scripts/validate_actions_events_v1.py against committed head,
+  address in-scope defects; inspect full diff; push/open implementation PR; await
+  Linux/Windows gates before authorized merge. Then merged-state readiness package.

@@ -1,0 +1,221 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://psywerx.org/schemas/actions-events/v1/happening-type-v1.schema.json",
+  "title": "PSYWERX Actions & Events happening-type V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "id",
+    "revision",
+    "recordClass",
+    "provenance",
+    "governance",
+    "name",
+    "aliases",
+    "identityKey",
+    "description",
+    "kindTags",
+    "domainTags",
+    "originLayers",
+    "interventionSubset",
+    "packageKind",
+    "components",
+    "componentEnumeration",
+    "actorOrSourceSystem",
+    "intentionality",
+    "controlProfiles",
+    "pattern",
+    "identityDefiningProfile",
+    "identitySourceIds"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "recordClass": {
+      "enum": [
+        "SCIENTIFIC_RECORD",
+        "SYNTHETIC / NON_PRODUCTION"
+      ]
+    },
+    "provenance": {
+      "$ref": "common-v1.schema.json#/$defs/provenance"
+    },
+    "governance": {
+      "$ref": "https://psywerx.org/schemas/relationship-intervention/v1/governance-v1.schema.json"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "aliases": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "identityKey": {
+      "type": "string",
+      "minLength": 1
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1
+    },
+    "kindTags": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "ACTION",
+          "EVENT",
+          "EXPOSURE",
+          "PROCESS"
+        ]
+      }
+    },
+    "domainTags": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "DELIBERATE_INTERVENTION",
+          "ROUTINE_UNINTENDED_ACTIVITY",
+          "EXTERNAL_SHOCK",
+          "ENVIRONMENTAL_EXPOSURE",
+          "INSTITUTIONAL_STRUCTURAL_CHANGE",
+          "TECHNOLOGICAL_CHANGE",
+          "SOCIAL_NETWORK_PROCESS",
+          "INFORMATIONAL_EXPOSURE",
+          "BIOLOGICAL_PHYSIOLOGICAL_PROCESS"
+        ]
+      }
+    },
+    "originLayers": {
+      "$ref": "https://psywerx.org/schemas/actions-events/v1/common-v1.schema.json#/$defs/layers"
+    },
+    "interventionSubset": {
+      "type": "boolean"
+    },
+    "packageKind": {
+      "enum": [
+        "ATOMIC",
+        "PACKAGE"
+      ]
+    },
+    "components": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "componentEnumeration": {
+      "enum": [
+        "NOT_APPLICABLE",
+        "NON_EXHAUSTIVE",
+        "EXHAUSTIVE_WITHIN_DECLARED_PROTOCOL"
+      ]
+    },
+    "actorOrSourceSystem": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "intentionality": {
+      "enum": [
+        "DELIBERATE",
+        "UNINTENDED",
+        "NON_AGENTIC",
+        "UNKNOWN"
+      ]
+    },
+    "controlProfiles": {
+      "type": "array",
+      "items": {
+        "$ref": "https://psywerx.org/schemas/actions-events/v1/common-v1.schema.json#/$defs/control"
+      }
+    },
+    "pattern": {
+      "$ref": "https://psywerx.org/schemas/actions-events/v1/common-v1.schema.json#/$defs/pattern"
+    },
+    "identityDefiningProfile": {
+      "$ref": "https://psywerx.org/schemas/actions-events/v1/common-v1.schema.json#/$defs/profile"
+    },
+    "identitySourceIds": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "interventionSubset": {
+            "const": true
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "kindTags": {
+            "contains": {
+              "const": "ACTION"
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "packageKind": {
+            "const": "PACKAGE"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "components": {
+            "minItems": 2
+          },
+          "componentEnumeration": {
+            "enum": [
+              "NON_EXHAUSTIVE",
+              "EXHAUSTIVE_WITHIN_DECLARED_PROTOCOL"
+            ]
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "components": {
+            "maxItems": 0
+          },
+          "componentEnumeration": {
+            "const": "NOT_APPLICABLE"
+          }
+        }
+      }
+    }
+  ]
+}

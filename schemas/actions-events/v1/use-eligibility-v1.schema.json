@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://psywerx.org/schemas/actions-events/v1/use-eligibility-v1.schema.json",
+  "title": "PSYWERX Actions & Events use-eligibility V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "objectId",
+    "revision",
+    "scientificUseEligibility",
+    "modelEligibility",
+    "practitionerActionEligibility",
+    "syntheticSimulation",
+    "statusChanges"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "objectId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "scientificUseEligibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "eligible",
+        "reasons"
+      ],
+      "properties": {
+        "eligible": {
+          "type": "boolean"
+        },
+        "reasons": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "modelEligibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "eligible",
+        "reasons"
+      ],
+      "properties": {
+        "eligible": {
+          "type": "boolean"
+        },
+        "reasons": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "practitionerActionEligibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "eligible",
+        "reasons"
+      ],
+      "properties": {
+        "eligible": {
+          "type": "boolean"
+        },
+        "reasons": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "syntheticSimulation": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "required": [
+        "scientificWouldQualify",
+        "actionWouldQualify"
+      ],
+      "properties": {
+        "scientificWouldQualify": {
+          "type": "boolean"
+        },
+        "actionWouldQualify": {
+          "type": "boolean"
+        }
+      }
+    },
+    "statusChanges": {
+      "const": 0
+    }
+  }
+}
