@@ -84,6 +84,25 @@ The original source's design/quality is not thereby classified. New regression
 assertions enforce both distinctions. All source dispositions and candidate
 scientific propositions stay unchanged. Next: final validation and CI; no merge.
 
+## Closeout
+
+Full isolated validation passed again on science/tooling head
+50717af9f83f50934addf952ad8aebe5d9a68ab8, including all 204 Python tests
+(two existing local Windows symlink skips), 21 scenario tests and deterministic
+regeneration. All 108 original protected files retain identical raw bytes.
+Linux governance/service and Windows determinism both passed in GitHub run
+34038356624. PR #18 is open, unmerged and conflict-free. Final documentation/report
+commit re-runs CI; its status is available on the PR rather than presumed here.
+
+All authorized pilot milestones are complete. Exact next step: human scientific
+review of INF_F03_GOVERNANCE_DECISION_PACKAGE.md and six revision proposals.
+Do not merge, govern, activate or canonically register sources under this pilot
+authorization. No third Family, model/ranking integration or deployment occurred.
+
+Commit history: 1fe4795 prepared pilot; 5846f9e portable validation;
+6dcdba7 validation report; 50717af source-method separation. Final closeout commit
+adds only this status and the refreshed validation report.
+
 AI may research/structure/validate and use permitted non-governed transitions.
 Every new record stays NOT_ELIGIBLE. No new GOVERNED/ACTIVE record is authorized.
 Research is a structured evidence audit, not a claimed exhaustive systematic review.
