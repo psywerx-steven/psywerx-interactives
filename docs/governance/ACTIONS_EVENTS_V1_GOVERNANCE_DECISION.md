@@ -1,8 +1,10 @@
 # Actions & Events V1 architecture decision
 
-Decision ID: `GOV-ACTIONS-EVENTS-V1-2026-09-06`  
-Effective date: 2026-09-06  
-Actor class: **authorized human governor**  
+Decision ID: `GOV-ACTIONS-EVENTS-V1-2026-09-06`
+
+Effective date: 2026-09-06
+
+Actor class: **authorized human governor**
 Authorization: the explicit human instruction authorizing AE01–AE12 and bounded
 end-to-end implementation, supplied for PR #15 at
 `3331273fcfd72121fe831904c282b87c372eaf55`. Scientific baseline:

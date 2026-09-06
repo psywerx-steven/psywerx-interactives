@@ -316,7 +316,7 @@ def emit(family_id, destination):
               "rdsSpecifications": [r for r in data["rdsSpecifications"] if r["id"] in ids]}
     write_json(directory, f"{family_id}_baseline.json", detail)
     write_json(directory, f"{family_id}_research_template.json", {
-        "label": "BLANK_NON_PRODUCTION_TEMPLATE", "architectureDecision": "PENDING", "familyId": family_id,
+        "label": "BLANK_NON_PRODUCTION_TEMPLATE", "architectureDecision": "GOV-ACTIONS-EVENTS-V1-2026-09-06", "familyId": family_id,
         "baselineCommit": data["summary"]["baselineCommit"], "activationStatus": "NOT_ELIGIBLE", "productionGraphEligible": False,
         "relationships": [], "happeningTypes": [], "occurrences": [], "effectAssertions": [], "evidenceAssessments": [],
         "searchLog": [], "noFindings": [], "unresolved": [], "ownership": [],
@@ -357,7 +357,7 @@ def main():
                    "prerequisitesCleared": True, "risksReviewed": True,
                    "applicabilityConfirmed": True, "feasibilityConfirmed": True,
                    "legalConstraintsCleared": True, "ethicalConstraintsCleared": True, "label": "SYNTHETIC / NON_PRODUCTION"}
-        result = {"label": "SYNTHETIC / NON_PRODUCTION", "architectureDecision": "PENDING",
+        result = {"label": "SYNTHETIC / NON_PRODUCTION", "architectureDecision": "GOV-ACTIONS-EVENTS-V1-2026-09-06",
                   "withoutHypotheticalApproval": model.dry_run(fixture),
                   "hypotheticalScientificReview": model.dry_run(fixture, decisions),
                   "hypotheticalActorUse": model.dry_run(fixture, decisions, context),
