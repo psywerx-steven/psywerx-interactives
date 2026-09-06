@@ -323,6 +323,43 @@ class ActionsEventsTests(unittest.TestCase):
         self.catalog["effectAssertions"][0]["qualifiers"]["subgroups"]=[{"population":"SYN subgroup","description":"SYN difference","evidenceAssessmentIds":["SYN-MISSING"]}]
         self.invalid("Subgroup difference")
 
+    def test_shared_dataset_note_required(self):
+        ev=self.catalog["evidenceAssessments"][0]
+        finding=copy.deepcopy(ev["sourceFindings"][0]);finding["id"]="SYN-FINDING-REUSED-DATA"
+        ev["sourceFindings"][0]["datasetIds"]=["SYN-DATASET"]
+        finding["datasetIds"]=["SYN-DATASET"]
+        ev["sourceFindings"].append(finding);ev["synthesis"]["sourceFindingIds"].append(finding["id"])
+        ev["synthesis"]["datasetOverlap"]=None
+        self.invalid("Shared datasets")
+        ev["synthesis"]["datasetOverlap"]="SYN same dataset, not independent replication"
+        ae.validate_catalog(self.catalog,self.context)
+
+    def test_observed_occurrence_has_own_evidence_not_effect_transfer(self):
+        occurrence=self.catalog["occurrences"][0]
+        ev=copy.deepcopy(self.catalog["evidenceAssessments"][0])
+        ev.update(id="SYN-OCCURRENCE-EVIDENCE",governance=syn.governance("SYN-OCCURRENCE-EVIDENCE"))
+        ev["assertion"]={"objectType":"OCCURRENCE","objectId":occurrence["id"]}
+        ev["sourceFindings"][0].update(id="SYN-OCCURRENCE-FINDING",supportedSemantics=["OCCURRENCE"])
+        ev["synthesis"]["sourceFindingIds"]=["SYN-OCCURRENCE-FINDING"]
+        self.catalog["evidenceAssessments"].append(ev)
+        occurrence.update(epistemicStatus="OBSERVED",evidenceAssessmentIds=[ev["id"]])
+        ae.validate_catalog(self.catalog,self.context)
+        occurrence["timeWindow"]=None
+        self.invalid("Observed occurrence needs time")
+
+    def test_each_copy_ready_prompt_is_complete(self):
+        import re
+        text=(ae.ROOT/"docs/governance/ACTIONS_EVENTS_RESEARCH_PROMPTS_V1.md").read_text(encoding="utf-8")
+        blocks=re.findall(r"```text\n([\s\S]*?)```",text)
+        self.assertEqual(len(blocks),5)
+        required=list(ae.VOCAB["propertyChanges"])+["Biological","Psychological","Social","Cultural","Physical/Environmental",
+            "Institutional/Structural","Informational","Technological","routine/unintended","external events/shocks",
+            "environmental exposures","institutional/structural","technological change","social/network",
+            "informational exposures","biological/physiological","confidence","clarity","provenance","governance",
+            "mixed","null","contrary","NO FINDINGS","UNRESOLVED"]
+        for index,block in enumerate(blocks,1):
+            for term in required:self.assertIn(term.casefold(),block.casefold(),(index,term))
+
 
 class CompatibilityTests(unittest.TestCase):
     @classmethod

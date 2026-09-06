@@ -81,3 +81,17 @@ local links, diff scope and Linux/Windows CI. Tests are never weakened to pass.
 - Exact restart: run scripts/validate_actions_events_v1.py against committed head,
   address in-scope defects; inspect full diff; push/open implementation PR; await
   Linux/Windows gates before authorized merge. Then merged-state readiness package.
+
+## Milestone 2 implementation saved and regression result
+
+- Implementation checkpoint e1747d30f6820db3c9c0304ab3bee2a8199ae5a6 saved.
+- Complete isolated run at that commit passed: 60 AE + 13 runner (one Windows
+  symlink skip) + 96 existing Python + 21 scenario tests; all schema/reference,
+  Python/19 JavaScript parse, links and deterministic regeneration checks passed.
+- Maintainer second-pass review added three tests (63 AE total), observed event
+  time/system qualification and shared-dataset synthesis notes. These new tests
+  pass locally. Full final-head validation will be rerun before merge.
+- No scientific data changed. reports/actions-events-v1/IMPLEMENTATION_REVIEW.md
+  maps all 24 milestones to deliverables and gates; post-merge items remain future.
+- Exact next step: commit reviewed implementation, run final-head isolated checks,
+  then push implementation PR and require both Linux/Windows jobs green.

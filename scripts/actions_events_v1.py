@@ -213,6 +213,9 @@ def validate_catalog(catalog, context=None, candidate=False):
         for finding in row["sourceFindings"]:
             require(finding["sourceId"] in context.source_ids, "Finding source unresolved")
             require((finding["accessDepth"] == "SYNTHETIC") == context.synthetic, "Source access cannot imply synthetic is empirical")
+        dataset_ids = [d for f in row["sourceFindings"] for d in f["datasetIds"]]
+        if len(dataset_ids) != len(set(dataset_ids)):
+            require(synthesis["datasetOverlap"], "Shared datasets require an overlap synthesis note")
         if state_active(row):
             require(bool(row["sourceFindings"]) and synthesis["rationale"] and synthesis["confidenceRationale"], "Active evidence needs findings and rationale")
             require(synthesis["evidenceStrength"] != "NOT_ASSESSED" and synthesis["confidence"] != "NOT_ASSESSED"
@@ -234,6 +237,8 @@ def validate_catalog(catalog, context=None, candidate=False):
         if row["epistemicStatus"] == "OBSERVED":
             require(any("OCCURRENCE" in f["supportedSemantics"] and f["disposition"] in {"SUPPORTS", "MIXED"}
                         for e in ev for f in e["sourceFindings"]), "Observed occurrence requires occurrence-specific evidence")
+            require(row["timeWindow"] and row["placeOrSystem"] and row["populationOrSystem"],
+                    "Observed occurrence needs time, place/system and affected population/system")
     signatures, groups = set(), {}
     for row in effects.values():
         require(row["typeId"] in types, "Effect type unresolved")

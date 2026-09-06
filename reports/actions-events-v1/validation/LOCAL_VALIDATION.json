@@ -1,0 +1,346 @@
+{
+  "allPassed": true,
+  "baseline": "2636dd9a8b7bad1da3d7dfa21db5fe877f4de4e1",
+  "notes": [
+    "Existing regeneration tests ran only in an isolated clone.",
+    "This report measures local results; it makes no CI or scientific approval claim."
+  ],
+  "results": [
+    {
+      "command": [
+        "git",
+        "clone",
+        "--no-hardlinks",
+        "--quiet",
+        "<checkout>",
+        "<checkout>\\reports\\actions-events-v1\\_scratch\\validation-o4vue5et\\checkout"
+      ],
+      "exitCode": 0,
+      "name": "Isolated committed implementation clone",
+      "output": "",
+      "passed": true,
+      "seconds": 0.994
+    },
+    {
+      "command": [
+        "git",
+        "checkout",
+        "--quiet",
+        "e1747d30f6820db3c9c0304ab3bee2a8199ae5a6"
+      ],
+      "exitCode": 0,
+      "name": "Freeze tested commit",
+      "output": "",
+      "passed": true,
+      "seconds": 0.086
+    },
+    {
+      "command": [
+        "C:\\Users\\davic\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_actions_events_v1.py"
+      ],
+      "exitCode": 0,
+      "name": "test_actions_events_v1.py",
+      "output": "............................................................\r\n----------------------------------------------------------------------\r\nRan 60 tests in 8.456s\r\n\r\nOK\r\n",
+      "passed": true,
+      "seconds": 8.77
+    },
+    {
+      "command": [
+        "C:\\Users\\davic\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_audit_family.py"
+      ],
+      "exitCode": 0,
+      "name": "test_audit_family.py",
+      "output": "...........s.\r\n----------------------------------------------------------------------\r\nRan 13 tests in 13.021s\r\n\r\nOK (skipped=1)\r\n",
+      "passed": true,
+      "seconds": 13.265
+    },
+    {
+      "command": [
+        "C:\\Users\\davic\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_migration_v0_3.py"
+      ],
+      "exitCode": 0,
+      "name": "test_migration_v0_3.py",
+      "output": "...................\r\n----------------------------------------------------------------------\r\nRan 19 tests in 1.759s\r\n\r\nOK\r\n",
+      "passed": true,
+      "seconds": 1.954
+    },
+    {
+      "command": [
+        "C:\\Users\\davic\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_relationship_intervention_v1.py"
+      ],
+      "exitCode": 0,
+      "name": "test_relationship_intervention_v1.py",
+      "output": "......................................\r\n----------------------------------------------------------------------\r\nRan 38 tests in 1.509s\r\n\r\nOK\r\n",
+      "passed": true,
+      "seconds": 1.774
+    },
+    {
+      "command": [
+        "C:\\Users\\davic\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_bio_f01_pilot.py"
+      ],
+      "exitCode": 0,
+      "name": "test_bio_f01_pilot.py",
+      "output": ".............\r\n----------------------------------------------------------------------\r\nRan 13 tests in 1.163s\r\n\r\nOK\r\n",
+      "passed": true,
+      "seconds": 1.41
+    },
+    {
+      "command": [
+        "C:\\Users\\davic\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_bio_f01_governance_001.py"
+      ],
+      "exitCode": 0,
+      "name": "test_bio_f01_governance_001.py",
+      "output": "...............\r\n----------------------------------------------------------------------\r\nRan 15 tests in 1.508s\r\n\r\nOK\r\n",
+      "passed": true,
+      "seconds": 1.751
+    },
+    {
+      "command": [
+        "C:\\Users\\davic\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_bio_f01_activation_001.py"
+      ],
+      "exitCode": 0,
+      "name": "test_bio_f01_activation_001.py",
+      "output": "...........\r\n----------------------------------------------------------------------\r\nRan 11 tests in 0.769s\r\n\r\nOK\r\n",
+      "passed": true,
+      "seconds": 0.999
+    },
+    {
+      "command": [
+        "C:\\Users\\davic\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "scripts/actions_events_v1.py",
+        "--validate-repository"
+      ],
+      "exitCode": 0,
+      "name": "Production AE/RI schemas, references, lifecycle and bridge",
+      "output": "{\r\n  \"additionalScientificPropositions\": 0,\r\n  \"candidateWorkspace\": {\r\n    \"passBReady\": false,\r\n    \"productionEligible\": false\r\n  },\r\n  \"existingV1\": {\r\n    \"activeCausalRelationships\": 435,\r\n    \"activeRelationships\": 456,\r\n    \"entities\": 811,\r\n    \"legacyActiveCausalRelationships\": 431,\r\n    \"legacyActiveRelationships\": 450,\r\n    \"legacyMediatedPathRecords\": 39,\r\n    \"nativeActiveCausalRelationships\": 4,\r\n    \"nativeActiveEvidenceAssessments\": 11,\r\n    \"nativeActiveInterventionEffects\": 5,\r\n    \"nativeActiveInterventions\": 5,\r\n    \"nativeActiveRecords\": 27,\r\n    \"nativeActiveRelationships\": 6,\r\n    \"nativeCausalRelationships\": 4,\r\n    \"nativeEvidenceAssessments\": 11,\r\n    \"nativeInterventionEffects\": 5,\r\n    \"nativeInterventions\": 9,\r\n    \"nativeRelationships\": 6,\r\n    \"nativeSources\": 20,\r\n    \"v1IncompleteRelationships\": 450,\r\n    \"v1LegacyOnlyRelationships\": 450\r\n  },\r\n  \"nativeActionsEvents\": {\r\n    \"active\": 0,\r\n    \"records\": 0,\r\n    \"statusChanges\": 0,\r\n    \"synthetic\": false\r\n  },\r\n  \"sameIdentityViews\": 25\r\n}\r\n",
+      "passed": true,
+      "seconds": 2.224
+    },
+    {
+      "command": [
+        "C:\\Users\\davic\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "scripts/actions_events_synthetic.py"
+      ],
+      "exitCode": 0,
+      "name": "Eight-Layer synthetic structural pilot",
+      "output": "{\r\n  \"candidateValidation\": {\r\n    \"active\": 0,\r\n    \"records\": 46,\r\n    \"statusChanges\": 0,\r\n    \"synthetic\": true\r\n  },\r\n  \"effectProperties\": [\r\n    \"ENABLEMENT\",\r\n    \"FUNCTIONAL_SHAPE\",\r\n    \"LEVEL\",\r\n    \"PERSISTENCE\",\r\n    \"RATE\",\r\n    \"RELATIONSHIP_DIRECTION\",\r\n    \"RELATIONSHIP_STRENGTH\",\r\n    \"STRUCTURE\",\r\n    \"THRESHOLD\",\r\n    \"TIMING\",\r\n    \"VARIABILITY\"\r\n  ],\r\n  \"hypotheticalActiveValidation\": {\r\n    \"active\": 46,\r\n    \"records\": 46,\r\n    \"statusChanges\": 0,\r\n    \"synthetic\": true\r\n  },\r\n  \"label\": \"SYNTHETIC / NON_PRODUCTION\",\r\n  \"newRealScientificRecords\": 0,\r\n  \"originLayers\": [\r\n    \"BIO\",\r\n    \"CUL\",\r\n    \"ENV\",\r\n    \"INF\",\r\n    \"INS\",\r\n    \"PSY\",\r\n    \"SOC\",\r\n    \"TEC\"\r\n  ],\r\n  \"realStatusChanges\": 0,\r\n  \"unchanged\": true,\r\n  \"uses\": [\r\n    {\r\n      \"modelEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"No quantitative execution/model contract authorized; no weights inferred\"\r\n        ]\r\n      },\r\n      \"objectId\": \"SYN-EFFECT-001\",\r\n      \"practitionerActionEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"revision\": 1,\r\n      \"schemaVersion\": \"1.0.0\",\r\n      \"scientificUseEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"statusChanges\": 0,\r\n      \"syntheticSimulation\": {\r\n        \"actionWouldQualify\": true,\r\n        \"scientificWouldQualify\": true\r\n      }\r\n    },\r\n    {\r\n      \"modelEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"No quantitative execution/model contract authorized; no weights inferred\"\r\n        ]\r\n      },\r\n      \"objectId\": \"SYN-EFFECT-002\",\r\n      \"practitionerActionEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Not a deliberate Intervention/action subset\",\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"revision\": 1,\r\n      \"schemaVersion\": \"1.0.0\",\r\n      \"scientificUseEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"statusChanges\": 0,\r\n      \"syntheticSimulation\": {\r\n        \"actionWouldQualify\": false,\r\n        \"scientificWouldQualify\": true\r\n      }\r\n    },\r\n    {\r\n      \"modelEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"No quantitative execution/model contract authorized; no weights inferred\"\r\n        ]\r\n      },\r\n      \"objectId\": \"SYN-EFFECT-003\",\r\n      \"practitionerActionEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Not a deliberate Intervention/action subset\",\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"revision\": 1,\r\n      \"schemaVersion\": \"1.0.0\",\r\n      \"scientificUseEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"statusChanges\": 0,\r\n      \"syntheticSimulation\": {\r\n        \"actionWouldQualify\": false,\r\n        \"scientificWouldQualify\": true\r\n      }\r\n    },\r\n    {\r\n      \"modelEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"No quantitative execution/model contract authorized; no weights inferred\"\r\n        ]\r\n      },\r\n      \"objectId\": \"SYN-EFFECT-004\",\r\n      \"practitionerActionEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"revision\": 1,\r\n      \"schemaVersion\": \"1.0.0\",\r\n      \"scientificUseEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"statusChanges\": 0,\r\n      \"syntheticSimulation\": {\r\n        \"actionWouldQualify\": true,\r\n        \"scientificWouldQualify\": true\r\n      }\r\n    },\r\n    {\r\n      \"modelEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"No quantitative execution/model contract authorized; no weights inferred\"\r\n        ]\r\n      },\r\n      \"objectId\": \"SYN-EFFECT-005\",\r\n      \"practitionerActionEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Not a deliberate Intervention/action subset\",\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"revision\": 1,\r\n      \"schemaVersion\": \"1.0.0\",\r\n      \"scientificUseEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"statusChanges\": 0,\r\n      \"syntheticSimulation\": {\r\n        \"actionWouldQualify\": false,\r\n        \"scientificWouldQualify\": true\r\n      }\r\n    },\r\n    {\r\n      \"modelEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"No quantitative execution/model contract authorized; no weights inferred\"\r\n        ]\r\n      },\r\n      \"objectId\": \"SYN-EFFECT-006\",\r\n      \"practitionerActionEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Not a deliberate Intervention/action subset\",\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"revision\": 1,\r\n      \"schemaVersion\": \"1.0.0\",\r\n      \"scientificUseEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"statusChanges\": 0,\r\n      \"syntheticSimulation\": {\r\n        \"actionWouldQualify\": false,\r\n        \"scientificWouldQualify\": true\r\n      }\r\n    },\r\n    {\r\n      \"modelEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"No quantitative execution/model contract authorized; no weights inferred\"\r\n        ]\r\n      },\r\n      \"objectId\": \"SYN-EFFECT-007\",\r\n      \"practitionerActionEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Not a deliberate Intervention/action subset\",\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"revision\": 1,\r\n      \"schemaVersion\": \"1.0.0\",\r\n      \"scientificUseEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"statusChanges\": 0,\r\n      \"syntheticSimulation\": {\r\n        \"actionWouldQualify\": false,\r\n        \"scientificWouldQualify\": true\r\n      }\r\n    },\r\n    {\r\n      \"modelEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"No quantitative execution/model contract authorized; no weights inferred\"\r\n        ]\r\n      },\r\n      \"objectId\": \"SYN-EFFECT-008\",\r\n      \"practitionerActionEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"No independently eligible governed-active effect\",\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"revision\": 1,\r\n      \"schemaVersion\": \"1.0.0\",\r\n      \"scientificUseEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"statusChanges\": 0,\r\n      \"syntheticSimulation\": {\r\n        \"actionWouldQualify\": false,\r\n        \"scientificWouldQualify\": true\r\n      }\r\n    },\r\n    {\r\n      \"modelEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"No quantitative execution/model contract authorized; no weights inferred\"\r\n        ]\r\n      },\r\n      \"objectId\": \"SYN-EFFECT-009\",\r\n      \"practitionerActionEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"revision\": 1,\r\n      \"schemaVersion\": \"1.0.0\",\r\n      \"scientificUseEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"statusChanges\": 0,\r\n      \"syntheticSimulation\": {\r\n        \"actionWouldQualify\": true,\r\n        \"scientificWouldQualify\": true\r\n      }\r\n    },\r\n    {\r\n      \"modelEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"No quantitative execution/model contract authorized; no weights inferred\"\r\n        ]\r\n      },\r\n      \"objectId\": \"SYN-EFFECT-010\",\r\n      \"practitionerActionEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Not a deliberate Intervention/action subset\",\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"revision\": 1,\r\n      \"schemaVersion\": \"1.0.0\",\r\n      \"scientificUseEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"statusChanges\": 0,\r\n      \"syntheticSimulation\": {\r\n        \"actionWouldQualify\": false,\r\n        \"scientificWouldQualify\": true\r\n      }\r\n    },\r\n    {\r\n      \"modelEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"No quantitative execution/model contract authorized; no weights inferred\"\r\n        ]\r\n      },\r\n      \"objectId\": \"SYN-EFFECT-011\",\r\n      \"practitionerActionEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Not a deliberate Intervention/action subset\",\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"revision\": 1,\r\n      \"schemaVersion\": \"1.0.0\",\r\n      \"scientificUseEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"statusChanges\": 0,\r\n      \"syntheticSimulation\": {\r\n        \"actionWouldQualify\": false,\r\n        \"scientificWouldQualify\": true\r\n      }\r\n    },\r\n    {\r\n      \"modelEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"No quantitative execution/model contract authorized; no weights inferred\"\r\n        ]\r\n      },\r\n      \"objectId\": \"SYN-EFFECT-012\",\r\n      \"practitionerActionEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"revision\": 1,\r\n      \"schemaVersion\": \"1.0.0\",\r\n      \"scientificUseEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"statusChanges\": 0,\r\n      \"syntheticSimulation\": {\r\n        \"actionWouldQualify\": true,\r\n        \"scientificWouldQualify\": true\r\n      }\r\n    }\r\n  ]\r\n}\r\n",
+      "passed": true,
+      "seconds": 1.346
+    },
+    {
+      "command": [
+        "C:\\Users\\davic\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "scripts/build_migration_preview_v0_3.py"
+      ],
+      "exitCode": 0,
+      "name": "Deterministic migration regeneration",
+      "output": "Governed migration baseline v0.3 built and validated\r\n  Drivers: 770\r\n  Relational & Derived States: 41\r\n  Canonical entities: 811\r\n  Active relationships: 450\r\n  Deprecated relationships: 6\r\n  Proposed/blocked relationships: 5\r\n  Blocked governance items: 7\r\n  Errors: 0\r\n",
+      "passed": true,
+      "seconds": 0.558
+    },
+    {
+      "command": [
+        "C:\\Users\\davic\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "scripts/materialize_bio_f01_governance_001.py"
+      ],
+      "exitCode": 0,
+      "name": "Deterministic BIO materialization",
+      "output": "Materialized GOV-BIO-F01-001-2026-09-05 and GOV-BIO-F01-ACTIVATION-001-2026-09-05\r\n  Governed active Relationships: 6 (4 causal, 2 noncausal)\r\n  Governed active Interventions: 5; governed inactive Interventions: 4\r\n  Governed active InterventionEffects: 5\r\n  Governed active EvidenceAssessments: 11\r\n  New active records: 27\r\n  Registered native V1 sources: 20\r\n",
+      "passed": true,
+      "seconds": 0.148
+    },
+    {
+      "changed": [],
+      "filesCompared": 45,
+      "name": "Isolated scientific byte identity after regeneration",
+      "passed": true
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--exit-code"
+      ],
+      "exitCode": 0,
+      "name": "No tracked mutation from regeneration/tests",
+      "output": "",
+      "passed": true,
+      "seconds": 0.167
+    },
+    {
+      "command": [
+        "C:\\Program Files\\nodejs\\npm.cmd",
+        "install",
+        "--ignore-scripts",
+        "--no-audit",
+        "--no-fund",
+        "--no-package-lock"
+      ],
+      "exitCode": 0,
+      "name": "Isolated scenario dependencies",
+      "output": "\nadded 1 package in 8s\n",
+      "passed": true,
+      "seconds": 8.277
+    },
+    {
+      "command": [
+        "C:\\Program Files\\nodejs\\npm.cmd",
+        "test"
+      ],
+      "exitCode": 0,
+      "name": "Scenario contracts and exact 811-entity sweep",
+      "output": "\n> psywerx-scenario-service@1.0.0 test\n> node --test\n\n✔ catalog verifies the browser snapshot and returns bounded server context (5.5397ms)\n✔ catalog rejects a stale or tampered Driver snapshot (1.4808ms)\n✔ canonical Drivers without public plain language remain eligible (0.423ms)\n✔ catalog preserves governed RDS identity and derivation context (0.5809ms)\n✔ request validation accepts the exact frontend contract (5.0964ms)\n✔ request validation accepts governed RDS IDs, derivation metadata, and null peripheral metadata (1.2677ms)\n✔ request validation rejects extra keys and oversized scenario input (0.485ms)\n✔ response validation requires exactly three examples (0.8615ms)\n✔ clarification rules are conditional and require one question (1.1378ms)\n✔ response validation rejects private filesystem paths (0.3214ms)\n✔ every current canonical Entity resolves against the exact browser contract (108.0915ms)\n✔ test\\fixtures.js (95.0351ms)\n✔ health endpoint returns minimal status (46.3425ms)\n✔ operationalization endpoint returns the exact success object (18.828ms)\n✔ unlisted origins are rejected (7.5379ms)\n✔ request-size and in-memory rate limits fail clearly (38.3931ms)\n✔ Responses API request is stateless, schema-strict, and server controlled (5.4027ms)\n✔ RDS model context is labeled as an Entity and includes governed derivation metadata (0.7451ms)\n✔ malformed structured output is retried once (0.6581ms)\n✔ API failures are not retried (0.9756ms)\n✔ a second malformed output fails without a third attempt (0.9412ms)\nℹ tests 21\nℹ suites 0\nℹ pass 21\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 421.172\n",
+      "passed": true,
+      "seconds": 0.924
+    },
+    {
+      "command": [
+        "C:\\Users\\davic\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "-m",
+        "compileall",
+        "-q",
+        "scripts",
+        "tests"
+      ],
+      "exitCode": 0,
+      "name": "Python compilation",
+      "output": "",
+      "passed": true,
+      "seconds": 1.004
+    },
+    {
+      "failed": [],
+      "filesChecked": 19,
+      "name": "JavaScript parsing",
+      "passed": true
+    },
+    {
+      "broken": [],
+      "filesChecked": 5,
+      "name": "Markdown local-file links",
+      "passed": true
+    },
+    {
+      "comparison": {
+        "baselineCommit": "2636dd9a8b7bad1da3d7dfa21db5fe877f4de4e1",
+        "changed": [],
+        "comparison": "EXACT_GIT_CONTENT_EXCEPT_CHECKOUT_LINE_ENDINGS",
+        "filesCompared": 45,
+        "passed": true,
+        "rawCurrentSha256": {
+          "data/aliases.json": "e14f9ba67d51d4f0a18cc05ad029da08f7d206dda1c636fbbd866b16ed1b7fb9",
+          "data/candidates/relationship-intervention-v1/README.md": "69e9471e99f05dc52321eacaffe00807eea62e49855f744d361a17a1bb01a183",
+          "data/candidates/relationship-intervention-v1/workspace.json": "7e5293668f87557ee631cbfabf6d3d2e135489dbdf8e32a961bcb935c732c6f5",
+          "data/codebook.json": "4dd0ffe790b2b08180777d7ef0ca681eda1e7f72ce1d8e7fc8304a8aad131508",
+          "data/cognitive-security-discovery/discovery_manifest.json": "4715442fd5f738c8433934e13f5652a96c70650ab5d9e7660bccdafc37a319a0",
+          "data/cognitive-security-discovery/episode_discovery.json": "b524aa5fa61d7f04e4654e3e41e02fdebb4221c8f80368891a340e5db044fb2b",
+          "data/cognitive-security-discovery/episode_metadata.json": "39c2c19aafbb57023d7d45869e00e8b31f68c40f5ca413a72f88f7ce86d6e385",
+          "data/cognitive-security-discovery/presentation_copy.json": "b29475eff8c95645bbaaf46eb52d686392cad6be70cb6de79ec7be1af2f11044",
+          "data/cognitive-security-discovery/similarity_data.json": "3875c638153dca351a5ffa81c101368c5e1fc467655ab4718aef57835e340d39",
+          "data/cognitive-security-discovery/topic_episode_index.json": "da4de027cd1b3e520463c333dd2b018ac5d8779ddf08a65d8875db13cec8299f",
+          "data/cognitive-security/categories.json": "cf7e11324cbcc3a0ffe0735ecd9079e52c861e26ef7f929d169cd343d1d687f4",
+          "data/cognitive-security/category_findings.json": "bd6745a7ddc0d3d930b7307db0c9fcac8d67a16f50b864debbc4c7aca3db5ebb",
+          "data/cognitive-security/cluster_summaries.json": "a0a81cc70723a7620784f8418ea29e7b892ff652f9bfd3f9e6f8ca655dbee4d9",
+          "data/cognitive-security/clusters.json": "5cf1d20e502f61518f6459cb9c39379cf313c788448ab94195a2ab7fc7674ddc",
+          "data/cognitive-security/coverage.json": "e660e763907d3a8818748780d318c72fa38d9657af71953bf8a7aebf6269ae72",
+          "data/cognitive-security/episode_summaries.json": "884e7bce818eb9f9a35ee03c30029e374ce49d41dcb44e3fbc5ab91814ecd97e",
+          "data/cognitive-security/episodes.json": "0f51a91b1135a3129d00154d21c704611b3fb3b3c1a95aa4aba4e546d5e5e3c1",
+          "data/cognitive-security/families.json": "a6bdd79642a6d715c2844e0687d4f544781217caf7c9834827a7b7d2bb1dae94",
+          "data/cognitive-security/heatmap.json": "6a0fad510a44f18171b2a9fe29973f623bf3445ba62812c40613ec01cb0a1a19",
+          "data/cognitive-security/manifest.json": "973519697404183e92d0281e89919c2a3f23da46510bf4c310dd791643ba4432",
+          "data/cognitive-security/narratives.json": "6dab393bcc3cd886ab5798eb44ff3715e280f6a3e89f3f7d49918af9f704e36a",
+          "data/cognitive-security/provenance.json": "3517dcc0bebbb41ecf9b7454cf597e481aad68385df42bfbf53db5ec90722af9",
+          "data/cognitive-security/qa_report.json": "cf3651178e2f0f6637e955385d205928bae1d846e1b044b1e5fbcd8e37e32f44",
+          "data/cognitive-security/relationship_semantics.json": "50314caa3242d8dee0f055d6f00804aa4685efecca75d036cc6f40414c73a051",
+          "data/cognitive-security/relationships.json": "a6acc52749661fd958b2f5aabe802eb9e496b444320e8c68dea62616fc4a60a9",
+          "data/cognitive-security/scenarios.json": "7fb02ef23a36487db56b72989a2a5eea4d5af968bcf9d48461bae09ac3b80918",
+          "data/cognitive-security/tensions.json": "e21ba5c37bc5da1454e8184fdc7cd82b6d137b5671e31d86edc0116d97cc1abe",
+          "data/cognitive-security/themes.json": "63adc95316d114a70bd39635abe28f1d07975da0d910be5a49515f0d5daccf9b",
+          "data/crosswalks.json": "8583159cbdd9bc00cc912e367a53515511709ef7796119ecfa10d0145f1ad7c5",
+          "data/drivers.json": "017a79d1f33230e788fe82175d74714f28e7e0af18878fa718c971a0e101534b",
+          "data/entities.json": "74f88110911280bc6d508da56af824b63db4c11d741223b694aa7ac18734cf99",
+          "data/families.json": "8fc4b3f08de1b27850fb460d528c3d95a6d9ea858bb1e55ca687722af80d7f9d",
+          "data/migration-manifest.json": "7bbe720a9cea30cafc98b66e57b62ae5b40320d13ecab43bdf13828d773d159f",
+          "data/plain_language.json": "7d042a2dd3dd2994eec50b9cc97e9200265177194e40030223888bdcaebd8743",
+          "data/relational-derived-states.json": "126ee66cfed4833603376bec5e0eb4da39f37eec8605480c82ebada70641d333",
+          "data/relationship-intervention-v1/README.md": "a2c0dd2129bbc90a3dc2c1b18cdaeafbc319abdada6c962bbcf0d80a47a37fe4",
+          "data/relationship-intervention-v1/causal-pathways.json": "aeff0e0fc1f66b45b17881c11576321f879ec4428de672a847965e60cea38ab8",
+          "data/relationship-intervention-v1/evidence-assessments.json": "be2b59c4298a448b9a76666dc5785bece6f42631017c1b04866a14789e6f64b8",
+          "data/relationship-intervention-v1/intervention-effects.json": "e9a1ce432ca31383da36b7687cfc1e0282dc119bcf0588f3f776e3f0c422f8e9",
+          "data/relationship-intervention-v1/interventions.json": "f2e73ac1faa906169d7e3461bcbb0f25f4fcfe2a255a284dc2ef1b406f314ef3",
+          "data/relationship-intervention-v1/materialization-manifest.json": "799b7a199b3a8ec961731539404a899ad53d1b5053f351548d4bf92219712ff9",
+          "data/relationship-intervention-v1/relationships.json": "ba83c1f006998a2d2f956f24c9ac802dad4e2a37104b518a6f50930d9b3d523f",
+          "data/relationship-intervention-v1/source-register.json": "5255861d597255550a6c5919e4da06b89a052ecf6d01b630226e4fa2ad677563",
+          "data/relationships.json": "759f90446ff5f6e27d496e3e3603bb44045f7f0abf4770e4c012c5e4d974ba51",
+          "data/sources.json": "f1aae4135ac049e223ae65a66a24a6dfc2c28e911add59ce11df34e9c0af3615"
+        }
+      },
+      "name": "Protected original scientific data",
+      "passed": true,
+      "rawBeforeEqualsAfter": true
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exitCode": 0,
+      "name": "Git diff check",
+      "output": "",
+      "passed": true,
+      "seconds": 0.046
+    }
+  ],
+  "seconds": 52.209,
+  "testedCommit": "e1747d30f6820db3c9c0304ab3bee2a8199ae5a6"
+}
