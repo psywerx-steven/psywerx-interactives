@@ -129,7 +129,7 @@ def relationship(spec, entities):
         "limitations": [f["limitations"][0] for f in fs], "reviewProvenance": {"createdAt": STAMP,
             "createdByActorClass": "AUTOMATED_PROCESS_OR_AI", "reviewedAt": None, "reviewedBy": None,
             "sourceSchema": "RI_V1_WITH_AE_SOURCE_FINDING_CANDIDATE_SIDECAR"}, "governance": governance("EVA-" + identifier, spec["status"])}
-    sidecar = {"evidenceAssessmentId": ev["id"], "assertionId": identifier, "productionMethod": "SOURCE_SYNTHESIS",
+    sidecar = {"evidenceAssessmentId": ev["id"], "assertionId": identifier, "productionMethod": "SYNTHESIS",
         "sourceFindings": fs, "synthesis": syn, "governance": ev["governance"],
         "note": "Candidate-only normalization sidecar. RI evidence retained; AE assessment target enum is not extended."}
     return r, ev, sidecar
@@ -248,8 +248,8 @@ def build():
                 src = registered[sid]
                 fs.append({'id': 'FND-'+evid+'-'+sid, 'sourceId': sid, 'locator': src.get('href') or src.get('sourceUrl'),
                     'accessDepth': 'METADATA', 'population': None, 'context': 'Existing source-to-edge alignment audit',
-                    'basis': ['EVIDENCE_SYNTHESIS'], 'supportedSemantics': [], 'inputRole': 'DIRECT_FINDING',
-                    'design': 'Bibliographic/topic screening only; no direct-effect evidence asserted', 'exposure': None,
+                    'basis': ['UNTESTED_HYPOTHESIS'], 'supportedSemantics': [], 'inputRole': 'DIRECT_FINDING',
+                    'design': 'Exact-claim source applicability remains an untested hypothesis after metadata screening; original study design not inferred. This is not an empirical result or a source-wide quality rating.', 'exposure': None,
                     'comparator': None, 'measurement': None, 'timing': None, 'result': entry[4],
                     'disposition': 'INSUFFICIENT', 'quantitativeEstimate': None,
                     'uncertainty': ['Full source-to-proposition adequacy requires exact passages, not title matching'],

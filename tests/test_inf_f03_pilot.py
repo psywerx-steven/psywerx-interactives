@@ -118,6 +118,8 @@ class InfF03PilotTests(unittest.TestCase):
         evidence = self.sides + self.w['passB']['evidenceAssessments']
         seen = set()
         for e in evidence:
+            if 'productionMethod' in e:
+                self.assertIn(e['productionMethod'],{'SOURCE_EXTRACTION','SYNTHESIS','MODEL_INFERENCE','HYPOTHESIS'})
             fs = e['sourceFindings']
             self.assertEqual({f['id'] for f in fs},set(e['synthesis']['sourceFindingIds']))
             self.assertFalse(seen & {f['id'] for f in fs})
@@ -125,6 +127,10 @@ class InfF03PilotTests(unittest.TestCase):
             contrary = {f['id'] for f in fs if f['disposition'] in {'NULL_FINDING','MIXED','CONTRADICTED'}}
             self.assertEqual(contrary,{x['findingId'] for x in e['synthesis']['conflicts']})
             self.assertTrue(all(f['sourceId'] in self.c.source_ids for f in fs))
+            for f in fs:
+                if f['accessDepth']=='METADATA':
+                    self.assertEqual(f['basis'],['UNTESTED_HYPOTHESIS'])
+                    self.assertFalse(f['supportedSemantics'])
         self.assertEqual(len(seen),self.m['newCounts']['sourceFindings'])
 
     def test_no_invented_quantitative_data(self):

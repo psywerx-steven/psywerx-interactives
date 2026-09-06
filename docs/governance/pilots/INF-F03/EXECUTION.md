@@ -76,6 +76,14 @@ Remote workflow/Pages inspection confirmed an unmerged branch/PR does not reach
 the main-only Pages publishing source. Next: push this candidate-only branch,
 open PR with no merge, inspect Linux/Windows CI on its exact head, save closeout.
 
+PR #18 opened: https://github.com/psywerx-steven/psywerx-interactives/pull/18.
+Final vocabulary review normalized a sidecar production method to SYNTHESIS.
+Metadata-only source applicability is explicitly UNTESTED_HYPOTHESIS rather than
+an evidence-synthesis study design; no empirical support is inferred from titles.
+The original source's design/quality is not thereby classified. New regression
+assertions enforce both distinctions. All source dispositions and candidate
+scientific propositions stay unchanged. Next: final validation and CI; no merge.
+
 AI may research/structure/validate and use permitted non-governed transitions.
 Every new record stays NOT_ELIGIBLE. No new GOVERNED/ACTIVE record is authorized.
 Research is a structured evidence audit, not a claimed exhaustive systematic review.
