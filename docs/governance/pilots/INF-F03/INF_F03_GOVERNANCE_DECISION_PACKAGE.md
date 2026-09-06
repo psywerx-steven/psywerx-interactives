@@ -41,3 +41,12 @@ This package records the authorized decisions. It does not modify any existing g
 ## Activation and production boundary
 
 All twelve newly governed scientific records are `INACTIVE`. New `ACTIVE` records = 0. Existing active counts remain 456 Relationships total / 435 causal. No application, model, recommendation, ontology classification, canonical V3 proposition, SRC-429, or SRC-444 changed.
+
+
+## Later partial activation checkpoint
+
+The separate [partial activation decision](INF_F03_ACTIVATION_DECISION_001.md)
+subsequently activated exactly five records. All other governed records remain
+inactive, and all candidate/revision/research/blocked dispositions remain
+unchanged. The original governance decision above remains the authority for
+scientific meaning; the later decision supplies activation authority only.

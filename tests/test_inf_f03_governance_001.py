@@ -66,7 +66,8 @@ class InfF03Governance001Tests(unittest.TestCase):
         ):
             self.assertIn(identifier, package)
         self.assertEqual(self.manifest["governanceDecisionId"], "GOV-INF-F03-001-2026-09-06")
-        self.assertFalse(self.manifest["activationAuthorized"])
+        self.assertTrue(self.manifest["activationAuthorized"])
+        self.assertEqual(self.manifest["activationCheckpoint"]["decisionId"], "GOV-INF-F03-ACTIVATION-001-2026-09-06")
 
     def test_only_exact_approved_records_materialized(self):
         self.assertEqual(
@@ -91,8 +92,9 @@ class InfF03Governance001Tests(unittest.TestCase):
         text = " ".join([relationship["boundaryConditions"], evidence["evidenceRationale"], *evidence["limitations"]]).casefold()
         for required in ("numeric", "small", "null", "credibility", "calibration", "objective"):
             self.assertIn(required, text)
-        self.assertEqual(relationship["governance"]["activationStatus"], "INACTIVE")
-        self.assertEqual(relationship["compatibility"]["v1Executability"], "NOT_EXECUTABLE")
+        self.assertEqual(relationship["governance"]["activationStatus"], "ACTIVE")
+        self.assertEqual(relationship["compatibility"]["v1Executability"], "EXECUTABLE")
+        self.assertEqual(relationship["compatibility"]["blockedFields"], ["quantitativeExecutionNotAuthorized"])
 
     def test_unapproved_relationship_candidates_remain_non_governed(self):
         candidates = {row["id"]: row for row in self.workspace["passA"]["relationshipCandidates"]}
@@ -196,9 +198,14 @@ class InfF03Governance001Tests(unittest.TestCase):
             ae.schema_set().validate("source-finding", finding)
         assessments = [row for row in self.ri_evidence if row["id"] == "EVA-V1-INF-F03-REL-001"] + self.ae_catalog["evidenceAssessments"]
         self.assertEqual({row["id"] for row in assessments}, EVIDENCE_IDS)
-        self.assertTrue(all(row["governance"]["activationStatus"] == "INACTIVE" for row in assessments))
+        status = {row["id"]: row["governance"]["activationStatus"] for row in assessments}
+        self.assertEqual(status, {
+            "EVA-V1-INF-F03-REL-001": "ACTIVE",
+            "EVA-AE-V1-INF-F03-001": "INACTIVE",
+            "EVA-AE-V1-INF-F03-002": "ACTIVE",
+        })
 
-    def test_all_new_scientific_records_are_governed_inactive(self):
+    def test_all_new_scientific_records_are_governed_with_exact_partial_activation(self):
         records = (
             [row for row in self.ri_relationships if row["id"] in RELATIONSHIP_IDS]
             + [row for row in self.ri_evidence if row["id"] == "EVA-V1-INF-F03-REL-001"]
@@ -206,22 +213,35 @@ class InfF03Governance001Tests(unittest.TestCase):
         )
         self.assertEqual(len(records), 12)
         self.assertTrue(all(row["governance"]["lifecycleStatus"] == "GOVERNED" for row in records))
-        self.assertTrue(all(row["governance"]["activationStatus"] == "INACTIVE" for row in records))
-        self.assertTrue(all(row["governance"]["decisionRecord"] == DECISION for row in records))
+        active = {row["id"] for row in records if row["governance"]["activationStatus"] == "ACTIVE"}
+        self.assertEqual(active, {
+            "EVA-V1-INF-F03-REL-001", "REL-V1-INF-F03-001",
+            "EVA-AE-V1-INF-F03-002", "HT-V1-INF-F03-002", "EA-V1-INF-F03-002",
+        })
+        self.assertTrue(all(row["governance"]["activationStatus"] in {"ACTIVE", "INACTIVE"} for row in records))
+        self.assertTrue(all(
+            row["governance"]["decisionRecord"] == (
+                "docs/governance/pilots/INF-F03/INF_F03_ACTIVATION_DECISION_001.md"
+                if row["id"] in active else DECISION
+            ) for row in records
+        ))
         self.assertTrue(all(row["governance"]["transitionProvenance"][-1]["exactDecisionMaterialization"] for row in records))
         self.assertTrue(all(row["governance"]["transitionProvenance"][-1]["actorClass"] == "AUTOMATED_PROCESS_OR_AI" for row in records))
-        self.assertEqual(sum(ri.governed_active(row) for row in records), 0)
-        self.assertEqual(len(self.ae_catalog["authorizations"]), 1)
+        self.assertEqual(sum(ri.governed_active(row) for row in records), 5)
+        self.assertEqual(len(self.ae_catalog["authorizations"]), 2)
 
     def test_active_production_counts_and_application_boundary(self):
         counts = ri.validate_repository()
-        self.assertEqual((counts["entities"], counts["activeRelationships"], counts["activeCausalRelationships"]), (811, 456, 435))
+        self.assertEqual((counts["entities"], counts["activeRelationships"], counts["activeCausalRelationships"]), (811, 457, 436))
         self.assertEqual((len(load(ROOT / "data/drivers.json")), len(load(ROOT / "data/relational-derived-states.json"))), (770, 41))
-        self.assertEqual(ri.causal_traversal([row for row in self.ri_relationships if row["id"] in RELATIONSHIP_IDS]), [])
-        self.assertEqual(ae.validate_catalog(self.ae_catalog)["active"], 0)
+        self.assertEqual(
+            [row["id"] for row in ri.causal_traversal([row for row in self.ri_relationships if row["id"] in RELATIONSHIP_IDS])],
+            ["REL-V1-INF-F03-001"],
+        )
+        self.assertEqual(ae.validate_catalog(self.ae_catalog)["active"], 3)
         for effect in self.ae_catalog["effectAssertions"]:
             eligibility = ae.use_eligibility(effect["id"], self.ae_catalog)
-            self.assertFalse(eligibility["scientificUseEligibility"]["eligible"])
+            self.assertEqual(eligibility["scientificUseEligibility"]["eligible"], effect["id"] == "EA-V1-INF-F03-002")
             self.assertFalse(eligibility["practitionerActionEligibility"]["eligible"])
 
     def test_candidate_to_canonical_lineage_is_exact(self):
@@ -229,7 +249,11 @@ class InfF03Governance001Tests(unittest.TestCase):
         self.assertEqual(len(lineage), 9)
         self.assertEqual({row["canonicalId"] for row in lineage}, RELATIONSHIP_IDS | TYPE_IDS | EFFECT_IDS)
         self.assertEqual(self.manifest["governedInactiveCounts"]["totalScientificRecords"], 12)
-        self.assertEqual(self.manifest["newActiveRecords"], 0)
+        self.assertEqual(self.manifest["newActiveRecords"], 5)
+        self.assertEqual(set(self.manifest["activationCheckpoint"]["activeIds"]), {
+            "EVA-V1-INF-F03-REL-001", "REL-V1-INF-F03-001",
+            "EVA-AE-V1-INF-F03-002", "HT-V1-INF-F03-002", "EA-V1-INF-F03-002",
+        })
 
     def test_materialization_is_deterministic(self):
         paths = [

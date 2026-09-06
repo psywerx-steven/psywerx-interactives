@@ -197,7 +197,7 @@
     "RESEARCH_NEEDED": 32,
     "REVIEW_READY": 12
   },
-  "newActive": 0,
+  "newActive": 5,
   "newCounts": {
     "effects": 7,
     "evidenceAssessments": 20,
@@ -785,7 +785,30 @@
     "blockedRecords": 0
   },
   "documents": [
+    "INF_F03_ACTIVATION_AUDIT_001.md",
+    "INF_F03_ACTIVATION_DECISION_001.md",
     "INF_F03_GOVERNANCE_DECISION_001.md",
     "INF_F03_SOURCE_REGISTRATION_MANIFEST.json"
-  ]
+  ],
+  "activationCheckpoint": {
+    "decisionRecord": "INF_F03_ACTIVATION_DECISION_001.md",
+    "activationAudit": "INF_F03_ACTIVATION_AUDIT_001.md",
+    "preActivationHead": "8ecf60775a5ae35b31010c301490dfd3c439623c",
+    "activeIds": [
+      "EA-V1-INF-F03-002",
+      "EVA-AE-V1-INF-F03-002",
+      "EVA-V1-INF-F03-REL-001",
+      "HT-V1-INF-F03-002",
+      "REL-V1-INF-F03-001"
+    ],
+    "keptInactiveIds": [
+      "EA-V1-INF-F03-001",
+      "EVA-AE-V1-INF-F03-001",
+      "HT-V1-INF-F03-001",
+      "HT-V1-INF-F03-004",
+      "HT-V1-INF-F03-005",
+      "HT-V1-INF-F03-006",
+      "HT-V1-INF-F03-007"
+    ]
+  }
 }

@@ -62,3 +62,12 @@ Rejected pilot hypotheses are H01/H02/H03/H05/H06/H10/H11/H14/H15/H18/H19 for th
 ## Future review triggers
 
 Activation needs a separate authorized human decision after source/evidence reconciliation, graph and actionability simulation, and complete checkpoint validation. Any change to the scientific scope, polarity, feature dimensions, target, or identity requires new governance.
+
+
+## Later partial activation checkpoint
+
+The separate [partial activation decision](INF_F03_ACTIVATION_DECISION_001.md)
+subsequently activated exactly five records. All other governed records remain
+inactive, and all candidate/revision/research/blocked dispositions remain
+unchanged. The original governance decision above remains the authority for
+scientific meaning; the later decision supplies activation authority only.

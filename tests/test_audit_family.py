@@ -27,7 +27,7 @@ class FamilyRunnerTests(unittest.TestCase):
     def test_legacy_native_projection_deduplication(self):
         s=self.inventory["summary"]
         self.assertEqual((s["legacy"]["active"],s["native"]["relationships"],s["projections"]["count"]),(450,7,450))
-        self.assertEqual((s["combinedActiveRelationships"],s["combinedActiveCausal"]),(456,435))
+        self.assertEqual((s["combinedActiveRelationships"],s["combinedActiveCausal"]),(457,436))
         self.assertEqual(s["projections"]["additionalPropositions"],0)
 
     def test_scope_and_family_matrices_reconcile(self):
@@ -37,7 +37,7 @@ class FamilyRunnerTests(unittest.TestCase):
         causal={}
         for row in self.inventory["scopeMatrices"]:
             if row["semanticType"]=="CAUSAL":causal[row["scope"]]=causal.get(row["scope"],0)+row["count"]
-        self.assertEqual(causal,{"WITHIN_FAMILY":200,"SAME_LAYER_CROSS_FAMILY":146,"CROSS_LAYER":89})
+        self.assertEqual(causal,{"WITHIN_FAMILY":200,"SAME_LAYER_CROSS_FAMILY":146,"CROSS_LAYER":90})
 
     def test_105_queue_rows_not_scientific_decisions(self):
         queue=self.inventory["auditQueue"]

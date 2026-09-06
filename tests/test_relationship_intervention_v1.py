@@ -581,8 +581,8 @@ class RelationshipInterventionV1Tests(unittest.TestCase):
         self.assertEqual(counts["entities"], 811)
         self.assertEqual(counts["legacyActiveRelationships"], 450)
         self.assertEqual(counts["legacyActiveCausalRelationships"], 431)
-        self.assertEqual(counts["activeRelationships"], 456)
-        self.assertEqual(counts["activeCausalRelationships"], 435)
+        self.assertEqual(counts["activeRelationships"], 457)
+        self.assertEqual(counts["activeCausalRelationships"], 436)
         self.assertEqual(counts["v1IncompleteRelationships"], 450)
 
 

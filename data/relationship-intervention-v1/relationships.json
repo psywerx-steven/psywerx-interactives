@@ -976,7 +976,6 @@
       "compatibility": {
         "authorityStatus": "V1_LIFECYCLE",
         "blockedFields": [
-          "activationNotAuthorized",
           "quantitativeExecutionNotAuthorized"
         ],
         "legacyRecord": null,
@@ -985,7 +984,7 @@
         "legacyScientificFields": null,
         "migrationCompleteness": "COMPLETE",
         "sourceSchema": "RELATIONSHIP_V1",
-        "v1Executability": "NOT_EXECUTABLE"
+        "v1Executability": "EXECUTABLE"
       },
       "evidenceAssessmentIds": [
         "EVA-V1-INF-F03-REL-001"
@@ -997,15 +996,15 @@
       },
       "governance": {
         "lifecycleStatus": "GOVERNED",
-        "activationStatus": "INACTIVE",
+        "activationStatus": "ACTIVE",
         "blockStatus": "NONE",
         "decisionOutcome": "APPROVED",
         "authorityBasis": "V1_NATIVE",
-        "decisionRecord": "docs/governance/pilots/INF-F03/INF_F03_GOVERNANCE_DECISION_001.md",
+        "decisionRecord": "docs/governance/pilots/INF-F03/INF_F03_ACTIVATION_DECISION_001.md",
         "authorizedBy": "authorized human governor",
         "decisionDate": "2026-09-06",
-        "effectiveVersion": "INF-F03-GOVERNANCE-001",
-        "decisionRationale": "The bounded context-dependent uncertainty-disclosure proposition was approved as modified; activation was explicitly withheld.",
+        "effectiveVersion": "INF-F03-PARTIAL-ACTIVATION-001",
+        "decisionRationale": "Exact partial activation authorized after independent activation-readiness audit; scientific identity, proposition, scope, and evidence synthesis remain unchanged.",
         "supersedesIds": [],
         "transitionProvenance": [
           {
@@ -1078,6 +1077,24 @@
             "revision": 1,
             "provenance": "AUD-INF-F03-AE-V1-20260906-001:ec49f49346a051a9dada2cdf97d0c85e7205e018:transition-4",
             "governanceDecisionRecord": "docs/governance/pilots/INF-F03/INF_F03_GOVERNANCE_DECISION_001.md",
+            "exactDecisionMaterialization": true
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "GOVERNED",
+              "activationStatus": "INACTIVE"
+            },
+            "toState": {
+              "lifecycleStatus": "GOVERNED",
+              "activationStatus": "ACTIVE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Mechanical materialization of the exact partial activation explicitly authorized by an authorized human governor after the independent audit.",
+            "timestamp": "2026-09-06T23:00:00Z",
+            "objectId": "REL-V1-INF-F03-001",
+            "revision": 1,
+            "provenance": "AUD-INF-F03-ACTIVATION-V1-20260906-001:8ecf60775a5ae35b31010c301490dfd3c439623c:activation-001",
+            "governanceDecisionRecord": "docs/governance/pilots/INF-F03/INF_F03_ACTIVATION_DECISION_001.md",
             "exactDecisionMaterialization": true
           }
         ]

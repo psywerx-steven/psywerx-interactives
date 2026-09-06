@@ -1,4 +1,4 @@
-"""Materialize the authorized INF-F03 governance checkpoint as inactive V1 science."""
+"""Materialize INF-F03 governance checkpoint 001 and partial activation 001."""
 
 from __future__ import annotations
 
@@ -21,6 +21,27 @@ DECISION_ID = "GOV-INF-F03-001-2026-09-06"
 DECISION_PATH = "docs/governance/pilots/INF-F03/INF_F03_GOVERNANCE_DECISION_001.md"
 EFFECTIVE_DATE = "2026-09-06"
 EFFECTIVE_TIMESTAMP = "2026-09-06T20:00:00Z"
+ACTIVATION_DECISION_ID = "GOV-INF-F03-ACTIVATION-001-2026-09-06"
+ACTIVATION_DECISION_PATH = "docs/governance/pilots/INF-F03/INF_F03_ACTIVATION_DECISION_001.md"
+ACTIVATION_AUDIT_ID = "AUD-INF-F03-ACTIVATION-V1-20260906-001"
+ACTIVATION_SOURCE_COMMIT = "8ecf60775a5ae35b31010c301490dfd3c439623c"
+ACTIVATION_TIMESTAMP = "2026-09-06T23:00:00Z"
+ACTIVE_IDS = {
+    "EVA-V1-INF-F03-REL-001",
+    "REL-V1-INF-F03-001",
+    "EVA-AE-V1-INF-F03-002",
+    "HT-V1-INF-F03-002",
+    "EA-V1-INF-F03-002",
+}
+KEEP_INACTIVE_IDS = {
+    "HT-V1-INF-F03-001",
+    "HT-V1-INF-F03-004",
+    "HT-V1-INF-F03-005",
+    "HT-V1-INF-F03-006",
+    "HT-V1-INF-F03-007",
+    "EA-V1-INF-F03-001",
+    "EVA-AE-V1-INF-F03-001",
+}
 
 
 def read(path: Path) -> object:
@@ -99,6 +120,48 @@ def governed(object_id: str, rationale: str) -> dict:
             transition(object_id, "REVIEW_READY", "GOVERNED", 4, human=True),
         ],
     }
+
+
+def activate(record: dict) -> None:
+    """Materialize only the exact authorized GOVERNED/INACTIVE -> ACTIVE transition."""
+    if record["id"] not in ACTIVE_IDS:
+        raise ValueError(f"Record is outside the authorized activation subset: {record['id']}")
+    governance = record["governance"]
+    if (
+        governance["lifecycleStatus"] != "GOVERNED"
+        or governance["activationStatus"] != "INACTIVE"
+    ):
+        raise ValueError(f"Activation source state is not GOVERNED/INACTIVE: {record['id']}")
+    governance["activationStatus"] = "ACTIVE"
+    governance["decisionRecord"] = ACTIVATION_DECISION_PATH
+    governance["authorizedBy"] = "authorized human governor"
+    governance["decisionDate"] = EFFECTIVE_DATE
+    governance["effectiveVersion"] = "INF-F03-PARTIAL-ACTIVATION-001"
+    governance["decisionRationale"] = (
+        "Exact partial activation authorized after independent activation-readiness audit; "
+        "scientific identity, proposition, scope, and evidence synthesis remain unchanged."
+    )
+    governance["transitionProvenance"].append({
+        "fromState": {
+            "lifecycleStatus": "GOVERNED",
+            "activationStatus": "INACTIVE",
+        },
+        "toState": {
+            "lifecycleStatus": "GOVERNED",
+            "activationStatus": "ACTIVE",
+        },
+        "actorClass": "AUTOMATED_PROCESS_OR_AI",
+        "rationale": (
+            "Mechanical materialization of the exact partial activation explicitly "
+            "authorized by an authorized human governor after the independent audit."
+        ),
+        "timestamp": ACTIVATION_TIMESTAMP,
+        "objectId": record["id"],
+        "revision": record["revision"],
+        "provenance": f"{ACTIVATION_AUDIT_ID}:{ACTIVATION_SOURCE_COMMIT}:activation-001",
+        "governanceDecisionRecord": ACTIVATION_DECISION_PATH,
+        "exactDecisionMaterialization": True,
+    })
 
 
 def source_record(
@@ -611,7 +674,94 @@ Rejected pilot hypotheses are H01/H02/H03/H05/H06/H10/H11/H14/H15/H18/H19 for th
 
 Activation needs a separate authorized human decision after source/evidence reconciliation, graph and actionability simulation, and complete checkpoint validation. Any change to the scientific scope, polarity, feature dimensions, target, or identity requires new governance.
 """
-    return package, decision
+    later_activation = """
+
+## Later partial activation checkpoint
+
+The separate [partial activation decision](INF_F03_ACTIVATION_DECISION_001.md)
+subsequently activated exactly five records. All other governed records remain
+inactive, and all candidate/revision/research/blocked dispositions remain
+unchanged. The original governance decision above remains the authority for
+scientific meaning; the later decision supplies activation authority only.
+"""
+    return package + later_activation, decision + later_activation
+
+
+def activation_decision_document(records: list[dict]) -> str:
+    hashes = {record["id"]: ae.digest(record) for record in records}
+    hash_lines = "\n".join(
+        f"- `{identifier}` revision 1: `{hashes[identifier]}`"
+        for identifier in sorted(hashes)
+    )
+    return f"""# INF-F03 partial activation decision 001
+
+## Authority and boundary
+
+- Activation decision ID: `{ACTIVATION_DECISION_ID}`
+- Scientific governance decision: `{DECISION_ID}`
+- Activation-readiness audit: `{ACTIVATION_AUDIT_ID}`
+- Scientific pilot audit: `{AUDIT_ID}`
+- PR: `#18`
+- Pre-activation audited head: `{ACTIVATION_SOURCE_COMMIT}`
+- Activation date: `{EFFECTIVE_DATE}`
+- Actor class: `authorized human governor`
+- Authorization basis: explicit human instruction for this exact partial activation
+
+This decision activates only the five exact governed records below. It does not
+authorize any other INF-F03 record, scientific revision, model execution,
+practitioner recommendation, ontology change, another Family, or deployment.
+
+## Exact activated records and order
+
+1. `EVA-V1-INF-F03-REL-001`
+2. `REL-V1-INF-F03-001`
+3. `EVA-AE-V1-INF-F03-002`
+4. Atomically: `HT-V1-INF-F03-002` and `EA-V1-INF-F03-002`
+
+The Relationship evidence remains `MIXED / MODERATE / MODERATE`, with
+context-dependent polarity and no universal monotonic sign. EA-002 remains
+`LEVEL / INCREASE` only for the amount/explicitness of justified uncertainty
+disclosure; trust, credibility, calibration, and objective accuracy are not
+inherited effects.
+
+## Exact activated record hashes
+
+{hash_lines}
+
+## Governed records explicitly kept inactive
+
+- `HT-V1-INF-F03-001`, `EA-V1-INF-F03-001`, and
+  `EVA-AE-V1-INF-F03-001`: feature-dimension scope is not yet normalized and
+  validator-enforced.
+- `HT-V1-INF-F03-004`: non-deliberate babble exposure with no governed effect.
+- `HT-V1-INF-F03-005`: automatic-simplification efficacy/fidelity remains
+  research-needed.
+- `HT-V1-INF-F03-006`: no governed eligible effect.
+- `HT-V1-INF-F03-007`: non-deliberate sleep-loss exposure with no governed effect.
+
+All remaining candidates, revision/retype proposals, research-needed hypotheses,
+H20, and rejected hypotheses retain their prior status. No existing governed
+Relationship was revised or retyped.
+
+## Eligibility boundary
+
+Activation establishes scientific-use eligibility for the exact active records.
+It does not establish quantitative-model eligibility. Practitioner-action
+eligibility for the deliberate action remains fail-closed until actor-specific
+control, prerequisites, feasibility, legal constraints, ethical/risk constraints,
+and population/context applicability are independently assessed and passed.
+
+## Resulting state and review triggers
+
+- Active Relationships: 457 total / 436 causal.
+- Active INF-F03 Actions & Events records: 3 root records.
+- Drivers/RDS/entities: 770 / 41 / 811, unchanged.
+- Model execution, recommendations, and deployment: not authorized.
+
+Review is required before activating any excluded record, changing EA-001's
+feature representation, resolving H20, implementing an existing-edge proposal,
+or using these records in quantitative modeling or practitioner recommendations.
+"""
 
 
 def materialize() -> None:
@@ -619,6 +769,20 @@ def materialize() -> None:
     relationship, relationship_evidence = make_relationship(workspace)
     happening_types = make_happening_types(workspace)
     effects, ae_evidence = make_effects_and_evidence(workspace)
+
+    activate(relationship_evidence)
+    activate(relationship)
+    relationship["compatibility"]["v1Executability"] = "EXECUTABLE"
+    relationship["compatibility"]["blockedFields"] = ["quantitativeExecutionNotAuthorized"]
+    ae_by_id = {
+        record["id"]: record
+        for record in [*happening_types, *effects, *ae_evidence]
+    }
+    for identifier in ("EVA-AE-V1-INF-F03-002", "HT-V1-INF-F03-002", "EA-V1-INF-F03-002"):
+        activate(ae_by_id[identifier])
+    if {record["id"] for record in [relationship, relationship_evidence, *ae_by_id.values()]
+            if record["governance"]["activationStatus"] == "ACTIVE"} != ACTIVE_IDS:
+        raise ValueError("Materialized activation set differs from exact human authorization")
 
     write_json(RI_DATA / "source-register.json", {
         "schemaVersion": "1.0.0",
@@ -668,7 +832,22 @@ def materialize() -> None:
         "recordClass": "SCIENTIFIC_RECORD",
     }
     authorizations = {record["decisionId"]: record for record in catalog["authorizations"]}
-    authorizations[DECISION_ID] = authorization
+    # Preserve the original governed-inactive authorization hashes. The
+    # activation decision is a distinct authority and must not rewrite what the
+    # earlier scientific-governance decision authorized.
+    authorizations.setdefault(DECISION_ID, authorization)
+    active_ae_records = [ae_by_id[identifier] for identifier in sorted(ACTIVE_IDS & set(ae_by_id))]
+    authorizations[ACTIVATION_DECISION_ID] = {
+        "decisionId": ACTIVATION_DECISION_ID,
+        "decisionRecord": ACTIVATION_DECISION_PATH,
+        "actorClass": "AUTHORIZED_HUMAN_GOVERNOR",
+        "effectiveDate": EFFECTIVE_DATE,
+        "authorizedObjects": [
+            {"id": record["id"], "revision": record["revision"], "recordHash": ae.digest(record)}
+            for record in active_ae_records
+        ],
+        "recordClass": "SCIENTIFIC_RECORD",
+    }
     catalog["authorizations"] = [authorizations[identifier] for identifier in sorted(authorizations)]
     write_json(AE_DATA / "catalog.json", catalog)
 
@@ -740,11 +919,24 @@ def materialize() -> None:
         "governanceDecisionId": DECISION_ID,
         "governanceDecisionRecord": DECISION_PATH,
         "effectiveDate": EFFECTIVE_DATE,
-        "activationAuthorized": False,
-        "productionGraphEligible": False,
+        "activationAuthorized": True,
+        "productionGraphEligible": True,
         "candidateLineage": lineage,
         "governedInactiveCounts": {"relationships": 1, "happeningTypes": 6, "effectAssertions": 2, "evidenceAssessments": 3, "totalScientificRecords": 12, "sourceFindings": 5},
-        "newActiveRecords": 0,
+        "currentGovernedCounts": {
+            "active": {"relationships": 1, "happeningTypes": 1, "effectAssertions": 1, "evidenceAssessments": 2, "totalScientificRecords": 5},
+            "inactive": {"relationships": 0, "happeningTypes": 5, "effectAssertions": 1, "evidenceAssessments": 1, "totalScientificRecords": 7},
+        },
+        "newActiveRecords": 5,
+        "activationCheckpoint": {
+            "decisionId": ACTIVATION_DECISION_ID,
+            "decisionRecord": ACTIVATION_DECISION_PATH,
+            "activationAuditId": ACTIVATION_AUDIT_ID,
+            "preActivationHead": ACTIVATION_SOURCE_COMMIT,
+            "activeIds": sorted(ACTIVE_IDS),
+            "keptInactiveIds": sorted(KEEP_INACTIVE_IDS),
+            "activeCounts": {"relationships": 1, "happeningTypes": 1, "effectAssertions": 1, "evidenceAssessments": 2},
+        },
         "remainingNonGoverned": {
             "relationships": ["REL-CAND-INF-F03-002", "REL-CAND-INF-F03-003", "REL-CAND-INF-F03-004"],
             "happeningTypes": ["HT-CAND-INF-F03-003"],
@@ -754,7 +946,7 @@ def materialize() -> None:
             "blockedHypotheses": ["H20"],
         },
         "rejectedHypotheses": rejected,
-        "activeProductionCounts": {"drivers": 770, "rds": 41, "entities": 811, "relationships": 456, "causalRelationships": 435},
+        "activeProductionCounts": {"drivers": 770, "rds": 41, "entities": 811, "relationships": 457, "causalRelationships": 436},
     }
     write_json(AE_DATA / "INF-F03-materialization-manifest.json", materialization_manifest)
 
@@ -764,7 +956,7 @@ def materialize() -> None:
         "governanceDecision": DECISION_ID,
         "noScientificHumanDecision": False,
         "newGoverned": 12,
-        "newActive": 0,
+        "newActive": 5,
         "governanceCheckpoint": {
             "decisionRecord": "INF_F03_GOVERNANCE_DECISION_001.md",
             "pilotHeadBeforeGovernance": PILOT_HEAD,
@@ -773,10 +965,19 @@ def materialize() -> None:
             "governedSourceFindings": 5,
         },
         "sourceRegistration": {"evaluated": 14, "registered": 3, "duplicates": 0, "unverified": 0, "blockedRecords": 0},
+        "activationCheckpoint": {
+            "decisionRecord": "INF_F03_ACTIVATION_DECISION_001.md",
+            "activationAudit": "INF_F03_ACTIVATION_AUDIT_001.md",
+            "preActivationHead": ACTIVATION_SOURCE_COMMIT,
+            "activeIds": sorted(ACTIVE_IDS),
+            "keptInactiveIds": sorted(KEEP_INACTIVE_IDS),
+        },
     })
     audit_manifest["documents"] = sorted(set(audit_manifest.get("documents", [])) | {
         "INF_F03_GOVERNANCE_DECISION_001.md",
         "INF_F03_SOURCE_REGISTRATION_MANIFEST.json",
+        "INF_F03_ACTIVATION_AUDIT_001.md",
+        "INF_F03_ACTIVATION_DECISION_001.md",
     })
     write_json(audit_manifest_path, audit_manifest)
 
@@ -784,18 +985,21 @@ def materialize() -> None:
     write_text(DOCS / "INF_F03_GOVERNANCE_DECISION_PACKAGE.md", package)
     write_text(DOCS / "INF_F03_GOVERNANCE_DECISION_001.md", decision)
 
+    activated_records = [relationship_evidence, relationship, *active_ae_records]
+    write_text(DOCS / "INF_F03_ACTIVATION_DECISION_001.md", activation_decision_document(activated_records))
+
     write_json(AE_DATA / "catalog.json", catalog)
 
 
 def main() -> int:
     materialize()
     print(f"Materialized {DECISION_ID}")
-    print("  Governed inactive Relationship: 1")
-    print("  Governed inactive HappeningTypes: 6")
-    print("  Governed inactive EffectAssertions: 2")
-    print("  Governed inactive EvidenceAssessments: 3")
+    print("  Governed Relationship: 1 (active: 1)")
+    print("  Governed HappeningTypes: 6 (active: 1)")
+    print("  Governed EffectAssertions: 2 (active: 1)")
+    print("  Governed EvidenceAssessments: 3 (active: 2)")
     print("  Governed sourceFindings: 5")
-    print("  New active records: 0")
+    print("  New active records: 5")
     return 0
 
 

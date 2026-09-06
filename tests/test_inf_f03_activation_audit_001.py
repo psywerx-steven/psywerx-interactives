@@ -37,7 +37,7 @@ class InfF03ActivationAudit001Tests(unittest.TestCase):
         for row in cls.audit["recommendations"]:
             cls.by_recommendation.setdefault(row["recommendation"], set()).add(row["id"])
 
-    def test_exact_current_governed_inactive_set(self):
+    def test_exact_audited_set_and_later_authorized_subset(self):
         records = (
             [r for r in self.relationships if r["id"] == "REL-V1-INF-F03-001"]
             + [r for r in self.ri_evidence if r["id"] == "EVA-V1-INF-F03-REL-001"]
@@ -45,8 +45,10 @@ class InfF03ActivationAudit001Tests(unittest.TestCase):
         )
         self.assertEqual(len(records), 12)
         self.assertTrue(all(r["governance"]["lifecycleStatus"] == "GOVERNED" for r in records))
-        self.assertTrue(all(r["governance"]["activationStatus"] == "INACTIVE" for r in records))
-        self.assertEqual(sum(ri.governed_active(r) for r in records), 0)
+        self.assertEqual(
+            {r["id"] for r in records if ri.governed_active(r)},
+            self.by_recommendation["ACTIVATE_RECOMMENDED"],
+        )
         self.assertTrue(self.audit["auditOnly"])
         self.assertFalse(self.audit["activationAuthorized"])
         self.assertEqual(self.audit["statusChanges"], 0)
@@ -72,8 +74,8 @@ class InfF03ActivationAudit001Tests(unittest.TestCase):
         self.assertEqual(relationship["functionalForm"]["kind"], "CONTEXT_DEPENDENT_NON_MONOTONIC")
         self.assertIn("no universal positive or negative", relationship["functionalForm"]["specification"])
         self.assertNotIn("calibrat", relationship["mechanism"].casefold())
-        self.assertEqual(relationship["compatibility"]["v1Executability"], "NOT_EXECUTABLE")
-        self.assertIn("activationNotAuthorized", relationship["compatibility"]["blockedFields"])
+        self.assertEqual(relationship["compatibility"]["v1Executability"], "EXECUTABLE")
+        self.assertEqual(relationship["compatibility"]["blockedFields"], ["quantitativeExecutionNotAuthorized"])
         legacy = read(ROOT / "data/relationships.json")
         duplicates = [r for bucket in ("relationships", "deprecatedRelationships", "relationshipCandidates")
                       for r in legacy[bucket]
@@ -149,9 +151,12 @@ class InfF03ActivationAudit001Tests(unittest.TestCase):
             self.assertNotEqual(synthesis["confidence"], "NOT_ASSESSED")
 
     def test_authorization_hashes_and_lineage_resolve(self):
-        authorization = self.catalog["authorizations"][0]
-        hashes = {r["id"]: r["recordHash"] for r in authorization["authorizedObjects"]}
         for record in ae.all_records(self.catalog):
+            authorization = next(
+                row for row in self.catalog["authorizations"]
+                if row["decisionRecord"] == record["governance"]["decisionRecord"]
+            )
+            hashes = {r["id"]: r["recordHash"] for r in authorization["authorizedObjects"]}
             self.assertEqual(hashes[record["id"]], ae.digest(record))
         manifest = read(AE_DATA / "INF-F03-materialization-manifest.json")
         self.assertEqual(len(manifest["candidateLineage"]), 9)
@@ -174,7 +179,7 @@ class InfF03ActivationAudit001Tests(unittest.TestCase):
     def test_practitioner_and_model_eligibility_fail_closed(self):
         for effect_id in ("EA-V1-INF-F03-001", "EA-V1-INF-F03-002"):
             result = ae.use_eligibility(effect_id, self.catalog)
-            self.assertFalse(result["scientificUseEligibility"]["eligible"])
+            self.assertEqual(result["scientificUseEligibility"]["eligible"], effect_id == "EA-V1-INF-F03-002")
             self.assertFalse(result["modelEligibility"]["eligible"])
             self.assertFalse(result["practitionerActionEligibility"]["eligible"])
             reasons = " ".join(result["practitionerActionEligibility"]["reasons"])
@@ -209,7 +214,7 @@ class InfF03ActivationAudit001Tests(unittest.TestCase):
         self.assertNotIn("RELATIONAL_DERIVED_STATE", {relationship["sourceEntityType"], relationship["targetEntityType"]})
         counts = ri.validate_repository()
         self.assertEqual((counts["entities"], counts["activeRelationships"], counts["activeCausalRelationships"]),
-                         (811, 456, 435))
+                         (811, 457, 436))
         self.assertEqual((len(read(ROOT / "data/drivers.json")), len(read(ROOT / "data/relational-derived-states.json"))),
                          (770, 41))
 

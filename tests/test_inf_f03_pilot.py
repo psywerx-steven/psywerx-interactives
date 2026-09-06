@@ -28,7 +28,7 @@ class InfF03PilotTests(unittest.TestCase):
 
     def test_production_partition_counts(self):
         i = af.enriched_inventory()['summary']
-        self.assertEqual([i[k] for k in ('drivers','rds','entities','combinedActiveRelationships','combinedActiveCausal')], [770,41,811,456,435])
+        self.assertEqual([i[k] for k in ('drivers','rds','entities','combinedActiveRelationships','combinedActiveCausal')], [770,41,811,457,436])
 
     def test_family_all_buckets(self):
         f = self.m['family']
@@ -96,7 +96,7 @@ class InfF03PilotTests(unittest.TestCase):
         sigs = {(r['source'],r['target'],r['predicate']) for r in i['edges']}
         candidates = [(r['sourceEntityId'],r['targetEntityId'],r['predicate']) for r in self.w['passA']['relationshipCandidates']]
         self.assertEqual(len(candidates),len(set(candidates)))
-        self.assertFalse(sigs & set(candidates))
+        self.assertEqual(sigs & set(candidates), {('INF-015', 'PSY-113', 'CAUSES')})
         self.assertEqual(i['summary']['projections']['additionalPropositions'],0)
 
     def test_owner_is_source_family(self):
@@ -235,8 +235,9 @@ class InfF03PilotTests(unittest.TestCase):
 
     def test_manifest_counts(self):
         self.assertEqual(Counter(r['governance']['lifecycleStatus'] for r in self.records), self.m['lifecycleCounts'])
-        self.assertEqual((self.m['newGoverned'],self.m['newActive']),(12,0))
+        self.assertEqual((self.m['newGoverned'],self.m['newActive']),(12,5))
         self.assertFalse(self.m['governanceCheckpoint']['activationAuthorized'])
+        self.assertEqual(len(self.m['activationCheckpoint']['activeIds']), 5)
         self.assertEqual(self.m['workspaceHash'],ae.digest(self.w))
 
     def test_markdown_local_links(self):

@@ -204,15 +204,15 @@
       ],
       "governance": {
         "lifecycleStatus": "GOVERNED",
-        "activationStatus": "INACTIVE",
+        "activationStatus": "ACTIVE",
         "blockStatus": "NONE",
         "decisionOutcome": "APPROVED",
         "authorityBasis": "V1_NATIVE",
-        "decisionRecord": "docs/governance/pilots/INF-F03/INF_F03_GOVERNANCE_DECISION_001.md",
+        "decisionRecord": "docs/governance/pilots/INF-F03/INF_F03_ACTIVATION_DECISION_001.md",
         "authorizedBy": "authorized human governor",
         "decisionDate": "2026-09-06",
-        "effectiveVersion": "INF-F03-GOVERNANCE-001",
-        "decisionRationale": "The reusable identity, without an efficacy claim, was approved; activation was explicitly withheld.",
+        "effectiveVersion": "INF-F03-PARTIAL-ACTIVATION-001",
+        "decisionRationale": "Exact partial activation authorized after independent activation-readiness audit; scientific identity, proposition, scope, and evidence synthesis remain unchanged.",
         "supersedesIds": [],
         "transitionProvenance": [
           {
@@ -285,6 +285,24 @@
             "revision": 1,
             "provenance": "AUD-INF-F03-AE-V1-20260906-001:ec49f49346a051a9dada2cdf97d0c85e7205e018:transition-4",
             "governanceDecisionRecord": "docs/governance/pilots/INF-F03/INF_F03_GOVERNANCE_DECISION_001.md",
+            "exactDecisionMaterialization": true
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "GOVERNED",
+              "activationStatus": "INACTIVE"
+            },
+            "toState": {
+              "lifecycleStatus": "GOVERNED",
+              "activationStatus": "ACTIVE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Mechanical materialization of the exact partial activation explicitly authorized by an authorized human governor after the independent audit.",
+            "timestamp": "2026-09-06T23:00:00Z",
+            "objectId": "HT-V1-INF-F03-002",
+            "revision": 1,
+            "provenance": "AUD-INF-F03-ACTIVATION-V1-20260906-001:8ecf60775a5ae35b31010c301490dfd3c439623c:activation-001",
+            "governanceDecisionRecord": "docs/governance/pilots/INF-F03/INF_F03_ACTIVATION_DECISION_001.md",
             "exactDecisionMaterialization": true
           }
         ]
@@ -1198,15 +1216,15 @@
       },
       "governance": {
         "lifecycleStatus": "GOVERNED",
-        "activationStatus": "INACTIVE",
+        "activationStatus": "ACTIVE",
         "blockStatus": "NONE",
         "decisionOutcome": "APPROVED",
         "authorityBasis": "V1_NATIVE",
-        "decisionRecord": "docs/governance/pilots/INF-F03/INF_F03_GOVERNANCE_DECISION_001.md",
+        "decisionRecord": "docs/governance/pilots/INF-F03/INF_F03_ACTIVATION_DECISION_001.md",
         "authorizedBy": "authorized human governor",
         "decisionDate": "2026-09-06",
-        "effectiveVersion": "INF-F03-GOVERNANCE-001",
-        "decisionRationale": "The exact scoped EffectAssertion was approved; activation was explicitly withheld.",
+        "effectiveVersion": "INF-F03-PARTIAL-ACTIVATION-001",
+        "decisionRationale": "Exact partial activation authorized after independent activation-readiness audit; scientific identity, proposition, scope, and evidence synthesis remain unchanged.",
         "supersedesIds": [],
         "transitionProvenance": [
           {
@@ -1279,6 +1297,24 @@
             "revision": 1,
             "provenance": "AUD-INF-F03-AE-V1-20260906-001:ec49f49346a051a9dada2cdf97d0c85e7205e018:transition-4",
             "governanceDecisionRecord": "docs/governance/pilots/INF-F03/INF_F03_GOVERNANCE_DECISION_001.md",
+            "exactDecisionMaterialization": true
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "GOVERNED",
+              "activationStatus": "INACTIVE"
+            },
+            "toState": {
+              "lifecycleStatus": "GOVERNED",
+              "activationStatus": "ACTIVE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Mechanical materialization of the exact partial activation explicitly authorized by an authorized human governor after the independent audit.",
+            "timestamp": "2026-09-06T23:00:00Z",
+            "objectId": "EA-V1-INF-F03-002",
+            "revision": 1,
+            "provenance": "AUD-INF-F03-ACTIVATION-V1-20260906-001:8ecf60775a5ae35b31010c301490dfd3c439623c:activation-001",
+            "governanceDecisionRecord": "docs/governance/pilots/INF-F03/INF_F03_ACTIVATION_DECISION_001.md",
             "exactDecisionMaterialization": true
           }
         ]
@@ -1580,15 +1616,15 @@
       },
       "governance": {
         "lifecycleStatus": "GOVERNED",
-        "activationStatus": "INACTIVE",
+        "activationStatus": "ACTIVE",
         "blockStatus": "NONE",
         "decisionOutcome": "APPROVED",
         "authorityBasis": "V1_NATIVE",
-        "decisionRecord": "docs/governance/pilots/INF-F03/INF_F03_GOVERNANCE_DECISION_001.md",
+        "decisionRecord": "docs/governance/pilots/INF-F03/INF_F03_ACTIVATION_DECISION_001.md",
         "authorizedBy": "authorized human governor",
         "decisionDate": "2026-09-06",
-        "effectiveVersion": "INF-F03-GOVERNANCE-001",
-        "decisionRationale": "The exact source findings and synthesis for the approved EffectAssertion were authorized; activation was explicitly withheld.",
+        "effectiveVersion": "INF-F03-PARTIAL-ACTIVATION-001",
+        "decisionRationale": "Exact partial activation authorized after independent activation-readiness audit; scientific identity, proposition, scope, and evidence synthesis remain unchanged.",
         "supersedesIds": [],
         "transitionProvenance": [
           {
@@ -1661,6 +1697,24 @@
             "revision": 1,
             "provenance": "AUD-INF-F03-AE-V1-20260906-001:ec49f49346a051a9dada2cdf97d0c85e7205e018:transition-4",
             "governanceDecisionRecord": "docs/governance/pilots/INF-F03/INF_F03_GOVERNANCE_DECISION_001.md",
+            "exactDecisionMaterialization": true
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "GOVERNED",
+              "activationStatus": "INACTIVE"
+            },
+            "toState": {
+              "lifecycleStatus": "GOVERNED",
+              "activationStatus": "ACTIVE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Mechanical materialization of the exact partial activation explicitly authorized by an authorized human governor after the independent audit.",
+            "timestamp": "2026-09-06T23:00:00Z",
+            "objectId": "EVA-AE-V1-INF-F03-002",
+            "revision": 1,
+            "provenance": "AUD-INF-F03-ACTIVATION-V1-20260906-001:8ecf60775a5ae35b31010c301490dfd3c439623c:activation-001",
+            "governanceDecisionRecord": "docs/governance/pilots/INF-F03/INF_F03_ACTIVATION_DECISION_001.md",
             "exactDecisionMaterialization": true
           }
         ]
@@ -1869,6 +1923,30 @@
           "id": "HT-V1-INF-F03-007",
           "revision": 1,
           "recordHash": "89cac327ebfc2ed587773c3cf0cfb09094d3ffaa6eff8aa33b337a7c7dfc5ad5"
+        }
+      ],
+      "recordClass": "SCIENTIFIC_RECORD"
+    },
+    {
+      "decisionId": "GOV-INF-F03-ACTIVATION-001-2026-09-06",
+      "decisionRecord": "docs/governance/pilots/INF-F03/INF_F03_ACTIVATION_DECISION_001.md",
+      "actorClass": "AUTHORIZED_HUMAN_GOVERNOR",
+      "effectiveDate": "2026-09-06",
+      "authorizedObjects": [
+        {
+          "id": "EA-V1-INF-F03-002",
+          "revision": 1,
+          "recordHash": "081086b2c81f0bdaf6d9efce2a457073b116189263f3555e17ae294397b318b9"
+        },
+        {
+          "id": "EVA-AE-V1-INF-F03-002",
+          "revision": 1,
+          "recordHash": "97bad039c147ea9f46ce12ad403617dc964180578916aaf41d3faa5209af5e1f"
+        },
+        {
+          "id": "HT-V1-INF-F03-002",
+          "revision": 1,
+          "recordHash": "b64580e93dcab467cc89fa0395ae6381733b727135bce63ec74674c56adfb3d6"
         }
       ],
       "recordClass": "SCIENTIFIC_RECORD"

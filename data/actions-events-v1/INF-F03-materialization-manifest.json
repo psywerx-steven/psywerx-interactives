@@ -7,8 +7,8 @@
   "governanceDecisionId": "GOV-INF-F03-001-2026-09-06",
   "governanceDecisionRecord": "docs/governance/pilots/INF-F03/INF_F03_GOVERNANCE_DECISION_001.md",
   "effectiveDate": "2026-09-06",
-  "activationAuthorized": false,
-  "productionGraphEligible": false,
+  "activationAuthorized": true,
+  "productionGraphEligible": true,
   "candidateLineage": [
     {
       "objectType": "RELATIONSHIP",
@@ -70,7 +70,51 @@
     "totalScientificRecords": 12,
     "sourceFindings": 5
   },
-  "newActiveRecords": 0,
+  "currentGovernedCounts": {
+    "active": {
+      "relationships": 1,
+      "happeningTypes": 1,
+      "effectAssertions": 1,
+      "evidenceAssessments": 2,
+      "totalScientificRecords": 5
+    },
+    "inactive": {
+      "relationships": 0,
+      "happeningTypes": 5,
+      "effectAssertions": 1,
+      "evidenceAssessments": 1,
+      "totalScientificRecords": 7
+    }
+  },
+  "newActiveRecords": 5,
+  "activationCheckpoint": {
+    "decisionId": "GOV-INF-F03-ACTIVATION-001-2026-09-06",
+    "decisionRecord": "docs/governance/pilots/INF-F03/INF_F03_ACTIVATION_DECISION_001.md",
+    "activationAuditId": "AUD-INF-F03-ACTIVATION-V1-20260906-001",
+    "preActivationHead": "8ecf60775a5ae35b31010c301490dfd3c439623c",
+    "activeIds": [
+      "EA-V1-INF-F03-002",
+      "EVA-AE-V1-INF-F03-002",
+      "EVA-V1-INF-F03-REL-001",
+      "HT-V1-INF-F03-002",
+      "REL-V1-INF-F03-001"
+    ],
+    "keptInactiveIds": [
+      "EA-V1-INF-F03-001",
+      "EVA-AE-V1-INF-F03-001",
+      "HT-V1-INF-F03-001",
+      "HT-V1-INF-F03-004",
+      "HT-V1-INF-F03-005",
+      "HT-V1-INF-F03-006",
+      "HT-V1-INF-F03-007"
+    ],
+    "activeCounts": {
+      "relationships": 1,
+      "happeningTypes": 1,
+      "effectAssertions": 1,
+      "evidenceAssessments": 2
+    }
+  },
   "remainingNonGoverned": {
     "relationships": [
       "REL-CAND-INF-F03-002",
@@ -126,7 +170,7 @@
     "drivers": 770,
     "rds": 41,
     "entities": 811,
-    "relationships": 456,
-    "causalRelationships": 435
+    "relationships": 457,
+    "causalRelationships": 436
   }
 }

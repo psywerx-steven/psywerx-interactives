@@ -52,12 +52,12 @@ class BioF01Governance001Tests(unittest.TestCase):
         self.assertEqual(counts["nativeInterventions"], 9)
         self.assertEqual(counts["nativeInterventionEffects"], 5)
         self.assertEqual(counts["nativeEvidenceAssessments"], 12)
-        self.assertEqual(counts["nativeActiveRecords"], 27)
-        self.assertEqual(counts["nativeActiveRelationships"], 6)
-        self.assertEqual(counts["nativeActiveCausalRelationships"], 4)
+        self.assertEqual(counts["nativeActiveRecords"], 29)
+        self.assertEqual(counts["nativeActiveRelationships"], 7)
+        self.assertEqual(counts["nativeActiveCausalRelationships"], 5)
         self.assertEqual(counts["nativeActiveInterventions"], 5)
         self.assertEqual(counts["nativeActiveInterventionEffects"], 5)
-        self.assertEqual(counts["nativeActiveEvidenceAssessments"], 11)
+        self.assertEqual(counts["nativeActiveEvidenceAssessments"], 12)
 
     def test_all_new_scientific_records_are_governed_with_exact_activation_split(self):
         all_records = [
@@ -191,8 +191,8 @@ class BioF01Governance001Tests(unittest.TestCase):
         self.assertEqual(counts["entities"], 811)
         self.assertEqual(counts["legacyActiveRelationships"], 450)
         self.assertEqual(counts["legacyActiveCausalRelationships"], 431)
-        self.assertEqual(counts["activeRelationships"], 456)
-        self.assertEqual(counts["activeCausalRelationships"], 435)
+        self.assertEqual(counts["activeRelationships"], 457)
+        self.assertEqual(counts["activeCausalRelationships"], 436)
 
     def test_revision_proposals_are_review_only(self):
         text = (PILOT / "BIO_F01_EXISTING_RELATIONSHIP_REVISION_PROPOSALS.md").read_text(encoding="utf-8")
