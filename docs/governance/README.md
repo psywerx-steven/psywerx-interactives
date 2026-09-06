@@ -71,11 +71,13 @@ records beyond the exact migration decisions it names.
 - [`BIO-F01 — Sleep & Circadian Regulation`](pilots/BIO-F01/BIO_F01_GOVERNANCE_DECISION_PACKAGE.md)
   is the first structured scientific audit under V1. Its Relationship,
   EvidenceAssessment, Intervention, and InterventionEffect records are
-  non-governed candidates only. The pilot PR must not be merged before human
-  scientific governance.
+  preserved as non-governed candidates for audit lineage.
   [`Governance Decision 001`](pilots/BIO-F01/BIO_F01_GOVERNANCE_DECISION_001.md)
-  selectively materializes approved records as `GOVERNED + INACTIVE`; it does
-  not authorize activation or merging PR #14.
+  selectively materializes approved records under canonical V1 IDs.
+  [`Activation Decision 001`](pilots/BIO-F01/BIO_F01_ACTIVATION_DECISION_001.md)
+  authorizes the exact bounded active subset while retaining all listed
+  research-needed, revision, and acoustic exclusions. It does not authorize a
+  second Family, new model/recommendation behavior, or deployment.
 
 ## Non-production draft-schema rule
 

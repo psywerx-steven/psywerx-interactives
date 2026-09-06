@@ -12,7 +12,8 @@ governance validator.
 The workspace now contains the first explicitly authorized Family pilot,
 `BIO-F01 — Sleep & Circadian Regulation`. These are research/audit candidates
 only. They remain `NOT_ELIGIBLE`, contribute no production causal traversal,
-and require human scientific governance before any canonical materialization.
+and do not acquire scientific authority when a separately identified canonical
+record is governed or activated.
 The auditable review package is in
 `docs/governance/pilots/BIO-F01/`.
 
@@ -22,3 +23,5 @@ remain here solely for audit lineage; the materialization manifest prevents
 them from being interpreted as separate authoritative propositions. The
 generic acoustic umbrella, its receiver-level replacement candidate, and all
 other research-needed records remain non-governed and `NOT_ELIGIBLE`.
+BIO-F01 Activation Decision 001 activates only its exact canonical subset;
+candidate workspace records remain non-active and non-governed.
