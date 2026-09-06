@@ -78,6 +78,9 @@ jobs:
       - name: Validate INF-F03 human governance checkpoint
         run: python -m unittest discover -s tests -p "test_inf_f03_governance_001.py"
 
+      - name: Validate INF-F03 activation-readiness audit
+        run: python -m unittest discover -s tests -p "test_inf_f03_activation_audit_001.py"
+
       - name: Validate additive Actions and Events repository
         run: python scripts/actions_events_v1.py --validate-repository
 
@@ -149,6 +152,9 @@ jobs:
 
       - name: Validate INF-F03 human governance checkpoint
         run: python -m unittest discover -s tests -p "test_inf_f03_governance_001.py"
+
+      - name: Validate INF-F03 activation-readiness audit
+        run: python -m unittest discover -s tests -p "test_inf_f03_activation_audit_001.py"
 
       - name: Validate additive Actions and Events repository
         run: python scripts/actions_events_v1.py --validate-repository

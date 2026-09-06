@@ -1,0 +1,158 @@
+{
+  "schemaVersion": "1.0.0",
+  "auditId": "AUD-INF-F03-ACTIVATION-V1-20260906-001",
+  "scientificPilotAuditId": "AUD-INF-F03-AE-V1-20260906-001",
+  "governanceDecisionId": "GOV-INF-F03-001-2026-09-06",
+  "auditedHead": "246688fb03b525d223ab1bdd540471ae865a4aae",
+  "frozenScientificBaseline": "164d938bcd4bbd7e8c48c8128cacd6e64ff0287a",
+  "date": "2026-09-06",
+  "auditOnly": true,
+  "activationAuthorized": false,
+  "statusChanges": 0,
+  "recommendations": [
+    {
+      "id": "EVA-V1-INF-F03-REL-001",
+      "type": "EVIDENCE_ASSESSMENT",
+      "recommendation": "ACTIVATE_RECOMMENDED",
+      "dependencies": ["SRC-551", "SRC-552"],
+      "reason": "Exact mixed evidence synthesis is complete and source-resolved."
+    },
+    {
+      "id": "REL-V1-INF-F03-001",
+      "type": "RELATIONSHIP",
+      "recommendation": "ACTIVATE_RECOMMENDED",
+      "dependencies": ["EVA-V1-INF-F03-REL-001"],
+      "reason": "Bounded context-dependent Driver-to-Driver causal proposition is scientifically ready."
+    },
+    {
+      "id": "EVA-AE-V1-INF-F03-001",
+      "type": "EVIDENCE_ASSESSMENT",
+      "recommendation": "BLOCKED_PENDING_CORRECTION",
+      "dependencies": ["SRC-550", "EA-V1-INF-F03-001"],
+      "reason": "Keep inactive with its assertion until feature-scope enforcement is corrected."
+    },
+    {
+      "id": "EA-V1-INF-F03-001",
+      "type": "EFFECT_ASSERTION",
+      "recommendation": "BLOCKED_PENDING_CORRECTION",
+      "dependencies": ["EVA-AE-V1-INF-F03-001", "HT-V1-INF-F03-001"],
+      "reason": "Named dimensions are string-scoped rather than schema/validator-enforced, allowing whole-INF-077 misinterpretation."
+    },
+    {
+      "id": "HT-V1-INF-F03-001",
+      "type": "HAPPENING_TYPE",
+      "recommendation": "BLOCKED_PENDING_CORRECTION",
+      "dependencies": ["EA-V1-INF-F03-001"],
+      "reason": "Deliberate identity must activate atomically with its own corrected active effect."
+    },
+    {
+      "id": "EVA-AE-V1-INF-F03-002",
+      "type": "EVIDENCE_ASSESSMENT",
+      "recommendation": "ACTIVATE_RECOMMENDED",
+      "dependencies": ["SRC-551", "SRC-552"],
+      "reason": "Exact disclosure-target synthesis is complete; downstream trust findings remain separated."
+    },
+    {
+      "id": "EA-V1-INF-F03-002",
+      "type": "EFFECT_ASSERTION",
+      "recommendation": "ACTIVATE_RECOMMENDED",
+      "dependencies": ["EVA-AE-V1-INF-F03-002", "HT-V1-INF-F03-002"],
+      "reason": "Exact Driver-targeted justified-disclosure effect is scientifically ready."
+    },
+    {
+      "id": "HT-V1-INF-F03-002",
+      "type": "HAPPENING_TYPE",
+      "recommendation": "ACTIVATE_RECOMMENDED",
+      "dependencies": ["EA-V1-INF-F03-002"],
+      "reason": "Identity is ready in the atomic deliberate type/effect activation bundle."
+    },
+    {
+      "id": "HT-V1-INF-F03-004",
+      "type": "HAPPENING_TYPE",
+      "recommendation": "KEEP_INACTIVE",
+      "dependencies": [],
+      "reason": "Non-deliberate exposure has no governed effect or identity evidence assessment."
+    },
+    {
+      "id": "HT-V1-INF-F03-005",
+      "type": "HAPPENING_TYPE",
+      "recommendation": "KEEP_INACTIVE",
+      "dependencies": [],
+      "reason": "Deliberate identity has no governed active effect; efficacy and fidelity remain research-needed."
+    },
+    {
+      "id": "HT-V1-INF-F03-006",
+      "type": "HAPPENING_TYPE",
+      "recommendation": "KEEP_INACTIVE",
+      "dependencies": [],
+      "reason": "Deliberate identity has no governed active effect or identity source."
+    },
+    {
+      "id": "HT-V1-INF-F03-007",
+      "type": "HAPPENING_TYPE",
+      "recommendation": "KEEP_INACTIVE",
+      "dependencies": [],
+      "reason": "Non-deliberate exposure has no governed effect or identity evidence assessment."
+    }
+  ],
+  "activationOrder": [
+    {
+      "step": 1,
+      "ids": ["EVA-V1-INF-F03-REL-001", "EVA-AE-V1-INF-F03-002"],
+      "mode": "BEFORE_OR_SAME_TRANSACTION"
+    },
+    {
+      "step": 2,
+      "ids": ["REL-V1-INF-F03-001"],
+      "mode": "AFTER_RELATIONSHIP_EVIDENCE"
+    },
+    {
+      "step": 3,
+      "ids": ["HT-V1-INF-F03-002", "EA-V1-INF-F03-002"],
+      "mode": "ATOMIC_BUNDLE_AFTER_EFFECT_EVIDENCE"
+    }
+  ],
+  "sourceAudit": {
+    "canonicalSourceIds": ["SRC-550", "SRC-551", "SRC-552"],
+    "metadataVerified": true,
+    "identifierDuplicates": [],
+    "sourceFindingIds": [
+      "FND-V1-INF-F03-REL-001-SRC-551",
+      "FND-V1-INF-F03-REL-001-SRC-552",
+      "FND-EA-V1-INF-F03-001-SRC-550",
+      "FND-EA-V1-INF-F03-002-SRC-551",
+      "FND-EA-V1-INF-F03-002-SRC-552"
+    ],
+    "findingCount": 5,
+    "unsupportedQuantitativeEstimates": 0
+  },
+  "rdsSafety": {
+    "ids": ["INF-010", "INF-011", "INF-014", "RDS-0001"],
+    "passed": true,
+    "directTargets": [],
+    "newCausalEndpoints": [],
+    "doublePropagationDetected": false
+  },
+  "excludedCandidateIds": [
+    "REL-CAND-INF-F03-002",
+    "REL-CAND-INF-F03-003",
+    "REL-CAND-INF-F03-004",
+    "HT-CAND-INF-F03-003",
+    "EA-CAND-INF-F03-003",
+    "EA-CAND-INF-F03-004",
+    "EA-CAND-INF-F03-005",
+    "EA-CAND-INF-F03-006",
+    "EA-CAND-INF-F03-007"
+  ],
+  "productionCounts": {
+    "drivers": 770,
+    "rds": 41,
+    "entities": 811,
+    "activeRelationships": 456,
+    "activeCausalRelationships": 435
+  },
+  "recommendedSimulationCounts": {
+    "activeRelationships": 457,
+    "activeCausalRelationships": 436
+  }
+}

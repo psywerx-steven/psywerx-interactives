@@ -34,6 +34,9 @@ REVIEW_READY record is prepared for review, not scientifically authoritative.
   remain proposal-only.
 - [Human decision record](INF_F03_GOVERNANCE_DECISION_001.md): exact dispositions,
   canonical lineage, scientific boundaries, and explicit activation withholding.
+- [Independent activation-readiness audit](INF_F03_ACTIVATION_AUDIT_001.md):
+  record-by-record recommendations, dependency order, evidence/source checks,
+  practitioner-use separation, and the EA-001 feature-scope enforcement blocker.
 - [Manifest](INF_F03_AUDIT_MANIFEST.json),
   [frozen generalized baseline](../../../../reports/actions-events-v1/INF-F03-pilot-baseline/INF-F03_baseline.json),
   and [execution record](EXECUTION.md).
@@ -58,6 +61,7 @@ REVIEW_READY record is prepared for review, not scientifically authoritative.
 ```text
 python scripts/build_inf_f03_pilot.py
 python -m unittest discover -s tests -p test_inf_f03_pilot.py
+python -m unittest discover -s tests -p test_inf_f03_activation_audit_001.py
 python scripts/validate_inf_f03_pilot.py
 ```
 
