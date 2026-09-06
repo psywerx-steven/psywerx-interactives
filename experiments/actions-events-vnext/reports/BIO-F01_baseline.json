@@ -1,0 +1,3715 @@
+{
+  "baselineCommit": "2636dd9a8b7bad1da3d7dfa21db5fe877f4de4e1",
+  "candidateIncident": [
+    {
+      "applicability": {
+        "analyticUnit": "PERSON",
+        "context": "Applies to post-awakening assessment; effect varies by prior restriction, sleep stage at awakening, circadian phase, task, and individual vulnerability.",
+        "populationOrSystem": "Humans within the population and protocol stated by the evidence"
+      },
+      "associationSpecification": null,
+      "boundaryConditions": "Applies to post-awakening assessment; effect varies by prior restriction, sleep stage at awakening, circadian phase, task, and individual vulnerability.",
+      "causalClaim": true,
+      "causalClaimRole": "MODELED_LOCAL_LINK",
+      "causalLag": null,
+      "causalReviewGate": "STANDARD_CAUSAL",
+      "combinationRule": null,
+      "compatibility": {
+        "authorityStatus": "V1_LIFECYCLE",
+        "blockedFields": [],
+        "legacyRecord": null,
+        "legacyRecordHash": null,
+        "legacyRelationFamily": null,
+        "legacyScientificFields": null,
+        "migrationCompleteness": "COMPLETE",
+        "sourceSchema": "RELATIONSHIP_V1",
+        "v1Executability": "NOT_EXECUTABLE"
+      },
+      "evidenceAssessmentIds": [
+        "EVA-CAND-BIO-F01-REL-001"
+      ],
+      "exposurePattern": null,
+      "functionalForm": null,
+      "governance": {
+        "activationStatus": "NOT_ELIGIBLE",
+        "authorityBasis": "V1_NATIVE",
+        "authorizedBy": null,
+        "blockStatus": "NONE",
+        "decisionDate": null,
+        "decisionOutcome": "NOT_DECIDED",
+        "decisionRationale": null,
+        "decisionRecord": null,
+        "effectiveVersion": null,
+        "lifecycleStatus": "REVIEW_READY",
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": null
+            },
+            "governanceDecisionRecord": null,
+            "objectId": "REL-CAND-BIO-F01-001",
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-1",
+            "rationale": "Created as a non-governed BIO-F01 pilot candidate.",
+            "revision": 1,
+            "timestamp": "2026-09-05T12:00:00Z",
+            "toState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "CANDIDATE"
+            }
+          },
+          {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "CANDIDATE"
+            },
+            "governanceDecisionRecord": null,
+            "objectId": "REL-CAND-BIO-F01-001",
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
+            "rationale": "Structured evidence audit indicated additional research or qualification was required.",
+            "revision": 1,
+            "timestamp": "2026-09-05T12:00:00Z",
+            "toState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "RESEARCH_NEEDED"
+            }
+          },
+          {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "RESEARCH_NEEDED"
+            },
+            "governanceDecisionRecord": null,
+            "objectId": "REL-CAND-BIO-F01-001",
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-3",
+            "rationale": "Structured evidence audit completed the candidate packet for human scientific review.",
+            "revision": 1,
+            "timestamp": "2026-09-05T12:00:00Z",
+            "toState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "REVIEW_READY"
+            }
+          }
+        ]
+      },
+      "id": "REL-CAND-BIO-F01-001",
+      "legacyDirectness": null,
+      "mechanism": "Greater obtained sleep, within an individually relevant range, reduces homeostatic sleep pressure that otherwise magnifies post-awakening impairment.",
+      "moderatedRelationshipId": null,
+      "moderationDirection": null,
+      "moderatorSpecifications": [],
+      "persistence": null,
+      "polarity": "NEGATIVE",
+      "predicate": "CAUSES",
+      "rdsSafeguards": null,
+      "relationFamily": "CAUSAL",
+      "revision": 1,
+      "schemaVersion": "1.0.0",
+      "sourceEntityId": "BIO-001",
+      "sourceEntityType": "DRIVER",
+      "sourceIds": [
+        "SRC010"
+      ],
+      "symmetry": "DIRECTED",
+      "targetEntityId": "BIO-005",
+      "targetEntityType": "DRIVER",
+      "temporalSpecification": null
+    },
+    {
+      "applicability": {
+        "analyticUnit": "PERSON",
+        "context": "Phase is cyclic rather than better/worse; the claim is conditional on awakening phase, prior sleep, sleep stage, and task.",
+        "populationOrSystem": "Humans within the population and protocol stated by the evidence"
+      },
+      "associationSpecification": null,
+      "boundaryConditions": "Phase is cyclic rather than better/worse; the claim is conditional on awakening phase, prior sleep, sleep stage, and task.",
+      "causalClaim": true,
+      "causalClaimRole": "MODELED_LOCAL_LINK",
+      "causalLag": null,
+      "causalReviewGate": "STANDARD_CAUSAL",
+      "combinationRule": null,
+      "compatibility": {
+        "authorityStatus": "V1_LIFECYCLE",
+        "blockedFields": [],
+        "legacyRecord": null,
+        "legacyRecordHash": null,
+        "legacyRelationFamily": null,
+        "legacyScientificFields": null,
+        "migrationCompleteness": "COMPLETE",
+        "sourceSchema": "RELATIONSHIP_V1",
+        "v1Executability": "NOT_EXECUTABLE"
+      },
+      "evidenceAssessmentIds": [
+        "EVA-CAND-BIO-F01-REL-002"
+      ],
+      "exposurePattern": null,
+      "functionalForm": null,
+      "governance": {
+        "activationStatus": "NOT_ELIGIBLE",
+        "authorityBasis": "V1_NATIVE",
+        "authorizedBy": null,
+        "blockStatus": "NONE",
+        "decisionDate": null,
+        "decisionOutcome": "NOT_DECIDED",
+        "decisionRationale": null,
+        "decisionRecord": null,
+        "effectiveVersion": null,
+        "lifecycleStatus": "REVIEW_READY",
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": null
+            },
+            "governanceDecisionRecord": null,
+            "objectId": "REL-CAND-BIO-F01-002",
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-1",
+            "rationale": "Created as a non-governed BIO-F01 pilot candidate.",
+            "revision": 1,
+            "timestamp": "2026-09-05T12:00:00Z",
+            "toState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "CANDIDATE"
+            }
+          },
+          {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "CANDIDATE"
+            },
+            "governanceDecisionRecord": null,
+            "objectId": "REL-CAND-BIO-F01-002",
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
+            "rationale": "Structured evidence audit indicated additional research or qualification was required.",
+            "revision": 1,
+            "timestamp": "2026-09-05T12:00:00Z",
+            "toState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "RESEARCH_NEEDED"
+            }
+          },
+          {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "RESEARCH_NEEDED"
+            },
+            "governanceDecisionRecord": null,
+            "objectId": "REL-CAND-BIO-F01-002",
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-3",
+            "rationale": "Structured evidence audit completed the candidate packet for human scientific review.",
+            "revision": 1,
+            "timestamp": "2026-09-05T12:00:00Z",
+            "toState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "REVIEW_READY"
+            }
+          }
+        ]
+      },
+      "id": "REL-CAND-BIO-F01-002",
+      "legacyDirectness": null,
+      "mechanism": "Circadian phase at awakening changes the magnitude and dissipation of sleep inertia through circadian regulation of arousal.",
+      "moderatedRelationshipId": null,
+      "moderationDirection": null,
+      "moderatorSpecifications": [],
+      "persistence": null,
+      "polarity": "CONTEXT_DEPENDENT",
+      "predicate": "CAUSES",
+      "rdsSafeguards": null,
+      "relationFamily": "CAUSAL",
+      "revision": 1,
+      "schemaVersion": "1.0.0",
+      "sourceEntityId": "BIO-004",
+      "sourceEntityType": "DRIVER",
+      "sourceIds": [
+        "SRC010"
+      ],
+      "symmetry": "DIRECTED",
+      "targetEntityId": "BIO-005",
+      "targetEntityType": "DRIVER",
+      "temporalSpecification": null
+    },
+    {
+      "applicability": {
+        "analyticUnit": "PERSON",
+        "context": "Depends on dose, formulation, metabolism, tolerance, administration time, habitual use, and available sleep opportunity.",
+        "populationOrSystem": "Humans within the population and protocol stated by the evidence"
+      },
+      "associationSpecification": null,
+      "boundaryConditions": "Depends on dose, formulation, metabolism, tolerance, administration time, habitual use, and available sleep opportunity.",
+      "causalClaim": true,
+      "causalClaimRole": "MODELED_LOCAL_LINK",
+      "causalLag": null,
+      "causalReviewGate": "STANDARD_CAUSAL",
+      "combinationRule": null,
+      "compatibility": {
+        "authorityStatus": "V1_LIFECYCLE",
+        "blockedFields": [],
+        "legacyRecord": null,
+        "legacyRecordHash": null,
+        "legacyRelationFamily": null,
+        "legacyScientificFields": null,
+        "migrationCompleteness": "COMPLETE",
+        "sourceSchema": "RELATIONSHIP_V1",
+        "v1Executability": "NOT_EXECUTABLE"
+      },
+      "evidenceAssessmentIds": [
+        "EVA-CAND-BIO-F01-REL-003"
+      ],
+      "exposurePattern": null,
+      "functionalForm": null,
+      "governance": {
+        "activationStatus": "NOT_ELIGIBLE",
+        "authorityBasis": "V1_NATIVE",
+        "authorizedBy": null,
+        "blockStatus": "NONE",
+        "decisionDate": null,
+        "decisionOutcome": "NOT_DECIDED",
+        "decisionRationale": null,
+        "decisionRecord": null,
+        "effectiveVersion": null,
+        "lifecycleStatus": "REVIEW_READY",
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": null
+            },
+            "governanceDecisionRecord": null,
+            "objectId": "REL-CAND-BIO-F01-003",
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-1",
+            "rationale": "Created as a non-governed BIO-F01 pilot candidate.",
+            "revision": 1,
+            "timestamp": "2026-09-05T12:00:00Z",
+            "toState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "CANDIDATE"
+            }
+          },
+          {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "CANDIDATE"
+            },
+            "governanceDecisionRecord": null,
+            "objectId": "REL-CAND-BIO-F01-003",
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
+            "rationale": "Structured evidence audit indicated additional research or qualification was required.",
+            "revision": 1,
+            "timestamp": "2026-09-05T12:00:00Z",
+            "toState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "RESEARCH_NEEDED"
+            }
+          },
+          {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "RESEARCH_NEEDED"
+            },
+            "governanceDecisionRecord": null,
+            "objectId": "REL-CAND-BIO-F01-003",
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-3",
+            "rationale": "Structured evidence audit completed the candidate packet for human scientific review.",
+            "revision": 1,
+            "timestamp": "2026-09-05T12:00:00Z",
+            "toState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "REVIEW_READY"
+            }
+          }
+        ]
+      },
+      "id": "REL-CAND-BIO-F01-003",
+      "legacyDirectness": null,
+      "mechanism": "Caffeine exposure sufficiently near planned sleep can delay sleep initiation and reduce obtained sleep duration through adenosine-receptor antagonism and increased alerting.",
+      "moderatedRelationshipId": null,
+      "moderationDirection": null,
+      "moderatorSpecifications": [],
+      "persistence": null,
+      "polarity": "NEGATIVE",
+      "predicate": "CONSTRAINS",
+      "rdsSafeguards": null,
+      "relationFamily": "CAUSAL",
+      "revision": 1,
+      "schemaVersion": "1.0.0",
+      "sourceEntityId": "BIO-061",
+      "sourceEntityType": "DRIVER",
+      "sourceIds": [
+        "SRC086"
+      ],
+      "symmetry": "DIRECTED",
+      "targetEntityId": "BIO-001",
+      "targetEntityType": "DRIVER",
+      "temporalSpecification": null
+    },
+    {
+      "applicability": {
+        "analyticUnit": "PERSON",
+        "context": "Evidence is strongest for transportation-noise events in adults; habituation, event level, sound meaning, insulation, hearing, and setting modify response.",
+        "populationOrSystem": "Humans within the population and protocol stated by the evidence"
+      },
+      "associationSpecification": null,
+      "boundaryConditions": "Evidence is strongest for transportation-noise events in adults; habituation, event level, sound meaning, insulation, hearing, and setting modify response.",
+      "causalClaim": true,
+      "causalClaimRole": "MODELED_LOCAL_LINK",
+      "causalLag": null,
+      "causalReviewGate": "STANDARD_CAUSAL",
+      "combinationRule": null,
+      "compatibility": {
+        "authorityStatus": "V1_LIFECYCLE",
+        "blockedFields": [
+          "canonicalSourceRegistration"
+        ],
+        "legacyRecord": null,
+        "legacyRecordHash": null,
+        "legacyRelationFamily": null,
+        "legacyScientificFields": null,
+        "migrationCompleteness": "COMPLETE",
+        "sourceSchema": "RELATIONSHIP_V1",
+        "v1Executability": "NOT_EXECUTABLE"
+      },
+      "evidenceAssessmentIds": [
+        "EVA-CAND-BIO-F01-REL-004"
+      ],
+      "exposurePattern": null,
+      "functionalForm": null,
+      "governance": {
+        "activationStatus": "NOT_ELIGIBLE",
+        "authorityBasis": "V1_NATIVE",
+        "authorizedBy": null,
+        "blockStatus": "NONE",
+        "decisionDate": null,
+        "decisionOutcome": "NOT_DECIDED",
+        "decisionRationale": null,
+        "decisionRecord": null,
+        "effectiveVersion": null,
+        "lifecycleStatus": "REVIEW_READY",
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": null
+            },
+            "governanceDecisionRecord": null,
+            "objectId": "REL-CAND-BIO-F01-004",
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-1",
+            "rationale": "Created as a non-governed BIO-F01 pilot candidate.",
+            "revision": 1,
+            "timestamp": "2026-09-05T12:00:00Z",
+            "toState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "CANDIDATE"
+            }
+          },
+          {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "CANDIDATE"
+            },
+            "governanceDecisionRecord": null,
+            "objectId": "REL-CAND-BIO-F01-004",
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
+            "rationale": "Structured evidence audit indicated additional research or qualification was required.",
+            "revision": 1,
+            "timestamp": "2026-09-05T12:00:00Z",
+            "toState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "RESEARCH_NEEDED"
+            }
+          },
+          {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "RESEARCH_NEEDED"
+            },
+            "governanceDecisionRecord": null,
+            "objectId": "REL-CAND-BIO-F01-004",
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-3",
+            "rationale": "Structured evidence audit completed the candidate packet for human scientific review.",
+            "revision": 1,
+            "timestamp": "2026-09-05T12:00:00Z",
+            "toState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "REVIEW_READY"
+            }
+          }
+        ]
+      },
+      "id": "REL-CAND-BIO-F01-004",
+      "legacyDirectness": null,
+      "mechanism": "Intermittent nighttime sound events provoke cortical arousals and awakenings that fragment an ongoing sleep episode.",
+      "moderatedRelationshipId": null,
+      "moderationDirection": null,
+      "moderatorSpecifications": [],
+      "persistence": null,
+      "polarity": "NEGATIVE",
+      "predicate": "CONSTRAINS",
+      "rdsSafeguards": null,
+      "relationFamily": "CAUSAL",
+      "revision": 1,
+      "schemaVersion": "1.0.0",
+      "sourceEntityId": "ENV-041",
+      "sourceEntityType": "DRIVER",
+      "sourceIds": [],
+      "symmetry": "DIRECTED",
+      "targetEntityId": "BIO-002",
+      "targetEntityType": "DRIVER",
+      "temporalSpecification": null
+    },
+    {
+      "applicability": {
+        "analyticUnit": "PERSON",
+        "context": "Most available evidence concerns broad sleep problems and pain, is observational, and does not isolate canonical Sleep Continuity; causal specificity remains unresolved.",
+        "populationOrSystem": "Humans within the population and protocol stated by the evidence"
+      },
+      "associationSpecification": null,
+      "boundaryConditions": "Most available evidence concerns broad sleep problems and pain, is observational, and does not isolate canonical Sleep Continuity; causal specificity remains unresolved.",
+      "causalClaim": true,
+      "causalClaimRole": "MODELED_LOCAL_LINK",
+      "causalLag": null,
+      "causalReviewGate": "STANDARD_CAUSAL",
+      "combinationRule": null,
+      "compatibility": {
+        "authorityStatus": "V1_LIFECYCLE",
+        "blockedFields": [
+          "canonicalSourceRegistration"
+        ],
+        "legacyRecord": null,
+        "legacyRecordHash": null,
+        "legacyRelationFamily": null,
+        "legacyScientificFields": null,
+        "migrationCompleteness": "INCOMPLETE",
+        "sourceSchema": "RELATIONSHIP_V1",
+        "v1Executability": "NOT_EXECUTABLE"
+      },
+      "evidenceAssessmentIds": [
+        "EVA-CAND-BIO-F01-REL-005"
+      ],
+      "exposurePattern": null,
+      "functionalForm": null,
+      "governance": {
+        "activationStatus": "NOT_ELIGIBLE",
+        "authorityBasis": "V1_NATIVE",
+        "authorizedBy": null,
+        "blockStatus": "NONE",
+        "decisionDate": null,
+        "decisionOutcome": "NOT_DECIDED",
+        "decisionRationale": null,
+        "decisionRecord": null,
+        "effectiveVersion": null,
+        "lifecycleStatus": "RESEARCH_NEEDED",
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": null
+            },
+            "governanceDecisionRecord": null,
+            "objectId": "REL-CAND-BIO-F01-005",
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-1",
+            "rationale": "Created as a non-governed BIO-F01 pilot candidate.",
+            "revision": 1,
+            "timestamp": "2026-09-05T12:00:00Z",
+            "toState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "CANDIDATE"
+            }
+          },
+          {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "CANDIDATE"
+            },
+            "governanceDecisionRecord": null,
+            "objectId": "REL-CAND-BIO-F01-005",
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
+            "rationale": "Structured evidence audit indicated additional research or qualification was required.",
+            "revision": 1,
+            "timestamp": "2026-09-05T12:00:00Z",
+            "toState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "RESEARCH_NEEDED"
+            }
+          }
+        ]
+      },
+      "id": "REL-CAND-BIO-F01-005",
+      "legacyDirectness": null,
+      "mechanism": "More continuous sleep may reduce subsequent persistent pain burden through nociceptive, inflammatory, affective, and attentional processes.",
+      "moderatedRelationshipId": null,
+      "moderationDirection": null,
+      "moderatorSpecifications": [],
+      "persistence": null,
+      "polarity": "NEGATIVE",
+      "predicate": "CAUSES",
+      "rdsSafeguards": null,
+      "relationFamily": "CAUSAL",
+      "revision": 1,
+      "schemaVersion": "1.0.0",
+      "sourceEntityId": "BIO-002",
+      "sourceEntityType": "DRIVER",
+      "sourceIds": [],
+      "symmetry": "DIRECTED",
+      "targetEntityId": "BIO-028",
+      "targetEntityType": "DRIVER",
+      "temporalSpecification": null
+    },
+    {
+      "applicability": null,
+      "associationSpecification": {
+        "constituentOverlapCheck": "Chronotype is partly shaped by phase but is not calculated from the canonical Endogenous Circadian Phase entity; instrument overlap and schedule contamination must be reported.",
+        "qualitativeStatement": "Earlier chronotype measures are associated with earlier endogenous circadian phase markers under aligned protocols.",
+        "strengthEstimate": null,
+        "temporalScope": "REPEATED_MIXED"
+      },
+      "boundaryConditions": "Instrument, age, sleep schedule, light history, and phase-marker protocol must be stated.",
+      "causalClaim": false,
+      "causalClaimRole": null,
+      "causalLag": null,
+      "causalReviewGate": null,
+      "combinationRule": null,
+      "compatibility": {
+        "authorityStatus": "V1_LIFECYCLE",
+        "blockedFields": [],
+        "legacyRecord": null,
+        "legacyRecordHash": null,
+        "legacyRelationFamily": null,
+        "legacyScientificFields": null,
+        "migrationCompleteness": "COMPLETE",
+        "sourceSchema": "RELATIONSHIP_V1",
+        "v1Executability": "NOT_EXECUTABLE"
+      },
+      "evidenceAssessmentIds": [
+        "EVA-CAND-BIO-F01-REL-006"
+      ],
+      "exposurePattern": null,
+      "functionalForm": null,
+      "governance": {
+        "activationStatus": "NOT_ELIGIBLE",
+        "authorityBasis": "V1_NATIVE",
+        "authorizedBy": null,
+        "blockStatus": "NONE",
+        "decisionDate": null,
+        "decisionOutcome": "NOT_DECIDED",
+        "decisionRationale": null,
+        "decisionRecord": null,
+        "effectiveVersion": null,
+        "lifecycleStatus": "REVIEW_READY",
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": null
+            },
+            "governanceDecisionRecord": null,
+            "objectId": "REL-CAND-BIO-F01-006",
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-1",
+            "rationale": "Created as a non-governed BIO-F01 pilot candidate.",
+            "revision": 1,
+            "timestamp": "2026-09-05T12:00:00Z",
+            "toState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "CANDIDATE"
+            }
+          },
+          {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "CANDIDATE"
+            },
+            "governanceDecisionRecord": null,
+            "objectId": "REL-CAND-BIO-F01-006",
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
+            "rationale": "Structured evidence audit indicated additional research or qualification was required.",
+            "revision": 1,
+            "timestamp": "2026-09-05T12:00:00Z",
+            "toState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "RESEARCH_NEEDED"
+            }
+          },
+          {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "RESEARCH_NEEDED"
+            },
+            "governanceDecisionRecord": null,
+            "objectId": "REL-CAND-BIO-F01-006",
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-3",
+            "rationale": "Structured evidence audit completed the candidate packet for human scientific review.",
+            "revision": 1,
+            "timestamp": "2026-09-05T12:00:00Z",
+            "toState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "REVIEW_READY"
+            }
+          }
+        ]
+      },
+      "id": "REL-CAND-BIO-F01-006",
+      "legacyDirectness": null,
+      "mechanism": "Chronotype instruments covary with physiological circadian phase markers but are not interchangeable measurements.",
+      "moderatedRelationshipId": null,
+      "moderationDirection": null,
+      "moderatorSpecifications": [],
+      "persistence": null,
+      "polarity": null,
+      "predicate": "ASSOCIATED_WITH",
+      "rdsSafeguards": null,
+      "relationFamily": "EMPIRICAL_NONCAUSAL",
+      "revision": 1,
+      "schemaVersion": "1.0.0",
+      "sourceEntityId": "BIO-004",
+      "sourceEntityType": "DRIVER",
+      "sourceIds": [
+        "SRC009",
+        "SRC011"
+      ],
+      "symmetry": "SYMMETRIC",
+      "targetEntityId": "BIO-073",
+      "targetEntityType": "DRIVER",
+      "temporalSpecification": null
+    },
+    {
+      "applicability": null,
+      "associationSpecification": {
+        "constituentOverlapCheck": "Present: total sleep time and sleep-efficiency/fragmentation measures can share the same scored epochs or denominator; effect estimates require non-overlapping operationalizations or explicit correction.",
+        "qualitativeStatement": "Sleep Duration and Sleep Continuity commonly covary within sleep-health studies, without a generic causal direction being established.",
+        "strengthEstimate": null,
+        "temporalScope": "REPEATED_MIXED"
+      },
+      "boundaryConditions": "The duration metric must exclude or explicitly account for wake-after-sleep-onset and time-in-bed overlap.",
+      "causalClaim": false,
+      "causalClaimRole": null,
+      "causalLag": null,
+      "causalReviewGate": null,
+      "combinationRule": null,
+      "compatibility": {
+        "authorityStatus": "V1_LIFECYCLE",
+        "blockedFields": [],
+        "legacyRecord": null,
+        "legacyRecordHash": null,
+        "legacyRelationFamily": null,
+        "legacyScientificFields": null,
+        "migrationCompleteness": "INCOMPLETE",
+        "sourceSchema": "RELATIONSHIP_V1",
+        "v1Executability": "NOT_EXECUTABLE"
+      },
+      "evidenceAssessmentIds": [
+        "EVA-CAND-BIO-F01-REL-007"
+      ],
+      "exposurePattern": null,
+      "functionalForm": null,
+      "governance": {
+        "activationStatus": "NOT_ELIGIBLE",
+        "authorityBasis": "V1_NATIVE",
+        "authorizedBy": null,
+        "blockStatus": "NONE",
+        "decisionDate": null,
+        "decisionOutcome": "NOT_DECIDED",
+        "decisionRationale": null,
+        "decisionRecord": null,
+        "effectiveVersion": null,
+        "lifecycleStatus": "RESEARCH_NEEDED",
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": null
+            },
+            "governanceDecisionRecord": null,
+            "objectId": "REL-CAND-BIO-F01-007",
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-1",
+            "rationale": "Created as a non-governed BIO-F01 pilot candidate.",
+            "revision": 1,
+            "timestamp": "2026-09-05T12:00:00Z",
+            "toState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "CANDIDATE"
+            }
+          },
+          {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "CANDIDATE"
+            },
+            "governanceDecisionRecord": null,
+            "objectId": "REL-CAND-BIO-F01-007",
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
+            "rationale": "Structured evidence audit indicated additional research or qualification was required.",
+            "revision": 1,
+            "timestamp": "2026-09-05T12:00:00Z",
+            "toState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "RESEARCH_NEEDED"
+            }
+          }
+        ]
+      },
+      "id": "REL-CAND-BIO-F01-007",
+      "legacyDirectness": null,
+      "mechanism": "Sleep episodes with reduced duration often also have reduced continuity, but shared sleep-opportunity and measurement components can induce covariance.",
+      "moderatedRelationshipId": null,
+      "moderationDirection": null,
+      "moderatorSpecifications": [],
+      "persistence": null,
+      "polarity": null,
+      "predicate": "ASSOCIATED_WITH",
+      "rdsSafeguards": null,
+      "relationFamily": "EMPIRICAL_NONCAUSAL",
+      "revision": 1,
+      "schemaVersion": "1.0.0",
+      "sourceEntityId": "BIO-001",
+      "sourceEntityType": "DRIVER",
+      "sourceIds": [
+        "SRC005",
+        "SRC006"
+      ],
+      "symmetry": "SYMMETRIC",
+      "targetEntityId": "BIO-002",
+      "targetEntityType": "DRIVER",
+      "temporalSpecification": null
+    },
+    {
+      "applicability": null,
+      "associationSpecification": null,
+      "boundaryConditions": "The external timing requirement, phase measure, interval, alignment convention, and update rule must also be supplied.",
+      "causalClaim": false,
+      "causalClaimRole": null,
+      "causalLag": null,
+      "causalReviewGate": null,
+      "combinationRule": null,
+      "compatibility": {
+        "authorityStatus": "V1_LIFECYCLE",
+        "blockedFields": [],
+        "legacyRecord": null,
+        "legacyRecordHash": null,
+        "legacyRelationFamily": null,
+        "legacyScientificFields": null,
+        "migrationCompleteness": "COMPLETE",
+        "sourceSchema": "RELATIONSHIP_V1",
+        "v1Executability": "NOT_EXECUTABLE"
+      },
+      "evidenceAssessmentIds": [
+        "EVA-CAND-BIO-F01-REL-009"
+      ],
+      "exposurePattern": null,
+      "functionalForm": null,
+      "governance": {
+        "activationStatus": "NOT_ELIGIBLE",
+        "authorityBasis": "V1_NATIVE",
+        "authorizedBy": null,
+        "blockStatus": "NONE",
+        "decisionDate": null,
+        "decisionOutcome": "NOT_DECIDED",
+        "decisionRationale": null,
+        "decisionRecord": null,
+        "effectiveVersion": null,
+        "lifecycleStatus": "REVIEW_READY",
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": null
+            },
+            "governanceDecisionRecord": null,
+            "objectId": "REL-CAND-BIO-F01-009",
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-1",
+            "rationale": "Created as a non-governed BIO-F01 pilot candidate.",
+            "revision": 1,
+            "timestamp": "2026-09-05T12:00:00Z",
+            "toState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "CANDIDATE"
+            }
+          },
+          {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "CANDIDATE"
+            },
+            "governanceDecisionRecord": null,
+            "objectId": "REL-CAND-BIO-F01-009",
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
+            "rationale": "Structured evidence audit indicated additional research or qualification was required.",
+            "revision": 1,
+            "timestamp": "2026-09-05T12:00:00Z",
+            "toState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "RESEARCH_NEEDED"
+            }
+          },
+          {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "RESEARCH_NEEDED"
+            },
+            "governanceDecisionRecord": null,
+            "objectId": "REL-CAND-BIO-F01-009",
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-3",
+            "rationale": "Structured evidence audit completed the candidate packet for human scientific review.",
+            "revision": 1,
+            "timestamp": "2026-09-05T12:00:00Z",
+            "toState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "REVIEW_READY"
+            }
+          }
+        ]
+      },
+      "id": "REL-CAND-BIO-F01-009",
+      "legacyDirectness": null,
+      "mechanism": "Endogenous Circadian Phase is the internal-timing constituent used to calculate Circadian Timing Alignment.",
+      "moderatedRelationshipId": null,
+      "moderationDirection": null,
+      "moderatorSpecifications": [],
+      "persistence": null,
+      "polarity": null,
+      "predicate": "DERIVED_FROM",
+      "rdsSafeguards": null,
+      "relationFamily": "DERIVATIONAL",
+      "revision": 1,
+      "schemaVersion": "1.0.0",
+      "sourceEntityId": "BIO-003",
+      "sourceEntityType": "RELATIONAL_DERIVED_STATE",
+      "sourceIds": [
+        "SRC009",
+        "SRC011"
+      ],
+      "symmetry": "DIRECTED",
+      "targetEntityId": "BIO-004",
+      "targetEntityType": "DRIVER",
+      "temporalSpecification": null
+    }
+  ],
+  "entities": [
+    {
+      "aliases": [],
+      "associatedLayers": [
+        "Biological"
+      ],
+      "blockedFields": [
+        "mechanism",
+        "modifiability",
+        "volatility",
+        "timeScaleOfChange",
+        "onsetCausalLag",
+        "persistenceRecovery",
+        "measurementAssessmentMethods",
+        "observability",
+        "evidenceStrength",
+        "evidenceNotes",
+        "keySources"
+      ],
+      "commonMisinterpretations": null,
+      "dataType": "Bipolar continuous",
+      "definition": "A relatively stable individual timing phenotype reflecting earlier-versus-later propensity or preference for sleep and activity, shaped by circadian phase, homeostatic sleep processes, age, genetics, and habitual environmental timing.",
+      "entitySubtype": null,
+      "entityType": "DRIVER",
+      "evidenceNotes": null,
+      "evidenceStrength": null,
+      "family": "Sleep & Circadian Regulation",
+      "id": "BIO-073",
+      "indicators": [],
+      "keySources": [],
+      "layer": "Biological",
+      "likelyDownstreamInfluences": [],
+      "likelyUpstreamInfluences": [],
+      "measurementAssessmentMethods": null,
+      "measurementCaveats": "Not identical to endogenous circadian phase, habitual clock time, current sleep schedule, or Chronotype–Schedule Fit; instruments may measure different timing dimensions.",
+      "mechanism": null,
+      "metadataStatus": "PARTIAL_GOVERNED_PREVIEW",
+      "moderatorsBoundaryConditions": null,
+      "modifiability": null,
+      "name": "Chronotype",
+      "observability": null,
+      "onsetCausalLag": [],
+      "persistenceRecovery": null,
+      "polarityDirection": "Earlier and later values indicate timing phenotype; no universal better/worse polarity.",
+      "primaryFamilyId": "BIO-F01",
+      "relatedFamilyIds": [],
+      "representationScale": "Continuous morningness–eveningness score, corrected midsleep timing, or another validated timing-phenotype measure with instrument and reference period specified.",
+      "source": {
+        "decisionRecord": "https://app.notion.com/p/3cdf827a3d15815897b1fb28cfa20fe5",
+        "specification": "_migration_handoff_v0.3",
+        "status": "GOVERNED_PREVIEW"
+      },
+      "timeScaleOfChange": [],
+      "timeScaleQualifier": null,
+      "typicalInteractionCandidates": [],
+      "volatility": null
+    },
+    {
+      "aliases": [],
+      "associatedLayers": [
+        "Biological"
+      ],
+      "commonMisinterpretations": "Chronotype is not a personality type and does not dictate behavior.",
+      "constituentSpecifications": [
+        {
+          "alignmentRequirements": "Match analytic level, scope, and time window",
+          "entityId": "BIO-073",
+          "externalParameterType": null,
+          "required": true,
+          "role": "CONSTITUENT_OR_INPUT",
+          "unitScaleExpectations": "Aligned with derivation logic"
+        },
+        {
+          "alignmentRequirements": "Match analytic level, scope, and time window",
+          "entityId": null,
+          "externalParameterType": "REQUIRED_SCHEDULE",
+          "required": true,
+          "role": "CONSTITUENT_OR_INPUT",
+          "unitScaleExpectations": "Aligned with derivation logic"
+        }
+      ],
+      "dataType": "Magnitude / level",
+      "definition": "The degree of fit between an individual’s preferred biological timing and externally required schedules.",
+      "derivationLogic": "Compare the individual Chronotype with the required schedule using the declared fit or mismatch rule.",
+      "derivationType": "FIT",
+      "directManipulability": "VIA_CONSTITUENTS",
+      "entitySubtype": "RELATIONAL_DERIVED_STATE",
+      "entityType": "RELATIONAL_DERIVED_STATE",
+      "evidenceNotes": "May affect when people are most receptive to learning, persuasion, complex decisions, or behavior-change demands. Chronotype is not a personality type and does not dictate behavior.",
+      "evidenceStrength": "Moderate",
+      "family": "Sleep & Circadian Regulation",
+      "id": "BIO-006",
+      "indicators": [
+        "Morningness-eveningness scales",
+        "midsleep timing",
+        "social jetlag metrics"
+      ],
+      "keySources": [
+        "SRC009",
+        "SRC011"
+      ],
+      "layer": "Biological",
+      "likelyDownstreamInfluences": [
+        "Lower alertness at required times, sleep debt, and potentially poorer cognitive/health outcomes."
+      ],
+      "likelyUpstreamInfluences": [
+        "light exposure",
+        "work and caregiving schedules",
+        "prior sleep",
+        "stimulant or sedative use",
+        "illness"
+      ],
+      "measurementAssessmentMethods": "See linked Operationalizations records.",
+      "measurementCaveats": "Indicators may be state-, protocol-, dose-, and population-dependent; do not equate a single proxy with the construct. Chronotype is not a personality type and does not dictate behavior.",
+      "mechanism": "Mismatch can produce chronic sleep curtailment and repeated circadian misalignment.",
+      "moderatorsBoundaryConditions": "Evidence for specific cognitive effects is heterogeneous and often observational.",
+      "modifiability": "Moderate",
+      "name": "Chronotype–Schedule Fit",
+      "observability": "High",
+      "onsetCausalLag": [
+        "Mixed / Context-dependent"
+      ],
+      "persistenceRecovery": "Commonly persists across Days–chronic; recovery depends on cause, dose, and intervention.",
+      "polarityDirection": "Higher values = greater chronotype–schedule alignment.",
+      "primaryFamilyId": "BIO-F01",
+      "recalculationBehavior": "Recalculate when a required constituent, reference, boundary, formula, or analysis window changes.",
+      "relatedFamilyIds": [],
+      "representationScale": "continuous or ordinal level; clinically meaningful thresholds only where validated",
+      "scopeRequirements": "Specify chronotype instrument, schedule, reference period, time zone, and fit convention.",
+      "source": {
+        "sheet": "Drivers",
+        "workbook": "PSYWERX_Layer_1_Biological_Driver_Ontology_v1.0.xlsx"
+      },
+      "timeScaleOfChange": [
+        "Days–Weeks"
+      ],
+      "timeScaleQualifier": "Repeated mismatch or persistent social jetlag may continue chronically; adaptation rate varies with schedule and context.",
+      "typicalInteractionCandidates": [
+        "Interacts with age, work schedules, light exposure, family obligations, and technology use."
+      ],
+      "uncertaintyPropagation": "Preserve and report constituent uncertainty; use analytic propagation or simulation when the selected operationalization supports it, otherwise note uncertainty qualitatively.",
+      "volatility": "Moderate"
+    },
+    {
+      "aliases": [],
+      "associatedLayers": [
+        "Biological"
+      ],
+      "commonMisinterpretations": "Shift work includes social and structural factors beyond circadian physiology.",
+      "constituentSpecifications": [
+        {
+          "alignmentRequirements": "Match analytic level, scope, and time window",
+          "entityId": "BIO-004",
+          "externalParameterType": null,
+          "required": true,
+          "role": "CONSTITUENT_OR_INPUT",
+          "unitScaleExpectations": "Aligned with derivation logic"
+        },
+        {
+          "alignmentRequirements": "Match analytic level, scope, and time window",
+          "entityId": null,
+          "externalParameterType": "EXTERNAL_TIMING_REQUIREMENTS",
+          "required": true,
+          "role": "CONSTITUENT_OR_INPUT",
+          "unitScaleExpectations": "Aligned with derivation logic"
+        }
+      ],
+      "dataType": "Magnitude / level",
+      "definition": "The degree of alignment between internal circadian phase and the timing of sleep, work, meals, light exposure, and required behavior.",
+      "derivationLogic": "Compare endogenous circadian phase with the timing of sleep, work, meals, light exposure, and required behavior under an explicit alignment convention.",
+      "derivationType": "ALIGNMENT",
+      "directManipulability": "VIA_CONSTITUENTS",
+      "entitySubtype": "RELATIONAL_DERIVED_STATE",
+      "entityType": "RELATIONAL_DERIVED_STATE",
+      "evidenceNotes": "Can make the same behavioral demand substantially harder at biological night timing of interventions and critical decisions matters. Shift work includes social and structural factors beyond circadian physiology.",
+      "evidenceStrength": "Strong",
+      "family": "Sleep & Circadian Regulation",
+      "id": "BIO-003",
+      "indicators": [
+        "Dim-light melatonin onset",
+        "core body temperature",
+        "work schedule",
+        "actigraphy"
+      ],
+      "keySources": [
+        "SRC006",
+        "SRC007",
+        "SRC008"
+      ],
+      "layer": "Biological",
+      "likelyDownstreamInfluences": [
+        "Reduced alertness and cognitive performance, increased error risk, altered mood and metabolic regulation."
+      ],
+      "likelyUpstreamInfluences": [
+        "light exposure",
+        "work and caregiving schedules",
+        "prior sleep",
+        "stimulant or sedative use",
+        "illness"
+      ],
+      "measurementAssessmentMethods": "See linked Operationalizations records.",
+      "measurementCaveats": "Indicators may be state-, protocol-, dose-, and population-dependent; do not equate a single proxy with the construct. Shift work includes social and structural factors beyond circadian physiology.",
+      "mechanism": "Circadian timing alters arousal, temperature, hormonal rhythms, sleep propensity, and cognitive performance independent of time awake.",
+      "moderatorsBoundaryConditions": "Night shift, jet lag, rotating schedules, and forced desynchrony adaptation varies.",
+      "modifiability": "Moderate",
+      "name": "Circadian Timing Alignment",
+      "observability": "High",
+      "onsetCausalLag": [
+        "Hours–Days"
+      ],
+      "persistenceRecovery": "Commonly persists across Hours–weeks; recovery depends on cause, dose, and intervention.",
+      "polarityDirection": "Higher values = greater circadian alignment.",
+      "primaryFamilyId": "BIO-F01",
+      "recalculationBehavior": "Recalculate when a required constituent, reference, boundary, formula, or analysis window changes.",
+      "relatedFamilyIds": [],
+      "representationScale": "continuous or ordinal level; clinically meaningful thresholds only where validated",
+      "scopeRequirements": "Specify internal phase measure, external timing requirements, interval, alignment convention, and update behavior.",
+      "source": {
+        "sheet": "Drivers",
+        "workbook": "PSYWERX_Layer_1_Biological_Driver_Ontology_v1.0.xlsx"
+      },
+      "timeScaleOfChange": [
+        "Hours–Days",
+        "Days–Weeks"
+      ],
+      "timeScaleQualifier": null,
+      "typicalInteractionCandidates": [
+        "Interacts with sleep debt, lighting, work design, meal timing, and social obligations."
+      ],
+      "uncertaintyPropagation": "Preserve and report constituent uncertainty; use analytic propagation or simulation when the selected operationalization supports it, otherwise note uncertainty qualitatively.",
+      "volatility": "High"
+    },
+    {
+      "aliases": [],
+      "associatedLayers": [
+        "Biological"
+      ],
+      "blockedFields": [
+        "mechanism",
+        "modifiability",
+        "volatility",
+        "timeScaleOfChange",
+        "onsetCausalLag",
+        "persistenceRecovery",
+        "measurementAssessmentMethods",
+        "observability",
+        "evidenceStrength",
+        "evidenceNotes",
+        "keySources"
+      ],
+      "commonMisinterpretations": null,
+      "constituentSpecifications": [
+        {
+          "alignmentRequirements": "Match analytic level, scope, and time window",
+          "entityId": "BIO-001",
+          "externalParameterType": null,
+          "required": true,
+          "role": "CONSTITUENT_OR_INPUT",
+          "unitScaleExpectations": "Aligned with derivation logic"
+        },
+        {
+          "alignmentRequirements": "Match analytic level, scope, and time window",
+          "entityId": "BIO-074",
+          "externalParameterType": null,
+          "required": true,
+          "role": "CONSTITUENT_OR_INPUT",
+          "unitScaleExpectations": "Aligned with derivation logic"
+        },
+        {
+          "alignmentRequirements": "Match analytic level, scope, and time window",
+          "entityId": null,
+          "externalParameterType": "ACCUMULATION_RECOVERY_RULE",
+          "required": true,
+          "role": "CONSTITUENT_OR_INPUT",
+          "unitScaleExpectations": "Aligned with derivation logic"
+        }
+      ],
+      "dataType": "Duration",
+      "definition": "The accumulated shortfall between estimated Physiological Sleep Need and obtained sleep across a specified sequence of intervals under an explicit accumulation and recovery rule.",
+      "derivationLogic": "For each aligned interval, calculate the shortfall between estimated need and obtained sleep, then apply the declared accumulation, recovery, decay, and oversleep-credit rule across the observation sequence.",
+      "derivationType": "TEMPORAL_PATTERN",
+      "directManipulability": "VIA_CONSTITUENTS",
+      "entitySubtype": "TEMPORAL_PATTERN_STATE",
+      "entityType": "RELATIONAL_DERIVED_STATE",
+      "evidenceNotes": null,
+      "evidenceStrength": null,
+      "family": "Sleep & Circadian Regulation",
+      "id": "RDS-0004",
+      "indicators": [],
+      "keySources": [],
+      "layer": "Biological",
+      "likelyDownstreamInfluences": [],
+      "likelyUpstreamInfluences": [],
+      "measurementAssessmentMethods": null,
+      "measurementCaveats": null,
+      "mechanism": null,
+      "metadataStatus": "PARTIAL_GOVERNED_PREVIEW",
+      "moderatorsBoundaryConditions": null,
+      "modifiability": null,
+      "name": "Cumulative Sleep Deficit",
+      "observability": null,
+      "onsetCausalLag": [],
+      "persistenceRecovery": null,
+      "polarityDirection": "Higher values = greater accumulated shortfall under the specified temporal rule.",
+      "primaryFamilyId": "BIO-F01",
+      "recalculationBehavior": "Recalculate when a required constituent, reference, boundary, formula, or analysis window changes.",
+      "relatedFamilyIds": [],
+      "representationScale": "Accumulated sleep shortfall with recovery, decay, oversleep-credit, uncertainty, and reference-window rules stated.",
+      "scopeRequirements": "Specify interval sequence, reference window, need estimate, recovery and decay behavior, oversleep credit, missing intervals, and uncertainty.",
+      "source": {
+        "decisionRecord": "https://app.notion.com/p/3cdf827a3d15815897b1fb28cfa20fe5",
+        "specification": "_migration_handoff_v0.3",
+        "status": "GOVERNED_PREVIEW"
+      },
+      "temporalSpecification": {
+        "observationWindow": "REQUIRED_AT_ANALYSIS_TIME",
+        "updateRule": "For each aligned interval, calculate the shortfall between estimated need and obtained sleep, then apply the declared accumulation, recovery, decay, and oversleep-credit rule across the observation sequence."
+      },
+      "timeScaleOfChange": [],
+      "timeScaleQualifier": null,
+      "typicalInteractionCandidates": [],
+      "uncertaintyPropagation": "Preserve and report constituent uncertainty; propagate analytically or by simulation when supported, otherwise note it qualitatively.",
+      "volatility": null
+    },
+    {
+      "aliases": [],
+      "associatedLayers": [
+        "Biological"
+      ],
+      "commonMisinterpretations": "Do not universalize 'morning is better' optimal time varies by chronotype and task.",
+      "dataType": "Multidimensional",
+      "definition": "The current position within the endogenous circadian cycle that organizes time-of-day variation in physiological readiness.",
+      "entitySubtype": null,
+      "entityType": "DRIVER",
+      "evidenceNotes": "Behavior-change prompts, training, assessments, or high-stakes choices may perform differently depending on timing. Do not universalize 'morning is better' optimal time varies by chronotype and task.",
+      "evidenceStrength": "Moderate",
+      "family": "Sleep & Circadian Regulation",
+      "id": "BIO-004",
+      "indicators": [
+        "Clock time",
+        "chronotype",
+        "sleep history",
+        "melatonin phase when available"
+      ],
+      "keySources": [
+        "SRC009",
+        "SRC011"
+      ],
+      "layer": "Biological",
+      "likelyDownstreamInfluences": [
+        "Time-of-day differences in attention, reaction time, inhibition, and decision performance."
+      ],
+      "likelyUpstreamInfluences": [
+        "light exposure",
+        "work and caregiving schedules",
+        "prior sleep",
+        "stimulant or sedative use",
+        "illness"
+      ],
+      "measurementAssessmentMethods": "See linked Operationalizations records.",
+      "measurementCaveats": "Indicators may be state-, protocol-, dose-, and population-dependent; do not equate a single proxy with the construct. Do not universalize 'morning is better' optimal time varies by chronotype and task.",
+      "mechanism": "Circadian oscillations influence arousal and cognitive efficiency, creating predictable peaks and troughs.",
+      "moderatorsBoundaryConditions": "Effects depend on chronotype, sleep pressure, light exposure, and task type.",
+      "modifiability": "Moderate",
+      "name": "Endogenous Circadian Phase",
+      "observability": "High",
+      "onsetCausalLag": [
+        "Hours–Days"
+      ],
+      "persistenceRecovery": "Commonly persists across Minutes–hours; recovery depends on cause, dose, and intervention.",
+      "polarityDirection": "Multidimensional or categorical representation; no single universal high–low behavioral interpretation.",
+      "primaryFamilyId": "BIO-F01",
+      "relatedFamilyIds": [],
+      "representationScale": "continuous or ordinal level; clinically meaningful thresholds only where validated",
+      "source": {
+        "sheet": "Drivers",
+        "workbook": "PSYWERX_Layer_1_Biological_Driver_Ontology_v1.0.xlsx"
+      },
+      "timeScaleOfChange": [
+        "Minutes–Hours"
+      ],
+      "timeScaleQualifier": null,
+      "typicalInteractionCandidates": [
+        "Interacts with work schedules, age, chronotype, caffeine, and light."
+      ],
+      "volatility": "High"
+    },
+    {
+      "aliases": [],
+      "associatedLayers": [
+        "Biological"
+      ],
+      "blockedFields": [
+        "mechanism",
+        "modifiability",
+        "volatility",
+        "timeScaleOfChange",
+        "onsetCausalLag",
+        "persistenceRecovery",
+        "measurementAssessmentMethods",
+        "observability",
+        "evidenceStrength",
+        "evidenceNotes",
+        "keySources"
+      ],
+      "commonMisinterpretations": null,
+      "dataType": "Magnitude / level",
+      "definition": "The individual amount and composition of sleep biologically required over a specified interval to maintain defined physiological or functional outcomes under stated conditions.",
+      "entitySubtype": null,
+      "entityType": "DRIVER",
+      "evidenceNotes": null,
+      "evidenceStrength": null,
+      "family": "Sleep & Circadian Regulation",
+      "id": "BIO-074",
+      "indicators": [],
+      "keySources": [],
+      "layer": "Biological",
+      "likelyDownstreamInfluences": [],
+      "likelyUpstreamInfluences": [],
+      "measurementAssessmentMethods": null,
+      "measurementCaveats": "Not directly measurable as one universally valid number; may be outcome-specific and multidimensional. Population recommendations must not be substituted silently for an individual estimate.",
+      "mechanism": null,
+      "metadataStatus": "PARTIAL_GOVERNED_PREVIEW",
+      "moderatorsBoundaryConditions": null,
+      "modifiability": null,
+      "name": "Physiological Sleep Need",
+      "observability": null,
+      "onsetCausalLag": [],
+      "persistenceRecovery": null,
+      "polarityDirection": "Higher values = greater estimated sleep requirement for the stated interval and outcome criterion.",
+      "primaryFamilyId": "BIO-F01",
+      "relatedFamilyIds": [],
+      "representationScale": "Estimated amount and composition with estimation method, uncertainty, outcome criterion, and reference period stated.",
+      "source": {
+        "decisionRecord": "https://app.notion.com/p/3cdf827a3d15815897b1fb28cfa20fe5",
+        "specification": "_migration_handoff_v0.3",
+        "status": "GOVERNED_PREVIEW"
+      },
+      "timeScaleOfChange": [],
+      "timeScaleQualifier": null,
+      "typicalInteractionCandidates": [],
+      "volatility": null
+    },
+    {
+      "aliases": [],
+      "associatedLayers": [
+        "Biological"
+      ],
+      "blockedFields": [
+        "mechanism",
+        "modifiability",
+        "volatility",
+        "timeScaleOfChange",
+        "onsetCausalLag",
+        "persistenceRecovery",
+        "measurementAssessmentMethods",
+        "observability",
+        "evidenceStrength",
+        "evidenceNotes",
+        "keySources"
+      ],
+      "commonMisinterpretations": null,
+      "constituentSpecifications": [
+        {
+          "alignmentRequirements": "Match analytic level, scope, and time window",
+          "entityId": null,
+          "externalParameterType": "SLEEP_STAGE_TIME_SERIES",
+          "required": true,
+          "role": "CONSTITUENT_OR_INPUT",
+          "unitScaleExpectations": "Aligned with derivation logic"
+        }
+      ],
+      "dataType": "Multidimensional",
+      "definition": "The composition and organization of sleep across stages and cycles during a specified sleep episode, including stage proportions, sequencing, transitions, and cycling structure.",
+      "derivationLogic": "Derive stage proportions, ordering, transitions, and cycle structure from the time-indexed sleep-stage classification sequence.",
+      "derivationType": "TEMPORAL_PATTERN",
+      "directManipulability": "VIA_CONSTITUENTS",
+      "entitySubtype": "TEMPORAL_PATTERN_STATE",
+      "entityType": "RELATIONAL_DERIVED_STATE",
+      "evidenceNotes": null,
+      "evidenceStrength": null,
+      "family": "Sleep & Circadian Regulation",
+      "id": "RDS-0002",
+      "indicators": [],
+      "keySources": [],
+      "layer": "Biological",
+      "likelyDownstreamInfluences": [],
+      "likelyUpstreamInfluences": [],
+      "measurementAssessmentMethods": null,
+      "measurementCaveats": null,
+      "mechanism": null,
+      "metadataStatus": "PARTIAL_GOVERNED_PREVIEW",
+      "moderatorsBoundaryConditions": null,
+      "modifiability": null,
+      "name": "Sleep Architecture Composition",
+      "observability": null,
+      "onsetCausalLag": [],
+      "persistenceRecovery": null,
+      "polarityDirection": "Multidimensional temporal composition; no universal high–low interpretation.",
+      "primaryFamilyId": "BIO-F01",
+      "recalculationBehavior": "Recalculate when a required constituent, reference, boundary, formula, or analysis window changes.",
+      "relatedFamilyIds": [],
+      "representationScale": "Stage proportions, sequence, transitions, and cycle structure over a specified sleep episode.",
+      "scopeRequirements": "Specify sleep episode boundary, scoring convention, epoch length, missing epochs, stage categories, and update rule.",
+      "source": {
+        "decisionRecord": "https://app.notion.com/p/3cdf827a3d15815897b1fb28cfa20fe5",
+        "specification": "_migration_handoff_v0.3",
+        "status": "GOVERNED_PREVIEW"
+      },
+      "temporalSpecification": {
+        "observationWindow": "REQUIRED_AT_ANALYSIS_TIME",
+        "updateRule": "Derive stage proportions, ordering, transitions, and cycle structure from the time-indexed sleep-stage classification sequence."
+      },
+      "timeScaleOfChange": [],
+      "timeScaleQualifier": null,
+      "typicalInteractionCandidates": [],
+      "uncertaintyPropagation": "Preserve and report constituent uncertainty; propagate analytically or by simulation when supported, otherwise note it qualitatively.",
+      "volatility": null
+    },
+    {
+      "aliases": [],
+      "associatedLayers": [
+        "Biological"
+      ],
+      "commonMisinterpretations": "Fragmentation is heterogeneous avoid treating self-reported poor sleep as equivalent to objectively fragmented sleep.",
+      "dataType": "Magnitude / level",
+      "definition": "The degree to which a sleep period is maintained without awakenings, fragmentation, or loss of restorative architecture.",
+      "entitySubtype": null,
+      "entityType": "DRIVER",
+      "evidenceNotes": "May weaken learning, implementation of new routines, and sustained adherence by reducing cognitive capacity and energy. Fragmentation is heterogeneous avoid treating self-reported poor sleep as equivalent to objectively fragmented sleep.",
+      "evidenceStrength": "Moderate",
+      "family": "Sleep & Circadian Regulation",
+      "id": "BIO-002",
+      "indicators": [
+        "Polysomnography",
+        "actigraphy",
+        "wake after sleep onset",
+        "sleep efficiency",
+        "apnea indices"
+      ],
+      "keySources": [
+        "SRC005",
+        "SRC006"
+      ],
+      "layer": "Biological",
+      "likelyDownstreamInfluences": [
+        "Daytime sleepiness, reduced concentration, poorer memory and performance stability."
+      ],
+      "likelyUpstreamInfluences": [
+        "light exposure",
+        "work and caregiving schedules",
+        "prior sleep",
+        "stimulant or sedative use",
+        "illness"
+      ],
+      "measurementAssessmentMethods": "See linked Operationalizations records.",
+      "measurementCaveats": "Indicators may be state-, protocol-, dose-, and population-dependent; do not equate a single proxy with the construct. Fragmentation is heterogeneous avoid treating self-reported poor sleep as equivalent to objectively fragmented sleep.",
+      "mechanism": "Fragmented sleep alters restorative processes and can reduce daytime attention, memory consolidation, and alertness.",
+      "moderatorsBoundaryConditions": "Common causes include sleep apnea, pain, caregiving, noise, and insomnia cause matters for intervention.",
+      "modifiability": "High",
+      "name": "Sleep Continuity",
+      "observability": "High",
+      "onsetCausalLag": [
+        "Hours–Days"
+      ],
+      "persistenceRecovery": "Commonly persists across Days–chronic; recovery depends on cause, dose, and intervention.",
+      "polarityDirection": "Higher values = greater sleep continuity.",
+      "primaryFamilyId": "BIO-F01",
+      "relatedFamilyIds": [],
+      "representationScale": "continuous or ordinal level; clinically meaningful thresholds only where validated",
+      "source": {
+        "sheet": "Drivers",
+        "workbook": "PSYWERX_Layer_1_Biological_Driver_Ontology_v1.0.xlsx"
+      },
+      "timeScaleOfChange": [
+        "Hours–Days"
+      ],
+      "timeScaleQualifier": "May be recurrent or chronic; the course depends on the cause of sleep fragmentation.",
+      "typicalInteractionCandidates": [
+        "Interacts with environmental noise, pain, respiratory physiology, stress, and age."
+      ],
+      "volatility": "Moderate"
+    },
+    {
+      "aliases": [],
+      "associatedLayers": [
+        "Biological"
+      ],
+      "commonMisinterpretations": "Do not infer global incompetence from sleep loss some tasks are more resilient than others. Subjective sleepiness may underestimate objective performance decline.",
+      "dataType": "Duration",
+      "definition": "The amount of sleep obtained over a defined interval relative to physiological sleep need.",
+      "entitySubtype": null,
+      "entityType": "DRIVER",
+      "evidenceNotes": "Can reduce ability to notice, understand, remember, or execute a requested behavior may increase reliance on habits and salient cues. Do not infer global incompetence from sleep loss some tasks are more resilient than others. Can gradually erode intervention adherence, training uptake, decision quality, and persistence even when people report adapting. Subjective sleepiness may underestimate objective performance decline.",
+      "evidenceStrength": "Strong",
+      "family": "Sleep & Circadian Regulation",
+      "id": "BIO-001",
+      "indicators": [
+        "Sleep/wake history",
+        "actigraphy",
+        "polysomnography",
+        "psychomotor vigilance",
+        "subjective sleepiness",
+        "Sleep diary",
+        "sleep duration",
+        "PVT",
+        "fatigue scales"
+      ],
+      "keySources": [
+        "SRC001",
+        "SRC002",
+        "SRC003",
+        "SRC004"
+      ],
+      "layer": "Biological",
+      "likelyDownstreamInfluences": [
+        "Slower responses, attentional lapses, poorer working memory/executive control, greater performance variability and errors. Progressive vigilance lapses, reduced cognitive throughput, poorer learning and error monitoring."
+      ],
+      "likelyUpstreamInfluences": [
+        "light exposure",
+        "work and caregiving schedules",
+        "prior sleep",
+        "stimulant or sedative use",
+        "illness"
+      ],
+      "measurementAssessmentMethods": "See linked Operationalizations records.",
+      "measurementCaveats": "Indicators may be state-, protocol-, dose-, and population-dependent; do not equate a single proxy with the construct. Do not infer global incompetence from sleep loss some tasks are more resilient than others. Subjective sleepiness may underestimate objective performance decline.",
+      "mechanism": "Homeostatic sleep pressure and altered cortical/subcortical network function reduce vigilance, executive control, working memory, and response stability. Cumulative sleep debt degrades sustained attention, processing efficiency, working memory, and executive function.",
+      "moderatorsBoundaryConditions": "Effects vary by task, duration awake, circadian phase, stimulant use, and individual vulnerability. Magnitude depends on nightly sleep opportunity, baseline sleep need, recovery sleep, and task demands.",
+      "modifiability": "High",
+      "name": "Sleep Duration",
+      "observability": "High",
+      "onsetCausalLag": [
+        "Hours–Days"
+      ],
+      "persistenceRecovery": "Commonly persists across Hours–days; recovery depends on cause, dose, and intervention.",
+      "polarityDirection": "Higher values = greater sleep quantity.",
+      "primaryFamilyId": "BIO-F01",
+      "relatedFamilyIds": [],
+      "representationScale": "hours slept; proportion of individual sleep need met; ordinal sufficiency bands",
+      "source": {
+        "sheet": "Drivers",
+        "workbook": "PSYWERX_Layer_1_Biological_Driver_Ontology_v1.0.xlsx"
+      },
+      "timeScaleOfChange": [
+        "Hours–Days",
+        "Days–Weeks"
+      ],
+      "timeScaleQualifier": null,
+      "typicalInteractionCandidates": [
+        "Interacts strongly with time pressure, stress, workload, information complexity, and technological alerting. Interacts with shift work, caregiving, operations tempo, family structure, and organizational schedules."
+      ],
+      "volatility": "High"
+    },
+    {
+      "aliases": [],
+      "associatedLayers": [
+        "Biological"
+      ],
+      "commonMisinterpretations": "Usually transient avoid treating it as a stable trait.",
+      "dataType": "Magnitude / level",
+      "definition": "The magnitude of transient cognitive and motor impairment following awakening.",
+      "entitySubtype": null,
+      "entityType": "DRIVER",
+      "evidenceNotes": "Critical alerts or instructions delivered immediately after awakening may be misunderstood, delayed, or poorly executed. Usually transient avoid treating it as a stable trait.",
+      "evidenceStrength": "Strong",
+      "family": "Sleep & Circadian Regulation",
+      "id": "BIO-005",
+      "indicators": [
+        "Time since awakening",
+        "performance tests",
+        "subjective alertness"
+      ],
+      "keySources": [
+        "SRC010"
+      ],
+      "layer": "Biological",
+      "likelyDownstreamInfluences": [
+        "Reduced reaction speed, working memory, attention, and decision efficiency after awakening."
+      ],
+      "likelyUpstreamInfluences": [
+        "light exposure",
+        "work and caregiving schedules",
+        "prior sleep",
+        "stimulant or sedative use",
+        "illness"
+      ],
+      "measurementAssessmentMethods": "See linked Operationalizations records.",
+      "measurementCaveats": "Indicators may be state-, protocol-, dose-, and population-dependent; do not equate a single proxy with the construct. Usually transient avoid treating it as a stable trait.",
+      "mechanism": "Incomplete restoration of alertness networks after waking causes slowed cognition and impaired vigilance.",
+      "moderatorsBoundaryConditions": "Severity depends on sleep stage, prior sleep deprivation, circadian phase, and nap duration.",
+      "modifiability": "High",
+      "name": "Sleep Inertia Severity",
+      "observability": "High",
+      "onsetCausalLag": [
+        "Minutes–Hours"
+      ],
+      "persistenceRecovery": "Typically transient and reversible over minutes to hours when the initiating condition resolves.",
+      "polarityDirection": "Higher values = greater sleep inertia severity.",
+      "primaryFamilyId": "BIO-F01",
+      "relatedFamilyIds": [],
+      "representationScale": "continuous or ordinal level; clinically meaningful thresholds only where validated",
+      "source": {
+        "sheet": "Drivers",
+        "workbook": "PSYWERX_Layer_1_Biological_Driver_Ontology_v1.0.xlsx"
+      },
+      "timeScaleOfChange": [
+        "Minutes–Hours"
+      ],
+      "timeScaleQualifier": null,
+      "typicalInteractionCandidates": [
+        "Interacts with alarms, emergency response, night operations, and sleep restriction."
+      ],
+      "volatility": "High"
+    },
+    {
+      "aliases": [],
+      "associatedLayers": [
+        "Biological"
+      ],
+      "blockedFields": [
+        "mechanism",
+        "modifiability",
+        "volatility",
+        "timeScaleOfChange",
+        "onsetCausalLag",
+        "persistenceRecovery",
+        "measurementAssessmentMethods",
+        "observability",
+        "evidenceStrength",
+        "evidenceNotes",
+        "keySources"
+      ],
+      "commonMisinterpretations": null,
+      "constituentSpecifications": [
+        {
+          "alignmentRequirements": "Match analytic level, scope, and time window",
+          "entityId": "BIO-001",
+          "externalParameterType": null,
+          "required": true,
+          "role": "CONSTITUENT_OR_INPUT",
+          "unitScaleExpectations": "Aligned with derivation logic"
+        },
+        {
+          "alignmentRequirements": "Match analytic level, scope, and time window",
+          "entityId": "BIO-074",
+          "externalParameterType": null,
+          "required": true,
+          "role": "CONSTITUENT_OR_INPUT",
+          "unitScaleExpectations": "Aligned with derivation logic"
+        }
+      ],
+      "dataType": "Proportion",
+      "definition": "The degree to which obtained sleep meets estimated Physiological Sleep Need over a specified interval and outcome criterion.",
+      "derivationLogic": "Divide obtained sleep by estimated Physiological Sleep Need for the aligned interval and outcome criterion; state any multidimensional extension.",
+      "derivationType": "RATIO",
+      "directManipulability": "VIA_CONSTITUENTS",
+      "entitySubtype": "RELATIONAL_DERIVED_STATE",
+      "entityType": "RELATIONAL_DERIVED_STATE",
+      "evidenceNotes": null,
+      "evidenceStrength": null,
+      "family": "Sleep & Circadian Regulation",
+      "id": "RDS-0003",
+      "indicators": [],
+      "keySources": [],
+      "layer": "Biological",
+      "likelyDownstreamInfluences": [],
+      "likelyUpstreamInfluences": [],
+      "measurementAssessmentMethods": null,
+      "measurementCaveats": null,
+      "mechanism": null,
+      "metadataStatus": "PARTIAL_GOVERNED_PREVIEW",
+      "moderatorsBoundaryConditions": null,
+      "modifiability": null,
+      "name": "Sleep Sufficiency",
+      "observability": null,
+      "onsetCausalLag": [],
+      "persistenceRecovery": null,
+      "polarityDirection": "Higher values = a greater share of estimated physiological sleep need met over the specified interval.",
+      "primaryFamilyId": "BIO-F01",
+      "ratioSpecification": {
+        "denominator": "BIO-074",
+        "numerator": "BIO-001"
+      },
+      "recalculationBehavior": "Recalculate when a required constituent, reference, boundary, formula, or analysis window changes.",
+      "relatedFamilyIds": [],
+      "representationScale": "Obtained sleep relative to estimated sleep need, with interval, outcome criterion, estimation method, uncertainty, and included sleep characteristics stated.",
+      "scopeRequirements": "Specify interval, outcome criterion, need-estimation method, uncertainty, and whether duration alone or additional sleep characteristics are included.",
+      "source": {
+        "decisionRecord": "https://app.notion.com/p/3cdf827a3d15815897b1fb28cfa20fe5",
+        "specification": "_migration_handoff_v0.3",
+        "status": "GOVERNED_PREVIEW"
+      },
+      "timeScaleOfChange": [],
+      "timeScaleQualifier": null,
+      "typicalInteractionCandidates": [],
+      "uncertaintyPropagation": "Preserve and report constituent uncertainty; propagate analytically or by simulation when supported, otherwise note it qualitatively.",
+      "volatility": null
+    }
+  ],
+  "family": {
+    "activeEffectCount": 5,
+    "blockedEntityCount": 5,
+    "causalIncident": 10,
+    "causallyIsolatedEntities": 6,
+    "crossLayer": 3,
+    "drivers": 6,
+    "entities": 11,
+    "id": "BIO-F01",
+    "internal": 3,
+    "isolatedFamily": false,
+    "layer": "Biological",
+    "legacyIncompleteIncident": 6,
+    "memberIds": [
+      "BIO-001",
+      "BIO-002",
+      "BIO-003",
+      "BIO-004",
+      "BIO-005",
+      "BIO-006",
+      "BIO-073",
+      "BIO-074",
+      "RDS-0002",
+      "RDS-0003",
+      "RDS-0004"
+    ],
+    "name": "Sleep & Circadian Regulation",
+    "rds": 5,
+    "rdsCausalSourceCount": 1,
+    "sameLayerCrossFamily": 4
+  },
+  "label": "READ_ONLY_BASELINE",
+  "legacyIncidentByBucket": {
+    "deprecatedRelationships": [],
+    "relationshipCandidates": [],
+    "relationships": [
+      {
+        "conditionsModerators": "work schedule; light exposure; chronotype",
+        "confidence": "MODERATE",
+        "directness": "DIRECT_AT_STATED_RESOLUTION",
+        "effectPersistence": null,
+        "evidenceStrength": "Moderate",
+        "exposurePattern": "NOT_SPECIFIED",
+        "functionalForm": "UNSPECIFIED",
+        "functionalFormNotes": null,
+        "generalizabilityContext": "Generalizability is limited to contexts compatible with the stated mechanism, conditions, and evidence.",
+        "governanceClass": "CONTEXT_DEPENDENT",
+        "governanceStatus": "ACTIVE",
+        "id": "REL-BIO-001",
+        "lagLowerBound": null,
+        "lagNarrative": "Hours–Days",
+        "lagProfile": [
+          "INTERMEDIATE",
+          "DELAYED"
+        ],
+        "lagUnit": null,
+        "lagUpperBound": null,
+        "legacyRelationship": {
+          "causalRole": "CAUSES",
+          "schemaVersion": "2.0",
+          "sourceDriverId": "BIO-003",
+          "sourceDriverName": "Circadian Alignment",
+          "targetDriverId": "BIO-001",
+          "targetDriverName": "Sleep Quantity"
+        },
+        "levelTransitionMechanism": null,
+        "mechanism": "Circadian misalignment and sleep restriction commonly co-occur; isolate effects where possible.",
+        "moderatorEntityIds": [],
+        "notesCaveats": "Migrated from v1 relationship type: Influences. Legacy functional form: conditional; misalignment can reduce sleep opportunity and quality.",
+        "objectEntityId": "BIO-001",
+        "objectEntityName": "Sleep Duration",
+        "objectEntityType": "DRIVER",
+        "objectLevel": "PERSON",
+        "objectRelationshipId": null,
+        "polarity": "POSITIVE",
+        "predicate": "CAUSES",
+        "reciprocalProcessId": null,
+        "relationFamily": "CAUSAL",
+        "source": {
+          "row": 5,
+          "workbook": "PSYWERX_Layer_1_Biological_Driver_Ontology_v1.0.xlsx",
+          "worksheet": "Relationships"
+        },
+        "subjectEntityId": "BIO-003",
+        "subjectEntityName": "Circadian Timing Alignment",
+        "subjectEntityType": "RELATIONAL_DERIVED_STATE",
+        "subjectLevel": "PERSON",
+        "supportingEvidenceIds": [
+          "SRC006",
+          "SRC007",
+          "SRC008"
+        ]
+      },
+      {
+        "conditionsModerators": "task duration; circadian phase; stimulant use",
+        "confidence": "HIGH",
+        "directness": "DIRECT_AT_STATED_RESOLUTION",
+        "effectPersistence": null,
+        "evidenceStrength": "Strong",
+        "exposurePattern": "NOT_SPECIFIED",
+        "functionalForm": "UNSPECIFIED",
+        "functionalFormNotes": null,
+        "generalizabilityContext": "Generalizability is limited to contexts compatible with the stated mechanism, conditions, and evidence.",
+        "governanceClass": "CONTEXT_DEPENDENT",
+        "governanceStatus": "ACTIVE",
+        "id": "REL-BIO-002",
+        "lagLowerBound": null,
+        "lagNarrative": "Hours–Days",
+        "lagProfile": [
+          "INTERMEDIATE",
+          "DELAYED"
+        ],
+        "lagUnit": null,
+        "lagUpperBound": null,
+        "legacyRelationship": {
+          "causalRole": "CAUSES",
+          "schemaVersion": "2.0",
+          "sourceDriverId": "BIO-001",
+          "sourceDriverName": "Sleep Quantity",
+          "targetDriverId": "BIO-026",
+          "targetDriverName": "Cognitive Fatigue"
+        },
+        "levelTransitionMechanism": null,
+        "mechanism": "Less sleep generally increases fatigue and performance instability.",
+        "moderatorEntityIds": [],
+        "notesCaveats": "Migrated from v1 relationship type: Influences. Legacy functional form: dose-responsive with floor and recovery effects.",
+        "objectEntityId": "BIO-026",
+        "objectEntityName": "Cognitive Fatigue",
+        "objectEntityType": "DRIVER",
+        "objectLevel": "PERSON",
+        "objectRelationshipId": null,
+        "polarity": "NEGATIVE",
+        "predicate": "CAUSES",
+        "reciprocalProcessId": null,
+        "relationFamily": "CAUSAL",
+        "source": {
+          "row": 6,
+          "workbook": "PSYWERX_Layer_1_Biological_Driver_Ontology_v1.0.xlsx",
+          "worksheet": "Relationships"
+        },
+        "subjectEntityId": "BIO-001",
+        "subjectEntityName": "Sleep Duration",
+        "subjectEntityType": "DRIVER",
+        "subjectLevel": "PERSON",
+        "supportingEvidenceIds": [
+          "SRC001",
+          "SRC002",
+          "SRC003",
+          "SRC004"
+        ]
+      },
+      {
+        "conditionsModerators": "sleep disorder etiology; total sleep time",
+        "confidence": "MODERATE",
+        "directness": "DIRECT_AT_STATED_RESOLUTION",
+        "effectPersistence": null,
+        "evidenceStrength": "Moderate",
+        "exposurePattern": "NOT_SPECIFIED",
+        "functionalForm": "UNSPECIFIED",
+        "functionalFormNotes": null,
+        "generalizabilityContext": "Generalizability is limited to contexts compatible with the stated mechanism, conditions, and evidence.",
+        "governanceClass": "CONTEXT_DEPENDENT",
+        "governanceStatus": "ACTIVE",
+        "id": "REL-BIO-003",
+        "lagLowerBound": null,
+        "lagNarrative": "Hours–Days",
+        "lagProfile": [
+          "INTERMEDIATE",
+          "DELAYED"
+        ],
+        "lagUnit": null,
+        "lagUpperBound": null,
+        "legacyRelationship": {
+          "causalRole": "CAUSES",
+          "schemaVersion": "2.0",
+          "sourceDriverId": "BIO-002",
+          "sourceDriverName": "Sleep Continuity",
+          "targetDriverId": "BIO-026",
+          "targetDriverName": "Cognitive Fatigue"
+        },
+        "levelTransitionMechanism": null,
+        "mechanism": "Fragmentation can reduce restorative sleep independent of time in bed.",
+        "moderatorEntityIds": [],
+        "notesCaveats": "Migrated from v1 relationship type: Influences. Legacy functional form: conditional.",
+        "objectEntityId": "BIO-026",
+        "objectEntityName": "Cognitive Fatigue",
+        "objectEntityType": "DRIVER",
+        "objectLevel": "PERSON",
+        "objectRelationshipId": null,
+        "polarity": "NEGATIVE",
+        "predicate": "CAUSES",
+        "reciprocalProcessId": null,
+        "relationFamily": "CAUSAL",
+        "source": {
+          "row": 7,
+          "workbook": "PSYWERX_Layer_1_Biological_Driver_Ontology_v1.0.xlsx",
+          "worksheet": "Relationships"
+        },
+        "subjectEntityId": "BIO-002",
+        "subjectEntityName": "Sleep Continuity",
+        "subjectEntityType": "DRIVER",
+        "subjectLevel": "PERSON",
+        "supportingEvidenceIds": [
+          "SRC005",
+          "SRC006"
+        ]
+      },
+      {
+        "conditionsModerators": "pain condition; medication; sleep disorder",
+        "confidence": "MODERATE",
+        "directness": "DIRECT_AT_STATED_RESOLUTION",
+        "effectPersistence": null,
+        "evidenceStrength": "Moderate",
+        "exposurePattern": "NOT_SPECIFIED",
+        "functionalForm": "UNSPECIFIED",
+        "functionalFormNotes": null,
+        "generalizabilityContext": "Generalizability is limited to contexts compatible with the stated mechanism, conditions, and evidence.",
+        "governanceClass": "CONTEXT_DEPENDENT",
+        "governanceStatus": "ACTIVE",
+        "id": "REL-BIO-009",
+        "lagLowerBound": null,
+        "lagNarrative": "Days–Months",
+        "lagProfile": [
+          "DELAYED",
+          "LONG",
+          "STRUCTURAL"
+        ],
+        "lagUnit": null,
+        "lagUpperBound": null,
+        "legacyRelationship": {
+          "causalRole": "CONSTRAINS",
+          "schemaVersion": "2.0",
+          "sourceDriverId": "BIO-028",
+          "sourceDriverName": "Persistent Pain Burden",
+          "targetDriverId": "BIO-002",
+          "targetDriverName": "Sleep Continuity"
+        },
+        "levelTransitionMechanism": null,
+        "mechanism": "Pain can fragment sleep, while poor sleep can amplify pain.",
+        "moderatorEntityIds": [],
+        "notesCaveats": "Migrated from v1 relationship type: Constrains. Legacy functional form: bidirectional.",
+        "objectEntityId": "BIO-002",
+        "objectEntityName": "Sleep Continuity",
+        "objectEntityType": "DRIVER",
+        "objectLevel": "PERSON",
+        "objectRelationshipId": null,
+        "polarity": "NEGATIVE",
+        "predicate": "CONSTRAINS",
+        "reciprocalProcessId": null,
+        "relationFamily": "CAUSAL",
+        "source": {
+          "row": 13,
+          "workbook": "PSYWERX_Layer_1_Biological_Driver_Ontology_v1.0.xlsx",
+          "worksheet": "Relationships"
+        },
+        "subjectEntityId": "BIO-028",
+        "subjectEntityName": "Persistent Pain Burden",
+        "subjectEntityType": "DRIVER",
+        "subjectLevel": "PERSON",
+        "supportingEvidenceIds": [
+          "SRC033",
+          "SRC034"
+        ]
+      },
+      {
+        "conditionsModerators": "Retain dose, exposure, and baseline conditions from edge-level evidence.",
+        "confidence": "HIGH",
+        "directness": "DIRECT_AT_STATED_RESOLUTION",
+        "effectPersistence": null,
+        "evidenceStrength": "Strong",
+        "exposurePattern": "NOT_SPECIFIED",
+        "functionalForm": "UNSPECIFIED",
+        "functionalFormNotes": null,
+        "generalizabilityContext": "The proposed edge is causally interpretable at the stated scope. V2 implementation must preserve conditions, level transition, lag, and evidence rather than treating it as universal.",
+        "governanceClass": "CONTEXT_DEPENDENT",
+        "governanceStatus": "ACTIVE",
+        "id": "REL-BIO-021",
+        "lagLowerBound": null,
+        "lagNarrative": "Hours–Days",
+        "lagProfile": [
+          "INTERMEDIATE",
+          "DELAYED"
+        ],
+        "lagUnit": null,
+        "lagUpperBound": null,
+        "legacyRelationship": {
+          "causalRole": "CAUSES",
+          "schemaVersion": "2.0",
+          "sourceDriverId": "BIO-001",
+          "sourceDriverName": "Sleep Quantity",
+          "targetDriverId": "PSY-057",
+          "targetDriverName": "Cognitive Load"
+        },
+        "levelTransitionMechanism": null,
+        "mechanism": "Adequate sleep quantity generally reduces task-related cognitive load and performance burden.",
+        "moderatorEntityIds": [],
+        "notesCaveats": "Implemented from remediation candidate PRC-008.",
+        "objectEntityId": "PSY-057",
+        "objectEntityName": "Cognitive Load",
+        "objectEntityType": "DRIVER",
+        "objectLevel": "PERSON",
+        "objectRelationshipId": null,
+        "polarity": "NEGATIVE",
+        "predicate": "CAUSES",
+        "reciprocalProcessId": null,
+        "relationFamily": "CAUSAL",
+        "source": {
+          "row": 25,
+          "workbook": "PSYWERX_Layer_1_Biological_Driver_Ontology_v1.0.xlsx",
+          "worksheet": "Relationships"
+        },
+        "subjectEntityId": "BIO-001",
+        "subjectEntityName": "Sleep Duration",
+        "subjectEntityType": "DRIVER",
+        "subjectLevel": "PERSON",
+        "supportingEvidenceIds": [
+          "SRC-494",
+          "SRC-499"
+        ]
+      },
+      {
+        "conditionsModerators": "Retain dose, exposure, and baseline conditions from edge-level evidence.",
+        "confidence": "HIGH",
+        "directness": "DIRECT_AT_STATED_RESOLUTION",
+        "effectPersistence": null,
+        "evidenceStrength": "Strong",
+        "exposurePattern": "NOT_SPECIFIED",
+        "functionalForm": "UNSPECIFIED",
+        "functionalFormNotes": null,
+        "generalizabilityContext": "The proposed edge is causally interpretable at the stated scope. V2 implementation must preserve conditions, level transition, lag, and evidence rather than treating it as universal.",
+        "governanceClass": "CORE",
+        "governanceStatus": "ACTIVE",
+        "id": "REL-ENV-040",
+        "lagLowerBound": null,
+        "lagNarrative": "Hours–Days",
+        "lagProfile": [
+          "INTERMEDIATE",
+          "DELAYED"
+        ],
+        "lagUnit": null,
+        "lagUpperBound": null,
+        "legacyRelationship": {
+          "causalRole": "CAUSES",
+          "schemaVersion": "2.0",
+          "sourceDriverId": "ENV-039",
+          "sourceDriverName": "Ambient Noise Level",
+          "targetDriverId": "BIO-002",
+          "targetDriverName": "Sleep Continuity"
+        },
+        "levelTransitionMechanism": "The source state reaches the target unit through the exposure, communication, allocation, aggregation, or embodied-response process stated in the mechanism.",
+        "mechanism": "Environmental noise disrupts sleep continuity, especially when exposure occurs during sleep.",
+        "moderatorEntityIds": [],
+        "notesCaveats": "Implemented from remediation candidate PRC-002.",
+        "objectEntityId": "BIO-002",
+        "objectEntityName": "Sleep Continuity",
+        "objectEntityType": "DRIVER",
+        "objectLevel": "PERSON",
+        "objectRelationshipId": null,
+        "polarity": "NEGATIVE",
+        "predicate": "CAUSES",
+        "reciprocalProcessId": null,
+        "relationFamily": "CAUSAL",
+        "source": {
+          "row": 44,
+          "workbook": "PSYWERX_Layer_5_Physical_Environmental_Driver_Ontology_v1.0.xlsx",
+          "worksheet": "Relationships"
+        },
+        "subjectEntityId": "ENV-039",
+        "subjectEntityName": "Ambient Noise Level",
+        "subjectEntityType": "DRIVER",
+        "subjectLevel": "PHYSICAL_SETTING",
+        "supportingEvidenceIds": [
+          "SRC-508"
+        ]
+      },
+      {
+        "conditionsModerators": "Specify chronotype instrument, required schedule, reference period, time zone, and fit convention.",
+        "confidence": "HIGH",
+        "directness": null,
+        "effectPersistence": null,
+        "evidenceStrength": null,
+        "exposurePattern": null,
+        "functionalForm": "FORMULA_DEFINED",
+        "functionalFormNotes": "Chronotype is one constituent of Chronotype–Schedule Fit.",
+        "generalizabilityContext": "Specify chronotype instrument, required schedule, reference period, time zone, and fit convention.",
+        "governanceClass": "CONTEXT_DEPENDENT",
+        "governanceStatus": "ACTIVE",
+        "id": "REL-RDS-0016",
+        "lagLowerBound": null,
+        "lagNarrative": null,
+        "lagProfile": [],
+        "lagUnit": null,
+        "lagUpperBound": null,
+        "legacyRelationship": null,
+        "levelTransitionMechanism": null,
+        "mechanism": "Chronotype is one constituent of Chronotype–Schedule Fit.",
+        "moderatorEntityIds": [],
+        "notesCaveats": null,
+        "objectEntityId": "BIO-073",
+        "objectEntityName": "Chronotype",
+        "objectEntityType": "DRIVER",
+        "objectLevel": null,
+        "objectRelationshipId": null,
+        "polarity": null,
+        "predicate": "DERIVED_FROM",
+        "reciprocalProcessId": null,
+        "relationFamily": "DERIVATIONAL",
+        "source": {
+          "decisionRecord": "https://app.notion.com/p/3cdf827a3d1581a08906ebe4ab9feded",
+          "specification": "_migration_handoff_v0.3"
+        },
+        "subjectEntityId": "BIO-006",
+        "subjectEntityName": "Chronotype–Schedule Fit",
+        "subjectEntityType": "RELATIONAL_DERIVED_STATE",
+        "subjectLevel": null,
+        "supportingEvidenceIds": []
+      },
+      {
+        "conditionsModerators": "Align interval, outcome criterion, sleep characteristics, and units with the sleep-need estimate.",
+        "confidence": "HIGH",
+        "directness": null,
+        "effectPersistence": null,
+        "evidenceStrength": null,
+        "exposurePattern": null,
+        "functionalForm": "FORMULA_DEFINED",
+        "functionalFormNotes": "Obtained Sleep Duration is the numerator/input for Sleep Sufficiency.",
+        "generalizabilityContext": "Align interval, outcome criterion, sleep characteristics, and units with the sleep-need estimate.",
+        "governanceClass": "CONTEXT_DEPENDENT",
+        "governanceStatus": "ACTIVE",
+        "id": "REL-RDS-0017",
+        "lagLowerBound": null,
+        "lagNarrative": null,
+        "lagProfile": [],
+        "lagUnit": null,
+        "lagUpperBound": null,
+        "legacyRelationship": null,
+        "levelTransitionMechanism": null,
+        "mechanism": "Obtained Sleep Duration is the numerator/input for Sleep Sufficiency.",
+        "moderatorEntityIds": [],
+        "notesCaveats": null,
+        "objectEntityId": "BIO-001",
+        "objectEntityName": "Sleep Duration",
+        "objectEntityType": "DRIVER",
+        "objectLevel": null,
+        "objectRelationshipId": null,
+        "polarity": null,
+        "predicate": "DERIVED_FROM",
+        "reciprocalProcessId": null,
+        "relationFamily": "DERIVATIONAL",
+        "source": {
+          "decisionRecord": "https://app.notion.com/p/3cdf827a3d1581a08906ebe4ab9feded",
+          "specification": "_migration_handoff_v0.3"
+        },
+        "subjectEntityId": "RDS-0003",
+        "subjectEntityName": "Sleep Sufficiency",
+        "subjectEntityType": "RELATIONAL_DERIVED_STATE",
+        "subjectLevel": null,
+        "supportingEvidenceIds": []
+      },
+      {
+        "conditionsModerators": "Align interval, outcome criterion, estimation method, uncertainty, sleep characteristics, and units.",
+        "confidence": "HIGH",
+        "directness": null,
+        "effectPersistence": null,
+        "evidenceStrength": null,
+        "exposurePattern": null,
+        "functionalForm": "FORMULA_DEFINED",
+        "functionalFormNotes": "Physiological Sleep Need is the reference denominator/input for Sleep Sufficiency.",
+        "generalizabilityContext": "Align interval, outcome criterion, estimation method, uncertainty, sleep characteristics, and units.",
+        "governanceClass": "CONTEXT_DEPENDENT",
+        "governanceStatus": "ACTIVE",
+        "id": "REL-RDS-0018",
+        "lagLowerBound": null,
+        "lagNarrative": null,
+        "lagProfile": [],
+        "lagUnit": null,
+        "lagUpperBound": null,
+        "legacyRelationship": null,
+        "levelTransitionMechanism": null,
+        "mechanism": "Physiological Sleep Need is the reference denominator/input for Sleep Sufficiency.",
+        "moderatorEntityIds": [],
+        "notesCaveats": null,
+        "objectEntityId": "BIO-074",
+        "objectEntityName": "Physiological Sleep Need",
+        "objectEntityType": "DRIVER",
+        "objectLevel": null,
+        "objectRelationshipId": null,
+        "polarity": null,
+        "predicate": "DERIVED_FROM",
+        "reciprocalProcessId": null,
+        "relationFamily": "DERIVATIONAL",
+        "source": {
+          "decisionRecord": "https://app.notion.com/p/3cdf827a3d1581a08906ebe4ab9feded",
+          "specification": "_migration_handoff_v0.3"
+        },
+        "subjectEntityId": "RDS-0003",
+        "subjectEntityName": "Sleep Sufficiency",
+        "subjectEntityType": "RELATIONAL_DERIVED_STATE",
+        "subjectLevel": null,
+        "supportingEvidenceIds": []
+      },
+      {
+        "conditionsModerators": "Align every interval to the declared need estimate and accumulation/recovery rule.",
+        "confidence": "HIGH",
+        "directness": null,
+        "effectPersistence": null,
+        "evidenceStrength": null,
+        "exposurePattern": null,
+        "functionalForm": "FORMULA_DEFINED",
+        "functionalFormNotes": "Serial Sleep Duration observations supply obtained-sleep values for Cumulative Sleep Deficit.",
+        "generalizabilityContext": "Align every interval to the declared need estimate and accumulation/recovery rule.",
+        "governanceClass": "CONTEXT_DEPENDENT",
+        "governanceStatus": "ACTIVE",
+        "id": "REL-RDS-0019",
+        "lagLowerBound": null,
+        "lagNarrative": null,
+        "lagProfile": [],
+        "lagUnit": null,
+        "lagUpperBound": null,
+        "legacyRelationship": null,
+        "levelTransitionMechanism": null,
+        "mechanism": "Serial Sleep Duration observations supply obtained-sleep values for Cumulative Sleep Deficit.",
+        "moderatorEntityIds": [],
+        "notesCaveats": null,
+        "objectEntityId": "BIO-001",
+        "objectEntityName": "Sleep Duration",
+        "objectEntityType": "DRIVER",
+        "objectLevel": null,
+        "objectRelationshipId": null,
+        "polarity": null,
+        "predicate": "DERIVED_FROM",
+        "reciprocalProcessId": null,
+        "relationFamily": "DERIVATIONAL",
+        "source": {
+          "decisionRecord": "https://app.notion.com/p/3cdf827a3d1581a08906ebe4ab9feded",
+          "specification": "_migration_handoff_v0.3"
+        },
+        "subjectEntityId": "RDS-0004",
+        "subjectEntityName": "Cumulative Sleep Deficit",
+        "subjectEntityType": "RELATIONAL_DERIVED_STATE",
+        "subjectLevel": null,
+        "supportingEvidenceIds": []
+      },
+      {
+        "conditionsModerators": "Align the need estimate, intervals, outcome criterion, uncertainty, recovery, decay, and oversleep-credit rules.",
+        "confidence": "HIGH",
+        "directness": null,
+        "effectPersistence": null,
+        "evidenceStrength": null,
+        "exposurePattern": null,
+        "functionalForm": "FORMULA_DEFINED",
+        "functionalFormNotes": "Physiological Sleep Need supplies the reference requirement for serial sleep shortfalls.",
+        "generalizabilityContext": "Align the need estimate, intervals, outcome criterion, uncertainty, recovery, decay, and oversleep-credit rules.",
+        "governanceClass": "CONTEXT_DEPENDENT",
+        "governanceStatus": "ACTIVE",
+        "id": "REL-RDS-0020",
+        "lagLowerBound": null,
+        "lagNarrative": null,
+        "lagProfile": [],
+        "lagUnit": null,
+        "lagUpperBound": null,
+        "legacyRelationship": null,
+        "levelTransitionMechanism": null,
+        "mechanism": "Physiological Sleep Need supplies the reference requirement for serial sleep shortfalls.",
+        "moderatorEntityIds": [],
+        "notesCaveats": null,
+        "objectEntityId": "BIO-074",
+        "objectEntityName": "Physiological Sleep Need",
+        "objectEntityType": "DRIVER",
+        "objectLevel": null,
+        "objectRelationshipId": null,
+        "polarity": null,
+        "predicate": "DERIVED_FROM",
+        "reciprocalProcessId": null,
+        "relationFamily": "DERIVATIONAL",
+        "source": {
+          "decisionRecord": "https://app.notion.com/p/3cdf827a3d1581a08906ebe4ab9feded",
+          "specification": "_migration_handoff_v0.3"
+        },
+        "subjectEntityId": "RDS-0004",
+        "subjectEntityName": "Cumulative Sleep Deficit",
+        "subjectEntityType": "RELATIONAL_DERIVED_STATE",
+        "subjectLevel": null,
+        "supportingEvidenceIds": []
+      }
+    ]
+  },
+  "nativeIncident": [
+    {
+      "applicability": {
+        "analyticUnit": "PERSON",
+        "context": "Applies to post-awakening assessment; effect varies by prior restriction, sleep stage at awakening, circadian phase, task, and individual vulnerability.",
+        "populationOrSystem": "Humans within the population and protocol stated by the evidence"
+      },
+      "associationSpecification": null,
+      "boundaryConditions": "Applies to post-awakening assessment; effect varies by prior restriction, sleep stage at awakening, circadian phase, task, and individual vulnerability.",
+      "causalClaim": true,
+      "causalClaimRole": "MODELED_LOCAL_LINK",
+      "causalLag": null,
+      "causalReviewGate": "STANDARD_CAUSAL",
+      "combinationRule": null,
+      "compatibility": {
+        "authorityStatus": "V1_LIFECYCLE",
+        "blockedFields": [],
+        "legacyRecord": null,
+        "legacyRecordHash": null,
+        "legacyRelationFamily": null,
+        "legacyScientificFields": null,
+        "migrationCompleteness": "COMPLETE",
+        "sourceSchema": "RELATIONSHIP_V1",
+        "v1Executability": "EXECUTABLE"
+      },
+      "evidenceAssessmentIds": [
+        "EVA-V1-BIO-F01-REL-001"
+      ],
+      "exposurePattern": null,
+      "functionalForm": null,
+      "governance": {
+        "activationStatus": "ACTIVE",
+        "authorityBasis": "V1_NATIVE",
+        "authorizedBy": "authorized human governor",
+        "blockStatus": "NONE",
+        "decisionDate": "2026-09-05",
+        "decisionOutcome": "APPROVED",
+        "decisionRationale": "Exact partial activation authorized by an authorized human governor; scientific identity, proposition, effect, and scope remain unchanged.",
+        "decisionRecord": "docs/governance/pilots/BIO-F01/BIO_F01_ACTIVATION_DECISION_001.md",
+        "effectiveVersion": "BIO-F01-PARTIAL-ACTIVATION-001",
+        "lifecycleStatus": "GOVERNED",
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": null
+            },
+            "governanceDecisionRecord": null,
+            "objectId": "REL-V1-BIO-F01-001",
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-1",
+            "rationale": "Reconstructed non-governed candidate workflow from the authorized pilot lineage.",
+            "revision": 1,
+            "timestamp": "2026-09-05T23:00:00Z",
+            "toState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "CANDIDATE"
+            }
+          },
+          {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "CANDIDATE"
+            },
+            "governanceDecisionRecord": null,
+            "objectId": "REL-V1-BIO-F01-001",
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-2",
+            "rationale": "Reconstructed non-governed candidate workflow from the authorized pilot lineage.",
+            "revision": 1,
+            "timestamp": "2026-09-05T23:00:00Z",
+            "toState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "RESEARCH_NEEDED"
+            }
+          },
+          {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "RESEARCH_NEEDED"
+            },
+            "governanceDecisionRecord": null,
+            "objectId": "REL-V1-BIO-F01-001",
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-3",
+            "rationale": "Reconstructed non-governed candidate workflow from the authorized pilot lineage.",
+            "revision": 1,
+            "timestamp": "2026-09-05T23:00:00Z",
+            "toState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "REVIEW_READY"
+            }
+          },
+          {
+            "actorClass": "AUTHORIZED_HUMAN_GOVERNOR",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "REVIEW_READY"
+            },
+            "governanceDecisionRecord": "docs/governance/pilots/BIO-F01/BIO_F01_GOVERNANCE_DECISION_001.md",
+            "objectId": "REL-V1-BIO-F01-001",
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-4",
+            "rationale": "Exact materialization of the authorized BIO-F01 governance decision; activation was not authorized.",
+            "revision": 1,
+            "timestamp": "2026-09-05T23:00:00Z",
+            "toState": {
+              "activationStatus": "INACTIVE",
+              "lifecycleStatus": "GOVERNED"
+            }
+          },
+          {
+            "actorClass": "AUTHORIZED_HUMAN_GOVERNOR",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "INACTIVE",
+              "lifecycleStatus": "GOVERNED"
+            },
+            "governanceDecisionRecord": "docs/governance/pilots/BIO-F01/BIO_F01_ACTIVATION_DECISION_001.md",
+            "objectId": "REL-V1-BIO-F01-001",
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:f3a933d09f98c08fa8c31374ed17658a660943aa:activation-001",
+            "rationale": "Partial activation of the exact record was explicitly authorized after the BIO-F01 activation-readiness audit.",
+            "revision": 1,
+            "timestamp": "2026-09-06T01:45:00Z",
+            "toState": {
+              "activationStatus": "ACTIVE",
+              "lifecycleStatus": "GOVERNED"
+            }
+          }
+        ]
+      },
+      "id": "REL-V1-BIO-F01-001",
+      "legacyDirectness": null,
+      "mechanism": "Greater obtained sleep, within an individually relevant range, reduces homeostatic sleep pressure that otherwise magnifies post-awakening impairment.",
+      "moderatedRelationshipId": null,
+      "moderationDirection": null,
+      "moderatorSpecifications": [],
+      "persistence": null,
+      "polarity": "NEGATIVE",
+      "predicate": "CAUSES",
+      "rdsSafeguards": null,
+      "relationFamily": "CAUSAL",
+      "revision": 1,
+      "schemaVersion": "1.0.0",
+      "sourceEntityId": "BIO-001",
+      "sourceEntityType": "DRIVER",
+      "sourceIds": [
+        "SRC010",
+        "SRC-535",
+        "SRC-536"
+      ],
+      "symmetry": "DIRECTED",
+      "targetEntityId": "BIO-005",
+      "targetEntityType": "DRIVER",
+      "temporalSpecification": null
+    },
+    {
+      "applicability": {
+        "analyticUnit": "PERSON",
+        "context": "Interpret phase relative to a physiological marker, not wall-clock time. Scope is post-awakening assessment and depends on awakening phase, prior sleep amount, sleep stage, task, and assessment window.",
+        "populationOrSystem": "Humans within the population and protocol stated by the evidence"
+      },
+      "associationSpecification": null,
+      "boundaryConditions": "Interpret phase relative to a physiological marker, not wall-clock time. Scope is post-awakening assessment and depends on awakening phase, prior sleep amount, sleep stage, task, and assessment window.",
+      "causalClaim": true,
+      "causalClaimRole": "MODELED_LOCAL_LINK",
+      "causalLag": null,
+      "causalReviewGate": "STANDARD_CAUSAL",
+      "combinationRule": null,
+      "compatibility": {
+        "authorityStatus": "V1_LIFECYCLE",
+        "blockedFields": [],
+        "legacyRecord": null,
+        "legacyRecordHash": null,
+        "legacyRelationFamily": null,
+        "legacyScientificFields": null,
+        "migrationCompleteness": "COMPLETE",
+        "sourceSchema": "RELATIONSHIP_V1",
+        "v1Executability": "EXECUTABLE"
+      },
+      "evidenceAssessmentIds": [
+        "EVA-V1-BIO-F01-REL-002"
+      ],
+      "exposurePattern": null,
+      "functionalForm": {
+        "kind": "CYCLIC_STATE_DEPENDENT",
+        "specification": "Effect direction and severity depend on biological phase at awakening; no global monotonic ordering of phase is asserted."
+      },
+      "governance": {
+        "activationStatus": "ACTIVE",
+        "authorityBasis": "V1_NATIVE",
+        "authorizedBy": "authorized human governor",
+        "blockStatus": "NONE",
+        "decisionDate": "2026-09-05",
+        "decisionOutcome": "APPROVED",
+        "decisionRationale": "Exact partial activation authorized by an authorized human governor; scientific identity, proposition, effect, and scope remain unchanged.",
+        "decisionRecord": "docs/governance/pilots/BIO-F01/BIO_F01_ACTIVATION_DECISION_001.md",
+        "effectiveVersion": "BIO-F01-PARTIAL-ACTIVATION-001",
+        "lifecycleStatus": "GOVERNED",
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": null
+            },
+            "governanceDecisionRecord": null,
+            "objectId": "REL-V1-BIO-F01-002",
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-1",
+            "rationale": "Reconstructed non-governed candidate workflow from the authorized pilot lineage.",
+            "revision": 1,
+            "timestamp": "2026-09-05T23:00:00Z",
+            "toState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "CANDIDATE"
+            }
+          },
+          {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "CANDIDATE"
+            },
+            "governanceDecisionRecord": null,
+            "objectId": "REL-V1-BIO-F01-002",
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-2",
+            "rationale": "Reconstructed non-governed candidate workflow from the authorized pilot lineage.",
+            "revision": 1,
+            "timestamp": "2026-09-05T23:00:00Z",
+            "toState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "RESEARCH_NEEDED"
+            }
+          },
+          {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "RESEARCH_NEEDED"
+            },
+            "governanceDecisionRecord": null,
+            "objectId": "REL-V1-BIO-F01-002",
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-3",
+            "rationale": "Reconstructed non-governed candidate workflow from the authorized pilot lineage.",
+            "revision": 1,
+            "timestamp": "2026-09-05T23:00:00Z",
+            "toState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "REVIEW_READY"
+            }
+          },
+          {
+            "actorClass": "AUTHORIZED_HUMAN_GOVERNOR",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "REVIEW_READY"
+            },
+            "governanceDecisionRecord": "docs/governance/pilots/BIO-F01/BIO_F01_GOVERNANCE_DECISION_001.md",
+            "objectId": "REL-V1-BIO-F01-002",
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-4",
+            "rationale": "Exact materialization of the authorized BIO-F01 governance decision; activation was not authorized.",
+            "revision": 1,
+            "timestamp": "2026-09-05T23:00:00Z",
+            "toState": {
+              "activationStatus": "INACTIVE",
+              "lifecycleStatus": "GOVERNED"
+            }
+          },
+          {
+            "actorClass": "AUTHORIZED_HUMAN_GOVERNOR",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "INACTIVE",
+              "lifecycleStatus": "GOVERNED"
+            },
+            "governanceDecisionRecord": "docs/governance/pilots/BIO-F01/BIO_F01_ACTIVATION_DECISION_001.md",
+            "objectId": "REL-V1-BIO-F01-002",
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:f3a933d09f98c08fa8c31374ed17658a660943aa:activation-001",
+            "rationale": "Partial activation of the exact record was explicitly authorized after the BIO-F01 activation-readiness audit.",
+            "revision": 1,
+            "timestamp": "2026-09-06T01:45:00Z",
+            "toState": {
+              "activationStatus": "ACTIVE",
+              "lifecycleStatus": "GOVERNED"
+            }
+          }
+        ]
+      },
+      "id": "REL-V1-BIO-F01-002",
+      "legacyDirectness": null,
+      "mechanism": "Biological circadian phase at awakening changes the physiological state from which alert performance emerges; sleep inertia is typically greater near the biological night/trough, but phase is cyclic rather than a monotonic exposure.",
+      "moderatedRelationshipId": null,
+      "moderationDirection": null,
+      "moderatorSpecifications": [],
+      "persistence": null,
+      "polarity": "CONTEXT_DEPENDENT",
+      "predicate": "CAUSES",
+      "rdsSafeguards": null,
+      "relationFamily": "CAUSAL",
+      "revision": 1,
+      "schemaVersion": "1.0.0",
+      "sourceEntityId": "BIO-004",
+      "sourceEntityType": "DRIVER",
+      "sourceIds": [
+        "SRC010",
+        "SRC-535",
+        "SRC-536"
+      ],
+      "symmetry": "DIRECTED",
+      "targetEntityId": "BIO-005",
+      "targetEntityType": "DRIVER",
+      "temporalSpecification": null
+    },
+    {
+      "applicability": {
+        "analyticUnit": "PERSON",
+        "context": "Depends on dose, formulation, metabolism, tolerance, administration time, habitual use, and available sleep opportunity.",
+        "populationOrSystem": "Humans within the population and protocol stated by the evidence"
+      },
+      "associationSpecification": null,
+      "boundaryConditions": "Depends on dose, formulation, metabolism, tolerance, administration time, habitual use, and available sleep opportunity.",
+      "causalClaim": true,
+      "causalClaimRole": "MODELED_LOCAL_LINK",
+      "causalLag": null,
+      "causalReviewGate": "STANDARD_CAUSAL",
+      "combinationRule": null,
+      "compatibility": {
+        "authorityStatus": "V1_LIFECYCLE",
+        "blockedFields": [],
+        "legacyRecord": null,
+        "legacyRecordHash": null,
+        "legacyRelationFamily": null,
+        "legacyScientificFields": null,
+        "migrationCompleteness": "COMPLETE",
+        "sourceSchema": "RELATIONSHIP_V1",
+        "v1Executability": "EXECUTABLE"
+      },
+      "evidenceAssessmentIds": [
+        "EVA-V1-BIO-F01-REL-003"
+      ],
+      "exposurePattern": null,
+      "functionalForm": null,
+      "governance": {
+        "activationStatus": "ACTIVE",
+        "authorityBasis": "V1_NATIVE",
+        "authorizedBy": "authorized human governor",
+        "blockStatus": "NONE",
+        "decisionDate": "2026-09-05",
+        "decisionOutcome": "APPROVED",
+        "decisionRationale": "Exact partial activation authorized by an authorized human governor; scientific identity, proposition, effect, and scope remain unchanged.",
+        "decisionRecord": "docs/governance/pilots/BIO-F01/BIO_F01_ACTIVATION_DECISION_001.md",
+        "effectiveVersion": "BIO-F01-PARTIAL-ACTIVATION-001",
+        "lifecycleStatus": "GOVERNED",
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": null
+            },
+            "governanceDecisionRecord": null,
+            "objectId": "REL-V1-BIO-F01-003",
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-1",
+            "rationale": "Reconstructed non-governed candidate workflow from the authorized pilot lineage.",
+            "revision": 1,
+            "timestamp": "2026-09-05T23:00:00Z",
+            "toState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "CANDIDATE"
+            }
+          },
+          {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "CANDIDATE"
+            },
+            "governanceDecisionRecord": null,
+            "objectId": "REL-V1-BIO-F01-003",
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-2",
+            "rationale": "Reconstructed non-governed candidate workflow from the authorized pilot lineage.",
+            "revision": 1,
+            "timestamp": "2026-09-05T23:00:00Z",
+            "toState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "RESEARCH_NEEDED"
+            }
+          },
+          {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "RESEARCH_NEEDED"
+            },
+            "governanceDecisionRecord": null,
+            "objectId": "REL-V1-BIO-F01-003",
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-3",
+            "rationale": "Reconstructed non-governed candidate workflow from the authorized pilot lineage.",
+            "revision": 1,
+            "timestamp": "2026-09-05T23:00:00Z",
+            "toState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "REVIEW_READY"
+            }
+          },
+          {
+            "actorClass": "AUTHORIZED_HUMAN_GOVERNOR",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "REVIEW_READY"
+            },
+            "governanceDecisionRecord": "docs/governance/pilots/BIO-F01/BIO_F01_GOVERNANCE_DECISION_001.md",
+            "objectId": "REL-V1-BIO-F01-003",
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-4",
+            "rationale": "Exact materialization of the authorized BIO-F01 governance decision; activation was not authorized.",
+            "revision": 1,
+            "timestamp": "2026-09-05T23:00:00Z",
+            "toState": {
+              "activationStatus": "INACTIVE",
+              "lifecycleStatus": "GOVERNED"
+            }
+          },
+          {
+            "actorClass": "AUTHORIZED_HUMAN_GOVERNOR",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "INACTIVE",
+              "lifecycleStatus": "GOVERNED"
+            },
+            "governanceDecisionRecord": "docs/governance/pilots/BIO-F01/BIO_F01_ACTIVATION_DECISION_001.md",
+            "objectId": "REL-V1-BIO-F01-003",
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:f3a933d09f98c08fa8c31374ed17658a660943aa:activation-001",
+            "rationale": "Partial activation of the exact record was explicitly authorized after the BIO-F01 activation-readiness audit.",
+            "revision": 1,
+            "timestamp": "2026-09-06T01:45:00Z",
+            "toState": {
+              "activationStatus": "ACTIVE",
+              "lifecycleStatus": "GOVERNED"
+            }
+          }
+        ]
+      },
+      "id": "REL-V1-BIO-F01-003",
+      "legacyDirectness": null,
+      "mechanism": "Caffeine exposure sufficiently near planned sleep can delay sleep initiation and reduce obtained sleep duration through adenosine-receptor antagonism and increased alerting.",
+      "moderatedRelationshipId": null,
+      "moderationDirection": null,
+      "moderatorSpecifications": [],
+      "persistence": null,
+      "polarity": "NEGATIVE",
+      "predicate": "CONSTRAINS",
+      "rdsSafeguards": null,
+      "relationFamily": "CAUSAL",
+      "revision": 1,
+      "schemaVersion": "1.0.0",
+      "sourceEntityId": "BIO-061",
+      "sourceEntityType": "DRIVER",
+      "sourceIds": [
+        "SRC086"
+      ],
+      "symmetry": "DIRECTED",
+      "targetEntityId": "BIO-001",
+      "targetEntityType": "DRIVER",
+      "temporalSpecification": null
+    },
+    {
+      "applicability": {
+        "analyticUnit": "PERSON",
+        "context": "Evidence is strongest for transportation-noise events in adults and does not generalize to every sound source. Event maximum level, timing, background level, habituation, and individual sensitivity matter; this proposition is distinct from ENV-039 average ambient noise level.",
+        "populationOrSystem": "Humans within the population and protocol stated by the evidence"
+      },
+      "associationSpecification": null,
+      "boundaryConditions": "Evidence is strongest for transportation-noise events in adults and does not generalize to every sound source. Event maximum level, timing, background level, habituation, and individual sensitivity matter; this proposition is distinct from ENV-039 average ambient noise level.",
+      "causalClaim": true,
+      "causalClaimRole": "MODELED_LOCAL_LINK",
+      "causalLag": null,
+      "causalReviewGate": "STANDARD_CAUSAL",
+      "combinationRule": null,
+      "compatibility": {
+        "authorityStatus": "V1_LIFECYCLE",
+        "blockedFields": [],
+        "legacyRecord": null,
+        "legacyRecordHash": null,
+        "legacyRelationFamily": null,
+        "legacyScientificFields": null,
+        "migrationCompleteness": "COMPLETE",
+        "sourceSchema": "RELATIONSHIP_V1",
+        "v1Executability": "EXECUTABLE"
+      },
+      "evidenceAssessmentIds": [
+        "EVA-V1-BIO-F01-REL-004"
+      ],
+      "exposurePattern": null,
+      "functionalForm": null,
+      "governance": {
+        "activationStatus": "ACTIVE",
+        "authorityBasis": "V1_NATIVE",
+        "authorizedBy": "authorized human governor",
+        "blockStatus": "NONE",
+        "decisionDate": "2026-09-05",
+        "decisionOutcome": "APPROVED",
+        "decisionRationale": "Exact partial activation authorized by an authorized human governor; scientific identity, proposition, effect, and scope remain unchanged.",
+        "decisionRecord": "docs/governance/pilots/BIO-F01/BIO_F01_ACTIVATION_DECISION_001.md",
+        "effectiveVersion": "BIO-F01-PARTIAL-ACTIVATION-001",
+        "lifecycleStatus": "GOVERNED",
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": null
+            },
+            "governanceDecisionRecord": null,
+            "objectId": "REL-V1-BIO-F01-004",
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-1",
+            "rationale": "Reconstructed non-governed candidate workflow from the authorized pilot lineage.",
+            "revision": 1,
+            "timestamp": "2026-09-05T23:00:00Z",
+            "toState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "CANDIDATE"
+            }
+          },
+          {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "CANDIDATE"
+            },
+            "governanceDecisionRecord": null,
+            "objectId": "REL-V1-BIO-F01-004",
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-2",
+            "rationale": "Reconstructed non-governed candidate workflow from the authorized pilot lineage.",
+            "revision": 1,
+            "timestamp": "2026-09-05T23:00:00Z",
+            "toState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "RESEARCH_NEEDED"
+            }
+          },
+          {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "RESEARCH_NEEDED"
+            },
+            "governanceDecisionRecord": null,
+            "objectId": "REL-V1-BIO-F01-004",
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-3",
+            "rationale": "Reconstructed non-governed candidate workflow from the authorized pilot lineage.",
+            "revision": 1,
+            "timestamp": "2026-09-05T23:00:00Z",
+            "toState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "REVIEW_READY"
+            }
+          },
+          {
+            "actorClass": "AUTHORIZED_HUMAN_GOVERNOR",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "REVIEW_READY"
+            },
+            "governanceDecisionRecord": "docs/governance/pilots/BIO-F01/BIO_F01_GOVERNANCE_DECISION_001.md",
+            "objectId": "REL-V1-BIO-F01-004",
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-4",
+            "rationale": "Exact materialization of the authorized BIO-F01 governance decision; activation was not authorized.",
+            "revision": 1,
+            "timestamp": "2026-09-05T23:00:00Z",
+            "toState": {
+              "activationStatus": "INACTIVE",
+              "lifecycleStatus": "GOVERNED"
+            }
+          },
+          {
+            "actorClass": "AUTHORIZED_HUMAN_GOVERNOR",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "INACTIVE",
+              "lifecycleStatus": "GOVERNED"
+            },
+            "governanceDecisionRecord": "docs/governance/pilots/BIO-F01/BIO_F01_ACTIVATION_DECISION_001.md",
+            "objectId": "REL-V1-BIO-F01-004",
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:f3a933d09f98c08fa8c31374ed17658a660943aa:activation-001",
+            "rationale": "Partial activation of the exact record was explicitly authorized after the BIO-F01 activation-readiness audit.",
+            "revision": 1,
+            "timestamp": "2026-09-06T01:45:00Z",
+            "toState": {
+              "activationStatus": "ACTIVE",
+              "lifecycleStatus": "GOVERNED"
+            }
+          }
+        ]
+      },
+      "id": "REL-V1-BIO-F01-004",
+      "legacyDirectness": null,
+      "mechanism": "Discrete nighttime noise events can trigger cortical arousals, awakenings, or sleep-stage changes, reducing continuity independently of a simple average-level description.",
+      "moderatedRelationshipId": null,
+      "moderationDirection": null,
+      "moderatorSpecifications": [],
+      "persistence": null,
+      "polarity": "NEGATIVE",
+      "predicate": "CONSTRAINS",
+      "rdsSafeguards": null,
+      "relationFamily": "CAUSAL",
+      "revision": 1,
+      "schemaVersion": "1.0.0",
+      "sourceEntityId": "ENV-041",
+      "sourceEntityType": "DRIVER",
+      "sourceIds": [
+        "SRC-530",
+        "SRC-531"
+      ],
+      "symmetry": "DIRECTED",
+      "targetEntityId": "BIO-002",
+      "targetEntityType": "DRIVER",
+      "temporalSpecification": null
+    },
+    {
+      "applicability": {
+        "analyticUnit": "PERSON",
+        "context": "Association depends on the chronotype instrument, physiological phase marker, sampling protocol, age, sex, light exposure, and schedule context.",
+        "populationOrSystem": "Humans assessed with a named chronotype instrument and physiological phase protocol"
+      },
+      "associationSpecification": {
+        "constituentOverlapCheck": "Chronotype is partly shaped by phase but is not calculated from the canonical Endogenous Circadian Phase entity; instrument overlap and schedule contamination must be reported.",
+        "qualitativeStatement": "Physiological circadian phase markers are associated with chronotype instrument scores or sleep-timing preferences within the validated instrument and collection protocol; chronotype is not asserted to directly measure phase.",
+        "strengthEstimate": null,
+        "temporalScope": "REPEATED_MIXED"
+      },
+      "boundaryConditions": "Association depends on the chronotype instrument, physiological phase marker, sampling protocol, age, sex, light exposure, and schedule context.",
+      "causalClaim": false,
+      "causalClaimRole": null,
+      "causalLag": null,
+      "causalReviewGate": null,
+      "combinationRule": null,
+      "compatibility": {
+        "authorityStatus": "V1_LIFECYCLE",
+        "blockedFields": [],
+        "legacyRecord": null,
+        "legacyRecordHash": null,
+        "legacyRelationFamily": null,
+        "legacyScientificFields": null,
+        "migrationCompleteness": "COMPLETE",
+        "sourceSchema": "RELATIONSHIP_V1",
+        "v1Executability": "EXECUTABLE"
+      },
+      "evidenceAssessmentIds": [
+        "EVA-V1-BIO-F01-REL-006"
+      ],
+      "exposurePattern": null,
+      "functionalForm": null,
+      "governance": {
+        "activationStatus": "ACTIVE",
+        "authorityBasis": "V1_NATIVE",
+        "authorizedBy": "authorized human governor",
+        "blockStatus": "NONE",
+        "decisionDate": "2026-09-05",
+        "decisionOutcome": "APPROVED",
+        "decisionRationale": "Exact partial activation authorized by an authorized human governor; scientific identity, proposition, effect, and scope remain unchanged.",
+        "decisionRecord": "docs/governance/pilots/BIO-F01/BIO_F01_ACTIVATION_DECISION_001.md",
+        "effectiveVersion": "BIO-F01-PARTIAL-ACTIVATION-001",
+        "lifecycleStatus": "GOVERNED",
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": null
+            },
+            "governanceDecisionRecord": null,
+            "objectId": "REL-V1-BIO-F01-005",
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-1",
+            "rationale": "Reconstructed non-governed candidate workflow from the authorized pilot lineage.",
+            "revision": 1,
+            "timestamp": "2026-09-05T23:00:00Z",
+            "toState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "CANDIDATE"
+            }
+          },
+          {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "CANDIDATE"
+            },
+            "governanceDecisionRecord": null,
+            "objectId": "REL-V1-BIO-F01-005",
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-2",
+            "rationale": "Reconstructed non-governed candidate workflow from the authorized pilot lineage.",
+            "revision": 1,
+            "timestamp": "2026-09-05T23:00:00Z",
+            "toState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "RESEARCH_NEEDED"
+            }
+          },
+          {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "RESEARCH_NEEDED"
+            },
+            "governanceDecisionRecord": null,
+            "objectId": "REL-V1-BIO-F01-005",
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-3",
+            "rationale": "Reconstructed non-governed candidate workflow from the authorized pilot lineage.",
+            "revision": 1,
+            "timestamp": "2026-09-05T23:00:00Z",
+            "toState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "REVIEW_READY"
+            }
+          },
+          {
+            "actorClass": "AUTHORIZED_HUMAN_GOVERNOR",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "REVIEW_READY"
+            },
+            "governanceDecisionRecord": "docs/governance/pilots/BIO-F01/BIO_F01_GOVERNANCE_DECISION_001.md",
+            "objectId": "REL-V1-BIO-F01-005",
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-4",
+            "rationale": "Exact materialization of the authorized BIO-F01 governance decision; activation was not authorized.",
+            "revision": 1,
+            "timestamp": "2026-09-05T23:00:00Z",
+            "toState": {
+              "activationStatus": "INACTIVE",
+              "lifecycleStatus": "GOVERNED"
+            }
+          },
+          {
+            "actorClass": "AUTHORIZED_HUMAN_GOVERNOR",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "INACTIVE",
+              "lifecycleStatus": "GOVERNED"
+            },
+            "governanceDecisionRecord": "docs/governance/pilots/BIO-F01/BIO_F01_ACTIVATION_DECISION_001.md",
+            "objectId": "REL-V1-BIO-F01-005",
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:f3a933d09f98c08fa8c31374ed17658a660943aa:activation-001",
+            "rationale": "Partial activation of the exact record was explicitly authorized after the BIO-F01 activation-readiness audit.",
+            "revision": 1,
+            "timestamp": "2026-09-06T01:45:00Z",
+            "toState": {
+              "activationStatus": "ACTIVE",
+              "lifecycleStatus": "GOVERNED"
+            }
+          }
+        ]
+      },
+      "id": "REL-V1-BIO-F01-005",
+      "legacyDirectness": null,
+      "mechanism": "Chronotype instruments covary with physiological circadian phase markers but are not interchangeable measurements.",
+      "moderatedRelationshipId": null,
+      "moderationDirection": null,
+      "moderatorSpecifications": [],
+      "persistence": null,
+      "polarity": null,
+      "predicate": "ASSOCIATED_WITH",
+      "rdsSafeguards": null,
+      "relationFamily": "EMPIRICAL_NONCAUSAL",
+      "revision": 1,
+      "schemaVersion": "1.0.0",
+      "sourceEntityId": "BIO-004",
+      "sourceEntityType": "DRIVER",
+      "sourceIds": [
+        "SRC009",
+        "SRC011",
+        "SRC-538",
+        "SRC-548"
+      ],
+      "symmetry": "SYMMETRIC",
+      "targetEntityId": "BIO-073",
+      "targetEntityType": "DRIVER",
+      "temporalSpecification": null
+    },
+    {
+      "applicability": {
+        "analyticUnit": "PERSON_OR_GROUP_WITH_ALIGNED_TIME_BASIS",
+        "context": "Endogenous phase is one required input only; external timing or schedule requirements remain mandatory and are not represented as a new ontology entity.",
+        "populationOrSystem": "Any scope with a governed endogenous-phase estimate and external timing requirement"
+      },
+      "associationSpecification": null,
+      "boundaryConditions": "Endogenous phase is one required input only; external timing or schedule requirements remain mandatory and are not represented as a new ontology entity.",
+      "causalClaim": false,
+      "causalClaimRole": null,
+      "causalLag": null,
+      "causalReviewGate": null,
+      "combinationRule": null,
+      "compatibility": {
+        "authorityStatus": "V1_LIFECYCLE",
+        "blockedFields": [],
+        "legacyRecord": null,
+        "legacyRecordHash": null,
+        "legacyRelationFamily": null,
+        "legacyScientificFields": null,
+        "migrationCompleteness": "COMPLETE",
+        "sourceSchema": "RELATIONSHIP_V1",
+        "v1Executability": "EXECUTABLE"
+      },
+      "evidenceAssessmentIds": [
+        "EVA-V1-BIO-F01-REL-009"
+      ],
+      "exposurePattern": null,
+      "functionalForm": null,
+      "governance": {
+        "activationStatus": "ACTIVE",
+        "authorityBasis": "V1_NATIVE",
+        "authorizedBy": "authorized human governor",
+        "blockStatus": "NONE",
+        "decisionDate": "2026-09-05",
+        "decisionOutcome": "APPROVED",
+        "decisionRationale": "Exact partial activation authorized by an authorized human governor; scientific identity, proposition, effect, and scope remain unchanged.",
+        "decisionRecord": "docs/governance/pilots/BIO-F01/BIO_F01_ACTIVATION_DECISION_001.md",
+        "effectiveVersion": "BIO-F01-PARTIAL-ACTIVATION-001",
+        "lifecycleStatus": "GOVERNED",
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": null
+            },
+            "governanceDecisionRecord": null,
+            "objectId": "REL-V1-BIO-F01-006",
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-1",
+            "rationale": "Reconstructed non-governed candidate workflow from the authorized pilot lineage.",
+            "revision": 1,
+            "timestamp": "2026-09-05T23:00:00Z",
+            "toState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "CANDIDATE"
+            }
+          },
+          {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "CANDIDATE"
+            },
+            "governanceDecisionRecord": null,
+            "objectId": "REL-V1-BIO-F01-006",
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-2",
+            "rationale": "Reconstructed non-governed candidate workflow from the authorized pilot lineage.",
+            "revision": 1,
+            "timestamp": "2026-09-05T23:00:00Z",
+            "toState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "RESEARCH_NEEDED"
+            }
+          },
+          {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "RESEARCH_NEEDED"
+            },
+            "governanceDecisionRecord": null,
+            "objectId": "REL-V1-BIO-F01-006",
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-3",
+            "rationale": "Reconstructed non-governed candidate workflow from the authorized pilot lineage.",
+            "revision": 1,
+            "timestamp": "2026-09-05T23:00:00Z",
+            "toState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "REVIEW_READY"
+            }
+          },
+          {
+            "actorClass": "AUTHORIZED_HUMAN_GOVERNOR",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "REVIEW_READY"
+            },
+            "governanceDecisionRecord": "docs/governance/pilots/BIO-F01/BIO_F01_GOVERNANCE_DECISION_001.md",
+            "objectId": "REL-V1-BIO-F01-006",
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-4",
+            "rationale": "Exact materialization of the authorized BIO-F01 governance decision; activation was not authorized.",
+            "revision": 1,
+            "timestamp": "2026-09-05T23:00:00Z",
+            "toState": {
+              "activationStatus": "INACTIVE",
+              "lifecycleStatus": "GOVERNED"
+            }
+          },
+          {
+            "actorClass": "AUTHORIZED_HUMAN_GOVERNOR",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "INACTIVE",
+              "lifecycleStatus": "GOVERNED"
+            },
+            "governanceDecisionRecord": "docs/governance/pilots/BIO-F01/BIO_F01_ACTIVATION_DECISION_001.md",
+            "objectId": "REL-V1-BIO-F01-006",
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:f3a933d09f98c08fa8c31374ed17658a660943aa:activation-001",
+            "rationale": "Partial activation of the exact record was explicitly authorized after the BIO-F01 activation-readiness audit.",
+            "revision": 1,
+            "timestamp": "2026-09-06T01:45:00Z",
+            "toState": {
+              "activationStatus": "ACTIVE",
+              "lifecycleStatus": "GOVERNED"
+            }
+          }
+        ]
+      },
+      "id": "REL-V1-BIO-F01-006",
+      "legacyDirectness": null,
+      "mechanism": "Endogenous Circadian Phase is the internal-timing constituent used to calculate Circadian Timing Alignment.",
+      "moderatedRelationshipId": null,
+      "moderationDirection": null,
+      "moderatorSpecifications": [],
+      "persistence": null,
+      "polarity": null,
+      "predicate": "DERIVED_FROM",
+      "rdsSafeguards": null,
+      "relationFamily": "DERIVATIONAL",
+      "revision": 1,
+      "schemaVersion": "1.0.0",
+      "sourceEntityId": "BIO-003",
+      "sourceEntityType": "RELATIONAL_DERIVED_STATE",
+      "sourceIds": [
+        "SRC009",
+        "SRC011"
+      ],
+      "symmetry": "DIRECTED",
+      "targetEntityId": "BIO-004",
+      "targetEntityType": "DRIVER",
+      "temporalSpecification": null
+    }
+  ],
+  "rdsSpecifications": [
+    {
+      "aliases": [],
+      "associatedLayers": [
+        "Biological"
+      ],
+      "commonMisinterpretations": "Chronotype is not a personality type and does not dictate behavior.",
+      "constituentSpecifications": [
+        {
+          "alignmentRequirements": "Match analytic level, scope, and time window",
+          "entityId": "BIO-073",
+          "externalParameterType": null,
+          "required": true,
+          "role": "CONSTITUENT_OR_INPUT",
+          "unitScaleExpectations": "Aligned with derivation logic"
+        },
+        {
+          "alignmentRequirements": "Match analytic level, scope, and time window",
+          "entityId": null,
+          "externalParameterType": "REQUIRED_SCHEDULE",
+          "required": true,
+          "role": "CONSTITUENT_OR_INPUT",
+          "unitScaleExpectations": "Aligned with derivation logic"
+        }
+      ],
+      "dataType": "Magnitude / level",
+      "definition": "The degree of fit between an individual’s preferred biological timing and externally required schedules.",
+      "derivationLogic": "Compare the individual Chronotype with the required schedule using the declared fit or mismatch rule.",
+      "derivationType": "FIT",
+      "directManipulability": "VIA_CONSTITUENTS",
+      "entitySubtype": "RELATIONAL_DERIVED_STATE",
+      "entityType": "RELATIONAL_DERIVED_STATE",
+      "evidenceNotes": "May affect when people are most receptive to learning, persuasion, complex decisions, or behavior-change demands. Chronotype is not a personality type and does not dictate behavior.",
+      "evidenceStrength": "Moderate",
+      "family": "Sleep & Circadian Regulation",
+      "id": "BIO-006",
+      "indicators": [
+        "Morningness-eveningness scales",
+        "midsleep timing",
+        "social jetlag metrics"
+      ],
+      "keySources": [
+        "SRC009",
+        "SRC011"
+      ],
+      "layer": "Biological",
+      "likelyDownstreamInfluences": [
+        "Lower alertness at required times, sleep debt, and potentially poorer cognitive/health outcomes."
+      ],
+      "likelyUpstreamInfluences": [
+        "light exposure",
+        "work and caregiving schedules",
+        "prior sleep",
+        "stimulant or sedative use",
+        "illness"
+      ],
+      "measurementAssessmentMethods": "See linked Operationalizations records.",
+      "measurementCaveats": "Indicators may be state-, protocol-, dose-, and population-dependent; do not equate a single proxy with the construct. Chronotype is not a personality type and does not dictate behavior.",
+      "mechanism": "Mismatch can produce chronic sleep curtailment and repeated circadian misalignment.",
+      "moderatorsBoundaryConditions": "Evidence for specific cognitive effects is heterogeneous and often observational.",
+      "modifiability": "Moderate",
+      "name": "Chronotype–Schedule Fit",
+      "observability": "High",
+      "onsetCausalLag": [
+        "Mixed / Context-dependent"
+      ],
+      "persistenceRecovery": "Commonly persists across Days–chronic; recovery depends on cause, dose, and intervention.",
+      "polarityDirection": "Higher values = greater chronotype–schedule alignment.",
+      "primaryFamilyId": "BIO-F01",
+      "recalculationBehavior": "Recalculate when a required constituent, reference, boundary, formula, or analysis window changes.",
+      "relatedFamilyIds": [],
+      "representationScale": "continuous or ordinal level; clinically meaningful thresholds only where validated",
+      "scopeRequirements": "Specify chronotype instrument, schedule, reference period, time zone, and fit convention.",
+      "source": {
+        "sheet": "Drivers",
+        "workbook": "PSYWERX_Layer_1_Biological_Driver_Ontology_v1.0.xlsx"
+      },
+      "timeScaleOfChange": [
+        "Days–Weeks"
+      ],
+      "timeScaleQualifier": "Repeated mismatch or persistent social jetlag may continue chronically; adaptation rate varies with schedule and context.",
+      "typicalInteractionCandidates": [
+        "Interacts with age, work schedules, light exposure, family obligations, and technology use."
+      ],
+      "uncertaintyPropagation": "Preserve and report constituent uncertainty; use analytic propagation or simulation when the selected operationalization supports it, otherwise note uncertainty qualitatively.",
+      "volatility": "Moderate"
+    },
+    {
+      "aliases": [],
+      "associatedLayers": [
+        "Biological"
+      ],
+      "commonMisinterpretations": "Shift work includes social and structural factors beyond circadian physiology.",
+      "constituentSpecifications": [
+        {
+          "alignmentRequirements": "Match analytic level, scope, and time window",
+          "entityId": "BIO-004",
+          "externalParameterType": null,
+          "required": true,
+          "role": "CONSTITUENT_OR_INPUT",
+          "unitScaleExpectations": "Aligned with derivation logic"
+        },
+        {
+          "alignmentRequirements": "Match analytic level, scope, and time window",
+          "entityId": null,
+          "externalParameterType": "EXTERNAL_TIMING_REQUIREMENTS",
+          "required": true,
+          "role": "CONSTITUENT_OR_INPUT",
+          "unitScaleExpectations": "Aligned with derivation logic"
+        }
+      ],
+      "dataType": "Magnitude / level",
+      "definition": "The degree of alignment between internal circadian phase and the timing of sleep, work, meals, light exposure, and required behavior.",
+      "derivationLogic": "Compare endogenous circadian phase with the timing of sleep, work, meals, light exposure, and required behavior under an explicit alignment convention.",
+      "derivationType": "ALIGNMENT",
+      "directManipulability": "VIA_CONSTITUENTS",
+      "entitySubtype": "RELATIONAL_DERIVED_STATE",
+      "entityType": "RELATIONAL_DERIVED_STATE",
+      "evidenceNotes": "Can make the same behavioral demand substantially harder at biological night timing of interventions and critical decisions matters. Shift work includes social and structural factors beyond circadian physiology.",
+      "evidenceStrength": "Strong",
+      "family": "Sleep & Circadian Regulation",
+      "id": "BIO-003",
+      "indicators": [
+        "Dim-light melatonin onset",
+        "core body temperature",
+        "work schedule",
+        "actigraphy"
+      ],
+      "keySources": [
+        "SRC006",
+        "SRC007",
+        "SRC008"
+      ],
+      "layer": "Biological",
+      "likelyDownstreamInfluences": [
+        "Reduced alertness and cognitive performance, increased error risk, altered mood and metabolic regulation."
+      ],
+      "likelyUpstreamInfluences": [
+        "light exposure",
+        "work and caregiving schedules",
+        "prior sleep",
+        "stimulant or sedative use",
+        "illness"
+      ],
+      "measurementAssessmentMethods": "See linked Operationalizations records.",
+      "measurementCaveats": "Indicators may be state-, protocol-, dose-, and population-dependent; do not equate a single proxy with the construct. Shift work includes social and structural factors beyond circadian physiology.",
+      "mechanism": "Circadian timing alters arousal, temperature, hormonal rhythms, sleep propensity, and cognitive performance independent of time awake.",
+      "moderatorsBoundaryConditions": "Night shift, jet lag, rotating schedules, and forced desynchrony adaptation varies.",
+      "modifiability": "Moderate",
+      "name": "Circadian Timing Alignment",
+      "observability": "High",
+      "onsetCausalLag": [
+        "Hours–Days"
+      ],
+      "persistenceRecovery": "Commonly persists across Hours–weeks; recovery depends on cause, dose, and intervention.",
+      "polarityDirection": "Higher values = greater circadian alignment.",
+      "primaryFamilyId": "BIO-F01",
+      "recalculationBehavior": "Recalculate when a required constituent, reference, boundary, formula, or analysis window changes.",
+      "relatedFamilyIds": [],
+      "representationScale": "continuous or ordinal level; clinically meaningful thresholds only where validated",
+      "scopeRequirements": "Specify internal phase measure, external timing requirements, interval, alignment convention, and update behavior.",
+      "source": {
+        "sheet": "Drivers",
+        "workbook": "PSYWERX_Layer_1_Biological_Driver_Ontology_v1.0.xlsx"
+      },
+      "timeScaleOfChange": [
+        "Hours–Days",
+        "Days–Weeks"
+      ],
+      "timeScaleQualifier": null,
+      "typicalInteractionCandidates": [
+        "Interacts with sleep debt, lighting, work design, meal timing, and social obligations."
+      ],
+      "uncertaintyPropagation": "Preserve and report constituent uncertainty; use analytic propagation or simulation when the selected operationalization supports it, otherwise note uncertainty qualitatively.",
+      "volatility": "High"
+    },
+    {
+      "aliases": [],
+      "associatedLayers": [
+        "Biological"
+      ],
+      "blockedFields": [
+        "mechanism",
+        "modifiability",
+        "volatility",
+        "timeScaleOfChange",
+        "onsetCausalLag",
+        "persistenceRecovery",
+        "measurementAssessmentMethods",
+        "observability",
+        "evidenceStrength",
+        "evidenceNotes",
+        "keySources"
+      ],
+      "commonMisinterpretations": null,
+      "constituentSpecifications": [
+        {
+          "alignmentRequirements": "Match analytic level, scope, and time window",
+          "entityId": "BIO-001",
+          "externalParameterType": null,
+          "required": true,
+          "role": "CONSTITUENT_OR_INPUT",
+          "unitScaleExpectations": "Aligned with derivation logic"
+        },
+        {
+          "alignmentRequirements": "Match analytic level, scope, and time window",
+          "entityId": "BIO-074",
+          "externalParameterType": null,
+          "required": true,
+          "role": "CONSTITUENT_OR_INPUT",
+          "unitScaleExpectations": "Aligned with derivation logic"
+        },
+        {
+          "alignmentRequirements": "Match analytic level, scope, and time window",
+          "entityId": null,
+          "externalParameterType": "ACCUMULATION_RECOVERY_RULE",
+          "required": true,
+          "role": "CONSTITUENT_OR_INPUT",
+          "unitScaleExpectations": "Aligned with derivation logic"
+        }
+      ],
+      "dataType": "Duration",
+      "definition": "The accumulated shortfall between estimated Physiological Sleep Need and obtained sleep across a specified sequence of intervals under an explicit accumulation and recovery rule.",
+      "derivationLogic": "For each aligned interval, calculate the shortfall between estimated need and obtained sleep, then apply the declared accumulation, recovery, decay, and oversleep-credit rule across the observation sequence.",
+      "derivationType": "TEMPORAL_PATTERN",
+      "directManipulability": "VIA_CONSTITUENTS",
+      "entitySubtype": "TEMPORAL_PATTERN_STATE",
+      "entityType": "RELATIONAL_DERIVED_STATE",
+      "evidenceNotes": null,
+      "evidenceStrength": null,
+      "family": "Sleep & Circadian Regulation",
+      "id": "RDS-0004",
+      "indicators": [],
+      "keySources": [],
+      "layer": "Biological",
+      "likelyDownstreamInfluences": [],
+      "likelyUpstreamInfluences": [],
+      "measurementAssessmentMethods": null,
+      "measurementCaveats": null,
+      "mechanism": null,
+      "metadataStatus": "PARTIAL_GOVERNED_PREVIEW",
+      "moderatorsBoundaryConditions": null,
+      "modifiability": null,
+      "name": "Cumulative Sleep Deficit",
+      "observability": null,
+      "onsetCausalLag": [],
+      "persistenceRecovery": null,
+      "polarityDirection": "Higher values = greater accumulated shortfall under the specified temporal rule.",
+      "primaryFamilyId": "BIO-F01",
+      "recalculationBehavior": "Recalculate when a required constituent, reference, boundary, formula, or analysis window changes.",
+      "relatedFamilyIds": [],
+      "representationScale": "Accumulated sleep shortfall with recovery, decay, oversleep-credit, uncertainty, and reference-window rules stated.",
+      "scopeRequirements": "Specify interval sequence, reference window, need estimate, recovery and decay behavior, oversleep credit, missing intervals, and uncertainty.",
+      "source": {
+        "decisionRecord": "https://app.notion.com/p/3cdf827a3d15815897b1fb28cfa20fe5",
+        "specification": "_migration_handoff_v0.3",
+        "status": "GOVERNED_PREVIEW"
+      },
+      "temporalSpecification": {
+        "observationWindow": "REQUIRED_AT_ANALYSIS_TIME",
+        "updateRule": "For each aligned interval, calculate the shortfall between estimated need and obtained sleep, then apply the declared accumulation, recovery, decay, and oversleep-credit rule across the observation sequence."
+      },
+      "timeScaleOfChange": [],
+      "timeScaleQualifier": null,
+      "typicalInteractionCandidates": [],
+      "uncertaintyPropagation": "Preserve and report constituent uncertainty; propagate analytically or by simulation when supported, otherwise note it qualitatively.",
+      "volatility": null
+    },
+    {
+      "aliases": [],
+      "associatedLayers": [
+        "Biological"
+      ],
+      "blockedFields": [
+        "mechanism",
+        "modifiability",
+        "volatility",
+        "timeScaleOfChange",
+        "onsetCausalLag",
+        "persistenceRecovery",
+        "measurementAssessmentMethods",
+        "observability",
+        "evidenceStrength",
+        "evidenceNotes",
+        "keySources"
+      ],
+      "commonMisinterpretations": null,
+      "constituentSpecifications": [
+        {
+          "alignmentRequirements": "Match analytic level, scope, and time window",
+          "entityId": null,
+          "externalParameterType": "SLEEP_STAGE_TIME_SERIES",
+          "required": true,
+          "role": "CONSTITUENT_OR_INPUT",
+          "unitScaleExpectations": "Aligned with derivation logic"
+        }
+      ],
+      "dataType": "Multidimensional",
+      "definition": "The composition and organization of sleep across stages and cycles during a specified sleep episode, including stage proportions, sequencing, transitions, and cycling structure.",
+      "derivationLogic": "Derive stage proportions, ordering, transitions, and cycle structure from the time-indexed sleep-stage classification sequence.",
+      "derivationType": "TEMPORAL_PATTERN",
+      "directManipulability": "VIA_CONSTITUENTS",
+      "entitySubtype": "TEMPORAL_PATTERN_STATE",
+      "entityType": "RELATIONAL_DERIVED_STATE",
+      "evidenceNotes": null,
+      "evidenceStrength": null,
+      "family": "Sleep & Circadian Regulation",
+      "id": "RDS-0002",
+      "indicators": [],
+      "keySources": [],
+      "layer": "Biological",
+      "likelyDownstreamInfluences": [],
+      "likelyUpstreamInfluences": [],
+      "measurementAssessmentMethods": null,
+      "measurementCaveats": null,
+      "mechanism": null,
+      "metadataStatus": "PARTIAL_GOVERNED_PREVIEW",
+      "moderatorsBoundaryConditions": null,
+      "modifiability": null,
+      "name": "Sleep Architecture Composition",
+      "observability": null,
+      "onsetCausalLag": [],
+      "persistenceRecovery": null,
+      "polarityDirection": "Multidimensional temporal composition; no universal high–low interpretation.",
+      "primaryFamilyId": "BIO-F01",
+      "recalculationBehavior": "Recalculate when a required constituent, reference, boundary, formula, or analysis window changes.",
+      "relatedFamilyIds": [],
+      "representationScale": "Stage proportions, sequence, transitions, and cycle structure over a specified sleep episode.",
+      "scopeRequirements": "Specify sleep episode boundary, scoring convention, epoch length, missing epochs, stage categories, and update rule.",
+      "source": {
+        "decisionRecord": "https://app.notion.com/p/3cdf827a3d15815897b1fb28cfa20fe5",
+        "specification": "_migration_handoff_v0.3",
+        "status": "GOVERNED_PREVIEW"
+      },
+      "temporalSpecification": {
+        "observationWindow": "REQUIRED_AT_ANALYSIS_TIME",
+        "updateRule": "Derive stage proportions, ordering, transitions, and cycle structure from the time-indexed sleep-stage classification sequence."
+      },
+      "timeScaleOfChange": [],
+      "timeScaleQualifier": null,
+      "typicalInteractionCandidates": [],
+      "uncertaintyPropagation": "Preserve and report constituent uncertainty; propagate analytically or by simulation when supported, otherwise note it qualitatively.",
+      "volatility": null
+    },
+    {
+      "aliases": [],
+      "associatedLayers": [
+        "Biological"
+      ],
+      "blockedFields": [
+        "mechanism",
+        "modifiability",
+        "volatility",
+        "timeScaleOfChange",
+        "onsetCausalLag",
+        "persistenceRecovery",
+        "measurementAssessmentMethods",
+        "observability",
+        "evidenceStrength",
+        "evidenceNotes",
+        "keySources"
+      ],
+      "commonMisinterpretations": null,
+      "constituentSpecifications": [
+        {
+          "alignmentRequirements": "Match analytic level, scope, and time window",
+          "entityId": "BIO-001",
+          "externalParameterType": null,
+          "required": true,
+          "role": "CONSTITUENT_OR_INPUT",
+          "unitScaleExpectations": "Aligned with derivation logic"
+        },
+        {
+          "alignmentRequirements": "Match analytic level, scope, and time window",
+          "entityId": "BIO-074",
+          "externalParameterType": null,
+          "required": true,
+          "role": "CONSTITUENT_OR_INPUT",
+          "unitScaleExpectations": "Aligned with derivation logic"
+        }
+      ],
+      "dataType": "Proportion",
+      "definition": "The degree to which obtained sleep meets estimated Physiological Sleep Need over a specified interval and outcome criterion.",
+      "derivationLogic": "Divide obtained sleep by estimated Physiological Sleep Need for the aligned interval and outcome criterion; state any multidimensional extension.",
+      "derivationType": "RATIO",
+      "directManipulability": "VIA_CONSTITUENTS",
+      "entitySubtype": "RELATIONAL_DERIVED_STATE",
+      "entityType": "RELATIONAL_DERIVED_STATE",
+      "evidenceNotes": null,
+      "evidenceStrength": null,
+      "family": "Sleep & Circadian Regulation",
+      "id": "RDS-0003",
+      "indicators": [],
+      "keySources": [],
+      "layer": "Biological",
+      "likelyDownstreamInfluences": [],
+      "likelyUpstreamInfluences": [],
+      "measurementAssessmentMethods": null,
+      "measurementCaveats": null,
+      "mechanism": null,
+      "metadataStatus": "PARTIAL_GOVERNED_PREVIEW",
+      "moderatorsBoundaryConditions": null,
+      "modifiability": null,
+      "name": "Sleep Sufficiency",
+      "observability": null,
+      "onsetCausalLag": [],
+      "persistenceRecovery": null,
+      "polarityDirection": "Higher values = a greater share of estimated physiological sleep need met over the specified interval.",
+      "primaryFamilyId": "BIO-F01",
+      "ratioSpecification": {
+        "denominator": "BIO-074",
+        "numerator": "BIO-001"
+      },
+      "recalculationBehavior": "Recalculate when a required constituent, reference, boundary, formula, or analysis window changes.",
+      "relatedFamilyIds": [],
+      "representationScale": "Obtained sleep relative to estimated sleep need, with interval, outcome criterion, estimation method, uncertainty, and included sleep characteristics stated.",
+      "scopeRequirements": "Specify interval, outcome criterion, need-estimation method, uncertainty, and whether duration alone or additional sleep characteristics are included.",
+      "source": {
+        "decisionRecord": "https://app.notion.com/p/3cdf827a3d15815897b1fb28cfa20fe5",
+        "specification": "_migration_handoff_v0.3",
+        "status": "GOVERNED_PREVIEW"
+      },
+      "timeScaleOfChange": [],
+      "timeScaleQualifier": null,
+      "typicalInteractionCandidates": [],
+      "uncertaintyPropagation": "Preserve and report constituent uncertainty; propagate analytically or by simulation when supported, otherwise note it qualitatively.",
+      "volatility": null
+    }
+  ]
+}

@@ -1,0 +1,290 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/psywerx-experiment/evidence-assessment.schema.json",
+  "title": "PENDING EvidenceAssessment synthetic contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "assertionId",
+    "sourceFindings",
+    "synthesis",
+    "confidence",
+    "confidenceRationale",
+    "completeness",
+    "uncertainty",
+    "provenance",
+    "governance"
+  ],
+  "properties": {
+    "id": {
+      "$ref": "common.schema.json#/$defs/id"
+    },
+    "assertionId": {
+      "$ref": "common.schema.json#/$defs/id"
+    },
+    "sourceFindings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "sourceId",
+          "basis",
+          "finding",
+          "disposition",
+          "scope",
+          "passage",
+          "datasetId",
+          "limitations",
+          "inputRole",
+          "nullInterpretation",
+          "accessDepth"
+        ],
+        "properties": {
+          "sourceId": {
+            "$ref": "common.schema.json#/$defs/id"
+          },
+          "basis": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "enum": [
+                "EXPERIMENT",
+                "QUASI_EXPERIMENT",
+                "LONGITUDINAL_OBSERVATION",
+                "CROSS_SECTIONAL_OBSERVATION",
+                "QUALITATIVE_HISTORICAL_CASE",
+                "SYNTHESIS",
+                "MECHANISTIC_THEORY",
+                "DEFINITIONAL_CALCULATION",
+                "MODEL_SIMULATION",
+                "EXPERT_JUDGMENT",
+                "UNTESTED_HYPOTHESIS"
+              ]
+            }
+          },
+          "finding": {
+            "$ref": "common.schema.json#/$defs/text"
+          },
+          "disposition": {
+            "enum": [
+              "SUPPORTS",
+              "MIXED",
+              "CONTRADICTED",
+              "NULL_FINDING",
+              "INSUFFICIENT",
+              "NOT_ASSESSED"
+            ]
+          },
+          "scope": {
+            "$ref": "common.schema.json#/$defs/scope"
+          },
+          "passage": {
+            "$ref": "common.schema.json#/$defs/text"
+          },
+          "datasetId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "limitations": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string"
+            }
+          },
+          "id": {
+            "$ref": "common.schema.json#/$defs/id"
+          },
+          "inputRole": {
+            "enum": [
+              "DIRECT_FINDING",
+              "MODEL_INPUT"
+            ]
+          },
+          "nullInterpretation": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "additionalProperties": false,
+            "required": [
+              "contrast",
+              "precisionAssessment",
+              "interpretation",
+              "equivalenceMargin"
+            ],
+            "properties": {
+              "contrast": {
+                "$ref": "common.schema.json#/$defs/text"
+              },
+              "precisionAssessment": {
+                "$ref": "common.schema.json#/$defs/text"
+              },
+              "interpretation": {
+                "enum": [
+                  "NO_DETECTED_DIFFERENCE",
+                  "EQUIVALENCE_WITHIN_MARGIN"
+                ]
+              },
+              "equivalenceMargin": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "minLength": 1
+              }
+            }
+          },
+          "accessDepth": {
+            "enum": [
+              "FULL_TEXT",
+              "ABSTRACT",
+              "DOCUMENTATION",
+              "METADATA",
+              "SYNTHETIC"
+            ]
+          }
+        }
+      }
+    },
+    "synthesis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "disposition",
+        "rationale",
+        "contraryEvidenceSearch",
+        "datasetOverlap",
+        "sourceFindingIds"
+      ],
+      "properties": {
+        "disposition": {
+          "enum": [
+            "SUPPORTS",
+            "MIXED",
+            "CONTRADICTED",
+            "INSUFFICIENT",
+            "NOT_ASSESSED"
+          ]
+        },
+        "rationale": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "contraryEvidenceSearch": {
+          "enum": [
+            "ASSESSED",
+            "NOT_INVESTIGATED"
+          ]
+        },
+        "datasetOverlap": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "sourceFindingIds": {
+          "$ref": "common.schema.json#/$defs/ids"
+        }
+      }
+    },
+    "confidence": {
+      "enum": [
+        "HIGH",
+        "MODERATE",
+        "LOW",
+        "NOT_ASSESSED"
+      ]
+    },
+    "confidenceRationale": {
+      "$ref": "common.schema.json#/$defs/text"
+    },
+    "completeness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target",
+        "direction",
+        "mechanism",
+        "population",
+        "context",
+        "timing",
+        "measurement",
+        "boundaries"
+      ],
+      "properties": {
+        "target": {
+          "enum": [
+            "SPECIFIED",
+            "MISSING",
+            "NOT_APPLICABLE"
+          ]
+        },
+        "direction": {
+          "enum": [
+            "SPECIFIED",
+            "MISSING",
+            "NOT_APPLICABLE"
+          ]
+        },
+        "mechanism": {
+          "enum": [
+            "SPECIFIED",
+            "MISSING",
+            "NOT_APPLICABLE"
+          ]
+        },
+        "population": {
+          "enum": [
+            "SPECIFIED",
+            "MISSING",
+            "NOT_APPLICABLE"
+          ]
+        },
+        "context": {
+          "enum": [
+            "SPECIFIED",
+            "MISSING",
+            "NOT_APPLICABLE"
+          ]
+        },
+        "timing": {
+          "enum": [
+            "SPECIFIED",
+            "MISSING",
+            "NOT_APPLICABLE"
+          ]
+        },
+        "measurement": {
+          "enum": [
+            "SPECIFIED",
+            "MISSING",
+            "NOT_APPLICABLE"
+          ]
+        },
+        "boundaries": {
+          "enum": [
+            "SPECIFIED",
+            "MISSING",
+            "NOT_APPLICABLE"
+          ]
+        }
+      }
+    },
+    "uncertainty": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "provenance": {
+      "$ref": "common.schema.json#/$defs/provenance"
+    },
+    "governance": {
+      "$ref": "common.schema.json#/$defs/governance"
+    }
+  }
+}

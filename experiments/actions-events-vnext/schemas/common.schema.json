@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/psywerx-experiment/common.schema.json",
+  "title": "PENDING synthetic NON_PRODUCTION shared definitions",
+  "$defs": {
+    "id": {"type":"string","pattern":"^SYN-[A-Z0-9-]+$"},
+    "text": {"type":"string","minLength":1},
+    "ids": {"type":"array","uniqueItems":true,"items":{"$ref":"#/$defs/id"}},
+    "layers": {"type":"array","minItems":1,"uniqueItems":true,"items":{"enum":["BIO","PSY","SOC","CUL","ENV","INS","INF","TEC"]}},
+    "governance": {"type":"object","additionalProperties":false,"required":["label","architectureDecision","lifecycleStatus","activationStatus"],"properties":{"label":{"const":"SYNTHETIC / NON_PRODUCTION"},"architectureDecision":{"const":"PENDING"},"lifecycleStatus":{"enum":["CANDIDATE","RESEARCH_NEEDED","REVIEW_READY"]},"activationStatus":{"const":"NOT_ELIGIBLE"}}},
+    "scope": {"type":"object","additionalProperties":false,"required":["population","context","boundaryConditions","timing","measurement"],"properties":{"population":{"$ref":"#/$defs/text"},"context":{"$ref":"#/$defs/text"},"boundaryConditions":{"$ref":"#/$defs/text"},"timing":{"$ref":"#/$defs/text"},"measurement":{"$ref":"#/$defs/text"}}},
+    "provenance": {"type":"object","additionalProperties":false,"required":["actorClass","method","revision","recordedAt","decisionReferences"],"properties":{"actorClass":{"enum":["AI_OR_AUTOMATION","REVIEWER","AUTHORIZED_HUMAN_GOVERNOR"]},"method":{"$ref":"#/$defs/text"},"revision":{"type":"integer","minimum":1},"recordedAt":{"type":"string","format":"date-time"},"decisionReferences":{"type":"array","items":{"$ref":"#/$defs/text"}}}}
+  }
+}

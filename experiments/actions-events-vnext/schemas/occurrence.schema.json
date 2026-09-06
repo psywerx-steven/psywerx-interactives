@@ -1,0 +1,147 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/psywerx-experiment/occurrence.schema.json",
+  "title": "PENDING Occurrence synthetic contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "typeId",
+    "episodeKey",
+    "epistemicStatus",
+    "actorOrSourceSystem",
+    "intentionality",
+    "control",
+    "boundary",
+    "pattern",
+    "timing",
+    "intensityDose",
+    "duration",
+    "reach",
+    "scope",
+    "occurrenceEvidenceIds",
+    "governance"
+  ],
+  "properties": {
+    "id": {
+      "$ref": "common.schema.json#/$defs/id"
+    },
+    "typeId": {
+      "$ref": "common.schema.json#/$defs/id"
+    },
+    "episodeKey": {
+      "$ref": "common.schema.json#/$defs/text"
+    },
+    "epistemicStatus": {
+      "enum": [
+        "OBSERVED",
+        "PLANNED",
+        "HYPOTHETICAL"
+      ]
+    },
+    "actorOrSourceSystem": {
+      "$ref": "common.schema.json#/$defs/text"
+    },
+    "intentionality": {
+      "enum": [
+        "DELIBERATE",
+        "UNINTENDED",
+        "NON_AGENTIC",
+        "UNKNOWN"
+      ]
+    },
+    "control": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "actor",
+        "extent",
+        "conditions"
+      ],
+      "properties": {
+        "actor": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "extent": {
+          "enum": [
+            "FULL",
+            "PARTIAL",
+            "INFLUENCE_ONLY",
+            "NONE",
+            "UNKNOWN"
+          ]
+        },
+        "conditions": {
+          "$ref": "common.schema.json#/$defs/text"
+        }
+      }
+    },
+    "boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "system",
+        "position",
+        "causalExogeneity"
+      ],
+      "properties": {
+        "system": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "position": {
+          "enum": [
+            "INTERNAL",
+            "EXTERNAL",
+            "MIXED",
+            "UNKNOWN"
+          ]
+        },
+        "causalExogeneity": {
+          "const": "NOT_INFERRED_FROM_EXTERNALITY"
+        }
+      }
+    },
+    "pattern": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "DISCRETE",
+          "REPEATED",
+          "CONTINUOUS",
+          "GRADUAL",
+          "CUMULATIVE",
+          "CYCLIC"
+        ]
+      }
+    },
+    "timing": {
+      "$ref": "common.schema.json#/$defs/text"
+    },
+    "intensityDose": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "duration": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "reach": {
+      "$ref": "common.schema.json#/$defs/text"
+    },
+    "scope": {
+      "$ref": "common.schema.json#/$defs/scope"
+    },
+    "occurrenceEvidenceIds": {
+      "$ref": "common.schema.json#/$defs/ids"
+    },
+    "governance": {
+      "$ref": "common.schema.json#/$defs/governance"
+    }
+  }
+}

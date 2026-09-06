@@ -1,0 +1,296 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/psywerx-experiment/effect-assertion.schema.json",
+  "title": "PENDING EffectAssertion synthetic contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "typeId",
+    "occurrenceId",
+    "targetKind",
+    "targetId",
+    "targetLayers",
+    "claimSemantics",
+    "productionMethod",
+    "property",
+    "change",
+    "functionalShape",
+    "intendedDirection",
+    "knowledgeStatus",
+    "mechanism",
+    "mechanisticDriverIds",
+    "scope",
+    "evidenceIds",
+    "contributionKey",
+    "propagationRole",
+    "reconciliation",
+    "interaction",
+    "consequences",
+    "governance",
+    "inferenceProvenance"
+  ],
+  "properties": {
+    "id": {
+      "$ref": "common.schema.json#/$defs/id"
+    },
+    "typeId": {
+      "$ref": "common.schema.json#/$defs/id"
+    },
+    "occurrenceId": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "common.schema.json#/$defs/id"
+        }
+      ]
+    },
+    "targetKind": {
+      "enum": [
+        "DRIVER",
+        "RELATIONSHIP"
+      ]
+    },
+    "targetId": {
+      "$ref": "common.schema.json#/$defs/id"
+    },
+    "targetLayers": {
+      "$ref": "common.schema.json#/$defs/layers"
+    },
+    "claimSemantics": {
+      "enum": [
+        "CAUSAL",
+        "ASSOCIATION",
+        "MODERATION",
+        "TEMPORAL",
+        "DERIVATIONAL",
+        "COMPOSITIONAL",
+        "REALIZATION",
+        "SEMANTIC",
+        "PATHWAY"
+      ]
+    },
+    "productionMethod": {
+      "enum": [
+        "SOURCE_EXTRACTION",
+        "SYNTHESIS",
+        "MODEL_INFERENCE",
+        "HYPOTHESIS"
+      ]
+    },
+    "property": {
+      "enum": [
+        "LEVEL",
+        "VARIABILITY",
+        "RATE",
+        "THRESHOLD",
+        "TIMING",
+        "PERSISTENCE",
+        "RELATIONSHIP_STRENGTH",
+        "RELATIONSHIP_DIRECTION",
+        "ENABLEMENT",
+        "FUNCTIONAL_SHAPE",
+        "STRUCTURE"
+      ]
+    },
+    "change": {
+      "enum": [
+        "INCREASE",
+        "DECREASE",
+        "ADVANCE",
+        "DELAY",
+        "ENABLE",
+        "DISABLE",
+        "REVERSE",
+        "CONTEXT_DEPENDENT",
+        "RECONFIGURE",
+        "MAINTAIN",
+        "NO_DETECTED_CHANGE",
+        "UNKNOWN"
+      ]
+    },
+    "functionalShape": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        null,
+        "LINEAR",
+        "THRESHOLDED",
+        "SATURATING",
+        "U_SHAPED",
+        "INVERTED_U",
+        "CYCLIC",
+        "OTHER_NON_MONOTONIC",
+        "UNKNOWN"
+      ]
+    },
+    "intendedDirection": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "knowledgeStatus": {
+      "enum": [
+        "SUPPORTED_EFFECT",
+        "SUPPORTED_NULL",
+        "NOT_APPLICABLE",
+        "NOT_INVESTIGATED",
+        "INSUFFICIENT_EVIDENCE"
+      ]
+    },
+    "mechanism": {
+      "$ref": "common.schema.json#/$defs/text"
+    },
+    "mechanisticDriverIds": {
+      "$ref": "common.schema.json#/$defs/ids"
+    },
+    "scope": {
+      "$ref": "common.schema.json#/$defs/scope"
+    },
+    "evidenceIds": {
+      "$ref": "common.schema.json#/$defs/ids"
+    },
+    "contributionKey": {
+      "$ref": "common.schema.json#/$defs/text"
+    },
+    "propagationRole": {
+      "enum": [
+        "PRIMARY",
+        "MEDIATOR_DESCRIPTION",
+        "ALTERNATIVE_REPRESENTATION"
+      ]
+    },
+    "reconciliation": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "interaction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "otherEffectIds",
+        "evidenceIds"
+      ],
+      "properties": {
+        "mode": {
+          "enum": [
+            "NONE",
+            "SYNERGY",
+            "ANTAGONISM",
+            "JOINT_UNDETERMINED"
+          ]
+        },
+        "otherEffectIds": {
+          "$ref": "common.schema.json#/$defs/ids"
+        },
+        "evidenceIds": {
+          "$ref": "common.schema.json#/$defs/ids"
+        }
+      }
+    },
+    "consequences": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "valence",
+        "unintended",
+        "distribution",
+        "risks"
+      ],
+      "properties": {
+        "valence": {
+          "enum": [
+            "BENEFICIAL",
+            "HARMFUL",
+            "MIXED",
+            "NULL",
+            "NOT_EVALUATED"
+          ]
+        },
+        "unintended": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "distribution": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "risks": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "governance": {
+      "$ref": "common.schema.json#/$defs/governance"
+    },
+    "inferenceProvenance": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "required": [
+        "modelId",
+        "inputEvidenceIds",
+        "assumptions"
+      ],
+      "properties": {
+        "modelId": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "inputEvidenceIds": {
+          "$ref": "common.schema.json#/$defs/ids"
+        },
+        "assumptions": {
+          "$ref": "common.schema.json#/$defs/text"
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "targetKind": {
+            "const": "RELATIONSHIP"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "mechanisticDriverIds": {
+            "minItems": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "claimSemantics": {
+            "const": "MODERATION"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "targetKind": {
+            "const": "RELATIONSHIP"
+          }
+        }
+      }
+    }
+  ]
+}
