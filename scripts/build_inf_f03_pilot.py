@@ -344,7 +344,7 @@ def build():
     canonical_reused = sorted({s for _,r in incident for s in r['supportingEvidenceIds']} | {s for x in members for s in c.entities[x]['keySources']})
     summary = {"auditId": AUDIT, "baselineCommit": R["baseline"], "date": R["date"],
         "schemaVersions": {"Driver": "1.1", "RDS": "0.1 + governed migration v0.3", "RelationshipV1": "1.0.0", "ActionsEventsV1": "1.0.0", "sources": "1.0"},
-        "sourceRegisterSha256": hashlib.sha256((ROOT/"data/sources.json").read_bytes()).hexdigest(),
+        "sourceRegisterSha256": files["data/sources.json"]["baselineBlobSha256"],
         "family": baseline["family"], "activeIncidentIds": [r["id"] for _,r in active],
         "deprecatedIncidentIds": [r["id"] for b,r in incident if b == "deprecatedRelationships"],
         "existingDispositions": dict(Counter(x["primaryDisposition"] for x in audits)),
@@ -362,7 +362,8 @@ def build():
         "newGoverned": 0, "newActive": 0, 'blockedRecordCount':sum(r['governance']['blockStatus']=='NEEDS_GOVERNANCE_INPUT' for r in all_records), "allActivationNotEligible": all(r["governance"]["activationStatus"] == "NOT_ELIGIBLE" for r in all_records),
         "hypothesisDispositions": dict(Counter(h[3] for h in R["hypotheses"])),
         "evidenceFindingDispositions": dict(Counter(f["disposition"] for f in findings)),
-        "protectedFiles": files, "workspaceHash": ae.digest(w), "candidateIds": [r["id"] for r in all_records],
+        "protectedFiles": {p: {k:v for k,v in checks.items() if k != "currentRawSha256"} for p,checks in files.items()},
+        "workspaceHash": ae.digest(w), "candidateIds": [r["id"] for r in all_records],
         "noScientificHumanDecision": True, "governanceDecision": DECISION}
     emit(STORE/"workspace.json", w)
     emit(STORE/"relationship-source-findings.json", sidecars)

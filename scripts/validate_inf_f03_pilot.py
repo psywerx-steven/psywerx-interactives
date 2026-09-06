@@ -22,14 +22,16 @@ def run():
         print(name + (": PASS" if proc.returncode == 0 else ": FAIL"), flush=True)
         return proc.returncode == 0
 
-    scratch = af.output_dir(af.ROOT / "reports/actions-events-v1/_scratch")
-    with tempfile.TemporaryDirectory(prefix="inf-f03-", dir=scratch) as directory:
+    # Keep nested legacy-validation clone paths below Windows path limits.
+    with tempfile.TemporaryDirectory(prefix="inf-f03-") as directory:
         clone = Path(directory) / "checkout"
         subprocess.run(["git", "clone", "--quiet", "--no-hardlinks", str(af.ROOT), str(clone)], check=True)
         subprocess.run(["git", "checkout", "--quiet", head], cwd=clone, check=True)
         command("Existing regressions and isolated deterministic baseline regeneration",
                 [sys.executable, "scripts/validate_actions_events_v1.py"], clone)
         existing = json.loads((clone / "reports/actions-events-v1/validation/LOCAL_VALIDATION.json").read_text(encoding="utf-8"))
+        results.append({"name": "Existing report belongs to tested pilot commit",
+                        "passed": existing.get("testedCommit") == head})
         command("INF-F03 candidate schemas, evidence, lifecycle, RDS, deduplication, links, isolation and determinism",
                 [sys.executable, "-m", "unittest", "discover", "-s", "tests", "-p", "test_inf_f03_pilot.py"], clone)
         # Actual on-disk generation as well as the test's in-memory comparison.
@@ -45,6 +47,7 @@ def run():
               "allPassed": all(r["passed"] for r in results) and existing["allPassed"],
               "results": results, "existingValidation": existing,
               "protectedComparisonSha256": hashlib.sha256(pilot.encode(after).encode()).hexdigest(),
+              "protectedBefore": before, "protectedAfter": after,
               "notes": ["No research, scientific approval, activation or canonical source registration.",
                         "Regeneration ran only in disposable isolated clones.", "CI is reported separately from these local results."]}
     pilot.emit(pilot.DOCS / "INF_F03_LOCAL_VALIDATION.json", report)

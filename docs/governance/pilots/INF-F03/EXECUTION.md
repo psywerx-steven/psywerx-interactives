@@ -51,6 +51,14 @@ existing-edge change, B01–B05/v0.3 resolution, other Family audit or merge all
   `python scripts/validate_inf_f03_pilot.py`; review diff, push/open unmerged PR,
   inspect Linux and Windows CI, record final results. Do not merge.
 
+Prepared-package commit: 1fe4795. All 29 pilot tests pass. First isolated full
+validation attempt failed before existing regressions could run: nested Windows
+clone paths exceeded the usable path length. Pilot regeneration also exposed
+checkout-EOL-dependent raw hashes in its manifest. The wrapper now uses a shorter
+temporary root; deterministic manifests retain normalized Git-content hashes,
+while validation separately records full raw before/after bytes. No scientific
+test was weakened. The old report is not accepted unless its tested SHA matches.
+
 AI may research/structure/validate and use permitted non-governed transitions.
 Every new record stays NOT_ELIGIBLE. No new GOVERNED/ACTIVE record is authorized.
 Research is a structured evidence audit, not a claimed exhaustive systematic review.
