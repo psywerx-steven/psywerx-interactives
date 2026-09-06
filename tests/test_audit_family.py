@@ -92,6 +92,16 @@ class FamilyRunnerTests(unittest.TestCase):
             with self.assertRaises(ValueError):af.emit("SYN-FAMILY",output)
             self.assertFalse(output.exists())
 
+    def test_allowlisted_root_itself_cannot_redirect_to_data(self):
+        from unittest.mock import patch
+        with tempfile.TemporaryDirectory(dir=self.scratch) as directory:
+            root=Path(directory).resolve();(root/"reports").mkdir();(root/"data").mkdir()
+            try:os.symlink(root/"data",root/"reports/actions-events-v1",target_is_directory=True)
+            except OSError as exc:self.skipTest("Symlink privilege unavailable: "+str(exc))
+            with patch.object(af,"ROOT",root):
+                with self.assertRaises(ValueError):af.output_dir(root/"reports/actions-events-v1/escape")
+            self.assertFalse((root/"data/escape").exists())
+
     def test_cross_family_ownership_and_symmetry(self):
         entities={"A":{"primaryFamilyId":"SOC-F07"},"B":{"primaryFamilyId":"BIO-F01"}}
         self.assertEqual(af.ownership("A","B","CAUSAL",entities),"SOC-F07")

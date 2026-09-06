@@ -29,7 +29,8 @@ def git(*args):
 def output_dir(path):
     destination = Path(path).resolve()
     permitted = [ROOT / "reports/actions-events-v1", ROOT / "experiments/actions-events-vnext"]
-    if not any(destination.is_relative_to(p.resolve()) and destination != p.resolve() for p in permitted):
+    if not any(p.resolve() == p.absolute() and destination.is_relative_to(p.resolve())
+               and destination != p.resolve() for p in permitted):
         raise ValueError("Output must be a child of reports/actions-events-v1 or experiments/actions-events-vnext")
     destination.mkdir(parents=True, exist_ok=True)
     return destination

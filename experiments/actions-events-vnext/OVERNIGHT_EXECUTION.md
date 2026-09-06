@@ -110,3 +110,14 @@ local links, diff scope and Linux/Windows CI. Tests are never weakened to pass.
   No manual deploy or deployment configuration/permission change was made.
 - Exact next step: push reviewed implementation, open bounded PR, inspect both
   CI jobs and exact head, merge if green; then generate merged-state readiness.
+
+## Implementation PR #16 final-review hardening
+
+- PR #16 opened at 71fecc8258eafc03130bd391fb4797a55cf46968. No merge yet.
+- Final path review found a symlinked allowlisted root could resolve to data;
+  fixed without broadening output access. Added a second symlink regression
+  (Linux exercises; Windows without link privilege skips both safely).
+- Final suite size now 63 AE + 14 Family + 96 existing Python = 173, plus 21
+  scenario tests. Final-head local/CI gates must pass before merge.
+- Exact next step: commit/push this bounded fix, complete isolated validation,
+  inspect fresh PR CI, then exact-head merge if all gates pass.

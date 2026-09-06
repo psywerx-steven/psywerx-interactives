@@ -13,6 +13,9 @@ independent human scientific adjudication. No new scientific research occurred.
   provenance references. Existing RI D12 governance remains authoritative.
 - Tightened subgroup reference resolution and Pass A use of existing RI semantic
   validators. Candidate revisions cannot reuse and overwrite canonical edge IDs.
+- Found and closed an allowlisted-root symlink redirection case during final
+  review. The report root itself must resolve to its actual permitted path;
+  an added Linux-capable regression proves it cannot redirect into data.
 - Added recorded-control override rejection, governed-inactive eligibility,
   component/package evidence isolation, observed-occurrence evidence success/failure,
   shared-dataset synthesis notes and complete-prompt coverage tests.
@@ -52,7 +55,7 @@ schema constraint or explicitly manual review, not an inferred scientific result
 | 8 effects | effect-assertion and vocabulary | Every property/descriptor, exact target/Layer, RDS, cyclic, null tests |
 | 9 evidence | source-finding + evidence-assessment | Contrary preservation; shared dataset notes; no invented numeric estimates |
 | 10 compatibility | SAME_IDENTITY read bridge | 25 exact round trips; legacy/projection dedup; BIO state/MIXED tests |
-| 11 generic runner | scripts/audit_family.py | 13 runner tests, deterministic exports, unsafe-path rejection |
+| 11 generic runner | scripts/audit_family.py | 14 runner tests, deterministic exports, unsafe-path rejection |
 | 12 research workspace | candidate-workspace + empty passA/passB | No authority/activation allowed; RI Pass A semantics |
 | 13 automated checks | scripts/actions_events_v1.py | ActionsEventsTests and CompatibilityTests |
 | 14 eight-Layer synthetic pilot | scripts/actions_events_synthetic.py | 11 types, 11 episodes, 12 effects, 12 evidence; all eight origins/eleven properties |
