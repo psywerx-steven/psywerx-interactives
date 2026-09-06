@@ -1,6 +1,8 @@
 # Actions & Events: a bounded architecture proposal
 
-**PROPOSAL / NON_PRODUCTION — all architecture decisions PENDING.**
+> Current authority: [Actions & Events V1 decision](../../docs/governance/ACTIONS_EVENTS_V1_GOVERNANCE_DECISION.md) governs AE01–AE12. AE05 and AE10 are approved as modified; the exact record supersedes earlier provisional wording below. Architecture and bounded implementation only; no scientific claim or fixture is approved. The implementation sequence is authorized by the overnight instruction. Historical planning/review notes describe the prior proposal checkpoint.
+
+**PROPOSAL / NON_PRODUCTION — AE01–AE12 architecture governed.**
 This package extends the discussion of governed Relationship + Intervention V1;
 it does not change that architecture. Baseline scientific state is main at
 `2636dd9a8b7bad1da3d7dfa21db5fe877f4de4e1`. There was no later tracked work at

@@ -49,7 +49,7 @@ def protected_hashes():
     paths = git("ls-files", "-z").split("\0")
     result = {}
     for name in paths:
-        if name and not name.startswith("experiments/actions-events-vnext/"):
+        if name and not name.startswith("experiments/actions-events-vnext/") and name != "docs/governance/ACTIONS_EVENTS_V1_GOVERNANCE_DECISION.md":
             payload = (ROOT / name).read_bytes()
             result[name] = {"bytes": len(payload), "sha256": hashlib.sha256(payload).hexdigest()}
     return result
@@ -73,7 +73,7 @@ def verify_protected():
     differences = sorted(name for name in baseline["files"].keys() | actual.keys()
                          if baseline["files"].get(name) != actual.get(name))
     untracked = [n for n in git("ls-files", "--others", "--exclude-standard").splitlines()
-                 if not n.startswith("experiments/actions-events-vnext/")]
+                 if not n.startswith("experiments/actions-events-vnext/") and n != "docs/governance/ACTIONS_EVENTS_V1_GOVERNANCE_DECISION.md"]
     return {"passed": not differences and not untracked, "filesCompared": len(actual), "differences": differences,
             "untrackedOutsideExperiment": untracked,
             "baselineCommit": baseline["baselineCommit"], "hashMode": "RAW_BYTES"}
@@ -355,7 +355,8 @@ def main():
                      for collection in ("types", "effects", "evidence") for r in fixture[collection]]
         context = {"actor": "Fictional practitioner", "context": fixture["effects"][0]["scope"]["context"],
                    "prerequisitesCleared": True, "risksReviewed": True,
-                   "applicabilityConfirmed": True, "label": "SYNTHETIC / NON_PRODUCTION"}
+                   "applicabilityConfirmed": True, "feasibilityConfirmed": True,
+                   "legalConstraintsCleared": True, "ethicalConstraintsCleared": True, "label": "SYNTHETIC / NON_PRODUCTION"}
         result = {"label": "SYNTHETIC / NON_PRODUCTION", "architectureDecision": "PENDING",
                   "withoutHypotheticalApproval": model.dry_run(fixture),
                   "hypotheticalScientificReview": model.dry_run(fixture, decisions),

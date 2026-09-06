@@ -1,6 +1,8 @@
 # Requirement coverage and maintainer review
 
-All design conclusions are PENDING. Tests demonstrate isolated representation
+> Current authority: [Actions & Events V1 decision](../../docs/governance/ACTIONS_EVENTS_V1_GOVERNANCE_DECISION.md) governs AE01–AE12. AE05 and AE10 are approved as modified; the exact record supersedes earlier provisional wording below. Architecture and bounded implementation only; no scientific claim or fixture is approved. The implementation sequence is authorized by the overnight instruction. Historical planning/review notes describe the prior proposal checkpoint.
+
+AE01–AE12 architecture is governed; scientific fixtures are not. Tests demonstrate isolated representation
 and mechanical controls; they do not validate the truth of scientific claims.
 
 | User requirement | Deliverable / example | Test or review evidence |
@@ -19,7 +21,7 @@ and mechanical controls; they do not validate the truth of scientific claims.
 | 11 Working schemas/validation/inventory/determinism/dry run | prototype.py / model.py / schemas / synthetic.json | Output path and unknown Family rejection; byte-identical repeat report; pure dry-run tests; BIO original field equality |
 | 12 Hypothetical policy, shock, outage, disclosure, network, gradual physiology, moderator | Eleven named synthetic examples | Semantic fixture tests; reviewed examples are fictional and have no real citations |
 | 12 Failure cases: duplicate representations, unsupported occurrence attribution, causal inflation, missing context, RDS, doublecount, cyclic sign, unknown zero, contrary evidence, no effect, package inference | test_model.py | Named failure regression tests; independent counterexamples described below |
-| 13 Five copy-ready prompts and decisive decision package | RESEARCH_PROMPTS.md / GOVERNANCE_DECISIONS.md | Each has inputs, outputs, automation boundary, completion and no-findings/deferrals; twelve decisions PENDING |
+| 13 Five copy-ready prompts and decisive decision package | RESEARCH_PROMPTS.md / GOVERNANCE_DECISIONS.md | Each has inputs, outputs, automation boundary, completion and no-findings/deferrals; twelve decisions governed |
 | 14 Skeptical review, existing regressions in isolated copy, protected hashes | TEST_RESULTS.json / validate.py / protected-comparison.json | Production migration/materializer tests confined to temporary clone; no existing tests modified |
 | 15 Morning brief, commit, safe remote boundary and stop | MORNING_BRIEF.md / PROGRESS.md; final git report | No merge/deployment/activation/scientific Family work; draft PR only if refreshed trigger inspection passes |
 

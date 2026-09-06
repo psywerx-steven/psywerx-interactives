@@ -1,5 +1,7 @@
 # Actions & Events proposal execution plan
 
+> Current authority: [Actions & Events V1 decision](../../docs/governance/ACTIONS_EVENTS_V1_GOVERNANCE_DECISION.md) governs AE01–AE12. AE05 and AE10 are approved as modified; the exact record supersedes earlier provisional wording below. Architecture and bounded implementation only; no scientific claim or fixture is approved. The implementation sequence is authorized by the overnight instruction. Historical planning/review notes describe the prior proposal checkpoint.
+
 Status: experimental proposal; every architecture decision PENDING.
 
 1. Freeze repository and protected-file hashes; inspect governed contracts and prior work. Accept when actual HEAD, remote, baseline difference and applicable instructions are recorded.

@@ -1,6 +1,9 @@
 # Actions & Events: architecture decisions for human review
 
-Status: PROPOSAL / NON_PRODUCTION. Every decision below is **PENDING**.
+> Current authority: [Actions & Events V1 decision](../../docs/governance/ACTIONS_EVENTS_V1_GOVERNANCE_DECISION.md) governs AE01–AE12. AE05 and AE10 are approved as modified; the exact record supersedes earlier provisional wording below. Architecture and bounded implementation only; no scientific claim or fixture is approved. The implementation sequence is authorized by the overnight instruction. Historical planning/review notes describe the prior proposal checkpoint.
+
+Status: GOVERNED ARCHITECTURE. AE05 and AE10 are MODIFY/APPROVE-AS-MODIFIED;
+the other ten outcomes are APPROVE. Scientific fixtures remain NON_PRODUCTION.
 The synthetic prototype demonstrates structural feasibility only. It changes
 no governed architecture, scientific record, activation rule or consumer.
 
@@ -8,18 +11,18 @@ no governed architecture, scientific record, activation rule or consumer.
 
 | ID | Governance decision | Recommended option | Compatibility risk | Decision |
 |---|---|---|---|---|
-| AE01 | Umbrella and object boundaries | “Actions & Events” for people; HappeningType, Occurrence, EffectAssertion as technical names | Low if additive; terminology review required | PENDING |
-| AE02 | Identity classification | Overlapping ACTION/EVENT/EXPOSURE/PROCESS tags; separate deliberate Intervention subset | Moderate if mapped as a mutually exclusive taxonomy | PENDING |
-| AE03 | Origin, agency and boundary | Multiple origin Layers; target Layers derived from exact targets; actor-relative intention/control/boundary | Low; new metadata not inferred in migration | PENDING |
-| AE04 | Direct targets and RDS | Retain DRIVER/RELATIONSHIP only for every effect, including non-intervention events | Low; preserves current safeguards | PENDING |
-| AE05 | Full effect vocabulary | Eleven orthogonal properties plus constrained change descriptors and investigation outcomes | Moderate; new properties need production review | PENDING |
-| AE06 | Evidence and inference | One assertion EvidenceAssessment with structured sourceFindings and separate synthesis | Moderate; additive normalization must preserve original evidence | PENDING |
-| AE07 | Occurrence evidence | Evidence of occurrence separate from evidence of contextual consequences | Low; no occurrence required for reusable effect knowledge | PENDING |
-| AE08 | Overlap and moderation | Exact edge targeting, mechanistic Driver linkage and explicit shared-contribution groups | Moderate; execution policy remains separate | PENDING |
-| AE09 | Compatibility and packages | ID-stable additive references to current Interventions/effects; no migration in this proposal | Low with read-only links; high if IDs are reminted | PENDING |
-| AE10 | Governance and use | Preserve D11/D12; separately calculate scientific/model/action eligibility | Low only if current activation rules remain intact | PENDING |
-| AE11 | Relationship-first production workflow | Linked Family Pass A/Pass B with local readiness, shared ownership and deduplication | Low; queue is scheduling evidence only | PENDING |
-| AE12 | Next implementation/pilot scope | Approve contract review first, then synthetic structural pilot and bounded compatibility implementation | Low; science/population separately authorized | PENDING |
+| AE01 | Umbrella and object boundaries | “Actions & Events” for people; HappeningType, Occurrence, EffectAssertion as technical names | Low if additive; terminology review required | APPROVE |
+| AE02 | Identity classification | Overlapping ACTION/EVENT/EXPOSURE/PROCESS tags; separate deliberate Intervention subset | Moderate if mapped as a mutually exclusive taxonomy | APPROVE |
+| AE03 | Origin, agency and boundary | Multiple origin Layers; target Layers derived from exact targets; actor-relative intention/control/boundary | Low; new metadata not inferred in migration | APPROVE |
+| AE04 | Direct targets and RDS | Retain DRIVER/RELATIONSHIP only for every effect, including non-intervention events | Low; preserves current safeguards | APPROVE |
+| AE05 | Full effect vocabulary | Eleven orthogonal properties plus constrained change descriptors and investigation outcomes | Moderate; new properties need production review | MODIFY/APPROVE-AS-MODIFIED |
+| AE06 | Evidence and inference | One assertion EvidenceAssessment with structured sourceFindings and separate synthesis | Moderate; additive normalization must preserve original evidence | APPROVE |
+| AE07 | Occurrence evidence | Evidence of occurrence separate from evidence of contextual consequences | Low; no occurrence required for reusable effect knowledge | APPROVE |
+| AE08 | Overlap and moderation | Exact edge targeting, mechanistic Driver linkage and explicit shared-contribution groups | Moderate; execution policy remains separate | APPROVE |
+| AE09 | Compatibility and packages | ID-stable additive references to current Interventions/effects; no migration in this proposal | Low with read-only links; high if IDs are reminted | APPROVE |
+| AE10 | Governance and use | Preserve D11/D12; separately calculate scientific/model/action eligibility | Low only if current activation rules remain intact | MODIFY/APPROVE-AS-MODIFIED |
+| AE11 | Relationship-first production workflow | Linked Family Pass A/Pass B with local readiness, shared ownership and deduplication | Low; queue is scheduling evidence only | APPROVE |
+| AE12 | Next implementation/pilot scope | Approve contract review first, then synthetic structural pilot and bounded compatibility implementation | Low; science/population separately authorized | APPROVE |
 
 ## Exact recommendations and alternatives
 
@@ -43,7 +46,7 @@ effects, or a variable such as temperature duplicates an exposure episode.
 Proposed rule: a type describes an action/happening/exposure pattern, an
 occurrence describes its realization and observation status, and an effect
 assertion contains the target-specific claim. Neither identity nor occurrence
-implies causality or efficacy. Approval: **PENDING**.
+implies causality or efficacy. Approval: **APPROVE**.
 
 ### AE02–AE03 — Overlapping tags and actor-relative metadata
 
@@ -68,7 +71,7 @@ Compact labels lose the fact that one actor intentionally causes another's
 external event. Alternative: unconstrained text only. Flexible but difficult
 to search/validate. Recommend controlled small dimensions plus qualified text.
 Proposed rule: external never entails random assignment, no confounding, or
-causal exogeneity. Approval for both AE02 and AE03: **PENDING**.
+causal exogeneity. Approval for both AE02 and AE03: **APPROVE**.
 
 ### AE04 — Targets and RDS safety apply to every event class
 
@@ -88,7 +91,7 @@ for minimum scope. No new target type is implemented as an exception.
 
 Proposed rule: context changes resolve to named Drivers, governed moderation,
 scope/prerequisites or relationship conditions; no CONTEXT_CONDITION target
-and no ALTER_CONTEXT effect mode. Approval: **PENDING**.
+and no ALTER_CONTEXT effect mode. Approval: **APPROVE**.
 
 ### AE05 — Property of change and manner of change
 
@@ -115,7 +118,9 @@ direction. Alternative: free text only. Scientifically expressive but poorly
 checkable. Recommend the factored representation with explicit unknowns.
 Functional shape permits cyclic/non-monotonic effects without universal sign.
 Structural change concerns real-world opportunities/resources/ties, not edits
-to ontology records. Approval: **PENDING**.
+to ontology records. Approval: **MODIFY/APPROVE-AS-MODIFIED**. The exact
+property-constrained vocabulary is in the governing record and vocabulary.json;
+distribution/reach/subgroups are qualifiers, never a twelfth property.
 
 ### AE06–AE07 — Evidence, inference and occurrence records
 
@@ -150,7 +155,7 @@ BIO-F01 mixed/null findings that motivated the present separation.
 Proposed rule: preserve source findings before synthesis; association confidence
 never changes semantics, model inference never becomes empirical observation,
 graph reachability never demonstrates mediation, and occurrence evidence never
-proves all consequences. Approval for AE06 and AE07: **PENDING**.
+proves all consequences. Approval for AE06 and AE07: **APPROVE**.
 
 ### AE08 — Effects, moderators and shared contributions
 
@@ -167,7 +172,7 @@ through a fully specified mechanistic pathway. Strong discipline but blocks
 valid direct contextual claims when intermediates remain unresolved. Recommend
 bounded direct claims plus explicit overlap safeguards and honest incomplete
 mechanisms. An execution package must choose/reconcile overlapping contributions;
-the experimental catalog does not compute their sum. Approval: **PENDING**.
+the experimental catalog does not compute their sum. Approval: **APPROVE**.
 
 ### AE09 — Existing V1 and BIO-F01 compatibility
 
@@ -185,7 +190,7 @@ would exceed scope and risk identity/evidence/status loss. Alternative: permanen
 parallel independent catalogs. Avoids migration initially but encourages duplicate
 action identities and inconsistent effects. Prefer reference bridge first,
 then a separately governed lossless mapping/equivalence test before migration.
-Existing legacy V3 and V1 projections remain one proposition. Approval: **PENDING**.
+Existing legacy V3 and V1 projections remain one proposition. Approval: **APPROVE**.
 
 ### AE10 — Authority, scientific use and practitioner control
 
@@ -205,7 +210,10 @@ recommended action. The prototype reports only a dry run and changes no state.
 Alternative: treat approval as all-purpose execution permission. Simpler but
 confuses certainty, manipulability, ethical/feasibility constraints and model
 assumptions. Alternative: invent a second lifecycle. Adds governance ambiguity.
-Retain one lifecycle and separate use predicates. Approval: **PENDING**.
+Retain one lifecycle and separate use predicates. Approval:
+**MODIFY/APPROVE-AS-MODIFIED**. Practitioner-use checks explicitly include
+actor control, prerequisites, feasibility, legal, ethical/risk and
+population/context applicability, independently of scientific status.
 
 ### AE11 — Relationship-first research and ownership
 
@@ -228,7 +236,7 @@ Orderly but unnecessarily blocks evidence relevant to reviewed sections.
 Alternative: start from a global action taxonomy. Fast catalog growth but weak
 target grounding. Recommend linked local passes and queue coverage priorities,
 not quotas. Queue ranks guide review effort without asserting missing science.
-Approval: **PENDING**.
+Approval: **APPROVE**.
 
 ### AE12 — Minimum practical implementation and next pilot
 
@@ -264,7 +272,8 @@ Implementation order after approval:
 6. Govern exact scientific records and activation only in later human decisions;
    algorithms, practitioner exposure and deployment remain separate approvals.
 
-Approval: **PENDING**. No decision here authorizes any of these future steps.
+Approval: **APPROVE**. Bounded infrastructure implementation and gated merges
+are authorized by the overnight instruction; real scientific population is not.
 
 ## Dependency map and concrete review request
 
@@ -276,7 +285,7 @@ AE08 + AE09 + AE10 -> reviewed production-contract implementation scope
 AE11 local readiness/ownership -> AE12 later bounded pilot authorization
 ```
 
-Review the twelve PENDING rows by APPROVE / MODIFY / REJECT with exact replacement
+Review the twelve APPROVED rows by APPROVE / MODIFY / REJECT with exact replacement
 semantics where modified. The present assignment establishes evidence and an
 isolated prototype for that review; it does not seek approval of new scientific
 claims. See [RESEARCH_PROMPTS.md](RESEARCH_PROMPTS.md) for executable future

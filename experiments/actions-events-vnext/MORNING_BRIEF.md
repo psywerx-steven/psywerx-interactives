@@ -1,6 +1,10 @@
 # Morning brief: Actions & Events
 
-**Proposal only. All twelve architecture decisions are PENDING.**
+> Current authority: [Actions & Events V1 decision](../../docs/governance/ACTIONS_EVENTS_V1_GOVERNANCE_DECISION.md) governs AE01–AE12. AE05 and AE10 are approved as modified; the exact record supersedes earlier provisional wording below. Architecture and bounded implementation only; no scientific claim or fixture is approved. The implementation sequence is authorized by the overnight instruction. Historical planning/review notes describe the prior proposal checkpoint.
+
+**AE01–AE12 architecture approved; AE05/AE10 approved as modified.**
+This brief's inventory describes the completed proposal checkpoint. Overnight
+implementation progress is in [OVERNIGHT_EXECUTION.md](OVERNIGHT_EXECUTION.md).
 
 ## 1. Proposed design
 

@@ -22,7 +22,8 @@ class ModelTests(unittest.TestCase):
     def use_context(self):
         return {"label": "SYNTHETIC / NON_PRODUCTION", "actor": "Fictional practitioner",
                 "context": self.bundle["effects"][0]["scope"]["context"],
-                "prerequisitesCleared": True, "risksReviewed": True, "applicabilityConfirmed": True}
+                "prerequisitesCleared": True, "risksReviewed": True, "applicabilityConfirmed": True, "feasibilityConfirmed": True,
+                "legalConstraintsCleared": True, "ethicalConstraintsCleared": True}
 
     def null_finding(self):
         return {"contrast": "Fictional exposure versus fictional comparator",

@@ -1,6 +1,9 @@
 # Reusable research prompts: Actions & Events proposal
 
-Status: PROPOSAL / NON_PRODUCTION. Architecture choices below remain PENDING.
+> Current authority: [Actions & Events V1 decision](../../docs/governance/ACTIONS_EVENTS_V1_GOVERNANCE_DECISION.md) governs AE01–AE12. AE05 and AE10 are approved as modified; the exact record supersedes earlier provisional wording below. Architecture and bounded implementation only; no scientific claim or fixture is approved. The implementation sequence is authorized by the overnight instruction. Historical planning/review notes describe the prior proposal checkpoint.
+
+Status: GOVERNED ARCHITECTURE / research execution requires separate scope.
+AE01–AE12 are approved (AE05/AE10 as modified). Scientific choices remain pending.
 These prompts do not confer authorization to run a Family audit, register
 sources, govern science, activate records, or change application behavior.
 Use them only within a later explicit scope authorization. A prototype result

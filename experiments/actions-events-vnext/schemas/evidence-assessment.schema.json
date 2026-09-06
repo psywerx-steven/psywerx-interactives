@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://example.invalid/psywerx-experiment/evidence-assessment.schema.json",
-  "title": "PENDING EvidenceAssessment synthetic contract",
+  "title": "Governed architecture / EvidenceAssessment synthetic contract",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -149,6 +149,41 @@
               "METADATA",
               "SYNTHETIC"
             ]
+          },
+          "exposure": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1
+          },
+          "comparator": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1
+          },
+          "measurement": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1
+          },
+          "timing": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1
+          },
+          "uncertainty": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1
           }
         }
       }
@@ -187,6 +222,23 @@
         },
         "sourceFindingIds": {
           "$ref": "common.schema.json#/$defs/ids"
+        },
+        "evidenceStrength": {
+          "enum": [
+            "STRONG",
+            "MODERATE",
+            "MIXED",
+            "LIMITED",
+            "EMERGING",
+            "NOT_ASSESSED"
+          ]
+        },
+        "generalizationLimits": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
         }
       }
     },

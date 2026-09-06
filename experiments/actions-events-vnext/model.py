@@ -1,4 +1,4 @@
-"""PENDING synthetic semantic experiment. No production importer or status writer."""
+"""Governed architecture; synthetic semantic experiment. No production importer or status writer."""
 from __future__ import annotations
 import copy
 import json
@@ -13,19 +13,8 @@ PROPERTIES = ("LEVEL", "VARIABILITY", "RATE", "THRESHOLD", "TIMING", "PERSISTENC
               "FUNCTIONAL_SHAPE", "STRUCTURE")
 SCHEMAS = {"types": "happening-type", "occurrences": "occurrence",
            "effects": "effect-assertion", "evidence": "evidence-assessment"}
-CHANGE_COMPATIBILITY = {
-    "LEVEL": {"INCREASE", "DECREASE", "CONTEXT_DEPENDENT", "MAINTAIN"},
-    "VARIABILITY": {"INCREASE", "DECREASE", "MAINTAIN", "CONTEXT_DEPENDENT"},
-    "RATE": {"INCREASE", "DECREASE", "CONTEXT_DEPENDENT"},
-    "THRESHOLD": {"INCREASE", "DECREASE", "CONTEXT_DEPENDENT"},
-    "TIMING": {"ADVANCE", "DELAY", "CONTEXT_DEPENDENT"},
-    "PERSISTENCE": {"INCREASE", "DECREASE", "CONTEXT_DEPENDENT"},
-    "RELATIONSHIP_STRENGTH": {"INCREASE", "DECREASE", "DISABLE", "CONTEXT_DEPENDENT"},
-    "RELATIONSHIP_DIRECTION": {"REVERSE", "CONTEXT_DEPENDENT"},
-    "ENABLEMENT": {"ENABLE", "DISABLE", "CONTEXT_DEPENDENT"},
-    "FUNCTIONAL_SHAPE": {"RECONFIGURE", "CONTEXT_DEPENDENT"},
-    "STRUCTURE": {"RECONFIGURE", "INCREASE", "DECREASE", "CONTEXT_DEPENDENT"},
-}
+CHANGE_COMPATIBILITY = {k: set(v) for k, v in json.loads((HERE / "vocabulary.json").read_text())["propertyChanges"].items()}
+
 
 
 def schema_validators():
@@ -59,6 +48,8 @@ def validate_bundle(bundle):
         for record in bundle.get(key, []):
             for error in validator.iter_errors(record):
                 errors.append(f"{record.get('id')}: {list(error.path)} {error.message}")
+                if list(error.path) == ["change"]:
+                    errors.append(f"{record.get('id')}: incompatible property/change")
     for key in ("entities", "relationships", "sources"):
         reference_ids = [item.get("id") for item in bundle[key]]
         if len(reference_ids) != len(set(reference_ids)):
@@ -257,6 +248,9 @@ def dry_run(bundle, hypothetical_decisions=(), use_context=None):
                 and context.get("prerequisitesCleared") is True
                 and context.get("risksReviewed") is True
                 and context.get("applicabilityConfirmed") is True
+                and context.get("feasibilityConfirmed") is True
+                and context.get("legalConstraintsCleared") is True
+                and context.get("ethicalConstraintsCleared") is True
                 and context.get("label") == "SYNTHETIC / NON_PRODUCTION"):
             identities.add(effect["typeId"])
     return {"label": "SYNTHETIC / NON_PRODUCTION", "productionEligible": False,
@@ -270,7 +264,7 @@ def dry_run(bundle, hypothetical_decisions=(), use_context=None):
 def synthetic_fixture():
     """Fictional examples, never a scientific dataset."""
     label = "SYNTHETIC / NON_PRODUCTION"
-    governance = {"label": label, "architectureDecision": "PENDING", "lifecycleStatus": "REVIEW_READY", "activationStatus": "NOT_ELIGIBLE"}
+    governance = {"label": label, "architectureDecision": "GOV-ACTIONS-EVENTS-V1-2026-09-06", "lifecycleStatus": "REVIEW_READY", "activationStatus": "NOT_ELIGIBLE"}
     scope = {k: "Fictional laboratory system; demonstration only" for k in ("population", "context", "boundaryConditions", "timing", "measurement")}
     bundle = {"label": label, "types": [], "occurrences": [], "effects": [], "evidence": [],
               "entities": [{"id": "SYN-DRIVER-" + l, "entityType": "DRIVER", "layer": l, "label": label} for l in LAYERS]
@@ -280,7 +274,7 @@ def synthetic_fixture():
     names = ["Scheduling policy", "Environmental shock", "Technology outage", "Informational disclosure", "Network change", "Gradual physiology", "Moderator change", "Conditional reversal", "Access enabling", "Cyclic exposure", "Structural reconfiguration"]
     origins = [["INS"], ["ENV", "SOC"], ["TEC"], ["INF"], ["SOC"], ["BIO"], ["PSY", "CUL"], ["CUL"], ["INS"], ["BIO"], ["TEC", "ENV"]]
     patterns = ["DISCRETE", "REPEATED", "CONTINUOUS", "DISCRETE", "GRADUAL", "CUMULATIVE", "REPEATED", "DISCRETE", "CONTINUOUS", "CYCLIC", "GRADUAL"]
-    changes = ["INCREASE", "DECREASE", "DECREASE", "INCREASE", "ADVANCE", "INCREASE", "DECREASE", "REVERSE", "ENABLE", "CONTEXT_DEPENDENT", "RECONFIGURE"]
+    changes = ["INCREASE", "DECREASE", "DECELERATE", "RAISE", "EARLIER", "PROLONG", "ATTENUATE", "REVERSE", "ENABLE", "CYCLIC", "RECONFIGURE"]
     for index, prop in enumerate(PROPERTIES):
         suffix = f"{index + 1:03}"
         tid, oid, eid, aid = (f"SYN-{prefix}-{suffix}" for prefix in ("TYPE", "OCC", "EFFECT", "EVIDENCE"))

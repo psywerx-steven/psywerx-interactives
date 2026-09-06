@@ -16,7 +16,7 @@
       ],
       "exitCode": 0,
       "name": "Prototype suites",
-      "output": "...................................................\r\n----------------------------------------------------------------------\r\nRan 51 tests in 11.296s\r\n\r\nOK\r\n",
+      "output": "...................................................\r\n----------------------------------------------------------------------\r\nRan 51 tests in 10.061s\r\n\r\nOK\r\n",
       "passed": true
     },
     {
@@ -26,7 +26,7 @@
         "--no-hardlinks",
         "--quiet",
         "<isolated-checkout>",
-        "<isolated-checkout>\\experiments\\actions-events-vnext\\_scratch\\regression-k6e60jfm\\checkout"
+        "<isolated-checkout>\\experiments\\actions-events-vnext\\_scratch\\regression-7s9ngj9h\\checkout"
       ],
       "exitCode": 0,
       "name": "Isolated local clone",
@@ -58,7 +58,7 @@
       ],
       "exitCode": 0,
       "name": "test_migration_v0_3.py",
-      "output": "...................\r\n----------------------------------------------------------------------\r\nRan 19 tests in 2.154s\r\n\r\nOK\r\n",
+      "output": "...................\r\n----------------------------------------------------------------------\r\nRan 19 tests in 1.879s\r\n\r\nOK\r\n",
       "passed": true
     },
     {
@@ -74,7 +74,7 @@
       ],
       "exitCode": 0,
       "name": "test_relationship_intervention_v1.py",
-      "output": "......................................\r\n----------------------------------------------------------------------\r\nRan 38 tests in 1.538s\r\n\r\nOK\r\n",
+      "output": "......................................\r\n----------------------------------------------------------------------\r\nRan 38 tests in 1.544s\r\n\r\nOK\r\n",
       "passed": true
     },
     {
@@ -90,7 +90,7 @@
       ],
       "exitCode": 0,
       "name": "test_bio_f01_pilot.py",
-      "output": ".............\r\n----------------------------------------------------------------------\r\nRan 13 tests in 1.372s\r\n\r\nOK\r\n",
+      "output": ".............\r\n----------------------------------------------------------------------\r\nRan 13 tests in 1.154s\r\n\r\nOK\r\n",
       "passed": true
     },
     {
@@ -106,7 +106,7 @@
       ],
       "exitCode": 0,
       "name": "test_bio_f01_governance_001.py",
-      "output": "...............\r\n----------------------------------------------------------------------\r\nRan 15 tests in 1.656s\r\n\r\nOK\r\n",
+      "output": "...............\r\n----------------------------------------------------------------------\r\nRan 15 tests in 1.660s\r\n\r\nOK\r\n",
       "passed": true
     },
     {
@@ -122,7 +122,7 @@
       ],
       "exitCode": 0,
       "name": "test_bio_f01_activation_001.py",
-      "output": "...........\r\n----------------------------------------------------------------------\r\nRan 11 tests in 0.974s\r\n\r\nOK\r\n",
+      "output": "...........\r\n----------------------------------------------------------------------\r\nRan 11 tests in 0.819s\r\n\r\nOK\r\n",
       "passed": true
     },
     {
@@ -184,7 +184,7 @@
       ],
       "exitCode": 0,
       "name": "Isolated scenario dependencies",
-      "output": "\nadded 1 package in 8s\n",
+      "output": "\nadded 1 package in 9s\n",
       "passed": true
     },
     {
@@ -194,7 +194,7 @@
       ],
       "exitCode": 0,
       "name": "Scenario contract and 811-entity sweep",
-      "output": "\n> psywerx-scenario-service@1.0.0 test\n> node --test\n\n✔ catalog verifies the browser snapshot and returns bounded server context (2.9318ms)\n✔ catalog rejects a stale or tampered Driver snapshot (0.7977ms)\n✔ canonical Drivers without public plain language remain eligible (0.2519ms)\n✔ catalog preserves governed RDS identity and derivation context (0.3921ms)\n✔ request validation accepts the exact frontend contract (3.6559ms)\n✔ request validation accepts governed RDS IDs, derivation metadata, and null peripheral metadata (1.4084ms)\n✔ request validation rejects extra keys and oversized scenario input (0.556ms)\n✔ response validation requires exactly three examples (0.8414ms)\n✔ clarification rules are conditional and require one question (0.3714ms)\n✔ response validation rejects private filesystem paths (0.2915ms)\n✔ every current canonical Entity resolves against the exact browser contract (130.7752ms)\n✔ test\\fixtures.js (94.1031ms)\n✔ health endpoint returns minimal status (64.6233ms)\n✔ operationalization endpoint returns the exact success object (17.3226ms)\n✔ unlisted origins are rejected (8.7179ms)\n✔ request-size and in-memory rate limits fail clearly (21.8517ms)\n✔ Responses API request is stateless, schema-strict, and server controlled (10.2546ms)\n✔ RDS model context is labeled as an Entity and includes governed derivation metadata (1.0853ms)\n✔ malformed structured output is retried once (0.8729ms)\n✔ API failures are not retried (1.3299ms)\n✔ a second malformed output fails without a third attempt (2.3396ms)\nℹ tests 21\nℹ suites 0\nℹ pass 21\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 474.014\n",
+      "output": "\n> psywerx-scenario-service@1.0.0 test\n> node --test\n\n✔ catalog verifies the browser snapshot and returns bounded server context (3.0203ms)\n✔ catalog rejects a stale or tampered Driver snapshot (1.0688ms)\n✔ canonical Drivers without public plain language remain eligible (0.421ms)\n✔ catalog preserves governed RDS identity and derivation context (0.5601ms)\n✔ request validation accepts the exact frontend contract (3.8069ms)\n✔ request validation accepts governed RDS IDs, derivation metadata, and null peripheral metadata (1.4104ms)\n✔ request validation rejects extra keys and oversized scenario input (0.5862ms)\n✔ response validation requires exactly three examples (0.7752ms)\n✔ clarification rules are conditional and require one question (0.4367ms)\n✔ response validation rejects private filesystem paths (0.3201ms)\n✔ every current canonical Entity resolves against the exact browser contract (128.397ms)\n✔ test\\fixtures.js (110.3184ms)\n✔ health endpoint returns minimal status (60.3851ms)\n✔ operationalization endpoint returns the exact success object (19.0827ms)\n✔ unlisted origins are rejected (8.4541ms)\n✔ request-size and in-memory rate limits fail clearly (26.5993ms)\n✔ Responses API request is stateless, schema-strict, and server controlled (6.0962ms)\n✔ RDS model context is labeled as an Entity and includes governed derivation metadata (1.7456ms)\n✔ malformed structured output is retried once (1.2846ms)\n✔ API failures are not retried (1.3227ms)\n✔ a second malformed output fails without a third attempt (0.9947ms)\nℹ tests 21\nℹ suites 0\nℹ pass 21\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 521.1685\n",
       "passed": true
     },
     {
@@ -219,7 +219,7 @@
     },
     {
       "broken": [],
-      "filesChecked": 8,
+      "filesChecked": 9,
       "name": "Proposal Markdown local links",
       "passed": true
     },
@@ -231,7 +231,7 @@
       ],
       "exitCode": 0,
       "name": "Git diff check",
-      "output": "warning: in the working copy of 'experiments/actions-events-vnext/MORNING_BRIEF.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'experiments/actions-events-vnext/PROGRESS.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'experiments/actions-events-vnext/REQUIREMENTS_COVERAGE.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'experiments/actions-events-vnext/TEST_RESULTS.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'experiments/actions-events-vnext/model.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'experiments/actions-events-vnext/test_model.py', LF will be replaced by CRLF the next time Git touches it\n",
+      "output": "warning: in the working copy of 'experiments/actions-events-vnext/ARCHITECTURE_PROPOSAL.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'experiments/actions-events-vnext/GOVERNANCE_DECISIONS.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'experiments/actions-events-vnext/MORNING_BRIEF.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'experiments/actions-events-vnext/PLAN.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'experiments/actions-events-vnext/REQUIREMENTS_COVERAGE.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'experiments/actions-events-vnext/RESEARCH_PROMPTS.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'experiments/actions-events-vnext/model.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'experiments/actions-events-vnext/prototype.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'experiments/actions-events-vnext/schemas/common.schema.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'experiments/actions-events-vnext/schemas/effect-assertion.schema.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'experiments/actions-events-vnext/schemas/evidence-assessment.schema.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'experiments/actions-events-vnext/schemas/happening-type.schema.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'experiments/actions-events-vnext/schemas/occurrence.schema.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'experiments/actions-events-vnext/synthetic.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'experiments/actions-events-vnext/test_model.py', LF will be replaced by CRLF the next time Git touches it\n",
       "passed": true
     },
     {
