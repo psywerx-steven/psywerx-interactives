@@ -17,26 +17,26 @@
           "--no-hardlinks",
           "--quiet",
           "<checkout>",
-          "<checkout>\\reports\\actions-events-v1\\_scratch\\validation-s8xmt7tl\\checkout"
+          "<checkout>\\reports\\actions-events-v1\\_scratch\\validation-88xzbj69\\checkout"
         ],
         "exitCode": 0,
         "name": "Isolated committed implementation clone",
         "output": "",
         "passed": true,
-        "seconds": 0.625
+        "seconds": 0.553
       },
       {
         "command": [
           "git",
           "checkout",
           "--quiet",
-          "50717af9f83f50934addf952ad8aebe5d9a68ab8"
+          "8a315700aa6885b7e1cf327f422e2b30b294f687"
         ],
         "exitCode": 0,
         "name": "Freeze tested commit",
         "output": "",
         "passed": true,
-        "seconds": 0.24
+        "seconds": 0.225
       },
       {
         "command": [
@@ -51,9 +51,9 @@
         ],
         "exitCode": 0,
         "name": "test_actions_events_v1.py",
-        "output": ".................................................................\r\n----------------------------------------------------------------------\r\nRan 65 tests in 7.541s\r\n\r\nOK\r\n",
+        "output": ".................................................................\r\n----------------------------------------------------------------------\r\nRan 65 tests in 7.658s\r\n\r\nOK\r\n",
         "passed": true,
-        "seconds": 7.834
+        "seconds": 7.928
       },
       {
         "command": [
@@ -68,9 +68,9 @@
         ],
         "exitCode": 0,
         "name": "test_audit_family.py",
-        "output": ".s..........s.\r\n----------------------------------------------------------------------\r\nRan 14 tests in 12.024s\r\n\r\nOK (skipped=2)\r\n",
+        "output": ".s..........s.\r\n----------------------------------------------------------------------\r\nRan 14 tests in 13.565s\r\n\r\nOK (skipped=2)\r\n",
         "passed": true,
-        "seconds": 12.245
+        "seconds": 13.792
       },
       {
         "command": [
@@ -85,9 +85,9 @@
         ],
         "exitCode": 0,
         "name": "test_migration_v0_3.py",
-        "output": "...................\r\n----------------------------------------------------------------------\r\nRan 19 tests in 1.780s\r\n\r\nOK\r\n",
+        "output": "...................\r\n----------------------------------------------------------------------\r\nRan 19 tests in 1.637s\r\n\r\nOK\r\n",
         "passed": true,
-        "seconds": 1.991
+        "seconds": 1.815
       },
       {
         "command": [
@@ -102,9 +102,9 @@
         ],
         "exitCode": 0,
         "name": "test_relationship_intervention_v1.py",
-        "output": "......................................\r\n----------------------------------------------------------------------\r\nRan 38 tests in 1.430s\r\n\r\nOK\r\n",
+        "output": "......................................\r\n----------------------------------------------------------------------\r\nRan 38 tests in 1.520s\r\n\r\nOK\r\n",
         "passed": true,
-        "seconds": 1.675
+        "seconds": 1.763
       },
       {
         "command": [
@@ -119,9 +119,9 @@
         ],
         "exitCode": 0,
         "name": "test_bio_f01_pilot.py",
-        "output": ".............\r\n----------------------------------------------------------------------\r\nRan 13 tests in 0.995s\r\n\r\nOK\r\n",
+        "output": ".............\r\n----------------------------------------------------------------------\r\nRan 13 tests in 1.323s\r\n\r\nOK\r\n",
         "passed": true,
-        "seconds": 1.221
+        "seconds": 1.601
       },
       {
         "command": [
@@ -136,9 +136,9 @@
         ],
         "exitCode": 0,
         "name": "test_bio_f01_governance_001.py",
-        "output": "...............\r\n----------------------------------------------------------------------\r\nRan 15 tests in 1.451s\r\n\r\nOK\r\n",
+        "output": "...............\r\n----------------------------------------------------------------------\r\nRan 15 tests in 1.420s\r\n\r\nOK\r\n",
         "passed": true,
-        "seconds": 1.671
+        "seconds": 1.663
       },
       {
         "command": [
@@ -153,9 +153,9 @@
         ],
         "exitCode": 0,
         "name": "test_bio_f01_activation_001.py",
-        "output": "...........\r\n----------------------------------------------------------------------\r\nRan 11 tests in 0.637s\r\n\r\nOK\r\n",
+        "output": "...........\r\n----------------------------------------------------------------------\r\nRan 11 tests in 0.655s\r\n\r\nOK\r\n",
         "passed": true,
-        "seconds": 0.847
+        "seconds": 0.88
       },
       {
         "command": [
@@ -165,9 +165,9 @@
         ],
         "exitCode": 0,
         "name": "Production AE/RI schemas, references, lifecycle and bridge",
-        "output": "{\r\n  \"additionalScientificPropositions\": 0,\r\n  \"candidateWorkspace\": {\r\n    \"passBReady\": false,\r\n    \"productionEligible\": false\r\n  },\r\n  \"existingV1\": {\r\n    \"activeCausalRelationships\": 435,\r\n    \"activeRelationships\": 456,\r\n    \"entities\": 811,\r\n    \"legacyActiveCausalRelationships\": 431,\r\n    \"legacyActiveRelationships\": 450,\r\n    \"legacyMediatedPathRecords\": 39,\r\n    \"nativeActiveCausalRelationships\": 4,\r\n    \"nativeActiveEvidenceAssessments\": 11,\r\n    \"nativeActiveInterventionEffects\": 5,\r\n    \"nativeActiveInterventions\": 5,\r\n    \"nativeActiveRecords\": 27,\r\n    \"nativeActiveRelationships\": 6,\r\n    \"nativeCausalRelationships\": 4,\r\n    \"nativeEvidenceAssessments\": 11,\r\n    \"nativeInterventionEffects\": 5,\r\n    \"nativeInterventions\": 9,\r\n    \"nativeRelationships\": 6,\r\n    \"nativeSources\": 20,\r\n    \"v1IncompleteRelationships\": 450,\r\n    \"v1LegacyOnlyRelationships\": 450\r\n  },\r\n  \"nativeActionsEvents\": {\r\n    \"active\": 0,\r\n    \"records\": 0,\r\n    \"statusChanges\": 0,\r\n    \"synthetic\": false\r\n  },\r\n  \"sameIdentityViews\": 25\r\n}\r\n",
+        "output": "{\r\n  \"additionalScientificPropositions\": 0,\r\n  \"candidateWorkspace\": {\r\n    \"passBReady\": false,\r\n    \"productionEligible\": false\r\n  },\r\n  \"existingV1\": {\r\n    \"activeCausalRelationships\": 435,\r\n    \"activeRelationships\": 456,\r\n    \"entities\": 811,\r\n    \"legacyActiveCausalRelationships\": 431,\r\n    \"legacyActiveRelationships\": 450,\r\n    \"legacyMediatedPathRecords\": 39,\r\n    \"nativeActiveCausalRelationships\": 4,\r\n    \"nativeActiveEvidenceAssessments\": 11,\r\n    \"nativeActiveInterventionEffects\": 5,\r\n    \"nativeActiveInterventions\": 5,\r\n    \"nativeActiveRecords\": 27,\r\n    \"nativeActiveRelationships\": 6,\r\n    \"nativeCausalRelationships\": 5,\r\n    \"nativeEvidenceAssessments\": 12,\r\n    \"nativeInterventionEffects\": 5,\r\n    \"nativeInterventions\": 9,\r\n    \"nativeRelationships\": 7,\r\n    \"nativeSources\": 23,\r\n    \"v1IncompleteRelationships\": 450,\r\n    \"v1LegacyOnlyRelationships\": 450\r\n  },\r\n  \"nativeActionsEvents\": {\r\n    \"active\": 0,\r\n    \"records\": 10,\r\n    \"statusChanges\": 0,\r\n    \"synthetic\": false\r\n  },\r\n  \"sameIdentityViews\": 26\r\n}\r\n",
         "passed": true,
-        "seconds": 2.086
+        "seconds": 2.039
       },
       {
         "command": [
@@ -178,7 +178,7 @@
         "name": "Eight-Layer synthetic structural pilot",
         "output": "{\r\n  \"candidateValidation\": {\r\n    \"active\": 0,\r\n    \"records\": 46,\r\n    \"statusChanges\": 0,\r\n    \"synthetic\": true\r\n  },\r\n  \"effectProperties\": [\r\n    \"ENABLEMENT\",\r\n    \"FUNCTIONAL_SHAPE\",\r\n    \"LEVEL\",\r\n    \"PERSISTENCE\",\r\n    \"RATE\",\r\n    \"RELATIONSHIP_DIRECTION\",\r\n    \"RELATIONSHIP_STRENGTH\",\r\n    \"STRUCTURE\",\r\n    \"THRESHOLD\",\r\n    \"TIMING\",\r\n    \"VARIABILITY\"\r\n  ],\r\n  \"hypotheticalActiveValidation\": {\r\n    \"active\": 46,\r\n    \"records\": 46,\r\n    \"statusChanges\": 0,\r\n    \"synthetic\": true\r\n  },\r\n  \"label\": \"SYNTHETIC / NON_PRODUCTION\",\r\n  \"newRealScientificRecords\": 0,\r\n  \"originLayers\": [\r\n    \"BIO\",\r\n    \"CUL\",\r\n    \"ENV\",\r\n    \"INF\",\r\n    \"INS\",\r\n    \"PSY\",\r\n    \"SOC\",\r\n    \"TEC\"\r\n  ],\r\n  \"realStatusChanges\": 0,\r\n  \"unchanged\": true,\r\n  \"uses\": [\r\n    {\r\n      \"modelEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"No quantitative execution/model contract authorized; no weights inferred\"\r\n        ]\r\n      },\r\n      \"objectId\": \"SYN-EFFECT-001\",\r\n      \"practitionerActionEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"revision\": 1,\r\n      \"schemaVersion\": \"1.0.0\",\r\n      \"scientificUseEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"statusChanges\": 0,\r\n      \"syntheticSimulation\": {\r\n        \"actionWouldQualify\": true,\r\n        \"scientificWouldQualify\": true\r\n      }\r\n    },\r\n    {\r\n      \"modelEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"No quantitative execution/model contract authorized; no weights inferred\"\r\n        ]\r\n      },\r\n      \"objectId\": \"SYN-EFFECT-002\",\r\n      \"practitionerActionEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Not a deliberate Intervention/action subset\",\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"revision\": 1,\r\n      \"schemaVersion\": \"1.0.0\",\r\n      \"scientificUseEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"statusChanges\": 0,\r\n      \"syntheticSimulation\": {\r\n        \"actionWouldQualify\": false,\r\n        \"scientificWouldQualify\": true\r\n      }\r\n    },\r\n    {\r\n      \"modelEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"No quantitative execution/model contract authorized; no weights inferred\"\r\n        ]\r\n      },\r\n      \"objectId\": \"SYN-EFFECT-003\",\r\n      \"practitionerActionEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Not a deliberate Intervention/action subset\",\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"revision\": 1,\r\n      \"schemaVersion\": \"1.0.0\",\r\n      \"scientificUseEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"statusChanges\": 0,\r\n      \"syntheticSimulation\": {\r\n        \"actionWouldQualify\": false,\r\n        \"scientificWouldQualify\": true\r\n      }\r\n    },\r\n    {\r\n      \"modelEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"No quantitative execution/model contract authorized; no weights inferred\"\r\n        ]\r\n      },\r\n      \"objectId\": \"SYN-EFFECT-004\",\r\n      \"practitionerActionEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"revision\": 1,\r\n      \"schemaVersion\": \"1.0.0\",\r\n      \"scientificUseEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"statusChanges\": 0,\r\n      \"syntheticSimulation\": {\r\n        \"actionWouldQualify\": true,\r\n        \"scientificWouldQualify\": true\r\n      }\r\n    },\r\n    {\r\n      \"modelEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"No quantitative execution/model contract authorized; no weights inferred\"\r\n        ]\r\n      },\r\n      \"objectId\": \"SYN-EFFECT-005\",\r\n      \"practitionerActionEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Not a deliberate Intervention/action subset\",\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"revision\": 1,\r\n      \"schemaVersion\": \"1.0.0\",\r\n      \"scientificUseEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"statusChanges\": 0,\r\n      \"syntheticSimulation\": {\r\n        \"actionWouldQualify\": false,\r\n        \"scientificWouldQualify\": true\r\n      }\r\n    },\r\n    {\r\n      \"modelEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"No quantitative execution/model contract authorized; no weights inferred\"\r\n        ]\r\n      },\r\n      \"objectId\": \"SYN-EFFECT-006\",\r\n      \"practitionerActionEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Not a deliberate Intervention/action subset\",\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"revision\": 1,\r\n      \"schemaVersion\": \"1.0.0\",\r\n      \"scientificUseEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"statusChanges\": 0,\r\n      \"syntheticSimulation\": {\r\n        \"actionWouldQualify\": false,\r\n        \"scientificWouldQualify\": true\r\n      }\r\n    },\r\n    {\r\n      \"modelEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"No quantitative execution/model contract authorized; no weights inferred\"\r\n        ]\r\n      },\r\n      \"objectId\": \"SYN-EFFECT-007\",\r\n      \"practitionerActionEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Not a deliberate Intervention/action subset\",\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"revision\": 1,\r\n      \"schemaVersion\": \"1.0.0\",\r\n      \"scientificUseEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"statusChanges\": 0,\r\n      \"syntheticSimulation\": {\r\n        \"actionWouldQualify\": false,\r\n        \"scientificWouldQualify\": true\r\n      }\r\n    },\r\n    {\r\n      \"modelEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"No quantitative execution/model contract authorized; no weights inferred\"\r\n        ]\r\n      },\r\n      \"objectId\": \"SYN-EFFECT-008\",\r\n      \"practitionerActionEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"No independently eligible governed-active effect\",\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"revision\": 1,\r\n      \"schemaVersion\": \"1.0.0\",\r\n      \"scientificUseEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"statusChanges\": 0,\r\n      \"syntheticSimulation\": {\r\n        \"actionWouldQualify\": false,\r\n        \"scientificWouldQualify\": true\r\n      }\r\n    },\r\n    {\r\n      \"modelEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"No quantitative execution/model contract authorized; no weights inferred\"\r\n        ]\r\n      },\r\n      \"objectId\": \"SYN-EFFECT-009\",\r\n      \"practitionerActionEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"revision\": 1,\r\n      \"schemaVersion\": \"1.0.0\",\r\n      \"scientificUseEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"statusChanges\": 0,\r\n      \"syntheticSimulation\": {\r\n        \"actionWouldQualify\": true,\r\n        \"scientificWouldQualify\": true\r\n      }\r\n    },\r\n    {\r\n      \"modelEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"No quantitative execution/model contract authorized; no weights inferred\"\r\n        ]\r\n      },\r\n      \"objectId\": \"SYN-EFFECT-010\",\r\n      \"practitionerActionEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Not a deliberate Intervention/action subset\",\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"revision\": 1,\r\n      \"schemaVersion\": \"1.0.0\",\r\n      \"scientificUseEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"statusChanges\": 0,\r\n      \"syntheticSimulation\": {\r\n        \"actionWouldQualify\": false,\r\n        \"scientificWouldQualify\": true\r\n      }\r\n    },\r\n    {\r\n      \"modelEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"No quantitative execution/model contract authorized; no weights inferred\"\r\n        ]\r\n      },\r\n      \"objectId\": \"SYN-EFFECT-011\",\r\n      \"practitionerActionEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Not a deliberate Intervention/action subset\",\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"revision\": 1,\r\n      \"schemaVersion\": \"1.0.0\",\r\n      \"scientificUseEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"statusChanges\": 0,\r\n      \"syntheticSimulation\": {\r\n        \"actionWouldQualify\": false,\r\n        \"scientificWouldQualify\": true\r\n      }\r\n    },\r\n    {\r\n      \"modelEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"No quantitative execution/model contract authorized; no weights inferred\"\r\n        ]\r\n      },\r\n      \"objectId\": \"SYN-EFFECT-012\",\r\n      \"practitionerActionEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"revision\": 1,\r\n      \"schemaVersion\": \"1.0.0\",\r\n      \"scientificUseEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"statusChanges\": 0,\r\n      \"syntheticSimulation\": {\r\n        \"actionWouldQualify\": true,\r\n        \"scientificWouldQualify\": true\r\n      }\r\n    }\r\n  ]\r\n}\r\n",
         "passed": true,
-        "seconds": 1.248
+        "seconds": 1.254
       },
       {
         "command": [
@@ -189,7 +189,7 @@
         "name": "Deterministic migration regeneration",
         "output": "Governed migration baseline v0.3 built and validated\r\n  Drivers: 770\r\n  Relational & Derived States: 41\r\n  Canonical entities: 811\r\n  Active relationships: 450\r\n  Deprecated relationships: 6\r\n  Proposed/blocked relationships: 5\r\n  Blocked governance items: 7\r\n  Errors: 0\r\n",
         "passed": true,
-        "seconds": 0.514
+        "seconds": 0.525
       },
       {
         "command": [
@@ -200,7 +200,7 @@
         "name": "Deterministic BIO materialization",
         "output": "Materialized GOV-BIO-F01-001-2026-09-05 and GOV-BIO-F01-ACTIVATION-001-2026-09-05\r\n  Governed active Relationships: 6 (4 causal, 2 noncausal)\r\n  Governed active Interventions: 5; governed inactive Interventions: 4\r\n  Governed active InterventionEffects: 5\r\n  Governed active EvidenceAssessments: 11\r\n  New active records: 27\r\n  Registered native V1 sources: 20\r\n",
         "passed": true,
-        "seconds": 0.13
+        "seconds": 0.138
       },
       {
         "changed": [],
@@ -218,7 +218,7 @@
         "name": "No tracked mutation from regeneration/tests",
         "output": "",
         "passed": true,
-        "seconds": 0.368
+        "seconds": 0.098
       },
       {
         "command": [
@@ -231,9 +231,9 @@
         ],
         "exitCode": 0,
         "name": "Isolated scenario dependencies",
-        "output": "\nadded 1 package in 5s\n",
+        "output": "\nadded 1 package in 4s\n",
         "passed": true,
-        "seconds": 5.688
+        "seconds": 4.106
       },
       {
         "command": [
@@ -242,9 +242,9 @@
         ],
         "exitCode": 0,
         "name": "Scenario contracts and exact 811-entity sweep",
-        "output": "\n> psywerx-scenario-service@1.0.0 test\n> node --test\n\n✔ catalog verifies the browser snapshot and returns bounded server context (1.7258ms)\n✔ catalog rejects a stale or tampered Driver snapshot (0.5809ms)\n✔ canonical Drivers without public plain language remain eligible (0.2164ms)\n✔ catalog preserves governed RDS identity and derivation context (0.3538ms)\n✔ request validation accepts the exact frontend contract (3.0727ms)\n✔ request validation accepts governed RDS IDs, derivation metadata, and null peripheral metadata (0.9675ms)\n✔ request validation rejects extra keys and oversized scenario input (0.2722ms)\n✔ response validation requires exactly three examples (0.4199ms)\n✔ clarification rules are conditional and require one question (0.2224ms)\n✔ response validation rejects private filesystem paths (0.3023ms)\n✔ every current canonical Entity resolves against the exact browser contract (74.263ms)\n✔ test\\fixtures.js (66.2751ms)\n✔ health endpoint returns minimal status (48.2515ms)\n✔ operationalization endpoint returns the exact success object (16.5158ms)\n✔ unlisted origins are rejected (5.6858ms)\n✔ request-size and in-memory rate limits fail clearly (27.8175ms)\n✔ Responses API request is stateless, schema-strict, and server controlled (5.3496ms)\n✔ RDS model context is labeled as an Entity and includes governed derivation metadata (0.5608ms)\n✔ malformed structured output is retried once (0.4933ms)\n✔ API failures are not retried (0.6828ms)\n✔ a second malformed output fails without a third attempt (0.7202ms)\nℹ tests 21\nℹ suites 0\nℹ pass 21\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 331.2934\n",
+        "output": "\n> psywerx-scenario-service@1.0.0 test\n> node --test\n\n✔ catalog verifies the browser snapshot and returns bounded server context (2.1252ms)\n✔ catalog rejects a stale or tampered Driver snapshot (0.8417ms)\n✔ canonical Drivers without public plain language remain eligible (0.2335ms)\n✔ catalog preserves governed RDS identity and derivation context (0.2896ms)\n✔ request validation accepts the exact frontend contract (2.3496ms)\n✔ request validation accepts governed RDS IDs, derivation metadata, and null peripheral metadata (0.826ms)\n✔ request validation rejects extra keys and oversized scenario input (0.5532ms)\n✔ response validation requires exactly three examples (0.7073ms)\n✔ clarification rules are conditional and require one question (0.3693ms)\n✔ response validation rejects private filesystem paths (0.3029ms)\n✔ every current canonical Entity resolves against the exact browser contract (71.1964ms)\n✔ test\\fixtures.js (67.9ms)\n✔ health endpoint returns minimal status (35.2545ms)\n✔ operationalization endpoint returns the exact success object (12.3252ms)\n✔ unlisted origins are rejected (5.0579ms)\n✔ request-size and in-memory rate limits fail clearly (22.1564ms)\n✔ Responses API request is stateless, schema-strict, and server controlled (3.9433ms)\n✔ RDS model context is labeled as an Entity and includes governed derivation metadata (0.4721ms)\n✔ malformed structured output is retried once (0.4379ms)\n✔ API failures are not retried (0.9315ms)\n✔ a second malformed output fails without a third attempt (0.6774ms)\nℹ tests 21\nℹ suites 0\nℹ pass 21\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 282.3216\n",
         "passed": true,
-        "seconds": 0.761
+        "seconds": 0.663
       },
       {
         "command": [
@@ -259,7 +259,7 @@
         "name": "Python compilation",
         "output": "",
         "passed": true,
-        "seconds": 0.929
+        "seconds": 0.974
       },
       {
         "failed": [],
@@ -277,7 +277,7 @@
         "comparison": {
           "baselineCommit": "2636dd9a8b7bad1da3d7dfa21db5fe877f4de4e1",
           "changed": [],
-          "comparison": "EXACT_GIT_CONTENT_EXCEPT_CHECKOUT_LINE_ENDINGS",
+          "comparison": "EXACT_EXISTING_SCIENTIFIC_RECORDS_WITH_AUTHORIZED_ADDITIVE_V1_COLLECTIONS",
           "filesCompared": 45,
           "passed": true,
           "rawCurrentSha256": {
@@ -316,14 +316,14 @@
             "data/migration-manifest.json": "7bbe720a9cea30cafc98b66e57b62ae5b40320d13ecab43bdf13828d773d159f",
             "data/plain_language.json": "b814686d798a1da71647a62d877bffe6f22c4a74ae48f612a3a1cdeeebe8fda6",
             "data/relational-derived-states.json": "126ee66cfed4833603376bec5e0eb4da39f37eec8605480c82ebada70641d333",
-            "data/relationship-intervention-v1/README.md": "a2c0dd2129bbc90a3dc2c1b18cdaeafbc319abdada6c962bbcf0d80a47a37fe4",
+            "data/relationship-intervention-v1/README.md": "20faf72c05b95b143f45f43f4311a73892d56a1966ef8ca4ed5e32180f31b820",
             "data/relationship-intervention-v1/causal-pathways.json": "aeff0e0fc1f66b45b17881c11576321f879ec4428de672a847965e60cea38ab8",
-            "data/relationship-intervention-v1/evidence-assessments.json": "be2b59c4298a448b9a76666dc5785bece6f42631017c1b04866a14789e6f64b8",
+            "data/relationship-intervention-v1/evidence-assessments.json": "bf74fe584cfa7767b302a1bf205d9be29eafe29b51f2d8ca74b28e926918cdad",
             "data/relationship-intervention-v1/intervention-effects.json": "e9a1ce432ca31383da36b7687cfc1e0282dc119bcf0588f3f776e3f0c422f8e9",
             "data/relationship-intervention-v1/interventions.json": "f2e73ac1faa906169d7e3461bcbb0f25f4fcfe2a255a284dc2ef1b406f314ef3",
             "data/relationship-intervention-v1/materialization-manifest.json": "799b7a199b3a8ec961731539404a899ad53d1b5053f351548d4bf92219712ff9",
-            "data/relationship-intervention-v1/relationships.json": "ba83c1f006998a2d2f956f24c9ac802dad4e2a37104b518a6f50930d9b3d523f",
-            "data/relationship-intervention-v1/source-register.json": "5255861d597255550a6c5919e4da06b89a052ecf6d01b630226e4fa2ad677563",
+            "data/relationship-intervention-v1/relationships.json": "7c915e70befb2bfdc39008053b8ea3f68c466e3fc720f6500b3ed6fecd582c9b",
+            "data/relationship-intervention-v1/source-register.json": "ca5844c48b753bd9edd4fd5d1b79dd818d3d945b7304664afd1559e80871128d",
             "data/relationships.json": "759f90446ff5f6e27d496e3e3603bb44045f7f0abf4770e4c012c5e4d974ba51",
             "data/sources.json": "8c8526cc9f48f8f54a0d4d75ac374acba0af505984ecb9776e9a0afa9246082d"
           }
@@ -342,14 +342,15 @@
         "name": "Git diff check",
         "output": "",
         "passed": true,
-        "seconds": 0.232
+        "seconds": 0.153
       }
     ],
-    "seconds": 46.339,
-    "testedCommit": "50717af9f83f50934addf952ad8aebe5d9a68ab8"
+    "seconds": 45.742,
+    "testedCommit": "8a315700aa6885b7e1cf327f422e2b30b294f687"
   },
   "notes": [
-    "No research, scientific approval, activation or canonical source registration.",
+    "The exact authorized governance checkpoint is materialized; activation remains withheld.",
+    "Only the three selectively approved sources are canonically registered.",
     "Regeneration ran only in disposable isolated clones.",
     "CI is reported separately from these local results."
   ],
@@ -404,15 +405,15 @@
     },
     "data/actions-events-v1/README.md": {
       "baselineBlobSha256": "a0d494dfe526a44f4ce1f14ac88d2bcd05ff50138b8bf99fbe86f076a653e774",
-      "currentNormalizedSha256": "a0d494dfe526a44f4ce1f14ac88d2bcd05ff50138b8bf99fbe86f076a653e774",
-      "currentRawSha256": "bb833a6328599b5b72bb5ec593a4f82c97eb3324de20c6674edd0c5bc846f934",
-      "unchanged": true
+      "currentNormalizedSha256": "fc26d33ac67ca0881fa33f37a3261ea8f38f23bb7d22108395ee060906ad9836",
+      "currentRawSha256": "fc26d33ac67ca0881fa33f37a3261ea8f38f23bb7d22108395ee060906ad9836",
+      "unchanged": false
     },
     "data/actions-events-v1/catalog.json": {
       "baselineBlobSha256": "db9a79bfa273a1aa441ae0beedba151096a9240cb030849100e5ddcca4d09eef",
-      "currentNormalizedSha256": "db9a79bfa273a1aa441ae0beedba151096a9240cb030849100e5ddcca4d09eef",
-      "currentRawSha256": "e7ece77c1f46489c64aa939c2c7f830404ae192d358e2411361dd51ec115c9e4",
-      "unchanged": true
+      "currentNormalizedSha256": "d98e3e5e5521ed23a738ce123bdafd2175f86007bb68baa9ad3973b9f187a5e2",
+      "currentRawSha256": "d98e3e5e5521ed23a738ce123bdafd2175f86007bb68baa9ad3973b9f187a5e2",
+      "unchanged": false
     },
     "data/aliases.json": {
       "baselineBlobSha256": "e14f9ba67d51d4f0a18cc05ad029da08f7d206dda1c636fbbd866b16ed1b7fb9",
@@ -638,9 +639,9 @@
     },
     "data/relationship-intervention-v1/README.md": {
       "baselineBlobSha256": "af89ae1180208905b58708d7057e96c7e1f5a3e303972c1c05f1bd8d1117b5ee",
-      "currentNormalizedSha256": "af89ae1180208905b58708d7057e96c7e1f5a3e303972c1c05f1bd8d1117b5ee",
-      "currentRawSha256": "a2c0dd2129bbc90a3dc2c1b18cdaeafbc319abdada6c962bbcf0d80a47a37fe4",
-      "unchanged": true
+      "currentNormalizedSha256": "1c1c1d03c35f30ab3b512d82bacd2c2a945ce035d6eb1259631b066daa54870d",
+      "currentRawSha256": "71e082495e90eb15a12fb6b56889a99bc7774253e25e009818ec56f22b0abefe",
+      "unchanged": false
     },
     "data/relationship-intervention-v1/causal-pathways.json": {
       "baselineBlobSha256": "aeff0e0fc1f66b45b17881c11576321f879ec4428de672a847965e60cea38ab8",
@@ -650,9 +651,9 @@
     },
     "data/relationship-intervention-v1/evidence-assessments.json": {
       "baselineBlobSha256": "be2b59c4298a448b9a76666dc5785bece6f42631017c1b04866a14789e6f64b8",
-      "currentNormalizedSha256": "be2b59c4298a448b9a76666dc5785bece6f42631017c1b04866a14789e6f64b8",
-      "currentRawSha256": "be2b59c4298a448b9a76666dc5785bece6f42631017c1b04866a14789e6f64b8",
-      "unchanged": true
+      "currentNormalizedSha256": "bf74fe584cfa7767b302a1bf205d9be29eafe29b51f2d8ca74b28e926918cdad",
+      "currentRawSha256": "bf74fe584cfa7767b302a1bf205d9be29eafe29b51f2d8ca74b28e926918cdad",
+      "unchanged": false
     },
     "data/relationship-intervention-v1/intervention-effects.json": {
       "baselineBlobSha256": "e9a1ce432ca31383da36b7687cfc1e0282dc119bcf0588f3f776e3f0c422f8e9",
@@ -674,15 +675,15 @@
     },
     "data/relationship-intervention-v1/relationships.json": {
       "baselineBlobSha256": "ba83c1f006998a2d2f956f24c9ac802dad4e2a37104b518a6f50930d9b3d523f",
-      "currentNormalizedSha256": "ba83c1f006998a2d2f956f24c9ac802dad4e2a37104b518a6f50930d9b3d523f",
-      "currentRawSha256": "ba83c1f006998a2d2f956f24c9ac802dad4e2a37104b518a6f50930d9b3d523f",
-      "unchanged": true
+      "currentNormalizedSha256": "7c915e70befb2bfdc39008053b8ea3f68c466e3fc720f6500b3ed6fecd582c9b",
+      "currentRawSha256": "7c915e70befb2bfdc39008053b8ea3f68c466e3fc720f6500b3ed6fecd582c9b",
+      "unchanged": false
     },
     "data/relationship-intervention-v1/source-register.json": {
       "baselineBlobSha256": "5255861d597255550a6c5919e4da06b89a052ecf6d01b630226e4fa2ad677563",
-      "currentNormalizedSha256": "5255861d597255550a6c5919e4da06b89a052ecf6d01b630226e4fa2ad677563",
-      "currentRawSha256": "5255861d597255550a6c5919e4da06b89a052ecf6d01b630226e4fa2ad677563",
-      "unchanged": true
+      "currentNormalizedSha256": "ca5844c48b753bd9edd4fd5d1b79dd818d3d945b7304664afd1559e80871128d",
+      "currentRawSha256": "ca5844c48b753bd9edd4fd5d1b79dd818d3d945b7304664afd1559e80871128d",
+      "unchanged": false
     },
     "data/relationships.json": {
       "baselineBlobSha256": "759f90446ff5f6e27d496e3e3603bb44045f7f0abf4770e4c012c5e4d974ba51",
@@ -1054,15 +1055,15 @@
     },
     "data/actions-events-v1/README.md": {
       "baselineBlobSha256": "a0d494dfe526a44f4ce1f14ac88d2bcd05ff50138b8bf99fbe86f076a653e774",
-      "currentNormalizedSha256": "a0d494dfe526a44f4ce1f14ac88d2bcd05ff50138b8bf99fbe86f076a653e774",
-      "currentRawSha256": "bb833a6328599b5b72bb5ec593a4f82c97eb3324de20c6674edd0c5bc846f934",
-      "unchanged": true
+      "currentNormalizedSha256": "fc26d33ac67ca0881fa33f37a3261ea8f38f23bb7d22108395ee060906ad9836",
+      "currentRawSha256": "fc26d33ac67ca0881fa33f37a3261ea8f38f23bb7d22108395ee060906ad9836",
+      "unchanged": false
     },
     "data/actions-events-v1/catalog.json": {
       "baselineBlobSha256": "db9a79bfa273a1aa441ae0beedba151096a9240cb030849100e5ddcca4d09eef",
-      "currentNormalizedSha256": "db9a79bfa273a1aa441ae0beedba151096a9240cb030849100e5ddcca4d09eef",
-      "currentRawSha256": "e7ece77c1f46489c64aa939c2c7f830404ae192d358e2411361dd51ec115c9e4",
-      "unchanged": true
+      "currentNormalizedSha256": "d98e3e5e5521ed23a738ce123bdafd2175f86007bb68baa9ad3973b9f187a5e2",
+      "currentRawSha256": "d98e3e5e5521ed23a738ce123bdafd2175f86007bb68baa9ad3973b9f187a5e2",
+      "unchanged": false
     },
     "data/aliases.json": {
       "baselineBlobSha256": "e14f9ba67d51d4f0a18cc05ad029da08f7d206dda1c636fbbd866b16ed1b7fb9",
@@ -1288,9 +1289,9 @@
     },
     "data/relationship-intervention-v1/README.md": {
       "baselineBlobSha256": "af89ae1180208905b58708d7057e96c7e1f5a3e303972c1c05f1bd8d1117b5ee",
-      "currentNormalizedSha256": "af89ae1180208905b58708d7057e96c7e1f5a3e303972c1c05f1bd8d1117b5ee",
-      "currentRawSha256": "a2c0dd2129bbc90a3dc2c1b18cdaeafbc319abdada6c962bbcf0d80a47a37fe4",
-      "unchanged": true
+      "currentNormalizedSha256": "1c1c1d03c35f30ab3b512d82bacd2c2a945ce035d6eb1259631b066daa54870d",
+      "currentRawSha256": "71e082495e90eb15a12fb6b56889a99bc7774253e25e009818ec56f22b0abefe",
+      "unchanged": false
     },
     "data/relationship-intervention-v1/causal-pathways.json": {
       "baselineBlobSha256": "aeff0e0fc1f66b45b17881c11576321f879ec4428de672a847965e60cea38ab8",
@@ -1300,9 +1301,9 @@
     },
     "data/relationship-intervention-v1/evidence-assessments.json": {
       "baselineBlobSha256": "be2b59c4298a448b9a76666dc5785bece6f42631017c1b04866a14789e6f64b8",
-      "currentNormalizedSha256": "be2b59c4298a448b9a76666dc5785bece6f42631017c1b04866a14789e6f64b8",
-      "currentRawSha256": "be2b59c4298a448b9a76666dc5785bece6f42631017c1b04866a14789e6f64b8",
-      "unchanged": true
+      "currentNormalizedSha256": "bf74fe584cfa7767b302a1bf205d9be29eafe29b51f2d8ca74b28e926918cdad",
+      "currentRawSha256": "bf74fe584cfa7767b302a1bf205d9be29eafe29b51f2d8ca74b28e926918cdad",
+      "unchanged": false
     },
     "data/relationship-intervention-v1/intervention-effects.json": {
       "baselineBlobSha256": "e9a1ce432ca31383da36b7687cfc1e0282dc119bcf0588f3f776e3f0c422f8e9",
@@ -1324,15 +1325,15 @@
     },
     "data/relationship-intervention-v1/relationships.json": {
       "baselineBlobSha256": "ba83c1f006998a2d2f956f24c9ac802dad4e2a37104b518a6f50930d9b3d523f",
-      "currentNormalizedSha256": "ba83c1f006998a2d2f956f24c9ac802dad4e2a37104b518a6f50930d9b3d523f",
-      "currentRawSha256": "ba83c1f006998a2d2f956f24c9ac802dad4e2a37104b518a6f50930d9b3d523f",
-      "unchanged": true
+      "currentNormalizedSha256": "7c915e70befb2bfdc39008053b8ea3f68c466e3fc720f6500b3ed6fecd582c9b",
+      "currentRawSha256": "7c915e70befb2bfdc39008053b8ea3f68c466e3fc720f6500b3ed6fecd582c9b",
+      "unchanged": false
     },
     "data/relationship-intervention-v1/source-register.json": {
       "baselineBlobSha256": "5255861d597255550a6c5919e4da06b89a052ecf6d01b630226e4fa2ad677563",
-      "currentNormalizedSha256": "5255861d597255550a6c5919e4da06b89a052ecf6d01b630226e4fa2ad677563",
-      "currentRawSha256": "5255861d597255550a6c5919e4da06b89a052ecf6d01b630226e4fa2ad677563",
-      "unchanged": true
+      "currentNormalizedSha256": "ca5844c48b753bd9edd4fd5d1b79dd818d3d945b7304664afd1559e80871128d",
+      "currentRawSha256": "ca5844c48b753bd9edd4fd5d1b79dd818d3d945b7304664afd1559e80871128d",
+      "unchanged": false
     },
     "data/relationships.json": {
       "baselineBlobSha256": "759f90446ff5f6e27d496e3e3603bb44045f7f0abf4770e4c012c5e4d974ba51",
@@ -1653,7 +1654,7 @@
       "unchanged": true
     }
   },
-  "protectedComparisonSha256": "c85782cb05fa391b7da2e5d4c7c939f9a0871be983352afb8e8a96891094652a",
+  "protectedComparisonSha256": "d23670891ae09af7cfeeb248067daf851e741b06a02a1217036887c731a4ac4f",
   "results": [
     {
       "name": "Existing regressions and isolated deterministic baseline regeneration",
@@ -1666,7 +1667,7 @@
     },
     {
       "name": "INF-F03 candidate schemas, evidence, lifecycle, RDS, deduplication, links, isolation and determinism",
-      "output": ".............................\r\n----------------------------------------------------------------------\r\nRan 29 tests in 12.634s\r\n\r\nOK\r\n",
+      "output": ".............................\r\n----------------------------------------------------------------------\r\nRan 29 tests in 12.913s\r\n\r\nOK\r\n",
       "passed": true
     },
     {
@@ -1676,12 +1677,12 @@
     },
     {
       "name": "Pilot generated documents and candidates unchanged",
-      "output": "warning: in the working copy of 'data/candidates/actions-events-v1/INF-F03/driver-search-ledger.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'data/candidates/actions-events-v1/INF-F03/existing-relationship-audit.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'data/candidates/actions-events-v1/INF-F03/relationship-source-findings.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'data/candidates/actions-events-v1/INF-F03/revision-proposals.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'data/candidates/actions-events-v1/INF-F03/source-registration-queue.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'data/candidates/actions-events-v1/INF-F03/workspace.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/governance/pilots/INF-F03/INF_F03_AUDIT_MANIFEST.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/governance/pilots/INF-F03/INF_F03_COMPLETENESS_REPORT.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/governance/pilots/INF-F03/INF_F03_ENTITY_RDS_REVIEW.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/governance/pilots/INF-F03/INF_F03_EVIDENCE_SUMMARY.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/governance/pilots/INF-F03/INF_F03_EXISTING_RELATIONSHIP_AUDIT.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/governance/pilots/INF-F03/INF_F03_GOVERNANCE_DECISION_PACKAGE.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/governance/pilots/INF-F03/INF_F03_RESEARCH_LOG.md', LF will be replaced by CRLF the next time Git touches it\n",
+      "output": "warning: in the working copy of 'data/candidates/actions-events-v1/INF-F03/driver-search-ledger.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'data/candidates/actions-events-v1/INF-F03/existing-relationship-audit.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'data/candidates/actions-events-v1/INF-F03/relationship-source-findings.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'data/candidates/actions-events-v1/INF-F03/revision-proposals.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'data/candidates/actions-events-v1/INF-F03/workspace.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/governance/pilots/INF-F03/INF_F03_COMPLETENESS_REPORT.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/governance/pilots/INF-F03/INF_F03_ENTITY_RDS_REVIEW.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/governance/pilots/INF-F03/INF_F03_EVIDENCE_SUMMARY.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/governance/pilots/INF-F03/INF_F03_EXISTING_RELATIONSHIP_AUDIT.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/governance/pilots/INF-F03/INF_F03_RESEARCH_LOG.md', LF will be replaced by CRLF the next time Git touches it\n",
       "passed": true
     },
     {
       "name": "Diff whitespace",
-      "output": "warning: in the working copy of 'data/candidates/actions-events-v1/INF-F03/driver-search-ledger.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'data/candidates/actions-events-v1/INF-F03/existing-relationship-audit.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'data/candidates/actions-events-v1/INF-F03/relationship-source-findings.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'data/candidates/actions-events-v1/INF-F03/revision-proposals.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'data/candidates/actions-events-v1/INF-F03/source-registration-queue.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'data/candidates/actions-events-v1/INF-F03/workspace.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/governance/pilots/INF-F03/INF_F03_AUDIT_MANIFEST.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/governance/pilots/INF-F03/INF_F03_COMPLETENESS_REPORT.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/governance/pilots/INF-F03/INF_F03_ENTITY_RDS_REVIEW.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/governance/pilots/INF-F03/INF_F03_EVIDENCE_SUMMARY.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/governance/pilots/INF-F03/INF_F03_EXISTING_RELATIONSHIP_AUDIT.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/governance/pilots/INF-F03/INF_F03_GOVERNANCE_DECISION_PACKAGE.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/governance/pilots/INF-F03/INF_F03_RESEARCH_LOG.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'reports/actions-events-v1/validation/LOCAL_VALIDATION.json', LF will be replaced by CRLF the next time Git touches it\n",
+      "output": "warning: in the working copy of 'data/candidates/actions-events-v1/INF-F03/driver-search-ledger.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'data/candidates/actions-events-v1/INF-F03/existing-relationship-audit.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'data/candidates/actions-events-v1/INF-F03/relationship-source-findings.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'data/candidates/actions-events-v1/INF-F03/revision-proposals.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'data/candidates/actions-events-v1/INF-F03/workspace.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/governance/pilots/INF-F03/INF_F03_COMPLETENESS_REPORT.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/governance/pilots/INF-F03/INF_F03_ENTITY_RDS_REVIEW.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/governance/pilots/INF-F03/INF_F03_EVIDENCE_SUMMARY.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/governance/pilots/INF-F03/INF_F03_EXISTING_RELATIONSHIP_AUDIT.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/governance/pilots/INF-F03/INF_F03_RESEARCH_LOG.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'reports/actions-events-v1/validation/LOCAL_VALIDATION.json', LF will be replaced by CRLF the next time Git touches it\n",
       "passed": true
     },
     {
@@ -1690,5 +1691,5 @@
       "passed": true
     }
   ],
-  "testedCommit": "50717af9f83f50934addf952ad8aebe5d9a68ab8"
+  "testedCommit": "8a315700aa6885b7e1cf327f422e2b30b294f687"
 }
