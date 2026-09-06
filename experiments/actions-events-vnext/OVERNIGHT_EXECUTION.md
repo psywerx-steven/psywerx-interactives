@@ -121,3 +121,14 @@ local links, diff scope and Linux/Windows CI. Tests are never weakened to pass.
   scenario tests. Final-head local/CI gates must pass before merge.
 - Exact next step: commit/push this bounded fix, complete isolated validation,
   inspect fresh PR CI, then exact-head merge if all gates pass.
+
+## Implementation final executable head passed
+
+- fd3d686074ed9cc789ada3ffb9090fd2df64ddf8 passed all 173 Python tests discovered
+  locally (171 passed, two Windows symlink privilege skips), 21 scenario tests,
+  isolated regeneration, schema/reference/provenance, parse, links and integrity.
+- PR #16 CI run 34017688723 passed Linux and Windows. Both symlink defenses
+  are exercised on Linux. Final review confirms scope and old-data preservation.
+- This commit saves test evidence only; no executable/scientific change.
+- Exact next step: require CI green for this documentation/report head, merge
+  PR #16 at exact SHA, update main and generate final readiness handoff.
