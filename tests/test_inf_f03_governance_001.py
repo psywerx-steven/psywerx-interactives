@@ -239,10 +239,13 @@ class InfF03Governance001Tests(unittest.TestCase):
             DOCS / "INF_F03_AUDIT_MANIFEST.json", DOCS / "INF_F03_GOVERNANCE_DECISION_PACKAGE.md",
             DOCS / "INF_F03_GOVERNANCE_DECISION_001.md", DOCS / "INF_F03_SOURCE_REGISTRATION_MANIFEST.json",
         ]
-        before = {path: path.read_bytes() for path in paths}
+        # Git may check text files out as CRLF on Windows. Determinism is the
+        # repository-normalized content, not a platform-specific checkout EOL.
+        normalized = lambda path: path.read_bytes().replace(b"\r\n", b"\n")
+        before = {path: normalized(path) for path in paths}
         result = subprocess.run([sys.executable, str(MATERIALIZER)], cwd=ROOT, check=True, capture_output=True, text=True)
         self.assertIn("GOV-INF-F03-001-2026-09-06", result.stdout)
-        self.assertEqual(before, {path: path.read_bytes() for path in paths})
+        self.assertEqual(before, {path: normalized(path) for path in paths})
 
 
 if __name__ == "__main__":
