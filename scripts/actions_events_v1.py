@@ -162,6 +162,8 @@ def validate_catalog(catalog, context=None, candidate=False):
     records = all_records(catalog)
     require(len({r["id"] for r in records}) == len(records), "Duplicate scientific identity")
     reference_ids = set(context.entities) | set(context.relationships) | context.source_ids
+    if not context.synthetic:
+        reference_ids.update(r["id"] for rows in source_catalog().values() for r in rows)
     require(not reference_ids.intersection(r["id"] for r in records), "Happening/Driver/reference identity collision")
     for row in records:
         if context.synthetic:
@@ -491,7 +493,9 @@ never confer production eligibility. Existing status is preserved in bridge view
         scope = {"population": effect["targetPopulationOrAudience"], "context": effect["context"]}
         active_evidence = all(state_active(evidence[e]) for e in effect["evidenceAssessmentIds"])
         scientifically_ready = state_active(effect) and state_active(identity) and active_evidence
-        actionable_claim = scientifically_ready
+        actionable_claim = scientifically_ready and all(
+            evidence[e]["evidenceDisposition"] in {"SUPPORTS", "MIXED"}
+            for e in effect["evidenceAssessmentIds"])
         deliberate = True
     else:
         validate_catalog(catalog, context)
@@ -508,6 +512,10 @@ never confer production eligibility. Existing status is preserved in bridge view
         # Documented edge modulation can inform action, never an ordinary edge.
         if effect["claimSemantics"] == "MODERATION":
             actionable_claim = scientifically_ready and effect["knowledgeStatus"] == "SUPPORTED_EFFECT" and effect["productionMethod"] in {"SOURCE_EXTRACTION", "SYNTHESIS"} and effect["contribution"]["role"] == "PRIMARY"
+        evidence = {r["id"]: r for r in catalog["evidenceAssessments"]}
+        actionable_claim = actionable_claim and all(
+            evidence[e]["synthesis"]["disposition"] in {"SUPPORTS", "MIXED"}
+            for e in effect["evidenceAssessmentIds"])
     request = use_context or {}
     reasons = []
     if not deliberate:

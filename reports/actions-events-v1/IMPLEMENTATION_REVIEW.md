@@ -36,6 +36,10 @@ independent human scientific adjudication. No new scientific research occurred.
   JSON validation; shared contribution IDs and source identifiers still require
   research/review judgment; no identity-authentication service is claimed by provenance
   hashes; legacy sourceFindings remain unnormalized rather than guessed.
+- Post-merge review additionally closed two fail-closed gaps: contradicted or
+  insufficient synthesis blocks practitioner eligibility, and native objects may
+  not reuse original Intervention/Effect/Evidence IDs. Two added regression tests
+  exercise these without changing real records or their scientific eligibility.
 
 ## Requirement-to-deliverable/test mapping
 

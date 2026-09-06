@@ -28,6 +28,12 @@ local links, diff scope and Linux/Windows CI. Tests are never weakened to pass.
 
 ## Current checkpoint
 
+Latest status: PR #15 and PR #16 merged. Implementation main is
+5c2d2bd0016215749e054ced4345e8bd202700be. Post-merge suite/inventory pass;
+final readiness/hardening handoff is being committed on
+governance/actions-events-v1-scale-up-readiness. No Family #2 science begun.
+The initial checkpoint below is preserved as historical execution provenance.
+
 - Repository/remote confirmed: psywerx-steven/psywerx-interactives.
 - Clean proposal branch at `3331273fcfd72121fe831904c282b87c372eaf55`.
 - Local main `2636dd9a8b7bad1da3d7dfa21db5fe877f4de4e1`; remote/PR verification pending.
@@ -132,3 +138,34 @@ local links, diff scope and Linux/Windows CI. Tests are never weakened to pass.
 - This commit saves test evidence only; no executable/scientific change.
 - Exact next step: require CI green for this documentation/report head, merge
   PR #16 at exact SHA, update main and generate final readiness handoff.
+
+## Milestone 3 merged; milestone 4 post-merge review
+
+- PR #16 merged at 5c2d2bd0016215749e054ced4345e8bd202700be after final-head CI
+  run 34017770797. Clean main matched origin/main. Post-merge CI 34017848221
+  passed both operating systems; automatic existing Pages run 34017847924 passed.
+- Post-merge isolated local regressions and synthetic pilot pass. New inventory
+  matches pre-merge inventory except commit provenance; proposal semantic/count/
+  coverage expectations all match. Export measured 5.661 seconds.
+- Final review adds two bounded tests/guards: contradicted or insufficient
+  synthesis cannot pass practitioner eligibility; native scientific IDs cannot
+  collide with existing Intervention/Effect/Evidence IDs. Old content untouched.
+- Final suite: 65 AE + 14 runner + 96 existing = 175 Python, plus 21 scenario.
+- Created scale-up readiness, synthetic/post-merge report and updated morning
+  brief. Recommend INF-F03 as second pilot, SOC-F07 as third; neither is started.
+- Exact next step: commit this final bounded handoff, run isolated complete
+  validation and both CI jobs on its PR, merge only if green. Finish on clean
+  main matching origin/main; do not begin further research or population.
+
+## Final handoff validation saved
+
+- b8c5fb8edbc39b8ecef56ddff3c461e276e302ae passed isolated final validation:
+  175 discovered Python tests, 173 pass/two local symlink skips, 21 scenario tests,
+  all schemas/references, 45 raw-byte originals, regen, parse and nine local-link
+  documents. Measured full local validation 53.913 seconds.
+- CI validation and synthetic commands split into separate steps to preserve
+  independent exit codes on Windows; deployment settings remain unchanged.
+- No new governance question is blocking infrastructure. Source/construct/use
+  judgments and Family #2 science remain explicitly outside this completion.
+- Exact restart: push final readiness/hardening PR, require both CI jobs success
+  at its exact head, merge; ff local main and verify final state. STOP thereafter.

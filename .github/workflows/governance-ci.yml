@@ -72,10 +72,11 @@ jobs:
       - name: Run safe generalized Family inventory tests
         run: python -m unittest discover -s tests -p "test_audit_family.py"
 
-      - name: Validate additive Actions and Events repository and synthetic pilot
-        run: |
-          python scripts/actions_events_v1.py --validate-repository
-          python scripts/actions_events_synthetic.py
+      - name: Validate additive Actions and Events repository
+        run: python scripts/actions_events_v1.py --validate-repository
+
+      - name: Run eight-Layer synthetic structural pilot
+        run: python scripts/actions_events_synthetic.py
 
       - name: Verify migration tests leave artifacts unchanged
         run: git diff --exit-code -- data
@@ -137,10 +138,11 @@ jobs:
       - name: Run safe generalized Family inventory tests
         run: python -m unittest discover -s tests -p "test_audit_family.py"
 
-      - name: Validate additive Actions and Events repository and synthetic pilot
-        run: |
-          python scripts/actions_events_v1.py --validate-repository
-          python scripts/actions_events_synthetic.py
+      - name: Validate additive Actions and Events repository
+        run: python scripts/actions_events_v1.py --validate-repository
+
+      - name: Run eight-Layer synthetic structural pilot
+        run: python scripts/actions_events_synthetic.py
 
       - name: Verify migration tests leave artifacts unchanged
         run: git diff --exit-code -- data

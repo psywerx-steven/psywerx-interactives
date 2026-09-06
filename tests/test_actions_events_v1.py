@@ -360,6 +360,20 @@ class ActionsEventsTests(unittest.TestCase):
         for index,block in enumerate(blocks,1):
             for term in required:self.assertIn(term.casefold(),block.casefold(),(index,term))
 
+    def test_contradicted_synthesis_not_practitioner_eligible(self):
+        active=syn.make_active(self.catalog);effect=active["effectAssertions"][0]
+        for disposition in ("CONTRADICTED","INSUFFICIENT"):
+            active["evidenceAssessments"][0]["synthesis"]["disposition"]=disposition
+            syn.refresh_authorization(active)
+            result=ae.use_eligibility(effect["id"],active,self.context,syn.actor_context(effect))
+            self.assertTrue(result["syntheticSimulation"]["scientificWouldQualify"])
+            self.assertFalse(result["syntheticSimulation"]["actionWouldQualify"])
+
+    def test_native_record_cannot_duplicate_existing_intervention_identity(self):
+        self.catalog["happeningTypes"][0]["id"]="INT-V1-BIO-F01-001"
+        with self.assertRaisesRegex(ae.ValidationError,"identity collision"):
+            ae.validate_catalog(self.catalog,ae.Context.repository())
+
 
 class CompatibilityTests(unittest.TestCase):
     @classmethod

@@ -15,7 +15,10 @@ import audit_family as af
 
 def local_links(root):
     docs = [root / "docs/ACTIONS_EVENTS_V1.md", *root.glob("docs/governance/ACTIONS_EVENTS*.md"),
-            root / "data/actions-events-v1/README.md", root / "data/candidates/actions-events-v1/README.md"]
+            root / "data/actions-events-v1/README.md", root / "data/candidates/actions-events-v1/README.md",
+            root / "experiments/actions-events-vnext/MORNING_BRIEF.md",
+            root / "experiments/actions-events-vnext/OVERNIGHT_EXECUTION.md",
+            root / "reports/actions-events-v1/IMPLEMENTATION_REVIEW.md"]
     broken = []
     for doc in docs:
         for link in re.findall(r"\[[^\]]*\]\(([^)]+)\)", doc.read_text(encoding="utf-8")):
