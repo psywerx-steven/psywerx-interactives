@@ -1,0 +1,2458 @@
+[
+  {
+    "assertionId": "REL-CAND-INF-F03-001",
+    "evidenceAssessmentId": "EVA-REL-CAND-INF-F03-001",
+    "governance": {
+      "activationStatus": "NOT_ELIGIBLE",
+      "authorityBasis": "V1_NATIVE",
+      "authorizedBy": null,
+      "blockStatus": "NONE",
+      "decisionDate": null,
+      "decisionOutcome": "NOT_DECIDED",
+      "decisionRationale": null,
+      "decisionRecord": null,
+      "effectiveVersion": null,
+      "lifecycleStatus": "REVIEW_READY",
+      "supersedesIds": [],
+      "transitionProvenance": [
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": null
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "EVA-REL-CAND-INF-F03-001",
+          "provenance": "AUD-INF-F03-AE-V1-20260906-001",
+          "rationale": "Record audit question and evidence limitations",
+          "revision": 1,
+          "timestamp": "2026-09-06T13:48:47Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          }
+        },
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "EVA-REL-CAND-INF-F03-001",
+          "provenance": "AUD-INF-F03-AE-V1-20260906-001",
+          "rationale": "Record audit question and evidence limitations",
+          "revision": 1,
+          "timestamp": "2026-09-06T13:48:47Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "RESEARCH_NEEDED"
+          }
+        },
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "RESEARCH_NEEDED"
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "EVA-REL-CAND-INF-F03-001",
+          "provenance": "AUD-INF-F03-AE-V1-20260906-001",
+          "rationale": "Prepared exact scope/evidence for human review",
+          "revision": 1,
+          "timestamp": "2026-09-06T13:48:47Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "REVIEW_READY"
+          }
+        }
+      ]
+    },
+    "note": "Candidate-only normalization sidecar. RI evidence retained; AE assessment target enum is not extended.",
+    "productionMethod": "SOURCE_SYNTHESIS",
+    "sourceFindings": [
+      {
+        "accessDepth": "SELECTED_FULL_TEXT",
+        "basis": [
+          "EXPERIMENTAL"
+        ],
+        "comparator": "Numeric/verbal uncertainty versus point estimates",
+        "context": "Numeric/verbal uncertainty versus point estimates",
+        "datasetIds": [
+          "STUDY-INF-F03-002"
+        ],
+        "design": "EXPERIMENTAL; Five experiments on factual numerical messages",
+        "disposition": "MIXED",
+        "exposure": "Numeric/verbal uncertainty versus point estimates",
+        "id": "FND-REL-CAND-INF-F03-001-002",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Do not interpret source trust as self-confidence calibration; studies within one research program are not five independent replications."
+        ],
+        "locator": "Discussion and experimental overview",
+        "measurement": "Trust in numbers and sources; perceived uncertainty",
+        "nullInterpretation": null,
+        "overlapNotes": "Same publication reused for distinct claims is not independent replication; review-primary overlap unresolved",
+        "population": "Five experiments on factual numerical messages",
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "No human scientific decision or activation; accessed sections only; not an exhaustive systematic review"
+          ],
+          "method": "Structured evidence search and candidate-only synthesis",
+          "originReferences": [
+            "AUD-INF-F03-AE-V1-20260906-001",
+            "164d938bcd4bbd7e8c48c8128cacd6e64ff0287a",
+            "research.json"
+          ],
+          "recordedAt": "2026-09-06T13:48:47Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "Numeric ranges generally produced little source-trust reduction; verbal expressions sometimes reduced trust. Outcome-specific and format-dependent.",
+        "sourceId": "SRC-CAND-INF-F03-002",
+        "supportedSemantics": [
+          "CAUSAL"
+        ],
+        "timing": "Within the reported task/assessment; no numeric causal lag or persistence inferred",
+        "uncertainty": [
+          "No pooled effect size or quantitative precision inferred for this ontology assertion"
+        ]
+      },
+      {
+        "accessDepth": "ABSTRACT",
+        "basis": [
+          "EXPERIMENTAL"
+        ],
+        "comparator": "Numeric range or unquantified verbal uncertainty versus no disclosure",
+        "context": "Numeric range or unquantified verbal uncertainty versus no disclosure",
+        "datasetIds": [
+          "STUDY-INF-F03-003"
+        ],
+        "design": "EXPERIMENTAL; COVID-19 statistics survey experiments; N=10519 and N=2309",
+        "disposition": "MIXED",
+        "exposure": "Numeric range or unquantified verbal uncertainty versus no disclosure",
+        "id": "FND-REL-CAND-INF-F03-001-003",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Present/projected statistics differ; no transferable effect size; preprint and publication represent the same studies."
+        ],
+        "locator": "Abstract",
+        "measurement": "Perceived trustworthiness of number and source",
+        "nullInterpretation": null,
+        "overlapNotes": "Same publication reused for distinct claims is not independent replication; review-primary overlap unresolved",
+        "population": "COVID-19 statistics survey experiments; N=10519 and N=2309",
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "No human scientific decision or activation; accessed sections only; not an exhaustive systematic review"
+          ],
+          "method": "Structured evidence search and candidate-only synthesis",
+          "originReferences": [
+            "AUD-INF-F03-AE-V1-20260906-001",
+            "164d938bcd4bbd7e8c48c8128cacd6e64ff0287a",
+            "research.json"
+          ],
+          "recordedAt": "2026-09-06T13:48:47Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "Numeric uncertainty had minimal source-trust impact; unquantified verbal statements could reduce number and source trust.",
+        "sourceId": "SRC-CAND-INF-F03-003",
+        "supportedSemantics": [
+          "CAUSAL"
+        ],
+        "timing": "Within the reported task/assessment; no numeric causal lag or persistence inferred",
+        "uncertainty": [
+          "No pooled effect size or quantitative precision inferred for this ontology assertion"
+        ]
+      },
+      {
+        "accessDepth": "ABSTRACT",
+        "basis": [
+          "EVIDENCE_SYNTHESIS"
+        ],
+        "comparator": "Epistemic, consensus and technical uncertainty",
+        "context": "Epistemic, consensus and technical uncertainty",
+        "datasetIds": [
+          "STUDY-INF-F03-013"
+        ],
+        "design": "EVIDENCE_SYNTHESIS; 43 empirical articles on science communication",
+        "disposition": "MIXED",
+        "exposure": "Epistemic, consensus and technical uncertainty",
+        "id": "FND-REL-CAND-INF-F03-001-013",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Full text restricted; study-level moderator causality not established; includes primary literature and is not independent replication."
+        ],
+        "locator": "Publisher abstract and included-reference markers",
+        "measurement": "Credibility and attitudes",
+        "nullInterpretation": null,
+        "overlapNotes": "Same publication reused for distinct claims is not independent replication; review-primary overlap unresolved",
+        "population": "43 empirical articles on science communication",
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "No human scientific decision or activation; accessed sections only; not an exhaustive systematic review"
+          ],
+          "method": "Structured evidence search and candidate-only synthesis",
+          "originReferences": [
+            "AUD-INF-F03-AE-V1-20260906-001",
+            "164d938bcd4bbd7e8c48c8128cacd6e64ff0287a",
+            "research.json"
+          ],
+          "recordedAt": "2026-09-06T13:48:47Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "Uncertainty types differed; credibility and attitude effects were not interchangeable; cultural avoidance/topic/text length were reported moderators.",
+        "sourceId": "SRC-CAND-INF-F03-013",
+        "supportedSemantics": [],
+        "timing": "Within the reported task/assessment; no numeric causal lag or persistence inferred",
+        "uncertainty": [
+          "No pooled effect size or quantitative precision inferred for this ontology assertion"
+        ]
+      }
+    ],
+    "synthesis": {
+      "confidence": "MODERATE",
+      "confidenceRationale": "Confidence concerns the exact scoped assertion, not prose certainty or source prestige",
+      "conflicts": [
+        {
+          "dispositionRationale": "Retained explicitly; exact-target support must be distinguished from other outcomes in the source",
+          "findingId": "FND-REL-CAND-INF-F03-001-002"
+        },
+        {
+          "dispositionRationale": "Retained explicitly; exact-target support must be distinguished from other outcomes in the source",
+          "findingId": "FND-REL-CAND-INF-F03-001-003"
+        },
+        {
+          "dispositionRationale": "Retained explicitly; exact-target support must be distinguished from other outcomes in the source",
+          "findingId": "FND-REL-CAND-INF-F03-001-013"
+        }
+      ],
+      "contraryEvidenceSearch": "ASSESSED",
+      "datasetOverlap": "Primary studies reused across assertions; SUP-013 synthesis may include SUP-002/003. No independent-replication count inferred.",
+      "disposition": "MIXED",
+      "evidenceStrength": "MODERATE",
+      "generalizationLimits": [
+        "No source-wide efficacy transfer; accessed sections only; no ontology-wide generalization"
+      ],
+      "rationale": "Randomized format evidence supports a bounded causal claim, not a universal monotonic effect. Synthesis preserves mixed and null results; meta-analysis is overlapping synthesis, not extra independent replication.",
+      "sourceFindingIds": [
+        "FND-REL-CAND-INF-F03-001-002",
+        "FND-REL-CAND-INF-F03-001-003",
+        "FND-REL-CAND-INF-F03-001-013"
+      ]
+    }
+  },
+  {
+    "assertionId": "REL-CAND-INF-F03-002",
+    "evidenceAssessmentId": "EVA-REL-CAND-INF-F03-002",
+    "governance": {
+      "activationStatus": "NOT_ELIGIBLE",
+      "authorityBasis": "V1_NATIVE",
+      "authorizedBy": null,
+      "blockStatus": "NONE",
+      "decisionDate": null,
+      "decisionOutcome": "NOT_DECIDED",
+      "decisionRationale": null,
+      "decisionRecord": null,
+      "effectiveVersion": null,
+      "lifecycleStatus": "RESEARCH_NEEDED",
+      "supersedesIds": [],
+      "transitionProvenance": [
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": null
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "EVA-REL-CAND-INF-F03-002",
+          "provenance": "AUD-INF-F03-AE-V1-20260906-001",
+          "rationale": "Record audit question and evidence limitations",
+          "revision": 1,
+          "timestamp": "2026-09-06T13:48:47Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          }
+        },
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "EVA-REL-CAND-INF-F03-002",
+          "provenance": "AUD-INF-F03-AE-V1-20260906-001",
+          "rationale": "Record audit question and evidence limitations",
+          "revision": 1,
+          "timestamp": "2026-09-06T13:48:47Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "RESEARCH_NEEDED"
+          }
+        }
+      ]
+    },
+    "note": "Candidate-only normalization sidecar. RI evidence retained; AE assessment target enum is not extended.",
+    "productionMethod": "SOURCE_SYNTHESIS",
+    "sourceFindings": [
+      {
+        "accessDepth": "SELECTED_FULL_TEXT",
+        "basis": [
+          "EXPERIMENTAL"
+        ],
+        "comparator": "Contract passages with legalese features versus edited alternatives",
+        "context": "Contract passages with legalese features versus edited alternatives",
+        "datasetIds": [
+          "STUDY-INF-F03-001"
+        ],
+        "design": "EXPERIMENTAL; English legal-text readers; corpus and controlled text comparison",
+        "disposition": "MIXED",
+        "exposure": "Contract passages with legalese features versus edited alternatives",
+        "id": "FND-REL-CAND-INF-F03-002-001",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Corpus plus experiment; not an estimate for all audiences or all dimensions; no direct cognitive-load measure extracted."
+        ],
+        "locator": "SELECTED_FULL_TEXT: experimental summary and discussion",
+        "measurement": "Recall/comprehension and text features",
+        "nullInterpretation": null,
+        "overlapNotes": "Same publication reused for distinct claims is not independent replication; review-primary overlap unresolved",
+        "population": "English legal-text readers; corpus and controlled text comparison",
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "No human scientific decision or activation; accessed sections only; not an exhaustive systematic review"
+          ],
+          "method": "Structured evidence search and candidate-only synthesis",
+          "originReferences": [
+            "AUD-INF-F03-AE-V1-20260906-001",
+            "164d938bcd4bbd7e8c48c8128cacd6e64ff0287a",
+            "research.json"
+          ],
+          "recordedAt": "2026-09-06T13:48:47Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "Editing surface features is separable from changing legal concepts. Benefits differ by feature; passive voice is not equivalent to center embedding.",
+        "sourceId": "SRC-CAND-INF-F03-001",
+        "supportedSemantics": [
+          "CAUSAL"
+        ],
+        "timing": "Within the reported task/assessment; no numeric causal lag or persistence inferred",
+        "uncertainty": [
+          "No pooled effect size or quantitative precision inferred for this ontology assertion"
+        ]
+      },
+      {
+        "accessDepth": "ABSTRACT",
+        "basis": [
+          "EXPERIMENTAL"
+        ],
+        "comparator": "Temporarily ambiguous sentence constructions",
+        "context": "Temporarily ambiguous sentence constructions",
+        "datasetIds": [
+          "STUDY-INF-F03-004"
+        ],
+        "design": "EXPERIMENTAL; Readers in four sentence-processing experiments",
+        "disposition": "SUPPORTS",
+        "exposure": "Temporarily ambiguous sentence constructions",
+        "id": "FND-REL-CAND-INF-F03-002-004",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Trait reading span is not current Working Memory Availability; reading time is not a direct occupied-capacity measurement."
+        ],
+        "locator": "Abstract",
+        "measurement": "Word-by-word reading times and working-memory differences",
+        "nullInterpretation": null,
+        "overlapNotes": "Same publication reused for distinct claims is not independent replication; review-primary overlap unresolved",
+        "population": "Readers in four sentence-processing experiments",
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "No human scientific decision or activation; accessed sections only; not an exhaustive systematic review"
+          ],
+          "method": "Structured evidence search and candidate-only synthesis",
+          "originReferences": [
+            "AUD-INF-F03-AE-V1-20260906-001",
+            "164d938bcd4bbd7e8c48c8128cacd6e64ff0287a",
+            "research.json"
+          ],
+          "recordedAt": "2026-09-06T13:48:47Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "Additional processing followed ambiguity; capacity-related patterns motivate a bounded processing-demand hypothesis.",
+        "sourceId": "SRC-CAND-INF-F03-004",
+        "supportedSemantics": [
+          "CAUSAL"
+        ],
+        "timing": "Within the reported task/assessment; no numeric causal lag or persistence inferred",
+        "uncertainty": [
+          "No pooled effect size or quantitative precision inferred for this ontology assertion"
+        ]
+      },
+      {
+        "accessDepth": "SELECTED_FULL_TEXT",
+        "basis": [
+          "EXPERIMENTAL"
+        ],
+        "comparator": "Random assignment to texts varying conceptual and syntactic complexity",
+        "context": "Random assignment to texts varying conceptual and syntactic complexity",
+        "datasetIds": [
+          "STUDY-INF-F03-008"
+        ],
+        "design": "EXPERIMENTAL; 1859 UK public respondents; hypothetical central-bank reports",
+        "disposition": "MIXED",
+        "exposure": "Random assignment to texts varying conceptual and syntactic complexity",
+        "id": "FND-REL-CAND-INF-F03-002-008",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Working-paper/current hosted revision; CCI is a specific operationalization, not canonical INF-013; threshold not portable."
+        ],
+        "locator": "Abstract; introduction; sections 4–5; current hosted version",
+        "measurement": "Understanding and sentiments including trust; CCI and surface indices",
+        "nullInterpretation": null,
+        "overlapNotes": "Same publication reused for distinct claims is not independent replication; review-primary overlap unresolved",
+        "population": "1859 UK public respondents; hypothetical central-bank reports",
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "No human scientific decision or activation; accessed sections only; not an exhaustive systematic review"
+          ],
+          "method": "Structured evidence search and candidate-only synthesis",
+          "originReferences": [
+            "AUD-INF-F03-AE-V1-20260906-001",
+            "164d938bcd4bbd7e8c48c8128cacd6e64ff0287a",
+            "research.json"
+          ],
+          "recordedAt": "2026-09-06T13:48:47Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "Conceptual complexity mattered more than syntactic complexity; syntactic effects were small/null in these materials.",
+        "sourceId": "SRC-CAND-INF-F03-008",
+        "supportedSemantics": [
+          "CAUSAL"
+        ],
+        "timing": "Within the reported task/assessment; no numeric causal lag or persistence inferred",
+        "uncertainty": [
+          "No pooled effect size or quantitative precision inferred for this ontology assertion"
+        ]
+      }
+    ],
+    "synthesis": {
+      "confidence": "LOW",
+      "confidenceRationale": "Confidence concerns the exact scoped assertion, not prose certainty or source prestige",
+      "conflicts": [
+        {
+          "dispositionRationale": "Retained explicitly; exact-target support must be distinguished from other outcomes in the source",
+          "findingId": "FND-REL-CAND-INF-F03-002-001"
+        },
+        {
+          "dispositionRationale": "Retained explicitly; exact-target support must be distinguished from other outcomes in the source",
+          "findingId": "FND-REL-CAND-INF-F03-002-008"
+        }
+      ],
+      "contraryEvidenceSearch": "ASSESSED",
+      "datasetOverlap": "Primary studies reused across assertions; SUP-013 synthesis may include SUP-002/003. No independent-replication count inferred.",
+      "disposition": "INSUFFICIENT",
+      "evidenceStrength": "LIMITED",
+      "generalizationLimits": [
+        "No source-wide efficacy transfer; accessed sections only; no ontology-wide generalization"
+      ],
+      "rationale": "Processing proxies and null/small syntax effects cannot establish a general exact-endpoint effect. Retain as research-needed.",
+      "sourceFindingIds": [
+        "FND-REL-CAND-INF-F03-002-001",
+        "FND-REL-CAND-INF-F03-002-004",
+        "FND-REL-CAND-INF-F03-002-008"
+      ]
+    }
+  },
+  {
+    "assertionId": "REL-CAND-INF-F03-003",
+    "evidenceAssessmentId": "EVA-REL-CAND-INF-F03-003",
+    "governance": {
+      "activationStatus": "NOT_ELIGIBLE",
+      "authorityBasis": "V1_NATIVE",
+      "authorizedBy": null,
+      "blockStatus": "NONE",
+      "decisionDate": null,
+      "decisionOutcome": "NOT_DECIDED",
+      "decisionRationale": null,
+      "decisionRecord": null,
+      "effectiveVersion": null,
+      "lifecycleStatus": "RESEARCH_NEEDED",
+      "supersedesIds": [],
+      "transitionProvenance": [
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": null
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "EVA-REL-CAND-INF-F03-003",
+          "provenance": "AUD-INF-F03-AE-V1-20260906-001",
+          "rationale": "Record audit question and evidence limitations",
+          "revision": 1,
+          "timestamp": "2026-09-06T13:48:47Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          }
+        },
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "EVA-REL-CAND-INF-F03-003",
+          "provenance": "AUD-INF-F03-AE-V1-20260906-001",
+          "rationale": "Record audit question and evidence limitations",
+          "revision": 1,
+          "timestamp": "2026-09-06T13:48:47Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "RESEARCH_NEEDED"
+          }
+        }
+      ]
+    },
+    "note": "Candidate-only normalization sidecar. RI evidence retained; AE assessment target enum is not extended.",
+    "productionMethod": "SOURCE_SYNTHESIS",
+    "sourceFindings": [
+      {
+        "accessDepth": "SELECTED_FULL_TEXT",
+        "basis": [
+          "EXPERIMENTAL"
+        ],
+        "comparator": "Multi-talker babble versus relative silence with speaker and listener exposed",
+        "context": "Multi-talker babble versus relative silence with speaker and listener exposed",
+        "datasetIds": [
+          "STUDY-INF-F03-006"
+        ],
+        "design": "EXPERIMENTAL; 57 participants describing pictures over videoconferencing",
+        "disposition": "NULL_FINDING",
+        "exposure": "Multi-talker babble versus relative silence with speaker and listener exposed",
+        "id": "FND-REL-CAND-INF-F03-003-006",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Quantity is not the full complexity construct; remote sound calibration and sensitivity exclusions limit transfer. Nonsignificance is not equivalence."
+        ],
+        "locator": "pp.1609,1617–1618; Table 4",
+        "measurement": "Quantity, mean T-unit length, clausal density, pauses",
+        "nullInterpretation": {
+          "contrast": "Multi-talker babble versus relative silence with speaker and listener exposed",
+          "interpretation": "NO_DETECTED_DIFFERENCE",
+          "precisionAssessment": "No equivalence margin/precision conclusion extracted",
+          "rationale": "Ratio-based complexity nonsignificance is not a supported zero effect"
+        },
+        "overlapNotes": "Same publication reused for distinct claims is not independent replication; review-primary overlap unresolved",
+        "population": "57 participants describing pictures over videoconferencing",
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "No human scientific decision or activation; accessed sections only; not an exhaustive systematic review"
+          ],
+          "method": "Structured evidence search and candidate-only synthesis",
+          "originReferences": [
+            "AUD-INF-F03-AE-V1-20260906-001",
+            "164d938bcd4bbd7e8c48c8128cacd6e64ff0287a",
+            "research.json"
+          ],
+          "recordedAt": "2026-09-06T13:48:47Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "Speech quantity decreased; mean T-unit length and clausal density did not show significant condition effects.",
+        "sourceId": "SRC-CAND-INF-F03-006",
+        "supportedSemantics": [
+          "CAUSAL"
+        ],
+        "timing": "Within the reported task/assessment; no numeric causal lag or persistence inferred",
+        "uncertainty": [
+          "No pooled effect size or quantitative precision inferred for this ontology assertion"
+        ]
+      }
+    ],
+    "synthesis": {
+      "confidence": "LOW",
+      "confidenceRationale": "Confidence concerns the exact scoped assertion, not prose certainty or source prestige",
+      "conflicts": [
+        {
+          "dispositionRationale": "Retained explicitly; exact-target support must be distinguished from other outcomes in the source",
+          "findingId": "FND-REL-CAND-INF-F03-003-006"
+        }
+      ],
+      "contraryEvidenceSearch": "ASSESSED",
+      "datasetOverlap": "Primary studies reused across assertions; SUP-013 synthesis may include SUP-002/003. No independent-replication count inferred.",
+      "disposition": "INSUFFICIENT",
+      "evidenceStrength": "LIMITED",
+      "generalizationLimits": [
+        "No source-wide efficacy transfer; accessed sections only; no ontology-wide generalization"
+      ],
+      "rationale": "Ratio-based measures were nonsignificant despite quantity differences. Full-construct effect remains unresolved, not supported null and not a universal decrease.",
+      "sourceFindingIds": [
+        "FND-REL-CAND-INF-F03-003-006"
+      ]
+    }
+  },
+  {
+    "assertionId": "REL-CAND-INF-F03-004",
+    "evidenceAssessmentId": "EVA-REL-CAND-INF-F03-004",
+    "governance": {
+      "activationStatus": "NOT_ELIGIBLE",
+      "authorityBasis": "V1_NATIVE",
+      "authorizedBy": null,
+      "blockStatus": "NONE",
+      "decisionDate": null,
+      "decisionOutcome": "NOT_DECIDED",
+      "decisionRationale": null,
+      "decisionRecord": null,
+      "effectiveVersion": null,
+      "lifecycleStatus": "RESEARCH_NEEDED",
+      "supersedesIds": [],
+      "transitionProvenance": [
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": null
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "EVA-REL-CAND-INF-F03-004",
+          "provenance": "AUD-INF-F03-AE-V1-20260906-001",
+          "rationale": "Record audit question and evidence limitations",
+          "revision": 1,
+          "timestamp": "2026-09-06T13:48:47Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          }
+        },
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "EVA-REL-CAND-INF-F03-004",
+          "provenance": "AUD-INF-F03-AE-V1-20260906-001",
+          "rationale": "Record audit question and evidence limitations",
+          "revision": 1,
+          "timestamp": "2026-09-06T13:48:47Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "RESEARCH_NEEDED"
+          }
+        }
+      ]
+    },
+    "note": "Candidate-only normalization sidecar. RI evidence retained; AE assessment target enum is not extended.",
+    "productionMethod": "SOURCE_SYNTHESIS",
+    "sourceFindings": [
+      {
+        "accessDepth": "SELECTED_FULL_TEXT",
+        "basis": [
+          "EXPERIMENTAL"
+        ],
+        "comparator": "Random assignment to texts varying conceptual and syntactic complexity",
+        "context": "Random assignment to texts varying conceptual and syntactic complexity",
+        "datasetIds": [
+          "STUDY-INF-F03-008"
+        ],
+        "design": "EXPERIMENTAL; 1859 UK public respondents; hypothetical central-bank reports",
+        "disposition": "MIXED",
+        "exposure": "Random assignment to texts varying conceptual and syntactic complexity",
+        "id": "FND-REL-CAND-INF-F03-004-008",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Working-paper/current hosted revision; CCI is a specific operationalization, not canonical INF-013; threshold not portable."
+        ],
+        "locator": "Abstract; introduction; sections 4–5; current hosted version",
+        "measurement": "Understanding and sentiments including trust; CCI and surface indices",
+        "nullInterpretation": null,
+        "overlapNotes": "Same publication reused for distinct claims is not independent replication; review-primary overlap unresolved",
+        "population": "1859 UK public respondents; hypothetical central-bank reports",
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "No human scientific decision or activation; accessed sections only; not an exhaustive systematic review"
+          ],
+          "method": "Structured evidence search and candidate-only synthesis",
+          "originReferences": [
+            "AUD-INF-F03-AE-V1-20260906-001",
+            "164d938bcd4bbd7e8c48c8128cacd6e64ff0287a",
+            "research.json"
+          ],
+          "recordedAt": "2026-09-06T13:48:47Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "Conceptual complexity mattered more than syntactic complexity; syntactic effects were small/null in these materials.",
+        "sourceId": "SRC-CAND-INF-F03-008",
+        "supportedSemantics": [
+          "CAUSAL"
+        ],
+        "timing": "Within the reported task/assessment; no numeric causal lag or persistence inferred",
+        "uncertainty": [
+          "No pooled effect size or quantitative precision inferred for this ontology assertion"
+        ]
+      }
+    ],
+    "synthesis": {
+      "confidence": "LOW",
+      "confidenceRationale": "Confidence concerns the exact scoped assertion, not prose certainty or source prestige",
+      "conflicts": [
+        {
+          "dispositionRationale": "Retained explicitly; exact-target support must be distinguished from other outcomes in the source",
+          "findingId": "FND-REL-CAND-INF-F03-004-008"
+        }
+      ],
+      "contraryEvidenceSearch": "ASSESSED",
+      "datasetOverlap": "Primary studies reused across assertions; SUP-013 synthesis may include SUP-002/003. No independent-replication count inferred.",
+      "disposition": "INSUFFICIENT",
+      "evidenceStrength": "LIMITED",
+      "generalizationLimits": [
+        "No source-wide efficacy transfer; accessed sections only; no ontology-wide generalization"
+      ],
+      "rationale": "One working-paper experiment suggests source-sentiment changes; CCI versus INF-013 and sentiment versus PSY-113 alignment still needs review.",
+      "sourceFindingIds": [
+        "FND-REL-CAND-INF-F03-004-008"
+      ]
+    }
+  },
+  {
+    "assertionId": "REL-INF-003",
+    "evidenceAssessmentId": "EVA-AUD-INF-F03-REL-INF-003",
+    "governance": {
+      "activationStatus": "NOT_ELIGIBLE",
+      "authorityBasis": "V1_NATIVE",
+      "authorizedBy": null,
+      "blockStatus": "NONE",
+      "decisionDate": null,
+      "decisionOutcome": "NOT_DECIDED",
+      "decisionRationale": null,
+      "decisionRecord": null,
+      "effectiveVersion": null,
+      "lifecycleStatus": "RESEARCH_NEEDED",
+      "supersedesIds": [],
+      "transitionProvenance": [
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": null
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "EVA-AUD-INF-F03-REL-INF-003",
+          "provenance": "AUD-INF-F03-AE-V1-20260906-001",
+          "rationale": "Record audit question and evidence limitations",
+          "revision": 1,
+          "timestamp": "2026-09-06T13:48:47Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          }
+        },
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "EVA-AUD-INF-F03-REL-INF-003",
+          "provenance": "AUD-INF-F03-AE-V1-20260906-001",
+          "rationale": "Record audit question and evidence limitations",
+          "revision": 1,
+          "timestamp": "2026-09-06T13:48:47Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "RESEARCH_NEEDED"
+          }
+        }
+      ]
+    },
+    "note": "Assessment of preserved existing assertion; no revision or approval materialized",
+    "productionMethod": "SYNTHESIS",
+    "sourceFindings": [
+      {
+        "accessDepth": "METADATA",
+        "basis": [
+          "EVIDENCE_SYNTHESIS"
+        ],
+        "comparator": null,
+        "context": "Existing source-to-edge alignment audit",
+        "datasetIds": [],
+        "design": "Bibliographic/topic screening only; no direct-effect evidence asserted",
+        "disposition": "INSUFFICIENT",
+        "exposure": null,
+        "id": "FND-EVA-AUD-INF-F03-REL-INF-003-SRC-425",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Canonical citation is preserved; no new bibliographic authority or source registration"
+        ],
+        "locator": "https://pubmed.ncbi.nlm.nih.gov/24625237/",
+        "measurement": null,
+        "nullInterpretation": null,
+        "overlapNotes": "Do not treat review and primary studies as independent",
+        "population": null,
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "No human scientific decision or activation; accessed sections only; not an exhaustive systematic review"
+          ],
+          "method": "Structured evidence search and candidate-only synthesis",
+          "originReferences": [
+            "AUD-INF-F03-AE-V1-20260906-001",
+            "164d938bcd4bbd7e8c48c8128cacd6e64ff0287a",
+            "research.json"
+          ],
+          "recordedAt": "2026-09-06T13:48:47Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "SRC-425 and SRC-444 are broad risk/choice reviews, not exact temporal-fit evidence.",
+        "sourceId": "SRC-425",
+        "supportedSemantics": [],
+        "timing": null,
+        "uncertainty": [
+          "Full source-to-proposition adequacy requires exact passages, not title matching"
+        ]
+      },
+      {
+        "accessDepth": "METADATA",
+        "basis": [
+          "EVIDENCE_SYNTHESIS"
+        ],
+        "comparator": null,
+        "context": "Existing source-to-edge alignment audit",
+        "datasetIds": [],
+        "design": "Bibliographic/topic screening only; no direct-effect evidence asserted",
+        "disposition": "INSUFFICIENT",
+        "exposure": null,
+        "id": "FND-EVA-AUD-INF-F03-REL-INF-003-SRC-444",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Canonical citation is preserved; no new bibliographic authority or source registration"
+        ],
+        "locator": "https://pubmed.ncbi.nlm.nih.gov/29587686/",
+        "measurement": null,
+        "nullInterpretation": null,
+        "overlapNotes": "Do not treat review and primary studies as independent",
+        "population": null,
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "No human scientific decision or activation; accessed sections only; not an exhaustive systematic review"
+          ],
+          "method": "Structured evidence search and candidate-only synthesis",
+          "originReferences": [
+            "AUD-INF-F03-AE-V1-20260906-001",
+            "164d938bcd4bbd7e8c48c8128cacd6e64ff0287a",
+            "research.json"
+          ],
+          "recordedAt": "2026-09-06T13:48:47Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "SRC-425 and SRC-444 are broad risk/choice reviews, not exact temporal-fit evidence.",
+        "sourceId": "SRC-444",
+        "supportedSemantics": [],
+        "timing": null,
+        "uncertainty": [
+          "Full source-to-proposition adequacy requires exact passages, not title matching"
+        ]
+      }
+    ],
+    "synthesis": {
+      "confidence": "LOW",
+      "confidenceRationale": "Confidence concerns the exact scoped assertion, not prose certainty or source prestige",
+      "conflicts": [],
+      "contraryEvidenceSearch": "ASSESSED",
+      "datasetOverlap": "Primary studies reused across assertions; SUP-013 synthesis may include SUP-002/003. No independent-replication count inferred.",
+      "disposition": "INSUFFICIENT",
+      "evidenceStrength": "LIMITED",
+      "generalizationLimits": [
+        "No source-wide efficacy transfer; accessed sections only; no ontology-wide generalization"
+      ],
+      "rationale": "Exposure duration is opportunity for processing, not a component that independently changes the message–audience fit score. The legacy mechanism says moderates, but targets an entity. SRC-425 and SRC-444 are broad risk/choice reviews, not exact temporal-fit evidence.",
+      "sourceFindingIds": [
+        "FND-EVA-AUD-INF-F03-REL-INF-003-SRC-425",
+        "FND-EVA-AUD-INF-F03-REL-INF-003-SRC-444"
+      ]
+    }
+  },
+  {
+    "assertionId": "REL-INF-006",
+    "evidenceAssessmentId": "EVA-AUD-INF-F03-REL-INF-006",
+    "governance": {
+      "activationStatus": "NOT_ELIGIBLE",
+      "authorityBasis": "V1_NATIVE",
+      "authorizedBy": null,
+      "blockStatus": "NONE",
+      "decisionDate": null,
+      "decisionOutcome": "NOT_DECIDED",
+      "decisionRationale": null,
+      "decisionRecord": null,
+      "effectiveVersion": null,
+      "lifecycleStatus": "RESEARCH_NEEDED",
+      "supersedesIds": [],
+      "transitionProvenance": [
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": null
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "EVA-AUD-INF-F03-REL-INF-006",
+          "provenance": "AUD-INF-F03-AE-V1-20260906-001",
+          "rationale": "Record audit question and evidence limitations",
+          "revision": 1,
+          "timestamp": "2026-09-06T13:48:47Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          }
+        },
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "EVA-AUD-INF-F03-REL-INF-006",
+          "provenance": "AUD-INF-F03-AE-V1-20260906-001",
+          "rationale": "Record audit question and evidence limitations",
+          "revision": 1,
+          "timestamp": "2026-09-06T13:48:47Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "RESEARCH_NEEDED"
+          }
+        }
+      ]
+    },
+    "note": "Assessment of preserved existing assertion; no revision or approval materialized",
+    "productionMethod": "SYNTHESIS",
+    "sourceFindings": [
+      {
+        "accessDepth": "SELECTED_FULL_TEXT",
+        "basis": [
+          "EXPERIMENTAL"
+        ],
+        "comparator": "Random assignment to texts varying conceptual and syntactic complexity",
+        "context": "Random assignment to texts varying conceptual and syntactic complexity",
+        "datasetIds": [
+          "STUDY-INF-F03-008"
+        ],
+        "design": "EXPERIMENTAL; 1859 UK public respondents; hypothetical central-bank reports",
+        "disposition": "MIXED",
+        "exposure": "Random assignment to texts varying conceptual and syntactic complexity",
+        "id": "FND-EVA-AUD-INF-F03-REL-INF-006-008",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Working-paper/current hosted revision; CCI is a specific operationalization, not canonical INF-013; threshold not portable."
+        ],
+        "locator": "Abstract; introduction; sections 4–5; current hosted version",
+        "measurement": "Understanding and sentiments including trust; CCI and surface indices",
+        "nullInterpretation": null,
+        "overlapNotes": "Same publication reused for distinct claims is not independent replication; review-primary overlap unresolved",
+        "population": "1859 UK public respondents; hypothetical central-bank reports",
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "No human scientific decision or activation; accessed sections only; not an exhaustive systematic review"
+          ],
+          "method": "Structured evidence search and candidate-only synthesis",
+          "originReferences": [
+            "AUD-INF-F03-AE-V1-20260906-001",
+            "164d938bcd4bbd7e8c48c8128cacd6e64ff0287a",
+            "research.json"
+          ],
+          "recordedAt": "2026-09-06T13:48:47Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "Conceptual complexity mattered more than syntactic complexity; syntactic effects were small/null in these materials.",
+        "sourceId": "SRC-CAND-INF-F03-008",
+        "supportedSemantics": [
+          "CAUSAL"
+        ],
+        "timing": "Within the reported task/assessment; no numeric causal lag or persistence inferred",
+        "uncertainty": [
+          "No pooled effect size or quantitative precision inferred for this ontology assertion"
+        ]
+      },
+      {
+        "accessDepth": "METADATA",
+        "basis": [
+          "EVIDENCE_SYNTHESIS"
+        ],
+        "comparator": null,
+        "context": "Existing source-to-edge alignment audit",
+        "datasetIds": [],
+        "design": "Bibliographic/topic screening only; no direct-effect evidence asserted",
+        "disposition": "INSUFFICIENT",
+        "exposure": null,
+        "id": "FND-EVA-AUD-INF-F03-REL-INF-006-SRC-425",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Canonical citation is preserved; no new bibliographic authority or source registration"
+        ],
+        "locator": "https://pubmed.ncbi.nlm.nih.gov/24625237/",
+        "measurement": null,
+        "nullInterpretation": null,
+        "overlapNotes": "Do not treat review and primary studies as independent",
+        "population": null,
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "No human scientific decision or activation; accessed sections only; not an exhaustive systematic review"
+          ],
+          "method": "Structured evidence search and candidate-only synthesis",
+          "originReferences": [
+            "AUD-INF-F03-AE-V1-20260906-001",
+            "164d938bcd4bbd7e8c48c8128cacd6e64ff0287a",
+            "research.json"
+          ],
+          "recordedAt": "2026-09-06T13:48:47Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "SRC-425/426 risk-presentation syntheses do not isolate conceptual complexity; SUP-008 provides a narrower comparison but not a fit-score causal effect.",
+        "sourceId": "SRC-425",
+        "supportedSemantics": [],
+        "timing": null,
+        "uncertainty": [
+          "Full source-to-proposition adequacy requires exact passages, not title matching"
+        ]
+      },
+      {
+        "accessDepth": "METADATA",
+        "basis": [
+          "EVIDENCE_SYNTHESIS"
+        ],
+        "comparator": null,
+        "context": "Existing source-to-edge alignment audit",
+        "datasetIds": [],
+        "design": "Bibliographic/topic screening only; no direct-effect evidence asserted",
+        "disposition": "INSUFFICIENT",
+        "exposure": null,
+        "id": "FND-EVA-AUD-INF-F03-REL-INF-006-SRC-426",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Canonical citation is preserved; no new bibliographic authority or source registration"
+        ],
+        "locator": "https://pubmed.ncbi.nlm.nih.gov/25133362/",
+        "measurement": null,
+        "nullInterpretation": null,
+        "overlapNotes": "Do not treat review and primary studies as independent",
+        "population": null,
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "No human scientific decision or activation; accessed sections only; not an exhaustive systematic review"
+          ],
+          "method": "Structured evidence search and candidate-only synthesis",
+          "originReferences": [
+            "AUD-INF-F03-AE-V1-20260906-001",
+            "164d938bcd4bbd7e8c48c8128cacd6e64ff0287a",
+            "research.json"
+          ],
+          "recordedAt": "2026-09-06T13:48:47Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "SRC-425/426 risk-presentation syntheses do not isolate conceptual complexity; SUP-008 provides a narrower comparison but not a fit-score causal effect.",
+        "sourceId": "SRC-426",
+        "supportedSemantics": [],
+        "timing": null,
+        "uncertainty": [
+          "Full source-to-proposition adequacy requires exact passages, not title matching"
+        ]
+      }
+    ],
+    "synthesis": {
+      "confidence": "LOW",
+      "confidenceRationale": "Confidence concerns the exact scoped assertion, not prose certainty or source prestige",
+      "conflicts": [
+        {
+          "dispositionRationale": "Retained explicitly; exact-target support must be distinguished from other outcomes in the source",
+          "findingId": "FND-EVA-AUD-INF-F03-REL-INF-006-008"
+        }
+      ],
+      "contraryEvidenceSearch": "ASSESSED",
+      "datasetOverlap": "Primary studies reused across assertions; SUP-013 synthesis may include SUP-002/003. No independent-replication count inferred.",
+      "disposition": "INSUFFICIENT",
+      "evidenceStrength": "LIMITED",
+      "generalizationLimits": [
+        "No source-wide efficacy transfer; accessed sections only; no ontology-wide generalization"
+      ],
+      "rationale": "Conceptual complexity and surface-language complexity are distinct, yet the legacy definition mixes syntax. INF-014 derives partly from INF-077. SRC-425/426 risk-presentation syntheses do not isolate conceptual complexity; SUP-008 provides a narrower comparison but not a fit-score causal effect.",
+      "sourceFindingIds": [
+        "FND-EVA-AUD-INF-F03-REL-INF-006-008",
+        "FND-EVA-AUD-INF-F03-REL-INF-006-SRC-425",
+        "FND-EVA-AUD-INF-F03-REL-INF-006-SRC-426"
+      ]
+    }
+  },
+  {
+    "assertionId": "REL-INF-007",
+    "evidenceAssessmentId": "EVA-AUD-INF-F03-REL-INF-007",
+    "governance": {
+      "activationStatus": "NOT_ELIGIBLE",
+      "authorityBasis": "V1_NATIVE",
+      "authorizedBy": null,
+      "blockStatus": "NONE",
+      "decisionDate": null,
+      "decisionOutcome": "NOT_DECIDED",
+      "decisionRationale": null,
+      "decisionRecord": null,
+      "effectiveVersion": null,
+      "lifecycleStatus": "RESEARCH_NEEDED",
+      "supersedesIds": [],
+      "transitionProvenance": [
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": null
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "EVA-AUD-INF-F03-REL-INF-007",
+          "provenance": "AUD-INF-F03-AE-V1-20260906-001",
+          "rationale": "Record audit question and evidence limitations",
+          "revision": 1,
+          "timestamp": "2026-09-06T13:48:47Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          }
+        },
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "EVA-AUD-INF-F03-REL-INF-007",
+          "provenance": "AUD-INF-F03-AE-V1-20260906-001",
+          "rationale": "Record audit question and evidence limitations",
+          "revision": 1,
+          "timestamp": "2026-09-06T13:48:47Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "RESEARCH_NEEDED"
+          }
+        }
+      ]
+    },
+    "note": "Assessment of preserved existing assertion; no revision or approval materialized",
+    "productionMethod": "SYNTHESIS",
+    "sourceFindings": [
+      {
+        "accessDepth": "METADATA",
+        "basis": [
+          "EVIDENCE_SYNTHESIS"
+        ],
+        "comparator": null,
+        "context": "Existing source-to-edge alignment audit",
+        "datasetIds": [],
+        "design": "Bibliographic/topic screening only; no direct-effect evidence asserted",
+        "disposition": "INSUFFICIENT",
+        "exposure": null,
+        "id": "FND-EVA-AUD-INF-F03-REL-INF-007-SRC-425",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Canonical citation is preserved; no new bibliographic authority or source registration"
+        ],
+        "locator": "https://pubmed.ncbi.nlm.nih.gov/24625237/",
+        "measurement": null,
+        "nullInterpretation": null,
+        "overlapNotes": "Do not treat review and primary studies as independent",
+        "population": null,
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "No human scientific decision or activation; accessed sections only; not an exhaustive systematic review"
+          ],
+          "method": "Structured evidence search and candidate-only synthesis",
+          "originReferences": [
+            "AUD-INF-F03-AE-V1-20260906-001",
+            "164d938bcd4bbd7e8c48c8128cacd6e64ff0287a",
+            "research.json"
+          ],
+          "recordedAt": "2026-09-06T13:48:47Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "SRC-425/428 do not directly establish completeness ratio causing ambiguity.",
+        "sourceId": "SRC-425",
+        "supportedSemantics": [],
+        "timing": null,
+        "uncertainty": [
+          "Full source-to-proposition adequacy requires exact passages, not title matching"
+        ]
+      },
+      {
+        "accessDepth": "METADATA",
+        "basis": [
+          "EVIDENCE_SYNTHESIS"
+        ],
+        "comparator": null,
+        "context": "Existing source-to-edge alignment audit",
+        "datasetIds": [],
+        "design": "Bibliographic/topic screening only; no direct-effect evidence asserted",
+        "disposition": "INSUFFICIENT",
+        "exposure": null,
+        "id": "FND-EVA-AUD-INF-F03-REL-INF-007-SRC-428",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Canonical citation is preserved; no new bibliographic authority or source registration"
+        ],
+        "locator": "https://pubmed.ncbi.nlm.nih.gov/31218028/",
+        "measurement": null,
+        "nullInterpretation": null,
+        "overlapNotes": "Do not treat review and primary studies as independent",
+        "population": null,
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "No human scientific decision or activation; accessed sections only; not an exhaustive systematic review"
+          ],
+          "method": "Structured evidence search and candidate-only synthesis",
+          "originReferences": [
+            "AUD-INF-F03-AE-V1-20260906-001",
+            "164d938bcd4bbd7e8c48c8128cacd6e64ff0287a",
+            "research.json"
+          ],
+          "recordedAt": "2026-09-06T13:48:47Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "SRC-425/428 do not directly establish completeness ratio causing ambiguity.",
+        "sourceId": "SRC-428",
+        "supportedSemantics": [],
+        "timing": null,
+        "uncertainty": [
+          "Full source-to-proposition adequacy requires exact passages, not title matching"
+        ]
+      }
+    ],
+    "synthesis": {
+      "confidence": "LOW",
+      "confidenceRationale": "Confidence concerns the exact scoped assertion, not prose certainty or source prestige",
+      "conflicts": [],
+      "contraryEvidenceSearch": "ASSESSED",
+      "datasetOverlap": "Primary studies reused across assertions; SUP-013 synthesis may include SUP-002/003. No independent-replication count inferred.",
+      "disposition": "INSUFFICIENT",
+      "evidenceStrength": "LIMITED",
+      "generalizationLimits": [
+        "No source-wide efficacy transfer; accessed sections only; no ontology-wide generalization"
+      ],
+      "rationale": "Complete information can be unambiguously contradictory; completeness is a requirement-set ratio, not a manipulable cause. SRC-425/428 do not directly establish completeness ratio causing ambiguity.",
+      "sourceFindingIds": [
+        "FND-EVA-AUD-INF-F03-REL-INF-007-SRC-425",
+        "FND-EVA-AUD-INF-F03-REL-INF-007-SRC-428"
+      ]
+    }
+  },
+  {
+    "assertionId": "REL-INF-008",
+    "evidenceAssessmentId": "EVA-AUD-INF-F03-REL-INF-008",
+    "governance": {
+      "activationStatus": "NOT_ELIGIBLE",
+      "authorityBasis": "V1_NATIVE",
+      "authorizedBy": null,
+      "blockStatus": "NONE",
+      "decisionDate": null,
+      "decisionOutcome": "NOT_DECIDED",
+      "decisionRationale": null,
+      "decisionRecord": null,
+      "effectiveVersion": null,
+      "lifecycleStatus": "RESEARCH_NEEDED",
+      "supersedesIds": [],
+      "transitionProvenance": [
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": null
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "EVA-AUD-INF-F03-REL-INF-008",
+          "provenance": "AUD-INF-F03-AE-V1-20260906-001",
+          "rationale": "Record audit question and evidence limitations",
+          "revision": 1,
+          "timestamp": "2026-09-06T13:48:47Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          }
+        },
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "EVA-AUD-INF-F03-REL-INF-008",
+          "provenance": "AUD-INF-F03-AE-V1-20260906-001",
+          "rationale": "Record audit question and evidence limitations",
+          "revision": 1,
+          "timestamp": "2026-09-06T13:48:47Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "RESEARCH_NEEDED"
+          }
+        }
+      ]
+    },
+    "note": "Assessment of preserved existing assertion; no revision or approval materialized",
+    "productionMethod": "SYNTHESIS",
+    "sourceFindings": [
+      {
+        "accessDepth": "METADATA",
+        "basis": [
+          "EVIDENCE_SYNTHESIS"
+        ],
+        "comparator": null,
+        "context": "Existing source-to-edge alignment audit",
+        "datasetIds": [],
+        "design": "Bibliographic/topic screening only; no direct-effect evidence asserted",
+        "disposition": "INSUFFICIENT",
+        "exposure": null,
+        "id": "FND-EVA-AUD-INF-F03-REL-INF-008-SRC-428",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Canonical citation is preserved; no new bibliographic authority or source registration"
+        ],
+        "locator": "https://pubmed.ncbi.nlm.nih.gov/31218028/",
+        "measurement": null,
+        "nullInterpretation": null,
+        "overlapNotes": "Do not treat review and primary studies as independent",
+        "population": null,
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "No human scientific decision or activation; accessed sections only; not an exhaustive systematic review"
+          ],
+          "method": "Structured evidence search and candidate-only synthesis",
+          "originReferences": [
+            "AUD-INF-F03-AE-V1-20260906-001",
+            "164d938bcd4bbd7e8c48c8128cacd6e64ff0287a",
+            "research.json"
+          ],
+          "recordedAt": "2026-09-06T13:48:47Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "SRC-428 supplies uncertainty taxonomy, not independence from completeness formula.",
+        "sourceId": "SRC-428",
+        "supportedSemantics": [],
+        "timing": null,
+        "uncertainty": [
+          "Full source-to-proposition adequacy requires exact passages, not title matching"
+        ]
+      }
+    ],
+    "synthesis": {
+      "confidence": "LOW",
+      "confidenceRationale": "Confidence concerns the exact scoped assertion, not prose certainty or source prestige",
+      "conflicts": [],
+      "contraryEvidenceSearch": "ASSESSED",
+      "datasetOverlap": "Primary studies reused across assertions; SUP-013 synthesis may include SUP-002/003. No independent-replication count inferred.",
+      "disposition": "INSUFFICIENT",
+      "evidenceStrength": "LIMITED",
+      "generalizationLimits": [
+        "No source-wide efficacy transfer; accessed sections only; no ontology-wide generalization"
+      ],
+      "rationale": "Adding required uncertainty fields may increase completeness by definition, rather than by an independent causal mechanism. SRC-428 supplies uncertainty taxonomy, not independence from completeness formula.",
+      "sourceFindingIds": [
+        "FND-EVA-AUD-INF-F03-REL-INF-008-SRC-428"
+      ]
+    }
+  },
+  {
+    "assertionId": "REL-INF-009",
+    "evidenceAssessmentId": "EVA-AUD-INF-F03-REL-INF-009",
+    "governance": {
+      "activationStatus": "NOT_ELIGIBLE",
+      "authorityBasis": "V1_NATIVE",
+      "authorizedBy": null,
+      "blockStatus": "NONE",
+      "decisionDate": null,
+      "decisionOutcome": "NOT_DECIDED",
+      "decisionRationale": null,
+      "decisionRecord": null,
+      "effectiveVersion": null,
+      "lifecycleStatus": "RESEARCH_NEEDED",
+      "supersedesIds": [],
+      "transitionProvenance": [
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": null
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "EVA-AUD-INF-F03-REL-INF-009",
+          "provenance": "AUD-INF-F03-AE-V1-20260906-001",
+          "rationale": "Record audit question and evidence limitations",
+          "revision": 1,
+          "timestamp": "2026-09-06T13:48:47Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          }
+        },
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "EVA-AUD-INF-F03-REL-INF-009",
+          "provenance": "AUD-INF-F03-AE-V1-20260906-001",
+          "rationale": "Record audit question and evidence limitations",
+          "revision": 1,
+          "timestamp": "2026-09-06T13:48:47Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "RESEARCH_NEEDED"
+          }
+        }
+      ]
+    },
+    "note": "Assessment of preserved existing assertion; no revision or approval materialized",
+    "productionMethod": "SYNTHESIS",
+    "sourceFindings": [
+      {
+        "accessDepth": "METADATA",
+        "basis": [
+          "EVIDENCE_SYNTHESIS"
+        ],
+        "comparator": null,
+        "context": "Existing source-to-edge alignment audit",
+        "datasetIds": [],
+        "design": "Bibliographic/topic screening only; no direct-effect evidence asserted",
+        "disposition": "INSUFFICIENT",
+        "exposure": null,
+        "id": "FND-EVA-AUD-INF-F03-REL-INF-009-SRC-428",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Canonical citation is preserved; no new bibliographic authority or source registration"
+        ],
+        "locator": "https://pubmed.ncbi.nlm.nih.gov/31218028/",
+        "measurement": null,
+        "nullInterpretation": null,
+        "overlapNotes": "Do not treat review and primary studies as independent",
+        "population": null,
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "No human scientific decision or activation; accessed sections only; not an exhaustive systematic review"
+          ],
+          "method": "Structured evidence search and candidate-only synthesis",
+          "originReferences": [
+            "AUD-INF-F03-AE-V1-20260906-001",
+            "164d938bcd4bbd7e8c48c8128cacd6e64ff0287a",
+            "research.json"
+          ],
+          "recordedAt": "2026-09-06T13:48:47Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "SRC-429 bibliographic author label conflicts with resolved authors; broad review does not establish direction.",
+        "sourceId": "SRC-428",
+        "supportedSemantics": [],
+        "timing": null,
+        "uncertainty": [
+          "Full source-to-proposition adequacy requires exact passages, not title matching"
+        ]
+      },
+      {
+        "accessDepth": "METADATA",
+        "basis": [
+          "EVIDENCE_SYNTHESIS"
+        ],
+        "comparator": null,
+        "context": "Existing source-to-edge alignment audit",
+        "datasetIds": [],
+        "design": "Bibliographic/topic screening only; no direct-effect evidence asserted",
+        "disposition": "INSUFFICIENT",
+        "exposure": null,
+        "id": "FND-EVA-AUD-INF-F03-REL-INF-009-SRC-429",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Canonical citation is preserved; no new bibliographic authority or source registration"
+        ],
+        "locator": "https://pubmed.ncbi.nlm.nih.gov/33084114/",
+        "measurement": null,
+        "nullInterpretation": null,
+        "overlapNotes": "Do not treat review and primary studies as independent",
+        "population": null,
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "No human scientific decision or activation; accessed sections only; not an exhaustive systematic review"
+          ],
+          "method": "Structured evidence search and candidate-only synthesis",
+          "originReferences": [
+            "AUD-INF-F03-AE-V1-20260906-001",
+            "164d938bcd4bbd7e8c48c8128cacd6e64ff0287a",
+            "research.json"
+          ],
+          "recordedAt": "2026-09-06T13:48:47Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "SRC-429 bibliographic author label conflicts with resolved authors; broad review does not establish direction.",
+        "sourceId": "SRC-429",
+        "supportedSemantics": [],
+        "timing": null,
+        "uncertainty": [
+          "Full source-to-proposition adequacy requires exact passages, not title matching"
+        ]
+      }
+    ],
+    "synthesis": {
+      "confidence": "LOW",
+      "confidenceRationale": "Confidence concerns the exact scoped assertion, not prose certainty or source prestige",
+      "conflicts": [],
+      "contraryEvidenceSearch": "ASSESSED",
+      "datasetOverlap": "Primary studies reused across assertions; SUP-013 synthesis may include SUP-002/003. No independent-replication count inferred.",
+      "disposition": "INSUFFICIENT",
+      "evidenceStrength": "LIMITED",
+      "generalizationLimits": [
+        "No source-wide efficacy transfer; accessed sections only; no ontology-wide generalization"
+      ],
+      "rationale": "Clear incompatible claims are not necessarily ambiguous; contradiction rule and multiple-interpretation rule differ. SRC-429 bibliographic author label conflicts with resolved authors; broad review does not establish direction.",
+      "sourceFindingIds": [
+        "FND-EVA-AUD-INF-F03-REL-INF-009-SRC-428",
+        "FND-EVA-AUD-INF-F03-REL-INF-009-SRC-429"
+      ]
+    }
+  },
+  {
+    "assertionId": "REL-INF-041",
+    "evidenceAssessmentId": "EVA-AUD-INF-F03-REL-INF-041",
+    "governance": {
+      "activationStatus": "NOT_ELIGIBLE",
+      "authorityBasis": "V1_NATIVE",
+      "authorizedBy": null,
+      "blockStatus": "NONE",
+      "decisionDate": null,
+      "decisionOutcome": "NOT_DECIDED",
+      "decisionRationale": null,
+      "decisionRecord": null,
+      "effectiveVersion": null,
+      "lifecycleStatus": "RESEARCH_NEEDED",
+      "supersedesIds": [],
+      "transitionProvenance": [
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": null
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "EVA-AUD-INF-F03-REL-INF-041",
+          "provenance": "AUD-INF-F03-AE-V1-20260906-001",
+          "rationale": "Record audit question and evidence limitations",
+          "revision": 1,
+          "timestamp": "2026-09-06T13:48:47Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          }
+        },
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "EVA-AUD-INF-F03-REL-INF-041",
+          "provenance": "AUD-INF-F03-AE-V1-20260906-001",
+          "rationale": "Record audit question and evidence limitations",
+          "revision": 1,
+          "timestamp": "2026-09-06T13:48:47Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "RESEARCH_NEEDED"
+          }
+        }
+      ]
+    },
+    "note": "Assessment of preserved existing assertion; no revision or approval materialized",
+    "productionMethod": "SYNTHESIS",
+    "sourceFindings": [
+      {
+        "accessDepth": "ABSTRACT",
+        "basis": [
+          "EXPERIMENTAL"
+        ],
+        "comparator": "Temporarily ambiguous sentence constructions",
+        "context": "Temporarily ambiguous sentence constructions",
+        "datasetIds": [
+          "STUDY-INF-F03-004"
+        ],
+        "design": "EXPERIMENTAL; Readers in four sentence-processing experiments",
+        "disposition": "SUPPORTS",
+        "exposure": "Temporarily ambiguous sentence constructions",
+        "id": "FND-EVA-AUD-INF-F03-REL-INF-041-004",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Trait reading span is not current Working Memory Availability; reading time is not a direct occupied-capacity measurement."
+        ],
+        "locator": "Abstract",
+        "measurement": "Word-by-word reading times and working-memory differences",
+        "nullInterpretation": null,
+        "overlapNotes": "Same publication reused for distinct claims is not independent replication; review-primary overlap unresolved",
+        "population": "Readers in four sentence-processing experiments",
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "No human scientific decision or activation; accessed sections only; not an exhaustive systematic review"
+          ],
+          "method": "Structured evidence search and candidate-only synthesis",
+          "originReferences": [
+            "AUD-INF-F03-AE-V1-20260906-001",
+            "164d938bcd4bbd7e8c48c8128cacd6e64ff0287a",
+            "research.json"
+          ],
+          "recordedAt": "2026-09-06T13:48:47Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "Additional processing followed ambiguity; capacity-related patterns motivate a bounded processing-demand hypothesis.",
+        "sourceId": "SRC-CAND-INF-F03-004",
+        "supportedSemantics": [
+          "CAUSAL"
+        ],
+        "timing": "Within the reported task/assessment; no numeric causal lag or persistence inferred",
+        "uncertainty": [
+          "No pooled effect size or quantitative precision inferred for this ontology assertion"
+        ]
+      },
+      {
+        "accessDepth": "ABSTRACT",
+        "basis": [
+          "EXPERIMENTAL"
+        ],
+        "comparator": "Ambiguous versus disambiguated constructions; superficial versus interpretation questions",
+        "context": "Ambiguous versus disambiguated constructions; superficial versus interpretation questions",
+        "datasetIds": [
+          "STUDY-INF-F03-005"
+        ],
+        "design": "EXPERIMENTAL; Self-paced sentence readers with different question demands",
+        "disposition": "CONTRADICTED",
+        "exposure": "Ambiguous versus disambiguated constructions; superficial versus interpretation questions",
+        "id": "FND-EVA-AUD-INF-F03-REL-INF-041-005",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Contradicts a universal ambiguity-processing-cost claim, not every bounded ambiguity effect; performance proxy is task dependent."
+        ],
+        "locator": "Abstract",
+        "measurement": "Reading time",
+        "nullInterpretation": null,
+        "overlapNotes": "Same publication reused for distinct claims is not independent replication; review-primary overlap unresolved",
+        "population": "Self-paced sentence readers with different question demands",
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "No human scientific decision or activation; accessed sections only; not an exhaustive systematic review"
+          ],
+          "method": "Structured evidence search and candidate-only synthesis",
+          "originReferences": [
+            "AUD-INF-F03-AE-V1-20260906-001",
+            "164d938bcd4bbd7e8c48c8128cacd6e64ff0287a",
+            "research.json"
+          ],
+          "recordedAt": "2026-09-06T13:48:47Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "Ambiguity advantage appeared with superficial questions and was attenuated by interpretation demands.",
+        "sourceId": "SRC-CAND-INF-F03-005",
+        "supportedSemantics": [
+          "CAUSAL"
+        ],
+        "timing": "Within the reported task/assessment; no numeric causal lag or persistence inferred",
+        "uncertainty": [
+          "No pooled effect size or quantitative precision inferred for this ontology assertion"
+        ]
+      },
+      {
+        "accessDepth": "METADATA",
+        "basis": [
+          "EVIDENCE_SYNTHESIS"
+        ],
+        "comparator": null,
+        "context": "Existing source-to-edge alignment audit",
+        "datasetIds": [],
+        "design": "Bibliographic/topic screening only; no direct-effect evidence asserted",
+        "disposition": "INSUFFICIENT",
+        "exposure": null,
+        "id": "FND-EVA-AUD-INF-F03-REL-INF-041-SRC-496",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Canonical citation is preserved; no new bibliographic authority or source registration"
+        ],
+        "locator": "https://pubmed.ncbi.nlm.nih.gov/21513547/",
+        "measurement": null,
+        "nullInterpretation": null,
+        "overlapNotes": "Do not treat review and primary studies as independent",
+        "population": null,
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "No human scientific decision or activation; accessed sections only; not an exhaustive systematic review"
+          ],
+          "method": "Structured evidence search and candidate-only synthesis",
+          "originReferences": [
+            "AUD-INF-F03-AE-V1-20260906-001",
+            "164d938bcd4bbd7e8c48c8128cacd6e64ff0287a",
+            "research.json"
+          ],
+          "recordedAt": "2026-09-06T13:48:47Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "SRC-496 COM-B and SRC-515 RDoC are not direct evidence. SUP-004 supportive proxy; SUP-005 ambiguity advantage under superficial questions.",
+        "sourceId": "SRC-496",
+        "supportedSemantics": [],
+        "timing": null,
+        "uncertainty": [
+          "Full source-to-proposition adequacy requires exact passages, not title matching"
+        ]
+      },
+      {
+        "accessDepth": "METADATA",
+        "basis": [
+          "EVIDENCE_SYNTHESIS"
+        ],
+        "comparator": null,
+        "context": "Existing source-to-edge alignment audit",
+        "datasetIds": [],
+        "design": "Bibliographic/topic screening only; no direct-effect evidence asserted",
+        "disposition": "INSUFFICIENT",
+        "exposure": null,
+        "id": "FND-EVA-AUD-INF-F03-REL-INF-041-SRC-515",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Canonical citation is preserved; no new bibliographic authority or source registration"
+        ],
+        "locator": "https://www.nimh.nih.gov/about/advisory-boards-and-groups/namhc/reports/behavioral-assessment-methods-for-rdoc-constructs",
+        "measurement": null,
+        "nullInterpretation": null,
+        "overlapNotes": "Do not treat review and primary studies as independent",
+        "population": null,
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "No human scientific decision or activation; accessed sections only; not an exhaustive systematic review"
+          ],
+          "method": "Structured evidence search and candidate-only synthesis",
+          "originReferences": [
+            "AUD-INF-F03-AE-V1-20260906-001",
+            "164d938bcd4bbd7e8c48c8128cacd6e64ff0287a",
+            "research.json"
+          ],
+          "recordedAt": "2026-09-06T13:48:47Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "SRC-496 COM-B and SRC-515 RDoC are not direct evidence. SUP-004 supportive proxy; SUP-005 ambiguity advantage under superficial questions.",
+        "sourceId": "SRC-515",
+        "supportedSemantics": [],
+        "timing": null,
+        "uncertainty": [
+          "Full source-to-proposition adequacy requires exact passages, not title matching"
+        ]
+      }
+    ],
+    "synthesis": {
+      "confidence": "LOW",
+      "confidenceRationale": "Confidence concerns the exact scoped assertion, not prose certainty or source prestige",
+      "conflicts": [
+        {
+          "dispositionRationale": "Retained explicitly; exact-target support must be distinguished from other outcomes in the source",
+          "findingId": "FND-EVA-AUD-INF-F03-REL-INF-041-005"
+        }
+      ],
+      "contraryEvidenceSearch": "ASSESSED",
+      "datasetOverlap": "Primary studies reused across assertions; SUP-013 synthesis may include SUP-002/003. No independent-replication count inferred.",
+      "disposition": "INSUFFICIENT",
+      "evidenceStrength": "LIMITED",
+      "generalizationLimits": [
+        "No source-wide efficacy transfer; accessed sections only; no ontology-wide generalization"
+      ],
+      "rationale": "Processing difficulty can follow temporary ambiguity, but depends on resolution and question demands; occupied capacity is not synonymous with reading time. SRC-496 COM-B and SRC-515 RDoC are not direct evidence. SUP-004 supportive proxy; SUP-005 ambiguity advantage under superficial questions.",
+      "sourceFindingIds": [
+        "FND-EVA-AUD-INF-F03-REL-INF-041-004",
+        "FND-EVA-AUD-INF-F03-REL-INF-041-005",
+        "FND-EVA-AUD-INF-F03-REL-INF-041-SRC-496",
+        "FND-EVA-AUD-INF-F03-REL-INF-041-SRC-515"
+      ]
+    }
+  },
+  {
+    "assertionId": "REL-INF-046",
+    "evidenceAssessmentId": "EVA-AUD-INF-F03-REL-INF-046",
+    "governance": {
+      "activationStatus": "NOT_ELIGIBLE",
+      "authorityBasis": "V1_NATIVE",
+      "authorizedBy": null,
+      "blockStatus": "NONE",
+      "decisionDate": null,
+      "decisionOutcome": "NOT_DECIDED",
+      "decisionRationale": null,
+      "decisionRecord": null,
+      "effectiveVersion": null,
+      "lifecycleStatus": "RESEARCH_NEEDED",
+      "supersedesIds": [],
+      "transitionProvenance": [
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": null
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "EVA-AUD-INF-F03-REL-INF-046",
+          "provenance": "AUD-INF-F03-AE-V1-20260906-001",
+          "rationale": "Record audit question and evidence limitations",
+          "revision": 1,
+          "timestamp": "2026-09-06T13:48:47Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          }
+        },
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "EVA-AUD-INF-F03-REL-INF-046",
+          "provenance": "AUD-INF-F03-AE-V1-20260906-001",
+          "rationale": "Record audit question and evidence limitations",
+          "revision": 1,
+          "timestamp": "2026-09-06T13:48:47Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "RESEARCH_NEEDED"
+          }
+        }
+      ]
+    },
+    "note": "Assessment of preserved existing assertion; no revision or approval materialized",
+    "productionMethod": "SYNTHESIS",
+    "sourceFindings": [
+      {
+        "accessDepth": "SELECTED_FULL_TEXT",
+        "basis": [
+          "EXPERIMENTAL"
+        ],
+        "comparator": "Numeric/verbal uncertainty versus point estimates",
+        "context": "Numeric/verbal uncertainty versus point estimates",
+        "datasetIds": [
+          "STUDY-INF-F03-002"
+        ],
+        "design": "EXPERIMENTAL; Five experiments on factual numerical messages",
+        "disposition": "MIXED",
+        "exposure": "Numeric/verbal uncertainty versus point estimates",
+        "id": "FND-EVA-AUD-INF-F03-REL-INF-046-002",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Do not interpret source trust as self-confidence calibration; studies within one research program are not five independent replications."
+        ],
+        "locator": "Discussion and experimental overview",
+        "measurement": "Trust in numbers and sources; perceived uncertainty",
+        "nullInterpretation": null,
+        "overlapNotes": "Same publication reused for distinct claims is not independent replication; review-primary overlap unresolved",
+        "population": "Five experiments on factual numerical messages",
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "No human scientific decision or activation; accessed sections only; not an exhaustive systematic review"
+          ],
+          "method": "Structured evidence search and candidate-only synthesis",
+          "originReferences": [
+            "AUD-INF-F03-AE-V1-20260906-001",
+            "164d938bcd4bbd7e8c48c8128cacd6e64ff0287a",
+            "research.json"
+          ],
+          "recordedAt": "2026-09-06T13:48:47Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "Numeric ranges generally produced little source-trust reduction; verbal expressions sometimes reduced trust. Outcome-specific and format-dependent.",
+        "sourceId": "SRC-CAND-INF-F03-002",
+        "supportedSemantics": [
+          "CAUSAL"
+        ],
+        "timing": "Within the reported task/assessment; no numeric causal lag or persistence inferred",
+        "uncertainty": [
+          "No pooled effect size or quantitative precision inferred for this ontology assertion"
+        ]
+      },
+      {
+        "accessDepth": "ABSTRACT",
+        "basis": [
+          "EXPERIMENTAL"
+        ],
+        "comparator": "Numeric range or unquantified verbal uncertainty versus no disclosure",
+        "context": "Numeric range or unquantified verbal uncertainty versus no disclosure",
+        "datasetIds": [
+          "STUDY-INF-F03-003"
+        ],
+        "design": "EXPERIMENTAL; COVID-19 statistics survey experiments; N=10519 and N=2309",
+        "disposition": "MIXED",
+        "exposure": "Numeric range or unquantified verbal uncertainty versus no disclosure",
+        "id": "FND-EVA-AUD-INF-F03-REL-INF-046-003",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Present/projected statistics differ; no transferable effect size; preprint and publication represent the same studies."
+        ],
+        "locator": "Abstract",
+        "measurement": "Perceived trustworthiness of number and source",
+        "nullInterpretation": null,
+        "overlapNotes": "Same publication reused for distinct claims is not independent replication; review-primary overlap unresolved",
+        "population": "COVID-19 statistics survey experiments; N=10519 and N=2309",
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "No human scientific decision or activation; accessed sections only; not an exhaustive systematic review"
+          ],
+          "method": "Structured evidence search and candidate-only synthesis",
+          "originReferences": [
+            "AUD-INF-F03-AE-V1-20260906-001",
+            "164d938bcd4bbd7e8c48c8128cacd6e64ff0287a",
+            "research.json"
+          ],
+          "recordedAt": "2026-09-06T13:48:47Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "Numeric uncertainty had minimal source-trust impact; unquantified verbal statements could reduce number and source trust.",
+        "sourceId": "SRC-CAND-INF-F03-003",
+        "supportedSemantics": [
+          "CAUSAL"
+        ],
+        "timing": "Within the reported task/assessment; no numeric causal lag or persistence inferred",
+        "uncertainty": [
+          "No pooled effect size or quantitative precision inferred for this ontology assertion"
+        ]
+      },
+      {
+        "accessDepth": "ABSTRACT",
+        "basis": [
+          "EVIDENCE_SYNTHESIS"
+        ],
+        "comparator": "Epistemic, consensus and technical uncertainty",
+        "context": "Epistemic, consensus and technical uncertainty",
+        "datasetIds": [
+          "STUDY-INF-F03-013"
+        ],
+        "design": "EVIDENCE_SYNTHESIS; 43 empirical articles on science communication",
+        "disposition": "MIXED",
+        "exposure": "Epistemic, consensus and technical uncertainty",
+        "id": "FND-EVA-AUD-INF-F03-REL-INF-046-013",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Full text restricted; study-level moderator causality not established; includes primary literature and is not independent replication."
+        ],
+        "locator": "Publisher abstract and included-reference markers",
+        "measurement": "Credibility and attitudes",
+        "nullInterpretation": null,
+        "overlapNotes": "Same publication reused for distinct claims is not independent replication; review-primary overlap unresolved",
+        "population": "43 empirical articles on science communication",
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "No human scientific decision or activation; accessed sections only; not an exhaustive systematic review"
+          ],
+          "method": "Structured evidence search and candidate-only synthesis",
+          "originReferences": [
+            "AUD-INF-F03-AE-V1-20260906-001",
+            "164d938bcd4bbd7e8c48c8128cacd6e64ff0287a",
+            "research.json"
+          ],
+          "recordedAt": "2026-09-06T13:48:47Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "Uncertainty types differed; credibility and attitude effects were not interchangeable; cultural avoidance/topic/text length were reported moderators.",
+        "sourceId": "SRC-CAND-INF-F03-013",
+        "supportedSemantics": [],
+        "timing": "Within the reported task/assessment; no numeric causal lag or persistence inferred",
+        "uncertainty": [
+          "No pooled effect size or quantitative precision inferred for this ontology assertion"
+        ]
+      },
+      {
+        "accessDepth": "METADATA",
+        "basis": [
+          "EVIDENCE_SYNTHESIS"
+        ],
+        "comparator": null,
+        "context": "Existing source-to-edge alignment audit",
+        "datasetIds": [],
+        "design": "Bibliographic/topic screening only; no direct-effect evidence asserted",
+        "disposition": "INSUFFICIENT",
+        "exposure": null,
+        "id": "FND-EVA-AUD-INF-F03-REL-INF-046-SRC-505",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Canonical citation is preserved; no new bibliographic authority or source registration"
+        ],
+        "locator": "https://nap.nationalacademies.org/resource/27894/interactive/",
+        "measurement": null,
+        "nullInterpretation": null,
+        "overlapNotes": "Do not treat review and primary studies as independent",
+        "population": null,
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "No human scientific decision or activation; accessed sections only; not an exhaustive systematic review"
+          ],
+          "method": "Structured evidence search and candidate-only synthesis",
+          "originReferences": [
+            "AUD-INF-F03-AE-V1-20260906-001",
+            "164d938bcd4bbd7e8c48c8128cacd6e64ff0287a",
+            "research.json"
+          ],
+          "recordedAt": "2026-09-06T13:48:47Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "SRC-505/515 broad syntheses do not establish exact calibration. SUP-002/003/013 concern credibility, with mixed/null results.",
+        "sourceId": "SRC-505",
+        "supportedSemantics": [],
+        "timing": null,
+        "uncertainty": [
+          "Full source-to-proposition adequacy requires exact passages, not title matching"
+        ]
+      },
+      {
+        "accessDepth": "METADATA",
+        "basis": [
+          "EVIDENCE_SYNTHESIS"
+        ],
+        "comparator": null,
+        "context": "Existing source-to-edge alignment audit",
+        "datasetIds": [],
+        "design": "Bibliographic/topic screening only; no direct-effect evidence asserted",
+        "disposition": "INSUFFICIENT",
+        "exposure": null,
+        "id": "FND-EVA-AUD-INF-F03-REL-INF-046-SRC-515",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Canonical citation is preserved; no new bibliographic authority or source registration"
+        ],
+        "locator": "https://www.nimh.nih.gov/about/advisory-boards-and-groups/namhc/reports/behavioral-assessment-methods-for-rdoc-constructs",
+        "measurement": null,
+        "nullInterpretation": null,
+        "overlapNotes": "Do not treat review and primary studies as independent",
+        "population": null,
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "No human scientific decision or activation; accessed sections only; not an exhaustive systematic review"
+          ],
+          "method": "Structured evidence search and candidate-only synthesis",
+          "originReferences": [
+            "AUD-INF-F03-AE-V1-20260906-001",
+            "164d938bcd4bbd7e8c48c8128cacd6e64ff0287a",
+            "research.json"
+          ],
+          "recordedAt": "2026-09-06T13:48:47Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "SRC-505/515 broad syntheses do not establish exact calibration. SUP-002/003/013 concern credibility, with mixed/null results.",
+        "sourceId": "SRC-515",
+        "supportedSemantics": [],
+        "timing": null,
+        "uncertainty": [
+          "Full source-to-proposition adequacy requires exact passages, not title matching"
+        ]
+      }
+    ],
+    "synthesis": {
+      "confidence": "LOW",
+      "confidenceRationale": "Confidence concerns the exact scoped assertion, not prose certainty or source prestige",
+      "conflicts": [
+        {
+          "dispositionRationale": "Retained explicitly; exact-target support must be distinguished from other outcomes in the source",
+          "findingId": "FND-EVA-AUD-INF-F03-REL-INF-046-002"
+        },
+        {
+          "dispositionRationale": "Retained explicitly; exact-target support must be distinguished from other outcomes in the source",
+          "findingId": "FND-EVA-AUD-INF-F03-REL-INF-046-003"
+        },
+        {
+          "dispositionRationale": "Retained explicitly; exact-target support must be distinguished from other outcomes in the source",
+          "findingId": "FND-EVA-AUD-INF-F03-REL-INF-046-013"
+        }
+      ],
+      "contraryEvidenceSearch": "ASSESSED",
+      "datasetOverlap": "Primary studies reused across assertions; SUP-013 synthesis may include SUP-002/003. No independent-replication count inferred.",
+      "disposition": "INSUFFICIENT",
+      "evidenceStrength": "LIMITED",
+      "generalizationLimits": [
+        "No source-wide efficacy transfer; accessed sections only; no ontology-wide generalization"
+      ],
+      "rationale": "Trust in a number/source is not automatically confidence calibration for one's own judgment. SRC-505/515 broad syntheses do not establish exact calibration. SUP-002/003/013 concern credibility, with mixed/null results.",
+      "sourceFindingIds": [
+        "FND-EVA-AUD-INF-F03-REL-INF-046-002",
+        "FND-EVA-AUD-INF-F03-REL-INF-046-003",
+        "FND-EVA-AUD-INF-F03-REL-INF-046-013",
+        "FND-EVA-AUD-INF-F03-REL-INF-046-SRC-505",
+        "FND-EVA-AUD-INF-F03-REL-INF-046-SRC-515"
+      ]
+    }
+  },
+  {
+    "assertionId": "REL-INF-048",
+    "evidenceAssessmentId": "EVA-AUD-INF-F03-REL-INF-048",
+    "governance": {
+      "activationStatus": "NOT_ELIGIBLE",
+      "authorityBasis": "V1_NATIVE",
+      "authorizedBy": null,
+      "blockStatus": "NONE",
+      "decisionDate": null,
+      "decisionOutcome": "NOT_DECIDED",
+      "decisionRationale": null,
+      "decisionRecord": null,
+      "effectiveVersion": null,
+      "lifecycleStatus": "RESEARCH_NEEDED",
+      "supersedesIds": [],
+      "transitionProvenance": [
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": null
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "EVA-AUD-INF-F03-REL-INF-048",
+          "provenance": "AUD-INF-F03-AE-V1-20260906-001",
+          "rationale": "Record audit question and evidence limitations",
+          "revision": 1,
+          "timestamp": "2026-09-06T13:48:47Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          }
+        },
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "EVA-AUD-INF-F03-REL-INF-048",
+          "provenance": "AUD-INF-F03-AE-V1-20260906-001",
+          "rationale": "Record audit question and evidence limitations",
+          "revision": 1,
+          "timestamp": "2026-09-06T13:48:47Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "RESEARCH_NEEDED"
+          }
+        }
+      ]
+    },
+    "note": "Assessment of preserved existing assertion; no revision or approval materialized",
+    "productionMethod": "SYNTHESIS",
+    "sourceFindings": [
+      {
+        "accessDepth": "METADATA",
+        "basis": [
+          "EVIDENCE_SYNTHESIS"
+        ],
+        "comparator": null,
+        "context": "Existing source-to-edge alignment audit",
+        "datasetIds": [],
+        "design": "Bibliographic/topic screening only; no direct-effect evidence asserted",
+        "disposition": "INSUFFICIENT",
+        "exposure": null,
+        "id": "FND-EVA-AUD-INF-F03-REL-INF-048-SRC-498",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Canonical citation is preserved; no new bibliographic authority or source registration"
+        ],
+        "locator": "https://research.rug.nl/en/publications/differences-between-tight-and-loose-cultures-a-33-nation-study/",
+        "measurement": null,
+        "nullInterpretation": null,
+        "overlapNotes": "Do not treat review and primary studies as independent",
+        "population": null,
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "No human scientific decision or activation; accessed sections only; not an exhaustive systematic review"
+          ],
+          "method": "Structured evidence search and candidate-only synthesis",
+          "originReferences": [
+            "AUD-INF-F03-AE-V1-20260906-001",
+            "164d938bcd4bbd7e8c48c8128cacd6e64ff0287a",
+            "research.json"
+          ],
+          "recordedAt": "2026-09-06T13:48:47Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "SRC-498 cultural tightness is not direct metaphor evidence; SRC-505 broad misinformation synthesis insufficient for universal sign.",
+        "sourceId": "SRC-498",
+        "supportedSemantics": [],
+        "timing": null,
+        "uncertainty": [
+          "Full source-to-proposition adequacy requires exact passages, not title matching"
+        ]
+      },
+      {
+        "accessDepth": "METADATA",
+        "basis": [
+          "EVIDENCE_SYNTHESIS"
+        ],
+        "comparator": null,
+        "context": "Existing source-to-edge alignment audit",
+        "datasetIds": [],
+        "design": "Bibliographic/topic screening only; no direct-effect evidence asserted",
+        "disposition": "INSUFFICIENT",
+        "exposure": null,
+        "id": "FND-EVA-AUD-INF-F03-REL-INF-048-SRC-505",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Canonical citation is preserved; no new bibliographic authority or source registration"
+        ],
+        "locator": "https://nap.nationalacademies.org/resource/27894/interactive/",
+        "measurement": null,
+        "nullInterpretation": null,
+        "overlapNotes": "Do not treat review and primary studies as independent",
+        "population": null,
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "No human scientific decision or activation; accessed sections only; not an exhaustive systematic review"
+          ],
+          "method": "Structured evidence search and candidate-only synthesis",
+          "originReferences": [
+            "AUD-INF-F03-AE-V1-20260906-001",
+            "164d938bcd4bbd7e8c48c8128cacd6e64ff0287a",
+            "research.json"
+          ],
+          "recordedAt": "2026-09-06T13:48:47Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "SRC-498 cultural tightness is not direct metaphor evidence; SRC-505 broad misinformation synthesis insufficient for universal sign.",
+        "sourceId": "SRC-505",
+        "supportedSemantics": [],
+        "timing": null,
+        "uncertainty": [
+          "Full source-to-proposition adequacy requires exact passages, not title matching"
+        ]
+      }
+    ],
+    "synthesis": {
+      "confidence": "LOW",
+      "confidenceRationale": "Confidence concerns the exact scoped assertion, not prose certainty or source prestige",
+      "conflicts": [],
+      "contraryEvidenceSearch": "ASSESSED",
+      "datasetOverlap": "Primary studies reused across assertions; SUP-013 synthesis may include SUP-002/003. No independent-replication count inferred.",
+      "disposition": "INSUFFICIENT",
+      "evidenceStrength": "LIMITED",
+      "generalizationLimits": [
+        "No source-wide efficacy transfer; accessed sections only; no ontology-wide generalization"
+      ],
+      "rationale": "Conventional metaphor need not increase multiple interpretations; mediated-path provenance is not proof of a full pathway. SRC-498 cultural tightness is not direct metaphor evidence; SRC-505 broad misinformation synthesis insufficient for universal sign.",
+      "sourceFindingIds": [
+        "FND-EVA-AUD-INF-F03-REL-INF-048-SRC-498",
+        "FND-EVA-AUD-INF-F03-REL-INF-048-SRC-505"
+      ]
+    }
+  },
+  {
+    "assertionId": "REL-TEC-060",
+    "evidenceAssessmentId": "EVA-AUD-INF-F03-REL-TEC-060",
+    "governance": {
+      "activationStatus": "NOT_ELIGIBLE",
+      "authorityBasis": "V1_NATIVE",
+      "authorizedBy": null,
+      "blockStatus": "NONE",
+      "decisionDate": null,
+      "decisionOutcome": "NOT_DECIDED",
+      "decisionRationale": null,
+      "decisionRecord": null,
+      "effectiveVersion": null,
+      "lifecycleStatus": "RESEARCH_NEEDED",
+      "supersedesIds": [],
+      "transitionProvenance": [
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": null
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "EVA-AUD-INF-F03-REL-TEC-060",
+          "provenance": "AUD-INF-F03-AE-V1-20260906-001",
+          "rationale": "Record audit question and evidence limitations",
+          "revision": 1,
+          "timestamp": "2026-09-06T13:48:47Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          }
+        },
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "EVA-AUD-INF-F03-REL-TEC-060",
+          "provenance": "AUD-INF-F03-AE-V1-20260906-001",
+          "rationale": "Record audit question and evidence limitations",
+          "revision": 1,
+          "timestamp": "2026-09-06T13:48:47Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "RESEARCH_NEEDED"
+          }
+        }
+      ]
+    },
+    "note": "Assessment of preserved existing assertion; no revision or approval materialized",
+    "productionMethod": "SYNTHESIS",
+    "sourceFindings": [
+      {
+        "accessDepth": "METADATA",
+        "basis": [
+          "EVIDENCE_SYNTHESIS"
+        ],
+        "comparator": null,
+        "context": "Existing source-to-edge alignment audit",
+        "datasetIds": [],
+        "design": "Bibliographic/topic screening only; no direct-effect evidence asserted",
+        "disposition": "INSUFFICIENT",
+        "exposure": null,
+        "id": "FND-EVA-AUD-INF-F03-REL-TEC-060-SRC-512",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Canonical citation is preserved; no new bibliographic authority or source registration"
+        ],
+        "locator": "https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10",
+        "measurement": null,
+        "nullInterpretation": null,
+        "overlapNotes": "Do not treat review and primary studies as independent",
+        "population": null,
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "No human scientific decision or activation; accessed sections only; not an exhaustive systematic review"
+          ],
+          "method": "Structured evidence search and candidate-only synthesis",
+          "originReferences": [
+            "AUD-INF-F03-AE-V1-20260906-001",
+            "164d938bcd4bbd7e8c48c8128cacd6e64ff0287a",
+            "research.json"
+          ],
+          "recordedAt": "2026-09-06T13:48:47Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "SRC-512/513 are normative technical frameworks, not controlled display-granularity experiments.",
+        "sourceId": "SRC-512",
+        "supportedSemantics": [],
+        "timing": null,
+        "uncertainty": [
+          "Full source-to-proposition adequacy requires exact passages, not title matching"
+        ]
+      },
+      {
+        "accessDepth": "METADATA",
+        "basis": [
+          "EVIDENCE_SYNTHESIS"
+        ],
+        "comparator": null,
+        "context": "Existing source-to-edge alignment audit",
+        "datasetIds": [],
+        "design": "Bibliographic/topic screening only; no direct-effect evidence asserted",
+        "disposition": "INSUFFICIENT",
+        "exposure": null,
+        "id": "FND-EVA-AUD-INF-F03-REL-TEC-060-SRC-513",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Canonical citation is preserved; no new bibliographic authority or source registration"
+        ],
+        "locator": "https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf",
+        "measurement": null,
+        "nullInterpretation": null,
+        "overlapNotes": "Do not treat review and primary studies as independent",
+        "population": null,
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "No human scientific decision or activation; accessed sections only; not an exhaustive systematic review"
+          ],
+          "method": "Structured evidence search and candidate-only synthesis",
+          "originReferences": [
+            "AUD-INF-F03-AE-V1-20260906-001",
+            "164d938bcd4bbd7e8c48c8128cacd6e64ff0287a",
+            "research.json"
+          ],
+          "recordedAt": "2026-09-06T13:48:47Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "SRC-512/513 are normative technical frameworks, not controlled display-granularity experiments.",
+        "sourceId": "SRC-513",
+        "supportedSemantics": [],
+        "timing": null,
+        "uncertainty": [
+          "Full source-to-proposition adequacy requires exact passages, not title matching"
+        ]
+      }
+    ],
+    "synthesis": {
+      "confidence": "LOW",
+      "confidenceRationale": "Confidence concerns the exact scoped assertion, not prose certainty or source prestige",
+      "conflicts": [],
+      "contraryEvidenceSearch": "ASSESSED",
+      "datasetOverlap": "Primary studies reused across assertions; SUP-013 synthesis may include SUP-002/003. No independent-replication count inferred.",
+      "disposition": "INSUFFICIENT",
+      "evidenceStrength": "LIMITED",
+      "generalizationLimits": [
+        "No source-wide efficacy transfer; accessed sections only; no ontology-wide generalization"
+      ],
+      "rationale": "Interface granularity can permit disclosure, but implementation capability and actual communicated content differ. SRC-512/513 are normative technical frameworks, not controlled display-granularity experiments.",
+      "sourceFindingIds": [
+        "FND-EVA-AUD-INF-F03-REL-TEC-060-SRC-512",
+        "FND-EVA-AUD-INF-F03-REL-TEC-060-SRC-513"
+      ]
+    }
+  }
+]
