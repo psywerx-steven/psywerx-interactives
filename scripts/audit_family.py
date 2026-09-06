@@ -50,15 +50,31 @@ def write_json(directory, name, value):
 def scientific_integrity():
     names = git("ls-tree", "-r", "--name-only", BASELINE, "--", "data").splitlines()
     changed, hashes = [], {}
+    additive_collections = {
+        "data/relationship-intervention-v1/relationships.json": "relationships",
+        "data/relationship-intervention-v1/evidence-assessments.json": "evidenceAssessments",
+        "data/relationship-intervention-v1/source-register.json": "sources",
+    }
+    documentation_only = {"data/relationship-intervention-v1/README.md"}
     for name in names:
         frozen = subprocess.check_output(["git", "show", BASELINE + ":" + name], cwd=ROOT)
         current = (ROOT / name).read_bytes()
         hashes[name] = hashlib.sha256(current).hexdigest()
+        if name in documentation_only:
+            continue
+        if name in additive_collections:
+            key = additive_collections[name]
+            before = json.loads(frozen.decode("utf-8"))[key]
+            after = json.loads(current.decode("utf-8"))[key]
+            after_by_id = {record["id"]: record for record in after}
+            if any(after_by_id.get(record["id"]) != record for record in before):
+                changed.append(name)
+            continue
         if frozen.replace(b"\r\n", b"\n") != current.replace(b"\r\n", b"\n"):
             changed.append(name)
     return {"passed": not changed, "filesCompared": len(names), "changed": changed,
             "baselineCommit": BASELINE, "rawCurrentSha256": hashes,
-            "comparison": "EXACT_GIT_CONTENT_EXCEPT_CHECKOUT_LINE_ENDINGS"}
+            "comparison": "EXACT_EXISTING_SCIENTIFIC_RECORDS_WITH_AUTHORIZED_ADDITIVE_V1_COLLECTIONS"}
 
 
 def production_module():

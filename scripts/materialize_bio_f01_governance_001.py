@@ -40,6 +40,20 @@ def write_json(path: Path, payload: object) -> None:
     )
 
 
+def preserve_other_pilots(filename: str, key: str, bio_records: list[dict]) -> list[dict]:
+    """Rebuild BIO-F01 deterministically without erasing later governed pilots."""
+    path = DATA_DIR / filename
+    existing = json.loads(path.read_text(encoding="utf-8"))[key] if path.exists() else []
+    bio_ids = {record["id"] for record in bio_records}
+    other = [
+        record for record in existing
+        if record["id"] not in bio_ids
+        and record.get("auditId") != AUDIT_ID
+        and "BIO-F01" not in record["id"]
+    ]
+    return sorted([*bio_records, *other], key=lambda record: record["id"])
+
+
 def transition(
     object_id: str,
     before: str | None,
@@ -450,12 +464,12 @@ def materialize() -> None:
             item["status"] = "MATERIALIZED_AS_GOVERNED_ACTIVE"
 
     store_files = {
-        "source-register.json": {"schemaVersion": "1.0.0", "sources": source_records},
-        "relationships.json": {"schemaVersion": "1.0.0", "relationships": relationships},
-        "evidence-assessments.json": {"schemaVersion": "1.0.0", "evidenceAssessments": evidence_assessments},
-        "causal-pathways.json": {"schemaVersion": "1.0.0", "causalPathways": []},
-        "interventions.json": {"schemaVersion": "1.0.0", "interventions": interventions},
-        "intervention-effects.json": {"schemaVersion": "1.0.0", "interventionEffects": effects},
+        "source-register.json": {"schemaVersion": "1.0.0", "sources": preserve_other_pilots("source-register.json", "sources", source_records)},
+        "relationships.json": {"schemaVersion": "1.0.0", "relationships": preserve_other_pilots("relationships.json", "relationships", relationships)},
+        "evidence-assessments.json": {"schemaVersion": "1.0.0", "evidenceAssessments": preserve_other_pilots("evidence-assessments.json", "evidenceAssessments", evidence_assessments)},
+        "causal-pathways.json": {"schemaVersion": "1.0.0", "causalPathways": preserve_other_pilots("causal-pathways.json", "causalPathways", [])},
+        "interventions.json": {"schemaVersion": "1.0.0", "interventions": preserve_other_pilots("interventions.json", "interventions", interventions)},
+        "intervention-effects.json": {"schemaVersion": "1.0.0", "interventionEffects": preserve_other_pilots("intervention-effects.json", "interventionEffects", effects)},
     }
     for filename, payload in store_files.items():
         write_json(DATA_DIR / filename, payload)

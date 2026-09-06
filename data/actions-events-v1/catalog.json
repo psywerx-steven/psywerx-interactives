@@ -1,8 +1,1955 @@
 {
   "schemaVersion": "1.0.0",
-  "happeningTypes": [],
+  "happeningTypes": [
+    {
+      "actorOrSourceSystem": "ROLE-MESSAGE-EDITOR",
+      "aliases": [],
+      "componentEnumeration": "NOT_APPLICABLE",
+      "components": [],
+      "controlProfiles": [
+        {
+          "actorId": "ROLE-MESSAGE-EDITOR",
+          "capabilities": [
+            "INITIATE",
+            "TUNE"
+          ],
+          "conditions": "Proposed role only; no real actor capability, legal permission or feasibility certified",
+          "context": "English legal passages with selected lexical/syntactic features; no assertion that all profile dimensions decrease.",
+          "extent": "PARTIAL",
+          "population": "English legal passages with selected lexical/syntactic features; no assertion that all profile dimensions decrease.",
+          "provenance": {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "limitations": [
+              "No human scientific decision or activation; accessed sections only; not an exhaustive systematic review"
+            ],
+            "method": "Structured evidence search and candidate-only synthesis",
+            "originReferences": [
+              "AUD-INF-F03-AE-V1-20260906-001",
+              "164d938bcd4bbd7e8c48c8128cacd6e64ff0287a",
+              "research.json"
+            ],
+            "recordedAt": "2026-09-06T13:48:47Z"
+          }
+        }
+      ],
+      "description": "Deliberately alter explicitly specified lexical or syntactic surface features while preserving the intended substantive propositions. The identity promises no improvement in comprehension, readability, trust, or total multidimensional complexity.",
+      "domainTags": [
+        "DELIBERATE_INTERVENTION"
+      ],
+      "governance": {
+        "lifecycleStatus": "GOVERNED",
+        "activationStatus": "INACTIVE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "APPROVED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": "docs/governance/pilots/INF-F03/INF_F03_GOVERNANCE_DECISION_001.md",
+        "authorizedBy": "authorized human governor",
+        "decisionDate": "2026-09-06",
+        "effectiveVersion": "INF-F03-GOVERNANCE-001",
+        "decisionRationale": "The reusable identity, without an efficacy claim, was approved; activation was explicitly withheld.",
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Preserved non-governed candidate workflow from the audited pilot lineage.",
+            "timestamp": "2026-09-06T20:00:00Z",
+            "objectId": "HT-V1-INF-F03-001",
+            "revision": 1,
+            "provenance": "AUD-INF-F03-AE-V1-20260906-001:ec49f49346a051a9dada2cdf97d0c85e7205e018:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Preserved non-governed candidate workflow from the audited pilot lineage.",
+            "timestamp": "2026-09-06T20:00:00Z",
+            "objectId": "HT-V1-INF-F03-001",
+            "revision": 1,
+            "provenance": "AUD-INF-F03-AE-V1-20260906-001:ec49f49346a051a9dada2cdf97d0c85e7205e018:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Preserved non-governed candidate workflow from the audited pilot lineage.",
+            "timestamp": "2026-09-06T20:00:00Z",
+            "objectId": "HT-V1-INF-F03-001",
+            "revision": 1,
+            "provenance": "AUD-INF-F03-AE-V1-20260906-001:ec49f49346a051a9dada2cdf97d0c85e7205e018:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "GOVERNED",
+              "activationStatus": "INACTIVE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Exact materialization of the authorized INF-F03 human decision; activation was explicitly withheld.",
+            "timestamp": "2026-09-06T20:00:00Z",
+            "objectId": "HT-V1-INF-F03-001",
+            "revision": 1,
+            "provenance": "AUD-INF-F03-AE-V1-20260906-001:ec49f49346a051a9dada2cdf97d0c85e7205e018:transition-4",
+            "governanceDecisionRecord": "docs/governance/pilots/INF-F03/INF_F03_GOVERNANCE_DECISION_001.md",
+            "exactDecisionMaterialization": true
+          }
+        ]
+      },
+      "id": "HT-V1-INF-F03-001",
+      "identityDefiningProfile": {
+        "doseIntensity": null,
+        "duration": null,
+        "frequency": null,
+        "reach": null,
+        "timing": null
+      },
+      "identityKey": "INF-F03-GOV-001",
+      "identitySourceIds": [
+        "SRC-550"
+      ],
+      "intentionality": "DELIBERATE",
+      "interventionSubset": true,
+      "kindTags": [
+        "ACTION"
+      ],
+      "name": "Content-preserving surface-language revision",
+      "originLayers": [
+        "INF",
+        "INS"
+      ],
+      "packageKind": "ATOMIC",
+      "pattern": [
+        "DISCRETE"
+      ],
+      "provenance": {
+        "actorClass": "AUTOMATED_PROCESS_OR_AI",
+        "method": "Materialized exact approved identity from candidate lineage",
+        "recordedAt": "2026-09-06T20:00:00Z",
+        "originReferences": [
+          "AUD-INF-F03-AE-V1-20260906-001",
+          "HT-CAND-INF-F03-001",
+          "ec49f49346a051a9dada2cdf97d0c85e7205e018",
+          "GOV-INF-F03-001-2026-09-06"
+        ],
+        "limitations": [
+          "Identity governance does not establish any effect or practitioner recommendation"
+        ]
+      },
+      "recordClass": "SCIENTIFIC_RECORD",
+      "revision": 1,
+      "schemaVersion": "1.0.0"
+    },
+    {
+      "actorOrSourceSystem": "ROLE-MESSAGE-EDITOR",
+      "aliases": [],
+      "componentEnumeration": "NOT_APPLICABLE",
+      "components": [],
+      "controlProfiles": [
+        {
+          "actorId": "ROLE-MESSAGE-EDITOR",
+          "capabilities": [
+            "INITIATE",
+            "TUNE"
+          ],
+          "conditions": "Proposed role only; no real actor capability, legal permission or feasibility certified",
+          "context": "Factual numeric estimates with defensible uncertainty bounds; do not fabricate ranges or imply that precision equals certainty.",
+          "extent": "PARTIAL",
+          "population": "Factual numeric estimates with defensible uncertainty bounds; do not fabricate ranges or imply that precision equals certainty.",
+          "provenance": {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "limitations": [
+              "No human scientific decision or activation; accessed sections only; not an exhaustive systematic review"
+            ],
+            "method": "Structured evidence search and candidate-only synthesis",
+            "originReferences": [
+              "AUD-INF-F03-AE-V1-20260906-001",
+              "164d938bcd4bbd7e8c48c8128cacd6e64ff0287a",
+              "research.json"
+            ],
+            "recordedAt": "2026-09-06T13:48:47Z"
+          }
+        }
+      ],
+      "description": "Attach justified numeric uncertainty bounds or a range and an interpretation appropriate to a specified numerical estimate; invented precision is outside this identity.",
+      "domainTags": [
+        "DELIBERATE_INTERVENTION"
+      ],
+      "governance": {
+        "lifecycleStatus": "GOVERNED",
+        "activationStatus": "ACTIVE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "APPROVED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": "docs/governance/pilots/INF-F03/INF_F03_ACTIVATION_DECISION_001.md",
+        "authorizedBy": "authorized human governor",
+        "decisionDate": "2026-09-06",
+        "effectiveVersion": "INF-F03-PARTIAL-ACTIVATION-001",
+        "decisionRationale": "Exact partial activation authorized after independent activation-readiness audit; scientific identity, proposition, scope, and evidence synthesis remain unchanged.",
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Preserved non-governed candidate workflow from the audited pilot lineage.",
+            "timestamp": "2026-09-06T20:00:00Z",
+            "objectId": "HT-V1-INF-F03-002",
+            "revision": 1,
+            "provenance": "AUD-INF-F03-AE-V1-20260906-001:ec49f49346a051a9dada2cdf97d0c85e7205e018:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Preserved non-governed candidate workflow from the audited pilot lineage.",
+            "timestamp": "2026-09-06T20:00:00Z",
+            "objectId": "HT-V1-INF-F03-002",
+            "revision": 1,
+            "provenance": "AUD-INF-F03-AE-V1-20260906-001:ec49f49346a051a9dada2cdf97d0c85e7205e018:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Preserved non-governed candidate workflow from the audited pilot lineage.",
+            "timestamp": "2026-09-06T20:00:00Z",
+            "objectId": "HT-V1-INF-F03-002",
+            "revision": 1,
+            "provenance": "AUD-INF-F03-AE-V1-20260906-001:ec49f49346a051a9dada2cdf97d0c85e7205e018:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "GOVERNED",
+              "activationStatus": "INACTIVE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Exact materialization of the authorized INF-F03 human decision; activation was explicitly withheld.",
+            "timestamp": "2026-09-06T20:00:00Z",
+            "objectId": "HT-V1-INF-F03-002",
+            "revision": 1,
+            "provenance": "AUD-INF-F03-AE-V1-20260906-001:ec49f49346a051a9dada2cdf97d0c85e7205e018:transition-4",
+            "governanceDecisionRecord": "docs/governance/pilots/INF-F03/INF_F03_GOVERNANCE_DECISION_001.md",
+            "exactDecisionMaterialization": true
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "GOVERNED",
+              "activationStatus": "INACTIVE"
+            },
+            "toState": {
+              "lifecycleStatus": "GOVERNED",
+              "activationStatus": "ACTIVE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Mechanical materialization of the exact partial activation explicitly authorized by an authorized human governor after the independent audit.",
+            "timestamp": "2026-09-06T23:00:00Z",
+            "objectId": "HT-V1-INF-F03-002",
+            "revision": 1,
+            "provenance": "AUD-INF-F03-ACTIVATION-V1-20260906-001:8ecf60775a5ae35b31010c301490dfd3c439623c:activation-001",
+            "governanceDecisionRecord": "docs/governance/pilots/INF-F03/INF_F03_ACTIVATION_DECISION_001.md",
+            "exactDecisionMaterialization": true
+          }
+        ]
+      },
+      "id": "HT-V1-INF-F03-002",
+      "identityDefiningProfile": {
+        "doseIntensity": null,
+        "duration": null,
+        "frequency": null,
+        "reach": null,
+        "timing": null
+      },
+      "identityKey": "INF-F03-GOV-002",
+      "identitySourceIds": [
+        "SRC-551",
+        "SRC-552"
+      ],
+      "intentionality": "DELIBERATE",
+      "interventionSubset": true,
+      "kindTags": [
+        "ACTION"
+      ],
+      "name": "Attach quantified uncertainty bounds to a numerical claim",
+      "originLayers": [
+        "INF"
+      ],
+      "packageKind": "ATOMIC",
+      "pattern": [
+        "DISCRETE"
+      ],
+      "provenance": {
+        "actorClass": "AUTOMATED_PROCESS_OR_AI",
+        "method": "Materialized exact approved identity from candidate lineage",
+        "recordedAt": "2026-09-06T20:00:00Z",
+        "originReferences": [
+          "AUD-INF-F03-AE-V1-20260906-001",
+          "HT-CAND-INF-F03-002",
+          "ec49f49346a051a9dada2cdf97d0c85e7205e018",
+          "GOV-INF-F03-001-2026-09-06"
+        ],
+        "limitations": [
+          "Identity governance does not establish any effect or practitioner recommendation"
+        ]
+      },
+      "recordClass": "SCIENTIFIC_RECORD",
+      "revision": 1,
+      "schemaVersion": "1.0.0"
+    },
+    {
+      "actorOrSourceSystem": "ROLE-EXPOSED-COMMUNICATOR",
+      "aliases": [],
+      "componentEnumeration": "NOT_APPLICABLE",
+      "components": [],
+      "controlProfiles": [
+        {
+          "actorId": "ROLE-EXPOSED-COMMUNICATOR",
+          "capabilities": [],
+          "conditions": "Proposed role only; no real actor capability, legal permission or feasibility certified",
+          "context": "Videoconferenced picture descriptions; source and target messages distinguished. Noise is external to the focal task, not necessarily random outside the experiment.",
+          "extent": "UNKNOWN",
+          "population": "Videoconferenced picture descriptions; source and target messages distinguished. Noise is external to the focal task, not necessarily random outside the experiment.",
+          "provenance": {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "limitations": [
+              "No human scientific decision or activation; accessed sections only; not an exhaustive systematic review"
+            ],
+            "method": "Structured evidence search and candidate-only synthesis",
+            "originReferences": [
+              "AUD-INF-F03-AE-V1-20260906-001",
+              "164d938bcd4bbd7e8c48c8128cacd6e64ff0287a",
+              "research.json"
+            ],
+            "recordedAt": "2026-09-06T13:48:47Z"
+          }
+        }
+      ],
+      "description": "Exposure of a message-production task to concurrent multi-talker babble. This is not a deliberate Intervention subset or practitioner recommendation.",
+      "domainTags": [
+        "ENVIRONMENTAL_EXPOSURE"
+      ],
+      "governance": {
+        "lifecycleStatus": "GOVERNED",
+        "activationStatus": "INACTIVE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "APPROVED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": "docs/governance/pilots/INF-F03/INF_F03_GOVERNANCE_DECISION_001.md",
+        "authorizedBy": "authorized human governor",
+        "decisionDate": "2026-09-06",
+        "effectiveVersion": "INF-F03-GOVERNANCE-001",
+        "decisionRationale": "The reusable identity, without an efficacy claim, was approved; activation was explicitly withheld.",
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Preserved non-governed candidate workflow from the audited pilot lineage.",
+            "timestamp": "2026-09-06T20:00:00Z",
+            "objectId": "HT-V1-INF-F03-004",
+            "revision": 1,
+            "provenance": "AUD-INF-F03-AE-V1-20260906-001:ec49f49346a051a9dada2cdf97d0c85e7205e018:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Preserved non-governed candidate workflow from the audited pilot lineage.",
+            "timestamp": "2026-09-06T20:00:00Z",
+            "objectId": "HT-V1-INF-F03-004",
+            "revision": 1,
+            "provenance": "AUD-INF-F03-AE-V1-20260906-001:ec49f49346a051a9dada2cdf97d0c85e7205e018:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Preserved non-governed candidate workflow from the audited pilot lineage.",
+            "timestamp": "2026-09-06T20:00:00Z",
+            "objectId": "HT-V1-INF-F03-004",
+            "revision": 1,
+            "provenance": "AUD-INF-F03-AE-V1-20260906-001:ec49f49346a051a9dada2cdf97d0c85e7205e018:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "GOVERNED",
+              "activationStatus": "INACTIVE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Exact materialization of the authorized INF-F03 human decision; activation was explicitly withheld.",
+            "timestamp": "2026-09-06T20:00:00Z",
+            "objectId": "HT-V1-INF-F03-004",
+            "revision": 1,
+            "provenance": "AUD-INF-F03-AE-V1-20260906-001:ec49f49346a051a9dada2cdf97d0c85e7205e018:transition-4",
+            "governanceDecisionRecord": "docs/governance/pilots/INF-F03/INF_F03_GOVERNANCE_DECISION_001.md",
+            "exactDecisionMaterialization": true
+          }
+        ]
+      },
+      "id": "HT-V1-INF-F03-004",
+      "identityDefiningProfile": {
+        "doseIntensity": null,
+        "duration": null,
+        "frequency": null,
+        "reach": null,
+        "timing": null
+      },
+      "identityKey": "INF-F03-GOV-004",
+      "identitySourceIds": [],
+      "intentionality": "UNKNOWN",
+      "interventionSubset": false,
+      "kindTags": [
+        "EVENT",
+        "EXPOSURE"
+      ],
+      "name": "Multi-talker babble during message production",
+      "originLayers": [
+        "ENV",
+        "SOC"
+      ],
+      "packageKind": "ATOMIC",
+      "pattern": [
+        "CONTINUOUS"
+      ],
+      "provenance": {
+        "actorClass": "AUTOMATED_PROCESS_OR_AI",
+        "method": "Materialized exact approved identity from candidate lineage",
+        "recordedAt": "2026-09-06T20:00:00Z",
+        "originReferences": [
+          "AUD-INF-F03-AE-V1-20260906-001",
+          "HT-CAND-INF-F03-004",
+          "ec49f49346a051a9dada2cdf97d0c85e7205e018",
+          "GOV-INF-F03-001-2026-09-06"
+        ],
+        "limitations": [
+          "Identity governance does not establish any effect or practitioner recommendation"
+        ]
+      },
+      "recordClass": "SCIENTIFIC_RECORD",
+      "revision": 1,
+      "schemaVersion": "1.0.0"
+    },
+    {
+      "actorOrSourceSystem": "ROLE-MESSAGE-EDITOR",
+      "aliases": [],
+      "componentEnumeration": "NOT_APPLICABLE",
+      "components": [],
+      "controlProfiles": [
+        {
+          "actorId": "ROLE-MESSAGE-EDITOR",
+          "capabilities": [
+            "INITIATE",
+            "TUNE"
+          ],
+          "conditions": "Proposed role only; no real actor capability, legal permission or feasibility certified",
+          "context": "Evaluated systems/corpora only; system identity and version are effect/implementation scope, not blanket efficacy.",
+          "extent": "PARTIAL",
+          "population": "Evaluated systems/corpora only; system identity and version are effect/implementation scope, not blanket efficacy.",
+          "provenance": {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "limitations": [
+              "No human scientific decision or activation; accessed sections only; not an exhaustive systematic review"
+            ],
+            "method": "Structured evidence search and candidate-only synthesis",
+            "originReferences": [
+              "AUD-INF-F03-AE-V1-20260906-001",
+              "164d938bcd4bbd7e8c48c8128cacd6e64ff0287a",
+              "research.json"
+            ],
+            "recordedAt": "2026-09-06T13:48:47Z"
+          }
+        }
+      ],
+      "description": "Use a specified automatic text-simplification system/version to rewrite selected textual features. The identity itself makes no efficacy or meaning-fidelity claim.",
+      "domainTags": [
+        "TECHNOLOGICAL_CHANGE"
+      ],
+      "governance": {
+        "lifecycleStatus": "GOVERNED",
+        "activationStatus": "INACTIVE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "APPROVED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": "docs/governance/pilots/INF-F03/INF_F03_GOVERNANCE_DECISION_001.md",
+        "authorizedBy": "authorized human governor",
+        "decisionDate": "2026-09-06",
+        "effectiveVersion": "INF-F03-GOVERNANCE-001",
+        "decisionRationale": "The reusable identity, without an efficacy claim, was approved; activation was explicitly withheld.",
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Preserved non-governed candidate workflow from the audited pilot lineage.",
+            "timestamp": "2026-09-06T20:00:00Z",
+            "objectId": "HT-V1-INF-F03-005",
+            "revision": 1,
+            "provenance": "AUD-INF-F03-AE-V1-20260906-001:ec49f49346a051a9dada2cdf97d0c85e7205e018:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Preserved non-governed candidate workflow from the audited pilot lineage.",
+            "timestamp": "2026-09-06T20:00:00Z",
+            "objectId": "HT-V1-INF-F03-005",
+            "revision": 1,
+            "provenance": "AUD-INF-F03-AE-V1-20260906-001:ec49f49346a051a9dada2cdf97d0c85e7205e018:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Preserved non-governed candidate workflow from the audited pilot lineage.",
+            "timestamp": "2026-09-06T20:00:00Z",
+            "objectId": "HT-V1-INF-F03-005",
+            "revision": 1,
+            "provenance": "AUD-INF-F03-AE-V1-20260906-001:ec49f49346a051a9dada2cdf97d0c85e7205e018:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "GOVERNED",
+              "activationStatus": "INACTIVE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Exact materialization of the authorized INF-F03 human decision; activation was explicitly withheld.",
+            "timestamp": "2026-09-06T20:00:00Z",
+            "objectId": "HT-V1-INF-F03-005",
+            "revision": 1,
+            "provenance": "AUD-INF-F03-AE-V1-20260906-001:ec49f49346a051a9dada2cdf97d0c85e7205e018:transition-4",
+            "governanceDecisionRecord": "docs/governance/pilots/INF-F03/INF_F03_GOVERNANCE_DECISION_001.md",
+            "exactDecisionMaterialization": true
+          }
+        ]
+      },
+      "id": "HT-V1-INF-F03-005",
+      "identityDefiningProfile": {
+        "doseIntensity": null,
+        "duration": null,
+        "frequency": null,
+        "reach": null,
+        "timing": null
+      },
+      "identityKey": "INF-F03-GOV-005",
+      "identitySourceIds": [
+        "SRC-550"
+      ],
+      "intentionality": "DELIBERATE",
+      "interventionSubset": true,
+      "kindTags": [
+        "ACTION"
+      ],
+      "name": "Automatic text-simplification rewrite",
+      "originLayers": [
+        "TEC",
+        "INF"
+      ],
+      "packageKind": "ATOMIC",
+      "pattern": [
+        "DISCRETE"
+      ],
+      "provenance": {
+        "actorClass": "AUTOMATED_PROCESS_OR_AI",
+        "method": "Materialized exact approved identity from candidate lineage",
+        "recordedAt": "2026-09-06T20:00:00Z",
+        "originReferences": [
+          "AUD-INF-F03-AE-V1-20260906-001",
+          "HT-CAND-INF-F03-005",
+          "ec49f49346a051a9dada2cdf97d0c85e7205e018",
+          "GOV-INF-F03-001-2026-09-06"
+        ],
+        "limitations": [
+          "Identity governance does not establish any effect or practitioner recommendation"
+        ]
+      },
+      "recordClass": "SCIENTIFIC_RECORD",
+      "revision": 1,
+      "schemaVersion": "1.0.0"
+    },
+    {
+      "actorOrSourceSystem": "ROLE-MESSAGE-EDITOR",
+      "aliases": [],
+      "componentEnumeration": "NOT_APPLICABLE",
+      "components": [],
+      "controlProfiles": [
+        {
+          "actorId": "ROLE-MESSAGE-EDITOR",
+          "capabilities": [
+            "INITIATE",
+            "TUNE"
+          ],
+          "conditions": "Proposed role only; no real actor capability, legal permission or feasibility certified",
+          "context": "Instruction-specific wording; medical instructions require qualified clinical review. Interpretation variance is not automatically content ambiguity.",
+          "extent": "PARTIAL",
+          "population": "Instruction-specific wording; medical instructions require qualified clinical review. Interpretation variance is not automatically content ambiguity.",
+          "provenance": {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "limitations": [
+              "No human scientific decision or activation; accessed sections only; not an exhaustive systematic review"
+            ],
+            "method": "Structured evidence search and candidate-only synthesis",
+            "originReferences": [
+              "AUD-INF-F03-AE-V1-20260906-001",
+              "164d938bcd4bbd7e8c48c8128cacd6e64ff0287a",
+              "research.json"
+            ],
+            "recordedAt": "2026-09-06T13:48:47Z"
+          }
+        }
+      ],
+      "description": "Replace under-specified instructional timing or referents with explicit wording while preserving the substantive instruction; not every ambiguous instruction can safely be made more specific.",
+      "domainTags": [
+        "DELIBERATE_INTERVENTION"
+      ],
+      "governance": {
+        "lifecycleStatus": "GOVERNED",
+        "activationStatus": "INACTIVE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "APPROVED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": "docs/governance/pilots/INF-F03/INF_F03_GOVERNANCE_DECISION_001.md",
+        "authorizedBy": "authorized human governor",
+        "decisionDate": "2026-09-06",
+        "effectiveVersion": "INF-F03-GOVERNANCE-001",
+        "decisionRationale": "The reusable identity, without an efficacy claim, was approved; activation was explicitly withheld.",
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Preserved non-governed candidate workflow from the audited pilot lineage.",
+            "timestamp": "2026-09-06T20:00:00Z",
+            "objectId": "HT-V1-INF-F03-006",
+            "revision": 1,
+            "provenance": "AUD-INF-F03-AE-V1-20260906-001:ec49f49346a051a9dada2cdf97d0c85e7205e018:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Preserved non-governed candidate workflow from the audited pilot lineage.",
+            "timestamp": "2026-09-06T20:00:00Z",
+            "objectId": "HT-V1-INF-F03-006",
+            "revision": 1,
+            "provenance": "AUD-INF-F03-AE-V1-20260906-001:ec49f49346a051a9dada2cdf97d0c85e7205e018:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Preserved non-governed candidate workflow from the audited pilot lineage.",
+            "timestamp": "2026-09-06T20:00:00Z",
+            "objectId": "HT-V1-INF-F03-006",
+            "revision": 1,
+            "provenance": "AUD-INF-F03-AE-V1-20260906-001:ec49f49346a051a9dada2cdf97d0c85e7205e018:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "GOVERNED",
+              "activationStatus": "INACTIVE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Exact materialization of the authorized INF-F03 human decision; activation was explicitly withheld.",
+            "timestamp": "2026-09-06T20:00:00Z",
+            "objectId": "HT-V1-INF-F03-006",
+            "revision": 1,
+            "provenance": "AUD-INF-F03-AE-V1-20260906-001:ec49f49346a051a9dada2cdf97d0c85e7205e018:transition-4",
+            "governanceDecisionRecord": "docs/governance/pilots/INF-F03/INF_F03_GOVERNANCE_DECISION_001.md",
+            "exactDecisionMaterialization": true
+          }
+        ]
+      },
+      "id": "HT-V1-INF-F03-006",
+      "identityDefiningProfile": {
+        "doseIntensity": null,
+        "duration": null,
+        "frequency": null,
+        "reach": null,
+        "timing": null
+      },
+      "identityKey": "INF-F03-GOV-006",
+      "identitySourceIds": [],
+      "intentionality": "DELIBERATE",
+      "interventionSubset": true,
+      "kindTags": [
+        "ACTION"
+      ],
+      "name": "Make instructional timing and referents explicit",
+      "originLayers": [
+        "INF",
+        "INS"
+      ],
+      "packageKind": "ATOMIC",
+      "pattern": [
+        "DISCRETE"
+      ],
+      "provenance": {
+        "actorClass": "AUTOMATED_PROCESS_OR_AI",
+        "method": "Materialized exact approved identity from candidate lineage",
+        "recordedAt": "2026-09-06T20:00:00Z",
+        "originReferences": [
+          "AUD-INF-F03-AE-V1-20260906-001",
+          "HT-CAND-INF-F03-006",
+          "ec49f49346a051a9dada2cdf97d0c85e7205e018",
+          "GOV-INF-F03-001-2026-09-06"
+        ],
+        "limitations": [
+          "Identity governance does not establish any effect or practitioner recommendation"
+        ]
+      },
+      "recordClass": "SCIENTIFIC_RECORD",
+      "revision": 1,
+      "schemaVersion": "1.0.0"
+    },
+    {
+      "actorOrSourceSystem": "ROLE-EXPOSED-COMMUNICATOR",
+      "aliases": [],
+      "componentEnumeration": "NOT_APPLICABLE",
+      "components": [],
+      "controlProfiles": [
+        {
+          "actorId": "ROLE-EXPOSED-COMMUNICATOR",
+          "capabilities": [],
+          "conditions": "Proposed role only; no real actor capability, legal permission or feasibility certified",
+          "context": "Healthy participants after one night of deprivation; speaker versus listener roles separated.",
+          "extent": "UNKNOWN",
+          "population": "Healthy participants after one night of deprivation; speaker versus listener roles separated.",
+          "provenance": {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "limitations": [
+              "No human scientific decision or activation; accessed sections only; not an exhaustive systematic review"
+            ],
+            "method": "Structured evidence search and candidate-only synthesis",
+            "originReferences": [
+              "AUD-INF-F03-AE-V1-20260906-001",
+              "164d938bcd4bbd7e8c48c8128cacd6e64ff0287a",
+              "research.json"
+            ],
+            "recordedAt": "2026-09-06T13:48:47Z"
+          }
+        }
+      ],
+      "description": "Overnight sleep-loss exposure preceding message production. It is a biological exposure/process, not a practitioner recommendation, and establishes no BIO-F01 effect.",
+      "domainTags": [
+        "BIOLOGICAL_PHYSIOLOGICAL_PROCESS"
+      ],
+      "governance": {
+        "lifecycleStatus": "GOVERNED",
+        "activationStatus": "INACTIVE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "APPROVED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": "docs/governance/pilots/INF-F03/INF_F03_GOVERNANCE_DECISION_001.md",
+        "authorizedBy": "authorized human governor",
+        "decisionDate": "2026-09-06",
+        "effectiveVersion": "INF-F03-GOVERNANCE-001",
+        "decisionRationale": "The reusable identity, without an efficacy claim, was approved; activation was explicitly withheld.",
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Preserved non-governed candidate workflow from the audited pilot lineage.",
+            "timestamp": "2026-09-06T20:00:00Z",
+            "objectId": "HT-V1-INF-F03-007",
+            "revision": 1,
+            "provenance": "AUD-INF-F03-AE-V1-20260906-001:ec49f49346a051a9dada2cdf97d0c85e7205e018:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Preserved non-governed candidate workflow from the audited pilot lineage.",
+            "timestamp": "2026-09-06T20:00:00Z",
+            "objectId": "HT-V1-INF-F03-007",
+            "revision": 1,
+            "provenance": "AUD-INF-F03-AE-V1-20260906-001:ec49f49346a051a9dada2cdf97d0c85e7205e018:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Preserved non-governed candidate workflow from the audited pilot lineage.",
+            "timestamp": "2026-09-06T20:00:00Z",
+            "objectId": "HT-V1-INF-F03-007",
+            "revision": 1,
+            "provenance": "AUD-INF-F03-AE-V1-20260906-001:ec49f49346a051a9dada2cdf97d0c85e7205e018:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "GOVERNED",
+              "activationStatus": "INACTIVE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Exact materialization of the authorized INF-F03 human decision; activation was explicitly withheld.",
+            "timestamp": "2026-09-06T20:00:00Z",
+            "objectId": "HT-V1-INF-F03-007",
+            "revision": 1,
+            "provenance": "AUD-INF-F03-AE-V1-20260906-001:ec49f49346a051a9dada2cdf97d0c85e7205e018:transition-4",
+            "governanceDecisionRecord": "docs/governance/pilots/INF-F03/INF_F03_GOVERNANCE_DECISION_001.md",
+            "exactDecisionMaterialization": true
+          }
+        ]
+      },
+      "id": "HT-V1-INF-F03-007",
+      "identityDefiningProfile": {
+        "doseIntensity": null,
+        "duration": null,
+        "frequency": null,
+        "reach": null,
+        "timing": null
+      },
+      "identityKey": "INF-F03-GOV-007",
+      "identitySourceIds": [],
+      "intentionality": "UNKNOWN",
+      "interventionSubset": false,
+      "kindTags": [
+        "EXPOSURE",
+        "PROCESS"
+      ],
+      "name": "Overnight sleep loss before message production",
+      "originLayers": [
+        "BIO"
+      ],
+      "packageKind": "ATOMIC",
+      "pattern": [
+        "CONTINUOUS"
+      ],
+      "provenance": {
+        "actorClass": "AUTOMATED_PROCESS_OR_AI",
+        "method": "Materialized exact approved identity from candidate lineage",
+        "recordedAt": "2026-09-06T20:00:00Z",
+        "originReferences": [
+          "AUD-INF-F03-AE-V1-20260906-001",
+          "HT-CAND-INF-F03-007",
+          "ec49f49346a051a9dada2cdf97d0c85e7205e018",
+          "GOV-INF-F03-001-2026-09-06"
+        ],
+        "limitations": [
+          "Identity governance does not establish any effect or practitioner recommendation"
+        ]
+      },
+      "recordClass": "SCIENTIFIC_RECORD",
+      "revision": 1,
+      "schemaVersion": "1.0.0"
+    }
+  ],
   "occurrences": [],
-  "effectAssertions": [],
-  "evidenceAssessments": [],
-  "authorizations": []
+  "effectAssertions": [
+    {
+      "change": "DECREASE",
+      "claimSemantics": "CAUSAL",
+      "contribution": {
+        "groupId": "CONTRIB-INF-F03-001",
+        "reconciliation": null,
+        "relatedAssertionIds": [],
+        "role": "PRIMARY"
+      },
+      "evidenceAssessmentIds": [
+        "EVA-AE-V1-INF-F03-001"
+      ],
+      "exposureProfile": {
+        "doseIntensity": null,
+        "duration": null,
+        "frequency": null,
+        "reach": null,
+        "timing": null
+      },
+      "governance": {
+        "lifecycleStatus": "GOVERNED",
+        "activationStatus": "INACTIVE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "APPROVED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": "docs/governance/pilots/INF-F03/INF_F03_GOVERNANCE_DECISION_001.md",
+        "authorizedBy": "authorized human governor",
+        "decisionDate": "2026-09-06",
+        "effectiveVersion": "INF-F03-GOVERNANCE-001",
+        "decisionRationale": "The exact scoped EffectAssertion was approved; activation was explicitly withheld.",
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Preserved non-governed candidate workflow from the audited pilot lineage.",
+            "timestamp": "2026-09-06T20:00:00Z",
+            "objectId": "EA-V1-INF-F03-001",
+            "revision": 1,
+            "provenance": "AUD-INF-F03-AE-V1-20260906-001:ec49f49346a051a9dada2cdf97d0c85e7205e018:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Preserved non-governed candidate workflow from the audited pilot lineage.",
+            "timestamp": "2026-09-06T20:00:00Z",
+            "objectId": "EA-V1-INF-F03-001",
+            "revision": 1,
+            "provenance": "AUD-INF-F03-AE-V1-20260906-001:ec49f49346a051a9dada2cdf97d0c85e7205e018:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Preserved non-governed candidate workflow from the audited pilot lineage.",
+            "timestamp": "2026-09-06T20:00:00Z",
+            "objectId": "EA-V1-INF-F03-001",
+            "revision": 1,
+            "provenance": "AUD-INF-F03-AE-V1-20260906-001:ec49f49346a051a9dada2cdf97d0c85e7205e018:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "GOVERNED",
+              "activationStatus": "INACTIVE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Exact materialization of the authorized INF-F03 human decision; activation was explicitly withheld.",
+            "timestamp": "2026-09-06T20:00:00Z",
+            "objectId": "EA-V1-INF-F03-001",
+            "revision": 1,
+            "provenance": "AUD-INF-F03-AE-V1-20260906-001:ec49f49346a051a9dada2cdf97d0c85e7205e018:transition-4",
+            "governanceDecisionRecord": "docs/governance/pilots/INF-F03/INF_F03_GOVERNANCE_DECISION_001.md",
+            "exactDecisionMaterialization": true
+          }
+        ]
+      },
+      "grounding": {
+        "causalIdentificationRationale": "Controlled message construction supports only changed content features",
+        "derivationEntailed": "NO",
+        "duplicatePropagationControl": null,
+        "representedDriverId": null
+      },
+      "id": "EA-V1-INF-F03-001",
+      "inferenceProvenance": null,
+      "intendedChange": "DECREASE",
+      "interaction": {
+        "evidenceAssessmentIds": [],
+        "mode": "NONE",
+        "otherEffectIds": []
+      },
+      "knowledgeStatus": "SUPPORTED_EFFECT",
+      "mechanism": "Replacing explicitly named low-frequency lexical items and/or center-embedded clause structures changes only those named surface-feature dimensions while the intended substantive propositions are held fixed and independently checked.",
+      "mechanismStatus": "SPECIFIED",
+      "mechanisticDriverIds": [],
+      "moderatorLinks": [],
+      "observedChange": "DECREASE",
+      "occurrenceId": null,
+      "otherSpecified": null,
+      "outcomes": [],
+      "productionMethod": "SYNTHESIS",
+      "property": "LEVEL",
+      "provenance": {
+        "actorClass": "AUTOMATED_PROCESS_OR_AI",
+        "method": "Materialized exact approved EffectAssertion from candidate lineage",
+        "recordedAt": "2026-09-06T20:00:00Z",
+        "originReferences": [
+          "AUD-INF-F03-AE-V1-20260906-001",
+          "EA-CAND-INF-F03-001",
+          "ec49f49346a051a9dada2cdf97d0c85e7205e018",
+          "GOV-INF-F03-001-2026-09-06"
+        ],
+        "limitations": [
+          "No activation, recommendation eligibility, graph weight, or downstream effect is implied"
+        ]
+      },
+      "qualifiers": {
+        "distribution": null,
+        "evaluation": {
+          "criterion": null,
+          "stakeholder": null,
+          "valence": "NOT_EVALUATED"
+        },
+        "prerequisites": [
+          "Named manipulated feature dimensions",
+          "Content-fidelity specification",
+          "Specialist/human fidelity verification"
+        ],
+        "reach": null,
+        "risks": [
+          "Meaning drift",
+          "Legal-obligation drift",
+          "False inference from feature reduction to comprehension or audience fit"
+        ],
+        "subgroups": [],
+        "unintendedConsequences": [
+          "Meaning/legal obligation drift; specialist verification required. Comprehension and full readability are separate outcomes."
+        ]
+      },
+      "recordClass": "SCIENTIFIC_RECORD",
+      "revision": 1,
+      "schemaVersion": "1.0.0",
+      "scope": {
+        "population": "English legal-text evidence involving specified surface features",
+        "context": "Content-preserving revision of named surface-language features only",
+        "boundaryConditions": "Meaning and legal-obligation fidelity require specialist/human verification; no comprehension, readability, completeness, contradiction, or whole-construct benefit is inferred.",
+        "timing": "Comparison of the specified pre-revision and post-revision message versions",
+        "measurement": "MANIPULATED_FEATURE_SCOPE_V1: LEXICAL_LOW_FREQUENCY and/or SYNTACTIC_CENTER_EMBEDDED_CLAUSE; DECREASE applies only to each explicitly named manipulated feature dimension, never to all INF-077 dimensions."
+      },
+      "targetId": "INF-077",
+      "targetKind": "DRIVER",
+      "targetLayers": [
+        "INF"
+      ],
+      "typeId": "HT-V1-INF-F03-001",
+      "uncertainty": [
+        "Evidence does not establish uniform reduction across the multidimensional INF-077 construct"
+      ]
+    },
+    {
+      "change": "INCREASE",
+      "claimSemantics": "CAUSAL",
+      "contribution": {
+        "groupId": "CONTRIB-INF-F03-002",
+        "reconciliation": null,
+        "relatedAssertionIds": [],
+        "role": "PRIMARY"
+      },
+      "evidenceAssessmentIds": [
+        "EVA-AE-V1-INF-F03-002"
+      ],
+      "exposureProfile": {
+        "doseIntensity": null,
+        "duration": null,
+        "frequency": null,
+        "reach": null,
+        "timing": null
+      },
+      "governance": {
+        "lifecycleStatus": "GOVERNED",
+        "activationStatus": "ACTIVE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "APPROVED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": "docs/governance/pilots/INF-F03/INF_F03_ACTIVATION_DECISION_001.md",
+        "authorizedBy": "authorized human governor",
+        "decisionDate": "2026-09-06",
+        "effectiveVersion": "INF-F03-PARTIAL-ACTIVATION-001",
+        "decisionRationale": "Exact partial activation authorized after independent activation-readiness audit; scientific identity, proposition, scope, and evidence synthesis remain unchanged.",
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Preserved non-governed candidate workflow from the audited pilot lineage.",
+            "timestamp": "2026-09-06T20:00:00Z",
+            "objectId": "EA-V1-INF-F03-002",
+            "revision": 1,
+            "provenance": "AUD-INF-F03-AE-V1-20260906-001:ec49f49346a051a9dada2cdf97d0c85e7205e018:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Preserved non-governed candidate workflow from the audited pilot lineage.",
+            "timestamp": "2026-09-06T20:00:00Z",
+            "objectId": "EA-V1-INF-F03-002",
+            "revision": 1,
+            "provenance": "AUD-INF-F03-AE-V1-20260906-001:ec49f49346a051a9dada2cdf97d0c85e7205e018:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Preserved non-governed candidate workflow from the audited pilot lineage.",
+            "timestamp": "2026-09-06T20:00:00Z",
+            "objectId": "EA-V1-INF-F03-002",
+            "revision": 1,
+            "provenance": "AUD-INF-F03-AE-V1-20260906-001:ec49f49346a051a9dada2cdf97d0c85e7205e018:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "GOVERNED",
+              "activationStatus": "INACTIVE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Exact materialization of the authorized INF-F03 human decision; activation was explicitly withheld.",
+            "timestamp": "2026-09-06T20:00:00Z",
+            "objectId": "EA-V1-INF-F03-002",
+            "revision": 1,
+            "provenance": "AUD-INF-F03-AE-V1-20260906-001:ec49f49346a051a9dada2cdf97d0c85e7205e018:transition-4",
+            "governanceDecisionRecord": "docs/governance/pilots/INF-F03/INF_F03_GOVERNANCE_DECISION_001.md",
+            "exactDecisionMaterialization": true
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "GOVERNED",
+              "activationStatus": "INACTIVE"
+            },
+            "toState": {
+              "lifecycleStatus": "GOVERNED",
+              "activationStatus": "ACTIVE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Mechanical materialization of the exact partial activation explicitly authorized by an authorized human governor after the independent audit.",
+            "timestamp": "2026-09-06T23:00:00Z",
+            "objectId": "EA-V1-INF-F03-002",
+            "revision": 1,
+            "provenance": "AUD-INF-F03-ACTIVATION-V1-20260906-001:8ecf60775a5ae35b31010c301490dfd3c439623c:activation-001",
+            "governanceDecisionRecord": "docs/governance/pilots/INF-F03/INF_F03_ACTIVATION_DECISION_001.md",
+            "exactDecisionMaterialization": true
+          }
+        ]
+      },
+      "grounding": {
+        "causalIdentificationRationale": "Controlled message construction supports only changed content features",
+        "derivationEntailed": "NO",
+        "duplicatePropagationControl": null,
+        "representedDriverId": null
+      },
+      "id": "EA-V1-INF-F03-002",
+      "inferenceProvenance": null,
+      "intendedChange": "INCREASE",
+      "interaction": {
+        "evidenceAssessmentIds": [],
+        "mode": "NONE",
+        "otherEffectIds": []
+      },
+      "knowledgeStatus": "SUPPORTED_EFFECT",
+      "mechanism": "Adding justified numeric bounds or a range and an appropriate interpretation makes uncertainty information explicitly present in the message.",
+      "mechanismStatus": "SPECIFIED",
+      "mechanisticDriverIds": [],
+      "moderatorLinks": [],
+      "observedChange": "INCREASE",
+      "occurrenceId": null,
+      "otherSpecified": null,
+      "outcomes": [],
+      "productionMethod": "SYNTHESIS",
+      "property": "LEVEL",
+      "provenance": {
+        "actorClass": "AUTOMATED_PROCESS_OR_AI",
+        "method": "Materialized exact approved EffectAssertion from candidate lineage",
+        "recordedAt": "2026-09-06T20:00:00Z",
+        "originReferences": [
+          "AUD-INF-F03-AE-V1-20260906-001",
+          "EA-CAND-INF-F03-002",
+          "ec49f49346a051a9dada2cdf97d0c85e7205e018",
+          "GOV-INF-F03-001-2026-09-06"
+        ],
+        "limitations": [
+          "No activation, recommendation eligibility, graph weight, or downstream effect is implied"
+        ]
+      },
+      "qualifiers": {
+        "distribution": null,
+        "evaluation": {
+          "criterion": null,
+          "stakeholder": null,
+          "valence": "NOT_EVALUATED"
+        },
+        "prerequisites": [
+          "Scientifically or statistically justified uncertainty information",
+          "Interpretation appropriate to the estimate"
+        ],
+        "reach": null,
+        "risks": [
+          "False precision",
+          "Misleading interval coverage",
+          "Incorrect interpretation",
+          "Improper inference of downstream trust benefit"
+        ],
+        "subgroups": [],
+        "unintendedConsequences": [
+          "Misleading interval coverage or false precision; verify statistical meaning; downstream credibility remains mixed."
+        ]
+      },
+      "recordClass": "SCIENTIFIC_RECORD",
+      "revision": 1,
+      "schemaVersion": "1.0.0",
+      "scope": {
+        "population": "Numerical factual claims with a scientifically or statistically justified uncertainty range",
+        "context": "Addition of explicit numeric bounds/range and an interpretation appropriate to the estimate",
+        "boundaryConditions": "No fabricated interval, false precision, accuracy guarantee, automatic trust benefit, or confidence-calibration benefit; downstream outcomes require independent EffectAssertions.",
+        "timing": "Comparison of the specified claim before and after justified uncertainty information is attached",
+        "measurement": "Amount and explicitness of justified quantified uncertainty disclosure for the same specified numerical claim"
+      },
+      "targetId": "INF-015",
+      "targetKind": "DRIVER",
+      "targetLayers": [
+        "INF"
+      ],
+      "typeId": "HT-V1-INF-F03-002",
+      "uncertainty": [
+        "Downstream credibility and calibration effects are separate and mixed"
+      ]
+    }
+  ],
+  "evidenceAssessments": [
+    {
+      "assertion": {
+        "objectType": "EFFECT_ASSERTION",
+        "objectId": "EA-V1-INF-F03-001"
+      },
+      "completeness": {
+        "target": "SPECIFIED",
+        "direction": "SPECIFIED",
+        "mechanism": "SPECIFIED",
+        "population": "SPECIFIED",
+        "context": "SPECIFIED",
+        "timing": "SPECIFIED",
+        "measurement": "SPECIFIED",
+        "boundaries": "SPECIFIED"
+      },
+      "governance": {
+        "lifecycleStatus": "GOVERNED",
+        "activationStatus": "INACTIVE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "APPROVED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": "docs/governance/pilots/INF-F03/INF_F03_GOVERNANCE_DECISION_001.md",
+        "authorizedBy": "authorized human governor",
+        "decisionDate": "2026-09-06",
+        "effectiveVersion": "INF-F03-GOVERNANCE-001",
+        "decisionRationale": "The exact source findings and synthesis for the approved EffectAssertion were authorized; activation was explicitly withheld.",
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Preserved non-governed candidate workflow from the audited pilot lineage.",
+            "timestamp": "2026-09-06T20:00:00Z",
+            "objectId": "EVA-AE-V1-INF-F03-001",
+            "revision": 1,
+            "provenance": "AUD-INF-F03-AE-V1-20260906-001:ec49f49346a051a9dada2cdf97d0c85e7205e018:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Preserved non-governed candidate workflow from the audited pilot lineage.",
+            "timestamp": "2026-09-06T20:00:00Z",
+            "objectId": "EVA-AE-V1-INF-F03-001",
+            "revision": 1,
+            "provenance": "AUD-INF-F03-AE-V1-20260906-001:ec49f49346a051a9dada2cdf97d0c85e7205e018:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Preserved non-governed candidate workflow from the audited pilot lineage.",
+            "timestamp": "2026-09-06T20:00:00Z",
+            "objectId": "EVA-AE-V1-INF-F03-001",
+            "revision": 1,
+            "provenance": "AUD-INF-F03-AE-V1-20260906-001:ec49f49346a051a9dada2cdf97d0c85e7205e018:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "GOVERNED",
+              "activationStatus": "INACTIVE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Exact materialization of the authorized INF-F03 human decision; activation was explicitly withheld.",
+            "timestamp": "2026-09-06T20:00:00Z",
+            "objectId": "EVA-AE-V1-INF-F03-001",
+            "revision": 1,
+            "provenance": "AUD-INF-F03-AE-V1-20260906-001:ec49f49346a051a9dada2cdf97d0c85e7205e018:transition-4",
+            "governanceDecisionRecord": "docs/governance/pilots/INF-F03/INF_F03_GOVERNANCE_DECISION_001.md",
+            "exactDecisionMaterialization": true
+          }
+        ]
+      },
+      "id": "EVA-AE-V1-INF-F03-001",
+      "provenance": {
+        "actorClass": "AUTOMATED_PROCESS_OR_AI",
+        "method": "Normalized source findings and synthesis under exact human governance",
+        "recordedAt": "2026-09-06T20:00:00Z",
+        "originReferences": [
+          "AUD-INF-F03-AE-V1-20260906-001",
+          "EA-CAND-INF-F03-001",
+          "ec49f49346a051a9dada2cdf97d0c85e7205e018",
+          "GOV-INF-F03-001-2026-09-06"
+        ],
+        "limitations": [
+          "No graph weight or unreported numerical precision inferred"
+        ]
+      },
+      "recordClass": "SCIENTIFIC_RECORD",
+      "revision": 1,
+      "schemaVersion": "1.0.0",
+      "sourceFindings": [
+        {
+          "accessDepth": "SELECTED_FULL_TEXT",
+          "basis": [
+            "EXPERIMENTAL"
+          ],
+          "comparator": "Contract passages with legalese features versus edited alternatives",
+          "context": "Contract passages with legalese features versus edited alternatives",
+          "datasetIds": [
+            "DATASET-SRC-550-CORPUS-AND-EXPERIMENTS"
+          ],
+          "design": "EXPERIMENTAL; English legal-text readers; corpus and controlled text comparison",
+          "disposition": "MIXED",
+          "exposure": "Contract passages with legalese features versus edited alternatives",
+          "id": "FND-EA-V1-INF-F03-001-SRC-550",
+          "inputRole": "DIRECT_FINDING",
+          "limitations": [
+            "Legal-text and English-language scope",
+            "Feature evidence does not guarantee content or legal-obligation fidelity",
+            "Reader performance is not the target Driver"
+          ],
+          "locator": "Abstract and selected full-text experimental summary/discussion",
+          "measurement": "Named lexical/syntactic features plus recall and comprehension; reader outcomes are not inherited by this feature-level EffectAssertion",
+          "nullInterpretation": null,
+          "overlapNotes": "Same publication reused for distinct claims is not independent replication; review-primary overlap unresolved",
+          "population": "English legal-text readers; corpus and controlled text comparison",
+          "provenance": {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "method": "Normalized source finding under exact human governance",
+            "recordedAt": "2026-09-06T20:00:00Z",
+            "originReferences": [
+              "AUD-INF-F03-AE-V1-20260906-001",
+              "ec49f49346a051a9dada2cdf97d0c85e7205e018",
+              "GOV-INF-F03-001-2026-09-06",
+              "SRC-550"
+            ],
+            "limitations": [
+              "No unreported quantitative estimate or effect dimension inferred"
+            ]
+          },
+          "quantitativeEstimate": null,
+          "result": "The source identifies low-frequency legal terminology and center-embedded structures as separable surface features and reports processing differences; it does not establish a uniform decrease of all INF-077 dimensions or guarantee fidelity for any rewrite.",
+          "sourceId": "SRC-550",
+          "supportedSemantics": [
+            "CAUSAL"
+          ],
+          "timing": "Within the reported task/assessment; no numeric causal lag or persistence inferred",
+          "uncertainty": [
+            "No pooled effect size or quantitative precision inferred for this ontology assertion"
+          ]
+        }
+      ],
+      "synthesis": {
+        "confidence": "MODERATE",
+        "confidenceRationale": "Moderate confidence is limited to named-feature change under content-preserving, fidelity-checked revision; construct-wide and audience-response claims are excluded.",
+        "conflicts": [
+          {
+            "findingId": "FND-EA-V1-INF-F03-001-SRC-550",
+            "dispositionRationale": "The source supports feature specificity but does not establish whole-construct reduction or guaranteed semantic fidelity."
+          }
+        ],
+        "contraryEvidenceSearch": "ASSESSED",
+        "datasetOverlap": "Corpus and experiments within SRC-550 are one publication and are not counted as independent replications.",
+        "disposition": "MIXED",
+        "evidenceStrength": "MODERATE",
+        "generalizationLimits": [
+          "English legal texts",
+          "Named manipulated features only",
+          "Requires separate fidelity and downstream-outcome assessment"
+        ],
+        "rationale": "SRC-550 supports manipulation of specifically named lexical and syntactic surface features. Governance is limited to those feature dimensions and does not transfer the reported reader outcomes or imply total multidimensional complexity reduction.",
+        "sourceFindingIds": [
+          "FND-EA-V1-INF-F03-001-SRC-550"
+        ]
+      }
+    },
+    {
+      "assertion": {
+        "objectType": "EFFECT_ASSERTION",
+        "objectId": "EA-V1-INF-F03-002"
+      },
+      "completeness": {
+        "target": "SPECIFIED",
+        "direction": "SPECIFIED",
+        "mechanism": "SPECIFIED",
+        "population": "SPECIFIED",
+        "context": "SPECIFIED",
+        "timing": "SPECIFIED",
+        "measurement": "SPECIFIED",
+        "boundaries": "SPECIFIED"
+      },
+      "governance": {
+        "lifecycleStatus": "GOVERNED",
+        "activationStatus": "ACTIVE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "APPROVED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": "docs/governance/pilots/INF-F03/INF_F03_ACTIVATION_DECISION_001.md",
+        "authorizedBy": "authorized human governor",
+        "decisionDate": "2026-09-06",
+        "effectiveVersion": "INF-F03-PARTIAL-ACTIVATION-001",
+        "decisionRationale": "Exact partial activation authorized after independent activation-readiness audit; scientific identity, proposition, scope, and evidence synthesis remain unchanged.",
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Preserved non-governed candidate workflow from the audited pilot lineage.",
+            "timestamp": "2026-09-06T20:00:00Z",
+            "objectId": "EVA-AE-V1-INF-F03-002",
+            "revision": 1,
+            "provenance": "AUD-INF-F03-AE-V1-20260906-001:ec49f49346a051a9dada2cdf97d0c85e7205e018:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Preserved non-governed candidate workflow from the audited pilot lineage.",
+            "timestamp": "2026-09-06T20:00:00Z",
+            "objectId": "EVA-AE-V1-INF-F03-002",
+            "revision": 1,
+            "provenance": "AUD-INF-F03-AE-V1-20260906-001:ec49f49346a051a9dada2cdf97d0c85e7205e018:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Preserved non-governed candidate workflow from the audited pilot lineage.",
+            "timestamp": "2026-09-06T20:00:00Z",
+            "objectId": "EVA-AE-V1-INF-F03-002",
+            "revision": 1,
+            "provenance": "AUD-INF-F03-AE-V1-20260906-001:ec49f49346a051a9dada2cdf97d0c85e7205e018:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "GOVERNED",
+              "activationStatus": "INACTIVE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Exact materialization of the authorized INF-F03 human decision; activation was explicitly withheld.",
+            "timestamp": "2026-09-06T20:00:00Z",
+            "objectId": "EVA-AE-V1-INF-F03-002",
+            "revision": 1,
+            "provenance": "AUD-INF-F03-AE-V1-20260906-001:ec49f49346a051a9dada2cdf97d0c85e7205e018:transition-4",
+            "governanceDecisionRecord": "docs/governance/pilots/INF-F03/INF_F03_GOVERNANCE_DECISION_001.md",
+            "exactDecisionMaterialization": true
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "GOVERNED",
+              "activationStatus": "INACTIVE"
+            },
+            "toState": {
+              "lifecycleStatus": "GOVERNED",
+              "activationStatus": "ACTIVE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Mechanical materialization of the exact partial activation explicitly authorized by an authorized human governor after the independent audit.",
+            "timestamp": "2026-09-06T23:00:00Z",
+            "objectId": "EVA-AE-V1-INF-F03-002",
+            "revision": 1,
+            "provenance": "AUD-INF-F03-ACTIVATION-V1-20260906-001:8ecf60775a5ae35b31010c301490dfd3c439623c:activation-001",
+            "governanceDecisionRecord": "docs/governance/pilots/INF-F03/INF_F03_ACTIVATION_DECISION_001.md",
+            "exactDecisionMaterialization": true
+          }
+        ]
+      },
+      "id": "EVA-AE-V1-INF-F03-002",
+      "provenance": {
+        "actorClass": "AUTOMATED_PROCESS_OR_AI",
+        "method": "Normalized source findings and synthesis under exact human governance",
+        "recordedAt": "2026-09-06T20:00:00Z",
+        "originReferences": [
+          "AUD-INF-F03-AE-V1-20260906-001",
+          "EA-CAND-INF-F03-002",
+          "ec49f49346a051a9dada2cdf97d0c85e7205e018",
+          "GOV-INF-F03-001-2026-09-06"
+        ],
+        "limitations": [
+          "No graph weight or unreported numerical precision inferred"
+        ]
+      },
+      "recordClass": "SCIENTIFIC_RECORD",
+      "revision": 1,
+      "schemaVersion": "1.0.0",
+      "sourceFindings": [
+        {
+          "accessDepth": "SELECTED_FULL_TEXT",
+          "basis": [
+            "EXPERIMENTAL"
+          ],
+          "comparator": "Numeric/verbal uncertainty versus point estimates",
+          "context": "Numeric/verbal uncertainty versus point estimates",
+          "datasetIds": [
+            "DATASET-SRC-551-EXPERIMENTS"
+          ],
+          "design": "EXPERIMENTAL; Five experiments on factual numerical messages",
+          "disposition": "MIXED",
+          "exposure": "Numeric/verbal uncertainty versus point estimates",
+          "id": "FND-EA-V1-INF-F03-002-SRC-551",
+          "inputRole": "DIRECT_FINDING",
+          "limitations": [
+            "Manipulation verifies disclosure, not interval correctness",
+            "Downstream trust outcomes do not transfer into this exact target effect"
+          ],
+          "locator": "Discussion and experimental overview",
+          "measurement": "Presence and explicitness of quantified uncertainty; downstream trust outcomes retained as separate findings",
+          "nullInterpretation": null,
+          "overlapNotes": "Same publication reused for distinct claims is not independent replication; review-primary overlap unresolved",
+          "population": "Five experiments on factual numerical messages",
+          "provenance": {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "method": "Normalized source finding under exact human governance",
+            "recordedAt": "2026-09-06T20:00:00Z",
+            "originReferences": [
+              "AUD-INF-F03-AE-V1-20260906-001",
+              "ec49f49346a051a9dada2cdf97d0c85e7205e018",
+              "GOV-INF-F03-001-2026-09-06",
+              "SRC-551"
+            ],
+            "limitations": [
+              "No unreported quantitative estimate or effect dimension inferred"
+            ]
+          },
+          "quantitativeEstimate": null,
+          "result": "The experimental message manipulation attached numeric ranges and increased explicit uncertainty information; downstream source-trust effects were generally small/null for numeric ranges and differed for verbal formats.",
+          "sourceId": "SRC-551",
+          "supportedSemantics": [
+            "CAUSAL"
+          ],
+          "timing": "Within the reported task/assessment; no numeric causal lag or persistence inferred",
+          "uncertainty": [
+            "No pooled effect size or quantitative precision inferred for this ontology assertion"
+          ]
+        },
+        {
+          "accessDepth": "ABSTRACT",
+          "basis": [
+            "EXPERIMENTAL"
+          ],
+          "comparator": "Numeric range or unquantified verbal uncertainty versus no disclosure",
+          "context": "Numeric range or unquantified verbal uncertainty versus no disclosure",
+          "datasetIds": [
+            "DATASET-SRC-552-EXPERIMENTS"
+          ],
+          "design": "EXPERIMENTAL; COVID-19 statistics survey experiments; N=10519 and N=2309",
+          "disposition": "MIXED",
+          "exposure": "Numeric range or unquantified verbal uncertainty versus no disclosure",
+          "id": "FND-EA-V1-INF-F03-002-SRC-552",
+          "inputRole": "DIRECT_FINDING",
+          "limitations": [
+            "Manipulation verifies disclosure, not interval correctness",
+            "Downstream trust outcomes do not transfer into this exact target effect"
+          ],
+          "locator": "Abstract",
+          "measurement": "Presence and explicitness of quantified uncertainty; downstream trust outcomes retained as separate findings",
+          "nullInterpretation": null,
+          "overlapNotes": "Same publication reused for distinct claims is not independent replication; review-primary overlap unresolved",
+          "population": "COVID-19 statistics survey experiments; N=10519 and N=2309",
+          "provenance": {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "method": "Normalized source finding under exact human governance",
+            "recordedAt": "2026-09-06T20:00:00Z",
+            "originReferences": [
+              "AUD-INF-F03-AE-V1-20260906-001",
+              "ec49f49346a051a9dada2cdf97d0c85e7205e018",
+              "GOV-INF-F03-001-2026-09-06",
+              "SRC-552"
+            ],
+            "limitations": [
+              "No unreported quantitative estimate or effect dimension inferred"
+            ]
+          },
+          "quantitativeEstimate": null,
+          "result": "The experimental message manipulation attached numeric uncertainty ranges; downstream trust effects were minimal for numeric ranges and more adverse for some unquantified verbal statements.",
+          "sourceId": "SRC-552",
+          "supportedSemantics": [
+            "CAUSAL"
+          ],
+          "timing": "Within the reported task/assessment; no numeric causal lag or persistence inferred",
+          "uncertainty": [
+            "No pooled effect size or quantitative precision inferred for this ontology assertion"
+          ]
+        }
+      ],
+      "synthesis": {
+        "confidence": "MODERATE",
+        "confidenceRationale": "Moderate confidence applies only to explicit disclosure under justified-range conditions; correctness, trust, and calibration are separate claims.",
+        "conflicts": [
+          {
+            "findingId": "FND-EA-V1-INF-F03-002-SRC-551",
+            "dispositionRationale": "Each finding supports the disclosure manipulation while preserving mixed/null downstream trust outcomes outside this exact target."
+          },
+          {
+            "findingId": "FND-EA-V1-INF-F03-002-SRC-552",
+            "dispositionRationale": "Each finding supports the disclosure manipulation while preserving mixed/null downstream trust outcomes outside this exact target."
+          }
+        ],
+        "contraryEvidenceSearch": "ASSESSED",
+        "datasetOverlap": "SRC-551 and SRC-552 are separate publication-level research programs; experiments within each paper are not counted as independent replications.",
+        "disposition": "SUPPORTS",
+        "evidenceStrength": "MODERATE",
+        "generalizationLimits": [
+          "Numerical factual claims",
+          "Justified uncertainty only",
+          "No downstream credibility or confidence-calibration inference"
+        ],
+        "rationale": "SRC-551 and SRC-552 directly operationalize attaching numeric uncertainty ranges, supporting increased explicit disclosure in the specified claim. Their mixed/null credibility findings are retained but do not negate the exact disclosure-target effect or imply a trust benefit.",
+        "sourceFindingIds": [
+          "FND-EA-V1-INF-F03-002-SRC-551",
+          "FND-EA-V1-INF-F03-002-SRC-552"
+        ]
+      }
+    }
+  ],
+  "authorizations": [
+    {
+      "decisionId": "GOV-INF-F03-001-2026-09-06",
+      "decisionRecord": "docs/governance/pilots/INF-F03/INF_F03_GOVERNANCE_DECISION_001.md",
+      "actorClass": "AUTHORIZED_HUMAN_GOVERNOR",
+      "effectiveDate": "2026-09-06",
+      "authorizedObjects": [
+        {
+          "id": "EA-V1-INF-F03-001",
+          "revision": 1,
+          "recordHash": "9e7acdbfe25dfa7bace9cc3042c4f36ae4ff0af2722d3ac1612cdd79f23677e4"
+        },
+        {
+          "id": "EA-V1-INF-F03-002",
+          "revision": 1,
+          "recordHash": "29abffb4d83e049f75b877715abb157a19cf2101e699746160b3263ef5fca603"
+        },
+        {
+          "id": "EVA-AE-V1-INF-F03-001",
+          "revision": 1,
+          "recordHash": "054664ef54dc18f854c7fefe8e929060d5dd2694d2dd684fca0e7856880cdde6"
+        },
+        {
+          "id": "EVA-AE-V1-INF-F03-002",
+          "revision": 1,
+          "recordHash": "9e6406353754ab0c66741fb73dff3321fc21117b86f6df24d6454b29f963a683"
+        },
+        {
+          "id": "HT-V1-INF-F03-001",
+          "revision": 1,
+          "recordHash": "b1269ce950daded2100b04480e0cf3722107e71a49b9049b035ce5c93eb88aad"
+        },
+        {
+          "id": "HT-V1-INF-F03-002",
+          "revision": 1,
+          "recordHash": "2ede1e15ae46ec70f6bfc934ff1167f3f512e4ec991a95112567da2ff35b38d5"
+        },
+        {
+          "id": "HT-V1-INF-F03-004",
+          "revision": 1,
+          "recordHash": "2d75032803548ad6caa01349e97eeeac93b1fc440cbd6231520b6e50866fe8e0"
+        },
+        {
+          "id": "HT-V1-INF-F03-005",
+          "revision": 1,
+          "recordHash": "5568ceb5e3a2a5869741da625c13ca817625abb7bac8ef5f2eb18d2f27693bda"
+        },
+        {
+          "id": "HT-V1-INF-F03-006",
+          "revision": 1,
+          "recordHash": "0101f07282b0263e5c9058b81dd9078a28bd0c5a791a7e5819a724aef3f34da4"
+        },
+        {
+          "id": "HT-V1-INF-F03-007",
+          "revision": 1,
+          "recordHash": "89cac327ebfc2ed587773c3cf0cfb09094d3ffaa6eff8aa33b337a7c7dfc5ad5"
+        }
+      ],
+      "recordClass": "SCIENTIFIC_RECORD"
+    },
+    {
+      "decisionId": "GOV-INF-F03-ACTIVATION-001-2026-09-06",
+      "decisionRecord": "docs/governance/pilots/INF-F03/INF_F03_ACTIVATION_DECISION_001.md",
+      "actorClass": "AUTHORIZED_HUMAN_GOVERNOR",
+      "effectiveDate": "2026-09-06",
+      "authorizedObjects": [
+        {
+          "id": "EA-V1-INF-F03-002",
+          "revision": 1,
+          "recordHash": "081086b2c81f0bdaf6d9efce2a457073b116189263f3555e17ae294397b318b9"
+        },
+        {
+          "id": "EVA-AE-V1-INF-F03-002",
+          "revision": 1,
+          "recordHash": "97bad039c147ea9f46ce12ad403617dc964180578916aaf41d3faa5209af5e1f"
+        },
+        {
+          "id": "HT-V1-INF-F03-002",
+          "revision": 1,
+          "recordHash": "b64580e93dcab467cc89fa0395ae6381733b727135bce63ec74674c56adfb3d6"
+        }
+      ],
+      "recordClass": "SCIENTIFIC_RECORD"
+    }
+  ]
 }

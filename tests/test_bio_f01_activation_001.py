@@ -81,15 +81,15 @@ class BioF01Activation001Tests(unittest.TestCase):
         cls.workspace = load(WORKSPACE)
 
     def test_exact_relationship_activation_set_and_counts(self):
-        active = {row["id"] for row in self.relationships if V1.governed_active(row)}
+        active = {row["id"] for row in self.relationships if V1.governed_active(row) and "BIO-F01" in row["id"]}
         self.assertEqual(active, ACTIVE_RELATIONSHIPS)
-        traversed = {row["id"] for row in V1.causal_traversal(self.relationships)}
+        traversed = {row["id"] for row in V1.causal_traversal(self.relationships) if "BIO-F01" in row["id"]}
         self.assertEqual(traversed, ACTIVE_CAUSAL_RELATIONSHIPS)
         counts = V1.validate_repository()
         self.assertEqual(counts["legacyActiveRelationships"], 450)
         self.assertEqual(counts["legacyActiveCausalRelationships"], 431)
-        self.assertEqual(counts["activeRelationships"], 456)
-        self.assertEqual(counts["activeCausalRelationships"], 435)
+        self.assertEqual(counts["activeRelationships"], 457)
+        self.assertEqual(counts["activeCausalRelationships"], 436)
 
     def test_exact_intervention_and_effect_activation_sets(self):
         active_interventions = {row["id"] for row in self.interventions if V1.governed_active(row)}
@@ -110,11 +110,11 @@ class BioF01Activation001Tests(unittest.TestCase):
         self.assertEqual(effect_interventions, ACTIVE_INTERVENTIONS)
 
     def test_all_eleven_evidence_assessments_are_active_and_scoped(self):
-        active = {row["id"] for row in self.evidence if V1.governed_active(row)}
+        active = {row["id"] for row in self.evidence if V1.governed_active(row) and "BIO-F01" in row["id"]}
         self.assertEqual(active, ACTIVE_EVIDENCE)
         targets = {
             (row["assertion"]["objectType"], row["assertion"]["objectId"])
-            for row in self.evidence
+            for row in self.evidence if V1.governed_active(row) and "BIO-F01" in row["id"]
         }
         expected_targets = (
             {("RELATIONSHIP", identifier) for identifier in ACTIVE_RELATIONSHIPS}
@@ -160,10 +160,10 @@ class BioF01Activation001Tests(unittest.TestCase):
 
     def test_activation_provenance_is_exact(self):
         active_records = [
-            *self.relationships,
+            *[row for row in self.relationships if row["id"] in ACTIVE_RELATIONSHIPS],
             *[row for row in self.interventions if row["id"] in ACTIVE_INTERVENTIONS],
-            *self.effects,
-            *self.evidence,
+            *[row for row in self.effects if row["id"] in ACTIVE_EFFECTS],
+            *[row for row in self.evidence if row["id"] in ACTIVE_EVIDENCE],
         ]
         self.assertEqual(len(active_records), 27)
         for record in active_records:

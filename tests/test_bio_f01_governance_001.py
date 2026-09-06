@@ -46,21 +46,24 @@ class BioF01Governance001Tests(unittest.TestCase):
 
     def test_native_store_validates_and_exact_counts_are_frozen(self):
         counts = V1.validate_repository()
-        self.assertEqual(counts["nativeSources"], 20)
-        self.assertEqual(counts["nativeRelationships"], 6)
-        self.assertEqual(counts["nativeCausalRelationships"], 4)
+        self.assertEqual(counts["nativeSources"], 23)
+        self.assertEqual(counts["nativeRelationships"], 7)
+        self.assertEqual(counts["nativeCausalRelationships"], 5)
         self.assertEqual(counts["nativeInterventions"], 9)
         self.assertEqual(counts["nativeInterventionEffects"], 5)
-        self.assertEqual(counts["nativeEvidenceAssessments"], 11)
-        self.assertEqual(counts["nativeActiveRecords"], 27)
-        self.assertEqual(counts["nativeActiveRelationships"], 6)
-        self.assertEqual(counts["nativeActiveCausalRelationships"], 4)
+        self.assertEqual(counts["nativeEvidenceAssessments"], 12)
+        self.assertEqual(counts["nativeActiveRecords"], 29)
+        self.assertEqual(counts["nativeActiveRelationships"], 7)
+        self.assertEqual(counts["nativeActiveCausalRelationships"], 5)
         self.assertEqual(counts["nativeActiveInterventions"], 5)
         self.assertEqual(counts["nativeActiveInterventionEffects"], 5)
-        self.assertEqual(counts["nativeActiveEvidenceAssessments"], 11)
+        self.assertEqual(counts["nativeActiveEvidenceAssessments"], 12)
 
     def test_all_new_scientific_records_are_governed_with_exact_activation_split(self):
-        all_records = self.relationships + self.evidence + self.pathways + self.interventions + self.effects
+        all_records = [
+            row for row in self.relationships + self.evidence + self.pathways + self.interventions + self.effects
+            if "BIO-F01" in row["id"]
+        ]
         self.assertEqual(len(all_records), 31)
         self.assertTrue(all(row["governance"]["lifecycleStatus"] == "GOVERNED" for row in all_records))
         self.assertEqual(sum(row["governance"]["activationStatus"] == "ACTIVE" for row in all_records), 27)
@@ -68,9 +71,12 @@ class BioF01Governance001Tests(unittest.TestCase):
         self.assertTrue(all(row["governance"]["authorizedBy"] == "authorized human governor" for row in all_records))
 
     def test_only_active_causal_records_enter_traversal(self):
-        causal = [row for row in self.relationships if row["relationFamily"] == "CAUSAL"]
+        causal = [row for row in self.relationships if row["relationFamily"] == "CAUSAL" and "BIO-F01" in row["id"]]
         self.assertEqual(len(causal), 4)
-        self.assertEqual({row["id"] for row in V1.causal_traversal(self.relationships)}, {row["id"] for row in causal})
+        self.assertEqual(
+            {row["id"] for row in V1.causal_traversal(self.relationships) if "BIO-F01" in row["id"]},
+            {row["id"] for row in causal},
+        )
         self.assertTrue(all(row["compatibility"]["v1Executability"] == "EXECUTABLE" for row in causal))
         self.assertNotIn("REL-V1-BIO-F01-005", {row["id"] for row in V1.causal_traversal(self.relationships)})
         self.assertNotIn("REL-V1-BIO-F01-006", {row["id"] for row in V1.causal_traversal(self.relationships)})
@@ -154,11 +160,12 @@ class BioF01Governance001Tests(unittest.TestCase):
         self.assertEqual([row["decisionId"] for row in rejected], [f"BIOF01-D-H0{i}" for i in range(1, 6)])
 
     def test_sources_are_verified_unique_and_resolvable(self):
-        self.assertEqual(len(self.sources), 20)
-        self.assertEqual(len({row["id"] for row in self.sources}), 20)
-        self.assertEqual(len({row["pmid"] for row in self.sources}), 20)
-        self.assertEqual(len({row["doi"].casefold() for row in self.sources}), 20)
-        for source in self.sources:
+        sources = [row for row in self.sources if row["auditId"] == "AUD-BIO-F01-RI-V1-20260905-001"]
+        self.assertEqual(len(sources), 20)
+        self.assertEqual(len({row["id"] for row in sources}), 20)
+        self.assertEqual(len({row["pmid"] for row in sources}), 20)
+        self.assertEqual(len({row["doi"].casefold() for row in sources}), 20)
+        for source in sources:
             self.schemas.validate("source", source)
             self.assertIn(source["id"], self.catalog.source_ids)
             self.assertEqual(source["verification"]["status"], "VERIFIED")
@@ -184,8 +191,8 @@ class BioF01Governance001Tests(unittest.TestCase):
         self.assertEqual(counts["entities"], 811)
         self.assertEqual(counts["legacyActiveRelationships"], 450)
         self.assertEqual(counts["legacyActiveCausalRelationships"], 431)
-        self.assertEqual(counts["activeRelationships"], 456)
-        self.assertEqual(counts["activeCausalRelationships"], 435)
+        self.assertEqual(counts["activeRelationships"], 457)
+        self.assertEqual(counts["activeCausalRelationships"], 436)
 
     def test_revision_proposals_are_review_only(self):
         text = (PILOT / "BIO_F01_EXISTING_RELATIONSHIP_REVISION_PROPOSALS.md").read_text(encoding="utf-8")
