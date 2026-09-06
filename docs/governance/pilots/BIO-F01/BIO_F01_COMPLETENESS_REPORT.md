@@ -1,5 +1,9 @@
 # BIO-F01 completeness report
 
+> Activation-state update: this report preserves the pre-activation audit
+> metrics. The authorized post-activation metrics and exclusions are recorded
+> in [BIO_F01_ACTIVATION_DECISION_001.md](BIO_F01_ACTIVATION_DECISION_001.md).
+
 Completeness metrics are review flags. They do not prove that a missing edge,
 intervention, or metadata value exists.
 

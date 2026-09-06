@@ -1,5 +1,11 @@
 # BIO-F01 evidence summary
 
+> Activation-state update: the exact partial activation authorized in
+> [BIO_F01_ACTIVATION_DECISION_001.md](BIO_F01_ACTIVATION_DECISION_001.md)
+> activates all 11 governed EvidenceAssessments after three documented
+> evidence-fidelity corrections. The text below records the earlier scientific
+> governance checkpoint and remains historical provenance.
+
 ## Governance checkpoint 001
 
 Twenty supplemental sources needed for governed-inactive assertions,

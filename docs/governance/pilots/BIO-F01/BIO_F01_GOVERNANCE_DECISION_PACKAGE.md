@@ -1,5 +1,11 @@
 # BIO-F01 governance decision package
 
+> This package records the scientific governance checkpoint and initial
+> inactive state. See
+> [BIO_F01_ACTIVATION_DECISION_001.md](BIO_F01_ACTIVATION_DECISION_001.md) for
+> the separately authorized partial activation; no scientific disposition in
+> this package is changed by that activation.
+
 **Audit ID:** `AUD-BIO-F01-RI-V1-20260905-001`
 
 **Decision record:** [`GOV-BIO-F01-001-2026-09-05`](BIO_F01_GOVERNANCE_DECISION_001.md)

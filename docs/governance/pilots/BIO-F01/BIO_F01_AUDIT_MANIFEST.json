@@ -7,7 +7,7 @@
     "name": "Sleep & Circadian Regulation",
     "layer": "Biological"
   },
-  "status": "GOVERNANCE_MATERIALIZED_AWAITING_ACTIVATION_REVIEW",
+  "status": "PARTIALLY_ACTIVATED",
   "productionGraphEligible": false,
   "baseline": {
     "commit": "5001611852107f2b95b8f722c71224dc7a538d47",
@@ -200,7 +200,7 @@
     "supplementalSourcesReviewed": 25,
     "distinctSourcesReviewed": 41,
     "supplementalSourceLog": "BIO_F01_RESEARCH_LOG.md",
-    "supplementalSourceRegistrationStatus": "SELECTIVELY_CANONICALIZED_FOR_GOVERNED_INACTIVE_ASSERTIONS",
+    "supplementalSourceRegistrationStatus": "SELECTIVELY_CANONICALIZED_FOR_GOVERNED_ASSERTIONS",
     "evidenceAssessments": 18,
     "assessmentsWithCanonicalSourceIds": 11,
     "assessmentsPendingCanonicalSourceRegistration": 0,
@@ -209,13 +209,13 @@
     "nonGovernedEvidenceAssessments": 7
   },
   "newGovernedRecords": 31,
-  "newActiveRecords": 0,
+  "newActiveRecords": 27,
   "canonicalIntegrity": {
     "drivers": 770,
     "rds": 41,
     "entities": 811,
-    "activeRelationships": 450,
-    "activeCausalRelationships": 431
+    "activeRelationships": 456,
+    "activeCausalRelationships": 435
   },
   "researchMethod": "Structured evidence search/audit; not a formal systematic review",
   "researchDate": "2026-09-05",
@@ -230,13 +230,15 @@
     "BIO_F01_RESEARCH_LOG.md",
     "BIO_F01_GOVERNANCE_DECISION_001.md",
     "BIO_F01_EXISTING_RELATIONSHIP_REVISION_PROPOSALS.md",
-    "BIO_F01_SOURCE_REGISTRATION_MANIFEST.json"
+    "BIO_F01_SOURCE_REGISTRATION_MANIFEST.json",
+    "BIO_F01_ACTIVATION_DECISION_001.md"
   ],
   "openItems": [
     "Resolve endpoint alignment for the proposed circadian-phase moderation of REL-BIO-002.",
     "Determine whether continuity-specific evidence justifies BIO-002 to BIO-028 causality.",
     "No CausalPathway met pathway-specific evidence requirements in this pilot pass.",
-    "Five supplemental references used only for research-needed, background, or non-created assertions remain audit-log references and were not canonically registered."
+    "Five supplemental references used only for research-needed, background, or non-created assertions remain audit-log references and were not canonically registered.",
+    "INT-V1-BIO-F01-002, INT-V1-BIO-F01-004, INT-V1-BIO-F01-005, and INT-V1-BIO-F01-010 remain governed inactive pending their own governed active effects."
   ],
   "governanceCheckpoint": {
     "decisionId": "GOV-BIO-F01-001-2026-09-05",
@@ -245,7 +247,15 @@
     "pilotHeadBeforeGovernance": "0cb77c4722b0d4c474f307d8ae527b8fa6f652cf",
     "activationAuthorized": false
   },
-  "newInactiveRecords": 31,
+  "activationCheckpoint": {
+    "decisionId": "GOV-BIO-F01-ACTIVATION-001-2026-09-05",
+    "decisionRecord": "BIO_F01_ACTIVATION_DECISION_001.md",
+    "effectiveDate": "2026-09-05",
+    "preActivationHead": "f3a933d09f98c08fa8c31374ed17658a660943aa",
+    "activationAuthorized": true,
+    "scope": "PARTIAL_EXACT_SET"
+  },
+  "newInactiveRecords": 4,
   "sourceRegistration": {
     "reviewedForRegistration": 20,
     "registered": 20,

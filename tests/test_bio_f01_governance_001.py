@@ -52,20 +52,28 @@ class BioF01Governance001Tests(unittest.TestCase):
         self.assertEqual(counts["nativeInterventions"], 9)
         self.assertEqual(counts["nativeInterventionEffects"], 5)
         self.assertEqual(counts["nativeEvidenceAssessments"], 11)
-        self.assertEqual(counts["nativeActiveRecords"], 0)
+        self.assertEqual(counts["nativeActiveRecords"], 27)
+        self.assertEqual(counts["nativeActiveRelationships"], 6)
+        self.assertEqual(counts["nativeActiveCausalRelationships"], 4)
+        self.assertEqual(counts["nativeActiveInterventions"], 5)
+        self.assertEqual(counts["nativeActiveInterventionEffects"], 5)
+        self.assertEqual(counts["nativeActiveEvidenceAssessments"], 11)
 
-    def test_all_new_scientific_records_are_governed_inactive(self):
+    def test_all_new_scientific_records_are_governed_with_exact_activation_split(self):
         all_records = self.relationships + self.evidence + self.pathways + self.interventions + self.effects
         self.assertEqual(len(all_records), 31)
         self.assertTrue(all(row["governance"]["lifecycleStatus"] == "GOVERNED" for row in all_records))
-        self.assertTrue(all(row["governance"]["activationStatus"] == "INACTIVE" for row in all_records))
+        self.assertEqual(sum(row["governance"]["activationStatus"] == "ACTIVE" for row in all_records), 27)
+        self.assertEqual(sum(row["governance"]["activationStatus"] == "INACTIVE" for row in all_records), 4)
         self.assertTrue(all(row["governance"]["authorizedBy"] == "authorized human governor" for row in all_records))
 
-    def test_governed_inactive_causal_records_do_not_enter_traversal(self):
+    def test_only_active_causal_records_enter_traversal(self):
         causal = [row for row in self.relationships if row["relationFamily"] == "CAUSAL"]
         self.assertEqual(len(causal), 4)
-        self.assertEqual(V1.causal_traversal(self.relationships), [])
-        self.assertTrue(all(row["compatibility"]["v1Executability"] == "NOT_EXECUTABLE" for row in causal))
+        self.assertEqual({row["id"] for row in V1.causal_traversal(self.relationships)}, {row["id"] for row in causal})
+        self.assertTrue(all(row["compatibility"]["v1Executability"] == "EXECUTABLE" for row in causal))
+        self.assertNotIn("REL-V1-BIO-F01-005", {row["id"] for row in V1.causal_traversal(self.relationships)})
+        self.assertNotIn("REL-V1-BIO-F01-006", {row["id"] for row in V1.causal_traversal(self.relationships)})
 
     def test_required_relationship_candidates_remain_non_governed(self):
         by_id = {row["id"]: row for row in self.workspace["relationships"]}
@@ -166,13 +174,18 @@ class BioF01Governance001Tests(unittest.TestCase):
         canonical = {row["id"] for row in self.relationships + self.interventions + self.effects}
         self.assertTrue(all(row["candidateId"] in candidates for row in lineage))
         self.assertTrue(all(row["canonicalId"] in canonical for row in lineage))
-        self.assertTrue(all(row["status"] == "MATERIALIZED_AS_GOVERNED_INACTIVE" for row in lineage))
+        statuses = {row["canonicalId"]: row["status"] for row in lineage}
+        inactive = {"INT-V1-BIO-F01-002", "INT-V1-BIO-F01-004", "INT-V1-BIO-F01-005", "INT-V1-BIO-F01-010"}
+        self.assertTrue(all(statuses[identifier] == "MATERIALIZED_AS_GOVERNED_INACTIVE" for identifier in inactive))
+        self.assertTrue(all(status == "MATERIALIZED_AS_GOVERNED_ACTIVE" for identifier, status in statuses.items() if identifier not in inactive))
 
     def test_existing_production_baseline_is_unchanged(self):
         counts = V1.validate_repository()
         self.assertEqual(counts["entities"], 811)
-        self.assertEqual(counts["activeRelationships"], 450)
-        self.assertEqual(counts["activeCausalRelationships"], 431)
+        self.assertEqual(counts["legacyActiveRelationships"], 450)
+        self.assertEqual(counts["legacyActiveCausalRelationships"], 431)
+        self.assertEqual(counts["activeRelationships"], 456)
+        self.assertEqual(counts["activeCausalRelationships"], 435)
 
     def test_revision_proposals_are_review_only(self):
         text = (PILOT / "BIO_F01_EXISTING_RELATIONSHIP_REVISION_PROPOSALS.md").read_text(encoding="utf-8")

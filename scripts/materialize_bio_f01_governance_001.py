@@ -1,4 +1,4 @@
-"""Materialize the authorized BIO-F01 governance checkpoint as inactive V1 science."""
+"""Materialize BIO-F01 governance checkpoint 001 and partial activation 001."""
 
 from __future__ import annotations
 
@@ -18,6 +18,17 @@ AUDIT_ID = "AUD-BIO-F01-RI-V1-20260905-001"
 PILOT_HEAD = "0cb77c4722b0d4c474f307d8ae527b8fa6f652cf"
 EFFECTIVE_DATE = "2026-09-05"
 EFFECTIVE_TIMESTAMP = "2026-09-05T23:00:00Z"
+ACTIVATION_DECISION_ID = "GOV-BIO-F01-ACTIVATION-001-2026-09-05"
+ACTIVATION_DECISION_PATH = "docs/governance/pilots/BIO-F01/BIO_F01_ACTIVATION_DECISION_001.md"
+ACTIVATION_SOURCE_COMMIT = "f3a933d09f98c08fa8c31374ed17658a660943aa"
+ACTIVATION_TIMESTAMP = "2026-09-06T01:45:00Z"
+ACTIVE_INTERVENTION_IDS = {
+    "INT-V1-BIO-F01-001",
+    "INT-V1-BIO-F01-003",
+    "INT-V1-BIO-F01-006",
+    "INT-V1-BIO-F01-007",
+    "INT-V1-BIO-F01-008",
+}
 
 
 def write_json(path: Path, payload: object) -> None:
@@ -84,6 +95,42 @@ def governed(object_id: str) -> dict:
         "supersedesIds": [],
         "transitionProvenance": transitions,
     }
+
+
+def activate(record: dict) -> None:
+    """Materialize the exact authorized GOVERNED/INACTIVE -> ACTIVE transition."""
+    governance = record["governance"]
+    if governance["activationStatus"] != "INACTIVE":
+        raise ValueError(f"Activation source state is not INACTIVE: {record['id']}")
+    governance["activationStatus"] = "ACTIVE"
+    governance["decisionRecord"] = ACTIVATION_DECISION_PATH
+    governance["decisionDate"] = EFFECTIVE_DATE
+    governance["effectiveVersion"] = "BIO-F01-PARTIAL-ACTIVATION-001"
+    governance["decisionRationale"] = (
+        "Exact partial activation authorized by an authorized human governor; "
+        "scientific identity, proposition, effect, and scope remain unchanged."
+    )
+    governance["transitionProvenance"].append({
+        "fromState": {
+            "lifecycleStatus": "GOVERNED",
+            "activationStatus": "INACTIVE",
+        },
+        "toState": {
+            "lifecycleStatus": "GOVERNED",
+            "activationStatus": "ACTIVE",
+        },
+        "actorClass": "AUTHORIZED_HUMAN_GOVERNOR",
+        "rationale": (
+            "Partial activation of the exact record was explicitly authorized "
+            "after the BIO-F01 activation-readiness audit."
+        ),
+        "timestamp": ACTIVATION_TIMESTAMP,
+        "objectId": record["id"],
+        "revision": record["revision"],
+        "provenance": f"{AUDIT_ID}:{ACTIVATION_SOURCE_COMMIT}:activation-001",
+        "governanceDecisionRecord": ACTIVATION_DECISION_PATH,
+        "exactDecisionMaterialization": False,
+    })
 
 
 def source(
@@ -255,6 +302,10 @@ def materialize() -> None:
             "reviewedBy": "authorized human governor",
             "sourceSchema": f"{AUDIT_ID}:governance-checkpoint-001",
         })
+        if candidate_id == "REL-CAND-BIO-F01-001":
+            assessment["evidenceRationale"] = assessment["evidenceRationale"].replace(
+                "candidate source BIOF01-EXT-007", "SRC-536"
+            )
         if candidate_id == "REL-CAND-BIO-F01-002":
             assessment["evidenceRationale"] = "SRC010, SRC-535, and SRC-536 support a phase-at-awakening effect on sleep inertia and greater impairment near biological night. They do not support a universal positive or negative phase polarity."
             assessment["uncertainty"].append("Circadian phase is cyclic and cannot be interpreted as a universally ordered high-to-low exposure")
@@ -342,9 +393,33 @@ def materialize() -> None:
                 "Sleep-restriction components can produce transient sleepiness and initially reduce time in bed or total sleep time",
             ]
         if candidate_id == "IE-CAND-BIO-F01-005":
-            assessment["evidenceRationale"] = "SRC-539 supports human light-duration phase resetting and SRC-541 supports timed light in delayed sleep-wake phase disorder. Advance versus delay is phase-response dependent; longer-term persistence evidence is limited."
+            assessment["evidenceDisposition"] = "MIXED"
+            assessment["evidenceRationale"] = "SRC-539 supports controlled human circadian phase resetting by appropriately timed light. SRC-541 provides mixed clinical evidence in delayed sleep-wake phase disorder: most included studies did not demonstrate significant between-group differences, although within-group clinical or laboratory phase advances were reported. Timed light can alter endogenous circadian phase under appropriately timed and specified exposure conditions, but findings are heterogeneous, advance versus delay is phase-response dependent, and persistence and generalization evidence are limited."
+            assessment["conflictingEvidence"] = {
+                "sourceIds": ["SRC-541"],
+                "summary": "Most studies in the clinical systematic review did not demonstrate significant between-group differences; controlled clinical findings were not uniformly positive and longer-term persistence evidence was limited.",
+            }
+            assessment["limitations"] = [
+                "Small studies",
+                "Protocols differ in intensity, spectrum, duration, and timing",
+                "Most SRC-541 studies did not show significant between-group differences",
+                "Advance versus delay depends on biological phase and exposure timing",
+                "Persistence and generalization evidence are limited",
+            ]
         if candidate_id == "IE-CAND-BIO-F01-006":
-            assessment["evidenceRationale"] = "SRC-540 and SRC-549 support timed melatonin phase advancement or treatment in selected delayed-phase populations. Timing, dose/formulation, behavioral scheduling, and separation of phase shift from sleep promotion remain essential."
+            assessment["evidenceDisposition"] = "MIXED"
+            assessment["evidenceRationale"] = "SRC-540 supports circadian phase advancement from appropriately timed melatonin in relevant delayed-phase populations. SRC-549 found no significant post-treatment DLMO difference for its studied comparison and reported benefits that may have operated primarily through sleep-promoting effects combined with behavioral scheduling. Timed melatonin can alter endogenous circadian phase under appropriately timed and specified conditions, but the phase evidence is mixed and must remain distinct from nonspecific sleep promotion."
+            assessment["conflictingEvidence"] = {
+                "sourceIds": ["SRC-549"],
+                "summary": "SRC-549 found no significant DLMO difference between groups; observed benefits were described as arising largely through sleep-promoting effects combined with behavioral sleep-wake scheduling rather than demonstrated phase shifting.",
+            }
+            assessment["limitations"] = [
+                "Population-specific",
+                "Administration timing, dose, and formulation are critical",
+                "Product quality, comorbidity, and interactions constrain generalization",
+                "Sleep-promoting benefit is not evidence of endogenous phase shifting",
+                "SRC-549 reported a null between-group DLMO result",
+            ]
         evidence_assessments.append(assessment)
         lineage.append({
             "objectType": "INTERVENTION_EFFECT",
@@ -354,6 +429,25 @@ def materialize() -> None:
             "evidenceCandidateId": old_evidence_id,
             "evidenceCanonicalId": evidence_id,
         })
+
+    for record in relationships:
+        record["compatibility"]["v1Executability"] = "EXECUTABLE"
+        activate(record)
+    for record in evidence_assessments:
+        activate(record)
+    for record in interventions:
+        if record["id"] in ACTIVE_INTERVENTION_IDS:
+            activate(record)
+    for record in effects:
+        activate(record)
+    active_ids = {
+        record["id"]
+        for record in relationships + evidence_assessments + interventions + effects
+        if record["governance"]["activationStatus"] == "ACTIVE"
+    }
+    for item in lineage:
+        if item["canonicalId"] in active_ids:
+            item["status"] = "MATERIALIZED_AS_GOVERNED_ACTIVE"
 
     store_files = {
         "source-register.json": {"schemaVersion": "1.0.0", "sources": source_records},
@@ -371,12 +465,15 @@ def materialize() -> None:
         "materializationId": "BIO-F01-GOVERNANCE-MATERIALIZATION-001",
         "governanceDecisionId": DECISION_ID,
         "governanceDecisionRecord": DECISION_PATH,
+        "activationDecisionId": ACTIVATION_DECISION_ID,
+        "activationDecisionRecord": ACTIVATION_DECISION_PATH,
+        "activationSourceCommit": ACTIVATION_SOURCE_COMMIT,
         "auditId": AUDIT_ID,
         "frozenScientificBaseline": pilot.BASELINE,
         "pilotHeadBeforeGovernance": PILOT_HEAD,
         "effectiveDate": EFFECTIVE_DATE,
-        "activationAuthorized": False,
-        "productionGraphEligible": False,
+        "activationAuthorized": True,
+        "productionGraphEligible": True,
         "candidateLineage": lineage,
         "remainingNonGoverned": {
             "relationships": ["REL-CAND-BIO-F01-005", "REL-CAND-BIO-F01-007", "REL-CAND-BIO-F01-008"],
@@ -401,15 +498,27 @@ def materialize() -> None:
             {"decisionId": "BIOF01-D-H05", "status": "REJECTED_DUPLICATE"},
         ],
         "governedInactiveCounts": {
+            "relationships": 0,
+            "causalRelationships": 0,
+            "noncausalRelationships": 0,
+            "interventions": sum(row["governance"]["activationStatus"] == "INACTIVE" for row in interventions),
+            "interventionEffects": 0,
+            "evidenceAssessments": 0,
+            "totalScientificRecords": sum(
+                row["governance"]["activationStatus"] == "INACTIVE"
+                for row in relationships + interventions + effects + evidence_assessments
+            ),
+        },
+        "governedActiveCounts": {
             "relationships": len(relationships),
             "causalRelationships": sum(row["relationFamily"] == "CAUSAL" for row in relationships),
             "noncausalRelationships": sum(row["relationFamily"] != "CAUSAL" for row in relationships),
-            "interventions": len(interventions),
+            "interventions": sum(row["governance"]["activationStatus"] == "ACTIVE" for row in interventions),
             "interventionEffects": len(effects),
             "evidenceAssessments": len(evidence_assessments),
-            "totalScientificRecords": len(relationships) + len(interventions) + len(effects) + len(evidence_assessments),
+            "totalScientificRecords": len(active_ids),
         },
-        "newActiveRecords": 0,
+        "newActiveRecords": len(active_ids),
     }
     write_json(DATA_DIR / "materialization-manifest.json", materialization_manifest)
 
@@ -436,7 +545,7 @@ def materialize() -> None:
 
     audit_manifest = pilot.build_manifest(workspace)
     audit_manifest.update({
-        "status": "GOVERNANCE_MATERIALIZED_AWAITING_ACTIVATION_REVIEW",
+        "status": "PARTIALLY_ACTIVATED",
         "governanceCheckpoint": {
             "decisionId": DECISION_ID,
             "decisionRecord": "BIO_F01_GOVERNANCE_DECISION_001.md",
@@ -444,9 +553,17 @@ def materialize() -> None:
             "pilotHeadBeforeGovernance": PILOT_HEAD,
             "activationAuthorized": False,
         },
-        "newGovernedRecords": materialization_manifest["governedInactiveCounts"]["totalScientificRecords"],
+        "activationCheckpoint": {
+            "decisionId": ACTIVATION_DECISION_ID,
+            "decisionRecord": "BIO_F01_ACTIVATION_DECISION_001.md",
+            "effectiveDate": EFFECTIVE_DATE,
+            "preActivationHead": ACTIVATION_SOURCE_COMMIT,
+            "activationAuthorized": True,
+            "scope": "PARTIAL_EXACT_SET",
+        },
+        "newGovernedRecords": 31,
         "newInactiveRecords": materialization_manifest["governedInactiveCounts"]["totalScientificRecords"],
-        "newActiveRecords": 0,
+        "newActiveRecords": materialization_manifest["governedActiveCounts"]["totalScientificRecords"],
         "sourceRegistration": {
             "reviewedForRegistration": 20,
             "registered": 20,
@@ -456,7 +573,7 @@ def materialize() -> None:
         },
     })
     audit_manifest["evidenceSummary"].update({
-        "supplementalSourceRegistrationStatus": "SELECTIVELY_CANONICALIZED_FOR_GOVERNED_INACTIVE_ASSERTIONS",
+        "supplementalSourceRegistrationStatus": "SELECTIVELY_CANONICALIZED_FOR_GOVERNED_ASSERTIONS",
         "supplementalSourcesRegistered": 20,
         "governedEvidenceAssessments": len(evidence_assessments),
         "nonGovernedEvidenceAssessments": len(candidate_evidence) - len(evidence_assessments),
@@ -471,10 +588,18 @@ def materialize() -> None:
     audit_manifest["openItems"].append(
         "Five supplemental references used only for research-needed, background, or non-created assertions remain audit-log references and were not canonically registered."
     )
+    audit_manifest["openItems"].append(
+        "INT-V1-BIO-F01-002, INT-V1-BIO-F01-004, INT-V1-BIO-F01-005, and INT-V1-BIO-F01-010 remain governed inactive pending their own governed active effects."
+    )
+    audit_manifest["canonicalIntegrity"].update({
+        "activeRelationships": 456,
+        "activeCausalRelationships": 435,
+    })
     audit_manifest["documents"].extend([
         "BIO_F01_GOVERNANCE_DECISION_001.md",
         "BIO_F01_EXISTING_RELATIONSHIP_REVISION_PROPOSALS.md",
         "BIO_F01_SOURCE_REGISTRATION_MANIFEST.json",
+        "BIO_F01_ACTIVATION_DECISION_001.md",
     ])
     write_json(pilot.WORKSPACE, workspace)
     write_json(pilot.MANIFEST, audit_manifest)
@@ -482,12 +607,12 @@ def materialize() -> None:
 
 def main() -> None:
     materialize()
-    print(f"Materialized {DECISION_ID}")
-    print("  Governed inactive Relationships: 6 (4 causal, 2 noncausal)")
-    print("  Governed inactive Interventions: 9")
-    print("  Governed inactive InterventionEffects: 5")
-    print("  Governed inactive EvidenceAssessments: 11")
-    print("  New active records: 0")
+    print(f"Materialized {DECISION_ID} and {ACTIVATION_DECISION_ID}")
+    print("  Governed active Relationships: 6 (4 causal, 2 noncausal)")
+    print("  Governed active Interventions: 5; governed inactive Interventions: 4")
+    print("  Governed active InterventionEffects: 5")
+    print("  Governed active EvidenceAssessments: 11")
+    print("  New active records: 27")
     print("  Registered native V1 sources: 20")
 
 

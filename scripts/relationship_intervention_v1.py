@@ -496,12 +496,30 @@ def validate_evidence_assessment(
     schemas.validate("evidence", evidence)
     validate_governance_record(evidence)
     _require(set(evidence["sourceIds"]) <= catalog.source_ids, "Evidence source does not resolve")
+    _require(
+        set(evidence["conflictingEvidence"]["sourceIds"]) <= catalog.source_ids,
+        "Conflicting/null evidence source does not resolve",
+    )
     if governed_active(evidence):
         _require(bool(evidence["sourceIds"]), "Active EvidenceAssessment requires sources")
         _require(bool(evidence["evidenceRationale"]), "Active EvidenceAssessment requires rationale")
         _require(evidence["evidenceStrength"] != "NOT_ASSESSED", "Active evidence strength must be assessed")
         _require(evidence["confidence"] != "NOT_ASSESSED", "Active evidence confidence must be assessed")
         _require(evidence["evidenceDisposition"] != "NOT_ASSESSED", "Active evidence disposition must be assessed")
+
+
+def recommendation_eligible_effects(
+    interventions: Iterable[Mapping[str, Any]],
+    effects: Iterable[Mapping[str, Any]],
+) -> list[Mapping[str, Any]]:
+    """Return active effects whose reusable Intervention identity is also active."""
+    active_intervention_ids = {
+        record["id"] for record in interventions if governed_active(record)
+    }
+    return [
+        effect for effect in effects
+        if governed_active(effect) and effect.get("interventionId") in active_intervention_ids
+    ]
 
 
 def validate_intervention_effect(
@@ -804,6 +822,11 @@ def validate_governed_v1_store(
             "nativeInterventionEffects": 0,
             "nativeEvidenceAssessments": 0,
             "nativeActiveRecords": 0,
+            "nativeActiveRelationships": 0,
+            "nativeActiveCausalRelationships": 0,
+            "nativeActiveInterventions": 0,
+            "nativeActiveInterventionEffects": 0,
+            "nativeActiveEvidenceAssessments": 0,
         }
 
     groups = (relationships, evidence, pathways, interventions, effects)
@@ -873,6 +896,14 @@ def validate_governed_v1_store(
         "nativeInterventionEffects": len(effects),
         "nativeEvidenceAssessments": len(evidence),
         "nativeActiveRecords": sum(governed_active(row) for row in all_records),
+        "nativeActiveRelationships": sum(governed_active(row) for row in relationships),
+        "nativeActiveCausalRelationships": sum(
+            governed_active(row) and row["relationFamily"] == "CAUSAL"
+            for row in relationships
+        ),
+        "nativeActiveInterventions": sum(governed_active(row) for row in interventions),
+        "nativeActiveInterventionEffects": sum(governed_active(row) for row in effects),
+        "nativeActiveEvidenceAssessments": sum(governed_active(row) for row in evidence),
     }
 
 
@@ -891,16 +922,19 @@ def validate_repository() -> dict[str, int]:
         for record in catalog.legacy_relationships.values()
     )
     mediated = sum(record.get("directness") == "MEDIATED_PATH" for record in catalog.legacy_relationships.values())
+    native_counts = validate_governed_v1_store(catalog, schemas)
     result = {
         "entities": len(catalog.entities),
-        "activeRelationships": len(projected),
-        "activeCausalRelationships": causal,
+        "legacyActiveRelationships": len(projected),
+        "legacyActiveCausalRelationships": causal,
+        "activeRelationships": len(projected) + native_counts["nativeActiveRelationships"],
+        "activeCausalRelationships": causal + native_counts["nativeActiveCausalRelationships"],
         "v1IncompleteRelationships": sum(record["compatibility"]["migrationCompleteness"] == "INCOMPLETE" for record in projected),
         "v1LegacyOnlyRelationships": sum(record["compatibility"]["v1Executability"] == "LEGACY_ONLY" for record in projected),
         "legacyMediatedPathRecords": mediated,
         "nativeSources": len(native_sources),
     }
-    result.update(validate_governed_v1_store(catalog, schemas))
+    result.update(native_counts)
     return result
 
 

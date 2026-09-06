@@ -158,8 +158,10 @@ class BioF01PilotTests(unittest.TestCase):
         )
         counts = V1.validate_repository()
         self.assertEqual(counts["entities"], 811)
-        self.assertEqual(counts["activeRelationships"], 450)
-        self.assertEqual(counts["activeCausalRelationships"], 431)
+        self.assertEqual(counts["legacyActiveRelationships"], 450)
+        self.assertEqual(counts["legacyActiveCausalRelationships"], 431)
+        self.assertEqual(counts["activeRelationships"], 456)
+        self.assertEqual(counts["activeCausalRelationships"], 435)
 
     def test_builder_is_deterministic(self):
         before = (WORKSPACE.read_bytes(), MANIFEST.read_bytes())

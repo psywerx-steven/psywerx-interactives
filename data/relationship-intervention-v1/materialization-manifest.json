@@ -3,18 +3,21 @@
   "materializationId": "BIO-F01-GOVERNANCE-MATERIALIZATION-001",
   "governanceDecisionId": "GOV-BIO-F01-001-2026-09-05",
   "governanceDecisionRecord": "docs/governance/pilots/BIO-F01/BIO_F01_GOVERNANCE_DECISION_001.md",
+  "activationDecisionId": "GOV-BIO-F01-ACTIVATION-001-2026-09-05",
+  "activationDecisionRecord": "docs/governance/pilots/BIO-F01/BIO_F01_ACTIVATION_DECISION_001.md",
+  "activationSourceCommit": "f3a933d09f98c08fa8c31374ed17658a660943aa",
   "auditId": "AUD-BIO-F01-RI-V1-20260905-001",
   "frozenScientificBaseline": "5001611852107f2b95b8f722c71224dc7a538d47",
   "pilotHeadBeforeGovernance": "0cb77c4722b0d4c474f307d8ae527b8fa6f652cf",
   "effectiveDate": "2026-09-05",
-  "activationAuthorized": false,
-  "productionGraphEligible": false,
+  "activationAuthorized": true,
+  "productionGraphEligible": true,
   "candidateLineage": [
     {
       "objectType": "RELATIONSHIP",
       "candidateId": "REL-CAND-BIO-F01-001",
       "canonicalId": "REL-V1-BIO-F01-001",
-      "status": "MATERIALIZED_AS_GOVERNED_INACTIVE",
+      "status": "MATERIALIZED_AS_GOVERNED_ACTIVE",
       "evidenceCandidateId": "EVA-CAND-BIO-F01-REL-001",
       "evidenceCanonicalId": "EVA-V1-BIO-F01-REL-001"
     },
@@ -22,7 +25,7 @@
       "objectType": "RELATIONSHIP",
       "candidateId": "REL-CAND-BIO-F01-002",
       "canonicalId": "REL-V1-BIO-F01-002",
-      "status": "MATERIALIZED_AS_GOVERNED_INACTIVE",
+      "status": "MATERIALIZED_AS_GOVERNED_ACTIVE",
       "evidenceCandidateId": "EVA-CAND-BIO-F01-REL-002",
       "evidenceCanonicalId": "EVA-V1-BIO-F01-REL-002"
     },
@@ -30,7 +33,7 @@
       "objectType": "RELATIONSHIP",
       "candidateId": "REL-CAND-BIO-F01-003",
       "canonicalId": "REL-V1-BIO-F01-003",
-      "status": "MATERIALIZED_AS_GOVERNED_INACTIVE",
+      "status": "MATERIALIZED_AS_GOVERNED_ACTIVE",
       "evidenceCandidateId": "EVA-CAND-BIO-F01-REL-003",
       "evidenceCanonicalId": "EVA-V1-BIO-F01-REL-003"
     },
@@ -38,7 +41,7 @@
       "objectType": "RELATIONSHIP",
       "candidateId": "REL-CAND-BIO-F01-004",
       "canonicalId": "REL-V1-BIO-F01-004",
-      "status": "MATERIALIZED_AS_GOVERNED_INACTIVE",
+      "status": "MATERIALIZED_AS_GOVERNED_ACTIVE",
       "evidenceCandidateId": "EVA-CAND-BIO-F01-REL-004",
       "evidenceCanonicalId": "EVA-V1-BIO-F01-REL-004"
     },
@@ -46,7 +49,7 @@
       "objectType": "RELATIONSHIP",
       "candidateId": "REL-CAND-BIO-F01-006",
       "canonicalId": "REL-V1-BIO-F01-005",
-      "status": "MATERIALIZED_AS_GOVERNED_INACTIVE",
+      "status": "MATERIALIZED_AS_GOVERNED_ACTIVE",
       "evidenceCandidateId": "EVA-CAND-BIO-F01-REL-006",
       "evidenceCanonicalId": "EVA-V1-BIO-F01-REL-006"
     },
@@ -54,7 +57,7 @@
       "objectType": "RELATIONSHIP",
       "candidateId": "REL-CAND-BIO-F01-009",
       "canonicalId": "REL-V1-BIO-F01-006",
-      "status": "MATERIALIZED_AS_GOVERNED_INACTIVE",
+      "status": "MATERIALIZED_AS_GOVERNED_ACTIVE",
       "evidenceCandidateId": "EVA-CAND-BIO-F01-REL-009",
       "evidenceCanonicalId": "EVA-V1-BIO-F01-REL-009"
     },
@@ -62,7 +65,7 @@
       "objectType": "INTERVENTION",
       "candidateId": "INT-CAND-BIO-F01-001",
       "canonicalId": "INT-V1-BIO-F01-001",
-      "status": "MATERIALIZED_AS_GOVERNED_INACTIVE"
+      "status": "MATERIALIZED_AS_GOVERNED_ACTIVE"
     },
     {
       "objectType": "INTERVENTION",
@@ -74,7 +77,7 @@
       "objectType": "INTERVENTION",
       "candidateId": "INT-CAND-BIO-F01-003",
       "canonicalId": "INT-V1-BIO-F01-003",
-      "status": "MATERIALIZED_AS_GOVERNED_INACTIVE"
+      "status": "MATERIALIZED_AS_GOVERNED_ACTIVE"
     },
     {
       "objectType": "INTERVENTION",
@@ -92,19 +95,19 @@
       "objectType": "INTERVENTION",
       "candidateId": "INT-CAND-BIO-F01-006",
       "canonicalId": "INT-V1-BIO-F01-006",
-      "status": "MATERIALIZED_AS_GOVERNED_INACTIVE"
+      "status": "MATERIALIZED_AS_GOVERNED_ACTIVE"
     },
     {
       "objectType": "INTERVENTION",
       "candidateId": "INT-CAND-BIO-F01-007",
       "canonicalId": "INT-V1-BIO-F01-007",
-      "status": "MATERIALIZED_AS_GOVERNED_INACTIVE"
+      "status": "MATERIALIZED_AS_GOVERNED_ACTIVE"
     },
     {
       "objectType": "INTERVENTION",
       "candidateId": "INT-CAND-BIO-F01-008",
       "canonicalId": "INT-V1-BIO-F01-008",
-      "status": "MATERIALIZED_AS_GOVERNED_INACTIVE"
+      "status": "MATERIALIZED_AS_GOVERNED_ACTIVE"
     },
     {
       "objectType": "INTERVENTION",
@@ -116,7 +119,7 @@
       "objectType": "INTERVENTION_EFFECT",
       "candidateId": "IE-CAND-BIO-F01-001",
       "canonicalId": "IE-V1-BIO-F01-001",
-      "status": "MATERIALIZED_AS_GOVERNED_INACTIVE",
+      "status": "MATERIALIZED_AS_GOVERNED_ACTIVE",
       "evidenceCandidateId": "EVA-CAND-BIO-F01-IE-001",
       "evidenceCanonicalId": "EVA-V1-BIO-F01-IE-001"
     },
@@ -124,7 +127,7 @@
       "objectType": "INTERVENTION_EFFECT",
       "candidateId": "IE-CAND-BIO-F01-003",
       "canonicalId": "IE-V1-BIO-F01-003",
-      "status": "MATERIALIZED_AS_GOVERNED_INACTIVE",
+      "status": "MATERIALIZED_AS_GOVERNED_ACTIVE",
       "evidenceCandidateId": "EVA-CAND-BIO-F01-IE-003",
       "evidenceCanonicalId": "EVA-V1-BIO-F01-IE-003"
     },
@@ -132,7 +135,7 @@
       "objectType": "INTERVENTION_EFFECT",
       "candidateId": "IE-CAND-BIO-F01-004",
       "canonicalId": "IE-V1-BIO-F01-004",
-      "status": "MATERIALIZED_AS_GOVERNED_INACTIVE",
+      "status": "MATERIALIZED_AS_GOVERNED_ACTIVE",
       "evidenceCandidateId": "EVA-CAND-BIO-F01-IE-004",
       "evidenceCanonicalId": "EVA-V1-BIO-F01-IE-004"
     },
@@ -140,7 +143,7 @@
       "objectType": "INTERVENTION_EFFECT",
       "candidateId": "IE-CAND-BIO-F01-005",
       "canonicalId": "IE-V1-BIO-F01-005",
-      "status": "MATERIALIZED_AS_GOVERNED_INACTIVE",
+      "status": "MATERIALIZED_AS_GOVERNED_ACTIVE",
       "evidenceCandidateId": "EVA-CAND-BIO-F01-IE-005",
       "evidenceCanonicalId": "EVA-V1-BIO-F01-IE-005"
     },
@@ -148,7 +151,7 @@
       "objectType": "INTERVENTION_EFFECT",
       "candidateId": "IE-CAND-BIO-F01-006",
       "canonicalId": "IE-V1-BIO-F01-006",
-      "status": "MATERIALIZED_AS_GOVERNED_INACTIVE",
+      "status": "MATERIALIZED_AS_GOVERNED_ACTIVE",
       "evidenceCandidateId": "EVA-CAND-BIO-F01-IE-006",
       "evidenceCanonicalId": "EVA-V1-BIO-F01-IE-006"
     }
@@ -211,13 +214,22 @@
     }
   ],
   "governedInactiveCounts": {
+    "relationships": 0,
+    "causalRelationships": 0,
+    "noncausalRelationships": 0,
+    "interventions": 4,
+    "interventionEffects": 0,
+    "evidenceAssessments": 0,
+    "totalScientificRecords": 4
+  },
+  "governedActiveCounts": {
     "relationships": 6,
     "causalRelationships": 4,
     "noncausalRelationships": 2,
-    "interventions": 9,
+    "interventions": 5,
     "interventionEffects": 5,
     "evidenceAssessments": 11,
-    "totalScientificRecords": 31
+    "totalScientificRecords": 27
   },
-  "newActiveRecords": 0
+  "newActiveRecords": 27
 }

@@ -1,5 +1,9 @@
 # BIO-F01 Governance Decision 001
 
+> This record governs scientific content and its initial inactive
+> materialization. The later, bounded activation-state decision is recorded in
+> [BIO_F01_ACTIVATION_DECISION_001.md](BIO_F01_ACTIVATION_DECISION_001.md).
+
 **Decision ID:** `GOV-BIO-F01-001-2026-09-05`
 
 **Audit ID:** `AUD-BIO-F01-RI-V1-20260905-001`
