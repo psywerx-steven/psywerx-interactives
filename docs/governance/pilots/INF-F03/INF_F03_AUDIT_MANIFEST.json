@@ -131,7 +131,7 @@
     "rdsCausalSourceCount": 2,
     "sameLayerCrossFamily": 2
   },
-  "governanceDecision": "PENDING — APPROVE / MODIFY / REJECT",
+  "governanceDecision": "GOV-INF-F03-001-2026-09-06",
   "graphMetrics": {
     "activeSemanticCounts": {
       "CAUSAL": 9,
@@ -210,8 +210,8 @@
     "sourceFindings": 41,
     "supplementalSources": 14
   },
-  "newGoverned": 0,
-  "noScientificHumanDecision": true,
+  "newGoverned": 12,
+  "noScientificHumanDecision": false,
   "productionCounts": {
     "activeCausal": 435,
     "activeRelationships": 456,
@@ -769,5 +769,23 @@
     "sources": "1.0"
   },
   "sourceRegisterSha256": "f1aae4135ac049e223ae65a66a24a6dfc2c28e911add59ce11df34e9c0af3615",
-  "workspaceHash": "3c22dc64a3e4e2a739c8fbc6699e8246b151f9a9060244358b607d6fcfd293e2"
+  "workspaceHash": "3c22dc64a3e4e2a739c8fbc6699e8246b151f9a9060244358b607d6fcfd293e2",
+  "governanceCheckpoint": {
+    "decisionRecord": "INF_F03_GOVERNANCE_DECISION_001.md",
+    "pilotHeadBeforeGovernance": "ec49f49346a051a9dada2cdf97d0c85e7205e018",
+    "activationAuthorized": false,
+    "governedInactiveRecords": 12,
+    "governedSourceFindings": 5
+  },
+  "sourceRegistration": {
+    "evaluated": 14,
+    "registered": 3,
+    "duplicates": 0,
+    "unverified": 0,
+    "blockedRecords": 0
+  },
+  "documents": [
+    "INF_F03_GOVERNANCE_DECISION_001.md",
+    "INF_F03_SOURCE_REGISTRATION_MANIFEST.json"
+  ]
 }

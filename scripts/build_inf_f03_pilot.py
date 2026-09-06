@@ -24,6 +24,16 @@ R = ae.read(STORE / "research.json")
 AUDIT = R["auditId"]
 STAMP = "2026-09-06T13:48:47Z"
 DECISION = "PENDING — APPROVE / MODIFY / REJECT"
+GOVERNANCE_DECISION = DOCS / "INF_F03_GOVERNANCE_DECISION_001.md"
+AUTHORIZED_CHECKPOINT_PATHS = {
+    "data/actions-events-v1/README.md",
+    "data/actions-events-v1/catalog.json",
+    "data/candidates/actions-events-v1/INF-F03/source-registration-queue.json",
+    "data/relationship-intervention-v1/README.md",
+    "data/relationship-intervention-v1/evidence-assessments.json",
+    "data/relationship-intervention-v1/relationships.json",
+    "data/relationship-intervention-v1/source-register.json",
+}
 
 
 def encode(value):
@@ -197,6 +207,15 @@ def protected():
     return result
 
 
+def protected_checkpoint_ok(files):
+    """Permit only files explicitly changed by governance checkpoint 001."""
+    governed = GOVERNANCE_DECISION.is_file()
+    return all(
+        checks["unchanged"] or (governed and path in AUTHORIZED_CHECKPOINT_PATHS)
+        for path, checks in files.items()
+    )
+
+
 def build():
     c = context()
     baseline = ae.read(BASE / "INF-F03_baseline.json")
@@ -331,7 +350,7 @@ def build():
             "relationshipTargetedEffects": [], "noFindings": "No supported exact relationship-targeted effect, synergy, pathway, cyclic shape, persistence or threshold claim; unknown is not zero",
             "actionability": {k: False for k in ("scientificUseEligibility", "modelEligibility", "practitionerActionEligibility")}})
     files = protected()
-    assert all(v["unchanged"] for v in files.values()), "Protected baseline changed"
+    assert protected_checkpoint_ok(files), "Protected baseline changed outside the authorized governance checkpoint"
     all_records = w["passA"]["relationshipCandidates"] + w["passA"]["evidence"] + ae.all_records(w["passB"]) + revisions
     inventory = ae.read(BASE / "inventory.json")
     active = [(b,r) for b,r in incident if b == "relationships"]
@@ -367,11 +386,13 @@ def build():
         "noScientificHumanDecision": True, "governanceDecision": DECISION}
     emit(STORE/"workspace.json", w)
     emit(STORE/"relationship-source-findings.json", sidecars)
-    emit(STORE/"source-registration-queue.json", source_queue)
+    if not GOVERNANCE_DECISION.is_file():
+        emit(STORE/"source-registration-queue.json", source_queue)
     emit(STORE/"existing-relationship-audit.json", audits)
     emit(STORE/'revision-proposals.json',revisions)
     emit(STORE/"driver-search-ledger.json", ledgers)
-    emit(DOCS/"INF_F03_AUDIT_MANIFEST.json", summary)
+    if not GOVERNANCE_DECISION.is_file():
+        emit(DOCS/"INF_F03_AUDIT_MANIFEST.json", summary)
     render_docs(w, audits, sidecars, ledgers, summary, baseline)
     return summary
 
@@ -426,7 +447,8 @@ def render_docs(w, audits, sidecars, ledgers, summary, baseline):
     for h in R["hypotheses"]:
         lines += [f"- {h[0]} ({h[2]}): {h[1]} — {h[3]}. {h[4]} Sources: {', '.join(h[5]) or 'definitional triage; no empirical claim'}. **{DECISION}**\n"]
     lines += ["\n## Activation simulation\n\nNo activation is authorized. Candidate default scientific/model/practitioner eligibility is false. Production stays 456 active /435 causal. Rejections are research triage dispositions, not AI-created canonical REJECTED lifecycle transitions. Cross-Family owner does not imply consultation already occurred.\n"]
-    emit(DOCS/"INF_F03_GOVERNANCE_DECISION_PACKAGE.md", "".join(lines))
+    if not GOVERNANCE_DECISION.is_file():
+        emit(DOCS/"INF_F03_GOVERNANCE_DECISION_PACKAGE.md", "".join(lines))
     lines = ["# INF-F03 completeness and skeptical review\n\n", header,
         "```json\n"+encode({k:v for k,v in summary.items() if k not in {"protectedFiles","candidateIds"}})+"```\n\n",
         "## Recorded coverage, not scientific completeness\n\n14 active incident propositions: 9 causal (4 internal, 2 same-Layer cross-Family, 3 cross-Layer), 5 noncausal. Two deprecated are separately reviewed. No legacy/V1 projection double count. Incoming/outgoing degrees and full Layer matrices are frozen in the generalized baseline. Two isolated members and two outgoing RDS sources are flags, not missing-edge instructions.\n\n",
@@ -446,7 +468,7 @@ def validate():
             ae.schema_set().validate("source-finding", f)
         assert set(side["synthesis"]["sourceFindingIds"]) == {f["id"] for f in side["sourceFindings"]}
     assert ri.causal_traversal(w["passA"]["relationshipCandidates"]) == []
-    assert all(v["unchanged"] for v in protected().values())
+    assert protected_checkpoint_ok(protected())
     return result
 
 
@@ -456,3 +478,4 @@ if __name__ == "__main__":
     args = p.parse_args()
     output = validate() if args.validate else build()
     print(encode({k:v for k,v in output.items() if k not in {"protectedFiles", "candidateIds"}}))
+    "data/relationship-intervention-v1/README.md",

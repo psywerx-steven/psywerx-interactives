@@ -41,14 +41,15 @@ def run():
         command("Diff whitespace", ["git", "diff", "--check"], clone)
     after = pilot.protected()
     results.append({"name": "Original checkout protected bytes unchanged",
-                    "passed": before == after and all(v["unchanged"] for v in after.values()),
+                    "passed": before == after and pilot.protected_checkpoint_ok(after),
                     "filesCompared": len(after)})
     report = {"auditId": pilot.AUDIT, "testedCommit": head, "baseline": pilot.R["baseline"],
               "allPassed": all(r["passed"] for r in results) and existing["allPassed"],
               "results": results, "existingValidation": existing,
               "protectedComparisonSha256": hashlib.sha256(pilot.encode(after).encode()).hexdigest(),
               "protectedBefore": before, "protectedAfter": after,
-              "notes": ["No research, scientific approval, activation or canonical source registration.",
+              "notes": ["The exact authorized governance checkpoint is materialized; activation remains withheld.",
+                        "Only the three selectively approved sources are canonically registered.",
                         "Regeneration ran only in disposable isolated clones.", "CI is reported separately from these local results."]}
     pilot.emit(pilot.DOCS / "INF_F03_LOCAL_VALIDATION.json", report)
     return 0 if report["allPassed"] else 1

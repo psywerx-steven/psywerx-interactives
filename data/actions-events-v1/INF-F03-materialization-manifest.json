@@ -1,0 +1,132 @@
+{
+  "schemaVersion": "1.0.0",
+  "materializationId": "INF-F03-GOVERNANCE-MATERIALIZATION-001",
+  "auditId": "AUD-INF-F03-AE-V1-20260906-001",
+  "frozenScientificBaseline": "164d938bcd4bbd7e8c48c8128cacd6e64ff0287a",
+  "pilotHeadBeforeGovernance": "ec49f49346a051a9dada2cdf97d0c85e7205e018",
+  "governanceDecisionId": "GOV-INF-F03-001-2026-09-06",
+  "governanceDecisionRecord": "docs/governance/pilots/INF-F03/INF_F03_GOVERNANCE_DECISION_001.md",
+  "effectiveDate": "2026-09-06",
+  "activationAuthorized": false,
+  "productionGraphEligible": false,
+  "candidateLineage": [
+    {
+      "objectType": "RELATIONSHIP",
+      "candidateId": "REL-CAND-INF-F03-001",
+      "canonicalId": "REL-V1-INF-F03-001",
+      "evidenceCandidateId": "EVA-REL-CAND-INF-F03-001",
+      "evidenceCanonicalId": "EVA-V1-INF-F03-REL-001"
+    },
+    {
+      "objectType": "HAPPENING_TYPE",
+      "candidateId": "HT-CAND-INF-F03-001",
+      "canonicalId": "HT-V1-INF-F03-001"
+    },
+    {
+      "objectType": "HAPPENING_TYPE",
+      "candidateId": "HT-CAND-INF-F03-002",
+      "canonicalId": "HT-V1-INF-F03-002"
+    },
+    {
+      "objectType": "HAPPENING_TYPE",
+      "candidateId": "HT-CAND-INF-F03-004",
+      "canonicalId": "HT-V1-INF-F03-004"
+    },
+    {
+      "objectType": "HAPPENING_TYPE",
+      "candidateId": "HT-CAND-INF-F03-005",
+      "canonicalId": "HT-V1-INF-F03-005"
+    },
+    {
+      "objectType": "HAPPENING_TYPE",
+      "candidateId": "HT-CAND-INF-F03-006",
+      "canonicalId": "HT-V1-INF-F03-006"
+    },
+    {
+      "objectType": "HAPPENING_TYPE",
+      "candidateId": "HT-CAND-INF-F03-007",
+      "canonicalId": "HT-V1-INF-F03-007"
+    },
+    {
+      "objectType": "EFFECT_ASSERTION",
+      "candidateId": "EA-CAND-INF-F03-001",
+      "canonicalId": "EA-V1-INF-F03-001",
+      "evidenceCandidateId": "EVA-AE-CAND-INF-F03-001",
+      "evidenceCanonicalId": "EVA-AE-V1-INF-F03-001"
+    },
+    {
+      "objectType": "EFFECT_ASSERTION",
+      "candidateId": "EA-CAND-INF-F03-002",
+      "canonicalId": "EA-V1-INF-F03-002",
+      "evidenceCandidateId": "EVA-AE-CAND-INF-F03-002",
+      "evidenceCanonicalId": "EVA-AE-V1-INF-F03-002"
+    }
+  ],
+  "governedInactiveCounts": {
+    "relationships": 1,
+    "happeningTypes": 6,
+    "effectAssertions": 2,
+    "evidenceAssessments": 3,
+    "totalScientificRecords": 12,
+    "sourceFindings": 5
+  },
+  "newActiveRecords": 0,
+  "remainingNonGoverned": {
+    "relationships": [
+      "REL-CAND-INF-F03-002",
+      "REL-CAND-INF-F03-003",
+      "REL-CAND-INF-F03-004"
+    ],
+    "happeningTypes": [
+      "HT-CAND-INF-F03-003"
+    ],
+    "effectAssertions": [
+      "EA-CAND-INF-F03-003",
+      "EA-CAND-INF-F03-004",
+      "EA-CAND-INF-F03-005",
+      "EA-CAND-INF-F03-006",
+      "EA-CAND-INF-F03-007"
+    ],
+    "revisionAndRetypeProposals": [
+      "REL-INF-003",
+      "REL-INF-008",
+      "REL-INF-006",
+      "REL-INF-041",
+      "REL-INF-046",
+      "REL-INF-048"
+    ],
+    "researchNeededHypotheses": [
+      "H04",
+      "H07",
+      "H08",
+      "H09",
+      "H12",
+      "H13",
+      "H16",
+      "H17"
+    ],
+    "blockedHypotheses": [
+      "H20"
+    ]
+  },
+  "rejectedHypotheses": [
+    "H01",
+    "H02",
+    "H03",
+    "H05",
+    "H06",
+    "H10",
+    "H11",
+    "H14",
+    "H15",
+    "H18",
+    "H19"
+  ],
+  "activeProductionCounts": {
+    "drivers": 770,
+    "rds": 41,
+    "entities": 811,
+    "relationships": 456,
+    "causalRelationships": 435
+  }
+}

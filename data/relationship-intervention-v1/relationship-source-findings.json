@@ -1,0 +1,112 @@
+{
+  "schemaVersion": "1.0.0",
+  "auditId": "AUD-INF-F03-AE-V1-20260906-001",
+  "governanceDecisionId": "GOV-INF-F03-001-2026-09-06",
+  "records": [
+    {
+      "assertionId": "REL-V1-INF-F03-001",
+      "evidenceAssessmentId": "EVA-V1-INF-F03-REL-001",
+      "governanceDecisionRecord": "docs/governance/pilots/INF-F03/INF_F03_GOVERNANCE_DECISION_001.md",
+      "sourceFindings": [
+        {
+          "id": "FND-V1-INF-F03-REL-001-SRC-551",
+          "sourceId": "SRC-551",
+          "locator": "Full text: experimental overview, results, and discussion",
+          "accessDepth": "SELECTED_FULL_TEXT",
+          "population": "Five survey experiments using numerical factual messages",
+          "context": "Numeric ranges or verbal uncertainty accompanying factual numerical claims",
+          "basis": [
+            "EXPERIMENTAL"
+          ],
+          "supportedSemantics": [
+            "CAUSAL"
+          ],
+          "inputRole": "DIRECT_FINDING",
+          "design": "Randomized uncertainty-format survey experiments",
+          "exposure": "Numeric ranges or verbal uncertainty accompanying factual numerical claims",
+          "comparator": "Point estimates or alternative uncertainty formats",
+          "measurement": "Perceived uncertainty and trust in the number/source",
+          "timing": "Within the reported experimental exposure and assessment window; no numeric lag or persistence inferred",
+          "result": "Disclosure format changed perceived uncertainty; numeric ranges generally had small or null source-trust effects, while verbal uncertainty sometimes reduced trust.",
+          "disposition": "MIXED",
+          "quantitativeEstimate": null,
+          "uncertainty": [
+            "No graph weight or transferable quantitative effect estimate inferred"
+          ],
+          "limitations": [
+            "Trust in the source is not confidence calibration",
+            "One multi-experiment paper is not five independent replications"
+          ],
+          "datasetIds": [
+            "DATASET-SRC-551-EXPERIMENTS"
+          ],
+          "overlapNotes": "Findings within this paper are one research program, not independent replications; no review-primary independence count inferred.",
+          "nullInterpretation": null,
+          "provenance": {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "method": "Structured source finding normalized under the exact human governance decision",
+            "recordedAt": "2026-09-06T20:00:00Z",
+            "originReferences": [
+              "AUD-INF-F03-AE-V1-20260906-001",
+              "ec49f49346a051a9dada2cdf97d0c85e7205e018",
+              "GOV-INF-F03-001-2026-09-06",
+              "SRC-551"
+            ],
+            "limitations": [
+              "Access depth is recorded exactly; no unreported estimate was reconstructed"
+            ]
+          }
+        },
+        {
+          "id": "FND-V1-INF-F03-REL-001-SRC-552",
+          "sourceId": "SRC-552",
+          "locator": "Abstract and bibliographic record",
+          "accessDepth": "ABSTRACT",
+          "population": "Survey experiments concerning present and projected COVID-19 statistics",
+          "context": "Numeric range or unquantified verbal uncertainty accompanying statistics",
+          "basis": [
+            "EXPERIMENTAL"
+          ],
+          "supportedSemantics": [
+            "CAUSAL"
+          ],
+          "inputRole": "DIRECT_FINDING",
+          "design": "Randomized uncertainty-format survey experiments",
+          "exposure": "Numeric range or unquantified verbal uncertainty accompanying statistics",
+          "comparator": "No disclosure",
+          "measurement": "Trustworthiness of the number and source",
+          "timing": "Within the reported experimental exposure and assessment window; no numeric lag or persistence inferred",
+          "result": "Numeric uncertainty had minimal source-trust impact; unquantified verbal uncertainty reduced number/source trust in some comparisons.",
+          "disposition": "MIXED",
+          "quantitativeEstimate": null,
+          "uncertainty": [
+            "No graph weight or transferable quantitative effect estimate inferred"
+          ],
+          "limitations": [
+            "Present and projected statistics differ",
+            "No universal direction or transferable effect size"
+          ],
+          "datasetIds": [
+            "DATASET-SRC-552-EXPERIMENTS"
+          ],
+          "overlapNotes": "Findings within this paper are one research program, not independent replications; no review-primary independence count inferred.",
+          "nullInterpretation": null,
+          "provenance": {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "method": "Structured source finding normalized under the exact human governance decision",
+            "recordedAt": "2026-09-06T20:00:00Z",
+            "originReferences": [
+              "AUD-INF-F03-AE-V1-20260906-001",
+              "ec49f49346a051a9dada2cdf97d0c85e7205e018",
+              "GOV-INF-F03-001-2026-09-06",
+              "SRC-552"
+            ],
+            "limitations": [
+              "Access depth is recorded exactly; no unreported estimate was reconstructed"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

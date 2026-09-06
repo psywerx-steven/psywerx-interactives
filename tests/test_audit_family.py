@@ -26,7 +26,7 @@ class FamilyRunnerTests(unittest.TestCase):
 
     def test_legacy_native_projection_deduplication(self):
         s=self.inventory["summary"]
-        self.assertEqual((s["legacy"]["active"],s["native"]["relationships"],s["projections"]["count"]),(450,6,450))
+        self.assertEqual((s["legacy"]["active"],s["native"]["relationships"],s["projections"]["count"]),(450,7,450))
         self.assertEqual((s["combinedActiveRelationships"],s["combinedActiveCausal"]),(456,435))
         self.assertEqual(s["projections"]["additionalPropositions"],0)
 
@@ -79,7 +79,10 @@ class FamilyRunnerTests(unittest.TestCase):
             self.assertEqual(first,{f.name:f.read_bytes() for f in Path(directory).iterdir()})
             baseline=json.loads(first["BIO-F01_baseline.json"])
             original=ae.read(af.ROOT/"data/relationship-intervention-v1/relationships.json")["relationships"]
-            self.assertEqual(baseline["nativeIncident"],original)
+            entities={e["id"]:e for e in af.inventory()["entities"]}
+            bio_original=[r for r in original if entities[r["sourceEntityId"]]["familyId"]=="BIO-F01"
+                          or entities[r["targetEntityId"]]["familyId"]=="BIO-F01"]
+            self.assertEqual(baseline["nativeIncident"],bio_original)
             self.assertTrue(baseline["aliases"]);self.assertTrue(baseline["crosswalks"])
             workspace=json.loads(first["BIO-F01_research_template.json"])
             ae.validate_workspace(workspace)

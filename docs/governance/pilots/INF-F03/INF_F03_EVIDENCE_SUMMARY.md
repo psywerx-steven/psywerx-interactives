@@ -8,7 +8,7 @@ Primary search systems: public web search, PubMed abstracts, publisher pages, au
 
 ## SRC-CAND-INF-F03-001
 
-[Poor writing, not specialized concepts, drives processing difficulty in legal language](https://www.sciencedirect.com/science/article/pii/S0010027722000580) — Eric Martínez; Frank Mollica; Edward Gibson; 2022; Cognition. DOI: 10.1016/j.cognition.2022.105070. Access: SELECTED_FULL_TEXT, SELECTED_FULL_TEXT: experimental summary and discussion.
+[Poor writing, not specialized concepts, drives processing difficulty in legal language](https://www.sciencedirect.com/science/article/pii/S0010027722000580) — Eric Martínez; Francis Mollica; Edward Gibson; 2022; Cognition. DOI: 10.1016/j.cognition.2022.105070. Access: SELECTED_FULL_TEXT, SELECTED_FULL_TEXT: experimental summary and discussion.
 
 Editing surface features is separable from changing legal concepts. Benefits differ by feature; passive voice is not equivalent to center embedding. Corpus plus experiment; not an estimate for all audiences or all dimensions; no direct cognitive-load measure extracted.
 

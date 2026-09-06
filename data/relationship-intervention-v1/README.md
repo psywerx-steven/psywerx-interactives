@@ -13,6 +13,12 @@ causal traversal helper; the active association and derivational dependency do
 not. The existing scenario service and public application do not consume these
 native V1 stores.
 
+INF-F03 governance checkpoint 001 adds one bounded causal Relationship and its
+EvidenceAssessment as `GOVERNED + INACTIVE`. The Relationship has context-dependent,
+non-monotonic polarity semantics and cannot enter default causal traversal. Its
+source-level findings are normalized in `relationship-source-findings.json` and
+governed through the exact parent assessment and decision record.
+
 - `source-register.json` contains verified native V1 source records.
 - `relationships.json` contains governed native V1 Relationships.
 - `evidence-assessments.json` contains their normalized evidence and the
@@ -22,6 +28,8 @@ native V1 stores.
 - `causal-pathways.json` is empty because no pathway was governed.
 - `materialization-manifest.json` links every canonical object to its pilot
   candidate, scientific governance decision, and activation decision.
+- `relationship-source-findings.json` preserves source-level findings for the
+  governed-inactive INF-F03 Relationship without altering the RI V1 schema.
 
 Candidate copies remain physically separated under
 `data/candidates/relationship-intervention-v1/`. A candidate is not a second

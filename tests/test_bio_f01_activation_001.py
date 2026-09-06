@@ -114,7 +114,7 @@ class BioF01Activation001Tests(unittest.TestCase):
         self.assertEqual(active, ACTIVE_EVIDENCE)
         targets = {
             (row["assertion"]["objectType"], row["assertion"]["objectId"])
-            for row in self.evidence
+            for row in self.evidence if V1.governed_active(row)
         }
         expected_targets = (
             {("RELATIONSHIP", identifier) for identifier in ACTIVE_RELATIONSHIPS}
@@ -160,10 +160,10 @@ class BioF01Activation001Tests(unittest.TestCase):
 
     def test_activation_provenance_is_exact(self):
         active_records = [
-            *self.relationships,
+            *[row for row in self.relationships if row["id"] in ACTIVE_RELATIONSHIPS],
             *[row for row in self.interventions if row["id"] in ACTIVE_INTERVENTIONS],
-            *self.effects,
-            *self.evidence,
+            *[row for row in self.effects if row["id"] in ACTIVE_EFFECTS],
+            *[row for row in self.evidence if row["id"] in ACTIVE_EVIDENCE],
         ]
         self.assertEqual(len(active_records), 27)
         for record in active_records:

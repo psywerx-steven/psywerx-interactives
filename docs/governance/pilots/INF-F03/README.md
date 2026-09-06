@@ -1,7 +1,9 @@
-# INF-F03 candidate-only scientific pilot
+# INF-F03 governed-inactive scientific checkpoint
 
 Audit **AUD-INF-F03-AE-V1-20260906-001**, frozen main
-`164d938bcd4bbd7e8c48c8128cacd6e64ff0287a`. No scientific decision is approved.
+`164d938bcd4bbd7e8c48c8128cacd6e64ff0287a`. Governance decision
+`GOV-INF-F03-001-2026-09-06` materializes an exact approved subset as inactive;
+activation remains unauthorized.
 
 Start with the [human decision package](INF_F03_GOVERNANCE_DECISION_PACKAGE.md),
 then the [completeness and skeptical review](INF_F03_COMPLETENESS_REPORT.md).
@@ -26,8 +28,12 @@ REVIEW_READY record is prepared for review, not scientifically authoritative.
   not a production schema extension. No observed occurrences, pathways or moderation created.
 - [Four Driver search ledgers](../../../../data/candidates/actions-events-v1/INF-F03/driver-search-ledger.json):
   every Layer, domain and effect property considered; insufficient evidence is not zero.
-- [Source registration queue](../../../../data/candidates/actions-events-v1/INF-F03/source-registration-queue.json):
-  candidate-only references; **no canonical registration**.
+- [Source registration queue](../../../../data/candidates/actions-events-v1/INF-F03/source-registration-queue.json)
+  and [registration manifest](INF_F03_SOURCE_REGISTRATION_MANIFEST.json): three
+  required references were verified and registered as `SRC-550`–`SRC-552`; eleven
+  remain proposal-only.
+- [Human decision record](INF_F03_GOVERNANCE_DECISION_001.md): exact dispositions,
+  canonical lineage, scientific boundaries, and explicit activation withholding.
 - [Manifest](INF_F03_AUDIT_MANIFEST.json),
   [frozen generalized baseline](../../../../reports/actions-events-v1/INF-F03-pilot-baseline/INF-F03_baseline.json),
   and [execution record](EXECUTION.md).
@@ -64,7 +70,13 @@ All 44 lifecycle-bearing candidate/evidence/revision records are NOT_ELIGIBLE:
 12 REVIEW_READY and 32 RESEARCH_NEEDED, including four blocked revision proposals.
 The separate hypothesis ledger contains 11 rejected category errors, eight
 research questions and one ontology-governance block; it is not a new governed
-REJECTED-state catalog. No human decision has been filled in.
+REJECTED-state catalog.
 
-Stop after an unmerged PR. No activation, source registration, existing-edge
-replacement, BIO revision, third Family, modeling/ranking algorithm or deployment.
+Twelve new root scientific records are GOVERNED + INACTIVE: one Relationship,
+six HappeningTypes, two EffectAssertions, and three EvidenceAssessments. Five
+normalized source findings support those exact governed assertions. Candidate
+copies and every excluded/research-needed item remain NOT_ELIGIBLE.
+
+Stop after an unmerged PR. No scientific activation, further source registration,
+existing-edge replacement, BIO revision, third Family, modeling/ranking algorithm
+or deployment.

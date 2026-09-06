@@ -105,13 +105,21 @@ class InfF03PilotTests(unittest.TestCase):
             self.assertEqual(row['ownerFamilyId'], self.c.entities[r['sourceEntityId']]['primaryFamilyId'])
             self.assertIn(self.c.entities[r['targetEntityId']]['primaryFamilyId'],row['consultedFamilyIds'])
 
-    def test_source_registry_is_not_canonical(self):
+    def test_source_registry_selective_governance_checkpoint(self):
         ids = {s['id'] for s in pilot.R['sources']}
         self.assertFalse(ids & ae.Context.repository().source_ids)
         self.assertEqual(len(ids),14)
-        for s in ae.read(pilot.STORE/'source-registration-queue.json'):
-            self.assertFalse(s['registrationPerformed'])
-            self.assertFalse(s['canonicalDuplicateIds'])
+        queue = ae.read(pilot.STORE/'source-registration-queue.json')
+        registered = {s['id']: s['canonicalDuplicateId'] for s in queue if s['registrationPerformed']}
+        self.assertEqual(registered, {
+            'SRC-CAND-INF-F03-001': 'SRC-550',
+            'SRC-CAND-INF-F03-002': 'SRC-551',
+            'SRC-CAND-INF-F03-003': 'SRC-552',
+        })
+        for s in queue:
+            if s['id'] not in registered:
+                self.assertFalse(s['registrationPerformed'])
+                self.assertFalse(s['canonicalDuplicateIds'])
             self.assertTrue(s['url'] and s['title'] and s['authors'])
 
     def test_source_findings_before_synthesis(self):
@@ -197,7 +205,21 @@ class InfF03PilotTests(unittest.TestCase):
             self.assertEqual(r['governanceDecision'],pilot.DECISION)
 
     def test_protected_science_schema_service_bio(self):
-        self.assertTrue(all(x['unchanged'] for x in pilot.protected().values()))
+        checks = pilot.protected()
+        self.assertTrue(pilot.protected_checkpoint_ok(checks))
+        changed = {path for path, check in checks.items() if not check['unchanged']}
+        self.assertTrue(changed <= pilot.AUTHORIZED_CHECKPOINT_PATHS)
+        self.assertEqual(
+            changed,
+            {
+                'data/actions-events-v1/README.md',
+                'data/actions-events-v1/catalog.json',
+                'data/relationship-intervention-v1/README.md',
+                'data/relationship-intervention-v1/evidence-assessments.json',
+                'data/relationship-intervention-v1/relationships.json',
+                'data/relationship-intervention-v1/source-register.json',
+            },
+        )
 
     def test_renderer_canonical_write_rejected(self):
         for target in (pilot.ROOT/'data/entities.json',pilot.ROOT/'schemas/probe.json'):
@@ -213,7 +235,8 @@ class InfF03PilotTests(unittest.TestCase):
 
     def test_manifest_counts(self):
         self.assertEqual(Counter(r['governance']['lifecycleStatus'] for r in self.records), self.m['lifecycleCounts'])
-        self.assertEqual((self.m['newGoverned'],self.m['newActive']),(0,0))
+        self.assertEqual((self.m['newGoverned'],self.m['newActive']),(12,0))
+        self.assertFalse(self.m['governanceCheckpoint']['activationAuthorized'])
         self.assertEqual(self.m['workspaceHash'],ae.digest(self.w))
 
     def test_markdown_local_links(self):
