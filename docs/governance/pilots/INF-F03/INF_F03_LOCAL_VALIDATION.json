@@ -1,0 +1,1694 @@
+{
+  "allPassed": true,
+  "auditId": "AUD-INF-F03-AE-V1-20260906-001",
+  "baseline": "164d938bcd4bbd7e8c48c8128cacd6e64ff0287a",
+  "existingValidation": {
+    "allPassed": true,
+    "baseline": "2636dd9a8b7bad1da3d7dfa21db5fe877f4de4e1",
+    "notes": [
+      "Existing regeneration tests ran only in an isolated clone.",
+      "This report measures local results; it makes no CI or scientific approval claim."
+    ],
+    "results": [
+      {
+        "command": [
+          "git",
+          "clone",
+          "--no-hardlinks",
+          "--quiet",
+          "<checkout>",
+          "<checkout>\\reports\\actions-events-v1\\_scratch\\validation-sywrels5\\checkout"
+        ],
+        "exitCode": 0,
+        "name": "Isolated committed implementation clone",
+        "output": "",
+        "passed": true,
+        "seconds": 0.574
+      },
+      {
+        "command": [
+          "git",
+          "checkout",
+          "--quiet",
+          "5846f9e3e87e383d2feb81c7b1bd61ab759c573e"
+        ],
+        "exitCode": 0,
+        "name": "Freeze tested commit",
+        "output": "",
+        "passed": true,
+        "seconds": 0.215
+      },
+      {
+        "command": [
+          "C:\\Users\\davic\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test_actions_events_v1.py"
+        ],
+        "exitCode": 0,
+        "name": "test_actions_events_v1.py",
+        "output": ".................................................................\r\n----------------------------------------------------------------------\r\nRan 65 tests in 6.972s\r\n\r\nOK\r\n",
+        "passed": true,
+        "seconds": 7.237
+      },
+      {
+        "command": [
+          "C:\\Users\\davic\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test_audit_family.py"
+        ],
+        "exitCode": 0,
+        "name": "test_audit_family.py",
+        "output": ".s..........s.\r\n----------------------------------------------------------------------\r\nRan 14 tests in 11.863s\r\n\r\nOK (skipped=2)\r\n",
+        "passed": true,
+        "seconds": 12.106
+      },
+      {
+        "command": [
+          "C:\\Users\\davic\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test_migration_v0_3.py"
+        ],
+        "exitCode": 0,
+        "name": "test_migration_v0_3.py",
+        "output": "...................\r\n----------------------------------------------------------------------\r\nRan 19 tests in 1.630s\r\n\r\nOK\r\n",
+        "passed": true,
+        "seconds": 1.811
+      },
+      {
+        "command": [
+          "C:\\Users\\davic\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test_relationship_intervention_v1.py"
+        ],
+        "exitCode": 0,
+        "name": "test_relationship_intervention_v1.py",
+        "output": "......................................\r\n----------------------------------------------------------------------\r\nRan 38 tests in 1.437s\r\n\r\nOK\r\n",
+        "passed": true,
+        "seconds": 1.654
+      },
+      {
+        "command": [
+          "C:\\Users\\davic\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test_bio_f01_pilot.py"
+        ],
+        "exitCode": 0,
+        "name": "test_bio_f01_pilot.py",
+        "output": ".............\r\n----------------------------------------------------------------------\r\nRan 13 tests in 1.015s\r\n\r\nOK\r\n",
+        "passed": true,
+        "seconds": 1.241
+      },
+      {
+        "command": [
+          "C:\\Users\\davic\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test_bio_f01_governance_001.py"
+        ],
+        "exitCode": 0,
+        "name": "test_bio_f01_governance_001.py",
+        "output": "...............\r\n----------------------------------------------------------------------\r\nRan 15 tests in 1.479s\r\n\r\nOK\r\n",
+        "passed": true,
+        "seconds": 1.701
+      },
+      {
+        "command": [
+          "C:\\Users\\davic\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests",
+          "-p",
+          "test_bio_f01_activation_001.py"
+        ],
+        "exitCode": 0,
+        "name": "test_bio_f01_activation_001.py",
+        "output": "...........\r\n----------------------------------------------------------------------\r\nRan 11 tests in 0.677s\r\n\r\nOK\r\n",
+        "passed": true,
+        "seconds": 0.888
+      },
+      {
+        "command": [
+          "C:\\Users\\davic\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+          "scripts/actions_events_v1.py",
+          "--validate-repository"
+        ],
+        "exitCode": 0,
+        "name": "Production AE/RI schemas, references, lifecycle and bridge",
+        "output": "{\r\n  \"additionalScientificPropositions\": 0,\r\n  \"candidateWorkspace\": {\r\n    \"passBReady\": false,\r\n    \"productionEligible\": false\r\n  },\r\n  \"existingV1\": {\r\n    \"activeCausalRelationships\": 435,\r\n    \"activeRelationships\": 456,\r\n    \"entities\": 811,\r\n    \"legacyActiveCausalRelationships\": 431,\r\n    \"legacyActiveRelationships\": 450,\r\n    \"legacyMediatedPathRecords\": 39,\r\n    \"nativeActiveCausalRelationships\": 4,\r\n    \"nativeActiveEvidenceAssessments\": 11,\r\n    \"nativeActiveInterventionEffects\": 5,\r\n    \"nativeActiveInterventions\": 5,\r\n    \"nativeActiveRecords\": 27,\r\n    \"nativeActiveRelationships\": 6,\r\n    \"nativeCausalRelationships\": 4,\r\n    \"nativeEvidenceAssessments\": 11,\r\n    \"nativeInterventionEffects\": 5,\r\n    \"nativeInterventions\": 9,\r\n    \"nativeRelationships\": 6,\r\n    \"nativeSources\": 20,\r\n    \"v1IncompleteRelationships\": 450,\r\n    \"v1LegacyOnlyRelationships\": 450\r\n  },\r\n  \"nativeActionsEvents\": {\r\n    \"active\": 0,\r\n    \"records\": 0,\r\n    \"statusChanges\": 0,\r\n    \"synthetic\": false\r\n  },\r\n  \"sameIdentityViews\": 25\r\n}\r\n",
+        "passed": true,
+        "seconds": 2.01
+      },
+      {
+        "command": [
+          "C:\\Users\\davic\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+          "scripts/actions_events_synthetic.py"
+        ],
+        "exitCode": 0,
+        "name": "Eight-Layer synthetic structural pilot",
+        "output": "{\r\n  \"candidateValidation\": {\r\n    \"active\": 0,\r\n    \"records\": 46,\r\n    \"statusChanges\": 0,\r\n    \"synthetic\": true\r\n  },\r\n  \"effectProperties\": [\r\n    \"ENABLEMENT\",\r\n    \"FUNCTIONAL_SHAPE\",\r\n    \"LEVEL\",\r\n    \"PERSISTENCE\",\r\n    \"RATE\",\r\n    \"RELATIONSHIP_DIRECTION\",\r\n    \"RELATIONSHIP_STRENGTH\",\r\n    \"STRUCTURE\",\r\n    \"THRESHOLD\",\r\n    \"TIMING\",\r\n    \"VARIABILITY\"\r\n  ],\r\n  \"hypotheticalActiveValidation\": {\r\n    \"active\": 46,\r\n    \"records\": 46,\r\n    \"statusChanges\": 0,\r\n    \"synthetic\": true\r\n  },\r\n  \"label\": \"SYNTHETIC / NON_PRODUCTION\",\r\n  \"newRealScientificRecords\": 0,\r\n  \"originLayers\": [\r\n    \"BIO\",\r\n    \"CUL\",\r\n    \"ENV\",\r\n    \"INF\",\r\n    \"INS\",\r\n    \"PSY\",\r\n    \"SOC\",\r\n    \"TEC\"\r\n  ],\r\n  \"realStatusChanges\": 0,\r\n  \"unchanged\": true,\r\n  \"uses\": [\r\n    {\r\n      \"modelEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"No quantitative execution/model contract authorized; no weights inferred\"\r\n        ]\r\n      },\r\n      \"objectId\": \"SYN-EFFECT-001\",\r\n      \"practitionerActionEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"revision\": 1,\r\n      \"schemaVersion\": \"1.0.0\",\r\n      \"scientificUseEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"statusChanges\": 0,\r\n      \"syntheticSimulation\": {\r\n        \"actionWouldQualify\": true,\r\n        \"scientificWouldQualify\": true\r\n      }\r\n    },\r\n    {\r\n      \"modelEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"No quantitative execution/model contract authorized; no weights inferred\"\r\n        ]\r\n      },\r\n      \"objectId\": \"SYN-EFFECT-002\",\r\n      \"practitionerActionEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Not a deliberate Intervention/action subset\",\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"revision\": 1,\r\n      \"schemaVersion\": \"1.0.0\",\r\n      \"scientificUseEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"statusChanges\": 0,\r\n      \"syntheticSimulation\": {\r\n        \"actionWouldQualify\": false,\r\n        \"scientificWouldQualify\": true\r\n      }\r\n    },\r\n    {\r\n      \"modelEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"No quantitative execution/model contract authorized; no weights inferred\"\r\n        ]\r\n      },\r\n      \"objectId\": \"SYN-EFFECT-003\",\r\n      \"practitionerActionEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Not a deliberate Intervention/action subset\",\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"revision\": 1,\r\n      \"schemaVersion\": \"1.0.0\",\r\n      \"scientificUseEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"statusChanges\": 0,\r\n      \"syntheticSimulation\": {\r\n        \"actionWouldQualify\": false,\r\n        \"scientificWouldQualify\": true\r\n      }\r\n    },\r\n    {\r\n      \"modelEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"No quantitative execution/model contract authorized; no weights inferred\"\r\n        ]\r\n      },\r\n      \"objectId\": \"SYN-EFFECT-004\",\r\n      \"practitionerActionEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"revision\": 1,\r\n      \"schemaVersion\": \"1.0.0\",\r\n      \"scientificUseEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"statusChanges\": 0,\r\n      \"syntheticSimulation\": {\r\n        \"actionWouldQualify\": true,\r\n        \"scientificWouldQualify\": true\r\n      }\r\n    },\r\n    {\r\n      \"modelEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"No quantitative execution/model contract authorized; no weights inferred\"\r\n        ]\r\n      },\r\n      \"objectId\": \"SYN-EFFECT-005\",\r\n      \"practitionerActionEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Not a deliberate Intervention/action subset\",\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"revision\": 1,\r\n      \"schemaVersion\": \"1.0.0\",\r\n      \"scientificUseEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"statusChanges\": 0,\r\n      \"syntheticSimulation\": {\r\n        \"actionWouldQualify\": false,\r\n        \"scientificWouldQualify\": true\r\n      }\r\n    },\r\n    {\r\n      \"modelEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"No quantitative execution/model contract authorized; no weights inferred\"\r\n        ]\r\n      },\r\n      \"objectId\": \"SYN-EFFECT-006\",\r\n      \"practitionerActionEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Not a deliberate Intervention/action subset\",\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"revision\": 1,\r\n      \"schemaVersion\": \"1.0.0\",\r\n      \"scientificUseEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"statusChanges\": 0,\r\n      \"syntheticSimulation\": {\r\n        \"actionWouldQualify\": false,\r\n        \"scientificWouldQualify\": true\r\n      }\r\n    },\r\n    {\r\n      \"modelEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"No quantitative execution/model contract authorized; no weights inferred\"\r\n        ]\r\n      },\r\n      \"objectId\": \"SYN-EFFECT-007\",\r\n      \"practitionerActionEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Not a deliberate Intervention/action subset\",\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"revision\": 1,\r\n      \"schemaVersion\": \"1.0.0\",\r\n      \"scientificUseEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"statusChanges\": 0,\r\n      \"syntheticSimulation\": {\r\n        \"actionWouldQualify\": false,\r\n        \"scientificWouldQualify\": true\r\n      }\r\n    },\r\n    {\r\n      \"modelEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"No quantitative execution/model contract authorized; no weights inferred\"\r\n        ]\r\n      },\r\n      \"objectId\": \"SYN-EFFECT-008\",\r\n      \"practitionerActionEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"No independently eligible governed-active effect\",\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"revision\": 1,\r\n      \"schemaVersion\": \"1.0.0\",\r\n      \"scientificUseEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"statusChanges\": 0,\r\n      \"syntheticSimulation\": {\r\n        \"actionWouldQualify\": false,\r\n        \"scientificWouldQualify\": true\r\n      }\r\n    },\r\n    {\r\n      \"modelEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"No quantitative execution/model contract authorized; no weights inferred\"\r\n        ]\r\n      },\r\n      \"objectId\": \"SYN-EFFECT-009\",\r\n      \"practitionerActionEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"revision\": 1,\r\n      \"schemaVersion\": \"1.0.0\",\r\n      \"scientificUseEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"statusChanges\": 0,\r\n      \"syntheticSimulation\": {\r\n        \"actionWouldQualify\": true,\r\n        \"scientificWouldQualify\": true\r\n      }\r\n    },\r\n    {\r\n      \"modelEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"No quantitative execution/model contract authorized; no weights inferred\"\r\n        ]\r\n      },\r\n      \"objectId\": \"SYN-EFFECT-010\",\r\n      \"practitionerActionEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Not a deliberate Intervention/action subset\",\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"revision\": 1,\r\n      \"schemaVersion\": \"1.0.0\",\r\n      \"scientificUseEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"statusChanges\": 0,\r\n      \"syntheticSimulation\": {\r\n        \"actionWouldQualify\": false,\r\n        \"scientificWouldQualify\": true\r\n      }\r\n    },\r\n    {\r\n      \"modelEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"No quantitative execution/model contract authorized; no weights inferred\"\r\n        ]\r\n      },\r\n      \"objectId\": \"SYN-EFFECT-011\",\r\n      \"practitionerActionEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Not a deliberate Intervention/action subset\",\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"revision\": 1,\r\n      \"schemaVersion\": \"1.0.0\",\r\n      \"scientificUseEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"statusChanges\": 0,\r\n      \"syntheticSimulation\": {\r\n        \"actionWouldQualify\": false,\r\n        \"scientificWouldQualify\": true\r\n      }\r\n    },\r\n    {\r\n      \"modelEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"No quantitative execution/model contract authorized; no weights inferred\"\r\n        ]\r\n      },\r\n      \"objectId\": \"SYN-EFFECT-012\",\r\n      \"practitionerActionEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"revision\": 1,\r\n      \"schemaVersion\": \"1.0.0\",\r\n      \"scientificUseEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"statusChanges\": 0,\r\n      \"syntheticSimulation\": {\r\n        \"actionWouldQualify\": true,\r\n        \"scientificWouldQualify\": true\r\n      }\r\n    }\r\n  ]\r\n}\r\n",
+        "passed": true,
+        "seconds": 1.223
+      },
+      {
+        "command": [
+          "C:\\Users\\davic\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+          "scripts/build_migration_preview_v0_3.py"
+        ],
+        "exitCode": 0,
+        "name": "Deterministic migration regeneration",
+        "output": "Governed migration baseline v0.3 built and validated\r\n  Drivers: 770\r\n  Relational & Derived States: 41\r\n  Canonical entities: 811\r\n  Active relationships: 450\r\n  Deprecated relationships: 6\r\n  Proposed/blocked relationships: 5\r\n  Blocked governance items: 7\r\n  Errors: 0\r\n",
+        "passed": true,
+        "seconds": 0.523
+      },
+      {
+        "command": [
+          "C:\\Users\\davic\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+          "scripts/materialize_bio_f01_governance_001.py"
+        ],
+        "exitCode": 0,
+        "name": "Deterministic BIO materialization",
+        "output": "Materialized GOV-BIO-F01-001-2026-09-05 and GOV-BIO-F01-ACTIVATION-001-2026-09-05\r\n  Governed active Relationships: 6 (4 causal, 2 noncausal)\r\n  Governed active Interventions: 5; governed inactive Interventions: 4\r\n  Governed active InterventionEffects: 5\r\n  Governed active EvidenceAssessments: 11\r\n  New active records: 27\r\n  Registered native V1 sources: 20\r\n",
+        "passed": true,
+        "seconds": 0.128
+      },
+      {
+        "changed": [],
+        "filesCompared": 45,
+        "name": "Isolated scientific byte identity after regeneration",
+        "passed": true
+      },
+      {
+        "command": [
+          "git",
+          "diff",
+          "--exit-code"
+        ],
+        "exitCode": 0,
+        "name": "No tracked mutation from regeneration/tests",
+        "output": "",
+        "passed": true,
+        "seconds": 0.373
+      },
+      {
+        "command": [
+          "C:\\Program Files\\nodejs\\npm.cmd",
+          "install",
+          "--ignore-scripts",
+          "--no-audit",
+          "--no-fund",
+          "--no-package-lock"
+        ],
+        "exitCode": 0,
+        "name": "Isolated scenario dependencies",
+        "output": "\nadded 1 package in 9s\n",
+        "passed": true,
+        "seconds": 10.603
+      },
+      {
+        "command": [
+          "C:\\Program Files\\nodejs\\npm.cmd",
+          "test"
+        ],
+        "exitCode": 0,
+        "name": "Scenario contracts and exact 811-entity sweep",
+        "output": "\n> psywerx-scenario-service@1.0.0 test\n> node --test\n\n✔ catalog verifies the browser snapshot and returns bounded server context (1.8639ms)\n✔ catalog rejects a stale or tampered Driver snapshot (1.2135ms)\n✔ canonical Drivers without public plain language remain eligible (0.1987ms)\n✔ catalog preserves governed RDS identity and derivation context (0.2719ms)\n✔ request validation accepts the exact frontend contract (1.7797ms)\n✔ request validation accepts governed RDS IDs, derivation metadata, and null peripheral metadata (1.1628ms)\n✔ request validation rejects extra keys and oversized scenario input (0.263ms)\n✔ response validation requires exactly three examples (0.3737ms)\n✔ clarification rules are conditional and require one question (0.2204ms)\n✔ response validation rejects private filesystem paths (0.145ms)\n✔ every current canonical Entity resolves against the exact browser contract (67.1168ms)\n✔ test\\fixtures.js (65.6171ms)\n✔ health endpoint returns minimal status (39.1116ms)\n✔ operationalization endpoint returns the exact success object (13.6429ms)\n✔ unlisted origins are rejected (7.3619ms)\n✔ request-size and in-memory rate limits fail clearly (22.6319ms)\n✔ Responses API request is stateless, schema-strict, and server controlled (4.8239ms)\n✔ RDS model context is labeled as an Entity and includes governed derivation metadata (0.6334ms)\n✔ malformed structured output is retried once (0.4926ms)\n✔ API failures are not retried (0.6185ms)\n✔ a second malformed output fails without a third attempt (0.3595ms)\nℹ tests 21\nℹ suites 0\nℹ pass 21\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 293.0344\n",
+        "passed": true,
+        "seconds": 0.733
+      },
+      {
+        "command": [
+          "C:\\Users\\davic\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+          "-m",
+          "compileall",
+          "-q",
+          "scripts",
+          "tests"
+        ],
+        "exitCode": 0,
+        "name": "Python compilation",
+        "output": "",
+        "passed": true,
+        "seconds": 0.869
+      },
+      {
+        "failed": [],
+        "filesChecked": 19,
+        "name": "JavaScript parsing",
+        "passed": true
+      },
+      {
+        "broken": [],
+        "filesChecked": 9,
+        "name": "Markdown local-file links",
+        "passed": true
+      },
+      {
+        "comparison": {
+          "baselineCommit": "2636dd9a8b7bad1da3d7dfa21db5fe877f4de4e1",
+          "changed": [],
+          "comparison": "EXACT_GIT_CONTENT_EXCEPT_CHECKOUT_LINE_ENDINGS",
+          "filesCompared": 45,
+          "passed": true,
+          "rawCurrentSha256": {
+            "data/aliases.json": "e14f9ba67d51d4f0a18cc05ad029da08f7d206dda1c636fbbd866b16ed1b7fb9",
+            "data/candidates/relationship-intervention-v1/README.md": "69e9471e99f05dc52321eacaffe00807eea62e49855f744d361a17a1bb01a183",
+            "data/candidates/relationship-intervention-v1/workspace.json": "7e5293668f87557ee631cbfabf6d3d2e135489dbdf8e32a961bcb935c732c6f5",
+            "data/codebook.json": "863e0c46f61154694b9c4578e1d4b457f66e72403bcf6036d8ec1cffef232941",
+            "data/cognitive-security-discovery/discovery_manifest.json": "4715442fd5f738c8433934e13f5652a96c70650ab5d9e7660bccdafc37a319a0",
+            "data/cognitive-security-discovery/episode_discovery.json": "b524aa5fa61d7f04e4654e3e41e02fdebb4221c8f80368891a340e5db044fb2b",
+            "data/cognitive-security-discovery/episode_metadata.json": "39c2c19aafbb57023d7d45869e00e8b31f68c40f5ca413a72f88f7ce86d6e385",
+            "data/cognitive-security-discovery/presentation_copy.json": "b29475eff8c95645bbaaf46eb52d686392cad6be70cb6de79ec7be1af2f11044",
+            "data/cognitive-security-discovery/similarity_data.json": "3875c638153dca351a5ffa81c101368c5e1fc467655ab4718aef57835e340d39",
+            "data/cognitive-security-discovery/topic_episode_index.json": "da4de027cd1b3e520463c333dd2b018ac5d8779ddf08a65d8875db13cec8299f",
+            "data/cognitive-security/categories.json": "cf7e11324cbcc3a0ffe0735ecd9079e52c861e26ef7f929d169cd343d1d687f4",
+            "data/cognitive-security/category_findings.json": "bd6745a7ddc0d3d930b7307db0c9fcac8d67a16f50b864debbc4c7aca3db5ebb",
+            "data/cognitive-security/cluster_summaries.json": "a0a81cc70723a7620784f8418ea29e7b892ff652f9bfd3f9e6f8ca655dbee4d9",
+            "data/cognitive-security/clusters.json": "5cf1d20e502f61518f6459cb9c39379cf313c788448ab94195a2ab7fc7674ddc",
+            "data/cognitive-security/coverage.json": "e660e763907d3a8818748780d318c72fa38d9657af71953bf8a7aebf6269ae72",
+            "data/cognitive-security/episode_summaries.json": "884e7bce818eb9f9a35ee03c30029e374ce49d41dcb44e3fbc5ab91814ecd97e",
+            "data/cognitive-security/episodes.json": "0f51a91b1135a3129d00154d21c704611b3fb3b3c1a95aa4aba4e546d5e5e3c1",
+            "data/cognitive-security/families.json": "a6bdd79642a6d715c2844e0687d4f544781217caf7c9834827a7b7d2bb1dae94",
+            "data/cognitive-security/heatmap.json": "6a0fad510a44f18171b2a9fe29973f623bf3445ba62812c40613ec01cb0a1a19",
+            "data/cognitive-security/manifest.json": "973519697404183e92d0281e89919c2a3f23da46510bf4c310dd791643ba4432",
+            "data/cognitive-security/narratives.json": "6dab393bcc3cd886ab5798eb44ff3715e280f6a3e89f3f7d49918af9f704e36a",
+            "data/cognitive-security/provenance.json": "3517dcc0bebbb41ecf9b7454cf597e481aad68385df42bfbf53db5ec90722af9",
+            "data/cognitive-security/qa_report.json": "cf3651178e2f0f6637e955385d205928bae1d846e1b044b1e5fbcd8e37e32f44",
+            "data/cognitive-security/relationship_semantics.json": "50314caa3242d8dee0f055d6f00804aa4685efecca75d036cc6f40414c73a051",
+            "data/cognitive-security/relationships.json": "a6acc52749661fd958b2f5aabe802eb9e496b444320e8c68dea62616fc4a60a9",
+            "data/cognitive-security/scenarios.json": "7fb02ef23a36487db56b72989a2a5eea4d5af968bcf9d48461bae09ac3b80918",
+            "data/cognitive-security/tensions.json": "e21ba5c37bc5da1454e8184fdc7cd82b6d137b5671e31d86edc0116d97cc1abe",
+            "data/cognitive-security/themes.json": "63adc95316d114a70bd39635abe28f1d07975da0d910be5a49515f0d5daccf9b",
+            "data/crosswalks.json": "8583159cbdd9bc00cc912e367a53515511709ef7796119ecfa10d0145f1ad7c5",
+            "data/drivers.json": "017a79d1f33230e788fe82175d74714f28e7e0af18878fa718c971a0e101534b",
+            "data/entities.json": "74f88110911280bc6d508da56af824b63db4c11d741223b694aa7ac18734cf99",
+            "data/families.json": "8fc4b3f08de1b27850fb460d528c3d95a6d9ea858bb1e55ca687722af80d7f9d",
+            "data/migration-manifest.json": "7bbe720a9cea30cafc98b66e57b62ae5b40320d13ecab43bdf13828d773d159f",
+            "data/plain_language.json": "b814686d798a1da71647a62d877bffe6f22c4a74ae48f612a3a1cdeeebe8fda6",
+            "data/relational-derived-states.json": "126ee66cfed4833603376bec5e0eb4da39f37eec8605480c82ebada70641d333",
+            "data/relationship-intervention-v1/README.md": "a2c0dd2129bbc90a3dc2c1b18cdaeafbc319abdada6c962bbcf0d80a47a37fe4",
+            "data/relationship-intervention-v1/causal-pathways.json": "aeff0e0fc1f66b45b17881c11576321f879ec4428de672a847965e60cea38ab8",
+            "data/relationship-intervention-v1/evidence-assessments.json": "be2b59c4298a448b9a76666dc5785bece6f42631017c1b04866a14789e6f64b8",
+            "data/relationship-intervention-v1/intervention-effects.json": "e9a1ce432ca31383da36b7687cfc1e0282dc119bcf0588f3f776e3f0c422f8e9",
+            "data/relationship-intervention-v1/interventions.json": "f2e73ac1faa906169d7e3461bcbb0f25f4fcfe2a255a284dc2ef1b406f314ef3",
+            "data/relationship-intervention-v1/materialization-manifest.json": "799b7a199b3a8ec961731539404a899ad53d1b5053f351548d4bf92219712ff9",
+            "data/relationship-intervention-v1/relationships.json": "ba83c1f006998a2d2f956f24c9ac802dad4e2a37104b518a6f50930d9b3d523f",
+            "data/relationship-intervention-v1/source-register.json": "5255861d597255550a6c5919e4da06b89a052ecf6d01b630226e4fa2ad677563",
+            "data/relationships.json": "759f90446ff5f6e27d496e3e3603bb44045f7f0abf4770e4c012c5e4d974ba51",
+            "data/sources.json": "8c8526cc9f48f8f54a0d4d75ac374acba0af505984ecb9776e9a0afa9246082d"
+          }
+        },
+        "name": "Protected original scientific data",
+        "passed": true,
+        "rawBeforeEqualsAfter": true
+      },
+      {
+        "command": [
+          "git",
+          "diff",
+          "--check"
+        ],
+        "exitCode": 0,
+        "name": "Git diff check",
+        "output": "",
+        "passed": true,
+        "seconds": 0.04
+      }
+    ],
+    "seconds": 49.564,
+    "testedCommit": "5846f9e3e87e383d2feb81c7b1bd61ab759c573e"
+  },
+  "notes": [
+    "No research, scientific approval, activation or canonical source registration.",
+    "Regeneration ran only in disposable isolated clones.",
+    "CI is reported separately from these local results."
+  ],
+  "protectedAfter": {
+    "_migration_handoff_v0.3/CODEX_START_PROMPT.md": {
+      "baselineBlobSha256": "d2acc643c805e00e66174f60cff6b632ee7842a53c18c6bed289bafa83a38563",
+      "currentNormalizedSha256": "d2acc643c805e00e66174f60cff6b632ee7842a53c18c6bed289bafa83a38563",
+      "currentRawSha256": "d2acc643c805e00e66174f60cff6b632ee7842a53c18c6bed289bafa83a38563",
+      "unchanged": true
+    },
+    "_migration_handoff_v0.3/GOVERNANCE_SOURCE_INDEX.md": {
+      "baselineBlobSha256": "b4b05f07daae9b02391c15426496c5e483d63fd7cfdf5f679a17c523315771c5",
+      "currentNormalizedSha256": "b4b05f07daae9b02391c15426496c5e483d63fd7cfdf5f679a17c523315771c5",
+      "currentRawSha256": "b4b05f07daae9b02391c15426496c5e483d63fd7cfdf5f679a17c523315771c5",
+      "unchanged": true
+    },
+    "_migration_handoff_v0.3/MIGRATION_DECISIONS_SUMMARY.md": {
+      "baselineBlobSha256": "8c7c3622bd387189b872f67aeb21a30db1bc2e2d65d2aabffea5cf5e7188bc8d",
+      "currentNormalizedSha256": "8c7c3622bd387189b872f67aeb21a30db1bc2e2d65d2aabffea5cf5e7188bc8d",
+      "currentRawSha256": "8c7c3622bd387189b872f67aeb21a30db1bc2e2d65d2aabffea5cf5e7188bc8d",
+      "unchanged": true
+    },
+    "_migration_handoff_v0.3/RDS_POSITIVE_CONTROL_CALIBRATION.md": {
+      "baselineBlobSha256": "883ca0d0fac0dff866a8246741b0d93391b246cf7a812a95771e4998ee148454",
+      "currentNormalizedSha256": "883ca0d0fac0dff866a8246741b0d93391b246cf7a812a95771e4998ee148454",
+      "currentRawSha256": "883ca0d0fac0dff866a8246741b0d93391b246cf7a812a95771e4998ee148454",
+      "unchanged": true
+    },
+    "_migration_handoff_v0.3/README_CODEX_HANDOFF.md": {
+      "baselineBlobSha256": "bf8427460cbf75b842711dc7887bce42c6c617354b76bf5da50b04b06d262d16",
+      "currentNormalizedSha256": "bf8427460cbf75b842711dc7887bce42c6c617354b76bf5da50b04b06d262d16",
+      "currentRawSha256": "bf8427460cbf75b842711dc7887bce42c6c617354b76bf5da50b04b06d262d16",
+      "unchanged": true
+    },
+    "_migration_handoff_v0.3/SECONDARY_BOUNDARY_AUDIT_ADDENDUM.md": {
+      "baselineBlobSha256": "b1f87266394d316efa3a51b5112c688334265dc73eb87e65071d976a6a3f3fff",
+      "currentNormalizedSha256": "b1f87266394d316efa3a51b5112c688334265dc73eb87e65071d976a6a3f3fff",
+      "currentRawSha256": "b1f87266394d316efa3a51b5112c688334265dc73eb87e65071d976a6a3f3fff",
+      "unchanged": true
+    },
+    "_migration_handoff_v0.3/VALIDATION_CHECKLIST.md": {
+      "baselineBlobSha256": "4e08d998d63e8feae9ed444955e6f9ecbb209c52b74bbf9b4d609e8781674592",
+      "currentNormalizedSha256": "4e08d998d63e8feae9ed444955e6f9ecbb209c52b74bbf9b4d609e8781674592",
+      "currentRawSha256": "4e08d998d63e8feae9ed444955e6f9ecbb209c52b74bbf9b4d609e8781674592",
+      "unchanged": true
+    },
+    "_migration_handoff_v0.3/migration_manifest_seed.json": {
+      "baselineBlobSha256": "1490e87f7daac48a79af1d87554ba7d2ca4cbc4c80af729d79fcb1e27d398b7c",
+      "currentNormalizedSha256": "1490e87f7daac48a79af1d87554ba7d2ca4cbc4c80af729d79fcb1e27d398b7c",
+      "currentRawSha256": "1490e87f7daac48a79af1d87554ba7d2ca4cbc4c80af729d79fcb1e27d398b7c",
+      "unchanged": true
+    },
+    "data/actions-events-v1/README.md": {
+      "baselineBlobSha256": "a0d494dfe526a44f4ce1f14ac88d2bcd05ff50138b8bf99fbe86f076a653e774",
+      "currentNormalizedSha256": "a0d494dfe526a44f4ce1f14ac88d2bcd05ff50138b8bf99fbe86f076a653e774",
+      "currentRawSha256": "bb833a6328599b5b72bb5ec593a4f82c97eb3324de20c6674edd0c5bc846f934",
+      "unchanged": true
+    },
+    "data/actions-events-v1/catalog.json": {
+      "baselineBlobSha256": "db9a79bfa273a1aa441ae0beedba151096a9240cb030849100e5ddcca4d09eef",
+      "currentNormalizedSha256": "db9a79bfa273a1aa441ae0beedba151096a9240cb030849100e5ddcca4d09eef",
+      "currentRawSha256": "e7ece77c1f46489c64aa939c2c7f830404ae192d358e2411361dd51ec115c9e4",
+      "unchanged": true
+    },
+    "data/aliases.json": {
+      "baselineBlobSha256": "e14f9ba67d51d4f0a18cc05ad029da08f7d206dda1c636fbbd866b16ed1b7fb9",
+      "currentNormalizedSha256": "e14f9ba67d51d4f0a18cc05ad029da08f7d206dda1c636fbbd866b16ed1b7fb9",
+      "currentRawSha256": "e14f9ba67d51d4f0a18cc05ad029da08f7d206dda1c636fbbd866b16ed1b7fb9",
+      "unchanged": true
+    },
+    "data/candidates/actions-events-v1/README.md": {
+      "baselineBlobSha256": "aecbcfa39030c09c87794abd477717977ad07cb1e2fb36e7a3b8c1328baec2f4",
+      "currentNormalizedSha256": "aecbcfa39030c09c87794abd477717977ad07cb1e2fb36e7a3b8c1328baec2f4",
+      "currentRawSha256": "62541c0041b3a15d7b05503ebad5cb17f878a0b53c59c7a4b6eafe7181026fd0",
+      "unchanged": true
+    },
+    "data/candidates/actions-events-v1/workspace.json": {
+      "baselineBlobSha256": "e86af3be4db4f4372ca958666003389f08f3a68f9175b60f17231ab59de2d3ed",
+      "currentNormalizedSha256": "e86af3be4db4f4372ca958666003389f08f3a68f9175b60f17231ab59de2d3ed",
+      "currentRawSha256": "f45abb4d95c40916053269135abc861d8aaa022c29435bad0aaab1a85998444f",
+      "unchanged": true
+    },
+    "data/candidates/relationship-intervention-v1/README.md": {
+      "baselineBlobSha256": "9b588913e10d7814ba9040e6b7b5023754e9922ef72d4a780f363d78454884b7",
+      "currentNormalizedSha256": "9b588913e10d7814ba9040e6b7b5023754e9922ef72d4a780f363d78454884b7",
+      "currentRawSha256": "69e9471e99f05dc52321eacaffe00807eea62e49855f744d361a17a1bb01a183",
+      "unchanged": true
+    },
+    "data/candidates/relationship-intervention-v1/workspace.json": {
+      "baselineBlobSha256": "7e5293668f87557ee631cbfabf6d3d2e135489dbdf8e32a961bcb935c732c6f5",
+      "currentNormalizedSha256": "7e5293668f87557ee631cbfabf6d3d2e135489dbdf8e32a961bcb935c732c6f5",
+      "currentRawSha256": "7e5293668f87557ee631cbfabf6d3d2e135489dbdf8e32a961bcb935c732c6f5",
+      "unchanged": true
+    },
+    "data/codebook.json": {
+      "baselineBlobSha256": "4dd0ffe790b2b08180777d7ef0ca681eda1e7f72ce1d8e7fc8304a8aad131508",
+      "currentNormalizedSha256": "4dd0ffe790b2b08180777d7ef0ca681eda1e7f72ce1d8e7fc8304a8aad131508",
+      "currentRawSha256": "4dd0ffe790b2b08180777d7ef0ca681eda1e7f72ce1d8e7fc8304a8aad131508",
+      "unchanged": true
+    },
+    "data/cognitive-security-discovery/discovery_manifest.json": {
+      "baselineBlobSha256": "088886fecef4fc69796049c70397a3eac20cb6b7b5d58ae9dff11fbdda61ff12",
+      "currentNormalizedSha256": "088886fecef4fc69796049c70397a3eac20cb6b7b5d58ae9dff11fbdda61ff12",
+      "currentRawSha256": "4715442fd5f738c8433934e13f5652a96c70650ab5d9e7660bccdafc37a319a0",
+      "unchanged": true
+    },
+    "data/cognitive-security-discovery/episode_discovery.json": {
+      "baselineBlobSha256": "4712f31d830465b03c3350163a9015bc2b4e3c02b1195b890ad4243c08a3b8d3",
+      "currentNormalizedSha256": "4712f31d830465b03c3350163a9015bc2b4e3c02b1195b890ad4243c08a3b8d3",
+      "currentRawSha256": "b524aa5fa61d7f04e4654e3e41e02fdebb4221c8f80368891a340e5db044fb2b",
+      "unchanged": true
+    },
+    "data/cognitive-security-discovery/episode_metadata.json": {
+      "baselineBlobSha256": "547d0b92b1324dc9537f419e7fce1b2627bfc197902c32a5ca26be6588c641ff",
+      "currentNormalizedSha256": "547d0b92b1324dc9537f419e7fce1b2627bfc197902c32a5ca26be6588c641ff",
+      "currentRawSha256": "39c2c19aafbb57023d7d45869e00e8b31f68c40f5ca413a72f88f7ce86d6e385",
+      "unchanged": true
+    },
+    "data/cognitive-security-discovery/presentation_copy.json": {
+      "baselineBlobSha256": "29797d4212d4c957dbe27d7f084166b497ab85fb6b8d2b0e37c75cb09a368d64",
+      "currentNormalizedSha256": "29797d4212d4c957dbe27d7f084166b497ab85fb6b8d2b0e37c75cb09a368d64",
+      "currentRawSha256": "b29475eff8c95645bbaaf46eb52d686392cad6be70cb6de79ec7be1af2f11044",
+      "unchanged": true
+    },
+    "data/cognitive-security-discovery/similarity_data.json": {
+      "baselineBlobSha256": "3f05b357998bc49e21f26568beee04970b98a4552a1009128bc2ed6fdec42ebf",
+      "currentNormalizedSha256": "3f05b357998bc49e21f26568beee04970b98a4552a1009128bc2ed6fdec42ebf",
+      "currentRawSha256": "3875c638153dca351a5ffa81c101368c5e1fc467655ab4718aef57835e340d39",
+      "unchanged": true
+    },
+    "data/cognitive-security-discovery/topic_episode_index.json": {
+      "baselineBlobSha256": "fdad1a2bf3226dba58cf1f63b79d66935655f96c34775041ac3a1f54bf1937e2",
+      "currentNormalizedSha256": "fdad1a2bf3226dba58cf1f63b79d66935655f96c34775041ac3a1f54bf1937e2",
+      "currentRawSha256": "da4de027cd1b3e520463c333dd2b018ac5d8779ddf08a65d8875db13cec8299f",
+      "unchanged": true
+    },
+    "data/cognitive-security/categories.json": {
+      "baselineBlobSha256": "cd4e98e128256dc71410a314442fcb380f021966b1dcd81960a05a8310eb8738",
+      "currentNormalizedSha256": "cd4e98e128256dc71410a314442fcb380f021966b1dcd81960a05a8310eb8738",
+      "currentRawSha256": "cf7e11324cbcc3a0ffe0735ecd9079e52c861e26ef7f929d169cd343d1d687f4",
+      "unchanged": true
+    },
+    "data/cognitive-security/category_findings.json": {
+      "baselineBlobSha256": "1c344c56315b0e9a6469b4e35929d4f2123aa871ae5fbcaa976ad806d009a649",
+      "currentNormalizedSha256": "1c344c56315b0e9a6469b4e35929d4f2123aa871ae5fbcaa976ad806d009a649",
+      "currentRawSha256": "bd6745a7ddc0d3d930b7307db0c9fcac8d67a16f50b864debbc4c7aca3db5ebb",
+      "unchanged": true
+    },
+    "data/cognitive-security/cluster_summaries.json": {
+      "baselineBlobSha256": "624754447e07f868ba977e9e57b67729bd8b3f8a4552620f417f156a499f0784",
+      "currentNormalizedSha256": "624754447e07f868ba977e9e57b67729bd8b3f8a4552620f417f156a499f0784",
+      "currentRawSha256": "a0a81cc70723a7620784f8418ea29e7b892ff652f9bfd3f9e6f8ca655dbee4d9",
+      "unchanged": true
+    },
+    "data/cognitive-security/clusters.json": {
+      "baselineBlobSha256": "cf1491ae897cdbd7fc11d7bfba7fb8e682dd233a53123aa4bd01a02218dd2b96",
+      "currentNormalizedSha256": "cf1491ae897cdbd7fc11d7bfba7fb8e682dd233a53123aa4bd01a02218dd2b96",
+      "currentRawSha256": "5cf1d20e502f61518f6459cb9c39379cf313c788448ab94195a2ab7fc7674ddc",
+      "unchanged": true
+    },
+    "data/cognitive-security/coverage.json": {
+      "baselineBlobSha256": "01682133fe15e448ab8f5e669b28db0b061258414abc7db9875365f2057afea0",
+      "currentNormalizedSha256": "01682133fe15e448ab8f5e669b28db0b061258414abc7db9875365f2057afea0",
+      "currentRawSha256": "e660e763907d3a8818748780d318c72fa38d9657af71953bf8a7aebf6269ae72",
+      "unchanged": true
+    },
+    "data/cognitive-security/episode_summaries.json": {
+      "baselineBlobSha256": "41db3ba107478ffa7ea47edad8fa5d5ddf45f54dd3480a7a1e126c0cac95da04",
+      "currentNormalizedSha256": "41db3ba107478ffa7ea47edad8fa5d5ddf45f54dd3480a7a1e126c0cac95da04",
+      "currentRawSha256": "884e7bce818eb9f9a35ee03c30029e374ce49d41dcb44e3fbc5ab91814ecd97e",
+      "unchanged": true
+    },
+    "data/cognitive-security/episodes.json": {
+      "baselineBlobSha256": "b0a2f38d5c03dfc48ba370b02cdaecdbcdf9dc37e49ff80851a456f8d0727563",
+      "currentNormalizedSha256": "b0a2f38d5c03dfc48ba370b02cdaecdbcdf9dc37e49ff80851a456f8d0727563",
+      "currentRawSha256": "0f51a91b1135a3129d00154d21c704611b3fb3b3c1a95aa4aba4e546d5e5e3c1",
+      "unchanged": true
+    },
+    "data/cognitive-security/families.json": {
+      "baselineBlobSha256": "7e1dddd7180bf27ed09c2470d8fab2662ce6af50d3197c179f2d6f83e177266a",
+      "currentNormalizedSha256": "7e1dddd7180bf27ed09c2470d8fab2662ce6af50d3197c179f2d6f83e177266a",
+      "currentRawSha256": "a6bdd79642a6d715c2844e0687d4f544781217caf7c9834827a7b7d2bb1dae94",
+      "unchanged": true
+    },
+    "data/cognitive-security/heatmap.json": {
+      "baselineBlobSha256": "f3ceabc9190db7a034b253da14c95dd75f19e1ca0ee76172093b61d767d3dd1e",
+      "currentNormalizedSha256": "f3ceabc9190db7a034b253da14c95dd75f19e1ca0ee76172093b61d767d3dd1e",
+      "currentRawSha256": "6a0fad510a44f18171b2a9fe29973f623bf3445ba62812c40613ec01cb0a1a19",
+      "unchanged": true
+    },
+    "data/cognitive-security/manifest.json": {
+      "baselineBlobSha256": "cf502f4d91e1ffe95d227ee9f9c7630b4a81cff33a098aee5b7352e562ac8b4e",
+      "currentNormalizedSha256": "cf502f4d91e1ffe95d227ee9f9c7630b4a81cff33a098aee5b7352e562ac8b4e",
+      "currentRawSha256": "973519697404183e92d0281e89919c2a3f23da46510bf4c310dd791643ba4432",
+      "unchanged": true
+    },
+    "data/cognitive-security/narratives.json": {
+      "baselineBlobSha256": "5969ea9d25c59b2d8bdd7e337f974b314b6bd6ea992c9b47a38ba3142391a566",
+      "currentNormalizedSha256": "5969ea9d25c59b2d8bdd7e337f974b314b6bd6ea992c9b47a38ba3142391a566",
+      "currentRawSha256": "6dab393bcc3cd886ab5798eb44ff3715e280f6a3e89f3f7d49918af9f704e36a",
+      "unchanged": true
+    },
+    "data/cognitive-security/provenance.json": {
+      "baselineBlobSha256": "7fe88bbeefb8dd1f211b7e5604c2b46ee491edecfc82d2df33f2a9822b2faa15",
+      "currentNormalizedSha256": "7fe88bbeefb8dd1f211b7e5604c2b46ee491edecfc82d2df33f2a9822b2faa15",
+      "currentRawSha256": "3517dcc0bebbb41ecf9b7454cf597e481aad68385df42bfbf53db5ec90722af9",
+      "unchanged": true
+    },
+    "data/cognitive-security/qa_report.json": {
+      "baselineBlobSha256": "710be7675cfb389735bdcdbd09d39a44e196d121ec801bb76df733dd8f589b5a",
+      "currentNormalizedSha256": "710be7675cfb389735bdcdbd09d39a44e196d121ec801bb76df733dd8f589b5a",
+      "currentRawSha256": "cf3651178e2f0f6637e955385d205928bae1d846e1b044b1e5fbcd8e37e32f44",
+      "unchanged": true
+    },
+    "data/cognitive-security/relationship_semantics.json": {
+      "baselineBlobSha256": "47b0c12a13aaf9a1518c23fd5ce5cd514af0066bdd5f491247220d72ba042fa9",
+      "currentNormalizedSha256": "47b0c12a13aaf9a1518c23fd5ce5cd514af0066bdd5f491247220d72ba042fa9",
+      "currentRawSha256": "50314caa3242d8dee0f055d6f00804aa4685efecca75d036cc6f40414c73a051",
+      "unchanged": true
+    },
+    "data/cognitive-security/relationships.json": {
+      "baselineBlobSha256": "60cf2ac03fbc3889cb82ca53c6e46155858057af050d8150003c3afcaaab815b",
+      "currentNormalizedSha256": "60cf2ac03fbc3889cb82ca53c6e46155858057af050d8150003c3afcaaab815b",
+      "currentRawSha256": "a6acc52749661fd958b2f5aabe802eb9e496b444320e8c68dea62616fc4a60a9",
+      "unchanged": true
+    },
+    "data/cognitive-security/scenarios.json": {
+      "baselineBlobSha256": "85ab245d3841e48059ba09b21332a4b927f23179be2379f340b284a37ab8d3a2",
+      "currentNormalizedSha256": "85ab245d3841e48059ba09b21332a4b927f23179be2379f340b284a37ab8d3a2",
+      "currentRawSha256": "7fb02ef23a36487db56b72989a2a5eea4d5af968bcf9d48461bae09ac3b80918",
+      "unchanged": true
+    },
+    "data/cognitive-security/tensions.json": {
+      "baselineBlobSha256": "d709578531b869c9d64c0370ce6d977c5129db0e6104d85138f36f304cc9bb56",
+      "currentNormalizedSha256": "d709578531b869c9d64c0370ce6d977c5129db0e6104d85138f36f304cc9bb56",
+      "currentRawSha256": "e21ba5c37bc5da1454e8184fdc7cd82b6d137b5671e31d86edc0116d97cc1abe",
+      "unchanged": true
+    },
+    "data/cognitive-security/themes.json": {
+      "baselineBlobSha256": "60abc5e68333e7265a3fc2dddaecb1a31b695e0fad8751a84d1d7e0dcab136de",
+      "currentNormalizedSha256": "60abc5e68333e7265a3fc2dddaecb1a31b695e0fad8751a84d1d7e0dcab136de",
+      "currentRawSha256": "63adc95316d114a70bd39635abe28f1d07975da0d910be5a49515f0d5daccf9b",
+      "unchanged": true
+    },
+    "data/crosswalks.json": {
+      "baselineBlobSha256": "8583159cbdd9bc00cc912e367a53515511709ef7796119ecfa10d0145f1ad7c5",
+      "currentNormalizedSha256": "8583159cbdd9bc00cc912e367a53515511709ef7796119ecfa10d0145f1ad7c5",
+      "currentRawSha256": "8583159cbdd9bc00cc912e367a53515511709ef7796119ecfa10d0145f1ad7c5",
+      "unchanged": true
+    },
+    "data/drivers.json": {
+      "baselineBlobSha256": "017a79d1f33230e788fe82175d74714f28e7e0af18878fa718c971a0e101534b",
+      "currentNormalizedSha256": "017a79d1f33230e788fe82175d74714f28e7e0af18878fa718c971a0e101534b",
+      "currentRawSha256": "017a79d1f33230e788fe82175d74714f28e7e0af18878fa718c971a0e101534b",
+      "unchanged": true
+    },
+    "data/entities.json": {
+      "baselineBlobSha256": "74f88110911280bc6d508da56af824b63db4c11d741223b694aa7ac18734cf99",
+      "currentNormalizedSha256": "74f88110911280bc6d508da56af824b63db4c11d741223b694aa7ac18734cf99",
+      "currentRawSha256": "74f88110911280bc6d508da56af824b63db4c11d741223b694aa7ac18734cf99",
+      "unchanged": true
+    },
+    "data/families.json": {
+      "baselineBlobSha256": "8fc4b3f08de1b27850fb460d528c3d95a6d9ea858bb1e55ca687722af80d7f9d",
+      "currentNormalizedSha256": "8fc4b3f08de1b27850fb460d528c3d95a6d9ea858bb1e55ca687722af80d7f9d",
+      "currentRawSha256": "8fc4b3f08de1b27850fb460d528c3d95a6d9ea858bb1e55ca687722af80d7f9d",
+      "unchanged": true
+    },
+    "data/migration-manifest.json": {
+      "baselineBlobSha256": "7bbe720a9cea30cafc98b66e57b62ae5b40320d13ecab43bdf13828d773d159f",
+      "currentNormalizedSha256": "7bbe720a9cea30cafc98b66e57b62ae5b40320d13ecab43bdf13828d773d159f",
+      "currentRawSha256": "7bbe720a9cea30cafc98b66e57b62ae5b40320d13ecab43bdf13828d773d159f",
+      "unchanged": true
+    },
+    "data/plain_language.json": {
+      "baselineBlobSha256": "7d042a2dd3dd2994eec50b9cc97e9200265177194e40030223888bdcaebd8743",
+      "currentNormalizedSha256": "7d042a2dd3dd2994eec50b9cc97e9200265177194e40030223888bdcaebd8743",
+      "currentRawSha256": "7d042a2dd3dd2994eec50b9cc97e9200265177194e40030223888bdcaebd8743",
+      "unchanged": true
+    },
+    "data/relational-derived-states.json": {
+      "baselineBlobSha256": "126ee66cfed4833603376bec5e0eb4da39f37eec8605480c82ebada70641d333",
+      "currentNormalizedSha256": "126ee66cfed4833603376bec5e0eb4da39f37eec8605480c82ebada70641d333",
+      "currentRawSha256": "126ee66cfed4833603376bec5e0eb4da39f37eec8605480c82ebada70641d333",
+      "unchanged": true
+    },
+    "data/relationship-intervention-v1/README.md": {
+      "baselineBlobSha256": "af89ae1180208905b58708d7057e96c7e1f5a3e303972c1c05f1bd8d1117b5ee",
+      "currentNormalizedSha256": "af89ae1180208905b58708d7057e96c7e1f5a3e303972c1c05f1bd8d1117b5ee",
+      "currentRawSha256": "a2c0dd2129bbc90a3dc2c1b18cdaeafbc319abdada6c962bbcf0d80a47a37fe4",
+      "unchanged": true
+    },
+    "data/relationship-intervention-v1/causal-pathways.json": {
+      "baselineBlobSha256": "aeff0e0fc1f66b45b17881c11576321f879ec4428de672a847965e60cea38ab8",
+      "currentNormalizedSha256": "aeff0e0fc1f66b45b17881c11576321f879ec4428de672a847965e60cea38ab8",
+      "currentRawSha256": "aeff0e0fc1f66b45b17881c11576321f879ec4428de672a847965e60cea38ab8",
+      "unchanged": true
+    },
+    "data/relationship-intervention-v1/evidence-assessments.json": {
+      "baselineBlobSha256": "be2b59c4298a448b9a76666dc5785bece6f42631017c1b04866a14789e6f64b8",
+      "currentNormalizedSha256": "be2b59c4298a448b9a76666dc5785bece6f42631017c1b04866a14789e6f64b8",
+      "currentRawSha256": "be2b59c4298a448b9a76666dc5785bece6f42631017c1b04866a14789e6f64b8",
+      "unchanged": true
+    },
+    "data/relationship-intervention-v1/intervention-effects.json": {
+      "baselineBlobSha256": "e9a1ce432ca31383da36b7687cfc1e0282dc119bcf0588f3f776e3f0c422f8e9",
+      "currentNormalizedSha256": "e9a1ce432ca31383da36b7687cfc1e0282dc119bcf0588f3f776e3f0c422f8e9",
+      "currentRawSha256": "e9a1ce432ca31383da36b7687cfc1e0282dc119bcf0588f3f776e3f0c422f8e9",
+      "unchanged": true
+    },
+    "data/relationship-intervention-v1/interventions.json": {
+      "baselineBlobSha256": "f2e73ac1faa906169d7e3461bcbb0f25f4fcfe2a255a284dc2ef1b406f314ef3",
+      "currentNormalizedSha256": "f2e73ac1faa906169d7e3461bcbb0f25f4fcfe2a255a284dc2ef1b406f314ef3",
+      "currentRawSha256": "f2e73ac1faa906169d7e3461bcbb0f25f4fcfe2a255a284dc2ef1b406f314ef3",
+      "unchanged": true
+    },
+    "data/relationship-intervention-v1/materialization-manifest.json": {
+      "baselineBlobSha256": "799b7a199b3a8ec961731539404a899ad53d1b5053f351548d4bf92219712ff9",
+      "currentNormalizedSha256": "799b7a199b3a8ec961731539404a899ad53d1b5053f351548d4bf92219712ff9",
+      "currentRawSha256": "799b7a199b3a8ec961731539404a899ad53d1b5053f351548d4bf92219712ff9",
+      "unchanged": true
+    },
+    "data/relationship-intervention-v1/relationships.json": {
+      "baselineBlobSha256": "ba83c1f006998a2d2f956f24c9ac802dad4e2a37104b518a6f50930d9b3d523f",
+      "currentNormalizedSha256": "ba83c1f006998a2d2f956f24c9ac802dad4e2a37104b518a6f50930d9b3d523f",
+      "currentRawSha256": "ba83c1f006998a2d2f956f24c9ac802dad4e2a37104b518a6f50930d9b3d523f",
+      "unchanged": true
+    },
+    "data/relationship-intervention-v1/source-register.json": {
+      "baselineBlobSha256": "5255861d597255550a6c5919e4da06b89a052ecf6d01b630226e4fa2ad677563",
+      "currentNormalizedSha256": "5255861d597255550a6c5919e4da06b89a052ecf6d01b630226e4fa2ad677563",
+      "currentRawSha256": "5255861d597255550a6c5919e4da06b89a052ecf6d01b630226e4fa2ad677563",
+      "unchanged": true
+    },
+    "data/relationships.json": {
+      "baselineBlobSha256": "759f90446ff5f6e27d496e3e3603bb44045f7f0abf4770e4c012c5e4d974ba51",
+      "currentNormalizedSha256": "759f90446ff5f6e27d496e3e3603bb44045f7f0abf4770e4c012c5e4d974ba51",
+      "currentRawSha256": "759f90446ff5f6e27d496e3e3603bb44045f7f0abf4770e4c012c5e4d974ba51",
+      "unchanged": true
+    },
+    "data/sources.json": {
+      "baselineBlobSha256": "f1aae4135ac049e223ae65a66a24a6dfc2c28e911add59ce11df34e9c0af3615",
+      "currentNormalizedSha256": "f1aae4135ac049e223ae65a66a24a6dfc2c28e911add59ce11df34e9c0af3615",
+      "currentRawSha256": "f1aae4135ac049e223ae65a66a24a6dfc2c28e911add59ce11df34e9c0af3615",
+      "unchanged": true
+    },
+    "docs/governance/pilots/BIO-F01/BIO_F01_ACTIVATION_DECISION_001.md": {
+      "baselineBlobSha256": "f88b8ba0a240847ee09310aa93a9f71954356623cfc4229a0aca74267a863f88",
+      "currentNormalizedSha256": "f88b8ba0a240847ee09310aa93a9f71954356623cfc4229a0aca74267a863f88",
+      "currentRawSha256": "375332b34ae4da07be0f27c35137a1374f5a768ab0fdf94d445acbc7e253b45d",
+      "unchanged": true
+    },
+    "docs/governance/pilots/BIO-F01/BIO_F01_AUDIT_MANIFEST.json": {
+      "baselineBlobSha256": "5c101d1607399345e1b82f3cd8f35310dbd84f76fd5f61b50119570fe76cbf1d",
+      "currentNormalizedSha256": "5c101d1607399345e1b82f3cd8f35310dbd84f76fd5f61b50119570fe76cbf1d",
+      "currentRawSha256": "5c101d1607399345e1b82f3cd8f35310dbd84f76fd5f61b50119570fe76cbf1d",
+      "unchanged": true
+    },
+    "docs/governance/pilots/BIO-F01/BIO_F01_BASELINE.md": {
+      "baselineBlobSha256": "ea1ec049744b8b4e83820bfb542a07ccaf4b3258ad1d182d50df3773daafc296",
+      "currentNormalizedSha256": "ea1ec049744b8b4e83820bfb542a07ccaf4b3258ad1d182d50df3773daafc296",
+      "currentRawSha256": "e396095f343a274d9671784ac6f83f00deab238be59dfe0d897b7fe21a97384c",
+      "unchanged": true
+    },
+    "docs/governance/pilots/BIO-F01/BIO_F01_COMPLETENESS_REPORT.md": {
+      "baselineBlobSha256": "c416b1abcabe2e6fc1a41b0ec82c4db8ad557e5429d0c04581ef364a6ccd3865",
+      "currentNormalizedSha256": "c416b1abcabe2e6fc1a41b0ec82c4db8ad557e5429d0c04581ef364a6ccd3865",
+      "currentRawSha256": "8005c0bafd847253092998ac47bc4b504cee23caabee66623dd73326a6fb5f60",
+      "unchanged": true
+    },
+    "docs/governance/pilots/BIO-F01/BIO_F01_EVIDENCE_SUMMARY.md": {
+      "baselineBlobSha256": "2ed614870e39b35a6f8407e8bc8f72166709426e7b6deebc8e3a9679ed005f84",
+      "currentNormalizedSha256": "2ed614870e39b35a6f8407e8bc8f72166709426e7b6deebc8e3a9679ed005f84",
+      "currentRawSha256": "e73cd2ddb38853cc154036165d857f945925db690ddbd0341a5b3d4503aae096",
+      "unchanged": true
+    },
+    "docs/governance/pilots/BIO-F01/BIO_F01_EXISTING_RELATIONSHIP_AUDIT.md": {
+      "baselineBlobSha256": "71cd7cbf53541fc5c1cbda5ef6632464eca2e368a187f8bca0fcb436e5c81b90",
+      "currentNormalizedSha256": "71cd7cbf53541fc5c1cbda5ef6632464eca2e368a187f8bca0fcb436e5c81b90",
+      "currentRawSha256": "8911bb501cc0baf2c9adddbcf1887749619b73c2149d6b5471df4053b7c86561",
+      "unchanged": true
+    },
+    "docs/governance/pilots/BIO-F01/BIO_F01_EXISTING_RELATIONSHIP_REVISION_PROPOSALS.md": {
+      "baselineBlobSha256": "e0e2e97753bd99993ca301634a332190b002685033608e7b75b85ab30a1f59e7",
+      "currentNormalizedSha256": "e0e2e97753bd99993ca301634a332190b002685033608e7b75b85ab30a1f59e7",
+      "currentRawSha256": "03edd0167397ae4248b44ea0abba146093a95d8d6f5100cb91f8b0980bb8972e",
+      "unchanged": true
+    },
+    "docs/governance/pilots/BIO-F01/BIO_F01_GOVERNANCE_DECISION_001.md": {
+      "baselineBlobSha256": "d884fe0daf167d6f5bcffd2da15b2eb700462658d66d2a99ec231da47f63311f",
+      "currentNormalizedSha256": "d884fe0daf167d6f5bcffd2da15b2eb700462658d66d2a99ec231da47f63311f",
+      "currentRawSha256": "3858c04aab729ea2d4994c3058855db8a36895bf1999aaf49c8d90b9b9ac478f",
+      "unchanged": true
+    },
+    "docs/governance/pilots/BIO-F01/BIO_F01_GOVERNANCE_DECISION_PACKAGE.md": {
+      "baselineBlobSha256": "b3611b0e9e8b07c714582d365dff1cc68a4eda118317ae38dcc80888f4c4ed09",
+      "currentNormalizedSha256": "b3611b0e9e8b07c714582d365dff1cc68a4eda118317ae38dcc80888f4c4ed09",
+      "currentRawSha256": "7576b27f1f9d9c21beae3918cc63b06d4926e11aa656f009dcb9482d8929c771",
+      "unchanged": true
+    },
+    "docs/governance/pilots/BIO-F01/BIO_F01_INTERVENTION_CANDIDATES.md": {
+      "baselineBlobSha256": "78e1f185a399a9b8e4de15725e4e637e9803adbc942c68ef770342d4dab55e7a",
+      "currentNormalizedSha256": "78e1f185a399a9b8e4de15725e4e637e9803adbc942c68ef770342d4dab55e7a",
+      "currentRawSha256": "81d54721ca4dac1b0e28fddaa8143dd2c0dd9f789533f4f7c4bbc10e8e641832",
+      "unchanged": true
+    },
+    "docs/governance/pilots/BIO-F01/BIO_F01_RELATIONSHIP_CANDIDATES.md": {
+      "baselineBlobSha256": "380583f7fbeeff8a99df0d05188cb1d54393ff5a77704655598f4100fa030053",
+      "currentNormalizedSha256": "380583f7fbeeff8a99df0d05188cb1d54393ff5a77704655598f4100fa030053",
+      "currentRawSha256": "ff82b070003b1daa0de473af14cea4a3d63b8cb4e2495cbf1a12d55c7abf3038",
+      "unchanged": true
+    },
+    "docs/governance/pilots/BIO-F01/BIO_F01_RESEARCH_LOG.md": {
+      "baselineBlobSha256": "c8019bc60bc2e45abf0d8fdefeef07ccd562fdcb8c7f5677c87446dd1c3dff8d",
+      "currentNormalizedSha256": "c8019bc60bc2e45abf0d8fdefeef07ccd562fdcb8c7f5677c87446dd1c3dff8d",
+      "currentRawSha256": "9cc21597786aa46f66c7e2d0f8b582edefe9ed1bb8aee4e12beabe7403ebeab9",
+      "unchanged": true
+    },
+    "docs/governance/pilots/BIO-F01/BIO_F01_SOURCE_REGISTRATION_MANIFEST.json": {
+      "baselineBlobSha256": "71cde77f4ba3186b9d94ac46e4f15e32d317fa08a8e2206e1650754e799e2bf8",
+      "currentNormalizedSha256": "71cde77f4ba3186b9d94ac46e4f15e32d317fa08a8e2206e1650754e799e2bf8",
+      "currentRawSha256": "71cde77f4ba3186b9d94ac46e4f15e32d317fa08a8e2206e1650754e799e2bf8",
+      "unchanged": true
+    },
+    "scenario-service/.env.example": {
+      "baselineBlobSha256": "b2628ca35291e988e78ec992bd4e159c80ae39448d19be5d334472dfe25cbba2",
+      "currentNormalizedSha256": "b2628ca35291e988e78ec992bd4e159c80ae39448d19be5d334472dfe25cbba2",
+      "currentRawSha256": "b2628ca35291e988e78ec992bd4e159c80ae39448d19be5d334472dfe25cbba2",
+      "unchanged": true
+    },
+    "scenario-service/.gitignore": {
+      "baselineBlobSha256": "674fe53551ac485b14ab1a9385293c2fb893af21a5f42f01329ff76aa9c2911a",
+      "currentNormalizedSha256": "674fe53551ac485b14ab1a9385293c2fb893af21a5f42f01329ff76aa9c2911a",
+      "currentRawSha256": "674fe53551ac485b14ab1a9385293c2fb893af21a5f42f01329ff76aa9c2911a",
+      "unchanged": true
+    },
+    "scenario-service/package.json": {
+      "baselineBlobSha256": "185321b0326327352c511d0df8ee4eeac081cad85d10cfb789bab1f5f4317c78",
+      "currentNormalizedSha256": "185321b0326327352c511d0df8ee4eeac081cad85d10cfb789bab1f5f4317c78",
+      "currentRawSha256": "185321b0326327352c511d0df8ee4eeac081cad85d10cfb789bab1f5f4317c78",
+      "unchanged": true
+    },
+    "scenario-service/src/catalog.js": {
+      "baselineBlobSha256": "579520270ac348aa430f85e6b6dbf52afc5d4ec56b656404c78737ca08857d93",
+      "currentNormalizedSha256": "579520270ac348aa430f85e6b6dbf52afc5d4ec56b656404c78737ca08857d93",
+      "currentRawSha256": "d0a79b6968fb24017a210b5e46a2760cf00eef38b16b742608bd25e743cf5886",
+      "unchanged": true
+    },
+    "scenario-service/src/config.js": {
+      "baselineBlobSha256": "219c45c4a8e23a87a401ac04928bcdcb3fa6f277f24b2f2b779e3a34c84f510c",
+      "currentNormalizedSha256": "219c45c4a8e23a87a401ac04928bcdcb3fa6f277f24b2f2b779e3a34c84f510c",
+      "currentRawSha256": "219c45c4a8e23a87a401ac04928bcdcb3fa6f277f24b2f2b779e3a34c84f510c",
+      "unchanged": true
+    },
+    "scenario-service/src/contracts.js": {
+      "baselineBlobSha256": "5d5baa63659a77d29943dffd05bef86f898232aab303199ca3367b135757c227",
+      "currentNormalizedSha256": "5d5baa63659a77d29943dffd05bef86f898232aab303199ca3367b135757c227",
+      "currentRawSha256": "1c891fd586a0fb87857d53ed396556b0dda75e88cc4689a0c3b895aa808716e4",
+      "unchanged": true
+    },
+    "scenario-service/src/http-app.js": {
+      "baselineBlobSha256": "abc7a570da5538dafaf83b87dd39b3accb60a764cd21e6f7adb4b0f406d398b8",
+      "currentNormalizedSha256": "abc7a570da5538dafaf83b87dd39b3accb60a764cd21e6f7adb4b0f406d398b8",
+      "currentRawSha256": "abc7a570da5538dafaf83b87dd39b3accb60a764cd21e6f7adb4b0f406d398b8",
+      "unchanged": true
+    },
+    "scenario-service/src/openai-service.js": {
+      "baselineBlobSha256": "74b32c8421fd1f2dfa0b84caf01db979dbbccc4f2ce7cf6c4527cb9cd99f8a3b",
+      "currentNormalizedSha256": "74b32c8421fd1f2dfa0b84caf01db979dbbccc4f2ce7cf6c4527cb9cd99f8a3b",
+      "currentRawSha256": "74b32c8421fd1f2dfa0b84caf01db979dbbccc4f2ce7cf6c4527cb9cd99f8a3b",
+      "unchanged": true
+    },
+    "scenario-service/src/prompt.js": {
+      "baselineBlobSha256": "4be87a6f00e086f364181b6080a7b33c1ce6f28a262e3f66892b9420e0ff4779",
+      "currentNormalizedSha256": "4be87a6f00e086f364181b6080a7b33c1ce6f28a262e3f66892b9420e0ff4779",
+      "currentRawSha256": "645192e9cd4a00e6c8f6a932e8500b2fbd523546e70856b639b7174576859007",
+      "unchanged": true
+    },
+    "scenario-service/src/rate-limit.js": {
+      "baselineBlobSha256": "88820065ed89b5228005ffb6dcad2fee12a011086f672e41ad2709d06ceea29f",
+      "currentNormalizedSha256": "88820065ed89b5228005ffb6dcad2fee12a011086f672e41ad2709d06ceea29f",
+      "currentRawSha256": "88820065ed89b5228005ffb6dcad2fee12a011086f672e41ad2709d06ceea29f",
+      "unchanged": true
+    },
+    "scenario-service/src/server.js": {
+      "baselineBlobSha256": "17962f15e71bbfe0956cc22caba43c12f2fb41d7b477faeacde0a631050f2bf4",
+      "currentNormalizedSha256": "17962f15e71bbfe0956cc22caba43c12f2fb41d7b477faeacde0a631050f2bf4",
+      "currentRawSha256": "17962f15e71bbfe0956cc22caba43c12f2fb41d7b477faeacde0a631050f2bf4",
+      "unchanged": true
+    },
+    "scenario-service/test/catalog.test.js": {
+      "baselineBlobSha256": "d14f2facacf1240d3ca26d4adabdf2ddc6a06428baa9b0531edd7d13ff3b9036",
+      "currentNormalizedSha256": "d14f2facacf1240d3ca26d4adabdf2ddc6a06428baa9b0531edd7d13ff3b9036",
+      "currentRawSha256": "d4b61db45859cb0682cae82b5c8b8dfcfc49ab9b755017b5797b94461d97ff1d",
+      "unchanged": true
+    },
+    "scenario-service/test/contracts.test.js": {
+      "baselineBlobSha256": "b6489de63246e20d7334372c40a6c8f26273b0f1334f9874bd28d5574ff1601d",
+      "currentNormalizedSha256": "b6489de63246e20d7334372c40a6c8f26273b0f1334f9874bd28d5574ff1601d",
+      "currentRawSha256": "35ba37d1178f7f5bda406f4f21ee3fcec2f8d0a4e706daf7aae7dbfd855ffc1b",
+      "unchanged": true
+    },
+    "scenario-service/test/current-catalogs.test.js": {
+      "baselineBlobSha256": "62be0b1f3a85ee476580bd3b6504457895217ddb73c51a5ba11fb8848623ce95",
+      "currentNormalizedSha256": "62be0b1f3a85ee476580bd3b6504457895217ddb73c51a5ba11fb8848623ce95",
+      "currentRawSha256": "f333f78c43daa63836211b3b62dedab95d0207d80f191db3296904c8f6e6ce6d",
+      "unchanged": true
+    },
+    "scenario-service/test/fixtures.js": {
+      "baselineBlobSha256": "ec2e72800df287e76040b0ae888a2b65d4ea6c301121615cea6c6f65849f11f6",
+      "currentNormalizedSha256": "ec2e72800df287e76040b0ae888a2b65d4ea6c301121615cea6c6f65849f11f6",
+      "currentRawSha256": "f11a104baae34078dd05694c055c27feb04c1ec184af9f28444ab4c941bd0da8",
+      "unchanged": true
+    },
+    "scenario-service/test/http-app.test.js": {
+      "baselineBlobSha256": "1072472dd22a4f70a0970bd19c41d3531d440f45ba882efd1b448f39f21c00ac",
+      "currentNormalizedSha256": "1072472dd22a4f70a0970bd19c41d3531d440f45ba882efd1b448f39f21c00ac",
+      "currentRawSha256": "1072472dd22a4f70a0970bd19c41d3531d440f45ba882efd1b448f39f21c00ac",
+      "unchanged": true
+    },
+    "scenario-service/test/openai-service.test.js": {
+      "baselineBlobSha256": "de83bdc541cefff6851017a708a8575ef65c0e6383ec5061231803d0800631c2",
+      "currentNormalizedSha256": "de83bdc541cefff6851017a708a8575ef65c0e6383ec5061231803d0800631c2",
+      "currentRawSha256": "6669b9af12351b58dd04ecf367ba28f858edb5eef0acfdb349a592434f734047",
+      "unchanged": true
+    },
+    "schemas/actions-events/v1/authorization-v1.schema.json": {
+      "baselineBlobSha256": "614a918745ef48735bf0a61585f805bfebb4152e69ec994d72116361c9ae01be",
+      "currentNormalizedSha256": "614a918745ef48735bf0a61585f805bfebb4152e69ec994d72116361c9ae01be",
+      "currentRawSha256": "39afeb978d557e7fa314209398017a2a9887384de6ccd5b7d109611aecaec0af",
+      "unchanged": true
+    },
+    "schemas/actions-events/v1/candidate-workspace-v1.schema.json": {
+      "baselineBlobSha256": "becfb99e9c7a55d425f78162b87ba6f9881d8dbf01c0a89110d005b91c88f8d1",
+      "currentNormalizedSha256": "becfb99e9c7a55d425f78162b87ba6f9881d8dbf01c0a89110d005b91c88f8d1",
+      "currentRawSha256": "843341d9ac4f0c292998d7471ae316fef46080198159612e124e4f02ecc393a4",
+      "unchanged": true
+    },
+    "schemas/actions-events/v1/catalog-v1.schema.json": {
+      "baselineBlobSha256": "8ac8b47cf1e71fdc3d98623092e9871122fe9536bc9f54547dc4186e9e29d931",
+      "currentNormalizedSha256": "8ac8b47cf1e71fdc3d98623092e9871122fe9536bc9f54547dc4186e9e29d931",
+      "currentRawSha256": "c6681dab52ac025f0e9958a895a6266da527a4d7e41b0c336c1fe2dd0b6182ad",
+      "unchanged": true
+    },
+    "schemas/actions-events/v1/common-v1.schema.json": {
+      "baselineBlobSha256": "51b4e67676916d013125e17c30cb624948f9e663f94a50e3fcdc8fbf9f7c1f95",
+      "currentNormalizedSha256": "51b4e67676916d013125e17c30cb624948f9e663f94a50e3fcdc8fbf9f7c1f95",
+      "currentRawSha256": "1290a92f4fe192da2602a7afcc95ecded753e7514ba350718fbfb6e6df5228ed",
+      "unchanged": true
+    },
+    "schemas/actions-events/v1/compatibility-v1.schema.json": {
+      "baselineBlobSha256": "f77a433dfb635f68db4a048840c2cb9bcdbf68154c14db39cc86651a6011707a",
+      "currentNormalizedSha256": "f77a433dfb635f68db4a048840c2cb9bcdbf68154c14db39cc86651a6011707a",
+      "currentRawSha256": "038f9d67e22ec89d64fdd138b8c8528507cd78bb3f135968216947e38e8915ea",
+      "unchanged": true
+    },
+    "schemas/actions-events/v1/effect-assertion-v1.schema.json": {
+      "baselineBlobSha256": "2ee50660f6d0f909ea0e2f9005152eff41c44c2ab857f68fd85fc0a0db4d7d87",
+      "currentNormalizedSha256": "2ee50660f6d0f909ea0e2f9005152eff41c44c2ab857f68fd85fc0a0db4d7d87",
+      "currentRawSha256": "74367a453717ba564113241dbf493e1c7ea0db100e60146f9739a337a08303ab",
+      "unchanged": true
+    },
+    "schemas/actions-events/v1/evidence-assessment-v1.schema.json": {
+      "baselineBlobSha256": "c99d83290101d858f2a1a67ade37070b420b1a4d4c6da8394ba15f4379f1efe7",
+      "currentNormalizedSha256": "c99d83290101d858f2a1a67ade37070b420b1a4d4c6da8394ba15f4379f1efe7",
+      "currentRawSha256": "fe17dcb949073e380578f7a596d101abdbe540787411d2c9b8e2c005bde4d723",
+      "unchanged": true
+    },
+    "schemas/actions-events/v1/happening-type-v1.schema.json": {
+      "baselineBlobSha256": "0af08078de760ec8b77de61d5fa6785deca831395737219e3020dbe3b3c973a5",
+      "currentNormalizedSha256": "0af08078de760ec8b77de61d5fa6785deca831395737219e3020dbe3b3c973a5",
+      "currentRawSha256": "c3da5087aaff6503321418ebf4abca6614099911fd97957c00e9c64ff804e890",
+      "unchanged": true
+    },
+    "schemas/actions-events/v1/occurrence-v1.schema.json": {
+      "baselineBlobSha256": "ed244d04cb1fd000729c0bcd756f46f4cf7429c9ca4ba3c93baad9d98981d6c4",
+      "currentNormalizedSha256": "ed244d04cb1fd000729c0bcd756f46f4cf7429c9ca4ba3c93baad9d98981d6c4",
+      "currentRawSha256": "a9dd05f2d71d4246d69ebc940d58590e0f4d56fb027a9296d595a998cce11f95",
+      "unchanged": true
+    },
+    "schemas/actions-events/v1/source-finding-v1.schema.json": {
+      "baselineBlobSha256": "1c3d9408f6520d21b4bd5849fcf6ba7868ef245a0965c8bc74133924709f736d",
+      "currentNormalizedSha256": "1c3d9408f6520d21b4bd5849fcf6ba7868ef245a0965c8bc74133924709f736d",
+      "currentRawSha256": "676815b9a8dba4e9dbf32eb5b80a880d32f3b5f0af59985b7d2d9475cbc35264",
+      "unchanged": true
+    },
+    "schemas/actions-events/v1/use-eligibility-v1.schema.json": {
+      "baselineBlobSha256": "d1e50ba8f42d840532a5274d643a63785ca5932500beb017e6dfd7b571867655",
+      "currentNormalizedSha256": "d1e50ba8f42d840532a5274d643a63785ca5932500beb017e6dfd7b571867655",
+      "currentRawSha256": "0a53a73b2f263237f9cc4016ee14f73c9ebe5f7ffb7934e357b2a33b865702c9",
+      "unchanged": true
+    },
+    "schemas/actions-events/v1/vocabulary.json": {
+      "baselineBlobSha256": "dda340b4bf1ec4ddb307f78a0c7dee8bca2f6f91d4c25dfc4ca5de883cb65aa7",
+      "currentNormalizedSha256": "dda340b4bf1ec4ddb307f78a0c7dee8bca2f6f91d4c25dfc4ca5de883cb65aa7",
+      "currentRawSha256": "cfae5079b3b295139363267c421be87c7ee22e2163f3dc534a813bec3fed7de0",
+      "unchanged": true
+    },
+    "schemas/relationship-intervention/v1/README.md": {
+      "baselineBlobSha256": "2782d4395a87caf32643255db459488d94c0ff2d90046b280a4424f07f6c4709",
+      "currentNormalizedSha256": "2782d4395a87caf32643255db459488d94c0ff2d90046b280a4424f07f6c4709",
+      "currentRawSha256": "26031f47965f86f156c7111d80098d795cd5751b6ba1ca2a66f97624538e120d",
+      "unchanged": true
+    },
+    "schemas/relationship-intervention/v1/candidate-workspace-v1.schema.json": {
+      "baselineBlobSha256": "af02c7685b978296de577e8663c7b98bdfd7dbd22f3b6b179e939ac964175154",
+      "currentNormalizedSha256": "af02c7685b978296de577e8663c7b98bdfd7dbd22f3b6b179e939ac964175154",
+      "currentRawSha256": "b2c848950dd62328511c09f3e678a438266908524a4d3c37593e0011cb9579b9",
+      "unchanged": true
+    },
+    "schemas/relationship-intervention/v1/causal-pathway-v1.schema.json": {
+      "baselineBlobSha256": "6a9e43cf678fe2851d35307cb248dc9ca949ff0d34da0dcfbcb76b3b6452440a",
+      "currentNormalizedSha256": "6a9e43cf678fe2851d35307cb248dc9ca949ff0d34da0dcfbcb76b3b6452440a",
+      "currentRawSha256": "40ba625107b4634f1feadfadc3ce18762a7d49dc76f2cc29d60b082cc8ec3486",
+      "unchanged": true
+    },
+    "schemas/relationship-intervention/v1/evidence-assessment-v1.schema.json": {
+      "baselineBlobSha256": "74047e6494e936348622193da5cb89ebce37a8fc74fb3b960436678163fa3e44",
+      "currentNormalizedSha256": "74047e6494e936348622193da5cb89ebce37a8fc74fb3b960436678163fa3e44",
+      "currentRawSha256": "5f1b1af90333421a91d952c4945dfbd754f7a79173e2bd4c5958d6fcde45c27b",
+      "unchanged": true
+    },
+    "schemas/relationship-intervention/v1/governance-v1.schema.json": {
+      "baselineBlobSha256": "9cd6f1b2275449e28cf55f5a975822572b499e132e292902d71ca0c26a952a32",
+      "currentNormalizedSha256": "9cd6f1b2275449e28cf55f5a975822572b499e132e292902d71ca0c26a952a32",
+      "currentRawSha256": "8035bb646d9f1ddc4305ecf6a5ec17b5455e7d0502538d3bb790991856bbabcf",
+      "unchanged": true
+    },
+    "schemas/relationship-intervention/v1/intervention-effect-v1.schema.json": {
+      "baselineBlobSha256": "a0868dc95b9025bca69570faf94d162681a06ad3186ea480718a53af6569248a",
+      "currentNormalizedSha256": "a0868dc95b9025bca69570faf94d162681a06ad3186ea480718a53af6569248a",
+      "currentRawSha256": "71285323bbe1f34f504d0e282481206ed174bfad94db1a3cb6f563f88bce14f2",
+      "unchanged": true
+    },
+    "schemas/relationship-intervention/v1/intervention-v1.schema.json": {
+      "baselineBlobSha256": "4b49519c748d002b29e88057e81a9416ba658c24b584d0d48e2292c559fb7ae6",
+      "currentNormalizedSha256": "4b49519c748d002b29e88057e81a9416ba658c24b584d0d48e2292c559fb7ae6",
+      "currentRawSha256": "66a8747e46a5b19782735e49561c465e66f6997ea0eac3ff2788488a09eecdd1",
+      "unchanged": true
+    },
+    "schemas/relationship-intervention/v1/relationship-v1.schema.json": {
+      "baselineBlobSha256": "1463cfb29c0d6cbaf76e8798b90a92857341b3e599a9616133aec713ff119599",
+      "currentNormalizedSha256": "1463cfb29c0d6cbaf76e8798b90a92857341b3e599a9616133aec713ff119599",
+      "currentRawSha256": "3d54315ce98014c28bf131b682460910192a3d3f0dee8c95adf08bbf941102f3",
+      "unchanged": true
+    },
+    "schemas/relationship-intervention/v1/source-record-v1.schema.json": {
+      "baselineBlobSha256": "23cf265873fe00856fbb11c48415bf41e3e0d531492f81bab445aa868732e417",
+      "currentNormalizedSha256": "23cf265873fe00856fbb11c48415bf41e3e0d531492f81bab445aa868732e417",
+      "currentRawSha256": "d971e401698714936b58ddea23de4d2750459a1082c7f175f85f862f4678550f",
+      "unchanged": true
+    }
+  },
+  "protectedBefore": {
+    "_migration_handoff_v0.3/CODEX_START_PROMPT.md": {
+      "baselineBlobSha256": "d2acc643c805e00e66174f60cff6b632ee7842a53c18c6bed289bafa83a38563",
+      "currentNormalizedSha256": "d2acc643c805e00e66174f60cff6b632ee7842a53c18c6bed289bafa83a38563",
+      "currentRawSha256": "d2acc643c805e00e66174f60cff6b632ee7842a53c18c6bed289bafa83a38563",
+      "unchanged": true
+    },
+    "_migration_handoff_v0.3/GOVERNANCE_SOURCE_INDEX.md": {
+      "baselineBlobSha256": "b4b05f07daae9b02391c15426496c5e483d63fd7cfdf5f679a17c523315771c5",
+      "currentNormalizedSha256": "b4b05f07daae9b02391c15426496c5e483d63fd7cfdf5f679a17c523315771c5",
+      "currentRawSha256": "b4b05f07daae9b02391c15426496c5e483d63fd7cfdf5f679a17c523315771c5",
+      "unchanged": true
+    },
+    "_migration_handoff_v0.3/MIGRATION_DECISIONS_SUMMARY.md": {
+      "baselineBlobSha256": "8c7c3622bd387189b872f67aeb21a30db1bc2e2d65d2aabffea5cf5e7188bc8d",
+      "currentNormalizedSha256": "8c7c3622bd387189b872f67aeb21a30db1bc2e2d65d2aabffea5cf5e7188bc8d",
+      "currentRawSha256": "8c7c3622bd387189b872f67aeb21a30db1bc2e2d65d2aabffea5cf5e7188bc8d",
+      "unchanged": true
+    },
+    "_migration_handoff_v0.3/RDS_POSITIVE_CONTROL_CALIBRATION.md": {
+      "baselineBlobSha256": "883ca0d0fac0dff866a8246741b0d93391b246cf7a812a95771e4998ee148454",
+      "currentNormalizedSha256": "883ca0d0fac0dff866a8246741b0d93391b246cf7a812a95771e4998ee148454",
+      "currentRawSha256": "883ca0d0fac0dff866a8246741b0d93391b246cf7a812a95771e4998ee148454",
+      "unchanged": true
+    },
+    "_migration_handoff_v0.3/README_CODEX_HANDOFF.md": {
+      "baselineBlobSha256": "bf8427460cbf75b842711dc7887bce42c6c617354b76bf5da50b04b06d262d16",
+      "currentNormalizedSha256": "bf8427460cbf75b842711dc7887bce42c6c617354b76bf5da50b04b06d262d16",
+      "currentRawSha256": "bf8427460cbf75b842711dc7887bce42c6c617354b76bf5da50b04b06d262d16",
+      "unchanged": true
+    },
+    "_migration_handoff_v0.3/SECONDARY_BOUNDARY_AUDIT_ADDENDUM.md": {
+      "baselineBlobSha256": "b1f87266394d316efa3a51b5112c688334265dc73eb87e65071d976a6a3f3fff",
+      "currentNormalizedSha256": "b1f87266394d316efa3a51b5112c688334265dc73eb87e65071d976a6a3f3fff",
+      "currentRawSha256": "b1f87266394d316efa3a51b5112c688334265dc73eb87e65071d976a6a3f3fff",
+      "unchanged": true
+    },
+    "_migration_handoff_v0.3/VALIDATION_CHECKLIST.md": {
+      "baselineBlobSha256": "4e08d998d63e8feae9ed444955e6f9ecbb209c52b74bbf9b4d609e8781674592",
+      "currentNormalizedSha256": "4e08d998d63e8feae9ed444955e6f9ecbb209c52b74bbf9b4d609e8781674592",
+      "currentRawSha256": "4e08d998d63e8feae9ed444955e6f9ecbb209c52b74bbf9b4d609e8781674592",
+      "unchanged": true
+    },
+    "_migration_handoff_v0.3/migration_manifest_seed.json": {
+      "baselineBlobSha256": "1490e87f7daac48a79af1d87554ba7d2ca4cbc4c80af729d79fcb1e27d398b7c",
+      "currentNormalizedSha256": "1490e87f7daac48a79af1d87554ba7d2ca4cbc4c80af729d79fcb1e27d398b7c",
+      "currentRawSha256": "1490e87f7daac48a79af1d87554ba7d2ca4cbc4c80af729d79fcb1e27d398b7c",
+      "unchanged": true
+    },
+    "data/actions-events-v1/README.md": {
+      "baselineBlobSha256": "a0d494dfe526a44f4ce1f14ac88d2bcd05ff50138b8bf99fbe86f076a653e774",
+      "currentNormalizedSha256": "a0d494dfe526a44f4ce1f14ac88d2bcd05ff50138b8bf99fbe86f076a653e774",
+      "currentRawSha256": "bb833a6328599b5b72bb5ec593a4f82c97eb3324de20c6674edd0c5bc846f934",
+      "unchanged": true
+    },
+    "data/actions-events-v1/catalog.json": {
+      "baselineBlobSha256": "db9a79bfa273a1aa441ae0beedba151096a9240cb030849100e5ddcca4d09eef",
+      "currentNormalizedSha256": "db9a79bfa273a1aa441ae0beedba151096a9240cb030849100e5ddcca4d09eef",
+      "currentRawSha256": "e7ece77c1f46489c64aa939c2c7f830404ae192d358e2411361dd51ec115c9e4",
+      "unchanged": true
+    },
+    "data/aliases.json": {
+      "baselineBlobSha256": "e14f9ba67d51d4f0a18cc05ad029da08f7d206dda1c636fbbd866b16ed1b7fb9",
+      "currentNormalizedSha256": "e14f9ba67d51d4f0a18cc05ad029da08f7d206dda1c636fbbd866b16ed1b7fb9",
+      "currentRawSha256": "e14f9ba67d51d4f0a18cc05ad029da08f7d206dda1c636fbbd866b16ed1b7fb9",
+      "unchanged": true
+    },
+    "data/candidates/actions-events-v1/README.md": {
+      "baselineBlobSha256": "aecbcfa39030c09c87794abd477717977ad07cb1e2fb36e7a3b8c1328baec2f4",
+      "currentNormalizedSha256": "aecbcfa39030c09c87794abd477717977ad07cb1e2fb36e7a3b8c1328baec2f4",
+      "currentRawSha256": "62541c0041b3a15d7b05503ebad5cb17f878a0b53c59c7a4b6eafe7181026fd0",
+      "unchanged": true
+    },
+    "data/candidates/actions-events-v1/workspace.json": {
+      "baselineBlobSha256": "e86af3be4db4f4372ca958666003389f08f3a68f9175b60f17231ab59de2d3ed",
+      "currentNormalizedSha256": "e86af3be4db4f4372ca958666003389f08f3a68f9175b60f17231ab59de2d3ed",
+      "currentRawSha256": "f45abb4d95c40916053269135abc861d8aaa022c29435bad0aaab1a85998444f",
+      "unchanged": true
+    },
+    "data/candidates/relationship-intervention-v1/README.md": {
+      "baselineBlobSha256": "9b588913e10d7814ba9040e6b7b5023754e9922ef72d4a780f363d78454884b7",
+      "currentNormalizedSha256": "9b588913e10d7814ba9040e6b7b5023754e9922ef72d4a780f363d78454884b7",
+      "currentRawSha256": "69e9471e99f05dc52321eacaffe00807eea62e49855f744d361a17a1bb01a183",
+      "unchanged": true
+    },
+    "data/candidates/relationship-intervention-v1/workspace.json": {
+      "baselineBlobSha256": "7e5293668f87557ee631cbfabf6d3d2e135489dbdf8e32a961bcb935c732c6f5",
+      "currentNormalizedSha256": "7e5293668f87557ee631cbfabf6d3d2e135489dbdf8e32a961bcb935c732c6f5",
+      "currentRawSha256": "7e5293668f87557ee631cbfabf6d3d2e135489dbdf8e32a961bcb935c732c6f5",
+      "unchanged": true
+    },
+    "data/codebook.json": {
+      "baselineBlobSha256": "4dd0ffe790b2b08180777d7ef0ca681eda1e7f72ce1d8e7fc8304a8aad131508",
+      "currentNormalizedSha256": "4dd0ffe790b2b08180777d7ef0ca681eda1e7f72ce1d8e7fc8304a8aad131508",
+      "currentRawSha256": "4dd0ffe790b2b08180777d7ef0ca681eda1e7f72ce1d8e7fc8304a8aad131508",
+      "unchanged": true
+    },
+    "data/cognitive-security-discovery/discovery_manifest.json": {
+      "baselineBlobSha256": "088886fecef4fc69796049c70397a3eac20cb6b7b5d58ae9dff11fbdda61ff12",
+      "currentNormalizedSha256": "088886fecef4fc69796049c70397a3eac20cb6b7b5d58ae9dff11fbdda61ff12",
+      "currentRawSha256": "4715442fd5f738c8433934e13f5652a96c70650ab5d9e7660bccdafc37a319a0",
+      "unchanged": true
+    },
+    "data/cognitive-security-discovery/episode_discovery.json": {
+      "baselineBlobSha256": "4712f31d830465b03c3350163a9015bc2b4e3c02b1195b890ad4243c08a3b8d3",
+      "currentNormalizedSha256": "4712f31d830465b03c3350163a9015bc2b4e3c02b1195b890ad4243c08a3b8d3",
+      "currentRawSha256": "b524aa5fa61d7f04e4654e3e41e02fdebb4221c8f80368891a340e5db044fb2b",
+      "unchanged": true
+    },
+    "data/cognitive-security-discovery/episode_metadata.json": {
+      "baselineBlobSha256": "547d0b92b1324dc9537f419e7fce1b2627bfc197902c32a5ca26be6588c641ff",
+      "currentNormalizedSha256": "547d0b92b1324dc9537f419e7fce1b2627bfc197902c32a5ca26be6588c641ff",
+      "currentRawSha256": "39c2c19aafbb57023d7d45869e00e8b31f68c40f5ca413a72f88f7ce86d6e385",
+      "unchanged": true
+    },
+    "data/cognitive-security-discovery/presentation_copy.json": {
+      "baselineBlobSha256": "29797d4212d4c957dbe27d7f084166b497ab85fb6b8d2b0e37c75cb09a368d64",
+      "currentNormalizedSha256": "29797d4212d4c957dbe27d7f084166b497ab85fb6b8d2b0e37c75cb09a368d64",
+      "currentRawSha256": "b29475eff8c95645bbaaf46eb52d686392cad6be70cb6de79ec7be1af2f11044",
+      "unchanged": true
+    },
+    "data/cognitive-security-discovery/similarity_data.json": {
+      "baselineBlobSha256": "3f05b357998bc49e21f26568beee04970b98a4552a1009128bc2ed6fdec42ebf",
+      "currentNormalizedSha256": "3f05b357998bc49e21f26568beee04970b98a4552a1009128bc2ed6fdec42ebf",
+      "currentRawSha256": "3875c638153dca351a5ffa81c101368c5e1fc467655ab4718aef57835e340d39",
+      "unchanged": true
+    },
+    "data/cognitive-security-discovery/topic_episode_index.json": {
+      "baselineBlobSha256": "fdad1a2bf3226dba58cf1f63b79d66935655f96c34775041ac3a1f54bf1937e2",
+      "currentNormalizedSha256": "fdad1a2bf3226dba58cf1f63b79d66935655f96c34775041ac3a1f54bf1937e2",
+      "currentRawSha256": "da4de027cd1b3e520463c333dd2b018ac5d8779ddf08a65d8875db13cec8299f",
+      "unchanged": true
+    },
+    "data/cognitive-security/categories.json": {
+      "baselineBlobSha256": "cd4e98e128256dc71410a314442fcb380f021966b1dcd81960a05a8310eb8738",
+      "currentNormalizedSha256": "cd4e98e128256dc71410a314442fcb380f021966b1dcd81960a05a8310eb8738",
+      "currentRawSha256": "cf7e11324cbcc3a0ffe0735ecd9079e52c861e26ef7f929d169cd343d1d687f4",
+      "unchanged": true
+    },
+    "data/cognitive-security/category_findings.json": {
+      "baselineBlobSha256": "1c344c56315b0e9a6469b4e35929d4f2123aa871ae5fbcaa976ad806d009a649",
+      "currentNormalizedSha256": "1c344c56315b0e9a6469b4e35929d4f2123aa871ae5fbcaa976ad806d009a649",
+      "currentRawSha256": "bd6745a7ddc0d3d930b7307db0c9fcac8d67a16f50b864debbc4c7aca3db5ebb",
+      "unchanged": true
+    },
+    "data/cognitive-security/cluster_summaries.json": {
+      "baselineBlobSha256": "624754447e07f868ba977e9e57b67729bd8b3f8a4552620f417f156a499f0784",
+      "currentNormalizedSha256": "624754447e07f868ba977e9e57b67729bd8b3f8a4552620f417f156a499f0784",
+      "currentRawSha256": "a0a81cc70723a7620784f8418ea29e7b892ff652f9bfd3f9e6f8ca655dbee4d9",
+      "unchanged": true
+    },
+    "data/cognitive-security/clusters.json": {
+      "baselineBlobSha256": "cf1491ae897cdbd7fc11d7bfba7fb8e682dd233a53123aa4bd01a02218dd2b96",
+      "currentNormalizedSha256": "cf1491ae897cdbd7fc11d7bfba7fb8e682dd233a53123aa4bd01a02218dd2b96",
+      "currentRawSha256": "5cf1d20e502f61518f6459cb9c39379cf313c788448ab94195a2ab7fc7674ddc",
+      "unchanged": true
+    },
+    "data/cognitive-security/coverage.json": {
+      "baselineBlobSha256": "01682133fe15e448ab8f5e669b28db0b061258414abc7db9875365f2057afea0",
+      "currentNormalizedSha256": "01682133fe15e448ab8f5e669b28db0b061258414abc7db9875365f2057afea0",
+      "currentRawSha256": "e660e763907d3a8818748780d318c72fa38d9657af71953bf8a7aebf6269ae72",
+      "unchanged": true
+    },
+    "data/cognitive-security/episode_summaries.json": {
+      "baselineBlobSha256": "41db3ba107478ffa7ea47edad8fa5d5ddf45f54dd3480a7a1e126c0cac95da04",
+      "currentNormalizedSha256": "41db3ba107478ffa7ea47edad8fa5d5ddf45f54dd3480a7a1e126c0cac95da04",
+      "currentRawSha256": "884e7bce818eb9f9a35ee03c30029e374ce49d41dcb44e3fbc5ab91814ecd97e",
+      "unchanged": true
+    },
+    "data/cognitive-security/episodes.json": {
+      "baselineBlobSha256": "b0a2f38d5c03dfc48ba370b02cdaecdbcdf9dc37e49ff80851a456f8d0727563",
+      "currentNormalizedSha256": "b0a2f38d5c03dfc48ba370b02cdaecdbcdf9dc37e49ff80851a456f8d0727563",
+      "currentRawSha256": "0f51a91b1135a3129d00154d21c704611b3fb3b3c1a95aa4aba4e546d5e5e3c1",
+      "unchanged": true
+    },
+    "data/cognitive-security/families.json": {
+      "baselineBlobSha256": "7e1dddd7180bf27ed09c2470d8fab2662ce6af50d3197c179f2d6f83e177266a",
+      "currentNormalizedSha256": "7e1dddd7180bf27ed09c2470d8fab2662ce6af50d3197c179f2d6f83e177266a",
+      "currentRawSha256": "a6bdd79642a6d715c2844e0687d4f544781217caf7c9834827a7b7d2bb1dae94",
+      "unchanged": true
+    },
+    "data/cognitive-security/heatmap.json": {
+      "baselineBlobSha256": "f3ceabc9190db7a034b253da14c95dd75f19e1ca0ee76172093b61d767d3dd1e",
+      "currentNormalizedSha256": "f3ceabc9190db7a034b253da14c95dd75f19e1ca0ee76172093b61d767d3dd1e",
+      "currentRawSha256": "6a0fad510a44f18171b2a9fe29973f623bf3445ba62812c40613ec01cb0a1a19",
+      "unchanged": true
+    },
+    "data/cognitive-security/manifest.json": {
+      "baselineBlobSha256": "cf502f4d91e1ffe95d227ee9f9c7630b4a81cff33a098aee5b7352e562ac8b4e",
+      "currentNormalizedSha256": "cf502f4d91e1ffe95d227ee9f9c7630b4a81cff33a098aee5b7352e562ac8b4e",
+      "currentRawSha256": "973519697404183e92d0281e89919c2a3f23da46510bf4c310dd791643ba4432",
+      "unchanged": true
+    },
+    "data/cognitive-security/narratives.json": {
+      "baselineBlobSha256": "5969ea9d25c59b2d8bdd7e337f974b314b6bd6ea992c9b47a38ba3142391a566",
+      "currentNormalizedSha256": "5969ea9d25c59b2d8bdd7e337f974b314b6bd6ea992c9b47a38ba3142391a566",
+      "currentRawSha256": "6dab393bcc3cd886ab5798eb44ff3715e280f6a3e89f3f7d49918af9f704e36a",
+      "unchanged": true
+    },
+    "data/cognitive-security/provenance.json": {
+      "baselineBlobSha256": "7fe88bbeefb8dd1f211b7e5604c2b46ee491edecfc82d2df33f2a9822b2faa15",
+      "currentNormalizedSha256": "7fe88bbeefb8dd1f211b7e5604c2b46ee491edecfc82d2df33f2a9822b2faa15",
+      "currentRawSha256": "3517dcc0bebbb41ecf9b7454cf597e481aad68385df42bfbf53db5ec90722af9",
+      "unchanged": true
+    },
+    "data/cognitive-security/qa_report.json": {
+      "baselineBlobSha256": "710be7675cfb389735bdcdbd09d39a44e196d121ec801bb76df733dd8f589b5a",
+      "currentNormalizedSha256": "710be7675cfb389735bdcdbd09d39a44e196d121ec801bb76df733dd8f589b5a",
+      "currentRawSha256": "cf3651178e2f0f6637e955385d205928bae1d846e1b044b1e5fbcd8e37e32f44",
+      "unchanged": true
+    },
+    "data/cognitive-security/relationship_semantics.json": {
+      "baselineBlobSha256": "47b0c12a13aaf9a1518c23fd5ce5cd514af0066bdd5f491247220d72ba042fa9",
+      "currentNormalizedSha256": "47b0c12a13aaf9a1518c23fd5ce5cd514af0066bdd5f491247220d72ba042fa9",
+      "currentRawSha256": "50314caa3242d8dee0f055d6f00804aa4685efecca75d036cc6f40414c73a051",
+      "unchanged": true
+    },
+    "data/cognitive-security/relationships.json": {
+      "baselineBlobSha256": "60cf2ac03fbc3889cb82ca53c6e46155858057af050d8150003c3afcaaab815b",
+      "currentNormalizedSha256": "60cf2ac03fbc3889cb82ca53c6e46155858057af050d8150003c3afcaaab815b",
+      "currentRawSha256": "a6acc52749661fd958b2f5aabe802eb9e496b444320e8c68dea62616fc4a60a9",
+      "unchanged": true
+    },
+    "data/cognitive-security/scenarios.json": {
+      "baselineBlobSha256": "85ab245d3841e48059ba09b21332a4b927f23179be2379f340b284a37ab8d3a2",
+      "currentNormalizedSha256": "85ab245d3841e48059ba09b21332a4b927f23179be2379f340b284a37ab8d3a2",
+      "currentRawSha256": "7fb02ef23a36487db56b72989a2a5eea4d5af968bcf9d48461bae09ac3b80918",
+      "unchanged": true
+    },
+    "data/cognitive-security/tensions.json": {
+      "baselineBlobSha256": "d709578531b869c9d64c0370ce6d977c5129db0e6104d85138f36f304cc9bb56",
+      "currentNormalizedSha256": "d709578531b869c9d64c0370ce6d977c5129db0e6104d85138f36f304cc9bb56",
+      "currentRawSha256": "e21ba5c37bc5da1454e8184fdc7cd82b6d137b5671e31d86edc0116d97cc1abe",
+      "unchanged": true
+    },
+    "data/cognitive-security/themes.json": {
+      "baselineBlobSha256": "60abc5e68333e7265a3fc2dddaecb1a31b695e0fad8751a84d1d7e0dcab136de",
+      "currentNormalizedSha256": "60abc5e68333e7265a3fc2dddaecb1a31b695e0fad8751a84d1d7e0dcab136de",
+      "currentRawSha256": "63adc95316d114a70bd39635abe28f1d07975da0d910be5a49515f0d5daccf9b",
+      "unchanged": true
+    },
+    "data/crosswalks.json": {
+      "baselineBlobSha256": "8583159cbdd9bc00cc912e367a53515511709ef7796119ecfa10d0145f1ad7c5",
+      "currentNormalizedSha256": "8583159cbdd9bc00cc912e367a53515511709ef7796119ecfa10d0145f1ad7c5",
+      "currentRawSha256": "8583159cbdd9bc00cc912e367a53515511709ef7796119ecfa10d0145f1ad7c5",
+      "unchanged": true
+    },
+    "data/drivers.json": {
+      "baselineBlobSha256": "017a79d1f33230e788fe82175d74714f28e7e0af18878fa718c971a0e101534b",
+      "currentNormalizedSha256": "017a79d1f33230e788fe82175d74714f28e7e0af18878fa718c971a0e101534b",
+      "currentRawSha256": "017a79d1f33230e788fe82175d74714f28e7e0af18878fa718c971a0e101534b",
+      "unchanged": true
+    },
+    "data/entities.json": {
+      "baselineBlobSha256": "74f88110911280bc6d508da56af824b63db4c11d741223b694aa7ac18734cf99",
+      "currentNormalizedSha256": "74f88110911280bc6d508da56af824b63db4c11d741223b694aa7ac18734cf99",
+      "currentRawSha256": "74f88110911280bc6d508da56af824b63db4c11d741223b694aa7ac18734cf99",
+      "unchanged": true
+    },
+    "data/families.json": {
+      "baselineBlobSha256": "8fc4b3f08de1b27850fb460d528c3d95a6d9ea858bb1e55ca687722af80d7f9d",
+      "currentNormalizedSha256": "8fc4b3f08de1b27850fb460d528c3d95a6d9ea858bb1e55ca687722af80d7f9d",
+      "currentRawSha256": "8fc4b3f08de1b27850fb460d528c3d95a6d9ea858bb1e55ca687722af80d7f9d",
+      "unchanged": true
+    },
+    "data/migration-manifest.json": {
+      "baselineBlobSha256": "7bbe720a9cea30cafc98b66e57b62ae5b40320d13ecab43bdf13828d773d159f",
+      "currentNormalizedSha256": "7bbe720a9cea30cafc98b66e57b62ae5b40320d13ecab43bdf13828d773d159f",
+      "currentRawSha256": "7bbe720a9cea30cafc98b66e57b62ae5b40320d13ecab43bdf13828d773d159f",
+      "unchanged": true
+    },
+    "data/plain_language.json": {
+      "baselineBlobSha256": "7d042a2dd3dd2994eec50b9cc97e9200265177194e40030223888bdcaebd8743",
+      "currentNormalizedSha256": "7d042a2dd3dd2994eec50b9cc97e9200265177194e40030223888bdcaebd8743",
+      "currentRawSha256": "7d042a2dd3dd2994eec50b9cc97e9200265177194e40030223888bdcaebd8743",
+      "unchanged": true
+    },
+    "data/relational-derived-states.json": {
+      "baselineBlobSha256": "126ee66cfed4833603376bec5e0eb4da39f37eec8605480c82ebada70641d333",
+      "currentNormalizedSha256": "126ee66cfed4833603376bec5e0eb4da39f37eec8605480c82ebada70641d333",
+      "currentRawSha256": "126ee66cfed4833603376bec5e0eb4da39f37eec8605480c82ebada70641d333",
+      "unchanged": true
+    },
+    "data/relationship-intervention-v1/README.md": {
+      "baselineBlobSha256": "af89ae1180208905b58708d7057e96c7e1f5a3e303972c1c05f1bd8d1117b5ee",
+      "currentNormalizedSha256": "af89ae1180208905b58708d7057e96c7e1f5a3e303972c1c05f1bd8d1117b5ee",
+      "currentRawSha256": "a2c0dd2129bbc90a3dc2c1b18cdaeafbc319abdada6c962bbcf0d80a47a37fe4",
+      "unchanged": true
+    },
+    "data/relationship-intervention-v1/causal-pathways.json": {
+      "baselineBlobSha256": "aeff0e0fc1f66b45b17881c11576321f879ec4428de672a847965e60cea38ab8",
+      "currentNormalizedSha256": "aeff0e0fc1f66b45b17881c11576321f879ec4428de672a847965e60cea38ab8",
+      "currentRawSha256": "aeff0e0fc1f66b45b17881c11576321f879ec4428de672a847965e60cea38ab8",
+      "unchanged": true
+    },
+    "data/relationship-intervention-v1/evidence-assessments.json": {
+      "baselineBlobSha256": "be2b59c4298a448b9a76666dc5785bece6f42631017c1b04866a14789e6f64b8",
+      "currentNormalizedSha256": "be2b59c4298a448b9a76666dc5785bece6f42631017c1b04866a14789e6f64b8",
+      "currentRawSha256": "be2b59c4298a448b9a76666dc5785bece6f42631017c1b04866a14789e6f64b8",
+      "unchanged": true
+    },
+    "data/relationship-intervention-v1/intervention-effects.json": {
+      "baselineBlobSha256": "e9a1ce432ca31383da36b7687cfc1e0282dc119bcf0588f3f776e3f0c422f8e9",
+      "currentNormalizedSha256": "e9a1ce432ca31383da36b7687cfc1e0282dc119bcf0588f3f776e3f0c422f8e9",
+      "currentRawSha256": "e9a1ce432ca31383da36b7687cfc1e0282dc119bcf0588f3f776e3f0c422f8e9",
+      "unchanged": true
+    },
+    "data/relationship-intervention-v1/interventions.json": {
+      "baselineBlobSha256": "f2e73ac1faa906169d7e3461bcbb0f25f4fcfe2a255a284dc2ef1b406f314ef3",
+      "currentNormalizedSha256": "f2e73ac1faa906169d7e3461bcbb0f25f4fcfe2a255a284dc2ef1b406f314ef3",
+      "currentRawSha256": "f2e73ac1faa906169d7e3461bcbb0f25f4fcfe2a255a284dc2ef1b406f314ef3",
+      "unchanged": true
+    },
+    "data/relationship-intervention-v1/materialization-manifest.json": {
+      "baselineBlobSha256": "799b7a199b3a8ec961731539404a899ad53d1b5053f351548d4bf92219712ff9",
+      "currentNormalizedSha256": "799b7a199b3a8ec961731539404a899ad53d1b5053f351548d4bf92219712ff9",
+      "currentRawSha256": "799b7a199b3a8ec961731539404a899ad53d1b5053f351548d4bf92219712ff9",
+      "unchanged": true
+    },
+    "data/relationship-intervention-v1/relationships.json": {
+      "baselineBlobSha256": "ba83c1f006998a2d2f956f24c9ac802dad4e2a37104b518a6f50930d9b3d523f",
+      "currentNormalizedSha256": "ba83c1f006998a2d2f956f24c9ac802dad4e2a37104b518a6f50930d9b3d523f",
+      "currentRawSha256": "ba83c1f006998a2d2f956f24c9ac802dad4e2a37104b518a6f50930d9b3d523f",
+      "unchanged": true
+    },
+    "data/relationship-intervention-v1/source-register.json": {
+      "baselineBlobSha256": "5255861d597255550a6c5919e4da06b89a052ecf6d01b630226e4fa2ad677563",
+      "currentNormalizedSha256": "5255861d597255550a6c5919e4da06b89a052ecf6d01b630226e4fa2ad677563",
+      "currentRawSha256": "5255861d597255550a6c5919e4da06b89a052ecf6d01b630226e4fa2ad677563",
+      "unchanged": true
+    },
+    "data/relationships.json": {
+      "baselineBlobSha256": "759f90446ff5f6e27d496e3e3603bb44045f7f0abf4770e4c012c5e4d974ba51",
+      "currentNormalizedSha256": "759f90446ff5f6e27d496e3e3603bb44045f7f0abf4770e4c012c5e4d974ba51",
+      "currentRawSha256": "759f90446ff5f6e27d496e3e3603bb44045f7f0abf4770e4c012c5e4d974ba51",
+      "unchanged": true
+    },
+    "data/sources.json": {
+      "baselineBlobSha256": "f1aae4135ac049e223ae65a66a24a6dfc2c28e911add59ce11df34e9c0af3615",
+      "currentNormalizedSha256": "f1aae4135ac049e223ae65a66a24a6dfc2c28e911add59ce11df34e9c0af3615",
+      "currentRawSha256": "f1aae4135ac049e223ae65a66a24a6dfc2c28e911add59ce11df34e9c0af3615",
+      "unchanged": true
+    },
+    "docs/governance/pilots/BIO-F01/BIO_F01_ACTIVATION_DECISION_001.md": {
+      "baselineBlobSha256": "f88b8ba0a240847ee09310aa93a9f71954356623cfc4229a0aca74267a863f88",
+      "currentNormalizedSha256": "f88b8ba0a240847ee09310aa93a9f71954356623cfc4229a0aca74267a863f88",
+      "currentRawSha256": "375332b34ae4da07be0f27c35137a1374f5a768ab0fdf94d445acbc7e253b45d",
+      "unchanged": true
+    },
+    "docs/governance/pilots/BIO-F01/BIO_F01_AUDIT_MANIFEST.json": {
+      "baselineBlobSha256": "5c101d1607399345e1b82f3cd8f35310dbd84f76fd5f61b50119570fe76cbf1d",
+      "currentNormalizedSha256": "5c101d1607399345e1b82f3cd8f35310dbd84f76fd5f61b50119570fe76cbf1d",
+      "currentRawSha256": "5c101d1607399345e1b82f3cd8f35310dbd84f76fd5f61b50119570fe76cbf1d",
+      "unchanged": true
+    },
+    "docs/governance/pilots/BIO-F01/BIO_F01_BASELINE.md": {
+      "baselineBlobSha256": "ea1ec049744b8b4e83820bfb542a07ccaf4b3258ad1d182d50df3773daafc296",
+      "currentNormalizedSha256": "ea1ec049744b8b4e83820bfb542a07ccaf4b3258ad1d182d50df3773daafc296",
+      "currentRawSha256": "e396095f343a274d9671784ac6f83f00deab238be59dfe0d897b7fe21a97384c",
+      "unchanged": true
+    },
+    "docs/governance/pilots/BIO-F01/BIO_F01_COMPLETENESS_REPORT.md": {
+      "baselineBlobSha256": "c416b1abcabe2e6fc1a41b0ec82c4db8ad557e5429d0c04581ef364a6ccd3865",
+      "currentNormalizedSha256": "c416b1abcabe2e6fc1a41b0ec82c4db8ad557e5429d0c04581ef364a6ccd3865",
+      "currentRawSha256": "8005c0bafd847253092998ac47bc4b504cee23caabee66623dd73326a6fb5f60",
+      "unchanged": true
+    },
+    "docs/governance/pilots/BIO-F01/BIO_F01_EVIDENCE_SUMMARY.md": {
+      "baselineBlobSha256": "2ed614870e39b35a6f8407e8bc8f72166709426e7b6deebc8e3a9679ed005f84",
+      "currentNormalizedSha256": "2ed614870e39b35a6f8407e8bc8f72166709426e7b6deebc8e3a9679ed005f84",
+      "currentRawSha256": "e73cd2ddb38853cc154036165d857f945925db690ddbd0341a5b3d4503aae096",
+      "unchanged": true
+    },
+    "docs/governance/pilots/BIO-F01/BIO_F01_EXISTING_RELATIONSHIP_AUDIT.md": {
+      "baselineBlobSha256": "71cd7cbf53541fc5c1cbda5ef6632464eca2e368a187f8bca0fcb436e5c81b90",
+      "currentNormalizedSha256": "71cd7cbf53541fc5c1cbda5ef6632464eca2e368a187f8bca0fcb436e5c81b90",
+      "currentRawSha256": "8911bb501cc0baf2c9adddbcf1887749619b73c2149d6b5471df4053b7c86561",
+      "unchanged": true
+    },
+    "docs/governance/pilots/BIO-F01/BIO_F01_EXISTING_RELATIONSHIP_REVISION_PROPOSALS.md": {
+      "baselineBlobSha256": "e0e2e97753bd99993ca301634a332190b002685033608e7b75b85ab30a1f59e7",
+      "currentNormalizedSha256": "e0e2e97753bd99993ca301634a332190b002685033608e7b75b85ab30a1f59e7",
+      "currentRawSha256": "03edd0167397ae4248b44ea0abba146093a95d8d6f5100cb91f8b0980bb8972e",
+      "unchanged": true
+    },
+    "docs/governance/pilots/BIO-F01/BIO_F01_GOVERNANCE_DECISION_001.md": {
+      "baselineBlobSha256": "d884fe0daf167d6f5bcffd2da15b2eb700462658d66d2a99ec231da47f63311f",
+      "currentNormalizedSha256": "d884fe0daf167d6f5bcffd2da15b2eb700462658d66d2a99ec231da47f63311f",
+      "currentRawSha256": "3858c04aab729ea2d4994c3058855db8a36895bf1999aaf49c8d90b9b9ac478f",
+      "unchanged": true
+    },
+    "docs/governance/pilots/BIO-F01/BIO_F01_GOVERNANCE_DECISION_PACKAGE.md": {
+      "baselineBlobSha256": "b3611b0e9e8b07c714582d365dff1cc68a4eda118317ae38dcc80888f4c4ed09",
+      "currentNormalizedSha256": "b3611b0e9e8b07c714582d365dff1cc68a4eda118317ae38dcc80888f4c4ed09",
+      "currentRawSha256": "7576b27f1f9d9c21beae3918cc63b06d4926e11aa656f009dcb9482d8929c771",
+      "unchanged": true
+    },
+    "docs/governance/pilots/BIO-F01/BIO_F01_INTERVENTION_CANDIDATES.md": {
+      "baselineBlobSha256": "78e1f185a399a9b8e4de15725e4e637e9803adbc942c68ef770342d4dab55e7a",
+      "currentNormalizedSha256": "78e1f185a399a9b8e4de15725e4e637e9803adbc942c68ef770342d4dab55e7a",
+      "currentRawSha256": "81d54721ca4dac1b0e28fddaa8143dd2c0dd9f789533f4f7c4bbc10e8e641832",
+      "unchanged": true
+    },
+    "docs/governance/pilots/BIO-F01/BIO_F01_RELATIONSHIP_CANDIDATES.md": {
+      "baselineBlobSha256": "380583f7fbeeff8a99df0d05188cb1d54393ff5a77704655598f4100fa030053",
+      "currentNormalizedSha256": "380583f7fbeeff8a99df0d05188cb1d54393ff5a77704655598f4100fa030053",
+      "currentRawSha256": "ff82b070003b1daa0de473af14cea4a3d63b8cb4e2495cbf1a12d55c7abf3038",
+      "unchanged": true
+    },
+    "docs/governance/pilots/BIO-F01/BIO_F01_RESEARCH_LOG.md": {
+      "baselineBlobSha256": "c8019bc60bc2e45abf0d8fdefeef07ccd562fdcb8c7f5677c87446dd1c3dff8d",
+      "currentNormalizedSha256": "c8019bc60bc2e45abf0d8fdefeef07ccd562fdcb8c7f5677c87446dd1c3dff8d",
+      "currentRawSha256": "9cc21597786aa46f66c7e2d0f8b582edefe9ed1bb8aee4e12beabe7403ebeab9",
+      "unchanged": true
+    },
+    "docs/governance/pilots/BIO-F01/BIO_F01_SOURCE_REGISTRATION_MANIFEST.json": {
+      "baselineBlobSha256": "71cde77f4ba3186b9d94ac46e4f15e32d317fa08a8e2206e1650754e799e2bf8",
+      "currentNormalizedSha256": "71cde77f4ba3186b9d94ac46e4f15e32d317fa08a8e2206e1650754e799e2bf8",
+      "currentRawSha256": "71cde77f4ba3186b9d94ac46e4f15e32d317fa08a8e2206e1650754e799e2bf8",
+      "unchanged": true
+    },
+    "scenario-service/.env.example": {
+      "baselineBlobSha256": "b2628ca35291e988e78ec992bd4e159c80ae39448d19be5d334472dfe25cbba2",
+      "currentNormalizedSha256": "b2628ca35291e988e78ec992bd4e159c80ae39448d19be5d334472dfe25cbba2",
+      "currentRawSha256": "b2628ca35291e988e78ec992bd4e159c80ae39448d19be5d334472dfe25cbba2",
+      "unchanged": true
+    },
+    "scenario-service/.gitignore": {
+      "baselineBlobSha256": "674fe53551ac485b14ab1a9385293c2fb893af21a5f42f01329ff76aa9c2911a",
+      "currentNormalizedSha256": "674fe53551ac485b14ab1a9385293c2fb893af21a5f42f01329ff76aa9c2911a",
+      "currentRawSha256": "674fe53551ac485b14ab1a9385293c2fb893af21a5f42f01329ff76aa9c2911a",
+      "unchanged": true
+    },
+    "scenario-service/package.json": {
+      "baselineBlobSha256": "185321b0326327352c511d0df8ee4eeac081cad85d10cfb789bab1f5f4317c78",
+      "currentNormalizedSha256": "185321b0326327352c511d0df8ee4eeac081cad85d10cfb789bab1f5f4317c78",
+      "currentRawSha256": "185321b0326327352c511d0df8ee4eeac081cad85d10cfb789bab1f5f4317c78",
+      "unchanged": true
+    },
+    "scenario-service/src/catalog.js": {
+      "baselineBlobSha256": "579520270ac348aa430f85e6b6dbf52afc5d4ec56b656404c78737ca08857d93",
+      "currentNormalizedSha256": "579520270ac348aa430f85e6b6dbf52afc5d4ec56b656404c78737ca08857d93",
+      "currentRawSha256": "d0a79b6968fb24017a210b5e46a2760cf00eef38b16b742608bd25e743cf5886",
+      "unchanged": true
+    },
+    "scenario-service/src/config.js": {
+      "baselineBlobSha256": "219c45c4a8e23a87a401ac04928bcdcb3fa6f277f24b2f2b779e3a34c84f510c",
+      "currentNormalizedSha256": "219c45c4a8e23a87a401ac04928bcdcb3fa6f277f24b2f2b779e3a34c84f510c",
+      "currentRawSha256": "219c45c4a8e23a87a401ac04928bcdcb3fa6f277f24b2f2b779e3a34c84f510c",
+      "unchanged": true
+    },
+    "scenario-service/src/contracts.js": {
+      "baselineBlobSha256": "5d5baa63659a77d29943dffd05bef86f898232aab303199ca3367b135757c227",
+      "currentNormalizedSha256": "5d5baa63659a77d29943dffd05bef86f898232aab303199ca3367b135757c227",
+      "currentRawSha256": "1c891fd586a0fb87857d53ed396556b0dda75e88cc4689a0c3b895aa808716e4",
+      "unchanged": true
+    },
+    "scenario-service/src/http-app.js": {
+      "baselineBlobSha256": "abc7a570da5538dafaf83b87dd39b3accb60a764cd21e6f7adb4b0f406d398b8",
+      "currentNormalizedSha256": "abc7a570da5538dafaf83b87dd39b3accb60a764cd21e6f7adb4b0f406d398b8",
+      "currentRawSha256": "abc7a570da5538dafaf83b87dd39b3accb60a764cd21e6f7adb4b0f406d398b8",
+      "unchanged": true
+    },
+    "scenario-service/src/openai-service.js": {
+      "baselineBlobSha256": "74b32c8421fd1f2dfa0b84caf01db979dbbccc4f2ce7cf6c4527cb9cd99f8a3b",
+      "currentNormalizedSha256": "74b32c8421fd1f2dfa0b84caf01db979dbbccc4f2ce7cf6c4527cb9cd99f8a3b",
+      "currentRawSha256": "74b32c8421fd1f2dfa0b84caf01db979dbbccc4f2ce7cf6c4527cb9cd99f8a3b",
+      "unchanged": true
+    },
+    "scenario-service/src/prompt.js": {
+      "baselineBlobSha256": "4be87a6f00e086f364181b6080a7b33c1ce6f28a262e3f66892b9420e0ff4779",
+      "currentNormalizedSha256": "4be87a6f00e086f364181b6080a7b33c1ce6f28a262e3f66892b9420e0ff4779",
+      "currentRawSha256": "645192e9cd4a00e6c8f6a932e8500b2fbd523546e70856b639b7174576859007",
+      "unchanged": true
+    },
+    "scenario-service/src/rate-limit.js": {
+      "baselineBlobSha256": "88820065ed89b5228005ffb6dcad2fee12a011086f672e41ad2709d06ceea29f",
+      "currentNormalizedSha256": "88820065ed89b5228005ffb6dcad2fee12a011086f672e41ad2709d06ceea29f",
+      "currentRawSha256": "88820065ed89b5228005ffb6dcad2fee12a011086f672e41ad2709d06ceea29f",
+      "unchanged": true
+    },
+    "scenario-service/src/server.js": {
+      "baselineBlobSha256": "17962f15e71bbfe0956cc22caba43c12f2fb41d7b477faeacde0a631050f2bf4",
+      "currentNormalizedSha256": "17962f15e71bbfe0956cc22caba43c12f2fb41d7b477faeacde0a631050f2bf4",
+      "currentRawSha256": "17962f15e71bbfe0956cc22caba43c12f2fb41d7b477faeacde0a631050f2bf4",
+      "unchanged": true
+    },
+    "scenario-service/test/catalog.test.js": {
+      "baselineBlobSha256": "d14f2facacf1240d3ca26d4adabdf2ddc6a06428baa9b0531edd7d13ff3b9036",
+      "currentNormalizedSha256": "d14f2facacf1240d3ca26d4adabdf2ddc6a06428baa9b0531edd7d13ff3b9036",
+      "currentRawSha256": "d4b61db45859cb0682cae82b5c8b8dfcfc49ab9b755017b5797b94461d97ff1d",
+      "unchanged": true
+    },
+    "scenario-service/test/contracts.test.js": {
+      "baselineBlobSha256": "b6489de63246e20d7334372c40a6c8f26273b0f1334f9874bd28d5574ff1601d",
+      "currentNormalizedSha256": "b6489de63246e20d7334372c40a6c8f26273b0f1334f9874bd28d5574ff1601d",
+      "currentRawSha256": "35ba37d1178f7f5bda406f4f21ee3fcec2f8d0a4e706daf7aae7dbfd855ffc1b",
+      "unchanged": true
+    },
+    "scenario-service/test/current-catalogs.test.js": {
+      "baselineBlobSha256": "62be0b1f3a85ee476580bd3b6504457895217ddb73c51a5ba11fb8848623ce95",
+      "currentNormalizedSha256": "62be0b1f3a85ee476580bd3b6504457895217ddb73c51a5ba11fb8848623ce95",
+      "currentRawSha256": "f333f78c43daa63836211b3b62dedab95d0207d80f191db3296904c8f6e6ce6d",
+      "unchanged": true
+    },
+    "scenario-service/test/fixtures.js": {
+      "baselineBlobSha256": "ec2e72800df287e76040b0ae888a2b65d4ea6c301121615cea6c6f65849f11f6",
+      "currentNormalizedSha256": "ec2e72800df287e76040b0ae888a2b65d4ea6c301121615cea6c6f65849f11f6",
+      "currentRawSha256": "f11a104baae34078dd05694c055c27feb04c1ec184af9f28444ab4c941bd0da8",
+      "unchanged": true
+    },
+    "scenario-service/test/http-app.test.js": {
+      "baselineBlobSha256": "1072472dd22a4f70a0970bd19c41d3531d440f45ba882efd1b448f39f21c00ac",
+      "currentNormalizedSha256": "1072472dd22a4f70a0970bd19c41d3531d440f45ba882efd1b448f39f21c00ac",
+      "currentRawSha256": "1072472dd22a4f70a0970bd19c41d3531d440f45ba882efd1b448f39f21c00ac",
+      "unchanged": true
+    },
+    "scenario-service/test/openai-service.test.js": {
+      "baselineBlobSha256": "de83bdc541cefff6851017a708a8575ef65c0e6383ec5061231803d0800631c2",
+      "currentNormalizedSha256": "de83bdc541cefff6851017a708a8575ef65c0e6383ec5061231803d0800631c2",
+      "currentRawSha256": "6669b9af12351b58dd04ecf367ba28f858edb5eef0acfdb349a592434f734047",
+      "unchanged": true
+    },
+    "schemas/actions-events/v1/authorization-v1.schema.json": {
+      "baselineBlobSha256": "614a918745ef48735bf0a61585f805bfebb4152e69ec994d72116361c9ae01be",
+      "currentNormalizedSha256": "614a918745ef48735bf0a61585f805bfebb4152e69ec994d72116361c9ae01be",
+      "currentRawSha256": "39afeb978d557e7fa314209398017a2a9887384de6ccd5b7d109611aecaec0af",
+      "unchanged": true
+    },
+    "schemas/actions-events/v1/candidate-workspace-v1.schema.json": {
+      "baselineBlobSha256": "becfb99e9c7a55d425f78162b87ba6f9881d8dbf01c0a89110d005b91c88f8d1",
+      "currentNormalizedSha256": "becfb99e9c7a55d425f78162b87ba6f9881d8dbf01c0a89110d005b91c88f8d1",
+      "currentRawSha256": "843341d9ac4f0c292998d7471ae316fef46080198159612e124e4f02ecc393a4",
+      "unchanged": true
+    },
+    "schemas/actions-events/v1/catalog-v1.schema.json": {
+      "baselineBlobSha256": "8ac8b47cf1e71fdc3d98623092e9871122fe9536bc9f54547dc4186e9e29d931",
+      "currentNormalizedSha256": "8ac8b47cf1e71fdc3d98623092e9871122fe9536bc9f54547dc4186e9e29d931",
+      "currentRawSha256": "c6681dab52ac025f0e9958a895a6266da527a4d7e41b0c336c1fe2dd0b6182ad",
+      "unchanged": true
+    },
+    "schemas/actions-events/v1/common-v1.schema.json": {
+      "baselineBlobSha256": "51b4e67676916d013125e17c30cb624948f9e663f94a50e3fcdc8fbf9f7c1f95",
+      "currentNormalizedSha256": "51b4e67676916d013125e17c30cb624948f9e663f94a50e3fcdc8fbf9f7c1f95",
+      "currentRawSha256": "1290a92f4fe192da2602a7afcc95ecded753e7514ba350718fbfb6e6df5228ed",
+      "unchanged": true
+    },
+    "schemas/actions-events/v1/compatibility-v1.schema.json": {
+      "baselineBlobSha256": "f77a433dfb635f68db4a048840c2cb9bcdbf68154c14db39cc86651a6011707a",
+      "currentNormalizedSha256": "f77a433dfb635f68db4a048840c2cb9bcdbf68154c14db39cc86651a6011707a",
+      "currentRawSha256": "038f9d67e22ec89d64fdd138b8c8528507cd78bb3f135968216947e38e8915ea",
+      "unchanged": true
+    },
+    "schemas/actions-events/v1/effect-assertion-v1.schema.json": {
+      "baselineBlobSha256": "2ee50660f6d0f909ea0e2f9005152eff41c44c2ab857f68fd85fc0a0db4d7d87",
+      "currentNormalizedSha256": "2ee50660f6d0f909ea0e2f9005152eff41c44c2ab857f68fd85fc0a0db4d7d87",
+      "currentRawSha256": "74367a453717ba564113241dbf493e1c7ea0db100e60146f9739a337a08303ab",
+      "unchanged": true
+    },
+    "schemas/actions-events/v1/evidence-assessment-v1.schema.json": {
+      "baselineBlobSha256": "c99d83290101d858f2a1a67ade37070b420b1a4d4c6da8394ba15f4379f1efe7",
+      "currentNormalizedSha256": "c99d83290101d858f2a1a67ade37070b420b1a4d4c6da8394ba15f4379f1efe7",
+      "currentRawSha256": "fe17dcb949073e380578f7a596d101abdbe540787411d2c9b8e2c005bde4d723",
+      "unchanged": true
+    },
+    "schemas/actions-events/v1/happening-type-v1.schema.json": {
+      "baselineBlobSha256": "0af08078de760ec8b77de61d5fa6785deca831395737219e3020dbe3b3c973a5",
+      "currentNormalizedSha256": "0af08078de760ec8b77de61d5fa6785deca831395737219e3020dbe3b3c973a5",
+      "currentRawSha256": "c3da5087aaff6503321418ebf4abca6614099911fd97957c00e9c64ff804e890",
+      "unchanged": true
+    },
+    "schemas/actions-events/v1/occurrence-v1.schema.json": {
+      "baselineBlobSha256": "ed244d04cb1fd000729c0bcd756f46f4cf7429c9ca4ba3c93baad9d98981d6c4",
+      "currentNormalizedSha256": "ed244d04cb1fd000729c0bcd756f46f4cf7429c9ca4ba3c93baad9d98981d6c4",
+      "currentRawSha256": "a9dd05f2d71d4246d69ebc940d58590e0f4d56fb027a9296d595a998cce11f95",
+      "unchanged": true
+    },
+    "schemas/actions-events/v1/source-finding-v1.schema.json": {
+      "baselineBlobSha256": "1c3d9408f6520d21b4bd5849fcf6ba7868ef245a0965c8bc74133924709f736d",
+      "currentNormalizedSha256": "1c3d9408f6520d21b4bd5849fcf6ba7868ef245a0965c8bc74133924709f736d",
+      "currentRawSha256": "676815b9a8dba4e9dbf32eb5b80a880d32f3b5f0af59985b7d2d9475cbc35264",
+      "unchanged": true
+    },
+    "schemas/actions-events/v1/use-eligibility-v1.schema.json": {
+      "baselineBlobSha256": "d1e50ba8f42d840532a5274d643a63785ca5932500beb017e6dfd7b571867655",
+      "currentNormalizedSha256": "d1e50ba8f42d840532a5274d643a63785ca5932500beb017e6dfd7b571867655",
+      "currentRawSha256": "0a53a73b2f263237f9cc4016ee14f73c9ebe5f7ffb7934e357b2a33b865702c9",
+      "unchanged": true
+    },
+    "schemas/actions-events/v1/vocabulary.json": {
+      "baselineBlobSha256": "dda340b4bf1ec4ddb307f78a0c7dee8bca2f6f91d4c25dfc4ca5de883cb65aa7",
+      "currentNormalizedSha256": "dda340b4bf1ec4ddb307f78a0c7dee8bca2f6f91d4c25dfc4ca5de883cb65aa7",
+      "currentRawSha256": "cfae5079b3b295139363267c421be87c7ee22e2163f3dc534a813bec3fed7de0",
+      "unchanged": true
+    },
+    "schemas/relationship-intervention/v1/README.md": {
+      "baselineBlobSha256": "2782d4395a87caf32643255db459488d94c0ff2d90046b280a4424f07f6c4709",
+      "currentNormalizedSha256": "2782d4395a87caf32643255db459488d94c0ff2d90046b280a4424f07f6c4709",
+      "currentRawSha256": "26031f47965f86f156c7111d80098d795cd5751b6ba1ca2a66f97624538e120d",
+      "unchanged": true
+    },
+    "schemas/relationship-intervention/v1/candidate-workspace-v1.schema.json": {
+      "baselineBlobSha256": "af02c7685b978296de577e8663c7b98bdfd7dbd22f3b6b179e939ac964175154",
+      "currentNormalizedSha256": "af02c7685b978296de577e8663c7b98bdfd7dbd22f3b6b179e939ac964175154",
+      "currentRawSha256": "b2c848950dd62328511c09f3e678a438266908524a4d3c37593e0011cb9579b9",
+      "unchanged": true
+    },
+    "schemas/relationship-intervention/v1/causal-pathway-v1.schema.json": {
+      "baselineBlobSha256": "6a9e43cf678fe2851d35307cb248dc9ca949ff0d34da0dcfbcb76b3b6452440a",
+      "currentNormalizedSha256": "6a9e43cf678fe2851d35307cb248dc9ca949ff0d34da0dcfbcb76b3b6452440a",
+      "currentRawSha256": "40ba625107b4634f1feadfadc3ce18762a7d49dc76f2cc29d60b082cc8ec3486",
+      "unchanged": true
+    },
+    "schemas/relationship-intervention/v1/evidence-assessment-v1.schema.json": {
+      "baselineBlobSha256": "74047e6494e936348622193da5cb89ebce37a8fc74fb3b960436678163fa3e44",
+      "currentNormalizedSha256": "74047e6494e936348622193da5cb89ebce37a8fc74fb3b960436678163fa3e44",
+      "currentRawSha256": "5f1b1af90333421a91d952c4945dfbd754f7a79173e2bd4c5958d6fcde45c27b",
+      "unchanged": true
+    },
+    "schemas/relationship-intervention/v1/governance-v1.schema.json": {
+      "baselineBlobSha256": "9cd6f1b2275449e28cf55f5a975822572b499e132e292902d71ca0c26a952a32",
+      "currentNormalizedSha256": "9cd6f1b2275449e28cf55f5a975822572b499e132e292902d71ca0c26a952a32",
+      "currentRawSha256": "8035bb646d9f1ddc4305ecf6a5ec17b5455e7d0502538d3bb790991856bbabcf",
+      "unchanged": true
+    },
+    "schemas/relationship-intervention/v1/intervention-effect-v1.schema.json": {
+      "baselineBlobSha256": "a0868dc95b9025bca69570faf94d162681a06ad3186ea480718a53af6569248a",
+      "currentNormalizedSha256": "a0868dc95b9025bca69570faf94d162681a06ad3186ea480718a53af6569248a",
+      "currentRawSha256": "71285323bbe1f34f504d0e282481206ed174bfad94db1a3cb6f563f88bce14f2",
+      "unchanged": true
+    },
+    "schemas/relationship-intervention/v1/intervention-v1.schema.json": {
+      "baselineBlobSha256": "4b49519c748d002b29e88057e81a9416ba658c24b584d0d48e2292c559fb7ae6",
+      "currentNormalizedSha256": "4b49519c748d002b29e88057e81a9416ba658c24b584d0d48e2292c559fb7ae6",
+      "currentRawSha256": "66a8747e46a5b19782735e49561c465e66f6997ea0eac3ff2788488a09eecdd1",
+      "unchanged": true
+    },
+    "schemas/relationship-intervention/v1/relationship-v1.schema.json": {
+      "baselineBlobSha256": "1463cfb29c0d6cbaf76e8798b90a92857341b3e599a9616133aec713ff119599",
+      "currentNormalizedSha256": "1463cfb29c0d6cbaf76e8798b90a92857341b3e599a9616133aec713ff119599",
+      "currentRawSha256": "3d54315ce98014c28bf131b682460910192a3d3f0dee8c95adf08bbf941102f3",
+      "unchanged": true
+    },
+    "schemas/relationship-intervention/v1/source-record-v1.schema.json": {
+      "baselineBlobSha256": "23cf265873fe00856fbb11c48415bf41e3e0d531492f81bab445aa868732e417",
+      "currentNormalizedSha256": "23cf265873fe00856fbb11c48415bf41e3e0d531492f81bab445aa868732e417",
+      "currentRawSha256": "d971e401698714936b58ddea23de4d2750459a1082c7f175f85f862f4678550f",
+      "unchanged": true
+    }
+  },
+  "protectedComparisonSha256": "c85782cb05fa391b7da2e5d4c7c939f9a0871be983352afb8e8a96891094652a",
+  "results": [
+    {
+      "name": "Existing regressions and isolated deterministic baseline regeneration",
+      "output": "Isolated committed implementation clone: PASS\r\nFreeze tested commit: PASS\r\ntest_actions_events_v1.py: PASS\r\ntest_audit_family.py: PASS\r\ntest_migration_v0_3.py: PASS\r\ntest_relationship_intervention_v1.py: PASS\r\ntest_bio_f01_pilot.py: PASS\r\ntest_bio_f01_governance_001.py: PASS\r\ntest_bio_f01_activation_001.py: PASS\r\nProduction AE/RI schemas, references, lifecycle and bridge: PASS\r\nEight-Layer synthetic structural pilot: PASS\r\nDeterministic migration regeneration: PASS\r\nDeterministic BIO materialization: PASS\r\nNo tracked mutation from regeneration/tests: PASS\r\nIsolated scenario dependencies: PASS\r\nScenario contracts and exact 811-entity sweep: PASS\r\nPython compilation: PASS\r\nGit diff check: PASS\r\n",
+      "passed": true
+    },
+    {
+      "name": "Existing report belongs to tested pilot commit",
+      "passed": true
+    },
+    {
+      "name": "INF-F03 candidate schemas, evidence, lifecycle, RDS, deduplication, links, isolation and determinism",
+      "output": ".............................\r\n----------------------------------------------------------------------\r\nRan 29 tests in 11.796s\r\n\r\nOK\r\n",
+      "passed": true
+    },
+    {
+      "name": "Deterministic pilot regeneration",
+      "output": "{\r\n  \"activeIncidentIds\": [\r\n    \"REL-INF-003\",\r\n    \"REL-INF-006\",\r\n    \"REL-INF-007\",\r\n    \"REL-INF-008\",\r\n    \"REL-INF-009\",\r\n    \"REL-INF-041\",\r\n    \"REL-INF-046\",\r\n    \"REL-INF-048\",\r\n    \"REL-RDS-0001\",\r\n    \"REL-RDS-0002\",\r\n    \"REL-RDS-0003\",\r\n    \"REL-RDS-0014\",\r\n    \"REL-RDS-0015\",\r\n    \"REL-TEC-060\"\r\n  ],\r\n  \"allActivationNotEligible\": true,\r\n  \"auditId\": \"AUD-INF-F03-AE-V1-20260906-001\",\r\n  \"baselineCommit\": \"164d938bcd4bbd7e8c48c8128cacd6e64ff0287a\",\r\n  \"blockedRecordCount\": 4,\r\n  \"canonicalSourcesAdded\": 0,\r\n  \"canonicalSourcesReusedForAudit\": [\r\n    \"SRC-415\",\r\n    \"SRC-424\",\r\n    \"SRC-425\",\r\n    \"SRC-426\",\r\n    \"SRC-427\",\r\n    \"SRC-428\",\r\n    \"SRC-429\",\r\n    \"SRC-434\",\r\n    \"SRC-444\",\r\n    \"SRC-496\",\r\n    \"SRC-498\",\r\n    \"SRC-505\",\r\n    \"SRC-512\",\r\n    \"SRC-513\",\r\n    \"SRC-515\"\r\n  ],\r\n  \"date\": \"2026-09-06\",\r\n  \"deprecatedIncidentIds\": [\r\n    \"REL-INF-023\",\r\n    \"REL-INF-029\"\r\n  ],\r\n  \"evidenceFindingDispositions\": {\r\n    \"CONTRADICTED\": 1,\r\n    \"INSUFFICIENT\": 17,\r\n    \"MIXED\": 17,\r\n    \"NULL_FINDING\": 2,\r\n    \"SUPPORTS\": 4\r\n  },\r\n  \"existingDispositions\": {\r\n    \"research needed\": 2,\r\n    \"retain as-is\": 7,\r\n    \"retain but V1 incomplete\": 1,\r\n    \"retype candidate\": 2,\r\n    \"revision candidate\": 4\r\n  },\r\n  \"family\": {\r\n    \"activeEffectCount\": 0,\r\n    \"blockedEntityCount\": 2,\r\n    \"causalIncident\": 9,\r\n    \"causallyIsolatedEntities\": 2,\r\n    \"crossLayer\": 3,\r\n    \"drivers\": 4,\r\n    \"entities\": 8,\r\n    \"id\": \"INF-F03\",\r\n    \"internal\": 4,\r\n    \"isolatedFamily\": false,\r\n    \"layer\": \"Informational\",\r\n    \"legacyIncompleteIncident\": 9,\r\n    \"memberIds\": [\r\n      \"INF-010\",\r\n      \"INF-011\",\r\n      \"INF-012\",\r\n      \"INF-013\",\r\n      \"INF-014\",\r\n      \"INF-015\",\r\n      \"INF-077\",\r\n      \"RDS-0001\"\r\n    ],\r\n    \"name\": \"Clarity, Complexity & Completeness\",\r\n    \"nativeActionsEventsEffectIds\": [],\r\n    \"rds\": 4,\r\n    \"rdsCausalSourceCount\": 2,\r\n    \"sameLayerCrossFamily\": 2\r\n  },\r\n  \"governanceDecision\": \"PENDING � APPROVE / MODIFY / REJECT\",\r\n  \"graphMetrics\": {\r\n    \"activeSemanticCounts\": {\r\n      \"CAUSAL\": 9,\r\n      \"COMPOSITIONAL\": 1,\r\n      \"DERIVATIONAL\": 2,\r\n      \"SEMANTIC_MAPPING\": 2\r\n    },\r\n    \"allActiveIncidentScopes\": {\r\n      \"CROSS_LAYER\": 3,\r\n      \"INTERNAL\": 5,\r\n      \"SAME_LAYER_CROSS_FAMILY\": 6\r\n    },\r\n    \"candidateCrossLayer\": 4,\r\n    \"causalDegrees\": {\r\n      \"INF-010\": {\r\n        \"in\": 1,\r\n        \"out\": 1\r\n      },\r\n      \"INF-011\": {\r\n        \"in\": 0,\r\n        \"out\": 1\r\n      },\r\n      \"INF-012\": {\r\n        \"in\": 3,\r\n        \"out\": 1\r\n      },\r\n      \"INF-013\": {\r\n        \"in\": 0,\r\n        \"out\": 1\r\n      },\r\n      \"INF-014\": {\r\n        \"in\": 2,\r\n        \"out\": 0\r\n      },\r\n      \"INF-015\": {\r\n        \"in\": 1,\r\n        \"out\": 2\r\n      },\r\n      \"INF-077\": {\r\n        \"in\": 0,\r\n        \"out\": 0\r\n      },\r\n      \"RDS-0001\": {\r\n        \"in\": 0,\r\n        \"out\": 0\r\n      }\r\n    },\r\n    \"duplicateSignaturesIncident\": [],\r\n    \"hubFlagThreshold\": \"Recorded causal degree >=10; review flag only, no scientific threshold\",\r\n    \"isolatedIds\": [\r\n      \"INF-077\",\r\n      \"RDS-0001\"\r\n    ],\r\n    \"newGraphEdges\": 0,\r\n    \"suspiciousHubs\": []\r\n  },\r\n  \"hypothesisDispositions\": {\r\n    \"BLOCKED_NEEDS_GOVERNANCE_INPUT\": 1,\r\n    \"REJECTED_HYPOTHESIS\": 11,\r\n    \"RESEARCH_NEEDED\": 8\r\n  },\r\n  \"lifecycleCounts\": {\r\n    \"RESEARCH_NEEDED\": 32,\r\n    \"REVIEW_READY\": 12\r\n  },\r\n  \"newActive\": 0,\r\n  \"newCounts\": {\r\n    \"effects\": 7,\r\n    \"evidenceAssessments\": 20,\r\n    \"happeningTypes\": 7,\r\n    \"moderation\": 0,\r\n    \"occurrences\": 0,\r\n    \"pathways\": 0,\r\n    \"relationships\": 4,\r\n    \"revisionProposals\": 6,\r\n    \"sourceFindings\": 41,\r\n    \"supplementalSources\": 14\r\n  },\r\n  \"newGoverned\": 0,\r\n  \"noScientificHumanDecision\": true,\r\n  \"productionCounts\": {\r\n    \"activeCausal\": 435,\r\n    \"activeRelationships\": 456,\r\n    \"drivers\": 770,\r\n    \"entities\": 811,\r\n    \"rds\": 41\r\n  },\r\n  \"schemaVersions\": {\r\n    \"ActionsEventsV1\": \"1.0.0\",\r\n    \"Driver\": \"1.1\",\r\n    \"RDS\": \"0.1 + governed migration v0.3\",\r\n    \"RelationshipV1\": \"1.0.0\",\r\n    \"sources\": \"1.0\"\r\n  },\r\n  \"sourceRegisterSha256\": \"f1aae4135ac049e223ae65a66a24a6dfc2c28e911add59ce11df34e9c0af3615\",\r\n  \"workspaceHash\": \"3c22dc64a3e4e2a739c8fbc6699e8246b151f9a9060244358b607d6fcfd293e2\"\r\n}\r\n\r\n",
+      "passed": true
+    },
+    {
+      "name": "Pilot generated documents and candidates unchanged",
+      "output": "warning: in the working copy of 'data/candidates/actions-events-v1/INF-F03/driver-search-ledger.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'data/candidates/actions-events-v1/INF-F03/existing-relationship-audit.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'data/candidates/actions-events-v1/INF-F03/relationship-source-findings.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'data/candidates/actions-events-v1/INF-F03/revision-proposals.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'data/candidates/actions-events-v1/INF-F03/source-registration-queue.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'data/candidates/actions-events-v1/INF-F03/workspace.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/governance/pilots/INF-F03/INF_F03_AUDIT_MANIFEST.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/governance/pilots/INF-F03/INF_F03_COMPLETENESS_REPORT.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/governance/pilots/INF-F03/INF_F03_ENTITY_RDS_REVIEW.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/governance/pilots/INF-F03/INF_F03_EVIDENCE_SUMMARY.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/governance/pilots/INF-F03/INF_F03_EXISTING_RELATIONSHIP_AUDIT.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/governance/pilots/INF-F03/INF_F03_GOVERNANCE_DECISION_PACKAGE.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/governance/pilots/INF-F03/INF_F03_RESEARCH_LOG.md', LF will be replaced by CRLF the next time Git touches it\n",
+      "passed": true
+    },
+    {
+      "name": "Diff whitespace",
+      "output": "warning: in the working copy of 'data/candidates/actions-events-v1/INF-F03/driver-search-ledger.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'data/candidates/actions-events-v1/INF-F03/existing-relationship-audit.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'data/candidates/actions-events-v1/INF-F03/relationship-source-findings.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'data/candidates/actions-events-v1/INF-F03/revision-proposals.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'data/candidates/actions-events-v1/INF-F03/source-registration-queue.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'data/candidates/actions-events-v1/INF-F03/workspace.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/governance/pilots/INF-F03/INF_F03_AUDIT_MANIFEST.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/governance/pilots/INF-F03/INF_F03_COMPLETENESS_REPORT.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/governance/pilots/INF-F03/INF_F03_ENTITY_RDS_REVIEW.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/governance/pilots/INF-F03/INF_F03_EVIDENCE_SUMMARY.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/governance/pilots/INF-F03/INF_F03_EXISTING_RELATIONSHIP_AUDIT.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/governance/pilots/INF-F03/INF_F03_GOVERNANCE_DECISION_PACKAGE.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'docs/governance/pilots/INF-F03/INF_F03_RESEARCH_LOG.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'reports/actions-events-v1/validation/LOCAL_VALIDATION.json', LF will be replaced by CRLF the next time Git touches it\n",
+      "passed": true
+    },
+    {
+      "filesCompared": 108,
+      "name": "Original checkout protected bytes unchanged",
+      "passed": true
+    }
+  ],
+  "testedCommit": "5846f9e3e87e383d2feb81c7b1bd61ab759c573e"
+}

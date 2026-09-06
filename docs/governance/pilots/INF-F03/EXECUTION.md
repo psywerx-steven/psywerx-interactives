@@ -59,6 +59,23 @@ temporary root; deterministic manifests retain normalized Git-content hashes,
 while validation separately records full raw before/after bytes. No scientific
 test was weakened. The old report is not accepted unless its tested SHA matches.
 
+## Local validation complete
+
+Tested commit 5846f9e3e87e383d2feb81c7b1bd61ab759c573e. All isolated checks
+passed: 204 Python tests discovered (202 passed; two existing Windows symlink
+privilege skips), 21 scenario tests including the exact 811-entity sweep,
+production schema/meta/reference/lifecycle validation, eight-Layer synthetic
+regression, Python compilation, 19 JavaScript files parsed, existing plus pilot
+Markdown links, deterministic migration/BIO/pilot regeneration and diff checks.
+Raw before/after hashes match for all 108 protected files. Regenerated scientific
+artifacts also remain byte-identical in the isolated clone. The full report is
+INF_F03_LOCAL_VALIDATION.json. A further archived-projection assertion passed
+in a rerun of all 29 pilot tests; no scientific inputs changed.
+
+Remote workflow/Pages inspection confirmed an unmerged branch/PR does not reach
+the main-only Pages publishing source. Next: push this candidate-only branch,
+open PR with no merge, inspect Linux/Windows CI on its exact head, save closeout.
+
 AI may research/structure/validate and use permitted non-governed transitions.
 Every new record stays NOT_ELIGIBLE. No new GOVERNED/ACTIVE record is authorized.
 Research is a structured evidence audit, not a claimed exhaustive systematic review.

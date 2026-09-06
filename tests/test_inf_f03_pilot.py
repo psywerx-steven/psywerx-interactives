@@ -37,6 +37,7 @@ class InfF03PilotTests(unittest.TestCase):
         self.assertEqual(Counter(a['bucket'] for a in audits),{'relationships':14,'deprecatedRelationships':2})
         self.assertEqual(len({a['id'] for a in audits}),16)
         self.assertTrue(all(a['primaryDisposition'] for a in audits))
+        self.assertTrue(all(a['currentV1Projection'] is None for a in audits if a['bucket']=='deprecatedRelationships'))
 
     def test_all_production_schemas_and_workspace(self):
         ae.validate_workspace(self.w,self.c)

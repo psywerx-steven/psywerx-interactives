@@ -65,6 +65,11 @@ only validation steps. No workflow dispatch, Pages/deployment command, settings
 change or merge is part of this pilot. PR CI is mechanical validation, not human
 scientific approval. The pre-existing Pages main-merge boundary is not crossed.
 
+GitHub API inspection on 2026-09-06 confirmed Pages uses legacy builds from
+`main` at `/`; the other enabled workflow is governance CI. Remote main still
+equals the frozen SHA. Branch push and an unmerged pull request do not cross
+that Pages publishing trigger. No workflow/settings changes beyond test steps.
+
 ## Reproduction and limitations
 
 `build_inf_f03_pilot.py` renders reviewed inputs; it does not discover claims.
