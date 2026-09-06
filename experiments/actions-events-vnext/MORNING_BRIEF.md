@@ -44,6 +44,9 @@ tests (two Windows symlink-privilege skips) and passed all 21 scenario tests,
 including the exact 811-entity sweep. The final hardening adds two tests:
 **175 Python tests** in the final suite (65 new AE, 14 runner, 96 existing).
 Final-head results are stored in the validation report and checked again by CI.
+Final local result: 175 discovered, 173 passed and two local Windows symlink
+privilege skips; all 21 scenario tests passed. The separate CI steps propagate
+each validator's exit status on both operating systems.
 
 The synthetic fixture has 46 fictional records: 11 types, 11 episodes, 12 effects
 and 12 evidence assessments. Separate fictional active copies exercise eligibility;

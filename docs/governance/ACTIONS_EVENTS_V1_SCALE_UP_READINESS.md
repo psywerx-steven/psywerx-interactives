@@ -58,6 +58,12 @@ The final bounded eligibility and identity tests raise the suite to 175 Python t
 65 Actions & Events, 14 Family runner, 38 RI V1, 19 migration, 13 BIO pilot,
 15 BIO governance and 11 BIO activation. Final CI revalidates this handoff.
 
+Final local executable head b8c5fb8edbc39b8ecef56ddff3c461e276e302ae passed:
+175 tests discovered, 173 passed and two local Windows symlink-privilege skips;
+all 21 scenario tests passed. Full isolated validation took 53.913 seconds.
+Repository validation and synthetic validation are separate CI steps, so a later
+successful command cannot mask a prior native-process failure on Windows.
+
 Eleven AE meta-schemas and existing RI/source/evidence schemas validate. Exact
 source/evidence references, D12, candidates, compatibility and exclusion checks
 pass. Python compiles; all 19 tracked JavaScript files parse; local Markdown links

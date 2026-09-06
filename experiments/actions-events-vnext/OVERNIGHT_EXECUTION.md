@@ -156,3 +156,16 @@ The initial checkpoint below is preserved as historical execution provenance.
 - Exact next step: commit this final bounded handoff, run isolated complete
   validation and both CI jobs on its PR, merge only if green. Finish on clean
   main matching origin/main; do not begin further research or population.
+
+## Final handoff validation saved
+
+- b8c5fb8edbc39b8ecef56ddff3c461e276e302ae passed isolated final validation:
+  175 discovered Python tests, 173 pass/two local symlink skips, 21 scenario tests,
+  all schemas/references, 45 raw-byte originals, regen, parse and nine local-link
+  documents. Measured full local validation 53.913 seconds.
+- CI validation and synthetic commands split into separate steps to preserve
+  independent exit codes on Windows; deployment settings remain unchanged.
+- No new governance question is blocking infrastructure. Source/construct/use
+  judgments and Family #2 science remain explicitly outside this completion.
+- Exact restart: push final readiness/hardening PR, require both CI jobs success
+  at its exact head, merge; ff local main and verify final state. STOP thereafter.
