@@ -1,0 +1,599 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/psywerx-experiment/effect-assertion.schema.json",
+  "title": "Governed architecture / EffectAssertion synthetic contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "typeId",
+    "occurrenceId",
+    "targetKind",
+    "targetId",
+    "targetLayers",
+    "claimSemantics",
+    "productionMethod",
+    "property",
+    "change",
+    "functionalShape",
+    "intendedDirection",
+    "knowledgeStatus",
+    "mechanism",
+    "mechanisticDriverIds",
+    "scope",
+    "evidenceIds",
+    "contributionKey",
+    "propagationRole",
+    "reconciliation",
+    "interaction",
+    "consequences",
+    "governance",
+    "inferenceProvenance"
+  ],
+  "properties": {
+    "id": {
+      "$ref": "common.schema.json#/$defs/id"
+    },
+    "typeId": {
+      "$ref": "common.schema.json#/$defs/id"
+    },
+    "occurrenceId": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "common.schema.json#/$defs/id"
+        }
+      ]
+    },
+    "targetKind": {
+      "enum": [
+        "DRIVER",
+        "RELATIONSHIP"
+      ]
+    },
+    "targetId": {
+      "$ref": "common.schema.json#/$defs/id"
+    },
+    "targetLayers": {
+      "$ref": "common.schema.json#/$defs/layers"
+    },
+    "claimSemantics": {
+      "enum": [
+        "CAUSAL",
+        "ASSOCIATION",
+        "MODERATION",
+        "TEMPORAL",
+        "DERIVATIONAL",
+        "COMPOSITIONAL",
+        "REALIZATION",
+        "SEMANTIC",
+        "PATHWAY"
+      ]
+    },
+    "productionMethod": {
+      "enum": [
+        "SOURCE_EXTRACTION",
+        "SYNTHESIS",
+        "MODEL_INFERENCE",
+        "HYPOTHESIS"
+      ]
+    },
+    "property": {
+      "enum": [
+        "LEVEL",
+        "VARIABILITY",
+        "RATE",
+        "THRESHOLD",
+        "TIMING",
+        "PERSISTENCE",
+        "RELATIONSHIP_STRENGTH",
+        "RELATIONSHIP_DIRECTION",
+        "ENABLEMENT",
+        "FUNCTIONAL_SHAPE",
+        "STRUCTURE"
+      ]
+    },
+    "change": {
+      "enum": [
+        "INCREASE",
+        "DECREASE",
+        "STATE_DEPENDENT",
+        "STABILIZE",
+        "DESTABILIZE",
+        "ACCELERATE",
+        "DECELERATE",
+        "RAISE",
+        "LOWER",
+        "EARLIER",
+        "LATER",
+        "SHORTER_LAG",
+        "LONGER_LAG",
+        "PROLONG",
+        "SHORTEN",
+        "ACCUMULATE",
+        "DECAY",
+        "ALTER_RECOVERY",
+        "ALTER_REVERSIBILITY",
+        "AMPLIFY",
+        "ATTENUATE",
+        "BUFFER",
+        "SUPPRESS",
+        "REVERSE",
+        "ENABLE",
+        "DISABLE",
+        "LINEAR",
+        "THRESHOLD",
+        "SATURATING",
+        "U_SHAPED",
+        "INVERTED_U",
+        "CYCLIC",
+        "NON_MONOTONIC",
+        "OTHER_SPECIFIED",
+        "RECONFIGURE",
+        "UNKNOWN",
+        "NO_DETECTED_CHANGE"
+      ]
+    },
+    "functionalShape": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        null,
+        "LINEAR",
+        "THRESHOLDED",
+        "SATURATING",
+        "U_SHAPED",
+        "INVERTED_U",
+        "CYCLIC",
+        "OTHER_NON_MONOTONIC",
+        "UNKNOWN"
+      ]
+    },
+    "intendedDirection": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "knowledgeStatus": {
+      "enum": [
+        "SUPPORTED_EFFECT",
+        "SUPPORTED_NULL",
+        "NOT_APPLICABLE",
+        "NOT_INVESTIGATED",
+        "INSUFFICIENT_EVIDENCE"
+      ]
+    },
+    "mechanism": {
+      "$ref": "common.schema.json#/$defs/text"
+    },
+    "mechanisticDriverIds": {
+      "$ref": "common.schema.json#/$defs/ids"
+    },
+    "scope": {
+      "$ref": "common.schema.json#/$defs/scope"
+    },
+    "evidenceIds": {
+      "$ref": "common.schema.json#/$defs/ids"
+    },
+    "contributionKey": {
+      "$ref": "common.schema.json#/$defs/text"
+    },
+    "propagationRole": {
+      "enum": [
+        "PRIMARY",
+        "MEDIATOR_DESCRIPTION",
+        "ALTERNATIVE_REPRESENTATION"
+      ]
+    },
+    "reconciliation": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "interaction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "otherEffectIds",
+        "evidenceIds"
+      ],
+      "properties": {
+        "mode": {
+          "enum": [
+            "NONE",
+            "SYNERGY",
+            "ANTAGONISM",
+            "JOINT_UNDETERMINED"
+          ]
+        },
+        "otherEffectIds": {
+          "$ref": "common.schema.json#/$defs/ids"
+        },
+        "evidenceIds": {
+          "$ref": "common.schema.json#/$defs/ids"
+        }
+      }
+    },
+    "consequences": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "valence",
+        "unintended",
+        "distribution",
+        "risks"
+      ],
+      "properties": {
+        "valence": {
+          "enum": [
+            "BENEFICIAL",
+            "HARMFUL",
+            "MIXED",
+            "NULL",
+            "NOT_EVALUATED"
+          ]
+        },
+        "unintended": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "distribution": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "risks": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "governance": {
+      "$ref": "common.schema.json#/$defs/governance"
+    },
+    "inferenceProvenance": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "required": [
+        "modelId",
+        "inputEvidenceIds",
+        "assumptions"
+      ],
+      "properties": {
+        "modelId": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "inputEvidenceIds": {
+          "$ref": "common.schema.json#/$defs/ids"
+        },
+        "assumptions": {
+          "$ref": "common.schema.json#/$defs/text"
+        }
+      }
+    },
+    "otherSpecified": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "targetKind": {
+            "const": "RELATIONSHIP"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "mechanisticDriverIds": {
+            "minItems": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "claimSemantics": {
+            "const": "MODERATION"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "targetKind": {
+            "const": "RELATIONSHIP"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "change": {
+            "const": "OTHER_SPECIFIED"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "otherSpecified"
+        ],
+        "properties": {
+          "otherSpecified": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "property": {
+            "const": "LEVEL"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "change": {
+            "enum": [
+              "INCREASE",
+              "DECREASE",
+              "STATE_DEPENDENT",
+              "UNKNOWN",
+              "NO_DETECTED_CHANGE"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "property": {
+            "const": "VARIABILITY"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "change": {
+            "enum": [
+              "INCREASE",
+              "DECREASE",
+              "STABILIZE",
+              "DESTABILIZE",
+              "UNKNOWN",
+              "NO_DETECTED_CHANGE"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "property": {
+            "const": "RATE"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "change": {
+            "enum": [
+              "ACCELERATE",
+              "DECELERATE",
+              "UNKNOWN",
+              "NO_DETECTED_CHANGE"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "property": {
+            "const": "THRESHOLD"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "change": {
+            "enum": [
+              "RAISE",
+              "LOWER",
+              "UNKNOWN",
+              "NO_DETECTED_CHANGE"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "property": {
+            "const": "TIMING"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "change": {
+            "enum": [
+              "EARLIER",
+              "LATER",
+              "SHORTER_LAG",
+              "LONGER_LAG",
+              "UNKNOWN",
+              "NO_DETECTED_CHANGE"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "property": {
+            "const": "PERSISTENCE"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "change": {
+            "enum": [
+              "PROLONG",
+              "SHORTEN",
+              "ACCUMULATE",
+              "DECAY",
+              "ALTER_RECOVERY",
+              "ALTER_REVERSIBILITY",
+              "UNKNOWN",
+              "NO_DETECTED_CHANGE"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "property": {
+            "const": "RELATIONSHIP_STRENGTH"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "change": {
+            "enum": [
+              "AMPLIFY",
+              "ATTENUATE",
+              "BUFFER",
+              "SUPPRESS",
+              "UNKNOWN",
+              "NO_DETECTED_CHANGE"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "property": {
+            "const": "RELATIONSHIP_DIRECTION"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "change": {
+            "enum": [
+              "REVERSE",
+              "STATE_DEPENDENT",
+              "UNKNOWN",
+              "NO_DETECTED_CHANGE"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "property": {
+            "const": "ENABLEMENT"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "change": {
+            "enum": [
+              "ENABLE",
+              "DISABLE",
+              "UNKNOWN",
+              "NO_DETECTED_CHANGE"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "property": {
+            "const": "FUNCTIONAL_SHAPE"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "change": {
+            "enum": [
+              "LINEAR",
+              "THRESHOLD",
+              "SATURATING",
+              "U_SHAPED",
+              "INVERTED_U",
+              "CYCLIC",
+              "NON_MONOTONIC",
+              "OTHER_SPECIFIED",
+              "UNKNOWN",
+              "NO_DETECTED_CHANGE"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "property": {
+            "const": "STRUCTURE"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "change": {
+            "enum": [
+              "RECONFIGURE",
+              "INCREASE",
+              "DECREASE",
+              "ENABLE",
+              "DISABLE",
+              "UNKNOWN",
+              "NO_DETECTED_CHANGE"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

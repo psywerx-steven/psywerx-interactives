@@ -1,0 +1,249 @@
+{
+  "allPassed": true,
+  "note": "Existing regeneration tests ran in a temporary local clone. No production tests or dependencies modified.",
+  "regressionBaseline": "2636dd9a8b7bad1da3d7dfa21db5fe877f4de4e1",
+  "results": [
+    {
+      "command": [
+        "C:\\Users\\davic\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "<isolated-checkout>\\experiments\\actions-events-vnext",
+        "-p",
+        "test_*.py"
+      ],
+      "exitCode": 0,
+      "name": "Prototype suites",
+      "output": "...................................................\r\n----------------------------------------------------------------------\r\nRan 51 tests in 10.061s\r\n\r\nOK\r\n",
+      "passed": true
+    },
+    {
+      "command": [
+        "git",
+        "clone",
+        "--no-hardlinks",
+        "--quiet",
+        "<isolated-checkout>",
+        "<isolated-checkout>\\experiments\\actions-events-vnext\\_scratch\\regression-7s9ngj9h\\checkout"
+      ],
+      "exitCode": 0,
+      "name": "Isolated local clone",
+      "output": "",
+      "passed": true
+    },
+    {
+      "command": [
+        "git",
+        "checkout",
+        "--quiet",
+        "2636dd9a8b7bad1da3d7dfa21db5fe877f4de4e1"
+      ],
+      "exitCode": 0,
+      "name": "Checkout frozen scientific baseline",
+      "output": "",
+      "passed": true
+    },
+    {
+      "command": [
+        "C:\\Users\\davic\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_migration_v0_3.py"
+      ],
+      "exitCode": 0,
+      "name": "test_migration_v0_3.py",
+      "output": "...................\r\n----------------------------------------------------------------------\r\nRan 19 tests in 1.879s\r\n\r\nOK\r\n",
+      "passed": true
+    },
+    {
+      "command": [
+        "C:\\Users\\davic\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_relationship_intervention_v1.py"
+      ],
+      "exitCode": 0,
+      "name": "test_relationship_intervention_v1.py",
+      "output": "......................................\r\n----------------------------------------------------------------------\r\nRan 38 tests in 1.544s\r\n\r\nOK\r\n",
+      "passed": true
+    },
+    {
+      "command": [
+        "C:\\Users\\davic\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_bio_f01_pilot.py"
+      ],
+      "exitCode": 0,
+      "name": "test_bio_f01_pilot.py",
+      "output": ".............\r\n----------------------------------------------------------------------\r\nRan 13 tests in 1.154s\r\n\r\nOK\r\n",
+      "passed": true
+    },
+    {
+      "command": [
+        "C:\\Users\\davic\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_bio_f01_governance_001.py"
+      ],
+      "exitCode": 0,
+      "name": "test_bio_f01_governance_001.py",
+      "output": "...............\r\n----------------------------------------------------------------------\r\nRan 15 tests in 1.660s\r\n\r\nOK\r\n",
+      "passed": true
+    },
+    {
+      "command": [
+        "C:\\Users\\davic\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_bio_f01_activation_001.py"
+      ],
+      "exitCode": 0,
+      "name": "test_bio_f01_activation_001.py",
+      "output": "...........\r\n----------------------------------------------------------------------\r\nRan 11 tests in 0.819s\r\n\r\nOK\r\n",
+      "passed": true
+    },
+    {
+      "command": [
+        "C:\\Users\\davic\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "scripts/relationship_intervention_v1.py",
+        "--validate-repository"
+      ],
+      "exitCode": 0,
+      "name": "Production schema/meta/reference validation",
+      "output": "Relationship + Intervention V1 infrastructure validated\r\n  entities: 811\r\n  legacyActiveRelationships: 450\r\n  legacyActiveCausalRelationships: 431\r\n  activeRelationships: 456\r\n  activeCausalRelationships: 435\r\n  v1IncompleteRelationships: 450\r\n  v1LegacyOnlyRelationships: 450\r\n  legacyMediatedPathRecords: 39\r\n  nativeSources: 20\r\n  nativeRelationships: 6\r\n  nativeCausalRelationships: 4\r\n  nativeInterventions: 9\r\n  nativeInterventionEffects: 5\r\n  nativeEvidenceAssessments: 11\r\n  nativeActiveRecords: 27\r\n  nativeActiveRelationships: 6\r\n  nativeActiveCausalRelationships: 4\r\n  nativeActiveInterventions: 5\r\n  nativeActiveInterventionEffects: 5\r\n  nativeActiveEvidenceAssessments: 11\r\n",
+      "passed": true
+    },
+    {
+      "command": [
+        "C:\\Users\\davic\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "scripts/build_migration_preview_v0_3.py"
+      ],
+      "exitCode": 0,
+      "name": "Deterministic migration regeneration",
+      "output": "Governed migration baseline v0.3 built and validated\r\n  Drivers: 770\r\n  Relational & Derived States: 41\r\n  Canonical entities: 811\r\n  Active relationships: 450\r\n  Deprecated relationships: 6\r\n  Proposed/blocked relationships: 5\r\n  Blocked governance items: 7\r\n  Errors: 0\r\n",
+      "passed": true
+    },
+    {
+      "command": [
+        "C:\\Users\\davic\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "scripts/materialize_bio_f01_governance_001.py"
+      ],
+      "exitCode": 0,
+      "name": "Deterministic BIO materialization",
+      "output": "Materialized GOV-BIO-F01-001-2026-09-05 and GOV-BIO-F01-ACTIVATION-001-2026-09-05\r\n  Governed active Relationships: 6 (4 causal, 2 noncausal)\r\n  Governed active Interventions: 5; governed inactive Interventions: 4\r\n  Governed active InterventionEffects: 5\r\n  Governed active EvidenceAssessments: 11\r\n  New active records: 27\r\n  Registered native V1 sources: 20\r\n",
+      "passed": true
+    },
+    {
+      "changed": [],
+      "filesCompared": 45,
+      "name": "Isolated scientific raw-byte regeneration",
+      "passed": true
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--exit-code"
+      ],
+      "exitCode": 0,
+      "name": "Isolated tracked worktree remains unchanged",
+      "output": "",
+      "passed": true
+    },
+    {
+      "command": [
+        "C:\\Program Files\\nodejs\\npm.cmd",
+        "install",
+        "--ignore-scripts",
+        "--no-audit",
+        "--no-fund",
+        "--no-package-lock"
+      ],
+      "exitCode": 0,
+      "name": "Isolated scenario dependencies",
+      "output": "\nadded 1 package in 9s\n",
+      "passed": true
+    },
+    {
+      "command": [
+        "C:\\Program Files\\nodejs\\npm.cmd",
+        "test"
+      ],
+      "exitCode": 0,
+      "name": "Scenario contract and 811-entity sweep",
+      "output": "\n> psywerx-scenario-service@1.0.0 test\n> node --test\n\n✔ catalog verifies the browser snapshot and returns bounded server context (3.0203ms)\n✔ catalog rejects a stale or tampered Driver snapshot (1.0688ms)\n✔ canonical Drivers without public plain language remain eligible (0.421ms)\n✔ catalog preserves governed RDS identity and derivation context (0.5601ms)\n✔ request validation accepts the exact frontend contract (3.8069ms)\n✔ request validation accepts governed RDS IDs, derivation metadata, and null peripheral metadata (1.4104ms)\n✔ request validation rejects extra keys and oversized scenario input (0.5862ms)\n✔ response validation requires exactly three examples (0.7752ms)\n✔ clarification rules are conditional and require one question (0.4367ms)\n✔ response validation rejects private filesystem paths (0.3201ms)\n✔ every current canonical Entity resolves against the exact browser contract (128.397ms)\n✔ test\\fixtures.js (110.3184ms)\n✔ health endpoint returns minimal status (60.3851ms)\n✔ operationalization endpoint returns the exact success object (19.0827ms)\n✔ unlisted origins are rejected (8.4541ms)\n✔ request-size and in-memory rate limits fail clearly (26.5993ms)\n✔ Responses API request is stateless, schema-strict, and server controlled (6.0962ms)\n✔ RDS model context is labeled as an Entity and includes governed derivation metadata (1.7456ms)\n✔ malformed structured output is retried once (1.2846ms)\n✔ API failures are not retried (1.3227ms)\n✔ a second malformed output fails without a third attempt (0.9947ms)\nℹ tests 21\nℹ suites 0\nℹ pass 21\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 521.1685\n",
+      "passed": true
+    },
+    {
+      "command": [
+        "C:\\Users\\davic\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe",
+        "-m",
+        "compileall",
+        "-q",
+        "scripts",
+        "tests"
+      ],
+      "exitCode": 0,
+      "name": "Python compilation",
+      "output": "",
+      "passed": true
+    },
+    {
+      "failures": [],
+      "filesChecked": 19,
+      "name": "JavaScript parsing",
+      "passed": true
+    },
+    {
+      "broken": [],
+      "filesChecked": 9,
+      "name": "Proposal Markdown local links",
+      "passed": true
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exitCode": 0,
+      "name": "Git diff check",
+      "output": "warning: in the working copy of 'experiments/actions-events-vnext/ARCHITECTURE_PROPOSAL.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'experiments/actions-events-vnext/GOVERNANCE_DECISIONS.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'experiments/actions-events-vnext/MORNING_BRIEF.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'experiments/actions-events-vnext/PLAN.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'experiments/actions-events-vnext/REQUIREMENTS_COVERAGE.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'experiments/actions-events-vnext/RESEARCH_PROMPTS.md', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'experiments/actions-events-vnext/model.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'experiments/actions-events-vnext/prototype.py', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'experiments/actions-events-vnext/schemas/common.schema.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'experiments/actions-events-vnext/schemas/effect-assertion.schema.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'experiments/actions-events-vnext/schemas/evidence-assessment.schema.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'experiments/actions-events-vnext/schemas/happening-type.schema.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'experiments/actions-events-vnext/schemas/occurrence.schema.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'experiments/actions-events-vnext/synthetic.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'experiments/actions-events-vnext/test_model.py', LF will be replaced by CRLF the next time Git touches it\n",
+      "passed": true
+    },
+    {
+      "baselineCommit": "2636dd9a8b7bad1da3d7dfa21db5fe877f4de4e1",
+      "differences": [],
+      "filesCompared": 234,
+      "hashMode": "RAW_BYTES",
+      "name": "Protected original repository",
+      "passed": true,
+      "sameAsBeforeValidation": true,
+      "untrackedOutsideExperiment": []
+    }
+  ],
+  "status": "EXPERIMENTAL_NON_PRODUCTION"
+}

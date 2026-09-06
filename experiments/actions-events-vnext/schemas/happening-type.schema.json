@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/psywerx-experiment/happening-type.schema.json",
+  "title": "Governed architecture / HappeningType synthetic contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "name",
+    "identityKey",
+    "kindTags",
+    "originLayers",
+    "interventionSubset",
+    "packageKind",
+    "components",
+    "componentEnumeration",
+    "description",
+    "governance"
+  ],
+  "properties": {
+    "id": {
+      "$ref": "common.schema.json#/$defs/id"
+    },
+    "name": {
+      "$ref": "common.schema.json#/$defs/text"
+    },
+    "identityKey": {
+      "$ref": "common.schema.json#/$defs/text"
+    },
+    "kindTags": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "ACTION",
+          "EVENT",
+          "EXPOSURE",
+          "PROCESS"
+        ]
+      }
+    },
+    "originLayers": {
+      "$ref": "common.schema.json#/$defs/layers"
+    },
+    "interventionSubset": {
+      "type": "boolean"
+    },
+    "packageKind": {
+      "enum": [
+        "ATOMIC",
+        "PACKAGE"
+      ]
+    },
+    "components": {
+      "$ref": "common.schema.json#/$defs/ids"
+    },
+    "componentEnumeration": {
+      "enum": [
+        "NOT_APPLICABLE",
+        "NON_EXHAUSTIVE",
+        "EXHAUSTIVE_WITHIN_DECLARED_PROTOCOL"
+      ]
+    },
+    "description": {
+      "$ref": "common.schema.json#/$defs/text"
+    },
+    "governance": {
+      "$ref": "common.schema.json#/$defs/governance"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "packageKind": {
+            "const": "PACKAGE"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "components": {
+            "minItems": 2
+          },
+          "componentEnumeration": {
+            "enum": [
+              "NON_EXHAUSTIVE",
+              "EXHAUSTIVE_WITHIN_DECLARED_PROTOCOL"
+            ]
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "components": {
+            "maxItems": 0
+          },
+          "componentEnumeration": {
+            "const": "NOT_APPLICABLE"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "interventionSubset": {
+            "const": true
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "kindTags": {
+            "contains": {
+              "const": "ACTION"
+            }
+          }
+        }
+      }
+    }
+  ]
+}
