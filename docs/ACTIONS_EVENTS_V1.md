@@ -110,6 +110,8 @@ execution contract is authorized. Practitioner-action checks additionally requir
 a deliberate identity, independent active effect, exact actor/revision/scope,
 control capability and explicit prerequisite, feasibility, legal, ethical/risk and
 applicability assessments with rationale/provenance. Unknown fails closed.
+Contradicted or insufficient overall effect evidence also blocks practitioner
+eligibility even when a record remains scientifically active for inspection.
 An external disaster remains non-actionable. These predicates do not select,
 rank, optimize or recommend anything, and no existing UI/scenario consumer calls
 them. A caller's applicability assessment still needs genuine human/scientific

@@ -13,26 +13,26 @@
         "--no-hardlinks",
         "--quiet",
         "<checkout>",
-        "<checkout>\\reports\\actions-events-v1\\_scratch\\validation-xhqly73v\\checkout"
+        "<checkout>\\reports\\actions-events-v1\\_scratch\\validation-pqk88er0\\checkout"
       ],
       "exitCode": 0,
       "name": "Isolated committed implementation clone",
       "output": "",
       "passed": true,
-      "seconds": 1.008
+      "seconds": 0.927
     },
     {
       "command": [
         "git",
         "checkout",
         "--quiet",
-        "fd3d686074ed9cc789ada3ffb9090fd2df64ddf8"
+        "5c2d2bd0016215749e054ced4345e8bd202700be"
       ],
       "exitCode": 0,
       "name": "Freeze tested commit",
       "output": "",
       "passed": true,
-      "seconds": 0.202
+      "seconds": 0.223
     },
     {
       "command": [
@@ -47,9 +47,9 @@
       ],
       "exitCode": 0,
       "name": "test_actions_events_v1.py",
-      "output": "...............................................................\r\n----------------------------------------------------------------------\r\nRan 63 tests in 8.674s\r\n\r\nOK\r\n",
+      "output": "...............................................................\r\n----------------------------------------------------------------------\r\nRan 63 tests in 8.613s\r\n\r\nOK\r\n",
       "passed": true,
-      "seconds": 9.117
+      "seconds": 8.956
     },
     {
       "command": [
@@ -64,9 +64,9 @@
       ],
       "exitCode": 0,
       "name": "test_audit_family.py",
-      "output": ".s..........s.\r\n----------------------------------------------------------------------\r\nRan 14 tests in 13.322s\r\n\r\nOK (skipped=2)\r\n",
+      "output": ".s..........s.\r\n----------------------------------------------------------------------\r\nRan 14 tests in 13.055s\r\n\r\nOK (skipped=2)\r\n",
       "passed": true,
-      "seconds": 13.586
+      "seconds": 13.296
     },
     {
       "command": [
@@ -81,9 +81,9 @@
       ],
       "exitCode": 0,
       "name": "test_migration_v0_3.py",
-      "output": "...................\r\n----------------------------------------------------------------------\r\nRan 19 tests in 1.948s\r\n\r\nOK\r\n",
+      "output": "...................\r\n----------------------------------------------------------------------\r\nRan 19 tests in 1.752s\r\n\r\nOK\r\n",
       "passed": true,
-      "seconds": 2.165
+      "seconds": 1.958
     },
     {
       "command": [
@@ -98,9 +98,9 @@
       ],
       "exitCode": 0,
       "name": "test_relationship_intervention_v1.py",
-      "output": "......................................\r\n----------------------------------------------------------------------\r\nRan 38 tests in 1.514s\r\n\r\nOK\r\n",
+      "output": "......................................\r\n----------------------------------------------------------------------\r\nRan 38 tests in 1.521s\r\n\r\nOK\r\n",
       "passed": true,
-      "seconds": 1.764
+      "seconds": 1.763
     },
     {
       "command": [
@@ -115,9 +115,9 @@
       ],
       "exitCode": 0,
       "name": "test_bio_f01_pilot.py",
-      "output": ".............\r\n----------------------------------------------------------------------\r\nRan 13 tests in 1.179s\r\n\r\nOK\r\n",
+      "output": ".............\r\n----------------------------------------------------------------------\r\nRan 13 tests in 1.338s\r\n\r\nOK\r\n",
       "passed": true,
-      "seconds": 1.439
+      "seconds": 1.604
     },
     {
       "command": [
@@ -132,9 +132,9 @@
       ],
       "exitCode": 0,
       "name": "test_bio_f01_governance_001.py",
-      "output": "...............\r\n----------------------------------------------------------------------\r\nRan 15 tests in 1.608s\r\n\r\nOK\r\n",
+      "output": "...............\r\n----------------------------------------------------------------------\r\nRan 15 tests in 1.739s\r\n\r\nOK\r\n",
       "passed": true,
-      "seconds": 1.862
+      "seconds": 2.012
     },
     {
       "command": [
@@ -149,9 +149,9 @@
       ],
       "exitCode": 0,
       "name": "test_bio_f01_activation_001.py",
-      "output": "...........\r\n----------------------------------------------------------------------\r\nRan 11 tests in 0.749s\r\n\r\nOK\r\n",
+      "output": "...........\r\n----------------------------------------------------------------------\r\nRan 11 tests in 0.780s\r\n\r\nOK\r\n",
       "passed": true,
-      "seconds": 0.993
+      "seconds": 1.026
     },
     {
       "command": [
@@ -163,7 +163,7 @@
       "name": "Production AE/RI schemas, references, lifecycle and bridge",
       "output": "{\r\n  \"additionalScientificPropositions\": 0,\r\n  \"candidateWorkspace\": {\r\n    \"passBReady\": false,\r\n    \"productionEligible\": false\r\n  },\r\n  \"existingV1\": {\r\n    \"activeCausalRelationships\": 435,\r\n    \"activeRelationships\": 456,\r\n    \"entities\": 811,\r\n    \"legacyActiveCausalRelationships\": 431,\r\n    \"legacyActiveRelationships\": 450,\r\n    \"legacyMediatedPathRecords\": 39,\r\n    \"nativeActiveCausalRelationships\": 4,\r\n    \"nativeActiveEvidenceAssessments\": 11,\r\n    \"nativeActiveInterventionEffects\": 5,\r\n    \"nativeActiveInterventions\": 5,\r\n    \"nativeActiveRecords\": 27,\r\n    \"nativeActiveRelationships\": 6,\r\n    \"nativeCausalRelationships\": 4,\r\n    \"nativeEvidenceAssessments\": 11,\r\n    \"nativeInterventionEffects\": 5,\r\n    \"nativeInterventions\": 9,\r\n    \"nativeRelationships\": 6,\r\n    \"nativeSources\": 20,\r\n    \"v1IncompleteRelationships\": 450,\r\n    \"v1LegacyOnlyRelationships\": 450\r\n  },\r\n  \"nativeActionsEvents\": {\r\n    \"active\": 0,\r\n    \"records\": 0,\r\n    \"statusChanges\": 0,\r\n    \"synthetic\": false\r\n  },\r\n  \"sameIdentityViews\": 25\r\n}\r\n",
       "passed": true,
-      "seconds": 2.307
+      "seconds": 2.251
     },
     {
       "command": [
@@ -174,7 +174,7 @@
       "name": "Eight-Layer synthetic structural pilot",
       "output": "{\r\n  \"candidateValidation\": {\r\n    \"active\": 0,\r\n    \"records\": 46,\r\n    \"statusChanges\": 0,\r\n    \"synthetic\": true\r\n  },\r\n  \"effectProperties\": [\r\n    \"ENABLEMENT\",\r\n    \"FUNCTIONAL_SHAPE\",\r\n    \"LEVEL\",\r\n    \"PERSISTENCE\",\r\n    \"RATE\",\r\n    \"RELATIONSHIP_DIRECTION\",\r\n    \"RELATIONSHIP_STRENGTH\",\r\n    \"STRUCTURE\",\r\n    \"THRESHOLD\",\r\n    \"TIMING\",\r\n    \"VARIABILITY\"\r\n  ],\r\n  \"hypotheticalActiveValidation\": {\r\n    \"active\": 46,\r\n    \"records\": 46,\r\n    \"statusChanges\": 0,\r\n    \"synthetic\": true\r\n  },\r\n  \"label\": \"SYNTHETIC / NON_PRODUCTION\",\r\n  \"newRealScientificRecords\": 0,\r\n  \"originLayers\": [\r\n    \"BIO\",\r\n    \"CUL\",\r\n    \"ENV\",\r\n    \"INF\",\r\n    \"INS\",\r\n    \"PSY\",\r\n    \"SOC\",\r\n    \"TEC\"\r\n  ],\r\n  \"realStatusChanges\": 0,\r\n  \"unchanged\": true,\r\n  \"uses\": [\r\n    {\r\n      \"modelEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"No quantitative execution/model contract authorized; no weights inferred\"\r\n        ]\r\n      },\r\n      \"objectId\": \"SYN-EFFECT-001\",\r\n      \"practitionerActionEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"revision\": 1,\r\n      \"schemaVersion\": \"1.0.0\",\r\n      \"scientificUseEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"statusChanges\": 0,\r\n      \"syntheticSimulation\": {\r\n        \"actionWouldQualify\": true,\r\n        \"scientificWouldQualify\": true\r\n      }\r\n    },\r\n    {\r\n      \"modelEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"No quantitative execution/model contract authorized; no weights inferred\"\r\n        ]\r\n      },\r\n      \"objectId\": \"SYN-EFFECT-002\",\r\n      \"practitionerActionEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Not a deliberate Intervention/action subset\",\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"revision\": 1,\r\n      \"schemaVersion\": \"1.0.0\",\r\n      \"scientificUseEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"statusChanges\": 0,\r\n      \"syntheticSimulation\": {\r\n        \"actionWouldQualify\": false,\r\n        \"scientificWouldQualify\": true\r\n      }\r\n    },\r\n    {\r\n      \"modelEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"No quantitative execution/model contract authorized; no weights inferred\"\r\n        ]\r\n      },\r\n      \"objectId\": \"SYN-EFFECT-003\",\r\n      \"practitionerActionEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Not a deliberate Intervention/action subset\",\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"revision\": 1,\r\n      \"schemaVersion\": \"1.0.0\",\r\n      \"scientificUseEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"statusChanges\": 0,\r\n      \"syntheticSimulation\": {\r\n        \"actionWouldQualify\": false,\r\n        \"scientificWouldQualify\": true\r\n      }\r\n    },\r\n    {\r\n      \"modelEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"No quantitative execution/model contract authorized; no weights inferred\"\r\n        ]\r\n      },\r\n      \"objectId\": \"SYN-EFFECT-004\",\r\n      \"practitionerActionEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"revision\": 1,\r\n      \"schemaVersion\": \"1.0.0\",\r\n      \"scientificUseEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"statusChanges\": 0,\r\n      \"syntheticSimulation\": {\r\n        \"actionWouldQualify\": true,\r\n        \"scientificWouldQualify\": true\r\n      }\r\n    },\r\n    {\r\n      \"modelEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"No quantitative execution/model contract authorized; no weights inferred\"\r\n        ]\r\n      },\r\n      \"objectId\": \"SYN-EFFECT-005\",\r\n      \"practitionerActionEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Not a deliberate Intervention/action subset\",\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"revision\": 1,\r\n      \"schemaVersion\": \"1.0.0\",\r\n      \"scientificUseEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"statusChanges\": 0,\r\n      \"syntheticSimulation\": {\r\n        \"actionWouldQualify\": false,\r\n        \"scientificWouldQualify\": true\r\n      }\r\n    },\r\n    {\r\n      \"modelEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"No quantitative execution/model contract authorized; no weights inferred\"\r\n        ]\r\n      },\r\n      \"objectId\": \"SYN-EFFECT-006\",\r\n      \"practitionerActionEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Not a deliberate Intervention/action subset\",\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"revision\": 1,\r\n      \"schemaVersion\": \"1.0.0\",\r\n      \"scientificUseEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"statusChanges\": 0,\r\n      \"syntheticSimulation\": {\r\n        \"actionWouldQualify\": false,\r\n        \"scientificWouldQualify\": true\r\n      }\r\n    },\r\n    {\r\n      \"modelEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"No quantitative execution/model contract authorized; no weights inferred\"\r\n        ]\r\n      },\r\n      \"objectId\": \"SYN-EFFECT-007\",\r\n      \"practitionerActionEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Not a deliberate Intervention/action subset\",\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"revision\": 1,\r\n      \"schemaVersion\": \"1.0.0\",\r\n      \"scientificUseEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"statusChanges\": 0,\r\n      \"syntheticSimulation\": {\r\n        \"actionWouldQualify\": false,\r\n        \"scientificWouldQualify\": true\r\n      }\r\n    },\r\n    {\r\n      \"modelEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"No quantitative execution/model contract authorized; no weights inferred\"\r\n        ]\r\n      },\r\n      \"objectId\": \"SYN-EFFECT-008\",\r\n      \"practitionerActionEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"No independently eligible governed-active effect\",\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"revision\": 1,\r\n      \"schemaVersion\": \"1.0.0\",\r\n      \"scientificUseEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"statusChanges\": 0,\r\n      \"syntheticSimulation\": {\r\n        \"actionWouldQualify\": false,\r\n        \"scientificWouldQualify\": true\r\n      }\r\n    },\r\n    {\r\n      \"modelEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"No quantitative execution/model contract authorized; no weights inferred\"\r\n        ]\r\n      },\r\n      \"objectId\": \"SYN-EFFECT-009\",\r\n      \"practitionerActionEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"revision\": 1,\r\n      \"schemaVersion\": \"1.0.0\",\r\n      \"scientificUseEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"statusChanges\": 0,\r\n      \"syntheticSimulation\": {\r\n        \"actionWouldQualify\": true,\r\n        \"scientificWouldQualify\": true\r\n      }\r\n    },\r\n    {\r\n      \"modelEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"No quantitative execution/model contract authorized; no weights inferred\"\r\n        ]\r\n      },\r\n      \"objectId\": \"SYN-EFFECT-010\",\r\n      \"practitionerActionEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Not a deliberate Intervention/action subset\",\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"revision\": 1,\r\n      \"schemaVersion\": \"1.0.0\",\r\n      \"scientificUseEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"statusChanges\": 0,\r\n      \"syntheticSimulation\": {\r\n        \"actionWouldQualify\": false,\r\n        \"scientificWouldQualify\": true\r\n      }\r\n    },\r\n    {\r\n      \"modelEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"No quantitative execution/model contract authorized; no weights inferred\"\r\n        ]\r\n      },\r\n      \"objectId\": \"SYN-EFFECT-011\",\r\n      \"practitionerActionEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Not a deliberate Intervention/action subset\",\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"revision\": 1,\r\n      \"schemaVersion\": \"1.0.0\",\r\n      \"scientificUseEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"statusChanges\": 0,\r\n      \"syntheticSimulation\": {\r\n        \"actionWouldQualify\": false,\r\n        \"scientificWouldQualify\": true\r\n      }\r\n    },\r\n    {\r\n      \"modelEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"No quantitative execution/model contract authorized; no weights inferred\"\r\n        ]\r\n      },\r\n      \"objectId\": \"SYN-EFFECT-012\",\r\n      \"practitionerActionEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"revision\": 1,\r\n      \"schemaVersion\": \"1.0.0\",\r\n      \"scientificUseEligibility\": {\r\n        \"eligible\": false,\r\n        \"reasons\": [\r\n          \"Synthetic only\"\r\n        ]\r\n      },\r\n      \"statusChanges\": 0,\r\n      \"syntheticSimulation\": {\r\n        \"actionWouldQualify\": true,\r\n        \"scientificWouldQualify\": true\r\n      }\r\n    }\r\n  ]\r\n}\r\n",
       "passed": true,
-      "seconds": 1.401
+      "seconds": 1.413
     },
     {
       "command": [
@@ -185,7 +185,7 @@
       "name": "Deterministic migration regeneration",
       "output": "Governed migration baseline v0.3 built and validated\r\n  Drivers: 770\r\n  Relational & Derived States: 41\r\n  Canonical entities: 811\r\n  Active relationships: 450\r\n  Deprecated relationships: 6\r\n  Proposed/blocked relationships: 5\r\n  Blocked governance items: 7\r\n  Errors: 0\r\n",
       "passed": true,
-      "seconds": 0.616
+      "seconds": 0.619
     },
     {
       "command": [
@@ -196,7 +196,7 @@
       "name": "Deterministic BIO materialization",
       "output": "Materialized GOV-BIO-F01-001-2026-09-05 and GOV-BIO-F01-ACTIVATION-001-2026-09-05\r\n  Governed active Relationships: 6 (4 causal, 2 noncausal)\r\n  Governed active Interventions: 5; governed inactive Interventions: 4\r\n  Governed active InterventionEffects: 5\r\n  Governed active EvidenceAssessments: 11\r\n  New active records: 27\r\n  Registered native V1 sources: 20\r\n",
       "passed": true,
-      "seconds": 0.154
+      "seconds": 0.16
     },
     {
       "changed": [],
@@ -214,7 +214,7 @@
       "name": "No tracked mutation from regeneration/tests",
       "output": "",
       "passed": true,
-      "seconds": 0.292
+      "seconds": 0.415
     },
     {
       "command": [
@@ -227,9 +227,9 @@
       ],
       "exitCode": 0,
       "name": "Isolated scenario dependencies",
-      "output": "\nadded 1 package in 26s\n",
+      "output": "\nadded 1 package in 7s\n",
       "passed": true,
-      "seconds": 26.557
+      "seconds": 6.998
     },
     {
       "command": [
@@ -238,9 +238,9 @@
       ],
       "exitCode": 0,
       "name": "Scenario contracts and exact 811-entity sweep",
-      "output": "\n> psywerx-scenario-service@1.0.0 test\n> node --test\n\n✔ catalog verifies the browser snapshot and returns bounded server context (2.9972ms)\n✔ catalog rejects a stale or tampered Driver snapshot (0.809ms)\n✔ canonical Drivers without public plain language remain eligible (0.4831ms)\n✔ catalog preserves governed RDS identity and derivation context (0.7367ms)\n✔ request validation accepts the exact frontend contract (3.8709ms)\n✔ request validation accepts governed RDS IDs, derivation metadata, and null peripheral metadata (1.3139ms)\n✔ request validation rejects extra keys and oversized scenario input (0.4507ms)\n✔ response validation requires exactly three examples (0.4856ms)\n✔ clarification rules are conditional and require one question (0.2215ms)\n✔ response validation rejects private filesystem paths (0.1387ms)\n✔ every current canonical Entity resolves against the exact browser contract (106.7099ms)\n✔ test\\fixtures.js (100.276ms)\n✔ health endpoint returns minimal status (48.8823ms)\n✔ operationalization endpoint returns the exact success object (16.5344ms)\n✔ unlisted origins are rejected (7.5807ms)\n✔ request-size and in-memory rate limits fail clearly (21.783ms)\n✔ Responses API request is stateless, schema-strict, and server controlled (6.11ms)\n✔ RDS model context is labeled as an Entity and includes governed derivation metadata (0.8171ms)\n✔ malformed structured output is retried once (0.6985ms)\n✔ API failures are not retried (0.9094ms)\n✔ a second malformed output fails without a third attempt (1.7786ms)\nℹ tests 21\nℹ suites 0\nℹ pass 21\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 439.9214\n",
+      "output": "\n> psywerx-scenario-service@1.0.0 test\n> node --test\n\n✔ catalog verifies the browser snapshot and returns bounded server context (2.2944ms)\n✔ catalog rejects a stale or tampered Driver snapshot (0.9876ms)\n✔ canonical Drivers without public plain language remain eligible (0.3865ms)\n✔ catalog preserves governed RDS identity and derivation context (0.5755ms)\n✔ request validation accepts the exact frontend contract (4.8606ms)\n✔ request validation accepts governed RDS IDs, derivation metadata, and null peripheral metadata (0.8855ms)\n✔ request validation rejects extra keys and oversized scenario input (0.3401ms)\n✔ response validation requires exactly three examples (0.6187ms)\n✔ clarification rules are conditional and require one question (0.5626ms)\n✔ response validation rejects private filesystem paths (0.3311ms)\n✔ every current canonical Entity resolves against the exact browser contract (105.8333ms)\n✔ test\\fixtures.js (109.1406ms)\n✔ health endpoint returns minimal status (55.5611ms)\n✔ operationalization endpoint returns the exact success object (20.5172ms)\n✔ unlisted origins are rejected (9.0133ms)\n✔ request-size and in-memory rate limits fail clearly (27.3125ms)\n✔ Responses API request is stateless, schema-strict, and server controlled (4.5537ms)\n✔ RDS model context is labeled as an Entity and includes governed derivation metadata (0.7043ms)\n✔ malformed structured output is retried once (0.6089ms)\n✔ API failures are not retried (0.9095ms)\n✔ a second malformed output fails without a third attempt (0.569ms)\nℹ tests 21\nℹ suites 0\nℹ pass 21\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 407.3826\n",
       "passed": true,
-      "seconds": 1.019
+      "seconds": 0.984
     },
     {
       "command": [
@@ -255,7 +255,7 @@
       "name": "Python compilation",
       "output": "",
       "passed": true,
-      "seconds": 1.021
+      "seconds": 1.148
     },
     {
       "failed": [],
@@ -336,11 +336,11 @@
       ],
       "exitCode": 0,
       "name": "Git diff check",
-      "output": "",
+      "output": "warning: in the working copy of 'reports/actions-events-v1/current/BIO-F01_baseline.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'reports/actions-events-v1/current/BIO-F01_research_template.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'reports/actions-events-v1/current/auditQueue.csv', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'reports/actions-events-v1/current/entities.csv', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'reports/actions-events-v1/current/families.csv', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'reports/actions-events-v1/current/familyMatrix.csv', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'reports/actions-events-v1/current/inventory.json', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'reports/actions-events-v1/current/layers.csv', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'reports/actions-events-v1/current/matrices.csv', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'reports/actions-events-v1/current/scopeMatrices.csv', LF will be replaced by CRLF the next time Git touches it\n",
       "passed": true,
-      "seconds": 0.045
+      "seconds": 0.102
     }
   ],
-  "seconds": 71.9,
-  "testedCommit": "fd3d686074ed9cc789ada3ffb9090fd2df64ddf8"
+  "seconds": 52.846,
+  "testedCommit": "5c2d2bd0016215749e054ced4345e8bd202700be"
 }
