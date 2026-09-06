@@ -2,9 +2,4759 @@
   "schemaVersion": "1.0.0",
   "workspaceStatus": "NON_GOVERNED_CANDIDATE_WORKSPACE",
   "productionGraphEligible": false,
-  "relationships": [],
-  "evidenceAssessments": [],
+  "relationships": [
+    {
+      "schemaVersion": "1.0.0",
+      "id": "REL-CAND-BIO-F01-001",
+      "revision": 1,
+      "relationFamily": "CAUSAL",
+      "predicate": "CAUSES",
+      "symmetry": "DIRECTED",
+      "causalClaim": true,
+      "sourceEntityId": "BIO-001",
+      "sourceEntityType": "DRIVER",
+      "targetEntityId": "BIO-005",
+      "targetEntityType": "DRIVER",
+      "causalClaimRole": "MODELED_LOCAL_LINK",
+      "legacyDirectness": null,
+      "polarity": "NEGATIVE",
+      "mechanism": "Greater obtained sleep, within an individually relevant range, reduces homeostatic sleep pressure that otherwise magnifies post-awakening impairment.",
+      "boundaryConditions": "Applies to post-awakening assessment; effect varies by prior restriction, sleep stage at awakening, circadian phase, task, and individual vulnerability.",
+      "applicability": {
+        "analyticUnit": "PERSON",
+        "populationOrSystem": "Humans within the population and protocol stated by the evidence",
+        "context": "Applies to post-awakening assessment; effect varies by prior restriction, sleep stage at awakening, circadian phase, task, and individual vulnerability."
+      },
+      "associationSpecification": null,
+      "temporalSpecification": null,
+      "moderatedRelationshipId": null,
+      "moderatorSpecifications": [],
+      "combinationRule": null,
+      "moderationDirection": null,
+      "causalReviewGate": "STANDARD_CAUSAL",
+      "rdsSafeguards": null,
+      "functionalForm": null,
+      "exposurePattern": null,
+      "causalLag": null,
+      "persistence": null,
+      "evidenceAssessmentIds": [
+        "EVA-CAND-BIO-F01-REL-001"
+      ],
+      "sourceIds": [
+        "SRC010"
+      ],
+      "governance": {
+        "lifecycleStatus": "REVIEW_READY",
+        "activationStatus": "NOT_ELIGIBLE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "NOT_DECIDED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": null,
+        "authorizedBy": null,
+        "decisionDate": null,
+        "effectiveVersion": null,
+        "decisionRationale": null,
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Created as a non-governed BIO-F01 pilot candidate.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "REL-CAND-BIO-F01-001",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit indicated additional research or qualification was required.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "REL-CAND-BIO-F01-001",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit completed the candidate packet for human scientific review.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "REL-CAND-BIO-F01-001",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          }
+        ]
+      },
+      "compatibility": {
+        "sourceSchema": "RELATIONSHIP_V1",
+        "authorityStatus": "V1_LIFECYCLE",
+        "migrationCompleteness": "COMPLETE",
+        "v1Executability": "NOT_EXECUTABLE",
+        "blockedFields": [],
+        "legacyRelationFamily": null,
+        "legacyScientificFields": null,
+        "legacyRecordHash": null,
+        "legacyRecord": null
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "REL-CAND-BIO-F01-002",
+      "revision": 1,
+      "relationFamily": "CAUSAL",
+      "predicate": "CAUSES",
+      "symmetry": "DIRECTED",
+      "causalClaim": true,
+      "sourceEntityId": "BIO-004",
+      "sourceEntityType": "DRIVER",
+      "targetEntityId": "BIO-005",
+      "targetEntityType": "DRIVER",
+      "causalClaimRole": "MODELED_LOCAL_LINK",
+      "legacyDirectness": null,
+      "polarity": "CONTEXT_DEPENDENT",
+      "mechanism": "Circadian phase at awakening changes the magnitude and dissipation of sleep inertia through circadian regulation of arousal.",
+      "boundaryConditions": "Phase is cyclic rather than better/worse; the claim is conditional on awakening phase, prior sleep, sleep stage, and task.",
+      "applicability": {
+        "analyticUnit": "PERSON",
+        "populationOrSystem": "Humans within the population and protocol stated by the evidence",
+        "context": "Phase is cyclic rather than better/worse; the claim is conditional on awakening phase, prior sleep, sleep stage, and task."
+      },
+      "associationSpecification": null,
+      "temporalSpecification": null,
+      "moderatedRelationshipId": null,
+      "moderatorSpecifications": [],
+      "combinationRule": null,
+      "moderationDirection": null,
+      "causalReviewGate": "STANDARD_CAUSAL",
+      "rdsSafeguards": null,
+      "functionalForm": null,
+      "exposurePattern": null,
+      "causalLag": null,
+      "persistence": null,
+      "evidenceAssessmentIds": [
+        "EVA-CAND-BIO-F01-REL-002"
+      ],
+      "sourceIds": [
+        "SRC010"
+      ],
+      "governance": {
+        "lifecycleStatus": "REVIEW_READY",
+        "activationStatus": "NOT_ELIGIBLE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "NOT_DECIDED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": null,
+        "authorizedBy": null,
+        "decisionDate": null,
+        "effectiveVersion": null,
+        "decisionRationale": null,
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Created as a non-governed BIO-F01 pilot candidate.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "REL-CAND-BIO-F01-002",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit indicated additional research or qualification was required.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "REL-CAND-BIO-F01-002",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit completed the candidate packet for human scientific review.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "REL-CAND-BIO-F01-002",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          }
+        ]
+      },
+      "compatibility": {
+        "sourceSchema": "RELATIONSHIP_V1",
+        "authorityStatus": "V1_LIFECYCLE",
+        "migrationCompleteness": "COMPLETE",
+        "v1Executability": "NOT_EXECUTABLE",
+        "blockedFields": [],
+        "legacyRelationFamily": null,
+        "legacyScientificFields": null,
+        "legacyRecordHash": null,
+        "legacyRecord": null
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "REL-CAND-BIO-F01-003",
+      "revision": 1,
+      "relationFamily": "CAUSAL",
+      "predicate": "CONSTRAINS",
+      "symmetry": "DIRECTED",
+      "causalClaim": true,
+      "sourceEntityId": "BIO-061",
+      "sourceEntityType": "DRIVER",
+      "targetEntityId": "BIO-001",
+      "targetEntityType": "DRIVER",
+      "causalClaimRole": "MODELED_LOCAL_LINK",
+      "legacyDirectness": null,
+      "polarity": "NEGATIVE",
+      "mechanism": "Caffeine exposure sufficiently near planned sleep can delay sleep initiation and reduce obtained sleep duration through adenosine-receptor antagonism and increased alerting.",
+      "boundaryConditions": "Depends on dose, formulation, metabolism, tolerance, administration time, habitual use, and available sleep opportunity.",
+      "applicability": {
+        "analyticUnit": "PERSON",
+        "populationOrSystem": "Humans within the population and protocol stated by the evidence",
+        "context": "Depends on dose, formulation, metabolism, tolerance, administration time, habitual use, and available sleep opportunity."
+      },
+      "associationSpecification": null,
+      "temporalSpecification": null,
+      "moderatedRelationshipId": null,
+      "moderatorSpecifications": [],
+      "combinationRule": null,
+      "moderationDirection": null,
+      "causalReviewGate": "STANDARD_CAUSAL",
+      "rdsSafeguards": null,
+      "functionalForm": null,
+      "exposurePattern": null,
+      "causalLag": null,
+      "persistence": null,
+      "evidenceAssessmentIds": [
+        "EVA-CAND-BIO-F01-REL-003"
+      ],
+      "sourceIds": [
+        "SRC086"
+      ],
+      "governance": {
+        "lifecycleStatus": "REVIEW_READY",
+        "activationStatus": "NOT_ELIGIBLE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "NOT_DECIDED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": null,
+        "authorizedBy": null,
+        "decisionDate": null,
+        "effectiveVersion": null,
+        "decisionRationale": null,
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Created as a non-governed BIO-F01 pilot candidate.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "REL-CAND-BIO-F01-003",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit indicated additional research or qualification was required.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "REL-CAND-BIO-F01-003",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit completed the candidate packet for human scientific review.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "REL-CAND-BIO-F01-003",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          }
+        ]
+      },
+      "compatibility": {
+        "sourceSchema": "RELATIONSHIP_V1",
+        "authorityStatus": "V1_LIFECYCLE",
+        "migrationCompleteness": "COMPLETE",
+        "v1Executability": "NOT_EXECUTABLE",
+        "blockedFields": [],
+        "legacyRelationFamily": null,
+        "legacyScientificFields": null,
+        "legacyRecordHash": null,
+        "legacyRecord": null
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "REL-CAND-BIO-F01-004",
+      "revision": 1,
+      "relationFamily": "CAUSAL",
+      "predicate": "CONSTRAINS",
+      "symmetry": "DIRECTED",
+      "causalClaim": true,
+      "sourceEntityId": "ENV-041",
+      "sourceEntityType": "DRIVER",
+      "targetEntityId": "BIO-002",
+      "targetEntityType": "DRIVER",
+      "causalClaimRole": "MODELED_LOCAL_LINK",
+      "legacyDirectness": null,
+      "polarity": "NEGATIVE",
+      "mechanism": "Intermittent nighttime sound events provoke cortical arousals and awakenings that fragment an ongoing sleep episode.",
+      "boundaryConditions": "Evidence is strongest for transportation-noise events in adults; habituation, event level, sound meaning, insulation, hearing, and setting modify response.",
+      "applicability": {
+        "analyticUnit": "PERSON",
+        "populationOrSystem": "Humans within the population and protocol stated by the evidence",
+        "context": "Evidence is strongest for transportation-noise events in adults; habituation, event level, sound meaning, insulation, hearing, and setting modify response."
+      },
+      "associationSpecification": null,
+      "temporalSpecification": null,
+      "moderatedRelationshipId": null,
+      "moderatorSpecifications": [],
+      "combinationRule": null,
+      "moderationDirection": null,
+      "causalReviewGate": "STANDARD_CAUSAL",
+      "rdsSafeguards": null,
+      "functionalForm": null,
+      "exposurePattern": null,
+      "causalLag": null,
+      "persistence": null,
+      "evidenceAssessmentIds": [
+        "EVA-CAND-BIO-F01-REL-004"
+      ],
+      "sourceIds": [],
+      "governance": {
+        "lifecycleStatus": "REVIEW_READY",
+        "activationStatus": "NOT_ELIGIBLE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "NOT_DECIDED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": null,
+        "authorizedBy": null,
+        "decisionDate": null,
+        "effectiveVersion": null,
+        "decisionRationale": null,
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Created as a non-governed BIO-F01 pilot candidate.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "REL-CAND-BIO-F01-004",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit indicated additional research or qualification was required.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "REL-CAND-BIO-F01-004",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit completed the candidate packet for human scientific review.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "REL-CAND-BIO-F01-004",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          }
+        ]
+      },
+      "compatibility": {
+        "sourceSchema": "RELATIONSHIP_V1",
+        "authorityStatus": "V1_LIFECYCLE",
+        "migrationCompleteness": "COMPLETE",
+        "v1Executability": "NOT_EXECUTABLE",
+        "blockedFields": [
+          "canonicalSourceRegistration"
+        ],
+        "legacyRelationFamily": null,
+        "legacyScientificFields": null,
+        "legacyRecordHash": null,
+        "legacyRecord": null
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "REL-CAND-BIO-F01-005",
+      "revision": 1,
+      "relationFamily": "CAUSAL",
+      "predicate": "CAUSES",
+      "symmetry": "DIRECTED",
+      "causalClaim": true,
+      "sourceEntityId": "BIO-002",
+      "sourceEntityType": "DRIVER",
+      "targetEntityId": "BIO-028",
+      "targetEntityType": "DRIVER",
+      "causalClaimRole": "MODELED_LOCAL_LINK",
+      "legacyDirectness": null,
+      "polarity": "NEGATIVE",
+      "mechanism": "More continuous sleep may reduce subsequent persistent pain burden through nociceptive, inflammatory, affective, and attentional processes.",
+      "boundaryConditions": "Most available evidence concerns broad sleep problems and pain, is observational, and does not isolate canonical Sleep Continuity; causal specificity remains unresolved.",
+      "applicability": {
+        "analyticUnit": "PERSON",
+        "populationOrSystem": "Humans within the population and protocol stated by the evidence",
+        "context": "Most available evidence concerns broad sleep problems and pain, is observational, and does not isolate canonical Sleep Continuity; causal specificity remains unresolved."
+      },
+      "associationSpecification": null,
+      "temporalSpecification": null,
+      "moderatedRelationshipId": null,
+      "moderatorSpecifications": [],
+      "combinationRule": null,
+      "moderationDirection": null,
+      "causalReviewGate": "STANDARD_CAUSAL",
+      "rdsSafeguards": null,
+      "functionalForm": null,
+      "exposurePattern": null,
+      "causalLag": null,
+      "persistence": null,
+      "evidenceAssessmentIds": [
+        "EVA-CAND-BIO-F01-REL-005"
+      ],
+      "sourceIds": [],
+      "governance": {
+        "lifecycleStatus": "RESEARCH_NEEDED",
+        "activationStatus": "NOT_ELIGIBLE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "NOT_DECIDED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": null,
+        "authorizedBy": null,
+        "decisionDate": null,
+        "effectiveVersion": null,
+        "decisionRationale": null,
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Created as a non-governed BIO-F01 pilot candidate.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "REL-CAND-BIO-F01-005",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit indicated additional research or qualification was required.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "REL-CAND-BIO-F01-005",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          }
+        ]
+      },
+      "compatibility": {
+        "sourceSchema": "RELATIONSHIP_V1",
+        "authorityStatus": "V1_LIFECYCLE",
+        "migrationCompleteness": "INCOMPLETE",
+        "v1Executability": "NOT_EXECUTABLE",
+        "blockedFields": [
+          "canonicalSourceRegistration"
+        ],
+        "legacyRelationFamily": null,
+        "legacyScientificFields": null,
+        "legacyRecordHash": null,
+        "legacyRecord": null
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "REL-CAND-BIO-F01-006",
+      "revision": 1,
+      "relationFamily": "EMPIRICAL_NONCAUSAL",
+      "predicate": "ASSOCIATED_WITH",
+      "symmetry": "SYMMETRIC",
+      "causalClaim": false,
+      "sourceEntityId": "BIO-004",
+      "sourceEntityType": "DRIVER",
+      "targetEntityId": "BIO-073",
+      "targetEntityType": "DRIVER",
+      "causalClaimRole": null,
+      "legacyDirectness": null,
+      "polarity": null,
+      "mechanism": "Chronotype instruments covary with physiological circadian phase markers but are not interchangeable measurements.",
+      "boundaryConditions": "Instrument, age, sleep schedule, light history, and phase-marker protocol must be stated.",
+      "applicability": null,
+      "associationSpecification": {
+        "temporalScope": "REPEATED_MIXED",
+        "qualitativeStatement": "Earlier chronotype measures are associated with earlier endogenous circadian phase markers under aligned protocols.",
+        "strengthEstimate": null,
+        "constituentOverlapCheck": "Chronotype is partly shaped by phase but is not calculated from the canonical Endogenous Circadian Phase entity; instrument overlap and schedule contamination must be reported."
+      },
+      "temporalSpecification": null,
+      "moderatedRelationshipId": null,
+      "moderatorSpecifications": [],
+      "combinationRule": null,
+      "moderationDirection": null,
+      "causalReviewGate": null,
+      "rdsSafeguards": null,
+      "functionalForm": null,
+      "exposurePattern": null,
+      "causalLag": null,
+      "persistence": null,
+      "evidenceAssessmentIds": [
+        "EVA-CAND-BIO-F01-REL-006"
+      ],
+      "sourceIds": [
+        "SRC009",
+        "SRC011"
+      ],
+      "governance": {
+        "lifecycleStatus": "REVIEW_READY",
+        "activationStatus": "NOT_ELIGIBLE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "NOT_DECIDED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": null,
+        "authorizedBy": null,
+        "decisionDate": null,
+        "effectiveVersion": null,
+        "decisionRationale": null,
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Created as a non-governed BIO-F01 pilot candidate.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "REL-CAND-BIO-F01-006",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit indicated additional research or qualification was required.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "REL-CAND-BIO-F01-006",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit completed the candidate packet for human scientific review.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "REL-CAND-BIO-F01-006",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          }
+        ]
+      },
+      "compatibility": {
+        "sourceSchema": "RELATIONSHIP_V1",
+        "authorityStatus": "V1_LIFECYCLE",
+        "migrationCompleteness": "COMPLETE",
+        "v1Executability": "NOT_EXECUTABLE",
+        "blockedFields": [],
+        "legacyRelationFamily": null,
+        "legacyScientificFields": null,
+        "legacyRecordHash": null,
+        "legacyRecord": null
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "REL-CAND-BIO-F01-007",
+      "revision": 1,
+      "relationFamily": "EMPIRICAL_NONCAUSAL",
+      "predicate": "ASSOCIATED_WITH",
+      "symmetry": "SYMMETRIC",
+      "causalClaim": false,
+      "sourceEntityId": "BIO-001",
+      "sourceEntityType": "DRIVER",
+      "targetEntityId": "BIO-002",
+      "targetEntityType": "DRIVER",
+      "causalClaimRole": null,
+      "legacyDirectness": null,
+      "polarity": null,
+      "mechanism": "Sleep episodes with reduced duration often also have reduced continuity, but shared sleep-opportunity and measurement components can induce covariance.",
+      "boundaryConditions": "The duration metric must exclude or explicitly account for wake-after-sleep-onset and time-in-bed overlap.",
+      "applicability": null,
+      "associationSpecification": {
+        "temporalScope": "REPEATED_MIXED",
+        "qualitativeStatement": "Sleep Duration and Sleep Continuity commonly covary within sleep-health studies, without a generic causal direction being established.",
+        "strengthEstimate": null,
+        "constituentOverlapCheck": "Present: total sleep time and sleep-efficiency/fragmentation measures can share the same scored epochs or denominator; effect estimates require non-overlapping operationalizations or explicit correction."
+      },
+      "temporalSpecification": null,
+      "moderatedRelationshipId": null,
+      "moderatorSpecifications": [],
+      "combinationRule": null,
+      "moderationDirection": null,
+      "causalReviewGate": null,
+      "rdsSafeguards": null,
+      "functionalForm": null,
+      "exposurePattern": null,
+      "causalLag": null,
+      "persistence": null,
+      "evidenceAssessmentIds": [
+        "EVA-CAND-BIO-F01-REL-007"
+      ],
+      "sourceIds": [
+        "SRC005",
+        "SRC006"
+      ],
+      "governance": {
+        "lifecycleStatus": "RESEARCH_NEEDED",
+        "activationStatus": "NOT_ELIGIBLE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "NOT_DECIDED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": null,
+        "authorizedBy": null,
+        "decisionDate": null,
+        "effectiveVersion": null,
+        "decisionRationale": null,
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Created as a non-governed BIO-F01 pilot candidate.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "REL-CAND-BIO-F01-007",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit indicated additional research or qualification was required.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "REL-CAND-BIO-F01-007",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          }
+        ]
+      },
+      "compatibility": {
+        "sourceSchema": "RELATIONSHIP_V1",
+        "authorityStatus": "V1_LIFECYCLE",
+        "migrationCompleteness": "INCOMPLETE",
+        "v1Executability": "NOT_EXECUTABLE",
+        "blockedFields": [],
+        "legacyRelationFamily": null,
+        "legacyScientificFields": null,
+        "legacyRecordHash": null,
+        "legacyRecord": null
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "REL-CAND-BIO-F01-008",
+      "revision": 1,
+      "relationFamily": "MODERATION",
+      "predicate": "MODERATES",
+      "symmetry": "DIRECTED",
+      "causalClaim": false,
+      "sourceEntityId": null,
+      "sourceEntityType": null,
+      "targetEntityId": null,
+      "targetEntityType": null,
+      "causalClaimRole": null,
+      "legacyDirectness": null,
+      "polarity": null,
+      "mechanism": "The performance consequences of restricted sleep vary by biological night versus day, but available experiments do not yet map cleanly to the governed Cognitive Fatigue endpoint.",
+      "boundaryConditions": "Requires aligned sleep-dose, circadian-phase, outcome, and population definitions; performance is not automatically Cognitive Fatigue.",
+      "applicability": null,
+      "associationSpecification": null,
+      "temporalSpecification": null,
+      "moderatedRelationshipId": "REL-BIO-002",
+      "moderatorSpecifications": [
+        {
+          "entityId": "BIO-004",
+          "entityType": "DRIVER",
+          "stateOrRange": "Endogenous phase at the time post-sleep-loss fatigue is assessed",
+          "scaleInterpretation": "Cyclic phase; biological-night versus biological-day regions must be protocol-defined"
+        }
+      ],
+      "combinationRule": "INDIVIDUAL",
+      "moderationDirection": "CONTEXT_DEPENDENT",
+      "causalReviewGate": null,
+      "rdsSafeguards": null,
+      "functionalForm": null,
+      "exposurePattern": null,
+      "causalLag": null,
+      "persistence": null,
+      "evidenceAssessmentIds": [
+        "EVA-CAND-BIO-F01-REL-008"
+      ],
+      "sourceIds": [
+        "SRC001",
+        "SRC010"
+      ],
+      "governance": {
+        "lifecycleStatus": "RESEARCH_NEEDED",
+        "activationStatus": "NOT_ELIGIBLE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "NOT_DECIDED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": null,
+        "authorizedBy": null,
+        "decisionDate": null,
+        "effectiveVersion": null,
+        "decisionRationale": null,
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Created as a non-governed BIO-F01 pilot candidate.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "REL-CAND-BIO-F01-008",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit indicated additional research or qualification was required.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "REL-CAND-BIO-F01-008",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          }
+        ]
+      },
+      "compatibility": {
+        "sourceSchema": "RELATIONSHIP_V1",
+        "authorityStatus": "V1_LIFECYCLE",
+        "migrationCompleteness": "INCOMPLETE",
+        "v1Executability": "NOT_EXECUTABLE",
+        "blockedFields": [],
+        "legacyRelationFamily": null,
+        "legacyScientificFields": null,
+        "legacyRecordHash": null,
+        "legacyRecord": null
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "REL-CAND-BIO-F01-009",
+      "revision": 1,
+      "relationFamily": "DERIVATIONAL",
+      "predicate": "DERIVED_FROM",
+      "symmetry": "DIRECTED",
+      "causalClaim": false,
+      "sourceEntityId": "BIO-003",
+      "sourceEntityType": "RELATIONAL_DERIVED_STATE",
+      "targetEntityId": "BIO-004",
+      "targetEntityType": "DRIVER",
+      "causalClaimRole": null,
+      "legacyDirectness": null,
+      "polarity": null,
+      "mechanism": "Endogenous Circadian Phase is the internal-timing constituent used to calculate Circadian Timing Alignment.",
+      "boundaryConditions": "The external timing requirement, phase measure, interval, alignment convention, and update rule must also be supplied.",
+      "applicability": null,
+      "associationSpecification": null,
+      "temporalSpecification": null,
+      "moderatedRelationshipId": null,
+      "moderatorSpecifications": [],
+      "combinationRule": null,
+      "moderationDirection": null,
+      "causalReviewGate": null,
+      "rdsSafeguards": null,
+      "functionalForm": null,
+      "exposurePattern": null,
+      "causalLag": null,
+      "persistence": null,
+      "evidenceAssessmentIds": [
+        "EVA-CAND-BIO-F01-REL-009"
+      ],
+      "sourceIds": [
+        "SRC009",
+        "SRC011"
+      ],
+      "governance": {
+        "lifecycleStatus": "REVIEW_READY",
+        "activationStatus": "NOT_ELIGIBLE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "NOT_DECIDED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": null,
+        "authorizedBy": null,
+        "decisionDate": null,
+        "effectiveVersion": null,
+        "decisionRationale": null,
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Created as a non-governed BIO-F01 pilot candidate.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "REL-CAND-BIO-F01-009",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit indicated additional research or qualification was required.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "REL-CAND-BIO-F01-009",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit completed the candidate packet for human scientific review.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "REL-CAND-BIO-F01-009",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          }
+        ]
+      },
+      "compatibility": {
+        "sourceSchema": "RELATIONSHIP_V1",
+        "authorityStatus": "V1_LIFECYCLE",
+        "migrationCompleteness": "COMPLETE",
+        "v1Executability": "NOT_EXECUTABLE",
+        "blockedFields": [],
+        "legacyRelationFamily": null,
+        "legacyScientificFields": null,
+        "legacyRecordHash": null,
+        "legacyRecord": null
+      }
+    }
+  ],
+  "evidenceAssessments": [
+    {
+      "schemaVersion": "1.0.0",
+      "id": "EVA-CAND-BIO-F01-REL-001",
+      "revision": 1,
+      "assertion": {
+        "objectType": "RELATIONSHIP",
+        "objectId": "REL-CAND-BIO-F01-001"
+      },
+      "sourceIds": [
+        "SRC010"
+      ],
+      "evidenceRationale": "SRC010 and candidate source BIOF01-EXT-007 synthesize and experimentally demonstrate that prior sleep restriction magnifies sleep inertia after awakening.",
+      "evidenceStrength": "MODERATE",
+      "confidence": "MODERATE",
+      "evidenceDisposition": "SUPPORTS",
+      "population": "Human participants; exact populations are enumerated in the BIO-F01 evidence summary.",
+      "context": "Scope is limited to the exposures, interventions, timing, and settings stated in the cited evidence.",
+      "studyDesignCharacterizations": [
+        {
+          "designType": "SYNTHESIS",
+          "specification": "Narrative review"
+        },
+        {
+          "designType": "EXPERIMENTAL",
+          "specification": "Controlled laboratory protocols"
+        }
+      ],
+      "quantitativeEstimate": null,
+      "uncertainty": [
+        "Exact dose-response and persistence are not established"
+      ],
+      "conflictingEvidence": {
+        "sourceIds": [],
+        "summary": null
+      },
+      "limitations": [
+        "Outcome and protocol heterogeneity",
+        "Evidence emphasizes restriction rather than a universal monotonic duration effect"
+      ],
+      "reviewProvenance": {
+        "createdAt": "2026-09-05T12:00:00Z",
+        "createdByActorClass": "AUTOMATED_PROCESS_OR_AI",
+        "reviewedAt": null,
+        "reviewedBy": null,
+        "sourceSchema": "AUD-BIO-F01-RI-V1-20260905-001:structured-evidence-search"
+      },
+      "governance": {
+        "lifecycleStatus": "REVIEW_READY",
+        "activationStatus": "NOT_ELIGIBLE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "NOT_DECIDED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": null,
+        "authorizedBy": null,
+        "decisionDate": null,
+        "effectiveVersion": null,
+        "decisionRationale": null,
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Created as a non-governed BIO-F01 pilot candidate.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "EVA-CAND-BIO-F01-REL-001",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit indicated additional research or qualification was required.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "EVA-CAND-BIO-F01-REL-001",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit completed the candidate packet for human scientific review.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "EVA-CAND-BIO-F01-REL-001",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          }
+        ]
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "EVA-CAND-BIO-F01-REL-002",
+      "revision": 1,
+      "assertion": {
+        "objectType": "RELATIONSHIP",
+        "objectId": "REL-CAND-BIO-F01-002"
+      },
+      "sourceIds": [
+        "SRC010"
+      ],
+      "evidenceRationale": "SRC010 and BIOF01-EXT-006/007 report worse post-awakening impairment near the biological-night trough and interactions with prior sleep loss.",
+      "evidenceStrength": "MODERATE",
+      "confidence": "MODERATE",
+      "evidenceDisposition": "SUPPORTS",
+      "population": "Human participants; exact populations are enumerated in the BIO-F01 evidence summary.",
+      "context": "Scope is limited to the exposures, interventions, timing, and settings stated in the cited evidence.",
+      "studyDesignCharacterizations": [
+        {
+          "designType": "SYNTHESIS",
+          "specification": "Narrative review"
+        },
+        {
+          "designType": "EXPERIMENTAL",
+          "specification": "Forced-desynchrony laboratory protocols"
+        }
+      ],
+      "quantitativeEstimate": null,
+      "uncertainty": [
+        "Polarity cannot be expressed as universally positive or negative"
+      ],
+      "conflictingEvidence": {
+        "sourceIds": [],
+        "summary": null
+      },
+      "limitations": [
+        "Circadian phase is cyclic",
+        "Small controlled samples"
+      ],
+      "reviewProvenance": {
+        "createdAt": "2026-09-05T12:00:00Z",
+        "createdByActorClass": "AUTOMATED_PROCESS_OR_AI",
+        "reviewedAt": null,
+        "reviewedBy": null,
+        "sourceSchema": "AUD-BIO-F01-RI-V1-20260905-001:structured-evidence-search"
+      },
+      "governance": {
+        "lifecycleStatus": "REVIEW_READY",
+        "activationStatus": "NOT_ELIGIBLE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "NOT_DECIDED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": null,
+        "authorizedBy": null,
+        "decisionDate": null,
+        "effectiveVersion": null,
+        "decisionRationale": null,
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Created as a non-governed BIO-F01 pilot candidate.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "EVA-CAND-BIO-F01-REL-002",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit indicated additional research or qualification was required.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "EVA-CAND-BIO-F01-REL-002",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit completed the candidate packet for human scientific review.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "EVA-CAND-BIO-F01-REL-002",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          }
+        ]
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "EVA-CAND-BIO-F01-REL-003",
+      "revision": 1,
+      "assertion": {
+        "objectType": "RELATIONSHIP",
+        "objectId": "REL-CAND-BIO-F01-003"
+      },
+      "sourceIds": [
+        "SRC086"
+      ],
+      "evidenceRationale": "SRC086 reviews controlled evidence that caffeine timing can delay sleep and reduce sleep duration while improving wake performance.",
+      "evidenceStrength": "MODERATE",
+      "confidence": "MODERATE",
+      "evidenceDisposition": "SUPPORTS",
+      "population": "Human participants; exact populations are enumerated in the BIO-F01 evidence summary.",
+      "context": "Scope is limited to the exposures, interventions, timing, and settings stated in the cited evidence.",
+      "studyDesignCharacterizations": [
+        {
+          "designType": "SYNTHESIS",
+          "specification": "Review of caffeine, sleep, and performance"
+        }
+      ],
+      "quantitativeEstimate": null,
+      "uncertainty": [
+        "Tolerance and metabolism limit generalization"
+      ],
+      "conflictingEvidence": {
+        "sourceIds": [],
+        "summary": null
+      },
+      "limitations": [
+        "Substantial interindividual variation",
+        "Dose and administration timing are identity-defining exposure details"
+      ],
+      "reviewProvenance": {
+        "createdAt": "2026-09-05T12:00:00Z",
+        "createdByActorClass": "AUTOMATED_PROCESS_OR_AI",
+        "reviewedAt": null,
+        "reviewedBy": null,
+        "sourceSchema": "AUD-BIO-F01-RI-V1-20260905-001:structured-evidence-search"
+      },
+      "governance": {
+        "lifecycleStatus": "REVIEW_READY",
+        "activationStatus": "NOT_ELIGIBLE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "NOT_DECIDED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": null,
+        "authorizedBy": null,
+        "decisionDate": null,
+        "effectiveVersion": null,
+        "decisionRationale": null,
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Created as a non-governed BIO-F01 pilot candidate.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "EVA-CAND-BIO-F01-REL-003",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit indicated additional research or qualification was required.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "EVA-CAND-BIO-F01-REL-003",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit completed the candidate packet for human scientific review.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "EVA-CAND-BIO-F01-REL-003",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          }
+        ]
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "EVA-CAND-BIO-F01-REL-004",
+      "revision": 1,
+      "assertion": {
+        "objectType": "RELATIONSHIP",
+        "objectId": "REL-CAND-BIO-F01-004"
+      },
+      "sourceIds": [],
+      "evidenceRationale": "BIOF01-EXT-001/002 synthesize polysomnographic and field evidence: discrete transportation-noise events increase cortical awakenings; supplemental sources await canonical source registration.",
+      "evidenceStrength": "MODERATE",
+      "confidence": "MODERATE",
+      "evidenceDisposition": "SUPPORTS",
+      "population": "Human participants; exact populations are enumerated in the BIO-F01 evidence summary.",
+      "context": "Scope is limited to the exposures, interventions, timing, and settings stated in the cited evidence.",
+      "studyDesignCharacterizations": [
+        {
+          "designType": "SYNTHESIS",
+          "specification": "Systematic reviews and meta-analyses including polysomnographic studies"
+        }
+      ],
+      "quantitativeEstimate": null,
+      "uncertainty": [
+        "Generalization to all intermittent sounds is uncertain"
+      ],
+      "conflictingEvidence": {
+        "sourceIds": [],
+        "summary": null
+      },
+      "limitations": [
+        "Evidence strongest for transportation noise",
+        "Self-report estimates depend on question wording"
+      ],
+      "reviewProvenance": {
+        "createdAt": "2026-09-05T12:00:00Z",
+        "createdByActorClass": "AUTOMATED_PROCESS_OR_AI",
+        "reviewedAt": null,
+        "reviewedBy": null,
+        "sourceSchema": "AUD-BIO-F01-RI-V1-20260905-001:structured-evidence-search"
+      },
+      "governance": {
+        "lifecycleStatus": "REVIEW_READY",
+        "activationStatus": "NOT_ELIGIBLE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "NOT_DECIDED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": null,
+        "authorizedBy": null,
+        "decisionDate": null,
+        "effectiveVersion": null,
+        "decisionRationale": null,
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Created as a non-governed BIO-F01 pilot candidate.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "EVA-CAND-BIO-F01-REL-004",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit indicated additional research or qualification was required.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "EVA-CAND-BIO-F01-REL-004",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit completed the candidate packet for human scientific review.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "EVA-CAND-BIO-F01-REL-004",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          }
+        ]
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "EVA-CAND-BIO-F01-REL-005",
+      "revision": 1,
+      "assertion": {
+        "objectType": "RELATIONSHIP",
+        "objectId": "REL-CAND-BIO-F01-005"
+      },
+      "sourceIds": [],
+      "evidenceRationale": "BIOF01-EXT-003/004 show prospective bidirectional associations between broad sleep problems and chronic musculoskeletal pain; continuity-specific causal isolation is incomplete.",
+      "evidenceStrength": "MIXED",
+      "confidence": "LOW",
+      "evidenceDisposition": "MIXED",
+      "population": "Human participants; exact populations are enumerated in the BIO-F01 evidence summary.",
+      "context": "Scope is limited to the exposures, interventions, timing, and settings stated in the cited evidence.",
+      "studyDesignCharacterizations": [
+        {
+          "designType": "SYNTHESIS",
+          "specification": "Systematic reviews/meta-analyses of prospective cohorts"
+        }
+      ],
+      "quantitativeEstimate": null,
+      "uncertainty": [
+        "Directionality is supported prospectively but intervention evidence for the exact endpoint remains limited"
+      ],
+      "conflictingEvidence": {
+        "sourceIds": [],
+        "summary": "Different reviews rate certainty and direction-specific support differently."
+      },
+      "limitations": [
+        "Residual confounding",
+        "Broad sleep-problem exposure is not identical to Sleep Continuity",
+        "Pain phenotypes vary"
+      ],
+      "reviewProvenance": {
+        "createdAt": "2026-09-05T12:00:00Z",
+        "createdByActorClass": "AUTOMATED_PROCESS_OR_AI",
+        "reviewedAt": null,
+        "reviewedBy": null,
+        "sourceSchema": "AUD-BIO-F01-RI-V1-20260905-001:structured-evidence-search"
+      },
+      "governance": {
+        "lifecycleStatus": "RESEARCH_NEEDED",
+        "activationStatus": "NOT_ELIGIBLE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "NOT_DECIDED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": null,
+        "authorizedBy": null,
+        "decisionDate": null,
+        "effectiveVersion": null,
+        "decisionRationale": null,
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Created as a non-governed BIO-F01 pilot candidate.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "EVA-CAND-BIO-F01-REL-005",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit indicated additional research or qualification was required.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "EVA-CAND-BIO-F01-REL-005",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          }
+        ]
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "EVA-CAND-BIO-F01-REL-006",
+      "revision": 1,
+      "assertion": {
+        "objectType": "RELATIONSHIP",
+        "objectId": "REL-CAND-BIO-F01-006"
+      },
+      "sourceIds": [
+        "SRC009",
+        "SRC011"
+      ],
+      "evidenceRationale": "SRC009/SRC011 and BIOF01-EXT-022 report association between validated chronotype measures and physiological circadian phase while warning that measures are not equivalent.",
+      "evidenceStrength": "MODERATE",
+      "confidence": "MODERATE",
+      "evidenceDisposition": "SUPPORTS",
+      "population": "Human participants; exact populations are enumerated in the BIO-F01 evidence summary.",
+      "context": "Scope is limited to the exposures, interventions, timing, and settings stated in the cited evidence.",
+      "studyDesignCharacterizations": [
+        {
+          "designType": "SYNTHESIS",
+          "specification": "Pooled physiological reference data and reviews"
+        },
+        {
+          "designType": "OBSERVATIONAL_CROSS_SECTIONAL",
+          "specification": "Instrument validation studies"
+        }
+      ],
+      "quantitativeEstimate": null,
+      "uncertainty": [
+        "Strength depends on instrument and protocol"
+      ],
+      "conflictingEvidence": {
+        "sourceIds": [],
+        "summary": null
+      },
+      "limitations": [
+        "Chronotype measures incorporate preference or observed sleep timing",
+        "Age and schedule affect both measures"
+      ],
+      "reviewProvenance": {
+        "createdAt": "2026-09-05T12:00:00Z",
+        "createdByActorClass": "AUTOMATED_PROCESS_OR_AI",
+        "reviewedAt": null,
+        "reviewedBy": null,
+        "sourceSchema": "AUD-BIO-F01-RI-V1-20260905-001:structured-evidence-search"
+      },
+      "governance": {
+        "lifecycleStatus": "REVIEW_READY",
+        "activationStatus": "NOT_ELIGIBLE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "NOT_DECIDED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": null,
+        "authorizedBy": null,
+        "decisionDate": null,
+        "effectiveVersion": null,
+        "decisionRationale": null,
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Created as a non-governed BIO-F01 pilot candidate.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "EVA-CAND-BIO-F01-REL-006",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit indicated additional research or qualification was required.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "EVA-CAND-BIO-F01-REL-006",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit completed the candidate packet for human scientific review.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "EVA-CAND-BIO-F01-REL-006",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          }
+        ]
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "EVA-CAND-BIO-F01-REL-007",
+      "revision": 1,
+      "assertion": {
+        "objectType": "RELATIONSHIP",
+        "objectId": "REL-CAND-BIO-F01-007"
+      },
+      "sourceIds": [
+        "SRC005",
+        "SRC006"
+      ],
+      "evidenceRationale": "The governed sources routinely measure duration and continuity together, but do not establish a stable non-overlapping association parameter for the canonical pair.",
+      "evidenceStrength": "LIMITED",
+      "confidence": "LOW",
+      "evidenceDisposition": "INSUFFICIENT",
+      "population": "Human participants; exact populations are enumerated in the BIO-F01 evidence summary.",
+      "context": "Scope is limited to the exposures, interventions, timing, and settings stated in the cited evidence.",
+      "studyDesignCharacterizations": [
+        {
+          "designType": "SYNTHESIS",
+          "specification": "Mixed sleep-problem reviews"
+        }
+      ],
+      "quantitativeEstimate": null,
+      "uncertainty": [
+        "Association may be partly mathematical"
+      ],
+      "conflictingEvidence": {
+        "sourceIds": [],
+        "summary": null
+      },
+      "limitations": [
+        "Shared epochs and denominators",
+        "Construct definitions differ across studies"
+      ],
+      "reviewProvenance": {
+        "createdAt": "2026-09-05T12:00:00Z",
+        "createdByActorClass": "AUTOMATED_PROCESS_OR_AI",
+        "reviewedAt": null,
+        "reviewedBy": null,
+        "sourceSchema": "AUD-BIO-F01-RI-V1-20260905-001:structured-evidence-search"
+      },
+      "governance": {
+        "lifecycleStatus": "RESEARCH_NEEDED",
+        "activationStatus": "NOT_ELIGIBLE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "NOT_DECIDED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": null,
+        "authorizedBy": null,
+        "decisionDate": null,
+        "effectiveVersion": null,
+        "decisionRationale": null,
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Created as a non-governed BIO-F01 pilot candidate.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "EVA-CAND-BIO-F01-REL-007",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit indicated additional research or qualification was required.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "EVA-CAND-BIO-F01-REL-007",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          }
+        ]
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "EVA-CAND-BIO-F01-REL-008",
+      "revision": 1,
+      "assertion": {
+        "objectType": "MODERATION",
+        "objectId": "REL-CAND-BIO-F01-008"
+      },
+      "sourceIds": [
+        "SRC001",
+        "SRC010"
+      ],
+      "evidenceRationale": "BIOF01-EXT-021 reports a sleep-dose by circadian-phase interaction for vigilance; mapping that outcome to governed Cognitive Fatigue is not yet justified.",
+      "evidenceStrength": "MODERATE",
+      "confidence": "LOW",
+      "evidenceDisposition": "INSUFFICIENT",
+      "population": "Human participants; exact populations are enumerated in the BIO-F01 evidence summary.",
+      "context": "Scope is limited to the exposures, interventions, timing, and settings stated in the cited evidence.",
+      "studyDesignCharacterizations": [
+        {
+          "designType": "EXPERIMENTAL",
+          "specification": "Forced-desynchrony controlled laboratory study"
+        }
+      ],
+      "quantitativeEstimate": null,
+      "uncertainty": [
+        "Endpoint alignment is unresolved"
+      ],
+      "conflictingEvidence": {
+        "sourceIds": [],
+        "summary": null
+      },
+      "limitations": [
+        "Small healthy-male sample",
+        "Vigilance performance is not identical to Cognitive Fatigue"
+      ],
+      "reviewProvenance": {
+        "createdAt": "2026-09-05T12:00:00Z",
+        "createdByActorClass": "AUTOMATED_PROCESS_OR_AI",
+        "reviewedAt": null,
+        "reviewedBy": null,
+        "sourceSchema": "AUD-BIO-F01-RI-V1-20260905-001:structured-evidence-search"
+      },
+      "governance": {
+        "lifecycleStatus": "RESEARCH_NEEDED",
+        "activationStatus": "NOT_ELIGIBLE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "NOT_DECIDED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": null,
+        "authorizedBy": null,
+        "decisionDate": null,
+        "effectiveVersion": null,
+        "decisionRationale": null,
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Created as a non-governed BIO-F01 pilot candidate.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "EVA-CAND-BIO-F01-REL-008",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit indicated additional research or qualification was required.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "EVA-CAND-BIO-F01-REL-008",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          }
+        ]
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "EVA-CAND-BIO-F01-REL-009",
+      "revision": 1,
+      "assertion": {
+        "objectType": "RELATIONSHIP",
+        "objectId": "REL-CAND-BIO-F01-009"
+      },
+      "sourceIds": [
+        "SRC009",
+        "SRC011"
+      ],
+      "evidenceRationale": "The governed RDS derivation specification explicitly names BIO-004 as a required constituent; cited circadian sources support the distinction between internal phase and alignment.",
+      "evidenceStrength": "STRONG",
+      "confidence": "HIGH",
+      "evidenceDisposition": "SUPPORTS",
+      "population": "Human participants; exact populations are enumerated in the BIO-F01 evidence summary.",
+      "context": "Scope is limited to the exposures, interventions, timing, and settings stated in the cited evidence.",
+      "studyDesignCharacterizations": [
+        {
+          "designType": "THEORETICAL",
+          "specification": "Governed derivation specification"
+        }
+      ],
+      "quantitativeEstimate": null,
+      "uncertainty": [
+        "Derivation convention must be selected at analysis time"
+      ],
+      "conflictingEvidence": {
+        "sourceIds": [],
+        "summary": null
+      },
+      "limitations": [
+        "External timing requirements remain an unmodeled parameter"
+      ],
+      "reviewProvenance": {
+        "createdAt": "2026-09-05T12:00:00Z",
+        "createdByActorClass": "AUTOMATED_PROCESS_OR_AI",
+        "reviewedAt": null,
+        "reviewedBy": null,
+        "sourceSchema": "AUD-BIO-F01-RI-V1-20260905-001:structured-evidence-search"
+      },
+      "governance": {
+        "lifecycleStatus": "REVIEW_READY",
+        "activationStatus": "NOT_ELIGIBLE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "NOT_DECIDED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": null,
+        "authorizedBy": null,
+        "decisionDate": null,
+        "effectiveVersion": null,
+        "decisionRationale": null,
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Created as a non-governed BIO-F01 pilot candidate.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "EVA-CAND-BIO-F01-REL-009",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit indicated additional research or qualification was required.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "EVA-CAND-BIO-F01-REL-009",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit completed the candidate packet for human scientific review.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "EVA-CAND-BIO-F01-REL-009",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          }
+        ]
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "EVA-CAND-BIO-F01-IE-001",
+      "revision": 1,
+      "assertion": {
+        "objectType": "INTERVENTION_EFFECT",
+        "objectId": "IE-CAND-BIO-F01-001"
+      },
+      "sourceIds": [],
+      "evidenceRationale": "BIOF01-EXT-017 synthesizes behavioral sleep-extension studies and finds increased duration with substantial heterogeneity.",
+      "evidenceStrength": "MODERATE",
+      "confidence": "MODERATE",
+      "evidenceDisposition": "SUPPORTS",
+      "population": "Human participants; exact populations are enumerated in the BIO-F01 evidence summary.",
+      "context": "Scope is limited to the exposures, interventions, timing, and settings stated in the cited evidence.",
+      "studyDesignCharacterizations": [
+        {
+          "designType": "SYNTHESIS",
+          "specification": "Systematic review/meta-analysis of sleep extension"
+        }
+      ],
+      "quantitativeEstimate": null,
+      "uncertainty": [
+        "No quantitative estimate is promoted because protocols and outcomes are not harmonized."
+      ],
+      "conflictingEvidence": {
+        "sourceIds": [],
+        "summary": null
+      },
+      "limitations": [
+        "High heterogeneity",
+        "Intervention descriptions were often incomplete"
+      ],
+      "reviewProvenance": {
+        "createdAt": "2026-09-05T12:00:00Z",
+        "createdByActorClass": "AUTOMATED_PROCESS_OR_AI",
+        "reviewedAt": null,
+        "reviewedBy": null,
+        "sourceSchema": "AUD-BIO-F01-RI-V1-20260905-001:structured-evidence-search"
+      },
+      "governance": {
+        "lifecycleStatus": "REVIEW_READY",
+        "activationStatus": "NOT_ELIGIBLE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "NOT_DECIDED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": null,
+        "authorizedBy": null,
+        "decisionDate": null,
+        "effectiveVersion": null,
+        "decisionRationale": null,
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Created as a non-governed BIO-F01 pilot candidate.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "EVA-CAND-BIO-F01-IE-001",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit indicated additional research or qualification was required.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "EVA-CAND-BIO-F01-IE-001",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit completed the candidate packet for human scientific review.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "EVA-CAND-BIO-F01-IE-001",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          }
+        ]
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "EVA-CAND-BIO-F01-IE-002",
+      "revision": 1,
+      "assertion": {
+        "objectType": "INTERVENTION_EFFECT",
+        "objectId": "IE-CAND-BIO-F01-002"
+      },
+      "sourceIds": [],
+      "evidenceRationale": "BIOF01-EXT-019 and related workplace reviews find uncertain, roster-specific effects of schedule adaptation.",
+      "evidenceStrength": "MIXED",
+      "confidence": "LOW",
+      "evidenceDisposition": "MIXED",
+      "population": "Human participants; exact populations are enumerated in the BIO-F01 evidence summary.",
+      "context": "Scope is limited to the exposures, interventions, timing, and settings stated in the cited evidence.",
+      "studyDesignCharacterizations": [
+        {
+          "designType": "SYNTHESIS",
+          "specification": "Cochrane systematic review"
+        }
+      ],
+      "quantitativeEstimate": null,
+      "uncertainty": [
+        "No quantitative estimate is promoted because protocols and outcomes are not harmonized."
+      ],
+      "conflictingEvidence": {
+        "sourceIds": [],
+        "summary": null
+      },
+      "limitations": [
+        "Low/very-low certainty for most comparisons",
+        "Complex multicomponent schedules"
+      ],
+      "reviewProvenance": {
+        "createdAt": "2026-09-05T12:00:00Z",
+        "createdByActorClass": "AUTOMATED_PROCESS_OR_AI",
+        "reviewedAt": null,
+        "reviewedBy": null,
+        "sourceSchema": "AUD-BIO-F01-RI-V1-20260905-001:structured-evidence-search"
+      },
+      "governance": {
+        "lifecycleStatus": "RESEARCH_NEEDED",
+        "activationStatus": "NOT_ELIGIBLE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "NOT_DECIDED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": null,
+        "authorizedBy": null,
+        "decisionDate": null,
+        "effectiveVersion": null,
+        "decisionRationale": null,
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Created as a non-governed BIO-F01 pilot candidate.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "EVA-CAND-BIO-F01-IE-002",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit indicated additional research or qualification was required.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "EVA-CAND-BIO-F01-IE-002",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          }
+        ]
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "EVA-CAND-BIO-F01-IE-003",
+      "revision": 1,
+      "assertion": {
+        "objectType": "INTERVENTION_EFFECT",
+        "objectId": "IE-CAND-BIO-F01-003"
+      },
+      "sourceIds": [],
+      "evidenceRationale": "BIOF01-EXT-018 and later meta-analyses report longer sleep after delayed school starts, mainly from natural experiments.",
+      "evidenceStrength": "MODERATE",
+      "confidence": "MODERATE",
+      "evidenceDisposition": "SUPPORTS",
+      "population": "Human participants; exact populations are enumerated in the BIO-F01 evidence summary.",
+      "context": "Scope is limited to the exposures, interventions, timing, and settings stated in the cited evidence.",
+      "studyDesignCharacterizations": [
+        {
+          "designType": "SYNTHESIS",
+          "specification": "Systematic review/meta-analysis"
+        }
+      ],
+      "quantitativeEstimate": null,
+      "uncertainty": [
+        "No quantitative estimate is promoted because protocols and outcomes are not harmonized."
+      ],
+      "conflictingEvidence": {
+        "sourceIds": [],
+        "summary": null
+      },
+      "limitations": [
+        "Predominantly nonrandomized designs",
+        "Adolescent context only"
+      ],
+      "reviewProvenance": {
+        "createdAt": "2026-09-05T12:00:00Z",
+        "createdByActorClass": "AUTOMATED_PROCESS_OR_AI",
+        "reviewedAt": null,
+        "reviewedBy": null,
+        "sourceSchema": "AUD-BIO-F01-RI-V1-20260905-001:structured-evidence-search"
+      },
+      "governance": {
+        "lifecycleStatus": "REVIEW_READY",
+        "activationStatus": "NOT_ELIGIBLE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "NOT_DECIDED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": null,
+        "authorizedBy": null,
+        "decisionDate": null,
+        "effectiveVersion": null,
+        "decisionRationale": null,
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Created as a non-governed BIO-F01 pilot candidate.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "EVA-CAND-BIO-F01-IE-003",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit indicated additional research or qualification was required.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "EVA-CAND-BIO-F01-IE-003",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit completed the candidate packet for human scientific review.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "EVA-CAND-BIO-F01-IE-003",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          }
+        ]
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "EVA-CAND-BIO-F01-IE-004",
+      "revision": 1,
+      "assertion": {
+        "objectType": "INTERVENTION_EFFECT",
+        "objectId": "IE-CAND-BIO-F01-004"
+      },
+      "sourceIds": [],
+      "evidenceRationale": "BIOF01-EXT-015/016 and component network meta-analysis show improved subjective continuity, with less consistent objective change.",
+      "evidenceStrength": "STRONG",
+      "confidence": "HIGH",
+      "evidenceDisposition": "SUPPORTS",
+      "population": "Human participants; exact populations are enumerated in the BIO-F01 evidence summary.",
+      "context": "Scope is limited to the exposures, interventions, timing, and settings stated in the cited evidence.",
+      "studyDesignCharacterizations": [
+        {
+          "designType": "SYNTHESIS",
+          "specification": "Meta-analyses of randomized trials"
+        }
+      ],
+      "quantitativeEstimate": null,
+      "uncertainty": [
+        "No quantitative estimate is promoted because protocols and outcomes are not harmonized."
+      ],
+      "conflictingEvidence": {
+        "sourceIds": [],
+        "summary": null
+      },
+      "limitations": [
+        "Objective and subjective sleep measures diverge",
+        "Package components and delivery vary"
+      ],
+      "reviewProvenance": {
+        "createdAt": "2026-09-05T12:00:00Z",
+        "createdByActorClass": "AUTOMATED_PROCESS_OR_AI",
+        "reviewedAt": null,
+        "reviewedBy": null,
+        "sourceSchema": "AUD-BIO-F01-RI-V1-20260905-001:structured-evidence-search"
+      },
+      "governance": {
+        "lifecycleStatus": "REVIEW_READY",
+        "activationStatus": "NOT_ELIGIBLE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "NOT_DECIDED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": null,
+        "authorizedBy": null,
+        "decisionDate": null,
+        "effectiveVersion": null,
+        "decisionRationale": null,
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Created as a non-governed BIO-F01 pilot candidate.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "EVA-CAND-BIO-F01-IE-004",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit indicated additional research or qualification was required.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "EVA-CAND-BIO-F01-IE-004",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit completed the candidate packet for human scientific review.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "EVA-CAND-BIO-F01-IE-004",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          }
+        ]
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "EVA-CAND-BIO-F01-IE-005",
+      "revision": 1,
+      "assertion": {
+        "objectType": "INTERVENTION_EFFECT",
+        "objectId": "IE-CAND-BIO-F01-005"
+      },
+      "sourceIds": [],
+      "evidenceRationale": "BIOF01-EXT-011/013 provide experimental phase-resetting evidence and a clinical systematic review; direction depends on timing.",
+      "evidenceStrength": "MODERATE",
+      "confidence": "MODERATE",
+      "evidenceDisposition": "SUPPORTS",
+      "population": "Human participants; exact populations are enumerated in the BIO-F01 evidence summary.",
+      "context": "Scope is limited to the exposures, interventions, timing, and settings stated in the cited evidence.",
+      "studyDesignCharacterizations": [
+        {
+          "designType": "EXPERIMENTAL",
+          "specification": "Controlled light-exposure studies and systematic review"
+        }
+      ],
+      "quantitativeEstimate": null,
+      "uncertainty": [
+        "No quantitative estimate is promoted because protocols and outcomes are not harmonized."
+      ],
+      "conflictingEvidence": {
+        "sourceIds": [],
+        "summary": null
+      },
+      "limitations": [
+        "Small studies",
+        "Protocols differ in intensity, spectrum, duration, and timing"
+      ],
+      "reviewProvenance": {
+        "createdAt": "2026-09-05T12:00:00Z",
+        "createdByActorClass": "AUTOMATED_PROCESS_OR_AI",
+        "reviewedAt": null,
+        "reviewedBy": null,
+        "sourceSchema": "AUD-BIO-F01-RI-V1-20260905-001:structured-evidence-search"
+      },
+      "governance": {
+        "lifecycleStatus": "REVIEW_READY",
+        "activationStatus": "NOT_ELIGIBLE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "NOT_DECIDED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": null,
+        "authorizedBy": null,
+        "decisionDate": null,
+        "effectiveVersion": null,
+        "decisionRationale": null,
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Created as a non-governed BIO-F01 pilot candidate.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "EVA-CAND-BIO-F01-IE-005",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit indicated additional research or qualification was required.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "EVA-CAND-BIO-F01-IE-005",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit completed the candidate packet for human scientific review.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "EVA-CAND-BIO-F01-IE-005",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          }
+        ]
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "EVA-CAND-BIO-F01-IE-006",
+      "revision": 1,
+      "assertion": {
+        "objectType": "INTERVENTION_EFFECT",
+        "objectId": "IE-CAND-BIO-F01-006"
+      },
+      "sourceIds": [],
+      "evidenceRationale": "BIOF01-EXT-012/024 support timed melatonin for phase advance in delayed sleep-wake phase disorder; sleep-promoting and phase-shifting effects can differ.",
+      "evidenceStrength": "MODERATE",
+      "confidence": "MODERATE",
+      "evidenceDisposition": "SUPPORTS",
+      "population": "Human participants; exact populations are enumerated in the BIO-F01 evidence summary.",
+      "context": "Scope is limited to the exposures, interventions, timing, and settings stated in the cited evidence.",
+      "studyDesignCharacterizations": [
+        {
+          "designType": "SYNTHESIS",
+          "specification": "Meta-analysis and randomized clinical trial"
+        }
+      ],
+      "quantitativeEstimate": null,
+      "uncertainty": [
+        "No quantitative estimate is promoted because protocols and outcomes are not harmonized."
+      ],
+      "conflictingEvidence": {
+        "sourceIds": [],
+        "summary": null
+      },
+      "limitations": [
+        "Population-specific",
+        "Timing and formulation are critical"
+      ],
+      "reviewProvenance": {
+        "createdAt": "2026-09-05T12:00:00Z",
+        "createdByActorClass": "AUTOMATED_PROCESS_OR_AI",
+        "reviewedAt": null,
+        "reviewedBy": null,
+        "sourceSchema": "AUD-BIO-F01-RI-V1-20260905-001:structured-evidence-search"
+      },
+      "governance": {
+        "lifecycleStatus": "REVIEW_READY",
+        "activationStatus": "NOT_ELIGIBLE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "NOT_DECIDED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": null,
+        "authorizedBy": null,
+        "decisionDate": null,
+        "effectiveVersion": null,
+        "decisionRationale": null,
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Created as a non-governed BIO-F01 pilot candidate.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "EVA-CAND-BIO-F01-IE-006",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit indicated additional research or qualification was required.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "EVA-CAND-BIO-F01-IE-006",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit completed the candidate packet for human scientific review.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "EVA-CAND-BIO-F01-IE-006",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          }
+        ]
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "EVA-CAND-BIO-F01-IE-007",
+      "revision": 1,
+      "assertion": {
+        "objectType": "INTERVENTION_EFFECT",
+        "objectId": "IE-CAND-BIO-F01-007"
+      },
+      "sourceIds": [],
+      "evidenceRationale": "BIOF01-EXT-001/002/020 support reduced arousals or improved sleep when sound exposure is attenuated, with strongest intervention evidence in ICUs.",
+      "evidenceStrength": "MODERATE",
+      "confidence": "MODERATE",
+      "evidenceDisposition": "SUPPORTS",
+      "population": "Human participants; exact populations are enumerated in the BIO-F01 evidence summary.",
+      "context": "Scope is limited to the exposures, interventions, timing, and settings stated in the cited evidence.",
+      "studyDesignCharacterizations": [
+        {
+          "designType": "SYNTHESIS",
+          "specification": "Systematic reviews/meta-analyses and randomized ICU trials"
+        }
+      ],
+      "quantitativeEstimate": null,
+      "uncertainty": [
+        "No quantitative estimate is promoted because protocols and outcomes are not harmonized."
+      ],
+      "conflictingEvidence": {
+        "sourceIds": [],
+        "summary": null
+      },
+      "limitations": [
+        "Context-specific",
+        "Subjective outcomes predominate in some reviews"
+      ],
+      "reviewProvenance": {
+        "createdAt": "2026-09-05T12:00:00Z",
+        "createdByActorClass": "AUTOMATED_PROCESS_OR_AI",
+        "reviewedAt": null,
+        "reviewedBy": null,
+        "sourceSchema": "AUD-BIO-F01-RI-V1-20260905-001:structured-evidence-search"
+      },
+      "governance": {
+        "lifecycleStatus": "RESEARCH_NEEDED",
+        "activationStatus": "NOT_ELIGIBLE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "NOT_DECIDED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": null,
+        "authorizedBy": null,
+        "decisionDate": null,
+        "effectiveVersion": null,
+        "decisionRationale": null,
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Created as a non-governed BIO-F01 pilot candidate.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "EVA-CAND-BIO-F01-IE-007",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit indicated additional research or qualification was required.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "EVA-CAND-BIO-F01-IE-007",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          }
+        ]
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "EVA-CAND-BIO-F01-IE-008",
+      "revision": 1,
+      "assertion": {
+        "objectType": "INTERVENTION_EFFECT",
+        "objectId": "IE-CAND-BIO-F01-008"
+      },
+      "sourceIds": [],
+      "evidenceRationale": "BIOF01-EXT-008/009 find caffeine the most plausible countermeasure but the direct evidence base is small and formulation-specific.",
+      "evidenceStrength": "LIMITED",
+      "confidence": "LOW",
+      "evidenceDisposition": "SUPPORTS",
+      "population": "Human participants; exact populations are enumerated in the BIO-F01 evidence summary.",
+      "context": "Scope is limited to the exposures, interventions, timing, and settings stated in the cited evidence.",
+      "studyDesignCharacterizations": [
+        {
+          "designType": "EXPERIMENTAL",
+          "specification": "Small placebo-controlled crossover trial plus structured review"
+        }
+      ],
+      "quantitativeEstimate": null,
+      "uncertainty": [
+        "No quantitative estimate is promoted because protocols and outcomes are not harmonized."
+      ],
+      "conflictingEvidence": {
+        "sourceIds": [],
+        "summary": null
+      },
+      "limitations": [
+        "Small healthy-adult sample",
+        "Novel formulation",
+        "Carryover risk"
+      ],
+      "reviewProvenance": {
+        "createdAt": "2026-09-05T12:00:00Z",
+        "createdByActorClass": "AUTOMATED_PROCESS_OR_AI",
+        "reviewedAt": null,
+        "reviewedBy": null,
+        "sourceSchema": "AUD-BIO-F01-RI-V1-20260905-001:structured-evidence-search"
+      },
+      "governance": {
+        "lifecycleStatus": "RESEARCH_NEEDED",
+        "activationStatus": "NOT_ELIGIBLE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "NOT_DECIDED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": null,
+        "authorizedBy": null,
+        "decisionDate": null,
+        "effectiveVersion": null,
+        "decisionRationale": null,
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Created as a non-governed BIO-F01 pilot candidate.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "EVA-CAND-BIO-F01-IE-008",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit indicated additional research or qualification was required.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "EVA-CAND-BIO-F01-IE-008",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          }
+        ]
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "EVA-CAND-BIO-F01-IE-009",
+      "revision": 1,
+      "assertion": {
+        "objectType": "INTERVENTION_EFFECT",
+        "objectId": "IE-CAND-BIO-F01-009"
+      },
+      "sourceIds": [],
+      "evidenceRationale": "BIOF01-EXT-008 reports promising subjective-alertness effects but no convincing evidence of objective performance benefit.",
+      "evidenceStrength": "LIMITED",
+      "confidence": "LOW",
+      "evidenceDisposition": "INSUFFICIENT",
+      "population": "Human participants; exact populations are enumerated in the BIO-F01 evidence summary.",
+      "context": "Scope is limited to the exposures, interventions, timing, and settings stated in the cited evidence.",
+      "studyDesignCharacterizations": [
+        {
+          "designType": "SYNTHESIS",
+          "specification": "Structured review"
+        }
+      ],
+      "quantitativeEstimate": null,
+      "uncertainty": [
+        "No quantitative estimate is promoted because protocols and outcomes are not harmonized."
+      ],
+      "conflictingEvidence": {
+        "sourceIds": [],
+        "summary": null
+      },
+      "limitations": [
+        "Few studies",
+        "Subjective/objective outcome divergence"
+      ],
+      "reviewProvenance": {
+        "createdAt": "2026-09-05T12:00:00Z",
+        "createdByActorClass": "AUTOMATED_PROCESS_OR_AI",
+        "reviewedAt": null,
+        "reviewedBy": null,
+        "sourceSchema": "AUD-BIO-F01-RI-V1-20260905-001:structured-evidence-search"
+      },
+      "governance": {
+        "lifecycleStatus": "RESEARCH_NEEDED",
+        "activationStatus": "NOT_ELIGIBLE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "NOT_DECIDED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": null,
+        "authorizedBy": null,
+        "decisionDate": null,
+        "effectiveVersion": null,
+        "decisionRationale": null,
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Created as a non-governed BIO-F01 pilot candidate.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "EVA-CAND-BIO-F01-IE-009",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit indicated additional research or qualification was required.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "EVA-CAND-BIO-F01-IE-009",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          }
+        ]
+      }
+    }
+  ],
   "causalPathways": [],
-  "interventions": [],
-  "interventionEffects": []
+  "interventions": [
+    {
+      "schemaVersion": "1.0.0",
+      "id": "INT-CAND-BIO-F01-001",
+      "revision": 1,
+      "canonicalName": "Behavioral sleep-extension protocol",
+      "aliases": [],
+      "interventionKind": "ATOMIC",
+      "category": "TRAINING_OR_SKILL",
+      "categorySpecification": null,
+      "description": "A structured protocol that expands planned sleep opportunity and supports adherence long enough to increase obtained sleep.",
+      "componentInterventionIds": [],
+      "identitySourceIds": [],
+      "externalCrosswalks": [],
+      "governance": {
+        "lifecycleStatus": "REVIEW_READY",
+        "activationStatus": "NOT_ELIGIBLE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "NOT_DECIDED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": null,
+        "authorizedBy": null,
+        "decisionDate": null,
+        "effectiveVersion": null,
+        "decisionRationale": null,
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Created as a non-governed BIO-F01 pilot candidate.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "INT-CAND-BIO-F01-001",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit indicated additional research or qualification was required.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "INT-CAND-BIO-F01-001",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit completed the candidate packet for human scientific review.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "INT-CAND-BIO-F01-001",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          }
+        ]
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "INT-CAND-BIO-F01-002",
+      "revision": 1,
+      "canonicalName": "Protected sleep-opportunity scheduling",
+      "aliases": [],
+      "interventionKind": "ATOMIC",
+      "category": "POLICY_RULE_OR_STANDARD",
+      "categorySpecification": null,
+      "description": "A schedule or rule that protects a defined sleep opportunity from work, duty, or avoidable interruption.",
+      "componentInterventionIds": [],
+      "identitySourceIds": [],
+      "externalCrosswalks": [],
+      "governance": {
+        "lifecycleStatus": "RESEARCH_NEEDED",
+        "activationStatus": "NOT_ELIGIBLE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "NOT_DECIDED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": null,
+        "authorizedBy": null,
+        "decisionDate": null,
+        "effectiveVersion": null,
+        "decisionRationale": null,
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Created as a non-governed BIO-F01 pilot candidate.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "INT-CAND-BIO-F01-002",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit indicated additional research or qualification was required.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "INT-CAND-BIO-F01-002",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          }
+        ]
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "INT-CAND-BIO-F01-003",
+      "revision": 1,
+      "canonicalName": "Delayed school start-time policy",
+      "aliases": [],
+      "interventionKind": "ATOMIC",
+      "category": "POLICY_RULE_OR_STANDARD",
+      "categorySpecification": null,
+      "description": "A policy that moves mandatory school start time later while retaining an evaluable implementation schedule.",
+      "componentInterventionIds": [],
+      "identitySourceIds": [],
+      "externalCrosswalks": [],
+      "governance": {
+        "lifecycleStatus": "REVIEW_READY",
+        "activationStatus": "NOT_ELIGIBLE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "NOT_DECIDED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": null,
+        "authorizedBy": null,
+        "decisionDate": null,
+        "effectiveVersion": null,
+        "decisionRationale": null,
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Created as a non-governed BIO-F01 pilot candidate.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "INT-CAND-BIO-F01-003",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit indicated additional research or qualification was required.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "INT-CAND-BIO-F01-003",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit completed the candidate packet for human scientific review.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "INT-CAND-BIO-F01-003",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          }
+        ]
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "INT-CAND-BIO-F01-004",
+      "revision": 1,
+      "canonicalName": "Stimulus-control therapy for insomnia",
+      "aliases": [],
+      "interventionKind": "ATOMIC",
+      "category": "TRAINING_OR_SKILL",
+      "categorySpecification": null,
+      "description": "A behavioral treatment component that reassociates bed and bedroom cues with sleep and limits wakeful activity in bed.",
+      "componentInterventionIds": [],
+      "identitySourceIds": [],
+      "externalCrosswalks": [],
+      "governance": {
+        "lifecycleStatus": "REVIEW_READY",
+        "activationStatus": "NOT_ELIGIBLE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "NOT_DECIDED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": null,
+        "authorizedBy": null,
+        "decisionDate": null,
+        "effectiveVersion": null,
+        "decisionRationale": null,
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Created as a non-governed BIO-F01 pilot candidate.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "INT-CAND-BIO-F01-004",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit indicated additional research or qualification was required.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "INT-CAND-BIO-F01-004",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit completed the candidate packet for human scientific review.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "INT-CAND-BIO-F01-004",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          }
+        ]
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "INT-CAND-BIO-F01-005",
+      "revision": 1,
+      "canonicalName": "Sleep-restriction therapy for insomnia",
+      "aliases": [],
+      "interventionKind": "ATOMIC",
+      "category": "TRAINING_OR_SKILL",
+      "categorySpecification": null,
+      "description": "A clinician-guided behavioral treatment component that initially limits time in bed and titrates it as sleep efficiency changes.",
+      "componentInterventionIds": [],
+      "identitySourceIds": [],
+      "externalCrosswalks": [],
+      "governance": {
+        "lifecycleStatus": "REVIEW_READY",
+        "activationStatus": "NOT_ELIGIBLE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "NOT_DECIDED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": null,
+        "authorizedBy": null,
+        "decisionDate": null,
+        "effectiveVersion": null,
+        "decisionRationale": null,
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Created as a non-governed BIO-F01 pilot candidate.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "INT-CAND-BIO-F01-005",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit indicated additional research or qualification was required.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "INT-CAND-BIO-F01-005",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit completed the candidate packet for human scientific review.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "INT-CAND-BIO-F01-005",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          }
+        ]
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "INT-CAND-BIO-F01-006",
+      "revision": 1,
+      "canonicalName": "Cognitive behavioral therapy for insomnia package",
+      "aliases": [],
+      "interventionKind": "PACKAGE",
+      "category": "SERVICE_OR_SUPPORT",
+      "categorySpecification": null,
+      "description": "A multicomponent insomnia treatment package containing at least stimulus control and sleep-restriction therapy.",
+      "componentInterventionIds": [
+        "INT-CAND-BIO-F01-004",
+        "INT-CAND-BIO-F01-005"
+      ],
+      "identitySourceIds": [],
+      "externalCrosswalks": [],
+      "governance": {
+        "lifecycleStatus": "REVIEW_READY",
+        "activationStatus": "NOT_ELIGIBLE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "NOT_DECIDED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": null,
+        "authorizedBy": null,
+        "decisionDate": null,
+        "effectiveVersion": null,
+        "decisionRationale": null,
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Created as a non-governed BIO-F01 pilot candidate.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "INT-CAND-BIO-F01-006",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit indicated additional research or qualification was required.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "INT-CAND-BIO-F01-006",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit completed the candidate packet for human scientific review.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "INT-CAND-BIO-F01-006",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          }
+        ]
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "INT-CAND-BIO-F01-007",
+      "revision": 1,
+      "canonicalName": "Timed bright-light exposure",
+      "aliases": [],
+      "interventionKind": "ATOMIC",
+      "category": "BIOLOGICAL_OR_CLINICAL",
+      "categorySpecification": null,
+      "description": "Exposure to controlled bright light at a specified circadian time, intensity, spectrum, and duration.",
+      "componentInterventionIds": [],
+      "identitySourceIds": [],
+      "externalCrosswalks": [],
+      "governance": {
+        "lifecycleStatus": "REVIEW_READY",
+        "activationStatus": "NOT_ELIGIBLE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "NOT_DECIDED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": null,
+        "authorizedBy": null,
+        "decisionDate": null,
+        "effectiveVersion": null,
+        "decisionRationale": null,
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Created as a non-governed BIO-F01 pilot candidate.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "INT-CAND-BIO-F01-007",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit indicated additional research or qualification was required.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "INT-CAND-BIO-F01-007",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit completed the candidate packet for human scientific review.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "INT-CAND-BIO-F01-007",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          }
+        ]
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "INT-CAND-BIO-F01-008",
+      "revision": 1,
+      "canonicalName": "Timed exogenous melatonin administration",
+      "aliases": [],
+      "interventionKind": "ATOMIC",
+      "category": "BIOLOGICAL_OR_CLINICAL",
+      "categorySpecification": null,
+      "description": "Administration of exogenous melatonin at a specified dose and circadian/clock time.",
+      "componentInterventionIds": [],
+      "identitySourceIds": [],
+      "externalCrosswalks": [],
+      "governance": {
+        "lifecycleStatus": "REVIEW_READY",
+        "activationStatus": "NOT_ELIGIBLE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "NOT_DECIDED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": null,
+        "authorizedBy": null,
+        "decisionDate": null,
+        "effectiveVersion": null,
+        "decisionRationale": null,
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Created as a non-governed BIO-F01 pilot candidate.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "INT-CAND-BIO-F01-008",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit indicated additional research or qualification was required.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "INT-CAND-BIO-F01-008",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit completed the candidate packet for human scientific review.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "INT-CAND-BIO-F01-008",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          }
+        ]
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "INT-CAND-BIO-F01-009",
+      "revision": 1,
+      "canonicalName": "Nighttime acoustic attenuation",
+      "aliases": [],
+      "interventionKind": "ATOMIC",
+      "category": "ENVIRONMENTAL_OR_CHOICE_ARCHITECTURE",
+      "categorySpecification": null,
+      "description": "Umbrella candidate spanning source control, transmission/path attenuation, and receiver protection; the identity boundary remains unresolved and cannot support a governed effect.",
+      "componentInterventionIds": [],
+      "identitySourceIds": [],
+      "externalCrosswalks": [],
+      "governance": {
+        "lifecycleStatus": "RESEARCH_NEEDED",
+        "activationStatus": "NOT_ELIGIBLE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "NOT_DECIDED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": null,
+        "authorizedBy": null,
+        "decisionDate": null,
+        "effectiveVersion": null,
+        "decisionRationale": null,
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Created as a non-governed BIO-F01 pilot candidate.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "INT-CAND-BIO-F01-009",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit indicated additional research or qualification was required.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "INT-CAND-BIO-F01-009",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          }
+        ]
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "INT-CAND-BIO-F01-010",
+      "revision": 1,
+      "canonicalName": "Pre-awakening timed caffeine delivery",
+      "aliases": [],
+      "interventionKind": "ATOMIC",
+      "category": "BIOLOGICAL_OR_CLINICAL",
+      "categorySpecification": null,
+      "description": "A formulation or delivery schedule designed to produce caffeine exposure shortly before planned awakening.",
+      "componentInterventionIds": [],
+      "identitySourceIds": [],
+      "externalCrosswalks": [],
+      "governance": {
+        "lifecycleStatus": "REVIEW_READY",
+        "activationStatus": "NOT_ELIGIBLE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "NOT_DECIDED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": null,
+        "authorizedBy": null,
+        "decisionDate": null,
+        "effectiveVersion": null,
+        "decisionRationale": null,
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Created as a non-governed BIO-F01 pilot candidate.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "INT-CAND-BIO-F01-010",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit indicated additional research or qualification was required.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "INT-CAND-BIO-F01-010",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit completed the candidate packet for human scientific review.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "INT-CAND-BIO-F01-010",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          }
+        ]
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "INT-CAND-BIO-F01-011",
+      "revision": 1,
+      "canonicalName": "Nighttime personal acoustic protection",
+      "aliases": [],
+      "interventionKind": "ATOMIC",
+      "category": "ENVIRONMENTAL_OR_CHOICE_ARCHITECTURE",
+      "categorySpecification": null,
+      "description": "Receiver-level reduction of sound reaching a sleeper through personal hearing protection; evidence and safety boundaries remain under review.",
+      "componentInterventionIds": [],
+      "identitySourceIds": [],
+      "externalCrosswalks": [],
+      "governance": {
+        "lifecycleStatus": "RESEARCH_NEEDED",
+        "activationStatus": "NOT_ELIGIBLE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "NOT_DECIDED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": null,
+        "authorizedBy": null,
+        "decisionDate": null,
+        "effectiveVersion": null,
+        "decisionRationale": null,
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Created as a non-governed BIO-F01 pilot candidate.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "INT-CAND-BIO-F01-011",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit indicated additional research or qualification was required.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "INT-CAND-BIO-F01-011",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          }
+        ]
+      }
+    }
+  ],
+  "interventionEffects": [
+    {
+      "schemaVersion": "1.0.0",
+      "id": "IE-CAND-BIO-F01-001",
+      "revision": 1,
+      "interventionId": "INT-CAND-BIO-F01-001",
+      "targetKind": "DRIVER",
+      "targetDriverId": "BIO-001",
+      "targetRelationshipId": null,
+      "mechanisticDriverIds": [],
+      "effectMode": "CHANGE_LEVEL",
+      "intendedDirection": "INCREASE",
+      "mechanismOfAction": "Expanded planned opportunity plus adherence permits additional sleep to be obtained.",
+      "targetPopulationOrAudience": "Adolescents and adults with habitually short sleep",
+      "populationScope": "SUBGROUP_TARGETED",
+      "context": "Home or operational schedules in which sleep opportunity can be expanded",
+      "contextScope": "CONTEXT_DEPENDENT",
+      "scale": "PERSON",
+      "boundaryConditions": "Large heterogeneity; opportunity does not guarantee sleep and clinical sleep disorders require separate assessment.",
+      "implementers": [],
+      "deliveryModalities": [
+        "HUMAN_DELIVERED",
+        "DIGITAL_OR_AUTOMATED"
+      ],
+      "deliveryModalitySpecification": null,
+      "channels": [],
+      "prerequisites": [
+        "A feasible expansion of sleep opportunity"
+      ],
+      "moderatorEntityIds": [],
+      "outcomeEntityIds": [
+        "RDS-0003",
+        "RDS-0004"
+      ],
+      "measureOfEffectIds": [],
+      "unintendedEffects": [],
+      "risks": [
+        "Excess time in bed may worsen insomnia in susceptible people"
+      ],
+      "ethicalLegalConstraints": [
+        "Use must respect informed consent, clinical scope, and applicable workplace or education law."
+      ],
+      "evidenceAssessmentIds": [
+        "EVA-CAND-BIO-F01-IE-001"
+      ],
+      "sourceIds": [],
+      "governance": {
+        "lifecycleStatus": "REVIEW_READY",
+        "activationStatus": "NOT_ELIGIBLE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "NOT_DECIDED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": null,
+        "authorizedBy": null,
+        "decisionDate": null,
+        "effectiveVersion": null,
+        "decisionRationale": null,
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Created as a non-governed BIO-F01 pilot candidate.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "IE-CAND-BIO-F01-001",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit indicated additional research or qualification was required.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "IE-CAND-BIO-F01-001",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit completed the candidate packet for human scientific review.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "IE-CAND-BIO-F01-001",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          }
+        ]
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "IE-CAND-BIO-F01-002",
+      "revision": 1,
+      "interventionId": "INT-CAND-BIO-F01-002",
+      "targetKind": "DRIVER",
+      "targetDriverId": "BIO-001",
+      "targetRelationshipId": null,
+      "mechanisticDriverIds": [],
+      "effectMode": "CHANGE_LEVEL",
+      "intendedDirection": "INCREASE",
+      "mechanismOfAction": "Protected off-duty time reduces external truncation of sleep opportunity.",
+      "targetPopulationOrAudience": "Shift workers and duty personnel",
+      "populationScope": "SUBGROUP_TARGETED",
+      "context": "Work systems able to change duty/rest schedules",
+      "contextScope": "CONTEXT_DEPENDENT",
+      "scale": "INSTITUTIONAL_FIELD",
+      "boundaryConditions": "Cochrane evidence is low or very low certainty for most schedule adaptations and differs by roster.",
+      "implementers": [
+        "Organization or scheduling authority"
+      ],
+      "deliveryModalities": [
+        "ORGANIZATIONAL_OR_POLICY_PROCESS"
+      ],
+      "deliveryModalitySpecification": null,
+      "channels": [],
+      "prerequisites": [
+        "Operational coverage and enforceable rest protection"
+      ],
+      "moderatorEntityIds": [],
+      "outcomeEntityIds": [
+        "RDS-0003",
+        "RDS-0004"
+      ],
+      "measureOfEffectIds": [],
+      "unintendedEffects": [],
+      "risks": [
+        "Compression elsewhere in the roster can offset benefits"
+      ],
+      "ethicalLegalConstraints": [
+        "Use must respect informed consent, clinical scope, and applicable workplace or education law."
+      ],
+      "evidenceAssessmentIds": [
+        "EVA-CAND-BIO-F01-IE-002"
+      ],
+      "sourceIds": [],
+      "governance": {
+        "lifecycleStatus": "RESEARCH_NEEDED",
+        "activationStatus": "NOT_ELIGIBLE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "NOT_DECIDED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": null,
+        "authorizedBy": null,
+        "decisionDate": null,
+        "effectiveVersion": null,
+        "decisionRationale": null,
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Created as a non-governed BIO-F01 pilot candidate.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "IE-CAND-BIO-F01-002",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit indicated additional research or qualification was required.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "IE-CAND-BIO-F01-002",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          }
+        ]
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "IE-CAND-BIO-F01-003",
+      "revision": 1,
+      "interventionId": "INT-CAND-BIO-F01-003",
+      "targetKind": "DRIVER",
+      "targetDriverId": "BIO-001",
+      "targetRelationshipId": null,
+      "mechanisticDriverIds": [],
+      "effectMode": "CHANGE_LEVEL",
+      "intendedDirection": "INCREASE",
+      "mechanismOfAction": "Later mandatory start time permits later wake time and, on average, longer school-night sleep.",
+      "targetPopulationOrAudience": "Middle- and high-school students",
+      "populationScope": "SUBGROUP_TARGETED",
+      "context": "Schools changing mandatory morning start time",
+      "contextScope": "CONTEXT_DEPENDENT",
+      "scale": "INSTITUTIONAL_FIELD",
+      "boundaryConditions": "Most evidence is quasi-experimental; transport, extracurricular, employment, and family schedules can attenuate effects.",
+      "implementers": [
+        "School or education authority"
+      ],
+      "deliveryModalities": [
+        "ORGANIZATIONAL_OR_POLICY_PROCESS"
+      ],
+      "deliveryModalitySpecification": null,
+      "channels": [],
+      "prerequisites": [
+        "Coordinated transport and activity schedules"
+      ],
+      "moderatorEntityIds": [],
+      "outcomeEntityIds": [
+        "RDS-0003",
+        "RDS-0004",
+        "BIO-006"
+      ],
+      "measureOfEffectIds": [],
+      "unintendedEffects": [],
+      "risks": [],
+      "ethicalLegalConstraints": [
+        "Use must respect informed consent, clinical scope, and applicable workplace or education law."
+      ],
+      "evidenceAssessmentIds": [
+        "EVA-CAND-BIO-F01-IE-003"
+      ],
+      "sourceIds": [],
+      "governance": {
+        "lifecycleStatus": "REVIEW_READY",
+        "activationStatus": "NOT_ELIGIBLE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "NOT_DECIDED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": null,
+        "authorizedBy": null,
+        "decisionDate": null,
+        "effectiveVersion": null,
+        "decisionRationale": null,
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Created as a non-governed BIO-F01 pilot candidate.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "IE-CAND-BIO-F01-003",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit indicated additional research or qualification was required.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "IE-CAND-BIO-F01-003",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit completed the candidate packet for human scientific review.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "IE-CAND-BIO-F01-003",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          }
+        ]
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "IE-CAND-BIO-F01-004",
+      "revision": 1,
+      "interventionId": "INT-CAND-BIO-F01-006",
+      "targetKind": "DRIVER",
+      "targetDriverId": "BIO-002",
+      "targetRelationshipId": null,
+      "mechanisticDriverIds": [],
+      "effectMode": "CHANGE_LEVEL",
+      "intendedDirection": "INCREASE",
+      "mechanismOfAction": "Stimulus control and titrated time-in-bed consolidate sleep and reduce wake after sleep onset in chronic insomnia.",
+      "targetPopulationOrAudience": "Adults with chronic insomnia disorder",
+      "populationScope": "SUBGROUP_TARGETED",
+      "context": "Clinical or validated digital CBT-I delivery",
+      "contextScope": "CONTEXT_DEPENDENT",
+      "scale": "PERSON",
+      "boundaryConditions": "Subjective improvements are more consistent than objective polysomnography/actigraphy changes; initial sleep restriction can cause sleepiness.",
+      "implementers": [
+        "Trained clinician or validated program"
+      ],
+      "deliveryModalities": [
+        "HUMAN_DELIVERED",
+        "DIGITAL_OR_AUTOMATED"
+      ],
+      "deliveryModalitySpecification": null,
+      "channels": [],
+      "prerequisites": [
+        "Insomnia assessment and safety screening"
+      ],
+      "moderatorEntityIds": [],
+      "outcomeEntityIds": [],
+      "measureOfEffectIds": [],
+      "unintendedEffects": [
+        "Total sleep time may initially decrease"
+      ],
+      "risks": [
+        "Transient sleepiness during sleep-restriction component"
+      ],
+      "ethicalLegalConstraints": [
+        "Use must respect informed consent, clinical scope, and applicable workplace or education law."
+      ],
+      "evidenceAssessmentIds": [
+        "EVA-CAND-BIO-F01-IE-004"
+      ],
+      "sourceIds": [],
+      "governance": {
+        "lifecycleStatus": "REVIEW_READY",
+        "activationStatus": "NOT_ELIGIBLE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "NOT_DECIDED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": null,
+        "authorizedBy": null,
+        "decisionDate": null,
+        "effectiveVersion": null,
+        "decisionRationale": null,
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Created as a non-governed BIO-F01 pilot candidate.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "IE-CAND-BIO-F01-004",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit indicated additional research or qualification was required.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "IE-CAND-BIO-F01-004",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit completed the candidate packet for human scientific review.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "IE-CAND-BIO-F01-004",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          }
+        ]
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "IE-CAND-BIO-F01-005",
+      "revision": 1,
+      "interventionId": "INT-CAND-BIO-F01-007",
+      "targetKind": "DRIVER",
+      "targetDriverId": "BIO-004",
+      "targetRelationshipId": null,
+      "mechanisticDriverIds": [],
+      "effectMode": "CHANGE_LEVEL",
+      "intendedDirection": "CONTEXT_DEPENDENT",
+      "mechanismOfAction": "Light resets the circadian pacemaker; timing on the phase-response curve determines advance versus delay.",
+      "targetPopulationOrAudience": "Adults requiring a governed circadian phase shift",
+      "populationScope": "SUBGROUP_TARGETED",
+      "context": "Controlled light exposure with phase and timing assessment",
+      "contextScope": "CONTEXT_DEPENDENT",
+      "scale": "PERSON",
+      "boundaryConditions": "Wrong timing can shift phase in the undesired direction; ocular/psychiatric risks and medication photosensitivity require screening.",
+      "implementers": [
+        "Clinician, occupational program, or trained individual"
+      ],
+      "deliveryModalities": [
+        "PHYSICAL_ENVIRONMENT",
+        "HUMAN_DELIVERED"
+      ],
+      "deliveryModalitySpecification": null,
+      "channels": [],
+      "prerequisites": [
+        "Phase/timing assessment"
+      ],
+      "moderatorEntityIds": [],
+      "outcomeEntityIds": [
+        "BIO-003"
+      ],
+      "measureOfEffectIds": [],
+      "unintendedEffects": [],
+      "risks": [
+        "Unwanted phase shift",
+        "Eye discomfort",
+        "Mood activation in susceptible individuals"
+      ],
+      "ethicalLegalConstraints": [
+        "Use must respect informed consent, clinical scope, and applicable workplace or education law."
+      ],
+      "evidenceAssessmentIds": [
+        "EVA-CAND-BIO-F01-IE-005"
+      ],
+      "sourceIds": [],
+      "governance": {
+        "lifecycleStatus": "REVIEW_READY",
+        "activationStatus": "NOT_ELIGIBLE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "NOT_DECIDED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": null,
+        "authorizedBy": null,
+        "decisionDate": null,
+        "effectiveVersion": null,
+        "decisionRationale": null,
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Created as a non-governed BIO-F01 pilot candidate.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "IE-CAND-BIO-F01-005",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit indicated additional research or qualification was required.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "IE-CAND-BIO-F01-005",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit completed the candidate packet for human scientific review.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "IE-CAND-BIO-F01-005",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          }
+        ]
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "IE-CAND-BIO-F01-006",
+      "revision": 1,
+      "interventionId": "INT-CAND-BIO-F01-008",
+      "targetKind": "DRIVER",
+      "targetDriverId": "BIO-004",
+      "targetRelationshipId": null,
+      "mechanisticDriverIds": [],
+      "effectMode": "CHANGE_LEVEL",
+      "intendedDirection": "CONTEXT_DEPENDENT",
+      "mechanismOfAction": "Exogenous melatonin shifts circadian phase according to administration timing and can also promote sleep.",
+      "targetPopulationOrAudience": "People with delayed or otherwise mistimed circadian phase",
+      "populationScope": "SUBGROUP_TARGETED",
+      "context": "Clinically supervised or protocol-governed timed dosing",
+      "contextScope": "CONTEXT_DEPENDENT",
+      "scale": "PERSON",
+      "boundaryConditions": "Dose, formulation, timing, product quality, age, comorbidity, and concurrent medicines affect benefit and risk.",
+      "implementers": [
+        "Clinician or protocol-trained individual"
+      ],
+      "deliveryModalities": [
+        "HUMAN_DELIVERED"
+      ],
+      "deliveryModalitySpecification": null,
+      "channels": [],
+      "prerequisites": [
+        "Medication and timing review"
+      ],
+      "moderatorEntityIds": [],
+      "outcomeEntityIds": [
+        "BIO-003"
+      ],
+      "measureOfEffectIds": [],
+      "unintendedEffects": [],
+      "risks": [
+        "Daytime sleepiness",
+        "Drug interactions",
+        "Product-quality variation"
+      ],
+      "ethicalLegalConstraints": [
+        "Use must respect informed consent, clinical scope, and applicable workplace or education law."
+      ],
+      "evidenceAssessmentIds": [
+        "EVA-CAND-BIO-F01-IE-006"
+      ],
+      "sourceIds": [],
+      "governance": {
+        "lifecycleStatus": "REVIEW_READY",
+        "activationStatus": "NOT_ELIGIBLE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "NOT_DECIDED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": null,
+        "authorizedBy": null,
+        "decisionDate": null,
+        "effectiveVersion": null,
+        "decisionRationale": null,
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Created as a non-governed BIO-F01 pilot candidate.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "IE-CAND-BIO-F01-006",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit indicated additional research or qualification was required.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "IE-CAND-BIO-F01-006",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit completed the candidate packet for human scientific review.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "IE-CAND-BIO-F01-006",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          }
+        ]
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "IE-CAND-BIO-F01-007",
+      "revision": 1,
+      "interventionId": "INT-CAND-BIO-F01-011",
+      "targetKind": "DRIVER",
+      "targetDriverId": "BIO-002",
+      "targetRelationshipId": null,
+      "mechanisticDriverIds": [],
+      "effectMode": "CHANGE_LEVEL",
+      "intendedDirection": "INCREASE",
+      "mechanismOfAction": "Receiver-level personal protection may reduce sound reaching the sleeper and thereby reduce noise-triggered arousals and awakenings.",
+      "targetPopulationOrAudience": "Noise-exposed sleepers",
+      "populationScope": "SUBGROUP_TARGETED",
+      "context": "Nighttime environmental or care-setting noise",
+      "contextScope": "CONTEXT_DEPENDENT",
+      "scale": "PHYSICAL_SETTING",
+      "boundaryConditions": "Identity and evidence are receiver-specific; do not generalize to source or transmission controls. Evidence is strongest in ICU settings, intervention components and objective outcomes vary, and alarm audibility is safety-critical.",
+      "implementers": [
+        "Facility, household, or individual"
+      ],
+      "deliveryModalities": [
+        "PHYSICAL_ENVIRONMENT"
+      ],
+      "deliveryModalitySpecification": null,
+      "channels": [],
+      "prerequisites": [],
+      "moderatorEntityIds": [],
+      "outcomeEntityIds": [],
+      "measureOfEffectIds": [],
+      "unintendedEffects": [],
+      "risks": [
+        "Missed alarms or warning signals",
+        "Discomfort"
+      ],
+      "ethicalLegalConstraints": [
+        "Use must respect informed consent, clinical scope, and applicable workplace or education law."
+      ],
+      "evidenceAssessmentIds": [
+        "EVA-CAND-BIO-F01-IE-007"
+      ],
+      "sourceIds": [],
+      "governance": {
+        "lifecycleStatus": "RESEARCH_NEEDED",
+        "activationStatus": "NOT_ELIGIBLE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "NOT_DECIDED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": null,
+        "authorizedBy": null,
+        "decisionDate": null,
+        "effectiveVersion": null,
+        "decisionRationale": null,
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Created as a non-governed BIO-F01 pilot candidate.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "IE-CAND-BIO-F01-007",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit indicated additional research or qualification was required.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "IE-CAND-BIO-F01-007",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          }
+        ]
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "IE-CAND-BIO-F01-008",
+      "revision": 1,
+      "interventionId": "INT-CAND-BIO-F01-010",
+      "targetKind": "DRIVER",
+      "targetDriverId": "BIO-005",
+      "targetRelationshipId": null,
+      "mechanisticDriverIds": [],
+      "effectMode": "CHANGE_LEVEL",
+      "intendedDirection": "DECREASE",
+      "mechanismOfAction": "Pre-awakening caffeine antagonizes adenosine receptors near waking and may accelerate restoration of alert performance.",
+      "targetPopulationOrAudience": "Sleep-restricted healthy adults with planned awakening",
+      "populationScope": "SUBGROUP_TARGETED",
+      "context": "Controlled planned awakening where delayed-release timing is feasible",
+      "contextScope": "CONTEXT_DEPENDENT",
+      "scale": "PERSON",
+      "boundaryConditions": "Evidence includes a small crossover trial; carryover can impair subsequent sleep and the formulation is not a generic recommendation.",
+      "implementers": [],
+      "deliveryModalities": [
+        "HUMAN_DELIVERED"
+      ],
+      "deliveryModalitySpecification": null,
+      "channels": [],
+      "prerequisites": [
+        "Known awakening time and caffeine safety screening"
+      ],
+      "moderatorEntityIds": [],
+      "outcomeEntityIds": [],
+      "measureOfEffectIds": [],
+      "unintendedEffects": [],
+      "risks": [
+        "Subsequent sleep disruption",
+        "Cardiovascular or anxiety effects"
+      ],
+      "ethicalLegalConstraints": [
+        "Use must respect informed consent, clinical scope, and applicable workplace or education law."
+      ],
+      "evidenceAssessmentIds": [
+        "EVA-CAND-BIO-F01-IE-008"
+      ],
+      "sourceIds": [],
+      "governance": {
+        "lifecycleStatus": "RESEARCH_NEEDED",
+        "activationStatus": "NOT_ELIGIBLE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "NOT_DECIDED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": null,
+        "authorizedBy": null,
+        "decisionDate": null,
+        "effectiveVersion": null,
+        "decisionRationale": null,
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Created as a non-governed BIO-F01 pilot candidate.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "IE-CAND-BIO-F01-008",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit indicated additional research or qualification was required.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "IE-CAND-BIO-F01-008",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          }
+        ]
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "IE-CAND-BIO-F01-009",
+      "revision": 1,
+      "interventionId": "INT-CAND-BIO-F01-007",
+      "targetKind": "DRIVER",
+      "targetDriverId": "BIO-005",
+      "targetRelationshipId": null,
+      "mechanisticDriverIds": [],
+      "effectMode": "CHANGE_LEVEL",
+      "intendedDirection": "DECREASE",
+      "mechanismOfAction": "Post-awakening bright light may increase subjective alertness during sleep inertia, but objective performance effects are not established.",
+      "targetPopulationOrAudience": "Adults awakening for immediate activity",
+      "populationScope": "SUBGROUP_TARGETED",
+      "context": "Post-awakening setting with safe light delivery",
+      "contextScope": "CONTEXT_DEPENDENT",
+      "scale": "PERSON",
+      "boundaryConditions": "The reactive-countermeasure literature is small and mixed; subjective alertness must not be substituted for performance.",
+      "implementers": [],
+      "deliveryModalities": [
+        "PHYSICAL_ENVIRONMENT"
+      ],
+      "deliveryModalitySpecification": null,
+      "channels": [],
+      "prerequisites": [],
+      "moderatorEntityIds": [],
+      "outcomeEntityIds": [],
+      "measureOfEffectIds": [],
+      "unintendedEffects": [],
+      "risks": [
+        "Glare",
+        "Unwanted circadian phase shift if repeatedly mistimed"
+      ],
+      "ethicalLegalConstraints": [
+        "Use must respect informed consent, clinical scope, and applicable workplace or education law."
+      ],
+      "evidenceAssessmentIds": [
+        "EVA-CAND-BIO-F01-IE-009"
+      ],
+      "sourceIds": [],
+      "governance": {
+        "lifecycleStatus": "RESEARCH_NEEDED",
+        "activationStatus": "NOT_ELIGIBLE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "NOT_DECIDED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": null,
+        "authorizedBy": null,
+        "decisionDate": null,
+        "effectiveVersion": null,
+        "decisionRationale": null,
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Created as a non-governed BIO-F01 pilot candidate.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "IE-CAND-BIO-F01-009",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Structured evidence audit indicated additional research or qualification was required.",
+            "timestamp": "2026-09-05T12:00:00Z",
+            "objectId": "IE-CAND-BIO-F01-009",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          }
+        ]
+      }
+    }
+  ]
 }

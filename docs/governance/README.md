@@ -66,6 +66,19 @@ records beyond the exact migration decisions it names.
     records the production schema/tooling materialization and its continuing
     scientific-population stop gate.
 
+## Authorized Family pilots
+
+- [`BIO-F01 — Sleep & Circadian Regulation`](pilots/BIO-F01/BIO_F01_GOVERNANCE_DECISION_PACKAGE.md)
+  is the first structured scientific audit under V1. Its Relationship,
+  EvidenceAssessment, Intervention, and InterventionEffect records are
+  preserved as non-governed candidates for audit lineage.
+  [`Governance Decision 001`](pilots/BIO-F01/BIO_F01_GOVERNANCE_DECISION_001.md)
+  selectively materializes approved records under canonical V1 IDs.
+  [`Activation Decision 001`](pilots/BIO-F01/BIO_F01_ACTIVATION_DECISION_001.md)
+  authorizes the exact bounded active subset while retaining all listed
+  research-needed, revision, and acoustic exclusions. It does not authorize a
+  second Family, new model/recommendation behavior, or deployment.
+
 ## Non-production draft-schema rule
 
 Files under `docs/governance/drafts/` preserve the reviewed design-stage

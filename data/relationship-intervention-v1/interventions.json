@@ -1,0 +1,1033 @@
+{
+  "schemaVersion": "1.0.0",
+  "interventions": [
+    {
+      "schemaVersion": "1.0.0",
+      "id": "INT-V1-BIO-F01-001",
+      "revision": 1,
+      "canonicalName": "Behavioral sleep-extension protocol",
+      "aliases": [],
+      "interventionKind": "ATOMIC",
+      "category": "TRAINING_OR_SKILL",
+      "categorySpecification": null,
+      "description": "A structured protocol that expands planned sleep opportunity and supports adherence long enough to increase obtained sleep.",
+      "componentInterventionIds": [],
+      "identitySourceIds": [
+        "SRC-545"
+      ],
+      "externalCrosswalks": [],
+      "governance": {
+        "lifecycleStatus": "GOVERNED",
+        "activationStatus": "ACTIVE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "APPROVED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": "docs/governance/pilots/BIO-F01/BIO_F01_ACTIVATION_DECISION_001.md",
+        "authorizedBy": "authorized human governor",
+        "decisionDate": "2026-09-05",
+        "effectiveVersion": "BIO-F01-PARTIAL-ACTIVATION-001",
+        "decisionRationale": "Exact partial activation authorized by an authorized human governor; scientific identity, proposition, effect, and scope remain unchanged.",
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Reconstructed non-governed candidate workflow from the authorized pilot lineage.",
+            "timestamp": "2026-09-05T23:00:00Z",
+            "objectId": "INT-V1-BIO-F01-001",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Reconstructed non-governed candidate workflow from the authorized pilot lineage.",
+            "timestamp": "2026-09-05T23:00:00Z",
+            "objectId": "INT-V1-BIO-F01-001",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Reconstructed non-governed candidate workflow from the authorized pilot lineage.",
+            "timestamp": "2026-09-05T23:00:00Z",
+            "objectId": "INT-V1-BIO-F01-001",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "GOVERNED",
+              "activationStatus": "INACTIVE"
+            },
+            "actorClass": "AUTHORIZED_HUMAN_GOVERNOR",
+            "rationale": "Exact materialization of the authorized BIO-F01 governance decision; activation was not authorized.",
+            "timestamp": "2026-09-05T23:00:00Z",
+            "objectId": "INT-V1-BIO-F01-001",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-4",
+            "governanceDecisionRecord": "docs/governance/pilots/BIO-F01/BIO_F01_GOVERNANCE_DECISION_001.md",
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "GOVERNED",
+              "activationStatus": "INACTIVE"
+            },
+            "toState": {
+              "lifecycleStatus": "GOVERNED",
+              "activationStatus": "ACTIVE"
+            },
+            "actorClass": "AUTHORIZED_HUMAN_GOVERNOR",
+            "rationale": "Partial activation of the exact record was explicitly authorized after the BIO-F01 activation-readiness audit.",
+            "timestamp": "2026-09-06T01:45:00Z",
+            "objectId": "INT-V1-BIO-F01-001",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:f3a933d09f98c08fa8c31374ed17658a660943aa:activation-001",
+            "governanceDecisionRecord": "docs/governance/pilots/BIO-F01/BIO_F01_ACTIVATION_DECISION_001.md",
+            "exactDecisionMaterialization": false
+          }
+        ]
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "INT-V1-BIO-F01-002",
+      "revision": 1,
+      "canonicalName": "Protected sleep-opportunity scheduling",
+      "aliases": [],
+      "interventionKind": "ATOMIC",
+      "category": "POLICY_RULE_OR_STANDARD",
+      "categorySpecification": null,
+      "description": "A schedule or rule that protects a defined sleep opportunity from work, duty, or avoidable interruption.",
+      "componentInterventionIds": [],
+      "identitySourceIds": [
+        "SRC-547"
+      ],
+      "externalCrosswalks": [],
+      "governance": {
+        "lifecycleStatus": "GOVERNED",
+        "activationStatus": "INACTIVE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "APPROVED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": "docs/governance/pilots/BIO-F01/BIO_F01_GOVERNANCE_DECISION_001.md",
+        "authorizedBy": "authorized human governor",
+        "decisionDate": "2026-09-05",
+        "effectiveVersion": "BIO-F01-GOVERNANCE-001",
+        "decisionRationale": "Approved by the exact BIO-F01 human-governance checkpoint; activation explicitly withheld.",
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Reconstructed non-governed candidate workflow from the authorized pilot lineage.",
+            "timestamp": "2026-09-05T23:00:00Z",
+            "objectId": "INT-V1-BIO-F01-002",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Reconstructed non-governed candidate workflow from the authorized pilot lineage.",
+            "timestamp": "2026-09-05T23:00:00Z",
+            "objectId": "INT-V1-BIO-F01-002",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Reconstructed non-governed candidate workflow from the authorized pilot lineage.",
+            "timestamp": "2026-09-05T23:00:00Z",
+            "objectId": "INT-V1-BIO-F01-002",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "GOVERNED",
+              "activationStatus": "INACTIVE"
+            },
+            "actorClass": "AUTHORIZED_HUMAN_GOVERNOR",
+            "rationale": "Exact materialization of the authorized BIO-F01 governance decision; activation was not authorized.",
+            "timestamp": "2026-09-05T23:00:00Z",
+            "objectId": "INT-V1-BIO-F01-002",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-4",
+            "governanceDecisionRecord": "docs/governance/pilots/BIO-F01/BIO_F01_GOVERNANCE_DECISION_001.md",
+            "exactDecisionMaterialization": false
+          }
+        ]
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "INT-V1-BIO-F01-003",
+      "revision": 1,
+      "canonicalName": "Delayed school start-time policy",
+      "aliases": [],
+      "interventionKind": "ATOMIC",
+      "category": "POLICY_RULE_OR_STANDARD",
+      "categorySpecification": null,
+      "description": "A policy that moves mandatory school start time later while retaining an evaluable implementation schedule.",
+      "componentInterventionIds": [],
+      "identitySourceIds": [
+        "SRC-546"
+      ],
+      "externalCrosswalks": [],
+      "governance": {
+        "lifecycleStatus": "GOVERNED",
+        "activationStatus": "ACTIVE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "APPROVED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": "docs/governance/pilots/BIO-F01/BIO_F01_ACTIVATION_DECISION_001.md",
+        "authorizedBy": "authorized human governor",
+        "decisionDate": "2026-09-05",
+        "effectiveVersion": "BIO-F01-PARTIAL-ACTIVATION-001",
+        "decisionRationale": "Exact partial activation authorized by an authorized human governor; scientific identity, proposition, effect, and scope remain unchanged.",
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Reconstructed non-governed candidate workflow from the authorized pilot lineage.",
+            "timestamp": "2026-09-05T23:00:00Z",
+            "objectId": "INT-V1-BIO-F01-003",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Reconstructed non-governed candidate workflow from the authorized pilot lineage.",
+            "timestamp": "2026-09-05T23:00:00Z",
+            "objectId": "INT-V1-BIO-F01-003",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Reconstructed non-governed candidate workflow from the authorized pilot lineage.",
+            "timestamp": "2026-09-05T23:00:00Z",
+            "objectId": "INT-V1-BIO-F01-003",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "GOVERNED",
+              "activationStatus": "INACTIVE"
+            },
+            "actorClass": "AUTHORIZED_HUMAN_GOVERNOR",
+            "rationale": "Exact materialization of the authorized BIO-F01 governance decision; activation was not authorized.",
+            "timestamp": "2026-09-05T23:00:00Z",
+            "objectId": "INT-V1-BIO-F01-003",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-4",
+            "governanceDecisionRecord": "docs/governance/pilots/BIO-F01/BIO_F01_GOVERNANCE_DECISION_001.md",
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "GOVERNED",
+              "activationStatus": "INACTIVE"
+            },
+            "toState": {
+              "lifecycleStatus": "GOVERNED",
+              "activationStatus": "ACTIVE"
+            },
+            "actorClass": "AUTHORIZED_HUMAN_GOVERNOR",
+            "rationale": "Partial activation of the exact record was explicitly authorized after the BIO-F01 activation-readiness audit.",
+            "timestamp": "2026-09-06T01:45:00Z",
+            "objectId": "INT-V1-BIO-F01-003",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:f3a933d09f98c08fa8c31374ed17658a660943aa:activation-001",
+            "governanceDecisionRecord": "docs/governance/pilots/BIO-F01/BIO_F01_ACTIVATION_DECISION_001.md",
+            "exactDecisionMaterialization": false
+          }
+        ]
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "INT-V1-BIO-F01-004",
+      "revision": 1,
+      "canonicalName": "Stimulus-control therapy for insomnia",
+      "aliases": [],
+      "interventionKind": "ATOMIC",
+      "category": "TRAINING_OR_SKILL",
+      "categorySpecification": null,
+      "description": "A behavioral treatment component that reassociates bed and bedroom cues with sleep and limits wakeful activity in bed.",
+      "componentInterventionIds": [],
+      "identitySourceIds": [
+        "SRC-542",
+        "SRC-543",
+        "SRC-544"
+      ],
+      "externalCrosswalks": [],
+      "governance": {
+        "lifecycleStatus": "GOVERNED",
+        "activationStatus": "INACTIVE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "APPROVED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": "docs/governance/pilots/BIO-F01/BIO_F01_GOVERNANCE_DECISION_001.md",
+        "authorizedBy": "authorized human governor",
+        "decisionDate": "2026-09-05",
+        "effectiveVersion": "BIO-F01-GOVERNANCE-001",
+        "decisionRationale": "Approved by the exact BIO-F01 human-governance checkpoint; activation explicitly withheld.",
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Reconstructed non-governed candidate workflow from the authorized pilot lineage.",
+            "timestamp": "2026-09-05T23:00:00Z",
+            "objectId": "INT-V1-BIO-F01-004",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Reconstructed non-governed candidate workflow from the authorized pilot lineage.",
+            "timestamp": "2026-09-05T23:00:00Z",
+            "objectId": "INT-V1-BIO-F01-004",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Reconstructed non-governed candidate workflow from the authorized pilot lineage.",
+            "timestamp": "2026-09-05T23:00:00Z",
+            "objectId": "INT-V1-BIO-F01-004",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "GOVERNED",
+              "activationStatus": "INACTIVE"
+            },
+            "actorClass": "AUTHORIZED_HUMAN_GOVERNOR",
+            "rationale": "Exact materialization of the authorized BIO-F01 governance decision; activation was not authorized.",
+            "timestamp": "2026-09-05T23:00:00Z",
+            "objectId": "INT-V1-BIO-F01-004",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-4",
+            "governanceDecisionRecord": "docs/governance/pilots/BIO-F01/BIO_F01_GOVERNANCE_DECISION_001.md",
+            "exactDecisionMaterialization": false
+          }
+        ]
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "INT-V1-BIO-F01-005",
+      "revision": 1,
+      "canonicalName": "Sleep-restriction therapy for insomnia",
+      "aliases": [],
+      "interventionKind": "ATOMIC",
+      "category": "TRAINING_OR_SKILL",
+      "categorySpecification": null,
+      "description": "A clinician-guided behavioral treatment component that initially limits time in bed and titrates it as sleep efficiency changes.",
+      "componentInterventionIds": [],
+      "identitySourceIds": [
+        "SRC-542",
+        "SRC-543",
+        "SRC-544"
+      ],
+      "externalCrosswalks": [],
+      "governance": {
+        "lifecycleStatus": "GOVERNED",
+        "activationStatus": "INACTIVE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "APPROVED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": "docs/governance/pilots/BIO-F01/BIO_F01_GOVERNANCE_DECISION_001.md",
+        "authorizedBy": "authorized human governor",
+        "decisionDate": "2026-09-05",
+        "effectiveVersion": "BIO-F01-GOVERNANCE-001",
+        "decisionRationale": "Approved by the exact BIO-F01 human-governance checkpoint; activation explicitly withheld.",
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Reconstructed non-governed candidate workflow from the authorized pilot lineage.",
+            "timestamp": "2026-09-05T23:00:00Z",
+            "objectId": "INT-V1-BIO-F01-005",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Reconstructed non-governed candidate workflow from the authorized pilot lineage.",
+            "timestamp": "2026-09-05T23:00:00Z",
+            "objectId": "INT-V1-BIO-F01-005",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Reconstructed non-governed candidate workflow from the authorized pilot lineage.",
+            "timestamp": "2026-09-05T23:00:00Z",
+            "objectId": "INT-V1-BIO-F01-005",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "GOVERNED",
+              "activationStatus": "INACTIVE"
+            },
+            "actorClass": "AUTHORIZED_HUMAN_GOVERNOR",
+            "rationale": "Exact materialization of the authorized BIO-F01 governance decision; activation was not authorized.",
+            "timestamp": "2026-09-05T23:00:00Z",
+            "objectId": "INT-V1-BIO-F01-005",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-4",
+            "governanceDecisionRecord": "docs/governance/pilots/BIO-F01/BIO_F01_GOVERNANCE_DECISION_001.md",
+            "exactDecisionMaterialization": false
+          }
+        ]
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "INT-V1-BIO-F01-006",
+      "revision": 1,
+      "canonicalName": "Cognitive behavioral therapy for insomnia package",
+      "aliases": [],
+      "interventionKind": "PACKAGE",
+      "category": "SERVICE_OR_SUPPORT",
+      "categorySpecification": null,
+      "description": "A multicomponent cognitive behavioral therapy for insomnia package. The current model names stimulus-control therapy and sleep-restriction therapy as included known/core components, not as an exhaustive scientific definition; other CBT-I components and variants may exist, and package effects require separate evidence.",
+      "componentInterventionIds": [
+        "INT-V1-BIO-F01-004",
+        "INT-V1-BIO-F01-005"
+      ],
+      "identitySourceIds": [
+        "SRC-542",
+        "SRC-543",
+        "SRC-544"
+      ],
+      "externalCrosswalks": [],
+      "governance": {
+        "lifecycleStatus": "GOVERNED",
+        "activationStatus": "ACTIVE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "APPROVED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": "docs/governance/pilots/BIO-F01/BIO_F01_ACTIVATION_DECISION_001.md",
+        "authorizedBy": "authorized human governor",
+        "decisionDate": "2026-09-05",
+        "effectiveVersion": "BIO-F01-PARTIAL-ACTIVATION-001",
+        "decisionRationale": "Exact partial activation authorized by an authorized human governor; scientific identity, proposition, effect, and scope remain unchanged.",
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Reconstructed non-governed candidate workflow from the authorized pilot lineage.",
+            "timestamp": "2026-09-05T23:00:00Z",
+            "objectId": "INT-V1-BIO-F01-006",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Reconstructed non-governed candidate workflow from the authorized pilot lineage.",
+            "timestamp": "2026-09-05T23:00:00Z",
+            "objectId": "INT-V1-BIO-F01-006",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Reconstructed non-governed candidate workflow from the authorized pilot lineage.",
+            "timestamp": "2026-09-05T23:00:00Z",
+            "objectId": "INT-V1-BIO-F01-006",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "GOVERNED",
+              "activationStatus": "INACTIVE"
+            },
+            "actorClass": "AUTHORIZED_HUMAN_GOVERNOR",
+            "rationale": "Exact materialization of the authorized BIO-F01 governance decision; activation was not authorized.",
+            "timestamp": "2026-09-05T23:00:00Z",
+            "objectId": "INT-V1-BIO-F01-006",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-4",
+            "governanceDecisionRecord": "docs/governance/pilots/BIO-F01/BIO_F01_GOVERNANCE_DECISION_001.md",
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "GOVERNED",
+              "activationStatus": "INACTIVE"
+            },
+            "toState": {
+              "lifecycleStatus": "GOVERNED",
+              "activationStatus": "ACTIVE"
+            },
+            "actorClass": "AUTHORIZED_HUMAN_GOVERNOR",
+            "rationale": "Partial activation of the exact record was explicitly authorized after the BIO-F01 activation-readiness audit.",
+            "timestamp": "2026-09-06T01:45:00Z",
+            "objectId": "INT-V1-BIO-F01-006",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:f3a933d09f98c08fa8c31374ed17658a660943aa:activation-001",
+            "governanceDecisionRecord": "docs/governance/pilots/BIO-F01/BIO_F01_ACTIVATION_DECISION_001.md",
+            "exactDecisionMaterialization": false
+          }
+        ]
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "INT-V1-BIO-F01-007",
+      "revision": 1,
+      "canonicalName": "Timed bright-light exposure",
+      "aliases": [],
+      "interventionKind": "ATOMIC",
+      "category": "BIOLOGICAL_OR_CLINICAL",
+      "categorySpecification": null,
+      "description": "Exposure to controlled bright light at a specified circadian time, intensity, spectrum, and duration.",
+      "componentInterventionIds": [],
+      "identitySourceIds": [
+        "SRC-539",
+        "SRC-541"
+      ],
+      "externalCrosswalks": [],
+      "governance": {
+        "lifecycleStatus": "GOVERNED",
+        "activationStatus": "ACTIVE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "APPROVED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": "docs/governance/pilots/BIO-F01/BIO_F01_ACTIVATION_DECISION_001.md",
+        "authorizedBy": "authorized human governor",
+        "decisionDate": "2026-09-05",
+        "effectiveVersion": "BIO-F01-PARTIAL-ACTIVATION-001",
+        "decisionRationale": "Exact partial activation authorized by an authorized human governor; scientific identity, proposition, effect, and scope remain unchanged.",
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Reconstructed non-governed candidate workflow from the authorized pilot lineage.",
+            "timestamp": "2026-09-05T23:00:00Z",
+            "objectId": "INT-V1-BIO-F01-007",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Reconstructed non-governed candidate workflow from the authorized pilot lineage.",
+            "timestamp": "2026-09-05T23:00:00Z",
+            "objectId": "INT-V1-BIO-F01-007",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Reconstructed non-governed candidate workflow from the authorized pilot lineage.",
+            "timestamp": "2026-09-05T23:00:00Z",
+            "objectId": "INT-V1-BIO-F01-007",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "GOVERNED",
+              "activationStatus": "INACTIVE"
+            },
+            "actorClass": "AUTHORIZED_HUMAN_GOVERNOR",
+            "rationale": "Exact materialization of the authorized BIO-F01 governance decision; activation was not authorized.",
+            "timestamp": "2026-09-05T23:00:00Z",
+            "objectId": "INT-V1-BIO-F01-007",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-4",
+            "governanceDecisionRecord": "docs/governance/pilots/BIO-F01/BIO_F01_GOVERNANCE_DECISION_001.md",
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "GOVERNED",
+              "activationStatus": "INACTIVE"
+            },
+            "toState": {
+              "lifecycleStatus": "GOVERNED",
+              "activationStatus": "ACTIVE"
+            },
+            "actorClass": "AUTHORIZED_HUMAN_GOVERNOR",
+            "rationale": "Partial activation of the exact record was explicitly authorized after the BIO-F01 activation-readiness audit.",
+            "timestamp": "2026-09-06T01:45:00Z",
+            "objectId": "INT-V1-BIO-F01-007",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:f3a933d09f98c08fa8c31374ed17658a660943aa:activation-001",
+            "governanceDecisionRecord": "docs/governance/pilots/BIO-F01/BIO_F01_ACTIVATION_DECISION_001.md",
+            "exactDecisionMaterialization": false
+          }
+        ]
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "INT-V1-BIO-F01-008",
+      "revision": 1,
+      "canonicalName": "Timed exogenous melatonin administration",
+      "aliases": [],
+      "interventionKind": "ATOMIC",
+      "category": "BIOLOGICAL_OR_CLINICAL",
+      "categorySpecification": null,
+      "description": "Administration of exogenous melatonin at a specified dose and circadian/clock time.",
+      "componentInterventionIds": [],
+      "identitySourceIds": [
+        "SRC-540",
+        "SRC-549"
+      ],
+      "externalCrosswalks": [],
+      "governance": {
+        "lifecycleStatus": "GOVERNED",
+        "activationStatus": "ACTIVE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "APPROVED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": "docs/governance/pilots/BIO-F01/BIO_F01_ACTIVATION_DECISION_001.md",
+        "authorizedBy": "authorized human governor",
+        "decisionDate": "2026-09-05",
+        "effectiveVersion": "BIO-F01-PARTIAL-ACTIVATION-001",
+        "decisionRationale": "Exact partial activation authorized by an authorized human governor; scientific identity, proposition, effect, and scope remain unchanged.",
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Reconstructed non-governed candidate workflow from the authorized pilot lineage.",
+            "timestamp": "2026-09-05T23:00:00Z",
+            "objectId": "INT-V1-BIO-F01-008",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Reconstructed non-governed candidate workflow from the authorized pilot lineage.",
+            "timestamp": "2026-09-05T23:00:00Z",
+            "objectId": "INT-V1-BIO-F01-008",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Reconstructed non-governed candidate workflow from the authorized pilot lineage.",
+            "timestamp": "2026-09-05T23:00:00Z",
+            "objectId": "INT-V1-BIO-F01-008",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "GOVERNED",
+              "activationStatus": "INACTIVE"
+            },
+            "actorClass": "AUTHORIZED_HUMAN_GOVERNOR",
+            "rationale": "Exact materialization of the authorized BIO-F01 governance decision; activation was not authorized.",
+            "timestamp": "2026-09-05T23:00:00Z",
+            "objectId": "INT-V1-BIO-F01-008",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-4",
+            "governanceDecisionRecord": "docs/governance/pilots/BIO-F01/BIO_F01_GOVERNANCE_DECISION_001.md",
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "GOVERNED",
+              "activationStatus": "INACTIVE"
+            },
+            "toState": {
+              "lifecycleStatus": "GOVERNED",
+              "activationStatus": "ACTIVE"
+            },
+            "actorClass": "AUTHORIZED_HUMAN_GOVERNOR",
+            "rationale": "Partial activation of the exact record was explicitly authorized after the BIO-F01 activation-readiness audit.",
+            "timestamp": "2026-09-06T01:45:00Z",
+            "objectId": "INT-V1-BIO-F01-008",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:f3a933d09f98c08fa8c31374ed17658a660943aa:activation-001",
+            "governanceDecisionRecord": "docs/governance/pilots/BIO-F01/BIO_F01_ACTIVATION_DECISION_001.md",
+            "exactDecisionMaterialization": false
+          }
+        ]
+      }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "INT-V1-BIO-F01-010",
+      "revision": 1,
+      "canonicalName": "Pre-awakening timed caffeine delivery",
+      "aliases": [],
+      "interventionKind": "ATOMIC",
+      "category": "BIOLOGICAL_OR_CLINICAL",
+      "categorySpecification": null,
+      "description": "A formulation or delivery schedule designed to produce caffeine exposure shortly before planned awakening.",
+      "componentInterventionIds": [],
+      "identitySourceIds": [
+        "SRC-537"
+      ],
+      "externalCrosswalks": [],
+      "governance": {
+        "lifecycleStatus": "GOVERNED",
+        "activationStatus": "INACTIVE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "APPROVED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": "docs/governance/pilots/BIO-F01/BIO_F01_GOVERNANCE_DECISION_001.md",
+        "authorizedBy": "authorized human governor",
+        "decisionDate": "2026-09-05",
+        "effectiveVersion": "BIO-F01-GOVERNANCE-001",
+        "decisionRationale": "Approved by the exact BIO-F01 human-governance checkpoint; activation explicitly withheld.",
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Reconstructed non-governed candidate workflow from the authorized pilot lineage.",
+            "timestamp": "2026-09-05T23:00:00Z",
+            "objectId": "INT-V1-BIO-F01-010",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Reconstructed non-governed candidate workflow from the authorized pilot lineage.",
+            "timestamp": "2026-09-05T23:00:00Z",
+            "objectId": "INT-V1-BIO-F01-010",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Reconstructed non-governed candidate workflow from the authorized pilot lineage.",
+            "timestamp": "2026-09-05T23:00:00Z",
+            "objectId": "INT-V1-BIO-F01-010",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "GOVERNED",
+              "activationStatus": "INACTIVE"
+            },
+            "actorClass": "AUTHORIZED_HUMAN_GOVERNOR",
+            "rationale": "Exact materialization of the authorized BIO-F01 governance decision; activation was not authorized.",
+            "timestamp": "2026-09-05T23:00:00Z",
+            "objectId": "INT-V1-BIO-F01-010",
+            "revision": 1,
+            "provenance": "AUD-BIO-F01-RI-V1-20260905-001:0cb77c4722b0d4c474f307d8ae527b8fa6f652cf:transition-4",
+            "governanceDecisionRecord": "docs/governance/pilots/BIO-F01/BIO_F01_GOVERNANCE_DECISION_001.md",
+            "exactDecisionMaterialization": false
+          }
+        ]
+      }
+    }
+  ]
+}

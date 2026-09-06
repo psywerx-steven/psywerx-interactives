@@ -22,6 +22,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SCHEMA_DIR = ROOT / "schemas" / "relationship-intervention" / "v1"
 DATA = ROOT / "data"
 CANDIDATE_WORKSPACE = DATA / "candidates" / "relationship-intervention-v1" / "workspace.json"
+GOVERNED_V1_DIR = DATA / "relationship-intervention-v1"
 
 SCHEMA_FILES = {
     "governance": "governance-v1.schema.json",
@@ -31,6 +32,7 @@ SCHEMA_FILES = {
     "intervention": "intervention-v1.schema.json",
     "intervention_effect": "intervention-effect-v1.schema.json",
     "candidate_workspace": "candidate-workspace-v1.schema.json",
+    "source": "source-record-v1.schema.json",
 }
 
 CAUSAL_PREDICATES = {"CAUSES", "ENABLES", "CONSTRAINS"}
@@ -124,10 +126,19 @@ class Catalog:
         entities = {row["id"]: row for row in _load_json(DATA / "entities.json")}
         envelope = _load_json(DATA / "relationships.json")
         active = {row["id"]: row for row in envelope["relationships"]}
-        source_ids = frozenset(
+        source_ids = {
             row["id"] for row in _load_json(DATA / "sources.json")["sources"]
+        }
+        native_sources = GOVERNED_V1_DIR / "source-register.json"
+        if native_sources.exists():
+            source_ids.update(
+                row["id"] for row in _load_json(native_sources)["sources"]
+            )
+        return cls(
+            entities=entities,
+            legacy_relationships=active,
+            source_ids=frozenset(source_ids),
         )
-        return cls(entities=entities, legacy_relationships=active, source_ids=source_ids)
 
     @classmethod
     def synthetic(
@@ -485,12 +496,30 @@ def validate_evidence_assessment(
     schemas.validate("evidence", evidence)
     validate_governance_record(evidence)
     _require(set(evidence["sourceIds"]) <= catalog.source_ids, "Evidence source does not resolve")
+    _require(
+        set(evidence["conflictingEvidence"]["sourceIds"]) <= catalog.source_ids,
+        "Conflicting/null evidence source does not resolve",
+    )
     if governed_active(evidence):
         _require(bool(evidence["sourceIds"]), "Active EvidenceAssessment requires sources")
         _require(bool(evidence["evidenceRationale"]), "Active EvidenceAssessment requires rationale")
         _require(evidence["evidenceStrength"] != "NOT_ASSESSED", "Active evidence strength must be assessed")
         _require(evidence["confidence"] != "NOT_ASSESSED", "Active evidence confidence must be assessed")
         _require(evidence["evidenceDisposition"] != "NOT_ASSESSED", "Active evidence disposition must be assessed")
+
+
+def recommendation_eligible_effects(
+    interventions: Iterable[Mapping[str, Any]],
+    effects: Iterable[Mapping[str, Any]],
+) -> list[Mapping[str, Any]]:
+    """Return active effects whose reusable Intervention identity is also active."""
+    active_intervention_ids = {
+        record["id"] for record in interventions if governed_active(record)
+    }
+    return [
+        effect for effect in effects
+        if governed_active(effect) and effect.get("interventionId") in active_intervention_ids
+    ]
 
 
 def validate_intervention_effect(
@@ -723,8 +752,164 @@ def restore_v3_relationship(projected: Mapping[str, Any]) -> dict[str, Any]:
     return legacy
 
 
+def _native_records(filename: str, key: str) -> list[dict[str, Any]]:
+    path = GOVERNED_V1_DIR / filename
+    if not path.exists():
+        return []
+    envelope = _load_json(path)
+    _require(
+        set(envelope) == {"schemaVersion", key}
+        and envelope["schemaVersion"] == "1.0.0"
+        and isinstance(envelope[key], list),
+        f"Invalid native V1 store envelope: {filename}",
+    )
+    return envelope[key]
+
+
+def validate_native_source_register(schemas: SchemaSet) -> list[dict[str, Any]]:
+    """Validate governed V1 sources and reject duplicates across both registries."""
+    records = _native_records("source-register.json", "sources")
+    if not records:
+        return []
+    legacy = _load_json(DATA / "sources.json")["sources"]
+    legacy_ids = {row["id"] for row in legacy}
+    seen_ids: set[str] = set()
+    seen_pmids: set[str] = set()
+    seen_dois: set[str] = set()
+    seen_titles: set[str] = set()
+    legacy_text = json.dumps(legacy, ensure_ascii=False).casefold()
+    legacy_titles = {
+        str(row.get("citationText") or "").strip().rstrip(".").casefold()
+        for row in legacy
+    }
+    for record in records:
+        schemas.validate("source", record)
+        identifier = record["id"]
+        _require(identifier not in legacy_ids, f"Native source ID duplicates legacy source: {identifier}")
+        _require(identifier not in seen_ids, f"Duplicate native source ID: {identifier}")
+        seen_ids.add(identifier)
+        pmid = record.get("pmid")
+        doi = (record.get("doi") or "").casefold()
+        title = record["title"].rstrip(".").casefold()
+        if pmid:
+            _require(pmid not in seen_pmids, f"Duplicate native PMID: {pmid}")
+            _require(f"pubmed.ncbi.nlm.nih.gov/{pmid}" not in legacy_text, f"PMID already exists in legacy source register: {pmid}")
+            seen_pmids.add(pmid)
+        if doi:
+            _require(doi not in seen_dois, f"Duplicate native DOI: {doi}")
+            _require(doi not in legacy_text, f"DOI already exists in legacy source register: {doi}")
+            seen_dois.add(doi)
+        _require(title not in seen_titles, f"Duplicate native source title: {record['title']}")
+        _require(title not in legacy_titles, f"Source title already exists in legacy register: {record['title']}")
+        seen_titles.add(title)
+    return records
+
+
+def validate_governed_v1_store(
+    catalog: Catalog, schemas: SchemaSet
+) -> dict[str, int]:
+    """Validate native governed scientific stores and cross-record provenance."""
+    relationships = _native_records("relationships.json", "relationships")
+    evidence = _native_records("evidence-assessments.json", "evidenceAssessments")
+    pathways = _native_records("causal-pathways.json", "causalPathways")
+    interventions = _native_records("interventions.json", "interventions")
+    effects = _native_records("intervention-effects.json", "interventionEffects")
+    if not any((relationships, evidence, pathways, interventions, effects)):
+        return {
+            "nativeRelationships": 0,
+            "nativeCausalRelationships": 0,
+            "nativeInterventions": 0,
+            "nativeInterventionEffects": 0,
+            "nativeEvidenceAssessments": 0,
+            "nativeActiveRecords": 0,
+            "nativeActiveRelationships": 0,
+            "nativeActiveCausalRelationships": 0,
+            "nativeActiveInterventions": 0,
+            "nativeActiveInterventionEffects": 0,
+            "nativeActiveEvidenceAssessments": 0,
+        }
+
+    groups = (relationships, evidence, pathways, interventions, effects)
+    all_records = [record for group in groups for record in group]
+    all_ids = [record["id"] for record in all_records]
+    _require(len(all_ids) == len(set(all_ids)), "Duplicate native V1 scientific object ID")
+    for record in all_records:
+        governance = record["governance"]
+        _require(governance["lifecycleStatus"] == "GOVERNED", "Native production store contains a non-governed record")
+        _require(governance["activationStatus"] in {"ACTIVE", "INACTIVE"}, "Governed native record has invalid activation")
+
+    relationship_map = dict(catalog.legacy_relationships)
+    relationship_map.update({row["id"]: row for row in relationships})
+    for relationship in relationships:
+        validate_relationship(relationship, catalog, schemas, relationship_map)
+        _require(bool(relationship["sourceIds"]), "Governed native Relationship requires sources")
+        _require(bool(relationship["evidenceAssessmentIds"]), "Governed native Relationship requires evidence")
+    for assessment in evidence:
+        validate_evidence_assessment(assessment, catalog, schemas)
+        _require(bool(assessment["sourceIds"]), "Governed native EvidenceAssessment requires sources")
+        _require(bool(assessment["evidenceRationale"]), "Governed native EvidenceAssessment requires rationale")
+    for pathway in pathways:
+        validate_pathway(pathway, catalog, schemas, relationship_map)
+    validate_intervention_catalog(
+        interventions, effects, catalog, schemas, relationship_map
+    )
+    for intervention in interventions:
+        _require(bool(intervention["identitySourceIds"]), "Governed native Intervention requires identity sources")
+    for effect in effects:
+        _require(bool(effect["sourceIds"]), "Governed native InterventionEffect requires sources")
+        _require(bool(effect["evidenceAssessmentIds"]), "Governed native InterventionEffect requires evidence")
+
+    by_evidence_id = {row["id"]: row for row in evidence}
+    assertion_targets = {
+        "RELATIONSHIP": {row["id"] for row in relationships},
+        "MODERATION": {row["id"] for row in relationships if row["relationFamily"] == "MODERATION"},
+        "CAUSAL_PATHWAY": {row["id"] for row in pathways},
+        "INTERVENTION_EFFECT": {row["id"] for row in effects},
+        "INTERVENTION_IDENTITY": {row["id"] for row in interventions},
+    }
+    for assessment in evidence:
+        assertion = assessment["assertion"]
+        _require(
+            assertion["objectId"] in assertion_targets[assertion["objectType"]],
+            f"Governed evidence assertion does not resolve: {assessment['id']}",
+        )
+    for record in relationships + pathways + effects:
+        for evidence_id in record["evidenceAssessmentIds"]:
+            _require(evidence_id in by_evidence_id, f"Governed EvidenceAssessment does not resolve: {evidence_id}")
+            assertion = by_evidence_id[evidence_id]["assertion"]
+            expected_type = "RELATIONSHIP"
+            if record.get("relationFamily") == "MODERATION":
+                expected_type = "MODERATION"
+            elif "orderedRelationshipIds" in record:
+                expected_type = "CAUSAL_PATHWAY"
+            elif "interventionId" in record:
+                expected_type = "INTERVENTION_EFFECT"
+            _require(
+                assertion == {"objectType": expected_type, "objectId": record["id"]},
+                f"Governed evidence assertion does not match {record['id']}",
+            )
+
+    return {
+        "nativeRelationships": len(relationships),
+        "nativeCausalRelationships": sum(row["relationFamily"] == "CAUSAL" for row in relationships),
+        "nativeInterventions": len(interventions),
+        "nativeInterventionEffects": len(effects),
+        "nativeEvidenceAssessments": len(evidence),
+        "nativeActiveRecords": sum(governed_active(row) for row in all_records),
+        "nativeActiveRelationships": sum(governed_active(row) for row in relationships),
+        "nativeActiveCausalRelationships": sum(
+            governed_active(row) and row["relationFamily"] == "CAUSAL"
+            for row in relationships
+        ),
+        "nativeActiveInterventions": sum(governed_active(row) for row in interventions),
+        "nativeActiveInterventionEffects": sum(governed_active(row) for row in effects),
+        "nativeActiveEvidenceAssessments": sum(governed_active(row) for row in evidence),
+    }
+
+
 def validate_repository() -> dict[str, int]:
     schemas = SchemaSet()
+    native_sources = validate_native_source_register(schemas)
     catalog = Catalog.from_repository()
     workspace = _load_json(CANDIDATE_WORKSPACE)
     validate_candidate_workspace(workspace, catalog, schemas)
@@ -737,14 +922,20 @@ def validate_repository() -> dict[str, int]:
         for record in catalog.legacy_relationships.values()
     )
     mediated = sum(record.get("directness") == "MEDIATED_PATH" for record in catalog.legacy_relationships.values())
-    return {
+    native_counts = validate_governed_v1_store(catalog, schemas)
+    result = {
         "entities": len(catalog.entities),
-        "activeRelationships": len(projected),
-        "activeCausalRelationships": causal,
+        "legacyActiveRelationships": len(projected),
+        "legacyActiveCausalRelationships": causal,
+        "activeRelationships": len(projected) + native_counts["nativeActiveRelationships"],
+        "activeCausalRelationships": causal + native_counts["nativeActiveCausalRelationships"],
         "v1IncompleteRelationships": sum(record["compatibility"]["migrationCompleteness"] == "INCOMPLETE" for record in projected),
         "v1LegacyOnlyRelationships": sum(record["compatibility"]["v1Executability"] == "LEGACY_ONLY" for record in projected),
         "legacyMediatedPathRecords": mediated,
+        "nativeSources": len(native_sources),
     }
+    result.update(native_counts)
+    return result
 
 
 def main() -> int:

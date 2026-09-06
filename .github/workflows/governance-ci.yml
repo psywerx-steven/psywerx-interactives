@@ -54,6 +54,15 @@ jobs:
       - name: Run Relationship and Intervention V1 tests
         run: python -m unittest discover -s tests -p "test_relationship_intervention_v1.py"
 
+      - name: Run BIO-F01 candidate pilot tests
+        run: python -m unittest discover -s tests -p "test_bio_f01_pilot.py"
+
+      - name: Run BIO-F01 governance checkpoint tests
+        run: python -m unittest discover -s tests -p "test_bio_f01_governance_001.py"
+
+      - name: Run BIO-F01 activation checkpoint tests
+        run: python -m unittest discover -s tests -p "test_bio_f01_activation_001.py"
+
       - name: Validate Relationship and Intervention V1 repository state
         run: python scripts/relationship_intervention_v1.py --validate-repository
 
@@ -101,6 +110,15 @@ jobs:
 
       - name: Run Relationship and Intervention V1 tests
         run: python -m unittest discover -s tests -p "test_relationship_intervention_v1.py"
+
+      - name: Run BIO-F01 candidate pilot tests
+        run: python -m unittest discover -s tests -p "test_bio_f01_pilot.py"
+
+      - name: Run BIO-F01 governance checkpoint tests
+        run: python -m unittest discover -s tests -p "test_bio_f01_governance_001.py"
+
+      - name: Run BIO-F01 activation checkpoint tests
+        run: python -m unittest discover -s tests -p "test_bio_f01_activation_001.py"
 
       - name: Verify migration tests leave artifacts unchanged
         run: git diff --exit-code -- data
