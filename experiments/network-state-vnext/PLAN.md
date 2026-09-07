@@ -1,6 +1,6 @@
 # SOC-F07 governance and bounded network-state review
 
-Status: IN PROGRESS. Architecture content is EXPERIMENTAL / NON_PRODUCTION.
+Status: milestones 1–4 complete; milestone 5 local and checkpoint CI validation passed, with final-head confirmation tracked in PR #19. Architecture content is EXPERIMENTAL / NON_PRODUCTION; every new architecture decision remains PENDING.
 
 Starting branch: `pilot/soc-f07-actions-events-v1`; head: `339c2e80206b0b304cdb262e7c5fec6dc0bc27ab`; main: `f0be9c24288bd128231e0d1243b34c03ad055906`.
 

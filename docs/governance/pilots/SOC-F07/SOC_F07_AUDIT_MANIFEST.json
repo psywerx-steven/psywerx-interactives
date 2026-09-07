@@ -18,6 +18,8 @@
   "baselineCommit": "f0be9c24288bd128231e0d1243b34c03ad055906",
   "branch": "pilot/soc-f07-actions-events-v1",
   "counts": {
+    "candidateSourceInventoryFrozen": true,
+    "candidateWorkspaceGoverned": 0,
     "canonicalReused": 15,
     "effectAssertions": 3,
     "evidenceAssessments": 11,
@@ -33,6 +35,11 @@
       "NULL_FINDING": 3,
       "SUPPORTS": 2
     },
+    "governedEffectAssertions": 0,
+    "governedEvidenceAssessments": 0,
+    "governedHappeningTypes": 7,
+    "governedRelationships": 0,
+    "governedSourceFindings": 0,
     "happeningTypes": 8,
     "hypothesisDisposition": {
       "BLOCKED_NEEDS_GOVERNANCE_INPUT": 2,
@@ -41,12 +48,14 @@
       "REVIEW_READY": 1
     },
     "newActive": 0,
-    "newGoverned": 0,
+    "newCanonicalSources": 6,
+    "newGoverned": 7,
+    "newInactive": 7,
     "newRelationshipSemantics": {
       "DERIVATIONAL": 1
     },
     "newRelationships": 1,
-    "note": "Evidence findings nested within candidate assessments are not extra scientific identities. Revision/target-gap/hypothesis ledgers counted separately.",
+    "note": "Candidate record/source inventory remains frozen research lineage. New governed/inactive counts refer to separate canonical identities; sources are definition provenance, not efficacy evidence.",
     "ontologyTargetGaps": 12,
     "production": {
       "combinedActiveCausal": 436,

@@ -164,7 +164,17 @@ existing scientific records, blocked fields, BIO-F01 and INF-F03 remain unchange
 The isolated Network State proposal/prototype covers nine deterministic fictional
 operations. NS01–NS12 all remain PENDING; no production architecture changes.
 
-Local tests so far: SOC pilot 36, governance 19, Network State 41 pass; both
-production validators pass. Full required regressions, final independent review
-and Linux/Windows CI are in progress. Exact resume point: review the running
-suite results, complete validation, commit/push and update PR #19 unmerged.
+Completed checkpoint commit `47318f5c3fffbc1b03a4463e9f1051f721b75c51` is pushed.
+All 347 explicit Python tests passed (two local Windows symlink-privilege skips),
+including SOC pilot 36, governance 19 and Network State 43. Scenario-service 21,
+production validators, deterministic regeneration, compilation/parsing, links
+and protected science checks passed. [CI run 34083292002](https://github.com/psywerx-steven/psywerx-interactives/actions/runs/34083292002)
+passed both Linux governance/service validation and Windows migration determinism.
+
+Final refinement reconciles nested human-readable/machine-readable counts with
+seven canonical inactive identities and zero governed candidate-workspace copies.
+It adds a privacy-risk citation at abstract/metadata access depth, not a new broad
+scientific review. Exact resume point: commit/push this refinement, update PR #19,
+inspect final-head Linux/Windows checks, record final SHA and local/remote equality
+in the PR closeout comment, and stop unmerged. No activation or production
+architecture change is authorized.

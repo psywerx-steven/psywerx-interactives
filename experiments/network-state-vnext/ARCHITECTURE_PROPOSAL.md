@@ -110,7 +110,7 @@ Keep occurrence evidence, observation evidence, calculation receipts and scienti
 
 ## Privacy and execution boundaries
 
-Real node-level graphs can identify people or organizations through topology even when names are replaced. Future work needs locally pseudonymous identifiers; separately access-controlled identity mapping; collection purpose/consent or other appropriate authority; minimization of sensitive attributes; small-group aggregation/export review; provenance and retention/deletion policies. Pseudonymization is not anonymity. No personal data, identity service, permissions system or privacy implementation was built here.
+Real node-level graphs can expose identity through topology even when names are replaced; published topology-based re-identification work motivates this risk boundary, not a universal numerical risk estimate. [Narayanan and Shmatikov, abstract](https://arxiv.org/abs/0903.3276) Future work needs locally pseudonymous identifiers; separately access-controlled identity mapping; collection purpose/consent or other appropriate authority; minimization of sensitive attributes; small-group aggregation/export review; provenance and retention/deletion policies. Pseudonymization is not anonymity. No personal data, identity service, permissions system or privacy implementation was built here.
 
 Future connectors could read a governed scenario snapshot or call an approved metric adapter. That is not authorization for diffusion, stochastic tie formation, causal numerical execution, network optimization, rankings, recommendations or live ingestion. The experimental CLI only generates synthetic examples within this directory. Existing scenario-service/FCM/Explorer remain untouched.
 

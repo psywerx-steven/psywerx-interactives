@@ -48,9 +48,18 @@ Recorded coverage flags are not instructions to invent edges.
 | revisionProposals | 6 |
 | ontologyTargetGaps | 12 |
 | separateGovernanceBlockedItems | 14 |
-| newGoverned | 0 |
+| newGoverned | 7 |
 | newActive | 0 |
-| note | Evidence findings nested within candidate assessments are not extra scientific identities. Revision/target-gap/hypothesis ledgers counted separately. |
+| note | Candidate record/source inventory remains frozen research lineage. New governed/inactive counts refer to separate canonical identities; sources are definition provenance, not efficacy evidence. |
+| newInactive | 7 |
+| governedHappeningTypes | 7 |
+| governedRelationships | 0 |
+| governedEffectAssertions | 0 |
+| governedEvidenceAssessments | 0 |
+| governedSourceFindings | 0 |
+| newCanonicalSources | 6 |
+| candidateWorkspaceGoverned | 0 |
+| candidateSourceInventoryFrozen | True |
 
 ## Structural flags
 

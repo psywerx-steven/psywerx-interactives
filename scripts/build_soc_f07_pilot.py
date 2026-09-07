@@ -486,7 +486,7 @@ def counts_report(w,audits,sources,findings,hypotheses,revisions,gaps):
     inventory=af.enriched_inventory()
     prod={k:inventory['summary'][k] for k in ('drivers','rds','entities','combinedActiveRelationships','combinedActiveCausal','combinedBySemantic')}
     recs=w['passA']['relationshipCandidates']+w['passA']['evidence']+list(ae.all_records(w['passB']))
-    return {'production':prod,'existingDisposition':dict(Counter(a['primaryDisposition'] for a in audits)),
+    result = {'production':prod,'existingDisposition':dict(Counter(a['primaryDisposition'] for a in audits)),
             'hypothesisDisposition':dict(Counter(h['disposition'] for h in hypotheses)),
             'newRelationships':len(w['passA']['relationshipCandidates']),'newRelationshipSemantics':dict(Counter(r['relationFamily'] for r in w['passA']['relationshipCandidates'])),
             'happeningTypes':len(w['passB']['happeningTypes']),'effectAssertions':len(w['passB']['effectAssertions']),
@@ -497,6 +497,13 @@ def counts_report(w,audits,sources,findings,hypotheses,revisions,gaps):
             'scientificRecordLifecycle':dict(Counter(r['governance']['lifecycleStatus'] for r in recs)),
             'revisionProposals':len(revisions),'ontologyTargetGaps':len(gaps),'separateGovernanceBlockedItems':len(gaps)+sum(h['disposition']=='BLOCKED_NEEDS_GOVERNANCE_INPUT' for h in hypotheses),
             'newGoverned':0,'newActive':0,'note':'Evidence findings nested within candidate assessments are not extra scientific identities. Revision/target-gap/hypothesis ledgers counted separately.'}
+    if (DOCS/'SOC_F07_HUMAN_DECISIONS.json').exists():
+        result.update(newGoverned=7,newInactive=7,newActive=0,governedHappeningTypes=7,
+                      governedRelationships=0,governedEffectAssertions=0,governedEvidenceAssessments=0,
+                      governedSourceFindings=0,newCanonicalSources=6,
+                      candidateWorkspaceGoverned=0,candidateSourceInventoryFrozen=True,
+                      note='Candidate record/source inventory remains frozen research lineage. New governed/inactive counts refer to separate canonical identities; sources are definition provenance, not efficacy evidence.')
+    return result
 
 
 def render_docs(m,sources,audits,revisions,hypotheses,entities,gaps,antecedents,search,w,findings):

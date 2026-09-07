@@ -156,6 +156,9 @@ class GovernanceTests(unittest.TestCase):
         i=af.enriched_inventory()['summary']
         self.assertEqual([i[k] for k in ('drivers','rds','entities','combinedActiveRelationships','combinedActiveCausal')],[770,41,811,457,436])
         self.assertEqual((self.manifest['newGoverned'],self.manifest['newInactive'],self.manifest['newActive']),(7,7,0))
+        audit=ae.read(g.DOCS/'SOC_F07_AUDIT_MANIFEST.json')
+        self.assertEqual(audit['newGoverned'],audit['counts']['newGoverned'])
+        self.assertEqual(audit['counts']['candidateWorkspaceGoverned'],0)
 
     def test_protected_record_comparison_detects_unapproved_edits(self):
         report=p.protected(); self.assertTrue(report['passed'])
