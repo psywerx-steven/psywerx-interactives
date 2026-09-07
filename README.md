@@ -21,6 +21,9 @@ PSYWERX. The repository is designed for static hosting with GitHub Pages.
 ## Repository structure
 
 - `data/` contains shared static data files.
+- `data/research-stream/research_items.jsonl` is the canonical, diffable store
+  for every Morning Brief item; its generated public projection contains only
+  owner-published records and public-safe fields.
 - `data/cognitive-security/` contains the generated public-safe Cognitive
   Security Practitioner Discourse Map package.
 - `cognitive-security/` contains the static Cognitive Security Explorer.
@@ -407,16 +410,40 @@ release provenance only when a detail or evidence-path interaction needs them.
 py -m http.server 8000
 ```
 
-Then open <http://localhost:8000/> for the release homepage. The editorial
-preview, including draft feed items and explicit noindex labeling, is at
-<http://localhost:8000/homepage-preview/>.
+Then open <http://localhost:8000/> for the release homepage. The noindex design
+preview is at <http://localhost:8000/homepage-preview/>. Both surfaces use the
+same owner-published research projection; pending database records are not
+exposed by the preview.
 
-Regenerate both deterministic homepage outputs with:
+Regenerate the public research projection and both deterministic homepage
+outputs with:
 
 ```powershell
+py homepage/tools/build_research_stream.py
 py homepage/tools/build_homepage.py --mode preview --tool-links preview
 py homepage/tools/build_homepage.py --mode release --tool-links local --output .
 ```
+
+Ingest a raw `psywerx-research-items-v1` JSON handoff or a full Morning Brief
+Markdown/text export containing the final fenced JSON object:
+
+```powershell
+py homepage/tools/ingest_research_items.py --input path/to/morning-brief.md --dry-run
+py homepage/tools/ingest_research_items.py --input path/to/morning-brief.md
+```
+
+Every new item begins pending. An explicit evening decision retains every item
+in the database while controlling only public-stream eligibility:
+
+```powershell
+py homepage/tools/review_research_item.py ITEM_ID publish --date YYYY-MM-DD
+py homepage/tools/review_research_item.py ITEM_ID hold --date YYYY-MM-DD
+py homepage/tools/review_research_item.py ITEM_ID reject --date YYYY-MM-DD
+```
+
+See [`homepage/docs/FEED_WORKFLOW.md`](./homepage/docs/FEED_WORKFLOW.md) for the
+machine handoff, repeat-source rules, public allowlist, static pagination, and
+future Drive-to-GitHub automation boundary.
 
 The Driver Explorer remains available at <http://localhost:8000/drivers/>.
 

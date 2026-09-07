@@ -1,6 +1,8 @@
 # Current `psywerx.io` public-site inventory
 
-Observed 2026-09-07 before replacement. This is a read-only audit of the Super/Vercel site and public DNS; no Super, DNS, or repository settings were changed.
+Observed 2026-09-07 before replacement. This is a read-only historical and rollback snapshot of the Super/Vercel site and public DNS; no Super, DNS, or repository settings were changed.
+
+**Owner decision:** the 98 secondary Super/Notion pages are obsolete and authorized for retirement. They will not be migrated, recreated, individually redirected, assigned a special 404, or used as a launch gate. Keep this inventory as historical evidence and retain Super through the successful production acceptance window.
 
 ## Hosting and navigation
 
@@ -37,7 +39,7 @@ The launch candidate reuses these public, credential-free form details in a rest
 
 ## Public sitemap snapshot
 
-The current sitemap exposes 99 URLs (the root plus 98 secondary pages). Preserve this list until the owner decides which secondary content is archived, migrated, redirected, or intentionally retired. The launch PR does not fabricate replacements for these pages.
+The current sitemap exposes 99 URLs (the root plus 98 secondary pages). The list below is retained only as a historical/rollback snapshot; the owner has authorized retirement of every secondary page.
 
 ```text
 /
@@ -141,6 +143,6 @@ The current sitemap exposes 99 URLs (the root plus 98 secondary pages). Preserve
 /will-to-fight
 ```
 
-## URLs that must not disappear without an explicit decision
+## Authorized disposition
 
-The two live explorer destinations and their deep links are mandatory migrations. The 98 secondary Super URLs may contain useful knowledge-base content even though the current homepage does not link to them. Before ending Super service, export or snapshot the underlying Notion/Super content and approve a per-URL disposition. High-signal families include behavior drivers/theories/interventions, frameworks/methods/modeling, cognitive warfare and influence topics, courses/exercises, countries/cases, and resources/reporting. `/test`, `/p`, `/pages`, and duplicate `/pages/...` paths appear administrative or legacy but still require owner confirmation before retirement.
+The homepage and two live Explorer destinations remain part of the migration. All 98 secondary Super URLs are obsolete by owner decision and require no migration, recreation, redirect, custom 404, content review, or per-URL disposition. Do not retire or disable Super until the replacement homepage and Explorer routes complete the production acceptance window; after acceptance, the owner may retire the obsolete Super content.

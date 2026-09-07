@@ -3,40 +3,45 @@
   'use strict';
   const data = window.PSYWERX_HOME;
   if (!data || !Array.isArray(data.platform)) return;
-  const $ = (s, root = document) => root.querySelector(s);
-  const $$ = (s, root = document) => Array.from(root.querySelectorAll(s));
-  const areaById = new Map(data.platform.map(a => [a.id, a]));
-  const itemById = new Map(data.feed.map(i => [i.id, i]));
+  const $ = (selector, root = document) => root.querySelector(selector);
+  const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
+  const areaById = new Map(data.platform.map(area => [area.id, area]));
   const selected = new Set();
-  const validFilters = new Set(data.feedCategories.map(c => c.id));
+  const validFilters = new Set(data.feedCategories.map(category => category.id));
   const filterButtons = $$('[data-filter]');
-  const feedCards = $$('.feed-item');
   const dialog = $('#detail-dialog');
+  const loadOlderButton = $('#load-older');
+  const loadedIds = new Set($$('.feed-item').map(card => card.dataset.feedId));
+  let nextPage = data.feedPagination && data.feedPagination.nextPage;
   let lastFocus = null;
 
   function node(tag, text, cls) {
-    const el = document.createElement(tag);
-    if (text != null) el.textContent = text;
-    if (cls) el.className = cls;
-    return el;
+    const element = document.createElement(tag);
+    if (text != null) element.textContent = text;
+    if (cls) element.className = cls;
+    return element;
   }
-  function safeUrl(value) {
+
+  function safeExternalUrl(value) {
     try {
-      const u = new URL(value);
-      return u.protocol === 'https:' && !u.username && !u.password ? u.href : null;
-    } catch (_) { return null; }
+      const url = new URL(value);
+      return url.protocol === 'https:' && !url.username && !url.password ? url.href : null;
+    } catch (_) {
+      return null;
+    }
   }
-  function externalLink(text, url) {
-    const a = node('a', text);
-    a.href = safeUrl(url) || '#';
-    a.target = '_blank';
-    a.rel = 'noopener noreferrer';
-    return a;
+
+  function safeFeedPageUrl(value) {
+    if (!value) return null;
+    try {
+      const url = new URL(value, location.href);
+      const validPath = /\/data\/research-stream\/public_feed_pages\/page-\d{4}\.json$/.test(url.pathname);
+      return url.origin === location.origin && validPath && !url.search && !url.hash ? url.href : null;
+    } catch (_) {
+      return null;
+    }
   }
-  function dateLabel(iso) {
-    if (!iso) return '';
-    return new Intl.DateTimeFormat('en-US', {month:'long',day:'numeric',year:'numeric',timeZone:'UTC'}).format(new Date(iso + 'T00:00:00Z'));
-  }
+
   function openDialog(eyebrow, title, children) {
     lastFocus = document.activeElement;
     $('#dialog-eyebrow').textContent = eyebrow;
@@ -44,32 +49,46 @@
     $('#dialog-body').replaceChildren(...children);
     dialog.showModal();
   }
-  function closeDialog() { dialog.close(); }
+
+  function closeDialog() {
+    dialog.close();
+  }
+
   $('.dialog-close').addEventListener('click', closeDialog);
-  dialog.addEventListener('close', () => { if (lastFocus && lastFocus.isConnected) lastFocus.focus({preventScroll:true}); });
-  dialog.addEventListener('click', e => {
-    if (e.target !== dialog) return;
-    const r = dialog.getBoundingClientRect();
-    if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) closeDialog();
+  dialog.addEventListener('close', () => {
+    if (lastFocus && lastFocus.isConnected) lastFocus.focus({preventScroll: true});
+  });
+  dialog.addEventListener('click', event => {
+    if (event.target !== dialog) return;
+    const bounds = dialog.getBoundingClientRect();
+    if (
+      event.clientX < bounds.left ||
+      event.clientX > bounds.right ||
+      event.clientY < bounds.top ||
+      event.clientY > bounds.bottom
+    ) closeDialog();
   });
 
-  // The six-area diagram is a navigation component, not a causal relationship graph.
+  // The six-area diagram is navigation, not a causal relationship graph.
   function selectArea(id) {
-    const a = areaById.get(id);
-    if (!a) return;
-    $$('[data-area]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.area === id)));
+    const area = areaById.get(id);
+    if (!area) return;
+    $$('[data-area]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.area === id)));
     const content = node('div');
-    content.append(node('span', a.label.toUpperCase(), 'eyebrow'), node('h3', a.question), node('p', a.description));
+    content.append(node('span', area.label.toUpperCase(), 'eyebrow'), node('h3', area.question), node('p', area.description));
     const link = node('a', 'View this area →', 'map-detail-link');
     link.href = '#area-' + id;
     $('#map-detail').replaceChildren(content, link);
   }
+
   $$('[data-area]').forEach(button => button.addEventListener('click', () => selectArea(button.dataset.area)));
+
   function revealHashArea() {
     if (!location.hash.startsWith('#area-')) return;
-    const el = document.getElementById(location.hash.slice(1));
-    if (el && el.matches('details.area-card')) el.open = true;
+    const element = document.getElementById(location.hash.slice(1));
+    if (element && element.matches('details.area-card')) element.open = true;
   }
+
   document.addEventListener('click', event => {
     const anchor = event.target.closest('a[href^="#"]');
     if (!anchor) return;
@@ -78,7 +97,10 @@
       const area = document.getElementById(hash.slice(1));
       if (area) area.open = true;
     }
-    ['explore-menu','mobile-menu'].forEach(id => { const menu=document.getElementById(id); if(menu) menu.open=false; });
+    ['explore-menu', 'mobile-menu'].forEach(id => {
+      const menu = document.getElementById(id);
+      if (menu) menu.open = false;
+    });
   });
   window.addEventListener('hashchange', revealHashArea);
   revealHashArea();
@@ -86,82 +108,148 @@
   // Multi-select feed filters are OR within the selection. Empty selection = all.
   function syncFilterUrl() {
     try {
-      const u = new URL(location.href);
-      if (selected.size) u.searchParams.set('feed', Array.from(selected).sort().join(','));
-      else u.searchParams.delete('feed');
-      history.replaceState(null, '', u.href);
-    } catch (_) { /* File previews in restricted hosts may prohibit history writes. */ }
+      const url = new URL(location.href);
+      if (selected.size) url.searchParams.set('feed', Array.from(selected).sort().join(','));
+      else url.searchParams.delete('feed');
+      history.replaceState(null, '', url.href);
+    } catch (_) {
+      // Restricted file previews may prohibit history writes.
+    }
   }
+
   function applyFilters(updateUrl = true) {
-    let visible=0;
-    feedCards.forEach(card => {
-      const cats=(card.dataset.categories || '').split(' ');
-      card.hidden=selected.size > 0 && !cats.some(id => selected.has(id));
-      if(!card.hidden) visible++;
+    const cards = $$('.feed-item');
+    let visible = 0;
+    cards.forEach(card => {
+      const categories = (card.dataset.categories || '').split(' ');
+      card.hidden = selected.size > 0 && !categories.some(id => selected.has(id));
+      if (!card.hidden) visible += 1;
     });
     filterButtons.forEach(button => {
-      const active=button.dataset.filter === 'all' ? selected.size === 0 : selected.has(button.dataset.filter);
-      button.classList.toggle('active',active);
-      button.setAttribute('aria-pressed',String(active));
+      const active = button.dataset.filter === 'all' ? selected.size === 0 : selected.has(button.dataset.filter);
+      button.classList.toggle('active', active);
+      button.setAttribute('aria-pressed', String(active));
     });
-    $('#feed-result-count').textContent=visible+' '+(visible===1?'selection':'selections');
-    $('#feed-empty').hidden=visible > 0 || data.feed.length === 0;
-    $('.feed-scroll').scrollTop=0;
-    if(updateUrl) syncFilterUrl();
+    $('#feed-result-count').textContent = visible + ' ' + (visible === 1 ? 'selection' : 'selections');
+    $('#feed-empty').hidden = visible > 0 || cards.length === 0;
+    $('.feed-scroll').scrollTop = 0;
+    if (updateUrl) syncFilterUrl();
   }
+
   filterButtons.forEach(button => button.addEventListener('click', () => {
-    const id=button.dataset.filter;
-    if(id==='all') selected.clear();
-    else if(selected.has(id)) selected.delete(id);
-    else if(validFilters.has(id)) selected.add(id);
+    const id = button.dataset.filter;
+    if (id === 'all') selected.clear();
+    else if (selected.has(id)) selected.delete(id);
+    else if (validFilters.has(id)) selected.add(id);
     applyFilters();
   }));
-  $('#clear-feed').addEventListener('click', () => { selected.clear(); applyFilters(); });
+  $('#clear-feed').addEventListener('click', () => {
+    selected.clear();
+    applyFilters();
+  });
+
   function loadFilterUrl() {
     selected.clear();
-    const saved=(new URL(location.href).searchParams.get('feed')||'').split(',');
-    saved.forEach(id=>{if(validFilters.has(id)) selected.add(id);});
+    const saved = (new URL(location.href).searchParams.get('feed') || '').split(',');
+    saved.forEach(id => {
+      if (validFilters.has(id)) selected.add(id);
+    });
     applyFilters(false);
   }
-  window.addEventListener('popstate',loadFilterUrl);
+  window.addEventListener('popstate', loadFilterUrl);
   loadFilterUrl();
 
-  $$('[data-feed-detail]').forEach(button => button.addEventListener('click', () => {
-    const item=itemById.get(button.dataset.feedDetail);
-    if(!item) return;
-    const selection=node('p', 'Selected in the '+item.briefType+' brief · '+dateLabel(item.briefDate), 'dialog-meta');
-    const summary=node('p',item.summary);
-    const detail=node('p',item.detail);
-    const source=node('p','Source: '+item.publisher, 'source-label');
-    const children=[selection,summary,detail,source];
-    if(item.sourcePublishedAt) children.push(node('p','Source publication: '+dateLabel(item.sourcePublishedAt),'dialog-meta'));
-    children.push(externalLink('Read the original source ↗',item.sourceUrl));
-    openDialog(item.sourceType.toUpperCase(),item.title,children);
-  }));
+  function validPublicItem(item) {
+    return item &&
+      typeof item.itemId === 'string' && /^research-[0-9a-f]{20}$/.test(item.itemId) &&
+      typeof item.streamTitle === 'string' && item.streamTitle.trim() &&
+      typeof item.streamSummary === 'string' && item.streamSummary.trim() &&
+      typeof item.attribution === 'string' && item.attribution.trim() &&
+      safeExternalUrl(item.sourceUrl) &&
+      Array.isArray(item.categories) && item.categories.length > 0 &&
+      item.categories.every(category => validFilters.has(category));
+  }
+
+  function renderFeedCard(item) {
+    const article = node('article', null, 'feed-item');
+    article.dataset.categories = item.categories.join(' ');
+    article.dataset.feedId = item.itemId;
+    const title = node('h3', item.streamTitle);
+    const summary = node('p', item.streamSummary);
+    const source = node('div', null, 'feed-source');
+    const link = node('a', item.attribution);
+    link.href = safeExternalUrl(item.sourceUrl);
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    const arrow = node('span', '↗', 'arrow');
+    arrow.setAttribute('aria-hidden', 'true');
+    source.append(link, arrow);
+    article.append(title, summary, source);
+    return article;
+  }
+
+  function syncLoadOlder() {
+    loadOlderButton.hidden = !safeFeedPageUrl(nextPage);
+  }
+
+  loadOlderButton.addEventListener('click', async () => {
+    const url = safeFeedPageUrl(nextPage);
+    if (!url) return;
+    loadOlderButton.disabled = true;
+    loadOlderButton.textContent = 'Loading…';
+    try {
+      const response = await fetch(url, {credentials: 'same-origin'});
+      if (!response.ok) throw new Error('Research page request failed');
+      const page = await response.json();
+      if (
+        page.schemaVersion !== 'psywerx-public-research-stream-v1' ||
+        !Array.isArray(page.items) ||
+        !page.items.every(validPublicItem)
+      ) throw new Error('Research page is invalid');
+      const container = $('#feed-items');
+      const initialEmpty = container.querySelector('.feed-empty');
+      if (initialEmpty) initialEmpty.remove();
+      page.items.forEach(item => {
+        if (loadedIds.has(item.itemId)) return;
+        loadedIds.add(item.itemId);
+        container.append(renderFeedCard(item));
+      });
+      nextPage = page.nextPage ? new URL(page.nextPage, new URL('../', url)).href : null;
+      applyFilters(false);
+    } catch (_) {
+      $('#feed-result-count').textContent = 'Older selections could not be loaded';
+    } finally {
+      loadOlderButton.disabled = false;
+      loadOlderButton.textContent = 'Load older selections →';
+      syncLoadOlder();
+    }
+  });
+  syncLoadOlder();
 
   $$('[data-open-dialog]').forEach(button => button.addEventListener('click', () => {
-    switch(button.dataset.openDialog) {
-      case 'feed-info':
-        openDialog('RESEARCH & DISCUSSION','From the briefs to the bigger picture.',[
-          node('p','This feed brings together selected research, technical developments, operational discussions, and analytical approaches from PSYWERX’s daily and weekly reports.'),
-          node('p','Use more than one filter to show selections from any of your chosen interests. Dates beside the cards identify the brief; source publication dates appear in the details.'),
-          node('p',data.mode==='preview' ? 'This design preview uses six draft selections from the September 4 and September 6, 2026 brief archive. It is not connected to an automatic publishing service. Entries must be reviewed before public release.' : 'Selections are published after editorial review. The feed does not update automatically from private reports.')
-        ]);
-        break;
-    }
+    if (button.dataset.openDialog !== 'feed-info') return;
+    openDialog('RESEARCH & DISCUSSION', 'From the Morning Brief to the public stream.', [
+      node('p', 'Each Morning Brief contributes every research item to the PSYWERX research database. Inclusion there supports retrieval, source tracking, deduplication, and later analysis.'),
+      node('p', 'Only items the owner explicitly chooses to publish appear here. Hold and reject decisions keep an item in the research database without placing it in the public stream.'),
+      node('p', 'Use more than one filter to show selections matching any of your chosen interests. Older published selections load in small pages as the stream grows.')
+    ]);
   }));
+
   // Native disclosure navigation, with Escape and click-outside behavior.
-  document.addEventListener('keydown', e=>{
-    if(e.key!=='Escape') return;
-    ['explore-menu','mobile-menu'].forEach(id=>{
-      const menu=document.getElementById(id);
-      if(menu && menu.open){menu.open=false; menu.querySelector('summary').focus();}
+  document.addEventListener('keydown', event => {
+    if (event.key !== 'Escape') return;
+    ['explore-menu', 'mobile-menu'].forEach(id => {
+      const menu = document.getElementById(id);
+      if (menu && menu.open) {
+        menu.open = false;
+        menu.querySelector('summary').focus();
+      }
     });
   });
-  document.addEventListener('click', e=>{
-    ['explore-menu','mobile-menu'].forEach(id=>{
-      const menu=document.getElementById(id);
-      if(menu && menu.open && !menu.contains(e.target)) menu.open=false;
+  document.addEventListener('click', event => {
+    ['explore-menu', 'mobile-menu'].forEach(id => {
+      const menu = document.getElementById(id);
+      if (menu && menu.open && !menu.contains(event.target)) menu.open = false;
     });
   });
 })();

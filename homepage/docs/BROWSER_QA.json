@@ -1,5 +1,5 @@
 {
-  "scope": "Root launch candidate plus preview-only editorial interactions, exercised through local HTTP in Chromium.",
+  "scope": "Root launch candidate, public-stream controls, and both Explorer routes exercised through local HTTP in Chromium.",
   "passed": 118,
   "checks": [
     {
@@ -247,11 +247,15 @@
       "pass": true
     },
     {
-      "name": "Release excludes all draft feed entries",
+      "name": "Release excludes all non-published database entries",
       "pass": true
     },
     {
       "name": "Release feed has an honest empty state",
+      "pass": true
+    },
+    {
+      "name": "Release has no older-page request when stream is empty",
       "pass": true
     },
     {
@@ -395,11 +399,11 @@
       "pass": true
     },
     {
-      "name": "Preview exposes six labeled drafts for editorial QA",
+      "name": "Preview does not expose pending database records",
       "pass": true
     },
     {
-      "name": "Operations filter yields its tagged selection",
+      "name": "Operations filter yields its loaded selection",
       "pass": true
     },
     {
@@ -411,19 +415,15 @@
       "pass": true
     },
     {
-      "name": "All resets the preview feed",
+      "name": "All resets the loaded stream",
       "pass": true
     },
     {
-      "name": "Feed item opens a native modal dialog",
+      "name": "Stream explanation opens a native modal dialog",
       "pass": true
     },
     {
-      "name": "Source and brief dates remain distinct",
-      "pass": true
-    },
-    {
-      "name": "Source link opens safely",
+      "name": "Stream explanation describes explicit owner selection",
       "pass": true
     },
     {

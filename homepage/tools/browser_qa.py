@@ -115,8 +115,9 @@ with sync_playwright() as playwright:
         check("Six connected-knowledge controls are present", page.locator("[data-area]").count() == 6)
         check("Four approved filters plus All are present", page.locator("[data-filter]").count() == 5)
         check("No Ask PSYWERX control", page.locator('input[type="search"]').count() == 0 and page.get_by_text("Ask PSYWERX", exact=True).count() == 0)
-        check("Release excludes all draft feed entries", page.locator("[data-feed-detail]").count() == 0)
+        check("Release excludes all non-published database entries", page.locator(".feed-item").count() == 0)
         check("Release feed has an honest empty state", "Research selections are on the way" in page.locator(".feed-scroll").inner_text())
+        check("Release has no older-page request when stream is empty", page.locator("#load-older").is_hidden())
         check("Same-site Driver link", page.locator('a.featured-card[href="./drivers/"]').count() == 1)
         check("Same-site Cognitive Security link", page.locator('a.featured-card[href="./cognitive-security/"]').count() == 1)
         check("Driver route responds", page.request.get(origin + "drivers/").status == 200)
@@ -171,19 +172,36 @@ with sync_playwright() as playwright:
         errors, http_errors, remote = browser_errors(page, origin)
         load(page, origin + "homepage-preview/")
         check("Preview remains noindex", page.locator('meta[name="robots"]').get_attribute("content") == "noindex,nofollow")
-        check("Preview exposes six labeled drafts for editorial QA", page.locator("[data-feed-detail]").count() == 6 and page.locator(".preview-badge").count() == 1)
+        check("Preview does not expose pending database records", page.locator(".feed-item").count() == 0 and page.locator(".preview-badge").count() == 1)
+        page.evaluate(
+            """() => {
+              const container = document.querySelector('#feed-items');
+              container.replaceChildren();
+              [
+                ['research-00000000000000000001', 'operations-strategy'],
+                ['research-00000000000000000002', 'behavioral-science technology-modeling'],
+                ['research-00000000000000000003', 'application-analysis']
+              ].forEach(([id, categories]) => {
+                const article = document.createElement('article');
+                article.className = 'feed-item';
+                article.dataset.feedId = id;
+                article.dataset.categories = categories;
+                article.innerHTML = '<h3>Filter fixture</h3><p>Browser-only public stream fixture.</p>';
+                container.append(article);
+              });
+            }"""
+        )
         page.locator('[data-filter="operations-strategy"]').click()
-        check("Operations filter yields its tagged selection", page.locator(".feed-item:visible").count() == 1)
+        check("Operations filter yields its loaded selection", page.locator(".feed-item:visible").count() == 1)
         page.locator('[data-filter="behavioral-science"]').click()
-        check("Multi-select filters use union", page.locator(".feed-item:visible").count() == 4)
+        check("Multi-select filters use union", page.locator(".feed-item:visible").count() == 2)
         check("Filter state is announced", page.locator('[data-filter="behavioral-science"]').get_attribute("aria-pressed") == "true")
         page.locator('[data-filter="all"]').click()
-        check("All resets the preview feed", page.locator(".feed-item:visible").count() == 6)
-        trigger = page.locator("[data-feed-detail]").first
+        check("All resets the loaded stream", page.locator(".feed-item:visible").count() == 3)
+        trigger = page.locator('[data-open-dialog="feed-info"]')
         trigger.click()
-        check("Feed item opens a native modal dialog", page.locator("#detail-dialog").is_visible() and page.locator("#detail-dialog").get_attribute("open") is not None)
-        check("Source and brief dates remain distinct", "Selected in the daily brief" in page.locator("#dialog-body").inner_text() and "Source publication:" in page.locator("#dialog-body").inner_text())
-        check("Source link opens safely", page.locator("#dialog-body a").get_attribute("target") == "_blank" and "noopener" in page.locator("#dialog-body a").get_attribute("rel"))
+        check("Stream explanation opens a native modal dialog", page.locator("#detail-dialog").is_visible() and page.locator("#detail-dialog").get_attribute("open") is not None)
+        check("Stream explanation describes explicit owner selection", "owner explicitly chooses to publish" in page.locator("#dialog-body").inner_text())
         page.keyboard.press("Escape")
         check("Dialog Escape restores focus", not page.locator("#detail-dialog").is_visible() and trigger.evaluate("e=>e===document.activeElement"))
         check("Preview interaction suite has no errors", not errors and not http_errors and not remote)
@@ -208,7 +226,7 @@ with sync_playwright() as playwright:
     browser.close()
 
 report = {
-    "scope": "Root launch candidate plus preview-only editorial interactions, exercised through local HTTP in Chromium.",
+    "scope": "Root launch candidate, public-stream controls, and both Explorer routes exercised through local HTTP in Chromium.",
     "passed": sum(item["pass"] for item in checks),
     "checks": checks,
     "viewports": [1440, 1280, 1024, 768, 500, 390, 320],

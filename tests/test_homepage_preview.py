@@ -1,9 +1,9 @@
 """Offline and repository-integration acceptance tests for the homepage launch."""
-import copy
 import importlib.util
 import json
 import re
 import shutil
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -11,6 +11,9 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parents[1]
 SOURCE = REPO / "homepage"
 PREVIEW = REPO / "homepage-preview"
+sys.path.insert(0, str(SOURCE / "tools"))
+import research_stream as stream
+
 spec = importlib.util.spec_from_file_location("builder", SOURCE / "tools/build_homepage.py")
 builder = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(builder)
@@ -19,7 +22,7 @@ spec.loader.exec_module(builder)
 def dataset():
     return tuple(
         json.loads((SOURCE / "content" / name).read_text(encoding="utf-8"))
-        for name in ("site.json", "platform.json", "feed.json")
+        for name in ("site.json", "platform.json")
     )
 
 
@@ -28,6 +31,7 @@ def temporary_source():
     root = Path(context.name)
     shutil.copytree(SOURCE / "content", root / "content")
     shutil.copytree(SOURCE / "src", root / "src")
+    shutil.copytree(REPO / "data/research-stream", root / "data/research-stream")
     return context, root
 
 
@@ -45,51 +49,26 @@ class HomepageTests(unittest.TestCase):
     def test_training_is_coming_soon(self):
         self.assertTrue(all(tool["status"] == "soon" for tool in dataset()[1][-1]["tools"]))
 
-    def test_no_false_public_approval(self):
-        self.assertTrue(all(item["status"] == "draft" for item in dataset()[2]))
+    def test_all_four_stream_categories(self):
+        self.assertEqual({category["id"] for category in dataset()[0]["feedCategories"]}, set(builder.EXPECTED_FEED))
 
-    def test_feed_has_all_four_categories(self):
-        self.assertEqual(set().union(*(set(item["categories"]) for item in dataset()[2])), set(builder.EXPECTED_FEED))
-
-    def test_feed_preserves_source_and_brief_dates(self):
-        self.assertTrue(any(item["sourcePublishedAt"] != item["briefDate"] for item in dataset()[2]))
-
-    def test_invalid_url_rejected(self):
-        site, platform, feed = dataset()
-        feed[0]["sourceUrl"] = "javascript:alert(1)"
+    def test_invalid_site_url_rejected(self):
+        site, platform = dataset()
+        site["targetOrigin"] = "javascript:alert(1)"
         with self.assertRaises(ValueError):
-            builder.validate(site, platform, feed)
+            builder.validate(site, platform)
 
     def test_unverified_newsletter_action_rejected(self):
-        site, platform, feed = dataset()
+        site, platform = dataset()
         site["newsletterAction"] = "https://example.com/subscribe"
         with self.assertRaises(ValueError):
-            builder.validate(site, platform, feed)
-
-    def test_duplicate_id_rejected(self):
-        site, platform, feed = dataset()
-        feed.append(copy.deepcopy(feed[0]))
-        with self.assertRaises(ValueError):
-            builder.validate(site, platform, feed)
-
-    def test_approval_requires_source_verification(self):
-        site, platform, feed = dataset()
-        feed[0]["status"] = "approved"
-        feed[0]["primarySourceChecked"] = False
-        with self.assertRaises(ValueError):
-            builder.validate(site, platform, feed)
-
-    def test_approval_requires_review_date(self):
-        site, platform, feed = dataset()
-        feed[0]["status"] = "approved"
-        with self.assertRaises(KeyError):
-            builder.validate(site, platform, feed)
+            builder.validate(site, platform)
 
     def test_preview_has_no_cname(self):
         self.assertFalse((PREVIEW / "CNAME").exists())
 
     def test_no_secret_or_private_source_urls(self):
-        public_files = [REPO / "index.html", REPO / "robots.txt", REPO / "sitemap.xml"] + list((REPO / "assets").glob("*"))
+        public_files = [REPO / "index.html", REPO / "robots.txt", REPO / "sitemap.xml", REPO / "data/research-stream/public_feed.json"] + list((REPO / "assets").glob("*"))
         text = "\n".join(
             path.read_text(encoding="utf-8")
             for path in public_files
@@ -97,7 +76,7 @@ class HomepageTests(unittest.TestCase):
         )
         self.assertNotRegex(text, r"https://(?:docs\.google\.com|drive\.google\.com)")
         self.assertNotRegex(text, r"sk-[a-zA-Z0-9_-]{20,}|ghp_[a-zA-Z0-9]{20,}|C:\\\\Users")
-        self.assertNotRegex(text, r"[Ã¢Ã‚ï¿½]")
+        self.assertNotRegex(text, r"[ÃƒÂ¢Ãƒâ€šÃ¯Â¿Â½]")
 
     def test_verified_mailerlite_signup_form(self):
         page = (REPO / "index.html").read_text(encoding="utf-8")
@@ -123,37 +102,59 @@ class HomepageTests(unittest.TestCase):
         with context:
             builder.build("release", "local", root)
             first = {path.relative_to(root / "site"): path.read_bytes() for path in (root / "site").rglob("*") if path.is_file()}
+            first_public = (root / "data/research-stream/public_feed.json").read_bytes()
             builder.build("release", "local", root)
             second = {path.relative_to(root / "site"): path.read_bytes() for path in (root / "site").rglob("*") if path.is_file()}
             self.assertEqual(first, second)
+            self.assertEqual(first_public, (root / "data/research-stream/public_feed.json").read_bytes())
 
-    def test_release_excludes_unapproved_feed(self):
+    def test_release_excludes_pending_database_records(self):
         context, root = temporary_source()
         with context:
             report = builder.build("release", "local", root)
             page = (root / "site/index.html").read_text(encoding="utf-8")
+            data_text = (root / "site/assets/home-data.js").read_text(encoding="utf-8")
             self.assertEqual(report["feedCount"], 0)
+            self.assertEqual(report["feedTotal"], 0)
             self.assertIn("./drivers/", page)
             self.assertNotIn("noindex,nofollow", page)
-            self.assertNotIn("data-feed-detail=", page)
+            self.assertNotIn("questionAndWhy", data_text)
             self.assertIn('<link rel="canonical" href="https://psywerx.io/">', page)
             self.assertIn('<meta name="robots" content="index,follow">', page)
 
-    def test_public_feed_allowlist(self):
+    def test_release_renders_only_public_projection_fields(self):
+        context, root = temporary_source()
+        with context:
+            database = root / "data/research-stream/research_items.jsonl"
+            records = stream.load_database(database)
+            stream.review_item(database, records[0]["itemId"], "publish", "2026-09-08")
+            builder.build("release", "local", root)
+            page = (root / "site/index.html").read_text(encoding="utf-8")
+            data_text = (root / "site/assets/home-data.js").read_text(encoding="utf-8")
+            data = json.loads(data_text[len("window.PSYWERX_HOME = "):].strip().removesuffix(";"))
+            self.assertEqual(len(data["feed"]), 1)
+            self.assertEqual(set(data["feed"][0]), set(stream.PUBLIC_FIELDS))
+            self.assertIn(records[0]["streamTitle"], page)
+            self.assertIn(records[0]["attribution"], page)
+            self.assertNotIn(records[0]["questionAndWhy"], page + data_text)
+
+    def test_public_stream_allowlist_matches_builder(self):
+        self.assertEqual(
+            set(builder.PUBLIC_FEED_FIELDS),
+            {"itemId", "streamTitle", "streamSummary", "attribution", "sourceUrl", "categories", "publishedAt"},
+        )
+
+    def test_preview_excludes_canonical_research_notes(self):
         text = (PREVIEW / "assets/home-data.js").read_text(encoding="utf-8")
         data = json.loads(text[len("window.PSYWERX_HOME = "):].strip().removesuffix(";"))
-        self.assertEqual(set(data["feed"][0]), set(builder.PUBLIC_FEED_FIELDS))
+        self.assertEqual(data["feed"], [])
+        for private_field in ("questionAndWhy", "whatTheyDid", "whatTheyFound", "whatItMeans", "sourceVerified", "decisionDate"):
+            self.assertNotIn(private_field, text)
 
     def test_verified_integrations_only(self):
         site = dataset()[0]
         self.assertEqual(site["newsletterAction"], "https://assets.mailerlite.com/jsonp/2519483/forms/195936376173102135/subscribe")
         self.assertEqual(site["linkedinUrl"], "https://www.linkedin.com/company/psywerx")
-
-    def test_preview_excludes_editorial_control_fields(self):
-        text = (PREVIEW / "assets/home-data.js").read_text(encoding="utf-8")
-        data = json.loads(text[len("window.PSYWERX_HOME = "):].strip().removesuffix(";"))
-        for private_field in ("primarySourceChecked", "reviewedAt", "status", "order"):
-            self.assertTrue(all(private_field not in item for item in data["feed"]))
 
     def test_launch_root_replaces_redirect_but_defers_cname_cutover(self):
         page = (REPO / "index.html").read_text(encoding="utf-8")
@@ -172,12 +173,6 @@ class HomepageTests(unittest.TestCase):
         self.assertIn('property="og:title"', page)
         self.assertIn('name="twitter:card" content="summary_large_image"', page)
         self.assertIn('property="og:image" content="https://psywerx.io/assets/brand-banner.webp"', page)
-
-    def test_date_is_valid(self):
-        site, platform, feed = dataset()
-        feed[0]["briefDate"] = "2026-22-90"
-        with self.assertRaises(ValueError):
-            builder.validate(site, platform, feed)
 
 
 if __name__ == "__main__":

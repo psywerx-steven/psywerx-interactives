@@ -16,6 +16,12 @@ This launch candidate changes only version-controlled files. It does not change 
 
 The authoritative name servers identify Google Domains infrastructure, but they do not prove which current registrar/account UI controls the zone. The domain owner must identify the credentialed DNS console before cutover.
 
+## Authorized Super scope
+
+Only the current Super homepage matters to this migration. The owner has authorized retirement of all 98 secondary Super/Notion pages; they require no migration, recreation, individual redirect, special 404, or launch approval. `CURRENT_SITE_INVENTORY.md` is retained only as a historical/rollback snapshot.
+
+Keep Super and its current homepage available throughout the production acceptance window. The obsolete content may be retired after the new apex homepage and both Explorer routes are accepted.
+
 ## Why `CNAME` remains unchanged in this PR
 
 The checked-in `CNAME` remains `drivers.psywerx.io`. Changing it to `psywerx.io` on an ordinary merge could detach the currently live explorer hostname before the replacement redirect service and apex DNS are ready. Immediately before an intentionally coordinated cutover merge, add a final reviewed commit that changes the file to exactly:
@@ -41,15 +47,14 @@ Use HTTP 308, keep the initial cache lifetime at five minutes, and raise it only
 
 ## Pre-cutover human checklist
 
-1. Export or snapshot the Super/Notion site, its 99-URL sitemap, Super configuration, and current DNS zone. Keep the Super subscription/site active through validation.
-2. Decide the disposition of every secondary Super URL listed in `CURRENT_SITE_INVENTORY.md`. Implement approved content moves or redirects before retiring Super; do not guess from URL slugs.
-3. Identify the credentialed DNS provider/account and a person authorized to edit the GitHub Pages settings.
-4. In GitHub, complete domain verification for `psywerx.io` using GitHub's unique `_github-pages-challenge-...` TXT value. This is additive and should not disturb the live site.
-5. Lower only the apex, `www`, and `drivers` record TTLs to 300 at least one prior TTL window before cutover. Do not change MX, SPF, MailerLite verification, Google verification, or unrelated records.
-6. Choose the HTTPS redirect service. Deploy the checked-in redirect handler, prove it through the service's temporary hostname, attach `drivers.psywerx.io` using non-disruptive domain validation where supported, and confirm its certificate can be issued at cutover.
-7. Complete editorial decisions in `FEED_LAUNCH_REVIEW.md`. It is valid to launch with the honest empty feed; it is not valid to publish unreviewed drafts.
-8. Re-run the repository, browser, explorer, governance, secret, link, and deterministic-build checks on the final PR head. Require all GitHub CI checks to pass.
-9. Add the final cutover commit changing `CNAME` to `psywerx.io`, rebuild once, and confirm the diff changes no explorer data or semantics.
+1. Snapshot the Super homepage/configuration and current DNS zone for rollback. Keep the Super subscription/site active through validation; the 98 obsolete secondary pages need no separate treatment.
+2. Identify the credentialed DNS provider/account and a person authorized to edit the GitHub Pages settings.
+3. In GitHub, complete domain verification for `psywerx.io` using GitHub's unique `_github-pages-challenge-...` TXT value. This is additive and should not disturb the live site.
+4. Lower only the apex, `www`, and `drivers` record TTLs to 300 at least one prior TTL window before cutover. Do not change MX, SPF, MailerLite verification, Google verification, or unrelated records.
+5. Choose the HTTPS redirect service. Deploy the checked-in redirect handler, prove it through the service's temporary hostname, attach `drivers.psywerx.io` using non-disruptive domain validation where supported, and confirm its certificate can be issued at cutover.
+6. Review any desired pending research items with the explicit `publish`, `hold`, or `reject` command. It is valid to launch with an empty stream; ingestion alone must never publish.
+7. Re-run the repository, browser, Explorer, governance, secret, link, research-stream, and deterministic-build checks on the final PR head. Require all GitHub CI checks to pass.
+8. Add the final cutover commit changing `CNAME` to `psywerx.io`, rebuild once, and confirm the diff changes no Explorer data or semantics.
 
 ## Coordinated cutover
 
@@ -61,7 +66,7 @@ Use HTTP 308, keep the initial cache lifetime at five minutes, and raise it only
 6. Replace `drivers`' GitHub Pages CNAME with the redirect service's exact verified DNS target. Do not point it at the apex.
 7. Confirm the GitHub Pages custom-domain setting is `psywerx.io`. Wait for the certificate to become valid, then enable **Enforce HTTPS**. Do not accept certificate warnings as a successful cutover.
 8. Validate from at least two networks/resolvers: apex, `www`, both explorers, codebook, deep/query links, old-host redirects, assets, newsletter form structure, LinkedIn, metadata, robots, sitemap, and TLS.
-9. Monitor 404s and redirect failures. Keep Super and the redirect rollback configuration intact until the owner accepts production.
+9. Monitor the apex, Explorer routes, and legacy-host redirect failures. Keep Super and the redirect rollback configuration intact until the owner accepts production. The retired secondary Super URLs do not require individual monitoring or a custom 404.
 
 ## Validation commands and cases
 
@@ -81,4 +86,4 @@ Use HTTP 308, keep the initial cache lifetime at five minutes, and raise it only
 4. Revert the launch commit on `main` with a new non-destructive revert commit and restore the repository `CNAME` to `drivers.psywerx.io` if returning Pages to the former explorer host. Do not reset or rewrite history.
 5. Wait for DNS/TLS propagation, verify the old root and explorer hosts, and document the incident before attempting another cutover.
 
-Because the Super origin and old repository state are retained, rollback remains possible until the owner explicitly retires them after the acceptance window.
+Because the Super origin and old repository state are retained, rollback remains possible through the acceptance window. After acceptance, the owner may retire Super and all 98 obsolete secondary pages.
