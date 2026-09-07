@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="PSYWERX is a nonprofit initiative connecting behavioral and social science with practical tools, research, and education.">
+  {{ROBOTS}}
+  <meta name="theme-color" content="#073653">
+  <title>PSYWERX — exploring the human condition from theory to practice</title>
+  <link rel="icon" href="assets/favicon.png">
+  <link rel="stylesheet" href="assets/home.css">
+  <script src="assets/home-data.js" defer></script>
+  <script src="assets/home.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="#top" aria-label="PSYWERX home"><img src="assets/wordmark.webp" alt="PSYWERX" width="640" height="130"></a>
+    <nav class="desktop-nav" aria-label="Main navigation">
+      <details class="explore-menu" id="explore-menu"><summary>Explore <span class="chevron" aria-hidden="true">⌄</span></summary>
+        <div class="mega-menu"><div class="mega-intro"><span class="eyebrow">THE PLATFORM</span><strong>Find your way into the science.</strong><p>Six complementary areas, built to connect.</p></div><div class="mega-links">{{MEGA_LINKS}}</div></div>
+      </details>
+      <a href="#research">Research</a><a href="#learning-section">Learn</a><a href="#about">About</a>
+      <a class="nav-tools" href="#live-tools">Live tools <span aria-hidden="true">↗</span></a>
+    </nav>
+    <details class="mobile-menu" id="mobile-menu"><summary aria-label="Open navigation"><span aria-hidden="true">☰</span> Menu</summary><nav aria-label="Mobile navigation"><a href="#platform">Explore the platform</a><a href="#live-tools">Live tools</a><a href="#research">Research feed</a><a href="#learning-section">Learn</a><a href="#about">About</a></nav></details>
+  </div>
+</header>
+<div id="top" class="page-layout">
+<main id="main">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-text">
+      <p class="eyebrow hero-eyebrow"><span class="small-rule" aria-hidden="true"></span> A NONPROFIT INITIATIVE</p>
+      <h1 id="hero-title">exploring the<br>human condition<br><span>from theory to practice</span></h1>
+      <p class="hero-mission">{{MISSION}}</p>
+      <div class="hero-actions"><a class="button button-light" href="#platform">Explore the platform <span aria-hidden="true">↗</span></a><a class="hero-secondary" href="#live-tools">Start with the live tools <span aria-hidden="true">→</span></a></div>
+    </div>
+    <img class="hero-mark" src="assets/brain-mark.webp" alt="" aria-hidden="true" width="620" height="620">
+    <div class="hero-orbit orbit-one" aria-hidden="true"></div><div class="hero-orbit orbit-two" aria-hidden="true"></div>
+    <span class="hero-corner" aria-hidden="true">PSYWERX / 01</span>
+  </section>
+
+  <section id="live-tools" class="section live-tools" aria-labelledby="live-title">
+    <div class="section-heading"><div><p class="eyebrow">AVAILABLE NOW</p><h2 id="live-title">Ready to explore.</h2></div><span class="small-note"><span class="live-dot" aria-hidden="true"></span> Two live explorers</span></div>
+    <div class="featured-grid">
+      <a class="featured-card featured-drivers" data-tool="drivers" href="{{DRIVERS_URL}}">
+        <div class="featured-visual" aria-hidden="true"><div class="driver-glyph"><span class="glyph-label">BEHAVIOR</span><i class="g-line l1"></i><i class="g-line l2"></i><i class="g-line l3"></i><i class="g-line l4"></i><i class="g-line l5"></i><i class="g-line l6"></i><b class="g-center"></b><b class="g-node n1"></b><b class="g-node n2"></b><b class="g-node n3"></b><b class="g-node n4"></b><b class="g-node n5"></b><b class="g-node n6"></b></div><div class="visual-copy"><span>Layers</span><span>Families</span><span>Drivers</span></div></div>
+        <div class="featured-copy"><div class="featured-top"><span class="eyebrow">FOUNDATIONS</span><span class="status live">Live</span></div><h3>Driver Taxonomy Explorer</h3><p>Discover the conditions and processes that shape human behavior.</p><span class="card-cta">Explore drivers <span aria-hidden="true">↗</span></span></div>
+      </a>
+      <a class="featured-card featured-security" data-tool="cognitive-security" href="{{COGNITIVE_URL}}">
+        <div class="featured-visual security-visual" aria-hidden="true"><div class="conversation-glyph"><span class="wave w1"></span><span class="wave w2"></span><span class="wave w3"></span><span class="wave w4"></span><span class="wave w5"></span><span class="wave w6"></span><span class="wave w7"></span><span class="wave w8"></span><span class="wave w9"></span><span class="wave w10"></span><span class="wave w11"></span></div><div class="visual-copy"><span>Episodes</span><span>Themes</span><span>Tensions</span></div></div>
+        <div class="featured-copy"><div class="featured-top"><span class="eyebrow">INQUIRY</span><span class="status live">Live</span></div><h3>Cognitive Security Explorer</h3><p>Explore the ideas and conversations shaping a practitioner discourse.</p><span class="card-cta">Explore the map <span aria-hidden="true">↗</span></span></div>
+      </a>
+    </div>
+  </section>
+
+  <section id="platform" class="section platform" aria-labelledby="platform-title">
+    <div class="section-heading"><div><p class="eyebrow">THE PSYWERX PLATFORM</p><h2 id="platform-title">Six areas. Connected knowledge.</h2></div></div>
+    <p class="section-intro">Explore what explains behavior, how to work with it, and what we can learn from evidence and experience.</p>
+    <div class="area-grid">{{AREA_CARDS}}</div>
+    <p class="roadmap-note">Work in progress is a view of what we’re building, not a promise of a release date.</p>
+  </section>
+
+  <section id="connections" class="section connections" aria-labelledby="connections-title">
+    <div class="section-heading"><div><p class="eyebrow">ONE KNOWLEDGE PLATFORM</p><h2 id="connections-title">Explore the connections.</h2></div></div>
+    <p class="section-intro">Different ways into the same questions. Select an area to see where it fits.</p>
+    <div class="knowledge-map" aria-label="Interactive overview of the six platform areas">
+      <svg class="map-lines" viewBox="0 0 900 340" preserveAspectRatio="none" aria-hidden="true"><g fill="none" stroke="currentColor"><path d="M160 70 L450 170 L740 70 M145 170 L450 170 L755 170 M160 270 L450 170 L740 270"/><path d="M160 70 L145 170 L160 270 L740 270 L755 170 L740 70 Z" stroke-dasharray="4 9"/></g><g fill="currentColor"><circle cx="305" cy="120" r="3"/><circle cx="595" cy="120" r="3"/><circle cx="297" cy="220" r="3"/><circle cx="601" cy="220" r="3"/></g></svg>
+      <div class="map-center" aria-hidden="true"><img src="assets/brain-mark.webp" alt="" width="620" height="620"><span>PSYWERX</span></div>
+      {{MAP_NODES}}
+    </div>
+    <div class="map-detail" id="map-detail" aria-live="polite" aria-atomic="true"><div><span class="eyebrow">FOUNDATIONS</span><h3>What shapes behavior?</h3><p>Understand the drivers, theories, and biases that shape human behavior.</p></div><a class="map-detail-link" href="#area-foundations">View this area <span aria-hidden="true">→</span></a></div>
+    <p class="map-note">A map of the platform’s organization, not a causal model.</p>
+  </section>
+
+  <section id="learning-section" class="section learning-panel" aria-labelledby="learning-title"><div class="learning-copy"><span class="status soon light-status">Coming soon</span><p class="eyebrow">LEARNING / TRAINING & EDUCATION</p><h2 id="learning-title">Make room for practice.</h2><p>Learning modules, courses, exercises, and games that help turn behavioral knowledge into practical skill.</p><a class="text-link" href="#area-learning">See what’s in development <span aria-hidden="true">→</span></a></div><div class="learning-list" aria-label="Planned learning formats"><div>{{BOOK_ICON}}<span>Modules & courses</span></div><div>{{FRAMEWORK_ICON}}<span>Exercises & simulations</span></div><div>{{CHANGE_ICON}}<span>Interactive games</span></div></div></section>
+
+  <section id="about" class="section about-panel" aria-labelledby="about-title"><p class="eyebrow">ABOUT PSYWERX</p><h2 id="about-title">Built to bridge disciplines.<br>Designed for practical use.</h2><p>PSYWERX brings behavioral and social science into a shared space for discovery, application, and learning. Our nonprofit mission is to make that knowledge easier to find, understand, and use.</p><p>We’re building for researchers, practitioners, and educators across sectors—including those working in national security and the information environment.</p><div class="about-values"><span>Interdisciplinary</span><span>Source-connected</span><span>Practitioner-oriented</span></div></section>
+</main>
+
+<aside id="research" class="research-rail" aria-labelledby="feed-title">
+  <div class="feed-sticky">
+    <div class="feed-header"><div class="feed-heading-top"><span class="eyebrow">FROM THE BRIEFS</span>{{PREVIEW_BADGE}}</div><h2 id="feed-title">Research &<br>discussion</h2><p>Selections from our daily and weekly reports.</p></div>
+    <fieldset class="feed-filters"><legend>Filter by interest</legend><div class="filter-chips"><button class="filter-chip active" type="button" data-filter="all" aria-pressed="true">All</button>{{FILTERS}}</div><p class="filter-help">Select one or more areas.</p></fieldset>
+    <div class="feed-toolbar"><span id="feed-result-count" role="status" aria-live="polite">{{FEED_COUNT}} selections</span><span>Newest first</span></div>
+    <div class="feed-scroll" tabindex="0" role="region" aria-label="Research selections; scroll for more"><div id="feed-items">{{FEED_ITEMS}}</div><div id="feed-empty" class="feed-empty" hidden><h3>No matching selections yet.</h3><p>Try another interest or show the full feed.</p><button type="button" class="text-button" id="clear-feed">Show all selections →</button></div></div>
+    <div class="feed-bottom"><span>{{FEED_SNAPSHOT}}</span><button class="text-button" type="button" data-open-dialog="feed-info">About this feed ↗</button></div>
+  </div>
+</aside>
+</div>
+<footer class="site-footer"><div class="footer-inner"><div><a class="brand footer-brand" href="#top" aria-label="PSYWERX home"><img src="assets/wordmark.webp" alt="PSYWERX" width="640" height="130" loading="lazy"></a><p>A nonprofit initiative for behavioral science in practice.</p></div><nav aria-label="Footer navigation"><a href="#about">About</a><button type="button" class="text-button" data-open-dialog="newsletter">Newsletter</button><button type="button" class="text-button" data-open-dialog="linkedin">LinkedIn ↗</button></nav></div><div class="footer-bottom"><span>© {{YEAR}} PSYWERX</span><span>{{FOOTER_STATUS}}</span></div></footer>
+<dialog id="detail-dialog" aria-labelledby="dialog-title"><div class="dialog-inner"><button class="dialog-close" type="button" aria-label="Close dialog">×</button><span id="dialog-eyebrow" class="eyebrow"></span><h2 id="dialog-title"></h2><div id="dialog-body"></div></div></dialog>
+<noscript><div class="noscript-note">The platform links and expandable product cards work without JavaScript. Enable JavaScript for feed filters and the interactive overview.</div></noscript>
+</body>
+</html>
