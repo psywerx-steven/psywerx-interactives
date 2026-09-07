@@ -1,4 +1,4 @@
-# SOC-F07 human governance decision package — materialized outcomes
+# SOC-F07 human governance decision 001
 
 Decision `GOV-SOC-F07-001-2026-09-06`; audit `AUD-SOC-F07-AE-V1-20260906-001`; effective local date 2026-09-06. Actor class: `authorized human governor`.
 

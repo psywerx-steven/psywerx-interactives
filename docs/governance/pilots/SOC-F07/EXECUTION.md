@@ -143,3 +143,28 @@ If green, post the final audit closeout on PR #19, verify HEAD == remote branch 
 clean status, and stop unmerged. Do not start Family #4, repair missing network
 targets, register sources, govern or activate. Final-head CI and exact SHA are
 recorded durably in PR #19's checks/comment, avoiding a self-referential commit hash.
+
+## Checkpoint 5 — human governance and bounded Network State review
+
+Starting head `339c2e80206b0b304cdb262e7c5fec6dc0bc27ab`; baseline/main
+`f0be9c24288bd128231e0d1243b34c03ad055906`; branch
+`pilot/soc-f07-actions-events-v1`; existing PR #19. Remote fetched, no later
+scientific-state drift found. Explicit human authority is
+`GOV-SOC-F07-001-2026-09-06`; actor class `authorized human governor`.
+
+Seven identities materialized GOVERNED / INACTIVE, six canonical sources added,
+two exact canonical source IDs reused. HT-008 identity approval is preserved but
+native PubMed-only source verification blocks canonical materialization. The
+all-node degree-centralization concept is approved but the current scalar binary
+Relationship schema cannot enforce the collection/benchmark dependency. No
+Relationship or effect/evidence record was governed. New ACTIVE = 0.
+
+All existing edge decisions/rejections/research/block dispositions are recorded;
+existing scientific records, blocked fields, BIO-F01 and INF-F03 remain unchanged.
+The isolated Network State proposal/prototype covers nine deterministic fictional
+operations. NS01–NS12 all remain PENDING; no production architecture changes.
+
+Local tests so far: SOC pilot 36, governance 19, Network State 41 pass; both
+production validators pass. Full required regressions, final independent review
+and Linux/Windows CI are in progress. Exact resume point: review the running
+suite results, complete validation, commit/push and update PR #19 unmerged.

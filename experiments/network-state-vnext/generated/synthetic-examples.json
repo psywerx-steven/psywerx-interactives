@@ -1,0 +1,2807 @@
+{
+  "architectureStatus": "PENDING",
+  "baseMetrics": {
+    "componentFragmentation": {
+      "value": 0.0,
+      "variant": "UNREACHABLE_UNORDERED_PAIR_FRACTION"
+    },
+    "componentNodeSets": [
+      [
+        "SYN-NODE-A",
+        "SYN-NODE-B",
+        "SYN-NODE-C",
+        "SYN-NODE-D"
+      ]
+    ],
+    "degree": {
+      "SYN-NODE-A": 2,
+      "SYN-NODE-B": 2,
+      "SYN-NODE-C": 3,
+      "SYN-NODE-D": 1
+    },
+    "degreeCentralization": {
+      "status": "CALCULATED_SYNTHETIC_REPRESENTATION_ONLY",
+      "value": 0.6666666666666666
+    },
+    "density": 0.6666666666666666,
+    "edgeCount": 4,
+    "externalBenchmark": {
+      "definition": "UNDIRECTED_SIMPLE_LOOPLESS_DEGREE_STAR_MAX",
+      "maximum": 6,
+      "nodeCount": 4
+    },
+    "label": "SYNTHETIC / NON_PRODUCTION / NOT A SCIENTIFIC MODEL",
+    "localClustering": {
+      "SYN-NODE-A": 1.0,
+      "SYN-NODE-B": 1.0,
+      "SYN-NODE-C": 0.3333333333333333,
+      "SYN-NODE-D": 0
+    },
+    "nodeCount": 4,
+    "observationCoverage": "COMPLETE_SYNTHETIC_FRAME",
+    "propagationPolicy": "RECOMPUTE_ONLY_NO_ADDITIVE_CAUSAL_PROPAGATION",
+    "realWorldMetricKnown": false,
+    "scope": {
+      "boundaryId": "SYN-BOUNDARY-001",
+      "localClusteringLowDegreeConvention": "ZERO_WHEN_FEWER_THAN_TWO_NEIGHBORS",
+      "metricLayerId": "SYN-LAYER-FRIENDSHIP",
+      "nodeIds": [
+        "SYN-NODE-A",
+        "SYN-NODE-B",
+        "SYN-NODE-C",
+        "SYN-NODE-D"
+      ],
+      "projection": "BINARY_POSITIVE_WEIGHT_SIMPLE_UNDIRECTED_LOOPLESS; weights deliberately not causal or numeric effect weights",
+      "window": {
+        "aggregation": "SNAPSHOT_AT_START",
+        "end": "2026-01-01T00:00:00Z",
+        "mode": "SNAPSHOT",
+        "start": "2026-01-01T00:00:00Z"
+      }
+    },
+    "stateHash": "74c14069216affaeffd266121610ece17759609b343f19932a54c48557aa312a",
+    "stateId": "SYN-STATE-001",
+    "stateVersion": 1,
+    "warnings": [
+      "Conditional on declared synthetic representation; neither latent truth nor causal effect.",
+      "Changes in analytic boundary can change metrics without any tie change.",
+      "No temporal reachability, uncertainty propagation or population estimation implemented."
+    ]
+  },
+  "baseState": {
+    "appliedDeltaIds": [],
+    "architectureStatus": "PENDING",
+    "boundary": {
+      "id": "SYN-BOUNDARY-001",
+      "includedNodeIds": [
+        "SYN-NODE-A",
+        "SYN-NODE-B",
+        "SYN-NODE-C",
+        "SYN-NODE-D"
+      ],
+      "outsideFramePolicy": "Known outside-frame ties retained, not treated as absence",
+      "selectionRule": "Fictional analytic frame A-D; E known outside selected frame"
+    },
+    "contentHash": "74c14069216affaeffd266121610ece17759609b343f19932a54c48557aa312a",
+    "executionEligibility": false,
+    "groupIds": [
+      "SYN-GROUP-1",
+      "SYN-GROUP-2"
+    ],
+    "id": "SYN-STATE-001",
+    "label": "SYNTHETIC / NON_PRODUCTION / NOT A SCIENTIFIC MODEL",
+    "networkSpecification": {
+      "layerIds": [
+        "SYN-LAYER-FRIENDSHIP"
+      ],
+      "metricLayerId": "SYN-LAYER-FRIENDSHIP",
+      "multiplexPolicy": "SELECT_ONE_LAYER_NO_COLLAPSE",
+      "riskSetOpportunityIds": [
+        "SYN-OPPORTUNITY-AD"
+      ],
+      "tieTypeId": "SYN-TYPE-FRIENDSHIP",
+      "weightInterpretation": "Positive fictional contact intensity; metric projection explicitly binary, not causal strength"
+    },
+    "nodeCatalog": [
+      {
+        "active": true,
+        "id": "SYN-NODE-A",
+        "memberships": [
+          "SYN-GROUP-1"
+        ]
+      },
+      {
+        "active": true,
+        "id": "SYN-NODE-B",
+        "memberships": [
+          "SYN-GROUP-1"
+        ]
+      },
+      {
+        "active": true,
+        "id": "SYN-NODE-C",
+        "memberships": [
+          "SYN-GROUP-1"
+        ]
+      },
+      {
+        "active": true,
+        "id": "SYN-NODE-D",
+        "memberships": [
+          "SYN-GROUP-1"
+        ]
+      },
+      {
+        "active": true,
+        "id": "SYN-NODE-E",
+        "memberships": [
+          "SYN-GROUP-1"
+        ]
+      }
+    ],
+    "objectKind": "RELATIONAL_STATE",
+    "observation": {
+      "accessDepth": "SYNTHETIC",
+      "coverage": "COMPLETE_SYNTHETIC_FRAME",
+      "isGroundTruth": false,
+      "latentStateRelation": "NOT_IDENTICAL_BY_ASSUMPTION",
+      "missingNodes": "None by fictional fixture construction; not a claim about real-world coverage",
+      "missingTies": "None by fictional fixture construction; no latent real network is observed",
+      "provenanceId": "SYN-PROVENANCE-FIXTURE",
+      "realStateKnown": false,
+      "recordKind": "SYNTHETIC_OBSERVATION_METADATA",
+      "sampling": "Explicit fictional node frame; no real respondents",
+      "tieInferenceMethod": "Authored fixture, not inferred empirical ties"
+    },
+    "opportunities": [
+      {
+        "enabled": true,
+        "id": "SYN-OPPORTUNITY-AD",
+        "kind": "PLATFORM_ACCESS",
+        "provenanceId": "SYN-PROVENANCE-FIXTURE",
+        "source": "SYN-NODE-A",
+        "target": "SYN-NODE-D",
+        "validFrom": "2026-01-01T00:00:00Z",
+        "validUntil": null
+      }
+    ],
+    "parentHash": null,
+    "scientificClaims": [],
+    "stateNature": "SYNTHETIC_MODELED_CONFIGURATION",
+    "ties": [
+      {
+        "directed": false,
+        "id": "SYN-TIE-AB",
+        "layerId": "SYN-LAYER-FRIENDSHIP",
+        "objectKind": "SOCIAL_TIE",
+        "provenanceId": "SYN-PROVENANCE-FIXTURE",
+        "source": "SYN-NODE-A",
+        "target": "SYN-NODE-B",
+        "tieType": "SYN-TYPE-FRIENDSHIP",
+        "validFrom": "2026-01-01T00:00:00Z",
+        "validUntil": null,
+        "weight": 1
+      },
+      {
+        "directed": false,
+        "id": "SYN-TIE-AC",
+        "layerId": "SYN-LAYER-FRIENDSHIP",
+        "objectKind": "SOCIAL_TIE",
+        "provenanceId": "SYN-PROVENANCE-FIXTURE",
+        "source": "SYN-NODE-A",
+        "target": "SYN-NODE-C",
+        "tieType": "SYN-TYPE-FRIENDSHIP",
+        "validFrom": "2026-01-01T00:00:00Z",
+        "validUntil": null,
+        "weight": 1
+      },
+      {
+        "directed": false,
+        "id": "SYN-TIE-BC",
+        "layerId": "SYN-LAYER-FRIENDSHIP",
+        "objectKind": "SOCIAL_TIE",
+        "provenanceId": "SYN-PROVENANCE-FIXTURE",
+        "source": "SYN-NODE-B",
+        "target": "SYN-NODE-C",
+        "tieType": "SYN-TYPE-FRIENDSHIP",
+        "validFrom": "2026-01-01T00:00:00Z",
+        "validUntil": null,
+        "weight": 1
+      },
+      {
+        "directed": false,
+        "id": "SYN-TIE-CD",
+        "layerId": "SYN-LAYER-FRIENDSHIP",
+        "objectKind": "SOCIAL_TIE",
+        "provenanceId": "SYN-PROVENANCE-FIXTURE",
+        "source": "SYN-NODE-C",
+        "target": "SYN-NODE-D",
+        "tieType": "SYN-TYPE-FRIENDSHIP",
+        "validFrom": "2026-01-01T00:00:00Z",
+        "validUntil": null,
+        "weight": 1
+      },
+      {
+        "directed": false,
+        "id": "SYN-TIE-DE",
+        "layerId": "SYN-LAYER-FRIENDSHIP",
+        "objectKind": "SOCIAL_TIE",
+        "provenanceId": "SYN-PROVENANCE-FIXTURE",
+        "source": "SYN-NODE-D",
+        "target": "SYN-NODE-E",
+        "tieType": "SYN-TYPE-FRIENDSHIP",
+        "validFrom": "2026-01-01T00:00:00Z",
+        "validUntil": null,
+        "weight": 1
+      }
+    ],
+    "version": 1,
+    "window": {
+      "aggregation": "SNAPSHOT_AT_START",
+      "end": "2026-01-01T00:00:00Z",
+      "mode": "SNAPSHOT",
+      "start": "2026-01-01T00:00:00Z"
+    }
+  },
+  "examples": [
+    {
+      "afterState": {
+        "appliedDeltaIds": [
+          "SYN-DELTA-ADD-TIE"
+        ],
+        "architectureStatus": "PENDING",
+        "boundary": {
+          "id": "SYN-BOUNDARY-001",
+          "includedNodeIds": [
+            "SYN-NODE-A",
+            "SYN-NODE-B",
+            "SYN-NODE-C",
+            "SYN-NODE-D"
+          ],
+          "outsideFramePolicy": "Known outside-frame ties retained, not treated as absence",
+          "selectionRule": "Fictional analytic frame A-D; E known outside selected frame"
+        },
+        "contentHash": "cf5bcba5f0ed4020ab06e01ddd631038661cf32ef3cad5e28eaa61b65c76a0de",
+        "executionEligibility": false,
+        "groupIds": [
+          "SYN-GROUP-1",
+          "SYN-GROUP-2"
+        ],
+        "id": "SYN-STATE-001",
+        "label": "SYNTHETIC / NON_PRODUCTION / NOT A SCIENTIFIC MODEL",
+        "networkSpecification": {
+          "layerIds": [
+            "SYN-LAYER-FRIENDSHIP"
+          ],
+          "metricLayerId": "SYN-LAYER-FRIENDSHIP",
+          "multiplexPolicy": "SELECT_ONE_LAYER_NO_COLLAPSE",
+          "riskSetOpportunityIds": [
+            "SYN-OPPORTUNITY-AD"
+          ],
+          "tieTypeId": "SYN-TYPE-FRIENDSHIP",
+          "weightInterpretation": "Positive fictional contact intensity; metric projection explicitly binary, not causal strength"
+        },
+        "nodeCatalog": [
+          {
+            "active": true,
+            "id": "SYN-NODE-A",
+            "memberships": [
+              "SYN-GROUP-1"
+            ]
+          },
+          {
+            "active": true,
+            "id": "SYN-NODE-B",
+            "memberships": [
+              "SYN-GROUP-1"
+            ]
+          },
+          {
+            "active": true,
+            "id": "SYN-NODE-C",
+            "memberships": [
+              "SYN-GROUP-1"
+            ]
+          },
+          {
+            "active": true,
+            "id": "SYN-NODE-D",
+            "memberships": [
+              "SYN-GROUP-1"
+            ]
+          },
+          {
+            "active": true,
+            "id": "SYN-NODE-E",
+            "memberships": [
+              "SYN-GROUP-1"
+            ]
+          }
+        ],
+        "objectKind": "RELATIONAL_STATE",
+        "observation": {
+          "accessDepth": "SYNTHETIC",
+          "coverage": "COMPLETE_SYNTHETIC_FRAME",
+          "isGroundTruth": false,
+          "latentStateRelation": "NOT_IDENTICAL_BY_ASSUMPTION",
+          "missingNodes": "None by fictional fixture construction; not a claim about real-world coverage",
+          "missingTies": "None by fictional fixture construction; no latent real network is observed",
+          "provenanceId": "SYN-PROVENANCE-FIXTURE",
+          "realStateKnown": false,
+          "recordKind": "SYNTHETIC_OBSERVATION_METADATA",
+          "sampling": "Explicit fictional node frame; no real respondents",
+          "tieInferenceMethod": "Authored fixture, not inferred empirical ties"
+        },
+        "opportunities": [
+          {
+            "enabled": true,
+            "id": "SYN-OPPORTUNITY-AD",
+            "kind": "PLATFORM_ACCESS",
+            "provenanceId": "SYN-PROVENANCE-FIXTURE",
+            "source": "SYN-NODE-A",
+            "target": "SYN-NODE-D",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": null
+          }
+        ],
+        "parentHash": "74c14069216affaeffd266121610ece17759609b343f19932a54c48557aa312a",
+        "scientificClaims": [],
+        "stateNature": "SYNTHETIC_MODELED_CONFIGURATION",
+        "ties": [
+          {
+            "directed": false,
+            "id": "SYN-TIE-AB",
+            "layerId": "SYN-LAYER-FRIENDSHIP",
+            "objectKind": "SOCIAL_TIE",
+            "provenanceId": "SYN-PROVENANCE-FIXTURE",
+            "source": "SYN-NODE-A",
+            "target": "SYN-NODE-B",
+            "tieType": "SYN-TYPE-FRIENDSHIP",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": null,
+            "weight": 1
+          },
+          {
+            "directed": false,
+            "id": "SYN-TIE-AC",
+            "layerId": "SYN-LAYER-FRIENDSHIP",
+            "objectKind": "SOCIAL_TIE",
+            "provenanceId": "SYN-PROVENANCE-FIXTURE",
+            "source": "SYN-NODE-A",
+            "target": "SYN-NODE-C",
+            "tieType": "SYN-TYPE-FRIENDSHIP",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": null,
+            "weight": 1
+          },
+          {
+            "directed": false,
+            "id": "SYN-TIE-AD",
+            "layerId": "SYN-LAYER-FRIENDSHIP",
+            "objectKind": "SOCIAL_TIE",
+            "provenanceId": "SYN-PROVENANCE-FIXTURE",
+            "source": "SYN-NODE-A",
+            "target": "SYN-NODE-D",
+            "tieType": "SYN-TYPE-FRIENDSHIP",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": null,
+            "weight": 1
+          },
+          {
+            "directed": false,
+            "id": "SYN-TIE-BC",
+            "layerId": "SYN-LAYER-FRIENDSHIP",
+            "objectKind": "SOCIAL_TIE",
+            "provenanceId": "SYN-PROVENANCE-FIXTURE",
+            "source": "SYN-NODE-B",
+            "target": "SYN-NODE-C",
+            "tieType": "SYN-TYPE-FRIENDSHIP",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": null,
+            "weight": 1
+          },
+          {
+            "directed": false,
+            "id": "SYN-TIE-CD",
+            "layerId": "SYN-LAYER-FRIENDSHIP",
+            "objectKind": "SOCIAL_TIE",
+            "provenanceId": "SYN-PROVENANCE-FIXTURE",
+            "source": "SYN-NODE-C",
+            "target": "SYN-NODE-D",
+            "tieType": "SYN-TYPE-FRIENDSHIP",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": null,
+            "weight": 1
+          },
+          {
+            "directed": false,
+            "id": "SYN-TIE-DE",
+            "layerId": "SYN-LAYER-FRIENDSHIP",
+            "objectKind": "SOCIAL_TIE",
+            "provenanceId": "SYN-PROVENANCE-FIXTURE",
+            "source": "SYN-NODE-D",
+            "target": "SYN-NODE-E",
+            "tieType": "SYN-TYPE-FRIENDSHIP",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": null,
+            "weight": 1
+          }
+        ],
+        "version": 2,
+        "window": {
+          "aggregation": "SNAPSHOT_AT_START",
+          "end": "2026-01-01T00:00:00Z",
+          "mode": "SNAPSHOT",
+          "start": "2026-01-01T00:00:00Z"
+        }
+      },
+      "delta": {
+        "architectureStatus": "PENDING",
+        "assertedConsequences": [],
+        "basis": "SYNTHETIC_SCENARIO_OPERATION",
+        "effectiveAt": "2026-01-01T00:00:00Z",
+        "expectedHash": "74c14069216affaeffd266121610ece17759609b343f19932a54c48557aa312a",
+        "expectedVersion": 1,
+        "id": "SYN-DELTA-ADD-TIE",
+        "label": "SYNTHETIC / NON_PRODUCTION / NOT A SCIENTIFIC MODEL",
+        "objectKind": "SCENARIO_STATE_DELTA",
+        "occurrenceStatus": "HYPOTHETICAL",
+        "operations": [
+          {
+            "operation": "ADD_TIE",
+            "tie": {
+              "directed": false,
+              "id": "SYN-TIE-AD",
+              "layerId": "SYN-LAYER-FRIENDSHIP",
+              "objectKind": "SOCIAL_TIE",
+              "provenanceId": "SYN-PROVENANCE-FIXTURE",
+              "source": "SYN-NODE-A",
+              "target": "SYN-NODE-D",
+              "tieType": "SYN-TYPE-FRIENDSHIP",
+              "validFrom": "2026-01-01T00:00:00Z",
+              "validUntil": null,
+              "weight": 1
+            }
+          }
+        ],
+        "provenanceId": "SYN-PROVENANCE-OPERATION",
+        "stateId": "SYN-STATE-001",
+        "targetNamespace": "SCENARIO_STATE"
+      },
+      "id": "SYN-EXAMPLE-ADD-TIE",
+      "metrics": {
+        "componentFragmentation": {
+          "value": 0.0,
+          "variant": "UNREACHABLE_UNORDERED_PAIR_FRACTION"
+        },
+        "componentNodeSets": [
+          [
+            "SYN-NODE-A",
+            "SYN-NODE-B",
+            "SYN-NODE-C",
+            "SYN-NODE-D"
+          ]
+        ],
+        "degree": {
+          "SYN-NODE-A": 3,
+          "SYN-NODE-B": 2,
+          "SYN-NODE-C": 3,
+          "SYN-NODE-D": 2
+        },
+        "degreeCentralization": {
+          "status": "CALCULATED_SYNTHETIC_REPRESENTATION_ONLY",
+          "value": 0.3333333333333333
+        },
+        "density": 0.8333333333333334,
+        "edgeCount": 5,
+        "externalBenchmark": {
+          "definition": "UNDIRECTED_SIMPLE_LOOPLESS_DEGREE_STAR_MAX",
+          "maximum": 6,
+          "nodeCount": 4
+        },
+        "label": "SYNTHETIC / NON_PRODUCTION / NOT A SCIENTIFIC MODEL",
+        "localClustering": {
+          "SYN-NODE-A": 0.6666666666666666,
+          "SYN-NODE-B": 1.0,
+          "SYN-NODE-C": 0.6666666666666666,
+          "SYN-NODE-D": 1.0
+        },
+        "nodeCount": 4,
+        "observationCoverage": "COMPLETE_SYNTHETIC_FRAME",
+        "propagationPolicy": "RECOMPUTE_ONLY_NO_ADDITIVE_CAUSAL_PROPAGATION",
+        "realWorldMetricKnown": false,
+        "scope": {
+          "boundaryId": "SYN-BOUNDARY-001",
+          "localClusteringLowDegreeConvention": "ZERO_WHEN_FEWER_THAN_TWO_NEIGHBORS",
+          "metricLayerId": "SYN-LAYER-FRIENDSHIP",
+          "nodeIds": [
+            "SYN-NODE-A",
+            "SYN-NODE-B",
+            "SYN-NODE-C",
+            "SYN-NODE-D"
+          ],
+          "projection": "BINARY_POSITIVE_WEIGHT_SIMPLE_UNDIRECTED_LOOPLESS; weights deliberately not causal or numeric effect weights",
+          "window": {
+            "aggregation": "SNAPSHOT_AT_START",
+            "end": "2026-01-01T00:00:00Z",
+            "mode": "SNAPSHOT",
+            "start": "2026-01-01T00:00:00Z"
+          }
+        },
+        "stateHash": "cf5bcba5f0ed4020ab06e01ddd631038661cf32ef3cad5e28eaa61b65c76a0de",
+        "stateId": "SYN-STATE-001",
+        "stateVersion": 2,
+        "warnings": [
+          "Conditional on declared synthetic representation; neither latent truth nor causal effect.",
+          "Changes in analytic boundary can change metrics without any tie change.",
+          "No temporal reachability, uncertainty propagation or population estimation implemented."
+        ]
+      },
+      "receipt": {
+        "afterHash": "cf5bcba5f0ed4020ab06e01ddd631038661cf32ef3cad5e28eaa61b65c76a0de",
+        "beforeHash": "74c14069216affaeffd266121610ece17759609b343f19932a54c48557aa312a",
+        "changeClass": "DETERMINISTIC_SYNTHETIC_STATE_OPERATION",
+        "deltaId": "SYN-DELTA-ADD-TIE",
+        "empiricalEvidenceProduced": false,
+        "executionEligibility": false,
+        "label": "SYNTHETIC / NON_PRODUCTION / NOT A SCIENTIFIC MODEL",
+        "ontologyRelationshipsEdited": 0,
+        "removedTieIds": [],
+        "scientificConsequencesEstablished": false
+      }
+    },
+    {
+      "afterState": {
+        "appliedDeltaIds": [
+          "SYN-DELTA-REMOVE-TIE"
+        ],
+        "architectureStatus": "PENDING",
+        "boundary": {
+          "id": "SYN-BOUNDARY-001",
+          "includedNodeIds": [
+            "SYN-NODE-A",
+            "SYN-NODE-B",
+            "SYN-NODE-C",
+            "SYN-NODE-D"
+          ],
+          "outsideFramePolicy": "Known outside-frame ties retained, not treated as absence",
+          "selectionRule": "Fictional analytic frame A-D; E known outside selected frame"
+        },
+        "contentHash": "eca0c318404481d299c388828be1d7ebebbec66d8a0504bab64cc5a780aaa769",
+        "executionEligibility": false,
+        "groupIds": [
+          "SYN-GROUP-1",
+          "SYN-GROUP-2"
+        ],
+        "id": "SYN-STATE-001",
+        "label": "SYNTHETIC / NON_PRODUCTION / NOT A SCIENTIFIC MODEL",
+        "networkSpecification": {
+          "layerIds": [
+            "SYN-LAYER-FRIENDSHIP"
+          ],
+          "metricLayerId": "SYN-LAYER-FRIENDSHIP",
+          "multiplexPolicy": "SELECT_ONE_LAYER_NO_COLLAPSE",
+          "riskSetOpportunityIds": [
+            "SYN-OPPORTUNITY-AD"
+          ],
+          "tieTypeId": "SYN-TYPE-FRIENDSHIP",
+          "weightInterpretation": "Positive fictional contact intensity; metric projection explicitly binary, not causal strength"
+        },
+        "nodeCatalog": [
+          {
+            "active": true,
+            "id": "SYN-NODE-A",
+            "memberships": [
+              "SYN-GROUP-1"
+            ]
+          },
+          {
+            "active": true,
+            "id": "SYN-NODE-B",
+            "memberships": [
+              "SYN-GROUP-1"
+            ]
+          },
+          {
+            "active": true,
+            "id": "SYN-NODE-C",
+            "memberships": [
+              "SYN-GROUP-1"
+            ]
+          },
+          {
+            "active": true,
+            "id": "SYN-NODE-D",
+            "memberships": [
+              "SYN-GROUP-1"
+            ]
+          },
+          {
+            "active": true,
+            "id": "SYN-NODE-E",
+            "memberships": [
+              "SYN-GROUP-1"
+            ]
+          }
+        ],
+        "objectKind": "RELATIONAL_STATE",
+        "observation": {
+          "accessDepth": "SYNTHETIC",
+          "coverage": "COMPLETE_SYNTHETIC_FRAME",
+          "isGroundTruth": false,
+          "latentStateRelation": "NOT_IDENTICAL_BY_ASSUMPTION",
+          "missingNodes": "None by fictional fixture construction; not a claim about real-world coverage",
+          "missingTies": "None by fictional fixture construction; no latent real network is observed",
+          "provenanceId": "SYN-PROVENANCE-FIXTURE",
+          "realStateKnown": false,
+          "recordKind": "SYNTHETIC_OBSERVATION_METADATA",
+          "sampling": "Explicit fictional node frame; no real respondents",
+          "tieInferenceMethod": "Authored fixture, not inferred empirical ties"
+        },
+        "opportunities": [
+          {
+            "enabled": true,
+            "id": "SYN-OPPORTUNITY-AD",
+            "kind": "PLATFORM_ACCESS",
+            "provenanceId": "SYN-PROVENANCE-FIXTURE",
+            "source": "SYN-NODE-A",
+            "target": "SYN-NODE-D",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": null
+          }
+        ],
+        "parentHash": "74c14069216affaeffd266121610ece17759609b343f19932a54c48557aa312a",
+        "scientificClaims": [],
+        "stateNature": "SYNTHETIC_MODELED_CONFIGURATION",
+        "ties": [
+          {
+            "directed": false,
+            "id": "SYN-TIE-AC",
+            "layerId": "SYN-LAYER-FRIENDSHIP",
+            "objectKind": "SOCIAL_TIE",
+            "provenanceId": "SYN-PROVENANCE-FIXTURE",
+            "source": "SYN-NODE-A",
+            "target": "SYN-NODE-C",
+            "tieType": "SYN-TYPE-FRIENDSHIP",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": null,
+            "weight": 1
+          },
+          {
+            "directed": false,
+            "id": "SYN-TIE-BC",
+            "layerId": "SYN-LAYER-FRIENDSHIP",
+            "objectKind": "SOCIAL_TIE",
+            "provenanceId": "SYN-PROVENANCE-FIXTURE",
+            "source": "SYN-NODE-B",
+            "target": "SYN-NODE-C",
+            "tieType": "SYN-TYPE-FRIENDSHIP",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": null,
+            "weight": 1
+          },
+          {
+            "directed": false,
+            "id": "SYN-TIE-CD",
+            "layerId": "SYN-LAYER-FRIENDSHIP",
+            "objectKind": "SOCIAL_TIE",
+            "provenanceId": "SYN-PROVENANCE-FIXTURE",
+            "source": "SYN-NODE-C",
+            "target": "SYN-NODE-D",
+            "tieType": "SYN-TYPE-FRIENDSHIP",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": null,
+            "weight": 1
+          },
+          {
+            "directed": false,
+            "id": "SYN-TIE-DE",
+            "layerId": "SYN-LAYER-FRIENDSHIP",
+            "objectKind": "SOCIAL_TIE",
+            "provenanceId": "SYN-PROVENANCE-FIXTURE",
+            "source": "SYN-NODE-D",
+            "target": "SYN-NODE-E",
+            "tieType": "SYN-TYPE-FRIENDSHIP",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": null,
+            "weight": 1
+          }
+        ],
+        "version": 2,
+        "window": {
+          "aggregation": "SNAPSHOT_AT_START",
+          "end": "2026-01-01T00:00:00Z",
+          "mode": "SNAPSHOT",
+          "start": "2026-01-01T00:00:00Z"
+        }
+      },
+      "delta": {
+        "architectureStatus": "PENDING",
+        "assertedConsequences": [],
+        "basis": "SYNTHETIC_SCENARIO_OPERATION",
+        "effectiveAt": "2026-01-01T00:00:00Z",
+        "expectedHash": "74c14069216affaeffd266121610ece17759609b343f19932a54c48557aa312a",
+        "expectedVersion": 1,
+        "id": "SYN-DELTA-REMOVE-TIE",
+        "label": "SYNTHETIC / NON_PRODUCTION / NOT A SCIENTIFIC MODEL",
+        "objectKind": "SCENARIO_STATE_DELTA",
+        "occurrenceStatus": "HYPOTHETICAL",
+        "operations": [
+          {
+            "operation": "REMOVE_TIE",
+            "tieId": "SYN-TIE-AB"
+          }
+        ],
+        "provenanceId": "SYN-PROVENANCE-OPERATION",
+        "stateId": "SYN-STATE-001",
+        "targetNamespace": "SCENARIO_STATE"
+      },
+      "id": "SYN-EXAMPLE-REMOVE-TIE",
+      "metrics": {
+        "componentFragmentation": {
+          "value": 0.0,
+          "variant": "UNREACHABLE_UNORDERED_PAIR_FRACTION"
+        },
+        "componentNodeSets": [
+          [
+            "SYN-NODE-A",
+            "SYN-NODE-B",
+            "SYN-NODE-C",
+            "SYN-NODE-D"
+          ]
+        ],
+        "degree": {
+          "SYN-NODE-A": 1,
+          "SYN-NODE-B": 1,
+          "SYN-NODE-C": 3,
+          "SYN-NODE-D": 1
+        },
+        "degreeCentralization": {
+          "status": "CALCULATED_SYNTHETIC_REPRESENTATION_ONLY",
+          "value": 1.0
+        },
+        "density": 0.5,
+        "edgeCount": 3,
+        "externalBenchmark": {
+          "definition": "UNDIRECTED_SIMPLE_LOOPLESS_DEGREE_STAR_MAX",
+          "maximum": 6,
+          "nodeCount": 4
+        },
+        "label": "SYNTHETIC / NON_PRODUCTION / NOT A SCIENTIFIC MODEL",
+        "localClustering": {
+          "SYN-NODE-A": 0,
+          "SYN-NODE-B": 0,
+          "SYN-NODE-C": 0.0,
+          "SYN-NODE-D": 0
+        },
+        "nodeCount": 4,
+        "observationCoverage": "COMPLETE_SYNTHETIC_FRAME",
+        "propagationPolicy": "RECOMPUTE_ONLY_NO_ADDITIVE_CAUSAL_PROPAGATION",
+        "realWorldMetricKnown": false,
+        "scope": {
+          "boundaryId": "SYN-BOUNDARY-001",
+          "localClusteringLowDegreeConvention": "ZERO_WHEN_FEWER_THAN_TWO_NEIGHBORS",
+          "metricLayerId": "SYN-LAYER-FRIENDSHIP",
+          "nodeIds": [
+            "SYN-NODE-A",
+            "SYN-NODE-B",
+            "SYN-NODE-C",
+            "SYN-NODE-D"
+          ],
+          "projection": "BINARY_POSITIVE_WEIGHT_SIMPLE_UNDIRECTED_LOOPLESS; weights deliberately not causal or numeric effect weights",
+          "window": {
+            "aggregation": "SNAPSHOT_AT_START",
+            "end": "2026-01-01T00:00:00Z",
+            "mode": "SNAPSHOT",
+            "start": "2026-01-01T00:00:00Z"
+          }
+        },
+        "stateHash": "eca0c318404481d299c388828be1d7ebebbec66d8a0504bab64cc5a780aaa769",
+        "stateId": "SYN-STATE-001",
+        "stateVersion": 2,
+        "warnings": [
+          "Conditional on declared synthetic representation; neither latent truth nor causal effect.",
+          "Changes in analytic boundary can change metrics without any tie change.",
+          "No temporal reachability, uncertainty propagation or population estimation implemented."
+        ]
+      },
+      "receipt": {
+        "afterHash": "eca0c318404481d299c388828be1d7ebebbec66d8a0504bab64cc5a780aaa769",
+        "beforeHash": "74c14069216affaeffd266121610ece17759609b343f19932a54c48557aa312a",
+        "changeClass": "DETERMINISTIC_SYNTHETIC_STATE_OPERATION",
+        "deltaId": "SYN-DELTA-REMOVE-TIE",
+        "empiricalEvidenceProduced": false,
+        "executionEligibility": false,
+        "label": "SYNTHETIC / NON_PRODUCTION / NOT A SCIENTIFIC MODEL",
+        "ontologyRelationshipsEdited": 0,
+        "removedTieIds": [
+          "SYN-TIE-AB"
+        ],
+        "scientificConsequencesEstablished": false
+      }
+    },
+    {
+      "afterState": {
+        "appliedDeltaIds": [
+          "SYN-DELTA-NODE-ENTRY"
+        ],
+        "architectureStatus": "PENDING",
+        "boundary": {
+          "id": "SYN-BOUNDARY-001",
+          "includedNodeIds": [
+            "SYN-NODE-A",
+            "SYN-NODE-B",
+            "SYN-NODE-C",
+            "SYN-NODE-D",
+            "SYN-NODE-F"
+          ],
+          "outsideFramePolicy": "Known outside-frame ties retained, not treated as absence",
+          "selectionRule": "Fictional analytic frame A-D; E known outside selected frame"
+        },
+        "contentHash": "18592753a0306d1e0e2e6f841841a89439385d8ff384587a7e3d42748b7582d1",
+        "executionEligibility": false,
+        "groupIds": [
+          "SYN-GROUP-1",
+          "SYN-GROUP-2"
+        ],
+        "id": "SYN-STATE-001",
+        "label": "SYNTHETIC / NON_PRODUCTION / NOT A SCIENTIFIC MODEL",
+        "networkSpecification": {
+          "layerIds": [
+            "SYN-LAYER-FRIENDSHIP"
+          ],
+          "metricLayerId": "SYN-LAYER-FRIENDSHIP",
+          "multiplexPolicy": "SELECT_ONE_LAYER_NO_COLLAPSE",
+          "riskSetOpportunityIds": [
+            "SYN-OPPORTUNITY-AD"
+          ],
+          "tieTypeId": "SYN-TYPE-FRIENDSHIP",
+          "weightInterpretation": "Positive fictional contact intensity; metric projection explicitly binary, not causal strength"
+        },
+        "nodeCatalog": [
+          {
+            "active": true,
+            "id": "SYN-NODE-A",
+            "memberships": [
+              "SYN-GROUP-1"
+            ]
+          },
+          {
+            "active": true,
+            "id": "SYN-NODE-B",
+            "memberships": [
+              "SYN-GROUP-1"
+            ]
+          },
+          {
+            "active": true,
+            "id": "SYN-NODE-C",
+            "memberships": [
+              "SYN-GROUP-1"
+            ]
+          },
+          {
+            "active": true,
+            "id": "SYN-NODE-D",
+            "memberships": [
+              "SYN-GROUP-1"
+            ]
+          },
+          {
+            "active": true,
+            "id": "SYN-NODE-E",
+            "memberships": [
+              "SYN-GROUP-1"
+            ]
+          },
+          {
+            "active": true,
+            "id": "SYN-NODE-F",
+            "memberships": []
+          }
+        ],
+        "objectKind": "RELATIONAL_STATE",
+        "observation": {
+          "accessDepth": "SYNTHETIC",
+          "coverage": "COMPLETE_SYNTHETIC_FRAME",
+          "isGroundTruth": false,
+          "latentStateRelation": "NOT_IDENTICAL_BY_ASSUMPTION",
+          "missingNodes": "None by fictional fixture construction; not a claim about real-world coverage",
+          "missingTies": "None by fictional fixture construction; no latent real network is observed",
+          "provenanceId": "SYN-PROVENANCE-FIXTURE",
+          "realStateKnown": false,
+          "recordKind": "SYNTHETIC_OBSERVATION_METADATA",
+          "sampling": "Explicit fictional node frame; no real respondents",
+          "tieInferenceMethod": "Authored fixture, not inferred empirical ties"
+        },
+        "opportunities": [
+          {
+            "enabled": true,
+            "id": "SYN-OPPORTUNITY-AD",
+            "kind": "PLATFORM_ACCESS",
+            "provenanceId": "SYN-PROVENANCE-FIXTURE",
+            "source": "SYN-NODE-A",
+            "target": "SYN-NODE-D",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": null
+          }
+        ],
+        "parentHash": "74c14069216affaeffd266121610ece17759609b343f19932a54c48557aa312a",
+        "scientificClaims": [],
+        "stateNature": "SYNTHETIC_MODELED_CONFIGURATION",
+        "ties": [
+          {
+            "directed": false,
+            "id": "SYN-TIE-AB",
+            "layerId": "SYN-LAYER-FRIENDSHIP",
+            "objectKind": "SOCIAL_TIE",
+            "provenanceId": "SYN-PROVENANCE-FIXTURE",
+            "source": "SYN-NODE-A",
+            "target": "SYN-NODE-B",
+            "tieType": "SYN-TYPE-FRIENDSHIP",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": null,
+            "weight": 1
+          },
+          {
+            "directed": false,
+            "id": "SYN-TIE-AC",
+            "layerId": "SYN-LAYER-FRIENDSHIP",
+            "objectKind": "SOCIAL_TIE",
+            "provenanceId": "SYN-PROVENANCE-FIXTURE",
+            "source": "SYN-NODE-A",
+            "target": "SYN-NODE-C",
+            "tieType": "SYN-TYPE-FRIENDSHIP",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": null,
+            "weight": 1
+          },
+          {
+            "directed": false,
+            "id": "SYN-TIE-BC",
+            "layerId": "SYN-LAYER-FRIENDSHIP",
+            "objectKind": "SOCIAL_TIE",
+            "provenanceId": "SYN-PROVENANCE-FIXTURE",
+            "source": "SYN-NODE-B",
+            "target": "SYN-NODE-C",
+            "tieType": "SYN-TYPE-FRIENDSHIP",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": null,
+            "weight": 1
+          },
+          {
+            "directed": false,
+            "id": "SYN-TIE-CD",
+            "layerId": "SYN-LAYER-FRIENDSHIP",
+            "objectKind": "SOCIAL_TIE",
+            "provenanceId": "SYN-PROVENANCE-FIXTURE",
+            "source": "SYN-NODE-C",
+            "target": "SYN-NODE-D",
+            "tieType": "SYN-TYPE-FRIENDSHIP",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": null,
+            "weight": 1
+          },
+          {
+            "directed": false,
+            "id": "SYN-TIE-DE",
+            "layerId": "SYN-LAYER-FRIENDSHIP",
+            "objectKind": "SOCIAL_TIE",
+            "provenanceId": "SYN-PROVENANCE-FIXTURE",
+            "source": "SYN-NODE-D",
+            "target": "SYN-NODE-E",
+            "tieType": "SYN-TYPE-FRIENDSHIP",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": null,
+            "weight": 1
+          }
+        ],
+        "version": 2,
+        "window": {
+          "aggregation": "SNAPSHOT_AT_START",
+          "end": "2026-01-01T00:00:00Z",
+          "mode": "SNAPSHOT",
+          "start": "2026-01-01T00:00:00Z"
+        }
+      },
+      "delta": {
+        "architectureStatus": "PENDING",
+        "assertedConsequences": [],
+        "basis": "SYNTHETIC_SCENARIO_OPERATION",
+        "effectiveAt": "2026-01-01T00:00:00Z",
+        "expectedHash": "74c14069216affaeffd266121610ece17759609b343f19932a54c48557aa312a",
+        "expectedVersion": 1,
+        "id": "SYN-DELTA-NODE-ENTRY",
+        "label": "SYNTHETIC / NON_PRODUCTION / NOT A SCIENTIFIC MODEL",
+        "objectKind": "SCENARIO_STATE_DELTA",
+        "occurrenceStatus": "HYPOTHETICAL",
+        "operations": [
+          {
+            "includeInBoundary": true,
+            "node": {
+              "active": true,
+              "id": "SYN-NODE-F",
+              "memberships": []
+            },
+            "operation": "ADD_NODE"
+          }
+        ],
+        "provenanceId": "SYN-PROVENANCE-OPERATION",
+        "stateId": "SYN-STATE-001",
+        "targetNamespace": "SCENARIO_STATE"
+      },
+      "id": "SYN-EXAMPLE-NODE-ENTRY",
+      "metrics": {
+        "componentFragmentation": {
+          "value": 0.4,
+          "variant": "UNREACHABLE_UNORDERED_PAIR_FRACTION"
+        },
+        "componentNodeSets": [
+          [
+            "SYN-NODE-A",
+            "SYN-NODE-B",
+            "SYN-NODE-C",
+            "SYN-NODE-D"
+          ],
+          [
+            "SYN-NODE-F"
+          ]
+        ],
+        "degree": {
+          "SYN-NODE-A": 2,
+          "SYN-NODE-B": 2,
+          "SYN-NODE-C": 3,
+          "SYN-NODE-D": 1,
+          "SYN-NODE-F": 0
+        },
+        "degreeCentralization": {
+          "status": "CALCULATED_SYNTHETIC_REPRESENTATION_ONLY",
+          "value": 0.5833333333333334
+        },
+        "density": 0.4,
+        "edgeCount": 4,
+        "externalBenchmark": {
+          "definition": "UNDIRECTED_SIMPLE_LOOPLESS_DEGREE_STAR_MAX",
+          "maximum": 12,
+          "nodeCount": 5
+        },
+        "label": "SYNTHETIC / NON_PRODUCTION / NOT A SCIENTIFIC MODEL",
+        "localClustering": {
+          "SYN-NODE-A": 1.0,
+          "SYN-NODE-B": 1.0,
+          "SYN-NODE-C": 0.3333333333333333,
+          "SYN-NODE-D": 0,
+          "SYN-NODE-F": 0
+        },
+        "nodeCount": 5,
+        "observationCoverage": "COMPLETE_SYNTHETIC_FRAME",
+        "propagationPolicy": "RECOMPUTE_ONLY_NO_ADDITIVE_CAUSAL_PROPAGATION",
+        "realWorldMetricKnown": false,
+        "scope": {
+          "boundaryId": "SYN-BOUNDARY-001",
+          "localClusteringLowDegreeConvention": "ZERO_WHEN_FEWER_THAN_TWO_NEIGHBORS",
+          "metricLayerId": "SYN-LAYER-FRIENDSHIP",
+          "nodeIds": [
+            "SYN-NODE-A",
+            "SYN-NODE-B",
+            "SYN-NODE-C",
+            "SYN-NODE-D",
+            "SYN-NODE-F"
+          ],
+          "projection": "BINARY_POSITIVE_WEIGHT_SIMPLE_UNDIRECTED_LOOPLESS; weights deliberately not causal or numeric effect weights",
+          "window": {
+            "aggregation": "SNAPSHOT_AT_START",
+            "end": "2026-01-01T00:00:00Z",
+            "mode": "SNAPSHOT",
+            "start": "2026-01-01T00:00:00Z"
+          }
+        },
+        "stateHash": "18592753a0306d1e0e2e6f841841a89439385d8ff384587a7e3d42748b7582d1",
+        "stateId": "SYN-STATE-001",
+        "stateVersion": 2,
+        "warnings": [
+          "Conditional on declared synthetic representation; neither latent truth nor causal effect.",
+          "Changes in analytic boundary can change metrics without any tie change.",
+          "No temporal reachability, uncertainty propagation or population estimation implemented."
+        ]
+      },
+      "receipt": {
+        "afterHash": "18592753a0306d1e0e2e6f841841a89439385d8ff384587a7e3d42748b7582d1",
+        "beforeHash": "74c14069216affaeffd266121610ece17759609b343f19932a54c48557aa312a",
+        "changeClass": "DETERMINISTIC_SYNTHETIC_STATE_OPERATION",
+        "deltaId": "SYN-DELTA-NODE-ENTRY",
+        "empiricalEvidenceProduced": false,
+        "executionEligibility": false,
+        "label": "SYNTHETIC / NON_PRODUCTION / NOT A SCIENTIFIC MODEL",
+        "ontologyRelationshipsEdited": 0,
+        "removedTieIds": [],
+        "scientificConsequencesEstablished": false
+      }
+    },
+    {
+      "afterState": {
+        "appliedDeltaIds": [
+          "SYN-DELTA-NODE-EXIT"
+        ],
+        "architectureStatus": "PENDING",
+        "boundary": {
+          "id": "SYN-BOUNDARY-001",
+          "includedNodeIds": [
+            "SYN-NODE-A",
+            "SYN-NODE-B",
+            "SYN-NODE-D"
+          ],
+          "outsideFramePolicy": "Known outside-frame ties retained, not treated as absence",
+          "selectionRule": "Fictional analytic frame A-D; E known outside selected frame"
+        },
+        "contentHash": "f48b70861a0e8bb0f81cb07b770d7c41b18e29ad5443e24928fb2c0c32a7eb6e",
+        "executionEligibility": false,
+        "groupIds": [
+          "SYN-GROUP-1",
+          "SYN-GROUP-2"
+        ],
+        "id": "SYN-STATE-001",
+        "label": "SYNTHETIC / NON_PRODUCTION / NOT A SCIENTIFIC MODEL",
+        "networkSpecification": {
+          "layerIds": [
+            "SYN-LAYER-FRIENDSHIP"
+          ],
+          "metricLayerId": "SYN-LAYER-FRIENDSHIP",
+          "multiplexPolicy": "SELECT_ONE_LAYER_NO_COLLAPSE",
+          "riskSetOpportunityIds": [
+            "SYN-OPPORTUNITY-AD"
+          ],
+          "tieTypeId": "SYN-TYPE-FRIENDSHIP",
+          "weightInterpretation": "Positive fictional contact intensity; metric projection explicitly binary, not causal strength"
+        },
+        "nodeCatalog": [
+          {
+            "active": true,
+            "id": "SYN-NODE-A",
+            "memberships": [
+              "SYN-GROUP-1"
+            ]
+          },
+          {
+            "active": true,
+            "id": "SYN-NODE-B",
+            "memberships": [
+              "SYN-GROUP-1"
+            ]
+          },
+          {
+            "active": false,
+            "id": "SYN-NODE-C",
+            "memberships": []
+          },
+          {
+            "active": true,
+            "id": "SYN-NODE-D",
+            "memberships": [
+              "SYN-GROUP-1"
+            ]
+          },
+          {
+            "active": true,
+            "id": "SYN-NODE-E",
+            "memberships": [
+              "SYN-GROUP-1"
+            ]
+          }
+        ],
+        "objectKind": "RELATIONAL_STATE",
+        "observation": {
+          "accessDepth": "SYNTHETIC",
+          "coverage": "COMPLETE_SYNTHETIC_FRAME",
+          "isGroundTruth": false,
+          "latentStateRelation": "NOT_IDENTICAL_BY_ASSUMPTION",
+          "missingNodes": "None by fictional fixture construction; not a claim about real-world coverage",
+          "missingTies": "None by fictional fixture construction; no latent real network is observed",
+          "provenanceId": "SYN-PROVENANCE-FIXTURE",
+          "realStateKnown": false,
+          "recordKind": "SYNTHETIC_OBSERVATION_METADATA",
+          "sampling": "Explicit fictional node frame; no real respondents",
+          "tieInferenceMethod": "Authored fixture, not inferred empirical ties"
+        },
+        "opportunities": [
+          {
+            "enabled": true,
+            "id": "SYN-OPPORTUNITY-AD",
+            "kind": "PLATFORM_ACCESS",
+            "provenanceId": "SYN-PROVENANCE-FIXTURE",
+            "source": "SYN-NODE-A",
+            "target": "SYN-NODE-D",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": null
+          }
+        ],
+        "parentHash": "74c14069216affaeffd266121610ece17759609b343f19932a54c48557aa312a",
+        "scientificClaims": [],
+        "stateNature": "SYNTHETIC_MODELED_CONFIGURATION",
+        "ties": [
+          {
+            "directed": false,
+            "id": "SYN-TIE-AB",
+            "layerId": "SYN-LAYER-FRIENDSHIP",
+            "objectKind": "SOCIAL_TIE",
+            "provenanceId": "SYN-PROVENANCE-FIXTURE",
+            "source": "SYN-NODE-A",
+            "target": "SYN-NODE-B",
+            "tieType": "SYN-TYPE-FRIENDSHIP",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": null,
+            "weight": 1
+          },
+          {
+            "directed": false,
+            "id": "SYN-TIE-DE",
+            "layerId": "SYN-LAYER-FRIENDSHIP",
+            "objectKind": "SOCIAL_TIE",
+            "provenanceId": "SYN-PROVENANCE-FIXTURE",
+            "source": "SYN-NODE-D",
+            "target": "SYN-NODE-E",
+            "tieType": "SYN-TYPE-FRIENDSHIP",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": null,
+            "weight": 1
+          }
+        ],
+        "version": 2,
+        "window": {
+          "aggregation": "SNAPSHOT_AT_START",
+          "end": "2026-01-01T00:00:00Z",
+          "mode": "SNAPSHOT",
+          "start": "2026-01-01T00:00:00Z"
+        }
+      },
+      "delta": {
+        "architectureStatus": "PENDING",
+        "assertedConsequences": [],
+        "basis": "SYNTHETIC_SCENARIO_OPERATION",
+        "effectiveAt": "2026-01-01T00:00:00Z",
+        "expectedHash": "74c14069216affaeffd266121610ece17759609b343f19932a54c48557aa312a",
+        "expectedVersion": 1,
+        "id": "SYN-DELTA-NODE-EXIT",
+        "label": "SYNTHETIC / NON_PRODUCTION / NOT A SCIENTIFIC MODEL",
+        "objectKind": "SCENARIO_STATE_DELTA",
+        "occurrenceStatus": "HYPOTHETICAL",
+        "operations": [
+          {
+            "incidentTiePolicy": "REMOVE_AND_RECORD",
+            "nodeId": "SYN-NODE-C",
+            "operation": "REMOVE_NODE"
+          }
+        ],
+        "provenanceId": "SYN-PROVENANCE-OPERATION",
+        "stateId": "SYN-STATE-001",
+        "targetNamespace": "SCENARIO_STATE"
+      },
+      "id": "SYN-EXAMPLE-NODE-EXIT",
+      "metrics": {
+        "componentFragmentation": {
+          "value": 0.6666666666666667,
+          "variant": "UNREACHABLE_UNORDERED_PAIR_FRACTION"
+        },
+        "componentNodeSets": [
+          [
+            "SYN-NODE-A",
+            "SYN-NODE-B"
+          ],
+          [
+            "SYN-NODE-D"
+          ]
+        ],
+        "degree": {
+          "SYN-NODE-A": 1,
+          "SYN-NODE-B": 1,
+          "SYN-NODE-D": 0
+        },
+        "degreeCentralization": {
+          "status": "CALCULATED_SYNTHETIC_REPRESENTATION_ONLY",
+          "value": 0.5
+        },
+        "density": 0.3333333333333333,
+        "edgeCount": 1,
+        "externalBenchmark": {
+          "definition": "UNDIRECTED_SIMPLE_LOOPLESS_DEGREE_STAR_MAX",
+          "maximum": 2,
+          "nodeCount": 3
+        },
+        "label": "SYNTHETIC / NON_PRODUCTION / NOT A SCIENTIFIC MODEL",
+        "localClustering": {
+          "SYN-NODE-A": 0,
+          "SYN-NODE-B": 0,
+          "SYN-NODE-D": 0
+        },
+        "nodeCount": 3,
+        "observationCoverage": "COMPLETE_SYNTHETIC_FRAME",
+        "propagationPolicy": "RECOMPUTE_ONLY_NO_ADDITIVE_CAUSAL_PROPAGATION",
+        "realWorldMetricKnown": false,
+        "scope": {
+          "boundaryId": "SYN-BOUNDARY-001",
+          "localClusteringLowDegreeConvention": "ZERO_WHEN_FEWER_THAN_TWO_NEIGHBORS",
+          "metricLayerId": "SYN-LAYER-FRIENDSHIP",
+          "nodeIds": [
+            "SYN-NODE-A",
+            "SYN-NODE-B",
+            "SYN-NODE-D"
+          ],
+          "projection": "BINARY_POSITIVE_WEIGHT_SIMPLE_UNDIRECTED_LOOPLESS; weights deliberately not causal or numeric effect weights",
+          "window": {
+            "aggregation": "SNAPSHOT_AT_START",
+            "end": "2026-01-01T00:00:00Z",
+            "mode": "SNAPSHOT",
+            "start": "2026-01-01T00:00:00Z"
+          }
+        },
+        "stateHash": "f48b70861a0e8bb0f81cb07b770d7c41b18e29ad5443e24928fb2c0c32a7eb6e",
+        "stateId": "SYN-STATE-001",
+        "stateVersion": 2,
+        "warnings": [
+          "Conditional on declared synthetic representation; neither latent truth nor causal effect.",
+          "Changes in analytic boundary can change metrics without any tie change.",
+          "No temporal reachability, uncertainty propagation or population estimation implemented."
+        ]
+      },
+      "receipt": {
+        "afterHash": "f48b70861a0e8bb0f81cb07b770d7c41b18e29ad5443e24928fb2c0c32a7eb6e",
+        "beforeHash": "74c14069216affaeffd266121610ece17759609b343f19932a54c48557aa312a",
+        "changeClass": "DETERMINISTIC_SYNTHETIC_STATE_OPERATION",
+        "deltaId": "SYN-DELTA-NODE-EXIT",
+        "empiricalEvidenceProduced": false,
+        "executionEligibility": false,
+        "label": "SYNTHETIC / NON_PRODUCTION / NOT A SCIENTIFIC MODEL",
+        "ontologyRelationshipsEdited": 0,
+        "removedTieIds": [
+          "SYN-TIE-AC",
+          "SYN-TIE-BC",
+          "SYN-TIE-CD"
+        ],
+        "scientificConsequencesEstablished": false
+      }
+    },
+    {
+      "afterState": {
+        "appliedDeltaIds": [
+          "SYN-DELTA-MEMBERSHIP"
+        ],
+        "architectureStatus": "PENDING",
+        "boundary": {
+          "id": "SYN-BOUNDARY-001",
+          "includedNodeIds": [
+            "SYN-NODE-A",
+            "SYN-NODE-B",
+            "SYN-NODE-C",
+            "SYN-NODE-D"
+          ],
+          "outsideFramePolicy": "Known outside-frame ties retained, not treated as absence",
+          "selectionRule": "Fictional analytic frame A-D; E known outside selected frame"
+        },
+        "contentHash": "6064ef8d16ffaed6996a13149109a0dc4f6c01e82a4a86ca4fe50a0425d3262b",
+        "executionEligibility": false,
+        "groupIds": [
+          "SYN-GROUP-1",
+          "SYN-GROUP-2"
+        ],
+        "id": "SYN-STATE-001",
+        "label": "SYNTHETIC / NON_PRODUCTION / NOT A SCIENTIFIC MODEL",
+        "networkSpecification": {
+          "layerIds": [
+            "SYN-LAYER-FRIENDSHIP"
+          ],
+          "metricLayerId": "SYN-LAYER-FRIENDSHIP",
+          "multiplexPolicy": "SELECT_ONE_LAYER_NO_COLLAPSE",
+          "riskSetOpportunityIds": [
+            "SYN-OPPORTUNITY-AD"
+          ],
+          "tieTypeId": "SYN-TYPE-FRIENDSHIP",
+          "weightInterpretation": "Positive fictional contact intensity; metric projection explicitly binary, not causal strength"
+        },
+        "nodeCatalog": [
+          {
+            "active": true,
+            "id": "SYN-NODE-A",
+            "memberships": [
+              "SYN-GROUP-2"
+            ]
+          },
+          {
+            "active": true,
+            "id": "SYN-NODE-B",
+            "memberships": [
+              "SYN-GROUP-1"
+            ]
+          },
+          {
+            "active": true,
+            "id": "SYN-NODE-C",
+            "memberships": [
+              "SYN-GROUP-1"
+            ]
+          },
+          {
+            "active": true,
+            "id": "SYN-NODE-D",
+            "memberships": [
+              "SYN-GROUP-1"
+            ]
+          },
+          {
+            "active": true,
+            "id": "SYN-NODE-E",
+            "memberships": [
+              "SYN-GROUP-1"
+            ]
+          }
+        ],
+        "objectKind": "RELATIONAL_STATE",
+        "observation": {
+          "accessDepth": "SYNTHETIC",
+          "coverage": "COMPLETE_SYNTHETIC_FRAME",
+          "isGroundTruth": false,
+          "latentStateRelation": "NOT_IDENTICAL_BY_ASSUMPTION",
+          "missingNodes": "None by fictional fixture construction; not a claim about real-world coverage",
+          "missingTies": "None by fictional fixture construction; no latent real network is observed",
+          "provenanceId": "SYN-PROVENANCE-FIXTURE",
+          "realStateKnown": false,
+          "recordKind": "SYNTHETIC_OBSERVATION_METADATA",
+          "sampling": "Explicit fictional node frame; no real respondents",
+          "tieInferenceMethod": "Authored fixture, not inferred empirical ties"
+        },
+        "opportunities": [
+          {
+            "enabled": true,
+            "id": "SYN-OPPORTUNITY-AD",
+            "kind": "PLATFORM_ACCESS",
+            "provenanceId": "SYN-PROVENANCE-FIXTURE",
+            "source": "SYN-NODE-A",
+            "target": "SYN-NODE-D",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": null
+          }
+        ],
+        "parentHash": "74c14069216affaeffd266121610ece17759609b343f19932a54c48557aa312a",
+        "scientificClaims": [],
+        "stateNature": "SYNTHETIC_MODELED_CONFIGURATION",
+        "ties": [
+          {
+            "directed": false,
+            "id": "SYN-TIE-AB",
+            "layerId": "SYN-LAYER-FRIENDSHIP",
+            "objectKind": "SOCIAL_TIE",
+            "provenanceId": "SYN-PROVENANCE-FIXTURE",
+            "source": "SYN-NODE-A",
+            "target": "SYN-NODE-B",
+            "tieType": "SYN-TYPE-FRIENDSHIP",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": null,
+            "weight": 1
+          },
+          {
+            "directed": false,
+            "id": "SYN-TIE-AC",
+            "layerId": "SYN-LAYER-FRIENDSHIP",
+            "objectKind": "SOCIAL_TIE",
+            "provenanceId": "SYN-PROVENANCE-FIXTURE",
+            "source": "SYN-NODE-A",
+            "target": "SYN-NODE-C",
+            "tieType": "SYN-TYPE-FRIENDSHIP",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": null,
+            "weight": 1
+          },
+          {
+            "directed": false,
+            "id": "SYN-TIE-BC",
+            "layerId": "SYN-LAYER-FRIENDSHIP",
+            "objectKind": "SOCIAL_TIE",
+            "provenanceId": "SYN-PROVENANCE-FIXTURE",
+            "source": "SYN-NODE-B",
+            "target": "SYN-NODE-C",
+            "tieType": "SYN-TYPE-FRIENDSHIP",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": null,
+            "weight": 1
+          },
+          {
+            "directed": false,
+            "id": "SYN-TIE-CD",
+            "layerId": "SYN-LAYER-FRIENDSHIP",
+            "objectKind": "SOCIAL_TIE",
+            "provenanceId": "SYN-PROVENANCE-FIXTURE",
+            "source": "SYN-NODE-C",
+            "target": "SYN-NODE-D",
+            "tieType": "SYN-TYPE-FRIENDSHIP",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": null,
+            "weight": 1
+          },
+          {
+            "directed": false,
+            "id": "SYN-TIE-DE",
+            "layerId": "SYN-LAYER-FRIENDSHIP",
+            "objectKind": "SOCIAL_TIE",
+            "provenanceId": "SYN-PROVENANCE-FIXTURE",
+            "source": "SYN-NODE-D",
+            "target": "SYN-NODE-E",
+            "tieType": "SYN-TYPE-FRIENDSHIP",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": null,
+            "weight": 1
+          }
+        ],
+        "version": 2,
+        "window": {
+          "aggregation": "SNAPSHOT_AT_START",
+          "end": "2026-01-01T00:00:00Z",
+          "mode": "SNAPSHOT",
+          "start": "2026-01-01T00:00:00Z"
+        }
+      },
+      "delta": {
+        "architectureStatus": "PENDING",
+        "assertedConsequences": [],
+        "basis": "SYNTHETIC_SCENARIO_OPERATION",
+        "effectiveAt": "2026-01-01T00:00:00Z",
+        "expectedHash": "74c14069216affaeffd266121610ece17759609b343f19932a54c48557aa312a",
+        "expectedVersion": 1,
+        "id": "SYN-DELTA-MEMBERSHIP",
+        "label": "SYNTHETIC / NON_PRODUCTION / NOT A SCIENTIFIC MODEL",
+        "objectKind": "SCENARIO_STATE_DELTA",
+        "occurrenceStatus": "HYPOTHETICAL",
+        "operations": [
+          {
+            "groupIds": [
+              "SYN-GROUP-2"
+            ],
+            "nodeId": "SYN-NODE-A",
+            "operation": "ASSIGN_MEMBERSHIP"
+          }
+        ],
+        "provenanceId": "SYN-PROVENANCE-OPERATION",
+        "stateId": "SYN-STATE-001",
+        "targetNamespace": "SCENARIO_STATE"
+      },
+      "id": "SYN-EXAMPLE-MEMBERSHIP",
+      "metrics": {
+        "componentFragmentation": {
+          "value": 0.0,
+          "variant": "UNREACHABLE_UNORDERED_PAIR_FRACTION"
+        },
+        "componentNodeSets": [
+          [
+            "SYN-NODE-A",
+            "SYN-NODE-B",
+            "SYN-NODE-C",
+            "SYN-NODE-D"
+          ]
+        ],
+        "degree": {
+          "SYN-NODE-A": 2,
+          "SYN-NODE-B": 2,
+          "SYN-NODE-C": 3,
+          "SYN-NODE-D": 1
+        },
+        "degreeCentralization": {
+          "status": "CALCULATED_SYNTHETIC_REPRESENTATION_ONLY",
+          "value": 0.6666666666666666
+        },
+        "density": 0.6666666666666666,
+        "edgeCount": 4,
+        "externalBenchmark": {
+          "definition": "UNDIRECTED_SIMPLE_LOOPLESS_DEGREE_STAR_MAX",
+          "maximum": 6,
+          "nodeCount": 4
+        },
+        "label": "SYNTHETIC / NON_PRODUCTION / NOT A SCIENTIFIC MODEL",
+        "localClustering": {
+          "SYN-NODE-A": 1.0,
+          "SYN-NODE-B": 1.0,
+          "SYN-NODE-C": 0.3333333333333333,
+          "SYN-NODE-D": 0
+        },
+        "nodeCount": 4,
+        "observationCoverage": "COMPLETE_SYNTHETIC_FRAME",
+        "propagationPolicy": "RECOMPUTE_ONLY_NO_ADDITIVE_CAUSAL_PROPAGATION",
+        "realWorldMetricKnown": false,
+        "scope": {
+          "boundaryId": "SYN-BOUNDARY-001",
+          "localClusteringLowDegreeConvention": "ZERO_WHEN_FEWER_THAN_TWO_NEIGHBORS",
+          "metricLayerId": "SYN-LAYER-FRIENDSHIP",
+          "nodeIds": [
+            "SYN-NODE-A",
+            "SYN-NODE-B",
+            "SYN-NODE-C",
+            "SYN-NODE-D"
+          ],
+          "projection": "BINARY_POSITIVE_WEIGHT_SIMPLE_UNDIRECTED_LOOPLESS; weights deliberately not causal or numeric effect weights",
+          "window": {
+            "aggregation": "SNAPSHOT_AT_START",
+            "end": "2026-01-01T00:00:00Z",
+            "mode": "SNAPSHOT",
+            "start": "2026-01-01T00:00:00Z"
+          }
+        },
+        "stateHash": "6064ef8d16ffaed6996a13149109a0dc4f6c01e82a4a86ca4fe50a0425d3262b",
+        "stateId": "SYN-STATE-001",
+        "stateVersion": 2,
+        "warnings": [
+          "Conditional on declared synthetic representation; neither latent truth nor causal effect.",
+          "Changes in analytic boundary can change metrics without any tie change.",
+          "No temporal reachability, uncertainty propagation or population estimation implemented."
+        ]
+      },
+      "receipt": {
+        "afterHash": "6064ef8d16ffaed6996a13149109a0dc4f6c01e82a4a86ca4fe50a0425d3262b",
+        "beforeHash": "74c14069216affaeffd266121610ece17759609b343f19932a54c48557aa312a",
+        "changeClass": "DETERMINISTIC_SYNTHETIC_STATE_OPERATION",
+        "deltaId": "SYN-DELTA-MEMBERSHIP",
+        "empiricalEvidenceProduced": false,
+        "executionEligibility": false,
+        "label": "SYNTHETIC / NON_PRODUCTION / NOT A SCIENTIFIC MODEL",
+        "ontologyRelationshipsEdited": 0,
+        "removedTieIds": [],
+        "scientificConsequencesEstablished": false
+      }
+    },
+    {
+      "afterState": {
+        "appliedDeltaIds": [
+          "SYN-DELTA-BOUNDARY"
+        ],
+        "architectureStatus": "PENDING",
+        "boundary": {
+          "id": "SYN-BOUNDARY-001",
+          "includedNodeIds": [
+            "SYN-NODE-A",
+            "SYN-NODE-B",
+            "SYN-NODE-C",
+            "SYN-NODE-D",
+            "SYN-NODE-E"
+          ],
+          "outsideFramePolicy": "Known outside-frame ties retained, not treated as absence",
+          "selectionRule": "Expand analytic frame to include already-known fictional E; no tie created"
+        },
+        "contentHash": "5176296b4f5e90d7d9e4cd21ff7dac1f929a21a4e799c3fb4926de377778b38a",
+        "executionEligibility": false,
+        "groupIds": [
+          "SYN-GROUP-1",
+          "SYN-GROUP-2"
+        ],
+        "id": "SYN-STATE-001",
+        "label": "SYNTHETIC / NON_PRODUCTION / NOT A SCIENTIFIC MODEL",
+        "networkSpecification": {
+          "layerIds": [
+            "SYN-LAYER-FRIENDSHIP"
+          ],
+          "metricLayerId": "SYN-LAYER-FRIENDSHIP",
+          "multiplexPolicy": "SELECT_ONE_LAYER_NO_COLLAPSE",
+          "riskSetOpportunityIds": [
+            "SYN-OPPORTUNITY-AD"
+          ],
+          "tieTypeId": "SYN-TYPE-FRIENDSHIP",
+          "weightInterpretation": "Positive fictional contact intensity; metric projection explicitly binary, not causal strength"
+        },
+        "nodeCatalog": [
+          {
+            "active": true,
+            "id": "SYN-NODE-A",
+            "memberships": [
+              "SYN-GROUP-1"
+            ]
+          },
+          {
+            "active": true,
+            "id": "SYN-NODE-B",
+            "memberships": [
+              "SYN-GROUP-1"
+            ]
+          },
+          {
+            "active": true,
+            "id": "SYN-NODE-C",
+            "memberships": [
+              "SYN-GROUP-1"
+            ]
+          },
+          {
+            "active": true,
+            "id": "SYN-NODE-D",
+            "memberships": [
+              "SYN-GROUP-1"
+            ]
+          },
+          {
+            "active": true,
+            "id": "SYN-NODE-E",
+            "memberships": [
+              "SYN-GROUP-1"
+            ]
+          }
+        ],
+        "objectKind": "RELATIONAL_STATE",
+        "observation": {
+          "accessDepth": "SYNTHETIC",
+          "coverage": "COMPLETE_SYNTHETIC_FRAME",
+          "isGroundTruth": false,
+          "latentStateRelation": "NOT_IDENTICAL_BY_ASSUMPTION",
+          "missingNodes": "None by fictional fixture construction; not a claim about real-world coverage",
+          "missingTies": "None by fictional fixture construction; no latent real network is observed",
+          "provenanceId": "SYN-PROVENANCE-FIXTURE",
+          "realStateKnown": false,
+          "recordKind": "SYNTHETIC_OBSERVATION_METADATA",
+          "sampling": "Explicit fictional node frame; no real respondents",
+          "tieInferenceMethod": "Authored fixture, not inferred empirical ties"
+        },
+        "opportunities": [
+          {
+            "enabled": true,
+            "id": "SYN-OPPORTUNITY-AD",
+            "kind": "PLATFORM_ACCESS",
+            "provenanceId": "SYN-PROVENANCE-FIXTURE",
+            "source": "SYN-NODE-A",
+            "target": "SYN-NODE-D",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": null
+          }
+        ],
+        "parentHash": "74c14069216affaeffd266121610ece17759609b343f19932a54c48557aa312a",
+        "scientificClaims": [],
+        "stateNature": "SYNTHETIC_MODELED_CONFIGURATION",
+        "ties": [
+          {
+            "directed": false,
+            "id": "SYN-TIE-AB",
+            "layerId": "SYN-LAYER-FRIENDSHIP",
+            "objectKind": "SOCIAL_TIE",
+            "provenanceId": "SYN-PROVENANCE-FIXTURE",
+            "source": "SYN-NODE-A",
+            "target": "SYN-NODE-B",
+            "tieType": "SYN-TYPE-FRIENDSHIP",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": null,
+            "weight": 1
+          },
+          {
+            "directed": false,
+            "id": "SYN-TIE-AC",
+            "layerId": "SYN-LAYER-FRIENDSHIP",
+            "objectKind": "SOCIAL_TIE",
+            "provenanceId": "SYN-PROVENANCE-FIXTURE",
+            "source": "SYN-NODE-A",
+            "target": "SYN-NODE-C",
+            "tieType": "SYN-TYPE-FRIENDSHIP",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": null,
+            "weight": 1
+          },
+          {
+            "directed": false,
+            "id": "SYN-TIE-BC",
+            "layerId": "SYN-LAYER-FRIENDSHIP",
+            "objectKind": "SOCIAL_TIE",
+            "provenanceId": "SYN-PROVENANCE-FIXTURE",
+            "source": "SYN-NODE-B",
+            "target": "SYN-NODE-C",
+            "tieType": "SYN-TYPE-FRIENDSHIP",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": null,
+            "weight": 1
+          },
+          {
+            "directed": false,
+            "id": "SYN-TIE-CD",
+            "layerId": "SYN-LAYER-FRIENDSHIP",
+            "objectKind": "SOCIAL_TIE",
+            "provenanceId": "SYN-PROVENANCE-FIXTURE",
+            "source": "SYN-NODE-C",
+            "target": "SYN-NODE-D",
+            "tieType": "SYN-TYPE-FRIENDSHIP",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": null,
+            "weight": 1
+          },
+          {
+            "directed": false,
+            "id": "SYN-TIE-DE",
+            "layerId": "SYN-LAYER-FRIENDSHIP",
+            "objectKind": "SOCIAL_TIE",
+            "provenanceId": "SYN-PROVENANCE-FIXTURE",
+            "source": "SYN-NODE-D",
+            "target": "SYN-NODE-E",
+            "tieType": "SYN-TYPE-FRIENDSHIP",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": null,
+            "weight": 1
+          }
+        ],
+        "version": 2,
+        "window": {
+          "aggregation": "SNAPSHOT_AT_START",
+          "end": "2026-01-01T00:00:00Z",
+          "mode": "SNAPSHOT",
+          "start": "2026-01-01T00:00:00Z"
+        }
+      },
+      "delta": {
+        "architectureStatus": "PENDING",
+        "assertedConsequences": [],
+        "basis": "SYNTHETIC_SCOPE_SELECTION",
+        "effectiveAt": "2026-01-01T00:00:00Z",
+        "expectedHash": "74c14069216affaeffd266121610ece17759609b343f19932a54c48557aa312a",
+        "expectedVersion": 1,
+        "id": "SYN-DELTA-BOUNDARY",
+        "label": "SYNTHETIC / NON_PRODUCTION / NOT A SCIENTIFIC MODEL",
+        "objectKind": "SCENARIO_STATE_DELTA",
+        "occurrenceStatus": "HYPOTHETICAL",
+        "operations": [
+          {
+            "includedNodeIds": [
+              "SYN-NODE-A",
+              "SYN-NODE-B",
+              "SYN-NODE-C",
+              "SYN-NODE-D",
+              "SYN-NODE-E"
+            ],
+            "operation": "SET_BOUNDARY",
+            "selectionReason": "Expand analytic frame to include already-known fictional E; no tie created"
+          }
+        ],
+        "provenanceId": "SYN-PROVENANCE-OPERATION",
+        "stateId": "SYN-STATE-001",
+        "targetNamespace": "SCENARIO_STATE"
+      },
+      "id": "SYN-EXAMPLE-BOUNDARY",
+      "metrics": {
+        "componentFragmentation": {
+          "value": 0.0,
+          "variant": "UNREACHABLE_UNORDERED_PAIR_FRACTION"
+        },
+        "componentNodeSets": [
+          [
+            "SYN-NODE-A",
+            "SYN-NODE-B",
+            "SYN-NODE-C",
+            "SYN-NODE-D",
+            "SYN-NODE-E"
+          ]
+        ],
+        "degree": {
+          "SYN-NODE-A": 2,
+          "SYN-NODE-B": 2,
+          "SYN-NODE-C": 3,
+          "SYN-NODE-D": 2,
+          "SYN-NODE-E": 1
+        },
+        "degreeCentralization": {
+          "status": "CALCULATED_SYNTHETIC_REPRESENTATION_ONLY",
+          "value": 0.4166666666666667
+        },
+        "density": 0.5,
+        "edgeCount": 5,
+        "externalBenchmark": {
+          "definition": "UNDIRECTED_SIMPLE_LOOPLESS_DEGREE_STAR_MAX",
+          "maximum": 12,
+          "nodeCount": 5
+        },
+        "label": "SYNTHETIC / NON_PRODUCTION / NOT A SCIENTIFIC MODEL",
+        "localClustering": {
+          "SYN-NODE-A": 1.0,
+          "SYN-NODE-B": 1.0,
+          "SYN-NODE-C": 0.3333333333333333,
+          "SYN-NODE-D": 0.0,
+          "SYN-NODE-E": 0
+        },
+        "nodeCount": 5,
+        "observationCoverage": "COMPLETE_SYNTHETIC_FRAME",
+        "propagationPolicy": "RECOMPUTE_ONLY_NO_ADDITIVE_CAUSAL_PROPAGATION",
+        "realWorldMetricKnown": false,
+        "scope": {
+          "boundaryId": "SYN-BOUNDARY-001",
+          "localClusteringLowDegreeConvention": "ZERO_WHEN_FEWER_THAN_TWO_NEIGHBORS",
+          "metricLayerId": "SYN-LAYER-FRIENDSHIP",
+          "nodeIds": [
+            "SYN-NODE-A",
+            "SYN-NODE-B",
+            "SYN-NODE-C",
+            "SYN-NODE-D",
+            "SYN-NODE-E"
+          ],
+          "projection": "BINARY_POSITIVE_WEIGHT_SIMPLE_UNDIRECTED_LOOPLESS; weights deliberately not causal or numeric effect weights",
+          "window": {
+            "aggregation": "SNAPSHOT_AT_START",
+            "end": "2026-01-01T00:00:00Z",
+            "mode": "SNAPSHOT",
+            "start": "2026-01-01T00:00:00Z"
+          }
+        },
+        "stateHash": "5176296b4f5e90d7d9e4cd21ff7dac1f929a21a4e799c3fb4926de377778b38a",
+        "stateId": "SYN-STATE-001",
+        "stateVersion": 2,
+        "warnings": [
+          "Conditional on declared synthetic representation; neither latent truth nor causal effect.",
+          "Changes in analytic boundary can change metrics without any tie change.",
+          "No temporal reachability, uncertainty propagation or population estimation implemented."
+        ]
+      },
+      "receipt": {
+        "afterHash": "5176296b4f5e90d7d9e4cd21ff7dac1f929a21a4e799c3fb4926de377778b38a",
+        "beforeHash": "74c14069216affaeffd266121610ece17759609b343f19932a54c48557aa312a",
+        "changeClass": "ANALYTIC_BOUNDARY_ONLY",
+        "deltaId": "SYN-DELTA-BOUNDARY",
+        "empiricalEvidenceProduced": false,
+        "executionEligibility": false,
+        "label": "SYNTHETIC / NON_PRODUCTION / NOT A SCIENTIFIC MODEL",
+        "ontologyRelationshipsEdited": 0,
+        "removedTieIds": [],
+        "scientificConsequencesEstablished": false
+      }
+    },
+    {
+      "afterState": {
+        "appliedDeltaIds": [
+          "SYN-DELTA-WEIGHT"
+        ],
+        "architectureStatus": "PENDING",
+        "boundary": {
+          "id": "SYN-BOUNDARY-001",
+          "includedNodeIds": [
+            "SYN-NODE-A",
+            "SYN-NODE-B",
+            "SYN-NODE-C",
+            "SYN-NODE-D"
+          ],
+          "outsideFramePolicy": "Known outside-frame ties retained, not treated as absence",
+          "selectionRule": "Fictional analytic frame A-D; E known outside selected frame"
+        },
+        "contentHash": "0355395380351f23b3f76eb6f47d7086c434372f12375f9be8f525d357aaa888",
+        "executionEligibility": false,
+        "groupIds": [
+          "SYN-GROUP-1",
+          "SYN-GROUP-2"
+        ],
+        "id": "SYN-STATE-001",
+        "label": "SYNTHETIC / NON_PRODUCTION / NOT A SCIENTIFIC MODEL",
+        "networkSpecification": {
+          "layerIds": [
+            "SYN-LAYER-FRIENDSHIP"
+          ],
+          "metricLayerId": "SYN-LAYER-FRIENDSHIP",
+          "multiplexPolicy": "SELECT_ONE_LAYER_NO_COLLAPSE",
+          "riskSetOpportunityIds": [
+            "SYN-OPPORTUNITY-AD"
+          ],
+          "tieTypeId": "SYN-TYPE-FRIENDSHIP",
+          "weightInterpretation": "Positive fictional contact intensity; metric projection explicitly binary, not causal strength"
+        },
+        "nodeCatalog": [
+          {
+            "active": true,
+            "id": "SYN-NODE-A",
+            "memberships": [
+              "SYN-GROUP-1"
+            ]
+          },
+          {
+            "active": true,
+            "id": "SYN-NODE-B",
+            "memberships": [
+              "SYN-GROUP-1"
+            ]
+          },
+          {
+            "active": true,
+            "id": "SYN-NODE-C",
+            "memberships": [
+              "SYN-GROUP-1"
+            ]
+          },
+          {
+            "active": true,
+            "id": "SYN-NODE-D",
+            "memberships": [
+              "SYN-GROUP-1"
+            ]
+          },
+          {
+            "active": true,
+            "id": "SYN-NODE-E",
+            "memberships": [
+              "SYN-GROUP-1"
+            ]
+          }
+        ],
+        "objectKind": "RELATIONAL_STATE",
+        "observation": {
+          "accessDepth": "SYNTHETIC",
+          "coverage": "COMPLETE_SYNTHETIC_FRAME",
+          "isGroundTruth": false,
+          "latentStateRelation": "NOT_IDENTICAL_BY_ASSUMPTION",
+          "missingNodes": "None by fictional fixture construction; not a claim about real-world coverage",
+          "missingTies": "None by fictional fixture construction; no latent real network is observed",
+          "provenanceId": "SYN-PROVENANCE-FIXTURE",
+          "realStateKnown": false,
+          "recordKind": "SYNTHETIC_OBSERVATION_METADATA",
+          "sampling": "Explicit fictional node frame; no real respondents",
+          "tieInferenceMethod": "Authored fixture, not inferred empirical ties"
+        },
+        "opportunities": [
+          {
+            "enabled": true,
+            "id": "SYN-OPPORTUNITY-AD",
+            "kind": "PLATFORM_ACCESS",
+            "provenanceId": "SYN-PROVENANCE-FIXTURE",
+            "source": "SYN-NODE-A",
+            "target": "SYN-NODE-D",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": null
+          }
+        ],
+        "parentHash": "74c14069216affaeffd266121610ece17759609b343f19932a54c48557aa312a",
+        "scientificClaims": [],
+        "stateNature": "SYNTHETIC_MODELED_CONFIGURATION",
+        "ties": [
+          {
+            "directed": false,
+            "id": "SYN-TIE-AB",
+            "layerId": "SYN-LAYER-FRIENDSHIP",
+            "objectKind": "SOCIAL_TIE",
+            "provenanceId": "SYN-PROVENANCE-FIXTURE",
+            "source": "SYN-NODE-A",
+            "target": "SYN-NODE-B",
+            "tieType": "SYN-TYPE-FRIENDSHIP",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": null,
+            "weight": 2
+          },
+          {
+            "directed": false,
+            "id": "SYN-TIE-AC",
+            "layerId": "SYN-LAYER-FRIENDSHIP",
+            "objectKind": "SOCIAL_TIE",
+            "provenanceId": "SYN-PROVENANCE-FIXTURE",
+            "source": "SYN-NODE-A",
+            "target": "SYN-NODE-C",
+            "tieType": "SYN-TYPE-FRIENDSHIP",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": null,
+            "weight": 1
+          },
+          {
+            "directed": false,
+            "id": "SYN-TIE-BC",
+            "layerId": "SYN-LAYER-FRIENDSHIP",
+            "objectKind": "SOCIAL_TIE",
+            "provenanceId": "SYN-PROVENANCE-FIXTURE",
+            "source": "SYN-NODE-B",
+            "target": "SYN-NODE-C",
+            "tieType": "SYN-TYPE-FRIENDSHIP",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": null,
+            "weight": 1
+          },
+          {
+            "directed": false,
+            "id": "SYN-TIE-CD",
+            "layerId": "SYN-LAYER-FRIENDSHIP",
+            "objectKind": "SOCIAL_TIE",
+            "provenanceId": "SYN-PROVENANCE-FIXTURE",
+            "source": "SYN-NODE-C",
+            "target": "SYN-NODE-D",
+            "tieType": "SYN-TYPE-FRIENDSHIP",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": null,
+            "weight": 1
+          },
+          {
+            "directed": false,
+            "id": "SYN-TIE-DE",
+            "layerId": "SYN-LAYER-FRIENDSHIP",
+            "objectKind": "SOCIAL_TIE",
+            "provenanceId": "SYN-PROVENANCE-FIXTURE",
+            "source": "SYN-NODE-D",
+            "target": "SYN-NODE-E",
+            "tieType": "SYN-TYPE-FRIENDSHIP",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": null,
+            "weight": 1
+          }
+        ],
+        "version": 2,
+        "window": {
+          "aggregation": "SNAPSHOT_AT_START",
+          "end": "2026-01-01T00:00:00Z",
+          "mode": "SNAPSHOT",
+          "start": "2026-01-01T00:00:00Z"
+        }
+      },
+      "delta": {
+        "architectureStatus": "PENDING",
+        "assertedConsequences": [],
+        "basis": "SYNTHETIC_SCENARIO_OPERATION",
+        "effectiveAt": "2026-01-01T00:00:00Z",
+        "expectedHash": "74c14069216affaeffd266121610ece17759609b343f19932a54c48557aa312a",
+        "expectedVersion": 1,
+        "id": "SYN-DELTA-WEIGHT",
+        "label": "SYNTHETIC / NON_PRODUCTION / NOT A SCIENTIFIC MODEL",
+        "objectKind": "SCENARIO_STATE_DELTA",
+        "occurrenceStatus": "HYPOTHETICAL",
+        "operations": [
+          {
+            "operation": "SET_WEIGHT",
+            "tieId": "SYN-TIE-AB",
+            "weight": 2
+          }
+        ],
+        "provenanceId": "SYN-PROVENANCE-OPERATION",
+        "stateId": "SYN-STATE-001",
+        "targetNamespace": "SCENARIO_STATE"
+      },
+      "id": "SYN-EXAMPLE-WEIGHT",
+      "metrics": {
+        "componentFragmentation": {
+          "value": 0.0,
+          "variant": "UNREACHABLE_UNORDERED_PAIR_FRACTION"
+        },
+        "componentNodeSets": [
+          [
+            "SYN-NODE-A",
+            "SYN-NODE-B",
+            "SYN-NODE-C",
+            "SYN-NODE-D"
+          ]
+        ],
+        "degree": {
+          "SYN-NODE-A": 2,
+          "SYN-NODE-B": 2,
+          "SYN-NODE-C": 3,
+          "SYN-NODE-D": 1
+        },
+        "degreeCentralization": {
+          "status": "CALCULATED_SYNTHETIC_REPRESENTATION_ONLY",
+          "value": 0.6666666666666666
+        },
+        "density": 0.6666666666666666,
+        "edgeCount": 4,
+        "externalBenchmark": {
+          "definition": "UNDIRECTED_SIMPLE_LOOPLESS_DEGREE_STAR_MAX",
+          "maximum": 6,
+          "nodeCount": 4
+        },
+        "label": "SYNTHETIC / NON_PRODUCTION / NOT A SCIENTIFIC MODEL",
+        "localClustering": {
+          "SYN-NODE-A": 1.0,
+          "SYN-NODE-B": 1.0,
+          "SYN-NODE-C": 0.3333333333333333,
+          "SYN-NODE-D": 0
+        },
+        "nodeCount": 4,
+        "observationCoverage": "COMPLETE_SYNTHETIC_FRAME",
+        "propagationPolicy": "RECOMPUTE_ONLY_NO_ADDITIVE_CAUSAL_PROPAGATION",
+        "realWorldMetricKnown": false,
+        "scope": {
+          "boundaryId": "SYN-BOUNDARY-001",
+          "localClusteringLowDegreeConvention": "ZERO_WHEN_FEWER_THAN_TWO_NEIGHBORS",
+          "metricLayerId": "SYN-LAYER-FRIENDSHIP",
+          "nodeIds": [
+            "SYN-NODE-A",
+            "SYN-NODE-B",
+            "SYN-NODE-C",
+            "SYN-NODE-D"
+          ],
+          "projection": "BINARY_POSITIVE_WEIGHT_SIMPLE_UNDIRECTED_LOOPLESS; weights deliberately not causal or numeric effect weights",
+          "window": {
+            "aggregation": "SNAPSHOT_AT_START",
+            "end": "2026-01-01T00:00:00Z",
+            "mode": "SNAPSHOT",
+            "start": "2026-01-01T00:00:00Z"
+          }
+        },
+        "stateHash": "0355395380351f23b3f76eb6f47d7086c434372f12375f9be8f525d357aaa888",
+        "stateId": "SYN-STATE-001",
+        "stateVersion": 2,
+        "warnings": [
+          "Conditional on declared synthetic representation; neither latent truth nor causal effect.",
+          "Changes in analytic boundary can change metrics without any tie change.",
+          "No temporal reachability, uncertainty propagation or population estimation implemented."
+        ]
+      },
+      "receipt": {
+        "afterHash": "0355395380351f23b3f76eb6f47d7086c434372f12375f9be8f525d357aaa888",
+        "beforeHash": "74c14069216affaeffd266121610ece17759609b343f19932a54c48557aa312a",
+        "changeClass": "DETERMINISTIC_SYNTHETIC_STATE_OPERATION",
+        "deltaId": "SYN-DELTA-WEIGHT",
+        "empiricalEvidenceProduced": false,
+        "executionEligibility": false,
+        "label": "SYNTHETIC / NON_PRODUCTION / NOT A SCIENTIFIC MODEL",
+        "ontologyRelationshipsEdited": 0,
+        "removedTieIds": [],
+        "scientificConsequencesEstablished": false
+      }
+    },
+    {
+      "afterState": {
+        "appliedDeltaIds": [
+          "SYN-DELTA-ACCESS"
+        ],
+        "architectureStatus": "PENDING",
+        "boundary": {
+          "id": "SYN-BOUNDARY-001",
+          "includedNodeIds": [
+            "SYN-NODE-A",
+            "SYN-NODE-B",
+            "SYN-NODE-C",
+            "SYN-NODE-D"
+          ],
+          "outsideFramePolicy": "Known outside-frame ties retained, not treated as absence",
+          "selectionRule": "Fictional analytic frame A-D; E known outside selected frame"
+        },
+        "contentHash": "f11f9923e0679dcc2867e0d5bb7f60e2553fd4083e2f44cb84ce9c3ba2d06397",
+        "executionEligibility": false,
+        "groupIds": [
+          "SYN-GROUP-1",
+          "SYN-GROUP-2"
+        ],
+        "id": "SYN-STATE-001",
+        "label": "SYNTHETIC / NON_PRODUCTION / NOT A SCIENTIFIC MODEL",
+        "networkSpecification": {
+          "layerIds": [
+            "SYN-LAYER-FRIENDSHIP"
+          ],
+          "metricLayerId": "SYN-LAYER-FRIENDSHIP",
+          "multiplexPolicy": "SELECT_ONE_LAYER_NO_COLLAPSE",
+          "riskSetOpportunityIds": [
+            "SYN-OPPORTUNITY-AD"
+          ],
+          "tieTypeId": "SYN-TYPE-FRIENDSHIP",
+          "weightInterpretation": "Positive fictional contact intensity; metric projection explicitly binary, not causal strength"
+        },
+        "nodeCatalog": [
+          {
+            "active": true,
+            "id": "SYN-NODE-A",
+            "memberships": [
+              "SYN-GROUP-1"
+            ]
+          },
+          {
+            "active": true,
+            "id": "SYN-NODE-B",
+            "memberships": [
+              "SYN-GROUP-1"
+            ]
+          },
+          {
+            "active": true,
+            "id": "SYN-NODE-C",
+            "memberships": [
+              "SYN-GROUP-1"
+            ]
+          },
+          {
+            "active": true,
+            "id": "SYN-NODE-D",
+            "memberships": [
+              "SYN-GROUP-1"
+            ]
+          },
+          {
+            "active": true,
+            "id": "SYN-NODE-E",
+            "memberships": [
+              "SYN-GROUP-1"
+            ]
+          }
+        ],
+        "objectKind": "RELATIONAL_STATE",
+        "observation": {
+          "accessDepth": "SYNTHETIC",
+          "coverage": "COMPLETE_SYNTHETIC_FRAME",
+          "isGroundTruth": false,
+          "latentStateRelation": "NOT_IDENTICAL_BY_ASSUMPTION",
+          "missingNodes": "None by fictional fixture construction; not a claim about real-world coverage",
+          "missingTies": "None by fictional fixture construction; no latent real network is observed",
+          "provenanceId": "SYN-PROVENANCE-FIXTURE",
+          "realStateKnown": false,
+          "recordKind": "SYNTHETIC_OBSERVATION_METADATA",
+          "sampling": "Explicit fictional node frame; no real respondents",
+          "tieInferenceMethod": "Authored fixture, not inferred empirical ties"
+        },
+        "opportunities": [
+          {
+            "enabled": false,
+            "id": "SYN-OPPORTUNITY-AD",
+            "kind": "PLATFORM_ACCESS",
+            "provenanceId": "SYN-PROVENANCE-FIXTURE",
+            "source": "SYN-NODE-A",
+            "target": "SYN-NODE-D",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": null
+          }
+        ],
+        "parentHash": "74c14069216affaeffd266121610ece17759609b343f19932a54c48557aa312a",
+        "scientificClaims": [],
+        "stateNature": "SYNTHETIC_MODELED_CONFIGURATION",
+        "ties": [
+          {
+            "directed": false,
+            "id": "SYN-TIE-AB",
+            "layerId": "SYN-LAYER-FRIENDSHIP",
+            "objectKind": "SOCIAL_TIE",
+            "provenanceId": "SYN-PROVENANCE-FIXTURE",
+            "source": "SYN-NODE-A",
+            "target": "SYN-NODE-B",
+            "tieType": "SYN-TYPE-FRIENDSHIP",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": null,
+            "weight": 1
+          },
+          {
+            "directed": false,
+            "id": "SYN-TIE-AC",
+            "layerId": "SYN-LAYER-FRIENDSHIP",
+            "objectKind": "SOCIAL_TIE",
+            "provenanceId": "SYN-PROVENANCE-FIXTURE",
+            "source": "SYN-NODE-A",
+            "target": "SYN-NODE-C",
+            "tieType": "SYN-TYPE-FRIENDSHIP",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": null,
+            "weight": 1
+          },
+          {
+            "directed": false,
+            "id": "SYN-TIE-BC",
+            "layerId": "SYN-LAYER-FRIENDSHIP",
+            "objectKind": "SOCIAL_TIE",
+            "provenanceId": "SYN-PROVENANCE-FIXTURE",
+            "source": "SYN-NODE-B",
+            "target": "SYN-NODE-C",
+            "tieType": "SYN-TYPE-FRIENDSHIP",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": null,
+            "weight": 1
+          },
+          {
+            "directed": false,
+            "id": "SYN-TIE-CD",
+            "layerId": "SYN-LAYER-FRIENDSHIP",
+            "objectKind": "SOCIAL_TIE",
+            "provenanceId": "SYN-PROVENANCE-FIXTURE",
+            "source": "SYN-NODE-C",
+            "target": "SYN-NODE-D",
+            "tieType": "SYN-TYPE-FRIENDSHIP",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": null,
+            "weight": 1
+          },
+          {
+            "directed": false,
+            "id": "SYN-TIE-DE",
+            "layerId": "SYN-LAYER-FRIENDSHIP",
+            "objectKind": "SOCIAL_TIE",
+            "provenanceId": "SYN-PROVENANCE-FIXTURE",
+            "source": "SYN-NODE-D",
+            "target": "SYN-NODE-E",
+            "tieType": "SYN-TYPE-FRIENDSHIP",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": null,
+            "weight": 1
+          }
+        ],
+        "version": 2,
+        "window": {
+          "aggregation": "SNAPSHOT_AT_START",
+          "end": "2026-01-01T00:00:00Z",
+          "mode": "SNAPSHOT",
+          "start": "2026-01-01T00:00:00Z"
+        }
+      },
+      "delta": {
+        "architectureStatus": "PENDING",
+        "assertedConsequences": [],
+        "basis": "SYNTHETIC_SCENARIO_OPERATION",
+        "effectiveAt": "2026-01-01T00:00:00Z",
+        "expectedHash": "74c14069216affaeffd266121610ece17759609b343f19932a54c48557aa312a",
+        "expectedVersion": 1,
+        "id": "SYN-DELTA-ACCESS",
+        "label": "SYNTHETIC / NON_PRODUCTION / NOT A SCIENTIFIC MODEL",
+        "objectKind": "SCENARIO_STATE_DELTA",
+        "occurrenceStatus": "HYPOTHETICAL",
+        "operations": [
+          {
+            "enabled": false,
+            "operation": "SET_ACCESS",
+            "opportunityId": "SYN-OPPORTUNITY-AD"
+          }
+        ],
+        "provenanceId": "SYN-PROVENANCE-OPERATION",
+        "stateId": "SYN-STATE-001",
+        "targetNamespace": "SCENARIO_STATE"
+      },
+      "id": "SYN-EXAMPLE-ACCESS",
+      "metrics": {
+        "componentFragmentation": {
+          "value": 0.0,
+          "variant": "UNREACHABLE_UNORDERED_PAIR_FRACTION"
+        },
+        "componentNodeSets": [
+          [
+            "SYN-NODE-A",
+            "SYN-NODE-B",
+            "SYN-NODE-C",
+            "SYN-NODE-D"
+          ]
+        ],
+        "degree": {
+          "SYN-NODE-A": 2,
+          "SYN-NODE-B": 2,
+          "SYN-NODE-C": 3,
+          "SYN-NODE-D": 1
+        },
+        "degreeCentralization": {
+          "status": "CALCULATED_SYNTHETIC_REPRESENTATION_ONLY",
+          "value": 0.6666666666666666
+        },
+        "density": 0.6666666666666666,
+        "edgeCount": 4,
+        "externalBenchmark": {
+          "definition": "UNDIRECTED_SIMPLE_LOOPLESS_DEGREE_STAR_MAX",
+          "maximum": 6,
+          "nodeCount": 4
+        },
+        "label": "SYNTHETIC / NON_PRODUCTION / NOT A SCIENTIFIC MODEL",
+        "localClustering": {
+          "SYN-NODE-A": 1.0,
+          "SYN-NODE-B": 1.0,
+          "SYN-NODE-C": 0.3333333333333333,
+          "SYN-NODE-D": 0
+        },
+        "nodeCount": 4,
+        "observationCoverage": "COMPLETE_SYNTHETIC_FRAME",
+        "propagationPolicy": "RECOMPUTE_ONLY_NO_ADDITIVE_CAUSAL_PROPAGATION",
+        "realWorldMetricKnown": false,
+        "scope": {
+          "boundaryId": "SYN-BOUNDARY-001",
+          "localClusteringLowDegreeConvention": "ZERO_WHEN_FEWER_THAN_TWO_NEIGHBORS",
+          "metricLayerId": "SYN-LAYER-FRIENDSHIP",
+          "nodeIds": [
+            "SYN-NODE-A",
+            "SYN-NODE-B",
+            "SYN-NODE-C",
+            "SYN-NODE-D"
+          ],
+          "projection": "BINARY_POSITIVE_WEIGHT_SIMPLE_UNDIRECTED_LOOPLESS; weights deliberately not causal or numeric effect weights",
+          "window": {
+            "aggregation": "SNAPSHOT_AT_START",
+            "end": "2026-01-01T00:00:00Z",
+            "mode": "SNAPSHOT",
+            "start": "2026-01-01T00:00:00Z"
+          }
+        },
+        "stateHash": "f11f9923e0679dcc2867e0d5bb7f60e2553fd4083e2f44cb84ce9c3ba2d06397",
+        "stateId": "SYN-STATE-001",
+        "stateVersion": 2,
+        "warnings": [
+          "Conditional on declared synthetic representation; neither latent truth nor causal effect.",
+          "Changes in analytic boundary can change metrics without any tie change.",
+          "No temporal reachability, uncertainty propagation or population estimation implemented."
+        ]
+      },
+      "receipt": {
+        "afterHash": "f11f9923e0679dcc2867e0d5bb7f60e2553fd4083e2f44cb84ce9c3ba2d06397",
+        "beforeHash": "74c14069216affaeffd266121610ece17759609b343f19932a54c48557aa312a",
+        "changeClass": "DETERMINISTIC_SYNTHETIC_STATE_OPERATION",
+        "deltaId": "SYN-DELTA-ACCESS",
+        "empiricalEvidenceProduced": false,
+        "executionEligibility": false,
+        "label": "SYNTHETIC / NON_PRODUCTION / NOT A SCIENTIFIC MODEL",
+        "ontologyRelationshipsEdited": 0,
+        "removedTieIds": [],
+        "scientificConsequencesEstablished": false
+      }
+    },
+    {
+      "afterState": {
+        "appliedDeltaIds": [
+          "SYN-DELTA-SEATING"
+        ],
+        "architectureStatus": "PENDING",
+        "boundary": {
+          "id": "SYN-BOUNDARY-001",
+          "includedNodeIds": [
+            "SYN-NODE-A",
+            "SYN-NODE-B",
+            "SYN-NODE-C",
+            "SYN-NODE-D"
+          ],
+          "outsideFramePolicy": "Known outside-frame ties retained, not treated as absence",
+          "selectionRule": "Fictional analytic frame A-D; E known outside selected frame"
+        },
+        "contentHash": "3b75dbb34f4600ed47ae22b6506acbcdea74618a2860794fb2b8468e352d6c6a",
+        "executionEligibility": false,
+        "groupIds": [
+          "SYN-GROUP-1",
+          "SYN-GROUP-2"
+        ],
+        "id": "SYN-STATE-001",
+        "label": "SYNTHETIC / NON_PRODUCTION / NOT A SCIENTIFIC MODEL",
+        "networkSpecification": {
+          "layerIds": [
+            "SYN-LAYER-FRIENDSHIP"
+          ],
+          "metricLayerId": "SYN-LAYER-FRIENDSHIP",
+          "multiplexPolicy": "SELECT_ONE_LAYER_NO_COLLAPSE",
+          "riskSetOpportunityIds": [
+            "SYN-OPPORTUNITY-AD",
+            "SYN-OPPORTUNITY-SEATS"
+          ],
+          "tieTypeId": "SYN-TYPE-FRIENDSHIP",
+          "weightInterpretation": "Positive fictional contact intensity; metric projection explicitly binary, not causal strength"
+        },
+        "nodeCatalog": [
+          {
+            "active": true,
+            "id": "SYN-NODE-A",
+            "memberships": [
+              "SYN-GROUP-1"
+            ]
+          },
+          {
+            "active": true,
+            "id": "SYN-NODE-B",
+            "memberships": [
+              "SYN-GROUP-1"
+            ]
+          },
+          {
+            "active": true,
+            "id": "SYN-NODE-C",
+            "memberships": [
+              "SYN-GROUP-1"
+            ]
+          },
+          {
+            "active": true,
+            "id": "SYN-NODE-D",
+            "memberships": [
+              "SYN-GROUP-1"
+            ]
+          },
+          {
+            "active": true,
+            "id": "SYN-NODE-E",
+            "memberships": [
+              "SYN-GROUP-1"
+            ]
+          }
+        ],
+        "objectKind": "RELATIONAL_STATE",
+        "observation": {
+          "accessDepth": "SYNTHETIC",
+          "coverage": "COMPLETE_SYNTHETIC_FRAME",
+          "isGroundTruth": false,
+          "latentStateRelation": "NOT_IDENTICAL_BY_ASSUMPTION",
+          "missingNodes": "None by fictional fixture construction; not a claim about real-world coverage",
+          "missingTies": "None by fictional fixture construction; no latent real network is observed",
+          "provenanceId": "SYN-PROVENANCE-FIXTURE",
+          "realStateKnown": false,
+          "recordKind": "SYNTHETIC_OBSERVATION_METADATA",
+          "sampling": "Explicit fictional node frame; no real respondents",
+          "tieInferenceMethod": "Authored fixture, not inferred empirical ties"
+        },
+        "opportunities": [
+          {
+            "enabled": true,
+            "id": "SYN-OPPORTUNITY-AD",
+            "kind": "PLATFORM_ACCESS",
+            "provenanceId": "SYN-PROVENANCE-FIXTURE",
+            "source": "SYN-NODE-A",
+            "target": "SYN-NODE-D",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": null
+          },
+          {
+            "enabled": true,
+            "id": "SYN-OPPORTUNITY-SEATS",
+            "kind": "ASSIGNED_SEATING",
+            "provenanceId": "SYN-PROVENANCE-FIXTURE",
+            "source": "SYN-NODE-A",
+            "target": "SYN-NODE-D",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": null
+          }
+        ],
+        "parentHash": "74c14069216affaeffd266121610ece17759609b343f19932a54c48557aa312a",
+        "scientificClaims": [],
+        "stateNature": "SYNTHETIC_MODELED_CONFIGURATION",
+        "ties": [
+          {
+            "directed": false,
+            "id": "SYN-TIE-AB",
+            "layerId": "SYN-LAYER-FRIENDSHIP",
+            "objectKind": "SOCIAL_TIE",
+            "provenanceId": "SYN-PROVENANCE-FIXTURE",
+            "source": "SYN-NODE-A",
+            "target": "SYN-NODE-B",
+            "tieType": "SYN-TYPE-FRIENDSHIP",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": null,
+            "weight": 1
+          },
+          {
+            "directed": false,
+            "id": "SYN-TIE-AC",
+            "layerId": "SYN-LAYER-FRIENDSHIP",
+            "objectKind": "SOCIAL_TIE",
+            "provenanceId": "SYN-PROVENANCE-FIXTURE",
+            "source": "SYN-NODE-A",
+            "target": "SYN-NODE-C",
+            "tieType": "SYN-TYPE-FRIENDSHIP",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": null,
+            "weight": 1
+          },
+          {
+            "directed": false,
+            "id": "SYN-TIE-BC",
+            "layerId": "SYN-LAYER-FRIENDSHIP",
+            "objectKind": "SOCIAL_TIE",
+            "provenanceId": "SYN-PROVENANCE-FIXTURE",
+            "source": "SYN-NODE-B",
+            "target": "SYN-NODE-C",
+            "tieType": "SYN-TYPE-FRIENDSHIP",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": null,
+            "weight": 1
+          },
+          {
+            "directed": false,
+            "id": "SYN-TIE-CD",
+            "layerId": "SYN-LAYER-FRIENDSHIP",
+            "objectKind": "SOCIAL_TIE",
+            "provenanceId": "SYN-PROVENANCE-FIXTURE",
+            "source": "SYN-NODE-C",
+            "target": "SYN-NODE-D",
+            "tieType": "SYN-TYPE-FRIENDSHIP",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": null,
+            "weight": 1
+          },
+          {
+            "directed": false,
+            "id": "SYN-TIE-DE",
+            "layerId": "SYN-LAYER-FRIENDSHIP",
+            "objectKind": "SOCIAL_TIE",
+            "provenanceId": "SYN-PROVENANCE-FIXTURE",
+            "source": "SYN-NODE-D",
+            "target": "SYN-NODE-E",
+            "tieType": "SYN-TYPE-FRIENDSHIP",
+            "validFrom": "2026-01-01T00:00:00Z",
+            "validUntil": null,
+            "weight": 1
+          }
+        ],
+        "version": 2,
+        "window": {
+          "aggregation": "SNAPSHOT_AT_START",
+          "end": "2026-01-01T00:00:00Z",
+          "mode": "SNAPSHOT",
+          "start": "2026-01-01T00:00:00Z"
+        }
+      },
+      "delta": {
+        "architectureStatus": "PENDING",
+        "assertedConsequences": [],
+        "basis": "SYNTHETIC_SCENARIO_OPERATION",
+        "effectiveAt": "2026-01-01T00:00:00Z",
+        "expectedHash": "74c14069216affaeffd266121610ece17759609b343f19932a54c48557aa312a",
+        "expectedVersion": 1,
+        "id": "SYN-DELTA-SEATING",
+        "label": "SYNTHETIC / NON_PRODUCTION / NOT A SCIENTIFIC MODEL",
+        "objectKind": "SCENARIO_STATE_DELTA",
+        "occurrenceStatus": "HYPOTHETICAL",
+        "operations": [
+          {
+            "operation": "ASSIGN_SEATING",
+            "opportunity": {
+              "enabled": true,
+              "id": "SYN-OPPORTUNITY-SEATS",
+              "kind": "ASSIGNED_SEATING",
+              "provenanceId": "SYN-PROVENANCE-FIXTURE",
+              "source": "SYN-NODE-A",
+              "target": "SYN-NODE-D",
+              "validFrom": "2026-01-01T00:00:00Z",
+              "validUntil": null
+            }
+          }
+        ],
+        "provenanceId": "SYN-PROVENANCE-OPERATION",
+        "stateId": "SYN-STATE-001",
+        "targetNamespace": "SCENARIO_STATE"
+      },
+      "id": "SYN-EXAMPLE-SEATING",
+      "metrics": {
+        "componentFragmentation": {
+          "value": 0.0,
+          "variant": "UNREACHABLE_UNORDERED_PAIR_FRACTION"
+        },
+        "componentNodeSets": [
+          [
+            "SYN-NODE-A",
+            "SYN-NODE-B",
+            "SYN-NODE-C",
+            "SYN-NODE-D"
+          ]
+        ],
+        "degree": {
+          "SYN-NODE-A": 2,
+          "SYN-NODE-B": 2,
+          "SYN-NODE-C": 3,
+          "SYN-NODE-D": 1
+        },
+        "degreeCentralization": {
+          "status": "CALCULATED_SYNTHETIC_REPRESENTATION_ONLY",
+          "value": 0.6666666666666666
+        },
+        "density": 0.6666666666666666,
+        "edgeCount": 4,
+        "externalBenchmark": {
+          "definition": "UNDIRECTED_SIMPLE_LOOPLESS_DEGREE_STAR_MAX",
+          "maximum": 6,
+          "nodeCount": 4
+        },
+        "label": "SYNTHETIC / NON_PRODUCTION / NOT A SCIENTIFIC MODEL",
+        "localClustering": {
+          "SYN-NODE-A": 1.0,
+          "SYN-NODE-B": 1.0,
+          "SYN-NODE-C": 0.3333333333333333,
+          "SYN-NODE-D": 0
+        },
+        "nodeCount": 4,
+        "observationCoverage": "COMPLETE_SYNTHETIC_FRAME",
+        "propagationPolicy": "RECOMPUTE_ONLY_NO_ADDITIVE_CAUSAL_PROPAGATION",
+        "realWorldMetricKnown": false,
+        "scope": {
+          "boundaryId": "SYN-BOUNDARY-001",
+          "localClusteringLowDegreeConvention": "ZERO_WHEN_FEWER_THAN_TWO_NEIGHBORS",
+          "metricLayerId": "SYN-LAYER-FRIENDSHIP",
+          "nodeIds": [
+            "SYN-NODE-A",
+            "SYN-NODE-B",
+            "SYN-NODE-C",
+            "SYN-NODE-D"
+          ],
+          "projection": "BINARY_POSITIVE_WEIGHT_SIMPLE_UNDIRECTED_LOOPLESS; weights deliberately not causal or numeric effect weights",
+          "window": {
+            "aggregation": "SNAPSHOT_AT_START",
+            "end": "2026-01-01T00:00:00Z",
+            "mode": "SNAPSHOT",
+            "start": "2026-01-01T00:00:00Z"
+          }
+        },
+        "stateHash": "3b75dbb34f4600ed47ae22b6506acbcdea74618a2860794fb2b8468e352d6c6a",
+        "stateId": "SYN-STATE-001",
+        "stateVersion": 2,
+        "warnings": [
+          "Conditional on declared synthetic representation; neither latent truth nor causal effect.",
+          "Changes in analytic boundary can change metrics without any tie change.",
+          "No temporal reachability, uncertainty propagation or population estimation implemented."
+        ]
+      },
+      "receipt": {
+        "afterHash": "3b75dbb34f4600ed47ae22b6506acbcdea74618a2860794fb2b8468e352d6c6a",
+        "beforeHash": "74c14069216affaeffd266121610ece17759609b343f19932a54c48557aa312a",
+        "changeClass": "DETERMINISTIC_SYNTHETIC_STATE_OPERATION",
+        "deltaId": "SYN-DELTA-SEATING",
+        "empiricalEvidenceProduced": false,
+        "executionEligibility": false,
+        "label": "SYNTHETIC / NON_PRODUCTION / NOT A SCIENTIFIC MODEL",
+        "ontologyRelationshipsEdited": 0,
+        "removedTieIds": [],
+        "scientificConsequencesEstablished": false
+      }
+    }
+  ],
+  "label": "SYNTHETIC / NON_PRODUCTION / NOT A SCIENTIFIC MODEL"
+}

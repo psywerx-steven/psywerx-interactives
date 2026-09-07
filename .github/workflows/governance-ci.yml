@@ -90,6 +90,12 @@ jobs:
       - name: Validate SOC-F07 candidate network pilot and protected science
         run: python -m unittest discover -s tests -p "test_soc_f07_pilot.py"
 
+      - name: Validate SOC-F07 exact human governance and inactive materialization
+        run: python -m unittest discover -s tests -p "test_soc_f07_governance_001.py"
+
+      - name: Validate isolated synthetic Network State proposal
+        run: python -m unittest discover -s tests -p "test_network_state_vnext.py"
+
       - name: Run eight-Layer synthetic structural pilot
         run: python scripts/actions_events_synthetic.py
 
@@ -101,7 +107,7 @@ jobs:
         run: npm test
 
       - name: Compile Python code
-        run: python -m compileall -q scripts tests
+        run: python -m compileall -q scripts tests experiments/network-state-vnext
 
       - name: Parse JavaScript
         shell: bash
@@ -170,6 +176,12 @@ jobs:
 
       - name: Validate SOC-F07 candidate network pilot and protected science
         run: python -m unittest discover -s tests -p "test_soc_f07_pilot.py"
+
+      - name: Validate SOC-F07 exact human governance and inactive materialization
+        run: python -m unittest discover -s tests -p "test_soc_f07_governance_001.py"
+
+      - name: Validate isolated synthetic Network State proposal
+        run: python -m unittest discover -s tests -p "test_network_state_vnext.py"
 
       - name: Run eight-Layer synthetic structural pilot
         run: python scripts/actions_events_synthetic.py

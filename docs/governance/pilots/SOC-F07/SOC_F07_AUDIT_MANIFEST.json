@@ -1,16 +1,16 @@
 {
-  "approval": "PENDING — APPROVE / MODIFY / REJECT",
+  "approval": "GOV-SOC-F07-001-2026-09-06",
   "artifactHashes": {
     "entity-rds-review.json": "67e73d21435ea5f936e258ebe222beca02bd4a904b3e0388c31da9ac7b775a73",
-    "existing-relationship-audit.json": "675d365070bd590eaef8ac08726602debb88b97ed6f9efa3262a5c5dee957029",
-    "hypotheses.json": "87d92a8dde71d48c0c98d607f5e6003cbe7027dbcb012a93e073ff7f9cbf64ee",
-    "ontology-target-gaps.json": "c1fb34c36a8f5b18cce6e476587b5960bc3970d0491bd26c572bc80dbda5c1d7",
-    "protected-science.json": "3269fb06978eb1c7306128d6e20290f19791f81b1cf7df0dee44fc3b3e0a0ebf",
+    "existing-relationship-audit.json": "f4d7d120b6af9cec0046fbc678a0a1845ca1f477a204f53acd6164e51634f9a1",
+    "hypotheses.json": "c9c1322c4c36e07c4cafaa94c89d5096d3b153d0de83e4adbdda5ca6e9d0a5e8",
+    "ontology-target-gaps.json": "5597318705bf5831522611dc0b058e5b3b91e69075d4352b2a14a97fb53d1642",
+    "protected-science.json": "1f37d917f8df2b100fb00c33265ef66d7ea01b8404e57649fade33c91ca8ec62",
     "rds-antecedent-ledger.json": "1fb8d16f769d7cb973118a9c3adfbfe7e03cfa664643c010af4a1a914059485f",
-    "revision-proposals.json": "1835d78637d6bd81161126b1b856212dc4059671d3ca781bb962c43e6be5fba0",
+    "revision-proposals.json": "c1cb99dcda87d171b4ba5afbc42233479a349196913a4da8bf16d8572c59cc14",
     "search-ledger.json": "f81c3cd384ebdee310cc373b5833f63d27efd4c7f9dfb439f812cf9b97e1cb57",
     "source-findings.json": "49be8c793ffd019507a3214352786b229760ea771afc89ce91e7765eab203696",
-    "source-registration-queue.json": "0f212b05680d5d548caab9a0d2f29eb778305a1a6341c6ba05b1333f73ef2cc4",
+    "source-registration-queue.json": "75080955ff20a54d26901d2c53689fa86dd88e2cc172c831c7ba80c53b8cb374",
     "source-registry.json": "a07ae1d95a075d6bcc15a150b49778e2cde5bf6310783ad90e196dcdb73edbfa",
     "workspace.json": "4ad816adb1ddf5ed8b2595e743ced84f6b974ebee62ff2516df4667565958f0d"
   },
@@ -178,6 +178,15 @@
     "rds": 12,
     "rdsCausalSourceCount": 5,
     "sameLayerCrossFamily": 1
+  },
+  "governanceCheckpoint": {
+    "decisionRecord": "docs/governance/pilots/SOC-F07/SOC_F07_GOVERNANCE_DECISION_001.md",
+    "evidenceAssessments": 0,
+    "happeningTypes": 7,
+    "materializationManifest": "data/actions-events-v1/SOC-F07-materialization-manifest.json",
+    "relationships": 0,
+    "sourceFindings": 0,
+    "sources": 6
   },
   "graph": {
     "candidateCausalDegreeContribution": 0,
@@ -372,13 +381,13 @@
     ]
   },
   "newActive": 0,
-  "newGoverned": 0,
+  "newGoverned": 7,
   "protectedScience": {
     "filesCompared": 133,
     "passed": true
   },
-  "recordClass": "NON_GOVERNED_PILOT_AUDIT",
-  "riSourceRegisterVersion": "be9fd10579a30ce718d9f414c23861ec14d4f641149ecf01366ea994a00f83ee",
+  "recordClass": "GOVERNANCE_MATERIALIZATION_AUDIT",
+  "riSourceRegisterVersion": "a5e1c60c098e9d0c99e4998fe95c9d594d15d2d13c62b41cb6f4e7455c499e6f",
   "schemaHashes": {
     "schemas/actions-events/v1/authorization-v1.schema.json": "614a918745ef48735bf0a61585f805bfebb4152e69ec994d72116361c9ae01be",
     "schemas/actions-events/v1/candidate-workspace-v1.schema.json": "becfb99e9c7a55d425f78162b87ba6f9881d8dbf01c0a89110d005b91c88f8d1",
@@ -408,7 +417,7 @@
     "relationshipV1": "1.0.0",
     "sourceRegisterState": "Exact canonical register hashes above; no new version minted"
   },
-  "scientificReadiness": "CANDIDATE_REVIEW_ONLY; no activatable yield promised",
+  "scientificReadiness": "GOVERNED_INACTIVE_IDENTITIES_ONLY; derivation representation and HT-008 source contract blocked",
   "selfReview": [
     "Removed speculative causal edge production: H05 remains a question, not a causal record",
     "All three Driver effects downgraded to RESEARCH_NEEDED for exact risk-set/metric alignment",

@@ -1,6 +1,6 @@
 # Entity and RDS review
 
-Audit: `AUD-SOC-F07-AE-V1-20260906-001`. Frozen baseline: `f0be9c24288bd128231e0d1243b34c03ad055906`. Candidate-only; no governance, activation or source registration.
+Audit: `AUD-SOC-F07-AE-V1-20260906-001`. Frozen baseline: `f0be9c24288bd128231e0d1243b34c03ad055906`. Candidate audit preserved; human governance checkpoint recorded. Seven identities are governed INACTIVE; six identity-provenance sources registered. No activation. See [decision](SOC_F07_GOVERNANCE_DECISION_001.md).
 
 All canonical fields, including aliases, crosswalks, evidence notes and missing values, are frozen in the baseline and fully captured in [structured review](../../../../data/candidates/actions-events-v1/SOC-F07/entity-rds-review.json). Canonical narrative is not newly endorsed science.
 

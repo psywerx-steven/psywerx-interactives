@@ -1,6 +1,6 @@
 # Network representation stress test and cross-pilot lessons
 
-Audit: `AUD-SOC-F07-AE-V1-20260906-001`. Frozen baseline: `f0be9c24288bd128231e0d1243b34c03ad055906`. Candidate-only; no governance, activation or source registration.
+Audit: `AUD-SOC-F07-AE-V1-20260906-001`. Frozen baseline: `f0be9c24288bd128231e0d1243b34c03ad055906`. Candidate audit preserved; human governance checkpoint recorded. Seven identities are governed INACTIVE; six identity-provenance sources registered. No activation. See [decision](SOC_F07_GOVERNANCE_DECISION_001.md).
 
 ## Answers to the pilot questions
 

@@ -41,7 +41,7 @@ class InfF03ActivationAudit001Tests(unittest.TestCase):
         records = (
             [r for r in self.relationships if r["id"] == "REL-V1-INF-F03-001"]
             + [r for r in self.ri_evidence if r["id"] == "EVA-V1-INF-F03-REL-001"]
-            + ae.all_records(self.catalog)
+            + [r for r in ae.all_records(self.catalog) if 'INF-F03' in r['id']]
         )
         self.assertEqual(len(records), 12)
         self.assertTrue(all(r["governance"]["lifecycleStatus"] == "GOVERNED" for r in records))

@@ -1,0 +1,426 @@
+{
+  "$id": "urn:psywerx:experimental:network-state-vnext:state",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "appliedDeltaIds": {
+      "items": {
+        "pattern": "^SYN-[A-Z0-9-]+$",
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "architectureStatus": {
+      "const": "PENDING"
+    },
+    "boundary": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^SYN-[A-Z0-9-]+$",
+          "type": "string"
+        },
+        "includedNodeIds": {
+          "items": {
+            "pattern": "^SYN-[A-Z0-9-]+$",
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "outsideFramePolicy": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "selectionRule": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "includedNodeIds",
+        "selectionRule",
+        "outsideFramePolicy"
+      ],
+      "type": "object"
+    },
+    "contentHash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "executionEligibility": {
+      "const": false
+    },
+    "groupIds": {
+      "items": {
+        "pattern": "^SYN-[A-Z0-9-]+$",
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "id": {
+      "pattern": "^SYN-[A-Z0-9-]+$",
+      "type": "string"
+    },
+    "label": {
+      "const": "SYNTHETIC / NON_PRODUCTION / NOT A SCIENTIFIC MODEL"
+    },
+    "networkSpecification": {
+      "additionalProperties": false,
+      "properties": {
+        "layerIds": {
+          "items": {
+            "pattern": "^SYN-[A-Z0-9-]+$",
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "metricLayerId": {
+          "pattern": "^SYN-[A-Z0-9-]+$",
+          "type": "string"
+        },
+        "multiplexPolicy": {
+          "const": "SELECT_ONE_LAYER_NO_COLLAPSE"
+        },
+        "riskSetOpportunityIds": {
+          "items": {
+            "pattern": "^SYN-[A-Z0-9-]+$",
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "tieTypeId": {
+          "pattern": "^SYN-[A-Z0-9-]+$",
+          "type": "string"
+        },
+        "weightInterpretation": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "tieTypeId",
+        "layerIds",
+        "multiplexPolicy",
+        "metricLayerId",
+        "weightInterpretation",
+        "riskSetOpportunityIds"
+      ],
+      "type": "object"
+    },
+    "nodeCatalog": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "active": {
+            "type": "boolean"
+          },
+          "id": {
+            "pattern": "^SYN-[A-Z0-9-]+$",
+            "type": "string"
+          },
+          "memberships": {
+            "items": {
+              "pattern": "^SYN-[A-Z0-9-]+$",
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "id",
+          "active",
+          "memberships"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "objectKind": {
+      "const": "RELATIONAL_STATE"
+    },
+    "observation": {
+      "additionalProperties": false,
+      "properties": {
+        "accessDepth": {
+          "const": "SYNTHETIC"
+        },
+        "coverage": {
+          "enum": [
+            "COMPLETE_SYNTHETIC_FRAME",
+            "INCOMPLETE",
+            "UNKNOWN"
+          ]
+        },
+        "isGroundTruth": {
+          "const": false
+        },
+        "latentStateRelation": {
+          "const": "NOT_IDENTICAL_BY_ASSUMPTION"
+        },
+        "missingNodes": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "missingTies": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "provenanceId": {
+          "pattern": "^SYN-[A-Z0-9-]+$",
+          "type": "string"
+        },
+        "realStateKnown": {
+          "const": false
+        },
+        "recordKind": {
+          "const": "SYNTHETIC_OBSERVATION_METADATA"
+        },
+        "sampling": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "tieInferenceMethod": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "recordKind",
+        "provenanceId",
+        "accessDepth",
+        "realStateKnown",
+        "isGroundTruth",
+        "coverage",
+        "missingNodes",
+        "missingTies",
+        "sampling",
+        "tieInferenceMethod",
+        "latentStateRelation"
+      ],
+      "type": "object"
+    },
+    "opportunities": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "enabled": {
+            "type": "boolean"
+          },
+          "id": {
+            "pattern": "^SYN-[A-Z0-9-]+$",
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "PLATFORM_ACCESS",
+              "ASSIGNED_SEATING",
+              "CONTACT_OPPORTUNITY"
+            ]
+          },
+          "provenanceId": {
+            "pattern": "^SYN-[A-Z0-9-]+$",
+            "type": "string"
+          },
+          "source": {
+            "pattern": "^SYN-[A-Z0-9-]+$",
+            "type": "string"
+          },
+          "target": {
+            "pattern": "^SYN-[A-Z0-9-]+$",
+            "type": "string"
+          },
+          "validFrom": {
+            "format": "date-time",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
+            "type": "string"
+          },
+          "validUntil": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "source",
+          "target",
+          "enabled",
+          "kind",
+          "validFrom",
+          "validUntil",
+          "provenanceId"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "parentHash": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "scientificClaims": {
+      "maxItems": 0,
+      "type": "array"
+    },
+    "stateNature": {
+      "enum": [
+        "SYNTHETIC_MODELED_CONFIGURATION",
+        "SYNTHETIC_OBSERVATION"
+      ]
+    },
+    "ties": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "directed": {
+            "type": "boolean"
+          },
+          "id": {
+            "pattern": "^SYN-[A-Z0-9-]+$",
+            "type": "string"
+          },
+          "layerId": {
+            "pattern": "^SYN-[A-Z0-9-]+$",
+            "type": "string"
+          },
+          "objectKind": {
+            "const": "SOCIAL_TIE"
+          },
+          "provenanceId": {
+            "pattern": "^SYN-[A-Z0-9-]+$",
+            "type": "string"
+          },
+          "source": {
+            "pattern": "^SYN-[A-Z0-9-]+$",
+            "type": "string"
+          },
+          "target": {
+            "pattern": "^SYN-[A-Z0-9-]+$",
+            "type": "string"
+          },
+          "tieType": {
+            "pattern": "^SYN-[A-Z0-9-]+$",
+            "type": "string"
+          },
+          "validFrom": {
+            "format": "date-time",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
+            "type": "string"
+          },
+          "validUntil": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "weight": {
+            "exclusiveMinimum": 0,
+            "type": "number"
+          }
+        },
+        "required": [
+          "id",
+          "objectKind",
+          "source",
+          "target",
+          "tieType",
+          "layerId",
+          "directed",
+          "weight",
+          "validFrom",
+          "validUntil",
+          "provenanceId"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "version": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "window": {
+      "additionalProperties": false,
+      "properties": {
+        "aggregation": {
+          "enum": [
+            "SNAPSHOT_AT_START",
+            "PERSISTENT_THROUGH_WINDOW"
+          ]
+        },
+        "end": {
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
+          "type": "string"
+        },
+        "mode": {
+          "enum": [
+            "SNAPSHOT",
+            "INTERVAL"
+          ]
+        },
+        "start": {
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "mode",
+        "start",
+        "end",
+        "aggregation"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "label",
+    "architectureStatus",
+    "objectKind",
+    "id",
+    "version",
+    "parentHash",
+    "contentHash",
+    "stateNature",
+    "nodeCatalog",
+    "groupIds",
+    "ties",
+    "opportunities",
+    "boundary",
+    "networkSpecification",
+    "window",
+    "observation",
+    "appliedDeltaIds",
+    "scientificClaims",
+    "executionEligibility"
+  ],
+  "type": "object"
+}

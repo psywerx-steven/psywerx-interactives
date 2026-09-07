@@ -1,6 +1,6 @@
 # Existing relationship audit
 
-Audit: `AUD-SOC-F07-AE-V1-20260906-001`. Frozen baseline: `f0be9c24288bd128231e0d1243b34c03ad055906`. Candidate-only; no governance, activation or source registration.
+Audit: `AUD-SOC-F07-AE-V1-20260906-001`. Frozen baseline: `f0be9c24288bd128231e0d1243b34c03ad055906`. Candidate audit preserved; human governance checkpoint recorded. Seven identities are governed INACTIVE; six identity-provenance sources registered. No activation. See [decision](SOC_F07_GOVERNANCE_DECISION_001.md).
 
 V3 projections are views of the same ten propositions, not ten additional relationships. All seven causal claims remain V1-incomplete and scientifically unchanged. No archived incident record was found.
 
@@ -14,7 +14,7 @@ Framework and mismatched composite diffusion source are not direct identified in
 
 Sources: SRC-497, SRC-509, SRC-CAND-SOC-F07-012. Evidence LIMITED / confidence LOW. Owner INS-F09; endpoint Families marked for consultation ['SOC-F07'] (not claimed consulted).
 
-Shared-input assessment: ASSESS_SPECIFIED_NETWORK_AND_OUTCOME. Temporal independence: NOT_ESTABLISHED. No new lag, persistence, functional form or quantitative magnitude. PENDING — APPROVE / MODIFY / REJECT.
+Shared-input assessment: ASSESS_SPECIFIED_NETWORK_AND_OUTCOME. Temporal independence: NOT_ESTABLISHED. No new lag, persistence, functional form or quantitative magnitude. APPROVE_REVISION_REVIEW_ONLY — EXISTING_GOVERNED_RECORD_UNCHANGED.
 
 ## REL-RDS-0004 — RETAIN_AS_IS
 
@@ -26,7 +26,7 @@ No universal equivalence between personal-network size and every degree statisti
 
 Sources: SRC-255. Evidence MODERATE / confidence MODERATE. Owner SOC-F04; endpoint Families marked for consultation ['SOC-F07'] (not claimed consulted).
 
-Shared-input assessment: ASSESS_SPECIFIED_NETWORK_AND_OUTCOME. Temporal independence: NOT_APPLICABLE. No new lag, persistence, functional form or quantitative magnitude. PENDING — APPROVE / MODIFY / REJECT.
+Shared-input assessment: ASSESS_SPECIFIED_NETWORK_AND_OUTCOME. Temporal independence: NOT_APPLICABLE. No new lag, persistence, functional form or quantitative magnitude. APPROVE_RETAIN_AS_IS — EXISTING_GOVERNED_RECORD_UNCHANGED.
 
 ## REL-RDS-0006 — RETAIN_AS_IS
 
@@ -38,7 +38,7 @@ Not an equality or causal link; no duplicate V1 proposition needed.
 
 Sources: SRC-233. Evidence MODERATE / confidence MODERATE. Owner SOC-F07; endpoint Families marked for consultation ['SOC-F12'] (not claimed consulted).
 
-Shared-input assessment: ASSESS_SPECIFIED_NETWORK_AND_OUTCOME. Temporal independence: NOT_APPLICABLE. No new lag, persistence, functional form or quantitative magnitude. PENDING — APPROVE / MODIFY / REJECT.
+Shared-input assessment: ASSESS_SPECIFIED_NETWORK_AND_OUTCOME. Temporal independence: NOT_APPLICABLE. No new lag, persistence, functional form or quantitative magnitude. APPROVE_RETAIN_AS_IS — EXISTING_GOVERNED_RECORD_UNCHANGED.
 
 ## REL-RDS-0013 — RETAIN_AS_IS
 
@@ -50,7 +50,7 @@ Risk set and interval must match; narrower-than does not imply equal rates.
 
 Sources: SRC-CAND-SOC-F07-005, SRC-CAND-SOC-F07-017. Evidence MODERATE / confidence MODERATE. Owner SOC-F07; endpoint Families marked for consultation ['SOC-F03'] (not claimed consulted).
 
-Shared-input assessment: ASSESS_SPECIFIED_NETWORK_AND_OUTCOME. Temporal independence: NOT_APPLICABLE. No new lag, persistence, functional form or quantitative magnitude. PENDING — APPROVE / MODIFY / REJECT.
+Shared-input assessment: ASSESS_SPECIFIED_NETWORK_AND_OUTCOME. Temporal independence: NOT_APPLICABLE. No new lag, persistence, functional form or quantitative magnitude. APPROVE_RETAIN_AS_IS — EXISTING_GOVERNED_RECORD_UNCHANGED.
 
 ## REL-SOC-031 — RETYPE_CANDIDATE
 
@@ -62,7 +62,7 @@ Global density and ego clustering share adjacency inputs but neither universally
 
 Sources: SRC-254, SRC-256, SRC-235, SRC-CAND-SOC-F07-003. Evidence LIMITED / confidence LOW. Owner SOC-F07; endpoint Families marked for consultation [] (not claimed consulted).
 
-Shared-input assessment: PRESENT: same adjacency/mixing inputs. Temporal independence: NOT_ESTABLISHED. No new lag, persistence, functional form or quantitative magnitude. PENDING — APPROVE / MODIFY / REJECT.
+Shared-input assessment: PRESENT: same adjacency/mixing inputs. Temporal independence: NOT_ESTABLISHED. No new lag, persistence, functional form or quantitative magnitude. APPROVE_RETYPE_REVIEW_ONLY — EXISTING_GOVERNED_RECORD_UNCHANGED.
 
 ## REL-SOC-032 — RETYPE_CANDIDATE
 
@@ -74,7 +74,7 @@ Degree assortativity is not categorical segregation; group attributes, opportuni
 
 Sources: SRC-233, SRC-260, SRC-270, SRC-CAND-SOC-F07-016. Evidence LIMITED / confidence LOW. Owner SOC-F07; endpoint Families marked for consultation [] (not claimed consulted).
 
-Shared-input assessment: PRESENT: same adjacency/mixing inputs. Temporal independence: NOT_ESTABLISHED. No new lag, persistence, functional form or quantitative magnitude. PENDING — APPROVE / MODIFY / REJECT.
+Shared-input assessment: PRESENT: same adjacency/mixing inputs. Temporal independence: NOT_ESTABLISHED. No new lag, persistence, functional form or quantitative magnitude. APPROVE_RETYPE_REVIEW_ONLY — EXISTING_GOVERNED_RECORD_UNCHANGED.
 
 ## REL-SOC-033 — RETYPE_CANDIDATE
 
@@ -86,7 +86,7 @@ Actor contact weights versus network/actor community-crossing denominator; parti
 
 Sources: SRC-234, SRC-269, SRC-CAND-SOC-F07-004. Evidence LIMITED / confidence LOW. Owner SOC-F07; endpoint Families marked for consultation [] (not claimed consulted).
 
-Shared-input assessment: PRESENT: same adjacency/mixing inputs. Temporal independence: NOT_ESTABLISHED. No new lag, persistence, functional form or quantitative magnitude. PENDING — APPROVE / MODIFY / REJECT.
+Shared-input assessment: PRESENT: same adjacency/mixing inputs. Temporal independence: NOT_ESTABLISHED. No new lag, persistence, functional form or quantitative magnitude. APPROVE_RETYPE_REVIEW_ONLY — EXISTING_GOVERNED_RECORD_UNCHANGED.
 
 ## REL-SOC-034 — RETYPE_CANDIDATE
 
@@ -98,7 +98,7 @@ Shared edge counts and complementary mixing can be mathematical; arbitrary commu
 
 Sources: SRC-233, SRC-234, SRC-269, SRC-CAND-SOC-F07-016. Evidence LIMITED / confidence LOW. Owner SOC-F07; endpoint Families marked for consultation [] (not claimed consulted).
 
-Shared-input assessment: PRESENT: same adjacency/mixing inputs. Temporal independence: NOT_ESTABLISHED. No new lag, persistence, functional form or quantitative magnitude. PENDING — APPROVE / MODIFY / REJECT.
+Shared-input assessment: PRESENT: same adjacency/mixing inputs. Temporal independence: NOT_ESTABLISHED. No new lag, persistence, functional form or quantitative magnitude. APPROVE_RETYPE_REVIEW_ONLY — EXISTING_GOVERNED_RECORD_UNCHANGED.
 
 ## REL-SOC-035 — REVISION_CANDIDATE
 
@@ -110,7 +110,7 @@ Clustering bundles path redundancy; SOC-061 uses independently reinforcing neigh
 
 Sources: SRC-235, SRC-256, SRC-CAND-SOC-F07-001, SRC-CAND-SOC-F07-002. Evidence LIMITED / confidence LOW. Owner SOC-F07; endpoint Families marked for consultation ['SOC-F08'] (not claimed consulted).
 
-Shared-input assessment: ASSESS_SPECIFIED_NETWORK_AND_OUTCOME. Temporal independence: NOT_ESTABLISHED. No new lag, persistence, functional form or quantitative magnitude. PENDING — APPROVE / MODIFY / REJECT.
+Shared-input assessment: ASSESS_SPECIFIED_NETWORK_AND_OUTCOME. Temporal independence: NOT_ESTABLISHED. No new lag, persistence, functional form or quantitative magnitude. APPROVE_REVISION_REVIEW_ONLY — EXISTING_GOVERNED_RECORD_UNCHANGED.
 
 ## REL-TEC-050 — RESEARCH_NEEDED
 
@@ -122,7 +122,7 @@ Content availability, follows and whole-network segregation are distinct; new fe
 
 Sources: SRC-505, SRC-509, SRC-CAND-SOC-F07-015. Evidence LIMITED / confidence LOW. Owner TEC-F04; endpoint Families marked for consultation ['SOC-F07'] (not claimed consulted).
 
-Shared-input assessment: ASSESS_SPECIFIED_NETWORK_AND_OUTCOME. Temporal independence: NOT_ESTABLISHED. No new lag, persistence, functional form or quantitative magnitude. PENDING — APPROVE / MODIFY / REJECT.
+Shared-input assessment: ASSESS_SPECIFIED_NETWORK_AND_OUTCOME. Temporal independence: NOT_ESTABLISHED. No new lag, persistence, functional form or quantitative magnitude. APPROVE_RESEARCH_NEEDED_DISPOSITION — EXISTING_GOVERNED_RECORD_UNCHANGED.
 
 ## Exact review proposals, not replacement records
 

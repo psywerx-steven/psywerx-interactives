@@ -15,6 +15,7 @@ import actions_events_v1 as ae
 import audit_family as af
 import build_soc_f07_pilot as p
 import relationship_intervention_v1 as ri
+import materialize_soc_f07_governance_001 as checkpoint
 
 
 class SocF07PilotTests(unittest.TestCase):
@@ -45,7 +46,7 @@ class SocF07PilotTests(unittest.TestCase):
         self.assertEqual(len(self.audits),10)
         self.assertEqual(Counter(a['bucket'] for a in self.audits),{'relationships':10})
         self.assertEqual(Counter(a['primaryDisposition'] for a in self.audits),{'RETAIN_AS_IS':3,'RETYPE_CANDIDATE':4,'REVISION_CANDIDATE':2,'RESEARCH_NEEDED':1})
-        self.assertTrue(all(a['fieldReview'] and a['governanceDecision']==p.DECISION for a in self.audits))
+        self.assertTrue(all(a['fieldReview'] and a['governanceDecision']==checkpoint.human_outcome(a['id']) for a in self.audits))
 
     def test_every_five_rds_source_explicit(self):
         rows=[a for a in self.audits if a['currentRecord']['relationFamily']=='CAUSAL' and a['currentRecord']['subjectEntityType']=='RELATIONAL_DERIVED_STATE']
@@ -72,7 +73,9 @@ class SocF07PilotTests(unittest.TestCase):
             self.assertIn(r['governance']['lifecycleStatus'],{'CANDIDATE','RESEARCH_NEEDED','REVIEW_READY'})
             self.assertEqual(r['governance']['activationStatus'],'NOT_ELIGIBLE')
             ri.validate_governance_record(r)
-        self.assertEqual((self.m['newGoverned'],self.m['newActive']),(0,0))
+        # Candidate copies never receive canonical authority; seven separately
+        # authorized inactive identities are reconciled by checkpoint tests.
+        self.assertEqual((self.m['newGoverned'],self.m['newActive']),(7,0))
         self.assertFalse(self.w['passB']['authorizations'])
 
     def test_governance_escalation_rejected(self):
@@ -162,7 +165,8 @@ class SocF07PilotTests(unittest.TestCase):
         self.assertEqual(len(self.sources),33)
         self.assertTrue(all(s['url'] and s['title'] and s['authors'] and s['accessDepth'] for s in self.sources))
         queue=ae.read(p.STORE/'source-registration-queue.json')
-        self.assertTrue(all(s['canonicalRegistration']=='NOT_AUTHORIZED' for s in queue))
+        registered=[s for s in queue if s['canonicalRegistration']=='REGISTERED_IDENTITY_PROVENANCE_ONLY']
+        self.assertEqual({s['canonicalSourceId'] for s in registered},{f'SRC-{n}' for n in range(553,559)})
 
     def test_aliases_do_not_collapse_closure_into_clustering(self):
         rows={r['id']:r for r in ae.read(p.STORE/'entity-rds-review.json')}
@@ -223,7 +227,7 @@ class SocF07PilotTests(unittest.TestCase):
     def test_rejection_and_blocked_ledger_protection(self):
         h=ae.read(p.STORE/'hypotheses.json')
         self.assertEqual(Counter(x['disposition'] for x in h),{'REJECTED':15,'RESEARCH_NEEDED':11,'BLOCKED_NEEDS_GOVERNANCE_INPUT':2,'REVIEW_READY':1})
-        self.assertTrue(all(x['regenerationRule'] and x['humanDecision']==p.DECISION for x in h))
+        self.assertTrue(all(x['regenerationRule'] and x['humanDecision']==checkpoint.human_outcome(x['id']) for x in h))
         self.assertTrue(all(x['governance']['blockStatus']=='NEEDS_GOVERNANCE_INPUT' for x in self.gaps))
 
     def test_exact_old_propositions_and_revision_nonimplementation(self):
@@ -233,7 +237,7 @@ class SocF07PilotTests(unittest.TestCase):
         self.assertEqual(len(self.revs),6)
         for r in self.revs:
             self.assertEqual(r['currentRecordHash'],ae.digest(current[r['currentRecord']['id']]))
-            self.assertEqual(r['governanceDecision'],p.DECISION)
+            self.assertEqual(r['governanceDecision'],checkpoint.human_outcome(r['currentRecord']['id']))
 
     def test_protected_science_bio_inf_schema_source_service(self):
         report=p.protected()

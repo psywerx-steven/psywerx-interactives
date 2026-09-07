@@ -66,7 +66,7 @@ class InfF03Activation001Tests(unittest.TestCase):
         cls.inf_records = (
             [row for row in cls.relationships if row["id"] == "REL-V1-INF-F03-001"]
             + [row for row in cls.ri_evidence if row["id"] == "EVA-V1-INF-F03-REL-001"]
-            + ae.all_records(cls.catalog)
+            + [row for row in ae.all_records(cls.catalog) if 'INF-F03' in row['id']]
         )
 
     def test_exact_five_records_are_active(self):
@@ -222,7 +222,11 @@ class InfF03Activation001Tests(unittest.TestCase):
         before_catalog = show_json(AUDITED_HEAD, "data/actions-events-v1/catalog.json")
         before_records = {row["id"]: row for row in ae.all_records(before_catalog)}
         after_records = {row["id"]: row for row in ae.all_records(self.catalog)}
-        self.assertEqual({identifier for identifier in after_records if after_records[identifier] != before_records[identifier]}, ACTIVE_IDS & set(after_records))
+        # Preserve every pre-existing record; later independently governed
+        # Families may add identities without becoming part of the INF audit.
+        self.assertTrue(set(before_records) <= set(after_records))
+        self.assertEqual({identifier for identifier in before_records if after_records[identifier] != before_records[identifier]}, ACTIVE_IDS & set(before_records))
+        self.assertFalse(any('INF-F03' in identifier for identifier in set(after_records)-set(before_records)))
 
     def test_materialization_is_deterministic(self):
         paths = [

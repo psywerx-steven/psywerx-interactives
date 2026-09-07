@@ -41,6 +41,14 @@ def emit(path, value):
     p.write_text(value.rstrip() + '\n' if isinstance(value, str) else encode(value), encoding='utf-8', newline='\n')
 
 
+def emit_document(path, value):
+    # Explicit governance overlay; never a silent scientific-candidate rewrite.
+    if (DOCS/'SOC_F07_HUMAN_DECISIONS.json').exists():
+        import materialize_soc_f07_governance_001 as checkpoint
+        value=checkpoint.decorate_document(path,value)
+    emit(path,value)
+
+
 def provenance():
     return {'actorClass': 'AUTOMATED_PROCESS_OR_AI', 'method': 'Structured evidence search and skeptical candidate audit',
             'recordedAt': inp.STAMP, 'originReferences': [inp.AUDIT, inp.BASELINE, 'scripts/soc_f07_research_inputs.py'],
@@ -70,7 +78,10 @@ def base(identifier, status='RESEARCH_NEEDED'):
 
 
 def source_registry():
-    existing = ae.read(ROOT / 'data/sources.json')['sources'] + ae.read(ROOT / 'data/relationship-intervention-v1/source-register.json')['sources']
+    # Keep the audit's candidate/source IDs stable after selective registration.
+    existing = []
+    for path in ('data/sources.json','data/relationship-intervention-v1/source-register.json'):
+        existing += json.loads(subprocess.check_output(['git','show',inp.BASELINE+':'+path],cwd=ROOT))['sources']
     result, keys = [], {}
     for row in inp.SOURCES:
         key, title, authors, year, venue, doi, url, access, basis, locator, population, finding, limit = row
@@ -230,8 +241,11 @@ def protected():
         original = subprocess.check_output(['git','show',inp.BASELINE+':'+p],cwd=ROOT).replace(b'\r\n',b'\n')
         current = (ROOT/p).read_bytes().replace(b'\r\n',b'\n')
         report[p] = {'baselineSha256':hashlib.sha256(original).hexdigest(),'currentSha256':hashlib.sha256(current).hexdigest(),'unchanged':original==current}
+        if original!=current and (DOCS/'SOC_F07_HUMAN_DECISIONS.json').exists():
+            import materialize_soc_f07_governance_001 as checkpoint
+            report[p]['exactAuthorizedAdditionsOnly']=checkpoint.exact_additions(p,original,current)
     return {'baseline':inp.BASELINE,'comparison':'LF_NORMALIZED_BYTES; Git checkout CRLF is not scientific modification',
-            'passed':all(x['unchanged'] for x in report.values()),'filesCompared':len(report),'files':report}
+            'passed':all(x['unchanged'] or x.get('exactAuthorizedAdditionsOnly',False) for x in report.values()),'filesCompared':len(report),'files':report}
 
 
 def table(headers, rows):
@@ -360,9 +374,12 @@ def build():
                   {'sourceId':s['id'],'canonicalRegistration':'NOT_AUTHORIZED','supportedCandidateIds':s['supportedCandidateIds'],
                    'condition':'Only after later human approval and fresh exact bibliographic/source alignment verification','possibleCanonicalMatches':s['deduplication']['canonicalMatches']}
                   for s in registry if s['id'].startswith('SRC-CAND') and s['supportedCandidateIds']]}
+    if (DOCS/'SOC_F07_HUMAN_DECISIONS.json').exists():
+        import materialize_soc_f07_governance_001 as checkpoint
+        checkpoint.decorate_products(products)
     for name,obj in products.items(): emit(STORE/name,obj)
     manifest['artifactHashes']={name:hashlib.sha256(encode(value).encode()).hexdigest() for name,value in products.items()}
-    emit(DOCS/'SOC_F07_AUDIT_MANIFEST.json',manifest)
+    emit_document(DOCS/'SOC_F07_AUDIT_MANIFEST.json',manifest)
     render_docs(manifest,registry,audits,revisions,hypotheses,entity_reviews,gaps,antecedents,search,w,findings)
     return manifest
 
@@ -484,7 +501,7 @@ def counts_report(w,audits,sources,findings,hypotheses,revisions,gaps):
 
 def render_docs(m,sources,audits,revisions,hypotheses,entities,gaps,antecedents,search,w,findings):
     header=f"Audit: `{inp.AUDIT}`. Frozen baseline: `{inp.BASELINE}`. Candidate-only; no governance, activation or source registration.\n"
-    emit(DOCS/'README.md','# SOC-F07 — Network Structure & Position\n\n'+header+
+    emit_document(DOCS/'README.md','# SOC-F07 — Network Structure & Position\n\n'+header+
          '\nThe pilot retained one conditional derivational candidate, eight reusable happening identities, and three research-needed Driver-effect hypotheses. It did not create new causal, association, moderation or pathway records. The principal finding is a missing complete network-configuration target beneath the calculated statistics.\n\n'+
          '\n'.join('- ['+name+']('+name+')' for name in ['SOC_F07_ENTITY_RDS_REVIEW.md','SOC_F07_EXISTING_RELATIONSHIP_AUDIT.md','SOC_F07_EVIDENCE_SUMMARY.md','SOC_F07_RESEARCH_LOG.md','SOC_F07_COMPLETENESS_REPORT.md','SOC_F07_GOVERNANCE_DECISION_PACKAGE.md','SOC_F07_SPECIAL_NETWORK_FINDINGS.md','SOC_F07_VALIDATION.md','SOC_F07_AUDIT_MANIFEST.json','EXECUTION.md'])+
          '\n\nMachine-readable records: [candidate workspace](../../../../data/candidates/actions-events-v1/SOC-F07/workspace.json). Original sources are linked in the evidence summary. No recommendation or scale-up authorization is implied.\n')
@@ -497,21 +514,21 @@ def render_docs(m,sources,audits,revisions,hypotheses,entities,gaps,antecedents,
             ('Derivation / risk set',e['derivationReview']),('Real antecedents',e['realWorldAntecedents']),('Outgoing causal IDs',e['outgoingCausalRelationships']),
             ('Blocked/missing fields',e['blockedOrMissingFields']),('Shared inputs',e['sharedInputs']),('Targetability',e['targetability']),('Governance question',e['governanceQuestion'])])
         text+='\nBoundary sensitivity: '+NETWORK_LIMIT+' Snapshot versus longitudinal use must be specified; missing operational metadata is not filled.\n'
-    emit(DOCS/'SOC_F07_ENTITY_RDS_REVIEW.md',text)
+    emit_document(DOCS/'SOC_F07_ENTITY_RDS_REVIEW.md',text)
     text='# Existing relationship audit\n\n'+header+'\nV3 projections are views of the same ten propositions, not ten additional relationships. All seven causal claims remain V1-incomplete and scientifically unchanged. No archived incident record was found.\n'
     for a in audits:
         r=a['currentRecord']; text+=f"\n## {a['id']} — {a['primaryDisposition']}\n\n`{r['subjectEntityId']} → {r['objectEntityId']}`; {r['relationFamily']}; gate `{a['rdsGate']}`.\n\n{a['proposedReview']}\n\n{a['evidenceRationale']}\n\nSources: {', '.join(a['sources'])}. Evidence {a['evidenceStrength']} / confidence {a['confidence']}. Owner {a['ownerFamilyId']}; endpoint Families marked for consultation {a['consultedFamilyIds']} (not claimed consulted).\n\nShared-input assessment: {a['sharedInputRisk']}. Temporal independence: {a['temporalIndependence']}. No new lag, persistence, functional form or quantitative magnitude. {DECISION}.\n"
     text+='\n## Exact review proposals, not replacement records\n\n'+table(['Proposal','Current edge','Proposed representation','Identity implications'],[(r['id'],r['currentRecord']['id'],r['exactProposal'],r['identityPolicy']) for r in revisions])
     text+='\nComplete field-level snapshots, proposed field changes, source changes, hashes and unresolved choices are in [revision proposals](../../../../data/candidates/actions-events-v1/SOC-F07/revision-proposals.json).\n'
-    emit(DOCS/'SOC_F07_EXISTING_RELATIONSHIP_AUDIT.md',text)
+    emit_document(DOCS/'SOC_F07_EXISTING_RELATIONSHIP_AUDIT.md',text)
     text='# Evidence and source summary\n\n'+header+'\nSource findings precede synthesis. Source-level support for a different outcome is not exact-ontology support. All numerical estimates remain null rather than invented. Findings marked NULL_FINDING mean no detected difference in the stated contrast, not a supported zero.\n\n'+table(['Source','Bibliographic identity','Access / basis','Exact applicability / limitation'],[(s['id'],f"[{s['title']}]({s['url']}) — {s['authors']}; {s['year']}; {s['venue']}; DOI {s['doi']}",s['accessDepth']+' / '+s['basis'],s['findingSummary']+' '+s['limitations']) for s in sources])
     text+='\n## Synthesis and contrary findings\n\n'+table(['Count','Value'],list(m['counts'].items()))
     text+='\nSRC-509 links to the same Centola experiment as SRC-235; its unresolved composite second citation is not independent evidence. Hunter and other reviews overlap included primary trials; no replication count is derived from paper count. Full PMC page access was sometimes challenged; indexed selected methods/results were reviewed, not an inaccessible entire paper. SRC-497 is metadata-level only.\n\nThe controlled closure study offers the strongest Driver-specific lead, but its invitation/reciprocal-follow risk set requires alignment with SOC-102. Group introduction and storm findings use different metrics. Those effects remain research-needed. Degree centralization evidence is definitional, not causal.\n'
-    emit(DOCS/'SOC_F07_EVIDENCE_SUMMARY.md',text)
+    emit_document(DOCS/'SOC_F07_EVIDENCE_SUMMARY.md',text)
     text='# Structured research log\n\n'+header+'\n'+search['method']+' Selection prioritized primary experiments, methods and measurement papers; existing relationships were read before gap/action searches. Searches stopped after the main semantic/identification alternatives were supported; not scientific completeness.\n'+table(['Search','Question','Concepts','Sources','Selection'],[(q['id'],q['question'],q['concepts'],', '.join(q['sourceIds']),q['selection']) for q in search['queries']])
     text+='\n## Driver coverage\n\nEight origins × nine domains were screened against SOC-102 using the linked combined queries. All 72 cells retain INSUFFICIENT_EVIDENCE for an exact supported effect; identity leads are not efficacy findings. Eleven properties were considered for SOC-102 and each of seven reviewed causal edges (88 cells). No supported-null cell inferred from a nonsignificant study.\n\n'+table(['Origin','Identity leads','Exact effect outcome'],[(l,', '.join(sorted({h['id'] for h in w['passB']['happeningTypes'] if l in h['originLayers']})) or 'None retained','INSUFFICIENT_EVIDENCE') for l in ['BIO','PSY','SOC','CUL','ENV','INS','INF','TEC']])
     text+='\nComplete cells, qualifiers, no-findings, source-access limitations and unresolved gaps: [search ledger](../../../../data/candidates/actions-events-v1/SOC-F07/search-ledger.json). Psychological/cultural selection and biological development/illness were searched; their exact Driver effects were not established.\n'
-    emit(DOCS/'SOC_F07_RESEARCH_LOG.md',text)
+    emit_document(DOCS/'SOC_F07_RESEARCH_LOG.md',text)
     render_decisions(header,m,audits,revisions,hypotheses,gaps,w)
     render_special(header,m,entities,antecedents)
 
@@ -532,7 +549,7 @@ def render_decisions(header,m,audits,revisions,hypotheses,gaps,w):
     for name,status in [('K. Rejected hypotheses','REJECTED'),('L. Research-needed','RESEARCH_NEEDED'),('M. Governance/ontology blocked','BLOCKED_NEEDS_GOVERNANCE_INPUT')]:
         text+='\n## '+name+'\n\n'+table(['ID','Question','Triage','Reason / sources','Human decision'],[(h['id'],h['proposition'],h['semanticTriage'],h['reason']+' '+str(h['sourceIds']),DECISION) for h in hypotheses if h['disposition']==status])
     text+='\nREL-TEC-050 independently remains RESEARCH_NEEDED; no replacement. Twelve RDS target-gap records remain RESEARCH_NEEDED with NEEDS_GOVERNANCE_INPUT blocks. H12/H20 are two shared hypothesis-level manifestations, not fourteen distinct missing Drivers.\n\n## Evidence-level decisions\n\nOnly the conditional derivation assessment is REVIEW_READY/SUPPORTS/MODERATE/MODERATE. Seven existing-causal audit assessments and three EffectAssertion assessments are RESEARCH_NEEDED/INSUFFICIENT/LIMITED/LOW, with mixed/null findings retained. Evidence governance must remain assertion-specific.\n\n## Priority human questions\n\n1. Should a future governance process define a complete underlying network-state/contact-opportunity representation? Do not repurpose SOC-102 or rates as adjacency.\n2. Adjudicate the four contemporaneous RDS-to-RDS retype proposals before allowing executable propagation.\n3. Is the bounded SOC-053 → SOC-061 topology/reinforcement construct alignment adequate, or does it need another exact representation?\n4. Approve/reject the degree-only derivation dependency without resolving other RDS-0006 metadata.\n5. Decide whether platform-specific open-triad outcomes align sufficiently with SOC-102; keep its 11 blocked fields untouched.\n'
-    emit(DOCS/'SOC_F07_GOVERNANCE_DECISION_PACKAGE.md',text)
+    emit_document(DOCS/'SOC_F07_GOVERNANCE_DECISION_PACKAGE.md',text)
     summary=ae.read(BASE/'inventory.json')
     fam=next(f for f in summary['families'] if f['id']=='SOC-F07')
     text='# Completeness and integrity report\n\n'+header+'\nRecorded coverage flags are not instructions to invent edges.\n'+table(['Metric','Value'],list(fam.items()))
@@ -540,7 +557,7 @@ def render_decisions(header,m,audits,revisions,hypotheses,gaps,w):
     text+='\n## Structural flags\n\nNo production edge changed, so before/after production degree, isolates, cycles and connectivity are identical. All five current RDS causal sources were audited: SOC-052, SOC-054, SOC-055, SOC-056, SOC-053. Four internal RDS-to-RDS claims have shared-input/temporal risks. The one same-Layer outgoing claim needs scoped reinforcement evidence. Suspicious-hub/contradiction signals are review flags, not diagnoses. No new causal candidate, reciprocal edge or pathway was created.\n\nThe retained derivation is noncausal and adds no causal degree. RDS metrics can share adjacency, degree distributions, shortest paths and partitions; missing data and graph-size effects are not independent causes. No duplicate projection was counted.\n\n## RDS and action coverage\n\nAll twelve RDS have explicit antecedent/target-gap ledgers; none is an EffectAssertion direct target. SOC-102 has complete search screening across eight origins/nine domains/eleven properties, but no adequately aligned supported effect. Eight identities do not imply eight efficacious interventions. Five origins have retained identities (SOC/INS/ENV/INF/TEC); BIO/PSY/CUL are searched no-findings for exact effects. No identity or effect is practitioner-eligible.\n\n## Protected science\n\n'+str(m['protectedScience'])+'; comparison covers pre-existing data, schemas, migration handoff, scenario service, BIO-F01 and INF-F03 documents. New GOVERNED=0; new ACTIVE=0. Production counts remain 770 Drivers / 41 RDS / 811 entities / 457 active Relationships / 436 active causal.\n\n## Self-review\n\nAll three potential Driver effects were retained only as research-needed hypotheses. No direct metric manipulation, intervention ranking, numeric execution, homophily-as-influence or reachability-as-mediation was admitted. Per-record findings distinguish source designs; model/theory evidence is not labeled empirical. Access limitations prevent stronger exact-edge claims.\n'
     text+='\n## Exact before/after graph metrics\n\n'+table(['Entity','Causal in before/after','Causal out before/after','Isolated'],[(e['id'],str(e['causalIn'])+'/'+str(e['causalIn']),str(e['causalOut'])+'/'+str(e['causalOut']),e['causalIsolated']) for e in m['graph']['degreeAfter']])
     text+='\nSemantic scope split: '+str(m['graph']['scopeBySemantics'])+'. Maximum Family incident causal degree: '+str(m['graph']['maximumFamilyCausalDegree'])+'. No reciprocal incident pair. Generic entity-ID overlap metrics miss shared external adjacency inputs; this pilot flags that limitation explicitly.\n'
-    emit(DOCS/'SOC_F07_COMPLETENESS_REPORT.md',text)
+    emit_document(DOCS/'SOC_F07_COMPLETENESS_REPORT.md',text)
 
 
 def render_special(header,m,entities,antecedents):
@@ -554,7 +571,7 @@ def render_special(header,m,entities,antecedents):
         ('Source handling','Registered sources after human approval','Selective canonicalization and source findings','Candidate register only; composite SRC-509 and review overlap flagged'),
         ('Isolation','Active model execution remained separate','Scientific/model/practitioner distinction','All candidate NOT_ELIGIBLE; no network simulation/recommendations')])
     text+='\nThe generic inventory and linked Pass A/B workflow generalize. Activatable scientific yield does not. Three pilots do not themselves authorize 105-Family scale-up. A later human decision must review target sufficiency, source-alignment backlog, cross-Family ownership and persistent blocked metadata. Prior pilots remain byte-for-byte unchanged.\n'
-    emit(DOCS/'SOC_F07_SPECIAL_NETWORK_FINDINGS.md',text)
+    emit_document(DOCS/'SOC_F07_SPECIAL_NETWORK_FINDINGS.md',text)
 
 
 if __name__ == '__main__':
