@@ -102,7 +102,7 @@
     "ownerFamilyId": "INF-F07",
     "consultation": {
       "PSY-F01": "CANDIDATE_REVIEW_COMPLETE",
-      "PSY-F07": "NOT_YET_PROCESSED",
+      "PSY-F07": "CANDIDATE_REVIEW_COMPLETE",
       "INF-F07": "EXTERNAL_ENDPOINT_REVIEW_ONLY_NO_FULL_FAMILY_AUDIT"
     },
     "status": "REVIEW_READY",
@@ -691,7 +691,7 @@
     "ownerFamilyId": "PSY-F06",
     "consultation": {
       "PSY-F06": "CANDIDATE_REVIEW_COMPLETE",
-      "PSY-F07": "NOT_YET_PROCESSED",
+      "PSY-F07": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F13": "NOT_YET_PROCESSED"
     },
     "status": "RESEARCH_NEEDED",
@@ -743,6 +743,87 @@
       "PSY-F06": "CANDIDATE_REVIEW_COMPLETE",
       "BIO-F01": "EXISTING_PILOT_REVIEW_REFERENCED_NO_MODIFICATION",
       "INF-F03": "EXISTING_PILOT_REVIEW_REFERENCED_NO_MODIFICATION"
+    },
+    "status": "RESEARCH_NEEDED",
+    "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+  },
+  {
+    "id": "CF-PSY-LAYER-0029",
+    "kind": "CONSTRUCT_BOUNDARY",
+    "familyIds": [
+      "PSY-F07",
+      "PSY-F01",
+      "PSY-F13",
+      "INF-F12"
+    ],
+    "recordIds": [
+      "PSY-063",
+      "PSY-068",
+      "PSY-116",
+      "INF-067",
+      "REL-INF-047",
+      "SRC184"
+    ],
+    "question": "Confidence/strength, truth, accuracy and calibration differ; veracity→accuracy mechanism mismatches causal-belief-strength target. StoredSRC184 PMID wrong, no repair.",
+    "classification": "RELATED",
+    "ownerFamilyId": "PSY-F07",
+    "consultation": {
+      "PSY-F07": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F01": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F13": "NOT_YET_PROCESSED",
+      "INF-F12": "EXTERNAL_ENDPOINT_REVIEW_ONLY_NO_FULL_FAMILY_AUDIT"
+    },
+    "status": "RESEARCH_NEEDED",
+    "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+  },
+  {
+    "id": "CF-PSY-LAYER-0030",
+    "kind": "CONSTRUCT_BOUNDARY",
+    "familyIds": [
+      "PSY-F07",
+      "PSY-F06",
+      "PSY-F08"
+    ],
+    "recordIds": [
+      "PSY-064",
+      "PSY-065",
+      "PSY-066",
+      "PSY-058",
+      "EA-CAND-PSY-LAYER-0012"
+    ],
+    "question": "Exact cue/material accessibility differs from accurate knowledge organization, working-memory availability and learning. Delayed recall benefit does not imply all knowledge dimensions change.",
+    "classification": "MEASUREMENT_OVERLAP",
+    "ownerFamilyId": "PSY-F07",
+    "consultation": {
+      "PSY-F07": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F06": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F08": "NOT_YET_PROCESSED"
+    },
+    "status": "RESEARCH_NEEDED",
+    "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+  },
+  {
+    "id": "CF-PSY-LAYER-0031",
+    "kind": "CONSTRUCT_BOUNDARY",
+    "familyIds": [
+      "PSY-F07",
+      "PSY-F13",
+      "INF-F07"
+    ],
+    "recordIds": [
+      "PSY-067",
+      "PSY-069",
+      "PSY-115",
+      "REL-INF-039",
+      "REL-PSY-033"
+    ],
+    "question": "One primary review per proposition; repetition/felt familiarity/belief and perceived congruence/counterarguing are distinct, no inferred transmitted pathway.",
+    "classification": "DISTINCT",
+    "ownerFamilyId": "PSY-F07",
+    "consultation": {
+      "PSY-F07": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F13": "NOT_YET_PROCESSED",
+      "INF-F07": "EXTERNAL_ENDPOINT_REVIEW_ONLY_NO_FULL_FAMILY_AUDIT"
     },
     "status": "RESEARCH_NEEDED",
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"

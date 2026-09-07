@@ -1325,13 +1325,30 @@
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT",
     "id": "REL-INF-039",
     "ownerFamilyId": "INF-F07",
-    "primaryDisposition": null,
+    "primaryDisposition": "RETAIN_V1_INCOMPLETE",
     "processingFamilyId": "PSY-F07",
     "psychologicalFamilyIds": [
       "PSY-F07"
     ],
-    "review": null,
-    "reviewStatus": "NOT_STARTED",
+    "review": {
+      "causalGate": "STANDARD_CAUSAL",
+      "confidence": "LOW",
+      "disposition": "RETAIN_V1_INCOMPLETE",
+      "evidence": "INSUFFICIENT",
+      "executionReview": "Production remains unchanged/legacy incomplete; no inferred lag, magnitude, pathway, new executability or activation.",
+      "id": "REL-INF-039",
+      "nullContrary": "Corpus exposure frequency is not each person's dose. Framework/source-taxonomy references do not supply exact current lag, saturation or independent subjective-familiarity contrast.",
+      "proposal": null,
+      "rationale": "Retain bounded repetition→felt familiarity interpretation with realized recipient exposure; repetition explicitly does not establish truth.",
+      "rdsReview": "No local RDS or incident RDS endpoint. Mental maps and causal beliefs are psychological representations, not scientific Relationships, social ties or calculational weights.",
+      "sources": [
+        "SRC-505",
+        "SRC-511",
+        "SRC125"
+      ],
+      "strength": "LIMITED"
+    },
+    "reviewStatus": "REVIEWED_CANDIDATE_RECOMMENDATION",
     "scienceOrigin": "PRODUCTION_BASELINE",
     "scope": "CROSS_LAYER_INCOMING",
     "sourceBucket": "relationships"
@@ -1975,13 +1992,30 @@
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT",
     "id": "REL-INF-047",
     "ownerFamilyId": "INF-F12",
-    "primaryDisposition": null,
+    "primaryDisposition": "REVISION_CANDIDATE",
     "processingFamilyId": "PSY-F07",
     "psychologicalFamilyIds": [
       "PSY-F07"
     ],
-    "review": null,
-    "reviewStatus": "NOT_STARTED",
+    "review": {
+      "causalGate": "STANDARD_CAUSAL",
+      "confidence": "LOW",
+      "disposition": "REVISION_CANDIDATE",
+      "evidence": "INSUFFICIENT",
+      "executionReview": "Production remains unchanged/legacy incomplete; no inferred lag, magnitude, pathway, new executability or activation.",
+      "id": "REL-INF-047",
+      "nullContrary": "False contingencies can be confidently endorsed; rating scales influence strength scores. Context-dependent sign does not resolve target mismatch.",
+      "proposal": "Future adjudication must distinguish strength/confidence from accuracy; specify exposed causal proposition, verified content, baseline belief, actual acceptance and subsequent confidence. No new accuracy endpoint or universal increase/decrease is proposed.",
+      "rationale": "Current mechanism describes accuracy of causal beliefs, but PSY-063 is confidence in a specified causal proposition; veracity, acceptance, strength and calibration remain distinct.",
+      "rdsReview": "No local RDS or incident RDS endpoint. Mental maps and causal beliefs are psychological representations, not scientific Relationships, social ties or calculational weights.",
+      "sources": [
+        "SRC-505",
+        "SRC-CAND-PSY-LAYER-0073",
+        "SRC-CAND-PSY-LAYER-0074"
+      ],
+      "strength": "LIMITED"
+    },
+    "reviewStatus": "REVIEWED_CANDIDATE_RECOMMENDATION",
     "scienceOrigin": "PRODUCTION_BASELINE",
     "scope": "CROSS_LAYER_INCOMING",
     "sourceBucket": "relationships"
@@ -5458,14 +5492,30 @@
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT",
     "id": "REL-PSY-033",
     "ownerFamilyId": "PSY-F07",
-    "primaryDisposition": null,
+    "primaryDisposition": "RESEARCH_NEEDED",
     "processingFamilyId": "PSY-F07",
     "psychologicalFamilyIds": [
       "PSY-F07",
       "PSY-F13"
     ],
-    "review": null,
-    "reviewStatus": "NOT_STARTED",
+    "review": {
+      "causalGate": "STANDARD_CAUSAL",
+      "confidence": "LOW",
+      "disposition": "RESEARCH_NEEDED",
+      "evidence": "INSUFFICIENT",
+      "executionReview": "Production remains unchanged/legacy incomplete; no inferred lag, magnitude, pathway, new executability or activation.",
+      "id": "REL-PSY-033",
+      "nullContrary": "Source117 locator concern; selective evidence preference/acceptance is not measured counterarguing. Reverse inference from counterarguments to perceived fit may be circular.",
+      "proposal": null,
+      "rationale": "Confirmation-bias/ELM theory suggests selective processing, but perceived congruence and exact counterarguing intensity require separate manipulation/measurement.",
+      "rdsReview": "No local RDS or incident RDS endpoint. Mental maps and causal beliefs are psychological representations, not scientific Relationships, social ties or calculational weights.",
+      "sources": [
+        "SRC153",
+        "SRC117"
+      ],
+      "strength": "LIMITED"
+    },
+    "reviewStatus": "REVIEWED_CANDIDATE_RECOMMENDATION",
     "scienceOrigin": "PRODUCTION_BASELINE",
     "scope": "PSYCHOLOGICAL_CROSS_FAMILY",
     "sourceBucket": "relationships"
