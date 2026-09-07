@@ -104,7 +104,7 @@ def relationship(spec, family, findings, c):
 
 
 def happening(spec, family):
-    return {**base(spec["id"], family), **{k: spec[k] for k in ("name", "identityKey", "description")}, "aliases": [],
+    return {**base(spec["id"], family, spec.get("status", "REVIEW_READY")), **{k: spec[k] for k in ("name", "identityKey", "description")}, "aliases": [],
         "kindTags": ["ACTION"], "domainTags": [spec["domain"]], "originLayers": spec["origins"], "interventionSubset": True,
         "packageKind": "ATOMIC", "components": [], "componentEnumeration": "NOT_APPLICABLE",
         "actorOrSourceSystem": spec["actor"], "intentionality": "DELIBERATE", "pattern": ["DISCRETE"],
@@ -120,12 +120,12 @@ def effect(spec, family, findings):
     row = {**base(spec["id"], family, spec["status"]), "typeId": spec["typeId"], "occurrenceId": None,
         "targetKind": "DRIVER", "targetId": spec["target"], "targetLayers": ["PSY"], "claimSemantics": "CAUSAL",
         "productionMethod": "SYNTHESIS", "property": spec["property"], "change": spec["change"], "otherSpecified": None,
-        "intendedChange": None, "observedChange": spec["change"], "knowledgeStatus": "SUPPORTED_EFFECT", "scope": scope,
+        "intendedChange": None, "observedChange": spec["change"], "knowledgeStatus": spec.get("knowledgeStatus", "SUPPORTED_EFFECT"), "scope": scope,
         "exposureProfile": {k: None for k in ("timing", "doseIntensity", "duration", "frequency", "reach")},
         "mechanism": spec["mechanism"], "mechanismStatus": "PARTIAL", "mechanisticDriverIds": [],
         "grounding": {"causalIdentificationRationale": spec["rationale"], "derivationEntailed": "NO", "representedDriverId": None, "duplicatePropagationControl": None},
-        "contribution": {"groupId": spec["sharedContributionId"], "role": "PRIMARY", "relatedAssertionIds": [],
-            "reconciliation": "No automatic summation; Layer contribution registry links alternate Relationship description"},
+        "contribution": {"groupId": spec["sharedContributionId"], "role": spec.get("contributionRole", "PRIMARY"), "relatedAssertionIds": spec.get("relatedEffectIds", []),
+            "reconciliation": spec.get("contributionReconciliation", "No automatic summation; Layer contribution registry links alternate Relationship description")},
         "moderatorLinks": [], "interaction": {"mode": "NONE", "otherEffectIds": [], "evidenceAssessmentIds": []},
         "qualifiers": {"reach": None, "distribution": None, "subgroups": [], "unintendedConsequences": [spec["risk"]],
             "risks": [spec["risk"]], "prerequisites": ["Actor control, prerequisites, feasibility, legality, ethics/risk and context applicability NOT_ASSESSED"],
@@ -133,15 +133,17 @@ def effect(spec, family, findings):
         "outcomes": [], "evidenceAssessmentIds": [eid], "uncertainty": [spec["risk"]], "inferenceProvenance": None}
     ev = {**base(eid, family, spec["status"]), "assertion": {"objectType": "EFFECT_ASSERTION", "objectId": spec["id"]},
         "sourceFindings": findings, "synthesis": synthesis(spec, findings),
-        "completeness": {k: "SPECIFIED" for k in ("target", "direction", "mechanism", "population", "context", "timing", "measurement", "boundaries")}}
+        "completeness": {k: "MISSING" if k in spec.get("incompleteFields", []) else "SPECIFIED" for k in ("target", "direction", "mechanism", "population", "context", "timing", "measurement", "boundaries")}}
     return row, ev
 
 
 def build(family):
+    global STAMP
     if family not in p.FAMILIES:
         raise ValueError("Only authorized Psychological Families")
     p.check_protected()
     research = p.read(p.STORE / family / "research.json")
+    STAMP = research.get("recordedAtTime", "2026-09-07T16:54:31Z")
     evidence = p.read(p.STORE / family / "evidence-inputs.json")
     w = ae.empty_workspace(family, p.BASELINE)
     c, sidecars = context(), []
@@ -211,6 +213,28 @@ def validate_sources():
     return len(sources)
 
 
+def render_source_queue():
+    """A future human-review queue, never a canonical registration request."""
+    uses = {}
+    for family in p.FAMILIES:
+        path = p.STORE / family / "evidence-inputs.json"
+        if not path.exists():
+            continue
+        data = p.read(path)
+        findings = {f['key']: f for f in data['findings']}
+        for assertion in data['assertions']:
+            for key in assertion['findingKeys']:
+                uses.setdefault(findings[key]['sourceId'], set()).add(assertion['id'])
+        for identity in data['happeningTypes']:
+            for source in identity['sources']:
+                uses.setdefault(source, set()).add(identity['id'])
+    queue = [{"candidateSourceId": s['id'], "candidateAssertionOrIdentityIds": sorted(uses.get(s['id'], [])),
+              "canonicalRegistrationAuthorized": False, "humanDecision": DECISION,
+              "disposition": "FUTURE_REVIEW_IF_SCIENCE_APPROVED" if uses.get(s['id']) else "RESEARCH_BACKGROUND_ONLY_NOT_QUEUED"}
+             for s in p.read(p.STORE / 'candidate-source-registry.json') if s['id'].startswith('SRC-CAND-')]
+    p.write(p.STORE / 'source-registration-candidate-queue.json', queue)
+
+
 def render(family):
     """Generate local documents/registries; does not mark a Family complete."""
     validate_sources()
@@ -239,10 +263,10 @@ def render(family):
         row["effectProperties"] = {prop: entry["properties"].get(prop, "NOT_APPLICABLE" if prop == "STRUCTURE" else "NOT_INVESTIGATED") for prop in PROPERTIES}
         row["scientificUseEligibility"] = row["modelEligibility"] = row["practitionerActionEligibility"] = False
         row["activationStatus"] = "NOT_ELIGIBLE"
-        if row["candidateEffectIds"]:
-            for layer in ("INF",):
+        if row["candidateEffectIds"] and row["properties"].get("LEVEL") == "SUPPORTED_EFFECT":
+            for layer in row.get("supportedOriginLayers", ["INF"]):
                 row["originLayerSearch"][layer]["outcome"] = "SUPPORTED_EFFECT"
-            for domain in ("DELIBERATE_INTERVENTION", "INFORMATIONAL_EXPOSURE"):
+            for domain in row.get("supportedDomains", ["DELIBERATE_INTERVENTION", "INFORMATIONAL_EXPOSURE"]):
                 row["domainSearch"][domain]["outcome"] = "SUPPORTED_EFFECT"
         ledgers.append(row)
     edge_ledgers = [{"relationshipId": r["id"], "reviewedAfterPassA": True,
@@ -294,14 +318,16 @@ def render(family):
         lines += [review[k] + "\n" for k in ("constructReview", "measurementReview", "timeReview", "unresolved")]
         lines += ["Boundary references: " + ", ".join(review["boundaryLinks"]) + ". Sources: " + ", ".join(review["sources"]) + ".", ""]
     p.write(doc / "ENTITY_REVIEW.md", "\n".join(lines))
-    lines = header + ["## Existing propositions — one Layer review per ID", "", "All current endpoints, semantics, legacy directness, population/context, lag, persistence, exposure, moderators and sources remain unchanged in BASELINE.json. All F01 endpoints are Drivers: STANDARD_CAUSAL; no RDS formula input. Null legacy fields stay null. Recommendations do not change V1 executability.", ""]
+    endpoint_gate = "All F01 endpoints are Drivers: STANDARD_CAUSAL; no RDS formula input." if family == "PSY-F01" else coverage["causalGateReview"]
+    lines = header + ["## Existing propositions — one Layer review per ID", "", "All current endpoints, semantics, legacy directness, population/context, lag, persistence, exposure, moderators and sources remain unchanged in BASELINE.json. " + endpoint_gate + " Null legacy fields stay null. Recommendations do not change V1 executability.", ""]
     for r in incident:
         rev = r["review"]
         lines += [f"### {r['id']} — {r['primaryDisposition']}", "", f"Owner {r['ownerFamilyId']}; endpoints {', '.join(p.endpoints(r['frozenRecord']))}; Families {', '.join(r['endpointFamilyIds'])}.", "",
                   rev["rationale"], "", "Contrary/limitations: " + rev["nullContrary"], "", "Evidence " + rev["evidence"] + "/" + rev["strength"] + "/" + rev["confidence"] + "; sources " + ", ".join(rev["sources"]) + ".", "",
                   "Proposal: " + (rev["proposal"] or "None; no existing proposition altered."), "", DECISION, ""]
     p.write(doc / "EXISTING_RELATIONSHIP_AUDIT.md", "\n".join(lines))
-    lines = header + ["## Hypothesis funnel", "", "Every hypothesis below is a research disposition, not a governed lifecycle rejection. H01's formal candidate is separately scoped in evidence-inputs.json; do not vote twice on its discovery and resulting record.", "", "| ID | Semantics | Disposition | Question / rationale |", "|---|---|---|---|"]
+    discovery_note = "H01's formal candidate is separately scoped in evidence-inputs.json; do not vote twice on its discovery and resulting record." if family == "PSY-F01" else "Discovery paths linking an assertion are not additional propositions; do not count or approve them twice."
+    lines = header + ["## Hypothesis funnel", "", "Every hypothesis below is a research disposition, not a governed lifecycle rejection. " + discovery_note, "", "| ID | Semantics | Disposition | Question / rationale |", "|---|---|---|---|"]
     lines += [f"| {h['id']} | {h['semantics']} | {h['status']} | {h['question']} {h['reason']} |" for h in research["hypotheses"]]
     lines += ["", "No formal moderation, pathway, semantic, temporal, compositional or derivational record met the current evidence/representation threshold. Qualified-state transitions are not transformations of one psychological construct into another.", ""]
     p.write(doc / "RELATIONSHIP_RESEARCH.md", "\n".join(lines))
@@ -349,6 +375,7 @@ def render(family):
     p.write(p.STORE / family / "AUDIT_MANIFEST.json", manifest)
     p.write(doc / "AUDIT_MANIFEST.json", manifest)
     p.write(doc / "COMPLETENESS_REPORT.md", "\n".join(header + ["```json", p.encode(manifest).strip(), "```", "", "Local completion must be separately validated; shared boundary questions remain pending for later endpoint Family consultation and final Layer reconciliation. Coverage is not scientific completeness.", ""]))
+    render_source_queue()
 
 
 if __name__ == "__main__":

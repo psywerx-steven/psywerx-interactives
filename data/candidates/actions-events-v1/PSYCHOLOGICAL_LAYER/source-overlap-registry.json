@@ -68,5 +68,46 @@
     "independentReplicationCount": null,
     "rule": "Reuse canonical SRC112; provisional number 0008 is retired, never reassigned. Conceptual critique is not empirical causal evidence.",
     "sharedContributionIds": []
+  },
+  {
+    "id": "OV-PSY-LAYER-0006",
+    "sourceIds": [
+      "SRC122",
+      "SRC-496"
+    ],
+    "relationship": "CANONICAL_DUPLICATE_PUBLICATION",
+    "durableIdentifier": "DOI:10.1186/1748-5908-6-42; PMID:21513547; PMC3096582",
+    "confirmedComponentList": true,
+    "independentReplicationCount": 1,
+    "rule": "Same framework paper, no empirical causal replication; preserve both canonical IDs.",
+    "sharedContributionIds": []
+  },
+  {
+    "id": "OV-PSY-LAYER-0007",
+    "sourceIds": [
+      "SRC-CAND-PSY-LAYER-0011",
+      "SRC-CAND-PSY-LAYER-0012"
+    ],
+    "relationship": "TRIAL_PSYCHOMETRIC_DATASET_REUSE",
+    "confirmedComponentList": true,
+    "independentReplicationCount": null,
+    "rule": "2006 psychometric paper reuses N149 CET trial and adds N199; not two independent replications of the 2003 intervention effect.",
+    "sharedContributionIds": []
+  },
+  {
+    "id": "OV-PSY-LAYER-0008",
+    "sourceIds": [
+      "SRC175",
+      "SRC-423",
+      "SRC-CAND-PSY-LAYER-0010",
+      "SRC-CAND-PSY-LAYER-0014",
+      "SRC-CAND-PSY-LAYER-0015",
+      "SRC-CAND-PSY-LAYER-0017"
+    ],
+    "relationship": "OVERLAPPING_REVIEWS_DIFFERENT_ESTIMANDS",
+    "confirmedComponentList": false,
+    "independentReplicationCount": null,
+    "rule": "Bigsby reports 54% of Tannenbaum sample included and 15 new group comparisons. Six-study factorial behavioral review differs from broad fear outcomes; successful-manipulation selection differs from all risk-message trials. No pooling/independence claim.",
+    "sharedContributionIds": []
   }
 ]

@@ -1,8 +1,262 @@
 [
-  {"id":"CF-PSY-LAYER-0001","kind":"RETYPE_REVIEW","familyIds":["PSY-F01","PSY-F04"],"recordIds":["REL-PSY-002","REL-PSY-001"],"question":"Does attitude strength modify valence-to-intention rather than add a universally positive causal contribution?","classification":"RELATED","ownerFamilyId":"PSY-F01","consultation":{"PSY-F01":"CANDIDATE_REVIEW_COMPLETE","PSY-F04":"NOT_YET_PROCESSED"},"status":"RESEARCH_NEEDED","humanDecision":"PENDING — APPROVE / MODIFY / REJECT"},
-  {"id":"CF-PSY-LAYER-0002","kind":"CONSTRUCT_BOUNDARY","familyIds":["PSY-F01","PSY-F02"],"recordIds":["PSY-006","PSY-011","PSY-012"],"question":"Success expectancy, action capability and perceived behavioral control overlap under aligned task criteria but differ with external opportunity and motivation.","classification":"MEASUREMENT_OVERLAP","ownerFamilyId":"PSY-F01","consultation":{"PSY-F01":"CANDIDATE_REVIEW_COMPLETE","PSY-F02":"NOT_YET_PROCESSED"},"status":"RESEARCH_NEEDED","humanDecision":"PENDING — APPROVE / MODIFY / REJECT"},
-  {"id":"CF-PSY-LAYER-0003","kind":"CONSTRUCT_BOUNDARY","familyIds":["PSY-F01","PSY-F13"],"recordIds":["PSY-003","PSY-116"],"question":"Confidence in the same specified belief may instantiate both canonical definitions. Do not count two causal contributions or merge them automatically.","classification":"POSSIBLE_DUPLICATE","ownerFamilyId":"PSY-F01","consultation":{"PSY-F01":"CANDIDATE_REVIEW_COMPLETE","PSY-F13":"NOT_YET_PROCESSED"},"status":"BLOCKED_NEEDS_GOVERNANCE_INPUT","humanDecision":"PENDING — APPROVE / MODIFY / REJECT"},
-  {"id":"CF-PSY-LAYER-0004","kind":"CONSTRUCT_BOUNDARY","familyIds":["PSY-F01","PSY-F08"],"recordIds":["PSY-004","PSY-073","PSY-074"],"question":"Outcome probability versus combined reinforcement probability/value and observational acquisition route. Do not turn narrower specification into a cause of itself.","classification":"NARROWER/BROADER","ownerFamilyId":"PSY-F01","consultation":{"PSY-F01":"CANDIDATE_REVIEW_COMPLETE","PSY-F08":"NOT_YET_PROCESSED"},"status":"RESEARCH_NEEDED","humanDecision":"PENDING — APPROVE / MODIFY / REJECT"},
-  {"id":"CF-PSY-LAYER-0005","kind":"CROSS_LAYER_CANDIDATE_OWNERSHIP","familyIds":["INF-F07","PSY-F01","PSY-F07"],"recordIds":["REL-CAND-PSY-LAYER-0001","EA-CAND-PSY-LAYER-0001"],"question":"Repeated-exposure scientific proposition is owned by source Family INF-F07; Psychological audit does not transfer ownership. Candidate relationship and effect share one exposure contribution.","classification":"DISTINCT","ownerFamilyId":"INF-F07","consultation":{"PSY-F01":"CANDIDATE_REVIEW_COMPLETE","PSY-F07":"NOT_YET_PROCESSED","INF-F07":"EXTERNAL_ENDPOINT_REVIEW_ONLY_NO_FULL_FAMILY_AUDIT"},"status":"REVIEW_READY","humanDecision":"PENDING — APPROVE / MODIFY / REJECT"},
-  {"id":"CF-PSY-LAYER-0006","kind":"SOURCE_ALIGNMENT","familyIds":["PSY-F01","PSY-F06","PSY-F13","PSY-F14"],"recordIds":["SRC117","SRC166","SRC162","SRC-433"],"question":"SRC166 stored DOI conflicts with intended-title PubMed record; SRC117 locator unresolved; SRC162 scale-validation cannot establish cited causal effects; SRC-433 exact title/PMID identifies existing review but stored lead-author attribution differs from publisher. No canonical correction authorized.","classification":"BLOCKED_NEEDS_GOVERNANCE_INPUT","ownerFamilyId":"PSY-F01","consultation":{"PSY-F01":"CANDIDATE_REVIEW_COMPLETE"},"status":"RESEARCH_NEEDED","humanDecision":"PENDING — APPROVE / MODIFY / REJECT"}
+  {
+    "id": "CF-PSY-LAYER-0001",
+    "kind": "RETYPE_REVIEW",
+    "familyIds": [
+      "PSY-F01",
+      "PSY-F04"
+    ],
+    "recordIds": [
+      "REL-PSY-002",
+      "REL-PSY-001"
+    ],
+    "question": "Does attitude strength modify valence-to-intention rather than add a universally positive causal contribution?",
+    "classification": "RELATED",
+    "ownerFamilyId": "PSY-F01",
+    "consultation": {
+      "PSY-F01": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F04": "NOT_YET_PROCESSED"
+    },
+    "status": "RESEARCH_NEEDED",
+    "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+  },
+  {
+    "id": "CF-PSY-LAYER-0002",
+    "kind": "CONSTRUCT_BOUNDARY",
+    "familyIds": [
+      "PSY-F01",
+      "PSY-F02"
+    ],
+    "recordIds": [
+      "PSY-006",
+      "PSY-011",
+      "PSY-012"
+    ],
+    "question": "Success expectancy, action capability and perceived behavioral control overlap under aligned task criteria but differ with external opportunity and motivation.",
+    "classification": "MEASUREMENT_OVERLAP",
+    "ownerFamilyId": "PSY-F01",
+    "consultation": {
+      "PSY-F01": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F02": "CANDIDATE_REVIEW_COMPLETE"
+    },
+    "status": "RESEARCH_NEEDED",
+    "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+  },
+  {
+    "id": "CF-PSY-LAYER-0003",
+    "kind": "CONSTRUCT_BOUNDARY",
+    "familyIds": [
+      "PSY-F01",
+      "PSY-F13"
+    ],
+    "recordIds": [
+      "PSY-003",
+      "PSY-116"
+    ],
+    "question": "Confidence in the same specified belief may instantiate both canonical definitions. Do not count two causal contributions or merge them automatically.",
+    "classification": "POSSIBLE_DUPLICATE",
+    "ownerFamilyId": "PSY-F01",
+    "consultation": {
+      "PSY-F01": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F13": "NOT_YET_PROCESSED"
+    },
+    "status": "BLOCKED_NEEDS_GOVERNANCE_INPUT",
+    "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+  },
+  {
+    "id": "CF-PSY-LAYER-0004",
+    "kind": "CONSTRUCT_BOUNDARY",
+    "familyIds": [
+      "PSY-F01",
+      "PSY-F08"
+    ],
+    "recordIds": [
+      "PSY-004",
+      "PSY-073",
+      "PSY-074"
+    ],
+    "question": "Outcome probability versus combined reinforcement probability/value and observational acquisition route. Do not turn narrower specification into a cause of itself.",
+    "classification": "NARROWER/BROADER",
+    "ownerFamilyId": "PSY-F01",
+    "consultation": {
+      "PSY-F01": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F08": "NOT_YET_PROCESSED"
+    },
+    "status": "RESEARCH_NEEDED",
+    "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+  },
+  {
+    "id": "CF-PSY-LAYER-0005",
+    "kind": "CROSS_LAYER_CANDIDATE_OWNERSHIP",
+    "familyIds": [
+      "INF-F07",
+      "PSY-F01",
+      "PSY-F07"
+    ],
+    "recordIds": [
+      "REL-CAND-PSY-LAYER-0001",
+      "EA-CAND-PSY-LAYER-0001"
+    ],
+    "question": "Repeated-exposure scientific proposition is owned by source Family INF-F07; Psychological audit does not transfer ownership. Candidate relationship and effect share one exposure contribution.",
+    "classification": "DISTINCT",
+    "ownerFamilyId": "INF-F07",
+    "consultation": {
+      "PSY-F01": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F07": "NOT_YET_PROCESSED",
+      "INF-F07": "EXTERNAL_ENDPOINT_REVIEW_ONLY_NO_FULL_FAMILY_AUDIT"
+    },
+    "status": "REVIEW_READY",
+    "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+  },
+  {
+    "id": "CF-PSY-LAYER-0006",
+    "kind": "SOURCE_ALIGNMENT",
+    "familyIds": [
+      "PSY-F01",
+      "PSY-F06",
+      "PSY-F13",
+      "PSY-F14"
+    ],
+    "recordIds": [
+      "SRC117",
+      "SRC166",
+      "SRC162",
+      "SRC-433"
+    ],
+    "question": "SRC166 stored DOI conflicts with intended-title PubMed record; SRC117 locator unresolved; SRC162 scale-validation cannot establish cited causal effects; SRC-433 exact title/PMID identifies existing review but stored lead-author attribution differs from publisher. No canonical correction authorized.",
+    "classification": "BLOCKED_NEEDS_GOVERNANCE_INPUT",
+    "ownerFamilyId": "PSY-F01",
+    "consultation": {
+      "PSY-F01": "CANDIDATE_REVIEW_COMPLETE"
+    },
+    "status": "RESEARCH_NEEDED",
+    "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+  },
+  {
+    "id": "CF-PSY-LAYER-0007",
+    "kind": "CONSTRUCT_BOUNDARY",
+    "familyIds": [
+      "PSY-F02"
+    ],
+    "recordIds": [
+      "PSY-013",
+      "PSY-014",
+      "PSY-015",
+      "EA-CAND-PSY-LAYER-0004"
+    ],
+    "question": "Task influence, coping capability and expected futility differ; shared/inverse items cannot yield independent causal propagation.",
+    "classification": "MEASUREMENT_OVERLAP",
+    "ownerFamilyId": "PSY-F02",
+    "consultation": {
+      "PSY-F02": "CANDIDATE_REVIEW_COMPLETE"
+    },
+    "status": "RESEARCH_NEEDED",
+    "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+  },
+  {
+    "id": "CF-PSY-LAYER-0008",
+    "kind": "CONSTRUCT_BOUNDARY",
+    "familyIds": [
+      "PSY-F02",
+      "PSY-F13",
+      "PSY-F14"
+    ],
+    "recordIds": [
+      "PSY-132",
+      "PSY-116",
+      "PSY-131"
+    ],
+    "question": "Momentary uncertainty, confidence and stable intolerance differ; specify reference object and indicator before adding semantic or causal claims.",
+    "classification": "MEASUREMENT_OVERLAP",
+    "ownerFamilyId": "PSY-F02",
+    "consultation": {
+      "PSY-F02": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F13": "NOT_YET_PROCESSED",
+      "PSY-F14": "NOT_YET_PROCESSED"
+    },
+    "status": "RESEARCH_NEEDED",
+    "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+  },
+  {
+    "id": "CF-PSY-LAYER-0009",
+    "kind": "SOURCE_ALIGNMENT",
+    "familyIds": [
+      "PSY-F02",
+      "PSY-F05",
+      "INF-F10",
+      "INF-F13",
+      "TEC-F06",
+      "TEC-F12",
+      "ENV-F12"
+    ],
+    "recordIds": [
+      "SRC124",
+      "SRC122",
+      "SRC-496",
+      "SRC-510",
+      "SRC-512",
+      "SRC-513",
+      "SRC-508"
+    ],
+    "question": "Rogers DOI conflict; duplicate COM-B paper; official framework/policy sources and broad climate chapter do not directly identify exact appraisal effects. Existing science unchanged.",
+    "classification": "BLOCKED_NEEDS_GOVERNANCE_INPUT",
+    "ownerFamilyId": "PSY-F02",
+    "consultation": {
+      "PSY-F02": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F05": "NOT_YET_PROCESSED",
+      "INF-F10": "EXTERNAL_ENDPOINT_REVIEW_ONLY_NO_FULL_FAMILY_AUDIT",
+      "INF-F13": "EXTERNAL_ENDPOINT_REVIEW_ONLY_NO_FULL_FAMILY_AUDIT",
+      "TEC-F06": "EXTERNAL_ENDPOINT_REVIEW_ONLY_NO_FULL_FAMILY_AUDIT",
+      "TEC-F12": "EXTERNAL_ENDPOINT_REVIEW_ONLY_NO_FULL_FAMILY_AUDIT",
+      "ENV-F12": "EXTERNAL_ENDPOINT_REVIEW_ONLY_NO_FULL_FAMILY_AUDIT"
+    },
+    "status": "RESEARCH_NEEDED",
+    "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+  },
+  {
+    "id": "CF-PSY-LAYER-0010",
+    "kind": "CONSTRUCT_BOUNDARY",
+    "familyIds": [
+      "PSY-F02",
+      "PSY-F03"
+    ],
+    "recordIds": [
+      "PSY-019",
+      "PSY-014",
+      "REL-PSY-016"
+    ],
+    "question": "Support availability and support-seeking coping confidence may share scale content; no direction from common-method association.",
+    "classification": "MEASUREMENT_OVERLAP",
+    "ownerFamilyId": "PSY-F02",
+    "consultation": {
+      "PSY-F02": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F03": "NOT_YET_PROCESSED"
+    },
+    "status": "RESEARCH_NEEDED",
+    "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+  },
+  {
+    "id": "CF-PSY-LAYER-0011",
+    "kind": "RESEARCH_SCOPE",
+    "familyIds": [
+      "PSY-F02",
+      "PSY-F04",
+      "PSY-F05"
+    ],
+    "recordIds": [
+      "REL-PSY-008",
+      "REL-PSY-009",
+      "REL-PSY-010"
+    ],
+    "question": "Threat/efficacy message manipulations, subjective appraisals, emotional fear and intention/behavior are different estimands; factorial and broader syntheses cannot be pooled as independent evidence.",
+    "classification": "DISTINCT",
+    "ownerFamilyId": "PSY-F02",
+    "consultation": {
+      "PSY-F02": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F04": "NOT_YET_PROCESSED",
+      "PSY-F05": "NOT_YET_PROCESSED"
+    },
+    "status": "RESEARCH_NEEDED",
+    "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+  }
 ]
