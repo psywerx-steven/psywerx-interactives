@@ -509,7 +509,7 @@
     "consultation": {
       "PSY-F04": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F03": "CANDIDATE_REVIEW_COMPLETE",
-      "PSY-F11": "NOT_YET_PROCESSED",
+      "PSY-F11": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F12": "NOT_YET_PROCESSED"
     },
     "status": "RESEARCH_NEEDED",
@@ -602,7 +602,7 @@
       "PSY-F05": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F06": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F09": "CANDIDATE_REVIEW_COMPLETE",
-      "PSY-F11": "NOT_YET_PROCESSED",
+      "PSY-F11": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F12": "NOT_YET_PROCESSED",
       "PSY-F14": "NOT_YET_PROCESSED"
     },
@@ -1111,6 +1111,100 @@
       "PSY-F10": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F01": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F02": "CANDIDATE_REVIEW_COMPLETE"
+    },
+    "status": "RESEARCH_NEEDED",
+    "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+  },
+  {
+    "id": "CF-PSY-LAYER-0043",
+    "kind": "CONSTRUCT_BOUNDARY",
+    "familyIds": [
+      "PSY-F11"
+    ],
+    "recordIds": [
+      "PSY-094",
+      "PSY-095",
+      "PSY-096",
+      "PSY-097",
+      "PSY-098",
+      "REL-PSY-065"
+    ],
+    "question": "Identity content, temporary salience, enduring centrality, multidimensional identification and fusion differ; profile→centrality may duplicate its component.",
+    "classification": "MEASUREMENT_OVERLAP",
+    "ownerFamilyId": "PSY-F11",
+    "consultation": {
+      "PSY-F11": "CANDIDATE_REVIEW_COMPLETE"
+    },
+    "status": "RESEARCH_NEEDED",
+    "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+  },
+  {
+    "id": "CF-PSY-LAYER-0044",
+    "kind": "CONSTRUCT_BOUNDARY",
+    "familyIds": [
+      "PSY-F11",
+      "PSY-F05",
+      "PSY-F13"
+    ],
+    "recordIds": [
+      "PSY-100",
+      "PSY-101",
+      "PSY-102",
+      "PSY-043",
+      "PSY-115",
+      "REL-PSY-045"
+    ],
+    "question": "Global self-integrity threat, identity-specific threat, anger, experienced dissonance and counterargument production are not interchangeable proxy outcomes.",
+    "classification": "DISTINCT",
+    "ownerFamilyId": "PSY-F11",
+    "consultation": {
+      "PSY-F11": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F05": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F13": "NOT_YET_PROCESSED"
+    },
+    "status": "RESEARCH_NEEDED",
+    "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+  },
+  {
+    "id": "CF-PSY-LAYER-0045",
+    "kind": "CONSTRUCT_BOUNDARY",
+    "familyIds": [
+      "PSY-F11",
+      "PSY-F12"
+    ],
+    "recordIds": [
+      "PSY-103",
+      "PSY-096"
+    ],
+    "question": "Moral internalization may be narrower than identity centrality; symbolization, judgment and behavior are separate. Exact semantic scope unresolved.",
+    "classification": "NARROWER/BROADER",
+    "ownerFamilyId": "PSY-F11",
+    "consultation": {
+      "PSY-F11": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F12": "NOT_YET_PROCESSED"
+    },
+    "status": "RESEARCH_NEEDED",
+    "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+  },
+  {
+    "id": "CF-PSY-LAYER-0046",
+    "kind": "CONSTRUCT_BOUNDARY",
+    "familyIds": [
+      "PSY-F11",
+      "PSY-F14"
+    ],
+    "recordIds": [
+      "PSY-094",
+      "PSY-098",
+      "PSY-099",
+      "PSY-103"
+    ],
+    "question": "Temporary cue/questionnaire shifts do not establish enduring identity/clarity/disposition change; cross-sectional waves and item overlap require caution.",
+    "classification": "RELATED",
+    "ownerFamilyId": "PSY-F11",
+    "consultation": {
+      "PSY-F11": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F14": "NOT_YET_PROCESSED"
     },
     "status": "RESEARCH_NEEDED",
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"

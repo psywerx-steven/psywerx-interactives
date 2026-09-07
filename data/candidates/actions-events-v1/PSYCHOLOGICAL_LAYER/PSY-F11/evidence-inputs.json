@@ -1,0 +1,347 @@
+{
+  "familyId": "PSY-F11",
+  "happeningTypes": [
+    {
+      "id": "HT-CAND-PSY-LAYER-0019",
+      "name": "Reflect and write about a personally important value",
+      "identityKey": "reflect-write-personally-important-value",
+      "description": "Invite a consenting participant to select and explain a personally important value in a specified writing task. Not generic praise, group superiority, efficacy, trait change or practitioner permission.",
+      "domain": "DELIBERATE_INTERVENTION",
+      "origins": [
+        "PSY",
+        "INF"
+      ],
+      "actor": "Specified researcher/consenting participant",
+      "sources": [
+        "SRC-CAND-PSY-LAYER-0119",
+        "SRC-CAND-PSY-LAYER-0128"
+      ],
+      "constraints": "Voluntary participation, privacy of value disclosures, distress safeguards, accessibility and context-specific ethical assessment; no automatic clinical use."
+    },
+    {
+      "id": "HT-CAND-PSY-LAYER-0020",
+      "name": "Voluntarily write a specified counterattitudinal statement under a declared choice protocol",
+      "identityKey": "voluntary-counterattitudinal-statement-declared-choice-protocol",
+      "description": "Ask a consenting participant to write a statement inconsistent with a previously specified attitude under declared choice conditions. Operation does not guarantee discomfort, attitude change or real-world persuasion.",
+      "domain": "DELIBERATE_INTERVENTION",
+      "origins": [
+        "PSY",
+        "INF"
+      ],
+      "actor": "Specified researcher/consenting participant",
+      "sources": [
+        "SRC-CAND-PSY-LAYER-0129"
+      ],
+      "constraints": "Consent, freedom to decline, debriefing, no coercion or harmful dissemination; manipulation/compliance and private versus public delivery must be explicit."
+    },
+    {
+      "id": "HT-CAND-PSY-LAYER-0021",
+      "name": "Recall and describe an experienced shared crisis within a specified research task",
+      "identityKey": "recall-describe-experienced-shared-crisis-research-task",
+      "description": "Invite a consenting participant to recall and describe a specified previously experienced collective crisis. This does not create a crisis, induce trauma deliberately, guarantee fusion or imply recommendation.",
+      "domain": "DELIBERATE_INTERVENTION",
+      "origins": [
+        "PSY",
+        "INF",
+        "SOC"
+      ],
+      "actor": "Specified researcher/consenting participant",
+      "sources": [
+        "SRC-CAND-PSY-LAYER-0124"
+      ],
+      "constraints": "Trauma-sensitive consent, option to decline, distress support, privacy and contextual ethics review. No practitioner recommendation or manipulation of real group loyalty."
+    }
+  ],
+  "assertions": [
+    {
+      "type": "EFFECT_ASSERTION",
+      "id": "EA-CAND-PSY-LAYER-0020",
+      "typeId": "HT-CAND-PSY-LAYER-0019",
+      "target": "PSY-100",
+      "property": "LEVEL",
+      "change": "UNKNOWN",
+      "knowledgeStatus": "INSUFFICIENT_EVIDENCE",
+      "status": "RESEARCH_NEEDED",
+      "disposition": "INSUFFICIENT",
+      "strength": "LIMITED",
+      "confidence": "LOW",
+      "scope": "Important personal-value reflection in studied individual writing protocols; not group praise or pride-recall equivalence.",
+      "measurement": "Self-compassion, health-message acceptance and wellbeing outcomes do not directly identify global self-integrity threat.",
+      "timing": "Immediate task evidence; enduring change and recovery not established.",
+      "mechanism": "Potential broadening of valued self-resources; downstream acceptance does not identify causal threat reduction.",
+      "risk": "Convenience samples, bundled manipulation, demand/measurement effects, privacy and distress; no recommendation or model eligibility.",
+      "rationale": "Benefits on other outcomes and heterogeneous synthesis do not directly establish exact threat change; different affirmation operations must not be pooled as one efficacy estimate.",
+      "findingKeys": [
+        "AFF_REVIEW",
+        "AFF_PROXY",
+        "AFF_PRIDE_NULL",
+        "AFF_GROUP_MIXED"
+      ],
+      "sharedContributionId": "CONTRIB-PSY-LAYER-0020",
+      "incompleteFields": [
+        "direction",
+        "measurement",
+        "context"
+      ]
+    },
+    {
+      "type": "EFFECT_ASSERTION",
+      "id": "EA-CAND-PSY-LAYER-0021",
+      "typeId": "HT-CAND-PSY-LAYER-0020",
+      "target": "PSY-102",
+      "property": "LEVEL",
+      "change": "UNKNOWN",
+      "knowledgeStatus": "INSUFFICIENT_EVIDENCE",
+      "status": "RESEARCH_NEEDED",
+      "disposition": "INSUFFICIENT",
+      "strength": "LIMITED",
+      "confidence": "LOW",
+      "scope": "Private counterattitudinal writing under high/free choice versus low/instructed choice in two laboratory experiments without aversive consequences.",
+      "measurement": "Reported negative discomfort is closer to experienced dissonance than preference spreading, but exact measure/protocol and independent replication require extraction.",
+      "timing": "Immediate task evidence; enduring change and recovery not established.",
+      "mechanism": "Perceived inconsistency/choice responsibility may produce discomfort; no universal discomfort from logical inconsistency.",
+      "risk": "Convenience samples, bundled manipulation, demand/measurement effects, privacy and distress; no recommendation or model eligibility.",
+      "rationale": "Bounded experimentally elicited discomfort is plausible, but abstract/selected passage access and exact measurement/replication limits keep claim research-needed; preference-spreading artifact does not invalidate all discomfort experiments.",
+      "findingKeys": [
+        "DISS_DISCOMFORT",
+        "DISS_ARTIFACT"
+      ],
+      "sharedContributionId": "CONTRIB-PSY-LAYER-0021",
+      "incompleteFields": [
+        "direction",
+        "measurement",
+        "context"
+      ]
+    },
+    {
+      "type": "EFFECT_ASSERTION",
+      "id": "EA-CAND-PSY-LAYER-0022",
+      "typeId": "HT-CAND-PSY-LAYER-0021",
+      "target": "PSY-098",
+      "property": "LEVEL",
+      "change": "UNKNOWN",
+      "knowledgeStatus": "INSUFFICIENT_EVIDENCE",
+      "status": "RESEARCH_NEEDED",
+      "disposition": "INSUFFICIENT",
+      "strength": "LIMITED",
+      "confidence": "LOW",
+      "scope": "Recall of toughest COVID months versus last journey to work/school among Spanish undergraduates; immediate country-fusion questionnaire only.",
+      "measurement": "Seven-item country-fusion score immediately after recall does not establish enduring visceral oneness at canonical weeks/months-years scale.",
+      "timing": "Immediate task evidence; enduring change and recovery not established.",
+      "mechanism": "Shared-experience recall might temporarily change reported oneness; mechanism and persistence not identified.",
+      "risk": "Convenience samples, bundled manipulation, demand/measurement effects, privacy and distress; no recommendation or model eligibility.",
+      "rationale": "Published result summaries contain an unresolved F/statistic versus means/SD consistency issue. Preserve reported qualitative result, no quantitative estimate adopted; time-scale mismatch independently prevents readiness.",
+      "findingKeys": [
+        "FUSION_RECALL",
+        "FUSION_TIME",
+        "FUSION_MODEL"
+      ],
+      "sharedContributionId": "CONTRIB-PSY-LAYER-0022",
+      "incompleteFields": [
+        "direction",
+        "measurement",
+        "context"
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "key": "AFF_REVIEW",
+      "sourceId": "SRC-CAND-PSY-LAYER-0127",
+      "basis": "EVIDENCE_SYNTHESIS",
+      "accessDepth": "ABSTRACT",
+      "design": "Meta-analysis",
+      "sample": "67 articles,129 tests",
+      "population": "Nonclinical study samples; study-specific contexts",
+      "context": "Nonclinical study samples; study-specific contexts",
+      "exposure": "Self-affirmation interventions",
+      "comparator": "Study-specific controls",
+      "measurement": "Self-perception, wellbeing, social and psychological-barrier outcomes",
+      "timing": "Study-specific",
+      "result": "Small average benefits across four outcome classes; interventions/outcomes heterogeneous.",
+      "disposition": "MIXED",
+      "locator": "Abstract; https://pubmed.ncbi.nlm.nih.gov/41143765/",
+      "limitations": "OUTSIDE exact global-threat direct measurement; review/primary overlaps not independent replication; no protocol-wide efficacy.",
+      "dataset": "DATA-AFFIRMATION-REVIEW-2025",
+      "supportedSemantics": [
+        "CAUSAL"
+      ]
+    },
+    {
+      "key": "AFF_PROXY",
+      "sourceId": "SRC-CAND-PSY-LAYER-0128",
+      "basis": "EXPERIMENTAL",
+      "accessDepth": "ABSTRACT",
+      "design": "Controlled writing experiment",
+      "sample": "Exact N not extracted",
+      "population": "Study participants in brief writing experiments",
+      "context": "Study participants in brief writing experiments",
+      "exposure": "Three-minute important-value writing",
+      "comparator": "Unimportant-value writing",
+      "measurement": "Self-compassion; downstream prosocial behavior",
+      "timing": "Immediately after task",
+      "result": "Important-value writing increased self-compassion; ancillary outcome/mechanism contrasts reported.",
+      "disposition": "SUPPORTS",
+      "locator": "Abstract; https://pubmed.ncbi.nlm.nih.gov/24860534/",
+      "limitations": "OUTSIDE direct PSY-100 threat target; self-compassion is not global threat, no independently identified mediation or enduring change.",
+      "dataset": "DATA-LINDSAY-2014",
+      "supportedSemantics": [
+        "CAUSAL"
+      ]
+    },
+    {
+      "key": "AFF_PRIDE_NULL",
+      "sourceId": "SRC-CAND-PSY-LAYER-0122",
+      "basis": "EXPERIMENTAL",
+      "accessDepth": "SELECTED_FULL_TEXT",
+      "design": "Randomized field experiment",
+      "sample": "592 randomized/563 final per abstract; discussion says591, discrepancy retained",
+      "population": "Female sex workers in Senegal",
+      "context": "Female sex workers in Senegal",
+      "exposure": "Recall a personally proud occasion",
+      "comparator": "Control task with factorial efficacy-information condition",
+      "measurement": "Acceptance of risk information, condom taking and HIV testing",
+      "timing": "Task and offered behavior",
+      "result": "No detected effects on the listed outcomes, including with efficacy information.",
+      "disposition": "NULL_FINDING",
+      "locator": "Methods/Results/Discussion; https://pmc.ncbi.nlm.nih.gov/articles/PMC10516782/",
+      "limitations": "OUTSIDE exact values-writing identity and global-threat measure. Nondetection is not equivalence; population/culture and operation distinctions retained.",
+      "dataset": "DATA-HAIRE-2023",
+      "supportedSemantics": [
+        "CAUSAL"
+      ]
+    },
+    {
+      "key": "AFF_GROUP_MIXED",
+      "sourceId": "SRC-CAND-PSY-LAYER-0134",
+      "basis": "EVIDENCE_SYNTHESIS",
+      "accessDepth": "ABSTRACT",
+      "design": "Meta-analysis of group-affirmation experiments",
+      "sample": "92 experiments",
+      "population": "Study-specific group identities/populations",
+      "context": "Study-specific group identities/populations",
+      "exposure": "Group-value affirmation or positive-group-characteristic tasks",
+      "comparator": "Study-specific controls",
+      "measurement": "Defensive processing/ingroup bias and other group responses",
+      "timing": "Study-specific",
+      "result": "Near-zero heterogeneous aggregate; group values and positive characteristics show different outcome patterns.",
+      "disposition": "MIXED",
+      "locator": "Abstract; https://doi.org/10.1177/13684302241276070",
+      "limitations": "OUTSIDE individual personal-value identity. No equivalence from average nondetection; group and individual operations not interchangeable.",
+      "dataset": "DATA-GROUP-AFFIRMATION-REVIEW-2025",
+      "supportedSemantics": [
+        "CAUSAL"
+      ]
+    },
+    {
+      "key": "DISS_DISCOMFORT",
+      "sourceId": "SRC-CAND-PSY-LAYER-0129",
+      "basis": "EXPERIMENTAL",
+      "accessDepth": "SELECTED_FULL_TEXT",
+      "design": "Two controlled laboratory experiments",
+      "sample": "E1 initial23 including noncompliance analysis; E2 exact N not extracted",
+      "population": "Laboratory participants; population transfer unresolved",
+      "context": "Laboratory participants; population transfer unresolved",
+      "exposure": "High/free-choice private counterattitudinal statement without aversive consequences",
+      "comparator": "Low/instructed-choice statement",
+      "measurement": "Negative affect/discomfort; later attitude report",
+      "timing": "After writing; E2 later attitude measure",
+      "result": "High-choice condition reported more negative discomfort; E2 discomfort reduced after attitude change.",
+      "disposition": "SUPPORTS",
+      "locator": "Publisher abstract and footnotes; https://doi.org/10.1177/01461672002612004",
+      "limitations": "Selected passages not complete methods. Exact items, full protocol/compliance and replication needed; temporal association of relief and attitude change does not establish a pathway.",
+      "dataset": "DATA-HARMONJONES-2000",
+      "supportedSemantics": [
+        "CAUSAL"
+      ]
+    },
+    {
+      "key": "DISS_ARTIFACT",
+      "sourceId": "SRC-CAND-PSY-LAYER-0121",
+      "basis": "THEORETICAL_MECHANISTIC",
+      "accessDepth": "ABSTRACT",
+      "design": "Mathematical identification analysis with experimental control",
+      "sample": "Study-specific experimental N not extracted",
+      "population": "Free-choice rating-choice-rating paradigm",
+      "context": "Free-choice rating-choice-rating paradigm",
+      "exposure": "Choice under noisy preference measurement",
+      "comparator": "Controls for choice-selection artifact",
+      "measurement": "Apparent preference spreading",
+      "timing": "Rating-choice-rating sequence",
+      "result": "Apparent spreading can arise without actual attitude change under specified measurement/selection conditions.",
+      "disposition": "INSUFFICIENT",
+      "locator": "Abstract; https://pubmed.ncbi.nlm.nih.gov/20658837/",
+      "limitations": "OUTSIDE direct experienced-discomfort target and counterattitudinal-writing identity. Mathematical result is not empirical proof all dissonance is absent; empirical component not independent theorem replication.",
+      "dataset": "DATA-CHEN-RISEN-2010",
+      "supportedSemantics": [
+        "ASSOCIATION"
+      ]
+    },
+    {
+      "key": "FUSION_RECALL",
+      "sourceId": "SRC-CAND-PSY-LAYER-0124",
+      "basis": "EXPERIMENTAL",
+      "accessDepth": "SELECTED_FULL_TEXT",
+      "design": "Randomized online recall experiment, study2",
+      "sample": "423 Spanish undergraduates;216 recall/207 comparison",
+      "population": "Spanish undergraduates, mean37.79years,66.9%women",
+      "context": "Spanish undergraduates, mean37.79years,66.9%women",
+      "exposure": "Recall toughest COVID months and describe feelings",
+      "comparator": "Recall last trip to work/school",
+      "measurement": "Seven-item country identity-fusion score,0–6",
+      "timing": "Immediately after recall",
+      "result": "Article reports higher fusion after crisis recall; F/statistic versus means/SD summaries are internally inconsistent.",
+      "disposition": "SUPPORTS",
+      "locator": "Study2 Methods/Results; https://pmc.ncbi.nlm.nih.gov/articles/PMC12703063/",
+      "limitations": "No quantitative estimate adopted pending source reconciliation; immediate score not enduring canonical change. Posthoc interpersonal versus intrapersonal coding not randomized mediator.",
+      "dataset": "DATA-BAUTISTA-2026-STUDY2",
+      "supportedSemantics": [
+        "CAUSAL"
+      ]
+    },
+    {
+      "key": "FUSION_TIME",
+      "sourceId": "SRC-CAND-PSY-LAYER-0124",
+      "basis": "OBSERVATIONAL_CROSS_SECTIONAL",
+      "accessDepth": "SELECTED_FULL_TEXT",
+      "design": "Repeated cross-sectional surveys, studies1/3",
+      "sample": "Spain2017–22 waves; Ukraine479/574/426 samples",
+      "population": "Different sampled respondents across time in Spain/Ukraine",
+      "context": "Different sampled respondents across time in Spain/Ukraine",
+      "exposure": "Crisis timing/ongoing war",
+      "comparator": "Earlier/later cross-sectional waves",
+      "measurement": "Country/democracy fusion questionnaires",
+      "timing": "Before/early/protracted crisis",
+      "result": "Initial group-level elevations later subsided; surveys do not follow the same persons.",
+      "disposition": "MIXED",
+      "locator": "Studies1/3 Results; https://pmc.ncbi.nlm.nih.gov/articles/PMC12703063/",
+      "limitations": "OUTSIDE randomized recall identity; between-wave composition/confounds cannot identify within-person enduring effects.",
+      "dataset": "DATA-BAUTISTA-2026-STUDIES1-3",
+      "supportedSemantics": [
+        "ASSOCIATION"
+      ]
+    },
+    {
+      "key": "FUSION_MODEL",
+      "sourceId": "SRC-CAND-PSY-LAYER-0123",
+      "basis": "THEORETICAL_MECHANISTIC",
+      "accessDepth": "ABSTRACT",
+      "design": "Mathematical evolutionary model with separate empirical studies",
+      "sample": "Model plus multiple specialized empirical samples",
+      "population": "Distinct study populations, not one common experiment",
+      "context": "Distinct study populations, not one common experiment",
+      "exposure": "Shared experience/kinship mechanisms in theory and varied tasks",
+      "comparator": "Model assumptions and study-specific comparisons",
+      "measurement": "Fusion, kinship and sacrifice-related outcomes",
+      "timing": "Model/varied empirical time frames",
+      "result": "Model and empirical results motivate shared-experience/fusion hypotheses; they do not establish one enduring crisis-recall causal effect.",
+      "disposition": "INSUFFICIENT",
+      "locator": "Abstract; https://pubmed.ncbi.nlm.nih.gov/28290499/",
+      "limitations": "Model component explicitly not empirical observation. Other-person/shared-event and group-fusion constructs differ; no reachability-to-mediation inference or independent review/study replication.",
+      "dataset": "DATA-WHITEHOUSE-2017-MODEL-AND-STUDIES",
+      "supportedSemantics": [
+        "ASSOCIATION"
+      ]
+    }
+  ]
+}
