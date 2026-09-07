@@ -127,7 +127,8 @@
     "classification": "BLOCKED_NEEDS_GOVERNANCE_INPUT",
     "ownerFamilyId": "PSY-F01",
     "consultation": {
-      "PSY-F01": "CANDIDATE_REVIEW_COMPLETE"
+      "PSY-F01": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F06": "CANDIDATE_REVIEW_COMPLETE"
     },
     "status": "RESEARCH_NEEDED",
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
@@ -537,7 +538,7 @@
     "ownerFamilyId": "PSY-F05",
     "consultation": {
       "PSY-F05": "CANDIDATE_REVIEW_COMPLETE",
-      "PSY-F06": "NOT_YET_PROCESSED",
+      "PSY-F06": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F09": "NOT_YET_PROCESSED",
       "PSY-F14": "NOT_YET_PROCESSED"
     },
@@ -599,7 +600,7 @@
     "ownerFamilyId": "PSY-F05",
     "consultation": {
       "PSY-F05": "CANDIDATE_REVIEW_COMPLETE",
-      "PSY-F06": "NOT_YET_PROCESSED",
+      "PSY-F06": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F09": "NOT_YET_PROCESSED",
       "PSY-F11": "NOT_YET_PROCESSED",
       "PSY-F12": "NOT_YET_PROCESSED",
@@ -637,6 +638,111 @@
       "SOC-F04": "ENDPOINT_ONLY_REVIEW_NO_EXTERNAL_FAMILY_AUDIT",
       "SOC-F11": "ENDPOINT_ONLY_REVIEW_NO_EXTERNAL_FAMILY_AUDIT",
       "CUL-F10": "ENDPOINT_ONLY_REVIEW_NO_EXTERNAL_FAMILY_AUDIT"
+    },
+    "status": "RESEARCH_NEEDED",
+    "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+  },
+  {
+    "id": "CF-PSY-LAYER-0025",
+    "kind": "CONSTRUCT_BOUNDARY",
+    "familyIds": [
+      "PSY-F06",
+      "PSY-F09",
+      "PSY-F14"
+    ],
+    "recordIds": [
+      "PSY-057",
+      "PSY-058",
+      "PSY-062",
+      "PSY-080",
+      "PSY-129",
+      "REL-PSY-028",
+      "REL-PSY-030",
+      "REL-PSY-039"
+    ],
+    "question": "Distinguish occupied/available resources, task performance, transferable capacity and stable disposition; complementary resource descriptions cannot double propagate. Preserve classifications and CONSTRAINS/POSITIVE pending review.",
+    "classification": "MEASUREMENT_OVERLAP",
+    "ownerFamilyId": "PSY-F06",
+    "consultation": {
+      "PSY-F06": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F09": "NOT_YET_PROCESSED",
+      "PSY-F14": "NOT_YET_PROCESSED"
+    },
+    "status": "RESEARCH_NEEDED",
+    "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+  },
+  {
+    "id": "CF-PSY-LAYER-0026",
+    "kind": "CONSTRUCT_BOUNDARY",
+    "familyIds": [
+      "PSY-F06",
+      "PSY-F07",
+      "PSY-F13"
+    ],
+    "recordIds": [
+      "PSY-061",
+      "PSY-067",
+      "PSY-116",
+      "REL-PSY-031",
+      "REL-PSY-032"
+    ],
+    "question": "Experienced ease, familiarity and confidence are separate; attribution changes interpretation and correctness is not confidence. Source171/125 mismatch is not independent replication.",
+    "classification": "DISTINCT",
+    "ownerFamilyId": "PSY-F06",
+    "consultation": {
+      "PSY-F06": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F07": "NOT_YET_PROCESSED",
+      "PSY-F13": "NOT_YET_PROCESSED"
+    },
+    "status": "RESEARCH_NEEDED",
+    "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+  },
+  {
+    "id": "CF-PSY-LAYER-0027",
+    "kind": "REPRESENTATION_REVIEW",
+    "familyIds": [
+      "PSY-F06",
+      "PSY-F10"
+    ],
+    "recordIds": [
+      "PSY-060",
+      "PSY-086",
+      "H-PSY-F06-17"
+    ],
+    "question": "Nominal ConstrualFrame cannot have generic ordinal LEVEL increase. Exact adopted-state categories/measurement must be established before a scoped transition proposal; OTHER_SPECIFIED exists but does not itself verify nominal ordering.",
+    "classification": "DISTINCT",
+    "ownerFamilyId": "PSY-F06",
+    "consultation": {
+      "PSY-F06": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F10": "NOT_YET_PROCESSED"
+    },
+    "status": "RESEARCH_NEEDED",
+    "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+  },
+  {
+    "id": "CF-PSY-LAYER-0028",
+    "kind": "PRIOR_REVIEW_AND_SOURCE_ALIGNMENT",
+    "familyIds": [
+      "PSY-F06",
+      "BIO-F01",
+      "INF-F03"
+    ],
+    "recordIds": [
+      "REL-BIO-021",
+      "REL-INF-041",
+      "SRC171",
+      "SRC125",
+      "SRC183",
+      "SRC-405",
+      "SRC340"
+    ],
+    "question": "Reuse protected BIO-F01 B04 and INF-F03 revision-proposal pointers, not parallel revisions. Keep canonical source identity/overlap issues visible; no prior-pilot repair.",
+    "classification": "RELATED",
+    "ownerFamilyId": "PSY-F06",
+    "consultation": {
+      "PSY-F06": "CANDIDATE_REVIEW_COMPLETE",
+      "BIO-F01": "EXISTING_PILOT_REVIEW_REFERENCED_NO_MODIFICATION",
+      "INF-F03": "EXISTING_PILOT_REVIEW_REFERENCED_NO_MODIFICATION"
     },
     "status": "RESEARCH_NEEDED",
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"

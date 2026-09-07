@@ -174,7 +174,7 @@ def build(family):
             "rationale": review["rationale"], "status": "RESEARCH_NEEDED" if review["proposal"] or review["evidence"] == "INSUFFICIENT" else "REVIEW_READY"})
     for question in research["hypotheses"]:
         w["passA"]["gapQuestions"].append({"id": question["id"], "questionOrDisposition": question["question"],
-            "ownerFamilyId": family, "consultedFamilyIds": [], "recordIds": [i for i in (question["source"],question["target"]) if i],
+            "ownerFamilyId": family, "consultedFamilyIds": [], "recordIds": list(dict.fromkeys(i for i in (question["source"],question["target"]) if i)),
             "rationale": question["reason"], "status": question["status"]})
     w["readiness"] = dict.fromkeys(w["readiness"], True)
     ae.validate_workspace(w, c)
