@@ -14,6 +14,7 @@ import json
 import re
 import shutil
 import sys
+from datetime import date
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -31,6 +32,7 @@ EXPECTED_FEED = [
 ]
 STATUS_LABELS = {"live": "Live", "progress": "Work in progress", "soon": "Coming soon"}
 STATIC_ASSETS = ["brain-mark.webp", "brand-banner.webp", "favicon.png", "home.css", "home.js", "wordmark.webp"]
+MONTHS = ("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
 ICONS = {
     "nodes": '<circle cx="12" cy="12" r="3"/><circle cx="5" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><path d="m7 7 3 3m4 4 3 3M17 7l-3 3m-4 4-3 3"/>',
     "change": '<path d="M4 8h13l-3-3m3 3-3 3M20 16H7l3-3m-3 3 3 3"/><circle cx="4" cy="8" r="1"/><circle cx="20" cy="16" r="1"/>',
@@ -47,6 +49,19 @@ def icon(name: str) -> str:
 
 def esc(value) -> str:
     return html.escape(str(value), quote=True)
+
+
+def display_date(value: str | None) -> str:
+    if value is None:
+        return "date unavailable"
+    parsed = date.fromisoformat(value)
+    return f"{MONTHS[parsed.month - 1]} {parsed.day}, {parsed.year}"
+
+
+def feed_date_meta(item: dict) -> str:
+    published = f'Published {display_date(item["sourcePublishedAt"])}'
+    added = f'Added {display_date(item["dateAdded"])}'
+    return f'<div class="feed-meta"><span>{esc(published)}</span><span>{esc(added)}</span></div>'
 
 
 def read_json(path: Path):
@@ -158,7 +173,7 @@ def build(mode="preview", tool_links="preview", root=ROOT, output=None):
     )
     feed_html = [
         f'<article class="feed-item" data-categories="{esc(" ".join(item["categories"]))}" data-feed-id="{esc(item["itemId"])}">'
-        f'<h3>{esc(item["streamTitle"])}</h3><p>{esc(item["streamSummary"])}</p><div class="feed-source">'
+        f'{feed_date_meta(item)}<h3>{esc(item["streamTitle"])}</h3><p>{esc(item["streamSummary"])}</p><div class="feed-source">'
         f'<a href="{esc(item["sourceUrl"])}" target="_blank" rel="noopener noreferrer">{esc(item["attribution"])}</a>'
         f'<span class="arrow" aria-hidden="true">↗</span></div></article>'
         for item in selected
