@@ -449,13 +449,30 @@
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT",
     "id": "REL-CUL-047",
     "ownerFamilyId": "CUL-F10",
-    "primaryDisposition": null,
+    "primaryDisposition": "REVISION_CANDIDATE",
     "processingFamilyId": "PSY-F05",
     "psychologicalFamilyIds": [
       "PSY-F05"
     ],
-    "review": null,
-    "reviewStatus": "NOT_STARTED",
+    "review": {
+      "causalGate": "STANDARD_CAUSAL",
+      "confidence": "LOW",
+      "disposition": "REVISION_CANDIDATE",
+      "evidence": "INSUFFICIENT",
+      "executionReview": "Legacy proposition unchanged and V1 incomplete; no weights, onset/lag magnitudes, mediator or universal transfer inferred.",
+      "id": "REL-CUL-047",
+      "nullContrary": "Variation in culturally meaningful exposure, role, audience and self-evaluation; shame/embarrassment overlap and Western sampling limit transfer.",
+      "proposal": "Keep context-dependent semantics but require a specified norm, relevant exposure/role violation, independent shame measure and temporal design; no generic tightness→shame substitution.",
+      "rationale": "Shame-regulation norms are distinct from national cultural tightness and an individual's shame report; country correlations do not identify within-person shame causation.",
+      "rdsReview": "Both endpoints are Drivers; no local RDS/derivation entitlement, direct RDS effect or duplicate aggregate propagation.",
+      "sources": [
+        "SRC-498",
+        "SRC178",
+        "SRC-CAND-PSY-LAYER-0052"
+      ],
+      "strength": "LIMITED"
+    },
+    "reviewStatus": "REVIEWED_CANDIDATE_RECOMMENDATION",
     "scienceOrigin": "PRODUCTION_BASELINE",
     "scope": "CROSS_LAYER_INCOMING",
     "sourceBucket": "relationships"
@@ -4624,14 +4641,30 @@
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT",
     "id": "REL-PSY-025",
     "ownerFamilyId": "PSY-F05",
-    "primaryDisposition": null,
+    "primaryDisposition": "REVISION_CANDIDATE",
     "processingFamilyId": "PSY-F05",
     "psychologicalFamilyIds": [
       "PSY-F05",
       "PSY-F06"
     ],
-    "review": null,
-    "reviewStatus": "NOT_STARTED",
+    "review": {
+      "causalGate": "STANDARD_CAUSAL",
+      "confidence": "MODERATE",
+      "disposition": "REVISION_CANDIDATE",
+      "evidence": "MIXED",
+      "executionReview": "Legacy proposition unchanged and V1 incomplete; no weights, onset/lag magnitudes, mediator or universal transfer inferred.",
+      "id": "REL-PSY-025",
+      "nullContrary": "Moran177 samples includes mixed findings; compensatory effort may preserve effectiveness even when efficiency changes.",
+      "proposal": "Bound anxiety type, task/load, compensatory effort and timing; distinguish self-reported anxiety associations from induced-state contrasts and exact PSY-058 alignment.",
+      "rationale": "Anxiety is associated with poorer working-memory task performance and experimentally induced anxiety can impair tasks; task capacity/performance are not the entire available-resource construct.",
+      "rdsReview": "Both endpoints are Drivers; no local RDS/derivation entitlement, direct RDS effect or duplicate aggregate propagation.",
+      "sources": [
+        "SRC147",
+        "SRC148"
+      ],
+      "strength": "MODERATE"
+    },
+    "reviewStatus": "REVIEWED_CANDIDATE_RECOMMENDATION",
     "scienceOrigin": "PRODUCTION_BASELINE",
     "scope": "PSYCHOLOGICAL_CROSS_FAMILY",
     "sourceBucket": "relationships"
@@ -4700,14 +4733,31 @@
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT",
     "id": "REL-PSY-026",
     "ownerFamilyId": "PSY-F05",
-    "primaryDisposition": null,
+    "primaryDisposition": "RETAIN_V1_INCOMPLETE",
     "processingFamilyId": "PSY-F05",
     "psychologicalFamilyIds": [
       "PSY-F05",
       "PSY-F10"
     ],
-    "review": null,
-    "reviewStatus": "NOT_STARTED",
+    "review": {
+      "causalGate": "STANDARD_CAUSAL",
+      "confidence": "MODERATE",
+      "disposition": "RETAIN_V1_INCOMPLETE",
+      "evidence": "MIXED",
+      "executionReview": "Legacy proposition unchanged and V1 incomplete; no weights, onset/lag magnitudes, mediator or universal transfer inferred.",
+      "id": "REL-PSY-026",
+      "nullContrary": "Chinese sample induced state findings differ from nondetected dispositional emotion associations; domain/frame and certainty/control matter.",
+      "proposal": null,
+      "rationale": "Keep existing fear→risk preference interpretation with its appraisal/domain qualifications; state-induction studies support direction in particular choices, not universal risk aversion.",
+      "rdsReview": "Both endpoints are Drivers; no local RDS/derivation entitlement, direct RDS effect or duplicate aggregate propagation.",
+      "sources": [
+        "SRC176",
+        "SRC115",
+        "SRC-CAND-PSY-LAYER-0058"
+      ],
+      "strength": "MODERATE"
+    },
+    "reviewStatus": "REVIEWED_CANDIDATE_RECOMMENDATION",
     "scienceOrigin": "PRODUCTION_BASELINE",
     "scope": "PSYCHOLOGICAL_CROSS_FAMILY",
     "sourceBucket": "relationships"
@@ -4776,14 +4826,31 @@
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT",
     "id": "REL-PSY-027",
     "ownerFamilyId": "PSY-F05",
-    "primaryDisposition": null,
+    "primaryDisposition": "RETAIN_V1_INCOMPLETE",
     "processingFamilyId": "PSY-F05",
     "psychologicalFamilyIds": [
       "PSY-F05",
       "PSY-F10"
     ],
-    "review": null,
-    "reviewStatus": "NOT_STARTED",
+    "review": {
+      "causalGate": "STANDARD_CAUSAL",
+      "confidence": "MODERATE",
+      "disposition": "RETAIN_V1_INCOMPLETE",
+      "evidence": "MIXED",
+      "executionReview": "Legacy proposition unchanged and V1 incomplete; no weights, onset/lag magnitudes, mediator or universal transfer inferred.",
+      "id": "REL-PSY-027",
+      "nullContrary": "Same state/trait split and context limits as paired fear edge; no automatic reciprocal causal chain or independent mediated contribution.",
+      "proposal": null,
+      "rationale": "Keep existing anger→risk preference interpretation with its qualifications; particular induced-state choices support it, not every risky behavior.",
+      "rdsReview": "Both endpoints are Drivers; no local RDS/derivation entitlement, direct RDS effect or duplicate aggregate propagation.",
+      "sources": [
+        "SRC176",
+        "SRC115",
+        "SRC-CAND-PSY-LAYER-0058"
+      ],
+      "strength": "MODERATE"
+    },
+    "reviewStatus": "REVIEWED_CANDIDATE_RECOMMENDATION",
     "scienceOrigin": "PRODUCTION_BASELINE",
     "scope": "PSYCHOLOGICAL_CROSS_FAMILY",
     "sourceBucket": "relationships"
@@ -5604,14 +5671,32 @@
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT",
     "id": "REL-PSY-038",
     "ownerFamilyId": "PSY-F09",
-    "primaryDisposition": null,
+    "primaryDisposition": "REVISION_CANDIDATE",
     "processingFamilyId": "PSY-F05",
     "psychologicalFamilyIds": [
       "PSY-F05",
       "PSY-F09"
     ],
-    "review": null,
-    "reviewStatus": "NOT_STARTED",
+    "review": {
+      "causalGate": "STANDARD_CAUSAL",
+      "confidence": "LOW",
+      "disposition": "REVISION_CANDIDATE",
+      "evidence": "INSUFFICIENT",
+      "executionReview": "Legacy proposition unchanged and V1 incomplete; no weights, onset/lag magnitudes, mediator or universal transfer inferred.",
+      "id": "REL-PSY-038",
+      "nullContrary": "Suppression can reduce expression without reducing experienced negative emotion; a composite reappraisal result does not establish anger-specific or capacity effect.",
+      "proposal": "Specify capacity assessment separate from chosen strategy, deployment opportunity, goal and experienced-versus-expressed anger; identify causal design and timing.",
+      "rationale": "Emotion-regulation capacity is not habitual strategy use or instructed reappraisal. Cited dispositional psychopathology synthesis and ERQ validation do not isolate available capacity→anger.",
+      "rdsReview": "Both endpoints are Drivers; no local RDS/derivation entitlement, direct RDS effect or duplicate aggregate propagation.",
+      "sources": [
+        "SRC121",
+        "SRC143",
+        "SRC144",
+        "SRC-CAND-PSY-LAYER-0048"
+      ],
+      "strength": "LIMITED"
+    },
+    "reviewStatus": "REVIEWED_CANDIDATE_RECOMMENDATION",
     "scienceOrigin": "PRODUCTION_BASELINE",
     "scope": "PSYCHOLOGICAL_CROSS_FAMILY",
     "sourceBucket": "relationships"
@@ -5921,14 +6006,31 @@
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT",
     "id": "REL-PSY-042",
     "ownerFamilyId": "PSY-F14",
-    "primaryDisposition": null,
+    "primaryDisposition": "RESEARCH_NEEDED",
     "processingFamilyId": "PSY-F05",
     "psychologicalFamilyIds": [
       "PSY-F05",
       "PSY-F14"
     ],
-    "review": null,
-    "reviewStatus": "NOT_STARTED",
+    "review": {
+      "causalGate": "STANDARD_CAUSAL",
+      "confidence": "LOW",
+      "disposition": "RESEARCH_NEEDED",
+      "evidence": "INSUFFICIENT",
+      "executionReview": "Legacy proposition unchanged and V1 incomplete; no weights, onset/lag magnitudes, mediator or universal transfer inferred.",
+      "id": "REL-PSY-042",
+      "nullContrary": "Scale validation and transdiagnostic review do not independently manipulate stable sensitivity or establish every episode's response.",
+      "proposal": null,
+      "rationale": "Punishment-sensitivity trait may influence state anxiety, but BIS/avoidance item overlap and trait-state measurement need independent evidence.",
+      "rdsReview": "Both endpoints are Drivers; no local RDS/derivation entitlement, direct RDS effect or duplicate aggregate propagation.",
+      "sources": [
+        "SRC163",
+        "SRC123",
+        "SRC207"
+      ],
+      "strength": "LIMITED"
+    },
+    "reviewStatus": "REVIEWED_CANDIDATE_RECOMMENDATION",
     "scienceOrigin": "PRODUCTION_BASELINE",
     "scope": "PSYCHOLOGICAL_CROSS_FAMILY",
     "sourceBucket": "relationships"
@@ -5996,14 +6098,30 @@
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT",
     "id": "REL-PSY-043",
     "ownerFamilyId": "PSY-F14",
-    "primaryDisposition": null,
+    "primaryDisposition": "REVISION_CANDIDATE",
     "processingFamilyId": "PSY-F05",
     "psychologicalFamilyIds": [
       "PSY-F05",
       "PSY-F14"
     ],
-    "review": null,
-    "reviewStatus": "NOT_STARTED",
+    "review": {
+      "causalGate": "STANDARD_CAUSAL",
+      "confidence": "LOW",
+      "disposition": "REVISION_CANDIDATE",
+      "evidence": "INSUFFICIENT",
+      "executionReview": "Legacy proposition unchanged and V1 incomplete; no weights, onset/lag magnitudes, mediator or universal transfer inferred.",
+      "id": "REL-PSY-043",
+      "nullContrary": "Between-person diagnosis associations cannot establish within-person causal changes or independent contributions of aggregated negative-affect items.",
+      "proposal": "Measure trait separately before later PSS-aligned appraisal, preserve within/between-person distinction and item/content overlap; no diagnosis-to-stress proxy conversion.",
+      "rationale": "Neuroticism is canonically a tendency toward negative affect/stress sensitivity; correlations with stress can partly share content. Kotov examines diagnoses, not exact current appraisal.",
+      "rdsReview": "Both endpoints are Drivers; no local RDS/derivation entitlement, direct RDS effect or duplicate aggregate propagation.",
+      "sources": [
+        "SRC204",
+        "SRC146"
+      ],
+      "strength": "LIMITED"
+    },
+    "reviewStatus": "REVIEWED_CANDIDATE_RECOMMENDATION",
     "scienceOrigin": "PRODUCTION_BASELINE",
     "scope": "PSYCHOLOGICAL_CROSS_FAMILY",
     "sourceBucket": "relationships"
@@ -6223,14 +6341,31 @@
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT",
     "id": "REL-PSY-046",
     "ownerFamilyId": "PSY-F11",
-    "primaryDisposition": null,
+    "primaryDisposition": "REVISION_CANDIDATE",
     "processingFamilyId": "PSY-F05",
     "psychologicalFamilyIds": [
       "PSY-F05",
       "PSY-F11"
     ],
-    "review": null,
-    "reviewStatus": "NOT_STARTED",
+    "review": {
+      "causalGate": "STANDARD_CAUSAL",
+      "confidence": "LOW",
+      "disposition": "REVISION_CANDIDATE",
+      "evidence": "INSUFFICIENT",
+      "executionReview": "Legacy proposition unchanged and V1 incomplete; no weights, onset/lag magnitudes, mediator or universal transfer inferred.",
+      "id": "REL-PSY-046",
+      "nullContrary": "Anger, fear or withdrawal can follow depending on appraisal/efficacy/context; SRC160/SRC-501 same umbrella source.",
+      "proposal": "Specify threatened identity, devaluation/constraint manipulation and later experienced anger independently of collective-action/identity indicators; no universal direction or mediation.",
+      "rationale": "Identity threat, identification, perceived injustice and anger are distinct. Collective-action meta-analyses do not isolate this exact threat→anger proposition.",
+      "rdsReview": "Both endpoints are Drivers; no local RDS/derivation entitlement, direct RDS effect or duplicate aggregate propagation.",
+      "sources": [
+        "SRC160",
+        "SRC-501",
+        "SRC161"
+      ],
+      "strength": "LIMITED"
+    },
+    "reviewStatus": "REVIEWED_CANDIDATE_RECOMMENDATION",
     "scienceOrigin": "PRODUCTION_BASELINE",
     "scope": "PSYCHOLOGICAL_CROSS_FAMILY",
     "sourceBucket": "relationships"
@@ -7046,14 +7181,30 @@
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT",
     "id": "REL-PSY-056",
     "ownerFamilyId": "PSY-F14",
-    "primaryDisposition": null,
+    "primaryDisposition": "RESEARCH_NEEDED",
     "processingFamilyId": "PSY-F05",
     "psychologicalFamilyIds": [
       "PSY-F05",
       "PSY-F14"
     ],
-    "review": null,
-    "reviewStatus": "NOT_STARTED",
+    "review": {
+      "causalGate": "STANDARD_CAUSAL",
+      "confidence": "LOW",
+      "disposition": "RESEARCH_NEEDED",
+      "evidence": "INSUFFICIENT",
+      "executionReview": "Legacy proposition unchanged and V1 incomplete; no weights, onset/lag magnitudes, mediator or universal transfer inferred.",
+      "id": "REL-PSY-056",
+      "nullContrary": "2026 review notes definition/measurement debate; IUS-12 validation has anxious/avoidance factors, not independently identified trait→state effect. Stored DOI unresolved; intended paper separately verified.",
+      "proposal": null,
+      "rationale": "Intolerance of uncertainty predicts anxiety/worry in literature but trait and anxious-response scales share definitions/items; exact temporal causal leverage remains unresolved.",
+      "rdsReview": "Both endpoints are Drivers; no local RDS/derivation entitlement, direct RDS effect or duplicate aggregate propagation.",
+      "sources": [
+        "SRC123",
+        "SRC207"
+      ],
+      "strength": "LIMITED"
+    },
+    "reviewStatus": "REVIEWED_CANDIDATE_RECOMMENDATION",
     "scienceOrigin": "PRODUCTION_BASELINE",
     "scope": "PSYCHOLOGICAL_CROSS_FAMILY",
     "sourceBucket": "relationships"
@@ -7214,13 +7365,30 @@
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT",
     "id": "REL-PSY-058",
     "ownerFamilyId": "PSY-F05",
-    "primaryDisposition": null,
+    "primaryDisposition": "RESEARCH_NEEDED",
     "processingFamilyId": "PSY-F05",
     "psychologicalFamilyIds": [
       "PSY-F05"
     ],
-    "review": null,
-    "reviewStatus": "NOT_STARTED",
+    "review": {
+      "causalGate": "STANDARD_CAUSAL",
+      "confidence": "LOW",
+      "disposition": "RESEARCH_NEEDED",
+      "evidence": "INSUFFICIENT",
+      "executionReview": "Legacy proposition unchanged and V1 incomplete; no weights, onset/lag magnitudes, mediator or universal transfer inferred.",
+      "id": "REL-PSY-058",
+      "nullContrary": "Cash-transfer stress and average cortisol diverge; cortisol level is not recovery slope. PRC membership does not prove mediation or temporally aligned recovery.",
+      "proposal": null,
+      "rationale": "Perceived stress is appraisal, while BIO-009 is post-stressor recovery rate. RDoC framework citations are not evidence for this exact causal segment.",
+      "rdsReview": "Both endpoints are Drivers; no local RDS/derivation entitlement, direct RDS effect or duplicate aggregate propagation.",
+      "sources": [
+        "SRC-494",
+        "SRC-499",
+        "SRC-CAND-PSY-LAYER-0055"
+      ],
+      "strength": "LIMITED"
+    },
+    "reviewStatus": "REVIEWED_CANDIDATE_RECOMMENDATION",
     "scienceOrigin": "PRODUCTION_BASELINE",
     "scope": "CROSS_LAYER_OUTGOING",
     "sourceBucket": "relationships"
@@ -7289,14 +7457,32 @@
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT",
     "id": "REL-PSY-059",
     "ownerFamilyId": "PSY-F06",
-    "primaryDisposition": null,
+    "primaryDisposition": "RESEARCH_NEEDED",
     "processingFamilyId": "PSY-F05",
     "psychologicalFamilyIds": [
       "PSY-F05",
       "PSY-F06"
     ],
-    "review": null,
-    "reviewStatus": "NOT_STARTED",
+    "review": {
+      "causalGate": "STANDARD_CAUSAL",
+      "confidence": "LOW",
+      "disposition": "RESEARCH_NEEDED",
+      "evidence": "INSUFFICIENT",
+      "executionReview": "Legacy proposition unchanged and V1 incomplete; no weights, onset/lag magnitudes, mediator or universal transfer inferred.",
+      "id": "REL-PSY-059",
+      "nullContrary": "Challenge appraisal/compensation may alter response; shared workload/stress self-report and concurrent measurement confound direction.",
+      "proposal": null,
+      "rationale": "Cognitive load, task difficulty, distress and resource-exceeding appraisal are distinct. Framework citations do not isolate load→perceived stress.",
+      "rdsReview": "Both endpoints are Drivers; no local RDS/derivation entitlement, direct RDS effect or duplicate aggregate propagation.",
+      "sources": [
+        "SRC-494",
+        "SRC-499",
+        "SRC146",
+        "SRC-CAND-PSY-LAYER-0057"
+      ],
+      "strength": "LIMITED"
+    },
+    "reviewStatus": "REVIEWED_CANDIDATE_RECOMMENDATION",
     "scienceOrigin": "PRODUCTION_BASELINE",
     "scope": "PSYCHOLOGICAL_CROSS_FAMILY",
     "sourceBucket": "relationships"
@@ -7706,14 +7892,32 @@
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT",
     "id": "REL-PSY-064",
     "ownerFamilyId": "PSY-F12",
-    "primaryDisposition": null,
+    "primaryDisposition": "RESEARCH_NEEDED",
     "processingFamilyId": "PSY-F05",
     "psychologicalFamilyIds": [
       "PSY-F05",
       "PSY-F12"
     ],
-    "review": null,
-    "reviewStatus": "NOT_STARTED",
+    "review": {
+      "causalGate": "STANDARD_CAUSAL",
+      "confidence": "LOW",
+      "disposition": "RESEARCH_NEEDED",
+      "evidence": "INSUFFICIENT",
+      "executionReview": "Legacy proposition unchanged and V1 incomplete; no weights, onset/lag magnitudes, mediator or universal transfer inferred.",
+      "id": "REL-PSY-064",
+      "nullContrary": "Incidental disgust→moral judgment is reverse/different proposition and bias-sensitive; no reverse inference or semantic collapse.",
+      "proposal": null,
+      "rationale": "Moral conviction is not a moral transgression or generic disgust word. Tightness and dehumanization source assignments do not substantiate exact conviction→disgust.",
+      "rdsReview": "Both endpoints are Drivers; no local RDS/derivation entitlement, direct RDS effect or duplicate aggregate propagation.",
+      "sources": [
+        "SRC-498",
+        "SRC-506",
+        "SRC177",
+        "SRC-CAND-PSY-LAYER-0049"
+      ],
+      "strength": "LIMITED"
+    },
+    "reviewStatus": "REVIEWED_CANDIDATE_RECOMMENDATION",
     "scienceOrigin": "PRODUCTION_BASELINE",
     "scope": "PSYCHOLOGICAL_CROSS_FAMILY",
     "sourceBucket": "relationships"
@@ -8121,13 +8325,31 @@
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT",
     "id": "REL-SOC-063",
     "ownerFamilyId": "SOC-F04",
-    "primaryDisposition": null,
+    "primaryDisposition": "RESEARCH_NEEDED",
     "processingFamilyId": "PSY-F05",
     "psychologicalFamilyIds": [
       "PSY-F05"
     ],
-    "review": null,
-    "reviewStatus": "NOT_STARTED",
+    "review": {
+      "causalGate": "STANDARD_CAUSAL",
+      "confidence": "LOW",
+      "disposition": "RESEARCH_NEEDED",
+      "evidence": "INSUFFICIENT",
+      "executionReview": "Legacy proposition unchanged and V1 incomplete; no weights, onset/lag magnitudes, mediator or universal transfer inferred.",
+      "id": "REL-SOC-063",
+      "nullContrary": "Demand can elicit support (reverse direction), unwanted support can differ by recipient/context; heterogeneous support programs do not isolate received emotional support or exact appraisal.",
+      "proposal": null,
+      "rationale": "Received emotional support is actual care/reassurance, not perceived support availability. Existing framework citations do not identify its precise effect on appraisal.",
+      "rdsReview": "Both endpoints are Drivers; no local RDS/derivation entitlement, direct RDS effect or duplicate aggregate propagation.",
+      "sources": [
+        "SRC-494",
+        "SRC-499",
+        "SRC-CAND-PSY-LAYER-0026",
+        "SRC135"
+      ],
+      "strength": "LIMITED"
+    },
+    "reviewStatus": "REVIEWED_CANDIDATE_RECOMMENDATION",
     "scienceOrigin": "PRODUCTION_BASELINE",
     "scope": "CROSS_LAYER_INCOMING",
     "sourceBucket": "relationships"
@@ -8563,13 +8785,29 @@
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT",
     "id": "REL-SOC-068",
     "ownerFamilyId": "SOC-F11",
-    "primaryDisposition": null,
+    "primaryDisposition": "RESEARCH_NEEDED",
     "processingFamilyId": "PSY-F05",
     "psychologicalFamilyIds": [
       "PSY-F05"
     ],
-    "review": null,
-    "reviewStatus": "NOT_STARTED",
+    "review": {
+      "causalGate": "STANDARD_CAUSAL",
+      "confidence": "LOW",
+      "disposition": "RESEARCH_NEEDED",
+      "evidence": "INSUFFICIENT",
+      "executionReview": "Legacy proposition unchanged and V1 incomplete; no weights, onset/lag magnitudes, mediator or universal transfer inferred.",
+      "id": "REL-SOC-068",
+      "nullContrary": "Physiological response/performance changes are not PSY-051; observation, evaluation apprehension and coaction must be disentangled.",
+      "proposal": null,
+      "rationale": "Audience presence can change evaluation conditions, but SRC-509 diffusion/review components do not directly support conscious activation in a specified performance.",
+      "rdsReview": "Both endpoints are Drivers; no local RDS/derivation entitlement, direct RDS effect or duplicate aggregate propagation.",
+      "sources": [
+        "SRC-494",
+        "SRC-509"
+      ],
+      "strength": "LIMITED"
+    },
+    "reviewStatus": "REVIEWED_CANDIDATE_RECOMMENDATION",
     "scienceOrigin": "PRODUCTION_BASELINE",
     "scope": "CROSS_LAYER_INCOMING",
     "sourceBucket": "relationships"

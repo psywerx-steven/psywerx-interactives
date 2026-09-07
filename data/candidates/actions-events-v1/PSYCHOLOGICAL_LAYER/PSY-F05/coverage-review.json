@@ -1,0 +1,594 @@
+{
+  "familyId": "PSY-F05",
+  "reviewedAt": "2026-09-07",
+  "allCanonicalFieldsReviewed": true,
+  "entityFieldPolicy": "All14 frozen Driver records,28 RELATED_SEARCH aliases and empty crosswalk reviewed; preserve definitions, mechanisms, scale, polarity/direction, modifiability, volatility, lag/time/persistence, indicators, methods, observability, caveats, evidence and narrative fields. No blocked canonical local fields found or repaired. Measurement/proxy, state/trait and current-versus-recall-window issues recorded.",
+  "rdsReview": "No local RDS. All17 incident endpoints are Drivers, including external BIO-009, CUL-076, SOC-027 and SOC-082. PSY-078 remains a protected F09 RDS, not an effect target. No formula contribution or aggregate propagation introduced.",
+  "causalGateReview": "STANDARD_CAUSAL for all existing F05 incident edges. Existing PRC membership does not establish a pathway; received support, stress appraisal and physiological recovery remain independent constructs requiring identified aligned segments.",
+  "layersConsidered": {
+    "BIO": "Breathwork/sleep-loss and physiology versus subjective experience reviewed; no new BIO Family science or old-pilot revision.",
+    "PSY": "Induction, regulation, appraisals, traits and emotional responses reviewed; latent capacity and strategy, state and disposition kept separate.",
+    "SOC": "Support, audience and exclusion evidence reused; actual received care versus felt support and network exposure distinguished.",
+    "CUL": "Shame-regulation norms, cross-cultural risk findings and self-conscious-emotion review; country membership/tightness not an exact norm manipulation.",
+    "ENV": "Greening cluster trial and contextual stressors considered; long-window symptoms, multicomponent operation and momentary states not conflated.",
+    "INS": "Cash-transfer trial and institutional/context constraints examined; one policy operation not generic resource/security Driver or universal efficacy.",
+    "INF": "Film/message/reappraisal/feedback exposures reviewed; content and composite ratings not separate discrete-effect claims.",
+    "TEC": "Remote delivery, audiovisual stimuli and platform tasks reviewed; method/platform occurrence alone not consequence evidence."
+  },
+  "domainsConsidered": {
+    "DELIBERATE_INTERVENTION": "Breathing, film, reappraisal, compassion/hope strategies and cash/greening programs screened; two operation identities retained without efficacy.",
+    "ROUTINE_UNINTENDED_HUMAN_ACTIVITY": "Daily support, attention, goal obstruction and emotional responses considered; laboratory analogs do not establish uncontrolled-event consequences.",
+    "EXTERNAL_EVENT_SHOCK": "Pandemic/disruption and appraisal contexts considered; no universal exposure→emotion effect inferred from occurrence.",
+    "ENVIRONMENTAL_EXPOSURE": "Greening/nature, audiovisual surroundings and threats considered; study scope and exact content preserved.",
+    "INSTITUTIONAL_STRUCTURAL_CHANGE": "Transfer/land-remediation rules and social-evaluation norms examined; policy occurrence not psychological effect proof.",
+    "TECHNOLOGICAL_CHANGE": "Remote delivery, film presentation and task manipulation; platform operation does not create PSYWERX Relationships or directly target state substrate.",
+    "SOCIAL_NETWORK_EVENT_PROCESS": "Received support/exclusion/audience interactions considered; perception, network ties and source-role constructs separated.",
+    "INFORMATIONAL_EXPOSURE": "Fear/anger framing, film content, reappraisal and feedback considered; no aggregate-to-component inference.",
+    "BIOLOGICAL_PHYSIOLOGICAL_PROCESS": "Sleep and breath changes reviewed; no trait alteration or physiological-to-subjective measure equivalence."
+  },
+  "driverLedgers": [
+    {
+      "driverId": "PSY-041",
+      "status": "SEARCH_COMPLETE_BOUNDED",
+      "sources": [
+        "SRC115",
+        "SRC176",
+        "SRC147",
+        "SRC-CAND-PSY-LAYER-0046",
+        "SRC-CAND-PSY-LAYER-0047",
+        "SRC-CAND-PSY-LAYER-0048",
+        "SRC-CAND-PSY-LAYER-0058"
+      ],
+      "queries": [
+        "Q-PSY-F05-01",
+        "Q-PSY-F05-02",
+        "Q-PSY-F05-03",
+        "Q-PSY-F05-04",
+        "Q-PSY-F05-05"
+      ],
+      "noFinding": "Existing threat and risky-choice edges reused; composite reappraisal outcome does not establish a separate fear effect.",
+      "gaps": "Fear/scared ratings differ from avoidance, startle and threat-appraisal scales; separate film narrative from actual danger.",
+      "qualifiers": "Population/culture, intended versus observed effects, distribution, reach and timing limited to accessed evidence. Synergy/antagonism, functional shape, thresholds and causal interactions NOT_INVESTIGATED unless explicitly in a hypothesis; no benefit criterion or recommendation assigned. Nondetection not supported null.",
+      "originsWithRelevantLiterature": [
+        "PSY",
+        "INF",
+        "TEC"
+      ],
+      "domainsWithRelevantLiterature": [
+        "DELIBERATE_INTERVENTION",
+        "INFORMATIONAL_EXPOSURE"
+      ],
+      "candidateEffectIds": [],
+      "candidateIdentityIds": [],
+      "properties": {
+        "LEVEL": "INSUFFICIENT_EVIDENCE",
+        "TIMING": "INSUFFICIENT_EVIDENCE",
+        "PERSISTENCE": "INSUFFICIENT_EVIDENCE",
+        "STRUCTURE": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "driverId": "PSY-042",
+      "status": "SEARCH_COMPLETE_BOUNDED",
+      "sources": [
+        "SRC123",
+        "SRC147",
+        "SRC148",
+        "SRC207",
+        "SRC-CAND-PSY-LAYER-0042",
+        "SRC-CAND-PSY-LAYER-0043",
+        "SRC-CAND-PSY-LAYER-0053"
+      ],
+      "queries": [
+        "Q-PSY-F05-01",
+        "Q-PSY-F05-02",
+        "Q-PSY-F05-03",
+        "Q-PSY-F05-04",
+        "Q-PSY-F05-05"
+      ],
+      "noFinding": "Cyclic-sighing anxiety superiority not established; EA-0008 remains UNKNOWN/research-needed.",
+      "gaps": "STAI-state mixes calm/upset and tension; DASS anxiety emphasizes somatic symptoms, while task worry is narrower. Common-method overlap with trait scales remains.",
+      "qualifiers": "Population/culture, intended versus observed effects, distribution, reach and timing limited to accessed evidence. Synergy/antagonism, functional shape, thresholds and causal interactions NOT_INVESTIGATED unless explicitly in a hypothesis; no benefit criterion or recommendation assigned. Nondetection not supported null.",
+      "originsWithRelevantLiterature": [
+        "PSY",
+        "INF",
+        "TEC",
+        "BIO"
+      ],
+      "domainsWithRelevantLiterature": [
+        "DELIBERATE_INTERVENTION",
+        "INFORMATIONAL_EXPOSURE",
+        "BIOLOGICAL_PHYSIOLOGICAL_PROCESS"
+      ],
+      "candidateEffectIds": [
+        "EA-CAND-PSY-LAYER-0008"
+      ],
+      "candidateIdentityIds": [
+        "HT-CAND-PSY-LAYER-0007"
+      ],
+      "properties": {
+        "LEVEL": "INSUFFICIENT_EVIDENCE",
+        "TIMING": "INSUFFICIENT_EVIDENCE",
+        "PERSISTENCE": "INSUFFICIENT_EVIDENCE",
+        "STRUCTURE": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "driverId": "PSY-043",
+      "status": "SEARCH_COMPLETE_BOUNDED",
+      "sources": [
+        "SRC115",
+        "SRC121",
+        "SRC143",
+        "SRC144",
+        "SRC176",
+        "SRC-CAND-PSY-LAYER-0047",
+        "SRC-CAND-PSY-LAYER-0048",
+        "SRC-CAND-PSY-LAYER-0058"
+      ],
+      "queries": [
+        "Q-PSY-F05-01",
+        "Q-PSY-F05-02",
+        "Q-PSY-F05-03",
+        "Q-PSY-F05-04",
+        "Q-PSY-F05-05"
+      ],
+      "noFinding": "Films can co-induce fear; no pure-anger assumption or universal risk preference effect.",
+      "gaps": "Angry/irritated ratings can overlap frustration; hostile attribution and confrontational behavior are not independent measures of anger itself.",
+      "qualifiers": "Population/culture, intended versus observed effects, distribution, reach and timing limited to accessed evidence. Synergy/antagonism, functional shape, thresholds and causal interactions NOT_INVESTIGATED unless explicitly in a hypothesis; no benefit criterion or recommendation assigned. Nondetection not supported null.",
+      "originsWithRelevantLiterature": [
+        "PSY",
+        "INF",
+        "TEC"
+      ],
+      "domainsWithRelevantLiterature": [
+        "DELIBERATE_INTERVENTION",
+        "INFORMATIONAL_EXPOSURE"
+      ],
+      "candidateEffectIds": [],
+      "candidateIdentityIds": [],
+      "properties": {
+        "LEVEL": "INSUFFICIENT_EVIDENCE",
+        "TIMING": "INSUFFICIENT_EVIDENCE",
+        "PERSISTENCE": "INSUFFICIENT_EVIDENCE",
+        "STRUCTURE": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "driverId": "PSY-044",
+      "status": "SEARCH_COMPLETE_BOUNDED",
+      "sources": [
+        "SRC177",
+        "SRC-CAND-PSY-LAYER-0049",
+        "SRC-CAND-PSY-LAYER-0046",
+        "SRC-CAND-PSY-LAYER-0047"
+      ],
+      "queries": [
+        "Q-PSY-F05-01",
+        "Q-PSY-F05-03",
+        "Q-PSY-F05-04",
+        "Q-PSY-F05-05"
+      ],
+      "noFinding": "Moral-conviction→disgust sources misaligned; publication-bias-sensitive reverse-direction literature cannot validate it.",
+      "gaps": "Disgust adjective can express condemnation metaphorically; facial/nausea measures require alignment rather than semantic equivalence.",
+      "qualifiers": "Population/culture, intended versus observed effects, distribution, reach and timing limited to accessed evidence. Synergy/antagonism, functional shape, thresholds and causal interactions NOT_INVESTIGATED unless explicitly in a hypothesis; no benefit criterion or recommendation assigned. Nondetection not supported null.",
+      "originsWithRelevantLiterature": [
+        "PSY",
+        "INF",
+        "TEC"
+      ],
+      "domainsWithRelevantLiterature": [
+        "DELIBERATE_INTERVENTION",
+        "INFORMATIONAL_EXPOSURE"
+      ],
+      "candidateEffectIds": [],
+      "candidateIdentityIds": [],
+      "properties": {
+        "LEVEL": "INSUFFICIENT_EVIDENCE",
+        "TIMING": "INSUFFICIENT_EVIDENCE",
+        "PERSISTENCE": "INSUFFICIENT_EVIDENCE",
+        "STRUCTURE": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "driverId": "PSY-045",
+      "status": "SEARCH_COMPLETE_BOUNDED",
+      "sources": [
+        "SRC178",
+        "SRC-498",
+        "SRC-CAND-PSY-LAYER-0052"
+      ],
+      "queries": [
+        "Q-PSY-F05-01",
+        "Q-PSY-F05-03",
+        "Q-PSY-F05-04",
+        "Q-PSY-F05-05"
+      ],
+      "noFinding": "Source PMID mismatch flagged; cultural tightness not exact shame-regulation norm manipulation.",
+      "gaps": "Shame/embarrassment grouped item is not a pure shame measure; proneness, self-evaluation and cultural display norms differ.",
+      "qualifiers": "Population/culture, intended versus observed effects, distribution, reach and timing limited to accessed evidence. Synergy/antagonism, functional shape, thresholds and causal interactions NOT_INVESTIGATED unless explicitly in a hypothesis; no benefit criterion or recommendation assigned. Nondetection not supported null.",
+      "originsWithRelevantLiterature": [
+        "PSY",
+        "INF",
+        "TEC",
+        "CUL",
+        "SOC"
+      ],
+      "domainsWithRelevantLiterature": [
+        "DELIBERATE_INTERVENTION",
+        "INFORMATIONAL_EXPOSURE"
+      ],
+      "candidateEffectIds": [],
+      "candidateIdentityIds": [],
+      "properties": {
+        "LEVEL": "INSUFFICIENT_EVIDENCE",
+        "TIMING": "INSUFFICIENT_EVIDENCE",
+        "PERSISTENCE": "INSUFFICIENT_EVIDENCE",
+        "STRUCTURE": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "driverId": "PSY-046",
+      "status": "SEARCH_COMPLETE_BOUNDED",
+      "sources": [
+        "SRC178",
+        "SRC-CAND-PSY-LAYER-0046",
+        "SRC-CAND-PSY-LAYER-0052"
+      ],
+      "queries": [
+        "Q-PSY-F05-01",
+        "Q-PSY-F05-03",
+        "Q-PSY-F05-04",
+        "Q-PSY-F05-05"
+      ],
+      "noFinding": "General induction review insufficient for a precisely operationalized guilt action/effect or guilt→repair pathway.",
+      "gaps": "Guilt/remorse items, reparative intention and behavior are not identical; scenario manipulations can bundle harm, agency and norm cues.",
+      "qualifiers": "Population/culture, intended versus observed effects, distribution, reach and timing limited to accessed evidence. Synergy/antagonism, functional shape, thresholds and causal interactions NOT_INVESTIGATED unless explicitly in a hypothesis; no benefit criterion or recommendation assigned. Nondetection not supported null.",
+      "originsWithRelevantLiterature": [
+        "PSY",
+        "INF",
+        "TEC",
+        "CUL",
+        "SOC"
+      ],
+      "domainsWithRelevantLiterature": [
+        "DELIBERATE_INTERVENTION",
+        "INFORMATIONAL_EXPOSURE"
+      ],
+      "candidateEffectIds": [],
+      "candidateIdentityIds": [],
+      "properties": {
+        "LEVEL": "INSUFFICIENT_EVIDENCE",
+        "TIMING": "INSUFFICIENT_EVIDENCE",
+        "PERSISTENCE": "INSUFFICIENT_EVIDENCE",
+        "STRUCTURE": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "driverId": "PSY-047",
+      "status": "SEARCH_COMPLETE_BOUNDED",
+      "sources": [
+        "SRC-CAND-PSY-LAYER-0045",
+        "SRC-CAND-PSY-LAYER-0046",
+        "SRC-CAND-PSY-LAYER-0047",
+        "SRC-CAND-PSY-LAYER-0048",
+        "SRC-CAND-PSY-LAYER-0054"
+      ],
+      "queries": [
+        "Q-PSY-F05-01",
+        "Q-PSY-F05-02",
+        "Q-PSY-F05-03",
+        "Q-PSY-F05-04",
+        "Q-PSY-F05-05"
+      ],
+      "noFinding": "EA-0009 remains research-needed pending exact clip/comparator contrast; no arbitrary universal film effect.",
+      "gaps": "DES sad/downhearted/blue aligns better than K6 depression/worthlessness or broad negative-affect totals. Film study extracted contrasts compare emotion profiles, not an isolated sadness-versus-neutral estimand.",
+      "qualifiers": "Population/culture, intended versus observed effects, distribution, reach and timing limited to accessed evidence. Synergy/antagonism, functional shape, thresholds and causal interactions NOT_INVESTIGATED unless explicitly in a hypothesis; no benefit criterion or recommendation assigned. Nondetection not supported null.",
+      "originsWithRelevantLiterature": [
+        "PSY",
+        "INF",
+        "TEC",
+        "ENV",
+        "INS"
+      ],
+      "domainsWithRelevantLiterature": [
+        "DELIBERATE_INTERVENTION",
+        "INFORMATIONAL_EXPOSURE",
+        "ENVIRONMENTAL_EXPOSURE",
+        "INSTITUTIONAL_STRUCTURAL_CHANGE"
+      ],
+      "candidateEffectIds": [
+        "EA-CAND-PSY-LAYER-0009"
+      ],
+      "candidateIdentityIds": [
+        "HT-CAND-PSY-LAYER-0008"
+      ],
+      "properties": {
+        "LEVEL": "INSUFFICIENT_EVIDENCE",
+        "TIMING": "INSUFFICIENT_EVIDENCE",
+        "PERSISTENCE": "INSUFFICIENT_EVIDENCE",
+        "STRUCTURE": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "driverId": "PSY-048",
+      "status": "SEARCH_COMPLETE_BOUNDED",
+      "sources": [
+        "SRC179",
+        "SRC-CAND-PSY-LAYER-0048",
+        "SRC-CAND-PSY-LAYER-0056"
+      ],
+      "queries": [
+        "Q-PSY-F05-01",
+        "Q-PSY-F05-03",
+        "Q-PSY-F05-04",
+        "Q-PSY-F05-05"
+      ],
+      "noFinding": "Candidate hypothesis only: exact affective component and goal/time referent unresolved.",
+      "gaps": "Snyder-style agency/pathways scores and positive/hopeful compound items mix cognition/motivation with affect; no measure-as-construct equivalence.",
+      "qualifiers": "Population/culture, intended versus observed effects, distribution, reach and timing limited to accessed evidence. Synergy/antagonism, functional shape, thresholds and causal interactions NOT_INVESTIGATED unless explicitly in a hypothesis; no benefit criterion or recommendation assigned. Nondetection not supported null.",
+      "originsWithRelevantLiterature": [
+        "PSY",
+        "INF",
+        "TEC"
+      ],
+      "domainsWithRelevantLiterature": [
+        "DELIBERATE_INTERVENTION",
+        "INFORMATIONAL_EXPOSURE"
+      ],
+      "candidateEffectIds": [],
+      "candidateIdentityIds": [],
+      "properties": {
+        "LEVEL": "INSUFFICIENT_EVIDENCE",
+        "TIMING": "INSUFFICIENT_EVIDENCE",
+        "PERSISTENCE": "INSUFFICIENT_EVIDENCE",
+        "STRUCTURE": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "driverId": "PSY-049",
+      "status": "SEARCH_COMPLETE_BOUNDED",
+      "sources": [
+        "SRC180",
+        "SRC-CAND-PSY-LAYER-0052"
+      ],
+      "queries": [
+        "Q-PSY-F05-01",
+        "Q-PSY-F05-03",
+        "Q-PSY-F05-04",
+        "Q-PSY-F05-05"
+      ],
+      "noFinding": "Intended source identified at PMID17352606, stored17352607 is a different paper. Facet-wide effect not inferred.",
+      "gaps": "Separate seven-item facet scales, state versus dispositional prompts and social display; PANAS proud item cannot establish all dimensions.",
+      "qualifiers": "Population/culture, intended versus observed effects, distribution, reach and timing limited to accessed evidence. Synergy/antagonism, functional shape, thresholds and causal interactions NOT_INVESTIGATED unless explicitly in a hypothesis; no benefit criterion or recommendation assigned. Nondetection not supported null.",
+      "originsWithRelevantLiterature": [
+        "PSY",
+        "INF",
+        "TEC",
+        "CUL",
+        "SOC"
+      ],
+      "domainsWithRelevantLiterature": [
+        "DELIBERATE_INTERVENTION",
+        "INFORMATIONAL_EXPOSURE"
+      ],
+      "candidateEffectIds": [],
+      "candidateIdentityIds": [],
+      "properties": {
+        "LEVEL": "INSUFFICIENT_EVIDENCE",
+        "TIMING": "INSUFFICIENT_EVIDENCE",
+        "PERSISTENCE": "INSUFFICIENT_EVIDENCE",
+        "STRUCTURE": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "driverId": "PSY-050",
+      "status": "SEARCH_COMPLETE_BOUNDED",
+      "sources": [
+        "SRC142",
+        "SRC-CAND-PSY-LAYER-0042",
+        "SRC-CAND-PSY-LAYER-0045",
+        "SRC-CAND-PSY-LAYER-0047",
+        "SRC-CAND-PSY-LAYER-0048",
+        "SRC-CAND-PSY-LAYER-0053"
+      ],
+      "queries": [
+        "Q-PSY-F05-01",
+        "Q-PSY-F05-02",
+        "Q-PSY-F05-03",
+        "Q-PSY-F05-04",
+        "Q-PSY-F05-05"
+      ],
+      "noFinding": "No generic mood effect retained from PANAS, positive-composite reappraisal or cash-transfer happiness.",
+      "gaps": "PANAS positive affect includes activation/alertness, and negative affect is a separate scale. Their sum/difference is not automatically canonical valence; film study explicitly reports PA problems.",
+      "qualifiers": "Population/culture, intended versus observed effects, distribution, reach and timing limited to accessed evidence. Synergy/antagonism, functional shape, thresholds and causal interactions NOT_INVESTIGATED unless explicitly in a hypothesis; no benefit criterion or recommendation assigned. Nondetection not supported null.",
+      "originsWithRelevantLiterature": [
+        "PSY",
+        "INF",
+        "TEC",
+        "BIO"
+      ],
+      "domainsWithRelevantLiterature": [
+        "DELIBERATE_INTERVENTION",
+        "INFORMATIONAL_EXPOSURE",
+        "BIOLOGICAL_PHYSIOLOGICAL_PROCESS"
+      ],
+      "candidateEffectIds": [],
+      "candidateIdentityIds": [],
+      "properties": {
+        "LEVEL": "INSUFFICIENT_EVIDENCE",
+        "TIMING": "INSUFFICIENT_EVIDENCE",
+        "PERSISTENCE": "INSUFFICIENT_EVIDENCE",
+        "STRUCTURE": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "driverId": "PSY-051",
+      "status": "SEARCH_COMPLETE_BOUNDED",
+      "sources": [
+        "SRC-CAND-PSY-LAYER-0042",
+        "SRC-CAND-PSY-LAYER-0047",
+        "SRC-CAND-PSY-LAYER-0053",
+        "SRC-509"
+      ],
+      "queries": [
+        "Q-PSY-F05-01",
+        "Q-PSY-F05-02",
+        "Q-PSY-F05-03",
+        "Q-PSY-F05-04",
+        "Q-PSY-F05-05"
+      ],
+      "noFinding": "Audience effect source bundle not exact evidence; no respiration→subjective-arousal shortcut.",
+      "gaps": "Respiration, cortisol, heart rate, EMG and generic emotional intensity are not equivalent to subjective activation. Film 'no emotion–intense emotion' scale is an especially important proxy mismatch.",
+      "qualifiers": "Population/culture, intended versus observed effects, distribution, reach and timing limited to accessed evidence. Synergy/antagonism, functional shape, thresholds and causal interactions NOT_INVESTIGATED unless explicitly in a hypothesis; no benefit criterion or recommendation assigned. Nondetection not supported null.",
+      "originsWithRelevantLiterature": [
+        "PSY",
+        "INF",
+        "TEC",
+        "BIO"
+      ],
+      "domainsWithRelevantLiterature": [
+        "DELIBERATE_INTERVENTION",
+        "INFORMATIONAL_EXPOSURE",
+        "BIOLOGICAL_PHYSIOLOGICAL_PROCESS"
+      ],
+      "candidateEffectIds": [],
+      "candidateIdentityIds": [],
+      "properties": {
+        "LEVEL": "INSUFFICIENT_EVIDENCE",
+        "TIMING": "INSUFFICIENT_EVIDENCE",
+        "PERSISTENCE": "INSUFFICIENT_EVIDENCE",
+        "STRUCTURE": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "driverId": "PSY-052",
+      "status": "SEARCH_COMPLETE_BOUNDED",
+      "sources": [
+        "SRC181",
+        "SRC-CAND-PSY-LAYER-0057",
+        "SRC-CAND-PSY-LAYER-0041"
+      ],
+      "queries": [
+        "Q-PSY-F05-01",
+        "Q-PSY-F05-03",
+        "Q-PSY-F05-04",
+        "Q-PSY-F05-05"
+      ],
+      "noFinding": "Real blockage may elicit frustration, but exact manipulated Driver missing; task-world operation and perceived goal conflict/difficulty not conflated.",
+      "gaps": "Self-reported frustration differs from response force, speed, frowning and task performance; replication found divergent channels.",
+      "qualifiers": "Population/culture, intended versus observed effects, distribution, reach and timing limited to accessed evidence. Synergy/antagonism, functional shape, thresholds and causal interactions NOT_INVESTIGATED unless explicitly in a hypothesis; no benefit criterion or recommendation assigned. Nondetection not supported null.",
+      "originsWithRelevantLiterature": [
+        "PSY",
+        "INF",
+        "TEC"
+      ],
+      "domainsWithRelevantLiterature": [
+        "DELIBERATE_INTERVENTION",
+        "INFORMATIONAL_EXPOSURE"
+      ],
+      "candidateEffectIds": [],
+      "candidateIdentityIds": [],
+      "properties": {
+        "LEVEL": "INSUFFICIENT_EVIDENCE",
+        "TIMING": "INSUFFICIENT_EVIDENCE",
+        "PERSISTENCE": "INSUFFICIENT_EVIDENCE",
+        "STRUCTURE": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "driverId": "PSY-053",
+      "status": "SEARCH_COMPLETE_BOUNDED",
+      "sources": [
+        "SRC145",
+        "SRC182",
+        "SRC-CAND-PSY-LAYER-0050",
+        "SRC-CAND-PSY-LAYER-0051"
+      ],
+      "queries": [
+        "Q-PSY-F05-01",
+        "Q-PSY-F05-03",
+        "Q-PSY-F05-04",
+        "Q-PSY-F05-05"
+      ],
+      "noFinding": "Review active-control conclusions differ; exact target of compassion/measurement unsettled. No generic meditation→concern effect.",
+      "gaps": "IRI empathic-concern items, donation behavior, empathic accuracy and neural sharing are different. Compassion interventions may target self, others or both.",
+      "qualifiers": "Population/culture, intended versus observed effects, distribution, reach and timing limited to accessed evidence. Synergy/antagonism, functional shape, thresholds and causal interactions NOT_INVESTIGATED unless explicitly in a hypothesis; no benefit criterion or recommendation assigned. Nondetection not supported null.",
+      "originsWithRelevantLiterature": [
+        "PSY",
+        "INF",
+        "TEC"
+      ],
+      "domainsWithRelevantLiterature": [
+        "DELIBERATE_INTERVENTION",
+        "INFORMATIONAL_EXPOSURE"
+      ],
+      "candidateEffectIds": [],
+      "candidateIdentityIds": [],
+      "properties": {
+        "LEVEL": "INSUFFICIENT_EVIDENCE",
+        "TIMING": "INSUFFICIENT_EVIDENCE",
+        "PERSISTENCE": "INSUFFICIENT_EVIDENCE",
+        "STRUCTURE": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "driverId": "PSY-054",
+      "status": "SEARCH_COMPLETE_BOUNDED",
+      "sources": [
+        "SRC146",
+        "SRC-CAND-PSY-LAYER-0043",
+        "SRC-CAND-PSY-LAYER-0044",
+        "SRC-CAND-PSY-LAYER-0055",
+        "SRC-CAND-PSY-LAYER-0054"
+      ],
+      "queries": [
+        "Q-PSY-F05-01",
+        "Q-PSY-F05-03",
+        "Q-PSY-F05-04",
+        "Q-PSY-F05-05"
+      ],
+      "noFinding": "Cash-transfer appraisal finding promising but timing/context and spillovers require scoped follow-up; no physiology pathway or broad policy effect.",
+      "gaps": "PSS unpredictable/uncontrollable/overload appraisal differs from DASS stress/tension and K6 distress. PSS past-month aggregation cannot silently stand for a momentary scalar.",
+      "qualifiers": "Population/culture, intended versus observed effects, distribution, reach and timing limited to accessed evidence. Synergy/antagonism, functional shape, thresholds and causal interactions NOT_INVESTIGATED unless explicitly in a hypothesis; no benefit criterion or recommendation assigned. Nondetection not supported null.",
+      "originsWithRelevantLiterature": [
+        "PSY",
+        "INF",
+        "TEC",
+        "BIO",
+        "ENV",
+        "INS"
+      ],
+      "domainsWithRelevantLiterature": [
+        "DELIBERATE_INTERVENTION",
+        "INFORMATIONAL_EXPOSURE",
+        "BIOLOGICAL_PHYSIOLOGICAL_PROCESS",
+        "ENVIRONMENTAL_EXPOSURE",
+        "INSTITUTIONAL_STRUCTURAL_CHANGE"
+      ],
+      "candidateEffectIds": [],
+      "candidateIdentityIds": [],
+      "properties": {
+        "LEVEL": "INSUFFICIENT_EVIDENCE",
+        "TIMING": "INSUFFICIENT_EVIDENCE",
+        "PERSISTENCE": "INSUFFICIENT_EVIDENCE",
+        "STRUCTURE": "NOT_APPLICABLE"
+      }
+    }
+  ],
+  "relationshipPropertyReview": "All17 exact causal IDs reviewed locally or reused before PassB. Appraisal/control moderation of REL-PSY-026/027 and capacity moderation of REL-PSY-046 remain hypotheses: exact moderator construct, independent interaction estimate and timing not sufficiently aligned. No formal relationship-target effect, no B/C double contribution and no pathway from PRC labels.",
+  "propertyPolicy": "All11 properties explicitly considered per Driver/edge. Neither retained effect has an established signed exact causal contrast, so LEVEL remains INSUFFICIENT_EVIDENCE and direction UNKNOWN. Temporal/persistence claims are bounded questions; all unextracted dimensions retain NOT_INVESTIGATED. STRUCTURE cannot be used as a new generic context, ontology or RDS target.",
+  "identityReview": "Compared all14 production HappeningTypes and9 Interventions plus six prior Layer candidates. No breathing or generic specified-film operation duplicate found. Overnight sleep-loss HT-V1-INF-F03-007 recognized but not reminted; heterogeneous sleep paradigms not treated as identical. Existing Cyberball exposure and F04 task-choice identities are not duplicated. Copyright/consent/control/medical/ethical/legal applicability independently required.",
+  "skepticalReview": {
+    "method": "Second pass after candidate drafting challenged exact comparator, measure identity, source bibliography, state/trait transfer and review independence. Reread primary methods and null results; downgraded both candidate effects to RESEARCH_NEEDED/UNKNOWN. Random check across threat/anxiety, guilt/pride, mood/arousal, stress and concern records.",
+    "checks": [
+      "Verified canonical source IDs before trusting citations: four wrong PMIDs and unresolved IUS DOI retained as source-alignment issues, not canonical edits.",
+      "Breathwork pre/post anxiety reduction is not an active-comparator advantage; separate trait null and composite breathwork conditions retained.",
+      "Film DES profile contrasts do not establish same-item sadness-versus-neutral effect. Emotional intensity is not exact subjective activation; PANAS valence critique retained.",
+      "Wang reappraisal negative/positive averages cannot imply effects for every item. Attrition/demand and condition heterogeneity retained.",
+      "Cash stress/cortisol divergence, greening total-distress nondetection, dispositional fear/anger nulls, compassion active-control differences, and invalid frustration force/no EMG findings explicitly retained.",
+      "No causal graph weight, numerical mediation, direct RDS/state target, source registration or practitioner authority. Existing edge proposals unimplemented."
+    ],
+    "remainingRisks": "Exact-effect yield intentionally low. Source access often abstract-level; no claim of exhaustive null search. Further named clip/neutral contrast, intervention comparator and state time-window work belongs to research-needed queue, not automatic governance."
+  }
+}

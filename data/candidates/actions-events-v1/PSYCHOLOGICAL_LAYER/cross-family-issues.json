@@ -203,7 +203,7 @@
     "ownerFamilyId": "PSY-F02",
     "consultation": {
       "PSY-F02": "CANDIDATE_REVIEW_COMPLETE",
-      "PSY-F05": "NOT_YET_PROCESSED",
+      "PSY-F05": "CANDIDATE_REVIEW_COMPLETE",
       "INF-F10": "EXTERNAL_ENDPOINT_REVIEW_ONLY_NO_FULL_FAMILY_AUDIT",
       "INF-F13": "EXTERNAL_ENDPOINT_REVIEW_ONLY_NO_FULL_FAMILY_AUDIT",
       "TEC-F06": "EXTERNAL_ENDPOINT_REVIEW_ONLY_NO_FULL_FAMILY_AUDIT",
@@ -254,7 +254,7 @@
     "consultation": {
       "PSY-F02": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F04": "CANDIDATE_REVIEW_COMPLETE",
-      "PSY-F05": "NOT_YET_PROCESSED"
+      "PSY-F05": "CANDIDATE_REVIEW_COMPLETE"
     },
     "status": "RESEARCH_NEEDED",
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
@@ -338,7 +338,7 @@
     "ownerFamilyId": "PSY-F03",
     "consultation": {
       "PSY-F03": "CANDIDATE_REVIEW_COMPLETE",
-      "PSY-F05": "NOT_YET_PROCESSED",
+      "PSY-F05": "CANDIDATE_REVIEW_COMPLETE",
       "SOC-F04": "EXTERNAL_ENDPOINT_REVIEW_ONLY_NO_FULL_FAMILY_AUDIT",
       "BIO-F02": "EXTERNAL_ENDPOINT_REVIEW_ONLY_NO_FULL_FAMILY_AUDIT"
     },
@@ -395,7 +395,7 @@
     "consultation": {
       "PSY-F03": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F04": "CANDIDATE_REVIEW_COMPLETE",
-      "PSY-F05": "NOT_YET_PROCESSED"
+      "PSY-F05": "CANDIDATE_REVIEW_COMPLETE"
     },
     "status": "RESEARCH_NEEDED",
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
@@ -510,6 +510,133 @@
       "PSY-F03": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F11": "NOT_YET_PROCESSED",
       "PSY-F12": "NOT_YET_PROCESSED"
+    },
+    "status": "RESEARCH_NEEDED",
+    "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+  },
+  {
+    "id": "CF-PSY-LAYER-0021",
+    "kind": "CONSTRUCT_BOUNDARY",
+    "familyIds": [
+      "PSY-F05",
+      "PSY-F06",
+      "PSY-F09",
+      "PSY-F14"
+    ],
+    "recordIds": [
+      "PSY-042",
+      "PSY-054",
+      "PSY-058",
+      "PSY-079",
+      "PSY-121",
+      "PSY-128",
+      "PSY-131"
+    ],
+    "question": "State emotion, available capacity, habitual strategy, trait susceptibility and overlapping questionnaire items must not become interchangeable causal primitives.",
+    "classification": "MEASUREMENT_OVERLAP",
+    "ownerFamilyId": "PSY-F05",
+    "consultation": {
+      "PSY-F05": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F06": "NOT_YET_PROCESSED",
+      "PSY-F09": "NOT_YET_PROCESSED",
+      "PSY-F14": "NOT_YET_PROCESSED"
+    },
+    "status": "RESEARCH_NEEDED",
+    "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+  },
+  {
+    "id": "CF-PSY-LAYER-0022",
+    "kind": "CONSTRUCT_BOUNDARY",
+    "familyIds": [
+      "PSY-F05",
+      "PSY-F04",
+      "PSY-F12"
+    ],
+    "recordIds": [
+      "PSY-044",
+      "PSY-045",
+      "PSY-046",
+      "PSY-048",
+      "PSY-049",
+      "PSY-053",
+      "PSY-110"
+    ],
+    "question": "Moral disgust versus conviction, guilt versus shame, pride facets, affective hope versus agency/pathways, and concern versus self-compassion require exact construct/item scope.",
+    "classification": "RELATED",
+    "ownerFamilyId": "PSY-F05",
+    "consultation": {
+      "PSY-F05": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F04": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F12": "NOT_YET_PROCESSED"
+    },
+    "status": "RESEARCH_NEEDED",
+    "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+  },
+  {
+    "id": "CF-PSY-LAYER-0023",
+    "kind": "SOURCE_ALIGNMENT",
+    "familyIds": [
+      "PSY-F05",
+      "PSY-F06",
+      "PSY-F09",
+      "PSY-F11",
+      "PSY-F12",
+      "PSY-F14"
+    ],
+    "recordIds": [
+      "SRC145",
+      "SRC177",
+      "SRC178",
+      "SRC180",
+      "SRC207",
+      "SRC-494",
+      "SRC-499",
+      "SRC-506",
+      "SRC-509"
+    ],
+    "question": "Four stored PMIDs resolve to unrelated papers; IUS DOI unresolved. Intended identities documented without canonical repair. Framework/diffusion sources cannot substantiate exact affective segments.",
+    "classification": "RELATED",
+    "ownerFamilyId": "PSY-F05",
+    "consultation": {
+      "PSY-F05": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F06": "NOT_YET_PROCESSED",
+      "PSY-F09": "NOT_YET_PROCESSED",
+      "PSY-F11": "NOT_YET_PROCESSED",
+      "PSY-F12": "NOT_YET_PROCESSED",
+      "PSY-F14": "NOT_YET_PROCESSED"
+    },
+    "status": "RESEARCH_NEEDED",
+    "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+  },
+  {
+    "id": "CF-PSY-LAYER-0024",
+    "kind": "CROSS_FAMILY_OWNERSHIP",
+    "familyIds": [
+      "PSY-F05",
+      "PSY-F10",
+      "BIO-F02",
+      "SOC-F04",
+      "SOC-F11",
+      "CUL-F10"
+    ],
+    "recordIds": [
+      "REL-PSY-026",
+      "REL-PSY-027",
+      "REL-PSY-058",
+      "REL-SOC-063",
+      "REL-SOC-068",
+      "REL-CUL-047"
+    ],
+    "question": "Preserve source-Family ownership for external edges, one primary review each; scope appraisals/risk, received support, recovery slope and shame norms separately. No external Family audit or new pathway.",
+    "classification": "DISTINCT",
+    "ownerFamilyId": "PSY-F05",
+    "consultation": {
+      "PSY-F05": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F10": "NOT_YET_PROCESSED",
+      "BIO-F02": "ENDPOINT_ONLY_REVIEW_NO_EXTERNAL_FAMILY_AUDIT",
+      "SOC-F04": "ENDPOINT_ONLY_REVIEW_NO_EXTERNAL_FAMILY_AUDIT",
+      "SOC-F11": "ENDPOINT_ONLY_REVIEW_NO_EXTERNAL_FAMILY_AUDIT",
+      "CUL-F10": "ENDPOINT_ONLY_REVIEW_NO_EXTERNAL_FAMILY_AUDIT"
     },
     "status": "RESEARCH_NEEDED",
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"

@@ -13,7 +13,7 @@ NOT_STARTED and PARTIAL stages remain unfinished. All human decisions remain pen
 | PSY-F02 | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE |
 | PSY-F03 | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE |
 | PSY-F04 | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE |
-| PSY-F05 | DONE | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED |
+| PSY-F05 | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE |
 | PSY-F06 | DONE | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED |
 | PSY-F07 | DONE | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED |
 | PSY-F08 | DONE | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED |
@@ -26,7 +26,7 @@ NOT_STARTED and PARTIAL stages remain unfinished. All human decisions remain pen
 
 ## Exact resume point
 
-Begin PSY-F05. F01–F04 local candidate audits complete; final Layer reconciliation pending. Reuse existing stress/goal/fear reviews, CF-0011/0014/0016, and shared source/identity registries; do not duplicate norm/need/interest effects.
+Begin PSY-F06 Attention & Cognitive Processing. F01–F05 local audits complete; Layer reconciliation pending. Reuse REL-PSY-025/059 and CF-0021/0023; verify exact attention/load/capacity/task measures and prior source identity flags, without duplicate primary reviews.
 
 ## Checkpoints
 
@@ -39,5 +39,7 @@ Begin PSY-F05. F01–F04 local candidate audits complete; final Layer reconcilia
 - PSY-F03 committed/pushed `a9e5377bc673b1035f800954013eccc399e5a325`; final-head Linux/Windows validation dispatched. PSY-F04 entity review read-only complete; existing and gap evidence research in progress.
 - PSY-F03 exact-head Linux/Windows run `34149669318` passed on `a9e5377bc673b1035f800954013eccc399e5a325`.
 - PSY-F04 local complete: 15 Drivers, 16 incident propositions (8 new primary + 8 reused), 0 new Relationships, 1 REVIEW_READY identity/effect, 1 assessment/4 findings; 13 supplemental sources plus canonical SRC-467 reuse. 61 incremental tests, schema/source/reference/determinism/local-link and protected-191 checks pass. No new GOVERNED/ACTIVE; completion SHA recorded at next checkpoint.
+- PSY-F04 committed/pushed `551d66cd902db4b8eec9bc8c892f73bb6d5b1a62`; Linux/Windows run `34150809606` passed. F05 entity review and first source-verification pass underway.
+- PSY-F05 local complete:14 Drivers,17 incident propositions (14 new primary +3 reused),0 new Relationships,2 REVIEW_READY identities,2 RESEARCH_NEEDED/UNKNOWN effects,2 assessments/6 findings,17 supplemental sources. 76 incremental tests, source/schema/reference/determinism/local links/Python and protected191 checks pass. Four canonical PMID mismatches and one unresolved DOI flagged without repair. Completion SHA recorded next checkpoint.
 
 No new GOVERNED or ACTIVE records; no canonical source registration; no production science changes.

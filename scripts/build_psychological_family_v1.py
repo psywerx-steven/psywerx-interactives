@@ -44,7 +44,7 @@ def base(identifier, family, status="REVIEW_READY"):
 def finding(row, assertion, family):
     f = {"id": "FND-" + assertion + "-" + row["key"], "sourceId": row["sourceId"], "locator": row["locator"],
         "accessDepth": row["accessDepth"], "population": row["population"], "context": row["context"],
-        "basis": [row["basis"]], "supportedSemantics": ["CAUSAL"], "inputRole": "DIRECT_FINDING",
+        "basis": [row["basis"]], "supportedSemantics": row.get("supportedSemantics", ["CAUSAL"]), "inputRole": "DIRECT_FINDING",
         "design": row["design"] + "; sample: " + (row["sample"] or "NOT_EXTRACTED"),
         **{k: row[k] for k in ("exposure", "comparator", "measurement", "timing", "result", "disposition")},
         "quantitativeEstimate": None, "uncertainty": ["No comparable numerical estimand or causal coefficient extracted"],
