@@ -636,4 +636,3 @@ Required validation results are recorded in validation-results.json and exact-he
   "validatedWorkingTreeBasedOn": "d43a2c0c422ed19d310c01380813982a9959f890"
 }
 ```
-

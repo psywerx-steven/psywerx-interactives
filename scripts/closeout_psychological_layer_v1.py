@@ -243,7 +243,7 @@ def render():
     p.write(p.DOCS/'PSYCHOLOGICAL_LAYER_AUDIT_MANIFEST.json',s)
     header=['# Psychological Layer — candidate-only closeout','',f'Program `{p.PROGRAM}`; frozen main `{p.BASELINE}`.','',
         'All14 bounded Family audits complete. Human scientific governance remains PENDING. No new GOVERNED/ACTIVE, source registration, canonical modification, external Family audit or PR merge.','']
-    def out(name,lines):p.write(p.DOCS/name,'\n'.join(header+lines+['']))
+    def out(name,lines):p.write(p.DOCS/name,'\n'.join(header+lines).rstrip()+'\n')
     def code(v):return ['```json',p.encode(v).strip(),'```','']
     out('PSYCHOLOGICAL_LAYER_RELATIONSHIP_SUMMARY.md',code({k:s[k] for k in ['existingReviewedOnce','existingDispositions','newRelationshipSemantics','graphFlags']})+
         ['111 unique production propositions, all causal:19 within-Family,41 Psychological cross-Family,44 incoming/7outgoing cross-Layer. V3 projections add zero. No inactive/deprecated incident proposition was found at baseline.',

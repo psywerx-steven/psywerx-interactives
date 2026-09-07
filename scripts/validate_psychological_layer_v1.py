@@ -44,6 +44,7 @@ def main():
         javascript=c.p.git('ls-files','--','*.js','*.mjs','*.cjs').splitlines()
         for path in javascript:run('JavaScript '+path,[shutil.which('node') or 'node','--check',path])
         run('git diff check',['git','diff','--check'])
+        run('complete branch diff check',['git','diff','--check',c.p.BASELINE])
         c.validate();links=c.link_check();protected=c.p.check_protected()
         report={'status':'PASS','validatedWorkingTreeBasedOn':c.p.git('rev-parse','HEAD'),
                 'recordedAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),
