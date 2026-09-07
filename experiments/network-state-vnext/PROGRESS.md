@@ -1,0 +1,18 @@
+# Durable progress
+
+- Current milestone: 5 — full regression, independent scope review and CI.
+- Baseline inspected: branch `pilot/soc-f07-actions-events-v1`, head `339c2e80206b0b304cdb262e7c5fec6dc0bc27ab`, origin/main `f0be9c24288bd128231e0d1243b34c03ad055906`; worktree initially clean.
+- Completed: read candidate package and existing materialization/contract conventions; fetched remote; identified scalar-endpoint derivation representation risk and PubMed-only source verification contract.
+- Assumption: scientific approval and representability are separate gates. No free-text substitute for machine-enforced all-node degree collection.
+- Pending governance: every new NS01–NS12 architecture decision. No new architecture is authorized.
+- Source limitation confirmed: shared-profile-attribute work has verified arXiv and journal versions, but production source verification requires PubMed. Its non-PubMed bibliography cannot be truthfully registered through that contract. No verification label or schema was changed.
+- Materialized: seven exact HT identities (001–007), GOVERNED / INACTIVE; six source records SRC-553–558. Canonical SRC235/SRC250 reused. No Relationships, effects, assessments or findings governed; no activation.
+- Gates: centralization concept approved but BLOCKED_PENDING_REPRESENTATION; HT-008 approved identity but BLOCKED_PENDING_SOURCE_REGISTRATION_CONTRACT. Publisher/preprint identity verified; no false PubMed label or empty structured-source workaround.
+- Completed architecture: A/B/C comparison, hybrid recommendation with explicit limitations, twelve PENDING decisions, privacy/time/observation/derivation interface review, nine synthetic cases, schemas and requirements map.
+- Tests run: all 347 explicit Python tests pass (two Windows symlink-privilege skips), including SOC pilot 36, checkpoint 19 and Network State 43; scenario-service 21 pass; RI/AE validators pass; existing 46-record synthetic pilot passes. Python compilation, 19 JavaScript parses, local links and diff checks pass.
+- Corrected historical test assumptions: prior BIO/INF suites now scope historical source/record sets by Family rather than treating the growing entire catalog as that Family. Exact old-record equality, lifecycle rules and full-catalog validators remain enforced. No science or production validator changed.
+- Independent review added UTC timestamp normalization, half-open interval selection and non-graphical degree rejection to the experiment. Nine synthetic demonstrations remain deterministic; no scientific model is implemented.
+- Protected baseline: 133 files; 131 unchanged normalized bytes, two envelopes contain only exact authorized additions, every pre-existing record remains equal. Candidate science/findings also match pre-checkpoint head.
+- Checkpoint committed/pushed: `47318f5c3fffbc1b03a4463e9f1051f721b75c51`. [CI run 34083292002](https://github.com/psywerx-steven/psywerx-interactives/actions/runs/34083292002): Linux governance/service and Windows migration determinism both SUCCESS.
+- Final independent review reconciled the nested report counts with the canonical seven governed identities while explicitly keeping the frozen candidate workspace governed count at zero. Added a primary privacy-risk reference reviewed at abstract/metadata depth only; no new scientific research or production source registration.
+- Exact next step: commit this closeout refinement, push/update PR #19 and inspect final-head Linux/Windows CI. Record exact final SHA/checks/clean branch in the PR closeout comment, avoiding a self-referential commit hash. Stop unmerged; no activation or additional Family work.

@@ -1,0 +1,4121 @@
+{
+  "activationStatus": "NOT_ELIGIBLE",
+  "baselineCommit": "f0be9c24288bd128231e0d1243b34c03ad055906",
+  "familyId": "SOC-F07",
+  "handoffs": [],
+  "noFindings": [
+    {
+      "consultedFamilyIds": [],
+      "id": "NO-FINDING-SOC-F07-1",
+      "ownerFamilyId": "SOC-F07",
+      "questionOrDisposition": "No adequately supported exact SOC-102 effect retained; UNKNOWN is not zero.",
+      "rationale": "Structured searches completed at recorded access depth; absence of an adequate finding is not a zero effect.",
+      "recordIds": [],
+      "status": "RESEARCH_NEEDED"
+    },
+    {
+      "consultedFamilyIds": [],
+      "id": "NO-FINDING-SOC-F07-2",
+      "ownerFamilyId": "SOC-F07",
+      "questionOrDisposition": "No exact relationship-targeted effect, moderation or transmitted causal pathway retained.",
+      "rationale": "Structured searches completed at recorded access depth; absence of an adequate finding is not a zero effect.",
+      "recordIds": [],
+      "status": "RESEARCH_NEEDED"
+    }
+  ],
+  "passA": {
+    "evidence": [
+      {
+        "assertion": {
+          "objectId": "REL-INS-047",
+          "objectType": "RELATIONSHIP"
+        },
+        "confidence": "LOW",
+        "conflictingEvidence": {
+          "sourceIds": [],
+          "summary": "Propose restricting institutional segregation to specified assignment/contact constraints preceding measured between-group tie mixing; exact institution, groups, metric and identification remain research-needed. Framework and mismatched composite diffusion source are not direct identified institutional-segregation evidence. Assignment can be a common cause, not an autonomous RDS effect."
+        },
+        "context": "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+        "evidenceDisposition": "INSUFFICIENT",
+        "evidenceRationale": "Propose restricting institutional segregation to specified assignment/contact constraints preceding measured between-group tie mixing; exact institution, groups, metric and identification remain research-needed. Framework and mismatched composite diffusion source are not direct identified institutional-segregation evidence. Assignment can be a common cause, not an autonomous RDS effect.",
+        "evidenceStrength": "LIMITED",
+        "governance": {
+          "activationStatus": "NOT_ELIGIBLE",
+          "authorityBasis": "V1_NATIVE",
+          "authorizedBy": null,
+          "blockStatus": "NONE",
+          "decisionDate": null,
+          "decisionOutcome": "NOT_DECIDED",
+          "decisionRationale": null,
+          "decisionRecord": null,
+          "effectiveVersion": null,
+          "lifecycleStatus": "RESEARCH_NEEDED",
+          "supersedesIds": [],
+          "transitionProvenance": [
+            {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "exactDecisionMaterialization": false,
+              "fromState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": null
+              },
+              "governanceDecisionRecord": null,
+              "objectId": "EVA-AUD-SOC-F07-REL-INS-047",
+              "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+              "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+              "revision": 1,
+              "timestamp": "2026-09-07T02:46:39Z",
+              "toState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "CANDIDATE"
+              }
+            },
+            {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "exactDecisionMaterialization": false,
+              "fromState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "CANDIDATE"
+              },
+              "governanceDecisionRecord": null,
+              "objectId": "EVA-AUD-SOC-F07-REL-INS-047",
+              "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+              "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+              "revision": 1,
+              "timestamp": "2026-09-07T02:46:39Z",
+              "toState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "RESEARCH_NEEDED"
+              }
+            }
+          ]
+        },
+        "id": "EVA-AUD-SOC-F07-REL-INS-047",
+        "limitations": [
+          "Check reflection, homophily, selection into ties, latent traits, common environment, institutional assignment, simultaneity, reciprocity, correlated exposure, interference, endogenous formation, attrition and tie measurement error; longitudinal observation alone is not identification.",
+          "Composite reference cannot count as two independent studies; second cited component unresolved. Preserve canonical register unchanged.",
+          "Full report not reviewed; direct support for INS-076 to network segregation remains unverified.",
+          "No open-triad conditional risk set; geometric distance not preferred-space encroachment.",
+          "Other classroom contacts and interference; generalization outside classrooms untested",
+          "Seating distance is not ENV-034 personal-space encroachment and friendship is not conditional triadic closure.",
+          "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism."
+        ],
+        "population": "The proposed edge is causally interpretable at the stated scope. V2 implementation must preserve conditions, level transition, lag, and evidence rather than treating it as universal.",
+        "quantitativeEstimate": null,
+        "reviewProvenance": {
+          "createdAt": "2026-09-07T02:46:39Z",
+          "createdByActorClass": "AUTOMATED_PROCESS_OR_AI",
+          "reviewedAt": null,
+          "reviewedBy": null,
+          "sourceSchema": "RI_V1_WITH_AE_SOURCE_FINDING_CANDIDATE_SIDECAR"
+        },
+        "revision": 1,
+        "schemaVersion": "1.0.0",
+        "sourceIds": [
+          "SRC-497",
+          "SRC-509",
+          "SRC-CAND-SOC-F07-012"
+        ],
+        "studyDesignCharacterizations": [
+          {
+            "designType": "OTHER_SPECIFIED",
+            "specification": "Metadata alignment assessment only; no empirical design or direct scientific result inferred"
+          },
+          {
+            "designType": "OTHER_SPECIFIED",
+            "specification": "Metadata alignment assessment only; no empirical design or direct scientific result inferred"
+          },
+          {
+            "designType": "OTHER_SPECIFIED",
+            "specification": "EXPERIMENTAL; Within-classroom randomized proximity"
+          }
+        ],
+        "uncertainty": [
+          "No graph weight; no numeric causal estimate invented"
+        ]
+      },
+      {
+        "assertion": {
+          "objectId": "REL-SOC-031",
+          "objectType": "RELATIONSHIP"
+        },
+        "confidence": "LOW",
+        "conflictingEvidence": {
+          "sourceIds": [],
+          "summary": "Consider a noncausal conditional structural comparison of SOC-052 and SOC-053, not CAUSES; no exact replacement predicate approved. Global density and ego clustering share adjacency inputs but neither universally determines the other. Same-time summary contrast lacks independent temporal mechanism."
+        },
+        "context": "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+        "evidenceDisposition": "INSUFFICIENT",
+        "evidenceRationale": "Consider a noncausal conditional structural comparison of SOC-052 and SOC-053, not CAUSES; no exact replacement predicate approved. Global density and ego clustering share adjacency inputs but neither universally determines the other. Same-time summary contrast lacks independent temporal mechanism.",
+        "evidenceStrength": "LIMITED",
+        "governance": {
+          "activationStatus": "NOT_ELIGIBLE",
+          "authorityBasis": "V1_NATIVE",
+          "authorizedBy": null,
+          "blockStatus": "NONE",
+          "decisionDate": null,
+          "decisionOutcome": "NOT_DECIDED",
+          "decisionRationale": null,
+          "decisionRecord": null,
+          "effectiveVersion": null,
+          "lifecycleStatus": "RESEARCH_NEEDED",
+          "supersedesIds": [],
+          "transitionProvenance": [
+            {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "exactDecisionMaterialization": false,
+              "fromState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": null
+              },
+              "governanceDecisionRecord": null,
+              "objectId": "EVA-AUD-SOC-F07-REL-SOC-031",
+              "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+              "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+              "revision": 1,
+              "timestamp": "2026-09-07T02:46:39Z",
+              "toState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "CANDIDATE"
+              }
+            },
+            {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "exactDecisionMaterialization": false,
+              "fromState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "CANDIDATE"
+              },
+              "governanceDecisionRecord": null,
+              "objectId": "EVA-AUD-SOC-F07-REL-SOC-031",
+              "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+              "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+              "revision": 1,
+              "timestamp": "2026-09-07T02:46:39Z",
+              "toState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "RESEARCH_NEEDED"
+              }
+            }
+          ]
+        },
+        "id": "EVA-AUD-SOC-F07-REL-SOC-031",
+        "limitations": [
+          "Broad review is not direct evidence for contemporaneous density causing local clustering.",
+          "Bundled topology contrast, not density manipulation; anonymous fixed ties and adoption notifications are not all friendship networks. Fourth/further notifications did not show detectable extra adoption in a small contrast.",
+          "Check reflection, homophily, selection into ties, latent traits, common environment, institutional assignment, simultaneity, reciprocity, correlated exposure, interference, endogenous formation, attrition and tie measurement error; longitudinal observation alone is not identification.",
+          "Degree held fixed, but topology dimensions remain bundled",
+          "No independent manipulation of density, isolated local clustering or generic reinforcement.",
+          "Review is not independent replication of each cited experiment or direct metric-to-metric causality.",
+          "Sensitivity simulations are not empirical causal effects. Preprint and journal article are one work.",
+          "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism."
+        ],
+        "population": "Generalizability is limited to contexts compatible with the stated mechanism, conditions, and evidence.",
+        "quantitativeEstimate": null,
+        "reviewProvenance": {
+          "createdAt": "2026-09-07T02:46:39Z",
+          "createdByActorClass": "AUTOMATED_PROCESS_OR_AI",
+          "reviewedAt": null,
+          "reviewedBy": null,
+          "sourceSchema": "RI_V1_WITH_AE_SOURCE_FINDING_CANDIDATE_SIDECAR"
+        },
+        "revision": 1,
+        "schemaVersion": "1.0.0",
+        "sourceIds": [
+          "SRC-235",
+          "SRC-254",
+          "SRC-256",
+          "SRC-CAND-SOC-F07-003"
+        ],
+        "studyDesignCharacterizations": [
+          {
+            "designType": "OTHER_SPECIFIED",
+            "specification": "EVIDENCE_SYNTHESIS; Organizational networks"
+          },
+          {
+            "designType": "OTHER_SPECIFIED",
+            "specification": "EVIDENCE_SYNTHESIS; Multiple social-network theories and settings"
+          },
+          {
+            "designType": "OTHER_SPECIFIED",
+            "specification": "EXPERIMENTAL; Randomized topology; interference is part of treatment, not independent unit noise"
+          },
+          {
+            "designType": "OTHER_SPECIFIED",
+            "specification": "MODEL_SIMULATION; Collaboration network and missingness sensitivity experiments"
+          }
+        ],
+        "uncertainty": [
+          "No graph weight; no numeric causal estimate invented"
+        ]
+      },
+      {
+        "assertion": {
+          "objectId": "REL-SOC-032",
+          "objectType": "RELATIONSHIP"
+        },
+        "confidence": "LOW",
+        "conflictingEvidence": {
+          "sourceIds": [],
+          "summary": "Consider noncausal baseline-qualified mixing/segregation comparison, retaining SOC-054 and SOC-057 as distinct measures. Degree assortativity is not categorical segregation; group attributes, opportunities and null model unresolved. Shared mixing matrix can induce dependence."
+        },
+        "context": "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+        "evidenceDisposition": "INSUFFICIENT",
+        "evidenceRationale": "Consider noncausal baseline-qualified mixing/segregation comparison, retaining SOC-054 and SOC-057 as distinct measures. Degree assortativity is not categorical segregation; group attributes, opportunities and null model unresolved. Shared mixing matrix can induce dependence.",
+        "evidenceStrength": "LIMITED",
+        "governance": {
+          "activationStatus": "NOT_ELIGIBLE",
+          "authorityBasis": "V1_NATIVE",
+          "authorizedBy": null,
+          "blockStatus": "NONE",
+          "decisionDate": null,
+          "decisionOutcome": "NOT_DECIDED",
+          "decisionRationale": null,
+          "decisionRecord": null,
+          "effectiveVersion": null,
+          "lifecycleStatus": "RESEARCH_NEEDED",
+          "supersedesIds": [],
+          "transitionProvenance": [
+            {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "exactDecisionMaterialization": false,
+              "fromState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": null
+              },
+              "governanceDecisionRecord": null,
+              "objectId": "EVA-AUD-SOC-F07-REL-SOC-032",
+              "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+              "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+              "revision": 1,
+              "timestamp": "2026-09-07T02:46:39Z",
+              "toState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "CANDIDATE"
+              }
+            },
+            {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "exactDecisionMaterialization": false,
+              "fromState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "CANDIDATE"
+              },
+              "governanceDecisionRecord": null,
+              "objectId": "EVA-AUD-SOC-F07-REL-SOC-032",
+              "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+              "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+              "revision": 1,
+              "timestamp": "2026-09-07T02:46:39Z",
+              "toState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "RESEARCH_NEEDED"
+              }
+            }
+          ]
+        },
+        "id": "EVA-AUD-SOC-F07-REL-SOC-032",
+        "limitations": [
+          "A methodological warning, not evidence that every influence effect is absent.",
+          "Check reflection, homophily, selection into ties, latent traits, common environment, institutional assignment, simultaneity, reciprocity, correlated exposure, interference, endogenous formation, attrition and tie measurement error; longitudinal observation alone is not identification.",
+          "Definitions and models are not empirical direction-of-causation evidence.",
+          "Degree similarity is not automatically categorical segregation; model behavior is not empirical causal identification.",
+          "Selection, opportunity and influence must not be collapsed; no exact SOC-054 to SOC-057 estimate extracted.",
+          "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism."
+        ],
+        "population": "Generalizability is limited to contexts compatible with the stated mechanism, conditions, and evidence.",
+        "quantitativeEstimate": null,
+        "reviewProvenance": {
+          "createdAt": "2026-09-07T02:46:39Z",
+          "createdByActorClass": "AUTOMATED_PROCESS_OR_AI",
+          "reviewedAt": null,
+          "reviewedBy": null,
+          "sourceSchema": "RI_V1_WITH_AE_SOURCE_FINDING_CANDIDATE_SIDECAR"
+        },
+        "revision": 1,
+        "schemaVersion": "1.0.0",
+        "sourceIds": [
+          "SRC-233",
+          "SRC-260",
+          "SRC-270",
+          "SRC-CAND-SOC-F07-016"
+        ],
+        "studyDesignCharacterizations": [
+          {
+            "designType": "OTHER_SPECIFIED",
+            "specification": "EVIDENCE_SYNTHESIS; Multiple social settings; tie and group boundaries vary"
+          },
+          {
+            "designType": "OTHER_SPECIFIED",
+            "specification": "THEORETICAL_MECHANISTIC; Degree mixing, network examples and analytical models"
+          },
+          {
+            "designType": "OTHER_SPECIFIED",
+            "specification": "THEORETICAL_MECHANISTIC; Observational network identification"
+          },
+          {
+            "designType": "OTHER_SPECIFIED",
+            "specification": "DEFINITIONAL_CALCULATIONAL; Categorical and scalar mixing measures"
+          }
+        ],
+        "uncertainty": [
+          "No graph weight; no numeric causal estimate invented"
+        ]
+      },
+      {
+        "assertion": {
+          "objectId": "REL-SOC-033",
+          "objectType": "RELATIONSHIP"
+        },
+        "confidence": "LOW",
+        "conflictingEvidence": {
+          "sourceIds": [],
+          "summary": "Consider noncausal scope-qualified association/related-metric representation of constraint and cross-cluster ties; do not force inverse causality. Actor contact weights versus network/actor community-crossing denominator; partitions and scope may differ. Mechanism of brokerage is not the constraint formula acting on another summary."
+        },
+        "context": "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+        "evidenceDisposition": "INSUFFICIENT",
+        "evidenceRationale": "Consider noncausal scope-qualified association/related-metric representation of constraint and cross-cluster ties; do not force inverse causality. Actor contact weights versus network/actor community-crossing denominator; partitions and scope may differ. Mechanism of brokerage is not the constraint formula acting on another summary.",
+        "evidenceStrength": "LIMITED",
+        "governance": {
+          "activationStatus": "NOT_ELIGIBLE",
+          "authorityBasis": "V1_NATIVE",
+          "authorizedBy": null,
+          "blockStatus": "NONE",
+          "decisionDate": null,
+          "decisionOutcome": "NOT_DECIDED",
+          "decisionRationale": null,
+          "decisionRecord": null,
+          "effectiveVersion": null,
+          "lifecycleStatus": "RESEARCH_NEEDED",
+          "supersedesIds": [],
+          "transitionProvenance": [
+            {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "exactDecisionMaterialization": false,
+              "fromState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": null
+              },
+              "governanceDecisionRecord": null,
+              "objectId": "EVA-AUD-SOC-F07-REL-SOC-033",
+              "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+              "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+              "revision": 1,
+              "timestamp": "2026-09-07T02:46:39Z",
+              "toState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "CANDIDATE"
+              }
+            },
+            {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "exactDecisionMaterialization": false,
+              "fromState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "CANDIDATE"
+              },
+              "governanceDecisionRecord": null,
+              "objectId": "EVA-AUD-SOC-F07-REL-SOC-033",
+              "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+              "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+              "revision": 1,
+              "timestamp": "2026-09-07T02:46:39Z",
+              "toState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "RESEARCH_NEEDED"
+              }
+            }
+          ]
+        },
+        "id": "EVA-AUD-SOC-F07-REL-SOC-033",
+        "limitations": [
+          "Check reflection, homophily, selection into ties, latent traits, common environment, institutional assignment, simultaneity, reciprocity, correlated exposure, interference, endogenous formation, attrition and tie measurement error; longitudinal observation alone is not identification.",
+          "Not an isolated causal estimate of structural constraint or cross-cluster tie prevalence.",
+          "Not direct proof that actor constraint changes network-wide cross-cluster tie prevalence.",
+          "Shortest-path, replication and transfer assumptions differ; simulations do not establish empirical brokerage effects.",
+          "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism."
+        ],
+        "population": "Generalizability is limited to contexts compatible with the stated mechanism, conditions, and evidence.",
+        "quantitativeEstimate": null,
+        "reviewProvenance": {
+          "createdAt": "2026-09-07T02:46:39Z",
+          "createdByActorClass": "AUTOMATED_PROCESS_OR_AI",
+          "reviewedAt": null,
+          "reviewedBy": null,
+          "sourceSchema": "RI_V1_WITH_AE_SOURCE_FINDING_CANDIDATE_SIDECAR"
+        },
+        "revision": 1,
+        "schemaVersion": "1.0.0",
+        "sourceIds": [
+          "SRC-234",
+          "SRC-269",
+          "SRC-CAND-SOC-F07-004"
+        ],
+        "studyDesignCharacterizations": [
+          {
+            "designType": "OTHER_SPECIFIED",
+            "specification": "THEORETICAL_MECHANISTIC; Interpersonal ties and information access"
+          },
+          {
+            "designType": "OTHER_SPECIFIED",
+            "specification": "EVIDENCE_SYNTHESIS; Organizational brokerage literature"
+          },
+          {
+            "designType": "OTHER_SPECIFIED",
+            "specification": "THEORETICAL_MECHANISTIC; Network flow models"
+          }
+        ],
+        "uncertainty": [
+          "No graph weight; no numeric causal estimate invented"
+        ]
+      },
+      {
+        "assertion": {
+          "objectId": "REL-SOC-034",
+          "objectType": "RELATIONSHIP"
+        },
+        "confidence": "LOW",
+        "conflictingEvidence": {
+          "sourceIds": [],
+          "summary": "Consider conditional noncausal mixing comparison; preserve distinction between cluster partitions and social-group segregation. Shared edge counts and complementary mixing can be mathematical; arbitrary communities need not equal groups. No independent lag or mechanism established."
+        },
+        "context": "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+        "evidenceDisposition": "INSUFFICIENT",
+        "evidenceRationale": "Consider conditional noncausal mixing comparison; preserve distinction between cluster partitions and social-group segregation. Shared edge counts and complementary mixing can be mathematical; arbitrary communities need not equal groups. No independent lag or mechanism established.",
+        "evidenceStrength": "LIMITED",
+        "governance": {
+          "activationStatus": "NOT_ELIGIBLE",
+          "authorityBasis": "V1_NATIVE",
+          "authorizedBy": null,
+          "blockStatus": "NONE",
+          "decisionDate": null,
+          "decisionOutcome": "NOT_DECIDED",
+          "decisionRationale": null,
+          "decisionRecord": null,
+          "effectiveVersion": null,
+          "lifecycleStatus": "RESEARCH_NEEDED",
+          "supersedesIds": [],
+          "transitionProvenance": [
+            {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "exactDecisionMaterialization": false,
+              "fromState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": null
+              },
+              "governanceDecisionRecord": null,
+              "objectId": "EVA-AUD-SOC-F07-REL-SOC-034",
+              "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+              "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+              "revision": 1,
+              "timestamp": "2026-09-07T02:46:39Z",
+              "toState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "CANDIDATE"
+              }
+            },
+            {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "exactDecisionMaterialization": false,
+              "fromState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "CANDIDATE"
+              },
+              "governanceDecisionRecord": null,
+              "objectId": "EVA-AUD-SOC-F07-REL-SOC-034",
+              "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+              "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+              "revision": 1,
+              "timestamp": "2026-09-07T02:46:39Z",
+              "toState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "RESEARCH_NEEDED"
+              }
+            }
+          ]
+        },
+        "id": "EVA-AUD-SOC-F07-REL-SOC-034",
+        "limitations": [
+          "Check reflection, homophily, selection into ties, latent traits, common environment, institutional assignment, simultaneity, reciprocity, correlated exposure, interference, endogenous formation, attrition and tie measurement error; longitudinal observation alone is not identification.",
+          "Definitions and models are not empirical direction-of-causation evidence.",
+          "Not an isolated causal estimate of structural constraint or cross-cluster tie prevalence.",
+          "Not direct proof that actor constraint changes network-wide cross-cluster tie prevalence.",
+          "Selection, opportunity and influence must not be collapsed; no exact SOC-054 to SOC-057 estimate extracted.",
+          "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism."
+        ],
+        "population": "Generalizability is limited to contexts compatible with the stated mechanism, conditions, and evidence.",
+        "quantitativeEstimate": null,
+        "reviewProvenance": {
+          "createdAt": "2026-09-07T02:46:39Z",
+          "createdByActorClass": "AUTOMATED_PROCESS_OR_AI",
+          "reviewedAt": null,
+          "reviewedBy": null,
+          "sourceSchema": "RI_V1_WITH_AE_SOURCE_FINDING_CANDIDATE_SIDECAR"
+        },
+        "revision": 1,
+        "schemaVersion": "1.0.0",
+        "sourceIds": [
+          "SRC-233",
+          "SRC-234",
+          "SRC-269",
+          "SRC-CAND-SOC-F07-016"
+        ],
+        "studyDesignCharacterizations": [
+          {
+            "designType": "OTHER_SPECIFIED",
+            "specification": "EVIDENCE_SYNTHESIS; Multiple social settings; tie and group boundaries vary"
+          },
+          {
+            "designType": "OTHER_SPECIFIED",
+            "specification": "THEORETICAL_MECHANISTIC; Interpersonal ties and information access"
+          },
+          {
+            "designType": "OTHER_SPECIFIED",
+            "specification": "EVIDENCE_SYNTHESIS; Organizational brokerage literature"
+          },
+          {
+            "designType": "OTHER_SPECIFIED",
+            "specification": "DEFINITIONAL_CALCULATIONAL; Categorical and scalar mixing measures"
+          }
+        ],
+        "uncertainty": [
+          "No graph weight; no numeric causal estimate invented"
+        ]
+      },
+      {
+        "assertion": {
+          "objectId": "REL-SOC-035",
+          "objectType": "RELATIONSHIP"
+        },
+        "confidence": "LOW",
+        "conflictingEvidence": {
+          "sourceIds": [
+            "SRC-235"
+          ],
+          "summary": "Propose a bounded topology-to-redundant-adoption-notification claim under fixed degree, stable assigned ties and a specific contagion task; whether SOC-053 to SOC-061 is exact enough remains unresolved. Clustering bundles path redundancy; SOC-061 uses independently reinforcing neighbors, not independent randomized messages. Preserve existing edge; no universal magnitude, lag or pathway."
+        },
+        "context": "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+        "evidenceDisposition": "INSUFFICIENT",
+        "evidenceRationale": "Propose a bounded topology-to-redundant-adoption-notification claim under fixed degree, stable assigned ties and a specific contagion task; whether SOC-053 to SOC-061 is exact enough remains unresolved. Clustering bundles path redundancy; SOC-061 uses independently reinforcing neighbors, not independent randomized messages. Preserve existing edge; no universal magnitude, lag or pathway.",
+        "evidenceStrength": "LIMITED",
+        "governance": {
+          "activationStatus": "NOT_ELIGIBLE",
+          "authorityBasis": "V1_NATIVE",
+          "authorizedBy": null,
+          "blockStatus": "NONE",
+          "decisionDate": null,
+          "decisionOutcome": "NOT_DECIDED",
+          "decisionRationale": null,
+          "decisionRecord": null,
+          "effectiveVersion": null,
+          "lifecycleStatus": "RESEARCH_NEEDED",
+          "supersedesIds": [],
+          "transitionProvenance": [
+            {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "exactDecisionMaterialization": false,
+              "fromState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": null
+              },
+              "governanceDecisionRecord": null,
+              "objectId": "EVA-AUD-SOC-F07-REL-SOC-035",
+              "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+              "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+              "revision": 1,
+              "timestamp": "2026-09-07T02:46:39Z",
+              "toState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "CANDIDATE"
+              }
+            },
+            {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "exactDecisionMaterialization": false,
+              "fromState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "CANDIDATE"
+              },
+              "governanceDecisionRecord": null,
+              "objectId": "EVA-AUD-SOC-F07-REL-SOC-035",
+              "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+              "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+              "revision": 1,
+              "timestamp": "2026-09-07T02:46:39Z",
+              "toState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "RESEARCH_NEEDED"
+              }
+            }
+          ]
+        },
+        "id": "EVA-AUD-SOC-F07-REL-SOC-035",
+        "limitations": [
+          "Bundled topology contrast, not density manipulation; anonymous fixed ties and adoption notifications are not all friendship networks. Fourth/further notifications did not show detectable extra adoption in a small contrast.",
+          "Check reflection, homophily, selection into ties, latent traits, common environment, institutional assignment, simultaneity, reciprocity, correlated exposure, interference, endogenous formation, attrition and tie measurement error; longitudinal observation alone is not identification.",
+          "Degree held fixed, but topology dimensions remain bundled",
+          "No independent manipulation of density, isolated local clustering or generic reinforcement.",
+          "Partial interference between groups is an assumption, not a default fact about social networks.",
+          "Reference-group specification and identifying assumptions matter; theory is not empirical influence evidence.",
+          "Review is not independent replication of each cited experiment or direct metric-to-metric causality.",
+          "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism."
+        ],
+        "population": "Generalizability is limited to contexts compatible with the stated mechanism, conditions, and evidence.",
+        "quantitativeEstimate": null,
+        "reviewProvenance": {
+          "createdAt": "2026-09-07T02:46:39Z",
+          "createdByActorClass": "AUTOMATED_PROCESS_OR_AI",
+          "reviewedAt": null,
+          "reviewedBy": null,
+          "sourceSchema": "RI_V1_WITH_AE_SOURCE_FINDING_CANDIDATE_SIDECAR"
+        },
+        "revision": 1,
+        "schemaVersion": "1.0.0",
+        "sourceIds": [
+          "SRC-235",
+          "SRC-256",
+          "SRC-CAND-SOC-F07-001",
+          "SRC-CAND-SOC-F07-002"
+        ],
+        "studyDesignCharacterizations": [
+          {
+            "designType": "OTHER_SPECIFIED",
+            "specification": "EXPERIMENTAL; Randomized topology; interference is part of treatment, not independent unit noise"
+          },
+          {
+            "designType": "OTHER_SPECIFIED",
+            "specification": "EVIDENCE_SYNTHESIS; Multiple social-network theories and settings"
+          },
+          {
+            "designType": "OTHER_SPECIFIED",
+            "specification": "THEORETICAL_MECHANISTIC; Group and individual behavior identification"
+          },
+          {
+            "designType": "OTHER_SPECIFIED",
+            "specification": "THEORETICAL_MECHANISTIC; Grouped treatments with within-group spillovers"
+          },
+          {
+            "designType": "OTHER_SPECIFIED",
+            "specification": "EXPERIMENTAL; Randomized topology; interference is part of treatment, not independent unit noise"
+          }
+        ],
+        "uncertainty": [
+          "No graph weight; no numeric causal estimate invented"
+        ]
+      },
+      {
+        "assertion": {
+          "objectId": "REL-TEC-050",
+          "objectType": "RELATIONSHIP"
+        },
+        "confidence": "LOW",
+        "conflictingEvidence": {
+          "sourceIds": [
+            "SRC-CAND-SOC-F07-015"
+          ],
+          "summary": "Keep existing proposition unchanged pending direct evidence on filtering restrictions and later social-tie segregation. Content availability, follows and whole-network segregation are distinct; new feed experiment is bundled and asymmetric, not exact universal TEC-029 effect."
+        },
+        "context": "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+        "evidenceDisposition": "INSUFFICIENT",
+        "evidenceRationale": "Keep existing proposition unchanged pending direct evidence on filtering restrictions and later social-tie segregation. Content availability, follows and whole-network segregation are distinct; new feed experiment is bundled and asymmetric, not exact universal TEC-029 effect.",
+        "evidenceStrength": "LIMITED",
+        "governance": {
+          "activationStatus": "NOT_ELIGIBLE",
+          "authorityBasis": "V1_NATIVE",
+          "authorizedBy": null,
+          "blockStatus": "NONE",
+          "decisionDate": null,
+          "decisionOutcome": "NOT_DECIDED",
+          "decisionRationale": null,
+          "decisionRecord": null,
+          "effectiveVersion": null,
+          "lifecycleStatus": "RESEARCH_NEEDED",
+          "supersedesIds": [],
+          "transitionProvenance": [
+            {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "exactDecisionMaterialization": false,
+              "fromState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": null
+              },
+              "governanceDecisionRecord": null,
+              "objectId": "EVA-AUD-SOC-F07-REL-TEC-050",
+              "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+              "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+              "revision": 1,
+              "timestamp": "2026-09-07T02:46:39Z",
+              "toState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "CANDIDATE"
+              }
+            },
+            {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "exactDecisionMaterialization": false,
+              "fromState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "CANDIDATE"
+              },
+              "governanceDecisionRecord": null,
+              "objectId": "EVA-AUD-SOC-F07-REL-TEC-050",
+              "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+              "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+              "revision": 1,
+              "timestamp": "2026-09-07T02:46:39Z",
+              "toState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "RESEARCH_NEEDED"
+              }
+            }
+          ]
+        },
+        "id": "EVA-AUD-SOC-F07-REL-TEC-050",
+        "limitations": [
+          "Check reflection, homophily, selection into ties, latent traits, common environment, institutional assignment, simultaneity, reciprocity, correlated exposure, interference, endogenous formation, attrition and tie measurement error; longitudinal observation alone is not identification.",
+          "Composite reference cannot count as two independent studies; second cited component unresolved. Preserve canonical register unchanged.",
+          "Content exposure is not observed tie mixing; no direct TEC-029 to SOC-057 effect extracted.",
+          "No detected effects on some polarization/partisanship outcomes; feed bundle is not isolated filtering restrictiveness or whole-network segregation.",
+          "No full-network segregation measure; no detected effects on some distinct political outcomes.",
+          "Noncompliance/attrition, initial-setting strata and scope of users; direction asymmetric",
+          "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism."
+        ],
+        "population": "The proposed edge is causally interpretable at the stated scope. V2 implementation must preserve conditions, level transition, lag, and evidence rather than treating it as universal.",
+        "quantitativeEstimate": null,
+        "reviewProvenance": {
+          "createdAt": "2026-09-07T02:46:39Z",
+          "createdByActorClass": "AUTOMATED_PROCESS_OR_AI",
+          "reviewedAt": null,
+          "reviewedBy": null,
+          "sourceSchema": "RI_V1_WITH_AE_SOURCE_FINDING_CANDIDATE_SIDECAR"
+        },
+        "revision": 1,
+        "schemaVersion": "1.0.0",
+        "sourceIds": [
+          "SRC-505",
+          "SRC-509",
+          "SRC-CAND-SOC-F07-015"
+        ],
+        "studyDesignCharacterizations": [
+          {
+            "designType": "OTHER_SPECIFIED",
+            "specification": "EVIDENCE_SYNTHESIS; Science misinformation, audience and platform context"
+          },
+          {
+            "designType": "OTHER_SPECIFIED",
+            "specification": "Metadata alignment assessment only; no empirical design or direct scientific result inferred"
+          },
+          {
+            "designType": "OTHER_SPECIFIED",
+            "specification": "EXPERIMENTAL; Randomized feed setting; treatment bundle not single filtering component"
+          },
+          {
+            "designType": "OTHER_SPECIFIED",
+            "specification": "EXPERIMENTAL; Randomized feed setting; treatment bundle not single filtering component"
+          }
+        ],
+        "uncertainty": [
+          "No graph weight; no numeric causal estimate invented"
+        ]
+      },
+      {
+        "assertion": {
+          "objectId": "REL-CAND-SOC-F07-001",
+          "objectType": "RELATIONSHIP"
+        },
+        "confidence": "MODERATE",
+        "conflictingEvidence": {
+          "sourceIds": [],
+          "summary": "Only Freeman degree-based network centralization for a specified binary network: the complete aligned distribution of SOC-049 node degrees, plus node set, normalization and maximum-possible benchmark. Not a single ego value; not betweenness-, eigenvector- or closeness-based centralization; external inputs remain required."
+        },
+        "context": "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+        "evidenceDisposition": "SUPPORTS",
+        "evidenceRationale": "Only Freeman degree-based network centralization for a specified binary network: the complete aligned distribution of SOC-049 node degrees, plus node set, normalization and maximum-possible benchmark. Not a single ego value; not betweenness-, eigenvector- or closeness-based centralization; external inputs remain required.",
+        "evidenceStrength": "MODERATE",
+        "governance": {
+          "activationStatus": "NOT_ELIGIBLE",
+          "authorityBasis": "V1_NATIVE",
+          "authorizedBy": null,
+          "blockStatus": "NONE",
+          "decisionDate": null,
+          "decisionOutcome": "NOT_DECIDED",
+          "decisionRationale": null,
+          "decisionRecord": null,
+          "effectiveVersion": null,
+          "lifecycleStatus": "REVIEW_READY",
+          "supersedesIds": [],
+          "transitionProvenance": [
+            {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "exactDecisionMaterialization": false,
+              "fromState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": null
+              },
+              "governanceDecisionRecord": null,
+              "objectId": "EVA-REL-CAND-SOC-F07-001",
+              "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+              "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+              "revision": 1,
+              "timestamp": "2026-09-07T02:46:39Z",
+              "toState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "CANDIDATE"
+              }
+            },
+            {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "exactDecisionMaterialization": false,
+              "fromState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "CANDIDATE"
+              },
+              "governanceDecisionRecord": null,
+              "objectId": "EVA-REL-CAND-SOC-F07-001",
+              "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+              "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+              "revision": 1,
+              "timestamp": "2026-09-07T02:46:39Z",
+              "toState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "RESEARCH_NEEDED"
+              }
+            },
+            {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "exactDecisionMaterialization": false,
+              "fromState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "RESEARCH_NEEDED"
+              },
+              "governanceDecisionRecord": null,
+              "objectId": "EVA-REL-CAND-SOC-F07-001",
+              "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+              "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+              "revision": 1,
+              "timestamp": "2026-09-07T02:46:39Z",
+              "toState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "REVIEW_READY"
+              }
+            }
+          ]
+        },
+        "id": "EVA-REL-CAND-SOC-F07-001",
+        "limitations": [
+          "1978/79 issue dating; selected measure and benchmark required. No empirical causal claim.",
+          "Check reflection, homophily, selection into ties, latent traits, common environment, institutional assignment, simultaneity, reciprocity, correlated exposure, interference, endogenous formation, attrition and tie measurement error; longitudinal observation alone is not identification.",
+          "Not every centralization is degree-based; directedness, loops, normalization and valued-network versions require explicit selection. No single ego degree determines network centralization.",
+          "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism."
+        ],
+        "population": "Only Freeman degree-based network centralization for a specified binary network: the complete aligned distribution of SOC-049 node degrees, plus node set, normalization and maximum-possible benchmark. Not a single ego value; not betweenness-, eigenvector- or closeness-based centralization; external inputs remain required.",
+        "quantitativeEstimate": null,
+        "reviewProvenance": {
+          "createdAt": "2026-09-07T02:46:39Z",
+          "createdByActorClass": "AUTOMATED_PROCESS_OR_AI",
+          "reviewedAt": null,
+          "reviewedBy": null,
+          "sourceSchema": "RI_V1_WITH_AE_SOURCE_FINDING_CANDIDATE_SIDECAR"
+        },
+        "revision": 1,
+        "schemaVersion": "1.0.0",
+        "sourceIds": [
+          "SRC-255",
+          "SRC-CAND-SOC-F07-018"
+        ],
+        "studyDesignCharacterizations": [
+          {
+            "designType": "OTHER_SPECIFIED",
+            "specification": "DEFINITIONAL_CALCULATIONAL; Point centrality and graph centralization definitions"
+          },
+          {
+            "designType": "OTHER_SPECIFIED",
+            "specification": "DEFINITIONAL_CALCULATIONAL; Binary specified networks and selected degree centralization"
+          }
+        ],
+        "uncertainty": [
+          "No graph weight; no numeric causal estimate invented"
+        ]
+      }
+    ],
+    "existingDispositions": [
+      {
+        "consultedFamilyIds": [
+          "SOC-F07"
+        ],
+        "id": "AUD-REL-INS-047",
+        "ownerFamilyId": "INS-F09",
+        "questionOrDisposition": "REVISION_CANDIDATE",
+        "rationale": "Propose restricting institutional segregation to specified assignment/contact constraints preceding measured between-group tie mixing; exact institution, groups, metric and identification remain research-needed. Framework and mismatched composite diffusion source are not direct identified institutional-segregation evidence. Assignment can be a common cause, not an autonomous RDS effect.",
+        "recordIds": [
+          "REL-INS-047"
+        ],
+        "status": "RESEARCH_NEEDED"
+      },
+      {
+        "consultedFamilyIds": [
+          "SOC-F07"
+        ],
+        "id": "AUD-REL-RDS-0004",
+        "ownerFamilyId": "SOC-F04",
+        "questionOrDisposition": "RETAIN_AS_IS",
+        "rationale": "Retain equivalence only for matched active-contact tie definition, binary unweighted undirected graph, focal actor, boundary and window. No universal equivalence between personal-network size and every degree statistic.",
+        "recordIds": [
+          "REL-RDS-0004"
+        ],
+        "status": "REVIEW_READY"
+      },
+      {
+        "consultedFamilyIds": [
+          "SOC-F12"
+        ],
+        "id": "AUD-REL-RDS-0006",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "RETAIN_AS_IS",
+        "rationale": "Retain RELATED_METRIC; cross-cluster ties and member cross-group friendships have different denominators. Not an equality or causal link; no duplicate V1 proposition needed.",
+        "recordIds": [
+          "REL-RDS-0006"
+        ],
+        "status": "REVIEW_READY"
+      },
+      {
+        "consultedFamilyIds": [
+          "SOC-F03"
+        ],
+        "id": "AUD-REL-RDS-0013",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "RETAIN_AS_IS",
+        "rationale": "Retain NARROWER_THAN: closure among eligible open triads is a restricted tie-formation process. Risk set and interval must match; narrower-than does not imply equal rates.",
+        "recordIds": [
+          "REL-RDS-0013"
+        ],
+        "status": "REVIEW_READY"
+      },
+      {
+        "consultedFamilyIds": [],
+        "id": "AUD-REL-SOC-031",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "RETYPE_CANDIDATE",
+        "rationale": "Consider a noncausal conditional structural comparison of SOC-052 and SOC-053, not CAUSES; no exact replacement predicate approved. Global density and ego clustering share adjacency inputs but neither universally determines the other. Same-time summary contrast lacks independent temporal mechanism.",
+        "recordIds": [
+          "REL-SOC-031"
+        ],
+        "status": "RESEARCH_NEEDED"
+      },
+      {
+        "consultedFamilyIds": [],
+        "id": "AUD-REL-SOC-032",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "RETYPE_CANDIDATE",
+        "rationale": "Consider noncausal baseline-qualified mixing/segregation comparison, retaining SOC-054 and SOC-057 as distinct measures. Degree assortativity is not categorical segregation; group attributes, opportunities and null model unresolved. Shared mixing matrix can induce dependence.",
+        "recordIds": [
+          "REL-SOC-032"
+        ],
+        "status": "RESEARCH_NEEDED"
+      },
+      {
+        "consultedFamilyIds": [],
+        "id": "AUD-REL-SOC-033",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "RETYPE_CANDIDATE",
+        "rationale": "Consider noncausal scope-qualified association/related-metric representation of constraint and cross-cluster ties; do not force inverse causality. Actor contact weights versus network/actor community-crossing denominator; partitions and scope may differ. Mechanism of brokerage is not the constraint formula acting on another summary.",
+        "recordIds": [
+          "REL-SOC-033"
+        ],
+        "status": "RESEARCH_NEEDED"
+      },
+      {
+        "consultedFamilyIds": [],
+        "id": "AUD-REL-SOC-034",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "RETYPE_CANDIDATE",
+        "rationale": "Consider conditional noncausal mixing comparison; preserve distinction between cluster partitions and social-group segregation. Shared edge counts and complementary mixing can be mathematical; arbitrary communities need not equal groups. No independent lag or mechanism established.",
+        "recordIds": [
+          "REL-SOC-034"
+        ],
+        "status": "RESEARCH_NEEDED"
+      },
+      {
+        "consultedFamilyIds": [
+          "SOC-F08"
+        ],
+        "id": "AUD-REL-SOC-035",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "REVISION_CANDIDATE",
+        "rationale": "Propose a bounded topology-to-redundant-adoption-notification claim under fixed degree, stable assigned ties and a specific contagion task; whether SOC-053 to SOC-061 is exact enough remains unresolved. Clustering bundles path redundancy; SOC-061 uses independently reinforcing neighbors, not independent randomized messages. Preserve existing edge; no universal magnitude, lag or pathway.",
+        "recordIds": [
+          "REL-SOC-035"
+        ],
+        "status": "RESEARCH_NEEDED"
+      },
+      {
+        "consultedFamilyIds": [
+          "SOC-F07"
+        ],
+        "id": "AUD-REL-TEC-050",
+        "ownerFamilyId": "TEC-F04",
+        "questionOrDisposition": "RESEARCH_NEEDED",
+        "rationale": "Keep existing proposition unchanged pending direct evidence on filtering restrictions and later social-tie segregation. Content availability, follows and whole-network segregation are distinct; new feed experiment is bundled and asymmetric, not exact universal TEC-029 effect.",
+        "recordIds": [
+          "REL-TEC-050"
+        ],
+        "status": "RESEARCH_NEEDED"
+      }
+    ],
+    "gapQuestions": [
+      {
+        "consultedFamilyIds": [
+          "SOC-F07"
+        ],
+        "id": "HYP-SOC-F07-H01",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Degree causes itself through tie count",
+        "rationale": "Identity/formula contribution, not an independent force.",
+        "recordIds": [],
+        "status": "REJECTED_HYPOTHESIS"
+      },
+      {
+        "consultedFamilyIds": [
+          "SOC-F07"
+        ],
+        "id": "HYP-SOC-F07-H02",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Density causes local clustering at the same instant",
+        "rationale": "Existing retype path REL-SOC-031; shared adjacency and counterexamples preclude automatic causal expansion.",
+        "recordIds": [],
+        "status": "REJECTED_HYPOTHESIS"
+      },
+      {
+        "consultedFamilyIds": [
+          "SOC-F07"
+        ],
+        "id": "HYP-SOC-F07-H03",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Assortativity and segregation are universally causally interchangeable",
+        "rationale": "Degree versus group attributes and baseline-dependent mixing; existing retype path.",
+        "recordIds": [],
+        "status": "REJECTED_HYPOTHESIS"
+      },
+      {
+        "consultedFamilyIds": [
+          "SOC-F07"
+        ],
+        "id": "HYP-SOC-F07-H04",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Constraint causes fewer cross-cluster ties by formula alone",
+        "rationale": "Shared graph construction; existing review path, no new duplicate.",
+        "recordIds": [],
+        "status": "REJECTED_HYPOTHESIS"
+      },
+      {
+        "consultedFamilyIds": [
+          "SOC-F05",
+          "SOC-F07"
+        ],
+        "id": "HYP-SOC-F07-H05",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Clustering causes cooperation prevalence",
+        "rationale": "Fluid-network experiment changes partner choice and selection, not isolated local clustering.",
+        "recordIds": [],
+        "status": "RESEARCH_NEEDED"
+      },
+      {
+        "consultedFamilyIds": [
+          "SOC-F07"
+        ],
+        "id": "HYP-SOC-F07-H06",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Betweenness causes later information access",
+        "rationale": "Flow mechanism plausible, but geodesic metric and exact informational endpoint/temporal identification unresolved.",
+        "recordIds": [],
+        "status": "RESEARCH_NEEDED"
+      },
+      {
+        "consultedFamilyIds": [
+          "SOC-F07"
+        ],
+        "id": "HYP-SOC-F07-H07",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Eigenvector centrality is social influence",
+        "rationale": "Estimator and influence construct differ; randomized influence evidence does not establish equivalence.",
+        "recordIds": [],
+        "status": "REJECTED_HYPOTHESIS"
+      },
+      {
+        "consultedFamilyIds": [
+          "SOC-F07"
+        ],
+        "id": "HYP-SOC-F07-H08",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Degree-based centralization derives from degree distribution",
+        "rationale": "Retain one conditional derivation candidate, requiring whole distribution, graph boundary and benchmark.",
+        "recordIds": [
+          "REL-CAND-SOC-F07-001"
+        ],
+        "status": "REVIEW_READY"
+      },
+      {
+        "consultedFamilyIds": [
+          "SOC-F04",
+          "SOC-F07"
+        ],
+        "id": "HYP-SOC-F07-H09",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Personal network size universally equals degree",
+        "rationale": "Existing conditional mapping already governs only matched scope; no duplicate.",
+        "recordIds": [],
+        "status": "REJECTED_HYPOTHESIS"
+      },
+      {
+        "consultedFamilyIds": [
+          "SOC-F07",
+          "SOC-F08"
+        ],
+        "id": "HYP-SOC-F07-H10",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Dense network makes exposure cause adoption more strongly",
+        "rationale": "No exact governed exposure-to-outcome edge with aligned moderator experiment established; density is not clustering.",
+        "recordIds": [],
+        "status": "RESEARCH_NEEDED"
+      },
+      {
+        "consultedFamilyIds": [
+          "SOC-F07",
+          "SOC-F08"
+        ],
+        "id": "HYP-SOC-F07-H11",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Centrality to exposure to behavior is a demonstrated pathway",
+        "rationale": "Reachability and separately supported segments are not transmitted-effect evidence.",
+        "recordIds": [],
+        "status": "RESEARCH_NEEDED"
+      },
+      {
+        "consultedFamilyIds": [
+          "SOC-F03",
+          "SOC-F07"
+        ],
+        "id": "HYP-SOC-F07-H12",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Network rewiring directly changes degree RDS",
+        "rationale": "Real tie configuration can change, but no full canonical network-state Driver target; rate Drivers do not encode adjacency.",
+        "recordIds": [],
+        "status": "BLOCKED_NEEDS_GOVERNANCE_INPUT"
+      },
+      {
+        "consultedFamilyIds": [],
+        "id": "HYP-SOC-F07-H13",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Friendship addition edits a PSYWERX Relationship",
+        "rationale": "Real dyadic tie is not a scientific proposition.",
+        "recordIds": [],
+        "status": "REJECTED_HYPOTHESIS"
+      },
+      {
+        "consultedFamilyIds": [
+          "SOC-F08"
+        ],
+        "id": "HYP-SOC-F07-H14",
+        "ownerFamilyId": "SOC-F08",
+        "questionOrDisposition": "Peer correlation proves contagion",
+        "rationale": "Reflection, homophily, latent traits and shared environment defeat that inference.",
+        "recordIds": [],
+        "status": "REJECTED_HYPOTHESIS"
+      },
+      {
+        "consultedFamilyIds": [
+          "SOC-F07"
+        ],
+        "id": "HYP-SOC-F07-H15",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Cultural homophily causes assortativity",
+        "rationale": "Similarity, opportunity, selection and influence not separated; attribute and endpoint operationalization unresolved.",
+        "recordIds": [],
+        "status": "RESEARCH_NEEDED"
+      },
+      {
+        "consultedFamilyIds": [
+          "SOC-F07"
+        ],
+        "id": "HYP-SOC-F07-H16",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Illness causes less network bridging",
+        "rationale": "Longitudinal association in capped older-adult ego networks does not eliminate health selection or identify exact SOC-056.",
+        "recordIds": [],
+        "status": "RESEARCH_NEEDED"
+      },
+      {
+        "consultedFamilyIds": [
+          "ENV-F05",
+          "SOC-F07"
+        ],
+        "id": "HYP-SOC-F07-H17",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Seating proximity causes closure rate",
+        "rationale": "Random seating affects friendship, not open-triad hazard; ENV-034 is personal-space encroachment, not geometric distance.",
+        "recordIds": [],
+        "status": "RESEARCH_NEEDED"
+      },
+      {
+        "consultedFamilyIds": [
+          "SOC-F07",
+          "TEC-F04"
+        ],
+        "id": "HYP-SOC-F07-H18",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Algorithmic filtering causes network segregation",
+        "rationale": "Existing REL-TEC-050 review, not a duplicate edge; feed/exposure/follow mixing not same construct.",
+        "recordIds": [],
+        "status": "RESEARCH_NEEDED"
+      },
+      {
+        "consultedFamilyIds": [
+          "SOC-F06",
+          "SOC-F07"
+        ],
+        "id": "HYP-SOC-F07-H19",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Closeness causes resource control",
+        "rationale": "Flow and resource access mechanism needs matching path assumptions and exact resource-control construct.",
+        "recordIds": [],
+        "status": "RESEARCH_NEEDED"
+      },
+      {
+        "consultedFamilyIds": [
+          "SOC-F07"
+        ],
+        "id": "HYP-SOC-F07-H20",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Component fragmentation changes directly through node deletion",
+        "rationale": "RDS is recalculated; node/boundary operation lacks a complete Driver target; blocked derivation metadata preserved.",
+        "recordIds": [],
+        "status": "BLOCKED_NEEDS_GOVERNANCE_INPUT"
+      },
+      {
+        "consultedFamilyIds": [
+          "SOC-F07"
+        ],
+        "id": "HYP-SOC-F07-H21",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "A static position TRANSITIONS_TO later behavior",
+        "rationale": "Different constructs are not qualified states of one entity; dynamic causality needs independent evidence.",
+        "recordIds": [],
+        "status": "REJECTED_HYPOTHESIS"
+      },
+      {
+        "consultedFamilyIds": [
+          "SOC-F07"
+        ],
+        "id": "HYP-SOC-F07-H22",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Closure causes local clustering purely by completing triangles",
+        "rationale": "Triangle-count contribution to snapshot statistic is derivation, not an extra propagated effect; interval and denominator differ.",
+        "recordIds": [],
+        "status": "REJECTED_HYPOTHESIS"
+      },
+      {
+        "consultedFamilyIds": [],
+        "id": "HYP-SOC-F07-H23",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Observed storm proves all later tie effects",
+        "rationale": "Occurrence verification cannot identify every consequence; quasi-experimental comparison still has assumptions.",
+        "recordIds": [],
+        "status": "REJECTED_HYPOTHESIS"
+      },
+      {
+        "consultedFamilyIds": [
+          "SOC-F07"
+        ],
+        "id": "HYP-SOC-F07-H24",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "High-degree seeding is universally best",
+        "rationale": "Outcome-specific trial and review do not support universal superiority or recommendation.",
+        "recordIds": [],
+        "status": "REJECTED_HYPOTHESIS"
+      },
+      {
+        "consultedFamilyIds": [
+          "PSY-F03",
+          "SOC-F07"
+        ],
+        "id": "HYP-SOC-F07-H25",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Social isolation equals zero degree",
+        "rationale": "Observed isolate in chosen boundary is not perceived isolation/belonging; ties outside sample may exist.",
+        "recordIds": [],
+        "status": "REJECTED_HYPOTHESIS"
+      },
+      {
+        "consultedFamilyIds": [
+          "SOC-F07"
+        ],
+        "id": "HYP-SOC-F07-H26",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Development raises triadic closure",
+        "rationale": "Observed preschool network emergence is not isolated biological maturation; no canonical developmental Driver substituted.",
+        "recordIds": [],
+        "status": "RESEARCH_NEEDED"
+      },
+      {
+        "consultedFamilyIds": [
+          "SOC-F07"
+        ],
+        "id": "HYP-SOC-F07-H27",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Betweenness and degree association is construction-free",
+        "rationale": "Shared network and graph size require conditional operationalizations and a scoped empirical estimate.",
+        "recordIds": [],
+        "status": "RESEARCH_NEEDED"
+      },
+      {
+        "consultedFamilyIds": [
+          "SOC-F07"
+        ],
+        "id": "HYP-SOC-F07-H28",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Network metrics realize the latent real network without error",
+        "rationale": "Representation, estimator and real network are distinct; missing ties and boundaries matter.",
+        "recordIds": [],
+        "status": "REJECTED_HYPOTHESIS"
+      },
+      {
+        "consultedFamilyIds": [
+          "SOC-F07"
+        ],
+        "id": "HYP-SOC-F07-H29",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "A network is compositionally constituted by its centrality scores",
+        "rationale": "Scores do not uniquely specify ties; no composition edge from a metric to real network.",
+        "recordIds": [],
+        "status": "REJECTED_HYPOTHESIS"
+      }
+    ],
+    "ownership": [
+      {
+        "consultedFamilyIds": [],
+        "id": "OWN-REL-CAND-SOC-F07-001",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Only Freeman degree-based network centralization for a specified binary network: the complete aligned distribution of SOC-049 node degrees, plus node set, normalization and maximum-possible benchmark. Not a single ego value; not betweenness-, eigenvector- or closeness-based centralization; external inputs remain required.",
+        "rationale": "Derived-state Family owns dependency; one conditional scientific proposition, no V3 duplicate",
+        "recordIds": [
+          "REL-CAND-SOC-F07-001"
+        ],
+        "status": "REVIEW_READY"
+      }
+    ],
+    "relationshipCandidates": [
+      {
+        "applicability": {
+          "analyticUnit": "Whole bounded network and all node degree values",
+          "context": "Only Freeman degree-based network centralization for a specified binary network: the complete aligned distribution of SOC-049 node degrees, plus node set, normalization and maximum-possible benchmark. Not a single ego value; not betweenness-, eigenvector- or closeness-based centralization; external inputs remain required.",
+          "populationOrSystem": "Only Freeman degree-based network centralization for a specified binary network: the complete aligned distribution of SOC-049 node degrees, plus node set, normalization and maximum-possible benchmark. Not a single ego value; not betweenness-, eigenvector- or closeness-based centralization; external inputs remain required."
+        },
+        "associationSpecification": null,
+        "boundaryConditions": "Only Freeman degree-based network centralization for a specified binary network: the complete aligned distribution of SOC-049 node degrees, plus node set, normalization and maximum-possible benchmark. Not a single ego value; not betweenness-, eigenvector- or closeness-based centralization; external inputs remain required.",
+        "causalClaim": false,
+        "causalClaimRole": null,
+        "causalLag": null,
+        "causalReviewGate": null,
+        "combinationRule": null,
+        "compatibility": {
+          "authorityStatus": "V1_LIFECYCLE",
+          "blockedFields": [
+            "humanScientificGovernance",
+            "activation",
+            "selectedOperationalization"
+          ],
+          "legacyRecord": null,
+          "legacyRecordHash": null,
+          "legacyRelationFamily": null,
+          "legacyScientificFields": null,
+          "migrationCompleteness": "INCOMPLETE",
+          "sourceSchema": "RELATIONSHIP_V1",
+          "v1Executability": "NOT_EXECUTABLE"
+        },
+        "evidenceAssessmentIds": [
+          "EVA-REL-CAND-SOC-F07-001"
+        ],
+        "exposurePattern": null,
+        "functionalForm": null,
+        "governance": {
+          "activationStatus": "NOT_ELIGIBLE",
+          "authorityBasis": "V1_NATIVE",
+          "authorizedBy": null,
+          "blockStatus": "NONE",
+          "decisionDate": null,
+          "decisionOutcome": "NOT_DECIDED",
+          "decisionRationale": null,
+          "decisionRecord": null,
+          "effectiveVersion": null,
+          "lifecycleStatus": "REVIEW_READY",
+          "supersedesIds": [],
+          "transitionProvenance": [
+            {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "exactDecisionMaterialization": false,
+              "fromState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": null
+              },
+              "governanceDecisionRecord": null,
+              "objectId": "REL-CAND-SOC-F07-001",
+              "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+              "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+              "revision": 1,
+              "timestamp": "2026-09-07T02:46:39Z",
+              "toState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "CANDIDATE"
+              }
+            },
+            {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "exactDecisionMaterialization": false,
+              "fromState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "CANDIDATE"
+              },
+              "governanceDecisionRecord": null,
+              "objectId": "REL-CAND-SOC-F07-001",
+              "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+              "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+              "revision": 1,
+              "timestamp": "2026-09-07T02:46:39Z",
+              "toState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "RESEARCH_NEEDED"
+              }
+            },
+            {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "exactDecisionMaterialization": false,
+              "fromState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "RESEARCH_NEEDED"
+              },
+              "governanceDecisionRecord": null,
+              "objectId": "REL-CAND-SOC-F07-001",
+              "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+              "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+              "revision": 1,
+              "timestamp": "2026-09-07T02:46:39Z",
+              "toState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "REVIEW_READY"
+              }
+            }
+          ]
+        },
+        "id": "REL-CAND-SOC-F07-001",
+        "legacyDirectness": null,
+        "mechanism": "Calculation dependency, not causal force: compare the complete degree distribution with its specified maximum benchmark.",
+        "moderatedRelationshipId": null,
+        "moderationDirection": null,
+        "moderatorSpecifications": [],
+        "persistence": null,
+        "polarity": null,
+        "predicate": "DERIVED_FROM",
+        "rdsSafeguards": null,
+        "relationFamily": "DERIVATIONAL",
+        "revision": 1,
+        "schemaVersion": "1.0.0",
+        "sourceEntityId": "RDS-0006",
+        "sourceEntityType": "RELATIONAL_DERIVED_STATE",
+        "sourceIds": [
+          "SRC-255",
+          "SRC-CAND-SOC-F07-018"
+        ],
+        "symmetry": "DIRECTED",
+        "targetEntityId": "SOC-049",
+        "targetEntityType": "RELATIONAL_DERIVED_STATE",
+        "temporalSpecification": null
+      }
+    ],
+    "sourceQueue": [
+      {
+        "consultedFamilyIds": [],
+        "id": "SRCQ-SRC-CAND-SOC-F07-001",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Candidate registration/review only: Identification of Endogenous Social Effects: The Reflection Problem",
+        "rationale": "Reference-group specification and identifying assumptions matter; theory is not empirical influence evidence.",
+        "recordIds": [
+          "SRC-CAND-SOC-F07-001"
+        ],
+        "status": "RESEARCH_NEEDED"
+      },
+      {
+        "consultedFamilyIds": [],
+        "id": "SRCQ-SRC-CAND-SOC-F07-002",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Candidate registration/review only: Toward Causal Inference With Interference",
+        "rationale": "Partial interference between groups is an assumption, not a default fact about social networks.",
+        "recordIds": [
+          "SRC-CAND-SOC-F07-002"
+        ],
+        "status": "RESEARCH_NEEDED"
+      },
+      {
+        "consultedFamilyIds": [],
+        "id": "SRCQ-SRC-CAND-SOC-F07-003",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Candidate registration/review only: Effects of missing data in social networks",
+        "rationale": "Sensitivity simulations are not empirical causal effects. Preprint and journal article are one work.",
+        "recordIds": [
+          "SRC-CAND-SOC-F07-003"
+        ],
+        "status": "RESEARCH_NEEDED"
+      },
+      {
+        "consultedFamilyIds": [],
+        "id": "SRCQ-SRC-CAND-SOC-F07-004",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Candidate registration/review only: Centrality and network flow",
+        "rationale": "Shortest-path, replication and transfer assumptions differ; simulations do not establish empirical brokerage effects.",
+        "recordIds": [
+          "SRC-CAND-SOC-F07-004"
+        ],
+        "status": "RESEARCH_NEEDED"
+      },
+      {
+        "consultedFamilyIds": [],
+        "id": "SRCQ-SRC-CAND-SOC-F07-005",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Candidate registration/review only: Tendencies toward triadic closure: Field experimental evidence",
+        "rationale": "Common-follower signaling and reciprocal follow response are narrower than an unrestricted closure hazard. Control differences not detected do not prove equivalence; ethics of research accounts do not authorize practice.",
+        "recordIds": [
+          "SRC-CAND-SOC-F07-005"
+        ],
+        "status": "RESEARCH_NEEDED"
+      },
+      {
+        "consultedFamilyIds": [],
+        "id": "SRCQ-SRC-CAND-SOC-F07-006",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Candidate registration/review only: Short-term and long-term effects of a social network intervention on friendships among university students",
+        "rationale": "Attendance nonrandom; group constraints and interference matter. Friendship incidence is not conditional triadic closure; SAOM is not proof of mediation.",
+        "recordIds": [
+          "SRC-CAND-SOC-F07-006"
+        ],
+        "status": "RESEARCH_NEEDED"
+      },
+      {
+        "consultedFamilyIds": [],
+        "id": "SRCQ-SRC-CAND-SOC-F07-007",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Candidate registration/review only: Dynamic social networks promote cooperation in experiments with humans",
+        "rationale": "Updating opportunity, selection and topology co-evolve; cannot isolate a causal local-clustering coefficient.",
+        "recordIds": [
+          "SRC-CAND-SOC-F07-007"
+        ],
+        "status": "RESEARCH_NEEDED"
+      },
+      {
+        "consultedFamilyIds": [],
+        "id": "SRCQ-SRC-CAND-SOC-F07-008",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Candidate registration/review only: Social network targeting to maximise population behaviour change: a cluster randomised controlled trial",
+        "rationale": "Seed selection does not manipulate degree; product, nomination, implementation and interference limit transfer.",
+        "recordIds": [
+          "SRC-CAND-SOC-F07-008"
+        ],
+        "status": "RESEARCH_NEEDED"
+      },
+      {
+        "consultedFamilyIds": [],
+        "id": "SRCQ-SRC-CAND-SOC-F07-009",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Candidate registration/review only: Social network interventions for health behaviours and outcomes: A systematic review and meta-analysis",
+        "rationale": "Review includes primary-study evidence that must not be counted again as replication; no exact SOC-102 pooled estimate extracted.",
+        "recordIds": [
+          "SRC-CAND-SOC-F07-009"
+        ],
+        "status": "RESEARCH_NEEDED"
+      },
+      {
+        "consultedFamilyIds": [],
+        "id": "SRCQ-SRC-CAND-SOC-F07-010",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Candidate registration/review only: Displaying Things in Common to Encourage Friendship Formation: A Large Randomized Field Experiment",
+        "rationale": "Not an open-triad risk-set experiment; journal-version bibliographic mapping not relied upon.",
+        "recordIds": [
+          "SRC-CAND-SOC-F07-010"
+        ],
+        "status": "RESEARCH_NEEDED"
+      },
+      {
+        "consultedFamilyIds": [],
+        "id": "SRCQ-SRC-CAND-SOC-F07-011",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Candidate registration/review only: A natural experiment of social network formation and dynamics",
+        "rationale": "Nonrandom disaster exposure; displacement, simultaneous behavior and boundary change. Transitivity is not closure hazard.",
+        "recordIds": [
+          "SRC-CAND-SOC-F07-011"
+        ],
+        "status": "RESEARCH_NEEDED"
+      },
+      {
+        "consultedFamilyIds": [],
+        "id": "SRCQ-SRC-CAND-SOC-F07-012",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Candidate registration/review only: Proximity can induce diverse friendships: A large randomized classroom experiment",
+        "rationale": "Seating distance is not ENV-034 personal-space encroachment and friendship is not conditional triadic closure.",
+        "recordIds": [
+          "SRC-CAND-SOC-F07-012"
+        ],
+        "status": "RESEARCH_NEEDED"
+      },
+      {
+        "consultedFamilyIds": [],
+        "id": "SRCQ-SRC-CAND-SOC-F07-013",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Candidate registration/review only: Chronic illness and social network bridging in later life",
+        "rationale": "Health selection, capped ego nominations and confounding remain; mediation wording is not transmitted causal-effect evidence.",
+        "recordIds": [
+          "SRC-CAND-SOC-F07-013"
+        ],
+        "status": "RESEARCH_NEEDED"
+      },
+      {
+        "consultedFamilyIds": [],
+        "id": "SRCQ-SRC-CAND-SOC-F07-014",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Candidate registration/review only: Introduction to stochastic actor-based models for network dynamics",
+        "rationale": "Model assumptions, selection specification, wave spacing and time homogeneity require examination; parameters are not automatically identified causal effects.",
+        "recordIds": [
+          "SRC-CAND-SOC-F07-014"
+        ],
+        "status": "RESEARCH_NEEDED"
+      },
+      {
+        "consultedFamilyIds": [],
+        "id": "SRCQ-SRC-CAND-SOC-F07-015",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Candidate registration/review only: The political effects of Xs feed algorithm",
+        "rationale": "No detected effects on some polarization/partisanship outcomes; feed bundle is not isolated filtering restrictiveness or whole-network segregation.",
+        "recordIds": [
+          "SRC-CAND-SOC-F07-015"
+        ],
+        "status": "RESEARCH_NEEDED"
+      },
+      {
+        "consultedFamilyIds": [],
+        "id": "SRCQ-SRC-CAND-SOC-F07-016",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Candidate registration/review only: Mixing patterns in networks",
+        "rationale": "Definitions and models are not empirical direction-of-causation evidence.",
+        "recordIds": [
+          "SRC-CAND-SOC-F07-016"
+        ],
+        "status": "RESEARCH_NEEDED"
+      },
+      {
+        "consultedFamilyIds": [],
+        "id": "SRCQ-SRC-CAND-SOC-F07-017",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Candidate registration/review only: Fundamental principles of network formation among preschool children",
+        "rationale": "Composition change and model assumptions; not randomized biological development or proof of a universal closure trajectory.",
+        "recordIds": [
+          "SRC-CAND-SOC-F07-017"
+        ],
+        "status": "RESEARCH_NEEDED"
+      },
+      {
+        "consultedFamilyIds": [],
+        "id": "SRCQ-SRC-CAND-SOC-F07-018",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Candidate registration/review only: UCINET Help: Network > Centrality > Degree",
+        "rationale": "Not every centralization is degree-based; directedness, loops, normalization and valued-network versions require explicit selection. No single ego degree determines network centralization.",
+        "recordIds": [
+          "SRC-CAND-SOC-F07-018"
+        ],
+        "status": "RESEARCH_NEEDED"
+      }
+    ],
+    "unresolved": [
+      {
+        "consultedFamilyIds": [
+          "SOC-F05",
+          "SOC-F07"
+        ],
+        "id": "HYP-SOC-F07-H05",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Clustering causes cooperation prevalence",
+        "rationale": "Fluid-network experiment changes partner choice and selection, not isolated local clustering.",
+        "recordIds": [],
+        "status": "RESEARCH_NEEDED"
+      },
+      {
+        "consultedFamilyIds": [
+          "SOC-F07"
+        ],
+        "id": "HYP-SOC-F07-H06",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Betweenness causes later information access",
+        "rationale": "Flow mechanism plausible, but geodesic metric and exact informational endpoint/temporal identification unresolved.",
+        "recordIds": [],
+        "status": "RESEARCH_NEEDED"
+      },
+      {
+        "consultedFamilyIds": [
+          "SOC-F07",
+          "SOC-F08"
+        ],
+        "id": "HYP-SOC-F07-H10",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Dense network makes exposure cause adoption more strongly",
+        "rationale": "No exact governed exposure-to-outcome edge with aligned moderator experiment established; density is not clustering.",
+        "recordIds": [],
+        "status": "RESEARCH_NEEDED"
+      },
+      {
+        "consultedFamilyIds": [
+          "SOC-F07",
+          "SOC-F08"
+        ],
+        "id": "HYP-SOC-F07-H11",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Centrality to exposure to behavior is a demonstrated pathway",
+        "rationale": "Reachability and separately supported segments are not transmitted-effect evidence.",
+        "recordIds": [],
+        "status": "RESEARCH_NEEDED"
+      },
+      {
+        "consultedFamilyIds": [
+          "SOC-F03",
+          "SOC-F07"
+        ],
+        "id": "HYP-SOC-F07-H12",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Network rewiring directly changes degree RDS",
+        "rationale": "Real tie configuration can change, but no full canonical network-state Driver target; rate Drivers do not encode adjacency.",
+        "recordIds": [],
+        "status": "BLOCKED_NEEDS_GOVERNANCE_INPUT"
+      },
+      {
+        "consultedFamilyIds": [
+          "SOC-F07"
+        ],
+        "id": "HYP-SOC-F07-H15",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Cultural homophily causes assortativity",
+        "rationale": "Similarity, opportunity, selection and influence not separated; attribute and endpoint operationalization unresolved.",
+        "recordIds": [],
+        "status": "RESEARCH_NEEDED"
+      },
+      {
+        "consultedFamilyIds": [
+          "SOC-F07"
+        ],
+        "id": "HYP-SOC-F07-H16",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Illness causes less network bridging",
+        "rationale": "Longitudinal association in capped older-adult ego networks does not eliminate health selection or identify exact SOC-056.",
+        "recordIds": [],
+        "status": "RESEARCH_NEEDED"
+      },
+      {
+        "consultedFamilyIds": [
+          "ENV-F05",
+          "SOC-F07"
+        ],
+        "id": "HYP-SOC-F07-H17",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Seating proximity causes closure rate",
+        "rationale": "Random seating affects friendship, not open-triad hazard; ENV-034 is personal-space encroachment, not geometric distance.",
+        "recordIds": [],
+        "status": "RESEARCH_NEEDED"
+      },
+      {
+        "consultedFamilyIds": [
+          "SOC-F07",
+          "TEC-F04"
+        ],
+        "id": "HYP-SOC-F07-H18",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Algorithmic filtering causes network segregation",
+        "rationale": "Existing REL-TEC-050 review, not a duplicate edge; feed/exposure/follow mixing not same construct.",
+        "recordIds": [],
+        "status": "RESEARCH_NEEDED"
+      },
+      {
+        "consultedFamilyIds": [
+          "SOC-F06",
+          "SOC-F07"
+        ],
+        "id": "HYP-SOC-F07-H19",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Closeness causes resource control",
+        "rationale": "Flow and resource access mechanism needs matching path assumptions and exact resource-control construct.",
+        "recordIds": [],
+        "status": "RESEARCH_NEEDED"
+      },
+      {
+        "consultedFamilyIds": [
+          "SOC-F07"
+        ],
+        "id": "HYP-SOC-F07-H20",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Component fragmentation changes directly through node deletion",
+        "rationale": "RDS is recalculated; node/boundary operation lacks a complete Driver target; blocked derivation metadata preserved.",
+        "recordIds": [],
+        "status": "BLOCKED_NEEDS_GOVERNANCE_INPUT"
+      },
+      {
+        "consultedFamilyIds": [
+          "SOC-F07"
+        ],
+        "id": "HYP-SOC-F07-H26",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Development raises triadic closure",
+        "rationale": "Observed preschool network emergence is not isolated biological maturation; no canonical developmental Driver substituted.",
+        "recordIds": [],
+        "status": "RESEARCH_NEEDED"
+      },
+      {
+        "consultedFamilyIds": [
+          "SOC-F07"
+        ],
+        "id": "HYP-SOC-F07-H27",
+        "ownerFamilyId": "SOC-F07",
+        "questionOrDisposition": "Betweenness and degree association is construction-free",
+        "rationale": "Shared network and graph size require conditional operationalizations and a scoped empirical estimate.",
+        "recordIds": [],
+        "status": "RESEARCH_NEEDED"
+      }
+    ]
+  },
+  "passB": {
+    "authorizations": [],
+    "effectAssertions": [
+      {
+        "change": "UNKNOWN",
+        "claimSemantics": "CAUSAL",
+        "contribution": {
+          "groupId": "CONTRIB-SOC-F07-001",
+          "reconciliation": null,
+          "relatedAssertionIds": [],
+          "role": "PRIMARY"
+        },
+        "evidenceAssessmentIds": [
+          "EVA-AE-CAND-SOC-F07-001"
+        ],
+        "exposureProfile": {
+          "doseIntensity": null,
+          "duration": null,
+          "frequency": null,
+          "reach": null,
+          "timing": null
+        },
+        "governance": {
+          "activationStatus": "NOT_ELIGIBLE",
+          "authorityBasis": "V1_NATIVE",
+          "authorizedBy": null,
+          "blockStatus": "NONE",
+          "decisionDate": null,
+          "decisionOutcome": "NOT_DECIDED",
+          "decisionRationale": null,
+          "decisionRecord": null,
+          "effectiveVersion": null,
+          "lifecycleStatus": "RESEARCH_NEEDED",
+          "supersedesIds": [],
+          "transitionProvenance": [
+            {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "exactDecisionMaterialization": false,
+              "fromState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": null
+              },
+              "governanceDecisionRecord": null,
+              "objectId": "EA-CAND-SOC-F07-001",
+              "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+              "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+              "revision": 1,
+              "timestamp": "2026-09-07T02:46:39Z",
+              "toState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "CANDIDATE"
+              }
+            },
+            {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "exactDecisionMaterialization": false,
+              "fromState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "CANDIDATE"
+              },
+              "governanceDecisionRecord": null,
+              "objectId": "EA-CAND-SOC-F07-001",
+              "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+              "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+              "revision": 1,
+              "timestamp": "2026-09-07T02:46:39Z",
+              "toState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "RESEARCH_NEEDED"
+              }
+            }
+          ]
+        },
+        "grounding": {
+          "causalIdentificationRationale": "Exact SOC-102 effect remains unresolved despite source-specific design leverage",
+          "derivationEntailed": "NO",
+          "duplicatePropagationControl": null,
+          "representedDriverId": null
+        },
+        "id": "EA-CAND-SOC-F07-001",
+        "inferenceProvenance": null,
+        "intendedChange": null,
+        "interaction": {
+          "evidenceAssessmentIds": [],
+          "mode": "NONE",
+          "otherEffectIds": []
+        },
+        "knowledgeStatus": "INSUFFICIENT_EVIDENCE",
+        "mechanism": "Mutual-follower cue and reciprocal follow may operationalize a restricted open triad, not the general SOC-102 risk set.",
+        "mechanismStatus": "PARTIAL",
+        "mechanisticDriverIds": [],
+        "moderatorLinks": [],
+        "observedChange": null,
+        "occurrenceId": null,
+        "otherSpecified": null,
+        "outcomes": [],
+        "productionMethod": "HYPOTHESIS",
+        "property": "LEVEL",
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+          ],
+          "method": "Structured evidence search and skeptical candidate audit",
+          "originReferences": [
+            "AUD-SOC-F07-AE-V1-20260906-001",
+            "f0be9c24288bd128231e0d1243b34c03ad055906",
+            "scripts/soc_f07_research_inputs.py"
+          ],
+          "recordedAt": "2026-09-07T02:46:39Z"
+        },
+        "qualifiers": {
+          "distribution": null,
+          "evaluation": {
+            "criterion": null,
+            "stakeholder": null,
+            "valence": "NOT_EVALUATED"
+          },
+          "prerequisites": [
+            "Exact risk set and protocol; voluntary participation; independently assessed control, feasibility, legal, ethical and applicability conditions"
+          ],
+          "reach": null,
+          "risks": [
+            "Mutual-follower cue and reciprocal follow may operationalize a restricted open triad, not the general SOC-102 risk set."
+          ],
+          "subgroups": [],
+          "unintendedConsequences": [
+            "Selection/exclusion, privacy intrusion, stigma, coercion and unequal contact opportunities require review"
+          ]
+        },
+        "recordClass": "SCIENTIFIC_RECORD",
+        "revision": 1,
+        "schemaVersion": "1.0.0",
+        "scope": {
+          "boundaryConditions": "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+          "context": "Mutual-follower cue and reciprocal follow may operationalize a restricted open triad, not the general SOC-102 risk set.",
+          "measurement": "SOC-102 conditional open-triad closure hazard/rate, not snapshot transitivity, all friendship incidence or raw triangle count; mapping unresolved",
+          "population": "7,311 Twitter targets linked to 214 intermediary accounts; directed follows",
+          "timing": "Source-specific tie formation window; baseline open-triad risk set and censoring require exact alignment"
+        },
+        "targetId": "SOC-102",
+        "targetKind": "DRIVER",
+        "targetLayers": [
+          "SOC"
+        ],
+        "typeId": "HT-CAND-SOC-F07-001",
+        "uncertainty": [
+          "Mutual-follower cue and reciprocal follow may operationalize a restricted open triad, not the general SOC-102 risk set.",
+          "Check reflection, homophily, selection into ties, latent traits, common environment, institutional assignment, simultaneity, reciprocity, correlated exposure, interference, endogenous formation, attrition and tie measurement error; longitudinal observation alone is not identification."
+        ]
+      },
+      {
+        "change": "UNKNOWN",
+        "claimSemantics": "CAUSAL",
+        "contribution": {
+          "groupId": "CONTRIB-SOC-F07-002",
+          "reconciliation": null,
+          "relatedAssertionIds": [],
+          "role": "PRIMARY"
+        },
+        "evidenceAssessmentIds": [
+          "EVA-AE-CAND-SOC-F07-002"
+        ],
+        "exposureProfile": {
+          "doseIntensity": null,
+          "duration": null,
+          "frequency": null,
+          "reach": null,
+          "timing": null
+        },
+        "governance": {
+          "activationStatus": "NOT_ELIGIBLE",
+          "authorityBasis": "V1_NATIVE",
+          "authorizedBy": null,
+          "blockStatus": "NONE",
+          "decisionDate": null,
+          "decisionOutcome": "NOT_DECIDED",
+          "decisionRationale": null,
+          "decisionRecord": null,
+          "effectiveVersion": null,
+          "lifecycleStatus": "RESEARCH_NEEDED",
+          "supersedesIds": [],
+          "transitionProvenance": [
+            {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "exactDecisionMaterialization": false,
+              "fromState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": null
+              },
+              "governanceDecisionRecord": null,
+              "objectId": "EA-CAND-SOC-F07-002",
+              "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+              "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+              "revision": 1,
+              "timestamp": "2026-09-07T02:46:39Z",
+              "toState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "CANDIDATE"
+              }
+            },
+            {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "exactDecisionMaterialization": false,
+              "fromState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "CANDIDATE"
+              },
+              "governanceDecisionRecord": null,
+              "objectId": "EA-CAND-SOC-F07-002",
+              "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+              "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+              "revision": 1,
+              "timestamp": "2026-09-07T02:46:39Z",
+              "toState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "RESEARCH_NEEDED"
+              }
+            }
+          ]
+        },
+        "grounding": {
+          "causalIdentificationRationale": "Exact SOC-102 effect remains unresolved despite source-specific design leverage",
+          "derivationEntailed": "NO",
+          "duplicatePropagationControl": null,
+          "representedDriverId": null
+        },
+        "id": "EA-CAND-SOC-F07-002",
+        "inferenceProvenance": null,
+        "intendedChange": null,
+        "interaction": {
+          "evidenceAssessmentIds": [],
+          "mode": "NONE",
+          "otherEffectIds": []
+        },
+        "knowledgeStatus": "INSUFFICIENT_EVIDENCE",
+        "mechanism": "Attendance selection, group composition, tie nomination caps and closure-risk-set mismatch.",
+        "mechanismStatus": "PARTIAL",
+        "mechanisticDriverIds": [],
+        "moderatorLinks": [],
+        "observedChange": null,
+        "occurrenceId": null,
+        "otherSpecified": null,
+        "outcomes": [],
+        "productionMethod": "HYPOTHESIS",
+        "property": "LEVEL",
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+          ],
+          "method": "Structured evidence search and skeptical candidate audit",
+          "originReferences": [
+            "AUD-SOC-F07-AE-V1-20260906-001",
+            "f0be9c24288bd128231e0d1243b34c03ad055906",
+            "scripts/soc_f07_research_inputs.py"
+          ],
+          "recordedAt": "2026-09-07T02:46:39Z"
+        },
+        "qualifiers": {
+          "distribution": null,
+          "evaluation": {
+            "criterion": null,
+            "stakeholder": null,
+            "valence": "NOT_EVALUATED"
+          },
+          "prerequisites": [
+            "Exact risk set and protocol; voluntary participation; independently assessed control, feasibility, legal, ethical and applicability conditions"
+          ],
+          "reach": null,
+          "risks": [
+            "Attendance selection, group composition, tie nomination caps and closure-risk-set mismatch."
+          ],
+          "subgroups": [],
+          "unintendedConsequences": [
+            "Selection/exclusion, privacy intrusion, stigma, coercion and unequal contact opportunities require review"
+          ]
+        },
+        "recordClass": "SCIENTIFIC_RECORD",
+        "revision": 1,
+        "schemaVersion": "1.0.0",
+        "scope": {
+          "boundaryConditions": "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+          "context": "Attendance selection, group composition, tie nomination caps and closure-risk-set mismatch.",
+          "measurement": "SOC-102 conditional open-triad closure hazard/rate, not snapshot transitivity, all friendship incidence or raw triangle count; mapping unresolved",
+          "population": "226 engineering freshmen; 99 introduction attendees; six waves; capped friendship nominations",
+          "timing": "Source-specific tie formation window; baseline open-triad risk set and censoring require exact alignment"
+        },
+        "targetId": "SOC-102",
+        "targetKind": "DRIVER",
+        "targetLayers": [
+          "SOC"
+        ],
+        "typeId": "HT-CAND-SOC-F07-002",
+        "uncertainty": [
+          "Attendance selection, group composition, tie nomination caps and closure-risk-set mismatch.",
+          "Check reflection, homophily, selection into ties, latent traits, common environment, institutional assignment, simultaneity, reciprocity, correlated exposure, interference, endogenous formation, attrition and tie measurement error; longitudinal observation alone is not identification."
+        ]
+      },
+      {
+        "change": "UNKNOWN",
+        "claimSemantics": "CAUSAL",
+        "contribution": {
+          "groupId": "CONTRIB-SOC-F07-006",
+          "reconciliation": null,
+          "relatedAssertionIds": [],
+          "role": "PRIMARY"
+        },
+        "evidenceAssessmentIds": [
+          "EVA-AE-CAND-SOC-F07-003"
+        ],
+        "exposureProfile": {
+          "doseIntensity": null,
+          "duration": null,
+          "frequency": null,
+          "reach": null,
+          "timing": null
+        },
+        "governance": {
+          "activationStatus": "NOT_ELIGIBLE",
+          "authorityBasis": "V1_NATIVE",
+          "authorizedBy": null,
+          "blockStatus": "NONE",
+          "decisionDate": null,
+          "decisionOutcome": "NOT_DECIDED",
+          "decisionRationale": null,
+          "decisionRecord": null,
+          "effectiveVersion": null,
+          "lifecycleStatus": "RESEARCH_NEEDED",
+          "supersedesIds": [],
+          "transitionProvenance": [
+            {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "exactDecisionMaterialization": false,
+              "fromState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": null
+              },
+              "governanceDecisionRecord": null,
+              "objectId": "EA-CAND-SOC-F07-003",
+              "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+              "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+              "revision": 1,
+              "timestamp": "2026-09-07T02:46:39Z",
+              "toState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "CANDIDATE"
+              }
+            },
+            {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "exactDecisionMaterialization": false,
+              "fromState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "CANDIDATE"
+              },
+              "governanceDecisionRecord": null,
+              "objectId": "EA-CAND-SOC-F07-003",
+              "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+              "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+              "revision": 1,
+              "timestamp": "2026-09-07T02:46:39Z",
+              "toState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "RESEARCH_NEEDED"
+              }
+            }
+          ]
+        },
+        "grounding": {
+          "causalIdentificationRationale": "Exact SOC-102 effect remains unresolved despite source-specific design leverage",
+          "derivationEntailed": "NO",
+          "duplicatePropagationControl": null,
+          "representedDriverId": null
+        },
+        "id": "EA-CAND-SOC-F07-003",
+        "inferenceProvenance": null,
+        "intendedChange": null,
+        "interaction": {
+          "evidenceAssessmentIds": [],
+          "mode": "NONE",
+          "otherEffectIds": []
+        },
+        "knowledgeStatus": "INSUFFICIENT_EVIDENCE",
+        "mechanism": "Displacement, institutional responses, composition change and nonrandom exposure confound universal transfer.",
+        "mechanismStatus": "PARTIAL",
+        "mechanisticDriverIds": [],
+        "moderatorLinks": [],
+        "observedChange": null,
+        "occurrenceId": null,
+        "otherSpecified": null,
+        "outcomes": [],
+        "productionMethod": "HYPOTHESIS",
+        "property": "LEVEL",
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+          ],
+          "method": "Structured evidence search and skeptical candidate audit",
+          "originReferences": [
+            "AUD-SOC-F07-AE-V1-20260906-001",
+            "f0be9c24288bd128231e0d1243b34c03ad055906",
+            "scripts/soc_f07_research_inputs.py"
+          ],
+          "recordedAt": "2026-09-07T02:46:39Z"
+        },
+        "qualifiers": {
+          "distribution": null,
+          "evaluation": {
+            "criterion": null,
+            "stakeholder": null,
+            "valence": "NOT_EVALUATED"
+          },
+          "prerequisites": [
+            "Exact risk set and protocol; voluntary participation; independently assessed control, feasibility, legal, ethical and applicability conditions"
+          ],
+          "reach": null,
+          "risks": [
+            "Displacement, institutional responses, composition change and nonrandom exposure confound universal transfer."
+          ],
+          "subgroups": [],
+          "unintendedConsequences": [
+            "Selection/exclusion, privacy intrusion, stigma, coercion and unequal contact opportunities require review"
+          ]
+        },
+        "recordClass": "SCIENTIFIC_RECORD",
+        "revision": 1,
+        "schemaVersion": "1.0.0",
+        "scope": {
+          "boundaryConditions": "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+          "context": "Displacement, institutional responses, composition change and nonrandom exposure confound universal transfer.",
+          "measurement": "SOC-102 conditional open-triad closure hazard/rate, not snapshot transitivity, all friendship incidence or raw triangle count; mapping unresolved",
+          "population": "Longitudinal college Facebook networks around Hurricane Ike",
+          "timing": "Source-specific tie formation window; baseline open-triad risk set and censoring require exact alignment"
+        },
+        "targetId": "SOC-102",
+        "targetKind": "DRIVER",
+        "targetLayers": [
+          "SOC"
+        ],
+        "typeId": "HT-CAND-SOC-F07-006",
+        "uncertainty": [
+          "Displacement, institutional responses, composition change and nonrandom exposure confound universal transfer.",
+          "Check reflection, homophily, selection into ties, latent traits, common environment, institutional assignment, simultaneity, reciprocity, correlated exposure, interference, endogenous formation, attrition and tie measurement error; longitudinal observation alone is not identification."
+        ]
+      }
+    ],
+    "evidenceAssessments": [
+      {
+        "assertion": {
+          "objectId": "EA-CAND-SOC-F07-001",
+          "objectType": "EFFECT_ASSERTION"
+        },
+        "completeness": {
+          "boundaries": "SPECIFIED",
+          "context": "SPECIFIED",
+          "direction": "MISSING",
+          "measurement": "MISSING",
+          "mechanism": "SPECIFIED",
+          "population": "SPECIFIED",
+          "target": "SPECIFIED",
+          "timing": "SPECIFIED"
+        },
+        "governance": {
+          "activationStatus": "NOT_ELIGIBLE",
+          "authorityBasis": "V1_NATIVE",
+          "authorizedBy": null,
+          "blockStatus": "NONE",
+          "decisionDate": null,
+          "decisionOutcome": "NOT_DECIDED",
+          "decisionRationale": null,
+          "decisionRecord": null,
+          "effectiveVersion": null,
+          "lifecycleStatus": "RESEARCH_NEEDED",
+          "supersedesIds": [],
+          "transitionProvenance": [
+            {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "exactDecisionMaterialization": false,
+              "fromState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": null
+              },
+              "governanceDecisionRecord": null,
+              "objectId": "EVA-AE-CAND-SOC-F07-001",
+              "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+              "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+              "revision": 1,
+              "timestamp": "2026-09-07T02:46:39Z",
+              "toState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "CANDIDATE"
+              }
+            },
+            {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "exactDecisionMaterialization": false,
+              "fromState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "CANDIDATE"
+              },
+              "governanceDecisionRecord": null,
+              "objectId": "EVA-AE-CAND-SOC-F07-001",
+              "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+              "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+              "revision": 1,
+              "timestamp": "2026-09-07T02:46:39Z",
+              "toState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "RESEARCH_NEEDED"
+              }
+            }
+          ]
+        },
+        "id": "EVA-AE-CAND-SOC-F07-001",
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+          ],
+          "method": "Structured evidence search and skeptical candidate audit",
+          "originReferences": [
+            "AUD-SOC-F07-AE-V1-20260906-001",
+            "f0be9c24288bd128231e0d1243b34c03ad055906",
+            "scripts/soc_f07_research_inputs.py"
+          ],
+          "recordedAt": "2026-09-07T02:46:39Z"
+        },
+        "recordClass": "SCIENTIFIC_RECORD",
+        "revision": 1,
+        "schemaVersion": "1.0.0",
+        "sourceFindings": [
+          {
+            "accessDepth": "SELECTED_FULL_TEXT",
+            "basis": [
+              "EXPERIMENTAL"
+            ],
+            "comparator": "Different-account or severed intermediary-follow control configurations",
+            "context": "Selected Twitter targets with experimentally arranged A-B-C open-triad conditions; Directed follows; response is C following A after A follows C",
+            "datasetIds": [
+              "STUDY-SRC-CAND-SOC-F07-005"
+            ],
+            "design": "EXPERIMENTAL; Random assignment of experimental account/triad conditions",
+            "disposition": "MIXED",
+            "exposure": "Follow invitation from account with experimentally arranged common-neighbor relation",
+            "id": "FND-SOC-F07-EA-CAND-SOC-F07-001-005",
+            "inputRole": "DIRECT_FINDING",
+            "limitations": [
+              "Common-follower signaling and reciprocal follow response are narrower than an unrestricted closure hazard. Control differences not detected do not prove equivalence; ethics of research accounts do not authorize practice.",
+              "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+              "Check reflection, homophily, selection into ties, latent traits, common environment, institutional assignment, simultaneity, reciprocity, correlated exposure, interference, endogenous formation, attrition and tie measurement error; longitudinal observation alone is not identification.",
+              "Restricted platform risk set and cue visibility; population selection limits transport",
+              "Not a free-running open-triad hazard for all actors/tie types."
+            ],
+            "locator": "Indexed abstract, experimental conditions and control contrasts; https://pmc.ncbi.nlm.nih.gov/articles/PMC12260391/",
+            "measurement": "Reciprocal following completing the directed relation",
+            "nullInterpretation": null,
+            "overlapNotes": "Reviews SRC-254/256/269 and candidate 009 may include cited primary studies: no independent-replication count. Review/primary overlap recorded per finding; preprint/journal versions are one work.",
+            "population": "7,311 Twitter targets linked to 214 intermediary accounts; directed follows",
+            "provenance": {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "limitations": [
+                "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+              ],
+              "method": "Structured evidence search and skeptical candidate audit",
+              "originReferences": [
+                "AUD-SOC-F07-AE-V1-20260906-001",
+                "f0be9c24288bd128231e0d1243b34c03ad055906",
+                "scripts/soc_f07_research_inputs.py"
+              ],
+              "recordedAt": "2026-09-07T02:46:39Z"
+            },
+            "quantitativeEstimate": null,
+            "result": "Randomized open-triad cue/follow conditions increase reciprocal following relative to controls.",
+            "sourceId": "SRC-CAND-SOC-F07-005",
+            "supportedSemantics": [],
+            "timing": "Intermediary condition before invitation and observed response",
+            "uncertainty": [
+              "No comparable exact-ontology coefficient or numeric confidence extracted"
+            ]
+          },
+          {
+            "accessDepth": "SELECTED_FULL_TEXT",
+            "basis": [
+              "EXPERIMENTAL"
+            ],
+            "comparator": "Different-account or severed intermediary-follow control configurations",
+            "context": "Selected Twitter targets with experimentally arranged A-B-C open-triad conditions; Directed follows; response is C following A after A follows C",
+            "datasetIds": [
+              "STUDY-SRC-CAND-SOC-F07-005"
+            ],
+            "design": "EXPERIMENTAL; Random assignment of experimental account/triad conditions",
+            "disposition": "NULL_FINDING",
+            "exposure": "Follow invitation from account with experimentally arranged common-neighbor relation",
+            "id": "FND-SOC-F07-EA-CAND-SOC-F07-001-CONTROL-005",
+            "inputRole": "DIRECT_FINDING",
+            "limitations": [
+              "Common-follower signaling and reciprocal follow response are narrower than an unrestricted closure hazard. Control differences not detected do not prove equivalence; ethics of research accounts do not authorize practice.",
+              "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+              "Check reflection, homophily, selection into ties, latent traits, common environment, institutional assignment, simultaneity, reciprocity, correlated exposure, interference, endogenous formation, attrition and tie measurement error; longitudinal observation alone is not identification.",
+              "Restricted platform risk set and cue visibility; population selection limits transport",
+              "Not a free-running open-triad hazard for all actors/tie types."
+            ],
+            "locator": "Indexed abstract, experimental conditions and control contrasts; https://pmc.ncbi.nlm.nih.gov/articles/PMC12260391/",
+            "measurement": "Reciprocal following completing the directed relation",
+            "nullInterpretation": {
+              "contrast": "The source reports no detected difference between control configurations; this does not establish equivalence or a general zero closure effect.",
+              "interpretation": "NO_DETECTED_DIFFERENCE",
+              "precisionAssessment": "No equivalence bounds or precision-based zero-effect inference extracted",
+              "rationale": "Nonsignificance is not evidence of zero or equivalence"
+            },
+            "overlapNotes": "Reviews SRC-254/256/269 and candidate 009 may include cited primary studies: no independent-replication count. Review/primary overlap recorded per finding; preprint/journal versions are one work.",
+            "population": "7,311 Twitter targets linked to 214 intermediary accounts; directed follows",
+            "provenance": {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "limitations": [
+                "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+              ],
+              "method": "Structured evidence search and skeptical candidate audit",
+              "originReferences": [
+                "AUD-SOC-F07-AE-V1-20260906-001",
+                "f0be9c24288bd128231e0d1243b34c03ad055906",
+                "scripts/soc_f07_research_inputs.py"
+              ],
+              "recordedAt": "2026-09-07T02:46:39Z"
+            },
+            "quantitativeEstimate": null,
+            "result": "The source reports no detected difference between control configurations; this does not establish equivalence or a general zero closure effect.",
+            "sourceId": "SRC-CAND-SOC-F07-005",
+            "supportedSemantics": [],
+            "timing": "Intermediary condition before invitation and observed response",
+            "uncertainty": [
+              "No comparable exact-ontology coefficient or numeric confidence extracted"
+            ]
+          }
+        ],
+        "synthesis": {
+          "confidence": "LOW",
+          "confidenceRationale": "Judgment concerns the exact scoped proposition, not the prestige of a source.",
+          "conflicts": [
+            {
+              "dispositionRationale": "Preserved source-level mixed/null/contrary result; not a zero-effect claim",
+              "findingId": "FND-SOC-F07-EA-CAND-SOC-F07-001-005"
+            },
+            {
+              "dispositionRationale": "Preserved source-level mixed/null/contrary result; not a zero-effect claim",
+              "findingId": "FND-SOC-F07-EA-CAND-SOC-F07-001-CONTROL-005"
+            }
+          ],
+          "contraryEvidenceSearch": "ASSESSED",
+          "datasetOverlap": "Same publication reused across assertions is one dataset; review/primary overlap not counted as independent replication.",
+          "disposition": "INSUFFICIENT",
+          "evidenceStrength": "LIMITED",
+          "generalizationLimits": [
+            "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+            "Check reflection, homophily, selection into ties, latent traits, common environment, institutional assignment, simultaneity, reciprocity, correlated exposure, interference, endogenous formation, attrition and tie measurement error; longitudinal observation alone is not identification."
+          ],
+          "rationale": "Mutual-follower cue and reciprocal follow may operationalize a restricted open triad, not the general SOC-102 risk set.",
+          "sourceFindingIds": [
+            "FND-SOC-F07-EA-CAND-SOC-F07-001-005",
+            "FND-SOC-F07-EA-CAND-SOC-F07-001-CONTROL-005"
+          ]
+        }
+      },
+      {
+        "assertion": {
+          "objectId": "EA-CAND-SOC-F07-002",
+          "objectType": "EFFECT_ASSERTION"
+        },
+        "completeness": {
+          "boundaries": "SPECIFIED",
+          "context": "SPECIFIED",
+          "direction": "MISSING",
+          "measurement": "MISSING",
+          "mechanism": "SPECIFIED",
+          "population": "SPECIFIED",
+          "target": "SPECIFIED",
+          "timing": "SPECIFIED"
+        },
+        "governance": {
+          "activationStatus": "NOT_ELIGIBLE",
+          "authorityBasis": "V1_NATIVE",
+          "authorizedBy": null,
+          "blockStatus": "NONE",
+          "decisionDate": null,
+          "decisionOutcome": "NOT_DECIDED",
+          "decisionRationale": null,
+          "decisionRecord": null,
+          "effectiveVersion": null,
+          "lifecycleStatus": "RESEARCH_NEEDED",
+          "supersedesIds": [],
+          "transitionProvenance": [
+            {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "exactDecisionMaterialization": false,
+              "fromState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": null
+              },
+              "governanceDecisionRecord": null,
+              "objectId": "EVA-AE-CAND-SOC-F07-002",
+              "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+              "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+              "revision": 1,
+              "timestamp": "2026-09-07T02:46:39Z",
+              "toState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "CANDIDATE"
+              }
+            },
+            {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "exactDecisionMaterialization": false,
+              "fromState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "CANDIDATE"
+              },
+              "governanceDecisionRecord": null,
+              "objectId": "EVA-AE-CAND-SOC-F07-002",
+              "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+              "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+              "revision": 1,
+              "timestamp": "2026-09-07T02:46:39Z",
+              "toState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "RESEARCH_NEEDED"
+              }
+            }
+          ]
+        },
+        "id": "EVA-AE-CAND-SOC-F07-002",
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+          ],
+          "method": "Structured evidence search and skeptical candidate audit",
+          "originReferences": [
+            "AUD-SOC-F07-AE-V1-20260906-001",
+            "f0be9c24288bd128231e0d1243b34c03ad055906",
+            "scripts/soc_f07_research_inputs.py"
+          ],
+          "recordedAt": "2026-09-07T02:46:39Z"
+        },
+        "recordClass": "SCIENTIFIC_RECORD",
+        "revision": 1,
+        "schemaVersion": "1.0.0",
+        "sourceFindings": [
+          {
+            "accessDepth": "SELECTED_FULL_TEXT",
+            "basis": [
+              "QUASI_EXPERIMENTAL"
+            ],
+            "comparator": "Students not sharing introduction groups; other attendance comparisons not randomized",
+            "context": "226-student cohort; 99 program attendees; participation nonrandom; Directed friendship nominations, capped at 20; repeated waves",
+            "datasetIds": [
+              "STUDY-SRC-CAND-SOC-F07-006"
+            ],
+            "design": "QUASI_EXPERIMENTAL; Constrained group assignment plus longitudinal analysis; authors discuss quasi-experimental interference",
+            "disposition": "MIXED",
+            "exposure": "Small-group introduction allocation within program constraints",
+            "id": "FND-SOC-F07-EA-CAND-SOC-F07-002-006",
+            "inputRole": "DIRECT_FINDING",
+            "limitations": [
+              "Attendance nonrandom; group constraints and interference matter. Friendship incidence is not conditional triadic closure; SAOM is not proof of mediation.",
+              "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+              "Check reflection, homophily, selection into ties, latent traits, common environment, institutional assignment, simultaneity, reciprocity, correlated exposure, interference, endogenous formation, attrition and tie measurement error; longitudinal observation alone is not identification.",
+              "Attendance selection, group/gender constraints, changing ties and model assumptions",
+              "Friendship incidence and snapshot closure do not directly estimate SOC-102."
+            ],
+            "locator": "Methods, longitudinal results and discussion; https://www.nature.com/articles/s41598-020-59594-z",
+            "measurement": "Nominated friendship formation and persistence",
+            "nullInterpretation": null,
+            "overlapNotes": "Reviews SRC-254/256/269 and candidate 009 may include cited primary studies: no independent-replication count. Review/primary overlap recorded per finding; preprint/journal versions are one work.",
+            "population": "226 engineering freshmen; 99 introduction attendees; six waves; capped friendship nominations",
+            "provenance": {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "limitations": [
+                "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+              ],
+              "method": "Structured evidence search and skeptical candidate audit",
+              "originReferences": [
+                "AUD-SOC-F07-AE-V1-20260906-001",
+                "f0be9c24288bd128231e0d1243b34c03ad055906",
+                "scripts/soc_f07_research_inputs.py"
+              ],
+              "recordedAt": "2026-09-07T02:46:39Z"
+            },
+            "quantitativeEstimate": null,
+            "result": "Within-program group allocation produces early friendship differences that diminish over time.",
+            "sourceId": "SRC-CAND-SOC-F07-006",
+            "supportedSemantics": [],
+            "timing": "Six waves over roughly 2-14 months",
+            "uncertainty": [
+              "No comparable exact-ontology coefficient or numeric confidence extracted"
+            ]
+          },
+          {
+            "accessDepth": "SELECTED_FULL_TEXT",
+            "basis": [
+              "OBSERVATIONAL_LONGITUDINAL"
+            ],
+            "comparator": "Model-based time/structural contrasts, not randomized developmental exposure",
+            "context": "Classroom networks with enrollment and withdrawal; Observed peer interactions across a school year",
+            "datasetIds": [
+              "STUDY-SRC-CAND-SOC-F07-017"
+            ],
+            "design": "OBSERVATIONAL_LONGITUDINAL; Observational network model",
+            "disposition": "INSUFFICIENT",
+            "exposure": "Naturally emerging peer networks and observed structural tendencies",
+            "id": "FND-SOC-F07-EA-CAND-SOC-F07-002-017",
+            "inputRole": "DIRECT_FINDING",
+            "limitations": [
+              "Composition change and model assumptions; not randomized biological development or proof of a universal closure trajectory.",
+              "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+              "Check reflection, homophily, selection into ties, latent traits, common environment, institutional assignment, simultaneity, reciprocity, correlated exposure, interference, endogenous formation, attrition and tie measurement error; longitudinal observation alone is not identification.",
+              "Composition change, age, selection, shared environment and model specification",
+              "Not biological maturation causing exact SOC-102; theoretical model parameters are not graph weights."
+            ],
+            "locator": "Indexed methods 4.1 and discussion 6; https://pmc.ncbi.nlm.nih.gov/articles/PMC2811339/",
+            "measurement": "Formation/transitivity patterns",
+            "nullInterpretation": null,
+            "overlapNotes": "Reviews SRC-254/256/269 and candidate 009 may include cited primary studies: no independent-replication count. Review/primary overlap recorded per finding; preprint/journal versions are one work.",
+            "population": "195 preschool children in 11 Head Start classrooms; observation over a school year",
+            "provenance": {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "limitations": [
+                "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+              ],
+              "method": "Structured evidence search and skeptical candidate audit",
+              "originReferences": [
+                "AUD-SOC-F07-AE-V1-20260906-001",
+                "f0be9c24288bd128231e0d1243b34c03ad055906",
+                "scripts/soc_f07_research_inputs.py"
+              ],
+              "recordedAt": "2026-09-07T02:46:39Z"
+            },
+            "quantitativeEstimate": null,
+            "result": "Transitivity-related formation patterns evolve during emerging peer networks.",
+            "sourceId": "SRC-CAND-SOC-F07-017",
+            "supportedSemantics": [],
+            "timing": "Longitudinal school-year observations",
+            "uncertainty": [
+              "No comparable exact-ontology coefficient or numeric confidence extracted"
+            ]
+          }
+        ],
+        "synthesis": {
+          "confidence": "LOW",
+          "confidenceRationale": "Judgment concerns the exact scoped proposition, not the prestige of a source.",
+          "conflicts": [
+            {
+              "dispositionRationale": "Preserved source-level mixed/null/contrary result; not a zero-effect claim",
+              "findingId": "FND-SOC-F07-EA-CAND-SOC-F07-002-006"
+            }
+          ],
+          "contraryEvidenceSearch": "ASSESSED",
+          "datasetOverlap": "Same publication reused across assertions is one dataset; review/primary overlap not counted as independent replication.",
+          "disposition": "INSUFFICIENT",
+          "evidenceStrength": "LIMITED",
+          "generalizationLimits": [
+            "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+            "Check reflection, homophily, selection into ties, latent traits, common environment, institutional assignment, simultaneity, reciprocity, correlated exposure, interference, endogenous formation, attrition and tie measurement error; longitudinal observation alone is not identification."
+          ],
+          "rationale": "Attendance selection, group composition, tie nomination caps and closure-risk-set mismatch.",
+          "sourceFindingIds": [
+            "FND-SOC-F07-EA-CAND-SOC-F07-002-006",
+            "FND-SOC-F07-EA-CAND-SOC-F07-002-017"
+          ]
+        }
+      },
+      {
+        "assertion": {
+          "objectId": "EA-CAND-SOC-F07-003",
+          "objectType": "EFFECT_ASSERTION"
+        },
+        "completeness": {
+          "boundaries": "SPECIFIED",
+          "context": "SPECIFIED",
+          "direction": "MISSING",
+          "measurement": "MISSING",
+          "mechanism": "SPECIFIED",
+          "population": "SPECIFIED",
+          "target": "SPECIFIED",
+          "timing": "SPECIFIED"
+        },
+        "governance": {
+          "activationStatus": "NOT_ELIGIBLE",
+          "authorityBasis": "V1_NATIVE",
+          "authorizedBy": null,
+          "blockStatus": "NONE",
+          "decisionDate": null,
+          "decisionOutcome": "NOT_DECIDED",
+          "decisionRationale": null,
+          "decisionRecord": null,
+          "effectiveVersion": null,
+          "lifecycleStatus": "RESEARCH_NEEDED",
+          "supersedesIds": [],
+          "transitionProvenance": [
+            {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "exactDecisionMaterialization": false,
+              "fromState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": null
+              },
+              "governanceDecisionRecord": null,
+              "objectId": "EVA-AE-CAND-SOC-F07-003",
+              "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+              "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+              "revision": 1,
+              "timestamp": "2026-09-07T02:46:39Z",
+              "toState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "CANDIDATE"
+              }
+            },
+            {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "exactDecisionMaterialization": false,
+              "fromState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "CANDIDATE"
+              },
+              "governanceDecisionRecord": null,
+              "objectId": "EVA-AE-CAND-SOC-F07-003",
+              "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+              "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+              "revision": 1,
+              "timestamp": "2026-09-07T02:46:39Z",
+              "toState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "RESEARCH_NEEDED"
+              }
+            }
+          ]
+        },
+        "id": "EVA-AE-CAND-SOC-F07-003",
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+          ],
+          "method": "Structured evidence search and skeptical candidate audit",
+          "originReferences": [
+            "AUD-SOC-F07-AE-V1-20260906-001",
+            "f0be9c24288bd128231e0d1243b34c03ad055906",
+            "scripts/soc_f07_research_inputs.py"
+          ],
+          "recordedAt": "2026-09-07T02:46:39Z"
+        },
+        "recordClass": "SCIENTIFIC_RECORD",
+        "revision": 1,
+        "schemaVersion": "1.0.0",
+        "sourceFindings": [
+          {
+            "accessDepth": "SELECTED_FULL_TEXT",
+            "basis": [
+              "QUASI_EXPERIMENTAL"
+            ],
+            "comparator": "Comparison institutions/time periods",
+            "context": "Sampled college networks around Hurricane Ike; Observed friendship/activity traces, not complete offline networks",
+            "datasetIds": [
+              "STUDY-SRC-CAND-SOC-F07-011"
+            ],
+            "design": "QUASI_EXPERIMENTAL; Natural-experiment comparison, not randomized disaster exposure",
+            "disposition": "MIXED",
+            "exposure": "Disaster-associated disruption in affected university networks",
+            "id": "FND-SOC-F07-EA-CAND-SOC-F07-003-011",
+            "inputRole": "DIRECT_FINDING",
+            "limitations": [
+              "Nonrandom disaster exposure; displacement, simultaneous behavior and boundary change. Transitivity is not closure hazard.",
+              "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+              "Check reflection, homophily, selection into ties, latent traits, common environment, institutional assignment, simultaneity, reciprocity, correlated exposure, interference, endogenous formation, attrition and tie measurement error; longitudinal observation alone is not identification.",
+              "Exposure selection, displacement, node attrition, composition and concurrent responses",
+              "Transitivity and post-disruption patterns not an identified conditional closure hazard."
+            ],
+            "locator": "Indexed methods and discussion; https://pmc.ncbi.nlm.nih.gov/articles/PMC4450406/",
+            "measurement": "Network closure/bridging and communication patterns",
+            "nullInterpretation": null,
+            "overlapNotes": "Reviews SRC-254/256/269 and candidate 009 may include cited primary studies: no independent-replication count. Review/primary overlap recorded per finding; preprint/journal versions are one work.",
+            "population": "Longitudinal college Facebook networks around Hurricane Ike",
+            "provenance": {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "limitations": [
+                "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+              ],
+              "method": "Structured evidence search and skeptical candidate audit",
+              "originReferences": [
+                "AUD-SOC-F07-AE-V1-20260906-001",
+                "f0be9c24288bd128231e0d1243b34c03ad055906",
+                "scripts/soc_f07_research_inputs.py"
+              ],
+              "recordedAt": "2026-09-07T02:46:39Z"
+            },
+            "quantitativeEstimate": null,
+            "result": "Disruption is associated with more closed local relations and fewer bridging/public exchanges in affected networks.",
+            "sourceId": "SRC-CAND-SOC-F07-011",
+            "supportedSemantics": [],
+            "timing": "Longitudinal observations before/after disruption",
+            "uncertainty": [
+              "No comparable exact-ontology coefficient or numeric confidence extracted"
+            ]
+          }
+        ],
+        "synthesis": {
+          "confidence": "LOW",
+          "confidenceRationale": "Judgment concerns the exact scoped proposition, not the prestige of a source.",
+          "conflicts": [
+            {
+              "dispositionRationale": "Preserved source-level mixed/null/contrary result; not a zero-effect claim",
+              "findingId": "FND-SOC-F07-EA-CAND-SOC-F07-003-011"
+            }
+          ],
+          "contraryEvidenceSearch": "ASSESSED",
+          "datasetOverlap": "Same publication reused across assertions is one dataset; review/primary overlap not counted as independent replication.",
+          "disposition": "INSUFFICIENT",
+          "evidenceStrength": "LIMITED",
+          "generalizationLimits": [
+            "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+            "Check reflection, homophily, selection into ties, latent traits, common environment, institutional assignment, simultaneity, reciprocity, correlated exposure, interference, endogenous formation, attrition and tie measurement error; longitudinal observation alone is not identification."
+          ],
+          "rationale": "Displacement, institutional responses, composition change and nonrandom exposure confound universal transfer.",
+          "sourceFindingIds": [
+            "FND-SOC-F07-EA-CAND-SOC-F07-003-011"
+          ]
+        }
+      }
+    ],
+    "happeningTypes": [
+      {
+        "actorOrSourceSystem": "ROLE-AUTHORIZED-NETWORK-PROTOCOL-OPERATOR",
+        "aliases": [],
+        "componentEnumeration": "NOT_APPLICABLE",
+        "components": [],
+        "controlProfiles": [
+          {
+            "actorId": "ROLE-AUTHORIZED-NETWORK-PROTOCOL-OPERATOR",
+            "capabilities": [
+              "INITIATE",
+              "TUNE"
+            ],
+            "conditions": "Proposed role only. Prerequisites, feasibility, consent, privacy, legal/ethical/risk and applicability checks NOT_ASSESSED.",
+            "context": "Expose a genuine intermediary-follow relation in a specified invitation protocol; no fake social proof.",
+            "extent": "PARTIAL",
+            "population": "Mutual-follower cue and reciprocal follow may operationalize a restricted open triad, not the general SOC-102 risk set.",
+            "provenance": {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "limitations": [
+                "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+              ],
+              "method": "Structured evidence search and skeptical candidate audit",
+              "originReferences": [
+                "AUD-SOC-F07-AE-V1-20260906-001",
+                "f0be9c24288bd128231e0d1243b34c03ad055906",
+                "scripts/soc_f07_research_inputs.py"
+              ],
+              "recordedAt": "2026-09-07T02:46:39Z"
+            }
+          }
+        ],
+        "description": "Expose a genuine intermediary-follow relation in a specified invitation protocol; no fake social proof. Identity only: no efficacy, permission or activation implied.",
+        "domainTags": [
+          "TECHNOLOGICAL_CHANGE",
+          "INFORMATIONAL_EXPOSURE",
+          "DELIBERATE_INTERVENTION"
+        ],
+        "governance": {
+          "activationStatus": "NOT_ELIGIBLE",
+          "authorityBasis": "V1_NATIVE",
+          "authorizedBy": null,
+          "blockStatus": "NONE",
+          "decisionDate": null,
+          "decisionOutcome": "NOT_DECIDED",
+          "decisionRationale": null,
+          "decisionRecord": null,
+          "effectiveVersion": null,
+          "lifecycleStatus": "REVIEW_READY",
+          "supersedesIds": [],
+          "transitionProvenance": [
+            {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "exactDecisionMaterialization": false,
+              "fromState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": null
+              },
+              "governanceDecisionRecord": null,
+              "objectId": "HT-CAND-SOC-F07-001",
+              "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+              "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+              "revision": 1,
+              "timestamp": "2026-09-07T02:46:39Z",
+              "toState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "CANDIDATE"
+              }
+            },
+            {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "exactDecisionMaterialization": false,
+              "fromState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "CANDIDATE"
+              },
+              "governanceDecisionRecord": null,
+              "objectId": "HT-CAND-SOC-F07-001",
+              "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+              "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+              "revision": 1,
+              "timestamp": "2026-09-07T02:46:39Z",
+              "toState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "RESEARCH_NEEDED"
+              }
+            },
+            {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "exactDecisionMaterialization": false,
+              "fromState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "RESEARCH_NEEDED"
+              },
+              "governanceDecisionRecord": null,
+              "objectId": "HT-CAND-SOC-F07-001",
+              "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+              "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+              "revision": 1,
+              "timestamp": "2026-09-07T02:46:39Z",
+              "toState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "REVIEW_READY"
+              }
+            }
+          ]
+        },
+        "id": "HT-CAND-SOC-F07-001",
+        "identityDefiningProfile": {
+          "doseIntensity": null,
+          "duration": null,
+          "frequency": null,
+          "reach": null,
+          "timing": null
+        },
+        "identityKey": "SOC-F07-001",
+        "identitySourceIds": [
+          "SRC-CAND-SOC-F07-005"
+        ],
+        "intentionality": "DELIBERATE",
+        "interventionSubset": true,
+        "kindTags": [
+          "ACTION"
+        ],
+        "name": "Display a verified common-follower cue with a follow invitation",
+        "originLayers": [
+          "TEC",
+          "INF"
+        ],
+        "packageKind": "ATOMIC",
+        "pattern": [
+          "DISCRETE"
+        ],
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+          ],
+          "method": "Structured evidence search and skeptical candidate audit",
+          "originReferences": [
+            "AUD-SOC-F07-AE-V1-20260906-001",
+            "f0be9c24288bd128231e0d1243b34c03ad055906",
+            "scripts/soc_f07_research_inputs.py"
+          ],
+          "recordedAt": "2026-09-07T02:46:39Z"
+        },
+        "recordClass": "SCIENTIFIC_RECORD",
+        "revision": 1,
+        "schemaVersion": "1.0.0"
+      },
+      {
+        "actorOrSourceSystem": "ROLE-AUTHORIZED-NETWORK-PROTOCOL-OPERATOR",
+        "aliases": [],
+        "componentEnumeration": "NOT_APPLICABLE",
+        "components": [],
+        "controlProfiles": [
+          {
+            "actorId": "ROLE-AUTHORIZED-NETWORK-PROTOCOL-OPERATOR",
+            "capabilities": [
+              "INITIATE",
+              "TUNE"
+            ],
+            "conditions": "Proposed role only. Prerequisites, feasibility, consent, privacy, legal/ethical/risk and applicability checks NOT_ASSESSED.",
+            "context": "Allocate consenting participants to a bounded introduction group; identity is allocation, not its outcomes.",
+            "extent": "PARTIAL",
+            "population": "Attendance selection, group composition, tie nomination caps and closure-risk-set mismatch.",
+            "provenance": {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "limitations": [
+                "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+              ],
+              "method": "Structured evidence search and skeptical candidate audit",
+              "originReferences": [
+                "AUD-SOC-F07-AE-V1-20260906-001",
+                "f0be9c24288bd128231e0d1243b34c03ad055906",
+                "scripts/soc_f07_research_inputs.py"
+              ],
+              "recordedAt": "2026-09-07T02:46:39Z"
+            }
+          }
+        ],
+        "description": "Allocate consenting participants to a bounded introduction group; identity is allocation, not its outcomes. Identity only: no efficacy, permission or activation implied.",
+        "domainTags": [
+          "INSTITUTIONAL_STRUCTURAL_CHANGE",
+          "SOCIAL_NETWORK_PROCESS",
+          "DELIBERATE_INTERVENTION"
+        ],
+        "governance": {
+          "activationStatus": "NOT_ELIGIBLE",
+          "authorityBasis": "V1_NATIVE",
+          "authorizedBy": null,
+          "blockStatus": "NONE",
+          "decisionDate": null,
+          "decisionOutcome": "NOT_DECIDED",
+          "decisionRationale": null,
+          "decisionRecord": null,
+          "effectiveVersion": null,
+          "lifecycleStatus": "REVIEW_READY",
+          "supersedesIds": [],
+          "transitionProvenance": [
+            {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "exactDecisionMaterialization": false,
+              "fromState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": null
+              },
+              "governanceDecisionRecord": null,
+              "objectId": "HT-CAND-SOC-F07-002",
+              "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+              "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+              "revision": 1,
+              "timestamp": "2026-09-07T02:46:39Z",
+              "toState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "CANDIDATE"
+              }
+            },
+            {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "exactDecisionMaterialization": false,
+              "fromState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "CANDIDATE"
+              },
+              "governanceDecisionRecord": null,
+              "objectId": "HT-CAND-SOC-F07-002",
+              "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+              "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+              "revision": 1,
+              "timestamp": "2026-09-07T02:46:39Z",
+              "toState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "RESEARCH_NEEDED"
+              }
+            },
+            {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "exactDecisionMaterialization": false,
+              "fromState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "RESEARCH_NEEDED"
+              },
+              "governanceDecisionRecord": null,
+              "objectId": "HT-CAND-SOC-F07-002",
+              "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+              "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+              "revision": 1,
+              "timestamp": "2026-09-07T02:46:39Z",
+              "toState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "REVIEW_READY"
+              }
+            }
+          ]
+        },
+        "id": "HT-CAND-SOC-F07-002",
+        "identityDefiningProfile": {
+          "doseIntensity": null,
+          "duration": null,
+          "frequency": null,
+          "reach": null,
+          "timing": null
+        },
+        "identityKey": "SOC-F07-002",
+        "identitySourceIds": [
+          "SRC-CAND-SOC-F07-006"
+        ],
+        "intentionality": "DELIBERATE",
+        "interventionSubset": true,
+        "kindTags": [
+          "ACTION"
+        ],
+        "name": "Assign introduction-session participants to small contact groups",
+        "originLayers": [
+          "INS",
+          "SOC"
+        ],
+        "packageKind": "ATOMIC",
+        "pattern": [
+          "DISCRETE"
+        ],
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+          ],
+          "method": "Structured evidence search and skeptical candidate audit",
+          "originReferences": [
+            "AUD-SOC-F07-AE-V1-20260906-001",
+            "f0be9c24288bd128231e0d1243b34c03ad055906",
+            "scripts/soc_f07_research_inputs.py"
+          ],
+          "recordedAt": "2026-09-07T02:46:39Z"
+        },
+        "recordClass": "SCIENTIFIC_RECORD",
+        "revision": 1,
+        "schemaVersion": "1.0.0"
+      },
+      {
+        "actorOrSourceSystem": "ROLE-AUTHORIZED-NETWORK-PROTOCOL-OPERATOR",
+        "aliases": [],
+        "componentEnumeration": "NOT_APPLICABLE",
+        "components": [],
+        "controlProfiles": [
+          {
+            "actorId": "ROLE-AUTHORIZED-NETWORK-PROTOCOL-OPERATOR",
+            "capabilities": [
+              "INITIATE",
+              "TUNE"
+            ],
+            "conditions": "Proposed role only. Prerequisites, feasibility, consent, privacy, legal/ethical/risk and applicability checks NOT_ASSESSED.",
+            "context": "Permit defined requests to revise interaction partners under a stated protocol.",
+            "extent": "PARTIAL",
+            "population": "Link choice, selection and topology co-evolve; not a direct metric manipulation or universal cooperation treatment.",
+            "provenance": {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "limitations": [
+                "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+              ],
+              "method": "Structured evidence search and skeptical candidate audit",
+              "originReferences": [
+                "AUD-SOC-F07-AE-V1-20260906-001",
+                "f0be9c24288bd128231e0d1243b34c03ad055906",
+                "scripts/soc_f07_research_inputs.py"
+              ],
+              "recordedAt": "2026-09-07T02:46:39Z"
+            }
+          }
+        ],
+        "description": "Permit defined requests to revise interaction partners under a stated protocol. Identity only: no efficacy, permission or activation implied.",
+        "domainTags": [
+          "TECHNOLOGICAL_CHANGE",
+          "SOCIAL_NETWORK_PROCESS",
+          "DELIBERATE_INTERVENTION"
+        ],
+        "governance": {
+          "activationStatus": "NOT_ELIGIBLE",
+          "authorityBasis": "V1_NATIVE",
+          "authorizedBy": null,
+          "blockStatus": "NONE",
+          "decisionDate": null,
+          "decisionOutcome": "NOT_DECIDED",
+          "decisionRationale": null,
+          "decisionRecord": null,
+          "effectiveVersion": null,
+          "lifecycleStatus": "REVIEW_READY",
+          "supersedesIds": [],
+          "transitionProvenance": [
+            {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "exactDecisionMaterialization": false,
+              "fromState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": null
+              },
+              "governanceDecisionRecord": null,
+              "objectId": "HT-CAND-SOC-F07-003",
+              "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+              "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+              "revision": 1,
+              "timestamp": "2026-09-07T02:46:39Z",
+              "toState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "CANDIDATE"
+              }
+            },
+            {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "exactDecisionMaterialization": false,
+              "fromState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "CANDIDATE"
+              },
+              "governanceDecisionRecord": null,
+              "objectId": "HT-CAND-SOC-F07-003",
+              "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+              "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+              "revision": 1,
+              "timestamp": "2026-09-07T02:46:39Z",
+              "toState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "RESEARCH_NEEDED"
+              }
+            },
+            {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "exactDecisionMaterialization": false,
+              "fromState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "RESEARCH_NEEDED"
+              },
+              "governanceDecisionRecord": null,
+              "objectId": "HT-CAND-SOC-F07-003",
+              "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+              "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+              "revision": 1,
+              "timestamp": "2026-09-07T02:46:39Z",
+              "toState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "REVIEW_READY"
+              }
+            }
+          ]
+        },
+        "id": "HT-CAND-SOC-F07-003",
+        "identityDefiningProfile": {
+          "doseIntensity": null,
+          "duration": null,
+          "frequency": null,
+          "reach": null,
+          "timing": null
+        },
+        "identityKey": "SOC-F07-003",
+        "identitySourceIds": [
+          "SRC-CAND-SOC-F07-007"
+        ],
+        "intentionality": "DELIBERATE",
+        "interventionSubset": true,
+        "kindTags": [
+          "ACTION"
+        ],
+        "name": "Enable participant-controlled partner-link revision in a bounded interaction protocol",
+        "originLayers": [
+          "TEC",
+          "SOC"
+        ],
+        "packageKind": "ATOMIC",
+        "pattern": [
+          "DISCRETE"
+        ],
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+          ],
+          "method": "Structured evidence search and skeptical candidate audit",
+          "originReferences": [
+            "AUD-SOC-F07-AE-V1-20260906-001",
+            "f0be9c24288bd128231e0d1243b34c03ad055906",
+            "scripts/soc_f07_research_inputs.py"
+          ],
+          "recordedAt": "2026-09-07T02:46:39Z"
+        },
+        "recordClass": "SCIENTIFIC_RECORD",
+        "revision": 1,
+        "schemaVersion": "1.0.0"
+      },
+      {
+        "actorOrSourceSystem": "ROLE-AUTHORIZED-NETWORK-PROTOCOL-OPERATOR",
+        "aliases": [],
+        "componentEnumeration": "NOT_APPLICABLE",
+        "components": [],
+        "controlProfiles": [
+          {
+            "actorId": "ROLE-AUTHORIZED-NETWORK-PROTOCOL-OPERATOR",
+            "capabilities": [
+              "INITIATE",
+              "TUNE"
+            ],
+            "conditions": "Proposed role only. Prerequisites, feasibility, consent, privacy, legal/ethical/risk and applicability checks NOT_ASSESSED.",
+            "context": "Allocate protocol-defined anonymous contact links before a specified communication task.",
+            "extent": "PARTIAL",
+            "population": "Degree, boundary and topology fixed by protocol; artificial ties are not ordinary friendship or independent metric causes.",
+            "provenance": {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "limitations": [
+                "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+              ],
+              "method": "Structured evidence search and skeptical candidate audit",
+              "originReferences": [
+                "AUD-SOC-F07-AE-V1-20260906-001",
+                "f0be9c24288bd128231e0d1243b34c03ad055906",
+                "scripts/soc_f07_research_inputs.py"
+              ],
+              "recordedAt": "2026-09-07T02:46:39Z"
+            }
+          }
+        ],
+        "description": "Allocate protocol-defined anonymous contact links before a specified communication task. Identity only: no efficacy, permission or activation implied.",
+        "domainTags": [
+          "SOCIAL_NETWORK_PROCESS",
+          "DELIBERATE_INTERVENTION"
+        ],
+        "governance": {
+          "activationStatus": "NOT_ELIGIBLE",
+          "authorityBasis": "V1_NATIVE",
+          "authorizedBy": null,
+          "blockStatus": "NONE",
+          "decisionDate": null,
+          "decisionOutcome": "NOT_DECIDED",
+          "decisionRationale": null,
+          "decisionRecord": null,
+          "effectiveVersion": null,
+          "lifecycleStatus": "REVIEW_READY",
+          "supersedesIds": [],
+          "transitionProvenance": [
+            {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "exactDecisionMaterialization": false,
+              "fromState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": null
+              },
+              "governanceDecisionRecord": null,
+              "objectId": "HT-CAND-SOC-F07-004",
+              "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+              "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+              "revision": 1,
+              "timestamp": "2026-09-07T02:46:39Z",
+              "toState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "CANDIDATE"
+              }
+            },
+            {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "exactDecisionMaterialization": false,
+              "fromState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "CANDIDATE"
+              },
+              "governanceDecisionRecord": null,
+              "objectId": "HT-CAND-SOC-F07-004",
+              "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+              "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+              "revision": 1,
+              "timestamp": "2026-09-07T02:46:39Z",
+              "toState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "RESEARCH_NEEDED"
+              }
+            },
+            {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "exactDecisionMaterialization": false,
+              "fromState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "RESEARCH_NEEDED"
+              },
+              "governanceDecisionRecord": null,
+              "objectId": "HT-CAND-SOC-F07-004",
+              "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+              "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+              "revision": 1,
+              "timestamp": "2026-09-07T02:46:39Z",
+              "toState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "REVIEW_READY"
+              }
+            }
+          ]
+        },
+        "id": "HT-CAND-SOC-F07-004",
+        "identityDefiningProfile": {
+          "doseIntensity": null,
+          "duration": null,
+          "frequency": null,
+          "reach": null,
+          "timing": null
+        },
+        "identityKey": "SOC-F07-004",
+        "identitySourceIds": [
+          "SRC-235"
+        ],
+        "intentionality": "DELIBERATE",
+        "interventionSubset": true,
+        "kindTags": [
+          "ACTION"
+        ],
+        "name": "Assign a specified health-buddy contact topology",
+        "originLayers": [
+          "TEC",
+          "SOC"
+        ],
+        "packageKind": "ATOMIC",
+        "pattern": [
+          "DISCRETE"
+        ],
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+          ],
+          "method": "Structured evidence search and skeptical candidate audit",
+          "originReferences": [
+            "AUD-SOC-F07-AE-V1-20260906-001",
+            "f0be9c24288bd128231e0d1243b34c03ad055906",
+            "scripts/soc_f07_research_inputs.py"
+          ],
+          "recordedAt": "2026-09-07T02:46:39Z"
+        },
+        "recordClass": "SCIENTIFIC_RECORD",
+        "revision": 1,
+        "schemaVersion": "1.0.0"
+      },
+      {
+        "actorOrSourceSystem": "ROLE-AUTHORIZED-NETWORK-PROTOCOL-OPERATOR",
+        "aliases": [],
+        "componentEnumeration": "NOT_APPLICABLE",
+        "components": [],
+        "controlProfiles": [
+          {
+            "actorId": "ROLE-AUTHORIZED-NETWORK-PROTOCOL-OPERATOR",
+            "capabilities": [
+              "INITIATE",
+              "TUNE"
+            ],
+            "conditions": "Proposed role only. Prerequisites, feasibility, consent, privacy, legal/ethical/risk and applicability checks NOT_ASSESSED.",
+            "context": "Select nominated referents and deliver specified communication to them; retain content and selection as protocol details.",
+            "extent": "PARTIAL",
+            "population": "Seeding is not changing degree; no identity efficacy, optimality or component inference.",
+            "provenance": {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "limitations": [
+                "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+              ],
+              "method": "Structured evidence search and skeptical candidate audit",
+              "originReferences": [
+                "AUD-SOC-F07-AE-V1-20260906-001",
+                "f0be9c24288bd128231e0d1243b34c03ad055906",
+                "scripts/soc_f07_research_inputs.py"
+              ],
+              "recordedAt": "2026-09-07T02:46:39Z"
+            }
+          }
+        ],
+        "description": "Select nominated referents and deliver specified communication to them; retain content and selection as protocol details. Identity only: no efficacy, permission or activation implied.",
+        "domainTags": [
+          "INFORMATIONAL_EXPOSURE",
+          "DELIBERATE_INTERVENTION"
+        ],
+        "governance": {
+          "activationStatus": "NOT_ELIGIBLE",
+          "authorityBasis": "V1_NATIVE",
+          "authorizedBy": null,
+          "blockStatus": "NONE",
+          "decisionDate": null,
+          "decisionOutcome": "NOT_DECIDED",
+          "decisionRationale": null,
+          "decisionRecord": null,
+          "effectiveVersion": null,
+          "lifecycleStatus": "REVIEW_READY",
+          "supersedesIds": [],
+          "transitionProvenance": [
+            {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "exactDecisionMaterialization": false,
+              "fromState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": null
+              },
+              "governanceDecisionRecord": null,
+              "objectId": "HT-CAND-SOC-F07-005",
+              "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+              "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+              "revision": 1,
+              "timestamp": "2026-09-07T02:46:39Z",
+              "toState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "CANDIDATE"
+              }
+            },
+            {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "exactDecisionMaterialization": false,
+              "fromState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "CANDIDATE"
+              },
+              "governanceDecisionRecord": null,
+              "objectId": "HT-CAND-SOC-F07-005",
+              "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+              "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+              "revision": 1,
+              "timestamp": "2026-09-07T02:46:39Z",
+              "toState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "RESEARCH_NEEDED"
+              }
+            },
+            {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "exactDecisionMaterialization": false,
+              "fromState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "RESEARCH_NEEDED"
+              },
+              "governanceDecisionRecord": null,
+              "objectId": "HT-CAND-SOC-F07-005",
+              "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+              "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+              "revision": 1,
+              "timestamp": "2026-09-07T02:46:39Z",
+              "toState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "REVIEW_READY"
+              }
+            }
+          ]
+        },
+        "id": "HT-CAND-SOC-F07-005",
+        "identityDefiningProfile": {
+          "doseIntensity": null,
+          "duration": null,
+          "frequency": null,
+          "reach": null,
+          "timing": null
+        },
+        "identityKey": "SOC-F07-005",
+        "identitySourceIds": [
+          "SRC-CAND-SOC-F07-008",
+          "SRC-250",
+          "SRC-CAND-SOC-F07-009"
+        ],
+        "intentionality": "DELIBERATE",
+        "interventionSubset": true,
+        "kindTags": [
+          "ACTION"
+        ],
+        "name": "Seed a bounded behavior message through nominated network referents",
+        "originLayers": [
+          "SOC",
+          "INF"
+        ],
+        "packageKind": "ATOMIC",
+        "pattern": [
+          "DISCRETE"
+        ],
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+          ],
+          "method": "Structured evidence search and skeptical candidate audit",
+          "originReferences": [
+            "AUD-SOC-F07-AE-V1-20260906-001",
+            "f0be9c24288bd128231e0d1243b34c03ad055906",
+            "scripts/soc_f07_research_inputs.py"
+          ],
+          "recordedAt": "2026-09-07T02:46:39Z"
+        },
+        "recordClass": "SCIENTIFIC_RECORD",
+        "revision": 1,
+        "schemaVersion": "1.0.0"
+      },
+      {
+        "actorOrSourceSystem": "SYSTEM-STORM-AND-INSTITUTIONAL-RESPONSE",
+        "aliases": [],
+        "componentEnumeration": "NOT_APPLICABLE",
+        "components": [],
+        "controlProfiles": [
+          {
+            "actorId": "SYSTEM-STORM-AND-INSTITUTIONAL-RESPONSE",
+            "capabilities": [],
+            "conditions": "Proposed role only. Prerequisites, feasibility, consent, privacy, legal/ethical/risk and applicability checks NOT_ASSESSED.",
+            "context": "Disruption of access and contact opportunities associated with a storm; not an occurrence-ingestion object.",
+            "extent": "NONE",
+            "population": "Displacement, institutional responses, composition change and nonrandom exposure confound universal transfer.",
+            "provenance": {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "limitations": [
+                "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+              ],
+              "method": "Structured evidence search and skeptical candidate audit",
+              "originReferences": [
+                "AUD-SOC-F07-AE-V1-20260906-001",
+                "f0be9c24288bd128231e0d1243b34c03ad055906",
+                "scripts/soc_f07_research_inputs.py"
+              ],
+              "recordedAt": "2026-09-07T02:46:39Z"
+            }
+          }
+        ],
+        "description": "Disruption of access and contact opportunities associated with a storm; not an occurrence-ingestion object. Identity only: no efficacy, permission or activation implied.",
+        "domainTags": [
+          "EXTERNAL_SHOCK",
+          "ENVIRONMENTAL_EXPOSURE",
+          "SOCIAL_NETWORK_PROCESS"
+        ],
+        "governance": {
+          "activationStatus": "NOT_ELIGIBLE",
+          "authorityBasis": "V1_NATIVE",
+          "authorizedBy": null,
+          "blockStatus": "NONE",
+          "decisionDate": null,
+          "decisionOutcome": "NOT_DECIDED",
+          "decisionRationale": null,
+          "decisionRecord": null,
+          "effectiveVersion": null,
+          "lifecycleStatus": "REVIEW_READY",
+          "supersedesIds": [],
+          "transitionProvenance": [
+            {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "exactDecisionMaterialization": false,
+              "fromState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": null
+              },
+              "governanceDecisionRecord": null,
+              "objectId": "HT-CAND-SOC-F07-006",
+              "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+              "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+              "revision": 1,
+              "timestamp": "2026-09-07T02:46:39Z",
+              "toState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "CANDIDATE"
+              }
+            },
+            {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "exactDecisionMaterialization": false,
+              "fromState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "CANDIDATE"
+              },
+              "governanceDecisionRecord": null,
+              "objectId": "HT-CAND-SOC-F07-006",
+              "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+              "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+              "revision": 1,
+              "timestamp": "2026-09-07T02:46:39Z",
+              "toState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "RESEARCH_NEEDED"
+              }
+            },
+            {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "exactDecisionMaterialization": false,
+              "fromState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "RESEARCH_NEEDED"
+              },
+              "governanceDecisionRecord": null,
+              "objectId": "HT-CAND-SOC-F07-006",
+              "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+              "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+              "revision": 1,
+              "timestamp": "2026-09-07T02:46:39Z",
+              "toState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "REVIEW_READY"
+              }
+            }
+          ]
+        },
+        "id": "HT-CAND-SOC-F07-006",
+        "identityDefiningProfile": {
+          "doseIntensity": null,
+          "duration": null,
+          "frequency": null,
+          "reach": null,
+          "timing": null
+        },
+        "identityKey": "SOC-F07-006",
+        "identitySourceIds": [
+          "SRC-CAND-SOC-F07-011"
+        ],
+        "intentionality": "UNINTENDED",
+        "interventionSubset": false,
+        "kindTags": [
+          "EVENT",
+          "EXPOSURE"
+        ],
+        "name": "Storm-related disruption of campus contact opportunities",
+        "originLayers": [
+          "ENV",
+          "INS"
+        ],
+        "packageKind": "ATOMIC",
+        "pattern": [
+          "DISCRETE"
+        ],
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+          ],
+          "method": "Structured evidence search and skeptical candidate audit",
+          "originReferences": [
+            "AUD-SOC-F07-AE-V1-20260906-001",
+            "f0be9c24288bd128231e0d1243b34c03ad055906",
+            "scripts/soc_f07_research_inputs.py"
+          ],
+          "recordedAt": "2026-09-07T02:46:39Z"
+        },
+        "recordClass": "SCIENTIFIC_RECORD",
+        "revision": 1,
+        "schemaVersion": "1.0.0"
+      },
+      {
+        "actorOrSourceSystem": "ROLE-AUTHORIZED-NETWORK-PROTOCOL-OPERATOR",
+        "aliases": [],
+        "componentEnumeration": "NOT_APPLICABLE",
+        "components": [],
+        "controlProfiles": [
+          {
+            "actorId": "ROLE-AUTHORIZED-NETWORK-PROTOCOL-OPERATOR",
+            "capabilities": [
+              "INITIATE",
+              "TUNE"
+            ],
+            "conditions": "Proposed role only. Prerequisites, feasibility, consent, privacy, legal/ethical/risk and applicability checks NOT_ASSESSED.",
+            "context": "Assign seats under a specified classroom protocol, without promising friendship or closure.",
+            "extent": "PARTIAL",
+            "population": "Consent, accessibility, stigma and educational constraints; geometric proximity is not personal-space encroachment.",
+            "provenance": {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "limitations": [
+                "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+              ],
+              "method": "Structured evidence search and skeptical candidate audit",
+              "originReferences": [
+                "AUD-SOC-F07-AE-V1-20260906-001",
+                "f0be9c24288bd128231e0d1243b34c03ad055906",
+                "scripts/soc_f07_research_inputs.py"
+              ],
+              "recordedAt": "2026-09-07T02:46:39Z"
+            }
+          }
+        ],
+        "description": "Assign seats under a specified classroom protocol, without promising friendship or closure. Identity only: no efficacy, permission or activation implied.",
+        "domainTags": [
+          "INSTITUTIONAL_STRUCTURAL_CHANGE",
+          "DELIBERATE_INTERVENTION"
+        ],
+        "governance": {
+          "activationStatus": "NOT_ELIGIBLE",
+          "authorityBasis": "V1_NATIVE",
+          "authorizedBy": null,
+          "blockStatus": "NONE",
+          "decisionDate": null,
+          "decisionOutcome": "NOT_DECIDED",
+          "decisionRationale": null,
+          "decisionRecord": null,
+          "effectiveVersion": null,
+          "lifecycleStatus": "REVIEW_READY",
+          "supersedesIds": [],
+          "transitionProvenance": [
+            {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "exactDecisionMaterialization": false,
+              "fromState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": null
+              },
+              "governanceDecisionRecord": null,
+              "objectId": "HT-CAND-SOC-F07-007",
+              "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+              "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+              "revision": 1,
+              "timestamp": "2026-09-07T02:46:39Z",
+              "toState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "CANDIDATE"
+              }
+            },
+            {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "exactDecisionMaterialization": false,
+              "fromState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "CANDIDATE"
+              },
+              "governanceDecisionRecord": null,
+              "objectId": "HT-CAND-SOC-F07-007",
+              "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+              "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+              "revision": 1,
+              "timestamp": "2026-09-07T02:46:39Z",
+              "toState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "RESEARCH_NEEDED"
+              }
+            },
+            {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "exactDecisionMaterialization": false,
+              "fromState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "RESEARCH_NEEDED"
+              },
+              "governanceDecisionRecord": null,
+              "objectId": "HT-CAND-SOC-F07-007",
+              "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+              "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+              "revision": 1,
+              "timestamp": "2026-09-07T02:46:39Z",
+              "toState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "REVIEW_READY"
+              }
+            }
+          ]
+        },
+        "id": "HT-CAND-SOC-F07-007",
+        "identityDefiningProfile": {
+          "doseIntensity": null,
+          "duration": null,
+          "frequency": null,
+          "reach": null,
+          "timing": null
+        },
+        "identityKey": "SOC-F07-007",
+        "identitySourceIds": [
+          "SRC-CAND-SOC-F07-012"
+        ],
+        "intentionality": "DELIBERATE",
+        "interventionSubset": true,
+        "kindTags": [
+          "ACTION"
+        ],
+        "name": "Allocate classroom seats for sustained assigned proximity",
+        "originLayers": [
+          "INS",
+          "ENV"
+        ],
+        "packageKind": "ATOMIC",
+        "pattern": [
+          "DISCRETE"
+        ],
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+          ],
+          "method": "Structured evidence search and skeptical candidate audit",
+          "originReferences": [
+            "AUD-SOC-F07-AE-V1-20260906-001",
+            "f0be9c24288bd128231e0d1243b34c03ad055906",
+            "scripts/soc_f07_research_inputs.py"
+          ],
+          "recordedAt": "2026-09-07T02:46:39Z"
+        },
+        "recordClass": "SCIENTIFIC_RECORD",
+        "revision": 1,
+        "schemaVersion": "1.0.0"
+      },
+      {
+        "actorOrSourceSystem": "ROLE-AUTHORIZED-NETWORK-PROTOCOL-OPERATOR",
+        "aliases": [],
+        "componentEnumeration": "NOT_APPLICABLE",
+        "components": [],
+        "controlProfiles": [
+          {
+            "actorId": "ROLE-AUTHORIZED-NETWORK-PROTOCOL-OPERATOR",
+            "capabilities": [
+              "INITIATE",
+              "TUNE"
+            ],
+            "conditions": "Proposed role only. Prerequisites, feasibility, consent, privacy, legal/ethical/risk and applicability checks NOT_ASSESSED.",
+            "context": "Make existing shared attributes visible; distinct from common-neighbor signaling.",
+            "extent": "PARTIAL",
+            "population": "Privacy, truthful disclosure and platform population limits; not a triadic-closure estimate.",
+            "provenance": {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "limitations": [
+                "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+              ],
+              "method": "Structured evidence search and skeptical candidate audit",
+              "originReferences": [
+                "AUD-SOC-F07-AE-V1-20260906-001",
+                "f0be9c24288bd128231e0d1243b34c03ad055906",
+                "scripts/soc_f07_research_inputs.py"
+              ],
+              "recordedAt": "2026-09-07T02:46:39Z"
+            }
+          }
+        ],
+        "description": "Make existing shared attributes visible; distinct from common-neighbor signaling. Identity only: no efficacy, permission or activation implied.",
+        "domainTags": [
+          "TECHNOLOGICAL_CHANGE",
+          "INFORMATIONAL_EXPOSURE",
+          "DELIBERATE_INTERVENTION"
+        ],
+        "governance": {
+          "activationStatus": "NOT_ELIGIBLE",
+          "authorityBasis": "V1_NATIVE",
+          "authorizedBy": null,
+          "blockStatus": "NONE",
+          "decisionDate": null,
+          "decisionOutcome": "NOT_DECIDED",
+          "decisionRationale": null,
+          "decisionRecord": null,
+          "effectiveVersion": null,
+          "lifecycleStatus": "REVIEW_READY",
+          "supersedesIds": [],
+          "transitionProvenance": [
+            {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "exactDecisionMaterialization": false,
+              "fromState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": null
+              },
+              "governanceDecisionRecord": null,
+              "objectId": "HT-CAND-SOC-F07-008",
+              "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+              "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+              "revision": 1,
+              "timestamp": "2026-09-07T02:46:39Z",
+              "toState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "CANDIDATE"
+              }
+            },
+            {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "exactDecisionMaterialization": false,
+              "fromState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "CANDIDATE"
+              },
+              "governanceDecisionRecord": null,
+              "objectId": "HT-CAND-SOC-F07-008",
+              "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+              "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+              "revision": 1,
+              "timestamp": "2026-09-07T02:46:39Z",
+              "toState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "RESEARCH_NEEDED"
+              }
+            },
+            {
+              "actorClass": "AUTOMATED_PROCESS_OR_AI",
+              "exactDecisionMaterialization": false,
+              "fromState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "RESEARCH_NEEDED"
+              },
+              "governanceDecisionRecord": null,
+              "objectId": "HT-CAND-SOC-F07-008",
+              "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+              "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+              "revision": 1,
+              "timestamp": "2026-09-07T02:46:39Z",
+              "toState": {
+                "activationStatus": "NOT_ELIGIBLE",
+                "lifecycleStatus": "REVIEW_READY"
+              }
+            }
+          ]
+        },
+        "id": "HT-CAND-SOC-F07-008",
+        "identityDefiningProfile": {
+          "doseIntensity": null,
+          "duration": null,
+          "frequency": null,
+          "reach": null,
+          "timing": null
+        },
+        "identityKey": "SOC-F07-008",
+        "identitySourceIds": [
+          "SRC-CAND-SOC-F07-010"
+        ],
+        "intentionality": "DELIBERATE",
+        "interventionSubset": true,
+        "kindTags": [
+          "ACTION"
+        ],
+        "name": "Display verified shared profile attributes to a prospective contact",
+        "originLayers": [
+          "TEC",
+          "INF"
+        ],
+        "packageKind": "ATOMIC",
+        "pattern": [
+          "DISCRETE"
+        ],
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+          ],
+          "method": "Structured evidence search and skeptical candidate audit",
+          "originReferences": [
+            "AUD-SOC-F07-AE-V1-20260906-001",
+            "f0be9c24288bd128231e0d1243b34c03ad055906",
+            "scripts/soc_f07_research_inputs.py"
+          ],
+          "recordedAt": "2026-09-07T02:46:39Z"
+        },
+        "recordClass": "SCIENTIFIC_RECORD",
+        "revision": 1,
+        "schemaVersion": "1.0.0"
+      }
+    ],
+    "occurrences": [],
+    "schemaVersion": "1.0.0"
+  },
+  "productionEligible": false,
+  "readiness": {
+    "gapsAndDeferrals": true,
+    "incidentDispositions": true,
+    "membershipDefinitions": true,
+    "rdsDerivations": true,
+    "relationshipScope": true
+  },
+  "schemaVersion": "1.0.0",
+  "workspaceClass": "NON_GOVERNED_RESEARCH"
+}

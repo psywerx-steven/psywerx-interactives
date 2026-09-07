@@ -1,0 +1,244 @@
+[
+  {
+    "downstreamEvidence": "No inherited consequence; consult existing causal-source audit and H05-H27 questions",
+    "driverTargetAssessment": "SOC-101/SOC-103 describe formation/dissolution rates, SOC-102 restricted closure; none specifies full adjacency, node membership or boundary.",
+    "exactCausalRelationshipTargetId": null,
+    "happeningTypeIds": [
+      "HT-CAND-SOC-F07-003",
+      "HT-CAND-SOC-F07-004"
+    ],
+    "networkInputs": "Path-distance matrix, focal actor, unreachable-node convention and normalization externally specified.",
+    "prohibitedShortcut": "No direct effect on RDS-0005; social ties are not ontology Relationships",
+    "rdsId": "RDS-0005",
+    "rdsRole": [
+      "RECALCULATED_STATE",
+      "MEASUREMENT",
+      "OUTCOME"
+    ],
+    "realWorldAntecedent": "Node loss, missing ties and routing assumptions alter paths; no universally best centrality.",
+    "representationStatus": "BLOCKED_NEEDS_GOVERNANCE_INPUT",
+    "validCompleteConfigurationDriverId": null
+  },
+  {
+    "downstreamEvidence": "No inherited consequence; consult existing causal-source audit and H05-H27 questions",
+    "driverTargetAssessment": "SOC-101/SOC-103 describe formation/dissolution rates, SOC-102 restricted closure; none specifies full adjacency, node membership or boundary.",
+    "exactCausalRelationshipTargetId": null,
+    "happeningTypeIds": [
+      "HT-CAND-SOC-F07-003",
+      "HT-CAND-SOC-F07-004"
+    ],
+    "networkInputs": "Distribution of one selected node centrality and benchmark/maximum; selection remains external and incomplete.",
+    "prohibitedShortcut": "No direct effect on RDS-0006; social ties are not ontology Relationships",
+    "rdsId": "RDS-0006",
+    "rdsRole": [
+      "RECALCULATED_STATE",
+      "MEASUREMENT",
+      "OUTCOME"
+    ],
+    "realWorldAntecedent": "Degree-based case can derive from degree distribution, not a single actor value; other centralizations differ.",
+    "representationStatus": "BLOCKED_NEEDS_GOVERNANCE_INPUT",
+    "validCompleteConfigurationDriverId": null
+  },
+  {
+    "downstreamEvidence": "No inherited consequence; consult existing causal-source audit and H05-H27 questions",
+    "driverTargetAssessment": "SOC-101/SOC-103 describe formation/dissolution rates, SOC-102 restricted closure; none specifies full adjacency, node membership or boundary.",
+    "exactCausalRelationshipTargetId": null,
+    "happeningTypeIds": [
+      "HT-CAND-SOC-F07-003",
+      "HT-CAND-SOC-F07-006"
+    ],
+    "networkInputs": "Connected-component structure and selected metric: component count/giant share/isolate share/unreachable pairs are not identical.",
+    "prohibitedShortcut": "No direct effect on RDS-0007; social ties are not ontology Relationships",
+    "rdsId": "RDS-0007",
+    "rdsRole": [
+      "RECALCULATED_STATE",
+      "MEASUREMENT",
+      "OUTCOME"
+    ],
+    "realWorldAntecedent": "Boundary expansion, node removal or bridges change components; no direct RDS manipulation.",
+    "representationStatus": "BLOCKED_NEEDS_GOVERNANCE_INPUT",
+    "validCompleteConfigurationDriverId": null
+  },
+  {
+    "downstreamEvidence": "No inherited consequence; consult existing causal-source audit and H05-H27 questions",
+    "driverTargetAssessment": "SOC-101/SOC-103 describe formation/dissolution rates, SOC-102 restricted closure; none specifies full adjacency, node membership or boundary.",
+    "exactCausalRelationshipTargetId": null,
+    "happeningTypeIds": [
+      "HT-CAND-SOC-F07-004",
+      "HT-CAND-SOC-F07-007",
+      "HT-CAND-SOC-F07-008"
+    ],
+    "networkInputs": "Incident adjacency row/column; n-1 or specified opportunity denominator; loops, directedness and weights matter.",
+    "prohibitedShortcut": "No direct effect on SOC-049; social ties are not ontology Relationships",
+    "rdsId": "SOC-049",
+    "rdsRole": [
+      "RECALCULATED_STATE",
+      "MEASUREMENT",
+      "OUTCOME"
+    ],
+    "realWorldAntecedent": "Tie allocation/addition/deletion and node sampling alter inputs; no complete network-state Driver.",
+    "representationStatus": "BLOCKED_NEEDS_GOVERNANCE_INPUT",
+    "validCompleteConfigurationDriverId": null
+  },
+  {
+    "downstreamEvidence": "No inherited consequence; consult existing causal-source audit and H05-H27 questions",
+    "driverTargetAssessment": "SOC-101/SOC-103 describe formation/dissolution rates, SOC-102 restricted closure; none specifies full adjacency, node membership or boundary.",
+    "exactCausalRelationshipTargetId": null,
+    "happeningTypeIds": [
+      "HT-CAND-SOC-F07-003",
+      "HT-CAND-SOC-F07-004"
+    ],
+    "networkInputs": "All relevant shortest paths and geodesic multiplicity; disconnected paths, weights and normalization change meaning.",
+    "prohibitedShortcut": "No direct effect on SOC-050; social ties are not ontology Relationships",
+    "rdsId": "SOC-050",
+    "rdsRole": [
+      "RECALCULATED_STATE",
+      "MEASUREMENT",
+      "OUTCOME"
+    ],
+    "realWorldAntecedent": "Rewiring or node loss changes paths; brokerage behavior is not betweenness.",
+    "representationStatus": "BLOCKED_NEEDS_GOVERNANCE_INPUT",
+    "validCompleteConfigurationDriverId": null
+  },
+  {
+    "downstreamEvidence": "No inherited consequence; consult existing causal-source audit and H05-H27 questions",
+    "driverTargetAssessment": "SOC-101/SOC-103 describe formation/dissolution rates, SOC-102 restricted closure; none specifies full adjacency, node membership or boundary.",
+    "exactCausalRelationshipTargetId": null,
+    "happeningTypeIds": [
+      "HT-CAND-SOC-F07-004"
+    ],
+    "networkInputs": "Whole adjacency and chosen eigenvector/normalization; disconnected components and directed/weighted conventions matter.",
+    "prohibitedShortcut": "No direct effect on SOC-051; social ties are not ontology Relationships",
+    "rdsId": "SOC-051",
+    "rdsRole": [
+      "RECALCULATED_STATE",
+      "MEASUREMENT",
+      "OUTCOME"
+    ],
+    "realWorldAntecedent": "Rewiring can redistribute scores without independently manipulating social influence.",
+    "representationStatus": "BLOCKED_NEEDS_GOVERNANCE_INPUT",
+    "validCompleteConfigurationDriverId": null
+  },
+  {
+    "downstreamEvidence": "No inherited consequence; consult existing causal-source audit and H05-H27 questions",
+    "driverTargetAssessment": "SOC-101/SOC-103 describe formation/dissolution rates, SOC-102 restricted closure; none specifies full adjacency, node membership or boundary.",
+    "exactCausalRelationshipTargetId": null,
+    "happeningTypeIds": [
+      "HT-CAND-SOC-F07-003",
+      "HT-CAND-SOC-F07-004",
+      "HT-CAND-SOC-F07-007"
+    ],
+    "networkInputs": "Observed ties over possible ties; n, directedness, loops, multiplex collapse and boundary determine denominator.",
+    "prohibitedShortcut": "No direct effect on SOC-052; social ties are not ontology Relationships",
+    "rdsId": "SOC-052",
+    "rdsRole": [
+      "RECALCULATED_STATE",
+      "MEASUREMENT",
+      "OUTCOME"
+    ],
+    "realWorldAntecedent": "Node admission/removal and contact restrictions can change numerator AND denominator.",
+    "representationStatus": "BLOCKED_NEEDS_GOVERNANCE_INPUT",
+    "validCompleteConfigurationDriverId": null
+  },
+  {
+    "downstreamEvidence": "No inherited consequence; consult existing causal-source audit and H05-H27 questions",
+    "driverTargetAssessment": "SOC-101/SOC-103 describe formation/dissolution rates, SOC-102 restricted closure; none specifies full adjacency, node membership or boundary.",
+    "exactCausalRelationshipTargetId": null,
+    "happeningTypeIds": [
+      "HT-CAND-SOC-F07-004",
+      "HT-CAND-SOC-F07-007"
+    ],
+    "networkInputs": "Triangles among selected neighbors over eligible pairs; degree<2 convention unresolved at analysis time.",
+    "prohibitedShortcut": "No direct effect on SOC-053; social ties are not ontology Relationships",
+    "rdsId": "SOC-053",
+    "rdsRole": [
+      "RECALCULATED_STATE",
+      "MEASUREMENT",
+      "OUTCOME"
+    ],
+    "realWorldAntecedent": "Closing a tie changes triangle inputs; conditional closure rate is not a static clustering coefficient.",
+    "representationStatus": "BLOCKED_NEEDS_GOVERNANCE_INPUT",
+    "validCompleteConfigurationDriverId": null
+  },
+  {
+    "downstreamEvidence": "No inherited consequence; consult existing causal-source audit and H05-H27 questions",
+    "driverTargetAssessment": "SOC-101/SOC-103 describe formation/dissolution rates, SOC-102 restricted closure; none specifies full adjacency, node membership or boundary.",
+    "exactCausalRelationshipTargetId": null,
+    "happeningTypeIds": [
+      "HT-CAND-SOC-F07-002",
+      "HT-CAND-SOC-F07-007"
+    ],
+    "networkInputs": "Mixing matrix and expected baseline; categorical/degree/scalar attribute choice changes construct.",
+    "prohibitedShortcut": "No direct effect on SOC-054; social ties are not ontology Relationships",
+    "rdsId": "SOC-054",
+    "rdsRole": [
+      "RECALCULATED_STATE",
+      "MEASUREMENT",
+      "OUTCOME"
+    ],
+    "realWorldAntecedent": "Assignment, selection and changing attributes affect matrix; preference cannot be inferred from mixing.",
+    "representationStatus": "BLOCKED_NEEDS_GOVERNANCE_INPUT",
+    "validCompleteConfigurationDriverId": null
+  },
+  {
+    "downstreamEvidence": "No inherited consequence; consult existing causal-source audit and H05-H27 questions",
+    "driverTargetAssessment": "SOC-101/SOC-103 describe formation/dissolution rates, SOC-102 restricted closure; none specifies full adjacency, node membership or boundary.",
+    "exactCausalRelationshipTargetId": null,
+    "happeningTypeIds": [
+      "HT-CAND-SOC-F07-003",
+      "HT-CAND-SOC-F07-004"
+    ],
+    "networkInputs": "Actor contacts and contact-to-contact weights; concentration and redundancy normalization require named formula.",
+    "prohibitedShortcut": "No direct effect on SOC-055; social ties are not ontology Relationships",
+    "rdsId": "SOC-055",
+    "rdsRole": [
+      "RECALCULATED_STATE",
+      "MEASUREMENT",
+      "OUTCOME"
+    ],
+    "realWorldAntecedent": "Brokerage opportunities may change when contacts change; behavior and path-based betweenness are distinct.",
+    "representationStatus": "BLOCKED_NEEDS_GOVERNANCE_INPUT",
+    "validCompleteConfigurationDriverId": null
+  },
+  {
+    "downstreamEvidence": "No inherited consequence; consult existing causal-source audit and H05-H27 questions",
+    "driverTargetAssessment": "SOC-101/SOC-103 describe formation/dissolution rates, SOC-102 restricted closure; none specifies full adjacency, node membership or boundary.",
+    "exactCausalRelationshipTargetId": null,
+    "happeningTypeIds": [
+      "HT-CAND-SOC-F07-003",
+      "HT-CAND-SOC-F07-006"
+    ],
+    "networkInputs": "Cross-community edges over observed eligible ties; community detection/assignment and scale essential.",
+    "prohibitedShortcut": "No direct effect on SOC-056; social ties are not ontology Relationships",
+    "rdsId": "SOC-056",
+    "rdsRole": [
+      "RECALCULATED_STATE",
+      "MEASUREMENT",
+      "OUTCOME"
+    ],
+    "realWorldAntecedent": "A partition change alone changes score without changed ties; member exposure is a separate denominator.",
+    "representationStatus": "BLOCKED_NEEDS_GOVERNANCE_INPUT",
+    "validCompleteConfigurationDriverId": null
+  },
+  {
+    "downstreamEvidence": "No inherited consequence; consult existing causal-source audit and H05-H27 questions",
+    "driverTargetAssessment": "SOC-101/SOC-103 describe formation/dissolution rates, SOC-102 restricted closure; none specifies full adjacency, node membership or boundary.",
+    "exactCausalRelationshipTargetId": null,
+    "happeningTypeIds": [
+      "HT-CAND-SOC-F07-002",
+      "HT-CAND-SOC-F07-006",
+      "HT-CAND-SOC-F07-007"
+    ],
+    "networkInputs": "Group assignment and observed mixing with size/opportunity baseline; not any algorithmic community partition.",
+    "prohibitedShortcut": "No direct effect on SOC-057; social ties are not ontology Relationships",
+    "rdsId": "SOC-057",
+    "rdsRole": [
+      "RECALCULATED_STATE",
+      "MEASUREMENT",
+      "OUTCOME"
+    ],
+    "realWorldAntecedent": "Institutional assignment and contact configuration may matter; denominator/group changes can be mechanical.",
+    "representationStatus": "BLOCKED_NEEDS_GOVERNANCE_INPUT",
+    "validCompleteConfigurationDriverId": null
+  }
+]

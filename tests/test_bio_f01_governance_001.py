@@ -46,7 +46,10 @@ class BioF01Governance001Tests(unittest.TestCase):
 
     def test_native_store_validates_and_exact_counts_are_frozen(self):
         counts = V1.validate_repository()
-        self.assertEqual(counts["nativeSources"], 23)
+        # Canonical registry grows across independently governed Families;
+        # freeze BIO-F01's source set, not a historical global registry size.
+        self.assertEqual({s['id'] for s in self.sources if s['auditId']=='AUD-BIO-F01-RI-V1-20260905-001'},
+                         {f'SRC-{n}' for n in range(530,550)})
         self.assertEqual(counts["nativeRelationships"], 7)
         self.assertEqual(counts["nativeCausalRelationships"], 5)
         self.assertEqual(counts["nativeInterventions"], 9)

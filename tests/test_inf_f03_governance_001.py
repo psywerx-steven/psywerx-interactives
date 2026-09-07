@@ -74,7 +74,7 @@ class InfF03Governance001Tests(unittest.TestCase):
             {row["id"] for row in self.ri_relationships if "INF-F03" in row["id"]},
             RELATIONSHIP_IDS,
         )
-        self.assertEqual({row["id"] for row in self.ae_catalog["happeningTypes"]}, TYPE_IDS)
+        self.assertEqual({row["id"] for row in self.ae_catalog["happeningTypes"] if 'INF-F03' in row['id']}, TYPE_IDS)
         self.assertEqual({row["id"] for row in self.ae_catalog["effectAssertions"]}, EFFECT_IDS)
         self.assertEqual(
             {row["id"] for row in self.ae_catalog["evidenceAssessments"]},
@@ -209,7 +209,7 @@ class InfF03Governance001Tests(unittest.TestCase):
         records = (
             [row for row in self.ri_relationships if row["id"] in RELATIONSHIP_IDS]
             + [row for row in self.ri_evidence if row["id"] == "EVA-V1-INF-F03-REL-001"]
-            + ae.all_records(self.ae_catalog)
+            + [row for row in ae.all_records(self.ae_catalog) if 'INF-F03' in row['id']]
         )
         self.assertEqual(len(records), 12)
         self.assertTrue(all(row["governance"]["lifecycleStatus"] == "GOVERNED" for row in records))
@@ -228,7 +228,8 @@ class InfF03Governance001Tests(unittest.TestCase):
         self.assertTrue(all(row["governance"]["transitionProvenance"][-1]["exactDecisionMaterialization"] for row in records))
         self.assertTrue(all(row["governance"]["transitionProvenance"][-1]["actorClass"] == "AUTOMATED_PROCESS_OR_AI" for row in records))
         self.assertEqual(sum(ri.governed_active(row) for row in records), 5)
-        self.assertEqual(len(self.ae_catalog["authorizations"]), 2)
+        self.assertEqual({r['decisionId'] for r in self.ae_catalog['authorizations'] if 'INF-F03' in r['decisionId']},
+                         {'GOV-INF-F03-001-2026-09-06','GOV-INF-F03-ACTIVATION-001-2026-09-06'})
 
     def test_active_production_counts_and_application_boundary(self):
         counts = ri.validate_repository()
