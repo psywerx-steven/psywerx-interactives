@@ -210,6 +210,23 @@ class NetworkStateV1Tests(unittest.TestCase):
         o=f.observation('SYN-OBS-1','SYN-TIE-AB'); o['missingness']['realNetworkTruthClaim']=True
         with self.assertRaises(ns.ValidationError): ns.validate_observation(ns.seal(o))
 
+    def test_stipulated_weight_change_cannot_inherit_observed_result(self):
+        o=f.observation('SYN-OBS-1','SYN-TIE-AB')
+        state=ns.construct_from_observation(f.empty_state('SYN-STATE-OBS'),o,'Explicit incomplete assumption',
+            [n['id'] for n in o['nodes']],[t['id'] for t in o['ties']])
+        identifier=state['ties'][0]['id']
+        delta=f.delta(state,[{'operation':'UPDATE_TIE_WEIGHT','tieId':identifier,'weight':2,'weightMeaning':'INTENSITY','weightUnit':'fictional-unit'}])
+        result,_=ns.apply_delta(state,delta)
+        changed=next(t for t in result['ties'] if t['id']==identifier)
+        self.assertEqual(changed['basis'],'ASSUMED'); self.assertIsNone(changed['observationRef'])
+        self.assertEqual(changed['provenanceId'],delta['provenance']['id'])
+        self.assertEqual(state['ties'][0]['basis'],'OBSERVED')
+        self.assertTrue(ns.validate_observation(o))
+
+    def test_delta_cannot_create_observed_tie(self):
+        tie=f.tie('AD'); tie['basis']='OBSERVED'
+        with self.assertRaises(ns.ValidationError): self.apply([{'operation':'ADD_TIE','tie':tie}])
+
     def test_observation_inference_method_required(self):
         o=f.observation('SYN-OBS-1','SYN-TIE-AB'); o['ties'][0]['basis']='INFERRED'
         with self.assertRaises(ns.ValidationError): ns.validate_observation(ns.seal(o))

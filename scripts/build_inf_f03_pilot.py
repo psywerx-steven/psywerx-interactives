@@ -208,10 +208,15 @@ def protected():
 
 
 def protected_checkpoint_ok(files):
-    """Permit only files explicitly changed by governance checkpoint 001."""
+    """Historical science plus the exact later authorized source-schema union."""
     governed = GOVERNANCE_DECISION.is_file()
+    def exact_later_contract(path):
+        if path!='schemas/relationship-intervention/v1/source-record-v1.schema.json': return False
+        import materialize_soc_f07_completion as completion
+        original=json.loads(subprocess.check_output(['git','show',R['baseline']+':'+path],cwd=ROOT))
+        return completion.source_schema_extension_only(original,ae.read(ROOT/path))
     return all(
-        checks["unchanged"] or (governed and path in AUTHORIZED_CHECKPOINT_PATHS)
+        checks["unchanged"] or (governed and path in AUTHORIZED_CHECKPOINT_PATHS) or exact_later_contract(path)
         for path, checks in files.items()
     )
 

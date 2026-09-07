@@ -1,5 +1,9 @@
 # SOC-F07 governance and Network State handoff
 
+## Current completion overlay
+
+PR #19 merged as `59cf40931b9d63811422dd2c9e648888178f9e09`; NS01–NS12 are governed. The subsequent [Network State V1 revalidation](SOC_F07_NETWORK_STATE_REVALIDATION.md) supersedes the historical blocked implementation status below: HT-008 and the complete collection derivation are now separately materialized GOVERNED/INACTIVE. AE04/D10/D12 and all scientific target gaps remain unchanged. Historical checkpoint statements below describe their original date, not current implementation readiness.
+
 ## Subsequent architecture authorization — 2026-09-07
 
 [GOV-NETWORK-STATE-V1-2026-09-07](../../NETWORK_STATE_V1_GOVERNANCE_DECISION.md) now governs NS01–NS12 (NS06/NS09 modified as authorized). It permits PR #19 merge after validation and bounded additive implementation on a separate branch. AE04/D10/D12 remain unchanged; no scientific activation or scale-up. The historical checkpoint below remains accurate for the pre-implementation data: seven inactive identities; HT-008 and the centralization concept still blocked. Only those already-approved items may conditionally materialize after truthful source and collection contracts pass. See [execution record](../../NETWORK_STATE_V1_EXECUTION.md).

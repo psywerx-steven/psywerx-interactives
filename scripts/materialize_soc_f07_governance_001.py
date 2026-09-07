@@ -142,6 +142,12 @@ def exact_additions(path, original, current):
     if path not in {'data/actions-events-v1/catalog.json','data/relationship-intervention-v1/source-register.json'}:
         return False
     old=json.loads(original); new=copy.deepcopy(json.loads(current))
+    # The later NS-enabled checkpoint is separately hash-bound. Never absorb
+    # it into, or regenerate, this historical seven-identity decision.
+    import materialize_soc_f07_completion as completion
+    if completion.MANIFEST.exists():
+        try: new=completion.strip_additions(path,new)
+        except ValueError: return False
     if path.endswith('catalog.json'):
         expected={r['id']:r for r in identities()}
         additions={r['id']:r for r in new['happeningTypes'] if r['id'] in expected}

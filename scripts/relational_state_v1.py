@@ -221,11 +221,13 @@ def apply_delta(state, delta):
         ties={t['id']:t for t in out['ties']}; opportunities={o['id']:o for o in out['opportunities']}
         if kind=='ADD_NODE':
             n=copy.deepcopy(operation['node']); require(n['id'] not in nodes, 'Node ID cannot be recycled')
+            n['provenanceId']=p['id']
             out['nodes'].append(n)
             if operation['includeInBoundary']: out['boundary']['includedNodeIds'].append(n['id']); out['boundary']['revision']+=1
         elif kind=='DEACTIVATE_NODE':
             identifier=operation['nodeId']; require(identifier in nodes and nodes[identifier]['active'], 'No active node to deactivate')
             nodes[identifier]['active']=False
+            nodes[identifier]['provenanceId']=p['id']
             if identifier in out['boundary']['includedNodeIds']:
                 out['boundary']['includedNodeIds'].remove(identifier); out['boundary']['revision']+=1
             removed += [t['id'] for t in out['ties'] if identifier in (t['source'],t['target'])]
@@ -235,6 +237,8 @@ def apply_delta(state, delta):
             out['riskSetOpportunityIds']=[i for i in out['riskSetOpportunityIds'] if i not in removed_opportunities]
         elif kind=='ADD_TIE':
             t=copy.deepcopy(operation['tie'])
+            require(t['basis']=='ASSUMED' and t['observationRef'] is None, 'A modeled operation cannot manufacture observation evidence')
+            t['provenanceId']=p['id']
             require(t['id'] not in ties and t['id'] not in out['retiredTieIds']+removed, 'Tie identity collision/recycling')
             out['ties'].append(t)
         elif kind=='REMOVE_TIE':
@@ -243,17 +247,21 @@ def apply_delta(state, delta):
         elif kind=='UPDATE_TIE_WEIGHT':
             require(operation['tieId'] in ties, 'No such tie')
             for key in ('weight','weightMeaning','weightUnit'): ties[operation['tieId']][key]=operation[key]
+            ties[operation['tieId']].update(basis='ASSUMED',observationRef=None,provenanceId=p['id'])
         elif kind=='CHANGE_MEMBERSHIP':
             require(operation['nodeId'] in nodes and nodes[operation['nodeId']]['active'], 'No active member')
             nodes[operation['nodeId']]['memberships']=copy.deepcopy(operation['groupIds'])
+            nodes[operation['nodeId']]['provenanceId']=p['id']
         elif kind=='CHANGE_BOUNDARY':
             b=operation['boundary']; require(b['id']==state['boundary']['id'] and b['revision']==state['boundary']['revision']+1, 'Boundary revision mismatch')
             out['boundary']=copy.deepcopy(b)
         elif kind=='CHANGE_CONTACT_OPPORTUNITY':
-            o=copy.deepcopy(operation['opportunity']); out['opportunities']=[x for x in out['opportunities'] if x['id']!=o['id']]+[o]
+            o=copy.deepcopy(operation['opportunity']); o['provenanceId']=p['id']
+            out['opportunities']=[x for x in out['opportunities'] if x['id']!=o['id']]+[o]
         elif kind=='CHANGE_ACCESS':
             require(operation['opportunityId'] in opportunities, 'No such contact opportunity')
             opportunities[operation['opportunityId']]['enabled']=operation['enabled']
+            opportunities[operation['opportunityId']]['provenanceId']=p['id']
         else: raise ValidationError('Unknown typed operation')
     out['retiredTieIds']+=removed; out['appliedDeltaIds'].append(delta['id'])
     out['parent']=ref(state); out['revision']+=1; out=seal(out); validate_state(out)

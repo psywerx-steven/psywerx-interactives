@@ -244,6 +244,9 @@ def protected():
         if original!=current and (DOCS/'SOC_F07_HUMAN_DECISIONS.json').exists():
             import materialize_soc_f07_governance_001 as checkpoint
             report[p]['exactAuthorizedAdditionsOnly']=checkpoint.exact_additions(p,original,current)
+            if p=='schemas/relationship-intervention/v1/source-record-v1.schema.json':
+                import materialize_soc_f07_completion as completion
+                report[p]['exactAuthorizedAdditionsOnly']=completion.source_schema_extension_only(json.loads(original),json.loads(current))
     return {'baseline':inp.BASELINE,'comparison':'LF_NORMALIZED_BYTES; Git checkout CRLF is not scientific modification',
             'passed':all(x['unchanged'] or x.get('exactAuthorizedAdditionsOnly',False) for x in report.values()),'filesCompared':len(report),'files':report}
 

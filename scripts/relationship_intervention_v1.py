@@ -9,7 +9,9 @@ from __future__ import annotations
 import argparse
 import copy
 import hashlib
+import importlib.util
 import json
+from functools import lru_cache
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Iterable, Mapping, Sequence
@@ -23,6 +25,16 @@ SCHEMA_DIR = ROOT / "schemas" / "relationship-intervention" / "v1"
 DATA = ROOT / "data"
 CANDIDATE_WORKSPACE = DATA / "candidates" / "relationship-intervention-v1" / "workspace.json"
 GOVERNED_V1_DIR = DATA / "relationship-intervention-v1"
+
+
+@lru_cache(maxsize=1)
+def source_verification_module():
+    # Existing consumers load this module by absolute file path, without adding
+    # scripts/ to sys.path. Resolve the additive sibling the same way.
+    spec = importlib.util.spec_from_file_location("psywerx_source_verification_v1", ROOT / "scripts/source_verification_v1.py")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
 
 SCHEMA_FILES = {
     "governance": "governance-v1.schema.json",
@@ -786,10 +798,10 @@ def validate_native_source_register(schemas: SchemaSet) -> list[dict[str, Any]]:
         schemas.validate("source", record)
         # Additive authoritative non-PubMed route; existing PubMed records are
         # preserved and checked exactly, not silently remigrated.
-        from source_verification_v1 import validate_source, VerificationError
+        verification = source_verification_module()
         try:
-            validate_source(record)
-        except VerificationError as error:
+            verification.validate_source(record)
+        except verification.VerificationError as error:
             raise ArchitectureValidationError(str(error)) from error
         identifier = record["id"]
         _require(identifier not in legacy_ids, f"Native source ID duplicates legacy source: {identifier}")

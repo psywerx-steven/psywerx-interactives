@@ -77,6 +77,16 @@ F–L and O COMPLETE locally: eight additive schemas, immutable typed state oper
 
 The current worktree had been switched to main at the same `59cf409` commit without losing changes; it is now back on the already-created `implementation/network-state-v1` branch. No history or work was reset. First remaining milestone: M/N/P, final conditional materialization and protected-record compatibility, then full regressions/CI. Governance/source snapshots remain historical; completion will be a separate exact overlay, not a rewrite of prior decisions.
 
+## Conditional completion and local validation complete
+
+Core checkpoint committed as `4f9ad45`. M–S now COMPLETE locally: HT-V1-SOC-F07-008 and DER-V1-SOC-F07-001 materialized GOVERNED/INACTIVE; exact source SRC-559 registered; 12 embedded/lineage/protection tests pass. The derivation is a complete collection binding with one internal definitional finding, not a causal Relationship or empirical EvidenceAssessment. All 12 scientific target gaps/H12/H20 remain unresolved, all three candidate effects UNKNOWN/RESEARCH_NEEDED, no activation.
+
+All 429 explicit Python tests ran: 427 passed, two Windows symlink privilege skips. Scenario-service 21 passed. Source/RI/AE/lifecycle/RDS/collection validators, deterministic SOC/NS generation, migration artifact regeneration, Python compilation, 19 JavaScript parses and diff/local links passed. Protected comparison: 146 existing files, 142 byte-equivalent and four exact authorized changes; every pre-existing scientific record unchanged. Generic SOC runner completed in about five seconds and reconciled 105 Families/811 entities/457 active/436 causal.
+
+Separate skeptical review fixed an absolute-file import compatibility defect and prevented stipulated tie changes inheriting observed evidence. Historical protection tests now allow only the exact new verification union, not arbitrary schema changes. See NETWORK_STATE_V1_VALIDATION.md for complete results and scope mapping.
+
+First remaining milestone: T/U/V. Commit completion, push implementation branch, open one implementation PR, inspect Linux/Windows final-head CI and full diff. Merge only when all gates pass. Then X–Z: essential post-merge checks, read-only three-pilot readiness and final handoff. No scientific activation or new Family research.
+
 State operations are deterministic modeled bookkeeping, not empirical effects, permission or predictions. Fixtures are SYNTHETIC / NON_PRODUCTION. No real-person data or latent-state estimator. Source verification must preserve old PubMed records exactly and reject unverifiable authoritative routes. Conditional scientific materialization has prior human authorization but no activation authority.
 
 Git maintenance emits permission warnings for stale PR9 worktree metadata during automatic housekeeping; fetch/commit/push succeed. No stale worktree deletion is attempted.
