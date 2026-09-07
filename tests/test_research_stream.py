@@ -24,6 +24,7 @@ def sample_handoff(
     brief_date="2026-09-07",
     source_key="10.1234/example.1",
     source_url="https://doi.org/10.1234/example.1",
+    source_verified=True,
     summary="A clear public summary explains the finding and why it matters while preserving the most important limitation for readers who need a concise and appropriately cautious account of the source.",
 ):
     return {
@@ -45,7 +46,7 @@ def sample_handoff(
                 "sourceUrl": source_url,
                 "sourcePublishedAt": "2026-09-01",
                 "sourceKey": source_key,
-                "sourceVerified": True,
+                "sourceVerified": source_verified,
                 "briefDate": brief_date,
                 "briefType": "daily",
                 "streamDecision": "pending",
@@ -198,6 +199,74 @@ class ResearchStreamTests(unittest.TestCase):
         record = stream.load_database(self.database)[0]
         self.assertEqual(result["streamDecision"], "publish")
         self.assertEqual(record["publishedAt"], "2026-09-08")
+        self.assertIs(stream.validate_record(record), record)
+
+    def test_unverified_publish_is_rejected_without_database_change(self):
+        self.ingest(sample_handoff(source_verified=False))
+        item_id = stream.load_database(self.database)[0]["itemId"]
+        before = self.database.read_bytes()
+        result = subprocess.run(
+            [
+                sys.executable,
+                str(TOOLS / "review_research_item.py"),
+                item_id,
+                "publish",
+                "--date",
+                "2026-09-08",
+                "--database",
+                str(self.database),
+                "--public-feed",
+                str(self.public),
+            ],
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        self.assertEqual(result.returncode, 1)
+        self.assertIn("sourceVerified must be true", result.stderr)
+        self.assertEqual(self.database.read_bytes(), before)
+        self.assertFalse(self.public.exists())
+        record = stream.load_database(self.database)[0]
+        self.assertEqual(record["streamDecision"], "pending")
+        self.assertFalse(record["reviewRequired"])
+
+    def test_unverified_hold_and_reject_remain_allowed(self):
+        self.ingest(sample_handoff(source_verified=False))
+        item_id = stream.load_database(self.database)[0]["itemId"]
+        stream.review_item(self.database, item_id, "hold", "2026-09-08")
+        self.assertEqual(stream.load_database(self.database)[0]["streamDecision"], "hold")
+        stream.review_item(self.database, item_id, "reject", "2026-09-09")
+        record = stream.load_database(self.database)[0]
+        self.assertEqual(record["streamDecision"], "reject")
+        self.assertFalse(record["sourceVerified"])
+
+    def test_failed_unverified_publish_preserves_review_required_conflict(self):
+        self.ingest(sample_handoff(brief_date="2026-09-06", source_verified=False))
+        item_id = stream.load_database(self.database)[0]["itemId"]
+        stream.review_item(self.database, item_id, "hold", "2026-09-07")
+        changed = sample_handoff(
+            brief_date="2026-09-08",
+            source_verified=False,
+            summary="A materially revised summary triggers owner review while the existing decision and unverified publication gate remain unchanged.",
+        )
+        report = self.ingest(changed)
+        self.assertEqual(report["conflicts"], 1)
+        before = self.database.read_bytes()
+        with self.assertRaisesRegex(stream.ResearchStreamError, "sourceVerified must be true"):
+            stream.review_item(self.database, item_id, "publish", "2026-09-09")
+        self.assertEqual(self.database.read_bytes(), before)
+        record = stream.load_database(self.database)[0]
+        self.assertEqual(record["streamDecision"], "hold")
+        self.assertTrue(record["reviewRequired"])
+
+    def test_unverified_published_record_fails_canonical_validation(self):
+        self.ingest(sample_handoff(source_verified=False))
+        record = stream.load_database(self.database)[0]
+        record["streamDecision"] = "publish"
+        record["decisionDate"] = "2026-09-08"
+        record["publishedAt"] = "2026-09-08"
+        with self.assertRaisesRegex(stream.ResearchStreamError, "sourceVerified: true"):
+            stream.validate_record(record)
 
     def test_hold_review_command_retains_item(self):
         self.ingest()

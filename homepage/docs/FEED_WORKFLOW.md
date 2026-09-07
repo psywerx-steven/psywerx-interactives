@@ -68,7 +68,7 @@ py homepage/tools/review_research_item.py ITEM_ID hold --date YYYY-MM-DD
 py homepage/tools/review_research_item.py ITEM_ID reject --date YYYY-MM-DD
 ```
 
-If `--date` is omitted, the local current date is used. Publish sets `decisionDate` and `publishedAt`; hold or reject sets `decisionDate` and leaves `publishedAt` null. Nothing is deleted. The command also regenerates the public projection.
+If `--date` is omitted, the local current date is used. Publish requires `sourceVerified: true` and otherwise fails without changing the database; hold and reject remain available for unverified items. A valid publish sets `decisionDate` and `publishedAt`; hold or reject sets `decisionDate` and leaves `publishedAt` null. Nothing is deleted. The command also regenerates the public projection.
 
 ## Public projection and homepage build
 

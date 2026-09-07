@@ -370,6 +370,8 @@ def validate_record(record: dict) -> dict:
     decision = record["streamDecision"]
     if decision not in DECISIONS:
         raise ResearchStreamError("streamDecision is invalid")
+    if decision == "publish" and record["sourceVerified"] is not True:
+        raise ResearchStreamError("publish records require sourceVerified: true")
     decision_date = _iso_date(record["decisionDate"], "decisionDate", nullable=True)
     published = _iso_date(record["publishedAt"], "publishedAt", nullable=True)
     if decision == "pending" and (decision_date is not None or published is not None):
@@ -573,6 +575,8 @@ def review_item(database_path: Path, item_id: str, decision: str, decision_date:
     if not matches:
         raise ResearchStreamError(f"unknown itemId: {item_id}")
     record = matches[0]
+    if decision == "publish" and record["sourceVerified"] is not True:
+        raise ResearchStreamError(f"cannot publish {item_id}: sourceVerified must be true")
     previous = record["streamDecision"]
     record["streamDecision"] = decision
     record["decisionDate"] = decision_date
