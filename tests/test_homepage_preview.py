@@ -168,11 +168,11 @@ class HomepageTests(unittest.TestCase):
         self.assertEqual(site["newsletterAction"], "https://assets.mailerlite.com/jsonp/2519483/forms/195936376173102135/subscribe")
         self.assertEqual(site["linkedinUrl"], "https://www.linkedin.com/company/psywerx")
 
-    def test_launch_root_replaces_redirect_but_defers_cname_cutover(self):
+    def test_launch_root_replaces_redirect_and_targets_apex_cname(self):
         page = (REPO / "index.html").read_text(encoding="utf-8")
         self.assertNotIn('http-equiv="refresh"', page)
         self.assertNotIn("window.location.replace", page)
-        self.assertEqual((REPO / "CNAME").read_text(encoding="utf-8").strip(), "drivers.psywerx.io")
+        self.assertEqual((REPO / "CNAME").read_text(encoding="utf-8").strip(), "psywerx.io")
 
     def test_production_discovery_files(self):
         self.assertEqual((REPO / "robots.txt").read_text(encoding="utf-8"), "User-agent: *\nAllow: /\nSitemap: https://psywerx.io/sitemap.xml\n")
