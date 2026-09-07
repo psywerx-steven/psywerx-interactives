@@ -203,6 +203,18 @@ def validate_sources():
         if key in seen:
             raise ValueError("Duplicate Layer DOI: " + key)
         seen.add(key)
+        reused = next((c for c in canonical if c["id"] == s["id"]), None)
+        if reused is not None:
+            existing_text = p.encode(reused).lower()
+            title_year_match = (str(s.get("year")) == str(reused.get("year"))
+                and normalize_title(s["title"]) in normalize_title(reused.get("title", reused.get("citationText", ""))))
+            pmid_match = s.get("pmid") and "pubmed.ncbi.nlm.nih.gov/" + s["pmid"] in existing_text
+            if not (key in existing_text or pmid_match or
+                    (not re.search(r"10\.\d{4,9}/", existing_text) and title_year_match)):
+                raise ValueError("Canonical reuse DOI does not match: " + s["id"])
+            # Reuse ONE existing ID even if the protected register already has
+            # duplicate entries. The Layer overlap ledger preserves that backlog.
+            continue
         for c in canonical:
             if c["id"] == s["id"]:
                 continue  # Exact canonical reuse; supplemental registry also indexes researched existing sources.

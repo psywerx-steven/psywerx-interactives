@@ -58,7 +58,7 @@
     "ownerFamilyId": "PSY-F01",
     "consultation": {
       "PSY-F01": "CANDIDATE_REVIEW_COMPLETE",
-      "PSY-F13": "NOT_YET_PROCESSED"
+      "PSY-F13": "CANDIDATE_REVIEW_COMPLETE"
     },
     "status": "BLOCKED_NEEDS_GOVERNANCE_INPUT",
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
@@ -128,7 +128,8 @@
     "ownerFamilyId": "PSY-F01",
     "consultation": {
       "PSY-F01": "CANDIDATE_REVIEW_COMPLETE",
-      "PSY-F06": "CANDIDATE_REVIEW_COMPLETE"
+      "PSY-F06": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F13": "CANDIDATE_REVIEW_COMPLETE"
     },
     "status": "RESEARCH_NEEDED",
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
@@ -172,7 +173,7 @@
     "ownerFamilyId": "PSY-F02",
     "consultation": {
       "PSY-F02": "CANDIDATE_REVIEW_COMPLETE",
-      "PSY-F13": "NOT_YET_PROCESSED",
+      "PSY-F13": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F14": "NOT_YET_PROCESSED"
     },
     "status": "RESEARCH_NEEDED",
@@ -310,7 +311,7 @@
     "ownerFamilyId": "PSY-F03",
     "consultation": {
       "PSY-F03": "CANDIDATE_REVIEW_COMPLETE",
-      "PSY-F13": "NOT_YET_PROCESSED"
+      "PSY-F13": "CANDIDATE_REVIEW_COMPLETE"
     },
     "status": "RESEARCH_NEEDED",
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
@@ -692,7 +693,7 @@
     "consultation": {
       "PSY-F06": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F07": "CANDIDATE_REVIEW_COMPLETE",
-      "PSY-F13": "NOT_YET_PROCESSED"
+      "PSY-F13": "CANDIDATE_REVIEW_COMPLETE"
     },
     "status": "RESEARCH_NEEDED",
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
@@ -770,7 +771,7 @@
     "consultation": {
       "PSY-F07": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F01": "CANDIDATE_REVIEW_COMPLETE",
-      "PSY-F13": "NOT_YET_PROCESSED",
+      "PSY-F13": "CANDIDATE_REVIEW_COMPLETE",
       "INF-F12": "EXTERNAL_ENDPOINT_REVIEW_ONLY_NO_FULL_FAMILY_AUDIT"
     },
     "status": "RESEARCH_NEEDED",
@@ -822,7 +823,7 @@
     "ownerFamilyId": "PSY-F07",
     "consultation": {
       "PSY-F07": "CANDIDATE_REVIEW_COMPLETE",
-      "PSY-F13": "NOT_YET_PROCESSED",
+      "PSY-F13": "CANDIDATE_REVIEW_COMPLETE",
       "INF-F07": "EXTERNAL_ENDPOINT_REVIEW_ONLY_NO_FULL_FAMILY_AUDIT"
     },
     "status": "RESEARCH_NEEDED",
@@ -1160,7 +1161,7 @@
     "consultation": {
       "PSY-F11": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F05": "CANDIDATE_REVIEW_COMPLETE",
-      "PSY-F13": "NOT_YET_PROCESSED"
+      "PSY-F13": "CANDIDATE_REVIEW_COMPLETE"
     },
     "status": "RESEARCH_NEEDED",
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
@@ -1227,7 +1228,7 @@
     "ownerFamilyId": "PSY-F12",
     "consultation": {
       "PSY-F12": "CANDIDATE_REVIEW_COMPLETE",
-      "PSY-F13": "NOT_YET_PROCESSED",
+      "PSY-F13": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F05": "CANDIDATE_REVIEW_COMPLETE"
     },
     "status": "RESEARCH_NEEDED",
@@ -1305,6 +1306,95 @@
       "PSY-F12": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F06": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F05": "CANDIDATE_REVIEW_COMPLETE"
+    },
+    "status": "RESEARCH_NEEDED",
+    "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+  },
+  {
+    "id": "CF-PSY-LAYER-0051",
+    "kind": "CONSTRUCT_BOUNDARY",
+    "familyIds": [
+      "PSY-F13",
+      "PSY-F01",
+      "PSY-F07"
+    ],
+    "recordIds": [
+      "PSY-116",
+      "PSY-068",
+      "PSY-003",
+      "PSY-002"
+    ],
+    "question": "Specific judgment confidence, memory confidence, belief strength and attitude-certainty component overlap; calibration is not LEVEL.",
+    "classification": "MEASUREMENT_OVERLAP",
+    "ownerFamilyId": "PSY-F13",
+    "consultation": {
+      "PSY-F13": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F01": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F07": "CANDIDATE_REVIEW_COMPLETE"
+    },
+    "status": "RESEARCH_NEEDED",
+    "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+  },
+  {
+    "id": "CF-PSY-LAYER-0052",
+    "kind": "CONSTRUCT_BOUNDARY",
+    "familyIds": [
+      "PSY-F13",
+      "PSY-F03"
+    ],
+    "recordIds": [
+      "PSY-113",
+      "PSY-118",
+      "PSY-021"
+    ],
+    "question": "Credibility profile, source-specific epistemic willingness and interpersonal trust distinct; general ETMCQ not exact current source state.",
+    "classification": "RELATED",
+    "ownerFamilyId": "PSY-F13",
+    "consultation": {
+      "PSY-F13": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F03": "CANDIDATE_REVIEW_COMPLETE"
+    },
+    "status": "RESEARCH_NEEDED",
+    "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+  },
+  {
+    "id": "CF-PSY-LAYER-0053",
+    "kind": "CONSTRUCT_BOUNDARY",
+    "familyIds": [
+      "PSY-F13",
+      "PSY-F14"
+    ],
+    "recordIds": [
+      "PSY-119",
+      "PSY-130"
+    ],
+    "question": "Closure desire, search stopping and sufficiency appraisal differ; enduring versus situational metadata unresolved.",
+    "classification": "RELATED",
+    "ownerFamilyId": "PSY-F13",
+    "consultation": {
+      "PSY-F13": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F14": "NOT_YET_PROCESSED"
+    },
+    "status": "RESEARCH_NEEDED",
+    "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+  },
+  {
+    "id": "CF-PSY-LAYER-0054",
+    "kind": "CONSTRUCT_BOUNDARY",
+    "familyIds": [
+      "PSY-F13",
+      "INF-F12"
+    ],
+    "recordIds": [
+      "PSY-119",
+      "INF-068"
+    ],
+    "question": "Derived omission ratio versus recipient adequacy requires materiality universe, detection and independent measurement; no inevitable sign.",
+    "classification": "DISTINCT",
+    "ownerFamilyId": "INF-F12",
+    "consultation": {
+      "PSY-F13": "CANDIDATE_REVIEW_COMPLETE",
+      "INF-F12": "ENDPOINT_REVIEW_ONLY_NO_EXTERNAL_FAMILY_AUDIT"
     },
     "status": "RESEARCH_NEEDED",
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
