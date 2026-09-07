@@ -87,6 +87,12 @@ Separate skeptical review fixed an absolute-file import compatibility defect and
 
 First remaining milestone: T/U/V. Commit completion, push implementation branch, open one implementation PR, inspect Linux/Windows final-head CI and full diff. Merge only when all gates pass. Then X–Z: essential post-merge checks, read-only three-pilot readiness and final handoff. No scientific activation or new Family research.
 
+## Implementation PR and concurrent-main reconciliation
+
+Completion commit `44bd631dbc526f8a25f613c38b8cc81b3880df27` pushed; implementation PR [#21](https://github.com/psywerx-steven/psywerx-interactives/pull/21) opened. Main legitimately advanced to `900729822aeb0bf1f4e55d489409c7fbf7a281d9` via the user's PR #20 isolated homepage preview. Inspected its full path diff: only new homepage/preview assets/tools/docs and a test, no scientific stores, governed schemas, consumers or CI changes. Merged origin/main into this implementation branch without conflict or rewriting history. The scientific baseline remains valid. All 21 now-tracked JavaScript files parse. No homepage feature edits or deployment actions were made by this task.
+
+U COMPLETE; final integrated-head Linux/Windows CI and merge gate remain pending. A separate post-merge documentation closeout will record the required read-only three-pilot assessment; it cannot authorize any scientific scale-up.
+
 State operations are deterministic modeled bookkeeping, not empirical effects, permission or predictions. Fixtures are SYNTHETIC / NON_PRODUCTION. No real-person data or latent-state estimator. Source verification must preserve old PubMed records exactly and reject unverifiable authoritative routes. Conditional scientific materialization has prior human authorization but no activation authority.
 
 Git maintenance emits permission warnings for stale PR9 worktree metadata during automatic housekeeping; fetch/commit/push succeed. No stale worktree deletion is attempted.
