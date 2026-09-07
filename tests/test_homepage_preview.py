@@ -108,46 +108,58 @@ class HomepageTests(unittest.TestCase):
             self.assertEqual(first, second)
             self.assertEqual(first_public, (root / "data/research-stream/public_feed.json").read_bytes())
 
-    def test_release_excludes_pending_database_records(self):
+    def test_release_includes_only_published_database_records(self):
         context, root = temporary_source()
         with context:
+            database = root / "data/research-stream/research_items.jsonl"
+            records = stream.load_database(database)
+            published = [record for record in records if record["streamDecision"] == "publish"]
+            excluded = [record for record in records if record["streamDecision"] != "publish"]
             report = builder.build("release", "local", root)
             page = (root / "site/index.html").read_text(encoding="utf-8")
             data_text = (root / "site/assets/home-data.js").read_text(encoding="utf-8")
-            self.assertEqual(report["feedCount"], 0)
-            self.assertEqual(report["feedTotal"], 0)
+            self.assertEqual(report["feedTotal"], len(published))
+            self.assertEqual(report["feedCount"], min(24, len(published)))
+            self.assertGreater(report["feedTotal"], 0)
+            for record in excluded:
+                self.assertNotIn(record["itemId"], data_text)
             self.assertIn("./drivers/", page)
             self.assertNotIn("noindex,nofollow", page)
             self.assertNotIn("questionAndWhy", data_text)
             self.assertIn('<link rel="canonical" href="https://psywerx.io/">', page)
             self.assertIn('<meta name="robots" content="index,follow">', page)
 
-    def test_release_renders_only_public_projection_fields(self):
+    def test_release_renders_only_public_projection_fields_and_dates(self):
         context, root = temporary_source()
         with context:
-            database = root / "data/research-stream/research_items.jsonl"
-            records = stream.load_database(database)
-            stream.review_item(database, records[0]["itemId"], "publish", "2026-09-08")
             builder.build("release", "local", root)
             page = (root / "site/index.html").read_text(encoding="utf-8")
             data_text = (root / "site/assets/home-data.js").read_text(encoding="utf-8")
             data = json.loads(data_text[len("window.PSYWERX_HOME = "):].strip().removesuffix(";"))
-            self.assertEqual(len(data["feed"]), 1)
-            self.assertEqual(set(data["feed"][0]), set(stream.PUBLIC_FIELDS))
-            self.assertIn(records[0]["streamTitle"], page)
-            self.assertIn(records[0]["attribution"], page)
-            self.assertNotIn(records[0]["questionAndWhy"], page + data_text)
+            self.assertGreater(len(data["feed"]), 0)
+            first = data["feed"][0]
+            self.assertEqual(set(first), set(stream.PUBLIC_FIELDS))
+            self.assertRegex(first["dateAdded"], r"^\d{4}-\d{2}-\d{2}$")
+            self.assertTrue(first["sourcePublishedAt"] is None or re.fullmatch(r"\d{4}-\d{2}-\d{2}", first["sourcePublishedAt"]))
+            self.assertIn(first["streamTitle"], page)
+            self.assertIn(first["attribution"], page)
+            self.assertIn("Published ", page)
+            self.assertIn("Added ", page)
+            self.assertIn('class="feed-meta"', page)
+            for private_field in ("questionAndWhy", "whatTheyDid", "whatTheyFound", "whatItMeans", "sourceVerified", "decisionDate"):
+                self.assertNotIn(private_field, page + data_text)
 
     def test_public_stream_allowlist_matches_builder(self):
         self.assertEqual(
             set(builder.PUBLIC_FEED_FIELDS),
-            {"itemId", "streamTitle", "streamSummary", "attribution", "sourceUrl", "categories", "publishedAt"},
+            {"itemId", "streamTitle", "streamSummary", "attribution", "sourceUrl", "categories", "sourcePublishedAt", "dateAdded"},
         )
 
     def test_preview_excludes_canonical_research_notes(self):
         text = (PREVIEW / "assets/home-data.js").read_text(encoding="utf-8")
         data = json.loads(text[len("window.PSYWERX_HOME = "):].strip().removesuffix(";"))
-        self.assertEqual(data["feed"], [])
+        for item in data["feed"]:
+            self.assertEqual(set(item), set(stream.PUBLIC_FIELDS))
         for private_field in ("questionAndWhy", "whatTheyDid", "whatTheyFound", "whatItMeans", "sourceVerified", "decisionDate"):
             self.assertNotIn(private_field, text)
 
