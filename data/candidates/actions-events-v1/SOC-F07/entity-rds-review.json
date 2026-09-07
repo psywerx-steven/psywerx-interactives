@@ -1,5 +1,23 @@
 [
   {
+    "aliasRecords": [
+      {
+        "aliasId": "ALS-00278",
+        "aliasType": "RELATED_SEARCH",
+        "entityIds": [
+          "RDS-0005"
+        ],
+        "language": "en",
+        "normalizedText": "closeness",
+        "notes": "Ambiguous with relational closeness unless qualified.",
+        "publicDisplayRule": "SEARCH_ONLY",
+        "sourceIds": [
+          "https://app.notion.com/p/3cdf827a3d1581ca8fa8ff0fd5520103"
+        ],
+        "text": "Closeness"
+      }
+    ],
+    "aliasRisk": "SEARCH_ONLY/RELATED_SEARCH aliases are retrieval aids, not scientific equivalence; network connectedness/closeness/prestige require exact construct disambiguation.",
     "blockedOrMissingFields": [
       "mechanism",
       "modifiability",
@@ -26,6 +44,7 @@
       "tieThreshold": "MUST_SPECIFY_AND_SENSITIVITY_CHECK; not instantiated in this pilot",
       "weighting": "MUST_SPECIFY_AND_SENSITIVITY_CHECK; not instantiated in this pilot"
     },
+    "crosswalkRecords": [],
     "currentRecord": {
       "aliases": [],
       "associatedLayers": [
@@ -372,10 +391,13 @@
     "relatedRelationships": [],
     "scientificAuditCanProceed": true,
     "sharedInputs": "Same network representation may feed multiple RDS; no independent simultaneous propagation",
+    "sourceReferenceAlignment": [],
     "targetability": "FORBIDDEN_DIRECT_RDS_EFFECT",
     "uncertainty": "Use governed external-input uncertainty requirements; do not instantiate missing algorithm/window/normalization"
   },
   {
+    "aliasRecords": [],
+    "aliasRisk": "SEARCH_ONLY/RELATED_SEARCH aliases are retrieval aids, not scientific equivalence; network connectedness/closeness/prestige require exact construct disambiguation.",
     "blockedOrMissingFields": [
       "mechanism",
       "modifiability",
@@ -402,6 +424,7 @@
       "tieThreshold": "MUST_SPECIFY_AND_SENSITIVITY_CHECK; not instantiated in this pilot",
       "weighting": "MUST_SPECIFY_AND_SENSITIVITY_CHECK; not instantiated in this pilot"
     },
+    "crosswalkRecords": [],
     "currentRecord": {
       "aliases": [],
       "associatedLayers": [
@@ -748,10 +771,29 @@
     "relatedRelationships": [],
     "scientificAuditCanProceed": true,
     "sharedInputs": "Same network representation may feed multiple RDS; no independent simultaneous propagation",
+    "sourceReferenceAlignment": [],
     "targetability": "FORBIDDEN_DIRECT_RDS_EFFECT",
     "uncertainty": "Use governed external-input uncertainty requirements; do not instantiate missing algorithm/window/normalization"
   },
   {
+    "aliasRecords": [
+      {
+        "aliasId": "ALS-01155",
+        "aliasType": "LEGACY_UMBRELLA",
+        "entityIds": [
+          "RDS-0007"
+        ],
+        "language": "en",
+        "normalizedText": "network connectedness",
+        "notes": "Ambiguous graph-theoretic umbrella; not an exact synonym.",
+        "publicDisplayRule": "SEARCH_ONLY",
+        "sourceIds": [
+          "https://app.notion.com/p/3cdf827a3d1581ca8fa8ff0fd5520103"
+        ],
+        "text": "Network connectedness"
+      }
+    ],
+    "aliasRisk": "SEARCH_ONLY/RELATED_SEARCH aliases are retrieval aids, not scientific equivalence; network connectedness/closeness/prestige require exact construct disambiguation.",
     "blockedOrMissingFields": [
       "mechanism",
       "modifiability",
@@ -778,6 +820,7 @@
       "tieThreshold": "MUST_SPECIFY_AND_SENSITIVITY_CHECK; not instantiated in this pilot",
       "weighting": "MUST_SPECIFY_AND_SENSITIVITY_CHECK; not instantiated in this pilot"
     },
+    "crosswalkRecords": [],
     "currentRecord": {
       "aliases": [],
       "associatedLayers": [
@@ -1108,10 +1151,59 @@
     "relatedRelationships": [],
     "scientificAuditCanProceed": true,
     "sharedInputs": "Same network representation may feed multiple RDS; no independent simultaneous propagation",
+    "sourceReferenceAlignment": [],
     "targetability": "FORBIDDEN_DIRECT_RDS_EFFECT",
     "uncertainty": "Use governed external-input uncertainty requirements; do not instantiate missing algorithm/window/normalization"
   },
   {
+    "aliasRecords": [
+      {
+        "aliasId": "ALS-00517",
+        "aliasType": "RELATED_SEARCH",
+        "entityIds": [
+          "SOC-049"
+        ],
+        "language": "en",
+        "normalizedText": "direct connectivity",
+        "notes": "Migrated from the legacy untyped alias array; exact equivalence was not inferred.",
+        "publicDisplayRule": "SEARCH_ONLY",
+        "sourceIds": [
+          "https://app.notion.com/p/3cdf827a3d1581ca8fa8ff0fd5520103"
+        ],
+        "text": "direct connectivity"
+      },
+      {
+        "aliasId": "ALS-01159",
+        "aliasType": "RELATED_SEARCH",
+        "entityIds": [
+          "SOC-049"
+        ],
+        "language": "en",
+        "normalizedText": "network degree",
+        "notes": "Migrated from the legacy untyped alias array; exact equivalence was not inferred.",
+        "publicDisplayRule": "SEARCH_ONLY",
+        "sourceIds": [
+          "https://app.notion.com/p/3cdf827a3d1581ca8fa8ff0fd5520103"
+        ],
+        "text": "Network degree"
+      },
+      {
+        "aliasId": "ALS-01195",
+        "aliasType": "RELATED_SEARCH",
+        "entityIds": [
+          "SOC-049"
+        ],
+        "language": "en",
+        "normalizedText": "number of adjacent ties",
+        "notes": "Migrated from the legacy untyped alias array; exact equivalence was not inferred.",
+        "publicDisplayRule": "SEARCH_ONLY",
+        "sourceIds": [
+          "https://app.notion.com/p/3cdf827a3d1581ca8fa8ff0fd5520103"
+        ],
+        "text": "number of adjacent ties"
+      }
+    ],
+    "aliasRisk": "SEARCH_ONLY/RELATED_SEARCH aliases are retrieval aids, not scientific equivalence; network connectedness/closeness/prestige require exact construct disambiguation.",
     "blockedOrMissingFields": [],
     "boundarySensitivity": {
       "directedness": "MUST_SPECIFY_AND_SENSITIVITY_CHECK; not instantiated in this pilot",
@@ -1126,6 +1218,25 @@
       "tieThreshold": "MUST_SPECIFY_AND_SENSITIVITY_CHECK; not instantiated in this pilot",
       "weighting": "MUST_SPECIFY_AND_SENSITIVITY_CHECK; not instantiated in this pilot"
     },
+    "crosswalkRecords": [
+      {
+        "compatibilityBehavior": "Preserve the permanent ID and resolve legacy deep links to the RDS entity record.",
+        "crosswalkId": "CW-0022",
+        "effectiveVersion": "0.3",
+        "legacyId": "SOC-049",
+        "migrationType": "RETYPE",
+        "newEntityType": "RELATIONAL_DERIVED_STATE",
+        "newName": "Degree Centrality",
+        "oldEntityType": "DRIVER",
+        "oldName": "Degree Centrality",
+        "rationale": "Explicit governed Driver→RDS retype in migration handoff v0.3.",
+        "resourceType": "ENTITY",
+        "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d158103b02efcf83c197519",
+        "successorIds": [
+          "SOC-049"
+        ]
+      }
+    ],
     "currentRecord": {
       "aliases": [],
       "associatedLayers": [
@@ -1496,10 +1607,75 @@
     ],
     "scientificAuditCanProceed": true,
     "sharedInputs": "Same network representation may feed multiple RDS; no independent simultaneous propagation",
+    "sourceReferenceAlignment": [
+      {
+        "canonicalLookupId": "SRC-233",
+        "meaning": "Read-only source lookup normalization; canonical token unchanged",
+        "recordedToken": "SRC233"
+      },
+      {
+        "canonicalLookupId": "SRC-255",
+        "meaning": "Read-only source lookup normalization; canonical token unchanged",
+        "recordedToken": "SRC255"
+      },
+      {
+        "canonicalLookupId": "SRC-256",
+        "meaning": "Read-only source lookup normalization; canonical token unchanged",
+        "recordedToken": "SRC256"
+      }
+    ],
     "targetability": "FORBIDDEN_DIRECT_RDS_EFFECT",
     "uncertainty": "Use governed external-input uncertainty requirements; do not instantiate missing algorithm/window/normalization"
   },
   {
+    "aliasRecords": [
+      {
+        "aliasId": "ALS-00217",
+        "aliasType": "RELATED_SEARCH",
+        "entityIds": [
+          "SOC-050"
+        ],
+        "language": "en",
+        "normalizedText": "brokerage centrality",
+        "notes": "Migrated from the legacy untyped alias array; exact equivalence was not inferred.",
+        "publicDisplayRule": "SEARCH_ONLY",
+        "sourceIds": [
+          "https://app.notion.com/p/3cdf827a3d1581ca8fa8ff0fd5520103"
+        ],
+        "text": "Brokerage centrality"
+      },
+      {
+        "aliasId": "ALS-00945",
+        "aliasType": "RELATED_SEARCH",
+        "entityIds": [
+          "SOC-050"
+        ],
+        "language": "en",
+        "normalizedText": "intermediary position",
+        "notes": "Migrated from the legacy untyped alias array; exact equivalence was not inferred.",
+        "publicDisplayRule": "SEARCH_ONLY",
+        "sourceIds": [
+          "https://app.notion.com/p/3cdf827a3d1581ca8fa8ff0fd5520103"
+        ],
+        "text": "intermediary position"
+      },
+      {
+        "aliasId": "ALS-01675",
+        "aliasType": "RELATED_SEARCH",
+        "entityIds": [
+          "SOC-050"
+        ],
+        "language": "en",
+        "normalizedText": "shortest path brokerage",
+        "notes": "Migrated from the legacy untyped alias array; exact equivalence was not inferred.",
+        "publicDisplayRule": "SEARCH_ONLY",
+        "sourceIds": [
+          "https://app.notion.com/p/3cdf827a3d1581ca8fa8ff0fd5520103"
+        ],
+        "text": "shortest-path brokerage"
+      }
+    ],
+    "aliasRisk": "SEARCH_ONLY/RELATED_SEARCH aliases are retrieval aids, not scientific equivalence; network connectedness/closeness/prestige require exact construct disambiguation.",
     "blockedOrMissingFields": [],
     "boundarySensitivity": {
       "directedness": "MUST_SPECIFY_AND_SENSITIVITY_CHECK; not instantiated in this pilot",
@@ -1514,6 +1690,25 @@
       "tieThreshold": "MUST_SPECIFY_AND_SENSITIVITY_CHECK; not instantiated in this pilot",
       "weighting": "MUST_SPECIFY_AND_SENSITIVITY_CHECK; not instantiated in this pilot"
     },
+    "crosswalkRecords": [
+      {
+        "compatibilityBehavior": "Preserve the permanent ID and resolve legacy deep links to the RDS entity record.",
+        "crosswalkId": "CW-0023",
+        "effectiveVersion": "0.3",
+        "legacyId": "SOC-050",
+        "migrationType": "RETYPE",
+        "newEntityType": "RELATIONAL_DERIVED_STATE",
+        "newName": "Betweenness Centrality",
+        "oldEntityType": "DRIVER",
+        "oldName": "Betweenness Centrality",
+        "rationale": "Explicit governed Driver→RDS retype in migration handoff v0.3.",
+        "resourceType": "ENTITY",
+        "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d158103b02efcf83c197519",
+        "successorIds": [
+          "SOC-050"
+        ]
+      }
+    ],
     "currentRecord": {
       "aliases": [],
       "associatedLayers": [
@@ -1880,10 +2075,75 @@
     "relatedRelationships": [],
     "scientificAuditCanProceed": true,
     "sharedInputs": "Same network representation may feed multiple RDS; no independent simultaneous propagation",
+    "sourceReferenceAlignment": [
+      {
+        "canonicalLookupId": "SRC-234",
+        "meaning": "Read-only source lookup normalization; canonical token unchanged",
+        "recordedToken": "SRC234"
+      },
+      {
+        "canonicalLookupId": "SRC-255",
+        "meaning": "Read-only source lookup normalization; canonical token unchanged",
+        "recordedToken": "SRC255"
+      },
+      {
+        "canonicalLookupId": "SRC-269",
+        "meaning": "Read-only source lookup normalization; canonical token unchanged",
+        "recordedToken": "SRC269"
+      }
+    ],
     "targetability": "FORBIDDEN_DIRECT_RDS_EFFECT",
     "uncertainty": "Use governed external-input uncertainty requirements; do not instantiate missing algorithm/window/normalization"
   },
   {
+    "aliasRecords": [
+      {
+        "aliasId": "ALS-00241",
+        "aliasType": "RELATED_SEARCH",
+        "entityIds": [
+          "SOC-051"
+        ],
+        "language": "en",
+        "normalizedText": "central neighbor connectivity",
+        "notes": "Migrated from the legacy untyped alias array; exact equivalence was not inferred.",
+        "publicDisplayRule": "SEARCH_ONLY",
+        "sourceIds": [
+          "https://app.notion.com/p/3cdf827a3d1581ca8fa8ff0fd5520103"
+        ],
+        "text": "central-neighbor connectivity"
+      },
+      {
+        "aliasId": "ALS-00886",
+        "aliasType": "RELATED_SEARCH",
+        "entityIds": [
+          "SOC-051"
+        ],
+        "language": "en",
+        "normalizedText": "influence centrality",
+        "notes": "Migrated from the legacy untyped alias array; exact equivalence was not inferred.",
+        "publicDisplayRule": "SEARCH_ONLY",
+        "sourceIds": [
+          "https://app.notion.com/p/3cdf827a3d1581ca8fa8ff0fd5520103"
+        ],
+        "text": "influence centrality"
+      },
+      {
+        "aliasId": "ALS-01395",
+        "aliasType": "RELATED_SEARCH",
+        "entityIds": [
+          "SOC-051"
+        ],
+        "language": "en",
+        "normalizedText": "prestige centrality",
+        "notes": "Migrated from the legacy untyped alias array; exact equivalence was not inferred.",
+        "publicDisplayRule": "SEARCH_ONLY",
+        "sourceIds": [
+          "https://app.notion.com/p/3cdf827a3d1581ca8fa8ff0fd5520103"
+        ],
+        "text": "Prestige centrality"
+      }
+    ],
+    "aliasRisk": "SEARCH_ONLY/RELATED_SEARCH aliases are retrieval aids, not scientific equivalence; network connectedness/closeness/prestige require exact construct disambiguation.",
     "blockedOrMissingFields": [],
     "boundarySensitivity": {
       "directedness": "MUST_SPECIFY_AND_SENSITIVITY_CHECK; not instantiated in this pilot",
@@ -1898,6 +2158,25 @@
       "tieThreshold": "MUST_SPECIFY_AND_SENSITIVITY_CHECK; not instantiated in this pilot",
       "weighting": "MUST_SPECIFY_AND_SENSITIVITY_CHECK; not instantiated in this pilot"
     },
+    "crosswalkRecords": [
+      {
+        "compatibilityBehavior": "Preserve the permanent ID and resolve legacy deep links to the RDS entity record.",
+        "crosswalkId": "CW-0024",
+        "effectiveVersion": "0.3",
+        "legacyId": "SOC-051",
+        "migrationType": "RETYPE",
+        "newEntityType": "RELATIONAL_DERIVED_STATE",
+        "newName": "Eigenvector Centrality",
+        "oldEntityType": "DRIVER",
+        "oldName": "Eigenvector Centrality",
+        "rationale": "Explicit governed Driver→RDS retype in migration handoff v0.3.",
+        "resourceType": "ENTITY",
+        "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d158103b02efcf83c197519",
+        "successorIds": [
+          "SOC-051"
+        ]
+      }
+    ],
     "currentRecord": {
       "aliases": [],
       "associatedLayers": [
@@ -2264,10 +2543,75 @@
     "relatedRelationships": [],
     "scientificAuditCanProceed": true,
     "sharedInputs": "Same network representation may feed multiple RDS; no independent simultaneous propagation",
+    "sourceReferenceAlignment": [
+      {
+        "canonicalLookupId": "SRC-236",
+        "meaning": "Read-only source lookup normalization; canonical token unchanged",
+        "recordedToken": "SRC236"
+      },
+      {
+        "canonicalLookupId": "SRC-250",
+        "meaning": "Read-only source lookup normalization; canonical token unchanged",
+        "recordedToken": "SRC250"
+      },
+      {
+        "canonicalLookupId": "SRC-255",
+        "meaning": "Read-only source lookup normalization; canonical token unchanged",
+        "recordedToken": "SRC255"
+      }
+    ],
     "targetability": "FORBIDDEN_DIRECT_RDS_EFFECT",
     "uncertainty": "Use governed external-input uncertainty requirements; do not instantiate missing algorithm/window/normalization"
   },
   {
+    "aliasRecords": [
+      {
+        "aliasId": "ALS-00559",
+        "aliasType": "RELATED_SEARCH",
+        "entityIds": [
+          "SOC-052"
+        ],
+        "language": "en",
+        "normalizedText": "edge saturation",
+        "notes": "Migrated from the legacy untyped alias array; exact equivalence was not inferred.",
+        "publicDisplayRule": "SEARCH_ONLY",
+        "sourceIds": [
+          "https://app.notion.com/p/3cdf827a3d1581ca8fa8ff0fd5520103"
+        ],
+        "text": "edge saturation"
+      },
+      {
+        "aliasId": "ALS-01156",
+        "aliasType": "RELATED_SEARCH",
+        "entityIds": [
+          "SOC-052"
+        ],
+        "language": "en",
+        "normalizedText": "network connectedness",
+        "notes": "Migrated from the legacy untyped alias array; exact equivalence was not inferred.",
+        "publicDisplayRule": "SEARCH_ONLY",
+        "sourceIds": [
+          "https://app.notion.com/p/3cdf827a3d1581ca8fa8ff0fd5520103"
+        ],
+        "text": "network connectedness"
+      },
+      {
+        "aliasId": "ALS-01881",
+        "aliasType": "RELATED_SEARCH",
+        "entityIds": [
+          "SOC-052"
+        ],
+        "language": "en",
+        "normalizedText": "tie density",
+        "notes": "Migrated from the legacy untyped alias array; exact equivalence was not inferred.",
+        "publicDisplayRule": "SEARCH_ONLY",
+        "sourceIds": [
+          "https://app.notion.com/p/3cdf827a3d1581ca8fa8ff0fd5520103"
+        ],
+        "text": "Tie density"
+      }
+    ],
+    "aliasRisk": "SEARCH_ONLY/RELATED_SEARCH aliases are retrieval aids, not scientific equivalence; network connectedness/closeness/prestige require exact construct disambiguation.",
     "blockedOrMissingFields": [],
     "boundarySensitivity": {
       "directedness": "MUST_SPECIFY_AND_SENSITIVITY_CHECK; not instantiated in this pilot",
@@ -2282,6 +2626,25 @@
       "tieThreshold": "MUST_SPECIFY_AND_SENSITIVITY_CHECK; not instantiated in this pilot",
       "weighting": "MUST_SPECIFY_AND_SENSITIVITY_CHECK; not instantiated in this pilot"
     },
+    "crosswalkRecords": [
+      {
+        "compatibilityBehavior": "Preserve the permanent ID and resolve legacy deep links to the RDS entity record.",
+        "crosswalkId": "CW-0025",
+        "effectiveVersion": "0.3",
+        "legacyId": "SOC-052",
+        "migrationType": "RETYPE",
+        "newEntityType": "RELATIONAL_DERIVED_STATE",
+        "newName": "Network Density",
+        "oldEntityType": "DRIVER",
+        "oldName": "Network Density",
+        "rationale": "Explicit governed Driver→RDS retype in migration handoff v0.3.",
+        "resourceType": "ENTITY",
+        "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d158103b02efcf83c197519",
+        "successorIds": [
+          "SOC-052"
+        ]
+      }
+    ],
     "currentRecord": {
       "aliases": [],
       "associatedLayers": [
@@ -2652,10 +3015,75 @@
     ],
     "scientificAuditCanProceed": true,
     "sharedInputs": "Same network representation may feed multiple RDS; no independent simultaneous propagation",
+    "sourceReferenceAlignment": [
+      {
+        "canonicalLookupId": "SRC-256",
+        "meaning": "Read-only source lookup normalization; canonical token unchanged",
+        "recordedToken": "SRC256"
+      },
+      {
+        "canonicalLookupId": "SRC-254",
+        "meaning": "Read-only source lookup normalization; canonical token unchanged",
+        "recordedToken": "SRC254"
+      },
+      {
+        "canonicalLookupId": "SRC-235",
+        "meaning": "Read-only source lookup normalization; canonical token unchanged",
+        "recordedToken": "SRC235"
+      }
+    ],
     "targetability": "FORBIDDEN_DIRECT_RDS_EFFECT",
     "uncertainty": "Use governed external-input uncertainty requirements; do not instantiate missing algorithm/window/normalization"
   },
   {
+    "aliasRecords": [
+      {
+        "aliasId": "ALS-00280",
+        "aliasType": "RELATED_SEARCH",
+        "entityIds": [
+          "SOC-053"
+        ],
+        "language": "en",
+        "normalizedText": "clustering coefficient",
+        "notes": "Migrated from the legacy untyped alias array; exact equivalence was not inferred.",
+        "publicDisplayRule": "SEARCH_ONLY",
+        "sourceIds": [
+          "https://app.notion.com/p/3cdf827a3d1581ca8fa8ff0fd5520103"
+        ],
+        "text": "Clustering coefficient"
+      },
+      {
+        "aliasId": "ALS-01154",
+        "aliasType": "RELATED_SEARCH",
+        "entityIds": [
+          "SOC-053"
+        ],
+        "language": "en",
+        "normalizedText": "neighborhood closure",
+        "notes": "Migrated from the legacy untyped alias array; exact equivalence was not inferred.",
+        "publicDisplayRule": "SEARCH_ONLY",
+        "sourceIds": [
+          "https://app.notion.com/p/3cdf827a3d1581ca8fa8ff0fd5520103"
+        ],
+        "text": "neighborhood closure"
+      },
+      {
+        "aliasId": "ALS-01920",
+        "aliasType": "RELATED_SEARCH",
+        "entityIds": [
+          "SOC-053"
+        ],
+        "language": "en",
+        "normalizedText": "triadic closure",
+        "notes": "Migrated from the legacy untyped alias array; exact equivalence was not inferred.",
+        "publicDisplayRule": "SEARCH_ONLY",
+        "sourceIds": [
+          "https://app.notion.com/p/3cdf827a3d1581ca8fa8ff0fd5520103"
+        ],
+        "text": "triadic closure"
+      }
+    ],
+    "aliasRisk": "SEARCH_ONLY aliases do not establish equivalence. The triadic closure search alias on Local Clustering must not collapse SOC-053 into the distinct conditional-rate Driver SOC-102.",
     "blockedOrMissingFields": [],
     "boundarySensitivity": {
       "directedness": "MUST_SPECIFY_AND_SENSITIVITY_CHECK; not instantiated in this pilot",
@@ -2670,6 +3098,25 @@
       "tieThreshold": "MUST_SPECIFY_AND_SENSITIVITY_CHECK; not instantiated in this pilot",
       "weighting": "MUST_SPECIFY_AND_SENSITIVITY_CHECK; not instantiated in this pilot"
     },
+    "crosswalkRecords": [
+      {
+        "compatibilityBehavior": "Preserve the permanent ID and resolve legacy deep links to the RDS entity record.",
+        "crosswalkId": "CW-0026",
+        "effectiveVersion": "0.3",
+        "legacyId": "SOC-053",
+        "migrationType": "RETYPE",
+        "newEntityType": "RELATIONAL_DERIVED_STATE",
+        "newName": "Local Clustering",
+        "oldEntityType": "DRIVER",
+        "oldName": "Local Clustering",
+        "rationale": "Explicit governed Driver→RDS retype in migration handoff v0.3.",
+        "resourceType": "ENTITY",
+        "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d158103b02efcf83c197519",
+        "successorIds": [
+          "SOC-053"
+        ]
+      }
+    ],
     "currentRecord": {
       "aliases": [],
       "associatedLayers": [
@@ -3041,10 +3488,75 @@
     ],
     "scientificAuditCanProceed": true,
     "sharedInputs": "Same network representation may feed multiple RDS; no independent simultaneous propagation",
+    "sourceReferenceAlignment": [
+      {
+        "canonicalLookupId": "SRC-235",
+        "meaning": "Read-only source lookup normalization; canonical token unchanged",
+        "recordedToken": "SRC235"
+      },
+      {
+        "canonicalLookupId": "SRC-256",
+        "meaning": "Read-only source lookup normalization; canonical token unchanged",
+        "recordedToken": "SRC256"
+      },
+      {
+        "canonicalLookupId": "SRC-254",
+        "meaning": "Read-only source lookup normalization; canonical token unchanged",
+        "recordedToken": "SRC254"
+      }
+    ],
     "targetability": "FORBIDDEN_DIRECT_RDS_EFFECT",
     "uncertainty": "Use governed external-input uncertainty requirements; do not instantiate missing algorithm/window/normalization"
   },
   {
+    "aliasRecords": [
+      {
+        "aliasId": "ALS-00128",
+        "aliasType": "RELATED_SEARCH",
+        "entityIds": [
+          "SOC-054"
+        ],
+        "language": "en",
+        "normalizedText": "attribute assortativity",
+        "notes": "Migrated from the legacy untyped alias array; exact equivalence was not inferred.",
+        "publicDisplayRule": "SEARCH_ONLY",
+        "sourceIds": [
+          "https://app.notion.com/p/3cdf827a3d1581ca8fa8ff0fd5520103"
+        ],
+        "text": "attribute assortativity"
+      },
+      {
+        "aliasId": "ALS-00823",
+        "aliasType": "RELATED_SEARCH",
+        "entityIds": [
+          "SOC-054"
+        ],
+        "language": "en",
+        "normalizedText": "homophilous mixing",
+        "notes": "Migrated from the legacy untyped alias array; exact equivalence was not inferred.",
+        "publicDisplayRule": "SEARCH_ONLY",
+        "sourceIds": [
+          "https://app.notion.com/p/3cdf827a3d1581ca8fa8ff0fd5520103"
+        ],
+        "text": "Homophilous mixing"
+      },
+      {
+        "aliasId": "ALS-01013",
+        "aliasType": "RELATED_SEARCH",
+        "entityIds": [
+          "SOC-054"
+        ],
+        "language": "en",
+        "normalizedText": "like with like connectivity",
+        "notes": "Migrated from the legacy untyped alias array; exact equivalence was not inferred.",
+        "publicDisplayRule": "SEARCH_ONLY",
+        "sourceIds": [
+          "https://app.notion.com/p/3cdf827a3d1581ca8fa8ff0fd5520103"
+        ],
+        "text": "like-with-like connectivity"
+      }
+    ],
+    "aliasRisk": "SEARCH_ONLY/RELATED_SEARCH aliases are retrieval aids, not scientific equivalence; network connectedness/closeness/prestige require exact construct disambiguation.",
     "blockedOrMissingFields": [],
     "boundarySensitivity": {
       "directedness": "MUST_SPECIFY_AND_SENSITIVITY_CHECK; not instantiated in this pilot",
@@ -3059,6 +3571,25 @@
       "tieThreshold": "MUST_SPECIFY_AND_SENSITIVITY_CHECK; not instantiated in this pilot",
       "weighting": "MUST_SPECIFY_AND_SENSITIVITY_CHECK; not instantiated in this pilot"
     },
+    "crosswalkRecords": [
+      {
+        "compatibilityBehavior": "Preserve the permanent ID and resolve legacy deep links to the RDS entity record.",
+        "crosswalkId": "CW-0027",
+        "effectiveVersion": "0.3",
+        "legacyId": "SOC-054",
+        "migrationType": "RETYPE",
+        "newEntityType": "RELATIONAL_DERIVED_STATE",
+        "newName": "Network Assortativity",
+        "oldEntityType": "DRIVER",
+        "oldName": "Network Assortativity",
+        "rationale": "Explicit governed Driver→RDS retype in migration handoff v0.3.",
+        "resourceType": "ENTITY",
+        "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d158103b02efcf83c197519",
+        "successorIds": [
+          "SOC-054"
+        ]
+      }
+    ],
     "currentRecord": {
       "aliases": [],
       "associatedLayers": [
@@ -3429,10 +3960,75 @@
     ],
     "scientificAuditCanProceed": true,
     "sharedInputs": "Same network representation may feed multiple RDS; no independent simultaneous propagation",
+    "sourceReferenceAlignment": [
+      {
+        "canonicalLookupId": "SRC-233",
+        "meaning": "Read-only source lookup normalization; canonical token unchanged",
+        "recordedToken": "SRC233"
+      },
+      {
+        "canonicalLookupId": "SRC-260",
+        "meaning": "Read-only source lookup normalization; canonical token unchanged",
+        "recordedToken": "SRC260"
+      },
+      {
+        "canonicalLookupId": "SRC-270",
+        "meaning": "Read-only source lookup normalization; canonical token unchanged",
+        "recordedToken": "SRC270"
+      }
+    ],
     "targetability": "FORBIDDEN_DIRECT_RDS_EFFECT",
     "uncertainty": "Use governed external-input uncertainty requirements; do not instantiate missing algorithm/window/normalization"
   },
   {
+    "aliasRecords": [
+      {
+        "aliasId": "ALS-00361",
+        "aliasType": "RELATED_SEARCH",
+        "entityIds": [
+          "SOC-055"
+        ],
+        "language": "en",
+        "normalizedText": "contact redundancy",
+        "notes": "Migrated from the legacy untyped alias array; exact equivalence was not inferred.",
+        "publicDisplayRule": "SEARCH_ONLY",
+        "sourceIds": [
+          "https://app.notion.com/p/3cdf827a3d1581ca8fa8ff0fd5520103"
+        ],
+        "text": "contact redundancy"
+      },
+      {
+        "aliasId": "ALS-00988",
+        "aliasType": "RELATED_SEARCH",
+        "entityIds": [
+          "SOC-055"
+        ],
+        "language": "en",
+        "normalizedText": "lack of structural holes",
+        "notes": "Migrated from the legacy untyped alias array; exact equivalence was not inferred.",
+        "publicDisplayRule": "SEARCH_ONLY",
+        "sourceIds": [
+          "https://app.notion.com/p/3cdf827a3d1581ca8fa8ff0fd5520103"
+        ],
+        "text": "lack of structural holes"
+      },
+      {
+        "aliasId": "ALS-01158",
+        "aliasType": "RELATED_SEARCH",
+        "entityIds": [
+          "SOC-055"
+        ],
+        "language": "en",
+        "normalizedText": "network constraint",
+        "notes": "Migrated from the legacy untyped alias array; exact equivalence was not inferred.",
+        "publicDisplayRule": "SEARCH_ONLY",
+        "sourceIds": [
+          "https://app.notion.com/p/3cdf827a3d1581ca8fa8ff0fd5520103"
+        ],
+        "text": "Network constraint"
+      }
+    ],
+    "aliasRisk": "SEARCH_ONLY/RELATED_SEARCH aliases are retrieval aids, not scientific equivalence; network connectedness/closeness/prestige require exact construct disambiguation.",
     "blockedOrMissingFields": [],
     "boundarySensitivity": {
       "directedness": "MUST_SPECIFY_AND_SENSITIVITY_CHECK; not instantiated in this pilot",
@@ -3447,6 +4043,25 @@
       "tieThreshold": "MUST_SPECIFY_AND_SENSITIVITY_CHECK; not instantiated in this pilot",
       "weighting": "MUST_SPECIFY_AND_SENSITIVITY_CHECK; not instantiated in this pilot"
     },
+    "crosswalkRecords": [
+      {
+        "compatibilityBehavior": "Preserve the permanent ID and resolve legacy deep links to the RDS entity record.",
+        "crosswalkId": "CW-0028",
+        "effectiveVersion": "0.3",
+        "legacyId": "SOC-055",
+        "migrationType": "RETYPE",
+        "newEntityType": "RELATIONAL_DERIVED_STATE",
+        "newName": "Structural Constraint",
+        "oldEntityType": "DRIVER",
+        "oldName": "Structural Constraint",
+        "rationale": "Explicit governed Driver→RDS retype in migration handoff v0.3.",
+        "resourceType": "ENTITY",
+        "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d158103b02efcf83c197519",
+        "successorIds": [
+          "SOC-055"
+        ]
+      }
+    ],
     "currentRecord": {
       "aliases": [],
       "associatedLayers": [
@@ -3817,10 +4432,75 @@
     ],
     "scientificAuditCanProceed": true,
     "sharedInputs": "Same network representation may feed multiple RDS; no independent simultaneous propagation",
+    "sourceReferenceAlignment": [
+      {
+        "canonicalLookupId": "SRC-234",
+        "meaning": "Read-only source lookup normalization; canonical token unchanged",
+        "recordedToken": "SRC234"
+      },
+      {
+        "canonicalLookupId": "SRC-254",
+        "meaning": "Read-only source lookup normalization; canonical token unchanged",
+        "recordedToken": "SRC254"
+      },
+      {
+        "canonicalLookupId": "SRC-269",
+        "meaning": "Read-only source lookup normalization; canonical token unchanged",
+        "recordedToken": "SRC269"
+      }
+    ],
     "targetability": "FORBIDDEN_DIRECT_RDS_EFFECT",
     "uncertainty": "Use governed external-input uncertainty requirements; do not instantiate missing algorithm/window/normalization"
   },
   {
+    "aliasRecords": [
+      {
+        "aliasId": "ALS-00209",
+        "aliasType": "RELATED_SEARCH",
+        "entityIds": [
+          "SOC-056"
+        ],
+        "language": "en",
+        "normalizedText": "boundary spanning connections",
+        "notes": "Migrated from the legacy untyped alias array; exact equivalence was not inferred.",
+        "publicDisplayRule": "SEARCH_ONLY",
+        "sourceIds": [
+          "https://app.notion.com/p/3cdf827a3d1581ca8fa8ff0fd5520103"
+        ],
+        "text": "boundary-spanning connections"
+      },
+      {
+        "aliasId": "ALS-00215",
+        "aliasType": "RELATED_SEARCH",
+        "entityIds": [
+          "SOC-056"
+        ],
+        "language": "en",
+        "normalizedText": "bridging tie prevalence",
+        "notes": "Migrated from the legacy untyped alias array; exact equivalence was not inferred.",
+        "publicDisplayRule": "SEARCH_ONLY",
+        "sourceIds": [
+          "https://app.notion.com/p/3cdf827a3d1581ca8fa8ff0fd5520103"
+        ],
+        "text": "Bridging-tie prevalence"
+      },
+      {
+        "aliasId": "ALS-00934",
+        "aliasType": "RELATED_SEARCH",
+        "entityIds": [
+          "SOC-056"
+        ],
+        "language": "en",
+        "normalizedText": "intercommunity ties",
+        "notes": "Migrated from the legacy untyped alias array; exact equivalence was not inferred.",
+        "publicDisplayRule": "SEARCH_ONLY",
+        "sourceIds": [
+          "https://app.notion.com/p/3cdf827a3d1581ca8fa8ff0fd5520103"
+        ],
+        "text": "intercommunity ties"
+      }
+    ],
+    "aliasRisk": "SEARCH_ONLY/RELATED_SEARCH aliases are retrieval aids, not scientific equivalence; network connectedness/closeness/prestige require exact construct disambiguation.",
     "blockedOrMissingFields": [],
     "boundarySensitivity": {
       "directedness": "MUST_SPECIFY_AND_SENSITIVITY_CHECK; not instantiated in this pilot",
@@ -3835,6 +4515,25 @@
       "tieThreshold": "MUST_SPECIFY_AND_SENSITIVITY_CHECK; not instantiated in this pilot",
       "weighting": "MUST_SPECIFY_AND_SENSITIVITY_CHECK; not instantiated in this pilot"
     },
+    "crosswalkRecords": [
+      {
+        "compatibilityBehavior": "Preserve the permanent ID and resolve legacy deep links to the RDS entity record.",
+        "crosswalkId": "CW-0029",
+        "effectiveVersion": "0.3",
+        "legacyId": "SOC-056",
+        "migrationType": "RETYPE",
+        "newEntityType": "RELATIONAL_DERIVED_STATE",
+        "newName": "Cross-Cluster Tie Prevalence",
+        "oldEntityType": "DRIVER",
+        "oldName": "Cross-Cluster Tie Prevalence",
+        "rationale": "Explicit governed Driver→RDS retype in migration handoff v0.3.",
+        "resourceType": "ENTITY",
+        "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d158103b02efcf83c197519",
+        "successorIds": [
+          "SOC-056"
+        ]
+      }
+    ],
     "currentRecord": {
       "aliases": [],
       "associatedLayers": [
@@ -4207,10 +4906,75 @@
     ],
     "scientificAuditCanProceed": true,
     "sharedInputs": "Same network representation may feed multiple RDS; no independent simultaneous propagation",
+    "sourceReferenceAlignment": [
+      {
+        "canonicalLookupId": "SRC-234",
+        "meaning": "Read-only source lookup normalization; canonical token unchanged",
+        "recordedToken": "SRC234"
+      },
+      {
+        "canonicalLookupId": "SRC-237",
+        "meaning": "Read-only source lookup normalization; canonical token unchanged",
+        "recordedToken": "SRC237"
+      },
+      {
+        "canonicalLookupId": "SRC-269",
+        "meaning": "Read-only source lookup normalization; canonical token unchanged",
+        "recordedToken": "SRC269"
+      }
+    ],
     "targetability": "FORBIDDEN_DIRECT_RDS_EFFECT",
     "uncertainty": "Use governed external-input uncertainty requirements; do not instantiate missing algorithm/window/normalization"
   },
   {
+    "aliasRecords": [
+      {
+        "aliasId": "ALS-00794",
+        "aliasType": "RELATED_SEARCH",
+        "entityIds": [
+          "SOC-057"
+        ],
+        "language": "en",
+        "normalizedText": "group mixing deficit",
+        "notes": "Migrated from the legacy untyped alias array; exact equivalence was not inferred.",
+        "publicDisplayRule": "SEARCH_ONLY",
+        "sourceIds": [
+          "https://app.notion.com/p/3cdf827a3d1581ca8fa8ff0fd5520103"
+        ],
+        "text": "group mixing deficit"
+      },
+      {
+        "aliasId": "ALS-01519",
+        "aliasType": "RELATED_SEARCH",
+        "entityIds": [
+          "SOC-057"
+        ],
+        "language": "en",
+        "normalizedText": "relational segregation",
+        "notes": "Migrated from the legacy untyped alias array; exact equivalence was not inferred.",
+        "publicDisplayRule": "SEARCH_ONLY",
+        "sourceIds": [
+          "https://app.notion.com/p/3cdf827a3d1581ca8fa8ff0fd5520103"
+        ],
+        "text": "relational segregation"
+      },
+      {
+        "aliasId": "ALS-01701",
+        "aliasType": "RELATED_SEARCH",
+        "entityIds": [
+          "SOC-057"
+        ],
+        "language": "en",
+        "normalizedText": "social network separation",
+        "notes": "Migrated from the legacy untyped alias array; exact equivalence was not inferred.",
+        "publicDisplayRule": "SEARCH_ONLY",
+        "sourceIds": [
+          "https://app.notion.com/p/3cdf827a3d1581ca8fa8ff0fd5520103"
+        ],
+        "text": "Social network separation"
+      }
+    ],
+    "aliasRisk": "SEARCH_ONLY/RELATED_SEARCH aliases are retrieval aids, not scientific equivalence; network connectedness/closeness/prestige require exact construct disambiguation.",
     "blockedOrMissingFields": [],
     "boundarySensitivity": {
       "directedness": "MUST_SPECIFY_AND_SENSITIVITY_CHECK; not instantiated in this pilot",
@@ -4225,6 +4989,25 @@
       "tieThreshold": "MUST_SPECIFY_AND_SENSITIVITY_CHECK; not instantiated in this pilot",
       "weighting": "MUST_SPECIFY_AND_SENSITIVITY_CHECK; not instantiated in this pilot"
     },
+    "crosswalkRecords": [
+      {
+        "compatibilityBehavior": "Preserve the permanent ID and resolve legacy deep links to the RDS entity record.",
+        "crosswalkId": "CW-0030",
+        "effectiveVersion": "0.3",
+        "legacyId": "SOC-057",
+        "migrationType": "RETYPE",
+        "newEntityType": "RELATIONAL_DERIVED_STATE",
+        "newName": "Network Segregation",
+        "oldEntityType": "DRIVER",
+        "oldName": "Network Segregation",
+        "rationale": "Explicit governed Driver→RDS retype in migration handoff v0.3.",
+        "resourceType": "ENTITY",
+        "sourceDecisionRecord": "https://app.notion.com/p/3cdf827a3d158103b02efcf83c197519",
+        "successorIds": [
+          "SOC-057"
+        ]
+      }
+    ],
     "currentRecord": {
       "aliases": [],
       "associatedLayers": [
@@ -4596,10 +5379,29 @@
     ],
     "scientificAuditCanProceed": true,
     "sharedInputs": "Same network representation may feed multiple RDS; no independent simultaneous propagation",
+    "sourceReferenceAlignment": [
+      {
+        "canonicalLookupId": "SRC-233",
+        "meaning": "Read-only source lookup normalization; canonical token unchanged",
+        "recordedToken": "SRC233"
+      },
+      {
+        "canonicalLookupId": "SRC-260",
+        "meaning": "Read-only source lookup normalization; canonical token unchanged",
+        "recordedToken": "SRC260"
+      },
+      {
+        "canonicalLookupId": "SRC-270",
+        "meaning": "Read-only source lookup normalization; canonical token unchanged",
+        "recordedToken": "SRC270"
+      }
+    ],
     "targetability": "FORBIDDEN_DIRECT_RDS_EFFECT",
     "uncertainty": "Use governed external-input uncertainty requirements; do not instantiate missing algorithm/window/normalization"
   },
   {
+    "aliasRecords": [],
+    "aliasRisk": "SEARCH_ONLY/RELATED_SEARCH aliases are retrieval aids, not scientific equivalence; network connectedness/closeness/prestige require exact construct disambiguation.",
     "blockedOrMissingFields": [
       "mechanism",
       "modifiability",
@@ -4626,6 +5428,7 @@
       "tieThreshold": "MUST_SPECIFY_AND_SENSITIVITY_CHECK; not instantiated in this pilot",
       "weighting": "MUST_SPECIFY_AND_SENSITIVITY_CHECK; not instantiated in this pilot"
     },
+    "crosswalkRecords": [],
     "currentRecord": {
       "aliases": [],
       "associatedLayers": [
@@ -4872,6 +5675,7 @@
     ],
     "scientificAuditCanProceed": true,
     "sharedInputs": "Open-triad risk set shares graph inputs; closure events must not also propagate as a second snapshot triangle effect",
+    "sourceReferenceAlignment": [],
     "targetability": "DRIVER_TARGET_VALID; blocked metadata and exact risk set constrain evidence",
     "uncertainty": "Use governed external-input uncertainty requirements; do not instantiate missing algorithm/window/normalization"
   }

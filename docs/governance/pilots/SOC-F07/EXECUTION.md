@@ -118,3 +118,28 @@ Current milestone: final scope review, commit/push and final-head Linux/Windows 
 Exact resume point: open the candidate-only PR after commit, verify both required
 CI jobs, record PR/head/mergeability/worktree and STOP unmerged. See
 [validation report](SOC_F07_VALIDATION.md) for tests, source limits and skeptical findings.
+
+## Checkpoint 4 — unmerged PR and cross-platform validation
+
+Validation checkpoint: `cb1231dd0f54fff3293f82a65a07f0cf69f1a7fd`.
+PR [#19](https://github.com/psywerx-steven/psywerx-interactives/pull/19) is OPEN,
+mergeable and unmerged. Linux governance/service and Windows determinism both
+passed run `34078243765` at that head. Local and remote branch matched; worktree
+was clean before the final audit refinement.
+
+Final refinement: per-entity reviews now carry every alias/crosswalk record, plus
+read-only legacy source-token alignment. The `triadic closure` search-only alias
+on SOC-053 is explicitly distinguished from Driver SOC-102. No alias, entity or
+crosswalk was changed. A 36th regression test proves the distinction; all 36 pass.
+
+Full diff scope review: only SOC-F07 candidates/docs/reports/scripts/tests and two
+validation-only CI steps. No out-of-scope file change; all 133 protected files
+still match the exact starting baseline. No scientific record/status, deployment
+source, permission or application consumer changed.
+
+Current milestone: final refinement commit/push and repeat final-head CI.
+Exact resume point: inspect PR #19's two required checks for the final branch head.
+If green, post the final audit closeout on PR #19, verify HEAD == remote branch and
+clean status, and stop unmerged. Do not start Family #4, repair missing network
+targets, register sources, govern or activate. Final-head CI and exact SHA are
+recorded durably in PR #19's checks/comment, avoiding a self-referential commit hash.

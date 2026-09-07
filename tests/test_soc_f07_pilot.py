@@ -164,6 +164,15 @@ class SocF07PilotTests(unittest.TestCase):
         queue=ae.read(p.STORE/'source-registration-queue.json')
         self.assertTrue(all(s['canonicalRegistration']=='NOT_AUTHORIZED' for s in queue))
 
+    def test_aliases_do_not_collapse_closure_into_clustering(self):
+        rows={r['id']:r for r in ae.read(p.STORE/'entity-rds-review.json')}
+        alias=next(a for a in rows['SOC-053']['aliasRecords'] if a['text']=='triadic closure')
+        self.assertEqual(alias['publicDisplayRule'],'SEARCH_ONLY')
+        self.assertEqual(alias['aliasType'],'RELATED_SEARCH')
+        self.assertIn('distinct conditional-rate Driver SOC-102',rows['SOC-053']['aliasRisk'])
+        self.assertFalse(self.c.driver('SOC-053'))
+        self.assertTrue(self.c.driver('SOC-102'))
+
     def test_source_findings_complete_and_no_numbers(self):
         seen=set()
         for assessment in self.sides+self.w['passB']['evidenceAssessments']:

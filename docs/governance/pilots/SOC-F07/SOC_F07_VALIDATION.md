@@ -8,7 +8,7 @@ Research package checkpoint: `a6b3eb2`.
 
 | Check | Result |
 | --- | --- |
-| SOC-F07 pilot suite | 35 passed; includes schema, sourceFinding, lifecycle, ownership, RDS, exclusion, exact membership, hash and deterministic-render checks |
+| SOC-F07 pilot suite | 36 passed; includes schema, sourceFinding, lifecycle, ownership, RDS, aliases, exclusion, exact membership, hash and deterministic-render checks |
 | Repository-defined Python regressions | 249 run, successful; 2 existing Windows symlink-related skips |
 | Scenario service | 21 passed |
 | RI V1 repository validation | Passed; 457 active / 436 causal |
@@ -20,7 +20,7 @@ Research package checkpoint: `a6b3eb2`.
 | JavaScript parsing | Every Git-tracked `.js`, `.mjs`, `.cjs` passed `node --check` |
 | Markdown/local links | SOC-F07 suite passed |
 | Whitespace | `git diff --check` passed |
-| Linux/Windows CI | Added SOC-F07 suite to both existing validation jobs; final-head results recorded in PR and execution closeout |
+| Linux/Windows CI | Both passed on `cb1231dd0f54fff3293f82a65a07f0cf69f1a7fd`, run 34078243765. Final alias-audit/documentation commit is also required to pass; authoritative final-head results are retained in PR #19 checks and closeout comment |
 
 Canonical Python patterns run explicitly: `test_migration_v0_3.py`,
 `test_relationship_intervention_v1.py`, `test_bio_f01_pilot.py`,
@@ -72,7 +72,7 @@ This is an automated second-pass review, not a claimed independent human review.
 | 28 | Ownership/shared-issue fields and existing/native/projection duplicate checks | Owner and no duplicate derivational proposition tests; no consultation claimed completed |
 | 32–35 | Hypothesis ledger, workspace, candidate source queue, governance decision package | Rejections protected, human fields PENDING, no source registration or governance transition |
 | 36–39 | Special network findings, cross-pilot comparison, this skeptical review | Explicit ontology target-gap finding; no substitute Driver or scale-up permission |
-| 40 | 35 SOC-F07 tests plus required existing suites and CI additions | Local results above; final-head Linux/Windows jobs required |
+| 40 | 36 SOC-F07 tests plus required existing suites and CI additions | Local results above; final-head Linux/Windows jobs required |
 | 42–44 | Candidate-only PR and EXECUTION closeout | Open/unmerged, branch/remote equality, clean tree, exact stop boundary |
 
 ## Remote-action safety
@@ -98,3 +98,5 @@ The renderer is deterministic and confined to the SOC-F07 candidate/document
 directories. Its test captures all outputs and compares them without writing.
 The frozen baseline must not be regenerated with a later HEAD. No test result
 constitutes human scientific approval.
+
+PR: [#19 — candidate-only, never merge under this authorization](https://github.com/psywerx-steven/psywerx-interactives/pull/19).

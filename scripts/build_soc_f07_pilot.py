@@ -403,7 +403,12 @@ def entities_review(frozen,audits,w):
         nulls=[k for k in ('mechanism','modifiability','volatility','timeScaleOfChange','onsetCausalLag','persistenceRecovery','measurementAssessmentMethods','observability','evidenceStrength','evidenceNotes','keySources') if e.get(k) in (None,[])]
         related=[a['id'] for a in audits if eid in (a['currentRecord']['subjectEntityId'],a['currentRecord']['objectEntityId'])]
         outgoing=[a['id'] for a in audits if a['currentRecord']['subjectEntityId']==eid and a['currentRecord']['relationFamily']=='CAUSAL']
+        aliases=[a for a in frozen['aliases'] if eid in a['entityIds']]
+        crosswalks=[x for x in frozen['crosswalks'] if x.get('legacyId')==eid or eid in x.get('successorIds',[])]
         review={'id':eid,'currentRecord':e,'currentRecordHash':ae.digest(e),'fieldReview':{k:{'value':v,'assessment':'Missing/blocked; preserved' if v in (None,[]) else 'Canonical statement preserved; not independently endorsed'} for k,v in e.items()},
+                'aliasRecords':aliases,'crosswalkRecords':crosswalks,
+                'sourceReferenceAlignment':[{'recordedToken':sid,'canonicalLookupId':re.sub(r'^SRC(?=\d)','SRC-',sid),'meaning':'Read-only source lookup normalization; canonical token unchanged'} for sid in e.get('keySources',[])],
+                'aliasRisk':'SEARCH_ONLY aliases do not establish equivalence. The triadic closure search alias on Local Clustering must not collapse SOC-053 into the distinct conditional-rate Driver SOC-102.' if eid=='SOC-053' else 'SEARCH_ONLY/RELATED_SEARCH aliases are retrieval aids, not scientific equivalence; network connectedness/closeness/prestige require exact construct disambiguation.',
                 'blockedOrMissingFields':nulls,'explicitBlockedFields':fields,'relatedRelationships':related,'outgoingCausalRelationships':outgoing,
                 'scientificAuditCanProceed':True,'targetability':'FORBIDDEN_DIRECT_RDS_EFFECT' if isrds else 'DRIVER_TARGET_VALID; blocked metadata and exact risk set constrain evidence',
                 'boundarySensitivity':{k:'MUST_SPECIFY_AND_SENSITIVITY_CHECK; not instantiated in this pilot' for k in sensitivity},
@@ -488,6 +493,7 @@ def render_docs(m,sources,audits,revisions,hypotheses,entities,gaps,antecedents,
         r=e['currentRecord']
         text+=f"\n## {e['id']} — {r['name']}\n\n{r['definition']}\n\n"+table(['Item','Audit finding'],[
             ('Class / scale',r['entityType']+' / '+str(r.get('representationScale'))),('Construct / statistic',e['metricConstructDistinction']),
+            ('Aliases / crosswalks',str([a['text'] for a in e['aliasRecords']])+' / '+str([x['crosswalkId'] for x in e['crosswalkRecords']])),('Alias caution',e['aliasRisk']),
             ('Derivation / risk set',e['derivationReview']),('Real antecedents',e['realWorldAntecedents']),('Outgoing causal IDs',e['outgoingCausalRelationships']),
             ('Blocked/missing fields',e['blockedOrMissingFields']),('Shared inputs',e['sharedInputs']),('Targetability',e['targetability']),('Governance question',e['governanceQuestion'])])
         text+='\nBoundary sensitivity: '+NETWORK_LIMIT+' Snapshot versus longitudinal use must be specified; missing operational metadata is not filled.\n'
