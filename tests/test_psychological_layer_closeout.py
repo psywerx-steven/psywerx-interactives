@@ -120,6 +120,8 @@ class LayerCloseoutTests(unittest.TestCase):
 
     def test_new_science_lifecycle_and_prior_protection(self):
         self.assertEqual(self.summary['formalScientificLifecycle'],{'RESEARCH_NEEDED':46,'REVIEW_READY':45})
+        self.assertEqual(self.summary['revisionProposalLifecycle'],{'RESEARCH_NEEDED':63})
+        self.assertEqual(self.summary['allLifecycleBearingCandidateRecords'],{'RESEARCH_NEEDED':109,'REVIEW_READY':45})
         self.assertEqual((self.summary['newGoverned'],self.summary['newActive']),(0,0))
         self.assertEqual(self.summary['productionCounts'],{'drivers':770,'rds':41,'entities':811,'combinedActiveRelationships':457,'combinedActiveCausal':436})
         self.assertEqual(c.p.check_protected(),{'filesCompared':191,'changed':[],'passed':True})

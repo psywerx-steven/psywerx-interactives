@@ -155,6 +155,8 @@ def collect():
             'reviewedSourceIds':sorted({s for e in r['entityReviews'] for s in e['sources']}|{s for h in r['hypotheses'] for s in h['sources']}|{s for x in r['existingReviews'] for s in x['sources']}|{x['sourceId'] for x in inp['findings']})})
     referenced|=sources
     allrows=rows(); registry=p.read(p.STORE/'candidate-source-registry.json')
+    proposals=[x for f in p.FAMILIES for x in p.read(p.STORE/f/'revision-proposals.json')]
+    proposal_states=Counter(x['governance']['lifecycleStatus'] for x in proposals)
     return {'programId':p.PROGRAM,'baselineCommit':p.BASELINE,'baseline':baseline['summary'],'productionCounts':baseline['productionCounts'],
         'familiesCompleted':len(families),'driversReviewed':sum(x['driversSearched'] for x in families),
         'entitiesReviewed':sum(x['entitiesReviewed'] for x in families),'rdsReviewed':1,
@@ -170,6 +172,9 @@ def collect():
         'sourceOverlapIssues':len(p.read(p.STORE/'source-overlap-registry.json')),
         'hypothesisDispositions':dict(hypotheses),'hypothesisSemanticFunnel':dict(semantics),
         'formalScientificLifecycle':dict(states),'newGoverned':0,'newActive':0,
+        'revisionProposalLifecycle':dict(proposal_states),'revisionProposalRecords':len(proposals),
+        'allLifecycleBearingCandidateRecords':dict(states+proposal_states),
+        'lifecycleCountingRule':'Formal REL/HT/EA/EVA plus separately counted proposal envelopes. Nested sourceFindings inherit their assessment candidate status; hypotheses/shared issues are separate ledgers. Prior-proposal pointers do not authorize replacement science.',
         'architectureEscalations':len(p.read(p.STORE/'architecture-escalations.json')),
         'sharedIssues':len(p.read(p.STORE/'cross-family-issues.json')),
         'candidateIdentityOrigins':dict(origins),'candidateIdentityDomains':dict(domains),
@@ -257,7 +262,7 @@ def render():
         ['', 'Canonical source references used/reviewed (some are alignment problems, not endorsements): '+', '.join(s['canonicalSourcesReferenced']), '', 'Attached finding counts include same result attached to both Relationship/EffectAssertion. Unique extraction and overlap registries prevent interpreting this as replication. Basis counts are findings, not independent studies. Bibliographic-only access is not a full-text review.'])
     out('PSYCHOLOGICAL_LAYER_REJECTIONS.md',code(s['hypothesisDispositions'])+['Rejections are pilot recommendations, not human-governed REJECTED transitions. Research-needed hypotheses are not formal assertions. See [governance index](PSYCHOLOGICAL_LAYER_GOVERNANCE_INDEX.md).'])
     out('PSYCHOLOGICAL_LAYER_ARCHITECTURE_ESCALATIONS.md',review['architectureReview']+code(p.read(p.STORE/'architecture-escalations.json')))
-    out('PSYCHOLOGICAL_LAYER_COMPLETENESS_REPORT.md',code({k:s[k] for k in ['familiesCompleted','driversReviewed','rdsReviewed','entitiesReviewed','existingReviewedOnce','formalScientificLifecycle','hypothesisDispositions','newGoverned','newActive','protectedComparison']})+
+    out('PSYCHOLOGICAL_LAYER_COMPLETENESS_REPORT.md',code({k:s[k] for k in ['familiesCompleted','driversReviewed','rdsReviewed','entitiesReviewed','existingReviewedOnce','formalScientificLifecycle','revisionProposalLifecycle','allLifecycleBearingCandidateRecords','lifecycleCountingRule','hypothesisDispositions','newGoverned','newActive','protectedComparison']})+
         ['| Family | Entities | Incident / primary reviews | New REL / HT / EA | Supplemental sources |','|---|---:|---:|---:|---:|']+
         [f"| [{x['familyId']}]({x['familyId']}/GOVERNANCE_DECISION_PACKAGE.md) | {x['entitiesReviewed']} | {x['existingIncidentReviewed']} / {x['primaryReviews']} | {x['newRelationships']} / {x['happeningTypes']} / {x['effectAssertions']} | {x['supplementalSourcesInFamily']} |" for x in s['families']]+
         ['', 'Incident and source counts are not additive across Families. Per-Family manifests retain local provenance; final Layer receipt is authoritative for reconciliation. Coverage is not scientific completeness.', '', '## RDS', '', *review['rdsReview'], '', '## Independent sampled self-audit', '', 'Seed: SHA256(program/Family/skeptical-sample-v1), one assertion and finding per Family, chosen before review. This is a separate skeptical pass by the same assistant, not an external human peer review.', '', *[f"- {x['familyId']} / {x['assertionId']} / {x['findingKey']}: {x['outcome']}. {x['reason']}" for x in review['randomSampleReviews']]])

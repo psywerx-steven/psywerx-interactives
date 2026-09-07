@@ -6,6 +6,10 @@ All14 bounded Family audits complete. Human scientific governance remains PENDIN
 
 ```json
 {
+  "allLifecycleBearingCandidateRecords": {
+    "RESEARCH_NEEDED": 109,
+    "REVIEW_READY": 45
+  },
   "driversReviewed": 134,
   "entitiesReviewed": 135,
   "existingReviewedOnce": 111,
@@ -20,6 +24,7 @@ All14 bounded Family audits complete. Human scientific governance remains PENDIN
     "RESEARCH_NEEDED": 209,
     "REVIEW_READY": 5
   },
+  "lifecycleCountingRule": "Formal REL/HT/EA/EVA plus separately counted proposal envelopes. Nested sourceFindings inherit their assessment candidate status; hypotheses/shared issues are separate ledgers. Prior-proposal pointers do not authorize replacement science.",
   "newActive": 0,
   "newGoverned": 0,
   "protectedComparison": {
@@ -27,7 +32,10 @@ All14 bounded Family audits complete. Human scientific governance remains PENDIN
     "filesCompared": 191,
     "passed": true
   },
-  "rdsReviewed": 1
+  "rdsReviewed": 1,
+  "revisionProposalLifecycle": {
+    "RESEARCH_NEEDED": 63
+  }
 }
 ```
 
