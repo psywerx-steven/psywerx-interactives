@@ -1,15 +1,15 @@
-# Legacy `drivers.psywerx.io` redirect handler
+# Legacy `drivers.psywerx.io` redirect
 
-This version-controlled handler is intentionally **not deployed** by the repository. It is ready for an HTTPS edge service with a standards-compatible Fetch API (for example, a Cloudflare Worker) after the domain owner chooses and configures that service.
+The legacy hostname is being retired as part of the PSYWERX apex-domain cutover. The canonical Driver Explorer URL is:
 
-Behavior:
+`https://psywerx.io/drivers/`
 
-- `drivers.psywerx.io/` → `https://psywerx.io/drivers/`
-- every non-root path is copied to `https://psywerx.io` unchanged, including `/drivers/...`, `/cognitive-security/...`, and static assets
-- query strings are copied exactly
-- status is `308 Permanent Redirect`
-- unknown host headers fail closed with `421`
+The redirect project is deployed on Vercel as `psywerx-drivers-redirect`. Its production deployment has been verified to return HTTP 308 redirects with these contracts:
 
-Fragments are never sent in HTTP requests, so no server can copy them explicitly. Standards-compliant browsers normally retain an original fragment when the redirect `Location` does not supply one; validate this in the cutover browser matrix.
+- `https://drivers.psywerx.io/` → `https://psywerx.io/drivers/`
+- any non-root path on `drivers.psywerx.io` → the same path on `https://psywerx.io`
+- query strings are preserved
 
-Run the local contract tests with `node --test legacy-redirect/test_redirect.mjs`. Do not point public DNS at this handler until its service has the hostname attached, a valid certificate issued, and direct service-origin tests pass.
+The `drivers.psywerx.io` custom domain is ownership-verified in Vercel but intentionally remains pointed at GitHub Pages until the coordinated production DNS cutover. Vercel may therefore report `Invalid Configuration` before cutover; that is expected while the current `drivers` CNAME still points to GitHub Pages.
+
+Do not change the legacy hostname DNS independently of the coordinated cutover. Preserve the `_vercel` ownership-verification TXT record.
