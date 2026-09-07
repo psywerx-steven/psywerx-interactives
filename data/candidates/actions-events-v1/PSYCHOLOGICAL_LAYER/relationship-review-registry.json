@@ -5583,13 +5583,31 @@
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT",
     "id": "REL-PSY-034",
     "ownerFamilyId": "PSY-F08",
-    "primaryDisposition": null,
+    "primaryDisposition": "RETYPE_CANDIDATE",
     "processingFamilyId": "PSY-F08",
     "psychologicalFamilyIds": [
       "PSY-F08"
     ],
-    "review": null,
-    "reviewStatus": "NOT_STARTED",
+    "review": {
+      "causalGate": "STANDARD_CAUSAL",
+      "confidence": "MODERATE",
+      "disposition": "RETYPE_CANDIDATE",
+      "evidence": "INSUFFICIENT",
+      "executionReview": "Existing propositions unchanged, V1 incomplete and not newly executable. Source-family ownership preserved; REL-PSY-036 ownerPSY-F09 reviewed once here.",
+      "id": "REL-PSY-034",
+      "nullContrary": "Habit and automaticity remain distinct canonically, but shared items and lack of independent temporally ordered measures challenge the causal reading. Failed devaluation induction also cautions against treating every automatic response as acquired habit.",
+      "proposal": "Future noncausal construct/measurement-overlap review under exact context, behavior and independent indicators; no exact replacement predicate or reclassification proposed.",
+      "rationale": "Habit-strength composites include automaticity items and the definition already specifies reduced deliberation. Contemporaneous composite/subscale correlation cannot establish independent cause.",
+      "rdsReview": "All endpoints Drivers, no direct RDS target or formula edge. Composite/item overlap is not permission to reclassify; prevent same cue contribution being counted twice.",
+      "sources": [
+        "SRC116",
+        "SRC154",
+        "SRC-CAND-PSY-LAYER-0082",
+        "SRC-CAND-PSY-LAYER-0086"
+      ],
+      "strength": "LIMITED"
+    },
+    "reviewStatus": "REVIEWED_CANDIDATE_RECOMMENDATION",
     "scienceOrigin": "PRODUCTION_BASELINE",
     "scope": "WITHIN_FAMILY",
     "sourceBucket": "relationships"
@@ -5657,13 +5675,31 @@
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT",
     "id": "REL-PSY-035",
     "ownerFamilyId": "PSY-F08",
-    "primaryDisposition": null,
+    "primaryDisposition": "REVISION_CANDIDATE",
     "processingFamilyId": "PSY-F08",
     "psychologicalFamilyIds": [
       "PSY-F08"
     ],
-    "review": null,
-    "reviewStatus": "NOT_STARTED",
+    "review": {
+      "causalGate": "STANDARD_CAUSAL",
+      "confidence": "LOW",
+      "disposition": "REVISION_CANDIDATE",
+      "evidence": "INSUFFICIENT",
+      "executionReview": "Existing propositions unchanged, V1 incomplete and not newly executable. Source-family ownership preserved; REL-PSY-036 ownerPSY-F09 reviewed once here.",
+      "id": "REL-PSY-035",
+      "nullContrary": "Efficient, rapid, unintentional and unaware responding are not equivalent; incompatible goals and inhibition can override expression. SRC120 stored title/authors/year differ from its PMID.",
+      "proposal": "Future claim must specify independently measured cue-link strength, particular automaticity dimension, temporal separation and cue/goal/inhibition scope. Do not generalize rapid priming to every automaticity feature.",
+      "rationale": "Stronger cue-response links may facilitate particular initiation features, but whole PSY-071 automaticity is multidimensional and may share priming/latency indicators with the source.",
+      "rdsReview": "All endpoints Drivers, no direct RDS target or formula edge. Composite/item overlap is not permission to reclassify; prevent same cue contribution being counted twice.",
+      "sources": [
+        "SRC116",
+        "SRC120",
+        "SRC-CAND-PSY-LAYER-0082",
+        "SRC-CAND-PSY-LAYER-0087"
+      ],
+      "strength": "LIMITED"
+    },
+    "reviewStatus": "REVIEWED_CANDIDATE_RECOMMENDATION",
     "scienceOrigin": "PRODUCTION_BASELINE",
     "scope": "WITHIN_FAMILY",
     "sourceBucket": "relationships"
@@ -5733,14 +5769,32 @@
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT",
     "id": "REL-PSY-036",
     "ownerFamilyId": "PSY-F09",
-    "primaryDisposition": null,
+    "primaryDisposition": "REVISION_CANDIDATE",
     "processingFamilyId": "PSY-F08",
     "psychologicalFamilyIds": [
       "PSY-F08",
       "PSY-F09"
     ],
-    "review": null,
-    "reviewStatus": "NOT_STARTED",
+    "review": {
+      "causalGate": "STANDARD_CAUSAL",
+      "confidence": "MODERATE",
+      "disposition": "REVISION_CANDIDATE",
+      "evidence": "MIXED",
+      "executionReview": "Existing propositions unchanged, V1 incomplete and not newly executable. Source-family ownership preserved; REL-PSY-036 ownerPSY-F09 reviewed once here.",
+      "id": "REL-PSY-036",
+      "nullContrary": "Weak/inactive goal conditions showed no goal-performance benefit; measured-goal interaction not randomized moderator. Source120 bibliography and priming details need reconciliation.",
+      "proposal": "Future scope should separate randomized plan formation from measured implementation-intention strength, exact cue-response priming from cue salience, and immediate encoding from later durable habit. No transmitted pathway or universal effect.",
+      "rationale": "An assigned if-then planning operation is not a measured increase in PSY-075 strength. Cue accessibility and cue-response association are different mediator candidates; performance does not identify both.",
+      "rdsReview": "All endpoints Drivers, no direct RDS target or formula edge. Composite/item overlap is not permission to reclassify; prevent same cue contribution being counted twice.",
+      "sources": [
+        "SRC114",
+        "SRC120",
+        "SRC155",
+        "SRC-CAND-PSY-LAYER-0087"
+      ],
+      "strength": "LIMITED"
+    },
+    "reviewStatus": "REVIEWED_CANDIDATE_RECOMMENDATION",
     "scienceOrigin": "PRODUCTION_BASELINE",
     "scope": "PSYCHOLOGICAL_CROSS_FAMILY",
     "sourceBucket": "relationships"

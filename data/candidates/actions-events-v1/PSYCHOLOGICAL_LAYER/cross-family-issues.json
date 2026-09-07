@@ -80,7 +80,7 @@
     "ownerFamilyId": "PSY-F01",
     "consultation": {
       "PSY-F01": "CANDIDATE_REVIEW_COMPLETE",
-      "PSY-F08": "NOT_YET_PROCESSED"
+      "PSY-F08": "CANDIDATE_REVIEW_COMPLETE"
     },
     "status": "RESEARCH_NEEDED",
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
@@ -797,7 +797,7 @@
     "consultation": {
       "PSY-F07": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F06": "CANDIDATE_REVIEW_COMPLETE",
-      "PSY-F08": "NOT_YET_PROCESSED"
+      "PSY-F08": "CANDIDATE_REVIEW_COMPLETE"
     },
     "status": "RESEARCH_NEEDED",
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
@@ -824,6 +824,85 @@
       "PSY-F07": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F13": "NOT_YET_PROCESSED",
       "INF-F07": "EXTERNAL_ENDPOINT_REVIEW_ONLY_NO_FULL_FAMILY_AUDIT"
+    },
+    "status": "RESEARCH_NEEDED",
+    "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+  },
+  {
+    "id": "CF-PSY-LAYER-0032",
+    "kind": "CONSTRUCT_BOUNDARY",
+    "familyIds": [
+      "PSY-F08",
+      "PSY-F09",
+      "PSY-F06"
+    ],
+    "recordIds": [
+      "PSY-070",
+      "PSY-071",
+      "PSY-072",
+      "PSY-075",
+      "REL-PSY-034",
+      "REL-PSY-035",
+      "REL-PSY-036"
+    ],
+    "question": "Habit composites, automaticity facets, cue association and plan strength require independent measurement. A scale/subscale link is not causal proof; source-family owner retained.",
+    "classification": "MEASUREMENT_OVERLAP",
+    "ownerFamilyId": "PSY-F08",
+    "consultation": {
+      "PSY-F08": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F09": "NOT_YET_PROCESSED",
+      "PSY-F06": "CANDIDATE_REVIEW_COMPLETE"
+    },
+    "status": "RESEARCH_NEEDED",
+    "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+  },
+  {
+    "id": "CF-PSY-LAYER-0033",
+    "kind": "CONSTRUCT_BOUNDARY",
+    "familyIds": [
+      "PSY-F08",
+      "PSY-F01",
+      "PSY-F14"
+    ],
+    "recordIds": [
+      "PSY-073",
+      "PSY-074",
+      "PSY-004",
+      "PSY-006",
+      "PSY-127"
+    ],
+    "question": "Reinforcement probability/value, observation-derived expectancy, generic outcome belief and stable reward sensitivity may overlap but are not synonymous.",
+    "classification": "RELATED",
+    "ownerFamilyId": "PSY-F08",
+    "consultation": {
+      "PSY-F08": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F01": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F14": "NOT_YET_PROCESSED"
+    },
+    "status": "RESEARCH_NEEDED",
+    "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+  },
+  {
+    "id": "CF-PSY-LAYER-0034",
+    "kind": "CONSTRUCT_BOUNDARY",
+    "familyIds": [
+      "PSY-F08",
+      "PSY-F05",
+      "PSY-F09"
+    ],
+    "recordIds": [
+      "PSY-054",
+      "PSY-070",
+      "PSY-071",
+      "SRC120"
+    ],
+    "question": "Stress exposure versus perceived appraisal, devaluation versus habit and if-then versus coping packages need exact estimands; SRC120 bibliography unresolved.",
+    "classification": "RELATED",
+    "ownerFamilyId": "PSY-F08",
+    "consultation": {
+      "PSY-F08": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F05": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F09": "NOT_YET_PROCESSED"
     },
     "status": "RESEARCH_NEEDED",
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
