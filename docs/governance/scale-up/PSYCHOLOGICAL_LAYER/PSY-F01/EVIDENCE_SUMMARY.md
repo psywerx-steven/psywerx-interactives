@@ -78,11 +78,21 @@ Pooled average was not statistically distinguishable from zero; detail/topic/pol
 
 Not a direct refutation-versus-retraction replication; interval spans negative and positive values; no supported-null conclusion; included-study overlap unresolved.
 
+### IMPLAUSIBILITY_COUNTEREXAMPLE — SRC-CAND-PSY-LAYER-0188
+
+ABSTRACT; EXPERIMENTAL; MIXED.
+
+PubMed PMID35144111 / Europe PMC indexed abstract, preregistered experiment and exploratory heterogeneity
+
+Repeated highly implausible statements received higher truth ratings than new statements, still below the scale midpoint. Exploratory results showed about half of participants with no or reversed pattern.
+
+Contradicts a universal extreme-implausibility exclusion, not the bounded 2018 null contrast. Exposure count and scale sensitivity differ; neither moderator is independently isolated here. Preprint and published version are one work. Possible inclusion in later synthesis is not independent replication.
+
 ### REL-CAND-PSY-LAYER-0001
 
 MIXED / MODERATE / MODERATE — REVIEW_READY + NOT_ELIGIBLE.
 
-Repeated encounter with the same factual statement/headline can alter subsequently rated belief confidence in controlled adult online/laboratory tasks. Ordinary judgment tasks often show increases; extreme implausibility, explicit veracity cues and initial accuracy focus bound the claim. No universal monotonic sign, transfer to arbitrary content, calibrated truth or behavior is asserted.
+Repeated encounter with the same factual statement/headline can alter subsequently rated belief confidence in controlled adult online/laboratory tasks. Ordinary judgment tasks often show increases; extreme implausibility, explicit veracity cues and initial accuracy focus bound the claim. No universal monotonic sign, transfer to arbitrary content, calibrated truth or behavior is asserted. Extreme implausibility is not a universal exclusion: a later five-presentation/100-point-scale experiment found higher ratings while ratings remained below midpoint.
 
 Experimental exposure precedes truth judgment; converging synthesis retains heterogeneity and small-study limitations. No causal inference from familiarity ratings alone.
 
@@ -90,7 +100,7 @@ Experimental exposure precedes truth judgment; converging synthesis retains hete
 
 MIXED / MODERATE / MODERATE — REVIEW_READY + NOT_ELIGIBLE.
 
-Same factual headline/claim repeated within a declared initial-task and test protocol; target is belief confidence in that claim, not its objective accuracy. Ordinary initial tasks can increase rated truth; accuracy-focused instructions, veracity cues and implausibility can attenuate or remove detected effects. No arbitrary dose-response.
+Same factual headline/claim repeated within a declared initial-task and test protocol; target is belief confidence in that claim, not its objective accuracy. Ordinary initial tasks can increase rated truth; accuracy-focused instructions, veracity cues and implausibility can attenuate or remove detected effects. No arbitrary dose-response. Extreme implausibility is not a universal exclusion: a later five-presentation/100-point-scale experiment found higher ratings while ratings remained below midpoint.
 
 Scoped empirical effect with explicit non-universal direction and null boundary findings; this is the same exposure contribution as the candidate Relationship, not an additional causal input.
 

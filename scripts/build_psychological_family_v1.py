@@ -390,10 +390,10 @@ def render(family):
         "evidenceAssessments": len(inputs["assertions"]), "sourceFindings": sum(len(a["findingKeys"]) for a in inputs["assertions"]),
         "supplementalSourcesInFamily": len([s for s in p.read(p.STORE / "candidate-source-registry.json") if family in s["families"] and s["id"].startswith("SRC-CAND-")]),
         "newGoverned": 0, "newActive": 0, "humanGovernance": "PENDING", "localComplete": research["status"] == "LOCAL_COMPLETE",
-        "layerReconciliation": "PENDING", "protectedComparison": p.check_protected()}
+        "layerReconciliation": (p.read(p.STORE / "layer-reconciliation.json")["status"] if (p.STORE / "layer-reconciliation.json").exists() else "PENDING"), "protectedComparison": p.check_protected()}
     p.write(p.STORE / family / "AUDIT_MANIFEST.json", manifest)
     p.write(doc / "AUDIT_MANIFEST.json", manifest)
-    p.write(doc / "COMPLETENESS_REPORT.md", "\n".join(header + ["```json", p.encode(manifest).strip(), "```", "", "Local completion must be separately validated; shared boundary questions remain pending for later endpoint Family consultation and final Layer reconciliation. Coverage is not scientific completeness.", ""]))
+    p.write(doc / "COMPLETENESS_REPORT.md", "\n".join(header + ["```json", p.encode(manifest).strip(), "```", "", "Local completion and final Layer reconciliation are separately recorded. Shared scientific boundary questions remain for human governance even after candidate consultation is complete. Coverage is not scientific completeness.", ""]))
     render_source_queue()
 
 

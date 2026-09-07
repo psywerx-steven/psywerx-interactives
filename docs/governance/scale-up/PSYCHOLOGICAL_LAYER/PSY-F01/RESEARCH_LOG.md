@@ -58,6 +58,12 @@ Selected publisher methods/results for short-format refutations and involvement;
 
 PubMed abstract of Gesualdo/Pinquart expectancy-challenge synthesis extracted; probability-versus-positive/negative composite alignment and intervention-identity uncertainty prevented a formal effect. Feedback results not sufficiently aligned to success probability.
 
+## Q-PSY-F01-07 — LAYER_SKEPTICAL_COUNTEREXAMPLE (2026-09-07)
+
+- Is Earth a perfect square? repetition highly implausible statements; exact DOI10.1016/j.cognition.2022.105052 / PMID35144111
+
+Narrow counterexample verification during Layer random sample. PubMed-indexed/EuropePMC primary abstract and bibliographic identity; preprint distinguished from publication; no full-text or new pooled estimate claimed.
+
 ## Skeptical second pass
 
 Separate second pass by the same automated researcher after source extraction and initial hypotheses; not falsely described as an independent human review.
@@ -73,5 +79,6 @@ Separate second pass by the same automated researcher after source extraction an
 - No self-efficacy/expectancy merger based on conceptual critique; competing theory and measurement interpretation remain for human review.
 - Source overlap is conservative: trials and later syntheses are not counted as independent replications; no numerical pooling performed.
 - No candidate changes prior INF-F03/SOC-F07/BIO-F01 science. No direct RDS effect or quantitative/practitioner eligibility.
+- Layer-wide random sample re-opened the implausibility boundary: 2022 preregistered five-presentation/100-point-scale result is explicit alongside the 2018 null. Different protocol, not proof of a dose/scale moderator; no universal exclusion. MIXED context-dependent candidate scope retained.
 
 Layer-level PSY-003/PSY-116 boundary review may downgrade the belief candidates; scientific scope and measurement are explicit for human review, not automatically activatable. Full-source verification gaps limit several existing-edge recommendations.

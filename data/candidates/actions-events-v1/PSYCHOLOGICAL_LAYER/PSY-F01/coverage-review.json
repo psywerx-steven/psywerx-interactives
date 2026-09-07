@@ -1,43 +1,272 @@
 {
-  "familyId":"PSY-F01",
-  "reviewedAt":"2026-09-07T16:54:31Z",
-  "allCanonicalFieldsReviewed":true,
-  "entityFieldPolicy":"BASELINE.json preserves every canonical field including nulls, aliases and crosswalks. research.json contains entity-specific interpretation; no canonical repairs. Null timeScaleQualifier is unspecified, not a governance block.",
-  "rdsReview":"No RDS member in this Family. No direct RDS effect target or calculated attitude index used as a manipulable entity.",
-  "layersConsidered":{
-    "BIO":"Human food pleasantness/satiety and mood-related expectancy searches; latent biological Driver versus exposure and outcome-proxy mismatch remain research-needed.",
-    "PSY":"Belief, valence, confidence, intention, expectancy, relevance and learning mechanisms; measured mediators not assumed causal.",
-    "SOC":"Source testimony and interpersonal feedback; topic-specific exposure distinguished from trust in the speaker. No full external Family audit.",
-    "CUL":"Cross-cultural success/failure feedback search found persistence/task-value outcomes, not an exact Cultural Driver manipulation. Nationality is not a moderator entity.",
-    "ENV":"Noise and disaster searches returned mostly observational risk/hearing beliefs. No exact independently identified F01 effect retained.",
-    "INS":"Institutional assignment/feedback/incentives considered; offered benefit is not outcome probability. Hypothetical policy applicability in persuasion tasks is not an actual enacted policy.",
-    "INF":"Message repetition, correction/refutation, framing and expectancy communication supplied most exact-target evidence.",
-    "TEC":"Online presentation is a delivery/affordance origin, not evidence of an algorithm's independent causal effect. No inferred live-platform optimization."},
-  "domainsConsidered":{
-    "DELIBERATE_INTERVENTION":"Controlled presentation/refutation, involvement manipulations, framing and expectancy challenges.",
-    "ROUTINE_UNINTENDED_HUMAN_ACTIVITY":"Ordinary repeated encounters and eating are possible origins, but experimental protocols are not automatic real-world-effect generalizations.",
-    "EXTERNAL_EVENT_SHOCK":"Disaster beliefs screened; no sufficiently aligned identified effect.",
-    "ENVIRONMENTAL_EXPOSURE":"Noise/physical stressor search primarily located different constructs and observational designs.",
-    "INSTITUTIONAL_STRUCTURAL_CHANGE":"Rules/incentives/feedback considered; no independent exact outcome-probability effect verified.",
-    "TECHNOLOGICAL_CHANGE":"Platform presentation may change encounters; capability is not realized dose or effect.",
-    "SOCIAL_NETWORK_EVENT_PROCESS":"Social testimony/feedback considered, not a social tie as a PSYWERX scientific Relationship.",
-    "INFORMATIONAL_EXPOSURE":"Repeated claim and explanatory refutation protocols retained for candidate review.",
-    "BIOLOGICAL_PHYSIOLOGICAL_PROCESS":"Transient satiety/mood pathways considered; no stable-trait or generic valuation effect inferred."},
-  "driverLedgers":[
-    {"driverId":"PSY-001","status":"SEARCH_COMPLETE_BOUNDED","queries":["Q-PSY-F01-01","Q-PSY-F01-02","Q-PSY-F01-03","Q-PSY-F01-04"],"sources":["SRC107","SRC110","SRC-407","SRC-CAND-PSY-LAYER-0004"],"candidateEffectIds":[],"candidateIdentityIds":[],"originsWithRelevantLiterature":["INF","PSY"],"domainsWithRelevantLiterature":["DELIBERATE_INTERVENTION","INFORMATIONAL_EXPOSURE"],"properties":{"LEVEL":"INSUFFICIENT_EVIDENCE"},"noFinding":"No exact reusable action-to-behavior-attitude candidate retained: conditioning studies often target object liking; framing has a reported undetected attitude advantage and unreconciled erratum. This is not evidence all attitude interventions fail.","gaps":"Exact behavior-referent manipulations, control for bundled cognitions, and duration beyond immediate attitude assessment.","qualifiers":"Valence/persuasion depends on behavior and prior opinion; prevention behavior is not an attitude proxy; neither benefits nor harms rated generically."},
-    {"driverId":"PSY-002","status":"SEARCH_COMPLETE_BOUNDED","queries":["Q-PSY-F01-01","Q-PSY-F01-04","Q-PSY-F01-05"],"sources":["SRC156"],"candidateEffectIds":[],"candidateIdentityIds":[],"originsWithRelevantLiterature":["INF","PSY"],"domainsWithRelevantLiterature":["DELIBERATE_INTERVENTION","INFORMATIONAL_EXPOSURE"],"properties":{"LEVEL":"INSUFFICIENT_EVIDENCE","PERSISTENCE":"INSUFFICIENT_EVIDENCE"},"noFinding":"Counterarguing/perceived-message-strength manipulation concerns certainty only. A whole Attitude Strength effect would exceed evidence; no profile-dimension effect is smuggled through a LEVEL direction.","gaps":"Independent certainty versus accessibility/stability/resistance measures; aligned intention effects and longitudinal resistance.","qualifiers":"Measured elaboration/trait need-for-cognition are not randomized moderators; reinforcing an unfavorable belief can be harmful depending on criterion."},
-    {"driverId":"PSY-003","status":"SEARCH_COMPLETE_BOUNDED","queries":["Q-PSY-F01-02","Q-PSY-F01-04","Q-PSY-F01-05"],"sources":["SRC-CAND-PSY-LAYER-0001","SRC-CAND-PSY-LAYER-0002","SRC-433","SRC-CAND-PSY-LAYER-0007","SRC-450"],"candidateEffectIds":["EA-CAND-PSY-LAYER-0001","EA-CAND-PSY-LAYER-0002"],"candidateIdentityIds":["HT-CAND-PSY-LAYER-0001","HT-CAND-PSY-LAYER-0002"],"originsWithRelevantLiterature":["INF","TEC","PSY"],"domainsWithRelevantLiterature":["DELIBERATE_INTERVENTION","INFORMATIONAL_EXPOSURE","TECHNOLOGICAL_CHANGE"],"properties":{"LEVEL":"SUPPORTED_EFFECT","TIMING":"INSUFFICIENT_EVIDENCE","PERSISTENCE":"INSUFFICIENT_EVIDENCE"},"noFinding":"No separately retained relationship-targeted effect; initial accuracy instructions are a boundary of a not-yet-governed candidate edge, not a formal edge-targeted assertion.","gaps":"No generalized magnitude, independent persistence effect, causal mediation or live-platform effect. Confidence in a claim may overlap PSY-116.","qualifiers":"Mixed/null contrasts and task/country differences explicit; no synergy/antagonism or recommendation inferred; shared repetition contribution cannot be summed twice."},
-    {"driverId":"PSY-004","status":"SEARCH_COMPLETE_BOUNDED","queries":["Q-PSY-F01-01","Q-PSY-F01-02","Q-PSY-F01-03","Q-PSY-F01-06"],"sources":["SRC110","SRC112","SRC-CAND-PSY-LAYER-0009"],"candidateEffectIds":[],"candidateIdentityIds":[],"originsWithRelevantLiterature":["INF","PSY","SOC","INS"],"domainsWithRelevantLiterature":["DELIBERATE_INTERVENTION","INFORMATIONAL_EXPOSURE","INSTITUTIONAL_STRUCTURAL_CHANGE"],"properties":{"LEVEL":"INSUFFICIENT_EVIDENCE"},"noFinding":"Expectancy-challenge studies do change domain-specific expectancy measures, but positive/negative expectancy scales and differing treatment packages cannot yet be mapped to a single exact action-consequence probability and reusable operation from the accessed abstract.","gaps":"Named consequence, probability versus desirability measurement, exact challenge identity/components; no alcohol administration recommendation.","qualifiers":"College versus school samples and dose vary; mediated drinking changes not causally inferred from meta-regression."},
-    {"driverId":"PSY-005","status":"SEARCH_COMPLETE_BOUNDED","queries":["Q-PSY-F01-02","Q-PSY-F01-03","Q-PSY-F01-04"],"sources":["SRC110","SRC113","SRC-CAND-PSY-LAYER-0005"],"candidateEffectIds":[],"candidateIdentityIds":[],"originsWithRelevantLiterature":["BIO","PSY"],"domainsWithRelevantLiterature":["ROUTINE_UNINTENDED_HUMAN_ACTIVITY","BIOLOGICAL_PHYSIOLOGICAL_PROCESS"],"properties":{"LEVEL":"INSUFFICIENT_EVIDENCE","PERSISTENCE":"INSUFFICIENT_EVIDENCE"},"noFinding":"Food pleasantness may index transient food valuation, but consumed-food score versus value of a possible future outcome was not sufficiently aligned. Rodent instrumental responding does not fill this gap.","gaps":"Separate sensory familiarity/habituation from satiety signal and independently elicited possible-outcome value.","qualifiers":"Food-specific and within-meal, not moral/monetary values or stable preferences. No generalized beneficial direction."},
-    {"driverId":"PSY-006","status":"SEARCH_COMPLETE_BOUNDED","queries":["Q-PSY-F01-02","Q-PSY-F01-03","Q-PSY-F01-05","Q-PSY-F01-06"],"sources":["SRC112","SRC110"],"candidateEffectIds":[],"candidateIdentityIds":[],"originsWithRelevantLiterature":["PSY","INF","CUL"],"domainsWithRelevantLiterature":["DELIBERATE_INTERVENTION","INFORMATIONAL_EXPOSURE","SOCIAL_NETWORK_EVENT_PROCESS"],"properties":{"LEVEL":"INSUFFICIENT_EVIDENCE"},"noFinding":"Feedback/mood/expectancy screening did not provide a sufficiently extracted exact action-to-task-success probability effect. Positive motivation and persistence outcomes are not success expectancy.","gaps":"Separate ability, success criterion, opportunity and incentive motivation; exact accurate-feedback contrast needed.","qualifiers":"Within-task expectation not stable optimism; between-culture difference not a within-person causal cultural intervention."},
-    {"driverId":"PSY-007","status":"SEARCH_COMPLETE_BOUNDED","queries":["Q-PSY-F01-01","Q-PSY-F01-03","Q-PSY-F01-04"],"sources":["SRC-CAND-PSY-LAYER-0003","SRC156","SRC162"],"candidateEffectIds":[],"candidateIdentityIds":[],"originsWithRelevantLiterature":["INF","INS","PSY"],"domainsWithRelevantLiterature":["DELIBERATE_INTERVENTION","INFORMATIONAL_EXPOSURE","INSTITUTIONAL_STRUCTURAL_CHANGE"],"properties":{"LEVEL":"INSUFFICIENT_EVIDENCE","ENABLEMENT":"INSUFFICIENT_EVIDENCE"},"noFinding":"Personal-involvement instructions create a relevance manipulation context, but no independently extracted direct relevance measurement qualifies a target effect here. Policy timing description is not enacted institutional change.","gaps":"Noncircular relevance indicator; distinguish source/argument sensitivity from total elaboration depth.","qualifiers":"Undergraduate policy scenario, hypothetical applicability; no automatic transfer to personal identity or every decision."}
+  "familyId": "PSY-F01",
+  "reviewedAt": "2026-09-07T16:54:31Z",
+  "allCanonicalFieldsReviewed": true,
+  "entityFieldPolicy": "BASELINE.json preserves every canonical field including nulls, aliases and crosswalks. research.json contains entity-specific interpretation; no canonical repairs. Null timeScaleQualifier is unspecified, not a governance block.",
+  "rdsReview": "No RDS member in this Family. No direct RDS effect target or calculated attitude index used as a manipulable entity.",
+  "layersConsidered": {
+    "BIO": "Human food pleasantness/satiety and mood-related expectancy searches; latent biological Driver versus exposure and outcome-proxy mismatch remain research-needed.",
+    "PSY": "Belief, valence, confidence, intention, expectancy, relevance and learning mechanisms; measured mediators not assumed causal.",
+    "SOC": "Source testimony and interpersonal feedback; topic-specific exposure distinguished from trust in the speaker. No full external Family audit.",
+    "CUL": "Cross-cultural success/failure feedback search found persistence/task-value outcomes, not an exact Cultural Driver manipulation. Nationality is not a moderator entity.",
+    "ENV": "Noise and disaster searches returned mostly observational risk/hearing beliefs. No exact independently identified F01 effect retained.",
+    "INS": "Institutional assignment/feedback/incentives considered; offered benefit is not outcome probability. Hypothetical policy applicability in persuasion tasks is not an actual enacted policy.",
+    "INF": "Message repetition, correction/refutation, framing and expectancy communication supplied most exact-target evidence.",
+    "TEC": "Online presentation is a delivery/affordance origin, not evidence of an algorithm's independent causal effect. No inferred live-platform optimization."
+  },
+  "domainsConsidered": {
+    "DELIBERATE_INTERVENTION": "Controlled presentation/refutation, involvement manipulations, framing and expectancy challenges.",
+    "ROUTINE_UNINTENDED_HUMAN_ACTIVITY": "Ordinary repeated encounters and eating are possible origins, but experimental protocols are not automatic real-world-effect generalizations.",
+    "EXTERNAL_EVENT_SHOCK": "Disaster beliefs screened; no sufficiently aligned identified effect.",
+    "ENVIRONMENTAL_EXPOSURE": "Noise/physical stressor search primarily located different constructs and observational designs.",
+    "INSTITUTIONAL_STRUCTURAL_CHANGE": "Rules/incentives/feedback considered; no independent exact outcome-probability effect verified.",
+    "TECHNOLOGICAL_CHANGE": "Platform presentation may change encounters; capability is not realized dose or effect.",
+    "SOCIAL_NETWORK_EVENT_PROCESS": "Social testimony/feedback considered, not a social tie as a PSYWERX scientific Relationship.",
+    "INFORMATIONAL_EXPOSURE": "Repeated claim and explanatory refutation protocols retained for candidate review.",
+    "BIOLOGICAL_PHYSIOLOGICAL_PROCESS": "Transient satiety/mood pathways considered; no stable-trait or generic valuation effect inferred."
+  },
+  "driverLedgers": [
+    {
+      "driverId": "PSY-001",
+      "status": "SEARCH_COMPLETE_BOUNDED",
+      "queries": [
+        "Q-PSY-F01-01",
+        "Q-PSY-F01-02",
+        "Q-PSY-F01-03",
+        "Q-PSY-F01-04"
+      ],
+      "sources": [
+        "SRC107",
+        "SRC110",
+        "SRC-407",
+        "SRC-CAND-PSY-LAYER-0004"
+      ],
+      "candidateEffectIds": [],
+      "candidateIdentityIds": [],
+      "originsWithRelevantLiterature": [
+        "INF",
+        "PSY"
+      ],
+      "domainsWithRelevantLiterature": [
+        "DELIBERATE_INTERVENTION",
+        "INFORMATIONAL_EXPOSURE"
+      ],
+      "properties": {
+        "LEVEL": "INSUFFICIENT_EVIDENCE"
+      },
+      "noFinding": "No exact reusable action-to-behavior-attitude candidate retained: conditioning studies often target object liking; framing has a reported undetected attitude advantage and unreconciled erratum. This is not evidence all attitude interventions fail.",
+      "gaps": "Exact behavior-referent manipulations, control for bundled cognitions, and duration beyond immediate attitude assessment.",
+      "qualifiers": "Valence/persuasion depends on behavior and prior opinion; prevention behavior is not an attitude proxy; neither benefits nor harms rated generically."
+    },
+    {
+      "driverId": "PSY-002",
+      "status": "SEARCH_COMPLETE_BOUNDED",
+      "queries": [
+        "Q-PSY-F01-01",
+        "Q-PSY-F01-04",
+        "Q-PSY-F01-05"
+      ],
+      "sources": [
+        "SRC156"
+      ],
+      "candidateEffectIds": [],
+      "candidateIdentityIds": [],
+      "originsWithRelevantLiterature": [
+        "INF",
+        "PSY"
+      ],
+      "domainsWithRelevantLiterature": [
+        "DELIBERATE_INTERVENTION",
+        "INFORMATIONAL_EXPOSURE"
+      ],
+      "properties": {
+        "LEVEL": "INSUFFICIENT_EVIDENCE",
+        "PERSISTENCE": "INSUFFICIENT_EVIDENCE"
+      },
+      "noFinding": "Counterarguing/perceived-message-strength manipulation concerns certainty only. A whole Attitude Strength effect would exceed evidence; no profile-dimension effect is smuggled through a LEVEL direction.",
+      "gaps": "Independent certainty versus accessibility/stability/resistance measures; aligned intention effects and longitudinal resistance.",
+      "qualifiers": "Measured elaboration/trait need-for-cognition are not randomized moderators; reinforcing an unfavorable belief can be harmful depending on criterion."
+    },
+    {
+      "driverId": "PSY-003",
+      "status": "SEARCH_COMPLETE_BOUNDED",
+      "queries": [
+        "Q-PSY-F01-02",
+        "Q-PSY-F01-04",
+        "Q-PSY-F01-05"
+      ],
+      "sources": [
+        "SRC-CAND-PSY-LAYER-0001",
+        "SRC-CAND-PSY-LAYER-0002",
+        "SRC-433",
+        "SRC-CAND-PSY-LAYER-0007",
+        "SRC-450",
+        "SRC-CAND-PSY-LAYER-0188"
+      ],
+      "candidateEffectIds": [
+        "EA-CAND-PSY-LAYER-0001",
+        "EA-CAND-PSY-LAYER-0002"
+      ],
+      "candidateIdentityIds": [
+        "HT-CAND-PSY-LAYER-0001",
+        "HT-CAND-PSY-LAYER-0002"
+      ],
+      "originsWithRelevantLiterature": [
+        "INF",
+        "TEC",
+        "PSY"
+      ],
+      "domainsWithRelevantLiterature": [
+        "DELIBERATE_INTERVENTION",
+        "INFORMATIONAL_EXPOSURE",
+        "TECHNOLOGICAL_CHANGE"
+      ],
+      "properties": {
+        "LEVEL": "SUPPORTED_EFFECT",
+        "TIMING": "INSUFFICIENT_EVIDENCE",
+        "PERSISTENCE": "INSUFFICIENT_EVIDENCE"
+      },
+      "noFinding": "No separately retained relationship-targeted effect; initial accuracy instructions are a boundary of a not-yet-governed candidate edge, not a formal edge-targeted assertion.",
+      "gaps": "No generalized magnitude, independent persistence effect, causal mediation or live-platform effect. Confidence in a claim may overlap PSY-116.",
+      "qualifiers": "Mixed/null contrasts and task/country differences explicit; no synergy/antagonism or recommendation inferred; shared repetition contribution cannot be summed twice."
+    },
+    {
+      "driverId": "PSY-004",
+      "status": "SEARCH_COMPLETE_BOUNDED",
+      "queries": [
+        "Q-PSY-F01-01",
+        "Q-PSY-F01-02",
+        "Q-PSY-F01-03",
+        "Q-PSY-F01-06"
+      ],
+      "sources": [
+        "SRC110",
+        "SRC112",
+        "SRC-CAND-PSY-LAYER-0009"
+      ],
+      "candidateEffectIds": [],
+      "candidateIdentityIds": [],
+      "originsWithRelevantLiterature": [
+        "INF",
+        "PSY",
+        "SOC",
+        "INS"
+      ],
+      "domainsWithRelevantLiterature": [
+        "DELIBERATE_INTERVENTION",
+        "INFORMATIONAL_EXPOSURE",
+        "INSTITUTIONAL_STRUCTURAL_CHANGE"
+      ],
+      "properties": {
+        "LEVEL": "INSUFFICIENT_EVIDENCE"
+      },
+      "noFinding": "Expectancy-challenge studies do change domain-specific expectancy measures, but positive/negative expectancy scales and differing treatment packages cannot yet be mapped to a single exact action-consequence probability and reusable operation from the accessed abstract.",
+      "gaps": "Named consequence, probability versus desirability measurement, exact challenge identity/components; no alcohol administration recommendation.",
+      "qualifiers": "College versus school samples and dose vary; mediated drinking changes not causally inferred from meta-regression."
+    },
+    {
+      "driverId": "PSY-005",
+      "status": "SEARCH_COMPLETE_BOUNDED",
+      "queries": [
+        "Q-PSY-F01-02",
+        "Q-PSY-F01-03",
+        "Q-PSY-F01-04"
+      ],
+      "sources": [
+        "SRC110",
+        "SRC113",
+        "SRC-CAND-PSY-LAYER-0005"
+      ],
+      "candidateEffectIds": [],
+      "candidateIdentityIds": [],
+      "originsWithRelevantLiterature": [
+        "BIO",
+        "PSY"
+      ],
+      "domainsWithRelevantLiterature": [
+        "ROUTINE_UNINTENDED_HUMAN_ACTIVITY",
+        "BIOLOGICAL_PHYSIOLOGICAL_PROCESS"
+      ],
+      "properties": {
+        "LEVEL": "INSUFFICIENT_EVIDENCE",
+        "PERSISTENCE": "INSUFFICIENT_EVIDENCE"
+      },
+      "noFinding": "Food pleasantness may index transient food valuation, but consumed-food score versus value of a possible future outcome was not sufficiently aligned. Rodent instrumental responding does not fill this gap.",
+      "gaps": "Separate sensory familiarity/habituation from satiety signal and independently elicited possible-outcome value.",
+      "qualifiers": "Food-specific and within-meal, not moral/monetary values or stable preferences. No generalized beneficial direction."
+    },
+    {
+      "driverId": "PSY-006",
+      "status": "SEARCH_COMPLETE_BOUNDED",
+      "queries": [
+        "Q-PSY-F01-02",
+        "Q-PSY-F01-03",
+        "Q-PSY-F01-05",
+        "Q-PSY-F01-06"
+      ],
+      "sources": [
+        "SRC112",
+        "SRC110"
+      ],
+      "candidateEffectIds": [],
+      "candidateIdentityIds": [],
+      "originsWithRelevantLiterature": [
+        "PSY",
+        "INF",
+        "CUL"
+      ],
+      "domainsWithRelevantLiterature": [
+        "DELIBERATE_INTERVENTION",
+        "INFORMATIONAL_EXPOSURE",
+        "SOCIAL_NETWORK_EVENT_PROCESS"
+      ],
+      "properties": {
+        "LEVEL": "INSUFFICIENT_EVIDENCE"
+      },
+      "noFinding": "Feedback/mood/expectancy screening did not provide a sufficiently extracted exact action-to-task-success probability effect. Positive motivation and persistence outcomes are not success expectancy.",
+      "gaps": "Separate ability, success criterion, opportunity and incentive motivation; exact accurate-feedback contrast needed.",
+      "qualifiers": "Within-task expectation not stable optimism; between-culture difference not a within-person causal cultural intervention."
+    },
+    {
+      "driverId": "PSY-007",
+      "status": "SEARCH_COMPLETE_BOUNDED",
+      "queries": [
+        "Q-PSY-F01-01",
+        "Q-PSY-F01-03",
+        "Q-PSY-F01-04"
+      ],
+      "sources": [
+        "SRC-CAND-PSY-LAYER-0003",
+        "SRC156",
+        "SRC162"
+      ],
+      "candidateEffectIds": [],
+      "candidateIdentityIds": [],
+      "originsWithRelevantLiterature": [
+        "INF",
+        "INS",
+        "PSY"
+      ],
+      "domainsWithRelevantLiterature": [
+        "DELIBERATE_INTERVENTION",
+        "INFORMATIONAL_EXPOSURE",
+        "INSTITUTIONAL_STRUCTURAL_CHANGE"
+      ],
+      "properties": {
+        "LEVEL": "INSUFFICIENT_EVIDENCE",
+        "ENABLEMENT": "INSUFFICIENT_EVIDENCE"
+      },
+      "noFinding": "Personal-involvement instructions create a relevance manipulation context, but no independently extracted direct relevance measurement qualifies a target effect here. Policy timing description is not enacted institutional change.",
+      "gaps": "Noncircular relevance indicator; distinguish source/argument sensitivity from total elaboration depth.",
+      "qualifiers": "Undergraduate policy scenario, hypothetical applicability; no automatic transfer to personal identity or every decision."
+    }
   ],
-  "unspecifiedPropertyOutcome":"NOT_INVESTIGATED",
-  "propertyPolicy":"All eleven properties are explicitly considered in generated ledgers; unextracted quantitative/dynamic properties remain NOT_INVESTIGATED, not zero. STRUCTURE is NOT_APPLICABLE for direct effects on these scalar/profile psychological constructs; no ontology edits or context loopholes.",
-  "relationshipPropertyReview":"All nine exact existing causal IDs were screened for eleven properties after their local review. Strength/direction/enablement/functional-shape/structure effects have insufficient independent exact-edge evidence; remaining unresearched dynamics stay NOT_INVESTIGATED. PSY-002 moderation of REL-PSY-001 remains a research question, not an ordinary M→outcome replacement.",
-  "skepticalReview":{
-    "method":"Separate second pass by the same automated researcher after source extraction and initial hypotheses; not falsely described as an independent human review.",
-    "checks":[
+  "unspecifiedPropertyOutcome": "NOT_INVESTIGATED",
+  "propertyPolicy": "All eleven properties are explicitly considered in generated ledgers; unextracted quantitative/dynamic properties remain NOT_INVESTIGATED, not zero. STRUCTURE is NOT_APPLICABLE for direct effects on these scalar/profile psychological constructs; no ontology edits or context loopholes.",
+  "relationshipPropertyReview": "All nine exact existing causal IDs were screened for eleven properties after their local review. Strength/direction/enablement/functional-shape/structure effects have insufficient independent exact-edge evidence; remaining unresearched dynamics stay NOT_INVESTIGATED. PSY-002 moderation of REL-PSY-001 remains a research question, not an ordinary M→outcome replacement.",
+  "skepticalReview": {
+    "method": "Separate second pass by the same automated researcher after source extraction and initial hypotheses; not falsely described as an independent human review.",
+    "checks": [
       "Challenged the source-strength generalization: Tormala uses attitude certainty, not all strength dimensions; no direct strength-profile effect retained.",
       "Rechecked author metadata: added Geert Crombez to Hofmann meta-analysis after Crossref verification; no canonical source edited.",
       "Challenged repetition monotonicity with 2026 synthesis and accuracy-instruction results: retained context-dependent direction and mixed evidence instead of universal increase.",
@@ -48,9 +277,10 @@
       "No negative frame effect inferred from nonsignificance; framing erratum remains review-needed and no effect candidate retained.",
       "No self-efficacy/expectancy merger based on conceptual critique; competing theory and measurement interpretation remain for human review.",
       "Source overlap is conservative: trials and later syntheses are not counted as independent replications; no numerical pooling performed.",
-      "No candidate changes prior INF-F03/SOC-F07/BIO-F01 science. No direct RDS effect or quantitative/practitioner eligibility."
+      "No candidate changes prior INF-F03/SOC-F07/BIO-F01 science. No direct RDS effect or quantitative/practitioner eligibility.",
+      "Layer-wide random sample re-opened the implausibility boundary: 2022 preregistered five-presentation/100-point-scale result is explicit alongside the 2018 null. Different protocol, not proof of a dose/scale moderator; no universal exclusion. MIXED context-dependent candidate scope retained."
     ],
-    "remainingRisks":"Layer-level PSY-003/PSY-116 boundary review may downgrade the belief candidates; scientific scope and measurement are explicit for human review, not automatically activatable. Full-source verification gaps limit several existing-edge recommendations.",
-    "outcome":"LOCAL_REVIEW_COMPLETE_PENDING_LAYER_RECONCILIATION"
+    "remainingRisks": "Layer-level PSY-003/PSY-116 boundary review may downgrade the belief candidates; scientific scope and measurement are explicit for human review, not automatically activatable. Full-source verification gaps limit several existing-edge recommendations.",
+    "outcome": "LOCAL_REVIEW_COMPLETE_PENDING_LAYER_RECONCILIATION"
   }
 }

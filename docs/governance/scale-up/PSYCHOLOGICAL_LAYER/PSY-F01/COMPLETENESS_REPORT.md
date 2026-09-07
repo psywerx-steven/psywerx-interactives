@@ -22,7 +22,7 @@ Candidate research only. Human decisions pending. No production science changed.
   "familyId": "PSY-F01",
   "happeningTypes": 2,
   "humanGovernance": "PENDING",
-  "layerReconciliation": "PENDING",
+  "layerReconciliation": "COMPLETE",
   "localComplete": true,
   "newActive": 0,
   "newGoverned": 0,
@@ -33,9 +33,9 @@ Candidate research only. Human decisions pending. No production science changed.
     "filesCompared": 191,
     "passed": true
   },
-  "sourceFindings": 11,
-  "supplementalSourcesInFamily": 7
+  "sourceFindings": 13,
+  "supplementalSourcesInFamily": 8
 }
 ```
 
-Local completion must be separately validated; shared boundary questions remain pending for later endpoint Family consultation and final Layer reconciliation. Coverage is not scientific completeness.
+Local completion and final Layer reconciliation are separately recorded. Shared scientific boundary questions remain for human governance even after candidate consultation is complete. Coverage is not scientific completeness.
