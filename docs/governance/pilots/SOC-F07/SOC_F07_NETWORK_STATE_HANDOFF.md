@@ -1,5 +1,9 @@
 # SOC-F07 governance and Network State handoff
 
+## Subsequent architecture authorization — 2026-09-07
+
+[GOV-NETWORK-STATE-V1-2026-09-07](../../NETWORK_STATE_V1_GOVERNANCE_DECISION.md) now governs NS01–NS12 (NS06/NS09 modified as authorized). It permits PR #19 merge after validation and bounded additive implementation on a separate branch. AE04/D10/D12 remain unchanged; no scientific activation or scale-up. The historical checkpoint below remains accurate for the pre-implementation data: seven inactive identities; HT-008 and the centralization concept still blocked. Only those already-approved items may conditionally materialize after truthful source and collection contracts pass. See [execution record](../../NETWORK_STATE_V1_EXECUTION.md).
+
 Human decision: `GOV-SOC-F07-001-2026-09-06`; audit `AUD-SOC-F07-AE-V1-20260906-001`; PR #19 remains unmerged. Actor class: `authorized human governor`. No activation authorized.
 
 ## Governance outcome

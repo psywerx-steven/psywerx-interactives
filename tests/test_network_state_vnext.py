@@ -223,10 +223,15 @@ class NetworkStateTests(unittest.TestCase):
         for name,payload in [('synthetic-examples.json',ns.demonstration()),('state.schema.json',ns.STATE_SCHEMA),('delta.schema.json',ns.DELTA_SCHEMA)]:
             self.assertEqual((ns.HERE/'generated'/name).read_text(encoding='utf-8'),json.dumps(payload,sort_keys=True,indent=2,allow_nan=False)+'\n')
 
-    def test_all_ns_decisions_pending(self):
+    def test_exact_ns_human_decisions(self):
         decisions=json.loads((ns.HERE/'decisions.json').read_text(encoding='utf-8'))
         self.assertEqual({r['id'] for r in decisions},{f'NS{n:02d}' for n in range(1,13)})
-        self.assertTrue(all(r['decision']=='PENDING' for r in decisions))
+        self.assertEqual({r['id']:r['decision'] for r in decisions},
+            {f'NS{n:02d}':('MODIFY/APPROVE-AS-MODIFIED' if n in (6,9) else 'APPROVE') for n in range(1,13)})
+        self.assertTrue(all(r['governanceDecisionId']=='GOV-NETWORK-STATE-V1-2026-09-07' for r in decisions))
+        decision=(ROOT/'docs/governance/NETWORK_STATE_V1_GOVERNANCE_DECISION.md').read_text(encoding='utf-8')
+        self.assertIn('authorized human governor',decision)
+        self.assertIn('AE04 and D10/D12 remain unchanged',decision)
 
     def test_architecture_links(self):
         for doc in ns.HERE.glob('*.md'):

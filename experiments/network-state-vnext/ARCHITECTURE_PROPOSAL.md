@@ -1,6 +1,6 @@
 # Relational state: a bounded architecture review
 
-EXPERIMENTAL / NON_PRODUCTION. Every new architecture decision is **PENDING**. This is not a production contract, new ontology entity, simulation or scientific finding.
+Historical proposal and isolated prototype: EXPERIMENTAL / NON_PRODUCTION. NS01–NS12 were subsequently governed by [GOV-NETWORK-STATE-V1-2026-09-07](../../docs/governance/NETWORK_STATE_V1_GOVERNANCE_DECISION.md). That exact authorization supersedes this document's proposal-stage pending/recommended language. The prototype remains isolated; production implementation follows on a separate branch. No new ontology entity, simulation or scientific activation is authorized.
 
 ## Recommendation
 

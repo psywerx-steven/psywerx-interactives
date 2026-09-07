@@ -1,14 +1,134 @@
 [
-  {"id":"NS01","decision":"PENDING","question":"Require an explicit relational base-state representation where exact network RDS recalculation is intended?","recommendation":"YES, optional per scenario; do not require topology for every qualitative scientific claim.","alternative":"Driver-only summaries with explicit inability to reconstruct topology","risk":"Mistaking an incomplete graph for complete world state","complexity":"MEDIUM"},
-  {"id":"NS02","decision":"PENDING","question":"Place relational configuration in the scientific ontology or scenario state?","recommendation":"Scenario-state substrate, not a new Driver or scientific causal node.","alternative":"New ontology-level type requiring separate target and governance design","risk":"Parallel identity systems or a hidden causal primitive","complexity":"MEDIUM"},
-  {"id":"NS03","decision":"PENDING","question":"What technical name should identify the state representation?","recommendation":"RelationalState; separately name NetworkObservation and ScenarioStateDelta.","alternative":"NetworkConfiguration or RelationalConfigurationState","risk":"A name implying known ground truth or a new ontology Layer","complexity":"LOW"},
-  {"id":"NS04","decision":"PENDING","question":"What minimum representation must be explicit?","recommendation":"Stable node/tie identities, membership, typed/directed/weighted/layered ties, boundary, time, risk/opportunity sets and metric selectors.","alternative":"Unqualified adjacency matrix or scalar summaries","risk":"Scope loss, incompatible metrics and implicit multiplex collapse","complexity":"MEDIUM"},
-  {"id":"NS05","decision":"PENDING","question":"How is latent/real configuration distinguished from observation?","recommendation":"Separate observation artifacts and scenario assumptions; never equate observed adjacency with latent truth by default.","alternative":"One graph with an unqualified truth flag","risk":"Missing actors/ties or inferred ties treated as empirical certainty","complexity":"HIGH"},
-  {"id":"NS06","decision":"PENDING","question":"How should RDS derivations consume relational state?","recommendation":"Versioned derivation bindings to a state hash, boundary, metric variant, complete collection scope and external normalization inputs.","alternative":"Scalar binary DERIVED_FROM edges or free-text function descriptions","risk":"One ego substituted for all-node distribution; calculation propagated as causality","complexity":"HIGH"},
-  {"id":"NS07","decision":"PENDING","question":"How should Actions & Events link to deterministic structural operations?","recommendation":"Optional occurrence-to-scenario-operation reference; explicit modeled deltas do not assert real consequences.","alternative":"Occurrence embeds an unrestricted patch or Driver-only routes","risk":"Observed occurrence becomes proof of all asserted effects","complexity":"MEDIUM"},
-  {"id":"NS08","decision":"PENDING","question":"Should AE04 target vocabulary change?","recommendation":"NO change proposed now: retain DRIVER and RELATIONSHIP only.","alternative":"Add RELATIONAL_STATE as a scientific EffectAssertion target after separate governance","risk":"Event label bypasses RDS safeguards or scenario mutation becomes efficacy evidence","complexity":"LOW to preserve; HIGH to extend"},
-  {"id":"NS09","decision":"PENDING","question":"Is a separate state-change object needed?","recommendation":"ScenarioStateDelta for deterministic operation semantics; defer a new scientific StateChangeAssertion type.","alternative":"New scientific StateChangeAssertion or generic JSON Patch alone","risk":"Conflating an imperative scenario edit, a measured change and a causal assertion","complexity":"MEDIUM"},
-  {"id":"NS10","decision":"PENDING","question":"What version/provenance and lifecycle semantics apply?","recommendation":"Immutable state revisions, prior-hash preconditions and operation receipts; scenario permissions separate from unchanged D12 scientific lifecycle.","alternative":"Reuse scientific ACTIVE for mutable scenario snapshots","risk":"Hash consistency mistaken for human authorization or scientific validity","complexity":"MEDIUM"},
-  {"id":"NS11","decision":"PENDING","question":"What are the future identity/privacy boundaries?","recommendation":"Pseudonymous local IDs, separately controlled identity mapping, data minimization, sensitive-attribute limits, retention and export review before real data.","alternative":"Embed person identities and unrestricted graph exports","risk":"Re-identification through network topology even without names","complexity":"HIGH; no real-data implementation here"},
-  {"id":"NS12","decision":"PENDING","question":"What compatibility and scale-up gates are required?","recommendation":"Additive, opt-in state/derivation contracts only after approval; no record reminting, no automatic migration, no broad scale-up until target and source-contract gaps are dispositioned.","alternative":"Immediate migration or ontology-wide population with unresolved targets","risk":"Duplicate contributions, unrepresentable sources and governance backlog","complexity":"HIGH across adapters; bounded pilot first"}
+  {
+    "id": "NS01",
+    "decision": "APPROVE",
+    "question": "Require an explicit relational base-state representation where exact network RDS recalculation is intended?",
+    "recommendation": "YES, optional per scenario; do not require topology for every qualitative scientific claim.",
+    "alternative": "Driver-only summaries with explicit inability to reconstruct topology",
+    "risk": "Mistaking an incomplete graph for complete world state",
+    "complexity": "MEDIUM",
+    "governanceDecisionId": "GOV-NETWORK-STATE-V1-2026-09-07",
+    "governedSemanticsReference": "docs/governance/NETWORK_STATE_V1_GOVERNANCE_DECISION.md"
+  },
+  {
+    "id": "NS02",
+    "decision": "APPROVE",
+    "question": "Place relational configuration in the scientific ontology or scenario state?",
+    "recommendation": "Scenario-state substrate, not a new Driver or scientific causal node.",
+    "alternative": "New ontology-level type requiring separate target and governance design",
+    "risk": "Parallel identity systems or a hidden causal primitive",
+    "complexity": "MEDIUM",
+    "governanceDecisionId": "GOV-NETWORK-STATE-V1-2026-09-07",
+    "governedSemanticsReference": "docs/governance/NETWORK_STATE_V1_GOVERNANCE_DECISION.md"
+  },
+  {
+    "id": "NS03",
+    "decision": "APPROVE",
+    "question": "What technical name should identify the state representation?",
+    "recommendation": "RelationalState; separately name NetworkObservation and ScenarioStateDelta.",
+    "alternative": "NetworkConfiguration or RelationalConfigurationState",
+    "risk": "A name implying known ground truth or a new ontology Layer",
+    "complexity": "LOW",
+    "governanceDecisionId": "GOV-NETWORK-STATE-V1-2026-09-07",
+    "governedSemanticsReference": "docs/governance/NETWORK_STATE_V1_GOVERNANCE_DECISION.md"
+  },
+  {
+    "id": "NS04",
+    "decision": "APPROVE",
+    "question": "What minimum representation must be explicit?",
+    "recommendation": "Stable node/tie identities, membership, typed/directed/weighted/layered ties, boundary, time, risk/opportunity sets and metric selectors.",
+    "alternative": "Unqualified adjacency matrix or scalar summaries",
+    "risk": "Scope loss, incompatible metrics and implicit multiplex collapse",
+    "complexity": "MEDIUM",
+    "governanceDecisionId": "GOV-NETWORK-STATE-V1-2026-09-07",
+    "governedSemanticsReference": "docs/governance/NETWORK_STATE_V1_GOVERNANCE_DECISION.md"
+  },
+  {
+    "id": "NS05",
+    "decision": "APPROVE",
+    "question": "How is latent/real configuration distinguished from observation?",
+    "recommendation": "Separate observation artifacts and scenario assumptions; never equate observed adjacency with latent truth by default.",
+    "alternative": "One graph with an unqualified truth flag",
+    "risk": "Missing actors/ties or inferred ties treated as empirical certainty",
+    "complexity": "HIGH",
+    "governanceDecisionId": "GOV-NETWORK-STATE-V1-2026-09-07",
+    "governedSemanticsReference": "docs/governance/NETWORK_STATE_V1_GOVERNANCE_DECISION.md"
+  },
+  {
+    "id": "NS06",
+    "decision": "MODIFY/APPROVE-AS-MODIFIED",
+    "question": "How should RDS derivations consume relational state?",
+    "recommendation": "Versioned derivation bindings to a state hash, boundary, metric variant, complete collection scope and external normalization inputs.",
+    "alternative": "Scalar binary DERIVED_FROM edges or free-text function descriptions",
+    "risk": "One ego substituted for all-node distribution; calculation propagated as causality",
+    "complexity": "HIGH",
+    "governanceDecisionId": "GOV-NETWORK-STATE-V1-2026-09-07",
+    "governedSemanticsReference": "docs/governance/NETWORK_STATE_V1_GOVERNANCE_DECISION.md"
+  },
+  {
+    "id": "NS07",
+    "decision": "APPROVE",
+    "question": "How should Actions & Events link to deterministic structural operations?",
+    "recommendation": "Optional occurrence-to-scenario-operation reference; explicit modeled deltas do not assert real consequences.",
+    "alternative": "Occurrence embeds an unrestricted patch or Driver-only routes",
+    "risk": "Observed occurrence becomes proof of all asserted effects",
+    "complexity": "MEDIUM",
+    "governanceDecisionId": "GOV-NETWORK-STATE-V1-2026-09-07",
+    "governedSemanticsReference": "docs/governance/NETWORK_STATE_V1_GOVERNANCE_DECISION.md"
+  },
+  {
+    "id": "NS08",
+    "decision": "APPROVE",
+    "question": "Should AE04 target vocabulary change?",
+    "recommendation": "NO change proposed now: retain DRIVER and RELATIONSHIP only.",
+    "alternative": "Add RELATIONAL_STATE as a scientific EffectAssertion target after separate governance",
+    "risk": "Event label bypasses RDS safeguards or scenario mutation becomes efficacy evidence",
+    "complexity": "LOW to preserve; HIGH to extend",
+    "governanceDecisionId": "GOV-NETWORK-STATE-V1-2026-09-07",
+    "governedSemanticsReference": "docs/governance/NETWORK_STATE_V1_GOVERNANCE_DECISION.md"
+  },
+  {
+    "id": "NS09",
+    "decision": "MODIFY/APPROVE-AS-MODIFIED",
+    "question": "Is a separate state-change object needed?",
+    "recommendation": "ScenarioStateDelta for deterministic operation semantics; defer a new scientific StateChangeAssertion type.",
+    "alternative": "New scientific StateChangeAssertion or generic JSON Patch alone",
+    "risk": "Conflating an imperative scenario edit, a measured change and a causal assertion",
+    "complexity": "MEDIUM",
+    "governanceDecisionId": "GOV-NETWORK-STATE-V1-2026-09-07",
+    "governedSemanticsReference": "docs/governance/NETWORK_STATE_V1_GOVERNANCE_DECISION.md"
+  },
+  {
+    "id": "NS10",
+    "decision": "APPROVE",
+    "question": "What version/provenance and lifecycle semantics apply?",
+    "recommendation": "Immutable state revisions, prior-hash preconditions and operation receipts; scenario permissions separate from unchanged D12 scientific lifecycle.",
+    "alternative": "Reuse scientific ACTIVE for mutable scenario snapshots",
+    "risk": "Hash consistency mistaken for human authorization or scientific validity",
+    "complexity": "MEDIUM",
+    "governanceDecisionId": "GOV-NETWORK-STATE-V1-2026-09-07",
+    "governedSemanticsReference": "docs/governance/NETWORK_STATE_V1_GOVERNANCE_DECISION.md"
+  },
+  {
+    "id": "NS11",
+    "decision": "APPROVE",
+    "question": "What are the future identity/privacy boundaries?",
+    "recommendation": "Pseudonymous local IDs, separately controlled identity mapping, data minimization, sensitive-attribute limits, retention and export review before real data.",
+    "alternative": "Embed person identities and unrestricted graph exports",
+    "risk": "Re-identification through network topology even without names",
+    "complexity": "HIGH; no real-data implementation here",
+    "governanceDecisionId": "GOV-NETWORK-STATE-V1-2026-09-07",
+    "governedSemanticsReference": "docs/governance/NETWORK_STATE_V1_GOVERNANCE_DECISION.md"
+  },
+  {
+    "id": "NS12",
+    "decision": "APPROVE",
+    "question": "What compatibility and scale-up gates are required?",
+    "recommendation": "Additive, opt-in state/derivation contracts only after approval; no record reminting, no automatic migration, no broad scale-up until target and source-contract gaps are dispositioned.",
+    "alternative": "Immediate migration or ontology-wide population with unresolved targets",
+    "risk": "Duplicate contributions, unrepresentable sources and governance backlog",
+    "complexity": "HIGH across adapters; bounded pilot first",
+    "governanceDecisionId": "GOV-NETWORK-STATE-V1-2026-09-07",
+    "governedSemanticsReference": "docs/governance/NETWORK_STATE_V1_GOVERNANCE_DECISION.md"
+  }
 ]
