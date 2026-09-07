@@ -7,8 +7,8 @@
       "permanent": true
     },
     {
-      "source": "/:path*",
-      "destination": "https://psywerx.io/:path*",
+      "source": "/:path((?!$).*)",
+      "destination": "https://psywerx.io/:path",
       "permanent": true
     }
   ]
