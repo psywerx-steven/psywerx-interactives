@@ -1,0 +1,2060 @@
+[
+  {
+    "assertionId": "REL-INS-047",
+    "evidenceAssessmentId": "EVA-AUD-SOC-F07-REL-INS-047",
+    "governance": {
+      "activationStatus": "NOT_ELIGIBLE",
+      "authorityBasis": "V1_NATIVE",
+      "authorizedBy": null,
+      "blockStatus": "NONE",
+      "decisionDate": null,
+      "decisionOutcome": "NOT_DECIDED",
+      "decisionRationale": null,
+      "decisionRecord": null,
+      "effectiveVersion": null,
+      "lifecycleStatus": "RESEARCH_NEEDED",
+      "supersedesIds": [],
+      "transitionProvenance": [
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": null
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "EVA-AUD-SOC-F07-REL-INS-047",
+          "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+          "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+          "revision": 1,
+          "timestamp": "2026-09-07T02:46:39Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          }
+        },
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "EVA-AUD-SOC-F07-REL-INS-047",
+          "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+          "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+          "revision": 1,
+          "timestamp": "2026-09-07T02:46:39Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "RESEARCH_NEEDED"
+          }
+        }
+      ]
+    },
+    "note": "Candidate normalization sidecar; production AE assertion target enum is unchanged.",
+    "productionMethod": "SYNTHESIS",
+    "sourceFindings": [
+      {
+        "accessDepth": "METADATA",
+        "basis": [
+          "UNTESTED_HYPOTHESIS"
+        ],
+        "comparator": "Source-specific comparison; see result/locator. No synthetic common comparator imposed.",
+        "context": "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+        "datasetIds": [
+          "STUDY-SRC-497"
+        ],
+        "design": "Metadata alignment assessment only; no empirical design or direct scientific result inferred",
+        "disposition": "INSUFFICIENT",
+        "exposure": "Social determinants framework",
+        "id": "FND-SOC-F07-REL-INS-047-SRC-497",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Full report not reviewed; direct support for INS-076 to network segregation remains unverified.",
+          "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+          "Check reflection, homophily, selection into ties, latent traits, common environment, institutional assignment, simultaneity, reciprocity, correlated exposure, interference, endogenous formation, attrition and tie measurement error; longitudinal observation alone is not identification."
+        ],
+        "locator": "Publication landing page; ISBN 9789241500852; https://www.who.int/publications/i/item/9789241500852",
+        "measurement": "Identity and broad framework relevance verified.",
+        "nullInterpretation": null,
+        "overlapNotes": "Reviews SRC-254/256/269 and candidate 009 may include cited primary studies: no independent-replication count. Review/primary overlap recorded per finding; preprint/journal versions are one work.",
+        "population": "Social determinants framework",
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+          ],
+          "method": "Structured evidence search and skeptical candidate audit",
+          "originReferences": [
+            "AUD-SOC-F07-AE-V1-20260906-001",
+            "f0be9c24288bd128231e0d1243b34c03ad055906",
+            "scripts/soc_f07_research_inputs.py"
+          ],
+          "recordedAt": "2026-09-07T02:46:39Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "Identity and broad framework relevance verified.",
+        "sourceId": "SRC-497",
+        "supportedSemantics": [],
+        "timing": "Reported source window only; no causal lag/persistence inferred. Social determinants framework",
+        "uncertainty": [
+          "No comparable exact-ontology coefficient or numeric confidence extracted"
+        ]
+      },
+      {
+        "accessDepth": "METADATA",
+        "basis": [
+          "UNTESTED_HYPOTHESIS"
+        ],
+        "comparator": "Source-specific comparison; see result/locator. No synthetic common comparator imposed.",
+        "context": "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+        "datasetIds": [
+          "STUDY-CENTOLA-2010"
+        ],
+        "design": "Metadata alignment assessment only; no empirical design or direct scientific result inferred",
+        "disposition": "INSUFFICIENT",
+        "exposure": "Canonical citation alignment audit",
+        "id": "FND-SOC-F07-REL-INS-047-SRC-509",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Composite reference cannot count as two independent studies; second cited component unresolved. Preserve canonical register unchanged.",
+          "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+          "Check reflection, homophily, selection into ties, latent traits, common environment, institutional assignment, simultaneity, reciprocity, correlated exposure, interference, endogenous formation, attrition and tie measurement error; longitudinal observation alone is not identification."
+        ],
+        "locator": "Canonical citation versus linked PMID; https://pubmed.ncbi.nlm.nih.gov/20813952/",
+        "measurement": "Linked PMID resolves the Centola 2010 paper already represented by SRC-235.",
+        "nullInterpretation": null,
+        "overlapNotes": "Reviews SRC-254/256/269 and candidate 009 may include cited primary studies: no independent-replication count. SRC-509 linked PMID duplicates SRC-235; unresolved composite component is not an independent study.",
+        "population": "Canonical citation alignment audit",
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+          ],
+          "method": "Structured evidence search and skeptical candidate audit",
+          "originReferences": [
+            "AUD-SOC-F07-AE-V1-20260906-001",
+            "f0be9c24288bd128231e0d1243b34c03ad055906",
+            "scripts/soc_f07_research_inputs.py"
+          ],
+          "recordedAt": "2026-09-07T02:46:39Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "Linked PMID resolves the Centola 2010 paper already represented by SRC-235.",
+        "sourceId": "SRC-509",
+        "supportedSemantics": [],
+        "timing": "Reported source window only; no causal lag/persistence inferred. Canonical citation alignment audit",
+        "uncertainty": [
+          "No comparable exact-ontology coefficient or numeric confidence extracted"
+        ]
+      },
+      {
+        "accessDepth": "SELECTED_FULL_TEXT",
+        "basis": [
+          "EXPERIMENTAL"
+        ],
+        "comparator": "Nonadjacent assigned classmates",
+        "context": "2,966 pupils, grades 3-8 in participating schools; Nominated friendships; assigned classroom seats separate from measured ties",
+        "datasetIds": [
+          "STUDY-SRC-CAND-SOC-F07-012"
+        ],
+        "design": "EXPERIMENTAL; Within-classroom randomized proximity",
+        "disposition": "INSUFFICIENT",
+        "exposure": "Randomized seat-neighbor assignment",
+        "id": "FND-SOC-F07-REL-INS-047-012",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Seating distance is not ENV-034 personal-space encroachment and friendship is not conditional triadic closure.",
+          "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+          "Check reflection, homophily, selection into ties, latent traits, common environment, institutional assignment, simultaneity, reciprocity, correlated exposure, interference, endogenous formation, attrition and tie measurement error; longitudinal observation alone is not identification.",
+          "Other classroom contacts and interference; generalization outside classrooms untested",
+          "No open-triad conditional risk set; geometric distance not preferred-space encroachment."
+        ],
+        "locator": "Abstract and methods; https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0255097",
+        "measurement": "Friendship nominations and subgroup differences",
+        "nullInterpretation": null,
+        "overlapNotes": "Reviews SRC-254/256/269 and candidate 009 may include cited primary studies: no independent-replication count. Review/primary overlap recorded per finding; preprint/journal versions are one work.",
+        "population": "2,966 pupils in 182 classrooms; assigned seating over a semester",
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+          ],
+          "method": "Structured evidence search and skeptical candidate audit",
+          "originReferences": [
+            "AUD-SOC-F07-AE-V1-20260906-001",
+            "f0be9c24288bd128231e0d1243b34c03ad055906",
+            "scripts/soc_f07_research_inputs.py"
+          ],
+          "recordedAt": "2026-09-07T02:46:39Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "Assigned proximity can affect nominated friendship formation across some social boundaries.",
+        "sourceId": "SRC-CAND-SOC-F07-012",
+        "supportedSemantics": [],
+        "timing": "Semester exposure before friendship measurement",
+        "uncertainty": [
+          "No comparable exact-ontology coefficient or numeric confidence extracted"
+        ]
+      }
+    ],
+    "synthesis": {
+      "confidence": "LOW",
+      "confidenceRationale": "Judgment concerns the exact scoped proposition, not the prestige of a source.",
+      "conflicts": [],
+      "contraryEvidenceSearch": "ASSESSED",
+      "datasetOverlap": "Same publication reused across assertions is one dataset; review/primary overlap not counted as independent replication.",
+      "disposition": "INSUFFICIENT",
+      "evidenceStrength": "LIMITED",
+      "generalizationLimits": [
+        "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+        "Check reflection, homophily, selection into ties, latent traits, common environment, institutional assignment, simultaneity, reciprocity, correlated exposure, interference, endogenous formation, attrition and tie measurement error; longitudinal observation alone is not identification."
+      ],
+      "rationale": "Propose restricting institutional segregation to specified assignment/contact constraints preceding measured between-group tie mixing; exact institution, groups, metric and identification remain research-needed. Framework and mismatched composite diffusion source are not direct identified institutional-segregation evidence. Assignment can be a common cause, not an autonomous RDS effect.",
+      "sourceFindingIds": [
+        "FND-SOC-F07-REL-INS-047-SRC-497",
+        "FND-SOC-F07-REL-INS-047-SRC-509",
+        "FND-SOC-F07-REL-INS-047-012"
+      ]
+    }
+  },
+  {
+    "assertionId": "REL-SOC-031",
+    "evidenceAssessmentId": "EVA-AUD-SOC-F07-REL-SOC-031",
+    "governance": {
+      "activationStatus": "NOT_ELIGIBLE",
+      "authorityBasis": "V1_NATIVE",
+      "authorizedBy": null,
+      "blockStatus": "NONE",
+      "decisionDate": null,
+      "decisionOutcome": "NOT_DECIDED",
+      "decisionRationale": null,
+      "decisionRecord": null,
+      "effectiveVersion": null,
+      "lifecycleStatus": "RESEARCH_NEEDED",
+      "supersedesIds": [],
+      "transitionProvenance": [
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": null
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "EVA-AUD-SOC-F07-REL-SOC-031",
+          "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+          "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+          "revision": 1,
+          "timestamp": "2026-09-07T02:46:39Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          }
+        },
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "EVA-AUD-SOC-F07-REL-SOC-031",
+          "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+          "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+          "revision": 1,
+          "timestamp": "2026-09-07T02:46:39Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "RESEARCH_NEEDED"
+          }
+        }
+      ]
+    },
+    "note": "Candidate normalization sidecar; production AE assertion target enum is unchanged.",
+    "productionMethod": "SYNTHESIS",
+    "sourceFindings": [
+      {
+        "accessDepth": "ABSTRACT",
+        "basis": [
+          "EVIDENCE_SYNTHESIS"
+        ],
+        "comparator": "Source-specific comparison; see result/locator. No synthetic common comparator imposed.",
+        "context": "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+        "datasetIds": [
+          "STUDY-SRC-254"
+        ],
+        "design": "EVIDENCE_SYNTHESIS; Organizational networks",
+        "disposition": "INSUFFICIENT",
+        "exposure": "Organizational networks",
+        "id": "FND-SOC-F07-REL-SOC-031-SRC-254",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Broad review is not direct evidence for contemporaneous density causing local clustering.",
+          "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+          "Check reflection, homophily, selection into ties, latent traits, common environment, institutional assignment, simultaneity, reciprocity, correlated exposure, interference, endogenous formation, attrition and tie measurement error; longitudinal observation alone is not identification."
+        ],
+        "locator": "Abstract and indexed introduction; https://www.annualreviews.org/doi/10.1146/annurev-orgpsych-012420-090628",
+        "measurement": "Reviews network structure, behavior and brokerage developments.",
+        "nullInterpretation": null,
+        "overlapNotes": "Reviews SRC-254/256/269 and candidate 009 may include cited primary studies: no independent-replication count. Review/primary overlap recorded per finding; preprint/journal versions are one work.",
+        "population": "Organizational networks",
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+          ],
+          "method": "Structured evidence search and skeptical candidate audit",
+          "originReferences": [
+            "AUD-SOC-F07-AE-V1-20260906-001",
+            "f0be9c24288bd128231e0d1243b34c03ad055906",
+            "scripts/soc_f07_research_inputs.py"
+          ],
+          "recordedAt": "2026-09-07T02:46:39Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "Reviews network structure, behavior and brokerage developments.",
+        "sourceId": "SRC-254",
+        "supportedSemantics": [],
+        "timing": "Reported source window only; no causal lag/persistence inferred. Organizational networks",
+        "uncertainty": [
+          "No comparable exact-ontology coefficient or numeric confidence extracted"
+        ]
+      },
+      {
+        "accessDepth": "SELECTED_FULL_TEXT",
+        "basis": [
+          "EVIDENCE_SYNTHESIS"
+        ],
+        "comparator": "Source-specific comparison; see result/locator. No synthetic common comparator imposed.",
+        "context": "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+        "datasetIds": [
+          "STUDY-SRC-256"
+        ],
+        "design": "EVIDENCE_SYNTHESIS; Multiple social-network theories and settings",
+        "disposition": "INSUFFICIENT",
+        "exposure": "Multiple social-network theories and settings",
+        "id": "FND-SOC-F07-REL-SOC-031-SRC-256",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Review is not independent replication of each cited experiment or direct metric-to-metric causality.",
+          "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+          "Check reflection, homophily, selection into ties, latent traits, common environment, institutional assignment, simultaneity, reciprocity, correlated exposure, interference, endogenous formation, attrition and tie measurement error; longitudinal observation alone is not identification."
+        ],
+        "locator": "Introduction and structural-mechanism discussion; https://www.stats.ox.ac.uk/~snijders/siena/winterschool/BorgattiMehraBrassLabianca2009.pdf",
+        "measurement": "Network mechanisms require distinguishing ties, structure and flows.",
+        "nullInterpretation": null,
+        "overlapNotes": "Reviews SRC-254/256/269 and candidate 009 may include cited primary studies: no independent-replication count. Review/primary overlap recorded per finding; preprint/journal versions are one work.",
+        "population": "Multiple social-network theories and settings",
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+          ],
+          "method": "Structured evidence search and skeptical candidate audit",
+          "originReferences": [
+            "AUD-SOC-F07-AE-V1-20260906-001",
+            "f0be9c24288bd128231e0d1243b34c03ad055906",
+            "scripts/soc_f07_research_inputs.py"
+          ],
+          "recordedAt": "2026-09-07T02:46:39Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "Network mechanisms require distinguishing ties, structure and flows.",
+        "sourceId": "SRC-256",
+        "supportedSemantics": [],
+        "timing": "Reported source window only; no causal lag/persistence inferred. Multiple social-network theories and settings",
+        "uncertainty": [
+          "No comparable exact-ontology coefficient or numeric confidence extracted"
+        ]
+      },
+      {
+        "accessDepth": "SELECTED_FULL_TEXT",
+        "basis": [
+          "EXPERIMENTAL"
+        ],
+        "comparator": "Random topology with same degree condition",
+        "context": "12 closed networks across six trials; fixed degrees; no participant rewiring; Undirected assigned anonymous health-buddy links; adoption notifications, not ordinary friendship",
+        "datasetIds": [
+          "STUDY-CENTOLA-2010"
+        ],
+        "design": "EXPERIMENTAL; Randomized topology; interference is part of treatment, not independent unit noise",
+        "disposition": "INSUFFICIENT",
+        "exposure": "Random assignment to clustered lattice versus random topology at matched degree",
+        "id": "FND-SOC-F07-REL-SOC-031-SRC-235",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Bundled topology contrast, not density manipulation; anonymous fixed ties and adoption notifications are not all friendship networks. Fourth/further notifications did not show detectable extra adoption in a small contrast.",
+          "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+          "Check reflection, homophily, selection into ties, latent traits, common environment, institutional assignment, simultaneity, reciprocity, correlated exposure, interference, endogenous formation, attrition and tie measurement error; longitudinal observation alone is not identification.",
+          "Degree held fixed, but topology dimensions remain bundled",
+          "No independent manipulation of density, isolated local clustering or generic reinforcement."
+        ],
+        "locator": "Pages 1194-1196: design, results, reinforcement; https://ndg.asc.upenn.edu/wp-content/uploads/2016/04/Centola-2010-Science.pdf",
+        "measurement": "Forum registration/adoption and number of preceding adoption signals",
+        "nullInterpretation": null,
+        "overlapNotes": "Reviews SRC-254/256/269 and candidate 009 may include cited primary studies: no independent-replication count. SRC-509 linked PMID duplicates SRC-235; unresolved composite component is not an independent study.",
+        "population": "1,528 participants; 12 anonymous health-buddy networks; fixed degree 6 or 8; three-week forum adoption experiment",
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+          ],
+          "method": "Structured evidence search and skeptical candidate audit",
+          "originReferences": [
+            "AUD-SOC-F07-AE-V1-20260906-001",
+            "f0be9c24288bd128231e0d1243b34c03ad055906",
+            "scripts/soc_f07_research_inputs.py"
+          ],
+          "recordedAt": "2026-09-07T02:46:39Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "Random topology assignment with degree held fixed supports context-bounded reinforcement and adoption differences.",
+        "sourceId": "SRC-235",
+        "supportedSemantics": [],
+        "timing": "Assigned topology before adoption; three-week observation",
+        "uncertainty": [
+          "No comparable exact-ontology coefficient or numeric confidence extracted"
+        ]
+      },
+      {
+        "accessDepth": "SELECTED_FULL_TEXT",
+        "basis": [
+          "MODEL_SIMULATION"
+        ],
+        "comparator": "Source-specific comparison; see result/locator. No synthetic common comparator imposed.",
+        "context": "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+        "datasetIds": [
+          "STUDY-SRC-CAND-SOC-F07-003"
+        ],
+        "design": "MODEL_SIMULATION; Collaboration network and missingness sensitivity experiments",
+        "disposition": "INSUFFICIENT",
+        "exposure": "Collaboration network and missingness sensitivity experiments",
+        "id": "FND-SOC-F07-REL-SOC-031-003",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Sensitivity simulations are not empirical causal effects. Preprint and journal article are one work.",
+          "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+          "Check reflection, homophily, selection into ties, latent traits, common environment, institutional assignment, simultaneity, reciprocity, correlated exposure, interference, endogenous formation, attrition and tie measurement error; longitudinal observation alone is not identification."
+        ],
+        "locator": "Abstract and indexed Table 3; journal PDF sections; https://arxiv.org/abs/cond-mat/0306335",
+        "measurement": "Boundary, fixed-choice and nonresponse processes can bias network summaries differently.",
+        "nullInterpretation": null,
+        "overlapNotes": "Reviews SRC-254/256/269 and candidate 009 may include cited primary studies: no independent-replication count. Review/primary overlap recorded per finding; preprint/journal versions are one work.",
+        "population": "Collaboration network and missingness sensitivity experiments",
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+          ],
+          "method": "Structured evidence search and skeptical candidate audit",
+          "originReferences": [
+            "AUD-SOC-F07-AE-V1-20260906-001",
+            "f0be9c24288bd128231e0d1243b34c03ad055906",
+            "scripts/soc_f07_research_inputs.py"
+          ],
+          "recordedAt": "2026-09-07T02:46:39Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "Boundary, fixed-choice and nonresponse processes can bias network summaries differently.",
+        "sourceId": "SRC-CAND-SOC-F07-003",
+        "supportedSemantics": [],
+        "timing": "Reported source window only; no causal lag/persistence inferred. Collaboration network and missingness sensitivity experiments",
+        "uncertainty": [
+          "No comparable exact-ontology coefficient or numeric confidence extracted"
+        ]
+      }
+    ],
+    "synthesis": {
+      "confidence": "LOW",
+      "confidenceRationale": "Judgment concerns the exact scoped proposition, not the prestige of a source.",
+      "conflicts": [],
+      "contraryEvidenceSearch": "ASSESSED",
+      "datasetOverlap": "Same publication reused across assertions is one dataset; review/primary overlap not counted as independent replication.",
+      "disposition": "INSUFFICIENT",
+      "evidenceStrength": "LIMITED",
+      "generalizationLimits": [
+        "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+        "Check reflection, homophily, selection into ties, latent traits, common environment, institutional assignment, simultaneity, reciprocity, correlated exposure, interference, endogenous formation, attrition and tie measurement error; longitudinal observation alone is not identification."
+      ],
+      "rationale": "Consider a noncausal conditional structural comparison of SOC-052 and SOC-053, not CAUSES; no exact replacement predicate approved. Global density and ego clustering share adjacency inputs but neither universally determines the other. Same-time summary contrast lacks independent temporal mechanism.",
+      "sourceFindingIds": [
+        "FND-SOC-F07-REL-SOC-031-SRC-254",
+        "FND-SOC-F07-REL-SOC-031-SRC-256",
+        "FND-SOC-F07-REL-SOC-031-SRC-235",
+        "FND-SOC-F07-REL-SOC-031-003"
+      ]
+    }
+  },
+  {
+    "assertionId": "REL-SOC-032",
+    "evidenceAssessmentId": "EVA-AUD-SOC-F07-REL-SOC-032",
+    "governance": {
+      "activationStatus": "NOT_ELIGIBLE",
+      "authorityBasis": "V1_NATIVE",
+      "authorizedBy": null,
+      "blockStatus": "NONE",
+      "decisionDate": null,
+      "decisionOutcome": "NOT_DECIDED",
+      "decisionRationale": null,
+      "decisionRecord": null,
+      "effectiveVersion": null,
+      "lifecycleStatus": "RESEARCH_NEEDED",
+      "supersedesIds": [],
+      "transitionProvenance": [
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": null
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "EVA-AUD-SOC-F07-REL-SOC-032",
+          "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+          "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+          "revision": 1,
+          "timestamp": "2026-09-07T02:46:39Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          }
+        },
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "EVA-AUD-SOC-F07-REL-SOC-032",
+          "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+          "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+          "revision": 1,
+          "timestamp": "2026-09-07T02:46:39Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "RESEARCH_NEEDED"
+          }
+        }
+      ]
+    },
+    "note": "Candidate normalization sidecar; production AE assertion target enum is unchanged.",
+    "productionMethod": "SYNTHESIS",
+    "sourceFindings": [
+      {
+        "accessDepth": "ABSTRACT",
+        "basis": [
+          "EVIDENCE_SYNTHESIS"
+        ],
+        "comparator": "Source-specific comparison; see result/locator. No synthetic common comparator imposed.",
+        "context": "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+        "datasetIds": [
+          "STUDY-SRC-233"
+        ],
+        "design": "EVIDENCE_SYNTHESIS; Multiple social settings; tie and group boundaries vary",
+        "disposition": "INSUFFICIENT",
+        "exposure": "Multiple social settings; tie and group boundaries vary",
+        "id": "FND-SOC-F07-REL-SOC-032-SRC-233",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Selection, opportunity and influence must not be collapsed; no exact SOC-054 to SOC-057 estimate extracted.",
+          "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+          "Check reflection, homophily, selection into ties, latent traits, common environment, institutional assignment, simultaneity, reciprocity, correlated exposure, interference, endogenous formation, attrition and tie measurement error; longitudinal observation alone is not identification."
+        ],
+        "locator": "Abstract; https://www.annualreviews.org/doi/10.1146/annurev.soc.27.1.415",
+        "measurement": "Review describes similarity and social ties; it does not identify a metric-to-metric causal effect.",
+        "nullInterpretation": null,
+        "overlapNotes": "Reviews SRC-254/256/269 and candidate 009 may include cited primary studies: no independent-replication count. Review/primary overlap recorded per finding; preprint/journal versions are one work.",
+        "population": "Multiple social settings; tie and group boundaries vary",
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+          ],
+          "method": "Structured evidence search and skeptical candidate audit",
+          "originReferences": [
+            "AUD-SOC-F07-AE-V1-20260906-001",
+            "f0be9c24288bd128231e0d1243b34c03ad055906",
+            "scripts/soc_f07_research_inputs.py"
+          ],
+          "recordedAt": "2026-09-07T02:46:39Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "Review describes similarity and social ties; it does not identify a metric-to-metric causal effect.",
+        "sourceId": "SRC-233",
+        "supportedSemantics": [],
+        "timing": "Reported source window only; no causal lag/persistence inferred. Multiple social settings; tie and group boundaries vary",
+        "uncertainty": [
+          "No comparable exact-ontology coefficient or numeric confidence extracted"
+        ]
+      },
+      {
+        "accessDepth": "ABSTRACT",
+        "basis": [
+          "THEORETICAL_MECHANISTIC"
+        ],
+        "comparator": "Source-specific comparison; see result/locator. No synthetic common comparator imposed.",
+        "context": "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+        "datasetIds": [
+          "STUDY-SRC-260"
+        ],
+        "design": "THEORETICAL_MECHANISTIC; Degree mixing, network examples and analytical models",
+        "disposition": "INSUFFICIENT",
+        "exposure": "Degree mixing, network examples and analytical models",
+        "id": "FND-SOC-F07-REL-SOC-032-SRC-260",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Degree similarity is not automatically categorical segregation; model behavior is not empirical causal identification.",
+          "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+          "Check reflection, homophily, selection into ties, latent traits, common environment, institutional assignment, simultaneity, reciprocity, correlated exposure, interference, endogenous formation, attrition and tie measurement error; longitudinal observation alone is not identification."
+        ],
+        "locator": "Abstract; https://arxiv.org/abs/cond-mat/0205405",
+        "measurement": "Defines and analyzes degree assortativity.",
+        "nullInterpretation": null,
+        "overlapNotes": "Reviews SRC-254/256/269 and candidate 009 may include cited primary studies: no independent-replication count. Review/primary overlap recorded per finding; preprint/journal versions are one work.",
+        "population": "Degree mixing, network examples and analytical models",
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+          ],
+          "method": "Structured evidence search and skeptical candidate audit",
+          "originReferences": [
+            "AUD-SOC-F07-AE-V1-20260906-001",
+            "f0be9c24288bd128231e0d1243b34c03ad055906",
+            "scripts/soc_f07_research_inputs.py"
+          ],
+          "recordedAt": "2026-09-07T02:46:39Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "Defines and analyzes degree assortativity.",
+        "sourceId": "SRC-260",
+        "supportedSemantics": [],
+        "timing": "Reported source window only; no causal lag/persistence inferred. Degree mixing, network examples and analytical models",
+        "uncertainty": [
+          "No comparable exact-ontology coefficient or numeric confidence extracted"
+        ]
+      },
+      {
+        "accessDepth": "SELECTED_FULL_TEXT",
+        "basis": [
+          "THEORETICAL_MECHANISTIC"
+        ],
+        "comparator": "Source-specific comparison; see result/locator. No synthetic common comparator imposed.",
+        "context": "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+        "datasetIds": [
+          "STUDY-SRC-270"
+        ],
+        "design": "THEORETICAL_MECHANISTIC; Observational network identification",
+        "disposition": "INSUFFICIENT",
+        "exposure": "Observational network identification",
+        "id": "FND-SOC-F07-REL-SOC-032-SRC-270",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "A methodological warning, not evidence that every influence effect is absent.",
+          "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+          "Check reflection, homophily, selection into ties, latent traits, common environment, institutional assignment, simultaneity, reciprocity, correlated exposure, interference, endogenous formation, attrition and tie measurement error; longitudinal observation alone is not identification."
+        ],
+        "locator": "Indexed abstract and introduction; direct page returned access challenge; https://pmc.ncbi.nlm.nih.gov/articles/PMC3328971/",
+        "measurement": "Latent homophily and contagion generally cannot be separated without strong assumptions or additional design leverage.",
+        "nullInterpretation": null,
+        "overlapNotes": "Reviews SRC-254/256/269 and candidate 009 may include cited primary studies: no independent-replication count. Review/primary overlap recorded per finding; preprint/journal versions are one work.",
+        "population": "Observational network identification",
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+          ],
+          "method": "Structured evidence search and skeptical candidate audit",
+          "originReferences": [
+            "AUD-SOC-F07-AE-V1-20260906-001",
+            "f0be9c24288bd128231e0d1243b34c03ad055906",
+            "scripts/soc_f07_research_inputs.py"
+          ],
+          "recordedAt": "2026-09-07T02:46:39Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "Latent homophily and contagion generally cannot be separated without strong assumptions or additional design leverage.",
+        "sourceId": "SRC-270",
+        "supportedSemantics": [],
+        "timing": "Reported source window only; no causal lag/persistence inferred. Observational network identification",
+        "uncertainty": [
+          "No comparable exact-ontology coefficient or numeric confidence extracted"
+        ]
+      },
+      {
+        "accessDepth": "ABSTRACT",
+        "basis": [
+          "DEFINITIONAL_CALCULATIONAL"
+        ],
+        "comparator": "Source-specific comparison; see result/locator. No synthetic common comparator imposed.",
+        "context": "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+        "datasetIds": [
+          "STUDY-SRC-CAND-SOC-F07-016"
+        ],
+        "design": "DEFINITIONAL_CALCULATIONAL; Categorical and scalar mixing measures",
+        "disposition": "INSUFFICIENT",
+        "exposure": "Categorical and scalar mixing measures",
+        "id": "FND-SOC-F07-REL-SOC-032-016",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Definitions and models are not empirical direction-of-causation evidence.",
+          "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+          "Check reflection, homophily, selection into ties, latent traits, common environment, institutional assignment, simultaneity, reciprocity, correlated exposure, interference, endogenous formation, attrition and tie measurement error; longitudinal observation alone is not identification."
+        ],
+        "locator": "Abstract; https://arxiv.org/abs/cond-mat/0209450",
+        "measurement": "Specifies alternatives for measuring mixing and their baseline dependence.",
+        "nullInterpretation": null,
+        "overlapNotes": "Reviews SRC-254/256/269 and candidate 009 may include cited primary studies: no independent-replication count. Review/primary overlap recorded per finding; preprint/journal versions are one work.",
+        "population": "Categorical and scalar mixing measures",
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+          ],
+          "method": "Structured evidence search and skeptical candidate audit",
+          "originReferences": [
+            "AUD-SOC-F07-AE-V1-20260906-001",
+            "f0be9c24288bd128231e0d1243b34c03ad055906",
+            "scripts/soc_f07_research_inputs.py"
+          ],
+          "recordedAt": "2026-09-07T02:46:39Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "Specifies alternatives for measuring mixing and their baseline dependence.",
+        "sourceId": "SRC-CAND-SOC-F07-016",
+        "supportedSemantics": [
+          "DERIVATIONAL"
+        ],
+        "timing": "Reported source window only; no causal lag/persistence inferred. Categorical and scalar mixing measures",
+        "uncertainty": [
+          "No comparable exact-ontology coefficient or numeric confidence extracted"
+        ]
+      }
+    ],
+    "synthesis": {
+      "confidence": "LOW",
+      "confidenceRationale": "Judgment concerns the exact scoped proposition, not the prestige of a source.",
+      "conflicts": [],
+      "contraryEvidenceSearch": "ASSESSED",
+      "datasetOverlap": "Same publication reused across assertions is one dataset; review/primary overlap not counted as independent replication.",
+      "disposition": "INSUFFICIENT",
+      "evidenceStrength": "LIMITED",
+      "generalizationLimits": [
+        "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+        "Check reflection, homophily, selection into ties, latent traits, common environment, institutional assignment, simultaneity, reciprocity, correlated exposure, interference, endogenous formation, attrition and tie measurement error; longitudinal observation alone is not identification."
+      ],
+      "rationale": "Consider noncausal baseline-qualified mixing/segregation comparison, retaining SOC-054 and SOC-057 as distinct measures. Degree assortativity is not categorical segregation; group attributes, opportunities and null model unresolved. Shared mixing matrix can induce dependence.",
+      "sourceFindingIds": [
+        "FND-SOC-F07-REL-SOC-032-SRC-233",
+        "FND-SOC-F07-REL-SOC-032-SRC-260",
+        "FND-SOC-F07-REL-SOC-032-SRC-270",
+        "FND-SOC-F07-REL-SOC-032-016"
+      ]
+    }
+  },
+  {
+    "assertionId": "REL-SOC-033",
+    "evidenceAssessmentId": "EVA-AUD-SOC-F07-REL-SOC-033",
+    "governance": {
+      "activationStatus": "NOT_ELIGIBLE",
+      "authorityBasis": "V1_NATIVE",
+      "authorizedBy": null,
+      "blockStatus": "NONE",
+      "decisionDate": null,
+      "decisionOutcome": "NOT_DECIDED",
+      "decisionRationale": null,
+      "decisionRecord": null,
+      "effectiveVersion": null,
+      "lifecycleStatus": "RESEARCH_NEEDED",
+      "supersedesIds": [],
+      "transitionProvenance": [
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": null
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "EVA-AUD-SOC-F07-REL-SOC-033",
+          "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+          "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+          "revision": 1,
+          "timestamp": "2026-09-07T02:46:39Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          }
+        },
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "EVA-AUD-SOC-F07-REL-SOC-033",
+          "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+          "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+          "revision": 1,
+          "timestamp": "2026-09-07T02:46:39Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "RESEARCH_NEEDED"
+          }
+        }
+      ]
+    },
+    "note": "Candidate normalization sidecar; production AE assertion target enum is unchanged.",
+    "productionMethod": "SYNTHESIS",
+    "sourceFindings": [
+      {
+        "accessDepth": "ABSTRACT",
+        "basis": [
+          "THEORETICAL_MECHANISTIC"
+        ],
+        "comparator": "Source-specific comparison; see result/locator. No synthetic common comparator imposed.",
+        "context": "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+        "datasetIds": [
+          "STUDY-SRC-234"
+        ],
+        "design": "THEORETICAL_MECHANISTIC; Interpersonal ties and information access",
+        "disposition": "INSUFFICIENT",
+        "exposure": "Interpersonal ties and information access",
+        "id": "FND-SOC-F07-REL-SOC-033-SRC-234",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Not an isolated causal estimate of structural constraint or cross-cluster tie prevalence.",
+          "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+          "Check reflection, homophily, selection into ties, latent traits, common environment, institutional assignment, simultaneity, reciprocity, correlated exposure, interference, endogenous formation, attrition and tie measurement error; longitudinal observation alone is not identification."
+        ],
+        "locator": "Abstract; scanned PDF not text-reviewed; https://snap.stanford.edu/class/cs224w-readings/granovetter73weakties.pdf",
+        "measurement": "Theory motivates bridging mechanisms; weak ties, brokerage and betweenness are not synonyms.",
+        "nullInterpretation": null,
+        "overlapNotes": "Reviews SRC-254/256/269 and candidate 009 may include cited primary studies: no independent-replication count. Review/primary overlap recorded per finding; preprint/journal versions are one work.",
+        "population": "Interpersonal ties and information access",
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+          ],
+          "method": "Structured evidence search and skeptical candidate audit",
+          "originReferences": [
+            "AUD-SOC-F07-AE-V1-20260906-001",
+            "f0be9c24288bd128231e0d1243b34c03ad055906",
+            "scripts/soc_f07_research_inputs.py"
+          ],
+          "recordedAt": "2026-09-07T02:46:39Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "Theory motivates bridging mechanisms; weak ties, brokerage and betweenness are not synonyms.",
+        "sourceId": "SRC-234",
+        "supportedSemantics": [],
+        "timing": "Reported source window only; no causal lag/persistence inferred. Interpersonal ties and information access",
+        "uncertainty": [
+          "No comparable exact-ontology coefficient or numeric confidence extracted"
+        ]
+      },
+      {
+        "accessDepth": "ABSTRACT",
+        "basis": [
+          "EVIDENCE_SYNTHESIS"
+        ],
+        "comparator": "Source-specific comparison; see result/locator. No synthetic common comparator imposed.",
+        "context": "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+        "datasetIds": [
+          "STUDY-SRC-269"
+        ],
+        "design": "EVIDENCE_SYNTHESIS; Organizational brokerage literature",
+        "disposition": "INSUFFICIENT",
+        "exposure": "Organizational brokerage literature",
+        "id": "FND-SOC-F07-REL-SOC-033-SRC-269",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Not direct proof that actor constraint changes network-wide cross-cluster tie prevalence.",
+          "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+          "Check reflection, homophily, selection into ties, latent traits, common environment, institutional assignment, simultaneity, reciprocity, correlated exposure, interference, endogenous formation, attrition and tie measurement error; longitudinal observation alone is not identification."
+        ],
+        "locator": "Abstract; https://journals.sagepub.com/doi/abs/10.1177/0149206320914694",
+        "measurement": "Separates brokerage structures, behavior and dynamics.",
+        "nullInterpretation": null,
+        "overlapNotes": "Reviews SRC-254/256/269 and candidate 009 may include cited primary studies: no independent-replication count. Review/primary overlap recorded per finding; preprint/journal versions are one work.",
+        "population": "Organizational brokerage literature",
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+          ],
+          "method": "Structured evidence search and skeptical candidate audit",
+          "originReferences": [
+            "AUD-SOC-F07-AE-V1-20260906-001",
+            "f0be9c24288bd128231e0d1243b34c03ad055906",
+            "scripts/soc_f07_research_inputs.py"
+          ],
+          "recordedAt": "2026-09-07T02:46:39Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "Separates brokerage structures, behavior and dynamics.",
+        "sourceId": "SRC-269",
+        "supportedSemantics": [],
+        "timing": "Reported source window only; no causal lag/persistence inferred. Organizational brokerage literature",
+        "uncertainty": [
+          "No comparable exact-ontology coefficient or numeric confidence extracted"
+        ]
+      },
+      {
+        "accessDepth": "SELECTED_FULL_TEXT",
+        "basis": [
+          "THEORETICAL_MECHANISTIC"
+        ],
+        "comparator": "Source-specific comparison; see result/locator. No synthetic common comparator imposed.",
+        "context": "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+        "datasetIds": [
+          "STUDY-SRC-CAND-SOC-F07-004"
+        ],
+        "design": "THEORETICAL_MECHANISTIC; Network flow models",
+        "disposition": "INSUFFICIENT",
+        "exposure": "Network flow models",
+        "id": "FND-SOC-F07-REL-SOC-033-004",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Shortest-path, replication and transfer assumptions differ; simulations do not establish empirical brokerage effects.",
+          "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+          "Check reflection, homophily, selection into ties, latent traits, common environment, institutional assignment, simultaneity, reciprocity, correlated exposure, interference, endogenous formation, attrition and tie measurement error; longitudinal observation alone is not identification."
+        ],
+        "locator": "Pages 55-60: flow typology; https://sites.santafe.edu/~aaronc/courses/5352/readings/Borgatti_2005_CentralityAndNetworkFlow.pdf",
+        "measurement": "Centrality interpretation depends on the type and trajectory of flow.",
+        "nullInterpretation": null,
+        "overlapNotes": "Reviews SRC-254/256/269 and candidate 009 may include cited primary studies: no independent-replication count. Review/primary overlap recorded per finding; preprint/journal versions are one work.",
+        "population": "Network flow models",
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+          ],
+          "method": "Structured evidence search and skeptical candidate audit",
+          "originReferences": [
+            "AUD-SOC-F07-AE-V1-20260906-001",
+            "f0be9c24288bd128231e0d1243b34c03ad055906",
+            "scripts/soc_f07_research_inputs.py"
+          ],
+          "recordedAt": "2026-09-07T02:46:39Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "Centrality interpretation depends on the type and trajectory of flow.",
+        "sourceId": "SRC-CAND-SOC-F07-004",
+        "supportedSemantics": [],
+        "timing": "Reported source window only; no causal lag/persistence inferred. Network flow models",
+        "uncertainty": [
+          "No comparable exact-ontology coefficient or numeric confidence extracted"
+        ]
+      }
+    ],
+    "synthesis": {
+      "confidence": "LOW",
+      "confidenceRationale": "Judgment concerns the exact scoped proposition, not the prestige of a source.",
+      "conflicts": [],
+      "contraryEvidenceSearch": "ASSESSED",
+      "datasetOverlap": "Same publication reused across assertions is one dataset; review/primary overlap not counted as independent replication.",
+      "disposition": "INSUFFICIENT",
+      "evidenceStrength": "LIMITED",
+      "generalizationLimits": [
+        "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+        "Check reflection, homophily, selection into ties, latent traits, common environment, institutional assignment, simultaneity, reciprocity, correlated exposure, interference, endogenous formation, attrition and tie measurement error; longitudinal observation alone is not identification."
+      ],
+      "rationale": "Consider noncausal scope-qualified association/related-metric representation of constraint and cross-cluster ties; do not force inverse causality. Actor contact weights versus network/actor community-crossing denominator; partitions and scope may differ. Mechanism of brokerage is not the constraint formula acting on another summary.",
+      "sourceFindingIds": [
+        "FND-SOC-F07-REL-SOC-033-SRC-234",
+        "FND-SOC-F07-REL-SOC-033-SRC-269",
+        "FND-SOC-F07-REL-SOC-033-004"
+      ]
+    }
+  },
+  {
+    "assertionId": "REL-SOC-034",
+    "evidenceAssessmentId": "EVA-AUD-SOC-F07-REL-SOC-034",
+    "governance": {
+      "activationStatus": "NOT_ELIGIBLE",
+      "authorityBasis": "V1_NATIVE",
+      "authorizedBy": null,
+      "blockStatus": "NONE",
+      "decisionDate": null,
+      "decisionOutcome": "NOT_DECIDED",
+      "decisionRationale": null,
+      "decisionRecord": null,
+      "effectiveVersion": null,
+      "lifecycleStatus": "RESEARCH_NEEDED",
+      "supersedesIds": [],
+      "transitionProvenance": [
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": null
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "EVA-AUD-SOC-F07-REL-SOC-034",
+          "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+          "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+          "revision": 1,
+          "timestamp": "2026-09-07T02:46:39Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          }
+        },
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "EVA-AUD-SOC-F07-REL-SOC-034",
+          "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+          "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+          "revision": 1,
+          "timestamp": "2026-09-07T02:46:39Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "RESEARCH_NEEDED"
+          }
+        }
+      ]
+    },
+    "note": "Candidate normalization sidecar; production AE assertion target enum is unchanged.",
+    "productionMethod": "SYNTHESIS",
+    "sourceFindings": [
+      {
+        "accessDepth": "ABSTRACT",
+        "basis": [
+          "EVIDENCE_SYNTHESIS"
+        ],
+        "comparator": "Source-specific comparison; see result/locator. No synthetic common comparator imposed.",
+        "context": "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+        "datasetIds": [
+          "STUDY-SRC-233"
+        ],
+        "design": "EVIDENCE_SYNTHESIS; Multiple social settings; tie and group boundaries vary",
+        "disposition": "INSUFFICIENT",
+        "exposure": "Multiple social settings; tie and group boundaries vary",
+        "id": "FND-SOC-F07-REL-SOC-034-SRC-233",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Selection, opportunity and influence must not be collapsed; no exact SOC-054 to SOC-057 estimate extracted.",
+          "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+          "Check reflection, homophily, selection into ties, latent traits, common environment, institutional assignment, simultaneity, reciprocity, correlated exposure, interference, endogenous formation, attrition and tie measurement error; longitudinal observation alone is not identification."
+        ],
+        "locator": "Abstract; https://www.annualreviews.org/doi/10.1146/annurev.soc.27.1.415",
+        "measurement": "Review describes similarity and social ties; it does not identify a metric-to-metric causal effect.",
+        "nullInterpretation": null,
+        "overlapNotes": "Reviews SRC-254/256/269 and candidate 009 may include cited primary studies: no independent-replication count. Review/primary overlap recorded per finding; preprint/journal versions are one work.",
+        "population": "Multiple social settings; tie and group boundaries vary",
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+          ],
+          "method": "Structured evidence search and skeptical candidate audit",
+          "originReferences": [
+            "AUD-SOC-F07-AE-V1-20260906-001",
+            "f0be9c24288bd128231e0d1243b34c03ad055906",
+            "scripts/soc_f07_research_inputs.py"
+          ],
+          "recordedAt": "2026-09-07T02:46:39Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "Review describes similarity and social ties; it does not identify a metric-to-metric causal effect.",
+        "sourceId": "SRC-233",
+        "supportedSemantics": [],
+        "timing": "Reported source window only; no causal lag/persistence inferred. Multiple social settings; tie and group boundaries vary",
+        "uncertainty": [
+          "No comparable exact-ontology coefficient or numeric confidence extracted"
+        ]
+      },
+      {
+        "accessDepth": "ABSTRACT",
+        "basis": [
+          "THEORETICAL_MECHANISTIC"
+        ],
+        "comparator": "Source-specific comparison; see result/locator. No synthetic common comparator imposed.",
+        "context": "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+        "datasetIds": [
+          "STUDY-SRC-234"
+        ],
+        "design": "THEORETICAL_MECHANISTIC; Interpersonal ties and information access",
+        "disposition": "INSUFFICIENT",
+        "exposure": "Interpersonal ties and information access",
+        "id": "FND-SOC-F07-REL-SOC-034-SRC-234",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Not an isolated causal estimate of structural constraint or cross-cluster tie prevalence.",
+          "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+          "Check reflection, homophily, selection into ties, latent traits, common environment, institutional assignment, simultaneity, reciprocity, correlated exposure, interference, endogenous formation, attrition and tie measurement error; longitudinal observation alone is not identification."
+        ],
+        "locator": "Abstract; scanned PDF not text-reviewed; https://snap.stanford.edu/class/cs224w-readings/granovetter73weakties.pdf",
+        "measurement": "Theory motivates bridging mechanisms; weak ties, brokerage and betweenness are not synonyms.",
+        "nullInterpretation": null,
+        "overlapNotes": "Reviews SRC-254/256/269 and candidate 009 may include cited primary studies: no independent-replication count. Review/primary overlap recorded per finding; preprint/journal versions are one work.",
+        "population": "Interpersonal ties and information access",
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+          ],
+          "method": "Structured evidence search and skeptical candidate audit",
+          "originReferences": [
+            "AUD-SOC-F07-AE-V1-20260906-001",
+            "f0be9c24288bd128231e0d1243b34c03ad055906",
+            "scripts/soc_f07_research_inputs.py"
+          ],
+          "recordedAt": "2026-09-07T02:46:39Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "Theory motivates bridging mechanisms; weak ties, brokerage and betweenness are not synonyms.",
+        "sourceId": "SRC-234",
+        "supportedSemantics": [],
+        "timing": "Reported source window only; no causal lag/persistence inferred. Interpersonal ties and information access",
+        "uncertainty": [
+          "No comparable exact-ontology coefficient or numeric confidence extracted"
+        ]
+      },
+      {
+        "accessDepth": "ABSTRACT",
+        "basis": [
+          "EVIDENCE_SYNTHESIS"
+        ],
+        "comparator": "Source-specific comparison; see result/locator. No synthetic common comparator imposed.",
+        "context": "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+        "datasetIds": [
+          "STUDY-SRC-269"
+        ],
+        "design": "EVIDENCE_SYNTHESIS; Organizational brokerage literature",
+        "disposition": "INSUFFICIENT",
+        "exposure": "Organizational brokerage literature",
+        "id": "FND-SOC-F07-REL-SOC-034-SRC-269",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Not direct proof that actor constraint changes network-wide cross-cluster tie prevalence.",
+          "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+          "Check reflection, homophily, selection into ties, latent traits, common environment, institutional assignment, simultaneity, reciprocity, correlated exposure, interference, endogenous formation, attrition and tie measurement error; longitudinal observation alone is not identification."
+        ],
+        "locator": "Abstract; https://journals.sagepub.com/doi/abs/10.1177/0149206320914694",
+        "measurement": "Separates brokerage structures, behavior and dynamics.",
+        "nullInterpretation": null,
+        "overlapNotes": "Reviews SRC-254/256/269 and candidate 009 may include cited primary studies: no independent-replication count. Review/primary overlap recorded per finding; preprint/journal versions are one work.",
+        "population": "Organizational brokerage literature",
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+          ],
+          "method": "Structured evidence search and skeptical candidate audit",
+          "originReferences": [
+            "AUD-SOC-F07-AE-V1-20260906-001",
+            "f0be9c24288bd128231e0d1243b34c03ad055906",
+            "scripts/soc_f07_research_inputs.py"
+          ],
+          "recordedAt": "2026-09-07T02:46:39Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "Separates brokerage structures, behavior and dynamics.",
+        "sourceId": "SRC-269",
+        "supportedSemantics": [],
+        "timing": "Reported source window only; no causal lag/persistence inferred. Organizational brokerage literature",
+        "uncertainty": [
+          "No comparable exact-ontology coefficient or numeric confidence extracted"
+        ]
+      },
+      {
+        "accessDepth": "ABSTRACT",
+        "basis": [
+          "DEFINITIONAL_CALCULATIONAL"
+        ],
+        "comparator": "Source-specific comparison; see result/locator. No synthetic common comparator imposed.",
+        "context": "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+        "datasetIds": [
+          "STUDY-SRC-CAND-SOC-F07-016"
+        ],
+        "design": "DEFINITIONAL_CALCULATIONAL; Categorical and scalar mixing measures",
+        "disposition": "INSUFFICIENT",
+        "exposure": "Categorical and scalar mixing measures",
+        "id": "FND-SOC-F07-REL-SOC-034-016",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Definitions and models are not empirical direction-of-causation evidence.",
+          "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+          "Check reflection, homophily, selection into ties, latent traits, common environment, institutional assignment, simultaneity, reciprocity, correlated exposure, interference, endogenous formation, attrition and tie measurement error; longitudinal observation alone is not identification."
+        ],
+        "locator": "Abstract; https://arxiv.org/abs/cond-mat/0209450",
+        "measurement": "Specifies alternatives for measuring mixing and their baseline dependence.",
+        "nullInterpretation": null,
+        "overlapNotes": "Reviews SRC-254/256/269 and candidate 009 may include cited primary studies: no independent-replication count. Review/primary overlap recorded per finding; preprint/journal versions are one work.",
+        "population": "Categorical and scalar mixing measures",
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+          ],
+          "method": "Structured evidence search and skeptical candidate audit",
+          "originReferences": [
+            "AUD-SOC-F07-AE-V1-20260906-001",
+            "f0be9c24288bd128231e0d1243b34c03ad055906",
+            "scripts/soc_f07_research_inputs.py"
+          ],
+          "recordedAt": "2026-09-07T02:46:39Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "Specifies alternatives for measuring mixing and their baseline dependence.",
+        "sourceId": "SRC-CAND-SOC-F07-016",
+        "supportedSemantics": [
+          "DERIVATIONAL"
+        ],
+        "timing": "Reported source window only; no causal lag/persistence inferred. Categorical and scalar mixing measures",
+        "uncertainty": [
+          "No comparable exact-ontology coefficient or numeric confidence extracted"
+        ]
+      }
+    ],
+    "synthesis": {
+      "confidence": "LOW",
+      "confidenceRationale": "Judgment concerns the exact scoped proposition, not the prestige of a source.",
+      "conflicts": [],
+      "contraryEvidenceSearch": "ASSESSED",
+      "datasetOverlap": "Same publication reused across assertions is one dataset; review/primary overlap not counted as independent replication.",
+      "disposition": "INSUFFICIENT",
+      "evidenceStrength": "LIMITED",
+      "generalizationLimits": [
+        "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+        "Check reflection, homophily, selection into ties, latent traits, common environment, institutional assignment, simultaneity, reciprocity, correlated exposure, interference, endogenous formation, attrition and tie measurement error; longitudinal observation alone is not identification."
+      ],
+      "rationale": "Consider conditional noncausal mixing comparison; preserve distinction between cluster partitions and social-group segregation. Shared edge counts and complementary mixing can be mathematical; arbitrary communities need not equal groups. No independent lag or mechanism established.",
+      "sourceFindingIds": [
+        "FND-SOC-F07-REL-SOC-034-SRC-233",
+        "FND-SOC-F07-REL-SOC-034-SRC-234",
+        "FND-SOC-F07-REL-SOC-034-SRC-269",
+        "FND-SOC-F07-REL-SOC-034-016"
+      ]
+    }
+  },
+  {
+    "assertionId": "REL-SOC-035",
+    "evidenceAssessmentId": "EVA-AUD-SOC-F07-REL-SOC-035",
+    "governance": {
+      "activationStatus": "NOT_ELIGIBLE",
+      "authorityBasis": "V1_NATIVE",
+      "authorizedBy": null,
+      "blockStatus": "NONE",
+      "decisionDate": null,
+      "decisionOutcome": "NOT_DECIDED",
+      "decisionRationale": null,
+      "decisionRecord": null,
+      "effectiveVersion": null,
+      "lifecycleStatus": "RESEARCH_NEEDED",
+      "supersedesIds": [],
+      "transitionProvenance": [
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": null
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "EVA-AUD-SOC-F07-REL-SOC-035",
+          "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+          "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+          "revision": 1,
+          "timestamp": "2026-09-07T02:46:39Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          }
+        },
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "EVA-AUD-SOC-F07-REL-SOC-035",
+          "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+          "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+          "revision": 1,
+          "timestamp": "2026-09-07T02:46:39Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "RESEARCH_NEEDED"
+          }
+        }
+      ]
+    },
+    "note": "Candidate normalization sidecar; production AE assertion target enum is unchanged.",
+    "productionMethod": "SYNTHESIS",
+    "sourceFindings": [
+      {
+        "accessDepth": "SELECTED_FULL_TEXT",
+        "basis": [
+          "EXPERIMENTAL"
+        ],
+        "comparator": "Random topology with same degree condition",
+        "context": "12 closed networks across six trials; fixed degrees; no participant rewiring; Undirected assigned anonymous health-buddy links; adoption notifications, not ordinary friendship",
+        "datasetIds": [
+          "STUDY-CENTOLA-2010"
+        ],
+        "design": "EXPERIMENTAL; Randomized topology; interference is part of treatment, not independent unit noise",
+        "disposition": "MIXED",
+        "exposure": "Random assignment to clustered lattice versus random topology at matched degree",
+        "id": "FND-SOC-F07-REL-SOC-035-SRC-235",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Bundled topology contrast, not density manipulation; anonymous fixed ties and adoption notifications are not all friendship networks. Fourth/further notifications did not show detectable extra adoption in a small contrast.",
+          "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+          "Check reflection, homophily, selection into ties, latent traits, common environment, institutional assignment, simultaneity, reciprocity, correlated exposure, interference, endogenous formation, attrition and tie measurement error; longitudinal observation alone is not identification.",
+          "Degree held fixed, but topology dimensions remain bundled",
+          "No independent manipulation of density, isolated local clustering or generic reinforcement."
+        ],
+        "locator": "Pages 1194-1196: design, results, reinforcement; https://ndg.asc.upenn.edu/wp-content/uploads/2016/04/Centola-2010-Science.pdf",
+        "measurement": "Forum registration/adoption and number of preceding adoption signals",
+        "nullInterpretation": null,
+        "overlapNotes": "Reviews SRC-254/256/269 and candidate 009 may include cited primary studies: no independent-replication count. SRC-509 linked PMID duplicates SRC-235; unresolved composite component is not an independent study.",
+        "population": "1,528 participants; 12 anonymous health-buddy networks; fixed degree 6 or 8; three-week forum adoption experiment",
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+          ],
+          "method": "Structured evidence search and skeptical candidate audit",
+          "originReferences": [
+            "AUD-SOC-F07-AE-V1-20260906-001",
+            "f0be9c24288bd128231e0d1243b34c03ad055906",
+            "scripts/soc_f07_research_inputs.py"
+          ],
+          "recordedAt": "2026-09-07T02:46:39Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "Assigned clustered topology supports redundant adoption exposure in a bounded experiment; exact independence/metric correspondence to SOC-061 remains limited.",
+        "sourceId": "SRC-235",
+        "supportedSemantics": [],
+        "timing": "Assigned topology before adoption; three-week observation",
+        "uncertainty": [
+          "No comparable exact-ontology coefficient or numeric confidence extracted"
+        ]
+      },
+      {
+        "accessDepth": "SELECTED_FULL_TEXT",
+        "basis": [
+          "EVIDENCE_SYNTHESIS"
+        ],
+        "comparator": "Source-specific comparison; see result/locator. No synthetic common comparator imposed.",
+        "context": "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+        "datasetIds": [
+          "STUDY-SRC-256"
+        ],
+        "design": "EVIDENCE_SYNTHESIS; Multiple social-network theories and settings",
+        "disposition": "INSUFFICIENT",
+        "exposure": "Multiple social-network theories and settings",
+        "id": "FND-SOC-F07-REL-SOC-035-SRC-256",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Review is not independent replication of each cited experiment or direct metric-to-metric causality.",
+          "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+          "Check reflection, homophily, selection into ties, latent traits, common environment, institutional assignment, simultaneity, reciprocity, correlated exposure, interference, endogenous formation, attrition and tie measurement error; longitudinal observation alone is not identification."
+        ],
+        "locator": "Introduction and structural-mechanism discussion; https://www.stats.ox.ac.uk/~snijders/siena/winterschool/BorgattiMehraBrassLabianca2009.pdf",
+        "measurement": "Network mechanisms require distinguishing ties, structure and flows.",
+        "nullInterpretation": null,
+        "overlapNotes": "Reviews SRC-254/256/269 and candidate 009 may include cited primary studies: no independent-replication count. Review/primary overlap recorded per finding; preprint/journal versions are one work.",
+        "population": "Multiple social-network theories and settings",
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+          ],
+          "method": "Structured evidence search and skeptical candidate audit",
+          "originReferences": [
+            "AUD-SOC-F07-AE-V1-20260906-001",
+            "f0be9c24288bd128231e0d1243b34c03ad055906",
+            "scripts/soc_f07_research_inputs.py"
+          ],
+          "recordedAt": "2026-09-07T02:46:39Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "Network mechanisms require distinguishing ties, structure and flows.",
+        "sourceId": "SRC-256",
+        "supportedSemantics": [],
+        "timing": "Reported source window only; no causal lag/persistence inferred. Multiple social-network theories and settings",
+        "uncertainty": [
+          "No comparable exact-ontology coefficient or numeric confidence extracted"
+        ]
+      },
+      {
+        "accessDepth": "ABSTRACT",
+        "basis": [
+          "THEORETICAL_MECHANISTIC"
+        ],
+        "comparator": "Source-specific comparison; see result/locator. No synthetic common comparator imposed.",
+        "context": "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+        "datasetIds": [
+          "STUDY-SRC-CAND-SOC-F07-001"
+        ],
+        "design": "THEORETICAL_MECHANISTIC; Group and individual behavior identification",
+        "disposition": "INSUFFICIENT",
+        "exposure": "Group and individual behavior identification",
+        "id": "FND-SOC-F07-REL-SOC-035-001",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Reference-group specification and identifying assumptions matter; theory is not empirical influence evidence.",
+          "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+          "Check reflection, homophily, selection into ties, latent traits, common environment, institutional assignment, simultaneity, reciprocity, correlated exposure, interference, endogenous formation, attrition and tie measurement error; longitudinal observation alone is not identification."
+        ],
+        "locator": "Publisher abstract; https://doi.org/10.2307/2298123",
+        "measurement": "Endogenous peer effects must be distinguished from contextual and correlated effects.",
+        "nullInterpretation": null,
+        "overlapNotes": "Reviews SRC-254/256/269 and candidate 009 may include cited primary studies: no independent-replication count. Review/primary overlap recorded per finding; preprint/journal versions are one work.",
+        "population": "Group and individual behavior identification",
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+          ],
+          "method": "Structured evidence search and skeptical candidate audit",
+          "originReferences": [
+            "AUD-SOC-F07-AE-V1-20260906-001",
+            "f0be9c24288bd128231e0d1243b34c03ad055906",
+            "scripts/soc_f07_research_inputs.py"
+          ],
+          "recordedAt": "2026-09-07T02:46:39Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "Endogenous peer effects must be distinguished from contextual and correlated effects.",
+        "sourceId": "SRC-CAND-SOC-F07-001",
+        "supportedSemantics": [],
+        "timing": "Reported source window only; no causal lag/persistence inferred. Group and individual behavior identification",
+        "uncertainty": [
+          "No comparable exact-ontology coefficient or numeric confidence extracted"
+        ]
+      },
+      {
+        "accessDepth": "SELECTED_FULL_TEXT",
+        "basis": [
+          "THEORETICAL_MECHANISTIC"
+        ],
+        "comparator": "Source-specific comparison; see result/locator. No synthetic common comparator imposed.",
+        "context": "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+        "datasetIds": [
+          "STUDY-SRC-CAND-SOC-F07-002"
+        ],
+        "design": "THEORETICAL_MECHANISTIC; Grouped treatments with within-group spillovers",
+        "disposition": "INSUFFICIENT",
+        "exposure": "Grouped treatments with within-group spillovers",
+        "id": "FND-SOC-F07-REL-SOC-035-002",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Partial interference between groups is an assumption, not a default fact about social networks.",
+          "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+          "Check reflection, homophily, selection into ties, latent traits, common environment, institutional assignment, simultaneity, reciprocity, correlated exposure, interference, endogenous formation, attrition and tie measurement error; longitudinal observation alone is not identification."
+        ],
+        "locator": "Indexed sections 2.1, 2.2, 4.2.1 and 6; https://pmc.ncbi.nlm.nih.gov/articles/PMC2600548/",
+        "measurement": "Defines direct, indirect, total and overall effects under specified randomization and interference assumptions.",
+        "nullInterpretation": null,
+        "overlapNotes": "Reviews SRC-254/256/269 and candidate 009 may include cited primary studies: no independent-replication count. Review/primary overlap recorded per finding; preprint/journal versions are one work.",
+        "population": "Grouped treatments with within-group spillovers",
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+          ],
+          "method": "Structured evidence search and skeptical candidate audit",
+          "originReferences": [
+            "AUD-SOC-F07-AE-V1-20260906-001",
+            "f0be9c24288bd128231e0d1243b34c03ad055906",
+            "scripts/soc_f07_research_inputs.py"
+          ],
+          "recordedAt": "2026-09-07T02:46:39Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "Defines direct, indirect, total and overall effects under specified randomization and interference assumptions.",
+        "sourceId": "SRC-CAND-SOC-F07-002",
+        "supportedSemantics": [],
+        "timing": "Reported source window only; no causal lag/persistence inferred. Grouped treatments with within-group spillovers",
+        "uncertainty": [
+          "No comparable exact-ontology coefficient or numeric confidence extracted"
+        ]
+      },
+      {
+        "accessDepth": "SELECTED_FULL_TEXT",
+        "basis": [
+          "EXPERIMENTAL"
+        ],
+        "comparator": "Random topology with same degree condition",
+        "context": "12 closed networks across six trials; fixed degrees; no participant rewiring; Undirected assigned anonymous health-buddy links; adoption notifications, not ordinary friendship",
+        "datasetIds": [
+          "STUDY-CENTOLA-2010"
+        ],
+        "design": "EXPERIMENTAL; Randomized topology; interference is part of treatment, not independent unit noise",
+        "disposition": "NULL_FINDING",
+        "exposure": "Random assignment to clustered lattice versus random topology at matched degree",
+        "id": "FND-SOC-F07-REL-SOC-035-MARGINAL-SRC-235",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Bundled topology contrast, not density manipulation; anonymous fixed ties and adoption notifications are not all friendship networks. Fourth/further notifications did not show detectable extra adoption in a small contrast.",
+          "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+          "Check reflection, homophily, selection into ties, latent traits, common environment, institutional assignment, simultaneity, reciprocity, correlated exposure, interference, endogenous formation, attrition and tie measurement error; longitudinal observation alone is not identification.",
+          "Degree held fixed, but topology dimensions remain bundled",
+          "No independent manipulation of density, isolated local clustering or generic reinforcement."
+        ],
+        "locator": "Pages 1194-1196: design, results, reinforcement; https://ndg.asc.upenn.edu/wp-content/uploads/2016/04/Centola-2010-Science.pdf",
+        "measurement": "Forum registration/adoption and number of preceding adoption signals",
+        "nullInterpretation": {
+          "contrast": "Fourth and further notifications had no detected additional adoption effect in the reported small contrast; not proof of a zero effect on SOC-061.",
+          "interpretation": "NO_DETECTED_DIFFERENCE",
+          "precisionAssessment": "No equivalence bounds or precision-based zero-effect inference extracted",
+          "rationale": "Nonsignificance is not evidence of zero or equivalence"
+        },
+        "overlapNotes": "Reviews SRC-254/256/269 and candidate 009 may include cited primary studies: no independent-replication count. SRC-509 linked PMID duplicates SRC-235; unresolved composite component is not an independent study.",
+        "population": "1,528 participants; 12 anonymous health-buddy networks; fixed degree 6 or 8; three-week forum adoption experiment",
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+          ],
+          "method": "Structured evidence search and skeptical candidate audit",
+          "originReferences": [
+            "AUD-SOC-F07-AE-V1-20260906-001",
+            "f0be9c24288bd128231e0d1243b34c03ad055906",
+            "scripts/soc_f07_research_inputs.py"
+          ],
+          "recordedAt": "2026-09-07T02:46:39Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "Fourth and further notifications had no detected additional adoption effect in the reported small contrast; not proof of a zero effect on SOC-061.",
+        "sourceId": "SRC-235",
+        "supportedSemantics": [],
+        "timing": "Assigned topology before adoption; three-week observation",
+        "uncertainty": [
+          "No comparable exact-ontology coefficient or numeric confidence extracted"
+        ]
+      }
+    ],
+    "synthesis": {
+      "confidence": "LOW",
+      "confidenceRationale": "Judgment concerns the exact scoped proposition, not the prestige of a source.",
+      "conflicts": [
+        {
+          "dispositionRationale": "Preserved source-level mixed/null/contrary result; not a zero-effect claim",
+          "findingId": "FND-SOC-F07-REL-SOC-035-SRC-235"
+        },
+        {
+          "dispositionRationale": "Preserved source-level mixed/null/contrary result; not a zero-effect claim",
+          "findingId": "FND-SOC-F07-REL-SOC-035-MARGINAL-SRC-235"
+        }
+      ],
+      "contraryEvidenceSearch": "ASSESSED",
+      "datasetOverlap": "Same publication reused across assertions is one dataset; review/primary overlap not counted as independent replication.",
+      "disposition": "INSUFFICIENT",
+      "evidenceStrength": "LIMITED",
+      "generalizationLimits": [
+        "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+        "Check reflection, homophily, selection into ties, latent traits, common environment, institutional assignment, simultaneity, reciprocity, correlated exposure, interference, endogenous formation, attrition and tie measurement error; longitudinal observation alone is not identification."
+      ],
+      "rationale": "Propose a bounded topology-to-redundant-adoption-notification claim under fixed degree, stable assigned ties and a specific contagion task; whether SOC-053 to SOC-061 is exact enough remains unresolved. Clustering bundles path redundancy; SOC-061 uses independently reinforcing neighbors, not independent randomized messages. Preserve existing edge; no universal magnitude, lag or pathway.",
+      "sourceFindingIds": [
+        "FND-SOC-F07-REL-SOC-035-SRC-235",
+        "FND-SOC-F07-REL-SOC-035-SRC-256",
+        "FND-SOC-F07-REL-SOC-035-001",
+        "FND-SOC-F07-REL-SOC-035-002",
+        "FND-SOC-F07-REL-SOC-035-MARGINAL-SRC-235"
+      ]
+    }
+  },
+  {
+    "assertionId": "REL-TEC-050",
+    "evidenceAssessmentId": "EVA-AUD-SOC-F07-REL-TEC-050",
+    "governance": {
+      "activationStatus": "NOT_ELIGIBLE",
+      "authorityBasis": "V1_NATIVE",
+      "authorizedBy": null,
+      "blockStatus": "NONE",
+      "decisionDate": null,
+      "decisionOutcome": "NOT_DECIDED",
+      "decisionRationale": null,
+      "decisionRecord": null,
+      "effectiveVersion": null,
+      "lifecycleStatus": "RESEARCH_NEEDED",
+      "supersedesIds": [],
+      "transitionProvenance": [
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": null
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "EVA-AUD-SOC-F07-REL-TEC-050",
+          "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+          "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+          "revision": 1,
+          "timestamp": "2026-09-07T02:46:39Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          }
+        },
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "EVA-AUD-SOC-F07-REL-TEC-050",
+          "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+          "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+          "revision": 1,
+          "timestamp": "2026-09-07T02:46:39Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "RESEARCH_NEEDED"
+          }
+        }
+      ]
+    },
+    "note": "Candidate normalization sidecar; production AE assertion target enum is unchanged.",
+    "productionMethod": "SYNTHESIS",
+    "sourceFindings": [
+      {
+        "accessDepth": "DOCUMENTATION",
+        "basis": [
+          "EVIDENCE_SYNTHESIS"
+        ],
+        "comparator": "Source-specific comparison; see result/locator. No synthetic common comparator imposed.",
+        "context": "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+        "datasetIds": [
+          "STUDY-SRC-505"
+        ],
+        "design": "EVIDENCE_SYNTHESIS; Science misinformation, audience and platform context",
+        "disposition": "INSUFFICIENT",
+        "exposure": "Science misinformation, audience and platform context",
+        "id": "FND-SOC-F07-REL-TEC-050-SRC-505",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Content exposure is not observed tie mixing; no direct TEC-029 to SOC-057 effect extracted.",
+          "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+          "Check reflection, homophily, selection into ties, latent traits, common environment, institutional assignment, simultaneity, reciprocity, correlated exposure, interference, endogenous formation, attrition and tie measurement error; longitudinal observation alone is not identification."
+        ],
+        "locator": "Interactive report summary; https://nap.nationalacademies.org/resource/27894/interactive/",
+        "measurement": "Summary discusses content environments and fragmentation.",
+        "nullInterpretation": null,
+        "overlapNotes": "Reviews SRC-254/256/269 and candidate 009 may include cited primary studies: no independent-replication count. Review/primary overlap recorded per finding; preprint/journal versions are one work.",
+        "population": "Science misinformation, audience and platform context",
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+          ],
+          "method": "Structured evidence search and skeptical candidate audit",
+          "originReferences": [
+            "AUD-SOC-F07-AE-V1-20260906-001",
+            "f0be9c24288bd128231e0d1243b34c03ad055906",
+            "scripts/soc_f07_research_inputs.py"
+          ],
+          "recordedAt": "2026-09-07T02:46:39Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "Summary discusses content environments and fragmentation.",
+        "sourceId": "SRC-505",
+        "supportedSemantics": [],
+        "timing": "Reported source window only; no causal lag/persistence inferred. Science misinformation, audience and platform context",
+        "uncertainty": [
+          "No comparable exact-ontology coefficient or numeric confidence extracted"
+        ]
+      },
+      {
+        "accessDepth": "METADATA",
+        "basis": [
+          "UNTESTED_HYPOTHESIS"
+        ],
+        "comparator": "Source-specific comparison; see result/locator. No synthetic common comparator imposed.",
+        "context": "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+        "datasetIds": [
+          "STUDY-CENTOLA-2010"
+        ],
+        "design": "Metadata alignment assessment only; no empirical design or direct scientific result inferred",
+        "disposition": "INSUFFICIENT",
+        "exposure": "Canonical citation alignment audit",
+        "id": "FND-SOC-F07-REL-TEC-050-SRC-509",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Composite reference cannot count as two independent studies; second cited component unresolved. Preserve canonical register unchanged.",
+          "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+          "Check reflection, homophily, selection into ties, latent traits, common environment, institutional assignment, simultaneity, reciprocity, correlated exposure, interference, endogenous formation, attrition and tie measurement error; longitudinal observation alone is not identification."
+        ],
+        "locator": "Canonical citation versus linked PMID; https://pubmed.ncbi.nlm.nih.gov/20813952/",
+        "measurement": "Linked PMID resolves the Centola 2010 paper already represented by SRC-235.",
+        "nullInterpretation": null,
+        "overlapNotes": "Reviews SRC-254/256/269 and candidate 009 may include cited primary studies: no independent-replication count. SRC-509 linked PMID duplicates SRC-235; unresolved composite component is not an independent study.",
+        "population": "Canonical citation alignment audit",
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+          ],
+          "method": "Structured evidence search and skeptical candidate audit",
+          "originReferences": [
+            "AUD-SOC-F07-AE-V1-20260906-001",
+            "f0be9c24288bd128231e0d1243b34c03ad055906",
+            "scripts/soc_f07_research_inputs.py"
+          ],
+          "recordedAt": "2026-09-07T02:46:39Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "Linked PMID resolves the Centola 2010 paper already represented by SRC-235.",
+        "sourceId": "SRC-509",
+        "supportedSemantics": [],
+        "timing": "Reported source window only; no causal lag/persistence inferred. Canonical citation alignment audit",
+        "uncertainty": [
+          "No comparable exact-ontology coefficient or numeric confidence extracted"
+        ]
+      },
+      {
+        "accessDepth": "SELECTED_FULL_TEXT",
+        "basis": [
+          "EXPERIMENTAL"
+        ],
+        "comparator": "Assigned alternative feed setting within baseline-setting groups",
+        "context": "4,965 completing participants in 2023 seven-week experiment; Follow behavior; feed exposures are separate",
+        "datasetIds": [
+          "STUDY-SRC-CAND-SOC-F07-015"
+        ],
+        "design": "EXPERIMENTAL; Randomized feed setting; treatment bundle not single filtering component",
+        "disposition": "MIXED",
+        "exposure": "Enable/disable algorithmic feed conditional on initial feed setting",
+        "id": "FND-SOC-F07-REL-TEC-050-015",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "No detected effects on some polarization/partisanship outcomes; feed bundle is not isolated filtering restrictiveness or whole-network segregation.",
+          "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+          "Check reflection, homophily, selection into ties, latent traits, common environment, institutional assignment, simultaneity, reciprocity, correlated exposure, interference, endogenous formation, attrition and tie measurement error; longitudinal observation alone is not identification.",
+          "Noncompliance/attrition, initial-setting strata and scope of users; direction asymmetric",
+          "No full-network segregation measure; no detected effects on some distinct political outcomes."
+        ],
+        "locator": "Abstract and methods/results; https://www.nature.com/articles/s41586-026-10098-2",
+        "measurement": "Selected follows, attitudes and polarization/partisanship measures",
+        "nullInterpretation": null,
+        "overlapNotes": "Reviews SRC-254/256/269 and candidate 009 may include cited primary studies: no independent-replication count. Review/primary overlap recorded per finding; preprint/journal versions are one work.",
+        "population": "4,965 completing US participants; 2023 seven-week feed experiment",
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+          ],
+          "method": "Structured evidence search and skeptical candidate audit",
+          "originReferences": [
+            "AUD-SOC-F07-AE-V1-20260906-001",
+            "f0be9c24288bd128231e0d1243b34c03ad055906",
+            "scripts/soc_f07_research_inputs.py"
+          ],
+          "recordedAt": "2026-09-07T02:46:39Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "Enabling the feed affected some follows and attitudes; disabling did not produce symmetric reversal.",
+        "sourceId": "SRC-CAND-SOC-F07-015",
+        "supportedSemantics": [],
+        "timing": "Seven-week intervention and reported follow-up",
+        "uncertainty": [
+          "No comparable exact-ontology coefficient or numeric confidence extracted"
+        ]
+      },
+      {
+        "accessDepth": "SELECTED_FULL_TEXT",
+        "basis": [
+          "EXPERIMENTAL"
+        ],
+        "comparator": "Assigned alternative feed setting within baseline-setting groups",
+        "context": "4,965 completing participants in 2023 seven-week experiment; Follow behavior; feed exposures are separate",
+        "datasetIds": [
+          "STUDY-SRC-CAND-SOC-F07-015"
+        ],
+        "design": "EXPERIMENTAL; Randomized feed setting; treatment bundle not single filtering component",
+        "disposition": "NULL_FINDING",
+        "exposure": "Enable/disable algorithmic feed conditional on initial feed setting",
+        "id": "FND-SOC-F07-REL-TEC-050-OTHER-OUTCOMES-015",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "No detected effects on some polarization/partisanship outcomes; feed bundle is not isolated filtering restrictiveness or whole-network segregation.",
+          "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+          "Check reflection, homophily, selection into ties, latent traits, common environment, institutional assignment, simultaneity, reciprocity, correlated exposure, interference, endogenous formation, attrition and tie measurement error; longitudinal observation alone is not identification.",
+          "Noncompliance/attrition, initial-setting strata and scope of users; direction asymmetric",
+          "No full-network segregation measure; no detected effects on some distinct political outcomes."
+        ],
+        "locator": "Abstract and methods/results; https://www.nature.com/articles/s41586-026-10098-2",
+        "measurement": "Selected follows, attitudes and polarization/partisanship measures",
+        "nullInterpretation": {
+          "contrast": "No detected effects on some partisanship/affective-polarization outcomes in the feed experiment; these are not the network-segregation endpoint.",
+          "interpretation": "NO_DETECTED_DIFFERENCE",
+          "precisionAssessment": "No equivalence bounds or precision-based zero-effect inference extracted",
+          "rationale": "Nonsignificance is not evidence of zero or equivalence"
+        },
+        "overlapNotes": "Reviews SRC-254/256/269 and candidate 009 may include cited primary studies: no independent-replication count. Review/primary overlap recorded per finding; preprint/journal versions are one work.",
+        "population": "4,965 completing US participants; 2023 seven-week feed experiment",
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+          ],
+          "method": "Structured evidence search and skeptical candidate audit",
+          "originReferences": [
+            "AUD-SOC-F07-AE-V1-20260906-001",
+            "f0be9c24288bd128231e0d1243b34c03ad055906",
+            "scripts/soc_f07_research_inputs.py"
+          ],
+          "recordedAt": "2026-09-07T02:46:39Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "No detected effects on some partisanship/affective-polarization outcomes in the feed experiment; these are not the network-segregation endpoint.",
+        "sourceId": "SRC-CAND-SOC-F07-015",
+        "supportedSemantics": [],
+        "timing": "Seven-week intervention and reported follow-up",
+        "uncertainty": [
+          "No comparable exact-ontology coefficient or numeric confidence extracted"
+        ]
+      }
+    ],
+    "synthesis": {
+      "confidence": "LOW",
+      "confidenceRationale": "Judgment concerns the exact scoped proposition, not the prestige of a source.",
+      "conflicts": [
+        {
+          "dispositionRationale": "Preserved source-level mixed/null/contrary result; not a zero-effect claim",
+          "findingId": "FND-SOC-F07-REL-TEC-050-015"
+        },
+        {
+          "dispositionRationale": "Preserved source-level mixed/null/contrary result; not a zero-effect claim",
+          "findingId": "FND-SOC-F07-REL-TEC-050-OTHER-OUTCOMES-015"
+        }
+      ],
+      "contraryEvidenceSearch": "ASSESSED",
+      "datasetOverlap": "Same publication reused across assertions is one dataset; review/primary overlap not counted as independent replication.",
+      "disposition": "INSUFFICIENT",
+      "evidenceStrength": "LIMITED",
+      "generalizationLimits": [
+        "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+        "Check reflection, homophily, selection into ties, latent traits, common environment, institutional assignment, simultaneity, reciprocity, correlated exposure, interference, endogenous formation, attrition and tie measurement error; longitudinal observation alone is not identification."
+      ],
+      "rationale": "Keep existing proposition unchanged pending direct evidence on filtering restrictions and later social-tie segregation. Content availability, follows and whole-network segregation are distinct; new feed experiment is bundled and asymmetric, not exact universal TEC-029 effect.",
+      "sourceFindingIds": [
+        "FND-SOC-F07-REL-TEC-050-SRC-505",
+        "FND-SOC-F07-REL-TEC-050-SRC-509",
+        "FND-SOC-F07-REL-TEC-050-015",
+        "FND-SOC-F07-REL-TEC-050-OTHER-OUTCOMES-015"
+      ]
+    }
+  },
+  {
+    "assertionId": "REL-CAND-SOC-F07-001",
+    "evidenceAssessmentId": "EVA-REL-CAND-SOC-F07-001",
+    "governance": {
+      "activationStatus": "NOT_ELIGIBLE",
+      "authorityBasis": "V1_NATIVE",
+      "authorizedBy": null,
+      "blockStatus": "NONE",
+      "decisionDate": null,
+      "decisionOutcome": "NOT_DECIDED",
+      "decisionRationale": null,
+      "decisionRecord": null,
+      "effectiveVersion": null,
+      "lifecycleStatus": "REVIEW_READY",
+      "supersedesIds": [],
+      "transitionProvenance": [
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": null
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "EVA-REL-CAND-SOC-F07-001",
+          "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+          "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+          "revision": 1,
+          "timestamp": "2026-09-07T02:46:39Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          }
+        },
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "EVA-REL-CAND-SOC-F07-001",
+          "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+          "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+          "revision": 1,
+          "timestamp": "2026-09-07T02:46:39Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "RESEARCH_NEEDED"
+          }
+        },
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "RESEARCH_NEEDED"
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "EVA-REL-CAND-SOC-F07-001",
+          "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+          "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+          "revision": 1,
+          "timestamp": "2026-09-07T02:46:39Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "REVIEW_READY"
+          }
+        }
+      ]
+    },
+    "note": "Candidate normalization sidecar; production AE assertion target enum is unchanged.",
+    "productionMethod": "SYNTHESIS",
+    "sourceFindings": [
+      {
+        "accessDepth": "ABSTRACT",
+        "basis": [
+          "DEFINITIONAL_CALCULATIONAL"
+        ],
+        "comparator": "Source-specific comparison; see result/locator. No synthetic common comparator imposed.",
+        "context": "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+        "datasetIds": [
+          "STUDY-SRC-255"
+        ],
+        "design": "DEFINITIONAL_CALCULATIONAL; Point centrality and graph centralization definitions",
+        "disposition": "SUPPORTS",
+        "exposure": "Point centrality and graph centralization definitions",
+        "id": "FND-SOC-F07-REL-CAND-SOC-F07-001-SRC-255",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "1978/79 issue dating; selected measure and benchmark required. No empirical causal claim.",
+          "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+          "Check reflection, homophily, selection into ties, latent traits, common environment, institutional assignment, simultaneity, reciprocity, correlated exposure, interference, endogenous formation, attrition and tie measurement error; longitudinal observation alone is not identification."
+        ],
+        "locator": "Abstract; full-paper download unavailable; https://www.sciencedirect.com/science/article/pii/0378873378900217",
+        "measurement": "Distinguishes forms of centrality and corresponding graph centralization.",
+        "nullInterpretation": null,
+        "overlapNotes": "Reviews SRC-254/256/269 and candidate 009 may include cited primary studies: no independent-replication count. Review/primary overlap recorded per finding; preprint/journal versions are one work.",
+        "population": "Point centrality and graph centralization definitions",
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+          ],
+          "method": "Structured evidence search and skeptical candidate audit",
+          "originReferences": [
+            "AUD-SOC-F07-AE-V1-20260906-001",
+            "f0be9c24288bd128231e0d1243b34c03ad055906",
+            "scripts/soc_f07_research_inputs.py"
+          ],
+          "recordedAt": "2026-09-07T02:46:39Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "Distinguishes forms of centrality and corresponding graph centralization.",
+        "sourceId": "SRC-255",
+        "supportedSemantics": [
+          "DERIVATIONAL"
+        ],
+        "timing": "Reported source window only; no causal lag/persistence inferred. Point centrality and graph centralization definitions",
+        "uncertainty": [
+          "No comparable exact-ontology coefficient or numeric confidence extracted"
+        ]
+      },
+      {
+        "accessDepth": "DOCUMENTATION",
+        "basis": [
+          "DEFINITIONAL_CALCULATIONAL"
+        ],
+        "comparator": "Source-specific comparison; see result/locator. No synthetic common comparator imposed.",
+        "context": "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+        "datasetIds": [
+          "STUDY-SRC-CAND-SOC-F07-018"
+        ],
+        "design": "DEFINITIONAL_CALCULATIONAL; Binary specified networks and selected degree centralization",
+        "disposition": "SUPPORTS",
+        "exposure": "Binary specified networks and selected degree centralization",
+        "id": "FND-SOC-F07-REL-CAND-SOC-F07-001-018",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Not every centralization is degree-based; directedness, loops, normalization and valued-network versions require explicit selection. No single ego degree determines network centralization.",
+          "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+          "Check reflection, homophily, selection into ties, latent traits, common environment, institutional assignment, simultaneity, reciprocity, correlated exposure, interference, endogenous formation, attrition and tie measurement error; longitudinal observation alone is not identification."
+        ],
+        "locator": "Indexed DESCRIPTION and COMMENTS; direct open unavailable; https://www.analytictech.com/ucinet/help/3ava_zr.htm",
+        "measurement": "Degree centralization uses the distribution of node degree and a maximum-possible benchmark.",
+        "nullInterpretation": null,
+        "overlapNotes": "Reviews SRC-254/256/269 and candidate 009 may include cited primary studies: no independent-replication count. Review/primary overlap recorded per finding; preprint/journal versions are one work.",
+        "population": "Binary specified networks and selected degree centralization",
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+          ],
+          "method": "Structured evidence search and skeptical candidate audit",
+          "originReferences": [
+            "AUD-SOC-F07-AE-V1-20260906-001",
+            "f0be9c24288bd128231e0d1243b34c03ad055906",
+            "scripts/soc_f07_research_inputs.py"
+          ],
+          "recordedAt": "2026-09-07T02:46:39Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "Degree centralization uses the distribution of node degree and a maximum-possible benchmark.",
+        "sourceId": "SRC-CAND-SOC-F07-018",
+        "supportedSemantics": [
+          "DERIVATIONAL"
+        ],
+        "timing": "Reported source window only; no causal lag/persistence inferred. Binary specified networks and selected degree centralization",
+        "uncertainty": [
+          "No comparable exact-ontology coefficient or numeric confidence extracted"
+        ]
+      }
+    ],
+    "synthesis": {
+      "confidence": "MODERATE",
+      "confidenceRationale": "Judgment concerns the exact scoped proposition, not the prestige of a source.",
+      "conflicts": [],
+      "contraryEvidenceSearch": "ASSESSED",
+      "datasetOverlap": "Same publication reused across assertions is one dataset; review/primary overlap not counted as independent replication.",
+      "disposition": "SUPPORTS",
+      "evidenceStrength": "MODERATE",
+      "generalizationLimits": [
+        "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+        "Check reflection, homophily, selection into ties, latent traits, common environment, institutional assignment, simultaneity, reciprocity, correlated exposure, interference, endogenous formation, attrition and tie measurement error; longitudinal observation alone is not identification."
+      ],
+      "rationale": "Only Freeman degree-based network centralization for a specified binary network: the complete aligned distribution of SOC-049 node degrees, plus node set, normalization and maximum-possible benchmark. Not a single ego value; not betweenness-, eigenvector- or closeness-based centralization; external inputs remain required.",
+      "sourceFindingIds": [
+        "FND-SOC-F07-REL-CAND-SOC-F07-001-SRC-255",
+        "FND-SOC-F07-REL-CAND-SOC-F07-001-018"
+      ]
+    }
+  }
+]

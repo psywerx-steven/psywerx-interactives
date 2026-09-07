@@ -1,0 +1,224 @@
+{
+  "approval": "PENDING — APPROVE / MODIFY / REJECT",
+  "artifactHashes": {
+    "entity-rds-review.json": "d67543264a5f712ce0b4e31bac89ce16b0a48e210db3c749bee40d66768f6189",
+    "existing-relationship-audit.json": "675d365070bd590eaef8ac08726602debb88b97ed6f9efa3262a5c5dee957029",
+    "hypotheses.json": "87d92a8dde71d48c0c98d607f5e6003cbe7027dbcb012a93e073ff7f9cbf64ee",
+    "ontology-target-gaps.json": "d2a84499491bf46d7f6d939faf2b42d59ad0d931a40e8588a9e2a045fe874f1f",
+    "protected-science.json": "3269fb06978eb1c7306128d6e20290f19791f81b1cf7df0dee44fc3b3e0a0ebf",
+    "rds-antecedent-ledger.json": "1fb8d16f769d7cb973118a9c3adfbfe7e03cfa664643c010af4a1a914059485f",
+    "revision-proposals.json": "7a93a649d09bae44355c138509fb208d3bb620f505aca3721c1d94ab5de0a0f7",
+    "search-ledger.json": "f81c3cd384ebdee310cc373b5833f63d27efd4c7f9dfb439f812cf9b97e1cb57",
+    "source-findings.json": "49be8c793ffd019507a3214352786b229760ea771afc89ce91e7765eab203696",
+    "source-registration-queue.json": "0f212b05680d5d548caab9a0d2f29eb778305a1a6341c6ba05b1333f73ef2cc4",
+    "source-registry.json": "a07ae1d95a075d6bcc15a150b49778e2cde5bf6310783ad90e196dcdb73edbfa",
+    "workspace.json": "d526a4b3b0eee6f311d871105f7f0563b3f86d2a86a5d43f5a41250e064de403"
+  },
+  "auditId": "AUD-SOC-F07-AE-V1-20260906-001",
+  "baselineCommit": "f0be9c24288bd128231e0d1243b34c03ad055906",
+  "branch": "pilot/soc-f07-actions-events-v1",
+  "counts": {
+    "canonicalReused": 15,
+    "effectAssertions": 3,
+    "evidenceAssessments": 11,
+    "existingDisposition": {
+      "RESEARCH_NEEDED": 1,
+      "RETAIN_AS_IS": 3,
+      "RETYPE_CANDIDATE": 4,
+      "REVISION_CANDIDATE": 2
+    },
+    "findingDisposition": {
+      "INSUFFICIENT": 24,
+      "MIXED": 5,
+      "NULL_FINDING": 3,
+      "SUPPORTS": 2
+    },
+    "happeningTypes": 8,
+    "hypothesisDisposition": {
+      "BLOCKED_NEEDS_GOVERNANCE_INPUT": 2,
+      "REJECTED": 15,
+      "RESEARCH_NEEDED": 11,
+      "REVIEW_READY": 1
+    },
+    "newActive": 0,
+    "newGoverned": 0,
+    "newRelationshipSemantics": {
+      "DERIVATIONAL": 1
+    },
+    "newRelationships": 1,
+    "note": "Evidence findings nested within candidate assessments are not extra scientific identities. Revision/target-gap/hypothesis ledgers counted separately.",
+    "ontologyTargetGaps": 12,
+    "production": {
+      "combinedActiveCausal": 436,
+      "combinedActiveRelationships": 457,
+      "combinedBySemantic": {
+        "CAUSAL": 436,
+        "COMPOSITIONAL": 1,
+        "DERIVATIONAL": 9,
+        "EMPIRICAL_NONCAUSAL": 1,
+        "REALIZATION": 2,
+        "SEMANTIC": 8
+      },
+      "drivers": 770,
+      "entities": 811,
+      "rds": 41
+    },
+    "revisionProposals": 6,
+    "scientificRecordLifecycle": {
+      "RESEARCH_NEEDED": 13,
+      "REVIEW_READY": 10
+    },
+    "separateGovernanceBlockedItems": 14,
+    "sourceDesignDistribution": {
+      "DEFINITIONAL_CALCULATIONAL": 3,
+      "EVIDENCE_SYNTHESIS": 7,
+      "EXPERIMENTAL": 10,
+      "MODEL_SIMULATION": 1,
+      "OBSERVATIONAL_LONGITUDINAL": 2,
+      "QUASI_EXPERIMENTAL": 2,
+      "THEORETICAL_MECHANISTIC": 7,
+      "UNTESTED_HYPOTHESIS": 1
+    },
+    "sourceFindings": 34,
+    "sources": 33,
+    "supplemental": 18
+  },
+  "derivationVersions": {
+    "RDS-0005": {
+      "missingVersionNotInvented": true,
+      "namedVersion": null,
+      "recordHash": "fbcd2d946c3c215f358e4323142179a58c955b6d17387d0f5126916ce316fc0f"
+    },
+    "RDS-0006": {
+      "missingVersionNotInvented": true,
+      "namedVersion": null,
+      "recordHash": "1f4deb8927f023179666dfa4a680589c0bad8e16b78ed7e264583295265ff104"
+    },
+    "RDS-0007": {
+      "missingVersionNotInvented": true,
+      "namedVersion": null,
+      "recordHash": "b8298a904b9676052264c3019b4b64ee378feff8dcbe891afc1b0a928afdff38"
+    },
+    "SOC-049": {
+      "missingVersionNotInvented": true,
+      "namedVersion": null,
+      "recordHash": "145cc3aee92b29312360970ea347e84a5b11923c54f78ec451ff0e387bd5d742"
+    },
+    "SOC-050": {
+      "missingVersionNotInvented": true,
+      "namedVersion": null,
+      "recordHash": "512778b864229d7beedc835ce84b051f6f8196f498d30ed0377c5a9f7456b63e"
+    },
+    "SOC-051": {
+      "missingVersionNotInvented": true,
+      "namedVersion": null,
+      "recordHash": "58731d6e584ab3189aaf5937642445cc94304ade682520097c4c95cf36c0701e"
+    },
+    "SOC-052": {
+      "missingVersionNotInvented": true,
+      "namedVersion": null,
+      "recordHash": "2cad735d39ecb8e97d31fc1a1ecb7ce09a10c2ee923f0af641d9d967f2f7fcf3"
+    },
+    "SOC-053": {
+      "missingVersionNotInvented": true,
+      "namedVersion": null,
+      "recordHash": "37138c6eb9ae90698bbbfc6170c3b0dd307699ed71999384e344e8bd25f34d91"
+    },
+    "SOC-054": {
+      "missingVersionNotInvented": true,
+      "namedVersion": null,
+      "recordHash": "740558fceb75667de0a3b6ce821bda06569af827ec4fd8a803f1d19118e0e84f"
+    },
+    "SOC-055": {
+      "missingVersionNotInvented": true,
+      "namedVersion": null,
+      "recordHash": "1890c2ff72a0e99b1a695e6b3da4797b49c5b1921b7551679f89ea192b88002c"
+    },
+    "SOC-056": {
+      "missingVersionNotInvented": true,
+      "namedVersion": null,
+      "recordHash": "a8f73ee8a5b8cb046cd9a93b653317a348166c7c9394563ca6da4c2d9605a763"
+    },
+    "SOC-057": {
+      "missingVersionNotInvented": true,
+      "namedVersion": null,
+      "recordHash": "3eb40cdbf6fdff0930aad0d69a0dd88b3efece127dc91fbc612e1edc0dadd97c"
+    }
+  },
+  "frozenFamily": {
+    "activeEffectCount": 0,
+    "blockedEntityCount": 4,
+    "causalIncident": 7,
+    "causallyIsolatedEntities": 7,
+    "crossLayer": 2,
+    "drivers": 1,
+    "entities": 13,
+    "id": "SOC-F07",
+    "internal": 4,
+    "isolatedFamily": false,
+    "layer": "Social",
+    "legacyIncompleteIncident": 7,
+    "memberIds": [
+      "RDS-0005",
+      "RDS-0006",
+      "RDS-0007",
+      "SOC-049",
+      "SOC-050",
+      "SOC-051",
+      "SOC-052",
+      "SOC-053",
+      "SOC-054",
+      "SOC-055",
+      "SOC-056",
+      "SOC-057",
+      "SOC-102"
+    ],
+    "name": "Network Structure & Position",
+    "nativeActionsEventsEffectIds": [],
+    "rds": 12,
+    "rdsCausalSourceCount": 5,
+    "sameLayerCrossFamily": 1
+  },
+  "newActive": 0,
+  "newGoverned": 0,
+  "protectedScience": {
+    "filesCompared": 133,
+    "passed": true
+  },
+  "recordClass": "NON_GOVERNED_PILOT_AUDIT",
+  "riSourceRegisterVersion": "be9fd10579a30ce718d9f414c23861ec14d4f641149ecf01366ea994a00f83ee",
+  "schemaHashes": {
+    "schemas/actions-events/v1/authorization-v1.schema.json": "614a918745ef48735bf0a61585f805bfebb4152e69ec994d72116361c9ae01be",
+    "schemas/actions-events/v1/candidate-workspace-v1.schema.json": "becfb99e9c7a55d425f78162b87ba6f9881d8dbf01c0a89110d005b91c88f8d1",
+    "schemas/actions-events/v1/catalog-v1.schema.json": "8ac8b47cf1e71fdc3d98623092e9871122fe9536bc9f54547dc4186e9e29d931",
+    "schemas/actions-events/v1/common-v1.schema.json": "51b4e67676916d013125e17c30cb624948f9e663f94a50e3fcdc8fbf9f7c1f95",
+    "schemas/actions-events/v1/compatibility-v1.schema.json": "f77a433dfb635f68db4a048840c2cb9bcdbf68154c14db39cc86651a6011707a",
+    "schemas/actions-events/v1/effect-assertion-v1.schema.json": "2ee50660f6d0f909ea0e2f9005152eff41c44c2ab857f68fd85fc0a0db4d7d87",
+    "schemas/actions-events/v1/evidence-assessment-v1.schema.json": "c99d83290101d858f2a1a67ade37070b420b1a4d4c6da8394ba15f4379f1efe7",
+    "schemas/actions-events/v1/happening-type-v1.schema.json": "0af08078de760ec8b77de61d5fa6785deca831395737219e3020dbe3b3c973a5",
+    "schemas/actions-events/v1/occurrence-v1.schema.json": "ed244d04cb1fd000729c0bcd756f46f4cf7429c9ca4ba3c93baad9d98981d6c4",
+    "schemas/actions-events/v1/source-finding-v1.schema.json": "1c3d9408f6520d21b4bd5849fcf6ba7868ef245a0965c8bc74133924709f736d",
+    "schemas/actions-events/v1/use-eligibility-v1.schema.json": "d1e50ba8f42d840532a5274d643a63785ca5932500beb017e6dfd7b571867655",
+    "schemas/actions-events/v1/vocabulary.json": "dda340b4bf1ec4ddb307f78a0c7dee8bca2f6f91d4c25dfc4ca5de883cb65aa7",
+    "schemas/relationship-intervention/v1/candidate-workspace-v1.schema.json": "af02c7685b978296de577e8663c7b98bdfd7dbd22f3b6b179e939ac964175154",
+    "schemas/relationship-intervention/v1/causal-pathway-v1.schema.json": "6a9e43cf678fe2851d35307cb248dc9ca949ff0d34da0dcfbcb76b3b6452440a",
+    "schemas/relationship-intervention/v1/evidence-assessment-v1.schema.json": "74047e6494e936348622193da5cb89ebce37a8fc74fb3b960436678163fa3e44",
+    "schemas/relationship-intervention/v1/governance-v1.schema.json": "9cd6f1b2275449e28cf55f5a975822572b499e132e292902d71ca0c26a952a32",
+    "schemas/relationship-intervention/v1/intervention-effect-v1.schema.json": "a0868dc95b9025bca69570faf94d162681a06ad3186ea480718a53af6569248a",
+    "schemas/relationship-intervention/v1/intervention-v1.schema.json": "4b49519c748d002b29e88057e81a9416ba658c24b584d0d48e2292c559fb7ae6",
+    "schemas/relationship-intervention/v1/relationship-v1.schema.json": "1463cfb29c0d6cbaf76e8798b90a92857341b3e599a9616133aec713ff119599",
+    "schemas/relationship-intervention/v1/source-record-v1.schema.json": "23cf265873fe00856fbb11c48415bf41e3e0d531492f81bab445aa868732e417"
+  },
+  "scientificReadiness": "CANDIDATE_REVIEW_ONLY; no activatable yield promised",
+  "selfReview": [
+    "Removed speculative causal edge production: H05 remains a question, not a causal record",
+    "All three Driver effects downgraded to RESEARCH_NEEDED for exact risk-set/metric alignment",
+    "No STRUCTURE EffectAssertion targets a calculated network metric",
+    "No formal moderation/pathway without exact edge and transmitted-effect evidence"
+  ],
+  "sourceAccessLimitations": [
+    "Direct PMC opens sometimes challenged; indexed selected sections used and locators recorded",
+    "Abstract/metadata sources cannot support narrower uninspected empirical claims"
+  ],
+  "sourceRegisterVersion": "6898d8e9a1d3328391da59a2a14f32ae38a4bdb009688dd007c1080bf2ab4680"
+}

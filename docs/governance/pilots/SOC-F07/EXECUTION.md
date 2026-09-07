@@ -60,3 +60,37 @@ source, never assumed full text. Commit: see baseline checkpoint in branch histo
 Current milestone: existing entity/derivation and relationship review.
 Exact resume point: inspect complete entity records and canonical source identities;
 then record existing-edge dispositions before researching new propositions.
+
+## Checkpoint 2 — corpus, research and candidate rendering
+
+Baseline checkpoint commit: `c76bac0334c216818f46eb43ee93322800870613`.
+Milestones 2–4 completed on `pilot/soc-f07-actions-events-v1` (2026-09-06 local).
+All 13 entities and 10 incident propositions reviewed; source research followed
+the existing-corpus review. Thirty-three source records were examined at the
+stated access depth: 15 canonical references reused and 18 supplemental records
+kept candidate-only. SRC-509's linked Centola component duplicates SRC-235;
+its second composite citation remains unresolved, not independent evidence.
+
+The renderer produced 1 conditional derivation candidate, 8 happening identities,
+3 research-needed Driver effects, 11 assessments and 34 source findings. Seven
+causal audit assessments remain insufficient for exact V1 causal completeness.
+No new causal/moderation/pathway record was forced. Six existing-edge review
+proposals remain non-governed. Twelve RDS antecedent/target-gap ledgers preserve
+the missing complete network-configuration representation. The 29-hypothesis
+ledger contains 15 rejection proposals, 11 research-needed questions, 2 blocked
+questions and the retained derivation lead. Human fields remain PENDING.
+
+Actual checks: `python scripts/build_soc_f07_pilot.py` passes current production
+workspace, RI/AE and sourceFinding schemas/semantic validation. All 133 protected
+pre-existing files match the frozen baseline after Git line-ending normalization.
+Production remains 770 / 41 / 811 entities and 457 / 436 active Relationships.
+
+Source access: selected publisher/author/PMC indexed methods/results, abstracts,
+maintainer documentation and metadata only as explicitly recorded. Direct PMC
+pages sometimes challenged access. No full-paper review is claimed from snippets;
+no formal systematic-review claim or paid database search is made.
+
+Current milestone: skeptical semantic review and regression validation.
+Exact resume point: add pilot tests and deterministic graph/coverage checks,
+run canonical suites, correct only in-scope mechanical defects, then commit/push
+and open an unmerged PR. No canonical science may change.

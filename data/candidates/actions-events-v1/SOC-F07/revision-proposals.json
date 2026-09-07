@@ -1,0 +1,767 @@
+[
+  {
+    "currentRecord": {
+      "conditionsModerators": "Retain dose, exposure, and baseline conditions from edge-level evidence.",
+      "confidence": "HIGH",
+      "directness": "DIRECT_AT_STATED_RESOLUTION",
+      "effectPersistence": null,
+      "evidenceStrength": "Strong",
+      "exposurePattern": "NOT_SPECIFIED",
+      "functionalForm": "UNSPECIFIED",
+      "functionalFormNotes": null,
+      "generalizabilityContext": "The proposed edge is causally interpretable at the stated scope. V2 implementation must preserve conditions, level transition, lag, and evidence rather than treating it as universal.",
+      "governanceClass": "CONTEXT_DEPENDENT",
+      "governanceStatus": "ACTIVE",
+      "id": "REL-INS-047",
+      "lagLowerBound": null,
+      "lagNarrative": "Months–Generations",
+      "lagProfile": [
+        "STRUCTURAL",
+        "INTERGENERATIONAL"
+      ],
+      "lagUnit": null,
+      "lagUpperBound": null,
+      "legacyRelationship": {
+        "causalRole": "CAUSES",
+        "schemaVersion": "2.0",
+        "sourceDriverId": "INS-076",
+        "sourceDriverName": "Institutional Segregation Strength",
+        "targetDriverId": "SOC-057",
+        "targetDriverName": "Network Segregation"
+      },
+      "levelTransitionMechanism": "The source state reaches the target unit through the exposure, communication, allocation, aggregation, or embodied-response process stated in the mechanism.",
+      "mechanism": "Institutional segregation constrains contact and increases social-network segregation.",
+      "moderatorEntityIds": [],
+      "notesCaveats": "Implemented from remediation candidate PRC-053.",
+      "objectEntityId": "SOC-057",
+      "objectEntityName": "Network Segregation",
+      "objectEntityType": "RELATIONAL_DERIVED_STATE",
+      "objectLevel": "SMALL_GROUP",
+      "objectRelationshipId": null,
+      "polarity": "POSITIVE",
+      "predicate": "CAUSES",
+      "reciprocalProcessId": null,
+      "relationFamily": "CAUSAL",
+      "source": {
+        "row": 51,
+        "workbook": "PSYWERX_Layer_6_Institutional_Structural_Driver_Ontology_v1.0.xlsx",
+        "worksheet": "Relationships"
+      },
+      "subjectEntityId": "INS-076",
+      "subjectEntityName": "Institutional Segregation Strength",
+      "subjectEntityType": "DRIVER",
+      "subjectLevel": "INSTITUTIONAL_FIELD",
+      "supportingEvidenceIds": [
+        "SRC-497",
+        "SRC-509"
+      ]
+    },
+    "currentRecordHash": "88d292b71e0d55a2dd8fb3426337f3a9758ecd443d88cbf932d07bdb74d73de0",
+    "exactProposal": "Propose restricting institutional segregation to specified assignment/contact constraints preceding measured between-group tie mixing; exact institution, groups, metric and identification remain research-needed.",
+    "fieldChanges": {
+      "endpoints": "Retain IDs for review; any replacement endpoint requires separate human decision",
+      "lagPersistenceFunctionalForm": "No numeric or mechanistic values manufactured",
+      "mechanism": "Propose restricting institutional segregation to specified assignment/contact constraints preceding measured between-group tie mixing; exact institution, groups, metric and identification remain research-needed.",
+      "polarity": "No new universal polarity approved",
+      "populationContext": "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+      "relationFamily": "CAUSAL remains a research hypothesis, not a revised authoritative edge",
+      "sources": "Candidate assessment EVA-AUD-SOC-F07-REL-INS-047"
+    },
+    "governance": {
+      "activationStatus": "NOT_ELIGIBLE",
+      "authorityBasis": "V1_NATIVE",
+      "authorizedBy": null,
+      "blockStatus": "NONE",
+      "decisionDate": null,
+      "decisionOutcome": "NOT_DECIDED",
+      "decisionRationale": null,
+      "decisionRecord": null,
+      "effectiveVersion": null,
+      "lifecycleStatus": "RESEARCH_NEEDED",
+      "supersedesIds": [],
+      "transitionProvenance": [
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": null
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "REV-CAND-SOC-F07-REL-INS-047",
+          "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+          "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+          "revision": 1,
+          "timestamp": "2026-09-07T02:46:39Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          }
+        },
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "REV-CAND-SOC-F07-REL-INS-047",
+          "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+          "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+          "revision": 1,
+          "timestamp": "2026-09-07T02:46:39Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "RESEARCH_NEEDED"
+          }
+        }
+      ]
+    },
+    "governanceDecision": "PENDING — APPROVE / MODIFY / REJECT",
+    "id": "REV-CAND-SOC-F07-REL-INS-047",
+    "identityPolicy": "A family/predicate/endpoint change ultimately needs a new proposition ID; scope-only revision identity needs later human adjudication.",
+    "primaryDisposition": "REVISION_CANDIDATE",
+    "rdsSafeguards": "Framework and mismatched composite diffusion source are not direct identified institutional-segregation evidence. Assignment can be a common cause, not an autonomous RDS effect.",
+    "recordClass": "NON_GOVERNED_REVISION_PROPOSAL",
+    "unresolved": "Framework and mismatched composite diffusion source are not direct identified institutional-segregation evidence. Assignment can be a common cause, not an autonomous RDS effect."
+  },
+  {
+    "currentRecord": {
+      "conditionsModerators": "Network size, degree distribution, boundary, tie type, and weighted or directed definition.",
+      "confidence": "HIGH",
+      "directness": "DIRECT_AT_STATED_RESOLUTION",
+      "effectPersistence": null,
+      "evidenceStrength": "Strong",
+      "exposurePattern": "NOT_SPECIFIED",
+      "functionalForm": "UNSPECIFIED",
+      "functionalFormNotes": null,
+      "generalizabilityContext": "Generalizability is limited to contexts compatible with the stated mechanism, conditions, and evidence.",
+      "governanceClass": "CONTEXT_DEPENDENT",
+      "governanceStatus": "ACTIVE",
+      "id": "REL-SOC-031",
+      "lagLowerBound": null,
+      "lagNarrative": "Immediate",
+      "lagProfile": [
+        "MIXED_CONTEXT_DEPENDENT"
+      ],
+      "lagUnit": null,
+      "lagUpperBound": null,
+      "legacyRelationship": {
+        "causalRole": "CAUSES",
+        "schemaVersion": "2.0",
+        "sourceDriverId": "SOC-052",
+        "sourceDriverName": "Network Density",
+        "targetDriverId": "SOC-053",
+        "targetDriverName": "Local Clustering"
+      },
+      "levelTransitionMechanism": null,
+      "mechanism": "Density and local clustering summarize different levels and must not be merged.",
+      "moderatorEntityIds": [],
+      "notesCaveats": "Migrated from v1 relationship type: Structural relationship. Legacy functional form: Usually positive but not deterministic; sparse networks can contain highly clustered neighborhoods..",
+      "objectEntityId": "SOC-053",
+      "objectEntityName": "Local Clustering",
+      "objectEntityType": "RELATIONAL_DERIVED_STATE",
+      "objectLevel": "SMALL_GROUP",
+      "objectRelationshipId": null,
+      "polarity": "POSITIVE",
+      "predicate": "CAUSES",
+      "reciprocalProcessId": null,
+      "relationFamily": "CAUSAL",
+      "source": {
+        "row": 35,
+        "workbook": "PSYWERX_Layer_3_Social_Driver_Ontology_v1.0.xlsx",
+        "worksheet": "Relationships"
+      },
+      "subjectEntityId": "SOC-052",
+      "subjectEntityName": "Network Density",
+      "subjectEntityType": "RELATIONAL_DERIVED_STATE",
+      "subjectLevel": "SMALL_GROUP",
+      "supportingEvidenceIds": [
+        "SRC254",
+        "SRC256"
+      ]
+    },
+    "currentRecordHash": "127de04d484f70dcc7a0add4969d5d1c7e56df7c8501491c2d93b810d521f119",
+    "exactProposal": "Consider a noncausal conditional structural comparison of SOC-052 and SOC-053, not CAUSES; no exact replacement predicate approved.",
+    "fieldChanges": {
+      "endpoints": "Retain IDs for review; any replacement endpoint requires separate human decision",
+      "lagPersistenceFunctionalForm": "No numeric or mechanistic values manufactured",
+      "mechanism": "Consider a noncausal conditional structural comparison of SOC-052 and SOC-053, not CAUSES; no exact replacement predicate approved.",
+      "polarity": "No new universal polarity approved",
+      "populationContext": "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+      "relationFamily": "Retype alternative only; replacement predicate unresolved",
+      "sources": "Candidate assessment EVA-AUD-SOC-F07-REL-SOC-031"
+    },
+    "governance": {
+      "activationStatus": "NOT_ELIGIBLE",
+      "authorityBasis": "V1_NATIVE",
+      "authorizedBy": null,
+      "blockStatus": "NONE",
+      "decisionDate": null,
+      "decisionOutcome": "NOT_DECIDED",
+      "decisionRationale": null,
+      "decisionRecord": null,
+      "effectiveVersion": null,
+      "lifecycleStatus": "RESEARCH_NEEDED",
+      "supersedesIds": [],
+      "transitionProvenance": [
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": null
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "REV-CAND-SOC-F07-REL-SOC-031",
+          "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+          "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+          "revision": 1,
+          "timestamp": "2026-09-07T02:46:39Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          }
+        },
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "REV-CAND-SOC-F07-REL-SOC-031",
+          "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+          "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+          "revision": 1,
+          "timestamp": "2026-09-07T02:46:39Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "RESEARCH_NEEDED"
+          }
+        }
+      ]
+    },
+    "governanceDecision": "PENDING — APPROVE / MODIFY / REJECT",
+    "id": "REV-CAND-SOC-F07-REL-SOC-031",
+    "identityPolicy": "A family/predicate/endpoint change ultimately needs a new proposition ID; scope-only revision identity needs later human adjudication.",
+    "primaryDisposition": "RETYPE_CANDIDATE",
+    "rdsSafeguards": "Global density and ego clustering share adjacency inputs but neither universally determines the other. Same-time summary contrast lacks independent temporal mechanism.",
+    "recordClass": "NON_GOVERNED_REVISION_PROPOSAL",
+    "unresolved": "Global density and ego clustering share adjacency inputs but neither universally determines the other. Same-time summary contrast lacks independent temporal mechanism."
+  },
+  {
+    "currentRecord": {
+      "conditionsModerators": "Group sizes, opportunity structure, baseline mixing, network boundary, and category definition.",
+      "confidence": "HIGH",
+      "directness": "DIRECT_AT_STATED_RESOLUTION",
+      "effectPersistence": null,
+      "evidenceStrength": "Strong",
+      "exposurePattern": "NOT_SPECIFIED",
+      "functionalForm": "UNSPECIFIED",
+      "functionalFormNotes": null,
+      "generalizabilityContext": "Generalizability is limited to contexts compatible with the stated mechanism, conditions, and evidence.",
+      "governanceClass": "CONTEXT_DEPENDENT",
+      "governanceStatus": "ACTIVE",
+      "id": "REL-SOC-032",
+      "lagLowerBound": null,
+      "lagNarrative": "Weeks–Years",
+      "lagProfile": [
+        "LONG",
+        "STRUCTURAL",
+        "INTERGENERATIONAL"
+      ],
+      "lagUnit": null,
+      "lagUpperBound": null,
+      "legacyRelationship": {
+        "causalRole": "CAUSES",
+        "schemaVersion": "2.0",
+        "sourceDriverId": "SOC-054",
+        "sourceDriverName": "Network Assortativity",
+        "targetDriverId": "SOC-057",
+        "targetDriverName": "Network Segregation"
+      },
+      "levelTransitionMechanism": null,
+      "mechanism": "Assortativity and segregation require baseline-aware measures; observed similarity does not prove preference or influence.",
+      "moderatorEntityIds": [],
+      "notesCaveats": "Migrated from v1 relationship type: Structural relationship. Legacy functional form: Attribute assortativity contributes to segregation when the attribute defines the focal groups..",
+      "objectEntityId": "SOC-057",
+      "objectEntityName": "Network Segregation",
+      "objectEntityType": "RELATIONAL_DERIVED_STATE",
+      "objectLevel": "SMALL_GROUP",
+      "objectRelationshipId": null,
+      "polarity": "POSITIVE",
+      "predicate": "CAUSES",
+      "reciprocalProcessId": null,
+      "relationFamily": "CAUSAL",
+      "source": {
+        "row": 36,
+        "workbook": "PSYWERX_Layer_3_Social_Driver_Ontology_v1.0.xlsx",
+        "worksheet": "Relationships"
+      },
+      "subjectEntityId": "SOC-054",
+      "subjectEntityName": "Network Assortativity",
+      "subjectEntityType": "RELATIONAL_DERIVED_STATE",
+      "subjectLevel": "SMALL_GROUP",
+      "supportingEvidenceIds": [
+        "SRC233",
+        "SRC260",
+        "SRC270"
+      ]
+    },
+    "currentRecordHash": "7a013da4ae2a7317b55b611cd01f46cdb40b71bfd9971bf3db7a4dce360a090e",
+    "exactProposal": "Consider noncausal baseline-qualified mixing/segregation comparison, retaining SOC-054 and SOC-057 as distinct measures.",
+    "fieldChanges": {
+      "endpoints": "Retain IDs for review; any replacement endpoint requires separate human decision",
+      "lagPersistenceFunctionalForm": "No numeric or mechanistic values manufactured",
+      "mechanism": "Consider noncausal baseline-qualified mixing/segregation comparison, retaining SOC-054 and SOC-057 as distinct measures.",
+      "polarity": "No new universal polarity approved",
+      "populationContext": "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+      "relationFamily": "Retype alternative only; replacement predicate unresolved",
+      "sources": "Candidate assessment EVA-AUD-SOC-F07-REL-SOC-032"
+    },
+    "governance": {
+      "activationStatus": "NOT_ELIGIBLE",
+      "authorityBasis": "V1_NATIVE",
+      "authorizedBy": null,
+      "blockStatus": "NONE",
+      "decisionDate": null,
+      "decisionOutcome": "NOT_DECIDED",
+      "decisionRationale": null,
+      "decisionRecord": null,
+      "effectiveVersion": null,
+      "lifecycleStatus": "RESEARCH_NEEDED",
+      "supersedesIds": [],
+      "transitionProvenance": [
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": null
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "REV-CAND-SOC-F07-REL-SOC-032",
+          "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+          "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+          "revision": 1,
+          "timestamp": "2026-09-07T02:46:39Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          }
+        },
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "REV-CAND-SOC-F07-REL-SOC-032",
+          "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+          "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+          "revision": 1,
+          "timestamp": "2026-09-07T02:46:39Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "RESEARCH_NEEDED"
+          }
+        }
+      ]
+    },
+    "governanceDecision": "PENDING — APPROVE / MODIFY / REJECT",
+    "id": "REV-CAND-SOC-F07-REL-SOC-032",
+    "identityPolicy": "A family/predicate/endpoint change ultimately needs a new proposition ID; scope-only revision identity needs later human adjudication.",
+    "primaryDisposition": "RETYPE_CANDIDATE",
+    "rdsSafeguards": "Degree assortativity is not categorical segregation; group attributes, opportunities and null model unresolved. Shared mixing matrix can induce dependence.",
+    "recordClass": "NON_GOVERNED_REVISION_PROPOSAL",
+    "unresolved": "Degree assortativity is not categorical segregation; group attributes, opportunities and null model unresolved. Shared mixing matrix can induce dependence."
+  },
+  {
+    "currentRecord": {
+      "conditionsModerators": "Community definition, tie direction, weighted ties, network boundary, and redundant bridges.",
+      "confidence": "HIGH",
+      "directness": "DIRECT_AT_STATED_RESOLUTION",
+      "effectPersistence": null,
+      "evidenceStrength": "Strong",
+      "exposurePattern": "NOT_SPECIFIED",
+      "functionalForm": "UNSPECIFIED",
+      "functionalFormNotes": null,
+      "generalizabilityContext": "Generalizability is limited to contexts compatible with the stated mechanism, conditions, and evidence.",
+      "governanceClass": "CONTEXT_DEPENDENT",
+      "governanceStatus": "ACTIVE",
+      "id": "REL-SOC-033",
+      "lagLowerBound": null,
+      "lagNarrative": "Immediate",
+      "lagProfile": [
+        "MIXED_CONTEXT_DEPENDENT"
+      ],
+      "lagUnit": null,
+      "lagUpperBound": null,
+      "legacyRelationship": {
+        "causalRole": "CAUSES",
+        "schemaVersion": "2.0",
+        "sourceDriverId": "SOC-055",
+        "sourceDriverName": "Structural Constraint",
+        "targetDriverId": "SOC-056",
+        "targetDriverName": "Cross-Cluster Tie Prevalence"
+      },
+      "levelTransitionMechanism": null,
+      "mechanism": "Constraint is actor-centered; cross-cluster prevalence can be actor- or network-level, so level alignment is required.",
+      "moderatorEntityIds": [],
+      "notesCaveats": "Migrated from v1 relationship type: Structural relationship. Legacy functional form: Higher constraint generally accompanies fewer independent cross-cluster ties..",
+      "objectEntityId": "SOC-056",
+      "objectEntityName": "Cross-Cluster Tie Prevalence",
+      "objectEntityType": "RELATIONAL_DERIVED_STATE",
+      "objectLevel": "SMALL_GROUP",
+      "objectRelationshipId": null,
+      "polarity": "NEGATIVE",
+      "predicate": "CAUSES",
+      "reciprocalProcessId": null,
+      "relationFamily": "CAUSAL",
+      "source": {
+        "row": 37,
+        "workbook": "PSYWERX_Layer_3_Social_Driver_Ontology_v1.0.xlsx",
+        "worksheet": "Relationships"
+      },
+      "subjectEntityId": "SOC-055",
+      "subjectEntityName": "Structural Constraint",
+      "subjectEntityType": "RELATIONAL_DERIVED_STATE",
+      "subjectLevel": "SMALL_GROUP",
+      "supportingEvidenceIds": [
+        "SRC234",
+        "SRC269"
+      ]
+    },
+    "currentRecordHash": "c8407a1c817bcd03d8fed2b95dbd05709f7f6822f5d8b2cb9c8d967800009d1a",
+    "exactProposal": "Consider noncausal scope-qualified association/related-metric representation of constraint and cross-cluster ties; do not force inverse causality.",
+    "fieldChanges": {
+      "endpoints": "Retain IDs for review; any replacement endpoint requires separate human decision",
+      "lagPersistenceFunctionalForm": "No numeric or mechanistic values manufactured",
+      "mechanism": "Consider noncausal scope-qualified association/related-metric representation of constraint and cross-cluster ties; do not force inverse causality.",
+      "polarity": "No new universal polarity approved",
+      "populationContext": "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+      "relationFamily": "Retype alternative only; replacement predicate unresolved",
+      "sources": "Candidate assessment EVA-AUD-SOC-F07-REL-SOC-033"
+    },
+    "governance": {
+      "activationStatus": "NOT_ELIGIBLE",
+      "authorityBasis": "V1_NATIVE",
+      "authorizedBy": null,
+      "blockStatus": "NONE",
+      "decisionDate": null,
+      "decisionOutcome": "NOT_DECIDED",
+      "decisionRationale": null,
+      "decisionRecord": null,
+      "effectiveVersion": null,
+      "lifecycleStatus": "RESEARCH_NEEDED",
+      "supersedesIds": [],
+      "transitionProvenance": [
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": null
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "REV-CAND-SOC-F07-REL-SOC-033",
+          "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+          "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+          "revision": 1,
+          "timestamp": "2026-09-07T02:46:39Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          }
+        },
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "REV-CAND-SOC-F07-REL-SOC-033",
+          "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+          "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+          "revision": 1,
+          "timestamp": "2026-09-07T02:46:39Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "RESEARCH_NEEDED"
+          }
+        }
+      ]
+    },
+    "governanceDecision": "PENDING — APPROVE / MODIFY / REJECT",
+    "id": "REV-CAND-SOC-F07-REL-SOC-033",
+    "identityPolicy": "A family/predicate/endpoint change ultimately needs a new proposition ID; scope-only revision identity needs later human adjudication.",
+    "primaryDisposition": "RETYPE_CANDIDATE",
+    "rdsSafeguards": "Actor contact weights versus network/actor community-crossing denominator; partitions and scope may differ. Mechanism of brokerage is not the constraint formula acting on another summary.",
+    "recordClass": "NON_GOVERNED_REVISION_PROPOSAL",
+    "unresolved": "Actor contact weights versus network/actor community-crossing denominator; partitions and scope may differ. Mechanism of brokerage is not the constraint formula acting on another summary."
+  },
+  {
+    "currentRecord": {
+      "conditionsModerators": "Group size, within-cluster density, tie strength, boundary definition, and opportunity for mixing.",
+      "confidence": "HIGH",
+      "directness": "DIRECT_AT_STATED_RESOLUTION",
+      "effectPersistence": null,
+      "evidenceStrength": "Strong",
+      "exposurePattern": "NOT_SPECIFIED",
+      "functionalForm": "UNSPECIFIED",
+      "functionalFormNotes": null,
+      "generalizabilityContext": "Generalizability is limited to contexts compatible with the stated mechanism, conditions, and evidence.",
+      "governanceClass": "CONTEXT_DEPENDENT",
+      "governanceStatus": "ACTIVE",
+      "id": "REL-SOC-034",
+      "lagLowerBound": null,
+      "lagNarrative": "Weeks–Years",
+      "lagProfile": [
+        "LONG",
+        "STRUCTURAL",
+        "INTERGENERATIONAL"
+      ],
+      "lagUnit": null,
+      "lagUpperBound": null,
+      "legacyRelationship": {
+        "causalRole": "CAUSES",
+        "schemaVersion": "2.0",
+        "sourceDriverId": "SOC-056",
+        "sourceDriverName": "Cross-Cluster Tie Prevalence",
+        "targetDriverId": "SOC-057",
+        "targetDriverName": "Network Segregation"
+      },
+      "levelTransitionMechanism": null,
+      "mechanism": "The relation can be weak if a small number of bridges do not change most members' exposure.",
+      "moderatorEntityIds": [],
+      "notesCaveats": "Migrated from v1 relationship type: Structural relationship. Legacy functional form: More ties spanning focal clusters generally reduce relational segregation..",
+      "objectEntityId": "SOC-057",
+      "objectEntityName": "Network Segregation",
+      "objectEntityType": "RELATIONAL_DERIVED_STATE",
+      "objectLevel": "SMALL_GROUP",
+      "objectRelationshipId": null,
+      "polarity": "NEGATIVE",
+      "predicate": "CAUSES",
+      "reciprocalProcessId": null,
+      "relationFamily": "CAUSAL",
+      "source": {
+        "row": 38,
+        "workbook": "PSYWERX_Layer_3_Social_Driver_Ontology_v1.0.xlsx",
+        "worksheet": "Relationships"
+      },
+      "subjectEntityId": "SOC-056",
+      "subjectEntityName": "Cross-Cluster Tie Prevalence",
+      "subjectEntityType": "RELATIONAL_DERIVED_STATE",
+      "subjectLevel": "SMALL_GROUP",
+      "supportingEvidenceIds": [
+        "SRC233",
+        "SRC234",
+        "SRC269"
+      ]
+    },
+    "currentRecordHash": "9749218babe9fcdd50659bfc69d92e0d200880a690dc912cbcb14f6c98f1776a",
+    "exactProposal": "Consider conditional noncausal mixing comparison; preserve distinction between cluster partitions and social-group segregation.",
+    "fieldChanges": {
+      "endpoints": "Retain IDs for review; any replacement endpoint requires separate human decision",
+      "lagPersistenceFunctionalForm": "No numeric or mechanistic values manufactured",
+      "mechanism": "Consider conditional noncausal mixing comparison; preserve distinction between cluster partitions and social-group segregation.",
+      "polarity": "No new universal polarity approved",
+      "populationContext": "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+      "relationFamily": "Retype alternative only; replacement predicate unresolved",
+      "sources": "Candidate assessment EVA-AUD-SOC-F07-REL-SOC-034"
+    },
+    "governance": {
+      "activationStatus": "NOT_ELIGIBLE",
+      "authorityBasis": "V1_NATIVE",
+      "authorizedBy": null,
+      "blockStatus": "NONE",
+      "decisionDate": null,
+      "decisionOutcome": "NOT_DECIDED",
+      "decisionRationale": null,
+      "decisionRecord": null,
+      "effectiveVersion": null,
+      "lifecycleStatus": "RESEARCH_NEEDED",
+      "supersedesIds": [],
+      "transitionProvenance": [
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": null
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "REV-CAND-SOC-F07-REL-SOC-034",
+          "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+          "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+          "revision": 1,
+          "timestamp": "2026-09-07T02:46:39Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          }
+        },
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "REV-CAND-SOC-F07-REL-SOC-034",
+          "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+          "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+          "revision": 1,
+          "timestamp": "2026-09-07T02:46:39Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "RESEARCH_NEEDED"
+          }
+        }
+      ]
+    },
+    "governanceDecision": "PENDING — APPROVE / MODIFY / REJECT",
+    "id": "REV-CAND-SOC-F07-REL-SOC-034",
+    "identityPolicy": "A family/predicate/endpoint change ultimately needs a new proposition ID; scope-only revision identity needs later human adjudication.",
+    "primaryDisposition": "RETYPE_CANDIDATE",
+    "rdsSafeguards": "Shared edge counts and complementary mixing can be mathematical; arbitrary communities need not equal groups. No independent lag or mechanism established.",
+    "recordClass": "NON_GOVERNED_REVISION_PROPOSAL",
+    "unresolved": "Shared edge counts and complementary mixing can be mathematical; arbitrary communities need not equal groups. No independent lag or mechanism established."
+  },
+  {
+    "currentRecord": {
+      "conditionsModerators": "Neighbor behavior prevalence, time window, adoption threshold, tie activity, and seeding.",
+      "confidence": "HIGH",
+      "directness": "DIRECT_AT_STATED_RESOLUTION",
+      "effectPersistence": null,
+      "evidenceStrength": "Strong",
+      "exposurePattern": "NOT_SPECIFIED",
+      "functionalForm": "UNSPECIFIED",
+      "functionalFormNotes": null,
+      "generalizabilityContext": "Generalizability is limited to contexts compatible with the stated mechanism, conditions, and evidence.",
+      "governanceClass": "CONTEXT_DEPENDENT",
+      "governanceStatus": "ACTIVE",
+      "id": "REL-SOC-035",
+      "lagLowerBound": null,
+      "lagNarrative": "Minutes–Days",
+      "lagProfile": [
+        "SHORT",
+        "INTERMEDIATE",
+        "DELAYED"
+      ],
+      "lagUnit": null,
+      "lagUpperBound": null,
+      "legacyRelationship": {
+        "causalRole": "CAUSES",
+        "schemaVersion": "2.0",
+        "sourceDriverId": "SOC-053",
+        "sourceDriverName": "Local Clustering",
+        "targetDriverId": "SOC-061",
+        "targetDriverName": "Social Reinforcement Multiplicity"
+      },
+      "levelTransitionMechanism": null,
+      "mechanism": "High clustering supplies redundant reinforcement but may limit reach to new clusters.",
+      "moderatorEntityIds": [],
+      "notesCaveats": "Migrated from v1 relationship type: Exposure mechanism. Legacy functional form: Clustering increases the chance that multiple connected neighbors provide reinforcing exposures..",
+      "objectEntityId": "SOC-061",
+      "objectEntityName": "Social Reinforcement Multiplicity",
+      "objectEntityType": "DRIVER",
+      "objectLevel": "SMALL_GROUP",
+      "objectRelationshipId": null,
+      "polarity": "POSITIVE",
+      "predicate": "CAUSES",
+      "reciprocalProcessId": null,
+      "relationFamily": "CAUSAL",
+      "source": {
+        "row": 39,
+        "workbook": "PSYWERX_Layer_3_Social_Driver_Ontology_v1.0.xlsx",
+        "worksheet": "Relationships"
+      },
+      "subjectEntityId": "SOC-053",
+      "subjectEntityName": "Local Clustering",
+      "subjectEntityType": "RELATIONAL_DERIVED_STATE",
+      "subjectLevel": "SMALL_GROUP",
+      "supportingEvidenceIds": [
+        "SRC235",
+        "SRC256"
+      ]
+    },
+    "currentRecordHash": "2e5e596b34a2f557beb74bc531a4b02c2d9f638762bf7f916d82f630cea443eb",
+    "exactProposal": "Propose a bounded topology-to-redundant-adoption-notification claim under fixed degree, stable assigned ties and a specific contagion task; whether SOC-053 to SOC-061 is exact enough remains unresolved.",
+    "fieldChanges": {
+      "endpoints": "Retain IDs for review; any replacement endpoint requires separate human decision",
+      "lagPersistenceFunctionalForm": "No numeric or mechanistic values manufactured",
+      "mechanism": "Propose a bounded topology-to-redundant-adoption-notification claim under fixed degree, stable assigned ties and a specific contagion task; whether SOC-053 to SOC-061 is exact enough remains unresolved.",
+      "polarity": "No new universal polarity approved",
+      "populationContext": "Specify node set, tie relation/threshold, direction, weights, multiplex layers, boundary, window, missing ties/nodes, isolate inclusion, sampling, denominator and metric variant. Changing any of these can change a statistic without the claimed real-world mechanism.",
+      "relationFamily": "CAUSAL remains a research hypothesis, not a revised authoritative edge",
+      "sources": "Candidate assessment EVA-AUD-SOC-F07-REL-SOC-035"
+    },
+    "governance": {
+      "activationStatus": "NOT_ELIGIBLE",
+      "authorityBasis": "V1_NATIVE",
+      "authorizedBy": null,
+      "blockStatus": "NONE",
+      "decisionDate": null,
+      "decisionOutcome": "NOT_DECIDED",
+      "decisionRationale": null,
+      "decisionRecord": null,
+      "effectiveVersion": null,
+      "lifecycleStatus": "RESEARCH_NEEDED",
+      "supersedesIds": [],
+      "transitionProvenance": [
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": null
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "REV-CAND-SOC-F07-REL-SOC-035",
+          "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+          "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+          "revision": 1,
+          "timestamp": "2026-09-07T02:46:39Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          }
+        },
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "REV-CAND-SOC-F07-REL-SOC-035",
+          "provenance": "AUD-SOC-F07-AE-V1-20260906-001",
+          "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+          "revision": 1,
+          "timestamp": "2026-09-07T02:46:39Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "RESEARCH_NEEDED"
+          }
+        }
+      ]
+    },
+    "governanceDecision": "PENDING — APPROVE / MODIFY / REJECT",
+    "id": "REV-CAND-SOC-F07-REL-SOC-035",
+    "identityPolicy": "A family/predicate/endpoint change ultimately needs a new proposition ID; scope-only revision identity needs later human adjudication.",
+    "primaryDisposition": "REVISION_CANDIDATE",
+    "rdsSafeguards": "Clustering bundles path redundancy; SOC-061 uses independently reinforcing neighbors, not independent randomized messages. Preserve existing edge; no universal magnitude, lag or pathway.",
+    "recordClass": "NON_GOVERNED_REVISION_PROPOSAL",
+    "unresolved": "Clustering bundles path redundancy; SOC-061 uses independently reinforcing neighbors, not independent randomized messages. Preserve existing edge; no universal magnitude, lag or pathway."
+  }
+]
