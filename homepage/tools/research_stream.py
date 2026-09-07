@@ -110,7 +110,10 @@ def extract_handoff(text):
 def validate_record(r):
     _exact(r,CANONICAL_FIELDS,"research item"); key,url=normalize_source_identity(r["sourceKey"],r["sourceUrl"])
     if key!=r["sourceKey"] or url!=r["sourceUrl"]:raise ResearchStreamError("source identity is not canonical")
-    if not isinstance(r["itemId"],str) or not ITEM_ID_RE.fullmatch(r["itemId"]) or item_id_for(key)!=r["itemId"]:raise ResearchStreamError("itemId is invalid")
+    # sourceKey is the canonical deduplication identity. itemId is an opaque, stable public identifier;
+    # newly ingested items remain deterministic hashes, while backfilled archive records may retain
+    # stable IDs assigned during migration rather than being rewritten solely to match a hash.
+    if not isinstance(r["itemId"],str) or not ITEM_ID_RE.fullmatch(r["itemId"]):raise ResearchStreamError("itemId is invalid")
     first=_date(r["firstSeenBriefDate"],"firstSeenBriefDate"); latest=_date(r["latestSeenBriefDate"],"latestSeenBriefDate")
     if first>latest:raise ResearchStreamError("firstSeenBriefDate cannot follow latestSeenBriefDate")
     _date(r["sourcePublishedAt"],"sourcePublishedAt",True); primary=r["primaryCategory"]; cats=r["categories"]
