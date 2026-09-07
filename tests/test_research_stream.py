@@ -1,8 +1,6 @@
 """Research database, Morning Brief ingestion, and public-stream tests."""
 from __future__ import annotations
 
-import copy
-import importlib.util
 import json
 import subprocess
 import sys
@@ -14,9 +12,7 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parents[1]
 TOOLS = REPO / "homepage/tools"
 sys.path.insert(0, str(TOOLS))
-spec = importlib.util.spec_from_file_location("research_stream", TOOLS / "research_stream.py")
-stream = importlib.util.module_from_spec(spec)
-spec.loader.exec_module(stream)
+import research_stream as stream
 
 
 def sample_handoff(
@@ -25,6 +21,7 @@ def sample_handoff(
     source_key="10.1234/example.1",
     source_url="https://doi.org/10.1234/example.1",
     source_verified=True,
+    source_published_at="2026-09-01",
     summary="A clear public summary explains the finding and why it matters while preserving the most important limitation for readers who need a concise and appropriately cautious account of the source.",
 ):
     return {
@@ -44,7 +41,7 @@ def sample_handoff(
                 "streamSummary": summary,
                 "attribution": "Example et al. — Example Journal",
                 "sourceUrl": source_url,
-                "sourcePublishedAt": "2026-09-01",
+                "sourcePublishedAt": source_published_at,
                 "sourceKey": source_key,
                 "sourceVerified": source_verified,
                 "briefDate": brief_date,
@@ -285,6 +282,12 @@ class ResearchStreamTests(unittest.TestCase):
         self.assertEqual(len(records), 1)
         self.assertEqual(records[0]["streamDecision"], "reject")
 
+    def test_backfilled_opaque_item_id_is_valid_when_format_and_source_identity_are_valid(self):
+        self.ingest()
+        record = stream.load_database(self.database)[0]
+        record["itemId"] = "research-0123456789abcdefabcd"
+        self.assertIs(stream.validate_record(record), record)
+
     def test_only_publish_items_enter_public_feed(self):
         first = sample_handoff(source_key="10.1234/example.1", source_url="https://doi.org/10.1234/example.1")
         second = sample_handoff(source_key="10.1234/example.2", source_url="https://doi.org/10.1234/example.2")
@@ -298,35 +301,41 @@ class ResearchStreamTests(unittest.TestCase):
         self.assertEqual(page["totalItems"], 1)
         self.assertEqual(page["items"][0]["itemId"], records[0]["itemId"])
 
-    def test_public_field_allowlist_and_no_private_metadata_leakage(self):
-        self.ingest()
+    def test_public_field_allowlist_dates_and_no_private_metadata_leakage(self):
+        self.ingest(sample_handoff(brief_date="2026-09-07", source_published_at="2026-09-01"))
         item_id = stream.load_database(self.database)[0]["itemId"]
         stream.review_item(self.database, item_id, "publish", "2026-09-08")
         page = stream.generate_public_feed(self.database, self.public)
         item = page["items"][0]
         self.assertEqual(set(item), set(stream.PUBLIC_FIELDS))
+        self.assertEqual(item["sourcePublishedAt"], "2026-09-01")
+        self.assertEqual(item["dateAdded"], "2026-09-07")
+        self.assertNotIn("publishedAt", item)
         text = self.public.read_text(encoding="utf-8")
         for field in ("questionAndWhy", "whatTheyDid", "whatTheyFound", "whatItMeans", "sourceVerified", "decisionDate"):
             self.assertNotIn(field, text)
         self.assertNotRegex(text, r"docs\.google\.com|drive\.google\.com|C:\\Users|ghp_|sk-")
 
-    def test_public_generation_is_deterministic_and_newest_first(self):
-        payload = sample_handoff(brief_date="2026-09-06")
-        second = sample_handoff(brief_date="2026-09-07", source_key="10.1234/example.2", source_url="https://doi.org/10.1234/example.2")
-        second["items"][0]["sourceItemNumber"] = 2
-        payload["items"].append(second["items"][0])
-        payload["briefDate"] = "2026-09-07"
-        payload["items"][0]["briefDate"] = "2026-09-07"
-        self.ingest(payload)
+    def test_unknown_source_publication_date_is_preserved_as_null(self):
+        self.ingest(sample_handoff(source_published_at=None))
+        item_id = stream.load_database(self.database)[0]["itemId"]
+        stream.review_item(self.database, item_id, "publish", "2026-09-08")
+        item = stream.generate_public_feed(self.database, self.public)["items"][0]
+        self.assertIsNone(item["sourcePublishedAt"])
+        self.assertEqual(item["dateAdded"], "2026-09-07")
+
+    def test_public_generation_is_deterministic_and_newest_added_first(self):
+        self.ingest(sample_handoff(brief_date="2026-09-06", source_key="10.1234/example.1", source_url="https://doi.org/10.1234/example.1"))
+        self.ingest(sample_handoff(brief_date="2026-09-07", source_key="10.1234/example.2", source_url="https://doi.org/10.1234/example.2"))
         records = stream.load_database(self.database)
-        stream.review_item(self.database, records[0]["itemId"], "publish", "2026-09-08")
-        stream.review_item(self.database, records[1]["itemId"], "publish", "2026-09-09")
+        for record in records:
+            stream.review_item(self.database, record["itemId"], "publish", "2026-09-09")
         stream.generate_public_feed(self.database, self.public)
         first_bytes = self.public.read_bytes()
         stream.generate_public_feed(self.database, self.public)
         self.assertEqual(first_bytes, self.public.read_bytes())
         page = json.loads(first_bytes)
-        self.assertEqual([item["publishedAt"] for item in page["items"]], ["2026-09-09", "2026-09-08"])
+        self.assertEqual([item["dateAdded"] for item in page["items"]], ["2026-09-07", "2026-09-06"])
 
     def test_multi_category_values_survive_public_projection(self):
         self.ingest()
@@ -365,17 +374,21 @@ class RepositoryResearchStateTests(unittest.TestCase):
         self.assertEqual(set(schema["$defs"]["category"]["enum"]), set(stream.CATEGORIES))
         self.assertEqual(set(schema["$defs"]["item"]["required"]), stream.HANDOFF_ITEM_FIELDS)
 
-    def test_six_seed_items_are_pending_canonical_records(self):
+    def test_backfilled_repository_corpus_has_published_and_held_items(self):
         records = stream.load_database(REPO / "data/research-stream/research_items.jsonl")
-        self.assertEqual(len(records), 6)
-        self.assertTrue(all(record["streamDecision"] == "pending" for record in records))
-        self.assertTrue(all(record["decisionDate"] is None and record["publishedAt"] is None for record in records))
+        self.assertGreaterEqual(len(records), 90)
+        self.assertGreaterEqual(sum(record["streamDecision"] == "publish" for record in records), 80)
+        self.assertGreaterEqual(sum(record["streamDecision"] == "hold" for record in records), 1)
+        self.assertTrue(all(record["decisionDate"] is not None for record in records if record["streamDecision"] != "pending"))
 
-    def test_checked_in_public_stream_is_empty(self):
+    def test_checked_in_public_stream_matches_publish_count_after_build(self):
+        records = stream.load_database(REPO / "data/research-stream/research_items.jsonl")
         page = json.loads((REPO / "data/research-stream/public_feed.json").read_text(encoding="utf-8"))
         self.assertEqual(page["schemaVersion"], stream.PUBLIC_SCHEMA)
-        self.assertEqual(page["totalItems"], 0)
-        self.assertEqual(page["items"], [])
+        self.assertEqual(page["totalItems"], sum(record["streamDecision"] == "publish" for record in records))
+        self.assertEqual(len(page["items"]), min(24, page["totalItems"]))
+        if page["items"]:
+            self.assertEqual(set(page["items"][0]), set(stream.PUBLIC_FIELDS))
 
 
 if __name__ == "__main__":
