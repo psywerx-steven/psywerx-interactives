@@ -12,6 +12,7 @@
   const dialog = $('#detail-dialog');
   const loadOlderButton = $('#load-older');
   const loadedIds = new Set($$('.feed-item').map(card => card.dataset.feedId));
+  const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   let nextPage = data.feedPagination && data.feedPagination.nextPage;
   let lastFocus = null;
 
@@ -40,6 +41,19 @@
     } catch (_) {
       return null;
     }
+  }
+
+  function validIsoDate(value, nullable = false) {
+    if (value === null) return nullable;
+    if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
+    const parsed = new Date(value + 'T00:00:00Z');
+    return !Number.isNaN(parsed.getTime()) && parsed.toISOString().slice(0, 10) === value;
+  }
+
+  function formatDate(value) {
+    if (value === null) return 'date unavailable';
+    const [year, month, day] = value.split('-').map(Number);
+    return `${monthNames[month - 1]} ${day}, ${year}`;
   }
 
   function openDialog(eyebrow, title, children) {
@@ -167,13 +181,20 @@
       typeof item.attribution === 'string' && item.attribution.trim() &&
       safeExternalUrl(item.sourceUrl) &&
       Array.isArray(item.categories) && item.categories.length > 0 &&
-      item.categories.every(category => validFilters.has(category));
+      item.categories.every(category => validFilters.has(category)) &&
+      validIsoDate(item.sourcePublishedAt, true) &&
+      validIsoDate(item.dateAdded);
   }
 
   function renderFeedCard(item) {
     const article = node('article', null, 'feed-item');
     article.dataset.categories = item.categories.join(' ');
     article.dataset.feedId = item.itemId;
+    const meta = node('div', null, 'feed-meta');
+    meta.append(
+      node('span', 'Published ' + formatDate(item.sourcePublishedAt)),
+      node('span', 'Added ' + formatDate(item.dateAdded))
+    );
     const title = node('h3', item.streamTitle);
     const summary = node('p', item.streamSummary);
     const source = node('div', null, 'feed-source');
@@ -184,7 +205,7 @@
     const arrow = node('span', '↗', 'arrow');
     arrow.setAttribute('aria-hidden', 'true');
     source.append(link, arrow);
-    article.append(title, summary, source);
+    article.append(meta, title, summary, source);
     return article;
   }
 
@@ -231,7 +252,7 @@
     openDialog('RESEARCH & DISCUSSION', 'From the Morning Brief to the public stream.', [
       node('p', 'Each Morning Brief contributes every research item to the PSYWERX research database. Inclusion there supports retrieval, source tracking, deduplication, and later analysis.'),
       node('p', 'Only items the owner explicitly chooses to publish appear here. Hold and reject decisions keep an item in the research database without placing it in the public stream.'),
-      node('p', 'Use more than one filter to show selections matching any of your chosen interests. Older published selections load in small pages as the stream grows.')
+      node('p', 'Published identifies the source publication date when known; Added identifies the Morning Brief date when PSYWERX first added the item. Use more than one filter to show selections matching any of your chosen interests.')
     ]);
   }));
 
