@@ -87,6 +87,9 @@ jobs:
       - name: Validate additive Actions and Events repository
         run: python scripts/actions_events_v1.py --validate-repository
 
+      - name: Validate SOC-F07 candidate network pilot and protected science
+        run: python -m unittest discover -s tests -p "test_soc_f07_pilot.py"
+
       - name: Run eight-Layer synthetic structural pilot
         run: python scripts/actions_events_synthetic.py
 
@@ -164,6 +167,9 @@ jobs:
 
       - name: Validate additive Actions and Events repository
         run: python scripts/actions_events_v1.py --validate-repository
+
+      - name: Validate SOC-F07 candidate network pilot and protected science
+        run: python -m unittest discover -s tests -p "test_soc_f07_pilot.py"
 
       - name: Run eight-Layer synthetic structural pilot
         run: python scripts/actions_events_synthetic.py

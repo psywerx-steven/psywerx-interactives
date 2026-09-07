@@ -287,7 +287,7 @@ def build():
             w['passA']['evidence'].append(ev); sidecars.append(side)
         if disp in {'REVISION_CANDIDATE','RETYPE_CANDIDATE'}:
             rid='REV-CAND-SOC-F07-'+row['id']
-            revisions.append({'id':rid,'recordClass':'NON_GOVERNED_REVISION_PROPOSAL','currentRecord':row,'currentRecordHash':ae.digest(row),
+            revisions.append({'id':rid,'revision':1,'recordClass':'NON_GOVERNED_REVISION_PROPOSAL','currentRecord':row,'currentRecordHash':ae.digest(row),
                 'primaryDisposition':disp,'exactProposal':proposal,'fieldChanges':{
                     'endpoints':'Retain IDs for review; any replacement endpoint requires separate human decision',
                     'relationFamily':'Retype alternative only; replacement predicate unresolved' if disp=='RETYPE_CANDIDATE' else 'CAUSAL remains a research hypothesis, not a revised authoritative edge',
@@ -321,6 +321,14 @@ def build():
                   ('003','006',['011'],inp.ACTIONS[5][-1],{'011':'MIXED'})]
     for args in effect_specs:
         e,ev=effect(args[0],args[1],sources,*args[2:]); w['passB']['effectAssertions'].append(e); w['passB']['evidenceAssessments'].append(ev)
+    w['passA']['sourceQueue']=[{'id':'SRCQ-'+s['id'],'questionOrDisposition':'Candidate registration/review only: '+s['title'],
+        'ownerFamilyId':'SOC-F07','consultedFamilyIds':[],'recordIds':[s['id']],
+        'rationale':s['limitations'],'status':'RESEARCH_NEEDED'} for s in registry if s['id'].startswith('SRC-CAND')]
+    w['noFindings']=[{'id':'NO-FINDING-SOC-F07-'+str(n),'questionOrDisposition':text,'ownerFamilyId':'SOC-F07',
+                      'consultedFamilyIds':[],'recordIds':[],'rationale':'Structured searches completed at recorded access depth; absence of an adequate finding is not a zero effect.',
+                      'status':'RESEARCH_NEEDED'} for n,text in enumerate([
+                      'No adequately supported exact SOC-102 effect retained; UNKNOWN is not zero.',
+                      'No exact relationship-targeted effect, moderation or transmitted causal pathway retained.'],1)]
     findings=[f for s in sidecars for f in s['sourceFindings']]+[f for e in w['passB']['evidenceAssessments'] for f in e['sourceFindings']]
     for f in findings: ae.schema_set().validate('source-finding',f)
     ae.validate_workspace(w,c)
@@ -332,10 +340,14 @@ def build():
     if not report['passed']: raise ValueError('Protected pre-existing scientific content changed')
     entity_reviews, gaps, antecedents=entities_review(frozen,audits,w)
     search=search_ledgers(w,audits,keys)
+    graph=graph_report(frozen)
     counts=counts_report(w,audits,registry,findings,hypotheses,revisions,gaps)
     manifest={'auditId':inp.AUDIT,'baselineCommit':inp.BASELINE,'branch':inp.BRANCH,'recordClass':'NON_GOVERNED_PILOT_AUDIT',
-              'frozenFamily':frozen['family'],'counts':counts,'protectedScience':{'passed':report['passed'],'filesCompared':report['filesCompared']},
+              'frozenFamily':frozen['family'],'counts':counts,'graph':graph,'protectedScience':{'passed':report['passed'],'filesCompared':report['filesCompared']},
               'sourceRegisterVersion':ae.digest(ae.read(ROOT/'data/sources.json')),'riSourceRegisterVersion':ae.digest(ae.read(ROOT/'data/relationship-intervention-v1/source-register.json')),
+              'schemaVersions':{'entityCodebook':ae.read(ROOT/'data/codebook.json')['schemaVersion'],
+                  'entityPartitionGovernance':'v0.3','relationshipV1':'1.0.0','actionsEventsV1':'1.0.0',
+                  'sourceRegisterState':'Exact canonical register hashes above; no new version minted'},
               'schemaHashes':{str(p.relative_to(ROOT)).replace('\\','/'):hashlib.sha256(p.read_bytes().replace(b'\r\n',b'\n')).hexdigest() for p in sorted((ROOT/'schemas').rglob('*.json'))},
               'derivationVersions':{e['id']:{'recordHash':ae.digest(e),'namedVersion':e.get('derivationVersion'),'missingVersionNotInvented':True} for e in frozen['entities'] if e['entityType']!='DRIVER'},
               'newGoverned':0,'newActive':0,'approval':DECISION,'scientificReadiness':'CANDIDATE_REVIEW_ONLY; no activatable yield promised',
@@ -353,6 +365,32 @@ def build():
     emit(DOCS/'SOC_F07_AUDIT_MANIFEST.json',manifest)
     render_docs(manifest,registry,audits,revisions,hypotheses,entity_reviews,gaps,antecedents,search,w,findings)
     return manifest
+
+
+def graph_report(frozen):
+    current=af.enriched_inventory()
+    before=ae.read(BASE/'inventory.json')
+    members=set(frozen['family']['memberIds'])
+    incident=lambda inv:[r for r in inv['edges'] if r['source'] in members or r['target'] in members]
+    old,new=incident(before),incident(current)
+    if old!=new:
+        raise ValueError('Production incident graph drift from frozen baseline')
+    degree=[{k:e[k] for k in ('id','causalIn','causalOut','causalIsolated')} for e in current['entities'] if e['id'] in members]
+    byid={e['id']:e for e in current['entities']}
+    split=Counter()
+    for e in new:
+        a,b=byid[e['source']],byid[e['target']]
+        scope='internal' if a['familyId']==b['familyId'] else 'sameLayerCrossFamily' if a['layer']==b['layer'] else 'crossLayer'
+        split[e['semanticType']+'/'+scope]+=1
+    pairs={(e['source'],e['target']) for e in new if e['semanticType']=='CAUSAL'}
+    return {'incidentBefore':len(old),'incidentAfter':len(new),'degreeBefore':degree,'degreeAfter':degree,
+            'scopeBySemantics':dict(split),'causalIsolates':[e['id'] for e in degree if e['causalIsolated']],
+            'maximumFamilyCausalDegree':max(e['causalIn']+e['causalOut'] for e in degree),
+            'reciprocalIncidentPairs':sorted([list(p) for p in pairs if tuple(reversed(p)) in pairs]),
+            'newCausalCycles':0,'cycleBasis':'No active edge or causal candidate added; complete incident edge set unchanged, not a claim that the entire legacy graph is acyclic.',
+            'candidateCausalDegreeContribution':0,'duplicatePropositions':0,
+            'unresolvedIntermediateQuestions':['H06','H10','H11','H19'],
+            'rdsInputOverlap':'All twelve metrics depend on external network representations; generic entity-only shared-input detector undercounts this. Per-RDS ledger corrects audit visibility without changing architecture.'}
 
 
 def entities_review(frozen,audits,w):
@@ -387,7 +425,7 @@ def entities_review(frozen,audits,w):
                  'prohibitedShortcut':'No direct effect on '+eid+'; social ties are not ontology Relationships'}
             antecedents.append(ant)
             gid='GAP-SOC-F07-'+eid
-            gaps.append({'id':gid,'rdsId':eid,'question':note[2],'missingTarget':'Complete real-network configuration / contact-opportunity / boundary representation',
+            gaps.append({'id':gid,'revision':1,'rdsId':eid,'question':note[2],'missingTarget':'Complete real-network configuration / contact-opportunity / boundary representation',
                          'existingDriverAlternatives':['SOC-101','SOC-102','SOC-103'],'whyNotSubstitute':'Rates do not uniquely specify ties or adjacency; do not mint a Driver.',
                          'governance':governance(gid,blocked=True),'humanDecision':DECISION})
     return reviews,gaps,antecedents
@@ -443,7 +481,7 @@ def render_docs(m,sources,audits,revisions,hypotheses,entities,gaps,antecedents,
     header=f"Audit: `{inp.AUDIT}`. Frozen baseline: `{inp.BASELINE}`. Candidate-only; no governance, activation or source registration.\n"
     emit(DOCS/'README.md','# SOC-F07 — Network Structure & Position\n\n'+header+
          '\nThe pilot retained one conditional derivational candidate, eight reusable happening identities, and three research-needed Driver-effect hypotheses. It did not create new causal, association, moderation or pathway records. The principal finding is a missing complete network-configuration target beneath the calculated statistics.\n\n'+
-         '\n'.join('- ['+name+']('+name+')' for name in ['SOC_F07_ENTITY_RDS_REVIEW.md','SOC_F07_EXISTING_RELATIONSHIP_AUDIT.md','SOC_F07_EVIDENCE_SUMMARY.md','SOC_F07_RESEARCH_LOG.md','SOC_F07_COMPLETENESS_REPORT.md','SOC_F07_GOVERNANCE_DECISION_PACKAGE.md','SOC_F07_SPECIAL_NETWORK_FINDINGS.md','SOC_F07_AUDIT_MANIFEST.json','EXECUTION.md'])+
+         '\n'.join('- ['+name+']('+name+')' for name in ['SOC_F07_ENTITY_RDS_REVIEW.md','SOC_F07_EXISTING_RELATIONSHIP_AUDIT.md','SOC_F07_EVIDENCE_SUMMARY.md','SOC_F07_RESEARCH_LOG.md','SOC_F07_COMPLETENESS_REPORT.md','SOC_F07_GOVERNANCE_DECISION_PACKAGE.md','SOC_F07_SPECIAL_NETWORK_FINDINGS.md','SOC_F07_VALIDATION.md','SOC_F07_AUDIT_MANIFEST.json','EXECUTION.md'])+
          '\n\nMachine-readable records: [candidate workspace](../../../../data/candidates/actions-events-v1/SOC-F07/workspace.json). Original sources are linked in the evidence summary. No recommendation or scale-up authorization is implied.\n')
     text='# Entity and RDS review\n\n'+header+'\nAll canonical fields, including aliases, crosswalks, evidence notes and missing values, are frozen in the baseline and fully captured in [structured review](../../../../data/candidates/actions-events-v1/SOC-F07/entity-rds-review.json). Canonical narrative is not newly endorsed science.\n'
     for e in entities:
@@ -494,6 +532,8 @@ def render_decisions(header,m,audits,revisions,hypotheses,gaps,w):
     text='# Completeness and integrity report\n\n'+header+'\nRecorded coverage flags are not instructions to invent edges.\n'+table(['Metric','Value'],list(fam.items()))
     text+='\n## Corpus and candidate counts\n\n'+table(['Metric','Value'],list(m['counts'].items()))
     text+='\n## Structural flags\n\nNo production edge changed, so before/after production degree, isolates, cycles and connectivity are identical. All five current RDS causal sources were audited: SOC-052, SOC-054, SOC-055, SOC-056, SOC-053. Four internal RDS-to-RDS claims have shared-input/temporal risks. The one same-Layer outgoing claim needs scoped reinforcement evidence. Suspicious-hub/contradiction signals are review flags, not diagnoses. No new causal candidate, reciprocal edge or pathway was created.\n\nThe retained derivation is noncausal and adds no causal degree. RDS metrics can share adjacency, degree distributions, shortest paths and partitions; missing data and graph-size effects are not independent causes. No duplicate projection was counted.\n\n## RDS and action coverage\n\nAll twelve RDS have explicit antecedent/target-gap ledgers; none is an EffectAssertion direct target. SOC-102 has complete search screening across eight origins/nine domains/eleven properties, but no adequately aligned supported effect. Eight identities do not imply eight efficacious interventions. Five origins have retained identities (SOC/INS/ENV/INF/TEC); BIO/PSY/CUL are searched no-findings for exact effects. No identity or effect is practitioner-eligible.\n\n## Protected science\n\n'+str(m['protectedScience'])+'; comparison covers pre-existing data, schemas, migration handoff, scenario service, BIO-F01 and INF-F03 documents. New GOVERNED=0; new ACTIVE=0. Production counts remain 770 Drivers / 41 RDS / 811 entities / 457 active Relationships / 436 active causal.\n\n## Self-review\n\nAll three potential Driver effects were retained only as research-needed hypotheses. No direct metric manipulation, intervention ranking, numeric execution, homophily-as-influence or reachability-as-mediation was admitted. Per-record findings distinguish source designs; model/theory evidence is not labeled empirical. Access limitations prevent stronger exact-edge claims.\n'
+    text+='\n## Exact before/after graph metrics\n\n'+table(['Entity','Causal in before/after','Causal out before/after','Isolated'],[(e['id'],str(e['causalIn'])+'/'+str(e['causalIn']),str(e['causalOut'])+'/'+str(e['causalOut']),e['causalIsolated']) for e in m['graph']['degreeAfter']])
+    text+='\nSemantic scope split: '+str(m['graph']['scopeBySemantics'])+'. Maximum Family incident causal degree: '+str(m['graph']['maximumFamilyCausalDegree'])+'. No reciprocal incident pair. Generic entity-ID overlap metrics miss shared external adjacency inputs; this pilot flags that limitation explicitly.\n'
     emit(DOCS/'SOC_F07_COMPLETENESS_REPORT.md',text)
 
 

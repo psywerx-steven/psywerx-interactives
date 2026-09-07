@@ -4,15 +4,15 @@
     "entity-rds-review.json": "d67543264a5f712ce0b4e31bac89ce16b0a48e210db3c749bee40d66768f6189",
     "existing-relationship-audit.json": "675d365070bd590eaef8ac08726602debb88b97ed6f9efa3262a5c5dee957029",
     "hypotheses.json": "87d92a8dde71d48c0c98d607f5e6003cbe7027dbcb012a93e073ff7f9cbf64ee",
-    "ontology-target-gaps.json": "d2a84499491bf46d7f6d939faf2b42d59ad0d931a40e8588a9e2a045fe874f1f",
+    "ontology-target-gaps.json": "c1fb34c36a8f5b18cce6e476587b5960bc3970d0491bd26c572bc80dbda5c1d7",
     "protected-science.json": "3269fb06978eb1c7306128d6e20290f19791f81b1cf7df0dee44fc3b3e0a0ebf",
     "rds-antecedent-ledger.json": "1fb8d16f769d7cb973118a9c3adfbfe7e03cfa664643c010af4a1a914059485f",
-    "revision-proposals.json": "7a93a649d09bae44355c138509fb208d3bb620f505aca3721c1d94ab5de0a0f7",
+    "revision-proposals.json": "1835d78637d6bd81161126b1b856212dc4059671d3ca781bb962c43e6be5fba0",
     "search-ledger.json": "f81c3cd384ebdee310cc373b5833f63d27efd4c7f9dfb439f812cf9b97e1cb57",
     "source-findings.json": "49be8c793ffd019507a3214352786b229760ea771afc89ce91e7765eab203696",
     "source-registration-queue.json": "0f212b05680d5d548caab9a0d2f29eb778305a1a6341c6ba05b1333f73ef2cc4",
     "source-registry.json": "a07ae1d95a075d6bcc15a150b49778e2cde5bf6310783ad90e196dcdb73edbfa",
-    "workspace.json": "d526a4b3b0eee6f311d871105f7f0563b3f86d2a86a5d43f5a41250e064de403"
+    "workspace.json": "4ad816adb1ddf5ed8b2595e743ced84f6b974ebee62ff2516df4667565958f0d"
   },
   "auditId": "AUD-SOC-F07-AE-V1-20260906-001",
   "baselineCommit": "f0be9c24288bd128231e0d1243b34c03ad055906",
@@ -179,6 +179,198 @@
     "rdsCausalSourceCount": 5,
     "sameLayerCrossFamily": 1
   },
+  "graph": {
+    "candidateCausalDegreeContribution": 0,
+    "causalIsolates": [
+      "RDS-0005",
+      "RDS-0006",
+      "RDS-0007",
+      "SOC-049",
+      "SOC-050",
+      "SOC-051",
+      "SOC-102"
+    ],
+    "cycleBasis": "No active edge or causal candidate added; complete incident edge set unchanged, not a claim that the entire legacy graph is acyclic.",
+    "degreeAfter": [
+      {
+        "causalIn": 0,
+        "causalIsolated": true,
+        "causalOut": 0,
+        "id": "RDS-0005"
+      },
+      {
+        "causalIn": 0,
+        "causalIsolated": true,
+        "causalOut": 0,
+        "id": "RDS-0006"
+      },
+      {
+        "causalIn": 0,
+        "causalIsolated": true,
+        "causalOut": 0,
+        "id": "RDS-0007"
+      },
+      {
+        "causalIn": 0,
+        "causalIsolated": true,
+        "causalOut": 0,
+        "id": "SOC-049"
+      },
+      {
+        "causalIn": 0,
+        "causalIsolated": true,
+        "causalOut": 0,
+        "id": "SOC-050"
+      },
+      {
+        "causalIn": 0,
+        "causalIsolated": true,
+        "causalOut": 0,
+        "id": "SOC-051"
+      },
+      {
+        "causalIn": 0,
+        "causalIsolated": false,
+        "causalOut": 1,
+        "id": "SOC-052"
+      },
+      {
+        "causalIn": 1,
+        "causalIsolated": false,
+        "causalOut": 1,
+        "id": "SOC-053"
+      },
+      {
+        "causalIn": 0,
+        "causalIsolated": false,
+        "causalOut": 1,
+        "id": "SOC-054"
+      },
+      {
+        "causalIn": 0,
+        "causalIsolated": false,
+        "causalOut": 1,
+        "id": "SOC-055"
+      },
+      {
+        "causalIn": 1,
+        "causalIsolated": false,
+        "causalOut": 1,
+        "id": "SOC-056"
+      },
+      {
+        "causalIn": 4,
+        "causalIsolated": false,
+        "causalOut": 0,
+        "id": "SOC-057"
+      },
+      {
+        "causalIn": 0,
+        "causalIsolated": true,
+        "causalOut": 0,
+        "id": "SOC-102"
+      }
+    ],
+    "degreeBefore": [
+      {
+        "causalIn": 0,
+        "causalIsolated": true,
+        "causalOut": 0,
+        "id": "RDS-0005"
+      },
+      {
+        "causalIn": 0,
+        "causalIsolated": true,
+        "causalOut": 0,
+        "id": "RDS-0006"
+      },
+      {
+        "causalIn": 0,
+        "causalIsolated": true,
+        "causalOut": 0,
+        "id": "RDS-0007"
+      },
+      {
+        "causalIn": 0,
+        "causalIsolated": true,
+        "causalOut": 0,
+        "id": "SOC-049"
+      },
+      {
+        "causalIn": 0,
+        "causalIsolated": true,
+        "causalOut": 0,
+        "id": "SOC-050"
+      },
+      {
+        "causalIn": 0,
+        "causalIsolated": true,
+        "causalOut": 0,
+        "id": "SOC-051"
+      },
+      {
+        "causalIn": 0,
+        "causalIsolated": false,
+        "causalOut": 1,
+        "id": "SOC-052"
+      },
+      {
+        "causalIn": 1,
+        "causalIsolated": false,
+        "causalOut": 1,
+        "id": "SOC-053"
+      },
+      {
+        "causalIn": 0,
+        "causalIsolated": false,
+        "causalOut": 1,
+        "id": "SOC-054"
+      },
+      {
+        "causalIn": 0,
+        "causalIsolated": false,
+        "causalOut": 1,
+        "id": "SOC-055"
+      },
+      {
+        "causalIn": 1,
+        "causalIsolated": false,
+        "causalOut": 1,
+        "id": "SOC-056"
+      },
+      {
+        "causalIn": 4,
+        "causalIsolated": false,
+        "causalOut": 0,
+        "id": "SOC-057"
+      },
+      {
+        "causalIn": 0,
+        "causalIsolated": true,
+        "causalOut": 0,
+        "id": "SOC-102"
+      }
+    ],
+    "duplicatePropositions": 0,
+    "incidentAfter": 10,
+    "incidentBefore": 10,
+    "maximumFamilyCausalDegree": 4,
+    "newCausalCycles": 0,
+    "rdsInputOverlap": "All twelve metrics depend on external network representations; generic entity-only shared-input detector undercounts this. Per-RDS ledger corrects audit visibility without changing architecture.",
+    "reciprocalIncidentPairs": [],
+    "scopeBySemantics": {
+      "CAUSAL/crossLayer": 2,
+      "CAUSAL/internal": 4,
+      "CAUSAL/sameLayerCrossFamily": 1,
+      "SEMANTIC/sameLayerCrossFamily": 3
+    },
+    "unresolvedIntermediateQuestions": [
+      "H06",
+      "H10",
+      "H11",
+      "H19"
+    ]
+  },
   "newActive": 0,
   "newGoverned": 0,
   "protectedScience": {
@@ -208,6 +400,13 @@
     "schemas/relationship-intervention/v1/intervention-v1.schema.json": "4b49519c748d002b29e88057e81a9416ba658c24b584d0d48e2292c559fb7ae6",
     "schemas/relationship-intervention/v1/relationship-v1.schema.json": "1463cfb29c0d6cbaf76e8798b90a92857341b3e599a9616133aec713ff119599",
     "schemas/relationship-intervention/v1/source-record-v1.schema.json": "23cf265873fe00856fbb11c48415bf41e3e0d531492f81bab445aa868732e417"
+  },
+  "schemaVersions": {
+    "actionsEventsV1": "1.0.0",
+    "entityCodebook": "1.0",
+    "entityPartitionGovernance": "v0.3",
+    "relationshipV1": "1.0.0",
+    "sourceRegisterState": "Exact canonical register hashes above; no new version minted"
   },
   "scientificReadiness": "CANDIDATE_REVIEW_ONLY; no activatable yield promised",
   "selfReview": [

@@ -69,3 +69,24 @@ All twelve RDS have explicit antecedent/target-gap ledgers; none is an EffectAss
 ## Self-review
 
 All three potential Driver effects were retained only as research-needed hypotheses. No direct metric manipulation, intervention ranking, numeric execution, homophily-as-influence or reachability-as-mediation was admitted. Per-record findings distinguish source designs; model/theory evidence is not labeled empirical. Access limitations prevent stronger exact-edge claims.
+
+## Exact before/after graph metrics
+
+
+|Entity | Causal in before/after | Causal out before/after | Isolated |
+|--- | --- | --- | --- |
+| RDS-0005 | 0/0 | 0/0 | True |
+| RDS-0006 | 0/0 | 0/0 | True |
+| RDS-0007 | 0/0 | 0/0 | True |
+| SOC-049 | 0/0 | 0/0 | True |
+| SOC-050 | 0/0 | 0/0 | True |
+| SOC-051 | 0/0 | 0/0 | True |
+| SOC-052 | 0/0 | 1/1 | False |
+| SOC-053 | 1/1 | 1/1 | False |
+| SOC-054 | 0/0 | 1/1 | False |
+| SOC-055 | 0/0 | 1/1 | False |
+| SOC-056 | 1/1 | 1/1 | False |
+| SOC-057 | 4/4 | 0/0 | False |
+| SOC-102 | 0/0 | 0/0 | True |
+
+Semantic scope split: {'CAUSAL/crossLayer': 2, 'SEMANTIC/sameLayerCrossFamily': 3, 'CAUSAL/internal': 4, 'CAUSAL/sameLayerCrossFamily': 1}. Maximum Family incident causal degree: 4. No reciprocal incident pair. Generic entity-ID overlap metrics miss shared external adjacency inputs; this pilot flags that limitation explicitly.

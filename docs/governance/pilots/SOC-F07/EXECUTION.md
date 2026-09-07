@@ -94,3 +94,27 @@ Current milestone: skeptical semantic review and regression validation.
 Exact resume point: add pilot tests and deterministic graph/coverage checks,
 run canonical suites, correct only in-scope mechanical defects, then commit/push
 and open an unmerged PR. No canonical science may change.
+
+## Checkpoint 3 — skeptical review and local regression
+
+Research checkpoint: `a6b3eb2`; branch unchanged. All local required suites pass:
+35 SOC-F07 tests, 249 prior canonical Python regressions (2 Windows symlink skips),
+21 scenario-service tests, RI/AE repository validation, eight-Layer synthetic
+regression, deterministic migration regeneration, Python compilation, tracked
+JavaScript parsing, Markdown/local links and diff whitespace checks.
+
+The final semantic review retained UNKNOWN, not an established signed effect, on
+the three research-needed effects. There are no formal new causal, moderation,
+association or pathway records. Graph membership, degree and all ten incident
+propositions match the frozen baseline. All 133 pre-existing protected files
+remain scientifically identical; no blocked field or prior-pilot repair occurred.
+
+Remote safety inspection: repository has only the read-only governance CI workflow.
+GitHub Pages is legacy mode sourcing main `/`; a separate candidate branch and
+unmerged PR do not update that publication source. No deployment trigger, setting,
+secret, permission or workflow behavior was changed; only SOC-F07 test steps added.
+
+Current milestone: final scope review, commit/push and final-head Linux/Windows CI.
+Exact resume point: open the candidate-only PR after commit, verify both required
+CI jobs, record PR/head/mergeability/worktree and STOP unmerged. See
+[validation report](SOC_F07_VALIDATION.md) for tests, source limits and skeptical findings.
