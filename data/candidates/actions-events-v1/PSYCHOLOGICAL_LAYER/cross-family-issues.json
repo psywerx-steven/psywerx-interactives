@@ -633,7 +633,7 @@
     "ownerFamilyId": "PSY-F05",
     "consultation": {
       "PSY-F05": "CANDIDATE_REVIEW_COMPLETE",
-      "PSY-F10": "NOT_YET_PROCESSED",
+      "PSY-F10": "CANDIDATE_REVIEW_COMPLETE",
       "BIO-F02": "ENDPOINT_ONLY_REVIEW_NO_EXTERNAL_FAMILY_AUDIT",
       "SOC-F04": "ENDPOINT_ONLY_REVIEW_NO_EXTERNAL_FAMILY_AUDIT",
       "SOC-F11": "ENDPOINT_ONLY_REVIEW_NO_EXTERNAL_FAMILY_AUDIT",
@@ -714,7 +714,7 @@
     "ownerFamilyId": "PSY-F06",
     "consultation": {
       "PSY-F06": "CANDIDATE_REVIEW_COMPLETE",
-      "PSY-F10": "NOT_YET_PROCESSED"
+      "PSY-F10": "CANDIDATE_REVIEW_COMPLETE"
     },
     "status": "RESEARCH_NEEDED",
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
@@ -1003,6 +1003,113 @@
     "consultation": {
       "PSY-F09": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F05": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F02": "CANDIDATE_REVIEW_COMPLETE"
+    },
+    "status": "RESEARCH_NEEDED",
+    "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+  },
+  {
+    "id": "CF-PSY-LAYER-0039",
+    "kind": "CONSTRUCT_BOUNDARY",
+    "familyIds": [
+      "PSY-F10",
+      "PSY-F05",
+      "PSY-F02"
+    ],
+    "recordIds": [
+      "PSY-084",
+      "PSY-085",
+      "PSY-086",
+      "PSY-008",
+      "PSY-041",
+      "PSY-043",
+      "REL-INF-044"
+    ],
+    "question": "Loss sensitivity, risk choice, perceived risk and reference differ; framing effect is not necessarily changed loss-aversion parameter.",
+    "classification": "DISTINCT",
+    "ownerFamilyId": "PSY-F10",
+    "consultation": {
+      "PSY-F10": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F05": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F02": "CANDIDATE_REVIEW_COMPLETE"
+    },
+    "status": "RESEARCH_NEEDED",
+    "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+  },
+  {
+    "id": "CF-PSY-LAYER-0040",
+    "kind": "CONSTRUCT_BOUNDARY",
+    "familyIds": [
+      "PSY-F10",
+      "PSY-F09",
+      "PSY-F14"
+    ],
+    "recordIds": [
+      "PSY-089",
+      "PSY-090",
+      "PSY-091",
+      "PSY-078",
+      "PSY-125",
+      "SRC205"
+    ],
+    "question": "Intrinsic discount rates, present-beta coding, current control and trait impulsivity differ. SRC205 DOI mismatch; reference is not signed RDS discrepancy.",
+    "classification": "MEASUREMENT_OVERLAP",
+    "ownerFamilyId": "PSY-F10",
+    "consultation": {
+      "PSY-F10": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F09": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F14": "NOT_YET_PROCESSED"
+    },
+    "status": "RESEARCH_NEEDED",
+    "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+  },
+  {
+    "id": "CF-PSY-LAYER-0041",
+    "kind": "CONSTRUCT_BOUNDARY",
+    "familyIds": [
+      "PSY-F10",
+      "PSY-F06",
+      "PSY-F04"
+    ],
+    "recordIds": [
+      "PSY-091",
+      "PSY-092",
+      "PSY-093",
+      "PSY-056",
+      "PSY-058",
+      "PSY-031"
+    ],
+    "question": "Effort valuation, capacity, conflict and default uptake are not interchangeable; same choice/RT data do not establish latent causes.",
+    "classification": "RELATED",
+    "ownerFamilyId": "PSY-F10",
+    "consultation": {
+      "PSY-F10": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F06": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F04": "CANDIDATE_REVIEW_COMPLETE"
+    },
+    "status": "RESEARCH_NEEDED",
+    "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+  },
+  {
+    "id": "CF-PSY-LAYER-0042",
+    "kind": "CONSTRUCT_BOUNDARY",
+    "familyIds": [
+      "PSY-F10",
+      "PSY-F01",
+      "PSY-F02"
+    ],
+    "recordIds": [
+      "PSY-087",
+      "PSY-088",
+      "PSY-003",
+      "PSY-132"
+    ],
+    "question": "Probability weighting, probability belief, ambiguity premium and Subjective Uncertainty (PSY-132) are distinct; intolerance-of-uncertainty scales are not identical to either subjective uncertainty or ambiguity aversion. Pointwise curve scope needs explicit identification.",
+    "classification": "DISTINCT",
+    "ownerFamilyId": "PSY-F10",
+    "consultation": {
+      "PSY-F10": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F01": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F02": "CANDIDATE_REVIEW_COMPLETE"
     },
     "status": "RESEARCH_NEEDED",

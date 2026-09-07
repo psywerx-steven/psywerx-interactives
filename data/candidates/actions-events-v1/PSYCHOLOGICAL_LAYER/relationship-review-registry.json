@@ -1799,13 +1799,32 @@
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT",
     "id": "REL-INF-044",
     "ownerFamilyId": "INF-F04",
-    "primaryDisposition": null,
+    "primaryDisposition": "REVISION_CANDIDATE",
     "processingFamilyId": "PSY-F10",
     "psychologicalFamilyIds": [
       "PSY-F10"
     ],
-    "review": null,
-    "reviewStatus": "NOT_STARTED",
+    "review": {
+      "causalGate": "STANDARD_CAUSAL",
+      "confidence": "MODERATE",
+      "disposition": "REVISION_CANDIDATE",
+      "evidence": "INSUFFICIENT",
+      "executionReview": "Existing governed record, source-family ownership and legacy incompleteness unchanged. No new executability or implemented revision.",
+      "id": "REL-INF-044",
+      "nullContrary": "Framing synthesis is heterogeneous; reference manipulation versus salience and design differ. No universal monotonic parameter effect.",
+      "proposal": "Specify realized frame, reference, exact utility/choice estimand and temporal contrast; retain review of endpoint/construct mismatch without implementing replacement.",
+      "rationale": "Framing can alter risky decisions through reference/representation; the canonical endpoint is loss-versus-gain sensitivity, not choice itself. Framework sources do not isolate a changed loss-aversion parameter.",
+      "rdsReview": "Driver endpoints; fitted statistics are not causal weights, shared choice measures not independent constructs.",
+      "sources": [
+        "SRC-494",
+        "SRC-496",
+        "SRC-408",
+        "SRC113",
+        "SRC-CAND-PSY-LAYER-0116"
+      ],
+      "strength": "LIMITED"
+    },
+    "reviewStatus": "REVIEWED_CANDIDATE_RECOMMENDATION",
     "scienceOrigin": "PRODUCTION_BASELINE",
     "scope": "CROSS_LAYER_INCOMING",
     "sourceBucket": "relationships"
@@ -6175,14 +6194,31 @@
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT",
     "id": "REL-PSY-040",
     "ownerFamilyId": "PSY-F14",
-    "primaryDisposition": null,
+    "primaryDisposition": "RESEARCH_NEEDED",
     "processingFamilyId": "PSY-F10",
     "psychologicalFamilyIds": [
       "PSY-F10",
       "PSY-F14"
     ],
-    "review": null,
-    "reviewStatus": "NOT_STARTED",
+    "review": {
+      "causalGate": "STANDARD_CAUSAL",
+      "confidence": "LOW",
+      "disposition": "RESEARCH_NEEDED",
+      "evidence": "INSUFFICIENT",
+      "executionReview": "Existing governed record, source-family ownership and legacy incompleteness unchanged. No new executability or implemented revision.",
+      "id": "REL-PSY-040",
+      "nullContrary": "Sharma intended review reports low task/self-report convergence; stored SRC205 DOI resolves unrelated SATAQ4 scale publication. No exact trait→beta causal design.",
+      "proposal": null,
+      "rationale": "Trait impulsivity measures and present-bias choices overlap imperfectly. The mechanism says associated, not identified causal change; delay discounting and immediate beta premium differ.",
+      "rdsReview": "Driver endpoints; fitted statistics are not causal weights, shared choice measures not independent constructs.",
+      "sources": [
+        "SRC205",
+        "SRC126",
+        "SRC-CAND-PSY-LAYER-0117"
+      ],
+      "strength": "LIMITED"
+    },
+    "reviewStatus": "REVIEWED_CANDIDATE_RECOMMENDATION",
     "scienceOrigin": "PRODUCTION_BASELINE",
     "scope": "PSYCHOLOGICAL_CROSS_FAMILY",
     "sourceBucket": "relationships"

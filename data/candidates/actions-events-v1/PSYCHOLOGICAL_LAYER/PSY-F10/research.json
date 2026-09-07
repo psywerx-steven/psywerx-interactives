@@ -1,0 +1,756 @@
+{
+  "programId": "AUD-PSYCHOLOGICAL-LAYER-AE-V1-20260907-001",
+  "familyId": "PSY-F10",
+  "auditId": "AUD-PSY-F10-AE-V1-20260907-001",
+  "status": "LOCAL_COMPLETE",
+  "recordedAt": "2026-09-07",
+  "recordedAtTime": "2026-09-07T20:25:08Z",
+  "actorClass": "AUTOMATED_PROCESS_OR_AI",
+  "baseline": "de38b3948f511602af7aa94a9cd80b78e1a00298",
+  "researchDepth": "Bounded valuation landscape and exact ten-Driver alignment; primary abstracts and selected EFT/default methods/results, not ten independent systematic reviews.",
+  "entityReviews": [
+    {
+      "id": "PSY-084",
+      "constructReview": "Equivalent loss versus gain sensitivity around a specified reference, not risk aversion or any framing contrast.",
+      "measurementReview": "Loss/gain utility fitting needs reference, units and model; choice changes may alter beliefs or reference without altering loss-aversion parameter.",
+      "timeReview": "Momentary task/domain/stakes versus person-level tendency; no universal coefficient.",
+      "boundaryLinks": [
+        "PSY-085",
+        "PSY-086",
+        "PSY-087"
+      ],
+      "sources": [
+        "SRC113",
+        "SRC187",
+        "SRC-408",
+        "SRC-CAND-PSY-LAYER-0116"
+      ],
+      "unresolved": "Existing INF-044 revision review only; no loss-aversion decrease from framing a risky choice."
+    },
+    {
+      "id": "PSY-085",
+      "constructReview": "Outcome level serving as gain/loss baseline, not generic goal salience or perceived discrepancy.",
+      "measurementReview": "Status quo, expectations, goals and social comparison can supply different baselines; outcome reference must be identified.",
+      "timeReview": "Reference adaptation and exposure timing require repeated measurement; no implicit fixed baseline.",
+      "boundaryLinks": [
+        "PSY-084",
+        "PSY-028",
+        "PSY-078"
+      ],
+      "sources": [
+        "SRC113",
+        "SRC187",
+        "SRC126"
+      ],
+      "unresolved": "No independent exact reference-level effect extracted; keep reference update versus changed utility separate."
+    },
+    {
+      "id": "PSY-086",
+      "constructReview": "Preference across uncertain versus specified certain outcomes, bipolar avoidance-to-seeking; not risk perception or fear.",
+      "measurementReview": "Domain/stakes, probability, expected value and framing must align; survey willingness and revealed choice differ.",
+      "timeReview": "State and stable heterogeneity coexist; between-person survey associations not within-person change.",
+      "boundaryLinks": [
+        "PSY-008",
+        "PSY-041",
+        "PSY-043",
+        "PSY-084"
+      ],
+      "sources": [
+        "SRC188",
+        "SRC115",
+        "SRC-CAND-PSY-LAYER-0117"
+      ],
+      "unresolved": "Reuse F05 fear/anger reviews; no cross-domain universal risk direction or new duplicate."
+    },
+    {
+      "id": "PSY-087",
+      "constructReview": "Transformation of stated/objective probability into decision weight, not subjective probability belief or graph weight.",
+      "measurementReview": "Structured weighting function; curves can cross. Experience changes sampling/beliefs as well as as-if decision weights.",
+      "timeReview": "Description versus learned experience requires explicit exposure histories and probability accuracy.",
+      "boundaryLinks": [
+        "PSY-086",
+        "PSY-088",
+        "PSY-003"
+      ],
+      "sources": [
+        "SRC187",
+        "SRC-CAND-PSY-LAYER-0112"
+      ],
+      "unresolved": "No uniform sign across probability range; FUNCTIONAL_SHAPE allowed for Driver but exact parameter/pointwise scope not established. No numerical execution."
+    },
+    {
+      "id": "PSY-088",
+      "constructReview": "Preference penalty for unknown/ill-specified probabilities relative to comparable known risk.",
+      "measurementReview": "Ambiguity level and domain-specific attitude differ; learning probabilities changes exposure, not necessarily aversion.",
+      "timeReview": "State/task conditions versus broader intolerance of uncertainty must not collapse.",
+      "boundaryLinks": [
+        "PSY-086",
+        "PSY-087",
+        "PSY-132"
+      ],
+      "sources": [
+        "SRC189",
+        "SRC123",
+        "SRC-CAND-PSY-LAYER-0117"
+      ],
+      "unresolved": "No exact canonical ambiguity-aversion manipulation retained; not universal aversion or intolerance scale identity."
+    },
+    {
+      "id": "PSY-089",
+      "constructReview": "Rate at which outcome value declines with delay; distinguish present premium, effort cost and moral impulsivity.",
+      "measurementReview": "Fitted rate, indifference points and AUC differ. Rung2019 tests two local indifference points rather than a uniquely identified full rate/curve.",
+      "timeReview": "Immediate cue-present effect differs from uncued persistence, trait change and actual future behavior.",
+      "boundaryLinks": [
+        "PSY-090",
+        "PSY-091",
+        "PSY-082"
+      ],
+      "sources": [
+        "SRC126",
+        "SRC190",
+        "SRC-CAND-PSY-LAYER-0107",
+        "SRC-CAND-PSY-LAYER-0108",
+        "SRC-CAND-PSY-LAYER-0110",
+        "SRC-CAND-PSY-LAYER-0114"
+      ],
+      "unresolved": "EA0018 RN pending exact rate/curve specification: positive local discounting evidence retained, no whole-construct universal decrease. LEVEL of intrinsic rate differs from RATE-of-change."
+    },
+    {
+      "id": "PSY-090",
+      "constructReview": "Extra premium for now over all positively delayed outcomes, not general steep discounting or all impulsive behavior.",
+      "measurementReview": "Conventional beta parameter falls as present bias rises; explicit coding convention required. A two-option now-later task does not separately identify beta and long-run delta.",
+      "timeReview": "Immediate/nonimmediate matched comparisons and repeated decisions needed; no permanent disposition from one task.",
+      "boundaryLinks": [
+        "PSY-089",
+        "PSY-125",
+        "PSY-082"
+      ],
+      "sources": [
+        "SRC126",
+        "SRC205",
+        "SRC190"
+      ],
+      "unresolved": "Canonical beta scale is preserved but directional convention flagged. Trait association and delay discounting do not prove trait→present-bias causality."
+    },
+    {
+      "id": "PSY-091",
+      "constructReview": "Decline in subjective outcome value as required effort increases; distinguish motivation, effort expenditure and capacity.",
+      "measurementReview": "Physical/cognitive effort costs depend on reward, baseline/comparator and task ability; drug/PET study estimates choices not broad executive capacity.",
+      "timeReview": "Acute drug/task effects versus enduring cost preference; no generalized pharmacologic benefit.",
+      "boundaryLinks": [
+        "PSY-031",
+        "PSY-035",
+        "PSY-057",
+        "PSY-058"
+      ],
+      "sources": [
+        "SRC191",
+        "SRC-CAND-PSY-LAYER-0113"
+      ],
+      "unresolved": "No exact whole-rate effect or dopaminergic causal Driver inferred from PET association; prescription/clinical use outside scope."
+    },
+    {
+      "id": "PSY-092",
+      "constructReview": "Subjective decision difficulty/tension under competing alternatives, not reaction time or deferral alone.",
+      "measurementReview": "Choice overload studies use satisfaction/confidence/regret/deferral; these are not interchangeable latent conflict measures.",
+      "timeReview": "During choice versus postchoice regret/confidence; no fixed more-options→conflict effect.",
+      "boundaryLinks": [
+        "PSY-056",
+        "PSY-084",
+        "PSY-088"
+      ],
+      "sources": [
+        "SRC192",
+        "SRC-CAND-PSY-LAYER-0118"
+      ],
+      "unresolved": "Heterogeneous null/positive choice-overload findings do not support universal direct conflict or task-difficulty identity."
+    },
+    {
+      "id": "PSY-093",
+      "constructReview": "Increased subjective preference from default/status-quo designation, not observed uptake alone.",
+      "measurementReview": "Selection can result from ease, inertia, endorsement or cost without independent preference change; latent construct must be separately aligned.",
+      "timeReview": "Current option designation, reversible choice and subsequent preference persistence separate.",
+      "boundaryLinks": [
+        "PSY-084",
+        "PSY-085",
+        "PSY-089"
+      ],
+      "sources": [
+        "SRC193",
+        "SRC-CAND-PSY-LAYER-0115"
+      ],
+      "unresolved": "EA0019 RN: strong default-choice literature is not sufficient evidence for exact subjective preference or practitioner permission."
+    }
+  ],
+  "existingReviews": [
+    {
+      "id": "REL-INF-044",
+      "disposition": "REVISION_CANDIDATE",
+      "rationale": "Framing can alter risky decisions through reference/representation; the canonical endpoint is loss-versus-gain sensitivity, not choice itself. Framework sources do not isolate a changed loss-aversion parameter.",
+      "nullContrary": "Framing synthesis is heterogeneous; reference manipulation versus salience and design differ. No universal monotonic parameter effect.",
+      "proposal": "Specify realized frame, reference, exact utility/choice estimand and temporal contrast; retain review of endpoint/construct mismatch without implementing replacement.",
+      "sources": [
+        "SRC-494",
+        "SRC-496",
+        "SRC-408",
+        "SRC113",
+        "SRC-CAND-PSY-LAYER-0116"
+      ],
+      "evidence": "INSUFFICIENT",
+      "strength": "LIMITED",
+      "confidence": "MODERATE",
+      "causalGate": "STANDARD_CAUSAL",
+      "rdsReview": "Driver endpoints; fitted statistics are not causal weights, shared choice measures not independent constructs.",
+      "executionReview": "Existing governed record, source-family ownership and legacy incompleteness unchanged. No new executability or implemented revision."
+    },
+    {
+      "id": "REL-PSY-040",
+      "disposition": "RESEARCH_NEEDED",
+      "rationale": "Trait impulsivity measures and present-bias choices overlap imperfectly. The mechanism says associated, not identified causal change; delay discounting and immediate beta premium differ.",
+      "nullContrary": "Sharma intended review reports low task/self-report convergence; stored SRC205 DOI resolves unrelated SATAQ4 scale publication. No exact trait→beta causal design.",
+      "proposal": null,
+      "sources": [
+        "SRC205",
+        "SRC126",
+        "SRC-CAND-PSY-LAYER-0117"
+      ],
+      "evidence": "INSUFFICIENT",
+      "strength": "LIMITED",
+      "confidence": "LOW",
+      "causalGate": "STANDARD_CAUSAL",
+      "rdsReview": "Driver endpoints; fitted statistics are not causal weights, shared choice measures not independent constructs.",
+      "executionReview": "Existing governed record, source-family ownership and legacy incompleteness unchanged. No new executability or implemented revision."
+    }
+  ],
+  "reusedExistingReviewIds": [
+    "REL-PSY-026",
+    "REL-PSY-027"
+  ],
+  "hypotheses": [
+    {
+      "id": "H-PSY-F10-01",
+      "semantics": "CAUSAL",
+      "status": "RESEARCH_NEEDED",
+      "question": "Positive future-episode cueing decreases PSY-089.",
+      "reason": "EA0018 preserves randomized local monetary choice effects, but exact canonical rate/curve and persistence not identified.",
+      "source": null,
+      "target": "PSY-089",
+      "sources": [
+        "SRC-CAND-PSY-LAYER-0107",
+        "SRC-CAND-PSY-LAYER-0108",
+        "SRC-CAND-PSY-LAYER-0110"
+      ]
+    },
+    {
+      "id": "H-PSY-F10-02",
+      "semantics": "NOT_A_VALID_MODELED_RELATIONSHIP",
+      "status": "REJECTED_HYPOTHESIS",
+      "question": "Any future thought permanently reduces trait impulsivity.",
+      "reason": "Cue-present local valuation is not stable disposition or every valence/time horizon.",
+      "source": null,
+      "target": "PSY-125",
+      "sources": [
+        "SRC-CAND-PSY-LAYER-0107",
+        "SRC-CAND-PSY-LAYER-0110"
+      ]
+    },
+    {
+      "id": "H-PSY-F10-03",
+      "semantics": "CAUSAL_PATHWAY",
+      "status": "RESEARCH_NEEDED",
+      "question": "Future thinking changes temporal horizon which transmits discounting effect.",
+      "reason": "Rung finds no expansion and control horizon contraction; regression does not identify mediator.",
+      "source": null,
+      "target": "PSY-089",
+      "sources": [
+        "SRC-CAND-PSY-LAYER-0110"
+      ]
+    },
+    {
+      "id": "H-PSY-F10-04",
+      "semantics": "NOT_A_VALID_MODELED_RELATIONSHIP",
+      "status": "REJECTED_HYPOTHESIS",
+      "question": "EFT proves a present-bias beta reduction.",
+      "reason": "General now-later indifference points do not separately identify present premium and long-run discounting.",
+      "source": null,
+      "target": "PSY-090",
+      "sources": [
+        "SRC126",
+        "SRC-CAND-PSY-LAYER-0110"
+      ]
+    },
+    {
+      "id": "H-PSY-F10-05",
+      "semantics": "CAUSAL",
+      "status": "RESEARCH_NEEDED",
+      "question": "Default designation increases subjective default preference.",
+      "reason": "EA0019 RN; choice uptake need not independently reveal mental preference.",
+      "source": null,
+      "target": "PSY-093",
+      "sources": [
+        "SRC-CAND-PSY-LAYER-0115",
+        "SRC193"
+      ]
+    },
+    {
+      "id": "H-PSY-F10-06",
+      "semantics": "NOT_A_VALID_MODELED_RELATIONSHIP",
+      "status": "REJECTED_HYPOTHESIS",
+      "question": "Default uptake proves voluntary endorsement or practitioner permission.",
+      "reason": "Ease, switching costs and demand can affect choice; ethics/control assessment separate.",
+      "source": null,
+      "target": "PSY-093",
+      "sources": [
+        "SRC-CAND-PSY-LAYER-0115"
+      ]
+    },
+    {
+      "id": "H-PSY-F10-07",
+      "semantics": "CAUSAL",
+      "status": "RESEARCH_NEEDED",
+      "question": "Gain/loss framing changes loss-aversion strength.",
+      "reason": "Existing INF-044 revision path; risky-choice effect not necessarily parameter change.",
+      "source": "INF-017",
+      "target": "PSY-084",
+      "sources": [
+        "SRC-408",
+        "SRC113",
+        "SRC-CAND-PSY-LAYER-0116"
+      ]
+    },
+    {
+      "id": "H-PSY-F10-08",
+      "semantics": "SEMANTIC",
+      "status": "REJECTED_HYPOTHESIS",
+      "question": "Loss aversion and risk aversion are synonymous.",
+      "reason": "Gain/loss reference sensitivity differs from uncertain-versus-certain preference.",
+      "source": "PSY-084",
+      "target": "PSY-086",
+      "sources": [
+        "SRC113",
+        "SRC187",
+        "SRC188"
+      ]
+    },
+    {
+      "id": "H-PSY-F10-09",
+      "semantics": "NOT_A_VALID_MODELED_RELATIONSHIP",
+      "status": "REJECTED_HYPOTHESIS",
+      "question": "Loss-aversion estimate causes the loss-aversion construct.",
+      "reason": "Estimator does not independently cause its construct; no parameter graph weight.",
+      "source": null,
+      "target": "PSY-084",
+      "sources": [
+        "SRC-CAND-PSY-LAYER-0116"
+      ]
+    },
+    {
+      "id": "H-PSY-F10-10",
+      "semantics": "CAUSAL",
+      "status": "RESEARCH_NEEDED",
+      "question": "Changed expectations shift outcome reference point.",
+      "reason": "Plausible reference source, but exact expectation/outcome-reference definition and temporal comparator unresolved.",
+      "source": "PSY-003",
+      "target": "PSY-085",
+      "sources": [
+        "SRC113",
+        "SRC187"
+      ]
+    },
+    {
+      "id": "H-PSY-F10-11",
+      "semantics": "SEMANTIC",
+      "status": "REJECTED_HYPOTHESIS",
+      "question": "Reference point equals goal discrepancy.",
+      "reason": "Outcome baseline differs from signed desired-minus-current RDS; no direct RDS action target.",
+      "source": "PSY-085",
+      "target": "PSY-078",
+      "sources": [
+        "SRC113",
+        "SRC185"
+      ]
+    },
+    {
+      "id": "H-PSY-F10-12",
+      "semantics": "CAUSAL",
+      "status": "RESEARCH_NEEDED",
+      "question": "Experienced outcomes change probability weighting.",
+      "reason": "Sampling and recency alter perceived frequency; as-if weighting gap is not isolated curve transformation.",
+      "source": null,
+      "target": "PSY-087",
+      "sources": [
+        "SRC-CAND-PSY-LAYER-0112"
+      ]
+    },
+    {
+      "id": "H-PSY-F10-13",
+      "semantics": "NOT_A_VALID_MODELED_RELATIONSHIP",
+      "status": "REJECTED_HYPOTHESIS",
+      "question": "A probability-weighting curve has one universal increase direction.",
+      "reason": "Curves can cross; specify pointwise/parameter interpretation, not graph weights.",
+      "source": null,
+      "target": "PSY-087",
+      "sources": [
+        "SRC187",
+        "SRC-CAND-PSY-LAYER-0112"
+      ]
+    },
+    {
+      "id": "H-PSY-F10-14",
+      "semantics": "NOT_A_VALID_MODELED_RELATIONSHIP",
+      "status": "REJECTED_HYPOTHESIS",
+      "question": "Disclosing probabilities reduces ambiguity aversion by definition.",
+      "reason": "Disclosure changes ambiguity of option, not necessarily preference conditional on ambiguity.",
+      "source": null,
+      "target": "PSY-088",
+      "sources": [
+        "SRC189"
+      ]
+    },
+    {
+      "id": "H-PSY-F10-15",
+      "semantics": "ASSOCIATION",
+      "status": "RESEARCH_NEEDED",
+      "question": "Cultural/economic context associates with risk/time preferences.",
+      "reason": "Global survey offers between-person/country associations; no exact cultural/institutional endpoint or within-person cause.",
+      "source": null,
+      "target": "PSY-086",
+      "sources": [
+        "SRC-CAND-PSY-LAYER-0117"
+      ]
+    },
+    {
+      "id": "H-PSY-F10-16",
+      "semantics": "NOT_A_VALID_MODELED_RELATIONSHIP",
+      "status": "REJECTED_HYPOTHESIS",
+      "question": "Cross-country preference differences establish cultural causation.",
+      "reason": "Selection, opportunity, measurement invariance and shared context remain alternatives.",
+      "source": null,
+      "target": "PSY-089",
+      "sources": [
+        "SRC-CAND-PSY-LAYER-0117"
+      ]
+    },
+    {
+      "id": "H-PSY-F10-17",
+      "semantics": "CAUSAL",
+      "status": "RESEARCH_NEEDED",
+      "question": "Dopaminergic drug exposure changes effort discounting.",
+      "reason": "Randomized exposure versus PET association must be separated; exact rate, comparator and scope unresolved.",
+      "source": null,
+      "target": "PSY-091",
+      "sources": [
+        "SRC-CAND-PSY-LAYER-0113"
+      ]
+    },
+    {
+      "id": "H-PSY-F10-18",
+      "semantics": "NOT_A_VALID_MODELED_RELATIONSHIP",
+      "status": "REJECTED_HYPOTHESIS",
+      "question": "Choosing effortful work proves improved cognitive capacity.",
+      "reason": "Effort valuation/motivation is not performance capacity; no pharmacologic recommendation.",
+      "source": null,
+      "target": "PSY-058",
+      "sources": [
+        "SRC191",
+        "SRC-CAND-PSY-LAYER-0113"
+      ]
+    },
+    {
+      "id": "H-PSY-F10-19",
+      "semantics": "CAUSAL",
+      "status": "RESEARCH_NEEDED",
+      "question": "Natural-scene images reduce delay discounting.",
+      "reason": "Images before/during hypothetical tasks differ from actual natural environment exposure; replication/curve and scope required.",
+      "source": null,
+      "target": "PSY-089",
+      "sources": [
+        "SRC-CAND-PSY-LAYER-0114"
+      ]
+    },
+    {
+      "id": "H-PSY-F10-20",
+      "semantics": "NOT_A_VALID_MODELED_RELATIONSHIP",
+      "status": "REJECTED_HYPOTHESIS",
+      "question": "An image of nature is the actual environmental exposure.",
+      "reason": "Informational image origin and physical setting are separate; no source-Layer substitution.",
+      "source": null,
+      "target": "PSY-089",
+      "sources": [
+        "SRC-CAND-PSY-LAYER-0114"
+      ]
+    },
+    {
+      "id": "H-PSY-F10-21",
+      "semantics": "CAUSAL",
+      "status": "RESEARCH_NEEDED",
+      "question": "More options raise decision conflict.",
+      "reason": "Choice-overload heterogeneity and outcome proxy mismatch; correction-linked newer review not used as exact evidence.",
+      "source": null,
+      "target": "PSY-092",
+      "sources": [
+        "SRC-CAND-PSY-LAYER-0118"
+      ]
+    },
+    {
+      "id": "H-PSY-F10-22",
+      "semantics": "SEMANTIC",
+      "status": "REJECTED_HYPOTHESIS",
+      "question": "Choice deferral or longer reaction time equals decision conflict.",
+      "reason": "Performance/behavior can have multiple causes and is not latent tension by definition.",
+      "source": null,
+      "target": "PSY-092",
+      "sources": [
+        "SRC192",
+        "SRC-CAND-PSY-LAYER-0118"
+      ]
+    },
+    {
+      "id": "H-PSY-F10-23",
+      "semantics": "MODERATION",
+      "status": "RESEARCH_NEEDED",
+      "question": "Reference point moderates exact fear-to-risk REL-PSY-026.",
+      "reason": "No exact-edge independently identified interaction extracted; reuse F05 review rather than ordinary causal workaround.",
+      "source": "PSY-085",
+      "target": "PSY-086",
+      "sources": [
+        "SRC115",
+        "SRC113"
+      ]
+    },
+    {
+      "id": "H-PSY-F10-24",
+      "semantics": "CAUSAL_PATHWAY",
+      "status": "RESEARCH_NEEDED",
+      "question": "Default→endorsement→preference is a causal pathway.",
+      "reason": "Meta-coded mechanisms and choice changes do not identify pathway-specific transmitted effect.",
+      "source": null,
+      "target": "PSY-093",
+      "sources": [
+        "SRC-CAND-PSY-LAYER-0115"
+      ]
+    },
+    {
+      "id": "H-PSY-F10-25",
+      "semantics": "CAUSAL",
+      "status": "RESEARCH_NEEDED",
+      "question": "Social feedback changes reference or risk preference.",
+      "reason": "Social comparison and endorsement plausible; no aligned isolated source Driver and reference measure extracted.",
+      "source": null,
+      "target": "PSY-085",
+      "sources": [
+        "SRC113",
+        "SRC-CAND-PSY-LAYER-0115"
+      ]
+    },
+    {
+      "id": "H-PSY-F10-26",
+      "semantics": "CAUSAL",
+      "status": "RESEARCH_NEEDED",
+      "question": "Institutional defaults or technological interfaces change valuation.",
+      "reason": "Same preselection identity may recur across delivery contexts; choice behavior not exact mental target; no duplicate identities.",
+      "source": null,
+      "target": "PSY-093",
+      "sources": [
+        "SRC-CAND-PSY-LAYER-0115",
+        "SRC193"
+      ]
+    },
+    {
+      "id": "H-PSY-F10-27",
+      "semantics": "PRECEDES",
+      "status": "RESEARCH_NEEDED",
+      "question": "Prior loss temporally precedes altered risk preference.",
+      "reason": "Sequence alone is not causation or state transition; require actual repeated scope rather than plausible ordering.",
+      "source": null,
+      "target": "PSY-086",
+      "sources": [
+        "SRC113",
+        "SRC126"
+      ]
+    },
+    {
+      "id": "H-PSY-F10-28",
+      "semantics": "NOT_A_VALID_MODELED_RELATIONSHIP",
+      "status": "REJECTED_HYPOTHESIS",
+      "question": "Delay and effort discounting are the same process.",
+      "reason": "Time delay and effort cost are different dimensions, despite similar fitted functions.",
+      "source": "PSY-089",
+      "target": "PSY-091",
+      "sources": [
+        "SRC126",
+        "SRC191"
+      ]
+    }
+  ],
+  "canonicalSourceReviews": [
+    {
+      "id": "SRC205",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/24099400/",
+      "access": "ABSTRACT",
+      "status": "STORED_DOI_MISMATCH",
+      "finding": "Stored10.1037/a0037917 resolves Schaefer etal SATAQ4 development/validation, not intended Sharma/Markon/Clark2014 impulsive-behavior review PMID24099400 DOI10.1037/a0034418. Three self-report/four task factors with low convergence do not establish causal trait→present bias. Canonical untouched."
+    },
+    {
+      "id": "SRC-408",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/9719656/",
+      "access": "ABSTRACT",
+      "status": "CANONICAL_REUSE",
+      "finding": "Risky-choice framing meta-analysis, not exact change in loss-aversion parameter."
+    },
+    {
+      "id": "SRC113",
+      "url": "https://doi.org/10.2307/1914185",
+      "access": "METADATA",
+      "status": "FOUNDATION_OR_MEASUREMENT_NOT_EXACT_EFFECT",
+      "finding": "Exact registered construct/theory/measure role reviewed; metadata access does not support a new empirical causal estimate. No canonical change."
+    },
+    {
+      "id": "SRC126",
+      "url": "https://doi.org/10.1257/002205102320161311",
+      "access": "METADATA",
+      "status": "FOUNDATION_OR_MEASUREMENT_NOT_EXACT_EFFECT",
+      "finding": "Exact registered construct/theory/measure role reviewed; metadata access does not support a new empirical causal estimate. No canonical change."
+    },
+    {
+      "id": "SRC187",
+      "url": "https://doi.org/10.1007/BF00122574",
+      "access": "METADATA",
+      "status": "FOUNDATION_OR_MEASUREMENT_NOT_EXACT_EFFECT",
+      "finding": "Exact registered construct/theory/measure role reviewed; metadata access does not support a new empirical causal estimate. No canonical change."
+    },
+    {
+      "id": "SRC188",
+      "url": "https://doi.org/10.1002/bdm.414",
+      "access": "METADATA",
+      "status": "FOUNDATION_OR_MEASUREMENT_NOT_EXACT_EFFECT",
+      "finding": "Exact registered construct/theory/measure role reviewed; metadata access does not support a new empirical causal estimate. No canonical change."
+    },
+    {
+      "id": "SRC189",
+      "url": "https://doi.org/10.2307/1884324",
+      "access": "METADATA",
+      "status": "FOUNDATION_OR_MEASUREMENT_NOT_EXACT_EFFECT",
+      "finding": "Exact registered construct/theory/measure role reviewed; metadata access does not support a new empirical causal estimate. No canonical change."
+    },
+    {
+      "id": "SRC190",
+      "url": "https://doi.org/10.1901/jeab.2001.76-235",
+      "access": "METADATA",
+      "status": "FOUNDATION_OR_MEASUREMENT_NOT_EXACT_EFFECT",
+      "finding": "Exact registered construct/theory/measure role reviewed; metadata access does not support a new empirical causal estimate. No canonical change."
+    },
+    {
+      "id": "SRC192",
+      "url": "https://doi.org/10.1086/209506",
+      "access": "METADATA",
+      "status": "FOUNDATION_OR_MEASUREMENT_NOT_EXACT_EFFECT",
+      "finding": "Exact registered construct/theory/measure role reviewed; metadata access does not support a new empirical causal estimate. No canonical change."
+    },
+    {
+      "id": "SRC193",
+      "url": "https://doi.org/10.1126/science.1091721",
+      "access": "METADATA",
+      "status": "FOUNDATION_OR_MEASUREMENT_NOT_EXACT_EFFECT",
+      "finding": "Exact registered construct/theory/measure role reviewed; metadata access does not support a new empirical causal estimate. No canonical change."
+    },
+    {
+      "id": "SRC191",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/23894295/",
+      "access": "ABSTRACT",
+      "status": "MEASUREMENT_AND_SCOPE_BOUNDARY",
+      "finding": "Cognitive effort valuation varies with load/reward, engagement and age; not equivalent to task performance or broad capacity."
+    },
+    {
+      "id": "SRC115",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/25251484/",
+      "access": "ABSTRACT",
+      "status": "REUSED_F05_REVIEW",
+      "finding": "Fear/anger and appraisal-specific decision synthesis, not all affect or universal risk direction."
+    },
+    {
+      "id": "SRC123",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41620241/",
+      "access": "ABSTRACT",
+      "status": "REUSED_F02_REVIEW",
+      "finding": "Intolerance of uncertainty/coping literature not semantic identity with ambiguity premium."
+    },
+    {
+      "id": "SRC-494",
+      "url": "https://www.nimh.nih.gov/research/research-funded-by-nimh/rdoc",
+      "access": "DOCUMENTATION",
+      "status": "FRAMEWORK_NOT_EXACT_EFFECT",
+      "finding": "Prior verified RDoC/COM-B framework is not exact framing→loss-aversion experiment."
+    },
+    {
+      "id": "SRC-496",
+      "url": "https://doi.org/10.1186/1748-5908-6-42",
+      "access": "DOCUMENTATION",
+      "status": "FRAMEWORK_NOT_EXACT_EFFECT",
+      "finding": "Prior verified RDoC/COM-B framework is not exact framing→loss-aversion experiment."
+    }
+  ],
+  "searchLog": [
+    {
+      "id": "Q-PSY-F10-01",
+      "stage": "PASS_A_EXISTING",
+      "date": "2026-09-07",
+      "queries": [
+        "framing risky decisions Kuhberger loss aversion Brown meta analysis",
+        "Sharma Markon Clark impulsive behaviors 24099400"
+      ],
+      "depth": "Source205 DOI mismatch, framing estimand and trait/present-bias review; F05 incident reviews reused."
+    },
+    {
+      "id": "Q-PSY-F10-02",
+      "stage": "PASS_A_GAPS",
+      "date": "2026-09-07",
+      "queries": [
+        "Hertwig decisions experience rare events",
+        "Global evidence economic preferences Falk",
+        "ambiguity aversion not universal"
+      ],
+      "depth": "Primary abstracts and canonical definitions; probability weighting versus sampling, cross-country association. Ambiguity source access limited, no new formal claim."
+    },
+    {
+      "id": "Q-PSY-F10-03",
+      "stage": "PASS_B_ACTIONS_EVENTS",
+      "date": "2026-09-07",
+      "queries": [
+        "episodic future thinking meta analysis Ye Rosch",
+        "Rung Madden demand characteristics cues content"
+      ],
+      "depth": "Primary EFT syntheses and selected Rung2019 methods/results: cue present, hypothetical money, indifference points, control horizon contraction."
+    },
+    {
+      "id": "Q-PSY-F10-04",
+      "stage": "PASS_B_ACTIONS_EVENTS",
+      "date": "2026-09-07",
+      "queries": [
+        "Jachimowicz default effects meta analysis",
+        "choice overload Scheibehenne Chernev"
+      ],
+      "depth": "Publisher selected default methods/results and choice-overload abstracts. Newer Chernev correction linked but not reconciled; not used as retained assertion evidence."
+    },
+    {
+      "id": "Q-PSY-F10-05",
+      "stage": "PASS_B_CROSS_LAYER",
+      "date": "2026-09-07",
+      "queries": [
+        "dopamine cognitive effort Westbrook 2020",
+        "nature impulsivity visual exposure Berry2014"
+      ],
+      "depth": "Primary abstracts; drug/brain association versus randomized exposure, images versus actual environment. Institutional/technological defaults and social comparison considered."
+    },
+    {
+      "id": "Q-PSY-F10-06",
+      "stage": "SKEPTICAL_REVIEW",
+      "date": "2026-09-07",
+      "queries": [
+        "EFT uncued temporal horizon demand characteristics null",
+        "default effects negative null preference"
+      ],
+      "depth": "Separate second pass found two-point proxy/rate scope and default uptake/subjective preference gaps; both EA candidates RN, no whole-construct or lasting trait inference."
+    }
+  ]
+}
