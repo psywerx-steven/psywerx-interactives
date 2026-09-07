@@ -230,7 +230,7 @@
     "ownerFamilyId": "PSY-F02",
     "consultation": {
       "PSY-F02": "CANDIDATE_REVIEW_COMPLETE",
-      "PSY-F03": "NOT_YET_PROCESSED"
+      "PSY-F03": "CANDIDATE_REVIEW_COMPLETE_REUSED_PRIMARY_REL_PSY_016"
     },
     "status": "RESEARCH_NEEDED",
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
@@ -253,6 +253,147 @@
     "ownerFamilyId": "PSY-F02",
     "consultation": {
       "PSY-F02": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F04": "NOT_YET_PROCESSED",
+      "PSY-F05": "NOT_YET_PROCESSED"
+    },
+    "status": "RESEARCH_NEEDED",
+    "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+  },
+  {
+    "id": "CF-PSY-LAYER-0012",
+    "kind": "CONSTRUCT_BOUNDARY",
+    "familyIds": [
+      "PSY-F03",
+      "PSY-F04",
+      "SOC-F01"
+    ],
+    "recordIds": [
+      "PSY-016",
+      "PSY-017",
+      "PSY-018",
+      "SOC-001",
+      "SOC-002",
+      "REL-PSY-012",
+      "REL-PSY-013",
+      "REL-PSY-062",
+      "REL-SOC-064",
+      "REL-SOC-065"
+    ],
+    "question": "Perceived versus actual norms, current behavior approval versus anticipated personal approval, and individual intention versus aggregated behavior require reference-group/window separation.",
+    "classification": "DISTINCT",
+    "ownerFamilyId": "PSY-F03",
+    "consultation": {
+      "PSY-F03": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F04": "NOT_YET_PROCESSED",
+      "SOC-F01": "EXTERNAL_ENDPOINT_REVIEW_ONLY_NO_FULL_FAMILY_AUDIT"
+    },
+    "status": "RESEARCH_NEEDED",
+    "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+  },
+  {
+    "id": "CF-PSY-LAYER-0013",
+    "kind": "CONSTRUCT_BOUNDARY",
+    "familyIds": [
+      "PSY-F03",
+      "PSY-F13"
+    ],
+    "recordIds": [
+      "PSY-021",
+      "PSY-023",
+      "PSY-134",
+      "PSY-118",
+      "REL-PSY-066"
+    ],
+    "question": "Person vulnerability-trust, institutional expectation, source trust and authority rightfulness/calibration are not interchangeable.",
+    "classification": "DISTINCT",
+    "ownerFamilyId": "PSY-F03",
+    "consultation": {
+      "PSY-F03": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F13": "NOT_YET_PROCESSED"
+    },
+    "status": "RESEARCH_NEEDED",
+    "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+  },
+  {
+    "id": "CF-PSY-LAYER-0014",
+    "kind": "CONSTRUCT_BOUNDARY",
+    "familyIds": [
+      "PSY-F03",
+      "PSY-F05",
+      "SOC-F04",
+      "BIO-F02"
+    ],
+    "recordIds": [
+      "PSY-024",
+      "PSY-020",
+      "SOC-031",
+      "BIO-007",
+      "REL-PSY-018",
+      "REL-PSY-057",
+      "REL-SOC-062",
+      "EA-CAND-PSY-LAYER-0005"
+    ],
+    "question": "Exposure, perceived exclusion, belonging and physiology require separate estimands; inverse shared items and the same task contribution do not establish mediation.",
+    "classification": "MEASUREMENT_OVERLAP",
+    "ownerFamilyId": "PSY-F03",
+    "consultation": {
+      "PSY-F03": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F05": "NOT_YET_PROCESSED",
+      "SOC-F04": "EXTERNAL_ENDPOINT_REVIEW_ONLY_NO_FULL_FAMILY_AUDIT",
+      "BIO-F02": "EXTERNAL_ENDPOINT_REVIEW_ONLY_NO_FULL_FAMILY_AUDIT"
+    },
+    "status": "RESEARCH_NEEDED",
+    "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+  },
+  {
+    "id": "CF-PSY-LAYER-0015",
+    "kind": "RDS_AND_CONSTRUCT",
+    "familyIds": [
+      "PSY-F03",
+      "SOC-F12",
+      "INS-F06"
+    ],
+    "recordIds": [
+      "SOC-096",
+      "PSY-022",
+      "PSY-133",
+      "REL-SOC-067",
+      "REL-INS-040"
+    ],
+    "question": "Objective status-gap RDS and fairness/RD judgments require independent measurement/timing; procedural facet effects cannot become whole fairness-profile effects.",
+    "classification": "MEASUREMENT_OVERLAP",
+    "ownerFamilyId": "PSY-F03",
+    "consultation": {
+      "PSY-F03": "CANDIDATE_REVIEW_COMPLETE",
+      "SOC-F12": "EXTERNAL_ENDPOINT_REVIEW_ONLY_NO_FULL_FAMILY_AUDIT",
+      "INS-F06": "EXTERNAL_ENDPOINT_REVIEW_ONLY_NO_FULL_FAMILY_AUDIT"
+    },
+    "status": "RESEARCH_NEEDED",
+    "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+  },
+  {
+    "id": "CF-PSY-LAYER-0016",
+    "kind": "SOURCE_ALIGNMENT",
+    "familyIds": [
+      "PSY-F03",
+      "PSY-F04",
+      "PSY-F05"
+    ],
+    "recordIds": [
+      "SRC172",
+      "SRC-502",
+      "SRC-503",
+      "SRC-509",
+      "SRC235",
+      "SRC-506",
+      "REL-PSY-057",
+      "REL-PSY-060"
+    ],
+    "question": "Unresolved SRC172 DOI, institutional survey causal caveats and framework/diffusion references cannot silently validate exact edge semantics. No canonical corrections authorized.",
+    "classification": "RELATED",
+    "ownerFamilyId": "PSY-F03",
+    "consultation": {
+      "PSY-F03": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F04": "NOT_YET_PROCESSED",
       "PSY-F05": "NOT_YET_PROCESSED"
     },
