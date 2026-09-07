@@ -5,7 +5,7 @@ Standard library only. No network, API keys, source transcripts, or account data
 Preview includes explicitly draft feed selections; release includes approved only.
 """
 from __future__ import annotations
-import argparse, hashlib, html, json, re, sys
+import argparse, hashlib, html, json, re, shutil, sys
 from datetime import date
 from pathlib import Path
 from urllib.parse import urlparse
@@ -16,6 +16,7 @@ EXPECTED_AREAS = ['foundations','methods','application','assessment','inquiry','
 EXPECTED_FEED = ['behavioral-science','technology-modeling','operations-strategy','application-analysis']
 STATUS_LABELS = {'live':'Live','progress':'Work in progress','soon':'Coming soon'}
 PUBLIC_FEED_FIELDS = ['id','title','summary','categories','publisher','sourceUrl','sourceType','briefDate','briefType','sourcePublishedAt','detail']
+STATIC_ASSETS = ['brain-mark.webp','brand-banner.webp','favicon.png','home.css','home.js','wordmark.webp']
 ICONS = {
  'nodes':'<circle cx="12" cy="12" r="3"/><circle cx="5" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><path d="m7 7 3 3m4 4 3 3M17 7l-3 3m-4 4-3 3"/>',
  'change':'<path d="M4 8h13l-3-3m3 3-3 3M20 16H7l3-3m-3 3 3 3"/><circle cx="4" cy="8" r="1"/><circle cx="20" cy="16" r="1"/>',
@@ -42,8 +43,11 @@ def validate(site,platform,feed):
  if site['brandLine']!='exploring the human condition from theory to practice': raise ValueError('Brand line changed.')
  for key in ('currentToolsOrigin','targetOrigin'):
   if not https_url(site[key]): raise ValueError(f'Invalid URL: {key}')
- for key in ('newsletterUrl','linkedinUrl'):
+ for key in ('newsletterAction','linkedinUrl'):
   if site.get(key) is not None and not https_url(site[key]): raise ValueError(f'Invalid URL: {key}')
+ newsletter=urlparse(site['newsletterAction'])
+ if newsletter.hostname!='assets.mailerlite.com' or not re.fullmatch(r'/jsonp/\d+/forms/\d+/subscribe',newsletter.path):
+  raise ValueError('Newsletter action must be the verified public MailerLite form endpoint')
  for area in platform:
   for tool in area['tools']:
    if tool['status'] not in STATUS_LABELS: raise ValueError('Unknown tool status')
@@ -96,21 +100,52 @@ def build(mode='preview',tool_links='preview',root=ROOT,output=None):
   feed_html.append(f'<article class="feed-item" data-categories="{esc(" ".join(i["categories"]))}" data-feed-id="{esc(i["id"])}"><div class="feed-meta"><span class="feed-kind">{esc(i["sourceType"])}</span><time datetime="{d.isoformat()}" title="Selected in the {i["briefType"]} brief, {d.isoformat()}">{ds} · {esc(i["briefType"])}</time></div><h3><button type="button" class="feed-title-button" data-feed-detail="{esc(i["id"])}">{esc(i["title"])}</button></h3><p>{esc(i["summary"])}</p><div class="feed-tags">{tags}</div><div class="feed-source"><a href="{esc(i["sourceUrl"])}" target="_blank" rel="noopener noreferrer">{esc(i["publisher"])}</a><span class="arrow" aria-hidden="true">↗</span></div></article>')
  if not feed_html: feed_html=['<div class="feed-empty"><h3>Research selections are on the way.</h3><p>Approved items from our daily and weekly briefs will appear here.</p></div>']
  replacements={
- 'ROBOTS':'<meta name="robots" content="noindex,nofollow">' if mode=='preview' else '',
+ 'ROBOTS':'<meta name="robots" content="noindex,nofollow">' if mode=='preview' else '<meta name="robots" content="index,follow">',
+ 'PRODUCTION_METADATA':'' if mode=='preview' else '''<link rel="canonical" href="https://psywerx.io/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="PSYWERX">
+  <meta property="og:title" content="PSYWERX | Behavioral &amp; Social Science in Practice">
+  <meta property="og:description" content="PSYWERX is a nonprofit initiative connecting behavioral and social science with practical tools, research, and education.">
+  <meta property="og:url" content="https://psywerx.io/">
+  <meta property="og:image" content="https://psywerx.io/assets/brand-banner.webp">
+  <meta property="og:image:alt" content="PSYWERX — exploring the human condition from theory to practice">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="PSYWERX | Behavioral &amp; Social Science in Practice">
+  <meta name="twitter:description" content="A nonprofit initiative connecting behavioral and social science with practical tools, research, and education.">
+  <meta name="twitter:image" content="https://psywerx.io/assets/brand-banner.webp">
+  <meta name="twitter:image:alt" content="PSYWERX — exploring the human condition from theory to practice">''',
  'MISSION':esc(site['mission']),'DRIVERS_URL':esc(tool_url('/drivers/')),'COGNITIVE_URL':esc(tool_url('/cognitive-security/')),
  'MEGA_LINKS':''.join(mega),'AREA_CARDS':''.join(cards),'MAP_NODES':''.join(nodes),'FILTERS':filters,'FEED_COUNT':str(len(selected)),
  'FEED_ITEMS':''.join(feed_html),'FEED_SNAPSHOT':'Preview · 4–6 Sep 2026' if mode=='preview' else 'From PSYWERX briefings',
  'PREVIEW_BADGE':'<span class="preview-badge">Preview</span>' if mode=='preview' else '',
  'YEAR':'2026','FOOTER_STATUS':'Homepage design preview · not yet deployed' if mode=='preview' else 'Behavioral & social science · Tools · Research · Learning',
+ 'NEWSLETTER_ACTION':esc(site['newsletterAction']),'LINKEDIN_URL':esc(site['linkedinUrl']),
  'BOOK_ICON':icon('book'),'FRAMEWORK_ICON':icon('framework'),'CHANGE_ICON':icon('change')}
  template=(root/'src/homepage.template.html').read_text(encoding='utf-8')
  for k,v in replacements.items(): template=template.replace('{{'+k+'}}',v)
  if re.search(r'{{[A-Z_]+}}',template): raise ValueError('Unresolved template marker')
+ assets_dir=site_dir/'assets'; assets_dir.mkdir(parents=True,exist_ok=True)
+ for asset in STATIC_ASSETS:
+  source=root/'src/assets'/asset; destination=assets_dir/asset
+  if source.suffix in ('.css','.js'): write(destination,source.read_text(encoding='utf-8'))
+  else: shutil.copy2(source,destination)
  write(site_dir/'index.html',template)
- data={'mode':mode,'platform':platform,'feed':public_feed,'feedCategories':site['feedCategories'],'links':{k:site.get(k) for k in ('newsletterUrl','linkedinUrl')}}
+ data={'mode':mode,'platform':platform,'feed':public_feed,'feedCategories':site['feedCategories'],'links':{'linkedinUrl':site['linkedinUrl']}}
  js='window.PSYWERX_HOME = '+json.dumps(data,ensure_ascii=False,separators=(',',':')).replace('</','<\\/')+';\n'
  write(site_dir/'assets/home-data.js',js)
- manifest={p.relative_to(site_dir).as_posix():{'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in sorted(site_dir.rglob('*')) if p.is_file()}
+ managed=[site_dir/'index.html',site_dir/'assets/home-data.js']+[site_dir/'assets'/asset for asset in STATIC_ASSETS]
+ if mode=='release':
+  write(site_dir/'robots.txt','User-agent: *\nAllow: /\nSitemap: https://psywerx.io/sitemap.xml\n')
+  write(site_dir/'sitemap.xml','''<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://psywerx.io/</loc></url>
+  <url><loc>https://psywerx.io/drivers/</loc></url>
+  <url><loc>https://psywerx.io/drivers/codebook/</loc></url>
+  <url><loc>https://psywerx.io/cognitive-security/</loc></url>
+</urlset>
+''')
+  managed += [site_dir/'robots.txt',site_dir/'sitemap.xml']
+ manifest={p.relative_to(site_dir).as_posix():{'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in sorted(managed)}
  write(root/'docs/BUILD_MANIFEST.json',json.dumps({'mode':mode,'toolLinks':tool_links,'feedCount':len(selected),'files':manifest},indent=2)+'\n')
  return {'mode':mode,'feedCount':len(selected),'totalBytes':sum(x['bytes'] for x in manifest.values())}
 
@@ -118,6 +153,7 @@ if __name__=='__main__':
  parser=argparse.ArgumentParser(description=__doc__)
  parser.add_argument('--mode',choices=['preview','release'],default='preview')
  parser.add_argument('--tool-links',choices=['preview','local'],default='preview')
+ parser.add_argument('--output',help='Output directory; use the repository root for the launch build')
  args=parser.parse_args()
- try: print(json.dumps(build(args.mode,args.tool_links),indent=2))
+ try: print(json.dumps(build(args.mode,args.tool_links,output=args.output),indent=2))
  except (ValueError,KeyError,TypeError,OSError) as exc: print(f'Build failed: {exc}',file=sys.stderr); sys.exit(1)

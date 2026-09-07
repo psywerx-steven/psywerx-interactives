@@ -5,6 +5,9 @@ PSYWERX. The repository is designed for static hosting with GitHub Pages.
 
 ## Interactives
 
+- [PSYWERX homepage](./) — presents the nonprofit mission, two live tools,
+  six platform areas, connected-knowledge overview, editorial research rail,
+  newsletter, and LinkedIn destination.
 - [Cognitive Security Practitioner Discourse Map](./cognitive-security/) —
   explores the canonical public synthesis of practitioner discourse through
   categories, canonical families, clusters, flat themes, canonical tensions,
@@ -22,6 +25,12 @@ PSYWERX. The repository is designed for static hosting with GitHub Pages.
   Security Practitioner Discourse Map package.
 - `cognitive-security/` contains the static Cognitive Security Explorer.
 - `drivers/` contains the Ontology Explorer application.
+- `homepage/` contains governed homepage content, source assets, build tools,
+  QA evidence, current-site inventory, and the domain cutover runbook.
+- `homepage-preview/` is the generated noindex editorial preview; the generated
+  release homepage and its assets are at the repository root.
+- `legacy-redirect/` contains the tested, undeployed contract for preserving
+  `drivers.psywerx.io` paths after cutover.
 - `shared/` contains styles and other assets reusable across interactives.
 - `source-data/` is the ignored local location for private XLSX taxonomy files.
 - `scripts/` contains local data-import utilities.
@@ -398,7 +407,18 @@ release provenance only when a detail or evidence-path interaction needs them.
 py -m http.server 8000
 ```
 
-Then open <http://localhost:8000/drivers/>.
+Then open <http://localhost:8000/> for the release homepage. The editorial
+preview, including draft feed items and explicit noindex labeling, is at
+<http://localhost:8000/homepage-preview/>.
+
+Regenerate both deterministic homepage outputs with:
+
+```powershell
+py homepage/tools/build_homepage.py --mode preview --tool-links preview
+py homepage/tools/build_homepage.py --mode release --tool-links local --output .
+```
+
+The Driver Explorer remains available at <http://localhost:8000/drivers/>.
 
 The Cognitive Security Explorer is available from the same local server at
 <http://127.0.0.1:8000/cognitive-security/>. Its paths and query-parameter deep
