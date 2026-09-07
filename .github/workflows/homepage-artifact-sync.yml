@@ -1,0 +1,45 @@
+name: Homepage artifact sync (temporary)
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  sync-generated-homepage:
+    if: github.head_ref == 'feature/psywerx-homepage-launch' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out PR head branch
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Regenerate research stream and homepage artifacts
+        run: |
+          python homepage/tools/build_research_stream.py
+          python homepage/tools/build_homepage.py --mode preview --tool-links preview
+          python homepage/tools/build_homepage.py --mode release --tool-links local --output .
+
+      - name: Commit generated artifacts if needed
+        shell: bash
+        run: |
+          git add -A -- index.html assets data/research-stream/public_feed.json data/research-stream/public_feed_pages homepage-preview homepage/docs/BUILD_MANIFEST.json robots.txt sitemap.xml
+          if git diff --cached --quiet; then
+            echo "Generated artifacts are already synchronized."
+            exit 0
+          fi
+          git config user.name "psywerx-homepage-bot"
+          git config user.email "steven@psywerx.io"
+          git commit -m "Sync generated homepage research stream"
+          git push origin HEAD:${{ github.event.pull_request.head.ref }}
