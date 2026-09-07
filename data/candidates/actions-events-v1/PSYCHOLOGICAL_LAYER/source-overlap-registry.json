@@ -146,5 +146,57 @@
     ],
     "rule": "Preserve prior SOC-F07 duplicate-component flag: SRC509 bundles Centola 2010 (also SRC235) with a separate review. This is not two replications or generic evidence of trust/norm perception.",
     "status": "CANONICAL_COMPONENT_DUPLICATE_UNCHANGED"
+  },
+  {
+    "id": "OV-PSY-LAYER-0013",
+    "sourceIds": [
+      "SRC160",
+      "SRC-501"
+    ],
+    "rule": "Same da Costa et al. 2023 work DOI 10.3389/fpsyg.2023.1096877; author attribution issue retained without canonical correction. One review, not two independent replications.",
+    "status": "CANONICAL_WORK_DUPLICATE_UNCHANGED"
+  },
+  {
+    "id": "OV-PSY-LAYER-0014",
+    "sourceIds": [
+      "SRC-467"
+    ],
+    "rule": "SRC-CAND-PSY-LAYER-0040 retired in favor of existing Sailer/Homner canonical SRC-467 after complete register DOI check; no new registration.",
+    "status": "CANONICAL_REUSE"
+  },
+  {
+    "id": "OV-PSY-LAYER-0015",
+    "sourceIds": [
+      "SRC-CAND-PSY-LAYER-0028",
+      "SRC-CAND-PSY-LAYER-0030"
+    ],
+    "rule": "Patall 2008 choice synthesis includes Reeve 2003; separately extracting its null is not independent replication. Patall 2010 published after review.",
+    "status": "REVIEW_PRIMARY_OVERLAP"
+  },
+  {
+    "id": "OV-PSY-LAYER-0016",
+    "sourceIds": [
+      "SRC-CAND-PSY-LAYER-0029"
+    ],
+    "rule": "Homework units, repeated measures, multiple IMI outcomes and correlational Analysis 2 are the SAME students, not separate trials. Preserve outcome-specific missingness.",
+    "status": "SHARED_DATASET"
+  },
+  {
+    "id": "OV-PSY-LAYER-0017",
+    "sourceIds": [
+      "SRC-CAND-PSY-LAYER-0031",
+      "SRC-CAND-PSY-LAYER-0032"
+    ],
+    "rule": "Reward syntheses substantially revisit same literature with differing task/inclusion/contingency aggregation. No independent replication count or majority vote.",
+    "status": "REVIEW_OVERLAP"
+  },
+  {
+    "id": "OV-PSY-LAYER-0018",
+    "sourceIds": [
+      "SRC140",
+      "SRC141"
+    ],
+    "rule": "Later anticipated-regret synthesis may contain studies from earlier TPB augmentation synthesis; overlap not fully enumerated, no independence assumed.",
+    "status": "POTENTIAL_REVIEW_PRIMARY_OVERLAP"
   }
 ]

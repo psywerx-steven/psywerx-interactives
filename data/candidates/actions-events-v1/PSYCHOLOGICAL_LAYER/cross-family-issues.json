@@ -15,7 +15,7 @@
     "ownerFamilyId": "PSY-F01",
     "consultation": {
       "PSY-F01": "CANDIDATE_REVIEW_COMPLETE",
-      "PSY-F04": "NOT_YET_PROCESSED"
+      "PSY-F04": "CANDIDATE_REVIEW_COMPLETE"
     },
     "status": "RESEARCH_NEEDED",
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
@@ -253,7 +253,7 @@
     "ownerFamilyId": "PSY-F02",
     "consultation": {
       "PSY-F02": "CANDIDATE_REVIEW_COMPLETE",
-      "PSY-F04": "NOT_YET_PROCESSED",
+      "PSY-F04": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F05": "NOT_YET_PROCESSED"
     },
     "status": "RESEARCH_NEEDED",
@@ -284,7 +284,7 @@
     "ownerFamilyId": "PSY-F03",
     "consultation": {
       "PSY-F03": "CANDIDATE_REVIEW_COMPLETE",
-      "PSY-F04": "NOT_YET_PROCESSED",
+      "PSY-F04": "CANDIDATE_REVIEW_COMPLETE",
       "SOC-F01": "EXTERNAL_ENDPOINT_REVIEW_ONLY_NO_FULL_FAMILY_AUDIT"
     },
     "status": "RESEARCH_NEEDED",
@@ -394,8 +394,122 @@
     "ownerFamilyId": "PSY-F03",
     "consultation": {
       "PSY-F03": "CANDIDATE_REVIEW_COMPLETE",
-      "PSY-F04": "NOT_YET_PROCESSED",
+      "PSY-F04": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F05": "NOT_YET_PROCESSED"
+    },
+    "status": "RESEARCH_NEEDED",
+    "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+  },
+  {
+    "id": "CF-PSY-LAYER-0017",
+    "kind": "CONSTRUCT_BOUNDARY",
+    "familyIds": [
+      "PSY-F04",
+      "PSY-F01",
+      "PSY-F02"
+    ],
+    "recordIds": [
+      "PSY-032",
+      "PSY-033",
+      "PSY-034",
+      "PSY-035",
+      "PSY-036",
+      "PSY-006",
+      "PSY-013",
+      "REL-PSY-019",
+      "REL-PSY-020"
+    ],
+    "question": "Distinguish current volition/need satisfaction, endorsed regulation, task enjoyment, pressure and prospective capability; shared items are not independent causal segments.",
+    "classification": "MEASUREMENT_OVERLAP",
+    "ownerFamilyId": "PSY-F04",
+    "consultation": {
+      "PSY-F04": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F01": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F02": "CANDIDATE_REVIEW_COMPLETE"
+    },
+    "status": "RESEARCH_NEEDED",
+    "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+  },
+  {
+    "id": "CF-PSY-LAYER-0018",
+    "kind": "CONSTRUCT_BOUNDARY",
+    "familyIds": [
+      "PSY-F04",
+      "PSY-F09",
+      "PSY-F12",
+      "PSY-F14"
+    ],
+    "recordIds": [
+      "PSY-026",
+      "PSY-027",
+      "PSY-028",
+      "PSY-029",
+      "PSY-030",
+      "PSY-031",
+      "PSY-076",
+      "PSY-077",
+      "PSY-110",
+      "PSY-127"
+    ],
+    "question": "Keep goal attachment, action-specific intention, plan detail, perceived goal difficulty, priority and monitoring distinct from task outcomes and stable traits.",
+    "classification": "RELATED",
+    "ownerFamilyId": "PSY-F04",
+    "consultation": {
+      "PSY-F04": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F09": "NOT_YET_PROCESSED",
+      "PSY-F12": "NOT_YET_PROCESSED",
+      "PSY-F14": "NOT_YET_PROCESSED"
+    },
+    "status": "RESEARCH_NEEDED",
+    "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+  },
+  {
+    "id": "CF-PSY-LAYER-0019",
+    "kind": "CONSTRUCT_BOUNDARY",
+    "familyIds": [
+      "PSY-F04",
+      "PSY-F03"
+    ],
+    "recordIds": [
+      "PSY-037",
+      "PSY-020",
+      "PSY-019",
+      "PSY-024"
+    ],
+    "question": "Relatedness need satisfaction overlaps belonging but is not automatically equal to support or inverse exclusion; avoid a second contribution from the F03 operation.",
+    "classification": "MEASUREMENT_OVERLAP",
+    "ownerFamilyId": "PSY-F04",
+    "consultation": {
+      "PSY-F04": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F03": "CANDIDATE_REVIEW_COMPLETE"
+    },
+    "status": "RESEARCH_NEEDED",
+    "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+  },
+  {
+    "id": "CF-PSY-LAYER-0020",
+    "kind": "SOURCE_ALIGNMENT",
+    "familyIds": [
+      "PSY-F04",
+      "PSY-F03",
+      "PSY-F11",
+      "PSY-F12"
+    ],
+    "recordIds": [
+      "SRC160",
+      "SRC-501",
+      "SRC109",
+      "SRC-467",
+      "REL-PSY-049"
+    ],
+    "question": "SRC160/SRC-501 are one review with stored author mismatch; SRC109 is framework validation. Reuse SRC-467, do not register a duplicate or count review components independently.",
+    "classification": "RELATED",
+    "ownerFamilyId": "PSY-F04",
+    "consultation": {
+      "PSY-F04": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F03": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F11": "NOT_YET_PROCESSED",
+      "PSY-F12": "NOT_YET_PROCESSED"
     },
     "status": "RESEARCH_NEEDED",
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
