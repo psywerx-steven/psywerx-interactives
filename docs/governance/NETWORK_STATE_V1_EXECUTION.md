@@ -93,6 +93,16 @@ Completion commit `44bd631dbc526f8a25f613c38b8cc81b3880df27` pushed; implementat
 
 U COMPLETE; final integrated-head Linux/Windows CI and merge gate remain pending. A separate post-merge documentation closeout will record the required read-only three-pilot assessment; it cannot authorize any scientific scale-up.
 
+## Implementation merged; post-merge closeout
+
+PR #21 final head `735c09d7f6a66409876f40b07059b44511a2bce2` passed Linux and Windows [run 34140788552](https://github.com/psywerx-steven/psywerx-interactives/actions/runs/34140788552). Full integrated diff/authority/protected-science review passed; branch matched remote and worktree was clean. PR #21 merged as `31bb79987671e99d3ca149a2957e5cb4cdf429a9`. Main fast-forwarded and matched origin/main, clean. T–W COMPLETE.
+
+Post-merge mechanical SOC/whole-ontology export regenerated at `31bb799`; only snapshot commit fields changed, coverage and scientific data did not. Required post-merge state/source/completion tests and integrity validators are being checked. The same implementation branch was fast-forwarded to merged main for a documentation/report-only closeout PR; no additional production implementation or scientific changes are planned.
+
+Y assessment prepared from the merged snapshot: READY_FOR_SCALE_UP_REVIEW, explicitly only review of a controlled two-Family operating proposal. Scientific completeness/automatic bulk population remains NO. Record-level scientific gaps, blocked metadata, inactive scopes and no-model/no-recommendation/privacy boundaries remain in force. The assessment does not select or start another Family.
+
+Post-merge X COMPLETE: 52 state + 18 source + 12 completion tests passed (82/82), RI/AE/collection validators and the 146-file protected comparison passed. Counts remained 770/41/811/457/436, zero new active records. Twelve synthetic examples matched deterministically. Y COMPLETE: THREE_PILOT_SCALE_UP_READINESS.md now records the merged snapshot, gate-by-gate evidence, all retained blockers and an advisory two-Family operating proposal. Z handoff is prepared; the remaining step is the documentation/report-only closeout PR validation/merge, then clean local-main/remote verification. No code or scientific content changed during this closeout.
+
 State operations are deterministic modeled bookkeeping, not empirical effects, permission or predictions. Fixtures are SYNTHETIC / NON_PRODUCTION. No real-person data or latent-state estimator. Source verification must preserve old PubMed records exactly and reject unverifiable authoritative routes. Conditional scientific materialization has prior human authorization but no activation authority.
 
 Git maintenance emits permission warnings for stale PR9 worktree metadata during automatic housekeeping; fetch/commit/push succeed. No stale worktree deletion is attempted.

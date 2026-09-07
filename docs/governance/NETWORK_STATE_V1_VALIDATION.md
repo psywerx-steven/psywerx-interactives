@@ -59,3 +59,7 @@ Section numbers refer to the full Network State implementation authorization, re
 | 33–34, stop / final handoff | Execution closeout and final report; no activation, Family #4, simulation, recommendations or manual deployment |
 
 The readiness assessment and final handoff are not marked complete before post-merge checks. CI success is reported only after the exact tested head succeeds on both operating systems.
+
+## Integrated-head and merge evidence
+
+PR #21 exact head `735c09d7f6a66409876f40b07059b44511a2bce2` passed both jobs in [run 34140788552](https://github.com/psywerx-steven/psywerx-interactives/actions/runs/34140788552), then merged as `31bb79987671e99d3ca149a2957e5cb4cdf429a9`. Concurrent PR #20 homepage work was preserved, not edited; all 21 tracked JavaScript files in the integrated tree parsed. State/source/completion and integrity checks are repeated on the merged contracts for closeout. The separate [three-pilot assessment](THREE_PILOT_SCALE_UP_READINESS.md) uses the actual post-merge snapshot and grants no scale-up authority.
