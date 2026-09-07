@@ -458,7 +458,7 @@
     "consultation": {
       "PSY-F04": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F09": "CANDIDATE_REVIEW_COMPLETE",
-      "PSY-F12": "NOT_YET_PROCESSED",
+      "PSY-F12": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F14": "NOT_YET_PROCESSED"
     },
     "status": "RESEARCH_NEEDED",
@@ -510,7 +510,7 @@
       "PSY-F04": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F03": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F11": "CANDIDATE_REVIEW_COMPLETE",
-      "PSY-F12": "NOT_YET_PROCESSED"
+      "PSY-F12": "CANDIDATE_REVIEW_COMPLETE"
     },
     "status": "RESEARCH_NEEDED",
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
@@ -568,7 +568,7 @@
     "consultation": {
       "PSY-F05": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F04": "CANDIDATE_REVIEW_COMPLETE",
-      "PSY-F12": "NOT_YET_PROCESSED"
+      "PSY-F12": "CANDIDATE_REVIEW_COMPLETE"
     },
     "status": "RESEARCH_NEEDED",
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
@@ -603,7 +603,7 @@
       "PSY-F06": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F09": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F11": "CANDIDATE_REVIEW_COMPLETE",
-      "PSY-F12": "NOT_YET_PROCESSED",
+      "PSY-F12": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F14": "NOT_YET_PROCESSED"
     },
     "status": "RESEARCH_NEEDED",
@@ -1181,7 +1181,7 @@
     "ownerFamilyId": "PSY-F11",
     "consultation": {
       "PSY-F11": "CANDIDATE_REVIEW_COMPLETE",
-      "PSY-F12": "NOT_YET_PROCESSED"
+      "PSY-F12": "CANDIDATE_REVIEW_COMPLETE"
     },
     "status": "RESEARCH_NEEDED",
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
@@ -1205,6 +1205,106 @@
     "consultation": {
       "PSY-F11": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F14": "NOT_YET_PROCESSED"
+    },
+    "status": "RESEARCH_NEEDED",
+    "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+  },
+  {
+    "id": "CF-PSY-LAYER-0047",
+    "kind": "CONSTRUCT_BOUNDARY",
+    "familyIds": [
+      "PSY-F12",
+      "PSY-F13",
+      "PSY-F05"
+    ],
+    "recordIds": [
+      "PSY-109",
+      "PSY-115",
+      "PSY-043"
+    ],
+    "question": "Reactance composite anger/negative cognition can overlap Counterarguing; independent causal target and measurement needed.",
+    "classification": "MEASUREMENT_OVERLAP",
+    "ownerFamilyId": "PSY-F12",
+    "consultation": {
+      "PSY-F12": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F13": "NOT_YET_PROCESSED",
+      "PSY-F05": "CANDIDATE_REVIEW_COMPLETE"
+    },
+    "status": "RESEARCH_NEEDED",
+    "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+  },
+  {
+    "id": "CF-PSY-LAYER-0048",
+    "kind": "CONSTRUCT_BOUNDARY",
+    "familyIds": [
+      "PSY-F12",
+      "PSY-F02",
+      "PSY-F14"
+    ],
+    "recordIds": [
+      "PSY-104",
+      "PSY-105",
+      "PSY-106",
+      "PSY-014"
+    ],
+    "question": "Experienced agency, outcome responsibility, nominal attribution locus and stable control expectation differ.",
+    "classification": "DISTINCT",
+    "ownerFamilyId": "PSY-F12",
+    "consultation": {
+      "PSY-F12": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F02": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F14": "NOT_YET_PROCESSED"
+    },
+    "status": "RESEARCH_NEEDED",
+    "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+  },
+  {
+    "id": "CF-PSY-LAYER-0049",
+    "kind": "CONSTRUCT_BOUNDARY",
+    "familyIds": [
+      "PSY-F12",
+      "PSY-F11",
+      "PSY-F03"
+    ],
+    "recordIds": [
+      "PSY-110",
+      "PSY-111",
+      "PSY-112",
+      "PSY-103",
+      "PSY-017"
+    ],
+    "question": "Moral conviction, felt duty, relative values, moral identity and perceived approval are not synonyms.",
+    "classification": "RELATED",
+    "ownerFamilyId": "PSY-F12",
+    "consultation": {
+      "PSY-F12": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F11": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F03": "CANDIDATE_REVIEW_COMPLETE"
+    },
+    "status": "RESEARCH_NEEDED",
+    "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+  },
+  {
+    "id": "CF-PSY-LAYER-0050",
+    "kind": "CONSTRUCT_BOUNDARY",
+    "familyIds": [
+      "PSY-F12",
+      "PSY-F06",
+      "PSY-F05"
+    ],
+    "recordIds": [
+      "PSY-135",
+      "PSY-058",
+      "PSY-047",
+      "PSY-048"
+    ],
+    "question": "Perspective capacity, task selection/accuracy, supplied information and affective empathy differ.",
+    "classification": "DISTINCT",
+    "ownerFamilyId": "PSY-F12",
+    "consultation": {
+      "PSY-F12": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F06": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F05": "CANDIDATE_REVIEW_COMPLETE"
     },
     "status": "RESEARCH_NEEDED",
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"

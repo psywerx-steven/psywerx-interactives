@@ -208,7 +208,11 @@ def validate_sources():
                 continue  # Exact canonical reuse; supplemental registry also indexes researched existing sources.
             text = p.encode(c).lower()
             title = c.get("title", c.get("citationText", ""))
-            if key in text or (s.get("pmid") and "pubmed.ncbi.nlm.nih.gov/" + s["pmid"] in text) or normalize_title(s["title"]) in normalize_title(title):
+            # Same title is not the same work across years (e.g. Skitka 2010/2021).
+            # DOI/PMID matches remain decisive regardless of title/year differences.
+            same_title_year = (str(s.get("year")) == str(c.get("year"))
+                               and normalize_title(s["title"]) in normalize_title(title))
+            if key in text or (s.get("pmid") and "pubmed.ncbi.nlm.nih.gov/" + s["pmid"] in text) or same_title_year:
                 raise ValueError("Use existing canonical source, not duplicate: " + s["id"] + "/" + c["id"])
     return len(sources)
 

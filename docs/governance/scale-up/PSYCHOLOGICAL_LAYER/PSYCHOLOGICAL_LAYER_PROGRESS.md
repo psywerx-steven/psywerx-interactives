@@ -20,13 +20,13 @@ NOT_STARTED and PARTIAL stages remain unfinished. All human decisions remain pen
 | PSY-F09 | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE |
 | PSY-F10 | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE |
 | PSY-F11 | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE |
-| PSY-F12 | DONE | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED |
+| PSY-F12 | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE |
 | PSY-F13 | DONE | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED |
 | PSY-F14 | DONE | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED |
 
 ## Exact resume point
 
-Begin PSY-F12 Agency, Attribution & Moral Judgment. F01–F11 local complete; F12–F14 baseline only. Layer-wide reconciliation remains pending.
+Begin PSY-F13 Epistemic Trust & Persuasion. F01–F12 local complete; F13/F14 baseline only. Layer-wide reconciliation pending.
 
 ## Checkpoints
 
@@ -53,5 +53,7 @@ PSY-F09 committed/pushed `094b83c6f19ccee75554d02ff16914437c4bb533`; Linux/Windo
 PSY-F10 local complete:10Drivers,4incident (2primary+2reused),0new Relationships,2identities,2RN/UNKNOWN effects,2assessments/8findings,12supplemental sources+SRC-408reuse. 129incremental tests, source/schema/reference/determinism/local-link/Python/diff and191protected checks pass. EFT cue/rate, default preference/uptake, beta-direction and SRC205 DOI safeguards retained. Completion SHA recorded next checkpoint.
 PSY-F10 committed/pushed `0d2539420b70a5c0a4c5f5b0ea48e38b75e648b2`; Linux/Windows run `34159629607` passed.
 PSY-F11 local complete:10Drivers,6incident (5primary+1reused),0new Relationships,3identities,3RN/UNKNOWN effects,3assessments/9findings,17supplemental sources+SRC286reuse. 138incremental tests, schema/source/reference/determinism/local-link/Python/diff and191protected checks pass. Identity profile/component, enduring-time, source-result inconsistency and model/observation safeguards retained. Completion SHA recorded next checkpoint.
+- PSY-F11 committed/pushed `3459c11e25a73654fc802e5ceb660d3909f80cf2`; Linux/Windows workflow `34160977794` green.
+- PSY-F12 local complete:10 Drivers,8 incident propositions(6 primary+2 reused),3 identities,1 scoped REVIEW_READY threat effect+2 RESEARCH_NEEDED agency/perspective effects,3 assessments/11 findings.146 incremental tests and protected191/schema/source/determinism/Python/diff checks pass. Same-title/different-year source dedup corrected without canonical edits. No new GOVERNED/ACTIVE. Next PSY-F13.
 
 No new GOVERNED or ACTIVE records; no canonical source registration; no production science changes.
