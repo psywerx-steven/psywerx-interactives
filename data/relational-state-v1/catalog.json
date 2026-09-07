@@ -1,0 +1,176 @@
+{
+  "schemaVersion": "1.0.0",
+  "bindings": [
+    {
+      "schemaVersion": "1.0.0",
+      "objectKind": "COLLECTION_DERIVATION_BINDING",
+      "recordClass": "SCIENTIFIC_RECORD",
+      "id": "DER-V1-SOC-F07-001",
+      "revision": 1,
+      "targetRds": {
+        "id": "RDS-0006",
+        "definitionVersion": "ENTITY_V0_3_GOVERNED_RECORD_HASH",
+        "definitionHash": "1f4deb8927f023179666dfa4a680589c0bad8e16b78ed7e264583295265ff104"
+      },
+      "inputContract": {
+        "collectionSubject": "ALL_NODES_OF_BOUND_STATE_BOUNDARY",
+        "completenessRule": "EXACT_SET_EQUALITY_NO_MISSING_NO_EXTRA",
+        "inputEntity": {
+          "id": "SOC-049",
+          "definitionVersion": "ENTITY_V0_3_GOVERNED_RECORD_HASH",
+          "definitionHash": "145cc3aee92b29312360970ea347e84a5b11923c54f78ec451ff0e387bd5d742"
+        },
+        "inputMetricVariant": "DEGREE_RAW_UNDIRECTED",
+        "alignment": "SAME_STATE_HASH_BOUNDARY_WINDOW_TYPE_LAYER",
+        "requiredExternalInputs": [
+          "NODE_SET",
+          "NETWORK_STATE",
+          "BOUNDARY",
+          "WINDOW",
+          "METRIC_SPECIFICATION",
+          "MAXIMUM_BENCHMARK"
+        ]
+      },
+      "metricVariant": "FREEMAN_DEGREE_CENTRALIZATION",
+      "normalization": "SAME_SIZE_SIMPLE_UNDIRECTED_STAR_MAXIMUM",
+      "calculationReference": "SUM_MAX_DEGREE_MINUS_DEGREES_DIVIDED_BY_N_MINUS_1_TIMES_N_MINUS_2",
+      "minimumNodes": 3,
+      "causalRelationship": false,
+      "evidenceBasis": "DEFINITIONAL_CALCULATIONAL",
+      "sourceFindings": [
+        {
+          "id": "SF-DER-V1-SOC-F07-001",
+          "sourceId": "SRC255",
+          "locator": "Freeman, Centrality in social networks: Conceptual clarification; abstract reviewed in prior SOC pilot, not full-paper formula extraction.",
+          "accessDepth": "ABSTRACT",
+          "basis": "DEFINITIONAL_CALCULATIONAL",
+          "result": "Methodological distinction between node centrality forms and corresponding graph centralization. Complete degree collection/benchmark concept has separate exact human approval.",
+          "limitations": [
+            "Prior abstract-level access only; no full-paper or empirical effect review claimed.",
+            "Only the declared binary, simple, undirected, loopless degree variant. Other centrality/weight/direction variants unsupported.",
+            "Mathematical benchmark checked by declared star maximum argument and synthetic calculation, not empirical causal evidence."
+          ],
+          "empiricalCausalEvidence": false,
+          "overlap": "SRC-255 is a pilot alias of canonical SRC255. Candidate UCINET documentation not treated as independent replication."
+        }
+      ],
+      "scopeLimitations": [
+        "Complete aligned values for the exact declared network; never one ego.",
+        "No betweenness/eigenvector/closeness centralization from degree.",
+        "RDS blocked metadata unchanged; inactive knowledge confers no production execution or direct effect target."
+      ],
+      "sharedContributionIdentity": "CONTRIB-SOC-F07-DEGREE-CENTRALIZATION",
+      "contributionPolicy": "RECALCULATION_ONLY_NO_CAUSAL_SUM",
+      "lineage": {
+        "candidateId": "REL-CAND-SOC-F07-001",
+        "candidateRevision": 1,
+        "candidateHash": "9e4458e8e0bb95139ce7ab499a37ce4abc39c2a603c6739ff970f316fa60c2c5",
+        "scientificDecisionId": "GOV-SOC-F07-001-2026-09-06",
+        "architectureDecisionId": "GOV-NETWORK-STATE-V1-2026-09-07"
+      },
+      "governance": {
+        "activationStatus": "INACTIVE",
+        "authorityBasis": "V1_NATIVE",
+        "authorizedBy": "authorized human governor",
+        "blockStatus": "NONE",
+        "decisionDate": "2026-09-07",
+        "decisionOutcome": "APPROVED",
+        "decisionRationale": "Prior exact human scientific approval; representation/source gate satisfied. No activation.",
+        "decisionRecord": "docs/governance/pilots/SOC-F07/SOC_F07_GOVERNANCE_COMPLETION_002.md",
+        "effectiveVersion": "SOC-F07-COMPLETION-002",
+        "lifecycleStatus": "GOVERNED",
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": null
+            },
+            "governanceDecisionRecord": null,
+            "objectId": "DER-V1-SOC-F07-001",
+            "provenance": "AUD-SOC-F07-AE-V1-20260906-001; exact candidate lineage REL-CAND-SOC-F07-001",
+            "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+            "revision": 1,
+            "timestamp": "2026-09-07T02:46:39Z",
+            "toState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "CANDIDATE"
+            }
+          },
+          {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "CANDIDATE"
+            },
+            "governanceDecisionRecord": null,
+            "objectId": "DER-V1-SOC-F07-001",
+            "provenance": "AUD-SOC-F07-AE-V1-20260906-001; exact candidate lineage REL-CAND-SOC-F07-001",
+            "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+            "revision": 1,
+            "timestamp": "2026-09-07T02:46:39Z",
+            "toState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "RESEARCH_NEEDED"
+            }
+          },
+          {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "RESEARCH_NEEDED"
+            },
+            "governanceDecisionRecord": null,
+            "objectId": "DER-V1-SOC-F07-001",
+            "provenance": "AUD-SOC-F07-AE-V1-20260906-001; exact candidate lineage REL-CAND-SOC-F07-001",
+            "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+            "revision": 1,
+            "timestamp": "2026-09-07T02:46:39Z",
+            "toState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "REVIEW_READY"
+            }
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "GOVERNED",
+              "activationStatus": "INACTIVE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Exact conditional human approval materialization, no scientific scope expansion",
+            "timestamp": "2026-09-07T15:28:00Z",
+            "objectId": "DER-V1-SOC-F07-001",
+            "revision": 1,
+            "provenance": "REL-CAND-SOC-F07-001; GOV-SOC-F07-001-2026-09-06; GOV-NETWORK-STATE-V1-2026-09-07",
+            "governanceDecisionRecord": "docs/governance/pilots/SOC-F07/SOC_F07_GOVERNANCE_COMPLETION_002.md",
+            "exactDecisionMaterialization": true
+          }
+        ]
+      }
+    }
+  ],
+  "authorizations": [
+    {
+      "decisionId": "GOV-SOC-F07-COMPLETION-2026-09-07",
+      "decisionRecord": "docs/governance/pilots/SOC-F07/SOC_F07_GOVERNANCE_COMPLETION_002.md",
+      "actorClass": "AUTHORIZED_HUMAN_GOVERNOR",
+      "effectiveDate": "2026-09-07",
+      "authorizedObjects": [
+        {
+          "id": "DER-V1-SOC-F07-001",
+          "revision": 1,
+          "recordHash": "609f164d5bcd45cb7372f51374961f365780f2ebce7693e83f7b2db7d6e2dfbf"
+        }
+      ],
+      "recordClass": "SCIENTIFIC_RECORD"
+    }
+  ]
+}

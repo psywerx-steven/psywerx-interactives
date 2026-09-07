@@ -1,0 +1,119 @@
+{
+  "$id": "https://psywerx.org/schemas/source-verification/v1/verification-v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "accessDepth": {
+      "enum": [
+        "METADATA",
+        "ABSTRACT_METADATA",
+        "SELECTED_FULL_TEXT",
+        "FULL_TEXT"
+      ]
+    },
+    "authority": {
+      "enum": [
+        "CROSSREF",
+        "DATACITE"
+      ]
+    },
+    "conflicts": {
+      "maxItems": 0,
+      "type": "array"
+    },
+    "identifierChecked": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "method": {
+      "const": "DOI_REGISTRY_AND_PUBLISHER_ALIGNMENT"
+    },
+    "provenance": {
+      "additionalProperties": false,
+      "properties": {
+        "contentHash": {
+          "pattern": "^[a-f0-9]{64}$",
+          "type": "string"
+        },
+        "limitations": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        "path": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "reviewMethod": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "path",
+        "contentHash",
+        "reviewMethod",
+        "limitations"
+      ],
+      "type": "object"
+    },
+    "publisherLocator": {
+      "format": "uri",
+      "type": "string"
+    },
+    "registryLocator": {
+      "format": "uri",
+      "type": "string"
+    },
+    "status": {
+      "const": "VERIFIED"
+    },
+    "system": {
+      "const": "AUTHORITATIVE_BIBLIOGRAPHIC"
+    },
+    "verificationConfidence": {
+      "enum": [
+        "MODERATE",
+        "HIGH"
+      ]
+    },
+    "verificationVersion": {
+      "const": "1.0.0"
+    },
+    "verifiedDate": {
+      "format": "date",
+      "type": "string"
+    },
+    "verifiedFields": {
+      "const": [
+        "title",
+        "authors",
+        "year",
+        "publication",
+        "doi",
+        "sourceType"
+      ]
+    }
+  },
+  "required": [
+    "status",
+    "system",
+    "verificationVersion",
+    "verifiedDate",
+    "identifierChecked",
+    "method",
+    "authority",
+    "registryLocator",
+    "publisherLocator",
+    "verifiedFields",
+    "accessDepth",
+    "conflicts",
+    "verificationConfidence",
+    "provenance"
+  ],
+  "title": "Authoritative non-PubMed bibliographic verification V1",
+  "type": "object"
+}

@@ -63,6 +63,36 @@ First remaining milestone: B. Review/commit the existing governance changes, pus
 
 ## Boundaries
 
+## Milestone 1 complete; implementation started
+
+PR #19 merged as `59cf40931b9d63811422dd2c9e648888178f9e09` after final-head `e0b46ce45da85d5aa1731f920272c87a4f594673` passed [Linux/Windows CI 34137072205](https://github.com/psywerx-steven/psywerx-interactives/actions/runs/34137072205). Full diff reviewed; protected science and counts verified. Local main was fast-forwarded and matched origin/main. Branch `implementation/network-state-v1` created from that exact merge, clean. A–E COMPLETE. Implementation F–L now in progress.
+
+Design: immutable state/observation/delta contracts remain separate from scientific lifecycle. Reusable collection-binding knowledge is separate from a concrete state-bound calculation request. Synthetic validation cannot activate an inactive binding or add a causal contribution. Source reverification completed narrowly on 2026-09-07: publisher, Crossref and arXiv corroborate Sun/Taylor journal/preprint identity; no efficacy evidence is promoted. The verified journal DOI is `10.1007/s11129-020-09224-9`, title/authors/year/venue match. No source is registered until the generalized contract and conditional materializer validate.
+
+Exact next step: implement modular contracts and deterministic validators, then test collection/source gates and conditionally materialize. The prior architecture merge remains complete; do not repeat it.
+
+## Implementation contract checkpoint
+
+F–L and O COMPLETE locally: eight additive schemas, immutable typed state operations/receipts, exact collection/calculation contracts, sidecar operation references, and additive authoritative DOI verification. Fifty Network State tests and eighteen source-verification tests passed. Twelve deterministic synthetic demonstrations generated. Existing 29 native sources pass unchanged, including the exact historical PubMed route. No conditional canonical additions have yet been written.
+
+The current worktree had been switched to main at the same `59cf409` commit without losing changes; it is now back on the already-created `implementation/network-state-v1` branch. No history or work was reset. First remaining milestone: M/N/P, final conditional materialization and protected-record compatibility, then full regressions/CI. Governance/source snapshots remain historical; completion will be a separate exact overlay, not a rewrite of prior decisions.
+
+## Conditional completion and local validation complete
+
+Core checkpoint committed as `4f9ad45`. M–S now COMPLETE locally: HT-V1-SOC-F07-008 and DER-V1-SOC-F07-001 materialized GOVERNED/INACTIVE; exact source SRC-559 registered; 12 embedded/lineage/protection tests pass. The derivation is a complete collection binding with one internal definitional finding, not a causal Relationship or empirical EvidenceAssessment. All 12 scientific target gaps/H12/H20 remain unresolved, all three candidate effects UNKNOWN/RESEARCH_NEEDED, no activation.
+
+All 429 explicit Python tests ran: 427 passed, two Windows symlink privilege skips. Scenario-service 21 passed. Source/RI/AE/lifecycle/RDS/collection validators, deterministic SOC/NS generation, migration artifact regeneration, Python compilation, 19 JavaScript parses and diff/local links passed. Protected comparison: 146 existing files, 142 byte-equivalent and four exact authorized changes; every pre-existing scientific record unchanged. Generic SOC runner completed in about five seconds and reconciled 105 Families/811 entities/457 active/436 causal.
+
+Separate skeptical review fixed an absolute-file import compatibility defect and prevented stipulated tie changes inheriting observed evidence. Historical protection tests now allow only the exact new verification union, not arbitrary schema changes. See NETWORK_STATE_V1_VALIDATION.md for complete results and scope mapping.
+
+First remaining milestone: T/U/V. Commit completion, push implementation branch, open one implementation PR, inspect Linux/Windows final-head CI and full diff. Merge only when all gates pass. Then X–Z: essential post-merge checks, read-only three-pilot readiness and final handoff. No scientific activation or new Family research.
+
+## Implementation PR and concurrent-main reconciliation
+
+Completion commit `44bd631dbc526f8a25f613c38b8cc81b3880df27` pushed; implementation PR [#21](https://github.com/psywerx-steven/psywerx-interactives/pull/21) opened. Main legitimately advanced to `900729822aeb0bf1f4e55d489409c7fbf7a281d9` via the user's PR #20 isolated homepage preview. Inspected its full path diff: only new homepage/preview assets/tools/docs and a test, no scientific stores, governed schemas, consumers or CI changes. Merged origin/main into this implementation branch without conflict or rewriting history. The scientific baseline remains valid. All 21 now-tracked JavaScript files parse. No homepage feature edits or deployment actions were made by this task.
+
+U COMPLETE; final integrated-head Linux/Windows CI and merge gate remain pending. A separate post-merge documentation closeout will record the required read-only three-pilot assessment; it cannot authorize any scientific scale-up.
+
 State operations are deterministic modeled bookkeeping, not empirical effects, permission or predictions. Fixtures are SYNTHETIC / NON_PRODUCTION. No real-person data or latent-state estimator. Source verification must preserve old PubMed records exactly and reject unverifiable authoritative routes. Conditional scientific materialization has prior human authorization but no activation authority.
 
 Git maintenance emits permission warnings for stale PR9 worktree metadata during automatic housekeeping; fetch/commit/push succeed. No stale worktree deletion is attempted.

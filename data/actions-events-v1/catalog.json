@@ -2189,6 +2189,173 @@
       "recordClass": "SCIENTIFIC_RECORD",
       "revision": 1,
       "schemaVersion": "1.0.0"
+    },
+    {
+      "actorOrSourceSystem": "ROLE-AUTHORIZED-NETWORK-PROTOCOL-OPERATOR",
+      "aliases": [],
+      "componentEnumeration": "NOT_APPLICABLE",
+      "components": [],
+      "controlProfiles": [
+        {
+          "actorId": "ROLE-AUTHORIZED-NETWORK-PROTOCOL-OPERATOR",
+          "capabilities": [
+            "INITIATE",
+            "TUNE"
+          ],
+          "conditions": "Proposed role only. Prerequisites, feasibility, consent, privacy, legal/ethical/risk and applicability checks NOT_ASSESSED.",
+          "context": "Make existing shared attributes visible; distinct from common-neighbor signaling.",
+          "extent": "PARTIAL",
+          "population": "Privacy, truthful disclosure and platform population limits; not a triadic-closure estimate.",
+          "provenance": {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "limitations": [
+              "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+            ],
+            "method": "Structured evidence search and skeptical candidate audit",
+            "originReferences": [
+              "AUD-SOC-F07-AE-V1-20260906-001",
+              "f0be9c24288bd128231e0d1243b34c03ad055906",
+              "scripts/soc_f07_research_inputs.py"
+            ],
+            "recordedAt": "2026-09-07T02:46:39Z"
+          }
+        }
+      ],
+      "description": "Make existing shared attributes visible; distinct from common-neighbor signaling. Identity only: no efficacy, permission or activation implied. Identity definition only: no efficacy, causality, practitioner permission or recommendation, network-metric change, SOC-102 change, or EffectAssertion activation is implied.",
+      "domainTags": [
+        "TECHNOLOGICAL_CHANGE",
+        "INFORMATIONAL_EXPOSURE",
+        "DELIBERATE_INTERVENTION"
+      ],
+      "governance": {
+        "activationStatus": "INACTIVE",
+        "authorityBasis": "V1_NATIVE",
+        "authorizedBy": "authorized human governor",
+        "blockStatus": "NONE",
+        "decisionDate": "2026-09-07",
+        "decisionOutcome": "APPROVED",
+        "decisionRationale": "Prior exact human scientific approval; representation/source gate satisfied. No activation.",
+        "decisionRecord": "docs/governance/pilots/SOC-F07/SOC_F07_GOVERNANCE_COMPLETION_002.md",
+        "effectiveVersion": "SOC-F07-COMPLETION-002",
+        "lifecycleStatus": "GOVERNED",
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": null
+            },
+            "governanceDecisionRecord": null,
+            "objectId": "HT-V1-SOC-F07-008",
+            "provenance": "AUD-SOC-F07-AE-V1-20260906-001; exact candidate lineage HT-CAND-SOC-F07-008",
+            "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+            "revision": 1,
+            "timestamp": "2026-09-07T02:46:39Z",
+            "toState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "CANDIDATE"
+            }
+          },
+          {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "CANDIDATE"
+            },
+            "governanceDecisionRecord": null,
+            "objectId": "HT-V1-SOC-F07-008",
+            "provenance": "AUD-SOC-F07-AE-V1-20260906-001; exact candidate lineage HT-CAND-SOC-F07-008",
+            "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+            "revision": 1,
+            "timestamp": "2026-09-07T02:46:39Z",
+            "toState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "RESEARCH_NEEDED"
+            }
+          },
+          {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "RESEARCH_NEEDED"
+            },
+            "governanceDecisionRecord": null,
+            "objectId": "HT-V1-SOC-F07-008",
+            "provenance": "AUD-SOC-F07-AE-V1-20260906-001; exact candidate lineage HT-CAND-SOC-F07-008",
+            "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+            "revision": 1,
+            "timestamp": "2026-09-07T02:46:39Z",
+            "toState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "REVIEW_READY"
+            }
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "GOVERNED",
+              "activationStatus": "INACTIVE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Exact conditional human approval materialization, no scientific scope expansion",
+            "timestamp": "2026-09-07T15:28:00Z",
+            "objectId": "HT-V1-SOC-F07-008",
+            "revision": 1,
+            "provenance": "HT-CAND-SOC-F07-008; GOV-SOC-F07-001-2026-09-06; GOV-NETWORK-STATE-V1-2026-09-07",
+            "governanceDecisionRecord": "docs/governance/pilots/SOC-F07/SOC_F07_GOVERNANCE_COMPLETION_002.md",
+            "exactDecisionMaterialization": true
+          }
+        ]
+      },
+      "id": "HT-V1-SOC-F07-008",
+      "identityDefiningProfile": {
+        "doseIntensity": null,
+        "duration": null,
+        "frequency": null,
+        "reach": null,
+        "timing": null
+      },
+      "identityKey": "SOC-F07-008",
+      "identitySourceIds": [
+        "SRC-559"
+      ],
+      "intentionality": "DELIBERATE",
+      "interventionSubset": true,
+      "kindTags": [
+        "ACTION"
+      ],
+      "name": "Display verified shared profile attributes to a prospective contact",
+      "originLayers": [
+        "TEC",
+        "INF"
+      ],
+      "packageKind": "ATOMIC",
+      "pattern": [
+        "DISCRETE"
+      ],
+      "provenance": {
+        "actorClass": "AUTOMATED_PROCESS_OR_AI",
+        "limitations": [
+          "Selected accessed sections, not an exhaustive systematic review; no human scientific decision"
+        ],
+        "method": "Structured evidence search and skeptical candidate audit",
+        "originReferences": [
+          "AUD-SOC-F07-AE-V1-20260906-001",
+          "f0be9c24288bd128231e0d1243b34c03ad055906",
+          "scripts/soc_f07_research_inputs.py"
+        ],
+        "recordedAt": "2026-09-07T02:46:39Z"
+      },
+      "recordClass": "SCIENTIFIC_RECORD",
+      "revision": 1,
+      "schemaVersion": "1.0.0"
     }
   ],
   "occurrences": [],
@@ -3179,6 +3346,20 @@
       "decisionId": "GOV-SOC-F07-001-2026-09-06",
       "decisionRecord": "docs/governance/pilots/SOC-F07/SOC_F07_GOVERNANCE_DECISION_001.md",
       "effectiveDate": "2026-09-06",
+      "recordClass": "SCIENTIFIC_RECORD"
+    },
+    {
+      "decisionId": "GOV-SOC-F07-COMPLETION-2026-09-07",
+      "decisionRecord": "docs/governance/pilots/SOC-F07/SOC_F07_GOVERNANCE_COMPLETION_002.md",
+      "actorClass": "AUTHORIZED_HUMAN_GOVERNOR",
+      "effectiveDate": "2026-09-07",
+      "authorizedObjects": [
+        {
+          "id": "HT-V1-SOC-F07-008",
+          "revision": 1,
+          "recordHash": "934c38f9f70f9695e1c48b0601c5cf9e5ed568e85243ecb67cd98e16f1489fe3"
+        }
+      ],
       "recordClass": "SCIENTIFIC_RECORD"
     }
   ]

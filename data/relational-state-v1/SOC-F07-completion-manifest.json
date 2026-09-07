@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "1.0.0",
+  "baselineCommit": "59cf40931b9d63811422dd2c9e648888178f9e09",
+  "decisionId": "GOV-SOC-F07-COMPLETION-2026-09-07",
+  "priorScientificDecision": "GOV-SOC-F07-001-2026-09-06",
+  "architectureDecision": "GOV-NETWORK-STATE-V1-2026-09-07",
+  "activationAuthorized": false,
+  "newGoverned": 2,
+  "newInactive": 2,
+  "newActive": 0,
+  "records": [
+    {
+      "id": "HT-V1-SOC-F07-008",
+      "revision": 1,
+      "contentHash": "934c38f9f70f9695e1c48b0601c5cf9e5ed568e85243ecb67cd98e16f1489fe3"
+    },
+    {
+      "id": "DER-V1-SOC-F07-001",
+      "revision": 1,
+      "contentHash": "609f164d5bcd45cb7372f51374961f365780f2ebce7693e83f7b2db7d6e2dfbf"
+    }
+  ],
+  "candidateLineage": {
+    "HT-CAND-SOC-F07-008": "HT-V1-SOC-F07-008",
+    "REL-CAND-SOC-F07-001": "DER-V1-SOC-F07-001"
+  },
+  "sourceMapping": {
+    "SRC-CAND-SOC-F07-010": "SRC-559",
+    "SRC-255": "SRC255"
+  },
+  "sourceHash": "898b9d5dca33cadaa34f0f620bf4dfec1d349caed43bd37e4da244048bb5a757",
+  "sourceFindingCount": 1,
+  "separateEvidenceAssessmentCount": 0,
+  "sourceFindingPurpose": "Internal definitional finding, no empirical causal evidence or separate activation",
+  "scientificTargetGapsResolved": 0,
+  "existingRelationshipsChanged": 0,
+  "activeRelationships": 457,
+  "activeCausal": 436
+}

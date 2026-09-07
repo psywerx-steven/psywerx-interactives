@@ -5,38 +5,246 @@
   "type": "object",
   "additionalProperties": false,
   "required": [
-    "schemaVersion", "id", "citationText", "title", "authors", "year",
-    "publication", "doi", "pmid", "url", "sourceType", "verification",
-    "governanceDecisionRecord", "auditId"
+    "schemaVersion",
+    "id",
+    "citationText",
+    "title",
+    "authors",
+    "year",
+    "publication",
+    "doi",
+    "pmid",
+    "url",
+    "sourceType",
+    "verification",
+    "governanceDecisionRecord",
+    "auditId"
   ],
   "properties": {
-    "schemaVersion": {"const": "1.0.0"},
-    "id": {"type": "string", "pattern": "^SRC-[0-9]{3,}$"},
-    "citationText": {"type": "string", "minLength": 1},
-    "title": {"type": "string", "minLength": 1},
-    "authors": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
-    "year": {"type": "integer", "minimum": 1800, "maximum": 2100},
-    "publication": {"type": "string", "minLength": 1},
-    "doi": {"type": ["string", "null"], "minLength": 1},
-    "pmid": {"type": ["string", "null"], "pattern": "^[0-9]+$"},
-    "url": {"type": "string", "format": "uri"},
-    "sourceType": {"type": "string", "minLength": 1},
-    "verification": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["status", "system", "verifiedDate", "identifierChecked"],
-      "properties": {
-        "status": {"const": "VERIFIED"},
-        "system": {"const": "PUBMED_NCBI_EUTILITIES"},
-        "verifiedDate": {"type": "string", "format": "date"},
-        "identifierChecked": {"type": "string", "minLength": 1}
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^SRC-[0-9]{3,}$"
+    },
+    "citationText": {
+      "type": "string",
+      "minLength": 1
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "authors": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
       }
     },
-    "governanceDecisionRecord": {"type": "string", "minLength": 1},
-    "auditId": {"type": "string", "minLength": 1}
+    "year": {
+      "type": "integer",
+      "minimum": 1800,
+      "maximum": 2100
+    },
+    "publication": {
+      "type": "string",
+      "minLength": 1
+    },
+    "doi": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "pmid": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[0-9]+$"
+    },
+    "url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "sourceType": {
+      "type": "string",
+      "minLength": 1
+    },
+    "verification": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "system",
+            "verifiedDate",
+            "identifierChecked"
+          ],
+          "properties": {
+            "status": {
+              "const": "VERIFIED"
+            },
+            "system": {
+              "const": "PUBMED_NCBI_EUTILITIES"
+            },
+            "verifiedDate": {
+              "type": "string",
+              "format": "date"
+            },
+            "identifierChecked": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        {
+          "title": "Authoritative non-PubMed bibliographic verification V1",
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "system",
+            "verificationVersion",
+            "verifiedDate",
+            "identifierChecked",
+            "method",
+            "authority",
+            "registryLocator",
+            "publisherLocator",
+            "verifiedFields",
+            "accessDepth",
+            "conflicts",
+            "verificationConfidence",
+            "provenance"
+          ],
+          "properties": {
+            "status": {
+              "const": "VERIFIED"
+            },
+            "system": {
+              "const": "AUTHORITATIVE_BIBLIOGRAPHIC"
+            },
+            "verificationVersion": {
+              "const": "1.0.0"
+            },
+            "verifiedDate": {
+              "type": "string",
+              "format": "date"
+            },
+            "identifierChecked": {
+              "type": "string",
+              "minLength": 1
+            },
+            "method": {
+              "const": "DOI_REGISTRY_AND_PUBLISHER_ALIGNMENT"
+            },
+            "authority": {
+              "enum": [
+                "CROSSREF",
+                "DATACITE"
+              ]
+            },
+            "registryLocator": {
+              "type": "string",
+              "format": "uri"
+            },
+            "publisherLocator": {
+              "type": "string",
+              "format": "uri"
+            },
+            "verifiedFields": {
+              "const": [
+                "title",
+                "authors",
+                "year",
+                "publication",
+                "doi",
+                "sourceType"
+              ]
+            },
+            "accessDepth": {
+              "enum": [
+                "METADATA",
+                "ABSTRACT_METADATA",
+                "SELECTED_FULL_TEXT",
+                "FULL_TEXT"
+              ]
+            },
+            "conflicts": {
+              "type": "array",
+              "maxItems": 0
+            },
+            "verificationConfidence": {
+              "enum": [
+                "MODERATE",
+                "HIGH"
+              ]
+            },
+            "provenance": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "path",
+                "contentHash",
+                "reviewMethod",
+                "limitations"
+              ],
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "contentHash": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                },
+                "reviewMethod": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "limitations": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "governanceDecisionRecord": {
+      "type": "string",
+      "minLength": 1
+    },
+    "auditId": {
+      "type": "string",
+      "minLength": 1
+    }
   },
   "anyOf": [
-    {"properties": {"doi": {"type": "string"}}},
-    {"properties": {"pmid": {"type": "string"}}}
+    {
+      "properties": {
+        "doi": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "properties": {
+        "pmid": {
+          "type": "string"
+        }
+      }
+    }
   ]
 }

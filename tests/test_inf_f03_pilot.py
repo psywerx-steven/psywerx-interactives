@@ -208,7 +208,9 @@ class InfF03PilotTests(unittest.TestCase):
         checks = pilot.protected()
         self.assertTrue(pilot.protected_checkpoint_ok(checks))
         changed = {path for path, check in checks.items() if not check['unchanged']}
-        self.assertTrue(changed <= pilot.AUTHORIZED_CHECKPOINT_PATHS)
+        # Later NS approval adds only a verification union; all historical
+        # source/AE branches and scientific records have separate exact tests.
+        self.assertTrue(changed <= pilot.AUTHORIZED_CHECKPOINT_PATHS | {'schemas/relationship-intervention/v1/source-record-v1.schema.json'})
         self.assertEqual(
             changed,
             {
@@ -218,6 +220,7 @@ class InfF03PilotTests(unittest.TestCase):
                 'data/relationship-intervention-v1/evidence-assessments.json',
                 'data/relationship-intervention-v1/relationships.json',
                 'data/relationship-intervention-v1/source-register.json',
+                'schemas/relationship-intervention/v1/source-record-v1.schema.json',
             },
         )
 

@@ -17,7 +17,9 @@ class GovernanceTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.catalog=ae.read(g.AE_PATH)
-        cls.records=[r for r in ae.all_records(cls.catalog) if 'SOC-F07' in r['id']]
+        # Freeze this checkpoint's seven records; the NS completion suite
+        # separately proves the exact eighth addition and all current totals.
+        cls.records=[r for r in ae.all_records(cls.catalog) if r['id'] in {f'HT-V1-SOC-F07-{n:03d}' for n in range(1,8)}]
         cls.decisions=ae.read(g.MARKER)
         cls.byid={r['id']:r for r in cls.decisions['rows']}
         cls.manifest=ae.read(g.AE_PATH.parent/'SOC-F07-materialization-manifest.json')
@@ -84,7 +86,10 @@ class GovernanceTests(unittest.TestCase):
 
     def test_six_sources_registered_exactly(self):
         before={s['id']:s for s in g.frozen('data/relationship-intervention-v1/source-register.json')['sources']}
-        after={s['id']:s for s in ae.read(g.SOURCE_PATH)['sources']}
+        import materialize_soc_f07_completion as completion
+        current=ae.read(g.SOURCE_PATH)
+        if completion.MANIFEST.exists(): current=completion.strip_additions('data/relationship-intervention-v1/source-register.json',current)
+        after={s['id']:s for s in current['sources']}
         self.assertEqual(set(after)-set(before),{f'SRC-{n}' for n in range(553,559)})
         self.assertTrue(all(after[i]==r for i,r in before.items()))
         ri.validate_native_source_register(ri.SchemaSet())
@@ -163,7 +168,7 @@ class GovernanceTests(unittest.TestCase):
     def test_protected_record_comparison_detects_unapproved_edits(self):
         report=p.protected(); self.assertTrue(report['passed'])
         changed={path for path,row in report['files'].items() if not row['unchanged']}
-        self.assertEqual(changed,{'data/actions-events-v1/catalog.json','data/relationship-intervention-v1/source-register.json'})
+        self.assertEqual(changed,{'data/actions-events-v1/catalog.json','data/relationship-intervention-v1/source-register.json','schemas/relationship-intervention/v1/source-record-v1.schema.json'})
         old=json.dumps(g.frozen('data/actions-events-v1/catalog.json')).encode()
         bad=copy.deepcopy(self.catalog); bad['happeningTypes'][0]['name']='unauthorized change'
         self.assertFalse(g.exact_additions('data/actions-events-v1/catalog.json',old,json.dumps(bad).encode()))

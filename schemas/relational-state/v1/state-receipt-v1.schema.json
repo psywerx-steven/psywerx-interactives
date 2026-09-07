@@ -1,0 +1,142 @@
+{
+  "$id": "https://psywerx.org/schemas/relational-state/v1/state-receipt-v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "after": {
+      "additionalProperties": false,
+      "properties": {
+        "contentHash": {
+          "pattern": "^[a-f0-9]{64}$",
+          "type": "string"
+        },
+        "id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+          "type": "string"
+        },
+        "revision": {
+          "minimum": 1,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "id",
+        "revision",
+        "contentHash"
+      ],
+      "type": "object"
+    },
+    "before": {
+      "additionalProperties": false,
+      "properties": {
+        "contentHash": {
+          "pattern": "^[a-f0-9]{64}$",
+          "type": "string"
+        },
+        "id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+          "type": "string"
+        },
+        "revision": {
+          "minimum": 1,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "id",
+        "revision",
+        "contentHash"
+      ],
+      "type": "object"
+    },
+    "causalContribution": {
+      "const": false
+    },
+    "changeClass": {
+      "enum": [
+        "ANALYTIC_BOUNDARY_ONLY",
+        "STIPULATED_CONFIGURATION"
+      ]
+    },
+    "deltaHash": {
+      "pattern": "^[a-f0-9]{64}$",
+      "type": "string"
+    },
+    "deltaId": {
+      "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+      "type": "string"
+    },
+    "effectiveAt": {
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
+      "type": "string"
+    },
+    "empiricalEvidenceProduced": {
+      "const": false
+    },
+    "objectKind": {
+      "const": "SCENARIO_OPERATION_RECEIPT"
+    },
+    "ontologyRelationshipsEdited": {
+      "const": 0
+    },
+    "operationOrder": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": false
+    },
+    "receiptHash": {
+      "pattern": "^[a-f0-9]{64}$",
+      "type": "string"
+    },
+    "removedOpportunityIds": {
+      "items": {
+        "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+        "type": "string"
+      },
+      "minItems": 0,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "removedTieIds": {
+      "items": {
+        "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+        "type": "string"
+      },
+      "minItems": 0,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "scenarioId": {
+      "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+      "type": "string"
+    },
+    "schemaVersion": {
+      "const": "1.0.0"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "objectKind",
+    "deltaId",
+    "deltaHash",
+    "before",
+    "after",
+    "scenarioId",
+    "effectiveAt",
+    "operationOrder",
+    "removedTieIds",
+    "removedOpportunityIds",
+    "changeClass",
+    "causalContribution",
+    "empiricalEvidenceProduced",
+    "ontologyRelationshipsEdited",
+    "receiptHash"
+  ],
+  "title": "PSYWERX state-receipt V1",
+  "type": "object"
+}

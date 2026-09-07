@@ -5,7 +5,7 @@
     "existing-relationship-audit.json": "f4d7d120b6af9cec0046fbc678a0a1845ca1f477a204f53acd6164e51634f9a1",
     "hypotheses.json": "c9c1322c4c36e07c4cafaa94c89d5096d3b153d0de83e4adbdda5ca6e9d0a5e8",
     "ontology-target-gaps.json": "5597318705bf5831522611dc0b058e5b3b91e69075d4352b2a14a97fb53d1642",
-    "protected-science.json": "1f37d917f8df2b100fb00c33265ef66d7ea01b8404e57649fade33c91ca8ec62",
+    "protected-science.json": "27583c2aca51a60763282bbc33d01a0032070b23d45cf0d40050e49cabc80755",
     "rds-antecedent-ledger.json": "1fb8d16f769d7cb973118a9c3adfbfe7e03cfa664643c010af4a1a914059485f",
     "revision-proposals.json": "c1cb99dcda87d171b4ba5afbc42233479a349196913a4da8bf16d8572c59cc14",
     "search-ledger.json": "f81c3cd384ebdee310cc373b5833f63d27efd4c7f9dfb439f812cf9b97e1cb57",
@@ -396,7 +396,7 @@
     "passed": true
   },
   "recordClass": "GOVERNANCE_MATERIALIZATION_AUDIT",
-  "riSourceRegisterVersion": "a5e1c60c098e9d0c99e4998fe95c9d594d15d2d13c62b41cb6f4e7455c499e6f",
+  "riSourceRegisterVersion": "029541681dcfde4613744d52bc929c16ae937bdebf7e3771009c2f2cdfd0f5da",
   "schemaHashes": {
     "schemas/actions-events/v1/authorization-v1.schema.json": "614a918745ef48735bf0a61585f805bfebb4152e69ec994d72116361c9ae01be",
     "schemas/actions-events/v1/candidate-workspace-v1.schema.json": "becfb99e9c7a55d425f78162b87ba6f9881d8dbf01c0a89110d005b91c88f8d1",
@@ -410,6 +410,14 @@
     "schemas/actions-events/v1/source-finding-v1.schema.json": "1c3d9408f6520d21b4bd5849fcf6ba7868ef245a0965c8bc74133924709f736d",
     "schemas/actions-events/v1/use-eligibility-v1.schema.json": "d1e50ba8f42d840532a5274d643a63785ca5932500beb017e6dfd7b571867655",
     "schemas/actions-events/v1/vocabulary.json": "dda340b4bf1ec4ddb307f78a0c7dee8bca2f6f91d4c25dfc4ca5de883cb65aa7",
+    "schemas/relational-state/v1/calculation-receipt-v1.schema.json": "d5cbbde83eb022eba532ae8a9b513ced6c2d5643c82e9f4855025a39912ced60",
+    "schemas/relational-state/v1/calculation-request-v1.schema.json": "6e12ce091f83b3e36e6bbde71b9def1ff85bb1b430616a1740d636135128ea2e",
+    "schemas/relational-state/v1/collection-derivation-binding-v1.schema.json": "3fa313d74e7ad0014615ec90f4d720a8bf8e0e3d454b1eb953ebe9e4b9395b2f",
+    "schemas/relational-state/v1/network-observation-v1.schema.json": "6ac40353e4f423ad3eff2f30265fc69fffa0bb23e2d641831313924c4b5543a1",
+    "schemas/relational-state/v1/relational-state-v1.schema.json": "4bfbc4bb72a9d0579fe9312e86893ffd724c0498d17dac311e6555f0601c1288",
+    "schemas/relational-state/v1/scenario-operation-reference-v1.schema.json": "cd0be6591c2e9df3ff3b5aee61bb35c5e3e502d96c623f1764f200aa2cd006c4",
+    "schemas/relational-state/v1/scenario-state-delta-v1.schema.json": "7e14e0f8dd9fdac0b05c5c3b1d5b979413d1f9e7ea0c179ded934f3545ffe95c",
+    "schemas/relational-state/v1/state-receipt-v1.schema.json": "73c62a09760b910831b9500b9eb2c7352c7d0b1f86e7e55091d47b8d0b7b837d",
     "schemas/relationship-intervention/v1/candidate-workspace-v1.schema.json": "af02c7685b978296de577e8663c7b98bdfd7dbd22f3b6b179e939ac964175154",
     "schemas/relationship-intervention/v1/causal-pathway-v1.schema.json": "6a9e43cf678fe2851d35307cb248dc9ca949ff0d34da0dcfbcb76b3b6452440a",
     "schemas/relationship-intervention/v1/evidence-assessment-v1.schema.json": "74047e6494e936348622193da5cb89ebce37a8fc74fb3b960436678163fa3e44",
@@ -417,7 +425,8 @@
     "schemas/relationship-intervention/v1/intervention-effect-v1.schema.json": "a0868dc95b9025bca69570faf94d162681a06ad3186ea480718a53af6569248a",
     "schemas/relationship-intervention/v1/intervention-v1.schema.json": "4b49519c748d002b29e88057e81a9416ba658c24b584d0d48e2292c559fb7ae6",
     "schemas/relationship-intervention/v1/relationship-v1.schema.json": "1463cfb29c0d6cbaf76e8798b90a92857341b3e599a9616133aec713ff119599",
-    "schemas/relationship-intervention/v1/source-record-v1.schema.json": "23cf265873fe00856fbb11c48415bf41e3e0d531492f81bab445aa868732e417"
+    "schemas/relationship-intervention/v1/source-record-v1.schema.json": "12e76d83c3944d6cf14b594852a0e99f01400a18132074b265d402bba744e7b2",
+    "schemas/source-verification/v1/verification-v1.schema.json": "859e5c365cb0a211c76a162e798b7be9c8e9a045d5704b0f4e3d33aef793a309"
   },
   "schemaVersions": {
     "actionsEventsV1": "1.0.0",

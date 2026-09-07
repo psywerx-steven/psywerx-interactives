@@ -99,6 +99,18 @@ jobs:
       - name: Run eight-Layer synthetic structural pilot
         run: python scripts/actions_events_synthetic.py
 
+      - name: Validate optional Network State contracts and synthetic failures
+        run: python -m unittest discover -s tests -p "test_relational_state_v1.py"
+
+      - name: Validate truthful backward-compatible source verification
+        run: python -m unittest discover -s tests -p "test_source_verification_v1.py"
+
+      - name: Validate exact inactive SOC-F07 conditional completion
+        run: python -m unittest discover -s tests -p "test_soc_f07_completion.py"
+
+      - name: Validate collection catalog and deterministic Network State reports
+        run: python scripts/network_state_integrity.py
+
       - name: Verify migration tests leave artifacts unchanged
         run: git diff --exit-code -- data
 
@@ -185,6 +197,18 @@ jobs:
 
       - name: Run eight-Layer synthetic structural pilot
         run: python scripts/actions_events_synthetic.py
+
+      - name: Validate optional Network State contracts and synthetic failures
+        run: python -m unittest discover -s tests -p "test_relational_state_v1.py"
+
+      - name: Validate truthful backward-compatible source verification
+        run: python -m unittest discover -s tests -p "test_source_verification_v1.py"
+
+      - name: Validate exact inactive SOC-F07 conditional completion
+        run: python -m unittest discover -s tests -p "test_soc_f07_completion.py"
+
+      - name: Validate collection catalog and deterministic Network State reports
+        run: python scripts/network_state_integrity.py
 
       - name: Verify migration tests leave artifacts unchanged
         run: git diff --exit-code -- data
