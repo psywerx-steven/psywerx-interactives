@@ -63,6 +63,20 @@ First remaining milestone: B. Review/commit the existing governance changes, pus
 
 ## Boundaries
 
+## Milestone 1 complete; implementation started
+
+PR #19 merged as `59cf40931b9d63811422dd2c9e648888178f9e09` after final-head `e0b46ce45da85d5aa1731f920272c87a4f594673` passed [Linux/Windows CI 34137072205](https://github.com/psywerx-steven/psywerx-interactives/actions/runs/34137072205). Full diff reviewed; protected science and counts verified. Local main was fast-forwarded and matched origin/main. Branch `implementation/network-state-v1` created from that exact merge, clean. A–E COMPLETE. Implementation F–L now in progress.
+
+Design: immutable state/observation/delta contracts remain separate from scientific lifecycle. Reusable collection-binding knowledge is separate from a concrete state-bound calculation request. Synthetic validation cannot activate an inactive binding or add a causal contribution. Source reverification completed narrowly on 2026-09-07: publisher, Crossref and arXiv corroborate Sun/Taylor journal/preprint identity; no efficacy evidence is promoted. The verified journal DOI is `10.1007/s11129-020-09224-9`, title/authors/year/venue match. No source is registered until the generalized contract and conditional materializer validate.
+
+Exact next step: implement modular contracts and deterministic validators, then test collection/source gates and conditionally materialize. The prior architecture merge remains complete; do not repeat it.
+
+## Implementation contract checkpoint
+
+F–L and O COMPLETE locally: eight additive schemas, immutable typed state operations/receipts, exact collection/calculation contracts, sidecar operation references, and additive authoritative DOI verification. Fifty Network State tests and eighteen source-verification tests passed. Twelve deterministic synthetic demonstrations generated. Existing 29 native sources pass unchanged, including the exact historical PubMed route. No conditional canonical additions have yet been written.
+
+The current worktree had been switched to main at the same `59cf409` commit without losing changes; it is now back on the already-created `implementation/network-state-v1` branch. No history or work was reset. First remaining milestone: M/N/P, final conditional materialization and protected-record compatibility, then full regressions/CI. Governance/source snapshots remain historical; completion will be a separate exact overlay, not a rewrite of prior decisions.
+
 State operations are deterministic modeled bookkeeping, not empirical effects, permission or predictions. Fixtures are SYNTHETIC / NON_PRODUCTION. No real-person data or latent-state estimator. Source verification must preserve old PubMed records exactly and reject unverifiable authoritative routes. Conditional scientific materialization has prior human authorization but no activation authority.
 
 Git maintenance emits permission warnings for stale PR9 worktree metadata during automatic housekeeping; fetch/commit/push succeed. No stale worktree deletion is attempted.

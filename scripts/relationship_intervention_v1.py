@@ -784,6 +784,13 @@ def validate_native_source_register(schemas: SchemaSet) -> list[dict[str, Any]]:
     }
     for record in records:
         schemas.validate("source", record)
+        # Additive authoritative non-PubMed route; existing PubMed records are
+        # preserved and checked exactly, not silently remigrated.
+        from source_verification_v1 import validate_source, VerificationError
+        try:
+            validate_source(record)
+        except VerificationError as error:
+            raise ArchitectureValidationError(str(error)) from error
         identifier = record["id"]
         _require(identifier not in legacy_ids, f"Native source ID duplicates legacy source: {identifier}")
         _require(identifier not in seen_ids, f"Duplicate native source ID: {identifier}")

@@ -1,0 +1,724 @@
+{
+  "$id": "https://psywerx.org/schemas/relational-state/v1/scenario-state-delta-v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "basis": {
+      "enum": [
+        "STIPULATED_MODELED_OPERATION",
+        "ANALYTIC_BOUNDARY_SELECTION"
+      ]
+    },
+    "effectiveAt": {
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
+      "type": "string"
+    },
+    "empiricalEvidenceProduced": {
+      "const": false
+    },
+    "expectedState": {
+      "additionalProperties": false,
+      "properties": {
+        "contentHash": {
+          "pattern": "^[a-f0-9]{64}$",
+          "type": "string"
+        },
+        "id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+          "type": "string"
+        },
+        "revision": {
+          "minimum": 1,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "id",
+        "revision",
+        "contentHash"
+      ],
+      "type": "object"
+    },
+    "happeningTypeRef": {
+      "anyOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "contentHash": {
+              "pattern": "^[a-f0-9]{64}$",
+              "type": "string"
+            },
+            "id": {
+              "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+              "type": "string"
+            },
+            "revision": {
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "id",
+            "revision",
+            "contentHash"
+          ],
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "id": {
+      "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+      "type": "string"
+    },
+    "objectKind": {
+      "const": "SCENARIO_STATE_DELTA"
+    },
+    "occurrenceRef": {
+      "anyOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "contentHash": {
+              "pattern": "^[a-f0-9]{64}$",
+              "type": "string"
+            },
+            "id": {
+              "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+              "type": "string"
+            },
+            "revision": {
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "id",
+            "revision",
+            "contentHash"
+          ],
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "operations": {
+      "items": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "includeInBoundary": {
+                "type": "boolean"
+              },
+              "node": {
+                "additionalProperties": false,
+                "properties": {
+                  "active": {
+                    "type": "boolean"
+                  },
+                  "attributes": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "name": {
+                          "minLength": 1,
+                          "type": "string"
+                        },
+                        "provenanceId": {
+                          "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+                          "type": "string"
+                        },
+                        "schemaUri": {
+                          "format": "uri",
+                          "type": "string"
+                        },
+                        "sensitive": {
+                          "type": "boolean"
+                        },
+                        "value": {
+                          "anyOf": [
+                            {
+                              "type": [
+                                "number",
+                                "string",
+                                "boolean"
+                              ]
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        }
+                      },
+                      "required": [
+                        "name",
+                        "value",
+                        "schemaUri",
+                        "provenanceId",
+                        "sensitive"
+                      ],
+                      "type": "object"
+                    },
+                    "minItems": 0,
+                    "type": "array",
+                    "uniqueItems": false
+                  },
+                  "id": {
+                    "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+                    "type": "string"
+                  },
+                  "memberships": {
+                    "items": {
+                      "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+                      "type": "string"
+                    },
+                    "minItems": 0,
+                    "type": "array",
+                    "uniqueItems": true
+                  },
+                  "provenanceId": {
+                    "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "active",
+                  "memberships",
+                  "provenanceId"
+                ],
+                "type": "object"
+              },
+              "operation": {
+                "const": "ADD_NODE"
+              }
+            },
+            "required": [
+              "operation",
+              "node",
+              "includeInBoundary"
+            ],
+            "type": "object"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "incidentPolicy": {
+                "const": "REMOVE_AND_RECORD"
+              },
+              "nodeId": {
+                "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+                "type": "string"
+              },
+              "operation": {
+                "const": "DEACTIVATE_NODE"
+              }
+            },
+            "required": [
+              "operation",
+              "nodeId",
+              "incidentPolicy"
+            ],
+            "type": "object"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "operation": {
+                "const": "ADD_TIE"
+              },
+              "tie": {
+                "additionalProperties": false,
+                "properties": {
+                  "basis": {
+                    "enum": [
+                      "ASSUMED",
+                      "OBSERVED",
+                      "INFERRED"
+                    ]
+                  },
+                  "directed": {
+                    "type": "boolean"
+                  },
+                  "id": {
+                    "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+                    "type": "string"
+                  },
+                  "layerId": {
+                    "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+                    "type": "string"
+                  },
+                  "objectKind": {
+                    "const": "SOCIAL_TIE"
+                  },
+                  "observationRef": {
+                    "anyOf": [
+                      {
+                        "additionalProperties": false,
+                        "properties": {
+                          "contentHash": {
+                            "pattern": "^[a-f0-9]{64}$",
+                            "type": "string"
+                          },
+                          "id": {
+                            "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+                            "type": "string"
+                          },
+                          "revision": {
+                            "minimum": 1,
+                            "type": "integer"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "revision",
+                          "contentHash"
+                        ],
+                        "type": "object"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "provenanceId": {
+                    "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+                    "type": "string"
+                  },
+                  "source": {
+                    "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+                    "type": "string"
+                  },
+                  "target": {
+                    "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+                    "type": "string"
+                  },
+                  "tieTypeId": {
+                    "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+                    "type": "string"
+                  },
+                  "validFrom": {
+                    "format": "date-time",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
+                    "type": "string"
+                  },
+                  "validUntil": {
+                    "anyOf": [
+                      {
+                        "format": "date-time",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "weight": {
+                    "anyOf": [
+                      {
+                        "minimum": 0,
+                        "type": "number"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "weightMeaning": {
+                    "anyOf": [
+                      {
+                        "minLength": 1,
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "weightUnit": {
+                    "anyOf": [
+                      {
+                        "minLength": 1,
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "id",
+                  "objectKind",
+                  "source",
+                  "target",
+                  "tieTypeId",
+                  "layerId",
+                  "directed",
+                  "weight",
+                  "weightMeaning",
+                  "weightUnit",
+                  "validFrom",
+                  "validUntil",
+                  "provenanceId",
+                  "basis",
+                  "observationRef"
+                ],
+                "type": "object"
+              }
+            },
+            "required": [
+              "operation",
+              "tie"
+            ],
+            "type": "object"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "operation": {
+                "const": "REMOVE_TIE"
+              },
+              "tieId": {
+                "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+                "type": "string"
+              }
+            },
+            "required": [
+              "operation",
+              "tieId"
+            ],
+            "type": "object"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "operation": {
+                "const": "UPDATE_TIE_WEIGHT"
+              },
+              "tieId": {
+                "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+                "type": "string"
+              },
+              "weight": {
+                "anyOf": [
+                  {
+                    "minimum": 0,
+                    "type": "number"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "weightMeaning": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "weightUnit": {
+                "anyOf": [
+                  {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "operation",
+              "tieId",
+              "weight",
+              "weightMeaning",
+              "weightUnit"
+            ],
+            "type": "object"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "groupIds": {
+                "items": {
+                  "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+                  "type": "string"
+                },
+                "minItems": 0,
+                "type": "array",
+                "uniqueItems": true
+              },
+              "nodeId": {
+                "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+                "type": "string"
+              },
+              "operation": {
+                "const": "CHANGE_MEMBERSHIP"
+              }
+            },
+            "required": [
+              "operation",
+              "nodeId",
+              "groupIds"
+            ],
+            "type": "object"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "boundary": {
+                "additionalProperties": false,
+                "properties": {
+                  "excludedPopulationRule": {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "id": {
+                    "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+                    "type": "string"
+                  },
+                  "includedNodeIds": {
+                    "items": {
+                      "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+                      "type": "string"
+                    },
+                    "minItems": 0,
+                    "type": "array",
+                    "uniqueItems": true
+                  },
+                  "includedPopulationRule": {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "revision": {
+                    "minimum": 1,
+                    "type": "integer"
+                  },
+                  "unknownPopulationRule": {
+                    "minLength": 1,
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "id",
+                  "revision",
+                  "includedNodeIds",
+                  "includedPopulationRule",
+                  "excludedPopulationRule",
+                  "unknownPopulationRule"
+                ],
+                "type": "object"
+              },
+              "operation": {
+                "const": "CHANGE_BOUNDARY"
+              }
+            },
+            "required": [
+              "operation",
+              "boundary"
+            ],
+            "type": "object"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "operation": {
+                "const": "CHANGE_CONTACT_OPPORTUNITY"
+              },
+              "opportunity": {
+                "additionalProperties": false,
+                "properties": {
+                  "enabled": {
+                    "anyOf": [
+                      {
+                        "type": "boolean"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "id": {
+                    "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+                    "type": "string"
+                  },
+                  "kind": {
+                    "enum": [
+                      "CONTACT",
+                      "ASSIGNED_SEATING",
+                      "PLATFORM_ACCESS"
+                    ]
+                  },
+                  "objectKind": {
+                    "const": "CONTACT_OPPORTUNITY"
+                  },
+                  "provenanceId": {
+                    "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+                    "type": "string"
+                  },
+                  "source": {
+                    "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+                    "type": "string"
+                  },
+                  "target": {
+                    "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+                    "type": "string"
+                  },
+                  "validFrom": {
+                    "format": "date-time",
+                    "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
+                    "type": "string"
+                  },
+                  "validUntil": {
+                    "anyOf": [
+                      {
+                        "format": "date-time",
+                        "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
+                        "type": "string"
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "id",
+                  "objectKind",
+                  "source",
+                  "target",
+                  "kind",
+                  "enabled",
+                  "validFrom",
+                  "validUntil",
+                  "provenanceId"
+                ],
+                "type": "object"
+              }
+            },
+            "required": [
+              "operation",
+              "opportunity"
+            ],
+            "type": "object"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "enabled": {
+                "anyOf": [
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "operation": {
+                "const": "CHANGE_ACCESS"
+              },
+              "opportunityId": {
+                "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+                "type": "string"
+              }
+            },
+            "required": [
+              "operation",
+              "opportunityId",
+              "enabled"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": false
+    },
+    "provenance": {
+      "additionalProperties": false,
+      "properties": {
+        "description": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+          "type": "string"
+        },
+        "method": {
+          "enum": [
+            "SYNTHETIC_FIXTURE",
+            "SCENARIO_STIPULATION",
+            "OBSERVATION_REFERENCE"
+          ]
+        },
+        "sourceLocators": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "minItems": 0,
+          "type": "array",
+          "uniqueItems": false
+        }
+      },
+      "required": [
+        "id",
+        "method",
+        "sourceLocators",
+        "description"
+      ],
+      "type": "object"
+    },
+    "realWorldSuccessClaim": {
+      "const": false
+    },
+    "recordClass": {
+      "enum": [
+        "SCENARIO_OPERATION",
+        "SYNTHETIC / NON_PRODUCTION"
+      ]
+    },
+    "scenarioId": {
+      "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+      "type": "string"
+    },
+    "schemaVersion": {
+      "const": "1.0.0"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "objectKind",
+    "recordClass",
+    "id",
+    "scenarioId",
+    "expectedState",
+    "effectiveAt",
+    "basis",
+    "provenance",
+    "occurrenceRef",
+    "happeningTypeRef",
+    "realWorldSuccessClaim",
+    "empiricalEvidenceProduced",
+    "operations"
+  ],
+  "title": "PSYWERX scenario-state-delta V1",
+  "type": "object"
+}

@@ -1,0 +1,540 @@
+{
+  "$id": "https://psywerx.org/schemas/relational-state/v1/calculation-request-v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "bindingRef": {
+      "anyOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "contentHash": {
+              "pattern": "^[a-f0-9]{64}$",
+              "type": "string"
+            },
+            "id": {
+              "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+              "type": "string"
+            },
+            "revision": {
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "id",
+            "revision",
+            "contentHash"
+          ],
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "boundary": {
+      "additionalProperties": false,
+      "properties": {
+        "excludedPopulationRule": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+          "type": "string"
+        },
+        "includedNodeIds": {
+          "items": {
+            "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+            "type": "string"
+          },
+          "minItems": 0,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "includedPopulationRule": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "revision": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "unknownPopulationRule": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "revision",
+        "includedNodeIds",
+        "includedPopulationRule",
+        "excludedPopulationRule",
+        "unknownPopulationRule"
+      ],
+      "type": "object"
+    },
+    "collection": {
+      "anyOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "boundary": {
+              "additionalProperties": false,
+              "properties": {
+                "excludedPopulationRule": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "id": {
+                  "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+                  "type": "string"
+                },
+                "includedNodeIds": {
+                  "items": {
+                    "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+                    "type": "string"
+                  },
+                  "minItems": 0,
+                  "type": "array",
+                  "uniqueItems": true
+                },
+                "includedPopulationRule": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "revision": {
+                  "minimum": 1,
+                  "type": "integer"
+                },
+                "unknownPopulationRule": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "revision",
+                "includedNodeIds",
+                "includedPopulationRule",
+                "excludedPopulationRule",
+                "unknownPopulationRule"
+              ],
+              "type": "object"
+            },
+            "completeness": {
+              "const": "COMPLETE_ALIGNED"
+            },
+            "inputEntity": {
+              "additionalProperties": false,
+              "properties": {
+                "definitionHash": {
+                  "pattern": "^[a-f0-9]{64}$",
+                  "type": "string"
+                },
+                "definitionVersion": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "id": {
+                  "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "definitionVersion",
+                "definitionHash"
+              ],
+              "type": "object"
+            },
+            "metric": {
+              "additionalProperties": false,
+              "properties": {
+                "direction": {
+                  "const": "UNDIRECTED"
+                },
+                "layerId": {
+                  "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+                  "type": "string"
+                },
+                "loops": {
+                  "const": false
+                },
+                "lowDegreeClustering": {
+                  "enum": [
+                    "NOT_APPLICABLE",
+                    "ZERO_BY_SPECIFICATION"
+                  ]
+                },
+                "normalization": {
+                  "enum": [
+                    "NONE",
+                    "POSSIBLE_PAIRS",
+                    "NEIGHBOR_PAIRS",
+                    "SAME_SIZE_STAR"
+                  ]
+                },
+                "parallelTies": {
+                  "const": false
+                },
+                "tieTypeId": {
+                  "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+                  "type": "string"
+                },
+                "variant": {
+                  "enum": [
+                    "DEGREE_RAW_UNDIRECTED",
+                    "DENSITY_SIMPLE_UNDIRECTED",
+                    "CLUSTERING_LOCAL_UNDIRECTED",
+                    "FRAGMENTATION_UNREACHABLE_PAIRS",
+                    "FREEMAN_DEGREE_CENTRALIZATION"
+                  ]
+                },
+                "weightPolicy": {
+                  "const": "EXPLICIT_BINARY_UNWEIGHTED"
+                }
+              },
+              "required": [
+                "variant",
+                "tieTypeId",
+                "layerId",
+                "direction",
+                "loops",
+                "weightPolicy",
+                "parallelTies",
+                "normalization",
+                "lowDegreeClustering"
+              ],
+              "type": "object"
+            },
+            "stateRef": {
+              "additionalProperties": false,
+              "properties": {
+                "contentHash": {
+                  "pattern": "^[a-f0-9]{64}$",
+                  "type": "string"
+                },
+                "id": {
+                  "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+                  "type": "string"
+                },
+                "revision": {
+                  "minimum": 1,
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "id",
+                "revision",
+                "contentHash"
+              ],
+              "type": "object"
+            },
+            "subjectNodeIds": {
+              "items": {
+                "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+                "type": "string"
+              },
+              "minItems": 0,
+              "type": "array",
+              "uniqueItems": true
+            },
+            "values": {
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "nodeId": {
+                    "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+                    "type": "string"
+                  },
+                  "value": {
+                    "minimum": 0,
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "nodeId",
+                  "value"
+                ],
+                "type": "object"
+              },
+              "minItems": 0,
+              "type": "array",
+              "uniqueItems": false
+            },
+            "window": {
+              "additionalProperties": false,
+              "properties": {
+                "aggregation": {
+                  "enum": [
+                    "SNAPSHOT_AT_START",
+                    "PERSISTENT_THROUGH_WINDOW"
+                  ]
+                },
+                "end": {
+                  "format": "date-time",
+                  "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
+                  "type": "string"
+                },
+                "mode": {
+                  "enum": [
+                    "SNAPSHOT",
+                    "INTERVAL"
+                  ]
+                },
+                "start": {
+                  "format": "date-time",
+                  "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "mode",
+                "start",
+                "end",
+                "aggregation"
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "subjectNodeIds",
+            "completeness",
+            "stateRef",
+            "boundary",
+            "window",
+            "inputEntity",
+            "metric",
+            "values"
+          ],
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "contributionIdentity": {
+      "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+      "type": "string"
+    },
+    "externalBenchmark": {
+      "anyOf": [
+        {
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "SAME_SIZE_SIMPLE_UNDIRECTED_STAR"
+            },
+            "maximum": {
+              "minimum": 1,
+              "type": "integer"
+            },
+            "nodeCount": {
+              "minimum": 3,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "kind",
+            "nodeCount",
+            "maximum"
+          ],
+          "type": "object"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "id": {
+      "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+      "type": "string"
+    },
+    "metric": {
+      "additionalProperties": false,
+      "properties": {
+        "direction": {
+          "const": "UNDIRECTED"
+        },
+        "layerId": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+          "type": "string"
+        },
+        "loops": {
+          "const": false
+        },
+        "lowDegreeClustering": {
+          "enum": [
+            "NOT_APPLICABLE",
+            "ZERO_BY_SPECIFICATION"
+          ]
+        },
+        "normalization": {
+          "enum": [
+            "NONE",
+            "POSSIBLE_PAIRS",
+            "NEIGHBOR_PAIRS",
+            "SAME_SIZE_STAR"
+          ]
+        },
+        "parallelTies": {
+          "const": false
+        },
+        "tieTypeId": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+          "type": "string"
+        },
+        "variant": {
+          "enum": [
+            "DEGREE_RAW_UNDIRECTED",
+            "DENSITY_SIMPLE_UNDIRECTED",
+            "CLUSTERING_LOCAL_UNDIRECTED",
+            "FRAGMENTATION_UNREACHABLE_PAIRS",
+            "FREEMAN_DEGREE_CENTRALIZATION"
+          ]
+        },
+        "weightPolicy": {
+          "const": "EXPLICIT_BINARY_UNWEIGHTED"
+        }
+      },
+      "required": [
+        "variant",
+        "tieTypeId",
+        "layerId",
+        "direction",
+        "loops",
+        "weightPolicy",
+        "parallelTies",
+        "normalization",
+        "lowDegreeClustering"
+      ],
+      "type": "object"
+    },
+    "objectKind": {
+      "const": "RDS_CALCULATION_REQUEST"
+    },
+    "propagationRoutes": {
+      "const": [
+        "STATE_RECALCULATION"
+      ]
+    },
+    "recordClass": {
+      "enum": [
+        "CALCULATION_REQUEST",
+        "SYNTHETIC / NON_PRODUCTION"
+      ]
+    },
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "stateRef": {
+      "additionalProperties": false,
+      "properties": {
+        "contentHash": {
+          "pattern": "^[a-f0-9]{64}$",
+          "type": "string"
+        },
+        "id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+          "type": "string"
+        },
+        "revision": {
+          "minimum": 1,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "id",
+        "revision",
+        "contentHash"
+      ],
+      "type": "object"
+    },
+    "targetRds": {
+      "additionalProperties": false,
+      "properties": {
+        "definitionHash": {
+          "pattern": "^[a-f0-9]{64}$",
+          "type": "string"
+        },
+        "definitionVersion": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "definitionVersion",
+        "definitionHash"
+      ],
+      "type": "object"
+    },
+    "useMode": {
+      "enum": [
+        "SYNTHETIC_VALIDATION",
+        "SCIENTIFIC_USE"
+      ]
+    },
+    "window": {
+      "additionalProperties": false,
+      "properties": {
+        "aggregation": {
+          "enum": [
+            "SNAPSHOT_AT_START",
+            "PERSISTENT_THROUGH_WINDOW"
+          ]
+        },
+        "end": {
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
+          "type": "string"
+        },
+        "mode": {
+          "enum": [
+            "SNAPSHOT",
+            "INTERVAL"
+          ]
+        },
+        "start": {
+          "format": "date-time",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "mode",
+        "start",
+        "end",
+        "aggregation"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "objectKind",
+    "id",
+    "recordClass",
+    "stateRef",
+    "boundary",
+    "window",
+    "targetRds",
+    "metric",
+    "bindingRef",
+    "collection",
+    "externalBenchmark",
+    "useMode",
+    "contributionIdentity",
+    "propagationRoutes"
+  ],
+  "title": "PSYWERX calculation-request V1",
+  "type": "object"
+}

@@ -1,0 +1,263 @@
+{
+  "$id": "https://psywerx.org/schemas/relational-state/v1/collection-derivation-binding-v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "calculationReference": {
+      "const": "SUM_MAX_DEGREE_MINUS_DEGREES_DIVIDED_BY_N_MINUS_1_TIMES_N_MINUS_2"
+    },
+    "causalRelationship": {
+      "const": false
+    },
+    "contributionPolicy": {
+      "const": "RECALCULATION_ONLY_NO_CAUSAL_SUM"
+    },
+    "evidenceBasis": {
+      "const": "DEFINITIONAL_CALCULATIONAL"
+    },
+    "governance": {
+      "$ref": "https://psywerx.org/schemas/relationship-intervention/v1/governance-v1.schema.json"
+    },
+    "id": {
+      "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+      "type": "string"
+    },
+    "inputContract": {
+      "additionalProperties": false,
+      "properties": {
+        "alignment": {
+          "const": "SAME_STATE_HASH_BOUNDARY_WINDOW_TYPE_LAYER"
+        },
+        "collectionSubject": {
+          "const": "ALL_NODES_OF_BOUND_STATE_BOUNDARY"
+        },
+        "completenessRule": {
+          "const": "EXACT_SET_EQUALITY_NO_MISSING_NO_EXTRA"
+        },
+        "inputEntity": {
+          "additionalProperties": false,
+          "properties": {
+            "definitionHash": {
+              "pattern": "^[a-f0-9]{64}$",
+              "type": "string"
+            },
+            "definitionVersion": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "id": {
+              "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "definitionVersion",
+            "definitionHash"
+          ],
+          "type": "object"
+        },
+        "inputMetricVariant": {
+          "const": "DEGREE_RAW_UNDIRECTED"
+        },
+        "requiredExternalInputs": {
+          "const": [
+            "NODE_SET",
+            "NETWORK_STATE",
+            "BOUNDARY",
+            "WINDOW",
+            "METRIC_SPECIFICATION",
+            "MAXIMUM_BENCHMARK"
+          ]
+        }
+      },
+      "required": [
+        "collectionSubject",
+        "completenessRule",
+        "inputEntity",
+        "inputMetricVariant",
+        "alignment",
+        "requiredExternalInputs"
+      ],
+      "type": "object"
+    },
+    "lineage": {
+      "additionalProperties": false,
+      "properties": {
+        "architectureDecisionId": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+          "type": "string"
+        },
+        "candidateHash": {
+          "pattern": "^[a-f0-9]{64}$",
+          "type": "string"
+        },
+        "candidateId": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+          "type": "string"
+        },
+        "candidateRevision": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "scientificDecisionId": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "candidateId",
+        "candidateRevision",
+        "candidateHash",
+        "scientificDecisionId",
+        "architectureDecisionId"
+      ],
+      "type": "object"
+    },
+    "metricVariant": {
+      "const": "FREEMAN_DEGREE_CENTRALIZATION"
+    },
+    "minimumNodes": {
+      "const": 3
+    },
+    "normalization": {
+      "const": "SAME_SIZE_SIMPLE_UNDIRECTED_STAR_MAXIMUM"
+    },
+    "objectKind": {
+      "const": "COLLECTION_DERIVATION_BINDING"
+    },
+    "recordClass": {
+      "enum": [
+        "SCIENTIFIC_RECORD",
+        "SYNTHETIC / NON_PRODUCTION"
+      ]
+    },
+    "revision": {
+      "minimum": 1,
+      "type": "integer"
+    },
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "scopeLimitations": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": false
+    },
+    "sharedContributionIdentity": {
+      "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+      "type": "string"
+    },
+    "sourceFindings": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "accessDepth": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "basis": {
+            "const": "DEFINITIONAL_CALCULATIONAL"
+          },
+          "empiricalCausalEvidence": {
+            "const": false
+          },
+          "id": {
+            "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+            "type": "string"
+          },
+          "limitations": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array",
+            "uniqueItems": false
+          },
+          "locator": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "overlap": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "result": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "sourceId": {
+            "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "sourceId",
+          "locator",
+          "accessDepth",
+          "basis",
+          "result",
+          "limitations",
+          "empiricalCausalEvidence",
+          "overlap"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": false
+    },
+    "targetRds": {
+      "additionalProperties": false,
+      "properties": {
+        "definitionHash": {
+          "pattern": "^[a-f0-9]{64}$",
+          "type": "string"
+        },
+        "definitionVersion": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{2,127}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "definitionVersion",
+        "definitionHash"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "objectKind",
+    "recordClass",
+    "id",
+    "revision",
+    "targetRds",
+    "inputContract",
+    "metricVariant",
+    "normalization",
+    "calculationReference",
+    "minimumNodes",
+    "causalRelationship",
+    "evidenceBasis",
+    "sourceFindings",
+    "scopeLimitations",
+    "sharedContributionIdentity",
+    "contributionPolicy",
+    "lineage",
+    "governance"
+  ],
+  "title": "PSYWERX collection-derivation-binding V1",
+  "type": "object"
+}
