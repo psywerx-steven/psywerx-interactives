@@ -457,7 +457,7 @@
     "ownerFamilyId": "PSY-F04",
     "consultation": {
       "PSY-F04": "CANDIDATE_REVIEW_COMPLETE",
-      "PSY-F09": "NOT_YET_PROCESSED",
+      "PSY-F09": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F12": "NOT_YET_PROCESSED",
       "PSY-F14": "NOT_YET_PROCESSED"
     },
@@ -539,7 +539,7 @@
     "consultation": {
       "PSY-F05": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F06": "CANDIDATE_REVIEW_COMPLETE",
-      "PSY-F09": "NOT_YET_PROCESSED",
+      "PSY-F09": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F14": "NOT_YET_PROCESSED"
     },
     "status": "RESEARCH_NEEDED",
@@ -601,7 +601,7 @@
     "consultation": {
       "PSY-F05": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F06": "CANDIDATE_REVIEW_COMPLETE",
-      "PSY-F09": "NOT_YET_PROCESSED",
+      "PSY-F09": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F11": "NOT_YET_PROCESSED",
       "PSY-F12": "NOT_YET_PROCESSED",
       "PSY-F14": "NOT_YET_PROCESSED"
@@ -665,7 +665,7 @@
     "ownerFamilyId": "PSY-F06",
     "consultation": {
       "PSY-F06": "CANDIDATE_REVIEW_COMPLETE",
-      "PSY-F09": "NOT_YET_PROCESSED",
+      "PSY-F09": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F14": "NOT_YET_PROCESSED"
     },
     "status": "RESEARCH_NEEDED",
@@ -850,7 +850,7 @@
     "ownerFamilyId": "PSY-F08",
     "consultation": {
       "PSY-F08": "CANDIDATE_REVIEW_COMPLETE",
-      "PSY-F09": "NOT_YET_PROCESSED",
+      "PSY-F09": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F06": "CANDIDATE_REVIEW_COMPLETE"
     },
     "status": "RESEARCH_NEEDED",
@@ -902,7 +902,108 @@
     "consultation": {
       "PSY-F08": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F05": "CANDIDATE_REVIEW_COMPLETE",
-      "PSY-F09": "NOT_YET_PROCESSED"
+      "PSY-F09": "CANDIDATE_REVIEW_COMPLETE"
+    },
+    "status": "RESEARCH_NEEDED",
+    "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+  },
+  {
+    "id": "CF-PSY-LAYER-0035",
+    "kind": "CONSTRUCT_BOUNDARY",
+    "familyIds": [
+      "PSY-F09",
+      "PSY-F04"
+    ],
+    "recordIds": [
+      "PSY-077",
+      "PSY-078",
+      "PSY-028",
+      "REL-PSY-037"
+    ],
+    "question": "Signed discrepancy is external-reference/current difference; monitoring reveals versus corrects, and toward-zero is not numeric decrease.",
+    "classification": "DISTINCT",
+    "ownerFamilyId": "PSY-F09",
+    "consultation": {
+      "PSY-F09": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F04": "CANDIDATE_REVIEW_COMPLETE"
+    },
+    "status": "RESEARCH_NEEDED",
+    "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+  },
+  {
+    "id": "CF-PSY-LAYER-0036",
+    "kind": "CONSTRUCT_BOUNDARY",
+    "familyIds": [
+      "PSY-F09",
+      "PSY-F08",
+      "PSY-F01"
+    ],
+    "recordIds": [
+      "PSY-075",
+      "PSY-076",
+      "PSY-072",
+      "PSY-004",
+      "HT-CAND-PSY-LAYER-0014"
+    ],
+    "question": "Plan commitment/accessibility, detail and cue association differ. Reuse if-then operation; selected negative-expectancy/plan correlation not exact causal influence.",
+    "classification": "RELATED",
+    "ownerFamilyId": "PSY-F09",
+    "consultation": {
+      "PSY-F09": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F08": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F01": "CANDIDATE_REVIEW_COMPLETE"
+    },
+    "status": "RESEARCH_NEEDED",
+    "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+  },
+  {
+    "id": "CF-PSY-LAYER-0037",
+    "kind": "CONSTRUCT_BOUNDARY",
+    "familyIds": [
+      "PSY-F09",
+      "PSY-F06",
+      "PSY-F14"
+    ],
+    "recordIds": [
+      "PSY-080",
+      "PSY-081",
+      "PSY-082",
+      "PSY-058",
+      "PSY-120",
+      "SRC157"
+    ],
+    "question": "Current capacities, task scores and stable traits need separate indicators; source157 bibliographic mismatch and review comparator selection remain flagged.",
+    "classification": "MEASUREMENT_OVERLAP",
+    "ownerFamilyId": "PSY-F09",
+    "consultation": {
+      "PSY-F09": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F06": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F14": "NOT_YET_PROCESSED"
+    },
+    "status": "RESEARCH_NEEDED",
+    "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+  },
+  {
+    "id": "CF-PSY-LAYER-0038",
+    "kind": "CONSTRUCT_BOUNDARY",
+    "familyIds": [
+      "PSY-F09",
+      "PSY-F05",
+      "PSY-F02"
+    ],
+    "recordIds": [
+      "PSY-079",
+      "PSY-083",
+      "PSY-043",
+      "PSY-014"
+    ],
+    "question": "Regulatory deployment/preference, current capacity and coping fit differ; multi-skill packages, active comparators and country associations do not isolate a component or cultural cause.",
+    "classification": "RELATED",
+    "ownerFamilyId": "PSY-F09",
+    "consultation": {
+      "PSY-F09": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F05": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F02": "CANDIDATE_REVIEW_COMPLETE"
     },
     "status": "RESEARCH_NEEDED",
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"

@@ -17,7 +17,7 @@ NOT_STARTED and PARTIAL stages remain unfinished. All human decisions remain pen
 | PSY-F06 | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE |
 | PSY-F07 | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE |
 | PSY-F08 | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE |
-| PSY-F09 | DONE | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED |
+| PSY-F09 | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE |
 | PSY-F10 | DONE | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED |
 | PSY-F11 | DONE | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED |
 | PSY-F12 | DONE | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED |
@@ -26,7 +26,7 @@ NOT_STARTED and PARTIAL stages remain unfinished. All human decisions remain pen
 
 ## Exact resume point
 
-Begin PSY-F09 Planning, Self-Regulation & Executive Control. Frozen baseline only; mechanically trace PSY-078 RDS and reuse already-reviewed external/source edges plus F08 if-then identity. F01–F08 local complete; Layer reconciliation pending.
+Begin PSY-F10 Decision Valuation Across Risk, Time & Effort. F01–F09 local complete; F10–F14 baseline only. Layer reconciliation remains pending.
 
 ## Checkpoints
 
@@ -47,5 +47,7 @@ Begin PSY-F09 Planning, Self-Regulation & Executive Control. Frozen baseline onl
 - PSY-F07 local complete:7Drivers,4incident propositions (3new primary+1reused),0new Relationships,2identities,1RR delayed-recall effect+1RN confidence-proxy effect,2assessments/7findings,12supplemental sources. 99incremental tests, schema/source/reference/determinism/local-link/Python/diff and191protected checks pass. Immediate recall reversal and SRC184 PMID mismatch preserved. Completion SHA recorded next checkpoint.
 - PSY-F07 committed/pushed `74940090ec8c32bfa6b8841bd9f8e46dc20aaa3e`; Linux/Windows run `34156292084` passed.
 - PSY-F08 local complete:5Drivers,3primary incident reviews,0new Relationships,2identities,2RN/UNKNOWN effects,2assessments/7findings,13supplemental sources. 109incremental tests, schema/source/reference/determinism/local-link/Python/diff and191protected checks pass. Habit-item overlap, pre/post versus controls, assay failures and SRC120 identity mismatch retained. Completion SHA recorded next checkpoint.
+PSY-F08 committed/pushed `9501b1e3fa84fab387d1eebabde1d72139e9ea09`; Linux/Windows run `34157017946` passed. PSY-F09 entity/RDS, existing and research work drafted; source/comparator review and local validation underway.
+PSY-F09 local complete:8Drivers+1RDS,9incident (5primary+4reused),0new Relationships,2identities,2RN/UNKNOWN effects,2assessments/7findings,12supplemental sources. 120incremental tests, schema/source/reference/determinism/local links/Python/diff and191protected checks pass. Signed-discrepancy, review-comparator and SRC157 identity safeguards explicit. Completion SHA recorded next checkpoint.
 
 No new GOVERNED or ACTIVE records; no canonical source registration; no production science changes.

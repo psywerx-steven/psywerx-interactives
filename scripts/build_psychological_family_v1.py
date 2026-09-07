@@ -312,6 +312,9 @@ def render(family):
               "Candidate research only. Human decisions pending. No production science changed.", ""]
     p.write(doc / "README.md", "\n".join(header + ["See [entity review](ENTITY_REVIEW.md), [existing audit](EXISTING_RELATIONSHIP_AUDIT.md),", "[evidence](EVIDENCE_SUMMARY.md) and [decision package](GOVERNANCE_DECISION_PACKAGE.md).", "", "Machine-readable source of truth is the corresponding Layer candidate Family directory.", ""]))
     lines = header + ["## Complete entity review", "", coverage["entityFieldPolicy"], "", coverage["rdsReview"], ""]
+    rds_path = p.STORE / family / "rds-review.json"
+    if rds_path.exists():
+        lines += ["## Structured RDS safeguard review", "", "```json", p.encode(p.read(rds_path)).strip(), "```", ""]
     for review in research["entityReviews"]:
         e = canonical[review["id"]]
         lines += [f"### {e['id']} — {e['name']}", "", "Canonical snapshot (including all available fields):", "", "```json", p.encode(e).strip(), "```", ""]

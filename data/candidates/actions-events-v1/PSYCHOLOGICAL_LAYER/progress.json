@@ -98,15 +98,15 @@
     },
     "PSY-F09": {
       "BASELINE": "DONE",
-      "COMPLETE": "NOT_STARTED",
-      "DECISION_PACKAGE": "NOT_STARTED",
-      "ENTITY_REVIEW": "NOT_STARTED",
-      "EVIDENCE_RECONCILIATION": "NOT_STARTED",
-      "PASS_A_EXISTING": "NOT_STARTED",
-      "PASS_A_GAPS": "NOT_STARTED",
-      "PASS_B_ACTIONS_EVENTS": "NOT_STARTED",
-      "SKEPTICAL_REVIEW": "NOT_STARTED",
-      "VALIDATION": "NOT_STARTED"
+      "COMPLETE": "DONE",
+      "DECISION_PACKAGE": "DONE",
+      "ENTITY_REVIEW": "DONE",
+      "EVIDENCE_RECONCILIATION": "DONE",
+      "PASS_A_EXISTING": "DONE",
+      "PASS_A_GAPS": "DONE",
+      "PASS_B_ACTIONS_EVENTS": "DONE",
+      "SKEPTICAL_REVIEW": "DONE",
+      "VALIDATION": "DONE"
     },
     "PSY-F10": {
       "BASELINE": "DONE",
@@ -170,7 +170,7 @@
     }
   },
   "programId": "AUD-PSYCHOLOGICAL-LAYER-AE-V1-20260907-001",
-  "resumePoint": "Begin PSY-F09 Planning, Self-Regulation & Executive Control. Frozen baseline only; mechanically trace PSY-078 RDS and reuse already-reviewed external/source edges plus F08 if-then identity. F01–F08 local complete; Layer reconciliation pending.",
+  "resumePoint": "Begin PSY-F10 Decision Valuation Across Risk, Time & Effort. F01–F09 local complete; F10–F14 baseline only. Layer reconciliation remains pending.",
   "checkpoints": [
     "- Layer baseline committed/pushed: `4405e1cd0fcaf8bfa38b629a27d31a4bc4a32320`; all 14 frozen, 191 protected files unchanged.",
     "- PSY-F01 local candidate audit complete: 7 entities, 9 existing propositions, 1 Relationship / 2 identities / 2 effects / 3 assessments. 23 Layer, 65 AE, 38 RI and 18 source-verification tests pass; deterministic rendering, schema/source/query/local-link checks, Python compilation and diff check pass. 191 protected files unchanged. Completion commit SHA will be recorded in the next checkpoint.",
@@ -188,6 +188,8 @@
     "- PSY-F06 committed/pushed `54b428bbed08adcfbdb6dc11028cc70d6ad91704`; Linux/Windows run `34154924007` passed.",
     "- PSY-F07 local complete:7Drivers,4incident propositions (3new primary+1reused),0new Relationships,2identities,1RR delayed-recall effect+1RN confidence-proxy effect,2assessments/7findings,12supplemental sources. 99incremental tests, schema/source/reference/determinism/local-link/Python/diff and191protected checks pass. Immediate recall reversal and SRC184 PMID mismatch preserved. Completion SHA recorded next checkpoint.",
     "- PSY-F07 committed/pushed `74940090ec8c32bfa6b8841bd9f8e46dc20aaa3e`; Linux/Windows run `34156292084` passed.",
-    "- PSY-F08 local complete:5Drivers,3primary incident reviews,0new Relationships,2identities,2RN/UNKNOWN effects,2assessments/7findings,13supplemental sources. 109incremental tests, schema/source/reference/determinism/local-link/Python/diff and191protected checks pass. Habit-item overlap, pre/post versus controls, assay failures and SRC120 identity mismatch retained. Completion SHA recorded next checkpoint."
+    "- PSY-F08 local complete:5Drivers,3primary incident reviews,0new Relationships,2identities,2RN/UNKNOWN effects,2assessments/7findings,13supplemental sources. 109incremental tests, schema/source/reference/determinism/local-link/Python/diff and191protected checks pass. Habit-item overlap, pre/post versus controls, assay failures and SRC120 identity mismatch retained. Completion SHA recorded next checkpoint.",
+    "PSY-F08 committed/pushed `9501b1e3fa84fab387d1eebabde1d72139e9ea09`; Linux/Windows run `34157017946` passed. PSY-F09 entity/RDS, existing and research work drafted; source/comparator review and local validation underway.",
+    "PSY-F09 local complete:8Drivers+1RDS,9incident (5primary+4reused),0new Relationships,2identities,2RN/UNKNOWN effects,2assessments/7findings,12supplemental sources. 120incremental tests, schema/source/reference/determinism/local links/Python/diff and191protected checks pass. Signed-discrepancy, review-comparator and SRC157 identity safeguards explicit. Completion SHA recorded next checkpoint."
   ]
 }

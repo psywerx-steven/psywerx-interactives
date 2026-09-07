@@ -1,0 +1,76 @@
+{
+  "programId": "AUD-PSYCHOLOGICAL-LAYER-AE-V1-20260907-001",
+  "familyId": "PSY-F09",
+  "entityId": "PSY-078",
+  "entityType": "RELATIONAL_DERIVED_STATE",
+  "baseline": "de38b3948f511602af7aa94a9cd80b78e1a00298",
+  "derivationType": "DIFFERENCE",
+  "requiredInputs": [
+    {
+      "kind": "EXTERNAL_PARAMETER",
+      "type": "DESIRED_OR_REFERENCE_STATE",
+      "entityId": null,
+      "required": true
+    },
+    {
+      "kind": "EXTERNAL_PARAMETER",
+      "type": "PERCEIVED_CURRENT_STATE",
+      "entityId": null,
+      "required": true
+    }
+  ],
+  "canonicalDriverConstituents": [],
+  "formula": "desired_or_reference_state - perceived_current_state",
+  "requiredAlignment": [
+    "person",
+    "goal domain",
+    "reference state",
+    "perceived current state",
+    "units",
+    "sign convention",
+    "window",
+    "update behavior"
+  ],
+  "denominator": "NOT_SPECIFIED_NOT_REQUIRED_BY_GENERIC_DIFFERENCE",
+  "calculationWindow": "SCENARIO_SPECIFIC_REQUIRED_NOT_FILLED",
+  "uncertainty": "Preserve uncertainty and shared-input dependence; operational analytic method not selected or implemented.",
+  "sharedInputRisks": [
+    "Monitoring may update perceived current information, not world state.",
+    "Goal/reference changes alter RDS without progress.",
+    "Repeated scores share reference/current inputs; do not propagate both constituent update and independent RDS causal contribution."
+  ],
+  "incomingCausalIds": [
+    "REL-PSY-037"
+  ],
+  "outgoingCausalIds": [],
+  "causalSource": false,
+  "exogenousRootRisk": "NO_CURRENT_OUTGOING_CLAIM; narrative mechanisms are not causal edges",
+  "reviewDisposition": "SPLIT_CANDIDATE_FOR_REL_PSY_037_ONLY",
+  "directEffectTargetPermitted": false,
+  "newCausalRdsEndpoints": 0,
+  "newDerivationalRecords": 0,
+  "formulaTreatedAsCausality": false,
+  "canonicalMetadataModified": false,
+  "illustration": {
+    "recordClass": "SYNTHETIC_NON_PRODUCTION",
+    "purpose": "Sign logic only, no scientific simulation or calibrated output",
+    "cases": [
+      {
+        "reference": 10,
+        "currentBefore": 8,
+        "currentAfter": 9,
+        "differenceBefore": 2,
+        "differenceAfter": 1
+      },
+      {
+        "reference": 10,
+        "currentBefore": 12,
+        "currentAfter": 11,
+        "differenceBefore": -2,
+        "differenceAfter": -1
+      }
+    ],
+    "conclusion": "Both approach zero; numeric change directions differ. Not evidence for or against any real intervention."
+  },
+  "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+}
