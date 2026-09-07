@@ -22,11 +22,11 @@ NOT_STARTED and PARTIAL stages remain unfinished. All human decisions remain pen
 | PSY-F11 | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE |
 | PSY-F12 | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE |
 | PSY-F13 | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE |
-| PSY-F14 | DONE | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED |
+| PSY-F14 | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE |
 
 ## Exact resume point
 
-Begin PSY-F14 Stable Dispositions & Temperament. F01–F13 local complete; F14 baseline only. Final Layer reconciliation/skeptical sample/CI/PR remain pending.
+All fourteen Families locally complete. Continue Layer-wide reconciliation, independent random sample across all14, consolidated governance/coverage package, required validation/final-head LinuxWindows CI and one candidate-only PR. Do not repeat completed Family research.
 
 ## Checkpoints
 
@@ -57,5 +57,7 @@ PSY-F11 local complete:10Drivers,6incident (5primary+1reused),0new Relationships
 - PSY-F12 local complete:10 Drivers,8 incident propositions(6 primary+2 reused),3 identities,1 scoped REVIEW_READY threat effect+2 RESEARCH_NEEDED agency/perspective effects,3 assessments/11 findings.146 incremental tests and protected191/schema/source/determinism/Python/diff checks pass. Same-title/different-year source dedup corrected without canonical edits. No new GOVERNED/ACTIVE. Next PSY-F13.
 - PSY-F12 committed/pushed `e4a7ab5c92cc400a566defad6824d57234e3b451`; Linux/Windows workflow `34162256393` green.
 - PSY-F13 local complete:7 Drivers,18 incident propositions(10 primary+8 reused),3 identities/3 RN effects,3 assessments/9 findings.154 incremental tests, protected191, schema/source/determinism/Python checks pass. All111 Layer existing propositions now primary-reviewed; F14 must still consult its incidents and complete entity/research work. Prior INF native claim retained unchanged; source conflicts and historical201/412 duplicate flagged. Next PSY-F14.
+- PSY-F13 committed/pushed `c3d45673d491997c208d3d948292ba45e0e6e3ed`; Linux/Windows workflow34163160381 green. F14 source/construct/endpoint review complete;2RN effects,2identities,8findings; temporal/profile issues preserved.
+- PSY-F14 local complete:12Drivers,8incident(0newprimary+8consulted/reused),0newRelationships,2identities/2RN effects,2assessments/8findings,17supplemental sources.162incremental tests, schema/source/determinism/Python/diff and191protectedchecks pass. Source/profile/trait-time limits preserved. Completion SHA recorded at Layer reconciliation.
 
 No new GOVERNED or ACTIVE records; no canonical source registration; no production science changes.

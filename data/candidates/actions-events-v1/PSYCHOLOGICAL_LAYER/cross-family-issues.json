@@ -129,7 +129,8 @@
     "consultation": {
       "PSY-F01": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F06": "CANDIDATE_REVIEW_COMPLETE",
-      "PSY-F13": "CANDIDATE_REVIEW_COMPLETE"
+      "PSY-F13": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F14": "CANDIDATE_REVIEW_COMPLETE"
     },
     "status": "RESEARCH_NEEDED",
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
@@ -174,7 +175,7 @@
     "consultation": {
       "PSY-F02": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F13": "CANDIDATE_REVIEW_COMPLETE",
-      "PSY-F14": "NOT_YET_PROCESSED"
+      "PSY-F14": "CANDIDATE_REVIEW_COMPLETE"
     },
     "status": "RESEARCH_NEEDED",
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
@@ -460,7 +461,7 @@
       "PSY-F04": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F09": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F12": "CANDIDATE_REVIEW_COMPLETE",
-      "PSY-F14": "NOT_YET_PROCESSED"
+      "PSY-F14": "CANDIDATE_REVIEW_COMPLETE"
     },
     "status": "RESEARCH_NEEDED",
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
@@ -541,7 +542,7 @@
       "PSY-F05": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F06": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F09": "CANDIDATE_REVIEW_COMPLETE",
-      "PSY-F14": "NOT_YET_PROCESSED"
+      "PSY-F14": "CANDIDATE_REVIEW_COMPLETE"
     },
     "status": "RESEARCH_NEEDED",
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
@@ -605,7 +606,7 @@
       "PSY-F09": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F11": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F12": "CANDIDATE_REVIEW_COMPLETE",
-      "PSY-F14": "NOT_YET_PROCESSED"
+      "PSY-F14": "CANDIDATE_REVIEW_COMPLETE"
     },
     "status": "RESEARCH_NEEDED",
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
@@ -667,7 +668,7 @@
     "consultation": {
       "PSY-F06": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F09": "CANDIDATE_REVIEW_COMPLETE",
-      "PSY-F14": "NOT_YET_PROCESSED"
+      "PSY-F14": "CANDIDATE_REVIEW_COMPLETE"
     },
     "status": "RESEARCH_NEEDED",
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
@@ -878,7 +879,7 @@
     "consultation": {
       "PSY-F08": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F01": "CANDIDATE_REVIEW_COMPLETE",
-      "PSY-F14": "NOT_YET_PROCESSED"
+      "PSY-F14": "CANDIDATE_REVIEW_COMPLETE"
     },
     "status": "RESEARCH_NEEDED",
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
@@ -979,7 +980,7 @@
     "consultation": {
       "PSY-F09": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F06": "CANDIDATE_REVIEW_COMPLETE",
-      "PSY-F14": "NOT_YET_PROCESSED"
+      "PSY-F14": "CANDIDATE_REVIEW_COMPLETE"
     },
     "status": "RESEARCH_NEEDED",
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
@@ -1059,7 +1060,7 @@
     "consultation": {
       "PSY-F10": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F09": "CANDIDATE_REVIEW_COMPLETE",
-      "PSY-F14": "NOT_YET_PROCESSED"
+      "PSY-F14": "CANDIDATE_REVIEW_COMPLETE"
     },
     "status": "RESEARCH_NEEDED",
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
@@ -1205,7 +1206,7 @@
     "ownerFamilyId": "PSY-F11",
     "consultation": {
       "PSY-F11": "CANDIDATE_REVIEW_COMPLETE",
-      "PSY-F14": "NOT_YET_PROCESSED"
+      "PSY-F14": "CANDIDATE_REVIEW_COMPLETE"
     },
     "status": "RESEARCH_NEEDED",
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
@@ -1254,7 +1255,7 @@
     "consultation": {
       "PSY-F12": "CANDIDATE_REVIEW_COMPLETE",
       "PSY-F02": "CANDIDATE_REVIEW_COMPLETE",
-      "PSY-F14": "NOT_YET_PROCESSED"
+      "PSY-F14": "CANDIDATE_REVIEW_COMPLETE"
     },
     "status": "RESEARCH_NEEDED",
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
@@ -1373,7 +1374,7 @@
     "ownerFamilyId": "PSY-F13",
     "consultation": {
       "PSY-F13": "CANDIDATE_REVIEW_COMPLETE",
-      "PSY-F14": "NOT_YET_PROCESSED"
+      "PSY-F14": "CANDIDATE_REVIEW_COMPLETE"
     },
     "status": "RESEARCH_NEEDED",
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
@@ -1397,6 +1398,63 @@
       "INF-F12": "ENDPOINT_REVIEW_ONLY_NO_EXTERNAL_FAMILY_AUDIT"
     },
     "status": "RESEARCH_NEEDED",
+    "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+  },
+  {
+    "id": "CF-PSY-LAYER-0055",
+    "kind": "CONSTRUCT_BOUNDARY",
+    "familyIds": [
+      "PSY-F14",
+      "PSY-F05",
+      "PSY-F06",
+      "PSY-F09",
+      "PSY-F10"
+    ],
+    "recordIds": [
+      "PSY-120",
+      "PSY-121",
+      "PSY-122",
+      "PSY-125",
+      "PSY-127",
+      "PSY-128",
+      "PSY-129",
+      "PSY-042",
+      "PSY-059",
+      "PSY-077",
+      "PSY-090"
+    ],
+    "question": "Enduring personality profile/trait versus state, task score and common item content; facet/informant invariance and within-person causal interpretation.",
+    "classification": "MEASUREMENT_OVERLAP",
+    "ownerFamilyId": "PSY-F14",
+    "consultation": {
+      "PSY-F14": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F05": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F06": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F09": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F10": "CANDIDATE_REVIEW_COMPLETE"
+    },
+    "status": "RESEARCH_NEEDED",
+    "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
+  },
+  {
+    "id": "CF-PSY-LAYER-0056",
+    "kind": "CONSTRUCT_BOUNDARY",
+    "familyIds": [
+      "PSY-F14",
+      "PSY-F13"
+    ],
+    "recordIds": [
+      "PSY-130",
+      "PSY-119"
+    ],
+    "question": "PSY130 definition includes situational elevation while canonical Months–Years/VeryLow metadata implies enduring disposition. Which scope is intended? No split/newentity/repair in thisprogram.",
+    "classification": "BLOCKED_NEEDS_GOVERNANCE_INPUT",
+    "ownerFamilyId": "PSY-F14",
+    "consultation": {
+      "PSY-F14": "CANDIDATE_REVIEW_COMPLETE",
+      "PSY-F13": "CANDIDATE_REVIEW_COMPLETE"
+    },
+    "status": "BLOCKED_NEEDS_GOVERNANCE_INPUT",
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT"
   }
 ]
