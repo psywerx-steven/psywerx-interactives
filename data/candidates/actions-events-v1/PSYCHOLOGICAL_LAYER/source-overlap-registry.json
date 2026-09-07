@@ -1,1 +1,72 @@
-[]
+[
+  {
+    "id": "OV-PSY-LAYER-0001",
+    "sourceIds": [
+      "SRC-CAND-PSY-LAYER-0001",
+      "SRC-433",
+      "SRC-CAND-PSY-LAYER-0007",
+      "SRC-432"
+    ],
+    "relationship": "SYNTHESIS_PRIMARY_POTENTIAL_OVERLAP",
+    "confirmedComponentList": false,
+    "independentReplicationCount": null,
+    "rule": "Do not count these publications as independent replications; exact component matching remains a source-registration/governance review task.",
+    "sharedContributionIds": [
+      "CONTRIB-PSY-LAYER-REPETITION-001"
+    ]
+  },
+  {
+    "id": "OV-PSY-LAYER-0002",
+    "sourceIds": [
+      "SRC-CAND-PSY-LAYER-0002",
+      "SRC-450",
+      "SRC-435"
+    ],
+    "relationship": "CORRECTION_REVIEW_PRIMARY_POTENTIAL_OVERLAP",
+    "confirmedComponentList": false,
+    "independentReplicationCount": null,
+    "rule": "One-day and one-week experiments remain distinct contrasts; source reused for direct belief and reasoning does not add independent evidence. Broader science correction differs in estimand.",
+    "sharedContributionIds": [
+      "CONTRIB-PSY-LAYER-REFUTATION-001"
+    ]
+  },
+  {
+    "id": "OV-PSY-LAYER-0003",
+    "sourceIds": [
+      "SRC183",
+      "SRC-405"
+    ],
+    "relationship": "CANONICAL_DUPLICATE_PUBLICATION",
+    "durableIdentifier": "PMID:7455683",
+    "confirmedComponentList": true,
+    "independentReplicationCount": 1,
+    "rule": "Same Tversky/Kahneman work in different canonical source records; preserve IDs but do not count twice. No canonical register repair.",
+    "sharedContributionIds": []
+  },
+  {
+    "id": "OV-PSY-LAYER-0004",
+    "sourceIds": [
+      "SRC-433"
+    ],
+    "retiredProvisionalId": "SRC-CAND-PSY-LAYER-0006",
+    "relationship": "CANONICAL_REUSE_AFTER_TITLE_DEDUP",
+    "confirmedComponentList": true,
+    "independentReplicationCount": null,
+    "rule": "Reused SRC-433 after full-register title detection. Candidate metadata records publisher authors; canonical attribution conflict remains visible and unmodified. Provisional number 0006 must not be reassigned.",
+    "sharedContributionIds": [
+      "CONTRIB-PSY-LAYER-REPETITION-001"
+    ]
+  },
+  {
+    "id": "OV-PSY-LAYER-0005",
+    "sourceIds": [
+      "SRC112"
+    ],
+    "retiredProvisionalId": "SRC-CAND-PSY-LAYER-0008",
+    "relationship": "CANONICAL_REUSE_AFTER_DOI_DEDUP",
+    "confirmedComponentList": true,
+    "independentReplicationCount": null,
+    "rule": "Reuse canonical SRC112; provisional number 0008 is retired, never reassigned. Conceptual critique is not empirical causal evidence.",
+    "sharedContributionIds": []
+  }
+]

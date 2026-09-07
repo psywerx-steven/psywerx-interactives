@@ -9,7 +9,7 @@ NOT_STARTED and PARTIAL stages remain unfinished. All human decisions remain pen
 
 | Family | BASELINE | ENTITY_REVIEW | PASS_A_EXISTING | PASS_A_GAPS | PASS_B_ACTIONS_EVENTS | EVIDENCE_RECONCILIATION | SKEPTICAL_REVIEW | DECISION_PACKAGE | VALIDATION | COMPLETE |
 |---|---|---|---|---|---|---|---|---|---|---|
-| PSY-F01 | DONE | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED |
+| PSY-F01 | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE |
 | PSY-F02 | DONE | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED |
 | PSY-F03 | DONE | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED |
 | PSY-F04 | DONE | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED | NOT_STARTED |
@@ -26,10 +26,11 @@ NOT_STARTED and PARTIAL stages remain unfinished. All human decisions remain pen
 
 ## Exact resume point
 
-Begin PSY-F01: entity review and existing Relationship research; all fourteen baselines are frozen.
+Begin PSY-F02 entity and existing-edge review. PSY-F01 local candidate audit complete; final Layer reconciliation remains pending. No other Family science begun.
 
 ## Checkpoints
 
-- Layer baseline: 14 Families, 134 Drivers, 1 RDS (PSY-078), 111 unique active incident causal Relationships. Protected comparison: 191 files unchanged; eight incremental baseline tests pass. Commit SHA recorded at next checkpoint.
+- Layer baseline committed/pushed: `4405e1cd0fcaf8bfa38b629a27d31a4bc4a32320`; all 14 frozen, 191 protected files unchanged.
+- PSY-F01 local candidate audit complete: 7 entities, 9 existing propositions, 1 Relationship / 2 identities / 2 effects / 3 assessments. 23 Layer, 65 AE, 38 RI and 18 source-verification tests pass; deterministic rendering, schema/source/query/local-link checks, Python compilation and diff check pass. 191 protected files unchanged. Completion commit SHA will be recorded in the next checkpoint.
 
 No new GOVERNED or ACTIVE records; no canonical source registration; no production science changes.

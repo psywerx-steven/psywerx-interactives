@@ -2364,14 +2364,27 @@
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT",
     "id": "REL-PSY-001",
     "ownerFamilyId": "PSY-F01",
-    "primaryDisposition": null,
+    "primaryDisposition": "RETAIN_V1_INCOMPLETE",
     "processingFamilyId": "PSY-F01",
     "psychologicalFamilyIds": [
       "PSY-F01",
       "PSY-F04"
     ],
-    "review": null,
-    "reviewStatus": "NOT_STARTED",
+    "review": {
+      "confidence": "MODERATE",
+      "disposition": "RETAIN_V1_INCOMPLETE",
+      "evidence": "SUPPORTS",
+      "id": "REL-PSY-001",
+      "nullContrary": "Successful-manipulation selection does not establish all attitude interventions succeed; mixed tasks and behavior endpoints not imported.",
+      "proposal": null,
+      "rationale": "Bounded health-attitude change evidence supports intention change; no action inference. Existing general source populations, timing and manipulation bundles need V1 specificity.",
+      "sources": [
+        "SRC107",
+        "SRC110"
+      ],
+      "strength": "MODERATE"
+    },
+    "reviewStatus": "REVIEWED_CANDIDATE_RECOMMENDATION",
     "scienceOrigin": "PRODUCTION_BASELINE",
     "scope": "PSYCHOLOGICAL_CROSS_FAMILY",
     "sourceBucket": "relationships"
@@ -2440,14 +2453,26 @@
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT",
     "id": "REL-PSY-002",
     "ownerFamilyId": "PSY-F01",
-    "primaryDisposition": null,
+    "primaryDisposition": "RETYPE_CANDIDATE",
     "processingFamilyId": "PSY-F01",
     "psychologicalFamilyIds": [
       "PSY-F01",
       "PSY-F04"
     ],
-    "review": null,
-    "reviewStatus": "NOT_STARTED",
+    "review": {
+      "confidence": "LOW",
+      "disposition": "RETYPE_CANDIDATE",
+      "evidence": "INSUFFICIENT",
+      "id": "REL-PSY-002",
+      "nullContrary": "Certainty findings are conditional and not whole-profile intention effects.",
+      "proposal": "Review edge-targeted moderation of REL-PSY-001 by PSY-002; no exact replacement asserted until independent strength-dimension manipulation and intention endpoint evidence are established.",
+      "rationale": "Attitude strength changes the consequence of valence; stronger negative attitude need not increase positive behavioral intention. Legacy record itself says moderation was flattened.",
+      "sources": [
+        "SRC156"
+      ],
+      "strength": "LIMITED"
+    },
+    "reviewStatus": "REVIEWED_CANDIDATE_RECOMMENDATION",
     "scienceOrigin": "PRODUCTION_BASELINE",
     "scope": "PSYCHOLOGICAL_CROSS_FAMILY",
     "sourceBucket": "relationships"
@@ -2515,13 +2540,26 @@
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT",
     "id": "REL-PSY-003",
     "ownerFamilyId": "PSY-F01",
-    "primaryDisposition": null,
+    "primaryDisposition": "REVISION_CANDIDATE",
     "processingFamilyId": "PSY-F01",
     "psychologicalFamilyIds": [
       "PSY-F01"
     ],
-    "review": null,
-    "reviewStatus": "NOT_STARTED",
+    "review": {
+      "confidence": "LOW",
+      "disposition": "REVISION_CANDIDATE",
+      "evidence": "INSUFFICIENT",
+      "id": "REL-PSY-003",
+      "nullContrary": "Belief-based and global attitude measures can diverge; scaling and salience limit the product-sum model.",
+      "proposal": "PSY-004 may alter independently elicited PSY-001 for one specified action/outcome when outcome valuation and other salient beliefs are explicitly scoped; exclude calculated attitude indices as target evidence. RESEARCH_NEEDED.",
+      "rationale": "Retain context-dependent sign in proposal; expectancy-value formula is not experimental causality. Outcome probability and valence must refer to the same salient outcome.",
+      "sources": [
+        "SRC110",
+        "SRC111"
+      ],
+      "strength": "LIMITED"
+    },
+    "reviewStatus": "REVIEWED_CANDIDATE_RECOMMENDATION",
     "scienceOrigin": "PRODUCTION_BASELINE",
     "scope": "WITHIN_FAMILY",
     "sourceBucket": "relationships"
@@ -2589,13 +2627,26 @@
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT",
     "id": "REL-PSY-004",
     "ownerFamilyId": "PSY-F01",
-    "primaryDisposition": null,
+    "primaryDisposition": "REVISION_CANDIDATE",
     "processingFamilyId": "PSY-F01",
     "psychologicalFamilyIds": [
       "PSY-F01"
     ],
-    "review": null,
-    "reviewStatus": "NOT_STARTED",
+    "review": {
+      "confidence": "LOW",
+      "disposition": "REVISION_CANDIDATE",
+      "evidence": "INSUFFICIENT",
+      "id": "REL-PSY-004",
+      "nullContrary": "Probability, alternative outcomes and reference dependence prevent universal polarity.",
+      "proposal": "PSY-005 may alter independently elicited PSY-001 for the specified behavior conditional on its believed connection to that outcome; preserve context-dependent sign and exclude formula-entailment. RESEARCH_NEEDED.",
+      "rationale": "Outcome value is not action attitude; no causal inference from using valuation as a component of an attitude estimator.",
+      "sources": [
+        "SRC110",
+        "SRC113"
+      ],
+      "strength": "LIMITED"
+    },
+    "reviewStatus": "REVIEWED_CANDIDATE_RECOMMENDATION",
     "scienceOrigin": "PRODUCTION_BASELINE",
     "scope": "WITHIN_FAMILY",
     "sourceBucket": "relationships"
@@ -2816,14 +2867,27 @@
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT",
     "id": "REL-PSY-007",
     "ownerFamilyId": "PSY-F01",
-    "primaryDisposition": null,
+    "primaryDisposition": "RESEARCH_NEEDED",
     "processingFamilyId": "PSY-F01",
     "psychologicalFamilyIds": [
       "PSY-F01",
       "PSY-F06"
     ],
-    "review": null,
-    "reviewStatus": "NOT_STARTED",
+    "review": {
+      "confidence": "LOW",
+      "disposition": "RESEARCH_NEEDED",
+      "evidence": "INSUFFICIENT",
+      "id": "REL-PSY-007",
+      "nullContrary": "Manipulated involvement must be distinguished from measured relevance; more relevance can motivate biased processing, not universally deeper valid elaboration.",
+      "proposal": null,
+      "rationale": "Involvement experiment gives mechanistic leverage but argument sensitivity is an indirect processing indicator. Registered need-for-cognition scale does not establish this exact causal edge.",
+      "sources": [
+        "SRC-CAND-PSY-LAYER-0003",
+        "SRC162"
+      ],
+      "strength": "LIMITED"
+    },
+    "reviewStatus": "REVIEWED_CANDIDATE_RECOMMENDATION",
     "scienceOrigin": "PRODUCTION_BASELINE",
     "scope": "PSYCHOLOGICAL_CROSS_FAMILY",
     "sourceBucket": "relationships"
@@ -6054,14 +6118,27 @@
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT",
     "id": "REL-PSY-050",
     "ownerFamilyId": "PSY-F13",
-    "primaryDisposition": null,
+    "primaryDisposition": "REVISION_CANDIDATE",
     "processingFamilyId": "PSY-F01",
     "psychologicalFamilyIds": [
       "PSY-F01",
       "PSY-F13"
     ],
-    "review": null,
-    "reviewStatus": "NOT_STARTED",
+    "review": {
+      "confidence": "LOW",
+      "disposition": "REVISION_CANDIDATE",
+      "evidence": "INSUFFICIENT",
+      "id": "REL-PSY-050",
+      "nullContrary": "Primary credibility experiments can show facilitated, inhibited or absent persuasion; do not transfer universal positive sign.",
+      "proposal": "Scope PSY-113 to credibility relevant to the exact communicated claim and PSY-003 to confidence in that same claim, with prior belief/involvement and independent credibility measurement specified. Direction remains unresolved; no revision implemented.",
+      "rationale": "Prior opinion and involvement change source-cue effects. Perceived-source manipulation checks and attitude outcomes do not automatically identify belief confidence causality.",
+      "sources": [
+        "SRC201",
+        "SRC-CAND-PSY-LAYER-0003"
+      ],
+      "strength": "LIMITED"
+    },
+    "reviewStatus": "REVIEWED_CANDIDATE_RECOMMENDATION",
     "scienceOrigin": "PRODUCTION_BASELINE",
     "scope": "PSYCHOLOGICAL_CROSS_FAMILY",
     "sourceBucket": "relationships"
@@ -6130,14 +6207,27 @@
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT",
     "id": "REL-PSY-051",
     "ownerFamilyId": "PSY-F13",
-    "primaryDisposition": null,
+    "primaryDisposition": "RESEARCH_NEEDED",
     "processingFamilyId": "PSY-F01",
     "psychologicalFamilyIds": [
       "PSY-F01",
       "PSY-F13"
     ],
-    "review": null,
-    "reviewStatus": "NOT_STARTED",
+    "review": {
+      "confidence": "LOW",
+      "disposition": "RESEARCH_NEEDED",
+      "evidence": "INSUFFICIENT",
+      "id": "REL-PSY-051",
+      "nullContrary": "Task-specific quality ratings may share evaluation method with belief ratings; reverse interpretation is possible.",
+      "proposal": null,
+      "rationale": "Message-quality manipulation and its check are not an independently manipulated latent perceived-strength variable; opinion outcome is not always factual belief confidence.",
+      "sources": [
+        "SRC-CAND-PSY-LAYER-0003",
+        "SRC162"
+      ],
+      "strength": "LIMITED"
+    },
+    "reviewStatus": "REVIEWED_CANDIDATE_RECOMMENDATION",
     "scienceOrigin": "PRODUCTION_BASELINE",
     "scope": "PSYCHOLOGICAL_CROSS_FAMILY",
     "sourceBucket": "relationships"
@@ -6206,14 +6296,27 @@
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT",
     "id": "REL-PSY-052",
     "ownerFamilyId": "PSY-F13",
-    "primaryDisposition": null,
+    "primaryDisposition": "SPLIT_CANDIDATE",
     "processingFamilyId": "PSY-F01",
     "psychologicalFamilyIds": [
       "PSY-F01",
       "PSY-F13"
     ],
-    "review": null,
-    "reviewStatus": "NOT_STARTED",
+    "review": {
+      "confidence": "LOW",
+      "disposition": "SPLIT_CANDIDATE",
+      "evidence": "INSUFFICIENT",
+      "id": "REL-PSY-052",
+      "nullContrary": "Resistance can increase prior-attitude certainty under high elaboration while low-elaboration effects are undetected; certainty is not the entire attitude profile.",
+      "proposal": "Separate research questions: counterarguing a specified message may reduce confidence in its conclusion; perceived successful resistance may change confidence in a prior opposing position. No pair of formal replacement edges or pathway is created.",
+      "rationale": "Counterarguments against a message and confidence in one's original belief have different referents. One negative generic edge can encode the wrong sign.",
+      "sources": [
+        "SRC156",
+        "SRC131"
+      ],
+      "strength": "LIMITED"
+    },
+    "reviewStatus": "REVIEWED_CANDIDATE_RECOMMENDATION",
     "scienceOrigin": "PRODUCTION_BASELINE",
     "scope": "PSYCHOLOGICAL_CROSS_FAMILY",
     "sourceBucket": "relationships"
@@ -6356,14 +6459,27 @@
     "humanDecision": "PENDING — APPROVE / MODIFY / REJECT",
     "id": "REL-PSY-054",
     "ownerFamilyId": "PSY-F13",
-    "primaryDisposition": null,
+    "primaryDisposition": "RESEARCH_NEEDED",
     "processingFamilyId": "PSY-F01",
     "psychologicalFamilyIds": [
       "PSY-F01",
       "PSY-F13"
     ],
-    "review": null,
-    "reviewStatus": "NOT_STARTED",
+    "review": {
+      "confidence": "LOW",
+      "disposition": "RESEARCH_NEEDED",
+      "evidence": "INSUFFICIENT",
+      "id": "REL-PSY-054",
+      "nullContrary": "Trust can permit belief revision downward as well as upward; willingness to learn is not unconditional credulity.",
+      "proposal": null,
+      "rationale": "Therapeutic epistemic-trust theory and organizational-trust theory do not identify a general causal increase in confidence in an arbitrary proposition; SRC166 DOI conflict compounds alignment risk.",
+      "sources": [
+        "SRC166",
+        "SRC136"
+      ],
+      "strength": "LIMITED"
+    },
+    "reviewStatus": "REVIEWED_CANDIDATE_RECOMMENDATION",
     "scienceOrigin": "PRODUCTION_BASELINE",
     "scope": "PSYCHOLOGICAL_CROSS_FAMILY",
     "sourceBucket": "relationships"
