@@ -5,6 +5,9 @@ PSYWERX. The repository is designed for static hosting with GitHub Pages.
 
 ## Interactives
 
+- [PSYWERX homepage](./) — presents the nonprofit mission, two live tools,
+  six platform areas, connected-knowledge overview, editorial research rail,
+  newsletter, and LinkedIn destination.
 - [Cognitive Security Practitioner Discourse Map](./cognitive-security/) —
   explores the canonical public synthesis of practitioner discourse through
   categories, canonical families, clusters, flat themes, canonical tensions,
@@ -18,10 +21,19 @@ PSYWERX. The repository is designed for static hosting with GitHub Pages.
 ## Repository structure
 
 - `data/` contains shared static data files.
+- `data/research-stream/research_items.jsonl` is the canonical, diffable store
+  for every Morning Brief item; its generated public projection contains only
+  owner-published records and public-safe fields.
 - `data/cognitive-security/` contains the generated public-safe Cognitive
   Security Practitioner Discourse Map package.
 - `cognitive-security/` contains the static Cognitive Security Explorer.
 - `drivers/` contains the Ontology Explorer application.
+- `homepage/` contains governed homepage content, source assets, build tools,
+  QA evidence, current-site inventory, and the domain cutover runbook.
+- `homepage-preview/` is the generated noindex editorial preview; the generated
+  release homepage and its assets are at the repository root.
+- `legacy-redirect/` contains the tested, undeployed contract for preserving
+  `drivers.psywerx.io` paths after cutover.
 - `shared/` contains styles and other assets reusable across interactives.
 - `source-data/` is the ignored local location for private XLSX taxonomy files.
 - `scripts/` contains local data-import utilities.
@@ -398,7 +410,42 @@ release provenance only when a detail or evidence-path interaction needs them.
 py -m http.server 8000
 ```
 
-Then open <http://localhost:8000/drivers/>.
+Then open <http://localhost:8000/> for the release homepage. The noindex design
+preview is at <http://localhost:8000/homepage-preview/>. Both surfaces use the
+same owner-published research projection; pending database records are not
+exposed by the preview.
+
+Regenerate the public research projection and both deterministic homepage
+outputs with:
+
+```powershell
+py homepage/tools/build_research_stream.py
+py homepage/tools/build_homepage.py --mode preview --tool-links preview
+py homepage/tools/build_homepage.py --mode release --tool-links local --output .
+```
+
+Ingest a raw `psywerx-research-items-v1` JSON handoff or a full Morning Brief
+Markdown/text export containing the final fenced JSON object:
+
+```powershell
+py homepage/tools/ingest_research_items.py --input path/to/morning-brief.md --dry-run
+py homepage/tools/ingest_research_items.py --input path/to/morning-brief.md
+```
+
+Every new item begins pending. An explicit evening decision retains every item
+in the database while controlling only public-stream eligibility:
+
+```powershell
+py homepage/tools/review_research_item.py ITEM_ID publish --date YYYY-MM-DD
+py homepage/tools/review_research_item.py ITEM_ID hold --date YYYY-MM-DD
+py homepage/tools/review_research_item.py ITEM_ID reject --date YYYY-MM-DD
+```
+
+See [`homepage/docs/FEED_WORKFLOW.md`](./homepage/docs/FEED_WORKFLOW.md) for the
+machine handoff, repeat-source rules, public allowlist, static pagination, and
+future Drive-to-GitHub automation boundary.
+
+The Driver Explorer remains available at <http://localhost:8000/drivers/>.
 
 The Cognitive Security Explorer is available from the same local server at
 <http://127.0.0.1:8000/cognitive-security/>. Its paths and query-parameter deep

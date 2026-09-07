@@ -5,9 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="PSYWERX is a nonprofit initiative connecting behavioral and social science with practical tools, research, and education.">
   {{ROBOTS}}
+{{PRODUCTION_METADATA}}
   <meta name="theme-color" content="#073653">
-  <title>PSYWERX — exploring the human condition from theory to practice</title>
-  <link rel="icon" href="assets/favicon.png">
+  <title>PSYWERX | Behavioral &amp; Social Science in Practice</title>
+  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/favicon.png">
   <link rel="stylesheet" href="assets/home.css">
   <script src="assets/home-data.js" defer></script>
   <script src="assets/home.js" defer></script>
@@ -81,15 +83,15 @@
 
 <aside id="research" class="research-rail" aria-labelledby="feed-title">
   <div class="feed-sticky">
-    <div class="feed-header"><div class="feed-heading-top"><span class="eyebrow">FROM THE BRIEFS</span>{{PREVIEW_BADGE}}</div><h2 id="feed-title">Research &<br>discussion</h2><p>Selections from our daily and weekly reports.</p></div>
+    <div class="feed-header"><div class="feed-heading-top"><span class="eyebrow">FROM THE MORNING BRIEF</span>{{PREVIEW_BADGE}}</div><h2 id="feed-title">Research &<br>discussion</h2><p>Owner-selected research, developments, and ideas worth watching.</p></div>
     <fieldset class="feed-filters"><legend>Filter by interest</legend><div class="filter-chips"><button class="filter-chip active" type="button" data-filter="all" aria-pressed="true">All</button>{{FILTERS}}</div><p class="filter-help">Select one or more areas.</p></fieldset>
     <div class="feed-toolbar"><span id="feed-result-count" role="status" aria-live="polite">{{FEED_COUNT}} selections</span><span>Newest first</span></div>
     <div class="feed-scroll" tabindex="0" role="region" aria-label="Research selections; scroll for more"><div id="feed-items">{{FEED_ITEMS}}</div><div id="feed-empty" class="feed-empty" hidden><h3>No matching selections yet.</h3><p>Try another interest or show the full feed.</p><button type="button" class="text-button" id="clear-feed">Show all selections →</button></div></div>
-    <div class="feed-bottom"><span>{{FEED_SNAPSHOT}}</span><button class="text-button" type="button" data-open-dialog="feed-info">About this feed ↗</button></div>
+    <div class="feed-bottom"><span>{{FEED_SNAPSHOT}}</span><div class="feed-actions"><button class="text-button" type="button" id="load-older" hidden>Load older selections →</button><button class="text-button" type="button" data-open-dialog="feed-info">About this stream ↗</button></div></div>
   </div>
 </aside>
 </div>
-<footer class="site-footer"><div class="footer-inner"><div><a class="brand footer-brand" href="#top" aria-label="PSYWERX home"><img src="assets/wordmark.webp" alt="PSYWERX" width="640" height="130" loading="lazy"></a><p>A nonprofit initiative for behavioral science in practice.</p></div><nav aria-label="Footer navigation"><a href="#about">About</a><button type="button" class="text-button" data-open-dialog="newsletter">Newsletter</button><button type="button" class="text-button" data-open-dialog="linkedin">LinkedIn ↗</button></nav></div><div class="footer-bottom"><span>© {{YEAR}} PSYWERX</span><span>{{FOOTER_STATUS}}</span></div></footer>
+<footer class="site-footer"><div class="footer-inner"><div><a class="brand footer-brand" href="#top" aria-label="PSYWERX home"><img src="assets/wordmark.webp" alt="PSYWERX" width="640" height="130" loading="lazy"></a><p>A nonprofit initiative for behavioral science in practice.</p></div><section class="footer-newsletter" aria-labelledby="newsletter-title"><div><h2 id="newsletter-title">Stay connected.</h2><p>Get behavioral science insights, resources, and PSYWERX updates.</p></div><form action="{{NEWSLETTER_ACTION}}" method="post" target="_blank" aria-label="Subscribe to the PSYWERX newsletter"><label class="sr-only" for="newsletter-email">Email address</label><input id="newsletter-email" type="email" name="fields[email]" placeholder="Email address" autocomplete="email" required><input type="hidden" name="ml-submit" value="1"><input type="hidden" name="anticsrf" value="true"><button type="submit">Subscribe <span aria-hidden="true">→</span></button></form></section><nav aria-label="Footer navigation"><a href="#about">About</a><a href="{{LINKEDIN_URL}}" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a></nav></div><div class="footer-bottom"><span>© {{YEAR}} PSYWERX</span><span>{{FOOTER_STATUS}}</span></div></footer>
 <dialog id="detail-dialog" aria-labelledby="dialog-title"><div class="dialog-inner"><button class="dialog-close" type="button" aria-label="Close dialog">×</button><span id="dialog-eyebrow" class="eyebrow"></span><h2 id="dialog-title"></h2><div id="dialog-body"></div></div></dialog>
 <noscript><div class="noscript-note">The platform links and expandable product cards work without JavaScript. Enable JavaScript for feed filters and the interactive overview.</div></noscript>
 </body>

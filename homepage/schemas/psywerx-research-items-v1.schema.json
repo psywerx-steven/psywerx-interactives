@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://psywerx.io/schemas/psywerx-research-items-v1.schema.json",
+  "title": "PSYWERX Morning Brief research-item handoff",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "briefDate", "briefType", "items"],
+  "properties": {
+    "schemaVersion": {"const": "psywerx-research-items-v1"},
+    "briefDate": {"type": "string", "format": "date"},
+    "briefType": {"const": "daily"},
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/item"}
+    }
+  },
+  "$defs": {
+    "category": {
+      "enum": [
+        "behavioral-science",
+        "technology-modeling",
+        "operations-strategy",
+        "application-analysis"
+      ]
+    },
+    "item": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sourceItemNumber",
+        "primaryCategory",
+        "categories",
+        "questionAndWhy",
+        "whatTheyDid",
+        "whatTheyFound",
+        "whatItMeans",
+        "streamTitle",
+        "streamSummary",
+        "attribution",
+        "sourceUrl",
+        "sourcePublishedAt",
+        "sourceKey",
+        "sourceVerified",
+        "briefDate",
+        "briefType",
+        "streamDecision"
+      ],
+      "properties": {
+        "sourceItemNumber": {"type": "integer", "minimum": 1},
+        "primaryCategory": {"$ref": "#/$defs/category"},
+        "categories": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/category"}
+        },
+        "questionAndWhy": {"type": "string", "minLength": 1},
+        "whatTheyDid": {"type": "string", "minLength": 1},
+        "whatTheyFound": {"type": "string", "minLength": 1},
+        "whatItMeans": {"type": "string", "minLength": 1},
+        "streamTitle": {"type": "string", "minLength": 1},
+        "streamSummary": {"type": "string", "minLength": 1},
+        "attribution": {"type": "string", "minLength": 1},
+        "sourceUrl": {"type": "string", "format": "uri", "pattern": "^https://"},
+        "sourcePublishedAt": {
+          "oneOf": [
+            {"type": "string", "format": "date"},
+            {"type": "null"}
+          ]
+        },
+        "sourceKey": {"type": "string", "minLength": 1},
+        "sourceVerified": {"type": "boolean"},
+        "briefDate": {"type": "string", "format": "date"},
+        "briefType": {"const": "daily"},
+        "streamDecision": {"const": "pending"}
+      }
+    }
+  }
+}
