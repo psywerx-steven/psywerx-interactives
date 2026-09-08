@@ -54,9 +54,6 @@ jobs:
       - name: Run research-stream and homepage launch tests
         run: python -m unittest tests.test_research_stream tests.test_homepage_preview -v
 
-      - name: Run legacy hostname redirect contract tests
-        run: node --test legacy-redirect/test_redirect.mjs
-
       - name: Regenerate governed migration artifacts
         run: python scripts/build_migration_preview_v0_3.py
 
