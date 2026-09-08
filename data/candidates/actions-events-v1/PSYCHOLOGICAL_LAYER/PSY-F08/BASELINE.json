@@ -1,0 +1,707 @@
+{
+  "aliases": [
+    {
+      "aliasId": "ALS-00149",
+      "aliasType": "RELATED_SEARCH",
+      "entityIds": [
+        "PSY-071"
+      ],
+      "language": "en",
+      "normalizedText": "automatic initiation",
+      "notes": "Migrated from the legacy untyped alias array; exact equivalence was not inferred.",
+      "publicDisplayRule": "SEARCH_ONLY",
+      "sourceIds": [
+        "https://app.notion.com/p/3cdf827a3d1581ca8fa8ff0fd5520103"
+      ],
+      "text": "automatic initiation"
+    },
+    {
+      "aliasId": "ALS-00150",
+      "aliasType": "RELATED_SEARCH",
+      "entityIds": [
+        "PSY-071"
+      ],
+      "language": "en",
+      "normalizedText": "automaticity",
+      "notes": "Migrated from the legacy untyped alias array; exact equivalence was not inferred.",
+      "publicDisplayRule": "SEARCH_ONLY",
+      "sourceIds": [
+        "https://app.notion.com/p/3cdf827a3d1581ca8fa8ff0fd5520103"
+      ],
+      "text": "Automaticity"
+    },
+    {
+      "aliasId": "ALS-00177",
+      "aliasType": "RELATED_SEARCH",
+      "entityIds": [
+        "PSY-070"
+      ],
+      "language": "en",
+      "normalizedText": "behavioral habit",
+      "notes": "Migrated from the legacy untyped alias array; exact equivalence was not inferred.",
+      "publicDisplayRule": "SEARCH_ONLY",
+      "sourceIds": [
+        "https://app.notion.com/p/3cdf827a3d1581ca8fa8ff0fd5520103"
+      ],
+      "text": "Behavioral habit"
+    },
+    {
+      "aliasId": "ALS-00369",
+      "aliasType": "RELATED_SEARCH",
+      "entityIds": [
+        "PSY-070"
+      ],
+      "language": "en",
+      "normalizedText": "context linked habit",
+      "notes": "Migrated from the legacy untyped alias array; exact equivalence was not inferred.",
+      "publicDisplayRule": "SEARCH_ONLY",
+      "sourceIds": [
+        "https://app.notion.com/p/3cdf827a3d1581ca8fa8ff0fd5520103"
+      ],
+      "text": "context-linked habit"
+    },
+    {
+      "aliasId": "ALS-00433",
+      "aliasType": "RELATED_SEARCH",
+      "entityIds": [
+        "PSY-072"
+      ],
+      "language": "en",
+      "normalizedText": "cue linkage",
+      "notes": "Migrated from the legacy untyped alias array; exact equivalence was not inferred.",
+      "publicDisplayRule": "SEARCH_ONLY",
+      "sourceIds": [
+        "https://app.notion.com/p/3cdf827a3d1581ca8fa8ff0fd5520103"
+      ],
+      "text": "cue linkage"
+    },
+    {
+      "aliasId": "ALS-00653",
+      "aliasType": "RELATED_SEARCH",
+      "entityIds": [
+        "PSY-073"
+      ],
+      "language": "en",
+      "normalizedText": "expected reinforcement",
+      "notes": "Migrated from the legacy untyped alias array; exact equivalence was not inferred.",
+      "publicDisplayRule": "SEARCH_ONLY",
+      "sourceIds": [
+        "https://app.notion.com/p/3cdf827a3d1581ca8fa8ff0fd5520103"
+      ],
+      "text": "Expected reinforcement"
+    },
+    {
+      "aliasId": "ALS-01110",
+      "aliasType": "RELATED_SEARCH",
+      "entityIds": [
+        "PSY-074"
+      ],
+      "language": "en",
+      "normalizedText": "modeled outcome expectancy",
+      "notes": "Migrated from the legacy untyped alias array; exact equivalence was not inferred.",
+      "publicDisplayRule": "SEARCH_ONLY",
+      "sourceIds": [
+        "https://app.notion.com/p/3cdf827a3d1581ca8fa8ff0fd5520103"
+      ],
+      "text": "modeled outcome expectancy"
+    },
+    {
+      "aliasId": "ALS-01575",
+      "aliasType": "RELATED_SEARCH",
+      "entityIds": [
+        "PSY-073"
+      ],
+      "language": "en",
+      "normalizedText": "reward contingency belief",
+      "notes": "Migrated from the legacy untyped alias array; exact equivalence was not inferred.",
+      "publicDisplayRule": "SEARCH_ONLY",
+      "sourceIds": [
+        "https://app.notion.com/p/3cdf827a3d1581ca8fa8ff0fd5520103"
+      ],
+      "text": "reward contingency belief"
+    },
+    {
+      "aliasId": "ALS-01787",
+      "aliasType": "RELATED_SEARCH",
+      "entityIds": [
+        "PSY-072"
+      ],
+      "language": "en",
+      "normalizedText": "stimulus response association",
+      "notes": "Migrated from the legacy untyped alias array; exact equivalence was not inferred.",
+      "publicDisplayRule": "SEARCH_ONLY",
+      "sourceIds": [
+        "https://app.notion.com/p/3cdf827a3d1581ca8fa8ff0fd5520103"
+      ],
+      "text": "Stimulus–response association"
+    },
+    {
+      "aliasId": "ALS-01955",
+      "aliasType": "RELATED_SEARCH",
+      "entityIds": [
+        "PSY-074"
+      ],
+      "language": "en",
+      "normalizedText": "vicarious expectancy",
+      "notes": "Migrated from the legacy untyped alias array; exact equivalence was not inferred.",
+      "publicDisplayRule": "SEARCH_ONLY",
+      "sourceIds": [
+        "https://app.notion.com/p/3cdf827a3d1581ca8fa8ff0fd5520103"
+      ],
+      "text": "Vicarious expectancy"
+    }
+  ],
+  "baselineCommit": "de38b3948f511602af7aa94a9cd80b78e1a00298",
+  "candidateIncident": [],
+  "compatibilityViews": [],
+  "crosswalks": [],
+  "entities": [
+    {
+      "aliases": [],
+      "associatedLayers": [
+        "Psychological"
+      ],
+      "commonMisinterpretations": "Inferring habit solely from repeated behavior or assuming learned responses cannot be overridden by goals and context change.",
+      "dataType": "Multidimensional",
+      "definition": "The degree to which a specified behavior is initiated or executed quickly, efficiently, unintentionally, or with limited awareness.",
+      "entitySubtype": null,
+      "entityType": "DRIVER",
+      "evidenceNotes": "Supported by established theory, validated measures, and converging review, meta-analytic, experimental, or longitudinal evidence. Magnitude and behavioral direction remain conditional on context. Representative records: SRC116; SRC154.",
+      "evidenceStrength": "Strong",
+      "family": "Learning, Habit & Automaticity",
+      "id": "PSY-071",
+      "indicators": [
+        "Fast initiation",
+        "low reported awareness or effort",
+        "dual-task resilience"
+      ],
+      "keySources": [
+        "SRC116",
+        "SRC154"
+      ],
+      "layer": "Psychological",
+      "likelyDownstreamInfluences": [
+        "Automatic action initiation",
+        "persistence",
+        "reduced deliberation",
+        "cue-driven choice"
+      ],
+      "likelyUpstreamInfluences": [
+        "Behavioral repetition",
+        "stable context cues",
+        "reinforcement history",
+        "modeling",
+        "goal consistency"
+      ],
+      "measurementAssessmentMethods": "Habit and automaticity scales; cue-response tasks; behavioral trace analysis; longitudinal repeated measurement",
+      "measurementCaveats": "Frequency, habit, automaticity, and cue association are related but not identical; self-report may not capture automatic processes well.",
+      "mechanism": "Reduces reliance on deliberative resources and increases cue-driven response probability.",
+      "moderatorsBoundaryConditions": "Context stability, reward schedule, cue specificity, competing goals, stress, and opportunity for repetition.",
+      "modifiability": "Moderate",
+      "name": "Behavioral Automaticity",
+      "observability": "Moderate",
+      "onsetCausalLag": [
+        "Seconds–Minutes"
+      ],
+      "persistenceRecovery": "Can persist for months or years in stable contexts and weaken with cue disruption or sustained retraining.",
+      "polarityDirection": "Higher values = greater automatic initiation or execution.",
+      "primaryFamilyId": "PSY-F08",
+      "relatedFamilyIds": [],
+      "representationScale": "Automaticity subscales; latency/interference indicators",
+      "source": {
+        "sheet": "Drivers",
+        "workbook": "PSYWERX_Layer_2_Psychological_Driver_Ontology_v1.0.xlsx"
+      },
+      "timeScaleOfChange": [
+        "Weeks–Months"
+      ],
+      "timeScaleQualifier": null,
+      "typicalInteractionCandidates": [
+        "Cue–Response Association Strength",
+        "Outcome Expectancy",
+        "Implementation Intention Strength",
+        "Self-Control Capacity"
+      ],
+      "volatility": "Low"
+    },
+    {
+      "aliases": [],
+      "associatedLayers": [
+        "Psychological"
+      ],
+      "commonMisinterpretations": "Inferring habit solely from repeated behavior or assuming learned responses cannot be overridden by goals and context change.",
+      "dataType": "Unipolar continuous",
+      "definition": "The strength of the learned association between a specified cue and a specified response representation.",
+      "entitySubtype": null,
+      "entityType": "DRIVER",
+      "evidenceNotes": "Supported by established theory, validated measures, and converging review, meta-analytic, experimental, or longitudinal evidence. Magnitude and behavioral direction remain conditional on context. Representative records: SRC120; SRC116.",
+      "evidenceStrength": "Strong",
+      "family": "Learning, Habit & Automaticity",
+      "id": "PSY-072",
+      "indicators": [
+        "Priming effect",
+        "response latency",
+        "cue-specific action probability"
+      ],
+      "keySources": [
+        "SRC120",
+        "SRC116"
+      ],
+      "layer": "Psychological",
+      "likelyDownstreamInfluences": [
+        "Automatic action initiation",
+        "persistence",
+        "reduced deliberation",
+        "cue-driven choice"
+      ],
+      "likelyUpstreamInfluences": [
+        "Behavioral repetition",
+        "stable context cues",
+        "reinforcement history",
+        "modeling",
+        "goal consistency"
+      ],
+      "measurementAssessmentMethods": "Habit and automaticity scales; cue-response tasks; behavioral trace analysis; longitudinal repeated measurement",
+      "measurementCaveats": "Frequency, habit, automaticity, and cue association are related but not identical; self-report may not capture automatic processes well.",
+      "mechanism": "Increases the speed and probability with which the cue activates the response.",
+      "moderatorsBoundaryConditions": "Context stability, reward schedule, cue specificity, competing goals, stress, and opportunity for repetition.",
+      "modifiability": "Moderate",
+      "name": "Cue–Response Association Strength",
+      "observability": "Moderate",
+      "onsetCausalLag": [
+        "Seconds–Minutes"
+      ],
+      "persistenceRecovery": "Can persist for months or years in stable contexts and weaken with cue disruption or sustained retraining.",
+      "polarityDirection": "Higher values = stronger cue-linked activation of the response.",
+      "primaryFamilyId": "PSY-F08",
+      "relatedFamilyIds": [],
+      "representationScale": "Low–high association; reaction-time or priming index",
+      "source": {
+        "sheet": "Drivers",
+        "workbook": "PSYWERX_Layer_2_Psychological_Driver_Ontology_v1.0.xlsx"
+      },
+      "timeScaleOfChange": [
+        "Weeks–Months"
+      ],
+      "timeScaleQualifier": null,
+      "typicalInteractionCandidates": [
+        "Cue–Response Association Strength",
+        "Outcome Expectancy",
+        "Implementation Intention Strength",
+        "Self-Control Capacity"
+      ],
+      "volatility": "Low"
+    },
+    {
+      "aliases": [],
+      "associatedLayers": [
+        "Psychological"
+      ],
+      "commonMisinterpretations": "Inferring habit solely from repeated behavior or assuming learned responses cannot be overridden by goals and context change.",
+      "dataType": "Unipolar continuous",
+      "definition": "The strength of a learned propensity for a specified context to cue a specified behavior with reduced deliberation.",
+      "entitySubtype": null,
+      "entityType": "DRIVER",
+      "evidenceNotes": "Supported by established theory, validated measures, and converging review, meta-analytic, experimental, or longitudinal evidence. Magnitude and behavioral direction remain conditional on context. Representative records: SRC116; SRC154.",
+      "evidenceStrength": "Strong",
+      "family": "Learning, Habit & Automaticity",
+      "id": "PSY-070",
+      "indicators": [
+        "Self-report habit index",
+        "context-linked repetition",
+        "behavior stability"
+      ],
+      "keySources": [
+        "SRC116",
+        "SRC154"
+      ],
+      "layer": "Psychological",
+      "likelyDownstreamInfluences": [
+        "Automatic action initiation",
+        "persistence",
+        "reduced deliberation",
+        "cue-driven choice"
+      ],
+      "likelyUpstreamInfluences": [
+        "Behavioral repetition",
+        "stable context cues",
+        "reinforcement history",
+        "modeling",
+        "goal consistency"
+      ],
+      "measurementAssessmentMethods": "Habit and automaticity scales; cue-response tasks; behavioral trace analysis; longitudinal repeated measurement",
+      "measurementCaveats": "Frequency, habit, automaticity, and cue association are related but not identical; self-report may not capture automatic processes well.",
+      "mechanism": "Allows stable cues to trigger action efficiently and compete with current intentions.",
+      "moderatorsBoundaryConditions": "Context stability, reward schedule, cue specificity, competing goals, stress, and opportunity for repetition.",
+      "modifiability": "Moderate",
+      "name": "Habit Strength",
+      "observability": "Moderate",
+      "onsetCausalLag": [
+        "Seconds–Minutes"
+      ],
+      "persistenceRecovery": "Can persist for months or years in stable contexts and weaken with cue disruption or sustained retraining.",
+      "polarityDirection": "Higher values = stronger learned context–behavior propensity.",
+      "primaryFamilyId": "PSY-F08",
+      "relatedFamilyIds": [],
+      "representationScale": "Low–high habit-strength composite; context-specific index",
+      "source": {
+        "sheet": "Drivers",
+        "workbook": "PSYWERX_Layer_2_Psychological_Driver_Ontology_v1.0.xlsx"
+      },
+      "timeScaleOfChange": [
+        "Weeks–Months"
+      ],
+      "timeScaleQualifier": null,
+      "typicalInteractionCandidates": [
+        "Cue–Response Association Strength",
+        "Outcome Expectancy",
+        "Implementation Intention Strength",
+        "Self-Control Capacity"
+      ],
+      "volatility": "Low"
+    },
+    {
+      "aliases": [],
+      "associatedLayers": [
+        "Psychological"
+      ],
+      "commonMisinterpretations": "Inferring habit solely from repeated behavior or assuming learned responses cannot be overridden by goals and context change.",
+      "dataType": "Unipolar continuous",
+      "definition": "An action–outcome expectation formed or updated from observing another person's behavior and consequences.",
+      "entitySubtype": null,
+      "entityType": "DRIVER",
+      "evidenceNotes": "Scientifically defensible with substantial supporting literature, while causal identification, construct boundaries, measurement, or transferability remain context dependent. Representative records: SRC111; SRC109.",
+      "evidenceStrength": "Moderate",
+      "family": "Learning, Habit & Automaticity",
+      "id": "PSY-074",
+      "indicators": [
+        "Prediction after modeling",
+        "imitation choice",
+        "vicarious efficacy change"
+      ],
+      "keySources": [
+        "SRC111",
+        "SRC109"
+      ],
+      "layer": "Psychological",
+      "likelyDownstreamInfluences": [
+        "Automatic action initiation",
+        "persistence",
+        "reduced deliberation",
+        "cue-driven choice"
+      ],
+      "likelyUpstreamInfluences": [
+        "Behavioral repetition",
+        "stable context cues",
+        "reinforcement history",
+        "modeling",
+        "goal consistency"
+      ],
+      "measurementAssessmentMethods": "Habit and automaticity scales; cue-response tasks; behavioral trace analysis; longitudinal repeated measurement",
+      "measurementCaveats": "Frequency, habit, automaticity, and cue association are related but not identical; self-report may not capture automatic processes well.",
+      "mechanism": "Transfers observed contingencies into the observer's choice and efficacy representations without direct experience.",
+      "moderatorsBoundaryConditions": "Context stability, reward schedule, cue specificity, competing goals, stress, and opportunity for repetition.",
+      "modifiability": "Moderate",
+      "name": "Observationally Learned Expectancy",
+      "observability": "Moderate",
+      "onsetCausalLag": [
+        "Minutes–Hours"
+      ],
+      "persistenceRecovery": "Often persists for days to months; updating depends on counterevidence and confidence.",
+      "polarityDirection": "Higher values = greater expected likelihood of the modeled consequence.",
+      "primaryFamilyId": "PSY-F08",
+      "relatedFamilyIds": [],
+      "representationScale": "0–1 expected outcome probability after modeled exposure",
+      "source": {
+        "sheet": "Drivers",
+        "workbook": "PSYWERX_Layer_2_Psychological_Driver_Ontology_v1.0.xlsx"
+      },
+      "timeScaleOfChange": [
+        "Days–Weeks"
+      ],
+      "timeScaleQualifier": null,
+      "typicalInteractionCandidates": [
+        "Cue–Response Association Strength",
+        "Outcome Expectancy",
+        "Implementation Intention Strength",
+        "Self-Control Capacity"
+      ],
+      "volatility": "Low"
+    },
+    {
+      "aliases": [],
+      "associatedLayers": [
+        "Psychological"
+      ],
+      "commonMisinterpretations": "Inferring habit solely from repeated behavior or assuming learned responses cannot be overridden by goals and context change.",
+      "dataType": "Multidimensional",
+      "definition": "The expected probability and value of reinforcement following a specified response in a specified context.",
+      "entitySubtype": null,
+      "entityType": "DRIVER",
+      "evidenceNotes": "Scientifically defensible with substantial supporting literature, while causal identification, construct boundaries, measurement, or transferability remain context dependent. Representative records: SRC109; SRC111.",
+      "evidenceStrength": "Moderate",
+      "family": "Learning, Habit & Automaticity",
+      "id": "PSY-073",
+      "indicators": [
+        "Reward expectation",
+        "choice under learned contingencies",
+        "prediction rating"
+      ],
+      "keySources": [
+        "SRC109",
+        "SRC111"
+      ],
+      "layer": "Psychological",
+      "likelyDownstreamInfluences": [
+        "Automatic action initiation",
+        "persistence",
+        "reduced deliberation",
+        "cue-driven choice"
+      ],
+      "likelyUpstreamInfluences": [
+        "Behavioral repetition",
+        "stable context cues",
+        "reinforcement history",
+        "modeling",
+        "goal consistency"
+      ],
+      "measurementAssessmentMethods": "Habit and automaticity scales; cue-response tasks; behavioral trace analysis; longitudinal repeated measurement",
+      "measurementCaveats": "Frequency, habit, automaticity, and cue association are related but not identical; self-report may not capture automatic processes well.",
+      "mechanism": "Supports learned response selection by representing anticipated reinforcement under the cue.",
+      "moderatorsBoundaryConditions": "Context stability, reward schedule, cue specificity, competing goals, stress, and opportunity for repetition.",
+      "modifiability": "Moderate",
+      "name": "Reinforcement Expectancy",
+      "observability": "Moderate",
+      "onsetCausalLag": [
+        "Minutes–Hours"
+      ],
+      "persistenceRecovery": "Often persists for days to months; updating depends on counterevidence and confidence.",
+      "polarityDirection": "Higher values = greater expected reinforcing value of the response.",
+      "primaryFamilyId": "PSY-F08",
+      "relatedFamilyIds": [],
+      "representationScale": "Expected probability × subjective value; contingency rating",
+      "source": {
+        "sheet": "Drivers",
+        "workbook": "PSYWERX_Layer_2_Psychological_Driver_Ontology_v1.0.xlsx"
+      },
+      "timeScaleOfChange": [
+        "Days–Weeks"
+      ],
+      "timeScaleQualifier": null,
+      "typicalInteractionCandidates": [
+        "Cue–Response Association Strength",
+        "Outcome Expectancy",
+        "Implementation Intention Strength",
+        "Self-Control Capacity"
+      ],
+      "volatility": "Low"
+    }
+  ],
+  "family": {
+    "activeEffectCount": 0,
+    "blockedEntityCount": 0,
+    "causalIncident": 3,
+    "causallyIsolatedEntities": 2,
+    "crossLayer": 0,
+    "drivers": 5,
+    "entities": 5,
+    "id": "PSY-F08",
+    "internal": 2,
+    "isolatedFamily": false,
+    "layer": "Psychological",
+    "legacyIncompleteIncident": 3,
+    "memberIds": [
+      "PSY-070",
+      "PSY-071",
+      "PSY-072",
+      "PSY-073",
+      "PSY-074"
+    ],
+    "name": "Learning, Habit & Automaticity",
+    "nativeActionsEventsEffectIds": [],
+    "rds": 0,
+    "rdsCausalSourceCount": 0,
+    "sameLayerCrossFamily": 1
+  },
+  "familyAuditId": "AUD-PSY-F08-AE-V1-20260907-001",
+  "label": "READ_ONLY_BASELINE",
+  "legacyIncidentByBucket": {
+    "deprecatedRelationships": [],
+    "relationshipCandidates": [],
+    "relationships": [
+      {
+        "conditionsModerators": "Context stability, repetition, goal consistency, and stress",
+        "confidence": "HIGH",
+        "directness": "DIRECT_AT_STATED_RESOLUTION",
+        "effectPersistence": null,
+        "evidenceStrength": "Strong",
+        "exposurePattern": "NOT_SPECIFIED",
+        "functionalForm": "UNSPECIFIED",
+        "functionalFormNotes": null,
+        "generalizabilityContext": "Generalizability is limited to contexts compatible with the stated mechanism, conditions, and evidence.",
+        "governanceClass": "CONTEXT_DEPENDENT",
+        "governanceStatus": "ACTIVE",
+        "id": "REL-PSY-034",
+        "lagLowerBound": null,
+        "lagNarrative": "Seconds–Minutes",
+        "lagProfile": [
+          "IMMEDIATE",
+          "SHORT"
+        ],
+        "lagUnit": null,
+        "lagUpperBound": null,
+        "legacyRelationship": {
+          "causalRole": "CAUSES",
+          "schemaVersion": "2.0",
+          "sourceDriverId": "PSY-070",
+          "sourceDriverName": "Habit Strength",
+          "targetDriverId": "PSY-071",
+          "targetDriverName": "Behavioral Automaticity"
+        },
+        "levelTransitionMechanism": null,
+        "mechanism": "Stronger context-linked habits generally show more automatic initiation, though the constructs are not identical.",
+        "moderatorEntityIds": [],
+        "notesCaveats": "Migrated from v1 relationship type: Candidate causal influence. Legacy functional form: Saturating.",
+        "objectEntityId": "PSY-071",
+        "objectEntityName": "Behavioral Automaticity",
+        "objectEntityType": "DRIVER",
+        "objectLevel": "PERSON",
+        "objectRelationshipId": null,
+        "polarity": "POSITIVE",
+        "predicate": "CAUSES",
+        "reciprocalProcessId": null,
+        "relationFamily": "CAUSAL",
+        "source": {
+          "row": 38,
+          "workbook": "PSYWERX_Layer_2_Psychological_Driver_Ontology_v1.0.xlsx",
+          "worksheet": "Relationships"
+        },
+        "subjectEntityId": "PSY-070",
+        "subjectEntityName": "Habit Strength",
+        "subjectEntityType": "DRIVER",
+        "subjectLevel": "PERSON",
+        "supportingEvidenceIds": [
+          "SRC116",
+          "SRC154"
+        ]
+      },
+      {
+        "conditionsModerators": "Cue specificity, competing responses, context stability, and inhibition",
+        "confidence": "HIGH",
+        "directness": "DIRECT_AT_STATED_RESOLUTION",
+        "effectPersistence": null,
+        "evidenceStrength": "Strong",
+        "exposurePattern": "NOT_SPECIFIED",
+        "functionalForm": "UNSPECIFIED",
+        "functionalFormNotes": null,
+        "generalizabilityContext": "Generalizability is limited to contexts compatible with the stated mechanism, conditions, and evidence.",
+        "governanceClass": "CONTEXT_DEPENDENT",
+        "governanceStatus": "ACTIVE",
+        "id": "REL-PSY-035",
+        "lagLowerBound": null,
+        "lagNarrative": "Seconds–Minutes",
+        "lagProfile": [
+          "IMMEDIATE",
+          "SHORT"
+        ],
+        "lagUnit": null,
+        "lagUpperBound": null,
+        "legacyRelationship": {
+          "causalRole": "CAUSES",
+          "schemaVersion": "2.0",
+          "sourceDriverId": "PSY-072",
+          "sourceDriverName": "Cue–Response Association Strength",
+          "targetDriverId": "PSY-071",
+          "targetDriverName": "Behavioral Automaticity"
+        },
+        "levelTransitionMechanism": null,
+        "mechanism": "Stronger learned cue–response links increase rapid cue-driven activation of the response.",
+        "moderatorEntityIds": [],
+        "notesCaveats": "Migrated from v1 relationship type: Candidate causal influence. Legacy functional form: Threshold then saturating.",
+        "objectEntityId": "PSY-071",
+        "objectEntityName": "Behavioral Automaticity",
+        "objectEntityType": "DRIVER",
+        "objectLevel": "PERSON",
+        "objectRelationshipId": null,
+        "polarity": "POSITIVE",
+        "predicate": "CAUSES",
+        "reciprocalProcessId": null,
+        "relationFamily": "CAUSAL",
+        "source": {
+          "row": 39,
+          "workbook": "PSYWERX_Layer_2_Psychological_Driver_Ontology_v1.0.xlsx",
+          "worksheet": "Relationships"
+        },
+        "subjectEntityId": "PSY-072",
+        "subjectEntityName": "Cue–Response Association Strength",
+        "subjectEntityType": "DRIVER",
+        "subjectLevel": "PERSON",
+        "supportingEvidenceIds": [
+          "SRC116",
+          "SRC120"
+        ]
+      },
+      {
+        "conditionsModerators": "Goal activation, plan specificity, cue occurrence, and feasibility",
+        "confidence": "HIGH",
+        "directness": "DIRECT_AT_STATED_RESOLUTION",
+        "effectPersistence": null,
+        "evidenceStrength": "Strong",
+        "exposurePattern": "NOT_SPECIFIED",
+        "functionalForm": "UNSPECIFIED",
+        "functionalFormNotes": null,
+        "generalizabilityContext": "Generalizability is limited to contexts compatible with the stated mechanism, conditions, and evidence.",
+        "governanceClass": "CONTEXT_DEPENDENT",
+        "governanceStatus": "ACTIVE",
+        "id": "REL-PSY-036",
+        "lagLowerBound": null,
+        "lagNarrative": "Hours–Days",
+        "lagProfile": [
+          "INTERMEDIATE",
+          "DELAYED"
+        ],
+        "lagUnit": null,
+        "lagUpperBound": null,
+        "legacyRelationship": {
+          "causalRole": "CAUSES",
+          "schemaVersion": "2.0",
+          "sourceDriverId": "PSY-075",
+          "sourceDriverName": "Implementation Intention Strength",
+          "targetDriverId": "PSY-072",
+          "targetDriverName": "Cue–Response Association Strength"
+        },
+        "levelTransitionMechanism": null,
+        "mechanism": "Repeated or strongly encoded if–then planning increases accessibility of the critical cue and linked response.",
+        "moderatorEntityIds": [],
+        "notesCaveats": "Migrated from v1 relationship type: Candidate causal influence. Legacy functional form: Threshold.",
+        "objectEntityId": "PSY-072",
+        "objectEntityName": "Cue–Response Association Strength",
+        "objectEntityType": "DRIVER",
+        "objectLevel": "PERSON",
+        "objectRelationshipId": null,
+        "polarity": "POSITIVE",
+        "predicate": "CAUSES",
+        "reciprocalProcessId": null,
+        "relationFamily": "CAUSAL",
+        "source": {
+          "row": 40,
+          "workbook": "PSYWERX_Layer_2_Psychological_Driver_Ontology_v1.0.xlsx",
+          "worksheet": "Relationships"
+        },
+        "subjectEntityId": "PSY-075",
+        "subjectEntityName": "Implementation Intention Strength",
+        "subjectEntityType": "DRIVER",
+        "subjectLevel": "PERSON",
+        "supportingEvidenceIds": [
+          "SRC114",
+          "SRC120",
+          "SRC155"
+        ]
+      }
+    ]
+  },
+  "nativeIncident": [],
+  "programId": "AUD-PSYCHOLOGICAL-LAYER-AE-V1-20260907-001",
+  "rdsSpecifications": [],
+  "scienceOrigin": "PRODUCTION_BASELINE"
+}

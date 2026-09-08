@@ -1,0 +1,41 @@
+# PSY-F01 — Beliefs, Attitudes & Outcome Expectancies
+
+Audit `AUD-PSY-F01-AE-V1-20260907-001`; frozen main `de38b3948f511602af7aa94a9cd80b78e1a00298`.
+
+Candidate research only. Human decisions pending. No production science changed.
+
+```json
+{
+  "baselineCommit": "de38b3948f511602af7aa94a9cd80b78e1a00298",
+  "dispositions": {
+    "RESEARCH_NEEDED": 3,
+    "RETAIN_V1_INCOMPLETE": 1,
+    "RETYPE_CANDIDATE": 1,
+    "REVISION_CANDIDATE": 3,
+    "SPLIT_CANDIDATE": 1
+  },
+  "driversSearched": 7,
+  "effectAssertions": 2,
+  "entitiesReviewed": 7,
+  "evidenceAssessments": 3,
+  "existingIncidentReviewed": 9,
+  "familyId": "PSY-F01",
+  "happeningTypes": 2,
+  "humanGovernance": "PENDING",
+  "layerReconciliation": "COMPLETE",
+  "localComplete": true,
+  "newActive": 0,
+  "newGoverned": 0,
+  "newRelationships": 1,
+  "programId": "AUD-PSYCHOLOGICAL-LAYER-AE-V1-20260907-001",
+  "protectedComparison": {
+    "changed": [],
+    "filesCompared": 191,
+    "passed": true
+  },
+  "sourceFindings": 13,
+  "supplementalSourcesInFamily": 8
+}
+```
+
+Local completion and final Layer reconciliation are separately recorded. Shared scientific boundary questions remain for human governance even after candidate consultation is complete. Coverage is not scientific completeness.

@@ -1,0 +1,357 @@
+{
+  "familyId": "PSY-F06",
+  "reviewedAt": "2026-09-07",
+  "allCanonicalFieldsReviewed": true,
+  "entityFieldPolicy": "All8 canonical Driver records,16 RELATED_SEARCH aliases and empty crosswalk reviewed. Frozen definitions, mechanisms, source references, scales, data types, polarity/direction, modifiability, volatility, onset/time/persistence, indicators, methods, observability, caveats and narrative/interactions preserved. Zero local blocked fields; no fields repaired.",
+  "rdsReview": "No local RDS and no RDS endpoint among15incident edges. PSY-078 remains F09 protected RDS. Conceptual resource complement in PSY-057/058 is a scientific issue, not authorization to reclassify either Driver or encode formula causation.",
+  "causalGateReview": "STANDARD_CAUSAL throughout. Person→small-group REL-PSY-067 needs level-transition mechanism/evidence; no PRC-085 mediation inferred. Prior BIO/INF proposals are pointers only.",
+  "layersConsidered": {
+    "BIO": "Sleep/fatigue and cognitive performance reviewed through prior pilot and task literature; no BIO revisions or physiological-to-subjective equivalence.",
+    "PSY": "Attention, resources, motivation, ease and task learning reviewed with state/trait, latent/task and within/between-person distinctions.",
+    "SOC": "Exclusion/inclusion/gaze and participation contexts; real contact, perceived exclusion and gaze behavior differ.",
+    "CUL": "Chua country-group viewing comparison is observational and lacks exact cultural-Driver mapping.",
+    "ENV": "Noise/task-dependent performance literature; perception and occupied load not inferred from performance alone.",
+    "INS": "Scarcity/financial-problem cues and institutional task assignment considered; cue is not income/policy change.",
+    "INF": "Signaling, framing, ambiguity and emotional-content evidence/legacy sources reviewed with exact recipient targets.",
+    "TEC": "Computerized n-back, visual cues and display differences; interface operation is not guaranteed psychological change."
+  },
+  "domainsConsidered": {
+    "DELIBERATE_INTERVENTION": "Visual cues, n-back practice, mindfulness and framing screened; two operation-only identities.",
+    "ROUTINE_UNINTENDED_HUMAN_ACTIVITY": "Multitasking, information selection, practice and daily contact considered; no uncontrolled activity causal effect inferred.",
+    "EXTERNAL_EVENT_SHOCK": "Scarcity/disruption/noise and sleep contexts; occurrence does not establish exact cognitive consequence.",
+    "ENVIRONMENTAL_EXPOSURE": "Noise and visual surroundings reviewed, distinguishing content from sensory exposure.",
+    "INSTITUTIONAL_STRUCTURAL_CHANGE": "Assignment/financial context and constraints considered; no institutional policy effect inferred from a cue.",
+    "TECHNOLOGICAL_CHANGE": "Display cues/fonts and computerized practice, not universal platform efficacy.",
+    "SOCIAL_NETWORK_EVENT_PROCESS": "Exclusion/inclusion and group communication examined; no social-tie/PSYWERX-Relationship confusion.",
+    "INFORMATIONAL_EXPOSURE": "Cue, framing, ambiguity, emotional content and disfluency reviewed.",
+    "BIOLOGICAL_PHYSIOLOGICAL_PROCESS": "Fatigue and sleep effects versus current resource measures; no diagnosis or physiological proxy substitution."
+  },
+  "driverLedgers": [
+    {
+      "driverId": "PSY-055",
+      "status": "SEARCH_COMPLETE_BOUNDED",
+      "sources": [
+        "SRC-CAND-PSY-LAYER-0062",
+        "SRC-CAND-PSY-LAYER-0063",
+        "SRC-CAND-PSY-LAYER-0067",
+        "SRC-CAND-PSY-LAYER-0068"
+      ],
+      "queries": [
+        "Q-PSY-F06-01",
+        "Q-PSY-F06-02",
+        "Q-PSY-F06-03",
+        "Q-PSY-F06-04"
+      ],
+      "noFinding": "Cueing and social/cultural viewing effects are promising but no exact proportion contrast extracted; no signed whole-attention effect.",
+      "gaps": "Dwell-time proportion requires an explicit denominator and relevant region/window; fixation count, first-fixation latency and covert allocation are different measures.",
+      "qualifiers": "Heterogeneous tasks, learners, exposure windows and comparators. Reach/subgroups/intended versus observed effects considered; no quantitative transfer, benefit criterion or practitioner recommendation. Synergy/antagonism/thresholds/functional shape not extracted; nonsignificance not supported null.",
+      "originsWithRelevantLiterature": [
+        "INF",
+        "TEC",
+        "PSY",
+        "SOC",
+        "CUL"
+      ],
+      "domainsWithRelevantLiterature": [
+        "DELIBERATE_INTERVENTION",
+        "INFORMATIONAL_EXPOSURE",
+        "SOCIAL_NETWORK_EVENT_PROCESS"
+      ],
+      "candidateEffectIds": [],
+      "candidateIdentityIds": [],
+      "properties": {
+        "LEVEL": "INSUFFICIENT_EVIDENCE",
+        "TIMING": "INSUFFICIENT_EVIDENCE",
+        "PERSISTENCE": "INSUFFICIENT_EVIDENCE",
+        "STRUCTURE": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "driverId": "PSY-056",
+      "status": "SEARCH_COMPLETE_BOUNDED",
+      "sources": [
+        "SRC-CAND-PSY-LAYER-0063",
+        "SRC-505",
+        "SRC-506"
+      ],
+      "queries": [
+        "Q-PSY-F06-01",
+        "Q-PSY-F06-02",
+        "Q-PSY-F06-03",
+        "Q-PSY-F06-04"
+      ],
+      "noFinding": "Emotional-content→salience sources do not supply exact manipulation/priority evidence; source misinformation/dehumanization findings cannot substitute.",
+      "gaps": "Orienting latency, gaze capture and prominence ratings need separate operational alignment; salient is not necessarily attended voluntarily.",
+      "qualifiers": "Heterogeneous tasks, learners, exposure windows and comparators. Reach/subgroups/intended versus observed effects considered; no quantitative transfer, benefit criterion or practitioner recommendation. Synergy/antagonism/thresholds/functional shape not extracted; nonsignificance not supported null.",
+      "originsWithRelevantLiterature": [
+        "PSY",
+        "INF",
+        "TEC"
+      ],
+      "domainsWithRelevantLiterature": [
+        "DELIBERATE_INTERVENTION",
+        "INFORMATIONAL_EXPOSURE"
+      ],
+      "candidateEffectIds": [],
+      "candidateIdentityIds": [],
+      "properties": {
+        "LEVEL": "INSUFFICIENT_EVIDENCE",
+        "TIMING": "INSUFFICIENT_EVIDENCE",
+        "PERSISTENCE": "INSUFFICIENT_EVIDENCE",
+        "STRUCTURE": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "driverId": "PSY-057",
+      "status": "SEARCH_COMPLETE_BOUNDED",
+      "sources": [
+        "SRC-CAND-PSY-LAYER-0062",
+        "SRC-CAND-PSY-LAYER-0063",
+        "SRC340",
+        "SRC149",
+        "SRC-494",
+        "SRC-499"
+      ],
+      "queries": [
+        "Q-PSY-F06-01",
+        "Q-PSY-F06-02",
+        "Q-PSY-F06-03",
+        "Q-PSY-F06-04"
+      ],
+      "noFinding": "Cueing load claim retained RESEARCH_NEEDED because synthesis combines perceived effort/difficulty. Existing BIO/INF revision paths linked, never repaired.",
+      "gaps": "Mental-effort, perceived-difficulty and NASA-TLX composites are not interchangeable measures. Shared resource definitions with available WM can create conceptual inverse dependence.",
+      "qualifiers": "Heterogeneous tasks, learners, exposure windows and comparators. Reach/subgroups/intended versus observed effects considered; no quantitative transfer, benefit criterion or practitioner recommendation. Synergy/antagonism/thresholds/functional shape not extracted; nonsignificance not supported null.",
+      "originsWithRelevantLiterature": [
+        "INF",
+        "TEC",
+        "BIO",
+        "ENV",
+        "PSY"
+      ],
+      "domainsWithRelevantLiterature": [
+        "DELIBERATE_INTERVENTION",
+        "INFORMATIONAL_EXPOSURE",
+        "ENVIRONMENTAL_EXPOSURE",
+        "BIOLOGICAL_PHYSIOLOGICAL_PROCESS"
+      ],
+      "candidateEffectIds": [
+        "EA-CAND-PSY-LAYER-0010"
+      ],
+      "candidateIdentityIds": [
+        "HT-CAND-PSY-LAYER-0009"
+      ],
+      "properties": {
+        "LEVEL": "INSUFFICIENT_EVIDENCE",
+        "TIMING": "INSUFFICIENT_EVIDENCE",
+        "PERSISTENCE": "INSUFFICIENT_EVIDENCE",
+        "STRUCTURE": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "driverId": "PSY-058",
+      "status": "SEARCH_COMPLETE_BOUNDED",
+      "sources": [
+        "SRC-CAND-PSY-LAYER-0059",
+        "SRC-CAND-PSY-LAYER-0060",
+        "SRC-CAND-PSY-LAYER-0064",
+        "SRC-CAND-PSY-LAYER-0069",
+        "SRC147",
+        "SRC148",
+        "SRC149"
+      ],
+      "queries": [
+        "Q-PSY-F06-01",
+        "Q-PSY-F06-02",
+        "Q-PSY-F06-03",
+        "Q-PSY-F06-04"
+      ],
+      "noFinding": "N-back practice effect remains research-needed/UNKNOWN on exact Driver; task-specific transfer and active-control nulls preserved.",
+      "gaps": "N-back, span and transfer accuracy depend on strategy, skill and stimulus domain. Improved trained score does not uniquely identify greater available resources.",
+      "qualifiers": "Heterogeneous tasks, learners, exposure windows and comparators. Reach/subgroups/intended versus observed effects considered; no quantitative transfer, benefit criterion or practitioner recommendation. Synergy/antagonism/thresholds/functional shape not extracted; nonsignificance not supported null.",
+      "originsWithRelevantLiterature": [
+        "PSY",
+        "TEC",
+        "BIO",
+        "INS"
+      ],
+      "domainsWithRelevantLiterature": [
+        "DELIBERATE_INTERVENTION",
+        "INFORMATIONAL_EXPOSURE",
+        "BIOLOGICAL_PHYSIOLOGICAL_PROCESS",
+        "INSTITUTIONAL_STRUCTURAL_CHANGE"
+      ],
+      "candidateEffectIds": [
+        "EA-CAND-PSY-LAYER-0011"
+      ],
+      "candidateIdentityIds": [
+        "HT-CAND-PSY-LAYER-0010"
+      ],
+      "properties": {
+        "LEVEL": "INSUFFICIENT_EVIDENCE",
+        "TIMING": "INSUFFICIENT_EVIDENCE",
+        "PERSISTENCE": "INSUFFICIENT_EVIDENCE",
+        "STRUCTURE": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "driverId": "PSY-059",
+      "status": "SEARCH_COMPLETE_BOUNDED",
+      "sources": [
+        "SRC117",
+        "SRC162",
+        "SRC171",
+        "SRC-CAND-PSY-LAYER-0061",
+        "SRC-CAND-PSY-LAYER-0003"
+      ],
+      "queries": [
+        "Q-PSY-F06-01",
+        "Q-PSY-F06-02",
+        "Q-PSY-F06-03",
+        "Q-PSY-F06-04"
+      ],
+      "noFinding": "Replicated failure of font→CRT benefit blocks inferring deeper elaboration from slowness. No new duplicate of REL-PSY-007/030.",
+      "gaps": "Thought listing can index relevant processing but amount, valence and quality differ; font difficulty manipulates presentation not elaboration directly.",
+      "qualifiers": "Heterogeneous tasks, learners, exposure windows and comparators. Reach/subgroups/intended versus observed effects considered; no quantitative transfer, benefit criterion or practitioner recommendation. Synergy/antagonism/thresholds/functional shape not extracted; nonsignificance not supported null.",
+      "originsWithRelevantLiterature": [
+        "PSY",
+        "INF",
+        "TEC"
+      ],
+      "domainsWithRelevantLiterature": [
+        "DELIBERATE_INTERVENTION",
+        "INFORMATIONAL_EXPOSURE"
+      ],
+      "candidateEffectIds": [],
+      "candidateIdentityIds": [],
+      "properties": {
+        "LEVEL": "INSUFFICIENT_EVIDENCE",
+        "TIMING": "INSUFFICIENT_EVIDENCE",
+        "PERSISTENCE": "INSUFFICIENT_EVIDENCE",
+        "STRUCTURE": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "driverId": "PSY-060",
+      "status": "SEARCH_COMPLETE_BOUNDED",
+      "sources": [
+        "SRC113",
+        "SRC183",
+        "SRC-405"
+      ],
+      "queries": [
+        "Q-PSY-F06-01",
+        "Q-PSY-F06-02",
+        "Q-PSY-F06-03",
+        "Q-PSY-F06-04"
+      ],
+      "noFinding": "No LEVEL/INCREASE claim on a nominal frame. Category-specific state representation requires an exact scoped proposal; no architecture change inferred merely from a lack of evidence.",
+      "gaps": "Gain/loss wording is external content; an internally adopted frame needs a qualified category and a valid manipulation check, not choice alone.",
+      "qualifiers": "Heterogeneous tasks, learners, exposure windows and comparators. Reach/subgroups/intended versus observed effects considered; no quantitative transfer, benefit criterion or practitioner recommendation. Synergy/antagonism/thresholds/functional shape not extracted; nonsignificance not supported null.",
+      "originsWithRelevantLiterature": [
+        "PSY",
+        "INF",
+        "TEC"
+      ],
+      "domainsWithRelevantLiterature": [
+        "DELIBERATE_INTERVENTION",
+        "INFORMATIONAL_EXPOSURE"
+      ],
+      "candidateEffectIds": [],
+      "candidateIdentityIds": [],
+      "properties": {
+        "LEVEL": "NOT_APPLICABLE",
+        "TIMING": "INSUFFICIENT_EVIDENCE",
+        "PERSISTENCE": "INSUFFICIENT_EVIDENCE",
+        "STRUCTURE": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "driverId": "PSY-061",
+      "status": "SEARCH_COMPLETE_BOUNDED",
+      "sources": [
+        "SRC125",
+        "SRC171",
+        "SRC169",
+        "SRC-CAND-PSY-LAYER-0061"
+      ],
+      "queries": [
+        "Q-PSY-F06-01",
+        "Q-PSY-F06-02",
+        "Q-PSY-F06-03",
+        "Q-PSY-F06-04"
+      ],
+      "noFinding": "SRC171 title/year and PMID disagree; its URL duplicates SRC125. No independent replication counted or canonical correction made.",
+      "gaps": "Objective font readability/response time needs subjective-ease alignment; ease attribution and prior expectations can reverse interpretation.",
+      "qualifiers": "Heterogeneous tasks, learners, exposure windows and comparators. Reach/subgroups/intended versus observed effects considered; no quantitative transfer, benefit criterion or practitioner recommendation. Synergy/antagonism/thresholds/functional shape not extracted; nonsignificance not supported null.",
+      "originsWithRelevantLiterature": [
+        "PSY",
+        "INF",
+        "TEC"
+      ],
+      "domainsWithRelevantLiterature": [
+        "DELIBERATE_INTERVENTION",
+        "INFORMATIONAL_EXPOSURE"
+      ],
+      "candidateEffectIds": [],
+      "candidateIdentityIds": [],
+      "properties": {
+        "LEVEL": "INSUFFICIENT_EVIDENCE",
+        "TIMING": "INSUFFICIENT_EVIDENCE",
+        "PERSISTENCE": "INSUFFICIENT_EVIDENCE",
+        "STRUCTURE": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "driverId": "PSY-062",
+      "status": "SEARCH_COMPLETE_BOUNDED",
+      "sources": [
+        "SRC149",
+        "SRC150",
+        "SRC-CAND-PSY-LAYER-0064",
+        "SRC-CAND-PSY-LAYER-0069",
+        "SRC-CAND-PSY-LAYER-0060"
+      ],
+      "queries": [
+        "Q-PSY-F06-01",
+        "Q-PSY-F06-02",
+        "Q-PSY-F06-03",
+        "Q-PSY-F06-04"
+      ],
+      "noFinding": "Mindfulness reviews disagree by comparator and outcome; accuracy benefits and latency nondetection do not establish uniform cognitive-flexibility change.",
+      "gaps": "Switch-cost latency, shifting accuracy, perseveration and self-report are task-dependent; speed/accuracy effects cannot be pooled as one latent capacity.",
+      "qualifiers": "Heterogeneous tasks, learners, exposure windows and comparators. Reach/subgroups/intended versus observed effects considered; no quantitative transfer, benefit criterion or practitioner recommendation. Synergy/antagonism/thresholds/functional shape not extracted; nonsignificance not supported null.",
+      "originsWithRelevantLiterature": [
+        "PSY",
+        "INF",
+        "TEC"
+      ],
+      "domainsWithRelevantLiterature": [
+        "DELIBERATE_INTERVENTION",
+        "INFORMATIONAL_EXPOSURE"
+      ],
+      "candidateEffectIds": [],
+      "candidateIdentityIds": [],
+      "properties": {
+        "LEVEL": "INSUFFICIENT_EVIDENCE",
+        "TIMING": "INSUFFICIENT_EVIDENCE",
+        "PERSISTENCE": "INSUFFICIENT_EVIDENCE",
+        "STRUCTURE": "NOT_APPLICABLE"
+      }
+    }
+  ],
+  "relationshipPropertyReview": "All15 exact edges reviewed or linked to earlier primary review before PassB. Need-for-cognition/knowledge/capacity moderation screened; no exact scoped edge-target effect or independent interaction identified. No B/C overlap claim, no pathway from reachability/meta-regression, no alteration of BIO-F01 B04 or INF-F03 proposal.",
+  "propertyPolicy": "All11 properties considered. LEVEL UNKNOWN for two RN effects; no numeric ordinal direction for nominal PSY-060. OTHER_SPECIFIED exists in AE V1 but free-text specification alone is not evidence of adopted category or automatic typed-category validation. No new AE target or schema change needed to record an honest research question.",
+  "identityReview": "Compared production14HappeningTypes/9Interventions and prior8Layer identities. Instructional non-content visual cue and n-back updating practice are not content simplification, film exposure, uncertainty bounds, task-option choice or social contact changes. Existing overnight sleep-loss and Cyberball identities recognized without duplicates. No efficacy or permission embedded.",
+  "skepticalReview": {
+    "method": "Second pass separate from candidate drafting challenged proxy validity, exact comparator, canonical source identity, task transfer and primary-source/review independence. Both retained effects remain research-needed, UNKNOWN and ineligible.",
+    "checks": [
+      "Source171 title/year/PMID mismatch and SRC340 exact reuse caught before closeout; original disfluency experiment and its replication pool not independent evidence.",
+      "Mixed effort/difficulty ratings do not establish exact resource occupancy. Fixation count/duration do not silently become attention proportion.",
+      "N-back-specific transfer, treated-control far-transfer null and no evidence of broad availability retained.",
+      "Mindfulness active-control and accuracy/latency disagreements preserved; psychological acceptance not cognitive flexibility.",
+      "Nominal frame has no universal scalar increase; no direct RDS/state target and no scenario operation treated as scientific evidence.",
+      "Existing BIO/INF revision-review proposals linked once; no previous pilot record changed or new parallel proposal."
+    ],
+    "remainingRisks": "Abstract-level access for much landscape evidence and some unresolved canonical bibliographic alignments. Detailed cue contrast, task-to-construct measurement and transfer remain future research, not activatable science."
+  }
+}

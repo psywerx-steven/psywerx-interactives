@@ -1,0 +1,360 @@
+[
+  {
+    "assertionId": "REL-CAND-PSY-LAYER-0001",
+    "evidenceAssessmentId": "EVA-REL-CAND-PSY-LAYER-0001",
+    "governance": {
+      "activationStatus": "NOT_ELIGIBLE",
+      "authorityBasis": "V1_NATIVE",
+      "authorizedBy": null,
+      "blockStatus": "NONE",
+      "decisionDate": null,
+      "decisionOutcome": "NOT_DECIDED",
+      "decisionRationale": null,
+      "decisionRecord": null,
+      "effectiveVersion": null,
+      "lifecycleStatus": "REVIEW_READY",
+      "supersedesIds": [],
+      "transitionProvenance": [
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": null
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "EVA-REL-CAND-PSY-LAYER-0001",
+          "provenance": "AUD-PSYCHOLOGICAL-LAYER-AE-V1-20260907-001/PSY-F01",
+          "rationale": "Candidate packet prepared for human review; no scientific authority granted",
+          "revision": 1,
+          "timestamp": "2026-09-07T16:54:31Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          }
+        },
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "EVA-REL-CAND-PSY-LAYER-0001",
+          "provenance": "AUD-PSYCHOLOGICAL-LAYER-AE-V1-20260907-001/PSY-F01",
+          "rationale": "Candidate packet prepared for human review; no scientific authority granted",
+          "revision": 1,
+          "timestamp": "2026-09-07T16:54:31Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "RESEARCH_NEEDED"
+          }
+        },
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "RESEARCH_NEEDED"
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "EVA-REL-CAND-PSY-LAYER-0001",
+          "provenance": "AUD-PSYCHOLOGICAL-LAYER-AE-V1-20260907-001/PSY-F01",
+          "rationale": "Candidate packet prepared for human review; no scientific authority granted",
+          "revision": 1,
+          "timestamp": "2026-09-07T16:54:31Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "REVIEW_READY"
+          }
+        }
+      ]
+    },
+    "productionMethod": "SYNTHESIS",
+    "sourceFindings": [
+      {
+        "accessDepth": "ABSTRACT",
+        "basis": [
+          "EXPERIMENTAL"
+        ],
+        "comparator": "Previously unexposed headline at truth assessment",
+        "context": "Headlines presented in a social-media-like format",
+        "datasetIds": [
+          "PENNYCOOK_CANNON_RAND_2018"
+        ],
+        "design": "Randomized prior exposure to headlines; study-level allocation details not fully re-extracted; sample: Two preregistered experiments reported more than 1,800 participants in indexed discussion; no aggregate sample recomputed",
+        "disposition": "SUPPORTS",
+        "exposure": "Prior encounter with a specified headline",
+        "id": "FND-REL-CAND-PSY-LAYER-0001-REPETITION_2018",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Low absolute believability; convenience sample; truth-rating operationalization; no evidence for arbitrary repeated content or real-world behavioral consequences."
+        ],
+        "locator": "PubMed abstract; PMC indexed methods and General Discussion",
+        "measurement": "Perceived accuracy of the claim, not objective truth or source trust",
+        "nullInterpretation": null,
+        "overlapNotes": "Same dataset reused across records/contrasts is one evidence contribution. Review-primary overlap is possible; no replication count or pooled weight inferred.",
+        "population": "Online MTurk participants; fake-news headline tasks, not a representative population",
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "No human scientific governance; selected accessed material only; not a formal systematic review"
+          ],
+          "method": "Authored evidence extraction followed by candidate-only synthesis",
+          "originReferences": [
+            "AUD-PSYCHOLOGICAL-LAYER-AE-V1-20260907-001",
+            "de38b3948f511602af7aa94a9cd80b78e1a00298",
+            "PSY-F01/research.json",
+            "PSY-F01/evidence-inputs.json"
+          ],
+          "recordedAt": "2026-09-07T16:54:31Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "Previously presented fake-news headlines received higher accuracy ratings; no generalized monotonic dose function established.",
+        "sourceId": "SRC-CAND-PSY-LAYER-0001",
+        "supportedSemantics": [
+          "CAUSAL"
+        ],
+        "timing": "Same session and reported one-week retest",
+        "uncertainty": [
+          "No comparable numerical estimand or causal coefficient extracted"
+        ]
+      },
+      {
+        "accessDepth": "ABSTRACT",
+        "basis": [
+          "EXPERIMENTAL"
+        ],
+        "comparator": "No prior exposure",
+        "context": "Statements such as geometrically impossible descriptions",
+        "datasetIds": [
+          "PENNYCOOK_CANNON_RAND_2018"
+        ],
+        "design": "Extreme-implausibility contrast in same publication; sample: NOT_EXTRACTED",
+        "disposition": "NULL_FINDING",
+        "exposure": "Prior exposure",
+        "id": "FND-REL-CAND-PSY-LAYER-0001-IMPLAUSIBILITY_NULL",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "No equivalence margin or precision assessment extracted; non-detection does not prove a zero effect."
+        ],
+        "locator": "PubMed abstract: entirely implausible statements contrast",
+        "measurement": "Perceived truth",
+        "nullInterpretation": {
+          "contrast": "Prior exposure versus No prior exposure",
+          "interpretation": "NO_DETECTED_DIFFERENCE",
+          "precisionAssessment": "No equivalence margin/precision guarantee extracted",
+          "rationale": "Nonsignificance is preserved, not encoded as SUPPORTED_NULL or a zero effect"
+        },
+        "overlapNotes": "Same dataset reused across records/contrasts is one evidence contribution. Review-primary overlap is possible; no replication count or pooled weight inferred.",
+        "population": "Participants judging entirely implausible statements",
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "No human scientific governance; selected accessed material only; not a formal systematic review"
+          ],
+          "method": "Authored evidence extraction followed by candidate-only synthesis",
+          "originReferences": [
+            "AUD-PSYCHOLOGICAL-LAYER-AE-V1-20260907-001",
+            "de38b3948f511602af7aa94a9cd80b78e1a00298",
+            "PSY-F01/research.json",
+            "PSY-F01/evidence-inputs.json"
+          ],
+          "recordedAt": "2026-09-07T16:54:31Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "The source reports no repetition effect for entirely implausible statements.",
+        "sourceId": "SRC-CAND-PSY-LAYER-0001",
+        "supportedSemantics": [
+          "CAUSAL"
+        ],
+        "timing": "Reported test interval; exact interval not extracted for this contrast",
+        "uncertainty": [
+          "No comparable numerical estimand or causal coefficient extracted"
+        ]
+      },
+      {
+        "accessDepth": "SELECTED_FULL_TEXT",
+        "basis": [
+          "EVIDENCE_SYNTHESIS"
+        ],
+        "comparator": "Novel statements or aligned pre/post criteria",
+        "context": "Repeated versus novel statements",
+        "datasetIds": [
+          "YE_ET_AL_2026_SYNTHESIS"
+        ],
+        "design": "Three-level synthesis with small-study-bias assessment; sample: 182 studies, 366 estimates, 31,184 participants",
+        "disposition": "MIXED",
+        "exposure": "Repeated presentation under study-specific initial tasks",
+        "id": "FND-REL-CAND-PSY-LAYER-0001-REPETITION_SYNTHESIS",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Small-study effects, non-equivalent materials, possible overlapping components; not a universal dose-response or an independent replication of included trials."
+        ],
+        "locator": "Abstract; Results: Study Characteristics and Publication Bias; Introduction boundary discussion",
+        "measurement": "Truth ratings; synthesis distinguishes different comparison criteria",
+        "nullInterpretation": null,
+        "overlapNotes": "Same dataset reused across records/contrasts is one evidence contribution. Review-primary overlap is possible; no replication count or pooled weight inferred.",
+        "population": "Predominantly European/North American research settings; heterogeneous claim materials",
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "No human scientific governance; selected accessed material only; not a formal systematic review"
+          ],
+          "method": "Authored evidence extraction followed by candidate-only synthesis",
+          "originReferences": [
+            "AUD-PSYCHOLOGICAL-LAYER-AE-V1-20260907-001",
+            "de38b3948f511602af7aa94a9cd80b78e1a00298",
+            "PSY-F01/research.json",
+            "PSY-F01/evidence-inputs.json"
+          ],
+          "recordedAt": "2026-09-07T16:54:31Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "Positive bias-adjusted pooled repetition effect with substantial heterogeneity; initial task and veracity cues matter.",
+        "sourceId": "SRC-433",
+        "supportedSemantics": [
+          "CAUSAL"
+        ],
+        "timing": "Study-dependent initial exposure and later test",
+        "uncertainty": [
+          "No comparable numerical estimand or causal coefficient extracted"
+        ]
+      },
+      {
+        "accessDepth": "ABSTRACT",
+        "basis": [
+          "EXPERIMENTAL"
+        ],
+        "comparator": "Initial nonaccuracy/interestingness task",
+        "context": "False news headline ratings",
+        "datasetIds": [
+          "LIN_ET_AL_2024"
+        ],
+        "design": "Lab-in-field and online experiments; task instruction contrasts; sample: Reported second moderator experiment N=239; general samples India 997, Philippines 1,184; not pooled here",
+        "disposition": "MIXED",
+        "exposure": "Initial accuracy judgment before repeated exposure",
+        "id": "FND-REL-CAND-PSY-LAYER-0001-ACCURACY_TASK_BOUNDARY",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Only indexed excerpts accessed; no exact zero/equivalence claim; occupation and countries constrain transfer; possible overlap with 2026 synthesis."
+        ],
+        "locator": "Indexed publisher/PMC abstract and results: initial accuracy versus interestingness judgments",
+        "measurement": "Later perceived headline accuracy",
+        "nullInterpretation": null,
+        "overlapNotes": "Same dataset reused across records/contrasts is one evidence contribution. Review-primary overlap is possible; no replication count or pooled weight inferred.",
+        "population": "Professional content moderators and separate India/Philippines general-population samples",
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "No human scientific governance; selected accessed material only; not a formal systematic review"
+          ],
+          "method": "Authored evidence extraction followed by candidate-only synthesis",
+          "originReferences": [
+            "AUD-PSYCHOLOGICAL-LAYER-AE-V1-20260907-001",
+            "de38b3948f511602af7aa94a9cd80b78e1a00298",
+            "PSY-F01/research.json",
+            "PSY-F01/evidence-inputs.json"
+          ],
+          "recordedAt": "2026-09-07T16:54:31Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "Accuracy-focused initial processing attenuated the adverse repetition pattern reported in comparison tasks.",
+        "sourceId": "SRC-CAND-PSY-LAYER-0007",
+        "supportedSemantics": [
+          "CAUSAL"
+        ],
+        "timing": "Initial-task manipulation precedes final judgments",
+        "uncertainty": [
+          "No comparable numerical estimand or causal coefficient extracted"
+        ]
+      },
+      {
+        "accessDepth": "ABSTRACT",
+        "basis": [
+          "EXPERIMENTAL"
+        ],
+        "comparator": "New statements",
+        "context": "Highly implausible statements assessed with 100-point truth scale",
+        "datasetIds": [
+          "LACASSAGNE_BENA_CORNEILLE_2022"
+        ],
+        "design": "Preregistered repeated-versus-new highly implausible statement experiment; allocation details not re-extracted from abstract; sample: NOT_EXTRACTED",
+        "disposition": "MIXED",
+        "exposure": "Five prior presentations",
+        "id": "FND-REL-CAND-PSY-LAYER-0001-IMPLAUSIBILITY_COUNTEREXAMPLE",
+        "inputRole": "DIRECT_FINDING",
+        "limitations": [
+          "Contradicts a universal extreme-implausibility exclusion, not the bounded 2018 null contrast. Exposure count and scale sensitivity differ; neither moderator is independently isolated here. Preprint and published version are one work. Possible inclusion in later synthesis is not independent replication."
+        ],
+        "locator": "PubMed PMID35144111 / Europe PMC indexed abstract, preregistered experiment and exploratory heterogeneity",
+        "measurement": "Rated truth, not objective accuracy or acceptance above midpoint",
+        "nullInterpretation": null,
+        "overlapNotes": "Same dataset reused across records/contrasts is one evidence contribution. Review-primary overlap is possible; no replication count or pooled weight inferred.",
+        "population": "Statement-judgment participants; demographic/sample-transfer detail not extracted",
+        "provenance": {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "limitations": [
+            "No human scientific governance; selected accessed material only; not a formal systematic review"
+          ],
+          "method": "Authored evidence extraction followed by candidate-only synthesis",
+          "originReferences": [
+            "AUD-PSYCHOLOGICAL-LAYER-AE-V1-20260907-001",
+            "de38b3948f511602af7aa94a9cd80b78e1a00298",
+            "PSY-F01/research.json",
+            "PSY-F01/evidence-inputs.json"
+          ],
+          "recordedAt": "2026-09-07T16:54:31Z"
+        },
+        "quantitativeEstimate": null,
+        "result": "Repeated highly implausible statements received higher truth ratings than new statements, still below the scale midpoint. Exploratory results showed about half of participants with no or reversed pattern.",
+        "sourceId": "SRC-CAND-PSY-LAYER-0188",
+        "supportedSemantics": [
+          "CAUSAL"
+        ],
+        "timing": "Five presentations before judgment; exact delay not extracted",
+        "uncertainty": [
+          "No comparable numerical estimand or causal coefficient extracted"
+        ]
+      }
+    ],
+    "synthesis": {
+      "confidence": "MODERATE",
+      "confidenceRationale": "Exact scoped claim only; construct transfer, method, access and heterogeneity limit certainty",
+      "conflicts": [
+        {
+          "dispositionRationale": "Retain contrast and scope; do not pool distinct estimands or discard null findings",
+          "findingId": "FND-REL-CAND-PSY-LAYER-0001-IMPLAUSIBILITY_NULL"
+        },
+        {
+          "dispositionRationale": "Retain contrast and scope; do not pool distinct estimands or discard null findings",
+          "findingId": "FND-REL-CAND-PSY-LAYER-0001-REPETITION_SYNTHESIS"
+        },
+        {
+          "dispositionRationale": "Retain contrast and scope; do not pool distinct estimands or discard null findings",
+          "findingId": "FND-REL-CAND-PSY-LAYER-0001-ACCURACY_TASK_BOUNDARY"
+        },
+        {
+          "dispositionRationale": "Retain contrast and scope; do not pool distinct estimands or discard null findings",
+          "findingId": "FND-REL-CAND-PSY-LAYER-0001-IMPLAUSIBILITY_COUNTEREXAMPLE"
+        }
+      ],
+      "contraryEvidenceSearch": "ASSESSED",
+      "datasetOverlap": "Shared publication components and synthesis-primary overlap are not independent replication; no pooled estimate computed",
+      "disposition": "MIXED",
+      "evidenceStrength": "MODERATE",
+      "generalizationLimits": [
+        "Repeated encounter with the same factual statement/headline can alter subsequently rated belief confidence in controlled adult online/laboratory tasks. Ordinary judgment tasks often show increases; extreme implausibility, explicit veracity cues and initial accuracy focus bound the claim. No universal monotonic sign, transfer to arbitrary content, calibrated truth or behavior is asserted. Extreme implausibility is not a universal exclusion: a later five-presentation/100-point-scale experiment found higher ratings while ratings remained below midpoint."
+      ],
+      "rationale": "Experimental exposure precedes truth judgment; converging synthesis retains heterogeneity and small-study limitations. No causal inference from familiarity ratings alone.",
+      "sourceFindingIds": [
+        "FND-REL-CAND-PSY-LAYER-0001-REPETITION_2018",
+        "FND-REL-CAND-PSY-LAYER-0001-IMPLAUSIBILITY_NULL",
+        "FND-REL-CAND-PSY-LAYER-0001-REPETITION_SYNTHESIS",
+        "FND-REL-CAND-PSY-LAYER-0001-ACCURACY_TASK_BOUNDARY",
+        "FND-REL-CAND-PSY-LAYER-0001-IMPLAUSIBILITY_COUNTEREXAMPLE"
+      ]
+    }
+  }
+]

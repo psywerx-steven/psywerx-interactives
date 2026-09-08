@@ -1,0 +1,66 @@
+# Psychological Layer progress
+
+Program: `AUD-PSYCHOLOGICAL-LAYER-AE-V1-20260907-001`.
+Branch: `scale-up/psychological-layer-v1`.
+Starting main: `de38b3948f511602af7aa94a9cd80b78e1a00298`.
+
+DONE means the named stage is checked, not that the Family is scientifically complete.
+NOT_STARTED and PARTIAL stages remain unfinished. All human decisions remain pending.
+
+| Family | BASELINE | ENTITY_REVIEW | PASS_A_EXISTING | PASS_A_GAPS | PASS_B_ACTIONS_EVENTS | EVIDENCE_RECONCILIATION | SKEPTICAL_REVIEW | DECISION_PACKAGE | VALIDATION | COMPLETE |
+|---|---|---|---|---|---|---|---|---|---|---|
+| PSY-F01 | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE |
+| PSY-F02 | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE |
+| PSY-F03 | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE |
+| PSY-F04 | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE |
+| PSY-F05 | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE |
+| PSY-F06 | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE |
+| PSY-F07 | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE |
+| PSY-F08 | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE |
+| PSY-F09 | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE |
+| PSY-F10 | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE |
+| PSY-F11 | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE |
+| PSY-F12 | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE |
+| PSY-F13 | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE |
+| PSY-F14 | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE | DONE |
+
+## Exact resume point
+
+All authorized scientific audit work COMPLETE. PR#24 open/unmerged: https://github.com/psywerx-steven/psywerx-interactives/pull/24 . Verify its actual final-head Linux/Windows checks are green and branch clean/matching remote, then return human-governance handoff. Do not rerun completed research, merge, govern, activate or begin another Layer.
+
+## Checkpoints
+
+- Layer baseline committed/pushed: `4405e1cd0fcaf8bfa38b629a27d31a4bc4a32320`; all 14 frozen, 191 protected files unchanged.
+- PSY-F01 local candidate audit complete: 7 entities, 9 existing propositions, 1 Relationship / 2 identities / 2 effects / 3 assessments. 23 Layer, 65 AE, 38 RI and 18 source-verification tests pass; deterministic rendering, schema/source/query/local-link checks, Python compilation and diff check pass. 191 protected files unchanged. Completion commit SHA will be recorded in the next checkpoint.
+- PSY-F01 completed/committed/pushed: `e1996768c9f809ce07476ff8c2ec6da38f2c0802`. PSY-F02 active; sources include control-stressor experiments, risk/fear-appeal syntheses, coping-scale/trial work, uncertainty and privacy research. No production changes.
+- PSY-F02 local complete: nine Drivers (including PSY-132), fourteen existing causal propositions, no new Relationship, one identity, one REVIEW_READY task-control effect and one RESEARCH_NEEDED proxy effect, two assessments/four findings. Thirty-five incremental Layer tests pass, source/schema/reference/determinism/local-link and protected-191 checks pass. No new GOVERNED/ACTIVE. CI wiring added only to existing validation jobs.
+- PSY-F02 committed/pushed `7b275807dbb9b32ca874a0af52edcd7eb0aec832`; Linux/Windows workflow `34148107881` passed on that exact head. PSY-F03 started; eight origin Layers/nine domains remain the recall framework.
+- PSY-F03 local complete: 12 Drivers, 21 incident propositions (20 new primary reviews + REL-PSY-016 reused), no new Relationship, 2 identities, 1 REVIEW_READY exclusion effect + 1 RESEARCH_NEEDED norm effect, 2 assessments/6 findings. 47 incremental tests, schema/source/determinism/local links/Python and protected-191 checks pass. No new GOVERNED/ACTIVE. Completion commit SHA recorded at next checkpoint.
+- PSY-F03 committed/pushed `a9e5377bc673b1035f800954013eccc399e5a325`; final-head Linux/Windows validation dispatched. PSY-F04 entity review read-only complete; existing and gap evidence research in progress.
+- PSY-F03 exact-head Linux/Windows run `34149669318` passed on `a9e5377bc673b1035f800954013eccc399e5a325`.
+- PSY-F04 local complete: 15 Drivers, 16 incident propositions (8 new primary + 8 reused), 0 new Relationships, 1 REVIEW_READY identity/effect, 1 assessment/4 findings; 13 supplemental sources plus canonical SRC-467 reuse. 61 incremental tests, schema/source/reference/determinism/local-link and protected-191 checks pass. No new GOVERNED/ACTIVE; completion SHA recorded at next checkpoint.
+- PSY-F04 committed/pushed `551d66cd902db4b8eec9bc8c892f73bb6d5b1a62`; Linux/Windows run `34150809606` passed. F05 entity review and first source-verification pass underway.
+- PSY-F05 local complete:14 Drivers,17 incident propositions (14 new primary +3 reused),0 new Relationships,2 REVIEW_READY identities,2 RESEARCH_NEEDED/UNKNOWN effects,2 assessments/6 findings,17 supplemental sources. 76 incremental tests, source/schema/reference/determinism/local links/Python and protected191 checks pass. Four canonical PMID mismatches and one unresolved DOI flagged without repair. Completion SHA recorded next checkpoint.
+- PSY-F05 committed/pushed `c8f08b650f0c61657088bdb51b5f14779d147ec8`; Linux/Windows run `34153555033` passed.
+- PSY-F06 local complete:8Drivers,15incident propositions (12new primary+3reused),0new Relationships,2identities,2RN/UNKNOWN effects,2assessments/6findings,10supplemental sources+canonicalSRC340reuse. 88incremental tests pass; schema/source/reference/determinism/local-link/Python/diff and191protected checks pass. BIO-F01 B04/INF-F03 proposals linked without duplication or repair. Completion SHA recorded next checkpoint.
+- PSY-F06 committed/pushed `54b428bbed08adcfbdb6dc11028cc70d6ad91704`; Linux/Windows run `34154924007` passed.
+- PSY-F07 local complete:7Drivers,4incident propositions (3new primary+1reused),0new Relationships,2identities,1RR delayed-recall effect+1RN confidence-proxy effect,2assessments/7findings,12supplemental sources. 99incremental tests, schema/source/reference/determinism/local-link/Python/diff and191protected checks pass. Immediate recall reversal and SRC184 PMID mismatch preserved. Completion SHA recorded next checkpoint.
+- PSY-F07 committed/pushed `74940090ec8c32bfa6b8841bd9f8e46dc20aaa3e`; Linux/Windows run `34156292084` passed.
+- PSY-F08 local complete:5Drivers,3primary incident reviews,0new Relationships,2identities,2RN/UNKNOWN effects,2assessments/7findings,13supplemental sources. 109incremental tests, schema/source/reference/determinism/local-link/Python/diff and191protected checks pass. Habit-item overlap, pre/post versus controls, assay failures and SRC120 identity mismatch retained. Completion SHA recorded next checkpoint.
+PSY-F08 committed/pushed `9501b1e3fa84fab387d1eebabde1d72139e9ea09`; Linux/Windows run `34157017946` passed. PSY-F09 entity/RDS, existing and research work drafted; source/comparator review and local validation underway.
+PSY-F09 local complete:8Drivers+1RDS,9incident (5primary+4reused),0new Relationships,2identities,2RN/UNKNOWN effects,2assessments/7findings,12supplemental sources. 120incremental tests, schema/source/reference/determinism/local links/Python/diff and191protected checks pass. Signed-discrepancy, review-comparator and SRC157 identity safeguards explicit. Completion SHA recorded next checkpoint.
+PSY-F09 committed/pushed `094b83c6f19ccee75554d02ff16914437c4bb533`; Linux/Windows run `34158322236` passed. F10 draft preserves framing/parameter, EFT cue/rate and default uptake/preference distinctions; source205 DOI mismatch flagged.
+PSY-F10 local complete:10Drivers,4incident (2primary+2reused),0new Relationships,2identities,2RN/UNKNOWN effects,2assessments/8findings,12supplemental sources+SRC-408reuse. 129incremental tests, source/schema/reference/determinism/local-link/Python/diff and191protected checks pass. EFT cue/rate, default preference/uptake, beta-direction and SRC205 DOI safeguards retained. Completion SHA recorded next checkpoint.
+PSY-F10 committed/pushed `0d2539420b70a5c0a4c5f5b0ea48e38b75e648b2`; Linux/Windows run `34159629607` passed.
+PSY-F11 local complete:10Drivers,6incident (5primary+1reused),0new Relationships,3identities,3RN/UNKNOWN effects,3assessments/9findings,17supplemental sources+SRC286reuse. 138incremental tests, schema/source/reference/determinism/local-link/Python/diff and191protected checks pass. Identity profile/component, enduring-time, source-result inconsistency and model/observation safeguards retained. Completion SHA recorded next checkpoint.
+- PSY-F11 committed/pushed `3459c11e25a73654fc802e5ceb660d3909f80cf2`; Linux/Windows workflow `34160977794` green.
+- PSY-F12 local complete:10 Drivers,8 incident propositions(6 primary+2 reused),3 identities,1 scoped REVIEW_READY threat effect+2 RESEARCH_NEEDED agency/perspective effects,3 assessments/11 findings.146 incremental tests and protected191/schema/source/determinism/Python/diff checks pass. Same-title/different-year source dedup corrected without canonical edits. No new GOVERNED/ACTIVE. Next PSY-F13.
+- PSY-F12 committed/pushed `e4a7ab5c92cc400a566defad6824d57234e3b451`; Linux/Windows workflow `34162256393` green.
+- PSY-F13 local complete:7 Drivers,18 incident propositions(10 primary+8 reused),3 identities/3 RN effects,3 assessments/9 findings.154 incremental tests, protected191, schema/source/determinism/Python checks pass. All111 Layer existing propositions now primary-reviewed; F14 must still consult its incidents and complete entity/research work. Prior INF native claim retained unchanged; source conflicts and historical201/412 duplicate flagged. Next PSY-F14.
+- PSY-F13 committed/pushed `c3d45673d491997c208d3d948292ba45e0e6e3ed`; Linux/Windows workflow34163160381 green. F14 source/construct/endpoint review complete;2RN effects,2identities,8findings; temporal/profile issues preserved.
+- PSY-F14 local complete:12Drivers,8incident(0newprimary+8consulted/reused),0newRelationships,2identities/2RN effects,2assessments/8findings,17supplemental sources.162incremental tests, schema/source/determinism/Python/diff and191protectedchecks pass. Source/profile/trait-time limits preserved. Completion SHA recorded at Layer reconciliation.
+- PSY-F14 completed/committed/pushed `d43a2c0c422ed19d310c01380813982a9959f890`. All14 local audits complete; Layer reconciliation/sample completed, one F01 implausibility counterexample incorporated and F12 metadata-only access corrected. Canonical science unchanged.
+- Layer final local validation PASS:610Python tests run(2 repository-defined audit-family skips),21scenario-service tests;21JavaScript files parsed;686local links;schema/lifecycle/source/RDS/ownership/compatibility/determinism/compilation/diff checks;191protected files unchanged. Layer random sample14/14 complete; all595human review rows PENDING.
+- Layer reconciliation committed/pushed `a3b9231cf827952ed76ef3ad932d934850243c71`; full-diff formatting safeguard `25eefef85e4c47aa1eb263f57afdfba8648225f0`; single candidate-only PR#24 opened. Final count presentation distinguishes91formal records from63proposal envelopes; no science/status change.19closeout tests rerun green.
+
+No new GOVERNED or ACTIVE records; no canonical source registration; no production science changes.

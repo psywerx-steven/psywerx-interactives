@@ -141,6 +141,10 @@ class ExplorerStaticContractTests(unittest.TestCase):
         cls.javascript = (EXPLORER_DIR / "app.js").read_text(encoding="utf-8")
         cls.css = (EXPLORER_DIR / "styles.css").read_text(encoding="utf-8")
         cls.combined = "\n".join((cls.html, cls.javascript, cls.css))
+        site = json.loads(
+            (REPO_ROOT / "homepage" / "content" / "site.json").read_text(encoding="utf-8")
+        )
+        cls.homepage_url = site["targetOrigin"].rstrip("/") + "/"
 
     def test_required_assets_are_local_and_dependency_free(self):
         for filename in ("index.html", "app.js", "styles.css"):
@@ -148,10 +152,22 @@ class ExplorerStaticContractTests(unittest.TestCase):
         self.assertIn('href="../shared/psywerx.css"', self.html)
         self.assertIn('src="./app.js"', self.html)
         self.assertIn('src="../shared/assets/psywerx-logo.png"', self.html)
+        html_without_homepage_link = self.html.replace(
+            f'href="{self.homepage_url}"', 'href=""', 1
+        )
         self.assertNotRegex(
-            self.combined,
+            "\n".join((html_without_homepage_link, self.javascript, self.css)),
             r"https?://|cdnjs|unpkg|jsdelivr|googleapis|analytics",
         )
+
+    def test_wordmark_uses_canonical_psywerx_home(self):
+        wordmark = re.search(
+            r'<a class="wordmark" href="([^"]+)" aria-label="([^"]+)">\s*<img',
+            self.html,
+        )
+        self.assertIsNotNone(wordmark)
+        self.assertEqual(self.homepage_url, wordmark.group(1))
+        self.assertEqual("PSYWERX home", wordmark.group(2))
 
     def test_browser_inventory_matches_the_closed_public_manifest(self):
         for filename in PUBLIC_FILES:

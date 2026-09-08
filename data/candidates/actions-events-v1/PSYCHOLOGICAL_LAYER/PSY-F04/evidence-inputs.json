@@ -1,0 +1,128 @@
+{
+  "familyId": "PSY-F04",
+  "happeningTypes": [
+    {
+      "id": "HT-CAND-PSY-LAYER-0006",
+      "name": "Offer a bounded choice among specified task alternatives",
+      "identityKey": "OFFER_SPECIFIED_TASK_OPTION_CHOICE",
+      "description": "A responsible task provider offers the performer a bounded set of specified task alternatives and lets them select an option. The operation does not promise interest, autonomy, efficacy, fidelity, learning or practitioner permission. Option selection is not unrestricted action choice, partner-link revision, or a change to a PSYWERX Relationship.",
+      "domain": "DELIBERATE_INTERVENTION",
+      "origins": [
+        "INS",
+        "INF"
+      ],
+      "actor": "ACTOR-CAND-PSY-LAYER-TASK-PROVIDER",
+      "sources": [
+        "SRC-CAND-PSY-LAYER-0029",
+        "SRC-CAND-PSY-LAYER-0030"
+      ],
+      "constraints": "Actor control, task equivalence, accessible options, curriculum/safety requirements, assent/consent, feasibility, legal and ethical appropriateness require independent review. No exclusion of required content or reward/penalty manipulation implied."
+    }
+  ],
+  "findings": [
+    {
+      "key": "HOMEWORK_INTEREST",
+      "sourceId": "SRC-CAND-PSY-LAYER-0029",
+      "locator": "https://selfdeterminationtheory.org/wp-content/uploads/2019/10/2010_PatallCooperWynn_JEP.pdf pp.899–904 and 913: Participants, Procedure, IMI, Analysis 1 hypothesis testing, limitations.",
+      "accessDepth": "SELECTED_FULL_TEXT",
+      "basis": "EXPERIMENTAL",
+      "design": "Within-class randomized crossover; same-sample baseline correlational analysis excluded from causal interpretation",
+      "sample": "207 students at one or more time points, 14 classrooms/two urban southeastern-US high schools; outcome-specific missingness",
+      "population": "Grades 9–12 participants with parental permission, preservice-teacher classes",
+      "context": "Homework options designed for same content and intermediate difficulty, different formats; not whole-school policy trial",
+      "exposure": "Choice between two similar homework alternatives during one instructional unit",
+      "comparator": "Provider-assigned, assignment-by-assignment yoked alternative; conditions reversed next unit",
+      "measurement": "Seven-item 1–7 IMI interest/enjoyment subscale about THAT UNIT'S homework; other IMI subscales are distinct constructs",
+      "timing": "End of each instructional unit during four-week procedure; no enduring follow-up claim",
+      "result": "Students reported higher homework interest/enjoyment under choice. This is not proof that increased perceived autonomy independently mediated the effect.",
+      "disposition": "SUPPORTS",
+      "limitations": "Missingness particularly limits lower-achieving-student transfer; participants anticipated crossover; only 14 classes and limited duration. Same-sample Analysis 2 correlational, not pathway evidence.",
+      "dataset": "DATASET-PATALL-2010-HOMEWORK"
+    },
+    {
+      "key": "CHOICE_REVIEW_SCOPE",
+      "sourceId": "SRC-CAND-PSY-LAYER-0028",
+      "locator": "https://selfdeterminationtheory.org/wp-content/uploads/2019/10/2008_PatallCooperRobinson_PsychBulletin.pdf abstract; pp.274–277 measurement/choice distinctions; includes Reeve et al. 2003.",
+      "accessDepth": "SELECTED_FULL_TEXT",
+      "basis": "EVIDENCE_SYNTHESIS",
+      "design": "Meta-analysis of heterogeneous choice experiments; primary Reeve study overlaps",
+      "sample": "41 studies, child/adult settings; no homework-specific pooled estimand extracted",
+      "population": "Child and adult participants across laboratory/educational settings",
+      "context": "Different option/action choices, rewards, control groups and cultural meanings",
+      "exposure": "Provision of choice under varied protocols",
+      "comparator": "No/reduced/denied choice, yoked and other controls not interchangeable",
+      "measurement": "Interest/enjoyment, behavioral persistence and willingness must remain separate; no whole-composite causal coefficient",
+      "timing": "Study-specific immediate/subsequent assessments",
+      "result": "Average motivational benefits coexist with heterogeneity and reported no-effect contexts; this review does not warrant universal option-choice efficacy.",
+      "disposition": "MIXED",
+      "limitations": "Broad review is contextual corroboration, not an exact homework replication. Includes the separately extracted Reeve dataset; no double counting or numerical pooling.",
+      "dataset": "DATASET-PATALL-2008-CHOICE-REVIEW"
+    },
+    {
+      "key": "PUZZLE_OPTION_NULL",
+      "sourceId": "SRC-CAND-PSY-LAYER-0030",
+      "locator": "https://selfdeterminationtheory.org/SDT/documents/2003_ReeveNixHamm_JEP.pdf pp.381–382: Study 2 Method and Discussion.",
+      "accessDepth": "SELECTED_FULL_TEXT",
+      "basis": "EXPERIMENTAL",
+      "design": "Randomized option-choice/assignment/control experiment with same-gender yoking",
+      "sample": "198 recruited undergraduates; 12 solvers excluded; 186 analyzed",
+      "population": "Introductory psychology students at northeastern university",
+      "context": "Ten-minute SOMA puzzle, option choice not freedom to switch/quit or homework choice",
+      "exposure": "Select one of six puzzle solutions",
+      "comparator": "Assigned yoked puzzle or single-option control",
+      "measurement": "Intrinsic-motivation index includes self-report and behavioral measurement; NOT identical to pure homework interest/enjoyment",
+      "timing": "Questionnaire after ten-minute task and subsequent free-choice period",
+      "result": "Perceived choice changed, but intrinsic motivation, internal locus and volition did not detectably differ. This constrains transfer beyond the homework scope.",
+      "disposition": "NULL_FINDING",
+      "limitations": "OUTSIDE high-school-homework scope, mixed measurement index, postassignment solver exclusion and selected accessed sections. Nonsignificance is not equivalence. Already included in 2008 review.",
+      "dataset": "DATASET-REEVE-2003-STUDY2"
+    },
+    {
+      "key": "HOMEWORK_OTHER_NULL",
+      "sourceId": "SRC-CAND-PSY-LAYER-0029",
+      "locator": "Same paper p.904 Analysis 1 hypothesis testing.",
+      "accessDepth": "SELECTED_FULL_TEXT",
+      "basis": "EXPERIMENTAL",
+      "design": "Same randomized crossover, other prespecified outcome models",
+      "sample": "Same 207-participant study with outcome-specific missingness; NOT another experiment",
+      "population": "Same high-school sample",
+      "context": "Same homework intervention",
+      "exposure": "Two-option homework choice",
+      "comparator": "Yoked assignment",
+      "measurement": "Effort, value/usefulness and pressure/tension subscales; NOT intrinsic interest target",
+      "timing": "Unit-end questionnaires",
+      "result": "No statistically detected effects on effort, value or pressure/tension. Do not convert the interest finding into all-dimensional motivation improvement.",
+      "disposition": "NULL_FINDING",
+      "limitations": "These are other-outcome findings, not direct PSY-032 nulls. No equivalence margins extracted; same contribution as HOMEWORK_INTEREST.",
+      "dataset": "DATASET-PATALL-2010-HOMEWORK"
+    }
+  ],
+  "assertions": [
+    {
+      "id": "EA-CAND-PSY-LAYER-0007",
+      "type": "EFFECT_ASSERTION",
+      "typeId": "HT-CAND-PSY-LAYER-0006",
+      "target": "PSY-032",
+      "property": "LEVEL",
+      "change": "INCREASE",
+      "status": "REVIEW_READY",
+      "disposition": "MIXED",
+      "strength": "MODERATE",
+      "confidence": "MODERATE",
+      "scope": "Providing two content-aligned, intermediate-difficulty homework options rather than assigning a yoked option can increase unit-end self-reported INTEREST/ENJOYMENT OF THAT HOMEWORK among grades 9–12 students in comparable short, teacher-supervised instructional units. No universal all-task, culture, age, trait or long-term effect.",
+      "risk": "Missing data, lower-achieving-student transfer, crossover expectations, task-equivalence and reporting bias. Not increased skill, need satisfaction, autonomous regulation, effort, value, reduced pressure, learning or behavioral success by implication. Selection of tasks can change experienced content; no fidelity guarantee.",
+      "timing": "Unit-end measure in four-week crossover; onset/persistence outside measured units unknown.",
+      "measurement": "Seven-item IMI interest/enjoyment subscale, 1–7, scoped to the specified homework unit; exclude competence/choice/value/effort/pressure subscales and behavioral task performance from the target measure.",
+      "mechanism": "Choice can align task format with preference and reduce imposed selection, but autonomy/competence are not treated as independently randomized mediators. No causal pathway inferred from Analysis 2.",
+      "rationale": "Within-class randomization and yoking support a scoped total operation effect. Contextual synthesis is heterogeneous; puzzle option-choice null constrains transfer and overlaps the review. Other homework outcomes remain nondetected. No numerical estimate or independent-replication count is inferred.",
+      "sharedContributionId": "CONTRIB-PSY-LAYER-TASK-OPTION-CHOICE-001",
+      "contributionReconciliation": "One operation contribution; no parallel autonomy→interest mediation or competence→interest contribution added. Source review and included puzzle study not independent replication.",
+      "findingKeys": [
+        "HOMEWORK_INTEREST",
+        "CHOICE_REVIEW_SCOPE",
+        "PUZZLE_OPTION_NULL",
+        "HOMEWORK_OTHER_NULL"
+      ]
+    }
+  ]
+}

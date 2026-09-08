@@ -298,6 +298,11 @@ reports duplicate URLs without merging permanent Source IDs, produces
 deterministic UTF-8 JSON, and replaces the existing registry only after a
 successful full validation.
 
+The Ontology Explorer's normalized bibliography projection, conservative
+duplicate audit, derived taxonomy facets, future annotation fields, and
+Driver/RDS separation are documented in
+[`docs/SOURCE_EXPLORER_ARCHITECTURE.md`](./docs/SOURCE_EXPLORER_ARCHITECTURE.md).
+
 ## Build the Cognitive Security Map data locally
 
 The PSYWERX Cognitive Security Practitioner Discourse Map is a standalone map

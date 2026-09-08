@@ -1,0 +1,212 @@
+{
+  "note": "Authored findings before synthesis. Adult exclusion ratings align directly; pooled need-threat, mediation and downstream alcohol results are not exact-target evidence. Every record remains non-governed/NOT_ELIGIBLE.",
+  "findings": [
+    {
+      "key": "CYBERBALL_HOLTE_EXCLUSION",
+      "sourceId": "SRC-CAND-PSY-LAYER-0020",
+      "locator": "Europe PMC PMC8924730: Participants, Cyberball, State Ostracism, Procedure, Results Table 2 and Limitations",
+      "accessDepth": "SELECTED_FULL_TEXT",
+      "basis": "EXPERIMENTAL",
+      "design": "Randomized inclusion/exclusion between-participant online protocol",
+      "population": "US Midwestern university undergraduates, mostly White/female; 2020 online study",
+      "sample": "217 recruited; 193 analyzed (97 exclusion, 96 inclusion); 24 exclusions",
+      "context": "30-throw virtual ball game with ostensible other players",
+      "exposure": "Other players stop passing to participant after initial inclusion",
+      "comparator": "Continued inclusion in the game",
+      "measurement": "Summed two-item ignored/excluded ratings, each 1–5; not actual toss percentage or a neural proxy",
+      "timing": "Immediately after game, retrospective to that game",
+      "result": "Exclusion condition reported higher ignored/excluded ratings than inclusion. FoMO and attachment-anxiety moderation terms were not detected; they were measured, not randomized.",
+      "disposition": "SUPPORTS",
+      "limitations": "Participant exclusions and demand characteristics; no belief-in-human-players check, baseline mood absent, narrow young sample. No independent mediation or general social exclusion trajectory.",
+      "dataset": "HOLTE_2022_FALL2020_CYBERBALL"
+    },
+    {
+      "key": "CYBERBALL_BASSET_ADULT",
+      "sourceId": "SRC-CAND-PSY-LAYER-0021",
+      "locator": "PMC11940692: Participants; Cyberball; Primary needs threat questionnaires, results",
+      "accessDepth": "SELECTED_FULL_TEXT",
+      "basis": "EXPERIMENTAL",
+      "design": "Balanced pseudo-random inclusion/exclusion allocation",
+      "population": "Italian young-adult convenience sample",
+      "sample": "50 adults in reported questionnaire contrast, 25 per condition",
+      "context": "30-throw virtual game, initial inclusion then continued or stopped passes",
+      "exposure": "Stopped passes after initial common sequence",
+      "comparator": "Continued inclusion",
+      "measurement": "Immediate felt-ignored rating, analyzed separately from needs-threat score",
+      "timing": "After game, same session",
+      "result": "Adults reported greater feeling ignored in the ostracism condition. No inference to attention performance or whole need profile is imported.",
+      "disposition": "SUPPORTS",
+      "limitations": "Pseudo-random allocation, exclusions and small sample; questionnaire and video-coding samples differ; no chronic or clinical generalization.",
+      "dataset": "BASSET_2025_ADULT"
+    },
+    {
+      "key": "CYBERBALL_BASSET_CHILD_NULL",
+      "sourceId": "SRC-CAND-PSY-LAYER-0021",
+      "locator": "PMC11940692: Results, Primary needs threat questionnaires; Discussion",
+      "accessDepth": "SELECTED_FULL_TEXT",
+      "basis": "EXPERIMENTAL",
+      "design": "Age-six pseudo-random child protocol; separate younger-age scope",
+      "population": "Italian six-year-old schoolchildren",
+      "sample": "40 children in questionnaire contrast; not the 39-person video-coding sample",
+      "context": "Child-adapted virtual ball game",
+      "exposure": "Stopped passes after initial common sequence",
+      "comparator": "Continued inclusion",
+      "measurement": "Child felt-ignored item; comprehension/measurement comparability uncertain",
+      "timing": "After game",
+      "result": "Age-six felt-ignored difference not statistically detected. Older children and adults differed; the younger-age result limits transport, not a demonstrated zero or within-adult contradiction.",
+      "disposition": "NULL_FINDING",
+      "limitations": "No equivalence margin; child questionnaire understanding may differ. OUTSIDE the proposed young-adult effect scope; not pooled with adults.",
+      "dataset": "BASSET_2025_AGE6"
+    },
+    {
+      "key": "PNF_NEIGHBORS_2004",
+      "sourceId": "SRC-CAND-PSY-LAYER-0019",
+      "locator": "PubMed/Europe PMC abstract, Methods and Results statements",
+      "accessDepth": "ABSTRACT",
+      "basis": "EXPERIMENTAL",
+      "design": "Randomized intervention versus control after baseline assessment",
+      "population": "Heavy-drinking college students",
+      "sample": "252",
+      "context": "Computer-delivered comparative own/perceived/actual peer drinking feedback",
+      "exposure": "Full personalized normative feedback",
+      "comparator": "Control condition; exact content not extracted",
+      "measurement": "Perceived drinking norms; exact frequency/volume item specification not available in accessed abstract",
+      "timing": "3- and 6-month assessments",
+      "result": "Reported perceived-norm changes, but accessed abstract does not resolve exact dimension/direction for the PSY-016 frequency/prevalence construct.",
+      "disposition": "INSUFFICIENT",
+      "limitations": "Exact-target measurement and comparative feedback scope need full extraction. Behavior changes alone do not resolve this gap.",
+      "dataset": "NEIGHBORS_2004_PNF"
+    },
+    {
+      "key": "PNF_NEIGHBORS_2016",
+      "sourceId": "SRC-CAND-PSY-LAYER-0024",
+      "locator": "PubMed/Europe PMC abstract, Methods/Results/Conclusions",
+      "accessDepth": "ABSTRACT",
+      "basis": "EXPERIMENTAL",
+      "design": "Multisite randomized full PNF, partial social-comparison feedback and attention-control",
+      "population": "Heavy-drinking students at three universities",
+      "sample": "623",
+      "context": "College drinking prevention trial",
+      "exposure": "Full own/actual/perceived peer comparison feedback",
+      "comparator": "Partial own/actual comparison or attention-control; not interchangeable",
+      "measurement": "Perceived norms and drinking outcomes; exact norm item dimensions not extracted",
+      "timing": "3- and 6-month follow-up",
+      "result": "Consumption improved at three months in both feedback conditions; reported indirect associations included norms→later drinking and drinking→later norms. These do not independently establish either mediation route or a direct exact norm estimand.",
+      "disposition": "INSUFFICIENT",
+      "limitations": "No transitive causal pathway, universal norm correction or requirement for one feedback component inferred; numerical effects not extracted.",
+      "dataset": "NEIGHBORS_2016_MULTISITE"
+    },
+    {
+      "key": "PNF_MOREIRA_DOWNSTREAM_NULL",
+      "sourceId": "SRC-CAND-PSY-LAYER-0027",
+      "locator": "PMC3440433 Discussion, Interpretation and Overall evidence",
+      "accessDepth": "SELECTED_FULL_TEXT",
+      "basis": "EXPERIMENTAL",
+      "design": "Pragmatic Solomon three-group randomized trial",
+      "population": "UK university students; whole and higher-risk analyses",
+      "sample": null,
+      "context": "Email normative feedback package with average-university referent",
+      "exposure": "Personalized normative feedback package",
+      "comparator": "Control groups under declared Solomon design",
+      "measurement": "Alcohol intake/AUDIT/problems, NOT direct perceived-norm outcome",
+      "timing": "6 and 12 months",
+      "result": "No detected improvement in downstream alcohol outcomes. This is not a null direct effect on PSY-016 and not an equivalence test.",
+      "disposition": "NULL_FINDING",
+      "limitations": "Different package/setting and low follow-up; downstream only. Retained as boundary evidence against automatic benefit or a presumed norm-mediated pathway.",
+      "dataset": "MOREIRA_2012_PNF"
+    }
+  ],
+  "assertions": [
+    {
+      "id": "EA-CAND-PSY-LAYER-0005",
+      "type": "EFFECT_ASSERTION",
+      "typeId": "HT-CAND-PSY-LAYER-0004",
+      "target": "PSY-024",
+      "status": "REVIEW_READY",
+      "change": "INCREASE",
+      "property": "LEVEL",
+      "findingKeys": [
+        "CYBERBALL_HOLTE_EXCLUSION",
+        "CYBERBALL_BASSET_ADULT",
+        "CYBERBALL_BASSET_CHILD_NULL"
+      ],
+      "disposition": "SUPPORTS",
+      "strength": "MODERATE",
+      "confidence": "MODERATE",
+      "scope": "In the accessed young-adult virtual ball-game protocols, stopping passes after initial inclusion can increase immediate feelings of being ignored/excluded compared with continued inclusion. The claim is about perceived exclusion DURING THAT GAME, not chronic rejection, actual friendship loss, physiological stress or future behavior. Age-six non-detection is explicitly outside this proposed adult scope.",
+      "timing": "Immediate post-game retrospective rating; no persistence estimate",
+      "measurement": "Specified ignored/excluded self-report item(s), not toss-count accuracy, omnibus need threat or a neural measure.",
+      "mechanism": "A configured interruption of expected participation provides cues interpreted as being ignored/excluded. Perception is measured as outcome, not treated as an independently randomized mediator.",
+      "rationale": "Two independent publications provide aligned young-adult contrasts; one uses pseudo-random allocation and the other a narrow randomized student sample. The age-six null remains a transport limitation. No pooled effect size or universal effect is inferred.",
+      "sharedContributionId": "CONTRIB-PSY-LAYER-CYBERBALL-001",
+      "contributionReconciliation": "Alternative action-level description of the bounded exposure route underlying existing REL-SOC-062; no duplicate new Relationship or independent summation through an inferred belonging/stress pathway.",
+      "risk": "Exclusion can cause distress. Research identity grants no permission to exclude, deceive or manipulate people; informed consent, debriefing, ethics, safety, legal authority and applicability must be independently evaluated."
+    },
+    {
+      "id": "EA-CAND-PSY-LAYER-0006",
+      "type": "EFFECT_ASSERTION",
+      "typeId": "HT-CAND-PSY-LAYER-0005",
+      "target": "PSY-016",
+      "status": "RESEARCH_NEEDED",
+      "change": "UNKNOWN",
+      "property": "LEVEL",
+      "knowledgeStatus": "INSUFFICIENT_EVIDENCE",
+      "incompleteFields": [
+        "direction",
+        "measurement"
+      ],
+      "findingKeys": [
+        "PNF_NEIGHBORS_2004",
+        "PNF_NEIGHBORS_2016",
+        "PNF_MOREIRA_DOWNSTREAM_NULL"
+      ],
+      "disposition": "INSUFFICIENT",
+      "strength": "LIMITED",
+      "confidence": "LOW",
+      "scope": "Research question: comparative feedback about own, perceived-peer and measured-peer drinking changes the exact PSY-016 prevalence/frequency judgment. Accessed abstracts support a norm-measure research direction but do not resolve volume-versus-frequency dimension, comparator detail or exact direction. Do not claim universal reduction or calibrated correctness.",
+      "timing": "Study-specific 3/6-month norm assessments; downstream 6/12-month findings are separate",
+      "measurement": "Exact reference-group, behavior frequency/prevalence and denominator item extraction REQUIRED; drink volume is not silently equated to frequency.",
+      "mechanism": "Comparative information may update peer estimates or social comparison. Those routes are not separated by a regression-mediated result.",
+      "rationale": "Preserve reported norm changes and alternative comparison mechanisms while withholding exact-effect readiness. UK downstream nondetection does not become direct norm null.",
+      "sharedContributionId": "CONTRIB-PSY-LAYER-PNF-001",
+      "risk": "No advice to disclose private drinking data, no universal truth/accuracy claim for survey norms and no automatic reduction in harm. Reference group, consent, privacy, stigma, feasibility and ethics unresolved."
+    }
+  ],
+  "happeningTypes": [
+    {
+      "id": "HT-CAND-PSY-LAYER-0004",
+      "name": "Withhold subsequent virtual ball passes after initial participation in a bounded inclusion task",
+      "identityKey": "virtual-ball-task-initial-inclusion-then-withheld-passes",
+      "description": "Configure computer-controlled co-players to stop passing to the participant after a declared initial inclusion sequence. This operation identity is not ostracism efficacy, a social-tie edit, a PSYWERX Relationship edit or practitioner permission.",
+      "sources": [
+        "SRC-CAND-PSY-LAYER-0020",
+        "SRC-CAND-PSY-LAYER-0021",
+        "SRC221"
+      ],
+      "origins": [
+        "TEC",
+        "SOC"
+      ],
+      "domain": "DELIBERATE_INTERVENTION",
+      "actor": "ROLE-CONSENTED-RESEARCH-TASK-OPERATOR",
+      "constraints": "Potential distress/deception; consent, debriefing, safety and independent ethical/legal authority required. Distinct from real-group dissolution or existing SOC-F07 network assignment identities."
+    },
+    {
+      "id": "HT-CAND-PSY-LAYER-0005",
+      "name": "Display a comparative own, perceived-peer and measured-peer behavior feedback panel",
+      "identityKey": "comparative-own-perceived-peer-measured-peer-feedback",
+      "description": "Present a specified individual's report alongside their estimate of a declared reference group and an appropriately sourced estimate for that group. One comparative display operation; not a package of independent treatments. No accuracy, efficacy, behavior benefit or calibration promise.",
+      "sources": [
+        "SRC-CAND-PSY-LAYER-0019",
+        "SRC-CAND-PSY-LAYER-0024"
+      ],
+      "origins": [
+        "INF",
+        "TEC"
+      ],
+      "domain": "DELIBERATE_INTERVENTION",
+      "actor": "ROLE-CONSENTED-FEEDBACK-PROVIDER",
+      "constraints": "Actual reference-group data and provenance, privacy, consent, valid denominators, accessibility and risk assessment required; no fabricated norms. Different from claim repetition, refutation and network-referent message seeding."
+    }
+  ]
+}

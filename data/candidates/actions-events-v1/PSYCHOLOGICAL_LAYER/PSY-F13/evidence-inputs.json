@@ -1,0 +1,347 @@
+{
+  "familyId": "PSY-F13",
+  "happeningTypes": [
+    {
+      "id": "HT-CAND-PSY-LAYER-0025",
+      "name": "Provide feedback on declared judgment accuracy in a specified task",
+      "identityKey": "provide-judgment-calibration-feedback",
+      "description": "Ask for judgment confidence/prediction and provide declared accuracy/calibration feedback in a specified task. Not generic praise, false confirming feedback or automatic skill/behavior benefit.",
+      "sources": [
+        "SRC-CAND-PSY-LAYER-0158",
+        "SRC-CAND-PSY-LAYER-0159"
+      ],
+      "domain": "DELIBERATE_INTERVENTION",
+      "origins": [
+        "PSY",
+        "INF",
+        "TEC"
+      ],
+      "actor": "Specified researcher/communicator",
+      "constraints": "Truthful declared feedback/material, consent/debriefing, privacy, contextual feasibility/legal/ethical assessment required. No practitioner recommendation or model eligibility."
+    },
+    {
+      "id": "HT-CAND-PSY-LAYER-0026",
+      "name": "Forewarn of an upcoming persuasive appeal",
+      "identityKey": "forewarn-upcoming-persuasive-appeal",
+      "description": "Disclose that a specified upcoming message attempts persuasion, with declared topic/timing. Not a refutation/inoculation package or automatic resistance.",
+      "sources": [
+        "SRC-CAND-PSY-LAYER-0162"
+      ],
+      "domain": "DELIBERATE_INTERVENTION",
+      "origins": [
+        "INF",
+        "PSY"
+      ],
+      "actor": "Specified researcher/communicator",
+      "constraints": "Truthful declared feedback/material, consent/debriefing, privacy, contextual feasibility/legal/ethical assessment required. No practitioner recommendation or model eligibility."
+    },
+    {
+      "id": "HT-CAND-PSY-LAYER-0027",
+      "name": "Supply previously omitted opposing decision arguments",
+      "identityKey": "supply-previously-omitted-opposing-decision-arguments",
+      "description": "Provide the previously unavailable countervailing arguments for a specified decision after initial information. Not falsehood correction, invented completeness or guaranteed sufficient understanding.",
+      "sources": [
+        "SRC-CAND-PSY-LAYER-0157"
+      ],
+      "domain": "DELIBERATE_INTERVENTION",
+      "origins": [
+        "INF",
+        "PSY"
+      ],
+      "actor": "Specified researcher/communicator",
+      "constraints": "Truthful declared feedback/material, consent/debriefing, privacy, contextual feasibility/legal/ethical assessment required. No practitioner recommendation or model eligibility."
+    }
+  ],
+  "assertions": [
+    {
+      "type": "EFFECT_ASSERTION",
+      "id": "EA-CAND-PSY-LAYER-0026",
+      "typeId": "HT-CAND-PSY-LAYER-0025",
+      "target": "PSY-116",
+      "property": "LEVEL",
+      "change": "UNKNOWN",
+      "knowledgeStatus": "INSUFFICIENT_EVIDENCE",
+      "status": "RESEARCH_NEEDED",
+      "disposition": "INSUFFICIENT",
+      "strength": "LIMITED",
+      "confidence": "LOW",
+      "scope": "Specified perceptual/memory tasks with declared calibration feedback; distinguish eight-session and single-session schedules and initial bias.",
+      "measurement": "Confidence level for a judgment, not Brier accuracy/sensitivity or reminder optimization.",
+      "timing": "Protocol-specific timing; no universal persistence or transfer.",
+      "mechanism": "Information/feedback may alter appraisal or strategy; exact canonical construct response requires independent measurement.",
+      "risk": "Proxy/profile/time-scale and heterogeneous operation constraints; no truth/calibration/behavior benefit inferred, no practitioner/model eligibility.",
+      "rationale": "Preserve positive/mixed/null findings at their actual contrasts. Exact construct, comparison and generalization are insufficient for a single signed effect.",
+      "findingKeys": [
+        "CALIBRATION_TRAIN",
+        "REMINDER_CALIBRATION",
+        "BIO_MEAN_NULL"
+      ],
+      "sharedContributionId": "CONTRIB-PSY-LAYER-0026",
+      "incompleteFields": [
+        "direction",
+        "measurement",
+        "context"
+      ]
+    },
+    {
+      "type": "EFFECT_ASSERTION",
+      "id": "EA-CAND-PSY-LAYER-0027",
+      "typeId": "HT-CAND-PSY-LAYER-0026",
+      "target": "PSY-117",
+      "property": "LEVEL",
+      "change": "UNKNOWN",
+      "knowledgeStatus": "INSUFFICIENT_EVIDENCE",
+      "status": "RESEARCH_NEEDED",
+      "disposition": "INSUFFICIENT",
+      "strength": "LIMITED",
+      "confidence": "LOW",
+      "scope": "Specified upcoming-appeal warning; topic involvement, prior attitude, delay and actual delivery explicit.",
+      "measurement": "Direct motivation measure required; resistance outcomes and thought-label manipulation are not identical.",
+      "timing": "Protocol-specific timing; no universal persistence or transfer.",
+      "mechanism": "Information/feedback may alter appraisal or strategy; exact canonical construct response requires independent measurement.",
+      "risk": "Proxy/profile/time-scale and heterogeneous operation constraints; no truth/calibration/behavior benefit inferred, no practitioner/model eligibility.",
+      "rationale": "Preserve positive/mixed/null findings at their actual contrasts. Exact construct, comparison and generalization are insufficient for a single signed effect.",
+      "findingKeys": [
+        "WARNING_MIXED",
+        "INOCULATION_SCOPE",
+        "THOUGHT_LABEL"
+      ],
+      "sharedContributionId": "CONTRIB-PSY-LAYER-0027",
+      "incompleteFields": [
+        "direction",
+        "measurement",
+        "context"
+      ]
+    },
+    {
+      "type": "EFFECT_ASSERTION",
+      "id": "EA-CAND-PSY-LAYER-0028",
+      "typeId": "HT-CAND-PSY-LAYER-0027",
+      "target": "PSY-119",
+      "property": "LEVEL",
+      "change": "UNKNOWN",
+      "knowledgeStatus": "INSUFFICIENT_EVIDENCE",
+      "status": "RESEARCH_NEEDED",
+      "disposition": "INSUFFICIENT",
+      "strength": "LIMITED",
+      "confidence": "LOW",
+      "scope": "Countervailing information supplied after a one-sided hypothetical decision article; reference content and knowledge/detection explicit.",
+      "measurement": "Pure perceived adequacy versus multi-attribute composite/confidence/decision readiness unresolved.",
+      "timing": "Protocol-specific timing; no universal persistence or transfer.",
+      "mechanism": "Information/feedback may alter appraisal or strategy; exact canonical construct response requires independent measurement.",
+      "risk": "Proxy/profile/time-scale and heterogeneous operation constraints; no truth/calibration/behavior benefit inferred, no practitioner/model eligibility.",
+      "rationale": "Preserve positive/mixed/null findings at their actual contrasts. Exact construct, comparison and generalization are insufficient for a single signed effect.",
+      "findingKeys": [
+        "ADEQUACY_NULL",
+        "ADDITIONAL_ARGUMENTS",
+        "RISP_PREDICTION"
+      ],
+      "sharedContributionId": "CONTRIB-PSY-LAYER-0028",
+      "incompleteFields": [
+        "direction",
+        "measurement",
+        "context"
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "key": "CALIBRATION_TRAIN",
+      "sourceId": "SRC-CAND-PSY-LAYER-0158",
+      "basis": "EXPERIMENTAL",
+      "accessDepth": "SELECTED_FULL_TEXT",
+      "design": "Randomized feedback×stimulus training",
+      "sample": "29 experimental,32 active control",
+      "population": "Perceptual discrimination/recognition-memory participants",
+      "context": "Perceptual discrimination/recognition-memory participants",
+      "exposure": "Judgment-calibration feedback",
+      "comparator": "Decision-performance feedback",
+      "measurement": "1–4 confidence, Brier calibration and modeled metacognitive efficiency",
+      "timing": "Eight270trial sessions over8–34days",
+      "result": "Calibration improved with confidence-level and efficiency changes; transfer to tested untrained stimuli/task, not all cognition.",
+      "disposition": "SUPPORTS",
+      "locator": "Methods/results; https://pubmed.ncbi.nlm.nih.gov/30596440/",
+      "limitations": "Mean confidence, calibration and modeled efficiency distinct. No causal mediation from early/late associations or universal lasting improvement.",
+      "dataset": "DATA-CARPENTER-2019",
+      "supportedSemantics": [
+        "CAUSAL"
+      ]
+    },
+    {
+      "key": "REMINDER_CALIBRATION",
+      "sourceId": "SRC-CAND-PSY-LAYER-0159",
+      "basis": "EXPERIMENTAL",
+      "accessDepth": "SELECTED_FULL_TEXT",
+      "design": "Preregistered task-feedback experiment",
+      "sample": "133 tested;116 after exclusions",
+      "population": "US MTurk; remembered target-circle task",
+      "context": "US MTurk; remembered target-circle task",
+      "exposure": "Predictions plus accuracy feedback",
+      "comparator": "No additional metacognitive feedback",
+      "measurement": "Predicted accuracy versus actual performance; reminder choices",
+      "timing": "Median31minute session",
+      "result": "Feedback improved judgment accuracy from underconfidence, but no predicted reduction in reminder bias; confidence change direction depends on initial bias.",
+      "disposition": "MIXED",
+      "locator": "Methods/results; https://pubmed.ncbi.nlm.nih.gov/33095817/",
+      "limitations": "OUTSIDE exact eight-session schedule; same identity with scoped delivery differences. Sample demographic counts in text do not sum to116; no repaired estimate. Behavior nondetection not null confidence effect.",
+      "dataset": "DATA-ENGELER-2020",
+      "supportedSemantics": [
+        "CAUSAL"
+      ]
+    },
+    {
+      "key": "BIO_MEAN_NULL",
+      "sourceId": "SRC-CAND-PSY-LAYER-0164",
+      "basis": "EXPERIMENTAL",
+      "accessDepth": "SELECTED_FULL_TEXT",
+      "design": "Double-blind placebo-controlled pharmacologic task experiment",
+      "sample": "Not extracted for this finding",
+      "population": "Healthy motion-discrimination participants",
+      "context": "Healthy motion-discrimination participants",
+      "exposure": "Noradrenergic/dopaminergic antagonism",
+      "comparator": "Placebo",
+      "measurement": "Type-II sensitivity versus median confidence and first-order accuracy",
+      "timing": "Post-administration task",
+      "result": "Noradrenergic blockade improved metacognitive sensitivity while median confidence and first-order performance showed no detected difference; dopamine blockade nondetection retained.",
+      "disposition": "NULL_FINDING",
+      "locator": "Methods/results; https://pubmed.ncbi.nlm.nih.gov/28489001/",
+      "limitations": "OUTSIDE feedback identity; demonstrates measurement distinction, not feedback-null evidence or clinical recommendation. No supported-zero equivalence.",
+      "dataset": "DATA-HAUSER-2017",
+      "supportedSemantics": [
+        "CAUSAL"
+      ]
+    },
+    {
+      "key": "WARNING_MIXED",
+      "sourceId": "SRC-CAND-PSY-LAYER-0162",
+      "basis": "EVIDENCE_SYNTHESIS",
+      "accessDepth": "ABSTRACT",
+      "design": "Two meta-analytic syntheses",
+      "sample": "Study count not extracted",
+      "population": "Forewarning/persuasion-study samples",
+      "context": "Forewarning/persuasion-study samples",
+      "exposure": "Upcoming influence-appeal warning",
+      "comparator": "No warning",
+      "measurement": "Attitudes before/after appeal, defensive response",
+      "timing": "Before versus after actual appeal",
+      "result": "Involving/immediate topics favored defensive resistance; less-involving anticipated appeals could elicit preemptive agreement.",
+      "disposition": "MIXED",
+      "locator": "Abstract; https://doi.org/10.1037/0033-2909.129.1.119",
+      "limitations": "Attitude outcome not independent motivation measure; coded involvement/context not exact causal moderator. No uniform warning benefit.",
+      "dataset": "REVIEW-WOOD-QUINN-2003",
+      "supportedSemantics": [
+        "CAUSAL"
+      ]
+    },
+    {
+      "key": "INOCULATION_SCOPE",
+      "sourceId": "SRC-CAND-PSY-LAYER-0163",
+      "basis": "EVIDENCE_SYNTHESIS",
+      "accessDepth": "ABSTRACT",
+      "design": "Meta-analysis",
+      "sample": "54 cases",
+      "population": "Inoculation-study samples",
+      "context": "Inoculation-study samples",
+      "exposure": "Refutational inoculation messages",
+      "comparator": "Supportive/no-treatment controls",
+      "measurement": "Resistance as reduced attitude change",
+      "timing": "Immediate/moderate delay; later than two weeks",
+      "result": "Packages generally reduced attitude change; no detected increase in resistance as a function of threat/involvement; later decay reported.",
+      "disposition": "MIXED",
+      "locator": "Abstract; https://doi.org/10.1080/03637751003758193",
+      "limitations": "OUTSIDE forewarning-only identity. Package/component inference prohibited; reduced attitude change not motivation or causal mediation.",
+      "dataset": "REVIEW-BANAS-RAINS-2010",
+      "supportedSemantics": [
+        "CAUSAL"
+      ]
+    },
+    {
+      "key": "THOUGHT_LABEL",
+      "sourceId": "SRC-CAND-PSY-LAYER-0167",
+      "basis": "EXPERIMENTAL",
+      "accessDepth": "SELECTED_FULL_TEXT",
+      "design": "Two thought-label×argument-quality experiments",
+      "sample": "241 and287",
+      "population": "Counterattitudinal-topic participants",
+      "context": "Counterattitudinal-topic participants",
+      "exposure": "Bogus bolster/counterargue feedback after thought generation",
+      "comparator": "Other thought label; weak/strong arguments",
+      "measurement": "Attitude certainty and intentions",
+      "timing": "After thought listing and label",
+      "result": "Perceived counterargument labels yielded certainty more sensitive to attacking argument quality; actual generated thought count was not the manipulated exposure.",
+      "disposition": "SUPPORTS",
+      "locator": "Methods/results; https://pubmed.ncbi.nlm.nih.gov/37599755/",
+      "limitations": "OUTSIDE warning identity and direct resistance-motivation measure. No practitioner deception permission or causal mediation from modeled intentions.",
+      "dataset": "DATA-BLANKENSHIP-2023",
+      "supportedSemantics": [
+        "CAUSAL"
+      ]
+    },
+    {
+      "key": "ADEQUACY_NULL",
+      "sourceId": "SRC-CAND-PSY-LAYER-0157",
+      "basis": "EXPERIMENTAL",
+      "accessDepth": "SELECTED_FULL_TEXT",
+      "design": "Preregistered partial/full-information experiment",
+      "sample": "1261 after240 pre-entry attention exclusions; group252/503/506",
+      "population": "US Prolific convenience sample; hypothetical school water/merge decision",
+      "context": "US Prolific convenience sample; hypothetical school water/merge decision",
+      "exposure": "One-sided subset of decision information",
+      "comparator": "Full seven-feature article",
+      "measurement": "Five-item adequacy composite includes quantity, relevance, believability, importance and trust",
+      "timing": "Initial article and recommendation",
+      "result": "Partial-information participants reported comparable composite adequacy; authors report equivalence testing, but exact approved equivalence margin/measurement scope not reconciled here.",
+      "disposition": "NULL_FINDING",
+      "locator": "Methods/results; https://doi.org/10.1371/journal.pone.0310216",
+      "limitations": "Different initial-information contrast, not direct effect of supplemental article. Composite not pure PSY119. No SUPPORTED_NULL or zero encoded; source typographical statistical anomalies not corrected.",
+      "dataset": "DATA-GEHLBACH-2024",
+      "supportedSemantics": [
+        "CAUSAL"
+      ]
+    },
+    {
+      "key": "ADDITIONAL_ARGUMENTS",
+      "sourceId": "SRC-CAND-PSY-LAYER-0157",
+      "basis": "EXPERIMENTAL",
+      "accessDepth": "SELECTED_FULL_TEXT",
+      "design": "Randomized routing to supplemental information after initial subset",
+      "sample": "Two subset groups split between survey and second article",
+      "population": "Same school-decision sample",
+      "context": "Same school-decision sample",
+      "exposure": "Remaining countervailing arguments",
+      "comparator": "Initial subset or full-information control",
+      "measurement": "Decision/confidence; key-detail adequacy/questions",
+      "timing": "Second article after initial recommendation",
+      "result": "Recommendations moved toward full-information comparison and confidence decreased within supplemental groups; adequacy-like exploratory ratings not uniform increased sufficiency.",
+      "disposition": "MIXED",
+      "locator": "Methods/results; https://doi.org/10.1371/journal.pone.0310216",
+      "limitations": "Different measurement/time contrasts within same dataset; repeated before/after confidence not an independently isolated PSY119 effect; no claim all people revise beliefs.",
+      "dataset": "DATA-GEHLBACH-2024",
+      "supportedSemantics": [
+        "CAUSAL"
+      ]
+    },
+    {
+      "key": "RISP_PREDICTION",
+      "sourceId": "SRC-CAND-PSY-LAYER-0169",
+      "basis": "EVIDENCE_SYNTHESIS",
+      "accessDepth": "ABSTRACT",
+      "design": "Meta-analysis of predictive RISP models",
+      "sample": "Not extracted",
+      "population": "Risk-information study samples",
+      "context": "Risk-information study samples",
+      "exposure": "Measured knowledge/norm/sufficiency predictors",
+      "comparator": "Model comparisons",
+      "measurement": "Seeking/systematic/heuristic processing",
+      "timing": "Study-specific, often observational",
+      "result": "RISP predicts seeking/systematic processing but weaker heuristic explanation; reduced knowledge/norm model explains substantial variance.",
+      "disposition": "INSUFFICIENT",
+      "locator": "Abstract; https://doi.org/10.1111/jcom.12071",
+      "limitations": "OUTSIDE exact supplemental-argument effect; prediction/SEM not causal sufficiency mechanism or mediation.",
+      "dataset": "REVIEW-YANG-2014",
+      "supportedSemantics": [
+        "ASSOCIATION"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,242 @@
+{
+  "familyId": "PSY-F09",
+  "happeningTypes": [
+    {
+      "id": "HT-CAND-PSY-LAYER-0015",
+      "name": "Prompt scheduled checking and recording of specified goal progress",
+      "identityKey": "scheduled-goal-progress-check-record-prompt",
+      "description": "Ask a person to attend to and record progress against an explicitly specified goal on declared occasions. Identity specifies a prompt, not compliance, efficacy, permission, gap reduction or recommendation.",
+      "domain": "DELIBERATE_INTERVENTION",
+      "origins": [
+        "PSY",
+        "INF",
+        "TEC"
+      ],
+      "actor": "Specified participant/research facilitator",
+      "sources": [
+        "SRC139"
+      ],
+      "constraints": "Consent, burden, data minimization and actor/context assessment required; recording can become intrusive or counterproductive. No clinical/practitioner permission."
+    },
+    {
+      "id": "HT-CAND-PSY-LAYER-0016",
+      "name": "Practice a specified go/no-go response-withholding task",
+      "identityKey": "specified-go-nogo-response-withholding-practice",
+      "description": "Repeatedly present specified go and no-go cues with task instructions to respond or withhold respectively. Stimuli, proportion, timing and adaptivity belong to the protocol. Identity promises no general inhibition, behavioral benefit, efficacy or practitioner permission.",
+      "domain": "DELIBERATE_INTERVENTION",
+      "origins": [
+        "PSY",
+        "TEC"
+      ],
+      "actor": "Specified researcher/task participant",
+      "sources": [
+        "SRC186",
+        "SRC-CAND-PSY-LAYER-0104",
+        "SRC-CAND-PSY-LAYER-0106"
+      ],
+      "constraints": "Consent, accessibility, fatigue/task burden, cue selection and transfer assessment; not a treatment recommendation or permission to manipulate behavior."
+    }
+  ],
+  "assertions": [
+    {
+      "type": "EFFECT_ASSERTION",
+      "id": "EA-CAND-PSY-LAYER-0016",
+      "typeId": "HT-CAND-PSY-LAYER-0015",
+      "target": "PSY-077",
+      "property": "LEVEL",
+      "change": "UNKNOWN",
+      "knowledgeStatus": "INSUFFICIENT_EVIDENCE",
+      "status": "RESEARCH_NEEDED",
+      "disposition": "INSUFFICIENT",
+      "strength": "LIMITED",
+      "confidence": "LOW",
+      "scope": "Specified goal-progress prompts versus specified comparator, with actual attended checking/recording measured. Current evidence pools heterogeneous intervention protocols; exact prompt implementation and attention-versus-frequency contrast require extraction.",
+      "measurement": "Actual frequency plus attended comparison, not sensor capture, dashboard visibility or goal attainment.",
+      "timing": "Observation during declared monitoring period; lag/persistence not yet identified for a specific prompt.",
+      "mechanism": "Prompting may increase opportunities for attended comparison; operation and realized process remain distinct.",
+      "risk": "Privacy/burden/reactivity; no universal decrease in signed PSY-078 or automatic goal success. RDS recomputes from declared external inputs only.",
+      "rationale": "Harkin randomized synthesis supports increased monitoring frequency, but does not isolate this exact prompt/check operation or entire frequency-plus-attention construct. Retain RN rather than importing downstream mediation.",
+      "findingKeys": [
+        "MONITOR_FREQUENCY",
+        "MONITOR_ATTAINMENT"
+      ],
+      "sharedContributionId": "CONTRIB-PSY-LAYER-0016",
+      "incompleteFields": [
+        "direction",
+        "mechanism",
+        "context",
+        "measurement",
+        "timing"
+      ]
+    },
+    {
+      "type": "EFFECT_ASSERTION",
+      "id": "EA-CAND-PSY-LAYER-0017",
+      "typeId": "HT-CAND-PSY-LAYER-0016",
+      "target": "PSY-081",
+      "property": "LEVEL",
+      "change": "UNKNOWN",
+      "knowledgeStatus": "INSUFFICIENT_EVIDENCE",
+      "status": "RESEARCH_NEEDED",
+      "disposition": "INSUFFICIENT",
+      "strength": "LIMITED",
+      "confidence": "LOW",
+      "scope": "Repeated specified GNG practice in healthy adults; exact protocol, independent inhibitory-control measurement and active comparator required. No whole-capacity or durable transfer assertion from heterogeneous task scores.",
+      "measurement": "Withholding accuracy with speed/accuracy/strategy controls; go RT, Stroop, working memory and food intake are not equivalent indicators.",
+      "timing": "Training over days/weeks; immediate and later tests separated; no assumed durable benefit.",
+      "mechanism": "Task practice can alter cue-response behavior without improving general response inhibition.",
+      "risk": "Task transfer, comparator choice, stimulus-specific learning and fatigue. No inferred self-control resource, trait change or clinical efficacy.",
+      "rationale": "Positive pooled cognitive-task outcomes coexist with active-control null and longer-term nondetection. Mixed estimands and proxy mismatch leave exact Driver effect insufficient; no universal null.",
+      "findingKeys": [
+        "INHIBITION_REVIEW_IMMEDIATE",
+        "INHIBITION_REVIEW_LONG",
+        "INHIBITION_ACTIVE_CONTROL",
+        "INHIBITION_HEALTH_OUTCOME",
+        "CONTROL_TRAINING_REVIEW"
+      ],
+      "sharedContributionId": "CONTRIB-PSY-LAYER-0017",
+      "incompleteFields": [
+        "direction",
+        "mechanism",
+        "context",
+        "measurement",
+        "timing"
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "key": "MONITOR_FREQUENCY",
+      "sourceId": "SRC139",
+      "accessDepth": "ABSTRACT",
+      "basis": "EVIDENCE_SYNTHESIS",
+      "design": "Systematic/meta-analytic synthesis of controlled studies",
+      "sample": "138 randomized studies,19951 participants",
+      "population": "Sample contexts heterogeneous; exact target prompt not isolated",
+      "context": "Sample contexts heterogeneous; exact target prompt not isolated",
+      "exposure": "Interventions designed to increase progress monitoring",
+      "comparator": "Study-specific control",
+      "measurement": "Frequency of progress monitoring",
+      "timing": "During intervention; source-specific windows",
+      "result": "Monitoring frequency increased on average across randomized protocols.",
+      "disposition": "SUPPORTS",
+      "locator": "Review abstract Results; https://pubmed.ncbi.nlm.nih.gov/26479070/",
+      "limitations": "Protocol heterogeneity and attention/recording distinction; result supports broader studied intervention class, not exact dose or universal individual effect.",
+      "dataset": "DATA-HARKIN-2016-138"
+    },
+    {
+      "key": "MONITOR_ATTAINMENT",
+      "sourceId": "SRC139",
+      "accessDepth": "ABSTRACT",
+      "basis": "EVIDENCE_SYNTHESIS",
+      "design": "Systematic/meta-analytic synthesis of controlled studies",
+      "sample": "Same138studies19951",
+      "population": "Same participants; downstream outcome",
+      "context": "Same participants; downstream outcome",
+      "exposure": "Same monitoring interventions",
+      "comparator": "Same study controls",
+      "measurement": "Goal attainment; mediation/moderator synthesis",
+      "timing": "Subsequent attainment, heterogeneous intervals",
+      "result": "Average attainment benefit; monitoring-frequency mediation and public/physical-recording moderators reported.",
+      "disposition": "MIXED",
+      "locator": "Review abstract Results/Conclusion; https://pubmed.ncbi.nlm.nih.gov/26479070/",
+      "limitations": "OUTSIDE direct PSY-077 target: attainment is downstream; no causal pathway from meta-mediation or signed PSY-078 decrease. Same source/sample contribution.",
+      "dataset": "DATA-HARKIN-2016-138"
+    },
+    {
+      "key": "INHIBITION_REVIEW_IMMEDIATE",
+      "sourceId": "SRC-CAND-PSY-LAYER-0106",
+      "accessDepth": "SELECTED_FULL_TEXT",
+      "basis": "EVIDENCE_SYNTHESIS",
+      "design": "Systematic/meta-analytic synthesis of controlled studies",
+      "sample": "10 trials490 healthy participants",
+      "population": "Healthy adults; review language patients not clinical sample",
+      "context": "Healthy adults; review language patients not clinical sample",
+      "exposure": "GNG/SST/combined training",
+      "comparator": "Placebo/active or blank controls vary",
+      "measurement": "Mixed go RT, GNG RT/IES, Stroop interference, working memory",
+      "timing": "Immediate post-training",
+      "result": "Pooled cognitive scores favorable, highly heterogeneous; SST-alone contrast not significant. Review Table1 selects Enge passive-control contrast.",
+      "disposition": "MIXED",
+      "locator": "Methods Statistical Analysis; Table1 and Results; https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9197126/fullTextXML",
+      "limitations": "Go-speed/composite cognitive outcomes not independent latent response inhibition. Comparator selection matters; Enge is included, not new replication; SST/combined are OUTSIDE exact standalone GNG identity.",
+      "dataset": "DATA-INHIBITION-REVIEW-2022"
+    },
+    {
+      "key": "INHIBITION_REVIEW_LONG",
+      "sourceId": "SRC-CAND-PSY-LAYER-0106",
+      "accessDepth": "SELECTED_FULL_TEXT",
+      "basis": "EVIDENCE_SYNTHESIS",
+      "design": "Systematic/meta-analytic synthesis of controlled studies",
+      "sample": "Subset of same trials; followup-specific N not extracted",
+      "population": "Healthy adults, heterogeneous followup",
+      "context": "Healthy adults, heterogeneous followup",
+      "exposure": "GNG/SST/combined practice",
+      "comparator": "Study-specific controls",
+      "measurement": "Same heterogeneous cognitive outcomes",
+      "timing": "Longer-term followup windows differ",
+      "result": "Overall longer-term pooled difference not significant; GNG/SST-alone nondetection; combined subgroup favorable.",
+      "disposition": "NULL_FINDING",
+      "locator": "Abstract and Results long-term subgroup analysis; https://pubmed.ncbi.nlm.nih.gov/35712455/",
+      "limitations": "Nondetection not equivalence; combined subgroup differs from overall/standalone GNG and cannot be silently omitted. Unknown current capacity not zero.",
+      "dataset": "DATA-INHIBITION-REVIEW-2022"
+    },
+    {
+      "key": "INHIBITION_ACTIVE_CONTROL",
+      "sourceId": "SRC-CAND-PSY-LAYER-0104",
+      "accessDepth": "ABSTRACT",
+      "basis": "EXPERIMENTAL",
+      "design": "Randomized controlled laboratory experiment",
+      "sample": "122 healthy adults",
+      "population": "Randomized double-blind pretest/posttest/followup",
+      "context": "Randomized double-blind pretest/posttest/followup",
+      "exposure": "Adaptive GNG plus SST training over3weeks",
+      "comparator": "Nonadaptive active training; separate passive control",
+      "measurement": "Task performance/latency; untrained Stroop/fluid intelligence",
+      "timing": "Posttest and4month followup",
+      "result": "No adaptive advantage over active control; passive-control latency advantage does not identify inhibition function gain.",
+      "disposition": "NULL_FINDING",
+      "locator": "Primary abstract Results; https://pubmed.ncbi.nlm.nih.gov/24707778/",
+      "limitations": "OUTSIDE exact standalone GNG operation: combined protocol. Critical comparator counterevidence, not proof all GNG ineffective; review reuses passive comparison; no independent replication.",
+      "dataset": "DATA-ENGE-2014"
+    },
+    {
+      "key": "INHIBITION_HEALTH_OUTCOME",
+      "sourceId": "SRC186",
+      "accessDepth": "ABSTRACT",
+      "basis": "EVIDENCE_SYNTHESIS",
+      "design": "Systematic/meta-analytic synthesis of controlled studies",
+      "sample": "19studies; participant total not extracted",
+      "population": "Health-behavior studies; exact protocol/context varies",
+      "context": "Health-behavior studies; exact protocol/context varies",
+      "exposure": "Modified inhibitory-control training",
+      "comparator": "Study-specific controls",
+      "measurement": "Harmful behavior/consumption, not latent capacity",
+      "timing": "Often immediate; longevity uncertain",
+      "result": "Small average health-behavior difference, task and measurement moderation; immediate GNG outcomes stronger.",
+      "disposition": "MIXED",
+      "locator": "Abstract Results/Conclusions; https://pubmed.ncbi.nlm.nih.gov/26058688/",
+      "limitations": "OUTSIDE direct PSY-081: changed intake can reflect cue-specific devaluation or associations; review-primary overlap not replication. No practitioner inference.",
+      "dataset": "DATA-ALLOM-2016"
+    },
+    {
+      "key": "CONTROL_TRAINING_REVIEW",
+      "sourceId": "SRC-CAND-PSY-LAYER-0095",
+      "accessDepth": "ABSTRACT",
+      "basis": "EVIDENCE_SYNTHESIS",
+      "design": "Systematic/meta-analytic synthesis of controlled studies",
+      "sample": "33studies158effects",
+      "population": "Self-control training with different tasks/samples",
+      "context": "Self-control training with different tasks/samples",
+      "exposure": "Repeated dominant-response override interventions",
+      "comparator": "Active/inactive control varies",
+      "measurement": "Self-control performance/stamina/strength operationalizations",
+      "timing": "Training periods vary",
+      "result": "Small average training benefit attenuated by bias correction; weaker against active controls; active mechanism unresolved.",
+      "disposition": "MIXED",
+      "locator": "Abstract Results/Conclusion; https://pubmed.ncbi.nlm.nih.gov/28846503/",
+      "limitations": "OUTSIDE exact GNG operation/current PSY-081 capacity. Review does not establish repeated inhibition as critical component or broad transfer; no universal strength resource.",
+      "dataset": "DATA-FRIESE-2017"
+    }
+  ]
+}

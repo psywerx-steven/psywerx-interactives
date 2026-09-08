@@ -1,0 +1,155 @@
+{
+  "note": "Authored source findings precede synthesis. Task-control ratings and feelings of helplessness remain different endpoints. No causal mediator/pathway or operational use authorized.",
+  "findings": [
+    {
+      "key": "TASK_CONTROL_STUDY2",
+      "sourceId": "SRC-CAND-PSY-LAYER-0013",
+      "locator": "Europe PMC XML, sections 2.2.1, 4.2.1–4.2.4; 4.1.4 item wording; Discussion limitations",
+      "accessDepth": "SELECTED_FULL_TEXT",
+      "basis": "EXPERIMENTAL",
+      "design": "Randomized unequal-group task protocol; EC tested first and pseudo-yoked average durations shuffled for YC",
+      "population": "Healthy German-speaking young adults recruited in Mainz; psychiatric/hearing exclusions",
+      "sample": "122 recruited; 100 after completeness/exclusions; two extreme outliers excluded in results (98 for reported control contrast)",
+      "context": "Repeated aversive-noise button/cue task; not generic life agency",
+      "exposure": "Button response controls termination under specified protocol",
+      "comparator": "Response-independent pseudo-yoked termination with otherwise declared task conditions",
+      "measurement": "1–7 rating of control over the task, not specifically over the stressor",
+      "timing": "After each 15-trial block within one session",
+      "result": "Contingent-response group rated task control higher; effect cannot isolate experienced success, instruction, timing and task contingency as independent components.",
+      "disposition": "SUPPORTS",
+      "limitations": "Single task/small healthy sample; unequal groups and session order; pseudo-yoking not person-wise matching; no chronic/control-over-stressor generalization.",
+      "dataset": "MEINE_2020_STUDY2"
+    },
+    {
+      "key": "TASK_CONTROL_STUDY1",
+      "sourceId": "SRC-CAND-PSY-LAYER-0013",
+      "locator": "Europe PMC XML section 2.1.1; 4.1.4; Discussion paragraph on control-item limitations",
+      "accessDepth": "SELECTED_FULL_TEXT",
+      "basis": "EXPERIMENTAL",
+      "design": "Three-group initial protocol with escapable, yoked inescapable and no-stressor controls",
+      "population": "Healthy sample in initial laboratory design",
+      "sample": null,
+      "context": "Different initial stressor/task design, not exact replication of Study 2",
+      "exposure": "Escapable protocol",
+      "comparator": "Yoked inescapable protocol",
+      "measurement": "Same task-control wording, not a measure of objective control",
+      "timing": "Repeated within-session ratings",
+      "result": "Task-control ratings differed in expected order, while many stress/transfer contrasts failed to separate the stress groups.",
+      "disposition": "MIXED",
+      "limitations": "Initial protocol differs; group age imbalance and exclusions; do not claim all downstream outcomes improve.",
+      "dataset": "MEINE_2020_STUDY1"
+    },
+    {
+      "key": "HELPLESSNESS_STUDY2",
+      "sourceId": "SRC-CAND-PSY-LAYER-0013",
+      "locator": "Europe PMC XML sections 2.2.2 and 4.1.4 rating item",
+      "accessDepth": "SELECTED_FULL_TEXT",
+      "basis": "EXPERIMENTAL",
+      "design": "Same randomized Study 2 protocol",
+      "population": "Same healthy Mainz participants",
+      "sample": "98 in reported comparison",
+      "context": "Acute aversive-noise task",
+      "exposure": "Contingent task control",
+      "comparator": "Pseudo-yoked noncontingent condition",
+      "measurement": "Single 1–7 current feeling-of-helplessness rating, not future action-outcome expectancy",
+      "timing": "During task blocks",
+      "result": "Lower reported feelings of helplessness under controllable protocol; exact alignment to PSY-015 expected futility remains insufficient.",
+      "disposition": "INSUFFICIENT",
+      "limitations": "State-feeling/expectancy mismatch, shared self-report, same randomized operation does not identify causal mediation through perceived control.",
+      "dataset": "MEINE_2020_STUDY2"
+    },
+    {
+      "key": "HELPLESSNESS_STUDY1_NULL",
+      "sourceId": "SRC-CAND-PSY-LAYER-0013",
+      "locator": "Europe PMC XML section 2.1.2: EC versus YC helplessness contrast",
+      "accessDepth": "SELECTED_FULL_TEXT",
+      "basis": "EXPERIMENTAL",
+      "design": "Initial three-group study",
+      "population": "Healthy initial-study participants",
+      "sample": null,
+      "context": "Initial stressor protocol",
+      "exposure": "Contingent control",
+      "comparator": "Yoked uncontrollable condition",
+      "measurement": "Helplessness feeling rating",
+      "timing": "Within-session",
+      "result": "EC versus YC helplessness difference not statistically detected; both stress groups differed from no-stress control.",
+      "disposition": "NULL_FINDING",
+      "limitations": "No equivalence margin or bounded null; design differs from Study 2; exact canonical expectation construct still unresolved.",
+      "dataset": "MEINE_2020_STUDY1"
+    }
+  ],
+  "assertions": [
+    {
+      "id": "EA-CAND-PSY-LAYER-0003",
+      "type": "EFFECT_ASSERTION",
+      "typeId": "HT-CAND-PSY-LAYER-0003",
+      "target": "PSY-013",
+      "status": "REVIEW_READY",
+      "change": "INCREASE",
+      "property": "LEVEL",
+      "findingKeys": [
+        "TASK_CONTROL_STUDY2",
+        "TASK_CONTROL_STUDY1"
+      ],
+      "disposition": "MIXED",
+      "strength": "LIMITED",
+      "confidence": "MODERATE",
+      "scope": "In the specified healthy young-adult aversive-noise task, a response-contingent termination protocol versus its pseudo-yoked noncontingent comparator increased perceived control OVER THAT TASK. Not a universal effect of control availability, not specifically a validated measure of stressor controllability, not chronic agency or psychological safety.",
+      "timing": "Within-session repeated task ratings; no persistence estimate",
+      "measurement": "Explicit 1–7 perceived control-over-task item. Do not substitute stressor-control, helplessness, behavior, symptoms or objective contingency.",
+      "mechanism": "Experienced action/outcome contingency within the assigned protocol informs perceived influence over the task. Multiple protocol features are not separate identified causes.",
+      "rationale": "Randomized protocol preceded task-specific control ratings; initial-study results support task-control distinction while mixed downstream readouts remain exclusions, not efficacy claims. Limited strength reflects one publication and narrow population.",
+      "sharedContributionId": "CONTRIB-PSY-LAYER-CONTINGENCY-001",
+      "risk": "Aversive research exposure is not a recommended action; no permission to impose noise or deception. Consent, ethics, safety, legal authority and feasibility independently required."
+    },
+    {
+      "id": "EA-CAND-PSY-LAYER-0004",
+      "contributionRole": "DESCRIPTIVE_ONLY",
+      "relatedEffectIds": ["EA-CAND-PSY-LAYER-0003"],
+      "contributionReconciliation": "Proxy/possible inverse appraisal overlap with EA-003; research description only, not an independent propagating contribution or identified mediator.",
+      "type": "EFFECT_ASSERTION",
+      "typeId": "HT-CAND-PSY-LAYER-0003",
+      "target": "PSY-015",
+      "status": "RESEARCH_NEEDED",
+      "change": "UNKNOWN",
+      "knowledgeStatus": "INSUFFICIENT_EVIDENCE",
+      "incompleteFields": [
+        "direction",
+        "measurement"
+      ],
+      "property": "LEVEL",
+      "findingKeys": [
+        "HELPLESSNESS_STUDY2",
+        "HELPLESSNESS_STUDY1_NULL"
+      ],
+      "disposition": "INSUFFICIENT",
+      "strength": "LIMITED",
+      "confidence": "LOW",
+      "scope": "Research question whether the same contingent-control protocol alters expected ineffectiveness of one's actions (PSY-015). Current evidence measures feelings of helplessness, not the exact expectation; direction remains UNKNOWN.",
+      "timing": "Only same-session feeling ratings available; enduring expected futility not established",
+      "measurement": "Missing independently aligned expected action-outcome ineffectiveness measure; feeling rating insufficient",
+      "mechanism": "Contingency learning is plausible but cannot identify expected futility or mediation from simultaneous task ratings.",
+      "rationale": "Source contrasts are preserved without promoting proxy correspondence; Study 1 null versus Study 2 effect does not resolve the construct mismatch.",
+      "sharedContributionId": "CONTRIB-PSY-LAYER-CONTINGENCY-001",
+      "risk": "Do not infer learned helplessness, depression, chronic harm or treatment benefit; no causal summation with EA-003 and no practitioner eligibility."
+    }
+  ],
+  "happeningTypes": [
+    {
+      "id": "HT-CAND-PSY-LAYER-0003",
+      "name": "Assign a response-contingent termination rule in a bounded aversive-noise task",
+      "identityKey": "bounded-task-response-contingent-noise-termination",
+      "description": "Configure the declared button/cue protocol so a qualifying response terminates the laboratory noise episode. A researcher operation identity only; no efficacy, ethical permission or real-world stress protection implied. Comparator and session-level variations belong to scoped effects.",
+      "sources": [
+        "SRC-CAND-PSY-LAYER-0013"
+      ],
+      "origins": [
+        "TEC",
+        "ENV"
+      ],
+      "domain": "DELIBERATE_INTERVENTION",
+      "actor": "ROLE-CONSENTED-LAB-TASK-OPERATOR",
+      "constraints": "Exposure safety, consent, ethics review, deception/debriefing, legal authority, accessibility and actor control are not granted by candidate identity. Not interchangeable with speech babble or routine noise exposure."
+    }
+  ]
+}

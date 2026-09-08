@@ -1,0 +1,262 @@
+{
+  "familyId": "PSY-F08",
+  "recordedAt": "2026-09-07",
+  "findings": [
+    {
+      "key": "REPETITION_TRAJECTORY",
+      "sourceId": "SRC-CAND-PSY-LAYER-0083",
+      "locator": "Primary abstract methods/results unless selected publisher passages stated",
+      "accessDepth": "ABSTRACT",
+      "basis": "OBSERVATIONAL_LONGITUDINAL",
+      "supportedSemantics": [
+        "ASSOCIATION"
+      ],
+      "design": "Uncontrolled longitudinal self-selected behavior practice",
+      "sample": "96volunteers;82sufficientdata;62fittedcurves39goodfits",
+      "population": "Volunteers choosing eating/drinking/activity behavior",
+      "context": "Specified habit/planning study; no generic cross-task transfer",
+      "exposure": "Repeat selected behavior in stable daily context",
+      "comparator": "Earlier scores/variation in adherence; no randomized untreated counterfactual",
+      "measurement": "Subset of self-report habit automaticity items",
+      "timing": "84days; some modeled asymptotes beyond observed period",
+      "result": "Automaticity increased on average with heterogeneous trajectories and model fits.",
+      "disposition": "MIXED",
+      "limitations": "Self-selection, shared self-report and successful-fit selection; cannot infer causal rate/threshold or exact latent habit propensity. Missing one occasion was not materially disruptive in this sample.",
+      "dataset": "LALLY2010"
+    },
+    {
+      "key": "CUE_TYPE_COMPARISON",
+      "sourceId": "SRC-CAND-PSY-LAYER-0084",
+      "locator": "Primary abstract methods/results unless selected publisher passages stated",
+      "accessDepth": "ABSTRACT",
+      "basis": "EXPERIMENTAL",
+      "supportedSemantics": [
+        "CAUSAL"
+      ],
+      "design": "Randomized two-active-condition planning trial",
+      "sample": "192adults18–77",
+      "population": "General-population adults in Germany",
+      "context": "Specified habit/planning study; no generic cross-task transfer",
+      "exposure": "Routine-based cue for selected daily nutrition behavior",
+      "comparator": "Time-based cue for selected behavior",
+      "measurement": "Daily self-reported automaticity and plan enactment",
+      "timing": "84days",
+      "result": "No between-condition differences in automaticity or enactment were detected.",
+      "disposition": "NULL_FINDING",
+      "limitations": "Nondetection not equivalence; both conditions receive planning. Does not prove either outperforms no planning or isolate repeated behavior.",
+      "dataset": "KELLER2021"
+    },
+    {
+      "key": "CUE_WITHIN_ARM",
+      "sourceId": "SRC-CAND-PSY-LAYER-0084",
+      "locator": "Primary abstract methods/results unless selected publisher passages stated",
+      "accessDepth": "ABSTRACT",
+      "basis": "EXPERIMENTAL",
+      "supportedSemantics": [
+        "ASSOCIATION"
+      ],
+      "design": "Same RCT, uncontrolled within-arm change",
+      "sample": "Same192participants",
+      "population": "Same adults",
+      "context": "Specified habit/planning study; no generic cross-task transfer",
+      "exposure": "Plan enactment and repeated behavior over time",
+      "comparator": "Own baseline, not an untreated group",
+      "measurement": "Automaticity self-report",
+      "timing": "84days; median59days only among successful habit formers",
+      "result": "Both groups increased automaticity/enactment; repetition predicted automaticity.",
+      "disposition": "MIXED",
+      "limitations": "Prediction/pre-post change not randomized repetition. Conditional learner duration not a universal causal time constant.",
+      "dataset": "KELLER2021"
+    },
+    {
+      "key": "PREPOST_REVIEW",
+      "sourceId": "SRC-CAND-PSY-LAYER-0085",
+      "locator": "Primary abstract methods/results unless selected publisher passages stated",
+      "accessDepth": "ABSTRACT",
+      "basis": "EVIDENCE_SYNTHESIS",
+      "supportedSemantics": [
+        "ASSOCIATION"
+      ],
+      "design": "Systematic review/meta-analysis of pre/post habit scores",
+      "sample": "20studies2601participants;11high-risk-bias studies",
+      "population": "Health-behavior intervention participants; heterogeneous ages/behaviors",
+      "context": "Specified habit/planning study; no generic cross-task transfer",
+      "exposure": "Heterogeneous habit-oriented intervention packages",
+      "comparator": "Pre-intervention scores; pooled change not isolated randomized treatment contrast",
+      "measurement": "SRHI/SRBAI scores with differing content",
+      "timing": "Variable intervention lengths and follow-up",
+      "result": "Pooled habit/automaticity scores improved, but measurements, protocols and time estimates varied substantially.",
+      "disposition": "MIXED",
+      "limitations": "Reviews may contain Lally/Keller components. No independent replication sum, uniform duration, package-component inference or direct causal strength.",
+      "dataset": "SINGH2024-HABIT"
+    },
+    {
+      "key": "OVERTRAINING_FAILURE",
+      "sourceId": "SRC-CAND-PSY-LAYER-0086",
+      "locator": "Primary abstract methods/results unless selected publisher passages stated",
+      "accessDepth": "ABSTRACT",
+      "basis": "EXPERIMENTAL",
+      "supportedSemantics": [
+        "CAUSAL"
+      ],
+      "design": "Five controlled human habit-induction attempts",
+      "sample": "Fiveexperiments; aggregateN not extracted",
+      "population": "Human instrumental-learning participants",
+      "context": "Specified habit/planning study; no generic cross-task transfer",
+      "exposure": "Extended stimulus-response practice across tasks",
+      "comparator": "Less training/contrasts in each paradigm",
+      "measurement": "Outcome-devaluation sensitivity, not self-report habit propensity",
+      "timing": "Task-specific extended training and later devaluation tests",
+      "result": "Overtraining did not increase inflexible habit expression in the reported attempts.",
+      "disposition": "NULL_FINDING",
+      "limitations": "OUTSIDE daily-context operation; devaluation task may be insensitive and impaired goal-directed control can mimic habit. Failure not proof no habits form.",
+      "dataset": "DEWIT2018-POOL"
+    },
+    {
+      "key": "IFTHEN_CUE_LINK",
+      "sourceId": "SRC-CAND-PSY-LAYER-0087",
+      "locator": "Primary abstract methods/results unless selected publisher passages stated",
+      "accessDepth": "SELECTED_FULL_TEXT",
+      "basis": "EXPERIMENTAL",
+      "supportedSemantics": [
+        "CAUSAL"
+      ],
+      "design": "Randomized plan versus familiarization experiment",
+      "sample": "74undergraduates at two UK universities",
+      "population": "University participants in verbal task",
+      "context": "Specified habit/planning study; no generic cross-task transfer",
+      "exposure": "Form specified if-then plan linking critical cue and response",
+      "comparator": "Familiarization instructions without plan",
+      "measurement": "Cue accessibility, cue-response linkage and word-search performance; exact priming cell contrasts not fully extracted",
+      "timing": "Laboratory session",
+      "result": "Plan condition improved critical-task speed and report describes enhanced cue accessibility/linkage with statistical mediation.",
+      "disposition": "MIXED",
+      "limitations": "Performance and cue accessibility are not the exact associative-strength contrast; mediated regression not identified transmitted pathway. Full priming controls/measurement need extraction before direction on PSY-072.",
+      "dataset": "WEBB2007-COMPONENT"
+    },
+    {
+      "key": "GOAL_DEPENDENCE",
+      "sourceId": "SRC114",
+      "locator": "Primary abstract methods/results unless selected publisher passages stated",
+      "accessDepth": "ABSTRACT",
+      "basis": "EXPERIMENTAL",
+      "supportedSemantics": [
+        "CAUSAL",
+        "ASSOCIATION"
+      ],
+      "design": "Two studies: measured goal-strength interaction and goal-activation manipulation",
+      "sample": "Two studies;N not extracted",
+      "population": "Goal/task participants described in source abstract",
+      "context": "Specified habit/planning study; no generic cross-task transfer",
+      "exposure": "Implementation intention under differing goal strength/activation",
+      "comparator": "No plan and weak/neutral-goal conditions",
+      "measurement": "Goal attainment/performance, not direct cue-response association strength",
+      "timing": "Study-specific goal activation and later behavior",
+      "result": "Planning benefits occurred with strong/activated relevant goals, not weak or neutral-goal conditions.",
+      "disposition": "MIXED",
+      "limitations": "Measured strength is between-person association; activation manipulation distinct. OUTSIDE exact PSY-072 target. No independent moderation of REL-PSY-036 inferred.",
+      "dataset": "SHEERAN2005-GOALS"
+    }
+  ],
+  "happeningTypes": [
+    {
+      "id": "HT-CAND-PSY-LAYER-0013",
+      "name": "Repeat a selected behavior in response to a declared recurring cue",
+      "identityKey": "selected-behavior-repetition-at-recurring-cue",
+      "description": "Deliberately repeat a specified selected behavior when a declared routine/time/context cue occurs. Identity describes practice, not acquired habit, automaticity, benefit, efficacy or practitioner permission. Actual enactment and context stability must be checked; outcome-dependent duration is not identity.",
+      "domain": "DELIBERATE_INTERVENTION",
+      "origins": [
+        "PSY"
+      ],
+      "actor": "Participant/practice designer",
+      "sources": [
+        "SRC-CAND-PSY-LAYER-0083",
+        "SRC-CAND-PSY-LAYER-0084"
+      ],
+      "constraints": "Control, prerequisites, feasibility, legal/ethical risk and applicability NOT_ASSESSED. Behavior must be specified and independently safe/feasible; no recommendation or universal duration."
+    },
+    {
+      "id": "HT-CAND-PSY-LAYER-0014",
+      "name": "Form a specified if-then cue-response plan",
+      "identityKey": "form-specified-if-then-cue-response-plan",
+      "description": "Encode a declared anticipated situation and intended response in an if-then plan. Identity promises no enactment, associative strengthening, automaticity, efficacy, permission or enduring habit; does not include coping planning or mental contrasting by default.",
+      "domain": "DELIBERATE_INTERVENTION",
+      "origins": [
+        "PSY",
+        "INF"
+      ],
+      "actor": "Planner/participant",
+      "sources": [
+        "SRC-CAND-PSY-LAYER-0087",
+        "SRC114",
+        "SRC155"
+      ],
+      "constraints": "Actor control, goal relevance, cue occurrence, response feasibility, prerequisites, legal/ethical risk and applicability NOT_ASSESSED. No automatic practitioner recommendation."
+    }
+  ],
+  "assertions": [
+    {
+      "type": "EFFECT_ASSERTION",
+      "status": "RESEARCH_NEEDED",
+      "property": "LEVEL",
+      "change": "UNKNOWN",
+      "knowledgeStatus": "INSUFFICIENT_EVIDENCE",
+      "disposition": "INSUFFICIENT",
+      "strength": "LIMITED",
+      "confidence": "LOW",
+      "incompleteFields": [
+        "direction",
+        "measurement",
+        "boundaries"
+      ],
+      "risk": "No whole automaticity or expectancy profile change, habit guarantee, universal time threshold, numerical weight or practitioner permission. Exact operation/comparator and measurement remain unresolved.",
+      "id": "EA-CAND-PSY-LAYER-0014",
+      "typeId": "HT-CAND-PSY-LAYER-0013",
+      "target": "PSY-070",
+      "scope": "Selected daily behaviors repeated at declared recurring cues; exact control-adjusted causal change in context-specific learned habit propensity not established by current source extraction.",
+      "measurement": "SRHI/SRBAI or automaticity subset is a proxy with item overlap; behavioral frequency or outcome-devaluation failure alone is not independent habit strength.",
+      "timing": "Daily longitudinal protocols up to84days; no fixed acquisition duration, guaranteed plateau or persistence.",
+      "mechanism": "Cue-response learning is plausible, but repeated enactment, context stability, motivation and reporting are not independently manipulated in main daily-life evidence.",
+      "rationale": "Longitudinal/pre-post increases and active-cue comparison do not isolate repetition's exact causal effect. Null cue-type contrast and failed lab overtraining retained as different estimands; direction remains UNKNOWN.",
+      "sharedContributionId": "CONTRIB-PSY-CUE-REPETITION-HABIT-001",
+      "contributionReconciliation": "One practice contribution; do not add a second automaticity effect from overlapping scale items or inferred habit→automaticity propagation.",
+      "findingKeys": [
+        "REPETITION_TRAJECTORY",
+        "CUE_TYPE_COMPARISON",
+        "CUE_WITHIN_ARM",
+        "PREPOST_REVIEW",
+        "OVERTRAINING_FAILURE"
+      ]
+    },
+    {
+      "type": "EFFECT_ASSERTION",
+      "status": "RESEARCH_NEEDED",
+      "property": "LEVEL",
+      "change": "UNKNOWN",
+      "knowledgeStatus": "INSUFFICIENT_EVIDENCE",
+      "disposition": "INSUFFICIENT",
+      "strength": "LIMITED",
+      "confidence": "LOW",
+      "incompleteFields": [
+        "direction",
+        "measurement",
+        "boundaries"
+      ],
+      "risk": "No whole automaticity or expectancy profile change, habit guarantee, universal time threshold, numerical weight or practitioner permission. Exact operation/comparator and measurement remain unresolved.",
+      "id": "EA-CAND-PSY-LAYER-0015",
+      "typeId": "HT-CAND-PSY-LAYER-0014",
+      "target": "PSY-072",
+      "scope": "Specified if-then plan in verbal cue-response tasks; exact priming measurement/controls and transfer beyond task unresolved.",
+      "measurement": "Cue-prime→response-target contrast must separate association from neutral-prime→cue accessibility, word familiarity, speed/accuracy and goal success.",
+      "timing": "Within-session plan encoding and later task; no months-long habit or all-context persistence.",
+      "mechanism": "An encoded cue-response plan may facilitate selective response activation; reported mediation does not identify a scientific causal pathway.",
+      "rationale": "Randomized planning evidence is promising but retained extraction insufficient for exact associative-strength contrast. Goal-dependent performance findings and source120 identity mismatch prevent broad signed claim.",
+      "sharedContributionId": "CONTRIB-PSY-IFTHEN-CUE-001",
+      "contributionReconciliation": "Plan operation, PSY-075 strength, cue accessibility, association and goal attainment cannot be summed as independent contributions; no pathway or second Family copy.",
+      "findingKeys": [
+        "IFTHEN_CUE_LINK",
+        "GOAL_DEPENDENCE"
+      ]
+    }
+  ]
+}
