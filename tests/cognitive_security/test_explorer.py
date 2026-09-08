@@ -148,9 +148,13 @@ class ExplorerStaticContractTests(unittest.TestCase):
         self.assertIn('href="../shared/psywerx.css"', self.html)
         self.assertIn('src="./app.js"', self.html)
         self.assertIn('src="../shared/assets/psywerx-logo.png"', self.html)
+        self.assertEqual(
+            {"https://psywerx.io/"},
+            set(re.findall(r'https?://[^"\s)]+', self.combined)),
+        )
         self.assertNotRegex(
             self.combined,
-            r"https?://|cdnjs|unpkg|jsdelivr|googleapis|analytics",
+            r"cdnjs|unpkg|jsdelivr|googleapis|analytics",
         )
 
     def test_browser_inventory_matches_the_closed_public_manifest(self):

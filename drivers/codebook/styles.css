@@ -531,6 +531,9 @@
 @media (max-width: 48rem) {
   .site-header__inner {
     min-height: 4.7rem;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.7rem;
   }
 
   .site-header__context {
@@ -538,7 +541,17 @@
   }
 
   .site-header__tools {
+    width: 100%;
     gap: 0.4rem;
+  }
+
+  .site-nav {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .site-nav a {
+    flex: 0 0 auto;
   }
 
   .wordmark__logo {

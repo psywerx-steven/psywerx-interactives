@@ -187,8 +187,11 @@ def build(mode="preview", tool_links="preview", root=ROOT, output=None):
     if public_page["nextPage"]:
         prefix = "../data/research-stream/" if tool_links == "preview" else "./data/research-stream/"
         next_page = prefix + public_page["nextPage"]
+    home_url = site["targetOrigin"].rstrip("/") + "/"
 
     replacements = {
+        "HOME_URL": esc(home_url),
+        "HOME_CURRENT": ' aria-current="page"' if mode == "release" else "",
         "ROBOTS": '<meta name="robots" content="noindex,nofollow">' if mode == "preview" else '<meta name="robots" content="index,follow">',
         "PRODUCTION_METADATA": "" if mode == "preview" else '''<link rel="canonical" href="https://psywerx.io/">
   <meta property="og:type" content="website">
