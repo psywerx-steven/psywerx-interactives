@@ -14,7 +14,7 @@
 
   <header class="site-header">
     <div class="site-container site-header__inner">
-      <a class="wordmark" href="./" aria-label="PSYWERX Ontology Explorer home">
+      <a class="wordmark" href="https://psywerx.io/" aria-label="PSYWERX home">
         <img
           class="wordmark__logo"
           src="../shared/assets/psywerx-logo.png"
@@ -105,7 +105,7 @@
       <div class="section-heading">
         <p class="eyebrow">Explore the ontology</p>
         <h2 id="explorer-heading">Ontology Explorer</h2>
-        <p>Browse the taxonomy as a hierarchy or combine structured facets with keyword search.</p>
+        <p>Explore the ontology by hierarchy, search across Drivers, or examine the evidence behind them.</p>
       </div>
 
       <div class="mode-switch" role="group" aria-label="Explorer mode">
@@ -114,6 +114,9 @@
         </button>
         <button id="search-mode-button" class="mode-switch__button" type="button" aria-pressed="false">
           Search &amp; Filter
+        </button>
+        <button id="sources-mode-button" class="mode-switch__button" type="button" aria-pressed="false">
+          Sources
         </button>
       </div>
 
@@ -179,6 +182,51 @@
             <div id="driver-list" class="driver-list" aria-live="polite"></div>
             <div class="results__footer">
               <button id="load-more" class="secondary-button" type="button" hidden>Show more entities</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="sources-panel" class="mode-panel" aria-labelledby="sources-heading" hidden>
+        <h3 id="sources-heading" class="sr-only">Search and filter sources</h3>
+        <div class="search-control">
+          <label for="source-search">Search sources</label>
+          <div class="search-control__input-wrap">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="11" cy="11" r="7"></circle>
+              <path d="m16 16 5 5"></path>
+            </svg>
+            <input
+              id="source-search"
+              type="search"
+              placeholder="Search citations, titles, authors, years, publications, DOIs, or URLs"
+              autocomplete="off"
+              disabled
+            >
+          </div>
+        </div>
+
+        <div class="explorer__layout sources-layout">
+          <aside class="filters" aria-labelledby="source-filters-heading">
+            <div class="filters__heading">
+              <div>
+                <p class="eyebrow">Ontology relationships</p>
+                <h3 id="source-filters-heading">Refine sources</h3>
+              </div>
+              <button id="clear-source-filters" class="text-button" type="button" disabled>Clear all</button>
+            </div>
+            <p class="filter-logic">Match any value within a facet and every active facet.</p>
+            <div id="source-facet-filters" class="facet-filters"></div>
+          </aside>
+
+          <div class="results source-results">
+            <div class="results__header">
+              <p id="source-result-summary" role="status" aria-live="polite">Loading sources&hellip;</p>
+              <div id="active-source-filters" class="active-filters" aria-label="Active source filters"></div>
+            </div>
+            <div id="source-list" class="source-card-list" aria-live="polite"></div>
+            <div class="results__footer">
+              <button id="load-more-sources" class="secondary-button" type="button" hidden>Show more sources</button>
             </div>
           </div>
         </div>
@@ -278,6 +326,7 @@
   </aside>
 
   <script src="./config.js" defer></script>
+  <script src="./source-index.js" defer></script>
   <script src="./app.js" defer></script>
 </body>
 </html>
