@@ -610,6 +610,56 @@ class CanonicalExplorerBrowserTests(unittest.TestCase):
         body_text = self.page.locator("body").inner_text()
         self.assertNotIn("approved canonical synthesis", body_text.casefold())
 
+    def test_wordmark_links_home_on_desktop_mobile_and_keyboard(self) -> None:
+        site = json.loads(
+            (REPO_ROOT / "homepage" / "content" / "site.json").read_text(encoding="utf-8")
+        )
+        homepage_url = site["targetOrigin"].rstrip("/") + "/"
+        self.page.route(
+            homepage_url,
+            lambda route: route.fulfill(
+                status=200,
+                content_type="text/html",
+                body="<!doctype html><title>PSYWERX home</title>",
+            ),
+        )
+
+        for width, height in ((1280, 900), (390, 844)):
+            self.page.set_viewport_size({"width": width, "height": height})
+            self._open(expected_title=PRIMARY_ROUTES["start"], view="start")
+            wordmark = self.page.get_by_role("link", name="PSYWERX home", exact=True)
+            self.assertTrue(wordmark.is_visible())
+            self.assertEqual(homepage_url, wordmark.get_attribute("href"))
+            bounds = wordmark.evaluate(
+                """link => {
+                  const logo = link.querySelector('img');
+                  const outer = link.getBoundingClientRect();
+                  const inner = logo.getBoundingClientRect();
+                  return {
+                    contains: outer.left <= inner.left && outer.top <= inner.top
+                      && outer.right >= inner.right && outer.bottom >= inner.bottom,
+                    linkWidth: outer.width,
+                    linkHeight: outer.height,
+                    logoWidth: inner.width,
+                    logoHeight: inner.height
+                  };
+                }"""
+            )
+            self.assertTrue(bounds["contains"])
+            self.assertGreaterEqual(bounds["linkWidth"], bounds["logoWidth"])
+            self.assertGreaterEqual(bounds["linkHeight"], bounds["logoHeight"])
+
+        wordmark.focus()
+        self.assertEqual("wordmark", self.page.evaluate("document.activeElement.className"))
+        focus_style = wordmark.evaluate(
+            "link => ({ style: getComputedStyle(link).outlineStyle, width: getComputedStyle(link).outlineWidth })"
+        )
+        self.assertNotEqual("none", focus_style["style"])
+        self.assertNotEqual("0px", focus_style["width"])
+        with self.page.expect_navigation(wait_until="domcontentloaded"):
+            self.page.keyboard.press("Enter")
+        self.assertEqual(homepage_url, self.page.url)
+
     def test_landing_icons_and_functional_overview_are_complete(self) -> None:
         self._open(expected_title=PRIMARY_ROUTES["start"], view="start")
         cards = self.page.locator("a.entry-card")
