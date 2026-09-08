@@ -18,15 +18,16 @@
 <a class="skip-link" href="#main">Skip to main content</a>
 <header class="site-header">
   <div class="header-inner">
-    <a class="brand" href="#top" aria-label="PSYWERX home"><img src="assets/wordmark.webp" alt="PSYWERX" width="640" height="130"></a>
+    <a class="brand" href="{{HOME_URL}}" aria-label="PSYWERX home"><img src="assets/wordmark.webp" alt="PSYWERX" width="640" height="130"></a>
     <nav class="desktop-nav" aria-label="Main navigation">
+      <a href="{{HOME_URL}}"{{HOME_CURRENT}}>Home</a>
       <details class="explore-menu" id="explore-menu"><summary>Explore <span class="chevron" aria-hidden="true">⌄</span></summary>
         <div class="mega-menu"><div class="mega-intro"><span class="eyebrow">THE PLATFORM</span><strong>Find your way into the science.</strong><p>Six complementary areas, built to connect.</p></div><div class="mega-links">{{MEGA_LINKS}}</div></div>
       </details>
       <a href="#research">Research</a><a href="#learning-section">Learn</a><a href="#about">About</a>
       <a class="nav-tools" href="#live-tools">Live tools <span aria-hidden="true">↗</span></a>
     </nav>
-    <details class="mobile-menu" id="mobile-menu"><summary aria-label="Open navigation"><span aria-hidden="true">☰</span> Menu</summary><nav aria-label="Mobile navigation"><a href="#platform">Explore the platform</a><a href="#live-tools">Live tools</a><a href="#research">Research feed</a><a href="#learning-section">Learn</a><a href="#about">About</a></nav></details>
+    <details class="mobile-menu" id="mobile-menu"><summary aria-label="Open navigation"><span aria-hidden="true">☰</span> Menu</summary><nav aria-label="Mobile navigation"><a href="{{HOME_URL}}"{{HOME_CURRENT}}>Home</a><a href="#platform">Explore the platform</a><a href="#live-tools">Live tools</a><a href="#research">Research feed</a><a href="#learning-section">Learn</a><a href="#about">About</a></nav></details>
   </div>
 </header>
 <div id="top" class="page-layout">
@@ -91,7 +92,7 @@
   </div>
 </aside>
 </div>
-<footer class="site-footer"><div class="footer-inner"><div><a class="brand footer-brand" href="#top" aria-label="PSYWERX home"><img src="assets/wordmark.webp" alt="PSYWERX" width="640" height="130" loading="lazy"></a><p>A nonprofit initiative for behavioral science in practice.</p></div><section class="footer-newsletter" aria-labelledby="newsletter-title"><div><h2 id="newsletter-title">Stay connected.</h2><p>Get behavioral science insights, resources, and PSYWERX updates.</p></div><form action="{{NEWSLETTER_ACTION}}" method="post" target="_blank" aria-label="Subscribe to the PSYWERX newsletter"><label class="sr-only" for="newsletter-email">Email address</label><input id="newsletter-email" type="email" name="fields[email]" placeholder="Email address" autocomplete="email" required><input type="hidden" name="ml-submit" value="1"><input type="hidden" name="anticsrf" value="true"><button type="submit">Subscribe <span aria-hidden="true">→</span></button></form></section><nav aria-label="Footer navigation"><a href="#about">About</a><a href="{{LINKEDIN_URL}}" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a></nav></div><div class="footer-bottom"><span>© {{YEAR}} PSYWERX</span><span>{{FOOTER_STATUS}}</span></div></footer>
+<footer class="site-footer"><div class="footer-inner"><div><a class="brand footer-brand" href="{{HOME_URL}}" aria-label="PSYWERX home"><img src="assets/wordmark.webp" alt="PSYWERX" width="640" height="130" loading="lazy"></a><p>A nonprofit initiative for behavioral science in practice.</p></div><section class="footer-newsletter" aria-labelledby="newsletter-title"><div><h2 id="newsletter-title">Stay connected.</h2><p>Get behavioral science insights, resources, and PSYWERX updates.</p></div><form action="{{NEWSLETTER_ACTION}}" method="post" target="_blank" aria-label="Subscribe to the PSYWERX newsletter"><label class="sr-only" for="newsletter-email">Email address</label><input id="newsletter-email" type="email" name="fields[email]" placeholder="Email address" autocomplete="email" required><input type="hidden" name="ml-submit" value="1"><input type="hidden" name="anticsrf" value="true"><button type="submit">Subscribe <span aria-hidden="true">→</span></button></form></section><nav aria-label="Footer navigation"><a href="#about">About</a><a href="{{LINKEDIN_URL}}" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a></nav></div><div class="footer-bottom"><span>© {{YEAR}} PSYWERX</span><span>{{FOOTER_STATUS}}</span></div></footer>
 <dialog id="detail-dialog" aria-labelledby="dialog-title"><div class="dialog-inner"><button class="dialog-close" type="button" aria-label="Close dialog">×</button><span id="dialog-eyebrow" class="eyebrow"></span><h2 id="dialog-title"></h2><div id="dialog-body"></div></div></dialog>
 <noscript><div class="noscript-note">The platform links and expandable product cards work without JavaScript. Enable JavaScript for feed filters and the interactive overview.</div></noscript>
 </body>
