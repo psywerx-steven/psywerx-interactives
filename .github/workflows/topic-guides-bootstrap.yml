@@ -1,0 +1,91 @@
+name: Materialize reviewed Topic Guides patch
+
+on:
+  push:
+    branches: [feature/topic-guides-canonical-v1]
+    paths:
+      - '.github/topic-guides-bootstrap/**'
+      - '.github/workflows/topic-guides-bootstrap.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  materialize:
+    if: github.repository == 'psywerx-steven/psywerx-interactives' && github.ref == 'refs/heads/feature/topic-guides-canonical-v1'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: feature/topic-guides-canonical-v1
+          persist-credentials: true
+      - name: Verify and apply reviewed public-source patch
+        env:
+          EXPECTED_TRIGGER_SHA: ${{ github.sha }}
+        run: |
+          test "$(git rev-parse HEAD)" = "$EXPECTED_TRIGGER_SHA"
+          python - <<'PY'
+          import base64, hashlib, lzma, pathlib, subprocess
+          parts = sorted(pathlib.Path('.github/topic-guides-bootstrap').glob('part-*.b64'))
+          assert len(parts) == 5, 'Expected exactly five transport parts'
+          raw = lzma.decompress(base64.b64decode(''.join(p.read_text() for p in parts), validate=True))
+          assert len(raw) == 305239, 'Patch size mismatch'
+          assert hashlib.sha256(raw).hexdigest() == '57269655c81e353ba17cb4a345ca1332118493ead257ab41ff114286105e61f5', 'Patch digest mismatch'
+          patch = pathlib.Path('/tmp/topic-guides.patch'); patch.write_bytes(raw)
+          expected = {
+              'cognitive-security/app.js', 'cognitive-security/index.html', 'cognitive-security/styles.css',
+              'cognitive-security/topic-guide-tags.js', 'cognitive-security/topic/guides.css', 'cognitive-security/topic/guides.js',
+              'content/cognitive-security-guides/guides.json', 'content/cognitive-security-guides/quote_approvals.json',
+              'content/cognitive-security-guides/quote_excerpts.json', 'content/cognitive-security-guides/source_lock.json',
+              'docs/cognitive-security/topic-guides/CROSSWALK.md', 'docs/cognitive-security/topic-guides/README.md',
+              'scripts/build_topic_guides.py', 'scripts/cognitive_security/topic_guides.py',
+              'tests/cognitive_security/test_topic_guides.py', 'tests/cognitive_security/test_topic_guides_browser.py'
+          }
+          numstat = subprocess.check_output(['git','apply','--numstat',str(patch)], text=True)
+          assert {line.split('\t',2)[2] for line in numstat.splitlines()} == expected, 'Unexpected patch target'
+          subprocess.run(['git','apply','--check',str(patch)],check=True)
+          subprocess.run(['git','apply',str(patch)],check=True)
+          PY
+      - name: Install validation dependencies
+        run: |
+          python -m pip install -r requirements.txt
+          python -m pip install playwright
+      - name: Build and validate all fifteen guides
+        run: |
+          python scripts/build_topic_guides.py
+          python scripts/build_topic_guides.py --check
+          python -m unittest tests.cognitive_security.test_topic_guides tests.cognitive_security.test_explorer tests.cognitive_security.test_presentation_discovery tests.test_site_navigation -v 2>&1 | tee /tmp/topic-guides-unit-tests.log
+          git diff --exit-code -- data/cognitive-security data/cognitive-security-discovery
+      - name: Real-browser acceptance on the standard runner
+        env:
+          PSYWERX_GUIDE_SCREENSHOT_DIR: /tmp/psywerx-guide-screenshots
+        run: |
+          export PSYWERX_BROWSER_EXECUTABLE="$(command -v google-chrome || command -v chromium)"
+          test -n "$PSYWERX_BROWSER_EXECUTABLE"
+          python -m unittest tests.cognitive_security.test_topic_guides_browser -v 2>&1 | tee /tmp/topic-guides-browser-tests.log
+      - name: Commit validated implementation to feature branch only
+        run: |
+          git add cognitive-security/app.js cognitive-security/index.html cognitive-security/styles.css cognitive-security/topic-guide-tags.js cognitive-security/topic content/cognitive-security-guides data/cognitive-security-guides docs/cognitive-security/topic-guides scripts/build_topic_guides.py scripts/cognitive_security/topic_guides.py tests/cognitive_security/test_topic_guides.py tests/cognitive_security/test_topic_guides_browser.py
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Implement 15 canonical Topic Guides with validated IDs and source-linked content'
+          git push origin HEAD:refs/heads/feature/topic-guides-canonical-v1
+      - name: Save public review outputs
+        if: always()
+        run: |
+          mkdir -p /tmp/topic-guides-review
+          tar --exclude=.git --exclude=source-data --exclude=analysis --exclude=__pycache__ -cf /tmp/topic-guides-review/repository.tar .
+          git rev-parse HEAD > /tmp/topic-guides-review/commit.txt
+          cp /tmp/topic-guides-*-tests.log /tmp/topic-guides-review/ 2>/dev/null || true
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: topic-guides-implementation-review
+          path: |
+            /tmp/topic-guides-review/
+            /tmp/psywerx-guide-screenshots/
+          retention-days: 7
+          if-no-files-found: error

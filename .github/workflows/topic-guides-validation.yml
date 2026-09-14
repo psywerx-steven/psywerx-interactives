@@ -6,11 +6,12 @@ on:
   pull_request:
     branches: [main]
     paths:
-      - 'cognitive-security/topic/**'
-      - 'data/cognitive-security-guides/**'
+      - 'cognitive-security/**'
+      - 'content/cognitive-security-guides/**'
+      - 'data/cognitive-security*/**'
       - 'scripts/cognitive_security/topic_guides.py'
       - 'scripts/build_topic_guides.py'
-      - 'tests/cognitive_security/test_topic_guides.py'
+      - 'tests/cognitive_security/test_topic_guides*.py'
       - '.github/workflows/topic-guides-validation.yml'
 
 permissions:
@@ -24,20 +25,33 @@ jobs:
       - uses: actions/checkout@v7
         with:
           persist-credentials: false
-      - name: Validate guides when implemented
+      - name: Install test dependencies
         run: |
-          if [ -f scripts/build_topic_guides.py ]; then
-            python scripts/build_topic_guides.py --check
-            python -m unittest tests.cognitive_security.test_topic_guides -v
-          fi
-      - name: Archive tracked source for reproducible local validation
+          python -m pip install -r requirements.txt
+          python -m pip install playwright
+      - name: Validate deterministic guides and existing regression tests
+        run: |
+          python scripts/build_topic_guides.py --check
+          python -m unittest tests.cognitive_security.test_topic_guides tests.cognitive_security.test_explorer tests.cognitive_security.test_presentation_discovery tests.test_site_navigation -v
+      - name: Run real-browser guide acceptance
+        env:
+          PSYWERX_GUIDE_SCREENSHOT_DIR: /tmp/psywerx-guide-screenshots
+        run: |
+          export PSYWERX_BROWSER_EXECUTABLE="$(command -v google-chrome || command -v chromium)"
+          test -n "$PSYWERX_BROWSER_EXECUTABLE"
+          python -m unittest tests.cognitive_security.test_topic_guides_browser -v
+      - name: Archive tracked source for reproducible review
+        if: always()
         run: |
           mkdir -p /tmp/topic-guides-review
           git archive --format=tar HEAD > /tmp/topic-guides-review/repository.tar
           git rev-parse HEAD > /tmp/topic-guides-review/commit.txt
       - uses: actions/upload-artifact@v7
+        if: always()
         with:
           name: topic-guides-review-source
-          path: /tmp/topic-guides-review/
+          path: |
+            /tmp/topic-guides-review/
+            /tmp/psywerx-guide-screenshots/
           retention-days: 7
           if-no-files-found: error
