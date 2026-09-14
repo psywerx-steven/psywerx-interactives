@@ -7,32 +7,55 @@
   <title>PSYWERX Ontology Explorer</title>
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="../shared/psywerx.css">
+  <link rel="stylesheet" href="../shared/site-header.css">
   <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
   <a class="skip-link" href="#explorer">Skip to Ontology Explorer</a>
 
-  <header class="site-header">
-    <div class="site-container site-header__inner">
-      <a class="wordmark" href="https://psywerx.io/" aria-label="PSYWERX home">
-        <img
-          class="wordmark__logo"
-          src="../shared/assets/psywerx-logo.png"
-          alt="PSYWERX"
-          width="1255"
-          height="350"
-        >
+  <header class="psywerx-global-header">
+    <div class="psywerx-global-header__inner">
+      <a class="psywerx-global-brand" href="/" aria-label="PSYWERX home">
+        <img src="/assets/wordmark.webp" alt="PSYWERX" width="640" height="130">
       </a>
-      <div class="site-header__tools">
-        <span class="site-header__context">Behavioral Ontology</span>
-        <nav class="site-nav" aria-label="Primary navigation">
-          <a href="https://psywerx.io/">Home</a>
-          <a href="./" aria-current="page">Ontology Explorer</a>
-          <a href="./codebook/">Codebook</a>
+      <nav class="psywerx-global-nav" aria-label="Main navigation">
+        <a href="/">Home</a>
+        <details class="psywerx-explore-menu">
+          <summary>Explore <span aria-hidden="true">⌄</span></summary>
+          <div class="psywerx-explore-panel">
+            <a href="/drivers/"><strong>Driver Taxonomy Explorer</strong><span>Browse the behavioral ontology</span></a>
+            <a href="/drivers/codebook/"><strong>Driver Codebook</strong><span>Reference fields and governance rules</span></a>
+            <a href="/cognitive-security/"><strong>Cognitive Security Explorer</strong><span>Navigate practitioner discourse</span></a>
+            <a href="/cognitive-security/topic/"><strong>Topic Guides</strong><span>Start with curated listening paths</span></a>
+          </div>
+        </details>
+        <a href="/#research">Research</a>
+        <a href="/#learning-section">Learn</a>
+        <a href="/#about">About</a>
+        <a class="psywerx-global-live" href="/#live-tools">Live tools <span aria-hidden="true">↗</span></a>
+      </nav>
+      <details class="psywerx-mobile-menu">
+        <summary aria-label="Open navigation"><span aria-hidden="true">☰</span> Menu</summary>
+        <nav aria-label="Mobile navigation">
+          <a href="/">Home</a>
+          <a href="/#platform">Explore</a>
+          <a href="/#research">Research</a>
+          <a href="/#learning-section">Learn</a>
+          <a href="/#about">About</a>
+          <a href="/#live-tools">Live tools</a>
         </nav>
-      </div>
+      </details>
     </div>
   </header>
+  <div class="psywerx-product-bar">
+    <div class="psywerx-product-bar__inner">
+      <span class="psywerx-product-context">Behavioral Ontology</span>
+      <nav class="psywerx-product-nav" aria-label="Behavioral Ontology">
+        <a href="/drivers/" aria-current="page">Ontology Explorer</a>
+        <a href="/drivers/codebook/">Codebook</a>
+      </nav>
+    </div>
+  </div>
 
   <main>
     <section class="hero">
