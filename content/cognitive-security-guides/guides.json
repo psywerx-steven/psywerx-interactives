@@ -1,0 +1,4339 @@
+{
+  "guides": [
+    {
+      "exclusions": "Do not import every analytic model, forecast, dashboard, or campaign merely because it shares an assessment-adjacent cluster.",
+      "featuredEpisodes": [
+        {
+          "episodeId": "EPI-4CB163BD953A0AAD",
+          "expectedEpisodeNumber": 174,
+          "quoteId": "GUIDE-QUOTE-174-01",
+          "summarySha256": "67adb80dcf6f0dc68919826d174311920301e886a554ee2dbe2227bf2e3b183a",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Brings program-evaluation thinking to OIE: an observed change is not automatically an effect caused by your intervention."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Introduces her “Most Likely Cause” approach to weighing competing explanations rather than treating a favorable metric as proof of success."
+            }
+          ],
+          "topicIds": [
+            "OPP-07",
+            "CRB-01",
+            "KCFT-08"
+          ]
+        },
+        {
+          "episodeId": "EPI-CCFE24BFDCF96BD5",
+          "expectedEpisodeNumber": 82,
+          "quoteId": null,
+          "summarySha256": "ea8adcf8259df66e03ccc5c951eae54ef4662ce42ac9e0d9c9cfdde9c16457e4",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Explains why meaningful assessment starts with contextual understanding, clearly defined audiences, and baselines established before an activity."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Broadens the unit of analysis from isolated messages or events to the campaign and information environment around them."
+            }
+          ],
+          "topicIds": [
+            "OPP-07",
+            "CRB-01",
+            "KCFT-08"
+          ]
+        },
+        {
+          "episodeId": "EPI-A8675589BE196429",
+          "expectedEpisodeNumber": 81,
+          "quoteId": null,
+          "summarySha256": "83195a8824fe78c4f636b9047ca557268f186233196db927988e2854769a4809",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Uses systems thinking and behavioral science to examine influence, including feedback loops and interacting causes."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Adds a useful question to an assessment plan: what reinforcing dynamics are sustaining the behavior, and how might an intervention change them?"
+            }
+          ],
+          "topicIds": [
+            "OPP-07",
+            "KCFT-05",
+            "TTP-02"
+          ]
+        },
+        {
+          "episodeId": "EPI-1888F06A5A8A0878",
+          "expectedEpisodeNumber": 182,
+          "quoteId": null,
+          "summarySha256": "78a08e176d1e1e51a8c3328935a8cd8a43bd3a669f8fd4f6dfb4a3f20cce11b7",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Introduces Owned–Earned–Organic as a way to distinguish communication outputs, responses, and changes in the wider conversation."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Offers a practical structure for comparing activity with baselines over time without treating everything visible on a dashboard as the same kind of result."
+            }
+          ],
+          "topicIds": [
+            "OPP-07",
+            "CRB-01",
+            "KCFT-08"
+          ]
+        },
+        {
+          "episodeId": "EPI-507569FECEF991B0",
+          "expectedEpisodeNumber": 115,
+          "quoteId": "GUIDE-QUOTE-115-01",
+          "summarySha256": "ff6bef548346b3088f7d41fe01cdf9b57f410a1a87f800bfcfa00b8d1fd108c2",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Challenges assessment practices that substitute reach, recall, or reportable activity for meaningful audience effects."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Provides a skeptical companion to the other episodes: before choosing measures of effectiveness, ask whether you have defined the right effect."
+            }
+          ],
+          "topicIds": [
+            "OPP-07",
+            "CRB-01",
+            "KCFT-08"
+          ]
+        }
+      ],
+      "group": "Planning & Analysis",
+      "guideId": "GUIDE-ASSESSMENT",
+      "scope": "Assessing whether information activities contributed to observed outcomes: baselines, evaluation design, attribution, measures, alternative explanations, and feedback.",
+      "sections": {
+        "approaches": [
+          {
+            "expectedName": "Assessment, Measurement & Research Rigor",
+            "field": "recurringThemes",
+            "heading": "Baselines, indicators, and shared frameworks",
+            "id": "OPP-07",
+            "scopeNote": "",
+            "sourceFieldSha256": "3f3724966c05568bbdaa2f3da06ad5921d4a16dd75986e6ce65ac71507692efa",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Assessment, Measurement & Research Rigor",
+            "field": "recurringThemes",
+            "heading": "Methodological rigor, causal inference, and attribution",
+            "id": "OPP-07",
+            "scopeNote": "",
+            "sourceFieldSha256": "f3edb6863f96986ae4f18f1fbe325e622a4a8fd42fd180e7fc3695dcffac1c05",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Assessment, Measurement & Research Rigor",
+            "field": "recurringThemes",
+            "heading": "Mixed-method triangulation and structured analytic tradecraft",
+            "id": "OPP-07",
+            "scopeNote": "",
+            "sourceFieldSha256": "8a7a220a143a214fa9c464f7a5c4c9c2f68a43dc789a3d0754fd58aed67f25c6",
+            "type": "cluster"
+          }
+        ],
+        "challenges": [
+          {
+            "expectedName": "Measurement, Attribution & Assessment Gaps",
+            "field": "recurringThemes",
+            "heading": "Measurement credibility, incentives, and institutional fit",
+            "id": "CRB-01",
+            "scopeNote": "",
+            "sourceFieldSha256": "b7fbf4b19eb6a305fdbc5910d9f0bf85b9f101e43c61fe87b9ac973d86b5eca2",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Measurement, Attribution & Assessment Gaps",
+            "field": "recurringThemes",
+            "heading": "Invisible or hard-to-observe effects",
+            "id": "CRB-01",
+            "scopeNote": "",
+            "sourceFieldSha256": "87c22360a5d49888101f12f87b87e91140499c36bac117e950ec84d9066a6ca5",
+            "type": "cluster"
+          }
+        ],
+        "concepts": [
+          {
+            "expectedName": "Operational Learning, Assessment & Adaptation",
+            "field": "definition",
+            "id": "KCFT-08",
+            "scopeNote": "",
+            "sourceFieldSha256": "fc934fa350e7b24833fa71cc5992b6e4d8df15a4245f5c7869c642c51ac0bd80",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Complex Adaptive Systems & Cybernetic Competition",
+            "field": "definition",
+            "id": "KCFT-05",
+            "scopeNote": "The relevant connection is feedback and interacting causes in evaluation, not every application of cybernetics.",
+            "sourceFieldSha256": "65788e0487e15e600569a1be809821f2e25ac579664084647f8f77eaa10bb86b",
+            "type": "cluster"
+          }
+        ],
+        "connections": [
+          {
+            "expectedName": "Epistemic Infrastructure for Contested Reality",
+            "field": "definition",
+            "id": "TH-02",
+            "scopeNote": "Assessment depends on an evidence infrastructure that can observe, verify, attribute, and represent uncertainty.",
+            "sourceFieldSha256": "8e1354faff0180855023335ea4f35f64a83b29eb78924b22dd3f7c64b168daa7",
+            "type": "theme"
+          },
+          {
+            "expectedName": "Knowledge-to-Practice Pipelines for a Professionalizing Field",
+            "field": "definition",
+            "id": "TH-09",
+            "scopeNote": "Evaluation methods become useful when research, training, and operational feedback connect.",
+            "sourceFieldSha256": "baad11bd899cfe6b9b43b11b17209ccb71c09c9757039ef66eb45558ee42d44d",
+            "type": "theme"
+          }
+        ],
+        "corpus-findings": [
+          {
+            "expectedName": "Measurement, Attribution & Assessment Gaps",
+            "field": "recurringThemes",
+            "heading": "Causality, attribution, and confounding",
+            "id": "CRB-01",
+            "scopeNote": "",
+            "sourceFieldSha256": "7866e88d70e53d5418cf2799d16ac5983c4748099ebd8167acf361c987532f1e",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Measurement, Attribution & Assessment Gaps",
+            "field": "recurringThemes",
+            "heading": "Weak or missing MOE/MOP and proxy-driven assessment",
+            "id": "CRB-01",
+            "scopeNote": "",
+            "sourceFieldSha256": "65f413ebe7f8eb7e30565404c319444f5f870da775c9c04354e8dc2135da28eb",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Measurement, Attribution & Assessment Gaps",
+            "field": "recurringThemes",
+            "heading": "Baselines, longitudinal tracking, and delayed effects",
+            "id": "CRB-01",
+            "scopeNote": "",
+            "sourceFieldSha256": "40512c6acdcdc593c951377e7e41948d456a5360799e7110b83ea60a077d4e7d",
+            "type": "cluster"
+          }
+        ],
+        "tensions": [
+          {
+            "expectedName": "Standardized Proving and Optimization vs Complexity-Aware Exploration",
+            "field": "definition",
+            "id": "CT-015",
+            "scopeNote": "",
+            "sourceFieldSha256": "e8199b55bd40096379c56e431bf9c834478bdecafa23a24ed8ae126bfe5d30ad",
+            "type": "tension"
+          },
+          {
+            "expectedName": "Codified Behavioral Measurement vs Contextual Meaning-Making",
+            "field": "definition",
+            "id": "CT-016",
+            "scopeNote": "",
+            "sourceFieldSha256": "1f5c7efb52b725947840e26391f56b7809f6f8790398c13ef28dc26962ef001a",
+            "type": "tension"
+          },
+          {
+            "expectedName": "Predictive Sensemaking Confidence vs Complex-System Uncertainty",
+            "field": "definition",
+            "id": "CT-009",
+            "scopeNote": "",
+            "sourceFieldSha256": "f7ed5c54fc1daa26adf4ed8be8fd72dd2290d33c946f3fd944f1e0c383b58b09",
+            "type": "tension"
+          }
+        ],
+        "tools-methods": [
+          {
+            "expectedName": "Assessment, Modeling, & Decision-Support Systems",
+            "field": "recurringThemes",
+            "heading": "Narrative, influence, and audience assessment",
+            "id": "TTP-02",
+            "scopeNote": "",
+            "sourceFieldSha256": "ec3f4a5f8daff3281369f11c883611a841e968ac96367af2698cbf443960ea42",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Assessment, Modeling, & Decision-Support Systems",
+            "field": "recurringThemes",
+            "heading": "Structured measurement, taxonomies, and validation frameworks",
+            "id": "TTP-02",
+            "scopeNote": "",
+            "sourceFieldSha256": "5878455340d898afb8ee80f5d1f6358623550a131758d232885d0af328540be7",
+            "type": "cluster"
+          }
+        ]
+      },
+      "slug": "assessment",
+      "sourceTopics": [
+        {
+          "expectedName": "Measurement, Attribution & Assessment Gaps",
+          "id": "CRB-01",
+          "role": "core"
+        },
+        {
+          "expectedName": "Operational Learning, Assessment & Adaptation",
+          "id": "KCFT-08",
+          "role": "core"
+        },
+        {
+          "expectedName": "Assessment, Measurement & Research Rigor",
+          "id": "OPP-07",
+          "role": "core"
+        },
+        {
+          "expectedName": "Assessment, Modeling, & Decision-Support Systems",
+          "id": "TTP-02",
+          "role": "supporting"
+        },
+        {
+          "expectedName": "Complex Adaptive Systems & Cybernetic Competition",
+          "id": "KCFT-05",
+          "role": "supporting"
+        },
+        {
+          "expectedName": "Forecasting, Complexity & Uncertainty",
+          "id": "CRB-10",
+          "role": "supporting"
+        },
+        {
+          "expectedName": "Campaigning, Targeting & Influence Operations",
+          "id": "OPP-05",
+          "role": "supporting"
+        }
+      ],
+      "title": "Assessment & Measuring Effects"
+    },
+    {
+      "exclusions": "Do not turn the page into all communication delivery, every identity conflict, or every public-diplomacy institution.",
+      "featuredEpisodes": [
+        {
+          "episodeId": "EPI-C26B3F8D3A19C890",
+          "expectedEpisodeNumber": 89,
+          "quoteId": null,
+          "summarySha256": "5f90e454990bef114aeccd5b2d06012ecdf89a7945c4f56863a8acc098b34074",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Introduces their distinction between narrative as a structure of meaning and the individual stories or messages used to communicate."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Explains why narrative work requires cultural and historical understanding—not simply a more compelling version of your talking points."
+            }
+          ],
+          "topicIds": [
+            "OPP-06",
+            "KCFT-03",
+            "KCFT-20"
+          ]
+        },
+        {
+          "episodeId": "EPI-B49573CAB3CB6176",
+          "expectedEpisodeNumber": 101,
+          "quoteId": null,
+          "summarySha256": "2c23436923374cb15ec9c857126d70dc77dc8dd71cee09d2723e44e4c874ea2d",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Examines how shared myths tell groups who they are, where they came from, and how members should behave."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Uses conflict and counterinsurgency examples to show why overlooking identity—or confusing myth with history—can undermine strategic understanding."
+            }
+          ],
+          "topicIds": [
+            "OPP-06",
+            "CRB-09",
+            "KCFT-03"
+          ]
+        },
+        {
+          "episodeId": "EPI-32BDE2766B7B4399",
+          "expectedEpisodeNumber": 156,
+          "quoteId": "GUIDE-QUOTE-156-01",
+          "summarySha256": "ce2fd548b801743528b96dcaee89b0cee58856ff13412cc4dc850494d2a101a8",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Explores narrative as part of the receiver’s decision process, rather than an object a communicator can simply insert into someone’s mind."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Connects story elements and emotion to research on attitudes and behavior, offering a bridge between narrative theory and operational analysis."
+            }
+          ],
+          "topicIds": [
+            "OPP-06",
+            "KCFT-03",
+            "TTP-02"
+          ]
+        },
+        {
+          "episodeId": "EPI-C539DE096F9016C6",
+          "expectedEpisodeNumber": 122,
+          "quoteId": null,
+          "summarySha256": "8fbfb21de839123eb2ea40533b237e75f7f75efa17a45d1bbe3bacd17400d4ae",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Moves narrative into organizational settings: building stakeholder understanding and support for change."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Explores narrative integrity and changes in how people talk and write over time, rather than relying only on a binary success/failure judgment."
+            }
+          ],
+          "topicIds": [
+            "OPP-06",
+            "KCFT-03",
+            "TTP-02"
+          ]
+        }
+      ],
+      "group": "Human & Cognitive",
+      "guideId": "GUIDE-NARRATIVE",
+      "scope": "Narrative as meaning-making through stories, myths, symbols, cultural memory, identity, emotion, and interpretation.",
+      "sections": {
+        "approaches": [
+          {
+            "expectedName": "Narrative, Messaging & Strategic Communication",
+            "field": "recurringThemes",
+            "heading": "Emotion, identity, symbolism, and values as persuasive levers",
+            "id": "OPP-06",
+            "scopeNote": "",
+            "sourceFieldSha256": "6312554eff4d7d408a99eb6bbea92a1ed6a230c9ad8f521b73903e0b83d0261f",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Narrative, Messaging & Strategic Communication",
+            "field": "recurringThemes",
+            "heading": "Audience-specific tailoring and localization",
+            "id": "OPP-06",
+            "scopeNote": "",
+            "sourceFieldSha256": "b16309dd3d9c7da5e8ce07958b77f1ba43b0227fb4f1d4269eb6b850efa9ba60",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Narrative, Messaging & Strategic Communication",
+            "field": "recurringThemes",
+            "heading": "Narrative as an institutional and operational capability",
+            "id": "OPP-06",
+            "scopeNote": "",
+            "sourceFieldSha256": "d61be44fde8664e9dec82719a9fa83cb399b6c6b865caebd9e1300e5686d97e8",
+            "type": "cluster"
+          }
+        ],
+        "challenges": [
+          {
+            "expectedName": "Strategic Communication, Narrative & Meaning-Making Failures",
+            "field": "definition",
+            "id": "CRB-09",
+            "scopeNote": "",
+            "sourceFieldSha256": "5ab2279a319c4f76f51c2b6ee66f2784b2112e4fd770896c1d5101b783c1e7d3",
+            "type": "cluster"
+          }
+        ],
+        "concepts": [
+          {
+            "expectedName": "Narrative, Identity & Meaning-Making",
+            "field": "definition",
+            "id": "KCFT-03",
+            "scopeNote": "",
+            "sourceFieldSha256": "38ef39bf314f3bba4d83b249a6aa9f66a43ee20ef0e8de560f77615bf58254b4",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Strategic Culture & Ideological Competition",
+            "field": "definition",
+            "id": "KCFT-20",
+            "scopeNote": "",
+            "sourceFieldSha256": "d68fb656209b83c4108a2ba3198911289b1e6d3ef3d60a0e7764890530299bd0",
+            "type": "cluster"
+          }
+        ],
+        "connections": [
+          {
+            "expectedName": "Human Reception and Societal Resilience",
+            "field": "definition",
+            "id": "TH-05",
+            "scopeNote": "Narrative is connected to reception through identity, emotion, belonging, and local trust.",
+            "sourceFieldSha256": "8e278d9808d709f867e16103934cc8deb5ce5e7d8c75fbeab8f89b7831362285",
+            "type": "theme"
+          },
+          {
+            "expectedName": "Human reception and datafied identity define both vulnerability and resilience",
+            "field": "shortVersion",
+            "id": "CN-03",
+            "scopeNote": "The narrative connects meaning and identity with vulnerability and resilience; it is broader than narrative design alone.",
+            "sourceFieldSha256": "93edf851f99687f367bf00b9d448e1dd6645f0862f2600c72e3f1f2d1ba7add2",
+            "type": "narrative"
+          }
+        ],
+        "corpus-findings": [
+          {
+            "expectedName": "Narrative, Identity & Meaning-Making",
+            "field": "recurringThemes",
+            "heading": "Narrative as meaning-making rather than messaging",
+            "id": "KCFT-03",
+            "scopeNote": "",
+            "sourceFieldSha256": "5cf0b4391661082004efdd69aa37db3749f432cdeb2bbfc892259637d6daedda",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Narrative, Identity & Meaning-Making",
+            "field": "recurringThemes",
+            "heading": "Identity, belonging, and collective mobilization",
+            "id": "KCFT-03",
+            "scopeNote": "",
+            "sourceFieldSha256": "c9ebe777f92e71e809168d3579745ee2a684878d04fb48c713e50021a6e833cc",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Narrative, Identity & Meaning-Making",
+            "field": "recurringThemes",
+            "heading": "Myths, archetypes, and symbolic story structures",
+            "id": "KCFT-03",
+            "scopeNote": "",
+            "sourceFieldSha256": "b600b95cef5575015e10b35639fad6a8341c8844e9e4d9013b6157a9bb5061c3",
+            "type": "cluster"
+          }
+        ],
+        "tensions": [
+          {
+            "expectedName": "Positive Identity-Building vs Enemy-Centered Mobilization",
+            "field": "definition",
+            "id": "CT-012",
+            "scopeNote": "",
+            "sourceFieldSha256": "e9d5546fb83b77b35f07d8ba630534abe5021ca9c38efce1dee062db1fbbb2b8",
+            "type": "tension"
+          },
+          {
+            "expectedName": "Institutional Objectivity vs Persuasive Narrative Positioning",
+            "field": "definition",
+            "id": "CT-013",
+            "scopeNote": "",
+            "sourceFieldSha256": "685d7261b71c7182ec1f9b18d6d6cfc2a49a83450313e8f30e54afa3b1eb3a78",
+            "type": "tension"
+          },
+          {
+            "expectedName": "Codified Behavioral Measurement vs Contextual Meaning-Making",
+            "field": "definition",
+            "id": "CT-016",
+            "scopeNote": "",
+            "sourceFieldSha256": "1f5c7efb52b725947840e26391f56b7809f6f8790398c13ef28dc26962ef001a",
+            "type": "tension"
+          }
+        ],
+        "tools-methods": [
+          {
+            "expectedName": "Assessment, Modeling, & Decision-Support Systems",
+            "field": "recurringThemes",
+            "heading": "Narrative, influence, and audience assessment",
+            "id": "TTP-02",
+            "scopeNote": "Read this assessment material for narrative interpretation and audience meaning, not as a universal narrative score.",
+            "sourceFieldSha256": "ec3f4a5f8daff3281369f11c883611a841e968ac96367af2698cbf443960ea42",
+            "type": "cluster"
+          }
+        ]
+      },
+      "slug": "narrative",
+      "sourceTopics": [
+        {
+          "expectedName": "Narrative, Identity & Meaning-Making",
+          "id": "KCFT-03",
+          "role": "core"
+        },
+        {
+          "expectedName": "Strategic Communication, Narrative & Meaning-Making Failures",
+          "id": "CRB-09",
+          "role": "core"
+        },
+        {
+          "expectedName": "Narrative, Messaging & Strategic Communication",
+          "id": "OPP-06",
+          "role": "core"
+        },
+        {
+          "expectedName": "Strategic Culture & Ideological Competition",
+          "id": "KCFT-20",
+          "role": "supporting"
+        },
+        {
+          "expectedName": "Societal Polarization, Identity & Democratic Resilience Risks",
+          "id": "CRM-09",
+          "role": "supporting"
+        },
+        {
+          "expectedName": "Trust, Legitimacy & Institutional Credibility Erosion",
+          "id": "CRM-08",
+          "role": "supporting"
+        }
+      ],
+      "title": "Narrative, Meaning & Identity"
+    },
+    {
+      "exclusions": "Do not relabel all information operations, every psychology concept, or every cyber capability as cognitive warfare.",
+      "featuredEpisodes": [
+        {
+          "episodeId": "EPI-2E5AFFAA14A15289",
+          "expectedEpisodeNumber": 210,
+          "quoteId": "GUIDE-QUOTE-210-01",
+          "summarySha256": "addc70e0a5f65fcf2470ab54fabf0178a6cc852f0b6b0d236d76f8eeee7307fd",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Offers a concept-development perspective, including the difficulties of establishing shared terminology across national and organizational boundaries."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Explores cognitive warfare across competition and conflict, helping listeners distinguish the proposed concept from a wartime-only activity."
+            }
+          ],
+          "topicIds": [
+            "OPP-04",
+            "CRM-04",
+            "KCFT-02"
+          ]
+        },
+        {
+          "episodeId": "EPI-B552F2FCCEEBE7AC",
+          "expectedEpisodeNumber": 175,
+          "quoteId": null,
+          "summarySha256": "d84a0ca9620e22a9e1e200cb3e13a878da96601003b32d74b5e80186a606f130",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Connects emerging technology with human perception and decision-making through his discussion of maneuver in the human dimension."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Examines why separate tactical capabilities do not automatically produce a coherent strategic approach, including public–private coordination problems."
+            }
+          ],
+          "topicIds": [
+            "OPP-03",
+            "OPP-04",
+            "CRM-04"
+          ]
+        },
+        {
+          "episodeId": "EPI-D213937315EE6410",
+          "expectedEpisodeNumber": 224,
+          "quoteId": null,
+          "summarySha256": "b173e666dcfbf3adb522bb6ca434cf0f426b5e53eeed4cce8f5c6402cabf7190",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Presents his distinction between influencing what people think and affecting how they think; treat this as a conceptual argument to examine, not a settled definition."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Raises the challenge of recognizing and attributing cognitive effects that may lack an obvious, observable attack signature."
+            }
+          ],
+          "topicIds": [
+            "OPP-04",
+            "CRM-04",
+            "KCFT-02"
+          ]
+        },
+        {
+          "episodeId": "EPI-95BD127C13BF9D4F",
+          "expectedEpisodeNumber": 225,
+          "quoteId": null,
+          "summarySha256": "d41a5a819bf02627f0c97641b7dd8c651b787a07c8e9a2c1c75b0c3328276f82",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Places cognitive warfare within competition below the threshold of conventional war, including pressure on will and decision-making."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Explores the practical implications for coordination, institutional responsibility, and responses when effects and escalation risks are ambiguous."
+            }
+          ],
+          "topicIds": [
+            "OPP-04",
+            "KCFT-01",
+            "KCFT-02"
+          ]
+        }
+      ],
+      "group": "Human & Cognitive",
+      "guideId": "GUIDE-COGNITIVE-WARFARE",
+      "scope": "Practitioner conceptions of cognition, perception, judgment, and decision processes as objects of strategic competition, including disagreements over terminology.",
+      "sections": {
+        "approaches": [
+          {
+            "expectedName": "Resilience, Inoculation & Cognitive Defense",
+            "field": "recurringThemes",
+            "heading": "Operational hardening of information environments and decision processes",
+            "id": "OPP-03",
+            "scopeNote": "",
+            "sourceFieldSha256": "0579355138bbaaefb15f068a7637e094f873fe5bb08aeec0a0ccb5053475a8bf",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Integration, Convergence & Coordination",
+            "field": "recurringThemes",
+            "heading": "Cross-functional integration of specialized capabilities",
+            "id": "OPP-04",
+            "scopeNote": "",
+            "sourceFieldSha256": "9dcfb9c4df28beacbf563c9e94cd92f6840315e6b9929132e5e2ad80e7398dbe",
+            "type": "cluster"
+          }
+        ],
+        "challenges": [
+          {
+            "expectedName": "Human Cognition, Bias & Behavioral Vulnerability",
+            "field": "definition",
+            "id": "CRB-08",
+            "scopeNote": "",
+            "sourceFieldSha256": "a8a24b611d89fd9070d85782ef76e63d47ca11aa6b7d46b32acc05dc0800d3d2",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Doctrine, Force Design & Organizational Design Gaps",
+            "field": "definition",
+            "id": "CRM-04",
+            "scopeNote": "",
+            "sourceFieldSha256": "ae84b10bc262ea400d20cbb4c43d4e7e8d7eff7a66012afea732000a4dcae7e8",
+            "type": "cluster"
+          }
+        ],
+        "concepts": [
+          {
+            "expectedName": "Information-Centric Competition",
+            "field": "definition",
+            "id": "KCFT-01",
+            "scopeNote": "",
+            "sourceFieldSha256": "4446704ff4bdd73c897cf52d55c627626148fd66827654d21452351f6cff269d",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Cognitive Security & Decision Protection",
+            "field": "definition",
+            "id": "KCFT-02",
+            "scopeNote": "",
+            "sourceFieldSha256": "dbf99c3b367347c460ec3d041748b036593a651965afbc274359eaf3dedc2dab",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Human-Centered Security & Human Terrain Concepts",
+            "field": "definition",
+            "id": "KCFT-28",
+            "scopeNote": "",
+            "sourceFieldSha256": "bc454d5f2d0172d27019763c074898a9d11cb3c975956963e23f3f3aa0da7175",
+            "type": "cluster"
+          }
+        ],
+        "connections": [
+          {
+            "expectedName": "Human Reception and Societal Resilience",
+            "field": "definition",
+            "id": "TH-05",
+            "scopeNote": "The human reception environment constrains both influence and protection.",
+            "sourceFieldSha256": "8e278d9808d709f867e16103934cc8deb5ce5e7d8c75fbeab8f89b7831362285",
+            "type": "theme"
+          },
+          {
+            "expectedName": "Legitimacy-Preserving Governance of Information Power",
+            "field": "definition",
+            "id": "TH-11",
+            "scopeNote": "Concept development and operational ambition must retain rights, accountability, and legitimacy.",
+            "sourceFieldSha256": "2233b8b94fff7cd2dc27f88f965f9d355920d806c24139a870b68b13aeb891a3",
+            "type": "theme"
+          }
+        ],
+        "corpus-findings": [
+          {
+            "expectedName": "Information-Centric Competition",
+            "field": "recurringThemes",
+            "heading": "Information as foundational or primary to warfare",
+            "id": "KCFT-01",
+            "scopeNote": "",
+            "sourceFieldSha256": "0bf3af7bec2cad058dc73fe0c6f1e5dfa7c744db98aded5399c7b7e4b51f7a72",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Information-Centric Competition",
+            "field": "recurringThemes",
+            "heading": "Narrative, cognition, and belief as the battleground",
+            "id": "KCFT-01",
+            "scopeNote": "",
+            "sourceFieldSha256": "196652fa2aed164ac54e2bb61142983b6baf2bd419cec3d3f1d64db6f4e5028c",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Cognitive Security & Decision Protection",
+            "field": "recurringThemes",
+            "heading": "Framework-building, doctrine, and multidisciplinary consolidation",
+            "id": "KCFT-02",
+            "scopeNote": "",
+            "sourceFieldSha256": "65dec4f2fe8fd16852caa8748c44e419c18f89d99419c044c25c70c6edead86a",
+            "type": "cluster"
+          }
+        ],
+        "tensions": [
+          {
+            "expectedName": "Truth-Verification Infrastructure vs Proactive Cognitive Shaping",
+            "field": "definition",
+            "id": "CT-018",
+            "scopeNote": "",
+            "sourceFieldSha256": "c3c0da6f23933475ce509ce9c410dcc1fd9f736f8f4e2fed82530c5cc419f70e",
+            "type": "tension"
+          },
+          {
+            "expectedName": "Democratic Legitimacy vs Covert or Deceptive Gray-Zone Tactics",
+            "field": "definition",
+            "id": "CT-011",
+            "scopeNote": "",
+            "sourceFieldSha256": "5d09769b16c3db6e7c0bc9df0f4ed6073ba802470c2cff29c27b68dfb72689f7",
+            "type": "tension"
+          }
+        ],
+        "tools-methods": [
+          {
+            "expectedName": "Assessment, Modeling, & Decision-Support Systems",
+            "field": "recurringThemes",
+            "heading": "Structured measurement, taxonomies, and validation frameworks",
+            "id": "TTP-02",
+            "scopeNote": "Shared definitions and test frameworks matter here; this is not a claim that cognitive-warfare effects have been validated.",
+            "sourceFieldSha256": "5878455340d898afb8ee80f5d1f6358623550a131758d232885d0af328540be7",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "#224 Jake Bebber on Cognitive Warfare",
+            "field": "summary",
+            "id": "EPI-D213937315EE6410",
+            "label": "A shared vocabulary for cognitive warfare",
+            "scopeNote": "This is Bebber’s proposal, not a newly validated PSYWERX method.",
+            "sourceFieldSha256": "b173e666dcfbf3adb522bb6ca434cf0f426b5e53eeed4cce8f5c6402cabf7190",
+            "span": [
+              889,
+              1053
+            ],
+            "type": "episode"
+          }
+        ]
+      },
+      "slug": "cognitive-warfare",
+      "sourceTopics": [
+        {
+          "expectedName": "Information-Centric Competition",
+          "id": "KCFT-01",
+          "role": "core"
+        },
+        {
+          "expectedName": "Cognitive Security & Decision Protection",
+          "id": "KCFT-02",
+          "role": "core"
+        },
+        {
+          "expectedName": "Cognitive / Information Warfare Centrality",
+          "id": "FTP-01",
+          "role": "core"
+        },
+        {
+          "expectedName": "Human-Centered Security & Human Terrain Concepts",
+          "id": "KCFT-28",
+          "role": "supporting"
+        },
+        {
+          "expectedName": "Cross-Domain & Integrated Competition Frameworks",
+          "id": "KCFT-29",
+          "role": "supporting"
+        },
+        {
+          "expectedName": "Strategic Influence & Adversarial Competition Models",
+          "id": "KCFT-06",
+          "role": "supporting"
+        },
+        {
+          "expectedName": "Deception & Reflexive Control Frameworks",
+          "id": "KCFT-15",
+          "role": "supporting"
+        },
+        {
+          "expectedName": "Persistent Competition & Gray-Zone Conflict",
+          "id": "FTP-06",
+          "role": "supporting"
+        }
+      ],
+      "title": "Cognitive Warfare"
+    },
+    {
+      "exclusions": "Do not absorb all audience targeting, general education policy, or neuroscience hardware.",
+      "featuredEpisodes": [
+        {
+          "episodeId": "EPI-E581259D90BA39E8",
+          "expectedEpisodeNumber": 11,
+          "quoteId": null,
+          "summarySha256": "c17dba53280a57158ed579f90d8dda59630c0ee4f5fe7ef1c2750f9116f735b2",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Shifts attention from message design to the networks and social norms that shape whether a message can change behavior."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Uses demobilization and reintegration work to illustrate why communicators must consider community interpretation and unintended social consequences."
+            }
+          ],
+          "topicIds": [
+            "OPP-06",
+            "KCFT-09",
+            "KCFT-03"
+          ]
+        },
+        {
+          "episodeId": "EPI-23EF07D9469BC15C",
+          "expectedEpisodeNumber": 116,
+          "quoteId": null,
+          "summarySha256": "31c833cb199f7de77f0b430e008d2f24601c38d1f6082bd0c201733ee766a7a9",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Explains how people learn through their social connections, and why position within a network affects access to information."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Examines how information changes as it travels, helping explain why distribution and social structure matter alongside message accuracy."
+            }
+          ],
+          "topicIds": [
+            "OPP-06",
+            "CRB-08",
+            "KCFT-09"
+          ]
+        },
+        {
+          "episodeId": "EPI-D3A19C1E01202A56",
+          "expectedEpisodeNumber": 59,
+          "quoteId": null,
+          "summarySha256": "838200acae5ee17334c67c7937a5f1e2e583a8f594e117ae367524fbae3c4972",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Explores how people recognize group membership and maintain allegiance to communities that include many strangers."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Draws attention to subtle signals of belonging and exclusion—a useful foundation for understanding why information can be accepted or rejected on social grounds."
+            }
+          ],
+          "topicIds": [
+            "OPP-06",
+            "OPP-03",
+            "CRB-08"
+          ]
+        },
+        {
+          "episodeId": "EPI-8BE731F9832DD63E",
+          "expectedEpisodeNumber": 140,
+          "quoteId": "GUIDE-QUOTE-140-01",
+          "summarySha256": "ddcfa843964dc3d0969c3746d861ffcc7d784edcf543adf1524d052125a6c734",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Introduces the human limits behind attention, multitasking, situational awareness, and performance in complex systems."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Connects those limits to system design and information overload, adding an individual-level perspective to the other episodes’ social explanations."
+            }
+          ],
+          "topicIds": [
+            "CRB-08",
+            "KCFT-09"
+          ]
+        }
+      ],
+      "group": "Human & Cognitive",
+      "guideId": "GUIDE-INFLUENCE-PSYCHOLOGY",
+      "scope": "Psychological, social, and behavioral mechanisms affecting reception and action: norms, belonging, social learning, attention, workload, incentives, and habits.",
+      "sections": {
+        "approaches": [
+          {
+            "expectedName": "Narrative, Messaging & Strategic Communication",
+            "field": "recurringThemes",
+            "heading": "Audience-specific tailoring and localization",
+            "id": "OPP-06",
+            "scopeNote": "",
+            "sourceFieldSha256": "b16309dd3d9c7da5e8ce07958b77f1ba43b0227fb4f1d4269eb6b850efa9ba60",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Resilience, Inoculation & Cognitive Defense",
+            "field": "recurringThemes",
+            "heading": "Identity, belonging, and community cohesion as protective buffers",
+            "id": "OPP-03",
+            "scopeNote": "",
+            "sourceFieldSha256": "0d95deb5b957bc8de5de8c8510e2d0a1961f2e906b8045857d938df325ee43c4",
+            "type": "cluster"
+          }
+        ],
+        "challenges": [
+          {
+            "expectedName": "Human Cognition, Bias & Behavioral Vulnerability",
+            "field": "definition",
+            "id": "CRB-08",
+            "scopeNote": "",
+            "sourceFieldSha256": "a8a24b611d89fd9070d85782ef76e63d47ca11aa6b7d46b32acc05dc0800d3d2",
+            "type": "cluster"
+          }
+        ],
+        "concepts": [
+          {
+            "expectedName": "Human Factors & Behavioral Design",
+            "field": "definition",
+            "id": "KCFT-09",
+            "scopeNote": "",
+            "sourceFieldSha256": "221b6783a1ad795cb69c1615c6dea74e81c83d594264d77c7886b79dd4d75ce9",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Narrative, Identity & Meaning-Making",
+            "field": "definition",
+            "id": "KCFT-03",
+            "scopeNote": "",
+            "sourceFieldSha256": "38ef39bf314f3bba4d83b249a6aa9f66a43ee20ef0e8de560f77615bf58254b4",
+            "type": "cluster"
+          }
+        ],
+        "connections": [
+          {
+            "expectedName": "Human Reception and Societal Resilience",
+            "field": "definition",
+            "id": "TH-05",
+            "scopeNote": "The theme connects individual cognitive mechanisms with social context, trust, and group membership.",
+            "sourceFieldSha256": "8e278d9808d709f867e16103934cc8deb5ce5e7d8c75fbeab8f89b7831362285",
+            "type": "theme"
+          },
+          {
+            "expectedName": "Human reception and datafied identity define both vulnerability and resilience",
+            "field": "shortVersion",
+            "id": "CN-03",
+            "scopeNote": "This broader synthesis shows why the same human conditions can create vulnerabilities and protection.",
+            "sourceFieldSha256": "93edf851f99687f367bf00b9d448e1dd6645f0862f2600c72e3f1f2d1ba7add2",
+            "type": "narrative"
+          }
+        ],
+        "corpus-findings": [
+          {
+            "expectedName": "Human Factors & Behavioral Design",
+            "field": "recurringThemes",
+            "heading": "Heuristics, dual-process cognition, and belief updating",
+            "id": "KCFT-09",
+            "scopeNote": "",
+            "sourceFieldSha256": "909a1f9c1175885bd1b69e877f3be4bb2e598201e9a34b2ec3ddd2ef6cbab499",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Human Factors & Behavioral Design",
+            "field": "recurringThemes",
+            "heading": "Habits, routines, incentives, defaults, and friction",
+            "id": "KCFT-09",
+            "scopeNote": "",
+            "sourceFieldSha256": "7cfc34d37c4d189ab5db165ad321d6ed8a60e69047062ea85f442f7b6cd70b68",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Human Factors & Behavioral Design",
+            "field": "recurringThemes",
+            "heading": "Social identity, norms, belonging, and audience fit",
+            "id": "KCFT-09",
+            "scopeNote": "",
+            "sourceFieldSha256": "2eae0d8e202c012453090a290427b3b9b4039e62f631e681fbb7839f383052ac",
+            "type": "cluster"
+          }
+        ],
+        "tensions": [
+          {
+            "expectedName": "Codified Behavioral Measurement vs Contextual Meaning-Making",
+            "field": "definition",
+            "id": "CT-016",
+            "scopeNote": "",
+            "sourceFieldSha256": "1f5c7efb52b725947840e26391f56b7809f6f8790398c13ef28dc26962ef001a",
+            "type": "tension"
+          },
+          {
+            "expectedName": "Positive Identity-Building vs Enemy-Centered Mobilization",
+            "field": "definition",
+            "id": "CT-012",
+            "scopeNote": "",
+            "sourceFieldSha256": "e9d5546fb83b77b35f07d8ba630534abe5021ca9c38efce1dee062db1fbbb2b8",
+            "type": "tension"
+          }
+        ],
+        "tools-methods": [
+          {
+            "expectedName": "Human Factors & Behavioral Design",
+            "field": "recurringThemes",
+            "heading": "Cognitive ergonomics and human-machine fit",
+            "id": "KCFT-09",
+            "scopeNote": "",
+            "sourceFieldSha256": "8fb4a116f51994f99897598e1364ad9f59917ee6629926b44fc70a71645538bc",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Human Factors & Behavioral Design",
+            "field": "recurringThemes",
+            "heading": "Measurement, instrumentation, and adaptive feedback",
+            "id": "KCFT-09",
+            "scopeNote": "",
+            "sourceFieldSha256": "8818c8510e98ed7e7f48e157ad6bf8db1142aa6b7497f5e8dd93c8cedfb37220",
+            "type": "cluster"
+          }
+        ]
+      },
+      "slug": "influence-psychology",
+      "sourceTopics": [
+        {
+          "expectedName": "Human Factors & Behavioral Design",
+          "id": "KCFT-09",
+          "role": "core"
+        },
+        {
+          "expectedName": "Human Cognition, Bias & Behavioral Vulnerability",
+          "id": "CRB-08",
+          "role": "core"
+        },
+        {
+          "expectedName": "Narrative, Identity & Meaning-Making",
+          "id": "KCFT-03",
+          "role": "supporting"
+        },
+        {
+          "expectedName": "Targeting, Segmentation & Audience Analysis",
+          "id": "KCFT-22",
+          "role": "supporting"
+        },
+        {
+          "expectedName": "Human-Centered Security & Human Terrain Concepts",
+          "id": "KCFT-28",
+          "role": "supporting"
+        },
+        {
+          "expectedName": "Learning, Education & Cognitive Development Frameworks",
+          "id": "KCFT-30",
+          "role": "supporting"
+        },
+        {
+          "expectedName": "Human-State, Neurocognitive, & Biometric Systems",
+          "id": "TTP-10",
+          "role": "supporting"
+        }
+      ],
+      "title": "Influence Psychology & Behavior"
+    },
+    {
+      "exclusions": "Do not include all software, all immersive media, or all governance and analytics material.",
+      "featuredEpisodes": [
+        {
+          "episodeId": "EPI-257ED7F3F118A1A6",
+          "expectedEpisodeNumber": 12,
+          "quoteId": null,
+          "summarySha256": "bc60b3162b0931947abb7a016a912df59430e47706e37ea8e216a5798d02df2d",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Provides a foundational discussion of synthetic audio, imagery, and video, alongside the contest between generation and detection."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Frames deepfakes as a problem of authenticity and trust, not merely a collection of impressive technical demonstrations."
+            }
+          ],
+          "topicIds": [
+            "OPP-08",
+            "CRM-05",
+            "CRB-05"
+          ]
+        },
+        {
+          "episodeId": "EPI-9706947498F76D27",
+          "expectedEpisodeNumber": 86,
+          "quoteId": null,
+          "summarySha256": "051235c5fd5e3eab3ac3c61f3e232eb1b11293e986068621e16edd6b84ad5cd5",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Examines how adversarial manipulation can turn an apparently useful AI capability into a source of operational risk."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Encourages listeners to consider threat models and human verification alongside performance claims—a counterweight to capability-first enthusiasm."
+            }
+          ],
+          "topicIds": [
+            "OPP-09",
+            "CRM-05",
+            "KCFT-11"
+          ]
+        },
+        {
+          "episodeId": "EPI-15C6375A05F2A435",
+          "expectedEpisodeNumber": 227,
+          "quoteId": "GUIDE-QUOTE-227-01",
+          "summarySha256": "c277a764df8191cc1c23b39a78cf1edebaff6e1f76632cdc0cd8436358dc2106",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Explores the shift from AI that generates content to AI assistants that perform tasks and act on a user’s behalf."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Raises the possibility that trusted assistants themselves become targets for manipulation, making delegation and oversight central security questions."
+            }
+          ],
+          "topicIds": [
+            "OPP-08",
+            "CRM-05",
+            "CRB-05"
+          ]
+        },
+        {
+          "episodeId": "EPI-3916968232AFA481",
+          "expectedEpisodeNumber": 238,
+          "quoteId": null,
+          "summarySha256": "57985b64b13164cfda6abb7a4d97ad7ea87591d298841e6e062a980a06bbcdaa",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Discusses practical applications of AI to information operations and analysis, including making complex commercial relationships easier to investigate."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Offers an operator-oriented perspective on analyst capacity, narrative monitoring, and the emerging competition between automated information systems."
+            }
+          ],
+          "topicIds": [
+            "OPP-08",
+            "TTP-06"
+          ]
+        }
+      ],
+      "group": "Threats & Resilience",
+      "guideId": "GUIDE-AI-SYNTHETIC-MEDIA",
+      "scope": "AI-mediated influence, synthetic content, adversarial model vulnerabilities, human oversight, and delegated agents in the information environment.",
+      "sections": {
+        "approaches": [
+          {
+            "expectedName": "Data, AI, OSINT & Analytic Infrastructure",
+            "field": "recurringThemes",
+            "heading": "Provenance, authenticity, and deepfake defense",
+            "id": "OPP-08",
+            "scopeNote": "",
+            "sourceFieldSha256": "0d1b122aa37c98cab764df9de7a2033c11361b5ddd5f66a40b369c0b5a9d13ac",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Technology Standards, Governance & Risk Controls",
+            "field": "recurringThemes",
+            "heading": "Human oversight and governance of AI-enabled workflows",
+            "id": "OPP-09",
+            "scopeNote": "",
+            "sourceFieldSha256": "831fc7d13649555aad17198731ffe226317b4ea7cefd422e60d964e056054745",
+            "type": "cluster"
+          }
+        ],
+        "challenges": [
+          {
+            "expectedName": "AI, Automation & Model Reliability Risks",
+            "field": "definition",
+            "id": "CRM-05",
+            "scopeNote": "",
+            "sourceFieldSha256": "6595a4f1966d0eab3fa31cf3ead7a3c5b7eb9b0c260dc5c676ff8e626417afa2",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Synthetic Media, Verification & Authenticity Collapse",
+            "field": "definition",
+            "id": "CRB-05",
+            "scopeNote": "",
+            "sourceFieldSha256": "914555c621261baf7d76a102ba62435d26aa6e1be47ffd41d23b48eb5fc6dd24",
+            "type": "cluster"
+          }
+        ],
+        "concepts": [
+          {
+            "expectedName": "AI, Automation & Computational Influence",
+            "field": "definition",
+            "id": "KCFT-11",
+            "scopeNote": "",
+            "sourceFieldSha256": "1b1d1ca26743be5668f52e6f72d04db96e7b077a37c1221ef6682d16c23fd16e",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Human-Machine & Immersive Cognition",
+            "field": "definition",
+            "id": "KCFT-19",
+            "scopeNote": "This connection concerns AI-mediated cognition and human-machine interaction; immersive technology is not synonymous with AI.",
+            "sourceFieldSha256": "828685da55d9361128f6c7eee17ea63e44279d38ac1c758a8a8a7409bf754769",
+            "type": "cluster"
+          }
+        ],
+        "connections": [
+          {
+            "expectedName": "AI-Enabled Scale as Both Overmatch and Exposure",
+            "field": "definition",
+            "id": "TH-04",
+            "scopeNote": "The central connection is that computational scale increases capability and exposure together.",
+            "sourceFieldSha256": "3214215a0beb99c6ed54ca47665c7c8c2cb30f400de39dbe7fa95b6f81933fb5",
+            "type": "theme"
+          },
+          {
+            "expectedName": "AI accelerates capability and risk simultaneously",
+            "field": "shortVersion",
+            "id": "CN-04",
+            "scopeNote": "The narrative integrates analytic gains with reliability, privacy, and epistemic risks.",
+            "sourceFieldSha256": "0bf36adca43bbc78ab0f742666c5ba22f9625921be65a4f4738cc8075df25a29",
+            "type": "narrative"
+          }
+        ],
+        "corpus-findings": [
+          {
+            "expectedName": "AI, Automation, and Synthetic Capability",
+            "field": "finding",
+            "id": "CF-TTP-F03",
+            "scopeNote": "",
+            "sourceFieldSha256": "a5633bf8ed2672dcdebef1f9999091e6f39c2639c21a083bcd72175693059607",
+            "type": "finding"
+          },
+          {
+            "expectedName": "Synthetic Media & Reality Manipulation Systems",
+            "field": "recurringThemes",
+            "heading": "Deepfakes and synthetic media erode trust in evidence and institutions",
+            "id": "TTP-11",
+            "scopeNote": "",
+            "sourceFieldSha256": "6be441684ba225a3e6f73b4e172954b663a087fd47baf7ce03a4cc0e1331488b",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "AI, Automation, & Computational Influence Systems",
+            "field": "recurringThemes",
+            "heading": "Human-machine teaming and bounded automation",
+            "id": "TTP-06",
+            "scopeNote": "",
+            "sourceFieldSha256": "10eb7e39c4ef4a166cdae0fcca629734d4f07e9480994cf6f90a79498cb7cbf3",
+            "type": "cluster"
+          }
+        ],
+        "tensions": [
+          {
+            "expectedName": "AI-Enabled Operational Tempo and Scale vs Reliable Human Control",
+            "field": "definition",
+            "id": "CT-001",
+            "scopeNote": "",
+            "sourceFieldSha256": "d6a4186e88fef962dd908d097aa5b200c3765f0f42b529b8c40ea20cd3097eff",
+            "type": "tension"
+          },
+          {
+            "expectedName": "AI as Analytic Capability vs Epistemic Degradation",
+            "field": "definition",
+            "id": "CT-003",
+            "scopeNote": "",
+            "sourceFieldSha256": "b27c63fb1a5d6ec4cd0352fbac75425aebf3cb9b238501ab2d2e3c59e627c16b",
+            "type": "tension"
+          },
+          {
+            "expectedName": "Personalized and Immersive Influence vs Privacy, Authenticity, and Consent Safeguards",
+            "field": "definition",
+            "id": "CT-004",
+            "scopeNote": "",
+            "sourceFieldSha256": "0410d080683b4c0c17041ce95548023619d4549ae51bd3d8a255f6343ca0441c",
+            "type": "tension"
+          }
+        ],
+        "tools-methods": [
+          {
+            "expectedName": "AI, Automation, & Computational Influence Systems",
+            "field": "recurringThemes",
+            "heading": "AI for analytic throughput, triage, and decision acceleration",
+            "id": "TTP-06",
+            "scopeNote": "",
+            "sourceFieldSha256": "b33841195c8ca542a463219ee409588487716cf6fdfc96e27685408d1988d604",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Synthetic Media & Reality Manipulation Systems",
+            "field": "recurringThemes",
+            "heading": "Detection, watermarking, provenance, and forensic workflows are necessary but insufficient",
+            "id": "TTP-11",
+            "scopeNote": "",
+            "sourceFieldSha256": "d0ee18182ba90df11ee6e779482871c2f62d698fa518fd3c8cf911c71f197c03",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "AI, Automation, & Computational Influence Systems",
+            "field": "recurringThemes",
+            "heading": "Adversarial ML, guardrail bypass, and model brittleness",
+            "id": "TTP-06",
+            "scopeNote": "",
+            "sourceFieldSha256": "9e622f1e4e90a473f7f26d572cafcdb7fb70778bad460b323ea5916ed5507e7a",
+            "type": "cluster"
+          }
+        ]
+      },
+      "slug": "ai-synthetic-media",
+      "sourceTopics": [
+        {
+          "expectedName": "AI, Automation & Computational Influence",
+          "id": "KCFT-11",
+          "role": "core"
+        },
+        {
+          "expectedName": "AI, Automation & Model Reliability Risks",
+          "id": "CRM-05",
+          "role": "core"
+        },
+        {
+          "expectedName": "Synthetic Media, Verification & Authenticity Collapse",
+          "id": "CRB-05",
+          "role": "core"
+        },
+        {
+          "expectedName": "AI, Automation, & Computational Influence Systems",
+          "id": "TTP-06",
+          "role": "core"
+        },
+        {
+          "expectedName": "Synthetic Media & Reality Manipulation Systems",
+          "id": "TTP-11",
+          "role": "core"
+        },
+        {
+          "expectedName": "AI-Enabled Influence & Synthetic Media",
+          "id": "FTP-02",
+          "role": "core"
+        },
+        {
+          "expectedName": "Human–AI Teaming & Cognitive Integration",
+          "id": "FTP-03",
+          "role": "core"
+        },
+        {
+          "expectedName": "Human-Machine & Immersive Cognition",
+          "id": "KCFT-19",
+          "role": "supporting"
+        },
+        {
+          "expectedName": "Data, AI, OSINT & Analytic Infrastructure",
+          "id": "OPP-08",
+          "role": "supporting"
+        },
+        {
+          "expectedName": "Technology Standards, Governance & Risk Controls",
+          "id": "OPP-09",
+          "role": "supporting"
+        },
+        {
+          "expectedName": "Trust, Verification, & Epistemic Security",
+          "id": "FTP-05",
+          "role": "supporting"
+        }
+      ],
+      "title": "AI & Synthetic Media"
+    },
+    {
+      "exclusions": "Do not equate all persuasion, covert activity, disagreement, synthetic content, or strategic influence with disinformation.",
+      "featuredEpisodes": [
+        {
+          "episodeId": "EPI-95501C82982B82BE",
+          "expectedEpisodeNumber": 208,
+          "quoteId": "GUIDE-QUOTE-208-01",
+          "summarySha256": "5015512f5edc24d780c2c8571000037ec894674c152dc6d6cf141c2cc62086d8",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Introduces manipulation as a process to understand, rather than reducing the problem to naming a bad actor or labeling a false claim."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Helps separate questions about truthfulness from questions about the behavioral effect an information activity is trying to produce."
+            }
+          ],
+          "topicIds": [
+            "OPP-03",
+            "KCFT-06",
+            "TTP-04"
+          ]
+        },
+        {
+          "episodeId": "EPI-95EDBF40FF3A8060",
+          "expectedEpisodeNumber": 20,
+          "quoteId": null,
+          "summarySha256": "f4ffdcd1a44fd79a28907adaff73c066a445b2eb160eb57d0236661b92f974e9",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Explains the high-volume, repetitive, multichannel propaganda model and why consistency is not always necessary for it to function."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Offers a starting point for understanding why correcting individual claims may be poorly matched to the larger campaign."
+            }
+          ],
+          "topicIds": [
+            "OPP-03",
+            "OPP-06",
+            "KCFT-06"
+          ]
+        },
+        {
+          "episodeId": "EPI-D6E94B25B9E85B9C",
+          "expectedEpisodeNumber": 154,
+          "quoteId": null,
+          "summarySha256": "1457ab63deb0cc843352ca6dc8f8c6dc3c09e01cf468ce3c503ad7f43b21a2ea",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Brings a historical practitioner perspective to distinguishing deliberate deception from error and other forms of influence."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Explores covert influence and active measures, reminding listeners that an influence operation can involve true information as well as fabrication."
+            }
+          ],
+          "topicIds": [
+            "OPP-03",
+            "OPP-06",
+            "KCFT-06"
+          ]
+        },
+        {
+          "episodeId": "EPI-4A2FF022C022F6A5",
+          "expectedEpisodeNumber": 223,
+          "quoteId": null,
+          "summarySha256": "e963a161022066e86f57221503d5887db78962253237e4f409e5c10355245610",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Asks why audiences seek, select, and circulate problematic information—not just why adversaries produce it."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Adds audience incentives and platform dynamics to the diagnosis, challenging responses that focus exclusively on reducing the supply of false content."
+            }
+          ],
+          "topicIds": [
+            "CRB-05",
+            "CRM-06",
+            "TTP-04"
+          ]
+        }
+      ],
+      "group": "Threats & Resilience",
+      "guideId": "GUIDE-DISINFORMATION",
+      "scope": "Misleading information and manipulation campaigns: production, distribution, demand, deception, authenticity, and responses.",
+      "sections": {
+        "approaches": [
+          {
+            "expectedName": "Resilience, Inoculation & Cognitive Defense",
+            "field": "recurringThemes",
+            "heading": "Prebunking and inoculation as first-line defense",
+            "id": "OPP-03",
+            "scopeNote": "",
+            "sourceFieldSha256": "fa12851c3f6622d52c83f5fc23e5a94f9309c0d547bdae50990c75e04db1dd30",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Resilience, Inoculation & Cognitive Defense",
+            "field": "recurringThemes",
+            "heading": "Media literacy, verification, and cognitive hygiene",
+            "id": "OPP-03",
+            "scopeNote": "",
+            "sourceFieldSha256": "6d66f8ce678eb935c79e94ffc0fbaa437afe3329606047d278e7ac0b019fc32f",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Narrative, Messaging & Strategic Communication",
+            "field": "recurringThemes",
+            "heading": "Pre-bunking, rebuttal, and rumor control",
+            "id": "OPP-06",
+            "scopeNote": "",
+            "sourceFieldSha256": "3a252a788e65329ad9ebed58062ced85a375ff42367dcb50a33a49395ad36bf5",
+            "type": "cluster"
+          }
+        ],
+        "challenges": [
+          {
+            "expectedName": "Synthetic Media, Verification & Authenticity Collapse",
+            "field": "definition",
+            "id": "CRB-05",
+            "scopeNote": "",
+            "sourceFieldSha256": "914555c621261baf7d76a102ba62435d26aa6e1be47ffd41d23b48eb5fc6dd24",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Platform, Algorithmic & Attention-Economy Distortions",
+            "field": "definition",
+            "id": "CRM-06",
+            "scopeNote": "",
+            "sourceFieldSha256": "2230e1ed066bda3583ff4453147b7bd68bdb88fd31301572a2461598a4200526",
+            "type": "cluster"
+          }
+        ],
+        "concepts": [
+          {
+            "expectedName": "Strategic Influence & Adversarial Competition Models",
+            "field": "definition",
+            "id": "KCFT-06",
+            "scopeNote": "Active measures and organized deception are relevant here; not every strategic-influence activity is disinformation.",
+            "sourceFieldSha256": "d7efdbf667cea01750c147a81ff5519bb8a71cd52b81f07db58c56292fc9a21f",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Epistemic Infrastructure & Knowledge Systems",
+            "field": "definition",
+            "id": "KCFT-10",
+            "scopeNote": "",
+            "sourceFieldSha256": "45c735185dbc3e944d4d8b3a8db7a77a746ab2c08b272b9b219b7048c623482c",
+            "type": "cluster"
+          }
+        ],
+        "connections": [
+          {
+            "expectedName": "Epistemic Infrastructure for Contested Reality",
+            "field": "definition",
+            "id": "TH-02",
+            "scopeNote": "Verification and attribution make the source and reliability of claims inspectable.",
+            "sourceFieldSha256": "8e1354faff0180855023335ea4f35f64a83b29eb78924b22dd3f7c64b168daa7",
+            "type": "theme"
+          },
+          {
+            "expectedName": "Platform Architecture as the Terrain of Influence",
+            "field": "definition",
+            "id": "TH-03",
+            "scopeNote": "Distribution and amplification shape the reach of deceptive content.",
+            "sourceFieldSha256": "a1ae2e40538b36d2db34111467749d0510cd2c5210f28430fdce7c67a3b3c538",
+            "type": "theme"
+          },
+          {
+            "expectedName": "Contested reality makes epistemic and platform infrastructure a strategic capability",
+            "field": "shortVersion",
+            "id": "CN-02",
+            "scopeNote": "The broader narrative links contested reality to the systems that make information visible and verifiable.",
+            "sourceFieldSha256": "643054e41185ac526e2e21236d98ab09b72c336d5114708006a6dc8bbacd1ab2",
+            "type": "narrative"
+          }
+        ],
+        "corpus-findings": [
+          {
+            "expectedName": "Epistemic Infrastructure & Knowledge Systems",
+            "field": "recurringThemes",
+            "heading": "Truth decay, disinformation, and epistemic warfare",
+            "id": "KCFT-10",
+            "scopeNote": "",
+            "sourceFieldSha256": "830b3d61e43d5efc21861204c3fe84dc934b4cc61ee857af9d5ae8c9966331b0",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Algorithmic Amplification & Platform Dynamics",
+            "field": "recurringThemes",
+            "heading": "Bots, sockpuppets, and coordinated inauthentic amplification",
+            "id": "TTP-04",
+            "scopeNote": "",
+            "sourceFieldSha256": "1cd9e2cea4a757b3024335f656c7e5437ed4240401ec2eb7592f1f02a922822f",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Synthetic Media & Reality Manipulation Systems",
+            "field": "recurringThemes",
+            "heading": "Deepfakes and synthetic media erode trust in evidence and institutions",
+            "id": "TTP-11",
+            "scopeNote": "",
+            "sourceFieldSha256": "6be441684ba225a3e6f73b4e172954b663a087fd47baf7ce03a4cc0e1331488b",
+            "type": "cluster"
+          }
+        ],
+        "tensions": [
+          {
+            "expectedName": "Supply-Side Disruption vs Demand-Side Susceptibility",
+            "field": "definition",
+            "id": "CT-017",
+            "scopeNote": "",
+            "sourceFieldSha256": "a0950030e91270bd2bd69f4bf9bc2e47c40bef291cc9043524677c734e588585",
+            "type": "tension"
+          },
+          {
+            "expectedName": "Credibility-Based Influence vs Falsehood and Saturation",
+            "field": "definition",
+            "id": "CT-014",
+            "scopeNote": "",
+            "sourceFieldSha256": "9a48217da69f4204c244dd576df5c0b2836fd70979fe65020eafc59cfa13694e",
+            "type": "tension"
+          },
+          {
+            "expectedName": "Foreign Threat Focus vs Domestic Epistemic Vulnerability",
+            "field": "definition",
+            "id": "CT-008",
+            "scopeNote": "",
+            "sourceFieldSha256": "f422df200ada7986805a32dc9aba7c875385d323b5e9a69ad92682297bba30a1",
+            "type": "tension"
+          }
+        ],
+        "tools-methods": [
+          {
+            "expectedName": "Governance, Moderation, & Information Control Systems",
+            "field": "recurringThemes",
+            "heading": "Trust, verification, and provenance infrastructure",
+            "id": "TTP-05",
+            "scopeNote": "",
+            "sourceFieldSha256": "327de595d34a8d6e8b1641e05de57b4472e3a45298deefa0ae621ef28871427e",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Information Environment Sensing & Collection Systems",
+            "field": "recurringThemes",
+            "heading": "Narrative, disinformation, and media-manipulation monitoring",
+            "id": "TTP-01",
+            "scopeNote": "",
+            "sourceFieldSha256": "16a0f7a6b5607a45dd598207e2bf410fec77b1df83c6be0d9492f2cf9f27fc29",
+            "type": "cluster"
+          }
+        ]
+      },
+      "slug": "disinformation",
+      "sourceTopics": [
+        {
+          "expectedName": "Strategic Influence & Adversarial Competition Models",
+          "id": "KCFT-06",
+          "role": "core"
+        },
+        {
+          "expectedName": "Synthetic Media, Verification & Authenticity Collapse",
+          "id": "CRB-05",
+          "role": "core"
+        },
+        {
+          "expectedName": "Epistemic Infrastructure & Knowledge Systems",
+          "id": "KCFT-10",
+          "role": "supporting"
+        },
+        {
+          "expectedName": "Platform, Algorithmic & Attention-Economy Distortions",
+          "id": "CRM-06",
+          "role": "supporting"
+        },
+        {
+          "expectedName": "Media Literacy & Cognitive Preparedness",
+          "id": "KCFT-16",
+          "role": "supporting"
+        },
+        {
+          "expectedName": "Resilience, Inoculation & Cognitive Defense",
+          "id": "OPP-03",
+          "role": "supporting"
+        },
+        {
+          "expectedName": "Algorithmic Amplification & Platform Dynamics",
+          "id": "TTP-04",
+          "role": "supporting"
+        },
+        {
+          "expectedName": "Governance, Moderation, & Information Control Systems",
+          "id": "TTP-05",
+          "role": "supporting"
+        },
+        {
+          "expectedName": "Deception & Reflexive Control Frameworks",
+          "id": "KCFT-15",
+          "role": "supporting"
+        }
+      ],
+      "title": "Disinformation"
+    },
+    {
+      "exclusions": "Do not include all technical hardening, all education, or every trust/polarization observation.",
+      "featuredEpisodes": [
+        {
+          "episodeId": "EPI-58514C9CB7FC58AD",
+          "expectedEpisodeNumber": 68,
+          "quoteId": "GUIDE-QUOTE-068-01",
+          "summarySha256": "76d62137e8ffa5b1c18cb79a72cd712ab171314c4d6dc327c0a8544825047098",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Introduces cognitive immunology as a way of thinking about how people resist misleading ideas and improve their reasoning."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Provides a conceptual entry point into inoculation, while inviting scrutiny of when an “immune system” analogy helps—and when it could mislead."
+            }
+          ],
+          "topicIds": [
+            "OPP-03",
+            "CRM-08",
+            "KCFT-12"
+          ]
+        },
+        {
+          "episodeId": "EPI-6AA0E68D0BD6D75F",
+          "expectedEpisodeNumber": 103,
+          "quoteId": null,
+          "summarySha256": "225c39a940aa889ff809fa62504e44a9c638c0d590dc7b3491734bb043ae752b",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Discusses psychological inoculation and games that teach people to recognize recurring manipulation techniques."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Explores the evidence and limits of these interventions, including why individual-level training is not a substitute for wider changes to the information environment."
+            }
+          ],
+          "topicIds": [
+            "OPP-03",
+            "CRM-09",
+            "KCFT-12"
+          ]
+        },
+        {
+          "episodeId": "EPI-3232C7593DC1AD5D",
+          "expectedEpisodeNumber": 181,
+          "quoteId": null,
+          "summarySha256": "f231c86b9de706c0572496996e3e0c9734784967ae9f38addc2149933473fb89",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Treats media literacy as a capability developed through sustained learning rather than a one-time awareness briefing."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Connects education with national resilience through Nordic examples, sustained curricula, trainer development, and peer discussion."
+            }
+          ],
+          "topicIds": [
+            "OPP-03",
+            "CRM-08",
+            "CRM-09"
+          ]
+        },
+        {
+          "episodeId": "EPI-5D5326D4238050AF",
+          "expectedEpisodeNumber": 73,
+          "quoteId": null,
+          "summarySha256": "27285899a5f0a5c9043c6a4928d0da3f825afbcf07d6b49be3e6034d58fbc449",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Explores how decentralized organizations differ from hierarchical ones in their ability to adapt and withstand disruption."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Adds relationships, shared values, and inclusion to the resilience discussion, broadening the focus beyond individual fact-checking skills."
+            }
+          ],
+          "topicIds": [
+            "OPP-03",
+            "CRM-08",
+            "KCFT-12"
+          ]
+        },
+        {
+          "episodeId": "EPI-1F7D63631E2FC82B",
+          "expectedEpisodeNumber": 217,
+          "quoteId": null,
+          "summarySha256": "a972211ae73d2b942cf47d9141fcfdfc5155f2d6fbdc89cd362a4abb0d832c93",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Offers a concrete example of making influence-operations awareness accessible to ordinary citizens through practical educational resources."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Connects information and cybersecurity education with Finland’s comprehensive-security approach, in which resilience depends on many parts of society."
+            }
+          ],
+          "topicIds": [
+            "OPP-03",
+            "CRM-09",
+            "KCFT-16"
+          ]
+        }
+      ],
+      "group": "Threats & Resilience",
+      "guideId": "GUIDE-RESILIENCE",
+      "scope": "Individual, organizational, and societal capacities to recognize, withstand, adapt to, and recover from manipulation and information disruption.",
+      "sections": {
+        "approaches": [
+          {
+            "expectedName": "Resilience, Inoculation & Cognitive Defense",
+            "field": "recurringThemes",
+            "heading": "Prebunking and inoculation as first-line defense",
+            "id": "OPP-03",
+            "scopeNote": "",
+            "sourceFieldSha256": "fa12851c3f6622d52c83f5fc23e5a94f9309c0d547bdae50990c75e04db1dd30",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Resilience, Inoculation & Cognitive Defense",
+            "field": "recurringThemes",
+            "heading": "Trust-building through credible institutions and local messengers",
+            "id": "OPP-03",
+            "scopeNote": "",
+            "sourceFieldSha256": "48f6c75e48a24b2cf7929cd63e6b22a40be062dda554dfc62dd9c3e195e5223e",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Resilience, Inoculation & Cognitive Defense",
+            "field": "recurringThemes",
+            "heading": "Identity, belonging, and community cohesion as protective buffers",
+            "id": "OPP-03",
+            "scopeNote": "",
+            "sourceFieldSha256": "0d95deb5b957bc8de5de8c8510e2d0a1961f2e906b8045857d938df325ee43c4",
+            "type": "cluster"
+          }
+        ],
+        "challenges": [
+          {
+            "expectedName": "Trust, Legitimacy & Institutional Credibility Erosion",
+            "field": "definition",
+            "id": "CRM-08",
+            "scopeNote": "",
+            "sourceFieldSha256": "d527e84a767c262418ac5601189030a3f317335728938982e6a59ab4096534f1",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Societal Polarization, Identity & Democratic Resilience Risks",
+            "field": "definition",
+            "id": "CRM-09",
+            "scopeNote": "",
+            "sourceFieldSha256": "6f8982dd579f7e4e57d79ca76ac641174859bb311981866921aba43d32f9ea6b",
+            "type": "cluster"
+          }
+        ],
+        "concepts": [
+          {
+            "expectedName": "Resilience, Anti-Fragility & Societal Defense",
+            "field": "definition",
+            "id": "KCFT-12",
+            "scopeNote": "",
+            "sourceFieldSha256": "4c5eaee129a40812916d4988dc451770836f738be89a8d470bca28af8c267b29",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Media Literacy & Cognitive Preparedness",
+            "field": "definition",
+            "id": "KCFT-16",
+            "scopeNote": "",
+            "sourceFieldSha256": "51c82a747d0c288af4cbb6c5b10895ceff48e7cee9a78c862a4dd0db2fab5949",
+            "type": "cluster"
+          }
+        ],
+        "connections": [
+          {
+            "expectedName": "Human Reception and Societal Resilience",
+            "field": "definition",
+            "id": "TH-05",
+            "scopeNote": "Resilience is part of the social and cognitive environment in which information is received.",
+            "sourceFieldSha256": "8e278d9808d709f867e16103934cc8deb5ce5e7d8c75fbeab8f89b7831362285",
+            "type": "theme"
+          },
+          {
+            "expectedName": "Multi-Actor Alignment and Networked Execution",
+            "field": "definition",
+            "id": "TH-07",
+            "scopeNote": "Individual skills and trusted organizations connect through a distributed response.",
+            "sourceFieldSha256": "58035f48f3e94c713dd5ce4b5c03c7c40f66e8f6c2b549bca761c65fae7197bb",
+            "type": "theme"
+          }
+        ],
+        "corpus-findings": [
+          {
+            "expectedName": "Cognitive Defense and Societal Resilience",
+            "field": "finding",
+            "id": "CF-OPP-F05",
+            "scopeNote": "",
+            "sourceFieldSha256": "f7cfe183a91d8d76ed8f415452077a924e2f195907d0a8a1c0c91beab5608757",
+            "type": "finding"
+          },
+          {
+            "expectedName": "Resilience, Anti-Fragility & Societal Defense",
+            "field": "recurringThemes",
+            "heading": "Whole-of-society resilience and networked defense",
+            "id": "KCFT-12",
+            "scopeNote": "",
+            "sourceFieldSha256": "80c64f60a6d86684f832f0499b61686d583d5766933450aee487c5283e077f26",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Resilience, Anti-Fragility & Societal Defense",
+            "field": "recurringThemes",
+            "heading": "Lifecycle preparedness, adaptation, and recovery",
+            "id": "KCFT-12",
+            "scopeNote": "",
+            "sourceFieldSha256": "0fa0e04b6c15b98c95f5ed3afe74098d80c99525a1963286e57973d482e3a0db",
+            "type": "cluster"
+          }
+        ],
+        "tensions": [
+          {
+            "expectedName": "Information-Environment Control vs Open-Society Resilience",
+            "field": "definition",
+            "id": "CT-010",
+            "scopeNote": "",
+            "sourceFieldSha256": "cba8b9b9674218f665e803494e599bd0249816f18a80f1ec8ba519a0c33bb310",
+            "type": "tension"
+          },
+          {
+            "expectedName": "Supply-Side Disruption vs Demand-Side Susceptibility",
+            "field": "definition",
+            "id": "CT-017",
+            "scopeNote": "",
+            "sourceFieldSha256": "a0950030e91270bd2bd69f4bf9bc2e47c40bef291cc9043524677c734e588585",
+            "type": "tension"
+          }
+        ],
+        "tools-methods": [
+          {
+            "expectedName": "Training, Simulation, & Operational Preparation Systems",
+            "field": "recurringThemes",
+            "heading": "Gamified inoculation and literacy training",
+            "id": "TTP-12",
+            "scopeNote": "",
+            "sourceFieldSha256": "844a8a5ac8c4889dfc06880172d6c29ded0809816125302ebbfc8af31b8d1d76",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Resilience, Anti-Fragility & Societal Defense",
+            "field": "recurringThemes",
+            "heading": "Cognitive immunity, truth baselines, and structured verification",
+            "id": "KCFT-12",
+            "scopeNote": "",
+            "sourceFieldSha256": "437a547e55a2dd9b08de270f3b30c9dc22757112fd7335b617e5071a89894514",
+            "type": "cluster"
+          }
+        ]
+      },
+      "slug": "resilience",
+      "sourceTopics": [
+        {
+          "expectedName": "Resilience, Anti-Fragility & Societal Defense",
+          "id": "KCFT-12",
+          "role": "core"
+        },
+        {
+          "expectedName": "Media Literacy & Cognitive Preparedness",
+          "id": "KCFT-16",
+          "role": "core"
+        },
+        {
+          "expectedName": "Resilience, Inoculation & Cognitive Defense",
+          "id": "OPP-03",
+          "role": "core"
+        },
+        {
+          "expectedName": "Trust, Legitimacy & Institutional Credibility Erosion",
+          "id": "CRM-08",
+          "role": "supporting"
+        },
+        {
+          "expectedName": "Societal Polarization, Identity & Democratic Resilience Risks",
+          "id": "CRM-09",
+          "role": "supporting"
+        },
+        {
+          "expectedName": "Distributed Coordination & Whole-of-Society Integration",
+          "id": "KCFT-07",
+          "role": "supporting"
+        },
+        {
+          "expectedName": "Resilience, Circumvention, & Protective Systems",
+          "id": "TTP-14",
+          "role": "supporting"
+        },
+        {
+          "expectedName": "Education, Training & Professionalization",
+          "id": "OPP-02",
+          "role": "supporting"
+        }
+      ],
+      "title": "Resilience"
+    },
+    {
+      "exclusions": "Do not equate deterrence with all coercion, deception, gray-zone activity, or persistent campaigning.",
+      "featuredEpisodes": [
+        {
+          "episodeId": "EPI-018F52BE6CD93342",
+          "expectedEpisodeNumber": 219,
+          "quoteId": "GUIDE-QUOTE-219-01",
+          "summarySha256": "a37747bee2f4b1108c309fd1eaaabcbfbeaa93020b4d050f89b1ca5e7b9822f2",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Challenges vague uses of deterrence and asks what particular behavior, by which actor, a strategy is intended to prevent."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Connects lethality with information and broader instruments of influence, rather than assuming military capability communicates the intended meaning by itself."
+            }
+          ],
+          "topicIds": [
+            "OPP-05",
+            "CRM-10",
+            "KCFT-06"
+          ]
+        },
+        {
+          "episodeId": "EPI-B0E080372716BADB",
+          "expectedEpisodeNumber": 176,
+          "quoteId": null,
+          "summarySha256": "f3faf0529f8d006630371cb55e63d92fd645ff4bdd49a9c5da9d6cf485988a03",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Presents his argument for a greater special-operations emphasis on strategic influence and competition below the threshold of war."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Explores why understanding another actor’s values and priorities matters when judging which capabilities or signals might actually influence its choices."
+            }
+          ],
+          "topicIds": [
+            "OPP-05",
+            "CRM-10",
+            "KCFT-06"
+          ]
+        },
+        {
+          "episodeId": "EPI-3782733BC7796F4A",
+          "expectedEpisodeNumber": 178,
+          "quoteId": null,
+          "summarySha256": "21762d84f8666e50b1295046c438f57fee3a77147bbc7f4ac47882b5c574a087",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Adds an escalation-management perspective: how transparency, oversight, threat-information sharing, and limits on proxies might reduce miscalculation."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Provides a useful complement to coercive signaling by asking how to manage the risks of misunderstood or uncontrolled cyber activity."
+            }
+          ],
+          "topicIds": [
+            "CRM-10",
+            "KCFT-06",
+            "KCFT-01"
+          ]
+        },
+        {
+          "episodeId": "EPI-8728E5C3FDE40ECE",
+          "expectedEpisodeNumber": 135,
+          "quoteId": null,
+          "summarySha256": "1f842469ab665d1b98dfd2b9faa2a749328f7115128a0f91ae57970185e63f14",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Offers a concrete case for examining how deterrence, political warfare, and information restrictions interact."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Explores Maxwell’s proposal to pair discussion of weapons tests with human and economic costs, independent information access, and trusted communicators."
+            }
+          ],
+          "topicIds": [
+            "CRM-10",
+            "KCFT-06"
+          ]
+        }
+      ],
+      "group": "Threats & Resilience",
+      "guideId": "GUIDE-DETERRENCE",
+      "scope": "How intended restraint, signaling, credibility, perceived costs, escalation management, and strategic influence affect another actor’s choices.",
+      "sections": {
+        "approaches": [
+          {
+            "expectedName": "Campaigning, Targeting & Influence Operations",
+            "field": "recurringThemes",
+            "heading": "System, network, and decision-environment targeting",
+            "id": "OPP-05",
+            "scopeNote": "",
+            "sourceFieldSha256": "5c9e0633c5c9167e460e2e4729a8761c476f42360ea3912e7f0b2d9a68f9c1ae",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Ethics, Legitimacy & Democratic Guardrails",
+            "field": "recurringThemes",
+            "heading": "Ethically bounded influence and counter-influence",
+            "id": "OPP-16",
+            "scopeNote": "",
+            "sourceFieldSha256": "3adfcd6eece8488920dec79ab20fec1a5db160fa1bb1d60231a57c95d670f3b5",
+            "type": "cluster"
+          }
+        ],
+        "challenges": [
+          {
+            "expectedName": "Strategic Asymmetry & Adversary Advantage",
+            "field": "definition",
+            "id": "CRM-10",
+            "scopeNote": "",
+            "sourceFieldSha256": "d3b65ef6c1b29d08a223357f52099f65685eeffd414c597c6b8265d70fb1cb31",
+            "type": "cluster"
+          }
+        ],
+        "concepts": [
+          {
+            "expectedName": "Strategic Influence & Adversarial Competition Models",
+            "field": "definition",
+            "id": "KCFT-06",
+            "scopeNote": "",
+            "sourceFieldSha256": "d7efdbf667cea01750c147a81ff5519bb8a71cd52b81f07db58c56292fc9a21f",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Campaigning & Persistent Competition Concepts",
+            "field": "definition",
+            "id": "KCFT-27",
+            "scopeNote": "",
+            "sourceFieldSha256": "e359be845f1241e3c37ce55ac8c138da4eb9fa4f02e131b0e981851c172174b5",
+            "type": "cluster"
+          }
+        ],
+        "connections": [
+          {
+            "expectedName": "Asymmetric Tempo, Cost, and Constraint in Gray-Zone Competition",
+            "field": "definition",
+            "id": "TH-10",
+            "scopeNote": "Deterrence and influence operate under unequal costs, authorities, risks, and thresholds.",
+            "sourceFieldSha256": "68240b9254abf7d7f8312c23aef1361eed7323c69ac346e3b4480f2b111c9ff2",
+            "type": "theme"
+          },
+          {
+            "expectedName": "Democratic information competition is asymmetric, adaptive, and legitimacy constrained",
+            "field": "shortVersion",
+            "id": "CN-05",
+            "scopeNote": "The narrative situates adaptive competition within legitimacy constraints.",
+            "sourceFieldSha256": "51f4499949e1c69e503be2c00624c8f28ede1328ddd75fd6bbaba30a441a3685",
+            "type": "narrative"
+          }
+        ],
+        "corpus-findings": [
+          {
+            "expectedName": "Information-Centric Competition",
+            "field": "recurringThemes",
+            "heading": "Information advantage as decision dominance",
+            "id": "KCFT-01",
+            "scopeNote": "",
+            "sourceFieldSha256": "483224b09e1dd349c485d87feb62a7dec3024b1b2e76ca611c7e9b0423c3afd6",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Adversary Asymmetry and Competitive Disadvantage",
+            "field": "finding",
+            "id": "CF-CRB-F07",
+            "scopeNote": "",
+            "sourceFieldSha256": "3f885846357ae039b6818c9c42b8abe44c353b45a10cbb8338e2b7fc6b8df19a",
+            "type": "finding"
+          }
+        ],
+        "tensions": [
+          {
+            "expectedName": "Democratic Legitimacy vs Covert or Deceptive Gray-Zone Tactics",
+            "field": "definition",
+            "id": "CT-011",
+            "scopeNote": "",
+            "sourceFieldSha256": "5d09769b16c3db6e7c0bc9df0f4ed6073ba802470c2cff29c27b68dfb72689f7",
+            "type": "tension"
+          },
+          {
+            "expectedName": "Operational Speed and Optimization vs Legitimacy-Preserving Guardrails",
+            "field": "definition",
+            "id": "CT-019",
+            "scopeNote": "",
+            "sourceFieldSha256": "66241602f23b73d5ed3c8a6e4eb23f00045825f34198007b1d1f14ed6751296e",
+            "type": "tension"
+          }
+        ],
+        "tools-methods": []
+      },
+      "slug": "deterrence",
+      "sourceTopics": [
+        {
+          "expectedName": "Strategic Influence & Adversarial Competition Models",
+          "id": "KCFT-06",
+          "role": "core"
+        },
+        {
+          "expectedName": "Campaigning & Persistent Competition Concepts",
+          "id": "KCFT-27",
+          "role": "core"
+        },
+        {
+          "expectedName": "Persistent Competition & Gray-Zone Conflict",
+          "id": "FTP-06",
+          "role": "core"
+        },
+        {
+          "expectedName": "Deception & Reflexive Control Frameworks",
+          "id": "KCFT-15",
+          "role": "supporting"
+        },
+        {
+          "expectedName": "Strategic Asymmetry & Adversary Advantage",
+          "id": "CRM-10",
+          "role": "supporting"
+        },
+        {
+          "expectedName": "Cross-Domain & Integrated Competition Frameworks",
+          "id": "KCFT-29",
+          "role": "supporting"
+        }
+      ],
+      "title": "Deterrence & Strategic Influence"
+    },
+    {
+      "exclusions": "Do not include all institutional reform, all military exercises, every technology integration, or every assessment discussion.",
+      "featuredEpisodes": [
+        {
+          "episodeId": "EPI-F0EFDE664B500CCC",
+          "expectedEpisodeNumber": 132,
+          "quoteId": "GUIDE-QUOTE-132-01",
+          "summarySha256": "72e69ceabef2a31002ff89193ee53725270d8bf656429c476201f9d6cfffa4b9",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Offers practitioner principles for operations in the information environment, emphasizing preparation, persistence, collaboration, and integration."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Explains why understanding and relationships must be developed before a crisis rather than expecting an information capability to arrive fully effective."
+            }
+          ],
+          "topicIds": [
+            "OPP-05",
+            "CRM-04",
+            "CRM-02"
+          ]
+        },
+        {
+          "episodeId": "EPI-03B6EF5E7D0C5FD2",
+          "expectedEpisodeNumber": 152,
+          "quoteId": null,
+          "summarySha256": "0a763042bc20d8acea543ea6f44d3f46ef4e9480f50d0496d0bb2a310794df3a",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Connects information maneuver with the integration of cyber, electromagnetic, and other capabilities instead of treating each as a separate activity."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Emphasizes specific threat models and operational constraints, helping planners move beyond vague descriptions of an adversary’s capabilities."
+            }
+          ],
+          "topicIds": [
+            "CRM-04",
+            "CRM-02",
+            "KCFT-23"
+          ]
+        },
+        {
+          "episodeId": "EPI-C5799E8848FB5FB8",
+          "expectedEpisodeNumber": 203,
+          "quoteId": null,
+          "summarySha256": "df57b8bdacaf0fda1c5f24406899c58ad409a0e10592cda5ee55374549dd116a",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Focuses on timing and sequencing: an information effect must align with the wider operation, not simply occur somewhere on its calendar."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Discusses practical synchronization tools and the planner’s coordinating role in bringing different capabilities into a coherent sequence."
+            }
+          ],
+          "topicIds": [
+            "OPP-07",
+            "CRM-04",
+            "CRM-02"
+          ]
+        },
+        {
+          "episodeId": "EPI-7105E573339189C7",
+          "expectedEpisodeNumber": 165,
+          "quoteId": null,
+          "summarySha256": "3d48eed5f3a8b5cbf33befcf6a53c8abcf9b790239d3155091555f316361c2b0",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Explores how to make information a genuine planning consideration inside an exercise rather than an afterthought."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Examines the mismatch between desired effects, available resources, and adjudication—useful for recognizing when an exercise is teaching the wrong lessons."
+            }
+          ],
+          "topicIds": [
+            "OPP-07",
+            "CRM-04",
+            "CRM-02"
+          ]
+        }
+      ],
+      "group": "Planning & Analysis",
+      "guideId": "GUIDE-CAMPAIGN-PLANNING",
+      "scope": "Designing, integrating, preparing, sequencing, and adapting information activities as coherent campaigns.",
+      "sections": {
+        "approaches": [
+          {
+            "expectedName": "Campaigning, Targeting & Influence Operations",
+            "field": "recurringThemes",
+            "heading": "Audience segmentation and target modeling",
+            "id": "OPP-05",
+            "scopeNote": "",
+            "sourceFieldSha256": "d455e99e45c043021e25d4645ed0bb0f429c0602ba982628605e6625845a480a",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Campaigning, Targeting & Influence Operations",
+            "field": "recurringThemes",
+            "heading": "Cross-functional integration and campaign orchestration",
+            "id": "OPP-05",
+            "scopeNote": "",
+            "sourceFieldSha256": "74082d8d11b4c39d931d698489108a213f136ec675ad8a4df6882eb90a02b4a1",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Assessment, Measurement & Research Rigor",
+            "field": "recurringThemes",
+            "heading": "Measurement embedded in planning, execution, and debriefs",
+            "id": "OPP-07",
+            "scopeNote": "",
+            "sourceFieldSha256": "20f1d5285c0c07002aa2963150867ffd71ed2cf51cfe632abe164c46349b4b7f",
+            "type": "cluster"
+          }
+        ],
+        "challenges": [
+          {
+            "expectedName": "Doctrine, Force Design & Organizational Design Gaps",
+            "field": "definition",
+            "id": "CRM-04",
+            "scopeNote": "",
+            "sourceFieldSha256": "ae84b10bc262ea400d20cbb4c43d4e7e8d7eff7a66012afea732000a4dcae7e8",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Institutional Fragmentation & Coordination Barriers",
+            "field": "definition",
+            "id": "CRM-02",
+            "scopeNote": "",
+            "sourceFieldSha256": "5fb25c70c52df47d997940c6003d45be4be019320409dc5a7e2d19eacc43fa54",
+            "type": "cluster"
+          }
+        ],
+        "concepts": [
+          {
+            "expectedName": "Influence Campaigning & Persistent Engagement",
+            "field": "definition",
+            "id": "KCFT-17",
+            "scopeNote": "",
+            "sourceFieldSha256": "add367aa4cca4da488e801e30f9215cbe5cbaff7c4fd00976a354d336601caff",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Campaign Integration & Cross-Domain Synchronization",
+            "field": "definition",
+            "id": "KCFT-23",
+            "scopeNote": "",
+            "sourceFieldSha256": "ae26ff129984a0331ea9788c1e71833540fa3a08e933fb121b3db8552500152e",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Campaigning & Persistent Competition Concepts",
+            "field": "definition",
+            "id": "KCFT-27",
+            "scopeNote": "",
+            "sourceFieldSha256": "e359be845f1241e3c37ce55ac8c138da4eb9fa4f02e131b0e981851c172174b5",
+            "type": "cluster"
+          }
+        ],
+        "connections": [
+          {
+            "expectedName": "Multi-Actor Alignment and Networked Execution",
+            "field": "definition",
+            "id": "TH-07",
+            "scopeNote": "Planning must align actors whose capabilities and authorities remain distinct.",
+            "sourceFieldSha256": "58035f48f3e94c713dd5ce4b5c03c7c40f66e8f6c2b549bca761c65fae7197bb",
+            "type": "theme"
+          },
+          {
+            "expectedName": "Institutionalized Information Capability",
+            "field": "definition",
+            "id": "TH-01",
+            "scopeNote": "Durable capability supports campaigns beyond short-lived initiatives.",
+            "sourceFieldSha256": "03206cd5544326b38ac93a69731b00c48d96052d571af35cccffcaa8273bb85d",
+            "type": "theme"
+          }
+        ],
+        "corpus-findings": [
+          {
+            "expectedName": "Campaigning, Targeting & Influence Operations",
+            "field": "recurringThemes",
+            "heading": "Timing, sequencing, and campaign phasing",
+            "id": "OPP-05",
+            "scopeNote": "",
+            "sourceFieldSha256": "6ef640a3f7960079c94a7d18b182fcd18a25c9c47d5e7eadd26b95fbb374649b",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Integration, Convergence & Coordination",
+            "field": "recurringThemes",
+            "heading": "Synchronizing information effects with operations",
+            "id": "OPP-04",
+            "scopeNote": "",
+            "sourceFieldSha256": "c816594750c86d6957447e1eaa6a199144f629d8a1bc080fdf1fac8208aeb40b",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Integration, Convergence & Coordination",
+            "field": "recurringThemes",
+            "heading": "Standing forums, battle rhythms, and habitual coordination",
+            "id": "OPP-04",
+            "scopeNote": "",
+            "sourceFieldSha256": "79228e84e4f6676c336f41fd49633fdb0a56e0fe2dbe24060894e676bb984886",
+            "type": "cluster"
+          }
+        ],
+        "tensions": [
+          {
+            "expectedName": "Enterprise Coherence vs Local and Partner Adaptation",
+            "field": "definition",
+            "id": "CT-005",
+            "scopeNote": "",
+            "sourceFieldSha256": "874589b0b721244e0465d64f927a1de4bfc62398c017b2c61dfcb095e72e3a58",
+            "type": "tension"
+          },
+          {
+            "expectedName": "Operational Speed and Optimization vs Legitimacy-Preserving Guardrails",
+            "field": "definition",
+            "id": "CT-019",
+            "scopeNote": "",
+            "sourceFieldSha256": "66241602f23b73d5ed3c8a6e4eb23f00045825f34198007b1d1f14ed6751296e",
+            "type": "tension"
+          },
+          {
+            "expectedName": "Crisis-Driven Improvisation vs Durable Institutionalization",
+            "field": "definition",
+            "id": "CT-020",
+            "scopeNote": "",
+            "sourceFieldSha256": "c7c3f8a522dd74b51a6d53f19d1021cc359b4a78dac0330b59572eb631b9ec5b",
+            "type": "tension"
+          }
+        ],
+        "tools-methods": [
+          {
+            "expectedName": "Training, Simulation, & Operational Preparation Systems",
+            "field": "recurringThemes",
+            "heading": "Synthetic environments for IE/OIE rehearsal",
+            "id": "TTP-12",
+            "scopeNote": "",
+            "sourceFieldSha256": "66bad8a7ed8613ca259b92fc4d9298209fc6650c7e2943ab954cdf1220cc7d49",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Integrated Information Warfare & Multi-Domain Operational Systems",
+            "field": "recurringThemes",
+            "heading": "Integrated information warfare planning and synchronization",
+            "id": "TTP-13",
+            "scopeNote": "",
+            "sourceFieldSha256": "28f980e929c05091f2409aab6cc6dfdf7eb82e696a92c34cd5a15ab06cc40adb",
+            "type": "cluster"
+          }
+        ]
+      },
+      "slug": "campaign-planning",
+      "sourceTopics": [
+        {
+          "expectedName": "Campaigning, Targeting & Influence Operations",
+          "id": "OPP-05",
+          "role": "core"
+        },
+        {
+          "expectedName": "Influence Campaigning & Persistent Engagement",
+          "id": "KCFT-17",
+          "role": "core"
+        },
+        {
+          "expectedName": "Campaign Integration & Cross-Domain Synchronization",
+          "id": "KCFT-23",
+          "role": "core"
+        },
+        {
+          "expectedName": "Integration, Convergence & Coordination",
+          "id": "OPP-04",
+          "role": "core"
+        },
+        {
+          "expectedName": "Campaigning & Persistent Competition Concepts",
+          "id": "KCFT-27",
+          "role": "supporting"
+        },
+        {
+          "expectedName": "Integrated Information Warfare & Multi-Domain Operational Systems",
+          "id": "TTP-13",
+          "role": "supporting"
+        },
+        {
+          "expectedName": "Training, Simulation, & Operational Preparation Systems",
+          "id": "TTP-12",
+          "role": "supporting"
+        },
+        {
+          "expectedName": "Operational Learning, Assessment & Adaptation",
+          "id": "KCFT-08",
+          "role": "supporting"
+        },
+        {
+          "expectedName": "Doctrine, Force Design & Organizational Design Gaps",
+          "id": "CRM-04",
+          "role": "supporting"
+        }
+      ],
+      "title": "Campaign Planning"
+    },
+    {
+      "exclusions": "Do not include every human-factors mechanism, collection system, social platform, or campaign.",
+      "featuredEpisodes": [
+        {
+          "episodeId": "EPI-507569FECEF991B0",
+          "expectedEpisodeNumber": 115,
+          "quoteId": "GUIDE-QUOTE-115-01",
+          "summarySha256": "ff6bef548346b3088f7d41fe01cdf9b57f410a1a87f800bfcfa00b8d1fd108c2",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Reorients influence around the receiver: being exposed to information is only one step on the path to interpreting, accepting, or acting on it."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Explores demand and the social or cognitive costs of changing a position, challenging the assumption that better messaging automatically creates persuasion."
+            }
+          ],
+          "topicIds": [
+            "OPP-05",
+            "OPP-07",
+            "OPP-06"
+          ]
+        },
+        {
+          "episodeId": "EPI-D6516940035DCD6E",
+          "expectedEpisodeNumber": 105,
+          "quoteId": null,
+          "summarySha256": "0fe748aa1b6bbad482ed0f8add85a5666003b642b96b4ceece36c31f0078b336",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Examines how historical experience, local grievances, and anti-colonial frames can shape reception outside Western audiences."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Encourages listeners to question whether a message persuasive at home will have the same meaning or credibility elsewhere."
+            }
+          ],
+          "topicIds": [
+            "OPP-06"
+          ]
+        },
+        {
+          "episodeId": "EPI-F2D37F69FF5B8721",
+          "expectedEpisodeNumber": 171,
+          "quoteId": null,
+          "summarySha256": "fbe757eda08116f302674fc2f45abf4f6f30e70501839392c0233bba473576bc",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Looks at what people read and research online, not only what they publicly post or engage with."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Explains the value of aggregate attention data for understanding quieter audiences; the discussion is not a guide to tracking individual people."
+            }
+          ],
+          "topicIds": [
+            "OPP-05",
+            "OPP-07",
+            "CRB-01"
+          ]
+        },
+        {
+          "episodeId": "EPI-74DF901D217700E2",
+          "expectedEpisodeNumber": 231,
+          "quoteId": null,
+          "summarySha256": "ef8cbb22bf359e989a491b784f52151113aec48bc43792d5161719354045d3c7",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Explains the commercial systems surrounding digital attention, including advertising, tracking, identity mapping, and platform fragmentation."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Adds a delivery-system perspective to audience analysis: understanding people also requires understanding how platforms mediate access to their attention."
+            }
+          ],
+          "topicIds": [
+            "OPP-06",
+            "CRB-01",
+            "KCFT-22"
+          ]
+        }
+      ],
+      "group": "Planning & Analysis",
+      "guideId": "GUIDE-AUDIENCE-ANALYSIS",
+      "scope": "Understanding audiences, segmentation, cultural context, reception, demand, social relationships, and platform-mediated access to attention.",
+      "sections": {
+        "approaches": [
+          {
+            "expectedName": "Campaigning, Targeting & Influence Operations",
+            "field": "recurringThemes",
+            "heading": "Audience segmentation and target modeling",
+            "id": "OPP-05",
+            "scopeNote": "",
+            "sourceFieldSha256": "d455e99e45c043021e25d4645ed0bb0f429c0602ba982628605e6625845a480a",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Assessment, Measurement & Research Rigor",
+            "field": "recurringThemes",
+            "heading": "Audience research, reception, and segmentation",
+            "id": "OPP-07",
+            "scopeNote": "",
+            "sourceFieldSha256": "41a3599f0cd1b383e6f5264e139e845b51de45cc8c188710c52a15fe7a1b943f",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Narrative, Messaging & Strategic Communication",
+            "field": "recurringThemes",
+            "heading": "Audience-specific tailoring and localization",
+            "id": "OPP-06",
+            "scopeNote": "",
+            "sourceFieldSha256": "b16309dd3d9c7da5e8ce07958b77f1ba43b0227fb4f1d4269eb6b850efa9ba60",
+            "type": "cluster"
+          }
+        ],
+        "challenges": [
+          {
+            "expectedName": "Audience Fragmentation & Micro-Targeting Complexity",
+            "field": "definition",
+            "id": "CRB-07",
+            "scopeNote": "",
+            "sourceFieldSha256": "66afc7b139bbf54ddde5114eb5cbda0835d21c84f2b820f3e18446d18740b78e",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Measurement, Attribution & Assessment Gaps",
+            "field": "recurringThemes",
+            "heading": "Audience mismatch and representativeness",
+            "id": "CRB-01",
+            "scopeNote": "",
+            "sourceFieldSha256": "fff0a9d0d87125c686eb5fbb26e6aa89fbc01d90d84f8b5f6fe669ad32a9c6df",
+            "type": "cluster"
+          }
+        ],
+        "concepts": [
+          {
+            "expectedName": "Targeting, Segmentation & Audience Analysis",
+            "field": "definition",
+            "id": "KCFT-22",
+            "scopeNote": "",
+            "sourceFieldSha256": "81bfe8ac247d1d044675bdc75a188b9853b38265bedb67d432c06b921f499a3d",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Human Factors & Behavioral Design",
+            "field": "definition",
+            "id": "KCFT-09",
+            "scopeNote": "",
+            "sourceFieldSha256": "221b6783a1ad795cb69c1615c6dea74e81c83d594264d77c7886b79dd4d75ce9",
+            "type": "cluster"
+          }
+        ],
+        "connections": [
+          {
+            "expectedName": "Human Reception and Societal Resilience",
+            "field": "definition",
+            "id": "TH-05",
+            "scopeNote": "Audience understanding links messages to the cognitive and social conditions of reception.",
+            "sourceFieldSha256": "8e278d9808d709f867e16103934cc8deb5ce5e7d8c75fbeab8f89b7831362285",
+            "type": "theme"
+          },
+          {
+            "expectedName": "Datafied Identity as Security Asset and Attack Surface",
+            "field": "definition",
+            "id": "TH-06",
+            "scopeNote": "Identity-linked data can aid understanding while raising privacy and manipulation concerns.",
+            "sourceFieldSha256": "e6e2a127952202e6daa3361c6ce37b30ba55b93678b4db6ee4bb84f1e8b27ace",
+            "type": "theme"
+          }
+        ],
+        "corpus-findings": [
+          {
+            "expectedName": "Targeting, Segmentation & Audience Analysis",
+            "field": "recurringThemes",
+            "heading": "Audience-centric messaging shaped by identity, values, and local context",
+            "id": "KCFT-22",
+            "scopeNote": "",
+            "sourceFieldSha256": "0be34312016aa37e966a296f7efc8ba934d35ee08037cbc813623e00536323a4",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Targeting, Segmentation & Audience Analysis",
+            "field": "recurringThemes",
+            "heading": "Network, social-norm, and trusted-intermediary targeting",
+            "id": "KCFT-22",
+            "scopeNote": "",
+            "sourceFieldSha256": "2995691d357107863d27e5a2a005c36f90cdd275863f11babff08409448a1167",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Targeting, Segmentation & Audience Analysis",
+            "field": "recurringThemes",
+            "heading": "Data-driven audience profiling and identity infrastructure",
+            "id": "KCFT-22",
+            "scopeNote": "",
+            "sourceFieldSha256": "5e99232b53ac9d4804f7ec80178d1ce6dd43905a4473599c08ad76b403163b98",
+            "type": "cluster"
+          }
+        ],
+        "tensions": [
+          {
+            "expectedName": "Codified Behavioral Measurement vs Contextual Meaning-Making",
+            "field": "definition",
+            "id": "CT-016",
+            "scopeNote": "",
+            "sourceFieldSha256": "1f5c7efb52b725947840e26391f56b7809f6f8790398c13ef28dc26962ef001a",
+            "type": "tension"
+          },
+          {
+            "expectedName": "Personalized and Immersive Influence vs Privacy, Authenticity, and Consent Safeguards",
+            "field": "definition",
+            "id": "CT-004",
+            "scopeNote": "",
+            "sourceFieldSha256": "0410d080683b4c0c17041ce95548023619d4549ae51bd3d8a255f6343ca0441c",
+            "type": "tension"
+          }
+        ],
+        "tools-methods": [
+          {
+            "expectedName": "Identity, Persona, & Social Graph Systems",
+            "field": "recurringThemes",
+            "heading": "Social graph and community mapping",
+            "id": "TTP-09",
+            "scopeNote": "",
+            "sourceFieldSha256": "ebc062193163dbedf2613c45da0a0a174598c1b7bf0dd1e73f5e42c3b805ce9b",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Information Environment Sensing & Collection Systems",
+            "field": "recurringThemes",
+            "heading": "OSINT/PAI and commercial data as core sensing inputs",
+            "id": "TTP-01",
+            "scopeNote": "",
+            "sourceFieldSha256": "76b8a4bc27d9daf56b7bbdc6392be4b62b75b4413d0b5f8ef10f2176eb2b4cc7",
+            "type": "cluster"
+          }
+        ]
+      },
+      "slug": "audience-analysis",
+      "sourceTopics": [
+        {
+          "expectedName": "Targeting, Segmentation & Audience Analysis",
+          "id": "KCFT-22",
+          "role": "core"
+        },
+        {
+          "expectedName": "Audience Fragmentation & Micro-Targeting Complexity",
+          "id": "CRB-07",
+          "role": "core"
+        },
+        {
+          "expectedName": "Identity, Persona, & Social Graph Systems",
+          "id": "TTP-09",
+          "role": "core"
+        },
+        {
+          "expectedName": "Human Factors & Behavioral Design",
+          "id": "KCFT-09",
+          "role": "supporting"
+        },
+        {
+          "expectedName": "Campaigning, Targeting & Influence Operations",
+          "id": "OPP-05",
+          "role": "supporting"
+        },
+        {
+          "expectedName": "Information Environment Sensing & Collection Systems",
+          "id": "TTP-01",
+          "role": "supporting"
+        },
+        {
+          "expectedName": "Platform, Algorithmic & Information Ecosystem Concepts",
+          "id": "KCFT-26",
+          "role": "supporting"
+        },
+        {
+          "expectedName": "Narrative, Identity & Meaning-Making",
+          "id": "KCFT-03",
+          "role": "supporting"
+        }
+      ],
+      "title": "Targeting & Audience Analysis"
+    },
+    {
+      "exclusions": "Do not imply that an analytic dashboard establishes effects, or import all AI and every future sensing prediction.",
+      "featuredEpisodes": [
+        {
+          "episodeId": "EPI-E974215F17EEFED2",
+          "expectedEpisodeNumber": 129,
+          "quoteId": "GUIDE-QUOTE-129-01",
+          "summarySha256": "1c4fe99eade78c4f0d929034abdabb01d87a15aa1acab1647f7f9628e0b9588c",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Provides a foundation for distinguishing open-source intelligence from simply having access to publicly or commercially available information."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Discusses the analytical and organizational challenges of working at scale, helping frame OSINT as an intelligence discipline rather than a search technique."
+            }
+          ],
+          "topicIds": [
+            "OPP-08",
+            "CRB-06",
+            "KCFT-10"
+          ]
+        },
+        {
+          "episodeId": "EPI-EA17188B3307A9E1",
+          "expectedEpisodeNumber": 148,
+          "quoteId": null,
+          "summarySha256": "2afd90b2c11c401b21de701ff1c46154ba0f3990a2f8ba2e1feb25bf35788069",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Introduces large-scale monitoring across languages and media types as a way to study the information environment."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Challenges English-only coverage and dashboard-driven analysis, drawing attention to what a dataset leaves out and whether its outputs answer a useful question."
+            }
+          ],
+          "topicIds": [
+            "OPP-08",
+            "CRB-06",
+            "CRB-01"
+          ]
+        },
+        {
+          "episodeId": "EPI-4C3F5A93042123A3",
+          "expectedEpisodeNumber": 205,
+          "quoteId": null,
+          "summarySha256": "7837f4d060a3702c347d4f5ddedd704c18be796d0ea4920a828a142a59954daa",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Examines the gap between aggregating media and understanding the narratives, relationships, and context within it."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Explains why coarse sentiment categories and endless feed-scrolling can miss the “why” behind a pattern—and why private-channel migration creates blind spots."
+            }
+          ],
+          "topicIds": [
+            "OPP-08",
+            "CRB-01",
+            "KCFT-10"
+          ]
+        },
+        {
+          "episodeId": "EPI-925457DED6365AEC",
+          "expectedEpisodeNumber": 218,
+          "quoteId": null,
+          "summarySha256": "12da23801357971ae68662087e1a55cd00da2a443e01f0848d5c1ba8dd63ff25",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Traces the development of professional media monitoring and its relationship to open-source intelligence."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Adds a sustained-monitoring perspective: understanding the media environment an audience inhabits, following projected narratives, and turning observation into an analytical service."
+            }
+          ],
+          "topicIds": [
+            "OPP-08",
+            "CRB-01",
+            "KCFT-21"
+          ]
+        }
+      ],
+      "group": "Planning & Analysis",
+      "guideId": "GUIDE-DATA-ANALYTICS",
+      "scope": "Collecting, interpreting, organizing, and using information-environment data, with attention to coverage, context, observability, and analytical limitations.",
+      "sections": {
+        "approaches": [
+          {
+            "expectedName": "Data, AI, OSINT & Analytic Infrastructure",
+            "field": "recurringThemes",
+            "heading": "OSINT/PAI expansion, fusion, and discoverability",
+            "id": "OPP-08",
+            "scopeNote": "",
+            "sourceFieldSha256": "2a94b65500bbae47eacef6d29f3e04438c878c4c3fc6c4b2d929521a0def2393",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Data, AI, OSINT & Analytic Infrastructure",
+            "field": "recurringThemes",
+            "heading": "Data quality, curation, and collection expansion",
+            "id": "OPP-08",
+            "scopeNote": "",
+            "sourceFieldSha256": "91b470f43505adeed110d28a5a017aa93060f46e68d4b760a98c925832a52c59",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Data, AI, OSINT & Analytic Infrastructure",
+            "field": "recurringThemes",
+            "heading": "Human-centered automation and secure deployment patterns",
+            "id": "OPP-08",
+            "scopeNote": "",
+            "sourceFieldSha256": "3a1c1f4bd64042fd1be4a04fe70f1a04451cc35c45d6b66d7d131008d5353c27",
+            "type": "cluster"
+          }
+        ],
+        "challenges": [
+          {
+            "expectedName": "Data, Privacy, Surveillance & Observability Problems",
+            "field": "definition",
+            "id": "CRB-06",
+            "scopeNote": "",
+            "sourceFieldSha256": "ccf43f6913e7a9f3c195a005d3d4235a5010afae35b8aea573b4ddb894e7271c",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Measurement, Attribution & Assessment Gaps",
+            "field": "recurringThemes",
+            "heading": "Audience mismatch and representativeness",
+            "id": "CRB-01",
+            "scopeNote": "",
+            "sourceFieldSha256": "fff0a9d0d87125c686eb5fbb26e6aa89fbc01d90d84f8b5f6fe669ad32a9c6df",
+            "type": "cluster"
+          }
+        ],
+        "concepts": [
+          {
+            "expectedName": "Epistemic Infrastructure & Knowledge Systems",
+            "field": "definition",
+            "id": "KCFT-10",
+            "scopeNote": "",
+            "sourceFieldSha256": "45c735185dbc3e944d4d8b3a8db7a77a746ab2c08b272b9b219b7048c623482c",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Information Environment & Ecosystem Models",
+            "field": "definition",
+            "id": "KCFT-21",
+            "scopeNote": "Use the ecosystem model to interpret observations in context, not as a claim that the dataset captures the whole environment.",
+            "sourceFieldSha256": "37d41d5837cb23c9e9fcee6d6c770bc392d9b25a1603fc0a71b70ea042b03c59",
+            "type": "cluster"
+          }
+        ],
+        "connections": [
+          {
+            "expectedName": "Epistemic Infrastructure for Contested Reality",
+            "field": "definition",
+            "id": "TH-02",
+            "scopeNote": "Collection, verification, interpretation, and uncertainty belong to one evidence infrastructure.",
+            "sourceFieldSha256": "8e1354faff0180855023335ea4f35f64a83b29eb78924b22dd3f7c64b168daa7",
+            "type": "theme"
+          },
+          {
+            "expectedName": "Datafied Identity as Security Asset and Attack Surface",
+            "field": "definition",
+            "id": "TH-06",
+            "scopeNote": "Identity-linked observations require a separate examination of privacy, linkage, and exposure.",
+            "sourceFieldSha256": "e6e2a127952202e6daa3361c6ce37b30ba55b93678b4db6ee4bb84f1e8b27ace",
+            "type": "theme"
+          }
+        ],
+        "corpus-findings": [
+          {
+            "expectedName": "Information Sensing and Sensemaking",
+            "field": "finding",
+            "id": "CF-TTP-F01",
+            "scopeNote": "",
+            "sourceFieldSha256": "6d8cfb1d828e74f5605cb5f2b67ceef415d722a2c1a14bfc3751e35d139b0b47",
+            "type": "finding"
+          },
+          {
+            "expectedName": "Epistemic Infrastructure & Knowledge Systems",
+            "field": "recurringThemes",
+            "heading": "Provenance, traceability, and source reputation",
+            "id": "KCFT-10",
+            "scopeNote": "",
+            "sourceFieldSha256": "e593ac583d16a6fcfc2925e330a7774c126ec51193c3e46eec5479bc2d2a2284",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Epistemic Infrastructure & Knowledge Systems",
+            "field": "recurringThemes",
+            "heading": "Sensemaking as synthesis, wisdom, and human judgment",
+            "id": "KCFT-10",
+            "scopeNote": "",
+            "sourceFieldSha256": "2fe7c6ce7f59aac787ba0f3cdbf1969881354b69b6102a33e5bcf6635f57f0ab",
+            "type": "cluster"
+          }
+        ],
+        "tensions": [
+          {
+            "expectedName": "Computational Analytic Scale vs Human Tradecraft and Conceptual Primacy",
+            "field": "definition",
+            "id": "CT-002",
+            "scopeNote": "",
+            "sourceFieldSha256": "d0936ea91e1c088e7a6b11953ab1c9724cc8bfa572c164d9c8b5184a5cbbf8f2",
+            "type": "tension"
+          },
+          {
+            "expectedName": "Predictive Sensemaking Confidence vs Complex-System Uncertainty",
+            "field": "definition",
+            "id": "CT-009",
+            "scopeNote": "",
+            "sourceFieldSha256": "f7ed5c54fc1daa26adf4ed8be8fd72dd2290d33c946f3fd944f1e0c383b58b09",
+            "type": "tension"
+          }
+        ],
+        "tools-methods": [
+          {
+            "expectedName": "Information Environment Sensing & Collection Systems",
+            "field": "recurringThemes",
+            "heading": "Automation and multi-modal ingestion pipelines",
+            "id": "TTP-01",
+            "scopeNote": "",
+            "sourceFieldSha256": "88375a2152fe50c430d623e960778c99ebf6ec597dcc2d00595a21310cc2af47",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Assessment, Modeling, & Decision-Support Systems",
+            "field": "recurringThemes",
+            "heading": "Dashboards, visualization, and common operating pictures",
+            "id": "TTP-02",
+            "scopeNote": "",
+            "sourceFieldSha256": "4b52e5a1a31e4fb5707a150a1e8c66a3b477b3f537d24896b12d051f2bc468f8",
+            "type": "cluster"
+          }
+        ]
+      },
+      "slug": "data-analytics",
+      "sourceTopics": [
+        {
+          "expectedName": "Data, AI, OSINT & Analytic Infrastructure",
+          "id": "OPP-08",
+          "role": "core"
+        },
+        {
+          "expectedName": "Information Environment Sensing & Collection Systems",
+          "id": "TTP-01",
+          "role": "core"
+        },
+        {
+          "expectedName": "Assessment, Modeling, & Decision-Support Systems",
+          "id": "TTP-02",
+          "role": "core"
+        },
+        {
+          "expectedName": "Data, Privacy, Surveillance & Observability Problems",
+          "id": "CRB-06",
+          "role": "core"
+        },
+        {
+          "expectedName": "Epistemic Infrastructure & Knowledge Systems",
+          "id": "KCFT-10",
+          "role": "supporting"
+        },
+        {
+          "expectedName": "Operational Tempo, Persistent Sensing, & Decision Advantage",
+          "id": "FTP-10",
+          "role": "supporting"
+        },
+        {
+          "expectedName": "AI, Automation, & Computational Influence Systems",
+          "id": "TTP-06",
+          "role": "supporting"
+        }
+      ],
+      "title": "Data & Analytics"
+    },
+    {
+      "exclusions": "Do not present historical podcast legal claims as current law, or treat all institutional design as a legal or ethical issue.",
+      "featuredEpisodes": [
+        {
+          "episodeId": "EPI-A5BB3A1F7DA5CE16",
+          "expectedEpisodeNumber": 93,
+          "quoteId": "GUIDE-QUOTE-093-01",
+          "summarySha256": "433501a9e09730734da3ffeac9c75ffccae24ed50e7c5ada9cc0a8591101d5e6",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Introduces the legal questions surrounding information operations, including authorities and domestic–foreign boundaries."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Explores how globally connected information systems complicate those distinctions, helping practitioners identify questions that require qualified legal review."
+            }
+          ],
+          "topicIds": [
+            "CRB-02",
+            "KCFT-18",
+            "OPP-09"
+          ]
+        },
+        {
+          "episodeId": "EPI-B985A25AA45BCFC8",
+          "expectedEpisodeNumber": 49,
+          "quoteId": null,
+          "summarySha256": "f5baabf8113a080d9673ecae29ab78b5cbce576ee0223ae4a33fb7557afd4c0f",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Examines how interpretations and institutional myths surrounding Smith-Mundt can differ from the law’s actual scope."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Offers a case study in separating a genuine legal restriction from organizational habit or a repeatedly inherited explanation."
+            }
+          ],
+          "topicIds": [
+            "CRB-02",
+            "CRM-03"
+          ]
+        },
+        {
+          "episodeId": "EPI-933E5A9FF8A9523F",
+          "expectedEpisodeNumber": 142,
+          "quoteId": null,
+          "summarySha256": "7d2475610c4aeb2dc26366e6a30016062bb70b04930df02dcace9a774f0c5914",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Explores the tension between countering harmful information activity and protecting the openness of a democratic society."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Raises questions about the responsibilities of government and platforms, including how both overreach and inaction can damage legitimacy."
+            }
+          ],
+          "topicIds": [
+            "OPP-16",
+            "KCFT-18"
+          ]
+        },
+        {
+          "episodeId": "EPI-D0CC566FA3BFC2F1",
+          "expectedEpisodeNumber": 147,
+          "quoteId": null,
+          "summarySha256": "e991263104469d491a7d80b6ea9098d43f77675b211f83c12f9790a757c1bf0d",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Introduces her framework connecting freedom of thought, mental privacy, and self-determination."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Extends the ethical discussion beyond speech and content moderation to neurotechnology, sensitive cognitive data, and autonomy."
+            }
+          ],
+          "topicIds": [
+            "OPP-16",
+            "CRB-02",
+            "CRM-03"
+          ]
+        }
+      ],
+      "group": "Profession & Governance",
+      "guideId": "GUIDE-ETHICS-LAW",
+      "scope": "Authorities, rights, privacy, cognitive liberty, legitimacy, accountability, and responsible boundaries of information activities.",
+      "sections": {
+        "approaches": [
+          {
+            "expectedName": "Ethics, Legitimacy & Democratic Guardrails",
+            "field": "recurringThemes",
+            "heading": "Transparency, accountability, and defensibility",
+            "id": "OPP-16",
+            "scopeNote": "",
+            "sourceFieldSha256": "da96ed49bea5c3dc0284d0a04bc6f3196b8661342d64b51a9d884a6e1175aaf2",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Ethics, Legitimacy & Democratic Guardrails",
+            "field": "recurringThemes",
+            "heading": "Civil-liberties and democratic guardrails",
+            "id": "OPP-16",
+            "scopeNote": "",
+            "sourceFieldSha256": "0999123e03bd4d368cebf5a30ba845377f3e64b11920dd18d763811120ef00c1",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Ethics, Legitimacy & Democratic Guardrails",
+            "field": "recurringThemes",
+            "heading": "Ethical governance of cognitive and neurotechnologies",
+            "id": "OPP-16",
+            "scopeNote": "",
+            "sourceFieldSha256": "d52b6cb7c59738efb8f70ba08617fb8646ee8674daba459511986c1ace68dcff",
+            "type": "cluster"
+          }
+        ],
+        "challenges": [
+          {
+            "expectedName": "Authorities, Legal Constraints & Civil-Liberties Tensions",
+            "field": "definition",
+            "id": "CRB-02",
+            "scopeNote": "",
+            "sourceFieldSha256": "71d3cc6e6e14775ad0a40260c4d8776b873a100a6a9ea7bc5bcda8dcf46e1180",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Governance, Policy & Regulatory Lag",
+            "field": "definition",
+            "id": "CRM-03",
+            "scopeNote": "",
+            "sourceFieldSha256": "8fc46a4e055ad1efd8c2cdda45665f68a5d84995b065976437091230f2b4121f",
+            "type": "cluster"
+          }
+        ],
+        "concepts": [
+          {
+            "expectedName": "Governance, Law & Normative Competition",
+            "field": "definition",
+            "id": "KCFT-18",
+            "scopeNote": "",
+            "sourceFieldSha256": "4b01c5cef9ebc1daf14a2577d320e2ee719ba6d6c761aa68592437d902d4123f",
+            "type": "cluster"
+          }
+        ],
+        "connections": [
+          {
+            "expectedName": "Legitimacy-Preserving Governance of Information Power",
+            "field": "definition",
+            "id": "TH-11",
+            "scopeNote": "Governance connects operational ambitions with rights, oversight, and accountability.",
+            "sourceFieldSha256": "2233b8b94fff7cd2dc27f88f965f9d355920d806c24139a870b68b13aeb891a3",
+            "type": "theme"
+          },
+          {
+            "expectedName": "Democratic information competition is asymmetric, adaptive, and legitimacy constrained",
+            "field": "shortVersion",
+            "id": "CN-05",
+            "scopeNote": "Legitimacy is treated as a strategic resource, not as a purely procedural obstacle.",
+            "sourceFieldSha256": "51f4499949e1c69e503be2c00624c8f28ede1328ddd75fd6bbaba30a441a3685",
+            "type": "narrative"
+          }
+        ],
+        "corpus-findings": [
+          {
+            "expectedName": "Authority, Legal Constraint, and Governance Lag",
+            "field": "finding",
+            "id": "CF-CRB-F02",
+            "scopeNote": "",
+            "sourceFieldSha256": "bbf064412ec5bb9ffdcfb4b77cdc9f952a69e5e8fa312659fd04505b16805edd",
+            "type": "finding"
+          },
+          {
+            "expectedName": "Governance, Standards, and Legitimacy",
+            "field": "finding",
+            "id": "CF-OPP-F07",
+            "scopeNote": "",
+            "sourceFieldSha256": "fd742b18cbfcd9dca17d857939dc44b325bfeaa29d207a7dda9147b9148bfca7",
+            "type": "finding"
+          }
+        ],
+        "tensions": [
+          {
+            "expectedName": "Integrated Information Power vs Plural Democratic and Interagency Mandates",
+            "field": "definition",
+            "id": "CT-007",
+            "scopeNote": "",
+            "sourceFieldSha256": "3b72abbf00dd928b0219b9a2dd967d04e7ed9a5fd545b8458fc1cd9e3bf90232",
+            "type": "tension"
+          },
+          {
+            "expectedName": "Democratic Legitimacy vs Covert or Deceptive Gray-Zone Tactics",
+            "field": "definition",
+            "id": "CT-011",
+            "scopeNote": "",
+            "sourceFieldSha256": "5d09769b16c3db6e7c0bc9df0f4ed6073ba802470c2cff29c27b68dfb72689f7",
+            "type": "tension"
+          },
+          {
+            "expectedName": "Personalized and Immersive Influence vs Privacy, Authenticity, and Consent Safeguards",
+            "field": "definition",
+            "id": "CT-004",
+            "scopeNote": "",
+            "sourceFieldSha256": "0410d080683b4c0c17041ce95548023619d4549ae51bd3d8a255f6343ca0441c",
+            "type": "tension"
+          }
+        ],
+        "tools-methods": [
+          {
+            "expectedName": "Technology Standards, Governance & Risk Controls",
+            "field": "recurringThemes",
+            "heading": "Privacy, data minimization, and lawful access controls",
+            "id": "OPP-09",
+            "scopeNote": "",
+            "sourceFieldSha256": "20a53a7795f6298b89190d8223965f8f37cbf9692a3fb6209f09d731469fd4f1",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Technology Standards, Governance & Risk Controls",
+            "field": "recurringThemes",
+            "heading": "Algorithmic transparency, explainability, and auditability",
+            "id": "OPP-09",
+            "scopeNote": "",
+            "sourceFieldSha256": "1f9d47a8fd0da1faece9d8763b944ed3f61e06f5d947cea62865b4d9b14d1a96",
+            "type": "cluster"
+          }
+        ]
+      },
+      "slug": "ethics-law",
+      "sourceTopics": [
+        {
+          "expectedName": "Authorities, Legal Constraints & Civil-Liberties Tensions",
+          "id": "CRB-02",
+          "role": "core"
+        },
+        {
+          "expectedName": "Governance, Policy & Regulatory Lag",
+          "id": "CRM-03",
+          "role": "core"
+        },
+        {
+          "expectedName": "Governance, Law & Normative Competition",
+          "id": "KCFT-18",
+          "role": "core"
+        },
+        {
+          "expectedName": "Technology Standards, Governance & Risk Controls",
+          "id": "OPP-09",
+          "role": "core"
+        },
+        {
+          "expectedName": "Ethics, Legitimacy & Democratic Guardrails",
+          "id": "OPP-16",
+          "role": "core"
+        },
+        {
+          "expectedName": "Trust, Legitimacy & Institutional Credibility Erosion",
+          "id": "CRM-08",
+          "role": "supporting"
+        },
+        {
+          "expectedName": "Data, Privacy, Surveillance & Observability Problems",
+          "id": "CRB-06",
+          "role": "supporting"
+        },
+        {
+          "expectedName": "Human-Machine & Immersive Cognition",
+          "id": "KCFT-19",
+          "role": "supporting"
+        }
+      ],
+      "title": "Ethics & Legal Considerations"
+    },
+    {
+      "exclusions": "Do not import all civic media literacy, every learning theory, or all force-structure reform.",
+      "featuredEpisodes": [
+        {
+          "episodeId": "EPI-288EBE2981942FBA",
+          "expectedEpisodeNumber": 183,
+          "quoteId": "GUIDE-QUOTE-183-01",
+          "summarySha256": "50da75e8ee6e29d406eb03f749c45537e188adb909bce5b8c10b3e3e094878cc",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Discusses the creation of the Air Force’s information-operations career field and the relationship between talent development and strategy."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Explores shared foundational training followed by service-specific specialization, offering a concrete model for balancing common competence with distinct missions."
+            }
+          ],
+          "topicIds": [
+            "OPP-11",
+            "OPP-02",
+            "CRM-11"
+          ]
+        },
+        {
+          "episodeId": "EPI-CB4AF57B5713E039",
+          "expectedEpisodeNumber": 126,
+          "quoteId": null,
+          "summarySha256": "f1e9908b144e09be0cd5cba9590637c077b257db15cd9dde0ff5117247cbde0b",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Examines whether education organized around separate specialties prepares practitioners to integrate capabilities for desired behavioral outcomes."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Connects talent development with intelligence support and joint learning between specialties, rather than assuming that coordination emerges automatically."
+            }
+          ],
+          "topicIds": [
+            "OPP-11",
+            "OPP-02",
+            "CRM-11"
+          ]
+        },
+        {
+          "episodeId": "EPI-557D97C326A987BB",
+          "expectedEpisodeNumber": 120,
+          "quoteId": null,
+          "summarySha256": "214086479792f24dae078cec89f5056bb7b74927c8f41fcd444fee28c5d15fe5",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Challenges the assumption that bringing specialties under a broad information-warfare label necessarily strengthens their expertise."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Highlights the tension between generalist career patterns, specialist identity, and keeping technical competence current."
+            }
+          ],
+          "topicIds": [
+            "OPP-11",
+            "CRM-11"
+          ]
+        },
+        {
+          "episodeId": "EPI-5CCDEBE3688ADC59",
+          "expectedEpisodeNumber": 145,
+          "quoteId": null,
+          "summarySha256": "1e5efeb530ef22d8ff7ea14b7d41418204a513d817823bea9be23332586e866a",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Distinguishes the learning needs of senior executives, project leaders, and specialist AI leaders."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Provides a focused example of why professionalization requires role-specific competence—not simply sending everyone through the same introductory course."
+            }
+          ],
+          "topicIds": [
+            "OPP-11",
+            "OPP-02",
+            "CRM-11"
+          ]
+        }
+      ],
+      "group": "Profession & Governance",
+      "guideId": "GUIDE-WORKFORCE",
+      "scope": "Professional skills, role-specific competence, career pathways, specialist/generalist development, education, and organizational learning.",
+      "sections": {
+        "approaches": [
+          {
+            "expectedName": "Workforce, Talent & Human Capital",
+            "field": "recurringThemes",
+            "heading": "Dedicated career paths, billets, and retention for specialized roles",
+            "id": "OPP-11",
+            "scopeNote": "",
+            "sourceFieldSha256": "e8ab6ad14f2584d9e32142eb3600a8c3f6f6b9c1d05303637e8dda85278ea972",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Workforce, Talent & Human Capital",
+            "field": "recurringThemes",
+            "heading": "Broader recruiting and diversified talent pipelines",
+            "id": "OPP-11",
+            "scopeNote": "",
+            "sourceFieldSha256": "87599848d6c24ce6e5973a2dc8781d01996f1c7eda5e5af131f0c8872307f145",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Education, Training & Professionalization",
+            "field": "recurringThemes",
+            "heading": "Tradecraft-centered analytic education",
+            "id": "OPP-02",
+            "scopeNote": "",
+            "sourceFieldSha256": "97066444185f558d8ee74d178dcc7531029bf05f1b5a35e3a486ac51788dcb70",
+            "type": "cluster"
+          }
+        ],
+        "challenges": [
+          {
+            "expectedName": "Workforce, Expertise & Training Gaps",
+            "field": "definition",
+            "id": "CRM-11",
+            "scopeNote": "",
+            "sourceFieldSha256": "0c37b88e0aa462d22d47e500b739ef70c6f101f15ed94acce8abe4a57aa48da5",
+            "type": "cluster"
+          }
+        ],
+        "concepts": [
+          {
+            "expectedName": "Organizational Learning & Talent Development",
+            "field": "definition",
+            "id": "KCFT-25",
+            "scopeNote": "",
+            "sourceFieldSha256": "c23850a59e604f13a7bff5eab0d97044168eaca197de1555107927fe0b6a4d37",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Learning, Education & Cognitive Development Frameworks",
+            "field": "definition",
+            "id": "KCFT-30",
+            "scopeNote": "",
+            "sourceFieldSha256": "ee456a7bfa4353ec987ff8b48ba5b2da1643b866f65796e11b7a305936a6f334",
+            "type": "cluster"
+          }
+        ],
+        "connections": [
+          {
+            "expectedName": "Knowledge-to-Practice Pipelines for a Professionalizing Field",
+            "field": "definition",
+            "id": "TH-09",
+            "scopeNote": "The theme directly addresses the path from knowledge to repeatable professional competence.",
+            "sourceFieldSha256": "baad11bd899cfe6b9b43b11b17209ccb71c09c9757039ef66eb45558ee42d44d",
+            "type": "theme"
+          },
+          {
+            "expectedName": "Durable information power requires professionalized institutions and networked execution",
+            "field": "shortVersion",
+            "id": "CN-01",
+            "scopeNote": "The narrative places professionalization within durable institutions and networked execution.",
+            "sourceFieldSha256": "c660a3536eef97a22fc3a5e9aeb08170d82a8acd1c639ad1b51a2d731bf5e526",
+            "type": "narrative"
+          }
+        ],
+        "corpus-findings": [
+          {
+            "expectedName": "Durable Institutional Design and Professionalization",
+            "field": "finding",
+            "id": "CF-OPP-F01",
+            "scopeNote": "",
+            "sourceFieldSha256": "617edbe845736ddbeef32badbe67d8c31ef6c3d204de183fce73842b50947fd1",
+            "type": "finding"
+          },
+          {
+            "expectedName": "Organizational Learning & Talent Development",
+            "field": "recurringThemes",
+            "heading": "Selection and specialization over generic training",
+            "id": "KCFT-25",
+            "scopeNote": "",
+            "sourceFieldSha256": "a92f8f8bbf86e97261af21882ddd5e8664d002778bd1c93f7a9fe3958c62afc6",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Organizational Learning & Talent Development",
+            "field": "recurringThemes",
+            "heading": "Credentialing and tiered competency models",
+            "id": "KCFT-25",
+            "scopeNote": "",
+            "sourceFieldSha256": "690b288c8812bc8689bda65250d66b5a13c9a732238653ac93a128cb24f81ff4",
+            "type": "cluster"
+          }
+        ],
+        "tensions": [
+          {
+            "expectedName": "Computational Analytic Scale vs Human Tradecraft and Conceptual Primacy",
+            "field": "definition",
+            "id": "CT-002",
+            "scopeNote": "",
+            "sourceFieldSha256": "d0936ea91e1c088e7a6b11953ab1c9724cc8bfa572c164d9c8b5184a5cbbf8f2",
+            "type": "tension"
+          },
+          {
+            "expectedName": "Crisis-Driven Improvisation vs Durable Institutionalization",
+            "field": "definition",
+            "id": "CT-020",
+            "scopeNote": "",
+            "sourceFieldSha256": "c7c3f8a522dd74b51a6d53f19d1021cc359b4a78dac0330b59572eb631b9ec5b",
+            "type": "tension"
+          }
+        ],
+        "tools-methods": [
+          {
+            "expectedName": "Training, Simulation, & Operational Preparation Systems",
+            "field": "recurringThemes",
+            "heading": "Training content and methods for information/cognitive domains",
+            "id": "TTP-12",
+            "scopeNote": "",
+            "sourceFieldSha256": "e67ece50540777ced2569a7d5c7716f2213528d012b424b745bbe25b67b90c72",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Workforce, Talent & Human Capital",
+            "field": "recurringThemes",
+            "heading": "Modular credentialing and accelerated skill development",
+            "id": "OPP-11",
+            "scopeNote": "",
+            "sourceFieldSha256": "6ce6c26621e49a2a99ba398de9016b72a575734f9fe52d25e42467c6761e6615",
+            "type": "cluster"
+          }
+        ]
+      },
+      "slug": "workforce",
+      "sourceTopics": [
+        {
+          "expectedName": "Workforce, Expertise & Training Gaps",
+          "id": "CRM-11",
+          "role": "core"
+        },
+        {
+          "expectedName": "Organizational Learning & Talent Development",
+          "id": "KCFT-25",
+          "role": "core"
+        },
+        {
+          "expectedName": "Education, Training & Professionalization",
+          "id": "OPP-02",
+          "role": "core"
+        },
+        {
+          "expectedName": "Workforce, Talent & Human Capital",
+          "id": "OPP-11",
+          "role": "core"
+        },
+        {
+          "expectedName": "Learning, Education & Cognitive Development Frameworks",
+          "id": "KCFT-30",
+          "role": "supporting"
+        },
+        {
+          "expectedName": "Institutional Design & Doctrine",
+          "id": "KCFT-13",
+          "role": "supporting"
+        },
+        {
+          "expectedName": "Training, Simulation, & Operational Preparation Systems",
+          "id": "TTP-12",
+          "role": "supporting"
+        }
+      ],
+      "title": "Workforce & Professionalization"
+    },
+    {
+      "exclusions": "Do not absorb all narrative theory, all military campaigning, or all media/platform architecture.",
+      "featuredEpisodes": [
+        {
+          "episodeId": "EPI-0BB230E6142D612C",
+          "expectedEpisodeNumber": 27,
+          "quoteId": "GUIDE-QUOTE-027-01",
+          "summarySha256": "64c9bb9ad767e13f4444798878d38bce6e0ac7c19919d5f2245e6f179c06a689",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Frames strategic communication around aligning words, actions, images, and symbols with a desired outcome."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Uses state and corporate examples to connect audience understanding, values, narrative, and strategy across different settings."
+            }
+          ],
+          "topicIds": [
+            "OPP-06",
+            "CRB-09",
+            "CRM-08"
+          ]
+        },
+        {
+          "episodeId": "EPI-CFD25E8C93EA7C8A",
+          "expectedEpisodeNumber": 233,
+          "quoteId": null,
+          "summarySha256": "5d96c7b03c34090e107a5570c805dfe00660fad1a4b749cf6afadbd9233503b7",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Examines the relationship between informing and influencing within military public affairs."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Introduces the Paid–Earned–Shared–Owned media model and strategic empathy, linking media choices to measurable goals and priority audiences."
+            }
+          ],
+          "topicIds": [
+            "OPP-06",
+            "KCFT-23",
+            "TTP-03"
+          ]
+        },
+        {
+          "episodeId": "EPI-D2987AD4C521291F",
+          "expectedEpisodeNumber": 46,
+          "quoteId": null,
+          "summarySha256": "a1c0ec8d74e5a1f6e93ea35644b9f7fcd4a3370aa5ea77cb6f9eeea302ff96ba",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Explores public affairs, media relationships, and coordination with other information-related capabilities."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Treats credibility as central to effectiveness and examines the pressure to respond quickly without sacrificing truthful, accurate communication."
+            }
+          ],
+          "topicIds": [
+            "OPP-16",
+            "CRM-08",
+            "KCFT-23"
+          ]
+        },
+        {
+          "episodeId": "EPI-038E74015E08922E",
+          "expectedEpisodeNumber": 128,
+          "quoteId": null,
+          "summarySha256": "d36039f8fd3f4602f352169e58bef3a248682fa4180d871759395a5974e7266b",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Revisits assumptions about the USIA and asks what its history actually teaches about organizing public diplomacy."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Connects communication effectiveness with policy access, leadership, and a durable talent pipeline—not merely recreating an organizational name."
+            }
+          ],
+          "topicIds": [
+            "OPP-16",
+            "TTP-03"
+          ]
+        }
+      ],
+      "group": "Human & Cognitive",
+      "guideId": "GUIDE-STRATEGIC-COMMUNICATION",
+      "scope": "Aligning objectives, words, actions, channels, public affairs, public diplomacy, and credibility in communication practice.",
+      "sections": {
+        "approaches": [
+          {
+            "expectedName": "Narrative, Messaging & Strategic Communication",
+            "field": "recurringThemes",
+            "heading": "Audience-specific tailoring and localization",
+            "id": "OPP-06",
+            "scopeNote": "",
+            "sourceFieldSha256": "b16309dd3d9c7da5e8ce07958b77f1ba43b0227fb4f1d4269eb6b850efa9ba60",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Narrative, Messaging & Strategic Communication",
+            "field": "recurringThemes",
+            "heading": "Platform-native storytelling and trusted distribution",
+            "id": "OPP-06",
+            "scopeNote": "",
+            "sourceFieldSha256": "38936e2c4f77195fc15bfb3de7d3954513f5b314c2fb195a9f1988133c6a28b9",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Ethics, Legitimacy & Democratic Guardrails",
+            "field": "recurringThemes",
+            "heading": "Truthfulness and credibility as strategic assets",
+            "id": "OPP-16",
+            "scopeNote": "",
+            "sourceFieldSha256": "442cc24bf62ad55ee549dcf1537fc75aba002972508d1aaec02c2cb4e654cedb",
+            "type": "cluster"
+          }
+        ],
+        "challenges": [
+          {
+            "expectedName": "Strategic Communication, Narrative & Meaning-Making Failures",
+            "field": "definition",
+            "id": "CRB-09",
+            "scopeNote": "",
+            "sourceFieldSha256": "5ab2279a319c4f76f51c2b6ee66f2784b2112e4fd770896c1d5101b783c1e7d3",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Trust, Legitimacy & Institutional Credibility Erosion",
+            "field": "definition",
+            "id": "CRM-08",
+            "scopeNote": "",
+            "sourceFieldSha256": "d527e84a767c262418ac5601189030a3f317335728938982e6a59ab4096534f1",
+            "type": "cluster"
+          }
+        ],
+        "concepts": [
+          {
+            "expectedName": "Narrative, Identity & Meaning-Making",
+            "field": "definition",
+            "id": "KCFT-03",
+            "scopeNote": "",
+            "sourceFieldSha256": "38ef39bf314f3bba4d83b249a6aa9f66a43ee20ef0e8de560f77615bf58254b4",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Campaign Integration & Cross-Domain Synchronization",
+            "field": "definition",
+            "id": "KCFT-23",
+            "scopeNote": "Communication is considered here alongside actions and other instruments, not as a stand-alone messaging service.",
+            "sourceFieldSha256": "ae26ff129984a0331ea9788c1e71833540fa3a08e933fb121b3db8552500152e",
+            "type": "cluster"
+          }
+        ],
+        "connections": [
+          {
+            "expectedName": "Multi-Actor Alignment and Networked Execution",
+            "field": "definition",
+            "id": "TH-07",
+            "scopeNote": "Coherent communication depends on coordination among institutions and credible communicators.",
+            "sourceFieldSha256": "58035f48f3e94c713dd5ce4b5c03c7c40f66e8f6c2b549bca761c65fae7197bb",
+            "type": "theme"
+          },
+          {
+            "expectedName": "Legitimacy-Preserving Governance of Information Power",
+            "field": "definition",
+            "id": "TH-11",
+            "scopeNote": "Truthfulness and credibility constrain how institutions inform and persuade.",
+            "sourceFieldSha256": "2233b8b94fff7cd2dc27f88f965f9d355920d806c24139a870b68b13aeb891a3",
+            "type": "theme"
+          }
+        ],
+        "corpus-findings": [
+          {
+            "expectedName": "Narrative, Messaging & Strategic Communication",
+            "field": "recurringThemes",
+            "heading": "Credibility through truth, transparency, and congruent action",
+            "id": "OPP-06",
+            "scopeNote": "",
+            "sourceFieldSha256": "8585348395954b1f28818bd36b6cf4957e5dd8b072ded8fe5bf90297836eca89",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Narrative, Messaging & Strategic Communication",
+            "field": "recurringThemes",
+            "heading": "Proactive, timely, and persistent narrative competition",
+            "id": "OPP-06",
+            "scopeNote": "",
+            "sourceFieldSha256": "eaff61a1e2840222b6651e8e3ae221cf0e126902f7f2b1309bcd8ddc85257ad8",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Narrative, Messaging & Strategic Communication",
+            "field": "recurringThemes",
+            "heading": "Narrative as an institutional and operational capability",
+            "id": "OPP-06",
+            "scopeNote": "",
+            "sourceFieldSha256": "d61be44fde8664e9dec82719a9fa83cb399b6c6b865caebd9e1300e5686d97e8",
+            "type": "cluster"
+          }
+        ],
+        "tensions": [
+          {
+            "expectedName": "Institutional Objectivity vs Persuasive Narrative Positioning",
+            "field": "definition",
+            "id": "CT-013",
+            "scopeNote": "",
+            "sourceFieldSha256": "685d7261b71c7182ec1f9b18d6d6cfc2a49a83450313e8f30e54afa3b1eb3a78",
+            "type": "tension"
+          },
+          {
+            "expectedName": "Truth-Verification Infrastructure vs Proactive Cognitive Shaping",
+            "field": "definition",
+            "id": "CT-018",
+            "scopeNote": "",
+            "sourceFieldSha256": "c3c0da6f23933475ce509ce9c410dcc1fd9f736f8f4e2fed82530c5cc419f70e",
+            "type": "tension"
+          }
+        ],
+        "tools-methods": [
+          {
+            "expectedName": "Influence Delivery & Communication Platforms",
+            "field": "recurringThemes",
+            "heading": "Platform-specific tailoring, localization, and audience fit",
+            "id": "TTP-03",
+            "scopeNote": "",
+            "sourceFieldSha256": "050cfaf9a5ea5dfef7ead7514e86f4f8c3b1c6cf161c46abf69b7088d8c0d6be",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Influence Delivery & Communication Platforms",
+            "field": "recurringThemes",
+            "heading": "Cross-platform orchestration and reinforcement",
+            "id": "TTP-03",
+            "scopeNote": "",
+            "sourceFieldSha256": "e8afd36be11d0a270363c27897048097e01f5e9aed106b12c599284f9a23b89e",
+            "type": "cluster"
+          }
+        ]
+      },
+      "slug": "strategic-communication",
+      "sourceTopics": [
+        {
+          "expectedName": "Strategic Communication, Narrative & Meaning-Making Failures",
+          "id": "CRB-09",
+          "role": "core"
+        },
+        {
+          "expectedName": "Narrative, Messaging & Strategic Communication",
+          "id": "OPP-06",
+          "role": "core"
+        },
+        {
+          "expectedName": "Influence Delivery & Communication Platforms",
+          "id": "TTP-03",
+          "role": "core"
+        },
+        {
+          "expectedName": "Narrative, Identity & Meaning-Making",
+          "id": "KCFT-03",
+          "role": "supporting"
+        },
+        {
+          "expectedName": "Strategic Culture & Ideological Competition",
+          "id": "KCFT-20",
+          "role": "supporting"
+        },
+        {
+          "expectedName": "Trust, Legitimacy & Institutional Credibility Erosion",
+          "id": "CRM-08",
+          "role": "supporting"
+        },
+        {
+          "expectedName": "Campaign Integration & Cross-Domain Synchronization",
+          "id": "KCFT-23",
+          "role": "supporting"
+        }
+      ],
+      "title": "Strategic Communication"
+    },
+    {
+      "exclusions": "Do not include all space, XR, biotechnology, electronic warfare, or generic algorithmic content simply because a broad source topic mentions cyber.",
+      "featuredEpisodes": [
+        {
+          "episodeId": "EPI-3E37A1A44A2B4AF8",
+          "expectedEpisodeNumber": 30,
+          "quoteId": null,
+          "summarySha256": "82f51249300ef87dc2a8a05df9510b9b09e686f8e13d708770fb5c26af4d6e7c",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Introduces his critique of perimeter-based security and an assume-intrusion posture centered on users, data, access, and containment."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Connects cyber with national capability, disinformation, and deepfakes, making this a broad foundation rather than a narrow technical tutorial."
+            }
+          ],
+          "topicIds": [
+            "OPP-04",
+            "CRM-07",
+            "KCFT-26"
+          ]
+        },
+        {
+          "episodeId": "EPI-E51183BAE0268B72",
+          "expectedEpisodeNumber": 133,
+          "quoteId": null,
+          "summarySha256": "ff757d9584e5d075647d902fc28940063b116ad999a256adaa3b43179b68b007",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Examines how digital platforms and recommendation systems can be exploited to shape information exposure and amplification."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Connects cyber-enabled activity with influence outcomes, helping distinguish this problem from a cybersecurity view focused only on network intrusion."
+            }
+          ],
+          "topicIds": [
+            "OPP-04",
+            "OPP-09",
+            "CRM-07"
+          ]
+        },
+        {
+          "episodeId": "EPI-3CEF51C8ACC4BF87",
+          "expectedEpisodeNumber": 57,
+          "quoteId": "GUIDE-QUOTE-057-01",
+          "summarySha256": "a69b47020e4e8666e1e53fe4b23f4ca44f0539a273a2666667d3fa52705b740c",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Introduces social cybersecurity as a problem involving people, groups, networks, and information—not just individual accounts or machines."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Uses BEND to examine both changes in what is being said and changes in who is connected to whom."
+            }
+          ],
+          "topicIds": [
+            "OPP-04",
+            "TTP-04"
+          ]
+        },
+        {
+          "episodeId": "EPI-27F1646220E41FE9",
+          "expectedEpisodeNumber": 179,
+          "quoteId": null,
+          "summarySha256": "85895177c51590c61e5af3783d5fcc34561b613540c4ecfbec013b8ee3613da8",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Presents cyberspace as an enabling connection across military domains rather than a separate technical specialty."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Connects all-domain maneuver with reconnaissance and cross-organizational coordination, offering a military-operational complement to the platform-focused episodes."
+            }
+          ],
+          "topicIds": [
+            "OPP-04",
+            "KCFT-26",
+            "TTP-07"
+          ]
+        },
+        {
+          "episodeId": "EPI-C4F765C30192BA60",
+          "expectedEpisodeNumber": 40,
+          "quoteId": null,
+          "summarySha256": "d4793a8595f574bfbc90ef5b70aefdd52653b4696c1f226c023512030af17f16",
+          "takeaways": [
+            {
+              "sourceField": "summary",
+              "text": "Uses city-centered exercises to explore interdependencies among critical infrastructure, communities, and defense requirements."
+            },
+            {
+              "sourceField": "summary",
+              "text": "Shows how response gaps and information-sharing relationships can be identified before a disruption, extending cyber defense into resilience and recovery."
+            }
+          ],
+          "topicIds": [
+            "OPP-04"
+          ]
+        }
+      ],
+      "group": "Threats & Resilience",
+      "guideId": "GUIDE-CYBER",
+      "scope": "The connection between cyber capabilities and influence, social cybersecurity, operational integration, technical dependencies, and infrastructure resilience.",
+      "sections": {
+        "approaches": [
+          {
+            "expectedName": "Integration, Convergence & Coordination",
+            "field": "recurringThemes",
+            "heading": "Cross-functional integration of specialized capabilities",
+            "id": "OPP-04",
+            "scopeNote": "",
+            "sourceFieldSha256": "9dcfb9c4df28beacbf563c9e94cd92f6840315e6b9929132e5e2ad80e7398dbe",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Technology Standards, Governance & Risk Controls",
+            "field": "recurringThemes",
+            "heading": "Standards, compliance, and governance regimes for cyber/OSINT/supply chains",
+            "id": "OPP-09",
+            "scopeNote": "",
+            "sourceFieldSha256": "8ba3afebc84207a1c5dcedeb3e857c328122bb9f0deace56bcdfc219eb04307e",
+            "type": "cluster"
+          }
+        ],
+        "challenges": [
+          {
+            "expectedName": "OPSEC, Cyber, Infrastructure & Technical Exposure Risks",
+            "field": "recurringThemes",
+            "heading": "Personal devices and digital behavior as OPSEC leakage",
+            "id": "CRM-07",
+            "scopeNote": "",
+            "sourceFieldSha256": "9673f8aa91af37e2e2c909a611c0458696d0e5f91badb145704b02822a26f58f",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "OPSEC, Cyber, Infrastructure & Technical Exposure Risks",
+            "field": "recurringThemes",
+            "heading": "Assume compromise and harden high-value nodes",
+            "id": "CRM-07",
+            "scopeNote": "",
+            "sourceFieldSha256": "19b12e09772101e2125792d5a4014c633180e0cad066396cfedd08264599f7c5",
+            "type": "cluster"
+          }
+        ],
+        "concepts": [
+          {
+            "expectedName": "Campaign Integration & Cross-Domain Synchronization",
+            "field": "definition",
+            "id": "KCFT-23",
+            "scopeNote": "The relevant connection is synchronization between cyber capabilities and information activities.",
+            "sourceFieldSha256": "ae26ff129984a0331ea9788c1e71833540fa3a08e933fb121b3db8552500152e",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Platform, Algorithmic & Information Ecosystem Concepts",
+            "field": "definition",
+            "id": "KCFT-26",
+            "scopeNote": "Platform mechanisms matter here when they mediate cyber-enabled influence, not merely because an episode mentions a social platform.",
+            "sourceFieldSha256": "d5ddbf1ff30c6e412dcbfc4f2a7aaad39e6fac061a046cc88eb948dd4668a11a",
+            "type": "cluster"
+          }
+        ],
+        "connections": [
+          {
+            "expectedName": "Mission Continuity on a Contested Technical Substrate",
+            "field": "definition",
+            "id": "TH-08",
+            "scopeNote": "Cyber activity depends on a technical substrate whose failure can disrupt missions and communities.",
+            "sourceFieldSha256": "d0210fde1abef9c8faa956e6f38ccd042fa77324c964904d3560b4aeb32edc70",
+            "type": "theme"
+          },
+          {
+            "expectedName": "Platform Architecture as the Terrain of Influence",
+            "field": "definition",
+            "id": "TH-03",
+            "scopeNote": "Social cybersecurity and cyber-enabled influence connect technical access with the architecture of exposure.",
+            "sourceFieldSha256": "a1ae2e40538b36d2db34111467749d0510cd2c5210f28430fdce7c67a3b3c538",
+            "type": "theme"
+          }
+        ],
+        "corpus-findings": [
+          {
+            "expectedName": "OPSEC, Cyber, Infrastructure & Technical Exposure Risks",
+            "field": "recurringThemes",
+            "heading": "Connectivity, hidden dependencies, and cascading compromise",
+            "id": "CRM-07",
+            "scopeNote": "",
+            "sourceFieldSha256": "718a0943e615f5f57fc446dd98294c44231f79d5ced8888061a50779d044478c",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Cyber, Electromagnetic, & Technical Access Systems",
+            "field": "recurringThemes",
+            "heading": "Cyber as offensive disruption, disclosure, and influence support",
+            "id": "TTP-07",
+            "scopeNote": "",
+            "sourceFieldSha256": "2186f8c2a63c18339f353b9b8f4b9db1e072e9ac850efa115fe316d11466a7df",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Cyber, Digital, and Intelligence-Exposure Incidents",
+            "field": "finding",
+            "id": "CF-KEH-F02",
+            "scopeNote": "",
+            "sourceFieldSha256": "c7afbea8fc627bc79f63f3e80cd67f3ec5eb05b1f0f380cf6abcfd181cba3867",
+            "type": "finding"
+          }
+        ],
+        "tensions": [
+          {
+            "expectedName": "Supply-Side Disruption vs Demand-Side Susceptibility",
+            "field": "definition",
+            "id": "CT-017",
+            "scopeNote": "",
+            "sourceFieldSha256": "a0950030e91270bd2bd69f4bf9bc2e47c40bef291cc9043524677c734e588585",
+            "type": "tension"
+          },
+          {
+            "expectedName": "Operational Speed and Optimization vs Legitimacy-Preserving Guardrails",
+            "field": "definition",
+            "id": "CT-019",
+            "scopeNote": "",
+            "sourceFieldSha256": "66241602f23b73d5ed3c8a6e4eb23f00045825f34198007b1d1f14ed6751296e",
+            "type": "tension"
+          }
+        ],
+        "tools-methods": [
+          {
+            "expectedName": "Cyber, Electromagnetic, & Technical Access Systems",
+            "field": "recurringThemes",
+            "heading": "Defensive cyber as continuous, specialized practice",
+            "id": "TTP-07",
+            "scopeNote": "",
+            "sourceFieldSha256": "bedbfda30e569f9b3a13d41658376b573b1992c8799a72fa7e8d70bdc451d065",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Algorithmic Amplification & Platform Dynamics",
+            "field": "recurringThemes",
+            "heading": "Bots, sockpuppets, and coordinated inauthentic amplification",
+            "id": "TTP-04",
+            "scopeNote": "",
+            "sourceFieldSha256": "1cd9e2cea4a757b3024335f656c7e5437ed4240401ec2eb7592f1f02a922822f",
+            "type": "cluster"
+          },
+          {
+            "expectedName": "Resilience, Circumvention, & Protective Systems",
+            "field": "recurringThemes",
+            "heading": "Protective communications, OPSEC, and anti-exfiltration",
+            "id": "TTP-14",
+            "scopeNote": "",
+            "sourceFieldSha256": "fb5c5c9e51e9ee0f1ce10fe0c47277e2093c0728b4209faacc0f5186a202a00b",
+            "type": "cluster"
+          }
+        ]
+      },
+      "slug": "cyber",
+      "sourceTopics": [
+        {
+          "expectedName": "OPSEC, Cyber, Infrastructure & Technical Exposure Risks",
+          "id": "CRM-07",
+          "role": "core"
+        },
+        {
+          "expectedName": "Cyber, Electromagnetic, & Technical Access Systems",
+          "id": "TTP-07",
+          "role": "core"
+        },
+        {
+          "expectedName": "Infrastructure, Connectivity, & Information Backbone Systems",
+          "id": "TTP-08",
+          "role": "supporting"
+        },
+        {
+          "expectedName": "Integrated Information Warfare & Multi-Domain Operational Systems",
+          "id": "TTP-13",
+          "role": "supporting"
+        },
+        {
+          "expectedName": "Algorithmic Amplification & Platform Dynamics",
+          "id": "TTP-04",
+          "role": "supporting"
+        },
+        {
+          "expectedName": "Platform, Algorithmic & Information Ecosystem Concepts",
+          "id": "KCFT-26",
+          "role": "supporting"
+        },
+        {
+          "expectedName": "Identity, Persona, & Social Graph Systems",
+          "id": "TTP-09",
+          "role": "supporting"
+        },
+        {
+          "expectedName": "Resilience, Circumvention, & Protective Systems",
+          "id": "TTP-14",
+          "role": "supporting"
+        },
+        {
+          "expectedName": "Campaign Integration & Cross-Domain Synchronization",
+          "id": "KCFT-23",
+          "role": "supporting"
+        },
+        {
+          "expectedName": "Cross-Domain & Integrated Competition Frameworks",
+          "id": "KCFT-29",
+          "role": "supporting"
+        },
+        {
+          "expectedName": "Human-Centered Security & Human Terrain Concepts",
+          "id": "KCFT-28",
+          "role": "supporting"
+        },
+        {
+          "expectedName": "Cyber, Space, XR, Bio, & Emerging Technology Competition",
+          "id": "FTP-11",
+          "role": "supporting"
+        }
+      ],
+      "title": "Cyber, Information Operations & the Human Dimension"
+    }
+  ],
+  "membershipMethod": "explicit-topic-guide-curation-over-canonical-resynthesis",
+  "schemaVersion": "1.0",
+  "unmappedAllowed": true
+}

@@ -77,6 +77,7 @@ const DATA_ENTITY_TYPES = Object.freeze([
   "categoryFinding", "scenario", "episode",
 ]);
 const ENTITY_ROUTES = Object.freeze({
+  categoryFinding: "finding",
   category: "category",
   family: "family",
   cluster: "cluster",
@@ -96,6 +97,7 @@ const PRIMARY_VIEWS = Object.freeze([
   "episodes", "search", "methodology",
 ]);
 const ENTITY_INDEX_VIEWS = Object.freeze({
+  categoryFinding: "families",
   category: "families",
   family: "families",
   cluster: "families",
@@ -3352,7 +3354,28 @@ async function renderMethodology() {
   viewContent.appendChild(element("p", "quiet-note", "Build status: " + (qa.status || "pass") + ". Public schema: " + manifest.schemaVersion + "."));
 }
 
+// Finding details use existing canonical records. They are not new syntheses.
+function renderFinding(route) {
+  const finding = getEntity("categoryFinding", route.id);
+  const category = getEntity("category", finding.categoryId);
+  setHeader("Canonical finding / open question", finding.title, finding.finding, humanize(finding.findingType));
+  setBreadcrumbs([
+    { label: "Categories", view: "families" },
+    { label: category.name, route: routeForEntity("category", category.categoryId) },
+    { label: finding.title, current: true },
+  ]);
+  const record = element("div", "record-detail");
+  record.appendChild(detailSection("Existing canonical synthesis", finding.finding));
+  record.appendChild(detailSection("Supporting subcategories", entityChipList("family", finding.supportingFamilyIds), "These are the improved canonical family groupings supporting this finding."));
+  record.appendChild(detailSection("Supporting topics", entityChipList("cluster", finding.supportingClusterIds), "Follow a topic to inspect its coded support and source episodes."));
+  if (finding.openQuestions) record.appendChild(detailSection("Open questions", textList(finding.openQuestions, false)));
+  if (finding.limitations) record.appendChild(detailSection("Limitations", textList(finding.limitations, false)));
+  record.appendChild(renderSupportPanel(finding, "finding"));
+  viewContent.appendChild(record);
+}
+
 const RENDERERS = Object.freeze({
+  finding: renderFinding,
   start: renderStart,
   families: renderFamilies,
   category: renderCategory,
@@ -3376,6 +3399,7 @@ async function renderRoute(options) {
   if (!state.initialized) return;
   const settings = options || {};
   const token = ++state.renderToken;
+  window.dispatchEvent(new CustomEvent("psywerx:route-start"));
   const resolved = await canonicalizeRoute(parseRoute());
   if (token !== state.renderToken) return;
   const route = resolved.route;
@@ -3392,6 +3416,7 @@ async function renderRoute(options) {
     await RENDERERS[route.view](route);
     if (token !== state.renderToken) return;
     renderCopyLinkAction(route);
+    window.dispatchEvent(new CustomEvent("psywerx:route-ready", { detail: { view: route.view, id: route.id || "" } }));
     viewContent.setAttribute("aria-busy", "false");
     if (settings.focus !== false) focusViewHeading();
     appStatus.textContent = viewTitle.textContent + " loaded.";
