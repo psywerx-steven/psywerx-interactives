@@ -9,9 +9,8 @@ The first 15 curated topic guides, a searchable directory, an Explorer navigatio
 - 15 guide pages, plus the directory.
 - 63 featured-episode placements representing 62 unique episodes.
 - 236 selected source-card placements from current canonical content.
-- 15 verified archived-transcript excerpts, used in 16 episode cards.
-- 47 episode-card placements have no quote. Their cited listening notes remain present; absent quotations were not fabricated or reconstructed from summaries.
-- Quotes are inside episode listings. There is no separate Voices section and no Continue Exploring section.
+- All 63 episode-card placements are quote-free and retain their cited listening notes.
+- Quote collections, identifiers, rendering code, styling, and omission counters are removed. There is no separate Voices section and no Continue Exploring section.
 - 65 canonical clusters have no displayed guide membership. This is valid and is not a coverage defect. These are the first guides, not an exhaustive partition.
 
 ## Source and method controls
@@ -22,7 +21,7 @@ All 127 canonical ID/name pairs and primary-family assignments are checked again
 
 Topic-first, evidence-first editorial curation is separate from canonical clustering. Featured episodes and admitted source passages are explicit selections; the old whole-episode similarity calculation and its topic-prominence/shared-topic thresholds are not used as admission gates. Broad crosswalk topics only identify candidate sources, not automatic membership. Theme/family reach does not propagate guide tags to every reachable episode. Source-topic membership, public-guide inclusion, and canonical analytical relationships remain distinct.
 
-All existing analytical/discovery JSON files are byte-for-byte unchanged. Counts, weights, canonical classifications, and existing similar-overall results are unchanged. Public provenance still ends at episode releases; the separate small quote collection exposes only approved public fields, not raw items, private source paths, or verification notes.
+All existing analytical/discovery JSON files are byte-for-byte unchanged. Counts, weights, canonical classifications, and existing similar-overall results are unchanged. Public provenance still ends at episode releases. The guides publish no transcript quotations, raw items, private source paths, or verification notes.
 
 ## Integration details
 
@@ -30,7 +29,7 @@ Each guide is a real static `cognitive-security/topic/<slug>/index.html` with ca
 
 Optional guide tags fail independently of the core Explorer. The reverse index is generated only from explicit selections. The page contents remain usable without JavaScript; JavaScript adds directory search and copy-link convenience.
 
-## Executed validation
+## Original implementation validation (before quote removal)
 
 GitHub Actions run: https://github.com/psywerx-steven/psywerx-interactives/actions/runs/34871892109
 
@@ -51,4 +50,19 @@ The temporary checksum-verified source-transport workflow and its five transport
 
 ## Publication limitations
 
-This implementation is prepared for review, not merged or deployed by this task. The static Open Graph tags are validated; a live LinkedIn unfurl/Post Inspector result has not been checked. Transcript excerpts were verified against archived text and speaker context, not independently against audio. Timestamps remain absent when unavailable. Topic relevance and listening takeaways are editorial judgments, not scientifically validated rankings or claims of guest consensus.
+This implementation is prepared for review, not merged or deployed by this task. The static Open Graph tags are validated; a live LinkedIn unfurl/Post Inspector result has not been checked. Topic relevance and listening takeaways are editorial judgments, not scientifically validated rankings or claims of guest consensus.
+
+## Citation-only revision
+
+On 2026-09-14 the user approved the design, requested removal of the quotations,
+and authorized continuation. The quote feature is removed completely, not hidden.
+Source selection, all 127 ID/name locks, reviewed primary-family assignments,
+source citations, featured listening takeaways, and core/discovery data are unchanged.
+The original four quote tests are replaced with quote-absence, forbidden-field,
+asset-removal, and citation-preservation tests. Desktop/mobile acceptance now
+asserts zero quotation blocks on all 15 guides. The schema for changed guide
+records is 1.1; the unchanged directory/reverse-index formats remain 1.0.
+
+The existing run above documents the original implementation. The final PR's
+checks and subsequent deployment record establish validation/publication of this
+revision; the original run is not presented as a test of later changes.

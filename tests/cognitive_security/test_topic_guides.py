@@ -12,7 +12,7 @@ from urllib.parse import urlparse, parse_qs
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / 'scripts'))
 from cognitive_security.topic_guides import (AUTHORING, PUBLIC, SITE, Corpus, GuideError,
-    compile_outputs, validate_guides, validate_quotes, field_sha, load)
+    compile_outputs, validate_guides, field_sha, load)
 
 class Links(HTMLParser):
     def __init__(self):
@@ -27,7 +27,7 @@ class Links(HTMLParser):
 class TopicGuidesTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.c=Corpus(ROOT);cls.g=load(ROOT/AUTHORING/'guides.json');cls.q=load(ROOT/AUTHORING/'quote_excerpts.json');cls.a=load(ROOT/AUTHORING/'quote_approvals.json');cls.out,cls.report=compile_outputs(ROOT)
+        cls.c=Corpus(ROOT);cls.g=load(ROOT/AUTHORING/'guides.json');cls.out,cls.report=compile_outputs(ROOT)
 
     def test_01_canonical_source_authority(self):
         self.assertEqual(self.c.manifest['methodVersion'],'deduplicated-canonical-resynthesis')
@@ -44,7 +44,7 @@ class TopicGuidesTests(unittest.TestCase):
 
     def test_04_valid_but_wrong_id_name_rejected(self):
         x=copy.deepcopy(self.g); x['guides'][0]['sourceTopics'][0]['expectedName']='Workforce, Expertise & Training Gaps'
-        with self.assertRaisesRegex(GuideError,'ID/name mismatch'):validate_guides(self.c,x,{})
+        with self.assertRaisesRegex(GuideError,'ID/name mismatch'):validate_guides(self.c,x)
 
     def test_05_selected_source_wrong_name_rejected(self):
         ref=copy.deepcopy(self.g['guides'][0]['sections']['concepts'][0]);ref['expectedName']='Experimentation, Evaluation & Feedback'
@@ -62,7 +62,7 @@ class TopicGuidesTests(unittest.TestCase):
 
     def test_09_unmapped_sources_do_not_block(self):
         x=copy.deepcopy(self.g);x['guides']=x['guides'][:1]
-        validate_guides(self.c,x,validate_quotes(self.c,self.q,self.a))
+        validate_guides(self.c,x)
 
     def test_10_no_similarity_gate(self):
         source=(ROOT/'scripts/cognitive_security/topic_guides.py').read_text()
@@ -85,7 +85,7 @@ class TopicGuidesTests(unittest.TestCase):
 
     def test_14_duplicate_slug_rejected(self):
         x=copy.deepcopy(self.g);x['guides'][1]['slug']=x['guides'][0]['slug']
-        with self.assertRaisesRegex(GuideError,'Duplicate guide'):validate_guides(self.c,x,validate_quotes(self.c,self.q,self.a))
+        with self.assertRaisesRegex(GuideError,'Duplicate guide'):validate_guides(self.c,x)
 
     def test_15_unknown_entity_rejected(self):
         r=copy.deepcopy(self.g['guides'][0]['sections']['concepts'][0]);r['id']='KCFT-999'
@@ -153,29 +153,44 @@ class TopicGuidesTests(unittest.TestCase):
             for k,i in pairs:expected.setdefault(k+':'+i,set()).add(g['guideId'])
         result=json.loads(self.out[PUBLIC/'reverse_index.json'])['entities'];self.assertEqual(result,{k:sorted(v) for k,v in expected.items()})
 
-    def test_26_quote_approval_integrity(self):
-        validate_quotes(self.c,self.q,self.a)
-        if self.q['quotes']:
-            q=copy.deepcopy(self.q);q['quotes'][0]['speaker']='Incorrect attribution'
-            with self.assertRaisesRegex(GuideError,'after excerpt review'):validate_quotes(self.c,q,self.a)
+    def test_26_all_pages_are_quote_free(self):
+        for path, data in self.out.items():
+            if path.suffix == '.html':
+                parser = Links(); parser.feed(data.decode())
+                self.assertFalse(any(tag in ('blockquote', 'q') for tag, attrs in parser.tags), str(path))
+                self.assertNotIn('episode-quote', data.decode())
+                self.assertNotIn('Transcript excerpt;', data.decode())
 
-    def test_27_quote_wrong_episode_rejected(self):
-        if not self.q['quotes']:self.skipTest('No approved quotes in this build')
-        x=copy.deepcopy(self.g);quotes=validate_quotes(self.c,self.q,self.a);q=next(iter(quotes.values()))
-        e=next(e for g in x['guides'] for e in g['featuredEpisodes'] if e['episodeId']!=q['episodeId']);e['quoteId']=q['quoteId']
-        with self.assertRaisesRegex(GuideError,'different episode'):validate_guides(self.c,x,quotes)
+    def test_27_quote_fields_cannot_be_reintroduced(self):
+        for field in ('quoteId', 'quote', 'quoteText', 'transcriptPath'):
+            payload = copy.deepcopy(self.g)
+            payload['guides'][0]['featuredEpisodes'][0][field] = 'not allowed'
+            with self.assertRaisesRegex(GuideError, 'allowlisted'):
+                validate_guides(self.c, payload)
 
-    def test_28_private_quote_fields_rejected(self):
-        if not self.q['quotes']:self.skipTest('No approved quotes in this build')
-        q=copy.deepcopy(self.q);q['quotes'][0]['transcriptPath']='private/file.txt'
-        with self.assertRaisesRegex(GuideError,'allowlisted'):validate_quotes(self.c,q,self.a)
+    def test_28_episode_citations_and_takeaways_remain(self):
+        for guide in self.g['guides']:
+            page = self.out[SITE/guide['slug']/'index.html'].decode()
+            self.assertEqual(page.count('Listening notes:'), len(guide['featuredEpisodes']))
+            for episode in guide['featuredEpisodes']:
+                self.assertEqual(len(episode['takeaways']), 2)
+                self.assertIn(episode['episodeId'], page)
 
     def test_29_deterministic(self):
         again,_=compile_outputs(ROOT);self.assertEqual(again,self.out)
 
-    def test_30_source_dates_not_recording_dates(self):
-        # Guide compiler does not invent a timestamp or claim a recording date.
-        for q in self.q['quotes']:self.assertIsNone(q['timestamp'])
+    def test_30_quote_payload_and_assets_are_absent(self):
+        manifest = json.loads(self.out[PUBLIC/'manifest.json'])
+        self.assertEqual(manifest['schemaVersion'], '1.1')
+        self.assertEqual(set(manifest['files']), {'guide_directory.json', 'reverse_index.json', 'topic_guides.json'})
+        self.assertNotIn('quoteCount', manifest)
+        self.assertNotIn('quoteOmissions', self.report)
+        for path in (AUTHORING/'quote_excerpts.json', AUTHORING/'quote_approvals.json', PUBLIC/'quote_excerpts.json'):
+            self.assertFalse((ROOT/path).exists())
+        for path, data in self.out.items():
+            if path.is_relative_to(PUBLIC):
+                self.assertNotIn('quoteId', data.decode())
+                self.assertNotIn('verificationBasis', data.decode())
 
     def test_31_public_payload_has_no_private_source_records(self):
         forbidden={'itemId','evidenceId','transcriptPath','sourceFile','source_file','worksheet','prompt','reviewNotes','adjudicationId','sourceFilename'}

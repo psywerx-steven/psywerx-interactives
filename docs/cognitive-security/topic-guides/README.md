@@ -78,29 +78,18 @@ candidates. Its semantic label is
 `explicit-curated-inclusion-not-analytical-support`. Unmapped entities show no
 badge. Failure to fetch this optional index does not disable the Explorer.
 
-## Public quotation boundary
+## Citation-only episode cards
 
-The existing analytical package excludes raw excerpts and item records. This
-feature introduces a small, separate allowlisted quote projection—not permission
-to publish the transcript corpus or raw extraction records.
+Per the accepted design revision, episode cards have no quotations. The quote
+collections, approval records, quote identifiers, rendering code, CSS, and
+omission counters have been removed rather than hidden. Guide schema 1.1 rejects
+quote fields, and the closed authoring/generated inventories reject reintroduced
+quote files. Browser tests check every guide for the absence of quote blocks.
 
-The release includes 15 brief, context-checked transcript excerpts, placed in
-16 episode-card locations across the 15 guides. These were checked against
-archived episode transcripts and their surrounding speaker turns; they have not
-been independently checked against audio. The display says **Transcript excerpt**
-and does not invent timestamps. The correct episode, speaker, text, publisher
-URL, and verification basis are bound together in an excerpt-approval digest.
-The digest is a change-detection guard, not cryptographic proof of human review.
-
-Cards without an approved excerpt simply retain their cited listening takeaways.
-`BUILD_REPORT.json` lists the 47 omitted quote placements. This is not a claim
-that those episodes lack quotable material; no excerpt has been approved for
-these cards in this build. No quotation was synthesized from an AI summary.
-
-The private transcript locator, full text, raw file hashes, surrounding-turn
-review notes, and historical item IDs are deliberately not part of this repository
-change or the public guide package. Public episode links are resolved from the
-existing verified publisher metadata, not guessed from guest names.
+The two listening takeaways, canonical topic tags, reviewed-summary citations,
+and verified publisher listening links remain intact. Public episode links are
+resolved from existing metadata, not guessed from guest names. The ordinary
+build does not read or publish transcripts, raw items, or private locators.
 
 ## Files and build
 
@@ -116,7 +105,7 @@ python -m unittest tests.cognitive_security.test_topic_guides -v
 
 The standard-library compiler validates all inputs before writing. It generates
 one shared-template directory and 15 guide pages, public ID references, an explicit
-reverse index, the narrow quote projection, a manifest, and a build report.
+reverse index, a manifest, and a build report.
 Static HTML necessarily materializes the selected canonical prose for browsing
 and sharing; that prose is not duplicated into manually maintained guide records.
 The `--check` mode detects stale or unexpected outputs without changing them.
@@ -126,8 +115,8 @@ challenges, practitioner approaches, tools/methods, tensions, and corpus
 connections. A genuinely empty section is omitted rather than filled with weak
 adjacency. Deterrence has no separately selected tools section in this build.
 There is no Continue Exploring section and no separate Voices/Quotes section.
-Each quote appears inside its episode card. Source titles, citations, and tags
-are links to actual Explorer records or verified publisher episode pages.
+Episode cards contain cited listening notes without quotations. Source titles,
+citations, and tags are links to actual Explorer records or verified publisher episode pages.
 
 A small additive `?view=finding&id=...` renderer exposes the already published
 canonical findings that the previous app did not give their own detail view.
