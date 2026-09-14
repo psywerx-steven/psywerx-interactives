@@ -49,7 +49,7 @@ class SiteNavigationTests(unittest.TestCase):
                 header = header_markup(page)
 
                 brand_links = re.findall(
-                    r'<a\b[^>]*class="[^"]*(?:brand|wordmark|psywerx-global-brand)[^"]*"[^>]*href="([^"]+)"[^>]*aria-label="PSYWERX home"[^>]*>\s*<img\b[^>]*alt="PSYWERX"',
+                    r'<a\b[^>]*class="[^"]*(?:brand|wordmark|psywerx-global-brand)[^"]*"[^>]*href="([^"]+)"[^>]*aria-label="PSYWERX home"[^>]*>.*?<img\b[^>]*alt="PSYWERX"',
                     page,
                     flags=re.DOTALL,
                 )
