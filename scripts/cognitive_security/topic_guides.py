@@ -315,15 +315,11 @@ def render_guide(corpus: Corpus, g: dict[str, Any]) -> str:
 
 
 def render_directory(guides: list[dict[str, Any]]) -> str:
-    content = '<header class="guide-hero"><p class="eyebrow">Curated ways into the corpus</p><h1>Topic Guides</h1><p class="lead">Start with a question. Find a few episodes worth listening to, then follow the concepts, findings, and tensions deeper into the Explorer.</p><p class="curation-note">These first 15 guides cover selected interests—not the entire field. Connections are curated around each topic, not generated from whole-episode similarity rankings.</p></header><div class="guide-search"><label for="guide-search">Find a guide</label><input type="search" id="guide-search" placeholder="Assessment, cyber, narrative…" autocomplete="off"><p id="guide-count" role="status">'+str(len(guides))+' guides</p></div>'
-    groups = list(dict.fromkeys(g['group'] for g in guides))
-    for group in groups:
-        content += f'<section class="directory-group" data-guide-group><h2>{esc(group)}</h2><div class="directory-grid">'
-        for g in guides:
-            if g['group'] != group: continue
-            content += f'<article class="directory-card" data-guide-search="{esc((g["title"]+" "+g["scope"]).casefold())}"><div class="directory-card-heading">{render_topic_icon(g["slug"])}<div class="directory-card-title"><p class="eyebrow">{len(g["featuredEpisodes"])} starting episodes</p><h3>{link("/cognitive-security/topic/"+g["slug"]+"/",g["title"])}</h3></div></div><p>{esc(g["scope"])}</p>'+link('/cognitive-security/topic/'+g['slug']+'/', 'Open guide →','text-link')+'</article>'
-        content += '</div></section>'
-    content += '<p id="no-guides" hidden>No guides match that search. Clear the search to see all 15.</p>'
+    content = '<header class="guide-hero directory-hero"><p class="eyebrow">Curated ways into the corpus</p><h1>Topic Guides</h1><p class="lead">Choose a topic to start with a focused set of Cognitive Crucible episodes and follow the supporting analysis deeper into the Explorer.</p></header><section class="directory-grid" aria-label="Topic Guides">'
+    for g in guides:
+        href = '/cognitive-security/topic/' + g['slug'] + '/'
+        content += f'<article class="directory-card"><div class="directory-card-heading">{render_topic_icon(g["slug"])}<div class="directory-card-title"><h3>{link(href,g["title"])}</h3><p class="eyebrow">{len(g["featuredEpisodes"])} episodes</p></div></div></article>'
+    content += '</section>'
     return shell('Topic Guides', 'Curated listening guides and evidence-linked starting points into the Cognitive Security Practitioner Discourse Map.', '/cognitive-security/topic/', content, True)
 
 
