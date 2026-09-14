@@ -1,0 +1,260 @@
+diff --git a/scripts/cognitive_security/topic_guides.py b/scripts/cognitive_security/topic_guides.py
+--- a/scripts/cognitive_security/topic_guides.py
++++ b/scripts/cognitive_security/topic_guides.py
+@@ -46,6 +46,29 @@
+ GUIDE_FIELDS = {"guideId", "slug", "title", "group", "scope", "exclusions", "sourceTopics", "featuredEpisodes", "sections"}
+ EPISODE_FIELDS = {"episodeId", "expectedEpisodeNumber", "takeaways", "topicIds", "summarySha256"}
+ SOURCE_TOPIC_FIELDS = {"id", "expectedName", "role"}
++# Artwork cells are keyed by stable guide slug, never by display/group order.
++# Approved sheet: five columns by three rows, each normalized to 176 px.
++ICON_CELLS = {
++    "assessment": (0, 0), "narrative": (1, 0), "cognitive-warfare": (2, 0),
++    "influence-psychology": (3, 0), "ai-synthetic-media": (4, 0),
++    "disinformation": (0, 1), "resilience": (1, 1), "deterrence": (2, 1),
++    "campaign-planning": (3, 1), "audience-analysis": (4, 1),
++    "data-analytics": (0, 2), "ethics-law": (1, 2), "workforce": (2, 2),
++    "strategic-communication": (3, 2), "cyber": (4, 2),
++}
++ICON_SPRITE = SITE / "topic-icons.webp"
++ICON_SPRITE_SHA256 = "ec6bb1b3d689cc258d67397f4bfb6219ed8cfead7711679ee95ca25d6d014403"
++
++
++def render_topic_icon(slug: str) -> str:
++    cell = ICON_CELLS.get(slug)
++    if cell is None:
++        return ""  # Future guides need not have art to remain usable.
++    column, row = cell
++    return (f'<span class="topic-guide-icon" data-topic-icon="{slug}" '
++            f'style="--icon-x:{column * 25}%;--icon-y:{row * 50}%;" '
++            'aria-hidden="true"></span>')
++
+ TAKEAWAY_FIELDS = {"text", "sourceField"}
+ 
+ 
+@@ -298,7 +321,7 @@
+         content += f'<section class="directory-group" data-guide-group><h2>{esc(group)}</h2><div class="directory-grid">'
+         for g in guides:
+             if g['group'] != group: continue
+-            content += f'<article class="directory-card" data-guide-search="{esc((g["title"]+" "+g["scope"]).casefold())}"><p class="eyebrow">{len(g["featuredEpisodes"])} starting episodes</p><h3>{link("/cognitive-security/topic/"+g["slug"]+"/",g["title"])}</h3><p>{esc(g["scope"])}</p>'+link('/cognitive-security/topic/'+g['slug']+'/', 'Open guide →','text-link')+'</article>'
++            content += f'<article class="directory-card" data-guide-search="{esc((g["title"]+" "+g["scope"]).casefold())}"><div class="directory-card-heading">{render_topic_icon(g["slug"])}<div class="directory-card-title"><p class="eyebrow">{len(g["featuredEpisodes"])} starting episodes</p><h3>{link("/cognitive-security/topic/"+g["slug"]+"/",g["title"])}</h3></div></div><p>{esc(g["scope"])}</p>'+link('/cognitive-security/topic/'+g['slug']+'/', 'Open guide →','text-link')+'</article>'
+         content += '</div></section>'
+     content += '<p id="no-guides" hidden>No guides match that search. Clear the search to see all 15.</p>'
+     return shell('Topic Guides', 'Curated listening guides and evidence-linked starting points into the Cognitive Security Practitioner Discourse Map.', '/cognitive-security/topic/', content, True)
+@@ -310,6 +333,8 @@
+     payload = payload if payload is not None else load(root / AUTHORING / 'guides.json')
+     require({p.name for p in (root / AUTHORING).glob('*.json')} == {'guides.json', 'source_lock.json'}, 'Unexpected guide authoring files')
+     validate_guides(corpus, payload)
++    require(sha((root / ICON_SPRITE).read_bytes()) == ICON_SPRITE_SHA256,
++            "Approved guide artwork is missing or changed")
+     guides = payload['guides']; out = {}; reverse = defaultdict(set)
+     directory = []
+     for g in guides:
+diff --git a/cognitive-security/topic/guides.css b/cognitive-security/topic/guides.css
+--- a/cognitive-security/topic/guides.css
++++ b/cognitive-security/topic/guides.css
+@@ -5,3 +5,11 @@
+ @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}@media(forced-colors:active){.guide-tag,.episode-card,.source-card,.directory-card,.primary-link,.copy-link{border:1px solid CanvasText}.site-header{border-bottom:2px solid CanvasText}}
+ 
+ .section-jump{margin-top:.8rem;padding:.6rem .15rem;border-bottom:1px solid var(--line);font-size:.87rem}.section-jump>summary{cursor:pointer;color:var(--teal);font-weight:650;padding:.25rem 0}.section-jump .section-nav{border-bottom:0;padding:.6rem 0}.section-jump>summary:focus-visible{outline:3px solid #cd8115;outline-offset:3px}
++
++/* One locally served, approved sprite: fixed slug-to-cell mapping in the builder. */
++.directory-card-heading{display:flex;align-items:center;gap:.85rem}
++.directory-card-title{min-width:0;flex:1}
++.directory-card-title .eyebrow{margin-bottom:.45rem}
++.topic-guide-icon{display:block;width:80px;height:80px;flex:0 0 80px;background-image:url("topic-icons.webp");background-size:500% 300%;background-position:var(--icon-x,0%) var(--icon-y,0%);background-repeat:no-repeat;border-radius:10px}
++@media(max-width:590px){.topic-guide-icon{width:72px;height:72px;flex-basis:72px}}
++@media(forced-colors:active){.topic-guide-icon{display:none}}
+diff --git a/tests/cognitive_security/test_topic_guides_icons.py b/tests/cognitive_security/test_topic_guides_icons.py
+new file mode 100644
+--- /dev/null
++++ b/tests/cognitive_security/test_topic_guides_icons.py
+@@ -0,0 +1,80 @@
++"""Approved Topic Guide artwork does not change analysis or guide membership."""
++import hashlib
++import json
++import struct
++import unittest
++from html.parser import HTMLParser
++from pathlib import Path
++import sys
++
++ROOT = Path(__file__).resolve().parents[2]
++sys.path.insert(0, str(ROOT / 'scripts'))
++from cognitive_security.topic_guides import (
++    ICON_CELLS, ICON_SPRITE, ICON_SPRITE_SHA256, SITE,
++    compile_outputs, render_directory, render_topic_icon,
++)
++
++class Icons(HTMLParser):
++    def __init__(self):
++        super().__init__()
++        self.icons = []
++    def handle_starttag(self, tag, attrs):
++        attrs = dict(attrs)
++        if 'topic-guide-icon' in attrs.get('class', '').split():
++            self.icons.append(attrs)
++
++class TopicGuideIconTests(unittest.TestCase):
++    @classmethod
++    def setUpClass(cls):
++        cls.guides = json.loads((ROOT / 'content/cognitive-security-guides/guides.json').read_text())['guides']
++
++    def test_all_fifteen_approved_cells_have_the_correct_slug(self):
++        approved = [
++            'assessment', 'narrative', 'cognitive-warfare', 'influence-psychology', 'ai-synthetic-media',
++            'disinformation', 'resilience', 'deterrence', 'campaign-planning', 'audience-analysis',
++            'data-analytics', 'ethics-law', 'workforce', 'strategic-communication', 'cyber',
++        ]
++        self.assertEqual(ICON_CELLS, {slug: (i % 5, i // 5) for i, slug in enumerate(approved)})
++        self.assertEqual(set(ICON_CELLS), {g['slug'] for g in self.guides})
++
++    def test_asset_fingerprint_dimensions_and_small_size(self):
++        data = (ROOT / ICON_SPRITE).read_bytes()
++        self.assertEqual(hashlib.sha256(data).hexdigest(), ICON_SPRITE_SHA256)
++        self.assertEqual(data[:4], b'RIFF')
++        self.assertEqual(data[8:16], b'WEBPVP8 ')
++        self.assertEqual(data[23:26], b'\x9d\x01\x2a')
++        width, height = struct.unpack('<HH', data[26:30])
++        self.assertEqual((width & 0x3fff, height & 0x3fff), (880, 528))
++        self.assertLess(len(data), 40000)
++
++    def test_cards_include_static_decorative_icons(self):
++        parser = Icons(); parser.feed(render_directory(self.guides))
++        self.assertEqual(len(parser.icons), 15)
++        for attrs in parser.icons:
++            slug = attrs['data-topic-icon']; col, row = ICON_CELLS[slug]
++            self.assertEqual(attrs['style'], f'--icon-x:{col * 25}%;--icon-y:{row * 50}%;')
++            self.assertEqual(attrs['aria-hidden'], 'true')
++            self.assertNotIn('tabindex', attrs)
++
++    def test_reordering_guides_does_not_reassign_icons(self):
++        normal = Icons(); normal.feed(render_directory(self.guides))
++        reverse = Icons(); reverse.feed(render_directory(list(reversed(self.guides))))
++        select = lambda p: {a['data-topic-icon']: a['style'] for a in p.icons}
++        self.assertEqual(select(normal), select(reverse))
++
++    def test_future_guide_without_art_remains_valid(self):
++        self.assertEqual(render_topic_icon('future-guide'), '')
++        self.assertEqual(render_topic_icon('<unsafe>'), '')
++
++    def test_icon_changes_are_presentation_only(self):
++        outputs, report = compile_outputs(ROOT)
++        self.assertEqual(report['guideCount'], 15)
++        self.assertEqual(report['featuredEpisodePlacements'], 63)
++        self.assertEqual(report['selectedSourceCards'], 236)
++        for path, data in outputs.items():
++            if path != SITE / 'index.html' and path.suffix == '.html':
++                self.assertNotIn(b'data-topic-icon=', data)
++        self.assertTrue(report['protectedFilesUnchanged'])
++
++if __name__ == '__main__':
++    unittest.main()
+diff --git a/tests/cognitive_security/test_topic_guides_browser.py b/tests/cognitive_security/test_topic_guides_browser.py
+--- a/tests/cognitive_security/test_topic_guides_browser.py
++++ b/tests/cognitive_security/test_topic_guides_browser.py
+@@ -116,4 +116,44 @@
+         failed=[];self.page.on('response',lambda r:failed.append(r.url) if r.status>=400 else None)
+         self.guide('cyber');self.page.wait_for_load_state('networkidle');self.assertFalse(failed)
+ 
++    def test_15_directory_icons_load_and_match_cards(self):
++        import sys
++        sys.path.insert(0, str(ROOT / 'scripts'))
++        from cognitive_security.topic_guides import ICON_CELLS
++        failed=[]
++        self.page.on('response', lambda r: failed.append(r.url) if r.status>=400 else None)
++        for width in (1360, 390, 320):
++            self.page.set_viewport_size({'width':width,'height':950})
++            self.page.goto(self.origin+'/cognitive-security/topic/')
++            self.page.wait_for_load_state('networkidle')
++            icons=self.page.locator('.directory-card .topic-guide-icon')
++            self.assertEqual(icons.count(), 15)
++            self.assertEqual(self.page.locator('.directory-card h3 a').count(),15)
++            self.assertTrue(self.page.evaluate('document.documentElement.scrollWidth <= window.innerWidth + 1'))
++            for slug, (col,row) in ICON_CELLS.items():
++                icon=self.page.locator('[data-topic-icon="'+slug+'"]')
++                self.assertTrue(icon.is_visible())
++                self.assertEqual(icon.get_attribute('aria-hidden'),'true')
++                self.assertEqual(icon.evaluate('(e)=>getComputedStyle(e).backgroundPosition'),f'{col*25}% {row*50}%')
++                card=icon.locator('xpath=ancestor::article')
++                self.assertEqual(card.locator('h3 a').get_attribute('href'),'/cognitive-security/topic/'+slug+'/')
++            size=self.page.evaluate("""async()=>{const image=new Image(); image.src='/cognitive-security/topic/topic-icons.webp'; await image.decode(); return [image.naturalWidth,image.naturalHeight];}""")
++            self.assertEqual(size,[880,528])
++            if width==1360:
++                self.page.screenshot(path=str(self.screens/'topic-guide-icons-desktop.png'),full_page=True)
++            if width==390:
++                self.page.screenshot(path=str(self.screens/'topic-guide-icons-mobile.png'),full_page=True)
++        self.assertFalse(failed)
++        self.assertFalse(self.errors)
++
++    def test_16_directory_icons_need_no_javascript(self):
++        context=self.browser.new_context(java_script_enabled=False)
++        try:
++            page=context.new_page();page.goto(self.origin+'/cognitive-security/topic/')
++            self.assertEqual(page.locator('.topic-guide-icon:visible').count(),15)
++            page.locator('.directory-card h3 a',has_text='Assessment').click()
++            self.assertIn('/topic/assessment/',page.url)
++        finally:
++            context.close()
++
+ if __name__=='__main__':unittest.main()
+diff --git a/.github/workflows/topic-guides-validation.yml b/.github/workflows/topic-guides-validation.yml
+--- a/.github/workflows/topic-guides-validation.yml
++++ b/.github/workflows/topic-guides-validation.yml
+@@ -32,7 +32,7 @@
+       - name: Validate deterministic guides and existing regression tests
+         run: |
+           python scripts/build_topic_guides.py --check
+-          python -m unittest tests.cognitive_security.test_topic_guides tests.cognitive_security.test_explorer tests.cognitive_security.test_presentation_discovery tests.test_site_navigation -v
++          python -m unittest tests.cognitive_security.test_topic_guides tests.cognitive_security.test_topic_guides_icons tests.cognitive_security.test_explorer tests.cognitive_security.test_presentation_discovery tests.test_site_navigation -v
+       - name: Run real-browser guide acceptance
+         env:
+           PSYWERX_GUIDE_SCREENSHOT_DIR: /tmp/psywerx-guide-screenshots
+diff --git a/docs/cognitive-security/topic-guides/ICONS.md b/docs/cognitive-security/topic-guides/ICONS.md
+new file mode 100644
+--- /dev/null
++++ b/docs/cognitive-security/topic-guides/ICONS.md
+@@ -0,0 +1,44 @@
++# Topic Guide card artwork
++
++The directory uses the user's approved 15-icon sheet, cropped without redrawing.
++Icons are decorative companions to the existing linked titles. They add no
++analytical tags, classification, episode membership, quotations, or corpus data.
++
++## Stable mapping
++
++The `ICON_CELLS` mapping in `scripts/cognitive_security/topic_guides.py` is keyed
++by guide slug, **not** by directory position, category, list order, or numeric
++cluster ID. This matters because the directory groups and reorders the guides.
++The cell order in the approved sheet is:
++
++| Row | Left to right |
++| --- | --- |
++| 1 | Assessment; Narrative; Cognitive Warfare; Influence Psychology; AI |
++| 2 | Disinformation; Resilience; Deterrence; Campaign Planning; Audience Analysis |
++| 3 | Data & Analytics; Ethics & Law; Workforce; Strategic Communication; Cyber |
++
++## Asset preparation
++
++The original approved sheet is 1536 x 1024 px. Crops are 282 x 282 px, centered
++at x = 167, 464, 765, 1070, 1372 and y = 214, 510, 804, then resized to 176 px
++with Lanczos resampling. The tiles are packed into one 880 x 528 px WebP asset
++at quality 75. The single locally served sprite is 31,084 bytes; the builder
++checks its SHA-256 fingerprint. There are no remote image dependencies.
++
++Each icon is displayed at 80 px on desktop and 72 px on mobile. The approved
++navy/cyan artwork is unchanged apart from cropping, resizing, and compression.
++Fixed dimensions reserve space before the image loads. The sprite uses normal
++CSS backgrounds and needs no JavaScript. Decorative spans are hidden from
++screen readers, which retain the original linked guide titles and destinations.
++Forced-colors mode hides the decoration, keeping the text and links.
++
++Future guides can remain usable without artwork. Existing artwork cells must
++not be silently reassigned when guides are sorted, grouped, or extended.
++
++## Validation
++
++Six new contract tests verify the mapping, sprite hash and dimensions, all
++15 static icons, order independence, future-guide fallback, and preservation
++of content counts and protected sources. Two additional browser tests check
++all 15 cards at 1360, 390, and 320 px, successful WebP decoding, exact icon/link
++pairings, no horizontal overflow, and JavaScript-disabled navigation.
