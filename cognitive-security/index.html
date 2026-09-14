@@ -10,44 +10,64 @@
   <title>PSYWERX Cognitive Security Map</title>
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="../shared/psywerx.css">
+  <link rel="stylesheet" href="../shared/site-header.css">
   <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
   <a class="skip-link" href="#map-app">Skip to the Cognitive Security Map</a>
 
-  <header class="site-header">
-    <div class="site-container site-header__inner">
-      <a class="wordmark" href="https://psywerx.io/" aria-label="PSYWERX home">
-        <img
-          class="wordmark__logo"
-          src="../shared/assets/psywerx-logo.png"
-          alt="PSYWERX"
-          width="1255"
-          height="350"
-        >
+  <header class="psywerx-global-header">
+    <div class="psywerx-global-header__inner">
+      <a class="psywerx-global-brand" href="https://psywerx.io/" aria-label="PSYWERX home">
+        <picture style="display:block">
+          <source srcset="/assets/wordmark.webp" type="image/webp">
+          <img src="../shared/assets/psywerx-logo.png" alt="PSYWERX" width="640" height="130">
+        </picture>
       </a>
-      <div class="site-header__tools">
-        <form id="global-search-form" class="global-search" role="search" aria-label="Search the Cognitive Security map">
-          <label class="sr-only" for="global-search-input">Search the entire map</label>
-          <input
-            id="global-search-input"
-            name="q"
-            type="search"
-            placeholder="Search the map"
-            autocomplete="off"
-            disabled
-          >
-          <button type="submit" disabled>Search</button>
-        </form>
-        <nav class="site-nav" aria-label="PSYWERX interactives">
-          <a href="https://psywerx.io/">Home</a>
-          <a href="../drivers/">Driver Explorer</a>
-          <a href="../drivers/codebook/">Codebook</a>
-          <a href="./" aria-current="page">Cognitive Security Map</a>
+      <nav class="psywerx-global-nav" aria-label="Main navigation">
+        <a href="/">Home</a>
+        <details class="psywerx-explore-menu">
+          <summary>Explore <span aria-hidden="true">⌄</span></summary>
+          <div class="psywerx-explore-panel">
+            <a href="/drivers/"><strong>Driver Taxonomy Explorer</strong><span>Browse the behavioral ontology</span></a>
+            <a href="/drivers/codebook/"><strong>Driver Codebook</strong><span>Reference fields and governance rules</span></a>
+            <a href="/cognitive-security/"><strong>Cognitive Security Explorer</strong><span>Navigate practitioner discourse</span></a>
+            <a href="/cognitive-security/topic/"><strong>Topic Guides</strong><span>Start with curated listening paths</span></a>
+          </div>
+        </details>
+        <a href="/#research">Research</a>
+        <a href="/#learning-section">Learn</a>
+        <a href="/#about">About</a>
+        <a class="psywerx-global-live" href="/#live-tools">Live tools <span aria-hidden="true">↗</span></a>
+      </nav>
+      <details class="psywerx-mobile-menu">
+        <summary aria-label="Open navigation"><span aria-hidden="true">☰</span> Menu</summary>
+        <nav aria-label="Mobile navigation">
+          <a href="/">Home</a>
+          <a href="/#platform">Explore</a>
+          <a href="/#research">Research</a>
+          <a href="/#learning-section">Learn</a>
+          <a href="/#about">About</a>
+          <a href="/#live-tools">Live tools</a>
         </nav>
-      </div>
+      </details>
     </div>
   </header>
+  <div class="psywerx-product-bar">
+    <div class="psywerx-product-bar__inner">
+      <span class="psywerx-product-context">Cognitive Security</span>
+      <nav class="psywerx-product-nav" aria-label="Cognitive Security">
+        <a href="/cognitive-security/" aria-current="page">Explorer</a>
+        <a href="/cognitive-security/topic/">Topic Guides</a>
+        <a href="/cognitive-security/?view=methodology">Methodology</a>
+      </nav>
+    </div>
+  </div>
+
+  <form id="global-search-form" hidden aria-hidden="true">
+    <input id="global-search-input" name="q" type="search" disabled>
+    <button type="submit" disabled>Search</button>
+  </form>
 
   <main id="map-app" tabindex="-1">
     <section id="landing-hero" class="hero" aria-labelledby="page-title">
