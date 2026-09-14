@@ -32,7 +32,7 @@ jobs:
       - name: Validate deterministic guides and existing regression tests
         run: |
           python scripts/build_topic_guides.py --check
-          python -m unittest tests.cognitive_security.test_topic_guides tests.cognitive_security.test_explorer tests.cognitive_security.test_presentation_discovery tests.test_site_navigation -v
+          python -m unittest tests.cognitive_security.test_topic_guides tests.cognitive_security.test_topic_guides_icons tests.cognitive_security.test_explorer tests.cognitive_security.test_presentation_discovery tests.test_site_navigation -v
       - name: Run real-browser guide acceptance
         env:
           PSYWERX_GUIDE_SCREENSHOT_DIR: /tmp/psywerx-guide-screenshots

@@ -46,6 +46,29 @@ CARD_FIELDS = {"type", "id", "field", "scopeNote", "expectedName", "sourceFieldS
 GUIDE_FIELDS = {"guideId", "slug", "title", "group", "scope", "exclusions", "sourceTopics", "featuredEpisodes", "sections"}
 EPISODE_FIELDS = {"episodeId", "expectedEpisodeNumber", "takeaways", "topicIds", "summarySha256"}
 SOURCE_TOPIC_FIELDS = {"id", "expectedName", "role"}
+# Artwork cells are keyed by stable guide slug, never by display/group order.
+# Approved sheet: five columns by three rows, each normalized to 176 px.
+ICON_CELLS = {
+    "assessment": (0, 0), "narrative": (1, 0), "cognitive-warfare": (2, 0),
+    "influence-psychology": (3, 0), "ai-synthetic-media": (4, 0),
+    "disinformation": (0, 1), "resilience": (1, 1), "deterrence": (2, 1),
+    "campaign-planning": (3, 1), "audience-analysis": (4, 1),
+    "data-analytics": (0, 2), "ethics-law": (1, 2), "workforce": (2, 2),
+    "strategic-communication": (3, 2), "cyber": (4, 2),
+}
+ICON_SPRITE = SITE / "topic-icons.webp"
+ICON_SPRITE_SHA256 = "ec6bb1b3d689cc258d67397f4bfb6219ed8cfead7711679ee95ca25d6d014403"
+
+
+def render_topic_icon(slug: str) -> str:
+    cell = ICON_CELLS.get(slug)
+    if cell is None:
+        return ""  # Future guides need not have art to remain usable.
+    column, row = cell
+    return (f'<span class="topic-guide-icon" data-topic-icon="{slug}" '
+            f'style="--icon-x:{column * 25}%;--icon-y:{row * 50}%;" '
+            'aria-hidden="true"></span>')
+
 TAKEAWAY_FIELDS = {"text", "sourceField"}
 
 
@@ -298,7 +321,7 @@ def render_directory(guides: list[dict[str, Any]]) -> str:
         content += f'<section class="directory-group" data-guide-group><h2>{esc(group)}</h2><div class="directory-grid">'
         for g in guides:
             if g['group'] != group: continue
-            content += f'<article class="directory-card" data-guide-search="{esc((g["title"]+" "+g["scope"]).casefold())}"><p class="eyebrow">{len(g["featuredEpisodes"])} starting episodes</p><h3>{link("/cognitive-security/topic/"+g["slug"]+"/",g["title"])}</h3><p>{esc(g["scope"])}</p>'+link('/cognitive-security/topic/'+g['slug']+'/', 'Open guide →','text-link')+'</article>'
+            content += f'<article class="directory-card" data-guide-search="{esc((g["title"]+" "+g["scope"]).casefold())}"><div class="directory-card-heading">{render_topic_icon(g["slug"])}<div class="directory-card-title"><p class="eyebrow">{len(g["featuredEpisodes"])} starting episodes</p><h3>{link("/cognitive-security/topic/"+g["slug"]+"/",g["title"])}</h3></div></div><p>{esc(g["scope"])}</p>'+link('/cognitive-security/topic/'+g['slug']+'/', 'Open guide →','text-link')+'</article>'
         content += '</div></section>'
     content += '<p id="no-guides" hidden>No guides match that search. Clear the search to see all 15.</p>'
     return shell('Topic Guides', 'Curated listening guides and evidence-linked starting points into the Cognitive Security Practitioner Discourse Map.', '/cognitive-security/topic/', content, True)
@@ -310,6 +333,8 @@ def compile_outputs(root: Path, payload: dict[str, Any] | None = None) -> tuple[
     payload = payload if payload is not None else load(root / AUTHORING / 'guides.json')
     require({p.name for p in (root / AUTHORING).glob('*.json')} == {'guides.json', 'source_lock.json'}, 'Unexpected guide authoring files')
     validate_guides(corpus, payload)
+    require(sha((root / ICON_SPRITE).read_bytes()) == ICON_SPRITE_SHA256,
+            "Approved guide artwork is missing or changed")
     guides = payload['guides']; out = {}; reverse = defaultdict(set)
     directory = []
     for g in guides:
