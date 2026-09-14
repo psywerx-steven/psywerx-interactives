@@ -1,0 +1,92 @@
+name: Apply flat Topic Guides directory v2
+
+on:
+  push:
+    branches: [feature/topic-guides-flat-grid]
+    paths:
+      - '.github/workflows/topic-guides-flat-grid-v2.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: feature/topic-guides-flat-grid
+          fetch-depth: 2
+          persist-credentials: true
+      - name: Apply approved flat directory presentation
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          # Directory renderer only. Individual guide pages remain unchanged.
+          path = Path('scripts/cognitive_security/topic_guides.py')
+          text = path.read_text(encoding='utf-8')
+          start = text.index('def render_directory(guides: list[dict[str, Any]]) -> str:')
+          end = text.index('\n\ndef compile_outputs', start)
+          replacement = '''def render_directory(guides: list[dict[str, Any]]) -> str:\n    content = '<header class="guide-hero directory-hero"><p class="eyebrow">Curated ways into the corpus</p><h1>Topic Guides</h1><p class="lead">Choose a topic to start with a focused set of Cognitive Crucible episodes and follow the supporting analysis deeper into the Explorer.</p></header><section class="directory-grid" aria-label="Topic Guides">'\n    for g in guides:\n        href = '/cognitive-security/topic/' + g['slug'] + '/'\n        content += f'<article class="directory-card"><div class="directory-card-heading">{render_topic_icon(g["slug"])}<div class="directory-card-title"><h3>{link(href,g["title"])}</h3><p class="eyebrow">{len(g["featuredEpisodes"])} episodes</p></div></div></article>'\n    content += '</section>'\n    return shell('Topic Guides', 'Curated listening guides and evidence-linked starting points into the Cognitive Security Practitioner Discourse Map.', '/cognitive-security/topic/', content, True)\n'''
+          path.write_text(text[:start] + replacement + text[end:], encoding='utf-8')
+
+          # Replace grouped/searchable directory styling with compact flat-card styling.
+          path = Path('cognitive-security/topic/guides.css')
+          text = path.read_text(encoding='utf-8')
+          start = text.index('.guide-search{')
+          end = text.index('.skip-link{', start)
+          replacement = '''.directory-hero{margin-bottom:1.5rem}.directory-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin:0}.directory-card{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:1.2rem;min-height:122px;display:flex;align-items:center}.directory-card:hover{border-color:#a9cbd0;box-shadow:0 5px 16px rgba(8,47,67,.07)}.directory-card:focus-within{outline:3px solid #cd8115;outline-offset:3px}.directory-card h3 a::after{content:"";position:absolute;inset:0;border-radius:var(--radius)}.directory-card h3 a:focus-visible{outline:0}.directory-card .eyebrow{margin:.45rem 0 0}.directory-card-title h3{font-size:1.12rem}'''
+          path.write_text(text[:start] + replacement + text[end:], encoding='utf-8')
+
+          # Replace search test with exact 3 x 5 directory contract.
+          path = Path('tests/cognitive_security/test_topic_guides_browser.py')
+          text = path.read_text(encoding='utf-8')
+          start = text.index('    def test_02_directory_search(self):')
+          end = text.index('    def test_03_finding_deep_link(self):', start)
+          replacement = '''    def test_02_directory_is_flat_three_by_five_grid(self):\n        self.page.set_viewport_size({'width':1360,'height':950})\n        self.page.goto(self.origin+'/cognitive-security/topic/');cards=self.page.locator('.directory-card')\n        self.assertEqual(cards.count(),15);self.assertEqual(self.page.locator('.directory-group, #guide-search').count(),0)\n        self.assertEqual(self.page.locator('.directory-card h3 a').count(),15);self.assertEqual(self.page.locator('.directory-card .eyebrow').count(),15)\n        self.assertEqual(self.page.locator('.directory-card > p, .directory-card .text-link').count(),0)\n        boxes=[cards.nth(i).bounding_box() for i in range(15)]\n        self.assertEqual(len({round(box['x']) for box in boxes}),3);self.assertEqual(len({round(box['y']) for box in boxes}),5)\n        self.page.screenshot(path=str(self.screens/'topic-guides-directory.png'),full_page=True)\n'''
+          path.write_text(text[:start] + replacement + text[end:], encoding='utf-8')
+          PY
+      - name: Install validation dependencies
+        run: |
+          python -m pip install -r requirements.txt
+          python -m pip install playwright
+      - name: Rebuild and validate
+        run: |
+          set -euo pipefail
+          python scripts/build_topic_guides.py
+          python scripts/build_topic_guides.py --check
+          python -m unittest tests.cognitive_security.test_topic_guides tests.cognitive_security.test_topic_guides_icons tests.cognitive_security.test_explorer tests.cognitive_security.test_presentation_discovery tests.test_site_navigation -v 2>&1 | tee /tmp/flat-unit.log
+          git diff --exit-code -- data content/cognitive-security-guides docs/cognitive-security/topic-guides/CROSSWALK.md
+      - name: Real-browser validation
+        env:
+          PSYWERX_GUIDE_SCREENSHOT_DIR: /tmp/psywerx-guide-screenshots
+        run: |
+          set -euo pipefail
+          export PSYWERX_BROWSER_EXECUTABLE="$(command -v google-chrome || command -v chromium)"
+          test -n "$PSYWERX_BROWSER_EXECUTABLE"
+          python -m unittest tests.cognitive_security.test_topic_guides_browser -v 2>&1 | tee /tmp/flat-browser.log
+      - name: Commit tested directory redesign
+        run: |
+          set -euo pipefail
+          git add scripts/cognitive_security/topic_guides.py cognitive-security/topic/guides.css cognitive-security/topic/index.html tests/cognitive_security/test_topic_guides_browser.py docs/cognitive-security/topic-guides/BUILD_REPORT.json
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Simplify Topic Guides directory to a flat 3 by 5 grid'
+          git push origin HEAD:refs/heads/feature/topic-guides-flat-grid
+      - name: Save review artifact
+        if: always()
+        run: |
+          mkdir -p /tmp/flat-review
+          cp /tmp/flat-*.log /tmp/flat-review/ 2>/dev/null || true
+          cp /tmp/psywerx-guide-screenshots/topic-guides-directory.png /tmp/flat-review/ 2>/dev/null || true
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: flat-topic-guides-v2-review
+          path: /tmp/flat-review/
+          retention-days: 7
+          if-no-files-found: warn
