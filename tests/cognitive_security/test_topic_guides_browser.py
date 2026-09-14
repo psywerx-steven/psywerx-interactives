@@ -116,4 +116,44 @@ class TopicGuidesBrowserTests(unittest.TestCase):
         failed=[];self.page.on('response',lambda r:failed.append(r.url) if r.status>=400 else None)
         self.guide('cyber');self.page.wait_for_load_state('networkidle');self.assertFalse(failed)
 
+    def test_15_directory_icons_load_and_match_cards(self):
+        import sys
+        sys.path.insert(0, str(ROOT / 'scripts'))
+        from cognitive_security.topic_guides import ICON_CELLS
+        failed=[]
+        self.page.on('response', lambda r: failed.append(r.url) if r.status>=400 else None)
+        for width in (1360, 390, 320):
+            self.page.set_viewport_size({'width':width,'height':950})
+            self.page.goto(self.origin+'/cognitive-security/topic/')
+            self.page.wait_for_load_state('networkidle')
+            icons=self.page.locator('.directory-card .topic-guide-icon')
+            self.assertEqual(icons.count(), 15)
+            self.assertEqual(self.page.locator('.directory-card h3 a').count(),15)
+            self.assertTrue(self.page.evaluate('document.documentElement.scrollWidth <= window.innerWidth + 1'))
+            for slug, (col,row) in ICON_CELLS.items():
+                icon=self.page.locator('[data-topic-icon="'+slug+'"]')
+                self.assertTrue(icon.is_visible())
+                self.assertEqual(icon.get_attribute('aria-hidden'),'true')
+                self.assertEqual(icon.evaluate('(e)=>getComputedStyle(e).backgroundPosition'),f'{col*25}% {row*50}%')
+                card=icon.locator('xpath=ancestor::article')
+                self.assertEqual(card.locator('h3 a').get_attribute('href'),'/cognitive-security/topic/'+slug+'/')
+            size=self.page.evaluate("""async()=>{const image=new Image(); image.src='/cognitive-security/topic/topic-icons.webp'; await image.decode(); return [image.naturalWidth,image.naturalHeight];}""")
+            self.assertEqual(size,[880,528])
+            if width==1360:
+                self.page.screenshot(path=str(self.screens/'topic-guide-icons-desktop.png'),full_page=True)
+            if width==390:
+                self.page.screenshot(path=str(self.screens/'topic-guide-icons-mobile.png'),full_page=True)
+        self.assertFalse(failed)
+        self.assertFalse(self.errors)
+
+    def test_16_directory_icons_need_no_javascript(self):
+        context=self.browser.new_context(java_script_enabled=False)
+        try:
+            page=context.new_page();page.goto(self.origin+'/cognitive-security/topic/')
+            self.assertEqual(page.locator('.topic-guide-icon:visible').count(),15)
+            page.locator('.directory-card h3 a',has_text='Assessment').click()
+            self.assertIn('/topic/assessment/',page.url)
+        finally:
+            context.close()
+
 if __name__=='__main__':unittest.main()
