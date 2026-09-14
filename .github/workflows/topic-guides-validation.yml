@@ -1,0 +1,43 @@
+name: Topic Guides validation
+
+on:
+  push:
+    branches: [feature/topic-guides-canonical-v1]
+  pull_request:
+    branches: [main]
+    paths:
+      - 'cognitive-security/topic/**'
+      - 'data/cognitive-security-guides/**'
+      - 'scripts/cognitive_security/topic_guides.py'
+      - 'scripts/build_topic_guides.py'
+      - 'tests/cognitive_security/test_topic_guides.py'
+      - '.github/workflows/topic-guides-validation.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Validate guides when implemented
+        run: |
+          if [ -f scripts/build_topic_guides.py ]; then
+            python scripts/build_topic_guides.py --check
+            python -m unittest tests.cognitive_security.test_topic_guides -v
+          fi
+      - name: Archive tracked source for reproducible local validation
+        run: |
+          mkdir -p /tmp/topic-guides-review
+          git archive --format=tar HEAD > /tmp/topic-guides-review/repository.tar
+          git rev-parse HEAD > /tmp/topic-guides-review/commit.txt
+      - uses: actions/upload-artifact@v7
+        with:
+          name: topic-guides-review-source
+          path: /tmp/topic-guides-review/
+          retention-days: 7
+          if-no-files-found: error
