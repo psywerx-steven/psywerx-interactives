@@ -60,11 +60,14 @@ class TopicGuidesBrowserTests(unittest.TestCase):
             if width==1360:self.guide('assessment');self.page.screenshot(path=str(self.screens/'assessment-desktop.png'),full_page=True)
             else:self.guide('cyber');self.page.screenshot(path=str(self.screens/'cyber-mobile.png'),full_page=True)
         self.assertFalse(self.errors)
-    def test_02_directory_search(self):
-        self.page.goto(self.origin+'/cognitive-security/topic/');self.assertEqual(self.page.locator('.directory-card').count(),15)
-        self.page.locator('#guide-search').fill('cyber');self.assertGreaterEqual(self.page.locator('.directory-card:visible').count(),1)
-        self.page.locator('#guide-search').fill('does not match any guide');self.assertTrue(self.page.locator('#no-guides').is_visible())
-        self.page.locator('#guide-search').fill('');self.assertEqual(self.page.locator('.directory-card:visible').count(),15)
+    def test_02_directory_is_flat_three_by_five_grid(self):
+        self.page.set_viewport_size({'width':1360,'height':950})
+        self.page.goto(self.origin+'/cognitive-security/topic/');cards=self.page.locator('.directory-card')
+        self.assertEqual(cards.count(),15);self.assertEqual(self.page.locator('.directory-group, #guide-search').count(),0)
+        self.assertEqual(self.page.locator('.directory-card h3 a').count(),15);self.assertEqual(self.page.locator('.directory-card .eyebrow').count(),15)
+        self.assertEqual(self.page.locator('.directory-card > p, .directory-card .text-link').count(),0)
+        boxes=[cards.nth(i).bounding_box() for i in range(15)]
+        self.assertEqual(len({round(box['x']) for box in boxes}),3);self.assertEqual(len({round(box['y']) for box in boxes}),5)
         self.page.screenshot(path=str(self.screens/'topic-guides-directory.png'),full_page=True)
     def test_03_finding_deep_link(self):
         self.guide('data-analytics');self.page.locator('[data-source-type="finding"] h3 a').first.click();self.ready()
