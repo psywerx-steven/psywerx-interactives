@@ -1,7 +1,7 @@
 {
   "schemaVersion": "psywerx-research-explorer-v1",
   "generatedAt": "2026-09-15",
-  "totalItems": 113,
+  "totalItems": 123,
   "items": [
     {
       "itemId": "research-bc549d793d66a9369272",
@@ -194,6 +194,196 @@
       "whatTheyDid": "Björkegren, Blumenstock, and Knight developed a prediction approach that explicitly models people’s incentives to manipulate observable features. They stress-tested the method in a large field experiment in Kenya and compared strategy-robust linear decision rules with conventional linear models such as LASSO.",
       "whatTheyFound": "The manipulation-aware rules outperformed standard linear prediction rules when people had incentives to respond strategically. The core contribution is not a new general-purpose causal model; it is a way to make prediction more stable when the prediction rule itself changes the behavior being measured.",
       "whatItMeans": "Once a score or model affects real decisions, the environment can adapt to the model. For PSYWERX, that is relevant to behavioral targeting, risk scoring, indicators, and monitoring systems: measures that become consequential can stop behaving like passive measurements."
+    },
+    {
+      "itemId": "research-eaa6db8b3d5846b8cdf1",
+      "streamTitle": "Threatening social comparison hurt performance without making people quit",
+      "streamSummary": "A randomized study of 129 students found that threatening peer-comparison feedback increased negative affect, reduced commitment, and worsened working-memory performance. Yet participants were no less likely to volunteer to repeat the task. The result suggests social comparison can change emotion, coping, and performance without changing immediate persistence. The study was not preregistered and used a university sample, so broader behavioral effects need replication.",
+      "attribution": "Meyer, Zenses & Morina — BMC Psychology",
+      "sourceUrl": "https://doi.org/10.1186/s40359-026-05536-9",
+      "sourcePublishedAt": "2026-09-09",
+      "dateAdded": "2026-09-09",
+      "latestSeenBriefDate": "2026-09-09",
+      "primaryCategory": "behavioral-science",
+      "categories": [
+        "behavioral-science",
+        "application-analysis"
+      ],
+      "questionAndWhy": "Does threatening social comparison change performance, coping, and persistence?",
+      "whatTheyDid": "Researchers randomized 129 students to high- or low-threat false performance feedback.",
+      "whatTheyFound": "Threat increased negative affect and hurt performance, but did not reduce task repetition.",
+      "whatItMeans": "Comparison threat can change performance without producing an immediate quit response."
+    },
+    {
+      "itemId": "research-7b42ff91990b7a00b1f0",
+      "streamTitle": "Romania says it stopped a Russian-directed sabotage reconnaissance operation",
+      "streamSummary": "Romania’s SRI says it stopped a Russian-coordinated sabotage operation involving a Russian citizen allegedly tasked to photograph military sites, critical infrastructure, and Ukrainian cargo aircraft. SRI says the pattern resembles other Russian-linked networks using low-friction support tasks. The case strengthens concern about recruitment funnels, but the underlying intelligence is not fully public, so outside observers cannot independently verify the attribution.",
+      "attribution": "Romanian Intelligence Service (SRI)",
+      "sourceUrl": "https://sri.ro/articole/comunicat-de-presa-08-09-2026-1.html",
+      "sourcePublishedAt": "2026-09-08",
+      "dateAdded": "2026-09-09",
+      "latestSeenBriefDate": "2026-09-09",
+      "primaryCategory": "operations-strategy",
+      "categories": [
+        "operations-strategy",
+        "application-analysis"
+      ],
+      "questionAndWhy": "How are European services disrupting suspected Russian sabotage recruitment pipelines?",
+      "whatTheyDid": "Romania’s SRI monitored a Russian citizen allegedly tasked to collect strategic-site imagery.",
+      "whatTheyFound": "SRI says the reconnaissance operation was prevented; underlying intelligence remains non-public.",
+      "whatItMeans": "Low-friction reconnaissance tasks may be early stages of escalation, not isolated acts."
+    },
+    {
+      "itemId": "research-3d2c174a518572f7022a",
+      "streamTitle": "A new personalization method learns when it has enough user data",
+      "streamSummary": "A new arXiv paper proposes ENOUGH, a personalization method that adds user-history records one at a time and learns when to stop. Across six tasks, the authors report stronger personalization utility with less context than retrieval-based baselines. The idea matters for persona systems because irrelevant biography can add cost or distortion. It remains a preprint, and task performance does not establish psychological fidelity to real users.",
+      "attribution": "Liu et al. — arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2609.08180",
+      "sourcePublishedAt": "2026-09-08",
+      "dateAdded": "2026-09-09",
+      "latestSeenBriefDate": "2026-09-09",
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling",
+        "behavioral-science"
+      ],
+      "questionAndWhy": "How much user history does an LLM actually need for personalization?",
+      "whatTheyDid": "ENOUGH learns to add profile records sequentially and stop when enough context exists.",
+      "whatTheyFound": "Across six tasks, it beat retrieval baselines while using shorter adaptive profiles.",
+      "whatItMeans": "More personal data is not automatically better personalization or better persona modeling."
+    },
+    {
+      "itemId": "research-d56929547f35c88efa01",
+      "streamTitle": "Stress increased deceptive behavior, with rumination emerging as one pathway",
+      "streamSummary": "A multi-study program found that experimentally induced stress increased unethical intentions and, in an incentivized task, actual deceptive reporting. Rumination rose under stress and statistically explained part of the effect; narcissism strengthened it in one study. The project also analyzed online reviews, but that field portion was correlational and used a linguistic proxy. The strongest causal evidence therefore comes from the randomized experiments.",
+      "attribution": "Tran et al. — Journal of Business Ethics",
+      "sourceUrl": "https://doi.org/10.1007/s10551-026-06449-8",
+      "sourcePublishedAt": "2026-09-03",
+      "dateAdded": "2026-09-09",
+      "latestSeenBriefDate": "2026-09-09",
+      "primaryCategory": "behavioral-science",
+      "categories": [
+        "behavioral-science"
+      ],
+      "questionAndWhy": "Does stress increase unethical behavior, and does rumination help explain it?",
+      "whatTheyDid": "Researchers combined 3,638 online reviews with five stress-manipulation experiments.",
+      "whatTheyFound": "Stress increased unethical intentions and deceptive reporting; rumination partly mediated the effect.",
+      "whatItMeans": "Stress can alter consequential behavior, but field proxies were weaker evidence than experiments."
+    },
+    {
+      "itemId": "research-f148843fe7a1e66f6fe3",
+      "streamTitle": "People may judge policies as effective partly because they already find them acceptable",
+      "streamSummary": "A factorial survey experiment suggests policy acceptance and perceived effectiveness can influence each other. Effectiveness information increased support mainly among climate-policy supporters and undecided respondents, while fairer and less personally costly designs increased acceptance and were followed by higher perceived effectiveness even among opponents. The practical implication is that 'prove it works' may not persuade skeptics first. The policies were hypothetical, and mediation is less certain than the randomized design effects.",
+      "attribution": "Huttarsch & Wolf — Communications Sustainability",
+      "sourceUrl": "https://doi.org/10.1038/s44458-026-00149-0",
+      "sourcePublishedAt": "2026-09-02",
+      "dateAdded": "2026-09-09",
+      "latestSeenBriefDate": "2026-09-09",
+      "primaryCategory": "application-analysis",
+      "categories": [
+        "application-analysis",
+        "behavioral-science"
+      ],
+      "questionAndWhy": "Does perceived policy effectiveness drive acceptance, or can acceptance shape effectiveness judgments?",
+      "whatTheyDid": "A factorial survey randomized heating-policy design, fairness, costs, and effectiveness information.",
+      "whatTheyFound": "Effectiveness information helped some groups; fairer, cheaper designs also raised perceived effectiveness.",
+      "whatItMeans": "Policy acceptance and effectiveness judgments may form a feedback relationship."
+    },
+    {
+      "itemId": "research-c609f2f260a20d747e7c",
+      "streamTitle": "Army researchers combine multiagent air-combat learning with knowledge graphs and LLM explanations",
+      "streamSummary": "A U.S. Army ERDC report combines multiagent reinforcement learning, knowledge graphs, LLMs, and explainability methods in a six-degree-of-freedom air-combat simulation. The researchers report that the hybrid maintained competitive simulated performance while making agent decisions easier to interpret. The architecture is a useful reference for explainable decision support, but it validates behavior inside a simulation—not real tactics, human decisions, or operational effectiveness.",
+      "attribution": "Salhi et al. — U.S. Army ERDC",
+      "sourceUrl": "https://doi.org/10.21079/11681/50444",
+      "sourcePublishedAt": "2026-09-02",
+      "dateAdded": "2026-09-09",
+      "latestSeenBriefDate": "2026-09-09",
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling",
+        "operations-strategy"
+      ],
+      "questionAndWhy": "Can multiagent combat simulations remain interpretable without sacrificing performance?",
+      "whatTheyDid": "Army researchers combined air-combat reinforcement learning, knowledge graphs, LLMs, and explanations.",
+      "whatTheyFound": "The hybrid retained competitive simulated performance while improving interpretability.",
+      "whatItMeans": "Simulation behavior, structured knowledge, and explanation can be evaluated as separate layers."
+    },
+    {
+      "itemId": "research-618b5c3d16920ee72fbc",
+      "streamTitle": "Prior beliefs can bias truth processing before deliberate reasoning begins",
+      "streamSummary": "Across four experiments, people were more likely to accept false claims that matched prior beliefs and reject true claims that conflicted with them. The bias also appeared in a task designed to capture more automatic validation during comprehension. That suggests belief-consistent misinformation may gain an advantage before deliberate defense begins. The studies used controlled claims, not real-world sharing or durable belief change.",
+      "attribution": "Abendroth & Richter — Memory & Cognition",
+      "sourceUrl": "https://doi.org/10.3758/s13421-026-01911-4",
+      "sourcePublishedAt": "2026-09-02",
+      "dateAdded": "2026-09-09",
+      "latestSeenBriefDate": "2026-09-09",
+      "primaryCategory": "behavioral-science",
+      "categories": [
+        "behavioral-science",
+        "application-analysis"
+      ],
+      "questionAndWhy": "Can prior beliefs bias truth processing before deliberate judgment?",
+      "whatTheyDid": "Four experiments crossed claim accuracy with consistency with participants’ prior beliefs.",
+      "whatTheyFound": "Belief-consistent falsehoods were accepted more readily, including during automatic validation tasks.",
+      "whatItMeans": "Misinformation may gain an advantage during comprehension, before explicit reasoning."
+    },
+    {
+      "itemId": "research-0ac8d29e1592464e265c",
+      "streamTitle": "Explainable AI helped people build better mental models of a self-driving car",
+      "streamSummary": "A Nature study tested concept-based explanations of a self-driving car’s neural planner. Experts and non-experts generally formed more accurate mental models after seeing explanations, and better mental models were associated with better counterfactual predictions. A separate 100-person study also found better situational awareness for surprising road events. The expert sample was small and the results concern one autonomous-driving architecture, so generalization remains uncertain.",
+      "attribution": "Kenny et al. — Nature",
+      "sourceUrl": "https://doi.org/10.1038/s41586-026-10950-5",
+      "sourcePublishedAt": "2026-09-02",
+      "dateAdded": "2026-09-09",
+      "latestSeenBriefDate": "2026-09-09",
+      "primaryCategory": "application-analysis",
+      "categories": [
+        "application-analysis",
+        "technology-modeling"
+      ],
+      "questionAndWhy": "Do AI explanations improve human understanding enough to improve prediction?",
+      "whatTheyDid": "Researchers tested concept-based explanations of a self-driving car with experts and non-experts.",
+      "whatTheyFound": "Explanations improved mental models, situational awareness, and counterfactual prediction.",
+      "whatItMeans": "Explainability is more useful when evaluated through downstream human performance."
+    },
+    {
+      "itemId": "research-89d0fc7c0d0187347b7b",
+      "streamTitle": "LLM agents can scale reproducibility checks—but exact effect recovery is still unreliable",
+      "streamSummary": "An agentic LLM pipeline reanalyzed 180 social-science studies by writing and executing statistical code from papers and datasets. Qualitative conclusions often matched the originals, but exact effect-size recovery was much weaker: only about one quarter of valid runs landed within ±0.05 Cohen’s d. In a human-comparison subset, broader recovery was similar. The authors caution that reproducing the published result is not the same as independently validating the scientific claim.",
+      "attribution": "Holtdirk et al. — arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2606.13670",
+      "sourcePublishedAt": "2026-06-11",
+      "dateAdded": "2026-09-09",
+      "latestSeenBriefDate": "2026-09-09",
+      "primaryCategory": "application-analysis",
+      "categories": [
+        "application-analysis",
+        "technology-modeling"
+      ],
+      "questionAndWhy": "Can LLM agents make reproducibility checking scalable across social-science papers?",
+      "whatTheyDid": "An agent reanalyzed 180 studies by writing and executing statistical code from published materials.",
+      "whatTheyFound": "Qualitative conclusions often matched, but exact effect-size recovery was much weaker.",
+      "whatItMeans": "LLMs look useful for reproducibility screening, not final scientific adjudication."
+    },
+    {
+      "itemId": "research-44504328793e87f370d2",
+      "streamTitle": "A new 'assurance disruption' concept explains how uncertainty can halt intact systems",
+      "streamSummary": "A Military Review analysis argues that adversaries can create strategic effects by undermining confidence in navigation, safety, insurance, or verification systems rather than destroying infrastructure. The proposed chain is signal manipulation, verification failure, precautionary shutdown, and cascading disruption. The concept is relevant to Gulf shipping and military logistics, but it remains analytical rather than experimentally validated; the author notes no publicly reported U.S. deployment has been stopped solely this way.",
+      "attribution": "Hamzeh Abu Nowar — Military Review",
+      "sourceUrl": "https://www.armyupress.army.mil/Journals/Military-Review/English-Edition-Archives/September-October-2026/The-Assurance-War",
+      "sourcePublishedAt": null,
+      "dateAdded": "2026-09-09",
+      "latestSeenBriefDate": "2026-09-09",
+      "primaryCategory": "operations-strategy",
+      "categories": [
+        "operations-strategy",
+        "technology-modeling",
+        "application-analysis"
+      ],
+      "questionAndWhy": "Can uncertainty about verification halt systems that remain technically intact?",
+      "whatTheyDid": "A Military Review analysis synthesizes navigation interference, safety, logistics, and regulatory dependencies.",
+      "whatTheyFound": "It proposes a chain from signal manipulation to verification failure and precautionary shutdown.",
+      "whatItMeans": "Trust in verification can itself become a critical operational dependency."
     },
     {
       "itemId": "research-f23934ac4c60b9c49bc9",
@@ -2193,6 +2383,29 @@
         "research-d7ae2d35633ad578b088",
         "research-780c0bf8966dcba117ba",
         "research-9d2bd8e6df2cd8b2cf16"
+      ]
+    },
+    {
+      "briefDate": "2026-09-09",
+      "briefType": "daily",
+      "totalItems": 10,
+      "categoryCounts": {
+        "behavioral-science": 3,
+        "technology-modeling": 2,
+        "operations-strategy": 2,
+        "application-analysis": 3
+      },
+      "itemIds": [
+        "research-eaa6db8b3d5846b8cdf1",
+        "research-618b5c3d16920ee72fbc",
+        "research-d56929547f35c88efa01",
+        "research-3d2c174a518572f7022a",
+        "research-c609f2f260a20d747e7c",
+        "research-7b42ff91990b7a00b1f0",
+        "research-44504328793e87f370d2",
+        "research-0ac8d29e1592464e265c",
+        "research-f148843fe7a1e66f6fe3",
+        "research-89d0fc7c0d0187347b7b"
       ]
     },
     {
