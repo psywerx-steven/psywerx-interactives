@@ -70,9 +70,8 @@
       card.id = "topic-guides-entry-card";
       card.className = "entry-card";
       card.href = "./topic/";
-      const icon = topicsCard ? cloneIcon("#" + topicsCard.id + " .entry-icon") : null;
-      const fallbackIcon = icon || (topicsCard ? topicsCard.querySelector(".entry-icon")?.cloneNode(true) : null);
-      if (fallbackIcon) card.appendChild(fallbackIcon);
+      const icon = topicsCard ? topicsCard.querySelector(".entry-icon") : null;
+      if (icon) card.appendChild(icon.cloneNode(true));
       const copy = document.createElement("span");
       copy.className = "entry-card__copy";
       const title = document.createElement("strong");
