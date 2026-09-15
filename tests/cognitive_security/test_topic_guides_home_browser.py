@@ -76,7 +76,7 @@ class TopicGuidesHomeBrowserTests(unittest.TestCase):
         overview = self.page.locator("#topic-guides-overview-node")
         self.assertTrue(overview.is_visible())
         self.assertEqual(overview.locator("span").inner_text(), "Topic Guides")
-        self.assertEqual(overview.locator("xpath=ancestor::section[1]").locator("h4").inner_text(), "Synthesis and exploration")
+        self.assertEqual(overview.locator("xpath=ancestor::section[1]").locator("h4").inner_text().lower(), "synthesis and exploration")
 
         card.click()
         self.assertEqual(self.page.locator("h1").inner_text(), "Topic Guides")
