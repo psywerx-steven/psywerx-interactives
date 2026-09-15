@@ -1,0 +1,77 @@
+name: One-time homepage research activation
+
+on:
+  push:
+    branches:
+      - homepage-research-live
+
+permissions:
+  contents: write
+
+jobs:
+  activate:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: homepage-research-live
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+      - name: Activate Research & Publications Explorer and rebuild homepage
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+
+          platform_path = Path('homepage/content/platform.json')
+          platform = json.loads(platform_path.read_text(encoding='utf-8'))
+          inquiry = next(area for area in platform if area['id'] == 'inquiry')
+          research = next(tool for tool in inquiry['tools'] if tool['name'] == 'Research & Publications Feed')
+          research.clear()
+          research.update({
+              'name': 'Research & Publications Explorer',
+              'status': 'live',
+              'path': '/research/',
+              'description': 'Explore research, methods, developments, and Daily Briefs surfaced through PSYWERX.'
+          })
+          platform_path.write_text(json.dumps(platform, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
+
+          builder_path = Path('homepage/tools/build_homepage.py')
+          builder = builder_path.read_text(encoding='utf-8')
+          builder = builder.replace(
+              'tool.get("path") not in ("/drivers/", "/cognitive-security/")',
+              'tool.get("path") not in ("/drivers/", "/cognitive-security/", "/research/")'
+          )
+          builder = builder.replace(
+              '  <url><loc>https://psywerx.io/cognitive-security/</loc></url>\n</urlset>',
+              '  <url><loc>https://psywerx.io/cognitive-security/</loc></url>\n  <url><loc>https://psywerx.io/research/</loc></url>\n</urlset>'
+          )
+          builder = builder.replace(
+              '"FEED_SNAPSHOT": "Owner-selected Morning Brief items",',
+              '"FEED_SNAPSHOT": "Verified items from the PSYWERX Daily Brief",'
+          )
+          builder_path.write_text(builder, encoding='utf-8')
+
+          template_path = Path('homepage/src/homepage.template.html')
+          template = template_path.read_text(encoding='utf-8')
+          template = template.replace('<a href="#research">Research</a>', '<a href="/research/">Research</a>')
+          template = template.replace('<a href="#research">Research feed</a>', '<a href="/research/">Research explorer</a>')
+          template = template.replace('Owner-selected research, developments, and ideas worth watching.', 'Research, developments, methods, and ideas surfaced through the PSYWERX Daily Brief.')
+          template = template.replace('<div class="feed-actions"><button class="text-button" type="button" id="load-older" hidden>', '<div class="feed-actions"><a class="text-button" href="/research/">Explore full archive →</a><button class="text-button" type="button" id="load-older" hidden>')
+          template_path.write_text(template, encoding='utf-8')
+          PY
+
+          python homepage/tools/build_research_stream.py
+          python homepage/tools/build_homepage.py --mode preview --tool-links preview
+          python homepage/tools/build_homepage.py --mode release --tool-links local --output .
+          rm .github/workflows/homepage-research-live-once.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add homepage/content/platform.json homepage/tools/build_homepage.py homepage/src/homepage.template.html index.html assets homepage-preview homepage/docs/BUILD_MANIFEST.json robots.txt sitemap.xml data/research-stream .github/workflows/homepage-research-live-once.yml
+          git commit -m 'Make Research & Publications Explorer live on homepage'
+          git push origin HEAD:homepage-research-live
