@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import argparse
+import base64
+import gzip
 import json
 import sys
 from pathlib import Path
@@ -14,6 +16,23 @@ DEFAULT_DATABASE = REPO / "data/research-stream/research_items.jsonl"
 DEFAULT_PUBLIC_FEED = REPO / "data/research-stream/public_feed.json"
 
 
+def decode_input(text: str) -> str:
+    """Decode the one-time gzip/base64 envelope used for historical backfills."""
+    try:
+        raw = json.loads(text.strip())
+    except json.JSONDecodeError:
+        return text
+    if not isinstance(raw, dict) or raw.get("encoding") != "gzip-base64":
+        return text
+    payload = raw.get("payload")
+    if not isinstance(payload, str) or not payload:
+        raise ResearchStreamError("compressed handoff payload is missing")
+    try:
+        return gzip.decompress(base64.b64decode(payload, validate=True)).decode("utf-8")
+    except (ValueError, OSError, UnicodeDecodeError) as exc:
+        raise ResearchStreamError("compressed handoff payload is invalid") from exc
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--input", required=True, help="Raw JSON or Morning Brief Markdown/text export")
@@ -22,7 +41,7 @@ def main() -> int:
     parser.add_argument("--public-feed", type=Path, default=DEFAULT_PUBLIC_FEED, help=argparse.SUPPRESS)
     args = parser.parse_args()
     try:
-        text = Path(args.input).read_text(encoding="utf-8-sig")
+        text = decode_input(Path(args.input).read_text(encoding="utf-8-sig"))
         payload = extract_handoff(text)
         report = ingest_handoff(payload, args.database, dry_run=args.dry_run)
         if not args.dry_run:
