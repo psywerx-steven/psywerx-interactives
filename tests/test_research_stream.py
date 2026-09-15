@@ -46,7 +46,7 @@ def sample_handoff(
                 "sourceVerified": source_verified,
                 "briefDate": brief_date,
                 "briefType": "daily",
-                "streamDecision": "pending",
+                "streamDecision": "publish",
             }
         ],
     }
@@ -68,7 +68,7 @@ class ResearchStreamTests(unittest.TestCase):
     def test_valid_research_items_schema(self):
         normalized = stream.validate_handoff(sample_handoff())
         self.assertEqual(normalized["schemaVersion"], stream.HANDOFF_SCHEMA)
-        self.assertEqual(normalized["items"][0]["streamDecision"], "pending")
+        self.assertEqual(normalized["items"][0]["streamDecision"], "publish")
 
     def test_malformed_input_rejected_transactionally(self):
         payload = sample_handoff()
@@ -144,17 +144,17 @@ class ResearchStreamTests(unittest.TestCase):
         self.ingest(changed)
         record = stream.load_database(self.database)[0]
         self.assertEqual(record["streamSummary"], changed["items"][0]["streamSummary"])
-        self.assertEqual(record["streamDecision"], "pending")
+        self.assertEqual(record["streamDecision"], "publish")
 
-    def test_existing_human_decision_is_preserved_on_material_repeat(self):
+    def test_explicit_hold_is_preserved_on_material_repeat(self):
         self.ingest(sample_handoff(brief_date="2026-09-06"))
         item_id = stream.load_database(self.database)[0]["itemId"]
-        stream.review_item(self.database, item_id, "publish", "2026-09-07")
-        changed = sample_handoff(brief_date="2026-09-08", summary="A later brief supplies materially different wording that must not overwrite content associated with a prior explicit human publishing decision without review.")
+        stream.review_item(self.database, item_id, "hold", "2026-09-07")
+        changed = sample_handoff(brief_date="2026-09-08", summary="A later brief supplies materially different wording that must not overwrite an explicit human hold without review.")
         report = self.ingest(changed)
         record = stream.load_database(self.database)[0]
         self.assertEqual(report["conflicts"], 1)
-        self.assertEqual(record["streamDecision"], "publish")
+        self.assertEqual(record["streamDecision"], "hold")
         self.assertNotEqual(record["streamSummary"], changed["items"][0]["streamSummary"])
         self.assertEqual(record["latestSeenBriefDate"], "2026-09-08")
         self.assertTrue(record["reviewRequired"])
@@ -224,7 +224,7 @@ class ResearchStreamTests(unittest.TestCase):
         self.assertEqual(self.database.read_bytes(), before)
         self.assertFalse(self.public.exists())
         record = stream.load_database(self.database)[0]
-        self.assertEqual(record["streamDecision"], "pending")
+        self.assertEqual(record["streamDecision"], "hold")
         self.assertFalse(record["reviewRequired"])
 
     def test_unverified_hold_and_reject_remain_allowed(self):
@@ -379,7 +379,7 @@ class RepositoryResearchStateTests(unittest.TestCase):
         self.assertGreaterEqual(len(records), 90)
         self.assertGreaterEqual(sum(record["streamDecision"] == "publish" for record in records), 80)
         self.assertGreaterEqual(sum(record["streamDecision"] == "hold" for record in records), 1)
-        self.assertTrue(all(record["decisionDate"] is not None for record in records if record["streamDecision"] != "pending"))
+        self.assertTrue(all(record["decisionDate"] is not None for record in records))
 
     def test_checked_in_public_stream_matches_publish_count_after_build(self):
         records = stream.load_database(REPO / "data/research-stream/research_items.jsonl")

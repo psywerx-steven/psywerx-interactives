@@ -17,7 +17,7 @@ PUBLIC_SCHEMA = "psywerx-public-research-stream-v1"
 BRIEF_MANIFEST_SCHEMA = "psywerx-brief-manifest-v1"
 EXPLORER_SCHEMA = "psywerx-research-explorer-v1"
 CATEGORIES = ("behavioral-science", "technology-modeling", "operations-strategy", "application-analysis")
-DECISIONS = ("pending", "publish", "hold", "reject")
+DECISIONS = ("publish", "hold", "reject")
 HANDOFF_TOP_FIELDS = {"schemaVersion", "briefDate", "briefType", "items"}
 HANDOFF_ITEM_FIELDS = {
     "sourceItemNumber", "primaryCategory", "categories", "questionAndWhy", "whatTheyDid",
@@ -184,8 +184,8 @@ def validate_handoff(payload):
             raise ResearchStreamError(f"{label}.categories are invalid")
         if raw["briefDate"] != brief_date or raw["briefType"] != "daily":
             raise ResearchStreamError(f"{label} brief provenance must match the handoff")
-        if raw["streamDecision"] != "pending":
-            raise ResearchStreamError(f"{label}.streamDecision must be pending")
+        if raw["streamDecision"] not in ("pending", "publish"):
+            raise ResearchStreamError(f"{label}.streamDecision must be publish (legacy pending is accepted for archived handoffs)")
         if not isinstance(raw["sourceVerified"], bool):
             raise ResearchStreamError(f"{label}.sourceVerified must be boolean")
 
@@ -197,6 +197,7 @@ def validate_handoff(payload):
         item.update(sourceKey=source_key, sourceUrl=source_url)
         for field in ("questionAndWhy", "whatTheyDid", "whatTheyFound", "whatItMeans", "streamTitle", "streamSummary", "attribution"):
             item[field] = _text(item[field], f"{label}.{field}")
+        item["streamDecision"] = "publish"
         item["sourcePublishedAt"] = _date(item["sourcePublishedAt"], f"{label}.sourcePublishedAt", True)
         item["categories"] = list(categories)
         items.append(item)
@@ -261,8 +262,6 @@ def validate_record(record):
         raise ResearchStreamError("publish records require sourceVerified: true")
     decision_date = _date(record["decisionDate"], "decisionDate", True)
     published_at = _date(record["publishedAt"], "publishedAt", True)
-    if decision == "pending" and (decision_date is not None or published_at is not None):
-        raise ResearchStreamError("pending records cannot have decisionDate or publishedAt")
     if decision == "publish" and (decision_date is None or published_at is None):
         raise ResearchStreamError("publish records require decisionDate and publishedAt")
     if decision in ("hold", "reject") and (decision_date is None or published_at is not None):
@@ -357,9 +356,9 @@ def _incoming_record(item):
         "attribution": item["attribution"],
         "sourceUrl": item["sourceUrl"],
         "sourceVerified": item["sourceVerified"],
-        "streamDecision": "pending",
-        "decisionDate": None,
-        "publishedAt": None,
+        "streamDecision": "publish" if item["sourceVerified"] else "hold",
+        "decisionDate": item["briefDate"],
+        "publishedAt": item["briefDate"] if item["sourceVerified"] else None,
         "reviewRequired": False,
     }
 
@@ -405,7 +404,7 @@ def ingest_handoff(payload, database_path, *, dry_run=False):
         if not changed:
             report["updated" if provenance_changed else "unchanged"].append(existing["itemId"])
             continue
-        if existing["streamDecision"] != "pending":
+        if existing["streamDecision"] in ("hold", "reject"):
             existing["reviewRequired"] = True
             report["conflicts"].append({
                 "itemId": existing["itemId"],
@@ -446,7 +445,7 @@ def ingest_handoff(payload, database_path, *, dry_run=False):
 
 def is_public(record):
     validate_record(record)
-    return record["sourceVerified"] is True and record["streamDecision"] not in ("hold", "reject")
+    return record["sourceVerified"] is True and record["streamDecision"] == "publish"
 
 
 def public_item(record):
