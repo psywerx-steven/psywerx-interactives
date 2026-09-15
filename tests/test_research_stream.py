@@ -46,7 +46,7 @@ def sample_handoff(
                 "sourceVerified": source_verified,
                 "briefDate": brief_date,
                 "briefType": "daily",
-                "streamDecision": "pending",
+                "streamDecision": "publish",
             }
         ],
     }
@@ -68,7 +68,7 @@ class ResearchStreamTests(unittest.TestCase):
     def test_valid_research_items_schema(self):
         normalized = stream.validate_handoff(sample_handoff())
         self.assertEqual(normalized["schemaVersion"], stream.HANDOFF_SCHEMA)
-        self.assertEqual(normalized["items"][0]["streamDecision"], "pending")
+        self.assertEqual(normalized["items"][0]["streamDecision"], "publish")
 
     def test_malformed_input_rejected_transactionally(self):
         payload = sample_handoff()
@@ -144,7 +144,7 @@ class ResearchStreamTests(unittest.TestCase):
         self.ingest(changed)
         record = stream.load_database(self.database)[0]
         self.assertEqual(record["streamSummary"], changed["items"][0]["streamSummary"])
-        self.assertEqual(record["streamDecision"], "pending")
+        self.assertEqual(record["streamDecision"], "publish")
 
     def test_existing_human_decision_is_preserved_on_material_repeat(self):
         self.ingest(sample_handoff(brief_date="2026-09-06"))
@@ -224,7 +224,7 @@ class ResearchStreamTests(unittest.TestCase):
         self.assertEqual(self.database.read_bytes(), before)
         self.assertFalse(self.public.exists())
         record = stream.load_database(self.database)[0]
-        self.assertEqual(record["streamDecision"], "pending")
+        self.assertEqual(record["streamDecision"], "publish")
         self.assertFalse(record["reviewRequired"])
 
     def test_unverified_hold_and_reject_remain_allowed(self):
