@@ -51,6 +51,9 @@ jobs:
       - name: Rebuild production homepage
         run: python homepage/tools/build_homepage.py --mode release --tool-links local --output .
 
+      - name: Connect homepage to research explorer
+        run: python homepage/tools/connect_research_explorer.py --root .
+
       - name: Commit generated research stream and site
         shell: bash
         run: |
