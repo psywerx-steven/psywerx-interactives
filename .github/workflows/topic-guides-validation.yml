@@ -39,7 +39,7 @@ jobs:
         run: |
           export PSYWERX_BROWSER_EXECUTABLE="$(command -v google-chrome || command -v chromium)"
           test -n "$PSYWERX_BROWSER_EXECUTABLE"
-          python -m unittest tests.cognitive_security.test_topic_guides_browser -v
+          python -m unittest tests.cognitive_security.test_topic_guides_browser tests.cognitive_security.test_topic_guides_home_browser -v
       - name: Archive tracked source for reproducible review
         if: always()
         run: |
