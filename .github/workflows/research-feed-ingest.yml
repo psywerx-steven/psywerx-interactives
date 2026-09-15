@@ -2,7 +2,7 @@ name: Research feed ingest
 
 on:
   push:
-    branches: [main]
+    branches: [research-data]
     paths:
       - 'data/research-stream/inbox/*.json'
   workflow_dispatch:
@@ -18,9 +18,10 @@ jobs:
   ingest-and-build:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository
+      - name: Check out research data branch
         uses: actions/checkout@v4
         with:
+          ref: research-data
           fetch-depth: 0
 
       - name: Set up Python
@@ -45,25 +46,19 @@ jobs:
             python homepage/tools/ingest_research_items.py --input "$file"
           done
 
-      - name: Build research explorer
+      - name: Build live explorer data
         run: python homepage/tools/build_research_explorer.py
 
-      - name: Rebuild production homepage
-        run: python homepage/tools/build_homepage.py --mode release --tool-links local --output .
-
-      - name: Connect homepage to research explorer
-        run: python homepage/tools/connect_research_explorer.py --root .
-
-      - name: Commit generated research stream and site
+      - name: Commit live research data
         shell: bash
         run: |
           set -euo pipefail
           git config user.name 'PSYWERX Research Bot'
           git config user.email 'actions@users.noreply.github.com'
-          git add data/research-stream homepage/docs/BUILD_MANIFEST.json research index.html assets robots.txt sitemap.xml
+          git add data/research-stream/research_items.jsonl data/research-stream/public_feed.json data/research-stream/public_feed_pages data/research-stream/explorer.json data/research-stream/briefs
           if git diff --cached --quiet; then
-            echo 'No generated changes to commit.'
+            echo 'No generated research-data changes to commit.'
             exit 0
           fi
-          git commit -m 'Update PSYWERX research feed'
-          git push
+          git commit -m 'Update PSYWERX research data'
+          git push origin research-data

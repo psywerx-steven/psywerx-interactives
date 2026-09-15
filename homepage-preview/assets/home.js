@@ -1,4 +1,4 @@
-/* PSYWERX homepage interactions. No external dependencies, trackers, or API calls. */
+/* PSYWERX homepage interactions. No external dependencies or trackers. */
 (function () {
   'use strict';
   const data = window.PSYWERX_HOME;
@@ -13,6 +13,7 @@
   const loadOlderButton = $('#load-older');
   const loadedIds = new Set($$('.feed-item').map(card => card.dataset.feedId));
   const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  const liveResearchUrl = 'https://raw.githubusercontent.com/psywerx-steven/psywerx-interactives/research-data/data/research-stream/explorer.json';
   let nextPage = data.feedPagination && data.feedPagination.nextPage;
   let lastFocus = null;
 
@@ -64,10 +65,7 @@
     dialog.showModal();
   }
 
-  function closeDialog() {
-    dialog.close();
-  }
-
+  function closeDialog() { dialog.close(); }
   $('.dialog-close').addEventListener('click', closeDialog);
   dialog.addEventListener('close', () => {
     if (lastFocus && lastFocus.isConnected) lastFocus.focus({preventScroll: true});
@@ -75,15 +73,9 @@
   dialog.addEventListener('click', event => {
     if (event.target !== dialog) return;
     const bounds = dialog.getBoundingClientRect();
-    if (
-      event.clientX < bounds.left ||
-      event.clientX > bounds.right ||
-      event.clientY < bounds.top ||
-      event.clientY > bounds.bottom
-    ) closeDialog();
+    if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) closeDialog();
   });
 
-  // The six-area diagram is navigation, not a causal relationship graph.
   function selectArea(id) {
     const area = areaById.get(id);
     if (!area) return;
@@ -94,7 +86,6 @@
     link.href = '#area-' + id;
     $('#map-detail').replaceChildren(content, link);
   }
-
   $$('[data-area]').forEach(button => button.addEventListener('click', () => selectArea(button.dataset.area)));
 
   function revealHashArea() {
@@ -119,16 +110,13 @@
   window.addEventListener('hashchange', revealHashArea);
   revealHashArea();
 
-  // Multi-select feed filters are OR within the selection. Empty selection = all.
   function syncFilterUrl() {
     try {
       const url = new URL(location.href);
       if (selected.size) url.searchParams.set('feed', Array.from(selected).sort().join(','));
       else url.searchParams.delete('feed');
       history.replaceState(null, '', url.href);
-    } catch (_) {
-      // Restricted file previews may prohibit history writes.
-    }
+    } catch (_) {}
   }
 
   function applyFilters(updateUrl = true) {
@@ -157,33 +145,24 @@
     else if (validFilters.has(id)) selected.add(id);
     applyFilters();
   }));
-  $('#clear-feed').addEventListener('click', () => {
-    selected.clear();
-    applyFilters();
-  });
+  $('#clear-feed').addEventListener('click', () => { selected.clear(); applyFilters(); });
 
   function loadFilterUrl() {
     selected.clear();
     const saved = (new URL(location.href).searchParams.get('feed') || '').split(',');
-    saved.forEach(id => {
-      if (validFilters.has(id)) selected.add(id);
-    });
+    saved.forEach(id => { if (validFilters.has(id)) selected.add(id); });
     applyFilters(false);
   }
   window.addEventListener('popstate', loadFilterUrl);
   loadFilterUrl();
 
   function validPublicItem(item) {
-    return item &&
-      typeof item.itemId === 'string' && /^research-[0-9a-f]{20}$/.test(item.itemId) &&
+    return item && typeof item.itemId === 'string' && /^research-[0-9a-f]{20}$/.test(item.itemId) &&
       typeof item.streamTitle === 'string' && item.streamTitle.trim() &&
       typeof item.streamSummary === 'string' && item.streamSummary.trim() &&
-      typeof item.attribution === 'string' && item.attribution.trim() &&
-      safeExternalUrl(item.sourceUrl) &&
-      Array.isArray(item.categories) && item.categories.length > 0 &&
-      item.categories.every(category => validFilters.has(category)) &&
-      validIsoDate(item.sourcePublishedAt, true) &&
-      validIsoDate(item.dateAdded);
+      typeof item.attribution === 'string' && item.attribution.trim() && safeExternalUrl(item.sourceUrl) &&
+      Array.isArray(item.categories) && item.categories.length > 0 && item.categories.every(category => validFilters.has(category)) &&
+      validIsoDate(item.sourcePublishedAt, true) && validIsoDate(item.dateAdded);
   }
 
   function renderFeedCard(item) {
@@ -191,80 +170,74 @@
     article.dataset.categories = item.categories.join(' ');
     article.dataset.feedId = item.itemId;
     const meta = node('div', null, 'feed-meta');
-    meta.append(
-      node('span', 'Published ' + formatDate(item.sourcePublishedAt)),
-      node('span', 'Added ' + formatDate(item.dateAdded))
-    );
+    meta.append(node('span', 'Published ' + formatDate(item.sourcePublishedAt)), node('span', 'Added ' + formatDate(item.dateAdded)));
     const title = node('h3', item.streamTitle);
     const summary = node('p', item.streamSummary);
     const source = node('div', null, 'feed-source');
     const link = node('a', item.attribution);
-    link.href = safeExternalUrl(item.sourceUrl);
-    link.target = '_blank';
-    link.rel = 'noopener noreferrer';
-    const arrow = node('span', '↗', 'arrow');
-    arrow.setAttribute('aria-hidden', 'true');
-    source.append(link, arrow);
-    article.append(meta, title, summary, source);
-    return article;
+    link.href = safeExternalUrl(item.sourceUrl); link.target = '_blank'; link.rel = 'noopener noreferrer';
+    const arrow = node('span', '↗', 'arrow'); arrow.setAttribute('aria-hidden', 'true');
+    source.append(link, arrow); article.append(meta, title, summary, source); return article;
   }
 
-  function syncLoadOlder() {
-    loadOlderButton.hidden = !safeFeedPageUrl(nextPage);
-  }
+  function syncLoadOlder() { loadOlderButton.hidden = !safeFeedPageUrl(nextPage); }
 
   loadOlderButton.addEventListener('click', async () => {
-    const url = safeFeedPageUrl(nextPage);
-    if (!url) return;
-    loadOlderButton.disabled = true;
-    loadOlderButton.textContent = 'Loading…';
+    const url = safeFeedPageUrl(nextPage); if (!url) return;
+    loadOlderButton.disabled = true; loadOlderButton.textContent = 'Loading…';
     try {
       const response = await fetch(url, {credentials: 'same-origin'});
       if (!response.ok) throw new Error('Research page request failed');
       const page = await response.json();
-      if (
-        page.schemaVersion !== 'psywerx-public-research-stream-v1' ||
-        !Array.isArray(page.items) ||
-        !page.items.every(validPublicItem)
-      ) throw new Error('Research page is invalid');
-      const container = $('#feed-items');
-      const initialEmpty = container.querySelector('.feed-empty');
-      if (initialEmpty) initialEmpty.remove();
-      page.items.forEach(item => {
-        if (loadedIds.has(item.itemId)) return;
-        loadedIds.add(item.itemId);
-        container.append(renderFeedCard(item));
-      });
-      nextPage = page.nextPage ? new URL(page.nextPage, new URL('../', url)).href : null;
-      applyFilters(false);
-    } catch (_) {
-      $('#feed-result-count').textContent = 'Older selections could not be loaded';
-    } finally {
-      loadOlderButton.disabled = false;
-      loadOlderButton.textContent = 'Load older selections →';
-      syncLoadOlder();
-    }
+      if (page.schemaVersion !== 'psywerx-public-research-stream-v1' || !Array.isArray(page.items) || !page.items.every(validPublicItem)) throw new Error('Research page is invalid');
+      const container = $('#feed-items'); const initialEmpty = container.querySelector('.feed-empty'); if (initialEmpty) initialEmpty.remove();
+      page.items.forEach(item => { if (loadedIds.has(item.itemId)) return; loadedIds.add(item.itemId); container.append(renderFeedCard(item)); });
+      nextPage = page.nextPage ? new URL(page.nextPage, new URL('../', url)).href : null; applyFilters(false);
+    } catch (_) { $('#feed-result-count').textContent = 'Older selections could not be loaded'; }
+    finally { loadOlderButton.disabled = false; loadOlderButton.textContent = 'Load older selections →'; syncLoadOlder(); }
   });
   syncLoadOlder();
 
   $$('[data-open-dialog]').forEach(button => button.addEventListener('click', () => {
     if (button.dataset.openDialog !== 'feed-info') return;
-    openDialog('RESEARCH & DISCUSSION', 'From the Morning Brief to the public stream.', [
-      node('p', 'Each Morning Brief contributes every research item to the PSYWERX research database. Inclusion there supports retrieval, source tracking, deduplication, and later analysis.'),
-      node('p', 'Only items the owner explicitly chooses to publish appear here. Hold and reject decisions keep an item in the research database without placing it in the public stream.'),
-      node('p', 'Published identifies the source publication date when known; Added identifies the Morning Brief date when PSYWERX first added the item. Use more than one filter to show selections matching any of your chosen interests.')
+    openDialog('RESEARCH & DISCUSSION', 'From the Daily Brief to the research stream.', [
+      node('p', 'Each Daily Brief contributes verified research items to the PSYWERX research database for retrieval, source tracking, deduplication, and later analysis.'),
+      node('p', 'Verified items appear in the public stream automatically. Hold and reject decisions suppress an item without deleting it from the research database.'),
+      node('p', 'Published identifies the source publication date when known; Added identifies the Daily Brief date when PSYWERX first added the item.')
     ]);
   }));
 
-  // Native disclosure navigation, with Escape and click-outside behavior.
+  async function refreshLiveResearch() {
+    try {
+      const response = await fetch(liveResearchUrl, {cache: 'no-store', credentials: 'omit'});
+      if (!response.ok) return;
+      const live = await response.json();
+      if (live.schemaVersion !== 'psywerx-research-explorer-v1' || !Array.isArray(live.items)) return;
+      const items = live.items.filter(validPublicItem).slice(0, 24);
+      if (!items.length) return;
+      const container = $('#feed-items'); container.replaceChildren(); loadedIds.clear();
+      items.forEach(item => { loadedIds.add(item.itemId); container.append(renderFeedCard(item)); });
+      nextPage = null; syncLoadOlder(); applyFilters(false);
+      const snapshot = $('.feed-bottom > span'); if (snapshot) snapshot.textContent = 'Verified items from the PSYWERX Daily Brief';
+    } catch (_) {}
+  }
+
+  $$('a[href="#research"]').forEach(anchor => {
+    if ((anchor.textContent || '').toLowerCase().includes('research')) anchor.href = '/research/';
+  });
+  const streamLink = $$('.tool-link').find(anchor => (anchor.textContent || '').includes('View research stream'));
+  if (streamLink) { streamLink.href = '/research/'; streamLink.textContent = 'Explore research archive →'; }
+  const feedActions = $('.feed-actions');
+  if (feedActions && !feedActions.querySelector('a[href="/research/"]')) {
+    const archiveLink = node('a', 'Explore full archive →', 'text-button'); archiveLink.href = '/research/'; feedActions.prepend(archiveLink);
+  }
+  refreshLiveResearch();
+
   document.addEventListener('keydown', event => {
     if (event.key !== 'Escape') return;
     ['explore-menu', 'mobile-menu'].forEach(id => {
       const menu = document.getElementById(id);
-      if (menu && menu.open) {
-        menu.open = false;
-        menu.querySelector('summary').focus();
-      }
+      if (menu && menu.open) { menu.open = false; menu.querySelector('summary').focus(); }
     });
   });
   document.addEventListener('click', event => {
