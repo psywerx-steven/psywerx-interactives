@@ -42,9 +42,9 @@ class HomepageTests(unittest.TestCase):
     def test_exact_single_brand_line(self):
         self.assertEqual(dataset()[0]["brandLine"], "exploring the human condition from theory to practice")
 
-    def test_only_two_live_explorers(self):
+    def test_approved_live_explorers(self):
         live = [tool for area in dataset()[1] for tool in area["tools"] if tool["status"] == "live"]
-        self.assertEqual({tool["path"] for tool in live}, {"/drivers/", "/cognitive-security/"})
+        self.assertEqual({tool["path"] for tool in live}, {"/drivers/", "/cognitive-security/", "/research/"})
 
     def test_training_is_coming_soon(self):
         self.assertTrue(all(tool["status"] == "soon" for tool in dataset()[1][-1]["tools"]))
@@ -177,7 +177,7 @@ class HomepageTests(unittest.TestCase):
     def test_production_discovery_files(self):
         self.assertEqual((REPO / "robots.txt").read_text(encoding="utf-8"), "User-agent: *\nAllow: /\nSitemap: https://psywerx.io/sitemap.xml\n")
         sitemap = (REPO / "sitemap.xml").read_text(encoding="utf-8")
-        for url in ("https://psywerx.io/", "https://psywerx.io/drivers/", "https://psywerx.io/drivers/codebook/", "https://psywerx.io/cognitive-security/"):
+        for url in ("https://psywerx.io/", "https://psywerx.io/drivers/", "https://psywerx.io/drivers/codebook/", "https://psywerx.io/cognitive-security/", "https://psywerx.io/research/"):
             self.assertIn(f"<loc>{url}</loc>", sitemap)
 
     def test_production_social_metadata(self):

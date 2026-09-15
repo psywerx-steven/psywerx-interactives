@@ -103,7 +103,7 @@ def validate(site, platform) -> bool:
         for tool in area["tools"]:
             if tool["status"] not in STATUS_LABELS:
                 raise ValueError("Unknown tool status")
-            if tool["status"] == "live" and tool.get("path") not in ("/drivers/", "/cognitive-security/"):
+            if tool["status"] == "live" and tool.get("path") not in ("/drivers/", "/cognitive-security/", "/research/"):
                 raise ValueError("Live destination requires verification")
     return True
 
@@ -215,7 +215,7 @@ def build(mode="preview", tool_links="preview", root=ROOT, output=None):
         "FILTERS": filters,
         "FEED_COUNT": str(len(selected)),
         "FEED_ITEMS": "".join(feed_html),
-        "FEED_SNAPSHOT": "Owner-selected Morning Brief items",
+        "FEED_SNAPSHOT": "Verified items from the PSYWERX Daily Brief",
         "PREVIEW_BADGE": '<span class="preview-badge">Preview</span>' if mode == "preview" else "",
         "YEAR": "2026",
         "FOOTER_STATUS": "Homepage design preview · not yet deployed" if mode == "preview" else "Behavioral & social science · Tools · Research · Learning",
@@ -263,6 +263,7 @@ def build(mode="preview", tool_links="preview", root=ROOT, output=None):
   <url><loc>https://psywerx.io/drivers/</loc></url>
   <url><loc>https://psywerx.io/drivers/codebook/</loc></url>
   <url><loc>https://psywerx.io/cognitive-security/</loc></url>
+  <url><loc>https://psywerx.io/research/</loc></url>
 </urlset>
 ''',
         )
