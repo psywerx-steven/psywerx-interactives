@@ -2,6 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://psywerx.io/schemas/psywerx-research-items-v1.schema.json",
   "title": "PSYWERX Morning Brief research-item handoff",
+  "description": "Verified Morning Brief items are automatically published; hold and reject are downstream editorial overrides.",
   "type": "object",
   "additionalProperties": false,
   "required": ["schemaVersion", "briefDate", "briefType", "items"],
