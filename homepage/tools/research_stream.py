@@ -404,7 +404,7 @@ def ingest_handoff(payload, database_path, *, dry_run=False):
         if not changed:
             report["updated" if provenance_changed else "unchanged"].append(existing["itemId"])
             continue
-        if existing["streamDecision"] != "pending":
+        if existing["streamDecision"] in ("hold", "reject"):
             existing["reviewRequired"] = True
             report["conflicts"].append({
                 "itemId": existing["itemId"],
