@@ -115,8 +115,14 @@ class PsychologicalLayerActivationAudit001Tests(unittest.TestCase):
         self.assertTrue(all(x["synthesis"]["datasetOverlap"] for x in assessments))
         self.assertTrue(all(x["synthesis"]["conflicts"] for x in assessments))
         finding_sources = {finding["sourceId"] for x in assessments for finding in x["sourceFindings"]}
+        identity_sources = {
+            source_id for happening_type in self.catalog["happeningTypes"]
+            if "-PSY-LAYER-" in happening_type["id"]
+            for source_id in happening_type["identitySourceIds"]
+        }
         relationship = next(x for x in self.relationships if x["id"] == "REL-V1-PSY-LAYER-001")
-        self.assertEqual(set(self.audit["sourceAudit"]["canonicalSourceIds"]), finding_sources | set(relationship["sourceIds"]))
+        self.assertEqual(set(self.audit["sourceAudit"]["canonicalSourceIds"]), identity_sources | finding_sources | set(relationship["sourceIds"]))
+        self.assertEqual(self.audit["sourceAudit"]["sourceCount"], 53)
         self.assertEqual(self.audit["sourceAudit"]["unresolvedIdentities"], [])
 
     def test_three_blockers_preserved_without_architecture_change(self):

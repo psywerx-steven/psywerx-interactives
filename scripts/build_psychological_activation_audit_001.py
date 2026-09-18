@@ -115,9 +115,11 @@ def build():
                 "Governed synthesis is source-resolved and retains its exact SUPPORTS/MIXED, null, contrary, overlap and access-depth qualifications.",
             )
 
-    all_source_ids = sorted(set(relationship["sourceIds"]) | {
-        finding["sourceId"] for assessment in assessments for finding in assessment["sourceFindings"]
-    })
+    all_source_ids = sorted(
+        set(relationship["sourceIds"])
+        | {source_id for happening_type in types for source_id in happening_type["identitySourceIds"]}
+        | {finding["sourceId"] for assessment in assessments for finding in assessment["sourceFindings"]}
+    )
     counts = {
         "audited": 45,
         "readyForActivationReview": sum(x["recommendation"] == READY for x in recommendations),

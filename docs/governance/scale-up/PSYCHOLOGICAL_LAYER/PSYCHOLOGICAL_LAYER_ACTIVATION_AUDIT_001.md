@@ -100,7 +100,7 @@ The five-record repetition bundle therefore remains blocked until a human choose
 - Retrieval practice: delayed same-cue recall only; the immediate reverse and readability null remain explicit.
 - High-control recommendation: directly measured freedom threat/reactance only; no mandate, behavior, mediation-chain, or general coercion claim.
 
-No source identity conflict was found across 19 canonical sources used by the audited governed records. Review/included-study overlap, shared datasets, preprint/publication identity, theoretical versus experimental roles, and access depth remain as materialized.
+No source identity conflict was found across 53 canonical sources used by the audited governed records. Review/included-study overlap, shared datasets, preprint/publication identity, theoretical versus experimental roles, and access depth remain as materialized.
 
 ## Preserved architecture and construct blockers
 
