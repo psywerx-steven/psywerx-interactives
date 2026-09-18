@@ -172,9 +172,10 @@ class PsychologicalLayerMaterializationTests(unittest.TestCase):
             materialize.RI_SOURCES, materialize.RI_FINDINGS, materialize.MATERIALIZATION_MANIFEST,
             materialize.SOURCE_MANIFEST, materialize.DECISION_DATA, materialize.DECISION_DOC,
         ]
-        before = {path: path.read_bytes() for path in outputs}
+        normalized = lambda path: path.read_bytes().replace(b"\r\n", b"\n")
+        before = {path: normalized(path) for path in outputs}
         materialize.materialize()
-        self.assertEqual(before, {path: path.read_bytes() for path in outputs})
+        self.assertEqual(before, {path: normalized(path) for path in outputs})
 
 
 if __name__ == "__main__":
