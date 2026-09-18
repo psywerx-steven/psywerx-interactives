@@ -160,8 +160,11 @@ class PsychologicalLayerActivationAudit001Tests(unittest.TestCase):
         self.assertEqual(before, {x["id"]: x for x in after_records})
 
     def test_only_audit_outputs_differ_from_merged_main(self):
+        base = subprocess.check_output([
+            "git", "merge-base", "HEAD", "origin/main",
+        ], cwd=ROOT, text=True).strip()
         changed = subprocess.check_output([
-            "git", "diff", "--name-only", "5e9a8ce241d7f4dc29845c50063c95530fd49a14", "--",
+            "git", "diff", "--name-only", base, "HEAD", "--",
             "data", "docs", "schemas",
         ], cwd=ROOT, text=True).splitlines()
         self.assertEqual(set(changed), {
