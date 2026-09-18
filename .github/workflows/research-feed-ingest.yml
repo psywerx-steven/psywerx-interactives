@@ -1,0 +1,64 @@
+name: Research feed ingest
+
+on:
+  push:
+    branches: [research-data]
+    paths:
+      - 'data/research-stream/inbox/*.json'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: research-feed-ingest
+  cancel-in-progress: false
+
+jobs:
+  ingest-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out research data branch
+        uses: actions/checkout@v4
+        with:
+          ref: research-data
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Validate and ingest Daily Brief handoffs
+        shell: bash
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          files=(data/research-stream/inbox/*.json)
+          if [ ${#files[@]} -eq 0 ]; then
+            echo 'No research handoff files found.'
+            exit 0
+          fi
+          IFS=$'\n' sorted=($(printf '%s\n' "${files[@]}" | sort))
+          unset IFS
+          for file in "${sorted[@]}"; do
+            echo "Ingesting $file"
+            python homepage/tools/ingest_research_items.py --input "$file"
+          done
+
+      - name: Build live explorer data
+        run: python homepage/tools/build_research_explorer.py
+
+      - name: Commit live research data
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'PSYWERX Research Bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add data/research-stream/research_items.jsonl data/research-stream/public_feed.json data/research-stream/public_feed_pages data/research-stream/explorer.json data/research-stream/briefs
+          if git diff --cached --quiet; then
+            echo 'No generated research-data changes to commit.'
+            exit 0
+          fi
+          git commit -m 'Update PSYWERX research data'
+          git push origin research-data

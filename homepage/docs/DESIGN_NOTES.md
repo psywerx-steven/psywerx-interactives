@@ -11,7 +11,7 @@
 7. Early mission expanded in an About section.
 8. Quiet newsletter and LinkedIn footer.
 
-The research rail sits to the right of the main column on desktop and follows the main content on smaller screens. It is a readable scrolling list, not an animated ticker. The page does not refresh itself, fetch private documents, or pretend to be connected to a publishing service.
+The research rail sits to the right of the main column on desktop and follows the main content on smaller screens. It is a readable scrolling list, not an animated ticker. It shows only owner-published Morning Brief items. The page does not fetch private documents or expose the four substantive research-note sections.
 
 ## Six platform areas
 
@@ -34,6 +34,8 @@ The taxonomy of the homepage is not a replacement for the ontology inside any Ex
 - Application & Analysis
 
 An article can carry multiple tags. Selecting multiple categories shows items from **any** selected category. This is visibly separate from the six platform areas; the word Application occurs in both taxonomies but their roles differ.
+
+The first 24 published selections are loaded with the homepage. Older selections are divided into deterministic static pages and loaded only on request, keeping the initial page bounded as the research database grows.
 
 ## Visual system
 

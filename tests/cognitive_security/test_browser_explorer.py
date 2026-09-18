@@ -36,6 +36,15 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 PUBLIC_DATA_DIR = REPO_ROOT / "data" / "cognitive-security"
 DISCOVERY_DATA_DIR = REPO_ROOT / "data" / "cognitive-security-discovery"
 APP_PATH = "cognitive-security/"
+SITE_CONFIG = json.loads((REPO_ROOT / "homepage/content/site.json").read_text(encoding="utf-8"))
+CANONICAL_HOME = SITE_CONFIG["targetOrigin"].rstrip("/") + "/"
+PUBLIC_ENTRY_PATHS = (
+    "/",
+    "/homepage-preview/",
+    "/drivers/",
+    "/drivers/codebook/",
+    "/cognitive-security/",
+)
 
 SUPPORT_INTERPRETATION = (
     "Corpus support reflects recurrence and breadth within this practitioner "
@@ -610,26 +619,50 @@ class CanonicalExplorerBrowserTests(unittest.TestCase):
         body_text = self.page.locator("body").inner_text()
         self.assertNotIn("approved canonical synthesis", body_text.casefold())
 
-    def test_wordmark_links_home_on_desktop_mobile_and_keyboard(self) -> None:
-        site = json.loads(
-            (REPO_ROOT / "homepage" / "content" / "site.json").read_text(encoding="utf-8")
-        )
-        homepage_url = site["targetOrigin"].rstrip("/") + "/"
-        self.page.route(
-            homepage_url,
+    def test_sitewide_home_links_and_mobile_layout(self) -> None:
+        self.context.route(
+            CANONICAL_HOME + "**",
             lambda route: route.fulfill(
-                status=200,
-                content_type="text/html",
-                body="<!doctype html><title>PSYWERX home</title>",
+                status=200, content_type="text/html", body="<!doctype html><title>PSYWERX</title>"
             ),
         )
+        self.page.set_viewport_size({"width": 390, "height": 844})
+
+        for path in PUBLIC_ENTRY_PATHS:
+            with self.subTest(path=path):
+                response = self.page.goto(self.origin + path, wait_until="domcontentloaded")
+                self.assertIsNotNone(response)
+                self.assertLess(response.status, 400)
+                if path == "/cognitive-security/":
+                    self._wait_ready()
+
+                wordmark = self.page.locator(
+                    "header a.brand, header a.wordmark, header a.psywerx-global-brand"
+                )
+                self.assertEqual(1, wordmark.count(), path)
+                self.assertIn(wordmark.get_attribute("href"), (CANONICAL_HOME, "/"), path)
+                self.assertEqual("PSYWERX home", wordmark.get_attribute("aria-label"), path)
+
+                mobile_menu = self.page.locator(
+                    "header details.mobile-menu, header details.psywerx-mobile-menu"
+                )
+                if mobile_menu.count():
+                    mobile_menu.evaluate("menu => { menu.open = true; }")
+                visible_home_links = [
+                    link for link in self.page.get_by_role("link", name="Home", exact=True).all()
+                    if link.is_visible()
+                ]
+                self.assertGreaterEqual(len(visible_home_links), 1, path)
+                self.assertTrue(
+                    all(link.get_attribute("href") in (CANONICAL_HOME, "/") for link in visible_home_links),
+                    path,
+                )
+                self._assert_no_page_overflow()
 
         for width, height in ((1280, 900), (390, 844)):
             self.page.set_viewport_size({"width": width, "height": height})
             self._open(expected_title=PRIMARY_ROUTES["start"], view="start")
-            wordmark = self.page.get_by_role("link", name="PSYWERX home", exact=True)
-            self.assertTrue(wordmark.is_visible())
-            self.assertEqual(homepage_url, wordmark.get_attribute("href"))
+            wordmark = self.page.locator("header a.psywerx-global-brand")
             bounds = wordmark.evaluate(
                 """link => {
                   const logo = link.querySelector('img');
@@ -649,16 +682,19 @@ class CanonicalExplorerBrowserTests(unittest.TestCase):
             self.assertGreaterEqual(bounds["linkWidth"], bounds["logoWidth"])
             self.assertGreaterEqual(bounds["linkHeight"], bounds["logoHeight"])
 
+        self._open(expected_title=PRIMARY_ROUTES["start"], view="start")
+        wordmark = self.page.locator("header a.psywerx-global-brand")
         wordmark.focus()
-        self.assertEqual("wordmark", self.page.evaluate("document.activeElement.className"))
+        self.assertEqual(
+            "psywerx-global-brand", self.page.evaluate("document.activeElement.className")
+        )
         focus_style = wordmark.evaluate(
             "link => ({ style: getComputedStyle(link).outlineStyle, width: getComputedStyle(link).outlineWidth })"
         )
         self.assertNotEqual("none", focus_style["style"])
         self.assertNotEqual("0px", focus_style["width"])
-        with self.page.expect_navigation(wait_until="domcontentloaded"):
-            self.page.keyboard.press("Enter")
-        self.assertEqual(homepage_url, self.page.url)
+        self.page.keyboard.press("Enter")
+        self.page.wait_for_url(CANONICAL_HOME)
 
     def test_landing_icons_and_functional_overview_are_complete(self) -> None:
         self._open(expected_title=PRIMARY_ROUTES["start"], view="start")

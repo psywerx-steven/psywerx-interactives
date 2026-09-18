@@ -152,17 +152,18 @@ class ExplorerStaticContractTests(unittest.TestCase):
         self.assertIn('href="../shared/psywerx.css"', self.html)
         self.assertIn('src="./app.js"', self.html)
         self.assertIn('src="../shared/assets/psywerx-logo.png"', self.html)
-        html_without_homepage_link = self.html.replace(
-            f'href="{self.homepage_url}"', 'href=""', 1
+        self.assertEqual(
+            {"https://psywerx.io/"},
+            set(re.findall(r'https?://[^"\s)]+', self.combined)),
         )
         self.assertNotRegex(
-            "\n".join((html_without_homepage_link, self.javascript, self.css)),
-            r"https?://|cdnjs|unpkg|jsdelivr|googleapis|analytics",
+            self.combined,
+            r"cdnjs|unpkg|jsdelivr|googleapis|analytics",
         )
 
     def test_wordmark_uses_canonical_psywerx_home(self):
         wordmark = re.search(
-            r'<a class="wordmark" href="([^"]+)" aria-label="([^"]+)">\s*<img',
+            r'<a class="psywerx-global-brand" href="([^"]+)" aria-label="([^"]+)">',
             self.html,
         )
         self.assertIsNotNone(wordmark)

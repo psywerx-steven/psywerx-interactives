@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore research, developments, and daily briefs surfaced through PSYWERX research monitoring.">
+  <meta name="theme-color" content="#073653">
+  <title>Research & Publications Explorer | PSYWERX</title>
+  <link rel="icon" href="/assets/favicon.png" type="image/png">
+  <link rel="stylesheet" href="assets/research.css">
+  <script src="assets/research.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site-header">
+  <a class="brand" href="/"><img src="/assets/wordmark.webp" alt="PSYWERX"></a>
+  <nav aria-label="Main navigation"><a href="/">Home</a><a href="/drivers/">Drivers</a><a href="/cognitive-security/">Cognitive Security</a><a aria-current="page" href="/research/">Research</a></nav>
+</header>
+<main id="main">
+  <section class="hero">
+    <p class="eyebrow">INQUIRY / RESEARCH & DISCOURSE</p>
+    <h1>Research & Publications Explorer</h1>
+    <p class="lede">Explore research, methods, operational developments, and analytical work surfaced through the PSYWERX Daily Brief.</p>
+    <div class="stats" aria-label="Research archive summary"><div><strong id="item-total">0</strong><span>research items</span></div><div><strong id="brief-total">0</strong><span>daily briefs</span></div><div><strong id="archive-span">—</strong><span>archive span</span></div></div>
+  </section>
+  <section class="explorer" aria-labelledby="explorer-title">
+    <div class="explorer-head"><div><p class="eyebrow">EXPLORE THE ARCHIVE</p><h2 id="explorer-title">Find what matters.</h2></div><div class="view-switch" role="group" aria-label="Research view"><button class="active" type="button" data-view="items" aria-pressed="true">Research items</button><button type="button" data-view="briefs" aria-pressed="false">Daily briefs</button></div></div>
+    <div class="controls" id="explorer-controls">
+      <label class="search"><span>Search</span><input id="search" type="search" placeholder="Search findings, methods, topics, or sources…" autocomplete="off"></label>
+      <fieldset class="area-filter"><legend>Filter by area</legend><div class="chips"><button class="chip active" type="button" data-category="all" aria-pressed="true">All</button><button class="chip" type="button" data-category="behavioral-science" aria-pressed="false">Behavioral Science</button><button class="chip" type="button" data-category="technology-modeling" aria-pressed="false">Technology & Modeling</button><button class="chip" type="button" data-category="operations-strategy" aria-pressed="false">Operations & Strategy</button><button class="chip" type="button" data-category="application-analysis" aria-pressed="false">Application & Analysis</button></div></fieldset>
+      <fieldset class="date-filter"><legend>Daily Brief date</legend><div class="date-fields"><label><span>From</span><input id="date-from" type="date"></label><label><span>To</span><input id="date-to" type="date"></label></div></fieldset>
+      <div class="filter-actions"><button id="clear-filters" class="clear-button" type="button">Clear filters</button><span id="filter-note">Filters apply to both research items and Daily Briefs.</span></div>
+    </div>
+    <div class="archive-summary" aria-label="Current research selection"><div><strong id="filtered-items">0</strong><span>matching items</span></div><div><strong id="filtered-briefs">0</strong><span>matching briefs</span></div><div id="category-summary" class="category-summary"></div></div>
+    <div class="toolbar"><span id="result-count" role="status" aria-live="polite"></span><span id="sort-note">Newest first</span></div>
+    <div id="items-view" class="results"></div>
+    <div id="briefs-view" class="briefs" hidden></div>
+    <div id="empty" class="empty" hidden><h3>No matching research found.</h3><p>Try a broader search, date range, or area.</p></div>
+  </section>
+</main>
+<dialog id="detail"><div class="dialog-inner"><button id="close-detail" class="close" type="button" aria-label="Close">×</button><p id="detail-meta" class="eyebrow"></p><h2 id="detail-title"></h2><p id="detail-summary" class="dialog-summary"></p><div class="detail-grid"><section><h3>What question did they ask — and why?</h3><p id="detail-question"></p></section><section><h3>What did they do?</h3><p id="detail-did"></p></section><section><h3>What did they find?</h3><p id="detail-found"></p></section><section><h3>What does this mean?</h3><p id="detail-means"></p></section></div><div class="detail-actions"><a id="detail-source" class="source-link" target="_blank" rel="noopener noreferrer">View original source ↗</a><button id="detail-brief" type="button">View this Daily Brief →</button></div></div></dialog>
+<footer><p>PSYWERX · Behavioral & social science in practice</p><a href="/">Back to PSYWERX →</a></footer>
+<noscript><p class="noscript">Enable JavaScript to use search, filters, brief views, and item details.</p></noscript>
+</body>
+</html>

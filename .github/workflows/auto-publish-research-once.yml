@@ -1,0 +1,90 @@
+name: One-time research auto-publish migration
+
+on:
+  push:
+    branches: [auto-publish-research]
+    paths: ['.github/workflows/auto-publish-research-once.yml']
+
+permissions:
+  contents: write
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: auto-publish-research
+          fetch-depth: 0
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+      - name: Convert research pipeline to automatic publication
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+
+          p = Path('homepage/tools/research_stream.py')
+          s = p.read_text(encoding='utf-8')
+          s = s.replace('DECISIONS = ("pending", "publish", "hold", "reject")', 'DECISIONS = ("publish", "hold", "reject")')
+          s = s.replace('''        if raw["streamDecision"] != "pending":\n            raise ResearchStreamError(f"{label}.streamDecision must be pending")''', '''        if raw["streamDecision"] not in ("pending", "publish"):\n            raise ResearchStreamError(f"{label}.streamDecision must be publish (legacy pending is accepted for archived handoffs)")''')
+          s = s.replace('''        item[field] = _text(item[field], f"{label}.{field}")\n        item["sourcePublishedAt"]''', '''        item[field] = _text(item[field], f"{label}.{field}")\n        item["streamDecision"] = "publish"\n        item["sourcePublishedAt"]''')
+          old = '''        "sourceVerified": item["sourceVerified"],\n        "streamDecision": "pending",\n        "decisionDate": None,\n        "publishedAt": None,\n        "reviewRequired": False,'''
+          new = '''        "sourceVerified": item["sourceVerified"],\n        "streamDecision": "publish" if item["sourceVerified"] else "hold",\n        "decisionDate": item["briefDate"],\n        "publishedAt": item["briefDate"] if item["sourceVerified"] else None,\n        "reviewRequired": False,'''
+          if old not in s: raise SystemExit('incoming record marker not found')
+          s = s.replace(old, new)
+          old = '''    if decision == "pending" and (decision_date is not None or published_at is not None):\n        raise ResearchStreamError("pending records cannot have decisionDate or publishedAt")\n    if decision == "publish" and (decision_date is None or published_at is None):'''
+          new = '''    if decision == "publish" and (decision_date is None or published_at is None):'''
+          if old not in s: raise SystemExit('pending validation marker not found')
+          s = s.replace(old, new)
+          s = s.replace('    return record["sourceVerified"] is True and record["streamDecision"] not in ("hold", "reject")', '    return record["sourceVerified"] is True and record["streamDecision"] == "publish"')
+          p.write_text(s, encoding='utf-8', newline='\n')
+
+          db = Path('data/research-stream')
+          for path in [db/'research_items.jsonl', *sorted((db/'archive').glob('*.jsonl'))]:
+              if not path.exists(): continue
+              out=[]
+              for line in path.read_text(encoding='utf-8').splitlines():
+                  if not line.strip(): continue
+                  r=json.loads(line)
+                  if r.get('streamDecision') == 'pending':
+                      if r.get('sourceVerified') is True:
+                          r['streamDecision']='publish'
+                          r['decisionDate']=r['firstSeenBriefDate']
+                          r['publishedAt']=r['firstSeenBriefDate']
+                      else:
+                          r['streamDecision']='hold'
+                          r['decisionDate']=r['firstSeenBriefDate']
+                          r['publishedAt']=None
+                      r['reviewRequired']=False
+                  out.append(json.dumps(r, ensure_ascii=False, separators=(',',':')))
+              path.write_text('\n'.join(out)+('\n' if out else ''), encoding='utf-8', newline='\n')
+
+          t = Path('tests/test_research_stream.py')
+          x = t.read_text(encoding='utf-8')
+          x = x.replace('"streamDecision": "pending",', '"streamDecision": "publish",')
+          x = x.replace('self.assertEqual(normalized["items"][0]["streamDecision"], "pending")', 'self.assertEqual(normalized["items"][0]["streamDecision"], "publish")')
+          x = x.replace('self.assertEqual(record["streamDecision"], "pending")', 'self.assertEqual(record["streamDecision"], "publish")')
+          t.write_text(x, encoding='utf-8', newline='\n')
+
+          h = Path('homepage/tools/build_homepage.py')
+          y = h.read_text(encoding='utf-8').replace('Owner-selected Morning Brief items', 'Verified PSYWERX Daily Brief items')
+          h.write_text(y, encoding='utf-8', newline='\n')
+          tpl = Path('homepage/src/homepage.template.html')
+          z = tpl.read_text(encoding='utf-8').replace('Owner-selected research, developments, and ideas worth watching.', 'Verified research, developments, methods, and ideas surfaced through the PSYWERX Daily Brief.')
+          tpl.write_text(z, encoding='utf-8', newline='\n')
+          PY
+          python homepage/tools/build_research_stream.py
+          python homepage/tools/build_research_explorer.py
+          python homepage/tools/build_homepage.py --mode preview --tool-links preview
+          python homepage/tools/build_homepage.py --mode release --tool-links local --output .
+      - name: Commit migration
+        shell: bash
+        run: |
+          git config user.name 'PSYWERX Research Bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add homepage tests data/research-stream index.html assets homepage-preview robots.txt sitemap.xml
+          git commit -m 'Make Daily Brief research auto-publish' || exit 0
+          git push origin auto-publish-research

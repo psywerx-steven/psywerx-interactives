@@ -1,29 +1,29 @@
-# Preserve the current site while preparing the homepage
+# Homepage launch migration boundary
 
-This package does not authorize switching DNS or replacing the live root redirect.
+This launch candidate is limited to version-controlled preparation. It does not authorize external DNS changes, Super changes, GitHub Pages configuration, redirect-service deployment, or a production merge.
 
-## Preview phase
+## Repository boundary
 
-Integrate into an isolated feature branch and preview directory. Do not alter existing driver/cognitive-security data, application scripts, root CNAME, Pages settings, publishing workflow, DNS, MX/TXT records, or the old Super/Notion site. Main has newer work beyond the historical PR #8 checkpoint; fetch and preserve it.
+- The approved homepage is generated at the repository root with same-site `/drivers/` and `/cognitive-security/` links.
+- `homepage-preview/` remains a generated noindex design/QA surface.
+- Driver and Cognitive Security application code, data, IDs, methodology, and governed semantics remain outside the homepage migration.
+- The checked-in `CNAME` remains `drivers.psywerx.io` until a coordinated cutover commit.
+- The existing Super homepage and current Explorer host remain live until production acceptance succeeds.
 
-A safe candidate staging location is `homepage-preview/`, with the supplied `site/` contents beneath it. The existing root redirect remains unchanged. The two live tool URLs remain absolute current URLs in preview mode.
+## Super retirement decision
 
-## Separate launch phase — requires explicit approval
+The owner has explicitly authorized retirement of the 98 secondary Super/Notion pages. They will not be migrated, recreated, individually redirected, given a special 404, or treated as a launch dependency. `CURRENT_SITE_INVENTORY.md` remains only as a historical and rollback snapshot.
 
-After visual, content, accessibility, and integration review:
+Do not delete or disable the Super site before the new apex homepage passes the production acceptance window. After acceptance, the obsolete secondary content and Super site may be retired by the owner.
 
-- Inventory current Super pages and important public URLs; do not lose useful content by moving only the screenshot.
-- Back up site and DNS configuration.
-- Plan the site root homepage and clean `/drivers/` and `/cognitive-security/` paths.
-- Rebuild with local tool paths at the eventual root.
-- Verify the apex domain and configure Pages/custom-domain settings through the supported process.
-- Make the corresponding DNS changes, preserve mail and verification records, check TLS, and test the whole site.
-- Retain a rollback route to the former site until cutover is validated.
+## Research stream boundary
 
-## Old subdomain links need an explicit plan
+Every Morning Brief item enters the canonical JSONL database whether or not it is selected for the homepage. The database is not a causal model and does not require Driver, mechanism, pathway, intervention-chain, or ontology representation.
 
-`drivers.psywerx.io` cannot be assumed to remain a supported alias automatically after the Pages custom domain is changed. DNS alone cannot perform a path-preserving HTTP redirect, and one Pages CNAME cannot list both hostnames.
+All new records begin pending. Only an explicit evening owner decision makes a record eligible for the public stream. Hold and reject retain the record in the database. The public homepage receives an allowlisted, paginated projection and never exposes the four substantive research notes or private source-system metadata.
 
-Keep the old domain only through a deliberately configured redirect host/service with valid HTTPS. Preserve paths and query strings, and handle its root specially: old `drivers.psywerx.io/` should resolve to the Drivers Explorer, not unexpectedly to the new PSYWERX homepage. Existing cognitive-security links on that subdomain must retain their cognitive-security path.
+No Google Drive connector, credential, private document identifier, backend, or automated publication transition is part of this launch candidate.
 
-Do not attempt this cutover in the initial design PR. A later migration plan should name the actual DNS provider, redirect mechanism, verification steps, and rollback procedure.
+## Legacy Explorer-host boundary
+
+`drivers.psywerx.io` requires a deliberately configured HTTPS redirect service after Pages moves to the apex. DNS alone cannot preserve paths. The checked-in handler retains Driver and Cognitive Security paths and queries, with old-host `/` routed to `/drivers/`. Deployment and DNS attachment remain cutover actions.
