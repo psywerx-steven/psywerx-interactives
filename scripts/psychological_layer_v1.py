@@ -22,6 +22,7 @@ BASELINE = "de38b3948f511602af7aa94a9cd80b78e1a00298"
 PROGRAM = "AUD-PSYCHOLOGICAL-LAYER-AE-V1-20260907-001"
 GOVERNANCE_RECOMMENDATION_COMMIT = "5675780b7c36c788f222617810bfd07ee64ebfba"
 GOVERNANCE_DECISION = "GOV-PSYCHOLOGICAL-LAYER-001-2026-09-17"
+ACTIVATION_DECISION = "GOV-PSYCHOLOGICAL-LAYER-ACTIVATION-001-2026-09-18"
 STORE = ROOT / "data/candidates/actions-events-v1/PSYCHOLOGICAL_LAYER"
 DOCS = ROOT / "docs/governance/scale-up/PSYCHOLOGICAL_LAYER"
 REPORT = ROOT / "reports/actions-events-v1/psychological-layer-v1"
@@ -101,7 +102,10 @@ def _authorized_addition_only(path, expected_hash):
         current["happeningTypes"] = [x for x in current["happeningTypes"] if not x["id"].startswith("HT-V1-PSY-LAYER-")]
         current["effectAssertions"] = [x for x in current["effectAssertions"] if not x["id"].startswith("EA-V1-PSY-LAYER-")]
         current["evidenceAssessments"] = [x for x in current["evidenceAssessments"] if not x["id"].startswith("EVA-AE-V1-PSY-LAYER-")]
-        current["authorizations"] = [x for x in current["authorizations"] if x["decisionId"] != GOVERNANCE_DECISION]
+        current["authorizations"] = [
+            x for x in current["authorizations"]
+            if x["decisionId"] not in {GOVERNANCE_DECISION, ACTIVATION_DECISION}
+        ]
     elif path.endswith("/relationships.json"):
         current["relationships"] = [x for x in current["relationships"] if not x["id"].startswith("REL-V1-PSY-LAYER-")]
     elif path.endswith("/evidence-assessments.json"):

@@ -187,7 +187,12 @@ class InfF03Activation001Tests(unittest.TestCase):
         counts = ri.validate_repository()
         self.assertEqual((counts["entities"], counts["activeRelationships"], counts["activeCausalRelationships"]), (811, 457, 436))
         self.assertEqual((len(load(ROOT / "data/drivers.json")), len(load(ROOT / "data/relational-derived-states.json"))), (770, 41))
-        self.assertEqual(ae.validate_catalog(self.catalog)["active"], 3)
+        active_inf = {
+            row["id"] for row in ae.all_records(self.catalog)
+            if "INF-F03" in row["id"] and row["governance"]["activationStatus"] == "ACTIVE"
+        }
+        self.assertEqual(active_inf, {"EVA-AE-V1-INF-F03-002", "HT-V1-INF-F03-002", "EA-V1-INF-F03-002"})
+        self.assertEqual(ae.validate_catalog(self.catalog)["active"], 21)
         self.assertEqual(self.manifest["newActiveRecords"], 5)
 
     def test_activation_authorization_hashes_are_exact(self):

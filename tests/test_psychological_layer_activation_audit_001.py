@@ -42,7 +42,8 @@ class PsychologicalLayerActivationAudit001Tests(unittest.TestCase):
         self.assertEqual(len(self.records), 45)
         self.assertEqual({x["id"] for x in self.records}, {x["id"] for x in self.audit["recommendations"]})
         self.assertTrue(all(x["governance"]["lifecycleStatus"] == "GOVERNED" for x in self.records))
-        self.assertTrue(all(x["governance"]["activationStatus"] == "INACTIVE" for x in self.records))
+        self.assertEqual(sum(x["governance"]["activationStatus"] == "ACTIVE" for x in self.records), 18)
+        self.assertEqual(sum(x["governance"]["activationStatus"] == "INACTIVE" for x in self.records), 27)
         self.assertTrue(self.audit["auditOnly"])
         self.assertFalse(self.audit["activationAuthorized"])
         self.assertEqual(self.audit["statusChanges"], 0)
@@ -136,12 +137,14 @@ class PsychologicalLayerActivationAudit001Tests(unittest.TestCase):
         })
         self.assertFalse(self.audit["rdsSafety"]["newTargetSemantics"])
 
-    def test_production_counts_and_validation_remain_unchanged(self):
+    def test_relationship_counts_unchanged_and_catalog_valid(self):
         result = ri.validate_repository()
         self.assertEqual((result["activeRelationships"], result["activeCausalRelationships"]), (457, 436))
         self.assertEqual(self.audit["productionCounts"]["newActive"], 0)
         context = ae.Context.repository()
-        self.assertEqual(ae.validate_catalog(self.catalog, context)["statusChanges"], 0)
+        result = ae.validate_catalog(self.catalog, context)
+        self.assertEqual(result["statusChanges"], 0)
+        self.assertGreaterEqual(result["active"], 18)
 
     def test_builder_is_deterministic_and_read_only(self):
         before = {x["id"]: x for x in self.records}
@@ -159,18 +162,13 @@ class PsychologicalLayerActivationAudit001Tests(unittest.TestCase):
         )
         self.assertEqual(before, {x["id"]: x for x in after_records})
 
-    def test_only_audit_outputs_differ_from_merged_main(self):
-        base = subprocess.check_output([
-            "git", "merge-base", "HEAD", "origin/main",
-        ], cwd=ROOT, text=True).strip()
-        changed = subprocess.check_output([
-            "git", "diff", "--name-only", base, "HEAD", "--",
-            "data", "docs", "schemas",
-        ], cwd=ROOT, text=True).splitlines()
-        self.assertEqual(set(changed), {
+    def test_historical_audit_outputs_unchanged_by_activation(self):
+        for relative in (
             "docs/governance/scale-up/PSYCHOLOGICAL_LAYER/PSYCHOLOGICAL_LAYER_ACTIVATION_AUDIT_001.json",
             "docs/governance/scale-up/PSYCHOLOGICAL_LAYER/PSYCHOLOGICAL_LAYER_ACTIVATION_AUDIT_001.md",
-        })
+        ):
+            before = subprocess.check_output(["git", "show", f"d7bb61b0e139e93b874c6aa9844dbfffb94bc97a:{relative}"], cwd=ROOT)
+            self.assertEqual((ROOT / relative).read_bytes().replace(b"\r\n", b"\n"), before.replace(b"\r\n", b"\n"))
 
     def test_human_document_states_no_activation(self):
         text = (DOC / "PSYCHOLOGICAL_LAYER_ACTIVATION_AUDIT_001.md").read_text(encoding="utf-8")

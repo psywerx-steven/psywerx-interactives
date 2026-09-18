@@ -15,6 +15,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 import actions_events_v1 as ae
 import materialize_psychological_layer_governance_001 as materialize
+import materialize_psychological_layer_activation_001 as activation
 import relationship_intervention_v1 as ri
 import source_verification_v1 as sv
 
@@ -37,7 +38,7 @@ class PsychologicalLayerMaterializationTests(unittest.TestCase):
         cls.manifest = read(ROOT / "data/actions-events-v1/PSYCHOLOGICAL_LAYER-materialization-manifest.json")
         cls.decision = read(DATA / "governance-decision-001.json")
 
-    def test_exact_governed_inactive_counts(self):
+    def test_exact_governed_counts_after_partial_activation(self):
         groups = {
             "relationships": [x for x in self.relationships if x["id"].startswith("REL-V1-PSY-LAYER-")],
             "happeningTypes": [x for x in self.catalog["happeningTypes"] if x["id"].startswith("HT-V1-PSY-LAYER-")],
@@ -48,8 +49,8 @@ class PsychologicalLayerMaterializationTests(unittest.TestCase):
         records = [x for values in groups.values() for x in values]
         self.assertEqual(len(records), 45)
         self.assertTrue(all(x["governance"]["lifecycleStatus"] == "GOVERNED" for x in records))
-        self.assertTrue(all(x["governance"]["activationStatus"] == "INACTIVE" for x in records))
-        self.assertEqual(sum(x["governance"]["activationStatus"] == "ACTIVE" for x in records), 0)
+        self.assertEqual(sum(x["governance"]["activationStatus"] == "ACTIVE" for x in records), 18)
+        self.assertEqual(sum(x["governance"]["activationStatus"] == "INACTIVE" for x in records), 27)
 
     def test_canonical_ids_and_lineage_are_exact(self):
         ids = self.manifest["canonicalIds"]
@@ -164,17 +165,16 @@ class PsychologicalLayerMaterializationTests(unittest.TestCase):
         validated = ae.validate_catalog(self.catalog, context)
         self.assertEqual(validated["statusChanges"], 0)
         psychological = [x for key in ("happeningTypes", "effectAssertions", "evidenceAssessments") for x in self.catalog[key] if "-PSY-LAYER-" in x["id"]]
-        self.assertEqual(sum(x["governance"]["activationStatus"] == "ACTIVE" for x in psychological), 0)
+        self.assertEqual(sum(x["governance"]["activationStatus"] == "ACTIVE" for x in psychological), 18)
 
-    def test_materializer_is_deterministic(self):
+    def test_activation_materializer_is_deterministic(self):
         outputs = [
-            materialize.AE_CATALOG, materialize.RI_RELATIONSHIPS, materialize.RI_EVIDENCE,
-            materialize.RI_SOURCES, materialize.RI_FINDINGS, materialize.MATERIALIZATION_MANIFEST,
-            materialize.SOURCE_MANIFEST, materialize.DECISION_DATA, materialize.DECISION_DOC,
+            activation.CATALOG_PATH, activation.MANIFEST_PATH,
+            activation.DECISION_DATA_PATH, activation.DECISION_DOC,
         ]
         normalized = lambda path: path.read_bytes().replace(b"\r\n", b"\n")
         before = {path: normalized(path) for path in outputs}
-        materialize.materialize()
+        activation.materialize()
         self.assertEqual(before, {path: normalized(path) for path in outputs})
 
 

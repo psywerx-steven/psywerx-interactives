@@ -33,6 +33,7 @@ DECISION_DATA = CANDIDATE / "governance-decision-001.json"
 
 PROGRAM = "AUD-PSYCHOLOGICAL-LAYER-AE-V1-20260907-001"
 DECISION = "GOV-PSYCHOLOGICAL-LAYER-001-2026-09-17"
+ACTIVATION_DECISION = "GOV-PSYCHOLOGICAL-LAYER-ACTIVATION-001-2026-09-18"
 DECISION_PATH = "docs/governance/scale-up/PSYCHOLOGICAL_LAYER/PSYCHOLOGICAL_LAYER_GOVERNANCE_DECISION_001.md"
 DECISION_DOC = ROOT / DECISION_PATH
 BASELINE = "de38b3948f511602af7aa94a9cd80b78e1a00298"
@@ -460,7 +461,10 @@ def strip_materialization(path: str, current: dict) -> dict:
         result["happeningTypes"] = [x for x in result["happeningTypes"] if not x["id"].startswith("HT-V1-PSY-LAYER-")]
         result["effectAssertions"] = [x for x in result["effectAssertions"] if not x["id"].startswith("EA-V1-PSY-LAYER-")]
         result["evidenceAssessments"] = [x for x in result["evidenceAssessments"] if not x["id"].startswith("EVA-AE-V1-PSY-LAYER-")]
-        result["authorizations"] = [x for x in result["authorizations"] if x["decisionId"] != DECISION]
+        result["authorizations"] = [
+            x for x in result["authorizations"]
+            if x["decisionId"] not in {DECISION, ACTIVATION_DECISION}
+        ]
     elif path == "data/relationship-intervention-v1/relationships.json":
         result["relationships"] = [x for x in result["relationships"] if not x["id"].startswith("REL-V1-PSY-LAYER-")]
     elif path == "data/relationship-intervention-v1/evidence-assessments.json":
