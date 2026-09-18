@@ -239,10 +239,18 @@ class InfF03Governance001Tests(unittest.TestCase):
             [row["id"] for row in ri.causal_traversal([row for row in self.ri_relationships if row["id"] in RELATIONSHIP_IDS])],
             ["REL-V1-INF-F03-001"],
         )
-        self.assertEqual(ae.validate_catalog(self.ae_catalog)["active"], 3)
+        active_inf = {
+            row["id"] for row in ae.all_records(self.ae_catalog)
+            if "INF-F03" in row["id"] and row["governance"]["activationStatus"] == "ACTIVE"
+        }
+        self.assertEqual(active_inf, {"EVA-AE-V1-INF-F03-002", "HT-V1-INF-F03-002", "EA-V1-INF-F03-002"})
+        self.assertEqual(ae.validate_catalog(self.ae_catalog)["active"], 21)
         for effect in self.ae_catalog["effectAssertions"]:
             eligibility = ae.use_eligibility(effect["id"], self.ae_catalog)
-            self.assertEqual(eligibility["scientificUseEligibility"]["eligible"], effect["id"] == "EA-V1-INF-F03-002")
+            self.assertEqual(
+                eligibility["scientificUseEligibility"]["eligible"],
+                effect["governance"]["activationStatus"] == "ACTIVE",
+            )
             self.assertFalse(eligibility["practitionerActionEligibility"]["eligible"])
 
     def test_candidate_to_canonical_lineage_is_exact(self):

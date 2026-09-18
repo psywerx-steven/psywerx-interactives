@@ -1,55 +1,53 @@
-# Psychological Layer candidate handoff
+# Psychological Layer handoff
 
-All fourteen Family audits, Layer reconciliation and sampled skeptical review
-are complete. [PR #24](https://github.com/psywerx-steven/psywerx-interactives/pull/24)
-is the single candidate-only PR. **Do not merge, govern or activate it.**
+The Psychological Layer scientific audit, governance, governed materialization,
+and authorized partial activation are complete. The original candidate audit and
+the read-only activation audit remain preserved as historical evidence.
 
-Start with the [human governance index](PSYCHOLOGICAL_LAYER_GOVERNANCE_INDEX.md).
-It contains 595 review rows, including ledger/shared questions, not 595
-independent scientific claims. All decisions are PENDING.
+## Current production state
 
-## Exact checkpoints
+- Six evidence-first Actions & Events bundles are `GOVERNED / ACTIVE`.
+- Exact active totals: six EvidenceAssessments, six HappeningTypes, and six
+  EffectAssertions (18 records).
+- No Psychological Relationship is active.
+- The repetition Relationship/effect bundle remains `GOVERNED / INACTIVE` and
+  blocked as one shared contribution under `BLK-PSY-003`.
+- Twenty-two identity-only HappeningTypes remain `GOVERNED / INACTIVE`; this is
+  not a scientific rejection.
+- `BLK-PSY-001`, `BLK-PSY-002`, and `BLK-PSY-003` remain unresolved.
 
-- Frozen main: `de38b3948f511602af7aa94a9cd80b78e1a00298`.
-- All Family work: `d43a2c0c422ed19d310c01380813982a9959f890`.
-- Layer reconciliation: `a3b9231cf827952ed76ef3ad932d934850243c71`.
-- Full-diff formatting safeguard: `25eefef85e4c47aa1eb263f57afdfba8648225f0`.
-- Branch: `scale-up/psychological-layer-v1`; the PR supplies the final closing
-  commit SHA without embedding a self-referential hash in this document.
+The active bundles are explanatory refutation, response-contingent control,
+virtual ostracism, bounded choice, retrieval practice, and a high-control health
+message. Each retains its governed population, task, timing, referent, null,
+contrary, mixed-evidence, and transfer boundaries. Activation creates no numeric
+causal weight, effect size, practitioner recommendation, legal/ethical approval,
+universal applicability, or downstream propagation authority.
 
-## Counts and eligibility
+## Durable decisions
 
-134 Drivers and one RDS (PSY-078), 135 entities; 111 unique existing causal
-propositions reviewed once. One new Relationship candidate, 29 HappeningTypes,
-30 EffectAssertions and 31 EvidenceAssessments. These 91 formal records comprise
-45 REVIEW_READY and 46 RESEARCH_NEEDED records. Separately, 63 proposal envelopes
-are RESEARCH_NEEDED, including prior-proposal references rather than replacement
-scientific claims. Across lifecycle-bearing candidate/proposal envelopes:
-45 REVIEW_READY, 109 RESEARCH_NEEDED, zero CANDIDATE, zero GOVERNED, zero ACTIVE.
+- Scientific governance: `GOV-PSYCHOLOGICAL-LAYER-001-2026-09-17`.
+- Historical activation audit:
+  `AUD-PSYCHOLOGICAL-LAYER-ACTIVATION-V1-20260917-001`.
+- Partial activation:
+  `GOV-PSYCHOLOGICAL-LAYER-ACTIVATION-001-2026-09-18`.
+- Candidate baseline: `5675780b7c36c788f222617810bfd07ee64ebfba`.
+- Audited pre-activation head: `d7bb61b0e139e93b874c6aa9844dbfffb94bc97a`.
 
-Six blocked hypotheses plus two blocked shared questions and two architecture
-escalations are separate ledger entries. The 105 nested sourceFindings inherit
-their assessment's non-governed status and represent 100 unique result extractions.
-No source was registered canonically. All formal candidates remain NOT_ELIGIBLE.
+See [the activation decision](PSYCHOLOGICAL_LAYER_ACTIVATION_DECISION_001.md),
+[the historical activation audit](PSYCHOLOGICAL_LAYER_ACTIVATION_AUDIT_001.md),
+and [the scientific governance decision](PSYCHOLOGICAL_LAYER_GOVERNANCE_DECISION_001.md).
 
-Production stays 770 Drivers / 41 RDS / 811 entities / 457 active Relationships /
-436 active causal Relationships. All 191 protected files match; BIO-F01, INF-F03,
-SOC-F07 and Network State V1 remain unchanged.
+## Deferred science
 
-## Validation and stop boundary
+- 57 revision-review, 5 retype-review, and 2 split-review proposals remain
+  unimplemented.
+- 36 existing Relationships remain research-needed.
+- 23 EffectAssertions remain `RESEARCH_NEEDED / NOT_ELIGIBLE`.
+- 151 rejected hypotheses and 209 research-needed hypotheses remain preserved.
+- Existing production Relationship propositions, ontology definitions,
+  classifications, target semantics, sources, prior pilots, and Network State V1
+  remain unchanged.
 
-The complete local required suite ran 610 Python tests (two repository-defined
-skips) and 21 scenario-service tests. Schema, source, lifecycle, RDS, ownership,
-isolation, deterministic generation, compilation, 21 JavaScript parses, local
-links and protected comparisons passed. Final reporting corrections passed the
-19 closeout tests again; complete-branch whitespace check is required.
-
-Exact-final-head Linux and Windows CI must be green. Their authoritative result
-is attached to PR #24; an earlier passing commit is not a substitute. This file
-does not predict a CI outcome. If interrupted, verify the PR's actual head/checks
-before repeating work. No new Family or Layer research remains authorized here.
-
-Highest-priority human questions: feature/dimension scope, PSY-130 state/trait
-meaning, source identity/alignment backlog, exact REVIEW_READY boundaries and
-the 64 existing revision/retype/split recommendations. No proposed change has
-been implemented in production.
+No additional Layer research has begun. The next authorized activity after this
+closeout is mechanical readiness planning; starting another full Layer requires a
+separate consequential human decision.

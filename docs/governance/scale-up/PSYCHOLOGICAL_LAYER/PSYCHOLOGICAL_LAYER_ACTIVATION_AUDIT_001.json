@@ -1,0 +1,673 @@
+{
+  "schemaVersion": "1.0.0",
+  "auditId": "AUD-PSYCHOLOGICAL-LAYER-ACTIVATION-V1-20260917-001",
+  "programId": "AUD-PSYCHOLOGICAL-LAYER-AE-V1-20260907-001",
+  "governanceDecisionId": "GOV-PSYCHOLOGICAL-LAYER-001-2026-09-17",
+  "materializationMerge": "5e9a8ce241d7f4dc29845c50063c95530fd49a14",
+  "auditedMain": "5e9a8ce241d7f4dc29845c50063c95530fd49a14",
+  "date": "2026-09-17",
+  "auditOnly": true,
+  "activationAuthorized": false,
+  "statusChanges": 0,
+  "counts": {
+    "audited": 45,
+    "readyForActivationReview": 18,
+    "keepInactive": 22,
+    "blocked": 5,
+    "newActive": 0
+  },
+  "recommendations": [
+    {
+      "id": "REL-V1-PSY-LAYER-001",
+      "type": "RELATIONSHIP",
+      "currentStatus": "GOVERNED/INACTIVE",
+      "recommendation": "BLOCKED",
+      "dependencies": [
+        "EVA-V1-PSY-LAYER-REL-001",
+        "EA-V1-PSY-LAYER-001"
+      ],
+      "blockers": [
+        "BLK-PSY-003",
+        "SHARED-CONTRIBUTION-PSY-001"
+      ],
+      "reason": "The exact proposition is governed and source-resolved, but its exposure contribution duplicates EA-001 and current active-consumer semantics do not enforce the one-contribution rule; activation also intersects the unresolved PSY-003/PSY-116 classification boundary."
+    },
+    {
+      "id": "EVA-V1-PSY-LAYER-REL-001",
+      "type": "EVIDENCE_ASSESSMENT",
+      "currentStatus": "GOVERNED/INACTIVE",
+      "recommendation": "BLOCKED",
+      "dependencies": [
+        "SRC-433",
+        "SRC-560",
+        "SRC-562",
+        "SRC-603",
+        "REL-V1-PSY-LAYER-001"
+      ],
+      "blockers": [
+        "SHARED-CONTRIBUTION-PSY-001"
+      ],
+      "reason": "The MIXED/MODERATE synthesis is scientifically usable, but activation must follow a selected non-duplicative assertion representation."
+    },
+    {
+      "id": "HT-V1-PSY-LAYER-001",
+      "type": "HAPPENING_TYPE",
+      "currentStatus": "GOVERNED/INACTIVE",
+      "recommendation": "BLOCKED",
+      "dependencies": [
+        "EA-V1-PSY-LAYER-001"
+      ],
+      "blockers": [
+        "SHARED-CONTRIBUTION-PSY-001"
+      ],
+      "reason": "This deliberate identity has only the blocked repetition EffectAssertion and must not activate without an active non-duplicative effect."
+    },
+    {
+      "id": "HT-V1-PSY-LAYER-002",
+      "type": "HAPPENING_TYPE",
+      "currentStatus": "GOVERNED/INACTIVE",
+      "recommendation": "READY_FOR_ACTIVATION_REVIEW",
+      "dependencies": [
+        "EA-V1-PSY-LAYER-002"
+      ],
+      "blockers": [],
+      "reason": "Reusable identity is exact and source-provenanced; active meaning is clear only in the atomic deliberate type/effect bundle. Identity activation implies no efficacy or practitioner permission."
+    },
+    {
+      "id": "HT-V1-PSY-LAYER-003",
+      "type": "HAPPENING_TYPE",
+      "currentStatus": "GOVERNED/INACTIVE",
+      "recommendation": "READY_FOR_ACTIVATION_REVIEW",
+      "dependencies": [
+        "EA-V1-PSY-LAYER-003"
+      ],
+      "blockers": [],
+      "reason": "Reusable identity is exact and source-provenanced; active meaning is clear only in the atomic deliberate type/effect bundle. Identity activation implies no efficacy or practitioner permission."
+    },
+    {
+      "id": "HT-V1-PSY-LAYER-004",
+      "type": "HAPPENING_TYPE",
+      "currentStatus": "GOVERNED/INACTIVE",
+      "recommendation": "READY_FOR_ACTIVATION_REVIEW",
+      "dependencies": [
+        "EA-V1-PSY-LAYER-005"
+      ],
+      "blockers": [],
+      "reason": "Reusable identity is exact and source-provenanced; active meaning is clear only in the atomic deliberate type/effect bundle. Identity activation implies no efficacy or practitioner permission."
+    },
+    {
+      "id": "HT-V1-PSY-LAYER-005",
+      "type": "HAPPENING_TYPE",
+      "currentStatus": "GOVERNED/INACTIVE",
+      "recommendation": "KEEP_INACTIVE",
+      "dependencies": [],
+      "blockers": [],
+      "reason": "Governed identity remains valid, but it has no governed EffectAssertion. Active status would add no supported production effect meaning and deliberate identities fail the active-effect dependency rule."
+    },
+    {
+      "id": "HT-V1-PSY-LAYER-006",
+      "type": "HAPPENING_TYPE",
+      "currentStatus": "GOVERNED/INACTIVE",
+      "recommendation": "READY_FOR_ACTIVATION_REVIEW",
+      "dependencies": [
+        "EA-V1-PSY-LAYER-007"
+      ],
+      "blockers": [],
+      "reason": "Reusable identity is exact and source-provenanced; active meaning is clear only in the atomic deliberate type/effect bundle. Identity activation implies no efficacy or practitioner permission."
+    },
+    {
+      "id": "HT-V1-PSY-LAYER-007",
+      "type": "HAPPENING_TYPE",
+      "currentStatus": "GOVERNED/INACTIVE",
+      "recommendation": "KEEP_INACTIVE",
+      "dependencies": [],
+      "blockers": [],
+      "reason": "Governed identity remains valid, but it has no governed EffectAssertion. Active status would add no supported production effect meaning and deliberate identities fail the active-effect dependency rule."
+    },
+    {
+      "id": "HT-V1-PSY-LAYER-008",
+      "type": "HAPPENING_TYPE",
+      "currentStatus": "GOVERNED/INACTIVE",
+      "recommendation": "KEEP_INACTIVE",
+      "dependencies": [],
+      "blockers": [],
+      "reason": "Governed identity remains valid, but it has no governed EffectAssertion. Active status would add no supported production effect meaning and deliberate identities fail the active-effect dependency rule."
+    },
+    {
+      "id": "HT-V1-PSY-LAYER-009",
+      "type": "HAPPENING_TYPE",
+      "currentStatus": "GOVERNED/INACTIVE",
+      "recommendation": "KEEP_INACTIVE",
+      "dependencies": [],
+      "blockers": [],
+      "reason": "Governed identity remains valid, but it has no governed EffectAssertion. Active status would add no supported production effect meaning and deliberate identities fail the active-effect dependency rule."
+    },
+    {
+      "id": "HT-V1-PSY-LAYER-010",
+      "type": "HAPPENING_TYPE",
+      "currentStatus": "GOVERNED/INACTIVE",
+      "recommendation": "KEEP_INACTIVE",
+      "dependencies": [],
+      "blockers": [],
+      "reason": "Governed identity remains valid, but it has no governed EffectAssertion. Active status would add no supported production effect meaning and deliberate identities fail the active-effect dependency rule."
+    },
+    {
+      "id": "HT-V1-PSY-LAYER-011",
+      "type": "HAPPENING_TYPE",
+      "currentStatus": "GOVERNED/INACTIVE",
+      "recommendation": "READY_FOR_ACTIVATION_REVIEW",
+      "dependencies": [
+        "EA-V1-PSY-LAYER-012"
+      ],
+      "blockers": [],
+      "reason": "Reusable identity is exact and source-provenanced; active meaning is clear only in the atomic deliberate type/effect bundle. Identity activation implies no efficacy or practitioner permission."
+    },
+    {
+      "id": "HT-V1-PSY-LAYER-012",
+      "type": "HAPPENING_TYPE",
+      "currentStatus": "GOVERNED/INACTIVE",
+      "recommendation": "KEEP_INACTIVE",
+      "dependencies": [],
+      "blockers": [],
+      "reason": "Governed identity remains valid, but it has no governed EffectAssertion. Active status would add no supported production effect meaning and deliberate identities fail the active-effect dependency rule."
+    },
+    {
+      "id": "HT-V1-PSY-LAYER-013",
+      "type": "HAPPENING_TYPE",
+      "currentStatus": "GOVERNED/INACTIVE",
+      "recommendation": "KEEP_INACTIVE",
+      "dependencies": [],
+      "blockers": [],
+      "reason": "Governed identity remains valid, but it has no governed EffectAssertion. Active status would add no supported production effect meaning and deliberate identities fail the active-effect dependency rule."
+    },
+    {
+      "id": "HT-V1-PSY-LAYER-014",
+      "type": "HAPPENING_TYPE",
+      "currentStatus": "GOVERNED/INACTIVE",
+      "recommendation": "KEEP_INACTIVE",
+      "dependencies": [],
+      "blockers": [],
+      "reason": "Governed identity remains valid, but it has no governed EffectAssertion. Active status would add no supported production effect meaning and deliberate identities fail the active-effect dependency rule."
+    },
+    {
+      "id": "HT-V1-PSY-LAYER-015",
+      "type": "HAPPENING_TYPE",
+      "currentStatus": "GOVERNED/INACTIVE",
+      "recommendation": "KEEP_INACTIVE",
+      "dependencies": [],
+      "blockers": [],
+      "reason": "Governed identity remains valid, but it has no governed EffectAssertion. Active status would add no supported production effect meaning and deliberate identities fail the active-effect dependency rule."
+    },
+    {
+      "id": "HT-V1-PSY-LAYER-016",
+      "type": "HAPPENING_TYPE",
+      "currentStatus": "GOVERNED/INACTIVE",
+      "recommendation": "KEEP_INACTIVE",
+      "dependencies": [],
+      "blockers": [],
+      "reason": "Governed identity remains valid, but it has no governed EffectAssertion. Active status would add no supported production effect meaning and deliberate identities fail the active-effect dependency rule."
+    },
+    {
+      "id": "HT-V1-PSY-LAYER-017",
+      "type": "HAPPENING_TYPE",
+      "currentStatus": "GOVERNED/INACTIVE",
+      "recommendation": "KEEP_INACTIVE",
+      "dependencies": [],
+      "blockers": [],
+      "reason": "Governed identity remains valid, but it has no governed EffectAssertion. Active status would add no supported production effect meaning and deliberate identities fail the active-effect dependency rule."
+    },
+    {
+      "id": "HT-V1-PSY-LAYER-018",
+      "type": "HAPPENING_TYPE",
+      "currentStatus": "GOVERNED/INACTIVE",
+      "recommendation": "KEEP_INACTIVE",
+      "dependencies": [],
+      "blockers": [],
+      "reason": "Governed identity remains valid, but it has no governed EffectAssertion. Active status would add no supported production effect meaning and deliberate identities fail the active-effect dependency rule."
+    },
+    {
+      "id": "HT-V1-PSY-LAYER-019",
+      "type": "HAPPENING_TYPE",
+      "currentStatus": "GOVERNED/INACTIVE",
+      "recommendation": "KEEP_INACTIVE",
+      "dependencies": [],
+      "blockers": [],
+      "reason": "Governed identity remains valid, but it has no governed EffectAssertion. Active status would add no supported production effect meaning and deliberate identities fail the active-effect dependency rule."
+    },
+    {
+      "id": "HT-V1-PSY-LAYER-020",
+      "type": "HAPPENING_TYPE",
+      "currentStatus": "GOVERNED/INACTIVE",
+      "recommendation": "KEEP_INACTIVE",
+      "dependencies": [],
+      "blockers": [],
+      "reason": "Governed identity remains valid, but it has no governed EffectAssertion. Active status would add no supported production effect meaning and deliberate identities fail the active-effect dependency rule."
+    },
+    {
+      "id": "HT-V1-PSY-LAYER-021",
+      "type": "HAPPENING_TYPE",
+      "currentStatus": "GOVERNED/INACTIVE",
+      "recommendation": "KEEP_INACTIVE",
+      "dependencies": [],
+      "blockers": [],
+      "reason": "Governed identity remains valid, but it has no governed EffectAssertion. Active status would add no supported production effect meaning and deliberate identities fail the active-effect dependency rule."
+    },
+    {
+      "id": "HT-V1-PSY-LAYER-022",
+      "type": "HAPPENING_TYPE",
+      "currentStatus": "GOVERNED/INACTIVE",
+      "recommendation": "READY_FOR_ACTIVATION_REVIEW",
+      "dependencies": [
+        "EA-V1-PSY-LAYER-023"
+      ],
+      "blockers": [],
+      "reason": "Reusable identity is exact and source-provenanced; active meaning is clear only in the atomic deliberate type/effect bundle. Identity activation implies no efficacy or practitioner permission."
+    },
+    {
+      "id": "HT-V1-PSY-LAYER-023",
+      "type": "HAPPENING_TYPE",
+      "currentStatus": "GOVERNED/INACTIVE",
+      "recommendation": "KEEP_INACTIVE",
+      "dependencies": [],
+      "blockers": [],
+      "reason": "Governed identity remains valid, but it has no governed EffectAssertion. Active status would add no supported production effect meaning and deliberate identities fail the active-effect dependency rule."
+    },
+    {
+      "id": "HT-V1-PSY-LAYER-024",
+      "type": "HAPPENING_TYPE",
+      "currentStatus": "GOVERNED/INACTIVE",
+      "recommendation": "KEEP_INACTIVE",
+      "dependencies": [],
+      "blockers": [],
+      "reason": "Governed identity remains valid, but it has no governed EffectAssertion. Active status would add no supported production effect meaning and deliberate identities fail the active-effect dependency rule."
+    },
+    {
+      "id": "HT-V1-PSY-LAYER-025",
+      "type": "HAPPENING_TYPE",
+      "currentStatus": "GOVERNED/INACTIVE",
+      "recommendation": "KEEP_INACTIVE",
+      "dependencies": [],
+      "blockers": [],
+      "reason": "Governed identity remains valid, but it has no governed EffectAssertion. Active status would add no supported production effect meaning and deliberate identities fail the active-effect dependency rule."
+    },
+    {
+      "id": "HT-V1-PSY-LAYER-026",
+      "type": "HAPPENING_TYPE",
+      "currentStatus": "GOVERNED/INACTIVE",
+      "recommendation": "KEEP_INACTIVE",
+      "dependencies": [],
+      "blockers": [],
+      "reason": "Governed identity remains valid, but it has no governed EffectAssertion. Active status would add no supported production effect meaning and deliberate identities fail the active-effect dependency rule."
+    },
+    {
+      "id": "HT-V1-PSY-LAYER-027",
+      "type": "HAPPENING_TYPE",
+      "currentStatus": "GOVERNED/INACTIVE",
+      "recommendation": "KEEP_INACTIVE",
+      "dependencies": [],
+      "blockers": [],
+      "reason": "Governed identity remains valid, but it has no governed EffectAssertion. Active status would add no supported production effect meaning and deliberate identities fail the active-effect dependency rule."
+    },
+    {
+      "id": "HT-V1-PSY-LAYER-028",
+      "type": "HAPPENING_TYPE",
+      "currentStatus": "GOVERNED/INACTIVE",
+      "recommendation": "KEEP_INACTIVE",
+      "dependencies": [],
+      "blockers": [],
+      "reason": "Governed identity remains valid, but it has no governed EffectAssertion. Active status would add no supported production effect meaning and deliberate identities fail the active-effect dependency rule."
+    },
+    {
+      "id": "HT-V1-PSY-LAYER-029",
+      "type": "HAPPENING_TYPE",
+      "currentStatus": "GOVERNED/INACTIVE",
+      "recommendation": "KEEP_INACTIVE",
+      "dependencies": [],
+      "blockers": [],
+      "reason": "Governed identity remains valid, but it has no governed EffectAssertion. Active status would add no supported production effect meaning and deliberate identities fail the active-effect dependency rule."
+    },
+    {
+      "id": "EA-V1-PSY-LAYER-001",
+      "type": "EFFECT_ASSERTION",
+      "currentStatus": "GOVERNED/INACTIVE",
+      "recommendation": "BLOCKED",
+      "dependencies": [
+        "EVA-AE-V1-PSY-LAYER-001",
+        "HT-V1-PSY-LAYER-001",
+        "REL-V1-PSY-LAYER-001"
+      ],
+      "blockers": [
+        "BLK-PSY-003",
+        "SHARED-CONTRIBUTION-PSY-001"
+      ],
+      "reason": "Exact bounded repetition effect remains one contribution with REL-001. Current active-consumer semantics do not structurally prevent additive use of both representations."
+    },
+    {
+      "id": "EA-V1-PSY-LAYER-002",
+      "type": "EFFECT_ASSERTION",
+      "currentStatus": "GOVERNED/INACTIVE",
+      "recommendation": "READY_FOR_ACTIVATION_REVIEW",
+      "dependencies": [
+        "EVA-AE-V1-PSY-LAYER-002",
+        "HT-V1-PSY-LAYER-002"
+      ],
+      "blockers": [],
+      "reason": "Exact Driver target, property, direction, timing and population/task scope are machine-readable; evidence and null/contrary boundaries remain explicit; no RDS, quantitative-execution or practitioner-actionability implication."
+    },
+    {
+      "id": "EA-V1-PSY-LAYER-003",
+      "type": "EFFECT_ASSERTION",
+      "currentStatus": "GOVERNED/INACTIVE",
+      "recommendation": "READY_FOR_ACTIVATION_REVIEW",
+      "dependencies": [
+        "EVA-AE-V1-PSY-LAYER-003",
+        "HT-V1-PSY-LAYER-003"
+      ],
+      "blockers": [],
+      "reason": "Exact Driver target, property, direction, timing and population/task scope are machine-readable; evidence and null/contrary boundaries remain explicit; no RDS, quantitative-execution or practitioner-actionability implication."
+    },
+    {
+      "id": "EA-V1-PSY-LAYER-005",
+      "type": "EFFECT_ASSERTION",
+      "currentStatus": "GOVERNED/INACTIVE",
+      "recommendation": "READY_FOR_ACTIVATION_REVIEW",
+      "dependencies": [
+        "EVA-AE-V1-PSY-LAYER-005",
+        "HT-V1-PSY-LAYER-004"
+      ],
+      "blockers": [],
+      "reason": "Exact Driver target, property, direction, timing and population/task scope are machine-readable; evidence and null/contrary boundaries remain explicit; no RDS, quantitative-execution or practitioner-actionability implication."
+    },
+    {
+      "id": "EA-V1-PSY-LAYER-007",
+      "type": "EFFECT_ASSERTION",
+      "currentStatus": "GOVERNED/INACTIVE",
+      "recommendation": "READY_FOR_ACTIVATION_REVIEW",
+      "dependencies": [
+        "EVA-AE-V1-PSY-LAYER-007",
+        "HT-V1-PSY-LAYER-006"
+      ],
+      "blockers": [],
+      "reason": "Exact Driver target, property, direction, timing and population/task scope are machine-readable; evidence and null/contrary boundaries remain explicit; no RDS, quantitative-execution or practitioner-actionability implication."
+    },
+    {
+      "id": "EA-V1-PSY-LAYER-012",
+      "type": "EFFECT_ASSERTION",
+      "currentStatus": "GOVERNED/INACTIVE",
+      "recommendation": "READY_FOR_ACTIVATION_REVIEW",
+      "dependencies": [
+        "EVA-AE-V1-PSY-LAYER-012",
+        "HT-V1-PSY-LAYER-011"
+      ],
+      "blockers": [],
+      "reason": "Exact Driver target, property, direction, timing and population/task scope are machine-readable; evidence and null/contrary boundaries remain explicit; no RDS, quantitative-execution or practitioner-actionability implication."
+    },
+    {
+      "id": "EA-V1-PSY-LAYER-023",
+      "type": "EFFECT_ASSERTION",
+      "currentStatus": "GOVERNED/INACTIVE",
+      "recommendation": "READY_FOR_ACTIVATION_REVIEW",
+      "dependencies": [
+        "EVA-AE-V1-PSY-LAYER-023",
+        "HT-V1-PSY-LAYER-022"
+      ],
+      "blockers": [],
+      "reason": "Exact Driver target, property, direction, timing and population/task scope are machine-readable; evidence and null/contrary boundaries remain explicit; no RDS, quantitative-execution or practitioner-actionability implication."
+    },
+    {
+      "id": "EVA-AE-V1-PSY-LAYER-001",
+      "type": "EVIDENCE_ASSESSMENT",
+      "currentStatus": "GOVERNED/INACTIVE",
+      "recommendation": "BLOCKED",
+      "dependencies": [
+        "SRC-433",
+        "SRC-560",
+        "SRC-562",
+        "SRC-603",
+        "EA-V1-PSY-LAYER-001"
+      ],
+      "blockers": [
+        "SHARED-CONTRIBUTION-PSY-001"
+      ],
+      "reason": "MIXED evidence is source-resolved, but its assertion is blocked by the duplicate-contribution representation decision."
+    },
+    {
+      "id": "EVA-AE-V1-PSY-LAYER-002",
+      "type": "EVIDENCE_ASSESSMENT",
+      "currentStatus": "GOVERNED/INACTIVE",
+      "recommendation": "READY_FOR_ACTIVATION_REVIEW",
+      "dependencies": [
+        "SRC-450",
+        "SRC-561",
+        "EA-V1-PSY-LAYER-002"
+      ],
+      "blockers": [],
+      "reason": "Governed synthesis is source-resolved and retains its exact SUPPORTS/MIXED, null, contrary, overlap and access-depth qualifications."
+    },
+    {
+      "id": "EVA-AE-V1-PSY-LAYER-003",
+      "type": "EVIDENCE_ASSESSMENT",
+      "currentStatus": "GOVERNED/INACTIVE",
+      "recommendation": "READY_FOR_ACTIVATION_REVIEW",
+      "dependencies": [
+        "SRC-563",
+        "EA-V1-PSY-LAYER-003"
+      ],
+      "blockers": [],
+      "reason": "Governed synthesis is source-resolved and retains its exact SUPPORTS/MIXED, null, contrary, overlap and access-depth qualifications."
+    },
+    {
+      "id": "EVA-AE-V1-PSY-LAYER-005",
+      "type": "EVIDENCE_ASSESSMENT",
+      "currentStatus": "GOVERNED/INACTIVE",
+      "recommendation": "READY_FOR_ACTIVATION_REVIEW",
+      "dependencies": [
+        "SRC-565",
+        "SRC-566",
+        "EA-V1-PSY-LAYER-005"
+      ],
+      "blockers": [],
+      "reason": "Governed synthesis is source-resolved and retains its exact SUPPORTS/MIXED, null, contrary, overlap and access-depth qualifications."
+    },
+    {
+      "id": "EVA-AE-V1-PSY-LAYER-007",
+      "type": "EVIDENCE_ASSESSMENT",
+      "currentStatus": "GOVERNED/INACTIVE",
+      "recommendation": "READY_FOR_ACTIVATION_REVIEW",
+      "dependencies": [
+        "SRC-568",
+        "SRC-569",
+        "SRC-570",
+        "EA-V1-PSY-LAYER-007"
+      ],
+      "blockers": [],
+      "reason": "Governed synthesis is source-resolved and retains its exact SUPPORTS/MIXED, null, contrary, overlap and access-depth qualifications."
+    },
+    {
+      "id": "EVA-AE-V1-PSY-LAYER-012",
+      "type": "EVIDENCE_ASSESSMENT",
+      "currentStatus": "GOVERNED/INACTIVE",
+      "recommendation": "READY_FOR_ACTIVATION_REVIEW",
+      "dependencies": [
+        "SRC-576",
+        "SRC-577",
+        "EA-V1-PSY-LAYER-012"
+      ],
+      "blockers": [],
+      "reason": "Governed synthesis is source-resolved and retains its exact SUPPORTS/MIXED, null, contrary, overlap and access-depth qualifications."
+    },
+    {
+      "id": "EVA-AE-V1-PSY-LAYER-023",
+      "type": "EVIDENCE_ASSESSMENT",
+      "currentStatus": "GOVERNED/INACTIVE",
+      "recommendation": "READY_FOR_ACTIVATION_REVIEW",
+      "dependencies": [
+        "SRC-591",
+        "SRC-592",
+        "SRC-593",
+        "SRC-596",
+        "SRC200",
+        "EA-V1-PSY-LAYER-023"
+      ],
+      "blockers": [],
+      "reason": "Governed synthesis is source-resolved and retains its exact SUPPORTS/MIXED, null, contrary, overlap and access-depth qualifications."
+    }
+  ],
+  "activationOrder": [
+    {
+      "step": 1,
+      "ids": [
+        "EVA-AE-V1-PSY-LAYER-002",
+        "EVA-AE-V1-PSY-LAYER-003",
+        "EVA-AE-V1-PSY-LAYER-005",
+        "EVA-AE-V1-PSY-LAYER-007",
+        "EVA-AE-V1-PSY-LAYER-012",
+        "EVA-AE-V1-PSY-LAYER-023"
+      ],
+      "mode": "BEFORE_OR_SAME_TRANSACTION"
+    },
+    {
+      "step": 2,
+      "bundles": [
+        [
+          "HT-V1-PSY-LAYER-002",
+          "EA-V1-PSY-LAYER-002"
+        ],
+        [
+          "HT-V1-PSY-LAYER-003",
+          "EA-V1-PSY-LAYER-003"
+        ],
+        [
+          "HT-V1-PSY-LAYER-004",
+          "EA-V1-PSY-LAYER-005"
+        ],
+        [
+          "HT-V1-PSY-LAYER-006",
+          "EA-V1-PSY-LAYER-007"
+        ],
+        [
+          "HT-V1-PSY-LAYER-011",
+          "EA-V1-PSY-LAYER-012"
+        ],
+        [
+          "HT-V1-PSY-LAYER-022",
+          "EA-V1-PSY-LAYER-023"
+        ]
+      ],
+      "mode": "ATOMIC_DELIBERATE_TYPE_EFFECT_BUNDLE_AFTER_EVIDENCE"
+    }
+  ],
+  "blockedActivationChoice": {
+    "ids": [
+      "EVA-V1-PSY-LAYER-REL-001",
+      "REL-V1-PSY-LAYER-001",
+      "EVA-AE-V1-PSY-LAYER-001",
+      "HT-V1-PSY-LAYER-001",
+      "EA-V1-PSY-LAYER-001"
+    ],
+    "requiredDecision": "Select a single active representation or add governed runtime contribution-dedup semantics; do not activate both assertions additively."
+  },
+  "sourceAudit": {
+    "canonicalSourceIds": [
+      "SRC-433",
+      "SRC-450",
+      "SRC-560",
+      "SRC-561",
+      "SRC-562",
+      "SRC-563",
+      "SRC-564",
+      "SRC-565",
+      "SRC-566",
+      "SRC-567",
+      "SRC-568",
+      "SRC-569",
+      "SRC-570",
+      "SRC-571",
+      "SRC-572",
+      "SRC-573",
+      "SRC-574",
+      "SRC-575",
+      "SRC-576",
+      "SRC-577",
+      "SRC-578",
+      "SRC-579",
+      "SRC-580",
+      "SRC-581",
+      "SRC-582",
+      "SRC-583",
+      "SRC-584",
+      "SRC-585",
+      "SRC-586",
+      "SRC-587",
+      "SRC-588",
+      "SRC-589",
+      "SRC-590",
+      "SRC-591",
+      "SRC-592",
+      "SRC-593",
+      "SRC-594",
+      "SRC-595",
+      "SRC-596",
+      "SRC-597",
+      "SRC-598",
+      "SRC-599",
+      "SRC-600",
+      "SRC-601",
+      "SRC-602",
+      "SRC-603",
+      "SRC114",
+      "SRC139",
+      "SRC155",
+      "SRC186",
+      "SRC193",
+      "SRC200",
+      "SRC221"
+    ],
+    "sourceCount": 53,
+    "unresolvedIdentities": [],
+    "metadataVerified": true,
+    "overlapPreserved": true,
+    "unsupportedQuantitativeEstimates": 0
+  },
+  "blockers": [
+    {
+      "id": "BLK-PSY-001",
+      "status": "UNRESOLVED",
+      "affectedAuditedRecords": [],
+      "reason": "Approved records do not target the component/profile entities covered by this blocker."
+    },
+    {
+      "id": "BLK-PSY-002",
+      "status": "UNRESOLVED",
+      "affectedAuditedRecords": [],
+      "reason": "No approved record targets PSY-130."
+    },
+    {
+      "id": "BLK-PSY-003",
+      "status": "UNRESOLVED",
+      "affectedAuditedRecords": [
+        "REL-V1-PSY-LAYER-001",
+        "EA-V1-PSY-LAYER-001"
+      ],
+      "reason": "Exact referents make governed storage safe, but active duplicate-control semantics remain unresolved for the shared repetition contribution."
+    }
+  ],
+  "rdsSafety": {
+    "passed": true,
+    "directTargets": [],
+    "relationalStateTargets": [],
+    "newTargetSemantics": false
+  },
+  "sharedContribution": {
+    "id": "CONTRIB-PSY-LAYER-REPETITION-001",
+    "relationshipId": "REL-V1-PSY-LAYER-001",
+    "effectAssertionId": "EA-V1-PSY-LAYER-001",
+    "doubleCountingDetected": false,
+    "activationBlockedUntilExclusiveOrDeduplicated": true
+  },
+  "productionCounts": {
+    "activeRelationships": 457,
+    "activeCausalRelationships": 436,
+    "newActive": 0
+  }
+}
