@@ -1,0 +1,388 @@
+{
+  "familyId": "PSY-F12",
+  "happeningTypes": [
+    {
+      "id": "HT-CAND-PSY-LAYER-0022",
+      "name": "Present a specified high-control health recommendation",
+      "identityKey": "present-specified-high-control-health-recommendation",
+      "description": "Deliver a declared pressure/no-choice health-message script. Content, derogation, politeness and restoration wording must be specified; identity is not efficacy or permission.",
+      "actor": "Specified communicator/researcher",
+      "sources": [
+        "SRC200",
+        "SRC-CAND-PSY-LAYER-0156"
+      ],
+      "domain": "DELIBERATE_INTERVENTION",
+      "origins": [
+        "INF",
+        "PSY"
+      ],
+      "constraints": "Consent, ability to decline, truthful content, contextual ethics/legal review, privacy and debriefing required; coercive clinical/practitioner application not authorized."
+    },
+    {
+      "id": "HT-CAND-PSY-LAYER-0023",
+      "name": "Set an action-feedback delay distribution in a bounded task",
+      "identityKey": "set-action-feedback-delay-distribution-bounded-task",
+      "description": "Configure specified keypress-to-feedback timing and learning history. Does not itself imply agency change, real control loss or behavioral consequences.",
+      "actor": "Specified task researcher",
+      "sources": [
+        "SRC-CAND-PSY-LAYER-0142"
+      ],
+      "domain": "DELIBERATE_INTERVENTION",
+      "origins": [
+        "TEC",
+        "PSY"
+      ],
+      "constraints": "Consent, ability to decline, truthful content, contextual ethics/legal review, privacy and debriefing required; coercive clinical/practitioner application not authorized."
+    },
+    {
+      "id": "HT-CAND-PSY-LAYER-0024",
+      "name": "Instruct imagining another person's perspective using available information",
+      "identityKey": "instruct-imagining-others-perspective-available-information",
+      "description": "Ask a consenting participant to imagine another's viewpoint using currently available information. Not conversation, new information provision, capacity training package or efficacy promise.",
+      "actor": "Specified researcher/participant",
+      "sources": [
+        "SRC-CAND-PSY-LAYER-0140"
+      ],
+      "domain": "DELIBERATE_INTERVENTION",
+      "origins": [
+        "INF",
+        "PSY"
+      ],
+      "constraints": "Consent, ability to decline, truthful content, contextual ethics/legal review, privacy and debriefing required; coercive clinical/practitioner application not authorized."
+    }
+  ],
+  "assertions": [
+    {
+      "type": "EFFECT_ASSERTION",
+      "id": "EA-CAND-PSY-LAYER-0023",
+      "typeId": "HT-CAND-PSY-LAYER-0022",
+      "target": "PSY-108",
+      "property": "LEVEL",
+      "change": "INCREASE",
+      "knowledgeStatus": "SUPPORTED_EFFECT",
+      "status": "REVIEW_READY",
+      "disposition": "MIXED",
+      "strength": "MODERATE",
+      "confidence": "MODERATE",
+      "scope": "Specified high-control health-message scripts in US college flossing/drinking and Slovenian masking/activity contexts; no general coercion or actual mandate scope.",
+      "measurement": "Immediate four-item perceived freedom/choice threat; exact script bundle and comparison retained.",
+      "timing": "Immediate task appraisal; persistence/generalization not established.",
+      "mechanism": "Pressure/no-choice content can elicit perceived restriction, but social-value threat and other script features may contribute.",
+      "risk": "Specific populations, bundled manipulations and construct/proxy limits; no practitioner permission, behavioral benefit or model eligibility.",
+      "rationale": "Bounded specified messages alter directly measured perceived freedom threat; heterogeneous and alternative-mechanism evidence retained. No claim of independently mediated threat→reactance→behavior.",
+      "findingKeys": [
+        "CONTROL_THREAT",
+        "PLOHL_THREAT",
+        "THREAT_REVIEW",
+        "SOCIAL_VALUE_ALT",
+        "FRAMING_NULL"
+      ],
+      "sharedContributionId": "CONTRIB-PSY-LAYER-0023",
+      "incompleteFields": []
+    },
+    {
+      "type": "EFFECT_ASSERTION",
+      "id": "EA-CAND-PSY-LAYER-0024",
+      "typeId": "HT-CAND-PSY-LAYER-0023",
+      "target": "PSY-104",
+      "property": "LEVEL",
+      "change": "UNKNOWN",
+      "knowledgeStatus": "INSUFFICIENT_EVIDENCE",
+      "status": "RESEARCH_NEEDED",
+      "disposition": "INSUFFICIENT",
+      "strength": "LIMITED",
+      "confidence": "LOW",
+      "scope": "Bounded keypress/feedback task with explicit learned delay distribution and0–250ms conditions.",
+      "measurement": "Explicit agency ratings, not implicit timing alone, legal responsibility or real control.",
+      "timing": "Immediate task appraisal; persistence/generalization not established.",
+      "mechanism": "Temporal prediction/action-effect attribution can depend on learned delay distribution.",
+      "risk": "Specific populations, bundled manipulations and construct/proxy limits; no practitioner permission, behavioral benefit or model eligibility.",
+      "rationale": "Positive/negative task findings retained, but exact broad construct, protocol and transfer remain insufficient. Unknown is not zero.",
+      "findingKeys": [
+        "LEARNED_DELAY",
+        "AGENCY_DISSOCIATION",
+        "AGENCY_METHOD"
+      ],
+      "sharedContributionId": "CONTRIB-PSY-LAYER-0024",
+      "incompleteFields": [
+        "direction",
+        "measurement",
+        "context"
+      ]
+    },
+    {
+      "type": "EFFECT_ASSERTION",
+      "id": "EA-CAND-PSY-LAYER-0025",
+      "typeId": "HT-CAND-PSY-LAYER-0024",
+      "target": "PSY-135",
+      "property": "LEVEL",
+      "change": "UNKNOWN",
+      "knowledgeStatus": "INSUFFICIENT_EVIDENCE",
+      "status": "RESEARCH_NEEDED",
+      "disposition": "INSUFFICIENT",
+      "strength": "LIMITED",
+      "confidence": "LOW",
+      "scope": "Imagining another's perspective using existing information, not conversation or multi-session training.",
+      "measurement": "Interpersonal accuracy/confidence is not general perspective-taking capacity.",
+      "timing": "Immediate task appraisal; persistence/generalization not established.",
+      "mechanism": "Instruction may direct effort without supplying missing information or establishing skill change.",
+      "risk": "Specific populations, bundled manipulations and construct/proxy limits; no practitioner permission, behavioral benefit or model eligibility.",
+      "rationale": "Positive/negative task findings retained, but exact broad construct, protocol and transfer remain insufficient. Unknown is not zero.",
+      "findingKeys": [
+        "PERSPECTIVE_TASK",
+        "PERSPECTIVE_GETTING",
+        "PT_TRAINING_REVIEW"
+      ],
+      "sharedContributionId": "CONTRIB-PSY-LAYER-0025",
+      "incompleteFields": [
+        "direction",
+        "measurement",
+        "context"
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "key": "CONTROL_THREAT",
+      "sourceId": "SRC200",
+      "basis": "EXPERIMENTAL",
+      "accessDepth": "SELECTED_FULL_TEXT",
+      "design": "Two controlled message experiments; booklets intermingled, explicit random sequence not described",
+      "sample": "SEM samples196 and200",
+      "population": "US college students; flossing/binge-drinking messages",
+      "context": "US college students; flossing/binge-drinking messages",
+      "exposure": "Declared high-control scripts",
+      "comparator": "Lower-control scripts",
+      "measurement": "Four-item perceived pressure/threat-to-choice rating",
+      "timing": "Immediate; threat check after negative cognition/anger measures",
+      "result": "Higher-control scripts increased measured freedom threat in both topics. Script wording also changes derogation/content; not isolated one-word or independently randomized latent state.",
+      "disposition": "SUPPORTS",
+      "locator": "Methods/manipulation checks; https://doi.org/10.1080/03637750500111815",
+      "limitations": "Exact specified message package and immediate subjective appraisal only; assignment method ambiguity, convenience samples and bundled contrasts; no causal mediator or universal behavior benefit.",
+      "dataset": "DATA-DILLARD-SHEN-2005",
+      "supportedSemantics": [
+        "CAUSAL"
+      ]
+    },
+    {
+      "key": "PLOHL_THREAT",
+      "sourceId": "SRC-CAND-PSY-LAYER-0156",
+      "basis": "EXPERIMENTAL",
+      "accessDepth": "SELECTED_FULL_TEXT",
+      "design": "Two-topic mixed message experiment",
+      "sample": "228; high/low language groups117/111",
+      "population": "Slovenian participants; masking and physical activity",
+      "context": "Slovenian participants; masking and physical activity",
+      "exposure": "High-control scripts",
+      "comparator": "Low-control/restoration/gain-loss wording bundle",
+      "measurement": "Four-item freedom threat; separate anger/cognition and attitudes/intentions",
+      "timing": "Immediate after messages",
+      "result": "Perceived freedom threat higher for high-control messages in both topics. Downstream attitudes/intention nondetection in high-trust COVID group despite reactance, not automatic advocacy effect.",
+      "disposition": "SUPPORTS",
+      "locator": "Methods/results; https://doi.org/10.1080/17538068.2023.2279395",
+      "limitations": "Bundle not pure lexical control. Science trust measured and dichotomized, not randomized exact PSY-113 moderator; no calibration or universal effect.",
+      "dataset": "DATA-PLOHL-MUSIL-2023",
+      "supportedSemantics": [
+        "CAUSAL"
+      ]
+    },
+    {
+      "key": "THREAT_REVIEW",
+      "sourceId": "SRC-CAND-PSY-LAYER-0136",
+      "basis": "EVIDENCE_SYNTHESIS",
+      "accessDepth": "ABSTRACT",
+      "design": "Meta-analysis",
+      "sample": "35 studies;10658 participants",
+      "population": "Health communication study populations",
+      "context": "Health communication study populations",
+      "exposure": "Freedom-threatening communication",
+      "comparator": "Study-specific lower-threat communication",
+      "measurement": "Perceived threat, reactance and persuasion associations",
+      "timing": "Study-specific immediate/follow-up",
+      "result": "Threatening language generally related to increased freedom threat/reactance; variation by study/sample and persuasion link not independent state-level causal identification.",
+      "disposition": "MIXED",
+      "locator": "Abstract; https://doi.org/10.1093/joc/jqaf004",
+      "limitations": "Review-primary overlap; heterogeneous messages/measures and coded moderators, no universal monotonic psychological path.",
+      "dataset": "DATA-MA-REACTANCE-2025",
+      "supportedSemantics": [
+        "CAUSAL"
+      ]
+    },
+    {
+      "key": "SOCIAL_VALUE_ALT",
+      "sourceId": "SRC-CAND-PSY-LAYER-0138",
+      "basis": "EXPERIMENTAL",
+      "accessDepth": "ABSTRACT",
+      "design": "Two message experiments with alternative predictive-model comparison",
+      "sample": "424 and254 students",
+      "population": "Student persuasive-message tasks",
+      "context": "Student persuasive-message tasks",
+      "exposure": "Freedom/social-value-threatening message contrasts",
+      "comparator": "Study-specific messages",
+      "measurement": "Threat appraisals/reactance predictive models",
+      "timing": "Same-session",
+      "result": "Social-value threat provided stronger predictive account than freedom threat in reported analyses; partial suppression complicates unique freedom attribution.",
+      "disposition": "MIXED",
+      "locator": "Abstract; https://doi.org/10.1080/03637751.2026.2615230",
+      "limitations": "Alternative predictor comparison not independent causal-mediator intervention; threatens unique mechanism claim, not proof high-control messages never alter freedom appraisal.",
+      "dataset": "DATA-CARPENTER-2026",
+      "supportedSemantics": [
+        "CAUSAL"
+      ]
+    },
+    {
+      "key": "FRAMING_NULL",
+      "sourceId": "SRC-CAND-PSY-LAYER-0137",
+      "basis": "EVIDENCE_SYNTHESIS",
+      "accessDepth": "SELECTED_FULL_TEXT",
+      "design": "Meta-analysis of high-control language and gain/loss framing contrasts",
+      "sample": "28 articles;33 studies;146 effects",
+      "population": "Persuasive-message study samples",
+      "context": "Persuasive-message study samples",
+      "exposure": "Gain versus loss framing",
+      "comparator": "Opposite frame",
+      "measurement": "Anger, negative cognition, reactance",
+      "timing": "Study-specific",
+      "result": "Gain/loss contrasts did not detect systematic differences in these outcomes; high-control language findings differ. Composite reactance operationalization includes anger/negative cognition.",
+      "disposition": "NULL_FINDING",
+      "locator": "Methods/results; https://doi.org/10.1093/hcr/hqaf016",
+      "limitations": "OUTSIDE exact high-control operation/PSY-108 direct effect; no equivalence margin or supported zero. Studies overlap Ma/Dillard and effect counts are not independent studies.",
+      "dataset": "DATA-LI-SHI-REVIEW-2026",
+      "supportedSemantics": [
+        "CAUSAL"
+      ]
+    },
+    {
+      "key": "LEARNED_DELAY",
+      "sourceId": "SRC-CAND-PSY-LAYER-0142",
+      "basis": "EXPERIMENTAL",
+      "accessDepth": "ABSTRACT",
+      "design": "Experimental action-feedback timing and frequency manipulation",
+      "sample": "NOT_EXTRACTED",
+      "population": "Laboratory action/tone participants",
+      "context": "Laboratory action/tone participants",
+      "exposure": "0–250ms delays after different mostly-immediate/mostly250ms histories",
+      "comparator": "Other delays within learned distribution",
+      "measurement": "Explicit agency ratings",
+      "timing": "Immediate after feedback; learned distribution precedes ratings",
+      "result": "Mostly250ms experience can make longer delays receive higher agency ratings; universal short-delay increase is contradicted by learning-context reversal.",
+      "disposition": "SUPPORTS",
+      "locator": "Abstract; https://doi.org/10.1016/j.cognition.2014.11.012",
+      "limitations": "Scoped task ratings, not general real-world agency; exact task/sample and state timing extraction incomplete. Retain context dependence, UNKNOWN overall direction.",
+      "dataset": "DATA-HAERING-KIESEL-2015",
+      "supportedSemantics": [
+        "CAUSAL"
+      ]
+    },
+    {
+      "key": "AGENCY_DISSOCIATION",
+      "sourceId": "SRC-CAND-PSY-LAYER-0143",
+      "basis": "OBSERVATIONAL_CROSS_SECTIONAL",
+      "accessDepth": "SELECTED_FULL_TEXT",
+      "design": "Cross-measure association within experimental task study",
+      "sample": "NOT_EXTRACTED",
+      "population": "Laboratory keypress/tone task participants",
+      "context": "Laboratory keypress/tone task participants",
+      "exposure": "Between-person variation in implicit/explicit measures",
+      "comparator": "Cross-measure comparison",
+      "measurement": "Intentional binding, sensory attenuation and explicit agency",
+      "timing": "Same-study measures",
+      "result": "Implicit effects replicated but between-person correlations between implicit and explicit measures, and between implicit measures, were not detected.",
+      "disposition": "NULL_FINDING",
+      "locator": "Abstract/discussion; https://pmc.ncbi.nlm.nih.gov/articles/PMC4199671/",
+      "limitations": "OUTSIDE exact delay intervention effect; null cross-measure association not proof within-trial independence or invalidity of all agency measures.",
+      "dataset": "DATA-DEWEY-KNOBLICH-2014",
+      "supportedSemantics": [
+        "ASSOCIATION"
+      ]
+    },
+    {
+      "key": "AGENCY_METHOD",
+      "sourceId": "SRC-CAND-PSY-LAYER-0146",
+      "basis": "THEORETICAL_MECHANISTIC",
+      "accessDepth": "SELECTED_FULL_TEXT",
+      "design": "Methodological analysis",
+      "sample": "Not an empirical effect sample",
+      "population": "Agency experiments and operational constructs",
+      "context": "Agency experiments and operational constructs",
+      "exposure": "Conceptual/operational comparison",
+      "comparator": "Not applicable",
+      "measurement": "Four distinct agency concepts and measures",
+      "timing": "Not applicable",
+      "result": "Operational mismatch and pooling can mislead interpretation; within/between-person timing relations may differ.",
+      "disposition": "INSUFFICIENT",
+      "locator": "Introduction/methodological analysis; https://pmc.ncbi.nlm.nih.gov/articles/PMC7416314/",
+      "limitations": "Not empirical causal evidence or latent-state estimate; constrains construct transfer, not a numerical effect.",
+      "dataset": "METHOD-GRUNBAUM-2020",
+      "supportedSemantics": [
+        "SEMANTIC"
+      ]
+    },
+    {
+      "key": "PERSPECTIVE_TASK",
+      "sourceId": "SRC-CAND-PSY-LAYER-0140",
+      "basis": "EXPERIMENTAL",
+      "accessDepth": "ABSTRACT",
+      "design": "Series of perspective instruction experiments",
+      "sample": "25 experiments; sample totals not extracted",
+      "population": "Laboratory interpersonal judgment participants",
+      "context": "Laboratory interpersonal judgment participants",
+      "exposure": "Perspective-taking instructions",
+      "comparator": "Control instructions",
+      "measurement": "Accuracy of other-person judgments and confidence",
+      "timing": "Immediate judgments",
+      "result": "No consistent accuracy benefit; some reductions and increased confidence. These results challenge assumed efficacy, but accuracy is not broad latent capacity.",
+      "disposition": "MIXED",
+      "locator": "Abstract; https://pubmed.ncbi.nlm.nih.gov/29620401/",
+      "limitations": "Outcome/task mismatch: neither nondetection nor occasional poorer accuracy proves no capacity effect. Sample/task transfer and exact measure need reconciliation.",
+      "dataset": "DATA-EYAL-2018",
+      "supportedSemantics": [
+        "CAUSAL"
+      ]
+    },
+    {
+      "key": "PERSPECTIVE_GETTING",
+      "sourceId": "SRC-CAND-PSY-LAYER-0140",
+      "basis": "EXPERIMENTAL",
+      "accessDepth": "ABSTRACT",
+      "design": "Conversation comparison experiment in same article",
+      "sample": "Final experiment; N not extracted",
+      "population": "Interpersonal judgment participants",
+      "context": "Interpersonal judgment participants",
+      "exposure": "Conversation obtains target perspective",
+      "comparator": "Imagining perspective/control",
+      "measurement": "Interpersonal accuracy",
+      "timing": "After conversation",
+      "result": "Obtaining another's perspective through conversation improved accuracy in the final experiment.",
+      "disposition": "SUPPORTS",
+      "locator": "Abstract; https://pubmed.ncbi.nlm.nih.gov/29620401/",
+      "limitations": "OUTSIDE retained imagining-only identity; information acquisition not capacity increase, component/package inference prohibited.",
+      "dataset": "DATA-EYAL-2018",
+      "supportedSemantics": [
+        "CAUSAL"
+      ]
+    },
+    {
+      "key": "PT_TRAINING_REVIEW",
+      "sourceId": "SRC-CAND-PSY-LAYER-0144",
+      "basis": "EVIDENCE_SYNTHESIS",
+      "accessDepth": "ABSTRACT",
+      "design": "Systematic review",
+      "sample": "29 experimental studies",
+      "population": "Perspective-training populations/geographies",
+      "context": "Perspective-training populations/geographies",
+      "exposure": "Heterogeneous training protocols",
+      "comparator": "Study-specific controls",
+      "measurement": "Varied perspective definitions and measures",
+      "timing": "Study-specific",
+      "result": "Training literature has varied definitions/measures, protocol fidelity, geography and social-validity limitations.",
+      "disposition": "INSUFFICIENT",
+      "locator": "Abstract; https://doi.org/10.1016/j.jcbs.2024.100816",
+      "limitations": "OUTSIDE single instruction identity; heterogeneous packages cannot establish broad capacity efficacy or a common dose.",
+      "dataset": "DATA-DIAZ-2024",
+      "supportedSemantics": [
+        "CAUSAL"
+      ]
+    }
+  ]
+}

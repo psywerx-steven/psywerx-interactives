@@ -1,0 +1,282 @@
+{
+  "familyId": "PSY-F14",
+  "happeningTypes": [
+    {
+      "id": "HT-CAND-PSY-LAYER-0028",
+      "name": "Conduct a specified behavioral test of an uncertainty prediction",
+      "identityKey": "behavioral-test-specific-uncertainty-prediction",
+      "description": "Under a qualified protocol, state an uncertainty-related prediction and compare it with the observed outcome of a specified consensual behavioral test. This operation is not the entire twelve-session therapy course and promises no efficacy.",
+      "sources": [
+        "SRC-CAND-PSY-LAYER-0176"
+      ],
+      "domain": "DELIBERATE_INTERVENTION",
+      "origins": [
+        "PSY",
+        "INF"
+      ],
+      "actor": "Qualified clinician/researcher and consenting participant",
+      "constraints": "Independently assessed clinical suitability, consent, safety, uncertainty limits, legal/ethical review and professional competence. No treatment advice, automatic permission, package-effect inference or recommendation."
+    },
+    {
+      "id": "HT-CAND-PSY-LAYER-0029",
+      "name": "Instruct specified outgoing behavior for a bounded interval",
+      "identityKey": "instruct-specified-outgoing-behavior",
+      "description": "Ask a consenting participant to enact specified bold/talkative/assertive social behaviors for a declared interval. Not group assignment, friendship creation, digital coaching package or promise of trait change.",
+      "sources": [
+        "SRC-CAND-PSY-LAYER-0173"
+      ],
+      "domain": "DELIBERATE_INTERVENTION",
+      "origins": [
+        "PSY",
+        "INF",
+        "SOC"
+      ],
+      "actor": "Specified researcher and consenting participant",
+      "constraints": "Voluntary participation and safe social setting; respect fatigue, authenticity, introvert costs, privacy and other persons' consent; context/legal/ethical feasibility required. No practitioner/model eligibility."
+    }
+  ],
+  "assertions": [
+    {
+      "type": "EFFECT_ASSERTION",
+      "id": "EA-CAND-PSY-LAYER-0029",
+      "typeId": "HT-CAND-PSY-LAYER-0028",
+      "target": "PSY-131",
+      "property": "LEVEL",
+      "change": "UNKNOWN",
+      "knowledgeStatus": "INSUFFICIENT_EVIDENCE",
+      "status": "RESEARCH_NEEDED",
+      "disposition": "INSUFFICIENT",
+      "strength": "LIMITED",
+      "confidence": "LOW",
+      "scope": "Isolated or repeated specified behavioral uncertainty tests, not automatically the entire therapeutic course.",
+      "measurement": "Enduring intolerance of uncertainty, not primary GAD severity, worry or successful test completion.",
+      "timing": "Twelve-week course evidence and6/12month uncontrolled-after-crossover follow-up cannot isolate one operation's durable effect.",
+      "mechanism": "Repeated experiences may alter appraisals and behavioral patterns; exact independent enduring construct change is not established by current scoped evidence.",
+      "risk": "Component/package, time-scale, within/between-person, self-report and multidimensional-scope mismatch; no automatic therapeutic/practitioner permission.",
+      "rationale": "Preserve supporting package findings and observed heterogeneity/nulls while refusing isolated-operation or whole-trait causal transfer. Requires exact comparator, measure, follow-up and feature scope.",
+      "findingKeys": [
+        "IU_COURSE",
+        "IU_FOLLOWUP",
+        "THERAPY_MIXED"
+      ],
+      "sharedContributionId": "CONTRIB-PSY-LAYER-0029",
+      "incompleteFields": [
+        "direction",
+        "measurement",
+        "context",
+        "timing"
+      ]
+    },
+    {
+      "type": "EFFECT_ASSERTION",
+      "id": "EA-CAND-PSY-LAYER-0030",
+      "typeId": "HT-CAND-PSY-LAYER-0029",
+      "target": "PSY-122",
+      "property": "LEVEL",
+      "change": "UNKNOWN",
+      "knowledgeStatus": "INSUFFICIENT_EVIDENCE",
+      "status": "RESEARCH_NEEDED",
+      "disposition": "INSUFFICIENT",
+      "strength": "LIMITED",
+      "confidence": "LOW",
+      "scope": "Specified outgoing-behavior instructions versus contemporaneous sham over one week; do not combine with PEACH package as same operation.",
+      "measurement": "Enduring sociability/assertiveness/energy facets, not one-week behavior, positive affect or authenticity.",
+      "timing": "One-week instruction versus months-years trait; three-month coaching/follow-up evidence is a different package.",
+      "mechanism": "Repeated experiences may alter appraisals and behavioral patterns; exact independent enduring construct change is not established by current scoped evidence.",
+      "risk": "Component/package, time-scale, within/between-person, self-report and multidimensional-scope mismatch; no automatic therapeutic/practitioner permission.",
+      "rationale": "Preserve supporting package findings and observed heterogeneity/nulls while refusing isolated-operation or whole-trait causal transfer. Requires exact comparator, measure, follow-up and feature scope.",
+      "findingKeys": [
+        "ACT_OUTGOING",
+        "PEACH_TRIAL",
+        "FACET_HETEROGENEITY",
+        "OBSERVER_NULL",
+        "CHALLENGE_SELECTION"
+      ],
+      "sharedContributionId": "CONTRIB-PSY-LAYER-0030",
+      "incompleteFields": [
+        "direction",
+        "measurement",
+        "context",
+        "timing"
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "key": "IU_COURSE",
+      "sourceId": "SRC-CAND-PSY-LAYER-0176",
+      "basis": "EXPERIMENTAL",
+      "accessDepth": "ABSTRACT",
+      "design": "Randomized treatment versus waitlist",
+      "sample": "60:30/30;51women9men",
+      "population": "Adults with GAD, majority women, mean34.6(range19–67)",
+      "context": "Specified clinical/digital/social task; no uncontrolled occurrence ingestion",
+      "exposure": "12weekly1hour behavioral-experiment treatment sessions",
+      "comparator": "Waitlist before crossover",
+      "measurement": "Secondary intolerance-of-uncertainty measure; primaryGAD severity separately",
+      "timing": "Pre/mid/post;12weeks",
+      "result": "Course group improved more on all reported outcomes including IU. This supports the course contrast, not a single component.",
+      "disposition": "SUPPORTS",
+      "locator": "Primary abstract",
+      "limitations": "OUTSIDE isolated-operation efficacy: repeated course/therapist context bundled; abstract does not extract exact item/longitudinal invariance or active placebo.",
+      "dataset": "DUGAS-2022-GAD60",
+      "supportedSemantics": [
+        "CAUSAL"
+      ]
+    },
+    {
+      "key": "IU_FOLLOWUP",
+      "sourceId": "SRC-CAND-PSY-LAYER-0176",
+      "basis": "OBSERVATIONAL_LONGITUDINAL",
+      "accessDepth": "ABSTRACT",
+      "design": "Combined treated sample follow-up after waitlist crossover",
+      "sample": "Same60",
+      "population": "Adults with GAD, majority women, mean34.6(range19–67)",
+      "context": "Specified clinical/digital/social task; no uncontrolled occurrence ingestion",
+      "exposure": "Completed treatment",
+      "comparator": "Own earlier assessment; no continued untreated control",
+      "measurement": "IU and other outcome follow-ups",
+      "timing": "6and12months",
+      "result": "Reported gains maintained/increased; enduring follow-up is encouraging but not a randomized follow-up contrast.",
+      "disposition": "MIXED",
+      "locator": "Primary abstract",
+      "limitations": "Same dataset, no independent replication; regression/history/retention limitations; no causal IU-mediated anxiety inference.",
+      "dataset": "DUGAS-2022-GAD60",
+      "supportedSemantics": [
+        "ASSOCIATION"
+      ]
+    },
+    {
+      "key": "THERAPY_MIXED",
+      "sourceId": "SRC-CAND-PSY-LAYER-0174",
+      "basis": "EVIDENCE_SYNTHESIS",
+      "accessDepth": "ABSTRACT",
+      "design": "Systematic review, trials and prepost designs",
+      "sample": "207studies",
+      "population": "Source-specific volunteers/patients; population transfer not assumed",
+      "context": "Specified clinical/digital/social task; no uncontrolled occurrence ingestion",
+      "exposure": "Varied mainly clinical interventions",
+      "comparator": "Design-specific experimental or prepost comparators",
+      "measurement": "Personality inventories, chiefly emotional stability/extraversion",
+      "timing": "Mean24weeks plus varied follow-up",
+      "result": "Trait-score change reported in both design classes; therapy type not strongly related to amount of change.",
+      "disposition": "MIXED",
+      "locator": "Primary abstract",
+      "limitations": "OUTSIDE exact uncertainty-test identity and exact IU construct; studies/designs not interchangeable or independent of included literature.",
+      "dataset": "ROBERTS-2017-REVIEW",
+      "supportedSemantics": [
+        "CAUSAL"
+      ]
+    },
+    {
+      "key": "ACT_OUTGOING",
+      "sourceId": "SRC-CAND-PSY-LAYER-0173",
+      "basis": "EXPERIMENTAL",
+      "accessDepth": "ABSTRACT",
+      "design": "Randomized one-week intervention versus sham; additional historical group",
+      "sample": "147randomized;76historical contactcontrol separate",
+      "population": "Source-specific volunteers/patients; population transfer not assumed",
+      "context": "Specified clinical/digital/social task; no uncontrolled occurrence ingestion",
+      "exposure": "Instruction to act extraverted",
+      "comparator": "Contemporaneous sham; historical contactcontrol not randomized",
+      "measurement": "Positive/negative affect, authenticity,tiredness,behavior",
+      "timing": "Oneweek",
+      "result": "Overall positive affect/authenticity benefits but more introverted participants reported less positive benefit and greater negative affect/tiredness/lower authenticity.",
+      "disposition": "MIXED",
+      "locator": "Primary abstract",
+      "limitations": "No enduring Extraversion outcome proven; facet/trait moderation not standalone governed edge; historical control not concurrent randomized evidence.",
+      "dataset": "JACQUES-HAMILTON-2019-147",
+      "supportedSemantics": [
+        "CAUSAL"
+      ]
+    },
+    {
+      "key": "PEACH_TRIAL",
+      "sourceId": "SRC-CAND-PSY-LAYER-0171",
+      "basis": "EXPERIMENTAL",
+      "accessDepth": "SELECTED_FULL_TEXT",
+      "design": "Randomized one-month waitlist then coaching crossover",
+      "sample": "1523consenters;875starters",
+      "population": "Self-selected German-reading nonclinical smartphone users motivated to change personality",
+      "context": "Specified clinical/digital/social task; no uncontrolled occurrence ingestion",
+      "exposure": "Three-month multicomponent PEACH digital coaching",
+      "comparator": "One-month waitlist then same course",
+      "measurement": "Self/observer traits and selected changegoals",
+      "timing": "Three-month intervention;3monthfollow-up",
+      "result": "Self changes aligned with goals; observer increases clearer than decreases; no continued untreated comparator at final follow-up.",
+      "disposition": "MIXED",
+      "locator": "Primary abstract; selected Methods/Results/Discussion",
+      "limitations": "OUTSIDE outgoing-instruction identity: coaching bundles psychoeducation, diary, reminders and other tools. Attrition, selected goals and unblinded reports; no package/component transfer.",
+      "dataset": "PEACH-2018-2019",
+      "supportedSemantics": [
+        "CAUSAL"
+      ]
+    },
+    {
+      "key": "FACET_HETEROGENEITY",
+      "sourceId": "SRC-CAND-PSY-LAYER-0172",
+      "basis": "OBSERVATIONAL_LONGITUDINAL",
+      "accessDepth": "SELECTED_FULL_TEXT",
+      "design": "Measurement-invariance reanalysis of selected PEACH participants",
+      "sample": "552 selected completers/changegoal subset",
+      "population": "Self-selected German-reading nonclinical smartphone users motivated to change personality",
+      "context": "Specified clinical/digital/social task; no uncontrolled occurrence ingestion",
+      "exposure": "Same PEACH coaching",
+      "comparator": "Time and different changegoal groups, not fresh randomization",
+      "measurement": "BFI2 domain/facet/item self/observer ratings",
+      "timing": "Pre/postcourse",
+      "result": "Extraversion self change concentrated in sociability, not allfacets; conscientiousness organization/productiveness notuniformresponsibility. Scalar invariance concerns.",
+      "disposition": "MIXED",
+      "locator": "Primary abstract; selected Methods/Results/Discussion",
+      "limitations": "OUTSIDE instruction-alone evidence; same PEACH dataset, selected subset, no independent replication or whole-profile sign.",
+      "dataset": "PEACH-2018-2019",
+      "supportedSemantics": [
+        "ASSOCIATION"
+      ]
+    },
+    {
+      "key": "OBSERVER_NULL",
+      "sourceId": "SRC-CAND-PSY-LAYER-0172",
+      "basis": "OBSERVATIONAL_LONGITUDINAL",
+      "accessDepth": "SELECTED_FULL_TEXT",
+      "design": "Same reanalysis observer comparisons",
+      "sample": "Same552subset withavailableobserverreports",
+      "population": "Self-selected German-reading nonclinical smartphone users motivated to change personality",
+      "context": "Specified clinical/digital/social task; no uncontrolled occurrence ingestion",
+      "exposure": "Same coaching",
+      "comparator": "Earlier observer rating",
+      "measurement": "Observer facet/trait ratings",
+      "timing": "Pre/postcourse",
+      "result": "Observers generally showed small nonsignificant changes; not equivalence or proof of zero.",
+      "disposition": "NULL_FINDING",
+      "locator": "Primary abstract; selected Methods/Results/Discussion",
+      "limitations": "OUTSIDE instruction-alone null; same study contribution as preceding facet finding. Missingness and precision not extracted for equivalence.",
+      "dataset": "PEACH-2018-2019",
+      "supportedSemantics": [
+        "ASSOCIATION"
+      ]
+    },
+    {
+      "key": "CHALLENGE_SELECTION",
+      "sourceId": "SRC-CAND-PSY-LAYER-0175",
+      "basis": "OBSERVATIONAL_LONGITUDINAL",
+      "accessDepth": "ABSTRACT",
+      "design": "Intensive longitudinal freely accepted/completed challenges",
+      "sample": "Not extracted from abstract",
+      "population": "Source-specific volunteers/patients; population transfer not assumed",
+      "context": "Specified clinical/digital/social task; no uncontrolled occurrence ingestion",
+      "exposure": "Weekly trait-typical behavioral challenges completed",
+      "comparator": "Accepted but uncompleted challenges/individual variation",
+      "measurement": "Self-report traits and reported behavior",
+      "timing": "15weeks",
+      "result": "Completion predicted growth; mere acceptance did not. Selection and actual behavior differ.",
+      "disposition": "INSUFFICIENT",
+      "locator": "Primary abstract",
+      "limitations": "OUTSIDE outgoing-instruction controlled effect: completion not randomized; compliance, motivation and shared method; not proof that completing a given challenge causes trait growth.",
+      "dataset": "HUDSON-2019-CHALLENGES",
+      "supportedSemantics": [
+        "ASSOCIATION"
+      ]
+    }
+  ]
+}

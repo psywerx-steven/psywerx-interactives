@@ -117,6 +117,9 @@ jobs:
       - name: Validate truthful backward-compatible source verification
         run: python -m unittest discover -s tests -p "test_source_verification_v1.py"
 
+      - name: Validate incremental Psychological Layer candidate audit
+        run: python -m unittest discover -s tests -p "test_psychological_layer*.py"
+
       - name: Validate exact inactive SOC-F07 conditional completion
         run: python -m unittest discover -s tests -p "test_soc_f07_completion.py"
 
@@ -227,6 +230,9 @@ jobs:
 
       - name: Validate truthful backward-compatible source verification
         run: python -m unittest discover -s tests -p "test_source_verification_v1.py"
+
+      - name: Validate incremental Psychological Layer candidate audit
+        run: python -m unittest discover -s tests -p "test_psychological_layer*.py"
 
       - name: Validate exact inactive SOC-F07 conditional completion
         run: python -m unittest discover -s tests -p "test_soc_f07_completion.py"

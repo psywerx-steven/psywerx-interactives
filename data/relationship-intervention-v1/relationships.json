@@ -1122,6 +1122,152 @@
       "targetEntityId": "PSY-113",
       "targetEntityType": "DRIVER",
       "temporalSpecification": null
+    },
+    {
+      "applicability": {
+        "analyticUnit": "Person × specified claim × exposure protocol",
+        "context": "Repeated encounter with the same factual statement/headline can alter subsequently rated belief confidence in controlled adult online/laboratory tasks. Ordinary judgment tasks often show increases; extreme implausibility, explicit veracity cues and initial accuracy focus bound the claim. No universal monotonic sign, transfer to arbitrary content, calibrated truth or behavior is asserted. Extreme implausibility is not a universal exclusion: a later five-presentation/100-point-scale experiment found higher ratings while ratings remained below midpoint.",
+        "populationOrSystem": "Repeated encounter with the same factual statement/headline can alter subsequently rated belief confidence in controlled adult online/laboratory tasks. Ordinary judgment tasks often show increases; extreme implausibility, explicit veracity cues and initial accuracy focus bound the claim. No universal monotonic sign, transfer to arbitrary content, calibrated truth or behavior is asserted. Extreme implausibility is not a universal exclusion: a later five-presentation/100-point-scale experiment found higher ratings while ratings remained below midpoint."
+      },
+      "associationSpecification": null,
+      "boundaryConditions": "Repeated encounter with the same factual statement/headline can alter subsequently rated belief confidence in controlled adult online/laboratory tasks. Ordinary judgment tasks often show increases; extreme implausibility, explicit veracity cues and initial accuracy focus bound the claim. No universal monotonic sign, transfer to arbitrary content, calibrated truth or behavior is asserted. Extreme implausibility is not a universal exclusion: a later five-presentation/100-point-scale experiment found higher ratings while ratings remained below midpoint.",
+      "causalClaim": true,
+      "causalClaimRole": "TOTAL_EFFECT",
+      "causalLag": null,
+      "causalReviewGate": "STANDARD_CAUSAL",
+      "combinationRule": null,
+      "compatibility": {
+        "authorityStatus": "V1_LIFECYCLE",
+        "blockedFields": [
+          "activationNotAuthorized",
+          "numericalExecutionNotAuthorized",
+          "practitionerActionabilityNotAuthorized"
+        ],
+        "legacyRecord": null,
+        "legacyRecordHash": null,
+        "legacyRelationFamily": null,
+        "legacyScientificFields": null,
+        "migrationCompleteness": "COMPLETE",
+        "sourceSchema": "RELATIONSHIP_V1",
+        "v1Executability": "NOT_EXECUTABLE"
+      },
+      "evidenceAssessmentIds": [
+        "EVA-V1-PSY-LAYER-REL-001"
+      ],
+      "exposurePattern": null,
+      "functionalForm": null,
+      "governance": {
+        "lifecycleStatus": "GOVERNED",
+        "activationStatus": "INACTIVE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "APPROVED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": "docs/governance/scale-up/PSYCHOLOGICAL_LAYER/PSYCHOLOGICAL_LAYER_GOVERNANCE_DECISION_001.md",
+        "authorizedBy": "authorized human governor",
+        "decisionDate": "2026-09-17",
+        "effectiveVersion": "PSYCHOLOGICAL-LAYER-GOVERNANCE-001",
+        "decisionRationale": "Approved exact bounded repetition-to-specified-belief-confidence proposition with context-dependent direction, null/counterexample boundaries, and no truth, calibration, behavior, universal-dose, or unrestricted-transfer claim; activation withheld.",
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": null
+            },
+            "governanceDecisionRecord": null,
+            "objectId": "REL-V1-PSY-LAYER-001",
+            "provenance": "AUD-PSYCHOLOGICAL-LAYER-AE-V1-20260907-001/PSY-F01; candidate-lineage:REL-CAND-PSY-LAYER-0001",
+            "rationale": "Candidate packet prepared for human review; no scientific authority granted",
+            "revision": 1,
+            "timestamp": "2026-09-07T16:54:31Z",
+            "toState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "CANDIDATE"
+            }
+          },
+          {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "CANDIDATE"
+            },
+            "governanceDecisionRecord": null,
+            "objectId": "REL-V1-PSY-LAYER-001",
+            "provenance": "AUD-PSYCHOLOGICAL-LAYER-AE-V1-20260907-001/PSY-F01; candidate-lineage:REL-CAND-PSY-LAYER-0001",
+            "rationale": "Candidate packet prepared for human review; no scientific authority granted",
+            "revision": 1,
+            "timestamp": "2026-09-07T16:54:31Z",
+            "toState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "RESEARCH_NEEDED"
+            }
+          },
+          {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "RESEARCH_NEEDED"
+            },
+            "governanceDecisionRecord": null,
+            "objectId": "REL-V1-PSY-LAYER-001",
+            "provenance": "AUD-PSYCHOLOGICAL-LAYER-AE-V1-20260907-001/PSY-F01; candidate-lineage:REL-CAND-PSY-LAYER-0001",
+            "rationale": "Candidate packet prepared for human review; no scientific authority granted",
+            "revision": 1,
+            "timestamp": "2026-09-07T16:54:31Z",
+            "toState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "REVIEW_READY"
+            }
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "GOVERNED",
+              "activationStatus": "INACTIVE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Exact materialization of the authorized Psychological Layer decision; activation explicitly withheld.",
+            "timestamp": "2026-09-18T02:40:00Z",
+            "objectId": "REL-V1-PSY-LAYER-001",
+            "revision": 1,
+            "provenance": "AUD-PSYCHOLOGICAL-LAYER-AE-V1-20260907-001:5675780b7c36c788f222617810bfd07ee64ebfba:REL-CAND-PSY-LAYER-0001",
+            "governanceDecisionRecord": "docs/governance/scale-up/PSYCHOLOGICAL_LAYER/PSYCHOLOGICAL_LAYER_GOVERNANCE_DECISION_001.md",
+            "exactDecisionMaterialization": true
+          }
+        ]
+      },
+      "id": "REL-V1-PSY-LAYER-001",
+      "legacyDirectness": null,
+      "mechanism": "Repeated encounters may supply processing familiarity/fluency or memory-reference cues interpreted during truth judgment. Competing mechanisms remain unresolved; no mediating pathway asserted.",
+      "moderatedRelationshipId": null,
+      "moderationDirection": null,
+      "moderatorSpecifications": [],
+      "persistence": null,
+      "polarity": "CONTEXT_DEPENDENT",
+      "predicate": "CAUSES",
+      "rdsSafeguards": null,
+      "relationFamily": "CAUSAL",
+      "revision": 1,
+      "schemaVersion": "1.0.0",
+      "sourceEntityId": "INF-041",
+      "sourceEntityType": "DRIVER",
+      "sourceIds": [
+        "SRC-433",
+        "SRC-560",
+        "SRC-562",
+        "SRC-603"
+      ],
+      "symmetry": "DIRECTED",
+      "targetEntityId": "PSY-003",
+      "targetEntityType": "DRIVER",
+      "temporalSpecification": null
     }
   ]
 }

@@ -215,10 +215,10 @@ class InfF03Activation001Tests(unittest.TestCase):
     def test_only_authorized_scientific_records_changed_from_audited_head(self):
         before_rel = {row["id"]: row for row in show_json(AUDITED_HEAD, "data/relationship-intervention-v1/relationships.json")["relationships"]}
         after_rel = {row["id"]: row for row in self.relationships}
-        self.assertEqual({identifier for identifier in after_rel if after_rel[identifier] != before_rel[identifier]}, {"REL-V1-INF-F03-001"})
+        self.assertEqual({identifier for identifier in before_rel if after_rel[identifier] != before_rel[identifier]}, {"REL-V1-INF-F03-001"})
         before_ev = {row["id"]: row for row in show_json(AUDITED_HEAD, "data/relationship-intervention-v1/evidence-assessments.json")["evidenceAssessments"]}
         after_ev = {row["id"]: row for row in self.ri_evidence}
-        self.assertEqual({identifier for identifier in after_ev if after_ev[identifier] != before_ev[identifier]}, {"EVA-V1-INF-F03-REL-001"})
+        self.assertEqual({identifier for identifier in before_ev if after_ev[identifier] != before_ev[identifier]}, {"EVA-V1-INF-F03-REL-001"})
         before_catalog = show_json(AUDITED_HEAD, "data/actions-events-v1/catalog.json")
         before_records = {row["id"]: row for row in ae.all_records(before_catalog)}
         after_records = {row["id"]: row for row in ae.all_records(self.catalog)}

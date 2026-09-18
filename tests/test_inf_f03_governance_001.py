@@ -75,9 +75,9 @@ class InfF03Governance001Tests(unittest.TestCase):
             RELATIONSHIP_IDS,
         )
         self.assertEqual({row["id"] for row in self.ae_catalog["happeningTypes"] if 'INF-F03' in row['id']}, TYPE_IDS)
-        self.assertEqual({row["id"] for row in self.ae_catalog["effectAssertions"]}, EFFECT_IDS)
+        self.assertEqual({row["id"] for row in self.ae_catalog["effectAssertions"] if "INF-F03" in row["id"]}, EFFECT_IDS)
         self.assertEqual(
-            {row["id"] for row in self.ae_catalog["evidenceAssessments"]},
+            {row["id"] for row in self.ae_catalog["evidenceAssessments"] if "INF-F03" in row["id"]},
             {"EVA-AE-V1-INF-F03-001", "EVA-AE-V1-INF-F03-002"},
         )
         self.assertEqual(self.ae_catalog["occurrences"], [])
@@ -179,7 +179,7 @@ class InfF03Governance001Tests(unittest.TestCase):
         self.assertEqual({row["id"] for row in native}, REGISTERED_SOURCE_IDS)
         self.assertEqual({row["pmid"] for row in native}, {"35257980", "32205438", "38026007"})
         all_dois = [row["doi"].casefold() for row in self.ri_sources]
-        all_pmids = [row["pmid"] for row in self.ri_sources]
+        all_pmids = [row["pmid"] for row in self.ri_sources if row.get("pmid")]
         self.assertEqual(len(all_dois), len(set(all_dois)))
         self.assertEqual(len(all_pmids), len(set(all_pmids)))
         manifest = load(DOCS / "INF_F03_SOURCE_REGISTRATION_MANIFEST.json")
@@ -187,8 +187,8 @@ class InfF03Governance001Tests(unittest.TestCase):
         self.assertEqual(manifest["recordsBlockedBySourceVerification"], [])
 
     def test_five_governed_source_findings_and_three_assessments(self):
-        rel_findings = self.rel_findings["records"][0]["sourceFindings"]
-        ae_findings = [finding for assessment in self.ae_catalog["evidenceAssessments"] for finding in assessment["sourceFindings"]]
+        rel_findings = next(row for row in self.rel_findings["records"] if row["assertionId"] == "REL-V1-INF-F03-001")["sourceFindings"]
+        ae_findings = [finding for assessment in self.ae_catalog["evidenceAssessments"] if "INF-F03" in assessment["id"] for finding in assessment["sourceFindings"]]
         findings = rel_findings + ae_findings
         self.assertEqual(len(findings), 5)
         self.assertTrue(all(finding["sourceId"] in REGISTERED_SOURCE_IDS for finding in findings))
@@ -196,7 +196,7 @@ class InfF03Governance001Tests(unittest.TestCase):
         self.assertTrue(any(finding["disposition"] == "MIXED" for finding in findings))
         for finding in findings:
             ae.schema_set().validate("source-finding", finding)
-        assessments = [row for row in self.ri_evidence if row["id"] == "EVA-V1-INF-F03-REL-001"] + self.ae_catalog["evidenceAssessments"]
+        assessments = [row for row in self.ri_evidence if row["id"] == "EVA-V1-INF-F03-REL-001"] + [row for row in self.ae_catalog["evidenceAssessments"] if "INF-F03" in row["id"]]
         self.assertEqual({row["id"] for row in assessments}, EVIDENCE_IDS)
         status = {row["id"]: row["governance"]["activationStatus"] for row in assessments}
         self.assertEqual(status, {

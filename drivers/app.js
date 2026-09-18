@@ -10,6 +10,7 @@ const CONFIG = Object.assign(
 );
 
 const PAGE_SIZE = 24;
+const SOURCE_PAGE_SIZE = 24;
 const DRIVER_QUERY_PARAMETER = "driver";
 const FAMILY_QUERY_PARAMETER = "family";
 const VIEW_QUERY_PARAMETER = "view";
@@ -35,6 +36,11 @@ const FACETS = [
   { field: "timeScaleOfChange", label: "Time scale", codebookId: "CB-DRV-TIME-SCALE" },
   { field: "observability", label: "Observability", codebookId: "CB-DRV-OBSERVABILITY" },
   { field: "evidenceStrength", label: "Evidence strength", codebookId: "CB-DRV-EVIDENCE-STRENGTH" },
+];
+const SOURCE_FACETS = [
+  { field: "layerIds", label: "Layer" },
+  { field: "familyIds", label: "Family" },
+  { field: "driverIds", label: "Driver" },
 ];
 const PLAIN_LANGUAGE_KEYS = [
   "driverId", "plainLanguageLabel", "plainLanguageExplanation",
@@ -68,8 +74,10 @@ const SCENARIO_EXAMPLES = {
 const $ = (selector) => document.querySelector(selector);
 const browseModeButton = $("#browse-mode-button");
 const searchModeButton = $("#search-mode-button");
+const sourcesModeButton = $("#sources-mode-button");
 const browsePanel = $("#browse-panel");
 const searchPanel = $("#search-panel");
+const sourcesPanel = $("#sources-panel");
 const browseBreadcrumbs = $("#browse-breadcrumbs");
 const browseSummary = $("#browse-summary");
 const browseKicker = $("#browse-kicker");
@@ -87,6 +95,13 @@ const totalFamilyCount = $("#total-family-count");
 const resultSummary = $("#result-summary");
 const driverList = $("#driver-list");
 const loadMoreButton = $("#load-more");
+const sourceSearchInput = $("#source-search");
+const sourceFacetFilters = $("#source-facet-filters");
+const activeSourceFilters = $("#active-source-filters");
+const clearSourceFiltersButton = $("#clear-source-filters");
+const sourceResultSummary = $("#source-result-summary");
+const sourceList = $("#source-list");
+const loadMoreSourcesButton = $("#load-more-sources");
 const loadError = $("#load-error");
 const linkNotice = $("#link-notice");
 const driverDialog = $("#driver-dialog");
@@ -128,15 +143,21 @@ let hierarchy = new Map();
 let plainLanguageByDriverId = new Map();
 let codebookById = new Map();
 let sourceById = new Map();
+let sourceProjection = null;
+let normalizedSources = [];
+let normalizedSourceById = new Map();
+let filteredSources = [];
 let filteredDrivers = [];
 let detailDrivers = [];
 let visibleCount = PAGE_SIZE;
+let visibleSourceCount = SOURCE_PAGE_SIZE;
 let currentDriverId = null;
 let detailOpenedFromExplorer = false;
 let activeMode = "browse";
 let selectedBrowseLayer = null;
 let selectedBrowseFamilyId = null;
 let searchTimer = null;
+let sourceSearchTimer = null;
 let timeScaleOrder = [...FALLBACK_TIME_ORDER];
 let activeInfoButton = null;
 const SCENARIO_AVAILABLE = Boolean(CONFIG.scenarioAiEnabled && CONFIG.scenarioApiUrl);
@@ -151,6 +172,9 @@ let activeScenarioRequest = null;
 
 const facetSelections = Object.fromEntries(
   FACETS.map(({ field }) => [field, new Set()])
+);
+const sourceFacetSelections = Object.fromEntries(
+  SOURCE_FACETS.map(({ field }) => [field, new Set()])
 );
 
 function normalizeSearchText(value) {
@@ -418,13 +442,19 @@ function buildIndexes() {
 }
 
 function setMode(mode, options = {}) {
-  activeMode = mode === "search" ? "search" : "browse";
+  activeMode = ["browse", "search", "sources"].includes(mode) ? mode : "browse";
   const browsing = activeMode === "browse";
+  const searching = activeMode === "search";
+  const viewingSources = activeMode === "sources";
   browsePanel.hidden = !browsing;
-  searchPanel.hidden = browsing;
+  searchPanel.hidden = !searching;
+  sourcesPanel.hidden = !viewingSources;
   browseModeButton.setAttribute("aria-pressed", String(browsing));
-  searchModeButton.setAttribute("aria-pressed", String(!browsing));
-  if (options.focus) (browsing ? browseHeading : searchInput).focus();
+  searchModeButton.setAttribute("aria-pressed", String(searching));
+  sourcesModeButton.setAttribute("aria-pressed", String(viewingSources));
+  if (options.focus) {
+    (browsing ? browseHeading : searching ? searchInput : sourceSearchInput).focus();
+  }
 }
 
 function entityCountLabel(family) {
@@ -685,6 +715,287 @@ function renderActiveFilters() {
     fragment.append(filterChip(label, value, field))));
   activeFilters.replaceChildren(fragment);
   clearFiltersButton.disabled = !query && !FACETS.some(({ field }) => facetSelections[field].size);
+}
+
+function sourceFacetConfig(field) {
+  return SOURCE_FACETS.find((facet) => facet.field === field);
+}
+
+function sourceFacetValueLabel(field, value) {
+  if (field === "familyIds") {
+    const family = familyById.get(value);
+    return family ? family.name : value;
+  }
+  if (field === "driverIds") {
+    const driver = driverById.get(value);
+    return driver ? driver.name : value;
+  }
+  return value;
+}
+
+function sourceFacetOptions(field) {
+  if (field === "layerIds") {
+    return LAYER_ORDER.filter((layer) => hierarchy.has(layer));
+  }
+  if (field === "familyIds") {
+    return families.filter((family) =>
+      sourceFacetSelections.layerIds.size === 0 || sourceFacetSelections.layerIds.has(family.layer)
+    ).sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: "base", numeric: true }))
+      .map((family) => family.id);
+  }
+  return drivers.filter((driver) => driver.entityType === "DRIVER" &&
+    (sourceFacetSelections.layerIds.size === 0 || sourceFacetSelections.layerIds.has(driver.layer)) &&
+    (sourceFacetSelections.familyIds.size === 0 || sourceFacetSelections.familyIds.has(driver.primaryFamilyId)))
+    .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: "base", numeric: true }))
+    .map((driver) => driver.id);
+}
+
+function sourceMatchesFacet(source, field, ignoredField = null) {
+  if (field === ignoredField) return true;
+  const selected = sourceFacetSelections[field];
+  return selected.size === 0 || source[field].some((value) => selected.has(value));
+}
+
+function sourceMatchesQuery(source) {
+  const query = window.PSYWERX_SOURCE_INDEX.normalizedText(sourceSearchInput.value.trim());
+  return !query || source.searchText.includes(query);
+}
+
+function sourceFacetCounts(field, options) {
+  const counts = new Map(options.map((value) => [value, 0]));
+  normalizedSources.forEach((source) => {
+    if (!sourceMatchesQuery(source) || !SOURCE_FACETS.every((facet) =>
+      sourceMatchesFacet(source, facet.field, field))) return;
+    new Set(source[field]).forEach((value) => {
+      if (counts.has(value)) counts.set(value, counts.get(value) + 1);
+    });
+  });
+  return counts;
+}
+
+function renderSourceFacet(field) {
+  const config = sourceFacetConfig(field);
+  const old = sourceFacetFilters.querySelector('[data-source-facet="' + field + '"]');
+  const details = element("details", "facet");
+  details.dataset.sourceFacet = field;
+  details.open = old ? old.open : field !== "driverIds";
+  const summary = element("summary", "facet__summary");
+  summary.append(element("span", "", config.label), element("span", "facet__selected-count"));
+  details.append(summary);
+  const options = sourceFacetOptions(field);
+  const counts = sourceFacetCounts(field, options);
+  const choices = element("div", "facet__choices");
+  options.forEach((value, index) => {
+    const label = element("label", "facet-option");
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.value = value;
+    checkbox.dataset.sourceFacetField = field;
+    checkbox.id = "source-facet-" + field + "-" + String(index);
+    checkbox.checked = sourceFacetSelections[field].has(value);
+    label.htmlFor = checkbox.id;
+    label.append(checkbox, element("span", "facet-option__label", sourceFacetValueLabel(field, value)),
+      element("span", "facet-option__count", String(counts.get(value) || 0)));
+    choices.append(label);
+  });
+  details.append(choices);
+  if (old) old.replaceWith(details); else sourceFacetFilters.append(details);
+}
+
+function updateSourceFacetSelectedCounts() {
+  SOURCE_FACETS.forEach(({ field }) => {
+    const node = sourceFacetFilters.querySelector(
+      '[data-source-facet="' + field + '"] .facet__selected-count'
+    );
+    if (node) node.textContent = sourceFacetSelections[field].size
+      ? String(sourceFacetSelections[field].size) + " selected" : "Any";
+  });
+}
+
+function renderSourceFacets() {
+  sourceFacetFilters.replaceChildren();
+  SOURCE_FACETS.forEach(({ field }) => renderSourceFacet(field));
+  updateSourceFacetSelectedCounts();
+}
+
+function syncSourceDependentSelections(changedField) {
+  if (changedField === "layerIds") {
+    const availableFamilies = new Set(sourceFacetOptions("familyIds"));
+    [...sourceFacetSelections.familyIds].forEach((familyId) => {
+      if (!availableFamilies.has(familyId)) sourceFacetSelections.familyIds.delete(familyId);
+    });
+  }
+  if (changedField === "layerIds" || changedField === "familyIds") {
+    const availableDrivers = new Set(sourceFacetOptions("driverIds"));
+    [...sourceFacetSelections.driverIds].forEach((driverId) => {
+      if (!availableDrivers.has(driverId)) sourceFacetSelections.driverIds.delete(driverId);
+    });
+  }
+}
+
+function sourceFilterChip(field, value) {
+  const config = sourceFacetConfig(field);
+  const chip = filterChip(config.label, sourceFacetValueLabel(field, value), field);
+  chip.dataset.clearValue = value;
+  return chip;
+}
+
+function renderActiveSourceFilters() {
+  const fragment = document.createDocumentFragment();
+  const query = sourceSearchInput.value.trim();
+  if (query) fragment.append(filterChip("Search", query, "search"));
+  SOURCE_FACETS.forEach(({ field }) => sourceFacetSelections[field].forEach((value) =>
+    fragment.append(sourceFilterChip(field, value))));
+  activeSourceFilters.replaceChildren(fragment);
+  clearSourceFiltersButton.disabled = !query &&
+    !SOURCE_FACETS.some(({ field }) => sourceFacetSelections[field].size);
+}
+
+function sourceMetadataLine(source) {
+  const values = [];
+  if (source.authors) values.push(source.authors);
+  if (source.year) values.push(String(source.year));
+  if (source.publisherOrJournal) values.push(source.publisherOrJournal);
+  if (source.sourceType) values.push(source.sourceType);
+  return values;
+}
+
+function appendSourceExternalLink(container, source) {
+  const href = safeExternalHref(source.externalUrl);
+  if (!href) return;
+  const link = element("a", "source-card__external-link",
+    (source.externalLinkLabel || (source.doi ? "Open DOI" : "Open source")) + " ↗");
+  link.href = href;
+  link.target = "_blank";
+  link.rel = "noopener noreferrer";
+  link.setAttribute("aria-label", (source.externalLinkLabel || "Open source") +
+    ": " + (source.title || source.citation) + " (opens in a new tab)");
+  container.append(link);
+}
+
+function createSourceRelationships(source) {
+  const section = element("div", "source-card__relationships");
+  if (!source.driverIds.length) {
+    section.append(element("p", "source-card__relationship-empty",
+      source.rdsIds.length
+        ? "Referenced by " + source.rdsIds.length.toLocaleString() +
+          (source.rdsIds.length === 1 ? " relational / derived state" : " relational / derived states") +
+          "; no canonical Driver backlink."
+        : "No canonical Driver backlink."));
+    return section;
+  }
+  const details = element("details", "source-relationships-detail");
+  details.open = source.driverIds.length <= 2;
+  const summary = element("summary", "",
+    "View " + source.driverIds.length.toLocaleString() +
+    (source.driverIds.length === 1 ? " Driver relationship" : " Driver relationships"));
+  details.append(summary);
+  const groups = new Map();
+  source.driverIds.forEach((driverId) => {
+    const driver = driverById.get(driverId);
+    if (!driver) return;
+    if (!groups.has(driver.layer)) groups.set(driver.layer, new Map());
+    const layerGroups = groups.get(driver.layer);
+    if (!layerGroups.has(driver.primaryFamilyId)) layerGroups.set(driver.primaryFamilyId, []);
+    layerGroups.get(driver.primaryFamilyId).push(driver);
+  });
+  const paths = element("div", "source-taxonomy-paths");
+  LAYER_ORDER.filter((layer) => groups.has(layer)).forEach((layer) => {
+    const layerSection = element("section", "source-taxonomy-path");
+    setLayerIdentity(layerSection, layer);
+    layerSection.append(element("h4", "layer-badge", layer));
+    groups.get(layer).forEach((groupDrivers, familyId) => {
+      const family = familyById.get(familyId);
+      const familyGroup = element("div", "source-family-group");
+      familyGroup.append(element("p", "source-family-group__name", "→ " + (family ? family.name : familyId)));
+      const driverLinks = element("div", "source-driver-links");
+      groupDrivers.forEach((driver) => {
+        const button = element("button", "source-driver-link", "→ " + driver.name);
+        button.type = "button";
+        button.dataset.sourceDriverId = driver.id;
+        button.setAttribute("aria-label", "Open Driver " + driver.name);
+        driverLinks.append(button);
+      });
+      familyGroup.append(driverLinks);
+      layerSection.append(familyGroup);
+    });
+    paths.append(layerSection);
+  });
+  details.append(paths);
+  section.append(details);
+  return section;
+}
+
+function createSourceCard(source) {
+  const article = element("article", "source-card");
+  article.dataset.sourceId = source.sourceId;
+  if (source.layerIds.length === 1) setLayerIdentity(article, source.layerIds[0]);
+  const header = element("header", "source-card__header");
+  header.append(element("span", "source-card__id", source.sourceId));
+  const title = element("h3", "source-card__title", source.title || source.citation);
+  header.append(title);
+  if (source.title && source.title !== source.citation) {
+    header.append(element("p", "source-card__citation", source.citation));
+  }
+  const metadata = sourceMetadataLine(source);
+  if (metadata.length) {
+    const line = element("p", "source-card__metadata");
+    metadata.forEach((value) => line.append(element("span", "", value)));
+    header.append(line);
+  }
+  const usage = element("p", "source-card__usage",
+    "Used by " + source.driverIds.length.toLocaleString() +
+    (source.driverIds.length === 1 ? " Driver" : " Drivers"));
+  if (source.rdsIds.length) usage.append(document.createTextNode(" · Referenced by " +
+    source.rdsIds.length.toLocaleString() + " RDS"));
+  header.append(usage);
+  const actions = element("div", "source-card__actions");
+  appendSourceExternalLink(actions, source);
+  if (source.doi) actions.append(element("span", "source-card__doi", "DOI: " + source.doi));
+  if (actions.children.length) header.append(actions);
+  article.append(header, createSourceRelationships(source));
+  if (source.summary) {
+    const summary = element("section", "source-card__summary");
+    summary.append(element("h4", "", "Summary"), element("p", "", source.summary));
+    article.append(summary);
+  }
+  return article;
+}
+
+function renderSourceResults() {
+  const total = filteredSources.length;
+  const shown = filteredSources.slice(0, visibleSourceCount);
+  const fragment = document.createDocumentFragment();
+  if (!total) {
+    const empty = element("div", "empty-state");
+    empty.append(element("h3", "", "No sources match the current search and filters."),
+      element("p", "", "Try a broader search or remove one or more active filters."));
+    fragment.append(empty);
+  } else shown.forEach((source) => fragment.append(createSourceCard(source)));
+  sourceList.replaceChildren(fragment);
+  sourceResultSummary.textContent = total > shown.length
+    ? "Sources (" + total.toLocaleString() + ") · Showing " + shown.length.toLocaleString()
+    : "Sources (" + total.toLocaleString() + ")";
+  loadMoreSourcesButton.hidden = shown.length >= total;
+}
+
+function applySourceFilters(options = {}) {
+  if (options.resetLimit !== false) visibleSourceCount = SOURCE_PAGE_SIZE;
+  filteredSources = window.PSYWERX_SOURCE_INDEX.filterSources(
+    normalizedSources, sourceSearchInput.value, sourceFacetSelections
+  )
+    .sort((a, b) => (a.title || a.citation).localeCompare(
+      b.title || b.citation, undefined, { sensitivity: "base", numeric: true }
+    ) || a.sourceId.localeCompare(b.sourceId, undefined, { numeric: true }));
+  renderSourceFacets();
+  renderActiveSourceFilters();
+  renderSourceResults();
+}
+
+function clearAllSourceFilters() {
+  sourceSearchInput.value = "";
+  SOURCE_FACETS.forEach(({ field }) => sourceFacetSelections[field].clear());
+  applySourceFilters();
 }
 
 function formatValues(value) {
@@ -952,6 +1263,11 @@ function createSourcesSection(driver) {
       if (source.resolutionType === "SEARCH") link.classList.add("source-item__link--search");
       item.append(link);
     } else item.append(element("span", "source-item__unresolved", "Direct link unavailable"));
+    const browseButton = element("button", "source-item__browse", "Find in Sources");
+    browseButton.type = "button";
+    browseButton.dataset.browseSourceId = sourceId;
+    browseButton.setAttribute("aria-label", "Find source " + sourceId + " in the Sources tab");
+    item.append(browseButton);
     list.append(item);
   });
   section.append(list);
@@ -1092,7 +1408,9 @@ function taxonomyUrl(parameters = {}) {
     .forEach((parameter) => url.searchParams.delete(parameter));
   if (parameters.familyId) url.searchParams.set(FAMILY_QUERY_PARAMETER, parameters.familyId);
   if (parameters.driverId) url.searchParams.set(DRIVER_QUERY_PARAMETER, parameters.driverId);
-  if (parameters.view === "search") url.searchParams.set(VIEW_QUERY_PARAMETER, "search");
+  if (["search", "sources"].includes(parameters.view)) {
+    url.searchParams.set(VIEW_QUERY_PARAMETER, parameters.view);
+  }
   url.hash = "";
   return url;
 }
@@ -1103,6 +1421,7 @@ function writeHistory(action, state, url) {
 }
 
 function currentBackgroundState() {
+  if (activeMode === "sources") return { view: "sources" };
   if (activeMode === "search") return { view: "search" };
   if (selectedBrowseFamilyId) return { view: "family", familyId: selectedBrowseFamilyId };
   if (selectedBrowseLayer) return { view: "layer", layer: selectedBrowseLayer };
@@ -1157,6 +1476,15 @@ function showSearch(urlAction, focus) {
   document.title = "Search | " + DEFAULT_DOCUMENT_TITLE;
   writeHistory(urlAction, { view: "search" }, taxonomyUrl({ view: "search" }));
   if (focus) searchInput.focus();
+}
+
+function showSources(urlAction, focus) {
+  hideDriverDialog();
+  setMode("sources");
+  detailDrivers = [];
+  document.title = "Sources | " + DEFAULT_DOCUMENT_TITLE;
+  writeHistory(urlAction, { view: "sources" }, taxonomyUrl({ view: "sources" }));
+  if (focus) sourceSearchInput.focus();
 }
 
 function showDriverDialog() {
@@ -1216,6 +1544,7 @@ function closeDriverDetail() {
   if (background.view === "family") showFamily(background.familyId, "replace", true);
   else if (background.view === "layer") showBrowseLayer(background.layer, "replace", true);
   else if (background.view === "search") showSearch("replace", true);
+  else if (background.view === "sources") showSources("replace", true);
   else showBrowseRoot("replace", true);
 }
 
@@ -1263,6 +1592,9 @@ function restoreBackground(background) {
   } else if (background && background.view === "search") {
     setMode("search");
     detailDrivers = filteredDrivers;
+  } else if (background && background.view === "sources") {
+    setMode("sources");
+    detailDrivers = [];
   } else {
     setMode("browse");
     selectedBrowseLayer = null;
@@ -1301,6 +1633,7 @@ function applyLocationState(state) {
     }
   } else if (state && state.view === "layer") showBrowseLayer(state.layer, null, false);
   else if (requestedView === "search" || state && state.view === "search") showSearch(null, false);
+  else if (requestedView === "sources" || state && state.view === "sources") showSources(null, false);
   else {
     showBrowseRoot(null, false);
     if (requestedView || url.searchParams.has("source") || url.searchParams.has("target")) {
@@ -1623,9 +1956,11 @@ async function loadTaxonomy() {
     if (supplemental[0].status === "fulfilled") {
       codebookById = validateCodebook(supplemental[0].value);
     } else console.warn("Codebook help is unavailable:", supplemental[0].reason);
+    let sourceEnvelope = null;
     if (supplemental[1].status === "fulfilled") {
-      sourceById = validateSources(supplemental[1].value);
-    } else console.warn("Governed source links are unavailable:", supplemental[1].reason);
+      sourceEnvelope = supplemental[1].value;
+      sourceById = validateSources(sourceEnvelope);
+    } else console.warn("Source Explorer data is unavailable:", supplemental[1].reason);
     drivers = driverData.map((driver) => {
       const enriched = Object.assign({}, driver, {
         _plainLanguage: plainLanguageByDriverId.get(driver.id) || null,
@@ -1637,13 +1972,33 @@ async function loadTaxonomy() {
     });
     families = familyEnvelope.families;
     buildIndexes();
+    if (sourceEnvelope && window.PSYWERX_SOURCE_INDEX &&
+        typeof window.PSYWERX_SOURCE_INDEX.buildSourceIndex === "function") {
+      sourceProjection = window.PSYWERX_SOURCE_INDEX.buildSourceIndex(
+        sourceEnvelope, drivers, families
+      );
+      normalizedSources = [...sourceProjection.sources];
+      normalizedSourceById = sourceProjection.sourceById;
+    } else if (sourceEnvelope) {
+      console.warn("The Source Explorer projection is unavailable.");
+    }
     totalDriverCount.textContent = drivers.filter((entity) => entity.entityType === "DRIVER").length.toLocaleString();
     totalRdsCount.textContent = drivers.filter((entity) => entity.entityType === "RELATIONAL_DERIVED_STATE").length.toLocaleString();
     totalEntityCount.textContent = drivers.length.toLocaleString();
     totalFamilyCount.textContent = families.length.toLocaleString();
     searchInput.disabled = false;
+    sourceSearchInput.disabled = !sourceProjection;
     renderFacets();
     applyFilters();
+    if (sourceProjection) applySourceFilters();
+    else {
+      const empty = element("div", "empty-state");
+      empty.append(element("h3", "", "Sources are temporarily unavailable."),
+        element("p", "", "Browse Taxonomy and Search & Filter remain available."));
+      sourceResultSummary.textContent = "Sources unavailable";
+      sourceList.replaceChildren(empty);
+      loadMoreSourcesButton.hidden = true;
+    }
     updateScenarioUi();
     const url = new URL(window.location.href);
     const initialDriverId = url.searchParams.get(DRIVER_QUERY_PARAMETER);
@@ -1653,15 +2008,18 @@ async function loadTaxonomy() {
       ? { view: "driver", driverId: initialDriverId, fromExplorer: false,
           background: initialFamilyId ? { view: "family", familyId: initialFamilyId } : { view: "root" } }
       : initialFamilyId ? { view: "family", familyId: initialFamilyId }
-        : requestedView === "search" ? { view: "search" } : { view: "root" };
+        : requestedView === "search" ? { view: "search" }
+          : requestedView === "sources" ? { view: "sources" } : { view: "root" };
     history.replaceState(initialState, "", window.location.href);
     applyLocationState(initialState);
   } catch (error) {
     console.error("Unable to load PSYWERX taxonomy:", error);
     browseSummary.textContent = "Taxonomy unavailable";
     resultSummary.textContent = "Taxonomy unavailable";
+    sourceResultSummary.textContent = "Sources unavailable";
     browseContent.replaceChildren();
     driverList.replaceChildren();
+    sourceList.replaceChildren();
     loadError.querySelector("p").textContent =
       "The required Entity, Family, and public explanation datasets could not be loaded or did not agree. " +
       "Check the browser console, then reload the page. For local preview, use an HTTP server.";
@@ -1677,6 +2035,9 @@ browseModeButton.addEventListener("click", () => {
 });
 searchModeButton.addEventListener("click", () => {
   if (activeMode === "search") searchInput.focus(); else showSearch("push", true);
+});
+sourcesModeButton.addEventListener("click", () => {
+  if (activeMode === "sources") sourceSearchInput.focus(); else showSources("push", true);
 });
 browseContent.addEventListener("click", (event) => {
   const layerButton = event.target.closest("[data-browse-layer]");
@@ -1728,6 +2089,46 @@ loadMoreButton.addEventListener("click", () => {
   visibleCount += PAGE_SIZE;
   applyFilters({ resetLimit: false });
 });
+sourceSearchInput.addEventListener("input", () => {
+  window.clearTimeout(sourceSearchTimer);
+  sourceSearchTimer = window.setTimeout(() => applySourceFilters(), 80);
+});
+sourceFacetFilters.addEventListener("change", (event) => {
+  const checkbox = event.target.closest("[data-source-facet-field]");
+  if (!checkbox) return;
+  const field = checkbox.dataset.sourceFacetField;
+  const selected = sourceFacetSelections[field];
+  if (checkbox.checked) selected.add(checkbox.value); else selected.delete(checkbox.value);
+  syncSourceDependentSelections(field);
+  applySourceFilters();
+});
+activeSourceFilters.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-clear-facet]");
+  if (!button) return;
+  const field = button.dataset.clearFacet;
+  if (field === "search") sourceSearchInput.value = "";
+  else {
+    sourceFacetSelections[field].delete(button.dataset.clearValue);
+    syncSourceDependentSelections(field);
+  }
+  applySourceFilters();
+});
+clearSourceFiltersButton.addEventListener("click", () => {
+  clearAllSourceFilters();
+  sourceSearchInput.focus();
+});
+sourceList.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-source-driver-id]");
+  if (!button) return;
+  const sourceCard = button.closest("[data-source-id]");
+  const source = sourceCard && normalizedSourceById.get(sourceCard.dataset.sourceId);
+  const contextDrivers = source ? source.driverIds.map((driverId) => driverById.get(driverId)).filter(Boolean) : null;
+  openDriver(button.dataset.sourceDriverId, "push", contextDrivers);
+});
+loadMoreSourcesButton.addEventListener("click", () => {
+  visibleSourceCount += SOURCE_PAGE_SIZE;
+  applySourceFilters({ resetLimit: false });
+});
 closeDetailButton.addEventListener("click", closeDriverDetail);
 previousDriverButton.addEventListener("click", () => moveWithinResults(-1));
 nextDriverButton.addEventListener("click", () => moveWithinResults(1));
@@ -1738,8 +2139,15 @@ driverDetail.addEventListener("click", (event) => {
   const familyButton = event.target.closest("[data-driver-family]");
   const operationalizeButton = event.target.closest("[data-operationalize-driver]");
   const skipButton = event.target.closest("[data-skip-clarification]");
+  const browseSourceButton = event.target.closest("[data-browse-source-id]");
   if (layerButton) showBrowseLayer(layerButton.dataset.driverLayer, "push", true);
   else if (familyButton) showFamily(familyButton.dataset.driverFamily, "push", true);
+  else if (browseSourceButton) {
+    sourceSearchInput.value = browseSourceButton.dataset.browseSourceId;
+    SOURCE_FACETS.forEach(({ field }) => sourceFacetSelections[field].clear());
+    applySourceFilters();
+    showSources("push", true);
+  }
   else if (operationalizeButton) {
     requestOperationalization(driverById.get(operationalizeButton.dataset.operationalizeDriver));
   } else if (skipButton) {

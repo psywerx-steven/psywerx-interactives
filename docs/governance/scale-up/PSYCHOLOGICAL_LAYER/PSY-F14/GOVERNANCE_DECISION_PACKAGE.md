@@ -1,0 +1,56 @@
+# PSY-F14 — Stable Dispositions & Temperament
+
+Audit `AUD-PSY-F14-AE-V1-20260907-001`; frozen main `de38b3948f511602af7aa94a9cd80b78e1a00298`.
+
+Candidate research only. Human decisions pending. No production science changed.
+
+## Human decision package
+
+Existing-edge records and proposals are not implemented. Scientific approval requires a separate human decision; passing validation is not evidence approval.
+
+| Group | ID | Recommendation | Evidence / confidence | Key risk | Human decision |
+|---|---|---|---|---|---|
+| Existing | REL-PSY-030 | RESEARCH_NEEDED | INSUFFICIENT / LIMITED / LOW | Need for cognition is a disposition and effortful processing is a state; scale validation and theory alone do not identify within-person causal change. | PENDING — APPROVE / MODIFY / REJECT |
+| Existing | REL-PSY-040 | RESEARCH_NEEDED | INSUFFICIENT / LIMITED / LOW | Trait impulsivity measures and present-bias choices overlap imperfectly. The mechanism says associated, not identified causal change; delay discounting and immediate beta premium differ. | PENDING — APPROVE / MODIFY / REJECT |
+| Existing | REL-PSY-041 | RESEARCH_NEEDED | INSUFFICIENT / LIMITED / LOW | A trait predisposition can affect state response, but scale-development provenance alone does not identify a manipulable independent trait-to-state causal contribution. | PENDING — APPROVE / MODIFY / REJECT |
+| Existing | REL-PSY-042 | RESEARCH_NEEDED | INSUFFICIENT / LIMITED / LOW | Punishment-sensitivity trait may influence state anxiety, but BIS/avoidance item overlap and trait-state measurement need independent evidence. | PENDING — APPROVE / MODIFY / REJECT |
+| Existing | REL-PSY-043 | REVISION_CANDIDATE | INSUFFICIENT / LIMITED / LOW | Neuroticism is canonically a tendency toward negative affect/stress sensitivity; correlations with stress can partly share content. Kotov examines diagnoses, not exact current appraisal. | PENDING — APPROVE / MODIFY / REJECT |
+| Existing | REL-PSY-044 | RESEARCH_NEEDED | INSUFFICIENT / LIMITED / LOW | BFI-2 construct validation and Big Five academic-performance prediction do not directly test conscientiousness causing monitoring intensity. | PENDING — APPROVE / MODIFY / REJECT |
+| Existing | REL-PSY-055 | REVISION_CANDIDATE | INSUFFICIENT / LIMITED / LOW | Trait/situational desire for closure may alter search thresholds, but stopping does not establish judged adequacy. | PENDING — APPROVE / MODIFY / REJECT |
+| Existing | REL-PSY-056 | RESEARCH_NEEDED | INSUFFICIENT / LIMITED / LOW | Intolerance of uncertainty predicts anxiety/worry in literature but trait and anxious-response scales share definitions/items; exact temporal causal leverage remains unresolved. | PENDING — APPROVE / MODIFY / REJECT |
+| EFFECT_ASSERTION | EA-CAND-PSY-LAYER-0029 | RESEARCH_NEEDED | INSUFFICIENT / LIMITED / LOW | Isolated or repeated specified behavioral uncertainty tests, not automatically the entire therapeutic course. | PENDING — APPROVE / MODIFY / REJECT |
+| EFFECT_ASSERTION | EA-CAND-PSY-LAYER-0030 | RESEARCH_NEEDED | INSUFFICIENT / LIMITED / LOW | Specified outgoing-behavior instructions versus contemporaneous sham over one week; do not combine with PEACH package as same operation. | PENDING — APPROVE / MODIFY / REJECT |
+| Identity only | HT-CAND-PSY-LAYER-0028 | REVIEW_READY | Operation provenance, not efficacy | Independently assessed clinical suitability, consent, safety, uncertainty limits, legal/ethical review and professional competence. No treatment advice, automatic permission, package-effect inference or recommendation. | PENDING — APPROVE / MODIFY / REJECT |
+| Identity only | HT-CAND-PSY-LAYER-0029 | REVIEW_READY | Operation provenance, not efficacy | Voluntary participation and safe social setting; respect fatigue, authenticity, introvert costs, privacy and other persons' consent; context/legal/ethical feasibility required. No practitioner/model eligibility. | PENDING — APPROVE / MODIFY / REJECT |
+| Hypothesis | H-PSY-F14-01 | REJECTED_HYPOTHESIS | No formal assertion unless separately listed | Short state/affect outcome does not demonstrate enduring multidimensional trait. | PENDING — APPROVE / MODIFY / REJECT |
+| Hypothesis | H-PSY-F14-02 | RESEARCH_NEEDED | No formal assertion unless separately listed | PEACH package/one-month-control, facet and observer limits; do not infer component effects. | PENDING — APPROVE / MODIFY / REJECT |
+| Hypothesis | H-PSY-F14-03 | REJECTED_HYPOTHESIS | No formal assertion unless separately listed | Longer intervention and follow-up evidence contradict absolute immutability. | PENDING — APPROVE / MODIFY / REJECT |
+| Hypothesis | H-PSY-F14-04 | REJECTED_HYPOTHESIS | No formal assertion unless separately listed | Same-dataset reanalysis finds uneven facet/nuance changes and observer limits. | PENDING — APPROVE / MODIFY / REJECT |
+| Hypothesis | H-PSY-F14-05 | RESEARCH_NEEDED | No formal assertion unless separately listed | 12session course versuswaitlist, component and active-control/measurement alignment remain. | PENDING — APPROVE / MODIFY / REJECT |
+| Hypothesis | H-PSY-F14-06 | RESEARCH_NEEDED | No formal assertion unless separately listed | Simultaneously improving secondary outcomes and growth models do not identify transmitted causal mediation. | PENDING — APPROVE / MODIFY / REJECT |
+| Hypothesis | H-PSY-F14-07 | REJECTED_HYPOTHESIS | No formal assertion unless separately listed | Risk-stratified coping course targets drinking/motives; baseline moderator not trait outcome. | PENDING — APPROVE / MODIFY / REJECT |
+| Hypothesis | H-PSY-F14-08 | REJECTED_HYPOTHESIS | No formal assertion unless separately listed | Self-selected completion/compliance not randomized; common-method/endogeneity persists. | PENDING — APPROVE / MODIFY / REJECT |
+| Hypothesis | H-PSY-F14-09 | RESEARCH_NEEDED | No formal assertion unless separately listed | Existing030 is primaryreviewed once; task performance and skill outcome need exact entity alignment. | PENDING — APPROVE / MODIFY / REJECT |
+| Hypothesis | H-PSY-F14-10 | REJECTED_HYPOTHESIS | No formal assertion unless separately listed | CRT increase not NFC-mediated mechanism; tested mediation not supported, and identification not guaranteed. | PENDING — APPROVE / MODIFY / REJECT |
+| Hypothesis | H-PSY-F14-11 | RESEARCH_NEEDED | No formal assertion unless separately listed | Quasi-experiment stronger than raw correlation but higheducation/job-to-job subgroup and exact upstream construct unavailable; EmploymentProtection is not plantclosure. | PENDING — APPROVE / MODIFY / REJECT |
+| Hypothesis | H-PSY-F14-12 | REJECTED_HYPOTHESIS | No formal assertion unless separately listed | Institutional protection rule differs from realized displacement event. | PENDING — APPROVE / MODIFY / REJECT |
+| Hypothesis | H-PSY-F14-13 | RESEARCH_NEEDED | No formal assertion unless separately listed | Longitudinal event associations with comparison/no-comparison designs; confounding/reverse selection and common panel overlap. | PENDING — APPROVE / MODIFY / REJECT |
+| Hypothesis | H-PSY-F14-14 | REJECTED_HYPOTHESIS | No formal assertion unless separately listed | Specific small/heterogeneous or no reliable event-domain findings; no general causal law. | PENDING — APPROVE / MODIFY / REJECT |
+| Hypothesis | H-PSY-F14-15 | RESEARCH_NEEDED | No formal assertion unless separately listed | Subgroup, support setting, drug and instrument variation; no class pooling or isolated mechanism, no treatment recommendation. | PENDING — APPROVE / MODIFY / REJECT |
+| Hypothesis | H-PSY-F14-16 | REJECTED_HYPOTHESIS | No formal assertion unless separately listed | Taskvaluation/approach versus enduring questionnaire trait and temporal scope. | PENDING — APPROVE / MODIFY / REJECT |
+| Hypothesis | H-PSY-F14-17 | RESEARCH_NEEDED | No formal assertion unless separately listed | Partial within-person observational replication; exact endpoint and independent mechanism missing. | PENDING — APPROVE / MODIFY / REJECT |
+| Hypothesis | H-PSY-F14-18 | REJECTED_HYPOTHESIS | No formal assertion unless separately listed | Model residual/time ordering not no-unmeasured-confounder identification. | PENDING — APPROVE / MODIFY / REJECT |
+| Hypothesis | H-PSY-F14-19 | REJECTED_HYPOTHESIS | No formal assertion unless separately listed | Trait sensitivity/state, shared item content and theoretical revisions not equality. | PENDING — APPROVE / MODIFY / REJECT |
+| Hypothesis | H-PSY-F14-20 | REJECTED_HYPOTHESIS | No formal assertion unless separately listed | Facet/self-report/task low convergence; beta immediatepremium not genericdiscount. | PENDING — APPROVE / MODIFY / REJECT |
+| Hypothesis | H-PSY-F14-21 | RESEARCH_NEEDED | No formal assertion unless separately listed | Theory covers situational need; canonical time-scale conflict unresolved, not permission to edit. | PENDING — APPROVE / MODIFY / REJECT |
+| Hypothesis | H-PSY-F14-22 | BLOCKED_NEEDS_GOVERNANCE_INPUT | No formal assertion unless separately listed | No new state Driver, split or metadata repair authorized. | PENDING — APPROVE / MODIFY / REJECT |
+| Hypothesis | H-PSY-F14-23 | REJECTED_HYPOTHESIS | No formal assertion unless separately listed | Specific Mini-Marker metric/scalar noninvariance; need instrument/group-specific evidence, not all-culture failure. | PENDING — APPROVE / MODIFY / REJECT |
+| Hypothesis | H-PSY-F14-24 | RESEARCH_NEEDED | No formal assertion unless separately listed | Traitprediction plus experimentalemotion is not manipulatedtrait; exact031/041/042 causal-edge moderation not identified. | PENDING — APPROVE / MODIFY / REJECT |
+| Hypothesis | H-PSY-F14-25 | RESEARCH_NEEDED | No formal assertion unless separately listed | Evidence reports trait-dependent costs but no exact governed causal edge matching action and specific outcome; no moderator-to-outcome shortcut. | PENDING — APPROVE / MODIFY / REJECT |
+| Hypothesis | H-PSY-F14-26 | REJECTED_HYPOTHESIS | No formal assertion unless separately listed | PriorF11 identities target separate momentary self states, not F14 trait. | PENDING — APPROVE / MODIFY / REJECT |
+| Hypothesis | H-PSY-F14-27 | RESEARCH_NEEDED | No formal assertion unless separately listed | Event occurrence and postevent distress not trait change; pre-event measurement/attrition/exposure alignment absent in bounded screen. | PENDING — APPROVE / MODIFY / REJECT |
+| Hypothesis | H-PSY-F14-28 | REJECTED_HYPOTHESIS | No formal assertion unless separately listed | Scenario operation not scientific consequence, no real-person ingestion or AE target expansion. | PENDING — APPROVE / MODIFY / REJECT |
+| Hypothesis | H-PSY-F14-29 | REJECTED_HYPOTHESIS | No formal assertion unless separately listed | Psychometric indicators not ontology components or independent causal contributors. | PENDING — APPROVE / MODIFY / REJECT |
+| Hypothesis | H-PSY-F14-30 | RESEARCH_NEEDED | No formal assertion unless separately listed | General mechanism prompts, not exact causal segments; long-term designs/trait measurement required. | PENDING — APPROVE / MODIFY / REJECT |
+
+Exact targets, owners, sources, supporting/null/contrary findings and boundaries resolve through the structured workspace, Layer candidate registry and linked local evidence/research reports. Do not interpret two descriptions sharing a contribution as two causal inputs.

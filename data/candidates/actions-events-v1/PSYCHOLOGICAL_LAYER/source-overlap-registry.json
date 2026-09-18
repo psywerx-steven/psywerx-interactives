@@ -1,0 +1,656 @@
+[
+  {
+    "id": "OV-PSY-LAYER-0001",
+    "sourceIds": [
+      "SRC-CAND-PSY-LAYER-0001",
+      "SRC-433",
+      "SRC-CAND-PSY-LAYER-0007",
+      "SRC-432"
+    ],
+    "relationship": "SYNTHESIS_PRIMARY_POTENTIAL_OVERLAP",
+    "confirmedComponentList": false,
+    "independentReplicationCount": null,
+    "rule": "Do not count these publications as independent replications; exact component matching remains a source-registration/governance review task.",
+    "sharedContributionIds": [
+      "CONTRIB-PSY-LAYER-REPETITION-001"
+    ]
+  },
+  {
+    "id": "OV-PSY-LAYER-0002",
+    "sourceIds": [
+      "SRC-CAND-PSY-LAYER-0002",
+      "SRC-450",
+      "SRC-435"
+    ],
+    "relationship": "CORRECTION_REVIEW_PRIMARY_POTENTIAL_OVERLAP",
+    "confirmedComponentList": false,
+    "independentReplicationCount": null,
+    "rule": "One-day and one-week experiments remain distinct contrasts; source reused for direct belief and reasoning does not add independent evidence. Broader science correction differs in estimand.",
+    "sharedContributionIds": [
+      "CONTRIB-PSY-LAYER-REFUTATION-001"
+    ]
+  },
+  {
+    "id": "OV-PSY-LAYER-0003",
+    "sourceIds": [
+      "SRC183",
+      "SRC-405"
+    ],
+    "relationship": "CANONICAL_DUPLICATE_PUBLICATION",
+    "durableIdentifier": "PMID:7455683",
+    "confirmedComponentList": true,
+    "independentReplicationCount": 1,
+    "rule": "Same Tversky/Kahneman work in different canonical source records; preserve IDs but do not count twice. No canonical register repair.",
+    "sharedContributionIds": []
+  },
+  {
+    "id": "OV-PSY-LAYER-0004",
+    "sourceIds": [
+      "SRC-433"
+    ],
+    "retiredProvisionalId": "SRC-CAND-PSY-LAYER-0006",
+    "relationship": "CANONICAL_REUSE_AFTER_TITLE_DEDUP",
+    "confirmedComponentList": true,
+    "independentReplicationCount": null,
+    "rule": "Reused SRC-433 after full-register title detection. Candidate metadata records publisher authors; canonical attribution conflict remains visible and unmodified. Provisional number 0006 must not be reassigned.",
+    "sharedContributionIds": [
+      "CONTRIB-PSY-LAYER-REPETITION-001"
+    ]
+  },
+  {
+    "id": "OV-PSY-LAYER-0005",
+    "sourceIds": [
+      "SRC112"
+    ],
+    "retiredProvisionalId": "SRC-CAND-PSY-LAYER-0008",
+    "relationship": "CANONICAL_REUSE_AFTER_DOI_DEDUP",
+    "confirmedComponentList": true,
+    "independentReplicationCount": null,
+    "rule": "Reuse canonical SRC112; provisional number 0008 is retired, never reassigned. Conceptual critique is not empirical causal evidence.",
+    "sharedContributionIds": []
+  },
+  {
+    "id": "OV-PSY-LAYER-0006",
+    "sourceIds": [
+      "SRC122",
+      "SRC-496"
+    ],
+    "relationship": "CANONICAL_DUPLICATE_PUBLICATION",
+    "durableIdentifier": "DOI:10.1186/1748-5908-6-42; PMID:21513547; PMC3096582",
+    "confirmedComponentList": true,
+    "independentReplicationCount": 1,
+    "rule": "Same framework paper, no empirical causal replication; preserve both canonical IDs.",
+    "sharedContributionIds": []
+  },
+  {
+    "id": "OV-PSY-LAYER-0007",
+    "sourceIds": [
+      "SRC-CAND-PSY-LAYER-0011",
+      "SRC-CAND-PSY-LAYER-0012"
+    ],
+    "relationship": "TRIAL_PSYCHOMETRIC_DATASET_REUSE",
+    "confirmedComponentList": true,
+    "independentReplicationCount": null,
+    "rule": "2006 psychometric paper reuses N149 CET trial and adds N199; not two independent replications of the 2003 intervention effect.",
+    "sharedContributionIds": []
+  },
+  {
+    "id": "OV-PSY-LAYER-0008",
+    "sourceIds": [
+      "SRC175",
+      "SRC-423",
+      "SRC-CAND-PSY-LAYER-0010",
+      "SRC-CAND-PSY-LAYER-0014",
+      "SRC-CAND-PSY-LAYER-0015",
+      "SRC-CAND-PSY-LAYER-0017"
+    ],
+    "relationship": "OVERLAPPING_REVIEWS_DIFFERENT_ESTIMANDS",
+    "confirmedComponentList": false,
+    "independentReplicationCount": null,
+    "rule": "Bigsby reports 54% of Tannenbaum sample included and 15 new group comparisons. Six-study factorial behavioral review differs from broad fear outcomes; successful-manipulation selection differs from all risk-message trials. No pooling/independence claim.",
+    "sharedContributionIds": []
+  },
+  {
+    "id": "OV-PSY-LAYER-0009",
+    "sourceIds": [
+      "SRC137"
+    ],
+    "rule": "Four of seven legitimacy evaluations in Mazerolle 2013 are from the RISE conferencing experiment. Do not count seven independent replications or transfer trust/compliance outcomes to legitimacy.",
+    "status": "OVERLAP_IDENTIFIED"
+  },
+  {
+    "id": "OV-PSY-LAYER-0010",
+    "sourceIds": [
+      "SRC221",
+      "SRC-CAND-PSY-LAYER-0020",
+      "SRC-CAND-PSY-LAYER-0021"
+    ],
+    "rule": "Hartgerink review search ended 2013 and excludes manipulation checks; 2022/2025 primary findings postdate it. Do not count the broad pooled outcome as an additional exact exclusion-rating replication.",
+    "status": "ESTIMAND_DIFFERENCE_EXPLICIT"
+  },
+  {
+    "id": "OV-PSY-LAYER-0011",
+    "sourceIds": [
+      "SRC-CAND-PSY-LAYER-0019",
+      "SRC-CAND-PSY-LAYER-0024",
+      "SRC-CAND-PSY-LAYER-0027"
+    ],
+    "rule": "Different feedback comparisons, populations and follow-up windows. No pooled effect or independent component efficacy; indirect/reverse mediation and downstream null remain separate.",
+    "status": "NO_AUTOMATIC_POOLING"
+  },
+  {
+    "id": "OV-PSY-LAYER-0012",
+    "sourceIds": [
+      "SRC-509",
+      "SRC235"
+    ],
+    "rule": "Preserve prior SOC-F07 duplicate-component flag: SRC509 bundles Centola 2010 (also SRC235) with a separate review. This is not two replications or generic evidence of trust/norm perception.",
+    "status": "CANONICAL_COMPONENT_DUPLICATE_UNCHANGED"
+  },
+  {
+    "id": "OV-PSY-LAYER-0013",
+    "sourceIds": [
+      "SRC160",
+      "SRC-501"
+    ],
+    "rule": "Same da Costa et al. 2023 work DOI 10.3389/fpsyg.2023.1096877; author attribution issue retained without canonical correction. One review, not two independent replications.",
+    "status": "CANONICAL_WORK_DUPLICATE_UNCHANGED"
+  },
+  {
+    "id": "OV-PSY-LAYER-0014",
+    "sourceIds": [
+      "SRC-467"
+    ],
+    "rule": "SRC-CAND-PSY-LAYER-0040 retired in favor of existing Sailer/Homner canonical SRC-467 after complete register DOI check; no new registration.",
+    "status": "CANONICAL_REUSE"
+  },
+  {
+    "id": "OV-PSY-LAYER-0015",
+    "sourceIds": [
+      "SRC-CAND-PSY-LAYER-0028",
+      "SRC-CAND-PSY-LAYER-0030"
+    ],
+    "rule": "Patall 2008 choice synthesis includes Reeve 2003; separately extracting its null is not independent replication. Patall 2010 published after review.",
+    "status": "REVIEW_PRIMARY_OVERLAP"
+  },
+  {
+    "id": "OV-PSY-LAYER-0016",
+    "sourceIds": [
+      "SRC-CAND-PSY-LAYER-0029"
+    ],
+    "rule": "Homework units, repeated measures, multiple IMI outcomes and correlational Analysis 2 are the SAME students, not separate trials. Preserve outcome-specific missingness.",
+    "status": "SHARED_DATASET"
+  },
+  {
+    "id": "OV-PSY-LAYER-0017",
+    "sourceIds": [
+      "SRC-CAND-PSY-LAYER-0031",
+      "SRC-CAND-PSY-LAYER-0032"
+    ],
+    "rule": "Reward syntheses substantially revisit same literature with differing task/inclusion/contingency aggregation. No independent replication count or majority vote.",
+    "status": "REVIEW_OVERLAP"
+  },
+  {
+    "id": "OV-PSY-LAYER-0018",
+    "sourceIds": [
+      "SRC140",
+      "SRC141"
+    ],
+    "rule": "Later anticipated-regret synthesis may contain studies from earlier TPB augmentation synthesis; overlap not fully enumerated, no independence assumed.",
+    "status": "POTENTIAL_REVIEW_PRIMARY_OVERLAP"
+  },
+  {
+    "id": "OV-PSY-LAYER-0019",
+    "sourceIds": [
+      "SRC-CAND-PSY-LAYER-0042"
+    ],
+    "rule": "State pre/post, active comparator, PANAS/respiration and trait outcomes share NCT05304000 participants; no independent replication or cross-outcome inference.",
+    "status": "SHARED_DATASET"
+  },
+  {
+    "id": "OV-PSY-LAYER-0020",
+    "sourceIds": [
+      "SRC-CAND-PSY-LAYER-0045",
+      "SRC-CAND-PSY-LAYER-0046",
+      "SRC-CAND-PSY-LAYER-0047"
+    ],
+    "rule": "Affect induction reviews and older film studies may share components; exact overlap not enumerated. Treat as dependent/uncertain, no replication count or pooled causal weight.",
+    "status": "POTENTIAL_REVIEW_PRIMARY_OVERLAP"
+  },
+  {
+    "id": "OV-PSY-LAYER-0021",
+    "sourceIds": [
+      "SRC-CAND-PSY-LAYER-0050",
+      "SRC-CAND-PSY-LAYER-0051"
+    ],
+    "rule": "Compassion/meditation syntheses have different inclusion/constructs and potentially overlapping trials; active-control differences not independent votes.",
+    "status": "POTENTIAL_REVIEW_OVERLAP"
+  },
+  {
+    "id": "OV-PSY-LAYER-0022",
+    "sourceIds": [
+      "SRC-CAND-PSY-LAYER-0043",
+      "SRC-CAND-PSY-LAYER-0044"
+    ],
+    "rule": "Coherent placebo trial is later than February2022 review search; review result not evidence for that exact operation or DASS/PSS equivalence.",
+    "status": "SCOPE_AND_TEMPORAL_DISTINCTION"
+  },
+  {
+    "id": "OV-PSY-LAYER-0023",
+    "sourceIds": [
+      "SRC-CAND-PSY-LAYER-0057"
+    ],
+    "rule": "Version2 Crossref publication2025 versus original2024 report; versions and corrections are one replication dataset, not independent studies.",
+    "status": "VERSION_SAME_WORK"
+  },
+  {
+    "id": "OV-PSY-LAYER-0024",
+    "sourceIds": [
+      "SRC-CAND-PSY-LAYER-0059",
+      "SRC-CAND-PSY-LAYER-0060"
+    ],
+    "rule": "WM and n-back training syntheses may share primary trials; near/far-transfer contrasts and repeated outcome estimates are not independent replication.",
+    "status": "POSSIBLE_REVIEW_COMPONENT_OVERLAP"
+  },
+  {
+    "id": "OV-PSY-LAYER-0025",
+    "sourceIds": [
+      "SRC-CAND-PSY-LAYER-0062",
+      "SRC-CAND-PSY-LAYER-0063"
+    ],
+    "rule": "Cue/signaling syntheses cover overlapping literature. Learning, load and gaze outcomes cannot be summed as independent causal contributions; meta-regression not mediation.",
+    "status": "POSSIBLE_REVIEW_COMPONENT_OVERLAP"
+  },
+  {
+    "id": "OV-PSY-LAYER-0026",
+    "sourceIds": [
+      "SRC-CAND-PSY-LAYER-0064",
+      "SRC-CAND-PSY-LAYER-0069"
+    ],
+    "rule": "Mindfulness syntheses differ in inclusion/comparator/outcome definitions; shared studies and preprint/journal versions are not replication. Accuracy/latency and active-control differences preserved.",
+    "status": "POSSIBLE_REVIEW_COMPONENT_OVERLAP"
+  },
+  {
+    "id": "OV-PSY-LAYER-0027",
+    "sourceIds": [
+      "SRC125",
+      "SRC171",
+      "SRC-CAND-PSY-LAYER-0061"
+    ],
+    "rule": "SRC171 stored PMID duplicates SRC125 review, while title names a2007 experiment included in Meyer2015 replication analysis. Preserve identity conflict and original-study inclusion.",
+    "status": "BIBLIOGRAPHIC_IDENTITY_AND_COMPONENT_OVERLAP"
+  },
+  {
+    "id": "OV-PSY-LAYER-0028",
+    "sourceIds": [
+      "SRC-CAND-PSY-LAYER-0070",
+      "SRC-CAND-PSY-LAYER-0071"
+    ],
+    "rule": "Roediger experiments have separate participants, but repeated outcomes/intervals are not independent replications; Rowland review may include them, component overlap not enumerated.",
+    "status": "POSSIBLE_REVIEW_PRIMARY_OVERLAP"
+  },
+  {
+    "id": "OV-PSY-LAYER-0029",
+    "sourceIds": [
+      "SRC-CAND-PSY-LAYER-0072",
+      "SRC184"
+    ],
+    "rule": "Current/retrospective certainty and accuracy/calibration outcomes are not independent samples. Intended Wixted/Wells synthesis may reuse primary work; storedSRC184 PMID instead resolves unrelated sleep source.",
+    "status": "SOURCE_IDENTITY_AND_ESTIMAND_DISTINCTION"
+  },
+  {
+    "id": "OV-PSY-LAYER-0030",
+    "sourceIds": [
+      "SRC-CAND-PSY-LAYER-0079",
+      "SRC-CAND-PSY-LAYER-0080"
+    ],
+    "rule": "Schacter review discusses original Google experiments/replications. Priming failure not automatically a storage-expectation null; neither review nor multiple outcomes add independent evidence.",
+    "status": "REVIEW_PRIMARY_OVERLAP"
+  },
+  {
+    "id": "OV-PSY-LAYER-0031",
+    "sourceIds": [
+      "SRC-CAND-PSY-LAYER-0082",
+      "SRC154",
+      "SRC-CAND-PSY-LAYER-0083",
+      "SRC-CAND-PSY-LAYER-0084",
+      "SRC-CAND-PSY-LAYER-0085"
+    ],
+    "rule": "SRBAI contains SRHI items; longitudinal studies may be included in later review. Pre/post change, automaticity/habit scores and components are not independent randomized replications.",
+    "status": "MEASUREMENT_AND_REVIEW_OVERLAP"
+  },
+  {
+    "id": "OV-PSY-LAYER-0032",
+    "sourceIds": [
+      "SRC-CAND-PSY-LAYER-0089",
+      "SRC-CAND-PSY-LAYER-0090",
+      "SRC-CAND-PSY-LAYER-0093",
+      "SRC-CAND-PSY-LAYER-0086"
+    ],
+    "rule": "Original, exact replication, different-task null and overtraining failures have distinct estimands; invalid control devaluation is not equivalent to a supported-null stress effect.",
+    "status": "REPLICATION_AND_ASSAY_DISTINCTION"
+  },
+  {
+    "id": "OV-PSY-LAYER-0033",
+    "sourceIds": [
+      "SRC-CAND-PSY-LAYER-0087",
+      "SRC120",
+      "SRC114",
+      "SRC155"
+    ],
+    "rule": "Source120 stored bibliography mismatches its2008 PMID;2007 and2008 study overlap not established. No independent count, causal mediation or identical goal/association estimand inferred.",
+    "status": "SOURCE_IDENTITY_AND_POTENTIAL_COMPONENT_OVERLAP"
+  },
+  {
+    "id": "OV-PSY-LAYER-0034",
+    "sourceIds": [
+      "SRC-CAND-PSY-LAYER-0088",
+      "SRC-CAND-PSY-LAYER-0094",
+      "SRC-CAND-PSY-LAYER-0085"
+    ],
+    "rule": "App commitment+prompts and action+coping planning are packages; component claims cannot inherit joint efficacy. Review inclusion/online dates must be checked before independence.",
+    "status": "PACKAGE_AND_REVIEW_BOUNDARIES"
+  },
+  {
+    "id": "OV-PSY-LAYER-0035",
+    "sourceIds": [
+      "SRC-CAND-PSY-LAYER-0092"
+    ],
+    "rule": "High/low cue conditions may be relabeled placebo/nocebo across studies; pain and expectancy outcomes share samples. No replicated claim count or causal mediation from pooled association.",
+    "status": "SHARED_DATASET_AND_LABEL_OVERLAP"
+  },
+  {
+    "id": "OV-PSY-LAYER-0036",
+    "sourceIds": [
+      "SRC139"
+    ],
+    "rule": "Monitoring frequency, attainment and meta-mediation use same138studies; public-recording moderators not independent exact-edge trials.",
+    "status": "SHARED_DATASET"
+  },
+  {
+    "id": "OV-PSY-LAYER-0037",
+    "sourceIds": [
+      "SRC-CAND-PSY-LAYER-0104",
+      "SRC-CAND-PSY-LAYER-0106",
+      "SRC186",
+      "SRC-CAND-PSY-LAYER-0095"
+    ],
+    "rule": "2022 review Table1 includes Enge passive-control go-RT comparison; primary active-control null must accompany it. Mixed go RT/Stroop/WM and behavior are distinct outcomes, no independent replication or generic capacity.",
+    "status": "REVIEW_PRIMARY_COMPARATOR_OVERLAP"
+  },
+  {
+    "id": "OV-PSY-LAYER-0038",
+    "sourceIds": [
+      "SRC-CAND-PSY-LAYER-0096",
+      "SRC-CAND-PSY-LAYER-0097",
+      "SRC157"
+    ],
+    "rule": "Separate preregistered multilab datasets preserve positive versus confirmatory null/exploratory difference; no universal depletion model. SRC157 intended review PMID21643479 differs from wrong stored21662016.",
+    "status": "DESIGN_AND_IDENTITY_RECONCILIATION"
+  },
+  {
+    "id": "OV-PSY-LAYER-0039",
+    "sourceIds": [
+      "SRC-CAND-PSY-LAYER-0099",
+      "SRC-CAND-PSY-LAYER-0100",
+      "SRC-CAND-PSY-LAYER-0101",
+      "SRC-CAND-PSY-LAYER-0098"
+    ],
+    "rule": "Therapy/coping packages contain multiple skills; same samples' skills and symptoms/team outcomes not independent effects or causal mediation. Coping-country association not experimental moderator.",
+    "status": "PACKAGE_AND_MEASUREMENT_OVERLAP"
+  },
+  {
+    "id": "OV-PSY-LAYER-0040",
+    "sourceIds": [
+      "SRC-CAND-PSY-LAYER-0107",
+      "SRC-CAND-PSY-LAYER-0108",
+      "SRC-CAND-PSY-LAYER-0109",
+      "SRC-CAND-PSY-LAYER-0110",
+      "SRC-CAND-PSY-LAYER-0111"
+    ],
+    "rule": "EFT reviews share primary studies; cue-present/absent, discounting/horizon and cigarette outcomes within a study are not replications. Neutral/negative and uncued nulls preserved.",
+    "status": "REVIEW_PRIMARY_AND_SHARED_DATASET"
+  },
+  {
+    "id": "OV-PSY-LAYER-0041",
+    "sourceIds": [
+      "SRC-CAND-PSY-LAYER-0115",
+      "SRC193"
+    ],
+    "rule": "Default synthesis includes canonical Johnson/Goldstein work. Choice uptake, null/reversal contrasts and coded mechanisms are same evidence pool, not independent latent-preference or mediation evidence.",
+    "status": "REVIEW_PRIMARY_OVERLAP"
+  },
+  {
+    "id": "OV-PSY-LAYER-0042",
+    "sourceIds": [
+      "SRC-CAND-PSY-LAYER-0117",
+      "SRC205"
+    ],
+    "rule": "Global preference paper/working paper same work; survey between-person/country association not causal. SRC205 stored DOI resolves different work; intended review verified independently without canonical repair.",
+    "status": "WORK_VERSION_AND_IDENTITY_RECONCILIATION"
+  },
+  {
+    "id": "OV-PSY-LAYER-0043",
+    "sourceIds": [
+      "SRC158",
+      "SRC-CAND-PSY-LAYER-0119",
+      "SRC-CAND-PSY-LAYER-0122",
+      "SRC-CAND-PSY-LAYER-0127",
+      "SRC-CAND-PSY-LAYER-0128",
+      "SRC-CAND-PSY-LAYER-0134"
+    ],
+    "rule": "Reviews may share primary studies; individual values, proud-occasion recall and group affirmation are distinct. Proxy benefits and nulls not independent exact global-threat evidence.",
+    "status": "REVIEW_PRIMARY_OPERATION_OVERLAP"
+  },
+  {
+    "id": "OV-PSY-LAYER-0044",
+    "sourceIds": [
+      "SRC160",
+      "SRC-501",
+      "SRC-CAND-PSY-LAYER-0123",
+      "SRC-CAND-PSY-LAYER-0124"
+    ],
+    "rule": "Swann duplicate work retained. Whitehouse model not empirical observation. Bautista studies1/3 repeated cross-sections differ from randomized study2; F versus means/SD discrepancy unresolved, no effect estimate adopted.",
+    "status": "DESIGN_AND_RESULT_RECONCILIATION"
+  },
+  {
+    "id": "OV-PSY-LAYER-0045",
+    "sourceIds": [
+      "SRC-CAND-PSY-LAYER-0125",
+      "SRC-CAND-PSY-LAYER-0132",
+      "SRC-CAND-PSY-LAYER-0135"
+    ],
+    "rule": "Original noun-cue positive findings and independent field-replication nondetection retained. Correction is same Gerber dataset; signs corrected, prose0.0018/table0.018 discrepancy noted, no estimate adopted. Turnout not enduring identity.",
+    "status": "REPLICATION_AND_CORRECTION"
+  },
+  {
+    "id": "OV-PSY-LAYER-0046",
+    "sourceIds": [
+      "SRC127",
+      "SRC196",
+      "SRC-CAND-PSY-LAYER-0121",
+      "SRC-CAND-PSY-LAYER-0129"
+    ],
+    "rule": "Dissonance foundations, noisy preference-spreading analysis and direct discomfort experiments not one estimand. Artifact does not prove all dissonance false; selected access limits retained.",
+    "status": "MEASURE_AND_METHOD_DISTINCTION"
+  },
+  {
+    "id": "OV-PSY-LAYER-0047",
+    "sourceIds": [
+      "SRC200",
+      "SRC-CAND-PSY-LAYER-0136",
+      "SRC-CAND-PSY-LAYER-0137",
+      "SRC-CAND-PSY-LAYER-0156"
+    ],
+    "rule": "Reactance syntheses overlap primary experiments; 146 effects not146 studies. Gain/loss framing null differs from high-control contrast; repeated topic outcomes not independent replications.",
+    "status": "REVIEW_PRIMARY_OVERLAP"
+  },
+  {
+    "id": "OV-PSY-LAYER-0048",
+    "sourceIds": [
+      "SRC-CAND-PSY-LAYER-0142",
+      "SRC-CAND-PSY-LAYER-0143",
+      "SRC-CAND-PSY-LAYER-0146"
+    ],
+    "rule": "Explicit agency versus implicit binding; between-person null association not within-person causal independence. Methodological analysis not empirical effect.",
+    "status": "MEASURE_AND_METHOD_DISTINCTION"
+  },
+  {
+    "id": "OV-PSY-LAYER-0049",
+    "sourceIds": [
+      "SRC-CAND-PSY-LAYER-0140",
+      "SRC-CAND-PSY-LAYER-0144",
+      "SRC-CAND-PSY-LAYER-0153"
+    ],
+    "rule": "Same Eyal publication instructions and conversation are distinct operations, one article's components not independent replication. Training reviews may include primary tasks; sleep-specific visual selection not broad capacity.",
+    "status": "OPERATION_AND_DATASET_OVERLAP"
+  },
+  {
+    "id": "OV-PSY-LAYER-0050",
+    "sourceIds": [
+      "SRC164",
+      "SRC296",
+      "SRC-CAND-PSY-LAYER-0141",
+      "SRC-CAND-PSY-LAYER-0145",
+      "SRC-CAND-PSY-LAYER-0154"
+    ],
+    "rule": "2010/2021 same-title moral-conviction reviews are distinct works, but included studies overlap. Value-change review and randomized multi-component benevolence intervention not independent replication or component efficacy.",
+    "status": "DISTINCT_WORKS_REVIEW_OVERLAP"
+  },
+  {
+    "id": "OV-PSY-LAYER-0051",
+    "sourceIds": [
+      "SRC197",
+      "SRC163"
+    ],
+    "rule": "SRC197 stored PMID points to unrelated systemic-sclerosis article; intended agency DOI/PMID recorded separately. SRC163 BIS/BAS not attribution. Canonical records remain unchanged.",
+    "status": "SOURCE_ALIGNMENT_BACKLOG"
+  },
+  {
+    "id": "OV-PSY-LAYER-0052",
+    "sourceIds": [
+      "SRC201",
+      "SRC-412",
+      "SRC-CAND-PSY-LAYER-0166"
+    ],
+    "rule": "201/412 are exact duplicate canonical work; Layer uses201 once.2026 behavior review may reuse earlier studies; behavior versus attitudes/credibility estimands distinct.",
+    "status": "DUPLICATE_CANONICAL_WORK"
+  },
+  {
+    "id": "OV-PSY-LAYER-0053",
+    "sourceIds": [
+      "SRC-CAND-PSY-LAYER-0162",
+      "SRC-CAND-PSY-LAYER-0163",
+      "SRC131"
+    ],
+    "rule": "Forewarning-only versus inoculation package syntheses overlap earlier literature; reduced attitude change is not independent motivation measure or pathway evidence.",
+    "status": "REVIEW_COMPONENT_OVERLAP"
+  },
+  {
+    "id": "OV-PSY-LAYER-0054",
+    "sourceIds": [
+      "SRC-CAND-PSY-LAYER-0158",
+      "SRC-CAND-PSY-LAYER-0159",
+      "SRC-CAND-PSY-LAYER-0164",
+      "SRC-CAND-PSY-LAYER-0168"
+    ],
+    "rule": "Calibration, sensitivity, confidence level and sampling differ. Pharmacologic papers may share recruitment/protocol; independence not assumed, model urgency not empirical state.",
+    "status": "MEASURE_AND_DATASET_OVERLAP"
+  },
+  {
+    "id": "OV-PSY-LAYER-0055",
+    "sourceIds": [
+      "SRC-CAND-PSY-LAYER-0157"
+    ],
+    "rule": "Partial/full initial-information, supplementary-information, recommendation/confidence and adequacy comparisons share one sample. Equivalence claim has unextracted margin/composite limitations, not independent replications.",
+    "status": "SAME_DATASET_MULTIPLE_CONTRASTS"
+  },
+  {
+    "id": "OV-PSY-LAYER-0056",
+    "sourceIds": [
+      "SRC166",
+      "SRC167",
+      "SRC131",
+      "SRC117",
+      "SRC-433"
+    ],
+    "rule": "Source166 DOI resolves Digestion front/back matter;167 resolves Elite Cues;131 DOI unverified;117 intended book chapter has mismatched locator.433 intended Ye2026 exact PMID/title but canonical author Bena wrong. No production edits.",
+    "status": "SOURCE_ALIGNMENT_BACKLOG"
+  },
+  {
+    "id": "OV-PSY-LAYER-0057",
+    "sourceIds": [
+      "SRC-474",
+      "SRC-CAND-PSY-LAYER-0170"
+    ],
+    "rule": "AI/HRI meta-analyses overlap earlier studies and combine design classes; trust/reliance not exact epistemic generalization. No effect count treated as independent sample.",
+    "status": "REVIEW_DESIGN_OVERLAP"
+  },
+  {
+    "id": "OV-PSY-LAYER-0058",
+    "sourceIds": [
+      "SRC-CAND-PSY-LAYER-0171",
+      "SRC-CAND-PSY-LAYER-0172"
+    ],
+    "rule": "PEACH trial1523consenters875starters and552facet reanalysis share recruitment; no independent replication. Observer/subgroup/null and waitlist crossover preserved.",
+    "status": "SAME_DATASET_REANALYSIS"
+  },
+  {
+    "id": "OV-PSY-LAYER-0059",
+    "sourceIds": [
+      "SRC-CAND-PSY-LAYER-0174",
+      "SRC-CAND-PSY-LAYER-0176"
+    ],
+    "rule": "Broad2017therapyreview predates2022IUcourse, but constructs/designs differ; do not treat broadtraitchange as IUcomponentreplication.",
+    "status": "REVIEW_COMPONENT_POTENTIAL_OVERLAP"
+  },
+  {
+    "id": "OV-PSY-LAYER-0060",
+    "sourceIds": [
+      "SRC-CAND-PSY-LAYER-0177",
+      "SRC-CAND-PSY-LAYER-0178"
+    ],
+    "rule": "Lifeeventmeta and SOEPplantclosure literature may include samepanels; no independent eventdataset totals or causal effectpooling.",
+    "status": "SHARED_PANEL_REVIEW_OVERLAP"
+  },
+  {
+    "id": "OV-PSY-LAYER-0061",
+    "sourceIds": [
+      "SRC-CAND-PSY-LAYER-0173",
+      "SRC-CAND-PSY-LAYER-0175"
+    ],
+    "rule": "Randomizedoneweekinstruction and freelycompleted15weekchallenges differ. Historical76control not concurrently randomized, completion not assigned.",
+    "status": "DESIGN_AND_OPERATION_DIFFERENCES"
+  },
+  {
+    "id": "OV-PSY-LAYER-0062",
+    "sourceIds": [
+      "SRC-CAND-PSY-LAYER-0186",
+      "SRC-CAND-PSY-LAYER-0187",
+      "SRC-CAND-PSY-LAYER-0185"
+    ],
+    "rule": "Drug/protocol/context/metric differences; LSDnull notpsilocybinreplication; acuteapproach tasknotenduringtrait, no drugclass pooledsign.",
+    "status": "DIFFERENT_EXPOSURE_AND_TIMESCALE"
+  },
+  {
+    "id": "OV-PSY-LAYER-0063",
+    "sourceIds": [
+      "SRC-CAND-PSY-LAYER-0180",
+      "SRC-CAND-PSY-LAYER-0181",
+      "SRC-CAND-PSY-LAYER-0182",
+      "SRC-CAND-PSY-LAYER-0183"
+    ],
+    "rule": "Partiallongitudinalreplication, prevention-bytrait versus traitchange, taxonomyprediction and culturalinvariance not independent causal targeteffect.",
+    "status": "MEASUREMENT_AND_IDENTIFICATION_LIMITS"
+  },
+  {
+    "id": "OV-PSY-LAYER-0064",
+    "sourceIds": [
+      "SRC-CAND-PSY-LAYER-0001",
+      "SRC-CAND-PSY-LAYER-0188",
+      "SRC-433"
+    ],
+    "rule": "2018 extreme-implausibility null and 2022 five-presentation/100-point counterexample differ in protocol. The2021preprint10.31234/osf.io/fce8z and2022published105052 are one work; possible inclusion in2026synthesis is not independent replication. Preserve both, no universal exclusion or identified dose/scale moderation.",
+    "status": "PROTOCOL_BOUNDARY_AND_REVIEW_OVERLAP"
+  }
+]

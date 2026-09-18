@@ -381,7 +381,7 @@ class CompatibilityTests(unittest.TestCase):
         cls.views=ae.compatibility_catalog()
 
     def test_lossless_same_identity_views(self):
-        self.assertEqual(len(self.views),26)
+        self.assertEqual(len(self.views),27)
         for view in self.views:
             self.assertEqual(ae.restore_compatibility(view),view["sourceRecord"])
             self.assertEqual(view["id"],view["sourceRecord"]["id"])
@@ -390,7 +390,7 @@ class CompatibilityTests(unittest.TestCase):
 
     def test_compatibility_not_new_propositions(self):
         original=[r for rows in ae.source_catalog().values() for r in rows]
-        self.assertEqual(len(ae.deduplicate_scientific_views(original+self.views)),26)
+        self.assertEqual(len(ae.deduplicate_scientific_views(original+self.views)),27)
 
     def test_missing_scientific_metadata_not_invented(self):
         for view in self.views:

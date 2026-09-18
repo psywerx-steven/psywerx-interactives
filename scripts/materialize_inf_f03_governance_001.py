@@ -64,9 +64,10 @@ def write_text(path: Path, text: str) -> None:
 
 def merge_records(path: Path, key: str, records: list[dict]) -> list[dict]:
     existing = read(path)[key] if path.exists() else []
-    merged = {record["id"]: record for record in existing}
-    merged.update({record["id"]: record for record in records})
-    return [merged[identifier] for identifier in sorted(merged)]
+    additions = {record["id"]: record for record in records}
+    merged = [additions.pop(record["id"], record) for record in existing]
+    merged.extend(additions.values())
+    return merged
 
 
 def transition(
@@ -797,16 +798,19 @@ def materialize() -> None:
         "evidenceAssessments": merge_records(RI_DATA / "evidence-assessments.json", "evidenceAssessments", [relationship_evidence]),
     })
 
-    relationship_finding_store = {
-        "schemaVersion": "1.0.0",
-        "auditId": AUDIT_ID,
-        "governanceDecisionId": DECISION_ID,
-        "records": [{
+    relationship_finding = {
             "assertionId": relationship["id"],
             "evidenceAssessmentId": relationship_evidence["id"],
             "governanceDecisionRecord": DECISION_PATH,
             "sourceFindings": REL_FINDINGS,
-        }],
+        }
+    current_findings = read(RI_DATA / "relationship-source-findings.json")
+    finding_additions = {relationship["id"]: relationship_finding}
+    finding_records = [finding_additions.pop(row["assertionId"], row) for row in current_findings["records"]]
+    finding_records.extend(finding_additions.values())
+    relationship_finding_store = {
+        **current_findings,
+        "records": finding_records,
     }
     write_json(RI_DATA / "relationship-source-findings.json", relationship_finding_store)
 
@@ -816,9 +820,9 @@ def materialize() -> None:
         "effectAssertions": effects,
         "evidenceAssessments": ae_evidence,
     }.items():
-        merged = {record["id"]: record for record in catalog[key]}
-        merged.update({record["id"]: record for record in records})
-        catalog[key] = [merged[identifier] for identifier in sorted(merged)]
+        replacements = {record["id"]: record for record in records}
+        catalog[key] = [replacements.pop(record["id"], record) for record in catalog[key]]
+        catalog[key].extend(replacements.values())
     authorized = [*happening_types, *effects, *ae_evidence]
     authorization = {
         "decisionId": DECISION_ID,
@@ -848,7 +852,8 @@ def materialize() -> None:
         ],
         "recordClass": "SCIENTIFIC_RECORD",
     }
-    catalog["authorizations"] = [authorizations[identifier] for identifier in sorted(authorizations)]
+    catalog["authorizations"] = [authorizations.pop(record["decisionId"], record) for record in catalog["authorizations"]]
+    catalog["authorizations"].extend(authorizations.values())
     write_json(AE_DATA / "catalog.json", catalog)
 
     source_queue = read(CANDIDATE / "source-registration-queue.json")

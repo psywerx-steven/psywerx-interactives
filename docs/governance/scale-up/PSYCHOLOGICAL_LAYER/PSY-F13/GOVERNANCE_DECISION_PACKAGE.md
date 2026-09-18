@@ -1,0 +1,64 @@
+# PSY-F13 — Epistemic Trust & Persuasion
+
+Audit `AUD-PSY-F13-AE-V1-20260907-001`; frozen main `de38b3948f511602af7aa94a9cd80b78e1a00298`.
+
+Candidate research only. Human decisions pending. No production science changed.
+
+## Human decision package
+
+Existing-edge records and proposals are not implemented. Scientific approval requires a separate human decision; passing validation is not evidence approval.
+
+| Group | ID | Recommendation | Evidence / confidence | Key risk | Human decision |
+|---|---|---|---|---|---|
+| Existing | REL-CUL-048 | REVISION_CANDIDATE | INSUFFICIENT / LIMITED / LOW | Cultural authority legitimacy and individual credibility are distinct levels; credential cue is not randomly assigned cultural norm. | PENDING — APPROVE / MODIFY / REJECT |
+| Existing | REL-INF-037 | REVISION_CANDIDATE | INSUFFICIENT / LIMITED / LOW | Objective methodological evidence quality is not pretested subjective argument strength. | PENDING — APPROVE / MODIFY / REJECT |
+| Existing | REL-INF-038 | REVISION_CANDIDATE | INSUFFICIENT / LIMITED / LOW | Traceability permits checking; discovered poor source or failure may reduce credibility. | PENDING — APPROVE / MODIFY / REJECT |
+| Existing | REL-INF-045 | REVISION_CANDIDATE | MIXED / LIMITED / LOW | Material omission is RDS ratio over a reference universe; perceptual sufficiency requires recipient detection/knowledge. | PENDING — APPROVE / MODIFY / REJECT |
+| Existing | REL-INF-046 | RESEARCH_NEEDED | INSUFFICIENT / LIMITED / LOW | Prior INF-F03 revision proposal separates uncertainty disclosure, credibility and calibration; this Layer review references it only. | PENDING — APPROVE / MODIFY / REJECT |
+| Existing | REL-PSY-032 | RETAIN_V1_INCOMPLETE | MIXED / LIMITED / MODERATE | Preserve existing attribution/expectation/feedback/domain scope; experienced ease can inform confidence without establishing accuracy. | PENDING — APPROVE / MODIFY / REJECT |
+| Existing | REL-PSY-033 | RESEARCH_NEEDED | INSUFFICIENT / LIMITED / LOW | Confirmation-bias/ELM theory suggests selective processing, but perceived congruence and exact counterarguing intensity require separate manipulation/measurement. | PENDING — APPROVE / MODIFY / REJECT |
+| Existing | REL-PSY-045 | REVISION_CANDIDATE | INSUFFICIENT / LIMITED / LOW | Global threat may promote defensive processing, but counterarguing is exact thought count/quality; affirmation→message acceptance does not identify threat→counterarguing. | PENDING — APPROVE / MODIFY / REJECT |
+| Existing | REL-PSY-048 | RETYPE_CANDIDATE | INSUFFICIENT / LIMITED / MODERATE | Negative cognition contributes to measured reactance; treating the composite as an independent cause of its counterargument component risks circularity. | PENDING — APPROVE / MODIFY / REJECT |
+| Existing | REL-PSY-050 | REVISION_CANDIDATE | INSUFFICIENT / LIMITED / LOW | Prior opinion and involvement change source-cue effects. Perceived-source manipulation checks and attitude outcomes do not automatically identify belief confidence causality. | PENDING — APPROVE / MODIFY / REJECT |
+| Existing | REL-PSY-051 | RESEARCH_NEEDED | INSUFFICIENT / LIMITED / LOW | Message-quality manipulation and its check are not an independently manipulated latent perceived-strength variable; opinion outcome is not always factual belief confidence. | PENDING — APPROVE / MODIFY / REJECT |
+| Existing | REL-PSY-052 | SPLIT_CANDIDATE | INSUFFICIENT / LIMITED / LOW | Counterarguments against a message and confidence in one's original belief have different referents. One negative generic edge can encode the wrong sign. | PENDING — APPROVE / MODIFY / REJECT |
+| Existing | REL-PSY-053 | REVISION_CANDIDATE | MIXED / LIMITED / LOW | Resistance motivation and generated counterarguments can be related but successful resistance is not a direct motivation measure. | PENDING — APPROVE / MODIFY / REJECT |
+| Existing | REL-PSY-054 | RESEARCH_NEEDED | INSUFFICIENT / LIMITED / LOW | Therapeutic epistemic-trust theory and organizational-trust theory do not identify a general causal increase in confidence in an arbitrary proposition; SRC166 DOI conflict compounds alignment risk. | PENDING — APPROVE / MODIFY / REJECT |
+| Existing | REL-PSY-055 | REVISION_CANDIDATE | INSUFFICIENT / LIMITED / LOW | Trait/situational desire for closure may alter search thresholds, but stopping does not establish judged adequacy. | PENDING — APPROVE / MODIFY / REJECT |
+| Existing | REL-TEC-061 | REVISION_CANDIDATE | MIXED / LIMITED / LOW | Objective reliability must be experienced/attributed before trust; automation reliance is not specific-source epistemic generalization. | PENDING — APPROVE / MODIFY / REJECT |
+| Existing | REL-TEC-066 | REVISION_CANDIDATE | INSUFFICIENT / LIMITED / LOW | Synthetic-versus-real face category is not independently manipulated fidelity or source credibility for a claim. | PENDING — APPROVE / MODIFY / REJECT |
+| Existing | REL-V1-INF-F03-001 | RETAIN_AS_IS | MIXED / MODERATE / MODERATE | Existing authorized uncertainty-disclosure→source-credibility claim is explicitly context-dependent/nonmonotonic with bounded surveyed factual/numerical message scope. | PENDING — APPROVE / MODIFY / REJECT |
+| EFFECT_ASSERTION | EA-CAND-PSY-LAYER-0026 | RESEARCH_NEEDED | INSUFFICIENT / LIMITED / LOW | Specified perceptual/memory tasks with declared calibration feedback; distinguish eight-session and single-session schedules and initial bias. | PENDING — APPROVE / MODIFY / REJECT |
+| EFFECT_ASSERTION | EA-CAND-PSY-LAYER-0027 | RESEARCH_NEEDED | INSUFFICIENT / LIMITED / LOW | Specified upcoming-appeal warning; topic involvement, prior attitude, delay and actual delivery explicit. | PENDING — APPROVE / MODIFY / REJECT |
+| EFFECT_ASSERTION | EA-CAND-PSY-LAYER-0028 | RESEARCH_NEEDED | INSUFFICIENT / LIMITED / LOW | Countervailing information supplied after a one-sided hypothetical decision article; reference content and knowledge/detection explicit. | PENDING — APPROVE / MODIFY / REJECT |
+| Identity only | HT-CAND-PSY-LAYER-0025 | REVIEW_READY | Operation provenance, not efficacy | Truthful declared feedback/material, consent/debriefing, privacy, contextual feasibility/legal/ethical assessment required. No practitioner recommendation or model eligibility. | PENDING — APPROVE / MODIFY / REJECT |
+| Identity only | HT-CAND-PSY-LAYER-0026 | REVIEW_READY | Operation provenance, not efficacy | Truthful declared feedback/material, consent/debriefing, privacy, contextual feasibility/legal/ethical assessment required. No practitioner recommendation or model eligibility. | PENDING — APPROVE / MODIFY / REJECT |
+| Identity only | HT-CAND-PSY-LAYER-0027 | REVIEW_READY | Operation provenance, not efficacy | Truthful declared feedback/material, consent/debriefing, privacy, contextual feasibility/legal/ethical assessment required. No practitioner recommendation or model eligibility. | PENDING — APPROVE / MODIFY / REJECT |
+| Hypothesis | H-PSY-F13-01 | REJECTED_HYPOTHESIS | No formal assertion unless separately listed | Perceived profile and objective truth/calibration separate. | PENDING — APPROVE / MODIFY / REJECT |
+| Hypothesis | H-PSY-F13-02 | REJECTED_HYPOTHESIS | No formal assertion unless separately listed | Specified-source generalization versus broader vulnerability/reliance and trait stance differ. | PENDING — APPROVE / MODIFY / REJECT |
+| Hypothesis | H-PSY-F13-03 | RESEARCH_NEEDED | No formal assertion unless separately listed | EA26 retains training-level findings and null downstream outcomes; no universal mean-confidence or durable transfer. | PENDING — APPROVE / MODIFY / REJECT |
+| Hypothesis | H-PSY-F13-04 | REJECTED_HYPOTHESIS | No formal assertion unless separately listed | Sensitivity/calibration and mean confidence can dissociate. | PENDING — APPROVE / MODIFY / REJECT |
+| Hypothesis | H-PSY-F13-05 | RESEARCH_NEEDED | No formal assertion unless separately listed | EA27; attitude resistance or preemptive agreement not direct motivation measure. | PENDING — APPROVE / MODIFY / REJECT |
+| Hypothesis | H-PSY-F13-06 | REJECTED_HYPOTHESIS | No formal assertion unless separately listed | Topic involvement and before/after appeal change pattern; preemptive agreement possible. | PENDING — APPROVE / MODIFY / REJECT |
+| Hypothesis | H-PSY-F13-07 | RESEARCH_NEEDED | No formal assertion unless separately listed | Package, coded moderators, correlated mediators and outcomes do not identify transmitted effect. | PENDING — APPROVE / MODIFY / REJECT |
+| Hypothesis | H-PSY-F13-08 | REJECTED_HYPOTHESIS | No formal assertion unless separately listed | Successful outcome not independent underlying motivation. | PENDING — APPROVE / MODIFY / REJECT |
+| Hypothesis | H-PSY-F13-09 | RESEARCH_NEEDED | No formal assertion unless separately listed | EA28; composite adequacy and confidence/recommendation outcomes differ. | PENDING — APPROVE / MODIFY / REJECT |
+| Hypothesis | H-PSY-F13-10 | REJECTED_HYPOTHESIS | No formal assertion unless separately listed | Partial-information adequacy did not decline in one controlled scenario. | PENDING — APPROVE / MODIFY / REJECT |
+| Hypothesis | H-PSY-F13-11 | REJECTED_HYPOTHESIS | No formal assertion unless separately listed | Recipient judgment differs from calculated ratio; no RDS identity. | PENDING — APPROVE / MODIFY / REJECT |
+| Hypothesis | H-PSY-F13-12 | RESEARCH_NEEDED | No formal assertion unless separately listed | Positive/negative researcher trust dimensions, whole-profile scope not normalized. | PENDING — APPROVE / MODIFY / REJECT |
+| Hypothesis | H-PSY-F13-13 | REJECTED_HYPOTHESIS | No formal assertion unless separately listed | Bad results/untrusted sources can lower it. | PENDING — APPROVE / MODIFY / REJECT |
+| Hypothesis | H-PSY-F13-14 | RESEARCH_NEEDED | No formal assertion unless separately listed | Face type/trustworthiness is not exact fidelity manipulation or claim-source profile. | PENDING — APPROVE / MODIFY / REJECT |
+| Hypothesis | H-PSY-F13-15 | RESEARCH_NEEDED | No formal assertion unless separately listed | Existing edge review only; exact generalizable willingness rather than reliance/performance needed. | PENDING — APPROVE / MODIFY / REJECT |
+| Hypothesis | H-PSY-F13-16 | RESEARCH_NEEDED | No formal assertion unless separately listed | Metacognitive sensitivity improved but mean confidence did not; no dose/recommendation or general confidence benefit. | PENDING — APPROVE / MODIFY / REJECT |
+| Hypothesis | H-PSY-F13-17 | RESEARCH_NEEDED | No formal assertion unless separately listed | Sampling behavior and modeled urgency not direct subjective adequacy. | PENDING — APPROVE / MODIFY / REJECT |
+| Hypothesis | H-PSY-F13-18 | REJECTED_HYPOTHESIS | No formal assertion unless separately listed | Model-inferred mechanism not direct measured cause. | PENDING — APPROVE / MODIFY / REJECT |
+| Hypothesis | H-PSY-F13-19 | RESEARCH_NEEDED | No formal assertion unless separately listed | Theoretical condition/scale not exact-edge independently evidenced modifier; F14 consultation required. | PENDING — APPROVE / MODIFY / REJECT |
+| Hypothesis | H-PSY-F13-20 | RESEARCH_NEEDED | No formal assertion unless separately listed | Group norm/individual exposure and shared measurement require cross-level evidence. | PENDING — APPROVE / MODIFY / REJECT |
+| Hypothesis | H-PSY-F13-21 | RESEARCH_NEEDED | No formal assertion unless separately listed | Framework and general stance validation not exact controlled source-specific effect. | PENDING — APPROVE / MODIFY / REJECT |
+| Hypothesis | H-PSY-F13-22 | REJECTED_HYPOTHESIS | No formal assertion unless separately listed | Three correlated factors distinct; trust not simply low credulity. | PENDING — APPROVE / MODIFY / REJECT |
+| Hypothesis | H-PSY-F13-23 | RESEARCH_NEEDED | No formal assertion unless separately listed | Actual independent quality differs from pretested subjective weak/strong argument contrast. | PENDING — APPROVE / MODIFY / REJECT |
+| Hypothesis | H-PSY-F13-24 | REJECTED_HYPOTHESIS | No formal assertion unless separately listed | Thoughts generated before labels; perceived type and actual count/quality differ. | PENDING — APPROVE / MODIFY / REJECT |
+| Hypothesis | H-PSY-F13-25 | RESEARCH_NEEDED | No formal assertion unless separately listed | Scenario water shortage not actual environmental exposure; no exact direct physical effect retained. | PENDING — APPROVE / MODIFY / REJECT |
+| Hypothesis | H-PSY-F13-26 | RESEARCH_NEEDED | No formal assertion unless separately listed | Behavior synthesis not direct credibility manipulation efficacy across constructs; intervention/source identity differ. | PENDING — APPROVE / MODIFY / REJECT |
+
+Exact targets, owners, sources, supporting/null/contrary findings and boundaries resolve through the structured workspace, Layer candidate registry and linked local evidence/research reports. Do not interpret two descriptions sharing a contribution as two causal inputs.

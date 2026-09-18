@@ -1,0 +1,216 @@
+{
+  "familyId": "PSY-F05",
+  "recordedAt": "2026-09-07",
+  "findings": [
+    {
+      "key": "SIGH_STATE_WITHIN",
+      "supportedSemantics": ["ASSOCIATION"],
+      "sourceId": "SRC-CAND-PSY-LAYER-0042",
+      "locator": "Results: Subject participation; Figure2; STAR Methods psychological measures and Participants",
+      "accessDepth": "SELECTED_FULL_TEXT",
+      "population": "Adults able to follow English instructions, mostly Stanford psychology recruits; exclusions for specified health/safety conditions",
+      "context": "Remote June–September2020 exploratory four-week protocol",
+      "basis": "EXPERIMENTAL",
+      "design": "Randomized four-arm active-comparator trial; this finding is an uncontrolled WITHIN-ARM pre/post contrast, not the randomized contrast",
+      "sample": "108 participants overall; not all daily observations complete",
+      "exposure": "Five-minute daily cyclic-sighing practice with two-stage inhalation and prolonged exhalation",
+      "comparator": "The same person's before-session report; NO untreated counterfactual in this contrast",
+      "measurement": "STAI-state current-feeling score, separate from PANAS and trait anxiety",
+      "timing": "Immediately before/after practice across28days",
+      "result": "State-anxiety reports fell after sessions in all four arms. This does not establish a specific cyclic-sighing advantage.",
+      "disposition": "MIXED",
+      "limitations": "Unblinded exploratory study, retrospective registration, selected sample, adherence missingness and no untreated arm; no enduring trait/clinical generalization.",
+      "dataset": "DATASET-BALBAN2023-NCT05304000"
+    },
+    {
+      "key": "SIGH_STATE_ACTIVE_COMPARATOR",
+      "sourceId": "SRC-CAND-PSY-LAYER-0042",
+      "locator": "Results: Breathwork...positive affect; Figure2D between-group mixed model",
+      "accessDepth": "SELECTED_FULL_TEXT",
+      "population": "Same participants",
+      "context": "Same trial; combined breathwork-versus-mindfulness comparison",
+      "basis": "EXPERIMENTAL",
+      "design": "Randomized active comparator; combined breathwork groups not cyclic-sighing-specific estimate",
+      "sample": "Same108 overall; repeated observations not independent samples",
+      "exposure": "Combined three breathwork practices",
+      "comparator": "Five-minute mindful meditation",
+      "measurement": "Daily pre/post STAI-state change",
+      "timing": "Four-week daily observations",
+      "result": "No significant between-group difference in state-anxiety change; positive-affect superiority is a different outcome.",
+      "disposition": "NULL_FINDING",
+      "limitations": "Nondetection not equivalence. Combined operations cannot identify one technique's effect; no transfer from positive-affect advantage.",
+      "dataset": "DATASET-BALBAN2023-NCT05304000"
+    },
+    {
+      "key": "SIGH_TRAIT_NULL",
+      "sourceId": "SRC-CAND-PSY-LAYER-0042",
+      "locator": "Results subject participation; FigureS4 described in main text",
+      "accessDepth": "SELECTED_FULL_TEXT",
+      "population": "Same trial participants",
+      "context": "Baseline/end-of-study, distinct trait endpoint",
+      "basis": "EXPERIMENTAL",
+      "design": "Same randomized study; trait measure reported as separate outcome",
+      "sample": "Same108 overall, endpoint-specific complete N not extracted",
+      "exposure": "Assigned breathwork/mindfulness",
+      "comparator": "Baseline and other assigned arms",
+      "measurement": "STAI-trait, NOT PSY-042 state intensity",
+      "timing": "Before/after four weeks",
+      "result": "No detected trait-anxiety changes or between-group differences.",
+      "disposition": "NULL_FINDING",
+      "limitations": "OUTSIDE the proposed state endpoint; retained to prevent state-to-trait overclaim, not evidence that state effect equals zero.",
+      "dataset": "DATASET-BALBAN2023-NCT05304000"
+    },
+    {
+      "key": "FILM_DISCRETE_PROFILE",
+      "sourceId": "SRC-CAND-PSY-LAYER-0047",
+      "locator": "Methods pp1156–1158; Results3 pp1160–1161; discussion p1168",
+      "accessDepth": "SELECTED_FULL_TEXT",
+      "population": "364 French-speaking Belgian undergraduates;294female70male,meanage19.6",
+      "context": "Individual screens/headphones in partitioned small laboratory groups",
+      "basis": "EXPERIMENTAL",
+      "design": "Pseudo-random assignment to seven groups, counterbalanced film sets/order; repeated-measures stimulus validation, not fully randomized efficacy trial",
+      "sample": "364; each viewed10clips from70, including neutral and multiple emotion categories",
+      "exposure": "Specified film excerpts selected for emotional content; standardized preparation across conditions",
+      "comparator": "Other film categories and within-category comparisons of target versus nontarget emotional ratings",
+      "measurement": "French modified DES sad/downhearted/blue1–7; retrospective feeling during the clip",
+      "timing": "Rating immediately after each clip following common relaxation preparation",
+      "result": "Film category altered emotional profiles; selected target emotions differentiated. Extracted target-versus-other-emotion tests are NOT the same-item sadness-versus-neutral effect required by the candidate.",
+      "disposition": "MIXED",
+      "limitations": "Mixed feelings, demand/selection and exact clip/content/language limits. Anger versus fear failed differentiation at category level. No universal sadness or persistent mood inference.",
+      "dataset": "DATASET-SCHAEFER2010-FILMSTIM"
+    },
+    {
+      "key": "ONLINE_INDUCTION_REVIEW",
+      "sourceId": "SRC-CAND-PSY-LAYER-0046",
+      "locator": "Abstract results, PMID25938613",
+      "accessDepth": "ABSTRACT",
+      "population": "Internet research samples from included studies; detailed demographics not extracted",
+      "context": "Heterogeneous online induction procedures",
+      "basis": "EVIDENCE_SYNTHESIS",
+      "design": "Systematic review/meta-analysis",
+      "sample": "26studies89independent effects per source",
+      "exposure": "Various online affect-induction methods including video",
+      "comparator": "Study-specific comparisons not fully extracted",
+      "measurement": "General affect and distinct emotion outcomes, including sadness",
+      "timing": "Study-specific short-term assessments not fully extracted",
+      "result": "Review reports effective sadness and several other discrete-emotion inductions; happiness induction was not significant.",
+      "disposition": "SUPPORTS",
+      "limitations": "Background support for plausibility, not exact operation/clip/comparator. Happiness nondetection is not sadness null; inclusion overlap with other reviews unresolved.",
+      "dataset": "DATASET-FERRER2015-REVIEW"
+    },
+    {
+      "key": "INDUCTION_HETEROGENEITY",
+      "sourceId": "SRC-CAND-PSY-LAYER-0045",
+      "locator": "Abstract, PMID31971408",
+      "accessDepth": "ABSTRACT",
+      "population": "Heterogeneous included samples",
+      "context": "Multiple induction methods and emotions",
+      "basis": "EVIDENCE_SYNTHESIS",
+      "design": "Meta-analysis",
+      "sample": "874samples53509participants",
+      "exposure": "Various affect-induction procedures",
+      "comparator": "Included study contrasts",
+      "measurement": "Different affective states and instruments",
+      "timing": "Not an exact clip-specific time estimand",
+      "result": "Average induction effectiveness varies by method, target emotion and sample; broad pooled evidence does not identify every discrete Driver effect.",
+      "disposition": "MIXED",
+      "limitations": "Review components may overlap FilmStim/earlier syntheses; no independent replication count, pooled weight or universal transfer.",
+      "dataset": "DATASET-JOSEPH2020-REVIEW"
+    }
+  ],
+  "happeningTypes": [
+    {
+      "id": "HT-CAND-PSY-LAYER-0007",
+      "name": "Perform a specified cyclic-sighing breathing sequence",
+      "identityKey": "PERFORM_TWO_STAGE_INHALATION_PROLONGED_EXHALATION_SEQUENCE",
+      "description": "Deliberate performance of a specified repeated two-stage inhalation/prolonged-exhalation sequence. Identity only: not generic slow/coherent/box breathing, not a clinical prescription, efficacy claim or practitioner permission.",
+      "domain": "DELIBERATE_INTERVENTION",
+      "origins": [
+        "PSY",
+        "BIO"
+      ],
+      "actor": "Consenting participant in a supervised/approved research protocol",
+      "sources": [
+        "SRC-CAND-PSY-LAYER-0042"
+      ],
+      "constraints": "Independent medical/safety/ethical screening, feasibility and actor control not assessed here; study excluded multiple conditions. Identity does not imply safety for an individual or benefit."
+    },
+    {
+      "id": "HT-CAND-PSY-LAYER-0008",
+      "name": "Present a specified audiovisual film excerpt for attentive viewing",
+      "identityKey": "PRESENT_SPECIFIED_FILM_EXCERPT_ATTENTIVE_VIEWING",
+      "description": "Deliberate presentation of a specified audiovisual excerpt with viewing instructions. Clip/language/version identified in each scoped effect; identity does not promise an emotional response, scientific fidelity, diagnosis, or practitioner permission.",
+      "domain": "DELIBERATE_INTERVENTION",
+      "origins": [
+        "INF",
+        "TEC"
+      ],
+      "actor": "Research presenter controlling the specified licensed material",
+      "sources": [
+        "SRC-CAND-PSY-LAYER-0047"
+      ],
+      "constraints": "Consent, distress/withdrawal and aftercare safeguards, copyright/license and cultural/language fit independently required. No film assets downloaded or published; not the earlier repeated-claim/refutation or Cyberball identity."
+    }
+  ],
+  "assertions": [
+    {
+      "id": "EA-CAND-PSY-LAYER-0008",
+      "type": "EFFECT_ASSERTION",
+      "typeId": "HT-CAND-PSY-LAYER-0007",
+      "target": "PSY-042",
+      "status": "RESEARCH_NEEDED",
+      "property": "LEVEL",
+      "change": "UNKNOWN",
+      "knowledgeStatus": "INSUFFICIENT_EVIDENCE",
+      "disposition": "INSUFFICIENT",
+      "strength": "LIMITED",
+      "confidence": "LOW",
+      "scope": "Question: does specified cyclic sighing change current anxiety intensity beyond a matched attention/control condition in comparable screened adults? No universal decrease or clinical/trait benefit is asserted.",
+      "risk": "Pre/post improvement alone does not identify efficacy; pooled breathwork is not a single technique. Expectancy, adherence, comparator and STAI construct overlap limit inference. No personal medical recommendation.",
+      "timing": "Immediately before/after specified brief sessions; four-week repeated design, not lasting trait change",
+      "measurement": "STAI-state current feelings; not STAI-trait, PANAS positive affect, respiration or physiological arousal",
+      "mechanism": "Breathing/attention may influence subjective state, but no independently identified mediator or respiration-to-anxiety numerical propagation.",
+      "rationale": "Source findings preserve uncontrolled within-arm improvement, active-comparator nondetection and separate trait null. They do not establish a signed technique-specific causal effect; exact follow-up needed.",
+      "findingKeys": [
+        "SIGH_STATE_WITHIN",
+        "SIGH_STATE_ACTIVE_COMPARATOR",
+        "SIGH_TRAIT_NULL"
+      ],
+      "sharedContributionId": "CONTRIB-PSY-LAYER-CYCLIC-SIGHING-001",
+      "incompleteFields": [
+        "direction",
+        "mechanism"
+      ]
+    },
+    {
+      "id": "EA-CAND-PSY-LAYER-0009",
+      "type": "EFFECT_ASSERTION",
+      "typeId": "HT-CAND-PSY-LAYER-0008",
+      "target": "PSY-047",
+      "status": "RESEARCH_NEEDED",
+      "property": "LEVEL",
+      "change": "UNKNOWN",
+      "knowledgeStatus": "INSUFFICIENT_EVIDENCE",
+      "disposition": "INSUFFICIENT",
+      "strength": "LIMITED",
+      "confidence": "LOW",
+      "scope": "Question: can specified sadness-eliciting clips change current sadness relative to specified neutral clips in comparable French-speaking young adult viewers? Exact clip list and same-item contrast remain unresolved; no universal film effect.",
+      "risk": "Target-versus-nontarget emotion differences within a clip category do not equal same-item sadness-versus-neutral contrasts. Mixed emotions, language, demand and sample composition limit inference. No mood/depression/comprehension effect.",
+      "timing": "Reported immediately after clip about feelings DURING that clip; no persistence claim",
+      "measurement": "Modified DES sad/downhearted/blue item-group1–7; NOT PANAS negative affect, K6 depression, general emotional-intensity arousal or all-negative-emotion composite",
+      "mechanism": "Content/appraisal route plausible, but no mediator isolated. Film-world event is not an actual loss or a PSYWERX Relationship.",
+      "rationale": "Primary stimulus validation and reviews support plausibility, but extracted contrasts do not establish the exact requested comparator and scope. Leave direction UNKNOWN rather than promote a broad common-knowledge effect.",
+      "findingKeys": [
+        "FILM_DISCRETE_PROFILE",
+        "ONLINE_INDUCTION_REVIEW",
+        "INDUCTION_HETEROGENEITY"
+      ],
+      "sharedContributionId": "CONTRIB-PSY-LAYER-FILM-VIEWING-001",
+      "incompleteFields": [
+        "direction",
+        "mechanism",
+        "boundaries"
+      ]
+    }
+  ]
+}

@@ -32,8 +32,17 @@ def check():
             hashes['reason']='Exact additive verification union; historical PubMed contract unchanged'
         elif p=='data/candidates/actions-events-v1/SOC-F07/protected-science.json':
             import build_soc_f07_pilot as pilot
-            assert json.loads(after)==pilot.protected() and pilot.protected()['passed'],p
-            hashes['reason']='Recomputed integrity hashes only; not candidate science'
+            historical=json.loads(after)
+            live=pilot.protected()
+            assert historical['passed'] and live['passed'] and historical['baseline']==live['baseline'],p
+            hashes['reason']='Frozen historical report remains valid; live protection also passes with later authorized additive records'
+        elif p in {
+            'data/relationship-intervention-v1/relationships.json',
+            'data/relationship-intervention-v1/evidence-assessments.json',
+            'data/relationship-intervention-v1/relationship-source-findings.json',
+        }:
+            assert completion.strip_additions(p,json.loads(after))==json.loads(before),p
+            hashes['reason']='Exact later Psychological Layer additions; every pre-existing record and envelope unchanged'
         else: raise ValueError('Unapproved protected change '+p)
         changed[p]=hashes
     summary=af.enriched_inventory()['summary']

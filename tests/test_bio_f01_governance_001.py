@@ -50,11 +50,11 @@ class BioF01Governance001Tests(unittest.TestCase):
         # freeze BIO-F01's source set, not a historical global registry size.
         self.assertEqual({s['id'] for s in self.sources if s['auditId']=='AUD-BIO-F01-RI-V1-20260905-001'},
                          {f'SRC-{n}' for n in range(530,550)})
-        self.assertEqual(counts["nativeRelationships"], 7)
-        self.assertEqual(counts["nativeCausalRelationships"], 5)
+        self.assertEqual(counts["nativeRelationships"], 8)
+        self.assertEqual(counts["nativeCausalRelationships"], 6)
         self.assertEqual(counts["nativeInterventions"], 9)
         self.assertEqual(counts["nativeInterventionEffects"], 5)
-        self.assertEqual(counts["nativeEvidenceAssessments"], 12)
+        self.assertEqual(counts["nativeEvidenceAssessments"], 13)
         self.assertEqual(counts["nativeActiveRecords"], 29)
         self.assertEqual(counts["nativeActiveRelationships"], 7)
         self.assertEqual(counts["nativeActiveCausalRelationships"], 5)

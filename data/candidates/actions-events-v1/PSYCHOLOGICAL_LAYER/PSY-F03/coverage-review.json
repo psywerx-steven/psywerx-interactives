@@ -1,0 +1,522 @@
+{
+  "familyId": "PSY-F03",
+  "reviewedAt": "2026-09-07",
+  "allCanonicalFieldsReviewed": true,
+  "entityFieldPolicy": "All 12 frozen canonical records, 20 RELATED_SEARCH aliases and empty crosswalk list reviewed. Generic upstream/downstream/interaction fields are research prompts, not evidence. Behavior/complaint/withdrawal indicators are not automatically the perception. Null subtype/qualifier fields and no blocked canonical fields remain unchanged; suggested source/construct issues are separate candidate questions.",
+  "rdsReview": "No local RDS. Incoming REL-SOC-067 has external SOC-096 RDS: GROUP_A_STATUS + GROUP_B_STATUS + COMMON_SOCIAL_FIELD, difference/gap rule, aligned window and uncertainty. PSY-022 is not a formula input; genuine appraisal mechanism remains possible but must be temporally independent from status ratings. No formula-as-causality, exogenous-root assumption or direct RDS effect target.",
+  "causalGateReview": "REL-SOC-067 is HEIGHTENED_CAUSAL (SOC-096 RDS→PSY-022 Driver); all other incident endpoints are Drivers and STANDARD_CAUSAL. SOC-096 shared judgment inputs, selection, temporal order, gap specification and aggregate/constituent contribution require review. No RDS classifications changed.",
+  "layersConsidered": {
+    "BIO": "Sleep loss and oxytocin research screened; loneliness/distancing and trust-game outcomes do not automatically match local constructs.",
+    "PSY": "Appraisal, coping, belonging, trust and intention boundaries; own behavior and perceived norms may be reciprocal.",
+    "SOC": "Actual behavior/approval, support/contact, ostracism, status gaps and reference groups distinguished from perceptions.",
+    "CUL": "Reference-group/country moderation in normative and deprivation research; country is not a manipulable cultural construct.",
+    "ENV": "Thermal cues and disruption/contact-loss hypotheses screened; no exact psychological effect extracted from physical proximity or task behavior alone.",
+    "INS": "Oversight, service, corruption, fairness and policing research; actual institutional change not equated to perception regression.",
+    "INF": "Comparative normative feedback and corruption messages; truthful disclosure versus private appraisal separate.",
+    "TEC": "Virtual inclusion protocol and feedback interface; not actual friendship or network-state manipulation."
+  },
+  "domainsConsidered": {
+    "DELIBERATE_INTERVENTION": "Virtual task protocol, normative feedback, support and institutional programs screened.",
+    "ROUTINE_UNINTENDED_HUMAN_ACTIVITY": "Ordinary expressed approval, observed peers and exclusion considered; controlled task does not establish all routine effects.",
+    "EXTERNAL_EVENT_SHOCK": "Disruption, scandal and contact-loss hypotheses considered; no exact uncontrolled occurrence-to-perception effect retained.",
+    "ENVIRONMENTAL_EXPOSURE": "Temperature/proximity and disruption considered; trust-game or social-distancing proxies do not establish exact targets.",
+    "INSTITUTIONAL_STRUCTURAL_CHANGE": "Real governance conditions and perception survey evidence separated; no policy occurrence as efficacy.",
+    "TECHNOLOGICAL_CHANGE": "Bounded computer protocol is supported only at explicit perceptual scope; platform affordance changes not assumed equivalent.",
+    "SOCIAL_NETWORK_EVENT_PROCESS": "Group contact, support, ostracism and observed norms considered; actual ties versus perceived conditions separated.",
+    "INFORMATIONAL_EXPOSURE": "Norm estimates and corruption information reviewed; no guarantee of calibration/truth or behavioral consequence.",
+    "BIOLOGICAL_PHYSIOLOGICAL_PROCESS": "Sleep/oxytocin literature screened with proxy and replication constraints."
+  },
+  "driverLedgers": [
+    {
+      "driverId": "PSY-016",
+      "status": "SEARCH_COMPLETE_BOUNDED",
+      "sources": [
+        "SRC132",
+        "SRC170",
+        "SRC-CAND-PSY-LAYER-0019",
+        "SRC-CAND-PSY-LAYER-0024"
+      ],
+      "queries": [
+        "Q-PSY-F03-01",
+        "Q-PSY-F03-02",
+        "Q-PSY-F03-03",
+        "Q-PSY-F03-04",
+        "Q-PSY-F03-05",
+        "Q-PSY-F03-06"
+      ],
+      "noFinding": "Comparative feedback has a retained RESEARCH_NEEDED effect, not a demonstrated exact prevalence/frequency shift.",
+      "gaps": "Extract exact norm items, referent, denominator and direction; do not use alcohol reduction as manipulation check.",
+      "qualifiers": "No uniform reach/subgroup benefit, synergy, antagonism or package/component inference. Immediate state is not stable disposition; unexamined property is unknown, not zero. Intended operation and observed effect remain separate.",
+      "originsWithRelevantLiterature": [
+        "INF",
+        "TEC",
+        "SOC"
+      ],
+      "domainsWithRelevantLiterature": [
+        "DELIBERATE_INTERVENTION",
+        "INFORMATIONAL_EXPOSURE",
+        "SOCIAL_NETWORK_EVENT_PROCESS"
+      ],
+      "candidateEffectIds": [
+        "EA-CAND-PSY-LAYER-0006"
+      ],
+      "candidateIdentityIds": [
+        "HT-CAND-PSY-LAYER-0005"
+      ],
+      "properties": {
+        "LEVEL": "INSUFFICIENT_EVIDENCE",
+        "PERSISTENCE": "INSUFFICIENT_EVIDENCE",
+        "TIMING": "INSUFFICIENT_EVIDENCE",
+        "STRUCTURE": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "driverId": "PSY-017",
+      "status": "SEARCH_COMPLETE_BOUNDED",
+      "sources": [
+        "SRC132",
+        "SRC110",
+        "SRC107"
+      ],
+      "queries": [
+        "Q-PSY-F03-01",
+        "Q-PSY-F03-02",
+        "Q-PSY-F03-03",
+        "Q-PSY-F03-04",
+        "Q-PSY-F03-05",
+        "Q-PSY-F03-06"
+      ],
+      "noFinding": "No isolated approved exact injunctive-appraisal effect found in the accessed normative-feedback landscape.",
+      "gaps": "Separate approval, public expression, pressure, anticipated sanction and behavioral response.",
+      "qualifiers": "No uniform reach/subgroup benefit, synergy, antagonism or package/component inference. Immediate state is not stable disposition; unexamined property is unknown, not zero. Intended operation and observed effect remain separate.",
+      "originsWithRelevantLiterature": [
+        "SOC",
+        "INF",
+        "CUL"
+      ],
+      "domainsWithRelevantLiterature": [
+        "DELIBERATE_INTERVENTION",
+        "INFORMATIONAL_EXPOSURE",
+        "SOCIAL_NETWORK_EVENT_PROCESS"
+      ],
+      "candidateEffectIds": [],
+      "candidateIdentityIds": [],
+      "properties": {
+        "LEVEL": "INSUFFICIENT_EVIDENCE",
+        "PERSISTENCE": "INSUFFICIENT_EVIDENCE",
+        "TIMING": "INSUFFICIENT_EVIDENCE",
+        "STRUCTURE": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "driverId": "PSY-018",
+      "status": "SEARCH_COMPLETE_BOUNDED",
+      "sources": [
+        "SRC132",
+        "SRC170"
+      ],
+      "queries": [
+        "Q-PSY-F03-01",
+        "Q-PSY-F03-02",
+        "Q-PSY-F03-03",
+        "Q-PSY-F03-04",
+        "Q-PSY-F03-05",
+        "Q-PSY-F03-06"
+      ],
+      "noFinding": "No adequately aligned prospective personal-approval effect retained.",
+      "gaps": "Approval of behavior, need for approval and expected acceptance after one's act require distinct measures.",
+      "qualifiers": "No uniform reach/subgroup benefit, synergy, antagonism or package/component inference. Immediate state is not stable disposition; unexamined property is unknown, not zero. Intended operation and observed effect remain separate.",
+      "originsWithRelevantLiterature": [
+        "SOC",
+        "INF",
+        "CUL"
+      ],
+      "domainsWithRelevantLiterature": [
+        "DELIBERATE_INTERVENTION",
+        "INFORMATIONAL_EXPOSURE",
+        "SOCIAL_NETWORK_EVENT_PROCESS"
+      ],
+      "candidateEffectIds": [],
+      "candidateIdentityIds": [],
+      "properties": {
+        "LEVEL": "INSUFFICIENT_EVIDENCE",
+        "PERSISTENCE": "INSUFFICIENT_EVIDENCE",
+        "TIMING": "INSUFFICIENT_EVIDENCE",
+        "STRUCTURE": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "driverId": "PSY-019",
+      "status": "SEARCH_COMPLETE_BOUNDED",
+      "sources": [
+        "SRC134",
+        "SRC108",
+        "SRC-CAND-PSY-LAYER-0026"
+      ],
+      "queries": [
+        "Q-PSY-F03-01",
+        "Q-PSY-F03-02",
+        "Q-PSY-F03-03",
+        "Q-PSY-F03-04",
+        "Q-PSY-F03-05",
+        "Q-PSY-F03-06"
+      ],
+      "noFinding": "Support programs are heterogeneous and do not establish one reusable operation that increases all forms of perceived availability.",
+      "gaps": "Package versus received support/network size; support fit, actual availability and coping-item overlap.",
+      "qualifiers": "No uniform reach/subgroup benefit, synergy, antagonism or package/component inference. Immediate state is not stable disposition; unexamined property is unknown, not zero. Intended operation and observed effect remain separate.",
+      "originsWithRelevantLiterature": [
+        "SOC",
+        "INS",
+        "PSY"
+      ],
+      "domainsWithRelevantLiterature": [
+        "DELIBERATE_INTERVENTION",
+        "INFORMATIONAL_EXPOSURE",
+        "SOCIAL_NETWORK_EVENT_PROCESS"
+      ],
+      "candidateEffectIds": [],
+      "candidateIdentityIds": [],
+      "properties": {
+        "LEVEL": "INSUFFICIENT_EVIDENCE",
+        "PERSISTENCE": "INSUFFICIENT_EVIDENCE",
+        "TIMING": "INSUFFICIENT_EVIDENCE",
+        "STRUCTURE": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "driverId": "PSY-020",
+      "status": "SEARCH_COMPLETE_BOUNDED",
+      "sources": [
+        "SRC135",
+        "SRC221",
+        "SRC-CAND-PSY-LAYER-0020"
+      ],
+      "queries": [
+        "Q-PSY-F03-01",
+        "Q-PSY-F03-02",
+        "Q-PSY-F03-03",
+        "Q-PSY-F03-04",
+        "Q-PSY-F03-05",
+        "Q-PSY-F03-06"
+      ],
+      "noFinding": "Belonging commonly changes in exclusion tasks, but no independent additional effect is retained given overlapping need/exclusion measures and the same contribution.",
+      "gaps": "Loneliness/connection versus need satisfaction; game versus chronic group belonging; no auto inverse effect from EA-005.",
+      "qualifiers": "No uniform reach/subgroup benefit, synergy, antagonism or package/component inference. Immediate state is not stable disposition; unexamined property is unknown, not zero. Intended operation and observed effect remain separate.",
+      "originsWithRelevantLiterature": [
+        "SOC",
+        "TEC",
+        "BIO"
+      ],
+      "domainsWithRelevantLiterature": [
+        "DELIBERATE_INTERVENTION",
+        "INFORMATIONAL_EXPOSURE",
+        "SOCIAL_NETWORK_EVENT_PROCESS"
+      ],
+      "candidateEffectIds": [],
+      "candidateIdentityIds": [],
+      "properties": {
+        "LEVEL": "INSUFFICIENT_EVIDENCE",
+        "PERSISTENCE": "INSUFFICIENT_EVIDENCE",
+        "TIMING": "INSUFFICIENT_EVIDENCE",
+        "STRUCTURE": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "driverId": "PSY-021",
+      "status": "SEARCH_COMPLETE_BOUNDED",
+      "sources": [
+        "SRC136",
+        "SRC109",
+        "SRC-CAND-PSY-LAYER-0022"
+      ],
+      "queries": [
+        "Q-PSY-F03-01",
+        "Q-PSY-F03-02",
+        "Q-PSY-F03-03",
+        "Q-PSY-F03-04",
+        "Q-PSY-F03-05",
+        "Q-PSY-F03-06"
+      ],
+      "noFinding": "No exact-person trust effect retained from neurochemical, warmth, contact or trust-game studies.",
+      "gaps": "Replication, risk/altruism proxy, specified person and vulnerability; no pharmacologic actionability.",
+      "qualifiers": "No uniform reach/subgroup benefit, synergy, antagonism or package/component inference. Immediate state is not stable disposition; unexamined property is unknown, not zero. Intended operation and observed effect remain separate.",
+      "originsWithRelevantLiterature": [
+        "BIO",
+        "ENV",
+        "SOC"
+      ],
+      "domainsWithRelevantLiterature": [
+        "DELIBERATE_INTERVENTION",
+        "INFORMATIONAL_EXPOSURE",
+        "SOCIAL_NETWORK_EVENT_PROCESS"
+      ],
+      "candidateEffectIds": [],
+      "candidateIdentityIds": [],
+      "properties": {
+        "LEVEL": "INSUFFICIENT_EVIDENCE",
+        "PERSISTENCE": "INSUFFICIENT_EVIDENCE",
+        "TIMING": "INSUFFICIENT_EVIDENCE",
+        "STRUCTURE": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "driverId": "PSY-022",
+      "status": "SEARCH_COMPLETE_BOUNDED",
+      "sources": [
+        "SRC133",
+        "SRC137",
+        "SRC-503"
+      ],
+      "queries": [
+        "Q-PSY-F03-01",
+        "Q-PSY-F03-02",
+        "Q-PSY-F03-03",
+        "Q-PSY-F03-04",
+        "Q-PSY-F03-05",
+        "Q-PSY-F03-06"
+      ],
+      "noFinding": "No whole multidimensional fairness effect retained from a procedural-only manipulation or policy correlation.",
+      "gaps": "Machine-readable facet scope requires governance; do not broaden procedural to distributive/interpersonal/informational fairness.",
+      "qualifiers": "No uniform reach/subgroup benefit, synergy, antagonism or package/component inference. Immediate state is not stable disposition; unexamined property is unknown, not zero. Intended operation and observed effect remain separate.",
+      "originsWithRelevantLiterature": [
+        "INS",
+        "SOC",
+        "INF"
+      ],
+      "domainsWithRelevantLiterature": [
+        "DELIBERATE_INTERVENTION",
+        "INFORMATIONAL_EXPOSURE",
+        "SOCIAL_NETWORK_EVENT_PROCESS"
+      ],
+      "candidateEffectIds": [],
+      "candidateIdentityIds": [],
+      "properties": {
+        "LEVEL": "INSUFFICIENT_EVIDENCE",
+        "PERSISTENCE": "INSUFFICIENT_EVIDENCE",
+        "TIMING": "INSUFFICIENT_EVIDENCE",
+        "STRUCTURE": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "driverId": "PSY-023",
+      "status": "SEARCH_COMPLETE_BOUNDED",
+      "sources": [
+        "SRC137",
+        "SRC133",
+        "SRC-503"
+      ],
+      "queries": [
+        "Q-PSY-F03-01",
+        "Q-PSY-F03-02",
+        "Q-PSY-F03-03",
+        "Q-PSY-F03-04",
+        "Q-PSY-F03-05",
+        "Q-PSY-F03-06"
+      ],
+      "noFinding": "Policing programs do not isolate a uniform rightfulness effect; no exact reusable operation/effect retained.",
+      "gaps": "Preserve inconclusive specific legitimacy outcome, shared RISE evaluations and trust/compliance distinction.",
+      "qualifiers": "No uniform reach/subgroup benefit, synergy, antagonism or package/component inference. Immediate state is not stable disposition; unexamined property is unknown, not zero. Intended operation and observed effect remain separate.",
+      "originsWithRelevantLiterature": [
+        "INS",
+        "SOC"
+      ],
+      "domainsWithRelevantLiterature": [
+        "DELIBERATE_INTERVENTION",
+        "INFORMATIONAL_EXPOSURE",
+        "SOCIAL_NETWORK_EVENT_PROCESS"
+      ],
+      "candidateEffectIds": [],
+      "candidateIdentityIds": [],
+      "properties": {
+        "LEVEL": "INSUFFICIENT_EVIDENCE",
+        "PERSISTENCE": "INSUFFICIENT_EVIDENCE",
+        "TIMING": "INSUFFICIENT_EVIDENCE",
+        "STRUCTURE": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "driverId": "PSY-024",
+      "status": "SEARCH_COMPLETE_BOUNDED",
+      "sources": [
+        "SRC135",
+        "SRC172",
+        "SRC221",
+        "SRC-CAND-PSY-LAYER-0020",
+        "SRC-CAND-PSY-LAYER-0021"
+      ],
+      "queries": [
+        "Q-PSY-F03-01",
+        "Q-PSY-F03-02",
+        "Q-PSY-F03-03",
+        "Q-PSY-F03-04",
+        "Q-PSY-F03-05",
+        "Q-PSY-F03-06"
+      ],
+      "noFinding": "Bounded virtual-pass withdrawal effect retained for immediate young-adult ignored/excluded ratings; not generalized exclusion efficacy.",
+      "gaps": "Transport to young children/clinical/chronic settings, attribution and perception-to-physiology mediation unresolved.",
+      "qualifiers": "No uniform reach/subgroup benefit, synergy, antagonism or package/component inference. Immediate state is not stable disposition; unexamined property is unknown, not zero. Intended operation and observed effect remain separate.",
+      "originsWithRelevantLiterature": [
+        "TEC",
+        "SOC",
+        "BIO"
+      ],
+      "domainsWithRelevantLiterature": [
+        "DELIBERATE_INTERVENTION",
+        "INFORMATIONAL_EXPOSURE",
+        "SOCIAL_NETWORK_EVENT_PROCESS"
+      ],
+      "candidateEffectIds": [
+        "EA-CAND-PSY-LAYER-0005"
+      ],
+      "candidateIdentityIds": [
+        "HT-CAND-PSY-LAYER-0004"
+      ],
+      "properties": {
+        "LEVEL": "SUPPORTED_EFFECT",
+        "PERSISTENCE": "INSUFFICIENT_EVIDENCE",
+        "TIMING": "INSUFFICIENT_EVIDENCE",
+        "STRUCTURE": "NOT_APPLICABLE"
+      },
+      "supportedOriginLayers": [
+        "TEC",
+        "SOC"
+      ],
+      "supportedDomains": [
+        "DELIBERATE_INTERVENTION"
+      ]
+    },
+    {
+      "driverId": "PSY-025",
+      "status": "SEARCH_COMPLETE_BOUNDED",
+      "sources": [
+        "SRC173",
+        "SRC109"
+      ],
+      "queries": [
+        "Q-PSY-F03-01",
+        "Q-PSY-F03-02",
+        "Q-PSY-F03-03",
+        "Q-PSY-F03-04",
+        "Q-PSY-F03-05",
+        "Q-PSY-F03-06"
+      ],
+      "noFinding": "No adequately aligned action effect retained; subjective-SES health correlations are not rank manipulation evidence.",
+      "gaps": "Need exact group prestige/rank specification, not income, generic ladder, cooperation or stress proxy.",
+      "qualifiers": "No uniform reach/subgroup benefit, synergy, antagonism or package/component inference. Immediate state is not stable disposition; unexamined property is unknown, not zero. Intended operation and observed effect remain separate.",
+      "originsWithRelevantLiterature": [
+        "SOC",
+        "INS",
+        "INF"
+      ],
+      "domainsWithRelevantLiterature": [
+        "DELIBERATE_INTERVENTION",
+        "INFORMATIONAL_EXPOSURE",
+        "SOCIAL_NETWORK_EVENT_PROCESS"
+      ],
+      "candidateEffectIds": [],
+      "candidateIdentityIds": [],
+      "properties": {
+        "LEVEL": "INSUFFICIENT_EVIDENCE",
+        "PERSISTENCE": "INSUFFICIENT_EVIDENCE",
+        "TIMING": "INSUFFICIENT_EVIDENCE",
+        "STRUCTURE": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "driverId": "PSY-133",
+      "status": "SEARCH_COMPLETE_BOUNDED",
+      "sources": [
+        "SRC-500",
+        "SRC-501"
+      ],
+      "queries": [
+        "Q-PSY-F03-01",
+        "Q-PSY-F03-02",
+        "Q-PSY-F03-03",
+        "Q-PSY-F03-04",
+        "Q-PSY-F03-05",
+        "Q-PSY-F03-06"
+      ],
+      "noFinding": "Relative-deprivation research supports measurement/level questions, not an isolated objective status-gap or group-anger causal effect.",
+      "gaps": "Justice-affect item overlap, group versus individual level, salient comparison and institutional context.",
+      "qualifiers": "No uniform reach/subgroup benefit, synergy, antagonism or package/component inference. Immediate state is not stable disposition; unexamined property is unknown, not zero. Intended operation and observed effect remain separate.",
+      "originsWithRelevantLiterature": [
+        "SOC",
+        "CUL",
+        "INS",
+        "INF"
+      ],
+      "domainsWithRelevantLiterature": [
+        "DELIBERATE_INTERVENTION",
+        "INFORMATIONAL_EXPOSURE",
+        "SOCIAL_NETWORK_EVENT_PROCESS"
+      ],
+      "candidateEffectIds": [],
+      "candidateIdentityIds": [],
+      "properties": {
+        "LEVEL": "INSUFFICIENT_EVIDENCE",
+        "PERSISTENCE": "INSUFFICIENT_EVIDENCE",
+        "TIMING": "INSUFFICIENT_EVIDENCE",
+        "STRUCTURE": "NOT_APPLICABLE"
+      }
+    },
+    {
+      "driverId": "PSY-134",
+      "status": "SEARCH_COMPLETE_BOUNDED",
+      "sources": [
+        "SRC-502",
+        "SRC-503",
+        "SRC-504",
+        "SRC-CAND-PSY-LAYER-0023"
+      ],
+      "queries": [
+        "Q-PSY-F03-01",
+        "Q-PSY-F03-02",
+        "Q-PSY-F03-03",
+        "Q-PSY-F03-04",
+        "Q-PSY-F03-05",
+        "Q-PSY-F03-06"
+      ],
+      "noFinding": "Corruption-information experiments supply bounded trust research questions; no exact complete institutional-trust-profile effect retained.",
+      "gaps": "Petty/grand contrasts, institution object, trust facets, sample and message extraction; real institutional change not inferred.",
+      "qualifiers": "No uniform reach/subgroup benefit, synergy, antagonism or package/component inference. Immediate state is not stable disposition; unexamined property is unknown, not zero. Intended operation and observed effect remain separate.",
+      "originsWithRelevantLiterature": [
+        "INS",
+        "INF",
+        "TEC"
+      ],
+      "domainsWithRelevantLiterature": [
+        "DELIBERATE_INTERVENTION",
+        "INFORMATIONAL_EXPOSURE",
+        "SOCIAL_NETWORK_EVENT_PROCESS"
+      ],
+      "candidateEffectIds": [],
+      "candidateIdentityIds": [],
+      "properties": {
+        "LEVEL": "INSUFFICIENT_EVIDENCE",
+        "PERSISTENCE": "INSUFFICIENT_EVIDENCE",
+        "TIMING": "INSUFFICIENT_EVIDENCE",
+        "STRUCTURE": "NOT_APPLICABLE"
+      }
+    }
+  ],
+  "unspecifiedPropertyOutcome": "NOT_INVESTIGATED",
+  "propertyPolicy": "Eleven properties considered, no quota. LEVEL has one narrowly supported effect and one unknown research effect. Other properties retain insufficient/not-investigated outcomes; STRUCTURE is not a way to edit perceptions, ties or PSYWERX Relationships. Nonsignificance is not supported null.",
+  "relationshipPropertyReview": "All 21 incident exact edges considered after primary review/reuse. Support buffering, cultural reference-group differences, FoMO and normative feedback mediation do not supply aligned exact-edge modification evidence. No formal relationship-targeted effect/moderation/pathway; same contribution links EA-005 to REL-SOC-062 without summation.",
+  "skepticalReview": {
+    "method": "Second-pass falsification after initial source funnel: check direct result/measure against candidate target; review null/alternative evidence; verify exact source identity, ownership and contribution. Source metadata and publication summaries are not treated as empirical confirmation.",
+    "checks": [
+      "Cyberball meta excludes manipulation checks: not used as direct exclusion-rating efficacy or an effect coefficient.",
+      "Young-adult ignored/excluded ratings align directly; age-six non-detection and measurement caveat preserved, no universal-age claim.",
+      "Holte FoMO/attachment interactions were not detected; no measured trait promoted to formal causal moderator.",
+      "PNF norm-item scope unresolved: retain UNKNOWN/RESEARCH_NEEDED, and downstream null alcohol results remain downstream.",
+      "Policing review inconclusive legitimacy and shared RISE evaluations retained; no trust/legitimacy substitution.",
+      "OECD causal caveats and WGI aggregate limitation override causal-sounding narrative arrows for review recommendations only.",
+      "SOC-096 external RDS reviewed under D10; no direct RDS effect, formula edge or new entity.",
+      "Actual/perceived norms, approval/anticipated approval, belonging/exclusion/loneliness and person/institution trust remain separate.",
+      "Two feedback operations compared against all current HT/Intervention identities and earlier Layer candidates; no material identity match.",
+      "No manipulation-check score→construct edge, behavior→psychological proxy shortcut, causal pathway, numerical weight, recommendation or active/governed candidate."
+    ],
+    "remainingRisks": "Bounded access, publication selection, shared self-report, convenience samples, unknown long-term transfer, source-alignment backlog and multidimensional effect scope require human review/further exact extraction. Local completion is not scientific completeness or final Layer reconciliation."
+  }
+}

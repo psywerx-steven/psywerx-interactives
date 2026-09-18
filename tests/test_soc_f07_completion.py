@@ -48,6 +48,14 @@ class CompletionTests(unittest.TestCase):
         for p in paths:
             if p in mechanical or p in {'data/actions-events-v1/catalog.json','data/relationship-intervention-v1/source-register.json'}: continue
             original=subprocess.check_output(['git','show',c.BASELINE+':'+p],cwd=c.ROOT).replace(b'\r\n',b'\n')
+            if p in {
+                'data/relationship-intervention-v1/evidence-assessments.json',
+                'data/relationship-intervention-v1/relationship-source-findings.json',
+                'data/relationship-intervention-v1/relationships.json',
+            }:
+                import materialize_psychological_layer_governance_001 as psychological
+                self.assertEqual(psychological.strip_materialization(p,ae.read(c.ROOT/p)),json.loads(original),p)
+                continue
             self.assertEqual((c.ROOT/p).read_bytes().replace(b'\r\n',b'\n'),original,p)
 
     def test_no_existing_bio_inf_scenario_or_definition_changes(self):
@@ -67,7 +75,9 @@ class CompletionTests(unittest.TestCase):
 
     def test_truthful_only_one_canonical_source(self):
         before={r['id'] for r in c.frozen('data/relationship-intervention-v1/source-register.json')['sources']}
-        current={r['id']:r for r in ae.read(old.SOURCE_PATH)['sources']}
+        import materialize_psychological_layer_governance_001 as psychological
+        source_store=psychological.strip_materialization('data/relationship-intervention-v1/source-register.json',ae.read(old.SOURCE_PATH))
+        current={r['id']:r for r in source_store['sources']}
         self.assertEqual(set(current)-before,{'SRC-559'})
         self.assertEqual(current['SRC-559'],c.source()); self.assertIsNone(current['SRC-559']['pmid'])
         self.assertEqual(c.identity()['identitySourceIds'],['SRC-559'])
