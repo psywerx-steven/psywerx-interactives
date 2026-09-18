@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "1.0.0",
+  "benchmark": "PSYCHOLOGICAL_LAYER_READ_ONLY",
+  "programId": "AUD-PSYCHOLOGICAL-LAYER-AE-V1-20260907-001",
+  "sourceState": "COMPLETED_LAYER_PACKAGE; NO_RESEARCH_RERUN",
+  "inventory": {
+    "families": 14,
+    "familyIds": [
+      "PSY-F01",
+      "PSY-F02",
+      "PSY-F03",
+      "PSY-F04",
+      "PSY-F05",
+      "PSY-F06",
+      "PSY-F07",
+      "PSY-F08",
+      "PSY-F09",
+      "PSY-F10",
+      "PSY-F11",
+      "PSY-F12",
+      "PSY-F13",
+      "PSY-F14"
+    ],
+    "familiesComplete": 14,
+    "entities": 135,
+    "drivers": 134,
+    "rds": 1,
+    "rdsIds": [
+      "PSY-078"
+    ],
+    "existingRelationships": 111
+  },
+  "formalCandidates": {
+    "relationshipCandidates": 1,
+    "happeningTypes": 29,
+    "effectAssertions": 30,
+    "evidenceAssessments": 31
+  },
+  "reviewSignals": {
+    "reviewReadyLifecycleRecords": 45,
+    "highPriorityGovernanceRows": 82,
+    "governanceRows": 595,
+    "sourceOverlapIssues": 64,
+    "architectureEscalations": 2,
+    "preservedBlockers": 3
+  },
+  "governanceCompression": {
+    "originalGovernanceRows": 595,
+    "distinctScientificDecisions": 534,
+    "groupedHumanDecisions": 48,
+    "individualScientificDecisions": 95,
+    "blockedDecisions": 3,
+    "totalHumanDecisionUnits": 146,
+    "workflowLedgerAcknowledgements": 14,
+    "explanation": "Distinct scientific decisions count the 111 existing Relationship reviews, one new Relationship, 29 identities, 30 effects, 151 rejected hypotheses, 209 research-needed hypotheses, and three deduplicated blocked questions. Shared rows are dependencies/coordination questions; Family completion ledgers are non-voting acknowledgements."
+  },
+  "observedStageLoad": {
+    "stage0InventoryEntities": 135,
+    "stage1FamilyLandscapes": 14,
+    "stage2GovernanceRowsAvailableForTriage": 595,
+    "stage3FormalRelationshipAndEffectClaims": 31,
+    "stage4EvidenceAssessments": 31,
+    "stage5CompletedFamilySkepticalReviews": 14,
+    "stage6HumanDecisionUnits": 146
+  },
+  "resourceAssessment": {
+    "largestObservedWork": [
+      "Family-level literature landscape and source extraction",
+      "Candidate-specific evidence alignment and null/contrary reconciliation",
+      "Cross-Family source, dataset and proposition deduplication"
+    ],
+    "v2Avoids": [
+      "Mandatory deep searches for Driver-domain-property cells with no plausible mechanism",
+      "Repeated source extraction before a proposition survives cheap triage",
+      "Human votes on duplicated Family references and routine search ledgers"
+    ],
+    "humanReviewBurden": "Use grouped low-risk decisions plus individual high-consequence science and blockers; the Psychological reference compressed 595 rows to 146 human decision units plus 14 workflow acknowledgements.",
+    "modelEscalationRate": "Not numerically estimated. Escalation is limited by recorded reason to ontology, RDS, architecture, conflicting high-quality evidence, high-consequence REVIEW_READY science, or a justified final small-set skeptical review.",
+    "tokenOrCreditSavings": "NOT_MEASURED"
+  },
+  "validation": {
+    "expectedInventory": {
+      "families": 14,
+      "familiesComplete": 14,
+      "entities": 135,
+      "drivers": 134,
+      "rds": 1,
+      "existingRelationships": 111
+    },
+    "inventoryMatches": true,
+    "soleRdsSurfaced": true,
+    "formalCandidatesSurfaced": true,
+    "threeBlockersSurfaced": true,
+    "reviewReadySurfaced": true,
+    "dedupSurfaced": true,
+    "passed": true
+  }
+}
