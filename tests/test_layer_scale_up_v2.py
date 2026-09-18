@@ -100,8 +100,12 @@ class LayerScaleUpV2Tests(unittest.TestCase):
         self.assertIn("Not numerically estimated", self.benchmark["resourceAssessment"]["modelEscalationRate"])
 
     def test_process_only_diff_scope(self):
+        implementation_commit = subprocess.check_output([
+            "git", "log", "--diff-filter=A", "--format=%H", "-1", "--",
+            "tests/test_layer_scale_up_v2.py",
+        ], cwd=ROOT, text=True).strip()
         changed = subprocess.check_output([
-            "git", "diff", "--name-only", "5e9a8ce241d7f4dc29845c50063c95530fd49a14", "--",
+            "git", "diff-tree", "--no-commit-id", "--name-only", "-r", implementation_commit,
         ], cwd=ROOT, text=True).splitlines()
         self.assertTrue(changed)
         allowed = (".github/", "docs/governance/", "reports/layer-scale-up-v2/", "scripts/layer_scale_up_v2.py", "tests/test_layer_scale_up_v2.py")
