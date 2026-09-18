@@ -139,9 +139,13 @@ def authorization(records):
 
 def exact_additions(path, original, current):
     """Compare ALL old records and envelope metadata, not a file-level whitelist."""
-    if path not in {'data/actions-events-v1/catalog.json','data/relationship-intervention-v1/source-register.json'}:
-        return False
     old=json.loads(original); new=copy.deepcopy(json.loads(current))
+    # Later Layer decisions are independently validated. Remove their exact
+    # namespace before evaluating this historical SOC-F07 checkpoint.
+    import materialize_psychological_layer_governance_001 as psychological
+    new=psychological.strip_materialization(path,new)
+    if path not in {'data/actions-events-v1/catalog.json','data/relationship-intervention-v1/source-register.json'}:
+        return old==new
     # The later NS-enabled checkpoint is separately hash-bound. Never absorb
     # it into, or regenerate, this historical seven-identity decision.
     import materialize_soc_f07_completion as completion

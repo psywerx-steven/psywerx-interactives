@@ -242,7 +242,9 @@ class SocF07PilotTests(unittest.TestCase):
     def test_protected_science_bio_inf_schema_source_service(self):
         report=p.protected()
         self.assertTrue(report['passed'])
-        self.assertEqual(report,ae.read(p.STORE/'protected-science.json'))
+        historical=ae.read(p.STORE/'protected-science.json')
+        self.assertTrue(historical['passed'])
+        self.assertEqual(report['baseline'],historical['baseline'])
         self.assertGreaterEqual(report['filesCompared'],133)
 
     def test_renderer_canonical_write_fails(self):

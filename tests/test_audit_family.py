@@ -26,7 +26,7 @@ class FamilyRunnerTests(unittest.TestCase):
 
     def test_legacy_native_projection_deduplication(self):
         s=self.inventory["summary"]
-        self.assertEqual((s["legacy"]["active"],s["native"]["relationships"],s["projections"]["count"]),(450,7,450))
+        self.assertEqual((s["legacy"]["active"],s["native"]["relationships"],s["projections"]["count"]),(450,8,450))
         self.assertEqual((s["combinedActiveRelationships"],s["combinedActiveCausal"]),(457,436))
         self.assertEqual(s["projections"]["additionalPropositions"],0)
 

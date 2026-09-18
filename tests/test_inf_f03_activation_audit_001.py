@@ -29,7 +29,7 @@ class InfF03ActivationAudit001Tests(unittest.TestCase):
         cls.catalog = read(AE_DATA / "catalog.json")
         cls.relationships = read(RI_DATA / "relationships.json")["relationships"]
         cls.ri_evidence = read(RI_DATA / "evidence-assessments.json")["evidenceAssessments"]
-        cls.rel_findings = read(RI_DATA / "relationship-source-findings.json")["records"][0]["sourceFindings"]
+        cls.rel_findings = next(row for row in read(RI_DATA / "relationship-source-findings.json")["records"] if row["assertionId"] == "REL-V1-INF-F03-001")["sourceFindings"]
         cls.sources = {r["id"]: r for r in read(RI_DATA / "source-register.json")["sources"]}
         cls.entities = {r["id"]: r for r in read(ROOT / "data/entities.json")}
         cls.workspace = read(CANDIDATE / "workspace.json")
@@ -129,7 +129,7 @@ class InfF03ActivationAudit001Tests(unittest.TestCase):
             source = self.sources[identifier]
             self.assertEqual((source["doi"], source["pmid"], source["year"]), values)
             self.assertEqual(source["verification"]["status"], "VERIFIED")
-        ae_findings = [f for assessment in self.catalog["evidenceAssessments"] for f in assessment["sourceFindings"]]
+        ae_findings = [f for assessment in self.catalog["evidenceAssessments"] if "INF-F03" in assessment["id"] for f in assessment["sourceFindings"]]
         findings = self.rel_findings + ae_findings
         self.assertEqual({f["id"] for f in findings}, set(self.audit["sourceAudit"]["sourceFindingIds"]))
         self.assertEqual(len(findings), 5)
@@ -141,7 +141,7 @@ class InfF03ActivationAudit001Tests(unittest.TestCase):
             ae.schema_set().validate("source-finding", finding)
 
     def test_evidence_synthesis_preserves_findings_and_overlap(self):
-        for evidence in self.catalog["evidenceAssessments"]:
+        for evidence in (row for row in self.catalog["evidenceAssessments"] if "INF-F03" in row["id"]):
             ids = {f["id"] for f in evidence["sourceFindings"]}
             synthesis = evidence["synthesis"]
             self.assertEqual(ids, set(synthesis["sourceFindingIds"]))

@@ -98,7 +98,8 @@ def authorization(records):
 
 def strip_additions(path, current):
     """Remove only exactly expected completion records; reject any changed addition."""
-    result=copy.deepcopy(current)
+    import materialize_psychological_layer_governance_001 as psychological
+    result=psychological.strip_materialization(path,current)
     if path=='data/actions-events-v1/catalog.json':
         ht=identity(); auth=authorization([ht])
         found=[r for r in result['happeningTypes'] if r['id']==ht['id']]

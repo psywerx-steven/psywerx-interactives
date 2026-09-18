@@ -116,8 +116,11 @@ class GovernanceTests(unittest.TestCase):
         for r in self.w['passB']['effectAssertions']:
             self.assertEqual(r['change'],'UNKNOWN'); self.assertEqual(r['governance']['lifecycleStatus'],'RESEARCH_NEEDED')
             self.assertEqual(r['governance']['activationStatus'],'NOT_ELIGIBLE')
-        for key in ('effectAssertions','evidenceAssessments','occurrences'):
-            self.assertEqual(self.catalog[key],g.frozen('data/actions-events-v1/catalog.json')[key])
+        baseline=g.frozen('data/actions-events-v1/catalog.json')
+        for key in ('effectAssertions','evidenceAssessments'):
+            self.assertEqual([r for r in self.catalog[key] if 'SOC-F07' in r['id']],
+                             [r for r in baseline[key] if 'SOC-F07' in r['id']])
+        self.assertEqual(self.catalog['occurrences'],baseline['occurrences'])
 
     def test_lineage_exact_candidate_revision_hash(self):
         candidates={r['id']:r for r in self.w['passB']['happeningTypes']}
@@ -168,7 +171,14 @@ class GovernanceTests(unittest.TestCase):
     def test_protected_record_comparison_detects_unapproved_edits(self):
         report=p.protected(); self.assertTrue(report['passed'])
         changed={path for path,row in report['files'].items() if not row['unchanged']}
-        self.assertEqual(changed,{'data/actions-events-v1/catalog.json','data/relationship-intervention-v1/source-register.json','schemas/relationship-intervention/v1/source-record-v1.schema.json'})
+        self.assertEqual(changed,{
+            'data/actions-events-v1/catalog.json',
+            'data/relationship-intervention-v1/evidence-assessments.json',
+            'data/relationship-intervention-v1/relationship-source-findings.json',
+            'data/relationship-intervention-v1/relationships.json',
+            'data/relationship-intervention-v1/source-register.json',
+            'schemas/relationship-intervention/v1/source-record-v1.schema.json',
+        })
         old=json.dumps(g.frozen('data/actions-events-v1/catalog.json')).encode()
         bad=copy.deepcopy(self.catalog); bad['happeningTypes'][0]['name']='unauthorized change'
         self.assertFalse(g.exact_additions('data/actions-events-v1/catalog.json',old,json.dumps(bad).encode()))

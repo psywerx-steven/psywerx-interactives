@@ -453,6 +453,25 @@ def merge_exact(existing: list[dict], additions: list[dict], key: str = "id") ->
     return merged
 
 
+def strip_materialization(path: str, current: dict) -> dict:
+    """Remove this Layer's exact ID namespace for historical additive checks."""
+    result = copy.deepcopy(current)
+    if path == "data/actions-events-v1/catalog.json":
+        result["happeningTypes"] = [x for x in result["happeningTypes"] if not x["id"].startswith("HT-V1-PSY-LAYER-")]
+        result["effectAssertions"] = [x for x in result["effectAssertions"] if not x["id"].startswith("EA-V1-PSY-LAYER-")]
+        result["evidenceAssessments"] = [x for x in result["evidenceAssessments"] if not x["id"].startswith("EVA-AE-V1-PSY-LAYER-")]
+        result["authorizations"] = [x for x in result["authorizations"] if x["decisionId"] != DECISION]
+    elif path == "data/relationship-intervention-v1/relationships.json":
+        result["relationships"] = [x for x in result["relationships"] if not x["id"].startswith("REL-V1-PSY-LAYER-")]
+    elif path == "data/relationship-intervention-v1/evidence-assessments.json":
+        result["evidenceAssessments"] = [x for x in result["evidenceAssessments"] if not x["id"].startswith("EVA-V1-PSY-LAYER-")]
+    elif path == "data/relationship-intervention-v1/source-register.json":
+        result["sources"] = [x for x in result["sources"] if x["id"] not in set(SOURCE_MAP.values())]
+    elif path == "data/relationship-intervention-v1/relationship-source-findings.json":
+        result["records"] = [x for x in result["records"] if not x["assertionId"].startswith("REL-V1-PSY-LAYER-")]
+    return result
+
+
 def assert_no_source_duplicates(new_sources: list[dict]) -> None:
     old = read(ROOT / "data/sources.json")["sources"] + read(RI_SOURCES)["sources"]
     def norm(value):

@@ -355,6 +355,10 @@ def build():
             {e['assertion']['objectId'] for e in w['passB']['evidenceAssessments'] if any(f['sourceId']==s['id'] for f in e['sourceFindings'])})
     report=protected()
     if not report['passed']: raise ValueError('Protected pre-existing scientific content changed')
+    # Keep the completed pilot's historical comparison artifact byte-stable.
+    # Later authorized Layer additions are checked live above and are recorded
+    # by their own materialization manifests.
+    historical_report=ae.read(STORE/'protected-science.json') if (STORE/'protected-science.json').exists() else report
     entity_reviews, gaps, antecedents=entities_review(frozen,audits,w)
     search=search_ledgers(w,audits,keys)
     graph=graph_report(frozen)
@@ -373,7 +377,7 @@ def build():
     products={'workspace.json':w,'source-registry.json':registry,'source-findings.json':sidecars,'existing-relationship-audit.json':audits,
               'revision-proposals.json':revisions,'hypotheses.json':hypotheses,'entity-rds-review.json':entity_reviews,
               'ontology-target-gaps.json':gaps,'rds-antecedent-ledger.json':antecedents,'search-ledger.json':search,
-              'protected-science.json':report,'source-registration-queue.json':[
+              'protected-science.json':historical_report,'source-registration-queue.json':[
                   {'sourceId':s['id'],'canonicalRegistration':'NOT_AUTHORIZED','supportedCandidateIds':s['supportedCandidateIds'],
                    'condition':'Only after later human approval and fresh exact bibliographic/source alignment verification','possibleCanonicalMatches':s['deduplication']['canonicalMatches']}
                   for s in registry if s['id'].startswith('SRC-CAND') and s['supportedCandidateIds']]}
@@ -381,8 +385,14 @@ def build():
         import materialize_soc_f07_governance_001 as checkpoint
         checkpoint.decorate_products(products)
     for name,obj in products.items(): emit(STORE/name,obj)
-    manifest['artifactHashes']={name:hashlib.sha256(encode(value).encode()).hexdigest() for name,value in products.items()}
-    emit_document(DOCS/'SOC_F07_AUDIT_MANIFEST.json',manifest)
+    manifest_path=DOCS/'SOC_F07_AUDIT_MANIFEST.json'
+    if manifest_path.exists():
+        historical_manifest=ae.read(manifest_path)
+        for key in ('sourceRegisterVersion','riSourceRegisterVersion','schemaHashes','artifactHashes'):
+            manifest[key]=historical_manifest[key]
+    else:
+        manifest['artifactHashes']={name:hashlib.sha256(encode(value).encode()).hexdigest() for name,value in products.items()}
+    emit_document(manifest_path,manifest)
     render_docs(manifest,registry,audits,revisions,hypotheses,entity_reviews,gaps,antecedents,search,w,findings)
     return manifest
 
