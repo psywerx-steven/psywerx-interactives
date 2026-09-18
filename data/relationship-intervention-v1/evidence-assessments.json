@@ -1825,6 +1825,163 @@
       "uncertainty": [
         "No universal polarity, graph weight, numeric lag, persistence, or transferable effect magnitude inferred"
       ]
+    },
+    {
+      "assertion": {
+        "objectType": "RELATIONSHIP",
+        "objectId": "REL-V1-PSY-LAYER-001"
+      },
+      "confidence": "MODERATE",
+      "conflictingEvidence": {
+        "sourceIds": [
+          "SRC-433",
+          "SRC-560",
+          "SRC-562",
+          "SRC-603"
+        ],
+        "summary": "Repeated encounter with the same factual statement/headline can alter subsequently rated belief confidence in controlled adult online/laboratory tasks. Ordinary judgment tasks often show increases; extreme implausibility, explicit veracity cues and initial accuracy focus bound the claim. No universal monotonic sign, transfer to arbitrary content, calibrated truth or behavior is asserted. Extreme implausibility is not a universal exclusion: a later five-presentation/100-point-scale experiment found higher ratings while ratings remained below midpoint."
+      },
+      "context": "Repeated encounter with the same factual statement/headline can alter subsequently rated belief confidence in controlled adult online/laboratory tasks. Ordinary judgment tasks often show increases; extreme implausibility, explicit veracity cues and initial accuracy focus bound the claim. No universal monotonic sign, transfer to arbitrary content, calibrated truth or behavior is asserted. Extreme implausibility is not a universal exclusion: a later five-presentation/100-point-scale experiment found higher ratings while ratings remained below midpoint.",
+      "evidenceDisposition": "MIXED",
+      "evidenceRationale": "Experimental exposure precedes truth judgment; converging synthesis retains heterogeneity and small-study limitations. No causal inference from familiarity ratings alone.",
+      "evidenceStrength": "MODERATE",
+      "governance": {
+        "lifecycleStatus": "GOVERNED",
+        "activationStatus": "INACTIVE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "APPROVED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": "docs/governance/scale-up/PSYCHOLOGICAL_LAYER/PSYCHOLOGICAL_LAYER_GOVERNANCE_DECISION_001.md",
+        "authorizedBy": "authorized human governor",
+        "decisionDate": "2026-09-17",
+        "effectiveVersion": "PSYCHOLOGICAL-LAYER-GOVERNANCE-001",
+        "decisionRationale": "Approved exact MIXED/MODERATE evidence synthesis for the bounded Relationship; governance does not upgrade evidence certainty and activation is withheld.",
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": null
+            },
+            "governanceDecisionRecord": null,
+            "objectId": "EVA-V1-PSY-LAYER-REL-001",
+            "provenance": "AUD-PSYCHOLOGICAL-LAYER-AE-V1-20260907-001/PSY-F01; candidate-lineage:EVA-REL-CAND-PSY-LAYER-0001",
+            "rationale": "Candidate packet prepared for human review; no scientific authority granted",
+            "revision": 1,
+            "timestamp": "2026-09-07T16:54:31Z",
+            "toState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "CANDIDATE"
+            }
+          },
+          {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "CANDIDATE"
+            },
+            "governanceDecisionRecord": null,
+            "objectId": "EVA-V1-PSY-LAYER-REL-001",
+            "provenance": "AUD-PSYCHOLOGICAL-LAYER-AE-V1-20260907-001/PSY-F01; candidate-lineage:EVA-REL-CAND-PSY-LAYER-0001",
+            "rationale": "Candidate packet prepared for human review; no scientific authority granted",
+            "revision": 1,
+            "timestamp": "2026-09-07T16:54:31Z",
+            "toState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "RESEARCH_NEEDED"
+            }
+          },
+          {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "exactDecisionMaterialization": false,
+            "fromState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "RESEARCH_NEEDED"
+            },
+            "governanceDecisionRecord": null,
+            "objectId": "EVA-V1-PSY-LAYER-REL-001",
+            "provenance": "AUD-PSYCHOLOGICAL-LAYER-AE-V1-20260907-001/PSY-F01; candidate-lineage:EVA-REL-CAND-PSY-LAYER-0001",
+            "rationale": "Candidate packet prepared for human review; no scientific authority granted",
+            "revision": 1,
+            "timestamp": "2026-09-07T16:54:31Z",
+            "toState": {
+              "activationStatus": "NOT_ELIGIBLE",
+              "lifecycleStatus": "REVIEW_READY"
+            }
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "GOVERNED",
+              "activationStatus": "INACTIVE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Exact materialization of the authorized Psychological Layer decision; activation explicitly withheld.",
+            "timestamp": "2026-09-18T02:40:00Z",
+            "objectId": "EVA-V1-PSY-LAYER-REL-001",
+            "revision": 1,
+            "provenance": "AUD-PSYCHOLOGICAL-LAYER-AE-V1-20260907-001:5675780b7c36c788f222617810bfd07ee64ebfba:EVA-REL-CAND-PSY-LAYER-0001",
+            "governanceDecisionRecord": "docs/governance/scale-up/PSYCHOLOGICAL_LAYER/PSYCHOLOGICAL_LAYER_GOVERNANCE_DECISION_001.md",
+            "exactDecisionMaterialization": true
+          }
+        ]
+      },
+      "id": "EVA-V1-PSY-LAYER-REL-001",
+      "limitations": [
+        "Low absolute believability; convenience sample; truth-rating operationalization; no evidence for arbitrary repeated content or real-world behavioral consequences.",
+        "No equivalence margin or precision assessment extracted; non-detection does not prove a zero effect.",
+        "Small-study effects, non-equivalent materials, possible overlapping components; not a universal dose-response or an independent replication of included trials.",
+        "Only indexed excerpts accessed; no exact zero/equivalence claim; occupation and countries constrain transfer; possible overlap with 2026 synthesis.",
+        "Contradicts a universal extreme-implausibility exclusion, not the bounded 2018 null contrast. Exposure count and scale sensitivity differ; neither moderator is independently isolated here. Preprint and published version are one work. Possible inclusion in later synthesis is not independent replication."
+      ],
+      "population": "Repeated encounter with the same factual statement/headline can alter subsequently rated belief confidence in controlled adult online/laboratory tasks. Ordinary judgment tasks often show increases; extreme implausibility, explicit veracity cues and initial accuracy focus bound the claim. No universal monotonic sign, transfer to arbitrary content, calibrated truth or behavior is asserted. Extreme implausibility is not a universal exclusion: a later five-presentation/100-point-scale experiment found higher ratings while ratings remained below midpoint.",
+      "quantitativeEstimate": null,
+      "reviewProvenance": {
+        "createdAt": "2026-09-07T16:54:31Z",
+        "createdByActorClass": "AUTOMATED_PROCESS_OR_AI",
+        "reviewedAt": "2026-09-18T02:40:00Z",
+        "reviewedBy": "authorized human governor",
+        "sourceSchema": "AUD-PSYCHOLOGICAL-LAYER-AE-V1-20260907-001:governance-materialization-001"
+      },
+      "revision": 1,
+      "schemaVersion": "1.0.0",
+      "sourceIds": [
+        "SRC-433",
+        "SRC-560",
+        "SRC-562",
+        "SRC-603"
+      ],
+      "studyDesignCharacterizations": [
+        {
+          "designType": "EXPERIMENTAL",
+          "specification": "Randomized prior exposure to headlines; study-level allocation details not fully re-extracted; sample: Two preregistered experiments reported more than 1,800 participants in indexed discussion; no aggregate sample recomputed"
+        },
+        {
+          "designType": "EXPERIMENTAL",
+          "specification": "Extreme-implausibility contrast in same publication; sample: NOT_EXTRACTED"
+        },
+        {
+          "designType": "SYNTHESIS",
+          "specification": "Three-level synthesis with small-study-bias assessment; sample: 182 studies, 366 estimates, 31,184 participants"
+        },
+        {
+          "designType": "EXPERIMENTAL",
+          "specification": "Lab-in-field and online experiments; task instruction contrasts; sample: Reported second moderator experiment N=239; general samples India 997, Philippines 1,184; not pooled here"
+        },
+        {
+          "designType": "EXPERIMENTAL",
+          "specification": "Preregistered repeated-versus-new highly implausible statement experiment; allocation details not re-extracted from abstract; sample: NOT_EXTRACTED"
+        }
+      ],
+      "uncertainty": [
+        "No numerical weight, universal sign, causal mediation or transfer beyond stated scope"
+      ]
     }
   ]
 }

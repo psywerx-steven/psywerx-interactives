@@ -20,6 +20,8 @@ import audit_family as af
 ROOT = Path(__file__).resolve().parents[1]
 BASELINE = "de38b3948f511602af7aa94a9cd80b78e1a00298"
 PROGRAM = "AUD-PSYCHOLOGICAL-LAYER-AE-V1-20260907-001"
+GOVERNANCE_RECOMMENDATION_COMMIT = "5675780b7c36c788f222617810bfd07ee64ebfba"
+GOVERNANCE_DECISION = "GOV-PSYCHOLOGICAL-LAYER-001-2026-09-17"
 STORE = ROOT / "data/candidates/actions-events-v1/PSYCHOLOGICAL_LAYER"
 DOCS = ROOT / "docs/governance/scale-up/PSYCHOLOGICAL_LAYER"
 REPORT = ROOT / "reports/actions-events-v1/psychological-layer-v1"
@@ -64,11 +66,51 @@ def protected_paths():
 
 def check_protected():
     frozen = read(STORE / "protected-baseline.json")
-    changed = [p for p, h in frozen["normalizedSha256"].items()
-               if not (ROOT / p).is_file() or digest(ROOT / p) != h]
+    authorized_additive = {
+        "data/actions-events-v1/catalog.json",
+        "data/relationship-intervention-v1/evidence-assessments.json",
+        "data/relationship-intervention-v1/relationship-source-findings.json",
+        "data/relationship-intervention-v1/relationships.json",
+        "data/relationship-intervention-v1/source-register.json",
+    }
+    materialized = (ROOT / "data/actions-events-v1/PSYCHOLOGICAL_LAYER-materialization-manifest.json").is_file()
+    changed = []
+    for path, expected_hash in frozen["normalizedSha256"].items():
+        current = ROOT / path
+        if current.is_file() and digest(current) == expected_hash:
+            continue
+        if not materialized or path not in authorized_additive or not _authorized_addition_only(path, expected_hash):
+            changed.append(path)
     if changed:
         raise ValueError("PROTECTED SCIENCE DRIFT: " + ", ".join(changed))
     return {"passed": True, "filesCompared": len(frozen["normalizedSha256"]), "changed": []}
+
+
+def _authorized_addition_only(path, expected_hash):
+    """Prove materialization added records without changing the frozen objects."""
+    try:
+        old_bytes = subprocess.check_output(
+            ["git", "show", f"{GOVERNANCE_RECOMMENDATION_COMMIT}:{path}"], cwd=ROOT)
+    except subprocess.CalledProcessError:
+        return False
+    if hashlib.sha256(old_bytes.replace(b"\r\n", b"\n")).hexdigest() != expected_hash:
+        return False
+    old = json.loads(old_bytes)
+    current = read(ROOT / path)
+    if path == "data/actions-events-v1/catalog.json":
+        current["happeningTypes"] = [x for x in current["happeningTypes"] if not x["id"].startswith("HT-V1-PSY-LAYER-")]
+        current["effectAssertions"] = [x for x in current["effectAssertions"] if not x["id"].startswith("EA-V1-PSY-LAYER-")]
+        current["evidenceAssessments"] = [x for x in current["evidenceAssessments"] if not x["id"].startswith("EVA-AE-V1-PSY-LAYER-")]
+        current["authorizations"] = [x for x in current["authorizations"] if x["decisionId"] != GOVERNANCE_DECISION]
+    elif path.endswith("/relationships.json"):
+        current["relationships"] = [x for x in current["relationships"] if not x["id"].startswith("REL-V1-PSY-LAYER-")]
+    elif path.endswith("/evidence-assessments.json"):
+        current["evidenceAssessments"] = [x for x in current["evidenceAssessments"] if not x["id"].startswith("EVA-V1-PSY-LAYER-")]
+    elif path.endswith("/source-register.json"):
+        current["sources"] = [x for x in current["sources"] if not (x["id"].startswith("SRC-") and x["id"][4:].isdigit() and 560 <= int(x["id"][4:]) <= 603)]
+    elif path.endswith("/relationship-source-findings.json"):
+        current["records"] = [x for x in current["records"] if not x["assertionId"].startswith("REL-V1-PSY-LAYER-")]
+    return current == old
 
 
 def endpoints(record):

@@ -512,6 +512,22 @@ def main() -> None:
             "newActive": 0,
         },
     }
+    decision_path = DATA / "governance-decision-001.json"
+    materialization_path = ROOT / "data/actions-events-v1/PSYCHOLOGICAL_LAYER-materialization-manifest.json"
+    if decision_path.exists() and materialization_path.exists():
+        decision = load(decision_path)
+        materialization = load(materialization_path)
+        package["postRecommendationStatus"] = {
+            "recommended": "HISTORICAL_ADVISORY_PRESERVED",
+            "humanApproved": True,
+            "humanDecisionId": decision["decisionId"],
+            "humanDecisionRecord": decision["decisionRecord"],
+            "materialized": True,
+            "materializationId": materialization["materializationId"],
+            "materializationManifest": "data/actions-events-v1/PSYCHOLOGICAL_LAYER-materialization-manifest.json",
+            "materializedCounts": materialization["counts"],
+            "activationAuthorized": False,
+        }
     dump(DATA / "governance-recommendations.json", package)
     build_sources(approved_record_ids)
     build_markdown(package)
@@ -588,6 +604,17 @@ def build_sources(approved_record_ids: set[str]) -> None:
             "Registration is conditional on later human approval of the mapped scientific record and is not authorized by this package.",
         ],
     }
+    registered_manifest = DOCS / "PSYCHOLOGICAL_LAYER_SOURCE_REGISTRATION_MANIFEST.json"
+    if registered_manifest.exists():
+        registered = load(registered_manifest)
+        source_package["postRecommendationStatus"] = {
+            "recommended": "HISTORICAL_ADVISORY_PRESERVED",
+            "humanApprovedRequiredOnly": True,
+            "materialized": True,
+            "registeredCount": registered["registeredCount"],
+            "registrationManifest": "docs/governance/scale-up/PSYCHOLOGICAL_LAYER/PSYCHOLOGICAL_LAYER_SOURCE_REGISTRATION_MANIFEST.json",
+            "activationAuthorized": False,
+        }
     dump(DATA / "source-registration-recommendations.json", source_package)
 
 
@@ -613,6 +640,19 @@ def build_markdown(package: dict) -> None:
     lines = [
         "# Psychological Layer Governance Recommendations", "", f"> **{NOTICE}**", "",
         "This package recommends human decisions from the completed Psychological Layer audit. It performs no governance, activation, source registration, materialization, ontology edit, or production change.", "",
+    ]
+    if package.get("postRecommendationStatus"):
+        status = package["postRecommendationStatus"]
+        lines += [
+            "## Recommendation lifecycle status", "",
+            "| Stage | Status | Authority |", "| --- | --- | --- |",
+            "| RECOMMENDED | Historical advisory preserved | This document and `governance-recommendations.json` |",
+            f"| HUMAN APPROVED | Approved | `{status['humanDecisionId']}` / `PSYCHOLOGICAL_LAYER_GOVERNANCE_DECISION_001.md` |",
+            f"| MATERIALIZED | 45 governed inactive records; 44 selectively registered sources | `{status['materializationId']}` |",
+            "| ACTIVATED | No | Activation explicitly withheld |", "",
+            "The present document remains the advisory rationale. The later decision record supplies human authority, and the materialization manifest records implementation. No advisory text has been retroactively converted into authority.", "",
+        ]
+    lines += [
         "## Executive summary", "",
         f"**595 original rows → {c['groupedHumanDecisions']} grouped human decisions + {c['individualScientificDecisions']} individual scientific decisions + {c['blockedDecisions']} blocked decisions.**", "",
         f"The package reconstructs **{c['distinctScientificDecisions']} distinct scientific decisions** and **{c['workflowLedgerAcknowledgements']} workflow/ledger acknowledgements**. The acknowledgements confirm completed Family search coverage and do not count as scientific votes. Every governance-index row maps to exactly one decision unit; repeated Family appearances and evidence dependencies do not create duplicate votes.", "",
@@ -672,6 +712,14 @@ def build_markdown(package: dict) -> None:
     summary = [
         "# Psychological Layer Governance Review Summary", "", f"> **{NOTICE}**", "",
         "This is an independent recommendation pass over the completed audit package. It does not enact any decision.", "",
+    ]
+    if package.get("postRecommendationStatus"):
+        status = package["postRecommendationStatus"]
+        summary += [
+            "## Recommendation lifecycle status", "",
+            f"RECOMMENDED is preserved as this historical advisory; HUMAN APPROVED is recorded by `{status['humanDecisionId']}`; MATERIALIZED is recorded by `{status['materializationId']}` as 45 governed inactive records. ACTIVATED remains no.", "",
+        ]
+    summary += [
         "## Compression result", "",
         f"**595 original rows → {c['groupedHumanDecisions']} grouped human decisions + {c['individualScientificDecisions']} individual scientific decisions + {c['blockedDecisions']} blocked decisions.**", "",
         md_table(["Measure", "Count"], [["Original governance rows", 595], ["Distinct scientific decisions", c["distinctScientificDecisions"]], ["Grouped human decisions", c["groupedHumanDecisions"]], ["Individual scientific decisions", c["individualScientificDecisions"]], ["Blocked decisions", c["blockedDecisions"]], ["Workflow/ledger acknowledgements", c["workflowLedgerAcknowledgements"]]]), "",

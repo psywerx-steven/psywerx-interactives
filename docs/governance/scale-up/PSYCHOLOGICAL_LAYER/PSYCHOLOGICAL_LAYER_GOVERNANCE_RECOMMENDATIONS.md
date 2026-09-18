@@ -4,6 +4,17 @@
 
 This package recommends human decisions from the completed Psychological Layer audit. It performs no governance, activation, source registration, materialization, ontology edit, or production change.
 
+## Recommendation lifecycle status
+
+| Stage | Status | Authority |
+| --- | --- | --- |
+| RECOMMENDED | Historical advisory preserved | This document and `governance-recommendations.json` |
+| HUMAN APPROVED | Approved | `GOV-PSYCHOLOGICAL-LAYER-001-2026-09-17` / `PSYCHOLOGICAL_LAYER_GOVERNANCE_DECISION_001.md` |
+| MATERIALIZED | 45 governed inactive records; 44 selectively registered sources | `PSYCHOLOGICAL-LAYER-GOVERNANCE-MATERIALIZATION-001` |
+| ACTIVATED | No | Activation explicitly withheld |
+
+The present document remains the advisory rationale. The later decision record supplies human authority, and the materialization manifest records implementation. No advisory text has been retroactively converted into authority.
+
 ## Executive summary
 
 **595 original rows → 48 grouped human decisions + 95 individual scientific decisions + 3 blocked decisions.**

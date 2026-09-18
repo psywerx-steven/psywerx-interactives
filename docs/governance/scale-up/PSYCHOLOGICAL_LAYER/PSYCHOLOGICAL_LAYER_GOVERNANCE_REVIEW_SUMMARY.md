@@ -4,6 +4,10 @@
 
 This is an independent recommendation pass over the completed audit package. It does not enact any decision.
 
+## Recommendation lifecycle status
+
+RECOMMENDED is preserved as this historical advisory; HUMAN APPROVED is recorded by `GOV-PSYCHOLOGICAL-LAYER-001-2026-09-17`; MATERIALIZED is recorded by `PSYCHOLOGICAL-LAYER-GOVERNANCE-MATERIALIZATION-001` as 45 governed inactive records. ACTIVATED remains no.
+
 ## Compression result
 
 **595 original rows → 48 grouped human decisions + 95 individual scientific decisions + 3 blocked decisions.**

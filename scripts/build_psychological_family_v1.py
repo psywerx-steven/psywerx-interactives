@@ -197,12 +197,30 @@ def normalize_title(s):
 def validate_sources():
     sources = p.read(p.STORE / "candidate-source-registry.json")
     canonical = ae.read(p.ROOT / "data/sources.json")["sources"] + ae.read(p.ROOT / "data/relationship-intervention-v1/source-register.json")["sources"]
+    registration_path = p.DOCS / "PSYCHOLOGICAL_LAYER_SOURCE_REGISTRATION_MANIFEST.json"
+    registered = {}
+    if registration_path.exists():
+        registration = p.read(registration_path)
+        if isinstance(registration, dict) and registration.get("registrationPerformed"):
+            registered = {x["candidateSourceId"]: x["canonicalSourceId"] for x in registration["registrations"]}
     seen = set()
     for s in sources:
         key = s["doi"].lower()
         if key in seen:
             raise ValueError("Duplicate Layer DOI: " + key)
         seen.add(key)
+        if s["id"] in registered:
+            canonical_id = registered[s["id"]]
+            materialized = next((c for c in canonical if c["id"] == canonical_id), None)
+            if materialized is None:
+                raise ValueError("Authorized canonical source missing: " + s["id"] + "/" + canonical_id)
+            text = p.encode(materialized).lower()
+            same_title_year = (str(s.get("year")) == str(materialized.get("year"))
+                               and normalize_title(s["title"]) == normalize_title(materialized.get("title", "")))
+            pmid_match = s.get("pmid") and str(s["pmid"]) == str(materialized.get("pmid"))
+            if not (key == str(materialized.get("doi", "")).lower() or pmid_match or same_title_year):
+                raise ValueError("Authorized source identity mismatch: " + s["id"] + "/" + canonical_id)
+            continue
         reused = next((c for c in canonical if c["id"] == s["id"]), None)
         if reused is not None:
             existing_text = p.encode(reused).lower()
@@ -308,6 +326,16 @@ def render(family):
     p.write(p.STORE / "candidate-proposition-registry.json", sorted(cr, key=lambda x:x["id"]))
     identities = p.read(p.STORE / "actions-events-identity-registry.json")
     existing = ae.read(ae.DATA)["happeningTypes"] + ae.source_catalog()["INTERVENTION"]
+    # Candidate regeneration compares with the pre-materialization production
+    # identities. Its own exact canonical descendants are lineage matches, not
+    # newly discovered duplicates.
+    materialization_path = p.ROOT / "data/actions-events-v1/PSYCHOLOGICAL_LAYER-materialization-manifest.json"
+    materialized_identities = {}
+    if materialization_path.exists():
+        materialization = p.read(materialization_path)
+        if isinstance(materialization, dict):
+            materialized_identities = materialization.get("canonicalIds", {}).get("happeningTypes", {})
+    existing = [t for t in existing if t["id"] not in set(materialized_identities.values())]
     for spec in inputs["happeningTypes"]:
         if any(normalize_title(spec["name"]) == normalize_title(t.get("name", t.get("canonicalName", ""))) for t in existing):
             raise ValueError("Existing production identity must be reused")
