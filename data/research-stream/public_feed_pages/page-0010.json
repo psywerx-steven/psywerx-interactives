@@ -1,0 +1,115 @@
+{
+  "schemaVersion": "psywerx-public-research-stream-v1",
+  "page": 10,
+  "pageSize": 24,
+  "totalItems": 224,
+  "items": [
+    {
+      "itemId": "research-fd6ffdca6fef7bb0ef77",
+      "streamTitle": "A causal digital twin asks who benefits from the intervention—not just who is at risk",
+      "streamSummary": "DINIRS combines patient-state modeling with doubly robust causal estimation to predict how different patients might respond to alternative respiratory-support strategies. External validation strengthened the proof of concept, but the individual counterfactual effects remain observational estimates and the authors call for prospective testing. The broader lesson is useful beyond medicine: decision support should distinguish predicting an outcome from estimating how an intervention changes that outcome for different people.",
+      "attribution": "DINIRS preprint",
+      "sourceUrl": "https://arxiv.org/abs/2608.26915",
+      "categories": [
+        "technology-modeling",
+        "application-analysis"
+      ],
+      "sourcePublishedAt": "2026-08-27",
+      "dateAdded": "2026-08-30"
+    },
+    {
+      "itemId": "research-ce5263dc8b68ad487563",
+      "streamTitle": "A realistic synthetic population is not automatically a valid synthetic human",
+      "streamSummary": "Animarium released a deterministic pipeline that builds more than 1.8 million synthetic people and 887,000 households for 11 Italian municipalities from public demographic and survey data. The project tracks provenance and distinguishes empirically constrained attributes from generated biographies, while explicitly declining to claim behavioral validity. That separation is valuable for synthetic-audience work: a population can be statistically plausible and reproducible without proving that generated agents will respond like real people.",
+      "attribution": "Animarium preprint",
+      "sourceUrl": "https://arxiv.org/abs/2608.27111",
+      "categories": [
+        "technology-modeling",
+        "application-analysis"
+      ],
+      "sourcePublishedAt": "2026-08-27",
+      "dateAdded": "2026-08-30"
+    },
+    {
+      "itemId": "research-819af7b841fdba84a551",
+      "streamTitle": "AI permission policies reduced prompts but made overreach protection worse",
+      "streamSummary": "In a controlled study, reusable user-written permission rules reduced how often an AI agent had to ask for approval, but they also blocked less overreach than per-action human approval or automated review. Most overreach that still occurred under the policy condition followed an explicit human approval in context. The result highlights a behavioral governance problem: stated standing preferences are not always durable commitments when convenience, urgency, or trust enters the moment of action.",
+      "attribution": "AI-agent governance preprint",
+      "sourceUrl": "https://arxiv.org/abs/2608.27443",
+      "categories": [
+        "technology-modeling",
+        "behavioral-science"
+      ],
+      "sourcePublishedAt": "2026-08-27",
+      "dateAdded": "2026-08-30"
+    },
+    {
+      "itemId": "research-70e876bf0917699b1500",
+      "streamTitle": "True content can still create a false inference",
+      "streamSummary": "RCMN reframes misleadingness as a relationship between a message, its evidence, and the interpretation a reader is likely to draw. Its dataset includes unsupported inference, exaggeration, omission, arousal, and intent rather than treating misinformation as fabrication alone. Foundation models often recovered likely interpretations more easily than the actual misleading mechanism. The framework is still a preprint, but it offers a useful analytical reminder: factual accuracy and audience interpretation are not the same variable.",
+      "attribution": "RCMN preprint",
+      "sourceUrl": "https://arxiv.org/abs/2608.27358",
+      "categories": [
+        "application-analysis",
+        "behavioral-science",
+        "technology-modeling"
+      ],
+      "sourcePublishedAt": "2026-08-27",
+      "dateAdded": "2026-08-30"
+    },
+    {
+      "itemId": "research-660ba12397a48bd29c85",
+      "streamTitle": "Cleaning a survey can make the sample more biased",
+      "streamSummary": "Pew tested several ways to remove bogus respondents from an online opt-in survey of more than 11,000 U.S. adults. Trap questions and prescreening improved multiple quality indicators, but voter-file matching sometimes removed legitimate people who were harder to identify while retaining some bogus respondents, and all screening approaches shifted substantive estimates. The practical lesson is that “cleaning” data is not neutral: screening can create selection bias that matters for audience analysis and model calibration.",
+      "attribution": "Pew Research Center",
+      "sourceUrl": "https://www.pewresearch.org/methods/2026/08/27/no-easy-fix-for-bogus-respondents-in-online-opt-in-polls",
+      "categories": [
+        "application-analysis",
+        "behavioral-science"
+      ],
+      "sourcePublishedAt": "2026-08-27",
+      "dateAdded": "2026-08-30"
+    },
+    {
+      "itemId": "research-0df34df9578eb79e6b31",
+      "streamTitle": "Sensors are not states—and states are not mission effects",
+      "streamSummary": "An ARES 2026 cyber-defense model separates three layers that are often collapsed: observed telemetry, inferred adversary/system state, and mission-level risk. Bayesian updates feed a higher-level decision model that weighs residual risk against action cost, with robustness checks under noisy telemetry. The specific cyber model is domain-bound, but the architecture is broadly useful for decision support because it makes uncertainty and abstraction explicit instead of treating an indicator as the underlying condition.",
+      "attribution": "ARES 2026 proceedings",
+      "sourceUrl": "https://doi.org/10.1007/978-3-032-35579-9_20",
+      "categories": [
+        "application-analysis",
+        "technology-modeling"
+      ],
+      "sourcePublishedAt": "2026-08-27",
+      "dateAdded": "2026-08-30"
+    },
+    {
+      "itemId": "research-771ab90f693b77bf119d",
+      "streamTitle": "Visible messages can miss the state changes happening inside an influence network",
+      "streamSummary": "A controlled LLM-agent benchmark found that direct exposure reliably shifted later probed stances, peer relays carried smaller effects, and the agents’ visible messages did not always reveal the stance changes measured internally. The agents are not validated substitutes for humans, so this is not evidence of human persuasion dynamics. Its value is methodological: influence measurement should preserve who saw what, through whom, what state changed, and what action followed instead of treating content volume as the effect.",
+      "attribution": "Belief-cascades preprint",
+      "sourceUrl": "https://arxiv.org/abs/2608.25152",
+      "categories": [
+        "technology-modeling",
+        "application-analysis"
+      ],
+      "sourcePublishedAt": "2026-08-25",
+      "dateAdded": "2026-08-30"
+    },
+    {
+      "itemId": "research-9a61b58467288706714b",
+      "streamTitle": "AI-generated election prebunks moved from experiment to a reusable tool",
+      "streamSummary": "A preregistered panel experiment with 4,293 U.S. voters found that LLM-generated prebunking articles reduced belief in election rumors and modestly protected confidence in election administration, with smaller effects still visible a week later. Once researchers had refined the underlying template, fully AI-generated messages performed comparably to versions receiving per-rumor human feedback. The work shows how validated behavioral design can be front-loaded before automation, although the outcomes were self-reported beliefs rather than field behavior.",
+      "attribution": "Caltech / Royal Society Open Science",
+      "sourceUrl": "https://doi.org/10.1098/rsos.252226",
+      "categories": [
+        "behavioral-science",
+        "technology-modeling",
+        "application-analysis"
+      ],
+      "sourcePublishedAt": "2026-08-05",
+      "dateAdded": "2026-08-30"
+    }
+  ],
+  "nextPage": null
+}

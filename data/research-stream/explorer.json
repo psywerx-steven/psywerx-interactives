@@ -1,8 +1,200 @@
 {
   "schemaVersion": "psywerx-research-explorer-v1",
-  "generatedAt": "2026-09-19",
-  "totalItems": 214,
+  "generatedAt": "2026-09-20",
+  "totalItems": 224,
   "items": [
+    {
+      "itemId": "research-3c9dc1757657e8414782",
+      "streamTitle": "U.S.–China economic talks now put AI safeguards alongside trade and critical minerals",
+      "streamSummary": "U.S. Treasury Secretary Scott Bessent and Chinese Vice Premier He Lifeng are set to meet in New York on September 20 with artificial intelligence, trade, and critical minerals on the agenda ahead of a planned Trump–Xi summit. Reuters reports that AI discussions are expected to include safety safeguards and powerful or open-weight models alongside rare-earth supplies and the future of the trade truce. No agreement had been announced when this brief was prepared. The development is important because AI governance is being negotiated inside a broader strategic-economic relationship, where technical guardrails may become linked to bargaining in other domains.",
+      "attribution": "Reuters",
+      "sourceUrl": "https://www.reuters.com/business/finance/us-treasurys-bessent-chinas-he-launch-talks-ai-trade-critical-minerals-2026-09-20",
+      "sourcePublishedAt": "2026-09-20",
+      "dateAdded": "2026-09-20",
+      "latestSeenBriefDate": "2026-09-20",
+      "primaryCategory": "operations-strategy",
+      "categories": [
+        "operations-strategy",
+        "technology-modeling"
+      ],
+      "questionAndWhy": "Can the United States and China establish practical AI guardrails while negotiating over trade, rare-earth supplies, and strategic technology competition? The linkage matters because AI safety is increasingly embedded in the broader bilateral security and economic relationship.",
+      "whatTheyDid": "U.S. Treasury Secretary Scott Bessent and Chinese Vice Premier He Lifeng are set to meet in New York on September 20 ahead of a planned Trump–Xi summit. Reuters reports that the agenda includes AI safety and powerful or open-weight models, the expiring trade truce, rare-earth supply, tariffs, and other economic issues.",
+      "whatTheyFound": "The meeting has not yet produced an agreement at the time of this brief. The concrete development is agenda-level: AI safeguards are being negotiated alongside strategic supply chains and trade concessions, and analysts expect limited near-term agreements rather than a major settlement.",
+      "whatItMeans": "AI governance between major powers may be shaped by bargaining across domains rather than through a standalone technical-safety process. Any later agreement should be assessed by the specificity of the guardrail, verification mechanism, coverage of open-weight models, and whether implementation survives wider economic disputes."
+    },
+    {
+      "itemId": "research-3064458326d07fdb0156",
+      "streamTitle": "Russia’s election became a simultaneous physical, cyber, and narrative contest—but disruption intent remains partly unverified",
+      "streamSummary": "Russia’s September 18–20 parliamentary election coincided with reported cyberattacks on Moscow’s online-voting system and, on September 20, the largest drone attack yet reported on the Moscow region. Russian officials said the cyberattacks were repelled; the drone strikes caused deaths and damaged an oil refinery. Moscow’s mayor said the drone attack was intended to disrupt the vote, while Ukraine had not commented on that attack and Russia did not publicly substantiate its earlier attribution of election cyber interference to Kyiv. The case shows why attack, attribution, intent, operational disruption, and political effect should be assessed separately.",
+      "attribution": "Reuters",
+      "sourceUrl": "https://www.reuters.com/world/europe/russian-election-cast-test-support-ukraine-war-enters-final-day-2026-09-20",
+      "sourcePublishedAt": "2026-09-20",
+      "dateAdded": "2026-09-20",
+      "latestSeenBriefDate": "2026-09-20",
+      "primaryCategory": "operations-strategy",
+      "categories": [
+        "operations-strategy",
+        "application-analysis"
+      ],
+      "questionAndWhy": "How should analysts assess election disruption when kinetic attacks, reported cyber incidents, and competing narratives occur at the same time? The challenge is separating verified effects from official claims about who intended to influence the vote.",
+      "whatTheyDid": "During Russia’s September 18–20 parliamentary election, Russian officials reported cyberattacks against Moscow’s online-voting system and sabotage against communications lines. On September 20, Russia also reported the largest drone attack yet on the Moscow region, with deaths and damage to an oil refinery. Moscow’s mayor said the drone attack was intended to disrupt the election; Ukraine had not commented on that attack, and President Putin had earlier accused Ukraine of election interference without publicly presenting evidence for the cyber attribution.",
+      "whatTheyFound": "The cyber incidents were reported as repelled, while the drone attack caused physical damage and casualties. The election continued, with turnout above 50% by Sunday afternoon according to Russian election authorities. The observable disruption, official attribution, claimed intent, and actual effect on voting or political legitimacy therefore remain different evidence questions; the political contest itself was also tightly restricted, with many anti-war candidates excluded.",
+      "whatItMeans": "Election-interference analysis should not collapse multiple channels into one campaign effect. A useful assessment separates attack occurrence, attribution confidence, claimed objective, service disruption, audience interpretation, participation, and later political use of the incident."
+    },
+    {
+      "itemId": "research-c83989dfd06b0f51c18c",
+      "streamTitle": "Psychotherapy outcome models lost much of their discrimination when moved to a different clinic",
+      "streamSummary": "A Scientific Reports study tested psychotherapy-remission prediction across 2,002 patients in eight German outpatient clinics. Models performed modestly within individual clinics, with mean AUC 0.67, but leave-one-clinic-out discrimination fell to about 0.53 and balanced accuracy to 0.52 in held-out clinics—near chance. Probabilistic error changed less, and the same generalization problem appeared with a different regression specification. The study is a strong transportability warning: internal validation can look acceptable while the model loses practical ranking ability in a new setting, even when training data are pooled across several clinics.",
+      "attribution": "Weller et al. — Scientific Reports",
+      "sourceUrl": "https://doi.org/10.1038/s41598-026-70047-x",
+      "sourcePublishedAt": "2026-09-19",
+      "dateAdded": "2026-09-20",
+      "latestSeenBriefDate": "2026-09-20",
+      "primaryCategory": "application-analysis",
+      "categories": [
+        "application-analysis",
+        "technology-modeling"
+      ],
+      "questionAndWhy": "Can a prediction model that performs acceptably inside one psychotherapy clinic retain its usefulness when deployed in another clinic with different patients and treatment practices? Transportability is essential if predictive models are meant to support real-world decisions outside their development setting.",
+      "whatTheyDid": "Weller and colleagues analyzed 2,002 patients with internalizing disorders across eight German university outpatient clinics. They built penalized logistic-regression models, evaluated within-clinic performance, pooled-clinic performance, and leave-one-clinic-out transport, and checked robustness with unpenalized models and leakage-aware preprocessing.",
+      "whatTheyFound": "Mean within-clinic AUC was 0.67, but in leave-one-clinic-out evaluation discrimination fell to about 0.53 and balanced accuracy to 0.52 in held-out clinics—close to chance. Brier-score deterioration was smaller and not statistically significant. Feature importance also varied substantially across clinics, and the generalization failure persisted under an alternative regression specification.",
+      "whatItMeans": "Internal validation can substantially overstate decision usefulness when the deployment context changes. For PSYWERX modeling, external validation should use genuinely held-out populations or settings and should examine both ranking/discrimination and calibration rather than assuming that pooled heterogeneity automatically creates transportability."
+    },
+    {
+      "itemId": "research-ad827ab23a333fd91881",
+      "streamTitle": "Adults strategically transmitted useful knowledge in ways younger children did not",
+      "streamSummary": "A new Scientific Reports experiment tested whether cumulative culture benefits from deliberately selecting what another person should learn. Adults preferentially passed along information that helped future learners, and this strategic transmission increased the accumulation of useful discoveries compared with randomly selected information. Younger children could perform the task but did not show the same strong benefit from intentional transmission until about ages 9–10. The study supports a role for higher-order social reasoning in cultural accumulation, but it uses an experimental task rather than a direct test of complex real-world institutions or traditions.",
+      "attribution": "Mackintosh et al. — Scientific Reports",
+      "sourceUrl": "https://doi.org/10.1038/s41598-026-62734-6",
+      "sourcePublishedAt": "2026-09-19",
+      "dateAdded": "2026-09-20",
+      "latestSeenBriefDate": "2026-09-20",
+      "primaryCategory": "behavioral-science",
+      "categories": [
+        "behavioral-science",
+        "application-analysis"
+      ],
+      "questionAndWhy": "What makes human cumulative culture unusually effective: simply copying successful information, or deliberately choosing what another person needs to learn? The distinction matters because cultural transmission is often treated as passive imitation rather than an active decision about what to pass on.",
+      "whatTheyDid": "Mackintosh and colleagues used an experimental cultural-transmission task with adults and children. They compared information that participants intentionally selected for a future learner with information passed on incidentally, then tested whether those choices helped useful discoveries accumulate across transmission.",
+      "whatTheyFound": "Adults preferentially transmitted information that was useful to later learners, and that strategic selection increased the accumulation of beneficial discoveries relative to randomly selected information. Younger children could perform the underlying task but did not show the same strong strategic transmission advantage; a benefit from intentional over inadvertent transmission was not evident until roughly ages 9–10.",
+      "whatItMeans": "Cumulative culture may depend not only on learning from others but on reasoning about what information will help someone else. For influence, training, and knowledge-management work, transmission quality is therefore partly a selection problem: what gets chosen for the next person can matter as much as how accurately it is copied."
+    },
+    {
+      "itemId": "research-a54fe22d509f87b603a5",
+      "streamTitle": "A behavioral avoidance measure moved early in mindfulness treatment and partially tracked anxiety improvement",
+      "streamSummary": "A randomized trial of 81 people with high emotional distress tested whether an eight-week online mindfulness intervention changes experiential avoidance early in treatment. By week 3, participants assigned to mindfulness showed lower distress, anxiety, depression, and both self-reported and reaction-time-based avoidance. Reductions in the behavioral avoidance measure statistically mediated part of the improvement in distress and anxiety, but not depression. The sample was small, and mediation requires assumptions beyond random assignment. The study is useful because it pairs a proposed mechanism with both self-report and behavioral measurement while preserving a meaningful null across outcomes.",
+      "attribution": "Xin et al. — BMC Psychology",
+      "sourceUrl": "https://doi.org/10.1186/s40359-026-05121-0",
+      "sourcePublishedAt": "2026-09-19",
+      "dateAdded": "2026-09-20",
+      "latestSeenBriefDate": "2026-09-20",
+      "primaryCategory": "application-analysis",
+      "categories": [
+        "application-analysis",
+        "behavioral-science"
+      ],
+      "questionAndWhy": "Does an online mindfulness intervention reduce distress partly by changing experiential avoidance, and can that mechanism be measured behaviorally rather than only by self-report? Mechanism claims are stronger when the proposed process itself is observed with more than one measurement method.",
+      "whatTheyDid": "Xin and colleagues randomized 81 people with high emotional distress to an eight-week online mindfulness intervention or waitlist. They measured self-reported experiential avoidance and an image-rating reaction-time task at baseline and week 3, alongside distress, anxiety, and depression.",
+      "whatTheyFound": "By week 3, the intervention group showed lower general distress, anxiety, depression, and both self-reported and behavioral avoidance. Reduction in the behavioral avoidance measure statistically mediated part of the improvement in distress and anxiety, but not depression. The trial was small and the mediation analysis remains assumption-dependent despite randomization of the intervention.",
+      "whatItMeans": "The preserved null for depression is important: one proposed process can help explain some outcomes without explaining all of them. The study also provides a useful evaluation pattern—pair a self-report mechanism with a behavioral measure, test whether both move, and keep mechanism evidence separate from the randomized total treatment effect."
+    },
+    {
+      "itemId": "research-6dd86d58a1f7cca7d68a",
+      "streamTitle": "Researchers directly manipulated internal LLM representations to create more controllable simulated participants",
+      "streamSummary": "A new npj Artificial Intelligence study moves synthetic-human simulation beyond prompt-only personas. Researchers extracted internal activation-space directions corresponding to 18 early maladaptive schemas and found that projection onto those directions tracked schema-like expression in model outputs. Directly shifting activations along a target direction also increased the corresponding expression. That provides a more mechanistic and controllable way to alter model behavior. It does not show that the internal vectors are equivalent to human psychological traits or that manipulated LLMs will reproduce human experimental responses, so human-validity testing remains a separate requirement.",
+      "attribution": "Zhang et al. — npj Artificial Intelligence",
+      "sourceUrl": "https://doi.org/10.1038/s44387-026-00160-9",
+      "sourcePublishedAt": "2026-09-19",
+      "dateAdded": "2026-09-20",
+      "latestSeenBriefDate": "2026-09-20",
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling",
+        "behavioral-science",
+        "application-analysis"
+      ],
+      "questionAndWhy": "Can simulated human participants be controlled through internal model representations rather than relying only on prompts that ask an LLM to “act like” someone? Prompt-based personas can be unstable and may not reveal what internal state is actually changing.",
+      "whatTheyDid": "Zhang and colleagues extracted activation-space directions corresponding to 18 early maladaptive schemas from schema therapy. They tested whether an LLM’s projection onto those vectors tracked externally evaluated schema expression in its outputs, then directly shifted the internal activations along those directions to see whether the target schema became more strongly expressed.",
+      "whatTheyFound": "Projection onto the extracted directions was associated with the corresponding schema expression, and linear intervention on the directions induced stronger expression in model outputs. The work shows controllable internal representation of these model behaviors; it does not establish that the vectors are equivalent to human psychological schemas or that the resulting agents reproduce human treatment responses.",
+      "whatItMeans": "This is an important step from prompt engineering toward mechanistically controlled synthetic participants. For PSYWERX, the opportunity is to separate two validation questions: whether an internal manipulation reliably changes the model as intended, and whether that change is actually a valid proxy for variation in real humans."
+    },
+    {
+      "itemId": "research-c2734fc4e17c8bf6db21",
+      "streamTitle": "Action meaning explained brain activity better than low-level visual features across much of cortex",
+      "streamSummary": "A Nature Communications fMRI study compared how well different models explained brain responses while people watched 90 naturalistic action videos. Behavioral judgments about what the action was for and how social it was outperformed models based on objects, scenes, semantic embeddings, gaze, and motion energy across much of cortex. The behaviorally relevant features also explained unique variance in the action-observation network and other regions. The result suggests the brain organizes natural action perception strongly around meaning, but it is representational evidence rather than proof that those features causally determine subsequent behavior.",
+      "attribution": "Han et al. — Nature Communications",
+      "sourceUrl": "https://doi.org/10.1038/s41467-026-76599-w",
+      "sourcePublishedAt": "2026-09-17",
+      "dateAdded": "2026-09-20",
+      "latestSeenBriefDate": "2026-09-20",
+      "primaryCategory": "behavioral-science",
+      "categories": [
+        "behavioral-science",
+        "technology-modeling"
+      ],
+      "questionAndWhy": "When people watch someone act, is cortical organization driven mainly by what the scene looks like, or by behaviorally relevant meaning such as what the actor is doing and whether the action is social? This matters for models of how humans extract actionable meaning from natural scenes.",
+      "whatTheyDid": "Han and colleagues measured fMRI activity while participants watched 90 video clips of social and nonsocial actions in real-world contexts. They compared brain-activity similarity with behavioral judgments of action purpose and sociality, as well as control models based on people, objects, scenes, word embeddings, gaze, and motion energy.",
+      "whatTheyFound": "Models based on action meaning—especially transitivity or purpose and social content—explained more representational structure across much of cortex than the visual, semantic, gaze, and motion models. Those behavioral features also explained unique variance within the action-observation network and beyond it. The study identifies representational correspondence, not a causal role for those features in behavior.",
+      "whatItMeans": "Humans appear to compress rich scenes around behaviorally relevant structure rather than only surface appearance. For modeling audiences or observations, variables tied to what an action means may sometimes be more informative than exhaustive low-level description—but this neural evidence does not by itself tell us which meanings cause later decisions."
+    },
+    {
+      "itemId": "research-0a05aefdf99a99d41796",
+      "streamTitle": "Army leaders are framing AI as a shift in the cognitive burden of command, not simply a way to decide faster",
+      "streamSummary": "At the 2026 Maneuver Warfighter Conference, Army leaders argued that AI will change the commander’s problem from information scarcity to information triage and judgment. Guest expert Kristin Milchanowski suggested interrogating AI outputs with three questions: what should be disregarded, what assumptions is the system making, and what would have to be true for it to be wrong. Army leaders simultaneously warned that electronic warfare can abruptly remove technological support. The framework is practitioner guidance, not a validated decision-aid experiment, but it gives concrete human-performance targets for evaluating AI-enabled command systems.",
+      "attribution": "U.S. Army Maneuver Center of Excellence",
+      "sourceUrl": "https://www.army.mil/article/295444/ai_quantum_could_reshape_command_decisions_but_human_judgment_remains_critical_expert_tells_maneuver_leaders",
+      "sourcePublishedAt": "2026-09-17",
+      "dateAdded": "2026-09-20",
+      "latestSeenBriefDate": "2026-09-20",
+      "primaryCategory": "operations-strategy",
+      "categories": [
+        "operations-strategy",
+        "technology-modeling",
+        "application-analysis"
+      ],
+      "questionAndWhy": "What changes for commanders when AI and sensor networks make information abundant rather than scarce? The operational problem may shift from finding information to judging which outputs matter, which assumptions are hidden, and when the system is wrong.",
+      "whatTheyDid": "At the 2026 Maneuver Warfighter Conference, Army leaders and invited AI expert Kristin Milchanowski discussed AI-supported command decision-making alongside ongoing efforts to digitize Combat Training Centers and capture Soldier and vehicle telemetry. Milchanowski proposed three questions for AI-supported decisions: what should be disregarded, what assumptions is the system making, and what would have to be true for its assessment to be wrong.",
+      "whatTheyFound": "The conference reporting presents a clear operational theory: AI can assemble and analyze more information, but that can relocate rather than eliminate cognitive burden. Army leaders also emphasized that contested communications and electronic warfare can remove technological support abruptly. These are practitioner judgments and experimentation priorities, not evidence that the proposed questioning framework has been shown to improve battlefield decisions.",
+      "whatItMeans": "Decision advantage should be evaluated through judgment quality under uncertainty, not merely faster output production. For human-AI command tools, useful measures include whether operators identify bad assumptions, disregard irrelevant information, detect failure, and still function when automation or connectivity disappears."
+    },
+    {
+      "itemId": "research-d76c697965e58247097c",
+      "streamTitle": "The mind may represent complexity as a common quantity across very different kinds of information",
+      "streamSummary": "Across 11 experiments with 1,500 participants, researchers found evidence that people represent complexity in a domain-general way. In reward-transfer tasks, learning tied to complexity generalized across very different inputs, including shapes, dot arrays, melodies, letter strings, mathematical expressions, and tactile forms. The result suggests cognition may track a common quantity related to information complexity rather than treating every domain independently. The experiments demonstrate behavioral transfer, not one confirmed neural mechanism, and they do not imply that all forms of real-world complexity have identical effects on attention, judgment, or performance.",
+      "attribution": "Boger & Firestone — Nature Human Behaviour",
+      "sourceUrl": "https://doi.org/10.1038/s41562-026-02502-8",
+      "sourcePublishedAt": "2026-09-15",
+      "dateAdded": "2026-09-20",
+      "latestSeenBriefDate": "2026-09-20",
+      "primaryCategory": "behavioral-science",
+      "categories": [
+        "behavioral-science",
+        "technology-modeling"
+      ],
+      "questionAndWhy": "Does the brain treat visual, linguistic, mathematical, musical, and tactile complexity as unrelated domain-specific properties, or is there a more general representation of “how complex” something is? A domain-general representation would matter for workload, attention, learning, and model design.",
+      "whatTheyDid": "Boger and Firestone ran 11 experiments with 1,500 participants. A key reward-transfer paradigm associated outcomes with more- or less-complex stimuli in one domain and then tested whether the learned value transferred to different stimulus classes, including shapes, dot arrays, melodies, letter strings, mathematical expressions, and tactile forms.",
+      "whatTheyFound": "Complexity-based learning generalized across very different stimulus types, supporting a domain-general representation rather than completely separate complexity judgments for each domain. The experiments establish behavioral commonality across tasks; they do not identify one neural mechanism or show that every real-world form of complexity is psychologically interchangeable.",
+      "whatItMeans": "“Complexity” may be more than a loose label spanning many domains. For PSYWERX, this suggests a potentially useful cross-domain cognitive variable, but it should still be operationalized carefully because shared representation does not imply that all complexity has the same behavioral consequence."
+    },
+    {
+      "itemId": "research-c65b931d8d6c4cf4cf87",
+      "streamTitle": "A new FCM workflow turns simulated causal dynamics into AI-generated virtual-world scenes",
+      "streamSummary": "A new arXiv paper links fuzzy cognitive maps to LLM and video-generation agents. Users perturb an FCM, the model’s transient dynamics carry it toward an equilibrium, and those input-to-equilibrium transitions become sequenced “if-then” rules that guide an LLM-written script and generated video. The demonstration used a five-node dolphin-and-shark FCM across eight scenes with Gemini 3.1 and Veo 3.1. The approach could make causal simulations easier to inspect or communicate, but the video only visualizes causality encoded in the FCM; it does not independently validate the model’s real-world causal structure.",
+      "attribution": "Panda, Adigun & Kosko — arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2609.14985",
+      "sourcePublishedAt": "2026-09-14",
+      "dateAdded": "2026-09-20",
+      "latestSeenBriefDate": "2026-09-20",
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling",
+        "application-analysis"
+      ],
+      "questionAndWhy": "Can an executable fuzzy cognitive map drive a visual world so that changes in the generated scene follow the model’s simulated dynamics rather than an unconstrained storytelling prompt? That could make causal models easier to inspect, communicate, and interact with.",
+      "whatTheyDid": "Panda, Adigun, and Kosko proposed sequencing FCM perturbations and equilibrium states into causal “if-then” meta-rules. An LLM converts the FCM state transitions into a script and a video generator renders the sequence. Their demonstration used a five-node dolphin-and-shark FCM, eight scenes, Gemini 3.1 for scripting, and Veo 3.1 for video generation.",
+      "whatTheyFound": "The proof of concept produced a video whose scene sequence was governed by the FCM’s stimulated state transitions and attractors. The paper shows a way to visualize model-internal dynamics; it does not validate that the FCM’s edges are causally correct in the real world, nor that the generated visuals add predictive validity.",
+      "whatItMeans": "For PSYWERX-style FCMs, this points to an interface layer between executable models and immersive explanation or wargaming. The governance requirement is crucial: the causal claim belongs to the underlying model and evidence for its edges, not to the realism of the generated video."
+    },
     {
       "itemId": "research-b69130c2ec7487dfcdf5",
       "streamTitle": "Poland joined a coalition trying to build a cheaper anti-ballistic defense option with Ukraine and European partners",
@@ -4117,6 +4309,29 @@
     }
   ],
   "briefs": [
+    {
+      "briefDate": "2026-09-20",
+      "briefType": "daily",
+      "totalItems": 10,
+      "categoryCounts": {
+        "behavioral-science": 3,
+        "technology-modeling": 2,
+        "operations-strategy": 3,
+        "application-analysis": 2
+      },
+      "itemIds": [
+        "research-ad827ab23a333fd91881",
+        "research-d76c697965e58247097c",
+        "research-c2734fc4e17c8bf6db21",
+        "research-6dd86d58a1f7cca7d68a",
+        "research-c65b931d8d6c4cf4cf87",
+        "research-0a05aefdf99a99d41796",
+        "research-3c9dc1757657e8414782",
+        "research-3064458326d07fdb0156",
+        "research-c83989dfd06b0f51c18c",
+        "research-a54fe22d509f87b603a5"
+      ]
+    },
     {
       "briefDate": "2026-09-19",
       "briefType": "daily",
