@@ -2,8 +2,130 @@
   "schemaVersion": "psywerx-public-research-stream-v1",
   "page": 2,
   "pageSize": 24,
-  "totalItems": 224,
+  "totalItems": 233,
   "items": [
+    {
+      "itemId": "research-013053b77adc78ae5cb0",
+      "streamTitle": "Unrelated distraction after learning reduced memory for meaningful facts, but the effect was not equally strong in every experiment",
+      "streamSummary": "Three experiments tested whether an unrelated task after learning can disrupt memory for meaningful trivia facts. The first experiment found no overall interference effect, although distraction became more harmful later in the session. Two follow-up experiments found substantially poorer recall after distraction, supporting non-specific retroactive interference even when the new activity did not resemble the learned material. The mixed initial result is important because the effect is not perfectly robust across designs. For training and communication, the study suggests that post-message distraction and task switching can influence retention after the content itself has ended.",
+      "attribution": "Fisher & Mercer — Current Psychology",
+      "sourceUrl": "https://doi.org/10.1007/s12144-026-10052-5",
+      "categories": [
+        "behavioral-science",
+        "application-analysis"
+      ],
+      "sourcePublishedAt": "2026-09-18",
+      "dateAdded": "2026-09-19"
+    },
+    {
+      "itemId": "research-000513e071a48096c3e2",
+      "streamTitle": "VR can reliably provoke physiological stress, but no reviewed study had yet used it as a formal wearable-validation standard",
+      "streamSummary": "A new Behavior Research Methods review compared 11 virtual-reality stress tasks for their ability to produce measurable physiological reactivity and support wearable-sensor validation. The VR Trier Social Stress Test and high-altitude tasks looked most promising, while methods and physiological measures varied widely across studies. Several experiments successfully collected wearable data during VR stress, but none had explicitly used VR as a formal device-validation protocol. The review therefore identifies a promising test architecture rather than an established standard: controlled VR stressors could be paired with gold-standard physiological recording to assess whether wearable measurements are both responsive and accurate.",
+      "attribution": "Sikora et al. — Behavior Research Methods",
+      "sourceUrl": "https://doi.org/10.3758/s13428-026-03161-3",
+      "categories": [
+        "application-analysis",
+        "behavioral-science",
+        "technology-modeling"
+      ],
+      "sourcePublishedAt": "2026-09-18",
+      "dateAdded": "2026-09-19"
+    },
+    {
+      "itemId": "research-68862d648905cf3e92fd",
+      "streamTitle": "Shared online communities predicted a graded common language beyond simple follow-network proximity",
+      "streamSummary": "A new Bluesky study used user-curated Starter Packs as community-affiliation labels and analyzed 191,648 user pairs. People who shared more communities also used more similar vocabularies, with one shared pack corresponding to roughly twice the lexical similarity of equally connected strangers. Topically distinct shared communities mattered more than raw overlap, and the pattern added information beyond ordinary follow-network distance. The study provides a scalable proxy for communal common ground, but it is observational and lexical overlap is not the same thing as directly demonstrating shared beliefs, knowledge, or persuasion susceptibility.",
+      "attribution": "Kumar et al. — arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2609.19549",
+      "categories": [
+        "behavioral-science",
+        "application-analysis",
+        "technology-modeling"
+      ],
+      "sourcePublishedAt": "2026-09-17",
+      "dateAdded": "2026-09-19"
+    },
+    {
+      "itemId": "research-60e7d318ccf276e5c40d",
+      "streamTitle": "LLM annotations were almost perfectly reproducible while only weakly matching the construct they were supposed to measure",
+      "streamSummary": "A new preprint compared LLM coding of European Commission AI Act consultation text with structured survey answers from the same stakeholders. The automated annotations were extraordinarily reproducible, with intraclass correlations above 0.99, but they showed limited convergence with the nominal survey construct. The gap also differed systematically by stakeholder type and country context. The result is a strong warning for automated content analysis: consistency does not establish construct validity. The study is a preprint, and survey answers are not automatically the one true measure, but the mismatch shows why external validation is necessary.",
+      "attribution": "Batzdorfer et al. — arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2609.19866",
+      "categories": [
+        "application-analysis",
+        "technology-modeling"
+      ],
+      "sourcePublishedAt": "2026-09-17",
+      "dateAdded": "2026-09-19"
+    },
+    {
+      "itemId": "research-e51b0428ecb08e6c5370",
+      "streamTitle": "A modular voice-agent design delegates tool calls to a separate backend instead of making one model do everything",
+      "streamSummary": "A new preprint proposes a frontend-backend architecture for full-duplex voice agents. A low-latency speech model handles natural conversation and delegates tool-requiring tasks to a separate text LLM, then speaks the returned result. The system reported 92–97% tool-call recall and 81.2% rejection accuracy for irrelevant calls, with competitive results on duplex-agent benchmarks when paired with a larger backend. These are benchmark results rather than real-world deployment evidence. The larger design lesson is modularity: conversation, tool reasoning, and execution can be tested, upgraded, and governed as distinct components.",
+      "attribution": "Hu et al. — arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2609.19334",
+      "categories": [
+        "technology-modeling",
+        "application-analysis"
+      ],
+      "sourcePublishedAt": "2026-09-16",
+      "dateAdded": "2026-09-19"
+    },
+    {
+      "itemId": "research-e6aa770700aba006bce1",
+      "streamTitle": "Grid2Text pairs scientific data with expert reasoning instead of asking LLMs to narrate numbers blindly",
+      "streamSummary": "A new Scientific Data release introduces Grid2Text, an open dataset that aligns ERA5 weather-grid variables with expert-verified forecast text and explicit reasoning chains for temperature, wind, humidity, and precipitation. The project also includes human-in-the-loop benchmarks for physical consistency and logical accuracy. This is dataset infrastructure, not evidence that an LLM trained on it already outperforms operational forecasters. Its broader importance is methodological: systems that convert structured model outputs into prose can retain the source variables, expert reasoning steps, and independent consistency checks needed to audit how the explanation was produced.",
+      "attribution": "Zhang et al. — Scientific Data",
+      "sourceUrl": "https://doi.org/10.1038/s41597-026-08249-1",
+      "categories": [
+        "technology-modeling",
+        "application-analysis"
+      ],
+      "sourcePublishedAt": "2026-09-18",
+      "dateAdded": "2026-09-18"
+    },
+    {
+      "itemId": "research-8c592ad24adfa8d584b4",
+      "streamTitle": "A new review splits LLM human proxies into four roles that require different validation tests",
+      "streamSummary": "A Nature Computational Science review argues that “human-like” is too vague a standard for LLM-based synthetic humans. The authors organize existing work into four roles: believable agents, task agents, experimental subjects, and silicon samples. Each role supports a different scientific claim and therefore requires different validity evidence. A system can sound like a plausible person yet poorly reproduce a population distribution or experimental treatment response. The review also stresses that LLM proxies do not explain the mechanisms of human behavior. The framework is especially useful for preventing one successful kind of validation from being generalized to a different use case.",
+      "attribution": "Karetnikov, Rahwan & Svetinovic — Nature Computational Science",
+      "sourceUrl": "https://doi.org/10.1038/s43588-026-01060-3",
+      "categories": [
+        "technology-modeling",
+        "behavioral-science",
+        "application-analysis"
+      ],
+      "sourcePublishedAt": "2026-09-18",
+      "dateAdded": "2026-09-18"
+    },
+    {
+      "itemId": "research-76eecf7e0855398b5efb",
+      "streamTitle": "Value-matched AI recommendations increased endorsement and willingness to pay",
+      "streamSummary": "A new Scientific Reports study found that LLM recommendations were more persuasive when their framing matched users’ moral values and political identity. Across an exploratory study and two preregistered experiments, value-congruent framing increased idea endorsement and willingness to pay for the service. The effect operated partly because the recommendation seemed more compelling and partly because users felt more understood, with stronger effects among people holding firmer political views. The experiments show a framing effect in these contexts, not that personalized AI will reliably persuade every user or produce durable attitude change.",
+      "attribution": "Hirst et al. — Scientific Reports",
+      "sourceUrl": "https://doi.org/10.1038/s41598-026-71409-1",
+      "categories": [
+        "behavioral-science",
+        "technology-modeling",
+        "application-analysis"
+      ],
+      "sourcePublishedAt": "2026-09-18",
+      "dateAdded": "2026-09-18"
+    },
+    {
+      "itemId": "research-4a9d67b9743f0a89cbeb",
+      "streamTitle": "Russia is using repurposed training missiles to increase attack volume and pressure Ukraine’s interceptor stocks",
+      "streamSummary": "Reuters reports that Russia has deployed large numbers of repurposed RM48U training missiles as ballistic strike weapons. Ukrainian data show they accounted for more than half of 228 confirmed ballistic and hypersonic launches in July and early August, while use of more capable Iskanders fell sharply. RM48Us are less accurate, but analysts say they can attack lower-value targets, conserve premium missiles, and force Ukraine to spend scarce Patriot interceptors. Ukrainian prosecutors linked an RM48U to a railway strike that killed eight people, though Reuters could not independently verify that forensic finding. The strategic effect is partly an interceptor-economy problem.",
+      "attribution": "Balmforth & Hoske — Reuters",
+      "sourceUrl": "https://www.reuters.com/world/ukraine-russia-war/revamped-missile-leading-russias-ballistic-onslaught-ukraine-2026-09-18",
+      "categories": [
+        "operations-strategy",
+        "technology-modeling",
+        "application-analysis"
+      ],
+      "sourcePublishedAt": "2026-09-18",
+      "dateAdded": "2026-09-18"
+    },
     {
       "itemId": "research-e90d79a5b49c60b8925c",
       "streamTitle": "A new cultural-policy framework separates immediate behavior change from longer-run agency building",
@@ -201,124 +323,6 @@
       ],
       "sourcePublishedAt": "2026-09-16",
       "dateAdded": "2026-09-17"
-    },
-    {
-      "itemId": "research-c4a8c9fa9a644a111d0f",
-      "streamTitle": "U.S. and Chinese experts propose AI red lines and a dedicated military hotline to reduce accidental escalation",
-      "streamSummary": "Participants in a Brookings–Tsinghua Track II dialogue are urging the United States and China to build military-AI safeguards around existing commitments to human control of nuclear weapons. Proposals include human-only authorization for consequential cyberattacks on nuclear command systems and critical infrastructure, shared definitions of meaningful human control, explicit red lines, and a dedicated hotline for AI-related incidents. The concern is that errors or unauthorized agent actions could be mistaken for deliberate attacks before leaders can clarify intent. These are expert recommendations, not adopted government policy, but they are newly salient ahead of planned bilateral AI discussions.",
-      "attribution": "Sisson & Jiang — Brookings Institution",
-      "sourceUrl": "https://www.brookings.edu/articles/advancing-human-control-of-military-ai",
-      "categories": [
-        "operations-strategy",
-        "technology-modeling"
-      ],
-      "sourcePublishedAt": "2026-09-09",
-      "dateAdded": "2026-09-17"
-    },
-    {
-      "itemId": "research-c9b9af1dc5ab8ff195bf",
-      "streamTitle": "The EU is proposing an Article-4-like mechanism for sabotage, cyberattacks, drones, and other gray-zone threats",
-      "streamSummary": "European Commission President Ursula von der Leyen used her September 16 State of the Union address to call for a European “counter-hybrid playbook” and an emergency mechanism for security incidents that fall below armed aggression. The concept would let a member state trigger consultations so the EU can coordinate a response, deter escalation, and mitigate damage, alongside a proposed European Security Council with close partners. This is a policy proposal, not a proven deterrence mechanism, and key questions about thresholds, attribution, authorities, and response options remain unresolved.",
-      "attribution": "European Commission / Ursula von der Leyen",
-      "sourceUrl": "https://commission.europa.eu/strategy-and-policy/state-union_en",
-      "categories": [
-        "operations-strategy",
-        "application-analysis"
-      ],
-      "sourcePublishedAt": "2026-09-16",
-      "dateAdded": "2026-09-16"
-    },
-    {
-      "itemId": "research-9c7b8f8161a7bd2b4344",
-      "streamTitle": "Global pessimism rose, but a 34-country poll still found broad support for international cooperation",
-      "streamSummary": "A Rockefeller Foundation/Focaldata survey of 35,339 adults in 34 countries found widespread pessimism about world conditions alongside continued support for international cooperation. Fifty-seven percent said countries should cooperate even when doing so requires compromising some national interests, and 61% supported countries working together without either the United States or China. Comfort with U.S. and Chinese global leadership was only 39% and 37%. The survey measures attitudes rather than actual alliance behavior, and year-to-year comparisons are repeated cross-sections, but it shows that pessimism, institutional trust, and major-power legitimacy do not move as one dimension.",
-      "attribution": "The Rockefeller Foundation & Focaldata",
-      "sourceUrl": "https://www.rockefellerfoundation.org/reports/2026-polling-data-survey",
-      "categories": [
-        "application-analysis",
-        "operations-strategy",
-        "behavioral-science"
-      ],
-      "sourcePublishedAt": "2026-09-16",
-      "dateAdded": "2026-09-16"
-    },
-    {
-      "itemId": "research-168545eae075c80d8e9a",
-      "streamTitle": "A constrained LLM workflow translated neural-network salience maps into checkable facial-impression explanations",
-      "streamSummary": "A Scientific Reports study combined VGG19, Grad-CAM, and an LLM to interpret predictions of facial attractiveness, dominance, and trustworthiness. Rather than accepting free-form model explanations, the researchers had the LLM produce structured descriptions of salience maps and then checked those descriptions against independent activation totals for facial regions such as the eyes and mouth. The summaries were broadly consistent with those quantitative checks. The workflow is useful for explainability, but the highlighted regions reveal what the predictive network used—not necessarily the causal cues that drive human social judgments.",
-      "attribution": "Sano & Kawabata — Scientific Reports",
-      "sourceUrl": "https://doi.org/10.1038/s41598-026-69824-5",
-      "categories": [
-        "technology-modeling",
-        "behavioral-science"
-      ],
-      "sourcePublishedAt": "2026-09-16",
-      "dateAdded": "2026-09-16"
-    },
-    {
-      "itemId": "research-c2eb18b775170cfa8efa",
-      "streamTitle": "A new regression diagnostic reveals which cases are actually driving an aggregate result",
-      "streamSummary": "A new Political Analysis article extends “Regression Inside Out” to hazard models and, more generally, models with linear predictors. The method decomposes an estimated coefficient into contributions from individual cases and uses bootstrapping to distinguish unusually influential contributions from noise. In a reanalysis of democratic durability, specific countries such as South Africa and Guatemala disproportionately shaped some aggregate effects. RIO does not turn an observational regression into a causal model; its value is interpretability—showing analysts which cases are carrying a result before they generalize the average relationship.",
-      "attribution": "Melamed et al. — Political Analysis",
-      "sourceUrl": "https://doi.org/10.1017/pan.2026.10056",
-      "categories": [
-        "application-analysis",
-        "technology-modeling"
-      ],
-      "sourcePublishedAt": "2026-09-15",
-      "dateAdded": "2026-09-16"
-    },
-    {
-      "itemId": "research-7104ade0959e39adbc41",
-      "streamTitle": "A U.S. indictment maps an alleged Russian recruitment network from surveillance to sabotage and murder-for-hire",
-      "streamSummary": "The U.S. Justice Department has charged five people it says belonged to a Russian intelligence-services network that recruited intermediaries for surveillance, sabotage, and targeted killings. Prosecutors allege U.S.-based recruits were offered money to surveil Russian dissidents and up to $40,000 for a killing, while other network activity included attack logistics in Europe and proposals to burn warehouses or attack electrical infrastructure. The case illustrates how covert influence can operate through paid behavioral recruitment rather than ideological persuasion. The indictment contains allegations, not convictions, and the defendants are presumed innocent.",
-      "attribution": "U.S. Department of Justice",
-      "sourceUrl": "https://www.justice.gov/opa/pr/members-russian-intelligence-services-network-charged-conspiring-finance-terrorism-and",
-      "categories": [
-        "operations-strategy",
-        "application-analysis"
-      ],
-      "sourcePublishedAt": "2026-09-15",
-      "dateAdded": "2026-09-16"
-    },
-    {
-      "itemId": "research-652396432daceb443604",
-      "streamTitle": "Loneliness and pressure for thinness may explain a large share of girls’ higher adolescent internalizing problems",
-      "streamSummary": "A Nature Human Behaviour study followed 3,171 adolescents in Tokyo from ages 12 to 16 and examined why girls had higher rates of depression and suicidal ideation. A longitudinal mediation model estimated that loneliness and desire for thinness at age 14 statistically accounted for about 35% of the later sex difference in depressive symptoms and 46% of the gap in suicidal ideation. The study identifies plausible intervention targets, but it did not randomize loneliness or body-image pressure; mediation estimates rely on assumptions and should not be read as proof that changing those factors will eliminate the disparity.",
-      "attribution": "Narita et al. — Nature Human Behaviour",
-      "sourceUrl": "https://doi.org/10.1038/s41562-026-02578-2",
-      "categories": [
-        "behavioral-science",
-        "application-analysis"
-      ],
-      "sourcePublishedAt": "2026-09-15",
-      "dateAdded": "2026-09-16"
-    },
-    {
-      "itemId": "research-0c5588475f8dcdd06ab9",
-      "streamTitle": "A new 100-culture study argues that collectivism is about duties to close others—not generalized warmth",
-      "streamSummary": "A Nature Human Behaviour study tested 12,247 people across 100 cultures with a new measure of “responsibilism”: duties and responsibilities in specific close relationships. The scale revealed large East–West differences that many classic collectivism surveys had failed to detect and predicted external behavioral and societal markers substantially better than five highly cited alternatives. The result suggests a decades-old measurement problem may partly reflect an overly “warm and fuzzy” definition of collectivism. Most analyses were not preregistered, and the cross-cultural correlates do not establish causal effects.",
-      "attribution": "Talhelm et al. — Nature Human Behaviour",
-      "sourceUrl": "https://doi.org/10.1038/s41562-026-02525-1",
-      "categories": [
-        "behavioral-science",
-        "application-analysis"
-      ],
-      "sourcePublishedAt": "2026-09-15",
-      "dateAdded": "2026-09-16"
-    },
-    {
-      "itemId": "research-0ae122fb88f9bb0b4590",
-      "streamTitle": "Habit-building tools helped a 20-second daily practice persist for six months",
-      "streamSummary": "A preregistered randomized trial with 497 U.S. adults tested a 15-minute online lesson in self-compassionate touch, either alone or with added habit-formation tools. The habit-support group practiced more often and more automatically at three and six months and showed stronger gains in self-compassion; broader mental-health symptoms improved more by six months. Perceived stress did not differ between groups. Mediation analyses pointed to growing automaticity as an important pathway, but those mechanism estimates require more assumptions than the randomized treatment comparison itself.",
-      "attribution": "Susman et al. — Scientific Reports",
-      "sourceUrl": "https://doi.org/10.1038/s41598-026-63457-4",
-      "categories": [
-        "behavioral-science",
-        "application-analysis"
-      ],
-      "sourcePublishedAt": "2026-09-15",
-      "dateAdded": "2026-09-16"
     }
   ],
   "nextPage": "public_feed_pages/page-0003.json"
