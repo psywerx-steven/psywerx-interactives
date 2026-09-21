@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import json
-import subprocess
 import sys
 from pathlib import Path
 
@@ -17,6 +16,7 @@ import audit_family
 
 DOC = ROOT / "docs/governance/NEXT_LAYER_SCALE_UP_READINESS.md"
 REPORT = ROOT / "reports/layer-scale-up-v2/next-layer-readiness.json"
+SOURCE_COMMIT = "523753f92039d97b058e24ccc2003515636eaff0"
 
 LAYERS = {
     "Biological": "BIO",
@@ -234,7 +234,7 @@ def build() -> dict:
         "schemaVersion": "1.0.0",
         "analysisId": "NEXT-LAYER-SCALE-UP-READINESS-2026-09-18-001",
         "analysisClass": "READ_ONLY_MECHANICAL_PLANNING",
-        "sourceCommit": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip(),
+        "sourceCommit": SOURCE_COMMIT,
         "workflow": "LAYER_SCALE_UP_V2",
         "excludedCompletedLayer": "Psychological",
         "scienceResearchPerformed": False,
