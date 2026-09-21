@@ -123,6 +123,9 @@ jobs:
       - name: Validate Layer Scale-Up V2 process funnel, benchmark and readiness
         run: python -m unittest discover -s tests -p "test_layer_scale_up_v2*.py"
 
+      - name: Validate refreshed remaining-Layer readiness
+        run: python -m unittest discover -s tests -p "test_remaining_layer_readiness_v2.py"
+
       - name: Validate candidate-only Informational Layer V2 audit
         run: python -m unittest discover -s tests -p "test_informational_layer_v2.py"
 
@@ -270,6 +273,9 @@ jobs:
 
       - name: Validate Layer Scale-Up V2 process funnel, benchmark and readiness
         run: python -m unittest discover -s tests -p "test_layer_scale_up_v2*.py"
+
+      - name: Validate refreshed remaining-Layer readiness
+        run: python -m unittest discover -s tests -p "test_remaining_layer_readiness_v2.py"
 
       - name: Validate candidate-only Informational Layer V2 audit
         run: python -m unittest discover -s tests -p "test_informational_layer_v2.py"
