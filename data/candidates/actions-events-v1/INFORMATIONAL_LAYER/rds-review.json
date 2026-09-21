@@ -1,0 +1,162 @@
+[
+  {
+    "id": "INF-004",
+    "familyId": "INF-F01",
+    "definition": "The degree to which a piece of information stands out relative to competing information.",
+    "declaredScale": "0–1 content-coded index; low / moderate / high; domain-specific continuous measure",
+    "derivation": "NO_VERSIONED_EXACT_RULE_IN_FROZEN_ENTITY",
+    "inputs": "NOT_EXACTLY_DECLARED",
+    "aggregation": "NOT_EXACTLY_DECLARED",
+    "units": "NOT_EXACTLY_DECLARED",
+    "window": "NOT_EXACTLY_DECLARED",
+    "baseline": "NOT_EXACTLY_DECLARED",
+    "externalInputs": "NOT_EXACTLY_DECLARED",
+    "incomingCausalIds": [
+      "REL-INF-001",
+      "REL-INF-016"
+    ],
+    "outgoingCausalIds": [
+      "REL-INF-002"
+    ],
+    "d10": "HEIGHTENED_CAUSAL_SOURCE",
+    "doubleCountRisk": "YES_REVIEW_CONSTITUENTS",
+    "directEffectTargetAllowed": false,
+    "blockers": [],
+    "resolutionAuthorized": false
+  },
+  {
+    "id": "INF-010",
+    "familyId": "INF-F03",
+    "definition": "Proportion of decision-relevant facts, alternatives, conditions, and limitations included in a message.",
+    "declaredScale": "0–1 content-coded index; low / moderate / high; domain-specific continuous measure",
+    "derivation": "NO_VERSIONED_EXACT_RULE_IN_FROZEN_ENTITY",
+    "inputs": "NOT_EXACTLY_DECLARED",
+    "aggregation": "NOT_EXACTLY_DECLARED",
+    "units": "NOT_EXACTLY_DECLARED",
+    "window": "NOT_EXACTLY_DECLARED",
+    "baseline": "NOT_EXACTLY_DECLARED",
+    "externalInputs": "NOT_EXACTLY_DECLARED",
+    "incomingCausalIds": [
+      "REL-INF-008"
+    ],
+    "outgoingCausalIds": [
+      "REL-INF-007"
+    ],
+    "d10": "HEIGHTENED_CAUSAL_SOURCE",
+    "doubleCountRisk": "YES_REVIEW_CONSTITUENTS",
+    "directEffectTargetAllowed": false,
+    "blockers": [],
+    "resolutionAuthorized": false
+  },
+  {
+    "id": "INF-011",
+    "familyId": "INF-F03",
+    "definition": "Exposure to mutually inconsistent claims, recommendations, estimates, or causal accounts.",
+    "declaredScale": "0–1 content-coded index; low / moderate / high; domain-specific continuous measure",
+    "derivation": "NO_VERSIONED_EXACT_RULE_IN_FROZEN_ENTITY",
+    "inputs": "NOT_EXACTLY_DECLARED",
+    "aggregation": "NOT_EXACTLY_DECLARED",
+    "units": "NOT_EXACTLY_DECLARED",
+    "window": "NOT_EXACTLY_DECLARED",
+    "baseline": "NOT_EXACTLY_DECLARED",
+    "externalInputs": "NOT_EXACTLY_DECLARED",
+    "incomingCausalIds": [],
+    "outgoingCausalIds": [
+      "REL-INF-009"
+    ],
+    "d10": "HEIGHTENED_CAUSAL_SOURCE",
+    "doubleCountRisk": "YES_REVIEW_CONSTITUENTS",
+    "directEffectTargetAllowed": false,
+    "blockers": [],
+    "resolutionAuthorized": false
+  },
+  {
+    "id": "INF-014",
+    "familyId": "INF-F03",
+    "definition": "Ease with which the language and layout of a message can be decoded by its intended audience.",
+    "declaredScale": "0–1 content-coded index; low / moderate / high; domain-specific continuous measure",
+    "derivation": "NO_VERSIONED_EXACT_RULE_IN_FROZEN_ENTITY",
+    "inputs": "NOT_EXACTLY_DECLARED",
+    "aggregation": "NOT_EXACTLY_DECLARED",
+    "units": "NOT_EXACTLY_DECLARED",
+    "window": "NOT_EXACTLY_DECLARED",
+    "baseline": "NOT_EXACTLY_DECLARED",
+    "externalInputs": "NOT_EXACTLY_DECLARED",
+    "incomingCausalIds": [
+      "REL-INF-003",
+      "REL-INF-006"
+    ],
+    "outgoingCausalIds": [],
+    "d10": "HEIGHTENED_CAUSAL_TARGET",
+    "doubleCountRisk": "POSSIBLE_IF_FORMULA_AND_CONSTITUENTS_BOTH_USED",
+    "directEffectTargetAllowed": false,
+    "blockers": [
+      "HYP-INF-F03-H20"
+    ],
+    "resolutionAuthorized": false
+  },
+  {
+    "id": "INF-053",
+    "familyId": "INF-F09",
+    "definition": "Degree to which language choice, vocabulary, translation, and syntax match the intended audience’s usable language proficiency.",
+    "declaredScale": "0–1 content-coded index; low / moderate / high; domain-specific continuous measure",
+    "derivation": "NO_VERSIONED_EXACT_RULE_IN_FROZEN_ENTITY",
+    "inputs": "NOT_EXACTLY_DECLARED",
+    "aggregation": "NOT_EXACTLY_DECLARED",
+    "units": "NOT_EXACTLY_DECLARED",
+    "window": "NOT_EXACTLY_DECLARED",
+    "baseline": "NOT_EXACTLY_DECLARED",
+    "externalInputs": "NOT_EXACTLY_DECLARED",
+    "incomingCausalIds": [],
+    "outgoingCausalIds": [],
+    "d10": "NONCAUSAL_OR_ISOLATED",
+    "doubleCountRisk": "NO_ACTIVE_CAUSAL_EDGE",
+    "directEffectTargetAllowed": false,
+    "blockers": [],
+    "resolutionAuthorized": false
+  },
+  {
+    "id": "INF-068",
+    "familyId": "INF-F12",
+    "definition": "Information that is technically accurate in what it states but materially incomplete because relevant counterevidence, denominators, uncertainty, or context is omitted.",
+    "declaredScale": "0–1 content-coded index; low / moderate / high; domain-specific continuous measure",
+    "derivation": "NO_VERSIONED_EXACT_RULE_IN_FROZEN_ENTITY",
+    "inputs": "NOT_EXACTLY_DECLARED",
+    "aggregation": "NOT_EXACTLY_DECLARED",
+    "units": "NOT_EXACTLY_DECLARED",
+    "window": "NOT_EXACTLY_DECLARED",
+    "baseline": "NOT_EXACTLY_DECLARED",
+    "externalInputs": "NOT_EXACTLY_DECLARED",
+    "incomingCausalIds": [],
+    "outgoingCausalIds": [
+      "REL-INF-045"
+    ],
+    "d10": "HEIGHTENED_CAUSAL_SOURCE",
+    "doubleCountRisk": "YES_REVIEW_CONSTITUENTS",
+    "directEffectTargetAllowed": false,
+    "blockers": [],
+    "resolutionAuthorized": false
+  },
+  {
+    "id": "RDS-0001",
+    "familyId": "INF-F03",
+    "definition": "The degree to which explicit lexical, referential, logical, causal, and discourse links connect propositions or sections within a specified non-narrative message so that relationships among ideas are recoverable from the information object.",
+    "declaredScale": "Multidimensional cohesion profile over a specified message and relation set.",
+    "derivation": "MULTIDIMENSIONAL_PROFILE_WITH_BLOCKED_METADATA",
+    "inputs": "NOT_EXACTLY_DECLARED",
+    "aggregation": "NOT_EXACTLY_DECLARED",
+    "units": "NOT_EXACTLY_DECLARED",
+    "window": "NOT_EXACTLY_DECLARED",
+    "baseline": "NOT_EXACTLY_DECLARED",
+    "externalInputs": "NOT_EXACTLY_DECLARED",
+    "incomingCausalIds": [],
+    "outgoingCausalIds": [],
+    "d10": "NONCAUSAL_OR_ISOLATED",
+    "doubleCountRisk": "NO_ACTIVE_CAUSAL_EDGE",
+    "directEffectTargetAllowed": false,
+    "blockers": [
+      "BLOCKED_FROZEN_METADATA"
+    ],
+    "resolutionAuthorized": false
+  }
+]

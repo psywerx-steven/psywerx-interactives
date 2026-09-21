@@ -1,1 +1,1144 @@
-{}
+{
+  "INF-001": {
+    "id": "INF-001",
+    "familyId": "INF-F01",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-INF-003"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-001"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-002": {
+    "id": "INF-002",
+    "familyId": "INF-F01",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-INF-001",
+      "REL-TEC-052"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-001"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-003": {
+    "id": "INF-003",
+    "familyId": "INF-F01",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-001"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-004": {
+    "id": "INF-004",
+    "familyId": "INF-F01",
+    "entityType": "RELATIONAL_DERIVED_STATE",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "NOT_APPLICABLE",
+    "incidentCausalRelationshipIds": [
+      "REL-INF-001",
+      "REL-INF-002",
+      "REL-INF-016"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-001"
+    ],
+    "reason": "RDS cannot be a direct EffectAssertion target; derivation and causal-source risk are reviewed separately."
+  },
+  "INF-005": {
+    "id": "INF-005",
+    "familyId": "INF-F01",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-INF-002"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-001"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-006": {
+    "id": "INF-006",
+    "familyId": "INF-F02",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-INF-004",
+      "REL-TEC-067"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-002",
+      "SRC-CAND-INF-LAYER-003"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-007": {
+    "id": "INF-007",
+    "familyId": "INF-F02",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-002",
+      "SRC-CAND-INF-LAYER-003"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-008": {
+    "id": "INF-008",
+    "familyId": "INF-F02",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-INF-004",
+      "REL-INF-005"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-002",
+      "SRC-CAND-INF-LAYER-003"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-009": {
+    "id": "INF-009",
+    "familyId": "INF-F02",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-INF-005"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-002",
+      "SRC-CAND-INF-LAYER-003"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-010": {
+    "id": "INF-010",
+    "familyId": "INF-F03",
+    "entityType": "RELATIONAL_DERIVED_STATE",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "NOT_APPLICABLE",
+    "incidentCausalRelationshipIds": [
+      "REL-INF-007",
+      "REL-INF-008"
+    ],
+    "landscapeSourceIds": [
+      "SRC-551"
+    ],
+    "reason": "RDS cannot be a direct EffectAssertion target; derivation and causal-source risk are reviewed separately."
+  },
+  "INF-011": {
+    "id": "INF-011",
+    "familyId": "INF-F03",
+    "entityType": "RELATIONAL_DERIVED_STATE",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "NOT_APPLICABLE",
+    "incidentCausalRelationshipIds": [
+      "REL-INF-009"
+    ],
+    "landscapeSourceIds": [
+      "SRC-551"
+    ],
+    "reason": "RDS cannot be a direct EffectAssertion target; derivation and causal-source risk are reviewed separately."
+  },
+  "INF-012": {
+    "id": "INF-012",
+    "familyId": "INF-F03",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "CANDIDATE_RESEARCHED",
+    "incidentCausalRelationshipIds": [
+      "REL-INF-007",
+      "REL-INF-009",
+      "REL-INF-041",
+      "REL-INF-048"
+    ],
+    "landscapeSourceIds": [
+      "SRC-551"
+    ],
+    "reason": "Exact prior pilot candidate or Layer norm-prevalence operation receives bounded review; no inferred efficacy."
+  },
+  "INF-013": {
+    "id": "INF-013",
+    "familyId": "INF-F03",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "CANDIDATE_RESEARCHED",
+    "incidentCausalRelationshipIds": [
+      "REL-INF-006"
+    ],
+    "landscapeSourceIds": [
+      "SRC-551"
+    ],
+    "reason": "Exact prior pilot candidate or Layer norm-prevalence operation receives bounded review; no inferred efficacy."
+  },
+  "INF-014": {
+    "id": "INF-014",
+    "familyId": "INF-F03",
+    "entityType": "RELATIONAL_DERIVED_STATE",
+    "relationshipStatus": "BLOCKED",
+    "actionsEventsStatus": "NOT_APPLICABLE",
+    "incidentCausalRelationshipIds": [
+      "REL-INF-003",
+      "REL-INF-006"
+    ],
+    "landscapeSourceIds": [
+      "SRC-551"
+    ],
+    "reason": "RDS cannot be a direct EffectAssertion target; derivation and causal-source risk are reviewed separately."
+  },
+  "INF-015": {
+    "id": "INF-015",
+    "familyId": "INF-F03",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "CANDIDATE_RESEARCHED",
+    "incidentCausalRelationshipIds": [
+      "REL-INF-008",
+      "REL-INF-046",
+      "REL-TEC-060",
+      "REL-V1-INF-F03-001"
+    ],
+    "landscapeSourceIds": [
+      "SRC-551"
+    ],
+    "reason": "Exact prior pilot candidate or Layer norm-prevalence operation receives bounded review; no inferred efficacy."
+  },
+  "INF-016": {
+    "id": "INF-016",
+    "familyId": "INF-F04",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-004",
+      "SRC-CAND-INF-LAYER-005"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-017": {
+    "id": "INF-017",
+    "familyId": "INF-F04",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-INF-044"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-004",
+      "SRC-CAND-INF-LAYER-005"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-018": {
+    "id": "INF-018",
+    "familyId": "INF-F04",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-004",
+      "SRC-CAND-INF-LAYER-005"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-019": {
+    "id": "INF-019",
+    "familyId": "INF-F04",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-CUL-054",
+      "REL-INF-048"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-004",
+      "SRC-CAND-INF-LAYER-005"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-020": {
+    "id": "INF-020",
+    "familyId": "INF-F04",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-004",
+      "SRC-CAND-INF-LAYER-005"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-021": {
+    "id": "INF-021",
+    "familyId": "INF-F04",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-004",
+      "SRC-CAND-INF-LAYER-005"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-022": {
+    "id": "INF-022",
+    "familyId": "INF-F05",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-INF-010"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-005",
+      "SRC-CAND-INF-LAYER-006"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-023": {
+    "id": "INF-023",
+    "familyId": "INF-F05",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-005",
+      "SRC-CAND-INF-LAYER-006"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-024": {
+    "id": "INF-024",
+    "familyId": "INF-F05",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-INF-011"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-005",
+      "SRC-CAND-INF-LAYER-006"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-025": {
+    "id": "INF-025",
+    "familyId": "INF-F05",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-INF-012"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-005",
+      "SRC-CAND-INF-LAYER-006"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-026": {
+    "id": "INF-026",
+    "familyId": "INF-F05",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-005",
+      "SRC-CAND-INF-LAYER-006"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-027": {
+    "id": "INF-027",
+    "familyId": "INF-F05",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-INF-010",
+      "REL-INF-037"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-005",
+      "SRC-CAND-INF-LAYER-006"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-028": {
+    "id": "INF-028",
+    "familyId": "INF-F05",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-005",
+      "SRC-CAND-INF-LAYER-006"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-029": {
+    "id": "INF-029",
+    "familyId": "INF-F05",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-INF-012"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-005",
+      "SRC-CAND-INF-LAYER-006"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-030": {
+    "id": "INF-030",
+    "familyId": "INF-F06",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-INF-014"
+    ],
+    "landscapeSourceIds": [
+      "SRC-551",
+      "SRC-CAND-INF-LAYER-007"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-031": {
+    "id": "INF-031",
+    "familyId": "INF-F06",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-INF-011"
+    ],
+    "landscapeSourceIds": [
+      "SRC-551",
+      "SRC-CAND-INF-LAYER-007"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-032": {
+    "id": "INF-032",
+    "familyId": "INF-F06",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-551",
+      "SRC-CAND-INF-LAYER-007"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-033": {
+    "id": "INF-033",
+    "familyId": "INF-F06",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-551",
+      "SRC-CAND-INF-LAYER-007"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-034": {
+    "id": "INF-034",
+    "familyId": "INF-F06",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-INF-013",
+      "REL-INF-038",
+      "REL-TEC-065"
+    ],
+    "landscapeSourceIds": [
+      "SRC-551",
+      "SRC-CAND-INF-LAYER-007"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-035": {
+    "id": "INF-035",
+    "familyId": "INF-F06",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-INF-013"
+    ],
+    "landscapeSourceIds": [
+      "SRC-551",
+      "SRC-CAND-INF-LAYER-007"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-036": {
+    "id": "INF-036",
+    "familyId": "INF-F06",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-INF-014"
+    ],
+    "landscapeSourceIds": [
+      "SRC-551",
+      "SRC-CAND-INF-LAYER-007"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-037": {
+    "id": "INF-037",
+    "familyId": "INF-F06",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-551",
+      "SRC-CAND-INF-LAYER-007"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-038": {
+    "id": "INF-038",
+    "familyId": "INF-F06",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-551",
+      "SRC-CAND-INF-LAYER-007"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-039": {
+    "id": "INF-039",
+    "familyId": "INF-F07",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-INF-018"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-008"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-040": {
+    "id": "INF-040",
+    "familyId": "INF-F07",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-INF-015"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-008"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-041": {
+    "id": "INF-041",
+    "familyId": "INF-F07",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "BLOCKED",
+    "incidentCausalRelationshipIds": [
+      "REL-INF-016",
+      "REL-INF-017",
+      "REL-INF-039",
+      "REL-TEC-048",
+      "REL-TEC-053"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-008"
+    ],
+    "reason": "Psychological repetition shared contribution remains blocked; no duplicate effect is minted."
+  },
+  "INF-042": {
+    "id": "INF-042",
+    "familyId": "INF-F07",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-INF-017"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-008"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-043": {
+    "id": "INF-043",
+    "familyId": "INF-F07",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-INF-015"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-008"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-044": {
+    "id": "INF-044",
+    "familyId": "INF-F08",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-INF-021",
+      "REL-INF-040"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-005",
+      "SRC-CAND-INF-LAYER-009"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-045": {
+    "id": "INF-045",
+    "familyId": "INF-F08",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-005",
+      "SRC-CAND-INF-LAYER-009"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-046": {
+    "id": "INF-046",
+    "familyId": "INF-F08",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-INF-021"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-005",
+      "SRC-CAND-INF-LAYER-009"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-047": {
+    "id": "INF-047",
+    "familyId": "INF-F08",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-005",
+      "SRC-CAND-INF-LAYER-009"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-048": {
+    "id": "INF-048",
+    "familyId": "INF-F08",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-INF-020"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-005",
+      "SRC-CAND-INF-LAYER-009"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-049": {
+    "id": "INF-049",
+    "familyId": "INF-F08",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-INF-019",
+      "REL-INF-020"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-005",
+      "SRC-CAND-INF-LAYER-009"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-050": {
+    "id": "INF-050",
+    "familyId": "INF-F08",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-INF-019"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-005",
+      "SRC-CAND-INF-LAYER-009"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-051": {
+    "id": "INF-051",
+    "familyId": "INF-F08",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-INF-024"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-005",
+      "SRC-CAND-INF-LAYER-009"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-052": {
+    "id": "INF-052",
+    "familyId": "INF-F09",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-010",
+      "SRC-CAND-INF-LAYER-011"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-053": {
+    "id": "INF-053",
+    "familyId": "INF-F09",
+    "entityType": "RELATIONAL_DERIVED_STATE",
+    "relationshipStatus": "NO_PLAUSIBLE_MECHANISM",
+    "actionsEventsStatus": "NOT_APPLICABLE",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-010",
+      "SRC-CAND-INF-LAYER-011"
+    ],
+    "reason": "RDS cannot be a direct EffectAssertion target; derivation and causal-source risk are reviewed separately."
+  },
+  "INF-054": {
+    "id": "INF-054",
+    "familyId": "INF-F09",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-INF-022"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-010",
+      "SRC-CAND-INF-LAYER-011"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-055": {
+    "id": "INF-055",
+    "familyId": "INF-F09",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-INF-022",
+      "REL-TEC-051"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-010",
+      "SRC-CAND-INF-LAYER-011"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-056": {
+    "id": "INF-056",
+    "familyId": "INF-F10",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-INF-025",
+      "REL-INF-036"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-012"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-057": {
+    "id": "INF-057",
+    "familyId": "INF-F10",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-012"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-058": {
+    "id": "INF-058",
+    "familyId": "INF-F10",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-INF-024",
+      "REL-INF-035"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-012"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-059": {
+    "id": "INF-059",
+    "familyId": "INF-F11",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-INF-026"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-013",
+      "SRC-CAND-INF-LAYER-014",
+      "SRC-CAND-INF-LAYER-015"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-060": {
+    "id": "INF-060",
+    "familyId": "INF-F11",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-INF-027"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-013",
+      "SRC-CAND-INF-LAYER-014",
+      "SRC-CAND-INF-LAYER-015"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-061": {
+    "id": "INF-061",
+    "familyId": "INF-F11",
+    "entityType": "DRIVER",
+    "relationshipStatus": "CANDIDATE_RESEARCHED",
+    "actionsEventsStatus": "CANDIDATE_RESEARCHED",
+    "incidentCausalRelationshipIds": [
+      "REL-INF-027"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-013",
+      "SRC-CAND-INF-LAYER-014",
+      "SRC-CAND-INF-LAYER-015"
+    ],
+    "reason": "Exact prior pilot candidate or Layer norm-prevalence operation receives bounded review; no inferred efficacy."
+  },
+  "INF-062": {
+    "id": "INF-062",
+    "familyId": "INF-F11",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-INF-026",
+      "REL-TEC-057"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-013",
+      "SRC-CAND-INF-LAYER-014",
+      "SRC-CAND-INF-LAYER-015"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-063": {
+    "id": "INF-063",
+    "familyId": "INF-F12",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-INF-031"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-016",
+      "SRC-CAND-INF-LAYER-017"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-064": {
+    "id": "INF-064",
+    "familyId": "INF-F12",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-INF-030",
+      "REL-INF-031"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-016",
+      "SRC-CAND-INF-LAYER-017"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-065": {
+    "id": "INF-065",
+    "familyId": "INF-F12",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-INF-018",
+      "REL-INF-028"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-016",
+      "SRC-CAND-INF-LAYER-017"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-066": {
+    "id": "INF-066",
+    "familyId": "INF-F12",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-INF-030"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-016",
+      "SRC-CAND-INF-LAYER-017"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-067": {
+    "id": "INF-067",
+    "familyId": "INF-F12",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-INF-028",
+      "REL-INF-047"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-016",
+      "SRC-CAND-INF-LAYER-017"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-068": {
+    "id": "INF-068",
+    "familyId": "INF-F12",
+    "entityType": "RELATIONAL_DERIVED_STATE",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "NOT_APPLICABLE",
+    "incidentCausalRelationshipIds": [
+      "REL-INF-045"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-016",
+      "SRC-CAND-INF-LAYER-017"
+    ],
+    "reason": "RDS cannot be a direct EffectAssertion target; derivation and causal-source risk are reviewed separately."
+  },
+  "INF-069": {
+    "id": "INF-069",
+    "familyId": "INF-F13",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-INF-025",
+      "REL-INF-033",
+      "REL-INF-034",
+      "REL-INF-042"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-005",
+      "SRC-CAND-INF-LAYER-018"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-070": {
+    "id": "INF-070",
+    "familyId": "INF-F13",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-INF-034"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-005",
+      "SRC-CAND-INF-LAYER-018"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-071": {
+    "id": "INF-071",
+    "familyId": "INF-F13",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-INF-032"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-005",
+      "SRC-CAND-INF-LAYER-018"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-072": {
+    "id": "INF-072",
+    "familyId": "INF-F13",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-INF-033"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-005",
+      "SRC-CAND-INF-LAYER-018"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-073": {
+    "id": "INF-073",
+    "familyId": "INF-F13",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-INF-032",
+      "REL-INF-043"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-005",
+      "SRC-CAND-INF-LAYER-018"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-074": {
+    "id": "INF-074",
+    "familyId": "INF-F01",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-001"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-075": {
+    "id": "INF-075",
+    "familyId": "INF-F01",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-INF-049",
+      "REL-INS-049"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-001"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-076": {
+    "id": "INF-076",
+    "familyId": "INF-F08",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-INF-LAYER-005",
+      "SRC-CAND-INF-LAYER-009"
+    ],
+    "reason": "Family landscape did not isolate this exact content property as a reusable operation-to-Driver effect; bundled message evidence is insufficient for a formal assertion."
+  },
+  "INF-077": {
+    "id": "INF-077",
+    "familyId": "INF-F03",
+    "entityType": "DRIVER",
+    "relationshipStatus": "BLOCKED",
+    "actionsEventsStatus": "CANDIDATE_RESEARCHED",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-551"
+    ],
+    "reason": "Exact prior pilot candidate or Layer norm-prevalence operation receives bounded review; no inferred efficacy."
+  },
+  "RDS-0001": {
+    "id": "RDS-0001",
+    "familyId": "INF-F03",
+    "entityType": "RELATIONAL_DERIVED_STATE",
+    "relationshipStatus": "BLOCKED",
+    "actionsEventsStatus": "NOT_APPLICABLE",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-551"
+    ],
+    "reason": "RDS cannot be a direct EffectAssertion target; derivation and causal-source risk are reviewed separately."
+  }
+}

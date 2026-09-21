@@ -1,1 +1,41 @@
-{}
+{
+  "HT-CAND-INF-LAYER-0001": {
+    "recordClass": "HAPPENING_TYPE_CANDIDATE",
+    "name": "Display a specified referent-group behavior prevalence statement",
+    "definition": "Present to a recipient a declared numerical prevalence or frequency estimate for one specified behavior, referent group and observation window, without necessarily comparing it to the recipient's own behavior or prior estimate.",
+    "originLayer": "INF",
+    "intentionality": "INTENTIONAL_PRESENTATION",
+    "identityBoundary": "The statement's behavior, referent group, period and claimed statistic define the occurrence parameters; efficacy, recipient belief, behavioral response and source truthfulness are not identity attributes.",
+    "sourceIds": ["SRC-CAND-INF-LAYER-013", "SRC-CAND-INF-LAYER-015"],
+    "comparedCanonicalIdentityIds": ["HT-V1-PSY-LAYER-005"],
+    "deduplicationFinding": "The existing comparative feedback panel includes own behavior, perceived-peer and measured-peer comparison. A single prevalence statement lacks those identity-defining components, so it is not an exact duplicate.",
+    "lifecycleStatus": "REVIEW_READY",
+    "activationStatus": "NOT_ELIGIBLE",
+    "governanceDecision": "NOT_DECIDED",
+    "skepticalDisposition": "GOVERN_INACTIVE_IDENTITY",
+    "efficacyAuthorized": false
+  },
+  "REUSED-HT-V1-PSY-LAYER-005": {
+    "recordClass": "IDENTITY_REUSE_REFERENCE",
+    "canonicalId": "HT-V1-PSY-LAYER-005",
+    "usedFor": "Personalized comparative own/perceived-peer/measured-peer normative feedback route",
+    "newIdentityMinted": false,
+    "effectResearchStatus": "RESEARCH_NEEDED",
+    "reason": "The college feedback package is not an isolated single prevalence-statement intervention."
+  },
+  "REUSED-HT-V1-INF-F03-002": {
+    "recordClass": "IDENTITY_REUSE_REFERENCE",
+    "canonicalId": "HT-V1-INF-F03-002",
+    "usedFor": "Quantified uncertainty bounds on a numerical claim",
+    "newIdentityMinted": false,
+    "effectResearchStatus": "EXISTING_GOVERNED_PILOT"
+  },
+  "REUSED-HT-V1-PSY-LAYER-001": {
+    "recordClass": "IDENTITY_REUSE_REFERENCE",
+    "canonicalId": "HT-V1-PSY-LAYER-001",
+    "usedFor": "Repeated encounter with specified content",
+    "newIdentityMinted": false,
+    "effectResearchStatus": "BLOCKED_SHARED_CONTRIBUTION",
+    "contributionGroupId": "CONTRIB-PSY-LAYER-REPETITION-001"
+  }
+}

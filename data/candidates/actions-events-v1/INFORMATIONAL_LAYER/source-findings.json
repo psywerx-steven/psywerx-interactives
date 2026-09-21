@@ -1,1 +1,44 @@
-[]
+[
+  {
+    "id": "SF-INF-LAYER-001", "sourceId": "SRC-CAND-INF-LAYER-013", "claimId": "REL-CAND-INF-LAYER-0001",
+    "locator": "PubMed abstract; indexed PMC Results excerpt and Fig. 2 description",
+    "accessDepth": "PUBMED_ABSTRACT_AND_INDEXED_RESULT_EXCERPT", "design": "Randomized field experiment",
+    "population": "Adults in Zhengzhou, China, after local COVID-19 lockdown",
+    "exposure": "Statement of the proportion of urban-district respondents planning a restaurant visit over the weekend",
+    "comparator": "Control without the descriptive-norm information",
+    "target": "Subsequent estimate of neighbors' actual restaurant visits",
+    "time": "Within the same experimental week",
+    "result": "Initially below-truth estimates shifted upward by 4.64 percentage points (95% CI 0.97 to 8.31); above-truth estimates shifted downward by 10.9 points (95% CI -15.46 to -6.52).",
+    "disposition": "SUPPORTS_BOUNDED_DIRECTION",
+    "limitations": "Message described plans; outcome asked about actual visits. One setting and topic. Behavior effects are separate outcomes and are not evidence for this exact endpoint.",
+    "datasetGroup": "PALACIOS_2022_ZHENGZHOU", "reviewOverlap": [], "exactAlignment": "NEAR_EXACT_REFERENT_AND_OUTCOME_MISMATCH"
+  },
+  {
+    "id": "SF-INF-LAYER-002", "sourceId": "SRC-CAND-INF-LAYER-014", "claimId": "REL-CAND-INF-LAYER-0001",
+    "locator": "Abstract, Objectives/Method/Results; descriptive-only feedback arm versus attention control",
+    "accessDepth": "SELECTED_FULL_TEXT", "design": "Multi-arm randomized trial",
+    "population": "1,137 undergraduates at two universities reporting at least one recent heavy episodic drinking occasion",
+    "exposure": "Web-based personalized descriptive normative feedback containing reference-group drinking information",
+    "comparator": "Non-alcohol-related feedback attention control",
+    "target": "Perceived descriptive drinking norms at 3, 6 and 12 months",
+    "time": "3, 6 and 12 months",
+    "result": "All four intervention arms, including descriptive-only feedback, reduced perceived descriptive and injunctive norms relative to attention control; most active-arm comparisons were not significant.",
+    "disposition": "SUPPORTS_OPERATION_PACKAGE_NOT_ISOLATED_CLAIM",
+    "limitations": "Personalized normative feedback bundles a prevalence claim with own-behavior and discrepancy comparison; heavy-drinking college population and alcohol-specific norm.",
+    "datasetGroup": "LARIMER_2023_COLLEGE_PNF", "reviewOverlap": [], "exactAlignment": "BUNDLED_MANIPULATION"
+  },
+  {
+    "id": "SF-INF-LAYER-003", "sourceId": "SRC-CAND-INF-LAYER-015", "claimId": "REL-CAND-INF-LAYER-0001",
+    "locator": "Publisher abstract and indexed discussion excerpt",
+    "accessDepth": "ABSTRACT_AND_SEARCH_EXCERPT", "design": "Two online experiments",
+    "population": "Adults initially disinclined toward colorectal cancer screening",
+    "exposure": "Statements with different true screening-uptake percentages, sometimes with feedback on the participant's prior estimate",
+    "comparator": "No uptake information or alternate prevalence statement",
+    "target": "Screening intention; perception of communicated norm examined as manipulation check",
+    "time": "Immediate online response",
+    "result": "Higher-than-expected uptake messages raised intention among initially disinclined recipients; explicit personalized prior-estimate feedback showed no added benefit for the reported intention outcome.",
+    "disposition": "MIXED_INDIRECT",
+    "limitations": "Intention is not PSY-016. The null added-feedback result is on intention, not a supported null for perceived norm. Full exact norm-estimate contrast was not extracted.",
+    "datasetGroup": "STOFFEL_2019_SCREENING", "reviewOverlap": [], "exactAlignment": "INDIRECT_OUTCOME"
+  }
+]
