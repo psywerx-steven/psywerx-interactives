@@ -138,6 +138,9 @@ jobs:
       - name: Validate exact Biological governance materialization
         run: python -m unittest discover -s tests -p "test_biological_governance_materialization.py"
 
+      - name: Validate read-only Biological activation closeout
+        run: python -m unittest discover -s tests -p "test_biological_activation_closeout.py"
+
       - name: Verify deterministic Biological Layer registries
         run: |
           python scripts/biological_layer_v2_curate.py
@@ -282,6 +285,9 @@ jobs:
 
       - name: Validate exact Biological governance materialization
         run: python -m unittest discover -s tests -p "test_biological_governance_materialization.py"
+
+      - name: Validate read-only Biological activation closeout
+        run: python -m unittest discover -s tests -p "test_biological_activation_closeout.py"
 
       - name: Verify deterministic Biological Layer registries
         run: |
