@@ -1,0 +1,38 @@
+[
+  {
+    "id": "HYP-INF-F03-H20",
+    "kind": "ONTOLOGY_BOUNDARY_BLOCKER",
+    "issue": "INF-013 conceptual complexity definition overlaps surface-linguistic INF-077 while the latter retains blocked metadata; one measure cannot determine canonical equivalence.",
+    "affectedIds": [
+      "INF-013",
+      "INF-077",
+      "INF-014",
+      "REL-INF-006"
+    ],
+    "resolutionAuthorized": false,
+    "candidateDisposition": "BLOCKED_NEEDS_GOVERNANCE_INPUT"
+  },
+  {
+    "id": "ARCH-INF-LAYER-0001",
+    "kind": "RDS_DERIVATION_AND_CAUSAL_SOURCE_REVIEW",
+    "issue": "Four Informational RDS are active causal sources but the frozen records lack per-record exact derivation/version rules; constituent and aggregate contributions cannot be safely executed together.",
+    "affectedIds": [
+      "INF-004",
+      "INF-010",
+      "INF-011",
+      "INF-068"
+    ],
+    "resolutionAuthorized": false,
+    "candidateDisposition": "BLOCKED_NEEDS_GOVERNANCE_INPUT_FOR_NEW_EXECUTION"
+  },
+  {
+    "id": "META-INF-LAYER-0001",
+    "kind": "BLOCKED_ENTITY_METADATA",
+    "issue": "Message Cohesion RDS-0001 retains blocked mechanism, timing, observability and evidence fields; no silent repair.",
+    "affectedIds": [
+      "RDS-0001"
+    ],
+    "resolutionAuthorized": false,
+    "candidateDisposition": "BLOCKED_NEEDS_GOVERNANCE_INPUT"
+  }
+]

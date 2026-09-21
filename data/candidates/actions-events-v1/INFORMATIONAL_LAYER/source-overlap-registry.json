@@ -1,0 +1,48 @@
+[
+  {
+    "id": "SO-INF-LAYER-001",
+    "kind": "CANONICAL_PILOT_REUSE",
+    "sourceIds": [
+      "SRC-CAND-INF-F03-002",
+      "SRC-551"
+    ],
+    "rule": "One work, one source; prior pilot registration is not new evidence."
+  },
+  {
+    "id": "SO-INF-LAYER-002",
+    "kind": "PRIOR_PILOT_CANONICALIZATION",
+    "sourceIds": [
+      "SRC-CAND-INF-F03-001",
+      "SRC-CAND-INF-F03-002",
+      "SRC-CAND-INF-F03-003"
+    ],
+    "rule": "Already governed pilot sources are carried by reference, not re-registered."
+  },
+  {
+    "id": "SO-INF-LAYER-003",
+    "kind": "INDEPENDENT_PRIMARY_DATASETS",
+    "sourceIds": [
+      "SRC-CAND-INF-LAYER-013",
+      "SRC-CAND-INF-LAYER-014",
+      "SRC-CAND-INF-LAYER-015"
+    ],
+    "rule": "Different populations and protocols; directness to the exact endpoint differs, so do not pool as identical replication."
+  },
+  {
+    "id": "SO-INF-LAYER-004",
+    "kind": "REVIEW_PRIMARY_DEPENDENCE",
+    "sourceIds": [
+      "SRC-CAND-INF-LAYER-016",
+      "SRC-CAND-INF-LAYER-017"
+    ],
+    "rule": "Correction review and included/related primary work cannot be counted as independent replication of an exact new claim."
+  },
+  {
+    "id": "SO-INF-LAYER-005",
+    "kind": "SHARED_CAUSAL_CONTRIBUTION",
+    "sourceIds": [
+      "CONTRIB-PSY-LAYER-REPETITION-001"
+    ],
+    "rule": "INF-F07 does not mint a second additive repetition-to-belief contribution."
+  }
+]

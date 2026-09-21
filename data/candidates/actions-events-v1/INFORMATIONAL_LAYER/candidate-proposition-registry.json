@@ -1,0 +1,25 @@
+{
+  "REL-CAND-INF-LAYER-0001": {
+    "recordClass": "RELATIONSHIP_CANDIDATE",
+    "semanticType": "CAUSAL",
+    "sourceId": "INF-061",
+    "targetId": "PSY-016",
+    "ownerFamilyId": "INF-F11",
+    "consultedFamilyIds": ["PSY-F03"],
+    "claim": "An encountered statement of the prevalence of one specified behavior in a named referent group may shift a recipient's subsequently reported estimate of that same behavior's prevalence toward the stated value.",
+    "direction": "TOWARD_STATED_VALUE_CONDITIONAL_ON_PRIOR_ESTIMATE; NOT_UNIVERSAL_POSITIVE",
+    "scope": "Controlled or field communication to adults, with verified encounter, same behavior and referent group, prior estimate, comparator without the prevalence statement, and measured later perceived descriptive prevalence.",
+    "timing": "After verified message encounter within the study's follow-up window; no long-term persistence asserted.",
+    "boundaries": ["INF-061 is the message claim, PSY-016 is the recipient's subjective estimate, neither is the actual Social norm.", "Message credibility, prior estimate, true-versus-stated prevalence, behavior and referent-group match are conditions.", "No behavioral, injunctive-norm, or universal population transfer claim.", "Personalized feedback packages may include own-behavior comparisons and are not isolated evidence for the content-property edge."],
+    "sourceFindingIds": ["SF-INF-LAYER-001", "SF-INF-LAYER-002", "SF-INF-LAYER-003"],
+    "evidenceAssessmentId": "EVA-REL-CAND-INF-LAYER-0001",
+    "lifecycleStatus": "RESEARCH_NEEDED",
+    "activationStatus": "NOT_ELIGIBLE",
+    "governanceDecision": "NOT_DECIDED",
+    "skepticalDisposition": "KEEP_RESEARCH_NEEDED",
+    "skepticalReason": "The cleanest field message states neighbors' plans while the outcome estimates actual visits; other studies use personalized feedback bundles. The exact general content-property edge is not yet isolated across independent settings.",
+    "duplicateProductionEdge": false,
+    "sharedContributionWith": ["HYP-INF-LAYER-AE-001"],
+    "productionChangeAuthorized": false
+  }
+}

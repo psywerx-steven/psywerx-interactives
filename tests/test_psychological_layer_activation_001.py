@@ -125,7 +125,14 @@ class PsychologicalLayerActivation001Tests(unittest.TestCase):
             "data/candidates/actions-events-v1/PSYCHOLOGICAL_LAYER/architecture-escalations.json",
         )
         for relative in paths:
-            self.assertEqual(read(ROOT / relative), frozen(relative), relative)
+            current, prior = read(ROOT / relative), frozen(relative)
+            if relative == "data/relationship-intervention-v1/source-register.json" and (
+                ROOT / "data/actions-events-v1/INFORMATIONAL_LAYER-materialization-manifest.json"
+            ).is_file():
+                self.assertEqual(current["sources"][:-2], prior["sources"], relative)
+                self.assertEqual({x["id"] for x in current["sources"][-2:]}, {"SRC-604", "SRC-605"})
+            else:
+                self.assertEqual(current, prior, relative)
 
     def test_research_deferred_and_blockers_preserved(self):
         recommendations = read(ROOT / "data/candidates/actions-events-v1/PSYCHOLOGICAL_LAYER/governance-recommendations.json")

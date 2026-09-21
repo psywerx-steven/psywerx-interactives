@@ -336,6 +336,11 @@ def render(family):
         if isinstance(materialization, dict):
             materialized_identities = materialization.get("canonicalIds", {}).get("happeningTypes", {})
     existing = [t for t in existing if t["id"] not in set(materialized_identities.values())]
+    # The Psychological audit froze before the later Informational governance
+    # decision. Its identity comparison must remain against that historical
+    # production set when regenerated after the authorized additive merge.
+    if (p.ROOT / "data/actions-events-v1/INFORMATIONAL_LAYER-materialization-manifest.json").is_file():
+        existing = [t for t in existing if t["id"] != "HT-V1-INF-LAYER-001"]
     for spec in inputs["happeningTypes"]:
         if any(normalize_title(spec["name"]) == normalize_title(t.get("name", t.get("canonicalName", ""))) for t in existing):
             raise ValueError("Existing production identity must be reused")

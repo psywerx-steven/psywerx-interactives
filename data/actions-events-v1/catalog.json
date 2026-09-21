@@ -7386,6 +7386,169 @@
       "recordClass": "SCIENTIFIC_RECORD",
       "revision": 1,
       "schemaVersion": "1.0.0"
+    },
+    {
+      "actorOrSourceSystem": "ROLE-MESSAGE-EDITOR",
+      "aliases": [],
+      "componentEnumeration": "NOT_APPLICABLE",
+      "components": [],
+      "controlProfiles": [
+        {
+          "actorId": "ROLE-MESSAGE-EDITOR",
+          "capabilities": [],
+          "conditions": "Identity only; the behavior, referent group, observation window and claimed statistic must be specified. Accuracy, provenance, feasibility, legality and efficacy are not certified.",
+          "context": "A single displayed numerical prevalence or frequency statement, without a required comparison to recipient behavior or estimate.",
+          "extent": "UNKNOWN",
+          "population": "Specified recipient and reference group",
+          "provenance": {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "method": "Materialized exact human-approved operation identity",
+            "recordedAt": "2026-09-20T12:00:00Z",
+            "originReferences": [
+              "AUD-INFORMATIONAL-LAYER-AE-V1-20260920-001",
+              "Display a specified referent-group behavior prevalence statement",
+              "HT-CAND-INF-LAYER-0001"
+            ],
+            "limitations": [
+              "No efficacy, accuracy, practitioner, feasibility or activation inference"
+            ]
+          }
+        }
+      ],
+      "description": "Present to a recipient a declared numerical prevalence or frequency estimate for one specified behavior, referent group and observation window, without necessarily comparing it to the recipient's own behavior or prior estimate.",
+      "domainTags": [
+        "DELIBERATE_INTERVENTION"
+      ],
+      "governance": {
+        "lifecycleStatus": "GOVERNED",
+        "activationStatus": "INACTIVE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "APPROVED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": "docs/governance/scale-up/INFORMATIONAL_LAYER/INFORMATIONAL_LAYER_GOVERNANCE_DECISION_001.md",
+        "authorizedBy": "authorized human governor",
+        "decisionDate": "2026-09-20",
+        "effectiveVersion": "INFORMATIONAL-LAYER-GOVERNANCE-001",
+        "decisionRationale": "Reusable single-statement operation identity only; no effect or activation authorized.",
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Preserved non-governed candidate workflow",
+            "timestamp": "2026-09-20T12:00:00Z",
+            "objectId": "HT-V1-INF-LAYER-001",
+            "revision": 1,
+            "provenance": "AUD-INFORMATIONAL-LAYER-AE-V1-20260920-001:a86f0449a3f3b817af40c02c2932a696751378e2:HT-CAND-INF-LAYER-0001:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Preserved non-governed candidate workflow",
+            "timestamp": "2026-09-20T12:00:00Z",
+            "objectId": "HT-V1-INF-LAYER-001",
+            "revision": 1,
+            "provenance": "AUD-INFORMATIONAL-LAYER-AE-V1-20260920-001:a86f0449a3f3b817af40c02c2932a696751378e2:HT-CAND-INF-LAYER-0001:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Preserved non-governed candidate workflow",
+            "timestamp": "2026-09-20T12:00:00Z",
+            "objectId": "HT-V1-INF-LAYER-001",
+            "revision": 1,
+            "provenance": "AUD-INFORMATIONAL-LAYER-AE-V1-20260920-001:a86f0449a3f3b817af40c02c2932a696751378e2:HT-CAND-INF-LAYER-0001:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "GOVERNED",
+              "activationStatus": "INACTIVE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Exact human approval materialized; activation withheld",
+            "timestamp": "2026-09-20T12:00:00Z",
+            "objectId": "HT-V1-INF-LAYER-001",
+            "revision": 1,
+            "provenance": "AUD-INFORMATIONAL-LAYER-AE-V1-20260920-001:a86f0449a3f3b817af40c02c2932a696751378e2:HT-CAND-INF-LAYER-0001:transition-4",
+            "governanceDecisionRecord": "docs/governance/scale-up/INFORMATIONAL_LAYER/INFORMATIONAL_LAYER_GOVERNANCE_DECISION_001.md",
+            "exactDecisionMaterialization": true
+          }
+        ]
+      },
+      "id": "HT-V1-INF-LAYER-001",
+      "identityDefiningProfile": {
+        "doseIntensity": null,
+        "duration": null,
+        "frequency": null,
+        "reach": null,
+        "timing": null
+      },
+      "identityKey": "single-reference-group-behavior-prevalence-statement",
+      "identitySourceIds": [
+        "SRC-604",
+        "SRC-605"
+      ],
+      "intentionality": "DELIBERATE",
+      "interventionSubset": true,
+      "kindTags": [
+        "ACTION"
+      ],
+      "name": "Display a specified referent-group behavior prevalence statement",
+      "originLayers": [
+        "INF"
+      ],
+      "packageKind": "ATOMIC",
+      "pattern": [
+        "DISCRETE"
+      ],
+      "provenance": {
+        "actorClass": "AUTOMATED_PROCESS_OR_AI",
+        "method": "Exact materialization of human-approved candidate identity",
+        "recordedAt": "2026-09-20T12:00:00Z",
+        "originReferences": [
+          "AUD-INFORMATIONAL-LAYER-AE-V1-20260920-001",
+          "HT-CAND-INF-LAYER-0001",
+          "a86f0449a3f3b817af40c02c2932a696751378e2",
+          "GOV-INFORMATIONAL-LAYER-001-2026-09-20"
+        ],
+        "limitations": [
+          "Operation identity only; no efficacy, truth, behavior, actor feasibility, practitioner use or activation claim"
+        ]
+      },
+      "recordClass": "SCIENTIFIC_RECORD",
+      "revision": 1,
+      "schemaVersion": "1.0.0"
     }
   ],
   "occurrences": [],
@@ -12826,6 +12989,20 @@
         }
       ],
       "recordClass": "SCIENTIFIC_RECORD"
+    },
+    {
+      "decisionId": "GOV-INFORMATIONAL-LAYER-001-2026-09-20",
+      "decisionRecord": "docs/governance/scale-up/INFORMATIONAL_LAYER/INFORMATIONAL_LAYER_GOVERNANCE_DECISION_001.md",
+      "actorClass": "AUTHORIZED_HUMAN_GOVERNOR",
+      "effectiveDate": "2026-09-20",
+      "recordClass": "SCIENTIFIC_RECORD",
+      "authorizedObjects": [
+        {
+          "id": "HT-V1-INF-LAYER-001",
+          "revision": 1,
+          "recordHash": "968c2cdd639d0ef23bcd399b9c46c5c5752ffbb8ef191bb83b5535147516ede7"
+        }
+      ]
     }
   ]
 }

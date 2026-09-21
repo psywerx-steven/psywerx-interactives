@@ -123,6 +123,17 @@ jobs:
       - name: Validate Layer Scale-Up V2 process funnel, benchmark and readiness
         run: python -m unittest discover -s tests -p "test_layer_scale_up_v2*.py"
 
+      - name: Validate candidate-only Informational Layer V2 audit
+        run: python -m unittest discover -s tests -p "test_informational_layer_v2.py"
+
+      - name: Validate exact Informational governance materialization
+        run: python -m unittest discover -s tests -p "test_informational_governance_materialization.py"
+
+      - name: Verify deterministic Informational Layer registries
+        run: |
+          python -c "import sys; sys.path.insert(0, 'scripts'); import informational_layer_v2 as m; m.build_reviews_and_coverage(); m.build_governance(); m.finalize()"
+          git diff --exit-code -- data/candidates/actions-events-v1/INFORMATIONAL_LAYER docs/governance/scale-up/INFORMATIONAL_LAYER
+
       - name: Validate exact inactive SOC-F07 conditional completion
         run: python -m unittest discover -s tests -p "test_soc_f07_completion.py"
 
@@ -239,6 +250,17 @@ jobs:
 
       - name: Validate Layer Scale-Up V2 process funnel, benchmark and readiness
         run: python -m unittest discover -s tests -p "test_layer_scale_up_v2*.py"
+
+      - name: Validate candidate-only Informational Layer V2 audit
+        run: python -m unittest discover -s tests -p "test_informational_layer_v2.py"
+
+      - name: Validate exact Informational governance materialization
+        run: python -m unittest discover -s tests -p "test_informational_governance_materialization.py"
+
+      - name: Verify deterministic Informational Layer registries
+        run: |
+          python -c "import sys; sys.path.insert(0, 'scripts'); import informational_layer_v2 as m; m.build_reviews_and_coverage(); m.build_governance(); m.finalize()"
+          git diff --exit-code -- data/candidates/actions-events-v1/INFORMATIONAL_LAYER docs/governance/scale-up/INFORMATIONAL_LAYER
 
       - name: Validate exact inactive SOC-F07 conditional completion
         run: python -m unittest discover -s tests -p "test_soc_f07_completion.py"

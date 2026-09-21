@@ -144,6 +144,19 @@ def exact_additions(path, original, current):
     # namespace before evaluating this historical SOC-F07 checkpoint.
     import materialize_psychological_layer_governance_001 as psychological
     new=psychological.strip_materialization(path,new)
+    # The later Informational human decision adds only one inactive identity
+    # and two identity-provenance sources. Validate its exact additive boundary
+    # before excluding those records from this historical SOC-F07 comparison.
+    informational_manifest=ROOT/'data/actions-events-v1/INFORMATIONAL_LAYER-materialization-manifest.json'
+    if informational_manifest.is_file() and path in {'data/actions-events-v1/catalog.json','data/relationship-intervention-v1/source-register.json'}:
+        import informational_layer_v2 as informational
+        try: informational.validate_protection()
+        except (AssertionError, ValueError): return False
+        if path.endswith('catalog.json'):
+            new['happeningTypes']=[x for x in new['happeningTypes'] if x['id']!='HT-V1-INF-LAYER-001']
+            new['authorizations']=[x for x in new['authorizations'] if x['decisionId']!='GOV-INFORMATIONAL-LAYER-001-2026-09-20']
+        else:
+            new['sources']=[x for x in new['sources'] if x['id'] not in {'SRC-604','SRC-605'}]
     if path not in {'data/actions-events-v1/catalog.json','data/relationship-intervention-v1/source-register.json'}:
         return old==new
     # The later NS-enabled checkpoint is separately hash-bound. Never absorb
