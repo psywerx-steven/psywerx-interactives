@@ -341,6 +341,10 @@ def render(family):
     # production set when regenerated after the authorized additive merge.
     if (p.ROOT / "data/actions-events-v1/INFORMATIONAL_LAYER-materialization-manifest.json").is_file():
         existing = [t for t in existing if t["id"] != "HT-V1-INF-LAYER-001"]
+    # The later Biological identity is likewise outside this frozen audit's
+    # comparison universe and must not rewrite historical candidate ledgers.
+    if (p.ROOT / "data/actions-events-v1/BIOLOGICAL_LAYER-materialization-manifest.json").is_file():
+        existing = [t for t in existing if t["id"] != "HT-V1-BIO-LAYER-001"]
     for spec in inputs["happeningTypes"]:
         if any(normalize_title(spec["name"]) == normalize_title(t.get("name", t.get("canonicalName", ""))) for t in existing):
             raise ValueError("Existing production identity must be reused")

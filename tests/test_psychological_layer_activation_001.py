@@ -129,8 +129,11 @@ class PsychologicalLayerActivation001Tests(unittest.TestCase):
             if relative == "data/relationship-intervention-v1/source-register.json" and (
                 ROOT / "data/actions-events-v1/INFORMATIONAL_LAYER-materialization-manifest.json"
             ).is_file():
-                self.assertEqual(current["sources"][:-2], prior["sources"], relative)
-                self.assertEqual({x["id"] for x in current["sources"][-2:]}, {"SRC-604", "SRC-605"})
+                biological = (ROOT / "data/actions-events-v1/BIOLOGICAL_LAYER-materialization-manifest.json").is_file()
+                added = 5 if biological else 2
+                expected = {"SRC-604", "SRC-605", "SRC-606", "SRC-607", "SRC-608"} if biological else {"SRC-604", "SRC-605"}
+                self.assertEqual(current["sources"][:-added], prior["sources"], relative)
+                self.assertEqual({x["id"] for x in current["sources"][-added:]}, expected)
             else:
                 self.assertEqual(current, prior, relative)
 

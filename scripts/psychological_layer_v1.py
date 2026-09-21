@@ -99,6 +99,7 @@ def _authorized_addition_only(path, expected_hash):
     old = json.loads(old_bytes)
     current = read(ROOT / path)
     informational_materialized = (ROOT / "data/actions-events-v1/INFORMATIONAL_LAYER-materialization-manifest.json").is_file()
+    biological_materialized = (ROOT / "data/actions-events-v1/BIOLOGICAL_LAYER-materialization-manifest.json").is_file()
     if path == "data/actions-events-v1/catalog.json":
         current["happeningTypes"] = [x for x in current["happeningTypes"] if not x["id"].startswith("HT-V1-PSY-LAYER-")]
         current["effectAssertions"] = [x for x in current["effectAssertions"] if not x["id"].startswith("EA-V1-PSY-LAYER-")]
@@ -110,6 +111,9 @@ def _authorized_addition_only(path, expected_hash):
         if informational_materialized:
             current["happeningTypes"] = [x for x in current["happeningTypes"] if x["id"] != "HT-V1-INF-LAYER-001"]
             current["authorizations"] = [x for x in current["authorizations"] if x["decisionId"] != "GOV-INFORMATIONAL-LAYER-001-2026-09-20"]
+        if biological_materialized:
+            current["happeningTypes"] = [x for x in current["happeningTypes"] if x["id"] != "HT-V1-BIO-LAYER-001"]
+            current["authorizations"] = [x for x in current["authorizations"] if x["decisionId"] != "GOV-BIOLOGICAL-LAYER-001-2026-09-21"]
     elif path.endswith("/relationships.json"):
         current["relationships"] = [x for x in current["relationships"] if not x["id"].startswith("REL-V1-PSY-LAYER-")]
     elif path.endswith("/evidence-assessments.json"):
@@ -118,6 +122,8 @@ def _authorized_addition_only(path, expected_hash):
         current["sources"] = [x for x in current["sources"] if not (x["id"].startswith("SRC-") and x["id"][4:].isdigit() and 560 <= int(x["id"][4:]) <= 603)]
         if informational_materialized:
             current["sources"] = [x for x in current["sources"] if x["id"] not in {"SRC-604", "SRC-605"}]
+        if biological_materialized:
+            current["sources"] = [x for x in current["sources"] if x["id"] not in {"SRC-606", "SRC-607", "SRC-608"}]
     elif path.endswith("/relationship-source-findings.json"):
         current["records"] = [x for x in current["records"] if not x["assertionId"].startswith("REL-V1-PSY-LAYER-")]
     return current == old
