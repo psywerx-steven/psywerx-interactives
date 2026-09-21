@@ -1,0 +1,24 @@
+# Informational Layer progress
+
+**CANDIDATE-ONLY AUDIT — HUMAN SCIENTIFIC GOVERNANCE REQUIRED**
+
+Program: `AUD-INFORMATIONAL-LAYER-AE-V1-20260920-001`  
+Baseline: `236b9c6bd0642a4704f3a845454846bb13a09def`.
+
+| Family | Current stage |
+|---|---|
+| INF-F01 | BASELINE |
+| INF-F02 | BASELINE |
+| INF-F03 | BASELINE — prior governed pilot retained |
+| INF-F04 | BASELINE |
+| INF-F05 | BASELINE |
+| INF-F06 | BASELINE |
+| INF-F07 | BASELINE |
+| INF-F08 | BASELINE |
+| INF-F09 | BASELINE |
+| INF-F10 | BASELINE |
+| INF-F11 | BASELINE |
+| INF-F12 | BASELINE |
+| INF-F13 | BASELINE |
+
+Valid later stages: LANDSCAPE, TRIAGE, PASS_A_EXISTING, PASS_A_GAPS, PASS_B_ACTIONS_EVENTS, EVIDENCE, SKEPTICAL_REVIEW, RECONCILIATION, COMPLETE. The structured `progress.json` is authoritative for machine checks.
