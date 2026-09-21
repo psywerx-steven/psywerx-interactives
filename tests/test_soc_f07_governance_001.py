@@ -89,6 +89,8 @@ class GovernanceTests(unittest.TestCase):
         import materialize_soc_f07_completion as completion
         current=ae.read(g.SOURCE_PATH)
         if completion.MANIFEST.exists(): current=completion.strip_additions('data/relationship-intervention-v1/source-register.json',current)
+        if (g.ROOT/'data/actions-events-v1/INFORMATIONAL_LAYER-materialization-manifest.json').is_file():
+            current['sources']=[s for s in current['sources'] if s['id'] not in {'SRC-604','SRC-605'}]
         after={s['id']:s for s in current['sources']}
         self.assertEqual(set(after)-set(before),{f'SRC-{n}' for n in range(553,559)})
         self.assertTrue(all(after[i]==r for i,r in before.items()))
