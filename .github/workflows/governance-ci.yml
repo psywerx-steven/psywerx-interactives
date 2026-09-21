@@ -144,6 +144,9 @@ jobs:
       - name: Validate read-only Biological activation closeout
         run: python -m unittest discover -s tests -p "test_biological_activation_closeout.py"
 
+      - name: Validate candidate-only Cultural Layer V2 audit
+        run: python -m unittest discover -s tests -p "test_cultural_layer_v2.py"
+
       - name: Verify deterministic Biological Layer registries
         run: |
           python scripts/biological_layer_v2_curate.py
@@ -151,6 +154,11 @@ jobs:
           python scripts/biological_layer_v2_skeptical.py
           python scripts/biological_layer_v2_package.py
           git diff --exit-code -- data/candidates/actions-events-v1/BIOLOGICAL_LAYER docs/governance/scale-up/BIOLOGICAL_LAYER
+
+      - name: Verify deterministic Cultural Layer registries
+        run: |
+          python scripts/cultural_layer_v2_package.py
+          git diff --exit-code -- data/candidates/actions-events-v1/CULTURAL_LAYER docs/governance/scale-up/CULTURAL_LAYER
 
       - name: Verify deterministic Informational Layer registries
         run: |
@@ -295,6 +303,9 @@ jobs:
       - name: Validate read-only Biological activation closeout
         run: python -m unittest discover -s tests -p "test_biological_activation_closeout.py"
 
+      - name: Validate candidate-only Cultural Layer V2 audit
+        run: python -m unittest discover -s tests -p "test_cultural_layer_v2.py"
+
       - name: Verify deterministic Biological Layer registries
         run: |
           python scripts/biological_layer_v2_curate.py
@@ -302,6 +313,11 @@ jobs:
           python scripts/biological_layer_v2_skeptical.py
           python scripts/biological_layer_v2_package.py
           git diff --exit-code -- data/candidates/actions-events-v1/BIOLOGICAL_LAYER docs/governance/scale-up/BIOLOGICAL_LAYER
+
+      - name: Verify deterministic Cultural Layer registries
+        run: |
+          python scripts/cultural_layer_v2_package.py
+          git diff --exit-code -- data/candidates/actions-events-v1/CULTURAL_LAYER docs/governance/scale-up/CULTURAL_LAYER
 
       - name: Verify deterministic Informational Layer registries
         run: |

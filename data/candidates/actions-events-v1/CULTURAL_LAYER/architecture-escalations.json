@@ -1,0 +1,13 @@
+[
+  {
+    "id": "ARCH-CUL-LAYER-0001",
+    "issue": "CUL-088 permits multiple profile variables, aggregation levels and distance metrics but is already the source of REL-CUL-042.",
+    "affectedIds": [
+      "CUL-088",
+      "REL-CUL-042"
+    ],
+    "resolution": "Future versioned RDS definition and causal-source governance; no production change.",
+    "blocksIndependentLayerAudit": false,
+    "blocksNewRdsCausalMaterialization": true
+  }
+]
