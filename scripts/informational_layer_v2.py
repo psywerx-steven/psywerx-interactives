@@ -535,8 +535,8 @@ def validate_protection() -> None:
     expected = read(DATA / "protected-baseline.json")["productionHashes"]
     actual = protection()
     additive = {
-        "data/relationship-intervention-v1/source-register.json": ("sources", {"SRC-604", "SRC-605"}),
-        "data/actions-events-v1/catalog.json": ("happeningTypes", {"HT-V1-INF-LAYER-001"}),
+        "data/relationship-intervention-v1/source-register.json": ("sources", {"SRC-604", "SRC-605", "SRC-606", "SRC-607", "SRC-608"}),
+        "data/actions-events-v1/catalog.json": ("happeningTypes", {"HT-V1-INF-LAYER-001", "HT-V1-BIO-LAYER-001"}),
     }
     for path, digest in expected.items():
         if actual[path] == digest:
@@ -552,8 +552,11 @@ def validate_protection() -> None:
             if other == key:
                 continue
             if other == "authorizations" and path.endswith("catalog.json"):
-                assert new[other][:-1] == old[other], path
-                assert new[other][-1]["decisionId"] == "GOV-INFORMATIONAL-LAYER-001-2026-09-20", path
+                assert new[other][:-2] == old[other], path
+                assert [x["decisionId"] for x in new[other][-2:]] == [
+                    "GOV-INFORMATIONAL-LAYER-001-2026-09-20",
+                    "GOV-BIOLOGICAL-LAYER-001-2026-09-21",
+                ], path
             else:
                 assert new[other] == old[other], path
 

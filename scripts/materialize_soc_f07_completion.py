@@ -108,6 +108,14 @@ def strip_additions(path, current):
             result['authorizations']=[a for a in result['authorizations'] if a['decisionId']!='GOV-INFORMATIONAL-LAYER-001-2026-09-20']
         else:
             result['sources']=[r for r in result['sources'] if r['id'] not in {'SRC-604','SRC-605'}]
+    if (ROOT/'data/actions-events-v1/BIOLOGICAL_LAYER-materialization-manifest.json').is_file() and path in {'data/actions-events-v1/catalog.json','data/relationship-intervention-v1/source-register.json'}:
+        import biological_layer_v2 as biological
+        biological.validate_protection()
+        if path.endswith('catalog.json'):
+            result['happeningTypes']=[r for r in result['happeningTypes'] if r['id']!='HT-V1-BIO-LAYER-001']
+            result['authorizations']=[a for a in result['authorizations'] if a['decisionId']!='GOV-BIOLOGICAL-LAYER-001-2026-09-21']
+        else:
+            result['sources']=[r for r in result['sources'] if r['id'] not in {'SRC-606','SRC-607','SRC-608'}]
     if path=='data/actions-events-v1/catalog.json':
         ht=identity(); auth=authorization([ht])
         found=[r for r in result['happeningTypes'] if r['id']==ht['id']]

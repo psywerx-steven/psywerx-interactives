@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import subprocess
 from collections import Counter
 from pathlib import Path
 
@@ -94,7 +95,27 @@ def baseline() -> dict:
 def validate_protection() -> None:
     expected = read(DATA / "protected-baseline.json")["productionHashes"]
     actual = hashes()
-    assert expected == actual, "Biological candidate audit changed protected production science"
+    additive = {
+        "data/relationship-intervention-v1/source-register.json": ("sources", {"SRC-606", "SRC-607", "SRC-608"}),
+        "data/actions-events-v1/catalog.json": ("happeningTypes", {"HT-V1-BIO-LAYER-001"}),
+    }
+    for path, digest in expected.items():
+        if actual[path] == digest:
+            continue
+        assert path in additive, f"Pre-existing production scientific data changed: {path}"
+        old = json.loads(subprocess.check_output(["git", "show", f"{BASE_COMMIT}:{path}"], cwd=ROOT))
+        new = read(ROOT / path)
+        key, identifiers = additive[path]
+        assert {x["id"] for x in new[key]} - {x["id"] for x in old[key]} == identifiers, path
+        assert [x for x in new[key] if x["id"] not in identifiers] == old[key], path
+        for other in old:
+            if other == key:
+                continue
+            if other == "authorizations" and path.endswith("catalog.json"):
+                assert new[other][:-1] == old[other], path
+                assert new[other][-1]["decisionId"] == "GOV-BIOLOGICAL-LAYER-001-2026-09-21", path
+            else:
+                assert new[other] == old[other], path
 
 
 def init() -> None:
