@@ -147,6 +147,9 @@ jobs:
       - name: Validate candidate-only Cultural Layer V2 audit
         run: python -m unittest discover -s tests -p "test_cultural_layer_v2.py"
 
+      - name: Validate zero-materialization Cultural governance closeout
+        run: python -m unittest discover -s tests -p "test_cultural_governance_closeout.py"
+
       - name: Verify deterministic Biological Layer registries
         run: |
           python scripts/biological_layer_v2_curate.py
@@ -305,6 +308,9 @@ jobs:
 
       - name: Validate candidate-only Cultural Layer V2 audit
         run: python -m unittest discover -s tests -p "test_cultural_layer_v2.py"
+
+      - name: Validate zero-materialization Cultural governance closeout
+        run: python -m unittest discover -s tests -p "test_cultural_governance_closeout.py"
 
       - name: Verify deterministic Biological Layer registries
         run: |
