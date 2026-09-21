@@ -1,8 +1,8 @@
 {
   "schemaVersion": "1.0.0",
-  "analysisId": "REMAINING-LAYER-SCALE-UP-READINESS-2026-09-21-001",
+  "analysisId": "REMAINING-LAYER-SCALE-UP-READINESS-2026-09-21-002",
   "analysisClass": "READ_ONLY_MECHANICAL_PLANNING",
-  "sourceCommit": "ed6eae8352184541be15af78b84f3650e3599927",
+  "sourceCommit": "9b8c55f3da1e4a8487ee0874bb6b4519674e39be",
   "workflow": "LAYER_SCALE_UP_V2",
   "scienceResearchPerformed": false,
   "candidateGenerationPerformed": false,
@@ -67,64 +67,30 @@
         }
       },
       "informationalCouplingCausalCount": 1,
-      "completedLayerCouplingCausalCount": 16
-    },
-    {
-      "layer": "Cultural",
-      "prefix": "CUL",
-      "families": 13,
-      "drivers": 90,
-      "rds": 1,
-      "entities": 91,
-      "activeIncidentRelationshipCount": 55,
-      "uniqueCausalPropositionsTouchingLayer": 55,
-      "withinFamilyCausalCount": 23,
-      "sameLayerCrossFamilyCausalCount": 21,
-      "crossLayerCausalCount": 11,
-      "incomingCrossLayerCausalCount": 0,
-      "outgoingCrossLayerCausalCount": 11,
-      "psychologicalCouplingCausalCount": 6,
-      "causalIsolates": 28,
-      "rdsCausalSourceCount": 1,
-      "blockedEntityCount": 0,
-      "legacyV1IncompleteBurden": 55,
-      "activeCausalWithoutStructuredEvidenceCount": 0,
-      "blockedOrIncompleteMetadataCount": 55,
-      "actionsEventsCoverage": {
-        "governedHappeningTypesWithOriginLayer": 0,
-        "activeHappeningTypesWithOriginLayer": 0,
-        "governedEffectAssertionsTargetingLayer": 0,
-        "activeEffectAssertionsTargetingLayer": 0,
-        "priorPilotCandidateRecords": 0
-      },
-      "priorPilotCoverage": [],
-      "canonicalSourcesInGovernedActionsEventsCoverage": 0,
-      "sourceGovernanceQueueBasis": "NO_STRUCTURED_PRIOR_PILOT_QUEUE",
-      "unresolvedPilotSourceQueueCount": 0,
-      "knownArchitectureEscalationIds": [],
-      "knownArchitectureEscalationCount": 0,
-      "networkStateBindingCount": 0,
-      "networkStateRelevance": "MODERATE",
-      "workload": {
-        "factors": {
-          "entityVolume": "MODERATE",
-          "existingRelationshipVolume": "MODERATE",
-          "crossLayerCoordination": "MODERATE",
-          "rdsComplexity": "MODERATE",
-          "constructBoundaryAmbiguity": "LOW",
-          "sourceEvidenceBurden": "MODERATE",
-          "architectureRisk": "MODERATE",
-          "actionsEventsSearchComplexity": "MODERATE"
-        },
-        "overall": "MODERATE",
-        "observableSignals": {
-          "architectureSignal": 2,
-          "actionsEventsSearchSignal": 180,
-          "averageOrdinal": 1.875
-        }
-      },
-      "informationalCouplingCausalCount": 1,
-      "completedLayerCouplingCausalCount": 7
+      "completedLayerCouplingCausalCount": 20,
+      "priorCompletedLayerReviewReuseIds": [
+        "REL-BIO-022",
+        "REL-BIO-023",
+        "REL-CUL-050",
+        "REL-CUL-051",
+        "REL-CUL-052",
+        "REL-CUL-053",
+        "REL-INF-049",
+        "REL-PSY-060",
+        "REL-PSY-061",
+        "REL-PSY-062",
+        "REL-PSY-063",
+        "REL-PSY-067",
+        "REL-SOC-062",
+        "REL-SOC-063",
+        "REL-SOC-064",
+        "REL-SOC-065",
+        "REL-SOC-066",
+        "REL-SOC-067",
+        "REL-SOC-068",
+        "REL-SOC-069"
+      ],
+      "priorCompletedLayerReviewReuseCount": 20
     },
     {
       "layer": "Physical / Environmental",
@@ -181,7 +147,16 @@
         }
       },
       "informationalCouplingCausalCount": 0,
-      "completedLayerCouplingCausalCount": 6
+      "completedLayerCouplingCausalCount": 6,
+      "priorCompletedLayerReviewReuseIds": [
+        "REL-ENV-039",
+        "REL-ENV-040",
+        "REL-ENV-041",
+        "REL-ENV-044",
+        "REL-ENV-045",
+        "REL-V1-BIO-F01-004"
+      ],
+      "priorCompletedLayerReviewReuseCount": 6
     },
     {
       "layer": "Institutional / Structural",
@@ -238,7 +213,17 @@
         }
       },
       "informationalCouplingCausalCount": 1,
-      "completedLayerCouplingCausalCount": 7
+      "completedLayerCouplingCausalCount": 7,
+      "priorCompletedLayerReviewReuseIds": [
+        "REL-INS-040",
+        "REL-INS-041",
+        "REL-INS-042",
+        "REL-INS-043",
+        "REL-INS-044",
+        "REL-INS-045",
+        "REL-INS-049"
+      ],
+      "priorCompletedLayerReviewReuseCount": 7
     },
     {
       "layer": "Technological",
@@ -295,12 +280,29 @@
         }
       },
       "informationalCouplingCausalCount": 8,
-      "completedLayerCouplingCausalCount": 13
+      "completedLayerCouplingCausalCount": 13,
+      "priorCompletedLayerReviewReuseIds": [
+        "REL-RDS-0007",
+        "REL-TEC-048",
+        "REL-TEC-051",
+        "REL-TEC-052",
+        "REL-TEC-053",
+        "REL-TEC-057",
+        "REL-TEC-058",
+        "REL-TEC-060",
+        "REL-TEC-061",
+        "REL-TEC-062",
+        "REL-TEC-064",
+        "REL-TEC-065",
+        "REL-TEC-066",
+        "REL-TEC-067"
+      ],
+      "priorCompletedLayerReviewReuseCount": 14
     }
   ],
   "selection": {
-    "recommendedNextLayer": "Cultural",
-    "alternateNextLayer": "Physical / Environmental",
+    "recommendedNextLayer": "Physical / Environmental",
+    "alternateNextLayer": "Technological",
     "deferForNow": [
       "Social",
       "Institutional / Structural",
@@ -310,7 +312,7 @@
     "autonomyRulePassed": true,
     "planningOnly": true,
     "candidateAuditStartAuthorizedByStandingInstruction": true,
-    "rationale": "Cultural combines direct OIE and meaning-system value with moderate workload, no Network State binding, one RDS, no recorded architecture prerequisite, and meaningful reuse from completed Psychological and Informational work."
+    "rationale": "Physical / Environmental is the sole remaining MODERATE Layer. It has no RDS, no blocked entities, no Network State binding, low architecture risk, and can reuse completed Biological and Psychological reviews while remaining candidate-only."
   },
   "metricDefinitions": {
     "activeIncidentRelationshipCount": "Unique active legacy/native Relationships of any semantic family with at least one endpoint in the Layer.",
@@ -324,6 +326,7 @@
   "excludedCompletedLayers": [
     "Psychological",
     "Informational",
-    "Biological"
+    "Biological",
+    "Cultural"
   ]
 }
