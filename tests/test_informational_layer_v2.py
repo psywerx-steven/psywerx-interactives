@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import json
+import hashlib
+import subprocess
 import sys
 import unittest
 from collections import Counter
@@ -23,6 +25,10 @@ class InformationalLayerV2Tests(unittest.TestCase):
         live = inf.baseline()
         self.assertEqual(frozen, live)
         inf.validate_protection()
+        self.assertEqual(frozen["hashNormalization"], "CRLF_TO_LF")
+        for path, expected in frozen["productionHashes"].items():
+            blob = subprocess.check_output(["git", "show", f"{inf.BASE_COMMIT}:{path}"], cwd=ROOT)
+            self.assertEqual(hashlib.sha256(blob.replace(b"\r\n", b"\n")).hexdigest(), expected, path)
         self.assertEqual(len(frozen["families"]), 13)
         entities = [x["frozenRecord"] for x in frozen["entities"]]
         self.assertEqual(len(entities), 78)

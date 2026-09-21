@@ -103,7 +103,10 @@ def protection() -> dict[str, str]:
         "data/relationship-intervention-v1/source-register.json",
         "data/actions-events-v1/catalog.json", "data/relational-state-v1/catalog.json",
     )
-    return {p: hashlib.sha256((ROOT / p).read_bytes()).hexdigest() for p in paths}
+    # Git may check out generated catalog JSON with CRLF on Windows and LF on
+    # Linux. Normalize only line endings; every scientific byte still matters.
+    return {p: hashlib.sha256((ROOT / p).read_bytes().replace(b"\r\n", b"\n")).hexdigest()
+            for p in paths}
 
 
 def baseline() -> dict:
@@ -131,7 +134,7 @@ def baseline() -> dict:
     pilot_queue = read(ROOT / "data/candidates/actions-events-v1/INF-F03/source-registration-queue.json")
     return {
         "schemaVersion": "1.0.0", "programId": PROGRAM_ID, "class": "FROZEN_CANDIDATE_AUDIT_BASELINE",
-        "baseCommit": BASE_COMMIT, "productionHashes": protection(),
+        "baseCommit": BASE_COMMIT, "hashNormalization": "CRLF_TO_LF", "productionHashes": protection(),
         "families": sorted(families, key=lambda x: x["id"]),
         "entities": [{"frozenRecord": entities[k], "mechanical": summarized[k]} for k in sorted(entities)],
         "incidentRelationships": sorted(relationships, key=lambda x: x["id"]),
@@ -144,7 +147,8 @@ def baseline() -> dict:
 def init() -> None:
     value = baseline()
     write(DATA / "baseline.json", value)
-    write(DATA / "protected-baseline.json", {"baseCommit": BASE_COMMIT, "productionHashes": value["productionHashes"]})
+    write(DATA / "protected-baseline.json", {"baseCommit": BASE_COMMIT,
+          "hashNormalization": "CRLF_TO_LF", "productionHashes": value["productionHashes"]})
     for filename, content in {
         "relationship-review-registry.json": {}, "candidate-proposition-registry.json": {},
         "cross-family-issues.json": [], "actions-events-identity-registry.json": {},
@@ -516,7 +520,7 @@ def finalize() -> None:
                    "individualVotes": len(gov["individualScientificDecisions"]),
                    "blockedVotes": len(gov["blockedDecisions"]),
                    "nonVotingAcknowledgementRows": gov["nonVotingRowAcknowledgements"]},
-        "telemetry": telemetry, "productionHashes": protection(),
+        "telemetry": telemetry, "hashNormalization": "CRLF_TO_LF", "productionHashes": protection(),
         "newGoverned": 0, "newActive": 0, "canonicalSourceRegistrationPerformed": False,
         "governanceHumanAuthorized": False, "productionScienceChanged": False,
         "requiredDataArtifacts": sorted(path.name for path in DATA.glob("*.json") if path.name != "audit-manifest.json"),
