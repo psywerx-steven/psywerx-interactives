@@ -1,0 +1,329 @@
+{
+  "schemaVersion": "1.0.0",
+  "analysisId": "REMAINING-LAYER-SCALE-UP-READINESS-2026-09-21-001",
+  "analysisClass": "READ_ONLY_MECHANICAL_PLANNING",
+  "sourceCommit": "ed6eae8352184541be15af78b84f3650e3599927",
+  "workflow": "LAYER_SCALE_UP_V2",
+  "scienceResearchPerformed": false,
+  "candidateGenerationPerformed": false,
+  "layers": [
+    {
+      "layer": "Social",
+      "prefix": "SOC",
+      "families": 12,
+      "drivers": 83,
+      "rds": 23,
+      "entities": 106,
+      "activeIncidentRelationshipCount": 99,
+      "uniqueCausalPropositionsTouchingLayer": 92,
+      "withinFamilyCausalCount": 39,
+      "sameLayerCrossFamilyCausalCount": 22,
+      "crossLayerCausalCount": 31,
+      "incomingCrossLayerCausalCount": 21,
+      "outgoingCrossLayerCausalCount": 10,
+      "psychologicalCouplingCausalCount": 13,
+      "causalIsolates": 34,
+      "rdsCausalSourceCount": 10,
+      "blockedEntityCount": 6,
+      "legacyV1IncompleteBurden": 92,
+      "activeCausalWithoutStructuredEvidenceCount": 0,
+      "blockedOrIncompleteMetadataCount": 98,
+      "actionsEventsCoverage": {
+        "governedHappeningTypesWithOriginLayer": 9,
+        "activeHappeningTypesWithOriginLayer": 1,
+        "governedEffectAssertionsTargetingLayer": 0,
+        "activeEffectAssertionsTargetingLayer": 0,
+        "priorPilotCandidateRecords": 14
+      },
+      "priorPilotCoverage": [
+        "SOC-F07"
+      ],
+      "canonicalSourcesInGovernedActionsEventsCoverage": 11,
+      "sourceGovernanceQueueBasis": "STRUCTURED_PRIOR_PILOT_QUEUE",
+      "unresolvedPilotSourceQueueCount": 1,
+      "knownArchitectureEscalationIds": [
+        "HYP-SOC-F07-H12",
+        "HYP-SOC-F07-H20"
+      ],
+      "knownArchitectureEscalationCount": 2,
+      "networkStateBindingCount": 1,
+      "networkStateRelevance": "VERY_HIGH",
+      "workload": {
+        "factors": {
+          "entityVolume": "HIGH",
+          "existingRelationshipVolume": "VERY_HIGH",
+          "crossLayerCoordination": "VERY_HIGH",
+          "rdsComplexity": "VERY_HIGH",
+          "constructBoundaryAmbiguity": "VERY_HIGH",
+          "sourceEvidenceBurden": "VERY_HIGH",
+          "architectureRisk": "VERY_HIGH",
+          "actionsEventsSearchComplexity": "VERY_HIGH"
+        },
+        "overall": "VERY_HIGH",
+        "observableSignals": {
+          "architectureSignal": 31,
+          "actionsEventsSearchSignal": 238,
+          "averageOrdinal": 3.875
+        }
+      },
+      "informationalCouplingCausalCount": 1,
+      "completedLayerCouplingCausalCount": 16
+    },
+    {
+      "layer": "Cultural",
+      "prefix": "CUL",
+      "families": 13,
+      "drivers": 90,
+      "rds": 1,
+      "entities": 91,
+      "activeIncidentRelationshipCount": 55,
+      "uniqueCausalPropositionsTouchingLayer": 55,
+      "withinFamilyCausalCount": 23,
+      "sameLayerCrossFamilyCausalCount": 21,
+      "crossLayerCausalCount": 11,
+      "incomingCrossLayerCausalCount": 0,
+      "outgoingCrossLayerCausalCount": 11,
+      "psychologicalCouplingCausalCount": 6,
+      "causalIsolates": 28,
+      "rdsCausalSourceCount": 1,
+      "blockedEntityCount": 0,
+      "legacyV1IncompleteBurden": 55,
+      "activeCausalWithoutStructuredEvidenceCount": 0,
+      "blockedOrIncompleteMetadataCount": 55,
+      "actionsEventsCoverage": {
+        "governedHappeningTypesWithOriginLayer": 0,
+        "activeHappeningTypesWithOriginLayer": 0,
+        "governedEffectAssertionsTargetingLayer": 0,
+        "activeEffectAssertionsTargetingLayer": 0,
+        "priorPilotCandidateRecords": 0
+      },
+      "priorPilotCoverage": [],
+      "canonicalSourcesInGovernedActionsEventsCoverage": 0,
+      "sourceGovernanceQueueBasis": "NO_STRUCTURED_PRIOR_PILOT_QUEUE",
+      "unresolvedPilotSourceQueueCount": 0,
+      "knownArchitectureEscalationIds": [],
+      "knownArchitectureEscalationCount": 0,
+      "networkStateBindingCount": 0,
+      "networkStateRelevance": "MODERATE",
+      "workload": {
+        "factors": {
+          "entityVolume": "MODERATE",
+          "existingRelationshipVolume": "MODERATE",
+          "crossLayerCoordination": "MODERATE",
+          "rdsComplexity": "MODERATE",
+          "constructBoundaryAmbiguity": "LOW",
+          "sourceEvidenceBurden": "MODERATE",
+          "architectureRisk": "MODERATE",
+          "actionsEventsSearchComplexity": "MODERATE"
+        },
+        "overall": "MODERATE",
+        "observableSignals": {
+          "architectureSignal": 2,
+          "actionsEventsSearchSignal": 180,
+          "averageOrdinal": 1.875
+        }
+      },
+      "informationalCouplingCausalCount": 1,
+      "completedLayerCouplingCausalCount": 7
+    },
+    {
+      "layer": "Physical / Environmental",
+      "prefix": "ENV",
+      "families": 13,
+      "drivers": 109,
+      "rds": 0,
+      "entities": 109,
+      "activeIncidentRelationshipCount": 47,
+      "uniqueCausalPropositionsTouchingLayer": 47,
+      "withinFamilyCausalCount": 21,
+      "sameLayerCrossFamilyCausalCount": 18,
+      "crossLayerCausalCount": 8,
+      "incomingCrossLayerCausalCount": 1,
+      "outgoingCrossLayerCausalCount": 7,
+      "psychologicalCouplingCausalCount": 2,
+      "causalIsolates": 48,
+      "rdsCausalSourceCount": 0,
+      "blockedEntityCount": 0,
+      "legacyV1IncompleteBurden": 46,
+      "activeCausalWithoutStructuredEvidenceCount": 0,
+      "blockedOrIncompleteMetadataCount": 46,
+      "actionsEventsCoverage": {
+        "governedHappeningTypesWithOriginLayer": 4,
+        "activeHappeningTypesWithOriginLayer": 1,
+        "governedEffectAssertionsTargetingLayer": 0,
+        "activeEffectAssertionsTargetingLayer": 0,
+        "priorPilotCandidateRecords": 0
+      },
+      "priorPilotCoverage": [],
+      "canonicalSourcesInGovernedActionsEventsCoverage": 3,
+      "sourceGovernanceQueueBasis": "NO_STRUCTURED_PRIOR_PILOT_QUEUE",
+      "unresolvedPilotSourceQueueCount": 0,
+      "knownArchitectureEscalationIds": [],
+      "knownArchitectureEscalationCount": 0,
+      "networkStateBindingCount": 0,
+      "networkStateRelevance": "LOW",
+      "workload": {
+        "factors": {
+          "entityVolume": "HIGH",
+          "existingRelationshipVolume": "MODERATE",
+          "crossLayerCoordination": "LOW",
+          "rdsComplexity": "LOW",
+          "constructBoundaryAmbiguity": "LOW",
+          "sourceEvidenceBurden": "MODERATE",
+          "architectureRisk": "LOW",
+          "actionsEventsSearchComplexity": "HIGH"
+        },
+        "overall": "MODERATE",
+        "observableSignals": {
+          "architectureSignal": 0,
+          "actionsEventsSearchSignal": 212,
+          "averageOrdinal": 1.75
+        }
+      },
+      "informationalCouplingCausalCount": 0,
+      "completedLayerCouplingCausalCount": 6
+    },
+    {
+      "layer": "Institutional / Structural",
+      "prefix": "INS",
+      "families": 13,
+      "drivers": 112,
+      "rds": 4,
+      "entities": 116,
+      "activeIncidentRelationshipCount": 62,
+      "uniqueCausalPropositionsTouchingLayer": 61,
+      "withinFamilyCausalCount": 22,
+      "sameLayerCrossFamilyCausalCount": 19,
+      "crossLayerCausalCount": 20,
+      "incomingCrossLayerCausalCount": 4,
+      "outgoingCrossLayerCausalCount": 16,
+      "psychologicalCouplingCausalCount": 6,
+      "causalIsolates": 49,
+      "rdsCausalSourceCount": 2,
+      "blockedEntityCount": 2,
+      "legacyV1IncompleteBurden": 61,
+      "activeCausalWithoutStructuredEvidenceCount": 0,
+      "blockedOrIncompleteMetadataCount": 63,
+      "actionsEventsCoverage": {
+        "governedHappeningTypesWithOriginLayer": 8,
+        "activeHappeningTypesWithOriginLayer": 1,
+        "governedEffectAssertionsTargetingLayer": 0,
+        "activeEffectAssertionsTargetingLayer": 0,
+        "priorPilotCandidateRecords": 0
+      },
+      "priorPilotCoverage": [],
+      "canonicalSourcesInGovernedActionsEventsCoverage": 9,
+      "sourceGovernanceQueueBasis": "NO_STRUCTURED_PRIOR_PILOT_QUEUE",
+      "unresolvedPilotSourceQueueCount": 0,
+      "knownArchitectureEscalationIds": [],
+      "knownArchitectureEscalationCount": 0,
+      "networkStateBindingCount": 0,
+      "networkStateRelevance": "HIGH",
+      "workload": {
+        "factors": {
+          "entityVolume": "VERY_HIGH",
+          "existingRelationshipVolume": "HIGH",
+          "crossLayerCoordination": "HIGH",
+          "rdsComplexity": "HIGH",
+          "constructBoundaryAmbiguity": "HIGH",
+          "sourceEvidenceBurden": "HIGH",
+          "architectureRisk": "HIGH",
+          "actionsEventsSearchComplexity": "VERY_HIGH"
+        },
+        "overall": "VERY_HIGH",
+        "observableSignals": {
+          "architectureSignal": 6,
+          "actionsEventsSearchSignal": 244,
+          "averageOrdinal": 3.25
+        }
+      },
+      "informationalCouplingCausalCount": 1,
+      "completedLayerCouplingCausalCount": 7
+    },
+    {
+      "layer": "Technological",
+      "prefix": "TEC",
+      "families": 13,
+      "drivers": 99,
+      "rds": 0,
+      "entities": 99,
+      "activeIncidentRelationshipCount": 72,
+      "uniqueCausalPropositionsTouchingLayer": 70,
+      "withinFamilyCausalCount": 43,
+      "sameLayerCrossFamilyCausalCount": 4,
+      "crossLayerCausalCount": 23,
+      "incomingCrossLayerCausalCount": 4,
+      "outgoingCrossLayerCausalCount": 19,
+      "psychologicalCouplingCausalCount": 5,
+      "causalIsolates": 16,
+      "rdsCausalSourceCount": 0,
+      "blockedEntityCount": 3,
+      "legacyV1IncompleteBurden": 70,
+      "activeCausalWithoutStructuredEvidenceCount": 0,
+      "blockedOrIncompleteMetadataCount": 73,
+      "actionsEventsCoverage": {
+        "governedHappeningTypesWithOriginLayer": 18,
+        "activeHappeningTypesWithOriginLayer": 2,
+        "governedEffectAssertionsTargetingLayer": 0,
+        "activeEffectAssertionsTargetingLayer": 0,
+        "priorPilotCandidateRecords": 0
+      },
+      "priorPilotCoverage": [],
+      "canonicalSourcesInGovernedActionsEventsCoverage": 27,
+      "sourceGovernanceQueueBasis": "NO_STRUCTURED_PRIOR_PILOT_QUEUE",
+      "unresolvedPilotSourceQueueCount": 0,
+      "knownArchitectureEscalationIds": [],
+      "knownArchitectureEscalationCount": 0,
+      "networkStateBindingCount": 0,
+      "networkStateRelevance": "LOW",
+      "workload": {
+        "factors": {
+          "entityVolume": "MODERATE",
+          "existingRelationshipVolume": "HIGH",
+          "crossLayerCoordination": "HIGH",
+          "rdsComplexity": "LOW",
+          "constructBoundaryAmbiguity": "MODERATE",
+          "sourceEvidenceBurden": "HIGH",
+          "architectureRisk": "MODERATE",
+          "actionsEventsSearchComplexity": "HIGH"
+        },
+        "overall": "HIGH",
+        "observableSignals": {
+          "architectureSignal": 3,
+          "actionsEventsSearchSignal": 200,
+          "averageOrdinal": 2.375
+        }
+      },
+      "informationalCouplingCausalCount": 8,
+      "completedLayerCouplingCausalCount": 13
+    }
+  ],
+  "selection": {
+    "recommendedNextLayer": "Cultural",
+    "alternateNextLayer": "Physical / Environmental",
+    "deferForNow": [
+      "Social",
+      "Institutional / Structural",
+      "Technological"
+    ],
+    "recommendedWorkload": "MODERATE",
+    "autonomyRulePassed": true,
+    "planningOnly": true,
+    "candidateAuditStartAuthorizedByStandingInstruction": true,
+    "rationale": "Cultural combines direct OIE and meaning-system value with moderate workload, no Network State binding, one RDS, no recorded architecture prerequisite, and meaningful reuse from completed Psychological and Informational work."
+  },
+  "metricDefinitions": {
+    "activeIncidentRelationshipCount": "Unique active legacy/native Relationships of any semantic family with at least one endpoint in the Layer.",
+    "uniqueCausalPropositionsTouchingLayer": "Unique active causal Relationships with at least one endpoint in the Layer; a cross-Layer edge is counted once within each touched Layer.",
+    "causalIsolates": "Layer entities with zero active causal in-degree and out-degree.",
+    "blockedOrIncompleteMetadataCount": "Blocked entities plus unique incident legacy causal Relationships whose V1 compatibility projection has incomplete fields.",
+    "sourceGovernanceQueue": "Only unresolved rows in an existing structured prior-pilot source queue; zero with NO_STRUCTURED_PRIOR_PILOT_QUEUE means no recorded queue, not proof of no issue.",
+    "architectureEscalations": "Only structured BLOCKED_NEEDS_GOVERNANCE_INPUT rows from an existing Actions & Events pilot; RDS and blocked-entity signals are reported separately.",
+    "workload": "Ordinal proxy derived only from recorded counts; no token, credit, duration, or scientific-yield estimate."
+  },
+  "excludedCompletedLayers": [
+    "Psychological",
+    "Informational",
+    "Biological"
+  ]
+}
