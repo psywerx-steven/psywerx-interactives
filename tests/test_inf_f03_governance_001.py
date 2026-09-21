@@ -178,7 +178,9 @@ class InfF03Governance001Tests(unittest.TestCase):
         native = [row for row in self.ri_sources if row["auditId"] == "AUD-INF-F03-AE-V1-20260906-001"]
         self.assertEqual({row["id"] for row in native}, REGISTERED_SOURCE_IDS)
         self.assertEqual({row["pmid"] for row in native}, {"35257980", "32205438", "38026007"})
-        all_dois = [row["doi"].casefold() for row in self.ri_sources]
+        # DOI is nullable in the governed source schema; PMID-only historical
+        # publications must still participate in the independent PMID check.
+        all_dois = [row["doi"].casefold() for row in self.ri_sources if row.get("doi")]
         all_pmids = [row["pmid"] for row in self.ri_sources if row.get("pmid")]
         self.assertEqual(len(all_dois), len(set(all_dois)))
         self.assertEqual(len(all_pmids), len(set(all_pmids)))
