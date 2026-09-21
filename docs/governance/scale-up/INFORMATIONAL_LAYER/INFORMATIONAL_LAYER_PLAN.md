@@ -1,6 +1,6 @@
 # Informational Layer scientific scale-up V2
 
-**CANDIDATE-ONLY AUDIT — HUMAN SCIENTIFIC GOVERNANCE REQUIRED**
+**ADVISORY — HUMAN DECISION REQUIRED. Candidate-only audit; no governance or activation.**
 
 Program: `AUD-INFORMATIONAL-LAYER-AE-V1-20260920-001`  
 Frozen production baseline: `236b9c6bd0642a4704f3a845454846bb13a09def`.

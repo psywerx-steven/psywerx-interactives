@@ -239,6 +239,7 @@ def build_reviews_and_coverage() -> None:
     write(DATA / "negative-coverage-registry.json", coverage)
 
     rds = []
+    all_entity_types = {row["id"]: row["entityType"] for row in read(ROOT / "data/entities.json")}
     for row in frozen["entities"]:
         entity = row["frozenRecord"]
         if entity["entityType"] == "DRIVER":
@@ -246,12 +247,24 @@ def build_reviews_and_coverage() -> None:
         identifier = entity["id"]
         incoming = [r["id"] for r in frozen["incidentRelationships"] if r["edge"]["target"] == identifier and r["edge"]["semanticType"] == "CAUSAL"]
         outgoing = [r["id"] for r in frozen["incidentRelationships"] if r["edge"]["source"] == identifier and r["edge"]["semanticType"] == "CAUSAL"]
+        incident_causal = [r for r in frozen["incidentRelationships"] if r["id"] in set(incoming + outgoing)]
+        d10_edges = []
+        for edge_row in incident_causal:
+            edge = edge_row["edge"]
+            source_type, target_type = all_entity_types[edge["source"]], all_entity_types[edge["target"]]
+            d10_edges.append({"relationshipId": edge_row["id"], "sourceType": source_type,
+                              "targetType": target_type,
+                              "rule": "EXCEPTIONAL" if source_type != "DRIVER" and target_type != "DRIVER" else "HEIGHTENED"})
         rds.append({
             "id": identifier, "familyId": entity["primaryFamilyId"], "definition": entity["definition"],
             "declaredScale": entity.get("representationScale"), "derivation": "NO_VERSIONED_EXACT_RULE_IN_FROZEN_ENTITY" if identifier != "RDS-0001" else "MULTIDIMENSIONAL_PROFILE_WITH_BLOCKED_METADATA",
             "inputs": "NOT_EXACTLY_DECLARED", "aggregation": "NOT_EXACTLY_DECLARED", "units": "NOT_EXACTLY_DECLARED",
             "window": "NOT_EXACTLY_DECLARED", "baseline": "NOT_EXACTLY_DECLARED", "externalInputs": "NOT_EXACTLY_DECLARED",
+            "declaredIndicators": entity.get("indicators"),
+            "declaredMeasurementMethods": entity.get("measurementAssessmentMethods"),
+            "sharedConstituents": "NOT_IDENTIFIED_FROM_FROZEN_EXACT_RULE",
             "incomingCausalIds": incoming, "outgoingCausalIds": outgoing,
+            "d10IncidentCausalEdges": d10_edges,
             "d10": "HEIGHTENED_CAUSAL_SOURCE" if outgoing else "HEIGHTENED_CAUSAL_TARGET" if incoming else "NONCAUSAL_OR_ISOLATED",
             "doubleCountRisk": "YES_REVIEW_CONSTITUENTS" if outgoing else "POSSIBLE_IF_FORMULA_AND_CONSTITUENTS_BOTH_USED" if incoming else "NO_ACTIVE_CAUSAL_EDGE",
             "directEffectTargetAllowed": False, "blockers": ["HYP-INF-F03-H20"] if identifier == "INF-014" else ["BLOCKED_FROZEN_METADATA"] if identifier == "RDS-0001" else [],
@@ -420,6 +433,97 @@ def build_governance() -> None:
     write(DATA / "progress.json", progress)
 
 
+def finalize() -> None:
+    validate_protection()
+    frozen = read(DATA / "baseline.json")
+    reviews = read(DATA / "relationship-review-registry.json")
+    coverage = read(DATA / "negative-coverage-registry.json")
+    landscapes = read(DATA / "family-landscapes.json")["families"]
+    assert len(frozen["families"]) == 13 and len(frozen["entities"]) == 78
+    assert len(reviews) == len(frozen["incidentRelationships"]) == 64
+    assert set(coverage) == {row["frozenRecord"]["id"] for row in frozen["entities"]}
+    assert set(landscapes) == {row["id"] for row in frozen["families"]}
+    for identifier in landscapes:
+        members = {row["frozenRecord"]["id"] for row in frozen["entities"] if row["frozenRecord"]["primaryFamilyId"] == identifier}
+        assert members and members <= set(coverage)
+        assert all(row["id"] in reviews for row in frozen["incidentRelationships"] if row["ownerFamilyId"] == identifier)
+    assert len(read(DATA / "rds-review.json")) == 7
+    assert all(x["governanceDecision"] == "NOT_DECIDED" and x["activationStatus"] == "NOT_ELIGIBLE" for x in read(DATA / "candidate-proposition-registry.json").values())
+    assert all(not x["canonicalRegistrationPerformed"] for x in read(DATA / "source-registration-recommendations.json").values())
+
+    progress = read(DATA / "progress.json")
+    progress["families"] = {key: "COMPLETE" for key in sorted(landscapes)}
+    write(DATA / "progress.json", progress)
+
+    family_issues = {
+        "INF-F01": "Availability, encounter and attention separated; prominence RDS reviewed.",
+        "INF-F02": "Volume versus cognitive load; formula-like window volume edges require review.",
+        "INF-F03": "Governed pilot reused; HYP-INF-F03-H20 and source queue preserved.",
+        "INF-F04": "Task framing is not stable loss aversion; metaphor edge retains prior review.",
+        "INF-F05": "Evidence quality, amount and audience acceptance separated.",
+        "INF-F06": "Source property versus perceived credibility; disclosure components reviewed.",
+        "INF-F07": "Repetition contribution linked, not duplicated; delay/spacing distinctions.",
+        "INF-F08": "Narrative/vividness/emotion component isolation insufficient.",
+        "INF-F09": "Tailoring packages separated from relevance; language-accessibility RDS reviewed.",
+        "INF-F10": "Threat and efficacy content kept separate from appraisals and behavior.",
+        "INF-F11": "Prevalence-to-perceived-norm candidate deep-researched then downgraded.",
+        "INF-F12": "Correction and veracity boundaries; selective-omission RDS reviewed.",
+        "INF-F13": "Guidance components are not plans or actions.",
+    }
+    lines = ["# Informational Layer progress", "", "**ADVISORY — HUMAN DECISION REQUIRED. Candidate science only; new GOVERNED = 0 and ACTIVE = 0.**", "",
+             f"Program: `{PROGRAM_ID}`  ", f"Frozen baseline: `{BASE_COMMIT}`.", "",
+             "| Family | Stage | Major issue |", "|---|---|---|"]
+    for identifier, issue in family_issues.items():
+        lines.append(f"| {identifier} | COMPLETE | {issue} |")
+    lines.extend(["", "All Families completed baseline, landscape, triage, existing review, gap and A&E coverage, evidence, skeptical pass and Layer reconciliation. Exact machine statuses are in `progress.json`."])
+    DOCS.mkdir(parents=True, exist_ok=True)
+    (DOCS / "INFORMATIONAL_LAYER_PROGRESS.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+    triage = read(DATA / "triage-hypotheses.json")
+    source_reg = read(DATA / "candidate-source-registry.json")
+    telemetry = {
+        "driversCovered": sum(row["frozenRecord"]["entityType"] == "DRIVER" for row in frozen["entities"]),
+        "actionsEventsCheapNegativeDrivers": sum(row["entityType"] == "DRIVER" and row["actionsEventsStatus"] in {"INSUFFICIENT_PRELIMINARY_SIGNAL", "NO_PLAUSIBLE_MECHANISM", "SEARCHED_NO_EXACT_EVIDENCE", "NOT_APPLICABLE"} for row in coverage.values()),
+        "candidateHypothesesGenerated": len(triage) + len(read(DATA / "actions-events-hypotheses.json")),
+        "candidatesEnteringDeepResearch": len(read(DATA / "deep-research-ledger.json")),
+        "newFormalRelationshipCandidates": len(read(DATA / "candidate-proposition-registry.json")),
+        "newFormalHappeningTypeCandidates": sum(row["recordClass"] == "HAPPENING_TYPE_CANDIDATE" for row in read(DATA / "actions-events-identity-registry.json").values()),
+        "newFormalEffectAssertionCandidates": 0,
+        "formalCandidatesRejectedAfterDeepResearch": 0,
+        "newSourceFindings": len(read(DATA / "source-findings.json")),
+        "newEvidenceAssessments": len(read(DATA / "evidence-assessments.json")),
+        "priorPilotCanonicalSourcesReusedByReference": sum(row["registrationStatus"] == "CANONICALIZED_FOR_GOVERNED_INACTIVE_RECORD" for row in frozen["pilot"]["sourceQueue"]),
+        "newCandidateSourceReferences": sum(identifier.startswith("SRC-CAND-INF-LAYER-") for identifier in source_reg),
+        "sameLayerCrossFamilyCausalDuplicateReviewsPrevented": sum(row["semanticType"] == "CAUSAL" for row in read(DATA / "cross-family-issues.json")),
+        "happeningTypeCanonicalIdentitiesReusedByReference": sum(row["recordClass"] == "IDENTITY_REUSE_REFERENCE" for row in read(DATA / "actions-events-identity-registry.json").values()),
+        "astraEscalationsQueued": len(read(DATA / "astra-escalation-queue.json")),
+        "elapsedTime": "NOT_MEASURED", "tokenSavings": "NOT_MEASURED", "creditSavings": "NOT_MEASURED",
+    }
+    write(DATA / "resource-telemetry.json", telemetry)
+
+    gov = read(DATA / "governance-recommendations.json")
+    manifest = {
+        "advisory": "ADVISORY — HUMAN DECISION REQUIRED",
+        "schemaVersion": "1.0.0", "programId": PROGRAM_ID, "auditClass": "CANDIDATE_ONLY_SCIENTIFIC_SCALE_UP_V2",
+        "baseCommit": BASE_COMMIT, "familyStatuses": progress["families"],
+        "counts": {"families": len(frozen["families"]), "drivers": telemetry["driversCovered"],
+                   "rds": sum(row["frozenRecord"]["entityType"] != "DRIVER" for row in frozen["entities"]),
+                   "entities": len(frozen["entities"]),
+                   "incidentRelationships": len(frozen["incidentRelationships"]),
+                   "causalRelationships": sum(row["edge"]["semanticType"] == "CAUSAL" for row in frozen["incidentRelationships"]),
+                   "originalGovernanceRows": gov["originalGovernanceRows"],
+                   "groupedVotes": len(gov["groupedHumanDecisions"]),
+                   "individualVotes": len(gov["individualScientificDecisions"]),
+                   "blockedVotes": len(gov["blockedDecisions"]),
+                   "nonVotingAcknowledgementRows": gov["nonVotingRowAcknowledgements"]},
+        "telemetry": telemetry, "productionHashes": protection(),
+        "newGoverned": 0, "newActive": 0, "canonicalSourceRegistrationPerformed": False,
+        "governanceHumanAuthorized": False, "productionScienceChanged": False,
+        "requiredDataArtifacts": sorted(path.name for path in DATA.glob("*.json") if path.name != "audit-manifest.json"),
+    }
+    write(DOCS / "INFORMATIONAL_LAYER_AUDIT_MANIFEST.json", manifest)
+
+
 def validate_protection() -> None:
     expected = read(DATA / "protected-baseline.json")["productionHashes"]
     assert protection() == expected, "Pre-existing production scientific data changed"
@@ -428,7 +532,7 @@ def validate_protection() -> None:
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser()
-    parser.add_argument("command", choices=["init", "reviews", "governance", "validate"])
+    parser.add_argument("command", choices=["init", "reviews", "governance", "finalize", "validate"])
     args = parser.parse_args()
     if args.command == "init":
         init()
@@ -436,5 +540,7 @@ if __name__ == "__main__":
         build_reviews_and_coverage()
     elif args.command == "governance":
         build_governance()
+    elif args.command == "finalize":
+        finalize()
     else:
         validate_protection()

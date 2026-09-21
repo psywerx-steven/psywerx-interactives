@@ -11,12 +11,39 @@
     "window": "NOT_EXACTLY_DECLARED",
     "baseline": "NOT_EXACTLY_DECLARED",
     "externalInputs": "NOT_EXACTLY_DECLARED",
+    "declaredIndicators": [
+      "A risk warning is visually prominent",
+      "a key consequence is highlighted",
+      "a critical datum is placed at the top of a briefing."
+    ],
+    "declaredMeasurementMethods": "Structured content analysis; message audit; randomized message experiment; exposure-log linkage; expert coding",
+    "sharedConstituents": "NOT_IDENTIFIED_FROM_FROZEN_EXACT_RULE",
     "incomingCausalIds": [
       "REL-INF-001",
       "REL-INF-016"
     ],
     "outgoingCausalIds": [
       "REL-INF-002"
+    ],
+    "d10IncidentCausalEdges": [
+      {
+        "relationshipId": "REL-INF-001",
+        "sourceType": "DRIVER",
+        "targetType": "RELATIONAL_DERIVED_STATE",
+        "rule": "HEIGHTENED"
+      },
+      {
+        "relationshipId": "REL-INF-002",
+        "sourceType": "RELATIONAL_DERIVED_STATE",
+        "targetType": "DRIVER",
+        "rule": "HEIGHTENED"
+      },
+      {
+        "relationshipId": "REL-INF-016",
+        "sourceType": "DRIVER",
+        "targetType": "RELATIONAL_DERIVED_STATE",
+        "rule": "HEIGHTENED"
+      }
     ],
     "d10": "HEIGHTENED_CAUSAL_SOURCE",
     "doubleCountRisk": "YES_REVIEW_CONSTITUENTS",
@@ -36,11 +63,32 @@
     "window": "NOT_EXACTLY_DECLARED",
     "baseline": "NOT_EXACTLY_DECLARED",
     "externalInputs": "NOT_EXACTLY_DECLARED",
+    "declaredIndicators": [
+      "Unknown probability of an outcome",
+      "missing source details",
+      "unclear operational criteria."
+    ],
+    "declaredMeasurementMethods": "Structured content analysis; message audit; randomized message experiment; exposure-log linkage; expert coding",
+    "sharedConstituents": "NOT_IDENTIFIED_FROM_FROZEN_EXACT_RULE",
     "incomingCausalIds": [
       "REL-INF-008"
     ],
     "outgoingCausalIds": [
       "REL-INF-007"
+    ],
+    "d10IncidentCausalEdges": [
+      {
+        "relationshipId": "REL-INF-007",
+        "sourceType": "RELATIONAL_DERIVED_STATE",
+        "targetType": "DRIVER",
+        "rule": "HEIGHTENED"
+      },
+      {
+        "relationshipId": "REL-INF-008",
+        "sourceType": "DRIVER",
+        "targetType": "RELATIONAL_DERIVED_STATE",
+        "rule": "HEIGHTENED"
+      }
     ],
     "d10": "HEIGHTENED_CAUSAL_SOURCE",
     "doubleCountRisk": "YES_REVIEW_CONSTITUENTS",
@@ -60,9 +108,24 @@
     "window": "NOT_EXACTLY_DECLARED",
     "baseline": "NOT_EXACTLY_DECLARED",
     "externalInputs": "NOT_EXACTLY_DECLARED",
+    "declaredIndicators": [
+      "Two agencies issue incompatible guidance",
+      "experts offer divergent estimates",
+      "repeated reports reverse recommendations."
+    ],
+    "declaredMeasurementMethods": "Structured content analysis; message audit; randomized message experiment; exposure-log linkage; expert coding",
+    "sharedConstituents": "NOT_IDENTIFIED_FROM_FROZEN_EXACT_RULE",
     "incomingCausalIds": [],
     "outgoingCausalIds": [
       "REL-INF-009"
+    ],
+    "d10IncidentCausalEdges": [
+      {
+        "relationshipId": "REL-INF-009",
+        "sourceType": "RELATIONAL_DERIVED_STATE",
+        "targetType": "DRIVER",
+        "rule": "HEIGHTENED"
+      }
     ],
     "d10": "HEIGHTENED_CAUSAL_SOURCE",
     "doubleCountRisk": "YES_REVIEW_CONSTITUENTS",
@@ -82,11 +145,33 @@
     "window": "NOT_EXACTLY_DECLARED",
     "baseline": "NOT_EXACTLY_DECLARED",
     "externalInputs": "NOT_EXACTLY_DECLARED",
+    "declaredIndicators": [
+      "Dense legal language",
+      "unexplained acronyms",
+      "multi-clause instructions",
+      "highly technical risk descriptions."
+    ],
+    "declaredMeasurementMethods": "Structured content analysis; message audit; randomized message experiment; exposure-log linkage; expert coding",
+    "sharedConstituents": "NOT_IDENTIFIED_FROM_FROZEN_EXACT_RULE",
     "incomingCausalIds": [
       "REL-INF-003",
       "REL-INF-006"
     ],
     "outgoingCausalIds": [],
+    "d10IncidentCausalEdges": [
+      {
+        "relationshipId": "REL-INF-003",
+        "sourceType": "DRIVER",
+        "targetType": "RELATIONAL_DERIVED_STATE",
+        "rule": "HEIGHTENED"
+      },
+      {
+        "relationshipId": "REL-INF-006",
+        "sourceType": "DRIVER",
+        "targetType": "RELATIONAL_DERIVED_STATE",
+        "rule": "HEIGHTENED"
+      }
+    ],
     "d10": "HEIGHTENED_CAUSAL_TARGET",
     "doubleCountRisk": "POSSIBLE_IF_FORMULA_AND_CONSTITUENTS_BOTH_USED",
     "directEffectTargetAllowed": false,
@@ -107,8 +192,16 @@
     "window": "NOT_EXACTLY_DECLARED",
     "baseline": "NOT_EXACTLY_DECLARED",
     "externalInputs": "NOT_EXACTLY_DECLARED",
+    "declaredIndicators": [
+      "Using locally meaningful examples",
+      "translating idioms rather than literal words",
+      "aligning with culturally salient values."
+    ],
+    "declaredMeasurementMethods": "Structured content analysis; message audit; randomized message experiment; exposure-log linkage; expert coding",
+    "sharedConstituents": "NOT_IDENTIFIED_FROM_FROZEN_EXACT_RULE",
     "incomingCausalIds": [],
     "outgoingCausalIds": [],
+    "d10IncidentCausalEdges": [],
     "d10": "NONCAUSAL_OR_ISOLATED",
     "doubleCountRisk": "NO_ACTIVE_CAUSAL_EDGE",
     "directEffectTargetAllowed": false,
@@ -127,9 +220,24 @@
     "window": "NOT_EXACTLY_DECLARED",
     "baseline": "NOT_EXACTLY_DECLARED",
     "externalInputs": "NOT_EXACTLY_DECLARED",
+    "declaredIndicators": [
+      "Reporting relative risk without baseline risk",
+      "presenting only favorable cases",
+      "omitting known limitations."
+    ],
+    "declaredMeasurementMethods": "Structured content analysis; message audit; randomized message experiment; exposure-log linkage; expert coding",
+    "sharedConstituents": "NOT_IDENTIFIED_FROM_FROZEN_EXACT_RULE",
     "incomingCausalIds": [],
     "outgoingCausalIds": [
       "REL-INF-045"
+    ],
+    "d10IncidentCausalEdges": [
+      {
+        "relationshipId": "REL-INF-045",
+        "sourceType": "RELATIONAL_DERIVED_STATE",
+        "targetType": "DRIVER",
+        "rule": "HEIGHTENED"
+      }
     ],
     "d10": "HEIGHTENED_CAUSAL_SOURCE",
     "doubleCountRisk": "YES_REVIEW_CONSTITUENTS",
@@ -149,8 +257,12 @@
     "window": "NOT_EXACTLY_DECLARED",
     "baseline": "NOT_EXACTLY_DECLARED",
     "externalInputs": "NOT_EXACTLY_DECLARED",
+    "declaredIndicators": [],
+    "declaredMeasurementMethods": null,
+    "sharedConstituents": "NOT_IDENTIFIED_FROM_FROZEN_EXACT_RULE",
     "incomingCausalIds": [],
     "outgoingCausalIds": [],
+    "d10IncidentCausalEdges": [],
     "d10": "NONCAUSAL_OR_ISOLATED",
     "doubleCountRisk": "NO_ACTIVE_CAUSAL_EDGE",
     "directEffectTargetAllowed": false,

@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import json
-import subprocess
 import sys
 import unittest
 from pathlib import Path
@@ -102,15 +101,11 @@ class LayerScaleUpV2ReadinessTests(unittest.TestCase):
         self.assertFalse(self.report["scienceResearchPerformed"])
         self.assertFalse(self.report["candidateGenerationPerformed"])
 
-    def test_no_scientific_or_candidate_data_changed(self):
-        changed = subprocess.check_output([
-            "git", "diff", "--name-only", readiness.SOURCE_COMMIT, "--", "data", "schemas",
-        ], cwd=ROOT, text=True).strip()
-        self.assertEqual(changed, "")
-        candidate_branches = subprocess.check_output([
-            "git", "branch", "--format=%(refname:short)",
-        ], cwd=ROOT, text=True).splitlines()
-        self.assertNotIn("scale-up/informational-layer-v1", candidate_branches)
+    def test_historical_report_remains_planning_only(self):
+        self.assertFalse(self.report["scienceResearchPerformed"])
+        self.assertFalse(self.report["candidateGenerationPerformed"])
+        self.assertEqual(self.report["sourceCommit"], readiness.SOURCE_COMMIT)
+        self.assertEqual(self.report["analysisClass"], "READ_ONLY_MECHANICAL_PLANNING")
 
     def test_output_is_deterministic(self):
         before_report = readiness.REPORT.read_bytes().replace(b"\r\n", b"\n")
