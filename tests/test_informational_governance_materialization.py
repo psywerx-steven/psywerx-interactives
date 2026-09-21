@@ -23,20 +23,25 @@ class InformationalMaterializationTests(unittest.TestCase):
         before, after = baseline(path), current(path)
         for key in ("occurrences", "effectAssertions", "evidenceAssessments"):
             self.assertEqual(before[key], after[key], key)
-        self.assertEqual(before["happeningTypes"], after["happeningTypes"][:-1])
-        self.assertEqual(before["authorizations"], after["authorizations"][:-1])
-        identity = after["happeningTypes"][-1]
+        biological = (ROOT / "data/actions-events-v1/BIOLOGICAL_LAYER-materialization-manifest.json").is_file()
+        added = 2 if biological else 1
+        self.assertEqual(before["happeningTypes"], after["happeningTypes"][:-added])
+        self.assertEqual(before["authorizations"], after["authorizations"][:-added])
+        identity = next(x for x in after["happeningTypes"] if x["id"] == "HT-V1-INF-LAYER-001")
         self.assertEqual(identity["id"], "HT-V1-INF-LAYER-001")
         self.assertEqual(identity["identitySourceIds"], ["SRC-604", "SRC-605"])
         self.assertEqual((identity["governance"]["lifecycleStatus"], identity["governance"]["activationStatus"]),
                          ("GOVERNED", "INACTIVE"))
         self.assertIn("HT-CAND-INF-LAYER-0001", identity["provenance"]["originReferences"])
-        self.assertEqual([x["id"] for x in after["authorizations"][-1]["authorizedObjects"]], [identity["id"]])
+        authorization = next(x for x in after["authorizations"] if x["decisionId"] == "GOV-INFORMATIONAL-LAYER-001-2026-09-20")
+        self.assertEqual([x["id"] for x in authorization["authorizedObjects"]], [identity["id"]])
         path = "data/relationship-intervention-v1/source-register.json"
         before, after = baseline(path), current(path)
-        self.assertEqual(before["sources"], after["sources"][:-2])
-        self.assertEqual({x["id"] for x in after["sources"][-2:]}, {"SRC-604", "SRC-605"})
-        self.assertEqual({x["pmid"] for x in after["sources"][-2:]}, {"35082145", "30975450"})
+        source_added = 5 if biological else 2
+        self.assertEqual(before["sources"], after["sources"][:-source_added])
+        info_sources = [x for x in after["sources"] if x["id"] in {"SRC-604", "SRC-605"}]
+        self.assertEqual({x["id"] for x in info_sources}, {"SRC-604", "SRC-605"})
+        self.assertEqual({x["pmid"] for x in info_sources}, {"35082145", "30975450"})
 
     def test_deferred_science_and_blockers(self):
         data = ROOT / "data/candidates/actions-events-v1/INFORMATIONAL_LAYER"
