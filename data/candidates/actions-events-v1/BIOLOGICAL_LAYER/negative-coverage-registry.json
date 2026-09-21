@@ -1,1 +1,1101 @@
-{}
+{
+  "BIO-001": {
+    "id": "BIO-001",
+    "familyId": "BIO-F01",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "incidentCausalRelationshipIds": [
+      "REL-BIO-001",
+      "REL-BIO-002",
+      "REL-BIO-021",
+      "REL-V1-BIO-F01-001",
+      "REL-V1-BIO-F01-003"
+    ],
+    "landscapeSourceIds": [],
+    "reason": "Governed BIO-F01 pilot operations and effects are reused."
+  },
+  "BIO-002": {
+    "id": "BIO-002",
+    "familyId": "BIO-F01",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "incidentCausalRelationshipIds": [
+      "REL-BIO-003",
+      "REL-BIO-009",
+      "REL-ENV-040",
+      "REL-V1-BIO-F01-004"
+    ],
+    "landscapeSourceIds": [],
+    "reason": "Governed BIO-F01 pilot operations and effects are reused."
+  },
+  "BIO-003": {
+    "id": "BIO-003",
+    "familyId": "BIO-F01",
+    "entityType": "RELATIONAL_DERIVED_STATE",
+    "relationshipStatus": "BLOCKED",
+    "actionsEventsStatus": "NOT_APPLICABLE",
+    "incidentCausalRelationshipIds": [
+      "REL-BIO-001"
+    ],
+    "landscapeSourceIds": [],
+    "reason": "RDS derivation and heightened causal-source risk are reviewed separately; no direct EffectAssertion target."
+  },
+  "BIO-004": {
+    "id": "BIO-004",
+    "familyId": "BIO-F01",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "incidentCausalRelationshipIds": [
+      "REL-V1-BIO-F01-002"
+    ],
+    "landscapeSourceIds": [],
+    "reason": "Governed BIO-F01 pilot operations and effects are reused."
+  },
+  "BIO-005": {
+    "id": "BIO-005",
+    "familyId": "BIO-F01",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "incidentCausalRelationshipIds": [
+      "REL-V1-BIO-F01-001",
+      "REL-V1-BIO-F01-002"
+    ],
+    "landscapeSourceIds": [],
+    "reason": "Governed BIO-F01 pilot operations and effects are reused."
+  },
+  "BIO-006": {
+    "id": "BIO-006",
+    "familyId": "BIO-F01",
+    "entityType": "RELATIONAL_DERIVED_STATE",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "NOT_APPLICABLE",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [],
+    "reason": "RDS derivation and heightened causal-source risk are reviewed separately; no direct EffectAssertion target."
+  },
+  "BIO-007": {
+    "id": "BIO-007",
+    "familyId": "BIO-F02",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-BIO-004",
+      "REL-PSY-057"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-001"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-008": {
+    "id": "BIO-008",
+    "familyId": "BIO-F02",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-BIO-004",
+      "REL-BIO-008"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-001"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-009": {
+    "id": "BIO-009",
+    "familyId": "BIO-F02",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-BIO-005",
+      "REL-PSY-058"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-001"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-010": {
+    "id": "BIO-010",
+    "familyId": "BIO-F02",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-BIO-005"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-001"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-011": {
+    "id": "BIO-011",
+    "familyId": "BIO-F02",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-001"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-012": {
+    "id": "BIO-012",
+    "familyId": "BIO-F03",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-002",
+      "SRC-CAND-BIO-LAYER-024",
+      "SRC-CAND-BIO-LAYER-025"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-013": {
+    "id": "BIO-013",
+    "familyId": "BIO-F03",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-002",
+      "SRC-CAND-BIO-LAYER-024",
+      "SRC-CAND-BIO-LAYER-025"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-014": {
+    "id": "BIO-014",
+    "familyId": "BIO-F03",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-002",
+      "SRC-CAND-BIO-LAYER-024",
+      "SRC-CAND-BIO-LAYER-025"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-015": {
+    "id": "BIO-015",
+    "familyId": "BIO-F03",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-BIO-006",
+      "REL-ENV-041"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-002",
+      "SRC-CAND-BIO-LAYER-024",
+      "SRC-CAND-BIO-LAYER-025"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-016": {
+    "id": "BIO-016",
+    "familyId": "BIO-F03",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-BIO-013"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-002",
+      "SRC-CAND-BIO-LAYER-024",
+      "SRC-CAND-BIO-LAYER-025"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-017": {
+    "id": "BIO-017",
+    "familyId": "BIO-F03",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-002",
+      "SRC-CAND-BIO-LAYER-024",
+      "SRC-CAND-BIO-LAYER-025"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-018": {
+    "id": "BIO-018",
+    "familyId": "BIO-F03",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-002",
+      "SRC-CAND-BIO-LAYER-024",
+      "SRC-CAND-BIO-LAYER-025"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-019": {
+    "id": "BIO-019",
+    "familyId": "BIO-F03",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-002",
+      "SRC-CAND-BIO-LAYER-024",
+      "SRC-CAND-BIO-LAYER-025"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-020": {
+    "id": "BIO-020",
+    "familyId": "BIO-F04",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-BIO-007"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-003",
+      "SRC-CAND-BIO-LAYER-026"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-021": {
+    "id": "BIO-021",
+    "familyId": "BIO-F04",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-003",
+      "SRC-CAND-BIO-LAYER-026"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-022": {
+    "id": "BIO-022",
+    "familyId": "BIO-F04",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-003",
+      "SRC-CAND-BIO-LAYER-026"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-023": {
+    "id": "BIO-023",
+    "familyId": "BIO-F04",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-BIO-006",
+      "REL-ENV-039"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-003",
+      "SRC-CAND-BIO-LAYER-026"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-024": {
+    "id": "BIO-024",
+    "familyId": "BIO-F04",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-003",
+      "SRC-CAND-BIO-LAYER-026"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-025": {
+    "id": "BIO-025",
+    "familyId": "BIO-F05",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "CANDIDATE_RESEARCHED",
+    "incidentCausalRelationshipIds": [
+      "REL-BIO-011",
+      "REL-BIO-020"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-004",
+      "SRC-CAND-BIO-LAYER-027"
+    ],
+    "reason": "Exact A&E candidate route received proposition-level research; existing Relationship status is assessed independently."
+  },
+  "BIO-026": {
+    "id": "BIO-026",
+    "familyId": "BIO-F05",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-BIO-002",
+      "REL-BIO-003",
+      "REL-BIO-007",
+      "REL-BIO-013",
+      "REL-BIO-015",
+      "REL-BIO-017",
+      "REL-BIO-018",
+      "REL-BIO-019"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-004",
+      "SRC-CAND-BIO-LAYER-027"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-027": {
+    "id": "BIO-027",
+    "familyId": "BIO-F05",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-BIO-008"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-004",
+      "SRC-CAND-BIO-LAYER-027"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-028": {
+    "id": "BIO-028",
+    "familyId": "BIO-F05",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-BIO-009"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-004",
+      "SRC-CAND-BIO-LAYER-027"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-029": {
+    "id": "BIO-029",
+    "familyId": "BIO-F05",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-BIO-014",
+      "REL-BIO-016"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-004",
+      "SRC-CAND-BIO-LAYER-027"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-030": {
+    "id": "BIO-030",
+    "familyId": "BIO-F06",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "CANDIDATE_RESEARCHED",
+    "incidentCausalRelationshipIds": [
+      "REL-BIO-010",
+      "REL-BIO-023"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-005",
+      "SRC-CAND-BIO-LAYER-006",
+      "SRC-CAND-BIO-LAYER-007"
+    ],
+    "reason": "Exact A&E candidate route received proposition-level research; existing Relationship status is assessed independently."
+  },
+  "BIO-031": {
+    "id": "BIO-031",
+    "familyId": "BIO-F06",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "CANDIDATE_RESEARCHED",
+    "incidentCausalRelationshipIds": [
+      "REL-BIO-010"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-005",
+      "SRC-CAND-BIO-LAYER-006",
+      "SRC-CAND-BIO-LAYER-007"
+    ],
+    "reason": "Inflammatory markers were measured in the endotoxin deep route, but no separate whole-BIO-031 effect was retained."
+  },
+  "BIO-032": {
+    "id": "BIO-032",
+    "familyId": "BIO-F07",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-BIO-022"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-008",
+      "SRC-CAND-BIO-LAYER-009"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-033": {
+    "id": "BIO-033",
+    "familyId": "BIO-F07",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-008",
+      "SRC-CAND-BIO-LAYER-009"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-034": {
+    "id": "BIO-034",
+    "familyId": "BIO-F07",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-008",
+      "SRC-CAND-BIO-LAYER-009"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-035": {
+    "id": "BIO-035",
+    "familyId": "BIO-F07",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-008",
+      "SRC-CAND-BIO-LAYER-009"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-036": {
+    "id": "BIO-036",
+    "familyId": "BIO-F07",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-008",
+      "SRC-CAND-BIO-LAYER-009"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-037": {
+    "id": "BIO-037",
+    "familyId": "BIO-F07",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-008",
+      "SRC-CAND-BIO-LAYER-009"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-038": {
+    "id": "BIO-038",
+    "familyId": "BIO-F08",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-010",
+      "SRC-CAND-BIO-LAYER-011",
+      "SRC-CAND-BIO-LAYER-012",
+      "SRC-CAND-BIO-LAYER-013"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-039": {
+    "id": "BIO-039",
+    "familyId": "BIO-F08",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-BIO-011",
+      "REL-BIO-012"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-010",
+      "SRC-CAND-BIO-LAYER-011",
+      "SRC-CAND-BIO-LAYER-012",
+      "SRC-CAND-BIO-LAYER-013"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-040": {
+    "id": "BIO-040",
+    "familyId": "BIO-F08",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-BIO-012"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-010",
+      "SRC-CAND-BIO-LAYER-011",
+      "SRC-CAND-BIO-LAYER-012",
+      "SRC-CAND-BIO-LAYER-013"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-041": {
+    "id": "BIO-041",
+    "familyId": "BIO-F08",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-010",
+      "SRC-CAND-BIO-LAYER-011",
+      "SRC-CAND-BIO-LAYER-012",
+      "SRC-CAND-BIO-LAYER-013"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-042": {
+    "id": "BIO-042",
+    "familyId": "BIO-F08",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-010",
+      "SRC-CAND-BIO-LAYER-011",
+      "SRC-CAND-BIO-LAYER-012",
+      "SRC-CAND-BIO-LAYER-013"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-043": {
+    "id": "BIO-043",
+    "familyId": "BIO-F09",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-014",
+      "SRC-CAND-BIO-LAYER-015",
+      "SRC-CAND-BIO-LAYER-028"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-044": {
+    "id": "BIO-044",
+    "familyId": "BIO-F09",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-014",
+      "SRC-CAND-BIO-LAYER-015",
+      "SRC-CAND-BIO-LAYER-028"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-045": {
+    "id": "BIO-045",
+    "familyId": "BIO-F09",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-014",
+      "SRC-CAND-BIO-LAYER-015",
+      "SRC-CAND-BIO-LAYER-028"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-046": {
+    "id": "BIO-046",
+    "familyId": "BIO-F09",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-014",
+      "SRC-CAND-BIO-LAYER-015",
+      "SRC-CAND-BIO-LAYER-028"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-047": {
+    "id": "BIO-047",
+    "familyId": "BIO-F09",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-014",
+      "SRC-CAND-BIO-LAYER-015",
+      "SRC-CAND-BIO-LAYER-028"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-048": {
+    "id": "BIO-048",
+    "familyId": "BIO-F09",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-014",
+      "SRC-CAND-BIO-LAYER-015",
+      "SRC-CAND-BIO-LAYER-028"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-049": {
+    "id": "BIO-049",
+    "familyId": "BIO-F10",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-016",
+      "SRC-CAND-BIO-LAYER-029",
+      "SRC-CAND-BIO-LAYER-030"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-050": {
+    "id": "BIO-050",
+    "familyId": "BIO-F10",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-016",
+      "SRC-CAND-BIO-LAYER-029",
+      "SRC-CAND-BIO-LAYER-030"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-051": {
+    "id": "BIO-051",
+    "familyId": "BIO-F10",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-016",
+      "SRC-CAND-BIO-LAYER-029",
+      "SRC-CAND-BIO-LAYER-030"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-052": {
+    "id": "BIO-052",
+    "familyId": "BIO-F11",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-017"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-053": {
+    "id": "BIO-053",
+    "familyId": "BIO-F12",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-018",
+      "SRC-CAND-BIO-LAYER-031"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-054": {
+    "id": "BIO-054",
+    "familyId": "BIO-F12",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-018",
+      "SRC-CAND-BIO-LAYER-031"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-055": {
+    "id": "BIO-055",
+    "familyId": "BIO-F12",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-018",
+      "SRC-CAND-BIO-LAYER-031"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-056": {
+    "id": "BIO-056",
+    "familyId": "BIO-F12",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-018",
+      "SRC-CAND-BIO-LAYER-031"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-057": {
+    "id": "BIO-057",
+    "familyId": "BIO-F12",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-018",
+      "SRC-CAND-BIO-LAYER-031"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-058": {
+    "id": "BIO-058",
+    "familyId": "BIO-F13",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-BIO-014"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-019",
+      "SRC-CAND-BIO-LAYER-032"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-059": {
+    "id": "BIO-059",
+    "familyId": "BIO-F13",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-019",
+      "SRC-CAND-BIO-LAYER-032"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-060": {
+    "id": "BIO-060",
+    "familyId": "BIO-F13",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-019",
+      "SRC-CAND-BIO-LAYER-032"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-061": {
+    "id": "BIO-061",
+    "familyId": "BIO-F13",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-V1-BIO-F01-003"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-019",
+      "SRC-CAND-BIO-LAYER-032"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-062": {
+    "id": "BIO-062",
+    "familyId": "BIO-F13",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-BIO-015"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-019",
+      "SRC-CAND-BIO-LAYER-032"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-063": {
+    "id": "BIO-063",
+    "familyId": "BIO-F13",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-019",
+      "SRC-CAND-BIO-LAYER-032"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-064": {
+    "id": "BIO-064",
+    "familyId": "BIO-F13",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-019",
+      "SRC-CAND-BIO-LAYER-032"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-065": {
+    "id": "BIO-065",
+    "familyId": "BIO-F14",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-BIO-017"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-020",
+      "SRC-CAND-BIO-LAYER-021",
+      "SRC-CAND-BIO-LAYER-022",
+      "SRC-CAND-BIO-LAYER-023",
+      "SRC-CAND-BIO-LAYER-033",
+      "SRC-CAND-BIO-LAYER-034",
+      "SRC-CAND-BIO-LAYER-035"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-066": {
+    "id": "BIO-066",
+    "familyId": "BIO-F14",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "CANDIDATE_RESEARCHED",
+    "incidentCausalRelationshipIds": [
+      "REL-BIO-018"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-020",
+      "SRC-CAND-BIO-LAYER-021",
+      "SRC-CAND-BIO-LAYER-022",
+      "SRC-CAND-BIO-LAYER-023",
+      "SRC-CAND-BIO-LAYER-033",
+      "SRC-CAND-BIO-LAYER-034",
+      "SRC-CAND-BIO-LAYER-035"
+    ],
+    "reason": "Exact A&E candidate route received proposition-level research; existing Relationship status is assessed independently."
+  },
+  "BIO-067": {
+    "id": "BIO-067",
+    "familyId": "BIO-F14",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-020",
+      "SRC-CAND-BIO-LAYER-021",
+      "SRC-CAND-BIO-LAYER-022",
+      "SRC-CAND-BIO-LAYER-023",
+      "SRC-CAND-BIO-LAYER-033",
+      "SRC-CAND-BIO-LAYER-034",
+      "SRC-CAND-BIO-LAYER-035"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-068": {
+    "id": "BIO-068",
+    "familyId": "BIO-F14",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-020",
+      "SRC-CAND-BIO-LAYER-021",
+      "SRC-CAND-BIO-LAYER-022",
+      "SRC-CAND-BIO-LAYER-023",
+      "SRC-CAND-BIO-LAYER-033",
+      "SRC-CAND-BIO-LAYER-034",
+      "SRC-CAND-BIO-LAYER-035"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-069": {
+    "id": "BIO-069",
+    "familyId": "BIO-F14",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-020",
+      "SRC-CAND-BIO-LAYER-021",
+      "SRC-CAND-BIO-LAYER-022",
+      "SRC-CAND-BIO-LAYER-023",
+      "SRC-CAND-BIO-LAYER-033",
+      "SRC-CAND-BIO-LAYER-034",
+      "SRC-CAND-BIO-LAYER-035"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-070": {
+    "id": "BIO-070",
+    "familyId": "BIO-F13",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [
+      "REL-BIO-016"
+    ],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-019",
+      "SRC-CAND-BIO-LAYER-032"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-071": {
+    "id": "BIO-071",
+    "familyId": "BIO-F05",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-004",
+      "SRC-CAND-BIO-LAYER-027"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-072": {
+    "id": "BIO-072",
+    "familyId": "BIO-F06",
+    "entityType": "DRIVER",
+    "relationshipStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "actionsEventsStatus": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [
+      "SRC-CAND-BIO-LAYER-005",
+      "SRC-CAND-BIO-LAYER-006",
+      "SRC-CAND-BIO-LAYER-007"
+    ],
+    "reason": "Bounded Family landscape did not isolate an exact operation-to-this-Driver effect with enough preliminary signal; absence of deep research is not a null finding."
+  },
+  "BIO-073": {
+    "id": "BIO-073",
+    "familyId": "BIO-F01",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [],
+    "reason": "Governed BIO-F01 pilot operations and effects are reused."
+  },
+  "BIO-074": {
+    "id": "BIO-074",
+    "familyId": "BIO-F01",
+    "entityType": "DRIVER",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [],
+    "reason": "Governed BIO-F01 pilot operations and effects are reused."
+  },
+  "RDS-0002": {
+    "id": "RDS-0002",
+    "familyId": "BIO-F01",
+    "entityType": "RELATIONAL_DERIVED_STATE",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "NOT_APPLICABLE",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [],
+    "reason": "RDS derivation and heightened causal-source risk are reviewed separately; no direct EffectAssertion target."
+  },
+  "RDS-0003": {
+    "id": "RDS-0003",
+    "familyId": "BIO-F01",
+    "entityType": "RELATIONAL_DERIVED_STATE",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "NOT_APPLICABLE",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [],
+    "reason": "RDS derivation and heightened causal-source risk are reviewed separately; no direct EffectAssertion target."
+  },
+  "RDS-0004": {
+    "id": "RDS-0004",
+    "familyId": "BIO-F01",
+    "entityType": "RELATIONAL_DERIVED_STATE",
+    "relationshipStatus": "EXISTING_PROPOSITION_SUFFICIENT",
+    "actionsEventsStatus": "NOT_APPLICABLE",
+    "incidentCausalRelationshipIds": [],
+    "landscapeSourceIds": [],
+    "reason": "RDS derivation and heightened causal-source risk are reviewed separately; no direct EffectAssertion target."
+  }
+}

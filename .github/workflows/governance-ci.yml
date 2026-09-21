@@ -132,6 +132,17 @@ jobs:
       - name: Validate read-only Informational activation closeout
         run: python -m unittest discover -s tests -p "test_informational_activation_closeout.py"
 
+      - name: Validate candidate-only Biological Layer V2 audit
+        run: python -m unittest discover -s tests -p "test_biological_layer_v2.py"
+
+      - name: Verify deterministic Biological Layer registries
+        run: |
+          python scripts/biological_layer_v2_curate.py
+          python scripts/biological_layer_v2_adjudicate.py
+          python scripts/biological_layer_v2_skeptical.py
+          python scripts/biological_layer_v2_package.py
+          git diff --exit-code -- data/candidates/actions-events-v1/BIOLOGICAL_LAYER docs/governance/scale-up/BIOLOGICAL_LAYER
+
       - name: Verify deterministic Informational Layer registries
         run: |
           python -c "import sys; sys.path.insert(0, 'scripts'); import informational_layer_v2 as m; m.build_reviews_and_coverage(); m.build_governance(); m.finalize()"
@@ -262,6 +273,17 @@ jobs:
 
       - name: Validate read-only Informational activation closeout
         run: python -m unittest discover -s tests -p "test_informational_activation_closeout.py"
+
+      - name: Validate candidate-only Biological Layer V2 audit
+        run: python -m unittest discover -s tests -p "test_biological_layer_v2.py"
+
+      - name: Verify deterministic Biological Layer registries
+        run: |
+          python scripts/biological_layer_v2_curate.py
+          python scripts/biological_layer_v2_adjudicate.py
+          python scripts/biological_layer_v2_skeptical.py
+          python scripts/biological_layer_v2_package.py
+          git diff --exit-code -- data/candidates/actions-events-v1/BIOLOGICAL_LAYER docs/governance/scale-up/BIOLOGICAL_LAYER
 
       - name: Verify deterministic Informational Layer registries
         run: |

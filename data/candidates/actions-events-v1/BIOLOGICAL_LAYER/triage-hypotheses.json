@@ -1,1 +1,164 @@
-[]
+[
+  {
+    "id": "HYP-BIO-LAYER-001",
+    "familyId": "BIO-F01",
+    "proposition": "Existing governed pilot sleep and circadian candidates",
+    "semanticType": "CAUSAL",
+    "outcome": "PRIOR_PILOT_REUSE",
+    "reason": "BIO-F01 science and B01-B05 were already governed; no new exact route is needed.",
+    "sourceIds": []
+  },
+  {
+    "id": "HYP-BIO-LAYER-002",
+    "familyId": "BIO-F02",
+    "proposition": "A single cortisol marker is equivalent to allostatic load",
+    "semanticType": "CAUSAL",
+    "outcome": "REJECT_CATEGORY_ERROR",
+    "reason": "Multisystem cumulative construct cannot be replaced by one acute biomarker.",
+    "sourceIds": [
+      "SRC-CAND-BIO-LAYER-001"
+    ]
+  },
+  {
+    "id": "HYP-BIO-LAYER-003",
+    "familyId": "BIO-F03",
+    "proposition": "Subjective thirst is equivalent to objective hydration status",
+    "semanticType": "CAUSAL",
+    "outcome": "REJECT_CATEGORY_ERROR",
+    "reason": "Homeostatic drive and body-fluid state are different levels.",
+    "sourceIds": [
+      "SRC-CAND-BIO-LAYER-002"
+    ]
+  },
+  {
+    "id": "HYP-BIO-LAYER-004",
+    "familyId": "BIO-F04",
+    "proposition": "Ambient heat universally increases heat strain",
+    "semanticType": "CAUSAL",
+    "outcome": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "reason": "Exposure, achieved strain, acclimation and dose differ; exact controlled contrast not extracted.",
+    "sourceIds": [
+      "SRC-CAND-BIO-LAYER-003"
+    ]
+  },
+  {
+    "id": "HYP-BIO-LAYER-005",
+    "familyId": "BIO-F05",
+    "proposition": "Chronic exercise universally reduces physical fatigue",
+    "semanticType": "CAUSAL",
+    "outcome": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "reason": "Exercise packages, baseline health and measured energy/fatigue differ.",
+    "sourceIds": [
+      "SRC-CAND-BIO-LAYER-004"
+    ]
+  },
+  {
+    "id": "HYP-BIO-LAYER-006",
+    "familyId": "BIO-F06",
+    "proposition": "Controlled endotoxin increases acute sickness response intensity",
+    "semanticType": "CAUSAL",
+    "outcome": "DEEP_RESEARCHED_RESEARCH_NEEDED",
+    "reason": "Small male laboratory studies and scale/biomarker alignment prevent broad BIO-030 assertion.",
+    "sourceIds": [
+      "SRC-CAND-BIO-LAYER-005",
+      "SRC-CAND-BIO-LAYER-006",
+      "SRC-CAND-BIO-LAYER-007"
+    ]
+  },
+  {
+    "id": "HYP-BIO-LAYER-007",
+    "familyId": "BIO-F07",
+    "proposition": "Age-related hearing loss causally reduces broad cognitive capacity",
+    "semanticType": "CAUSAL",
+    "outcome": "REJECT_CATEGORY_ERROR",
+    "reason": "Observational association and test-access differences do not identify causal direction.",
+    "sourceIds": [
+      "SRC-CAND-BIO-LAYER-008",
+      "SRC-CAND-BIO-LAYER-009"
+    ]
+  },
+  {
+    "id": "HYP-BIO-LAYER-008",
+    "familyId": "BIO-F08",
+    "proposition": "Oral iron supplementation reduces BIO-025 physical fatigue in low-ferritin nonanemic adults",
+    "semanticType": "CAUSAL",
+    "outcome": "DEEP_RESEARCHED_RESEARCH_NEEDED",
+    "reason": "Trials measure reported general fatigue; BIO-025 physical fatigue is not isolated, while objective capacity differs.",
+    "sourceIds": [
+      "SRC-CAND-BIO-LAYER-010",
+      "SRC-CAND-BIO-LAYER-011",
+      "SRC-CAND-BIO-LAYER-012",
+      "SRC-CAND-BIO-LAYER-013"
+    ]
+  },
+  {
+    "id": "HYP-BIO-LAYER-009",
+    "familyId": "BIO-F09",
+    "proposition": "Thyroid replacement universally reduces fatigue in older adults",
+    "semanticType": "CAUSAL",
+    "outcome": "DEEP_RESEARCHED_REJECTED_BROAD_CLAIM",
+    "reason": "Controlled trials in mild subclinical hypothyroidism show no clear fatigability benefit; no universal direction.",
+    "sourceIds": [
+      "SRC-CAND-BIO-LAYER-014",
+      "SRC-CAND-BIO-LAYER-015"
+    ]
+  },
+  {
+    "id": "HYP-BIO-LAYER-010",
+    "familyId": "BIO-F10",
+    "proposition": "Measured frailty causes measured physical fitness decline",
+    "semanticType": "CAUSAL",
+    "outcome": "REJECT_CATEGORY_ERROR",
+    "reason": "Frailty scoring shares constituents with fitness measures; direction not identified by association.",
+    "sourceIds": [
+      "SRC-CAND-BIO-LAYER-016"
+    ]
+  },
+  {
+    "id": "HYP-BIO-LAYER-011",
+    "familyId": "BIO-F11",
+    "proposition": "Polygenic risk score directly causes an acute biological state",
+    "semanticType": "CAUSAL",
+    "outcome": "REJECT_CATEGORY_ERROR",
+    "reason": "Predictive aggregate profile is not a direct acute mechanism or manipulation.",
+    "sourceIds": [
+      "SRC-CAND-BIO-LAYER-017"
+    ]
+  },
+  {
+    "id": "HYP-BIO-LAYER-012",
+    "familyId": "BIO-F12",
+    "proposition": "Any traumatic brain injury causes uniform persistent cognitive impairment",
+    "semanticType": "CAUSAL",
+    "outcome": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "reason": "Severity, domain, course and recovery vary; no exact uniform endpoint.",
+    "sourceIds": [
+      "SRC-CAND-BIO-LAYER-018"
+    ]
+  },
+  {
+    "id": "HYP-BIO-LAYER-013",
+    "familyId": "BIO-F13",
+    "proposition": "Any alcohol effect universally reduces bodily capacity",
+    "semanticType": "CAUSAL",
+    "outcome": "INSUFFICIENT_PRELIMINARY_SIGNAL",
+    "reason": "Working-memory task meta-analysis does not identify broad physical capacity and has dose/task moderation.",
+    "sourceIds": [
+      "SRC-CAND-BIO-LAYER-019"
+    ]
+  },
+  {
+    "id": "EA-CAND-BIO-LAYER-0001",
+    "familyId": "BIO-F14",
+    "proposition": "Abrupt blinded cessation of habitual caffeine raises time-bounded withdrawal severity",
+    "semanticType": "CAUSAL",
+    "outcome": "FORMAL_CANDIDATE_RESEARCH_NEEDED_AFTER_SKEPTICAL_REVIEW",
+    "reason": "Controlled substitution studies establish symptom changes but do not establish one exact, transportable BIO-066 whole-syndrome severity metric; incidence and symptom composition vary.",
+    "sourceIds": [
+      "SRC-CAND-BIO-LAYER-020",
+      "SRC-CAND-BIO-LAYER-021",
+      "SRC-CAND-BIO-LAYER-022",
+      "SRC-CAND-BIO-LAYER-023"
+    ]
+  }
+]

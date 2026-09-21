@@ -1,1 +1,145 @@
-[]
+[
+  {
+    "id": "BIO-003",
+    "familyId": "BIO-F01",
+    "definition": "The degree of alignment between internal circadian phase and the timing of sleep, work, meals, light exposure, and required behavior.",
+    "derivation": "NO_VERSIONED_EXACT_RULE_IN_FROZEN_ENTITY",
+    "declaredInputsFromDerivationalEdges": [
+      "REL-V1-BIO-F01-006"
+    ],
+    "units": "NOT_EXACTLY_DECLARED",
+    "measurementWindow": "NOT_EXACTLY_DECLARED",
+    "reference": "NOT_EXACTLY_DECLARED",
+    "aggregation": "NOT_EXACTLY_DECLARED",
+    "externalInputs": "NOT_EXACTLY_DECLARED",
+    "blockedFields": [],
+    "incomingCausalIds": [],
+    "outgoingCausalIds": [
+      "REL-BIO-001"
+    ],
+    "d10Disposition": "HEIGHTENED_CAUSAL_SOURCE_REVIEW_NEEDED",
+    "doubleCountRisk": "YES_CONSTITUENT_OVERLAP_REVIEW",
+    "directEffectTargetAllowed": false,
+    "productionChanged": false
+  },
+  {
+    "id": "BIO-006",
+    "familyId": "BIO-F01",
+    "definition": "The degree of fit between an individual’s preferred biological timing and externally required schedules.",
+    "derivation": "NO_VERSIONED_EXACT_RULE_IN_FROZEN_ENTITY",
+    "declaredInputsFromDerivationalEdges": [
+      "REL-RDS-0016"
+    ],
+    "units": "NOT_EXACTLY_DECLARED",
+    "measurementWindow": "NOT_EXACTLY_DECLARED",
+    "reference": "NOT_EXACTLY_DECLARED",
+    "aggregation": "NOT_EXACTLY_DECLARED",
+    "externalInputs": "NOT_EXACTLY_DECLARED",
+    "blockedFields": [],
+    "incomingCausalIds": [],
+    "outgoingCausalIds": [],
+    "d10Disposition": "DERIVATIONAL_ONLY_OR_NO_CAUSAL_USE",
+    "doubleCountRisk": "POTENTIAL_IF_CONSTITUENTS_AND_AGGREGATE_BOTH_MODELED",
+    "directEffectTargetAllowed": false,
+    "productionChanged": false
+  },
+  {
+    "id": "RDS-0002",
+    "familyId": "BIO-F01",
+    "definition": "The composition and organization of sleep across stages and cycles during a specified sleep episode, including stage proportions, sequencing, transitions, and cycling structure.",
+    "derivation": "NO_VERSIONED_EXACT_RULE_IN_FROZEN_ENTITY",
+    "declaredInputsFromDerivationalEdges": [],
+    "units": "NOT_EXACTLY_DECLARED",
+    "measurementWindow": "NOT_EXACTLY_DECLARED",
+    "reference": "NOT_EXACTLY_DECLARED",
+    "aggregation": "NOT_EXACTLY_DECLARED",
+    "externalInputs": "NOT_EXACTLY_DECLARED",
+    "blockedFields": [
+      "mechanism",
+      "modifiability",
+      "volatility",
+      "timeScaleOfChange",
+      "onsetCausalLag",
+      "persistenceRecovery",
+      "measurementAssessmentMethods",
+      "observability",
+      "evidenceStrength",
+      "evidenceNotes",
+      "keySources"
+    ],
+    "incomingCausalIds": [],
+    "outgoingCausalIds": [],
+    "d10Disposition": "DERIVATIONAL_ONLY_OR_NO_CAUSAL_USE",
+    "doubleCountRisk": "POTENTIAL_IF_CONSTITUENTS_AND_AGGREGATE_BOTH_MODELED",
+    "directEffectTargetAllowed": false,
+    "productionChanged": false
+  },
+  {
+    "id": "RDS-0003",
+    "familyId": "BIO-F01",
+    "definition": "The degree to which obtained sleep meets estimated Physiological Sleep Need over a specified interval and outcome criterion.",
+    "derivation": "NO_VERSIONED_EXACT_RULE_IN_FROZEN_ENTITY",
+    "declaredInputsFromDerivationalEdges": [
+      "REL-RDS-0017",
+      "REL-RDS-0018"
+    ],
+    "units": "NOT_EXACTLY_DECLARED",
+    "measurementWindow": "NOT_EXACTLY_DECLARED",
+    "reference": "NOT_EXACTLY_DECLARED",
+    "aggregation": "NOT_EXACTLY_DECLARED",
+    "externalInputs": "NOT_EXACTLY_DECLARED",
+    "blockedFields": [
+      "mechanism",
+      "modifiability",
+      "volatility",
+      "timeScaleOfChange",
+      "onsetCausalLag",
+      "persistenceRecovery",
+      "measurementAssessmentMethods",
+      "observability",
+      "evidenceStrength",
+      "evidenceNotes",
+      "keySources"
+    ],
+    "incomingCausalIds": [],
+    "outgoingCausalIds": [],
+    "d10Disposition": "DERIVATIONAL_ONLY_OR_NO_CAUSAL_USE",
+    "doubleCountRisk": "POTENTIAL_IF_CONSTITUENTS_AND_AGGREGATE_BOTH_MODELED",
+    "directEffectTargetAllowed": false,
+    "productionChanged": false
+  },
+  {
+    "id": "RDS-0004",
+    "familyId": "BIO-F01",
+    "definition": "The accumulated shortfall between estimated Physiological Sleep Need and obtained sleep across a specified sequence of intervals under an explicit accumulation and recovery rule.",
+    "derivation": "NO_VERSIONED_EXACT_RULE_IN_FROZEN_ENTITY",
+    "declaredInputsFromDerivationalEdges": [
+      "REL-RDS-0019",
+      "REL-RDS-0020"
+    ],
+    "units": "NOT_EXACTLY_DECLARED",
+    "measurementWindow": "NOT_EXACTLY_DECLARED",
+    "reference": "NOT_EXACTLY_DECLARED",
+    "aggregation": "NOT_EXACTLY_DECLARED",
+    "externalInputs": "NOT_EXACTLY_DECLARED",
+    "blockedFields": [
+      "mechanism",
+      "modifiability",
+      "volatility",
+      "timeScaleOfChange",
+      "onsetCausalLag",
+      "persistenceRecovery",
+      "measurementAssessmentMethods",
+      "observability",
+      "evidenceStrength",
+      "evidenceNotes",
+      "keySources"
+    ],
+    "incomingCausalIds": [],
+    "outgoingCausalIds": [],
+    "d10Disposition": "DERIVATIONAL_ONLY_OR_NO_CAUSAL_USE",
+    "doubleCountRisk": "POTENTIAL_IF_CONSTITUENTS_AND_AGGREGATE_BOTH_MODELED",
+    "directEffectTargetAllowed": false,
+    "productionChanged": false
+  }
+]

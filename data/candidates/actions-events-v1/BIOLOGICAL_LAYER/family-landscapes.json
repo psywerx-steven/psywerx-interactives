@@ -1,3 +1,195 @@
 {
-  "families": {}
+  "schemaVersion": "1.0.0",
+  "programId": "AUD-BIOLOGICAL-LAYER-AE-V1-20260920-001",
+  "method": "Bounded Family landscape; source metadata checked via PubMed. This is not a systematic review per Driver.",
+  "families": {
+    "BIO-F01": {
+      "constructs": "Sleep amount, continuity, phase, chronotype and derived sufficiency are distinct.",
+      "mechanisms": "Sleep and circadian phase influence waking performance with timing and baseline dependence.",
+      "operations": "Reuse governed sleep scheduling, CBT-I, light, melatonin and caffeine pilot operations.",
+      "measurement": "Sleep measures, actigraphy and specified next-day endpoints must be separated.",
+      "boundaries": "The governed BIO-F01 pilot is the scientific source of record; B01-B05 remain review proposals.",
+      "sourceIds": [],
+      "priorPilot": "GOV-BIO-F01-001-2026-09-05",
+      "researchDepth": "FAMILY_LANDSCAPE_ONLY"
+    },
+    "BIO-F02": {
+      "constructs": "HPA/SAM activation, autonomic arousal, recovery, reactivity and multisystem allostatic load differ.",
+      "mechanisms": "Acute responses and cumulative biomarker composites operate on different time scales.",
+      "operations": "Bounded stressor exposure and recovery observation are plausible routes.",
+      "measurement": "Biomarker batteries and autonomic measures are not interchangeable with felt stress.",
+      "boundaries": "Allostatic-load component selection varies; response-to-burden causal direction is not fixed by a biomarker correlation.",
+      "sourceIds": [
+        "SRC-CAND-BIO-LAYER-001"
+      ],
+      "priorPilot": null,
+      "researchDepth": "FAMILY_LANDSCAPE_ONLY"
+    },
+    "BIO-F03": {
+      "constructs": "Hunger, satiety, thirst, hydration, glucose and visceral signals are separate states.",
+      "mechanisms": "Homeostatic feedback can be anticipatory, compensatory and nonlinear.",
+      "operations": "Hydration, nutritional or glucose perturbations require dose, baseline and objective state verification.",
+      "measurement": "Osmolality, volume, glucose and reports measure different levels.",
+      "boundaries": "Thirst intensity is not hydration status; the controlled hypoglycemia task result in diabetes does not establish a generic fatigue Driver effect.",
+      "sourceIds": [
+        "SRC-CAND-BIO-LAYER-002",
+        "SRC-CAND-BIO-LAYER-024",
+        "SRC-CAND-BIO-LAYER-025"
+      ],
+      "priorPilot": null,
+      "researchDepth": "FAMILY_LANDSCAPE_ONLY"
+    },
+    "BIO-F04": {
+      "constructs": "Oxygen availability, intermittent desaturation, CO2 burden, heat and cold strain differ.",
+      "mechanisms": "Acute environmental exposure can alter physiology, with acclimation and task-specific responses.",
+      "operations": "Controlled hypoxia or thermal exposure is plausible but requires measured tissue state.",
+      "measurement": "Inspired gas or ambient temperature is exposure, not achieved tissue oxygen or heat strain.",
+      "boundaries": "Acute hypoxia and heat-acclimation reviews show task, physiological-marker and risk-of-bias heterogeneity; chronic transfer is unsupported.",
+      "sourceIds": [
+        "SRC-CAND-BIO-LAYER-003",
+        "SRC-CAND-BIO-LAYER-026"
+      ],
+      "priorPilot": null,
+      "researchDepth": "FAMILY_LANDSCAPE_ONLY"
+    },
+    "BIO-F05": {
+      "constructs": "Physical and cognitive fatigue, acute and persistent pain, capacity and reserve differ.",
+      "mechanisms": "Exertion and recovery can alter fatigue while pain and capacity have distinct measurements.",
+      "operations": "Exercise/recovery or pain induction are plausible only at exact dose and endpoint.",
+      "measurement": "Subjective fatigue is not objective capacity; task failure is not a latent trait.",
+      "boundaries": "Exercise trials differ by chronicity and population; experimental pain can change motor strategy while task performance often remains intact.",
+      "sourceIds": [
+        "SRC-CAND-BIO-LAYER-004",
+        "SRC-CAND-BIO-LAYER-027"
+      ],
+      "priorPilot": null,
+      "researchDepth": "FAMILY_LANDSCAPE_ONLY"
+    },
+    "BIO-F06": {
+      "constructs": "Systemic inflammatory signaling, sickness response and pathogen burden are distinct.",
+      "mechanisms": "Controlled inflammatory challenge can generate acute cytokine and symptom responses.",
+      "operations": "Experimental endotoxin is a bounded research exposure, not a practitioner action.",
+      "measurement": "A cytokine change alone does not measure the entire sickness response.",
+      "boundaries": "Endotoxin findings vary by dose and time; reviews and included challenge studies are not independent replications.",
+      "sourceIds": [
+        "SRC-CAND-BIO-LAYER-005",
+        "SRC-CAND-BIO-LAYER-006",
+        "SRC-CAND-BIO-LAYER-007"
+      ],
+      "priorPilot": null,
+      "researchDepth": "FAMILY_LANDSCAPE_ONLY"
+    },
+    "BIO-F07": {
+      "constructs": "Hearing, vision, olfaction, vestibular and somatosensory capacity differ from symptoms such as tinnitus.",
+      "mechanisms": "Sensory loss can change input and task access; compensation may mediate performance.",
+      "operations": "Sensory deprivation or aid manipulation requires an exact recipient and measure.",
+      "measurement": "Hearing threshold and cognitive test scores do not by themselves identify cognitive causation.",
+      "boundaries": "Most hearing-cognition evidence is observational and vulnerable to common causes and test-access artifacts.",
+      "sourceIds": [
+        "SRC-CAND-BIO-LAYER-008",
+        "SRC-CAND-BIO-LAYER-009"
+      ],
+      "priorPilot": null,
+      "researchDepth": "FAMILY_LANDSCAPE_ONLY"
+    },
+    "BIO-F08": {
+      "constructs": "Energy sufficiency, oxygen carrying, iron, B12 and glycemic regulation are separable.",
+      "mechanisms": "Deficiency correction may alter fatigue within selected low-ferritin adults.",
+      "operations": "Iron supplementation trials offer a bounded route; treatment and achieved status remain distinct.",
+      "measurement": "Ferritin, hemoglobin, subjective fatigue and physical capacity are different endpoints.",
+      "boundaries": "Oral trials show reported-fatigue benefit; physical-capacity findings and IV routes are heterogeneous and should not be pooled as independent exact claims.",
+      "sourceIds": [
+        "SRC-CAND-BIO-LAYER-010",
+        "SRC-CAND-BIO-LAYER-011",
+        "SRC-CAND-BIO-LAYER-012",
+        "SRC-CAND-BIO-LAYER-013"
+      ],
+      "priorPilot": null,
+      "researchDepth": "FAMILY_LANDSCAPE_ONLY"
+    },
+    "BIO-F09": {
+      "constructs": "Thyroid, puberty, pregnancy, menopause, reproductive hormones and sexual arousal span distinct populations and scales.",
+      "mechanisms": "Endocrine perturbations can have context-specific physiological and behavioral effects across life stages.",
+      "operations": "Replacement therapy evidence is clinical and condition-specific.",
+      "measurement": "TSH and free T4 are indicators; fatigue and cognition are different outcomes.",
+      "boundaries": "Thyroid RCT reports show no general fatigue/cognition benefit in older mild subclinical hypothyroidism; life-course synthesis does not identify one universal hormone effect.",
+      "sourceIds": [
+        "SRC-CAND-BIO-LAYER-014",
+        "SRC-CAND-BIO-LAYER-015",
+        "SRC-CAND-BIO-LAYER-028"
+      ],
+      "priorPilot": null,
+      "researchDepth": "FAMILY_LANDSCAPE_ONLY"
+    },
+    "BIO-F10": {
+      "constructs": "Maturation, aging burden and frailty are not chronological age itself.",
+      "mechanisms": "Reserve and vulnerability can alter response to stressors, but measured fitness overlaps frailty scoring.",
+      "operations": "Exercise in older adults is an operation, not a direct aging-mechanism intervention.",
+      "measurement": "Frailty, physical fitness and DNA methylation age measurements can share correlates or constituents.",
+      "boundaries": "Meta-analytic associations among frailty, fitness and methylation clocks do not identify independent causal directions; puberty-related white matter maturation is separate.",
+      "sourceIds": [
+        "SRC-CAND-BIO-LAYER-016",
+        "SRC-CAND-BIO-LAYER-029",
+        "SRC-CAND-BIO-LAYER-030"
+      ],
+      "priorPilot": null,
+      "researchDepth": "FAMILY_LANDSCAPE_ONLY"
+    },
+    "BIO-F11": {
+      "constructs": "Polygenic liability is a predictive susceptibility profile, not an acute state.",
+      "mechanisms": "Variants may contribute to risk through many downstream mechanisms.",
+      "operations": "No routine acute manipulation of the profile is scientifically coherent.",
+      "measurement": "Portability and ancestry affect score calibration and meaning.",
+      "boundaries": "Prediction, ancestry transfer and mechanism cannot be collapsed into a manipulable causal Driver claim.",
+      "sourceIds": [
+        "SRC-CAND-BIO-LAYER-017"
+      ],
+      "priorPilot": null,
+      "researchDepth": "FAMILY_LANDSCAPE_ONLY"
+    },
+    "BIO-F12": {
+      "constructs": "Traumatic injury, encephalopathy, postictal, focal and neurodegenerative impairment differ.",
+      "mechanisms": "Injury and disease may impair domain-specific function with severity and recovery dependence.",
+      "operations": "Clinical exposure is not a reusable recommended operation.",
+      "measurement": "Cognitive tests measure outcomes, not the whole neurological state.",
+      "boundaries": "TBI longitudinal syntheses show heterogeneous courses; Alzheimer biological subtypes further warn against a single neurodegenerative trajectory.",
+      "sourceIds": [
+        "SRC-CAND-BIO-LAYER-018",
+        "SRC-CAND-BIO-LAYER-031"
+      ],
+      "priorPilot": null,
+      "researchDepth": "FAMILY_LANDSCAPE_ONLY"
+    },
+    "BIO-F13": {
+      "constructs": "Alcohol, THC, nicotine, caffeine, sedative, opioid, stimulant and medication burdens are realized effects, not administered doses.",
+      "mechanisms": "Pharmacology depends on dose, tolerance, timing, formulation and interactions.",
+      "operations": "Administration identities must be distinct from realized biological effect.",
+      "measurement": "Working-memory and driving-related task impairment are not broad functional capacity.",
+      "boundaries": "Alcohol and THC syntheses show dose, task, timing and user-history moderation; neither licenses a universal capacity edge.",
+      "sourceIds": [
+        "SRC-CAND-BIO-LAYER-019",
+        "SRC-CAND-BIO-LAYER-032"
+      ],
+      "priorPilot": null,
+      "researchDepth": "FAMILY_LANDSCAPE_ONLY"
+    },
+    "BIO-F14": {
+      "constructs": "Dependence, cessation and each substance-specific withdrawal syndrome are distinct.",
+      "mechanisms": "Abrupt caffeine cessation after regular intake can produce time-bounded withdrawal with variable incidence.",
+      "operations": "Blinded placebo substitution is a coherent research operation; it cannot stand for nicotine, cannabis, alcohol or opioid cessation.",
+      "measurement": "Syndrome severity requires symptoms over a window; headache alone is only a component.",
+      "boundaries": "Caffeine, cannabis, nicotine and opioid withdrawal have different populations and measurement; selected symptomatic samples and general samples yield different incidence.",
+      "sourceIds": [
+        "SRC-CAND-BIO-LAYER-020",
+        "SRC-CAND-BIO-LAYER-021",
+        "SRC-CAND-BIO-LAYER-022",
+        "SRC-CAND-BIO-LAYER-023",
+        "SRC-CAND-BIO-LAYER-033",
+        "SRC-CAND-BIO-LAYER-034",
+        "SRC-CAND-BIO-LAYER-035"
+      ],
+      "priorPilot": null,
+      "researchDepth": "FAMILY_LANDSCAPE_ONLY"
+    }
+  }
 }

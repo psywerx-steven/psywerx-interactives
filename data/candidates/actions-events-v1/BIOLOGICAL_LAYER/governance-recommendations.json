@@ -1,1 +1,136 @@
-{}
+{
+  "schemaVersion": "1.0.0",
+  "programId": "AUD-BIOLOGICAL-LAYER-AE-V1-20260920-001",
+  "advisory": "ADVISORY — HUMAN DECISION REQUIRED",
+  "originalGovernanceRows": 221,
+  "distinctScientificDecisions": 31,
+  "groupedHumanDecisions": [
+    {
+      "id": "GRP-BIO-001",
+      "recommendation": "APPROVE_RETAIN_V1_INCOMPLETE",
+      "recordIds": [
+        "REL-BIO-004",
+        "REL-BIO-007",
+        "REL-BIO-008",
+        "REL-BIO-010",
+        "REL-BIO-012",
+        "REL-BIO-015",
+        "REL-ENV-039",
+        "REL-ENV-041"
+      ],
+      "rationale": "Eight existing bounded propositions may be retained without a production semantic or execution change; individual caveats remain attached."
+    },
+    {
+      "id": "GRP-BIO-002",
+      "recommendation": "KEEP_RESEARCH_NEEDED",
+      "recordIds": [
+        "REL-BIO-005",
+        "REL-BIO-006",
+        "REL-BIO-011",
+        "REL-BIO-013",
+        "REL-BIO-014",
+        "REL-BIO-016",
+        "REL-BIO-017",
+        "REL-BIO-018",
+        "REL-BIO-022",
+        "REL-BIO-023"
+      ],
+      "rationale": "Ten existing edge claims lack exact endpoint, dose, timing or causal identification; each remains unchanged with its own rationale."
+    },
+    {
+      "id": "GRP-BIO-003",
+      "recommendation": "ACCEPT_CATEGORY_ERROR_REJECTIONS",
+      "recordIds": [
+        "HYP-BIO-LAYER-002",
+        "HYP-BIO-LAYER-003",
+        "HYP-BIO-LAYER-007",
+        "HYP-BIO-LAYER-010",
+        "HYP-BIO-LAYER-011"
+      ],
+      "rationale": "Biomarker, homeostatic drive, observational performance, frailty measurement and polygenic prediction cannot be equated with causal state claims."
+    },
+    {
+      "id": "GRP-BIO-004",
+      "recommendation": "KEEP_RESEARCH_NEEDED",
+      "recordIds": [
+        "HYP-BIO-LAYER-004",
+        "HYP-BIO-LAYER-005",
+        "HYP-BIO-LAYER-012",
+        "HYP-BIO-LAYER-013"
+      ],
+      "rationale": "Four broad heat, exercise, injury and alcohol routes lack exact dose, endpoint or construct alignment; no formal new claim is minted."
+    }
+  ],
+  "individualScientificDecisions": [
+    {
+      "id": "DEC-BIO-ENDOTOXIN",
+      "recommendation": "KEEP_RESEARCH_NEEDED",
+      "recordIds": [
+        "HYP-BIO-LAYER-006",
+        "HYP-BIO-LAYER-AE-002"
+      ],
+      "rationale": "Acute male endotoxin experiments show immune and symptom responses, but cytokines, mood and whole BIO-030 sickness severity differ; one paper reports working-memory accuracy null and opposite reaction-time result."
+    },
+    {
+      "id": "DEC-BIO-IRON",
+      "recommendation": "KEEP_RESEARCH_NEEDED",
+      "recordIds": [
+        "HYP-BIO-LAYER-008",
+        "HYP-BIO-LAYER-AE-003"
+      ],
+      "rationale": "Oral iron trials support reported general fatigue in selected low-ferritin women, while meta-analysis finds no clear objective capacity effect. Exact BIO-025 physical fatigue is not isolated."
+    },
+    {
+      "id": "DEC-BIO-THYROID",
+      "recommendation": "REJECT_PROPOSAL",
+      "recordIds": [
+        "HYP-BIO-LAYER-009",
+        "HYP-BIO-LAYER-AE-004"
+      ],
+      "rationale": "Older mild subclinical-hypothyroid thyroid replacement does not improve reported fatigability in the cited randomized trial; this does not prove a general hormone-to-fatigue null."
+    },
+    {
+      "id": "DEC-BIO-CAFFEINE-IDENTITY",
+      "recommendation": "GOVERN_INACTIVE_IDENTITY",
+      "recordIds": [
+        "HT-CAND-BIO-LAYER-0001"
+      ],
+      "rationale": "Abrupt cessation of habitual caffeine is a coherent operation identity distinct from BIO-F01 timed caffeine administration; identity governance implies no efficacy, treatment recommendation or activation."
+    },
+    {
+      "id": "DEC-BIO-CAFFEINE-EFFECT",
+      "recommendation": "KEEP_RESEARCH_NEEDED",
+      "recordIds": [
+        "EA-CAND-BIO-LAYER-0001",
+        "EVA-AE-CAND-BIO-LAYER-0001"
+      ],
+      "rationale": "Blinded studies support transient symptom effects, but incidence and symptom composition vary; no exact whole-BIO-066 severity aggregation or transportable population effect is ready. MIXED remains MIXED."
+    }
+  ],
+  "blockedDecisions": [
+    {
+      "id": "BLK-BIO-RDS-001",
+      "recommendation": "BLOCKED",
+      "recordIds": [
+        "ARCH-BIO-LAYER-0001",
+        "ASTRA-BIO-LAYER-001",
+        "BIO-003",
+        "BIO-006",
+        "RDS-0002",
+        "RDS-0003",
+        "RDS-0004"
+      ],
+      "rationale": "Five BIO-F01 RDS have no exact versioned rule in frozen entity records; BIO-003 is a causal source under heightened D10. Pilot B01 review remains unimplemented. Future architecture/definition governance is needed before a new RDS causal-source claim or constituent/aggregate representation."
+    }
+  ],
+  "nonVotingAcknowledgements": 172,
+  "priorScientificPropositionsReused": 21,
+  "futureMaterializationRecommendations": {
+    "Relationships": 0,
+    "HappeningTypes": 1,
+    "EffectAssertions": 0,
+    "EvidenceAssessments": 0
+  },
+  "newGoverned": 0,
+  "newActive": 0
+}

@@ -1,1 +1,17 @@
-[]
+[
+  {
+    "id": "ARCH-BIO-LAYER-0001",
+    "issue": "BIO-003 and four BIO-F01 derived states lack a versioned exact calculation/aggregation rule in frozen entity records; one RDS is a causal source.",
+    "affectedIds": [
+      "BIO-003",
+      "BIO-006",
+      "RDS-0002",
+      "RDS-0003",
+      "RDS-0004",
+      "REL-BIO-001"
+    ],
+    "resolution": "Future architecture/definition governance; no repair in candidate audit.",
+    "blocksNewCandidateMaterialization": false,
+    "productionChanged": false
+  }
+]
