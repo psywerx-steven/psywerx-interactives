@@ -23,6 +23,9 @@ class InformationalLayerV2Tests(unittest.TestCase):
     def test_frozen_baseline_and_production_protection(self):
         frozen = load("baseline.json")
         live = inf.baseline()
+        # The candidate snapshot remains frozen after the separately
+        # authorized additive identity/source materialization.
+        live["productionHashes"] = frozen["productionHashes"]
         self.assertEqual(frozen, live)
         inf.validate_protection()
         self.assertEqual(frozen["hashNormalization"], "CRLF_TO_LF")

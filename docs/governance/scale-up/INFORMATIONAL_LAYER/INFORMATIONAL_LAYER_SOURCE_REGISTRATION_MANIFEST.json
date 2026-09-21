@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "1.0.0",
+  "decisionId": "GOV-INFORMATIONAL-LAYER-001-2026-09-20",
+  "sourceRole": "IDENTITY_PROVENANCE_ONLY_NOT_EFFECT_EVIDENCE",
+  "registrations": [
+    {
+      "candidateSourceId": "SRC-CAND-INF-LAYER-013",
+      "canonicalSourceId": "SRC-604",
+      "verifiedVia": "https://pubmed.ncbi.nlm.nih.gov/35082145/",
+      "doi": "10.1073/pnas.2100719119",
+      "approvedDependency": "HT-V1-INF-LAYER-001",
+      "accessDepth": "PUBMED_ABSTRACT_AND_INDEXED_RESULT_EXCERPT"
+    },
+    {
+      "candidateSourceId": "SRC-CAND-INF-LAYER-015",
+      "canonicalSourceId": "SRC-605",
+      "verifiedVia": "https://pubmed.ncbi.nlm.nih.gov/30975450/",
+      "doi": "10.1016/j.pec.2019.04.001",
+      "approvedDependency": "HT-V1-INF-LAYER-001",
+      "accessDepth": "ABSTRACT_AND_SEARCH_EXCERPT"
+    }
+  ],
+  "excludedCandidateSourceIds": [
+    "SRC-CAND-INF-LAYER-014"
+  ],
+  "pilotSourceQueuePreserved": 11,
+  "caveats": [
+    "Publication verification does not upgrade source access depth or prove efficacy.",
+    "Studies address different populations and outcomes; neither independently verifies the other study's effect.",
+    "Plans and actual visits must not be conflated; comparative feedback is a bundled operation."
+  ]
+}

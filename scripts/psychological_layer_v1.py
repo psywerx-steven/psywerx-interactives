@@ -98,6 +98,7 @@ def _authorized_addition_only(path, expected_hash):
         return False
     old = json.loads(old_bytes)
     current = read(ROOT / path)
+    informational_materialized = (ROOT / "data/actions-events-v1/INFORMATIONAL_LAYER-materialization-manifest.json").is_file()
     if path == "data/actions-events-v1/catalog.json":
         current["happeningTypes"] = [x for x in current["happeningTypes"] if not x["id"].startswith("HT-V1-PSY-LAYER-")]
         current["effectAssertions"] = [x for x in current["effectAssertions"] if not x["id"].startswith("EA-V1-PSY-LAYER-")]
@@ -106,12 +107,17 @@ def _authorized_addition_only(path, expected_hash):
             x for x in current["authorizations"]
             if x["decisionId"] not in {GOVERNANCE_DECISION, ACTIVATION_DECISION}
         ]
+        if informational_materialized:
+            current["happeningTypes"] = [x for x in current["happeningTypes"] if x["id"] != "HT-V1-INF-LAYER-001"]
+            current["authorizations"] = [x for x in current["authorizations"] if x["decisionId"] != "GOV-INFORMATIONAL-LAYER-001-2026-09-20"]
     elif path.endswith("/relationships.json"):
         current["relationships"] = [x for x in current["relationships"] if not x["id"].startswith("REL-V1-PSY-LAYER-")]
     elif path.endswith("/evidence-assessments.json"):
         current["evidenceAssessments"] = [x for x in current["evidenceAssessments"] if not x["id"].startswith("EVA-V1-PSY-LAYER-")]
     elif path.endswith("/source-register.json"):
         current["sources"] = [x for x in current["sources"] if not (x["id"].startswith("SRC-") and x["id"][4:].isdigit() and 560 <= int(x["id"][4:]) <= 603)]
+        if informational_materialized:
+            current["sources"] = [x for x in current["sources"] if x["id"] not in {"SRC-604", "SRC-605"}]
     elif path.endswith("/relationship-source-findings.json"):
         current["records"] = [x for x in current["records"] if not x["assertionId"].startswith("REL-V1-PSY-LAYER-")]
     return current == old

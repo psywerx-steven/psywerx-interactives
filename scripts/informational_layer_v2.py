@@ -520,7 +520,10 @@ def finalize() -> None:
                    "individualVotes": len(gov["individualScientificDecisions"]),
                    "blockedVotes": len(gov["blockedDecisions"]),
                    "nonVotingAcknowledgementRows": gov["nonVotingRowAcknowledgements"]},
-        "telemetry": telemetry, "hashNormalization": "CRLF_TO_LF", "productionHashes": protection(),
+        # This manifest describes the immutable candidate audit baseline.
+        # Later human-authorized additive materialization is checked below,
+        # without rewriting historical candidate science or baseline hashes.
+        "telemetry": telemetry, "hashNormalization": "CRLF_TO_LF", "productionHashes": frozen["productionHashes"],
         "newGoverned": 0, "newActive": 0, "canonicalSourceRegistrationPerformed": False,
         "governanceHumanAuthorized": False, "productionScienceChanged": False,
         "requiredDataArtifacts": sorted(path.name for path in DATA.glob("*.json") if path.name != "audit-manifest.json"),
@@ -530,7 +533,29 @@ def finalize() -> None:
 
 def validate_protection() -> None:
     expected = read(DATA / "protected-baseline.json")["productionHashes"]
-    assert protection() == expected, "Pre-existing production scientific data changed"
+    actual = protection()
+    additive = {
+        "data/relationship-intervention-v1/source-register.json": ("sources", {"SRC-604", "SRC-605"}),
+        "data/actions-events-v1/catalog.json": ("happeningTypes", {"HT-V1-INF-LAYER-001"}),
+    }
+    for path, digest in expected.items():
+        if actual[path] == digest:
+            continue
+        assert path in additive, f"Pre-existing production scientific data changed: {path}"
+        import subprocess
+        old = json.loads(subprocess.check_output(["git", "show", f"{BASE_COMMIT}:{path}"], cwd=ROOT))
+        new = read(ROOT / path)
+        key, identifiers = additive[path]
+        assert {x["id"] for x in new[key]} - {x["id"] for x in old[key]} == identifiers, path
+        assert [x for x in new[key] if x["id"] not in identifiers] == old[key], path
+        for other in old:
+            if other == key:
+                continue
+            if other == "authorizations" and path.endswith("catalog.json"):
+                assert new[other][:-1] == old[other], path
+                assert new[other][-1]["decisionId"] == "GOV-INFORMATIONAL-LAYER-001-2026-09-20", path
+            else:
+                assert new[other] == old[other], path
 
 
 if __name__ == "__main__":

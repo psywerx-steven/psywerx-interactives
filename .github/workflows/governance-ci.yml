@@ -126,6 +126,9 @@ jobs:
       - name: Validate candidate-only Informational Layer V2 audit
         run: python -m unittest discover -s tests -p "test_informational_layer_v2.py"
 
+      - name: Validate exact Informational governance materialization
+        run: python -m unittest discover -s tests -p "test_informational_governance_materialization.py"
+
       - name: Verify deterministic Informational Layer registries
         run: |
           python -c "import sys; sys.path.insert(0, 'scripts'); import informational_layer_v2 as m; m.build_reviews_and_coverage(); m.build_governance(); m.finalize()"
@@ -250,6 +253,9 @@ jobs:
 
       - name: Validate candidate-only Informational Layer V2 audit
         run: python -m unittest discover -s tests -p "test_informational_layer_v2.py"
+
+      - name: Validate exact Informational governance materialization
+        run: python -m unittest discover -s tests -p "test_informational_governance_materialization.py"
 
       - name: Verify deterministic Informational Layer registries
         run: |
