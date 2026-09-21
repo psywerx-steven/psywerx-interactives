@@ -1,0 +1,43 @@
+[
+  {
+    "id": "CUL-088",
+    "familyId": "CUL-F13",
+    "definition": "The magnitude of difference between adjacent generations in shared values, norms, practices, or identity narratives within a specified cultural community.",
+    "derivationType": "DISTANCE",
+    "declaredInputs": [
+      {
+        "entityId": null,
+        "externalParameterType": "GENERATION_A_CULTURAL_PROFILE",
+        "role": "CONSTITUENT_OR_INPUT",
+        "required": true,
+        "unitScaleExpectations": "Aligned with derivation logic",
+        "alignmentRequirements": "Match analytic level, scope, and time window"
+      },
+      {
+        "entityId": null,
+        "externalParameterType": "GENERATION_B_CULTURAL_PROFILE",
+        "role": "CONSTITUENT_OR_INPUT",
+        "required": true,
+        "unitScaleExpectations": "Aligned with derivation logic",
+        "alignmentRequirements": "Match analytic level, scope, and time window"
+      }
+    ],
+    "derivationLogic": "Calculate the distance between adjacent-generation cultural profiles using the declared variables, aggregation, and distance metric.",
+    "units": "MULTIPLE_ALLOWED_SCALES_NO_SELECTED_VERSION",
+    "measurementWindow": "REQUIRED_BUT_NOT_SELECTED",
+    "reference": "ADJACENT_GENERATION_PROFILES_NOT_VERSIONED",
+    "aggregation": "PROFILE_VARIABLES_AND_DISTANCE_METRIC_NOT_SELECTED",
+    "externalInputs": [
+      "GENERATION_A_CULTURAL_PROFILE",
+      "GENERATION_B_CULTURAL_PROFILE"
+    ],
+    "incomingCausalIds": [],
+    "outgoingCausalIds": [
+      "REL-CUL-042"
+    ],
+    "d10Disposition": "HEIGHTENED_BLOCKED_CAUSAL_SOURCE_REVIEW",
+    "doubleCountRisk": "PROFILE_CONSTITUENTS_AND_DISTANCE_MAY_BOTH_ENTER_MODEL",
+    "directEffectTargetAllowed": false,
+    "productionChanged": false
+  }
+]
