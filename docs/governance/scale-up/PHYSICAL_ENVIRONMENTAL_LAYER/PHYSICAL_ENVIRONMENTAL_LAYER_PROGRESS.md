@@ -1,0 +1,19 @@
+# Physical / Environmental Layer progress
+
+**ADVISORY - HUMAN DECISION REQUIRED. New GOVERNED = 0 and ACTIVE = 0.**
+
+| Family | Stage |
+|---|---|
+| ENV-F01 | COMPLETE |
+| ENV-F02 | COMPLETE |
+| ENV-F03 | COMPLETE |
+| ENV-F04 | COMPLETE |
+| ENV-F05 | COMPLETE |
+| ENV-F06 | COMPLETE |
+| ENV-F07 | COMPLETE |
+| ENV-F08 | COMPLETE |
+| ENV-F09 | COMPLETE |
+| ENV-F10 | COMPLETE |
+| ENV-F11 | COMPLETE |
+| ENV-F12 | COMPLETE |
+| ENV-F13 | COMPLETE |

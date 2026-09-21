@@ -1,0 +1,173 @@
+{
+  "schemaVersion": "1.0.0",
+  "programId": "AUD-PHYSICAL-ENVIRONMENTAL-LAYER-AE-V1-20260921-001",
+  "advisory": "ADVISORY - HUMAN DECISION REQUIRED",
+  "originalGovernanceRows": 225,
+  "distinctScientificDecisions": 19,
+  "groupedHumanDecisions": [
+    {
+      "id": "GRP-ENV-001",
+      "recommendation": "APPROVE_RETAIN_V1_INCOMPLETE",
+      "recordIds": [
+        "REL-ENV-002",
+        "REL-ENV-003",
+        "REL-ENV-004",
+        "REL-ENV-005",
+        "REL-ENV-006",
+        "REL-ENV-007",
+        "REL-ENV-008",
+        "REL-ENV-009",
+        "REL-ENV-011",
+        "REL-ENV-012",
+        "REL-ENV-013",
+        "REL-ENV-015",
+        "REL-ENV-016",
+        "REL-ENV-018",
+        "REL-ENV-019",
+        "REL-ENV-020",
+        "REL-ENV-021",
+        "REL-ENV-022",
+        "REL-ENV-024",
+        "REL-ENV-026",
+        "REL-ENV-028",
+        "REL-ENV-030",
+        "REL-ENV-032",
+        "REL-ENV-033",
+        "REL-ENV-034",
+        "REL-ENV-036",
+        "REL-ENV-037",
+        "REL-ENV-038",
+        "REL-ENV-043"
+      ],
+      "rationale": "Twenty-nine bounded physical mechanisms may remain unchanged with V1-incomplete dose, timing or evidence metadata."
+    },
+    {
+      "id": "GRP-ENV-002",
+      "recommendation": "KEEP_RESEARCH_NEEDED",
+      "recordIds": [
+        "REL-ENV-010",
+        "REL-ENV-017",
+        "REL-ENV-025",
+        "REL-ENV-027",
+        "REL-ENV-029",
+        "REL-ENV-031",
+        "REL-ENV-042",
+        "REL-INS-056"
+      ],
+      "rationale": "Eight existing propositions lack exact exposure, mechanism or endpoint identification."
+    },
+    {
+      "id": "GRP-ENV-003",
+      "recommendation": "ACCEPT_CATEGORY_ERROR_REJECTIONS",
+      "recordIds": [
+        "HYP-ENV-LAYER-001",
+        "HYP-ENV-LAYER-004",
+        "HYP-ENV-LAYER-005",
+        "HYP-ENV-LAYER-010",
+        "HYP-ENV-LAYER-011",
+        "HYP-ENV-LAYER-012",
+        "HYP-ENV-LAYER-013"
+      ],
+      "rationale": "Physical condition is not perceived state, behavior, use, capacity or Institutional condition."
+    },
+    {
+      "id": "GRP-ENV-004",
+      "recommendation": "KEEP_RESEARCH_NEEDED",
+      "recordIds": [
+        "HYP-ENV-LAYER-002",
+        "HYP-ENV-LAYER-003"
+      ],
+      "rationale": "Two broad package claims terminated at cheap triage."
+    }
+  ],
+  "individualScientificDecisions": [
+    {
+      "id": "DEC-ENV-RETYPE-01",
+      "recommendation": "APPROVE_RETYPE_REVIEW_ONLY",
+      "recordIds": [
+        "REL-ENV-001"
+      ],
+      "rationale": "Destination proximity and travel distance are inverse representations that may be semantic/derivational rather than an independent causal pair."
+    },
+    {
+      "id": "DEC-ENV-RETYPE-02",
+      "recommendation": "APPROVE_RETYPE_REVIEW_ONLY",
+      "recordIds": [
+        "REL-ENV-014"
+      ],
+      "rationale": "Noise intermittency and ambient level are distinct acoustic dimensions; intermittency does not universally cause a higher level under an unspecified aggregation window."
+    },
+    {
+      "id": "DEC-ENV-RETYPE-03",
+      "recommendation": "APPROVE_RETYPE_REVIEW_ONLY",
+      "recordIds": [
+        "REL-ENV-023"
+      ],
+      "rationale": "Green-space availability and accessibility may be nested opportunity dimensions; causal typing needs an explicit access mechanism."
+    },
+    {
+      "id": "DEC-ENV-RETYPE-04",
+      "recommendation": "APPROVE_RETYPE_REVIEW_ONLY",
+      "recordIds": [
+        "REL-ENV-035"
+      ],
+      "rationale": "Point-of-use proximity and physical option availability overlap in the current definitions; causal versus compositional typing needs review."
+    },
+    {
+      "id": "DEC-ENV-NOISE",
+      "recommendation": "KEEP_RESEARCH_NEEDED",
+      "recordIds": [
+        "HYP-ENV-LAYER-006",
+        "HYP-ENV-LAYER-AE-002"
+      ],
+      "rationale": "Task performance and annoyance vary by level, task and source; neither is an exact cognitive-load measure."
+    },
+    {
+      "id": "DEC-ENV-THERMAL-ACOUSTIC",
+      "recommendation": "KEEP_RESEARCH_NEEDED",
+      "recordIds": [
+        "HYP-ENV-LAYER-007",
+        "HYP-ENV-LAYER-AE-003"
+      ],
+      "rationale": "The experiment bundles heat and noise; syntheses show task, dose and adaptation dependence, blocking a broad component effect."
+    },
+    {
+      "id": "DEC-ENV-CO2-VENTILATION",
+      "recommendation": "KEEP_RESEARCH_NEEDED",
+      "recordIds": [
+        "HYP-ENV-LAYER-008",
+        "HYP-ENV-LAYER-AE-004"
+      ],
+      "rationale": "Ventilation, VOCs and CO2 are partly bundled; task productivity is not a broad latent capacity and a controlled child trial reports a next-day cognition null."
+    },
+    {
+      "id": "DEC-ENV-NATURE-IDENTITY",
+      "recommendation": "GOVERN_INACTIVE_IDENTITY",
+      "recordIds": [
+        "HT-CAND-ENV-LAYER-0001"
+      ],
+      "rationale": "The specified low-intensity natural-setting walk is a coherent reusable operation identity; identity implies no mood effect, recommendation, feasibility or activation."
+    },
+    {
+      "id": "DEC-ENV-NATURE-EFFECT",
+      "recommendation": "MODIFY_AND_GOVERN_INACTIVE",
+      "recordIds": [
+        "EA-CAND-ENV-LAYER-0001",
+        "EVA-AE-CAND-ENV-LAYER-0001"
+      ],
+      "rationale": "Approve only the immediate positive mood-valence contrast under matched natural-versus-urban walking semantics; MIXED stays mixed and all broader cognition, stress, clinical, behavior and durability claims are excluded."
+    }
+  ],
+  "blockedDecisions": [],
+  "nonVotingAcknowledgements": 165,
+  "priorScientificPropositionsReused": 6,
+  "futureMaterializationRecommendations": {
+    "Relationships": 0,
+    "HappeningTypes": 1,
+    "EffectAssertions": 1,
+    "EvidenceAssessments": 1
+  },
+  "newGoverned": 0,
+  "newActive": 0,
+  "consequentialHumanStopRequired": true
+}
