@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "1.0.0",
+  "decisionId": "GOV-BIOLOGICAL-LAYER-001-2026-09-21",
+  "sourceRole": "IDENTITY_PROVENANCE_ONLY_NOT_EFFECT_EVIDENCE",
+  "registrations": [
+    {
+      "candidateSourceId": "SRC-CAND-BIO-LAYER-021",
+      "canonicalSourceId": "SRC-606",
+      "verifiedVia": "https://pubmed.ncbi.nlm.nih.gov/1528206/",
+      "doi": "10.1056/nejm199210153271601",
+      "approvedDependency": "HT-V1-BIO-LAYER-001",
+      "accessDepth": "PUBMED_METADATA_AND_INDEXED_ABSTRACT"
+    },
+    {
+      "candidateSourceId": "SRC-CAND-BIO-LAYER-022",
+      "canonicalSourceId": "SRC-607",
+      "verifiedVia": "https://pubmed.ncbi.nlm.nih.gov/10586387/",
+      "doi": "10.1177/00912709922012024",
+      "approvedDependency": "HT-V1-BIO-LAYER-001",
+      "accessDepth": "PUBMED_METADATA_AND_INDEXED_ABSTRACT"
+    },
+    {
+      "candidateSourceId": "SRC-CAND-BIO-LAYER-023",
+      "canonicalSourceId": "SRC-608",
+      "verifiedVia": "https://pubmed.ncbi.nlm.nih.gov/2262896/",
+      "doi": null,
+      "approvedDependency": "HT-V1-BIO-LAYER-001",
+      "accessDepth": "PUBMED_METADATA_AND_INDEXED_ABSTRACT"
+    }
+  ],
+  "excludedCandidateSourceIds": [
+    "SRC-CAND-BIO-LAYER-020"
+  ],
+  "caveats": [
+    "Publication verification does not upgrade access depth or prove efficacy.",
+    "The three sources are not counted as evidence for a governed BIO-066 effect.",
+    "Review/primary-study and symptom-level overlap remain recorded in the candidate package."
+  ]
+}

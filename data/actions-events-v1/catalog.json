@@ -7549,6 +7549,169 @@
       "recordClass": "SCIENTIFIC_RECORD",
       "revision": 1,
       "schemaVersion": "1.0.0"
+    },
+    {
+      "actorOrSourceSystem": "ROLE-CONSENTED-RESEARCH-TASK-OPERATOR",
+      "aliases": [],
+      "componentEnumeration": "NOT_APPLICABLE",
+      "components": [],
+      "controlProfiles": [
+        {
+          "actorId": "ROLE-CONSENTED-RESEARCH-TASK-OPERATOR",
+          "capabilities": [],
+          "conditions": "Identity only; usual caffeine exposure, substitution method, cessation interval, consent, safety and independent clinical or ethical authority must be specified.",
+          "context": "A bounded research operation replacing an adult participant's usual daily caffeine intake with caffeine-free matched intake or placebo.",
+          "extent": "UNKNOWN",
+          "population": "Adults with specified habitual caffeine intake",
+          "provenance": {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "method": "Materialized exact human-approved operation identity",
+            "recordedAt": "2026-09-21T12:00:00Z",
+            "originReferences": [
+              "AUD-BIOLOGICAL-LAYER-AE-V1-20260920-001",
+              "HT-CAND-BIO-LAYER-0001"
+            ],
+            "limitations": [
+              "No withdrawal severity, fatigue, BIO-066 effect, treatment, feasibility, practitioner use or activation inference"
+            ]
+          }
+        }
+      ],
+      "description": "A bounded operation replacing an adult's usual daily caffeine intake with caffeine-free matched intake or placebo substitution over a specified interval.",
+      "domainTags": [
+        "DELIBERATE_INTERVENTION"
+      ],
+      "governance": {
+        "lifecycleStatus": "GOVERNED",
+        "activationStatus": "INACTIVE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "APPROVED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": "docs/governance/scale-up/BIOLOGICAL_LAYER/BIOLOGICAL_LAYER_GOVERNANCE_DECISION_001.md",
+        "authorizedBy": "authorized human governor",
+        "decisionDate": "2026-09-21",
+        "effectiveVersion": "BIOLOGICAL-LAYER-GOVERNANCE-001",
+        "decisionRationale": "Reusable caffeine-cessation operation identity only; no effect or activation authorized.",
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Preserved non-governed candidate workflow",
+            "timestamp": "2026-09-21T12:00:00Z",
+            "objectId": "HT-V1-BIO-LAYER-001",
+            "revision": 1,
+            "provenance": "AUD-BIOLOGICAL-LAYER-AE-V1-20260920-001:2e3c6cf1f2e70ab5570d429d4bf5a259c242b391:HT-CAND-BIO-LAYER-0001:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Preserved non-governed candidate workflow",
+            "timestamp": "2026-09-21T12:00:00Z",
+            "objectId": "HT-V1-BIO-LAYER-001",
+            "revision": 1,
+            "provenance": "AUD-BIOLOGICAL-LAYER-AE-V1-20260920-001:2e3c6cf1f2e70ab5570d429d4bf5a259c242b391:HT-CAND-BIO-LAYER-0001:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Preserved non-governed candidate workflow",
+            "timestamp": "2026-09-21T12:00:00Z",
+            "objectId": "HT-V1-BIO-LAYER-001",
+            "revision": 1,
+            "provenance": "AUD-BIOLOGICAL-LAYER-AE-V1-20260920-001:2e3c6cf1f2e70ab5570d429d4bf5a259c242b391:HT-CAND-BIO-LAYER-0001:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "GOVERNED",
+              "activationStatus": "INACTIVE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Exact human approval materialized; activation withheld",
+            "timestamp": "2026-09-21T12:00:00Z",
+            "objectId": "HT-V1-BIO-LAYER-001",
+            "revision": 1,
+            "provenance": "AUD-BIOLOGICAL-LAYER-AE-V1-20260920-001:2e3c6cf1f2e70ab5570d429d4bf5a259c242b391:HT-CAND-BIO-LAYER-0001:transition-4",
+            "governanceDecisionRecord": "docs/governance/scale-up/BIOLOGICAL_LAYER/BIOLOGICAL_LAYER_GOVERNANCE_DECISION_001.md",
+            "exactDecisionMaterialization": true
+          }
+        ]
+      },
+      "id": "HT-V1-BIO-LAYER-001",
+      "identityDefiningProfile": {
+        "doseIntensity": null,
+        "duration": null,
+        "frequency": null,
+        "reach": null,
+        "timing": null
+      },
+      "identityKey": "abrupt-cessation-of-habitual-caffeine-intake",
+      "identitySourceIds": [
+        "SRC-606",
+        "SRC-607",
+        "SRC-608"
+      ],
+      "intentionality": "DELIBERATE",
+      "interventionSubset": true,
+      "kindTags": [
+        "ACTION"
+      ],
+      "name": "Abrupt cessation of habitual caffeine intake",
+      "originLayers": [
+        "BIO"
+      ],
+      "packageKind": "ATOMIC",
+      "pattern": [
+        "DISCRETE"
+      ],
+      "provenance": {
+        "actorClass": "AUTOMATED_PROCESS_OR_AI",
+        "method": "Exact materialization of human-approved candidate identity",
+        "recordedAt": "2026-09-21T12:00:00Z",
+        "originReferences": [
+          "AUD-BIOLOGICAL-LAYER-AE-V1-20260920-001",
+          "HT-CAND-BIO-LAYER-0001",
+          "2e3c6cf1f2e70ab5570d429d4bf5a259c242b391",
+          "GOV-BIOLOGICAL-LAYER-001-2026-09-21"
+        ],
+        "limitations": [
+          "Operation identity only; no efficacy, effect size, treatment, feasibility, practitioner use or activation claim"
+        ]
+      },
+      "recordClass": "SCIENTIFIC_RECORD",
+      "revision": 1,
+      "schemaVersion": "1.0.0"
     }
   ],
   "occurrences": [],
@@ -13001,6 +13164,20 @@
           "id": "HT-V1-INF-LAYER-001",
           "revision": 1,
           "recordHash": "968c2cdd639d0ef23bcd399b9c46c5c5752ffbb8ef191bb83b5535147516ede7"
+        }
+      ]
+    },
+    {
+      "decisionId": "GOV-BIOLOGICAL-LAYER-001-2026-09-21",
+      "decisionRecord": "docs/governance/scale-up/BIOLOGICAL_LAYER/BIOLOGICAL_LAYER_GOVERNANCE_DECISION_001.md",
+      "actorClass": "AUTHORIZED_HUMAN_GOVERNOR",
+      "effectiveDate": "2026-09-21",
+      "recordClass": "SCIENTIFIC_RECORD",
+      "authorizedObjects": [
+        {
+          "id": "HT-V1-BIO-LAYER-001",
+          "revision": 1,
+          "recordHash": "12774a68d4c713f18ff9e27deb8297c752af2408ab4ae9a319ec83cb7e0be121"
         }
       ]
     }
