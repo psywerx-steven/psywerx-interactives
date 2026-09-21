@@ -10,7 +10,6 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE_COMMIT = "523753f92039d97b058e24ccc2003515636eaff0"
 sys.path.insert(0, str(ROOT / "scripts"))
 
 import next_layer_readiness as readiness
@@ -105,7 +104,7 @@ class LayerScaleUpV2ReadinessTests(unittest.TestCase):
 
     def test_no_scientific_or_candidate_data_changed(self):
         changed = subprocess.check_output([
-            "git", "diff", "--name-only", SOURCE_COMMIT, "--", "data", "schemas",
+            "git", "diff", "--name-only", readiness.SOURCE_COMMIT, "--", "data", "schemas",
         ], cwd=ROOT, text=True).strip()
         self.assertEqual(changed, "")
         candidate_branches = subprocess.check_output([
