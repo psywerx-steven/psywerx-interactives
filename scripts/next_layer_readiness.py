@@ -338,6 +338,13 @@ def render(report: dict) -> str:
 
 
 def main() -> None:
+    # This is a dated planning snapshot. Once the recommended Informational
+    # Layer has been human-governed, regenerating it from the later production
+    # catalog would rewrite historical facts rather than validate the report.
+    if (ROOT / "data/actions-events-v1/INFORMATIONAL_LAYER-materialization-manifest.json").is_file() and REPORT.is_file():
+        frozen = read(REPORT)
+        if frozen.get("sourceCommit") == SOURCE_COMMIT:
+            return
     report = build()
     write_json(REPORT, report)
     write_text(DOC, render(report))
