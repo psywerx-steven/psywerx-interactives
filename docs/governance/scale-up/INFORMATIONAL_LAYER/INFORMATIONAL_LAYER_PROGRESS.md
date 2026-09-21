@@ -2,7 +2,7 @@
 
 **ADVISORY — HUMAN DECISION REQUIRED. Candidate science only; new GOVERNED = 0 and ACTIVE = 0.**
 
-Program: `AUD-INFORMATIONAL-LAYER-AE-V1-20260920-001`  
+Program: `AUD-INFORMATIONAL-LAYER-AE-V1-20260920-001`
 Frozen baseline: `236b9c6bd0642a4704f3a845454846bb13a09def`.
 
 | Family | Stage | Major issue |

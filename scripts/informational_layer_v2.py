@@ -471,7 +471,7 @@ def finalize() -> None:
         "INF-F13": "Guidance components are not plans or actions.",
     }
     lines = ["# Informational Layer progress", "", "**ADVISORY — HUMAN DECISION REQUIRED. Candidate science only; new GOVERNED = 0 and ACTIVE = 0.**", "",
-             f"Program: `{PROGRAM_ID}`  ", f"Frozen baseline: `{BASE_COMMIT}`.", "",
+             f"Program: `{PROGRAM_ID}`", f"Frozen baseline: `{BASE_COMMIT}`.", "",
              "| Family | Stage | Major issue |", "|---|---|---|"]
     for identifier, issue in family_issues.items():
         lines.append(f"| {identifier} | COMPLETE | {issue} |")
