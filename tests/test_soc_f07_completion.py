@@ -79,6 +79,8 @@ class CompletionTests(unittest.TestCase):
         source_store=psychological.strip_materialization('data/relationship-intervention-v1/source-register.json',ae.read(old.SOURCE_PATH))
         if (c.ROOT/'data/actions-events-v1/INFORMATIONAL_LAYER-materialization-manifest.json').is_file():
             source_store['sources']=[r for r in source_store['sources'] if r['id'] not in {'SRC-604','SRC-605'}]
+        if (c.ROOT/'data/actions-events-v1/BIOLOGICAL_LAYER-materialization-manifest.json').is_file():
+            source_store['sources']=[r for r in source_store['sources'] if r['id'] not in {'SRC-606','SRC-607','SRC-608'}]
         current={r['id']:r for r in source_store['sources']}
         self.assertEqual(set(current)-before,{'SRC-559'})
         self.assertEqual(current['SRC-559'],c.source()); self.assertIsNone(current['SRC-559']['pmid'])
