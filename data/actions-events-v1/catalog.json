@@ -7877,6 +7877,171 @@
       "recordClass": "SCIENTIFIC_RECORD",
       "revision": 1,
       "schemaVersion": "1.0.0"
+    },
+    {
+      "actorOrSourceSystem": "ROLE-SYSTEM-OR-PLATFORM-OPERATOR",
+      "aliases": [],
+      "componentEnumeration": "NOT_APPLICABLE",
+      "components": [],
+      "controlProfiles": [
+        {
+          "actorId": "ROLE-SYSTEM-OR-PLATFORM-OPERATOR",
+          "capabilities": [],
+          "extent": "UNKNOWN",
+          "conditions": "Identity only; exact label text, adjacency, visual item, timing, platform/interface, and recipient exposure must be specified.",
+          "context": "A specified synthetic visual media item evaluated with an adjacent AI-generated process label.",
+          "population": "Specified recipients",
+          "provenance": {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "method": "Exact mechanical materialization of a human-authorized candidate; no scientific semantic expansion",
+            "recordedAt": "2026-09-22T18:00:00Z",
+            "originReferences": [
+              "AUD-TECHNOLOGICAL-LAYER-AE-V1-20260921-001",
+              "HT-CAND-TEC-LAYER-0001",
+              "93a98dd8fcb4dc9fa237cbb4ff847fc9bc4c54c5",
+              "1fdc5c01f7be9003c4a17b23ed3be1e4a19c9761",
+              "GOV-TECHNOLOGICAL-LAYER-001-2026-09-22"
+            ],
+            "limitations": [
+              "No falsity, detection, belief, credibility, behavior, efficacy, recommendation, or activation inference"
+            ]
+          }
+        }
+      ],
+      "description": "Display an explicit process label stating that a specified visual media item was AI-generated, adjacent to that item before or during recipient evaluation.",
+      "domainTags": [
+        "DELIBERATE_INTERVENTION"
+      ],
+      "governance": {
+        "lifecycleStatus": "GOVERNED",
+        "activationStatus": "INACTIVE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "APPROVED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": "docs/governance/scale-up/TECHNOLOGICAL_LAYER/TECHNOLOGICAL_LAYER_GOVERNANCE_DECISION_001.md",
+        "authorizedBy": "authorized human governor",
+        "decisionDate": "2026-09-22",
+        "effectiveVersion": "TECHNOLOGICAL-LAYER-GOVERNANCE-001",
+        "decisionRationale": "Approved reusable operation identity only; no effect, truth, detection, behavior, efficacy, recommendation, or activation authorized.",
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Preserved non-governed candidate workflow",
+            "timestamp": "2026-09-22T18:00:00Z",
+            "objectId": "HT-V1-TEC-LAYER-001",
+            "revision": 1,
+            "provenance": "AUD-TECHNOLOGICAL-LAYER-AE-V1-20260921-001:93a98dd8fcb4dc9fa237cbb4ff847fc9bc4c54c5:HT-CAND-TEC-LAYER-0001:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Preserved non-governed candidate workflow",
+            "timestamp": "2026-09-22T18:00:00Z",
+            "objectId": "HT-V1-TEC-LAYER-001",
+            "revision": 1,
+            "provenance": "AUD-TECHNOLOGICAL-LAYER-AE-V1-20260921-001:93a98dd8fcb4dc9fa237cbb4ff847fc9bc4c54c5:HT-CAND-TEC-LAYER-0001:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Preserved non-governed candidate workflow",
+            "timestamp": "2026-09-22T18:00:00Z",
+            "objectId": "HT-V1-TEC-LAYER-001",
+            "revision": 1,
+            "provenance": "AUD-TECHNOLOGICAL-LAYER-AE-V1-20260921-001:93a98dd8fcb4dc9fa237cbb4ff847fc9bc4c54c5:HT-CAND-TEC-LAYER-0001:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "GOVERNED",
+              "activationStatus": "INACTIVE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Exact human approval materialized; activation withheld",
+            "timestamp": "2026-09-22T18:00:00Z",
+            "objectId": "HT-V1-TEC-LAYER-001",
+            "revision": 1,
+            "provenance": "AUD-TECHNOLOGICAL-LAYER-AE-V1-20260921-001:93a98dd8fcb4dc9fa237cbb4ff847fc9bc4c54c5:HT-CAND-TEC-LAYER-0001:transition-4",
+            "governanceDecisionRecord": "docs/governance/scale-up/TECHNOLOGICAL_LAYER/TECHNOLOGICAL_LAYER_GOVERNANCE_DECISION_001.md",
+            "exactDecisionMaterialization": true
+          }
+        ]
+      },
+      "id": "HT-V1-TEC-LAYER-001",
+      "identityDefiningProfile": {
+        "doseIntensity": null,
+        "duration": null,
+        "frequency": null,
+        "reach": null,
+        "timing": null
+      },
+      "identityKey": "display-ai-generated-process-label-on-specified-synthetic-visual-media",
+      "identitySourceIds": [
+        "SRC-613"
+      ],
+      "intentionality": "DELIBERATE",
+      "interventionSubset": true,
+      "kindTags": [
+        "ACTION"
+      ],
+      "name": "Display an explicit AI-generated process label adjacent to specified synthetic visual media",
+      "originLayers": [
+        "TEC"
+      ],
+      "packageKind": "ATOMIC",
+      "pattern": [
+        "DISCRETE"
+      ],
+      "provenance": {
+        "actorClass": "AUTOMATED_PROCESS_OR_AI",
+        "method": "Exact mechanical materialization of a human-authorized candidate; no scientific semantic expansion",
+        "recordedAt": "2026-09-22T18:00:00Z",
+        "originReferences": [
+          "AUD-TECHNOLOGICAL-LAYER-AE-V1-20260921-001",
+          "HT-CAND-TEC-LAYER-0001",
+          "93a98dd8fcb4dc9fa237cbb4ff847fc9bc4c54c5",
+          "1fdc5c01f7be9003c4a17b23ed3be1e4a19c9761",
+          "GOV-TECHNOLOGICAL-LAYER-001-2026-09-22"
+        ],
+        "limitations": [
+          "Operation identity only; synthetic origin is distinct from falsity, belief, credibility, behavior, and efficacy"
+        ]
+      },
+      "recordClass": "SCIENTIFIC_RECORD",
+      "revision": 1,
+      "schemaVersion": "1.0.0"
     }
   ],
   "occurrences": [],
@@ -9893,6 +10058,205 @@
         "Young-adult/student sampling",
         "Exercise contribution",
         "Review/primary-study overlap"
+      ]
+    },
+    {
+      "change": "DECREASE",
+      "claimSemantics": "CAUSAL",
+      "contribution": {
+        "groupId": "CONTRIB-TEC-LAYER-AI-LABEL-001",
+        "role": "PRIMARY",
+        "relatedAssertionIds": [],
+        "reconciliation": "One bounded label-to-belief contribution; no credibility, truth-detection, sharing, or downstream propagation may be added."
+      },
+      "evidenceAssessmentIds": [
+        "EVA-AE-V1-TEC-LAYER-001"
+      ],
+      "exposureProfile": {
+        "doseIntensity": null,
+        "duration": null,
+        "frequency": null,
+        "reach": null,
+        "timing": null
+      },
+      "governance": {
+        "lifecycleStatus": "GOVERNED",
+        "activationStatus": "INACTIVE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "APPROVED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": "docs/governance/scale-up/TECHNOLOGICAL_LAYER/TECHNOLOGICAL_LAYER_GOVERNANCE_DECISION_001.md",
+        "authorizedBy": "authorized human governor",
+        "decisionDate": "2026-09-22",
+        "effectiveVersion": "TECHNOLOGICAL-LAYER-GOVERNANCE-001",
+        "decisionRationale": "Approved exact bounded immediate visual-post belief contrast; MIXED evidence, null boundary, qualifiers and exclusions preserved; activation withheld.",
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Preserved non-governed candidate workflow",
+            "timestamp": "2026-09-22T18:00:00Z",
+            "objectId": "EA-V1-TEC-LAYER-001",
+            "revision": 1,
+            "provenance": "AUD-TECHNOLOGICAL-LAYER-AE-V1-20260921-001:93a98dd8fcb4dc9fa237cbb4ff847fc9bc4c54c5:EA-CAND-TEC-LAYER-0001:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Preserved non-governed candidate workflow",
+            "timestamp": "2026-09-22T18:00:00Z",
+            "objectId": "EA-V1-TEC-LAYER-001",
+            "revision": 1,
+            "provenance": "AUD-TECHNOLOGICAL-LAYER-AE-V1-20260921-001:93a98dd8fcb4dc9fa237cbb4ff847fc9bc4c54c5:EA-CAND-TEC-LAYER-0001:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Preserved non-governed candidate workflow",
+            "timestamp": "2026-09-22T18:00:00Z",
+            "objectId": "EA-V1-TEC-LAYER-001",
+            "revision": 1,
+            "provenance": "AUD-TECHNOLOGICAL-LAYER-AE-V1-20260921-001:93a98dd8fcb4dc9fa237cbb4ff847fc9bc4c54c5:EA-CAND-TEC-LAYER-0001:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "GOVERNED",
+              "activationStatus": "INACTIVE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Exact human approval materialized; activation withheld",
+            "timestamp": "2026-09-22T18:00:00Z",
+            "objectId": "EA-V1-TEC-LAYER-001",
+            "revision": 1,
+            "provenance": "AUD-TECHNOLOGICAL-LAYER-AE-V1-20260921-001:93a98dd8fcb4dc9fa237cbb4ff847fc9bc4c54c5:EA-CAND-TEC-LAYER-0001:transition-4",
+            "governanceDecisionRecord": "docs/governance/scale-up/TECHNOLOGICAL_LAYER/TECHNOLOGICAL_LAYER_GOVERNANCE_DECISION_001.md",
+            "exactDecisionMaterialization": true
+          }
+        ]
+      },
+      "grounding": {
+        "causalIdentificationRationale": "Randomized label contrasts support only the bounded immediate visual-post belief rating; text-policy null and medium/task variation remain explicit.",
+        "derivationEntailed": "NO",
+        "duplicatePropagationControl": null,
+        "representedDriverId": null
+      },
+      "id": "EA-V1-TEC-LAYER-001",
+      "inferenceProvenance": null,
+      "intendedChange": null,
+      "interaction": {
+        "mode": "NONE",
+        "otherEffectIds": [],
+        "evidenceAssessmentIds": []
+      },
+      "knowledgeStatus": "SUPPORTED_EFFECT",
+      "mechanism": "No recipient-level mechanism is identified; the operation supplies an explicit production-origin cue adjacent to the evaluated visual item.",
+      "mechanismStatus": "UNKNOWN",
+      "mechanisticDriverIds": [],
+      "moderatorLinks": [],
+      "observedChange": "DECREASE",
+      "occurrenceId": null,
+      "otherSpecified": null,
+      "outcomes": [],
+      "productionMethod": "SYNTHESIS",
+      "property": "LEVEL",
+      "provenance": {
+        "actorClass": "AUTOMATED_PROCESS_OR_AI",
+        "method": "Exact mechanical materialization of a human-authorized candidate; no scientific semantic expansion",
+        "recordedAt": "2026-09-22T18:00:00Z",
+        "originReferences": [
+          "AUD-TECHNOLOGICAL-LAYER-AE-V1-20260921-001",
+          "EA-CAND-TEC-LAYER-0001",
+          "93a98dd8fcb4dc9fa237cbb4ff847fc9bc4c54c5",
+          "1fdc5c01f7be9003c4a17b23ed3be1e4a19c9761",
+          "GOV-TECHNOLOGICAL-LAYER-001-2026-09-22"
+        ],
+        "limitations": [
+          "Displaying an explicit AI-generated process label adjacent to a specified synthetic visual social-media post may reduce immediate self-reported belief in that post's specified core claim relative to the same unlabeled post.",
+          "No truth, detection accuracy, generic correction, text-message, behavior, sharing, durable belief, universal platform, universal AI-label, all-media, or current/future model-version claim.",
+          "PLATFORM_SPECIFIC",
+          "INTERFACE_SPECIFIC",
+          "TASK_SPECIFIC",
+          "TIME_SENSITIVE_TECHNOLOGY",
+          "GENERALIZATION_UNCERTAIN",
+          "No numerical magnitude or practitioner eligibility"
+        ]
+      },
+      "qualifiers": {
+        "distribution": null,
+        "evaluation": {
+          "criterion": null,
+          "stakeholder": null,
+          "valence": "NOT_EVALUATED"
+        },
+        "prerequisites": [
+          "Exact label, visual item, platform/interface, task, recipient exposure, consent, legality and ethics must be independently specified"
+        ],
+        "reach": null,
+        "risks": [
+          "Do not infer falsity, detection accuracy, practitioner actionability, or platform-wide efficacy"
+        ],
+        "subgroups": [],
+        "unintendedConsequences": [
+          "Label effects may vary by medium, label, task, platform, population and technology version"
+        ]
+      },
+      "recordClass": "SCIENTIFIC_RECORD",
+      "revision": 1,
+      "schemaVersion": "1.0.0",
+      "scope": {
+        "population": "adult online survey samples",
+        "context": "specified synthetic visual social-media posts with an adjacent process label",
+        "timing": "immediate post-exposure rating",
+        "measurement": "Immediate self-reported belief in the specified displayed core claim",
+        "boundaryConditions": "No truth, detection accuracy, text-message, behavior, universal platform, label-accuracy, current-system-version or durable belief claim. No truth, detection accuracy, generic correction, text-message, behavior, sharing, durable belief, universal platform, universal AI-label, all-media, or current/future model-version claim."
+      },
+      "targetId": "PSY-003",
+      "targetKind": "DRIVER",
+      "targetLayers": [
+        "PSY"
+      ],
+      "typeId": "HT-V1-TEC-LAYER-001",
+      "uncertainty": [
+        "MIXED evidence",
+        "PLATFORM_SPECIFIC",
+        "INTERFACE_SPECIFIC",
+        "TASK_SPECIFIC",
+        "TIME_SENSITIVE_TECHNOLOGY",
+        "GENERALIZATION_UNCERTAIN",
+        "Policy-text null",
+        "Medium and label variation"
       ]
     }
   ],
@@ -13386,6 +13750,383 @@
         "measurement": "SPECIFIED",
         "boundaries": "SPECIFIED"
       }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "EVA-AE-V1-TEC-LAYER-001",
+      "revision": 1,
+      "recordClass": "SCIENTIFIC_RECORD",
+      "provenance": {
+        "actorClass": "AUTOMATED_PROCESS_OR_AI",
+        "method": "Exact mechanical materialization of a human-authorized candidate; no scientific semantic expansion",
+        "recordedAt": "2026-09-22T18:00:00Z",
+        "originReferences": [
+          "AUD-TECHNOLOGICAL-LAYER-AE-V1-20260921-001",
+          "EVA-AE-CAND-TEC-LAYER-0001",
+          "93a98dd8fcb4dc9fa237cbb4ff847fc9bc4c54c5",
+          "1fdc5c01f7be9003c4a17b23ed3be1e4a19c9761",
+          "GOV-TECHNOLOGICAL-LAYER-001-2026-09-22"
+        ],
+        "limitations": [
+          "MIXED_SUPPORTS_BOUNDED is preserved; governance does not upgrade certainty",
+          "PLATFORM_SPECIFIC",
+          "INTERFACE_SPECIFIC",
+          "TASK_SPECIFIC",
+          "TIME_SENSITIVE_TECHNOLOGY",
+          "GENERALIZATION_UNCERTAIN"
+        ]
+      },
+      "governance": {
+        "lifecycleStatus": "GOVERNED",
+        "activationStatus": "INACTIVE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "APPROVED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": "docs/governance/scale-up/TECHNOLOGICAL_LAYER/TECHNOLOGICAL_LAYER_GOVERNANCE_DECISION_001.md",
+        "authorizedBy": "authorized human governor",
+        "decisionDate": "2026-09-22",
+        "effectiveVersion": "TECHNOLOGICAL-LAYER-GOVERNANCE-001",
+        "decisionRationale": "Approved MIXED/MODERATE bounded synthesis; policy-text null, medium/task variation and technology sensitivity preserved; activation withheld.",
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Preserved non-governed candidate workflow",
+            "timestamp": "2026-09-22T18:00:00Z",
+            "objectId": "EVA-AE-V1-TEC-LAYER-001",
+            "revision": 1,
+            "provenance": "AUD-TECHNOLOGICAL-LAYER-AE-V1-20260921-001:93a98dd8fcb4dc9fa237cbb4ff847fc9bc4c54c5:EVA-AE-CAND-TEC-LAYER-0001:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Preserved non-governed candidate workflow",
+            "timestamp": "2026-09-22T18:00:00Z",
+            "objectId": "EVA-AE-V1-TEC-LAYER-001",
+            "revision": 1,
+            "provenance": "AUD-TECHNOLOGICAL-LAYER-AE-V1-20260921-001:93a98dd8fcb4dc9fa237cbb4ff847fc9bc4c54c5:EVA-AE-CAND-TEC-LAYER-0001:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Preserved non-governed candidate workflow",
+            "timestamp": "2026-09-22T18:00:00Z",
+            "objectId": "EVA-AE-V1-TEC-LAYER-001",
+            "revision": 1,
+            "provenance": "AUD-TECHNOLOGICAL-LAYER-AE-V1-20260921-001:93a98dd8fcb4dc9fa237cbb4ff847fc9bc4c54c5:EVA-AE-CAND-TEC-LAYER-0001:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "GOVERNED",
+              "activationStatus": "INACTIVE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Exact human approval materialized; activation withheld",
+            "timestamp": "2026-09-22T18:00:00Z",
+            "objectId": "EVA-AE-V1-TEC-LAYER-001",
+            "revision": 1,
+            "provenance": "AUD-TECHNOLOGICAL-LAYER-AE-V1-20260921-001:93a98dd8fcb4dc9fa237cbb4ff847fc9bc4c54c5:EVA-AE-CAND-TEC-LAYER-0001:transition-4",
+            "governanceDecisionRecord": "docs/governance/scale-up/TECHNOLOGICAL_LAYER/TECHNOLOGICAL_LAYER_GOVERNANCE_DECISION_001.md",
+            "exactDecisionMaterialization": true
+          }
+        ]
+      },
+      "assertion": {
+        "objectType": "EFFECT_ASSERTION",
+        "objectId": "EA-V1-TEC-LAYER-001"
+      },
+      "sourceFindings": [
+        {
+          "id": "FND-EA-V1-TEC-LAYER-001-001",
+          "sourceId": "SRC-613",
+          "locator": "Governed candidate sourceFinding; canonical identity independently verified",
+          "accessDepth": "ABSTRACT",
+          "population": "adult online samples",
+          "context": "Specified AI-generated disclosure or authorship-label evaluation",
+          "basis": [
+            "EXPERIMENTAL"
+          ],
+          "supportedSemantics": [
+            "CAUSAL"
+          ],
+          "inputRole": "DIRECT_FINDING",
+          "design": "preregistered randomized survey experiments",
+          "exposure": "AI-generated process label versus no label on specified visual posts",
+          "comparator": "Specified unlabeled or alternate-label condition",
+          "measurement": "belief in the displayed core claim",
+          "timing": "immediate",
+          "result": "Labels reduced stated belief and image credibility across the tested visual-post experiments.",
+          "disposition": "SUPPORTS",
+          "quantitativeEstimate": null,
+          "uncertainty": [
+            "No portable numerical effect magnitude extracted"
+          ],
+          "limitations": [
+            "process label does not establish falsity",
+            "visual posts",
+            "immediate ratings",
+            "TIME_SENSITIVE_TECHNOLOGY",
+            "GENERALIZATION_UNCERTAIN"
+          ],
+          "datasetIds": [
+            "SRC-CAND-TEC-LAYER-004"
+          ],
+          "overlapNotes": "Distinct source identity; medium, label, task, endpoint, and technology-version differences prevent treating findings as interchangeable replication.",
+          "nullInterpretation": null,
+          "provenance": {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "method": "Exact mechanical materialization of a human-authorized candidate; no scientific semantic expansion",
+            "recordedAt": "2026-09-22T18:00:00Z",
+            "originReferences": [
+              "AUD-TECHNOLOGICAL-LAYER-AE-V1-20260921-001",
+              "SF-TEC-LAYER-001",
+              "93a98dd8fcb4dc9fa237cbb4ff847fc9bc4c54c5",
+              "1fdc5c01f7be9003c4a17b23ed3be1e4a19c9761",
+              "GOV-TECHNOLOGICAL-LAYER-001-2026-09-22"
+            ],
+            "limitations": [
+              "Candidate extraction preserved; canonical registration does not add evidence or broaden the claim"
+            ]
+          }
+        },
+        {
+          "id": "FND-EA-V1-TEC-LAYER-001-002",
+          "sourceId": "SRC-614",
+          "locator": "Governed candidate sourceFinding; canonical identity independently verified",
+          "accessDepth": "ABSTRACT",
+          "population": "diverse US adult sample",
+          "context": "Specified AI-generated disclosure or authorship-label evaluation",
+          "basis": [
+            "EXPERIMENTAL"
+          ],
+          "supportedSemantics": [
+            "CAUSAL"
+          ],
+          "inputRole": "DIRECT_FINDING",
+          "design": "randomized survey experiment",
+          "exposure": "AI-model, human-expert or no authorship label on AI-generated policy text",
+          "comparator": "Specified unlabeled or alternate-label condition",
+          "measurement": "attitude change and accuracy judgment",
+          "timing": "immediate",
+          "result": "Authorship labels did not significantly affect attitude change, accuracy judgments or sharing intentions.",
+          "disposition": "NULL_FINDING",
+          "quantitativeEstimate": null,
+          "uncertainty": [
+            "No portable numerical effect magnitude extracted"
+          ],
+          "limitations": [
+            "text policy messages differ from synthetic visual posts",
+            "nonsignificance not evidence of universal zero",
+            "TIME_SENSITIVE_TECHNOLOGY",
+            "GENERALIZATION_UNCERTAIN"
+          ],
+          "datasetIds": [
+            "SRC-CAND-TEC-LAYER-005"
+          ],
+          "overlapNotes": "Distinct source identity; medium, label, task, endpoint, and technology-version differences prevent treating findings as interchangeable replication.",
+          "nullInterpretation": {
+            "contrast": "AI-model, human-expert, or no authorship label on AI-generated policy text",
+            "interpretation": "NO_DETECTED_DIFFERENCE",
+            "precisionAssessment": "No equivalence margin or universal-zero precision claim extracted",
+            "rationale": "Nonsignificance is retained as a bounded null, not a universal zero."
+          },
+          "provenance": {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "method": "Exact mechanical materialization of a human-authorized candidate; no scientific semantic expansion",
+            "recordedAt": "2026-09-22T18:00:00Z",
+            "originReferences": [
+              "AUD-TECHNOLOGICAL-LAYER-AE-V1-20260921-001",
+              "SF-TEC-LAYER-002",
+              "93a98dd8fcb4dc9fa237cbb4ff847fc9bc4c54c5",
+              "1fdc5c01f7be9003c4a17b23ed3be1e4a19c9761",
+              "GOV-TECHNOLOGICAL-LAYER-001-2026-09-22"
+            ],
+            "limitations": [
+              "Candidate extraction preserved; canonical registration does not add evidence or broaden the claim"
+            ]
+          }
+        },
+        {
+          "id": "FND-EA-V1-TEC-LAYER-001-003",
+          "sourceId": "SRC-615",
+          "locator": "Governed candidate sourceFinding; canonical identity independently verified",
+          "accessDepth": "METADATA",
+          "population": "US adults",
+          "context": "Specified AI-generated disclosure or authorship-label evaluation",
+          "basis": [
+            "EXPERIMENTAL"
+          ],
+          "supportedSemantics": [
+            "CAUSAL"
+          ],
+          "inputRole": "DIRECT_FINDING",
+          "design": "online experiment",
+          "exposure": "AI disclosure on a specified prosocial advertisement",
+          "comparator": "Specified unlabeled or alternate-label condition",
+          "measurement": "perceived advertisement credibility",
+          "timing": "immediate",
+          "result": "AI disclosure reduced perceived advertisement credibility.",
+          "disposition": "SUPPORTS",
+          "quantitativeEstimate": null,
+          "uncertainty": [
+            "No portable numerical effect magnitude extracted"
+          ],
+          "limitations": [
+            "advertisement evaluation is not identical to proposition belief",
+            "TIME_SENSITIVE_TECHNOLOGY",
+            "GENERALIZATION_UNCERTAIN"
+          ],
+          "datasetIds": [
+            "SRC-CAND-TEC-LAYER-013"
+          ],
+          "overlapNotes": "Distinct source identity; medium, label, task, endpoint, and technology-version differences prevent treating findings as interchangeable replication.",
+          "nullInterpretation": null,
+          "provenance": {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "method": "Exact mechanical materialization of a human-authorized candidate; no scientific semantic expansion",
+            "recordedAt": "2026-09-22T18:00:00Z",
+            "originReferences": [
+              "AUD-TECHNOLOGICAL-LAYER-AE-V1-20260921-001",
+              "SF-TEC-LAYER-003",
+              "93a98dd8fcb4dc9fa237cbb4ff847fc9bc4c54c5",
+              "1fdc5c01f7be9003c4a17b23ed3be1e4a19c9761",
+              "GOV-TECHNOLOGICAL-LAYER-001-2026-09-22"
+            ],
+            "limitations": [
+              "Candidate extraction preserved; canonical registration does not add evidence or broaden the claim"
+            ]
+          }
+        },
+        {
+          "id": "FND-EA-V1-TEC-LAYER-001-004",
+          "sourceId": "SRC-616",
+          "locator": "Governed candidate sourceFinding; canonical identity independently verified",
+          "accessDepth": "METADATA",
+          "population": "young adults",
+          "context": "Specified AI-generated disclosure or authorship-label evaluation",
+          "basis": [
+            "EXPERIMENTAL"
+          ],
+          "supportedSemantics": [
+            "CAUSAL"
+          ],
+          "inputRole": "DIRECT_FINDING",
+          "design": "preregistered experiment and follow-up",
+          "exposure": "source disclosure for AI-generated vaping-prevention messages",
+          "comparator": "Specified unlabeled or alternate-label condition",
+          "measurement": "message evaluation",
+          "timing": "immediate",
+          "result": "Disclosure effects varied across message evaluations and study conditions.",
+          "disposition": "MIXED",
+          "quantitativeEstimate": null,
+          "uncertainty": [
+            "No portable numerical effect magnitude extracted"
+          ],
+          "limitations": [
+            "health-prevention text",
+            "source disclosure packages authorship expectations",
+            "TIME_SENSITIVE_TECHNOLOGY",
+            "GENERALIZATION_UNCERTAIN"
+          ],
+          "datasetIds": [
+            "SRC-CAND-TEC-LAYER-014"
+          ],
+          "overlapNotes": "Distinct source identity; medium, label, task, endpoint, and technology-version differences prevent treating findings as interchangeable replication.",
+          "nullInterpretation": null,
+          "provenance": {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "method": "Exact mechanical materialization of a human-authorized candidate; no scientific semantic expansion",
+            "recordedAt": "2026-09-22T18:00:00Z",
+            "originReferences": [
+              "AUD-TECHNOLOGICAL-LAYER-AE-V1-20260921-001",
+              "SF-TEC-LAYER-004",
+              "93a98dd8fcb4dc9fa237cbb4ff847fc9bc4c54c5",
+              "1fdc5c01f7be9003c4a17b23ed3be1e4a19c9761",
+              "GOV-TECHNOLOGICAL-LAYER-001-2026-09-22"
+            ],
+            "limitations": [
+              "Candidate extraction preserved; canonical registration does not add evidence or broaden the claim"
+            ]
+          }
+        }
+      ],
+      "synthesis": {
+        "sourceFindingIds": [
+          "FND-EA-V1-TEC-LAYER-001-001",
+          "FND-EA-V1-TEC-LAYER-001-002",
+          "FND-EA-V1-TEC-LAYER-001-003",
+          "FND-EA-V1-TEC-LAYER-001-004"
+        ],
+        "disposition": "MIXED",
+        "evidenceStrength": "MODERATE",
+        "confidence": "MODERATE",
+        "rationale": "MIXED_SUPPORTS_BOUNDED: moderate support for an immediate reduction in self-reported belief for specified labeled synthetic visual posts, with no transfer to truth, detection, text messages, behavior, durability, platforms or model versions.",
+        "confidenceRationale": "Randomized visual-label findings support the bounded contrast; a policy-text null plus medium, label, task, population, interface and technology-version differences limit confidence.",
+        "conflicts": [
+          {
+            "findingId": "FND-EA-V1-TEC-LAYER-001-002",
+            "dispositionRationale": "The 2026 policy-text experiment found no significant label effect on attitude change or accuracy judgments; this remains a medium/task boundary."
+          },
+          {
+            "findingId": "FND-EA-V1-TEC-LAYER-001-004",
+            "dispositionRationale": "Source-disclosure effects varied across message evaluations and conditions."
+          }
+        ],
+        "contraryEvidenceSearch": "ASSESSED",
+        "generalizationLimits": [
+          "Adult online survey samples",
+          "Immediate self-report",
+          "PLATFORM_SPECIFIC",
+          "INTERFACE_SPECIFIC",
+          "TASK_SPECIFIC",
+          "TIME_SENSITIVE_TECHNOLOGY",
+          "GENERALIZATION_UNCERTAIN",
+          "No truth, detection accuracy, generic correction, text-message, behavior, sharing, durable belief, universal platform, universal AI-label, all-media, or current/future model-version claim."
+        ],
+        "datasetOverlap": "Distinct studies; media and task differences are not treated as independent same-claim replication."
+      },
+      "completeness": {
+        "target": "SPECIFIED",
+        "direction": "SPECIFIED",
+        "mechanism": "SPECIFIED",
+        "population": "SPECIFIED",
+        "context": "SPECIFIED",
+        "timing": "SPECIFIED",
+        "measurement": "SPECIFIED",
+        "boundaries": "SPECIFIED"
+      }
     }
   ],
   "authorizations": [
@@ -13902,6 +14643,30 @@
           "id": "EVA-AE-V1-ENV-LAYER-001",
           "revision": 1,
           "recordHash": "4bd457d606e3da4d2f948010140aede3307b009750cb7768fae1e29dcedf1cbf"
+        }
+      ]
+    },
+    {
+      "decisionId": "GOV-TECHNOLOGICAL-LAYER-001-2026-09-22",
+      "decisionRecord": "docs/governance/scale-up/TECHNOLOGICAL_LAYER/TECHNOLOGICAL_LAYER_GOVERNANCE_DECISION_001.md",
+      "actorClass": "AUTHORIZED_HUMAN_GOVERNOR",
+      "effectiveDate": "2026-09-22",
+      "recordClass": "SCIENTIFIC_RECORD",
+      "authorizedObjects": [
+        {
+          "id": "HT-V1-TEC-LAYER-001",
+          "revision": 1,
+          "recordHash": "95e6c3ed9cb07a677fb27aabb0cf1a6d81aab30729c13e5971a8f64e2b5814fd"
+        },
+        {
+          "id": "EA-V1-TEC-LAYER-001",
+          "revision": 1,
+          "recordHash": "6286c9bcc0cffda6b0f8808e6a8265a2d9f396235cc443ffd9f38b951a820008"
+        },
+        {
+          "id": "EVA-AE-V1-TEC-LAYER-001",
+          "revision": 1,
+          "recordHash": "70f3cdb6b3f6c199d99917908a3e86bfdcaf7ba3c4484aff24494cf5848e57e4"
         }
       ]
     }

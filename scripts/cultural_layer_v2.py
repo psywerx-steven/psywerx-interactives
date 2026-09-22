@@ -99,10 +99,10 @@ def validate_protection() -> None:
         assert path in {"data/relationship-intervention-v1/source-register.json", "data/actions-events-v1/catalog.json"}, f"Production science changed after Cultural baseline: {path}"
         old = json.loads(subprocess.check_output(["git", "show", f"{BASE_COMMIT}:{path}"], cwd=ROOT))
         new = read(ROOT / path)
-        additions = ({"sources": {"SRC-609", "SRC-610", "SRC-611", "SRC-612"}} if path.endswith("source-register.json") else {
-            "happeningTypes": {"HT-V1-ENV-LAYER-001"},
-            "effectAssertions": {"EA-V1-ENV-LAYER-001"},
-            "evidenceAssessments": {"EVA-AE-V1-ENV-LAYER-001"},
+        additions = ({"sources": {f"SRC-{n}" for n in range(609, 617)}} if path.endswith("source-register.json") else {
+            "happeningTypes": {"HT-V1-ENV-LAYER-001", "HT-V1-TEC-LAYER-001"},
+            "effectAssertions": {"EA-V1-ENV-LAYER-001", "EA-V1-TEC-LAYER-001"},
+            "evidenceAssessments": {"EVA-AE-V1-ENV-LAYER-001", "EVA-AE-V1-TEC-LAYER-001"},
         })
         for key, identifiers in additions.items():
             assert {x["id"] for x in new[key]} - {x["id"] for x in old[key]} == identifiers, (path, key)
@@ -111,8 +111,11 @@ def validate_protection() -> None:
             if key in additions:
                 continue
             if key == "authorizations" and path.endswith("catalog.json"):
-                assert new[key][:-1] == old[key]
-                assert new[key][-1]["decisionId"] == "GOV-PHYSICAL-ENVIRONMENTAL-LAYER-001-2026-09-21"
+                assert new[key][:-2] == old[key]
+                assert [row["decisionId"] for row in new[key][-2:]] == [
+                    "GOV-PHYSICAL-ENVIRONMENTAL-LAYER-001-2026-09-21",
+                    "GOV-TECHNOLOGICAL-LAYER-001-2026-09-22",
+                ]
             else:
                 assert new[key] == old[key], (path, key)
 

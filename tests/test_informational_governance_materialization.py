@@ -24,12 +24,14 @@ class InformationalMaterializationTests(unittest.TestCase):
         self.assertEqual(before["occurrences"], after["occurrences"])
         biological = (ROOT / "data/actions-events-v1/BIOLOGICAL_LAYER-materialization-manifest.json").is_file()
         environmental = (ROOT / "data/actions-events-v1/PHYSICAL_ENVIRONMENTAL_LAYER-materialization-manifest.json").is_file()
-        added = 3 if environmental else 2 if biological else 1
+        technological = (ROOT / "data/actions-events-v1/TECHNOLOGICAL_LAYER-materialization-manifest.json").is_file()
+        added = 4 if technological else 3 if environmental else 2 if biological else 1
         self.assertEqual(before["happeningTypes"], after["happeningTypes"][:-added])
         self.assertEqual(before["authorizations"], after["authorizations"][:-added])
         if environmental:
-            self.assertEqual(before["effectAssertions"], after["effectAssertions"][:-1])
-            self.assertEqual(before["evidenceAssessments"], after["evidenceAssessments"][:-1])
+            effect_added = 2 if technological else 1
+            self.assertEqual(before["effectAssertions"], after["effectAssertions"][:-effect_added])
+            self.assertEqual(before["evidenceAssessments"], after["evidenceAssessments"][:-effect_added])
         else:
             self.assertEqual(before["effectAssertions"], after["effectAssertions"])
             self.assertEqual(before["evidenceAssessments"], after["evidenceAssessments"])
@@ -43,7 +45,7 @@ class InformationalMaterializationTests(unittest.TestCase):
         self.assertEqual([x["id"] for x in authorization["authorizedObjects"]], [identity["id"]])
         path = "data/relationship-intervention-v1/source-register.json"
         before, after = baseline(path), current(path)
-        source_added = 9 if environmental else 5 if biological else 2
+        source_added = 13 if technological else 9 if environmental else 5 if biological else 2
         self.assertEqual(before["sources"], after["sources"][:-source_added])
         info_sources = [x for x in after["sources"] if x["id"] in {"SRC-604", "SRC-605"}]
         self.assertEqual({x["id"] for x in info_sources}, {"SRC-604", "SRC-605"})

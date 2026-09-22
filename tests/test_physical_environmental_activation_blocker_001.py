@@ -63,7 +63,23 @@ class PhysicalEnvironmentalActivationBlocker001Tests(unittest.TestCase):
             "data/relational-state-v1/catalog.json",
         )
         for relative in paths:
-            self.assertEqual((ROOT / relative).read_bytes().replace(b"\r\n", b"\n"), frozen_bytes(relative), relative)
+            current, prior = (ROOT / relative).read_bytes().replace(b"\r\n", b"\n"), frozen_bytes(relative)
+            if relative == "data/actions-events-v1/catalog.json":
+                current_json, prior_json = json.loads(current), json.loads(prior)
+                for key, identifier in (
+                    ("happeningTypes", "HT-V1-TEC-LAYER-001"),
+                    ("effectAssertions", "EA-V1-TEC-LAYER-001"),
+                    ("evidenceAssessments", "EVA-AE-V1-TEC-LAYER-001"),
+                ):
+                    current_json[key] = [row for row in current_json[key] if row["id"] != identifier]
+                current_json["authorizations"] = [row for row in current_json["authorizations"] if row["decisionId"] != "GOV-TECHNOLOGICAL-LAYER-001-2026-09-22"]
+                self.assertEqual(current_json, prior_json, relative)
+            elif relative == "data/relationship-intervention-v1/source-register.json":
+                current_json, prior_json = json.loads(current), json.loads(prior)
+                current_json["sources"] = [row for row in current_json["sources"] if row["id"] not in {"SRC-613", "SRC-614", "SRC-615", "SRC-616"}]
+                self.assertEqual(current_json, prior_json, relative)
+            else:
+                self.assertEqual(current, prior, relative)
 
     def test_validator_is_byte_identical(self):
         relative = "scripts/actions_events_v1.py"

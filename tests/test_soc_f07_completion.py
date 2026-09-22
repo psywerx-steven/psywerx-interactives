@@ -83,6 +83,8 @@ class CompletionTests(unittest.TestCase):
             source_store['sources']=[r for r in source_store['sources'] if r['id'] not in {'SRC-606','SRC-607','SRC-608'}]
         if (c.ROOT/'data/actions-events-v1/PHYSICAL_ENVIRONMENTAL_LAYER-materialization-manifest.json').is_file():
             source_store['sources']=[r for r in source_store['sources'] if r['id'] not in {'SRC-609','SRC-610','SRC-611','SRC-612'}]
+        if (c.ROOT/'data/actions-events-v1/TECHNOLOGICAL_LAYER-materialization-manifest.json').is_file():
+            source_store['sources']=[r for r in source_store['sources'] if r['id'] not in {'SRC-613','SRC-614','SRC-615','SRC-616'}]
         current={r['id']:r for r in source_store['sources']}
         self.assertEqual(set(current)-before,{'SRC-559'})
         self.assertEqual(current['SRC-559'],c.source()); self.assertIsNone(current['SRC-559']['pmid'])

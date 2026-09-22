@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import subprocess
 from collections import Counter
 from pathlib import Path
 
@@ -83,7 +84,45 @@ def baseline() -> dict:
 
 def validate_protection() -> None:
     expected = read(DATA / "protected-baseline.json")["productionHashes"]
-    assert hashes() == expected, "Production science changed after Technological baseline"
+    actual = hashes()
+    materialized = ROOT / "data/actions-events-v1/TECHNOLOGICAL_LAYER-materialization-manifest.json"
+    if not materialized.is_file():
+        assert actual == expected, "Production science changed after Technological baseline"
+        return
+
+    additive_paths = {
+        "data/actions-events-v1/catalog.json",
+        "data/relationship-intervention-v1/source-register.json",
+    }
+    assert {k: v for k, v in actual.items() if k not in additive_paths} == {
+        k: v for k, v in expected.items() if k not in additive_paths
+    }, "Protected production science changed outside authorized additive stores"
+
+    def base_json(path: str):
+        payload = subprocess.run(
+            ["git", "show", f"{BASE_COMMIT}:{path}"], cwd=ROOT,
+            check=True, capture_output=True,
+        ).stdout
+        return json.loads(payload.decode("utf-8-sig"))
+
+    current_catalog = read(ROOT / "data/actions-events-v1/catalog.json")
+    baseline_catalog = base_json("data/actions-events-v1/catalog.json")
+    exact_ids = {
+        "happeningTypes": {"HT-V1-TEC-LAYER-001"},
+        "effectAssertions": {"EA-V1-TEC-LAYER-001"},
+        "evidenceAssessments": {"EVA-AE-V1-TEC-LAYER-001"},
+    }
+    for collection, allowed in exact_ids.items():
+        assert [x for x in current_catalog[collection] if x["id"] not in allowed] == baseline_catalog[collection]
+        assert {x["id"] for x in current_catalog[collection] if x["id"] in allowed} == allowed
+    assert current_catalog["occurrences"] == baseline_catalog["occurrences"]
+    assert [x for x in current_catalog["authorizations"] if x.get("decisionId") != "GOV-TECHNOLOGICAL-LAYER-001-2026-09-22"] == baseline_catalog["authorizations"]
+
+    current_sources = read(ROOT / "data/relationship-intervention-v1/source-register.json")
+    baseline_sources = base_json("data/relationship-intervention-v1/source-register.json")
+    allowed_sources = {"SRC-613", "SRC-614", "SRC-615", "SRC-616"}
+    assert [x for x in current_sources["sources"] if x["id"] not in allowed_sources] == baseline_sources["sources"]
+    assert {x["id"] for x in current_sources["sources"] if x["id"] in allowed_sources} == allowed_sources
 
 
 def init() -> None:

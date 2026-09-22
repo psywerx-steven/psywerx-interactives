@@ -107,6 +107,13 @@ def render(report: dict) -> str:
 
 
 def main() -> None:
+    # This post-Cultural readiness result is a dated planning snapshot. Later
+    # authorized ENV and Technological materializations must not rewrite its
+    # historical Actions & Events coverage counts during deterministic CI.
+    if (ROOT / "data/actions-events-v1/PHYSICAL_ENVIRONMENTAL_LAYER-materialization-manifest.json").is_file() and REPORT.is_file():
+        frozen = json.loads(REPORT.read_text(encoding="utf-8"))
+        if frozen.get("sourceCommit") == SOURCE_COMMIT:
+            return
     report = build()
     base.write_json(REPORT, report)
     base.write_text(DOC, render(report))

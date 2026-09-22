@@ -1,0 +1,48 @@
+{
+  "recordKind": "BIBLIOGRAPHIC_VERIFICATION_ATTESTATION",
+  "verifiedDate": "2026-09-22",
+  "authority": "CROSSREF",
+  "registryLocator": "https://api.crossref.org/works/10.1016%2Fj.chbah.2024.100058",
+  "publisherLocator": "https://api.elsevier.com/content/article/doi/10.1016%2Fj.chbah.2024.100058",
+  "accessDepth": "METADATA",
+  "conflicts": [],
+  "verificationPurpose": "BIBLIOGRAPHIC_IDENTITY_ONLY_NOT_EFFECT_EVIDENCE",
+  "registryMetadata": {
+    "title": "The effect of source disclosure on evaluation of AI-generated messages",
+    "authors": ["Sue Lim", "Ralf Schmälzle"],
+    "year": 2024,
+    "publication": "Computers in Human Behavior: Artificial Humans",
+    "doi": "10.1016/j.chbah.2024.100058",
+    "sourceType": "JOURNAL_ARTICLE"
+  },
+  "publisherMetadata": {
+    "title": "The effect of source disclosure on evaluation of AI-generated messages",
+    "authors": ["Sue Lim", "Ralf Schmälzle"],
+    "year": 2024,
+    "publication": "Computers in Human Behavior: Artificial Humans",
+    "doi": "10.1016/j.chbah.2024.100058",
+    "sourceType": "JOURNAL_ARTICLE"
+  },
+  "registryPublisherLinks": [
+    "https://api.elsevier.com/content/article/doi/10.1016%2Fj.chbah.2024.100058"
+  ],
+  "locators": {
+    "title": "Crossref message.title[0]; publisher article metadata",
+    "authors": "Crossref ordered author given/family names; publisher byline",
+    "year": "Crossref message.published.date-parts; publisher publication metadata",
+    "publication": "Crossref message.container-title[0]; publisher journal heading",
+    "doi": "Crossref message.DOI; publisher DOI",
+    "sourceType": "Crossref journal-article normalized to JOURNAL_ARTICLE"
+  },
+  "versionAlignment": {
+    "candidateSourceId": "SRC-CAND-TEC-LAYER-014",
+    "relationship": "VERSION_OF_RECORD",
+    "verification": "Crossref and publisher metadata identify the same journal article."
+  },
+  "reviewMethod": "Live Crossref registry and publisher metadata alignment; bibliographic identity only.",
+  "limitations": [
+    "Metadata access only; no new full-paper review is claimed.",
+    "Registration preserves prior candidate evidence extraction and does not add scientific evidence.",
+    "The technology-specific finding remains time-sensitive and task-specific."
+  ]
+}
