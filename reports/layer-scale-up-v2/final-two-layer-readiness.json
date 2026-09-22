@@ -1,0 +1,173 @@
+{
+  "schemaVersion": "1.0.0",
+  "analysisId": "FINAL-TWO-LAYER-READINESS-2026-09-22-001",
+  "analysisClass": "READ_ONLY_MECHANICAL_PLANNING",
+  "sourceCommit": "5513a3e352da1938e9fdefc6473a3864ccf552da",
+  "workflow": "LAYER_SCALE_UP_V2",
+  "excludedCompletedLayer": "Psychological",
+  "scienceResearchPerformed": false,
+  "candidateGenerationPerformed": false,
+  "layers": [
+    {
+      "layer": "Social",
+      "prefix": "SOC",
+      "families": 12,
+      "drivers": 83,
+      "rds": 23,
+      "entities": 106,
+      "activeIncidentRelationshipCount": 99,
+      "uniqueCausalPropositionsTouchingLayer": 92,
+      "withinFamilyCausalCount": 39,
+      "sameLayerCrossFamilyCausalCount": 22,
+      "crossLayerCausalCount": 31,
+      "incomingCrossLayerCausalCount": 21,
+      "outgoingCrossLayerCausalCount": 10,
+      "psychologicalCouplingCausalCount": 13,
+      "causalIsolates": 34,
+      "rdsCausalSourceCount": 10,
+      "blockedEntityCount": 6,
+      "legacyV1IncompleteBurden": 92,
+      "activeCausalWithoutStructuredEvidenceCount": 0,
+      "blockedOrIncompleteMetadataCount": 98,
+      "actionsEventsCoverage": {
+        "governedHappeningTypesWithOriginLayer": 9,
+        "activeHappeningTypesWithOriginLayer": 1,
+        "governedEffectAssertionsTargetingLayer": 0,
+        "activeEffectAssertionsTargetingLayer": 0,
+        "priorPilotCandidateRecords": 14
+      },
+      "priorPilotCoverage": [
+        "SOC-F07"
+      ],
+      "canonicalSourcesInGovernedActionsEventsCoverage": 11,
+      "sourceGovernanceQueueBasis": "STRUCTURED_PRIOR_PILOT_QUEUE",
+      "unresolvedPilotSourceQueueCount": 1,
+      "knownArchitectureEscalationIds": [
+        "HYP-SOC-F07-H12",
+        "HYP-SOC-F07-H20"
+      ],
+      "knownArchitectureEscalationCount": 2,
+      "networkStateBindingCount": 1,
+      "networkStateRelevance": "VERY_HIGH",
+      "workload": {
+        "factors": {
+          "entityVolume": "HIGH",
+          "existingRelationshipVolume": "VERY_HIGH",
+          "crossLayerCoordination": "VERY_HIGH",
+          "rdsComplexity": "VERY_HIGH",
+          "constructBoundaryAmbiguity": "VERY_HIGH",
+          "sourceEvidenceBurden": "VERY_HIGH",
+          "architectureRisk": "VERY_HIGH",
+          "actionsEventsSearchComplexity": "VERY_HIGH"
+        },
+        "overall": "VERY_HIGH",
+        "observableSignals": {
+          "architectureSignal": 31,
+          "actionsEventsSearchSignal": 238,
+          "averageOrdinal": 3.875
+        }
+      },
+      "informationalCouplingCausalCount": 1,
+      "technologicalCouplingCausalCount": 5,
+      "priorCompletedLayerReviewReuseByLayer": {
+        "BIOLOGICAL_LAYER": 2,
+        "CULTURAL_LAYER": 4,
+        "INFORMATIONAL_LAYER": 1,
+        "PHYSICAL_ENVIRONMENTAL_LAYER": 0,
+        "PSYCHOLOGICAL_LAYER": 13,
+        "TECHNOLOGICAL_LAYER": 5
+      },
+      "priorCompletedLayerReviewReuseCount": 25
+    },
+    {
+      "layer": "Institutional / Structural",
+      "prefix": "INS",
+      "families": 13,
+      "drivers": 112,
+      "rds": 4,
+      "entities": 116,
+      "activeIncidentRelationshipCount": 62,
+      "uniqueCausalPropositionsTouchingLayer": 61,
+      "withinFamilyCausalCount": 22,
+      "sameLayerCrossFamilyCausalCount": 19,
+      "crossLayerCausalCount": 20,
+      "incomingCrossLayerCausalCount": 4,
+      "outgoingCrossLayerCausalCount": 16,
+      "psychologicalCouplingCausalCount": 6,
+      "causalIsolates": 49,
+      "rdsCausalSourceCount": 2,
+      "blockedEntityCount": 2,
+      "legacyV1IncompleteBurden": 61,
+      "activeCausalWithoutStructuredEvidenceCount": 0,
+      "blockedOrIncompleteMetadataCount": 63,
+      "actionsEventsCoverage": {
+        "governedHappeningTypesWithOriginLayer": 8,
+        "activeHappeningTypesWithOriginLayer": 1,
+        "governedEffectAssertionsTargetingLayer": 0,
+        "activeEffectAssertionsTargetingLayer": 0,
+        "priorPilotCandidateRecords": 0
+      },
+      "priorPilotCoverage": [],
+      "canonicalSourcesInGovernedActionsEventsCoverage": 9,
+      "sourceGovernanceQueueBasis": "NO_STRUCTURED_PRIOR_PILOT_QUEUE",
+      "unresolvedPilotSourceQueueCount": 0,
+      "knownArchitectureEscalationIds": [],
+      "knownArchitectureEscalationCount": 0,
+      "networkStateBindingCount": 0,
+      "networkStateRelevance": "HIGH",
+      "workload": {
+        "factors": {
+          "entityVolume": "VERY_HIGH",
+          "existingRelationshipVolume": "HIGH",
+          "crossLayerCoordination": "HIGH",
+          "rdsComplexity": "HIGH",
+          "constructBoundaryAmbiguity": "HIGH",
+          "sourceEvidenceBurden": "HIGH",
+          "architectureRisk": "HIGH",
+          "actionsEventsSearchComplexity": "VERY_HIGH"
+        },
+        "overall": "VERY_HIGH",
+        "observableSignals": {
+          "architectureSignal": 6,
+          "actionsEventsSearchSignal": 244,
+          "averageOrdinal": 3.25
+        }
+      },
+      "informationalCouplingCausalCount": 1,
+      "technologicalCouplingCausalCount": 5,
+      "priorCompletedLayerReviewReuseByLayer": {
+        "BIOLOGICAL_LAYER": 0,
+        "CULTURAL_LAYER": 0,
+        "INFORMATIONAL_LAYER": 1,
+        "PHYSICAL_ENVIRONMENTAL_LAYER": 2,
+        "PSYCHOLOGICAL_LAYER": 6,
+        "TECHNOLOGICAL_LAYER": 6
+      },
+      "priorCompletedLayerReviewReuseCount": 15
+    }
+  ],
+  "selection": {
+    "recommendedNextLayer": "Social",
+    "finalLayer": "Institutional / Structural",
+    "startAuthorized": false,
+    "rationale": "Social has the greater architecture burden but also the stronger immediate OIE leverage, 13 Psychological couplings, five Technological couplings, 25 reusable completed-Layer reviews, and the SOC-F07 pilot. Auditing it next exposes Network State, aggregation, actual/perceived norm, and individual/group boundaries before the final institutional audit. Institutional / Structural then closes the program with the largest inventory and the broad policy/implementation and institution/person-level reconciliation burden."
+  },
+  "metricDefinitions": {
+    "activeIncidentRelationshipCount": "Unique active legacy/native Relationships of any semantic family with at least one endpoint in the Layer.",
+    "uniqueCausalPropositionsTouchingLayer": "Unique active causal Relationships with at least one endpoint in the Layer; a cross-Layer edge is counted once within each touched Layer.",
+    "causalIsolates": "Layer entities with zero active causal in-degree and out-degree.",
+    "blockedOrIncompleteMetadataCount": "Blocked entities plus unique incident legacy causal Relationships whose V1 compatibility projection has incomplete fields.",
+    "sourceGovernanceQueue": "Only unresolved rows in an existing structured prior-pilot source queue; zero with NO_STRUCTURED_PRIOR_PILOT_QUEUE means no recorded queue, not proof of no issue.",
+    "architectureEscalations": "Only structured BLOCKED_NEEDS_GOVERNANCE_INPUT rows from an existing Actions & Events pilot; RDS and blocked-entity signals are reported separately.",
+    "workload": "Ordinal proxy derived only from recorded counts; no token, credit, duration, or scientific-yield estimate."
+  },
+  "excludedCompletedLayers": [
+    "Psychological",
+    "Informational",
+    "Biological",
+    "Cultural",
+    "Physical / Environmental",
+    "Technological"
+  ],
+  "productionScienceChanged": false
+}

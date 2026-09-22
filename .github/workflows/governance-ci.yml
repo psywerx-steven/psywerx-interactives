@@ -126,6 +126,9 @@ jobs:
       - name: Validate refreshed remaining-Layer readiness
         run: python -m unittest discover -s tests -p "test_remaining_layer_readiness_v2.py"
 
+      - name: Validate final Social / Institutional readiness and program status
+        run: python -m unittest discover -s tests -p "test_final_two_layer_readiness.py"
+
       - name: Validate candidate-only Informational Layer V2 audit
         run: python -m unittest discover -s tests -p "test_informational_layer_v2.py"
 
@@ -318,6 +321,9 @@ jobs:
 
       - name: Validate refreshed remaining-Layer readiness
         run: python -m unittest discover -s tests -p "test_remaining_layer_readiness_v2.py"
+
+      - name: Validate final Social / Institutional readiness and program status
+        run: python -m unittest discover -s tests -p "test_final_two_layer_readiness.py"
 
       - name: Validate candidate-only Informational Layer V2 audit
         run: python -m unittest discover -s tests -p "test_informational_layer_v2.py"
