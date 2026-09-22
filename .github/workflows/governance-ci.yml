@@ -153,6 +153,9 @@ jobs:
       - name: Validate candidate-only Physical / Environmental Layer V2 audit
         run: python -m unittest discover -s tests -p "test_physical_environmental_layer_v2.py"
 
+      - name: Validate exact Physical / Environmental governance materialization
+        run: python -m unittest discover -s tests -p "test_physical_environmental_governance_materialization.py"
+
       - name: Verify deterministic Biological Layer registries
         run: |
           python scripts/biological_layer_v2_curate.py
@@ -322,6 +325,9 @@ jobs:
 
       - name: Validate candidate-only Physical / Environmental Layer V2 audit
         run: python -m unittest discover -s tests -p "test_physical_environmental_layer_v2.py"
+
+      - name: Validate exact Physical / Environmental governance materialization
+        run: python -m unittest discover -s tests -p "test_physical_environmental_governance_materialization.py"
 
       - name: Verify deterministic Biological Layer registries
         run: |

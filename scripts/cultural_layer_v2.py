@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import subprocess
 from collections import Counter
 from pathlib import Path
 
@@ -92,7 +93,28 @@ def baseline() -> dict:
 def validate_protection() -> None:
     expected = read(DATA / "protected-baseline.json")["productionHashes"]
     actual = hashes()
-    assert actual == expected, "Production science changed after the Cultural baseline was frozen"
+    for path, digest in expected.items():
+        if actual[path] == digest:
+            continue
+        assert path in {"data/relationship-intervention-v1/source-register.json", "data/actions-events-v1/catalog.json"}, f"Production science changed after Cultural baseline: {path}"
+        old = json.loads(subprocess.check_output(["git", "show", f"{BASE_COMMIT}:{path}"], cwd=ROOT))
+        new = read(ROOT / path)
+        additions = ({"sources": {"SRC-609", "SRC-610", "SRC-611", "SRC-612"}} if path.endswith("source-register.json") else {
+            "happeningTypes": {"HT-V1-ENV-LAYER-001"},
+            "effectAssertions": {"EA-V1-ENV-LAYER-001"},
+            "evidenceAssessments": {"EVA-AE-V1-ENV-LAYER-001"},
+        })
+        for key, identifiers in additions.items():
+            assert {x["id"] for x in new[key]} - {x["id"] for x in old[key]} == identifiers, (path, key)
+            assert [x for x in new[key] if x["id"] not in identifiers] == old[key], (path, key)
+        for key in old:
+            if key in additions:
+                continue
+            if key == "authorizations" and path.endswith("catalog.json"):
+                assert new[key][:-1] == old[key]
+                assert new[key][-1]["decisionId"] == "GOV-PHYSICAL-ENVIRONMENTAL-LAYER-001-2026-09-21"
+            else:
+                assert new[key] == old[key], (path, key)
 
 
 def init() -> None:

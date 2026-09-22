@@ -345,6 +345,10 @@ def render(family):
     # comparison universe and must not rewrite historical candidate ledgers.
     if (p.ROOT / "data/actions-events-v1/BIOLOGICAL_LAYER-materialization-manifest.json").is_file():
         existing = [t for t in existing if t["id"] != "HT-V1-BIO-LAYER-001"]
+    # Physical / Environmental governance occurred after this audit froze.
+    # Its canonical identity must not rewrite the historical dedup ledger.
+    if (p.ROOT / "data/actions-events-v1/PHYSICAL_ENVIRONMENTAL_LAYER-materialization-manifest.json").is_file():
+        existing = [t for t in existing if t["id"] != "HT-V1-ENV-LAYER-001"]
     for spec in inputs["happeningTypes"]:
         if any(normalize_title(spec["name"]) == normalize_title(t.get("name", t.get("canonicalName", ""))) for t in existing):
             raise ValueError("Existing production identity must be reused")

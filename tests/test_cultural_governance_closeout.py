@@ -61,10 +61,13 @@ class CulturalGovernanceCloseoutTests(unittest.TestCase):
             "data/relationship-intervention-v1/evidence-assessments.json",
             "data/relationship-intervention-v1/interventions.json",
             "data/relationship-intervention-v1/intervention-effects.json",
-            "data/relationship-intervention-v1/source-register.json",
-            "data/actions-events-v1/catalog.json", "data/relational-state-v1/catalog.json",
+            "data/relational-state-v1/catalog.json",
         ):
             self.assertEqual(baseline(path), current(path), path)
+        import sys
+        sys.path.insert(0, str(ROOT / "scripts"))
+        import cultural_layer_v2
+        cultural_layer_v2.validate_protection()
 
 
 if __name__ == "__main__":

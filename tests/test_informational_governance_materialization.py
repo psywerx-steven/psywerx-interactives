@@ -21,12 +21,18 @@ class InformationalMaterializationTests(unittest.TestCase):
     def test_exact_additive_identity_and_sources(self):
         path = "data/actions-events-v1/catalog.json"
         before, after = baseline(path), current(path)
-        for key in ("occurrences", "effectAssertions", "evidenceAssessments"):
-            self.assertEqual(before[key], after[key], key)
+        self.assertEqual(before["occurrences"], after["occurrences"])
         biological = (ROOT / "data/actions-events-v1/BIOLOGICAL_LAYER-materialization-manifest.json").is_file()
-        added = 2 if biological else 1
+        environmental = (ROOT / "data/actions-events-v1/PHYSICAL_ENVIRONMENTAL_LAYER-materialization-manifest.json").is_file()
+        added = 3 if environmental else 2 if biological else 1
         self.assertEqual(before["happeningTypes"], after["happeningTypes"][:-added])
         self.assertEqual(before["authorizations"], after["authorizations"][:-added])
+        if environmental:
+            self.assertEqual(before["effectAssertions"], after["effectAssertions"][:-1])
+            self.assertEqual(before["evidenceAssessments"], after["evidenceAssessments"][:-1])
+        else:
+            self.assertEqual(before["effectAssertions"], after["effectAssertions"])
+            self.assertEqual(before["evidenceAssessments"], after["evidenceAssessments"])
         identity = next(x for x in after["happeningTypes"] if x["id"] == "HT-V1-INF-LAYER-001")
         self.assertEqual(identity["id"], "HT-V1-INF-LAYER-001")
         self.assertEqual(identity["identitySourceIds"], ["SRC-604", "SRC-605"])
@@ -37,7 +43,7 @@ class InformationalMaterializationTests(unittest.TestCase):
         self.assertEqual([x["id"] for x in authorization["authorizedObjects"]], [identity["id"]])
         path = "data/relationship-intervention-v1/source-register.json"
         before, after = baseline(path), current(path)
-        source_added = 5 if biological else 2
+        source_added = 9 if environmental else 5 if biological else 2
         self.assertEqual(before["sources"], after["sources"][:-source_added])
         info_sources = [x for x in after["sources"] if x["id"] in {"SRC-604", "SRC-605"}]
         self.assertEqual({x["id"] for x in info_sources}, {"SRC-604", "SRC-605"})
