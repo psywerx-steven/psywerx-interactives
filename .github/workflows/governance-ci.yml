@@ -156,6 +156,9 @@ jobs:
       - name: Validate exact Physical / Environmental governance materialization
         run: python -m unittest discover -s tests -p "test_physical_environmental_governance_materialization.py"
 
+      - name: Validate read-only Physical / Environmental activation audit
+        run: python -m unittest discover -s tests -p "test_physical_environmental_activation_audit.py"
+
       - name: Verify deterministic Biological Layer registries
         run: |
           python scripts/biological_layer_v2_curate.py
@@ -328,6 +331,9 @@ jobs:
 
       - name: Validate exact Physical / Environmental governance materialization
         run: python -m unittest discover -s tests -p "test_physical_environmental_governance_materialization.py"
+
+      - name: Validate read-only Physical / Environmental activation audit
+        run: python -m unittest discover -s tests -p "test_physical_environmental_activation_audit.py"
 
       - name: Verify deterministic Biological Layer registries
         run: |

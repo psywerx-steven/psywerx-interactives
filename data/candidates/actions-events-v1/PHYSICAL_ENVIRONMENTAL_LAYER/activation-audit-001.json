@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "1.0.0",
+  "auditId": "AUD-PHYSICAL-ENVIRONMENTAL-LAYER-ACTIVATION-V1-20260921-001",
+  "governanceDecisionId": "GOV-PHYSICAL-ENVIRONMENTAL-LAYER-001-2026-09-21",
+  "baselineCommit": "72eda41e261d23b69b8cb61e0de9b6801882a3e1",
+  "auditClass": "READ_ONLY_ACTIVATION_READINESS",
+  "bundleClassification": "READY_FOR_ACTIVATION_REVIEW",
+  "records": [
+    {"id": "EVA-AE-V1-ENV-LAYER-001", "recordClass": "EVIDENCE_ASSESSMENT", "classification": "READY_FOR_ACTIVATION_REVIEW"},
+    {"id": "HT-V1-ENV-LAYER-001", "recordClass": "HAPPENING_TYPE", "classification": "READY_FOR_ACTIVATION_REVIEW"},
+    {"id": "EA-V1-ENV-LAYER-001", "recordClass": "EFFECT_ASSERTION", "classification": "READY_FOR_ACTIVATION_REVIEW"}
+  ],
+  "dependencyOrder": [["EVA-AE-V1-ENV-LAYER-001"], ["HT-V1-ENV-LAYER-001", "EA-V1-ENV-LAYER-001"]],
+  "readinessFindings": {
+    "machineReadableScope": "PASS", "sourceIdentity": "PASS", "operationTargetAlignment": "PASS",
+    "architectureDependency": "NONE", "duplicateContribution": "NONE_IDENTIFIED",
+    "evidenceDisposition": "MIXED_SUPPORTS_BOUNDED", "heterogeneity": "EXPLICIT_LIMIT",
+    "comparatorFindings": "EXPLICIT_LIMIT", "populationTransfer": "EXPLICIT_LIMIT",
+    "numericExecution": "NOT_AUTHORIZED", "practitionerEligibility": "NOT_AUTHORIZED"
+  },
+  "rationale": "The evidence-first bundle has exact source identities, operation, Driver target, immediate timing, studied-population scope and exclusions. Mixed evidence, comparator improvement, exercise contribution, setting heterogeneity and review overlap remain explicit and limit the active claim; they do not require an ontology or architecture change. Activation therefore requires a separate human review and must be atomic across the assessment, identity and assertion.",
+  "activationPerformed": false,
+  "currentState": "GOVERNED_INACTIVE",
+  "humanActivationAuthorizationRequired": true
+}
