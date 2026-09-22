@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import glob
 from collections import Counter
+from pathlib import Path
 
 import social_layer_v2 as s
 
@@ -66,7 +67,8 @@ def prior_reviews(ids):
         if "SOCIAL_LAYER" in path:
             continue
         try:
-            payload = s.read(__import__("pathlib").Path(path))
+            source_path = Path(path)
+            payload = s.read(source_path)
         except Exception:
             continue
         rows = payload.values() if isinstance(payload, dict) else payload
@@ -74,7 +76,7 @@ def prior_reviews(ids):
             if isinstance(row, dict) and row.get("id") in ids:
                 disposition = row.get("disposition") or row.get("primaryDisposition") or row.get("review", {}).get("disposition")
                 if disposition:
-                    found[row["id"]] = {"disposition": disposition, "source": path.replace(str(R) + "\\", "")}
+                    found[row["id"]] = {"disposition": disposition, "source": source_path.relative_to(R).as_posix()}
     for row in s.read(R / "data/candidates/actions-events-v1/SOC-F07/existing-relationship-audit.json"):
         if row["id"] in ids:
             found[row["id"]] = {"disposition": row["primaryDisposition"], "source": "SOC-F07/existing-relationship-audit.json"}
