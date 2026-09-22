@@ -159,6 +159,9 @@ jobs:
       - name: Validate read-only Physical / Environmental activation audit
         run: python -m unittest discover -s tests -p "test_physical_environmental_activation_audit.py"
 
+      - name: Validate Physical / Environmental activation blocker closeout
+        run: python -m unittest discover -s tests -p "test_physical_environmental_activation_blocker_001.py"
+
       - name: Verify deterministic Biological Layer registries
         run: |
           python scripts/biological_layer_v2_curate.py
@@ -334,6 +337,9 @@ jobs:
 
       - name: Validate read-only Physical / Environmental activation audit
         run: python -m unittest discover -s tests -p "test_physical_environmental_activation_audit.py"
+
+      - name: Validate Physical / Environmental activation blocker closeout
+        run: python -m unittest discover -s tests -p "test_physical_environmental_activation_blocker_001.py"
 
       - name: Verify deterministic Biological Layer registries
         run: |
