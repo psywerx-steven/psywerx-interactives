@@ -1,4 +1,4 @@
-"""Deterministic, candidate-only Physical / Environmental Layer V2 inventory."""
+﻿"""Deterministic, candidate-only Technological Layer V2 inventory."""
 
 from __future__ import annotations
 
@@ -11,10 +11,10 @@ from pathlib import Path
 import audit_family
 
 ROOT = Path(__file__).resolve().parents[1]
-DATA = ROOT / "data/candidates/actions-events-v1/PHYSICAL_ENVIRONMENTAL_LAYER"
-DOCS = ROOT / "docs/governance/scale-up/PHYSICAL_ENVIRONMENTAL_LAYER"
-BASE_COMMIT = "f75d99b326d9065c1e97ba89a3d5e395d52c0bb0"
-PROGRAM_ID = "AUD-PHYSICAL-ENVIRONMENTAL-LAYER-AE-V1-20260921-001"
+DATA = ROOT / "data/candidates/actions-events-v1/TECHNOLOGICAL_LAYER"
+DOCS = ROOT / "docs/governance/scale-up/TECHNOLOGICAL_LAYER"
+BASE_COMMIT = "aee96af9c988ca9f169798e447ded1437f1edd63"
+PROGRAM_ID = "AUD-TECHNOLOGICAL-LAYER-AE-V1-20260921-001"
 PROTECTED = (
     "data/entities.json", "data/drivers.json", "data/families.json",
     "data/aliases.json", "data/sources.json", "data/relationships.json",
@@ -47,9 +47,9 @@ def hashes() -> dict[str, str]:
 
 def baseline() -> dict:
     inventory = audit_family.inventory()
-    raw = {row["id"]: row for row in read(ROOT / "data/entities.json") if row["layer"] == "Physical / Environmental"}
+    raw = {row["id"]: row for row in read(ROOT / "data/entities.json") if row["layer"] == "Technological"}
     mechanical = {row["id"]: row for row in inventory["entities"]}
-    families = [row for row in read(ROOT / "data/families.json")["families"] if row["layer"] == "Physical / Environmental"]
+    families = [row for row in read(ROOT / "data/families.json")["families"] if row["layer"] == "Technological"]
     legacy = {row["id"]: row for row in read(ROOT / "data/relationships.json")["relationships"]}
     native = {row["id"]: row for row in read(ROOT / "data/relationship-intervention-v1/relationships.json")["relationships"]}
     relationships = []
@@ -85,41 +85,49 @@ def baseline() -> dict:
 def validate_protection() -> None:
     expected = read(DATA / "protected-baseline.json")["productionHashes"]
     actual = hashes()
-    for path, digest in expected.items():
-        if actual[path] == digest:
-            continue
-        assert path in {"data/relationship-intervention-v1/source-register.json", "data/actions-events-v1/catalog.json"}, f"Pre-existing production scientific data changed: {path}"
-        old = json.loads(subprocess.check_output(["git", "show", f"{BASE_COMMIT}:{path}"], cwd=ROOT))
-        new = read(ROOT / path)
-        if path.endswith("source-register.json"):
-            identifiers = {f"SRC-{n}" for n in range(609, 617)}
-            assert {x["id"] for x in new["sources"]} - {x["id"] for x in old["sources"]} == identifiers, path
-            assert [x for x in new["sources"] if x["id"] not in identifiers] == old["sources"], path
-            continue
-        expected_additions = {
-            "happeningTypes": {"HT-V1-ENV-LAYER-001", "HT-V1-TEC-LAYER-001"},
-            "effectAssertions": {"EA-V1-ENV-LAYER-001", "EA-V1-TEC-LAYER-001"},
-            "evidenceAssessments": {"EVA-AE-V1-ENV-LAYER-001", "EVA-AE-V1-TEC-LAYER-001"},
-        }
-        for key, identifiers in expected_additions.items():
-            assert {x["id"] for x in new[key]} - {x["id"] for x in old[key]} == identifiers, (path, key)
-            assert [x for x in new[key] if x["id"] not in identifiers] == old[key], (path, key)
-        for key in old:
-            if key in expected_additions:
-                continue
-            if key == "authorizations":
-                assert new[key][:-2] == old[key], path
-                assert [row["decisionId"] for row in new[key][-2:]] == [
-                    "GOV-PHYSICAL-ENVIRONMENTAL-LAYER-001-2026-09-21",
-                    "GOV-TECHNOLOGICAL-LAYER-001-2026-09-22",
-                ], path
-            else:
-                assert new[key] == old[key], (path, key)
+    materialized = ROOT / "data/actions-events-v1/TECHNOLOGICAL_LAYER-materialization-manifest.json"
+    if not materialized.is_file():
+        assert actual == expected, "Production science changed after Technological baseline"
+        return
+
+    additive_paths = {
+        "data/actions-events-v1/catalog.json",
+        "data/relationship-intervention-v1/source-register.json",
+    }
+    assert {k: v for k, v in actual.items() if k not in additive_paths} == {
+        k: v for k, v in expected.items() if k not in additive_paths
+    }, "Protected production science changed outside authorized additive stores"
+
+    def base_json(path: str):
+        payload = subprocess.run(
+            ["git", "show", f"{BASE_COMMIT}:{path}"], cwd=ROOT,
+            check=True, capture_output=True,
+        ).stdout
+        return json.loads(payload.decode("utf-8-sig"))
+
+    current_catalog = read(ROOT / "data/actions-events-v1/catalog.json")
+    baseline_catalog = base_json("data/actions-events-v1/catalog.json")
+    exact_ids = {
+        "happeningTypes": {"HT-V1-TEC-LAYER-001"},
+        "effectAssertions": {"EA-V1-TEC-LAYER-001"},
+        "evidenceAssessments": {"EVA-AE-V1-TEC-LAYER-001"},
+    }
+    for collection, allowed in exact_ids.items():
+        assert [x for x in current_catalog[collection] if x["id"] not in allowed] == baseline_catalog[collection]
+        assert {x["id"] for x in current_catalog[collection] if x["id"] in allowed} == allowed
+    assert current_catalog["occurrences"] == baseline_catalog["occurrences"]
+    assert [x for x in current_catalog["authorizations"] if x.get("decisionId") != "GOV-TECHNOLOGICAL-LAYER-001-2026-09-22"] == baseline_catalog["authorizations"]
+
+    current_sources = read(ROOT / "data/relationship-intervention-v1/source-register.json")
+    baseline_sources = base_json("data/relationship-intervention-v1/source-register.json")
+    allowed_sources = {"SRC-613", "SRC-614", "SRC-615", "SRC-616"}
+    assert [x for x in current_sources["sources"] if x["id"] not in allowed_sources] == baseline_sources["sources"]
+    assert {x["id"] for x in current_sources["sources"] if x["id"] in allowed_sources} == allowed_sources
 
 
 def init() -> None:
     if (DATA / "baseline.json").exists():
-        raise ValueError("Physical / Environmental baseline already frozen")
+        raise ValueError("Technological baseline already frozen")
     value = baseline()
     write(DATA / "baseline.json", value)
     write(DATA / "protected-baseline.json", {"baseCommit":BASE_COMMIT,"hashNormalization":"CRLF_TO_LF","productionHashes":value["productionHashes"]})
@@ -133,9 +141,9 @@ def init() -> None:
     for name,obj in empty.items(): write(DATA/name,obj)
     write(DATA/"progress.json",{"programId":PROGRAM_ID,"baseCommit":BASE_COMMIT,"families":{x["id"]:"BASELINE" for x in value["families"]}})
     c=value["mechanicalCounts"]
-    write_doc(DOCS/"PHYSICAL_ENVIRONMENTAL_LAYER_PLAN.md",f"# Physical / Environmental Layer Scale-Up V2 plan\n\n**ADVISORY - HUMAN DECISION REQUIRED. Candidate-only science; new GOVERNED = 0 and ACTIVE = 0.**\n\nProgram `{PROGRAM_ID}` freezes main `{BASE_COMMIT}`. All 13 Families receive existing-edge, Driver, evidence and Actions & Events coverage. Deep research follows exact preliminary signal only. No production proposition, source, ontology, architecture or lifecycle state changes during the audit.\n")
-    write_doc(DOCS/"PHYSICAL_ENVIRONMENTAL_LAYER_PROGRESS.md","# Physical / Environmental Layer progress\n\n**ADVISORY - HUMAN DECISION REQUIRED.**\n\n| Family | Stage |\n|---|---|\n"+"\n".join(f"| {x['id']} | BASELINE |" for x in value["families"])+"\n")
-    write_doc(DOCS/"PHYSICAL_ENVIRONMENTAL_LAYER_BASELINE.md",f"# Physical / Environmental Layer frozen baseline\n\n**ADVISORY - HUMAN DECISION REQUIRED. No production science changed.**\n\nProgram `{PROGRAM_ID}`; source main `{BASE_COMMIT}`.\n\n| Measure | Count |\n|---|---:|\n| Families | {c['families']} |\n| Drivers | {c['drivers']} |\n| RDS | {c['rds']} |\n| Entities | {c['entities']} |\n| Incident Relationships | {c['incidentRelationships']} |\n| Causal propositions | {c['causalRelationships']} |\n| Causal isolates | {c['causalIsolates']} |\n\nCausal scope: {c['causalScope']}.\n")
+    write_doc(DOCS/"TECHNOLOGICAL_LAYER_PLAN.md",f"# Technological Layer Scale-Up V2 plan\n\n**ADVISORY - HUMAN DECISION REQUIRED. Candidate-only science; new GOVERNED = 0 and ACTIVE = 0.**\n\nProgram `{PROGRAM_ID}` freezes main `{BASE_COMMIT}`. All 13 Families receive existing-edge, Driver, evidence and Actions & Events coverage. Deep research follows exact preliminary signal only. No production proposition, source, ontology, architecture or lifecycle state changes during the audit.\n")
+    write_doc(DOCS/"TECHNOLOGICAL_LAYER_PROGRESS.md","# Technological Layer progress\n\n**ADVISORY - HUMAN DECISION REQUIRED.**\n\n| Family | Stage |\n|---|---|\n"+"\n".join(f"| {x['id']} | BASELINE |" for x in value["families"])+"\n")
+    write_doc(DOCS/"TECHNOLOGICAL_LAYER_BASELINE.md",f"# Technological Layer frozen baseline\n\n**ADVISORY - HUMAN DECISION REQUIRED. No production science changed.**\n\nProgram `{PROGRAM_ID}`; source main `{BASE_COMMIT}`.\n\n| Measure | Count |\n|---|---:|\n| Families | {c['families']} |\n| Drivers | {c['drivers']} |\n| RDS | {c['rds']} |\n| Entities | {c['entities']} |\n| Incident Relationships | {c['incidentRelationships']} |\n| Causal propositions | {c['causalRelationships']} |\n| Causal isolates | {c['causalIsolates']} |\n\nCausal scope: {c['causalScope']}.\n")
 
 
 if __name__ == "__main__":

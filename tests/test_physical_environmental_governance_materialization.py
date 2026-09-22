@@ -21,26 +21,31 @@ class PhysicalEnvironmentalMaterializationTests(unittest.TestCase):
     def test_exact_additive_bundle_and_sources(self):
         path = "data/actions-events-v1/catalog.json"
         before, after = baseline(path), current(path)
+        technological = (ROOT / "data/actions-events-v1/TECHNOLOGICAL_LAYER-materialization-manifest.json").is_file()
+        added = 2 if technological else 1
         self.assertEqual(before["occurrences"], after["occurrences"])
-        self.assertEqual(before["happeningTypes"], after["happeningTypes"][:-1])
-        self.assertEqual(before["effectAssertions"], after["effectAssertions"][:-1])
-        self.assertEqual(before["evidenceAssessments"], after["evidenceAssessments"][:-1])
-        self.assertEqual(before["authorizations"], after["authorizations"][:-1])
-        ht, ea, eva = after["happeningTypes"][-1], after["effectAssertions"][-1], after["evidenceAssessments"][-1]
+        self.assertEqual(before["happeningTypes"], after["happeningTypes"][:-added])
+        self.assertEqual(before["effectAssertions"], after["effectAssertions"][:-added])
+        self.assertEqual(before["evidenceAssessments"], after["evidenceAssessments"][:-added])
+        self.assertEqual(before["authorizations"], after["authorizations"][:-added])
+        ht = next(x for x in after["happeningTypes"] if x["id"] == "HT-V1-ENV-LAYER-001")
+        ea = next(x for x in after["effectAssertions"] if x["id"] == "EA-V1-ENV-LAYER-001")
+        eva = next(x for x in after["evidenceAssessments"] if x["id"] == "EVA-AE-V1-ENV-LAYER-001")
         self.assertEqual((ht["id"], ea["id"], eva["id"]),
                          ("HT-V1-ENV-LAYER-001", "EA-V1-ENV-LAYER-001", "EVA-AE-V1-ENV-LAYER-001"))
         for record in (ht, ea, eva):
             self.assertEqual((record["governance"]["lifecycleStatus"], record["governance"]["activationStatus"]),
                              ("GOVERNED", "INACTIVE"))
         self.assertEqual(ht["identitySourceIds"], ["SRC-609", "SRC-610", "SRC-611"])
-        authorization = after["authorizations"][-1]
+        authorization = next(x for x in after["authorizations"] if x["decisionId"] == "GOV-PHYSICAL-ENVIRONMENTAL-LAYER-001-2026-09-21")
         self.assertEqual(authorization["decisionId"], "GOV-PHYSICAL-ENVIRONMENTAL-LAYER-001-2026-09-21")
         self.assertEqual([x["id"] for x in authorization["authorizedObjects"]], [ht["id"], ea["id"], eva["id"]])
 
         path = "data/relationship-intervention-v1/source-register.json"
         before, after = baseline(path), current(path)
-        self.assertEqual(before["sources"], after["sources"][:-4])
-        sources = after["sources"][-4:]
+        source_added = 8 if technological else 4
+        self.assertEqual(before["sources"], after["sources"][:-source_added])
+        sources = [x for x in after["sources"] if x["id"] in {"SRC-609", "SRC-610", "SRC-611", "SRC-612"}]
         self.assertEqual({x["id"] for x in sources}, {"SRC-609", "SRC-610", "SRC-611", "SRC-612"})
         self.assertEqual({x["pmid"] for x in sources}, {"39516236", "38250104", "35726335", "34900906"})
 

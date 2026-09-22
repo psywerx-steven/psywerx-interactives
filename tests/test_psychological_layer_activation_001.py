@@ -131,8 +131,10 @@ class PsychologicalLayerActivation001Tests(unittest.TestCase):
             ).is_file():
                 biological = (ROOT / "data/actions-events-v1/BIOLOGICAL_LAYER-materialization-manifest.json").is_file()
                 environmental = (ROOT / "data/actions-events-v1/PHYSICAL_ENVIRONMENTAL_LAYER-materialization-manifest.json").is_file()
-                added = 9 if environmental else 5 if biological else 2
-                expected = ({f"SRC-{n}" for n in range(604, 613)} if environmental else
+                technological = (ROOT / "data/actions-events-v1/TECHNOLOGICAL_LAYER-materialization-manifest.json").is_file()
+                added = 13 if technological else 9 if environmental else 5 if biological else 2
+                expected = ({f"SRC-{n}" for n in range(604, 617)} if technological else
+                            {f"SRC-{n}" for n in range(604, 613)} if environmental else
                             {"SRC-604", "SRC-605", "SRC-606", "SRC-607", "SRC-608"} if biological else
                             {"SRC-604", "SRC-605"})
                 self.assertEqual(current["sources"][:-added], prior["sources"], relative)

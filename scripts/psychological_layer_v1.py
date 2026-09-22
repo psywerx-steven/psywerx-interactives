@@ -101,6 +101,7 @@ def _authorized_addition_only(path, expected_hash):
     informational_materialized = (ROOT / "data/actions-events-v1/INFORMATIONAL_LAYER-materialization-manifest.json").is_file()
     biological_materialized = (ROOT / "data/actions-events-v1/BIOLOGICAL_LAYER-materialization-manifest.json").is_file()
     environmental_materialized = (ROOT / "data/actions-events-v1/PHYSICAL_ENVIRONMENTAL_LAYER-materialization-manifest.json").is_file()
+    technological_materialized = (ROOT / "data/actions-events-v1/TECHNOLOGICAL_LAYER-materialization-manifest.json").is_file()
     if path == "data/actions-events-v1/catalog.json":
         current["happeningTypes"] = [x for x in current["happeningTypes"] if not x["id"].startswith("HT-V1-PSY-LAYER-")]
         current["effectAssertions"] = [x for x in current["effectAssertions"] if not x["id"].startswith("EA-V1-PSY-LAYER-")]
@@ -120,6 +121,11 @@ def _authorized_addition_only(path, expected_hash):
             current["effectAssertions"] = [x for x in current["effectAssertions"] if x["id"] != "EA-V1-ENV-LAYER-001"]
             current["evidenceAssessments"] = [x for x in current["evidenceAssessments"] if x["id"] != "EVA-AE-V1-ENV-LAYER-001"]
             current["authorizations"] = [x for x in current["authorizations"] if x["decisionId"] != "GOV-PHYSICAL-ENVIRONMENTAL-LAYER-001-2026-09-21"]
+        if technological_materialized:
+            current["happeningTypes"] = [x for x in current["happeningTypes"] if x["id"] != "HT-V1-TEC-LAYER-001"]
+            current["effectAssertions"] = [x for x in current["effectAssertions"] if x["id"] != "EA-V1-TEC-LAYER-001"]
+            current["evidenceAssessments"] = [x for x in current["evidenceAssessments"] if x["id"] != "EVA-AE-V1-TEC-LAYER-001"]
+            current["authorizations"] = [x for x in current["authorizations"] if x["decisionId"] != "GOV-TECHNOLOGICAL-LAYER-001-2026-09-22"]
     elif path.endswith("/relationships.json"):
         current["relationships"] = [x for x in current["relationships"] if not x["id"].startswith("REL-V1-PSY-LAYER-")]
     elif path.endswith("/evidence-assessments.json"):
@@ -132,6 +138,8 @@ def _authorized_addition_only(path, expected_hash):
             current["sources"] = [x for x in current["sources"] if x["id"] not in {"SRC-606", "SRC-607", "SRC-608"}]
         if environmental_materialized:
             current["sources"] = [x for x in current["sources"] if x["id"] not in {"SRC-609", "SRC-610", "SRC-611", "SRC-612"}]
+        if technological_materialized:
+            current["sources"] = [x for x in current["sources"] if x["id"] not in {"SRC-613", "SRC-614", "SRC-615", "SRC-616"}]
     elif path.endswith("/relationship-source-findings.json"):
         current["records"] = [x for x in current["records"] if not x["assertionId"].startswith("REL-V1-PSY-LAYER-")]
     return current == old

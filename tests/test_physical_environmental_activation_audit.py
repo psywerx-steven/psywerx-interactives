@@ -32,7 +32,22 @@ class PhysicalEnvironmentalActivationAuditTests(unittest.TestCase):
                      "data/entities.json", "data/relationships.json", "data/relational-state-v1/catalog.json"):
             before = subprocess.check_output(["git", "show", f"{BASE}:{path}"], cwd=ROOT).replace(b"\r\n", b"\n")
             after = (ROOT / path).read_bytes().replace(b"\r\n", b"\n")
-            self.assertEqual(before, after, path)
+            if path.endswith("catalog.json") and "actions-events-v1" in path:
+                prior, current = json.loads(before), json.loads(after)
+                for key, identifier in (
+                    ("happeningTypes", "HT-V1-TEC-LAYER-001"),
+                    ("effectAssertions", "EA-V1-TEC-LAYER-001"),
+                    ("evidenceAssessments", "EVA-AE-V1-TEC-LAYER-001"),
+                ):
+                    current[key] = [row for row in current[key] if row["id"] != identifier]
+                current["authorizations"] = [row for row in current["authorizations"] if row["decisionId"] != "GOV-TECHNOLOGICAL-LAYER-001-2026-09-22"]
+                self.assertEqual(prior, current, path)
+            elif path.endswith("source-register.json"):
+                prior, current = json.loads(before), json.loads(after)
+                current["sources"] = [row for row in current["sources"] if row["id"] not in {"SRC-613", "SRC-614", "SRC-615", "SRC-616"}]
+                self.assertEqual(prior, current, path)
+            else:
+                self.assertEqual(before, after, path)
 
 
 if __name__ == "__main__":

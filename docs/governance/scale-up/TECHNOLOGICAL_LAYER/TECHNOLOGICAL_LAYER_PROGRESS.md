@@ -1,0 +1,19 @@
+# Technological Layer progress
+
+ADVISORY — HUMAN DECISION REQUIRED. Candidate-only science; new GOVERNED = 0 and ACTIVE = 0.
+
+| Family | Stage |
+|---|---|
+| TEC-F01 | COMPLETE |
+| TEC-F02 | COMPLETE |
+| TEC-F03 | COMPLETE |
+| TEC-F04 | COMPLETE |
+| TEC-F05 | COMPLETE |
+| TEC-F06 | COMPLETE |
+| TEC-F07 | COMPLETE |
+| TEC-F08 | COMPLETE |
+| TEC-F09 | COMPLETE |
+| TEC-F10 | COMPLETE |
+| TEC-F11 | COMPLETE |
+| TEC-F12 | COMPLETE |
+| TEC-F13 | COMPLETE |
