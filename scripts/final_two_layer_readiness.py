@@ -9,7 +9,7 @@ import audit_family
 import next_layer_readiness as readiness
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE_COMMIT = "5513a3e352da1938e9fdefc6473a3864ccf552da"
+SOURCE_COMMIT = "bb9336b9b1cf0bcb110cbf39da93a67d38c64cea"
 ANALYSIS_ID = "FINAL-TWO-LAYER-READINESS-2026-09-22-001"
 LAYERS = {"Social": "SOC", "Institutional / Structural": "INS"}
 REPORT = ROOT / "reports/layer-scale-up-v2/final-two-layer-readiness.json"
@@ -61,9 +61,11 @@ def build_readiness() -> dict:
             "Technological" in {entities[edge["source"]]["layer"], entities[edge["target"]]["layer"]}
             for edge in cross
         )
-        reuse_by_layer = {name: len(incident_ids & ids) for name, ids in completed_reviews.items()}
+        current_registry = "SOCIAL_LAYER" if row["layer"] == "Social" else "INSTITUTIONAL_STRUCTURAL_LAYER"
+        eligible_reviews = {name: ids for name, ids in completed_reviews.items() if name != current_registry}
+        reuse_by_layer = {name: len(incident_ids & ids) for name, ids in eligible_reviews.items()}
         row["priorCompletedLayerReviewReuseByLayer"] = reuse_by_layer
-        row["priorCompletedLayerReviewReuseCount"] = len(set().union(*(incident_ids & ids for ids in completed_reviews.values())))
+        row["priorCompletedLayerReviewReuseCount"] = len(set().union(*(incident_ids & ids for ids in eligible_reviews.values())))
 
     report.update({
         "analysisId": ANALYSIS_ID,
@@ -76,17 +78,10 @@ def build_readiness() -> dict:
         "candidateGenerationPerformed": False,
         "productionScienceChanged": False,
         "selection": {
-            "recommendedNextLayer": "Social",
+            "recommendedNextLayer": "Institutional / Structural",
             "finalLayer": "Institutional / Structural",
             "startAuthorized": False,
-            "rationale": (
-                "Social has the greater architecture burden but also the stronger immediate OIE leverage, "
-                "13 Psychological couplings, five Technological couplings, 25 reusable completed-Layer reviews, "
-                "and the SOC-F07 pilot. Auditing it next exposes Network State, aggregation, actual/perceived norm, "
-                "and individual/group boundaries before the final institutional audit. Institutional / Structural "
-                "then closes the program with the largest inventory and the broad policy/implementation and "
-                "institution/person-level reconciliation burden."
-            ),
+            "rationale": "The Social candidate audit is complete and awaits human governance. Institutional / Structural is the sole unstarted Layer; starting it remains a separate human decision.",
         },
     })
     return report
@@ -100,9 +95,9 @@ def build_status() -> dict:
         {"layer": "Psychological", "candidateAudit": "COMPLETE", "humanGovernance": "COMPLETE",
          "materialization": "1 Relationship, 29 HT, 7 EA, 8 EVA governed", "activationAudit": "6 bundles activated",
          "newActiveScience": "18 records (6 HT / 6 EA / 6 EVA)", "majorBlocker": "BLK-PSY-001, BLK-PSY-002, BLK-PSY-003; repetition contribution inactive"},
-        {"layer": "Social", "candidateAudit": "NOT_STARTED (SOC-F07 PILOT COMPLETE)", "humanGovernance": "FULL LAYER PENDING",
-         "materialization": "Prior SOC-F07 pilot only", "activationAudit": "FULL LAYER PENDING",
-         "newActiveScience": "No full-Layer additions", "majorBlocker": "23 RDS; 10 RDS sources; Network State binding; HYP-SOC-F07-H12/H20"},
+        {"layer": "Social", "candidateAudit": "COMPLETE", "humanGovernance": "PENDING",
+         "materialization": "NONE (candidate-only audit)", "activationAudit": "PENDING GOVERNANCE",
+         "newActiveScience": "0", "majorBlocker": "23 RDS; 10 RDS sources; Network State binding; HYP-SOC-F07-H12/H20"},
         {"layer": "Cultural", "candidateAudit": "COMPLETE", "humanGovernance": "COMPLETE",
          "materialization": "NONE", "activationAudit": "NOT REQUIRED",
          "newActiveScience": "0", "majorBlocker": "ARCH-CUL-LAYER-0001 / BLK-CUL-RDS-001; ASTRA-CUL-LAYER-001"},
@@ -122,7 +117,7 @@ def build_status() -> dict:
     return {
         "schemaVersion": "1.0.0", "checkpointId": "LAYER-SCALE-UP-PROGRAM-STATUS-2026-09-22-001",
         "sourceCommit": SOURCE_COMMIT, "layers": rows,
-        "completedCandidateAudits": 6, "fullLayerAuditsRemaining": ["Social", "Institutional / Structural"],
+        "completedCandidateAudits": 7, "fullLayerAuditsRemaining": ["Institutional / Structural"],
         "activationChangesInThisCloseout": 0,
     }
 
@@ -133,7 +128,7 @@ def render_readiness(report: dict) -> str:
         "",
         "**READ-ONLY MECHANICAL PLANNING - HUMAN LAYER-START DECISION REQUIRED**",
         "",
-        f"Analysis `{ANALYSIS_ID}` uses main `{SOURCE_COMMIT}` after Technological governance and activation closeout. No literature research, candidate generation, scientific materialization, activation, ontology change, or architecture change was performed.",
+        f"Analysis `{ANALYSIS_ID}` uses the Social audit baseline `{SOURCE_COMMIT}` and includes the completed candidate-only Social package. No scientific materialization, activation, ontology change, or architecture change was performed.",
         "",
         "## Mechanical comparison",
         "",
@@ -160,7 +155,7 @@ def render_readiness(report: dict) -> str:
         "", "## Institutional / Structural readiness", "",
         f"Institutional / Structural has the larger inventory ({institutional['entities']} entities), {institutional['rds']} RDS, {institutional['rdsCausalSourceCount']} RDS causal sources, {institutional['blockedEntityCount']} blocked entities, {institutional['causalIsolates']} isolates, and {institutional['legacyV1IncompleteBurden']} V1-incomplete incident causal Relationships. It has no current Network State binding and no structured pilot queue. Objective institution versus perceived institution, policy versus implementation, capacity versus experienced access, rule versus compliance, authority versus legitimacy, and institution-level versus person-level targets dominate the expected reconciliation burden.",
         "", "## Recommended sequence", "",
-        "**RECOMMENDED_NEXT_LAYER: Social.** Its OIE value and leverage over completed Psychological, Informational, Cultural, Biological, and Technological reviews are highest. The SOC-F07 pilot supplies tested identity, source, RDS, and Network State infrastructure. Its greater architecture burden is also programmatically useful: resolving the scientific review surface around network topology, aggregation, norms, and group/person levels before Institutional work should expose shared representation questions early. This recommendation does not authorize starting the Layer or resolving those questions.",
+        "**SOCIAL CANDIDATE AUDIT: COMPLETE.** Its human scientific governance package is now the active boundary. The RDS, Network State, aggregation, norm and group/person questions remain recommendations or blockers; no production change followed.",
         "",
         "**FINAL_LAYER: Institutional / Structural.** It closes the program with the largest remaining inventory and broadest policy/implementation and institution/person-level reconciliation burden. Deferring it until after Social allows any reusable network, aggregate, legitimacy, coordination, and multi-level governance lessons to be carried into the final audit.",
     ]
@@ -181,7 +176,7 @@ def render_status(status: dict) -> str:
     for row in status["layers"]:
         lines.append(f"| {row['layer']} | {row['candidateAudit']} | {row['humanGovernance']} | {row['materialization']} | {row['activationAudit']} | {row['newActiveScience']} | {row['majorBlocker']} |")
     lines += [
-        "", "Six full-Layer candidate audits are complete. Social and Institutional / Structural remain. ENV and Technological governed bundles remain inactive because the current ACTIVE contract requires non-UNKNOWN mechanism status; neither bounded effect is scientifically rejected.",
+        "", "Seven full-Layer candidate audits are complete. Institutional / Structural remains unstarted. ENV and Technological governed bundles remain inactive because the current ACTIVE contract requires non-UNKNOWN mechanism status; neither bounded effect is scientifically rejected.",
     ]
     return "\n".join(lines) + "\n"
 
@@ -192,7 +187,7 @@ def main() -> None:
     write_json(STATUS_REPORT, status)
     write_text(DOC, render_readiness(report))
     write_text(STATUS_DOC, render_status(status))
-    print(json.dumps({"analysisId": ANALYSIS_ID, "next": "Social", "final": "Institutional / Structural", "scienceChanges": 0}, indent=2))
+    print(json.dumps({"analysisId": ANALYSIS_ID, "next": "Institutional / Structural", "final": "Institutional / Structural", "scienceChanges": 0}, indent=2))
 
 
 if __name__ == "__main__":

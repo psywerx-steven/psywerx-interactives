@@ -2,14 +2,14 @@
 
 **READ-ONLY MECHANICAL PLANNING - HUMAN LAYER-START DECISION REQUIRED**
 
-Analysis `FINAL-TWO-LAYER-READINESS-2026-09-22-001` uses main `5513a3e352da1938e9fdefc6473a3864ccf552da` after Technological governance and activation closeout. No literature research, candidate generation, scientific materialization, activation, ontology change, or architecture change was performed.
+Analysis `FINAL-TWO-LAYER-READINESS-2026-09-22-001` uses the Social audit baseline `bb9336b9b1cf0bcb110cbf39da93a67d38c64cea` and includes the completed candidate-only Social package. No scientific materialization, activation, ontology change, or architecture change was performed.
 
 ## Mechanical comparison
 
 | Layer | Families | Drivers | RDS | Entities | Incident rels | Causal | Within | Cross-Family | Cross-Layer in/out | Isolates | RDS sources | V1 incomplete | Blocked | Network State | A&E HT gov/active | A&E EA gov/active | Prior reviews | Workload |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|
 | Social | 12 | 83 | 23 | 106 | 99 | 92 | 39 | 22 | 21/10 | 34 | 10 | 92 | 6 | 1 | 9/1 | 0/0 | 25 | **VERY_HIGH** |
-| Institutional / Structural | 13 | 112 | 4 | 116 | 62 | 61 | 22 | 19 | 4/16 | 49 | 2 | 61 | 2 | 0 | 8/1 | 0/0 | 15 | **VERY_HIGH** |
+| Institutional / Structural | 13 | 112 | 4 | 116 | 62 | 61 | 22 | 19 | 4/16 | 49 | 2 | 61 | 2 | 0 | 8/1 | 0/0 | 21 | **VERY_HIGH** |
 
 ## Social readiness
 
@@ -21,6 +21,6 @@ Institutional / Structural has the larger inventory (116 entities), 4 RDS, 2 RDS
 
 ## Recommended sequence
 
-**RECOMMENDED_NEXT_LAYER: Social.** Its OIE value and leverage over completed Psychological, Informational, Cultural, Biological, and Technological reviews are highest. The SOC-F07 pilot supplies tested identity, source, RDS, and Network State infrastructure. Its greater architecture burden is also programmatically useful: resolving the scientific review surface around network topology, aggregation, norms, and group/person levels before Institutional work should expose shared representation questions early. This recommendation does not authorize starting the Layer or resolving those questions.
+**SOCIAL CANDIDATE AUDIT: COMPLETE.** Its human scientific governance package is now the active boundary. The RDS, Network State, aggregation, norm and group/person questions remain recommendations or blockers; no production change followed.
 
 **FINAL_LAYER: Institutional / Structural.** It closes the program with the largest remaining inventory and broadest policy/implementation and institution/person-level reconciliation burden. Deferring it until after Social allows any reusable network, aggregate, legitimacy, coordination, and multi-level governance lessons to be carried into the final audit.
