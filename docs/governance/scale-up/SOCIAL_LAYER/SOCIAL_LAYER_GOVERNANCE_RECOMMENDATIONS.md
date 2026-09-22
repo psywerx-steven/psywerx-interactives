@@ -4,7 +4,7 @@ ADVISORY — HUMAN DECISION REQUIRED. Candidate-only science; new GOVERNED = 0 a
 
 ## Executive summary
 
-229 original rows represent 23 distinct new scientific decisions: 9 grouped votes + 12 individual decisions + 2 blocked decisions. 144 rows are non-voting acknowledgements, and 34 exact prior decisions require no new vote.
+229 original rows represent 23 distinct new scientific decisions: 4 grouped votes + 17 individual decisions + 2 blocked decisions. 144 rows are non-voting acknowledgements, and 34 exact prior decisions require no new vote.
 
 ## Existing Relationships
 

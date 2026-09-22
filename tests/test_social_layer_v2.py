@@ -74,7 +74,7 @@ class SocialLayerV2Tests(unittest.TestCase):
     def test_governance_compression_and_zero_materialization(self):
         rec = read("governance-recommendations.json")
         self.assertEqual(rec["originalGovernanceRows"], 229)
-        self.assertEqual(rec["compression"], {"groupedHumanDecisions": 9, "individualScientificDecisions": 12,
+        self.assertEqual(rec["compression"], {"groupedHumanDecisions": 4, "individualScientificDecisions": 17,
             "blockedDecisions": 2, "nonVotingAcknowledgements": 144, "distinctScientificDecisions": 23,
             "priorDecisionsReused": 34})
         self.assertEqual(rec["recommendedFutureMaterialization"], {"relationships": 0, "happeningTypes": 0, "effectAssertions": 0, "evidenceAssessments": 0})

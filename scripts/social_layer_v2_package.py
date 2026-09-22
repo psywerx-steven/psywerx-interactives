@@ -329,8 +329,8 @@ def main():
     s.write(D / "governance-index.json", index)
     units = {x["decisionUnit"] for x in index if x["voting"]}
     blocked = {"DU-HYP-SOC-F07-H12", "DU-HYP-SOC-F07-H20"}
-    individual = {u for u in units if u.startswith("DU-REL-") is False and u not in {"DU-RESEARCH-ROUTES"} and u not in blocked}
-    grouped = units - individual - blocked
+    grouped = units & {"DU-REL-RETAIN_AS_IS", "DU-REL-RETAIN_V1_INCOMPLETE", "DU-REL-RESEARCH_NEEDED", "DU-RESEARCH-ROUTES"}
+    individual = units - grouped - blocked
     rec = {"advisory": NOTICE, "programId": s.PROGRAM_ID, "originalGovernanceRows": len(index),
         "existingRelationships": {"counts": dict(sorted(counts.items())),
             "recommendations": [{"id": r["id"], "recommendation": mapping[r["disposition"]], "priorDecisionReused": r["priorLayerReviewReused"]} for r in reviews.values()]},
