@@ -150,6 +150,12 @@ jobs:
       - name: Validate zero-materialization Cultural governance closeout
         run: python -m unittest discover -s tests -p "test_cultural_governance_closeout.py"
 
+      - name: Validate candidate-only Physical / Environmental Layer V2 audit
+        run: python -m unittest discover -s tests -p "test_physical_environmental_layer_v2.py"
+
+      - name: Validate exact Physical / Environmental governance materialization
+        run: python -m unittest discover -s tests -p "test_physical_environmental_governance_materialization.py"
+
       - name: Verify deterministic Biological Layer registries
         run: |
           python scripts/biological_layer_v2_curate.py
@@ -162,6 +168,11 @@ jobs:
         run: |
           python scripts/cultural_layer_v2_package.py
           git diff --exit-code -- data/candidates/actions-events-v1/CULTURAL_LAYER docs/governance/scale-up/CULTURAL_LAYER
+
+      - name: Verify deterministic Physical / Environmental Layer registries
+        run: |
+          python scripts/physical_environmental_layer_v2_package.py
+          git diff --exit-code -- data/candidates/actions-events-v1/PHYSICAL_ENVIRONMENTAL_LAYER docs/governance/scale-up/PHYSICAL_ENVIRONMENTAL_LAYER
 
       - name: Verify deterministic Informational Layer registries
         run: |
@@ -312,6 +323,12 @@ jobs:
       - name: Validate zero-materialization Cultural governance closeout
         run: python -m unittest discover -s tests -p "test_cultural_governance_closeout.py"
 
+      - name: Validate candidate-only Physical / Environmental Layer V2 audit
+        run: python -m unittest discover -s tests -p "test_physical_environmental_layer_v2.py"
+
+      - name: Validate exact Physical / Environmental governance materialization
+        run: python -m unittest discover -s tests -p "test_physical_environmental_governance_materialization.py"
+
       - name: Verify deterministic Biological Layer registries
         run: |
           python scripts/biological_layer_v2_curate.py
@@ -324,6 +341,11 @@ jobs:
         run: |
           python scripts/cultural_layer_v2_package.py
           git diff --exit-code -- data/candidates/actions-events-v1/CULTURAL_LAYER docs/governance/scale-up/CULTURAL_LAYER
+
+      - name: Verify deterministic Physical / Environmental Layer registries
+        run: |
+          python scripts/physical_environmental_layer_v2_package.py
+          git diff --exit-code -- data/candidates/actions-events-v1/PHYSICAL_ENVIRONMENTAL_LAYER docs/governance/scale-up/PHYSICAL_ENVIRONMENTAL_LAYER
 
       - name: Verify deterministic Informational Layer registries
         run: |

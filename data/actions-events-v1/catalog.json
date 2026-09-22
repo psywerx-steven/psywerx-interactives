@@ -7712,6 +7712,171 @@
       "recordClass": "SCIENTIFIC_RECORD",
       "revision": 1,
       "schemaVersion": "1.0.0"
+    },
+    {
+      "actorOrSourceSystem": "ROLE-CONSENTED-RESEARCH-TASK-OPERATOR",
+      "aliases": [],
+      "componentEnumeration": "NOT_APPLICABLE",
+      "components": [],
+      "controlProfiles": [
+        {
+          "actorId": "ROLE-CONSENTED-RESEARCH-TASK-OPERATOR",
+          "capabilities": [],
+          "extent": "UNKNOWN",
+          "conditions": "Identity only; route, duration, distance, pace and relevant physical conditions must be specified. Independent consent, safety, ethics, feasibility and practitioner authority remain required.",
+          "context": "A bounded low-intensity walk through a defined natural outdoor setting.",
+          "population": "Specified research participants",
+          "provenance": {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "method": "Exact mechanical materialization of a human-authorized candidate; no scientific semantic expansion",
+            "recordedAt": "2026-09-21T18:00:00Z",
+            "originReferences": [
+              "AUD-PHYSICAL-ENVIRONMENTAL-LAYER-AE-V1-20260921-001",
+              "HT-CAND-ENV-LAYER-0001",
+              "ffc733b4811ff76b2228eedd955779719f3a13af",
+              "GOV-PHYSICAL-ENVIRONMENTAL-LAYER-001-2026-09-21"
+            ],
+            "limitations": [
+              "No mood, cognition, stress, health, feasibility, recommendation, generalization or activation inference"
+            ]
+          }
+        }
+      ],
+      "description": "A bounded low-intensity walk of specified duration and route through a defined natural outdoor setting, with pace, distance and material environmental conditions recorded.",
+      "domainTags": [
+        "DELIBERATE_INTERVENTION"
+      ],
+      "governance": {
+        "lifecycleStatus": "GOVERNED",
+        "activationStatus": "INACTIVE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "APPROVED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": "docs/governance/scale-up/PHYSICAL_ENVIRONMENTAL_LAYER/PHYSICAL_ENVIRONMENTAL_LAYER_GOVERNANCE_DECISION_001.md",
+        "authorizedBy": "authorized human governor",
+        "decisionDate": "2026-09-21",
+        "effectiveVersion": "PHYSICAL-ENVIRONMENTAL-LAYER-GOVERNANCE-001",
+        "decisionRationale": "Approved reusable natural-setting walk operation identity only; no effect or activation authorized.",
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Preserved non-governed candidate workflow",
+            "timestamp": "2026-09-21T18:00:00Z",
+            "objectId": "HT-V1-ENV-LAYER-001",
+            "revision": 1,
+            "provenance": "AUD-PHYSICAL-ENVIRONMENTAL-LAYER-AE-V1-20260921-001:ffc733b4811ff76b2228eedd955779719f3a13af:HT-CAND-ENV-LAYER-0001:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Preserved non-governed candidate workflow",
+            "timestamp": "2026-09-21T18:00:00Z",
+            "objectId": "HT-V1-ENV-LAYER-001",
+            "revision": 1,
+            "provenance": "AUD-PHYSICAL-ENVIRONMENTAL-LAYER-AE-V1-20260921-001:ffc733b4811ff76b2228eedd955779719f3a13af:HT-CAND-ENV-LAYER-0001:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Preserved non-governed candidate workflow",
+            "timestamp": "2026-09-21T18:00:00Z",
+            "objectId": "HT-V1-ENV-LAYER-001",
+            "revision": 1,
+            "provenance": "AUD-PHYSICAL-ENVIRONMENTAL-LAYER-AE-V1-20260921-001:ffc733b4811ff76b2228eedd955779719f3a13af:HT-CAND-ENV-LAYER-0001:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "GOVERNED",
+              "activationStatus": "INACTIVE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Exact human approval materialized; activation withheld",
+            "timestamp": "2026-09-21T18:00:00Z",
+            "objectId": "HT-V1-ENV-LAYER-001",
+            "revision": 1,
+            "provenance": "AUD-PHYSICAL-ENVIRONMENTAL-LAYER-AE-V1-20260921-001:ffc733b4811ff76b2228eedd955779719f3a13af:HT-CAND-ENV-LAYER-0001:transition-4",
+            "governanceDecisionRecord": "docs/governance/scale-up/PHYSICAL_ENVIRONMENTAL_LAYER/PHYSICAL_ENVIRONMENTAL_LAYER_GOVERNANCE_DECISION_001.md",
+            "exactDecisionMaterialization": true
+          }
+        ]
+      },
+      "id": "HT-V1-ENV-LAYER-001",
+      "identityDefiningProfile": {
+        "doseIntensity": null,
+        "duration": null,
+        "frequency": null,
+        "reach": null,
+        "timing": null
+      },
+      "identityKey": "specified-low-intensity-natural-outdoor-walk",
+      "identitySourceIds": [
+        "SRC-609",
+        "SRC-610",
+        "SRC-611"
+      ],
+      "intentionality": "DELIBERATE",
+      "interventionSubset": true,
+      "kindTags": [
+        "ACTION"
+      ],
+      "name": "Specified low-intensity walk in a natural outdoor setting",
+      "originLayers": [
+        "ENV"
+      ],
+      "packageKind": "ATOMIC",
+      "pattern": [
+        "DISCRETE"
+      ],
+      "provenance": {
+        "actorClass": "AUTOMATED_PROCESS_OR_AI",
+        "method": "Exact mechanical materialization of a human-authorized candidate; no scientific semantic expansion",
+        "recordedAt": "2026-09-21T18:00:00Z",
+        "originReferences": [
+          "AUD-PHYSICAL-ENVIRONMENTAL-LAYER-AE-V1-20260921-001",
+          "HT-CAND-ENV-LAYER-0001",
+          "ffc733b4811ff76b2228eedd955779719f3a13af",
+          "GOV-PHYSICAL-ENVIRONMENTAL-LAYER-001-2026-09-21"
+        ],
+        "limitations": [
+          "Operation identity only; efficacy, feasibility, recommendation and activation are not established"
+        ]
+      },
+      "recordClass": "SCIENTIFIC_RECORD",
+      "revision": 1,
+      "schemaVersion": "1.0.0"
     }
   ],
   "occurrences": [],
@@ -9539,6 +9704,195 @@
       "typeId": "HT-V1-PSY-LAYER-022",
       "uncertainty": [
         "Specific populations, bundled manipulations and construct/proxy limits; no practitioner permission, behavioral benefit or model eligibility."
+      ]
+    },
+    {
+      "change": "INCREASE",
+      "claimSemantics": "CAUSAL",
+      "contribution": {
+        "groupId": "CONTRIB-ENV-LAYER-NATURE-WALK-001",
+        "role": "PRIMARY",
+        "relatedAssertionIds": [],
+        "reconciliation": "One bounded operation-to-mood contribution; no component or downstream propagation may be inferred."
+      },
+      "evidenceAssessmentIds": [
+        "EVA-AE-V1-ENV-LAYER-001"
+      ],
+      "exposureProfile": {
+        "doseIntensity": null,
+        "duration": null,
+        "frequency": null,
+        "reach": null,
+        "timing": null
+      },
+      "governance": {
+        "lifecycleStatus": "GOVERNED",
+        "activationStatus": "INACTIVE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "APPROVED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": "docs/governance/scale-up/PHYSICAL_ENVIRONMENTAL_LAYER/PHYSICAL_ENVIRONMENTAL_LAYER_GOVERNANCE_DECISION_001.md",
+        "authorizedBy": "authorized human governor",
+        "decisionDate": "2026-09-21",
+        "effectiveVersion": "PHYSICAL-ENVIRONMENTAL-LAYER-GOVERNANCE-001",
+        "decisionRationale": "Approved exact bounded immediate positive mood-valence contrast; MIXED evidence and all exclusions preserved; activation withheld.",
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Preserved non-governed candidate workflow",
+            "timestamp": "2026-09-21T18:00:00Z",
+            "objectId": "EA-V1-ENV-LAYER-001",
+            "revision": 1,
+            "provenance": "AUD-PHYSICAL-ENVIRONMENTAL-LAYER-AE-V1-20260921-001:ffc733b4811ff76b2228eedd955779719f3a13af:EA-CAND-ENV-LAYER-0001:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Preserved non-governed candidate workflow",
+            "timestamp": "2026-09-21T18:00:00Z",
+            "objectId": "EA-V1-ENV-LAYER-001",
+            "revision": 1,
+            "provenance": "AUD-PHYSICAL-ENVIRONMENTAL-LAYER-AE-V1-20260921-001:ffc733b4811ff76b2228eedd955779719f3a13af:EA-CAND-ENV-LAYER-0001:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Preserved non-governed candidate workflow",
+            "timestamp": "2026-09-21T18:00:00Z",
+            "objectId": "EA-V1-ENV-LAYER-001",
+            "revision": 1,
+            "provenance": "AUD-PHYSICAL-ENVIRONMENTAL-LAYER-AE-V1-20260921-001:ffc733b4811ff76b2228eedd955779719f3a13af:EA-CAND-ENV-LAYER-0001:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "GOVERNED",
+              "activationStatus": "INACTIVE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Exact human approval materialized; activation withheld",
+            "timestamp": "2026-09-21T18:00:00Z",
+            "objectId": "EA-V1-ENV-LAYER-001",
+            "revision": 1,
+            "provenance": "AUD-PHYSICAL-ENVIRONMENTAL-LAYER-AE-V1-20260921-001:ffc733b4811ff76b2228eedd955779719f3a13af:EA-CAND-ENV-LAYER-0001:transition-4",
+            "governanceDecisionRecord": "docs/governance/scale-up/PHYSICAL_ENVIRONMENTAL_LAYER/PHYSICAL_ENVIRONMENTAL_LAYER_GOVERNANCE_DECISION_001.md",
+            "exactDecisionMaterialization": true
+          }
+        ]
+      },
+      "grounding": {
+        "causalIdentificationRationale": "Randomized and controlled natural-versus-built walking comparisons support only the bounded immediate affect contrast; heterogeneity and package differences remain explicit.",
+        "derivationEntailed": "NO",
+        "duplicatePropagationControl": null,
+        "representedDriverId": null
+      },
+      "id": "EA-V1-ENV-LAYER-001",
+      "inferenceProvenance": null,
+      "intendedChange": null,
+      "interaction": {
+        "mode": "NONE",
+        "otherEffectIds": [],
+        "evidenceAssessmentIds": []
+      },
+      "knowledgeStatus": "SUPPORTED_EFFECT",
+      "mechanism": "No component mechanism is identified; route vegetation, water, traffic, surfaces and other multisensory conditions may jointly differ.",
+      "mechanismStatus": "UNKNOWN",
+      "mechanisticDriverIds": [],
+      "moderatorLinks": [],
+      "observedChange": "INCREASE",
+      "occurrenceId": null,
+      "otherSpecified": null,
+      "outcomes": [],
+      "productionMethod": "SYNTHESIS",
+      "property": "LEVEL",
+      "provenance": {
+        "actorClass": "AUTOMATED_PROCESS_OR_AI",
+        "method": "Exact mechanical materialization of a human-authorized candidate; no scientific semantic expansion",
+        "recordedAt": "2026-09-21T18:00:00Z",
+        "originReferences": [
+          "AUD-PHYSICAL-ENVIRONMENTAL-LAYER-AE-V1-20260921-001",
+          "EA-CAND-ENV-LAYER-0001",
+          "ffc733b4811ff76b2228eedd955779719f3a13af",
+          "GOV-PHYSICAL-ENVIRONMENTAL-LAYER-001-2026-09-21"
+        ],
+        "limitations": [
+          "No enduring mood, cognition, attention, memory, stress physiology, clinical benefit, behavior, dose-response, general nature-exposure, universal setting transfer, component mechanism or practitioner recommendation claim.",
+          "No numerical effect magnitude or practitioner eligibility"
+        ]
+      },
+      "qualifiers": {
+        "distribution": null,
+        "evaluation": {
+          "criterion": null,
+          "stakeholder": null,
+          "valence": "NOT_EVALUATED"
+        },
+        "prerequisites": [
+          "Consent, safety, feasibility, accessibility, legality, ethics and context applicability NOT_ASSESSED"
+        ],
+        "reach": null,
+        "risks": [
+          "Do not infer health treatment or practitioner actionability"
+        ],
+        "subgroups": [],
+        "unintendedConsequences": [
+          "Setting and walking packages may not transfer across populations or environments"
+        ]
+      },
+      "recordClass": "SCIENTIFIC_RECORD",
+      "revision": 1,
+      "schemaVersion": "1.0.0",
+      "scope": {
+        "population": "Healthy adult and predominantly young-adult or student samples in specified field settings",
+        "context": "Specified low-intensity natural outdoor walk compared with a time/distance-matched urban or built-setting walk; the natural route is a multisensory package.",
+        "timing": "Immediate post-walk self-report in the studied session",
+        "measurement": "Immediate self-reported positive affect or mood-valence component; not cognition, attention, memory, stress physiology or behavior",
+        "boundaryConditions": "No enduring mood, cognition, attention, memory, stress physiology, clinical benefit, behavior, dose-response, general nature-exposure, universal setting transfer, component mechanism or practitioner recommendation claim."
+      },
+      "targetId": "PSY-050",
+      "targetKind": "DRIVER",
+      "targetLayers": [
+        "PSY"
+      ],
+      "typeId": "HT-V1-ENV-LAYER-001",
+      "uncertainty": [
+        "MIXED evidence",
+        "High setting heterogeneity",
+        "Young-adult/student sampling",
+        "Exercise contribution",
+        "Review/primary-study overlap"
       ]
     }
   ],
@@ -12686,6 +13040,352 @@
           "FND-EA-V1-PSY-LAYER-0023-FRAMING_NULL"
         ]
       }
+    },
+    {
+      "schemaVersion": "1.0.0",
+      "id": "EVA-AE-V1-ENV-LAYER-001",
+      "revision": 1,
+      "recordClass": "SCIENTIFIC_RECORD",
+      "provenance": {
+        "actorClass": "AUTOMATED_PROCESS_OR_AI",
+        "method": "Exact mechanical materialization of a human-authorized candidate; no scientific semantic expansion",
+        "recordedAt": "2026-09-21T18:00:00Z",
+        "originReferences": [
+          "AUD-PHYSICAL-ENVIRONMENTAL-LAYER-AE-V1-20260921-001",
+          "EVA-AE-CAND-ENV-LAYER-0001",
+          "ffc733b4811ff76b2228eedd955779719f3a13af",
+          "GOV-PHYSICAL-ENVIRONMENTAL-LAYER-001-2026-09-21"
+        ],
+        "limitations": [
+          "MIXED_SUPPORTS_BOUNDED is preserved; governance does not upgrade certainty"
+        ]
+      },
+      "governance": {
+        "lifecycleStatus": "GOVERNED",
+        "activationStatus": "INACTIVE",
+        "blockStatus": "NONE",
+        "decisionOutcome": "APPROVED",
+        "authorityBasis": "V1_NATIVE",
+        "decisionRecord": "docs/governance/scale-up/PHYSICAL_ENVIRONMENTAL_LAYER/PHYSICAL_ENVIRONMENTAL_LAYER_GOVERNANCE_DECISION_001.md",
+        "authorizedBy": "authorized human governor",
+        "decisionDate": "2026-09-21",
+        "effectiveVersion": "PHYSICAL-ENVIRONMENTAL-LAYER-GOVERNANCE-001",
+        "decisionRationale": "Approved MIXED/MODERATE bounded synthesis; nulls, comparator improvements, heterogeneity and overlap preserved; activation withheld.",
+        "supersedesIds": [],
+        "transitionProvenance": [
+          {
+            "fromState": {
+              "lifecycleStatus": null,
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Preserved non-governed candidate workflow",
+            "timestamp": "2026-09-21T18:00:00Z",
+            "objectId": "EVA-AE-V1-ENV-LAYER-001",
+            "revision": 1,
+            "provenance": "AUD-PHYSICAL-ENVIRONMENTAL-LAYER-AE-V1-20260921-001:ffc733b4811ff76b2228eedd955779719f3a13af:EVA-AE-CAND-ENV-LAYER-0001:transition-1",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "CANDIDATE",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Preserved non-governed candidate workflow",
+            "timestamp": "2026-09-21T18:00:00Z",
+            "objectId": "EVA-AE-V1-ENV-LAYER-001",
+            "revision": 1,
+            "provenance": "AUD-PHYSICAL-ENVIRONMENTAL-LAYER-AE-V1-20260921-001:ffc733b4811ff76b2228eedd955779719f3a13af:EVA-AE-CAND-ENV-LAYER-0001:transition-2",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "RESEARCH_NEEDED",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Preserved non-governed candidate workflow",
+            "timestamp": "2026-09-21T18:00:00Z",
+            "objectId": "EVA-AE-V1-ENV-LAYER-001",
+            "revision": 1,
+            "provenance": "AUD-PHYSICAL-ENVIRONMENTAL-LAYER-AE-V1-20260921-001:ffc733b4811ff76b2228eedd955779719f3a13af:EVA-AE-CAND-ENV-LAYER-0001:transition-3",
+            "governanceDecisionRecord": null,
+            "exactDecisionMaterialization": false
+          },
+          {
+            "fromState": {
+              "lifecycleStatus": "REVIEW_READY",
+              "activationStatus": "NOT_ELIGIBLE"
+            },
+            "toState": {
+              "lifecycleStatus": "GOVERNED",
+              "activationStatus": "INACTIVE"
+            },
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "rationale": "Exact human approval materialized; activation withheld",
+            "timestamp": "2026-09-21T18:00:00Z",
+            "objectId": "EVA-AE-V1-ENV-LAYER-001",
+            "revision": 1,
+            "provenance": "AUD-PHYSICAL-ENVIRONMENTAL-LAYER-AE-V1-20260921-001:ffc733b4811ff76b2228eedd955779719f3a13af:EVA-AE-CAND-ENV-LAYER-0001:transition-4",
+            "governanceDecisionRecord": "docs/governance/scale-up/PHYSICAL_ENVIRONMENTAL_LAYER/PHYSICAL_ENVIRONMENTAL_LAYER_GOVERNANCE_DECISION_001.md",
+            "exactDecisionMaterialization": true
+          }
+        ]
+      },
+      "assertion": {
+        "objectType": "EFFECT_ASSERTION",
+        "objectId": "EA-V1-ENV-LAYER-001"
+      },
+      "sourceFindings": [
+        {
+          "id": "FND-EA-V1-ENV-LAYER-001-001",
+          "sourceId": "SRC-609",
+          "locator": "PubMed abstract; identity verified through NCBI Eutilities",
+          "accessDepth": "ABSTRACT",
+          "population": "92 adults",
+          "context": "Specified natural versus built or urban walking/exposure comparison",
+          "basis": [
+            "EXPERIMENTAL"
+          ],
+          "supportedSemantics": [
+            "CAUSAL"
+          ],
+          "inputRole": "DIRECT_FINDING",
+          "design": "Randomized controlled trial",
+          "exposure": "40-minute low-intensity natural versus urban walk matched on time and distance",
+          "comparator": "Time/distance-matched urban walk",
+          "measurement": "Immediate self-reported affect; neural measure is not the target",
+          "timing": "Immediate post-exposure or post-walk assessment in the studied session",
+          "result": "Both groups improved affect, with greater positive-affect improvement after the nature walk; neural measure differed by route.",
+          "disposition": "SUPPORTS",
+          "quantitativeEstimate": null,
+          "uncertainty": [
+            "No common causal coefficient or portable effect magnitude extracted"
+          ],
+          "limitations": [
+            "Setting package not one green component; immediate outcome and adult sample only."
+          ],
+          "datasetIds": [
+            "PMID_39516236"
+          ],
+          "overlapNotes": "Primary randomized trial; not independent of later reviews if included",
+          "nullInterpretation": null,
+          "provenance": {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "method": "Exact mechanical materialization of a human-authorized candidate; no scientific semantic expansion",
+            "recordedAt": "2026-09-21T18:00:00Z",
+            "originReferences": [
+              "AUD-PHYSICAL-ENVIRONMENTAL-LAYER-AE-V1-20260921-001",
+              "SF-ENV-LAYER-010",
+              "ffc733b4811ff76b2228eedd955779719f3a13af",
+              "GOV-PHYSICAL-ENVIRONMENTAL-LAYER-001-2026-09-21"
+            ],
+            "limitations": [
+              "Governance does not authorize activation, quantitative execution or practitioner actionability"
+            ]
+          }
+        },
+        {
+          "id": "FND-EA-V1-ENV-LAYER-001-002",
+          "sourceId": "SRC-610",
+          "locator": "PubMed abstract; identity verified through NCBI Eutilities",
+          "accessDepth": "ABSTRACT",
+          "population": "188 undergraduates",
+          "context": "Specified natural versus built or urban walking/exposure comparison",
+          "basis": [
+            "EXPERIMENTAL"
+          ],
+          "supportedSemantics": [
+            "CAUSAL"
+          ],
+          "inputRole": "DIRECT_FINDING",
+          "design": "Three-environment experiment",
+          "exposure": "Outdoor nature, outdoor urban or indoor treadmill walk",
+          "comparator": "Urban outdoor and indoor treadmill walks",
+          "measurement": "Positive/negative affect; the cognition null is retained as an explicit boundary",
+          "timing": "Immediate post-exposure or post-walk assessment in the studied session",
+          "result": "Nature condition had greatest affect improvement, while no location effect appeared on cognitive measures.",
+          "disposition": "SUPPORTS",
+          "quantitativeEstimate": null,
+          "uncertainty": [
+            "No common causal coefficient or portable effect magnitude extracted"
+          ],
+          "limitations": [
+            "Undergraduate sample; cognitive null blocks transfer to attention/memory claims."
+          ],
+          "datasetIds": [
+            "PMID_38250104"
+          ],
+          "overlapNotes": "Primary experiment; cognition null is not a null mood finding",
+          "nullInterpretation": null,
+          "provenance": {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "method": "Exact mechanical materialization of a human-authorized candidate; no scientific semantic expansion",
+            "recordedAt": "2026-09-21T18:00:00Z",
+            "originReferences": [
+              "AUD-PHYSICAL-ENVIRONMENTAL-LAYER-AE-V1-20260921-001",
+              "SF-ENV-LAYER-011",
+              "ffc733b4811ff76b2228eedd955779719f3a13af",
+              "GOV-PHYSICAL-ENVIRONMENTAL-LAYER-001-2026-09-21"
+            ],
+            "limitations": [
+              "Governance does not authorize activation, quantitative execution or practitioner actionability"
+            ]
+          }
+        },
+        {
+          "id": "FND-EA-V1-ENV-LAYER-001-003",
+          "sourceId": "SRC-611",
+          "locator": "PubMed abstract; identity verified through NCBI Eutilities",
+          "accessDepth": "ABSTRACT",
+          "population": "150 students",
+          "context": "Specified natural versus built or urban walking/exposure comparison",
+          "basis": [
+            "EXPERIMENTAL"
+          ],
+          "supportedSemantics": [
+            "CAUSAL"
+          ],
+          "inputRole": "DIRECT_FINDING",
+          "design": "Randomized three-arm field study",
+          "exposure": "Green walk, urban walk or no-exercise control",
+          "comparator": "Urban walk and no-exercise control",
+          "measurement": "Positive and negative affect",
+          "timing": "Immediate post-exposure or post-walk assessment in the studied session",
+          "result": "Both walking groups reduced negative affect; natural contact showed differential positive/negative-affect patterns reported by the study.",
+          "disposition": "MIXED",
+          "quantitativeEstimate": null,
+          "uncertainty": [
+            "No common causal coefficient or portable effect magnitude extracted"
+          ],
+          "limitations": [
+            "Exercise contributes; young student sample and immediate report."
+          ],
+          "datasetIds": [
+            "PMID_35726335"
+          ],
+          "overlapNotes": "Both walking groups improved negative affect; exercise contribution remains",
+          "nullInterpretation": null,
+          "provenance": {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "method": "Exact mechanical materialization of a human-authorized candidate; no scientific semantic expansion",
+            "recordedAt": "2026-09-21T18:00:00Z",
+            "originReferences": [
+              "AUD-PHYSICAL-ENVIRONMENTAL-LAYER-AE-V1-20260921-001",
+              "SF-ENV-LAYER-012",
+              "ffc733b4811ff76b2228eedd955779719f3a13af",
+              "GOV-PHYSICAL-ENVIRONMENTAL-LAYER-001-2026-09-21"
+            ],
+            "limitations": [
+              "Governance does not authorize activation, quantitative execution or practitioner actionability"
+            ]
+          }
+        },
+        {
+          "id": "FND-EA-V1-ENV-LAYER-001-004",
+          "sourceId": "SRC-612",
+          "locator": "PubMed abstract; identity verified through NCBI Eutilities",
+          "accessDepth": "ABSTRACT",
+          "population": "20 natural-versus-built exposure studies",
+          "context": "Specified natural versus built or urban walking/exposure comparison",
+          "basis": [
+            "EVIDENCE_SYNTHESIS"
+          ],
+          "supportedSemantics": [
+            "CAUSAL"
+          ],
+          "inputRole": "DIRECT_FINDING",
+          "design": "Systematic review and meta-analysis",
+          "exposure": "Natural versus built environment exposure",
+          "comparator": "Built-environment exposure",
+          "measurement": "Positive and negative affect",
+          "timing": "Immediate post-exposure or post-walk assessment in the studied session",
+          "result": "Pooled positive affect increased and negative affect decreased, with extreme heterogeneity and high risk of bias.",
+          "disposition": "MIXED",
+          "quantitativeEstimate": null,
+          "uncertainty": [
+            "No common causal coefficient or portable effect magnitude extracted"
+          ],
+          "limitations": [
+            "Review overlaps experimental paradigms and cannot be counted as independent replication."
+          ],
+          "datasetIds": [
+            "PMID_34900906"
+          ],
+          "overlapNotes": "Review overlaps primary paradigms and is not independent replication",
+          "nullInterpretation": null,
+          "provenance": {
+            "actorClass": "AUTOMATED_PROCESS_OR_AI",
+            "method": "Exact mechanical materialization of a human-authorized candidate; no scientific semantic expansion",
+            "recordedAt": "2026-09-21T18:00:00Z",
+            "originReferences": [
+              "AUD-PHYSICAL-ENVIRONMENTAL-LAYER-AE-V1-20260921-001",
+              "SF-ENV-LAYER-013",
+              "ffc733b4811ff76b2228eedd955779719f3a13af",
+              "GOV-PHYSICAL-ENVIRONMENTAL-LAYER-001-2026-09-21"
+            ],
+            "limitations": [
+              "Governance does not authorize activation, quantitative execution or practitioner actionability"
+            ]
+          }
+        }
+      ],
+      "synthesis": {
+        "sourceFindingIds": [
+          "FND-EA-V1-ENV-LAYER-001-001",
+          "FND-EA-V1-ENV-LAYER-001-002",
+          "FND-EA-V1-ENV-LAYER-001-003",
+          "FND-EA-V1-ENV-LAYER-001-004"
+        ],
+        "disposition": "MIXED",
+        "evidenceStrength": "MODERATE",
+        "confidence": "MODERATE",
+        "rationale": "MIXED_SUPPORTS_BOUNDED: immediate positive-affect signal under specified natural-versus-built walking comparisons, without cognition, durability, health, behavior or component-mechanism transfer.",
+        "confidenceRationale": "Randomized primary studies support the bounded contrast, while comparator improvement, exercise contribution, young samples, high heterogeneity and overlapping synthesis limit confidence.",
+        "conflicts": [
+          {
+            "findingId": "FND-EA-V1-ENV-LAYER-001-003",
+            "dispositionRationale": "Both walking groups improved some affect outcomes, so no universal nature-only benefit is inferred."
+          },
+          {
+            "findingId": "FND-EA-V1-ENV-LAYER-001-004",
+            "dispositionRationale": "Extreme heterogeneity and high risk of bias prevent upgrading MIXED to SUPPORTS."
+          }
+        ],
+        "contraryEvidenceSearch": "ASSESSED",
+        "generalizationLimits": [
+          "Studied adult settings",
+          "Immediate self-report",
+          "Natural route as multisensory package",
+          "No enduring mood, cognition, attention, memory, stress physiology, clinical benefit, behavior, dose-response, general nature-exposure, universal setting transfer, component mechanism or practitioner recommendation claim."
+        ],
+        "datasetOverlap": "PMID 34900906 synthesizes overlapping experimental paradigms and is not counted as independent replication."
+      },
+      "completeness": {
+        "target": "SPECIFIED",
+        "direction": "SPECIFIED",
+        "mechanism": "SPECIFIED",
+        "population": "SPECIFIED",
+        "context": "SPECIFIED",
+        "timing": "SPECIFIED",
+        "measurement": "SPECIFIED",
+        "boundaries": "SPECIFIED"
+      }
     }
   ],
   "authorizations": [
@@ -13178,6 +13878,30 @@
           "id": "HT-V1-BIO-LAYER-001",
           "revision": 1,
           "recordHash": "12774a68d4c713f18ff9e27deb8297c752af2408ab4ae9a319ec83cb7e0be121"
+        }
+      ]
+    },
+    {
+      "decisionId": "GOV-PHYSICAL-ENVIRONMENTAL-LAYER-001-2026-09-21",
+      "decisionRecord": "docs/governance/scale-up/PHYSICAL_ENVIRONMENTAL_LAYER/PHYSICAL_ENVIRONMENTAL_LAYER_GOVERNANCE_DECISION_001.md",
+      "actorClass": "AUTHORIZED_HUMAN_GOVERNOR",
+      "effectiveDate": "2026-09-21",
+      "recordClass": "SCIENTIFIC_RECORD",
+      "authorizedObjects": [
+        {
+          "id": "HT-V1-ENV-LAYER-001",
+          "revision": 1,
+          "recordHash": "1f967a1e14a84bdadbcae60de7c06dae0fa34e4cb98fc0637ce8b988eda5cc4d"
+        },
+        {
+          "id": "EA-V1-ENV-LAYER-001",
+          "revision": 1,
+          "recordHash": "337f16e40ae553122220c4ff70572f63aac0202597837685c9387c84d763c54d"
+        },
+        {
+          "id": "EVA-AE-V1-ENV-LAYER-001",
+          "revision": 1,
+          "recordHash": "4bd457d606e3da4d2f948010140aede3307b009750cb7768fae1e29dcedf1cbf"
         }
       ]
     }

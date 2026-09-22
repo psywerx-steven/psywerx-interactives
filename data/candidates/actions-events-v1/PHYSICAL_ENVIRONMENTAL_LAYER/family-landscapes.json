@@ -1,0 +1,306 @@
+{
+  "schemaVersion": "1.0.0",
+  "programId": "AUD-PHYSICAL-ENVIRONMENTAL-LAYER-AE-V1-20260921-001",
+  "method": "Bounded Family landscapes; existing canonical ontology sources reused and deep sources PubMed-verified.",
+  "families": {
+    "ENV-F01": {
+      "constructs": "Proximity, travel distance, route directness, connectivity, land-use mix and remoteness are distinct objective properties.",
+      "mechanisms": "Spatial configuration can constrain route choice and opportunity without determining use.",
+      "operations": "Infrastructure or access changes are usually natural experiments rather than blinded manipulations.",
+      "measurement": "GIS exposure, network distance and realized travel differ.",
+      "boundaries": "Accessibility is not utilization; proximity is not a Social relationship.",
+      "candidateSourceIds": [
+        "SRC-CAND-ENV-LAYER-001",
+        "SRC-CAND-ENV-LAYER-002",
+        "SRC-CAND-ENV-LAYER-003",
+        "SRC-CAND-ENV-LAYER-004"
+      ],
+      "existingCanonicalSourceIds": [
+        "SRC326",
+        "SRC327",
+        "SRC328",
+        "SRC330",
+        "SRC332",
+        "SRC363",
+        "SRC365"
+      ],
+      "researchDepth": "FAMILY_LANDSCAPE_ONLY"
+    },
+    "ENV-F02": {
+      "constructs": "Walking, cycling, transit, parking, traffic, speed, congestion and route redundancy describe different transport conditions.",
+      "mechanisms": "Infrastructure changes opportunity and safety while travel behavior depends on uptake.",
+      "operations": "Built-environment natural experiments have selection and concurrent-policy limits.",
+      "measurement": "Objective infrastructure, perceived safety and observed use require separate measures.",
+      "boundaries": "A facility's presence does not establish exposure or behavior.",
+      "candidateSourceIds": [
+        "SRC-CAND-ENV-LAYER-001",
+        "SRC-CAND-ENV-LAYER-002",
+        "SRC-CAND-ENV-LAYER-003"
+      ],
+      "existingCanonicalSourceIds": [
+        "SRC-521",
+        "SRC326",
+        "SRC327",
+        "SRC328",
+        "SRC330",
+        "SRC338",
+        "SRC357",
+        "SRC362"
+      ],
+      "researchDepth": "FAMILY_LANDSCAPE_ONLY"
+    },
+    "ENV-F03": {
+      "constructs": "Layout, sightline, entrance/exit, circulation, seating, enclosure and openness are physical configuration properties.",
+      "mechanisms": "Configuration can affect visibility and movement paths.",
+      "operations": "Room redesigns typically alter several components together.",
+      "measurement": "Geometry and subjective openness/privacy are different levels.",
+      "boundaries": "Package redesign cannot identify one component effect.",
+      "candidateSourceIds": [
+        "SRC-CAND-ENV-LAYER-003",
+        "SRC-CAND-ENV-LAYER-004"
+      ],
+      "existingCanonicalSourceIds": [
+        "SRC332",
+        "SRC333",
+        "SRC334",
+        "SRC335",
+        "SRC336",
+        "SRC355",
+        "SRC356",
+        "SRC357",
+        "SRC359",
+        "SRC361",
+        "SRC362",
+        "SRC367"
+      ],
+      "researchDepth": "FAMILY_LANDSCAPE_ONLY"
+    },
+    "ENV-F04": {
+      "constructs": "Landmarks, signage, legibility, option visibility, proximity, availability and barriers are distinct.",
+      "mechanisms": "Information and geometry can support navigation conditional on perception and ability.",
+      "operations": "Signage placement is a message/environment operation, not attention itself.",
+      "measurement": "Objective visibility differs from noticed or understood guidance.",
+      "boundaries": "Barrier-free design may moderate disability constraints but does not guarantee use.",
+      "candidateSourceIds": [
+        "SRC-CAND-ENV-LAYER-004"
+      ],
+      "existingCanonicalSourceIds": [
+        "SRC326",
+        "SRC331",
+        "SRC332",
+        "SRC333",
+        "SRC334",
+        "SRC356",
+        "SRC360",
+        "SRC361",
+        "SRC364",
+        "SRC365"
+      ],
+      "researchDepth": "FAMILY_LANDSCAPE_ONLY"
+    },
+    "ENV-F05": {
+      "constructs": "Objective density, physical proximity, privacy, bottlenecks and queues differ from perceived crowding.",
+      "mechanisms": "Occupancy and flow constraints can alter movement and exposure.",
+      "operations": "Density manipulations often co-vary with noise, delay and interaction.",
+      "measurement": "Persons per area is not subjective crowding or stress.",
+      "boundaries": "Physical proximity does not entail cohesion, trust or interaction.",
+      "candidateSourceIds": [
+        "SRC-CAND-ENV-LAYER-003"
+      ],
+      "existingCanonicalSourceIds": [
+        "SRC335",
+        "SRC337",
+        "SRC338",
+        "SRC340",
+        "SRC357",
+        "SRC362",
+        "SRC367",
+        "SRC369"
+      ],
+      "researchDepth": "FAMILY_LANDSCAPE_ONLY"
+    },
+    "ENV-F06": {
+      "constructs": "Ambient level, intermittency, intelligibility, vibration, illuminance, spectrum, daylight, glare and clutter require exact physical specification.",
+      "mechanisms": "Acoustic and optical exposures depend on dose, timing, spectrum and task.",
+      "operations": "Noise playback and controlled lighting are plausible operations.",
+      "measurement": "Objective exposure must be separated from annoyance, attention and performance.",
+      "boundaries": "Noise evidence varies by source, task and population; bright-light identity is already governed in BIO-F01.",
+      "candidateSourceIds": [
+        "SRC-CAND-ENV-LAYER-005",
+        "SRC-CAND-ENV-LAYER-006",
+        "SRC-CAND-ENV-LAYER-007"
+      ],
+      "existingCanonicalSourceIds": [
+        "SRC332",
+        "SRC335",
+        "SRC339",
+        "SRC340",
+        "SRC341",
+        "SRC342",
+        "SRC362",
+        "SRC366",
+        "SRC367",
+        "SRC368",
+        "SRC373"
+      ],
+      "researchDepth": "FAMILY_LANDSCAPE_ONLY"
+    },
+    "ENV-F07": {
+      "constructs": "Heat, cold, humidity, wind, precipitation, weather, daylight duration, variability and radiant load differ.",
+      "mechanisms": "Achieved physiological strain depends on dose, clothing, activity, acclimation and baseline.",
+      "operations": "Climate-chamber exposure can isolate selected factors; field weather cannot.",
+      "measurement": "Temperature is not thermal comfort or body strain.",
+      "boundaries": "Thermal-cognitive response is task-, dose- and time-dependent.",
+      "candidateSourceIds": [
+        "SRC-CAND-ENV-LAYER-008",
+        "SRC-CAND-ENV-LAYER-012",
+        "SRC-CAND-ENV-LAYER-013"
+      ],
+      "existingCanonicalSourceIds": [
+        "SRC326",
+        "SRC341",
+        "SRC342",
+        "SRC343",
+        "SRC344",
+        "SRC345",
+        "SRC349",
+        "SRC357",
+        "SRC362",
+        "SRC372"
+      ],
+      "researchDepth": "FAMILY_LANDSCAPE_ONLY"
+    },
+    "ENV-F08": {
+      "constructs": "Ventilation, CO2, particulates, gases, VOCs, radiation, pathogens, water contaminants, dampness, mould, odor and cleanliness are distinct.",
+      "mechanisms": "Ventilation can alter several indoor contaminants simultaneously.",
+      "operations": "Controlled chambers may vary CO2 alone or bundled ventilation/chemical conditions.",
+      "measurement": "Room concentration is not personal dose received.",
+      "boundaries": "Ventilation/productivity evidence mixes school and office tasks and bundled exposures.",
+      "candidateSourceIds": [
+        "SRC-CAND-ENV-LAYER-009",
+        "SRC-CAND-ENV-LAYER-010",
+        "SRC-CAND-ENV-LAYER-011"
+      ],
+      "existingCanonicalSourceIds": [
+        "SRC-508",
+        "SRC-516",
+        "SRC-519",
+        "SRC-520",
+        "SRC346",
+        "SRC347",
+        "SRC348",
+        "SRC349",
+        "SRC350",
+        "SRC357",
+        "SRC363",
+        "SRC366"
+      ],
+      "researchDepth": "FAMILY_LANDSCAPE_ONLY"
+    },
+    "ENV-F09": {
+      "constructs": "Green availability, accessibility, quality, canopy, views, blue space, biodiversity and realized dose differ.",
+      "mechanisms": "Natural-setting exposure may alter immediate affect while exercise, expectation and multisensory packages contribute.",
+      "operations": "Matched walking-route experiments are plausible but cannot isolate each green component.",
+      "measurement": "Availability/accessibility are not realized exposure; affect is not cognition.",
+      "boundaries": "Affective findings are more consistent than cognitive transfer and remain heterogeneous.",
+      "candidateSourceIds": [
+        "SRC-CAND-ENV-LAYER-014",
+        "SRC-CAND-ENV-LAYER-015",
+        "SRC-CAND-ENV-LAYER-016",
+        "SRC-CAND-ENV-LAYER-017",
+        "SRC-CAND-ENV-LAYER-018"
+      ],
+      "existingCanonicalSourceIds": [
+        "SRC328",
+        "SRC351",
+        "SRC352",
+        "SRC353",
+        "SRC354",
+        "SRC362"
+      ],
+      "researchDepth": "FAMILY_LANDSCAPE_ONLY"
+    },
+    "ENV-F10": {
+      "constructs": "Slope, ruggedness, oxygen availability and water-barrier permeability are physical constraints.",
+      "mechanisms": "Terrain can change effort and route feasibility; oxygen exposure differs from achieved physiology.",
+      "operations": "Field terrain packages are difficult to isolate.",
+      "measurement": "Terrain is not physical capacity; oxygen availability is not tissue oxygenation.",
+      "boundaries": "No exact novel operation-to-Driver route survived preliminary triage.",
+      "candidateSourceIds": [
+        "SRC-CAND-ENV-LAYER-003"
+      ],
+      "existingCanonicalSourceIds": [
+        "SRC326",
+        "SRC357",
+        "SRC370",
+        "SRC371"
+      ],
+      "researchDepth": "FAMILY_LANDSCAPE_ONLY"
+    },
+    "ENV-F11": {
+      "constructs": "Illumination, observability, access control, hazards, exits, shelter, flood, wildfire and structural integrity differ.",
+      "mechanisms": "Physical hazard and egress conditions constrain safety responses.",
+      "operations": "Hazard simulations often bundle information, urgency and physical constraints.",
+      "measurement": "Hazard presence is not perceived risk; shelter availability is not use.",
+      "boundaries": "No broad hazard-to-psychology causal claim is inferred.",
+      "candidateSourceIds": [
+        "SRC-CAND-ENV-LAYER-003"
+      ],
+      "existingCanonicalSourceIds": [
+        "SRC327",
+        "SRC328",
+        "SRC330",
+        "SRC332",
+        "SRC355",
+        "SRC356",
+        "SRC357",
+        "SRC358",
+        "SRC363"
+      ],
+      "researchDepth": "FAMILY_LANDSCAPE_ONLY"
+    },
+    "ENV-F12": {
+      "constructs": "Food, water, sanitation, housing, tools, electricity, fuel, medical material and supply continuity are resource conditions.",
+      "mechanisms": "Availability and proximity create opportunity conditional on access and uptake.",
+      "operations": "Resource provision packages mix physical and institutional changes.",
+      "measurement": "Availability is not consumption or benefit.",
+      "boundaries": "Existing cross-Layer water and supply reviews are reused.",
+      "candidateSourceIds": [
+        "SRC-CAND-ENV-LAYER-001",
+        "SRC-CAND-ENV-LAYER-002"
+      ],
+      "existingCanonicalSourceIds": [
+        "SRC-508",
+        "SRC-514",
+        "SRC331",
+        "SRC334",
+        "SRC349",
+        "SRC363",
+        "SRC364",
+        "SRC365",
+        "SRC366"
+      ],
+      "researchDepth": "FAMILY_LANDSCAPE_ONLY"
+    },
+    "ENV-F13": {
+      "constructs": "Infrastructure functionality, blockage, debris and utility redundancy concern system condition.",
+      "mechanisms": "Damage and redundancy can affect continuity through network-specific mechanisms.",
+      "operations": "Infrastructure restoration is a package rather than one universal component.",
+      "measurement": "Functionality is not Institutional capacity.",
+      "boundaries": "No new Network State or derived environmental variable is required.",
+      "candidateSourceIds": [
+        "SRC-CAND-ENV-LAYER-002",
+        "SRC-CAND-ENV-LAYER-003"
+      ],
+      "existingCanonicalSourceIds": [
+        "SRC-508",
+        "SRC-514",
+        "SRC357",
+        "SRC358",
+        "SRC363",
+        "SRC366"
+      ],
+      "researchDepth": "FAMILY_LANDSCAPE_ONLY"
+    }
+  }
+}

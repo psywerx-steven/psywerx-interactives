@@ -116,6 +116,16 @@ def strip_additions(path, current):
             result['authorizations']=[a for a in result['authorizations'] if a['decisionId']!='GOV-BIOLOGICAL-LAYER-001-2026-09-21']
         else:
             result['sources']=[r for r in result['sources'] if r['id'] not in {'SRC-606','SRC-607','SRC-608'}]
+    if (ROOT/'data/actions-events-v1/PHYSICAL_ENVIRONMENTAL_LAYER-materialization-manifest.json').is_file() and path in {'data/actions-events-v1/catalog.json','data/relationship-intervention-v1/source-register.json'}:
+        import physical_environmental_layer_v2 as physical
+        physical.validate_protection()
+        if path.endswith('catalog.json'):
+            result['happeningTypes']=[r for r in result['happeningTypes'] if r['id']!='HT-V1-ENV-LAYER-001']
+            result['effectAssertions']=[r for r in result['effectAssertions'] if r['id']!='EA-V1-ENV-LAYER-001']
+            result['evidenceAssessments']=[r for r in result['evidenceAssessments'] if r['id']!='EVA-AE-V1-ENV-LAYER-001']
+            result['authorizations']=[a for a in result['authorizations'] if a['decisionId']!='GOV-PHYSICAL-ENVIRONMENTAL-LAYER-001-2026-09-21']
+        else:
+            result['sources']=[r for r in result['sources'] if r['id'] not in {'SRC-609','SRC-610','SRC-611','SRC-612'}]
     if path=='data/actions-events-v1/catalog.json':
         ht=identity(); auth=authorization([ht])
         found=[r for r in result['happeningTypes'] if r['id']==ht['id']]
