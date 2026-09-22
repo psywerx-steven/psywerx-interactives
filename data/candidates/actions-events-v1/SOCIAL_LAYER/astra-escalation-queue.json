@@ -1,0 +1,59 @@
+[
+  {
+    "id": "ASTRA-SOC-LAYER-001",
+    "question": "Which of the ten outgoing Social RDS edges has an independently identified aggregate mechanism rather than constituent reuse?",
+    "affectedRecords": [
+      "SOC-024",
+      "SOC-041",
+      "SOC-052",
+      "SOC-053",
+      "SOC-054",
+      "SOC-055",
+      "SOC-056",
+      "SOC-074",
+      "SOC-076",
+      "SOC-096"
+    ],
+    "risk": "False retention can double-count constituents; false rejection can remove a real contextual effect.",
+    "currentDisposition": "RESEARCH_NEEDED_OR_RETYPE_REVIEW_ONLY"
+  },
+  {
+    "id": "ASTRA-SOC-LAYER-002",
+    "question": "Can group-level Social states causally target person-level outcomes under current cross-level semantics without an explicit exposure mapping?",
+    "affectedRecords": [
+      "REL-INS-046",
+      "REL-INS-047",
+      "REL-INS-048",
+      "REL-RDS-0005",
+      "REL-RDS-0010",
+      "REL-RDS-0011",
+      "REL-RDS-0012",
+      "REL-SOC-017",
+      "REL-SOC-029",
+      "REL-SOC-030",
+      "REL-SOC-035",
+      "REL-SOC-045",
+      "REL-SOC-046",
+      "REL-SOC-054",
+      "REL-SOC-055",
+      "REL-SOC-060",
+      "REL-SOC-067",
+      "REL-SOC-072",
+      "REL-SOC-075",
+      "REL-TEC-050"
+    ],
+    "risk": "Incorrect resolution commits ecological or atomistic inference.",
+    "currentDisposition": "RESEARCH_NEEDED"
+  },
+  {
+    "id": "ASTRA-SOC-LAYER-003",
+    "question": "Should adjacency/node operations remain ScenarioStateDelta plus derivation, or require a future formal cross-level state object?",
+    "affectedRecords": [
+      "HYP-SOC-F07-H12",
+      "HYP-SOC-F07-H20",
+      "DER-V1-SOC-F07-001"
+    ],
+    "risk": "Incorrect resolution conflates modeled recalculation with empirical causality.",
+    "currentDisposition": "BLOCKED_NEEDS_GOVERNANCE_INPUT"
+  }
+]

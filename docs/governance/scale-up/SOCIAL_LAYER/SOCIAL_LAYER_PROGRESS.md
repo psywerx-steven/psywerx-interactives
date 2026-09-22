@@ -1,0 +1,18 @@
+# Social Layer progress
+
+ADVISORY — HUMAN DECISION REQUIRED. Candidate-only science; new GOVERNED = 0 and ACTIVE = 0.
+
+| Family | Stage |
+|---|---|
+| SOC-F01 | COMPLETE |
+| SOC-F02 | COMPLETE |
+| SOC-F03 | COMPLETE |
+| SOC-F04 | COMPLETE |
+| SOC-F05 | COMPLETE |
+| SOC-F06 | COMPLETE |
+| SOC-F07 | COMPLETE |
+| SOC-F08 | COMPLETE |
+| SOC-F09 | COMPLETE |
+| SOC-F10 | COMPLETE |
+| SOC-F11 | COMPLETE |
+| SOC-F12 | COMPLETE |
