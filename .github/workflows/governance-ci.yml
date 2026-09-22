@@ -162,6 +162,9 @@ jobs:
       - name: Validate candidate-only Technological Layer V2 audit
         run: python -m unittest discover -s tests -p "test_technological_layer_v2.py"
 
+      - name: Validate Physical / Environmental activation blocker closeout
+        run: python -m unittest discover -s tests -p "test_physical_environmental_activation_blocker_001.py"
+
       - name: Verify deterministic Biological Layer registries
         run: |
           python scripts/biological_layer_v2_curate.py
@@ -345,6 +348,9 @@ jobs:
 
       - name: Validate candidate-only Technological Layer V2 audit
         run: python -m unittest discover -s tests -p "test_technological_layer_v2.py"
+
+      - name: Validate Physical / Environmental activation blocker closeout
+        run: python -m unittest discover -s tests -p "test_physical_environmental_activation_blocker_001.py"
 
       - name: Verify deterministic Biological Layer registries
         run: |

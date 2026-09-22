@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "1.0.0",
+  "blockerId": "BLK-ENV-ACTIVATION-001",
+  "decisionDate": "2026-09-22",
+  "classification": "BLOCKED_FOR_ACTIVATION",
+  "governanceDecisionId": "GOV-PHYSICAL-ENVIRONMENTAL-LAYER-001-2026-09-21",
+  "historicalActivationAuditId": "AUD-PHYSICAL-ENVIRONMENTAL-LAYER-ACTIVATION-V1-20260921-001",
+  "validatedBaseline": "aee96af9c988ca9f169798e447ded1437f1edd63",
+  "affectedIds": [
+    "EVA-AE-V1-ENV-LAYER-001",
+    "HT-V1-ENV-LAYER-001",
+    "EA-V1-ENV-LAYER-001"
+  ],
+  "requiredEffectField": {
+    "recordId": "EA-V1-ENV-LAYER-001",
+    "field": "mechanismStatus",
+    "scientificallyCorrectValue": "UNKNOWN",
+    "activeContract": "mechanismStatus != UNKNOWN"
+  },
+  "currentState": {
+    "lifecycleStatus": "GOVERNED",
+    "activationStatus": "INACTIVE"
+  },
+  "activationAuthorized": false,
+  "activationChanges": 0,
+  "meaning": "CURRENT ACTIVE-RECORD REQUIREMENTS ARE NOT SATISFIED",
+  "notImplied": [
+    "bounded effect rejection",
+    "evidence removal",
+    "candidate reversion",
+    "HappeningType invalidity",
+    "EvidenceAssessment invalidity"
+  ],
+  "unselectedFutureOptions": [
+    "new evidence supporting PARTIAL or stronger mechanism knowledge",
+    "human governance for ACTIVE package-level effects with UNKNOWN component mechanism",
+    "formal separation of effect existence from mechanism knowledge"
+  ],
+  "scientificSemanticsChanged": false,
+  "validatorChanged": false,
+  "ontologyChanged": false,
+  "architectureChanged": false,
+  "sourceContentChanged": false,
+  "networkStateChanged": false
+}
