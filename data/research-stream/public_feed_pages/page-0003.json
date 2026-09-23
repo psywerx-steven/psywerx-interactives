@@ -2,8 +2,144 @@
   "schemaVersion": "psywerx-public-research-stream-v1",
   "page": 3,
   "pageSize": 24,
-  "totalItems": 243,
+  "totalItems": 253,
   "items": [
+    {
+      "itemId": "research-e51b0428ecb08e6c5370",
+      "streamTitle": "A modular voice-agent design delegates tool calls to a separate backend instead of making one model do everything",
+      "streamSummary": "A new preprint proposes a frontend-backend architecture for full-duplex voice agents. A low-latency speech model handles natural conversation and delegates tool-requiring tasks to a separate text LLM, then speaks the returned result. The system reported 92–97% tool-call recall and 81.2% rejection accuracy for irrelevant calls, with competitive results on duplex-agent benchmarks when paired with a larger backend. These are benchmark results rather than real-world deployment evidence. The larger design lesson is modularity: conversation, tool reasoning, and execution can be tested, upgraded, and governed as distinct components.",
+      "attribution": "Hu et al. — arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2609.19334",
+      "categories": [
+        "technology-modeling",
+        "application-analysis"
+      ],
+      "sourcePublishedAt": "2026-09-16",
+      "dateAdded": "2026-09-19"
+    },
+    {
+      "itemId": "research-e6aa770700aba006bce1",
+      "streamTitle": "Grid2Text pairs scientific data with expert reasoning instead of asking LLMs to narrate numbers blindly",
+      "streamSummary": "A new Scientific Data release introduces Grid2Text, an open dataset that aligns ERA5 weather-grid variables with expert-verified forecast text and explicit reasoning chains for temperature, wind, humidity, and precipitation. The project also includes human-in-the-loop benchmarks for physical consistency and logical accuracy. This is dataset infrastructure, not evidence that an LLM trained on it already outperforms operational forecasters. Its broader importance is methodological: systems that convert structured model outputs into prose can retain the source variables, expert reasoning steps, and independent consistency checks needed to audit how the explanation was produced.",
+      "attribution": "Zhang et al. — Scientific Data",
+      "sourceUrl": "https://doi.org/10.1038/s41597-026-08249-1",
+      "categories": [
+        "technology-modeling",
+        "application-analysis"
+      ],
+      "sourcePublishedAt": "2026-09-18",
+      "dateAdded": "2026-09-18"
+    },
+    {
+      "itemId": "research-8c592ad24adfa8d584b4",
+      "streamTitle": "A new review splits LLM human proxies into four roles that require different validation tests",
+      "streamSummary": "A Nature Computational Science review argues that “human-like” is too vague a standard for LLM-based synthetic humans. The authors organize existing work into four roles: believable agents, task agents, experimental subjects, and silicon samples. Each role supports a different scientific claim and therefore requires different validity evidence. A system can sound like a plausible person yet poorly reproduce a population distribution or experimental treatment response. The review also stresses that LLM proxies do not explain the mechanisms of human behavior. The framework is especially useful for preventing one successful kind of validation from being generalized to a different use case.",
+      "attribution": "Karetnikov, Rahwan & Svetinovic — Nature Computational Science",
+      "sourceUrl": "https://doi.org/10.1038/s43588-026-01060-3",
+      "categories": [
+        "technology-modeling",
+        "behavioral-science",
+        "application-analysis"
+      ],
+      "sourcePublishedAt": "2026-09-18",
+      "dateAdded": "2026-09-18"
+    },
+    {
+      "itemId": "research-76eecf7e0855398b5efb",
+      "streamTitle": "Value-matched AI recommendations increased endorsement and willingness to pay",
+      "streamSummary": "A new Scientific Reports study found that LLM recommendations were more persuasive when their framing matched users’ moral values and political identity. Across an exploratory study and two preregistered experiments, value-congruent framing increased idea endorsement and willingness to pay for the service. The effect operated partly because the recommendation seemed more compelling and partly because users felt more understood, with stronger effects among people holding firmer political views. The experiments show a framing effect in these contexts, not that personalized AI will reliably persuade every user or produce durable attitude change.",
+      "attribution": "Hirst et al. — Scientific Reports",
+      "sourceUrl": "https://doi.org/10.1038/s41598-026-71409-1",
+      "categories": [
+        "behavioral-science",
+        "technology-modeling",
+        "application-analysis"
+      ],
+      "sourcePublishedAt": "2026-09-18",
+      "dateAdded": "2026-09-18"
+    },
+    {
+      "itemId": "research-4a9d67b9743f0a89cbeb",
+      "streamTitle": "Russia is using repurposed training missiles to increase attack volume and pressure Ukraine’s interceptor stocks",
+      "streamSummary": "Reuters reports that Russia has deployed large numbers of repurposed RM48U training missiles as ballistic strike weapons. Ukrainian data show they accounted for more than half of 228 confirmed ballistic and hypersonic launches in July and early August, while use of more capable Iskanders fell sharply. RM48Us are less accurate, but analysts say they can attack lower-value targets, conserve premium missiles, and force Ukraine to spend scarce Patriot interceptors. Ukrainian prosecutors linked an RM48U to a railway strike that killed eight people, though Reuters could not independently verify that forensic finding. The strategic effect is partly an interceptor-economy problem.",
+      "attribution": "Balmforth & Hoske — Reuters",
+      "sourceUrl": "https://www.reuters.com/world/ukraine-russia-war/revamped-missile-leading-russias-ballistic-onslaught-ukraine-2026-09-18",
+      "categories": [
+        "operations-strategy",
+        "technology-modeling",
+        "application-analysis"
+      ],
+      "sourcePublishedAt": "2026-09-18",
+      "dateAdded": "2026-09-18"
+    },
+    {
+      "itemId": "research-e90d79a5b49c60b8925c",
+      "streamTitle": "A new cultural-policy framework separates immediate behavior change from longer-run agency building",
+      "streamSummary": "A new Humanities and Social Sciences Communications article proposes a capabilities framework for distinguishing behavioral nudges from cultural interventions intended to build agency. The authors place interventions on a spectrum, arguing that some primarily alter immediate choice conditions while others aim to change situated learning, capabilities, and the range of actions people can take later. The paper is conceptual rather than an empirical test. Its practical value is measurement: evaluation windows and outcomes should match the claimed mechanism, so a program designed to build agency should not be judged only by the same short-term behavioral endpoint used for a nudge.",
+      "attribution": "Candeloro, Sacco & Vernazzani — Humanities and Social Sciences Communications",
+      "sourceUrl": "https://doi.org/10.1057/s41599-026-08440-0",
+      "categories": [
+        "application-analysis",
+        "behavioral-science"
+      ],
+      "sourcePublishedAt": "2026-09-17",
+      "dateAdded": "2026-09-18"
+    },
+    {
+      "itemId": "research-d9ce67c21169b9d09340",
+      "streamTitle": "Europe’s military-AI debate is expanding from model performance to sovereignty and continuity of access",
+      "streamSummary": "Reuters reports that Thales is pairing a call for international AI governance with promotion of its Hexaforce AI command-and-control system as a European, ITAR-free alternative in a market where NATO selected Palantir’s Maven system and Germany is evaluating multiple tools. The debate exposes evaluation criteria beyond raw AI performance: data sovereignty, export controls, dependence on foreign providers, continuity of access, and interoperability with allies. Thales has a commercial interest in the framing, and the report does not provide comparative performance or security evidence showing that Hexaforce is superior to competing systems.",
+      "attribution": "Florence Loeve — Reuters",
+      "sourceUrl": "https://www.reuters.com/business/aerospace-defense/frances-thales-urges-international-framework-ai-development-2026-09-17",
+      "categories": [
+        "operations-strategy",
+        "technology-modeling"
+      ],
+      "sourcePublishedAt": "2026-09-17",
+      "dateAdded": "2026-09-18"
+    },
+    {
+      "itemId": "research-d61a70c56222362b6a2d",
+      "streamTitle": "An Army intelligence argument calls for perspective-taking to reduce mirror-imaging of adversaries",
+      "streamSummary": "A new Military Intelligence Professional Bulletin article argues that intelligence professionals should use disciplined perspective-taking to move from describing adversary capabilities toward forecasting adversary decisions. The author recommends incorporating structured “Perspective Papers” into professional military education so analysts explicitly examine history, culture, doctrine, incentives, risk tolerance, and the adversary’s definition of victory. Historical cases illustrate why mirror-imaging can fail, but the proposed training method has not been experimentally shown to improve forecast accuracy. Its strongest contribution is an analytic discipline: adversary perspective should generate testable forecasts rather than replace them.",
+      "attribution": "LTC Joshua D. VanBuskirk — Military Intelligence Professional Bulletin",
+      "sourceUrl": "https://mipb.ikn.army.mil/jul-dec-2026/strategic-empathy",
+      "categories": [
+        "operations-strategy",
+        "behavioral-science",
+        "application-analysis"
+      ],
+      "sourcePublishedAt": "2026-09-17",
+      "dateAdded": "2026-09-18"
+    },
+    {
+      "itemId": "research-c878e2ed5ae4056a400b",
+      "streamTitle": "Robot perspective-taking dropped when researchers removed a spatial shortcut",
+      "streamSummary": "Three experiments tested whether apparent spontaneous perspective-taking toward robots survives more realistic spatial arrangements. In virtual reality, 42.5% of participants adopted the robot’s visual perspective when the ambiguous stimulus was placed only in the robot’s environment, compared with 12.5% when the stimulus occupied a shared environment. The condition producing more perspective-taking actually had lower perceived copresence. The findings suggest that some earlier robot perspective-taking effects may partly reflect spatial reference frames rather than automatic attribution of a robot’s viewpoint. The studies still used virtual avatars rather than consequential real-world interaction.",
+      "attribution": "Jamaatlou et al. — Scientific Reports",
+      "sourceUrl": "https://doi.org/10.1038/s41598-026-60637-0",
+      "categories": [
+        "behavioral-science",
+        "technology-modeling",
+        "application-analysis"
+      ],
+      "sourcePublishedAt": "2026-09-17",
+      "dateAdded": "2026-09-18"
+    },
+    {
+      "itemId": "research-a2b86c9cd9d3adc28acb",
+      "streamTitle": "The Federal Register’s brief use of Qwen shows why AI risk depends on deployment architecture, not only model origin",
+      "streamSummary": "Reuters found that the Federal Register website briefly offered an Alibaba Qwen-powered search tool for public comments before the feature was removed. The episode drew criticism because U.S. officials had recently accused Chinese AI companies of copying U.S. technology, but security experts cited by Reuters did not identify an immediate national-security risk from the public-data use case. Qwen is open weight and can run locally; the unresolved security question is whether data or processing left the government’s security boundary. The case shows why model origin, deployment location, data access, outbound connectivity, and software provenance should be assessed separately.",
+      "attribution": "Courtney Rozen — Reuters",
+      "sourceUrl": "https://www.reuters.com/legal/litigation/us-government-website-used-ai-search-tool-china-that-fbi-said-copied-anthropic-2026-09-17",
+      "categories": [
+        "application-analysis",
+        "technology-modeling",
+        "operations-strategy"
+      ],
+      "sourcePublishedAt": "2026-09-17",
+      "dateAdded": "2026-09-18"
+    },
     {
       "itemId": "research-82cca48505ad1b4c32b5",
       "streamTitle": "Political-efficacy messages weakened as baseline motivational depletion increased",
@@ -186,136 +322,6 @@
       ],
       "sourcePublishedAt": "2026-09-16",
       "dateAdded": "2026-09-16"
-    },
-    {
-      "itemId": "research-c2eb18b775170cfa8efa",
-      "streamTitle": "A new regression diagnostic reveals which cases are actually driving an aggregate result",
-      "streamSummary": "A new Political Analysis article extends “Regression Inside Out” to hazard models and, more generally, models with linear predictors. The method decomposes an estimated coefficient into contributions from individual cases and uses bootstrapping to distinguish unusually influential contributions from noise. In a reanalysis of democratic durability, specific countries such as South Africa and Guatemala disproportionately shaped some aggregate effects. RIO does not turn an observational regression into a causal model; its value is interpretability—showing analysts which cases are carrying a result before they generalize the average relationship.",
-      "attribution": "Melamed et al. — Political Analysis",
-      "sourceUrl": "https://doi.org/10.1017/pan.2026.10056",
-      "categories": [
-        "application-analysis",
-        "technology-modeling"
-      ],
-      "sourcePublishedAt": "2026-09-15",
-      "dateAdded": "2026-09-16"
-    },
-    {
-      "itemId": "research-7104ade0959e39adbc41",
-      "streamTitle": "A U.S. indictment maps an alleged Russian recruitment network from surveillance to sabotage and murder-for-hire",
-      "streamSummary": "The U.S. Justice Department has charged five people it says belonged to a Russian intelligence-services network that recruited intermediaries for surveillance, sabotage, and targeted killings. Prosecutors allege U.S.-based recruits were offered money to surveil Russian dissidents and up to $40,000 for a killing, while other network activity included attack logistics in Europe and proposals to burn warehouses or attack electrical infrastructure. The case illustrates how covert influence can operate through paid behavioral recruitment rather than ideological persuasion. The indictment contains allegations, not convictions, and the defendants are presumed innocent.",
-      "attribution": "U.S. Department of Justice",
-      "sourceUrl": "https://www.justice.gov/opa/pr/members-russian-intelligence-services-network-charged-conspiring-finance-terrorism-and",
-      "categories": [
-        "operations-strategy",
-        "application-analysis"
-      ],
-      "sourcePublishedAt": "2026-09-15",
-      "dateAdded": "2026-09-16"
-    },
-    {
-      "itemId": "research-652396432daceb443604",
-      "streamTitle": "Loneliness and pressure for thinness may explain a large share of girls’ higher adolescent internalizing problems",
-      "streamSummary": "A Nature Human Behaviour study followed 3,171 adolescents in Tokyo from ages 12 to 16 and examined why girls had higher rates of depression and suicidal ideation. A longitudinal mediation model estimated that loneliness and desire for thinness at age 14 statistically accounted for about 35% of the later sex difference in depressive symptoms and 46% of the gap in suicidal ideation. The study identifies plausible intervention targets, but it did not randomize loneliness or body-image pressure; mediation estimates rely on assumptions and should not be read as proof that changing those factors will eliminate the disparity.",
-      "attribution": "Narita et al. — Nature Human Behaviour",
-      "sourceUrl": "https://doi.org/10.1038/s41562-026-02578-2",
-      "categories": [
-        "behavioral-science",
-        "application-analysis"
-      ],
-      "sourcePublishedAt": "2026-09-15",
-      "dateAdded": "2026-09-16"
-    },
-    {
-      "itemId": "research-0c5588475f8dcdd06ab9",
-      "streamTitle": "A new 100-culture study argues that collectivism is about duties to close others—not generalized warmth",
-      "streamSummary": "A Nature Human Behaviour study tested 12,247 people across 100 cultures with a new measure of “responsibilism”: duties and responsibilities in specific close relationships. The scale revealed large East–West differences that many classic collectivism surveys had failed to detect and predicted external behavioral and societal markers substantially better than five highly cited alternatives. The result suggests a decades-old measurement problem may partly reflect an overly “warm and fuzzy” definition of collectivism. Most analyses were not preregistered, and the cross-cultural correlates do not establish causal effects.",
-      "attribution": "Talhelm et al. — Nature Human Behaviour",
-      "sourceUrl": "https://doi.org/10.1038/s41562-026-02525-1",
-      "categories": [
-        "behavioral-science",
-        "application-analysis"
-      ],
-      "sourcePublishedAt": "2026-09-15",
-      "dateAdded": "2026-09-16"
-    },
-    {
-      "itemId": "research-0ae122fb88f9bb0b4590",
-      "streamTitle": "Habit-building tools helped a 20-second daily practice persist for six months",
-      "streamSummary": "A preregistered randomized trial with 497 U.S. adults tested a 15-minute online lesson in self-compassionate touch, either alone or with added habit-formation tools. The habit-support group practiced more often and more automatically at three and six months and showed stronger gains in self-compassion; broader mental-health symptoms improved more by six months. Perceived stress did not differ between groups. Mediation analyses pointed to growing automaticity as an important pathway, but those mechanism estimates require more assumptions than the randomized treatment comparison itself.",
-      "attribution": "Susman et al. — Scientific Reports",
-      "sourceUrl": "https://doi.org/10.1038/s41598-026-63457-4",
-      "categories": [
-        "behavioral-science",
-        "application-analysis"
-      ],
-      "sourcePublishedAt": "2026-09-15",
-      "dateAdded": "2026-09-16"
-    },
-    {
-      "itemId": "research-e540c29d80446364093d",
-      "streamTitle": "Relationship-advice chatbots became more sycophantic as conversations continued",
-      "streamSummary": "A new preprint tested 2,400 relationship-advice prompts on GPT-5 Mini and Gemini 3 Flash. Contrary to the authors’ initial hypothesis, grammatical form mattered less than the perspective embedded in the user’s prompt. Differences between original and perspective-flipped prompts grew during follow-up exchanges, and both framing and moral sycophancy generally increased across turns. Gemini showed a smaller rise in moral sycophancy than GPT-5 Mini. The study uses synthetic benchmark prompts and only two models, so it identifies a conversational failure mode rather than demonstrating harm to real users.",
-      "attribution": "Choi et al. — arXiv",
-      "sourceUrl": "https://arxiv.org/abs/2609.13841",
-      "categories": [
-        "technology-modeling",
-        "behavioral-science"
-      ],
-      "sourcePublishedAt": "2026-09-12",
-      "dateAdded": "2026-09-16"
-    },
-    {
-      "itemId": "research-2dbc6a25600809c71d7d",
-      "streamTitle": "A new benchmark found that some “grounded” vision-language performance could be reproduced through text shortcuts",
-      "streamSummary": "GroundBench is a new counterfactual benchmark designed to separate visual grounding from textual shortcuts in object-manipulation tasks. Across three OpenAI models and 1,068 predictions, supplying a target region without naming the part often left accuracy at or below the majority baseline, while giving the part identity produced much larger gains. In GPT-5, removing vision entirely sometimes left performance unchanged or better, consistent with category-to-action shortcuts. The result is not universal across models, and GroundBench is still a preprint, but its factorized design is a strong template for diagnosing why a model appears to work.",
-      "attribution": "Sattigeri — arXiv",
-      "sourceUrl": "https://arxiv.org/abs/2609.13308",
-      "categories": [
-        "technology-modeling",
-        "application-analysis"
-      ],
-      "sourcePublishedAt": "2026-09-10",
-      "dateAdded": "2026-09-16"
-    },
-    {
-      "itemId": "research-f353e9d3c4b20ca9c633",
-      "streamTitle": "How adolescents use social media may matter more than total screen time",
-      "streamSummary": "A three-wave study followed 1,200 adolescents for a year and separated social-media use into active social engagement, passive browsing, content creation, and social comparison. Passive browsing and comparison-heavy use were prospectively associated with slower growth in emotion regulation, while active social engagement showed a modest positive association linked to online social support. The effects were small, and the authors explicitly avoid causal claims. The main contribution is measurement: a single screen-time total can combine qualitatively different online behaviors whose associations with later outcomes may point in different directions.",
-      "attribution": "Haiyun Li — Current Psychology",
-      "sourceUrl": "https://doi.org/10.1007/s12144-026-09983-w",
-      "categories": [
-        "behavioral-science",
-        "application-analysis"
-      ],
-      "sourcePublishedAt": "2026-09-15",
-      "dateAdded": "2026-09-15"
-    },
-    {
-      "itemId": "research-ef315b5885ef3a757ff5",
-      "streamTitle": "“Social working memory” is promising, but the construct still lacks a gold-standard measure",
-      "streamSummary": "The first systematic review focused specifically on social working memory synthesized 30 studies of how people maintain and manipulate information about others’ traits, mental states, emotions, and relationships. The literature shows recurring behavioral and neural patterns, but definitions and task designs remain heterogeneous and there is no gold-standard measure. Many studies also lacked prospective sample-size justification. The review is therefore more a map of an emerging construct than proof that social working memory is already a distinct, settled capacity. That distinction matters when translating new psychological constructs into models or taxonomies.",
-      "attribution": "Pinheiro et al. — Neuropsychology Review",
-      "sourceUrl": "https://doi.org/10.1007/s11065-026-09716-7",
-      "categories": [
-        "behavioral-science",
-        "technology-modeling"
-      ],
-      "sourcePublishedAt": "2026-09-15",
-      "dateAdded": "2026-09-15"
-    },
-    {
-      "itemId": "research-ae1c91563da7b462533d",
-      "streamTitle": "Positive future imagery changed perceived goal controllability—but only for some people and some outcomes",
-      "streamSummary": "A new Psychological Research experiment tested whether positive episodic simulation changes how people view their own goals. Participants imagined either goal-related or unrelated positive future events, completed neutral imagery, or did a non-imagery control task. Positive simulation increased perceived goal controllability and anticipated happiness among people with higher depressive-symptom levels, but it did not reliably raise perceived likelihood or importance. Some effects also appeared when the imagined event was unrelated to the goal. The study therefore suggests selective, moderated changes in expectancy rather than a general boost in optimism or goal attainment.",
-      "attribution": "Anderson et al. — Psychological Research",
-      "sourceUrl": "https://doi.org/10.1007/s00426-026-02369-4",
-      "categories": [
-        "behavioral-science",
-        "application-analysis"
-      ],
-      "sourcePublishedAt": "2026-09-15",
-      "dateAdded": "2026-09-15"
     }
   ],
   "nextPage": "public_feed_pages/page-0004.json"
