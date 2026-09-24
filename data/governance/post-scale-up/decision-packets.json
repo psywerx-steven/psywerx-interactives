@@ -1,0 +1,348 @@
+{
+  "schemaVersion": "1.0.0",
+  "roadmapId": "POST-SCALE-UP-GOVERNANCE-ROADMAP-V1-20260924-001",
+  "decisionPackets": [
+    {
+      "decisionPacketId": "DP-PSG-001",
+      "rootIssueId": "ROOT-RDS-DEFINITION-DERIVATION-001",
+      "workPackageId": "WP-PSG-001",
+      "title": "Shared RDS definition and derivation contract",
+      "currentProblem": "Affected RDS lack portable versioned contracts for inputs, aggregation, reference population, window, metric variant, normalization or constituent mapping.",
+      "whyItMatters": "It directly contains 5 active-execution blockers and constrains 24 items in downstream root programs.",
+      "currentSafeState": "Preserve every recorded scientific, ontology, architecture and lifecycle state until a later human decision.",
+      "affectedLayers": [
+        "Psychological",
+        "Informational",
+        "Biological",
+        "Cultural",
+        "Social",
+        "Institutional / Structural"
+      ],
+      "affectedBacklogItems": [
+        "BLK-PSY-001",
+        "ARCH-INF-LAYER-0001",
+        "BLK-BIO-RDS-001",
+        "BLK-CUL-RDS-001",
+        "BLK-INS-RDS-001"
+      ],
+      "options": [
+        "A: require one fully versioned derivation specification for every executable RDS",
+        "B: allow named derivation profiles with explicit application bindings",
+        "C: retain narrative RDS as non-executable constructs until a profile is governed"
+      ],
+      "scientificImplications": "The chosen option must preserve construct identity, causal identification, level alignment and unknown-as-unknown semantics.",
+      "architectureImplications": "Any selected representation requires a separately governed schema/validator design and migration plan.",
+      "simulationImplications": "No option may imply numeric weight, propagation, recommendation or execution eligibility by itself.",
+      "migrationImplications": "Existing governed records remain valid; later implementation must be additive or explicitly migrated with rollback and protected-science comparison.",
+      "whatEachOptionUnblocks": [
+        {
+          "option": "A",
+          "unblocks": "Later design, migration and scientific re-adjudication for the packet's dependent records."
+        },
+        {
+          "option": "B",
+          "unblocks": "Later design, migration and scientific re-adjudication for the packet's dependent records."
+        },
+        {
+          "option": "C",
+          "unblocks": "Later design, migration and scientific re-adjudication for the packet's dependent records."
+        }
+      ],
+      "risks": [
+        "scientific overstatement",
+        "double counting",
+        "consumer misinterpretation",
+        "irreversible migration without rollback"
+      ],
+      "skepticalArchitectureReview": [
+        "A may overconstrain context-specific or latent indices and require broad migration.",
+        "B may produce profile proliferation and ambiguous version selection.",
+        "C is safest but keeps otherwise coherent RDS unavailable for execution."
+      ],
+      "recommendedNextResearchOrTest": "Create executable examples and counterexamples against current validators before the human option vote; do not alter production records.",
+      "humanDecisionStatus": "REQUIRED_NOT_TAKEN"
+    },
+    {
+      "decisionPacketId": "DP-PSG-002",
+      "rootIssueId": "ROOT-CROSS-LEVEL-EXPOSURE-001",
+      "workPackageId": "WP-PSG-002",
+      "title": "Cross-level exposure and group-to-person causal semantics",
+      "currentProblem": "Group, institution and network states do not automatically become exposures experienced by individual targets.",
+      "whyItMatters": "It directly contains 2 active-execution blockers and constrains 23 items in downstream root programs.",
+      "currentSafeState": "Preserve every recorded scientific, ontology, architecture and lifecycle state until a later human decision.",
+      "affectedLayers": [
+        "Social",
+        "Institutional / Structural",
+        "Psychological"
+      ],
+      "affectedBacklogItems": [
+        "ASTRA-SOC-LAYER-002",
+        "ASTRA-INS-LAYER-003"
+      ],
+      "options": [
+        "A: govern an explicit typed CrossLevelExposureMapping object",
+        "B: require existing Driver/HappeningType bridge records for every level transition",
+        "C: add mandatory exposure-path metadata to cross-level Relationships while retaining current entity classes"
+      ],
+      "scientificImplications": "The chosen option must preserve construct identity, causal identification, level alignment and unknown-as-unknown semantics.",
+      "architectureImplications": "Any selected representation requires a separately governed schema/validator design and migration plan.",
+      "simulationImplications": "No option may imply numeric weight, propagation, recommendation or execution eligibility by itself.",
+      "migrationImplications": "Existing governed records remain valid; later implementation must be additive or explicitly migrated with rollback and protected-science comparison.",
+      "whatEachOptionUnblocks": [
+        {
+          "option": "A",
+          "unblocks": "Later design, migration and scientific re-adjudication for the packet's dependent records."
+        },
+        {
+          "option": "B",
+          "unblocks": "Later design, migration and scientific re-adjudication for the packet's dependent records."
+        },
+        {
+          "option": "C",
+          "unblocks": "Later design, migration and scientific re-adjudication for the packet's dependent records."
+        }
+      ],
+      "risks": [
+        "scientific overstatement",
+        "double counting",
+        "consumer misinterpretation",
+        "irreversible migration without rollback"
+      ],
+      "skepticalArchitectureReview": [
+        "A creates a new governed object and a nontrivial migration surface.",
+        "B avoids a new class but may create long, incomplete bridge paths.",
+        "C is backward-compatible but metadata alone may be too weak for runtime validation."
+      ],
+      "recommendedNextResearchOrTest": "Create executable examples and counterexamples against current validators before the human option vote; do not alter production records.",
+      "humanDecisionStatus": "REQUIRED_NOT_TAKEN"
+    },
+    {
+      "decisionPacketId": "DP-PSG-003",
+      "rootIssueId": "ROOT-NETWORK-STATE-TRANSITION-001",
+      "workPackageId": "WP-PSG-003",
+      "title": "Network State, ScenarioStateDelta and metric recalculation boundary",
+      "currentProblem": "Node, tie, membership and boundary operations are being confused with empirical interventions, metric recalculation and causal effects.",
+      "whyItMatters": "It directly contains 3 active-execution blockers and constrains 24 items in downstream root programs.",
+      "currentSafeState": "Preserve every recorded scientific, ontology, architecture and lifecycle state until a later human decision.",
+      "affectedLayers": [
+        "Social"
+      ],
+      "affectedBacklogItems": [
+        "HYP-SOC-F07-H12",
+        "HYP-SOC-F07-H20",
+        "ASTRA-SOC-LAYER-003"
+      ],
+      "options": [
+        "A: extend typed ScenarioStateDelta operations within Network State V1",
+        "B: introduce a governed NetworkStateTransition record distinct from Actions & Events",
+        "C: retain current recalculation-only bindings and leave unsupported operations blocked"
+      ],
+      "scientificImplications": "The chosen option must preserve construct identity, causal identification, level alignment and unknown-as-unknown semantics.",
+      "architectureImplications": "Any selected representation requires a separately governed schema/validator design and migration plan.",
+      "simulationImplications": "No option may imply numeric weight, propagation, recommendation or execution eligibility by itself.",
+      "migrationImplications": "Existing governed records remain valid; later implementation must be additive or explicitly migrated with rollback and protected-science comparison.",
+      "whatEachOptionUnblocks": [
+        {
+          "option": "A",
+          "unblocks": "Later design, migration and scientific re-adjudication for the packet's dependent records."
+        },
+        {
+          "option": "B",
+          "unblocks": "Later design, migration and scientific re-adjudication for the packet's dependent records."
+        },
+        {
+          "option": "C",
+          "unblocks": "Later design, migration and scientific re-adjudication for the packet's dependent records."
+        }
+      ],
+      "risks": [
+        "scientific overstatement",
+        "double counting",
+        "consumer misinterpretation",
+        "irreversible migration without rollback"
+      ],
+      "skepticalArchitectureReview": [
+        "A may stretch ScenarioStateDelta beyond its present bounded role.",
+        "B is explicit but introduces a new architecture class and binding rules.",
+        "C preserves safety while leaving legitimate network operations unavailable."
+      ],
+      "recommendedNextResearchOrTest": "Create executable examples and counterexamples against current validators before the human option vote; do not alter production records.",
+      "humanDecisionStatus": "REQUIRED_NOT_TAKEN"
+    },
+    {
+      "decisionPacketId": "DP-PSG-004",
+      "rootIssueId": "ROOT-CONTRIBUTION-IDENTITY-001",
+      "workPackageId": "WP-PSG-004",
+      "title": "Contribution identity and double-count control",
+      "currentProblem": "One underlying contribution may appear through Relationship plus EffectAssertion, constituent plus aggregate RDS, or state recalculation plus a causal edge.",
+      "whyItMatters": "It directly contains 1 active-execution blockers and constrains 23 items in downstream root programs.",
+      "currentSafeState": "Preserve every recorded scientific, ontology, architecture and lifecycle state until a later human decision.",
+      "affectedLayers": [
+        "Psychological",
+        "Biological",
+        "Cultural",
+        "Social",
+        "Institutional / Structural"
+      ],
+      "affectedBacklogItems": [
+        "BLK-PSY-003"
+      ],
+      "options": [
+        "A: generalize governed contribution groups across Relationship, EffectAssertion and RDS routes",
+        "B: retain lineage links and enforce consumer-side mutual exclusion",
+        "C: use separate class-specific controls and keep cross-class cases blocked"
+      ],
+      "scientificImplications": "The chosen option must preserve construct identity, causal identification, level alignment and unknown-as-unknown semantics.",
+      "architectureImplications": "Any selected representation requires a separately governed schema/validator design and migration plan.",
+      "simulationImplications": "No option may imply numeric weight, propagation, recommendation or execution eligibility by itself.",
+      "migrationImplications": "Existing governed records remain valid; later implementation must be additive or explicitly migrated with rollback and protected-science comparison.",
+      "whatEachOptionUnblocks": [
+        {
+          "option": "A",
+          "unblocks": "Later design, migration and scientific re-adjudication for the packet's dependent records."
+        },
+        {
+          "option": "B",
+          "unblocks": "Later design, migration and scientific re-adjudication for the packet's dependent records."
+        },
+        {
+          "option": "C",
+          "unblocks": "Later design, migration and scientific re-adjudication for the packet's dependent records."
+        }
+      ],
+      "risks": [
+        "scientific overstatement",
+        "double counting",
+        "consumer misinterpretation",
+        "irreversible migration without rollback"
+      ],
+      "skepticalArchitectureReview": [
+        "A may incorrectly equate scientifically distinct contributions.",
+        "B depends on every consumer enforcing mutual exclusion consistently.",
+        "C avoids overgeneralization but leaves fragmented controls and blocked cross-class cases."
+      ],
+      "recommendedNextResearchOrTest": "Create executable examples and counterexamples against current validators before the human option vote; do not alter production records.",
+      "humanDecisionStatus": "REQUIRED_NOT_TAKEN"
+    },
+    {
+      "decisionPacketId": "DP-PSG-005",
+      "rootIssueId": "ROOT-RDS-CAUSAL-SOURCE-001",
+      "workPackageId": "WP-PSG-005",
+      "title": "Aggregate RDS causal-source independence",
+      "currentProblem": "A defined aggregate can still double-count constituents or lack an independent aggregate mechanism, temporal order or contextual exposure route.",
+      "whyItMatters": "It directly contains 5 active-execution blockers and constrains 18 items in downstream root programs.",
+      "currentSafeState": "Preserve every recorded scientific, ontology, architecture and lifecycle state until a later human decision.",
+      "affectedLayers": [
+        "Informational",
+        "Biological",
+        "Cultural",
+        "Social",
+        "Institutional / Structural"
+      ],
+      "affectedBacklogItems": [
+        "ASTRA-BIO-LAYER-001",
+        "ASTRA-CUL-LAYER-001",
+        "ASTRA-SOC-LAYER-001",
+        "ASTRA-INS-LAYER-001",
+        "ASTRA-INS-LAYER-002"
+      ],
+      "options": [
+        "A: allow only independently manipulable aggregates with distinct mechanisms",
+        "B: allow contextual aggregate exposures with explicit cross-level mapping and contribution control",
+        "C: prohibit aggregate causal-source use and retain aggregates as descriptive/derivational"
+      ],
+      "scientificImplications": "The chosen option must preserve construct identity, causal identification, level alignment and unknown-as-unknown semantics.",
+      "architectureImplications": "Any selected representation requires a separately governed schema/validator design and migration plan.",
+      "simulationImplications": "No option may imply numeric weight, propagation, recommendation or execution eligibility by itself.",
+      "migrationImplications": "Existing governed records remain valid; later implementation must be additive or explicitly migrated with rollback and protected-science comparison.",
+      "whatEachOptionUnblocks": [
+        {
+          "option": "A",
+          "unblocks": "Later design, migration and scientific re-adjudication for the packet's dependent records."
+        },
+        {
+          "option": "B",
+          "unblocks": "Later design, migration and scientific re-adjudication for the packet's dependent records."
+        },
+        {
+          "option": "C",
+          "unblocks": "Later design, migration and scientific re-adjudication for the packet's dependent records."
+        }
+      ],
+      "risks": [
+        "scientific overstatement",
+        "double counting",
+        "consumer misinterpretation",
+        "irreversible migration without rollback"
+      ],
+      "skepticalArchitectureReview": [
+        "A may exclude legitimate contextual aggregate effects.",
+        "B can preserve contextual causality but needs exposure mapping and strict double-count control.",
+        "C is simple and safe but prevents every aggregate from acting as a causal source."
+      ],
+      "recommendedNextResearchOrTest": "Create executable examples and counterexamples against current validators before the human option vote; do not alter production records.",
+      "humanDecisionStatus": "REQUIRED_NOT_TAKEN"
+    },
+    {
+      "decisionPacketId": "DP-PSG-006",
+      "rootIssueId": "ROOT-ACTIVE-EFFECT-MECHANISM-001",
+      "workPackageId": "WP-PSG-006",
+      "title": "Active empirical effect versus mechanism-knowledge contract",
+      "currentProblem": "Two governed bounded effects have evidence for effect existence while mechanismStatus correctly remains UNKNOWN; the current active contract requires non-UNKNOWN mechanism knowledge.",
+      "whyItMatters": "It directly contains 4 active-execution blockers and constrains 10 items in downstream root programs.",
+      "currentSafeState": "Preserve every recorded scientific, ontology, architecture and lifecycle state until a later human decision.",
+      "affectedLayers": [
+        "Physical / Environmental",
+        "Technological"
+      ],
+      "affectedBacklogItems": [
+        "BLK-ENV-ACTIVATION-001",
+        "BLK-TEC-ACTIVATION-001",
+        "INACTIVE-ENV-BUNDLE-001",
+        "INACTIVE-TEC-BUNDLE-001"
+      ],
+      "options": [
+        "A: retain the current contract and keep both bundles inactive",
+        "B: create a restricted active empirical-effect class with UNKNOWN mechanism and stronger scope safeguards",
+        "C: separate effect-existence eligibility from mechanism-knowledge eligibility",
+        "D: retain one active class but add consumer capability restrictions for unknown-mechanism effects"
+      ],
+      "scientificImplications": "The chosen option must preserve construct identity, causal identification, level alignment and unknown-as-unknown semantics.",
+      "architectureImplications": "Any selected representation requires a separately governed schema/validator design and migration plan.",
+      "simulationImplications": "No option may imply numeric weight, propagation, recommendation or execution eligibility by itself.",
+      "migrationImplications": "Existing governed records remain valid; later implementation must be additive or explicitly migrated with rollback and protected-science comparison.",
+      "whatEachOptionUnblocks": [
+        {
+          "option": "A",
+          "unblocks": "Later design, migration and scientific re-adjudication for the packet's dependent records."
+        },
+        {
+          "option": "B",
+          "unblocks": "Later design, migration and scientific re-adjudication for the packet's dependent records."
+        },
+        {
+          "option": "C",
+          "unblocks": "Later design, migration and scientific re-adjudication for the packet's dependent records."
+        },
+        {
+          "option": "D",
+          "unblocks": "Later design, migration and scientific re-adjudication for the packet's dependent records."
+        }
+      ],
+      "risks": [
+        "scientific overstatement",
+        "double counting",
+        "consumer misinterpretation",
+        "irreversible migration without rollback"
+      ],
+      "skepticalArchitectureReview": [
+        "A ties effect usability to mechanism knowledge and leaves bounded evidence inactive.",
+        "B risks consumers treating a restricted class as simulation-ready.",
+        "C is scientifically explicit but requires broad schema and consumer migration.",
+        "D minimizes record change but can create divergent consumer behavior."
+      ],
+      "recommendedNextResearchOrTest": "Create executable examples and counterexamples against current validators before the human option vote; do not alter production records.",
+      "humanDecisionStatus": "REQUIRED_NOT_TAKEN"
+    }
+  ]
+}

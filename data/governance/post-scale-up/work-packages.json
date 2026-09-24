@@ -1,0 +1,703 @@
+{
+  "schemaVersion": "1.0.0",
+  "roadmapId": "POST-SCALE-UP-GOVERNANCE-ROADMAP-V1-20260924-001",
+  "workPackages": [
+    {
+      "workPackageId": "WP-PSG-001",
+      "rootIssueId": "ROOT-RDS-DEFINITION-DERIVATION-001",
+      "title": "Shared RDS definition and derivation contract",
+      "problemStatement": "Affected RDS lack portable versioned contracts for inputs, aggregation, reference population, window, metric variant, normalization or constituent mapping.",
+      "backlogItemsAbsorbed": [
+        "BLK-PSY-001",
+        "ARCH-INF-LAYER-0001",
+        "BLK-BIO-RDS-001",
+        "BLK-CUL-RDS-001",
+        "BLK-INS-RDS-001"
+      ],
+      "layersAffected": [
+        "Psychological",
+        "Informational",
+        "Biological",
+        "Cultural",
+        "Social",
+        "Institutional / Structural"
+      ],
+      "recordsAffected": "See blocker-dependency-map affectedRecords for every absorbed item.",
+      "dependencies": [],
+      "decisionsRequired": [
+        "Select the mandatory contract and versioning rules for an RDS to be calculable and reviewable; do not decide causal-source eligibility here."
+      ],
+      "researchRequired": false,
+      "architectureRequired": true,
+      "ontologyRequired": false,
+      "sourceGovernanceRequired": false,
+      "productionMigrationEventuallyRequired": true,
+      "whatCanBeDecidedAutomatically": [
+        "inventory and dependency verification",
+        "deduplication",
+        "option completeness checks",
+        "protected-state validation"
+      ],
+      "whatRequiresHumanScientificGovernance": [
+        "Select the mandatory contract and versioning rules for an RDS to be calculable and reviewable; do not decide causal-source eligibility here.",
+        "any production migration",
+        "any activation or causal-source authorization"
+      ],
+      "entryCriteria": [
+        "all absorbed records remain in their current safe state",
+        "dependency inputs are documented",
+        "protected hashes pass"
+      ],
+      "exitCriteria": [
+        "one option is explicitly human-governed",
+        "migration scope and rollback are approved",
+        "dependent records have a re-adjudication plan"
+      ],
+      "testsRequired": [
+        "schema and dependency DAG",
+        "protected production hashes",
+        "migration-specific validator tests before implementation",
+        "dependent scientific re-adjudication"
+      ],
+      "expectedDownstreamItemsUnblocked": 29,
+      "safeRollbackState": "Preserve every recorded scientific, ontology, architecture and lifecycle state until a later human decision.",
+      "stages": {
+        "A_problemNormalization": "COMPLETE",
+        "B_designAlternatives": "COMPLETE",
+        "C_skepticalArchitectureReview": "COMPLETE",
+        "D_humanGovernanceDecision": "NOT_STARTED",
+        "E_implementation": "NOT_STARTED",
+        "F_migrationRevalidation": "NOT_STARTED",
+        "G_scientificReadjudication": "NOT_STARTED"
+      },
+      "recommendedSequenceBand": "BAND_1_FOUNDATION"
+    },
+    {
+      "workPackageId": "WP-PSG-002",
+      "rootIssueId": "ROOT-CROSS-LEVEL-EXPOSURE-001",
+      "title": "Cross-level exposure and group-to-person causal semantics",
+      "problemStatement": "Group, institution and network states do not automatically become exposures experienced by individual targets.",
+      "backlogItemsAbsorbed": [
+        "ASTRA-SOC-LAYER-002",
+        "ASTRA-INS-LAYER-003"
+      ],
+      "layersAffected": [
+        "Social",
+        "Institutional / Structural",
+        "Psychological"
+      ],
+      "recordsAffected": "See blocker-dependency-map affectedRecords for every absorbed item.",
+      "dependencies": [],
+      "decisionsRequired": [
+        "Choose how membership, eligibility, implementation, contact, actual exposure, perceived exposure and response are represented without inferring a shortcut."
+      ],
+      "researchRequired": false,
+      "architectureRequired": true,
+      "ontologyRequired": true,
+      "sourceGovernanceRequired": false,
+      "productionMigrationEventuallyRequired": true,
+      "whatCanBeDecidedAutomatically": [
+        "inventory and dependency verification",
+        "deduplication",
+        "option completeness checks",
+        "protected-state validation"
+      ],
+      "whatRequiresHumanScientificGovernance": [
+        "Choose how membership, eligibility, implementation, contact, actual exposure, perceived exposure and response are represented without inferring a shortcut.",
+        "any production migration",
+        "any activation or causal-source authorization"
+      ],
+      "entryCriteria": [
+        "all absorbed records remain in their current safe state",
+        "dependency inputs are documented",
+        "protected hashes pass"
+      ],
+      "exitCriteria": [
+        "one option is explicitly human-governed",
+        "migration scope and rollback are approved",
+        "dependent records have a re-adjudication plan"
+      ],
+      "testsRequired": [
+        "schema and dependency DAG",
+        "protected production hashes",
+        "migration-specific validator tests before implementation",
+        "dependent scientific re-adjudication"
+      ],
+      "expectedDownstreamItemsUnblocked": 25,
+      "safeRollbackState": "Preserve every recorded scientific, ontology, architecture and lifecycle state until a later human decision.",
+      "stages": {
+        "A_problemNormalization": "COMPLETE",
+        "B_designAlternatives": "COMPLETE",
+        "C_skepticalArchitectureReview": "COMPLETE",
+        "D_humanGovernanceDecision": "NOT_STARTED",
+        "E_implementation": "NOT_STARTED",
+        "F_migrationRevalidation": "NOT_STARTED",
+        "G_scientificReadjudication": "NOT_STARTED"
+      },
+      "recommendedSequenceBand": "BAND_1_FOUNDATION"
+    },
+    {
+      "workPackageId": "WP-PSG-003",
+      "rootIssueId": "ROOT-NETWORK-STATE-TRANSITION-001",
+      "title": "Network State, ScenarioStateDelta and metric recalculation boundary",
+      "problemStatement": "Node, tie, membership and boundary operations are being confused with empirical interventions, metric recalculation and causal effects.",
+      "backlogItemsAbsorbed": [
+        "HYP-SOC-F07-H12",
+        "HYP-SOC-F07-H20",
+        "ASTRA-SOC-LAYER-003"
+      ],
+      "layersAffected": [
+        "Social"
+      ],
+      "recordsAffected": "See blocker-dependency-map affectedRecords for every absorbed item.",
+      "dependencies": [],
+      "decisionsRequired": [
+        "Assign network state, state changes, empirical operations, derivations and causal EffectAssertions to explicit non-overlapping representations."
+      ],
+      "researchRequired": false,
+      "architectureRequired": true,
+      "ontologyRequired": true,
+      "sourceGovernanceRequired": false,
+      "productionMigrationEventuallyRequired": true,
+      "whatCanBeDecidedAutomatically": [
+        "inventory and dependency verification",
+        "deduplication",
+        "option completeness checks",
+        "protected-state validation"
+      ],
+      "whatRequiresHumanScientificGovernance": [
+        "Assign network state, state changes, empirical operations, derivations and causal EffectAssertions to explicit non-overlapping representations.",
+        "any production migration",
+        "any activation or causal-source authorization"
+      ],
+      "entryCriteria": [
+        "all absorbed records remain in their current safe state",
+        "dependency inputs are documented",
+        "protected hashes pass"
+      ],
+      "exitCriteria": [
+        "one option is explicitly human-governed",
+        "migration scope and rollback are approved",
+        "dependent records have a re-adjudication plan"
+      ],
+      "testsRequired": [
+        "schema and dependency DAG",
+        "protected production hashes",
+        "migration-specific validator tests before implementation",
+        "dependent scientific re-adjudication"
+      ],
+      "expectedDownstreamItemsUnblocked": 27,
+      "safeRollbackState": "Preserve every recorded scientific, ontology, architecture and lifecycle state until a later human decision.",
+      "stages": {
+        "A_problemNormalization": "COMPLETE",
+        "B_designAlternatives": "COMPLETE",
+        "C_skepticalArchitectureReview": "COMPLETE",
+        "D_humanGovernanceDecision": "NOT_STARTED",
+        "E_implementation": "NOT_STARTED",
+        "F_migrationRevalidation": "NOT_STARTED",
+        "G_scientificReadjudication": "NOT_STARTED"
+      },
+      "recommendedSequenceBand": "BAND_1_FOUNDATION"
+    },
+    {
+      "workPackageId": "WP-PSG-004",
+      "rootIssueId": "ROOT-CONTRIBUTION-IDENTITY-001",
+      "title": "Contribution identity and double-count control",
+      "problemStatement": "One underlying contribution may appear through Relationship plus EffectAssertion, constituent plus aggregate RDS, or state recalculation plus a causal edge.",
+      "backlogItemsAbsorbed": [
+        "BLK-PSY-003"
+      ],
+      "layersAffected": [
+        "Psychological",
+        "Biological",
+        "Cultural",
+        "Social",
+        "Institutional / Structural"
+      ],
+      "recordsAffected": "See blocker-dependency-map affectedRecords for every absorbed item.",
+      "dependencies": [
+        "ROOT-RDS-DEFINITION-DERIVATION-001",
+        "ROOT-NETWORK-STATE-TRANSITION-001"
+      ],
+      "decisionsRequired": [
+        "Choose whether and how causal contribution identity spans representation classes without turning derivation into causality."
+      ],
+      "researchRequired": false,
+      "architectureRequired": true,
+      "ontologyRequired": false,
+      "sourceGovernanceRequired": false,
+      "productionMigrationEventuallyRequired": true,
+      "whatCanBeDecidedAutomatically": [
+        "inventory and dependency verification",
+        "deduplication",
+        "option completeness checks",
+        "protected-state validation"
+      ],
+      "whatRequiresHumanScientificGovernance": [
+        "Choose whether and how causal contribution identity spans representation classes without turning derivation into causality.",
+        "any production migration",
+        "any activation or causal-source authorization"
+      ],
+      "entryCriteria": [
+        "all absorbed records remain in their current safe state",
+        "dependency inputs are documented",
+        "protected hashes pass"
+      ],
+      "exitCriteria": [
+        "one option is explicitly human-governed",
+        "migration scope and rollback are approved",
+        "dependent records have a re-adjudication plan"
+      ],
+      "testsRequired": [
+        "schema and dependency DAG",
+        "protected production hashes",
+        "migration-specific validator tests before implementation",
+        "dependent scientific re-adjudication"
+      ],
+      "expectedDownstreamItemsUnblocked": 24,
+      "safeRollbackState": "Preserve every recorded scientific, ontology, architecture and lifecycle state until a later human decision.",
+      "stages": {
+        "A_problemNormalization": "COMPLETE",
+        "B_designAlternatives": "COMPLETE",
+        "C_skepticalArchitectureReview": "COMPLETE",
+        "D_humanGovernanceDecision": "NOT_STARTED",
+        "E_implementation": "NOT_STARTED",
+        "F_migrationRevalidation": "NOT_STARTED",
+        "G_scientificReadjudication": "NOT_STARTED"
+      },
+      "recommendedSequenceBand": "BAND_2_CONTROL"
+    },
+    {
+      "workPackageId": "WP-PSG-005",
+      "rootIssueId": "ROOT-RDS-CAUSAL-SOURCE-001",
+      "title": "Aggregate RDS causal-source independence",
+      "problemStatement": "A defined aggregate can still double-count constituents or lack an independent aggregate mechanism, temporal order or contextual exposure route.",
+      "backlogItemsAbsorbed": [
+        "ASTRA-BIO-LAYER-001",
+        "ASTRA-CUL-LAYER-001",
+        "ASTRA-SOC-LAYER-001",
+        "ASTRA-INS-LAYER-001",
+        "ASTRA-INS-LAYER-002"
+      ],
+      "layersAffected": [
+        "Informational",
+        "Biological",
+        "Cultural",
+        "Social",
+        "Institutional / Structural"
+      ],
+      "recordsAffected": "See blocker-dependency-map affectedRecords for every absorbed item.",
+      "dependencies": [
+        "ROOT-RDS-DEFINITION-DERIVATION-001",
+        "ROOT-CROSS-LEVEL-EXPOSURE-001",
+        "ROOT-CONTRIBUTION-IDENTITY-001"
+      ],
+      "decisionsRequired": [
+        "Apply one reusable test before adjudicating any individual RDS as an independent causal source."
+      ],
+      "researchRequired": true,
+      "architectureRequired": true,
+      "ontologyRequired": false,
+      "sourceGovernanceRequired": false,
+      "productionMigrationEventuallyRequired": true,
+      "whatCanBeDecidedAutomatically": [
+        "inventory and dependency verification",
+        "deduplication",
+        "option completeness checks",
+        "protected-state validation"
+      ],
+      "whatRequiresHumanScientificGovernance": [
+        "Apply one reusable test before adjudicating any individual RDS as an independent causal source.",
+        "any production migration",
+        "any activation or causal-source authorization"
+      ],
+      "entryCriteria": [
+        "all absorbed records remain in their current safe state",
+        "dependency inputs are documented",
+        "protected hashes pass"
+      ],
+      "exitCriteria": [
+        "one option is explicitly human-governed",
+        "migration scope and rollback are approved",
+        "dependent records have a re-adjudication plan"
+      ],
+      "testsRequired": [
+        "schema and dependency DAG",
+        "protected production hashes",
+        "migration-specific validator tests before implementation",
+        "dependent scientific re-adjudication"
+      ],
+      "expectedDownstreamItemsUnblocked": 23,
+      "safeRollbackState": "Preserve every recorded scientific, ontology, architecture and lifecycle state until a later human decision.",
+      "stages": {
+        "A_problemNormalization": "COMPLETE",
+        "B_designAlternatives": "COMPLETE",
+        "C_skepticalArchitectureReview": "COMPLETE",
+        "D_humanGovernanceDecision": "NOT_STARTED",
+        "E_implementation": "NOT_STARTED",
+        "F_migrationRevalidation": "NOT_STARTED",
+        "G_scientificReadjudication": "NOT_STARTED"
+      },
+      "recommendedSequenceBand": "BAND_3_ADJUDICATION"
+    },
+    {
+      "workPackageId": "WP-PSG-006",
+      "rootIssueId": "ROOT-ACTIVE-EFFECT-MECHANISM-001",
+      "title": "Active empirical effect versus mechanism-knowledge contract",
+      "problemStatement": "Two governed bounded effects have evidence for effect existence while mechanismStatus correctly remains UNKNOWN; the current active contract requires non-UNKNOWN mechanism knowledge.",
+      "backlogItemsAbsorbed": [
+        "BLK-ENV-ACTIVATION-001",
+        "BLK-TEC-ACTIVATION-001",
+        "INACTIVE-ENV-BUNDLE-001",
+        "INACTIVE-TEC-BUNDLE-001"
+      ],
+      "layersAffected": [
+        "Physical / Environmental",
+        "Technological"
+      ],
+      "recordsAffected": "See blocker-dependency-map affectedRecords for every absorbed item.",
+      "dependencies": [],
+      "decisionsRequired": [
+        "Decide whether active eligibility always requires mechanism knowledge or whether effect-existence eligibility is a distinct governed dimension."
+      ],
+      "researchRequired": false,
+      "architectureRequired": true,
+      "ontologyRequired": false,
+      "sourceGovernanceRequired": false,
+      "productionMigrationEventuallyRequired": true,
+      "whatCanBeDecidedAutomatically": [
+        "inventory and dependency verification",
+        "deduplication",
+        "option completeness checks",
+        "protected-state validation"
+      ],
+      "whatRequiresHumanScientificGovernance": [
+        "Decide whether active eligibility always requires mechanism knowledge or whether effect-existence eligibility is a distinct governed dimension.",
+        "any production migration",
+        "any activation or causal-source authorization"
+      ],
+      "entryCriteria": [
+        "all absorbed records remain in their current safe state",
+        "dependency inputs are documented",
+        "protected hashes pass"
+      ],
+      "exitCriteria": [
+        "one option is explicitly human-governed",
+        "migration scope and rollback are approved",
+        "dependent records have a re-adjudication plan"
+      ],
+      "testsRequired": [
+        "schema and dependency DAG",
+        "protected production hashes",
+        "migration-specific validator tests before implementation",
+        "dependent scientific re-adjudication"
+      ],
+      "expectedDownstreamItemsUnblocked": 14,
+      "safeRollbackState": "Preserve every recorded scientific, ontology, architecture and lifecycle state until a later human decision.",
+      "stages": {
+        "A_problemNormalization": "COMPLETE",
+        "B_designAlternatives": "COMPLETE",
+        "C_skepticalArchitectureReview": "COMPLETE",
+        "D_humanGovernanceDecision": "NOT_STARTED",
+        "E_implementation": "NOT_STARTED",
+        "F_migrationRevalidation": "NOT_STARTED",
+        "G_scientificReadjudication": "NOT_STARTED"
+      },
+      "recommendedSequenceBand": "BAND_2_CONTROL"
+    },
+    {
+      "workPackageId": "WP-PSG-007",
+      "rootIssueId": "ROOT-CONSTRUCT-ONTOLOGY-001",
+      "title": "Construct identity, feature and blocked-metadata governance",
+      "problemStatement": "Construct overlap, feature-versus-identity questions and blocked scientific metadata are mixed under one ontology backlog class.",
+      "backlogItemsAbsorbed": [
+        "BLK-PSY-002",
+        "HYP-INF-F03-H20",
+        "BLK-TEC-METADATA-001",
+        "BLK-INS-METADATA-001"
+      ],
+      "layersAffected": [
+        "Psychological",
+        "Informational",
+        "Technological",
+        "Institutional / Structural"
+      ],
+      "recordsAffected": "See blocker-dependency-map affectedRecords for every absorbed item.",
+      "dependencies": [],
+      "decisionsRequired": [
+        "Use separate adjudication tracks for identity equivalence, feature representation, classification and missing scientific metadata."
+      ],
+      "researchRequired": true,
+      "architectureRequired": false,
+      "ontologyRequired": true,
+      "sourceGovernanceRequired": false,
+      "productionMigrationEventuallyRequired": true,
+      "whatCanBeDecidedAutomatically": [
+        "inventory and dependency verification",
+        "deduplication",
+        "option completeness checks",
+        "protected-state validation"
+      ],
+      "whatRequiresHumanScientificGovernance": [
+        "Use separate adjudication tracks for identity equivalence, feature representation, classification and missing scientific metadata.",
+        "any production migration",
+        "any activation or causal-source authorization"
+      ],
+      "entryCriteria": [
+        "all absorbed records remain in their current safe state",
+        "dependency inputs are documented",
+        "protected hashes pass"
+      ],
+      "exitCriteria": [
+        "one option is explicitly human-governed",
+        "migration scope and rollback are approved",
+        "dependent records have a re-adjudication plan"
+      ],
+      "testsRequired": [
+        "schema and dependency DAG",
+        "protected production hashes",
+        "migration-specific validator tests before implementation",
+        "dependent scientific re-adjudication"
+      ],
+      "expectedDownstreamItemsUnblocked": 22,
+      "safeRollbackState": "Preserve every recorded scientific, ontology, architecture and lifecycle state until a later human decision.",
+      "stages": {
+        "A_problemNormalization": "COMPLETE",
+        "B_designAlternatives": "COMPLETE",
+        "C_skepticalArchitectureReview": "DEFERRED_UNTIL_SELECTED",
+        "D_humanGovernanceDecision": "NOT_STARTED",
+        "E_implementation": "NOT_STARTED",
+        "F_migrationRevalidation": "NOT_STARTED",
+        "G_scientificReadjudication": "NOT_STARTED"
+      },
+      "recommendedSequenceBand": "BAND_1_FOUNDATION"
+    },
+    {
+      "workPackageId": "WP-PSG-008",
+      "rootIssueId": "ROOT-SOURCE-GOVERNANCE-001",
+      "title": "Truthful multi-route source registration contract",
+      "problemStatement": "Candidate provenance includes DOI/PubMed, publisher, report/book and verified non-PubMed identities with different access depths.",
+      "backlogItemsAbsorbed": [
+        "META-INF-LAYER-0001",
+        "SRC-CAND-SOC-F07-010"
+      ],
+      "layersAffected": [
+        "Informational",
+        "Social"
+      ],
+      "recordsAffected": "See blocker-dependency-map affectedRecords for every absorbed item.",
+      "dependencies": [],
+      "decisionsRequired": [
+        "Define identity and access-depth fields that permit canonical registration without overstating verification."
+      ],
+      "researchRequired": false,
+      "architectureRequired": false,
+      "ontologyRequired": false,
+      "sourceGovernanceRequired": true,
+      "productionMigrationEventuallyRequired": false,
+      "whatCanBeDecidedAutomatically": [
+        "inventory and dependency verification",
+        "deduplication",
+        "option completeness checks",
+        "protected-state validation"
+      ],
+      "whatRequiresHumanScientificGovernance": [
+        "Define identity and access-depth fields that permit canonical registration without overstating verification.",
+        "any production migration",
+        "any activation or causal-source authorization"
+      ],
+      "entryCriteria": [
+        "all absorbed records remain in their current safe state",
+        "dependency inputs are documented",
+        "protected hashes pass"
+      ],
+      "exitCriteria": [
+        "one option is explicitly human-governed",
+        "migration scope and rollback are approved",
+        "dependent records have a re-adjudication plan"
+      ],
+      "testsRequired": [
+        "schema and dependency DAG",
+        "protected production hashes",
+        "migration-specific validator tests before implementation",
+        "dependent scientific re-adjudication"
+      ],
+      "expectedDownstreamItemsUnblocked": 12,
+      "safeRollbackState": "Preserve every recorded scientific, ontology, architecture and lifecycle state until a later human decision.",
+      "stages": {
+        "A_problemNormalization": "COMPLETE",
+        "B_designAlternatives": "COMPLETE",
+        "C_skepticalArchitectureReview": "DEFERRED_UNTIL_SELECTED",
+        "D_humanGovernanceDecision": "NOT_STARTED",
+        "E_implementation": "NOT_STARTED",
+        "F_migrationRevalidation": "NOT_STARTED",
+        "G_scientificReadjudication": "NOT_STARTED"
+      },
+      "recommendedSequenceBand": "BAND_1_FOUNDATION"
+    },
+    {
+      "workPackageId": "WP-PSG-009",
+      "rootIssueId": "ROOT-RELATIONSHIP-SEMANTIC-DEBT-001",
+      "title": "Production Relationship semantic-debt program",
+      "problemStatement": "Layer audits recorded revision, retype and split proposals, including duplicated cross-Layer reviews, without changing production.",
+      "backlogItemsAbsorbed": [
+        "BACKLOG-REL-PSYCHOLOGICAL_LAYER",
+        "BACKLOG-REL-INFORMATIONAL_LAYER",
+        "BACKLOG-REL-BIOLOGICAL_LAYER",
+        "BACKLOG-REL-CULTURAL_LAYER",
+        "BACKLOG-REL-PHYSICAL_ENVIRONMENTAL_LAYER",
+        "BACKLOG-REL-TECHNOLOGICAL_LAYER",
+        "BACKLOG-REL-SOCIAL_LAYER",
+        "BACKLOG-REL-INSTITUTIONAL_STRUCTURAL_LAYER"
+      ],
+      "layersAffected": [
+        "Biological",
+        "Psychological",
+        "Social",
+        "Cultural",
+        "Physical / Environmental",
+        "Institutional / Structural",
+        "Informational",
+        "Technological"
+      ],
+      "recordsAffected": "See blocker-dependency-map affectedRecords for every absorbed item.",
+      "dependencies": [
+        "ROOT-CROSS-LEVEL-EXPOSURE-001",
+        "ROOT-NETWORK-STATE-TRANSITION-001",
+        "ROOT-CONTRIBUTION-IDENTITY-001",
+        "ROOT-RDS-CAUSAL-SOURCE-001",
+        "ROOT-CONSTRUCT-ONTOLOGY-001"
+      ],
+      "decisionsRequired": [
+        "Govern deduplicated work streams after prerequisite semantics are decided; preserve proposition-level votes for science-changing migrations."
+      ],
+      "researchRequired": true,
+      "architectureRequired": false,
+      "ontologyRequired": false,
+      "sourceGovernanceRequired": false,
+      "productionMigrationEventuallyRequired": true,
+      "whatCanBeDecidedAutomatically": [
+        "inventory and dependency verification",
+        "deduplication",
+        "option completeness checks",
+        "protected-state validation"
+      ],
+      "whatRequiresHumanScientificGovernance": [
+        "Govern deduplicated work streams after prerequisite semantics are decided; preserve proposition-level votes for science-changing migrations.",
+        "any production migration",
+        "any activation or causal-source authorization"
+      ],
+      "entryCriteria": [
+        "all absorbed records remain in their current safe state",
+        "dependency inputs are documented",
+        "protected hashes pass"
+      ],
+      "exitCriteria": [
+        "one option is explicitly human-governed",
+        "migration scope and rollback are approved",
+        "dependent records have a re-adjudication plan"
+      ],
+      "testsRequired": [
+        "schema and dependency DAG",
+        "protected production hashes",
+        "migration-specific validator tests before implementation",
+        "dependent scientific re-adjudication"
+      ],
+      "expectedDownstreamItemsUnblocked": 18,
+      "safeRollbackState": "Preserve every recorded scientific, ontology, architecture and lifecycle state until a later human decision.",
+      "stages": {
+        "A_problemNormalization": "COMPLETE",
+        "B_designAlternatives": "COMPLETE",
+        "C_skepticalArchitectureReview": "DEFERRED_UNTIL_SELECTED",
+        "D_humanGovernanceDecision": "NOT_STARTED",
+        "E_implementation": "NOT_STARTED",
+        "F_migrationRevalidation": "NOT_STARTED",
+        "G_scientificReadjudication": "NOT_STARTED"
+      },
+      "recommendedSequenceBand": "BAND_4_MIGRATION_PLANNING"
+    },
+    {
+      "workPackageId": "WP-PSG-010",
+      "rootIssueId": "ROOT-TARGETED-EVIDENCE-001",
+      "title": "Targeted evidence and inactive-knowledge program",
+      "problemStatement": "Eight Layer queues mix high-value exact research, architecture-blocked questions, endpoint mismatch, identification limits and future evidence watch.",
+      "backlogItemsAbsorbed": [
+        "BACKLOG-RN-PSYCHOLOGICAL_LAYER",
+        "BACKLOG-RN-INFORMATIONAL_LAYER",
+        "BACKLOG-RN-BIOLOGICAL_LAYER",
+        "BACKLOG-RN-CULTURAL_LAYER",
+        "BACKLOG-RN-PHYSICAL_ENVIRONMENTAL_LAYER",
+        "BACKLOG-RN-TECHNOLOGICAL_LAYER",
+        "BACKLOG-RN-SOCIAL_LAYER",
+        "BACKLOG-RN-INSTITUTIONAL_STRUCTURAL_LAYER",
+        "INACTIVE-BIO-IDENTITY-001",
+        "INACTIVE-INF-IDENTITY-001"
+      ],
+      "layersAffected": [
+        "Biological",
+        "Psychological",
+        "Social",
+        "Cultural",
+        "Physical / Environmental",
+        "Institutional / Structural",
+        "Informational",
+        "Technological"
+      ],
+      "recordsAffected": "See blocker-dependency-map affectedRecords for every absorbed item.",
+      "dependencies": [
+        "ROOT-RDS-CAUSAL-SOURCE-001",
+        "ROOT-ACTIVE-EFFECT-MECHANISM-001",
+        "ROOT-CONSTRUCT-ONTOLOGY-001",
+        "ROOT-SOURCE-GOVERNANCE-001",
+        "ROOT-RELATIONSHIP-SEMANTIC-DEBT-001"
+      ],
+      "decisionsRequired": [
+        "Open only bounded research tasks whose target and representation are stable; keep safe inactive identities available for later evidence."
+      ],
+      "researchRequired": true,
+      "architectureRequired": false,
+      "ontologyRequired": false,
+      "sourceGovernanceRequired": false,
+      "productionMigrationEventuallyRequired": false,
+      "whatCanBeDecidedAutomatically": [
+        "inventory and dependency verification",
+        "deduplication",
+        "option completeness checks",
+        "protected-state validation"
+      ],
+      "whatRequiresHumanScientificGovernance": [
+        "Open only bounded research tasks whose target and representation are stable; keep safe inactive identities available for later evidence.",
+        "any production migration",
+        "any activation or causal-source authorization"
+      ],
+      "entryCriteria": [
+        "all absorbed records remain in their current safe state",
+        "dependency inputs are documented",
+        "protected hashes pass"
+      ],
+      "exitCriteria": [
+        "one option is explicitly human-governed",
+        "migration scope and rollback are approved",
+        "dependent records have a re-adjudication plan"
+      ],
+      "testsRequired": [
+        "schema and dependency DAG",
+        "protected production hashes",
+        "migration-specific validator tests before implementation",
+        "dependent scientific re-adjudication"
+      ],
+      "expectedDownstreamItemsUnblocked": 10,
+      "safeRollbackState": "Preserve every recorded scientific, ontology, architecture and lifecycle state until a later human decision.",
+      "stages": {
+        "A_problemNormalization": "COMPLETE",
+        "B_designAlternatives": "COMPLETE",
+        "C_skepticalArchitectureReview": "DEFERRED_UNTIL_SELECTED",
+        "D_humanGovernanceDecision": "NOT_STARTED",
+        "E_implementation": "NOT_STARTED",
+        "F_migrationRevalidation": "NOT_STARTED",
+        "G_scientificReadjudication": "NOT_STARTED"
+      },
+      "recommendedSequenceBand": "BAND_5_TARGETED_RESEARCH"
+    }
+  ]
+}

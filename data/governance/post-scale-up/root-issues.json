@@ -1,0 +1,2304 @@
+{
+  "schemaVersion": "1.0.0",
+  "roadmapId": "POST-SCALE-UP-GOVERNANCE-ROADMAP-V1-20260924-001",
+  "rootIssueCount": 10,
+  "roots": [
+    {
+      "id": "ROOT-RDS-DEFINITION-DERIVATION-001",
+      "title": "Shared RDS definition and derivation contract",
+      "cluster": "RDS_DEFINITION_DERIVATION_GOVERNANCE",
+      "problemStatement": "Affected RDS lack portable versioned contracts for inputs, aggregation, reference population, window, metric variant, normalization or constituent mapping.",
+      "dependencies": [],
+      "absorbedBacklogItemIds": [
+        "BLK-PSY-001",
+        "ARCH-INF-LAYER-0001",
+        "BLK-BIO-RDS-001",
+        "BLK-CUL-RDS-001",
+        "BLK-INS-RDS-001"
+      ],
+      "layersAffected": [
+        "Psychological",
+        "Informational",
+        "Biological",
+        "Cultural",
+        "Social",
+        "Institutional / Structural"
+      ],
+      "decisionRequired": "Select the mandatory contract and versioning rules for an RDS to be calculable and reviewable; do not decide causal-source eligibility here.",
+      "designAlternatives": [
+        "A: require one fully versioned derivation specification for every executable RDS",
+        "B: allow named derivation profiles with explicit application bindings",
+        "C: retain narrative RDS as non-executable constructs until a profile is governed"
+      ],
+      "architectureDecisionRequired": true,
+      "ontologyDecisionRequired": false,
+      "newResearchRequired": false,
+      "recommendedWorkPackage": "WP-PSG-001",
+      "recommendedSequenceBand": "BAND_1_FOUNDATION",
+      "directOriginalItems": 5,
+      "activeBlockingOriginalItems": 5,
+      "downstreamRootIssueIds": [
+        "ROOT-CONTRIBUTION-IDENTITY-001",
+        "ROOT-RDS-CAUSAL-SOURCE-001",
+        "ROOT-RELATIONSHIP-SEMANTIC-DEBT-001",
+        "ROOT-TARGETED-EVIDENCE-001"
+      ],
+      "downstreamOriginalItemCount": 24,
+      "currentSafeState": "Preserve every recorded scientific, ontology, architecture and lifecycle state until a later human decision."
+    },
+    {
+      "id": "ROOT-CROSS-LEVEL-EXPOSURE-001",
+      "title": "Cross-level exposure and group-to-person causal semantics",
+      "cluster": "CROSS_LEVEL_EXPOSURE_GOVERNANCE",
+      "problemStatement": "Group, institution and network states do not automatically become exposures experienced by individual targets.",
+      "dependencies": [],
+      "absorbedBacklogItemIds": [
+        "ASTRA-SOC-LAYER-002",
+        "ASTRA-INS-LAYER-003"
+      ],
+      "layersAffected": [
+        "Social",
+        "Institutional / Structural",
+        "Psychological"
+      ],
+      "decisionRequired": "Choose how membership, eligibility, implementation, contact, actual exposure, perceived exposure and response are represented without inferring a shortcut.",
+      "designAlternatives": [
+        "A: govern an explicit typed CrossLevelExposureMapping object",
+        "B: require existing Driver/HappeningType bridge records for every level transition",
+        "C: add mandatory exposure-path metadata to cross-level Relationships while retaining current entity classes"
+      ],
+      "architectureDecisionRequired": true,
+      "ontologyDecisionRequired": true,
+      "newResearchRequired": false,
+      "recommendedWorkPackage": "WP-PSG-002",
+      "recommendedSequenceBand": "BAND_1_FOUNDATION",
+      "directOriginalItems": 2,
+      "activeBlockingOriginalItems": 2,
+      "downstreamRootIssueIds": [
+        "ROOT-RDS-CAUSAL-SOURCE-001",
+        "ROOT-RELATIONSHIP-SEMANTIC-DEBT-001",
+        "ROOT-TARGETED-EVIDENCE-001"
+      ],
+      "downstreamOriginalItemCount": 23,
+      "currentSafeState": "Preserve every recorded scientific, ontology, architecture and lifecycle state until a later human decision."
+    },
+    {
+      "id": "ROOT-NETWORK-STATE-TRANSITION-001",
+      "title": "Network State, ScenarioStateDelta and metric recalculation boundary",
+      "cluster": "NETWORK_STATE_REPRESENTATION",
+      "problemStatement": "Node, tie, membership and boundary operations are being confused with empirical interventions, metric recalculation and causal effects.",
+      "dependencies": [],
+      "absorbedBacklogItemIds": [
+        "HYP-SOC-F07-H12",
+        "HYP-SOC-F07-H20",
+        "ASTRA-SOC-LAYER-003"
+      ],
+      "layersAffected": [
+        "Social"
+      ],
+      "decisionRequired": "Assign network state, state changes, empirical operations, derivations and causal EffectAssertions to explicit non-overlapping representations.",
+      "designAlternatives": [
+        "A: extend typed ScenarioStateDelta operations within Network State V1",
+        "B: introduce a governed NetworkStateTransition record distinct from Actions & Events",
+        "C: retain current recalculation-only bindings and leave unsupported operations blocked"
+      ],
+      "architectureDecisionRequired": true,
+      "ontologyDecisionRequired": true,
+      "newResearchRequired": false,
+      "recommendedWorkPackage": "WP-PSG-003",
+      "recommendedSequenceBand": "BAND_1_FOUNDATION",
+      "directOriginalItems": 3,
+      "activeBlockingOriginalItems": 3,
+      "downstreamRootIssueIds": [
+        "ROOT-CONTRIBUTION-IDENTITY-001",
+        "ROOT-RDS-CAUSAL-SOURCE-001",
+        "ROOT-RELATIONSHIP-SEMANTIC-DEBT-001",
+        "ROOT-TARGETED-EVIDENCE-001"
+      ],
+      "downstreamOriginalItemCount": 24,
+      "currentSafeState": "Preserve every recorded scientific, ontology, architecture and lifecycle state until a later human decision."
+    },
+    {
+      "id": "ROOT-CONTRIBUTION-IDENTITY-001",
+      "title": "Contribution identity and double-count control",
+      "cluster": "CONTRIBUTION_IDENTITY_DOUBLE_COUNT",
+      "problemStatement": "One underlying contribution may appear through Relationship plus EffectAssertion, constituent plus aggregate RDS, or state recalculation plus a causal edge.",
+      "dependencies": [
+        "ROOT-RDS-DEFINITION-DERIVATION-001",
+        "ROOT-NETWORK-STATE-TRANSITION-001"
+      ],
+      "absorbedBacklogItemIds": [
+        "BLK-PSY-003"
+      ],
+      "layersAffected": [
+        "Psychological",
+        "Biological",
+        "Cultural",
+        "Social",
+        "Institutional / Structural"
+      ],
+      "decisionRequired": "Choose whether and how causal contribution identity spans representation classes without turning derivation into causality.",
+      "designAlternatives": [
+        "A: generalize governed contribution groups across Relationship, EffectAssertion and RDS routes",
+        "B: retain lineage links and enforce consumer-side mutual exclusion",
+        "C: use separate class-specific controls and keep cross-class cases blocked"
+      ],
+      "architectureDecisionRequired": true,
+      "ontologyDecisionRequired": false,
+      "newResearchRequired": false,
+      "recommendedWorkPackage": "WP-PSG-004",
+      "recommendedSequenceBand": "BAND_2_CONTROL",
+      "directOriginalItems": 1,
+      "activeBlockingOriginalItems": 1,
+      "downstreamRootIssueIds": [
+        "ROOT-RDS-CAUSAL-SOURCE-001",
+        "ROOT-RELATIONSHIP-SEMANTIC-DEBT-001",
+        "ROOT-TARGETED-EVIDENCE-001"
+      ],
+      "downstreamOriginalItemCount": 23,
+      "currentSafeState": "Preserve every recorded scientific, ontology, architecture and lifecycle state until a later human decision."
+    },
+    {
+      "id": "ROOT-RDS-CAUSAL-SOURCE-001",
+      "title": "Aggregate RDS causal-source independence",
+      "cluster": "RDS_AGGREGATE_CAUSAL_SOURCE",
+      "problemStatement": "A defined aggregate can still double-count constituents or lack an independent aggregate mechanism, temporal order or contextual exposure route.",
+      "dependencies": [
+        "ROOT-RDS-DEFINITION-DERIVATION-001",
+        "ROOT-CROSS-LEVEL-EXPOSURE-001",
+        "ROOT-CONTRIBUTION-IDENTITY-001"
+      ],
+      "absorbedBacklogItemIds": [
+        "ASTRA-BIO-LAYER-001",
+        "ASTRA-CUL-LAYER-001",
+        "ASTRA-SOC-LAYER-001",
+        "ASTRA-INS-LAYER-001",
+        "ASTRA-INS-LAYER-002"
+      ],
+      "layersAffected": [
+        "Informational",
+        "Biological",
+        "Cultural",
+        "Social",
+        "Institutional / Structural"
+      ],
+      "decisionRequired": "Apply one reusable test before adjudicating any individual RDS as an independent causal source.",
+      "designAlternatives": [
+        "A: allow only independently manipulable aggregates with distinct mechanisms",
+        "B: allow contextual aggregate exposures with explicit cross-level mapping and contribution control",
+        "C: prohibit aggregate causal-source use and retain aggregates as descriptive/derivational"
+      ],
+      "architectureDecisionRequired": true,
+      "ontologyDecisionRequired": false,
+      "newResearchRequired": true,
+      "recommendedWorkPackage": "WP-PSG-005",
+      "recommendedSequenceBand": "BAND_3_ADJUDICATION",
+      "directOriginalItems": 5,
+      "activeBlockingOriginalItems": 5,
+      "downstreamRootIssueIds": [
+        "ROOT-RELATIONSHIP-SEMANTIC-DEBT-001",
+        "ROOT-TARGETED-EVIDENCE-001"
+      ],
+      "downstreamOriginalItemCount": 18,
+      "currentSafeState": "Preserve every recorded scientific, ontology, architecture and lifecycle state until a later human decision."
+    },
+    {
+      "id": "ROOT-ACTIVE-EFFECT-MECHANISM-001",
+      "title": "Active empirical effect versus mechanism-knowledge contract",
+      "cluster": "MECHANISMSTATUS_ACTIVATION_CONTRACT",
+      "problemStatement": "Two governed bounded effects have evidence for effect existence while mechanismStatus correctly remains UNKNOWN; the current active contract requires non-UNKNOWN mechanism knowledge.",
+      "dependencies": [],
+      "absorbedBacklogItemIds": [
+        "BLK-ENV-ACTIVATION-001",
+        "BLK-TEC-ACTIVATION-001",
+        "INACTIVE-ENV-BUNDLE-001",
+        "INACTIVE-TEC-BUNDLE-001"
+      ],
+      "layersAffected": [
+        "Physical / Environmental",
+        "Technological"
+      ],
+      "decisionRequired": "Decide whether active eligibility always requires mechanism knowledge or whether effect-existence eligibility is a distinct governed dimension.",
+      "designAlternatives": [
+        "A: retain the current contract and keep both bundles inactive",
+        "B: create a restricted active empirical-effect class with UNKNOWN mechanism and stronger scope safeguards",
+        "C: separate effect-existence eligibility from mechanism-knowledge eligibility",
+        "D: retain one active class but add consumer capability restrictions for unknown-mechanism effects"
+      ],
+      "architectureDecisionRequired": true,
+      "ontologyDecisionRequired": false,
+      "newResearchRequired": false,
+      "recommendedWorkPackage": "WP-PSG-006",
+      "recommendedSequenceBand": "BAND_2_CONTROL",
+      "directOriginalItems": 4,
+      "activeBlockingOriginalItems": 4,
+      "downstreamRootIssueIds": [
+        "ROOT-TARGETED-EVIDENCE-001"
+      ],
+      "downstreamOriginalItemCount": 10,
+      "currentSafeState": "Preserve every recorded scientific, ontology, architecture and lifecycle state until a later human decision."
+    },
+    {
+      "id": "ROOT-CONSTRUCT-ONTOLOGY-001",
+      "title": "Construct identity, feature and blocked-metadata governance",
+      "cluster": "CONSTRUCT_CLASSIFICATION_ONTOLOGY",
+      "problemStatement": "Construct overlap, feature-versus-identity questions and blocked scientific metadata are mixed under one ontology backlog class.",
+      "dependencies": [],
+      "absorbedBacklogItemIds": [
+        "BLK-PSY-002",
+        "HYP-INF-F03-H20",
+        "BLK-TEC-METADATA-001",
+        "BLK-INS-METADATA-001"
+      ],
+      "layersAffected": [
+        "Psychological",
+        "Informational",
+        "Technological",
+        "Institutional / Structural"
+      ],
+      "decisionRequired": "Use separate adjudication tracks for identity equivalence, feature representation, classification and missing scientific metadata.",
+      "designAlternatives": [
+        "A: retain distinct constructs and govern explicit mappings",
+        "B: govern identity/merge only when definitions and evidence establish equivalence",
+        "C: add feature or dimension representation only through separate ontology governance"
+      ],
+      "architectureDecisionRequired": false,
+      "ontologyDecisionRequired": true,
+      "newResearchRequired": true,
+      "recommendedWorkPackage": "WP-PSG-007",
+      "recommendedSequenceBand": "BAND_1_FOUNDATION",
+      "directOriginalItems": 4,
+      "activeBlockingOriginalItems": 4,
+      "downstreamRootIssueIds": [
+        "ROOT-RELATIONSHIP-SEMANTIC-DEBT-001",
+        "ROOT-TARGETED-EVIDENCE-001"
+      ],
+      "downstreamOriginalItemCount": 18,
+      "currentSafeState": "Preserve every recorded scientific, ontology, architecture and lifecycle state until a later human decision."
+    },
+    {
+      "id": "ROOT-SOURCE-GOVERNANCE-001",
+      "title": "Truthful multi-route source registration contract",
+      "cluster": "SOURCE_GOVERNANCE",
+      "problemStatement": "Candidate provenance includes DOI/PubMed, publisher, report/book and verified non-PubMed identities with different access depths.",
+      "dependencies": [],
+      "absorbedBacklogItemIds": [
+        "META-INF-LAYER-0001",
+        "SRC-CAND-SOC-F07-010"
+      ],
+      "layersAffected": [
+        "Informational",
+        "Social"
+      ],
+      "decisionRequired": "Define identity and access-depth fields that permit canonical registration without overstating verification.",
+      "designAlternatives": [
+        "A: identifier-specific verification profiles under one source schema",
+        "B: one canonical identity record plus separate verification assertions",
+        "C: retain unsupported routes in candidate queues until authoritative identifiers exist"
+      ],
+      "architectureDecisionRequired": false,
+      "ontologyDecisionRequired": false,
+      "newResearchRequired": false,
+      "recommendedWorkPackage": "WP-PSG-008",
+      "recommendedSequenceBand": "BAND_1_FOUNDATION",
+      "directOriginalItems": 2,
+      "activeBlockingOriginalItems": 0,
+      "downstreamRootIssueIds": [
+        "ROOT-TARGETED-EVIDENCE-001"
+      ],
+      "downstreamOriginalItemCount": 10,
+      "currentSafeState": "Preserve every recorded scientific, ontology, architecture and lifecycle state until a later human decision."
+    },
+    {
+      "id": "ROOT-RELATIONSHIP-SEMANTIC-DEBT-001",
+      "title": "Production Relationship semantic-debt program",
+      "cluster": "RELATIONSHIP_SEMANTIC_DEBT",
+      "problemStatement": "Layer audits recorded revision, retype and split proposals, including duplicated cross-Layer reviews, without changing production.",
+      "dependencies": [
+        "ROOT-CROSS-LEVEL-EXPOSURE-001",
+        "ROOT-NETWORK-STATE-TRANSITION-001",
+        "ROOT-CONTRIBUTION-IDENTITY-001",
+        "ROOT-RDS-CAUSAL-SOURCE-001",
+        "ROOT-CONSTRUCT-ONTOLOGY-001"
+      ],
+      "absorbedBacklogItemIds": [
+        "BACKLOG-REL-PSYCHOLOGICAL_LAYER",
+        "BACKLOG-REL-INFORMATIONAL_LAYER",
+        "BACKLOG-REL-BIOLOGICAL_LAYER",
+        "BACKLOG-REL-CULTURAL_LAYER",
+        "BACKLOG-REL-PHYSICAL_ENVIRONMENTAL_LAYER",
+        "BACKLOG-REL-TECHNOLOGICAL_LAYER",
+        "BACKLOG-REL-SOCIAL_LAYER",
+        "BACKLOG-REL-INSTITUTIONAL_STRUCTURAL_LAYER"
+      ],
+      "layersAffected": [
+        "Biological",
+        "Psychological",
+        "Social",
+        "Cultural",
+        "Physical / Environmental",
+        "Institutional / Structural",
+        "Informational",
+        "Technological"
+      ],
+      "decisionRequired": "Govern deduplicated work streams after prerequisite semantics are decided; preserve proposition-level votes for science-changing migrations.",
+      "designAlternatives": [
+        "A: migrate by semantic-defect work stream",
+        "B: migrate by Layer after shared architecture decisions",
+        "C: retain production and close only independently governable high-value defects"
+      ],
+      "architectureDecisionRequired": false,
+      "ontologyDecisionRequired": false,
+      "newResearchRequired": true,
+      "recommendedWorkPackage": "WP-PSG-009",
+      "recommendedSequenceBand": "BAND_4_MIGRATION_PLANNING",
+      "directOriginalItems": 8,
+      "activeBlockingOriginalItems": 0,
+      "downstreamRootIssueIds": [
+        "ROOT-TARGETED-EVIDENCE-001"
+      ],
+      "downstreamOriginalItemCount": 10,
+      "currentSafeState": "Preserve every recorded scientific, ontology, architecture and lifecycle state until a later human decision."
+    },
+    {
+      "id": "ROOT-TARGETED-EVIDENCE-001",
+      "title": "Targeted evidence and inactive-knowledge program",
+      "cluster": "TARGETED_EVIDENCE_RESEARCH",
+      "problemStatement": "Eight Layer queues mix high-value exact research, architecture-blocked questions, endpoint mismatch, identification limits and future evidence watch.",
+      "dependencies": [
+        "ROOT-RDS-CAUSAL-SOURCE-001",
+        "ROOT-ACTIVE-EFFECT-MECHANISM-001",
+        "ROOT-CONSTRUCT-ONTOLOGY-001",
+        "ROOT-SOURCE-GOVERNANCE-001",
+        "ROOT-RELATIONSHIP-SEMANTIC-DEBT-001"
+      ],
+      "absorbedBacklogItemIds": [
+        "BACKLOG-RN-PSYCHOLOGICAL_LAYER",
+        "BACKLOG-RN-INFORMATIONAL_LAYER",
+        "BACKLOG-RN-BIOLOGICAL_LAYER",
+        "BACKLOG-RN-CULTURAL_LAYER",
+        "BACKLOG-RN-PHYSICAL_ENVIRONMENTAL_LAYER",
+        "BACKLOG-RN-TECHNOLOGICAL_LAYER",
+        "BACKLOG-RN-SOCIAL_LAYER",
+        "BACKLOG-RN-INSTITUTIONAL_STRUCTURAL_LAYER",
+        "INACTIVE-BIO-IDENTITY-001",
+        "INACTIVE-INF-IDENTITY-001"
+      ],
+      "layersAffected": [
+        "Biological",
+        "Psychological",
+        "Social",
+        "Cultural",
+        "Physical / Environmental",
+        "Institutional / Structural",
+        "Informational",
+        "Technological"
+      ],
+      "decisionRequired": "Open only bounded research tasks whose target and representation are stable; keep safe inactive identities available for later evidence.",
+      "designAlternatives": [
+        "A: research only architecture-independent high-value targets first",
+        "B: wait for all shared architecture decisions before new evidence work",
+        "C: operate parallel evidence-watch and architecture-dependent queues with explicit gates"
+      ],
+      "architectureDecisionRequired": false,
+      "ontologyDecisionRequired": false,
+      "newResearchRequired": true,
+      "recommendedWorkPackage": "WP-PSG-010",
+      "recommendedSequenceBand": "BAND_5_TARGETED_RESEARCH",
+      "directOriginalItems": 10,
+      "activeBlockingOriginalItems": 0,
+      "downstreamRootIssueIds": [],
+      "downstreamOriginalItemCount": 0,
+      "currentSafeState": "Preserve every recorded scientific, ontology, architecture and lifecycle state until a later human decision."
+    }
+  ],
+  "relationshipSemanticDebt": {
+    "layerReviewRows": 172,
+    "uniqueRelationships": 141,
+    "duplicateCrossLayerReviewRowsCollapsed": 31,
+    "dispositionCountsByUniqueRelationship": {
+      "RETYPE_CANDIDATE": 70,
+      "REVISION_CANDIDATE": 69,
+      "SPLIT_CANDIDATE": 2
+    },
+    "workstreamCounts": {
+      "BOUNDARY_REVISION": 55,
+      "CAUSAL_TO_DERIVATIONAL": 46,
+      "CROSS_LEVEL_REVIEW": 7,
+      "DIRECTNESS_REVISION": 6,
+      "RDS_SOURCE_REVIEW": 6,
+      "SPLIT_CONSTRUCT": 2,
+      "TARGET_RETYPE": 19
+    },
+    "architectureDependentRelationships": 80,
+    "architectureIndependentRelationships": 61,
+    "records": [
+      {
+        "relationshipId": "REL-BIO-001",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "BIOLOGICAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "RDS_SOURCE_REVIEW",
+        "dependsOnRootIssues": [
+          "ROOT-RDS-DEFINITION-DERIVATION-001",
+          "ROOT-CONTRIBUTION-IDENTITY-001",
+          "ROOT-RDS-CAUSAL-SOURCE-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-BIO-003",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "BIOLOGICAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "BOUNDARY_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-BIO-009",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "BIOLOGICAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "BOUNDARY_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-BIO-021",
+        "reviewRows": 2,
+        "reviewingLayers": [
+          "BIOLOGICAL_LAYER",
+          "PSYCHOLOGICAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "BOUNDARY_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-CUL-001",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "CULTURAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "CAUSAL_TO_DERIVATIONAL",
+        "dependsOnRootIssues": [
+          "ROOT-RDS-DEFINITION-DERIVATION-001",
+          "ROOT-CONTRIBUTION-IDENTITY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-CUL-009",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "CULTURAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "CAUSAL_TO_DERIVATIONAL",
+        "dependsOnRootIssues": [
+          "ROOT-RDS-DEFINITION-DERIVATION-001",
+          "ROOT-CONTRIBUTION-IDENTITY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-CUL-027",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "CULTURAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "TARGET_RETYPE",
+        "dependsOnRootIssues": [
+          "ROOT-CONSTRUCT-ONTOLOGY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-CUL-035",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "CULTURAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "TARGET_RETYPE",
+        "dependsOnRootIssues": [
+          "ROOT-CONSTRUCT-ONTOLOGY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-CUL-040",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "CULTURAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "TARGET_RETYPE",
+        "dependsOnRootIssues": [
+          "ROOT-CONSTRUCT-ONTOLOGY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-CUL-045",
+        "reviewRows": 2,
+        "reviewingLayers": [
+          "CULTURAL_LAYER",
+          "PSYCHOLOGICAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "BOUNDARY_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-CUL-046",
+        "reviewRows": 2,
+        "reviewingLayers": [
+          "CULTURAL_LAYER",
+          "PSYCHOLOGICAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "BOUNDARY_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-CUL-047",
+        "reviewRows": 2,
+        "reviewingLayers": [
+          "CULTURAL_LAYER",
+          "PSYCHOLOGICAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "BOUNDARY_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-CUL-048",
+        "reviewRows": 2,
+        "reviewingLayers": [
+          "CULTURAL_LAYER",
+          "PSYCHOLOGICAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "BOUNDARY_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-CUL-049",
+        "reviewRows": 2,
+        "reviewingLayers": [
+          "CULTURAL_LAYER",
+          "PSYCHOLOGICAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "DIRECTNESS_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-CUL-055",
+        "reviewRows": 2,
+        "reviewingLayers": [
+          "CULTURAL_LAYER",
+          "PSYCHOLOGICAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "BOUNDARY_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-ENV-001",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "PHYSICAL_ENVIRONMENTAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "CAUSAL_TO_DERIVATIONAL",
+        "dependsOnRootIssues": [
+          "ROOT-RDS-DEFINITION-DERIVATION-001",
+          "ROOT-CONTRIBUTION-IDENTITY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-ENV-014",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "PHYSICAL_ENVIRONMENTAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "TARGET_RETYPE",
+        "dependsOnRootIssues": [
+          "ROOT-CONSTRUCT-ONTOLOGY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-ENV-023",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "PHYSICAL_ENVIRONMENTAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "CAUSAL_TO_DERIVATIONAL",
+        "dependsOnRootIssues": [
+          "ROOT-RDS-DEFINITION-DERIVATION-001",
+          "ROOT-CONTRIBUTION-IDENTITY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-ENV-035",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "PHYSICAL_ENVIRONMENTAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "TARGET_RETYPE",
+        "dependsOnRootIssues": [
+          "ROOT-CONSTRUCT-ONTOLOGY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-ENV-040",
+        "reviewRows": 2,
+        "reviewingLayers": [
+          "BIOLOGICAL_LAYER",
+          "PHYSICAL_ENVIRONMENTAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "BOUNDARY_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-ENV-045",
+        "reviewRows": 2,
+        "reviewingLayers": [
+          "PHYSICAL_ENVIRONMENTAL_LAYER",
+          "PSYCHOLOGICAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "BOUNDARY_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-INF-003",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "INFORMATIONAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "CAUSAL_TO_DERIVATIONAL",
+        "dependsOnRootIssues": [
+          "ROOT-RDS-DEFINITION-DERIVATION-001",
+          "ROOT-CONTRIBUTION-IDENTITY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-INF-004",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "INFORMATIONAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "CAUSAL_TO_DERIVATIONAL",
+        "dependsOnRootIssues": [
+          "ROOT-RDS-DEFINITION-DERIVATION-001",
+          "ROOT-CONTRIBUTION-IDENTITY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-INF-005",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "INFORMATIONAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "CAUSAL_TO_DERIVATIONAL",
+        "dependsOnRootIssues": [
+          "ROOT-RDS-DEFINITION-DERIVATION-001",
+          "ROOT-CONTRIBUTION-IDENTITY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-INF-006",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "INFORMATIONAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "BOUNDARY_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-INF-008",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "INFORMATIONAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "CAUSAL_TO_DERIVATIONAL",
+        "dependsOnRootIssues": [
+          "ROOT-RDS-DEFINITION-DERIVATION-001",
+          "ROOT-CONTRIBUTION-IDENTITY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-INF-010",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "INFORMATIONAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "CAUSAL_TO_DERIVATIONAL",
+        "dependsOnRootIssues": [
+          "ROOT-RDS-DEFINITION-DERIVATION-001",
+          "ROOT-CONTRIBUTION-IDENTITY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-INF-011",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "INFORMATIONAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "TARGET_RETYPE",
+        "dependsOnRootIssues": [
+          "ROOT-CONSTRUCT-ONTOLOGY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-INF-012",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "INFORMATIONAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "CAUSAL_TO_DERIVATIONAL",
+        "dependsOnRootIssues": [
+          "ROOT-RDS-DEFINITION-DERIVATION-001",
+          "ROOT-CONTRIBUTION-IDENTITY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-INF-013",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "INFORMATIONAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "TARGET_RETYPE",
+        "dependsOnRootIssues": [
+          "ROOT-CONSTRUCT-ONTOLOGY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-INF-017",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "INFORMATIONAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "TARGET_RETYPE",
+        "dependsOnRootIssues": [
+          "ROOT-CONSTRUCT-ONTOLOGY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-INF-018",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "INFORMATIONAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "TARGET_RETYPE",
+        "dependsOnRootIssues": [
+          "ROOT-CONSTRUCT-ONTOLOGY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-INF-019",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "INFORMATIONAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "TARGET_RETYPE",
+        "dependsOnRootIssues": [
+          "ROOT-CONSTRUCT-ONTOLOGY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-INF-020",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "INFORMATIONAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "TARGET_RETYPE",
+        "dependsOnRootIssues": [
+          "ROOT-CONSTRUCT-ONTOLOGY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-INF-024",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "INFORMATIONAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "TARGET_RETYPE",
+        "dependsOnRootIssues": [
+          "ROOT-CONSTRUCT-ONTOLOGY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-INF-027",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "INFORMATIONAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "TARGET_RETYPE",
+        "dependsOnRootIssues": [
+          "ROOT-CONSTRUCT-ONTOLOGY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-INF-030",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "INFORMATIONAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "TARGET_RETYPE",
+        "dependsOnRootIssues": [
+          "ROOT-CONSTRUCT-ONTOLOGY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-INF-031",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "INFORMATIONAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "TARGET_RETYPE",
+        "dependsOnRootIssues": [
+          "ROOT-CONSTRUCT-ONTOLOGY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-INF-033",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "INFORMATIONAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "TARGET_RETYPE",
+        "dependsOnRootIssues": [
+          "ROOT-CONSTRUCT-ONTOLOGY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-INF-034",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "INFORMATIONAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "TARGET_RETYPE",
+        "dependsOnRootIssues": [
+          "ROOT-CONSTRUCT-ONTOLOGY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-INF-035",
+        "reviewRows": 2,
+        "reviewingLayers": [
+          "INFORMATIONAL_LAYER",
+          "PSYCHOLOGICAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "BOUNDARY_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-INF-036",
+        "reviewRows": 2,
+        "reviewingLayers": [
+          "INFORMATIONAL_LAYER",
+          "PSYCHOLOGICAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "BOUNDARY_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-INF-037",
+        "reviewRows": 2,
+        "reviewingLayers": [
+          "INFORMATIONAL_LAYER",
+          "PSYCHOLOGICAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "BOUNDARY_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-INF-038",
+        "reviewRows": 2,
+        "reviewingLayers": [
+          "INFORMATIONAL_LAYER",
+          "PSYCHOLOGICAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "BOUNDARY_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-INF-041",
+        "reviewRows": 2,
+        "reviewingLayers": [
+          "INFORMATIONAL_LAYER",
+          "PSYCHOLOGICAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "BOUNDARY_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-INF-043",
+        "reviewRows": 2,
+        "reviewingLayers": [
+          "INFORMATIONAL_LAYER",
+          "PSYCHOLOGICAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "BOUNDARY_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-INF-044",
+        "reviewRows": 2,
+        "reviewingLayers": [
+          "INFORMATIONAL_LAYER",
+          "PSYCHOLOGICAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "BOUNDARY_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-INF-045",
+        "reviewRows": 2,
+        "reviewingLayers": [
+          "INFORMATIONAL_LAYER",
+          "PSYCHOLOGICAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "RDS_SOURCE_REVIEW",
+        "dependsOnRootIssues": [
+          "ROOT-RDS-DEFINITION-DERIVATION-001",
+          "ROOT-CONTRIBUTION-IDENTITY-001",
+          "ROOT-RDS-CAUSAL-SOURCE-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-INF-046",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "INFORMATIONAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "BOUNDARY_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-INF-047",
+        "reviewRows": 2,
+        "reviewingLayers": [
+          "INFORMATIONAL_LAYER",
+          "PSYCHOLOGICAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "BOUNDARY_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-INF-048",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "INFORMATIONAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "DIRECTNESS_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-INS-001",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "INSTITUTIONAL_STRUCTURAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "BOUNDARY_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-INS-006",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "INSTITUTIONAL_STRUCTURAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "CAUSAL_TO_DERIVATIONAL",
+        "dependsOnRootIssues": [
+          "ROOT-RDS-DEFINITION-DERIVATION-001",
+          "ROOT-CONTRIBUTION-IDENTITY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-INS-007",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "INSTITUTIONAL_STRUCTURAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "BOUNDARY_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-INS-010",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "INSTITUTIONAL_STRUCTURAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "CROSS_LEVEL_REVIEW",
+        "dependsOnRootIssues": [
+          "ROOT-CROSS-LEVEL-EXPOSURE-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-INS-021",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "INSTITUTIONAL_STRUCTURAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "CAUSAL_TO_DERIVATIONAL",
+        "dependsOnRootIssues": [
+          "ROOT-RDS-DEFINITION-DERIVATION-001",
+          "ROOT-CONTRIBUTION-IDENTITY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-INS-022",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "INSTITUTIONAL_STRUCTURAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "BOUNDARY_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-INS-040",
+        "reviewRows": 2,
+        "reviewingLayers": [
+          "INSTITUTIONAL_STRUCTURAL_LAYER",
+          "PSYCHOLOGICAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "CROSS_LEVEL_REVIEW",
+        "dependsOnRootIssues": [
+          "ROOT-CROSS-LEVEL-EXPOSURE-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-INS-041",
+        "reviewRows": 2,
+        "reviewingLayers": [
+          "INSTITUTIONAL_STRUCTURAL_LAYER",
+          "PSYCHOLOGICAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "CROSS_LEVEL_REVIEW",
+        "dependsOnRootIssues": [
+          "ROOT-CROSS-LEVEL-EXPOSURE-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-INS-044",
+        "reviewRows": 2,
+        "reviewingLayers": [
+          "INSTITUTIONAL_STRUCTURAL_LAYER",
+          "PSYCHOLOGICAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "CROSS_LEVEL_REVIEW",
+        "dependsOnRootIssues": [
+          "ROOT-CROSS-LEVEL-EXPOSURE-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-INS-045",
+        "reviewRows": 2,
+        "reviewingLayers": [
+          "INSTITUTIONAL_STRUCTURAL_LAYER",
+          "PSYCHOLOGICAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "CROSS_LEVEL_REVIEW",
+        "dependsOnRootIssues": [
+          "ROOT-CROSS-LEVEL-EXPOSURE-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-INS-047",
+        "reviewRows": 2,
+        "reviewingLayers": [
+          "INSTITUTIONAL_STRUCTURAL_LAYER",
+          "SOCIAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "CROSS_LEVEL_REVIEW",
+        "dependsOnRootIssues": [
+          "ROOT-CROSS-LEVEL-EXPOSURE-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-PSY-002",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "PSYCHOLOGICAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "CAUSAL_TO_DERIVATIONAL",
+        "dependsOnRootIssues": [
+          "ROOT-RDS-DEFINITION-DERIVATION-001",
+          "ROOT-CONTRIBUTION-IDENTITY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-PSY-003",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "PSYCHOLOGICAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "BOUNDARY_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-PSY-004",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "PSYCHOLOGICAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "BOUNDARY_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-PSY-006",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "PSYCHOLOGICAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "BOUNDARY_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-PSY-008",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "PSYCHOLOGICAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "DIRECTNESS_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-PSY-009",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "PSYCHOLOGICAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "BOUNDARY_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-PSY-010",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "PSYCHOLOGICAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "BOUNDARY_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-PSY-012",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "PSYCHOLOGICAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "BOUNDARY_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-PSY-013",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "PSYCHOLOGICAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "BOUNDARY_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-PSY-014",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "PSYCHOLOGICAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "BOUNDARY_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-PSY-017",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "PSYCHOLOGICAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "BOUNDARY_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-PSY-018",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "PSYCHOLOGICAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "CAUSAL_TO_DERIVATIONAL",
+        "dependsOnRootIssues": [
+          "ROOT-RDS-DEFINITION-DERIVATION-001",
+          "ROOT-CONTRIBUTION-IDENTITY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-PSY-019",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "PSYCHOLOGICAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "BOUNDARY_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-PSY-020",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "PSYCHOLOGICAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "DIRECTNESS_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-PSY-021",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "PSYCHOLOGICAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "BOUNDARY_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-PSY-022",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "PSYCHOLOGICAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "BOUNDARY_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-PSY-024",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "PSYCHOLOGICAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "BOUNDARY_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-PSY-025",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "PSYCHOLOGICAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "BOUNDARY_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-PSY-028",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "PSYCHOLOGICAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "BOUNDARY_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-PSY-034",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "PSYCHOLOGICAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "CAUSAL_TO_DERIVATIONAL",
+        "dependsOnRootIssues": [
+          "ROOT-RDS-DEFINITION-DERIVATION-001",
+          "ROOT-CONTRIBUTION-IDENTITY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-PSY-035",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "PSYCHOLOGICAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "BOUNDARY_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-PSY-036",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "PSYCHOLOGICAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "DIRECTNESS_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-PSY-037",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "PSYCHOLOGICAL_LAYER"
+        ],
+        "disposition": "SPLIT_CANDIDATE",
+        "workstream": "SPLIT_CONSTRUCT",
+        "dependsOnRootIssues": [
+          "ROOT-CONSTRUCT-ONTOLOGY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-PSY-038",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "PSYCHOLOGICAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "BOUNDARY_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-PSY-039",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "PSYCHOLOGICAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "BOUNDARY_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-PSY-043",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "PSYCHOLOGICAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "BOUNDARY_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-PSY-045",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "PSYCHOLOGICAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "BOUNDARY_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-PSY-046",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "PSYCHOLOGICAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "BOUNDARY_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-PSY-048",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "PSYCHOLOGICAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "TARGET_RETYPE",
+        "dependsOnRootIssues": [
+          "ROOT-CONSTRUCT-ONTOLOGY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-PSY-049",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "PSYCHOLOGICAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "BOUNDARY_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-PSY-050",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "PSYCHOLOGICAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "BOUNDARY_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-PSY-052",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "PSYCHOLOGICAL_LAYER"
+        ],
+        "disposition": "SPLIT_CANDIDATE",
+        "workstream": "SPLIT_CONSTRUCT",
+        "dependsOnRootIssues": [
+          "ROOT-CONSTRUCT-ONTOLOGY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-PSY-053",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "PSYCHOLOGICAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "BOUNDARY_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-PSY-055",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "PSYCHOLOGICAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "BOUNDARY_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-PSY-061",
+        "reviewRows": 2,
+        "reviewingLayers": [
+          "PSYCHOLOGICAL_LAYER",
+          "SOCIAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "BOUNDARY_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-PSY-062",
+        "reviewRows": 2,
+        "reviewingLayers": [
+          "PSYCHOLOGICAL_LAYER",
+          "SOCIAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "DIRECTNESS_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-PSY-063",
+        "reviewRows": 2,
+        "reviewingLayers": [
+          "PSYCHOLOGICAL_LAYER",
+          "SOCIAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "BOUNDARY_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-PSY-065",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "PSYCHOLOGICAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "TARGET_RETYPE",
+        "dependsOnRootIssues": [
+          "ROOT-CONSTRUCT-ONTOLOGY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-SOC-031",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "SOCIAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "RDS_SOURCE_REVIEW",
+        "dependsOnRootIssues": [
+          "ROOT-RDS-DEFINITION-DERIVATION-001",
+          "ROOT-CONTRIBUTION-IDENTITY-001",
+          "ROOT-RDS-CAUSAL-SOURCE-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-SOC-032",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "SOCIAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "RDS_SOURCE_REVIEW",
+        "dependsOnRootIssues": [
+          "ROOT-RDS-DEFINITION-DERIVATION-001",
+          "ROOT-CONTRIBUTION-IDENTITY-001",
+          "ROOT-RDS-CAUSAL-SOURCE-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-SOC-033",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "SOCIAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "RDS_SOURCE_REVIEW",
+        "dependsOnRootIssues": [
+          "ROOT-RDS-DEFINITION-DERIVATION-001",
+          "ROOT-CONTRIBUTION-IDENTITY-001",
+          "ROOT-RDS-CAUSAL-SOURCE-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-SOC-034",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "SOCIAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "RDS_SOURCE_REVIEW",
+        "dependsOnRootIssues": [
+          "ROOT-RDS-DEFINITION-DERIVATION-001",
+          "ROOT-CONTRIBUTION-IDENTITY-001",
+          "ROOT-RDS-CAUSAL-SOURCE-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-SOC-035",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "SOCIAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "CROSS_LEVEL_REVIEW",
+        "dependsOnRootIssues": [
+          "ROOT-CROSS-LEVEL-EXPOSURE-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-SOC-064",
+        "reviewRows": 2,
+        "reviewingLayers": [
+          "PSYCHOLOGICAL_LAYER",
+          "SOCIAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "BOUNDARY_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-SOC-065",
+        "reviewRows": 2,
+        "reviewingLayers": [
+          "PSYCHOLOGICAL_LAYER",
+          "SOCIAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "BOUNDARY_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-TEC-004",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "TECHNOLOGICAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "CAUSAL_TO_DERIVATIONAL",
+        "dependsOnRootIssues": [
+          "ROOT-RDS-DEFINITION-DERIVATION-001",
+          "ROOT-CONTRIBUTION-IDENTITY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-TEC-005",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "TECHNOLOGICAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "CAUSAL_TO_DERIVATIONAL",
+        "dependsOnRootIssues": [
+          "ROOT-RDS-DEFINITION-DERIVATION-001",
+          "ROOT-CONTRIBUTION-IDENTITY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-TEC-006",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "TECHNOLOGICAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "CAUSAL_TO_DERIVATIONAL",
+        "dependsOnRootIssues": [
+          "ROOT-RDS-DEFINITION-DERIVATION-001",
+          "ROOT-CONTRIBUTION-IDENTITY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-TEC-007",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "TECHNOLOGICAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "CAUSAL_TO_DERIVATIONAL",
+        "dependsOnRootIssues": [
+          "ROOT-RDS-DEFINITION-DERIVATION-001",
+          "ROOT-CONTRIBUTION-IDENTITY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-TEC-008",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "TECHNOLOGICAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "CAUSAL_TO_DERIVATIONAL",
+        "dependsOnRootIssues": [
+          "ROOT-RDS-DEFINITION-DERIVATION-001",
+          "ROOT-CONTRIBUTION-IDENTITY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-TEC-009",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "TECHNOLOGICAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "CAUSAL_TO_DERIVATIONAL",
+        "dependsOnRootIssues": [
+          "ROOT-RDS-DEFINITION-DERIVATION-001",
+          "ROOT-CONTRIBUTION-IDENTITY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-TEC-010",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "TECHNOLOGICAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "CAUSAL_TO_DERIVATIONAL",
+        "dependsOnRootIssues": [
+          "ROOT-RDS-DEFINITION-DERIVATION-001",
+          "ROOT-CONTRIBUTION-IDENTITY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-TEC-011",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "TECHNOLOGICAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "CAUSAL_TO_DERIVATIONAL",
+        "dependsOnRootIssues": [
+          "ROOT-RDS-DEFINITION-DERIVATION-001",
+          "ROOT-CONTRIBUTION-IDENTITY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-TEC-012",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "TECHNOLOGICAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "CAUSAL_TO_DERIVATIONAL",
+        "dependsOnRootIssues": [
+          "ROOT-RDS-DEFINITION-DERIVATION-001",
+          "ROOT-CONTRIBUTION-IDENTITY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-TEC-013",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "TECHNOLOGICAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "CAUSAL_TO_DERIVATIONAL",
+        "dependsOnRootIssues": [
+          "ROOT-RDS-DEFINITION-DERIVATION-001",
+          "ROOT-CONTRIBUTION-IDENTITY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-TEC-014",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "TECHNOLOGICAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "CAUSAL_TO_DERIVATIONAL",
+        "dependsOnRootIssues": [
+          "ROOT-RDS-DEFINITION-DERIVATION-001",
+          "ROOT-CONTRIBUTION-IDENTITY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-TEC-015",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "TECHNOLOGICAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "CAUSAL_TO_DERIVATIONAL",
+        "dependsOnRootIssues": [
+          "ROOT-RDS-DEFINITION-DERIVATION-001",
+          "ROOT-CONTRIBUTION-IDENTITY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-TEC-016",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "TECHNOLOGICAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "CAUSAL_TO_DERIVATIONAL",
+        "dependsOnRootIssues": [
+          "ROOT-RDS-DEFINITION-DERIVATION-001",
+          "ROOT-CONTRIBUTION-IDENTITY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-TEC-017",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "TECHNOLOGICAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "CAUSAL_TO_DERIVATIONAL",
+        "dependsOnRootIssues": [
+          "ROOT-RDS-DEFINITION-DERIVATION-001",
+          "ROOT-CONTRIBUTION-IDENTITY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-TEC-018",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "TECHNOLOGICAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "CAUSAL_TO_DERIVATIONAL",
+        "dependsOnRootIssues": [
+          "ROOT-RDS-DEFINITION-DERIVATION-001",
+          "ROOT-CONTRIBUTION-IDENTITY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-TEC-019",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "TECHNOLOGICAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "CAUSAL_TO_DERIVATIONAL",
+        "dependsOnRootIssues": [
+          "ROOT-RDS-DEFINITION-DERIVATION-001",
+          "ROOT-CONTRIBUTION-IDENTITY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-TEC-020",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "TECHNOLOGICAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "CAUSAL_TO_DERIVATIONAL",
+        "dependsOnRootIssues": [
+          "ROOT-RDS-DEFINITION-DERIVATION-001",
+          "ROOT-CONTRIBUTION-IDENTITY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-TEC-021",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "TECHNOLOGICAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "CAUSAL_TO_DERIVATIONAL",
+        "dependsOnRootIssues": [
+          "ROOT-RDS-DEFINITION-DERIVATION-001",
+          "ROOT-CONTRIBUTION-IDENTITY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-TEC-022",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "TECHNOLOGICAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "CAUSAL_TO_DERIVATIONAL",
+        "dependsOnRootIssues": [
+          "ROOT-RDS-DEFINITION-DERIVATION-001",
+          "ROOT-CONTRIBUTION-IDENTITY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-TEC-023",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "TECHNOLOGICAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "CAUSAL_TO_DERIVATIONAL",
+        "dependsOnRootIssues": [
+          "ROOT-RDS-DEFINITION-DERIVATION-001",
+          "ROOT-CONTRIBUTION-IDENTITY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-TEC-024",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "TECHNOLOGICAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "CAUSAL_TO_DERIVATIONAL",
+        "dependsOnRootIssues": [
+          "ROOT-RDS-DEFINITION-DERIVATION-001",
+          "ROOT-CONTRIBUTION-IDENTITY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-TEC-026",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "TECHNOLOGICAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "CAUSAL_TO_DERIVATIONAL",
+        "dependsOnRootIssues": [
+          "ROOT-RDS-DEFINITION-DERIVATION-001",
+          "ROOT-CONTRIBUTION-IDENTITY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-TEC-027",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "TECHNOLOGICAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "CAUSAL_TO_DERIVATIONAL",
+        "dependsOnRootIssues": [
+          "ROOT-RDS-DEFINITION-DERIVATION-001",
+          "ROOT-CONTRIBUTION-IDENTITY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-TEC-028",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "TECHNOLOGICAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "CAUSAL_TO_DERIVATIONAL",
+        "dependsOnRootIssues": [
+          "ROOT-RDS-DEFINITION-DERIVATION-001",
+          "ROOT-CONTRIBUTION-IDENTITY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-TEC-029",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "TECHNOLOGICAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "CAUSAL_TO_DERIVATIONAL",
+        "dependsOnRootIssues": [
+          "ROOT-RDS-DEFINITION-DERIVATION-001",
+          "ROOT-CONTRIBUTION-IDENTITY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-TEC-030",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "TECHNOLOGICAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "CAUSAL_TO_DERIVATIONAL",
+        "dependsOnRootIssues": [
+          "ROOT-RDS-DEFINITION-DERIVATION-001",
+          "ROOT-CONTRIBUTION-IDENTITY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-TEC-031",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "TECHNOLOGICAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "CAUSAL_TO_DERIVATIONAL",
+        "dependsOnRootIssues": [
+          "ROOT-RDS-DEFINITION-DERIVATION-001",
+          "ROOT-CONTRIBUTION-IDENTITY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-TEC-032",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "TECHNOLOGICAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "CAUSAL_TO_DERIVATIONAL",
+        "dependsOnRootIssues": [
+          "ROOT-RDS-DEFINITION-DERIVATION-001",
+          "ROOT-CONTRIBUTION-IDENTITY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-TEC-034",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "TECHNOLOGICAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "CAUSAL_TO_DERIVATIONAL",
+        "dependsOnRootIssues": [
+          "ROOT-RDS-DEFINITION-DERIVATION-001",
+          "ROOT-CONTRIBUTION-IDENTITY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-TEC-035",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "TECHNOLOGICAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "CAUSAL_TO_DERIVATIONAL",
+        "dependsOnRootIssues": [
+          "ROOT-RDS-DEFINITION-DERIVATION-001",
+          "ROOT-CONTRIBUTION-IDENTITY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-TEC-047",
+        "reviewRows": 1,
+        "reviewingLayers": [
+          "TECHNOLOGICAL_LAYER"
+        ],
+        "disposition": "RETYPE_CANDIDATE",
+        "workstream": "CAUSAL_TO_DERIVATIONAL",
+        "dependsOnRootIssues": [
+          "ROOT-RDS-DEFINITION-DERIVATION-001",
+          "ROOT-CONTRIBUTION-IDENTITY-001"
+        ],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-TEC-058",
+        "reviewRows": 2,
+        "reviewingLayers": [
+          "PSYCHOLOGICAL_LAYER",
+          "TECHNOLOGICAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "BOUNDARY_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-TEC-061",
+        "reviewRows": 2,
+        "reviewingLayers": [
+          "PSYCHOLOGICAL_LAYER",
+          "TECHNOLOGICAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "BOUNDARY_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      },
+      {
+        "relationshipId": "REL-TEC-066",
+        "reviewRows": 2,
+        "reviewingLayers": [
+          "PSYCHOLOGICAL_LAYER",
+          "TECHNOLOGICAL_LAYER"
+        ],
+        "disposition": "REVISION_CANDIDATE",
+        "workstream": "BOUNDARY_REVISION",
+        "dependsOnRootIssues": [],
+        "productionMutationAuthorized": false
+      }
+    ]
+  },
+  "researchQueues": [
+    {
+      "backlogItemId": "BACKLOG-RN-PSYCHOLOGICAL_LAYER",
+      "primaryClass": "INSUFFICIENT_EXACT_ENDPOINT",
+      "waitsForRootIssues": [
+        "ROOT-CONTRIBUTION-IDENTITY-001",
+        "ROOT-CONSTRUCT-ONTOLOGY-001"
+      ]
+    },
+    {
+      "backlogItemId": "BACKLOG-RN-INFORMATIONAL_LAYER",
+      "primaryClass": "MEASUREMENT_LIMITED",
+      "waitsForRootIssues": [
+        "ROOT-RDS-DEFINITION-DERIVATION-001",
+        "ROOT-CONSTRUCT-ONTOLOGY-001",
+        "ROOT-SOURCE-GOVERNANCE-001"
+      ]
+    },
+    {
+      "backlogItemId": "BACKLOG-RN-BIOLOGICAL_LAYER",
+      "primaryClass": "MEASUREMENT_LIMITED",
+      "waitsForRootIssues": [
+        "ROOT-RDS-DEFINITION-DERIVATION-001",
+        "ROOT-RDS-CAUSAL-SOURCE-001"
+      ]
+    },
+    {
+      "backlogItemId": "BACKLOG-RN-CULTURAL_LAYER",
+      "primaryClass": "IDENTIFICATION_LIMITED",
+      "waitsForRootIssues": [
+        "ROOT-RDS-DEFINITION-DERIVATION-001",
+        "ROOT-RDS-CAUSAL-SOURCE-001"
+      ]
+    },
+    {
+      "backlogItemId": "BACKLOG-RN-PHYSICAL_ENVIRONMENTAL_LAYER",
+      "primaryClass": "HIGH_VALUE_TARGETED_RESEARCH",
+      "waitsForRootIssues": []
+    },
+    {
+      "backlogItemId": "BACKLOG-RN-TECHNOLOGICAL_LAYER",
+      "primaryClass": "FUTURE_EVIDENCE_WATCH",
+      "waitsForRootIssues": [
+        "ROOT-ACTIVE-EFFECT-MECHANISM-001",
+        "ROOT-CONSTRUCT-ONTOLOGY-001"
+      ]
+    },
+    {
+      "backlogItemId": "BACKLOG-RN-SOCIAL_LAYER",
+      "primaryClass": "ARCHITECTURE_BLOCKED_RESEARCH",
+      "waitsForRootIssues": [
+        "ROOT-CROSS-LEVEL-EXPOSURE-001",
+        "ROOT-NETWORK-STATE-TRANSITION-001",
+        "ROOT-RDS-CAUSAL-SOURCE-001"
+      ]
+    },
+    {
+      "backlogItemId": "BACKLOG-RN-INSTITUTIONAL_STRUCTURAL_LAYER",
+      "primaryClass": "ARCHITECTURE_BLOCKED_RESEARCH",
+      "waitsForRootIssues": [
+        "ROOT-CROSS-LEVEL-EXPOSURE-001",
+        "ROOT-RDS-CAUSAL-SOURCE-001",
+        "ROOT-CONSTRUCT-ONTOLOGY-001"
+      ]
+    }
+  ]
+}
