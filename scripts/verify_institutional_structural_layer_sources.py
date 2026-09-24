@@ -17,13 +17,20 @@ def norm(value):
     return re.sub(r"[^a-z0-9]+", " ", value.lower()).strip()
 
 
-def crossref(doi):
-    url = "https://api.crossref.org/works/" + urllib.parse.quote(doi, safe="") + "?mailto=research@example.com"
+def crossref(dois):
+    # Verify the complete Layer bibliography in one polite-pool request.  A
+    # request per DOI needlessly consumes Crossref capacity and can return 429
+    # in CI even though every identity is valid.
+    filters = ",".join(f"doi:{doi}" for doi in dois)
+    url = "https://api.crossref.org/works?" + urllib.parse.urlencode(
+        {"filter": filters, "rows": len(dois), "mailto": "research@example.com"}
+    )
     request = urllib.request.Request(url, headers={"User-Agent": "PSYWERX-source-verifier/1.0 (mailto:research@example.com)"})
     for attempt in range(5):
         try:
             with urllib.request.urlopen(request, timeout=45) as response:
-                return json.load(response)["message"]
+                message = json.load(response)["message"]
+                return {norm(item["DOI"]): item for item in message["items"]}
         except urllib.error.HTTPError as exc:
             if exc.code != 429 or attempt == 4:
                 raise
@@ -33,8 +40,10 @@ def crossref(doi):
 
 def verify():
     sources = json.loads(PATH.read_text(encoding="utf-8"))
+    messages = crossref([row["doi"] for row in sources.values()])
+    assert len(messages) == len(sources), (len(messages), len(sources))
     for row in sources.values():
-        message = crossref(row["doi"])
+        message = messages[norm(row["doi"])]
         live_title = " ".join(message.get("title") or [])
         similarity = SequenceMatcher(None, norm(row["title"]), norm(live_title)).ratio()
         assert similarity >= 0.67, (row["id"], row["title"], live_title, similarity)
