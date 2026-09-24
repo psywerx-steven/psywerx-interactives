@@ -63,11 +63,22 @@ LANDSCAPE_DETAILS = {
 
 def prior_reviews(ids):
     found = {}
+    # Freeze reuse to Layers that were complete when the Social audit ran.
+    # Later Layer packages must not retroactively change a completed audit's
+    # voting/reuse counts when deterministic regeneration runs on current main.
+    eligible_layers = {
+        "BIOLOGICAL_LAYER",
+        "CULTURAL_LAYER",
+        "INFORMATIONAL_LAYER",
+        "PHYSICAL_ENVIRONMENTAL_LAYER",
+        "PSYCHOLOGICAL_LAYER",
+        "TECHNOLOGICAL_LAYER",
+    }
     for path in glob.glob(str(R / "data/candidates/actions-events-v1/*_LAYER/relationship-review-registry.json")):
-        if "SOCIAL_LAYER" in path:
+        source_path = Path(path)
+        if source_path.parent.name not in eligible_layers:
             continue
         try:
-            source_path = Path(path)
             payload = s.read(source_path)
         except Exception:
             continue
