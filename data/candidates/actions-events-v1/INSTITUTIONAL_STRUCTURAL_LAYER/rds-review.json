@@ -1,0 +1,135 @@
+[
+  {
+    "id": "INS-024",
+    "familyId": "INS-F03",
+    "name": "Administrative Compliance Burden",
+    "definition": "Time, money, effort, and actions required to satisfy institutional rules or maintain eligibility.",
+    "definitionCompleteness": "CANONICAL_TEXT_PRESENT",
+    "derivationCompleteness": "EXACT_VERSIONED_INPUT_AND_AGGREGATION_RULE_ABSENT",
+    "inputs": [
+      "Program design",
+      "staffing",
+      "documentation systems"
+    ],
+    "aggregationCalculation": "NOT_EXACTLY_VERSIONED; DO_NOT INFER FROM NARRATIVE",
+    "referencePopulation": "APPLICATION_SPECIFIC_NOT_BOUND",
+    "timeWindow": "APPLICATION_SPECIFIC_NOT_BOUND",
+    "normalization": "NOT_EXACTLY VERSIONED",
+    "externalInputs": "POSSIBLE; NOT BOUND",
+    "crossLevelMeaning": "INSTITUTION_OR_ORGANIZATION_LEVEL_REQUIRES_SCOPE",
+    "causalSource": false,
+    "causalTarget": true,
+    "outgoingCausalRelationshipIds": [],
+    "incomingCausalRelationshipIds": [
+      "REL-INS-010",
+      "REL-TEC-063"
+    ],
+    "constituentOverlap": "UNRESOLVED",
+    "doubleCountRisk": "ASSESS_BEFORE_CAUSAL_USE",
+    "networkStateDependency": false,
+    "d10Disposition": "HEIGHTENED_RDS_TARGET",
+    "recommendedDisposition": "RESEARCH_NEEDED",
+    "productionChangeAuthorized": false,
+    "reason": "The RDS is coherent as an aggregate construct but lacks an exact portable derivation for broader causal use."
+  },
+  {
+    "id": "INS-039",
+    "familyId": "INS-F04",
+    "name": "Caseload Pressure",
+    "definition": "Demand placed on organizational actors relative to available time and staffing.",
+    "definitionCompleteness": "CANONICAL_TEXT_PRESENT",
+    "derivationCompleteness": "EXACT_VERSIONED_INPUT_AND_AGGREGATION_RULE_ABSENT",
+    "inputs": [
+      "Leadership",
+      "mission",
+      "workforce",
+      "workload"
+    ],
+    "aggregationCalculation": "NOT_EXACTLY_VERSIONED; DO_NOT INFER FROM NARRATIVE",
+    "referencePopulation": "APPLICATION_SPECIFIC_NOT_BOUND",
+    "timeWindow": "APPLICATION_SPECIFIC_NOT_BOUND",
+    "normalization": "NOT_EXACTLY VERSIONED",
+    "externalInputs": "POSSIBLE; NOT BOUND",
+    "crossLevelMeaning": "INSTITUTION_OR_ORGANIZATION_LEVEL_REQUIRES_SCOPE",
+    "causalSource": true,
+    "causalTarget": false,
+    "outgoingCausalRelationshipIds": [
+      "REL-INS-017"
+    ],
+    "incomingCausalRelationshipIds": [],
+    "constituentOverlap": "UNRESOLVED",
+    "doubleCountRisk": "HIGH",
+    "networkStateDependency": false,
+    "d10Disposition": "HEIGHTENED_RDS_SOURCE",
+    "recommendedDisposition": "BLOCKED",
+    "productionChangeAuthorized": false,
+    "reason": "Outgoing aggregate causal use lacks an exact versioned derivation and independent aggregate mechanism."
+  },
+  {
+    "id": "INS-103",
+    "familyId": "INS-F13",
+    "name": "Staffing Adequacy",
+    "definition": "Ratio of qualified personnel and deployable labor time to formally assigned workload.",
+    "definitionCompleteness": "CANONICAL_TEXT_PRESENT",
+    "derivationCompleteness": "EXACT_VERSIONED_INPUT_AND_AGGREGATION_RULE_ABSENT",
+    "inputs": [
+      "Revenue",
+      "personnel systems",
+      "law",
+      "territorial control"
+    ],
+    "aggregationCalculation": "NOT_EXACTLY_VERSIONED; DO_NOT INFER FROM NARRATIVE",
+    "referencePopulation": "APPLICATION_SPECIFIC_NOT_BOUND",
+    "timeWindow": "APPLICATION_SPECIFIC_NOT_BOUND",
+    "normalization": "NOT_EXACTLY VERSIONED",
+    "externalInputs": "POSSIBLE; NOT BOUND",
+    "crossLevelMeaning": "INSTITUTION_OR_ORGANIZATION_LEVEL_REQUIRES_SCOPE",
+    "causalSource": true,
+    "causalTarget": true,
+    "outgoingCausalRelationshipIds": [
+      "REL-INS-036"
+    ],
+    "incomingCausalRelationshipIds": [
+      "REL-INS-023"
+    ],
+    "constituentOverlap": "UNRESOLVED",
+    "doubleCountRisk": "HIGH",
+    "networkStateDependency": false,
+    "d10Disposition": "HEIGHTENED_RDS_SOURCE",
+    "recommendedDisposition": "BLOCKED",
+    "productionChangeAuthorized": false,
+    "reason": "Outgoing aggregate causal use lacks an exact versioned derivation and independent aggregate mechanism."
+  },
+  {
+    "id": "INS-113",
+    "familyId": "INS-F13",
+    "name": "Policy/Rule Implementation Fidelity",
+    "definition": "Degree to which an adopted policy is executed as specified across responsible organizations, places, and time.",
+    "definitionCompleteness": "CANONICAL_TEXT_PRESENT",
+    "derivationCompleteness": "EXACT_VERSIONED_INPUT_AND_AGGREGATION_RULE_ABSENT",
+    "inputs": [
+      "Staffing",
+      "resources",
+      "coordination",
+      "discretion",
+      "monitoring"
+    ],
+    "aggregationCalculation": "NOT_EXACTLY_VERSIONED; DO_NOT INFER FROM NARRATIVE",
+    "referencePopulation": "APPLICATION_SPECIFIC_NOT_BOUND",
+    "timeWindow": "APPLICATION_SPECIFIC_NOT_BOUND",
+    "normalization": "NOT_EXACTLY VERSIONED",
+    "externalInputs": "POSSIBLE; NOT BOUND",
+    "crossLevelMeaning": "INSTITUTION_OR_ORGANIZATION_LEVEL_REQUIRES_SCOPE",
+    "causalSource": false,
+    "causalTarget": false,
+    "outgoingCausalRelationshipIds": [],
+    "incomingCausalRelationshipIds": [],
+    "constituentOverlap": "UNRESOLVED",
+    "doubleCountRisk": "ASSESS_BEFORE_CAUSAL_USE",
+    "networkStateDependency": false,
+    "d10Disposition": "DERIVATIONAL_REVIEW",
+    "recommendedDisposition": "RESEARCH_NEEDED",
+    "productionChangeAuthorized": false,
+    "reason": "The RDS is coherent as an aggregate construct but lacks an exact portable derivation for broader causal use."
+  }
+]

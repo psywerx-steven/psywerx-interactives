@@ -1,0 +1,66 @@
+[
+  {
+    "id": "BLK-INS-METADATA-001",
+    "affectedRecords": [
+      "INS-115",
+      "INS-116"
+    ],
+    "classification": "BLOCKED_NEEDS_GOVERNANCE_INPUT",
+    "problem": "Both Drivers retain blocked scientific metadata; neither is repaired during the audit.",
+    "blockedEntities": [
+      {
+        "id": "INS-115",
+        "blockedFields": [
+          "mechanism",
+          "modifiability",
+          "volatility",
+          "timeScaleOfChange",
+          "onsetCausalLag",
+          "persistenceRecovery",
+          "measurementAssessmentMethods",
+          "observability",
+          "evidenceStrength",
+          "evidenceNotes",
+          "keySources"
+        ],
+        "dependentIncidentRelationships": [],
+        "materializationBlocked": true,
+        "safeReviewContinues": true
+      },
+      {
+        "id": "INS-116",
+        "blockedFields": [
+          "mechanism",
+          "modifiability",
+          "volatility",
+          "timeScaleOfChange",
+          "onsetCausalLag",
+          "persistenceRecovery",
+          "measurementAssessmentMethods",
+          "observability",
+          "evidenceStrength",
+          "evidenceNotes",
+          "keySources"
+        ],
+        "dependentIncidentRelationships": [],
+        "materializationBlocked": true,
+        "safeReviewContinues": true
+      }
+    ],
+    "safeCurrentRepresentation": "Preserve entities and terminate dependent candidate routes as BLOCKED.",
+    "productionChange": false
+  },
+  {
+    "id": "BLK-INS-RDS-001",
+    "affectedRecords": [
+      "INS-039",
+      "INS-103",
+      "REL-INS-017",
+      "REL-INS-036"
+    ],
+    "classification": "BLOCKED_NEEDS_GOVERNANCE_INPUT",
+    "problem": "The two causal-source RDS lack exact versioned constituent and aggregation definitions plus independently identified aggregate mechanisms.",
+    "safeCurrentRepresentation": "Keep production unchanged; mark causal-source review blocked/research-needed.",
+    "productionChange": false
+  }
+]

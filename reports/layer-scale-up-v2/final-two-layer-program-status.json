@@ -1,0 +1,84 @@
+{
+  "schemaVersion": "1.0.0",
+  "checkpointId": "LAYER-SCALE-UP-PROGRAM-STATUS-2026-09-22-001",
+  "sourceCommit": "bb9336b9b1cf0bcb110cbf39da93a67d38c64cea",
+  "layers": [
+    {
+      "layer": "Biological",
+      "candidateAudit": "COMPLETE",
+      "humanGovernance": "COMPLETE",
+      "materialization": "1 HT GOVERNED/INACTIVE",
+      "activationAudit": "KEEP_INACTIVE",
+      "newActiveScience": "0",
+      "majorBlocker": "ARCH-BIO-LAYER-0001 / BLK-BIO-RDS-001; ASTRA-BIO-LAYER-001"
+    },
+    {
+      "layer": "Psychological",
+      "candidateAudit": "COMPLETE",
+      "humanGovernance": "COMPLETE",
+      "materialization": "1 Relationship, 29 HT, 7 EA, 8 EVA governed",
+      "activationAudit": "6 bundles activated",
+      "newActiveScience": "18 records (6 HT / 6 EA / 6 EVA)",
+      "majorBlocker": "BLK-PSY-001, BLK-PSY-002, BLK-PSY-003; repetition contribution inactive"
+    },
+    {
+      "layer": "Social",
+      "candidateAudit": "COMPLETE",
+      "humanGovernance": "PENDING",
+      "materialization": "NONE (candidate-only audit)",
+      "activationAudit": "PENDING GOVERNANCE",
+      "newActiveScience": "0",
+      "majorBlocker": "23 RDS; 10 RDS sources; Network State binding; HYP-SOC-F07-H12/H20"
+    },
+    {
+      "layer": "Cultural",
+      "candidateAudit": "COMPLETE",
+      "humanGovernance": "COMPLETE",
+      "materialization": "NONE",
+      "activationAudit": "NOT REQUIRED",
+      "newActiveScience": "0",
+      "majorBlocker": "ARCH-CUL-LAYER-0001 / BLK-CUL-RDS-001; ASTRA-CUL-LAYER-001"
+    },
+    {
+      "layer": "Physical / Environmental",
+      "candidateAudit": "COMPLETE",
+      "humanGovernance": "COMPLETE",
+      "materialization": "1 HT / 1 EA / 1 EVA GOVERNED/INACTIVE",
+      "activationAudit": "BLOCKED",
+      "newActiveScience": "0",
+      "majorBlocker": "BLK-ENV-ACTIVATION-001; mechanismStatus UNKNOWN required by science"
+    },
+    {
+      "layer": "Institutional / Structural",
+      "candidateAudit": "NOT_STARTED",
+      "humanGovernance": "PENDING",
+      "materialization": "NONE",
+      "activationAudit": "PENDING",
+      "newActiveScience": "0",
+      "majorBlocker": "4 RDS; multi-level policy/implementation and authority/legitimacy boundaries"
+    },
+    {
+      "layer": "Informational",
+      "candidateAudit": "COMPLETE",
+      "humanGovernance": "COMPLETE",
+      "materialization": "1 HT GOVERNED/INACTIVE",
+      "activationAudit": "KEEP_INACTIVE",
+      "newActiveScience": "0 from full-Layer closeout",
+      "majorBlocker": "HYP-INF-F03-H20; ARCH/META-INF-LAYER-0001; ASTRA-INF-LAYER-001"
+    },
+    {
+      "layer": "Technological",
+      "candidateAudit": "COMPLETE",
+      "humanGovernance": "COMPLETE",
+      "materialization": "1 HT / 1 EA / 1 EVA GOVERNED/INACTIVE",
+      "activationAudit": "BLOCKED",
+      "newActiveScience": "0",
+      "majorBlocker": "BLK-TEC-ACTIVATION-001; mechanismStatus UNKNOWN; TEC-097/098/099 metadata"
+    }
+  ],
+  "completedCandidateAudits": 7,
+  "fullLayerAuditsRemaining": [
+    "Institutional / Structural"
+  ],
+  "activationChangesInThisCloseout": 0
+}

@@ -171,6 +171,15 @@ jobs:
       - name: Verify Social Layer candidate source identities
         run: python scripts/verify_social_layer_sources.py
 
+      - name: Validate completed Institutional / Structural Layer V2 audit
+        run: python -m unittest discover -s tests -p "test_institutional_structural_layer_v2.py"
+
+      - name: Verify Institutional / Structural candidate source identities
+        run: python scripts/verify_institutional_structural_layer_sources.py
+
+      - name: Validate final eight-Layer checkpoint and blocker backlog
+        run: python -m unittest discover -s tests -p "test_layer_scale_up_final_closeout.py"
+
       - name: Validate exact Technological governance materialization
         run: python -m unittest discover -s tests -p "test_technological_governance_materialization.py"
 
@@ -207,6 +216,16 @@ jobs:
         run: |
           python scripts/social_layer_v2_package.py
           git diff --exit-code -- data/candidates/actions-events-v1/SOCIAL_LAYER docs/governance/scale-up/SOCIAL_LAYER
+
+      - name: Verify deterministic Institutional / Structural Layer registries
+        run: |
+          python scripts/institutional_structural_layer_v2_package.py
+          git diff --exit-code -- data/candidates/actions-events-v1/INSTITUTIONAL_STRUCTURAL_LAYER docs/governance/scale-up/INSTITUTIONAL_STRUCTURAL_LAYER
+
+      - name: Verify deterministic final program checkpoint
+        run: |
+          python scripts/layer_scale_up_final_closeout.py
+          git diff --exit-code -- docs/governance/LAYER_SCALE_UP_PROGRAM_STATUS.md docs/governance/LAYER_SCALE_UP_FINAL_COMPLETENESS.md docs/governance/POST_SCALE_UP_BLOCKER_BACKLOG.md reports/layer-scale-up-v2/layer-scale-up-program-status.json reports/layer-scale-up-v2/layer-scale-up-final-completeness.json reports/layer-scale-up-v2/post-scale-up-blocker-backlog.json
 
       - name: Verify deterministic Informational Layer registries
         run: |
@@ -378,6 +397,15 @@ jobs:
       - name: Verify Social Layer candidate source identities
         run: python scripts/verify_social_layer_sources.py
 
+      - name: Validate completed Institutional / Structural Layer V2 audit
+        run: python -m unittest discover -s tests -p "test_institutional_structural_layer_v2.py"
+
+      - name: Verify Institutional / Structural candidate source identities
+        run: python scripts/verify_institutional_structural_layer_sources.py
+
+      - name: Validate final eight-Layer checkpoint and blocker backlog
+        run: python -m unittest discover -s tests -p "test_layer_scale_up_final_closeout.py"
+
       - name: Validate exact Technological governance materialization
         run: python -m unittest discover -s tests -p "test_technological_governance_materialization.py"
 
@@ -414,6 +442,16 @@ jobs:
         run: |
           python scripts/social_layer_v2_package.py
           git diff --exit-code -- data/candidates/actions-events-v1/SOCIAL_LAYER docs/governance/scale-up/SOCIAL_LAYER
+
+      - name: Verify deterministic Institutional / Structural Layer registries
+        run: |
+          python scripts/institutional_structural_layer_v2_package.py
+          git diff --exit-code -- data/candidates/actions-events-v1/INSTITUTIONAL_STRUCTURAL_LAYER docs/governance/scale-up/INSTITUTIONAL_STRUCTURAL_LAYER
+
+      - name: Verify deterministic final program checkpoint
+        run: |
+          python scripts/layer_scale_up_final_closeout.py
+          git diff --exit-code -- docs/governance/LAYER_SCALE_UP_PROGRAM_STATUS.md docs/governance/LAYER_SCALE_UP_FINAL_COMPLETENESS.md docs/governance/POST_SCALE_UP_BLOCKER_BACKLOG.md reports/layer-scale-up-v2/layer-scale-up-program-status.json reports/layer-scale-up-v2/layer-scale-up-final-completeness.json reports/layer-scale-up-v2/post-scale-up-blocker-backlog.json
 
       - name: Verify deterministic Informational Layer registries
         run: |
