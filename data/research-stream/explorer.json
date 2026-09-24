@@ -1,8 +1,201 @@
 {
   "schemaVersion": "psywerx-research-explorer-v1",
-  "generatedAt": "2026-09-23",
-  "totalItems": 253,
+  "generatedAt": "2026-09-24",
+  "totalItems": 263,
   "items": [
+    {
+      "itemId": "research-fa91387249cc32544604",
+      "streamTitle": "Groups improved only when people could tell which peers were actually performing well",
+      "streamSummary": "An online immersive experiment with 621 participants found that groups did not automatically outperform individuals in a dynamic tracking task. Groups performed better only when members could see others’ payoffs and selectively weight cues from peers who were doing well; location-only social information could even hurt performance, especially in fast-changing conditions. Movement models and agent-based simulations supported the same mechanism. The experiment did not show groups surpassing the best individual, and the task is artificial, but it offers a concrete lesson for collective decision systems: information quality and selective weighting matter more than social connectivity alone.",
+      "attribution": "Chirkov et al. — Nature Communications",
+      "sourceUrl": "https://doi.org/10.1038/s41467-026-77762-z",
+      "sourcePublishedAt": "2026-09-23",
+      "dateAdded": "2026-09-24",
+      "latestSeenBriefDate": "2026-09-24",
+      "primaryCategory": "behavioral-science",
+      "categories": [
+        "behavioral-science",
+        "technology-modeling"
+      ],
+      "questionAndWhy": "When does access to other people actually improve group performance in a changing environment, and when does social information instead produce herding or distraction? The question matters because collective intelligence is often treated as an automatic benefit of putting multiple people together.",
+      "whatTheyDid": "Chirkov and colleagues placed 621 participants in an online 3D immersive resource-tracking task. People worked alone or in groups of five while the researchers varied resource speed and what participants could see about others, including whether they could continuously observe peers’ payoffs. The team combined movement traces, time-varying visibility networks, computational models of second-to-second decisions, and agent-based simulations.",
+      "whatTheyFound": "Groups outperformed solitary participants only when payoff information was available. When people could mainly see where others were, groups sometimes performed worse, especially against a fast-moving resource. Payoff visibility let participants selectively follow peers who were currently doing better and reorganize who they attended to. The experiment did not show collective intelligence in the strictest sense of groups exceeding the best individual.",
+      "whatItMeans": "The useful ingredient was not simply more social information; it was information about which social cues were currently reliable. For team decision-support and human-AI systems, showing provenance, confidence, or performance quality may be more valuable than exposing users to more recommendations. The findings come from a novel tracking task, so transfer to real teams still needs testing."
+    },
+    {
+      "itemId": "research-d738e4104f0b26410c6a",
+      "streamTitle": "Political polarization was tied much more strongly to electric-vehicle adoption than to rooftop solar in Germany",
+      "streamSummary": "A new Nature Sustainability study combined three survey waves with clean-technology and election records from more than 10,000 German municipalities. AfD supporters were much less likely to report electric-vehicle adoption or intent than Green-party supporters, while the partisan gap for rooftop solar was smaller. Municipality panel models likewise linked rising AfD support to lower subsequent adoption. An instrumental-variable analysis using wolf attacks as a source of vote-share variation pointed in the same direction, but its estimates apply to a specific subset of municipalities and were sensitive to some restrictions. The study suggests technologies can acquire different political meanings even within the same climate domain.",
+      "attribution": "Reining et al. — Nature Sustainability",
+      "sourceUrl": "https://doi.org/10.1038/s41893-026-01935-3",
+      "sourcePublishedAt": "2026-09-23",
+      "dateAdded": "2026-09-24",
+      "latestSeenBriefDate": "2026-09-24",
+      "primaryCategory": "behavioral-science",
+      "categories": [
+        "behavioral-science",
+        "application-analysis"
+      ],
+      "questionAndWhy": "How strongly is political ideology linked to actual adoption of clean technologies, rather than only stated climate attitudes? The study also asks whether that relationship is equally strong for residential solar and electric vehicles.",
+      "whatTheyDid": "Reining and colleagues combined three survey waves of German residents with municipality-level records covering 10,733 municipalities, including solar installations, electric-vehicle registrations, and election results. They used fixed-effects panel models and a complementary instrumental-variable strategy in which local wolf attacks predicted changes in Alternative für Deutschland vote share.",
+      "whatTheyFound": "AfD supporters reported substantially lower clean-technology adoption outcomes, especially for electric vehicles. Across survey waves, Green-party supporters were 227% more likely than AfD supporters to report EV adoption or intent, compared with a 48% gap for solar. Municipality-level increases in AfD support were also followed by lower adoption in panel models. The instrumental-variable estimates pointed in the same direction but identify a local effect for municipalities whose voting responded to wolf attacks and were sensitive to some sample restrictions, so they are complementary rather than definitive causal evidence.",
+      "whatItMeans": "Political identity appears to matter differently depending on what a technology has come to symbolize. The much larger gap for EVs than solar suggests that adoption barriers are not only about generic climate attitudes. For intervention design, the finding supports measuring the social meaning of a specific behavior instead of assuming that one ideological variable predicts all climate-related choices equally."
+    },
+    {
+      "itemId": "research-c84c6174981df47ddc0f",
+      "streamTitle": "A low-barrier RAG setup made a mainstream LLM confidently present fringe science as authoritative",
+      "streamSummary": "Researchers built two Custom GPTs around GPT-5.1 and supplied each with ten fringe physics papers plus instructions to treat that material as authoritative. Without retraining or changing model weights, the resulting systems produced fluent, detailed answers that domain experts often judged seriously misleading, while the unmodified model stayed closer to mainstream science. The study is a deliberate demonstration in two narrow physics domains, not a prevalence estimate for deployed RAG systems. Its broader importance is provenance: a polished answer can remain linguistically convincing even when the retrieval corpus and instructions have quietly redirected what the model treats as knowledge.",
+      "attribution": "Collins et al. — AI and Ethics",
+      "sourceUrl": "https://doi.org/10.1007/s43681-026-01391-x",
+      "sourcePublishedAt": "2026-09-23",
+      "dateAdded": "2026-09-24",
+      "latestSeenBriefDate": "2026-09-24",
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling",
+        "application-analysis"
+      ],
+      "questionAndWhy": "How easily can an otherwise mainstream LLM be configured to present fringe scientific claims as authoritative knowledge? The question matters because retrieval-augmented systems can look trustworthy even when their knowledge base has been deliberately skewed.",
+      "whatTheyDid": "Collins and colleagues created two RAG-like Custom GPTs using GPT-5.1, one focused on the fine-structure constant and one on gravitational waves. Domain experts selected ten fringe viXra papers for each system, and the models were instructed to treat those papers as authoritative and not compare them with mainstream sources. The researchers then compared answers from the altered models, the unmodified model, and domain experts.",
+      "whatTheyFound": "The altered models produced fluent, detailed answers that tracked the fringe corpus and were often judged scientifically wrong or seriously misleading by experts. The unmodified model was generally much closer to mainstream scientific understanding. No retraining, fine-tuning, or model-weight modification was required. This was a deliberate demonstration in two physics domains, not an estimate of how often real deployed RAG systems become misleading.",
+      "whatItMeans": "Retrieval provenance and instruction governance are part of model safety. A system can preserve polished reasoning and language while its epistemic foundation has been redirected. For knowledge-base applications, evaluation should test source identity, corpus composition, citation traceability, and behavior under conflicting evidence rather than relying on answer fluency."
+    },
+    {
+      "itemId": "research-ad33d869c3a1bc06e434",
+      "streamTitle": "First-time parents’ emotional dynamics changed with who was on leave—and with whether partners were together",
+      "streamSummary": "A Danish experience-sampling study tracked first-time parents’ emotions six times daily across maternity- and paternity-leave periods. Partners who were physically together showed synchronized valence and arousal, while randomly paired couples did not. Regulation patterns also changed with leave roles: arousal had a stronger regulatory role for the parent not on leave, and mothers’ responses to fathers differed between maternity and paternity leave. Substantial couple-level variation remained. The study is observational, so leave arrangements cannot be treated as experimentally causal, but it shows why close relationships are better modeled as interacting systems than as two isolated individuals.",
+      "attribution": "Cox et al. — Communications Psychology",
+      "sourceUrl": "https://doi.org/10.1038/s44271-026-00536-2",
+      "sourcePublishedAt": "2026-09-23",
+      "dateAdded": "2026-09-24",
+      "latestSeenBriefDate": "2026-09-24",
+      "primaryCategory": "behavioral-science",
+      "categories": [
+        "behavioral-science",
+        "application-analysis"
+      ],
+      "questionAndWhy": "How do first-time parents regulate their own and each other’s emotions as maternity and paternity leave change who is carrying the day-to-day caregiving load? The question matters because emotional regulation inside close relationships is often modeled as an individual trait rather than a coupled, context-dependent process.",
+      "whatTheyDid": "Cox and colleagues used experience sampling with first-time Danish parents, collecting emotion reports six times a day for one week during maternity-leave and paternity-leave periods. They modeled valence and arousal with Bayesian multilevel coupled-oscillator models and used GPS information to verify when partners were physically co-located.",
+      "whatTheyFound": "Parents showed emotional synchrony in both valence and arousal when physically together, an effect that disappeared in randomly paired couples. Arousal strengthened self-regulation dynamics specifically for the parent who was not on leave. Mothers’ responses to fathers shifted across leave arrangements, while fathers showed weaker counterbalancing patterns. There was also substantial couple-to-couple variation. Because the study was observational, the leave arrangement itself was not experimentally shown to cause these dynamics.",
+      "whatItMeans": "Emotional regulation can be a dyadic system whose parameters change with roles and context. For behavioral modeling, the result argues against assigning each person one fixed regulation tendency when reciprocal effects and situational roles may matter. It also shows the value of intensive longitudinal data for detecting relationships that a one-time survey would miss."
+    },
+    {
+      "itemId": "research-54ee3033351080d2605a",
+      "streamTitle": "Banking records showed signs of severe financial instability years before many abuse disclosures",
+      "streamSummary": "A Nature study examined up to seven years of banking records for 5,428 women who disclosed domestic or financial abuse and 15,602 matched controls. Victim-survivors had lower savings and credit scores, more missed payments and debt pressure, and distinctive changes in spending and account management; many differences appeared years before disclosure. The study is observational, self-disclosure may select more severe cases, and some controls may also have experienced undisclosed abuse. The findings show the value of longitudinal administrative data for understanding vulnerability, but they do not justify turning transaction patterns directly into an automated abuse label.",
+      "attribution": "Trendl et al. — Nature",
+      "sourceUrl": "https://doi.org/10.1038/s41586-026-11049-7",
+      "sourcePublishedAt": "2026-09-23",
+      "dateAdded": "2026-09-24",
+      "latestSeenBriefDate": "2026-09-24",
+      "primaryCategory": "application-analysis",
+      "categories": [
+        "application-analysis",
+        "behavioral-science"
+      ],
+      "questionAndWhy": "Can ordinary banking records reveal how financial abuse develops over time before a victim-survivor discloses it? Most evidence on financial abuse relies on surveys or interviews that provide less continuous behavioral history.",
+      "whatTheyDid": "Trendl and colleagues analyzed anonymized records from a major UK retail bank for 5,428 women who disclosed domestic or financial abuse and 15,602 matched controls. They examined 373 transactional and non-transactional indicators across as much as seven years before disclosure, including balances, missed payments, spending, account access, password changes, welfare receipts, and bank interactions.",
+      "whatTheyFound": "Victim-survivors showed lower savings, more debt and financial distress, lower credit scores, more missed direct debits, and distinctive account-management and spending patterns; many group differences appeared years before disclosure. In the year before disclosure, the victim-survivor group had credit scores about 109 points lower and was 31.9 percentage points more likely to have unpaid direct debits than matched controls. The design is observational, disclosure may select more severe cases, abuse often co-occurs with other forms of control, and the control group may include undisclosed victim-survivors.",
+      "whatItMeans": "Administrative behavioral data can reveal longitudinal vulnerability that a one-time survey may miss, but the result should not be converted directly into an automated abuse classifier. High-stakes detection would need false-positive analysis, privacy safeguards, human review, and evidence that intervention actually helps rather than creating new risks for vulnerable customers."
+    },
+    {
+      "itemId": "research-51abf747506a8c1ab695",
+      "streamTitle": "A Special Operations Chinook landed and replenished on an autonomous barge in a first publicly disclosed demonstration",
+      "streamSummary": "Naval News reports that a U.S. Army 160th Special Operations Aviation Regiment MH-47G Chinook landed and conducted replenishment operations from an autonomous Sea Machines barge. The demonstration suggests a potential way to create distributed maritime refuel or logistics nodes without a conventional crewed ship. Public reporting does not provide sea-state limits, operator-intervention rates, safety margins, throughput, or contested-environment performance, so it should not be treated as proof of operational readiness. The real value of the concept will depend on whether autonomous logistics can remain reliable, survivable, and recoverable when communications and operating conditions degrade.",
+      "attribution": "Sea Machines Robotics — via Naval News",
+      "sourceUrl": "https://www.navalnews.com/naval-news/2026/09/u-s-special-forces-operate-helicopter-from-autonomous-barge-for-the-first-time",
+      "sourcePublishedAt": "2026-09-23",
+      "dateAdded": "2026-09-24",
+      "latestSeenBriefDate": "2026-09-24",
+      "primaryCategory": "operations-strategy",
+      "categories": [
+        "operations-strategy",
+        "technology-modeling"
+      ],
+      "questionAndWhy": "Can an autonomous surface vessel function as a mobile aviation and logistics node for special operations forces, extending the reach of helicopters without a conventional ship or fixed base?",
+      "whatTheyDid": "According to Sea Machines Robotics reporting carried by Naval News, an MH-47G Chinook from the U.S. Army’s 160th Special Operations Aviation Regiment conducted landing and replenishment operations from an autonomous barge using the company’s SM300 autonomy system.",
+      "whatTheyFound": "The event was described as the first publicly disclosed U.S. helicopter landing and replenishment operation from an autonomously operated barge. The public report does not provide quantitative results for sea state, autonomy level, operator intervention, safety margins, logistics throughput, or performance under jamming or attack. The evidence therefore establishes a demonstration, not operational suitability.",
+      "whatItMeans": "The concept could turn relatively simple vessels into distributed refuel, resupply, or staging nodes and change the logistics geometry for rotary-wing operations. Its value will depend on the unglamorous variables—reliability, station keeping, communications, survivability, replenishment speed, and recovery when autonomy fails—rather than the fact that a landing occurred once."
+    },
+    {
+      "itemId": "research-18e9cd5132b57aacecc0",
+      "streamTitle": "A new behavioral-research protocol combines DAGs and nonlinear models to move from “did it work?” toward “how did it work?”",
+      "streamSummary": "BriDGE is a new methodological protocol for analyzing mechanisms inside randomized behavioral experiments. It combines explicit DAG-based assumptions, causal-discovery tools, generalized additive models for nonlinear pathways, mediation analysis, bootstrapping, sensitivity checks, and simulation-based power planning. Simulation and semi-synthetic tests show that the workflow can recover complex pathways under known data-generating conditions. The authors also emphasize the key limitation: in real trials, the true causal graph is unknown, so causal discovery cannot validate itself. The framework is therefore best used to make mechanism assumptions and tests more explicit—not to replace identification logic with an algorithm.",
+      "attribution": "Veltri & Banerjee — Behavior Research Methods",
+      "sourceUrl": "https://doi.org/10.3758/s13428-026-03146-2",
+      "sourcePublishedAt": "2026-09-23",
+      "dateAdded": "2026-09-24",
+      "latestSeenBriefDate": "2026-09-24",
+      "primaryCategory": "application-analysis",
+      "categories": [
+        "application-analysis",
+        "behavioral-science",
+        "technology-modeling"
+      ],
+      "questionAndWhy": "How can randomized behavioral experiments move beyond asking whether an intervention works to testing the causal pathways through which it works, especially when mediators are nonlinear or interact?",
+      "whatTheyDid": "Veltri and Banerjee introduced BriDGE, a stepwise protocol that combines directed acyclic graphs for explicit causal assumptions, causal-discovery tools, generalized additive models for nonlinear relationships, mediation analysis, bootstrapping, sensitivity checks, and simulation-based power planning. They validated the workflow with simulations and a semi-synthetic benchmark.",
+      "whatTheyFound": "The simulation work showed that the protocol can recover and estimate complex direct and indirect relationships under the tested data-generating conditions. The authors explicitly note that the next critical step is application to fully empirical randomized-trial data, where the true causal graph is unknown and graph recovery cannot be validated in the same way. Causal discovery therefore supplements, rather than removes, the need for defensible assumptions and design.",
+      "whatItMeans": "BriDGE is a useful template for the gap between estimating an intervention’s total effect and understanding how that effect propagates. For PSYWERX-style causal modeling, its strongest features are explicit DAG assumptions, nonlinear mediator models, uncertainty checks, and simulation-based planning. The method should not be treated as an automatic mechanism-discovery engine simply because it includes causal-discovery algorithms."
+    },
+    {
+      "itemId": "research-791a147a766dd5fdc026",
+      "streamTitle": "The UK and U.S. paired a new AI-autonomy partnership with the first torpedo firing from a British uncrewed undersea vehicle",
+      "streamSummary": "The UK and United States announced a new defense AI and autonomy partnership between their rapid-delivery organizations, aimed at producing trusted, interoperable capabilities for areas such as critical-infrastructure protection. The announcement came alongside a concrete technical milestone: a British 12-metre Excalibur uncrewed undersea vehicle fired a U.S.-Australian heavyweight torpedo in UK waters, reportedly the first such launch by either country from an uncrewed underwater vessel. The demonstration proves integration and firing in a test, not combat effectiveness. The deeper issue is allied interoperability across software, autonomy, weapons, command, and safety controls.",
+      "attribution": "UK Prime Minister’s Office / Ministry of Defence",
+      "sourceUrl": "https://www.gov.uk/government/news/prime-minister-drives-global-work-on-artificial-intelligence-at-unga-as-uk-and-us-make-history-with-firing-from-undersea-drone",
+      "sourcePublishedAt": "2026-09-22",
+      "dateAdded": "2026-09-24",
+      "latestSeenBriefDate": "2026-09-24",
+      "primaryCategory": "operations-strategy",
+      "categories": [
+        "operations-strategy",
+        "technology-modeling"
+      ],
+      "questionAndWhy": "How are the United Kingdom and United States turning AI and autonomy cooperation into operationally interoperable defense capability rather than parallel national projects?",
+      "whatTheyDid": "The UK announced a new AI and Autonomy partnership linking its Ministry of Defence Rapid AI Delivery Taskforce with the U.S. Department of War Chief Digital and Artificial Intelligence Office. In parallel, the two countries reported the first launch of a U.S.-Australian heavyweight torpedo from a British 12-metre Excalibur uncrewed undersea vehicle during a live firing in UK waters.",
+      "whatTheyFound": "The torpedo firing demonstrates cross-national technical integration and the ability of an uncrewed undersea platform to launch the weapon in a test. The partnership is intended to accelerate trusted, interoperable AI and autonomy for critical-infrastructure protection and deterrence. Neither the press release nor the firing establishes combat effectiveness, reliability in a contested environment, or an operational advantage over existing crewed systems.",
+      "whatItMeans": "Interoperability is becoming a capability in its own right: shared autonomy, mission systems, weapons, standards, and command relationships have to work across allies. The useful measurement question is not whether partners signed an agreement, but whether shared systems can exchange information, execute missions, recover from failures, and preserve human authority under realistic conditions."
+    },
+    {
+      "itemId": "research-2efe20468b4d16f41a8e",
+      "streamTitle": "Texas froze data-center permits while regulators audit a project queue larger than five times the state’s record peak demand",
+      "streamSummary": "Texas has halted state permits for data centers until grid and water regulators complete a broader audit of the sector. ERCOT has more than 474 gigawatts of data-center interconnection requests under consideration—over five times the state’s record peak electricity demand—and state officials want projects to document power, water, infrastructure costs, and other impacts before approvals proceed. The 474-gigawatt queue is not a forecast of actual future load; it can include speculative and overlapping projects. The development shows AI infrastructure becoming a coupled policy problem spanning compute growth, grid reliability, water, cost allocation, and local resilience.",
+      "attribution": "Office of the Texas Governor",
+      "sourceUrl": "https://gov.texas.gov/news/post/governor-abbott-directs-tceq-to-halt-data-center-permits",
+      "sourcePublishedAt": "2026-09-21",
+      "dateAdded": "2026-09-24",
+      "latestSeenBriefDate": "2026-09-24",
+      "primaryCategory": "operations-strategy",
+      "categories": [
+        "operations-strategy",
+        "technology-modeling",
+        "application-analysis"
+      ],
+      "questionAndWhy": "How should a state manage AI-infrastructure growth when proposed data-center demand may exceed what the existing grid and water-planning system can credibly absorb?",
+      "whatTheyDid": "Texas Governor Greg Abbott directed the state environmental regulator to halt permits sought by data centers until ERCOT and other state agencies complete audits of electricity demand, grid reliability, infrastructure costs, and water use. ERCOT has been considering more than 474 gigawatts of data-center interconnection requests—over five times Texas’s record peak electricity demand.",
+      "whatTheyFound": "The immediate effect is a regulatory pause, not a completed finding about actual data-center load. Projects must provide information, complete the audit process, and meet state requirements before approvals move forward. The 474-gigawatt figure is a request queue and likely includes speculative or overlapping projects, so it should not be treated as a forecast of realized demand.",
+      "whatItMeans": "AI infrastructure has become a systems-governance problem involving electricity, water, cost allocation, permitting, and community risk—not just a compute-supply question. The Texas case also shows why pipeline demand and realized demand must be kept separate: planning needs to stress-test worst cases without presenting every proposed project as inevitable."
+    },
+    {
+      "itemId": "research-90e6662377c13381827b",
+      "streamTitle": "DARPA is evaluating autonomous trauma surgery as a progression from component skills to human teaming to independence",
+      "streamSummary": "DARPA has launched a $3.5 million competition for trauma-surgery robotics and held its Industry Day on September 22. The evaluation structure is notable: systems first face component gates for medical knowledge, physical capability, and rapid learning, then separate lanes test collaboration with a human surgeon and independent assessment, planning, and execution. No performance results exist yet; the scored competition is planned for March 2027. The program is therefore not evidence that autonomous surgery is ready. Its immediate value is methodological—a staged TEVV framework that distinguishes prerequisite skills, human-machine teaming, and true independent capability.",
+      "attribution": "DARPA",
+      "sourceUrl": "https://www.darpa.mil/news/2026/darpa-competition-surgical",
+      "sourcePublishedAt": "2026-09-15",
+      "dateAdded": "2026-09-24",
+      "latestSeenBriefDate": "2026-09-24",
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling",
+        "operations-strategy",
+        "application-analysis"
+      ],
+      "questionAndWhy": "How should autonomous trauma-surgery systems be evaluated as they progress from assisting a human surgeon to performing procedures independently? The problem is especially important in mass-casualty or large-scale combat environments where surgical capacity can become a bottleneck.",
+      "whatTheyDid": "DARPA launched a $3.5 million Surgical Competition and held its Industry Day on September 22. Competitors must first pass component gates covering medical knowledge, physical capability, and rapid learning, then can advance to separate Surgical Collaboration and Surgical Independence lanes. The scored competition is scheduled for March 2027.",
+      "whatTheyFound": "There are no system-performance results yet. The current development is an explicit evaluation architecture that separates component competence, human-machine collaboration, and autonomous execution rather than treating surgical autonomy as one binary capability. DARPA also requires rapid learning of new tasks from limited examples.",
+      "whatItMeans": "The competition is useful as a TEVV design pattern even before results arrive. It creates an evidence ladder from prerequisite capabilities to supervised teaming and then independent action, which makes it harder to infer full autonomy from a narrow demonstration. Future claims should be judged by the scored gates and operational lanes, not by participation or technical novelty alone."
+    },
     {
       "itemId": "research-d96773196ed35d76a653",
       "streamTitle": "A multi-level school program improved several precursors of adolescent help-seeking, while actual behavior was more mixed",
@@ -4867,6 +5060,29 @@
     }
   ],
   "briefs": [
+    {
+      "briefDate": "2026-09-24",
+      "briefType": "daily",
+      "totalItems": 10,
+      "categoryCounts": {
+        "behavioral-science": 3,
+        "technology-modeling": 2,
+        "operations-strategy": 3,
+        "application-analysis": 2
+      },
+      "itemIds": [
+        "research-fa91387249cc32544604",
+        "research-ad33d869c3a1bc06e434",
+        "research-d738e4104f0b26410c6a",
+        "research-c84c6174981df47ddc0f",
+        "research-90e6662377c13381827b",
+        "research-791a147a766dd5fdc026",
+        "research-51abf747506a8c1ab695",
+        "research-2efe20468b4d16f41a8e",
+        "research-54ee3033351080d2605a",
+        "research-18e9cd5132b57aacecc0"
+      ]
+    },
     {
       "briefDate": "2026-09-23",
       "briefType": "daily",
