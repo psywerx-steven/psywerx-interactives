@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "checkpointId": "LAYER-SCALE-UP-PROGRAM-STATUS-2026-09-22-001",
-  "sourceCommit": "5513a3e352da1938e9fdefc6473a3864ccf552da",
+  "sourceCommit": "bb9336b9b1cf0bcb110cbf39da93a67d38c64cea",
   "layers": [
     {
       "layer": "Biological",
@@ -23,11 +23,11 @@
     },
     {
       "layer": "Social",
-      "candidateAudit": "NOT_STARTED (SOC-F07 PILOT COMPLETE)",
-      "humanGovernance": "FULL LAYER PENDING",
-      "materialization": "Prior SOC-F07 pilot only",
-      "activationAudit": "FULL LAYER PENDING",
-      "newActiveScience": "No full-Layer additions",
+      "candidateAudit": "COMPLETE",
+      "humanGovernance": "PENDING",
+      "materialization": "NONE (candidate-only audit)",
+      "activationAudit": "PENDING GOVERNANCE",
+      "newActiveScience": "0",
       "majorBlocker": "23 RDS; 10 RDS sources; Network State binding; HYP-SOC-F07-H12/H20"
     },
     {
@@ -76,9 +76,8 @@
       "majorBlocker": "BLK-TEC-ACTIVATION-001; mechanismStatus UNKNOWN; TEC-097/098/099 metadata"
     }
   ],
-  "completedCandidateAudits": 6,
+  "completedCandidateAudits": 7,
   "fullLayerAuditsRemaining": [
-    "Social",
     "Institutional / Structural"
   ],
   "activationChangesInThisCloseout": 0

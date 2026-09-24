@@ -2,7 +2,7 @@
   "schemaVersion": "1.0.0",
   "analysisId": "FINAL-TWO-LAYER-READINESS-2026-09-22-001",
   "analysisClass": "READ_ONLY_MECHANICAL_PLANNING",
-  "sourceCommit": "5513a3e352da1938e9fdefc6473a3864ccf552da",
+  "sourceCommit": "bb9336b9b1cf0bcb110cbf39da93a67d38c64cea",
   "workflow": "LAYER_SCALE_UP_V2",
   "excludedCompletedLayer": "Psychological",
   "scienceResearchPerformed": false,
@@ -141,16 +141,17 @@
         "INFORMATIONAL_LAYER": 1,
         "PHYSICAL_ENVIRONMENTAL_LAYER": 2,
         "PSYCHOLOGICAL_LAYER": 6,
+        "SOCIAL_LAYER": 6,
         "TECHNOLOGICAL_LAYER": 6
       },
-      "priorCompletedLayerReviewReuseCount": 15
+      "priorCompletedLayerReviewReuseCount": 21
     }
   ],
   "selection": {
-    "recommendedNextLayer": "Social",
+    "recommendedNextLayer": "Institutional / Structural",
     "finalLayer": "Institutional / Structural",
     "startAuthorized": false,
-    "rationale": "Social has the greater architecture burden but also the stronger immediate OIE leverage, 13 Psychological couplings, five Technological couplings, 25 reusable completed-Layer reviews, and the SOC-F07 pilot. Auditing it next exposes Network State, aggregation, actual/perceived norm, and individual/group boundaries before the final institutional audit. Institutional / Structural then closes the program with the largest inventory and the broad policy/implementation and institution/person-level reconciliation burden."
+    "rationale": "The Social candidate audit is complete and awaits human governance. Institutional / Structural is the sole unstarted Layer; starting it remains a separate human decision."
   },
   "metricDefinitions": {
     "activeIncidentRelationshipCount": "Unique active legacy/native Relationships of any semantic family with at least one endpoint in the Layer.",

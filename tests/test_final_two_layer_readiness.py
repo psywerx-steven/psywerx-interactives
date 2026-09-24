@@ -54,7 +54,7 @@ class FinalTwoLayerReadinessTests(unittest.TestCase):
     def test_reuse_pilot_and_architecture_burdens(self):
         social, institutional = self.layers["Social"], self.layers["Institutional / Structural"]
         self.assertEqual(social["priorCompletedLayerReviewReuseCount"], 25)
-        self.assertEqual(institutional["priorCompletedLayerReviewReuseCount"], 15)
+        self.assertEqual(institutional["priorCompletedLayerReviewReuseCount"], 21)
         self.assertEqual(social["priorPilotCoverage"], ["SOC-F07"])
         self.assertEqual(social["knownArchitectureEscalationIds"], ["HYP-SOC-F07-H12", "HYP-SOC-F07-H20"])
         self.assertEqual(social["unresolvedPilotSourceQueueCount"], 1)
@@ -64,16 +64,20 @@ class FinalTwoLayerReadinessTests(unittest.TestCase):
         self.assertEqual((institutional["informationalCouplingCausalCount"], institutional["technologicalCouplingCausalCount"]), (1, 5))
 
     def test_sequence_and_all_eight_status_rows(self):
-        self.assertEqual(self.report["selection"]["recommendedNextLayer"], "Social")
+        self.assertEqual(self.report["selection"]["recommendedNextLayer"], "Institutional / Structural")
         self.assertEqual(self.report["selection"]["finalLayer"], "Institutional / Structural")
         self.assertFalse(self.report["selection"]["startAuthorized"])
         self.assertEqual(len(self.status["layers"]), 8)
+        self.assertEqual(self.status["completedCandidateAudits"], 7)
+        self.assertEqual(self.status["fullLayerAuditsRemaining"], ["Institutional / Structural"])
         self.assertEqual({row["layer"] for row in self.status["layers"]}, {
             "Biological", "Psychological", "Social", "Cultural", "Physical / Environmental",
             "Institutional / Structural", "Informational", "Technological",
         })
         env = next(row for row in self.status["layers"] if row["layer"] == "Physical / Environmental")
         tech = next(row for row in self.status["layers"] if row["layer"] == "Technological")
+        social = next(row for row in self.status["layers"] if row["layer"] == "Social")
+        self.assertEqual((social["candidateAudit"], social["humanGovernance"]), ("COMPLETE", "PENDING"))
         self.assertEqual(env["activationAudit"], "BLOCKED")
         self.assertIn("mechanismStatus UNKNOWN", env["majorBlocker"])
         self.assertEqual(tech["activationAudit"], "BLOCKED")

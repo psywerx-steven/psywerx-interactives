@@ -165,6 +165,12 @@ jobs:
       - name: Validate candidate-only Technological Layer V2 audit
         run: python -m unittest discover -s tests -p "test_technological_layer_v2.py"
 
+      - name: Validate candidate-only Social Layer V2 audit
+        run: python -m unittest discover -s tests -p "test_social_layer_v2.py"
+
+      - name: Verify Social Layer candidate source identities
+        run: python scripts/verify_social_layer_sources.py
+
       - name: Validate exact Technological governance materialization
         run: python -m unittest discover -s tests -p "test_technological_governance_materialization.py"
 
@@ -196,6 +202,11 @@ jobs:
         run: |
           python scripts/technological_layer_v2_package.py
           git diff --exit-code -- data/candidates/actions-events-v1/TECHNOLOGICAL_LAYER docs/governance/scale-up/TECHNOLOGICAL_LAYER
+
+      - name: Verify deterministic Social Layer registries
+        run: |
+          python scripts/social_layer_v2_package.py
+          git diff --exit-code -- data/candidates/actions-events-v1/SOCIAL_LAYER docs/governance/scale-up/SOCIAL_LAYER
 
       - name: Verify deterministic Informational Layer registries
         run: |
@@ -361,6 +372,12 @@ jobs:
       - name: Validate candidate-only Technological Layer V2 audit
         run: python -m unittest discover -s tests -p "test_technological_layer_v2.py"
 
+      - name: Validate candidate-only Social Layer V2 audit
+        run: python -m unittest discover -s tests -p "test_social_layer_v2.py"
+
+      - name: Verify Social Layer candidate source identities
+        run: python scripts/verify_social_layer_sources.py
+
       - name: Validate exact Technological governance materialization
         run: python -m unittest discover -s tests -p "test_technological_governance_materialization.py"
 
@@ -392,6 +409,11 @@ jobs:
         run: |
           python scripts/technological_layer_v2_package.py
           git diff --exit-code -- data/candidates/actions-events-v1/TECHNOLOGICAL_LAYER docs/governance/scale-up/TECHNOLOGICAL_LAYER
+
+      - name: Verify deterministic Social Layer registries
+        run: |
+          python scripts/social_layer_v2_package.py
+          git diff --exit-code -- data/candidates/actions-events-v1/SOCIAL_LAYER docs/governance/scale-up/SOCIAL_LAYER
 
       - name: Verify deterministic Informational Layer registries
         run: |
