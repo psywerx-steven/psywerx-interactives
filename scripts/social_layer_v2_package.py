@@ -363,7 +363,10 @@ def main():
         "auditClass": "CANDIDATE_ONLY_SCIENTIFIC_SCALE_UP_V2", "baseCommit": s.BASE_COMMIT,
         "familyStatuses": {k: "COMPLETE" for k in families}, "counts": base["mechanicalCounts"] | {"originalGovernanceRows": len(index)},
         "telemetry": telemetry, "productionHashes": base["productionHashes"], "newGoverned": 0, "newActive": 0,
-        "productionScienceChanged": False, "governanceHumanAuthorized": False}
+        "productionScienceChanged": False, "governanceHumanAuthorized": True,
+        "governanceDecisionId": "GOV-SOCIAL-LAYER-001-2026-09-23",
+        "materializationOutcome": "NONE", "canonicalSourceRegistrations": 0,
+        "activationAuditRequired": False}
     s.write(G / "SOCIAL_LAYER_AUDIT_MANIFEST.json", manifest)
 
     disp = "\n".join(f"| {k} | {v} |" for k, v in sorted(counts.items()))
@@ -383,7 +386,7 @@ def main():
     comp = rec["compression"]
     s.write_doc(G / "SOCIAL_LAYER_GOVERNANCE_RECOMMENDATIONS.md", f"# Social Layer governance recommendations\n\n{NOTICE}\n\n## Executive summary\n\n{len(index)} original rows represent {comp['distinctScientificDecisions']} distinct new scientific decisions: {comp['groupedHumanDecisions']} grouped votes + {comp['individualScientificDecisions']} individual decisions + {comp['blockedDecisions']} blocked decisions. {comp['nonVotingAcknowledgements']} rows are non-voting acknowledgements, and {comp['priorDecisionsReused']} exact prior decisions require no new vote.\n\n## Existing Relationships\n\n| Disposition | Count |\n|---|---:|\n{disp}\n\nRevision/retype results are review-only. No production change is recommended.\n\n## RDS decisions\n\n| Recommendation | Count |\n|---|---:|\n{rds_disp}\n\nAll 10 causal-source RDS require individual attention; no causal use is newly authorized.\n\n## New Relationships\n\nNone recommended for governance.\n\n## HappeningTypes\n\nNo new identity is recommended. Existing bounded identities are reused only as research references.\n\n## EffectAssertions and EvidenceAssessments\n\nNo effect or EvidenceAssessment is recommended for governance. Both provisional effects were downgraded to `KEEP_RESEARCH_NEEDED` after skeptical review.\n\n## Network State / architecture blockers\n\nKeep `HYP-SOC-F07-H12` and `HYP-SOC-F07-H20` blocked. Preserve `DER-V1-SOC-F07-001` unchanged and inactive.\n\n## Proposed future materialization\n\nRelationships 0; HappeningTypes 0; EffectAssertions 0; EvidenceAssessments 0.\n\n## Activation boundary\n\nNO ACTIVATION is recommended or authorized.\n")
     s.write_doc(G / "SOCIAL_LAYER_GOVERNANCE_REVIEW_SUMMARY.md", f"# Social Layer governance review summary\n\n{NOTICE}\n\nHuman priority is the 10 RDS causal-source reviews, existing revision/retype proposals, the two preserved Network State blockers, and the three Astra questions. Grouped retains and six research-needed routes do not need duplicate Family votes. No materialization is recommended.\n")
-    s.write_doc(G / "SOCIAL_LAYER_HANDOFF.md", f"# Social Layer handoff\n\n{NOTICE}\n\nAll 12 Families are COMPLETE. The candidate package recommends zero future materialization. Production science, lifecycle states, `DER-V1-SOC-F07-001`, H12/H20, the SOC-F07 source lineage and Network State remain unchanged. Human scientific governance is the next boundary.\n")
+    s.write_doc(G / "SOCIAL_LAYER_HANDOFF.md", "# Social Layer handoff\n\nHUMAN GOVERNANCE COMPLETE. Candidate-only science; new GOVERNED = 0 and ACTIVE = 0.\n\nAll 12 Families are COMPLETE. Human decision `GOV-SOCIAL-LAYER-001-2026-09-23` approves the conservative recommendations with zero materialization, zero source registration, and zero activation. Production science, lifecycle states, `DER-V1-SOC-F07-001`, H12/H20, the SOC-F07 source lineage and Network State remain unchanged. The unresolved RDS, cross-level, and Network State questions move to the post-scale-up backlog.\n")
     print("Social package", len(reviews), "relationships", len(rds_rows), "RDS", len(index), "governance rows")
 
 

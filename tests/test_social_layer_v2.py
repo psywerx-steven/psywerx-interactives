@@ -79,6 +79,12 @@ class SocialLayerV2Tests(unittest.TestCase):
             "priorDecisionsReused": 34})
         self.assertEqual(rec["recommendedFutureMaterialization"], {"relationships": 0, "happeningTypes": 0, "effectAssertions": 0, "evidenceAssessments": 0})
         self.assertEqual((rec["newGoverned"], rec["newActive"]), (0, 0))
+        manifest = json.loads((DOCS / "SOCIAL_LAYER_AUDIT_MANIFEST.json").read_text(encoding="utf-8"))
+        self.assertTrue(manifest["governanceHumanAuthorized"])
+        self.assertEqual(manifest["governanceDecisionId"], "GOV-SOCIAL-LAYER-001-2026-09-23")
+        self.assertEqual(manifest["materializationOutcome"], "NONE")
+        self.assertEqual(manifest["canonicalSourceRegistrations"], 0)
+        self.assertFalse(manifest["activationAuditRequired"])
 
     def test_production_science_is_unchanged(self):
         social.validate_protection()
@@ -90,7 +96,7 @@ class SocialLayerV2Tests(unittest.TestCase):
             "NETWORK_STATE_RECONCILIATION", "CONSTRUCT_BOUNDARIES", "CROSS_FAMILY_ISSUES",
             "CROSS_LAYER_FINDINGS", "ACTIONS_EVENTS_SUMMARY", "EVIDENCE_SUMMARY", "REJECTIONS",
             "ARCHITECTURE_ESCALATIONS", "COMPLETENESS_REPORT", "GOVERNANCE_RECOMMENDATIONS",
-            "GOVERNANCE_REVIEW_SUMMARY", "HANDOFF"]
+            "GOVERNANCE_REVIEW_SUMMARY", "HANDOFF", "GOVERNANCE_DECISION_001", "CLOSEOUT_001"]
         for name in names:
             self.assertTrue((DOCS / f"SOCIAL_LAYER_{name}.md").is_file(), name)
         self.assertTrue((DOCS / "SOCIAL_LAYER_AUDIT_MANIFEST.json").is_file())
