@@ -183,6 +183,9 @@ jobs:
       - name: Validate dependency-normalized post-scale-up governance roadmap
         run: python -m unittest discover -s tests -p "test_post_scale_up_governance_roadmap.py"
 
+      - name: Validate read-only RDS contract decision test
+        run: python -m unittest discover -s tests -p "test_rds_contract_decision_test.py"
+
       - name: Validate exact Technological governance materialization
         run: python -m unittest discover -s tests -p "test_technological_governance_materialization.py"
 
@@ -234,6 +237,11 @@ jobs:
         run: |
           python scripts/post_scale_up_governance_roadmap.py
           git diff --exit-code -- data/governance/post-scale-up docs/governance/post-scale-up
+
+      - name: Verify deterministic RDS contract decision test
+        run: |
+          python scripts/rds_contract_decision_test.py
+          git diff --exit-code -- data/governance/post-scale-up/rds docs/governance/post-scale-up/rds
 
       - name: Verify deterministic Informational Layer registries
         run: |
@@ -417,6 +425,9 @@ jobs:
       - name: Validate dependency-normalized post-scale-up governance roadmap
         run: python -m unittest discover -s tests -p "test_post_scale_up_governance_roadmap.py"
 
+      - name: Validate read-only RDS contract decision test
+        run: python -m unittest discover -s tests -p "test_rds_contract_decision_test.py"
+
       - name: Validate exact Technological governance materialization
         run: python -m unittest discover -s tests -p "test_technological_governance_materialization.py"
 
@@ -468,6 +479,11 @@ jobs:
         run: |
           python scripts/post_scale_up_governance_roadmap.py
           git diff --exit-code -- data/governance/post-scale-up docs/governance/post-scale-up
+
+      - name: Verify deterministic RDS contract decision test
+        run: |
+          python scripts/rds_contract_decision_test.py
+          git diff --exit-code -- data/governance/post-scale-up/rds docs/governance/post-scale-up/rds
 
       - name: Verify deterministic Informational Layer registries
         run: |

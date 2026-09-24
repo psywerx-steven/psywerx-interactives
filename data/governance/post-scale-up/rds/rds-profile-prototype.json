@@ -1,0 +1,656 @@
+{
+  "schemaVersion": "0.1.0-test-only",
+  "testId": "WP-PSG-001-STAGE-C-20260924-001",
+  "namespace": "NON_PRODUCTION_PLANNING_PROTOTYPE",
+  "sourceMain": "9e1ffb63a31756c39e0129679c997619286f8754",
+  "governanceStatus": "ADVISORY_NOT_GOVERNED",
+  "productionMutationAuthorized": false,
+  "rdsConstructs": {
+    "RDS-0006": {
+      "rdsId": "RDS-0006",
+      "name": "Network Centralization",
+      "layer": "Social",
+      "definition": "The degree to which a specified node-centrality distribution is concentrated in one or a small number of actors relative to an explicitly stated benchmark or maximum for that network size and centrality measure.",
+      "definitionHash": "1f4deb8927f023179666dfa4a680589c0bad8e16b78ed7e264583295265ff104",
+      "classification": [
+        "DETERMINISTIC_METRIC",
+        "CONTEXT_SPECIFIC_PROFILE"
+      ],
+      "constructExistsWithoutExecutableProfile": false
+    },
+    "BIO-003": {
+      "rdsId": "BIO-003",
+      "name": "Circadian Timing Alignment",
+      "layer": "Biological",
+      "definition": "The degree of alignment between internal circadian phase and the timing of sleep, work, meals, light exposure, and required behavior.",
+      "definitionHash": "75f4d9c9b385381902238eed6130746fb1a6cedce09b96fca8338f7686a98c08",
+      "classification": [
+        "COMPOSITE_SCORE",
+        "CONTEXT_SPECIFIC_PROFILE"
+      ],
+      "constructExistsWithoutExecutableProfile": true
+    },
+    "CUL-088": {
+      "rdsId": "CUL-088",
+      "name": "Generational Cultural Distance",
+      "layer": "Cultural",
+      "definition": "The magnitude of difference between adjacent generations in shared values, norms, practices, or identity narratives within a specified cultural community.",
+      "definitionHash": "fe322aa91ea2bf129e596e68cd5d2501f1c7e6a28be10be4506888318ea81df4",
+      "classification": [
+        "DISTANCE_METRIC",
+        "CONTEXT_SPECIFIC_PROFILE",
+        "NARRATIVE_OR_UNDERDEFINED"
+      ],
+      "constructExistsWithoutExecutableProfile": true
+    },
+    "INS-039": {
+      "rdsId": "INS-039",
+      "name": "Caseload Pressure",
+      "layer": "Institutional / Structural",
+      "definition": "Demand placed on organizational actors relative to available time and staffing.",
+      "definitionHash": "d85da31b59b280787b37ce88ecfafd5caa3553c08611d0f77fd32aedbbb3c37c",
+      "classification": [
+        "RATIO",
+        "AGGREGATE_STATISTIC",
+        "NARRATIVE_OR_UNDERDEFINED"
+      ],
+      "constructExistsWithoutExecutableProfile": true
+    },
+    "INS-103": {
+      "rdsId": "INS-103",
+      "name": "Staffing Adequacy",
+      "layer": "Institutional / Structural",
+      "definition": "Ratio of qualified personnel and deployable labor time to formally assigned workload.",
+      "definitionHash": "1f3a1c9dbf682494c285e078a2754ee85d46889f488b18c624d1799b482d60ce",
+      "classification": [
+        "RATIO",
+        "AGGREGATE_STATISTIC",
+        "NARRATIVE_OR_UNDERDEFINED"
+      ],
+      "constructExistsWithoutExecutableProfile": true
+    },
+    "INF-010": {
+      "rdsId": "INF-010",
+      "name": "Decision-Relevant Information Completeness",
+      "layer": "Informational",
+      "definition": "Proportion of decision-relevant facts, alternatives, conditions, and limitations included in a message.",
+      "definitionHash": "149a022041833df5dbb6356657492913597987745ddee84c2168d1b104724b62",
+      "classification": [
+        "RATIO",
+        "RULE_BASED_DERIVATION",
+        "CONTEXT_SPECIFIC_PROFILE"
+      ],
+      "constructExistsWithoutExecutableProfile": true
+    },
+    "PSY-078": {
+      "rdsId": "PSY-078",
+      "name": "Perceived Goal–State Discrepancy",
+      "layer": "Psychological",
+      "definition": "The magnitude and direction of the difference between a desired target state and the person's perceived current state.",
+      "definitionHash": "db5c6349091b4d531efe30fa12821760d69ecc3ada20c9d77bef42ce62caf20b",
+      "classification": [
+        "DETERMINISTIC_INDEX",
+        "RULE_BASED_DERIVATION",
+        "CONTEXT_SPECIFIC_PROFILE"
+      ],
+      "constructExistsWithoutExecutableProfile": true
+    }
+  },
+  "fieldRequirements": {
+    "REQUIRED_UNIVERSAL": [
+      "rdsId",
+      "definitionVersion",
+      "derivationProfileId",
+      "derivationProfileVersion",
+      "profileType",
+      "inputContract",
+      "inputDefinitionVersions",
+      "inputDefinitionHashes",
+      "minimumInputRequirements",
+      "constituentMapping",
+      "outputScale",
+      "outputInterpretation",
+      "scopeLimitations",
+      "derivationEntailed",
+      "causalSemantics",
+      "provenance",
+      "governance"
+    ],
+    "REQUIRED_CONDITIONAL": [
+      "inputEntityIds",
+      "requiredExternalInputs",
+      "aggregationFunction",
+      "calculationReference",
+      "referencePopulation",
+      "unitOfAnalysis",
+      "boundary",
+      "timeWindow",
+      "metricVariant",
+      "normalization",
+      "missingnessPolicy",
+      "parameterization"
+    ],
+    "OPTIONAL": [
+      "displayName",
+      "notes",
+      "supersedesProfileVersion",
+      "estimatorDiagnostics"
+    ],
+    "NOT_APPLICABLE": "Determined per profile type; a field may be omitted only with an explicit applicability declaration."
+  },
+  "profileTypes": [
+    "DERIVATION_PROFILE",
+    "MEASUREMENT_PROFILE",
+    "ESTIMATION_PROFILE"
+  ],
+  "profiles": [
+    {
+      "derivationProfileId": "DER-V1-SOC-F07-001",
+      "derivationProfileVersion": "1",
+      "rdsId": "RDS-0006",
+      "definitionVersion": "EXACT_HASH_IN_APPLICATION_BINDING",
+      "profileType": "DERIVATION_PROFILE",
+      "inputContract": [
+        {
+          "name": "nodeDegrees",
+          "role": "MEASUREMENT_INPUTS",
+          "required": true
+        },
+        {
+          "name": "nodeSet",
+          "role": "BOUNDARY_INPUTS",
+          "required": true
+        },
+        {
+          "name": "maximumBenchmark",
+          "role": "REFERENCE_VALUES",
+          "required": true
+        }
+      ],
+      "inputDefinitionVersions": "EXACT_IN_APPLICATION_BINDING",
+      "inputDefinitionHashes": "EXACT_IN_APPLICATION_BINDING",
+      "minimumInputRequirements": [
+        "nodeDegrees",
+        "nodeSet",
+        "maximumBenchmark"
+      ],
+      "constituentMapping": [
+        {
+          "input": "nodeDegrees",
+          "role": "MEASUREMENT_INPUTS"
+        },
+        {
+          "input": "nodeSet",
+          "role": "BOUNDARY_INPUTS"
+        },
+        {
+          "input": "maximumBenchmark",
+          "role": "REFERENCE_VALUES"
+        }
+      ],
+      "requiredContext": [
+        "population",
+        "networkBoundary",
+        "timeWindow",
+        "nodeSet",
+        "tieRelation",
+        "unitOfAnalysis"
+      ],
+      "metricVariant": "FREEMAN_DEGREE_CENTRALIZATION",
+      "normalization": "SAME_SIZE_SIMPLE_UNDIRECTED_STAR_MAXIMUM",
+      "calculationReference": "SUM_MAX_DEGREE_MINUS_DEGREES_DIVIDED_BY_N_MINUS_1_TIMES_N_MINUS_2",
+      "aggregationFunction": "SUM_MAX_DEGREE_MINUS_DEGREES_DIVIDED_BY_N_MINUS_1_TIMES_N_MINUS_2",
+      "missingnessPolicy": "REJECT_MISSING_REQUIRED_INPUTS",
+      "parameterization": "EXACT_IN_PROFILE_OR_BINDING",
+      "outputScale": "NUMBER",
+      "outputInterpretation": "PROFILE_AND_BINDING_SPECIFIC",
+      "scopeLimitations": [
+        "No causal-source authorization",
+        "No silent profile or version selection"
+      ],
+      "derivationEntailed": true,
+      "causalSemantics": {
+        "causalSourceEligible": false,
+        "gate": "WP-PSG-005_REQUIRED"
+      },
+      "provenance": "DER-V1-SOC-F07-001",
+      "governance": {
+        "profileStatus": "PRODUCTION_GOVERNED_SOURCE_WRAPPED_FOR_TEST",
+        "namespace": "WP-PSG-001_STAGE_C_NON_PRODUCTION"
+      }
+    },
+    {
+      "derivationProfileId": "TEST-RDS-0006-DIRECTED-OUT-DEGREE",
+      "derivationProfileVersion": "1",
+      "rdsId": "RDS-0006",
+      "definitionVersion": "EXACT_HASH_IN_APPLICATION_BINDING",
+      "profileType": "DERIVATION_PROFILE",
+      "inputContract": [
+        {
+          "name": "nodeDegrees",
+          "role": "MEASUREMENT_INPUTS",
+          "required": true
+        },
+        {
+          "name": "nodeSet",
+          "role": "BOUNDARY_INPUTS",
+          "required": true
+        },
+        {
+          "name": "maximumBenchmark",
+          "role": "REFERENCE_VALUES",
+          "required": true
+        }
+      ],
+      "inputDefinitionVersions": "EXACT_IN_APPLICATION_BINDING",
+      "inputDefinitionHashes": "EXACT_IN_APPLICATION_BINDING",
+      "minimumInputRequirements": [
+        "nodeDegrees",
+        "nodeSet",
+        "maximumBenchmark"
+      ],
+      "constituentMapping": [
+        {
+          "input": "nodeDegrees",
+          "role": "MEASUREMENT_INPUTS"
+        },
+        {
+          "input": "nodeSet",
+          "role": "BOUNDARY_INPUTS"
+        },
+        {
+          "input": "maximumBenchmark",
+          "role": "REFERENCE_VALUES"
+        }
+      ],
+      "requiredContext": [
+        "population",
+        "networkBoundary",
+        "timeWindow",
+        "nodeSet",
+        "tieRelation",
+        "unitOfAnalysis"
+      ],
+      "metricVariant": "FREEMAN_DIRECTED_OUT_DEGREE_CENTRALIZATION",
+      "normalization": "DIRECTED_STAR_MAXIMUM_FOR_BOUND_NODE_SET",
+      "calculationReference": "TEST_ONLY_EXACT_DIRECTED_OUT_DEGREE_FORMULA",
+      "aggregationFunction": "TEST_ONLY_EXACT_DIRECTED_OUT_DEGREE_FORMULA",
+      "missingnessPolicy": "REJECT_MISSING_REQUIRED_INPUTS",
+      "parameterization": "EXACT_IN_PROFILE_OR_BINDING",
+      "outputScale": "NUMBER",
+      "outputInterpretation": "PROFILE_AND_BINDING_SPECIFIC",
+      "scopeLimitations": [
+        "No causal-source authorization",
+        "No silent profile or version selection"
+      ],
+      "derivationEntailed": true,
+      "causalSemantics": {
+        "causalSourceEligible": false,
+        "gate": "WP-PSG-005_REQUIRED"
+      },
+      "provenance": "NON_PRODUCTION_COUNTEREXAMPLE_TO_SINGLE_PROFILE_ASSUMPTION",
+      "governance": {
+        "profileStatus": "TEST_ONLY_NOT_GOVERNED",
+        "namespace": "WP-PSG-001_STAGE_C_NON_PRODUCTION"
+      }
+    },
+    {
+      "derivationProfileId": "TEST-PSY-078-DIFFERENCE",
+      "derivationProfileVersion": "1",
+      "rdsId": "PSY-078",
+      "definitionVersion": "EXACT_HASH_IN_APPLICATION_BINDING",
+      "profileType": "DERIVATION_PROFILE",
+      "inputContract": [
+        {
+          "name": "desiredState",
+          "role": "REFERENCE_VALUES",
+          "required": true
+        },
+        {
+          "name": "perceivedCurrentState",
+          "role": "MEASUREMENT_INPUTS",
+          "required": true
+        }
+      ],
+      "inputDefinitionVersions": "EXACT_IN_APPLICATION_BINDING",
+      "inputDefinitionHashes": "EXACT_IN_APPLICATION_BINDING",
+      "minimumInputRequirements": [
+        "desiredState",
+        "perceivedCurrentState"
+      ],
+      "constituentMapping": [
+        {
+          "input": "desiredState",
+          "role": "REFERENCE_VALUES"
+        },
+        {
+          "input": "perceivedCurrentState",
+          "role": "MEASUREMENT_INPUTS"
+        }
+      ],
+      "requiredContext": [
+        "population",
+        "timeWindow",
+        "unitOfAnalysis"
+      ],
+      "metricVariant": "SIGNED_DIFFERENCE",
+      "normalization": "NONE",
+      "calculationReference": "desiredState - perceivedCurrentState",
+      "aggregationFunction": "desiredState - perceivedCurrentState",
+      "missingnessPolicy": "REJECT_MISSING_REQUIRED_INPUTS",
+      "parameterization": "EXACT_IN_PROFILE_OR_BINDING",
+      "outputScale": "NUMBER",
+      "outputInterpretation": "PROFILE_AND_BINDING_SPECIFIC",
+      "scopeLimitations": [
+        "No causal-source authorization",
+        "No silent profile or version selection"
+      ],
+      "derivationEntailed": true,
+      "causalSemantics": {
+        "causalSourceEligible": false,
+        "gate": "WP-PSG-005_REQUIRED"
+      },
+      "provenance": "PSY-078_CANONICAL_RULE_TEST_ONLY",
+      "governance": {
+        "profileStatus": "TEST_ONLY_NOT_GOVERNED",
+        "namespace": "WP-PSG-001_STAGE_C_NON_PRODUCTION"
+      }
+    },
+    {
+      "derivationProfileId": "TEST-PSY-078-DIFFERENCE",
+      "derivationProfileVersion": "2",
+      "rdsId": "PSY-078",
+      "definitionVersion": "EXACT_HASH_IN_APPLICATION_BINDING",
+      "profileType": "DERIVATION_PROFILE",
+      "inputContract": [
+        {
+          "name": "desiredState",
+          "role": "REFERENCE_VALUES",
+          "required": true
+        },
+        {
+          "name": "perceivedCurrentState",
+          "role": "MEASUREMENT_INPUTS",
+          "required": true
+        }
+      ],
+      "inputDefinitionVersions": "EXACT_IN_APPLICATION_BINDING",
+      "inputDefinitionHashes": "EXACT_IN_APPLICATION_BINDING",
+      "minimumInputRequirements": [
+        "desiredState",
+        "perceivedCurrentState"
+      ],
+      "constituentMapping": [
+        {
+          "input": "desiredState",
+          "role": "REFERENCE_VALUES"
+        },
+        {
+          "input": "perceivedCurrentState",
+          "role": "MEASUREMENT_INPUTS"
+        }
+      ],
+      "requiredContext": [
+        "population",
+        "timeWindow",
+        "unitOfAnalysis"
+      ],
+      "metricVariant": "SIGNED_STANDARDIZED_DIFFERENCE",
+      "normalization": "DECLARED_COMMON_SCALE",
+      "calculationReference": "standardizedDesired - standardizedPerceivedCurrent",
+      "aggregationFunction": "standardizedDesired - standardizedPerceivedCurrent",
+      "missingnessPolicy": "REJECT_MISSING_REQUIRED_INPUTS",
+      "parameterization": "EXACT_IN_PROFILE_OR_BINDING",
+      "outputScale": "NUMBER",
+      "outputInterpretation": "PROFILE_AND_BINDING_SPECIFIC",
+      "scopeLimitations": [
+        "No causal-source authorization",
+        "No silent profile or version selection"
+      ],
+      "derivationEntailed": true,
+      "causalSemantics": {
+        "causalSourceEligible": false,
+        "gate": "WP-PSG-005_REQUIRED"
+      },
+      "provenance": "TEST_ONLY_VERSION_SELECTION_COUNTEREXAMPLE",
+      "governance": {
+        "profileStatus": "TEST_ONLY_NOT_GOVERNED",
+        "namespace": "WP-PSG-001_STAGE_C_NON_PRODUCTION"
+      }
+    },
+    {
+      "derivationProfileId": "TEST-CUL-088-LATENT-DISTANCE",
+      "derivationProfileVersion": "1",
+      "rdsId": "CUL-088",
+      "definitionVersion": "EXACT_HASH_IN_APPLICATION_BINDING",
+      "profileType": "ESTIMATION_PROFILE",
+      "inputContract": [
+        {
+          "name": "generationAIndicators",
+          "role": "MEASUREMENT_INPUTS",
+          "required": true
+        },
+        {
+          "name": "generationBIndicators",
+          "role": "MEASUREMENT_INPUTS",
+          "required": true
+        },
+        {
+          "name": "measurementModel",
+          "role": "PARAMETERS",
+          "required": true
+        }
+      ],
+      "inputDefinitionVersions": "EXACT_IN_APPLICATION_BINDING",
+      "inputDefinitionHashes": "EXACT_IN_APPLICATION_BINDING",
+      "minimumInputRequirements": [
+        "generationAIndicators",
+        "generationBIndicators",
+        "measurementModel"
+      ],
+      "constituentMapping": [
+        {
+          "input": "generationAIndicators",
+          "role": "MEASUREMENT_INPUTS"
+        },
+        {
+          "input": "generationBIndicators",
+          "role": "MEASUREMENT_INPUTS"
+        },
+        {
+          "input": "measurementModel",
+          "role": "PARAMETERS"
+        }
+      ],
+      "requiredContext": [
+        "population",
+        "referencePopulation",
+        "timeWindow",
+        "unitOfAnalysis"
+      ],
+      "metricVariant": "TEST_ONLY_LATENT_COHORT_DISTANCE",
+      "normalization": "TEST_ONLY_INVARIANT_LATENT_SCALE",
+      "calculationReference": "TEST_ONLY_ESTIMATOR_NOT_A_DETERMINISTIC_FORMULA",
+      "aggregationFunction": "TEST_ONLY_ESTIMATOR_NOT_A_DETERMINISTIC_FORMULA",
+      "missingnessPolicy": "REJECT_MISSING_REQUIRED_INPUTS",
+      "parameterization": "EXACT_IN_PROFILE_OR_BINDING",
+      "outputScale": "NUMBER",
+      "outputInterpretation": "PROFILE_AND_BINDING_SPECIFIC",
+      "scopeLimitations": [
+        "No causal-source authorization",
+        "No silent profile or version selection"
+      ],
+      "derivationEntailed": true,
+      "causalSemantics": {
+        "causalSourceEligible": false,
+        "gate": "WP-PSG-005_REQUIRED"
+      },
+      "provenance": "NON_PRODUCTION_FALSE_DETERMINISM_COUNTEREXAMPLE",
+      "governance": {
+        "profileStatus": "TEST_ONLY_NOT_GOVERNED",
+        "namespace": "WP-PSG-001_STAGE_C_NON_PRODUCTION"
+      }
+    }
+  ],
+  "bindings": [
+    {
+      "applicationBindingId": "TEST-BIND-RDS-0006-A",
+      "applicationBindingVersion": "1",
+      "rdsId": "RDS-0006",
+      "rdsDefinitionHash": "1f4deb8927f023179666dfa4a680589c0bad8e16b78ed7e264583295265ff104",
+      "derivationProfileId": "DER-V1-SOC-F07-001",
+      "derivationProfileVersion": "1",
+      "inputDefinitionVersions": {
+        "SOC-049": "ENTITY_V0_3_GOVERNED_RECORD_HASH"
+      },
+      "inputDefinitionHashes": {
+        "SOC-049": "145cc3aee92b29312360970ea347e84a5b11923c54f78ec451ff0e387bd5d742"
+      },
+      "context": {
+        "population": "TEST_NETWORK_POPULATION_A",
+        "networkBoundary": "BOUNDARY-A",
+        "timeWindow": "WINDOW-A",
+        "nodeSet": "NODES-A",
+        "tieRelation": "UNDIRECTED_TIE-A",
+        "unitOfAnalysis": "NETWORK"
+      },
+      "governance": {
+        "namespace": "WP-PSG-001_STAGE_C_NON_PRODUCTION",
+        "status": "TEST_ONLY"
+      }
+    },
+    {
+      "applicationBindingId": "TEST-BIND-RDS-0006-B",
+      "applicationBindingVersion": "1",
+      "rdsId": "RDS-0006",
+      "rdsDefinitionHash": "1f4deb8927f023179666dfa4a680589c0bad8e16b78ed7e264583295265ff104",
+      "derivationProfileId": "DER-V1-SOC-F07-001",
+      "derivationProfileVersion": "1",
+      "inputDefinitionVersions": {
+        "SOC-049": "ENTITY_V0_3_GOVERNED_RECORD_HASH"
+      },
+      "inputDefinitionHashes": {
+        "SOC-049": "145cc3aee92b29312360970ea347e84a5b11923c54f78ec451ff0e387bd5d742"
+      },
+      "context": {
+        "population": "TEST_NETWORK_POPULATION_B",
+        "networkBoundary": "BOUNDARY-B",
+        "timeWindow": "WINDOW-A",
+        "nodeSet": "NODES-B",
+        "tieRelation": "UNDIRECTED_TIE-A",
+        "unitOfAnalysis": "NETWORK"
+      },
+      "governance": {
+        "namespace": "WP-PSG-001_STAGE_C_NON_PRODUCTION",
+        "status": "TEST_ONLY"
+      }
+    },
+    {
+      "applicationBindingId": "TEST-BIND-RDS-0006-DIRECTED",
+      "applicationBindingVersion": "1",
+      "rdsId": "RDS-0006",
+      "rdsDefinitionHash": "1f4deb8927f023179666dfa4a680589c0bad8e16b78ed7e264583295265ff104",
+      "derivationProfileId": "TEST-RDS-0006-DIRECTED-OUT-DEGREE",
+      "derivationProfileVersion": "1",
+      "inputDefinitionVersions": {
+        "SOC-049": "ENTITY_V0_3_GOVERNED_RECORD_HASH"
+      },
+      "inputDefinitionHashes": {
+        "SOC-049": "145cc3aee92b29312360970ea347e84a5b11923c54f78ec451ff0e387bd5d742"
+      },
+      "context": {
+        "population": "TEST_NETWORK_POPULATION_A",
+        "networkBoundary": "BOUNDARY-A",
+        "timeWindow": "WINDOW-A",
+        "nodeSet": "NODES-A",
+        "tieRelation": "DIRECTED_TIE-A",
+        "unitOfAnalysis": "NETWORK"
+      },
+      "governance": {
+        "namespace": "WP-PSG-001_STAGE_C_NON_PRODUCTION",
+        "status": "TEST_ONLY"
+      }
+    },
+    {
+      "applicationBindingId": "TEST-BIND-PSY-078-V1",
+      "applicationBindingVersion": "1",
+      "rdsId": "PSY-078",
+      "rdsDefinitionHash": "db5c6349091b4d531efe30fa12821760d69ecc3ada20c9d77bef42ce62caf20b",
+      "derivationProfileId": "TEST-PSY-078-DIFFERENCE",
+      "derivationProfileVersion": "1",
+      "inputDefinitionVersions": {
+        "DESIRED_OR_REFERENCE_STATE": "1",
+        "PERCEIVED_CURRENT_STATE": "1"
+      },
+      "inputDefinitionHashes": {
+        "DESIRED_OR_REFERENCE_STATE": "TEST-HASH-A",
+        "PERCEIVED_CURRENT_STATE": "TEST-HASH-B"
+      },
+      "context": {
+        "population": "TEST_PERSON",
+        "timeWindow": "TEST_OBSERVATION",
+        "unitOfAnalysis": "INDIVIDUAL"
+      },
+      "governance": {
+        "namespace": "WP-PSG-001_STAGE_C_NON_PRODUCTION",
+        "status": "TEST_ONLY"
+      }
+    },
+    {
+      "applicationBindingId": "TEST-BIND-CUL-088-LATENT",
+      "applicationBindingVersion": "1",
+      "rdsId": "CUL-088",
+      "rdsDefinitionHash": "fe322aa91ea2bf129e596e68cd5d2501f1c7e6a28be10be4506888318ea81df4",
+      "derivationProfileId": "TEST-CUL-088-LATENT-DISTANCE",
+      "derivationProfileVersion": "1",
+      "inputDefinitionVersions": {
+        "GENERATION_A": "TEST-1",
+        "GENERATION_B": "TEST-1",
+        "MODEL": "TEST-1"
+      },
+      "inputDefinitionHashes": {
+        "GENERATION_A": "TEST-HASH-A",
+        "GENERATION_B": "TEST-HASH-B",
+        "MODEL": "TEST-HASH-M"
+      },
+      "context": {
+        "population": "TEST_CULTURAL_COMMUNITY",
+        "referencePopulation": "TEST_COHORT_PAIR",
+        "timeWindow": "TEST_WINDOW",
+        "unitOfAnalysis": "COMMUNITY_COHORT_PAIR"
+      },
+      "governance": {
+        "namespace": "WP-PSG-001_STAGE_C_NON_PRODUCTION",
+        "status": "TEST_ONLY"
+      }
+    }
+  ],
+  "consumerContract": {
+    "required": [
+      "rdsId",
+      "derivationProfileId",
+      "derivationProfileVersion",
+      "applicationBindingId",
+      "applicationBindingVersion"
+    ],
+    "prohibitedResolution": [
+      "LATEST_PROFILE",
+      "DEFAULT_PROFILE",
+      "FIRST_PROFILE",
+      "IMPLICIT_FORMULA"
+    ],
+    "zeroProfileBehavior": "RDS_EXISTS_NON_EXECUTABLE",
+    "multipleProfileBehavior": "EXACT_PROFILE_AND_VERSION_REQUIRED"
+  },
+  "causalFirewall": {
+    "definitionGate": "WP-PSG-001",
+    "causalSourceGate": "WP-PSG-005",
+    "rule": "PROFILE_GOVERNED_NEVER_IMPLIES_CAUSAL_SOURCE_AUTHORIZED",
+    "defaultCausalSourceEligible": false
+  },
+  "existingDerivationCompatibility": {
+    "sourceId": "DER-V1-SOC-F07-001",
+    "strategy": "ADDITIVE_PROFILE_WRAPPER_PRESERVE_ID_AND_LINEAGE",
+    "rewriteRequired": false
+  }
+}
