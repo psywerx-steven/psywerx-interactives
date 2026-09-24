@@ -14,8 +14,8 @@ ANALYSIS_ID = "FINAL-TWO-LAYER-READINESS-2026-09-22-001"
 LAYERS = {"Social": "SOC", "Institutional / Structural": "INS"}
 REPORT = ROOT / "reports/layer-scale-up-v2/final-two-layer-readiness.json"
 DOC = ROOT / "docs/governance/FINAL_TWO_LAYER_READINESS.md"
-STATUS_DOC = ROOT / "docs/governance/LAYER_SCALE_UP_PROGRAM_STATUS.md"
-STATUS_REPORT = ROOT / "reports/layer-scale-up-v2/layer-scale-up-program-status.json"
+STATUS_DOC = ROOT / "docs/governance/FINAL_TWO_LAYER_PROGRAM_STATUS.md"
+STATUS_REPORT = ROOT / "reports/layer-scale-up-v2/final-two-layer-program-status.json"
 
 
 def read(path: Path):
@@ -42,7 +42,7 @@ def build_readiness() -> dict:
 
     inventory = audit_family.inventory()
     entities = {row["id"]: row for row in inventory["entities"]}
-    review_files = sorted((ROOT / "data/candidates/actions-events-v1").glob("*_LAYER/relationship-review-registry.json"))
+    review_files = sorted(path for path in (ROOT / "data/candidates/actions-events-v1").glob("*_LAYER/relationship-review-registry.json") if path.parent.name != "INSTITUTIONAL_STRUCTURAL_LAYER")
     completed_reviews = {path.parent.name: set(read(path)) for path in review_files}
     for row in report["layers"]:
         members = {identifier for identifier, entity in entities.items() if entity["layer"] == row["layer"]}

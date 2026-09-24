@@ -1,0 +1,19 @@
+# Institutional / Structural Layer progress
+
+CONSERVATIVE HUMAN GOVERNANCE COMPLETE. Candidate-only science; new GOVERNED = 0 and ACTIVE = 0.
+
+| Family | Stage |
+|---|---|
+| INS-F01 | COMPLETE |
+| INS-F02 | COMPLETE |
+| INS-F03 | COMPLETE |
+| INS-F04 | COMPLETE |
+| INS-F05 | COMPLETE |
+| INS-F06 | COMPLETE |
+| INS-F07 | COMPLETE |
+| INS-F08 | COMPLETE |
+| INS-F09 | COMPLETE |
+| INS-F10 | COMPLETE |
+| INS-F11 | COMPLETE |
+| INS-F12 | COMPLETE |
+| INS-F13 | COMPLETE |

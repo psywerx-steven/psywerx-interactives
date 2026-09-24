@@ -1,0 +1,680 @@
+{
+  "schemaVersion": "1.0.0",
+  "checkpointId": "LAYER-SCALE-UP-FINAL-COMPLETENESS-2026-09-24-001",
+  "items": [
+    {
+      "id": "BLK-PSY-001",
+      "category": "A_RDS_DEFINITION_DERIVATION",
+      "layer": "Psychological",
+      "affectedRecords": [
+        "PSY relational derived-state route"
+      ],
+      "scientificProblem": "The target construct and derivation are not exact enough for governed causal use.",
+      "architectureProblem": "Current target semantics cannot safely carry the proposed effect.",
+      "currentSafeState": "Preserve governed records and blocker; no new causal use.",
+      "consequenceOfLeavingUnresolved": "The affected route remains unavailable to active consumers.",
+      "blocksActiveExecution": true,
+      "recommendedFutureWorkType": "DEDICATED_RDS_AND_TARGET_GOVERNANCE"
+    },
+    {
+      "id": "BLK-PSY-002",
+      "category": "F_CONSTRUCT_CLASSIFICATION_ONTOLOGY",
+      "layer": "Psychological",
+      "affectedRecords": [
+        "PSY construct-classification route"
+      ],
+      "scientificProblem": "A candidate cannot be classified without changing its scientific meaning.",
+      "architectureProblem": "A classification decision would alter ontology semantics.",
+      "currentSafeState": "Leave the candidate blocked and production unchanged.",
+      "consequenceOfLeavingUnresolved": "One candidate route remains unavailable.",
+      "blocksActiveExecution": true,
+      "recommendedFutureWorkType": "ONTOLOGY_GOVERNANCE"
+    },
+    {
+      "id": "BLK-PSY-003",
+      "category": "D_NETWORK_STATE_OR_CONTRIBUTION_REPRESENTATION",
+      "layer": "Psychological",
+      "affectedRecords": [
+        "REL-V1-PSY-LAYER-001",
+        "EA-V1-PSY-LAYER-001",
+        "CONTRIB-PSY-LAYER-REPETITION-001"
+      ],
+      "scientificProblem": "Relationship and EffectAssertion encode one repetition contribution.",
+      "architectureProblem": "Active contribution deduplication is not defined.",
+      "currentSafeState": "Keep both representations inactive and preserve shared lineage.",
+      "consequenceOfLeavingUnresolved": "The repetition contribution cannot activate safely.",
+      "blocksActiveExecution": true,
+      "recommendedFutureWorkType": "CONTRIBUTION_DEDUP_ARCHITECTURE"
+    },
+    {
+      "id": "HYP-INF-F03-H20",
+      "category": "F_CONSTRUCT_CLASSIFICATION_ONTOLOGY",
+      "layer": "Informational",
+      "affectedRecords": [
+        "INF-013",
+        "INF-077"
+      ],
+      "scientificProblem": "Conceptual and surface-definition overlap cannot be resolved by selecting one measure.",
+      "architectureProblem": "No governed identity, merge or feature-scope rule resolves the boundary.",
+      "currentSafeState": "Preserve both definitions and blocked metadata.",
+      "consequenceOfLeavingUnresolved": "Dependent candidates remain research-needed or blocked.",
+      "blocksActiveExecution": true,
+      "recommendedFutureWorkType": "CONSTRUCT_BOUNDARY_GOVERNANCE"
+    },
+    {
+      "id": "ARCH-INF-LAYER-0001",
+      "category": "A_RDS_DEFINITION_DERIVATION",
+      "layer": "Informational",
+      "affectedRecords": [
+        "7 Informational RDS"
+      ],
+      "scientificProblem": "Portable derivations and constituent overlap remain incomplete for broader causal use.",
+      "architectureProblem": "RDS causal-source semantics require dedicated review.",
+      "currentSafeState": "No new RDS target, source authorization or Network State binding.",
+      "consequenceOfLeavingUnresolved": "Aggregate routes remain conservative and inactive.",
+      "blocksActiveExecution": true,
+      "recommendedFutureWorkType": "RDS_ARCHITECTURE_REVIEW"
+    },
+    {
+      "id": "META-INF-LAYER-0001",
+      "category": "G_SOURCE_GOVERNANCE",
+      "layer": "Informational",
+      "affectedRecords": [
+        "11 INF-F03 source-queue rows"
+      ],
+      "scientificProblem": "Candidate provenance includes unresolved work/version and source-identity rows.",
+      "architectureProblem": "Canonical registration contract is not satisfied for every row.",
+      "currentSafeState": "Keep the queue candidate-only and truthful.",
+      "consequenceOfLeavingUnresolved": "Some deferred candidates lack canonical provenance.",
+      "blocksActiveExecution": false,
+      "recommendedFutureWorkType": "SOURCE_IDENTITY_RESOLUTION"
+    },
+    {
+      "id": "BLK-BIO-RDS-001",
+      "category": "A_RDS_DEFINITION_DERIVATION",
+      "layer": "Biological",
+      "affectedRecords": [
+        "BIO-F01 five RDS",
+        "BIO-003"
+      ],
+      "scientificProblem": "Exact versioned calculation and aggregation definitions are insufficient, especially for BIO-003 constituent overlap.",
+      "architectureProblem": "Current RDS architecture cannot establish independent causal-source use.",
+      "currentSafeState": "Keep RDS definitions and causal-source semantics unchanged.",
+      "consequenceOfLeavingUnresolved": "Broader Biological RDS execution remains blocked.",
+      "blocksActiveExecution": true,
+      "recommendedFutureWorkType": "RDS_DERIVATION_GOVERNANCE"
+    },
+    {
+      "id": "ASTRA-BIO-LAYER-001",
+      "category": "B_RDS_CAUSAL_SOURCE_INDEPENDENCE",
+      "layer": "Biological",
+      "affectedRecords": [
+        "BIO-003 outgoing route"
+      ],
+      "scientificProblem": "It is unresolved whether the source is independent of sleep-duration constituents.",
+      "architectureProblem": "Aggregate contribution control is undefined.",
+      "currentSafeState": "No new causal authorization.",
+      "consequenceOfLeavingUnresolved": "Potential double counting remains avoided by deferral.",
+      "blocksActiveExecution": true,
+      "recommendedFutureWorkType": "CAUSAL_SOURCE_ADJUDICATION"
+    },
+    {
+      "id": "BLK-CUL-RDS-001",
+      "category": "A_RDS_DEFINITION_DERIVATION",
+      "layer": "Cultural",
+      "affectedRecords": [
+        "CUL-088",
+        "REL-CUL-042",
+        "CUL-061"
+      ],
+      "scientificProblem": "Generational Cultural Distance lacks a governed metric, aggregation and reference window.",
+      "architectureProblem": "RDS causal-source architecture is not versioned for this route.",
+      "currentSafeState": "Keep REL-CUL-042 unchanged and the review disposition blocked.",
+      "consequenceOfLeavingUnresolved": "The distance route cannot support new active execution.",
+      "blocksActiveExecution": true,
+      "recommendedFutureWorkType": "RDS_METRIC_GOVERNANCE"
+    },
+    {
+      "id": "ASTRA-CUL-LAYER-001",
+      "category": "B_RDS_CAUSAL_SOURCE_INDEPENDENCE",
+      "layer": "Cultural",
+      "affectedRecords": [
+        "CUL-088",
+        "REL-CUL-042"
+      ],
+      "scientificProblem": "Aggregate distance may share constituents with its target or contextual inputs.",
+      "architectureProblem": "Independent aggregate causal semantics are unresolved.",
+      "currentSafeState": "No causal-source authorization.",
+      "consequenceOfLeavingUnresolved": "Possible contextual effects remain unavailable.",
+      "blocksActiveExecution": true,
+      "recommendedFutureWorkType": "AGGREGATE_CAUSAL_REVIEW"
+    },
+    {
+      "id": "BLK-ENV-ACTIVATION-001",
+      "category": "E_MECHANISMSTATUS_ACTIVATION_CONTRACT",
+      "layer": "Physical / Environmental",
+      "affectedRecords": [
+        "EVA-AE-V1-ENV-LAYER-001",
+        "HT-V1-ENV-LAYER-001",
+        "EA-V1-ENV-LAYER-001"
+      ],
+      "scientificProblem": "The bounded natural-walk effect is supported, but the multisensory package does not identify a component mechanism.",
+      "architectureProblem": "ACTIVE EffectAssertions currently require mechanismStatus other than UNKNOWN.",
+      "currentSafeState": "Preserve the governed bundle inactive and mechanismStatus UNKNOWN.",
+      "consequenceOfLeavingUnresolved": "The bounded bundle cannot activate under the current contract.",
+      "blocksActiveExecution": true,
+      "recommendedFutureWorkType": "ACTIVATION_LIFECYCLE_GOVERNANCE"
+    },
+    {
+      "id": "BLK-TEC-ACTIVATION-001",
+      "category": "E_MECHANISMSTATUS_ACTIVATION_CONTRACT",
+      "layer": "Technological",
+      "affectedRecords": [
+        "EVA-AE-V1-TEC-LAYER-001",
+        "HT-V1-TEC-LAYER-001",
+        "EA-V1-TEC-LAYER-001"
+      ],
+      "scientificProblem": "The bounded AI-label effect does not identify a sufficiently exact mechanism across media and interface boundaries.",
+      "architectureProblem": "ACTIVE EffectAssertions require a non-UNKNOWN mechanismStatus.",
+      "currentSafeState": "Preserve the governed bundle inactive and scientific qualifiers intact.",
+      "consequenceOfLeavingUnresolved": "The Tech bundle cannot activate under the current contract.",
+      "blocksActiveExecution": true,
+      "recommendedFutureWorkType": "ACTIVATION_LIFECYCLE_GOVERNANCE"
+    },
+    {
+      "id": "BLK-TEC-METADATA-001",
+      "category": "F_CONSTRUCT_CLASSIFICATION_ONTOLOGY",
+      "layer": "Technological",
+      "affectedRecords": [
+        "TEC-097",
+        "TEC-098",
+        "TEC-099"
+      ],
+      "scientificProblem": "Blocked scientific metadata remains unresolved.",
+      "architectureProblem": "Repair could imply an unauthorized construct or architecture decision.",
+      "currentSafeState": "Preserve blocked fields.",
+      "consequenceOfLeavingUnresolved": "Dependent candidates remain unavailable.",
+      "blocksActiveExecution": true,
+      "recommendedFutureWorkType": "METADATA_AND_ONTOLOGY_GOVERNANCE"
+    },
+    {
+      "id": "HYP-SOC-F07-H12",
+      "category": "D_NETWORK_STATE_OR_CONTRIBUTION_REPRESENTATION",
+      "layer": "Social",
+      "affectedRecords": [
+        "network adjacency",
+        "degree RDS"
+      ],
+      "scientificProblem": "Network rewiring changes adjacency and derived metrics but does not prove an empirical causal effect.",
+      "architectureProblem": "No complete canonical adjacency-state Driver target exists.",
+      "currentSafeState": "Use ScenarioStateDelta plus recalculation only.",
+      "consequenceOfLeavingUnresolved": "The proposed causal effect remains blocked.",
+      "blocksActiveExecution": true,
+      "recommendedFutureWorkType": "NETWORK_STATE_ARCHITECTURE"
+    },
+    {
+      "id": "HYP-SOC-F07-H20",
+      "category": "D_NETWORK_STATE_OR_CONTRIBUTION_REPRESENTATION",
+      "layer": "Social",
+      "affectedRecords": [
+        "node deletion",
+        "fragmentation RDS"
+      ],
+      "scientificProblem": "Node deletion changes state and recalculates fragmentation.",
+      "architectureProblem": "No ordinary Driver represents the node/boundary transformation.",
+      "currentSafeState": "Preserve blocked derivation metadata and recalculation-only semantics.",
+      "consequenceOfLeavingUnresolved": "The proposed causal effect remains blocked.",
+      "blocksActiveExecution": true,
+      "recommendedFutureWorkType": "NETWORK_STATE_ARCHITECTURE"
+    },
+    {
+      "id": "ASTRA-SOC-LAYER-001",
+      "category": "B_RDS_CAUSAL_SOURCE_INDEPENDENCE",
+      "layer": "Social",
+      "affectedRecords": [
+        "10 Social RDS causal sources"
+      ],
+      "scientificProblem": "Independent aggregate mechanisms and constituent double counting remain unresolved.",
+      "architectureProblem": "Current RDS source semantics do not encode contribution independence.",
+      "currentSafeState": "Keep advisory dispositions and production unchanged.",
+      "consequenceOfLeavingUnresolved": "Ten aggregate-source routes need dedicated review before broader use.",
+      "blocksActiveExecution": true,
+      "recommendedFutureWorkType": "RDS_CAUSAL_SOURCE_PROGRAM"
+    },
+    {
+      "id": "ASTRA-SOC-LAYER-002",
+      "category": "C_CROSS_LEVEL_GROUP_PERSON_CAUSALITY",
+      "layer": "Social",
+      "affectedRecords": [
+        "group-to-person Relationships"
+      ],
+      "scientificProblem": "Group states do not automatically expose individual actors.",
+      "architectureProblem": "No generic exposure mapping bridges group and person levels.",
+      "currentSafeState": "Keep affected edges research-needed or review-only.",
+      "consequenceOfLeavingUnresolved": "Cross-level active execution remains scientifically constrained.",
+      "blocksActiveExecution": true,
+      "recommendedFutureWorkType": "CROSS_LEVEL_EXPOSURE_ARCHITECTURE"
+    },
+    {
+      "id": "ASTRA-SOC-LAYER-003",
+      "category": "D_NETWORK_STATE_OR_CONTRIBUTION_REPRESENTATION",
+      "layer": "Social",
+      "affectedRecords": [
+        "HYP-SOC-F07-H12",
+        "HYP-SOC-F07-H20",
+        "DER-V1-SOC-F07-001"
+      ],
+      "scientificProblem": "Adjacency and membership operations mix empirical interventions, state changes and metric recalculation.",
+      "architectureProblem": "A future cross-level state object may be needed.",
+      "currentSafeState": "Preserve the governed derivation inactive and recalculation-only.",
+      "consequenceOfLeavingUnresolved": "Some network operations cannot be represented as causal Effects.",
+      "blocksActiveExecution": true,
+      "recommendedFutureWorkType": "NETWORK_STATE_R_AND_D"
+    },
+    {
+      "id": "SRC-CAND-SOC-F07-010",
+      "category": "G_SOURCE_GOVERNANCE",
+      "layer": "Social",
+      "affectedRecords": [
+        "HT-CAND-SOC-F07-008"
+      ],
+      "scientificProblem": "A verified non-PubMed source binding lacks a satisfied canonical registration route.",
+      "architectureProblem": "The source contract must preserve truthful non-PubMed provenance.",
+      "currentSafeState": "Keep the candidate source queue intact.",
+      "consequenceOfLeavingUnresolved": "One candidate identity remains provenance-constrained.",
+      "blocksActiveExecution": false,
+      "recommendedFutureWorkType": "NON_PUBMED_SOURCE_REGISTRATION"
+    },
+    {
+      "id": "BLK-INS-METADATA-001",
+      "category": "F_CONSTRUCT_CLASSIFICATION_ONTOLOGY",
+      "layer": "Institutional / Structural",
+      "affectedRecords": [
+        "INS-115",
+        "INS-116"
+      ],
+      "scientificProblem": "Scientific mechanism, time, observability, evidence and source fields remain blocked.",
+      "architectureProblem": "Repair would require separate scientific governance.",
+      "currentSafeState": "Keep both Drivers blocked and terminate dependent routes conservatively.",
+      "consequenceOfLeavingUnresolved": "No current incident edge is lost, but future materialization is blocked.",
+      "blocksActiveExecution": true,
+      "recommendedFutureWorkType": "DRIVER_METADATA_GOVERNANCE"
+    },
+    {
+      "id": "BLK-INS-RDS-001",
+      "category": "A_RDS_DEFINITION_DERIVATION",
+      "layer": "Institutional / Structural",
+      "affectedRecords": [
+        "INS-039",
+        "INS-103",
+        "REL-INS-017",
+        "REL-INS-036"
+      ],
+      "scientificProblem": "The two causal-source RDS lack exact versioned inputs, aggregation and independent aggregate mechanisms.",
+      "architectureProblem": "Current architecture cannot control constituent overlap safely.",
+      "currentSafeState": "No new RDS definition, retype or causal-source authorization.",
+      "consequenceOfLeavingUnresolved": "Both aggregate-source routes remain blocked for future active use.",
+      "blocksActiveExecution": true,
+      "recommendedFutureWorkType": "RDS_DERIVATION_AND_CAUSAL_GOVERNANCE"
+    },
+    {
+      "id": "ASTRA-INS-LAYER-001",
+      "category": "B_RDS_CAUSAL_SOURCE_INDEPENDENCE",
+      "layer": "Institutional / Structural",
+      "affectedRecords": [
+        "INS-039",
+        "REL-INS-017",
+        "INS-063"
+      ],
+      "scientificProblem": "Caseload Pressure may summarize workload/staffing constituents that also define or cause capacity.",
+      "architectureProblem": "Independent aggregate contribution is unresolved.",
+      "currentSafeState": "Keep the edge unchanged and advisory review blocked.",
+      "consequenceOfLeavingUnresolved": "Potential double counting remains avoided by deferral.",
+      "blocksActiveExecution": true,
+      "recommendedFutureWorkType": "AGGREGATE_CAUSAL_ADJUDICATION"
+    },
+    {
+      "id": "ASTRA-INS-LAYER-002",
+      "category": "B_RDS_CAUSAL_SOURCE_INDEPENDENCE",
+      "layer": "Institutional / Structural",
+      "affectedRecords": [
+        "INS-103",
+        "REL-INS-036",
+        "INS-107"
+      ],
+      "scientificProblem": "Staffing Adequacy is a ratio whose independent effect on territorial reach is not established.",
+      "architectureProblem": "Ratio constituents, unit and temporal order are not bound.",
+      "currentSafeState": "Keep production unchanged and block new authorization.",
+      "consequenceOfLeavingUnresolved": "The route cannot be broadened or numerically executed.",
+      "blocksActiveExecution": true,
+      "recommendedFutureWorkType": "AGGREGATE_CAUSAL_ADJUDICATION"
+    },
+    {
+      "id": "ASTRA-INS-LAYER-003",
+      "category": "C_CROSS_LEVEL_GROUP_PERSON_CAUSALITY",
+      "layer": "Institutional / Structural",
+      "affectedRecords": [
+        "20 Institutional cross-Layer causal propositions"
+      ],
+      "scientificProblem": "Institution-level policies and procedures need explicit implementation and exposure routes before targeting person-level states.",
+      "architectureProblem": "Current metadata lacks a generic cross-level bridge.",
+      "currentSafeState": "Reuse prior conservative reviews; no new bridge or edge.",
+      "consequenceOfLeavingUnresolved": "Cross-level claims remain limited to existing governed scope.",
+      "blocksActiveExecution": true,
+      "recommendedFutureWorkType": "CROSS_LEVEL_EXPOSURE_ARCHITECTURE"
+    },
+    {
+      "id": "BACKLOG-REL-PSYCHOLOGICAL_LAYER",
+      "category": "H_PRODUCTION_RELATIONSHIP_REVIEW_PROPOSALS",
+      "layer": "Psychological",
+      "affectedRecords": [
+        "57 revision",
+        "5 retype",
+        "2 split"
+      ],
+      "scientificProblem": "Full-Layer review found bounded revision, retype or split proposals that remain advisory.",
+      "architectureProblem": "No architecture change is implied until each proposition is separately governed.",
+      "currentSafeState": "Keep every production Relationship unchanged.",
+      "consequenceOfLeavingUnresolved": "Known semantic debt remains visible without destabilizing production.",
+      "blocksActiveExecution": false,
+      "recommendedFutureWorkType": "RELATIONSHIP_PROPOSITION_GOVERNANCE"
+    },
+    {
+      "id": "BACKLOG-RN-PSYCHOLOGICAL_LAYER",
+      "category": "I_CANDIDATE_SCIENCE_RESEARCH_NEEDED",
+      "layer": "Psychological",
+      "affectedRecords": [
+        "36 existing Relationship reviews plus Layer candidate routes"
+      ],
+      "scientificProblem": "Exact causal identification, target alignment, scope or evidence remains insufficient.",
+      "architectureProblem": "No architecture decision is required merely to retain research-needed status.",
+      "currentSafeState": "Keep candidate and advisory records non-governed or inactive as recorded.",
+      "consequenceOfLeavingUnresolved": "Potential science remains unavailable for new production use.",
+      "blocksActiveExecution": false,
+      "recommendedFutureWorkType": "TARGETED_EVIDENCE_RESEARCH"
+    },
+    {
+      "id": "BACKLOG-REL-INFORMATIONAL_LAYER",
+      "category": "H_PRODUCTION_RELATIONSHIP_REVIEW_PROPOSALS",
+      "layer": "Informational",
+      "affectedRecords": [
+        "12 revision",
+        "18 retype",
+        "0 split"
+      ],
+      "scientificProblem": "Full-Layer review found bounded revision, retype or split proposals that remain advisory.",
+      "architectureProblem": "No architecture change is implied until each proposition is separately governed.",
+      "currentSafeState": "Keep every production Relationship unchanged.",
+      "consequenceOfLeavingUnresolved": "Known semantic debt remains visible without destabilizing production.",
+      "blocksActiveExecution": false,
+      "recommendedFutureWorkType": "RELATIONSHIP_PROPOSITION_GOVERNANCE"
+    },
+    {
+      "id": "BACKLOG-RN-INFORMATIONAL_LAYER",
+      "category": "I_CANDIDATE_SCIENCE_RESEARCH_NEEDED",
+      "layer": "Informational",
+      "affectedRecords": [
+        "16 existing Relationship reviews plus Layer candidate routes"
+      ],
+      "scientificProblem": "Exact causal identification, target alignment, scope or evidence remains insufficient.",
+      "architectureProblem": "No architecture decision is required merely to retain research-needed status.",
+      "currentSafeState": "Keep candidate and advisory records non-governed or inactive as recorded.",
+      "consequenceOfLeavingUnresolved": "Potential science remains unavailable for new production use.",
+      "blocksActiveExecution": false,
+      "recommendedFutureWorkType": "TARGETED_EVIDENCE_RESEARCH"
+    },
+    {
+      "id": "BACKLOG-REL-BIOLOGICAL_LAYER",
+      "category": "H_PRODUCTION_RELATIONSHIP_REVIEW_PROPOSALS",
+      "layer": "Biological",
+      "affectedRecords": [
+        "5 revision",
+        "0 retype",
+        "0 split"
+      ],
+      "scientificProblem": "Full-Layer review found bounded revision, retype or split proposals that remain advisory.",
+      "architectureProblem": "No architecture change is implied until each proposition is separately governed.",
+      "currentSafeState": "Keep every production Relationship unchanged.",
+      "consequenceOfLeavingUnresolved": "Known semantic debt remains visible without destabilizing production.",
+      "blocksActiveExecution": false,
+      "recommendedFutureWorkType": "RELATIONSHIP_PROPOSITION_GOVERNANCE"
+    },
+    {
+      "id": "BACKLOG-RN-BIOLOGICAL_LAYER",
+      "category": "I_CANDIDATE_SCIENCE_RESEARCH_NEEDED",
+      "layer": "Biological",
+      "affectedRecords": [
+        "14 existing Relationship reviews plus Layer candidate routes"
+      ],
+      "scientificProblem": "Exact causal identification, target alignment, scope or evidence remains insufficient.",
+      "architectureProblem": "No architecture decision is required merely to retain research-needed status.",
+      "currentSafeState": "Keep candidate and advisory records non-governed or inactive as recorded.",
+      "consequenceOfLeavingUnresolved": "Potential science remains unavailable for new production use.",
+      "blocksActiveExecution": false,
+      "recommendedFutureWorkType": "TARGETED_EVIDENCE_RESEARCH"
+    },
+    {
+      "id": "BACKLOG-REL-CULTURAL_LAYER",
+      "category": "H_PRODUCTION_RELATIONSHIP_REVIEW_PROPOSALS",
+      "layer": "Cultural",
+      "affectedRecords": [
+        "6 revision",
+        "5 retype",
+        "0 split"
+      ],
+      "scientificProblem": "Full-Layer review found bounded revision, retype or split proposals that remain advisory.",
+      "architectureProblem": "No architecture change is implied until each proposition is separately governed.",
+      "currentSafeState": "Keep every production Relationship unchanged.",
+      "consequenceOfLeavingUnresolved": "Known semantic debt remains visible without destabilizing production.",
+      "blocksActiveExecution": false,
+      "recommendedFutureWorkType": "RELATIONSHIP_PROPOSITION_GOVERNANCE"
+    },
+    {
+      "id": "BACKLOG-RN-CULTURAL_LAYER",
+      "category": "I_CANDIDATE_SCIENCE_RESEARCH_NEEDED",
+      "layer": "Cultural",
+      "affectedRecords": [
+        "36 existing Relationship reviews plus Layer candidate routes"
+      ],
+      "scientificProblem": "Exact causal identification, target alignment, scope or evidence remains insufficient.",
+      "architectureProblem": "No architecture decision is required merely to retain research-needed status.",
+      "currentSafeState": "Keep candidate and advisory records non-governed or inactive as recorded.",
+      "consequenceOfLeavingUnresolved": "Potential science remains unavailable for new production use.",
+      "blocksActiveExecution": false,
+      "recommendedFutureWorkType": "TARGETED_EVIDENCE_RESEARCH"
+    },
+    {
+      "id": "BACKLOG-REL-PHYSICAL_ENVIRONMENTAL_LAYER",
+      "category": "H_PRODUCTION_RELATIONSHIP_REVIEW_PROPOSALS",
+      "layer": "Physical / Environmental",
+      "affectedRecords": [
+        "2 revision",
+        "4 retype",
+        "0 split"
+      ],
+      "scientificProblem": "Full-Layer review found bounded revision, retype or split proposals that remain advisory.",
+      "architectureProblem": "No architecture change is implied until each proposition is separately governed.",
+      "currentSafeState": "Keep every production Relationship unchanged.",
+      "consequenceOfLeavingUnresolved": "Known semantic debt remains visible without destabilizing production.",
+      "blocksActiveExecution": false,
+      "recommendedFutureWorkType": "RELATIONSHIP_PROPOSITION_GOVERNANCE"
+    },
+    {
+      "id": "BACKLOG-RN-PHYSICAL_ENVIRONMENTAL_LAYER",
+      "category": "I_CANDIDATE_SCIENCE_RESEARCH_NEEDED",
+      "layer": "Physical / Environmental",
+      "affectedRecords": [
+        "9 existing Relationship reviews plus Layer candidate routes"
+      ],
+      "scientificProblem": "Exact causal identification, target alignment, scope or evidence remains insufficient.",
+      "architectureProblem": "No architecture decision is required merely to retain research-needed status.",
+      "currentSafeState": "Keep candidate and advisory records non-governed or inactive as recorded.",
+      "consequenceOfLeavingUnresolved": "Potential science remains unavailable for new production use.",
+      "blocksActiveExecution": false,
+      "recommendedFutureWorkType": "TARGETED_EVIDENCE_RESEARCH"
+    },
+    {
+      "id": "BACKLOG-REL-TECHNOLOGICAL_LAYER",
+      "category": "H_PRODUCTION_RELATIONSHIP_REVIEW_PROPOSALS",
+      "layer": "Technological",
+      "affectedRecords": [
+        "3 revision",
+        "31 retype",
+        "0 split"
+      ],
+      "scientificProblem": "Full-Layer review found bounded revision, retype or split proposals that remain advisory.",
+      "architectureProblem": "No architecture change is implied until each proposition is separately governed.",
+      "currentSafeState": "Keep every production Relationship unchanged.",
+      "consequenceOfLeavingUnresolved": "Known semantic debt remains visible without destabilizing production.",
+      "blocksActiveExecution": false,
+      "recommendedFutureWorkType": "RELATIONSHIP_PROPOSITION_GOVERNANCE"
+    },
+    {
+      "id": "BACKLOG-RN-TECHNOLOGICAL_LAYER",
+      "category": "I_CANDIDATE_SCIENCE_RESEARCH_NEEDED",
+      "layer": "Technological",
+      "affectedRecords": [
+        "22 existing Relationship reviews plus Layer candidate routes"
+      ],
+      "scientificProblem": "Exact causal identification, target alignment, scope or evidence remains insufficient.",
+      "architectureProblem": "No architecture decision is required merely to retain research-needed status.",
+      "currentSafeState": "Keep candidate and advisory records non-governed or inactive as recorded.",
+      "consequenceOfLeavingUnresolved": "Potential science remains unavailable for new production use.",
+      "blocksActiveExecution": false,
+      "recommendedFutureWorkType": "TARGETED_EVIDENCE_RESEARCH"
+    },
+    {
+      "id": "BACKLOG-REL-SOCIAL_LAYER",
+      "category": "H_PRODUCTION_RELATIONSHIP_REVIEW_PROPOSALS",
+      "layer": "Social",
+      "affectedRecords": [
+        "7 revision",
+        "4 retype",
+        "0 split"
+      ],
+      "scientificProblem": "Full-Layer review found bounded revision, retype or split proposals that remain advisory.",
+      "architectureProblem": "No architecture change is implied until each proposition is separately governed.",
+      "currentSafeState": "Keep every production Relationship unchanged.",
+      "consequenceOfLeavingUnresolved": "Known semantic debt remains visible without destabilizing production.",
+      "blocksActiveExecution": false,
+      "recommendedFutureWorkType": "RELATIONSHIP_PROPOSITION_GOVERNANCE"
+    },
+    {
+      "id": "BACKLOG-RN-SOCIAL_LAYER",
+      "category": "I_CANDIDATE_SCIENCE_RESEARCH_NEEDED",
+      "layer": "Social",
+      "affectedRecords": [
+        "30 existing Relationship reviews plus Layer candidate routes"
+      ],
+      "scientificProblem": "Exact causal identification, target alignment, scope or evidence remains insufficient.",
+      "architectureProblem": "No architecture decision is required merely to retain research-needed status.",
+      "currentSafeState": "Keep candidate and advisory records non-governed or inactive as recorded.",
+      "consequenceOfLeavingUnresolved": "Potential science remains unavailable for new production use.",
+      "blocksActiveExecution": false,
+      "recommendedFutureWorkType": "TARGETED_EVIDENCE_RESEARCH"
+    },
+    {
+      "id": "BACKLOG-REL-INSTITUTIONAL_STRUCTURAL_LAYER",
+      "category": "H_PRODUCTION_RELATIONSHIP_REVIEW_PROPOSALS",
+      "layer": "Institutional / Structural",
+      "affectedRecords": [
+        "8 revision",
+        "3 retype",
+        "0 split"
+      ],
+      "scientificProblem": "Full-Layer review found bounded revision, retype or split proposals that remain advisory.",
+      "architectureProblem": "No architecture change is implied until each proposition is separately governed.",
+      "currentSafeState": "Keep every production Relationship unchanged.",
+      "consequenceOfLeavingUnresolved": "Known semantic debt remains visible without destabilizing production.",
+      "blocksActiveExecution": false,
+      "recommendedFutureWorkType": "RELATIONSHIP_PROPOSITION_GOVERNANCE"
+    },
+    {
+      "id": "BACKLOG-RN-INSTITUTIONAL_STRUCTURAL_LAYER",
+      "category": "I_CANDIDATE_SCIENCE_RESEARCH_NEEDED",
+      "layer": "Institutional / Structural",
+      "affectedRecords": [
+        "26 existing Relationship reviews plus Layer candidate routes"
+      ],
+      "scientificProblem": "Exact causal identification, target alignment, scope or evidence remains insufficient.",
+      "architectureProblem": "No architecture decision is required merely to retain research-needed status.",
+      "currentSafeState": "Keep candidate and advisory records non-governed or inactive as recorded.",
+      "consequenceOfLeavingUnresolved": "Potential science remains unavailable for new production use.",
+      "blocksActiveExecution": false,
+      "recommendedFutureWorkType": "TARGETED_EVIDENCE_RESEARCH"
+    },
+    {
+      "id": "INACTIVE-BIO-IDENTITY-001",
+      "category": "J_INACTIVE_GOVERNED_BUNDLES",
+      "layer": "Biological",
+      "affectedRecords": [
+        "HT-V1-BIO-LAYER-001"
+      ],
+      "scientificProblem": "A coherent caffeine-cessation identity has no governed eligible effect.",
+      "architectureProblem": "No independent active meaning is required.",
+      "currentSafeState": "GOVERNED / INACTIVE; KEEP_INACTIVE.",
+      "consequenceOfLeavingUnresolved": "Identity remains reusable for future evidence work.",
+      "blocksActiveExecution": false,
+      "recommendedFutureWorkType": "EFFECT_EVIDENCE_RESEARCH"
+    },
+    {
+      "id": "INACTIVE-INF-IDENTITY-001",
+      "category": "J_INACTIVE_GOVERNED_BUNDLES",
+      "layer": "Informational",
+      "affectedRecords": [
+        "HT-V1-INF-LAYER-001"
+      ],
+      "scientificProblem": "A reference-group prevalence-display identity has no governed eligible effect.",
+      "architectureProblem": "No independent active meaning is required.",
+      "currentSafeState": "GOVERNED / INACTIVE; KEEP_INACTIVE.",
+      "consequenceOfLeavingUnresolved": "Identity remains reusable for future evidence work.",
+      "blocksActiveExecution": false,
+      "recommendedFutureWorkType": "EFFECT_EVIDENCE_RESEARCH"
+    },
+    {
+      "id": "INACTIVE-ENV-BUNDLE-001",
+      "category": "J_INACTIVE_GOVERNED_BUNDLES",
+      "layer": "Physical / Environmental",
+      "affectedRecords": [
+        "EVA-AE-V1-ENV-LAYER-001",
+        "HT-V1-ENV-LAYER-001",
+        "EA-V1-ENV-LAYER-001"
+      ],
+      "scientificProblem": "Bounded evidence/effect bundle remains scientifically valid but activation-blocked.",
+      "architectureProblem": "See BLK-ENV-ACTIVATION-001.",
+      "currentSafeState": "GOVERNED / INACTIVE.",
+      "consequenceOfLeavingUnresolved": "No active production participation.",
+      "blocksActiveExecution": true,
+      "recommendedFutureWorkType": "ACTIVATION_CONTRACT_GOVERNANCE"
+    },
+    {
+      "id": "INACTIVE-TEC-BUNDLE-001",
+      "category": "J_INACTIVE_GOVERNED_BUNDLES",
+      "layer": "Technological",
+      "affectedRecords": [
+        "EVA-AE-V1-TEC-LAYER-001",
+        "HT-V1-TEC-LAYER-001",
+        "EA-V1-TEC-LAYER-001"
+      ],
+      "scientificProblem": "Bounded evidence/effect bundle remains scientifically valid but activation-blocked.",
+      "architectureProblem": "See BLK-TEC-ACTIVATION-001.",
+      "currentSafeState": "GOVERNED / INACTIVE.",
+      "consequenceOfLeavingUnresolved": "No active production participation.",
+      "blocksActiveExecution": true,
+      "recommendedFutureWorkType": "ACTIVATION_CONTRACT_GOVERNANCE"
+    }
+  ],
+  "countsByCategory": {
+    "A_RDS_DEFINITION_DERIVATION": 5,
+    "B_RDS_CAUSAL_SOURCE_INDEPENDENCE": 5,
+    "C_CROSS_LEVEL_GROUP_PERSON_CAUSALITY": 2,
+    "D_NETWORK_STATE_OR_CONTRIBUTION_REPRESENTATION": 4,
+    "E_MECHANISMSTATUS_ACTIVATION_CONTRACT": 2,
+    "F_CONSTRUCT_CLASSIFICATION_ONTOLOGY": 4,
+    "G_SOURCE_GOVERNANCE": 2,
+    "H_PRODUCTION_RELATIONSHIP_REVIEW_PROPOSALS": 8,
+    "I_CANDIDATE_SCIENCE_RESEARCH_NEEDED": 8,
+    "J_INACTIVE_GOVERNED_BUNDLES": 4
+  },
+  "blockingActiveExecutionCount": 24
+}
