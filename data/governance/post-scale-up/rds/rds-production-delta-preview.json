@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "1.0.0-PROTOTYPE",
+  "decisionPacketId": "DP-PSG-001-IMPLEMENTATION",
+  "status": "HUMAN_GOVERNANCE_REQUIRED",
+  "productionMutationAuthorized": false,
+  "phase0": {
+    "scope": "Install schemas, empty registries, validators, eligibility service and causal firewall with zero migrated RDS.",
+    "proposedPaths": [
+      "schemas/rds-computation-profile.schema.json",
+      "schemas/rds-application-binding.schema.json",
+      "schemas/rds-execution-request.schema.json",
+      "schemas/rds-execution-provenance.schema.json",
+      "schemas/rds-execution-eligibility.schema.json",
+      "data/rds-computation-v1/profiles.json",
+      "data/rds-computation-v1/bindings.json",
+      "scripts/rds_computation_v1.py"
+    ],
+    "migratedRds": []
+  },
+  "phase1": {
+    "scope": "Add one compatibility wrapper and binding for RDS-0006 only, run shadow equivalence, do not feed active simulation.",
+    "migratedRds": [
+      "RDS-0006"
+    ],
+    "legacyPreserved": [
+      "DER-V1-SOC-F07-001"
+    ],
+    "shadowGate": "NUMERIC_AND_PROVENANCE_EQUIVALENCE",
+    "causalSourceEligible": false
+  },
+  "excluded": {
+    "remainingRds": 40,
+    "causalSourceAuthorization": "EXCLUDED",
+    "lifecycleOrActivation": "EXCLUDED",
+    "relationshipMutation": "EXCLUDED"
+  },
+  "futureValidatorFunctions": [
+    "validate_computation_profile",
+    "validate_application_binding",
+    "validate_profile_binding_compatibility",
+    "resolve_execution_eligibility",
+    "validate_rds_execution_request",
+    "validate_causal_firewall"
+  ],
+  "rollback": "Remove profile/binding registry integration and profile-aware service routing; retain all RDS IDs and DER-V1-SOC-F07-001 unchanged; empty registries restore ontology-only/legacy behavior.",
+  "protectedScienceGates": [
+    "41 production RDS hashes unchanged",
+    "Relationship corpus unchanged",
+    "Actions & Events unchanged",
+    "Network State unchanged",
+    "source registry unchanged",
+    "lifecycle unchanged",
+    "causal firewall false"
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:psywerx:prototype:rds-computation-v1:rds-computation-profile-prototype",
+  "title": "RDS Computation Profile Prototype",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schemaVersion",
+    "profileId",
+    "profileVersion",
+    "rdsId",
+    "rdsDefinitionVersion",
+    "rdsDefinitionHash",
+    "profileType",
+    "inputContract",
+    "outputScale",
+    "outputInterpretation",
+    "derivationEntailed",
+    "causalSourceEligible",
+    "causalSourceGate",
+    "governance"
+  ],
+  "properties": {
+    "profileId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "profileVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rdsId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "profileType": {
+      "enum": [
+        "DERIVATION_PROFILE",
+        "ESTIMATION_PROFILE",
+        "MEASUREMENT_PROFILE"
+      ]
+    },
+    "inputContract": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "inputId",
+          "role"
+        ],
+        "properties": {
+          "inputId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "role": {
+            "enum": [
+              "BOUNDARY_INPUT",
+              "CONSTITUENT",
+              "DATA_SOURCE",
+              "EXTERNAL_CONTEXT",
+              "MEASUREMENT_INPUT",
+              "NORMALIZER",
+              "PARAMETER",
+              "REFERENCE_VALUE"
+            ]
+          }
+        }
+      }
+    },
+    "derivationEntailed": {
+      "type": "boolean"
+    },
+    "causalSourceEligible": {
+      "const": false
+    },
+    "causalSourceGate": {
+      "const": "WP-PSG-005_REQUIRED"
+    }
+  },
+  "$comment": "NON-PRODUCTION WP-PSG-001 prototype only"
+}

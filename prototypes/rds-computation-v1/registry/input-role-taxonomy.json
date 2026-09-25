@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "1.0.0-PROTOTYPE",
+  "roles": [
+    {
+      "role": "CONSTITUENT",
+      "causalConstituentByRole": true,
+      "meaning": "Ontology constituent used to define or calculate the output."
+    },
+    {
+      "role": "MEASUREMENT_INPUT",
+      "causalConstituentByRole": false,
+      "meaning": "Observed response or indicator used by a measurement/estimation method."
+    },
+    {
+      "role": "PARAMETER",
+      "causalConstituentByRole": false,
+      "meaning": "Declared computation parameter."
+    },
+    {
+      "role": "NORMALIZER",
+      "causalConstituentByRole": false,
+      "meaning": "Reference denominator or benchmark used for normalization."
+    },
+    {
+      "role": "BOUNDARY_INPUT",
+      "causalConstituentByRole": false,
+      "meaning": "Population, node-set, jurisdiction or other scope boundary."
+    },
+    {
+      "role": "REFERENCE_VALUE",
+      "causalConstituentByRole": false,
+      "meaning": "Comparison or baseline value."
+    },
+    {
+      "role": "EXTERNAL_CONTEXT",
+      "causalConstituentByRole": false,
+      "meaning": "Context required for application but not an ontology constituent."
+    },
+    {
+      "role": "DATA_SOURCE",
+      "causalConstituentByRole": false,
+      "meaning": "Bound source or instrument supplying observations."
+    }
+  ]
+}

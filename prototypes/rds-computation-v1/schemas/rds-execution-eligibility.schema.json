@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:psywerx:prototype:rds-computation-v1:rds-execution-eligibility-prototype",
+  "title": "RDS Execution Eligibility Prototype",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "state"
+  ],
+  "properties": {
+    "state": {
+      "enum": [
+        "EXECUTABLE",
+        "NON_EXECUTABLE_BLOCKED_BY_ONTOLOGY",
+        "NON_EXECUTABLE_BLOCKED_BY_SCIENCE",
+        "NON_EXECUTABLE_DEFINITION_MISMATCH",
+        "NON_EXECUTABLE_INCOMPLETE_BINDING",
+        "NON_EXECUTABLE_INPUT_MISMATCH",
+        "NON_EXECUTABLE_NO_ELIGIBLE_PROFILE",
+        "NON_EXECUTABLE_NO_PROFILE",
+        "NON_EXECUTABLE_PROFILE_TYPE_UNSUPPORTED",
+        "NON_EXECUTABLE_VERSION_MISMATCH"
+      ]
+    }
+  },
+  "$comment": "NON-PRODUCTION WP-PSG-001 prototype only"
+}

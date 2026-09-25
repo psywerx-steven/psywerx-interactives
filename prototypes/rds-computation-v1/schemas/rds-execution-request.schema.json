@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:psywerx:prototype:rds-computation-v1:rds-execution-request-prototype",
+  "title": "RDS Execution Request Prototype",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "rdsId",
+    "profileId",
+    "profileVersion",
+    "bindingId",
+    "bindingVersion",
+    "inputs"
+  ],
+  "properties": {
+    "rdsId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "profileId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "profileVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "bindingId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "bindingVersion": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "$comment": "NON-PRODUCTION WP-PSG-001 prototype only"
+}

@@ -1,0 +1,42 @@
+{
+  "schemaVersion": "1.0.0",
+  "decisionPacketId": "DP-PSG-001-IMPLEMENTATION",
+  "workPackageId": "WP-PSG-001",
+  "status": "HUMAN_ARCHITECTURE_GOVERNANCE_REQUIRED",
+  "recommendedScope": "PHASE_0_THEN_SEPARATELY_GATED_RDS_0006_PHASE_1",
+  "phase0": {
+    "scope": "Install schemas, empty registries, validators, eligibility service and causal firewall with zero migrated RDS.",
+    "proposedPaths": [
+      "schemas/rds-computation-profile.schema.json",
+      "schemas/rds-application-binding.schema.json",
+      "schemas/rds-execution-request.schema.json",
+      "schemas/rds-execution-provenance.schema.json",
+      "schemas/rds-execution-eligibility.schema.json",
+      "data/rds-computation-v1/profiles.json",
+      "data/rds-computation-v1/bindings.json",
+      "scripts/rds_computation_v1.py"
+    ],
+    "migratedRds": []
+  },
+  "phase1": {
+    "scope": "Add one compatibility wrapper and binding for RDS-0006 only, run shadow equivalence, do not feed active simulation.",
+    "migratedRds": [
+      "RDS-0006"
+    ],
+    "legacyPreserved": [
+      "DER-V1-SOC-F07-001"
+    ],
+    "shadowGate": "NUMERIC_AND_PROVENANCE_EQUIVALENCE",
+    "causalSourceEligible": false
+  },
+  "explicitExclusions": {
+    "remainingRds": 40,
+    "causalSourceAuthorization": "EXCLUDED",
+    "lifecycleOrActivation": "EXCLUDED",
+    "relationshipMutation": "EXCLUDED"
+  },
+  "shadowModeRequired": true,
+  "rollback": "Remove profile/binding registry integration and profile-aware service routing; retain all RDS IDs and DER-V1-SOC-F07-001 unchanged; empty registries restore ontology-only/legacy behavior.",
+  "causalFirewall": "WP-PSG-005_REQUIRED_AND_FALSE_BY_DEFAULT",
+  "exactApprovalStatement": "Approve DP-PSG-001-IMPLEMENTATION for a bounded production Phase 0 that installs the governed RDS computation-profile schemas, empty registries, exact-version validators, execution-eligibility service, provenance/fingerprint contract, and mandatory WP-PSG-005 causal firewall with zero RDS migrations; then authorize a separately gated Phase 1 compatibility wrapper for RDS-0006 only, preserving DER-V1-SOC-F07-001 and its lineage, requiring shadow-mode numeric and provenance equivalence, rollback to legacy-only behavior, no active simulation feed, and causalSourceEligible=false. All other 40 RDS, production Relationships, lifecycle states, ontology, Network State, Actions & Events, sources, and activation remain unchanged and unauthorized."
+}

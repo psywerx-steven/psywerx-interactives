@@ -1,0 +1,46 @@
+{
+  "request": {
+    "rdsId": "RDS-0006",
+    "profileId": "PROTO-DER-V1-SOC-F07-001",
+    "profileVersion": "1.0.0",
+    "bindingId": "PROTO-BIND-RDS-0006-STAR-4",
+    "bindingVersion": "1.0.0",
+    "inputs": {
+      "SOC-049": {
+        "value": [
+          3,
+          1,
+          1,
+          1
+        ],
+        "definitionHash": "145cc3aee92b29312360970ea347e84a5b11923c54f78ec451ff0e387bd5d742",
+        "valueHash": "87bd597abf58ccdcab0fc741e9bb4fcb32a3c888aeaed11850c8621d13c264a9"
+      }
+    },
+    "parameters": {},
+    "causalSourceRequested": false
+  },
+  "result": {
+    "schemaVersion": "1.0.0-PROTOTYPE",
+    "executionState": "EXECUTABLE",
+    "rdsId": "RDS-0006",
+    "rdsDefinitionHash": "1f4deb8927f023179666dfa4a680589c0bad8e16b78ed7e264583295265ff104",
+    "profileId": "PROTO-DER-V1-SOC-F07-001",
+    "profileVersion": "1.0.0",
+    "bindingId": "PROTO-BIND-RDS-0006-STAR-4",
+    "bindingVersion": "1.0.0",
+    "inputHashes": {
+      "SOC-049": "87bd597abf58ccdcab0fc741e9bb4fcb32a3c888aeaed11850c8621d13c264a9"
+    },
+    "calculationReference": "SUM_MAX_DEGREE_MINUS_DEGREES_DIVIDED_BY_N_MINUS_1_TIMES_N_MINUS_2",
+    "output": 1.0,
+    "executionFingerprint": "ca3ad01c4ad8c9f69ae9c361f58568ac36470dbba1c8961c60f2089bafa622e5",
+    "deterministicRunMarker": "ca3ad01c4ad8c9f6",
+    "causalSourceAuthorized": false,
+    "causalSourceGate": "WP-PSG-005_REQUIRED",
+    "governance": {
+      "status": "PROTOTYPE_ONLY",
+      "productionOutput": false
+    }
+  }
+}

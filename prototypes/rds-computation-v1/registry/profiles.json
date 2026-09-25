@@ -1,0 +1,323 @@
+{
+  "schemaVersion": "1.0.0-PROTOTYPE",
+  "namespace": "NON_PRODUCTION",
+  "profiles": [
+    {
+      "schemaVersion": "1.0.0-PROTOTYPE",
+      "profileId": "PROTO-DER-V1-SOC-F07-001",
+      "profileVersion": "1.0.0",
+      "rdsId": "RDS-0006",
+      "rdsDefinitionVersion": "ENTITY_V0_3_GOVERNED_RECORD_HASH",
+      "rdsDefinitionHash": "1f4deb8927f023179666dfa4a680589c0bad8e16b78ed7e264583295265ff104",
+      "profileType": "DERIVATION_PROFILE",
+      "displayName": "Additive compatibility wrapper for Freeman degree centralization",
+      "scientificPurpose": "Represent the exact governed legacy calculation without changing its identity or scope.",
+      "inputContract": [
+        {
+          "inputId": "SOC-049",
+          "role": "CONSTITUENT",
+          "required": true,
+          "definitionVersion": "ENTITY_V0_3_GOVERNED_RECORD_HASH",
+          "definitionHash": "145cc3aee92b29312360970ea347e84a5b11923c54f78ec451ff0e387bd5d742",
+          "collectionSubject": "ALL_NODES_OF_BOUND_STATE_BOUNDARY",
+          "completenessRule": "EXACT_SET_EQUALITY_NO_MISSING_NO_EXTRA"
+        }
+      ],
+      "minimumInputRequirements": [
+        {
+          "minimumNodes": 3,
+          "completeAlignedCollection": true
+        }
+      ],
+      "constituentMapping": [
+        {
+          "inputId": "SOC-049",
+          "role": "CONSTITUENT",
+          "causalConstituentInference": false
+        }
+      ],
+      "requiredContext": [
+        "networkBoundary",
+        "nodeSet",
+        "tieRelation",
+        "timeWindow"
+      ],
+      "aggregationFunction": "FREEMAN_DEGREE_CENTRALIZATION",
+      "calculationReference": "SUM_MAX_DEGREE_MINUS_DEGREES_DIVIDED_BY_N_MINUS_1_TIMES_N_MINUS_2",
+      "metricVariant": "FREEMAN_DEGREE_CENTRALIZATION",
+      "normalization": "SAME_SIZE_SIMPLE_UNDIRECTED_STAR_MAXIMUM",
+      "missingnessPolicy": "EXACT_SET_EQUALITY_NO_MISSING_NO_EXTRA",
+      "unitOfAnalysis": "NETWORK",
+      "outputScale": "NORMALIZED_NETWORK_CENTRALIZATION",
+      "outputInterpretation": "Degree centralization for the exact bound simple undirected network.",
+      "scopeLimitations": [
+        "Complete aligned values for the exact declared network; never one ego.",
+        "No betweenness/eigenvector/closeness centralization from degree.",
+        "RDS blocked metadata unchanged; inactive knowledge confers no production execution or direct effect target."
+      ],
+      "derivationEntailed": true,
+      "causalSemantics": "DEFINITIONAL_CALCULATIONAL_RECALCULATION_ONLY_NO_CAUSAL_SUM",
+      "causalSourceEligible": false,
+      "causalSourceGate": "WP-PSG-005_REQUIRED",
+      "provenance": {
+        "compatibilityWrapperFor": "DER-V1-SOC-F07-001",
+        "preservesLegacyId": true,
+        "legacyRecordHash": "609f164d5bcd45cb7372f51374961f365780f2ebce7693e83f7b2db7d6e2dfbf",
+        "lineage": {
+          "candidateId": "REL-CAND-SOC-F07-001",
+          "candidateRevision": 1,
+          "candidateHash": "9e4458e8e0bb95139ce7ab499a37ce4abc39c2a603c6739ff970f316fa60c2c5",
+          "scientificDecisionId": "GOV-SOC-F07-001-2026-09-06",
+          "architectureDecisionId": "GOV-NETWORK-STATE-V1-2026-09-07"
+        }
+      },
+      "governance": {
+        "status": "PROTOTYPE_ONLY",
+        "executionEligibleInPrototype": true,
+        "productionMaterialization": false
+      }
+    },
+    {
+      "schemaVersion": "1.0.0-PROTOTYPE",
+      "profileId": "PROTO-SYNTHETIC-MEASUREMENT-001",
+      "profileVersion": "1.0.0",
+      "rdsId": "TEST-RDS-MEASUREMENT-001",
+      "rdsDefinitionVersion": "TEST-ONLY-1",
+      "rdsDefinitionHash": "a46b8d96de44db15ea5230babc3bb15a9a9d8460d24cecbf0ddbd0819ba0eb26",
+      "profileType": "MEASUREMENT_PROFILE",
+      "displayName": "Synthetic measurement architecture example",
+      "scientificPurpose": "Test measurement-specific contract; not PSYWERX science.",
+      "inputContract": [
+        {
+          "inputId": "TEST-INSTRUMENT-RESPONSES",
+          "role": "MEASUREMENT_INPUT",
+          "required": true
+        },
+        {
+          "inputId": "TEST-INSTRUMENT-VERSION",
+          "role": "PARAMETER",
+          "required": true
+        }
+      ],
+      "minimumInputRequirements": [
+        {
+          "completeRequiredItems": true
+        }
+      ],
+      "constituentMapping": [],
+      "requiredContext": [
+        "measurementInstrument",
+        "population"
+      ],
+      "measurementProcedure": {
+        "instrumentId": "TEST-INSTRUMENT-V1",
+        "instrumentVersionRequired": true,
+        "scoringRule": "TEST_ONLY_DECLARED_RULE",
+        "missingItemRules": "TEST_ONLY_EXPLICIT",
+        "reliabilityInformation": "OUTPUT_METADATA_WHEN_AVAILABLE",
+        "validityScope": "BOUND_POPULATION_ONLY"
+      },
+      "unitOfAnalysis": "INDIVIDUAL",
+      "outputScale": "TEST_SCORE",
+      "outputInterpretation": "Synthetic score only",
+      "scopeLimitations": [
+        "NOT SCIENTIFICALLY GOVERNED"
+      ],
+      "derivationEntailed": false,
+      "causalSemantics": "NONE",
+      "causalSourceEligible": false,
+      "causalSourceGate": "WP-PSG-005_REQUIRED",
+      "provenance": {
+        "synthetic": true
+      },
+      "governance": {
+        "status": "PROTOTYPE_ONLY",
+        "executionEligibleInPrototype": true,
+        "productionMaterialization": false
+      }
+    },
+    {
+      "schemaVersion": "1.0.0-PROTOTYPE",
+      "profileId": "PROTO-SYNTHETIC-MEASUREMENT-001",
+      "profileVersion": "1.0.1",
+      "rdsId": "TEST-RDS-MEASUREMENT-001",
+      "rdsDefinitionVersion": "TEST-ONLY-1",
+      "rdsDefinitionHash": "a46b8d96de44db15ea5230babc3bb15a9a9d8460d24cecbf0ddbd0819ba0eb26",
+      "profileType": "MEASUREMENT_PROFILE",
+      "displayName": "Synthetic measurement architecture example, corrected prototype version",
+      "scientificPurpose": "Test measurement-specific contract; not PSYWERX science.",
+      "inputContract": [
+        {
+          "inputId": "TEST-INSTRUMENT-RESPONSES",
+          "role": "MEASUREMENT_INPUT",
+          "required": true
+        },
+        {
+          "inputId": "TEST-INSTRUMENT-VERSION",
+          "role": "PARAMETER",
+          "required": true
+        }
+      ],
+      "minimumInputRequirements": [
+        {
+          "completeRequiredItems": true
+        }
+      ],
+      "constituentMapping": [],
+      "requiredContext": [
+        "measurementInstrument",
+        "population"
+      ],
+      "measurementProcedure": {
+        "instrumentId": "TEST-INSTRUMENT-V1",
+        "instrumentVersionRequired": true,
+        "scoringRule": "TEST_ONLY_DECLARED_RULE",
+        "missingItemRules": "TEST_ONLY_EXPLICIT",
+        "reliabilityInformation": "OUTPUT_METADATA_WHEN_AVAILABLE",
+        "validityScope": "BOUND_POPULATION_ONLY"
+      },
+      "unitOfAnalysis": "INDIVIDUAL",
+      "outputScale": "TEST_SCORE",
+      "outputInterpretation": "Synthetic score only",
+      "scopeLimitations": [
+        "NOT SCIENTIFICALLY GOVERNED"
+      ],
+      "derivationEntailed": false,
+      "causalSemantics": "NONE",
+      "causalSourceEligible": false,
+      "causalSourceGate": "WP-PSG-005_REQUIRED",
+      "provenance": {
+        "synthetic": true
+      },
+      "governance": {
+        "status": "PROTOTYPE_ONLY",
+        "executionEligibleInPrototype": true,
+        "productionMaterialization": false
+      }
+    },
+    {
+      "schemaVersion": "1.0.0-PROTOTYPE",
+      "profileId": "PROTO-SYNTHETIC-MEASUREMENT-ALT-001",
+      "profileVersion": "1.0.0",
+      "rdsId": "TEST-RDS-MEASUREMENT-001",
+      "rdsDefinitionVersion": "TEST-ONLY-1",
+      "rdsDefinitionHash": "a46b8d96de44db15ea5230babc3bb15a9a9d8460d24cecbf0ddbd0819ba0eb26",
+      "profileType": "MEASUREMENT_PROFILE",
+      "displayName": "Synthetic measurement architecture example",
+      "scientificPurpose": "Test measurement-specific contract; not PSYWERX science.",
+      "inputContract": [
+        {
+          "inputId": "TEST-INSTRUMENT-RESPONSES",
+          "role": "MEASUREMENT_INPUT",
+          "required": true
+        },
+        {
+          "inputId": "TEST-INSTRUMENT-VERSION",
+          "role": "PARAMETER",
+          "required": true
+        }
+      ],
+      "minimumInputRequirements": [
+        {
+          "completeRequiredItems": true
+        }
+      ],
+      "constituentMapping": [],
+      "requiredContext": [
+        "measurementInstrument",
+        "population"
+      ],
+      "measurementProcedure": {
+        "instrumentId": "TEST-INSTRUMENT-V1",
+        "instrumentVersionRequired": true,
+        "scoringRule": "TEST_ONLY_ALTERNATIVE_RULE",
+        "missingItemRules": "TEST_ONLY_EXPLICIT",
+        "reliabilityInformation": "OUTPUT_METADATA_WHEN_AVAILABLE",
+        "validityScope": "BOUND_POPULATION_ONLY"
+      },
+      "unitOfAnalysis": "INDIVIDUAL",
+      "outputScale": "TEST_SCORE",
+      "outputInterpretation": "Alternative synthetic score semantics only",
+      "scopeLimitations": [
+        "NOT SCIENTIFICALLY GOVERNED"
+      ],
+      "derivationEntailed": false,
+      "causalSemantics": "NONE",
+      "causalSourceEligible": false,
+      "causalSourceGate": "WP-PSG-005_REQUIRED",
+      "provenance": {
+        "synthetic": true
+      },
+      "governance": {
+        "status": "PROTOTYPE_ONLY",
+        "executionEligibleInPrototype": true,
+        "productionMaterialization": false
+      }
+    },
+    {
+      "schemaVersion": "1.0.0-PROTOTYPE",
+      "profileId": "PROTO-CUL-088-ESTIMATION-COUNTEREXAMPLE",
+      "profileVersion": "1.0.0",
+      "rdsId": "CUL-088",
+      "rdsDefinitionVersion": "TEST-ONLY-NOT-CANONICAL",
+      "rdsDefinitionHash": "84c9e0f0382002f8de970e5d6c22de0112ff55b97a16dfca3c49d0f81a7ea1e8",
+      "profileType": "ESTIMATION_PROFILE",
+      "displayName": "CUL-088 latent estimation counterexample",
+      "scientificPurpose": "Exercise estimator validation only; not a proposed measurement model.",
+      "inputContract": [
+        {
+          "inputId": "SYNTHETIC-INDICATORS",
+          "role": "MEASUREMENT_INPUT",
+          "required": true
+        },
+        {
+          "inputId": "SYNTHETIC-COHORT",
+          "role": "REFERENCE_VALUE",
+          "required": true
+        }
+      ],
+      "minimumInputRequirements": [
+        {
+          "sampleAdequacy": "ESTIMATOR_SPECIFIC"
+        }
+      ],
+      "constituentMapping": [],
+      "requiredContext": [
+        "population",
+        "timeWindow"
+      ],
+      "estimationProcedure": {
+        "modelSemantics": "TEST_ONLY_LATENT_DISTANCE_MODEL",
+        "modelVersion": "TEST-1",
+        "diagnosticExpectations": [
+          "CONVERGENCE_STATUS",
+          "FIT_DIAGNOSTICS",
+          "UNCERTAINTY_METHOD"
+        ],
+        "outputUncertainty": [
+          "POINT_ESTIMATE",
+          "STANDARD_ERROR_OR_INTERVAL_WHEN_APPROPRIATE"
+        ]
+      },
+      "unitOfAnalysis": "GROUP",
+      "outputScale": "TEST_LATENT_DISTANCE",
+      "outputInterpretation": "Architecture counterexample only",
+      "scopeLimitations": [
+        "NOT SCIENTIFICALLY GOVERNED",
+        "NOT A PROPOSED CUL-088 MEASUREMENT MODEL"
+      ],
+      "derivationEntailed": false,
+      "causalSemantics": "NONE",
+      "causalSourceEligible": false,
+      "causalSourceGate": "WP-PSG-005_REQUIRED",
+      "provenance": {
+        "syntheticArchitectureCounterexample": true
+      },
+      "governance": {
+        "status": "PROTOTYPE_ONLY",
+        "executionEligibleInPrototype": false,
+        "productionMaterialization": false
+      }
+    }
+  ]
+}

@@ -477,6 +477,8 @@ def build_roots(dep_map, semantic_debt):
 def work_packages(roots):
     by_id = {root["id"]: root for root in roots["roots"]}
     rds_decision = rds_direction_decision()
+    rds_dry_run = ROOT / "data/governance/post-scale-up/rds/rds-migration-dry-run.json"
+    prototype_complete = rds_decision is not None and rds_dry_run.exists()
     packages = []
     for definition in ROOT_DEFS:
         key, identifier = definition["key"], ROOT_IDS[definition["key"]]
@@ -498,11 +500,15 @@ def work_packages(roots):
             "safeRollbackState": root["currentSafeState"],
             "stages": {"A_problemNormalization": "COMPLETE", "B_designAlternatives": "COMPLETE",
                        "C_skepticalArchitectureReview": "COMPLETE" if key in {"RDS_DEF", "CROSS_LEVEL", "NETWORK", "CONTRIBUTION", "RDS_CAUSAL", "ACTIVATION"} else "DEFERRED_UNTIL_SELECTED",
-                       "D_humanGovernanceDecision": "COMPLETE_BOUNDED_DIRECTION_APPROVED" if key == "RDS_DEF" and rds_decision else "NOT_STARTED", "E_implementation": "NOT_STARTED",
-                       "F_migrationRevalidation": "NOT_STARTED", "G_scientificReadjudication": "NOT_STARTED"},
+                       "D_humanGovernanceDecision": "COMPLETE_BOUNDED_DIRECTION_APPROVED" if key == "RDS_DEF" and rds_decision else "NOT_STARTED",
+                       "E_implementation": "COMPLETE_NON_PRODUCTION_REFERENCE_PROTOTYPE" if key == "RDS_DEF" and prototype_complete else "NOT_STARTED",
+                       "F_migrationRevalidation": "DRY_RUN_ONLY_COMPLETE_PRODUCTION_MIGRATION_NOT_AUTHORIZED" if key == "RDS_DEF" and prototype_complete else "NOT_STARTED",
+                       "G_scientificReadjudication": "NOT_STARTED"},
             "governanceDecisionId": rds_decision["decisionId"] if key == "RDS_DEF" and rds_decision else None,
             "prototypeImplementationAuthorization": "AUTHORIZED_NON_PRODUCTION_ONLY" if key == "RDS_DEF" and rds_decision else "NOT_AUTHORIZED",
-            "productionImplementationStatus": "NOT_AUTHORIZED_NOT_STARTED" if key == "RDS_DEF" and rds_decision else "NOT_STARTED",
+            "productionImplementationStatus": "HUMAN_GOVERNANCE_REQUIRED_NOT_STARTED" if key == "RDS_DEF" and prototype_complete else ("NOT_AUTHORIZED_NOT_STARTED" if key == "RDS_DEF" and rds_decision else "NOT_STARTED"),
+            "rootIssueResolutionStatus": "NOT_RESOLVED_PROTOTYPE_ONLY" if key == "RDS_DEF" and prototype_complete else "NOT_RESOLVED",
+            "nextDecisionPacketId": "DP-PSG-001-IMPLEMENTATION" if key == "RDS_DEF" and prototype_complete else None,
             "recommendedSequenceBand": definition["sequenceBand"],
         })
     return {"schemaVersion": "1.0.0", "roadmapId": ROADMAP_ID, "workPackages": packages}
@@ -559,7 +565,10 @@ def render_dependency(dep_map, roots):
 
 def render_roadmap(dep_map, roots, packages):
     rds_decision = rds_direction_decision()
+    prototype_complete = (ROOT / "data/governance/post-scale-up/rds/rds-migration-dry-run.json").exists()
     status_text = "DP-PSG-001 Stage D records a bounded human-approved B+C direction; its non-production prototype is authorized, while production implementation and every other Stage D–G decision remain unstarted." if rds_decision else "Stages D–G remain prohibited until later human governance."
+    if rds_decision and prototype_complete:
+        status_text = "DP-PSG-001 Stage D records a bounded human-approved B+C direction; Stage E is complete as a non-production reference prototype and Stage F is complete only as a 41-RDS dry run. Production implementation/migration remains unauthorized and the root blocker remains unresolved."
     lines = ["# Post-Scale-Up governance roadmap", "", f"This roadmap converts the 44-row historical backlog into decision-ready work packages. Stages A and B are complete here; skeptical architecture review is complete for the six highest-consequence packets. {status_text}", "",
              "| Order | Work package | Root issue | Band | Dependencies | Original rows |", "|---:|---|---|---|---|---:|"]
     for index, package in enumerate(packages["workPackages"], 1):
