@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:psywerx:prototype:rds-computation-v1:rds-execution-provenance-prototype",
+  "title": "RDS Execution Provenance Prototype",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "rdsId",
+    "rdsDefinitionHash",
+    "profileId",
+    "profileVersion",
+    "bindingId",
+    "bindingVersion",
+    "inputHashes",
+    "output",
+    "executionFingerprint",
+    "causalSourceAuthorized"
+  ],
+  "properties": {
+    "causalSourceAuthorized": {
+      "const": false
+    },
+    "executionFingerprint": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "$comment": "NON-PRODUCTION WP-PSG-001 prototype only"
+}

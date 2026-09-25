@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:psywerx:prototype:rds-computation-v1:rds-application-binding-prototype",
+  "title": "RDS Application Binding Prototype",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schemaVersion",
+    "bindingId",
+    "bindingVersion",
+    "rdsId",
+    "rdsDefinitionVersion",
+    "rdsDefinitionHash",
+    "profileId",
+    "profileVersion",
+    "unitOfAnalysis",
+    "contextParameters",
+    "governance"
+  ],
+  "properties": {
+    "bindingId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "bindingVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rdsId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "profileId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "profileVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "contextParameters": {
+      "type": "object"
+    }
+  },
+  "$comment": "NON-PRODUCTION WP-PSG-001 prototype only"
+}

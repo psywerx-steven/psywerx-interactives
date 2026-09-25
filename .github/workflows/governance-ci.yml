@@ -186,6 +186,9 @@ jobs:
       - name: Validate read-only RDS contract decision test
         run: python -m unittest discover -s tests -p "test_rds_contract_decision_test.py"
 
+      - name: Validate non-production RDS computation reference implementation
+        run: python -m unittest discover -s tests -p "test_rds_computation_prototype.py"
+
       - name: Validate exact Technological governance materialization
         run: python -m unittest discover -s tests -p "test_technological_governance_materialization.py"
 
@@ -242,6 +245,11 @@ jobs:
         run: |
           python scripts/rds_contract_decision_test.py
           git diff --exit-code -- data/governance/post-scale-up/rds docs/governance/post-scale-up/rds
+
+      - name: Verify deterministic RDS reference package and migration dry run
+        run: |
+          python prototypes/rds-computation-v1/build_reference_package.py
+          git diff --exit-code -- prototypes/rds-computation-v1 data/governance/post-scale-up/rds docs/governance/post-scale-up/rds data/governance/post-scale-up/work-packages.json
 
       - name: Verify deterministic Informational Layer registries
         run: |
@@ -428,6 +436,9 @@ jobs:
       - name: Validate read-only RDS contract decision test
         run: python -m unittest discover -s tests -p "test_rds_contract_decision_test.py"
 
+      - name: Validate non-production RDS computation reference implementation
+        run: python -m unittest discover -s tests -p "test_rds_computation_prototype.py"
+
       - name: Validate exact Technological governance materialization
         run: python -m unittest discover -s tests -p "test_technological_governance_materialization.py"
 
@@ -484,6 +495,11 @@ jobs:
         run: |
           python scripts/rds_contract_decision_test.py
           git diff --exit-code -- data/governance/post-scale-up/rds docs/governance/post-scale-up/rds
+
+      - name: Verify deterministic RDS reference package and migration dry run
+        run: |
+          python prototypes/rds-computation-v1/build_reference_package.py
+          git diff --exit-code -- prototypes/rds-computation-v1 data/governance/post-scale-up/rds docs/governance/post-scale-up/rds data/governance/post-scale-up/work-packages.json
 
       - name: Verify deterministic Informational Layer registries
         run: |

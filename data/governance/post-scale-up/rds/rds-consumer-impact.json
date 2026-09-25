@@ -1,0 +1,71 @@
+{
+  "schemaVersion": "1.0.0-PROTOTYPE",
+  "analysisType": "READ_ONLY_CONSUMER_IMPACT",
+  "productionMutationAuthorized": false,
+  "summary": {
+    "NO_RDS_EXECUTION_DEPENDENCY": 2,
+    "USES_RDS_AS_ENTITY_ONLY": 3,
+    "USES_LEGACY_DERIVATION": 2,
+    "WOULD_REQUIRE_PROFILE_AWARENESS": 1,
+    "WOULD_REQUIRE_MIGRATION": 0,
+    "UNKNOWN_REQUIRES_REVIEW": 0
+  },
+  "consumers": [
+    {
+      "consumer": "scripts/relational_state_v1.py",
+      "classification": "USES_LEGACY_DERIVATION",
+      "currentBehavior": "Validates and evaluates DER-V1-SOC-F07-001",
+      "futurePath": "Keep legacy path; shadow adapter invokes prototype-equivalent profile engine only after Phase 1 authorization."
+    },
+    {
+      "consumer": "scripts/relational_state_fixtures.py",
+      "classification": "USES_LEGACY_DERIVATION",
+      "currentBehavior": "Builds deterministic network fixtures",
+      "futurePath": "Reuse fixtures for byte/numeric shadow comparison."
+    },
+    {
+      "consumer": "scripts/social_layer_v2_package.py",
+      "classification": "USES_RDS_AS_ENTITY_ONLY",
+      "currentBehavior": "Reads derivation for audit/reporting",
+      "futurePath": "No execution migration required."
+    },
+    {
+      "consumer": "scripts/next_layer_readiness.py",
+      "classification": "USES_RDS_AS_ENTITY_ONLY",
+      "currentBehavior": "Reads catalog inventory",
+      "futurePath": "No execution migration required."
+    },
+    {
+      "consumer": "scripts/rds_contract_decision_test.py",
+      "classification": "NO_RDS_EXECUTION_DEPENDENCY",
+      "currentBehavior": "Stage C planning prototype",
+      "futurePath": "Historical decision-test retained."
+    },
+    {
+      "consumer": "scripts/actions_events_v1.py",
+      "classification": "NO_RDS_EXECUTION_DEPENDENCY",
+      "currentBehavior": "Rejects direct RDS EffectAssertion targets",
+      "futurePath": "Rule remains unchanged."
+    },
+    {
+      "consumer": "future RDS computation service",
+      "classification": "WOULD_REQUIRE_PROFILE_AWARENESS",
+      "currentBehavior": "Does not exist",
+      "futurePath": "Require exact rds/profile/version/binding/version; never infer latest/default."
+    },
+    {
+      "consumer": "data/relationships.json",
+      "classification": "USES_RDS_AS_ENTITY_ONLY",
+      "currentBehavior": "Stores current propositions",
+      "futurePath": "No mutation in Phase 0 or Phase 1."
+    }
+  ],
+  "rds0006Compatibility": {
+    "semanticEquivalent": true,
+    "numericEquivalentForFourNodeStar": true,
+    "lineagePreserving": true,
+    "causallyNeutral": true,
+    "rollbackSafe": true,
+    "consumerCompatibleAdditively": true
+  }
+}

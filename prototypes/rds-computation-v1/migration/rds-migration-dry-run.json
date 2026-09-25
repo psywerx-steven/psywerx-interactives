@@ -1,0 +1,1565 @@
+{
+  "schemaVersion": "1.0.0-PROTOTYPE",
+  "dryRunId": "WP-PSG-001-STAGE-F-DRY-RUN-20260925-001",
+  "decisionId": "GOV-RDS-CONTRACT-001-2026-09-25",
+  "productionMigrationAuthorized": false,
+  "rootBlockerResolved": false,
+  "counts": {
+    "READY_FOR_PROFILE_MATERIALIZATION": 1,
+    "PROFILE_DEFINITION_REQUIRED": 13,
+    "MULTIPLE_PROFILE_REVIEW_REQUIRED": 12,
+    "LATENT_ESTIMATION_DESIGN_REQUIRED": 0,
+    "NON_EXECUTABLE_PENDING_SCIENCE": 13,
+    "BLOCKED_BY_ONTOLOGY": 2
+  },
+  "totalRds": 41,
+  "records": [
+    {
+      "rdsId": "BIO-003",
+      "currentLayer": "Biological",
+      "currentDefinitionHash": "70849f1017d21c5afe454da38fbaf24111406cb13993b56722f0b2cb0a297347",
+      "currentMigrationCategory": "NON_EXECUTABLE_PENDING_SCIENCE",
+      "proposedExecutionState": "NON_EXECUTABLE_BLOCKED_BY_SCIENCE",
+      "existingGovernedDerivationIds": [],
+      "proposedProfileRecords": [],
+      "proposedBindingRequirements": [],
+      "profileIdentityReviewItems": [],
+      "scientificGaps": [
+        "EXACT_COMPUTATION_OR_MEASUREMENT_SEMANTICS",
+        "VERSIONED_INPUT_CONTRACT",
+        "APPLICATION_SCOPE"
+      ],
+      "ontologyDependencies": [],
+      "architectureDependencies": [
+        "GOV-RDS-CONTRACT-001-2026-09-25",
+        "WP-PSG-001_PRODUCTION_NOT_AUTHORIZED"
+      ],
+      "causalSourceEligible": false,
+      "causalSourceGate": "WP-PSG-005_REQUIRED",
+      "productionMutationAuthorized": false,
+      "migrationAction": "RETAIN_CONSTRUCT_NON_EXECUTABLE_PENDING_SCIENCE",
+      "rollbackState": "CURRENT_PRODUCTION_RDS_AND_LEGACY_DERIVATION_UNCHANGED"
+    },
+    {
+      "rdsId": "BIO-006",
+      "currentLayer": "Biological",
+      "currentDefinitionHash": "0677de634f6ee9293db74b5463ad250b0147ae6c5c0b92de5887fbca998f9cee",
+      "currentMigrationCategory": "NON_EXECUTABLE_PENDING_SCIENCE",
+      "proposedExecutionState": "NON_EXECUTABLE_BLOCKED_BY_SCIENCE",
+      "existingGovernedDerivationIds": [],
+      "proposedProfileRecords": [],
+      "proposedBindingRequirements": [],
+      "profileIdentityReviewItems": [],
+      "scientificGaps": [
+        "EXACT_COMPUTATION_OR_MEASUREMENT_SEMANTICS",
+        "VERSIONED_INPUT_CONTRACT",
+        "APPLICATION_SCOPE"
+      ],
+      "ontologyDependencies": [],
+      "architectureDependencies": [
+        "GOV-RDS-CONTRACT-001-2026-09-25",
+        "WP-PSG-001_PRODUCTION_NOT_AUTHORIZED"
+      ],
+      "causalSourceEligible": false,
+      "causalSourceGate": "WP-PSG-005_REQUIRED",
+      "productionMutationAuthorized": false,
+      "migrationAction": "RETAIN_CONSTRUCT_NON_EXECUTABLE_PENDING_SCIENCE",
+      "rollbackState": "CURRENT_PRODUCTION_RDS_AND_LEGACY_DERIVATION_UNCHANGED"
+    },
+    {
+      "rdsId": "CUL-088",
+      "currentLayer": "Cultural",
+      "currentDefinitionHash": "9a94f7a6433e6f971c6695d0292c13ef3e296078719de8891a00bcef03fc74ff",
+      "currentMigrationCategory": "MULTIPLE_PROFILE_REVIEW_REQUIRED",
+      "proposedExecutionState": "NON_EXECUTABLE_NO_ELIGIBLE_PROFILE",
+      "existingGovernedDerivationIds": [],
+      "proposedProfileRecords": [],
+      "proposedBindingRequirements": [],
+      "profileIdentityReviewItems": [
+        "DIRECTION_DIRECTED_OR_UNDIRECTED",
+        "WEIGHT_BINARY_OR_VALUED",
+        "LOCAL_OR_GLOBAL",
+        "NORMALIZATION_VARIANT",
+        "CONSTITUENT_SET",
+        "AGGREGATION_RULE",
+        "MISSINGNESS_POLICY",
+        "UNIT_OF_ANALYSIS",
+        "NETWORK_OR_POPULATION_BOUNDARY",
+        "TIME_WINDOW"
+      ],
+      "scientificGaps": [
+        "PROFILE_IDENTITY_REVIEW_REQUIRED"
+      ],
+      "ontologyDependencies": [],
+      "architectureDependencies": [
+        "GOV-RDS-CONTRACT-001-2026-09-25",
+        "WP-PSG-001_PRODUCTION_NOT_AUTHORIZED"
+      ],
+      "causalSourceEligible": false,
+      "causalSourceGate": "WP-PSG-005_REQUIRED",
+      "productionMutationAuthorized": false,
+      "migrationAction": "PROFILE_IDENTITY_REVIEW_ONLY",
+      "rollbackState": "CURRENT_PRODUCTION_RDS_AND_LEGACY_DERIVATION_UNCHANGED"
+    },
+    {
+      "rdsId": "INF-004",
+      "currentLayer": "Informational",
+      "currentDefinitionHash": "8a7517f71413a502b0766e9e66ad266a81bf4e25eb920a963a84dc0467874c6e",
+      "currentMigrationCategory": "NON_EXECUTABLE_PENDING_SCIENCE",
+      "proposedExecutionState": "NON_EXECUTABLE_BLOCKED_BY_SCIENCE",
+      "existingGovernedDerivationIds": [],
+      "proposedProfileRecords": [],
+      "proposedBindingRequirements": [],
+      "profileIdentityReviewItems": [],
+      "scientificGaps": [
+        "EXACT_COMPUTATION_OR_MEASUREMENT_SEMANTICS",
+        "VERSIONED_INPUT_CONTRACT",
+        "APPLICATION_SCOPE"
+      ],
+      "ontologyDependencies": [],
+      "architectureDependencies": [
+        "GOV-RDS-CONTRACT-001-2026-09-25",
+        "WP-PSG-001_PRODUCTION_NOT_AUTHORIZED"
+      ],
+      "causalSourceEligible": false,
+      "causalSourceGate": "WP-PSG-005_REQUIRED",
+      "productionMutationAuthorized": false,
+      "migrationAction": "RETAIN_CONSTRUCT_NON_EXECUTABLE_PENDING_SCIENCE",
+      "rollbackState": "CURRENT_PRODUCTION_RDS_AND_LEGACY_DERIVATION_UNCHANGED"
+    },
+    {
+      "rdsId": "INF-010",
+      "currentLayer": "Informational",
+      "currentDefinitionHash": "505c42ce973390692123b0f20f9f751b4f156947fd39a67fc51cdc64b3c47652",
+      "currentMigrationCategory": "NON_EXECUTABLE_PENDING_SCIENCE",
+      "proposedExecutionState": "NON_EXECUTABLE_BLOCKED_BY_SCIENCE",
+      "existingGovernedDerivationIds": [],
+      "proposedProfileRecords": [],
+      "proposedBindingRequirements": [],
+      "profileIdentityReviewItems": [],
+      "scientificGaps": [
+        "EXACT_COMPUTATION_OR_MEASUREMENT_SEMANTICS",
+        "VERSIONED_INPUT_CONTRACT",
+        "APPLICATION_SCOPE"
+      ],
+      "ontologyDependencies": [],
+      "architectureDependencies": [
+        "GOV-RDS-CONTRACT-001-2026-09-25",
+        "WP-PSG-001_PRODUCTION_NOT_AUTHORIZED"
+      ],
+      "causalSourceEligible": false,
+      "causalSourceGate": "WP-PSG-005_REQUIRED",
+      "productionMutationAuthorized": false,
+      "migrationAction": "RETAIN_CONSTRUCT_NON_EXECUTABLE_PENDING_SCIENCE",
+      "rollbackState": "CURRENT_PRODUCTION_RDS_AND_LEGACY_DERIVATION_UNCHANGED"
+    },
+    {
+      "rdsId": "INF-011",
+      "currentLayer": "Informational",
+      "currentDefinitionHash": "05bc89d6f7b140939c322c8a973dcd86e40ec3a23ed736f72aa2830d925e0a51",
+      "currentMigrationCategory": "NON_EXECUTABLE_PENDING_SCIENCE",
+      "proposedExecutionState": "NON_EXECUTABLE_BLOCKED_BY_SCIENCE",
+      "existingGovernedDerivationIds": [],
+      "proposedProfileRecords": [],
+      "proposedBindingRequirements": [],
+      "profileIdentityReviewItems": [],
+      "scientificGaps": [
+        "EXACT_COMPUTATION_OR_MEASUREMENT_SEMANTICS",
+        "VERSIONED_INPUT_CONTRACT",
+        "APPLICATION_SCOPE"
+      ],
+      "ontologyDependencies": [],
+      "architectureDependencies": [
+        "GOV-RDS-CONTRACT-001-2026-09-25",
+        "WP-PSG-001_PRODUCTION_NOT_AUTHORIZED"
+      ],
+      "causalSourceEligible": false,
+      "causalSourceGate": "WP-PSG-005_REQUIRED",
+      "productionMutationAuthorized": false,
+      "migrationAction": "RETAIN_CONSTRUCT_NON_EXECUTABLE_PENDING_SCIENCE",
+      "rollbackState": "CURRENT_PRODUCTION_RDS_AND_LEGACY_DERIVATION_UNCHANGED"
+    },
+    {
+      "rdsId": "INF-014",
+      "currentLayer": "Informational",
+      "currentDefinitionHash": "280508be90c41caea49a7b35101389776419c9ff10db0abe89483a3152b2cf99",
+      "currentMigrationCategory": "BLOCKED_BY_ONTOLOGY",
+      "proposedExecutionState": "NON_EXECUTABLE_BLOCKED_BY_ONTOLOGY",
+      "existingGovernedDerivationIds": [],
+      "proposedProfileRecords": [],
+      "proposedBindingRequirements": [],
+      "profileIdentityReviewItems": [],
+      "scientificGaps": [
+        "ROOT_CONSTRUCT_OR_METADATA_BLOCKER"
+      ],
+      "ontologyDependencies": [
+        "WP-PSG-007_CONSTRUCT_ONTOLOGY_GOVERNANCE"
+      ],
+      "architectureDependencies": [
+        "GOV-RDS-CONTRACT-001-2026-09-25",
+        "WP-PSG-001_PRODUCTION_NOT_AUTHORIZED"
+      ],
+      "causalSourceEligible": false,
+      "causalSourceGate": "WP-PSG-005_REQUIRED",
+      "productionMutationAuthorized": false,
+      "migrationAction": "PRESERVE_ONTOLOGY_BLOCKER_NO_PROFILE",
+      "rollbackState": "CURRENT_PRODUCTION_RDS_AND_LEGACY_DERIVATION_UNCHANGED"
+    },
+    {
+      "rdsId": "INF-053",
+      "currentLayer": "Informational",
+      "currentDefinitionHash": "f6e71f48e3c927f7ce2ab790ed54e86e98d03fba74f63e25d0d2f98dcff098db",
+      "currentMigrationCategory": "PROFILE_DEFINITION_REQUIRED",
+      "proposedExecutionState": "NON_EXECUTABLE_NO_ELIGIBLE_PROFILE",
+      "existingGovernedDerivationIds": [],
+      "proposedProfileRecords": [],
+      "proposedBindingRequirements": [
+        "REFERENCE_POPULATION_OR_APPLICATION_SCOPE",
+        "TIME_WINDOW",
+        "UNIT_OF_ANALYSIS"
+      ],
+      "profileIdentityReviewItems": [],
+      "scientificGaps": [
+        "EXACT_PROFILE_TYPE",
+        "EXACT_METHOD",
+        "INPUT_VERSIONS_AND_HASHES",
+        "MISSINGNESS_POLICY",
+        "OUTPUT_INTERPRETATION"
+      ],
+      "ontologyDependencies": [],
+      "architectureDependencies": [
+        "GOV-RDS-CONTRACT-001-2026-09-25",
+        "WP-PSG-001_PRODUCTION_NOT_AUTHORIZED"
+      ],
+      "causalSourceEligible": false,
+      "causalSourceGate": "WP-PSG-005_REQUIRED",
+      "productionMutationAuthorized": false,
+      "migrationAction": "CREATE_SCIENTIFIC_DEFINITION_WORK_ITEM_ONLY",
+      "rollbackState": "CURRENT_PRODUCTION_RDS_AND_LEGACY_DERIVATION_UNCHANGED",
+      "knownCandidateInputs": [
+        {
+          "entityId": null,
+          "externalParameterType": "MESSAGE_LANGUAGE_PROFILE",
+          "role": "CONSTITUENT_OR_INPUT",
+          "required": true,
+          "unitScaleExpectations": "Aligned with derivation logic",
+          "alignmentRequirements": "Match analytic level, scope, and time window"
+        },
+        {
+          "entityId": null,
+          "externalParameterType": "AUDIENCE_LANGUAGE_PROFICIENCY",
+          "role": "CONSTITUENT_OR_INPUT",
+          "required": true,
+          "unitScaleExpectations": "Aligned with derivation logic",
+          "alignmentRequirements": "Match analytic level, scope, and time window"
+        }
+      ],
+      "likelyProfileType": "REQUIRES_SCIENTIFIC_CLASSIFICATION"
+    },
+    {
+      "rdsId": "INF-068",
+      "currentLayer": "Informational",
+      "currentDefinitionHash": "1979e1cf780e25d67b8a2e8f10c8d5310be337152a1cad6d92a58c9b17f41a65",
+      "currentMigrationCategory": "NON_EXECUTABLE_PENDING_SCIENCE",
+      "proposedExecutionState": "NON_EXECUTABLE_BLOCKED_BY_SCIENCE",
+      "existingGovernedDerivationIds": [],
+      "proposedProfileRecords": [],
+      "proposedBindingRequirements": [],
+      "profileIdentityReviewItems": [],
+      "scientificGaps": [
+        "EXACT_COMPUTATION_OR_MEASUREMENT_SEMANTICS",
+        "VERSIONED_INPUT_CONTRACT",
+        "APPLICATION_SCOPE"
+      ],
+      "ontologyDependencies": [],
+      "architectureDependencies": [
+        "GOV-RDS-CONTRACT-001-2026-09-25",
+        "WP-PSG-001_PRODUCTION_NOT_AUTHORIZED"
+      ],
+      "causalSourceEligible": false,
+      "causalSourceGate": "WP-PSG-005_REQUIRED",
+      "productionMutationAuthorized": false,
+      "migrationAction": "RETAIN_CONSTRUCT_NON_EXECUTABLE_PENDING_SCIENCE",
+      "rollbackState": "CURRENT_PRODUCTION_RDS_AND_LEGACY_DERIVATION_UNCHANGED"
+    },
+    {
+      "rdsId": "INS-024",
+      "currentLayer": "Institutional / Structural",
+      "currentDefinitionHash": "2045ecb397ae7f8db6f8dbd02eecd53bb90f06d0195597eca196eddf88ca413c",
+      "currentMigrationCategory": "PROFILE_DEFINITION_REQUIRED",
+      "proposedExecutionState": "NON_EXECUTABLE_NO_ELIGIBLE_PROFILE",
+      "existingGovernedDerivationIds": [],
+      "proposedProfileRecords": [],
+      "proposedBindingRequirements": [
+        "REFERENCE_POPULATION_OR_APPLICATION_SCOPE",
+        "TIME_WINDOW",
+        "UNIT_OF_ANALYSIS"
+      ],
+      "profileIdentityReviewItems": [],
+      "scientificGaps": [
+        "EXACT_PROFILE_TYPE",
+        "EXACT_METHOD",
+        "INPUT_VERSIONS_AND_HASHES",
+        "MISSINGNESS_POLICY",
+        "OUTPUT_INTERPRETATION"
+      ],
+      "ontologyDependencies": [],
+      "architectureDependencies": [
+        "GOV-RDS-CONTRACT-001-2026-09-25",
+        "WP-PSG-001_PRODUCTION_NOT_AUTHORIZED"
+      ],
+      "causalSourceEligible": false,
+      "causalSourceGate": "WP-PSG-005_REQUIRED",
+      "productionMutationAuthorized": false,
+      "migrationAction": "CREATE_SCIENTIFIC_DEFINITION_WORK_ITEM_ONLY",
+      "rollbackState": "CURRENT_PRODUCTION_RDS_AND_LEGACY_DERIVATION_UNCHANGED",
+      "knownCandidateInputs": [
+        {
+          "entityId": null,
+          "externalParameterType": "ADMINISTRATIVE_REQUIREMENTS",
+          "role": "CONSTITUENT_OR_INPUT",
+          "required": true,
+          "unitScaleExpectations": "Aligned with derivation logic",
+          "alignmentRequirements": "Match analytic level, scope, and time window"
+        },
+        {
+          "entityId": null,
+          "externalParameterType": "TIME_EFFORT_AND_DOCUMENTATION_DEMANDS",
+          "role": "CONSTITUENT_OR_INPUT",
+          "required": true,
+          "unitScaleExpectations": "Aligned with derivation logic",
+          "alignmentRequirements": "Match analytic level, scope, and time window"
+        }
+      ],
+      "likelyProfileType": "REQUIRES_SCIENTIFIC_CLASSIFICATION"
+    },
+    {
+      "rdsId": "INS-039",
+      "currentLayer": "Institutional / Structural",
+      "currentDefinitionHash": "f78c4126f897bc4819dfd223ace756ee4346f15f0cb3eda1eda9fe2f454df8f3",
+      "currentMigrationCategory": "NON_EXECUTABLE_PENDING_SCIENCE",
+      "proposedExecutionState": "NON_EXECUTABLE_BLOCKED_BY_SCIENCE",
+      "existingGovernedDerivationIds": [],
+      "proposedProfileRecords": [],
+      "proposedBindingRequirements": [],
+      "profileIdentityReviewItems": [],
+      "scientificGaps": [
+        "EXACT_COMPUTATION_OR_MEASUREMENT_SEMANTICS",
+        "VERSIONED_INPUT_CONTRACT",
+        "APPLICATION_SCOPE"
+      ],
+      "ontologyDependencies": [],
+      "architectureDependencies": [
+        "GOV-RDS-CONTRACT-001-2026-09-25",
+        "WP-PSG-001_PRODUCTION_NOT_AUTHORIZED"
+      ],
+      "causalSourceEligible": false,
+      "causalSourceGate": "WP-PSG-005_REQUIRED",
+      "productionMutationAuthorized": false,
+      "migrationAction": "RETAIN_CONSTRUCT_NON_EXECUTABLE_PENDING_SCIENCE",
+      "rollbackState": "CURRENT_PRODUCTION_RDS_AND_LEGACY_DERIVATION_UNCHANGED"
+    },
+    {
+      "rdsId": "INS-103",
+      "currentLayer": "Institutional / Structural",
+      "currentDefinitionHash": "50d9c8dfb859b22a5f97756f52a58cbd702ca03b4ccadd9a06bb073bb93fa2af",
+      "currentMigrationCategory": "NON_EXECUTABLE_PENDING_SCIENCE",
+      "proposedExecutionState": "NON_EXECUTABLE_BLOCKED_BY_SCIENCE",
+      "existingGovernedDerivationIds": [],
+      "proposedProfileRecords": [],
+      "proposedBindingRequirements": [],
+      "profileIdentityReviewItems": [],
+      "scientificGaps": [
+        "EXACT_COMPUTATION_OR_MEASUREMENT_SEMANTICS",
+        "VERSIONED_INPUT_CONTRACT",
+        "APPLICATION_SCOPE"
+      ],
+      "ontologyDependencies": [],
+      "architectureDependencies": [
+        "GOV-RDS-CONTRACT-001-2026-09-25",
+        "WP-PSG-001_PRODUCTION_NOT_AUTHORIZED"
+      ],
+      "causalSourceEligible": false,
+      "causalSourceGate": "WP-PSG-005_REQUIRED",
+      "productionMutationAuthorized": false,
+      "migrationAction": "RETAIN_CONSTRUCT_NON_EXECUTABLE_PENDING_SCIENCE",
+      "rollbackState": "CURRENT_PRODUCTION_RDS_AND_LEGACY_DERIVATION_UNCHANGED"
+    },
+    {
+      "rdsId": "INS-113",
+      "currentLayer": "Institutional / Structural",
+      "currentDefinitionHash": "4ac778a6b13397125c39426711050a6d5257ec756d01e32a896739ab47b775fd",
+      "currentMigrationCategory": "PROFILE_DEFINITION_REQUIRED",
+      "proposedExecutionState": "NON_EXECUTABLE_NO_ELIGIBLE_PROFILE",
+      "existingGovernedDerivationIds": [],
+      "proposedProfileRecords": [],
+      "proposedBindingRequirements": [
+        "REFERENCE_POPULATION_OR_APPLICATION_SCOPE",
+        "TIME_WINDOW",
+        "UNIT_OF_ANALYSIS"
+      ],
+      "profileIdentityReviewItems": [],
+      "scientificGaps": [
+        "EXACT_PROFILE_TYPE",
+        "EXACT_METHOD",
+        "INPUT_VERSIONS_AND_HASHES",
+        "MISSINGNESS_POLICY",
+        "OUTPUT_INTERPRETATION"
+      ],
+      "ontologyDependencies": [],
+      "architectureDependencies": [
+        "GOV-RDS-CONTRACT-001-2026-09-25",
+        "WP-PSG-001_PRODUCTION_NOT_AUTHORIZED"
+      ],
+      "causalSourceEligible": false,
+      "causalSourceGate": "WP-PSG-005_REQUIRED",
+      "productionMutationAuthorized": false,
+      "migrationAction": "CREATE_SCIENTIFIC_DEFINITION_WORK_ITEM_ONLY",
+      "rollbackState": "CURRENT_PRODUCTION_RDS_AND_LEGACY_DERIVATION_UNCHANGED",
+      "knownCandidateInputs": [
+        {
+          "entityId": null,
+          "externalParameterType": "INTENDED_POLICY_OR_RULE_SPECIFICATION",
+          "role": "CONSTITUENT_OR_INPUT",
+          "required": true,
+          "unitScaleExpectations": "Aligned with derivation logic",
+          "alignmentRequirements": "Match analytic level, scope, and time window"
+        },
+        {
+          "entityId": null,
+          "externalParameterType": "REALIZED_IMPLEMENTATION",
+          "role": "CONSTITUENT_OR_INPUT",
+          "required": true,
+          "unitScaleExpectations": "Aligned with derivation logic",
+          "alignmentRequirements": "Match analytic level, scope, and time window"
+        }
+      ],
+      "likelyProfileType": "REQUIRES_SCIENTIFIC_CLASSIFICATION"
+    },
+    {
+      "rdsId": "PSY-078",
+      "currentLayer": "Psychological",
+      "currentDefinitionHash": "2631d7b46c759337c4c17c23d32058a630fc2c6d21f9620cbedd81ab24616309",
+      "currentMigrationCategory": "PROFILE_DEFINITION_REQUIRED",
+      "proposedExecutionState": "NON_EXECUTABLE_NO_ELIGIBLE_PROFILE",
+      "existingGovernedDerivationIds": [],
+      "proposedProfileRecords": [],
+      "proposedBindingRequirements": [
+        "REFERENCE_POPULATION_OR_APPLICATION_SCOPE",
+        "TIME_WINDOW",
+        "UNIT_OF_ANALYSIS"
+      ],
+      "profileIdentityReviewItems": [],
+      "scientificGaps": [
+        "EXACT_PROFILE_TYPE",
+        "EXACT_METHOD",
+        "INPUT_VERSIONS_AND_HASHES",
+        "MISSINGNESS_POLICY",
+        "OUTPUT_INTERPRETATION"
+      ],
+      "ontologyDependencies": [],
+      "architectureDependencies": [
+        "GOV-RDS-CONTRACT-001-2026-09-25",
+        "WP-PSG-001_PRODUCTION_NOT_AUTHORIZED"
+      ],
+      "causalSourceEligible": false,
+      "causalSourceGate": "WP-PSG-005_REQUIRED",
+      "productionMutationAuthorized": false,
+      "migrationAction": "CREATE_SCIENTIFIC_DEFINITION_WORK_ITEM_ONLY",
+      "rollbackState": "CURRENT_PRODUCTION_RDS_AND_LEGACY_DERIVATION_UNCHANGED",
+      "knownCandidateInputs": [
+        {
+          "entityId": null,
+          "externalParameterType": "DESIRED_OR_REFERENCE_STATE",
+          "role": "CONSTITUENT_OR_INPUT",
+          "required": true,
+          "unitScaleExpectations": "Aligned with derivation logic",
+          "alignmentRequirements": "Match analytic level, scope, and time window"
+        },
+        {
+          "entityId": null,
+          "externalParameterType": "PERCEIVED_CURRENT_STATE",
+          "role": "CONSTITUENT_OR_INPUT",
+          "required": true,
+          "unitScaleExpectations": "Aligned with derivation logic",
+          "alignmentRequirements": "Match analytic level, scope, and time window"
+        }
+      ],
+      "likelyProfileType": "REQUIRES_SCIENTIFIC_CLASSIFICATION"
+    },
+    {
+      "rdsId": "RDS-0001",
+      "currentLayer": "Informational",
+      "currentDefinitionHash": "4a495a53e8ea2949b404ca50a304f3f9982d8a736f785c1f212668f25e1f0267",
+      "currentMigrationCategory": "BLOCKED_BY_ONTOLOGY",
+      "proposedExecutionState": "NON_EXECUTABLE_BLOCKED_BY_ONTOLOGY",
+      "existingGovernedDerivationIds": [],
+      "proposedProfileRecords": [],
+      "proposedBindingRequirements": [],
+      "profileIdentityReviewItems": [],
+      "scientificGaps": [
+        "ROOT_CONSTRUCT_OR_METADATA_BLOCKER"
+      ],
+      "ontologyDependencies": [
+        "WP-PSG-007_CONSTRUCT_ONTOLOGY_GOVERNANCE"
+      ],
+      "architectureDependencies": [
+        "GOV-RDS-CONTRACT-001-2026-09-25",
+        "WP-PSG-001_PRODUCTION_NOT_AUTHORIZED"
+      ],
+      "causalSourceEligible": false,
+      "causalSourceGate": "WP-PSG-005_REQUIRED",
+      "productionMutationAuthorized": false,
+      "migrationAction": "PRESERVE_ONTOLOGY_BLOCKER_NO_PROFILE",
+      "rollbackState": "CURRENT_PRODUCTION_RDS_AND_LEGACY_DERIVATION_UNCHANGED"
+    },
+    {
+      "rdsId": "RDS-0002",
+      "currentLayer": "Biological",
+      "currentDefinitionHash": "1d2c5aa1de50e326f97fee44fa31517192395092d33329364c3645a6ec546c4f",
+      "currentMigrationCategory": "NON_EXECUTABLE_PENDING_SCIENCE",
+      "proposedExecutionState": "NON_EXECUTABLE_BLOCKED_BY_SCIENCE",
+      "existingGovernedDerivationIds": [],
+      "proposedProfileRecords": [],
+      "proposedBindingRequirements": [],
+      "profileIdentityReviewItems": [],
+      "scientificGaps": [
+        "EXACT_COMPUTATION_OR_MEASUREMENT_SEMANTICS",
+        "VERSIONED_INPUT_CONTRACT",
+        "APPLICATION_SCOPE"
+      ],
+      "ontologyDependencies": [],
+      "architectureDependencies": [
+        "GOV-RDS-CONTRACT-001-2026-09-25",
+        "WP-PSG-001_PRODUCTION_NOT_AUTHORIZED"
+      ],
+      "causalSourceEligible": false,
+      "causalSourceGate": "WP-PSG-005_REQUIRED",
+      "productionMutationAuthorized": false,
+      "migrationAction": "RETAIN_CONSTRUCT_NON_EXECUTABLE_PENDING_SCIENCE",
+      "rollbackState": "CURRENT_PRODUCTION_RDS_AND_LEGACY_DERIVATION_UNCHANGED"
+    },
+    {
+      "rdsId": "RDS-0003",
+      "currentLayer": "Biological",
+      "currentDefinitionHash": "6dc578d117b5c21893c617dde85d08bc2ceac801c6e884383e659f5478043670",
+      "currentMigrationCategory": "NON_EXECUTABLE_PENDING_SCIENCE",
+      "proposedExecutionState": "NON_EXECUTABLE_BLOCKED_BY_SCIENCE",
+      "existingGovernedDerivationIds": [],
+      "proposedProfileRecords": [],
+      "proposedBindingRequirements": [],
+      "profileIdentityReviewItems": [],
+      "scientificGaps": [
+        "EXACT_COMPUTATION_OR_MEASUREMENT_SEMANTICS",
+        "VERSIONED_INPUT_CONTRACT",
+        "APPLICATION_SCOPE"
+      ],
+      "ontologyDependencies": [],
+      "architectureDependencies": [
+        "GOV-RDS-CONTRACT-001-2026-09-25",
+        "WP-PSG-001_PRODUCTION_NOT_AUTHORIZED"
+      ],
+      "causalSourceEligible": false,
+      "causalSourceGate": "WP-PSG-005_REQUIRED",
+      "productionMutationAuthorized": false,
+      "migrationAction": "RETAIN_CONSTRUCT_NON_EXECUTABLE_PENDING_SCIENCE",
+      "rollbackState": "CURRENT_PRODUCTION_RDS_AND_LEGACY_DERIVATION_UNCHANGED"
+    },
+    {
+      "rdsId": "RDS-0004",
+      "currentLayer": "Biological",
+      "currentDefinitionHash": "098823a31913343fff10b73c2afcf05468b52b7838dc625e6c699fdcc68d7d6e",
+      "currentMigrationCategory": "NON_EXECUTABLE_PENDING_SCIENCE",
+      "proposedExecutionState": "NON_EXECUTABLE_BLOCKED_BY_SCIENCE",
+      "existingGovernedDerivationIds": [],
+      "proposedProfileRecords": [],
+      "proposedBindingRequirements": [],
+      "profileIdentityReviewItems": [],
+      "scientificGaps": [
+        "EXACT_COMPUTATION_OR_MEASUREMENT_SEMANTICS",
+        "VERSIONED_INPUT_CONTRACT",
+        "APPLICATION_SCOPE"
+      ],
+      "ontologyDependencies": [],
+      "architectureDependencies": [
+        "GOV-RDS-CONTRACT-001-2026-09-25",
+        "WP-PSG-001_PRODUCTION_NOT_AUTHORIZED"
+      ],
+      "causalSourceEligible": false,
+      "causalSourceGate": "WP-PSG-005_REQUIRED",
+      "productionMutationAuthorized": false,
+      "migrationAction": "RETAIN_CONSTRUCT_NON_EXECUTABLE_PENDING_SCIENCE",
+      "rollbackState": "CURRENT_PRODUCTION_RDS_AND_LEGACY_DERIVATION_UNCHANGED"
+    },
+    {
+      "rdsId": "RDS-0005",
+      "currentLayer": "Social",
+      "currentDefinitionHash": "edbc6eb49849031ea906c5b87b321eaf76b41f99014e0008c22902c0c3e6ed34",
+      "currentMigrationCategory": "NON_EXECUTABLE_PENDING_SCIENCE",
+      "proposedExecutionState": "NON_EXECUTABLE_BLOCKED_BY_SCIENCE",
+      "existingGovernedDerivationIds": [],
+      "proposedProfileRecords": [],
+      "proposedBindingRequirements": [],
+      "profileIdentityReviewItems": [],
+      "scientificGaps": [
+        "EXACT_COMPUTATION_OR_MEASUREMENT_SEMANTICS",
+        "VERSIONED_INPUT_CONTRACT",
+        "APPLICATION_SCOPE"
+      ],
+      "ontologyDependencies": [],
+      "architectureDependencies": [
+        "GOV-RDS-CONTRACT-001-2026-09-25",
+        "WP-PSG-001_PRODUCTION_NOT_AUTHORIZED"
+      ],
+      "causalSourceEligible": false,
+      "causalSourceGate": "WP-PSG-005_REQUIRED",
+      "productionMutationAuthorized": false,
+      "migrationAction": "RETAIN_CONSTRUCT_NON_EXECUTABLE_PENDING_SCIENCE",
+      "rollbackState": "CURRENT_PRODUCTION_RDS_AND_LEGACY_DERIVATION_UNCHANGED"
+    },
+    {
+      "rdsId": "RDS-0006",
+      "currentLayer": "Social",
+      "currentDefinitionHash": "f8b1b5ec3dad8f1fb06b609605f4b80655a4e6e2bf18cd531e3a71e0a1a3fe1f",
+      "currentMigrationCategory": "READY_FOR_PROFILE_MATERIALIZATION",
+      "proposedExecutionState": "EXECUTABLE_IN_PROTOTYPE_ONLY",
+      "existingGovernedDerivationIds": [
+        "DER-V1-SOC-F07-001"
+      ],
+      "proposedProfileRecords": [
+        {
+          "profileId": "PROTO-DER-V1-SOC-F07-001",
+          "profileVersion": "1.0.0",
+          "profileType": "DERIVATION_PROFILE",
+          "compatibilityWrapperFor": "DER-V1-SOC-F07-001",
+          "productionStatus": "PROPOSED_ONLY"
+        }
+      ],
+      "proposedBindingRequirements": [
+        "networkBoundary",
+        "nodeSet",
+        "tieRelation",
+        "timeWindow"
+      ],
+      "profileIdentityReviewItems": [],
+      "scientificGaps": [],
+      "ontologyDependencies": [],
+      "architectureDependencies": [
+        "GOV-RDS-CONTRACT-001-2026-09-25",
+        "WP-PSG-001_PRODUCTION_NOT_AUTHORIZED"
+      ],
+      "causalSourceEligible": false,
+      "causalSourceGate": "WP-PSG-005_REQUIRED",
+      "productionMutationAuthorized": false,
+      "migrationAction": "FUTURE_ADDITIVE_WRAPPER_PHASE_1_ONLY",
+      "rollbackState": "CURRENT_PRODUCTION_RDS_AND_LEGACY_DERIVATION_UNCHANGED",
+      "lineageMap": {
+        "legacyId": "DER-V1-SOC-F07-001",
+        "strategy": "PRESERVE_ID_AND_LINEAGE_ADDITIVE_WRAPPER",
+        "legacyDefinitionHash": "1f4deb8927f023179666dfa4a680589c0bad8e16b78ed7e264583295265ff104"
+      }
+    },
+    {
+      "rdsId": "RDS-0007",
+      "currentLayer": "Social",
+      "currentDefinitionHash": "80cd5d0e9242000cd8b1666a108816d35d6d2c52e577ce977ae934c6496e6919",
+      "currentMigrationCategory": "NON_EXECUTABLE_PENDING_SCIENCE",
+      "proposedExecutionState": "NON_EXECUTABLE_BLOCKED_BY_SCIENCE",
+      "existingGovernedDerivationIds": [],
+      "proposedProfileRecords": [],
+      "proposedBindingRequirements": [],
+      "profileIdentityReviewItems": [],
+      "scientificGaps": [
+        "EXACT_COMPUTATION_OR_MEASUREMENT_SEMANTICS",
+        "VERSIONED_INPUT_CONTRACT",
+        "APPLICATION_SCOPE"
+      ],
+      "ontologyDependencies": [],
+      "architectureDependencies": [
+        "GOV-RDS-CONTRACT-001-2026-09-25",
+        "WP-PSG-001_PRODUCTION_NOT_AUTHORIZED"
+      ],
+      "causalSourceEligible": false,
+      "causalSourceGate": "WP-PSG-005_REQUIRED",
+      "productionMutationAuthorized": false,
+      "migrationAction": "RETAIN_CONSTRUCT_NON_EXECUTABLE_PENDING_SCIENCE",
+      "rollbackState": "CURRENT_PRODUCTION_RDS_AND_LEGACY_DERIVATION_UNCHANGED"
+    },
+    {
+      "rdsId": "SOC-018",
+      "currentLayer": "Social",
+      "currentDefinitionHash": "c0f4077de0ca67e3c48440a3c999bfdb3a3e92402135c009db92c01305bf5249",
+      "currentMigrationCategory": "PROFILE_DEFINITION_REQUIRED",
+      "proposedExecutionState": "NON_EXECUTABLE_NO_ELIGIBLE_PROFILE",
+      "existingGovernedDerivationIds": [],
+      "proposedProfileRecords": [],
+      "proposedBindingRequirements": [
+        "REFERENCE_POPULATION_OR_APPLICATION_SCOPE",
+        "TIME_WINDOW",
+        "UNIT_OF_ANALYSIS"
+      ],
+      "profileIdentityReviewItems": [],
+      "scientificGaps": [
+        "EXACT_PROFILE_TYPE",
+        "EXACT_METHOD",
+        "INPUT_VERSIONS_AND_HASHES",
+        "MISSINGNESS_POLICY",
+        "OUTPUT_INTERPRETATION"
+      ],
+      "ontologyDependencies": [],
+      "architectureDependencies": [
+        "GOV-RDS-CONTRACT-001-2026-09-25",
+        "WP-PSG-001_PRODUCTION_NOT_AUTHORIZED"
+      ],
+      "causalSourceEligible": false,
+      "causalSourceGate": "WP-PSG-005_REQUIRED",
+      "productionMutationAuthorized": false,
+      "migrationAction": "CREATE_SCIENTIFIC_DEFINITION_WORK_ITEM_ONLY",
+      "rollbackState": "CURRENT_PRODUCTION_RDS_AND_LEGACY_DERIVATION_UNCHANGED",
+      "knownCandidateInputs": [
+        {
+          "entityId": null,
+          "externalParameterType": "TIE_FORMATION_TIMESTAMP",
+          "role": "CONSTITUENT_OR_INPUT",
+          "required": true,
+          "unitScaleExpectations": "Aligned with derivation logic",
+          "alignmentRequirements": "Match analytic level, scope, and time window"
+        },
+        {
+          "entityId": null,
+          "externalParameterType": "OBSERVATION_TIMESTAMP",
+          "role": "CONSTITUENT_OR_INPUT",
+          "required": true,
+          "unitScaleExpectations": "Aligned with derivation logic",
+          "alignmentRequirements": "Match analytic level, scope, and time window"
+        },
+        {
+          "entityId": null,
+          "externalParameterType": "TIE_STATE_RULE",
+          "role": "CONSTITUENT_OR_INPUT",
+          "required": true,
+          "unitScaleExpectations": "Aligned with derivation logic",
+          "alignmentRequirements": "Match analytic level, scope, and time window"
+        }
+      ],
+      "likelyProfileType": "REQUIRES_SCIENTIFIC_CLASSIFICATION"
+    },
+    {
+      "rdsId": "SOC-022",
+      "currentLayer": "Social",
+      "currentDefinitionHash": "fe4de783ba2c67dab910ed2d16f52b9ba66008dd099e62439c756be87ff4105d",
+      "currentMigrationCategory": "PROFILE_DEFINITION_REQUIRED",
+      "proposedExecutionState": "NON_EXECUTABLE_NO_ELIGIBLE_PROFILE",
+      "existingGovernedDerivationIds": [],
+      "proposedProfileRecords": [],
+      "proposedBindingRequirements": [
+        "REFERENCE_POPULATION_OR_APPLICATION_SCOPE",
+        "TIME_WINDOW",
+        "UNIT_OF_ANALYSIS"
+      ],
+      "profileIdentityReviewItems": [],
+      "scientificGaps": [
+        "EXACT_PROFILE_TYPE",
+        "EXACT_METHOD",
+        "INPUT_VERSIONS_AND_HASHES",
+        "MISSINGNESS_POLICY",
+        "OUTPUT_INTERPRETATION"
+      ],
+      "ontologyDependencies": [],
+      "architectureDependencies": [
+        "GOV-RDS-CONTRACT-001-2026-09-25",
+        "WP-PSG-001_PRODUCTION_NOT_AUTHORIZED"
+      ],
+      "causalSourceEligible": false,
+      "causalSourceGate": "WP-PSG-005_REQUIRED",
+      "productionMutationAuthorized": false,
+      "migrationAction": "CREATE_SCIENTIFIC_DEFINITION_WORK_ITEM_ONLY",
+      "rollbackState": "CURRENT_PRODUCTION_RDS_AND_LEGACY_DERIVATION_UNCHANGED",
+      "knownCandidateInputs": [
+        {
+          "entityId": "SOC-103",
+          "externalParameterType": null,
+          "role": "CONSTITUENT_OR_INPUT",
+          "required": true,
+          "unitScaleExpectations": "Aligned with derivation logic",
+          "alignmentRequirements": "Match analytic level, scope, and time window"
+        },
+        {
+          "entityId": null,
+          "externalParameterType": "BASELINE_ACTIVE_TIE",
+          "role": "CONSTITUENT_OR_INPUT",
+          "required": true,
+          "unitScaleExpectations": "Aligned with derivation logic",
+          "alignmentRequirements": "Match analytic level, scope, and time window"
+        },
+        {
+          "entityId": null,
+          "externalParameterType": "PREDICTION_HORIZON",
+          "role": "CONSTITUENT_OR_INPUT",
+          "required": true,
+          "unitScaleExpectations": "Aligned with derivation logic",
+          "alignmentRequirements": "Match analytic level, scope, and time window"
+        },
+        {
+          "entityId": null,
+          "externalParameterType": "TIE_STATE_MODEL",
+          "role": "CONSTITUENT_OR_INPUT",
+          "required": true,
+          "unitScaleExpectations": "Aligned with derivation logic",
+          "alignmentRequirements": "Match analytic level, scope, and time window"
+        }
+      ],
+      "likelyProfileType": "REQUIRES_SCIENTIFIC_CLASSIFICATION"
+    },
+    {
+      "rdsId": "SOC-024",
+      "currentLayer": "Social",
+      "currentDefinitionHash": "0f8ad3c48e5deabe59999880d202f67049174b88d148faec219f60db5e83856c",
+      "currentMigrationCategory": "MULTIPLE_PROFILE_REVIEW_REQUIRED",
+      "proposedExecutionState": "NON_EXECUTABLE_NO_ELIGIBLE_PROFILE",
+      "existingGovernedDerivationIds": [],
+      "proposedProfileRecords": [],
+      "proposedBindingRequirements": [],
+      "profileIdentityReviewItems": [
+        "DIRECTION_DIRECTED_OR_UNDIRECTED",
+        "WEIGHT_BINARY_OR_VALUED",
+        "LOCAL_OR_GLOBAL",
+        "NORMALIZATION_VARIANT",
+        "CONSTITUENT_SET",
+        "AGGREGATION_RULE",
+        "MISSINGNESS_POLICY",
+        "UNIT_OF_ANALYSIS",
+        "NETWORK_OR_POPULATION_BOUNDARY",
+        "TIME_WINDOW"
+      ],
+      "scientificGaps": [
+        "PROFILE_IDENTITY_REVIEW_REQUIRED"
+      ],
+      "ontologyDependencies": [],
+      "architectureDependencies": [
+        "GOV-RDS-CONTRACT-001-2026-09-25",
+        "WP-PSG-001_PRODUCTION_NOT_AUTHORIZED"
+      ],
+      "causalSourceEligible": false,
+      "causalSourceGate": "WP-PSG-005_REQUIRED",
+      "productionMutationAuthorized": false,
+      "migrationAction": "PROFILE_IDENTITY_REVIEW_ONLY",
+      "rollbackState": "CURRENT_PRODUCTION_RDS_AND_LEGACY_DERIVATION_UNCHANGED"
+    },
+    {
+      "rdsId": "SOC-035",
+      "currentLayer": "Social",
+      "currentDefinitionHash": "813f5593d2686abdaac5e56c4fe78de4a2b87515c1729a1b3ea19c090b1cb070",
+      "currentMigrationCategory": "PROFILE_DEFINITION_REQUIRED",
+      "proposedExecutionState": "NON_EXECUTABLE_NO_ELIGIBLE_PROFILE",
+      "existingGovernedDerivationIds": [],
+      "proposedProfileRecords": [],
+      "proposedBindingRequirements": [
+        "REFERENCE_POPULATION_OR_APPLICATION_SCOPE",
+        "TIME_WINDOW",
+        "UNIT_OF_ANALYSIS"
+      ],
+      "profileIdentityReviewItems": [],
+      "scientificGaps": [
+        "EXACT_PROFILE_TYPE",
+        "EXACT_METHOD",
+        "INPUT_VERSIONS_AND_HASHES",
+        "MISSINGNESS_POLICY",
+        "OUTPUT_INTERPRETATION"
+      ],
+      "ontologyDependencies": [],
+      "architectureDependencies": [
+        "GOV-RDS-CONTRACT-001-2026-09-25",
+        "WP-PSG-001_PRODUCTION_NOT_AUTHORIZED"
+      ],
+      "causalSourceEligible": false,
+      "causalSourceGate": "WP-PSG-005_REQUIRED",
+      "productionMutationAuthorized": false,
+      "migrationAction": "CREATE_SCIENTIFIC_DEFINITION_WORK_ITEM_ONLY",
+      "rollbackState": "CURRENT_PRODUCTION_RDS_AND_LEGACY_DERIVATION_UNCHANGED",
+      "knownCandidateInputs": [
+        {
+          "entityId": null,
+          "externalParameterType": "FOCAL_TO_PARTNER_RESOURCE_FLOW",
+          "role": "CONSTITUENT_OR_INPUT",
+          "required": true,
+          "unitScaleExpectations": "Aligned with derivation logic",
+          "alignmentRequirements": "Match analytic level, scope, and time window"
+        },
+        {
+          "entityId": null,
+          "externalParameterType": "PARTNER_TO_FOCAL_RESOURCE_FLOW",
+          "role": "CONSTITUENT_OR_INPUT",
+          "required": true,
+          "unitScaleExpectations": "Aligned with derivation logic",
+          "alignmentRequirements": "Match analytic level, scope, and time window"
+        }
+      ],
+      "likelyProfileType": "REQUIRES_SCIENTIFIC_CLASSIFICATION"
+    },
+    {
+      "rdsId": "SOC-041",
+      "currentLayer": "Social",
+      "currentDefinitionHash": "017377ea759c775dcff609669f849b73784a8083190cf520e7b8d1ff31acf990",
+      "currentMigrationCategory": "PROFILE_DEFINITION_REQUIRED",
+      "proposedExecutionState": "NON_EXECUTABLE_NO_ELIGIBLE_PROFILE",
+      "existingGovernedDerivationIds": [],
+      "proposedProfileRecords": [],
+      "proposedBindingRequirements": [
+        "REFERENCE_POPULATION_OR_APPLICATION_SCOPE",
+        "TIME_WINDOW",
+        "UNIT_OF_ANALYSIS"
+      ],
+      "profileIdentityReviewItems": [],
+      "scientificGaps": [
+        "EXACT_PROFILE_TYPE",
+        "EXACT_METHOD",
+        "INPUT_VERSIONS_AND_HASHES",
+        "MISSINGNESS_POLICY",
+        "OUTPUT_INTERPRETATION"
+      ],
+      "ontologyDependencies": [],
+      "architectureDependencies": [
+        "GOV-RDS-CONTRACT-001-2026-09-25",
+        "WP-PSG-001_PRODUCTION_NOT_AUTHORIZED"
+      ],
+      "causalSourceEligible": false,
+      "causalSourceGate": "WP-PSG-005_REQUIRED",
+      "productionMutationAuthorized": false,
+      "migrationAction": "CREATE_SCIENTIFIC_DEFINITION_WORK_ITEM_ONLY",
+      "rollbackState": "CURRENT_PRODUCTION_RDS_AND_LEGACY_DERIVATION_UNCHANGED",
+      "knownCandidateInputs": [
+        {
+          "entityId": null,
+          "externalParameterType": "MEMBER_STATUS_SCORES",
+          "role": "CONSTITUENT_OR_INPUT",
+          "required": true,
+          "unitScaleExpectations": "Aligned with derivation logic",
+          "alignmentRequirements": "Match analytic level, scope, and time window"
+        },
+        {
+          "entityId": null,
+          "externalParameterType": "GROUP_BOUNDARY",
+          "role": "CONSTITUENT_OR_INPUT",
+          "required": true,
+          "unitScaleExpectations": "Aligned with derivation logic",
+          "alignmentRequirements": "Match analytic level, scope, and time window"
+        }
+      ],
+      "likelyProfileType": "REQUIRES_SCIENTIFIC_CLASSIFICATION"
+    },
+    {
+      "rdsId": "SOC-046",
+      "currentLayer": "Social",
+      "currentDefinitionHash": "36681476bcbcc729e7e88d2c6ffcf0d6a8f9597100fa1fd1b52d646148d58c1e",
+      "currentMigrationCategory": "PROFILE_DEFINITION_REQUIRED",
+      "proposedExecutionState": "NON_EXECUTABLE_NO_ELIGIBLE_PROFILE",
+      "existingGovernedDerivationIds": [],
+      "proposedProfileRecords": [],
+      "proposedBindingRequirements": [
+        "REFERENCE_POPULATION_OR_APPLICATION_SCOPE",
+        "TIME_WINDOW",
+        "UNIT_OF_ANALYSIS"
+      ],
+      "profileIdentityReviewItems": [],
+      "scientificGaps": [
+        "EXACT_PROFILE_TYPE",
+        "EXACT_METHOD",
+        "INPUT_VERSIONS_AND_HASHES",
+        "MISSINGNESS_POLICY",
+        "OUTPUT_INTERPRETATION"
+      ],
+      "ontologyDependencies": [],
+      "architectureDependencies": [
+        "GOV-RDS-CONTRACT-001-2026-09-25",
+        "WP-PSG-001_PRODUCTION_NOT_AUTHORIZED"
+      ],
+      "causalSourceEligible": false,
+      "causalSourceGate": "WP-PSG-005_REQUIRED",
+      "productionMutationAuthorized": false,
+      "migrationAction": "CREATE_SCIENTIFIC_DEFINITION_WORK_ITEM_ONLY",
+      "rollbackState": "CURRENT_PRODUCTION_RDS_AND_LEGACY_DERIVATION_UNCHANGED",
+      "knownCandidateInputs": [
+        {
+          "entityId": null,
+          "externalParameterType": "A_TO_B_RESOURCE_CONTROL",
+          "role": "CONSTITUENT_OR_INPUT",
+          "required": true,
+          "unitScaleExpectations": "Aligned with derivation logic",
+          "alignmentRequirements": "Match analytic level, scope, and time window"
+        },
+        {
+          "entityId": null,
+          "externalParameterType": "B_TO_A_RESOURCE_CONTROL",
+          "role": "CONSTITUENT_OR_INPUT",
+          "required": true,
+          "unitScaleExpectations": "Aligned with derivation logic",
+          "alignmentRequirements": "Match analytic level, scope, and time window"
+        },
+        {
+          "entityId": null,
+          "externalParameterType": "ALTERNATIVES",
+          "role": "CONSTITUENT_OR_INPUT",
+          "required": true,
+          "unitScaleExpectations": "Aligned with derivation logic",
+          "alignmentRequirements": "Match analytic level, scope, and time window"
+        }
+      ],
+      "likelyProfileType": "REQUIRES_SCIENTIFIC_CLASSIFICATION"
+    },
+    {
+      "rdsId": "SOC-047",
+      "currentLayer": "Social",
+      "currentDefinitionHash": "76f1446876b659e6c3ec0443459c690a91f4b906407e87008bb1f4efc571087f",
+      "currentMigrationCategory": "PROFILE_DEFINITION_REQUIRED",
+      "proposedExecutionState": "NON_EXECUTABLE_NO_ELIGIBLE_PROFILE",
+      "existingGovernedDerivationIds": [],
+      "proposedProfileRecords": [],
+      "proposedBindingRequirements": [
+        "REFERENCE_POPULATION_OR_APPLICATION_SCOPE",
+        "TIME_WINDOW",
+        "UNIT_OF_ANALYSIS"
+      ],
+      "profileIdentityReviewItems": [],
+      "scientificGaps": [
+        "EXACT_PROFILE_TYPE",
+        "EXACT_METHOD",
+        "INPUT_VERSIONS_AND_HASHES",
+        "MISSINGNESS_POLICY",
+        "OUTPUT_INTERPRETATION"
+      ],
+      "ontologyDependencies": [],
+      "architectureDependencies": [
+        "GOV-RDS-CONTRACT-001-2026-09-25",
+        "WP-PSG-001_PRODUCTION_NOT_AUTHORIZED"
+      ],
+      "causalSourceEligible": false,
+      "causalSourceGate": "WP-PSG-005_REQUIRED",
+      "productionMutationAuthorized": false,
+      "migrationAction": "CREATE_SCIENTIFIC_DEFINITION_WORK_ITEM_ONLY",
+      "rollbackState": "CURRENT_PRODUCTION_RDS_AND_LEGACY_DERIVATION_UNCHANGED",
+      "knownCandidateInputs": [
+        {
+          "entityId": null,
+          "externalParameterType": "ACTOR_A_DEPENDENCE_ON_B",
+          "role": "CONSTITUENT_OR_INPUT",
+          "required": true,
+          "unitScaleExpectations": "Aligned with derivation logic",
+          "alignmentRequirements": "Match analytic level, scope, and time window"
+        },
+        {
+          "entityId": null,
+          "externalParameterType": "ACTOR_B_DEPENDENCE_ON_A",
+          "role": "CONSTITUENT_OR_INPUT",
+          "required": true,
+          "unitScaleExpectations": "Aligned with derivation logic",
+          "alignmentRequirements": "Match analytic level, scope, and time window"
+        }
+      ],
+      "likelyProfileType": "REQUIRES_SCIENTIFIC_CLASSIFICATION"
+    },
+    {
+      "rdsId": "SOC-049",
+      "currentLayer": "Social",
+      "currentDefinitionHash": "c1d147cc546196a91e6cb0671b699087b20fe683408b9700175fc90e1bc0bc75",
+      "currentMigrationCategory": "MULTIPLE_PROFILE_REVIEW_REQUIRED",
+      "proposedExecutionState": "NON_EXECUTABLE_NO_ELIGIBLE_PROFILE",
+      "existingGovernedDerivationIds": [],
+      "proposedProfileRecords": [],
+      "proposedBindingRequirements": [],
+      "profileIdentityReviewItems": [
+        "DIRECTION_DIRECTED_OR_UNDIRECTED",
+        "WEIGHT_BINARY_OR_VALUED",
+        "LOCAL_OR_GLOBAL",
+        "NORMALIZATION_VARIANT",
+        "CONSTITUENT_SET",
+        "AGGREGATION_RULE",
+        "MISSINGNESS_POLICY",
+        "UNIT_OF_ANALYSIS",
+        "NETWORK_OR_POPULATION_BOUNDARY",
+        "TIME_WINDOW"
+      ],
+      "scientificGaps": [
+        "PROFILE_IDENTITY_REVIEW_REQUIRED"
+      ],
+      "ontologyDependencies": [],
+      "architectureDependencies": [
+        "GOV-RDS-CONTRACT-001-2026-09-25",
+        "WP-PSG-001_PRODUCTION_NOT_AUTHORIZED"
+      ],
+      "causalSourceEligible": false,
+      "causalSourceGate": "WP-PSG-005_REQUIRED",
+      "productionMutationAuthorized": false,
+      "migrationAction": "PROFILE_IDENTITY_REVIEW_ONLY",
+      "rollbackState": "CURRENT_PRODUCTION_RDS_AND_LEGACY_DERIVATION_UNCHANGED"
+    },
+    {
+      "rdsId": "SOC-050",
+      "currentLayer": "Social",
+      "currentDefinitionHash": "f52d2efd16ba86b238abe09d0a5c6b73ec372f04327708e565ebef7b9f369277",
+      "currentMigrationCategory": "MULTIPLE_PROFILE_REVIEW_REQUIRED",
+      "proposedExecutionState": "NON_EXECUTABLE_NO_ELIGIBLE_PROFILE",
+      "existingGovernedDerivationIds": [],
+      "proposedProfileRecords": [],
+      "proposedBindingRequirements": [],
+      "profileIdentityReviewItems": [
+        "DIRECTION_DIRECTED_OR_UNDIRECTED",
+        "WEIGHT_BINARY_OR_VALUED",
+        "LOCAL_OR_GLOBAL",
+        "NORMALIZATION_VARIANT",
+        "CONSTITUENT_SET",
+        "AGGREGATION_RULE",
+        "MISSINGNESS_POLICY",
+        "UNIT_OF_ANALYSIS",
+        "NETWORK_OR_POPULATION_BOUNDARY",
+        "TIME_WINDOW"
+      ],
+      "scientificGaps": [
+        "PROFILE_IDENTITY_REVIEW_REQUIRED"
+      ],
+      "ontologyDependencies": [],
+      "architectureDependencies": [
+        "GOV-RDS-CONTRACT-001-2026-09-25",
+        "WP-PSG-001_PRODUCTION_NOT_AUTHORIZED"
+      ],
+      "causalSourceEligible": false,
+      "causalSourceGate": "WP-PSG-005_REQUIRED",
+      "productionMutationAuthorized": false,
+      "migrationAction": "PROFILE_IDENTITY_REVIEW_ONLY",
+      "rollbackState": "CURRENT_PRODUCTION_RDS_AND_LEGACY_DERIVATION_UNCHANGED"
+    },
+    {
+      "rdsId": "SOC-051",
+      "currentLayer": "Social",
+      "currentDefinitionHash": "3ec04f2fa0d478fb1d058758ce2f375a0beba962948a4d2ec4e00cbfa68fdc55",
+      "currentMigrationCategory": "MULTIPLE_PROFILE_REVIEW_REQUIRED",
+      "proposedExecutionState": "NON_EXECUTABLE_NO_ELIGIBLE_PROFILE",
+      "existingGovernedDerivationIds": [],
+      "proposedProfileRecords": [],
+      "proposedBindingRequirements": [],
+      "profileIdentityReviewItems": [
+        "DIRECTION_DIRECTED_OR_UNDIRECTED",
+        "WEIGHT_BINARY_OR_VALUED",
+        "LOCAL_OR_GLOBAL",
+        "NORMALIZATION_VARIANT",
+        "CONSTITUENT_SET",
+        "AGGREGATION_RULE",
+        "MISSINGNESS_POLICY",
+        "UNIT_OF_ANALYSIS",
+        "NETWORK_OR_POPULATION_BOUNDARY",
+        "TIME_WINDOW"
+      ],
+      "scientificGaps": [
+        "PROFILE_IDENTITY_REVIEW_REQUIRED"
+      ],
+      "ontologyDependencies": [],
+      "architectureDependencies": [
+        "GOV-RDS-CONTRACT-001-2026-09-25",
+        "WP-PSG-001_PRODUCTION_NOT_AUTHORIZED"
+      ],
+      "causalSourceEligible": false,
+      "causalSourceGate": "WP-PSG-005_REQUIRED",
+      "productionMutationAuthorized": false,
+      "migrationAction": "PROFILE_IDENTITY_REVIEW_ONLY",
+      "rollbackState": "CURRENT_PRODUCTION_RDS_AND_LEGACY_DERIVATION_UNCHANGED"
+    },
+    {
+      "rdsId": "SOC-052",
+      "currentLayer": "Social",
+      "currentDefinitionHash": "86f2b8f2ea40d95c40dcb93f0cb3a5f5f5e8a44ed538cb321dd3de31f084d40b",
+      "currentMigrationCategory": "MULTIPLE_PROFILE_REVIEW_REQUIRED",
+      "proposedExecutionState": "NON_EXECUTABLE_NO_ELIGIBLE_PROFILE",
+      "existingGovernedDerivationIds": [],
+      "proposedProfileRecords": [],
+      "proposedBindingRequirements": [],
+      "profileIdentityReviewItems": [
+        "DIRECTION_DIRECTED_OR_UNDIRECTED",
+        "WEIGHT_BINARY_OR_VALUED",
+        "LOCAL_OR_GLOBAL",
+        "NORMALIZATION_VARIANT",
+        "CONSTITUENT_SET",
+        "AGGREGATION_RULE",
+        "MISSINGNESS_POLICY",
+        "UNIT_OF_ANALYSIS",
+        "NETWORK_OR_POPULATION_BOUNDARY",
+        "TIME_WINDOW"
+      ],
+      "scientificGaps": [
+        "PROFILE_IDENTITY_REVIEW_REQUIRED"
+      ],
+      "ontologyDependencies": [],
+      "architectureDependencies": [
+        "GOV-RDS-CONTRACT-001-2026-09-25",
+        "WP-PSG-001_PRODUCTION_NOT_AUTHORIZED"
+      ],
+      "causalSourceEligible": false,
+      "causalSourceGate": "WP-PSG-005_REQUIRED",
+      "productionMutationAuthorized": false,
+      "migrationAction": "PROFILE_IDENTITY_REVIEW_ONLY",
+      "rollbackState": "CURRENT_PRODUCTION_RDS_AND_LEGACY_DERIVATION_UNCHANGED"
+    },
+    {
+      "rdsId": "SOC-053",
+      "currentLayer": "Social",
+      "currentDefinitionHash": "ec2eed05ed6025eda7d95d85705e8cd128e1a869c15d9fc2b4e555504822f2ec",
+      "currentMigrationCategory": "MULTIPLE_PROFILE_REVIEW_REQUIRED",
+      "proposedExecutionState": "NON_EXECUTABLE_NO_ELIGIBLE_PROFILE",
+      "existingGovernedDerivationIds": [],
+      "proposedProfileRecords": [],
+      "proposedBindingRequirements": [],
+      "profileIdentityReviewItems": [
+        "DIRECTION_DIRECTED_OR_UNDIRECTED",
+        "WEIGHT_BINARY_OR_VALUED",
+        "LOCAL_OR_GLOBAL",
+        "NORMALIZATION_VARIANT",
+        "CONSTITUENT_SET",
+        "AGGREGATION_RULE",
+        "MISSINGNESS_POLICY",
+        "UNIT_OF_ANALYSIS",
+        "NETWORK_OR_POPULATION_BOUNDARY",
+        "TIME_WINDOW"
+      ],
+      "scientificGaps": [
+        "PROFILE_IDENTITY_REVIEW_REQUIRED"
+      ],
+      "ontologyDependencies": [],
+      "architectureDependencies": [
+        "GOV-RDS-CONTRACT-001-2026-09-25",
+        "WP-PSG-001_PRODUCTION_NOT_AUTHORIZED"
+      ],
+      "causalSourceEligible": false,
+      "causalSourceGate": "WP-PSG-005_REQUIRED",
+      "productionMutationAuthorized": false,
+      "migrationAction": "PROFILE_IDENTITY_REVIEW_ONLY",
+      "rollbackState": "CURRENT_PRODUCTION_RDS_AND_LEGACY_DERIVATION_UNCHANGED"
+    },
+    {
+      "rdsId": "SOC-054",
+      "currentLayer": "Social",
+      "currentDefinitionHash": "d296019bc54803b9a523d8ac7f99e499f625d33fb53cdd9389b27bf41b84085b",
+      "currentMigrationCategory": "MULTIPLE_PROFILE_REVIEW_REQUIRED",
+      "proposedExecutionState": "NON_EXECUTABLE_NO_ELIGIBLE_PROFILE",
+      "existingGovernedDerivationIds": [],
+      "proposedProfileRecords": [],
+      "proposedBindingRequirements": [],
+      "profileIdentityReviewItems": [
+        "DIRECTION_DIRECTED_OR_UNDIRECTED",
+        "WEIGHT_BINARY_OR_VALUED",
+        "LOCAL_OR_GLOBAL",
+        "NORMALIZATION_VARIANT",
+        "CONSTITUENT_SET",
+        "AGGREGATION_RULE",
+        "MISSINGNESS_POLICY",
+        "UNIT_OF_ANALYSIS",
+        "NETWORK_OR_POPULATION_BOUNDARY",
+        "TIME_WINDOW"
+      ],
+      "scientificGaps": [
+        "PROFILE_IDENTITY_REVIEW_REQUIRED"
+      ],
+      "ontologyDependencies": [],
+      "architectureDependencies": [
+        "GOV-RDS-CONTRACT-001-2026-09-25",
+        "WP-PSG-001_PRODUCTION_NOT_AUTHORIZED"
+      ],
+      "causalSourceEligible": false,
+      "causalSourceGate": "WP-PSG-005_REQUIRED",
+      "productionMutationAuthorized": false,
+      "migrationAction": "PROFILE_IDENTITY_REVIEW_ONLY",
+      "rollbackState": "CURRENT_PRODUCTION_RDS_AND_LEGACY_DERIVATION_UNCHANGED"
+    },
+    {
+      "rdsId": "SOC-055",
+      "currentLayer": "Social",
+      "currentDefinitionHash": "09de289ab62ddf9a4ff1dc1e01ca768190d28545b052423c27d3726a7f751fb7",
+      "currentMigrationCategory": "MULTIPLE_PROFILE_REVIEW_REQUIRED",
+      "proposedExecutionState": "NON_EXECUTABLE_NO_ELIGIBLE_PROFILE",
+      "existingGovernedDerivationIds": [],
+      "proposedProfileRecords": [],
+      "proposedBindingRequirements": [],
+      "profileIdentityReviewItems": [
+        "DIRECTION_DIRECTED_OR_UNDIRECTED",
+        "WEIGHT_BINARY_OR_VALUED",
+        "LOCAL_OR_GLOBAL",
+        "NORMALIZATION_VARIANT",
+        "CONSTITUENT_SET",
+        "AGGREGATION_RULE",
+        "MISSINGNESS_POLICY",
+        "UNIT_OF_ANALYSIS",
+        "NETWORK_OR_POPULATION_BOUNDARY",
+        "TIME_WINDOW"
+      ],
+      "scientificGaps": [
+        "PROFILE_IDENTITY_REVIEW_REQUIRED"
+      ],
+      "ontologyDependencies": [],
+      "architectureDependencies": [
+        "GOV-RDS-CONTRACT-001-2026-09-25",
+        "WP-PSG-001_PRODUCTION_NOT_AUTHORIZED"
+      ],
+      "causalSourceEligible": false,
+      "causalSourceGate": "WP-PSG-005_REQUIRED",
+      "productionMutationAuthorized": false,
+      "migrationAction": "PROFILE_IDENTITY_REVIEW_ONLY",
+      "rollbackState": "CURRENT_PRODUCTION_RDS_AND_LEGACY_DERIVATION_UNCHANGED"
+    },
+    {
+      "rdsId": "SOC-056",
+      "currentLayer": "Social",
+      "currentDefinitionHash": "e89d2f58d2d14f72c61a94dd5936a64521b21002b48a9caad7c741589cbb5429",
+      "currentMigrationCategory": "MULTIPLE_PROFILE_REVIEW_REQUIRED",
+      "proposedExecutionState": "NON_EXECUTABLE_NO_ELIGIBLE_PROFILE",
+      "existingGovernedDerivationIds": [],
+      "proposedProfileRecords": [],
+      "proposedBindingRequirements": [],
+      "profileIdentityReviewItems": [
+        "DIRECTION_DIRECTED_OR_UNDIRECTED",
+        "WEIGHT_BINARY_OR_VALUED",
+        "LOCAL_OR_GLOBAL",
+        "NORMALIZATION_VARIANT",
+        "CONSTITUENT_SET",
+        "AGGREGATION_RULE",
+        "MISSINGNESS_POLICY",
+        "UNIT_OF_ANALYSIS",
+        "NETWORK_OR_POPULATION_BOUNDARY",
+        "TIME_WINDOW"
+      ],
+      "scientificGaps": [
+        "PROFILE_IDENTITY_REVIEW_REQUIRED"
+      ],
+      "ontologyDependencies": [],
+      "architectureDependencies": [
+        "GOV-RDS-CONTRACT-001-2026-09-25",
+        "WP-PSG-001_PRODUCTION_NOT_AUTHORIZED"
+      ],
+      "causalSourceEligible": false,
+      "causalSourceGate": "WP-PSG-005_REQUIRED",
+      "productionMutationAuthorized": false,
+      "migrationAction": "PROFILE_IDENTITY_REVIEW_ONLY",
+      "rollbackState": "CURRENT_PRODUCTION_RDS_AND_LEGACY_DERIVATION_UNCHANGED"
+    },
+    {
+      "rdsId": "SOC-057",
+      "currentLayer": "Social",
+      "currentDefinitionHash": "63fc6a635ec8da060a7a5d4f1de570893983c1293f444367273865d53aae6c74",
+      "currentMigrationCategory": "MULTIPLE_PROFILE_REVIEW_REQUIRED",
+      "proposedExecutionState": "NON_EXECUTABLE_NO_ELIGIBLE_PROFILE",
+      "existingGovernedDerivationIds": [],
+      "proposedProfileRecords": [],
+      "proposedBindingRequirements": [],
+      "profileIdentityReviewItems": [
+        "DIRECTION_DIRECTED_OR_UNDIRECTED",
+        "WEIGHT_BINARY_OR_VALUED",
+        "LOCAL_OR_GLOBAL",
+        "NORMALIZATION_VARIANT",
+        "CONSTITUENT_SET",
+        "AGGREGATION_RULE",
+        "MISSINGNESS_POLICY",
+        "UNIT_OF_ANALYSIS",
+        "NETWORK_OR_POPULATION_BOUNDARY",
+        "TIME_WINDOW"
+      ],
+      "scientificGaps": [
+        "PROFILE_IDENTITY_REVIEW_REQUIRED"
+      ],
+      "ontologyDependencies": [],
+      "architectureDependencies": [
+        "GOV-RDS-CONTRACT-001-2026-09-25",
+        "WP-PSG-001_PRODUCTION_NOT_AUTHORIZED"
+      ],
+      "causalSourceEligible": false,
+      "causalSourceGate": "WP-PSG-005_REQUIRED",
+      "productionMutationAuthorized": false,
+      "migrationAction": "PROFILE_IDENTITY_REVIEW_ONLY",
+      "rollbackState": "CURRENT_PRODUCTION_RDS_AND_LEGACY_DERIVATION_UNCHANGED"
+    },
+    {
+      "rdsId": "SOC-074",
+      "currentLayer": "Social",
+      "currentDefinitionHash": "0552db3ac453b404b3168161e8ddf520032bd245a6bde3dbf606c967aebef84b",
+      "currentMigrationCategory": "PROFILE_DEFINITION_REQUIRED",
+      "proposedExecutionState": "NON_EXECUTABLE_NO_ELIGIBLE_PROFILE",
+      "existingGovernedDerivationIds": [],
+      "proposedProfileRecords": [],
+      "proposedBindingRequirements": [
+        "REFERENCE_POPULATION_OR_APPLICATION_SCOPE",
+        "TIME_WINDOW",
+        "UNIT_OF_ANALYSIS"
+      ],
+      "profileIdentityReviewItems": [],
+      "scientificGaps": [
+        "EXACT_PROFILE_TYPE",
+        "EXACT_METHOD",
+        "INPUT_VERSIONS_AND_HASHES",
+        "MISSINGNESS_POLICY",
+        "OUTPUT_INTERPRETATION"
+      ],
+      "ontologyDependencies": [],
+      "architectureDependencies": [
+        "GOV-RDS-CONTRACT-001-2026-09-25",
+        "WP-PSG-001_PRODUCTION_NOT_AUTHORIZED"
+      ],
+      "causalSourceEligible": false,
+      "causalSourceGate": "WP-PSG-005_REQUIRED",
+      "productionMutationAuthorized": false,
+      "migrationAction": "CREATE_SCIENTIFIC_DEFINITION_WORK_ITEM_ONLY",
+      "rollbackState": "CURRENT_PRODUCTION_RDS_AND_LEGACY_DERIVATION_UNCHANGED",
+      "knownCandidateInputs": [
+        {
+          "entityId": null,
+          "externalParameterType": "MEMBER_GOAL_PROFILES",
+          "role": "CONSTITUENT_OR_INPUT",
+          "required": true,
+          "unitScaleExpectations": "Aligned with derivation logic",
+          "alignmentRequirements": "Match analytic level, scope, and time window"
+        },
+        {
+          "entityId": null,
+          "externalParameterType": "COLLECTIVE_EPISODE",
+          "role": "CONSTITUENT_OR_INPUT",
+          "required": true,
+          "unitScaleExpectations": "Aligned with derivation logic",
+          "alignmentRequirements": "Match analytic level, scope, and time window"
+        }
+      ],
+      "likelyProfileType": "REQUIRES_SCIENTIFIC_CLASSIFICATION"
+    },
+    {
+      "rdsId": "SOC-076",
+      "currentLayer": "Social",
+      "currentDefinitionHash": "2cce103c2c6db1462d4e95c2a9c9f798cf6b5fd7869b58bc9cce8add6c5d7d86",
+      "currentMigrationCategory": "PROFILE_DEFINITION_REQUIRED",
+      "proposedExecutionState": "NON_EXECUTABLE_NO_ELIGIBLE_PROFILE",
+      "existingGovernedDerivationIds": [],
+      "proposedProfileRecords": [],
+      "proposedBindingRequirements": [
+        "REFERENCE_POPULATION_OR_APPLICATION_SCOPE",
+        "TIME_WINDOW",
+        "UNIT_OF_ANALYSIS"
+      ],
+      "profileIdentityReviewItems": [],
+      "scientificGaps": [
+        "EXACT_PROFILE_TYPE",
+        "EXACT_METHOD",
+        "INPUT_VERSIONS_AND_HASHES",
+        "MISSINGNESS_POLICY",
+        "OUTPUT_INTERPRETATION"
+      ],
+      "ontologyDependencies": [],
+      "architectureDependencies": [
+        "GOV-RDS-CONTRACT-001-2026-09-25",
+        "WP-PSG-001_PRODUCTION_NOT_AUTHORIZED"
+      ],
+      "causalSourceEligible": false,
+      "causalSourceGate": "WP-PSG-005_REQUIRED",
+      "productionMutationAuthorized": false,
+      "migrationAction": "CREATE_SCIENTIFIC_DEFINITION_WORK_ITEM_ONLY",
+      "rollbackState": "CURRENT_PRODUCTION_RDS_AND_LEGACY_DERIVATION_UNCHANGED",
+      "knownCandidateInputs": [
+        {
+          "entityId": null,
+          "externalParameterType": "ACTOR_EXPECTATION_PROFILES",
+          "role": "CONSTITUENT_OR_INPUT",
+          "required": true,
+          "unitScaleExpectations": "Aligned with derivation logic",
+          "alignmentRequirements": "Match analytic level, scope, and time window"
+        }
+      ],
+      "likelyProfileType": "REQUIRES_SCIENTIFIC_CLASSIFICATION"
+    },
+    {
+      "rdsId": "SOC-090",
+      "currentLayer": "Social",
+      "currentDefinitionHash": "4e78992b91c00208cec4fbd06cc247a1669d65c8b6522b7e0cd1c5a7c81c4b47",
+      "currentMigrationCategory": "MULTIPLE_PROFILE_REVIEW_REQUIRED",
+      "proposedExecutionState": "NON_EXECUTABLE_NO_ELIGIBLE_PROFILE",
+      "existingGovernedDerivationIds": [],
+      "proposedProfileRecords": [],
+      "proposedBindingRequirements": [],
+      "profileIdentityReviewItems": [
+        "DIRECTION_DIRECTED_OR_UNDIRECTED",
+        "WEIGHT_BINARY_OR_VALUED",
+        "LOCAL_OR_GLOBAL",
+        "NORMALIZATION_VARIANT",
+        "CONSTITUENT_SET",
+        "AGGREGATION_RULE",
+        "MISSINGNESS_POLICY",
+        "UNIT_OF_ANALYSIS",
+        "NETWORK_OR_POPULATION_BOUNDARY",
+        "TIME_WINDOW"
+      ],
+      "scientificGaps": [
+        "PROFILE_IDENTITY_REVIEW_REQUIRED"
+      ],
+      "ontologyDependencies": [],
+      "architectureDependencies": [
+        "GOV-RDS-CONTRACT-001-2026-09-25",
+        "WP-PSG-001_PRODUCTION_NOT_AUTHORIZED"
+      ],
+      "causalSourceEligible": false,
+      "causalSourceGate": "WP-PSG-005_REQUIRED",
+      "productionMutationAuthorized": false,
+      "migrationAction": "PROFILE_IDENTITY_REVIEW_ONLY",
+      "rollbackState": "CURRENT_PRODUCTION_RDS_AND_LEGACY_DERIVATION_UNCHANGED"
+    },
+    {
+      "rdsId": "SOC-096",
+      "currentLayer": "Social",
+      "currentDefinitionHash": "aeeae1762db59b3611db8ed52b292151035761b3cbcbda8ee3ccd02b3b23ca8f",
+      "currentMigrationCategory": "PROFILE_DEFINITION_REQUIRED",
+      "proposedExecutionState": "NON_EXECUTABLE_NO_ELIGIBLE_PROFILE",
+      "existingGovernedDerivationIds": [],
+      "proposedProfileRecords": [],
+      "proposedBindingRequirements": [
+        "REFERENCE_POPULATION_OR_APPLICATION_SCOPE",
+        "TIME_WINDOW",
+        "UNIT_OF_ANALYSIS"
+      ],
+      "profileIdentityReviewItems": [],
+      "scientificGaps": [
+        "EXACT_PROFILE_TYPE",
+        "EXACT_METHOD",
+        "INPUT_VERSIONS_AND_HASHES",
+        "MISSINGNESS_POLICY",
+        "OUTPUT_INTERPRETATION"
+      ],
+      "ontologyDependencies": [],
+      "architectureDependencies": [
+        "GOV-RDS-CONTRACT-001-2026-09-25",
+        "WP-PSG-001_PRODUCTION_NOT_AUTHORIZED"
+      ],
+      "causalSourceEligible": false,
+      "causalSourceGate": "WP-PSG-005_REQUIRED",
+      "productionMutationAuthorized": false,
+      "migrationAction": "CREATE_SCIENTIFIC_DEFINITION_WORK_ITEM_ONLY",
+      "rollbackState": "CURRENT_PRODUCTION_RDS_AND_LEGACY_DERIVATION_UNCHANGED",
+      "knownCandidateInputs": [
+        {
+          "entityId": null,
+          "externalParameterType": "GROUP_A_STATUS",
+          "role": "CONSTITUENT_OR_INPUT",
+          "required": true,
+          "unitScaleExpectations": "Aligned with derivation logic",
+          "alignmentRequirements": "Match analytic level, scope, and time window"
+        },
+        {
+          "entityId": null,
+          "externalParameterType": "GROUP_B_STATUS",
+          "role": "CONSTITUENT_OR_INPUT",
+          "required": true,
+          "unitScaleExpectations": "Aligned with derivation logic",
+          "alignmentRequirements": "Match analytic level, scope, and time window"
+        },
+        {
+          "entityId": null,
+          "externalParameterType": "COMMON_SOCIAL_FIELD",
+          "role": "CONSTITUENT_OR_INPUT",
+          "required": true,
+          "unitScaleExpectations": "Aligned with derivation logic",
+          "alignmentRequirements": "Match analytic level, scope, and time window"
+        }
+      ],
+      "likelyProfileType": "REQUIRES_SCIENTIFIC_CLASSIFICATION"
+    }
+  ]
+}
