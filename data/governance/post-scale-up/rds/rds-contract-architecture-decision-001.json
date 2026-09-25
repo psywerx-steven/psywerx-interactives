@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "1.0.0",
+  "decisionId": "GOV-RDS-CONTRACT-001-2026-09-25",
+  "decisionDate": "2026-09-25",
+  "decisionPacketId": "DP-PSG-001",
+  "rootIssueId": "ROOT-RDS-DEFINITION-DERIVATION-001",
+  "workPackageId": "WP-PSG-001",
+  "decisionTestId": "WP-PSG-001-STAGE-C-20260924-001",
+  "decisionAuthority": "HUMAN_GOVERNOR",
+  "decisionOutcome": "APPROVED_BOUNDED_OPTION_B_PLUS_C_DIRECTION",
+  "approvedDirection": {
+    "computationProfiles": "TYPED_NAMED_IMMUTABLE_VERSION",
+    "applicationBindings": "EXPLICIT_VERSIONED",
+    "zeroEligibleProfileBehavior": "RDS_EXISTS_NON_EXECUTABLE",
+    "consumerSelection": "EXACT_PROFILE_AND_BINDING_VERSION_REQUIRED",
+    "silentResolution": "PROHIBITED_DEFAULT_FIRST_OR_LATEST",
+    "existingDerivationLineage": "ADDITIVE_PRESERVATION",
+    "causalFirewall": {
+      "definitionGate": "WP-PSG-001",
+      "causalSourceGate": "WP-PSG-005",
+      "defaultCausalSourceEligible": false,
+      "separateHumanGovernanceRequired": true
+    }
+  },
+  "authorizedActivities": [
+    "architecture design",
+    "non-production schema prototyping",
+    "non-production validator prototyping",
+    "test-only computation-profile and binding experiments",
+    "migration classification and dry-run planning without production writes"
+  ],
+  "notAuthorized": [
+    "production RDS migration",
+    "production RDS mutation",
+    "production schema or validator behavior change",
+    "causal-source authorization",
+    "Relationship or EffectAssertion mutation",
+    "lifecycle change",
+    "activation",
+    "source registration"
+  ],
+  "productionState": {
+    "scienceChanged": false,
+    "ontologyChanged": false,
+    "architectureImplemented": false,
+    "productionValidatorsChanged": false,
+    "rdsMigrated": 0,
+    "causalSourcesAuthorized": 0,
+    "lifecycleChanges": 0,
+    "activations": 0
+  },
+  "nextGovernedStage": "NON_PRODUCTION_IMPLEMENTATION_PROTOTYPE",
+  "productionImplementationStatus": "NOT_AUTHORIZED_NOT_STARTED"
+}

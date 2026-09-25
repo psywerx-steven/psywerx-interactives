@@ -16,6 +16,7 @@ DATA = ROOT / "data/governance/post-scale-up"
 DOCS = ROOT / "docs/governance/post-scale-up"
 BASE_COMMIT = "57e2bb6f559fde7fe7caa2b39e0bf6cac78615d7"
 ROADMAP_ID = "POST-SCALE-UP-GOVERNANCE-ROADMAP-V1-20260924-001"
+RDS_DECISION_PATH = DATA / "rds/rds-contract-architecture-decision-001.json"
 
 ROOT_IDS = {
     "RDS_DEF": "ROOT-RDS-DEFINITION-DERIVATION-001",
@@ -50,6 +51,17 @@ PROTECTED_PATHS = sorted(set(PROTECTED_PATHS))
 
 def read(path: Path):
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def rds_direction_decision():
+    if not RDS_DECISION_PATH.exists():
+        return None
+    decision = read(RDS_DECISION_PATH)
+    assert decision["decisionPacketId"] == "DP-PSG-001"
+    assert decision["workPackageId"] == "WP-PSG-001"
+    assert decision["decisionOutcome"] == "APPROVED_BOUNDED_OPTION_B_PLUS_C_DIRECTION"
+    assert decision["productionImplementationStatus"] == "NOT_AUTHORIZED_NOT_STARTED"
+    return decision
 
 
 def write_json(path: Path, value):
@@ -464,6 +476,7 @@ def build_roots(dep_map, semantic_debt):
 
 def work_packages(roots):
     by_id = {root["id"]: root for root in roots["roots"]}
+    rds_decision = rds_direction_decision()
     packages = []
     for definition in ROOT_DEFS:
         key, identifier = definition["key"], ROOT_IDS[definition["key"]]
@@ -485,8 +498,11 @@ def work_packages(roots):
             "safeRollbackState": root["currentSafeState"],
             "stages": {"A_problemNormalization": "COMPLETE", "B_designAlternatives": "COMPLETE",
                        "C_skepticalArchitectureReview": "COMPLETE" if key in {"RDS_DEF", "CROSS_LEVEL", "NETWORK", "CONTRIBUTION", "RDS_CAUSAL", "ACTIVATION"} else "DEFERRED_UNTIL_SELECTED",
-                       "D_humanGovernanceDecision": "NOT_STARTED", "E_implementation": "NOT_STARTED",
+                       "D_humanGovernanceDecision": "COMPLETE_BOUNDED_DIRECTION_APPROVED" if key == "RDS_DEF" and rds_decision else "NOT_STARTED", "E_implementation": "NOT_STARTED",
                        "F_migrationRevalidation": "NOT_STARTED", "G_scientificReadjudication": "NOT_STARTED"},
+            "governanceDecisionId": rds_decision["decisionId"] if key == "RDS_DEF" and rds_decision else None,
+            "prototypeImplementationAuthorization": "AUTHORIZED_NON_PRODUCTION_ONLY" if key == "RDS_DEF" and rds_decision else "NOT_AUTHORIZED",
+            "productionImplementationStatus": "NOT_AUTHORIZED_NOT_STARTED" if key == "RDS_DEF" and rds_decision else "NOT_STARTED",
             "recommendedSequenceBand": definition["sequenceBand"],
         })
     return {"schemaVersion": "1.0.0", "roadmapId": ROADMAP_ID, "workPackages": packages}
@@ -504,6 +520,7 @@ def decision_packets(roots):
         "ACTIVATION": ["A ties effect usability to mechanism knowledge and leaves bounded evidence inactive.", "B risks consumers treating a restricted class as simulation-ready.", "C is scientifically explicit but requires broad schema and consumer migration.", "D minimizes record change but can create divergent consumer behavior."],
     }
     packets = []
+    rds_decision = rds_direction_decision()
     for index, key in enumerate(keys, 1):
         definition, root = next(row for row in ROOT_DEFS if row["key"] == key), by_id[ROOT_IDS[key]]
         packets.append({
@@ -519,8 +536,11 @@ def decision_packets(roots):
             "whatEachOptionUnblocks": [{"option": option.split(":", 1)[0], "unblocks": "Later design, migration and scientific re-adjudication for the packet's dependent records."} for option in definition["options"]],
             "risks": ["scientific overstatement", "double counting", "consumer misinterpretation", "irreversible migration without rollback"],
             "skepticalArchitectureReview": skeptical[key],
-            "recommendedNextResearchOrTest": "Create executable examples and counterexamples against current validators before the human option vote; do not alter production records.",
-            "humanDecisionStatus": "REQUIRED_NOT_TAKEN",
+            "recommendedNextResearchOrTest": "Build a non-production schema/validator prototype and migration dry run; do not alter production records." if key == "RDS_DEF" and rds_decision else "Create executable examples and counterexamples against current validators before the human option vote; do not alter production records.",
+            "humanDecisionStatus": "HUMAN_APPROVED_BOUNDED_DIRECTION" if key == "RDS_DEF" and rds_decision else "REQUIRED_NOT_TAKEN",
+            "humanDecisionId": rds_decision["decisionId"] if key == "RDS_DEF" and rds_decision else None,
+            "approvedOption": "BOUNDED_OPTION_B_PLUS_C" if key == "RDS_DEF" and rds_decision else None,
+            "authorizationBoundary": rds_decision["notAuthorized"] if key == "RDS_DEF" and rds_decision else None,
         })
     return {"schemaVersion": "1.0.0", "roadmapId": ROADMAP_ID, "decisionPackets": packets}
 
@@ -538,20 +558,22 @@ def render_dependency(dep_map, roots):
 
 
 def render_roadmap(dep_map, roots, packages):
-    lines = ["# Post-Scale-Up governance roadmap", "", "This roadmap converts the 44-row historical backlog into decision-ready work packages. Stages A and B are complete here; skeptical architecture review is complete for the six highest-consequence packets. Stages D–G remain prohibited until later human governance.", "",
+    rds_decision = rds_direction_decision()
+    status_text = "DP-PSG-001 Stage D records a bounded human-approved B+C direction; its non-production prototype is authorized, while production implementation and every other Stage D–G decision remain unstarted." if rds_decision else "Stages D–G remain prohibited until later human governance."
+    lines = ["# Post-Scale-Up governance roadmap", "", f"This roadmap converts the 44-row historical backlog into decision-ready work packages. Stages A and B are complete here; skeptical architecture review is complete for the six highest-consequence packets. {status_text}", "",
              "| Order | Work package | Root issue | Band | Dependencies | Original rows |", "|---:|---|---|---|---|---:|"]
     for index, package in enumerate(packages["workPackages"], 1):
         lines.append(f"| {index} | `{package['workPackageId']}` {package['title']} | `{package['rootIssueId']}` | {package['recommendedSequenceBand']} | {', '.join(package['dependencies']) or 'None'} | {len(package['backlogItemsAbsorbed'])} |")
     lines += ["", "## Sequence finding", "", "The tentative sequence is retained with one clarification: construct/ontology and source-governance design can run in parallel with the foundation band, but Relationship migration and targeted evidence must wait for the applicable prerequisite decisions. Aggregate causal-source adjudication follows RDS definition, cross-level exposure and contribution-control decisions.", "",
               "## Highest leverage", "", f"`{WP_IDS['RDS_DEF']}` comes first. It spans six Layers, directly normalizes five definition blockers, and supplies the input/constituent contract required before five aggregate causal-source rows can be judged. A well-defined RDS is not thereby authorized as a cause.", "",
-              "No work package selects an option, changes a validator, registers a source, alters an RDS, migrates a Relationship or activates a record."]
+              "DP-PSG-001 selects only the bounded B+C architecture direction. No production validator, source, RDS, Relationship or lifecycle state changes, and no causal-source use is authorized."]
     return "\n".join(lines)
 
 
 def render_packets(packets):
-    lines = ["# Root decision packages", "", "These packets are ready for later human scientific/architecture governance. No option is selected here.", ""]
+    lines = ["# Root decision packages", "", "DP-PSG-001 records the bounded human-approved B+C architecture direction. The remaining packets are ready for later human scientific/architecture governance and have no selected option.", ""]
     for packet in packets["decisionPackets"]:
-        lines += [f"## {packet['decisionPacketId']} — {packet['title']}", "", f"- Root issue: `{packet['rootIssueId']}`", f"- Work package: `{packet['workPackageId']}`", f"- Current problem: {packet['currentProblem']}", f"- Why it matters: {packet['whyItMatters']}", f"- Current safe state: {packet['currentSafeState']}", f"- Affected Layers: {', '.join(packet['affectedLayers'])}", "", "### Options", ""]
+        lines += [f"## {packet['decisionPacketId']} — {packet['title']}", "", f"- Root issue: `{packet['rootIssueId']}`", f"- Work package: `{packet['workPackageId']}`", f"- Human decision status: `{packet['humanDecisionStatus']}`", f"- Human decision ID: `{packet['humanDecisionId']}`" if packet['humanDecisionId'] else "- Human decision ID: none", f"- Approved option: `{packet['approvedOption']}`" if packet['approvedOption'] else "- Approved option: none", f"- Current problem: {packet['currentProblem']}", f"- Why it matters: {packet['whyItMatters']}", f"- Current safe state: {packet['currentSafeState']}", f"- Affected Layers: {', '.join(packet['affectedLayers'])}", "", "### Options", ""]
         lines.extend(f"- {option}" for option in packet["options"])
         lines += ["", "### Skeptical architecture review", ""]
         lines.extend(f"- {finding}" for finding in packet["skepticalArchitectureReview"])

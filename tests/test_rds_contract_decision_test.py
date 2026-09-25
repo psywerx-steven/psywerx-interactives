@@ -29,6 +29,7 @@ class RdsContractDecisionTest(unittest.TestCase):
         cls.cases = read(DATA / "rds-contract-test-cases.json")
         cls.prototype = read(DATA / "rds-profile-prototype.json")
         cls.migration = read(DATA / "rds-migration-classification.json")
+        cls.decision = read(DATA / "rds-contract-architecture-decision-001.json")
         spec = importlib.util.spec_from_file_location("rds_contract_decision_test", SCRIPT)
         cls.module = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(cls.module)
@@ -50,6 +51,22 @@ class RdsContractDecisionTest(unittest.TestCase):
         self.assertEqual(results["B_PLUS_C"], "RECOMMENDED_ADVISORY")
         self.assertEqual(self.prototype["governanceStatus"], "ADVISORY_NOT_GOVERNED")
         self.assertFalse(self.prototype["productionMutationAuthorized"])
+
+    def test_bounded_human_architecture_decision_is_exact(self):
+        decision = self.decision
+        self.assertEqual(decision["decisionId"], "GOV-RDS-CONTRACT-001-2026-09-25")
+        self.assertEqual(decision["decisionOutcome"], "APPROVED_BOUNDED_OPTION_B_PLUS_C_DIRECTION")
+        self.assertEqual(decision["approvedDirection"]["zeroEligibleProfileBehavior"], "RDS_EXISTS_NON_EXECUTABLE")
+        self.assertEqual(decision["approvedDirection"]["consumerSelection"], "EXACT_PROFILE_AND_BINDING_VERSION_REQUIRED")
+        self.assertEqual(decision["approvedDirection"]["silentResolution"], "PROHIBITED_DEFAULT_FIRST_OR_LATEST")
+        firewall = decision["approvedDirection"]["causalFirewall"]
+        self.assertEqual(firewall["causalSourceGate"], "WP-PSG-005")
+        self.assertFalse(firewall["defaultCausalSourceEligible"])
+        self.assertEqual(decision["productionImplementationStatus"], "NOT_AUTHORIZED_NOT_STARTED")
+        self.assertIn("production RDS migration", decision["notAuthorized"])
+        self.assertIn("causal-source authorization", decision["notAuthorized"])
+        self.assertEqual(decision["productionState"]["rdsMigrated"], 0)
+        self.assertEqual(decision["productionState"]["activations"], 0)
 
     def test_positive_and_negative_cases_observe_expected_results(self):
         self.assertEqual(self.cases["summary"]["positiveCases"], 5)
@@ -128,9 +145,9 @@ class RdsContractDecisionTest(unittest.TestCase):
         self.assertFalse(self.cases["protection"]["productionMutationAuthorized"])
 
     def test_documents_and_structured_artifacts_exist(self):
-        for name in ["rds-contract-test-cases.json", "rds-profile-prototype.json", "rds-migration-classification.json"]:
+        for name in ["rds-contract-test-cases.json", "rds-profile-prototype.json", "rds-migration-classification.json", "rds-contract-architecture-decision-001.json"]:
             self.assertTrue((DATA / name).is_file())
-        for name in ["RDS_CONTRACT_DECISION_TEST.md", "RDS_CONTRACT_OPTION_COMPARISON.md", "RDS_PROFILE_IDENTITY_RULES.md", "RDS_MIGRATION_CLASSIFICATION.md"]:
+        for name in ["RDS_CONTRACT_DECISION_TEST.md", "RDS_CONTRACT_OPTION_COMPARISON.md", "RDS_PROFILE_IDENTITY_RULES.md", "RDS_MIGRATION_CLASSIFICATION.md", "RDS_CONTRACT_ARCHITECTURE_DECISION_001.md"]:
             self.assertTrue((DOCS / name).is_file())
 
     def test_generator_is_deterministic(self):
