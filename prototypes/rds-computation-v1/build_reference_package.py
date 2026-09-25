@@ -35,7 +35,7 @@ def write_doc(name: str, text: str) -> None:
 
 
 def file_hash(path: Path) -> str:
-    return hashlib.sha256(path.read_bytes()).hexdigest()
+    return hashlib.sha256(path.read_bytes().replace(b"\r\n", b"\n")).hexdigest()
 
 
 def semantic_hash(entity: dict) -> str:

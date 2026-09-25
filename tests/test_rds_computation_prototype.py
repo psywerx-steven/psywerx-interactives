@@ -177,7 +177,7 @@ class RdsComputationPrototypeTests(unittest.TestCase):
     def test_production_files_hash_protected(self):
         protected = read(PROTO / "migration/protected-production-hashes.json")
         for relative, expected in protected["sha256"].items():
-            actual = hashlib.sha256((ROOT / relative).read_bytes()).hexdigest()
+            actual = hashlib.sha256((ROOT / relative).read_bytes().replace(b"\r\n", b"\n")).hexdigest()
             self.assertEqual(actual, expected, relative)
 
     def test_decision_packet_and_phase_boundaries(self):
