@@ -16,6 +16,8 @@ DATA = ROOT / "data/governance/post-scale-up/rds"
 DOCS = ROOT / "docs/governance/post-scale-up/rds"
 SOURCE_MAIN = "9e1ffb63a31756c39e0129679c997619286f8754"
 TEST_ID = "WP-PSG-001-STAGE-C-20260924-001"
+DECISION_ID = "GOV-RDS-CONTRACT-001-2026-09-25"
+DECISION_DATE = "2026-09-25"
 
 PROTECTED_PATHS = [
     "data/entities.json",
@@ -564,7 +566,67 @@ def build():
     write_json(DATA / "rds-profile-prototype.json", prototype)
     write_json(DATA / "rds-contract-test-cases.json", test_data)
     write_json(DATA / "rds-migration-classification.json", migration)
+    decision = architecture_decision()
+    write_json(DATA / "rds-contract-architecture-decision-001.json", decision)
     render_docs(exemplar_rows, option_results, migration, cases)
+    render_decision(decision)
+
+
+def architecture_decision():
+    return {
+        "schemaVersion": "1.0.0",
+        "decisionId": DECISION_ID,
+        "decisionDate": DECISION_DATE,
+        "decisionPacketId": "DP-PSG-001",
+        "rootIssueId": "ROOT-RDS-DEFINITION-DERIVATION-001",
+        "workPackageId": "WP-PSG-001",
+        "decisionTestId": TEST_ID,
+        "decisionAuthority": "HUMAN_GOVERNOR",
+        "decisionOutcome": "APPROVED_BOUNDED_OPTION_B_PLUS_C_DIRECTION",
+        "approvedDirection": {
+            "computationProfiles": "TYPED_NAMED_IMMUTABLE_VERSION",
+            "applicationBindings": "EXPLICIT_VERSIONED",
+            "zeroEligibleProfileBehavior": "RDS_EXISTS_NON_EXECUTABLE",
+            "consumerSelection": "EXACT_PROFILE_AND_BINDING_VERSION_REQUIRED",
+            "silentResolution": "PROHIBITED_DEFAULT_FIRST_OR_LATEST",
+            "existingDerivationLineage": "ADDITIVE_PRESERVATION",
+            "causalFirewall": {
+                "definitionGate": "WP-PSG-001",
+                "causalSourceGate": "WP-PSG-005",
+                "defaultCausalSourceEligible": False,
+                "separateHumanGovernanceRequired": True,
+            },
+        },
+        "authorizedActivities": [
+            "architecture design",
+            "non-production schema prototyping",
+            "non-production validator prototyping",
+            "test-only computation-profile and binding experiments",
+            "migration classification and dry-run planning without production writes",
+        ],
+        "notAuthorized": [
+            "production RDS migration",
+            "production RDS mutation",
+            "production schema or validator behavior change",
+            "causal-source authorization",
+            "Relationship or EffectAssertion mutation",
+            "lifecycle change",
+            "activation",
+            "source registration",
+        ],
+        "productionState": {
+            "scienceChanged": False,
+            "ontologyChanged": False,
+            "architectureImplemented": False,
+            "productionValidatorsChanged": False,
+            "rdsMigrated": 0,
+            "causalSourcesAuthorized": 0,
+            "lifecycleChanges": 0,
+            "activations": 0,
+        },
+        "nextGovernedStage": "NON_PRODUCTION_IMPLEMENTATION_PROTOTYPE",
+        "productionImplementationStatus": "NOT_AUTHORIZED_NOT_STARTED",
+    }
 
 
 def table(headers, rows):
@@ -705,6 +767,45 @@ This is a planning classification of all 41 current RDS. It authorizes no migrat
 {records_table}
 
 `READY_FOR_PROFILE_MATERIALIZATION` means structurally ready for a later governed additive wrapper, not authorized now. `NON_EXECUTABLE_PENDING_SCIENCE` describes behavior under the proposed contract and does not alter any current production relationship or lifecycle state.
+""")
+
+
+def render_decision(decision):
+    write_text(DOCS / "RDS_CONTRACT_ARCHITECTURE_DECISION_001.md", f"""# RDS contract architecture decision 001
+
+**Decision ID:** `{decision['decisionId']}`
+
+**Decision packet:** `DP-PSG-001`
+
+**Work package:** `WP-PSG-001`
+
+**Decision date:** {decision['decisionDate']}
+
+**Outcome:** `APPROVED_BOUNDED_OPTION_B_PLUS_C_DIRECTION`
+
+## Human-approved direction
+
+The human governor approves the bounded Option B+C RDS architecture direction established by the Stage C decision test:
+
+- typed, named, immutable-version computation profiles;
+- explicit versioned application bindings;
+- valid RDS constructs remain non-executable when no eligible governed profile and complete binding exist;
+- exact profile and binding versions are mandatory, with no silent default, first, or latest resolution;
+- existing governed derivation IDs and lineage are preserved additively;
+- definition/derivation eligibility remains separate from causal-source eligibility;
+- any causal-source use requires separate `WP-PSG-005` governance and defaults to ineligible.
+
+## Authorized scope
+
+This decision authorizes architecture design and non-production implementation prototyping: schema experiments, validator prototypes, test-only profile/binding execution, and migration dry-run planning.
+
+## Explicit boundary
+
+This decision does **not** authorize production RDS migration, production RDS or validator mutation, causal-source use, Relationship or EffectAssertion mutation, lifecycle change, activation, or source registration. Production implementation remains `NOT_AUTHORIZED_NOT_STARTED`.
+
+## Materialization outcome
+
+No production record is materialized or changed. The current safe state of every RDS and dependent blocker remains intact. Stage D is complete only for the bounded architecture direction; later production implementation, migration/revalidation, and scientific re-adjudication remain separate stages.
 """)
 
 

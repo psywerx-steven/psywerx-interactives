@@ -1,6 +1,6 @@
 # Post-Scale-Up governance roadmap
 
-This roadmap converts the 44-row historical backlog into decision-ready work packages. Stages A and B are complete here; skeptical architecture review is complete for the six highest-consequence packets. Stages D–G remain prohibited until later human governance.
+This roadmap converts the 44-row historical backlog into decision-ready work packages. Stages A and B are complete here; skeptical architecture review is complete for the six highest-consequence packets. DP-PSG-001 Stage D records a bounded human-approved B+C direction; its non-production prototype is authorized, while production implementation and every other Stage D–G decision remain unstarted.
 
 | Order | Work package | Root issue | Band | Dependencies | Original rows |
 |---:|---|---|---|---|---:|
@@ -23,4 +23,4 @@ The tentative sequence is retained with one clarification: construct/ontology an
 
 `WP-PSG-001` comes first. It spans six Layers, directly normalizes five definition blockers, and supplies the input/constituent contract required before five aggregate causal-source rows can be judged. A well-defined RDS is not thereby authorized as a cause.
 
-No work package selects an option, changes a validator, registers a source, alters an RDS, migrates a Relationship or activates a record.
+DP-PSG-001 selects only the bounded B+C architecture direction. No production validator, source, RDS, Relationship or lifecycle state changes, and no causal-source use is authorized.

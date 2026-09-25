@@ -111,12 +111,20 @@ class PostScaleUpGovernanceRoadmapTests(unittest.TestCase):
     def test_work_packages_and_packets_stop_before_governance(self):
         self.assertEqual(len(self.packages["workPackages"]), 10)
         self.assertEqual(len(self.packets["decisionPackets"]), 6)
+        by_wp = {row["workPackageId"]: row for row in self.packages["workPackages"]}
+        self.assertEqual(by_wp["WP-PSG-001"]["stages"]["D_humanGovernanceDecision"], "COMPLETE_BOUNDED_DIRECTION_APPROVED")
+        self.assertEqual(by_wp["WP-PSG-001"]["prototypeImplementationAuthorization"], "AUTHORIZED_NON_PRODUCTION_ONLY")
+        self.assertEqual(by_wp["WP-PSG-001"]["productionImplementationStatus"], "NOT_AUTHORIZED_NOT_STARTED")
         for package in self.packages["workPackages"]:
-            self.assertEqual(package["stages"]["D_humanGovernanceDecision"], "NOT_STARTED")
+            if package["workPackageId"] != "WP-PSG-001":
+                self.assertEqual(package["stages"]["D_humanGovernanceDecision"], "NOT_STARTED")
             self.assertEqual(package["stages"]["E_implementation"], "NOT_STARTED")
             self.assertEqual(package["stages"]["F_migrationRevalidation"], "NOT_STARTED")
             self.assertEqual(package["stages"]["G_scientificReadjudication"], "NOT_STARTED")
-        self.assertEqual({row["humanDecisionStatus"] for row in self.packets["decisionPackets"]}, {"REQUIRED_NOT_TAKEN"})
+        by_packet = {row["decisionPacketId"]: row for row in self.packets["decisionPackets"]}
+        self.assertEqual(by_packet["DP-PSG-001"]["humanDecisionStatus"], "HUMAN_APPROVED_BOUNDED_DIRECTION")
+        self.assertEqual(by_packet["DP-PSG-001"]["approvedOption"], "BOUNDED_OPTION_B_PLUS_C")
+        self.assertEqual({row["humanDecisionStatus"] for key, row in by_packet.items() if key != "DP-PSG-001"}, {"REQUIRED_NOT_TAKEN"})
 
     def test_protected_science_ontology_lifecycle_sources_and_network_state(self):
         protected = read(DATA / "protected-baseline.json")

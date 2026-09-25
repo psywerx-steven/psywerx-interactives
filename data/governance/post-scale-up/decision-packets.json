@@ -59,8 +59,20 @@
         "B may produce profile proliferation and ambiguous version selection.",
         "C is safest but keeps otherwise coherent RDS unavailable for execution."
       ],
-      "recommendedNextResearchOrTest": "Create executable examples and counterexamples against current validators before the human option vote; do not alter production records.",
-      "humanDecisionStatus": "REQUIRED_NOT_TAKEN"
+      "recommendedNextResearchOrTest": "Build a non-production schema/validator prototype and migration dry run; do not alter production records.",
+      "humanDecisionStatus": "HUMAN_APPROVED_BOUNDED_DIRECTION",
+      "humanDecisionId": "GOV-RDS-CONTRACT-001-2026-09-25",
+      "approvedOption": "BOUNDED_OPTION_B_PLUS_C",
+      "authorizationBoundary": [
+        "production RDS migration",
+        "production RDS mutation",
+        "production schema or validator behavior change",
+        "causal-source authorization",
+        "Relationship or EffectAssertion mutation",
+        "lifecycle change",
+        "activation",
+        "source registration"
+      ]
     },
     {
       "decisionPacketId": "DP-PSG-002",
@@ -114,7 +126,10 @@
         "C is backward-compatible but metadata alone may be too weak for runtime validation."
       ],
       "recommendedNextResearchOrTest": "Create executable examples and counterexamples against current validators before the human option vote; do not alter production records.",
-      "humanDecisionStatus": "REQUIRED_NOT_TAKEN"
+      "humanDecisionStatus": "REQUIRED_NOT_TAKEN",
+      "humanDecisionId": null,
+      "approvedOption": null,
+      "authorizationBoundary": null
     },
     {
       "decisionPacketId": "DP-PSG-003",
@@ -167,7 +182,10 @@
         "C preserves safety while leaving legitimate network operations unavailable."
       ],
       "recommendedNextResearchOrTest": "Create executable examples and counterexamples against current validators before the human option vote; do not alter production records.",
-      "humanDecisionStatus": "REQUIRED_NOT_TAKEN"
+      "humanDecisionStatus": "REQUIRED_NOT_TAKEN",
+      "humanDecisionId": null,
+      "approvedOption": null,
+      "authorizationBoundary": null
     },
     {
       "decisionPacketId": "DP-PSG-004",
@@ -222,7 +240,10 @@
         "C avoids overgeneralization but leaves fragmented controls and blocked cross-class cases."
       ],
       "recommendedNextResearchOrTest": "Create executable examples and counterexamples against current validators before the human option vote; do not alter production records.",
-      "humanDecisionStatus": "REQUIRED_NOT_TAKEN"
+      "humanDecisionStatus": "REQUIRED_NOT_TAKEN",
+      "humanDecisionId": null,
+      "approvedOption": null,
+      "authorizationBoundary": null
     },
     {
       "decisionPacketId": "DP-PSG-005",
@@ -281,7 +302,10 @@
         "C is simple and safe but prevents every aggregate from acting as a causal source."
       ],
       "recommendedNextResearchOrTest": "Create executable examples and counterexamples against current validators before the human option vote; do not alter production records.",
-      "humanDecisionStatus": "REQUIRED_NOT_TAKEN"
+      "humanDecisionStatus": "REQUIRED_NOT_TAKEN",
+      "humanDecisionId": null,
+      "approvedOption": null,
+      "authorizationBoundary": null
     },
     {
       "decisionPacketId": "DP-PSG-006",
@@ -342,7 +366,10 @@
         "D minimizes record change but can create divergent consumer behavior."
       ],
       "recommendedNextResearchOrTest": "Create executable examples and counterexamples against current validators before the human option vote; do not alter production records.",
-      "humanDecisionStatus": "REQUIRED_NOT_TAKEN"
+      "humanDecisionStatus": "REQUIRED_NOT_TAKEN",
+      "humanDecisionId": null,
+      "approvedOption": null,
+      "authorizationBoundary": null
     }
   ]
 }

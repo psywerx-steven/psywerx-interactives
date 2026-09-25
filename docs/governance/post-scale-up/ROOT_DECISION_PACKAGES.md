@@ -1,11 +1,14 @@
 # Root decision packages
 
-These packets are ready for later human scientific/architecture governance. No option is selected here.
+DP-PSG-001 records the bounded human-approved B+C architecture direction. The remaining packets are ready for later human scientific/architecture governance and have no selected option.
 
 ## DP-PSG-001 — Shared RDS definition and derivation contract
 
 - Root issue: `ROOT-RDS-DEFINITION-DERIVATION-001`
 - Work package: `WP-PSG-001`
+- Human decision status: `HUMAN_APPROVED_BOUNDED_DIRECTION`
+- Human decision ID: `GOV-RDS-CONTRACT-001-2026-09-25`
+- Approved option: `BOUNDED_OPTION_B_PLUS_C`
 - Current problem: Affected RDS lack portable versioned contracts for inputs, aggregation, reference population, window, metric variant, normalization or constituent mapping.
 - Why it matters: It directly contains 5 active-execution blockers and constrains 24 items in downstream root programs.
 - Current safe state: Preserve every recorded scientific, ontology, architecture and lifecycle state until a later human decision.
@@ -27,12 +30,15 @@ These packets are ready for later human scientific/architecture governance. No o
 - Architecture implications: Any selected representation requires a separately governed schema/validator design and migration plan.
 - Simulation implications: No option may imply numeric weight, propagation, recommendation or execution eligibility by itself.
 - Migration implications: Existing governed records remain valid; later implementation must be additive or explicitly migrated with rollback and protected-science comparison.
-- Recommended next test: Create executable examples and counterexamples against current validators before the human option vote; do not alter production records.
+- Recommended next test: Build a non-production schema/validator prototype and migration dry run; do not alter production records.
 
 ## DP-PSG-002 — Cross-level exposure and group-to-person causal semantics
 
 - Root issue: `ROOT-CROSS-LEVEL-EXPOSURE-001`
 - Work package: `WP-PSG-002`
+- Human decision status: `REQUIRED_NOT_TAKEN`
+- Human decision ID: none
+- Approved option: none
 - Current problem: Group, institution and network states do not automatically become exposures experienced by individual targets.
 - Why it matters: It directly contains 2 active-execution blockers and constrains 23 items in downstream root programs.
 - Current safe state: Preserve every recorded scientific, ontology, architecture and lifecycle state until a later human decision.
@@ -60,6 +66,9 @@ These packets are ready for later human scientific/architecture governance. No o
 
 - Root issue: `ROOT-NETWORK-STATE-TRANSITION-001`
 - Work package: `WP-PSG-003`
+- Human decision status: `REQUIRED_NOT_TAKEN`
+- Human decision ID: none
+- Approved option: none
 - Current problem: Node, tie, membership and boundary operations are being confused with empirical interventions, metric recalculation and causal effects.
 - Why it matters: It directly contains 3 active-execution blockers and constrains 24 items in downstream root programs.
 - Current safe state: Preserve every recorded scientific, ontology, architecture and lifecycle state until a later human decision.
@@ -87,6 +96,9 @@ These packets are ready for later human scientific/architecture governance. No o
 
 - Root issue: `ROOT-CONTRIBUTION-IDENTITY-001`
 - Work package: `WP-PSG-004`
+- Human decision status: `REQUIRED_NOT_TAKEN`
+- Human decision ID: none
+- Approved option: none
 - Current problem: One underlying contribution may appear through Relationship plus EffectAssertion, constituent plus aggregate RDS, or state recalculation plus a causal edge.
 - Why it matters: It directly contains 1 active-execution blockers and constrains 23 items in downstream root programs.
 - Current safe state: Preserve every recorded scientific, ontology, architecture and lifecycle state until a later human decision.
@@ -114,6 +126,9 @@ These packets are ready for later human scientific/architecture governance. No o
 
 - Root issue: `ROOT-RDS-CAUSAL-SOURCE-001`
 - Work package: `WP-PSG-005`
+- Human decision status: `REQUIRED_NOT_TAKEN`
+- Human decision ID: none
+- Approved option: none
 - Current problem: A defined aggregate can still double-count constituents or lack an independent aggregate mechanism, temporal order or contextual exposure route.
 - Why it matters: It directly contains 5 active-execution blockers and constrains 18 items in downstream root programs.
 - Current safe state: Preserve every recorded scientific, ontology, architecture and lifecycle state until a later human decision.
@@ -141,6 +156,9 @@ These packets are ready for later human scientific/architecture governance. No o
 
 - Root issue: `ROOT-ACTIVE-EFFECT-MECHANISM-001`
 - Work package: `WP-PSG-006`
+- Human decision status: `REQUIRED_NOT_TAKEN`
+- Human decision ID: none
+- Approved option: none
 - Current problem: Two governed bounded effects have evidence for effect existence while mechanismStatus correctly remains UNKNOWN; the current active contract requires non-UNKNOWN mechanism knowledge.
 - Why it matters: It directly contains 4 active-execution blockers and constrains 10 items in downstream root programs.
 - Current safe state: Preserve every recorded scientific, ontology, architecture and lifecycle state until a later human decision.
