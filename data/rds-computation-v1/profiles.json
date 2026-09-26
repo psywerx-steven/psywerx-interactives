@@ -1,5 +1,84 @@
 {
   "schemaVersion": "1.0.0",
   "registryId": "RDS-COMPUTATION-PROFILES-V1",
-  "profiles": []
+  "profiles": [
+    {
+      "schemaVersion": "1.0.0",
+      "profileId": "RDS-PROFILE-V1-SOC-F07-001",
+      "profileVersion": "1.0.0",
+      "rdsId": "RDS-0006",
+      "rdsDefinitionVersion": "ENTITY_V0_3_GOVERNED_RECORD_HASH",
+      "rdsDefinitionHash": "1f4deb8927f023179666dfa4a680589c0bad8e16b78ed7e264583295265ff104",
+      "profileType": "DERIVATION_PROFILE",
+      "displayName": "RDS-0006 Freeman degree centralization compatibility profile",
+      "scientificPurpose": "Additively represent the exact governed DER-V1-SOC-F07-001 calculation for shadow equivalence only.",
+      "inputContract": [
+        {
+          "inputId": "SOC-049",
+          "role": "CONSTITUENT",
+          "required": true,
+          "definitionVersion": "ENTITY_V0_3_GOVERNED_RECORD_HASH",
+          "definitionHash": "145cc3aee92b29312360970ea347e84a5b11923c54f78ec451ff0e387bd5d742",
+          "collectionSubject": "ALL_NODES_OF_BOUND_STATE_BOUNDARY",
+          "completenessRule": "EXACT_SET_EQUALITY_NO_MISSING_NO_EXTRA"
+        }
+      ],
+      "minimumInputRequirements": [
+        {
+          "minimumNodes": 3,
+          "completeAlignedCollection": true
+        }
+      ],
+      "constituentMapping": [
+        {
+          "inputId": "SOC-049",
+          "role": "CONSTITUENT",
+          "causalConstituentInference": false
+        }
+      ],
+      "requiredContext": [
+        "networkBoundary",
+        "nodeSet",
+        "tieRelation",
+        "timeWindow"
+      ],
+      "aggregationFunction": "FREEMAN_DEGREE_CENTRALIZATION",
+      "calculationReference": "SUM_MAX_DEGREE_MINUS_DEGREES_DIVIDED_BY_N_MINUS_1_TIMES_N_MINUS_2",
+      "metricVariant": "FREEMAN_DEGREE_CENTRALIZATION",
+      "normalization": "SAME_SIZE_SIMPLE_UNDIRECTED_STAR_MAXIMUM",
+      "missingnessPolicy": "EXACT_SET_EQUALITY_NO_MISSING_NO_EXTRA",
+      "unitOfAnalysis": "NETWORK",
+      "outputScale": "NORMALIZED_NETWORK_CENTRALIZATION",
+      "outputInterpretation": "Degree centralization for the exact bound simple, undirected, binary network.",
+      "scopeLimitations": [
+        "Complete aligned values for the exact declared network; never one ego.",
+        "No betweenness/eigenvector/closeness centralization from degree.",
+        "RDS blocked metadata unchanged; inactive knowledge confers no production execution or direct effect target."
+      ],
+      "derivationEntailed": true,
+      "causalSemantics": "DEFINITIONAL_CALCULATIONAL_RECALCULATION_ONLY_NO_CAUSAL_SUM",
+      "causalSourceEligible": false,
+      "causalSourceGate": "WP-PSG-005_REQUIRED",
+      "executionMode": "SHADOW_ONLY",
+      "provenance": {
+        "compatibilityWrapperFor": "DER-V1-SOC-F07-001",
+        "preservesLegacyId": true,
+        "legacyRecordHash": "609f164d5bcd45cb7372f51374961f365780f2ebce7693e83f7b2db7d6e2dfbf",
+        "legacyContributionIdentity": "CONTRIB-SOC-F07-DEGREE-CENTRALIZATION",
+        "legacyContributionPolicy": "RECALCULATION_ONLY_NO_CAUSAL_SUM",
+        "lineage": {
+          "candidateId": "REL-CAND-SOC-F07-001",
+          "candidateRevision": 1,
+          "candidateHash": "9e4458e8e0bb95139ce7ab499a37ce4abc39c2a603c6739ff970f316fa60c2c5",
+          "scientificDecisionId": "GOV-SOC-F07-001-2026-09-06",
+          "architectureDecisionId": "GOV-NETWORK-STATE-V1-2026-09-07"
+        }
+      },
+      "architectureGovernance": {
+        "status": "GOVERNED",
+        "decisionId": "GOV-RDS-IMPLEMENTATION-001-2026-09-25",
+        "decisionRecord": "docs/governance/post-scale-up/rds/RDS_PRODUCTION_IMPLEMENTATION_DECISION_001.md"
+      }
+    }
+  ]
 }

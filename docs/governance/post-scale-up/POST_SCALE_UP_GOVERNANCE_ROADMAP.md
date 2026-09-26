@@ -1,6 +1,6 @@
 # Post-Scale-Up governance roadmap
 
-This roadmap converts the 44-row historical backlog into decision-ready work packages. Stages A and B are complete here; skeptical architecture review is complete for the six highest-consequence packets. DP-PSG-001-IMPLEMENTATION is human-approved. Current bounded production state is `PHASE_0_COMPLETE_EMPTY_REGISTRIES`; causal-source use remains prohibited and all other RDS remain unchanged.
+This roadmap converts the 44-row historical backlog into decision-ready work packages. Stages A and B are complete here; skeptical architecture review is complete for the six highest-consequence packets. DP-PSG-001-IMPLEMENTATION is human-approved. Current bounded production state is `PHASE_1_RDS_0006_COMPLETE_SHADOW_ONLY`; causal-source use remains prohibited and all other RDS remain unchanged.
 
 | Order | Work package | Root issue | Band | Dependencies | Original rows |
 |---:|---|---|---|---|---:|

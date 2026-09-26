@@ -114,10 +114,10 @@ class PostScaleUpGovernanceRoadmapTests(unittest.TestCase):
         by_wp = {row["workPackageId"]: row for row in self.packages["workPackages"]}
         self.assertEqual(by_wp["WP-PSG-001"]["stages"]["D_humanGovernanceDecision"], "COMPLETE_BOUNDED_DIRECTION_APPROVED")
         self.assertEqual(by_wp["WP-PSG-001"]["prototypeImplementationAuthorization"], "AUTHORIZED_NON_PRODUCTION_ONLY")
-        self.assertEqual(by_wp["WP-PSG-001"]["productionImplementationStatus"], "PHASE_0_COMPLETE_EMPTY_REGISTRIES")
-        self.assertEqual(by_wp["WP-PSG-001"]["stages"]["E_implementation"], "PHASE_0_COMPLETE_EMPTY_REGISTRIES")
-        self.assertEqual(by_wp["WP-PSG-001"]["stages"]["F_migrationRevalidation"], "DRY_RUN_ONLY_COMPLETE_PHASE_1_NOT_STARTED")
-        self.assertEqual(by_wp["WP-PSG-001"]["rootIssueResolutionStatus"], "NOT_RESOLVED_PHASE_0_ONLY")
+        self.assertEqual(by_wp["WP-PSG-001"]["productionImplementationStatus"], "PHASE_1_RDS_0006_COMPLETE_SHADOW_ONLY")
+        self.assertEqual(by_wp["WP-PSG-001"]["stages"]["E_implementation"], "PHASE_1_RDS_0006_COMPLETE_SHADOW_ONLY")
+        self.assertEqual(by_wp["WP-PSG-001"]["stages"]["F_migrationRevalidation"], "RDS_0006_SHADOW_EQUIVALENCE_COMPLETE_OTHER_40_UNCHANGED")
+        self.assertEqual(by_wp["WP-PSG-001"]["rootIssueResolutionStatus"], "BOUNDED_ARCHITECTURE_IMPLEMENTED_OTHER_RDS_PENDING_SCIENCE")
         self.assertIsNone(by_wp["WP-PSG-001"]["nextDecisionPacketId"])
         self.assertEqual(by_wp["WP-PSG-001"]["productionImplementationDecisionId"], "GOV-RDS-IMPLEMENTATION-001-2026-09-25")
         for package in self.packages["workPackages"]:
