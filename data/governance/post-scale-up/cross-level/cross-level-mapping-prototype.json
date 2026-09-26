@@ -1,0 +1,875 @@
+{
+  "schemaVersion": "0.1.0-PROTOTYPE",
+  "prototypeId": "WP-PSG-002-STAGE-C-20260926-001",
+  "productionArchitecture": false,
+  "levels": [
+    "COMMUNITY",
+    "DYAD",
+    "EGO_NETWORK",
+    "GROUP",
+    "INSTITUTION",
+    "JURISDICTION",
+    "MARKET",
+    "NETWORK",
+    "ORGANIZATION",
+    "PERSON",
+    "POPULATION",
+    "STATE_SYSTEM"
+  ],
+  "routes": {
+    "MEMBERSHIP": "Defines risk set only; never sufficient exposure.",
+    "ELIGIBILITY": "Defines possible coverage only.",
+    "ASSIGNMENT": "Assigns target unit to condition; receipt/contact still explicit.",
+    "IMPLEMENTATION": "Formal state is realized in practice.",
+    "ENFORCEMENT": "Rule is applied through a specified enforcement process.",
+    "CONTACT": "Target unit encounters specified actor/context.",
+    "INFORMATION_EXPOSURE": "Specified information is delivered or displayed; attention/perception separate.",
+    "RESOURCE_ACCESS": "Resource becomes actually accessible to target unit.",
+    "SERVICE_DELIVERY": "Specified service is delivered.",
+    "SOCIAL_INTERACTION": "Bounded interaction constitutes exposure.",
+    "NETWORK_POSITION": "Exact Network State creates a bounded opportunity/context; metric alone insufficient.",
+    "AMBIENT_CONTEXT": "Persistent context applies without fabricating a discrete event.",
+    "OBSERVATION": "Target can observe a specified condition.",
+    "MONITORING": "Target is actually subject to monitoring.",
+    "SANCTION_EXPOSURE": "Target receives or faces a specified applied sanction.",
+    "INCENTIVE_EXPOSURE": "Target receives or faces a specified implemented incentive."
+  },
+  "fieldApplicability": {
+    "REQUIRED_UNIVERSAL": [
+      "mappingId",
+      "mappingVersion",
+      "relationshipId",
+      "sourceEntityId",
+      "sourceLevel",
+      "targetEntityId",
+      "targetLevel",
+      "routeType",
+      "exposureDefinition",
+      "exposureUnit",
+      "temporalOrder",
+      "evidenceReferences",
+      "scopeLimitations",
+      "causalEvidence=false",
+      "executionAuthority=false",
+      "provenance"
+    ],
+    "REQUIRED_CONDITIONAL": [
+      "membershipRule",
+      "eligibilityRule",
+      "implementationRequirement",
+      "assignmentRule",
+      "exposureWindow",
+      "exposureIntensity",
+      "coverageRule",
+      "contactRule",
+      "transmissionRule",
+      "perceptionRequired",
+      "perceptionEntityId",
+      "intermediateEntityIds",
+      "happeningTypeIds",
+      "networkStateDependency"
+    ],
+    "OPTIONAL": [
+      "contextRequirements",
+      "claimSpecificQualifiers",
+      "implementationEvidenceReferences",
+      "exposureEvidenceReferences"
+    ],
+    "NOT_APPLICABLE_OR_PROHIBITED": [
+      "activationStatus",
+      "activationValue",
+      "edgeWeight",
+      "fcmNodeState",
+      "lifecycleStatus",
+      "polarity",
+      "propagationValue"
+    ]
+  },
+  "identityRule": "A mapping identity represents one reusable level transition and exposure contract. Claim-specific scope stays on the Relationship reference; substantive pathway changes require a new mapping identity; compatible clarification requires a new immutable version.",
+  "levelDeclarationFinding": {
+    "affectedRelationships": 38,
+    "legacyRelationshipLevelsPresent": 33,
+    "legacyRelationshipLevelsMissing": 5,
+    "entityMetadataSupportsSafeInference": false,
+    "decision": "Future mappings require explicit governed source/target level declarations; legacy labels may inform review but cannot be silently normalized."
+  },
+  "relationshipAttachment": {
+    "requiredFutureFields": [
+      "crossLevelMappingId",
+      "crossLevelMappingVersion"
+    ],
+    "claimSpecificQualifiersAllowed": true,
+    "fullMappingDuplicationProhibited": true
+  },
+  "bridgeRule": "Reference an existing Driver or HappeningType only when it is a scientifically meaningful intermediate state or operation. Never create one solely as routing plumbing.",
+  "happeningTypeRule": "Use for discrete or patterned operations/exposures; persistent ambient context does not require a fabricated HappeningType.",
+  "mappingSemantics": {
+    "objectKind": "SCIENTIFIC_ROUTING_ELIGIBILITY_CONTRACT",
+    "isCausalNode": false,
+    "isEvidence": false,
+    "hasWeight": false,
+    "hasLifecycle": false,
+    "executionAuthority": false
+  },
+  "optionBBridgeChainExamples": [
+    {
+      "relationshipId": "REL-INS-040",
+      "conceptualChain": [
+        "INS-051",
+        "IMPLEMENTED_PROCEDURE",
+        "ACTUAL_PROCEDURAL_EXPOSURE",
+        "PSY-022"
+      ],
+      "result": "Existing ontology does not contain every bridge; do not mint plumbing Drivers."
+    },
+    {
+      "relationshipId": "REL-SOC-067",
+      "conceptualChain": [
+        "SOC-096",
+        "MEMBER_CONTEXT_EXPOSURE",
+        "PSY-022"
+      ],
+      "result": "Ambient mapping is possible without a discrete HappeningType."
+    }
+  ],
+  "optionCRelationshipMetadataExample": {
+    "relationshipId": "REL-INS-040",
+    "crossLevel": true,
+    "sourceLevel": "INSTITUTION",
+    "targetLevel": "PERSON",
+    "exposureRouteType": "IMPLEMENTATION",
+    "actualExposureRequired": true,
+    "perceivedExposureRequired": true,
+    "finding": "Useful claim metadata but duplicative and weak without a reusable exact mapping."
+  },
+  "hybridRelationshipReferenceExample": {
+    "relationshipId": "REL-INS-040",
+    "crossLevelMappingId": "XLEM-TEST-INS-040",
+    "crossLevelMappingVersion": "1.0.0-TEST",
+    "claimSpecificQualifiers": [
+      "target is immediate perceived fairness",
+      "specified implemented procedure only"
+    ]
+  },
+  "handoffs": {
+    "WP-PSG-003": [
+      "exact Network State identity",
+      "state/boundary transition dependency",
+      "no metric-to-exposure inference"
+    ],
+    "WP-PSG-004": [
+      "underlying contribution source",
+      "intermediate route IDs",
+      "alternate aggregate/constituent representations"
+    ],
+    "WP-PSG-005": [
+      "exact source RDS/profile",
+      "source/target levels",
+      "mapping ID/version",
+      "constituent mapping",
+      "exposure route",
+      "temporal alignment",
+      "causalSourceEligible remains false"
+    ],
+    "WP-PSG-007": [
+      "only genuine missing construct identities",
+      "no plumbing entities",
+      "explicit actual/perceived construct boundary"
+    ]
+  },
+  "mappings": [
+    {
+      "schemaVersion": "0.1.0-PROTOTYPE",
+      "mappingId": "XLEM-TEST-INS-040",
+      "mappingVersion": "1.0.0-TEST",
+      "relationshipId": "REL-INS-040",
+      "sourceEntityId": "INS-051",
+      "sourceLevel": "INSTITUTION",
+      "targetEntityId": "PSY-022",
+      "targetLevel": "PERSON",
+      "routeType": "IMPLEMENTATION",
+      "membershipRule": "Membership identifies a possible risk set only; it never establishes exposure.",
+      "eligibilityRule": "Eligibility identifies possible coverage only; receipt/exposure must be established separately.",
+      "implementationRequired": true,
+      "implementationRequirement": "Specified source state must be realized in practice for the bounded target unit.",
+      "exposureDefinition": "The specified person encounters the implemented impartial procedure and evaluates that process.",
+      "exposureUnit": "DEFINED_TARGET_UNIT",
+      "exposureWindow": "BOUNDED_TO_THE_RELATIONSHIP_EVIDENCE_WINDOW",
+      "coverageRule": "PARTIAL_COVERAGE_ALLOWED_ONLY_WITH_EXPLICIT_INCLUDED_TARGET_SET_OR_RULE",
+      "perceptionRequired": true,
+      "perceptionEntityId": "PSY-022",
+      "intermediateEntityIds": [],
+      "happeningTypeIds": [],
+      "contextRequirements": [
+        "SOURCE_SCOPE",
+        "TARGET_SCOPE",
+        "IMPLEMENTATION_OR_CONTEXT",
+        "ACTUAL_EXPOSURE",
+        "TIME_ALIGNMENT"
+      ],
+      "temporalOrder": [
+        "SOURCE_STATE",
+        "IMPLEMENTATION_OR_TRANSMISSION",
+        "ACTUAL_EXPOSURE",
+        "PERSON_OR_LOWER_LEVEL_RESPONSE"
+      ],
+      "evidenceReferences": [
+        "SRC-502",
+        "SRC-503"
+      ],
+      "scopeLimitations": [
+        "Architecture routing only",
+        "No ecological or atomistic inference",
+        "No lifecycle, weight, activation or causal authority"
+      ],
+      "networkStateDependency": false,
+      "causalEvidence": false,
+      "executionAuthority": false,
+      "provenance": {
+        "workPackageId": "WP-PSG-002",
+        "decisionPacketId": "DP-PSG-002",
+        "sourceRelationshipReviewOnly": true
+      },
+      "prototypeStatus": "NON_PRODUCTION_DECISION_TEST"
+    },
+    {
+      "schemaVersion": "0.1.0-PROTOTYPE",
+      "mappingId": "XLEM-TEST-INS-046",
+      "mappingVersion": "1.0.0-TEST",
+      "relationshipId": "REL-INS-046",
+      "sourceEntityId": "INS-062",
+      "sourceLevel": "INSTITUTION",
+      "targetEntityId": "SOC-096",
+      "targetLevel": "GROUP",
+      "routeType": "RESOURCE_ACCESS",
+      "membershipRule": "Membership identifies a possible risk set only; it never establishes exposure.",
+      "eligibilityRule": "Eligibility identifies possible coverage only; receipt/exposure must be established separately.",
+      "implementationRequired": true,
+      "implementationRequirement": "Specified source state must be realized in practice for the bounded target unit.",
+      "exposureDefinition": "The specified groups receive institutionally allocated resources within the bounded field.",
+      "exposureUnit": "DEFINED_TARGET_UNIT",
+      "exposureWindow": "BOUNDED_TO_THE_RELATIONSHIP_EVIDENCE_WINDOW",
+      "coverageRule": "PARTIAL_COVERAGE_ALLOWED_ONLY_WITH_EXPLICIT_INCLUDED_TARGET_SET_OR_RULE",
+      "perceptionRequired": false,
+      "perceptionEntityId": null,
+      "intermediateEntityIds": [],
+      "happeningTypeIds": [],
+      "contextRequirements": [
+        "SOURCE_SCOPE",
+        "TARGET_SCOPE",
+        "IMPLEMENTATION_OR_CONTEXT",
+        "ACTUAL_EXPOSURE",
+        "TIME_ALIGNMENT"
+      ],
+      "temporalOrder": [
+        "SOURCE_STATE",
+        "IMPLEMENTATION_OR_TRANSMISSION",
+        "ACTUAL_EXPOSURE",
+        "PERSON_OR_LOWER_LEVEL_RESPONSE"
+      ],
+      "evidenceReferences": [
+        "SRC-497",
+        "SRC-502"
+      ],
+      "scopeLimitations": [
+        "Architecture routing only",
+        "No ecological or atomistic inference",
+        "No lifecycle, weight, activation or causal authority"
+      ],
+      "networkStateDependency": false,
+      "causalEvidence": false,
+      "executionAuthority": false,
+      "provenance": {
+        "workPackageId": "WP-PSG-002",
+        "decisionPacketId": "DP-PSG-002",
+        "sourceRelationshipReviewOnly": true
+      },
+      "prototypeStatus": "NON_PRODUCTION_DECISION_TEST"
+    },
+    {
+      "schemaVersion": "0.1.0-PROTOTYPE",
+      "mappingId": "XLEM-TEST-SOC-067",
+      "mappingVersion": "1.0.0-TEST",
+      "relationshipId": "REL-SOC-067",
+      "sourceEntityId": "SOC-096",
+      "sourceLevel": "GROUP",
+      "targetEntityId": "PSY-022",
+      "targetLevel": "PERSON",
+      "routeType": "AMBIENT_CONTEXT",
+      "membershipRule": "Membership identifies a possible risk set only; it never establishes exposure.",
+      "eligibilityRule": "Eligibility identifies possible coverage only; receipt/exposure must be established separately.",
+      "implementationRequired": false,
+      "implementationRequirement": "Persistent source context; no discrete implementation event required.",
+      "exposureDefinition": "The specified member experiences the bounded intergroup status context relevant to the fairness judgment.",
+      "exposureUnit": "DEFINED_TARGET_UNIT",
+      "exposureWindow": "BOUNDED_TO_THE_RELATIONSHIP_EVIDENCE_WINDOW",
+      "coverageRule": "PARTIAL_COVERAGE_ALLOWED_ONLY_WITH_EXPLICIT_INCLUDED_TARGET_SET_OR_RULE",
+      "perceptionRequired": true,
+      "perceptionEntityId": "PSY-022",
+      "intermediateEntityIds": [],
+      "happeningTypeIds": [],
+      "contextRequirements": [
+        "SOURCE_SCOPE",
+        "TARGET_SCOPE",
+        "IMPLEMENTATION_OR_CONTEXT",
+        "ACTUAL_EXPOSURE",
+        "TIME_ALIGNMENT"
+      ],
+      "temporalOrder": [
+        "SOURCE_STATE",
+        "IMPLEMENTATION_OR_TRANSMISSION",
+        "ACTUAL_EXPOSURE",
+        "PERSON_OR_LOWER_LEVEL_RESPONSE"
+      ],
+      "evidenceReferences": [
+        "SRC-500",
+        "SRC-501"
+      ],
+      "scopeLimitations": [
+        "Architecture routing only",
+        "No ecological or atomistic inference",
+        "No lifecycle, weight, activation or causal authority"
+      ],
+      "networkStateDependency": false,
+      "causalEvidence": false,
+      "executionAuthority": false,
+      "provenance": {
+        "workPackageId": "WP-PSG-002",
+        "decisionPacketId": "DP-PSG-002",
+        "sourceRelationshipReviewOnly": true
+      },
+      "prototypeStatus": "NON_PRODUCTION_DECISION_TEST"
+    },
+    {
+      "schemaVersion": "0.1.0-PROTOTYPE",
+      "mappingId": "XLEM-TEST-NETWORK-001",
+      "mappingVersion": "1.0.0-TEST",
+      "relationshipId": "SYN-REL-NETWORK-PERSON-001",
+      "sourceEntityId": "RDS-0006",
+      "sourceLevel": "NETWORK",
+      "targetEntityId": "SYN-PERSON-OPPORTUNITY",
+      "targetLevel": "PERSON",
+      "routeType": "NETWORK_POSITION",
+      "membershipRule": "Membership identifies a possible risk set only; it never establishes exposure.",
+      "eligibilityRule": "Eligibility identifies possible coverage only; receipt/exposure must be established separately.",
+      "implementationRequired": false,
+      "implementationRequirement": "Persistent source context; no discrete implementation event required.",
+      "exposureDefinition": "The specified person's position in the exact Network State changes their opportunity set.",
+      "exposureUnit": "DEFINED_TARGET_UNIT",
+      "exposureWindow": "BOUNDED_TO_THE_RELATIONSHIP_EVIDENCE_WINDOW",
+      "coverageRule": "PARTIAL_COVERAGE_ALLOWED_ONLY_WITH_EXPLICIT_INCLUDED_TARGET_SET_OR_RULE",
+      "perceptionRequired": false,
+      "perceptionEntityId": null,
+      "intermediateEntityIds": [],
+      "happeningTypeIds": [],
+      "contextRequirements": [
+        "SOURCE_SCOPE",
+        "TARGET_SCOPE",
+        "IMPLEMENTATION_OR_CONTEXT",
+        "ACTUAL_EXPOSURE",
+        "TIME_ALIGNMENT"
+      ],
+      "temporalOrder": [
+        "SOURCE_STATE",
+        "IMPLEMENTATION_OR_TRANSMISSION",
+        "ACTUAL_EXPOSURE",
+        "PERSON_OR_LOWER_LEVEL_RESPONSE"
+      ],
+      "evidenceReferences": [],
+      "scopeLimitations": [
+        "Architecture routing only",
+        "No ecological or atomistic inference",
+        "No lifecycle, weight, activation or causal authority"
+      ],
+      "networkStateDependency": true,
+      "causalEvidence": false,
+      "executionAuthority": false,
+      "provenance": {
+        "workPackageId": "WP-PSG-002",
+        "decisionPacketId": "DP-PSG-002",
+        "sourceRelationshipReviewOnly": true
+      },
+      "prototypeStatus": "NON_PRODUCTION_DECISION_TEST"
+    },
+    {
+      "schemaVersion": "0.1.0-PROTOTYPE",
+      "mappingId": "XLEM-TEST-INS-044",
+      "mappingVersion": "1.0.0-TEST",
+      "relationshipId": "REL-INS-044",
+      "sourceEntityId": "INS-047",
+      "sourceLevel": "INSTITUTION",
+      "targetEntityId": "PSY-108",
+      "targetLevel": "PERSON",
+      "routeType": "MONITORING",
+      "membershipRule": "Membership identifies a possible risk set only; it never establishes exposure.",
+      "eligibilityRule": "Eligibility identifies possible coverage only; receipt/exposure must be established separately.",
+      "implementationRequired": true,
+      "implementationRequirement": "Specified source state must be realized in practice for the bounded target unit.",
+      "exposureDefinition": "The surveillance mandate is implemented and the specified person is actually subject to monitoring.",
+      "exposureUnit": "DEFINED_TARGET_UNIT",
+      "exposureWindow": "BOUNDED_TO_THE_RELATIONSHIP_EVIDENCE_WINDOW",
+      "coverageRule": "PARTIAL_COVERAGE_ALLOWED_ONLY_WITH_EXPLICIT_INCLUDED_TARGET_SET_OR_RULE",
+      "perceptionRequired": true,
+      "perceptionEntityId": "PSY-108",
+      "intermediateEntityIds": [],
+      "happeningTypeIds": [],
+      "contextRequirements": [
+        "SOURCE_SCOPE",
+        "TARGET_SCOPE",
+        "IMPLEMENTATION_OR_CONTEXT",
+        "ACTUAL_EXPOSURE",
+        "TIME_ALIGNMENT"
+      ],
+      "temporalOrder": [
+        "SOURCE_STATE",
+        "IMPLEMENTATION_OR_TRANSMISSION",
+        "ACTUAL_EXPOSURE",
+        "PERSON_OR_LOWER_LEVEL_RESPONSE"
+      ],
+      "evidenceReferences": [
+        "SRC-510",
+        "SRC-513"
+      ],
+      "scopeLimitations": [
+        "Architecture routing only",
+        "No ecological or atomistic inference",
+        "No lifecycle, weight, activation or causal authority"
+      ],
+      "networkStateDependency": false,
+      "causalEvidence": false,
+      "executionAuthority": false,
+      "provenance": {
+        "workPackageId": "WP-PSG-002",
+        "decisionPacketId": "DP-PSG-002",
+        "sourceRelationshipReviewOnly": true
+      },
+      "prototypeStatus": "NON_PRODUCTION_DECISION_TEST"
+    },
+    {
+      "schemaVersion": "0.1.0-PROTOTYPE",
+      "mappingId": "XLEM-TEST-INS-050",
+      "mappingVersion": "1.0.0-TEST",
+      "relationshipId": "REL-INS-050",
+      "sourceEntityId": "INS-052",
+      "sourceLevel": "INSTITUTION",
+      "targetEntityId": "SOC-001",
+      "targetLevel": "GROUP",
+      "routeType": "ELIGIBILITY",
+      "membershipRule": "Membership identifies a possible risk set only; it never establishes exposure.",
+      "eligibilityRule": "Eligibility identifies possible coverage only; receipt/exposure must be established separately.",
+      "implementationRequired": true,
+      "implementationRequirement": "Specified source state must be realized in practice for the bounded target unit.",
+      "exposureDefinition": "Eligible members receive and can use the implemented formal voice opportunity.",
+      "exposureUnit": "DEFINED_TARGET_UNIT",
+      "exposureWindow": "BOUNDED_TO_THE_RELATIONSHIP_EVIDENCE_WINDOW",
+      "coverageRule": "PARTIAL_COVERAGE_ALLOWED_ONLY_WITH_EXPLICIT_INCLUDED_TARGET_SET_OR_RULE",
+      "perceptionRequired": false,
+      "perceptionEntityId": null,
+      "intermediateEntityIds": [],
+      "happeningTypeIds": [],
+      "contextRequirements": [
+        "SOURCE_SCOPE",
+        "TARGET_SCOPE",
+        "IMPLEMENTATION_OR_CONTEXT",
+        "ACTUAL_EXPOSURE",
+        "TIME_ALIGNMENT"
+      ],
+      "temporalOrder": [
+        "SOURCE_STATE",
+        "IMPLEMENTATION_OR_TRANSMISSION",
+        "ACTUAL_EXPOSURE",
+        "PERSON_OR_LOWER_LEVEL_RESPONSE"
+      ],
+      "evidenceReferences": [
+        "SRC-502",
+        "SRC-510"
+      ],
+      "scopeLimitations": [
+        "Architecture routing only",
+        "No ecological or atomistic inference",
+        "No lifecycle, weight, activation or causal authority"
+      ],
+      "networkStateDependency": false,
+      "causalEvidence": false,
+      "executionAuthority": false,
+      "provenance": {
+        "workPackageId": "WP-PSG-002",
+        "decisionPacketId": "DP-PSG-002",
+        "sourceRelationshipReviewOnly": true
+      },
+      "prototypeStatus": "NON_PRODUCTION_DECISION_TEST"
+    },
+    {
+      "schemaVersion": "0.1.0-PROTOTYPE",
+      "mappingId": "XLEM-TEST-OBJECTIVE-001",
+      "mappingVersion": "1.0.0-TEST",
+      "relationshipId": "SYN-REL-SANCTION-PERSON-001",
+      "sourceEntityId": "SYN-GROUP-SANCTION-CLIMATE",
+      "sourceLevel": "GROUP",
+      "targetEntityId": "SYN-PERSON-RESOURCE-LOSS",
+      "targetLevel": "PERSON",
+      "routeType": "SANCTION_EXPOSURE",
+      "membershipRule": "Membership identifies a possible risk set only; it never establishes exposure.",
+      "eligibilityRule": "Eligibility identifies possible coverage only; receipt/exposure must be established separately.",
+      "implementationRequired": true,
+      "implementationRequirement": "Specified source state must be realized in practice for the bounded target unit.",
+      "exposureDefinition": "The specified person receives an objective sanction consequence.",
+      "exposureUnit": "DEFINED_TARGET_UNIT",
+      "exposureWindow": "BOUNDED_TO_THE_RELATIONSHIP_EVIDENCE_WINDOW",
+      "coverageRule": "PARTIAL_COVERAGE_ALLOWED_ONLY_WITH_EXPLICIT_INCLUDED_TARGET_SET_OR_RULE",
+      "perceptionRequired": false,
+      "perceptionEntityId": null,
+      "intermediateEntityIds": [],
+      "happeningTypeIds": [],
+      "contextRequirements": [
+        "SOURCE_SCOPE",
+        "TARGET_SCOPE",
+        "IMPLEMENTATION_OR_CONTEXT",
+        "ACTUAL_EXPOSURE",
+        "TIME_ALIGNMENT"
+      ],
+      "temporalOrder": [
+        "SOURCE_STATE",
+        "IMPLEMENTATION_OR_TRANSMISSION",
+        "ACTUAL_EXPOSURE",
+        "PERSON_OR_LOWER_LEVEL_RESPONSE"
+      ],
+      "evidenceReferences": [],
+      "scopeLimitations": [
+        "Architecture routing only",
+        "No ecological or atomistic inference",
+        "No lifecycle, weight, activation or causal authority"
+      ],
+      "networkStateDependency": false,
+      "causalEvidence": false,
+      "executionAuthority": false,
+      "provenance": {
+        "workPackageId": "WP-PSG-002",
+        "decisionPacketId": "DP-PSG-002",
+        "sourceRelationshipReviewOnly": true
+      },
+      "prototypeStatus": "NON_PRODUCTION_DECISION_TEST"
+    },
+    {
+      "schemaVersion": "0.1.0-PROTOTYPE",
+      "mappingId": "XLEM-TEST-ECOLOGICAL-001",
+      "mappingVersion": "1.0.0-TEST",
+      "relationshipId": "SYN-REL-INSTITUTION-AVERAGE-001",
+      "sourceEntityId": "SYN-INSTITUTION-SCORE",
+      "sourceLevel": "INSTITUTION",
+      "targetEntityId": "SYN-PERSON-OUTCOME",
+      "targetLevel": "PERSON",
+      "routeType": "AMBIENT_CONTEXT",
+      "membershipRule": "Membership identifies a possible risk set only; it never establishes exposure.",
+      "eligibilityRule": "Eligibility identifies possible coverage only; receipt/exposure must be established separately.",
+      "implementationRequired": false,
+      "implementationRequirement": "Persistent source context; no discrete implementation event required.",
+      "exposureDefinition": "The person is demonstrably exposed to the bounded institution-level context.",
+      "exposureUnit": "DEFINED_TARGET_UNIT",
+      "exposureWindow": "BOUNDED_TO_THE_RELATIONSHIP_EVIDENCE_WINDOW",
+      "coverageRule": "PARTIAL_COVERAGE_ALLOWED_ONLY_WITH_EXPLICIT_INCLUDED_TARGET_SET_OR_RULE",
+      "perceptionRequired": false,
+      "perceptionEntityId": null,
+      "intermediateEntityIds": [],
+      "happeningTypeIds": [],
+      "contextRequirements": [
+        "SOURCE_SCOPE",
+        "TARGET_SCOPE",
+        "IMPLEMENTATION_OR_CONTEXT",
+        "ACTUAL_EXPOSURE",
+        "TIME_ALIGNMENT"
+      ],
+      "temporalOrder": [
+        "SOURCE_STATE",
+        "IMPLEMENTATION_OR_TRANSMISSION",
+        "ACTUAL_EXPOSURE",
+        "PERSON_OR_LOWER_LEVEL_RESPONSE"
+      ],
+      "evidenceReferences": [],
+      "scopeLimitations": [
+        "Architecture routing only",
+        "No ecological or atomistic inference",
+        "No lifecycle, weight, activation or causal authority"
+      ],
+      "networkStateDependency": false,
+      "causalEvidence": false,
+      "executionAuthority": false,
+      "provenance": {
+        "workPackageId": "WP-PSG-002",
+        "decisionPacketId": "DP-PSG-002",
+        "sourceRelationshipReviewOnly": true
+      },
+      "prototypeStatus": "NON_PRODUCTION_DECISION_TEST"
+    },
+    {
+      "schemaVersion": "0.1.0-PROTOTYPE",
+      "mappingId": "XLEM-TEST-ASSIGNMENT-001",
+      "mappingVersion": "1.0.0-TEST",
+      "relationshipId": "SYN-REL-ASSIGNMENT-PERSON-001",
+      "sourceEntityId": "SYN-INSTITUTION-ASSIGNMENT",
+      "sourceLevel": "INSTITUTION",
+      "targetEntityId": "SYN-PERSON-CONTACT-STATE",
+      "targetLevel": "PERSON",
+      "routeType": "ASSIGNMENT",
+      "membershipRule": "Membership identifies a possible risk set only; it never establishes exposure.",
+      "eligibilityRule": "Eligibility identifies possible coverage only; receipt/exposure must be established separately.",
+      "implementationRequired": true,
+      "implementationRequirement": "Specified source state must be realized in practice for the bounded target unit.",
+      "exposureDefinition": "The specified person is assigned to and receives the bounded contact condition.",
+      "exposureUnit": "DEFINED_TARGET_UNIT",
+      "exposureWindow": "BOUNDED_TO_THE_RELATIONSHIP_EVIDENCE_WINDOW",
+      "coverageRule": "PARTIAL_COVERAGE_ALLOWED_ONLY_WITH_EXPLICIT_INCLUDED_TARGET_SET_OR_RULE",
+      "perceptionRequired": false,
+      "perceptionEntityId": null,
+      "intermediateEntityIds": [],
+      "happeningTypeIds": [
+        "HT-SYN-ASSIGNMENT-TEST"
+      ],
+      "contextRequirements": [
+        "SOURCE_SCOPE",
+        "TARGET_SCOPE",
+        "IMPLEMENTATION_OR_CONTEXT",
+        "ACTUAL_EXPOSURE",
+        "TIME_ALIGNMENT"
+      ],
+      "temporalOrder": [
+        "SOURCE_STATE",
+        "IMPLEMENTATION_OR_TRANSMISSION",
+        "ACTUAL_EXPOSURE",
+        "PERSON_OR_LOWER_LEVEL_RESPONSE"
+      ],
+      "evidenceReferences": [],
+      "scopeLimitations": [
+        "Architecture routing only",
+        "No ecological or atomistic inference",
+        "No lifecycle, weight, activation or causal authority"
+      ],
+      "networkStateDependency": false,
+      "causalEvidence": false,
+      "executionAuthority": false,
+      "provenance": {
+        "workPackageId": "WP-PSG-002",
+        "decisionPacketId": "DP-PSG-002",
+        "sourceRelationshipReviewOnly": true
+      },
+      "prototypeStatus": "NON_PRODUCTION_DECISION_TEST"
+    }
+  ],
+  "optionResults": [
+    {
+      "option": "A",
+      "result": "VIABLE_BUT_INCOMPLETE_ALONE",
+      "worked": [
+        "Reusable typed contract",
+        "Runtime validation",
+        "Ambient and discrete routes",
+        "Separation from causal evidence"
+      ],
+      "failed": [
+        "Needs exact Relationship attachment",
+        "Can proliferate without identity rules",
+        "May look causal unless prohibited semantics are enforced"
+      ]
+    },
+    {
+      "option": "B",
+      "result": "REJECT_AS_UNIVERSAL_REQUIREMENT",
+      "worked": [
+        "Uses real intermediate constructs when scientifically present",
+        "Keeps substantive mechanisms in ontology"
+      ],
+      "failed": [
+        "Missing bridge constructs",
+        "Artificial plumbing Drivers",
+        "Long paths",
+        "HappeningType/state confusion",
+        "Ontology bloat"
+      ]
+    },
+    {
+      "option": "C",
+      "result": "REJECT_AS_COMPLETE_SOLUTION",
+      "worked": [
+        "Small additive migration",
+        "Relationship-local clarity",
+        "Backward-compatible display"
+      ],
+      "failed": [
+        "Duplicates route content",
+        "Weak reuse",
+        "Metadata may be ignored",
+        "Cannot centrally version shared mappings"
+      ]
+    },
+    {
+      "option": "A+B",
+      "result": "VIABLE_WITH_ATTACHMENT_GAP",
+      "worked": [
+        "Typed route plus real bridges only when warranted"
+      ],
+      "failed": [
+        "Relationship still needs exact versioned reference"
+      ]
+    },
+    {
+      "option": "A+C",
+      "result": "VIABLE_CORE",
+      "worked": [
+        "Reusable mapping plus exact mapping reference and claim qualifiers"
+      ],
+      "failed": [
+        "Does not by itself state when bridge entities are scientifically required"
+      ]
+    },
+    {
+      "option": "A+B+C",
+      "result": "RECOMMENDED_BOUNDED_HYBRID",
+      "worked": [
+        "Reusable contract",
+        "Exact Relationship reference",
+        "Conditional real bridge references",
+        "Fail-closed validation",
+        "Ambient and discrete exposure"
+      ],
+      "failed": [
+        "Requires migration and consumer awareness",
+        "Needs strict identity/proliferation governance"
+      ]
+    }
+  ],
+  "decisionMatrix": [
+    {
+      "criterion": "Scientific fidelity",
+      "A": "High if noncausal",
+      "B": "High only for real intermediates",
+      "C": "Moderate",
+      "A+B+C": "High with conditional B"
+    },
+    {
+      "criterion": "Cross-level explicitness",
+      "A": "High",
+      "B": "Path-dependent",
+      "C": "Relationship-local",
+      "A+B+C": "High and claim-bound"
+    },
+    {
+      "criterion": "Ontology burden",
+      "A": "One new contract class",
+      "B": "Potentially high",
+      "C": "Low",
+      "A+B+C": "Bounded by no-plumbing rule"
+    },
+    {
+      "criterion": "Runtime enforceability",
+      "A": "High",
+      "B": "Incomplete when bridges absent",
+      "C": "Moderate",
+      "A+B+C": "High"
+    },
+    {
+      "criterion": "Reuse",
+      "A": "High",
+      "B": "Varies",
+      "C": "Low",
+      "A+B+C": "High"
+    },
+    {
+      "criterion": "Migration safety",
+      "A": "Additive registry",
+      "B": "Potential ontology migration",
+      "C": "Additive fields",
+      "A+B+C": "Additive but consumer-aware"
+    },
+    {
+      "criterion": "Ambient context",
+      "A": "Supported",
+      "B": "May fabricate state/event",
+      "C": "Displayable",
+      "A+B+C": "Supported without fake event"
+    },
+    {
+      "criterion": "Discrete exposure",
+      "A": "Supported",
+      "B": "Supported via real HT",
+      "C": "Displayable",
+      "A+B+C": "Supported with optional HT ref"
+    },
+    {
+      "criterion": "Perception mediation",
+      "A": "Conditional explicit",
+      "B": "Requires real perception Driver",
+      "C": "Easy to omit",
+      "A+B+C": "Explicit and optionally entity-bound"
+    },
+    {
+      "criterion": "Network State compatibility",
+      "A": "Can require exact reference",
+      "B": "Cannot replace state",
+      "C": "Weak alone",
+      "A+B+C": "Fail-closed dependency"
+    },
+    {
+      "criterion": "WP-PSG-005 compatibility",
+      "A": "Supplies route contract",
+      "B": "Supplies real intermediates",
+      "C": "Attaches exact mapping",
+      "A+B+C": "Complete handoff; no authorization"
+    },
+    {
+      "criterion": "Contribution-control compatibility",
+      "A": "Can expose alternate routes",
+      "B": "May reveal duplicate paths",
+      "C": "Claim-local qualifier",
+      "A+B+C": "Best handoff to WP-PSG-004"
+    },
+    {
+      "criterion": "Consumer clarity / rollback",
+      "A": "Central and removable",
+      "B": "Harder if ontology added",
+      "C": "Simple but duplicative",
+      "A+B+C": "Exact ref; remove integration to rollback"
+    }
+  ],
+  "skepticalReview": [
+    {
+      "challenge": "Hidden causal entity",
+      "finding": "Prevented only if the mapping schema prohibits polarity, weights, lifecycle, node state, propagation and execution authority."
+    },
+    {
+      "challenge": "Relationship or Actions & Events duplication",
+      "finding": "Avoided by storing only an exact mapping reference on the Relationship and referencing, rather than copying, real intermediate entities/events."
+    },
+    {
+      "challenge": "Metadata-only causal shortcut",
+      "finding": "Prevented because complete mapping still returns RESEARCH_NEEDED when identification is ecological or otherwise inadequate."
+    },
+    {
+      "challenge": "Partial exposure",
+      "finding": "Unbound partial coverage fails; an exact included target set or governed selection rule is required."
+    },
+    {
+      "challenge": "Ambient context",
+      "finding": "Representable through AMBIENT_CONTEXT without fabricating a HappeningType."
+    },
+    {
+      "challenge": "Multi-stage implementation",
+      "finding": "The core four-stage temporal contract is enforceable; claim-specific intermediate references remain optional/conditional."
+    },
+    {
+      "challenge": "Ontology bloat",
+      "finding": "Conditional B rejects Drivers or HappeningTypes created solely as plumbing."
+    },
+    {
+      "challenge": "Too generic to validate",
+      "finding": "Route-specific requirements, exact levels, exposure definition, coverage and temporal checks keep the contract bounded."
+    },
+    {
+      "challenge": "Ignored by consumers",
+      "finding": "Future validators and execution consumers must fail closed; display-only handling is insufficient for execution."
+    },
+    {
+      "challenge": "Impossible migration",
+      "finding": "13 of 38 rows need no cross-level migration; blocked/research/network-dependent rows remain safely unmigrated."
+    }
+  ]
+}
