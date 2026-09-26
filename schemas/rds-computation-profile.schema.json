@@ -1,0 +1,221 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://psywerx.org/schemas/rds-computation-profile.schema.json",
+  "title": "rds-computation-profile",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "profileId",
+    "profileVersion",
+    "rdsId",
+    "rdsDefinitionVersion",
+    "rdsDefinitionHash",
+    "profileType",
+    "displayName",
+    "scientificPurpose",
+    "inputContract",
+    "requiredContext",
+    "unitOfAnalysis",
+    "outputScale",
+    "outputInterpretation",
+    "scopeLimitations",
+    "derivationEntailed",
+    "causalSemantics",
+    "causalSourceEligible",
+    "causalSourceGate",
+    "executionMode",
+    "provenance",
+    "architectureGovernance"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "profileId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "profileVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rdsId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rdsDefinitionVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rdsDefinitionHash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "profileType": {
+      "enum": [
+        "DERIVATION_PROFILE",
+        "MEASUREMENT_PROFILE",
+        "ESTIMATION_PROFILE"
+      ]
+    },
+    "displayName": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scientificPurpose": {
+      "type": "string",
+      "minLength": 1
+    },
+    "inputContract": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": [
+          "inputId",
+          "role",
+          "required"
+        ],
+        "properties": {
+          "inputId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "role": {
+            "enum": [
+              "CONSTITUENT",
+              "MEASUREMENT_INPUT",
+              "PARAMETER",
+              "NORMALIZER",
+              "BOUNDARY_INPUT",
+              "REFERENCE_VALUE",
+              "EXTERNAL_CONTEXT",
+              "DATA_SOURCE"
+            ]
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "definitionVersion": {
+            "type": "string",
+            "minLength": 1
+          },
+          "definitionHash": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        }
+      }
+    },
+    "minimumInputRequirements": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "constituentMapping": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "requiredContext": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "aggregationFunction": {
+      "type": "string",
+      "minLength": 1
+    },
+    "calculationReference": {
+      "type": "string",
+      "minLength": 1
+    },
+    "measurementProcedure": {
+      "type": "object"
+    },
+    "estimationProcedure": {
+      "type": "object"
+    },
+    "metricVariant": {
+      "type": "string",
+      "minLength": 1
+    },
+    "normalization": {
+      "type": "string",
+      "minLength": 1
+    },
+    "missingnessPolicy": {
+      "type": "string",
+      "minLength": 1
+    },
+    "unitOfAnalysis": {
+      "type": "string",
+      "minLength": 1
+    },
+    "outputScale": {
+      "type": "string",
+      "minLength": 1
+    },
+    "outputInterpretation": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scopeLimitations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "derivationEntailed": {
+      "type": "boolean"
+    },
+    "causalSemantics": {
+      "type": "string",
+      "minLength": 1
+    },
+    "causalSourceEligible": {
+      "const": false
+    },
+    "causalSourceGate": {
+      "const": "WP-PSG-005_REQUIRED"
+    },
+    "executionMode": {
+      "enum": [
+        "NON_EXECUTABLE",
+        "SHADOW_ONLY"
+      ]
+    },
+    "provenance": {
+      "type": "object"
+    },
+    "architectureGovernance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "decisionId",
+        "decisionRecord"
+      ],
+      "properties": {
+        "status": {
+          "const": "GOVERNED"
+        },
+        "decisionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "decisionRecord": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}

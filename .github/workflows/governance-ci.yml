@@ -189,6 +189,9 @@ jobs:
       - name: Validate non-production RDS computation reference implementation
         run: python -m unittest discover -s tests -p "test_rds_computation_prototype.py"
 
+      - name: Validate governed RDS computation Phase 0 architecture
+        run: python -m unittest discover -s tests -p "test_rds_computation_v1.py"
+
       - name: Validate exact Technological governance materialization
         run: python -m unittest discover -s tests -p "test_technological_governance_materialization.py"
 
@@ -250,6 +253,12 @@ jobs:
         run: |
           python prototypes/rds-computation-v1/build_reference_package.py
           git diff --exit-code -- prototypes/rds-computation-v1 data/governance/post-scale-up/rds docs/governance/post-scale-up/rds data/governance/post-scale-up/work-packages.json
+
+      - name: Verify deterministic empty RDS computation registries
+        run: |
+          python scripts/materialize_rds_computation_phase0.py
+          python scripts/rds_computation_v1.py --validate-repository
+          git diff --exit-code -- schemas/rds-computation-profile.schema.json schemas/rds-application-binding.schema.json schemas/rds-execution-request.schema.json schemas/rds-execution-provenance.schema.json schemas/rds-execution-eligibility.schema.json data/rds-computation-v1
 
       - name: Verify deterministic Informational Layer registries
         run: |
@@ -439,6 +448,9 @@ jobs:
       - name: Validate non-production RDS computation reference implementation
         run: python -m unittest discover -s tests -p "test_rds_computation_prototype.py"
 
+      - name: Validate governed RDS computation Phase 0 architecture
+        run: python -m unittest discover -s tests -p "test_rds_computation_v1.py"
+
       - name: Validate exact Technological governance materialization
         run: python -m unittest discover -s tests -p "test_technological_governance_materialization.py"
 
@@ -500,6 +512,12 @@ jobs:
         run: |
           python prototypes/rds-computation-v1/build_reference_package.py
           git diff --exit-code -- prototypes/rds-computation-v1 data/governance/post-scale-up/rds docs/governance/post-scale-up/rds data/governance/post-scale-up/work-packages.json
+
+      - name: Verify deterministic empty RDS computation registries
+        run: |
+          python scripts/materialize_rds_computation_phase0.py
+          python scripts/rds_computation_v1.py --validate-repository
+          git diff --exit-code -- schemas/rds-computation-profile.schema.json schemas/rds-application-binding.schema.json schemas/rds-execution-request.schema.json schemas/rds-execution-provenance.schema.json schemas/rds-execution-eligibility.schema.json data/rds-computation-v1
 
       - name: Verify deterministic Informational Layer registries
         run: |

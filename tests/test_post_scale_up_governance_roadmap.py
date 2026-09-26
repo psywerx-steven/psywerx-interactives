@@ -114,11 +114,12 @@ class PostScaleUpGovernanceRoadmapTests(unittest.TestCase):
         by_wp = {row["workPackageId"]: row for row in self.packages["workPackages"]}
         self.assertEqual(by_wp["WP-PSG-001"]["stages"]["D_humanGovernanceDecision"], "COMPLETE_BOUNDED_DIRECTION_APPROVED")
         self.assertEqual(by_wp["WP-PSG-001"]["prototypeImplementationAuthorization"], "AUTHORIZED_NON_PRODUCTION_ONLY")
-        self.assertEqual(by_wp["WP-PSG-001"]["productionImplementationStatus"], "HUMAN_GOVERNANCE_REQUIRED_NOT_STARTED")
-        self.assertEqual(by_wp["WP-PSG-001"]["stages"]["E_implementation"], "COMPLETE_NON_PRODUCTION_REFERENCE_PROTOTYPE")
-        self.assertEqual(by_wp["WP-PSG-001"]["stages"]["F_migrationRevalidation"], "DRY_RUN_ONLY_COMPLETE_PRODUCTION_MIGRATION_NOT_AUTHORIZED")
-        self.assertEqual(by_wp["WP-PSG-001"]["rootIssueResolutionStatus"], "NOT_RESOLVED_PROTOTYPE_ONLY")
-        self.assertEqual(by_wp["WP-PSG-001"]["nextDecisionPacketId"], "DP-PSG-001-IMPLEMENTATION")
+        self.assertEqual(by_wp["WP-PSG-001"]["productionImplementationStatus"], "PHASE_0_COMPLETE_EMPTY_REGISTRIES")
+        self.assertEqual(by_wp["WP-PSG-001"]["stages"]["E_implementation"], "PHASE_0_COMPLETE_EMPTY_REGISTRIES")
+        self.assertEqual(by_wp["WP-PSG-001"]["stages"]["F_migrationRevalidation"], "DRY_RUN_ONLY_COMPLETE_PHASE_1_NOT_STARTED")
+        self.assertEqual(by_wp["WP-PSG-001"]["rootIssueResolutionStatus"], "NOT_RESOLVED_PHASE_0_ONLY")
+        self.assertIsNone(by_wp["WP-PSG-001"]["nextDecisionPacketId"])
+        self.assertEqual(by_wp["WP-PSG-001"]["productionImplementationDecisionId"], "GOV-RDS-IMPLEMENTATION-001-2026-09-25")
         for package in self.packages["workPackages"]:
             if package["workPackageId"] != "WP-PSG-001":
                 self.assertEqual(package["stages"]["D_humanGovernanceDecision"], "NOT_STARTED")

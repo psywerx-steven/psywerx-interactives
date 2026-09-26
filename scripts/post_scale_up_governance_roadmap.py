@@ -17,6 +17,7 @@ DOCS = ROOT / "docs/governance/post-scale-up"
 BASE_COMMIT = "57e2bb6f559fde7fe7caa2b39e0bf6cac78615d7"
 ROADMAP_ID = "POST-SCALE-UP-GOVERNANCE-ROADMAP-V1-20260924-001"
 RDS_DECISION_PATH = DATA / "rds/rds-contract-architecture-decision-001.json"
+RDS_IMPLEMENTATION_DECISION_PATH = DATA / "rds/rds-production-implementation-decision-001.json"
 
 ROOT_IDS = {
     "RDS_DEF": "ROOT-RDS-DEFINITION-DERIVATION-001",
@@ -62,6 +63,27 @@ def rds_direction_decision():
     assert decision["decisionOutcome"] == "APPROVED_BOUNDED_OPTION_B_PLUS_C_DIRECTION"
     assert decision["productionImplementationStatus"] == "NOT_AUTHORIZED_NOT_STARTED"
     return decision
+
+
+def rds_implementation_state():
+    if not RDS_IMPLEMENTATION_DECISION_PATH.exists():
+        return None
+    decision = read(RDS_IMPLEMENTATION_DECISION_PATH)
+    assert decision["decisionPacketId"] == "DP-PSG-001-IMPLEMENTATION"
+    assert decision["outcome"] == "APPROVED_BOUNDED_PHASE_0_AND_SEPARATELY_GATED_RDS_0006_PHASE_1"
+    profiles_path = ROOT / "data/rds-computation-v1/profiles.json"
+    bindings_path = ROOT / "data/rds-computation-v1/bindings.json"
+    if not profiles_path.exists() or not bindings_path.exists():
+        return {"decision": decision, "phase": "AUTHORIZED_NOT_STARTED"}
+    profiles = read(profiles_path)["profiles"]
+    bindings = read(bindings_path)["bindings"]
+    if not profiles and not bindings:
+        phase = "PHASE_0_COMPLETE_EMPTY_REGISTRIES"
+    elif len(profiles) == 1 and len(bindings) == 1 and profiles[0]["rdsId"] == bindings[0]["rdsId"] == "RDS-0006":
+        phase = "PHASE_1_RDS_0006_COMPLETE_SHADOW_ONLY"
+    else:
+        raise AssertionError("RDS implementation exceeds bounded authorization")
+    return {"decision": decision, "phase": phase}
 
 
 def write_json(path: Path, value):
@@ -479,6 +501,7 @@ def work_packages(roots):
     rds_decision = rds_direction_decision()
     rds_dry_run = ROOT / "data/governance/post-scale-up/rds/rds-migration-dry-run.json"
     prototype_complete = rds_decision is not None and rds_dry_run.exists()
+    implementation = rds_implementation_state()
     packages = []
     for definition in ROOT_DEFS:
         key, identifier = definition["key"], ROOT_IDS[definition["key"]]
@@ -501,14 +524,15 @@ def work_packages(roots):
             "stages": {"A_problemNormalization": "COMPLETE", "B_designAlternatives": "COMPLETE",
                        "C_skepticalArchitectureReview": "COMPLETE" if key in {"RDS_DEF", "CROSS_LEVEL", "NETWORK", "CONTRIBUTION", "RDS_CAUSAL", "ACTIVATION"} else "DEFERRED_UNTIL_SELECTED",
                        "D_humanGovernanceDecision": "COMPLETE_BOUNDED_DIRECTION_APPROVED" if key == "RDS_DEF" and rds_decision else "NOT_STARTED",
-                       "E_implementation": "COMPLETE_NON_PRODUCTION_REFERENCE_PROTOTYPE" if key == "RDS_DEF" and prototype_complete else "NOT_STARTED",
-                       "F_migrationRevalidation": "DRY_RUN_ONLY_COMPLETE_PRODUCTION_MIGRATION_NOT_AUTHORIZED" if key == "RDS_DEF" and prototype_complete else "NOT_STARTED",
+                       "E_implementation": (implementation["phase"] if key == "RDS_DEF" and implementation else ("COMPLETE_NON_PRODUCTION_REFERENCE_PROTOTYPE" if key == "RDS_DEF" and prototype_complete else "NOT_STARTED")),
+                       "F_migrationRevalidation": ("RDS_0006_SHADOW_EQUIVALENCE_COMPLETE_OTHER_40_UNCHANGED" if key == "RDS_DEF" and implementation and implementation["phase"].startswith("PHASE_1") else ("DRY_RUN_ONLY_COMPLETE_PHASE_1_NOT_STARTED" if key == "RDS_DEF" and implementation else ("DRY_RUN_ONLY_COMPLETE_PRODUCTION_MIGRATION_NOT_AUTHORIZED" if key == "RDS_DEF" and prototype_complete else "NOT_STARTED"))),
                        "G_scientificReadjudication": "NOT_STARTED"},
             "governanceDecisionId": rds_decision["decisionId"] if key == "RDS_DEF" and rds_decision else None,
             "prototypeImplementationAuthorization": "AUTHORIZED_NON_PRODUCTION_ONLY" if key == "RDS_DEF" and rds_decision else "NOT_AUTHORIZED",
-            "productionImplementationStatus": "HUMAN_GOVERNANCE_REQUIRED_NOT_STARTED" if key == "RDS_DEF" and prototype_complete else ("NOT_AUTHORIZED_NOT_STARTED" if key == "RDS_DEF" and rds_decision else "NOT_STARTED"),
-            "rootIssueResolutionStatus": "NOT_RESOLVED_PROTOTYPE_ONLY" if key == "RDS_DEF" and prototype_complete else "NOT_RESOLVED",
-            "nextDecisionPacketId": "DP-PSG-001-IMPLEMENTATION" if key == "RDS_DEF" and prototype_complete else None,
+            "productionImplementationStatus": implementation["phase"] if key == "RDS_DEF" and implementation else ("HUMAN_GOVERNANCE_REQUIRED_NOT_STARTED" if key == "RDS_DEF" and prototype_complete else ("NOT_AUTHORIZED_NOT_STARTED" if key == "RDS_DEF" and rds_decision else "NOT_STARTED")),
+            "rootIssueResolutionStatus": ("BOUNDED_ARCHITECTURE_IMPLEMENTED_OTHER_RDS_PENDING_SCIENCE" if key == "RDS_DEF" and implementation and implementation["phase"].startswith("PHASE_1") else ("NOT_RESOLVED_PHASE_0_ONLY" if key == "RDS_DEF" and implementation else ("NOT_RESOLVED_PROTOTYPE_ONLY" if key == "RDS_DEF" and prototype_complete else "NOT_RESOLVED"))),
+            "nextDecisionPacketId": None if key == "RDS_DEF" and implementation else ("DP-PSG-001-IMPLEMENTATION" if key == "RDS_DEF" and prototype_complete else None),
+            "productionImplementationDecisionId": implementation["decision"]["decisionId"] if key == "RDS_DEF" and implementation else None,
             "recommendedSequenceBand": definition["sequenceBand"],
         })
     return {"schemaVersion": "1.0.0", "roadmapId": ROADMAP_ID, "workPackages": packages}
@@ -569,6 +593,9 @@ def render_roadmap(dep_map, roots, packages):
     status_text = "DP-PSG-001 Stage D records a bounded human-approved B+C direction; its non-production prototype is authorized, while production implementation and every other Stage D–G decision remain unstarted." if rds_decision else "Stages D–G remain prohibited until later human governance."
     if rds_decision and prototype_complete:
         status_text = "DP-PSG-001 Stage D records a bounded human-approved B+C direction; Stage E is complete as a non-production reference prototype and Stage F is complete only as a 41-RDS dry run. Production implementation/migration remains unauthorized and the root blocker remains unresolved."
+    implementation = rds_implementation_state()
+    if implementation:
+        status_text = f"DP-PSG-001-IMPLEMENTATION is human-approved. Current bounded production state is `{implementation['phase']}`; causal-source use remains prohibited and all other RDS remain unchanged."
     lines = ["# Post-Scale-Up governance roadmap", "", f"This roadmap converts the 44-row historical backlog into decision-ready work packages. Stages A and B are complete here; skeptical architecture review is complete for the six highest-consequence packets. {status_text}", "",
              "| Order | Work package | Root issue | Band | Dependencies | Original rows |", "|---:|---|---|---|---|---:|"]
     for index, package in enumerate(packages["workPackages"], 1):
