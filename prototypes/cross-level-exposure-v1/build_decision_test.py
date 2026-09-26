@@ -31,7 +31,11 @@ def write_doc(name: str, text: str) -> None:
 
 
 def file_hash(path: Path) -> str:
-    return hashlib.sha256(path.read_bytes()).hexdigest()
+    # Git may materialize text with CRLF on Windows and LF on Linux. The
+    # protection gate compares scientific content, so canonicalize line endings
+    # before hashing rather than treating checkout policy as a mutation.
+    canonical = path.read_bytes().replace(b"\r\n", b"\n")
+    return hashlib.sha256(canonical).hexdigest()
 
 
 def mapping(identifier, relationship, source_level, target_level, route, exposure, *, implementation=True, perception=False, perception_entity=None, network=False, intermediates=None, happenings=None):
@@ -267,7 +271,7 @@ def main() -> None:
     protected_paths += sorted(path.relative_to(ROOT).as_posix() for path in (ROOT / "schemas").rglob("*.json"))
     protected_paths += sorted(path.relative_to(ROOT).as_posix() for path in (ROOT / "scenario-service/src").rglob("*.js"))
     protected_paths = sorted(set(protected_paths))
-    protected = {"schemaVersion": "1.0.0", "baseMain": "86d136141111fc41832f6b1021d0f4863c1bf204", "hashAlgorithm": "SHA256_RAW_BYTES", "files": {path: file_hash(ROOT / path) for path in protected_paths}}
+    protected = {"schemaVersion": "1.0.0", "baseMain": "86d136141111fc41832f6b1021d0f4863c1bf204", "hashAlgorithm": "SHA256_CANONICAL_LF_TEXT", "files": {path: file_hash(ROOT / path) for path in protected_paths}}
     write_json(DATA / "cross-level-test-cases.json", tests)
     write_json(DATA / "cross-level-mapping-prototype.json", prototype)
     write_json(DATA / "cross-level-migration-classification.json", migration)

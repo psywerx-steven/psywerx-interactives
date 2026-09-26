@@ -132,7 +132,8 @@ class CrossLevelDecisionTest(unittest.TestCase):
     def test_protected_production_hashes_unchanged(self):
         for relative, expected in self.protected["files"].items():
             with self.subTest(relative):
-                actual = hashlib.sha256((ROOT / relative).read_bytes()).hexdigest()
+                canonical = (ROOT / relative).read_bytes().replace(b"\r\n", b"\n")
+                actual = hashlib.sha256(canonical).hexdigest()
                 self.assertEqual(actual, expected)
 
     def test_rds_causal_firewall_unchanged(self):
