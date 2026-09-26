@@ -22,6 +22,8 @@ PROFILE_TYPES = {"DERIVATION_PROFILE", "MEASUREMENT_PROFILE", "ESTIMATION_PROFIL
 INPUT_ROLES = {"CONSTITUENT", "MEASUREMENT_INPUT", "PARAMETER", "NORMALIZER", "BOUNDARY_INPUT", "REFERENCE_VALUE", "EXTERNAL_CONTEXT", "DATA_SOURCE"}
 FORBIDDEN_SELECTORS = {"LATEST", "DEFAULT", "FIRST", "MOST_RECENT", "ACTIVE_PROFILE", "AUTO_SELECT", "BEST_MATCH"}
 ELIGIBILITY_STATES = {"EXECUTABLE", "NON_EXECUTABLE_NO_PROFILE", "NON_EXECUTABLE_NO_ELIGIBLE_PROFILE", "NON_EXECUTABLE_INCOMPLETE_BINDING", "NON_EXECUTABLE_VERSION_MISMATCH", "NON_EXECUTABLE_DEFINITION_MISMATCH", "NON_EXECUTABLE_INPUT_MISMATCH", "NON_EXECUTABLE_PROFILE_TYPE_UNSUPPORTED", "NON_EXECUTABLE_BLOCKED_BY_SCIENCE", "NON_EXECUTABLE_BLOCKED_BY_ONTOLOGY"}
+RDS_0006_PROFILE_ID = "RDS-PROFILE-V1-SOC-F07-001"
+RDS_0006_BINDING_ID = "RDS-BIND-V1-SOC-F07-001"
 
 
 class ValidationError(ValueError):
@@ -187,6 +189,69 @@ def validate_causal_firewall(profile: dict[str, Any], causal_source_requested: b
 
 def execution_fingerprint(request: dict[str, Any], profile: dict[str, Any], binding: dict[str, Any]) -> str:
     return digest({"rdsDefinitionHash": profile["rdsDefinitionHash"], "profileId": profile["profileId"], "profileVersion": profile["profileVersion"], "bindingId": binding["bindingId"], "bindingVersion": binding["bindingVersion"], "inputHashes": {key: value["valueHash"] for key, value in sorted(request["inputs"].items())}, "parameterHash": digest(request.get("parameters", {}))})
+
+
+def shadow_execute_rds0006(request: dict[str, Any], legacy_request: dict[str, Any], state: dict[str, Any], legacy_binding: dict[str, Any], authorizations=()) -> dict[str, Any]:
+    """Compare the new exact contract with the unchanged legacy evaluator.
+
+    This function has no active-simulation integration and writes no output.
+    """
+    import relational_state_v1 as legacy_runtime
+
+    require(request.get("rdsId") == "RDS-0006", "Shadow wrapper is bounded to RDS-0006")
+    require(request.get("profileId") == RDS_0006_PROFILE_ID and request.get("bindingId") == RDS_0006_BINDING_ID, "Exact RDS-0006 profile and binding required")
+    require(request.get("causalSourceRequested") is False and request.get("simulationFeedRequested") is False, "Shadow execution cannot request causality or active simulation")
+    eligibility = resolve_execution_eligibility(request, legacy_binding["targetRds"]["definitionHash"])
+    require(eligibility["state"] == "EXECUTABLE", eligibility["reason"])
+    profile, binding = eligibility["profile"], eligibility["binding"]
+    validate_causal_firewall(profile, request["causalSourceRequested"])
+    require(profile["executionMode"] == "SHADOW_ONLY", "Compatibility wrapper is shadow-only")
+    require(profile["provenance"]["compatibilityWrapperFor"] == legacy_binding["id"] == "DER-V1-SOC-F07-001", "Legacy derivation lineage mismatch")
+    require(profile["provenance"]["legacyRecordHash"] == digest(legacy_binding), "Legacy derivation changed after wrapper governance")
+    require(profile["provenance"]["legacyContributionIdentity"] == legacy_binding["sharedContributionIdentity"], "Contribution identity mismatch")
+    require(profile["provenance"]["legacyContributionPolicy"] == legacy_binding["contributionPolicy"] == "RECALCULATION_ONLY_NO_CAUSAL_SUM", "Contribution policy mismatch")
+    require(legacy_request.get("targetRds") == legacy_binding["targetRds"], "Legacy request target mismatch")
+    require(legacy_request.get("bindingRef", {}).get("id") == legacy_binding["id"], "Legacy request binding mismatch")
+    require(legacy_request.get("boundary") == state.get("boundary") and legacy_request.get("window") == state.get("window"), "Application context is not exactly bound")
+    supplied = request["inputs"].get("SOC-049")
+    legacy_values = legacy_request.get("collection", {}).get("values")
+    require(supplied is not None and supplied.get("value") == legacy_values, "Profile input must exactly equal legacy aligned degree collection")
+    require(supplied["valueHash"] == digest(legacy_values), "Profile input value hash mismatch")
+    expected_parameters = {"metricVariant": legacy_binding["metricVariant"], "normalization": legacy_binding["normalization"]}
+    require(request["parameters"] == expected_parameters, "Exact metric and normalization parameters required")
+
+    legacy_receipt = legacy_runtime.calculate(legacy_request, state, legacy_binding, authorizations)
+    require(legacy_receipt["status"] == "CALCULATED_SYNTHETIC", "Legacy evaluator did not produce an eligible shadow result")
+    degrees = [row["value"] for row in legacy_values]
+    require(len(degrees) >= legacy_binding["minimumNodes"], "Insufficient node degree collection")
+    benchmark = legacy_request.get("externalBenchmark") or {}
+    require(benchmark.get("maximum") == (len(degrees) - 1) * (len(degrees) - 2), "Legacy benchmark is not the governed same-size star maximum")
+    output = sum(max(degrees) - value for value in degrees) / benchmark["maximum"]
+    require(output == legacy_receipt["value"], "Shadow numeric equivalence failed")
+    require(legacy_receipt["contributionIdentity"] == legacy_binding["sharedContributionIdentity"], "Legacy contribution provenance mismatch")
+    require(legacy_receipt["causalContribution"] is False and legacy_receipt["modelEligibility"] is False, "Legacy result exceeded shadow authority")
+    provenance = {
+        "schemaVersion": "1.0.0",
+        "executionState": "EXECUTABLE",
+        "rdsId": profile["rdsId"],
+        "rdsDefinitionHash": profile["rdsDefinitionHash"],
+        "profileId": profile["profileId"],
+        "profileVersion": profile["profileVersion"],
+        "bindingId": binding["bindingId"],
+        "bindingVersion": binding["bindingVersion"],
+        "inputHashes": {key: value["valueHash"] for key, value in sorted(request["inputs"].items())},
+        "parameterHash": digest(request["parameters"]),
+        "output": output,
+        "executionFingerprint": execution_fingerprint(request, profile, binding),
+        "shadowMode": True,
+        "feedsActiveSimulation": False,
+        "causalSourceAuthorized": False,
+        "legacyDerivationId": legacy_binding["id"],
+        "legacyReceiptHash": legacy_receipt["receiptHash"],
+        "equivalence": {"numericEquivalent": True, "definitionEquivalent": True, "lineagePreserved": True, "contributionSemanticsPreserved": True},
+    }
+    validate_schema("provenance", provenance)
+    return provenance
 
 
 def validate_repository() -> dict[str, Any]:

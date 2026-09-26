@@ -189,7 +189,7 @@ jobs:
       - name: Validate non-production RDS computation reference implementation
         run: python -m unittest discover -s tests -p "test_rds_computation_prototype.py"
 
-      - name: Validate governed RDS computation Phase 0 architecture
+      - name: Validate governed RDS-0006 Phase 1 shadow compatibility
         run: python -m unittest discover -s tests -p "test_rds_computation_v1.py"
 
       - name: Validate exact Technological governance materialization
@@ -254,11 +254,11 @@ jobs:
           python prototypes/rds-computation-v1/build_reference_package.py
           git diff --exit-code -- prototypes/rds-computation-v1 data/governance/post-scale-up/rds docs/governance/post-scale-up/rds data/governance/post-scale-up/work-packages.json
 
-      - name: Verify deterministic empty RDS computation registries
+      - name: Verify deterministic RDS-0006 computation registries
         run: |
-          python scripts/materialize_rds_computation_phase0.py
+          python scripts/materialize_rds_computation_phase1.py
           python scripts/rds_computation_v1.py --validate-repository
-          git diff --exit-code -- schemas/rds-computation-profile.schema.json schemas/rds-application-binding.schema.json schemas/rds-execution-request.schema.json schemas/rds-execution-provenance.schema.json schemas/rds-execution-eligibility.schema.json data/rds-computation-v1
+          git diff --exit-code -- schemas/rds-computation-profile.schema.json schemas/rds-application-binding.schema.json schemas/rds-execution-request.schema.json schemas/rds-execution-provenance.schema.json schemas/rds-execution-eligibility.schema.json data/rds-computation-v1 data/governance/post-scale-up/rds/rds-0006-phase1-compatibility.json
 
       - name: Verify deterministic Informational Layer registries
         run: |
@@ -448,7 +448,7 @@ jobs:
       - name: Validate non-production RDS computation reference implementation
         run: python -m unittest discover -s tests -p "test_rds_computation_prototype.py"
 
-      - name: Validate governed RDS computation Phase 0 architecture
+      - name: Validate governed RDS-0006 Phase 1 shadow compatibility
         run: python -m unittest discover -s tests -p "test_rds_computation_v1.py"
 
       - name: Validate exact Technological governance materialization
@@ -513,11 +513,11 @@ jobs:
           python prototypes/rds-computation-v1/build_reference_package.py
           git diff --exit-code -- prototypes/rds-computation-v1 data/governance/post-scale-up/rds docs/governance/post-scale-up/rds data/governance/post-scale-up/work-packages.json
 
-      - name: Verify deterministic empty RDS computation registries
+      - name: Verify deterministic RDS-0006 computation registries
         run: |
-          python scripts/materialize_rds_computation_phase0.py
+          python scripts/materialize_rds_computation_phase1.py
           python scripts/rds_computation_v1.py --validate-repository
-          git diff --exit-code -- schemas/rds-computation-profile.schema.json schemas/rds-application-binding.schema.json schemas/rds-execution-request.schema.json schemas/rds-execution-provenance.schema.json schemas/rds-execution-eligibility.schema.json data/rds-computation-v1
+          git diff --exit-code -- schemas/rds-computation-profile.schema.json schemas/rds-application-binding.schema.json schemas/rds-execution-request.schema.json schemas/rds-execution-provenance.schema.json schemas/rds-execution-eligibility.schema.json data/rds-computation-v1 data/governance/post-scale-up/rds/rds-0006-phase1-compatibility.json
 
       - name: Verify deterministic Informational Layer registries
         run: |

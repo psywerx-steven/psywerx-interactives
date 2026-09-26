@@ -1,5 +1,38 @@
 {
   "schemaVersion": "1.0.0",
   "registryId": "RDS-APPLICATION-BINDINGS-V1",
-  "bindings": []
+  "bindings": [
+    {
+      "schemaVersion": "1.0.0",
+      "bindingId": "RDS-BIND-V1-SOC-F07-001",
+      "bindingVersion": "1.0.0",
+      "rdsId": "RDS-0006",
+      "rdsDefinitionVersion": "ENTITY_V0_3_GOVERNED_RECORD_HASH",
+      "rdsDefinitionHash": "1f4deb8927f023179666dfa4a680589c0bad8e16b78ed7e264583295265ff104",
+      "profileId": "RDS-PROFILE-V1-SOC-F07-001",
+      "profileVersion": "1.0.0",
+      "unitOfAnalysis": "NETWORK",
+      "contextContract": {
+        "networkBoundary": "EXACT_LEGACY_REQUEST_BOUNDARY_AND_REVISION",
+        "nodeSet": "ALL_NODES_OF_BOUND_STATE_BOUNDARY",
+        "tieRelation": "EXACT_SIMPLE_UNDIRECTED_BINARY_TIE_TYPE_AND_LAYER_FROM_REQUEST",
+        "timeWindow": "EXACT_LEGACY_REQUEST_WINDOW",
+        "stateAlignment": "SAME_STATE_HASH_BOUNDARY_WINDOW_TYPE_LAYER",
+        "minimumNodes": 3
+      },
+      "provenance": {
+        "compatibilityWrapperFor": "DER-V1-SOC-F07-001",
+        "legacyRecordHash": "609f164d5bcd45cb7372f51374961f365780f2ebce7693e83f7b2db7d6e2dfbf",
+        "applicationContextResolvedPerExactLegacyRequest": true,
+        "shadowOnly": true,
+        "feedsActiveSimulation": false,
+        "rollback": "REMOVE_PROFILE_BINDING_INTEGRATION_AND_USE_UNCHANGED_LEGACY_DERIVATION_ONLY"
+      },
+      "architectureGovernance": {
+        "status": "GOVERNED",
+        "decisionId": "GOV-RDS-IMPLEMENTATION-001-2026-09-25",
+        "decisionRecord": "docs/governance/post-scale-up/rds/RDS_PRODUCTION_IMPLEMENTATION_DECISION_001.md"
+      }
+    }
+  ]
 }
