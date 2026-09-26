@@ -1,7 +1,9 @@
 # RDS-0006 Phase 1 compatibility closeout
 
-**Phase:** `WP-PSG-001-PHASE-1-RDS-0006-20260925-001`  
-**Authorization:** `GOV-RDS-IMPLEMENTATION-001-2026-09-25`  
+**Phase:** `WP-PSG-001-PHASE-1-RDS-0006-20260925-001`
+
+**Authorization:** `GOV-RDS-IMPLEMENTATION-001-2026-09-25`
+
 **Phase 0 merge:** `5891518de3603cc69e10638f44ba8db5862cf5df`
 
 Phase 0 passed the Linux and Windows governance gates before this separately gated Phase 1 began. Phase 1 adds one immutable `DERIVATION_PROFILE`, `RDS-PROFILE-V1-SOC-F07-001`, and one versioned compatibility binding, `RDS-BIND-V1-SOC-F07-001`, for `RDS-0006` only.
