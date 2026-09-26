@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "1.0.0",
+  "decisionPacketId": "DP-PSG-002-IMPLEMENTATION",
+  "architectureDecisionId": "GOV-CROSS-LEVEL-EXPOSURE-001-2026-09-26",
+  "status": "HUMAN_PRODUCTION_ARCHITECTURE_GOVERNANCE_REQUIRED",
+  "phase0": {
+    "schemas": [
+      "CrossLevelExposureMapping",
+      "CrossLevelExposureBinding",
+      "CrossLevelEligibilityReceipt"
+    ],
+    "registries": [
+      "empty mapping registry",
+      "empty binding registry"
+    ],
+    "validators": [
+      "exact-version mapping",
+      "exact Relationship attachment",
+      "route/level/exposure/perception/network firewalls"
+    ],
+    "services": [
+      "shadow-only eligibility/fingerprint service"
+    ],
+    "relationshipMigrations": 0,
+    "executionChanges": 0
+  },
+  "phase1": {
+    "recommendedControls": [
+      "REL-INS-040"
+    ],
+    "selectionReason": "Clear institution-to-person implementation, actual exposure and perception-target stages; no Network State, ontology, new Driver, or new HappeningType dependency.",
+    "mode": "SHADOW_VALIDATION_ONLY",
+    "graphInclusionChanges": 0,
+    "simulationChanges": 0
+  },
+  "remainingRelationshipsAuthorized": 0,
+  "relationshipReclassificationAuthorized": false,
+  "crossLevelExecutionAuthorized": false,
+  "activationAuthorized": false,
+  "newDriversAuthorized": false,
+  "newHappeningTypesAuthorized": false,
+  "networkStateChangesAuthorized": false,
+  "rdsCausalSourceAuthorization": false,
+  "ontologyMutationAuthorized": false,
+  "sourceRegistrationAuthorized": false,
+  "lifecycleChangeAuthorized": false,
+  "rollback": "Remove registry/shadow integration; byte-identical legacy Relationships require no restoration.",
+  "exactApprovalStatement": "Approve DP-PSG-002-IMPLEMENTATION for bounded production Phase 0 and a separately gated shadow-only Phase 1: install immutable exact-version CrossLevelExposureMapping and CrossLevelExposureBinding schemas, empty registries, fail-closed validators, provenance/fingerprint contracts and a shadow eligibility service with zero Relationship migrations and zero graph or simulation behavior change; then, only after Phase 0 validation passes, materialize a mapping/binding for REL-INS-040 only in validation/shadow mode. Preserve the production Relationship unchanged, confer no causal evidence, execution, lifecycle, weight, propagation or activation authority, and provide rollback to legacy-only behavior by removing registry/shadow integration. This authorization would not permit migration of the other 37 Relationships, Relationship reclassification, cross-level execution or activation, new Drivers or HappeningTypes, Network State changes, RDS causal-source eligibility, ontology mutation, source registration, lifecycle change or activation."
+}

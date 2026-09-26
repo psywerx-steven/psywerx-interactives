@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "prototypeOnly": true,
+  "productionIntegrationAuthorized": false,
+  "$id": "prototype://cross-level-exposure-binding-v1",
+  "title": "CrossLevelExposureBinding prototype",
+  "type": "object",
+  "required": [
+    "bindingId",
+    "bindingVersion",
+    "relationshipId",
+    "relationshipHash",
+    "mappingId",
+    "mappingVersion",
+    "prototypeStatus"
+  ],
+  "properties": {
+    "prototypeStatus": {
+      "const": "PROTOTYPE_ONLY_NON_PRODUCTION"
+    }
+  },
+  "additionalProperties": true
+}

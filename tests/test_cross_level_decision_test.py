@@ -139,7 +139,8 @@ class CrossLevelDecisionTest(unittest.TestCase):
         self.assertEqual(package["stages"]["D_humanGovernanceDecision"], "COMPLETE_BOUNDED_DIRECTION_APPROVED")
         self.assertEqual(package["prototypeImplementationAuthorization"], "AUTHORIZED_NON_PRODUCTION_ONLY")
         self.assertEqual(package["productionImplementationStatus"], "NOT_AUTHORIZED_NOT_STARTED")
-        self.assertEqual(package["stages"]["E_implementation"], "NOT_STARTED")
+        self.assertEqual(package["stages"]["E_implementation"], "COMPLETE_NON_PRODUCTION_REFERENCE_PROTOTYPE")
+        self.assertEqual(package["stages"]["F_migrationRevalidation"], "DRY_RUN_ONLY_COMPLETE_PRODUCTION_MIGRATION_NOT_AUTHORIZED")
 
     def test_consumers_remain_unintegrated(self):
         self.assertFalse(self.consumers["productionIntegrationAuthorized"])

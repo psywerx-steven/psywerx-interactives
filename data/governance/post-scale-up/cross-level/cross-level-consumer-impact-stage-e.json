@@ -1,0 +1,77 @@
+{
+  "schemaVersion": "1.0.0-PLANNING",
+  "productionIntegrationAuthorized": false,
+  "finding": "NO_INTERNAL_ACTIVE_CROSS_LEVEL_CONSUMER_FOUND",
+  "consumers": [
+    {
+      "consumer": "scripts/relationship_intervention_v1.py",
+      "classification": "VALIDATION_AWARE_AND_MIGRATION_REQUIRED",
+      "futureSchemaImpact": "Additive mapping/binding awareness only",
+      "futureReadPath": "Exact versioned registry read when later governed",
+      "futureWritePath": "None in prototype",
+      "futureExecutionImpact": "Shadow validation only",
+      "failureBehavior": "Fail closed when mapping-aware",
+      "backwardCompatibility": "Legacy behavior unchanged"
+    },
+    {
+      "consumer": "scripts/build_relationships.py",
+      "classification": "MIGRATION_REQUIRED",
+      "futureSchemaImpact": "Additive mapping/binding awareness only",
+      "futureReadPath": "Exact versioned registry read when later governed",
+      "futureWritePath": "None in prototype",
+      "futureExecutionImpact": "Shadow validation only",
+      "failureBehavior": "Fail closed when mapping-aware",
+      "backwardCompatibility": "Legacy behavior unchanged"
+    },
+    {
+      "consumer": "scripts/actions_events_v1.py",
+      "classification": "VALIDATION_AWARE",
+      "futureSchemaImpact": "Additive mapping/binding awareness only",
+      "futureReadPath": "Exact versioned registry read when later governed",
+      "futureWritePath": "None in prototype",
+      "futureExecutionImpact": "Shadow validation only",
+      "failureBehavior": "Fail closed when mapping-aware",
+      "backwardCompatibility": "Legacy behavior unchanged"
+    },
+    {
+      "consumer": "scripts/relational_state_v1.py",
+      "classification": "VALIDATION_AWARE",
+      "futureSchemaImpact": "Additive mapping/binding awareness only",
+      "futureReadPath": "Exact versioned registry read when later governed",
+      "futureWritePath": "None in prototype",
+      "futureExecutionImpact": "Shadow validation only",
+      "failureBehavior": "Fail closed when mapping-aware",
+      "backwardCompatibility": "Legacy behavior unchanged"
+    },
+    {
+      "consumer": "scripts/rds_computation_v1.py",
+      "classification": "NO_CURRENT_EXECUTION_IMPACT",
+      "futureSchemaImpact": "Additive mapping/binding awareness only",
+      "futureReadPath": "Exact versioned registry read when later governed",
+      "futureWritePath": "None in prototype",
+      "futureExecutionImpact": "Shadow validation only",
+      "failureBehavior": "Fail closed when mapping-aware",
+      "backwardCompatibility": "Legacy behavior unchanged"
+    },
+    {
+      "consumer": "scenario-service/src/openai-service.js",
+      "classification": "DISPLAY_ONLY",
+      "futureSchemaImpact": "Additive mapping/binding awareness only",
+      "futureReadPath": "Exact versioned registry read when later governed",
+      "futureWritePath": "None in prototype",
+      "futureExecutionImpact": "Shadow validation only",
+      "failureBehavior": "Fail closed when mapping-aware",
+      "backwardCompatibility": "Legacy behavior unchanged"
+    },
+    {
+      "consumer": "repository FCM/model construction",
+      "classification": "NO_INTERNAL_ACTIVE_CROSS_LEVEL_CONSUMER_FOUND",
+      "futureSchemaImpact": "Additive mapping/binding awareness only",
+      "futureReadPath": "Exact versioned registry read when later governed",
+      "futureWritePath": "None in prototype",
+      "futureExecutionImpact": "Shadow validation only",
+      "failureBehavior": "Fail closed when mapping-aware",
+      "backwardCompatibility": "Legacy behavior unchanged"
+    }
+  ]
+}

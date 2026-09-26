@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "1.0.0-PLANNING",
+  "wpPsg003": [
+    {
+      "relationshipId": "REL-SOC-017",
+      "requiredStateIdentity": "Exact governed network state",
+      "requiredBoundarySemantics": "Node/tie set, relation, direction, weight, window, missingness",
+      "requiredTransitionSemantics": "Separate state change, metric recalculation, and actual person/group exposure",
+      "metricInsufficiency": "Network metric does not establish exposure",
+      "mappingAfterResolution": "Reference exact state and define target exposure"
+    },
+    {
+      "relationshipId": "REL-SOC-035",
+      "requiredStateIdentity": "Exact governed network state",
+      "requiredBoundarySemantics": "Node/tie set, relation, direction, weight, window, missingness",
+      "requiredTransitionSemantics": "Separate state change, metric recalculation, and actual person/group exposure",
+      "metricInsufficiency": "Network metric does not establish exposure",
+      "mappingAfterResolution": "Reference exact state and define target exposure"
+    },
+    {
+      "relationshipId": "REL-TEC-050",
+      "requiredStateIdentity": "Exact governed network state",
+      "requiredBoundarySemantics": "Node/tie set, relation, direction, weight, window, missingness",
+      "requiredTransitionSemantics": "Separate state change, metric recalculation, and actual person/group exposure",
+      "metricInsufficiency": "Network metric does not establish exposure",
+      "mappingAfterResolution": "Reference exact state and define target exposure"
+    }
+  ],
+  "wpPsg004": {
+    "fields": [
+      "contributionRouteId",
+      "intermediateRouteIds",
+      "alternateRepresentationIds",
+      "constituentRepresentationIds",
+      "aggregateRepresentationIds"
+    ],
+    "adjudicationPerformed": false
+  },
+  "wpPsg005": {
+    "requiredHandoff": [
+      "source RDS identity",
+      "exact computation profile/binding",
+      "source/target levels",
+      "mapping ID/version",
+      "exposure route",
+      "constituent mapping",
+      "temporal alignment"
+    ],
+    "causalSourceEligible": false,
+    "adjudicationPerformed": false
+  },
+  "wpPsg007": {
+    "constructGapsFound": 0,
+    "newConstructsCreated": 0,
+    "status": "NO_EXPLICIT_ONTOLOGY_DEPENDENCY_IN_38_RECORD_DRY_RUN"
+  }
+}
