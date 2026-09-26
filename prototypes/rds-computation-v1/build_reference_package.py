@@ -366,6 +366,11 @@ The prototype validates the B+C contract and RDS-0006 equivalence. The next cons
 
 def update_roadmap():
     path = ROOT / "data/governance/post-scale-up/work-packages.json"
+    implementation_decision = ROOT / "data/governance/post-scale-up/rds/rds-production-implementation-decision-001.json"
+    if implementation_decision.exists():
+        # The historical prototype generator must not roll back a later,
+        # governed production implementation state.
+        return
     payload = read(path)
     wp = next(row for row in payload["workPackages"] if row["workPackageId"] == "WP-PSG-001")
     wp["stages"]["E_implementation"] = "COMPLETE_NON_PRODUCTION_REFERENCE_PROTOTYPE"
