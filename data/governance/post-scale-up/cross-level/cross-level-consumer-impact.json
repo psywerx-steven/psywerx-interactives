@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "0.1.0-PROTOTYPE",
+  "consumers": [
+    {
+      "consumer": "scripts/relationship_intervention_v1.py",
+      "classification": "VALIDATION_AWARE_AND_MIGRATION_REQUIRED",
+      "futureChange": "Validate exact mapping/version references for cross-level Relationships; preserve lifecycle separation."
+    },
+    {
+      "consumer": "scripts/build_relationships.py",
+      "classification": "MIGRATION_REQUIRED",
+      "futureChange": "Emit optional exact mapping references only after production governance."
+    },
+    {
+      "consumer": "scripts/actions_events_v1.py",
+      "classification": "VALIDATION_AWARE",
+      "futureChange": "Resolve referenced HappeningTypes when a mapping names a real discrete operation; no universal HT requirement."
+    },
+    {
+      "consumer": "scripts/relational_state_v1.py",
+      "classification": "VALIDATION_AWARE",
+      "futureChange": "Validate exact Network State reference for network-dependent mappings; do not infer exposure from metrics."
+    },
+    {
+      "consumer": "scripts/rds_computation_v1.py",
+      "classification": "NO_CURRENT_EXECUTION_IMPACT",
+      "futureChange": "Later provide exact profile/binding and mapping reference to WP-PSG-005; causal eligibility remains false."
+    },
+    {
+      "consumer": "scenario-service/src/openai-service.js",
+      "classification": "DISPLAY_ONLY",
+      "futureChange": "May display bounded route context later; must not infer execution or causality."
+    },
+    {
+      "consumer": "repository FCM/model construction",
+      "classification": "UNKNOWN_REQUIRES_REVIEW",
+      "futureChange": "No active cross-level propagation consumer was located; external consumers must fail closed until mapping-aware."
+    }
+  ],
+  "productionIntegrationAuthorized": false
+}

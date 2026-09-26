@@ -183,6 +183,9 @@ jobs:
       - name: Validate dependency-normalized post-scale-up governance roadmap
         run: python -m unittest discover -s tests -p "test_post_scale_up_governance_roadmap.py"
 
+      - name: Validate read-only cross-level exposure decision test
+        run: python -m unittest discover -s tests -p "test_cross_level_decision_test.py"
+
       - name: Validate read-only RDS contract decision test
         run: python -m unittest discover -s tests -p "test_rds_contract_decision_test.py"
 
@@ -243,6 +246,11 @@ jobs:
         run: |
           python scripts/post_scale_up_governance_roadmap.py
           git diff --exit-code -- data/governance/post-scale-up docs/governance/post-scale-up
+
+      - name: Verify deterministic cross-level exposure decision package
+        run: |
+          python prototypes/cross-level-exposure-v1/build_decision_test.py
+          git diff --exit-code -- prototypes/cross-level-exposure-v1 data/governance/post-scale-up/cross-level docs/governance/post-scale-up/cross-level
 
       - name: Verify deterministic RDS contract decision test
         run: |
@@ -442,6 +450,9 @@ jobs:
       - name: Validate dependency-normalized post-scale-up governance roadmap
         run: python -m unittest discover -s tests -p "test_post_scale_up_governance_roadmap.py"
 
+      - name: Validate read-only cross-level exposure decision test
+        run: python -m unittest discover -s tests -p "test_cross_level_decision_test.py"
+
       - name: Validate read-only RDS contract decision test
         run: python -m unittest discover -s tests -p "test_rds_contract_decision_test.py"
 
@@ -502,6 +513,11 @@ jobs:
         run: |
           python scripts/post_scale_up_governance_roadmap.py
           git diff --exit-code -- data/governance/post-scale-up docs/governance/post-scale-up
+
+      - name: Verify deterministic cross-level exposure decision package
+        run: |
+          python prototypes/cross-level-exposure-v1/build_decision_test.py
+          git diff --exit-code -- prototypes/cross-level-exposure-v1 data/governance/post-scale-up/cross-level docs/governance/post-scale-up/cross-level
 
       - name: Verify deterministic RDS contract decision test
         run: |

@@ -1,0 +1,455 @@
+{
+  "schemaVersion": "0.1.0-PROTOTYPE",
+  "testSetId": "WP-PSG-002-STAGE-C-20260926-001",
+  "counts": {
+    "CROSS_LEVEL_READY": 7,
+    "BLOCKED_NETWORK_STATE_DEPENDENCY": 1,
+    "BLOCKED_NO_IMPLEMENTATION_ROUTE": 1,
+    "BLOCKED_NO_EXPOSURE_ROUTE": 1,
+    "BLOCKED_PERCEPTION_ROUTE_REQUIRED": 1,
+    "SAME_LEVEL_NOT_APPLICABLE": 1,
+    "RESEARCH_NEEDED": 1,
+    "BLOCKED_TEMPORAL_MISMATCH": 1,
+    "BLOCKED_INCOMPLETE_MAPPING": 1
+  },
+  "cases": [
+    {
+      "caseId": "REAL-INSTITUTION-PERCEPTION",
+      "recordClass": "REAL_RELATIONSHIP",
+      "relationshipId": "REL-INS-040",
+      "mappingId": "XLEM-TEST-INS-040",
+      "purpose": "Institutional rule/process to a perception target",
+      "context": {
+        "sourceLevel": "INSTITUTION",
+        "targetLevel": "PERSON",
+        "implementation": "SATISFIED",
+        "actualExposure": "SATISFIED",
+        "perceivedExposure": "SATISFIED",
+        "observedTemporalOrder": [
+          "SOURCE_STATE",
+          "IMPLEMENTATION_OR_TRANSMISSION",
+          "ACTUAL_EXPOSURE",
+          "PERSON_OR_LOWER_LEVEL_RESPONSE"
+        ],
+        "scientificIdentification": "ADEQUATE_FOR_TESTED_PROPOSITION"
+      },
+      "expectedState": "CROSS_LEVEL_READY",
+      "actualResult": {
+        "state": "CROSS_LEVEL_READY",
+        "reason": "Architecture contract complete; scientific governance and execution remain separate",
+        "scientificGovernanceConferred": false,
+        "executionAuthorized": false,
+        "lifecycleChanged": false,
+        "causalEvidenceCreated": false
+      }
+    },
+    {
+      "caseId": "REAL-INSTITUTION-GROUP",
+      "recordClass": "REAL_RELATIONSHIP",
+      "relationshipId": "REL-INS-046",
+      "mappingId": "XLEM-TEST-INS-046",
+      "purpose": "Institutional resource process to group state",
+      "context": {
+        "sourceLevel": "INSTITUTION",
+        "targetLevel": "GROUP",
+        "implementation": "SATISFIED",
+        "actualExposure": "SATISFIED",
+        "observedTemporalOrder": [
+          "SOURCE_STATE",
+          "IMPLEMENTATION_OR_TRANSMISSION",
+          "ACTUAL_EXPOSURE",
+          "PERSON_OR_LOWER_LEVEL_RESPONSE"
+        ],
+        "scientificIdentification": "ADEQUATE_FOR_TESTED_PROPOSITION"
+      },
+      "expectedState": "CROSS_LEVEL_READY",
+      "actualResult": {
+        "state": "CROSS_LEVEL_READY",
+        "reason": "Architecture contract complete; scientific governance and execution remain separate",
+        "scientificGovernanceConferred": false,
+        "executionAuthorized": false,
+        "lifecycleChanged": false,
+        "causalEvidenceCreated": false
+      }
+    },
+    {
+      "caseId": "REAL-GROUP-AMBIENT-PERCEPTION",
+      "recordClass": "REAL_RELATIONSHIP",
+      "relationshipId": "REL-SOC-067",
+      "mappingId": "XLEM-TEST-SOC-067",
+      "purpose": "Persistent ambient group context without fabricated HappeningType",
+      "context": {
+        "sourceLevel": "GROUP",
+        "targetLevel": "PERSON",
+        "actualExposure": "SATISFIED",
+        "perceivedExposure": "SATISFIED",
+        "observedTemporalOrder": [
+          "SOURCE_STATE",
+          "IMPLEMENTATION_OR_TRANSMISSION",
+          "ACTUAL_EXPOSURE",
+          "PERSON_OR_LOWER_LEVEL_RESPONSE"
+        ],
+        "scientificIdentification": "ADEQUATE_FOR_TESTED_PROPOSITION"
+      },
+      "expectedState": "CROSS_LEVEL_READY",
+      "actualResult": {
+        "state": "CROSS_LEVEL_READY",
+        "reason": "Architecture contract complete; scientific governance and execution remain separate",
+        "scientificGovernanceConferred": false,
+        "executionAuthorized": false,
+        "lifecycleChanged": false,
+        "causalEvidenceCreated": false
+      }
+    },
+    {
+      "caseId": "SYN-NETWORK-MISSING-STATE",
+      "recordClass": "SYNTHETIC_ARCHITECTURE_CONTROL",
+      "relationshipId": "SYN-REL-NETWORK-PERSON-001",
+      "mappingId": "XLEM-TEST-NETWORK-001",
+      "purpose": "Network metric existence is not personal exposure",
+      "context": {
+        "sourceLevel": "NETWORK",
+        "targetLevel": "PERSON",
+        "actualExposure": "SATISFIED",
+        "observedTemporalOrder": [
+          "SOURCE_STATE",
+          "IMPLEMENTATION_OR_TRANSMISSION",
+          "ACTUAL_EXPOSURE",
+          "PERSON_OR_LOWER_LEVEL_RESPONSE"
+        ],
+        "scientificIdentification": "ADEQUATE_FOR_TESTED_PROPOSITION"
+      },
+      "expectedState": "BLOCKED_NETWORK_STATE_DEPENDENCY",
+      "actualResult": {
+        "state": "BLOCKED_NETWORK_STATE_DEPENDENCY",
+        "reason": "Exact Network State reference is required",
+        "scientificGovernanceConferred": false,
+        "executionAuthorized": false,
+        "lifecycleChanged": false,
+        "causalEvidenceCreated": false
+      }
+    },
+    {
+      "caseId": "SYN-NETWORK-WITH-STATE",
+      "recordClass": "SYNTHETIC_ARCHITECTURE_CONTROL",
+      "relationshipId": "SYN-REL-NETWORK-PERSON-001",
+      "mappingId": "XLEM-TEST-NETWORK-001",
+      "purpose": "Exact state plus defined opportunity route",
+      "context": {
+        "sourceLevel": "NETWORK",
+        "targetLevel": "PERSON",
+        "networkStateReference": "SYN-NETWORK-STATE-EXACT",
+        "actualExposure": "SATISFIED",
+        "observedTemporalOrder": [
+          "SOURCE_STATE",
+          "IMPLEMENTATION_OR_TRANSMISSION",
+          "ACTUAL_EXPOSURE",
+          "PERSON_OR_LOWER_LEVEL_RESPONSE"
+        ],
+        "scientificIdentification": "ADEQUATE_FOR_TESTED_PROPOSITION"
+      },
+      "expectedState": "CROSS_LEVEL_READY",
+      "actualResult": {
+        "state": "CROSS_LEVEL_READY",
+        "reason": "Architecture contract complete; scientific governance and execution remain separate",
+        "scientificGovernanceConferred": false,
+        "executionAuthorized": false,
+        "lifecycleChanged": false,
+        "causalEvidenceCreated": false
+      }
+    },
+    {
+      "caseId": "NEG-POLICY-NOT-IMPLEMENTED",
+      "recordClass": "REAL_RELATIONSHIP",
+      "relationshipId": "REL-INS-044",
+      "mappingId": "XLEM-TEST-INS-044",
+      "purpose": "Policy existence and formal coverage are insufficient",
+      "context": {
+        "sourceLevel": "INSTITUTION",
+        "targetLevel": "PERSON",
+        "implementation": "NOT_SATISFIED",
+        "actualExposure": "NOT_SATISFIED",
+        "perceivedExposure": "NOT_SATISFIED",
+        "observedTemporalOrder": [
+          "SOURCE_STATE",
+          "IMPLEMENTATION_OR_TRANSMISSION",
+          "ACTUAL_EXPOSURE",
+          "PERSON_OR_LOWER_LEVEL_RESPONSE"
+        ],
+        "scientificIdentification": "ADEQUATE_FOR_TESTED_PROPOSITION"
+      },
+      "expectedState": "BLOCKED_NO_IMPLEMENTATION_ROUTE",
+      "actualResult": {
+        "state": "BLOCKED_NO_IMPLEMENTATION_ROUTE",
+        "reason": "Policy/source existence does not establish implementation",
+        "scientificGovernanceConferred": false,
+        "executionAuthorized": false,
+        "lifecycleChanged": false,
+        "causalEvidenceCreated": false
+      }
+    },
+    {
+      "caseId": "NEG-ELIGIBLE-NO-RECEIPT",
+      "recordClass": "REAL_RELATIONSHIP",
+      "relationshipId": "REL-INS-050",
+      "mappingId": "XLEM-TEST-INS-050",
+      "purpose": "Eligibility is not receipt or use",
+      "context": {
+        "sourceLevel": "INSTITUTION",
+        "targetLevel": "GROUP",
+        "implementation": "SATISFIED",
+        "actualExposure": "NOT_SATISFIED",
+        "observedTemporalOrder": [
+          "SOURCE_STATE",
+          "IMPLEMENTATION_OR_TRANSMISSION",
+          "ACTUAL_EXPOSURE",
+          "PERSON_OR_LOWER_LEVEL_RESPONSE"
+        ],
+        "scientificIdentification": "ADEQUATE_FOR_TESTED_PROPOSITION"
+      },
+      "expectedState": "BLOCKED_NO_EXPOSURE_ROUTE",
+      "actualResult": {
+        "state": "BLOCKED_NO_EXPOSURE_ROUTE",
+        "reason": "Membership, eligibility or coverage does not establish actual exposure",
+        "scientificGovernanceConferred": false,
+        "executionAuthorized": false,
+        "lifecycleChanged": false,
+        "causalEvidenceCreated": false
+      }
+    },
+    {
+      "caseId": "SYN-OBJECTIVE-NO-PERCEPTION",
+      "recordClass": "SYNTHETIC_ARCHITECTURE_CONTROL",
+      "relationshipId": "SYN-REL-SANCTION-PERSON-001",
+      "mappingId": "XLEM-TEST-OBJECTIVE-001",
+      "purpose": "Objective consequence route does not fabricate perception mediation",
+      "context": {
+        "sourceLevel": "GROUP",
+        "targetLevel": "PERSON",
+        "implementation": "SATISFIED",
+        "actualExposure": "SATISFIED",
+        "observedTemporalOrder": [
+          "SOURCE_STATE",
+          "IMPLEMENTATION_OR_TRANSMISSION",
+          "ACTUAL_EXPOSURE",
+          "PERSON_OR_LOWER_LEVEL_RESPONSE"
+        ],
+        "scientificIdentification": "ADEQUATE_FOR_TESTED_PROPOSITION"
+      },
+      "expectedState": "CROSS_LEVEL_READY",
+      "actualResult": {
+        "state": "CROSS_LEVEL_READY",
+        "reason": "Architecture contract complete; scientific governance and execution remain separate",
+        "scientificGovernanceConferred": false,
+        "executionAuthorized": false,
+        "lifecycleChanged": false,
+        "causalEvidenceCreated": false
+      }
+    },
+    {
+      "caseId": "NEG-PERCEPTION-REQUIRED",
+      "recordClass": "REAL_RELATIONSHIP",
+      "relationshipId": "REL-INS-040",
+      "mappingId": "XLEM-TEST-INS-040",
+      "purpose": "Objective procedure alone does not establish perceived fairness",
+      "context": {
+        "sourceLevel": "INSTITUTION",
+        "targetLevel": "PERSON",
+        "implementation": "SATISFIED",
+        "actualExposure": "SATISFIED",
+        "perceivedExposure": "NOT_SATISFIED",
+        "observedTemporalOrder": [
+          "SOURCE_STATE",
+          "IMPLEMENTATION_OR_TRANSMISSION",
+          "ACTUAL_EXPOSURE",
+          "PERSON_OR_LOWER_LEVEL_RESPONSE"
+        ],
+        "scientificIdentification": "ADEQUATE_FOR_TESTED_PROPOSITION"
+      },
+      "expectedState": "BLOCKED_PERCEPTION_ROUTE_REQUIRED",
+      "actualResult": {
+        "state": "BLOCKED_PERCEPTION_ROUTE_REQUIRED",
+        "reason": "The stated mechanism requires perceived exposure",
+        "scientificGovernanceConferred": false,
+        "executionAuthorized": false,
+        "lifecycleChanged": false,
+        "causalEvidenceCreated": false
+      }
+    },
+    {
+      "caseId": "REAL-SAME-LEVEL-CONTROL",
+      "recordClass": "REAL_RELATIONSHIP",
+      "relationshipId": "REL-BIO-001",
+      "mappingId": null,
+      "purpose": "Person-level control requires no cross-level mapping",
+      "context": {
+        "sourceLevel": "PERSON",
+        "targetLevel": "PERSON",
+        "observedTemporalOrder": [
+          "SOURCE_STATE",
+          "IMPLEMENTATION_OR_TRANSMISSION",
+          "ACTUAL_EXPOSURE",
+          "PERSON_OR_LOWER_LEVEL_RESPONSE"
+        ],
+        "scientificIdentification": "ADEQUATE_FOR_TESTED_PROPOSITION"
+      },
+      "expectedState": "SAME_LEVEL_NOT_APPLICABLE",
+      "actualResult": {
+        "state": "SAME_LEVEL_NOT_APPLICABLE",
+        "reason": "The claim is same-level under the tested declarations",
+        "scientificGovernanceConferred": false,
+        "executionAuthorized": false,
+        "lifecycleChanged": false,
+        "causalEvidenceCreated": false
+      }
+    },
+    {
+      "caseId": "NEG-ECOLOGICAL-CORRELATION",
+      "recordClass": "SYNTHETIC_ARCHITECTURE_CONTROL",
+      "relationshipId": "SYN-REL-INSTITUTION-AVERAGE-001",
+      "mappingId": "XLEM-TEST-ECOLOGICAL-001",
+      "purpose": "Complete metadata cannot manufacture individual causal identification",
+      "context": {
+        "sourceLevel": "INSTITUTION",
+        "targetLevel": "PERSON",
+        "actualExposure": "SATISFIED",
+        "observedTemporalOrder": [
+          "SOURCE_STATE",
+          "IMPLEMENTATION_OR_TRANSMISSION",
+          "ACTUAL_EXPOSURE",
+          "PERSON_OR_LOWER_LEVEL_RESPONSE"
+        ],
+        "scientificIdentification": "ECOLOGICAL_ASSOCIATION_ONLY"
+      },
+      "expectedState": "RESEARCH_NEEDED",
+      "actualResult": {
+        "state": "RESEARCH_NEEDED",
+        "reason": "Mapping completeness does not substitute for causal identification",
+        "scientificGovernanceConferred": false,
+        "executionAuthorized": false,
+        "lifecycleChanged": false,
+        "causalEvidenceCreated": false
+      }
+    },
+    {
+      "caseId": "NEG-TEMPORAL-ORDER",
+      "recordClass": "REAL_RELATIONSHIP",
+      "relationshipId": "REL-INS-040",
+      "mappingId": "XLEM-TEST-INS-040",
+      "purpose": "Policy adopted after response measurement cannot support the claim",
+      "context": {
+        "sourceLevel": "INSTITUTION",
+        "targetLevel": "PERSON",
+        "implementation": "SATISFIED",
+        "actualExposure": "SATISFIED",
+        "perceivedExposure": "SATISFIED",
+        "observedTemporalOrder": [
+          "PERSON_OR_LOWER_LEVEL_RESPONSE",
+          "SOURCE_STATE",
+          "IMPLEMENTATION_OR_TRANSMISSION",
+          "ACTUAL_EXPOSURE"
+        ],
+        "scientificIdentification": "ADEQUATE_FOR_TESTED_PROPOSITION"
+      },
+      "expectedState": "BLOCKED_TEMPORAL_MISMATCH",
+      "actualResult": {
+        "state": "BLOCKED_TEMPORAL_MISMATCH",
+        "reason": "Source, implementation/exposure and response are not temporally aligned",
+        "scientificGovernanceConferred": false,
+        "executionAuthorized": false,
+        "lifecycleChanged": false,
+        "causalEvidenceCreated": false
+      }
+    },
+    {
+      "caseId": "NEG-PARTIAL-COVERAGE-UNBOUND",
+      "recordClass": "REAL_RELATIONSHIP",
+      "relationshipId": "REL-INS-046",
+      "mappingId": "XLEM-TEST-INS-046",
+      "purpose": "Partial coverage cannot silently become universal exposure",
+      "context": {
+        "sourceLevel": "INSTITUTION",
+        "targetLevel": "GROUP",
+        "coverage": "PARTIAL",
+        "implementation": "SATISFIED",
+        "actualExposure": "SATISFIED",
+        "observedTemporalOrder": [
+          "SOURCE_STATE",
+          "IMPLEMENTATION_OR_TRANSMISSION",
+          "ACTUAL_EXPOSURE",
+          "PERSON_OR_LOWER_LEVEL_RESPONSE"
+        ],
+        "scientificIdentification": "ADEQUATE_FOR_TESTED_PROPOSITION"
+      },
+      "expectedState": "BLOCKED_INCOMPLETE_MAPPING",
+      "actualResult": {
+        "state": "BLOCKED_INCOMPLETE_MAPPING",
+        "reason": "Partial coverage requires an exact included target set or governed selection rule",
+        "scientificGovernanceConferred": false,
+        "executionAuthorized": false,
+        "lifecycleChanged": false,
+        "causalEvidenceCreated": false
+      }
+    },
+    {
+      "caseId": "SYN-PARTIAL-COVERAGE-BOUND",
+      "recordClass": "REAL_RELATIONSHIP",
+      "relationshipId": "REL-INS-046",
+      "mappingId": "XLEM-TEST-INS-046",
+      "purpose": "Exact included subset preserves partial coverage",
+      "context": {
+        "sourceLevel": "INSTITUTION",
+        "targetLevel": "GROUP",
+        "coverage": "PARTIAL",
+        "coveredTargetSetReference": "SYN-DEFINED-GROUP-SUBSET",
+        "implementation": "SATISFIED",
+        "actualExposure": "SATISFIED",
+        "observedTemporalOrder": [
+          "SOURCE_STATE",
+          "IMPLEMENTATION_OR_TRANSMISSION",
+          "ACTUAL_EXPOSURE",
+          "PERSON_OR_LOWER_LEVEL_RESPONSE"
+        ],
+        "scientificIdentification": "ADEQUATE_FOR_TESTED_PROPOSITION"
+      },
+      "expectedState": "CROSS_LEVEL_READY",
+      "actualResult": {
+        "state": "CROSS_LEVEL_READY",
+        "reason": "Architecture contract complete; scientific governance and execution remain separate",
+        "scientificGovernanceConferred": false,
+        "executionAuthorized": false,
+        "lifecycleChanged": false,
+        "causalEvidenceCreated": false
+      }
+    },
+    {
+      "caseId": "SYN-DISCRETE-ASSIGNMENT",
+      "recordClass": "SYNTHETIC_ARCHITECTURE_CONTROL",
+      "relationshipId": "SYN-REL-ASSIGNMENT-PERSON-001",
+      "mappingId": "XLEM-TEST-ASSIGNMENT-001",
+      "purpose": "Discrete assignment may reference a substantive HappeningType",
+      "context": {
+        "sourceLevel": "INSTITUTION",
+        "targetLevel": "PERSON",
+        "implementation": "SATISFIED",
+        "actualExposure": "SATISFIED",
+        "observedTemporalOrder": [
+          "SOURCE_STATE",
+          "IMPLEMENTATION_OR_TRANSMISSION",
+          "ACTUAL_EXPOSURE",
+          "PERSON_OR_LOWER_LEVEL_RESPONSE"
+        ],
+        "scientificIdentification": "ADEQUATE_FOR_TESTED_PROPOSITION"
+      },
+      "expectedState": "CROSS_LEVEL_READY",
+      "actualResult": {
+        "state": "CROSS_LEVEL_READY",
+        "reason": "Architecture contract complete; scientific governance and execution remain separate",
+        "scientificGovernanceConferred": false,
+        "executionAuthorized": false,
+        "lifecycleChanged": false,
+        "causalEvidenceCreated": false
+      }
+    }
+  ]
+}

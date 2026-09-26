@@ -502,11 +502,12 @@ def work_packages(roots):
     rds_dry_run = ROOT / "data/governance/post-scale-up/rds/rds-migration-dry-run.json"
     prototype_complete = rds_decision is not None and rds_dry_run.exists()
     implementation = rds_implementation_state()
+    cross_level_test = ROOT / "data/governance/post-scale-up/cross-level/cross-level-test-cases.json"
     packages = []
     for definition in ROOT_DEFS:
         key, identifier = definition["key"], ROOT_IDS[definition["key"]]
         root = by_id[identifier]
-        packages.append({
+        package = {
             "workPackageId": WP_IDS[key], "rootIssueId": identifier, "title": definition["title"],
             "problemStatement": definition["problem"], "backlogItemsAbsorbed": root["absorbedBacklogItemIds"],
             "layersAffected": definition["layers"], "recordsAffected": "See blocker-dependency-map affectedRecords for every absorbed item.",
@@ -534,7 +535,12 @@ def work_packages(roots):
             "nextDecisionPacketId": None if key == "RDS_DEF" and implementation else ("DP-PSG-001-IMPLEMENTATION" if key == "RDS_DEF" and prototype_complete else None),
             "productionImplementationDecisionId": implementation["decision"]["decisionId"] if key == "RDS_DEF" and implementation else None,
             "recommendedSequenceBand": definition["sequenceBand"],
-        })
+        }
+        if key == "CROSS_LEVEL" and cross_level_test.exists():
+            package["stageCDecisionTestStatus"] = "COMPLETE_READ_ONLY_RECOMMENDATION"
+            package["stageCDecisionTestArtifact"] = "docs/governance/post-scale-up/cross-level/CROSS_LEVEL_DECISION_TEST.md"
+            package["advisoryRecommendation"] = "BOUNDED_A_PLUS_B_PLUS_C_HYBRID_HUMAN_GOVERNANCE_REQUIRED"
+        packages.append(package)
     return {"schemaVersion": "1.0.0", "roadmapId": ROADMAP_ID, "workPackages": packages}
 
 
@@ -551,9 +557,10 @@ def decision_packets(roots):
     }
     packets = []
     rds_decision = rds_direction_decision()
+    cross_level_test = ROOT / "data/governance/post-scale-up/cross-level/cross-level-test-cases.json"
     for index, key in enumerate(keys, 1):
         definition, root = next(row for row in ROOT_DEFS if row["key"] == key), by_id[ROOT_IDS[key]]
-        packets.append({
+        packet = {
             "decisionPacketId": f"DP-PSG-{index:03d}", "rootIssueId": root["id"], "workPackageId": WP_IDS[key],
             "title": definition["title"], "currentProblem": definition["problem"],
             "whyItMatters": f"It directly contains {root['activeBlockingOriginalItems']} active-execution blockers and constrains {root['downstreamOriginalItemCount']} items in downstream root programs.",
@@ -566,12 +573,17 @@ def decision_packets(roots):
             "whatEachOptionUnblocks": [{"option": option.split(":", 1)[0], "unblocks": "Later design, migration and scientific re-adjudication for the packet's dependent records."} for option in definition["options"]],
             "risks": ["scientific overstatement", "double counting", "consumer misinterpretation", "irreversible migration without rollback"],
             "skepticalArchitectureReview": skeptical[key],
-            "recommendedNextResearchOrTest": "Build a non-production schema/validator prototype and migration dry run; do not alter production records." if key == "RDS_DEF" and rds_decision else "Create executable examples and counterexamples against current validators before the human option vote; do not alter production records.",
+            "recommendedNextResearchOrTest": ("Build a non-production schema/validator prototype and migration dry run; do not alter production records." if key == "RDS_DEF" and rds_decision else ("Stage C decision test complete; human architecture governance is the next bounded step." if key == "CROSS_LEVEL" and cross_level_test.exists() else "Create executable examples and counterexamples against current validators before the human option vote; do not alter production records.")),
             "humanDecisionStatus": "HUMAN_APPROVED_BOUNDED_DIRECTION" if key == "RDS_DEF" and rds_decision else "REQUIRED_NOT_TAKEN",
             "humanDecisionId": rds_decision["decisionId"] if key == "RDS_DEF" and rds_decision else None,
             "approvedOption": "BOUNDED_OPTION_B_PLUS_C" if key == "RDS_DEF" and rds_decision else None,
             "authorizationBoundary": rds_decision["notAuthorized"] if key == "RDS_DEF" and rds_decision else None,
-        })
+        }
+        if key == "CROSS_LEVEL" and cross_level_test.exists():
+            packet["stageCDecisionTestStatus"] = "COMPLETE_READ_ONLY_RECOMMENDATION"
+            packet["advisoryRecommendation"] = "BOUNDED_A_PLUS_B_PLUS_C_HYBRID"
+            packet["decisionTestArtifact"] = "docs/governance/post-scale-up/cross-level/CROSS_LEVEL_ARCHITECTURE_DECISION_PACKET.md"
+        packets.append(packet)
     return {"schemaVersion": "1.0.0", "roadmapId": ROADMAP_ID, "decisionPackets": packets}
 
 
