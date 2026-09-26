@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://psywerx.org/schemas/rds-execution-provenance.schema.json",
+  "title": "rds-execution-provenance",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "executionState",
+    "rdsId",
+    "rdsDefinitionHash",
+    "profileId",
+    "profileVersion",
+    "bindingId",
+    "bindingVersion",
+    "inputHashes",
+    "parameterHash",
+    "output",
+    "executionFingerprint",
+    "shadowMode",
+    "feedsActiveSimulation",
+    "causalSourceAuthorized"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "executionState": {
+      "const": "EXECUTABLE"
+    },
+    "rdsId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rdsDefinitionHash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "profileId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "profileVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "bindingId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "bindingVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "inputHashes": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^[a-f0-9]{64}$"
+      }
+    },
+    "parameterHash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "output": {},
+    "executionFingerprint": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "shadowMode": {
+      "const": true
+    },
+    "feedsActiveSimulation": {
+      "const": false
+    },
+    "causalSourceAuthorized": {
+      "const": false
+    },
+    "legacyDerivationId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "legacyReceiptHash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "equivalence": {
+      "type": "object"
+    }
+  }
+}

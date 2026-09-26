@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://psywerx.org/schemas/rds-execution-request.schema.json",
+  "title": "rds-execution-request",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "requestId",
+    "rdsId",
+    "profileId",
+    "profileVersion",
+    "bindingId",
+    "bindingVersion",
+    "inputs",
+    "parameters",
+    "causalSourceRequested",
+    "simulationFeedRequested"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "requestId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rdsId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "profileId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "profileVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "bindingId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "bindingVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "inputs": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "definitionHash",
+          "valueHash"
+        ],
+        "properties": {
+          "definitionHash": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "valueHash": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "value": {}
+        }
+      }
+    },
+    "parameters": {
+      "type": "object"
+    },
+    "causalSourceRequested": {
+      "const": false
+    },
+    "simulationFeedRequested": {
+      "const": false
+    }
+  }
+}

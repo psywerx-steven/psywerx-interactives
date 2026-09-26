@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://psywerx.org/schemas/rds-application-binding.schema.json",
+  "title": "rds-application-binding",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "bindingId",
+    "bindingVersion",
+    "rdsId",
+    "rdsDefinitionVersion",
+    "rdsDefinitionHash",
+    "profileId",
+    "profileVersion",
+    "unitOfAnalysis",
+    "contextContract",
+    "provenance",
+    "architectureGovernance"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "bindingId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "bindingVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rdsId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rdsDefinitionVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rdsDefinitionHash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "profileId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "profileVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "unitOfAnalysis": {
+      "type": "string",
+      "minLength": 1
+    },
+    "contextContract": {
+      "type": "object"
+    },
+    "provenance": {
+      "type": "object"
+    },
+    "architectureGovernance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "decisionId",
+        "decisionRecord"
+      ],
+      "properties": {
+        "status": {
+          "const": "GOVERNED"
+        },
+        "decisionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "decisionRecord": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}
