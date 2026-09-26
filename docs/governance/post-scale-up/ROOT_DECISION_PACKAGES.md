@@ -60,7 +60,7 @@ DP-PSG-001 records the bounded human-approved B+C architecture direction. The re
 - Architecture implications: Any selected representation requires a separately governed schema/validator design and migration plan.
 - Simulation implications: No option may imply numeric weight, propagation, recommendation or execution eligibility by itself.
 - Migration implications: Existing governed records remain valid; later implementation must be additive or explicitly migrated with rollback and protected-science comparison.
-- Recommended next test: Build the authorized non-production mapping/validator prototype and read-only migration rehearsal; do not integrate production consumers.
+- Recommended next test: Govern DP-PSG-002-IMPLEMENTATION before any production schema, registry, mapping, binding, validator or migration work.
 
 ## DP-PSG-003 — Network State, ScenarioStateDelta and metric recalculation boundary
 

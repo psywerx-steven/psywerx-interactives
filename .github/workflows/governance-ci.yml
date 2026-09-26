@@ -186,6 +186,9 @@ jobs:
       - name: Validate read-only cross-level exposure decision test
         run: python -m unittest discover -s tests -p "test_cross_level_decision_test.py"
 
+      - name: Validate non-production cross-level exposure reference implementation
+        run: python -m unittest discover -s tests -p "test_cross_level_exposure_stage_e.py"
+
       - name: Validate read-only RDS contract decision test
         run: python -m unittest discover -s tests -p "test_rds_contract_decision_test.py"
 
@@ -250,6 +253,11 @@ jobs:
       - name: Verify deterministic cross-level exposure decision package
         run: |
           python prototypes/cross-level-exposure-v1/build_decision_test.py
+          git diff --exit-code -- prototypes/cross-level-exposure-v1 data/governance/post-scale-up/cross-level docs/governance/post-scale-up/cross-level
+
+      - name: Verify deterministic cross-level exposure reference package
+        run: |
+          python prototypes/cross-level-exposure-v1/build_stage_e.py
           git diff --exit-code -- prototypes/cross-level-exposure-v1 data/governance/post-scale-up/cross-level docs/governance/post-scale-up/cross-level
 
       - name: Verify deterministic RDS contract decision test
@@ -453,6 +461,9 @@ jobs:
       - name: Validate read-only cross-level exposure decision test
         run: python -m unittest discover -s tests -p "test_cross_level_decision_test.py"
 
+      - name: Validate non-production cross-level exposure reference implementation
+        run: python -m unittest discover -s tests -p "test_cross_level_exposure_stage_e.py"
+
       - name: Validate read-only RDS contract decision test
         run: python -m unittest discover -s tests -p "test_rds_contract_decision_test.py"
 
@@ -517,6 +528,11 @@ jobs:
       - name: Verify deterministic cross-level exposure decision package
         run: |
           python prototypes/cross-level-exposure-v1/build_decision_test.py
+          git diff --exit-code -- prototypes/cross-level-exposure-v1 data/governance/post-scale-up/cross-level docs/governance/post-scale-up/cross-level
+
+      - name: Verify deterministic cross-level exposure reference package
+        run: |
+          python prototypes/cross-level-exposure-v1/build_stage_e.py
           git diff --exit-code -- prototypes/cross-level-exposure-v1 data/governance/post-scale-up/cross-level docs/governance/post-scale-up/cross-level
 
       - name: Verify deterministic RDS contract decision test

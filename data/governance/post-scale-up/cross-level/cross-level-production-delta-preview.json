@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "1.0.0-PLANNING",
+  "productionChangesApplied": false,
+  "phase0Preview": {
+    "schemas": [
+      "CrossLevelExposureMapping",
+      "CrossLevelExposureBinding",
+      "CrossLevelEligibilityReceipt"
+    ],
+    "registries": [
+      "empty mapping registry",
+      "empty binding registry"
+    ],
+    "validators": [
+      "exact-version mapping",
+      "exact Relationship attachment",
+      "route/level/exposure/perception/network firewalls"
+    ],
+    "services": [
+      "shadow-only eligibility/fingerprint service"
+    ],
+    "relationshipMigrations": 0,
+    "executionChanges": 0
+  },
+  "phase1Preview": {
+    "recommendedControls": [
+      "REL-INS-040"
+    ],
+    "selectionReason": "Clear institution-to-person implementation, actual exposure and perception-target stages; no Network State, ontology, new Driver, or new HappeningType dependency.",
+    "mode": "SHADOW_VALIDATION_ONLY",
+    "graphInclusionChanges": 0,
+    "simulationChanges": 0
+  },
+  "remainingRelationships": "Other 37 unchanged pending separate governance and re-adjudication.",
+  "rollback": "Remove registry/shadow integration; byte-identical legacy Relationships require no restoration."
+}

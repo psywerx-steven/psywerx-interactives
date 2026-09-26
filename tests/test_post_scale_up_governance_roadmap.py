@@ -124,10 +124,14 @@ class PostScaleUpGovernanceRoadmapTests(unittest.TestCase):
         self.assertEqual(by_wp["WP-PSG-002"]["governanceDecisionId"], "GOV-CROSS-LEVEL-EXPOSURE-001-2026-09-26")
         self.assertEqual(by_wp["WP-PSG-002"]["prototypeImplementationAuthorization"], "AUTHORIZED_NON_PRODUCTION_ONLY")
         self.assertEqual(by_wp["WP-PSG-002"]["productionImplementationStatus"], "NOT_AUTHORIZED_NOT_STARTED")
+        self.assertEqual(by_wp["WP-PSG-002"]["stages"]["E_implementation"], "COMPLETE_NON_PRODUCTION_REFERENCE_PROTOTYPE")
+        self.assertEqual(by_wp["WP-PSG-002"]["stages"]["F_migrationRevalidation"], "DRY_RUN_ONLY_COMPLETE_PRODUCTION_MIGRATION_NOT_AUTHORIZED")
+        self.assertEqual(by_wp["WP-PSG-002"]["nextDecisionPacketId"], "DP-PSG-002-IMPLEMENTATION")
+        self.assertEqual(by_wp["WP-PSG-002"]["rootIssueResolutionStatus"], "NOT_RESOLVED_PROTOTYPE_ONLY")
         for package in self.packages["workPackages"]:
             if package["workPackageId"] not in {"WP-PSG-001", "WP-PSG-002"}:
                 self.assertEqual(package["stages"]["D_humanGovernanceDecision"], "NOT_STARTED")
-            if package["workPackageId"] != "WP-PSG-001":
+            if package["workPackageId"] not in {"WP-PSG-001", "WP-PSG-002"}:
                 self.assertEqual(package["stages"]["E_implementation"], "NOT_STARTED")
                 self.assertEqual(package["stages"]["F_migrationRevalidation"], "NOT_STARTED")
             self.assertEqual(package["stages"]["G_scientificReadjudication"], "NOT_STARTED")

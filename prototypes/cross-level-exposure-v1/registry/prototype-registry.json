@@ -1,0 +1,571 @@
+{
+  "schemaVersion": "0.2.0-PROTOTYPE",
+  "prototypeStatus": "PROTOTYPE_ONLY_NON_PRODUCTION",
+  "productionMaterializationAuthorized": false,
+  "selectionPolicy": "EXACT_ID_AND_VERSION_ONLY",
+  "mappingModelFinding": "REUSABLE_MAPPING_PLUS_IMMUTABLE_RELATIONSHIP_BINDING",
+  "mappings": [
+    {
+      "schemaVersion": "0.2.0-PROTOTYPE",
+      "mappingId": "XLEM-PROTOTYPE-INSTITUTION-PROCEDURE-PERCEPTION-001",
+      "mappingVersion": "1.0.0-PROTOTYPE",
+      "objectKind": "SCIENTIFIC_ROUTING_ELIGIBILITY_CONTRACT",
+      "sourceLevel": "INSTITUTION",
+      "targetLevel": "PERSON",
+      "routeType": "IMPLEMENTATION",
+      "routeStages": [
+        "SOURCE_STATE",
+        "IMPLEMENTATION_OR_TRANSMISSION",
+        "ACTUAL_EXPOSURE",
+        "PERCEIVED_EXPOSURE",
+        "TARGET_RESPONSE"
+      ],
+      "exposureDefinition": "Covered person encounters implemented procedure before perceived-fairness response.",
+      "exposureUnit": "EXACT_TARGET_UNIT_OR_BOUND_SUBSET",
+      "temporalOrder": [
+        "SOURCE_STATE",
+        "IMPLEMENTATION_OR_TRANSMISSION",
+        "ACTUAL_EXPOSURE",
+        "PERCEIVED_EXPOSURE",
+        "TARGET_RESPONSE"
+      ],
+      "membershipSemantics": "Possible risk set only; never exposure.",
+      "eligibilitySemantics": "Possible coverage only; never receipt.",
+      "implementationSemantics": "Must be established separately from formal source-state existence.",
+      "assignmentSemantics": "Does not establish contact or receipt unless definitionally bound and supported.",
+      "actualExposureSemantics": "Target must encounter, receive, or inhabit the specified bounded exposure.",
+      "perceivedExposureSemantics": "PERCEPTION_IS_TARGET",
+      "coverageSemantics": "Partial coverage requires an exact target set or governed rule.",
+      "partialCoverageAllowed": true,
+      "ambientContextAllowed": false,
+      "networkStateRequirements": {
+        "required": false,
+        "exactStateIdentity": false,
+        "boundaryAndWindowRequired": false
+      },
+      "intermediateReferenceRules": {
+        "policy": "BRIDGE_REFERENCE_IF_SCIENTIFICALLY_REAL",
+        "artificialPlumbingEntities": "PROHIBITED"
+      },
+      "evidenceBindingRules": {
+        "referencesOnly": true,
+        "relationshipEvidenceRemainsAuthoritative": true,
+        "mappingCreatesEvidence": false
+      },
+      "scopeLimitations": [
+        "Non-production prototype",
+        "No causal authority",
+        "No graph or simulation effect"
+      ],
+      "causalEvidence": false,
+      "executionAuthority": false,
+      "hasWeight": false,
+      "hasLifecycle": false,
+      "hasPropagationState": false,
+      "provenance": {
+        "decisionId": "GOV-CROSS-LEVEL-EXPOSURE-001-2026-09-26",
+        "workPackageId": "WP-PSG-002"
+      },
+      "prototypeStatus": "PROTOTYPE_ONLY_NON_PRODUCTION"
+    },
+    {
+      "schemaVersion": "0.2.0-PROTOTYPE",
+      "mappingId": "XLEM-PROTOTYPE-INSTITUTION-RESOURCE-GROUP-001",
+      "mappingVersion": "1.0.0-PROTOTYPE",
+      "objectKind": "SCIENTIFIC_ROUTING_ELIGIBILITY_CONTRACT",
+      "sourceLevel": "INSTITUTION",
+      "targetLevel": "GROUP",
+      "routeType": "RESOURCE_ACCESS",
+      "routeStages": [
+        "SOURCE_STATE",
+        "IMPLEMENTATION_OR_TRANSMISSION",
+        "ACTUAL_EXPOSURE",
+        "TARGET_RESPONSE"
+      ],
+      "exposureDefinition": "Specified group receives or is subject to bounded institutional resource allocation.",
+      "exposureUnit": "EXACT_TARGET_UNIT_OR_BOUND_SUBSET",
+      "temporalOrder": [
+        "SOURCE_STATE",
+        "IMPLEMENTATION_OR_TRANSMISSION",
+        "ACTUAL_EXPOSURE",
+        "TARGET_RESPONSE"
+      ],
+      "membershipSemantics": "Possible risk set only; never exposure.",
+      "eligibilitySemantics": "Possible coverage only; never receipt.",
+      "implementationSemantics": "Must be established separately from formal source-state existence.",
+      "assignmentSemantics": "Does not establish contact or receipt unless definitionally bound and supported.",
+      "actualExposureSemantics": "Target must encounter, receive, or inhabit the specified bounded exposure.",
+      "perceivedExposureSemantics": "NOT_REQUIRED",
+      "coverageSemantics": "Partial coverage requires an exact target set or governed rule.",
+      "partialCoverageAllowed": true,
+      "ambientContextAllowed": false,
+      "networkStateRequirements": {
+        "required": false,
+        "exactStateIdentity": false,
+        "boundaryAndWindowRequired": false
+      },
+      "intermediateReferenceRules": {
+        "policy": "BRIDGE_REFERENCE_IF_SCIENTIFICALLY_REAL",
+        "artificialPlumbingEntities": "PROHIBITED"
+      },
+      "evidenceBindingRules": {
+        "referencesOnly": true,
+        "relationshipEvidenceRemainsAuthoritative": true,
+        "mappingCreatesEvidence": false
+      },
+      "scopeLimitations": [
+        "Non-production prototype",
+        "No causal authority",
+        "No graph or simulation effect"
+      ],
+      "causalEvidence": false,
+      "executionAuthority": false,
+      "hasWeight": false,
+      "hasLifecycle": false,
+      "hasPropagationState": false,
+      "provenance": {
+        "decisionId": "GOV-CROSS-LEVEL-EXPOSURE-001-2026-09-26",
+        "workPackageId": "WP-PSG-002"
+      },
+      "prototypeStatus": "PROTOTYPE_ONLY_NON_PRODUCTION"
+    },
+    {
+      "schemaVersion": "0.2.0-PROTOTYPE",
+      "mappingId": "XLEM-PROTOTYPE-GROUP-AMBIENT-PERSON-001",
+      "mappingVersion": "1.0.0-PROTOTYPE",
+      "objectKind": "SCIENTIFIC_ROUTING_ELIGIBILITY_CONTRACT",
+      "sourceLevel": "GROUP",
+      "targetLevel": "PERSON",
+      "routeType": "AMBIENT_CONTEXT",
+      "routeStages": [
+        "SOURCE_STATE",
+        "ACTUAL_EXPOSURE",
+        "PERCEIVED_EXPOSURE",
+        "TARGET_RESPONSE"
+      ],
+      "exposureDefinition": "Person inhabits or observes bounded intergroup status context during evidence window.",
+      "exposureUnit": "EXACT_TARGET_UNIT_OR_BOUND_SUBSET",
+      "temporalOrder": [
+        "SOURCE_STATE",
+        "ACTUAL_EXPOSURE",
+        "PERCEIVED_EXPOSURE",
+        "TARGET_RESPONSE"
+      ],
+      "membershipSemantics": "Possible risk set only; never exposure.",
+      "eligibilitySemantics": "Possible coverage only; never receipt.",
+      "implementationSemantics": "Persistent bounded context; no discrete implementation event required.",
+      "assignmentSemantics": "Does not establish contact or receipt unless definitionally bound and supported.",
+      "actualExposureSemantics": "Target must encounter, receive, or inhabit the specified bounded exposure.",
+      "perceivedExposureSemantics": "PERCEPTION_REQUIRED_FOR_TARGET",
+      "coverageSemantics": "Partial coverage requires an exact target set or governed rule.",
+      "partialCoverageAllowed": true,
+      "ambientContextAllowed": true,
+      "networkStateRequirements": {
+        "required": false,
+        "exactStateIdentity": false,
+        "boundaryAndWindowRequired": false
+      },
+      "intermediateReferenceRules": {
+        "policy": "BRIDGE_REFERENCE_IF_SCIENTIFICALLY_REAL",
+        "artificialPlumbingEntities": "PROHIBITED"
+      },
+      "evidenceBindingRules": {
+        "referencesOnly": true,
+        "relationshipEvidenceRemainsAuthoritative": true,
+        "mappingCreatesEvidence": false
+      },
+      "scopeLimitations": [
+        "Non-production prototype",
+        "No causal authority",
+        "No graph or simulation effect"
+      ],
+      "causalEvidence": false,
+      "executionAuthority": false,
+      "hasWeight": false,
+      "hasLifecycle": false,
+      "hasPropagationState": false,
+      "provenance": {
+        "decisionId": "GOV-CROSS-LEVEL-EXPOSURE-001-2026-09-26",
+        "workPackageId": "WP-PSG-002"
+      },
+      "prototypeStatus": "PROTOTYPE_ONLY_NON_PRODUCTION"
+    },
+    {
+      "schemaVersion": "0.2.0-PROTOTYPE",
+      "mappingId": "XLEM-PROTOTYPE-DISCRETE-ASSIGNMENT-001",
+      "mappingVersion": "1.0.0-PROTOTYPE",
+      "objectKind": "SCIENTIFIC_ROUTING_ELIGIBILITY_CONTRACT",
+      "sourceLevel": "INSTITUTION",
+      "targetLevel": "GROUP",
+      "routeType": "ASSIGNMENT",
+      "routeStages": [
+        "SOURCE_STATE",
+        "IMPLEMENTATION_OR_TRANSMISSION",
+        "ACTUAL_EXPOSURE",
+        "TARGET_RESPONSE"
+      ],
+      "exposureDefinition": "Participants receive bounded small-contact-group assignment represented by existing HappeningType.",
+      "exposureUnit": "EXACT_TARGET_UNIT_OR_BOUND_SUBSET",
+      "temporalOrder": [
+        "SOURCE_STATE",
+        "IMPLEMENTATION_OR_TRANSMISSION",
+        "ACTUAL_EXPOSURE",
+        "TARGET_RESPONSE"
+      ],
+      "membershipSemantics": "Possible risk set only; never exposure.",
+      "eligibilitySemantics": "Possible coverage only; never receipt.",
+      "implementationSemantics": "Must be established separately from formal source-state existence.",
+      "assignmentSemantics": "Does not establish contact or receipt unless definitionally bound and supported.",
+      "actualExposureSemantics": "Target must encounter, receive, or inhabit the specified bounded exposure.",
+      "perceivedExposureSemantics": "NOT_REQUIRED",
+      "coverageSemantics": "Partial coverage requires an exact target set or governed rule.",
+      "partialCoverageAllowed": true,
+      "ambientContextAllowed": false,
+      "networkStateRequirements": {
+        "required": false,
+        "exactStateIdentity": false,
+        "boundaryAndWindowRequired": false
+      },
+      "intermediateReferenceRules": {
+        "policy": "BRIDGE_REFERENCE_IF_SCIENTIFICALLY_REAL",
+        "artificialPlumbingEntities": "PROHIBITED"
+      },
+      "evidenceBindingRules": {
+        "referencesOnly": true,
+        "relationshipEvidenceRemainsAuthoritative": true,
+        "mappingCreatesEvidence": false
+      },
+      "scopeLimitations": [
+        "Non-production prototype",
+        "No causal authority",
+        "No graph or simulation effect"
+      ],
+      "causalEvidence": false,
+      "executionAuthority": false,
+      "hasWeight": false,
+      "hasLifecycle": false,
+      "hasPropagationState": false,
+      "provenance": {
+        "decisionId": "GOV-CROSS-LEVEL-EXPOSURE-001-2026-09-26",
+        "workPackageId": "WP-PSG-002"
+      },
+      "prototypeStatus": "PROTOTYPE_ONLY_NON_PRODUCTION"
+    }
+  ],
+  "bindings": [
+    {
+      "schemaVersion": "0.2.0-PROTOTYPE",
+      "bindingId": "XLEB-PROTOTYPE-REL-INS-040-001",
+      "bindingVersion": "1.0.0-PROTOTYPE",
+      "relationshipId": "REL-INS-040",
+      "relationshipHash": "72e70e9653845179fe55d160b827c4dc0dbd7f324572a50c691ec0259947d21f",
+      "sourceEntityId": "INS-051",
+      "sourceLevel": "INSTITUTION",
+      "targetEntityId": "PSY-022",
+      "targetLevel": "PERSON",
+      "mappingId": "XLEM-PROTOTYPE-INSTITUTION-PROCEDURE-PERCEPTION-001",
+      "mappingVersion": "1.0.0-PROTOTYPE",
+      "claimSpecificQualifiers": [
+        "ROUTING_REPRESENTABILITY_ONLY",
+        "NO_CAUSAL_OR_EXECUTION_AUTHORITY"
+      ],
+      "intermediateEntityIds": [],
+      "happeningTypeIds": [],
+      "networkStateReferences": [],
+      "implementationRequirement": {
+        "required": true,
+        "definition": "Realized for bounded target when required."
+      },
+      "membershipRule": "Membership alone insufficient.",
+      "eligibilityRule": "Eligibility alone insufficient.",
+      "assignmentRule": "Assignment alone insufficient unless receipt/contact established.",
+      "actualExposureRule": {
+        "required": true,
+        "definition": "Exact encounter, receipt, or contextual inhabitation."
+      },
+      "perceptionRequired": true,
+      "perceptionEntityId": "PSY-022",
+      "exposureWindow": "RELATIONSHIP_EVIDENCE_BOUNDED_WINDOW",
+      "coverageRule": "EXACT_ELIGIBLE_AND_EXPOSED_PERSON_SET_REQUIRED",
+      "temporalAlignment": [
+        "SOURCE_STATE",
+        "IMPLEMENTATION_OR_TRANSMISSION",
+        "ACTUAL_EXPOSURE",
+        "PERCEIVED_EXPOSURE",
+        "TARGET_RESPONSE"
+      ],
+      "evidenceReferences": [
+        "SRC-502",
+        "SRC-503"
+      ],
+      "scope": "TEST_ONLY_RELATIONSHIP_ATTACHMENT",
+      "provenance": {
+        "decisionId": "GOV-CROSS-LEVEL-EXPOSURE-001-2026-09-26"
+      },
+      "prototypeStatus": "PROTOTYPE_ONLY_NON_PRODUCTION",
+      "artificialPlumbingEntityRequired": false
+    },
+    {
+      "schemaVersion": "0.2.0-PROTOTYPE",
+      "bindingId": "XLEB-PROTOTYPE-REL-INS-046-001",
+      "bindingVersion": "1.0.0-PROTOTYPE",
+      "relationshipId": "REL-INS-046",
+      "relationshipHash": "e3c0de809169608f477269b7a907042fcb76ad0ccd3d8e0cedc6e4eb9febffc8",
+      "sourceEntityId": "INS-062",
+      "sourceLevel": "INSTITUTION",
+      "targetEntityId": "SOC-096",
+      "targetLevel": "GROUP",
+      "mappingId": "XLEM-PROTOTYPE-INSTITUTION-RESOURCE-GROUP-001",
+      "mappingVersion": "1.0.0-PROTOTYPE",
+      "claimSpecificQualifiers": [
+        "ROUTING_REPRESENTABILITY_ONLY",
+        "NO_CAUSAL_OR_EXECUTION_AUTHORITY"
+      ],
+      "intermediateEntityIds": [],
+      "happeningTypeIds": [],
+      "networkStateReferences": [],
+      "implementationRequirement": {
+        "required": true,
+        "definition": "Realized for bounded target when required."
+      },
+      "membershipRule": "Membership alone insufficient.",
+      "eligibilityRule": "Eligibility alone insufficient.",
+      "assignmentRule": "Assignment alone insufficient unless receipt/contact established.",
+      "actualExposureRule": {
+        "required": true,
+        "definition": "Exact encounter, receipt, or contextual inhabitation."
+      },
+      "perceptionRequired": false,
+      "perceptionEntityId": null,
+      "exposureWindow": "RELATIONSHIP_EVIDENCE_BOUNDED_WINDOW",
+      "coverageRule": "PARTIAL_GROUP_COVERAGE_ALLOWED_WITH_EXACT_GROUP_OR_RULE",
+      "temporalAlignment": [
+        "SOURCE_STATE",
+        "IMPLEMENTATION_OR_TRANSMISSION",
+        "ACTUAL_EXPOSURE",
+        "TARGET_RESPONSE"
+      ],
+      "evidenceReferences": [
+        "SRC-497",
+        "SRC-502"
+      ],
+      "scope": "TEST_ONLY_RELATIONSHIP_ATTACHMENT",
+      "provenance": {
+        "decisionId": "GOV-CROSS-LEVEL-EXPOSURE-001-2026-09-26"
+      },
+      "prototypeStatus": "PROTOTYPE_ONLY_NON_PRODUCTION",
+      "artificialPlumbingEntityRequired": false
+    },
+    {
+      "schemaVersion": "0.2.0-PROTOTYPE",
+      "bindingId": "XLEB-PROTOTYPE-REL-SOC-067-001",
+      "bindingVersion": "1.0.0-PROTOTYPE",
+      "relationshipId": "REL-SOC-067",
+      "relationshipHash": "6173daeed1c27e8977002e9bbd2b5d1a718d5357c3e37f239d477e57ca5fe677",
+      "sourceEntityId": "SOC-096",
+      "sourceLevel": "GROUP",
+      "targetEntityId": "PSY-022",
+      "targetLevel": "PERSON",
+      "mappingId": "XLEM-PROTOTYPE-GROUP-AMBIENT-PERSON-001",
+      "mappingVersion": "1.0.0-PROTOTYPE",
+      "claimSpecificQualifiers": [
+        "ROUTING_REPRESENTABILITY_ONLY",
+        "NO_CAUSAL_OR_EXECUTION_AUTHORITY"
+      ],
+      "intermediateEntityIds": [],
+      "happeningTypeIds": [],
+      "networkStateReferences": [],
+      "implementationRequirement": {
+        "required": false,
+        "definition": "Realized for bounded target when required."
+      },
+      "membershipRule": "Membership alone insufficient.",
+      "eligibilityRule": "Eligibility alone insufficient.",
+      "assignmentRule": "Assignment alone insufficient unless receipt/contact established.",
+      "actualExposureRule": {
+        "required": true,
+        "definition": "Exact encounter, receipt, or contextual inhabitation."
+      },
+      "perceptionRequired": true,
+      "perceptionEntityId": "PSY-022",
+      "exposureWindow": "RELATIONSHIP_EVIDENCE_BOUNDED_WINDOW",
+      "coverageRule": "BOUNDED_MEMBERSHIP_AND_CONTEXT_WINDOW_REQUIRED",
+      "temporalAlignment": [
+        "SOURCE_STATE",
+        "ACTUAL_EXPOSURE",
+        "PERCEIVED_EXPOSURE",
+        "TARGET_RESPONSE"
+      ],
+      "evidenceReferences": [
+        "SRC-500",
+        "SRC-501"
+      ],
+      "scope": "TEST_ONLY_RELATIONSHIP_ATTACHMENT",
+      "provenance": {
+        "decisionId": "GOV-CROSS-LEVEL-EXPOSURE-001-2026-09-26"
+      },
+      "prototypeStatus": "PROTOTYPE_ONLY_NON_PRODUCTION",
+      "artificialPlumbingEntityRequired": false
+    },
+    {
+      "schemaVersion": "0.2.0-PROTOTYPE",
+      "bindingId": "XLEB-PROTOTYPE-AMBIENT-REUSE-001",
+      "bindingVersion": "1.0.0-PROTOTYPE",
+      "relationshipId": "SYN-REL-AMBIENT-REUSE-001",
+      "relationshipHash": "a1ed3c69e63d77cbbb2f324132c73ab596a607bc16c1d317554648053ffc1cbf",
+      "sourceEntityId": "SYN-GROUP-001",
+      "sourceLevel": "GROUP",
+      "targetEntityId": "SYN-PERSON-001",
+      "targetLevel": "PERSON",
+      "mappingId": "XLEM-PROTOTYPE-GROUP-AMBIENT-PERSON-001",
+      "mappingVersion": "1.0.0-PROTOTYPE",
+      "claimSpecificQualifiers": [
+        "ROUTING_REPRESENTABILITY_ONLY",
+        "NO_CAUSAL_OR_EXECUTION_AUTHORITY"
+      ],
+      "intermediateEntityIds": [],
+      "happeningTypeIds": [],
+      "networkStateReferences": [],
+      "implementationRequirement": {
+        "required": false,
+        "definition": "Realized for bounded target when required."
+      },
+      "membershipRule": "Membership alone insufficient.",
+      "eligibilityRule": "Eligibility alone insufficient.",
+      "assignmentRule": "Assignment alone insufficient unless receipt/contact established.",
+      "actualExposureRule": {
+        "required": true,
+        "definition": "Exact encounter, receipt, or contextual inhabitation."
+      },
+      "perceptionRequired": true,
+      "perceptionEntityId": "SYN-PERCEIVED-CONTEXT",
+      "exposureWindow": "RELATIONSHIP_EVIDENCE_BOUNDED_WINDOW",
+      "coverageRule": "BOUNDED_MEMBERSHIP_AND_CONTEXT_WINDOW_REQUIRED",
+      "temporalAlignment": [
+        "SOURCE_STATE",
+        "ACTUAL_EXPOSURE",
+        "PERCEIVED_EXPOSURE",
+        "TARGET_RESPONSE"
+      ],
+      "evidenceReferences": [],
+      "scope": "TEST_ONLY_RELATIONSHIP_ATTACHMENT",
+      "provenance": {
+        "decisionId": "GOV-CROSS-LEVEL-EXPOSURE-001-2026-09-26"
+      },
+      "prototypeStatus": "PROTOTYPE_ONLY_NON_PRODUCTION",
+      "artificialPlumbingEntityRequired": false
+    },
+    {
+      "schemaVersion": "0.2.0-PROTOTYPE",
+      "bindingId": "XLEB-PROTOTYPE-DISCRETE-ASSIGNMENT-001",
+      "bindingVersion": "1.0.0-PROTOTYPE",
+      "relationshipId": "SYN-REL-DISCRETE-ASSIGNMENT-001",
+      "relationshipHash": "cba07808509f33c9dfa85f60166006bd8463560085bbbc6d8bf38acb56d6d570",
+      "sourceEntityId": "SYN-INSTITUTION-001",
+      "sourceLevel": "INSTITUTION",
+      "targetEntityId": "SYN-GROUP-001",
+      "targetLevel": "GROUP",
+      "mappingId": "XLEM-PROTOTYPE-DISCRETE-ASSIGNMENT-001",
+      "mappingVersion": "1.0.0-PROTOTYPE",
+      "claimSpecificQualifiers": [
+        "ROUTING_REPRESENTABILITY_ONLY",
+        "NO_CAUSAL_OR_EXECUTION_AUTHORITY"
+      ],
+      "intermediateEntityIds": [],
+      "happeningTypeIds": [
+        "HT-V1-SOC-F07-002"
+      ],
+      "networkStateReferences": [],
+      "implementationRequirement": {
+        "required": true,
+        "definition": "Realized for bounded target when required."
+      },
+      "membershipRule": "Membership alone insufficient.",
+      "eligibilityRule": "Eligibility alone insufficient.",
+      "assignmentRule": "Assignment alone insufficient unless receipt/contact established.",
+      "actualExposureRule": {
+        "required": true,
+        "definition": "Exact encounter, receipt, or contextual inhabitation."
+      },
+      "perceptionRequired": false,
+      "perceptionEntityId": null,
+      "exposureWindow": "RELATIONSHIP_EVIDENCE_BOUNDED_WINDOW",
+      "coverageRule": "EXACT_ASSIGNED_GROUP_REQUIRED",
+      "temporalAlignment": [
+        "SOURCE_STATE",
+        "IMPLEMENTATION_OR_TRANSMISSION",
+        "ACTUAL_EXPOSURE",
+        "TARGET_RESPONSE"
+      ],
+      "evidenceReferences": [],
+      "scope": "TEST_ONLY_RELATIONSHIP_ATTACHMENT",
+      "provenance": {
+        "decisionId": "GOV-CROSS-LEVEL-EXPOSURE-001-2026-09-26"
+      },
+      "prototypeStatus": "PROTOTYPE_ONLY_NON_PRODUCTION",
+      "artificialPlumbingEntityRequired": false
+    }
+  ],
+  "eligibilityReceipts": [
+    {
+      "relationshipId": "REL-INS-040",
+      "relationshipHash": "72e70e9653845179fe55d160b827c4dc0dbd7f324572a50c691ec0259947d21f",
+      "mappingId": "XLEM-PROTOTYPE-INSTITUTION-PROCEDURE-PERCEPTION-001",
+      "mappingVersion": "1.0.0-PROTOTYPE",
+      "bindingId": "XLEB-PROTOTYPE-REL-INS-040-001",
+      "bindingVersion": "1.0.0-PROTOTYPE",
+      "sourceEntityId": "INS-051",
+      "targetEntityId": "PSY-022",
+      "routeType": "IMPLEMENTATION",
+      "evaluationResult": "CROSS_LEVEL_READY_FOR_REVIEW",
+      "reason": "Routing semantics are representable; science, execution, and lifecycle remain separate",
+      "fingerprint": "39820f8456ab12f20643ba68ffd88b88ee18b4d835611e07b7dcf7968daea95c",
+      "mappingCausalEvidence": false,
+      "mappingExecutionAuthority": false,
+      "relationshipDispositionChanged": false,
+      "graphInclusionChanged": false,
+      "simulationBehaviorChanged": false,
+      "lifecycleChanged": false
+    },
+    {
+      "relationshipId": "REL-INS-046",
+      "relationshipHash": "e3c0de809169608f477269b7a907042fcb76ad0ccd3d8e0cedc6e4eb9febffc8",
+      "mappingId": "XLEM-PROTOTYPE-INSTITUTION-RESOURCE-GROUP-001",
+      "mappingVersion": "1.0.0-PROTOTYPE",
+      "bindingId": "XLEB-PROTOTYPE-REL-INS-046-001",
+      "bindingVersion": "1.0.0-PROTOTYPE",
+      "sourceEntityId": "INS-062",
+      "targetEntityId": "SOC-096",
+      "routeType": "RESOURCE_ACCESS",
+      "evaluationResult": "CROSS_LEVEL_READY_FOR_REVIEW",
+      "reason": "Routing semantics are representable; science, execution, and lifecycle remain separate",
+      "fingerprint": "02d2650620929e909a59debf5014059be9610e93baca2e55192ff4ebb67482d0",
+      "mappingCausalEvidence": false,
+      "mappingExecutionAuthority": false,
+      "relationshipDispositionChanged": false,
+      "graphInclusionChanged": false,
+      "simulationBehaviorChanged": false,
+      "lifecycleChanged": false
+    },
+    {
+      "relationshipId": "REL-SOC-067",
+      "relationshipHash": "6173daeed1c27e8977002e9bbd2b5d1a718d5357c3e37f239d477e57ca5fe677",
+      "mappingId": "XLEM-PROTOTYPE-GROUP-AMBIENT-PERSON-001",
+      "mappingVersion": "1.0.0-PROTOTYPE",
+      "bindingId": "XLEB-PROTOTYPE-REL-SOC-067-001",
+      "bindingVersion": "1.0.0-PROTOTYPE",
+      "sourceEntityId": "SOC-096",
+      "targetEntityId": "PSY-022",
+      "routeType": "AMBIENT_CONTEXT",
+      "evaluationResult": "CROSS_LEVEL_READY_FOR_REVIEW",
+      "reason": "Routing semantics are representable; science, execution, and lifecycle remain separate",
+      "fingerprint": "e838c0578dca5d21bdd98361be16ac06b4be4453cc7be83b16e8a6575145c9fc",
+      "mappingCausalEvidence": false,
+      "mappingExecutionAuthority": false,
+      "relationshipDispositionChanged": false,
+      "graphInclusionChanged": false,
+      "simulationBehaviorChanged": false,
+      "lifecycleChanged": false
+    }
+  ]
+}

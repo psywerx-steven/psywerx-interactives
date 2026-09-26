@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "prototypeOnly": true,
+  "productionIntegrationAuthorized": false,
+  "$id": "prototype://cross-level-exposure-mapping-v1",
+  "title": "CrossLevelExposureMapping prototype",
+  "type": "object",
+  "required": [
+    "mappingId",
+    "mappingVersion",
+    "objectKind",
+    "sourceLevel",
+    "targetLevel",
+    "routeType",
+    "causalEvidence",
+    "executionAuthority",
+    "prototypeStatus"
+  ],
+  "properties": {
+    "mappingVersion": {
+      "type": "string",
+      "not": {
+        "enum": [
+          "LATEST",
+          "DEFAULT",
+          "FIRST",
+          "AUTO_SELECT",
+          "BEST_MATCH",
+          "ONLY_MAPPING"
+        ]
+      }
+    },
+    "objectKind": {
+      "const": "SCIENTIFIC_ROUTING_ELIGIBILITY_CONTRACT"
+    },
+    "sourceLevel": {
+      "enum": [
+        "COMMUNITY",
+        "DYAD",
+        "EGO_NETWORK",
+        "GROUP",
+        "INSTITUTION",
+        "JURISDICTION",
+        "MARKET",
+        "NETWORK",
+        "ORGANIZATION",
+        "PERSON",
+        "POPULATION",
+        "STATE_SYSTEM"
+      ]
+    },
+    "targetLevel": {
+      "enum": [
+        "COMMUNITY",
+        "DYAD",
+        "EGO_NETWORK",
+        "GROUP",
+        "INSTITUTION",
+        "JURISDICTION",
+        "MARKET",
+        "NETWORK",
+        "ORGANIZATION",
+        "PERSON",
+        "POPULATION",
+        "STATE_SYSTEM"
+      ]
+    },
+    "routeType": {
+      "enum": [
+        "AMBIENT_CONTEXT",
+        "ASSIGNMENT",
+        "CONTACT",
+        "ELIGIBILITY",
+        "ENFORCEMENT",
+        "IMPLEMENTATION",
+        "INCENTIVE_EXPOSURE",
+        "INFORMATION_EXPOSURE",
+        "MEMBERSHIP",
+        "MONITORING",
+        "NETWORK_POSITION",
+        "OBSERVATION",
+        "RESOURCE_ACCESS",
+        "SANCTION_EXPOSURE",
+        "SERVICE_DELIVERY",
+        "SOCIAL_INTERACTION"
+      ]
+    },
+    "causalEvidence": {
+      "const": false
+    },
+    "executionAuthority": {
+      "const": false
+    },
+    "prototypeStatus": {
+      "const": "PROTOTYPE_ONLY_NON_PRODUCTION"
+    }
+  },
+  "additionalProperties": true
+}

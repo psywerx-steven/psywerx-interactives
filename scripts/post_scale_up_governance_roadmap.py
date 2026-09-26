@@ -516,6 +516,7 @@ def work_packages(roots):
     implementation = rds_implementation_state()
     cross_level_test = ROOT / "data/governance/post-scale-up/cross-level/cross-level-test-cases.json"
     cross_level_decision = cross_level_direction_decision()
+    cross_level_stage_e = ROOT / "data/governance/post-scale-up/cross-level/cross-level-migration-dry-run.json"
     packages = []
     for definition in ROOT_DEFS:
         key, identifier = definition["key"], ROOT_IDS[definition["key"]]
@@ -538,14 +539,14 @@ def work_packages(roots):
             "stages": {"A_problemNormalization": "COMPLETE", "B_designAlternatives": "COMPLETE",
                        "C_skepticalArchitectureReview": "COMPLETE" if key in {"RDS_DEF", "CROSS_LEVEL", "NETWORK", "CONTRIBUTION", "RDS_CAUSAL", "ACTIVATION"} else "DEFERRED_UNTIL_SELECTED",
                        "D_humanGovernanceDecision": "COMPLETE_BOUNDED_DIRECTION_APPROVED" if ((key == "RDS_DEF" and rds_decision) or (key == "CROSS_LEVEL" and cross_level_decision)) else "NOT_STARTED",
-                       "E_implementation": (implementation["phase"] if key == "RDS_DEF" and implementation else ("COMPLETE_NON_PRODUCTION_REFERENCE_PROTOTYPE" if key == "RDS_DEF" and prototype_complete else "NOT_STARTED")),
-                       "F_migrationRevalidation": ("RDS_0006_SHADOW_EQUIVALENCE_COMPLETE_OTHER_40_UNCHANGED" if key == "RDS_DEF" and implementation and implementation["phase"].startswith("PHASE_1") else ("DRY_RUN_ONLY_COMPLETE_PHASE_1_NOT_STARTED" if key == "RDS_DEF" and implementation else ("DRY_RUN_ONLY_COMPLETE_PRODUCTION_MIGRATION_NOT_AUTHORIZED" if key == "RDS_DEF" and prototype_complete else "NOT_STARTED"))),
+                       "E_implementation": (implementation["phase"] if key == "RDS_DEF" and implementation else ("COMPLETE_NON_PRODUCTION_REFERENCE_PROTOTYPE" if ((key == "RDS_DEF" and prototype_complete) or (key == "CROSS_LEVEL" and cross_level_stage_e.exists())) else "NOT_STARTED")),
+                       "F_migrationRevalidation": ("RDS_0006_SHADOW_EQUIVALENCE_COMPLETE_OTHER_40_UNCHANGED" if key == "RDS_DEF" and implementation and implementation["phase"].startswith("PHASE_1") else ("DRY_RUN_ONLY_COMPLETE_PHASE_1_NOT_STARTED" if key == "RDS_DEF" and implementation else ("DRY_RUN_ONLY_COMPLETE_PRODUCTION_MIGRATION_NOT_AUTHORIZED" if ((key == "RDS_DEF" and prototype_complete) or (key == "CROSS_LEVEL" and cross_level_stage_e.exists())) else "NOT_STARTED"))),
                        "G_scientificReadjudication": "NOT_STARTED"},
             "governanceDecisionId": rds_decision["decisionId"] if key == "RDS_DEF" and rds_decision else (cross_level_decision["decisionId"] if key == "CROSS_LEVEL" and cross_level_decision else None),
             "prototypeImplementationAuthorization": "AUTHORIZED_NON_PRODUCTION_ONLY" if ((key == "RDS_DEF" and rds_decision) or (key == "CROSS_LEVEL" and cross_level_decision)) else "NOT_AUTHORIZED",
             "productionImplementationStatus": implementation["phase"] if key == "RDS_DEF" and implementation else ("HUMAN_GOVERNANCE_REQUIRED_NOT_STARTED" if key == "RDS_DEF" and prototype_complete else ("NOT_AUTHORIZED_NOT_STARTED" if ((key == "RDS_DEF" and rds_decision) or (key == "CROSS_LEVEL" and cross_level_decision)) else "NOT_STARTED")),
-            "rootIssueResolutionStatus": ("BOUNDED_ARCHITECTURE_IMPLEMENTED_OTHER_RDS_PENDING_SCIENCE" if key == "RDS_DEF" and implementation and implementation["phase"].startswith("PHASE_1") else ("NOT_RESOLVED_PHASE_0_ONLY" if key == "RDS_DEF" and implementation else ("NOT_RESOLVED_PROTOTYPE_ONLY" if key == "RDS_DEF" and prototype_complete else "NOT_RESOLVED"))),
-            "nextDecisionPacketId": None if key == "RDS_DEF" and implementation else ("DP-PSG-001-IMPLEMENTATION" if key == "RDS_DEF" and prototype_complete else None),
+            "rootIssueResolutionStatus": ("BOUNDED_ARCHITECTURE_IMPLEMENTED_OTHER_RDS_PENDING_SCIENCE" if key == "RDS_DEF" and implementation and implementation["phase"].startswith("PHASE_1") else ("NOT_RESOLVED_PHASE_0_ONLY" if key == "RDS_DEF" and implementation else ("NOT_RESOLVED_PROTOTYPE_ONLY" if ((key == "RDS_DEF" and prototype_complete) or (key == "CROSS_LEVEL" and cross_level_stage_e.exists())) else "NOT_RESOLVED"))),
+            "nextDecisionPacketId": None if key == "RDS_DEF" and implementation else ("DP-PSG-001-IMPLEMENTATION" if key == "RDS_DEF" and prototype_complete else ("DP-PSG-002-IMPLEMENTATION" if key == "CROSS_LEVEL" and cross_level_stage_e.exists() else None)),
             "productionImplementationDecisionId": implementation["decision"]["decisionId"] if key == "RDS_DEF" and implementation else None,
             "recommendedSequenceBand": definition["sequenceBand"],
         }
@@ -573,6 +574,7 @@ def decision_packets(roots):
     rds_decision = rds_direction_decision()
     cross_level_test = ROOT / "data/governance/post-scale-up/cross-level/cross-level-test-cases.json"
     cross_level_decision = cross_level_direction_decision()
+    cross_level_stage_e = ROOT / "data/governance/post-scale-up/cross-level/cross-level-migration-dry-run.json"
     for index, key in enumerate(keys, 1):
         definition, root = next(row for row in ROOT_DEFS if row["key"] == key), by_id[ROOT_IDS[key]]
         packet = {
@@ -588,7 +590,7 @@ def decision_packets(roots):
             "whatEachOptionUnblocks": [{"option": option.split(":", 1)[0], "unblocks": "Later design, migration and scientific re-adjudication for the packet's dependent records."} for option in definition["options"]],
             "risks": ["scientific overstatement", "double counting", "consumer misinterpretation", "irreversible migration without rollback"],
             "skepticalArchitectureReview": skeptical[key],
-            "recommendedNextResearchOrTest": ("Build a non-production schema/validator prototype and migration dry run; do not alter production records." if key == "RDS_DEF" and rds_decision else ("Build the authorized non-production mapping/validator prototype and read-only migration rehearsal; do not integrate production consumers." if key == "CROSS_LEVEL" and cross_level_decision else ("Stage C decision test complete; human architecture governance is the next bounded step." if key == "CROSS_LEVEL" and cross_level_test.exists() else "Create executable examples and counterexamples against current validators before the human option vote; do not alter production records."))),
+            "recommendedNextResearchOrTest": ("Build a non-production schema/validator prototype and migration dry run; do not alter production records." if key == "RDS_DEF" and rds_decision else ("Govern DP-PSG-002-IMPLEMENTATION before any production schema, registry, mapping, binding, validator or migration work." if key == "CROSS_LEVEL" and cross_level_stage_e.exists() else ("Build the authorized non-production mapping/validator prototype and read-only migration rehearsal; do not integrate production consumers." if key == "CROSS_LEVEL" and cross_level_decision else ("Stage C decision test complete; human architecture governance is the next bounded step." if key == "CROSS_LEVEL" and cross_level_test.exists() else "Create executable examples and counterexamples against current validators before the human option vote; do not alter production records.")))),
             "humanDecisionStatus": "HUMAN_APPROVED_BOUNDED_DIRECTION" if ((key == "RDS_DEF" and rds_decision) or (key == "CROSS_LEVEL" and cross_level_decision)) else "REQUIRED_NOT_TAKEN",
             "humanDecisionId": rds_decision["decisionId"] if key == "RDS_DEF" and rds_decision else (cross_level_decision["decisionId"] if key == "CROSS_LEVEL" and cross_level_decision else None),
             "approvedOption": "BOUNDED_OPTION_B_PLUS_C" if key == "RDS_DEF" and rds_decision else ("BOUNDED_A_PLUS_B_PLUS_C" if key == "CROSS_LEVEL" and cross_level_decision else None),
@@ -626,6 +628,8 @@ def render_roadmap(dep_map, roots, packages):
     cross_level_decision = cross_level_direction_decision()
     if cross_level_decision:
         status_text += " DP-PSG-002 Stage D records the bounded human-approved A+B+C direction and authorizes only non-production prototyping; production integration and every Relationship re-adjudication remain unauthorized."
+    if (ROOT / "data/governance/post-scale-up/cross-level/cross-level-migration-dry-run.json").exists():
+        status_text += " WP-PSG-002 Stage E is complete as a non-production reference prototype and Stage F is complete only as a 38-Relationship dry run; DP-PSG-002-IMPLEMENTATION human governance is required before production work."
     lines = ["# Post-Scale-Up governance roadmap", "", f"This roadmap converts the 44-row historical backlog into decision-ready work packages. Stages A and B are complete here; skeptical architecture review is complete for the six highest-consequence packets. {status_text}", "",
              "| Order | Work package | Root issue | Band | Dependencies | Original rows |", "|---:|---|---|---|---|---:|"]
     for index, package in enumerate(packages["workPackages"], 1):
