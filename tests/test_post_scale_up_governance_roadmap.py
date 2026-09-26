@@ -120,8 +120,12 @@ class PostScaleUpGovernanceRoadmapTests(unittest.TestCase):
         self.assertEqual(by_wp["WP-PSG-001"]["rootIssueResolutionStatus"], "BOUNDED_ARCHITECTURE_IMPLEMENTED_OTHER_RDS_PENDING_SCIENCE")
         self.assertIsNone(by_wp["WP-PSG-001"]["nextDecisionPacketId"])
         self.assertEqual(by_wp["WP-PSG-001"]["productionImplementationDecisionId"], "GOV-RDS-IMPLEMENTATION-001-2026-09-25")
+        self.assertEqual(by_wp["WP-PSG-002"]["stages"]["D_humanGovernanceDecision"], "COMPLETE_BOUNDED_DIRECTION_APPROVED")
+        self.assertEqual(by_wp["WP-PSG-002"]["governanceDecisionId"], "GOV-CROSS-LEVEL-EXPOSURE-001-2026-09-26")
+        self.assertEqual(by_wp["WP-PSG-002"]["prototypeImplementationAuthorization"], "AUTHORIZED_NON_PRODUCTION_ONLY")
+        self.assertEqual(by_wp["WP-PSG-002"]["productionImplementationStatus"], "NOT_AUTHORIZED_NOT_STARTED")
         for package in self.packages["workPackages"]:
-            if package["workPackageId"] != "WP-PSG-001":
+            if package["workPackageId"] not in {"WP-PSG-001", "WP-PSG-002"}:
                 self.assertEqual(package["stages"]["D_humanGovernanceDecision"], "NOT_STARTED")
             if package["workPackageId"] != "WP-PSG-001":
                 self.assertEqual(package["stages"]["E_implementation"], "NOT_STARTED")
@@ -130,7 +134,10 @@ class PostScaleUpGovernanceRoadmapTests(unittest.TestCase):
         by_packet = {row["decisionPacketId"]: row for row in self.packets["decisionPackets"]}
         self.assertEqual(by_packet["DP-PSG-001"]["humanDecisionStatus"], "HUMAN_APPROVED_BOUNDED_DIRECTION")
         self.assertEqual(by_packet["DP-PSG-001"]["approvedOption"], "BOUNDED_OPTION_B_PLUS_C")
-        self.assertEqual({row["humanDecisionStatus"] for key, row in by_packet.items() if key != "DP-PSG-001"}, {"REQUIRED_NOT_TAKEN"})
+        self.assertEqual(by_packet["DP-PSG-002"]["humanDecisionStatus"], "HUMAN_APPROVED_BOUNDED_DIRECTION")
+        self.assertEqual(by_packet["DP-PSG-002"]["humanDecisionId"], "GOV-CROSS-LEVEL-EXPOSURE-001-2026-09-26")
+        self.assertEqual(by_packet["DP-PSG-002"]["approvedOption"], "BOUNDED_A_PLUS_B_PLUS_C")
+        self.assertEqual({row["humanDecisionStatus"] for key, row in by_packet.items() if key not in {"DP-PSG-001", "DP-PSG-002"}}, {"REQUIRED_NOT_TAKEN"})
 
     def test_protected_science_ontology_lifecycle_sources_and_network_state(self):
         protected = read(DATA / "protected-baseline.json")

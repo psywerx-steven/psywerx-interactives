@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "1.0.0",
+  "decisionId": "GOV-CROSS-LEVEL-EXPOSURE-001-2026-09-26",
+  "decisionDate": "2026-09-26",
+  "decisionPacketId": "DP-PSG-002",
+  "rootIssueId": "ROOT-CROSS-LEVEL-EXPOSURE-001",
+  "workPackageId": "WP-PSG-002",
+  "decisionTestArtifact": "docs/governance/post-scale-up/cross-level/CROSS_LEVEL_ARCHITECTURE_DECISION_PACKET.md",
+  "decisionAuthority": "HUMAN_GOVERNOR",
+  "decisionOutcome": "APPROVED_BOUNDED_A_PLUS_B_PLUS_C_DIRECTION",
+  "approvedDirection": {
+    "mappingObject": "IMMUTABLE_VERSIONED_NONCAUSAL_SCIENTIFIC_ROUTING_ELIGIBILITY_CONTRACT",
+    "relationshipAttachment": "EXACT_MAPPING_ID_AND_VERSION_WITH_CLAIM_SPECIFIC_QUALIFIERS",
+    "bridgeReferences": "EXISTING_DRIVER_OR_HAPPENINGTYPE_ONLY_WHEN_SCIENTIFICALLY_SUBSTANTIVE",
+    "requiredDistinctions": [
+      "source state",
+      "implementation or transmission",
+      "eligibility or membership",
+      "actual exposure",
+      "optional perceived exposure",
+      "temporal ordering",
+      "target response"
+    ],
+    "mappingConveys": {
+      "causalEvidence": false,
+      "lifecycleStatus": false,
+      "weight": false,
+      "propagation": false,
+      "executionAuthority": false
+    }
+  },
+  "authorizedActivities": [
+    "architecture direction",
+    "non-production schema prototyping",
+    "non-production validator prototyping",
+    "test-only mapping and eligibility experiments",
+    "read-only migration and consumer-impact planning"
+  ],
+  "notAuthorized": [
+    "Relationship reclassification or mutation",
+    "cross-level execution or activation",
+    "new Driver creation",
+    "new HappeningType creation",
+    "Network State change",
+    "RDS causal-source eligibility",
+    "production migration",
+    "ontology mutation",
+    "source registration",
+    "lifecycle change",
+    "activation"
+  ],
+  "productionState": {
+    "scienceChanged": false,
+    "ontologyChanged": false,
+    "architectureImplemented": false,
+    "relationshipsChanged": 0,
+    "driversCreated": 0,
+    "happeningTypesCreated": 0,
+    "networkStateChanged": false,
+    "rdsCausalSourcesAuthorized": 0,
+    "lifecycleChanges": 0,
+    "activations": 0
+  },
+  "nextGovernedStage": "NON_PRODUCTION_IMPLEMENTATION_PROTOTYPE",
+  "productionImplementationStatus": "NOT_AUTHORIZED_NOT_STARTED"
+}

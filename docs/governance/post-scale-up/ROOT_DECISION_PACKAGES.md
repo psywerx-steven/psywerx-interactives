@@ -36,9 +36,9 @@ DP-PSG-001 records the bounded human-approved B+C architecture direction. The re
 
 - Root issue: `ROOT-CROSS-LEVEL-EXPOSURE-001`
 - Work package: `WP-PSG-002`
-- Human decision status: `REQUIRED_NOT_TAKEN`
-- Human decision ID: none
-- Approved option: none
+- Human decision status: `HUMAN_APPROVED_BOUNDED_DIRECTION`
+- Human decision ID: `GOV-CROSS-LEVEL-EXPOSURE-001-2026-09-26`
+- Approved option: `BOUNDED_A_PLUS_B_PLUS_C`
 - Current problem: Group, institution and network states do not automatically become exposures experienced by individual targets.
 - Why it matters: It directly contains 2 active-execution blockers and constrains 23 items in downstream root programs.
 - Current safe state: Preserve every recorded scientific, ontology, architecture and lifecycle state until a later human decision.
@@ -60,7 +60,7 @@ DP-PSG-001 records the bounded human-approved B+C architecture direction. The re
 - Architecture implications: Any selected representation requires a separately governed schema/validator design and migration plan.
 - Simulation implications: No option may imply numeric weight, propagation, recommendation or execution eligibility by itself.
 - Migration implications: Existing governed records remain valid; later implementation must be additive or explicitly migrated with rollback and protected-science comparison.
-- Recommended next test: Stage C decision test complete; human architecture governance is the next bounded step.
+- Recommended next test: Build the authorized non-production mapping/validator prototype and read-only migration rehearsal; do not integrate production consumers.
 
 ## DP-PSG-003 — Network State, ScenarioStateDelta and metric recalculation boundary
 
