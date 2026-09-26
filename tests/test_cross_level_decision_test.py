@@ -109,19 +109,37 @@ class CrossLevelDecisionTest(unittest.TestCase):
         self.assertEqual(finding["legacyRelationshipLevelsPresent"] + finding["legacyRelationshipLevelsMissing"], 38)
         self.assertFalse(finding["entityMetadataSupportsSafeInference"])
 
-    def test_recommendation_is_advisory_and_human_governance_pending(self):
+    def test_bounded_direction_is_governed_without_production_authority(self):
         options = {row["option"]: row["result"] for row in self.prototype["optionResults"]}
         self.assertEqual(options["A+B+C"], "RECOMMENDED_BOUNDED_HYBRID")
         self.assertEqual(options["B"], "REJECT_AS_UNIVERSAL_REQUIREMENT")
+        decision = read(DATA / "cross-level-architecture-decision-001.json")
+        self.assertEqual(decision["decisionId"], "GOV-CROSS-LEVEL-EXPOSURE-001-2026-09-26")
+        self.assertEqual(decision["decisionOutcome"], "APPROVED_BOUNDED_A_PLUS_B_PLUS_C_DIRECTION")
+        self.assertEqual(decision["authorizedActivities"], [
+            "architecture direction",
+            "non-production schema prototyping",
+            "non-production validator prototyping",
+            "test-only mapping and eligibility experiments",
+            "read-only migration and consumer-impact planning",
+        ])
+        self.assertFalse(any(decision["approvedDirection"]["mappingConveys"].values()))
+        self.assertEqual(decision["productionImplementationStatus"], "NOT_AUTHORIZED_NOT_STARTED")
+        self.assertFalse(decision["productionState"]["architectureImplemented"])
+        self.assertEqual(decision["productionState"]["relationshipsChanged"], 0)
         packets = read(ROOT / "data/governance/post-scale-up/decision-packets.json")
         packet = next(row for row in packets["decisionPackets"] if row["decisionPacketId"] == "DP-PSG-002")
-        self.assertEqual(packet["humanDecisionStatus"], "REQUIRED_NOT_TAKEN")
+        self.assertEqual(packet["humanDecisionStatus"], "HUMAN_APPROVED_BOUNDED_DIRECTION")
         self.assertEqual(packet["stageCDecisionTestStatus"], "COMPLETE_READ_ONLY_RECOMMENDATION")
-        self.assertIsNone(packet["approvedOption"])
+        self.assertEqual(packet["humanDecisionId"], "GOV-CROSS-LEVEL-EXPOSURE-001-2026-09-26")
+        self.assertEqual(packet["approvedOption"], "BOUNDED_A_PLUS_B_PLUS_C")
+        self.assertIn("production migration", packet["authorizationBoundary"])
         packages = read(ROOT / "data/governance/post-scale-up/work-packages.json")
         package = next(row for row in packages["workPackages"] if row["workPackageId"] == "WP-PSG-002")
-        self.assertEqual(package["stages"]["D_humanGovernanceDecision"], "NOT_STARTED")
-        self.assertEqual(package["productionImplementationStatus"], "NOT_STARTED")
+        self.assertEqual(package["stages"]["D_humanGovernanceDecision"], "COMPLETE_BOUNDED_DIRECTION_APPROVED")
+        self.assertEqual(package["prototypeImplementationAuthorization"], "AUTHORIZED_NON_PRODUCTION_ONLY")
+        self.assertEqual(package["productionImplementationStatus"], "NOT_AUTHORIZED_NOT_STARTED")
+        self.assertEqual(package["stages"]["E_implementation"], "NOT_STARTED")
 
     def test_consumers_remain_unintegrated(self):
         self.assertFalse(self.consumers["productionIntegrationAuthorized"])
