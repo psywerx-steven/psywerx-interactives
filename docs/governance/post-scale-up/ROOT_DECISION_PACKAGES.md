@@ -90,7 +90,7 @@ DP-PSG-001 records the bounded human-approved B+C architecture direction. The re
 - Architecture implications: Any selected representation requires a separately governed schema/validator design and migration plan.
 - Simulation implications: No option may imply numeric weight, propagation, recommendation or execution eligibility by itself.
 - Migration implications: Existing governed records remain valid; later implementation must be additive or explicitly migrated with rollback and protected-science comparison.
-- Recommended next test: Create executable examples and counterexamples against current validators before the human option vote; do not alter production records.
+- Recommended next test: Human architecture governance of the bounded A+C recommendation is the next step; do not implement or migrate production Network State.
 
 ## DP-PSG-004 — Contribution identity and double-count control
 

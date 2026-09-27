@@ -1,0 +1,99 @@
+{
+  "productionMutationAuthorized": false,
+  "records": [
+    {
+      "currentGovernanceStatus": "ACTIVE",
+      "currentReviewDisposition": "RESEARCH_NEEDED",
+      "dependency": "Exact network state and exact Active Personal Network Size computation profile/binding; provider eligibility/opportunity remains distinct from received or perceived support.",
+      "downstream": [
+        "WP-PSG-002",
+        "WP-PSG-005"
+      ],
+      "metricRole": "Network-derived RDS is a potential-provider-pool summary, not actual support exposure.",
+      "networkStateRequirements": [
+        "stateId/revision/contentHash",
+        "boundaryId/revision",
+        "window",
+        "active node set",
+        "tie definition",
+        "exact SOC-024 profile/binding"
+      ],
+      "primaryClassification": "BLOCKED_BY_WP_PSG_005",
+      "productionRelationshipChanged": false,
+      "relationFamily": "CAUSAL",
+      "relationshipId": "REL-SOC-017",
+      "sourceEntityId": "SOC-024",
+      "sourceLevel": "SMALL_GROUP",
+      "targetEntityId": "SOC-026",
+      "targetLevel": "SMALL_GROUP"
+    },
+    {
+      "currentGovernanceStatus": "ACTIVE",
+      "currentReviewDisposition": "REVISION_CANDIDATE",
+      "dependency": "Exact network state and clustering computation plus actor-specific reinforcing-neighbor behavior/exposure; clustering alone does not establish reinforcement.",
+      "downstream": [
+        "WP-PSG-002",
+        "WP-PSG-005"
+      ],
+      "metricRole": "Local clustering describes neighbor connectivity; actual reinforcing exposures are separate.",
+      "networkStateRequirements": [
+        "stateId/revision/contentHash",
+        "boundaryId/revision",
+        "window",
+        "ego node",
+        "neighbor tie definition",
+        "exact SOC-053 profile/binding"
+      ],
+      "primaryClassification": "BLOCKED_BY_WP_PSG_005",
+      "productionRelationshipChanged": false,
+      "relationFamily": "CAUSAL",
+      "relationshipId": "REL-SOC-035",
+      "sourceEntityId": "SOC-053",
+      "sourceLevel": "SMALL_GROUP",
+      "targetEntityId": "SOC-061",
+      "targetLevel": "SMALL_GROUP"
+    },
+    {
+      "currentGovernanceStatus": "ACTIVE",
+      "currentReviewDisposition": "RESEARCH_NEEDED",
+      "dependency": "Filtering restrictiveness may alter recommendations or opportunity before any observed/stipulated adjacency change; exact segregation profile and state transition/observation are absent.",
+      "downstream": [
+        "WP-PSG-001",
+        "WP-PSG-002",
+        "WP-PSG-005"
+      ],
+      "metricRole": "A technological affordance does not itself establish a changed network or segregation metric.",
+      "networkStateRequirements": [
+        "stateId/revision/contentHash",
+        "boundaryId/revision",
+        "window",
+        "group labels",
+        "tie/opportunity definition",
+        "exact SOC-057 profile/binding",
+        "transition or observation reference"
+      ],
+      "primaryClassification": "BLOCKED_BY_SCIENCE_NOT_ARCHITECTURE",
+      "productionRelationshipChanged": false,
+      "relationFamily": "CAUSAL",
+      "relationshipId": "REL-TEC-050",
+      "sourceEntityId": "TEC-029",
+      "sourceLevel": "TECHNOLOGICAL_SYSTEM",
+      "targetEntityId": "SOC-057",
+      "targetLevel": "SMALL_GROUP"
+    }
+  ],
+  "schemaVersion": "1.0.0",
+  "wpPsg004": [
+    "state-delta route",
+    "metric-recalculation route",
+    "causal Relationship route",
+    "EffectAssertion route"
+  ],
+  "wpPsg005": [
+    "exact RDS/profile",
+    "state/boundary/window",
+    "constituent mapping",
+    "cross-level route",
+    "causalSourceEligible=false"
+  ]
+}

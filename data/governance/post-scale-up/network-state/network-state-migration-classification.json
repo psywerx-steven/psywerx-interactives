@@ -1,0 +1,48 @@
+{
+  "counts": {
+    "ALREADY_REPRESENTABLE_BY_CURRENT_NETWORK_STATE": 2,
+    "BLOCKED_BY_SCIENCE_NOT_ARCHITECTURE": 1,
+    "BLOCKED_BY_WP_PSG_004": 0,
+    "BLOCKED_BY_WP_PSG_005": 2,
+    "NEEDS_NEW_ARCHITECTURE_OBJECT": 0,
+    "NEEDS_NEW_TYPED_OPERATION": 0,
+    "REPRESENTABLE_WITH_DOCUMENTED_CONTRACT_ONLY": 1,
+    "REPRESENTABLE_WITH_MINOR_ADDITIVE_METADATA": 0
+  },
+  "productionMutationAuthorized": false,
+  "recordCount": 6,
+  "records": [
+    {
+      "classification": "ALREADY_REPRESENTABLE_BY_CURRENT_NETWORK_STATE",
+      "id": "HYP-SOC-F07-H12",
+      "reason": "Explicit REMOVE_TIE plus ADD_TIE rewiring yields a new immutable state and deterministic degree recalculation."
+    },
+    {
+      "classification": "ALREADY_REPRESENTABLE_BY_CURRENT_NETWORK_STATE",
+      "id": "HYP-SOC-F07-H20",
+      "reason": "DEACTIVATE_NODE retires incident ties and yields a new immutable state from which fragmentation is recalculated."
+    },
+    {
+      "classification": "REPRESENTABLE_WITH_DOCUMENTED_CONTRACT_ONLY",
+      "id": "ASTRA-SOC-LAYER-003",
+      "reason": "ScenarioStateDelta already supplies transition identity, ordered operations, before-state reference, after-state receipt, lineage, provenance and replay."
+    },
+    {
+      "classification": "BLOCKED_BY_WP_PSG_005",
+      "id": "REL-SOC-017",
+      "reason": "Exact network state and exact Active Personal Network Size computation profile/binding; provider eligibility/opportunity remains distinct from received or perceived support."
+    },
+    {
+      "classification": "BLOCKED_BY_WP_PSG_005",
+      "id": "REL-SOC-035",
+      "reason": "Exact network state and clustering computation plus actor-specific reinforcing-neighbor behavior/exposure; clustering alone does not establish reinforcement."
+    },
+    {
+      "classification": "BLOCKED_BY_SCIENCE_NOT_ARCHITECTURE",
+      "id": "REL-TEC-050",
+      "reason": "Filtering restrictiveness may alter recommendations or opportunity before any observed/stipulated adjacency change; exact segregation profile and state transition/observation are absent."
+    }
+  ],
+  "schemaVersion": "1.0.0",
+  "workPackageId": "WP-PSG-003"
+}

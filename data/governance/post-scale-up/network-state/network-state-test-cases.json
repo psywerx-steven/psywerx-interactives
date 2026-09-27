@@ -1,0 +1,508 @@
+{
+  "boundary": {
+    "changeClass": "ANALYTIC_BOUNDARY_ONLY",
+    "deltaId": "SYN-DELTA-WP003-BOUNDARY",
+    "density": 0.5,
+    "tieCorpusUnchanged": true
+  },
+  "branching": {
+    "branchA": {
+      "contentHash": "443afc012bab984ba7f33384f5dd6a6cb7b2fcfadc90b090652ca52071054275",
+      "id": "SYN-STATE-BASE",
+      "revision": 2
+    },
+    "branchB": {
+      "contentHash": "9277bd3bbdc8d34990c1181b610d83da1321411411d3ef7c9eaeefb441fbb8e9",
+      "id": "SYN-STATE-BASE",
+      "revision": 2
+    },
+    "distinct": true,
+    "parent": {
+      "contentHash": "795db8c943fb6df4ba2bbaecca222e27976692f24e9223825cf5263123765c0f",
+      "id": "SYN-STATE-BASE",
+      "revision": 1
+    },
+    "receipts": [
+      {
+        "after": {
+          "contentHash": "443afc012bab984ba7f33384f5dd6a6cb7b2fcfadc90b090652ca52071054275",
+          "id": "SYN-STATE-BASE",
+          "revision": 2
+        },
+        "before": {
+          "contentHash": "795db8c943fb6df4ba2bbaecca222e27976692f24e9223825cf5263123765c0f",
+          "id": "SYN-STATE-BASE",
+          "revision": 1
+        },
+        "causalContribution": false,
+        "changeClass": "STIPULATED_CONFIGURATION",
+        "deltaHash": "31af1a03a49c3ae8d3d87dad53a263bcd981a8444beb710c687744b252c1d488",
+        "deltaId": "SYN-DELTA-WP003-BRANCH-A",
+        "effectiveAt": "2026-01-01T00:00:00Z",
+        "empiricalEvidenceProduced": false,
+        "objectKind": "SCENARIO_OPERATION_RECEIPT",
+        "ontologyRelationshipsEdited": 0,
+        "operationOrder": [
+          "REMOVE_TIE"
+        ],
+        "receiptHash": "ba0689e5e2969c6e63ee4e20feeb43612e0d7ca2c47f9c40c51b95b25d248d90",
+        "removedOpportunityIds": [],
+        "removedTieIds": [
+          "SYN-TIE-AB"
+        ],
+        "scenarioId": "SYN-SCENARIO-001",
+        "schemaVersion": "1.0.0"
+      },
+      {
+        "after": {
+          "contentHash": "9277bd3bbdc8d34990c1181b610d83da1321411411d3ef7c9eaeefb441fbb8e9",
+          "id": "SYN-STATE-BASE",
+          "revision": 2
+        },
+        "before": {
+          "contentHash": "795db8c943fb6df4ba2bbaecca222e27976692f24e9223825cf5263123765c0f",
+          "id": "SYN-STATE-BASE",
+          "revision": 1
+        },
+        "causalContribution": false,
+        "changeClass": "STIPULATED_CONFIGURATION",
+        "deltaHash": "f0dac83874ecff35f0d90ee34f6e4aa206798d2c88874f060b0d7be1aaa707a6",
+        "deltaId": "SYN-DELTA-WP003-BRANCH-B",
+        "effectiveAt": "2026-01-01T00:00:00Z",
+        "empiricalEvidenceProduced": false,
+        "objectKind": "SCENARIO_OPERATION_RECEIPT",
+        "ontologyRelationshipsEdited": 0,
+        "operationOrder": [
+          "REMOVE_TIE"
+        ],
+        "receiptHash": "5049af1f1ecfaf343c84e281fa67f7882fac309f3d45183b0e331100eebec612",
+        "removedOpportunityIds": [],
+        "removedTieIds": [
+          "SYN-TIE-AC"
+        ],
+        "scenarioId": "SYN-SCENARIO-001",
+        "schemaVersion": "1.0.0"
+      }
+    ]
+  },
+  "centralizationPositiveControl": {
+    "before": {
+      "bindingRef": {
+        "contentHash": "609f164d5bcd45cb7372f51374961f365780f2ebce7693e83f7b2db7d6e2dfbf",
+        "id": "DER-V1-SOC-F07-001",
+        "revision": 1
+      },
+      "causalContribution": false,
+      "contributionIdentity": "CONTRIB-SOC-F07-DEGREE-CENTRALIZATION",
+      "limitations": [
+        "Deterministic modeled calculation only; not empirical causal evidence or a real-network truth estimate.",
+        "SYNTHETIC / NON_PRODUCTION / NOT A SCIENTIFIC MODEL"
+      ],
+      "modelEligibility": false,
+      "objectKind": "CALCULATION_RECEIPT",
+      "practitionerActionEligibility": false,
+      "reason": "Exact declared synthetic variant calculated; no scientific/model/practitioner eligibility conferred",
+      "receiptHash": "9d2803feb707385e2be61ead97fee852f153dd438677614d9ebd63e4914bb323",
+      "requestHash": "7ee474889d83e21867872cbc96d138c2b603e8557bab7d17b77e1202d0b24980",
+      "requestId": "SYN-CALC-FREEMAN-DEGREE-CENTRALIZATION",
+      "schemaVersion": "1.0.0",
+      "scientificUseEligible": false,
+      "stateRef": {
+        "contentHash": "795db8c943fb6df4ba2bbaecca222e27976692f24e9223825cf5263123765c0f",
+        "id": "SYN-STATE-BASE",
+        "revision": 1
+      },
+      "status": "CALCULATED_SYNTHETIC",
+      "targetRds": {
+        "definitionHash": "1f4deb8927f023179666dfa4a680589c0bad8e16b78ed7e264583295265ff104",
+        "definitionVersion": "ENTITY_V0_3_GOVERNED_RECORD_HASH",
+        "id": "RDS-0006"
+      },
+      "value": 0.6666666666666666
+    },
+    "bindingId": "DER-V1-SOC-F07-001",
+    "causalSourceAuthorized": false,
+    "effectAssertionCreated": false,
+    "governance": {
+      "activationStatus": "INACTIVE",
+      "authorityBasis": "V1_NATIVE",
+      "authorizedBy": "authorized human governor",
+      "blockStatus": "NONE",
+      "decisionDate": "2026-09-07",
+      "decisionOutcome": "APPROVED",
+      "decisionRationale": "Prior exact human scientific approval; representation/source gate satisfied. No activation.",
+      "decisionRecord": "docs/governance/pilots/SOC-F07/SOC_F07_GOVERNANCE_COMPLETION_002.md",
+      "effectiveVersion": "SOC-F07-COMPLETION-002",
+      "lifecycleStatus": "GOVERNED",
+      "supersedesIds": [],
+      "transitionProvenance": [
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": null
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "DER-V1-SOC-F07-001",
+          "provenance": "AUD-SOC-F07-AE-V1-20260906-001; exact candidate lineage REL-CAND-SOC-F07-001",
+          "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+          "revision": 1,
+          "timestamp": "2026-09-07T02:46:39Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          }
+        },
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "CANDIDATE"
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "DER-V1-SOC-F07-001",
+          "provenance": "AUD-SOC-F07-AE-V1-20260906-001; exact candidate lineage REL-CAND-SOC-F07-001",
+          "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+          "revision": 1,
+          "timestamp": "2026-09-07T02:46:39Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "RESEARCH_NEEDED"
+          }
+        },
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": false,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "RESEARCH_NEEDED"
+          },
+          "governanceDecisionRecord": null,
+          "objectId": "DER-V1-SOC-F07-001",
+          "provenance": "AUD-SOC-F07-AE-V1-20260906-001; exact candidate lineage REL-CAND-SOC-F07-001",
+          "rationale": "Candidate preparation only; uncertainty and target gaps preserved",
+          "revision": 1,
+          "timestamp": "2026-09-07T02:46:39Z",
+          "toState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "REVIEW_READY"
+          }
+        },
+        {
+          "actorClass": "AUTOMATED_PROCESS_OR_AI",
+          "exactDecisionMaterialization": true,
+          "fromState": {
+            "activationStatus": "NOT_ELIGIBLE",
+            "lifecycleStatus": "REVIEW_READY"
+          },
+          "governanceDecisionRecord": "docs/governance/pilots/SOC-F07/SOC_F07_GOVERNANCE_COMPLETION_002.md",
+          "objectId": "DER-V1-SOC-F07-001",
+          "provenance": "REL-CAND-SOC-F07-001; GOV-SOC-F07-001-2026-09-06; GOV-NETWORK-STATE-V1-2026-09-07",
+          "rationale": "Exact conditional human approval materialization, no scientific scope expansion",
+          "revision": 1,
+          "timestamp": "2026-09-07T15:28:00Z",
+          "toState": {
+            "activationStatus": "INACTIVE",
+            "lifecycleStatus": "GOVERNED"
+          }
+        }
+      ]
+    }
+  },
+  "firewalls": {
+    "causalContribution": false,
+    "causalSourceEligible": false,
+    "directRdsEffectAssertionCreated": false,
+    "effectAssertionsCreated": 0,
+    "empiricalEvidenceProduced": false,
+    "ontologyRelationshipsEdited": 0
+  },
+  "membership": {
+    "degreeUnchanged": true,
+    "deltaId": "SYN-DELTA-WP003-MEMBERSHIP",
+    "receipt": {
+      "after": {
+        "contentHash": "508c4cc829d747bd82c28b5fa8d4e237671547e9adb22c33f74d3326057a8506",
+        "id": "SYN-STATE-BASE",
+        "revision": 2
+      },
+      "before": {
+        "contentHash": "795db8c943fb6df4ba2bbaecca222e27976692f24e9223825cf5263123765c0f",
+        "id": "SYN-STATE-BASE",
+        "revision": 1
+      },
+      "causalContribution": false,
+      "changeClass": "STIPULATED_CONFIGURATION",
+      "deltaHash": "391e8cd244f06730a8b717962517942af6f3cff8ea0cc4a954bdb17f557ff4fc",
+      "deltaId": "SYN-DELTA-WP003-MEMBERSHIP",
+      "effectiveAt": "2026-01-01T00:00:00Z",
+      "empiricalEvidenceProduced": false,
+      "objectKind": "SCENARIO_OPERATION_RECEIPT",
+      "ontologyRelationshipsEdited": 0,
+      "operationOrder": [
+        "CHANGE_MEMBERSHIP"
+      ],
+      "receiptHash": "ecd85774d11c6b2b5b9ad88ab4eebd7043dde50cddfc0df67c35a03561f21f4e",
+      "removedOpportunityIds": [],
+      "removedTieIds": [],
+      "scenarioId": "SYN-SCENARIO-001",
+      "schemaVersion": "1.0.0"
+    },
+    "tiesUnchanged": true
+  },
+  "nodeDeactivation": {
+    "afterFragmentation": 0.6666666666666667,
+    "afterState": {
+      "contentHash": "954e9a5315e8d52df78df632c3ea9c24acfe64ec958cae18154660f98b8302f5",
+      "id": "SYN-STATE-BASE",
+      "revision": 2
+    },
+    "beforeFragmentation": 0.0,
+    "deltaId": "SYN-DELTA-WP003-NODE",
+    "h20Advisory": "ARCHITECTURALLY_REPRESENTABLE_RECALCULATION_NOT_EMPIRICAL_CAUSAL_EFFECT",
+    "removedOpportunityIds": [],
+    "removedTieIds": [
+      "SYN-TIE-AC",
+      "SYN-TIE-BC",
+      "SYN-TIE-CD"
+    ]
+  },
+  "notice": "READ-ONLY ARCHITECTURE DECISION TEST — NO PRODUCTION SCIENCE, SCHEMA, LIFECYCLE OR ACTIVATION CHANGE",
+  "observation": {
+    "assumptions": {
+      "absentTieMeaning": "UNKNOWN_UNLESS_EXPLICITLY_STIPULATED",
+      "coverage": "INCOMPLETE",
+      "limitations": [
+        "SYNTHETIC / NON_PRODUCTION / NOT A SCIENTIFIC MODEL",
+        "Incomplete fictional selection retained as a modeled assumption, not observed truth."
+      ],
+      "missingNodes": "Unknown unobserved actors",
+      "missingTies": "Reports may omit different ties",
+      "realNetworkTruthClaim": false
+    },
+    "constructedState": {
+      "contentHash": "1ff968a5c518dd633e4f6ada6f8bf943e4aa67255e4f638fea52fadfbc96ac27",
+      "id": "SYN-STATE-WP003-OBS",
+      "revision": 1
+    },
+    "construction": [
+      {
+        "assumption": "Incomplete fictional selection retained as a modeled assumption, not observed truth.",
+        "observationRef": {
+          "contentHash": "b9285c769b1bb2cc4e882ecd039d6295eba46047e79274dc67b20761f5c4be50",
+          "id": "SYN-OBS-WP003",
+          "revision": 1
+        },
+        "selectedNodeIds": [
+          "SYN-NODE-A",
+          "SYN-NODE-B",
+          "SYN-NODE-C",
+          "SYN-NODE-D",
+          "SYN-NODE-E"
+        ],
+        "selectedTieIds": [
+          "SYN-TIE-AC",
+          "SYN-TIE-BC",
+          "SYN-TIE-CD",
+          "SYN-TIE-DE"
+        ]
+      }
+    ],
+    "observationRef": {
+      "contentHash": "b9285c769b1bb2cc4e882ecd039d6295eba46047e79274dc67b20761f5c4be50",
+      "id": "SYN-OBS-WP003",
+      "revision": 1
+    }
+  },
+  "operationReference": {
+    "automaticExecution": false,
+    "empiricalConsequenceClaim": false,
+    "happeningTypeId": "HT-V1-INF-F03-001",
+    "relation": "REFERENCES_STIPULATED_OPERATION_NOT_EFFECT",
+    "valid": true
+  },
+  "operationsVerified": [
+    "ADD_NODE",
+    "DEACTIVATE_NODE",
+    "ADD_TIE",
+    "REMOVE_TIE",
+    "UPDATE_TIE_WEIGHT",
+    "CHANGE_MEMBERSHIP",
+    "CHANGE_BOUNDARY",
+    "CHANGE_CONTACT_OPPORTUNITY",
+    "CHANGE_ACCESS"
+  ],
+  "opportunityAndAccess": {
+    "accessDeltaId": "SYN-DELTA-WP003-ACCESS",
+    "opportunityDeltaId": "SYN-DELTA-WP003-OPPORTUNITY",
+    "receipts": [
+      {
+        "after": {
+          "contentHash": "b59bacbdd96fee7882f492029f9f0e53d484948801db327539b8aa5b4b93f41b",
+          "id": "SYN-STATE-BASE",
+          "revision": 2
+        },
+        "before": {
+          "contentHash": "795db8c943fb6df4ba2bbaecca222e27976692f24e9223825cf5263123765c0f",
+          "id": "SYN-STATE-BASE",
+          "revision": 1
+        },
+        "causalContribution": false,
+        "changeClass": "STIPULATED_CONFIGURATION",
+        "deltaHash": "1ea0f67d355cc2772fb676bb86ba6b7f79e735a81cbd28d424509552d3b7c932",
+        "deltaId": "SYN-DELTA-WP003-OPPORTUNITY",
+        "effectiveAt": "2026-01-01T00:00:00Z",
+        "empiricalEvidenceProduced": false,
+        "objectKind": "SCENARIO_OPERATION_RECEIPT",
+        "ontologyRelationshipsEdited": 0,
+        "operationOrder": [
+          "CHANGE_CONTACT_OPPORTUNITY"
+        ],
+        "receiptHash": "63f96636706268076d5e5b190f6ccc7ef9e75952e62378ba4febc2fa517a4734",
+        "removedOpportunityIds": [],
+        "removedTieIds": [],
+        "scenarioId": "SYN-SCENARIO-001",
+        "schemaVersion": "1.0.0"
+      },
+      {
+        "after": {
+          "contentHash": "16865dc6815cd12f0b3c16d1835b59559cce2f2385b597528996d3cf9ad0248c",
+          "id": "SYN-STATE-BASE",
+          "revision": 2
+        },
+        "before": {
+          "contentHash": "795db8c943fb6df4ba2bbaecca222e27976692f24e9223825cf5263123765c0f",
+          "id": "SYN-STATE-BASE",
+          "revision": 1
+        },
+        "causalContribution": false,
+        "changeClass": "STIPULATED_CONFIGURATION",
+        "deltaHash": "a2e7568acfc2aab638b951b0fdd3b0954f068a063b442fc127afab97702b65aa",
+        "deltaId": "SYN-DELTA-WP003-ACCESS",
+        "effectiveAt": "2026-01-01T00:00:00Z",
+        "empiricalEvidenceProduced": false,
+        "objectKind": "SCENARIO_OPERATION_RECEIPT",
+        "ontologyRelationshipsEdited": 0,
+        "operationOrder": [
+          "CHANGE_ACCESS"
+        ],
+        "receiptHash": "07c8ae11a2da0c9c9dc5bc054fc80e0f4981c022240a5ecdbe25731cd90543fb",
+        "removedOpportunityIds": [],
+        "removedTieIds": [],
+        "scenarioId": "SYN-SCENARIO-001",
+        "schemaVersion": "1.0.0"
+      }
+    ],
+    "tiesUnchanged": true
+  },
+  "productionStateWritten": false,
+  "recordClass": "SYNTHETIC / NON_PRODUCTION",
+  "rejections": {
+    "crossScenario": "Cross-scenario operation prohibited",
+    "retiredTieReuse": "Tie identity collision/recycling",
+    "staleState": "Stale state revision/hash precondition"
+  },
+  "replay": {
+    "exactReceipt": true,
+    "exactState": true
+  },
+  "rewiring": {
+    "afterDegree": {
+      "SYN-NODE-A": 2,
+      "SYN-NODE-B": 1,
+      "SYN-NODE-C": 3,
+      "SYN-NODE-D": 2
+    },
+    "afterState": {
+      "contentHash": "a2e2a8e89ac52fca18175a769d5789b1e2e58261cd83bad53e30e169c1faf24a",
+      "id": "SYN-STATE-BASE",
+      "revision": 2
+    },
+    "beforeDegree": {
+      "SYN-NODE-A": 2,
+      "SYN-NODE-B": 2,
+      "SYN-NODE-C": 3,
+      "SYN-NODE-D": 1
+    },
+    "beforeState": {
+      "contentHash": "795db8c943fb6df4ba2bbaecca222e27976692f24e9223825cf5263123765c0f",
+      "id": "SYN-STATE-BASE",
+      "revision": 1
+    },
+    "deltaId": "SYN-DELTA-WP003-REWIRE",
+    "h12Advisory": "ARCHITECTURALLY_REPRESENTABLE_RECALCULATION_NOT_EMPIRICAL_CAUSAL_EFFECT",
+    "operationOrder": [
+      "REMOVE_TIE",
+      "ADD_TIE"
+    ],
+    "receipt": {
+      "after": {
+        "contentHash": "a2e2a8e89ac52fca18175a769d5789b1e2e58261cd83bad53e30e169c1faf24a",
+        "id": "SYN-STATE-BASE",
+        "revision": 2
+      },
+      "before": {
+        "contentHash": "795db8c943fb6df4ba2bbaecca222e27976692f24e9223825cf5263123765c0f",
+        "id": "SYN-STATE-BASE",
+        "revision": 1
+      },
+      "causalContribution": false,
+      "changeClass": "STIPULATED_CONFIGURATION",
+      "deltaHash": "72915cff33bf21bef58b816c5aa5d0fc876a4330f0d85be6d134f69a8c81b1fe",
+      "deltaId": "SYN-DELTA-WP003-REWIRE",
+      "effectiveAt": "2026-01-01T00:00:00Z",
+      "empiricalEvidenceProduced": false,
+      "objectKind": "SCENARIO_OPERATION_RECEIPT",
+      "ontologyRelationshipsEdited": 0,
+      "operationOrder": [
+        "REMOVE_TIE",
+        "ADD_TIE"
+      ],
+      "receiptHash": "527ff3aefc91ca2eefe79eb9147e74c105edc812af176a9c19c8163a9d30d2ef",
+      "removedOpportunityIds": [],
+      "removedTieIds": [
+        "SYN-TIE-AB"
+      ],
+      "scenarioId": "SYN-SCENARIO-001",
+      "schemaVersion": "1.0.0"
+    },
+    "stateChanged": true
+  },
+  "schemaVersion": "1.0.0",
+  "weight": {
+    "binaryMetricReason": "Metric requires explicitly binary unweighted ties; unknown/intensity not silently binarized",
+    "binaryMetricStatus": "UNSUPPORTED_OR_INCOMPLETE",
+    "deltaId": "SYN-DELTA-WP003-WEIGHT",
+    "receipt": {
+      "after": {
+        "contentHash": "5cd3656096674c5ce5ca2d390043680acef177a1bd1105f21da6294ea9bd01af",
+        "id": "SYN-STATE-BASE",
+        "revision": 2
+      },
+      "before": {
+        "contentHash": "795db8c943fb6df4ba2bbaecca222e27976692f24e9223825cf5263123765c0f",
+        "id": "SYN-STATE-BASE",
+        "revision": 1
+      },
+      "causalContribution": false,
+      "changeClass": "STIPULATED_CONFIGURATION",
+      "deltaHash": "09e332932d5eb7dbdb748c58d2c5ca54e1f827243968860c66b9b0e9c3bbac2d",
+      "deltaId": "SYN-DELTA-WP003-WEIGHT",
+      "effectiveAt": "2026-01-01T00:00:00Z",
+      "empiricalEvidenceProduced": false,
+      "objectKind": "SCENARIO_OPERATION_RECEIPT",
+      "ontologyRelationshipsEdited": 0,
+      "operationOrder": [
+        "UPDATE_TIE_WEIGHT"
+      ],
+      "receiptHash": "222c945359e46c48dee38472c726c5cafd01c9357a3780d9b60f7d441a8c8387",
+      "removedOpportunityIds": [],
+      "removedTieIds": [],
+      "scenarioId": "SYN-SCENARIO-001",
+      "schemaVersion": "1.0.0"
+    }
+  },
+  "workPackageId": "WP-PSG-003"
+}
