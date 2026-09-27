@@ -543,6 +543,7 @@ def work_packages(roots):
     cross_level_decision = cross_level_direction_decision()
     cross_level_stage_e = ROOT / "data/governance/post-scale-up/cross-level/cross-level-migration-dry-run.json"
     cross_level_implementation = cross_level_implementation_state()
+    network_state_test = ROOT / "data/governance/post-scale-up/network-state/network-state-test-cases.json"
     packages = []
     for definition in ROOT_DEFS:
         key, identifier = definition["key"], ROOT_IDS[definition["key"]]
@@ -581,6 +582,12 @@ def work_packages(roots):
             package["stageCDecisionTestArtifact"] = "docs/governance/post-scale-up/cross-level/CROSS_LEVEL_DECISION_TEST.md"
             package["advisoryRecommendation"] = "BOUNDED_A_PLUS_B_PLUS_C_HYBRID"
             package["architectureDirectionStatus"] = "HUMAN_APPROVED_NON_PRODUCTION_PROTOTYPE_AUTHORIZED" if cross_level_decision else "HUMAN_GOVERNANCE_REQUIRED"
+        if key == "NETWORK" and network_state_test.exists():
+            package["stageCDecisionTestStatus"] = "COMPLETE_READ_ONLY_RECOMMENDATION"
+            package["stageCDecisionTestArtifact"] = "docs/governance/post-scale-up/network-state/NETWORK_STATE_DECISION_TEST.md"
+            package["advisoryRecommendation"] = "BOUNDED_A_PLUS_C_USE_EXISTING_TYPED_SCENARIO_STATE_DELTA_AND_BLOCK_UNSUPPORTED_TRANSITIONS"
+            package["architectureDirectionStatus"] = "HUMAN_GOVERNANCE_REQUIRED"
+            package["nextDecisionPacketId"] = "DP-PSG-003"
         packages.append(package)
     return {"schemaVersion": "1.0.0", "roadmapId": ROADMAP_ID, "workPackages": packages}
 
@@ -601,6 +608,7 @@ def decision_packets(roots):
     cross_level_test = ROOT / "data/governance/post-scale-up/cross-level/cross-level-test-cases.json"
     cross_level_decision = cross_level_direction_decision()
     cross_level_stage_e = ROOT / "data/governance/post-scale-up/cross-level/cross-level-migration-dry-run.json"
+    network_state_test = ROOT / "data/governance/post-scale-up/network-state/network-state-test-cases.json"
     for index, key in enumerate(keys, 1):
         definition, root = next(row for row in ROOT_DEFS if row["key"] == key), by_id[ROOT_IDS[key]]
         packet = {
@@ -626,6 +634,11 @@ def decision_packets(roots):
             packet["stageCDecisionTestStatus"] = "COMPLETE_READ_ONLY_RECOMMENDATION"
             packet["advisoryRecommendation"] = "BOUNDED_A_PLUS_B_PLUS_C_HYBRID"
             packet["decisionTestArtifact"] = "docs/governance/post-scale-up/cross-level/CROSS_LEVEL_ARCHITECTURE_DECISION_PACKET.md"
+        if key == "NETWORK" and network_state_test.exists():
+            packet["stageCDecisionTestStatus"] = "COMPLETE_READ_ONLY_RECOMMENDATION"
+            packet["advisoryRecommendation"] = "BOUNDED_A_PLUS_C_USE_EXISTING_TYPED_SCENARIO_STATE_DELTA_AND_BLOCK_UNSUPPORTED_TRANSITIONS"
+            packet["decisionTestArtifact"] = "docs/governance/post-scale-up/network-state/NETWORK_STATE_ARCHITECTURE_DECISION_PACKET.md"
+            packet["recommendedNextResearchOrTest"] = "Human architecture governance of the bounded A+C recommendation is the next step; do not implement or migrate production Network State."
         packets.append(packet)
     return {"schemaVersion": "1.0.0", "roadmapId": ROADMAP_ID, "decisionPackets": packets}
 
@@ -659,6 +672,8 @@ def render_roadmap(dep_map, roots, packages):
     cross_level_implementation = cross_level_implementation_state()
     if cross_level_implementation:
         status_text += f" DP-PSG-002-IMPLEMENTATION is human-approved. Current bounded production state is `{cross_level_implementation['phase']}`; the other 37 Relationships and all scientific, graph, simulation, lifecycle and activation behavior remain unchanged."
+    if (ROOT / "data/governance/post-scale-up/network-state/network-state-test-cases.json").exists():
+        status_text += " WP-PSG-003 Stage C is complete as a read-only decision test with bounded A+C advisory recommendation; DP-PSG-003 human architecture governance remains required and no production Network State change is authorized."
     lines = ["# Post-Scale-Up governance roadmap", "", f"This roadmap converts the 44-row historical backlog into decision-ready work packages. Stages A and B are complete here; skeptical architecture review is complete for the six highest-consequence packets. {status_text}", "",
              "| Order | Work package | Root issue | Band | Dependencies | Original rows |", "|---:|---|---|---|---|---:|"]
     for index, package in enumerate(packages["workPackages"], 1):

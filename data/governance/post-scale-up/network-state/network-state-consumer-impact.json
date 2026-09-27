@@ -1,0 +1,42 @@
+{
+  "consumers": [
+    {
+      "finding": "Current typed state, receipt, replay, observation and metric runtime is sufficient for tested cases.",
+      "impact": "NO_CHANGE",
+      "path": "scripts/relational_state_v1.py"
+    },
+    {
+      "finding": "Future unified execution may bind exact state references to governed RDS profiles; legacy DER-V1 compatibility remains.",
+      "impact": "CALCULATION_PROFILE_AWARE_FUTURE",
+      "path": "scripts/rds_computation_v1.py"
+    },
+    {
+      "finding": "Network-dependent mappings must fail closed until exact state, boundary, window and profile references exist.",
+      "impact": "STATE_REFERENCE_AWARE_FUTURE",
+      "path": "scripts/cross_level_exposure_v1.py"
+    },
+    {
+      "finding": "State deltas do not edit or approve ontology Relationships.",
+      "impact": "NO_CHANGE",
+      "path": "scripts/relationship_intervention_v1.py"
+    },
+    {
+      "finding": "ScenarioOperationReference can link identity without asserting an empirical consequence; direct RDS effects remain prohibited.",
+      "impact": "NO_CHANGE",
+      "path": "scripts/actions_events_v1.py"
+    },
+    {
+      "finding": "Repository search found no RelationalState or ScenarioStateDelta ingestion path.",
+      "impact": "NO_CURRENT_NETWORK_STATE_CONSUMER_FOUND",
+      "path": "scenario-service/src/openai-service.js"
+    },
+    {
+      "finding": "No production graph builder consumes state deltas or calculation receipts as causal edges.",
+      "impact": "NO_INTERNAL_ACTIVE_NETWORK_STATE_CONSUMER_FOUND",
+      "path": "repository FCM/model construction"
+    }
+  ],
+  "productionConsumerBehaviorChanged": false,
+  "schemaVersion": "1.0.0",
+  "workPackageId": "WP-PSG-003"
+}

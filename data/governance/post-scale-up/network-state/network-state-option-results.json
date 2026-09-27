@@ -1,0 +1,32 @@
+{
+  "decisionPacketId": "DP-PSG-003",
+  "humanDecisionTaken": false,
+  "missingTypedOperationsForCurrentCases": [],
+  "networkStateTransitionUniqueConceptFound": false,
+  "options": {
+    "A": {
+      "finding": "Existing typed ScenarioStateDelta already represents every tested node, tie, weight, membership, boundary, opportunity and access operation with immutable state lineage and replay. No schema extension is presently required.",
+      "result": "PASS_CURRENT_CAPABILITY"
+    },
+    "A_PLUS_C": {
+      "finding": "Use current typed ScenarioStateDelta for supported stipulated changes, ScenarioOperationReference for non-effect identity linkage, RelationalState as scenario truth, and exact RDS calculation for recalculation; leave everything else unsupported.",
+      "result": "RECOMMENDED_ADVISORY"
+    },
+    "B": {
+      "finding": "A NetworkStateTransition repeating delta identity, before/after state, ordered operations, provenance, time and receipt adds no distinct scientific meaning and risks a duplicate quasi-causal class.",
+      "result": "REJECT_AS_REDUNDANT_FOR_CURRENT_SCOPE"
+    },
+    "C": {
+      "finding": "Unsupported or empirically estimated transitions should remain blocked, but C alone would obscure that supported modeled transitions already work.",
+      "result": "PASS_AS_FAIL_CLOSED_POLICY"
+    }
+  },
+  "recommendation": "BOUNDED_A_PLUS_C_USE_EXISTING_TYPED_SCENARIO_STATE_DELTA_AND_BLOCK_UNSUPPORTED_TRANSITIONS",
+  "schemaVersion": "1.0.0",
+  "unsupportedByDesign": [
+    "EMPIRICALLY_ESTIMATED_TRANSITION",
+    "implicit continuous-time dynamics",
+    "generic untyped transition",
+    "metric-to-exposure inference"
+  ]
+}
