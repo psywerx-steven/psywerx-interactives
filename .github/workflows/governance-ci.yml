@@ -192,6 +192,9 @@ jobs:
       - name: Validate read-only contribution identity decision test
         run: python -m unittest discover -s tests -p "test_contribution_identity_decision_test.py"
 
+      - name: Validate contribution identity reference implementation
+        run: python -m unittest discover -s tests -p "test_contribution_identity_stage_e.py"
+
       - name: Validate non-production cross-level exposure reference implementation
         run: python -m unittest discover -s tests -p "test_cross_level_exposure_stage_e.py"
 
@@ -278,6 +281,12 @@ jobs:
         run: |
           python prototypes/contribution-identity-v1/build_decision_test.py
           git diff --exit-code -- prototypes/contribution-identity-v1 data/governance/post-scale-up/contribution docs/governance/post-scale-up/contribution
+
+      - name: Verify deterministic contribution identity reference package
+        run: |
+          python prototypes/contribution-identity-v1/build_reference_package.py
+          python scripts/post_scale_up_governance_roadmap.py
+          git diff --exit-code -- prototypes/contribution-identity-v1 data/governance/post-scale-up/contribution docs/governance/post-scale-up/contribution data/governance/post-scale-up/work-packages.json data/governance/post-scale-up/decision-packets.json docs/governance/post-scale-up/POST_SCALE_UP_GOVERNANCE_ROADMAP.md docs/governance/post-scale-up/ROOT_DECISION_PACKAGES.md
 
       - name: Verify deterministic cross-level exposure reference package
         run: |
@@ -491,6 +500,9 @@ jobs:
       - name: Validate read-only contribution identity decision test
         run: python -m unittest discover -s tests -p "test_contribution_identity_decision_test.py"
 
+      - name: Validate contribution identity reference implementation
+        run: python -m unittest discover -s tests -p "test_contribution_identity_stage_e.py"
+
       - name: Validate non-production cross-level exposure reference implementation
         run: python -m unittest discover -s tests -p "test_cross_level_exposure_stage_e.py"
 
@@ -577,6 +589,12 @@ jobs:
         run: |
           python prototypes/contribution-identity-v1/build_decision_test.py
           git diff --exit-code -- prototypes/contribution-identity-v1 data/governance/post-scale-up/contribution docs/governance/post-scale-up/contribution
+
+      - name: Verify deterministic contribution identity reference package
+        run: |
+          python prototypes/contribution-identity-v1/build_reference_package.py
+          python scripts/post_scale_up_governance_roadmap.py
+          git diff --exit-code -- prototypes/contribution-identity-v1 data/governance/post-scale-up/contribution docs/governance/post-scale-up/contribution data/governance/post-scale-up/work-packages.json data/governance/post-scale-up/decision-packets.json docs/governance/post-scale-up/POST_SCALE_UP_GOVERNANCE_ROADMAP.md docs/governance/post-scale-up/ROOT_DECISION_PACKAGES.md
 
       - name: Verify deterministic cross-level exposure reference package
         run: |

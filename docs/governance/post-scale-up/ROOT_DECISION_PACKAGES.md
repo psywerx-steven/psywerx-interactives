@@ -1,6 +1,6 @@
 # Root decision packages
 
-DP-PSG-001, DP-PSG-002, DP-PSG-003 record bounded human-approved architecture directions. All other packets remain ready for later human scientific/architecture governance and have no selected option.
+DP-PSG-001, DP-PSG-002, DP-PSG-003, DP-PSG-004 record bounded human-approved architecture directions. All other packets remain ready for later human scientific/architecture governance and have no selected option.
 
 ## DP-PSG-001 — Shared RDS definition and derivation contract
 
@@ -96,9 +96,9 @@ DP-PSG-001, DP-PSG-002, DP-PSG-003 record bounded human-approved architecture di
 
 - Root issue: `ROOT-CONTRIBUTION-IDENTITY-001`
 - Work package: `WP-PSG-004`
-- Human decision status: `REQUIRED_NOT_TAKEN`
-- Human decision ID: none
-- Approved option: none
+- Human decision status: `HUMAN_APPROVED_BOUNDED_DIRECTION`
+- Human decision ID: `GOV-CONTRIBUTION-IDENTITY-001-2026-09-27`
+- Approved option: `BOUNDED_A_PLUS_B_PLUS_C`
 - Current problem: One underlying contribution may appear through Relationship plus EffectAssertion, constituent plus aggregate RDS, or state recalculation plus a causal edge.
 - Why it matters: It directly contains 1 active-execution blockers and constrains 23 items in downstream root programs.
 - Current safe state: Preserve every recorded scientific, ontology, architecture and lifecycle state until a later human decision.
@@ -120,7 +120,7 @@ DP-PSG-001, DP-PSG-002, DP-PSG-003 record bounded human-approved architecture di
 - Architecture implications: Any selected representation requires a separately governed schema/validator design and migration plan.
 - Simulation implications: No option may imply numeric weight, propagation, recommendation or execution eligibility by itself.
 - Migration implications: Existing governed records remain valid; later implementation must be additive or explicitly migrated with rollback and protected-science comparison.
-- Recommended next test: Create executable examples and counterexamples against current validators before the human option vote; do not alter production records.
+- Recommended next test: Govern DP-PSG-004-IMPLEMENTATION before any production schema, registry, resolver, group or consumer integration.
 
 ## DP-PSG-005 — Aggregate RDS causal-source independence
 

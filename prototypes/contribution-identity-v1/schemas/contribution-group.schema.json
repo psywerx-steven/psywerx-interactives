@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://psywerx.org/prototypes/contribution-identity-v1/contribution-group.schema.json",
+  "title": "Non-production ContributionGroup prototype",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "groupId", "groupVersion", "objectKind", "scientificContributionDefinition", "scope", "identityDimensions", "memberRepresentations", "countingPolicy", "propagationPolicy", "selectionPolicy", "derivationPolicy", "causalIndependenceStatus", "evidenceOverlapStatus", "constituentOverlapStatus", "crossLevelRouteReferences", "stateRouteReferences", "rdsProfileReferences", "limitations", "provenance", "governanceReference", "causalEvidence", "executionAuthority", "hasWeight", "hasPolarity", "hasLifecycle", "hasActivation", "hasPropagationState"],
+  "properties": {
+    "schemaVersion": {"const": "0.2.0-PROTOTYPE"},
+    "groupId": {"type": "string", "minLength": 3},
+    "groupVersion": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$", "not": {"enum": ["LATEST", "DEFAULT", "FIRST", "ONLY", "ACTIVE", "BEST"]}},
+    "objectKind": {"const": "CONTRIBUTION_IDENTITY_CONTROL"},
+    "scientificContributionDefinition": {"type": "string", "minLength": 10},
+    "scope": {"type": "object"},
+    "identityDimensions": {
+      "type": "object", "additionalProperties": false,
+      "required": ["causalExposureOrChange", "targetChange", "causalContrast", "unitOfAnalysis", "timeScope", "pathwayScope", "intendedContribution", "underlyingRepresentedQuantity"],
+      "properties": {
+        "causalExposureOrChange": {"type": "string", "minLength": 1}, "targetChange": {"type": "string", "minLength": 1},
+        "causalContrast": {"type": "string", "minLength": 1}, "unitOfAnalysis": {"type": "string", "minLength": 1},
+        "timeScope": {"type": "string", "minLength": 1}, "pathwayScope": {"type": "string", "minLength": 1},
+        "intendedContribution": {"type": "string", "minLength": 1}, "underlyingRepresentedQuantity": {"type": "string", "minLength": 1}
+      }
+    },
+    "memberRepresentations": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/member"}},
+    "countingPolicy": {"enum": ["COUNT_ONCE", "MUTUALLY_EXCLUSIVE_REPRESENTATIONS", "RECALCULATION_ONLY_NO_CAUSAL_SUM", "DERIVATION_ONLY_NO_PROPAGATION", "INDEPENDENT_CONTRIBUTION", "BLOCKED_PENDING_CAUSAL_INDEPENDENCE", "BLOCKED_PENDING_IDENTITY_REVIEW"]},
+    "propagationPolicy": {"type": "string"}, "selectionPolicy": {"type": "string"}, "derivationPolicy": {"type": "string"},
+    "causalIndependenceStatus": {"type": "string"}, "evidenceOverlapStatus": {"type": "string"}, "constituentOverlapStatus": {"type": "string"},
+    "crossLevelRouteReferences": {"type": "array"}, "stateRouteReferences": {"type": "array"}, "rdsProfileReferences": {"type": "array"},
+    "limitations": {"type": "array", "items": {"type": "string"}}, "provenance": {"type": "object"}, "governanceReference": {"type": "string"},
+    "causalEvidence": {"const": false}, "executionAuthority": {"const": false}, "hasWeight": {"const": false}, "hasPolarity": {"const": false}, "hasLifecycle": {"const": false}, "hasActivation": {"const": false}, "hasPropagationState": {"const": false}
+  },
+  "$defs": {
+    "member": {
+      "type": "object", "additionalProperties": false,
+      "required": ["recordClass", "recordId", "recordRevision", "recordHash", "memberRole", "representationRelationship", "nativeContributionId", "nativeContributionPolicy"],
+      "properties": {
+        "recordClass": {"type": "string"}, "recordId": {"type": "string"}, "recordRevision": {"type": ["integer", "string"]},
+        "recordHash": {"type": "string", "pattern": "^[0-9a-f]{64}$"}, "memberRole": {"type": "string"},
+        "representationRelationship": {"type": "string"}, "nativeContributionId": {"type": ["string", "null"]},
+        "nativeContributionPolicy": {"type": ["string", "null"]}
+      }
+    }
+  }
+}

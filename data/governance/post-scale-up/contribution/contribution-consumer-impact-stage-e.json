@@ -1,0 +1,61 @@
+{
+  "centralGateRequiredFor": [
+    "graph assembly",
+    "causal propagation",
+    "effect summation",
+    "action scoring",
+    "effect attribution"
+  ],
+  "decisionId": "GOV-CONTRIBUTION-IDENTITY-001-2026-09-27",
+  "records": [
+    {
+      "classification": "NATIVE_CLASS_CONTROL_ONLY",
+      "consumer": "scripts/actions_events_v1.py",
+      "currentBehaviorChanged": false,
+      "futureRequirement": "Future adapter exposes EA native group without mutation"
+    },
+    {
+      "classification": "CURRENTLY_SAFE_NO_INTEGRATION",
+      "consumer": "scripts/relationship_intervention_v1.py",
+      "currentBehaviorChanged": false,
+      "futureRequirement": "External exact membership avoids Relationship schema change"
+    },
+    {
+      "classification": "CROSS_CLASS_RESOLUTION_REQUIRED_FUTURE",
+      "consumer": "scripts/build_relationships.py",
+      "currentBehaviorChanged": false,
+      "futureRequirement": "Any future causal graph assembly must call resolver"
+    },
+    {
+      "classification": "NATIVE_CLASS_CONTROL_ONLY",
+      "consumer": "scripts/rds_computation_v1.py",
+      "currentBehaviorChanged": false,
+      "futureRequirement": "Preserve recalculation policy and causal firewall"
+    },
+    {
+      "classification": "NO_CAUSAL_CONSUMPTION",
+      "consumer": "scripts/relational_state_v1.py",
+      "currentBehaviorChanged": false,
+      "futureRequirement": "State/metric receipts remain noncausal"
+    },
+    {
+      "classification": "NO_CAUSAL_CONSUMPTION",
+      "consumer": "scripts/cross_level_exposure_v1.py",
+      "currentBehaviorChanged": false,
+      "futureRequirement": "Routing only"
+    },
+    {
+      "classification": "CURRENTLY_SAFE_NO_INTEGRATION",
+      "consumer": "scenario-service/src/openai-service.js",
+      "currentBehaviorChanged": false,
+      "futureRequirement": "No causal summation path"
+    },
+    {
+      "classification": "UNKNOWN_EXTERNAL_CONSUMER",
+      "consumer": "external graph/simulation consumers",
+      "currentBehaviorChanged": false,
+      "futureRequirement": "Must call central gate or fail closed"
+    }
+  ],
+  "schemaVersion": "1.0.0"
+}

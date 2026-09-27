@@ -135,10 +135,15 @@ class PostScaleUpGovernanceRoadmapTests(unittest.TestCase):
         self.assertEqual(by_wp["WP-PSG-003"]["productionImplementationStatus"], "NOT_AUTHORIZED_NOT_STARTED")
         self.assertEqual(by_wp["WP-PSG-003"]["rootIssueResolutionStatus"], "NOT_RESOLVED_DIRECTION_ONLY")
         self.assertIsNone(by_wp["WP-PSG-003"]["nextDecisionPacketId"])
+        self.assertEqual(by_wp["WP-PSG-004"]["stages"]["D_humanGovernanceDecision"], "COMPLETE_BOUNDED_DIRECTION_APPROVED")
+        self.assertEqual(by_wp["WP-PSG-004"]["governanceDecisionId"], "GOV-CONTRIBUTION-IDENTITY-001-2026-09-27")
+        self.assertEqual(by_wp["WP-PSG-004"]["stages"]["E_implementation"], "COMPLETE_NON_PRODUCTION_REFERENCE_PROTOTYPE")
+        self.assertEqual(by_wp["WP-PSG-004"]["stages"]["F_migrationRevalidation"], "DRY_RUN_ONLY_COMPLETE_PRODUCTION_MIGRATION_NOT_AUTHORIZED")
+        self.assertEqual(by_wp["WP-PSG-004"]["nextDecisionPacketId"], "DP-PSG-004-IMPLEMENTATION")
         for package in self.packages["workPackages"]:
-            if package["workPackageId"] not in {"WP-PSG-001", "WP-PSG-002", "WP-PSG-003"}:
+            if package["workPackageId"] not in {"WP-PSG-001", "WP-PSG-002", "WP-PSG-003", "WP-PSG-004"}:
                 self.assertEqual(package["stages"]["D_humanGovernanceDecision"], "NOT_STARTED")
-            if package["workPackageId"] not in {"WP-PSG-001", "WP-PSG-002"}:
+            if package["workPackageId"] not in {"WP-PSG-001", "WP-PSG-002", "WP-PSG-004"}:
                 self.assertEqual(package["stages"]["E_implementation"], "NOT_STARTED")
                 self.assertEqual(package["stages"]["F_migrationRevalidation"], "NOT_STARTED")
             self.assertEqual(package["stages"]["G_scientificReadjudication"], "NOT_STARTED")
@@ -151,7 +156,9 @@ class PostScaleUpGovernanceRoadmapTests(unittest.TestCase):
         self.assertEqual(by_packet["DP-PSG-003"]["humanDecisionStatus"], "HUMAN_APPROVED_BOUNDED_DIRECTION")
         self.assertEqual(by_packet["DP-PSG-003"]["humanDecisionId"], "GOV-NETWORK-STATE-ARCHITECTURE-001-2026-09-26")
         self.assertEqual(by_packet["DP-PSG-003"]["approvedOption"], "BOUNDED_A_PLUS_C")
-        self.assertEqual({row["humanDecisionStatus"] for key, row in by_packet.items() if key not in {"DP-PSG-001", "DP-PSG-002", "DP-PSG-003"}}, {"REQUIRED_NOT_TAKEN"})
+        self.assertEqual(by_packet["DP-PSG-004"]["humanDecisionStatus"], "HUMAN_APPROVED_BOUNDED_DIRECTION")
+        self.assertEqual(by_packet["DP-PSG-004"]["approvedOption"], "BOUNDED_A_PLUS_B_PLUS_C")
+        self.assertEqual({row["humanDecisionStatus"] for key, row in by_packet.items() if key not in {"DP-PSG-001", "DP-PSG-002", "DP-PSG-003", "DP-PSG-004"}}, {"REQUIRED_NOT_TAKEN"})
 
     def test_protected_science_ontology_lifecycle_sources_and_network_state(self):
         protected = read(DATA / "protected-baseline.json")

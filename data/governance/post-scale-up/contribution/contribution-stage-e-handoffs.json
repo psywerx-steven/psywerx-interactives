@@ -1,0 +1,93 @@
+{
+  "decisionId": "GOV-CONTRIBUTION-IDENTITY-001-2026-09-27",
+  "schemaVersion": "1.0.0",
+  "wpPsg005": {
+    "adjudicationPerformed": false,
+    "records": [
+      {
+        "aggregateRdsId": "INS-039",
+        "bindingId": null,
+        "bindingVersion": null,
+        "boundaryWindow": null,
+        "candidateAggregateContributionId": null,
+        "causalSourceEligible": false,
+        "constituentContributionIds": [],
+        "constituentMapping": "NOT_GOVERNED",
+        "crossLevelMappingId": null,
+        "crossLevelMappingVersion": null,
+        "independenceStatus": "INDEPENDENCE_NOT_ESTABLISHED",
+        "networkStateRef": null,
+        "overlapStatus": "CONSTITUENT_OVERLAP_UNRESOLVED",
+        "profileId": null,
+        "profileVersion": null,
+        "relationshipIds": [
+          "REL-INS-017"
+        ],
+        "scientificGaps": [
+          "exact constituent routes",
+          "independent aggregate mechanism",
+          "temporal and scope alignment"
+        ],
+        "temporalAlignment": "UNRESOLVED"
+      },
+      {
+        "aggregateRdsId": "INS-103",
+        "bindingId": null,
+        "bindingVersion": null,
+        "boundaryWindow": null,
+        "candidateAggregateContributionId": null,
+        "causalSourceEligible": false,
+        "constituentContributionIds": [],
+        "constituentMapping": "NOT_GOVERNED",
+        "crossLevelMappingId": null,
+        "crossLevelMappingVersion": null,
+        "independenceStatus": "INDEPENDENCE_NOT_ESTABLISHED",
+        "networkStateRef": null,
+        "overlapStatus": "CONSTITUENT_OVERLAP_UNRESOLVED",
+        "profileId": null,
+        "profileVersion": null,
+        "relationshipIds": [
+          "REL-INS-036"
+        ],
+        "scientificGaps": [
+          "exact constituent routes",
+          "independent aggregate mechanism",
+          "temporal and scope alignment"
+        ],
+        "temporalAlignment": "UNRESOLVED"
+      },
+      {
+        "aggregateFamily": "ASTRA-SOC-LAYER-001",
+        "aggregateRdsIds": [
+          "SOC-024",
+          "SOC-041",
+          "SOC-052",
+          "SOC-053",
+          "SOC-054",
+          "SOC-055",
+          "SOC-056",
+          "SOC-074",
+          "SOC-076",
+          "SOC-096"
+        ],
+        "causalSourceEligible": false,
+        "constituentContributionIds": [],
+        "independenceStatus": "INSUFFICIENT_ROUTE_DEFINITION",
+        "overlapStatus": "UNKNOWN",
+        "scientificGaps": [
+          "exact constituent routes for each of ten RDS sources"
+        ]
+      }
+    ],
+    "status": "NOT_STARTED"
+  },
+  "wpPsg009": {
+    "reason": "Contribution identity or aggregate-overlap resolution required before semantic-debt migration",
+    "relationshipCandidates": [
+      "REL-V1-PSY-LAYER-001",
+      "REL-INS-017",
+      "REL-INS-036"
+    ],
+    "status": "NOT_STARTED"
+  }
+}

@@ -268,11 +268,24 @@
         "B depends on every consumer enforcing mutual exclusion consistently.",
         "C avoids overgeneralization but leaves fragmented controls and blocked cross-class cases."
       ],
-      "recommendedNextResearchOrTest": "Create executable examples and counterexamples against current validators before the human option vote; do not alter production records.",
-      "humanDecisionStatus": "REQUIRED_NOT_TAKEN",
-      "humanDecisionId": null,
-      "approvedOption": null,
-      "authorizationBoundary": null
+      "recommendedNextResearchOrTest": "Govern DP-PSG-004-IMPLEMENTATION before any production schema, registry, resolver, group or consumer integration.",
+      "humanDecisionStatus": "HUMAN_APPROVED_BOUNDED_DIRECTION",
+      "humanDecisionId": "GOV-CONTRIBUTION-IDENTITY-001-2026-09-27",
+      "approvedOption": "BOUNDED_A_PLUS_B_PLUS_C",
+      "authorizationBoundary": [
+        "production ContributionGroups",
+        "production registry or resolver integration",
+        "production record migration",
+        "Relationship or EffectAssertion mutation",
+        "RDS causal-source use",
+        "graph or simulation behavior change",
+        "lifecycle or activation change",
+        "effect magnitude or polarity",
+        "WP-PSG-005 adjudication"
+      ],
+      "stageCDecisionTestStatus": "COMPLETE_READ_ONLY_RECOMMENDATION",
+      "advisoryRecommendation": "BOUNDED_A_PLUS_B_PLUS_C_EXPLICIT_GROUPS_NATIVE_CONTROLS_CENTRAL_ENFORCEMENT",
+      "decisionTestArtifact": "docs/governance/post-scale-up/contribution/CONTRIBUTION_ARCHITECTURE_DECISION_PACKET.md"
     },
     {
       "decisionPacketId": "DP-PSG-005",
