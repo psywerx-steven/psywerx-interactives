@@ -1,0 +1,174 @@
+{
+  "cases": [
+    {
+      "expected": "SELECT_ONE_REQUIRED",
+      "id": "DUPLICATE_NO_SELECTION",
+      "receipt": {
+        "activationAuthorityGranted": false,
+        "causalAuthorityGranted": false,
+        "error": "SELECT_ONE_REQUIRED",
+        "graphAuthorityGranted": false,
+        "resolutionOutcome": "SELECT_ONE_REQUIRED"
+      }
+    },
+    {
+      "expected": "COUNT_ONCE",
+      "id": "DUPLICATE_SELECT_RELATIONSHIP",
+      "numericResult": 0.2,
+      "receipt": {
+        "activationAuthorityGranted": false,
+        "blockedRepresentations": [],
+        "candidateRecords": [
+          {
+            "recordClass": "EFFECT_ASSERTION",
+            "recordHash": "2daf2a9e78dea482abb13766c147514483cd4a1b149b10d9acf6704f53bb4d55",
+            "recordId": "EA-V1-PSY-LAYER-001",
+            "recordVersion": "1"
+          },
+          {
+            "recordClass": "RELATIONSHIP",
+            "recordHash": "090b8e185653ae3fe3cf8b662564e956c25f555e93b451edcbc5ef235648f6ac",
+            "recordId": "REL-V1-PSY-LAYER-001",
+            "recordVersion": "1"
+          }
+        ],
+        "causalAuthorityGranted": false,
+        "contextHash": "1eec55ff222525865bcf56f94c3b6795cd5ed555a71e5cad8bdc42870e32beed",
+        "deterministicFingerprint": "a7c93b0891891e48079e081c36dc70ccbbd57b47563af5b346d7fc7182e2c5be",
+        "excludedRepresentations": [
+          "EA-V1-PSY-LAYER-001"
+        ],
+        "explicitSelection": {
+          "CONTRIB-PSY-LAYER-REPETITION-001": "REL-V1-PSY-LAYER-001"
+        },
+        "graphAuthorityGranted": false,
+        "groupRefs": [
+          {
+            "countingPolicy": "MUTUALLY_EXCLUSIVE_REPRESENTATIONS",
+            "groupId": "CONTRIB-PSY-LAYER-REPETITION-001",
+            "groupVersion": "1.0.0",
+            "independenceStatus": "SAME_CONTRIBUTION_CONFIRMED",
+            "propagationPolicy": "COUNT_ONCE_NO_ADDITIVE_PROPAGATION"
+          }
+        ],
+        "includedRepresentations": [
+          "REL-V1-PSY-LAYER-001"
+        ],
+        "resolutionOutcome": "COUNT_ONCE"
+      }
+    },
+    {
+      "expected": "COUNT_ONCE",
+      "id": "DUPLICATE_SELECT_EFFECT_ASSERTION",
+      "numericResult": 0.2,
+      "receipt": {
+        "activationAuthorityGranted": false,
+        "blockedRepresentations": [],
+        "candidateRecords": [
+          {
+            "recordClass": "EFFECT_ASSERTION",
+            "recordHash": "2daf2a9e78dea482abb13766c147514483cd4a1b149b10d9acf6704f53bb4d55",
+            "recordId": "EA-V1-PSY-LAYER-001",
+            "recordVersion": "1"
+          },
+          {
+            "recordClass": "RELATIONSHIP",
+            "recordHash": "090b8e185653ae3fe3cf8b662564e956c25f555e93b451edcbc5ef235648f6ac",
+            "recordId": "REL-V1-PSY-LAYER-001",
+            "recordVersion": "1"
+          }
+        ],
+        "causalAuthorityGranted": false,
+        "contextHash": "1eec55ff222525865bcf56f94c3b6795cd5ed555a71e5cad8bdc42870e32beed",
+        "deterministicFingerprint": "bbf18e1c8504c00cf252fbe3f3290e82b9fb779a74052eb2d74c4cb578fca7e1",
+        "excludedRepresentations": [
+          "REL-V1-PSY-LAYER-001"
+        ],
+        "explicitSelection": {
+          "CONTRIB-PSY-LAYER-REPETITION-001": "EA-V1-PSY-LAYER-001"
+        },
+        "graphAuthorityGranted": false,
+        "groupRefs": [
+          {
+            "countingPolicy": "MUTUALLY_EXCLUSIVE_REPRESENTATIONS",
+            "groupId": "CONTRIB-PSY-LAYER-REPETITION-001",
+            "groupVersion": "1.0.0",
+            "independenceStatus": "SAME_CONTRIBUTION_CONFIRMED",
+            "propagationPolicy": "COUNT_ONCE_NO_ADDITIVE_PROPAGATION"
+          }
+        ],
+        "includedRepresentations": [
+          "EA-V1-PSY-LAYER-001"
+        ],
+        "resolutionOutcome": "COUNT_ONCE"
+      }
+    },
+    {
+      "expected": "ALLOW_INDEPENDENT_ADDITION",
+      "id": "DUPLICATE_PLUS_INDEPENDENT",
+      "numericResult": 0.3,
+      "receipt": {
+        "activationAuthorityGranted": false,
+        "blockedRepresentations": [],
+        "candidateRecords": [
+          {
+            "recordClass": "EFFECT_ASSERTION",
+            "recordHash": "2daf2a9e78dea482abb13766c147514483cd4a1b149b10d9acf6704f53bb4d55",
+            "recordId": "EA-V1-PSY-LAYER-001",
+            "recordVersion": "1"
+          },
+          {
+            "recordClass": "RELATIONSHIP",
+            "recordHash": "090b8e185653ae3fe3cf8b662564e956c25f555e93b451edcbc5ef235648f6ac",
+            "recordId": "REL-V1-PSY-LAYER-001",
+            "recordVersion": "1"
+          }
+        ],
+        "causalAuthorityGranted": false,
+        "contextHash": "1eec55ff222525865bcf56f94c3b6795cd5ed555a71e5cad8bdc42870e32beed",
+        "deterministicFingerprint": "a7c93b0891891e48079e081c36dc70ccbbd57b47563af5b346d7fc7182e2c5be",
+        "excludedRepresentations": [
+          "EA-V1-PSY-LAYER-001"
+        ],
+        "explicitSelection": {
+          "CONTRIB-PSY-LAYER-REPETITION-001": "REL-V1-PSY-LAYER-001"
+        },
+        "graphAuthorityGranted": false,
+        "groupRefs": [
+          {
+            "countingPolicy": "MUTUALLY_EXCLUSIVE_REPRESENTATIONS",
+            "groupId": "CONTRIB-PSY-LAYER-REPETITION-001",
+            "groupVersion": "1.0.0",
+            "independenceStatus": "SAME_CONTRIBUTION_CONFIRMED",
+            "propagationPolicy": "COUNT_ONCE_NO_ADDITIVE_PROPAGATION"
+          }
+        ],
+        "includedRepresentations": [
+          "REL-V1-PSY-LAYER-001"
+        ],
+        "resolutionOutcome": "COUNT_ONCE"
+      }
+    },
+    {
+      "expected": "NO_CAUSAL_CONTRIBUTION",
+      "id": "DERIVATION_AND_NETWORK_RECALCULATION",
+      "numericResult": 0
+    },
+    {
+      "expected": "NO_CAUSAL_CONTRIBUTION",
+      "id": "CROSS_LEVEL_MAPPING",
+      "numericResult": 0
+    },
+    {
+      "expected": "BLOCK_PENDING_CAUSAL_INDEPENDENCE",
+      "id": "UNRESOLVED_AGGREGATE"
+    }
+  ],
+  "countOnceResult": 0.2,
+  "decisionId": "GOV-CONTRIBUTION-IDENTITY-001-2026-09-27",
+  "fingerprintDeterministic": true,
+  "naiveDuplicateSum": 0.4,
+  "productionMutationAuthorized": false,
+  "schemaVersion": "1.0.0",
+  "withIndependentResult": 0.3
+}

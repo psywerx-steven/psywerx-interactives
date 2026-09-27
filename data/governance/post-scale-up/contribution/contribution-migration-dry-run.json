@@ -1,0 +1,245 @@
+{
+  "counts": {
+    "BLOCKED_PENDING_CAUSAL_INDEPENDENCE": 4,
+    "INSUFFICIENT_ROUTE_DEFINITION": 10,
+    "NATIVE_CONTROL_SUFFICIENT": 3,
+    "NONCAUSAL_NO_GROUP_REQUIRED": 4,
+    "READY_FOR_EXTERNAL_GROUP": 2
+  },
+  "decisionId": "GOV-CONTRIBUTION-IDENTITY-001-2026-09-27",
+  "productionMigrationAuthorized": false,
+  "recordCount": 23,
+  "records": [
+    {
+      "activationAuthorized": false,
+      "classification": "READY_FOR_EXTERNAL_GROUP",
+      "graphChangeAuthorized": false,
+      "productionMutationAuthorized": false,
+      "reason": "Exact externally hash-bound member; no Relationship schema change required",
+      "recordClass": "RELATIONSHIP",
+      "recordId": "REL-V1-PSY-LAYER-001",
+      "simulationChangeAuthorized": false
+    },
+    {
+      "activationAuthorized": false,
+      "classification": "READY_FOR_EXTERNAL_GROUP",
+      "graphChangeAuthorized": false,
+      "productionMutationAuthorized": false,
+      "reason": "Native contribution ID agrees with the external group",
+      "recordClass": "EFFECT_ASSERTION",
+      "recordId": "EA-V1-PSY-LAYER-001",
+      "simulationChangeAuthorized": false
+    },
+    {
+      "activationAuthorized": false,
+      "classification": "NATIVE_CONTROL_SUFFICIENT",
+      "graphChangeAuthorized": false,
+      "productionMutationAuthorized": false,
+      "reason": "RECALCULATION_ONLY_NO_CAUSAL_SUM",
+      "recordClass": "DERIVATION",
+      "recordId": "DER-V1-SOC-F07-001",
+      "simulationChangeAuthorized": false
+    },
+    {
+      "activationAuthorized": false,
+      "classification": "NATIVE_CONTROL_SUFFICIENT",
+      "graphChangeAuthorized": false,
+      "productionMutationAuthorized": false,
+      "reason": "Preserves legacy contribution identity and causalSourceEligible=false",
+      "recordClass": "RDS_PROFILE",
+      "recordId": "RDS-PROFILE-V1-SOC-F07-001@1.0.0",
+      "simulationChangeAuthorized": false
+    },
+    {
+      "activationAuthorized": false,
+      "classification": "NATIVE_CONTROL_SUFFICIENT",
+      "graphChangeAuthorized": false,
+      "productionMutationAuthorized": false,
+      "reason": "Exact shadow compatibility binding",
+      "recordClass": "RDS_BINDING",
+      "recordId": "RDS-BIND-V1-SOC-F07-001@1.0.0",
+      "simulationChangeAuthorized": false
+    },
+    {
+      "activationAuthorized": false,
+      "classification": "BLOCKED_PENDING_CAUSAL_INDEPENDENCE",
+      "graphChangeAuthorized": false,
+      "productionMutationAuthorized": false,
+      "reason": "Constituent overlap/independent aggregate mechanism unresolved",
+      "recordClass": "RDS_OR_RELATIONSHIP",
+      "recordId": "INS-039",
+      "simulationChangeAuthorized": false
+    },
+    {
+      "activationAuthorized": false,
+      "classification": "BLOCKED_PENDING_CAUSAL_INDEPENDENCE",
+      "graphChangeAuthorized": false,
+      "productionMutationAuthorized": false,
+      "reason": "Constituent overlap/independent aggregate mechanism unresolved",
+      "recordClass": "RDS_OR_RELATIONSHIP",
+      "recordId": "REL-INS-017",
+      "simulationChangeAuthorized": false
+    },
+    {
+      "activationAuthorized": false,
+      "classification": "BLOCKED_PENDING_CAUSAL_INDEPENDENCE",
+      "graphChangeAuthorized": false,
+      "productionMutationAuthorized": false,
+      "reason": "Constituent overlap/independent aggregate mechanism unresolved",
+      "recordClass": "RDS_OR_RELATIONSHIP",
+      "recordId": "INS-103",
+      "simulationChangeAuthorized": false
+    },
+    {
+      "activationAuthorized": false,
+      "classification": "BLOCKED_PENDING_CAUSAL_INDEPENDENCE",
+      "graphChangeAuthorized": false,
+      "productionMutationAuthorized": false,
+      "reason": "Constituent overlap/independent aggregate mechanism unresolved",
+      "recordClass": "RDS_OR_RELATIONSHIP",
+      "recordId": "REL-INS-036",
+      "simulationChangeAuthorized": false
+    },
+    {
+      "activationAuthorized": false,
+      "classification": "INSUFFICIENT_ROUTE_DEFINITION",
+      "graphChangeAuthorized": false,
+      "productionMutationAuthorized": false,
+      "reason": "Exact constituent contribution identities unavailable; do not fabricate",
+      "recordClass": "SOCIAL_RDS_ROUTE",
+      "recordId": "SOC-024",
+      "simulationChangeAuthorized": false
+    },
+    {
+      "activationAuthorized": false,
+      "classification": "INSUFFICIENT_ROUTE_DEFINITION",
+      "graphChangeAuthorized": false,
+      "productionMutationAuthorized": false,
+      "reason": "Exact constituent contribution identities unavailable; do not fabricate",
+      "recordClass": "SOCIAL_RDS_ROUTE",
+      "recordId": "SOC-041",
+      "simulationChangeAuthorized": false
+    },
+    {
+      "activationAuthorized": false,
+      "classification": "INSUFFICIENT_ROUTE_DEFINITION",
+      "graphChangeAuthorized": false,
+      "productionMutationAuthorized": false,
+      "reason": "Exact constituent contribution identities unavailable; do not fabricate",
+      "recordClass": "SOCIAL_RDS_ROUTE",
+      "recordId": "SOC-052",
+      "simulationChangeAuthorized": false
+    },
+    {
+      "activationAuthorized": false,
+      "classification": "INSUFFICIENT_ROUTE_DEFINITION",
+      "graphChangeAuthorized": false,
+      "productionMutationAuthorized": false,
+      "reason": "Exact constituent contribution identities unavailable; do not fabricate",
+      "recordClass": "SOCIAL_RDS_ROUTE",
+      "recordId": "SOC-053",
+      "simulationChangeAuthorized": false
+    },
+    {
+      "activationAuthorized": false,
+      "classification": "INSUFFICIENT_ROUTE_DEFINITION",
+      "graphChangeAuthorized": false,
+      "productionMutationAuthorized": false,
+      "reason": "Exact constituent contribution identities unavailable; do not fabricate",
+      "recordClass": "SOCIAL_RDS_ROUTE",
+      "recordId": "SOC-054",
+      "simulationChangeAuthorized": false
+    },
+    {
+      "activationAuthorized": false,
+      "classification": "INSUFFICIENT_ROUTE_DEFINITION",
+      "graphChangeAuthorized": false,
+      "productionMutationAuthorized": false,
+      "reason": "Exact constituent contribution identities unavailable; do not fabricate",
+      "recordClass": "SOCIAL_RDS_ROUTE",
+      "recordId": "SOC-055",
+      "simulationChangeAuthorized": false
+    },
+    {
+      "activationAuthorized": false,
+      "classification": "INSUFFICIENT_ROUTE_DEFINITION",
+      "graphChangeAuthorized": false,
+      "productionMutationAuthorized": false,
+      "reason": "Exact constituent contribution identities unavailable; do not fabricate",
+      "recordClass": "SOCIAL_RDS_ROUTE",
+      "recordId": "SOC-056",
+      "simulationChangeAuthorized": false
+    },
+    {
+      "activationAuthorized": false,
+      "classification": "INSUFFICIENT_ROUTE_DEFINITION",
+      "graphChangeAuthorized": false,
+      "productionMutationAuthorized": false,
+      "reason": "Exact constituent contribution identities unavailable; do not fabricate",
+      "recordClass": "SOCIAL_RDS_ROUTE",
+      "recordId": "SOC-074",
+      "simulationChangeAuthorized": false
+    },
+    {
+      "activationAuthorized": false,
+      "classification": "INSUFFICIENT_ROUTE_DEFINITION",
+      "graphChangeAuthorized": false,
+      "productionMutationAuthorized": false,
+      "reason": "Exact constituent contribution identities unavailable; do not fabricate",
+      "recordClass": "SOCIAL_RDS_ROUTE",
+      "recordId": "SOC-076",
+      "simulationChangeAuthorized": false
+    },
+    {
+      "activationAuthorized": false,
+      "classification": "INSUFFICIENT_ROUTE_DEFINITION",
+      "graphChangeAuthorized": false,
+      "productionMutationAuthorized": false,
+      "reason": "Exact constituent contribution identities unavailable; do not fabricate",
+      "recordClass": "SOCIAL_RDS_ROUTE",
+      "recordId": "SOC-096",
+      "simulationChangeAuthorized": false
+    },
+    {
+      "activationAuthorized": false,
+      "classification": "NONCAUSAL_NO_GROUP_REQUIRED",
+      "graphChangeAuthorized": false,
+      "productionMutationAuthorized": false,
+      "reason": "State delta and deterministic metric recalculation are not causal inputs",
+      "recordClass": "NETWORK_STATE_EXAMPLE",
+      "recordId": "HYP-SOC-F07-H12",
+      "simulationChangeAuthorized": false
+    },
+    {
+      "activationAuthorized": false,
+      "classification": "NONCAUSAL_NO_GROUP_REQUIRED",
+      "graphChangeAuthorized": false,
+      "productionMutationAuthorized": false,
+      "reason": "State delta and deterministic metric recalculation are not causal inputs",
+      "recordClass": "NETWORK_STATE_EXAMPLE",
+      "recordId": "HYP-SOC-F07-H20",
+      "simulationChangeAuthorized": false
+    },
+    {
+      "activationAuthorized": false,
+      "classification": "NONCAUSAL_NO_GROUP_REQUIRED",
+      "graphChangeAuthorized": false,
+      "productionMutationAuthorized": false,
+      "reason": "Exposure routing only",
+      "recordClass": "CROSS_LEVEL_MAPPING",
+      "recordId": "XLEM-V1-INS-PROC-001@1.0.0",
+      "simulationChangeAuthorized": false
+    },
+    {
+      "activationAuthorized": false,
+      "classification": "NONCAUSAL_NO_GROUP_REQUIRED",
+      "graphChangeAuthorized": false,
+      "productionMutationAuthorized": false,
+      "reason": "Shadow binding only",
+      "recordClass": "CROSS_LEVEL_BINDING",
+      "recordId": "XLEB-V1-REL-INS-040-001@1.0.0",
+      "simulationChangeAuthorized": false
+    }
+  ],
+  "schemaVersion": "1.0.0"
+}

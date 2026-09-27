@@ -1,0 +1,42 @@
+{
+  "decisionPacketId": "DP-PSG-004-IMPLEMENTATION",
+  "excluded": [
+    "aggregate RDS migration",
+    "WP-PSG-005 adjudication",
+    "consumer behavior changes",
+    "lifecycle or activation changes"
+  ],
+  "phase0": {
+    "add": [
+      "ContributionGroup schema",
+      "ContributionResolutionRequest schema",
+      "ContributionResolutionReceipt schema",
+      "empty ContributionGroup registry",
+      "exact group validator",
+      "central resolution service",
+      "native-control adapters",
+      "hash/reference resolver",
+      "consumer gate interface",
+      "migration/review tooling"
+    ],
+    "graphChanges": 0,
+    "groups": 0,
+    "recordMigrations": 0,
+    "simulationChanges": 0
+  },
+  "phase1": {
+    "activationChanges": 0,
+    "explicitSelectionRequired": true,
+    "graphChanges": 0,
+    "groupId": "CONTRIB-PSY-LAYER-REPETITION-001",
+    "members": [
+      "REL-V1-PSY-LAYER-001",
+      "EA-V1-PSY-LAYER-001"
+    ],
+    "shadowOnly": true,
+    "simulationChanges": 0,
+    "sourceRecordsMutated": false
+  },
+  "productionChangeApplied": false,
+  "schemaVersion": "1.0.0"
+}
