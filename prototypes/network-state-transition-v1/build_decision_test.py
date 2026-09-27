@@ -52,7 +52,7 @@ def write_text(path: Path, value: str):
 
 
 def sha(path: Path):
-    return hashlib.sha256(path.read_bytes()).hexdigest()
+    return hashlib.sha256(path.read_bytes().replace(b"\r\n", b"\n")).hexdigest()
 
 
 def protected_hashes():
@@ -481,7 +481,8 @@ def main():
                                                         "wpPsg005": ["exact RDS/profile", "state/boundary/window", "constituent mapping", "cross-level route", "causalSourceEligible=false"],
                                                         "productionMutationAuthorized": False})
     write_json(DATA / "protected-production-hashes.json", {"schemaVersion": "1.0.0", "sourceMain": BASELINE,
-                                                            "algorithm": "SHA-256", "hashes": before})
+                                                            "algorithm": "SHA-256", "hashNormalization": "CRLF_TO_LF",
+                                                            "hashes": before})
     render_docs(results, handoffs, migration_data, consumer_data, options)
     print(json.dumps({"workPackage": "WP-PSG-003", "recommendation": options["recommendation"],
                       "syntheticCases": 10, "migrationRecords": migration_data["recordCount"],

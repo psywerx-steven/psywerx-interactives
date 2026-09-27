@@ -95,8 +95,9 @@ class NetworkStateDecisionTest(unittest.TestCase):
         rds = [e for e in entities if e["entityType"] == "RELATIONAL_DERIVED_STATE"]
         self.assertEqual((len(drivers), len(rds)), (770, 41))
         protection = read(DATA / "protected-production-hashes.json")
+        self.assertEqual(protection["hashNormalization"], "CRLF_TO_LF")
         for relative, expected in protection["hashes"].items():
-            actual = hashlib.sha256((ROOT / relative).read_bytes()).hexdigest()
+            actual = hashlib.sha256((ROOT / relative).read_bytes().replace(b"\r\n", b"\n")).hexdigest()
             self.assertEqual(actual, expected, relative)
 
     def test_required_artifacts_and_no_production_schema(self):
