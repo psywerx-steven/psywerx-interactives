@@ -108,7 +108,7 @@ class PostScaleUpGovernanceRoadmapTests(unittest.TestCase):
         self.assertEqual(debt["architectureDependentRelationships"] + debt["architectureIndependentRelationships"], 141)
         self.assertTrue(all(not row["productionMutationAuthorized"] for row in debt["records"]))
 
-    def test_work_packages_and_packets_stop_before_governance(self):
+    def test_work_packages_and_packets_preserve_bounded_governance(self):
         self.assertEqual(len(self.packages["workPackages"]), 10)
         self.assertEqual(len(self.packets["decisionPackets"]), 6)
         by_wp = {row["workPackageId"]: row for row in self.packages["workPackages"]}
@@ -129,8 +129,14 @@ class PostScaleUpGovernanceRoadmapTests(unittest.TestCase):
         self.assertIsNone(by_wp["WP-PSG-002"]["nextDecisionPacketId"])
         self.assertEqual(by_wp["WP-PSG-002"]["productionImplementationDecisionId"], "GOV-CROSS-LEVEL-IMPLEMENTATION-001-2026-09-26")
         self.assertEqual(by_wp["WP-PSG-002"]["rootIssueResolutionStatus"], "BOUNDED_ARCHITECTURE_IMPLEMENTED_REL_INS_040_SHADOW_ONLY")
+        self.assertEqual(by_wp["WP-PSG-003"]["stages"]["D_humanGovernanceDecision"], "COMPLETE_BOUNDED_DIRECTION_APPROVED")
+        self.assertEqual(by_wp["WP-PSG-003"]["governanceDecisionId"], "GOV-NETWORK-STATE-ARCHITECTURE-001-2026-09-26")
+        self.assertEqual(by_wp["WP-PSG-003"]["prototypeImplementationAuthorization"], "AUTHORIZED_NON_PRODUCTION_ONLY")
+        self.assertEqual(by_wp["WP-PSG-003"]["productionImplementationStatus"], "NOT_AUTHORIZED_NOT_STARTED")
+        self.assertEqual(by_wp["WP-PSG-003"]["rootIssueResolutionStatus"], "NOT_RESOLVED_DIRECTION_ONLY")
+        self.assertIsNone(by_wp["WP-PSG-003"]["nextDecisionPacketId"])
         for package in self.packages["workPackages"]:
-            if package["workPackageId"] not in {"WP-PSG-001", "WP-PSG-002"}:
+            if package["workPackageId"] not in {"WP-PSG-001", "WP-PSG-002", "WP-PSG-003"}:
                 self.assertEqual(package["stages"]["D_humanGovernanceDecision"], "NOT_STARTED")
             if package["workPackageId"] not in {"WP-PSG-001", "WP-PSG-002"}:
                 self.assertEqual(package["stages"]["E_implementation"], "NOT_STARTED")
@@ -142,7 +148,10 @@ class PostScaleUpGovernanceRoadmapTests(unittest.TestCase):
         self.assertEqual(by_packet["DP-PSG-002"]["humanDecisionStatus"], "HUMAN_APPROVED_BOUNDED_DIRECTION")
         self.assertEqual(by_packet["DP-PSG-002"]["humanDecisionId"], "GOV-CROSS-LEVEL-EXPOSURE-001-2026-09-26")
         self.assertEqual(by_packet["DP-PSG-002"]["approvedOption"], "BOUNDED_A_PLUS_B_PLUS_C")
-        self.assertEqual({row["humanDecisionStatus"] for key, row in by_packet.items() if key not in {"DP-PSG-001", "DP-PSG-002"}}, {"REQUIRED_NOT_TAKEN"})
+        self.assertEqual(by_packet["DP-PSG-003"]["humanDecisionStatus"], "HUMAN_APPROVED_BOUNDED_DIRECTION")
+        self.assertEqual(by_packet["DP-PSG-003"]["humanDecisionId"], "GOV-NETWORK-STATE-ARCHITECTURE-001-2026-09-26")
+        self.assertEqual(by_packet["DP-PSG-003"]["approvedOption"], "BOUNDED_A_PLUS_C")
+        self.assertEqual({row["humanDecisionStatus"] for key, row in by_packet.items() if key not in {"DP-PSG-001", "DP-PSG-002", "DP-PSG-003"}}, {"REQUIRED_NOT_TAKEN"})
 
     def test_protected_science_ontology_lifecycle_sources_and_network_state(self):
         protected = read(DATA / "protected-baseline.json")

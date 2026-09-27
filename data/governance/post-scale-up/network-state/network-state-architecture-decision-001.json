@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "1.0.0",
+  "decisionId": "GOV-NETWORK-STATE-ARCHITECTURE-001-2026-09-26",
+  "decisionDate": "2026-09-26",
+  "decisionPacketId": "DP-PSG-003",
+  "rootIssueId": "ROOT-NETWORK-STATE-TRANSITION-001",
+  "workPackageId": "WP-PSG-003",
+  "decisionTestArtifact": "docs/governance/post-scale-up/network-state/NETWORK_STATE_ARCHITECTURE_DECISION_PACKET.md",
+  "decisionAuthority": "HUMAN_GOVERNOR",
+  "decisionOutcome": "APPROVED_BOUNDED_A_PLUS_C_DIRECTION",
+  "approvedDirection": {
+    "supportedStateTransitions": "EXISTING_IMMUTABLE_TYPED_SCENARIO_STATE_DELTA_ONLY",
+    "scientificOperationReference": "EXISTING_SCENARIO_OPERATION_REFERENCE_NON_EFFECT_IDENTITY_ONLY",
+    "stateTruth": "EXISTING_STATE_RECEIPT_AND_RELATIONAL_STATE_LINEAGE",
+    "supportedOperations": [
+      "node",
+      "tie",
+      "membership",
+      "boundary",
+      "opportunity",
+      "access"
+    ],
+    "metricRecalculation": "EXACT_GOVERNED_RDS_COMPUTATION_PROFILE_OR_PRESERVED_LEGACY_DERIVATION_ONLY",
+    "unsupportedTransitionBehavior": "BLOCKED",
+    "empiricallyEstimatedTransitionBehavior": "BLOCKED",
+    "separateNetworkStateTransitionClass": "PROHIBITED_UNLESS_FUTURE_GOVERNED_DISTINCT_SCIENTIFIC_REQUIREMENT"
+  },
+  "authorizedActivities": [
+    "architecture direction",
+    "optional non-production schema or contract prototyping",
+    "optional non-production validator prototyping",
+    "synthetic test-only state-transition experiments",
+    "read-only migration and consumer-impact planning"
+  ],
+  "notAuthorized": [
+    "production Network State schema or state migration",
+    "new empirical causal claims",
+    "new or modified Relationships",
+    "new EffectAssertions",
+    "new HappeningTypes",
+    "cross-level execution",
+    "RDS causal-source eligibility",
+    "lifecycle change",
+    "activation",
+    "production state mutation"
+  ],
+  "productionState": {
+    "networkStateSchemasChanged": false,
+    "networkStateCatalogChanged": false,
+    "relationshipsChanged": 0,
+    "rdsChanged": 0,
+    "actionsEventsChanged": 0,
+    "crossLevelExecutionAuthorized": false,
+    "rdsCausalSourcesAuthorized": 0,
+    "lifecycleChanges": 0,
+    "activations": 0
+  },
+  "nextGovernedStage": "OPTIONAL_NON_PRODUCTION_IMPLEMENTATION_PROTOTYPE",
+  "productionImplementationStatus": "NOT_AUTHORIZED_NOT_STARTED"
+}

@@ -1,6 +1,6 @@
 # Root decision packages
 
-DP-PSG-001 records the bounded human-approved B+C architecture direction. The remaining packets are ready for later human scientific/architecture governance and have no selected option.
+DP-PSG-001, DP-PSG-002, DP-PSG-003 record bounded human-approved architecture directions. All other packets remain ready for later human scientific/architecture governance and have no selected option.
 
 ## DP-PSG-001 — Shared RDS definition and derivation contract
 
@@ -66,9 +66,9 @@ DP-PSG-001 records the bounded human-approved B+C architecture direction. The re
 
 - Root issue: `ROOT-NETWORK-STATE-TRANSITION-001`
 - Work package: `WP-PSG-003`
-- Human decision status: `REQUIRED_NOT_TAKEN`
-- Human decision ID: none
-- Approved option: none
+- Human decision status: `HUMAN_APPROVED_BOUNDED_DIRECTION`
+- Human decision ID: `GOV-NETWORK-STATE-ARCHITECTURE-001-2026-09-26`
+- Approved option: `BOUNDED_A_PLUS_C`
 - Current problem: Node, tie, membership and boundary operations are being confused with empirical interventions, metric recalculation and causal effects.
 - Why it matters: It directly contains 3 active-execution blockers and constrains 24 items in downstream root programs.
 - Current safe state: Preserve every recorded scientific, ontology, architecture and lifecycle state until a later human decision.
@@ -90,7 +90,7 @@ DP-PSG-001 records the bounded human-approved B+C architecture direction. The re
 - Architecture implications: Any selected representation requires a separately governed schema/validator design and migration plan.
 - Simulation implications: No option may imply numeric weight, propagation, recommendation or execution eligibility by itself.
 - Migration implications: Existing governed records remain valid; later implementation must be additive or explicitly migrated with rollback and protected-science comparison.
-- Recommended next test: Human architecture governance of the bounded A+C recommendation is the next step; do not implement or migrate production Network State.
+- Recommended next test: Build an isolated non-production contract/validator prototype only; do not alter production Network State or dependent science.
 
 ## DP-PSG-004 — Contribution identity and double-count control
 

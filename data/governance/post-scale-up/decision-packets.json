@@ -196,11 +196,22 @@
         "B is explicit but introduces a new architecture class and binding rules.",
         "C preserves safety while leaving legitimate network operations unavailable."
       ],
-      "recommendedNextResearchOrTest": "Human architecture governance of the bounded A+C recommendation is the next step; do not implement or migrate production Network State.",
-      "humanDecisionStatus": "REQUIRED_NOT_TAKEN",
-      "humanDecisionId": null,
-      "approvedOption": null,
-      "authorizationBoundary": null,
+      "recommendedNextResearchOrTest": "Build an isolated non-production contract/validator prototype only; do not alter production Network State or dependent science.",
+      "humanDecisionStatus": "HUMAN_APPROVED_BOUNDED_DIRECTION",
+      "humanDecisionId": "GOV-NETWORK-STATE-ARCHITECTURE-001-2026-09-26",
+      "approvedOption": "BOUNDED_A_PLUS_C",
+      "authorizationBoundary": [
+        "production Network State schema or state migration",
+        "new empirical causal claims",
+        "new or modified Relationships",
+        "new EffectAssertions",
+        "new HappeningTypes",
+        "cross-level execution",
+        "RDS causal-source eligibility",
+        "lifecycle change",
+        "activation",
+        "production state mutation"
+      ],
       "stageCDecisionTestStatus": "COMPLETE_READ_ONLY_RECOMMENDATION",
       "advisoryRecommendation": "BOUNDED_A_PLUS_C_USE_EXISTING_TYPED_SCENARIO_STATE_DELTA_AND_BLOCK_UNSUPPORTED_TRANSITIONS",
       "decisionTestArtifact": "docs/governance/post-scale-up/network-state/NETWORK_STATE_ARCHITECTURE_DECISION_PACKET.md"
