@@ -1,0 +1,90 @@
+{
+  "effectAssertionLifecycleActivationCounts": {
+    "GOVERNED::ACTIVE": 7,
+    "GOVERNED::INACTIVE": 4
+  },
+  "finding": "Class-specific controls exist and are internally useful, but no single exact cross-class registry/enforcer currently binds Relationship, EffectAssertion, RDS, derivation and state representations.",
+  "groupIdMultiplicityWithinProductionEffectAssertions": {
+    "CONTRIB-ENV-LAYER-NATURE-WALK-001": 1,
+    "CONTRIB-INF-F03-001": 1,
+    "CONTRIB-INF-F03-002": 1,
+    "CONTRIB-PSY-LAYER-0023": 1,
+    "CONTRIB-PSY-LAYER-CONTINGENCY-001": 1,
+    "CONTRIB-PSY-LAYER-CYBERBALL-001": 1,
+    "CONTRIB-PSY-LAYER-REFUTATION-001": 1,
+    "CONTRIB-PSY-LAYER-REPETITION-001": 1,
+    "CONTRIB-PSY-LAYER-TASK-OPTION-CHOICE-001": 1,
+    "CONTRIB-PSY-RETRIEVAL-ACCESS-001": 1,
+    "CONTRIB-TEC-LAYER-AI-LABEL-001": 1
+  },
+  "mechanisms": [
+    {
+      "consumer": "scripts/actions_events_v1.py",
+      "distinctContributionIds": 11,
+      "field": "contribution.groupId/role/reconciliation/relatedAssertionIds",
+      "policy": "CLASS_SPECIFIC_DUPLICATE_VALIDATION",
+      "recordClass": "EFFECT_ASSERTION",
+      "recordCount": 11
+    },
+    {
+      "consumer": "scripts/relationship_intervention_v1.py",
+      "distinctContributionIds": 0,
+      "field": "none",
+      "policy": "NO_NATIVE_CONTRIBUTION_REFERENCE",
+      "recordClass": "RELATIONSHIP_V1",
+      "recordCount": 8
+    },
+    {
+      "consumer": "audit/documentation",
+      "distinctContributionIds": 1,
+      "field": "sharedContributions",
+      "policy": "ONE_CONTRIBUTION_NO_ADDITIVE_COUNT",
+      "recordClass": "MATERIALIZATION_MANIFEST",
+      "recordCount": 1
+    },
+    {
+      "consumer": "scripts/relational_state_v1.py",
+      "distinctContributionIds": 1,
+      "field": "sharedContributionIdentity/contributionPolicy",
+      "policy": "RECALCULATION_ONLY_NO_CAUSAL_SUM",
+      "recordClass": "COLLECTION_DERIVATION_BINDING",
+      "recordCount": 1
+    },
+    {
+      "consumer": "scripts/rds_computation_v1.py",
+      "distinctContributionIds": 1,
+      "field": "provenance.legacyContributionIdentity/legacyContributionPolicy",
+      "policy": "PRESERVE_LEGACY_RECALCULATION_ONLY",
+      "recordClass": "RDS_COMPUTATION_PROFILE",
+      "recordCount": 1
+    },
+    {
+      "consumer": "scripts/cross_level_exposure_v1.py",
+      "distinctContributionIds": 0,
+      "field": "contributionRouteId/intermediateRouteIds/alternateRepresentationIds/constituentRepresentationIds/aggregateRepresentationIds (handoff only)",
+      "policy": "NONCAUSAL_NO_CONTRIBUTION",
+      "recordClass": "CROSS_LEVEL_EXPOSURE_MAPPING",
+      "recordCount": 0
+    },
+    {
+      "consumer": "scripts/relational_state_v1.py",
+      "distinctContributionIds": 0,
+      "field": "causalContribution=false/contributionIdentity",
+      "policy": "STATE_RECALCULATION_ONLY",
+      "recordClass": "NETWORK_STATE_RECEIPT",
+      "recordCount": 0
+    }
+  ],
+  "notice": "READ-ONLY / NON-PRODUCTION PRE-GOVERNANCE DECISION TEST",
+  "productionMutationAuthorized": false,
+  "schemaVersion": "1.0.0",
+  "totals": {
+    "distinctEffectAssertionGroupIds": 11,
+    "effectAssertionsWithContribution": 11,
+    "governedRecalculationContributionIds": 1,
+    "manifestSharedContributionGroups": 1,
+    "productionEffectAssertions": 11,
+    "productionRelationshipV1Records": 8,
+    "relationshipRecordsWithNativeContributionField": 0
+  }
+}

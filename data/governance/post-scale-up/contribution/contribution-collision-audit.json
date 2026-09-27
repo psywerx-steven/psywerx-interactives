@@ -1,0 +1,40 @@
+{
+  "collisionCounts": {
+    "contributionId": 0,
+    "governanceBlockerId": 1
+  },
+  "contributionIdCollisions": [],
+  "governanceBlockerIdCollisions": [
+    {
+      "finding": "ACCIDENTAL_HISTORICAL_IDENTIFIER_REUSE_NOT_INTENTIONAL_MERGE",
+      "identifier": "BLK-PSY-003",
+      "merged": false,
+      "normalization": "Use planning-only qualified handles; retain historical BLK-PSY-003 text and IDs unchanged until separate governance-normalization work.",
+      "staleness": "NEITHER_MEANING_PROVEN_STALE",
+      "useA": {
+        "affected": [
+          "PSY-003",
+          "PSY-116"
+        ],
+        "authority": "AUTHORITATIVE_FOR_CONSTRUCT_CLASSIFICATION_HISTORY",
+        "meaning": "Belief Strength versus Metacognitive Confidence same-proposition boundary",
+        "origin": "scripts/build_psychological_layer_governance_recommendations.py and generated Psychological governance recommendations",
+        "planningHandle": "BLK-PSY-003::CONSTRUCT-BOUNDARY"
+      },
+      "useB": {
+        "affected": [
+          "REL-V1-PSY-LAYER-001",
+          "EA-V1-PSY-LAYER-001",
+          "CONTRIB-PSY-LAYER-REPETITION-001"
+        ],
+        "authority": "AUTHORITATIVE_FOR_WP-PSG-004",
+        "meaning": "Relationship and EffectAssertion encode one repetition contribution",
+        "origin": "scripts/build_psychological_activation_audit_001.py and post-scale-up blocker dependency map",
+        "planningHandle": "BLK-PSY-003::CONTRIBUTION-REPETITION"
+      }
+    }
+  ],
+  "notice": "READ-ONLY / NON-PRODUCTION PRE-GOVERNANCE DECISION TEST",
+  "productionIdentifiersChanged": false,
+  "schemaVersion": "1.0.0"
+}
