@@ -180,7 +180,12 @@ def _receipt(state: str, reason: str, relationship: dict[str, Any], mapping: dic
         "activationAuthorized": False,
     }
     identity["deterministicFingerprint"] = digest(identity)
-    validate_schema("eligibility", {key: identity[key] for key in ("schemaVersion", "eligibilityState", "reason", "causalEvidence", "executionAuthority", "feedsGraphConstruction", "feedsSimulation", "activationAuthorized")} if False else {"schemaVersion": "1.0.0", "eligibilityState": state, "reason": reason, "causalEvidence": False, "executionAuthority": False, "feedsGraphConstruction": False, "feedsSimulation": False, "activationAuthorized": False})
+    validate_schema("eligibility", {
+        "schemaVersion": "1.0.0", "eligibilityState": state, "reason": reason,
+        "causalEvidence": False, "executionAuthority": False,
+        "feedsGraphConstruction": False, "feedsSimulation": False,
+        "activationAuthorized": False,
+    })
     receipt = {"schemaVersion": "1.0.0", **identity}
     validate_schema("provenance", receipt)
     return receipt
@@ -200,7 +205,9 @@ def resolve_shadow_eligibility(relationship_id: str, mapping_id: str, mapping_ve
     mapping = next((row for row in mappings if row["mappingId"] == mapping_id and row["mappingVersion"] == mapping_version), None)
     binding = next((row for row in bindings if row["bindingId"] == binding_id and row["bindingVersion"] == binding_version), None)
     if mapping is None or binding is None:
-        return _receipt("BLOCKED_NO_MAPPING", "Exact mapping and binding are absent", relationship, mapping, binding, context)
+        version_mismatch = (mapping is None and any(row["mappingId"] == mapping_id for row in mappings)) or (binding is None and any(row["bindingId"] == binding_id for row in bindings))
+        state = "BLOCKED_MAPPING_VERSION_MISMATCH" if version_mismatch else "BLOCKED_NO_MAPPING"
+        return _receipt(state, "Exact mapping and binding version are absent", relationship, mapping, binding, context)
     try:
         validate_attachment(mapping, binding, relationship)
     except ValidationError as error:
@@ -229,6 +236,54 @@ def resolve_shadow_eligibility(relationship_id: str, mapping_id: str, mapping_ve
     return _receipt("CROSS_LEVEL_READY_FOR_REVIEW", "Routing contract satisfied in shadow review only", relationship, mapping, binding, context)
 
 
+def rel_ins_040_shadow_receipts() -> dict[str, Any]:
+    """Return deterministic Phase 1 controls without feeding graph/simulation."""
+    mapping_id = "XLEM-V1-INSTITUTION-IMPLEMENTATION-PERCEPTION-001"
+    binding_id = "XLEB-V1-REL-INS-040-001"
+    _, bindings = load_registries()
+    require(len(bindings) == 1 and bindings[0]["relationshipId"] == "REL-INS-040", "Phase 1 is bounded to REL-INS-040")
+    binding = bindings[0]
+    base = {
+        "sourceEntityId": "INS-051", "targetEntityId": "PSY-022",
+        "sourceLevel": "INSTITUTION", "targetLevel": "PERSON",
+        "implementationSatisfied": True, "actualExposureSatisfied": True,
+        "perceptionSatisfied": True, "coverage": "COMPLETE",
+        "coverageRuleSatisfied": True,
+        "observedTemporalOrder": binding["temporalAlignment"],
+    }
+    cases = [
+        ("COMPLETE_ROUTE", base, "1.0.0", "1.0.0"),
+        ("MEMBERSHIP_ONLY", {**base, "actualExposureSatisfied": False, "membershipOnly": True}, "1.0.0", "1.0.0"),
+        ("ELIGIBILITY_ONLY", {**base, "actualExposureSatisfied": False, "eligibilityOnly": True}, "1.0.0", "1.0.0"),
+        ("IMPLEMENTED_NOT_EXPOSED", {**base, "actualExposureSatisfied": False}, "1.0.0", "1.0.0"),
+        ("WRONG_TARGET_PERSON", {**base, "targetEntityId": "PSY-023"}, "1.0.0", "1.0.0"),
+        ("PERCEPTION_REQUIREMENT_OMITTED", {**base, "perceptionSatisfied": False}, "1.0.0", "1.0.0"),
+        ("TEMPORAL_REVERSAL", {**base, "observedTemporalOrder": list(reversed(binding["temporalAlignment"]))}, "1.0.0", "1.0.0"),
+        ("WRONG_MAPPING_VERSION", base, "2.0.0", "1.0.0"),
+    ]
+    receipts = []
+    for case_id, context, mapping_version, binding_version in cases:
+        receipt = resolve_shadow_eligibility("REL-INS-040", mapping_id, mapping_version, binding_id, binding_version, context)
+        receipts.append({"caseId": case_id, "context": context, "receipt": receipt})
+    bad_binding = dict(binding)
+    bad_binding["relationshipRevisionOrHash"] = "0" * 64
+    relationship = _relationships()["REL-INS-040"]
+    mapping = load_registries()[0][0]
+    try:
+        validate_attachment(mapping, bad_binding, relationship)
+        hash_state, reason = "CROSS_LEVEL_READY_FOR_REVIEW", "unexpected"
+    except ValidationError as error:
+        hash_state, reason = "BLOCKED_INCOMPLETE_MAPPING", str(error)
+    receipts.append({"caseId": "WRONG_RELATIONSHIP_HASH", "context": base, "receipt": _receipt(hash_state, reason, relationship, mapping, bad_binding, base)})
+    return {
+        "schemaVersion": "1.0.0", "relationshipId": "REL-INS-040",
+        "mode": "SHADOW_VALIDATION_ONLY", "receipts": receipts,
+        "feedsGraphConstruction": False, "feedsSimulation": False,
+        "causalEvidence": False, "executionAuthority": False,
+        "activationAuthorized": False,
+    }
+
+
 def validate_repository() -> dict[str, Any]:
     validators()
     mappings, bindings = load_registries()
@@ -238,6 +293,11 @@ def validate_repository() -> dict[str, Any]:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--validate-repository", action="store_true")
+    parser.add_argument("--write-shadow-receipts", action="store_true")
     args = parser.parse_args()
     if args.validate_repository:
         print(json.dumps(validate_repository(), sort_keys=True))
+    if args.write_shadow_receipts:
+        output = DATA_DIR / "rel-ins-040-shadow-receipts.json"
+        output.write_text(json.dumps(rel_ins_040_shadow_receipts(), indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
+        print(output.relative_to(ROOT))

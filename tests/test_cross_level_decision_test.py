@@ -138,10 +138,10 @@ class CrossLevelDecisionTest(unittest.TestCase):
         package = next(row for row in packages["workPackages"] if row["workPackageId"] == "WP-PSG-002")
         self.assertEqual(package["stages"]["D_humanGovernanceDecision"], "COMPLETE_BOUNDED_DIRECTION_APPROVED")
         self.assertEqual(package["prototypeImplementationAuthorization"], "AUTHORIZED_NON_PRODUCTION_ONLY")
-        self.assertEqual(package["productionImplementationStatus"], "AUTHORIZED_NOT_STARTED")
+        self.assertEqual(package["productionImplementationStatus"], "PHASE_1_REL_INS_040_COMPLETE_SHADOW_ONLY")
         self.assertEqual(package["productionImplementationDecisionId"], "GOV-CROSS-LEVEL-IMPLEMENTATION-001-2026-09-26")
-        self.assertEqual(package["stages"]["E_implementation"], "COMPLETE_NON_PRODUCTION_REFERENCE_PROTOTYPE")
-        self.assertEqual(package["stages"]["F_migrationRevalidation"], "DRY_RUN_ONLY_COMPLETE_PRODUCTION_MIGRATION_NOT_AUTHORIZED")
+        self.assertEqual(package["stages"]["E_implementation"], "PRODUCTION_ARCHITECTURE_INSTALLED")
+        self.assertEqual(package["stages"]["F_migrationRevalidation"], "REL_INS_040_SHADOW_COMPATIBILITY_COMPLETE_OTHER_37_UNCHANGED")
 
     def test_consumers_remain_unintegrated(self):
         self.assertFalse(self.consumers["productionIntegrationAuthorized"])

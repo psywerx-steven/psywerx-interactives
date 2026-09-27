@@ -58,6 +58,52 @@ class CrossLevelExposureProductionTests(unittest.TestCase):
             {"mappings": 1, "bindings": 1, "relationshipMigrations": 0, "graphBehaviorChanges": 0, "simulationBehaviorChanges": 0, "causalAuthorizations": 0, "activations": 0},
         ])
 
+    def test_phase1_registry_is_rel_ins_040_only_and_relationship_unchanged(self):
+        mappings, bindings = xle.load_registries()
+        if not mappings:
+            self.skipTest("Phase 0 empty registry")
+        self.assertEqual((len(mappings), len(bindings)), (1, 1))
+        self.assertEqual(bindings[0]["relationshipId"], "REL-INS-040")
+        self.assertEqual(bindings[0]["relationshipRevisionOrHash"], xle.digest(self.relationship))
+        self.assertEqual((bindings[0]["sourceEntityId"], bindings[0]["targetEntityId"]), ("INS-051", "PSY-022"))
+        self.assertTrue(bindings[0]["shadowEligibilityOnly"])
+        self.assertFalse(bindings[0]["feedsGraphConstruction"] or bindings[0]["feedsSimulation"] or bindings[0]["executionAuthorized"])
+
+    def test_phase1_shadow_contexts_and_receipts(self):
+        mappings, _ = xle.load_registries()
+        if not mappings:
+            self.skipTest("Phase 0 empty registry")
+        bundle = xle.rel_ins_040_shadow_receipts()
+        expected = {
+            "COMPLETE_ROUTE": "CROSS_LEVEL_READY_FOR_REVIEW", "MEMBERSHIP_ONLY": "BLOCKED_NO_EXPOSURE_ROUTE",
+            "ELIGIBILITY_ONLY": "BLOCKED_NO_EXPOSURE_ROUTE", "IMPLEMENTED_NOT_EXPOSED": "BLOCKED_NO_EXPOSURE_ROUTE",
+            "WRONG_TARGET_PERSON": "BLOCKED_INCOMPLETE_MAPPING", "PERCEPTION_REQUIREMENT_OMITTED": "BLOCKED_PERCEPTION_ROUTE_REQUIRED",
+            "TEMPORAL_REVERSAL": "BLOCKED_TEMPORAL_MISMATCH", "WRONG_MAPPING_VERSION": "BLOCKED_MAPPING_VERSION_MISMATCH",
+            "WRONG_RELATIONSHIP_HASH": "BLOCKED_INCOMPLETE_MAPPING",
+        }
+        self.assertEqual({row["caseId"]: row["receipt"]["eligibilityState"] for row in bundle["receipts"]}, expected)
+        for row in bundle["receipts"]:
+            receipt = row["receipt"]
+            self.assertFalse(receipt["causalEvidence"] or receipt["executionAuthority"] or receipt["feedsGraphConstruction"] or receipt["feedsSimulation"] or receipt["activationAuthorized"])
+            self.assertEqual(len(receipt["deterministicFingerprint"]), 64)
+        self.assertEqual(bundle, read("data/cross-level-exposure-v1/rel-ins-040-shadow-receipts.json"))
+
+    def test_remaining_37_dry_run_relationships_are_unmapped(self):
+        dry = read("data/governance/post-scale-up/cross-level/cross-level-migration-dry-run.json")
+        affected = {row["relationshipId"] for row in dry["records"]}
+        self.assertEqual(len(affected), 38)
+        _, bindings = xle.load_registries()
+        self.assertEqual({row["relationshipId"] for row in bindings}, {"REL-INS-040"})
+        self.assertEqual(len(affected - {"REL-INS-040"}), 37)
+
+    def test_phase1_rollback_returns_to_legacy_only_without_relationship_rewrite(self):
+        before = xle.digest(self.relationship)
+        with patch.object(xle, "load_registries", return_value=([], [])):
+            receipt = xle.resolve_shadow_eligibility("REL-INS-040", "XLEM-V1-INSTITUTION-IMPLEMENTATION-PERCEPTION-001", "1.0.0", "XLEB-V1-REL-INS-040-001", "1.0.0", {"sourceLevel": "INSTITUTION", "targetLevel": "PERSON"})
+        self.assertEqual(receipt["eligibilityState"], "BLOCKED_NO_MAPPING")
+        current = next(row for row in read("data/relationships.json")["relationships"] if row["id"] == "REL-INS-040")
+        self.assertEqual(xle.digest(current), before)
+
     def test_mapping_and_binding_schema_and_exactness(self):
         mapping, binding = self.mapping(), self.binding()
         self.assertTrue(xle.validate_mapping(mapping))

@@ -1,0 +1,647 @@
+{
+  "schemaVersion": "1.0.0",
+  "relationshipId": "REL-INS-040",
+  "mode": "SHADOW_VALIDATION_ONLY",
+  "receipts": [
+    {
+      "caseId": "COMPLETE_ROUTE",
+      "context": {
+        "sourceEntityId": "INS-051",
+        "targetEntityId": "PSY-022",
+        "sourceLevel": "INSTITUTION",
+        "targetLevel": "PERSON",
+        "implementationSatisfied": true,
+        "actualExposureSatisfied": true,
+        "perceptionSatisfied": true,
+        "coverage": "COMPLETE",
+        "coverageRuleSatisfied": true,
+        "observedTemporalOrder": [
+          "SOURCE_STATE",
+          "IMPLEMENTATION_OR_TRANSMISSION",
+          "ACTUAL_EXPOSURE",
+          "PERCEIVED_EXPOSURE",
+          "TARGET_RESPONSE"
+        ]
+      },
+      "receipt": {
+        "schemaVersion": "1.0.0",
+        "relationshipId": "REL-INS-040",
+        "relationshipRevisionOrHash": "72e70e9653845179fe55d160b827c4dc0dbd7f324572a50c691ec0259947d21f",
+        "mappingId": "XLEM-V1-INSTITUTION-IMPLEMENTATION-PERCEPTION-001",
+        "mappingVersion": "1.0.0",
+        "bindingId": "XLEB-V1-REL-INS-040-001",
+        "bindingVersion": "1.0.0",
+        "sourceEntityId": "INS-051",
+        "targetEntityId": "PSY-022",
+        "sourceLevel": "INSTITUTION",
+        "targetLevel": "PERSON",
+        "routeType": "IMPLEMENTATION",
+        "routeStages": [
+          "SOURCE_STATE",
+          "IMPLEMENTATION_OR_TRANSMISSION",
+          "ACTUAL_EXPOSURE",
+          "PERCEIVED_EXPOSURE",
+          "TARGET_RESPONSE"
+        ],
+        "intermediateEntityIds": [],
+        "happeningTypeIds": [],
+        "implementationRequirement": {
+          "required": true,
+          "definition": "The specified impartial procedure is realized in practice for the applicable target set."
+        },
+        "actualExposureRequirement": {
+          "required": true,
+          "definition": "The target person actually encounters the implemented procedure."
+        },
+        "perceptionRequired": true,
+        "coverageRule": "An exact applicable target set is required; partial coverage is valid only when the evaluated person belongs to that set and was exposed.",
+        "temporalOrder": [
+          "SOURCE_STATE",
+          "IMPLEMENTATION_OR_TRANSMISSION",
+          "ACTUAL_EXPOSURE",
+          "PERCEIVED_EXPOSURE",
+          "TARGET_RESPONSE"
+        ],
+        "networkStateDependency": false,
+        "eligibilityState": "CROSS_LEVEL_READY_FOR_REVIEW",
+        "reason": "Routing contract satisfied in shadow review only",
+        "contextFingerprint": "496e18790be69cff67e84121556d2403221e4b53ff1593f6ea302296e16aea78",
+        "causalEvidence": false,
+        "executionAuthority": false,
+        "feedsGraphConstruction": false,
+        "feedsSimulation": false,
+        "activationAuthorized": false,
+        "deterministicFingerprint": "a9cec7e10814c538d584d054c6aefa3546856c49d0d85f7f5130dc3ec64ae033"
+      }
+    },
+    {
+      "caseId": "MEMBERSHIP_ONLY",
+      "context": {
+        "sourceEntityId": "INS-051",
+        "targetEntityId": "PSY-022",
+        "sourceLevel": "INSTITUTION",
+        "targetLevel": "PERSON",
+        "implementationSatisfied": true,
+        "actualExposureSatisfied": false,
+        "perceptionSatisfied": true,
+        "coverage": "COMPLETE",
+        "coverageRuleSatisfied": true,
+        "observedTemporalOrder": [
+          "SOURCE_STATE",
+          "IMPLEMENTATION_OR_TRANSMISSION",
+          "ACTUAL_EXPOSURE",
+          "PERCEIVED_EXPOSURE",
+          "TARGET_RESPONSE"
+        ],
+        "membershipOnly": true
+      },
+      "receipt": {
+        "schemaVersion": "1.0.0",
+        "relationshipId": "REL-INS-040",
+        "relationshipRevisionOrHash": "72e70e9653845179fe55d160b827c4dc0dbd7f324572a50c691ec0259947d21f",
+        "mappingId": "XLEM-V1-INSTITUTION-IMPLEMENTATION-PERCEPTION-001",
+        "mappingVersion": "1.0.0",
+        "bindingId": "XLEB-V1-REL-INS-040-001",
+        "bindingVersion": "1.0.0",
+        "sourceEntityId": "INS-051",
+        "targetEntityId": "PSY-022",
+        "sourceLevel": "INSTITUTION",
+        "targetLevel": "PERSON",
+        "routeType": "IMPLEMENTATION",
+        "routeStages": [
+          "SOURCE_STATE",
+          "IMPLEMENTATION_OR_TRANSMISSION",
+          "ACTUAL_EXPOSURE",
+          "PERCEIVED_EXPOSURE",
+          "TARGET_RESPONSE"
+        ],
+        "intermediateEntityIds": [],
+        "happeningTypeIds": [],
+        "implementationRequirement": {
+          "required": true,
+          "definition": "The specified impartial procedure is realized in practice for the applicable target set."
+        },
+        "actualExposureRequirement": {
+          "required": true,
+          "definition": "The target person actually encounters the implemented procedure."
+        },
+        "perceptionRequired": true,
+        "coverageRule": "An exact applicable target set is required; partial coverage is valid only when the evaluated person belongs to that set and was exposed.",
+        "temporalOrder": [
+          "SOURCE_STATE",
+          "IMPLEMENTATION_OR_TRANSMISSION",
+          "ACTUAL_EXPOSURE",
+          "PERCEIVED_EXPOSURE",
+          "TARGET_RESPONSE"
+        ],
+        "networkStateDependency": false,
+        "eligibilityState": "BLOCKED_NO_EXPOSURE_ROUTE",
+        "reason": "Membership, eligibility, assignment, or implementation alone is insufficient",
+        "contextFingerprint": "b830ce130887c1e4ef31a75148b1904eed3c9b76c05ead7bbcf5cc5a60a075cd",
+        "causalEvidence": false,
+        "executionAuthority": false,
+        "feedsGraphConstruction": false,
+        "feedsSimulation": false,
+        "activationAuthorized": false,
+        "deterministicFingerprint": "19b72b9f4f97ed1634eea6b0a0bb78be0bf58ef527d74e98f36012a886839c3b"
+      }
+    },
+    {
+      "caseId": "ELIGIBILITY_ONLY",
+      "context": {
+        "sourceEntityId": "INS-051",
+        "targetEntityId": "PSY-022",
+        "sourceLevel": "INSTITUTION",
+        "targetLevel": "PERSON",
+        "implementationSatisfied": true,
+        "actualExposureSatisfied": false,
+        "perceptionSatisfied": true,
+        "coverage": "COMPLETE",
+        "coverageRuleSatisfied": true,
+        "observedTemporalOrder": [
+          "SOURCE_STATE",
+          "IMPLEMENTATION_OR_TRANSMISSION",
+          "ACTUAL_EXPOSURE",
+          "PERCEIVED_EXPOSURE",
+          "TARGET_RESPONSE"
+        ],
+        "eligibilityOnly": true
+      },
+      "receipt": {
+        "schemaVersion": "1.0.0",
+        "relationshipId": "REL-INS-040",
+        "relationshipRevisionOrHash": "72e70e9653845179fe55d160b827c4dc0dbd7f324572a50c691ec0259947d21f",
+        "mappingId": "XLEM-V1-INSTITUTION-IMPLEMENTATION-PERCEPTION-001",
+        "mappingVersion": "1.0.0",
+        "bindingId": "XLEB-V1-REL-INS-040-001",
+        "bindingVersion": "1.0.0",
+        "sourceEntityId": "INS-051",
+        "targetEntityId": "PSY-022",
+        "sourceLevel": "INSTITUTION",
+        "targetLevel": "PERSON",
+        "routeType": "IMPLEMENTATION",
+        "routeStages": [
+          "SOURCE_STATE",
+          "IMPLEMENTATION_OR_TRANSMISSION",
+          "ACTUAL_EXPOSURE",
+          "PERCEIVED_EXPOSURE",
+          "TARGET_RESPONSE"
+        ],
+        "intermediateEntityIds": [],
+        "happeningTypeIds": [],
+        "implementationRequirement": {
+          "required": true,
+          "definition": "The specified impartial procedure is realized in practice for the applicable target set."
+        },
+        "actualExposureRequirement": {
+          "required": true,
+          "definition": "The target person actually encounters the implemented procedure."
+        },
+        "perceptionRequired": true,
+        "coverageRule": "An exact applicable target set is required; partial coverage is valid only when the evaluated person belongs to that set and was exposed.",
+        "temporalOrder": [
+          "SOURCE_STATE",
+          "IMPLEMENTATION_OR_TRANSMISSION",
+          "ACTUAL_EXPOSURE",
+          "PERCEIVED_EXPOSURE",
+          "TARGET_RESPONSE"
+        ],
+        "networkStateDependency": false,
+        "eligibilityState": "BLOCKED_NO_EXPOSURE_ROUTE",
+        "reason": "Membership, eligibility, assignment, or implementation alone is insufficient",
+        "contextFingerprint": "2a6027e3853f31e011dcf8f0a1968ae04c5afffd95a34abc25cac5613904042c",
+        "causalEvidence": false,
+        "executionAuthority": false,
+        "feedsGraphConstruction": false,
+        "feedsSimulation": false,
+        "activationAuthorized": false,
+        "deterministicFingerprint": "928ec3ca911ccd877e33ef49fa46d1c30aeec4fc56a6710ac3be22a3d4d002e9"
+      }
+    },
+    {
+      "caseId": "IMPLEMENTED_NOT_EXPOSED",
+      "context": {
+        "sourceEntityId": "INS-051",
+        "targetEntityId": "PSY-022",
+        "sourceLevel": "INSTITUTION",
+        "targetLevel": "PERSON",
+        "implementationSatisfied": true,
+        "actualExposureSatisfied": false,
+        "perceptionSatisfied": true,
+        "coverage": "COMPLETE",
+        "coverageRuleSatisfied": true,
+        "observedTemporalOrder": [
+          "SOURCE_STATE",
+          "IMPLEMENTATION_OR_TRANSMISSION",
+          "ACTUAL_EXPOSURE",
+          "PERCEIVED_EXPOSURE",
+          "TARGET_RESPONSE"
+        ]
+      },
+      "receipt": {
+        "schemaVersion": "1.0.0",
+        "relationshipId": "REL-INS-040",
+        "relationshipRevisionOrHash": "72e70e9653845179fe55d160b827c4dc0dbd7f324572a50c691ec0259947d21f",
+        "mappingId": "XLEM-V1-INSTITUTION-IMPLEMENTATION-PERCEPTION-001",
+        "mappingVersion": "1.0.0",
+        "bindingId": "XLEB-V1-REL-INS-040-001",
+        "bindingVersion": "1.0.0",
+        "sourceEntityId": "INS-051",
+        "targetEntityId": "PSY-022",
+        "sourceLevel": "INSTITUTION",
+        "targetLevel": "PERSON",
+        "routeType": "IMPLEMENTATION",
+        "routeStages": [
+          "SOURCE_STATE",
+          "IMPLEMENTATION_OR_TRANSMISSION",
+          "ACTUAL_EXPOSURE",
+          "PERCEIVED_EXPOSURE",
+          "TARGET_RESPONSE"
+        ],
+        "intermediateEntityIds": [],
+        "happeningTypeIds": [],
+        "implementationRequirement": {
+          "required": true,
+          "definition": "The specified impartial procedure is realized in practice for the applicable target set."
+        },
+        "actualExposureRequirement": {
+          "required": true,
+          "definition": "The target person actually encounters the implemented procedure."
+        },
+        "perceptionRequired": true,
+        "coverageRule": "An exact applicable target set is required; partial coverage is valid only when the evaluated person belongs to that set and was exposed.",
+        "temporalOrder": [
+          "SOURCE_STATE",
+          "IMPLEMENTATION_OR_TRANSMISSION",
+          "ACTUAL_EXPOSURE",
+          "PERCEIVED_EXPOSURE",
+          "TARGET_RESPONSE"
+        ],
+        "networkStateDependency": false,
+        "eligibilityState": "BLOCKED_NO_EXPOSURE_ROUTE",
+        "reason": "Membership, eligibility, assignment, or implementation alone is insufficient",
+        "contextFingerprint": "2c410cd7db9a54cf10f997e7c1801d965fdc300c63b13f92e345ed45548f8db3",
+        "causalEvidence": false,
+        "executionAuthority": false,
+        "feedsGraphConstruction": false,
+        "feedsSimulation": false,
+        "activationAuthorized": false,
+        "deterministicFingerprint": "4f1c110f41080deb251ad0cc193d37d727d95e764dfb9f5fa03cad51d8920734"
+      }
+    },
+    {
+      "caseId": "WRONG_TARGET_PERSON",
+      "context": {
+        "sourceEntityId": "INS-051",
+        "targetEntityId": "PSY-023",
+        "sourceLevel": "INSTITUTION",
+        "targetLevel": "PERSON",
+        "implementationSatisfied": true,
+        "actualExposureSatisfied": true,
+        "perceptionSatisfied": true,
+        "coverage": "COMPLETE",
+        "coverageRuleSatisfied": true,
+        "observedTemporalOrder": [
+          "SOURCE_STATE",
+          "IMPLEMENTATION_OR_TRANSMISSION",
+          "ACTUAL_EXPOSURE",
+          "PERCEIVED_EXPOSURE",
+          "TARGET_RESPONSE"
+        ]
+      },
+      "receipt": {
+        "schemaVersion": "1.0.0",
+        "relationshipId": "REL-INS-040",
+        "relationshipRevisionOrHash": "72e70e9653845179fe55d160b827c4dc0dbd7f324572a50c691ec0259947d21f",
+        "mappingId": "XLEM-V1-INSTITUTION-IMPLEMENTATION-PERCEPTION-001",
+        "mappingVersion": "1.0.0",
+        "bindingId": "XLEB-V1-REL-INS-040-001",
+        "bindingVersion": "1.0.0",
+        "sourceEntityId": "INS-051",
+        "targetEntityId": "PSY-022",
+        "sourceLevel": "INSTITUTION",
+        "targetLevel": "PERSON",
+        "routeType": "IMPLEMENTATION",
+        "routeStages": [
+          "SOURCE_STATE",
+          "IMPLEMENTATION_OR_TRANSMISSION",
+          "ACTUAL_EXPOSURE",
+          "PERCEIVED_EXPOSURE",
+          "TARGET_RESPONSE"
+        ],
+        "intermediateEntityIds": [],
+        "happeningTypeIds": [],
+        "implementationRequirement": {
+          "required": true,
+          "definition": "The specified impartial procedure is realized in practice for the applicable target set."
+        },
+        "actualExposureRequirement": {
+          "required": true,
+          "definition": "The target person actually encounters the implemented procedure."
+        },
+        "perceptionRequired": true,
+        "coverageRule": "An exact applicable target set is required; partial coverage is valid only when the evaluated person belongs to that set and was exposed.",
+        "temporalOrder": [
+          "SOURCE_STATE",
+          "IMPLEMENTATION_OR_TRANSMISSION",
+          "ACTUAL_EXPOSURE",
+          "PERCEIVED_EXPOSURE",
+          "TARGET_RESPONSE"
+        ],
+        "networkStateDependency": false,
+        "eligibilityState": "BLOCKED_INCOMPLETE_MAPPING",
+        "reason": "Context source/target does not match binding",
+        "contextFingerprint": "d3a90057efc0d009fd3ca8bc8be8d8fbd4dc23245814ace76b3e72e2750e3d0d",
+        "causalEvidence": false,
+        "executionAuthority": false,
+        "feedsGraphConstruction": false,
+        "feedsSimulation": false,
+        "activationAuthorized": false,
+        "deterministicFingerprint": "588151c5e83752807e59751d3e804467a407cc33fa4e4f48bfe22e0dece4aa06"
+      }
+    },
+    {
+      "caseId": "PERCEPTION_REQUIREMENT_OMITTED",
+      "context": {
+        "sourceEntityId": "INS-051",
+        "targetEntityId": "PSY-022",
+        "sourceLevel": "INSTITUTION",
+        "targetLevel": "PERSON",
+        "implementationSatisfied": true,
+        "actualExposureSatisfied": true,
+        "perceptionSatisfied": false,
+        "coverage": "COMPLETE",
+        "coverageRuleSatisfied": true,
+        "observedTemporalOrder": [
+          "SOURCE_STATE",
+          "IMPLEMENTATION_OR_TRANSMISSION",
+          "ACTUAL_EXPOSURE",
+          "PERCEIVED_EXPOSURE",
+          "TARGET_RESPONSE"
+        ]
+      },
+      "receipt": {
+        "schemaVersion": "1.0.0",
+        "relationshipId": "REL-INS-040",
+        "relationshipRevisionOrHash": "72e70e9653845179fe55d160b827c4dc0dbd7f324572a50c691ec0259947d21f",
+        "mappingId": "XLEM-V1-INSTITUTION-IMPLEMENTATION-PERCEPTION-001",
+        "mappingVersion": "1.0.0",
+        "bindingId": "XLEB-V1-REL-INS-040-001",
+        "bindingVersion": "1.0.0",
+        "sourceEntityId": "INS-051",
+        "targetEntityId": "PSY-022",
+        "sourceLevel": "INSTITUTION",
+        "targetLevel": "PERSON",
+        "routeType": "IMPLEMENTATION",
+        "routeStages": [
+          "SOURCE_STATE",
+          "IMPLEMENTATION_OR_TRANSMISSION",
+          "ACTUAL_EXPOSURE",
+          "PERCEIVED_EXPOSURE",
+          "TARGET_RESPONSE"
+        ],
+        "intermediateEntityIds": [],
+        "happeningTypeIds": [],
+        "implementationRequirement": {
+          "required": true,
+          "definition": "The specified impartial procedure is realized in practice for the applicable target set."
+        },
+        "actualExposureRequirement": {
+          "required": true,
+          "definition": "The target person actually encounters the implemented procedure."
+        },
+        "perceptionRequired": true,
+        "coverageRule": "An exact applicable target set is required; partial coverage is valid only when the evaluated person belongs to that set and was exposed.",
+        "temporalOrder": [
+          "SOURCE_STATE",
+          "IMPLEMENTATION_OR_TRANSMISSION",
+          "ACTUAL_EXPOSURE",
+          "PERCEIVED_EXPOSURE",
+          "TARGET_RESPONSE"
+        ],
+        "networkStateDependency": false,
+        "eligibilityState": "BLOCKED_PERCEPTION_ROUTE_REQUIRED",
+        "reason": "Required perception route not established",
+        "contextFingerprint": "7f198e6fa00625e1c703c58c9bea2d09133946940de4b109e97d5d53e6a250ce",
+        "causalEvidence": false,
+        "executionAuthority": false,
+        "feedsGraphConstruction": false,
+        "feedsSimulation": false,
+        "activationAuthorized": false,
+        "deterministicFingerprint": "77163bcc886ae9543a170be7a7677a279e982f69079c429ca20066412b3f043f"
+      }
+    },
+    {
+      "caseId": "TEMPORAL_REVERSAL",
+      "context": {
+        "sourceEntityId": "INS-051",
+        "targetEntityId": "PSY-022",
+        "sourceLevel": "INSTITUTION",
+        "targetLevel": "PERSON",
+        "implementationSatisfied": true,
+        "actualExposureSatisfied": true,
+        "perceptionSatisfied": true,
+        "coverage": "COMPLETE",
+        "coverageRuleSatisfied": true,
+        "observedTemporalOrder": [
+          "TARGET_RESPONSE",
+          "PERCEIVED_EXPOSURE",
+          "ACTUAL_EXPOSURE",
+          "IMPLEMENTATION_OR_TRANSMISSION",
+          "SOURCE_STATE"
+        ]
+      },
+      "receipt": {
+        "schemaVersion": "1.0.0",
+        "relationshipId": "REL-INS-040",
+        "relationshipRevisionOrHash": "72e70e9653845179fe55d160b827c4dc0dbd7f324572a50c691ec0259947d21f",
+        "mappingId": "XLEM-V1-INSTITUTION-IMPLEMENTATION-PERCEPTION-001",
+        "mappingVersion": "1.0.0",
+        "bindingId": "XLEB-V1-REL-INS-040-001",
+        "bindingVersion": "1.0.0",
+        "sourceEntityId": "INS-051",
+        "targetEntityId": "PSY-022",
+        "sourceLevel": "INSTITUTION",
+        "targetLevel": "PERSON",
+        "routeType": "IMPLEMENTATION",
+        "routeStages": [
+          "SOURCE_STATE",
+          "IMPLEMENTATION_OR_TRANSMISSION",
+          "ACTUAL_EXPOSURE",
+          "PERCEIVED_EXPOSURE",
+          "TARGET_RESPONSE"
+        ],
+        "intermediateEntityIds": [],
+        "happeningTypeIds": [],
+        "implementationRequirement": {
+          "required": true,
+          "definition": "The specified impartial procedure is realized in practice for the applicable target set."
+        },
+        "actualExposureRequirement": {
+          "required": true,
+          "definition": "The target person actually encounters the implemented procedure."
+        },
+        "perceptionRequired": true,
+        "coverageRule": "An exact applicable target set is required; partial coverage is valid only when the evaluated person belongs to that set and was exposed.",
+        "temporalOrder": [
+          "SOURCE_STATE",
+          "IMPLEMENTATION_OR_TRANSMISSION",
+          "ACTUAL_EXPOSURE",
+          "PERCEIVED_EXPOSURE",
+          "TARGET_RESPONSE"
+        ],
+        "networkStateDependency": false,
+        "eligibilityState": "BLOCKED_TEMPORAL_MISMATCH",
+        "reason": "Observed order does not match binding",
+        "contextFingerprint": "20cb93343722db56d6708d80116be88eb7ca7f0b49cee2553b74f4a7321504d3",
+        "causalEvidence": false,
+        "executionAuthority": false,
+        "feedsGraphConstruction": false,
+        "feedsSimulation": false,
+        "activationAuthorized": false,
+        "deterministicFingerprint": "0b683e468e72866aa7d21b3b8d689a9222ccf1257843ac8f076735ac4dd62571"
+      }
+    },
+    {
+      "caseId": "WRONG_MAPPING_VERSION",
+      "context": {
+        "sourceEntityId": "INS-051",
+        "targetEntityId": "PSY-022",
+        "sourceLevel": "INSTITUTION",
+        "targetLevel": "PERSON",
+        "implementationSatisfied": true,
+        "actualExposureSatisfied": true,
+        "perceptionSatisfied": true,
+        "coverage": "COMPLETE",
+        "coverageRuleSatisfied": true,
+        "observedTemporalOrder": [
+          "SOURCE_STATE",
+          "IMPLEMENTATION_OR_TRANSMISSION",
+          "ACTUAL_EXPOSURE",
+          "PERCEIVED_EXPOSURE",
+          "TARGET_RESPONSE"
+        ]
+      },
+      "receipt": {
+        "schemaVersion": "1.0.0",
+        "relationshipId": "REL-INS-040",
+        "relationshipRevisionOrHash": "72e70e9653845179fe55d160b827c4dc0dbd7f324572a50c691ec0259947d21f",
+        "mappingId": null,
+        "mappingVersion": null,
+        "bindingId": "XLEB-V1-REL-INS-040-001",
+        "bindingVersion": "1.0.0",
+        "sourceEntityId": "INS-051",
+        "targetEntityId": "PSY-022",
+        "sourceLevel": "INSTITUTION",
+        "targetLevel": "PERSON",
+        "routeType": null,
+        "routeStages": [],
+        "intermediateEntityIds": [],
+        "happeningTypeIds": [],
+        "implementationRequirement": {
+          "required": true,
+          "definition": "The specified impartial procedure is realized in practice for the applicable target set."
+        },
+        "actualExposureRequirement": {
+          "required": true,
+          "definition": "The target person actually encounters the implemented procedure."
+        },
+        "perceptionRequired": true,
+        "coverageRule": "An exact applicable target set is required; partial coverage is valid only when the evaluated person belongs to that set and was exposed.",
+        "temporalOrder": [
+          "SOURCE_STATE",
+          "IMPLEMENTATION_OR_TRANSMISSION",
+          "ACTUAL_EXPOSURE",
+          "PERCEIVED_EXPOSURE",
+          "TARGET_RESPONSE"
+        ],
+        "networkStateDependency": false,
+        "eligibilityState": "BLOCKED_MAPPING_VERSION_MISMATCH",
+        "reason": "Exact mapping and binding version are absent",
+        "contextFingerprint": "496e18790be69cff67e84121556d2403221e4b53ff1593f6ea302296e16aea78",
+        "causalEvidence": false,
+        "executionAuthority": false,
+        "feedsGraphConstruction": false,
+        "feedsSimulation": false,
+        "activationAuthorized": false,
+        "deterministicFingerprint": "797375013cc35d5316328c6bf04f44d9a151a3b143e5afa261c0886cb9062b49"
+      }
+    },
+    {
+      "caseId": "WRONG_RELATIONSHIP_HASH",
+      "context": {
+        "sourceEntityId": "INS-051",
+        "targetEntityId": "PSY-022",
+        "sourceLevel": "INSTITUTION",
+        "targetLevel": "PERSON",
+        "implementationSatisfied": true,
+        "actualExposureSatisfied": true,
+        "perceptionSatisfied": true,
+        "coverage": "COMPLETE",
+        "coverageRuleSatisfied": true,
+        "observedTemporalOrder": [
+          "SOURCE_STATE",
+          "IMPLEMENTATION_OR_TRANSMISSION",
+          "ACTUAL_EXPOSURE",
+          "PERCEIVED_EXPOSURE",
+          "TARGET_RESPONSE"
+        ]
+      },
+      "receipt": {
+        "schemaVersion": "1.0.0",
+        "relationshipId": "REL-INS-040",
+        "relationshipRevisionOrHash": "72e70e9653845179fe55d160b827c4dc0dbd7f324572a50c691ec0259947d21f",
+        "mappingId": "XLEM-V1-INSTITUTION-IMPLEMENTATION-PERCEPTION-001",
+        "mappingVersion": "1.0.0",
+        "bindingId": "XLEB-V1-REL-INS-040-001",
+        "bindingVersion": "1.0.0",
+        "sourceEntityId": "INS-051",
+        "targetEntityId": "PSY-022",
+        "sourceLevel": "INSTITUTION",
+        "targetLevel": "PERSON",
+        "routeType": "IMPLEMENTATION",
+        "routeStages": [
+          "SOURCE_STATE",
+          "IMPLEMENTATION_OR_TRANSMISSION",
+          "ACTUAL_EXPOSURE",
+          "PERCEIVED_EXPOSURE",
+          "TARGET_RESPONSE"
+        ],
+        "intermediateEntityIds": [],
+        "happeningTypeIds": [],
+        "implementationRequirement": {
+          "required": true,
+          "definition": "The specified impartial procedure is realized in practice for the applicable target set."
+        },
+        "actualExposureRequirement": {
+          "required": true,
+          "definition": "The target person actually encounters the implemented procedure."
+        },
+        "perceptionRequired": true,
+        "coverageRule": "An exact applicable target set is required; partial coverage is valid only when the evaluated person belongs to that set and was exposed.",
+        "temporalOrder": [
+          "SOURCE_STATE",
+          "IMPLEMENTATION_OR_TRANSMISSION",
+          "ACTUAL_EXPOSURE",
+          "PERCEIVED_EXPOSURE",
+          "TARGET_RESPONSE"
+        ],
+        "networkStateDependency": false,
+        "eligibilityState": "BLOCKED_INCOMPLETE_MAPPING",
+        "reason": "Relationship hash mismatch",
+        "contextFingerprint": "496e18790be69cff67e84121556d2403221e4b53ff1593f6ea302296e16aea78",
+        "causalEvidence": false,
+        "executionAuthority": false,
+        "feedsGraphConstruction": false,
+        "feedsSimulation": false,
+        "activationAuthorized": false,
+        "deterministicFingerprint": "a1ef2d8f83f865079ea568bfa6013f9b2c71052141d17432d81d778aa84fafa1"
+      }
+    }
+  ],
+  "feedsGraphConstruction": false,
+  "feedsSimulation": false,
+  "causalEvidence": false,
+  "executionAuthority": false,
+  "activationAuthorized": false
+}
