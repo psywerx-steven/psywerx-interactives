@@ -1,0 +1,39 @@
+{
+  "notice": "READ-ONLY / NON-PRODUCTION PRE-GOVERNANCE DECISION TEST",
+  "schemaVersion": "1.0.0",
+  "wpPsg002": {
+    "countsAsContribution": false,
+    "crossLevelMappingRole": "EXPOSURE_ROUTING_ONLY"
+  },
+  "wpPsg003": {
+    "h12": "NONCAUSAL_STATE_DERIVATION",
+    "h20": "NONCAUSAL_STATE_DERIVATION",
+    "productionStatusChanged": false
+  },
+  "wpPsg005": {
+    "adjudicationPerformed": false,
+    "requiredInputs": [
+      "aggregate RDS ID",
+      "exact profile and binding",
+      "constituent mappings",
+      "constituent contribution IDs",
+      "candidate aggregate contribution ID",
+      "overlap status",
+      "cross-level mapping",
+      "network state/boundary/window when applicable",
+      "temporal alignment",
+      "causalSourceEligible=false",
+      "independenceStatus"
+    ],
+    "status": "NOT_STARTED"
+  },
+  "wpPsg009": {
+    "dependentReviews": [
+      "Relationships lacking exact external contribution membership where alternate representations exist",
+      "TOTAL_EFFECT versus MODELED_LOCAL_LINK reconciliation",
+      "aggregate-source Relationships with unresolved constituent overlap",
+      "interaction/moderation records requiring separate contribution semantics"
+    ],
+    "status": "NOT_STARTED"
+  }
+}

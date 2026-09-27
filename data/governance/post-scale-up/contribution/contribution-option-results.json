@@ -1,0 +1,105 @@
+{
+  "dimensions": [
+    "scientific fidelity",
+    "duplicate prevention",
+    "false-collapse risk",
+    "cross-class coverage",
+    "runtime enforceability",
+    "central governance clarity",
+    "migration surface",
+    "backward compatibility",
+    "RDS aggregate compatibility",
+    "Network State compatibility",
+    "Cross-level compatibility",
+    "A&E compatibility",
+    "Relationship compatibility",
+    "FCM/simulation safety",
+    "external consumer safety",
+    "rollback"
+  ],
+  "humanDecisionTaken": false,
+  "notice": "READ-ONLY / NON-PRODUCTION PRE-GOVERNANCE DECISION TEST",
+  "options": {
+    "A": {
+      "failed": "A registry without a mandatory enforcement gate remains advisory and risks false grouping.",
+      "result": "VIABLE_BUT_INCOMPLETE_ALONE",
+      "worked": "One immutable cross-class identity can reconcile Relationship, EA, RDS, derivation and state representations."
+    },
+    "A_PLUS_B": {
+      "failed": "Replacing native policies would force needless migration.",
+      "result": "VIABLE_WITH_NATIVE_COMPATIBILITY_GAP",
+      "worked": "Central truth plus consumer enforcement prevents duplicate propagation."
+    },
+    "A_PLUS_B_PLUS_C": {
+      "failed": "Requires strict scope identity, exact versions/hashes, explicit selection, and no automatic group inference.",
+      "result": "RECOMMENDED_ADVISORY_BOUNDED",
+      "worked": "Immutable cross-class groups for explicit cases, native class controls retained, and one fail-closed resolution gate before causal consumption."
+    },
+    "A_PLUS_C": {
+      "failed": "Metadata alone does not protect consumers.",
+      "result": "VIABLE_WITH_ENFORCEMENT_GAP",
+      "worked": "Central cross-class identity supplements native controls and preserves backward compatibility."
+    },
+    "B": {
+      "failed": "Every consumer must rediscover semantics; one missed consumer double counts and lineage is not contribution identity.",
+      "result": "REJECT_AS_STANDALONE",
+      "worked": "Small migration surface and existing lineage can inform reconciliation."
+    },
+    "C": {
+      "failed": "Cannot resolve Relationship+EA or constituent+aggregate cases across classes.",
+      "result": "SAFE_BUT_FRAGMENTED",
+      "worked": "Existing EA and recalculation controls fail closed within their classes."
+    }
+  },
+  "qualitativeMatrix": {
+    "A": {
+      "FCM/external consumer safety": "Unsafe unless consumers enforce",
+      "RDS/Network/Cross-level compatibility": "Can span all while preserving noncausal roles",
+      "cross-class coverage": "Strong",
+      "duplicate prevention": "Central identity but no enforcement alone",
+      "migration and compatibility": "Moderate additive registry; native controls risk duplication",
+      "rollback": "Registry removal is additive",
+      "runtime enforceability": "Incomplete alone",
+      "scientific fidelity": "Good if membership is explicitly adjudicated; false-collapse risk otherwise"
+    },
+    "A_PLUS_B_PLUS_C": {
+      "FCM/external consumer safety": "Resolved-set contract or fail closed",
+      "RDS/Network/Cross-level compatibility": "Derivation, recalculation and exposure routing stay noncausal; aggregate overlap blocks",
+      "cross-class coverage": "Strong only for explicitly grouped cases",
+      "duplicate prevention": "Central fail-closed resolver",
+      "migration and compatibility": "Additive membership; historical records can remain untouched",
+      "rollback": "Remove registry/resolver integration and retain native controls",
+      "runtime enforceability": "One mandatory boundary plus native validators",
+      "scientific fidelity": "Explicit scoped identity with native semantics retained"
+    },
+    "B": {
+      "FCM/external consumer safety": "High missed-enforcement risk",
+      "RDS/Network/Cross-level compatibility": "Requires each subsystem to reinterpret links",
+      "cross-class coverage": "Theoretical but distributed",
+      "duplicate prevention": "Inconsistent across consumers",
+      "migration and compatibility": "Low initial migration, high consumer burden",
+      "rollback": "Simple but safety is not achieved",
+      "runtime enforceability": "Fragile",
+      "scientific fidelity": "Lineage cannot prove identity"
+    },
+    "C": {
+      "FCM/external consumer safety": "Cannot reconcile multi-class input",
+      "RDS/Network/Cross-level compatibility": "Keeps unresolved cross-class cases blocked",
+      "cross-class coverage": "Poor",
+      "duplicate prevention": "Good only within native subsystem",
+      "migration and compatibility": "Lowest migration and strongest compatibility",
+      "rollback": "Existing state retained",
+      "runtime enforceability": "Fragmented",
+      "scientific fidelity": "Conservative within classes"
+    }
+  },
+  "recommendation": "BOUNDED_A_PLUS_B_PLUS_C_EXPLICIT_CROSS_CLASS_GROUPS_NATIVE_CONTROLS_CENTRAL_FAIL_CLOSED_ENFORCEMENT",
+  "schemaVersion": "1.0.0",
+  "skepticalReview": [
+    "Groups can collapse distinct effects unless exposure/change, target change, contrast, unit, time and pathway scope align.",
+    "Total effects and local links require explicit pathway relations; graph reachability is insufficient.",
+    "Aggregate routes remain blocked until WP-PSG-005 establishes independence.",
+    "External consumers remain unsafe unless they consume only centrally resolved sets.",
+    "Historical records can remain untouched because registry membership may be additive and exact-hash bound."
+  ]
+}

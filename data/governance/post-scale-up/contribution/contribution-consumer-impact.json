@@ -1,0 +1,62 @@
+{
+  "currentBehaviorChanged": false,
+  "notice": "READ-ONLY / NON-PRODUCTION PRE-GOVERNANCE DECISION TEST",
+  "recommendedEnforcementBoundary": "One central contribution-resolution gate before any future graph/simulation assembly; native subsystem validators remain.",
+  "records": [
+    {
+      "classification": "CLASS_SPECIFIC_AWARENESS",
+      "consumer": "scripts/actions_events_v1.py",
+      "finding": "Validates duplicate EAs within one contribution group; cannot bind a Relationship lacking membership.",
+      "productionChangeRequiredNow": false
+    },
+    {
+      "classification": "NO_CONTRIBUTION_AWARENESS",
+      "consumer": "scripts/relationship_intervention_v1.py",
+      "finding": "Validates Relationships but has no cross-class contribution identity.",
+      "productionChangeRequiredNow": false
+    },
+    {
+      "classification": "NO_CONTRIBUTION_AWARENESS",
+      "consumer": "scripts/build_relationships.py",
+      "finding": "Build path does not reconcile EA/RDS/state representations.",
+      "productionChangeRequiredNow": false
+    },
+    {
+      "classification": "CLASS_SPECIFIC_AWARENESS",
+      "consumer": "scripts/rds_computation_v1.py",
+      "finding": "Preserves the legacy recalculation-only identity and policy; causal-source execution remains false.",
+      "productionChangeRequiredNow": false
+    },
+    {
+      "classification": "CLASS_SPECIFIC_AWARENESS",
+      "consumer": "scripts/relational_state_v1.py",
+      "finding": "Requires exact derivation contribution identity and emits causalContribution=false.",
+      "productionChangeRequiredNow": false
+    },
+    {
+      "classification": "NO_CAUSAL_CONSUMPTION",
+      "consumer": "scripts/cross_level_exposure_v1.py",
+      "finding": "Mapping/binding are noncausal and do not count as contributions.",
+      "productionChangeRequiredNow": false
+    },
+    {
+      "classification": "NO_CONTRIBUTION_AWARENESS",
+      "consumer": "scenario-service/src/openai-service.js",
+      "finding": "No contribution-aware graph assembly found; future causal consumer must fail closed.",
+      "productionChangeRequiredNow": false
+    },
+    {
+      "classification": "UNKNOWN_NO_INTERNAL_ACTIVE_CROSS_CLASS_CONSUMER_FOUND",
+      "consumer": "repository FCM/model construction",
+      "finding": "No central active graph consumer enforcing cross-class mutual exclusion was found.",
+      "productionChangeRequiredNow": false
+    },
+    {
+      "classification": "UNKNOWN",
+      "consumer": "external consumers",
+      "finding": "Must consume a centrally validated resolved representation set or fail closed.",
+      "productionChangeRequiredNow": false
+    }
+  ],
+  "schemaVersion": "1.0.0"
+}

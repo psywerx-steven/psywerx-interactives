@@ -1,0 +1,339 @@
+{
+  "baseline": "24a406468180a35af5beb74df427053cc1536090",
+  "boundaries": {
+    "crossLevelMappingCountsAsContribution": false,
+    "derivationCreatesCausality": false,
+    "evidenceIdentityIsContributionIdentity": false,
+    "graphReachabilityInfersPathwayIdentity": false,
+    "interaction": "SEPARATE_INTERACTION_OR_MODIFIER_SEMANTICS_NEVER_FLATTEN_AUTOMATICALLY",
+    "mechanismIdentityIsContributionIdentity": false,
+    "stateRecalculationCreatesCausality": false,
+    "totalEffectLocalLinkReconciliation": "EXPLICIT_PATHWAY_RELATION_REQUIRED_NO_GRAPH_INFERENCE"
+  },
+  "groups": [
+    {
+      "causalAuthority": false,
+      "causalIndependenceStatus": "SAME_CONTRIBUTION_CONFIRMED",
+      "constituentOverlapStatus": "EXPLICIT_OR_UNKNOWN",
+      "consumerPolicy": "EXPLICIT_FAIL_CLOSED",
+      "countingPolicy": "MUTUALLY_EXCLUSIVE_REPRESENTATIONS",
+      "crossLevelRouteReferences": [],
+      "derivationPolicy": "DERIVATION_NEVER_ESTABLISHES_CAUSALITY",
+      "evidenceOverlapStatus": "SEPARATE_AXIS",
+      "governance": {
+        "productionMutationAuthorized": false,
+        "status": "TEST_ONLY_NOT_GOVERNED"
+      },
+      "groupId": "CONTRIB-PSY-LAYER-REPETITION-001",
+      "groupVersion": "1",
+      "hasActivation": false,
+      "hasPolarity": false,
+      "hasScientificLifecycle": false,
+      "hasWeight": false,
+      "memberRepresentations": [
+        {
+          "identityAlignmentKey": "9af64d8dee024bbcf4732cde1eb01902342b9e491a718954ba7e866eff0f6c8e",
+          "memberRole": "PRIMARY_CAUSAL_CONTRIBUTION",
+          "recordClass": "RELATIONSHIP",
+          "recordHash": "090b8e185653ae3fe3cf8b662564e956c25f555e93b451edcbc5ef235648f6ac",
+          "recordId": "REL-V1-PSY-LAYER-001",
+          "recordVersion": "1",
+          "representationRelationship": "SAME_UNDERLYING_CONTRIBUTION"
+        },
+        {
+          "identityAlignmentKey": "9af64d8dee024bbcf4732cde1eb01902342b9e491a718954ba7e866eff0f6c8e",
+          "memberRole": "ALTERNATE_CAUSAL_REPRESENTATION",
+          "recordClass": "EFFECT_ASSERTION",
+          "recordHash": "2daf2a9e78dea482abb13766c147514483cd4a1b149b10d9acf6704f53bb4d55",
+          "recordId": "EA-V1-PSY-LAYER-001",
+          "recordVersion": "1",
+          "representationRelationship": "SAME_UNDERLYING_CONTRIBUTION"
+        }
+      ],
+      "propagationPolicy": "NO_IMPLICIT_PROPAGATION",
+      "provenance": {
+        "baseline": "24a406468180a35af5beb74df427053cc1536090",
+        "prototypeOnly": true,
+        "workPackageId": "WP-PSG-004"
+      },
+      "rdsProfileReferences": [],
+      "schemaVersion": "0.1.0-PROTOTYPE",
+      "scientificContributionDefinition": "The bounded repeated-claim exposure contribution to specified belief confidence.",
+      "scope": {
+        "causalContrast": "Repeated versus non-repeated encounter under bounded protocol",
+        "population": "Repeated encounter with the same factual statement/headline can alter subsequently rated belief confidence in controlled adult online/laboratory tasks. Ordinary judgment tasks often show increases; extreme implausibility, explicit veracity cues and initial accuracy focus bound the claim. No universal monotonic sign, transfer to arbitrary content, calibrated truth or behavior is asserted. Extreme implausibility is not a universal exclusion: a later five-presentation/100-point-scale experiment found higher ratings while ratings remained below midpoint.",
+        "timeWindow": "Initial exposure before later judgment",
+        "unitOfAnalysis": "Person x specified claim x exposure protocol"
+      },
+      "stateRouteReferences": []
+    },
+    {
+      "causalAuthority": false,
+      "causalIndependenceStatus": "STATE_RECALCULATION_ONLY",
+      "constituentOverlapStatus": "EXPLICIT_OR_UNKNOWN",
+      "consumerPolicy": "EXPLICIT_FAIL_CLOSED",
+      "countingPolicy": "RECALCULATION_ONLY_NO_CAUSAL_SUM",
+      "crossLevelRouteReferences": [],
+      "derivationPolicy": "DERIVATION_NEVER_ESTABLISHES_CAUSALITY",
+      "evidenceOverlapStatus": "SEPARATE_AXIS",
+      "governance": {
+        "productionMutationAuthorized": false,
+        "status": "TEST_ONLY_NOT_GOVERNED"
+      },
+      "groupId": "CONTRIB-SOC-F07-DEGREE-CENTRALIZATION",
+      "groupVersion": "1",
+      "hasActivation": false,
+      "hasPolarity": false,
+      "hasScientificLifecycle": false,
+      "hasWeight": false,
+      "memberRepresentations": [
+        {
+          "identityAlignmentKey": "092117f731979c1a0ac1456d1484369ffe6a26a606aa3a7b45265027d43400da",
+          "memberRole": "STATE_RECALCULATION_ONLY",
+          "recordClass": "SCENARIO_STATE_DELTA",
+          "recordHash": "d57209e40c51efd6b40cb610c4383c5e2cbd9c9d82d86750427674ea48ebeedd",
+          "recordId": "SYN-DELTA-WP004-REWIRE",
+          "recordVersion": "1",
+          "representationRelationship": "PRECEDES_DERIVATION"
+        },
+        {
+          "identityAlignmentKey": "092117f731979c1a0ac1456d1484369ffe6a26a606aa3a7b45265027d43400da",
+          "memberRole": "DERIVATION_ONLY",
+          "recordClass": "DERIVATION",
+          "recordHash": "334817a348e27c26b49f7e7b2e52122a38292955fa5b4b5fd8c517944b326d20",
+          "recordId": "DER-V1-SOC-F07-001",
+          "recordVersion": "1",
+          "representationRelationship": "RECALCULATES_FROM_STATE"
+        }
+      ],
+      "propagationPolicy": "NO_IMPLICIT_PROPAGATION",
+      "provenance": {
+        "baseline": "24a406468180a35af5beb74df427053cc1536090",
+        "prototypeOnly": true,
+        "workPackageId": "WP-PSG-004"
+      },
+      "rdsProfileReferences": [],
+      "schemaVersion": "0.1.0-PROTOTYPE",
+      "scientificContributionDefinition": "Network state recalculation lineage",
+      "scope": {
+        "causalContrast": "TEST_ONLY",
+        "population": "TEST_ONLY",
+        "timeWindow": "TEST_ONLY",
+        "unitOfAnalysis": "TEST_ONLY"
+      },
+      "stateRouteReferences": []
+    },
+    {
+      "causalAuthority": false,
+      "causalIndependenceStatus": "CONSTITUENT_OVERLAP",
+      "constituentOverlapStatus": "EXPLICIT_OR_UNKNOWN",
+      "consumerPolicy": "EXPLICIT_FAIL_CLOSED",
+      "countingPolicy": "BLOCKED_PENDING_CAUSAL_INDEPENDENCE",
+      "crossLevelRouteReferences": [],
+      "derivationPolicy": "DERIVATION_NEVER_ESTABLISHES_CAUSALITY",
+      "evidenceOverlapStatus": "SEPARATE_AXIS",
+      "governance": {
+        "productionMutationAuthorized": false,
+        "status": "TEST_ONLY_NOT_GOVERNED"
+      },
+      "groupId": "SYN-CONTRIB-INS-039-OVERLAP",
+      "groupVersion": "1",
+      "hasActivation": false,
+      "hasPolarity": false,
+      "hasScientificLifecycle": false,
+      "hasWeight": false,
+      "memberRepresentations": [
+        {
+          "identityAlignmentKey": "b501910b75d05b42c427fb9fae0d83a392976d628cd2a0515a4edca024fc2f60",
+          "memberRole": "CONSTITUENT_CAUSAL_ROUTE",
+          "recordClass": "SYNTHETIC_CAUSAL_ROUTE",
+          "recordHash": "9bbf497837e994a836dabd8395cb1b17455277d60c91ceb702c2b4abc67c5d4e",
+          "recordId": "INS-039::CONSTITUENT-ROUTE-PROTOTYPE",
+          "recordVersion": "1",
+          "representationRelationship": "POTENTIAL_OVERLAP"
+        },
+        {
+          "identityAlignmentKey": "b501910b75d05b42c427fb9fae0d83a392976d628cd2a0515a4edca024fc2f60",
+          "memberRole": "AGGREGATE_CAUSAL_ROUTE",
+          "recordClass": "RDS_ROUTE",
+          "recordHash": "7e95775e7a808660339f275421c0f148ab63a725b6962c5edb4c911535eb0614",
+          "recordId": "INS-039::AGGREGATE-ROUTE-PROTOTYPE",
+          "recordVersion": "1",
+          "representationRelationship": "POTENTIAL_OVERLAP"
+        }
+      ],
+      "propagationPolicy": "NO_IMPLICIT_PROPAGATION",
+      "provenance": {
+        "baseline": "24a406468180a35af5beb74df427053cc1536090",
+        "prototypeOnly": true,
+        "workPackageId": "WP-PSG-004"
+      },
+      "rdsProfileReferences": [],
+      "schemaVersion": "0.1.0-PROTOTYPE",
+      "scientificContributionDefinition": "Potential constituent and Caseload Pressure aggregate overlap",
+      "scope": {
+        "causalContrast": "TEST_ONLY",
+        "population": "TEST_ONLY",
+        "timeWindow": "TEST_ONLY",
+        "unitOfAnalysis": "TEST_ONLY"
+      },
+      "stateRouteReferences": []
+    },
+    {
+      "causalAuthority": false,
+      "causalIndependenceStatus": "DISTINCT_CONTRIBUTIONS_CONFIRMED",
+      "constituentOverlapStatus": "EXPLICIT_OR_UNKNOWN",
+      "consumerPolicy": "EXPLICIT_FAIL_CLOSED",
+      "countingPolicy": "INDEPENDENT_CONTRIBUTION",
+      "crossLevelRouteReferences": [],
+      "derivationPolicy": "DERIVATION_NEVER_ESTABLISHES_CAUSALITY",
+      "evidenceOverlapStatus": "SEPARATE_AXIS",
+      "governance": {
+        "productionMutationAuthorized": false,
+        "status": "TEST_ONLY_NOT_GOVERNED"
+      },
+      "groupId": "SYN-CONTRIB-A-X",
+      "groupVersion": "1",
+      "hasActivation": false,
+      "hasPolarity": false,
+      "hasScientificLifecycle": false,
+      "hasWeight": false,
+      "memberRepresentations": [
+        {
+          "identityAlignmentKey": "ce3151e5eb4831fb388f91210f4c1adcb9881751e723305e96ed1647aa917756",
+          "memberRole": "PRIMARY_CAUSAL_CONTRIBUTION",
+          "recordClass": "SYNTHETIC_CAUSAL_ROUTE",
+          "recordHash": "fbaa517acad3e52a36ac3e98f56b72e0fb6720bec818b32e28198e5885bef664",
+          "recordId": "SYN-CAUSE-A-X",
+          "recordVersion": "1",
+          "representationRelationship": "PRIMARY"
+        }
+      ],
+      "propagationPolicy": "NO_IMPLICIT_PROPAGATION",
+      "provenance": {
+        "baseline": "24a406468180a35af5beb74df427053cc1536090",
+        "prototypeOnly": true,
+        "workPackageId": "WP-PSG-004"
+      },
+      "rdsProfileReferences": [],
+      "schemaVersion": "0.1.0-PROTOTYPE",
+      "scientificContributionDefinition": "Cause A to target X",
+      "scope": {
+        "causalContrast": "TEST_ONLY",
+        "population": "TEST_ONLY",
+        "timeWindow": "TEST_ONLY",
+        "unitOfAnalysis": "TEST_ONLY"
+      },
+      "stateRouteReferences": []
+    },
+    {
+      "causalAuthority": false,
+      "causalIndependenceStatus": "DISTINCT_CONTRIBUTIONS_CONFIRMED",
+      "constituentOverlapStatus": "EXPLICIT_OR_UNKNOWN",
+      "consumerPolicy": "EXPLICIT_FAIL_CLOSED",
+      "countingPolicy": "INDEPENDENT_CONTRIBUTION",
+      "crossLevelRouteReferences": [],
+      "derivationPolicy": "DERIVATION_NEVER_ESTABLISHES_CAUSALITY",
+      "evidenceOverlapStatus": "SEPARATE_AXIS",
+      "governance": {
+        "productionMutationAuthorized": false,
+        "status": "TEST_ONLY_NOT_GOVERNED"
+      },
+      "groupId": "SYN-CONTRIB-B-X",
+      "groupVersion": "1",
+      "hasActivation": false,
+      "hasPolarity": false,
+      "hasScientificLifecycle": false,
+      "hasWeight": false,
+      "memberRepresentations": [
+        {
+          "identityAlignmentKey": "7f3de4a27e7ac1f89fbf39c034a828a124811db9286b93dc36e3bb759a760a74",
+          "memberRole": "PRIMARY_CAUSAL_CONTRIBUTION",
+          "recordClass": "SYNTHETIC_CAUSAL_ROUTE",
+          "recordHash": "3e863c21b763a2130d19aa4808a73938a795b83f3eb7259afde49a59e2da188f",
+          "recordId": "SYN-CAUSE-B-X",
+          "recordVersion": "1",
+          "representationRelationship": "PRIMARY"
+        }
+      ],
+      "propagationPolicy": "NO_IMPLICIT_PROPAGATION",
+      "provenance": {
+        "baseline": "24a406468180a35af5beb74df427053cc1536090",
+        "prototypeOnly": true,
+        "workPackageId": "WP-PSG-004"
+      },
+      "rdsProfileReferences": [],
+      "schemaVersion": "0.1.0-PROTOTYPE",
+      "scientificContributionDefinition": "Cause B to target X",
+      "scope": {
+        "causalContrast": "TEST_ONLY",
+        "population": "TEST_ONLY",
+        "timeWindow": "TEST_ONLY",
+        "unitOfAnalysis": "TEST_ONLY"
+      },
+      "stateRouteReferences": []
+    }
+  ],
+  "humanDecisionTaken": false,
+  "negativeControls": {
+    "sameEvidenceDifferentEffects": {
+      "kind": "SYNTHETIC_ARCHITECTURE_ONLY",
+      "result": "DISTINCT_CONTRIBUTIONS_EVIDENCE_LINEAGE_SEPARATE"
+    },
+    "sameInterventionDifferentEffects": {
+      "kind": "SYNTHETIC_ARCHITECTURE_ONLY",
+      "result": "DISTINCT_CONTRIBUTIONS_CONFIRMED"
+    },
+    "sameMechanismDifferentEffects": {
+      "kind": "SYNTHETIC_ARCHITECTURE_ONLY",
+      "result": "DISTINCT_CONTRIBUTIONS_MECHANISM_NOT_IDENTITY"
+    },
+    "sameTargetDifferentCauses": {
+      "kind": "REAL_RECORD_SAFE",
+      "records": [
+        {
+          "cause": "HT-V1-PSY-LAYER-001",
+          "contributionId": "CONTRIB-PSY-LAYER-REPETITION-001",
+          "effectAssertionId": "EA-V1-PSY-LAYER-001",
+          "target": "PSY-003"
+        },
+        {
+          "cause": "HT-V1-PSY-LAYER-002",
+          "contributionId": "CONTRIB-PSY-LAYER-REFUTATION-001",
+          "effectAssertionId": "EA-V1-PSY-LAYER-002",
+          "target": "PSY-003"
+        },
+        {
+          "cause": "HT-V1-TEC-LAYER-001",
+          "contributionId": "CONTRIB-TEC-LAYER-AI-LABEL-001",
+          "effectAssertionId": "EA-V1-TEC-LAYER-001",
+          "target": "PSY-003"
+        }
+      ],
+      "result": "DISTINCT_CONTRIBUTIONS_NOT_TARGET_BASED"
+    }
+  },
+  "notice": "READ-ONLY / NON-PRODUCTION PRE-GOVERNANCE DECISION TEST",
+  "numeric": {
+    "aggregateUnresolved": "BLOCK_PENDING_INDEPENDENCE",
+    "correctIndependentTotal": 0.30000000000000004,
+    "duplicateSafeSum": 0.2,
+    "independentAdditionalEffect": 0.1,
+    "missingExplicitSelection": "BLOCK_EXPLICIT_SELECTION_REQUIRED",
+    "naiveDuplicateSum": 0.4,
+    "stateDeltaPlusDerivedMetricCausalSum": 0.0
+  },
+  "primaryDuplicateControl": {
+    "bothInactive": true,
+    "effectAssertionHasNativeContributionField": true,
+    "effectAssertionId": "EA-V1-PSY-LAYER-001",
+    "groupId": "CONTRIB-PSY-LAYER-REPETITION-001",
+    "relationshipHasNativeContributionField": false,
+    "relationshipId": "REL-V1-PSY-LAYER-001",
+    "requiredResult": "SELECT_ONE_REPRESENTATION",
+    "sameContribution": true
+  },
+  "productionMutationAuthorized": false,
+  "schemaVersion": "1.0.0",
+  "workPackageId": "WP-PSG-004"
+}

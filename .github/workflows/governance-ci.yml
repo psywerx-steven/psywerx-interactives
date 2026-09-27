@@ -189,6 +189,9 @@ jobs:
       - name: Validate read-only Network State transition decision test
         run: python -m unittest discover -s tests -p "test_network_state_decision_test.py"
 
+      - name: Validate read-only contribution identity decision test
+        run: python -m unittest discover -s tests -p "test_contribution_identity_decision_test.py"
+
       - name: Validate non-production cross-level exposure reference implementation
         run: python -m unittest discover -s tests -p "test_cross_level_exposure_stage_e.py"
 
@@ -270,6 +273,11 @@ jobs:
           python prototypes/network-state-transition-v1/build_decision_test.py
           python scripts/post_scale_up_governance_roadmap.py
           git diff --exit-code -- prototypes/network-state-transition-v1 data/governance/post-scale-up/network-state docs/governance/post-scale-up/network-state data/governance/post-scale-up/work-packages.json data/governance/post-scale-up/decision-packets.json docs/governance/post-scale-up/POST_SCALE_UP_GOVERNANCE_ROADMAP.md
+
+      - name: Verify deterministic contribution identity decision package
+        run: |
+          python prototypes/contribution-identity-v1/build_decision_test.py
+          git diff --exit-code -- prototypes/contribution-identity-v1 data/governance/post-scale-up/contribution docs/governance/post-scale-up/contribution
 
       - name: Verify deterministic cross-level exposure reference package
         run: |
@@ -480,6 +488,9 @@ jobs:
       - name: Validate read-only Network State transition decision test
         run: python -m unittest discover -s tests -p "test_network_state_decision_test.py"
 
+      - name: Validate read-only contribution identity decision test
+        run: python -m unittest discover -s tests -p "test_contribution_identity_decision_test.py"
+
       - name: Validate non-production cross-level exposure reference implementation
         run: python -m unittest discover -s tests -p "test_cross_level_exposure_stage_e.py"
 
@@ -561,6 +572,11 @@ jobs:
           python prototypes/network-state-transition-v1/build_decision_test.py
           python scripts/post_scale_up_governance_roadmap.py
           git diff --exit-code -- prototypes/network-state-transition-v1 data/governance/post-scale-up/network-state docs/governance/post-scale-up/network-state data/governance/post-scale-up/work-packages.json data/governance/post-scale-up/decision-packets.json docs/governance/post-scale-up/POST_SCALE_UP_GOVERNANCE_ROADMAP.md
+
+      - name: Verify deterministic contribution identity decision package
+        run: |
+          python prototypes/contribution-identity-v1/build_decision_test.py
+          git diff --exit-code -- prototypes/contribution-identity-v1 data/governance/post-scale-up/contribution docs/governance/post-scale-up/contribution
 
       - name: Verify deterministic cross-level exposure reference package
         run: |

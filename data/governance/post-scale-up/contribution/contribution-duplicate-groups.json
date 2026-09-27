@@ -1,0 +1,65 @@
+{
+  "counts": {
+    "DERIVATION_LINEAGE_STATE_RECALCULATION": 1,
+    "INTENTIONAL_DUPLICATE_REPRESENTATION": 1,
+    "POTENTIAL_DUPLICATE": 2,
+    "UNKNOWN_NEEDS_REVIEW": 1
+  },
+  "groups": [
+    {
+      "classification": "INTENTIONAL_DUPLICATE_REPRESENTATION",
+      "contributionId": "CONTRIB-PSY-LAYER-REPETITION-001",
+      "currentControl": "Manifest plus EA reconciliation; Relationship has no native field; both inactive",
+      "recommendedControl": "Exact external group membership plus centralized fail-closed enforcement",
+      "records": [
+        "REL-V1-PSY-LAYER-001",
+        "EA-V1-PSY-LAYER-001"
+      ]
+    },
+    {
+      "classification": "DERIVATION_LINEAGE_STATE_RECALCULATION",
+      "contributionId": "CONTRIB-SOC-F07-DEGREE-CENTRALIZATION",
+      "currentControl": "RECALCULATION_ONLY_NO_CAUSAL_SUM",
+      "recommendedControl": "Preserve native policy and expose it through cross-class reconciliation without causal promotion",
+      "records": [
+        "DER-V1-SOC-F07-001",
+        "RDS-PROFILE-V1-SOC-F07-001"
+      ]
+    },
+    {
+      "classification": "POTENTIAL_DUPLICATE",
+      "contributionId": null,
+      "currentControl": "RESEARCH_NEEDED / RDS causal source false",
+      "recommendedControl": "BLOCKED_PENDING_CAUSAL_INDEPENDENCE for WP-PSG-005",
+      "records": [
+        "INS-039",
+        "REL-INS-017",
+        "constituent routes not yet enumerated"
+      ]
+    },
+    {
+      "classification": "POTENTIAL_DUPLICATE",
+      "contributionId": null,
+      "currentControl": "RESEARCH_NEEDED / RDS causal source false",
+      "recommendedControl": "BLOCKED_PENDING_CAUSAL_INDEPENDENCE for WP-PSG-005",
+      "records": [
+        "INS-103",
+        "REL-INS-036",
+        "constituent routes not yet enumerated"
+      ]
+    },
+    {
+      "classification": "UNKNOWN_NEEDS_REVIEW",
+      "contributionId": null,
+      "currentControl": "RESEARCH_NEEDED_OR_RETYPE_REVIEW_ONLY",
+      "recommendedControl": "Create no group until exact constituent and aggregate routes are known",
+      "records": [
+        "ASTRA-SOC-LAYER-001",
+        "10 Social RDS causal-source routes"
+      ]
+    }
+  ],
+  "notice": "READ-ONLY / NON-PRODUCTION PRE-GOVERNANCE DECISION TEST",
+  "productionRecordsChanged": false,
+  "schemaVersion": "1.0.0"
+}
