@@ -146,8 +146,12 @@ class CrossLevelDecisionTest(unittest.TestCase):
     def test_consumers_remain_unintegrated(self):
         self.assertFalse(self.consumers["productionIntegrationAuthorized"])
         self.assertTrue(all(row["classification"] in {"NO_CURRENT_EXECUTION_IMPACT", "DISPLAY_ONLY", "VALIDATION_AWARE", "VALIDATION_AWARE_AND_MIGRATION_REQUIRED", "MIGRATION_REQUIRED", "UNKNOWN_REQUIRES_REVIEW"} for row in self.consumers["consumers"]))
-        self.assertFalse((ROOT / "schemas/cross-level-exposure-mapping.schema.json").exists())
-        self.assertFalse((ROOT / "data/cross-level-exposure-v1").exists())
+        # The later, separately governed production decision permits additive
+        # schemas and registries while preserving all legacy consumer behavior.
+        production = read(ROOT / "data/governance/post-scale-up/cross-level/cross-level-production-implementation-decision-001.json")
+        self.assertTrue(production["phase0Authorized"])
+        self.assertTrue((ROOT / "schemas/cross-level-exposure-mapping.schema.json").exists())
+        self.assertTrue((ROOT / "data/cross-level-exposure-v1").exists())
 
     def test_protected_production_hashes_unchanged(self):
         for relative, expected in self.protected["files"].items():

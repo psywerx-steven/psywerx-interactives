@@ -268,7 +268,14 @@ def main() -> None:
         "data/rds-computation-v1/bindings.json", "data/sources.json", "data/relationship-intervention-v1/source-register.json", "scripts/relationship_intervention_v1.py",
         "scripts/actions_events_v1.py", "scripts/relational_state_v1.py", "scripts/rds_computation_v1.py",
     ]
-    protected_paths += sorted(path.relative_to(ROOT).as_posix() for path in (ROOT / "schemas").rglob("*.json"))
+    # This manifest freezes the Stage C production baseline. Later, separately
+    # governed additive architecture must not be retroactively folded into the
+    # historical decision test's protected set.
+    protected_paths += sorted(
+        path.relative_to(ROOT).as_posix()
+        for path in (ROOT / "schemas").rglob("*.json")
+        if not path.name.startswith("cross-level-exposure-")
+    )
     protected_paths += sorted(path.relative_to(ROOT).as_posix() for path in (ROOT / "scenario-service/src").rglob("*.js"))
     protected_paths = sorted(set(protected_paths))
     protected = {"schemaVersion": "1.0.0", "baseMain": "86d136141111fc41832f6b1021d0f4863c1bf204", "hashAlgorithm": "SHA256_CANONICAL_LF_TEXT", "files": {path: file_hash(ROOT / path) for path in protected_paths}}

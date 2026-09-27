@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://psywerx.org/schemas/cross-level-exposure-provenance.schema.json",
+  "title": "CrossLevelExposureShadowReceipt",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["schemaVersion", "relationshipId", "relationshipRevisionOrHash", "mappingId", "mappingVersion", "bindingId", "bindingVersion", "sourceEntityId", "targetEntityId", "sourceLevel", "targetLevel", "routeType", "routeStages", "eligibilityState", "causalEvidence", "executionAuthority", "feedsGraphConstruction", "feedsSimulation", "activationAuthorized", "deterministicFingerprint"],
+  "properties": {
+    "schemaVersion": {"const": "1.0.0"},
+    "relationshipId": {"type": "string"},
+    "relationshipRevisionOrHash": {"type": "string"},
+    "mappingId": {"type": ["string", "null"]},
+    "mappingVersion": {"type": ["string", "null"]},
+    "bindingId": {"type": ["string", "null"]},
+    "bindingVersion": {"type": ["string", "null"]},
+    "sourceEntityId": {"type": "string"},
+    "targetEntityId": {"type": "string"},
+    "sourceLevel": {"type": ["string", "null"]},
+    "targetLevel": {"type": ["string", "null"]},
+    "routeType": {"type": ["string", "null"]},
+    "routeStages": {"type": "array"},
+    "eligibilityState": {"type": "string"},
+    "causalEvidence": {"const": false},
+    "executionAuthority": {"const": false},
+    "feedsGraphConstruction": {"const": false},
+    "feedsSimulation": {"const": false},
+    "activationAuthorized": {"const": false},
+    "deterministicFingerprint": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+  }
+}

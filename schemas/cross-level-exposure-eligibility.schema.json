@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://psywerx.org/schemas/cross-level-exposure-eligibility.schema.json",
+  "title": "CrossLevelExposureEligibility",
+  "type": "object",
+  "required": ["schemaVersion", "eligibilityState", "reason", "causalEvidence", "executionAuthority", "feedsGraphConstruction", "feedsSimulation", "activationAuthorized"],
+  "properties": {
+    "schemaVersion": {"const": "1.0.0"},
+    "eligibilityState": {"enum": ["CROSS_LEVEL_READY_FOR_REVIEW", "SAME_LEVEL_NOT_APPLICABLE", "NONCAUSAL_NOT_APPLICABLE", "BLOCKED_NO_MAPPING", "BLOCKED_MAPPING_VERSION_MISMATCH", "BLOCKED_INCOMPLETE_MAPPING", "BLOCKED_LEVEL_UNDECLARED", "BLOCKED_LEVEL_MISMATCH", "BLOCKED_NO_IMPLEMENTATION_ROUTE", "BLOCKED_NO_EXPOSURE_ROUTE", "BLOCKED_PARTIAL_COVERAGE_UNBOUND", "BLOCKED_PERCEPTION_ROUTE_REQUIRED", "BLOCKED_TEMPORAL_MISMATCH", "BLOCKED_NETWORK_STATE_DEPENDENCY", "BLOCKED_ONTOLOGY_DEPENDENCY", "RESEARCH_NEEDED_BEFORE_MAPPING"]},
+    "reason": {"type": "string", "minLength": 1},
+    "causalEvidence": {"const": false},
+    "executionAuthority": {"const": false},
+    "feedsGraphConstruction": {"const": false},
+    "feedsSimulation": {"const": false},
+    "activationAuthorized": {"const": false}
+  }
+}
