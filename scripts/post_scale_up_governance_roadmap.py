@@ -19,6 +19,7 @@ ROADMAP_ID = "POST-SCALE-UP-GOVERNANCE-ROADMAP-V1-20260924-001"
 RDS_DECISION_PATH = DATA / "rds/rds-contract-architecture-decision-001.json"
 RDS_IMPLEMENTATION_DECISION_PATH = DATA / "rds/rds-production-implementation-decision-001.json"
 CROSS_LEVEL_DECISION_PATH = DATA / "cross-level/cross-level-architecture-decision-001.json"
+CROSS_LEVEL_IMPLEMENTATION_DECISION_PATH = DATA / "cross-level/cross-level-production-implementation-decision-001.json"
 
 ROOT_IDS = {
     "RDS_DEF": "ROOT-RDS-DEFINITION-DERIVATION-001",
@@ -95,6 +96,17 @@ def cross_level_direction_decision():
     assert decision["workPackageId"] == "WP-PSG-002"
     assert decision["decisionOutcome"] == "APPROVED_BOUNDED_A_PLUS_B_PLUS_C_DIRECTION"
     assert decision["productionImplementationStatus"] == "NOT_AUTHORIZED_NOT_STARTED"
+    return decision
+
+
+def cross_level_implementation_decision():
+    if not CROSS_LEVEL_IMPLEMENTATION_DECISION_PATH.exists():
+        return None
+    decision = read(CROSS_LEVEL_IMPLEMENTATION_DECISION_PATH)
+    assert decision["decisionPacketId"] == "DP-PSG-002-IMPLEMENTATION"
+    assert decision["workPackageId"] == "WP-PSG-002"
+    assert decision["outcome"] == "APPROVED_BOUNDED_PHASE_0_AND_SEPARATELY_GATED_REL_INS_040_SHADOW_PHASE_1"
+    assert decision["implementationStatus"] == "AUTHORIZED_NOT_STARTED"
     return decision
 
 
@@ -517,6 +529,7 @@ def work_packages(roots):
     cross_level_test = ROOT / "data/governance/post-scale-up/cross-level/cross-level-test-cases.json"
     cross_level_decision = cross_level_direction_decision()
     cross_level_stage_e = ROOT / "data/governance/post-scale-up/cross-level/cross-level-migration-dry-run.json"
+    cross_level_implementation = cross_level_implementation_decision()
     packages = []
     for definition in ROOT_DEFS:
         key, identifier = definition["key"], ROOT_IDS[definition["key"]]
@@ -544,10 +557,10 @@ def work_packages(roots):
                        "G_scientificReadjudication": "NOT_STARTED"},
             "governanceDecisionId": rds_decision["decisionId"] if key == "RDS_DEF" and rds_decision else (cross_level_decision["decisionId"] if key == "CROSS_LEVEL" and cross_level_decision else None),
             "prototypeImplementationAuthorization": "AUTHORIZED_NON_PRODUCTION_ONLY" if ((key == "RDS_DEF" and rds_decision) or (key == "CROSS_LEVEL" and cross_level_decision)) else "NOT_AUTHORIZED",
-            "productionImplementationStatus": implementation["phase"] if key == "RDS_DEF" and implementation else ("HUMAN_GOVERNANCE_REQUIRED_NOT_STARTED" if key == "RDS_DEF" and prototype_complete else ("NOT_AUTHORIZED_NOT_STARTED" if ((key == "RDS_DEF" and rds_decision) or (key == "CROSS_LEVEL" and cross_level_decision)) else "NOT_STARTED")),
+            "productionImplementationStatus": implementation["phase"] if key == "RDS_DEF" and implementation else ("AUTHORIZED_NOT_STARTED" if key == "CROSS_LEVEL" and cross_level_implementation else ("HUMAN_GOVERNANCE_REQUIRED_NOT_STARTED" if key == "RDS_DEF" and prototype_complete else ("NOT_AUTHORIZED_NOT_STARTED" if ((key == "RDS_DEF" and rds_decision) or (key == "CROSS_LEVEL" and cross_level_decision)) else "NOT_STARTED"))),
             "rootIssueResolutionStatus": ("BOUNDED_ARCHITECTURE_IMPLEMENTED_OTHER_RDS_PENDING_SCIENCE" if key == "RDS_DEF" and implementation and implementation["phase"].startswith("PHASE_1") else ("NOT_RESOLVED_PHASE_0_ONLY" if key == "RDS_DEF" and implementation else ("NOT_RESOLVED_PROTOTYPE_ONLY" if ((key == "RDS_DEF" and prototype_complete) or (key == "CROSS_LEVEL" and cross_level_stage_e.exists())) else "NOT_RESOLVED"))),
-            "nextDecisionPacketId": None if key == "RDS_DEF" and implementation else ("DP-PSG-001-IMPLEMENTATION" if key == "RDS_DEF" and prototype_complete else ("DP-PSG-002-IMPLEMENTATION" if key == "CROSS_LEVEL" and cross_level_stage_e.exists() else None)),
-            "productionImplementationDecisionId": implementation["decision"]["decisionId"] if key == "RDS_DEF" and implementation else None,
+            "nextDecisionPacketId": None if ((key == "RDS_DEF" and implementation) or (key == "CROSS_LEVEL" and cross_level_implementation)) else ("DP-PSG-001-IMPLEMENTATION" if key == "RDS_DEF" and prototype_complete else ("DP-PSG-002-IMPLEMENTATION" if key == "CROSS_LEVEL" and cross_level_stage_e.exists() else None)),
+            "productionImplementationDecisionId": implementation["decision"]["decisionId"] if key == "RDS_DEF" and implementation else (cross_level_implementation["decisionId"] if key == "CROSS_LEVEL" and cross_level_implementation else None),
             "recommendedSequenceBand": definition["sequenceBand"],
         }
         if key == "CROSS_LEVEL" and cross_level_test.exists():
@@ -628,8 +641,11 @@ def render_roadmap(dep_map, roots, packages):
     cross_level_decision = cross_level_direction_decision()
     if cross_level_decision:
         status_text += " DP-PSG-002 Stage D records the bounded human-approved A+B+C direction and authorizes only non-production prototyping; production integration and every Relationship re-adjudication remain unauthorized."
-    if (ROOT / "data/governance/post-scale-up/cross-level/cross-level-migration-dry-run.json").exists():
+    if (ROOT / "data/governance/post-scale-up/cross-level/cross-level-migration-dry-run.json").exists() and not cross_level_implementation_decision():
         status_text += " WP-PSG-002 Stage E is complete as a non-production reference prototype and Stage F is complete only as a 38-Relationship dry run; DP-PSG-002-IMPLEMENTATION human governance is required before production work."
+    cross_level_implementation = cross_level_implementation_decision()
+    if cross_level_implementation:
+        status_text += " DP-PSG-002-IMPLEMENTATION is human-approved but not started: bounded Phase 0 and separately gated REL-INS-040 shadow-only Phase 1 are authorized; production state remains unchanged."
     lines = ["# Post-Scale-Up governance roadmap", "", f"This roadmap converts the 44-row historical backlog into decision-ready work packages. Stages A and B are complete here; skeptical architecture review is complete for the six highest-consequence packets. {status_text}", "",
              "| Order | Work package | Root issue | Band | Dependencies | Original rows |", "|---:|---|---|---|---|---:|"]
     for index, package in enumerate(packages["workPackages"], 1):

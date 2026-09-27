@@ -1,0 +1,60 @@
+{
+  "schemaVersion": "1.0.0",
+  "decisionId": "GOV-CROSS-LEVEL-IMPLEMENTATION-001-2026-09-26",
+  "decisionDate": "2026-09-26",
+  "decisionPacketId": "DP-PSG-002-IMPLEMENTATION",
+  "architectureDecisionId": "GOV-CROSS-LEVEL-EXPOSURE-001-2026-09-26",
+  "workPackageId": "WP-PSG-002",
+  "decisionAuthority": "HUMAN_GOVERNOR",
+  "outcome": "APPROVED_BOUNDED_PHASE_0_AND_SEPARATELY_GATED_REL_INS_040_SHADOW_PHASE_1",
+  "phase0Authorized": true,
+  "phase0Requirements": {
+    "immutableExactVersionSchemas": [
+      "CrossLevelExposureMapping",
+      "CrossLevelExposureBinding"
+    ],
+    "emptyRegistries": true,
+    "failClosedValidators": true,
+    "provenanceFingerprintContracts": true,
+    "shadowEligibilityService": true,
+    "relationshipMigrations": 0,
+    "graphBehaviorChanges": 0,
+    "simulationBehaviorChanges": 0
+  },
+  "phase1AuthorizedAfterPhase0Validation": true,
+  "phase1RelationshipIds": [
+    "REL-INS-040"
+  ],
+  "phase1Mode": "VALIDATION_SHADOW_ONLY",
+  "phase1Requirements": {
+    "productionRelationshipMutation": false,
+    "causalEvidenceConferred": false,
+    "executionAuthorityConferred": false,
+    "lifecycleStatusConferred": false,
+    "weightConferred": false,
+    "propagationConferred": false,
+    "activationAuthorityConferred": false,
+    "rollback": "REMOVE_MAPPING_BINDING_REGISTRY_AND_SHADOW_INTEGRATION_TO_LEGACY_ONLY_BEHAVIOR"
+  },
+  "remainingRelationshipIdsAuthorized": 0,
+  "relationshipReclassificationAuthorized": false,
+  "newDriversAuthorized": false,
+  "newHappeningTypesAuthorized": false,
+  "networkStateChangesAuthorized": false,
+  "rdsCausalSourceAuthorization": false,
+  "ontologyMutationAuthorized": false,
+  "sourceRegistrationAuthorized": false,
+  "lifecycleChangeAuthorized": false,
+  "activationAuthorized": false,
+  "implementationStatus": "AUTHORIZED_NOT_STARTED",
+  "productionState": {
+    "schemasInstalled": false,
+    "registriesInstalled": false,
+    "mappingsMaterialized": 0,
+    "bindingsMaterialized": 0,
+    "relationshipsMutated": 0,
+    "graphBehaviorChanges": 0,
+    "simulationBehaviorChanges": 0,
+    "activations": 0
+  }
+}

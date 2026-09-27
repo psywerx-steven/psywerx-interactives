@@ -123,10 +123,11 @@ class PostScaleUpGovernanceRoadmapTests(unittest.TestCase):
         self.assertEqual(by_wp["WP-PSG-002"]["stages"]["D_humanGovernanceDecision"], "COMPLETE_BOUNDED_DIRECTION_APPROVED")
         self.assertEqual(by_wp["WP-PSG-002"]["governanceDecisionId"], "GOV-CROSS-LEVEL-EXPOSURE-001-2026-09-26")
         self.assertEqual(by_wp["WP-PSG-002"]["prototypeImplementationAuthorization"], "AUTHORIZED_NON_PRODUCTION_ONLY")
-        self.assertEqual(by_wp["WP-PSG-002"]["productionImplementationStatus"], "NOT_AUTHORIZED_NOT_STARTED")
+        self.assertEqual(by_wp["WP-PSG-002"]["productionImplementationStatus"], "AUTHORIZED_NOT_STARTED")
         self.assertEqual(by_wp["WP-PSG-002"]["stages"]["E_implementation"], "COMPLETE_NON_PRODUCTION_REFERENCE_PROTOTYPE")
         self.assertEqual(by_wp["WP-PSG-002"]["stages"]["F_migrationRevalidation"], "DRY_RUN_ONLY_COMPLETE_PRODUCTION_MIGRATION_NOT_AUTHORIZED")
-        self.assertEqual(by_wp["WP-PSG-002"]["nextDecisionPacketId"], "DP-PSG-002-IMPLEMENTATION")
+        self.assertIsNone(by_wp["WP-PSG-002"]["nextDecisionPacketId"])
+        self.assertEqual(by_wp["WP-PSG-002"]["productionImplementationDecisionId"], "GOV-CROSS-LEVEL-IMPLEMENTATION-001-2026-09-26")
         self.assertEqual(by_wp["WP-PSG-002"]["rootIssueResolutionStatus"], "NOT_RESOLVED_PROTOTYPE_ONLY")
         for package in self.packages["workPackages"]:
             if package["workPackageId"] not in {"WP-PSG-001", "WP-PSG-002"}:
