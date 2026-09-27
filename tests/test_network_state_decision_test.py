@@ -22,6 +22,7 @@ class NetworkStateDecisionTest(unittest.TestCase):
         cls.options = read(DATA / "network-state-option-results.json")
         cls.migration = read(DATA / "network-state-migration-classification.json")
         cls.handoffs = read(DATA / "network-state-handoffs.json")
+        cls.decision = read(DATA / "network-state-architecture-decision-001.json")
 
     def test_existing_typed_operations_and_state_safety(self):
         self.assertEqual(set(self.cases["operationsVerified"]), {
@@ -110,6 +111,19 @@ class NetworkStateDecisionTest(unittest.TestCase):
             self.assertTrue((DOCS / name).is_file(), name)
         self.assertFalse((ROOT / "schemas/network-state-transition.schema.json").exists())
         self.assertFalse((ROOT / "data/network-state-transition-v1").exists())
+
+    def test_bounded_human_decision_is_recorded_without_production_authority(self):
+        decision = self.decision
+        self.assertEqual(decision["decisionId"], "GOV-NETWORK-STATE-ARCHITECTURE-001-2026-09-26")
+        self.assertEqual(decision["decisionOutcome"], "APPROVED_BOUNDED_A_PLUS_C_DIRECTION")
+        self.assertEqual(decision["productionImplementationStatus"], "NOT_AUTHORIZED_NOT_STARTED")
+        self.assertEqual(decision["approvedDirection"]["unsupportedTransitionBehavior"], "BLOCKED")
+        self.assertEqual(decision["approvedDirection"]["empiricallyEstimatedTransitionBehavior"], "BLOCKED")
+        self.assertFalse(decision["productionState"]["networkStateSchemasChanged"])
+        self.assertFalse(decision["productionState"]["networkStateCatalogChanged"])
+        self.assertEqual(decision["productionState"]["relationshipsChanged"], 0)
+        self.assertEqual(decision["productionState"]["rdsCausalSourcesAuthorized"], 0)
+        self.assertTrue((DOCS / "NETWORK_STATE_ARCHITECTURE_DECISION_001.md").is_file())
 
 
 if __name__ == "__main__":
