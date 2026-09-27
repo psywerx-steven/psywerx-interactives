@@ -1,4 +1,41 @@
 {
   "schemaVersion": "1.0.0",
-  "mappings": []
+  "mappings": [
+    {
+      "schemaVersion": "1.0.0",
+      "mappingId": "XLEM-V1-INSTITUTION-IMPLEMENTATION-PERCEPTION-001",
+      "mappingVersion": "1.0.0",
+      "objectKind": "SCIENTIFIC_ROUTING_ELIGIBILITY_CONTRACT",
+      "sourceLevel": "INSTITUTION",
+      "targetLevel": "PERSON",
+      "routeType": "IMPLEMENTATION",
+      "routeStages": ["SOURCE_STATE", "IMPLEMENTATION_OR_TRANSMISSION", "ACTUAL_EXPOSURE", "PERCEIVED_EXPOSURE", "TARGET_RESPONSE"],
+      "exposureDefinition": "An institution-level procedure is realized in practice and actually encountered by a person in the explicitly covered target set before the person's evaluation is measured.",
+      "exposureUnit": "PERSON_PROCEDURE_ENCOUNTER",
+      "temporalOrder": ["SOURCE_STATE", "IMPLEMENTATION_OR_TRANSMISSION", "ACTUAL_EXPOSURE", "PERCEIVED_EXPOSURE", "TARGET_RESPONSE"],
+      "membershipSemantics": "Institutional membership alone does not establish exposure.",
+      "eligibilitySemantics": "Formal eligibility or coverage alone does not establish receipt or encounter.",
+      "implementationSemantics": "The specified procedure must be realized in practice for the applicable target set.",
+      "assignmentSemantics": "Assignment alone does not establish that the person encountered the procedure.",
+      "actualExposureSemantics": "The target person must actually encounter the implemented procedure.",
+      "perceivedExposureSemantics": "The bounded person-level perception or evaluation is explicit and cannot be inferred from objective implementation alone.",
+      "coverageSemantics": "Only persons in an explicitly defined covered set who actually encounter the implemented procedure satisfy the route.",
+      "partialCoverageAllowed": true,
+      "ambientContextAllowed": false,
+      "networkStateRequirements": {"required": false, "description": "This route has no Network State dependency."},
+      "intermediateReferenceRules": ["Reference only an existing Driver or HappeningType that is a scientifically substantive pathway component; no plumbing entity is required here."],
+      "evidenceBindingRules": ["Evidence references remain subordinate to the Relationship and never make this mapping causal evidence."],
+      "scopeLimitations": ["REL-INS-040 validation/shadow compatibility control", "No graph or simulation feed", "No causal or lifecycle authority"],
+      "causalEvidence": false,
+      "executionAuthority": false,
+      "hasWeight": false,
+      "hasLifecycle": false,
+      "hasPropagationState": false,
+      "provenance": {
+        "architectureDecisionId": "GOV-CROSS-LEVEL-IMPLEMENTATION-001-2026-09-26",
+        "decisionPacketId": "DP-PSG-002-IMPLEMENTATION",
+        "phase": "PHASE_1_SHADOW_ONLY"
+      }
+    }
+  ]
 }

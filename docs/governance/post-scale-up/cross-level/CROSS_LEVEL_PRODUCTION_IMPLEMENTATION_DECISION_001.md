@@ -26,4 +26,4 @@ The other 37 Relationships, all Relationship classifications, Drivers, Happening
 
 ## Current implementation state
 
-`AUTHORIZED_NOT_STARTED`. This record authorizes the bounded future implementation but does not install schemas or registries, materialize a mapping or binding, or change any production behavior.
+`PHASE_1_REL_INS_040_COMPLETE_SHADOW_ONLY`. Phase 0 installed the additive architecture and passed protected-state, Linux, and Windows gates. Phase 1 then materialized only the authorized REL-INS-040 mapping/binding in validation/shadow mode. The production Relationship, graph, simulation, lifecycle, activation, and causal authority remain unchanged.

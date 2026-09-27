@@ -1,4 +1,43 @@
 {
   "schemaVersion": "1.0.0",
-  "bindings": []
+  "bindings": [
+    {
+      "schemaVersion": "1.0.0",
+      "bindingId": "XLEB-V1-REL-INS-040-001",
+      "bindingVersion": "1.0.0",
+      "relationshipId": "REL-INS-040",
+      "relationshipRevisionOrHash": "72e70e9653845179fe55d160b827c4dc0dbd7f324572a50c691ec0259947d21f",
+      "sourceEntityId": "INS-051",
+      "sourceLevel": "INSTITUTION",
+      "targetEntityId": "PSY-022",
+      "targetLevel": "PERSON",
+      "mappingId": "XLEM-V1-INSTITUTION-IMPLEMENTATION-PERCEPTION-001",
+      "mappingVersion": "1.0.0",
+      "claimSpecificQualifiers": ["Procedural impartiality must be implemented and encountered before perceived fairness is assessed.", "The route is bounded to the Relationship's population, context, and measurement interval."],
+      "intermediateEntityIds": [],
+      "happeningTypeIds": [],
+      "networkStateReferences": [],
+      "implementationRequirement": {"required": true, "definition": "The specified impartial procedure is realized in practice for the applicable target set."},
+      "membershipRule": "Institutional membership alone is insufficient.",
+      "eligibilityRule": "Formal coverage or eligibility alone is insufficient.",
+      "assignmentRule": "Assignment alone is insufficient without the person's actual encounter.",
+      "actualExposureRule": {"required": true, "definition": "The target person actually encounters the implemented procedure."},
+      "perceptionRequired": true,
+      "perceptionEntityId": "PSY-022",
+      "exposureWindow": "Implementation and actual encounter precede bounded person-level perceived-fairness measurement.",
+      "coverageRule": "An exact applicable target set is required; partial coverage is valid only when the evaluated person belongs to that set and was exposed.",
+      "temporalAlignment": ["SOURCE_STATE", "IMPLEMENTATION_OR_TRANSMISSION", "ACTUAL_EXPOSURE", "PERCEIVED_EXPOSURE", "TARGET_RESPONSE"],
+      "evidenceReferences": ["SRC-502", "SRC-503"],
+      "scope": "REL-INS-040 shadow eligibility and compatibility validation only.",
+      "provenance": {
+        "architectureDecisionId": "GOV-CROSS-LEVEL-IMPLEMENTATION-001-2026-09-26",
+        "decisionPacketId": "DP-PSG-002-IMPLEMENTATION",
+        "relationshipDispositionChanged": false
+      },
+      "shadowEligibilityOnly": true,
+      "feedsGraphConstruction": false,
+      "feedsSimulation": false,
+      "executionAuthorized": false
+    }
+  ]
 }

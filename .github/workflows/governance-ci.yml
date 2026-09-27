@@ -192,7 +192,9 @@ jobs:
       - name: Validate governed cross-level exposure production architecture
         run: |
           python scripts/cross_level_exposure_v1.py --validate-repository
+          python scripts/cross_level_exposure_v1.py --write-shadow-receipts
           python -m unittest discover -s tests -p "test_cross_level_exposure_v1.py"
+          git diff --exit-code -- data/cross-level-exposure-v1
 
       - name: Validate read-only RDS contract decision test
         run: python -m unittest discover -s tests -p "test_rds_contract_decision_test.py"
@@ -472,7 +474,9 @@ jobs:
       - name: Validate governed cross-level exposure production architecture
         run: |
           python scripts/cross_level_exposure_v1.py --validate-repository
+          python scripts/cross_level_exposure_v1.py --write-shadow-receipts
           python -m unittest discover -s tests -p "test_cross_level_exposure_v1.py"
+          git diff --exit-code -- data/cross-level-exposure-v1
 
       - name: Validate read-only RDS contract decision test
         run: python -m unittest discover -s tests -p "test_rds_contract_decision_test.py"
