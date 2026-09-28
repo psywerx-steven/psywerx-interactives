@@ -1,5 +1,78 @@
 {
   "schemaVersion": "1.0.0",
   "registryId": "CONTRIBUTION-GROUPS-V1",
-  "groups": []
+  "groups": [
+    {
+      "causalEvidence": false,
+      "causalIndependenceStatus": "SAME_CONTRIBUTION_CONFIRMED",
+      "constituentOverlapStatus": "NOT_APPLICABLE",
+      "countingPolicy": "MUTUALLY_EXCLUSIVE_REPRESENTATIONS",
+      "crossLevelRouteReferences": [],
+      "derivationPolicy": "NOT_APPLICABLE",
+      "evidenceOverlapStatus": "SEPARATE_FROM_CONTRIBUTION_IDENTITY",
+      "executionAuthority": false,
+      "governanceReference": "GOV-CONTRIBUTION-IMPLEMENTATION-001-2026-09-27",
+      "groupId": "CONTRIB-PSY-LAYER-REPETITION-001",
+      "groupVersion": "1.0.0",
+      "hasActivation": false,
+      "hasLifecycle": false,
+      "hasPolarity": false,
+      "hasPropagationState": false,
+      "hasWeight": false,
+      "identityDimensions": {
+        "causalContrast": "Repeated versus non-repeated encounter under the governed protocol",
+        "causalExposureOrChange": "Repeated encounter with the same specified factual claim under the bounded protocol",
+        "intendedContribution": "One repetition-exposure contribution to specified belief confidence",
+        "pathwayScope": "Total bounded repetition contribution; no inferred mediation path",
+        "targetChange": "Rated belief confidence in that specified claim",
+        "timeScope": "Initial exposure before later bounded judgment",
+        "underlyingRepresentedQuantity": "The same bounded exposure-induced belief-confidence change",
+        "unitOfAnalysis": "Person x specified claim x exposure protocol"
+      },
+      "limitations": [
+        "Shadow validation and identity reconciliation only",
+        "No graph, simulation, summation, effect-attribution, lifecycle, activation, magnitude, polarity, or causal-source authority"
+      ],
+      "memberRepresentations": [
+        {
+          "memberRole": "PRIMARY_CAUSAL_CONTRIBUTION",
+          "nativeContributionId": null,
+          "nativeContributionPolicy": null,
+          "recordClass": "RELATIONSHIP",
+          "recordHash": "090b8e185653ae3fe3cf8b662564e956c25f555e93b451edcbc5ef235648f6ac",
+          "recordId": "REL-V1-PSY-LAYER-001",
+          "recordRevision": 1,
+          "representationRelationship": "SAME_UNDERLYING_CONTRIBUTION"
+        },
+        {
+          "memberRole": "ALTERNATE_CAUSAL_REPRESENTATION",
+          "nativeContributionId": "CONTRIB-PSY-LAYER-REPETITION-001",
+          "nativeContributionPolicy": "Same exposure contribution as REL-V1-PSY-LAYER-001; never sum or propagate as an additional causal input.",
+          "recordClass": "EFFECT_ASSERTION",
+          "recordHash": "2daf2a9e78dea482abb13766c147514483cd4a1b149b10d9acf6704f53bb4d55",
+          "recordId": "EA-V1-PSY-LAYER-001",
+          "recordRevision": 1,
+          "representationRelationship": "SAME_UNDERLYING_CONTRIBUTION"
+        }
+      ],
+      "objectKind": "CONTRIBUTION_IDENTITY_CONTROL",
+      "propagationPolicy": "COUNT_ONCE_NO_ADDITIVE_PROPAGATION",
+      "provenance": {
+        "implementationDecisionId": "GOV-CONTRIBUTION-IMPLEMENTATION-001-2026-09-27",
+        "architectureDecisionId": "GOV-CONTRIBUTION-IDENTITY-001-2026-09-27",
+        "phase": "PHASE_1_SHADOW_VALIDATION_ONLY",
+        "sourceRecordsMutated": false
+      },
+      "rdsProfileReferences": [],
+      "schemaVersion": "1.0.0",
+      "scientificContributionDefinition": "One repetition-exposure contribution to specified belief confidence",
+      "scope": {
+        "context": "Repeated encounter with the same factual statement/headline can alter subsequently rated belief confidence in controlled adult online/laboratory tasks. Ordinary judgment tasks often show increases; extreme implausibility, explicit veracity cues and initial accuracy focus bound the claim. No universal monotonic sign, transfer to arbitrary content, calibrated truth or behavior is asserted. Extreme implausibility is not a universal exclusion: a later five-presentation/100-point-scale experiment found higher ratings while ratings remained below midpoint.",
+        "population": "Repeated encounter with the same factual statement/headline can alter subsequently rated belief confidence in controlled adult online/laboratory tasks. Ordinary judgment tasks often show increases; extreme implausibility, explicit veracity cues and initial accuracy focus bound the claim. No universal monotonic sign, transfer to arbitrary content, calibrated truth or behavior is asserted. Extreme implausibility is not a universal exclusion: a later five-presentation/100-point-scale experiment found higher ratings while ratings remained below midpoint."
+      },
+      "selectionPolicy": "EXACT_EXPLICIT_REPRESENTATION_REQUIRED",
+      "stateRouteReferences": [],
+      "shadowOnly": true
+    }
+  ]
 }

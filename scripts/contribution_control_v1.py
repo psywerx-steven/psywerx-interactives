@@ -175,6 +175,8 @@ def _receipt(request: dict[str, Any], groups: list[dict[str, Any]], included: li
         "schemaVersion": "1.0.0", "requestHash": digest(request),
         "candidateRepresentations": sorted(request["candidateRepresentations"], key=lambda row: (row["recordClass"], row["recordId"])),
         "groupReferences": sorted(request["groupReferences"], key=lambda row: (row["groupId"], row["groupVersion"])),
+        "memberRoles": dict(sorted((member["recordId"], member["memberRole"]) for group in groups for member in group["memberRepresentations"])),
+        "nativePolicies": dict(sorted((member["recordId"], member["nativeContributionPolicy"]) for group in groups for member in group["memberRepresentations"])),
         "explicitSelections": dict(sorted(request["explicitSelections"].items())),
         "includedRepresentations": sorted(set(included)), "excludedRepresentations": sorted(set(excluded)), "blockedRepresentations": sorted(set(blocked)),
         "resolutionOutcome": outcome,
@@ -234,6 +236,12 @@ def resolve_for_causal_consumption(request: dict[str, Any]) -> dict[str, Any]:
     else:
         outcome = "ALLOW_ALL_INDEPENDENT"
     return _receipt(request, groups, included, excluded, blocked, outcome)
+
+
+def fail_closed_receipt(request: dict[str, Any], outcome: str, blocked: list[str], groups: list[dict[str, Any]] | None = None) -> dict[str, Any]:
+    """Create a deterministic authority-free receipt for a rejected request."""
+    require(outcome in {"BLOCK_PENDING_IDENTITY", "FAIL_CONTRADICTORY_GROUP", "FAIL_NATIVE_CONTROL_MISMATCH"}, "Unsupported fail-closed outcome")
+    return _receipt(request, groups or [], [], [], blocked, outcome)
 
 
 def validate_repository() -> dict[str, int]:

@@ -50,6 +50,50 @@ class ContributionControlProductionTests(unittest.TestCase):
         else:
             self.assertEqual(read("data/contribution-control-v1/groups.json")["groups"], [])
 
+    def test_phase1_exact_group_and_shadow_receipts(self):
+        groups = cc.load_registry().all()
+        if not groups:
+            self.skipTest("Phase 0 empty registry")
+        group = groups[0]
+        self.assertEqual((group["groupId"], group["groupVersion"]), ("CONTRIB-PSY-LAYER-REPETITION-001", "1.0.0"))
+        self.assertTrue(group["shadowOnly"])
+        self.assertEqual([(m["recordId"], m["memberRole"]) for m in group["memberRepresentations"]], [("REL-V1-PSY-LAYER-001", "PRIMARY_CAUSAL_CONTRIBUTION"), ("EA-V1-PSY-LAYER-001", "ALTERNATE_CAUSAL_REPRESENTATION")])
+        receipts = read("data/contribution-control-v1/repetition-shadow-receipts.json")
+        expected = {"BOTH_NO_SELECTION": "SELECT_ONE_REQUIRED", "RELATIONSHIP_SELECTED": "COUNT_ONCE", "EA_SELECTED": "COUNT_ONCE", "BOTH_SELECTED": "FAIL_CONTRADICTORY_GROUP", "WRONG_RELATIONSHIP_HASH": "FAIL_NATIVE_CONTROL_MISMATCH", "WRONG_EA_HASH": "FAIL_NATIVE_CONTROL_MISMATCH", "WRONG_GROUP_VERSION": "BLOCK_PENDING_IDENTITY", "EA_NATIVE_CONTRIBUTION_MISMATCH": "FAIL_NATIVE_CONTROL_MISMATCH", "INDEPENDENT_SAME_TARGET": "COUNT_ONCE", "DERIVATION_ADDED": "COUNT_ONCE"}
+        self.assertEqual({row["caseId"]: row["receipt"]["resolutionOutcome"] for row in receipts["cases"]}, expected)
+        self.assertEqual(receipts["numericControl"]["resolvedCountOnceTotal"], 0.2)
+        self.assertEqual(receipts["numericControl"]["resolvedWithIndependentTotal"], 0.3)
+        for row in receipts["cases"]:
+            receipt = row["receipt"]
+            self.assertFalse(receipt["causalAuthorityGranted"] or receipt["graphAuthorityGranted"] or receipt["simulationAuthorityGranted"] or receipt["activationAuthorityGranted"])
+            self.assertEqual(len(receipt["deterministicFingerprint"]), 64)
+
+    def test_phase1_receipts_regenerate_deterministically(self):
+        if not cc.load_registry().all():
+            self.skipTest("Phase 0 empty registry")
+        import materialize_contribution_repetition_phase1 as materializer
+        self.assertEqual(materializer.build(), read("data/contribution-control-v1/repetition-shadow-receipts.json"))
+
+    def test_aggregate_firewall_and_wp5_readiness(self):
+        groups = cc.load_registry().all()
+        self.assertEqual({group["groupId"] for group in groups}, {"CONTRIB-PSY-LAYER-REPETITION-001"} if groups else set())
+        forbidden = {"INS-039", "INS-103", "SOC-024", "SOC-041", "SOC-052", "SOC-053", "SOC-054", "SOC-055", "SOC-056", "SOC-074", "SOC-076", "SOC-096"}
+        self.assertFalse(forbidden & {member["recordId"] for group in groups for member in group["memberRepresentations"]})
+        readiness = read("data/governance/post-scale-up/contribution/contribution-wp-psg-005-readiness.json")
+        self.assertEqual(readiness["wpPsg005Status"], "NOT_STARTED")
+        self.assertEqual(readiness["causalSourceAuthorizations"], 0)
+        self.assertTrue(all(row["causalSourceEligible"] is False for row in readiness["records"]))
+
+    def test_phase1_rollback_requires_no_source_rewrite(self):
+        before_rel = cc.digest(cc.native_record("RELATIONSHIP", "REL-V1-PSY-LAYER-001"))
+        before_ea = cc.digest(cc.native_record("EFFECT_ASSERTION", "EA-V1-PSY-LAYER-001"))
+        with patch.object(cc, "load_registry", return_value=cc.ContributionRegistry([])):
+            independent = {"recordClass": "SYNTHETIC_CAUSAL_ROUTE", "recordId": "SYN-ROLLBACK-001", "recordRevision": 1, "recordHash": "b" * 64}
+            receipt = cc.resolve_for_causal_consumption({"schemaVersion": "1.0.0", "candidateRepresentations": [independent], "groupReferences": [], "explicitSelections": {}, "context": {}})
+        self.assertEqual(receipt["resolutionOutcome"], "ALLOW_ALL_INDEPENDENT")
+        self.assertEqual(cc.digest(cc.native_record("RELATIONSHIP", "REL-V1-PSY-LAYER-001")), before_rel)
+        self.assertEqual(cc.digest(cc.native_record("EFFECT_ASSERTION", "EA-V1-PSY-LAYER-001")), before_ea)
+
     def test_exact_group_schema_and_authority_firewall(self):
         self.assertTrue(cc.validate_group(self.group()))
         for selector in cc.IMPLICIT_SELECTORS:
@@ -119,7 +163,8 @@ class ContributionControlProductionTests(unittest.TestCase):
         self.assertFalse(first["causalAuthorityGranted"] or first["graphAuthorityGranted"] or first["simulationAuthorityGranted"] or first["activationAuthorityGranted"])
 
     def test_protected_science_hashes_unchanged(self):
-        manifest = read("data/governance/post-scale-up/contribution/contribution-phase0-protected-hashes.json")
+        phase1 = ROOT / "data/governance/post-scale-up/contribution/contribution-phase1-protected-hashes.json"
+        manifest = read(phase1 if phase1.exists() else ROOT / "data/governance/post-scale-up/contribution/contribution-phase0-protected-hashes.json")
         for relative, expected in manifest["files"].items():
             actual = hashlib.sha256((ROOT / relative).read_bytes().replace(b"\r\n", b"\n")).hexdigest()
             self.assertEqual(actual, expected, relative)

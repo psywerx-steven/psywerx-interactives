@@ -26,4 +26,4 @@ No aggregate RDS group or independence adjudication is authorized. Production sc
 
 ## Current implementation state
 
-`PHASE_0_IMPLEMENTATION_IN_PROGRESS`. Phase 1 remains gated on Phase 0 merge, hosted Linux and Windows CI, protected hashes, and legacy-equivalence validation.
+PHASE_1_REPETITION_COMPLETE_SHADOW_ONLY. Phase 0 passed protected-state, Linux, and Windows gates before merge. Phase 1 then materialized only the authorized repetition ContributionGroup in shadow validation mode. Source records, aggregate cases, graph, simulation, lifecycle, activation, and causal-source eligibility remain unchanged.
