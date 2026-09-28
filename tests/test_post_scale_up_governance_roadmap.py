@@ -137,9 +137,14 @@ class PostScaleUpGovernanceRoadmapTests(unittest.TestCase):
         self.assertIsNone(by_wp["WP-PSG-003"]["nextDecisionPacketId"])
         self.assertEqual(by_wp["WP-PSG-004"]["stages"]["D_humanGovernanceDecision"], "COMPLETE_BOUNDED_DIRECTION_APPROVED")
         self.assertEqual(by_wp["WP-PSG-004"]["governanceDecisionId"], "GOV-CONTRIBUTION-IDENTITY-001-2026-09-27")
-        self.assertEqual(by_wp["WP-PSG-004"]["stages"]["E_implementation"], "COMPLETE_NON_PRODUCTION_REFERENCE_PROTOTYPE")
-        self.assertEqual(by_wp["WP-PSG-004"]["stages"]["F_migrationRevalidation"], "DRY_RUN_ONLY_COMPLETE_PRODUCTION_MIGRATION_NOT_AUTHORIZED")
-        self.assertEqual(by_wp["WP-PSG-004"]["nextDecisionPacketId"], "DP-PSG-004-IMPLEMENTATION")
+        self.assertEqual(by_wp["WP-PSG-004"]["stages"]["E_implementation"], "PRODUCTION_ARCHITECTURE_INSTALLED")
+        contribution_groups = read(ROOT / "data/contribution-control-v1/groups.json")["groups"]
+        expected_phase = "PHASE_1_REPETITION_COMPLETE_SHADOW_ONLY" if contribution_groups else "PHASE_0_COMPLETE_EMPTY_REGISTRY"
+        expected_stage_f = "REPETITION_SHADOW_COMPATIBILITY_COMPLETE_OTHER_CASES_UNCHANGED" if contribution_groups else "DRY_RUN_ONLY_COMPLETE_PHASE_1_NOT_STARTED"
+        self.assertEqual(by_wp["WP-PSG-004"]["productionImplementationStatus"], expected_phase)
+        self.assertEqual(by_wp["WP-PSG-004"]["stages"]["F_migrationRevalidation"], expected_stage_f)
+        self.assertEqual(by_wp["WP-PSG-004"]["productionImplementationDecisionId"], "GOV-CONTRIBUTION-IMPLEMENTATION-001-2026-09-27")
+        self.assertIsNone(by_wp["WP-PSG-004"]["nextDecisionPacketId"])
         for package in self.packages["workPackages"]:
             if package["workPackageId"] not in {"WP-PSG-001", "WP-PSG-002", "WP-PSG-003", "WP-PSG-004"}:
                 self.assertEqual(package["stages"]["D_humanGovernanceDecision"], "NOT_STARTED")

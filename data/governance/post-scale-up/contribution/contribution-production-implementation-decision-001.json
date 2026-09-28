@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "1.0.0",
+  "decisionId": "GOV-CONTRIBUTION-IMPLEMENTATION-001-2026-09-27",
+  "decisionDate": "2026-09-27",
+  "decisionPacketId": "DP-PSG-004-IMPLEMENTATION",
+  "architectureDecisionId": "GOV-CONTRIBUTION-IDENTITY-001-2026-09-27",
+  "workPackageId": "WP-PSG-004",
+  "decisionAuthority": "HUMAN_GOVERNOR",
+  "outcome": "APPROVED_BOUNDED_PHASE_0_AND_SEPARATELY_GATED_REPETITION_SHADOW_PHASE_1",
+  "phase0Authorized": true,
+  "phase0Requirements": {
+    "schemas": [
+      "ContributionGroup",
+      "ContributionResolutionRequest",
+      "ContributionResolutionReceipt"
+    ],
+    "emptyRegistry": true,
+    "failClosedValidators": true,
+    "nativeControlAdapters": true,
+    "centralResolutionService": true,
+    "deterministicReceipts": true,
+    "groups": 0,
+    "recordMigrations": 0,
+    "graphBehaviorChanges": 0,
+    "simulationBehaviorChanges": 0
+  },
+  "phase1AuthorizedAfterPhase0Validation": true,
+  "phase1Group": "CONTRIB-PSY-LAYER-REPETITION-001@1.0.0",
+  "phase1Members": [
+    "REL-V1-PSY-LAYER-001",
+    "EA-V1-PSY-LAYER-001"
+  ],
+  "phase1Mode": "SHADOW_VALIDATION_ONLY",
+  "aggregateRdsGroupsAuthorized": 0,
+  "wpPsg005Started": false,
+  "relationshipMutationAuthorized": false,
+  "effectAssertionMutationAuthorized": false,
+  "rdsCausalSourceAuthorization": false,
+  "graphBehaviorChangeAuthorized": false,
+  "simulationBehaviorChangeAuthorized": false,
+  "lifecycleChangeAuthorized": false,
+  "activationAuthorized": false,
+  "implementationStatus": "PHASE_0_COMPLETE_EMPTY_REGISTRY"
+}

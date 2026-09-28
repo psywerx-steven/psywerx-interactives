@@ -195,6 +195,9 @@ jobs:
       - name: Validate contribution identity reference implementation
         run: python -m unittest discover -s tests -p "test_contribution_identity_stage_e.py"
 
+      - name: Validate governed contribution control production architecture
+        run: python -m unittest discover -s tests -p "test_contribution_control_v1.py"
+
       - name: Validate non-production cross-level exposure reference implementation
         run: python -m unittest discover -s tests -p "test_cross_level_exposure_stage_e.py"
 
@@ -502,6 +505,9 @@ jobs:
 
       - name: Validate contribution identity reference implementation
         run: python -m unittest discover -s tests -p "test_contribution_identity_stage_e.py"
+
+      - name: Validate governed contribution control production architecture
+        run: python -m unittest discover -s tests -p "test_contribution_control_v1.py"
 
       - name: Validate non-production cross-level exposure reference implementation
         run: python -m unittest discover -s tests -p "test_cross_level_exposure_stage_e.py"

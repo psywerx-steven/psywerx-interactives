@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://psywerx.org/schemas/contribution-resolution-request.schema.json",
+  "title": "ContributionResolutionRequest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "candidateRepresentations", "groupReferences", "explicitSelections", "context"],
+  "properties": {
+    "schemaVersion": {"const": "1.0.0"},
+    "candidateRepresentations": {"type": "array", "uniqueItems": true, "items": {"type": "object", "additionalProperties": false, "required": ["recordClass", "recordId", "recordRevision", "recordHash"], "properties": {"recordClass": {"type": "string"}, "recordId": {"type": "string"}, "recordRevision": {"type": ["string", "integer"]}, "recordHash": {"type": "string", "pattern": "^[0-9a-f]{64}$"}}}},
+    "groupReferences": {"type": "array", "uniqueItems": true, "items": {"type": "object", "additionalProperties": false, "required": ["groupId", "groupVersion"], "properties": {"groupId": {"type": "string"}, "groupVersion": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"}}}},
+    "explicitSelections": {"type": "object", "additionalProperties": {"type": "string"}},
+    "context": {"type": "object"}
+  }
+}
