@@ -4,10 +4,11 @@
   "title": "ContributionResolutionReceipt",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schemaVersion", "requestHash", "candidateRepresentations", "groupReferences", "explicitSelections", "includedRepresentations", "excludedRepresentations", "blockedRepresentations", "resolutionOutcome", "countingPolicies", "propagationPolicies", "independenceStatuses", "causalAuthorityGranted", "activationAuthorityGranted", "graphAuthorityGranted", "simulationAuthorityGranted", "deterministicFingerprint"],
+  "required": ["schemaVersion", "requestHash", "candidateRepresentations", "groupReferences", "memberRoles", "nativePolicies", "explicitSelections", "includedRepresentations", "excludedRepresentations", "blockedRepresentations", "resolutionOutcome", "countingPolicies", "propagationPolicies", "independenceStatuses", "causalAuthorityGranted", "activationAuthorityGranted", "graphAuthorityGranted", "simulationAuthorityGranted", "deterministicFingerprint"],
   "properties": {
     "schemaVersion": {"const": "1.0.0"}, "requestHash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
     "candidateRepresentations": {"type": "array", "items": {"type": "object"}}, "groupReferences": {"type": "array", "items": {"type": "object"}},
+    "memberRoles": {"type": "object", "additionalProperties": {"type": "string"}}, "nativePolicies": {"type": "object", "additionalProperties": {"type": ["string", "null"]}},
     "explicitSelections": {"type": "object"}, "includedRepresentations": {"type": "array", "items": {"type": "string"}},
     "excludedRepresentations": {"type": "array", "items": {"type": "string"}}, "blockedRepresentations": {"type": "array", "items": {"type": "string"}},
     "resolutionOutcome": {"enum": ["ALLOW_ALL_INDEPENDENT", "COUNT_ONCE", "SELECT_ONE_REQUIRED", "DERIVATION_ONLY_NO_CAUSAL_SUM", "NO_CAUSAL_CONTRIBUTION", "BLOCK_PENDING_IDENTITY", "BLOCK_PENDING_CAUSAL_INDEPENDENCE", "FAIL_CONTRADICTORY_GROUP", "FAIL_NATIVE_CONTROL_MISMATCH"]},

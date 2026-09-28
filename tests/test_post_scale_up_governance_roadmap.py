@@ -145,13 +145,15 @@ class PostScaleUpGovernanceRoadmapTests(unittest.TestCase):
         self.assertEqual(by_wp["WP-PSG-004"]["stages"]["F_migrationRevalidation"], expected_stage_f)
         self.assertEqual(by_wp["WP-PSG-004"]["productionImplementationDecisionId"], "GOV-CONTRIBUTION-IMPLEMENTATION-001-2026-09-27")
         self.assertIsNone(by_wp["WP-PSG-004"]["nextDecisionPacketId"])
+        self.assertEqual(by_wp["WP-PSG-004"]["stages"]["G_scientificReadjudication"], "SCIENTIFIC_READJUDICATION_NOT_STARTED" if contribution_groups else "NOT_STARTED")
         for package in self.packages["workPackages"]:
             if package["workPackageId"] not in {"WP-PSG-001", "WP-PSG-002", "WP-PSG-003", "WP-PSG-004"}:
                 self.assertEqual(package["stages"]["D_humanGovernanceDecision"], "NOT_STARTED")
             if package["workPackageId"] not in {"WP-PSG-001", "WP-PSG-002", "WP-PSG-004"}:
                 self.assertEqual(package["stages"]["E_implementation"], "NOT_STARTED")
                 self.assertEqual(package["stages"]["F_migrationRevalidation"], "NOT_STARTED")
-            self.assertEqual(package["stages"]["G_scientificReadjudication"], "NOT_STARTED")
+            if package["workPackageId"] != "WP-PSG-004" or not contribution_groups:
+                self.assertEqual(package["stages"]["G_scientificReadjudication"], "NOT_STARTED")
         by_packet = {row["decisionPacketId"]: row for row in self.packets["decisionPackets"]}
         self.assertEqual(by_packet["DP-PSG-001"]["humanDecisionStatus"], "HUMAN_APPROVED_BOUNDED_DIRECTION")
         self.assertEqual(by_packet["DP-PSG-001"]["approvedOption"], "BOUNDED_OPTION_B_PLUS_C")

@@ -1,0 +1,630 @@
+{
+  "schemaVersion": "1.0.0",
+  "mode": "SHADOW_VALIDATION_ONLY",
+  "groupId": "CONTRIB-PSY-LAYER-REPETITION-001",
+  "groupVersion": "1.0.0",
+  "relationshipId": "REL-V1-PSY-LAYER-001",
+  "relationshipHash": "090b8e185653ae3fe3cf8b662564e956c25f555e93b451edcbc5ef235648f6ac",
+  "effectAssertionId": "EA-V1-PSY-LAYER-001",
+  "effectAssertionHash": "2daf2a9e78dea482abb13766c147514483cd4a1b149b10d9acf6704f53bb4d55",
+  "nativeEffectAssertionContributionId": "CONTRIB-PSY-LAYER-REPETITION-001",
+  "cases": [
+    {
+      "caseId": "BOTH_NO_SELECTION",
+      "attemptedInput": null,
+      "receipt": {
+        "schemaVersion": "1.0.0",
+        "requestHash": "07169e192028323a78ba62fb2f02f54e6a46f575c24ca690e11e514083434ddb",
+        "candidateRepresentations": [
+          {
+            "recordClass": "EFFECT_ASSERTION",
+            "recordId": "EA-V1-PSY-LAYER-001",
+            "recordRevision": 1,
+            "recordHash": "2daf2a9e78dea482abb13766c147514483cd4a1b149b10d9acf6704f53bb4d55"
+          },
+          {
+            "recordClass": "RELATIONSHIP",
+            "recordId": "REL-V1-PSY-LAYER-001",
+            "recordRevision": 1,
+            "recordHash": "090b8e185653ae3fe3cf8b662564e956c25f555e93b451edcbc5ef235648f6ac"
+          }
+        ],
+        "groupReferences": [
+          {
+            "groupId": "CONTRIB-PSY-LAYER-REPETITION-001",
+            "groupVersion": "1.0.0"
+          }
+        ],
+        "memberRoles": {
+          "EA-V1-PSY-LAYER-001": "ALTERNATE_CAUSAL_REPRESENTATION",
+          "REL-V1-PSY-LAYER-001": "PRIMARY_CAUSAL_CONTRIBUTION"
+        },
+        "nativePolicies": {
+          "EA-V1-PSY-LAYER-001": "Same exposure contribution as REL-V1-PSY-LAYER-001; never sum or propagate as an additional causal input.",
+          "REL-V1-PSY-LAYER-001": null
+        },
+        "explicitSelections": {},
+        "includedRepresentations": [],
+        "excludedRepresentations": [],
+        "blockedRepresentations": [
+          "EA-V1-PSY-LAYER-001",
+          "REL-V1-PSY-LAYER-001"
+        ],
+        "resolutionOutcome": "SELECT_ONE_REQUIRED",
+        "countingPolicies": [
+          "MUTUALLY_EXCLUSIVE_REPRESENTATIONS"
+        ],
+        "propagationPolicies": [
+          "COUNT_ONCE_NO_ADDITIVE_PROPAGATION"
+        ],
+        "independenceStatuses": [
+          "SAME_CONTRIBUTION_CONFIRMED"
+        ],
+        "causalAuthorityGranted": false,
+        "activationAuthorityGranted": false,
+        "graphAuthorityGranted": false,
+        "simulationAuthorityGranted": false,
+        "deterministicFingerprint": "0ed732ff9a9894496e07d2efa090d2d686399bc71e62b1cb854847247de34b74"
+      }
+    },
+    {
+      "caseId": "RELATIONSHIP_SELECTED",
+      "attemptedInput": null,
+      "receipt": {
+        "schemaVersion": "1.0.0",
+        "requestHash": "2ab9c2009fd519c5c8cb036c15b61053a8edb4cb1abdbe51a7e72c0b6739c9da",
+        "candidateRepresentations": [
+          {
+            "recordClass": "EFFECT_ASSERTION",
+            "recordId": "EA-V1-PSY-LAYER-001",
+            "recordRevision": 1,
+            "recordHash": "2daf2a9e78dea482abb13766c147514483cd4a1b149b10d9acf6704f53bb4d55"
+          },
+          {
+            "recordClass": "RELATIONSHIP",
+            "recordId": "REL-V1-PSY-LAYER-001",
+            "recordRevision": 1,
+            "recordHash": "090b8e185653ae3fe3cf8b662564e956c25f555e93b451edcbc5ef235648f6ac"
+          }
+        ],
+        "groupReferences": [
+          {
+            "groupId": "CONTRIB-PSY-LAYER-REPETITION-001",
+            "groupVersion": "1.0.0"
+          }
+        ],
+        "memberRoles": {
+          "EA-V1-PSY-LAYER-001": "ALTERNATE_CAUSAL_REPRESENTATION",
+          "REL-V1-PSY-LAYER-001": "PRIMARY_CAUSAL_CONTRIBUTION"
+        },
+        "nativePolicies": {
+          "EA-V1-PSY-LAYER-001": "Same exposure contribution as REL-V1-PSY-LAYER-001; never sum or propagate as an additional causal input.",
+          "REL-V1-PSY-LAYER-001": null
+        },
+        "explicitSelections": {
+          "CONTRIB-PSY-LAYER-REPETITION-001": "REL-V1-PSY-LAYER-001"
+        },
+        "includedRepresentations": [
+          "REL-V1-PSY-LAYER-001"
+        ],
+        "excludedRepresentations": [
+          "EA-V1-PSY-LAYER-001"
+        ],
+        "blockedRepresentations": [],
+        "resolutionOutcome": "COUNT_ONCE",
+        "countingPolicies": [
+          "MUTUALLY_EXCLUSIVE_REPRESENTATIONS"
+        ],
+        "propagationPolicies": [
+          "COUNT_ONCE_NO_ADDITIVE_PROPAGATION"
+        ],
+        "independenceStatuses": [
+          "SAME_CONTRIBUTION_CONFIRMED"
+        ],
+        "causalAuthorityGranted": false,
+        "activationAuthorityGranted": false,
+        "graphAuthorityGranted": false,
+        "simulationAuthorityGranted": false,
+        "deterministicFingerprint": "99f53e1e93e96f90057e3432b34e1f79280cd93cdd0cdad5cf9b7926069e558b"
+      }
+    },
+    {
+      "caseId": "EA_SELECTED",
+      "attemptedInput": null,
+      "receipt": {
+        "schemaVersion": "1.0.0",
+        "requestHash": "e2b5dacb2d0089f20aedd736686d103a6b8703c79323eae81cff50223e2bd128",
+        "candidateRepresentations": [
+          {
+            "recordClass": "EFFECT_ASSERTION",
+            "recordId": "EA-V1-PSY-LAYER-001",
+            "recordRevision": 1,
+            "recordHash": "2daf2a9e78dea482abb13766c147514483cd4a1b149b10d9acf6704f53bb4d55"
+          },
+          {
+            "recordClass": "RELATIONSHIP",
+            "recordId": "REL-V1-PSY-LAYER-001",
+            "recordRevision": 1,
+            "recordHash": "090b8e185653ae3fe3cf8b662564e956c25f555e93b451edcbc5ef235648f6ac"
+          }
+        ],
+        "groupReferences": [
+          {
+            "groupId": "CONTRIB-PSY-LAYER-REPETITION-001",
+            "groupVersion": "1.0.0"
+          }
+        ],
+        "memberRoles": {
+          "EA-V1-PSY-LAYER-001": "ALTERNATE_CAUSAL_REPRESENTATION",
+          "REL-V1-PSY-LAYER-001": "PRIMARY_CAUSAL_CONTRIBUTION"
+        },
+        "nativePolicies": {
+          "EA-V1-PSY-LAYER-001": "Same exposure contribution as REL-V1-PSY-LAYER-001; never sum or propagate as an additional causal input.",
+          "REL-V1-PSY-LAYER-001": null
+        },
+        "explicitSelections": {
+          "CONTRIB-PSY-LAYER-REPETITION-001": "EA-V1-PSY-LAYER-001"
+        },
+        "includedRepresentations": [
+          "EA-V1-PSY-LAYER-001"
+        ],
+        "excludedRepresentations": [
+          "REL-V1-PSY-LAYER-001"
+        ],
+        "blockedRepresentations": [],
+        "resolutionOutcome": "COUNT_ONCE",
+        "countingPolicies": [
+          "MUTUALLY_EXCLUSIVE_REPRESENTATIONS"
+        ],
+        "propagationPolicies": [
+          "COUNT_ONCE_NO_ADDITIVE_PROPAGATION"
+        ],
+        "independenceStatuses": [
+          "SAME_CONTRIBUTION_CONFIRMED"
+        ],
+        "causalAuthorityGranted": false,
+        "activationAuthorityGranted": false,
+        "graphAuthorityGranted": false,
+        "simulationAuthorityGranted": false,
+        "deterministicFingerprint": "e370767e00dc7728803dc0c868da0f4ef18eb153b1af42cbba3f5dfd2e61f2e2"
+      }
+    },
+    {
+      "caseId": "BOTH_SELECTED",
+      "attemptedInput": [
+        "REL-V1-PSY-LAYER-001",
+        "EA-V1-PSY-LAYER-001"
+      ],
+      "receipt": {
+        "schemaVersion": "1.0.0",
+        "requestHash": "04873f4df8100cc29041f1a4fc5f498eac9ce1215321f06db620d0c51fd31bd1",
+        "candidateRepresentations": [
+          {
+            "recordClass": "EFFECT_ASSERTION",
+            "recordId": "EA-V1-PSY-LAYER-001",
+            "recordRevision": 1,
+            "recordHash": "2daf2a9e78dea482abb13766c147514483cd4a1b149b10d9acf6704f53bb4d55"
+          },
+          {
+            "recordClass": "RELATIONSHIP",
+            "recordId": "REL-V1-PSY-LAYER-001",
+            "recordRevision": 1,
+            "recordHash": "090b8e185653ae3fe3cf8b662564e956c25f555e93b451edcbc5ef235648f6ac"
+          }
+        ],
+        "groupReferences": [
+          {
+            "groupId": "CONTRIB-PSY-LAYER-REPETITION-001",
+            "groupVersion": "1.0.0"
+          }
+        ],
+        "memberRoles": {
+          "EA-V1-PSY-LAYER-001": "ALTERNATE_CAUSAL_REPRESENTATION",
+          "REL-V1-PSY-LAYER-001": "PRIMARY_CAUSAL_CONTRIBUTION"
+        },
+        "nativePolicies": {
+          "EA-V1-PSY-LAYER-001": "Same exposure contribution as REL-V1-PSY-LAYER-001; never sum or propagate as an additional causal input.",
+          "REL-V1-PSY-LAYER-001": null
+        },
+        "explicitSelections": {
+          "CONTRIB-PSY-LAYER-REPETITION-001": "MULTIPLE_SELECTIONS_REJECTED"
+        },
+        "includedRepresentations": [],
+        "excludedRepresentations": [],
+        "blockedRepresentations": [
+          "EA-V1-PSY-LAYER-001",
+          "REL-V1-PSY-LAYER-001"
+        ],
+        "resolutionOutcome": "FAIL_CONTRADICTORY_GROUP",
+        "countingPolicies": [
+          "MUTUALLY_EXCLUSIVE_REPRESENTATIONS"
+        ],
+        "propagationPolicies": [
+          "COUNT_ONCE_NO_ADDITIVE_PROPAGATION"
+        ],
+        "independenceStatuses": [
+          "SAME_CONTRIBUTION_CONFIRMED"
+        ],
+        "causalAuthorityGranted": false,
+        "activationAuthorityGranted": false,
+        "graphAuthorityGranted": false,
+        "simulationAuthorityGranted": false,
+        "deterministicFingerprint": "8ccaf36b81c38e5f3ab8e8627f62b08708c8621befc2efc21ee1a2e859b8a1f3"
+      }
+    },
+    {
+      "caseId": "WRONG_RELATIONSHIP_HASH",
+      "attemptedInput": null,
+      "receipt": {
+        "schemaVersion": "1.0.0",
+        "requestHash": "c11c9394ee7fd7391bf2f009f48163fdc9a3d10d596e218f21782d7d4c870d2c",
+        "candidateRepresentations": [
+          {
+            "recordClass": "EFFECT_ASSERTION",
+            "recordId": "EA-V1-PSY-LAYER-001",
+            "recordRevision": 1,
+            "recordHash": "2daf2a9e78dea482abb13766c147514483cd4a1b149b10d9acf6704f53bb4d55"
+          },
+          {
+            "recordClass": "RELATIONSHIP",
+            "recordId": "REL-V1-PSY-LAYER-001",
+            "recordRevision": 1,
+            "recordHash": "0000000000000000000000000000000000000000000000000000000000000000"
+          }
+        ],
+        "groupReferences": [
+          {
+            "groupId": "CONTRIB-PSY-LAYER-REPETITION-001",
+            "groupVersion": "1.0.0"
+          }
+        ],
+        "memberRoles": {
+          "EA-V1-PSY-LAYER-001": "ALTERNATE_CAUSAL_REPRESENTATION",
+          "REL-V1-PSY-LAYER-001": "PRIMARY_CAUSAL_CONTRIBUTION"
+        },
+        "nativePolicies": {
+          "EA-V1-PSY-LAYER-001": "Same exposure contribution as REL-V1-PSY-LAYER-001; never sum or propagate as an additional causal input.",
+          "REL-V1-PSY-LAYER-001": null
+        },
+        "explicitSelections": {
+          "CONTRIB-PSY-LAYER-REPETITION-001": "REL-V1-PSY-LAYER-001"
+        },
+        "includedRepresentations": [],
+        "excludedRepresentations": [],
+        "blockedRepresentations": [
+          "REL-V1-PSY-LAYER-001"
+        ],
+        "resolutionOutcome": "FAIL_NATIVE_CONTROL_MISMATCH",
+        "countingPolicies": [
+          "MUTUALLY_EXCLUSIVE_REPRESENTATIONS"
+        ],
+        "propagationPolicies": [
+          "COUNT_ONCE_NO_ADDITIVE_PROPAGATION"
+        ],
+        "independenceStatuses": [
+          "SAME_CONTRIBUTION_CONFIRMED"
+        ],
+        "causalAuthorityGranted": false,
+        "activationAuthorityGranted": false,
+        "graphAuthorityGranted": false,
+        "simulationAuthorityGranted": false,
+        "deterministicFingerprint": "6906387fcf48fff8f8b636977792ddcc4db3063ac67cf6cad47ae6f67d7f885d"
+      }
+    },
+    {
+      "caseId": "WRONG_EA_HASH",
+      "attemptedInput": null,
+      "receipt": {
+        "schemaVersion": "1.0.0",
+        "requestHash": "80af8c9c254031597dbefb8f635851bf25834b9be08e2d1923ceeb5b112de6e3",
+        "candidateRepresentations": [
+          {
+            "recordClass": "EFFECT_ASSERTION",
+            "recordId": "EA-V1-PSY-LAYER-001",
+            "recordRevision": 1,
+            "recordHash": "0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          {
+            "recordClass": "RELATIONSHIP",
+            "recordId": "REL-V1-PSY-LAYER-001",
+            "recordRevision": 1,
+            "recordHash": "090b8e185653ae3fe3cf8b662564e956c25f555e93b451edcbc5ef235648f6ac"
+          }
+        ],
+        "groupReferences": [
+          {
+            "groupId": "CONTRIB-PSY-LAYER-REPETITION-001",
+            "groupVersion": "1.0.0"
+          }
+        ],
+        "memberRoles": {
+          "EA-V1-PSY-LAYER-001": "ALTERNATE_CAUSAL_REPRESENTATION",
+          "REL-V1-PSY-LAYER-001": "PRIMARY_CAUSAL_CONTRIBUTION"
+        },
+        "nativePolicies": {
+          "EA-V1-PSY-LAYER-001": "Same exposure contribution as REL-V1-PSY-LAYER-001; never sum or propagate as an additional causal input.",
+          "REL-V1-PSY-LAYER-001": null
+        },
+        "explicitSelections": {
+          "CONTRIB-PSY-LAYER-REPETITION-001": "REL-V1-PSY-LAYER-001"
+        },
+        "includedRepresentations": [],
+        "excludedRepresentations": [],
+        "blockedRepresentations": [
+          "EA-V1-PSY-LAYER-001"
+        ],
+        "resolutionOutcome": "FAIL_NATIVE_CONTROL_MISMATCH",
+        "countingPolicies": [
+          "MUTUALLY_EXCLUSIVE_REPRESENTATIONS"
+        ],
+        "propagationPolicies": [
+          "COUNT_ONCE_NO_ADDITIVE_PROPAGATION"
+        ],
+        "independenceStatuses": [
+          "SAME_CONTRIBUTION_CONFIRMED"
+        ],
+        "causalAuthorityGranted": false,
+        "activationAuthorityGranted": false,
+        "graphAuthorityGranted": false,
+        "simulationAuthorityGranted": false,
+        "deterministicFingerprint": "67035e37568f32d8bbecff998259f5f2d9bb97f1b78b174e3818e20a960a71c1"
+      }
+    },
+    {
+      "caseId": "WRONG_GROUP_VERSION",
+      "attemptedInput": null,
+      "receipt": {
+        "schemaVersion": "1.0.0",
+        "requestHash": "5d60994f70a849da47ad826b51d2c4bd764c3c2248f93d031d0d2208de03f693",
+        "candidateRepresentations": [
+          {
+            "recordClass": "EFFECT_ASSERTION",
+            "recordId": "EA-V1-PSY-LAYER-001",
+            "recordRevision": 1,
+            "recordHash": "2daf2a9e78dea482abb13766c147514483cd4a1b149b10d9acf6704f53bb4d55"
+          },
+          {
+            "recordClass": "RELATIONSHIP",
+            "recordId": "REL-V1-PSY-LAYER-001",
+            "recordRevision": 1,
+            "recordHash": "090b8e185653ae3fe3cf8b662564e956c25f555e93b451edcbc5ef235648f6ac"
+          }
+        ],
+        "groupReferences": [
+          {
+            "groupId": "CONTRIB-PSY-LAYER-REPETITION-001",
+            "groupVersion": "9.9.9"
+          }
+        ],
+        "memberRoles": {},
+        "nativePolicies": {},
+        "explicitSelections": {},
+        "includedRepresentations": [],
+        "excludedRepresentations": [],
+        "blockedRepresentations": [
+          "CONTRIB-PSY-LAYER-REPETITION-001"
+        ],
+        "resolutionOutcome": "BLOCK_PENDING_IDENTITY",
+        "countingPolicies": [],
+        "propagationPolicies": [],
+        "independenceStatuses": [],
+        "causalAuthorityGranted": false,
+        "activationAuthorityGranted": false,
+        "graphAuthorityGranted": false,
+        "simulationAuthorityGranted": false,
+        "deterministicFingerprint": "84742b6d34927213cb0e0deee50192c58b03f0a941528ef6da32f4a002450550"
+      }
+    },
+    {
+      "caseId": "EA_NATIVE_CONTRIBUTION_MISMATCH",
+      "attemptedInput": {
+        "nativeContributionId": "CONTRIB-WRONG"
+      },
+      "receipt": {
+        "schemaVersion": "1.0.0",
+        "requestHash": "2ab9c2009fd519c5c8cb036c15b61053a8edb4cb1abdbe51a7e72c0b6739c9da",
+        "candidateRepresentations": [
+          {
+            "recordClass": "EFFECT_ASSERTION",
+            "recordId": "EA-V1-PSY-LAYER-001",
+            "recordRevision": 1,
+            "recordHash": "2daf2a9e78dea482abb13766c147514483cd4a1b149b10d9acf6704f53bb4d55"
+          },
+          {
+            "recordClass": "RELATIONSHIP",
+            "recordId": "REL-V1-PSY-LAYER-001",
+            "recordRevision": 1,
+            "recordHash": "090b8e185653ae3fe3cf8b662564e956c25f555e93b451edcbc5ef235648f6ac"
+          }
+        ],
+        "groupReferences": [
+          {
+            "groupId": "CONTRIB-PSY-LAYER-REPETITION-001",
+            "groupVersion": "1.0.0"
+          }
+        ],
+        "memberRoles": {
+          "EA-V1-PSY-LAYER-001": "ALTERNATE_CAUSAL_REPRESENTATION",
+          "REL-V1-PSY-LAYER-001": "PRIMARY_CAUSAL_CONTRIBUTION"
+        },
+        "nativePolicies": {
+          "EA-V1-PSY-LAYER-001": "Same exposure contribution as REL-V1-PSY-LAYER-001; never sum or propagate as an additional causal input.",
+          "REL-V1-PSY-LAYER-001": null
+        },
+        "explicitSelections": {
+          "CONTRIB-PSY-LAYER-REPETITION-001": "REL-V1-PSY-LAYER-001"
+        },
+        "includedRepresentations": [],
+        "excludedRepresentations": [],
+        "blockedRepresentations": [
+          "EA-V1-PSY-LAYER-001"
+        ],
+        "resolutionOutcome": "FAIL_NATIVE_CONTROL_MISMATCH",
+        "countingPolicies": [
+          "MUTUALLY_EXCLUSIVE_REPRESENTATIONS"
+        ],
+        "propagationPolicies": [
+          "COUNT_ONCE_NO_ADDITIVE_PROPAGATION"
+        ],
+        "independenceStatuses": [
+          "SAME_CONTRIBUTION_CONFIRMED"
+        ],
+        "causalAuthorityGranted": false,
+        "activationAuthorityGranted": false,
+        "graphAuthorityGranted": false,
+        "simulationAuthorityGranted": false,
+        "deterministicFingerprint": "675a1a27753aef9f168f28fc7bda52f9fe20d1da2ea61137079dd91ea62324cc"
+      }
+    },
+    {
+      "caseId": "INDEPENDENT_SAME_TARGET",
+      "attemptedInput": null,
+      "receipt": {
+        "schemaVersion": "1.0.0",
+        "requestHash": "c39350b92a78a7ac48a74d2555922d3609ad9c4e369635066628cb8fedcea2a1",
+        "candidateRepresentations": [
+          {
+            "recordClass": "EFFECT_ASSERTION",
+            "recordId": "EA-V1-PSY-LAYER-001",
+            "recordRevision": 1,
+            "recordHash": "2daf2a9e78dea482abb13766c147514483cd4a1b149b10d9acf6704f53bb4d55"
+          },
+          {
+            "recordClass": "RELATIONSHIP",
+            "recordId": "REL-V1-PSY-LAYER-001",
+            "recordRevision": 1,
+            "recordHash": "090b8e185653ae3fe3cf8b662564e956c25f555e93b451edcbc5ef235648f6ac"
+          },
+          {
+            "recordClass": "SYNTHETIC_CAUSAL_ROUTE",
+            "recordId": "SYN-INDEPENDENT-SAME-TARGET-001",
+            "recordRevision": 1,
+            "recordHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          }
+        ],
+        "groupReferences": [
+          {
+            "groupId": "CONTRIB-PSY-LAYER-REPETITION-001",
+            "groupVersion": "1.0.0"
+          }
+        ],
+        "memberRoles": {
+          "EA-V1-PSY-LAYER-001": "ALTERNATE_CAUSAL_REPRESENTATION",
+          "REL-V1-PSY-LAYER-001": "PRIMARY_CAUSAL_CONTRIBUTION"
+        },
+        "nativePolicies": {
+          "EA-V1-PSY-LAYER-001": "Same exposure contribution as REL-V1-PSY-LAYER-001; never sum or propagate as an additional causal input.",
+          "REL-V1-PSY-LAYER-001": null
+        },
+        "explicitSelections": {
+          "CONTRIB-PSY-LAYER-REPETITION-001": "REL-V1-PSY-LAYER-001"
+        },
+        "includedRepresentations": [
+          "REL-V1-PSY-LAYER-001",
+          "SYN-INDEPENDENT-SAME-TARGET-001"
+        ],
+        "excludedRepresentations": [
+          "EA-V1-PSY-LAYER-001"
+        ],
+        "blockedRepresentations": [],
+        "resolutionOutcome": "COUNT_ONCE",
+        "countingPolicies": [
+          "MUTUALLY_EXCLUSIVE_REPRESENTATIONS"
+        ],
+        "propagationPolicies": [
+          "COUNT_ONCE_NO_ADDITIVE_PROPAGATION"
+        ],
+        "independenceStatuses": [
+          "SAME_CONTRIBUTION_CONFIRMED"
+        ],
+        "causalAuthorityGranted": false,
+        "activationAuthorityGranted": false,
+        "graphAuthorityGranted": false,
+        "simulationAuthorityGranted": false,
+        "deterministicFingerprint": "9d3497bad0edcefbd5332d216c78a8c091544cf7d028af6c7751195ce3b1a19c"
+      }
+    },
+    {
+      "caseId": "DERIVATION_ADDED",
+      "attemptedInput": null,
+      "receipt": {
+        "schemaVersion": "1.0.0",
+        "requestHash": "d205d85196133eabcf54b8076c614ca9090087e095645f1f0004603c10c8d5e8",
+        "candidateRepresentations": [
+          {
+            "recordClass": "DERIVATION",
+            "recordId": "DER-V1-SOC-F07-001",
+            "recordRevision": 1,
+            "recordHash": "609f164d5bcd45cb7372f51374961f365780f2ebce7693e83f7b2db7d6e2dfbf"
+          },
+          {
+            "recordClass": "EFFECT_ASSERTION",
+            "recordId": "EA-V1-PSY-LAYER-001",
+            "recordRevision": 1,
+            "recordHash": "2daf2a9e78dea482abb13766c147514483cd4a1b149b10d9acf6704f53bb4d55"
+          },
+          {
+            "recordClass": "RELATIONSHIP",
+            "recordId": "REL-V1-PSY-LAYER-001",
+            "recordRevision": 1,
+            "recordHash": "090b8e185653ae3fe3cf8b662564e956c25f555e93b451edcbc5ef235648f6ac"
+          }
+        ],
+        "groupReferences": [
+          {
+            "groupId": "CONTRIB-PSY-LAYER-REPETITION-001",
+            "groupVersion": "1.0.0"
+          }
+        ],
+        "memberRoles": {
+          "EA-V1-PSY-LAYER-001": "ALTERNATE_CAUSAL_REPRESENTATION",
+          "REL-V1-PSY-LAYER-001": "PRIMARY_CAUSAL_CONTRIBUTION"
+        },
+        "nativePolicies": {
+          "EA-V1-PSY-LAYER-001": "Same exposure contribution as REL-V1-PSY-LAYER-001; never sum or propagate as an additional causal input.",
+          "REL-V1-PSY-LAYER-001": null
+        },
+        "explicitSelections": {
+          "CONTRIB-PSY-LAYER-REPETITION-001": "REL-V1-PSY-LAYER-001"
+        },
+        "includedRepresentations": [
+          "REL-V1-PSY-LAYER-001"
+        ],
+        "excludedRepresentations": [
+          "DER-V1-SOC-F07-001",
+          "EA-V1-PSY-LAYER-001"
+        ],
+        "blockedRepresentations": [],
+        "resolutionOutcome": "COUNT_ONCE",
+        "countingPolicies": [
+          "MUTUALLY_EXCLUSIVE_REPRESENTATIONS"
+        ],
+        "propagationPolicies": [
+          "COUNT_ONCE_NO_ADDITIVE_PROPAGATION"
+        ],
+        "independenceStatuses": [
+          "SAME_CONTRIBUTION_CONFIRMED"
+        ],
+        "causalAuthorityGranted": false,
+        "activationAuthorityGranted": false,
+        "graphAuthorityGranted": false,
+        "simulationAuthorityGranted": false,
+        "deterministicFingerprint": "4664d54f1f7ddd451684e9f996f6aad339aeaba9bfba1ef9e551d6a99d9bb2be"
+      }
+    }
+  ],
+  "numericControl": {
+    "relationshipRepresentation": 0.2,
+    "effectAssertionRepresentation": 0.2,
+    "naiveDuplicateTotal": 0.4,
+    "resolvedCountOnceTotal": 0.2,
+    "independentContribution": 0.1,
+    "resolvedWithIndependentTotal": 0.3,
+    "syntheticOnly": true
+  },
+  "sourceRecordsMutated": false,
+  "feedsGraphConstruction": false,
+  "feedsSimulation": false,
+  "activationAuthorized": false,
+  "causalAuthorityGranted": false
+}

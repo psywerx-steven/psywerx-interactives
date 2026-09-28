@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "1.0.0",
+  "readinessOnly": true,
+  "wpPsg005Status": "NOT_STARTED",
+  "causalSourceAuthorizations": 0,
+  "records": [
+    {
+      "aggregateId": "INS-039",
+      "relationshipIds": ["REL-INS-017"],
+      "computationProfileBinding": null,
+      "contributionControlContext": "BLOCK_PENDING_CAUSAL_INDEPENDENCE",
+      "crossLevelMapping": null,
+      "networkStateDependency": null,
+      "constituentContributionIds": [],
+      "remainingScientificGaps": ["exact constituent routes", "independent aggregate mechanism", "causal contrast", "unit/time/pathway alignment"],
+      "causalSourceEligible": false
+    },
+    {
+      "aggregateId": "INS-103",
+      "relationshipIds": ["REL-INS-036"],
+      "computationProfileBinding": null,
+      "contributionControlContext": "BLOCK_PENDING_CAUSAL_INDEPENDENCE",
+      "crossLevelMapping": null,
+      "networkStateDependency": null,
+      "constituentContributionIds": [],
+      "remainingScientificGaps": ["exact constituent routes", "independent aggregate mechanism", "causal contrast", "unit/time/pathway alignment"],
+      "causalSourceEligible": false
+    },
+    {
+      "aggregateFamily": "ASTRA-SOC-LAYER-001",
+      "aggregateIds": ["SOC-024", "SOC-041", "SOC-052", "SOC-053", "SOC-054", "SOC-055", "SOC-056", "SOC-074", "SOC-076", "SOC-096"],
+      "computationProfileBindings": [],
+      "contributionControlContext": "INSUFFICIENT_ROUTE_DEFINITION",
+      "crossLevelMappings": [],
+      "networkStateDependencies": "REVIEW_PER_ROUTE",
+      "constituentContributionIds": [],
+      "remainingScientificGaps": ["exact route definitions", "exact computation profile/binding where applicable", "constituent contribution identities", "cross-level context", "boundary/window/Network State alignment where applicable"],
+      "causalSourceEligible": false
+    }
+  ]
+}
