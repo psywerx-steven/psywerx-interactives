@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "1.0.0",
+  "consumers": [
+    {
+      "consumer": "Relationship validation",
+      "futureImpact": "SOURCE_GATE_AWARE",
+      "requirement": "Keep D10; require exact advisory mode/decision record without changing current validity."
+    },
+    {
+      "consumer": "Graph assembly / FCM",
+      "futureImpact": "CENTRAL_FAIL_CLOSED_GATE",
+      "requirement": "Require governed source authorization plus contribution resolution before inclusion."
+    },
+    {
+      "consumer": "Simulation",
+      "futureImpact": "EXECUTION_AND_PROFILE_AWARE",
+      "requirement": "Require exact profile/binding, source authorization, temporal context and no double count."
+    },
+    {
+      "consumer": "Scenario service",
+      "futureImpact": "DISPLAY_ONLY_UNTIL_GOVERNED",
+      "requirement": "May show advisory status; must not infer execution."
+    },
+    {
+      "consumer": "RDS computation",
+      "futureImpact": "NO_CAUSAL_BEHAVIOR_CHANGE",
+      "requirement": "Computability remains separate from causal-source eligibility."
+    },
+    {
+      "consumer": "Contribution resolver",
+      "futureImpact": "SOURCE_MODE_AWARE",
+      "requirement": "Select one for alternate abstractions; require independent status for additive routes."
+    },
+    {
+      "consumer": "Cross-level exposure resolver",
+      "futureImpact": "MAPPING_AWARE",
+      "requirement": "Require exact mapping/binding for contextual cross-level routes."
+    },
+    {
+      "consumer": "Network State runtime",
+      "futureImpact": "STATE_REFERENCE_AWARE",
+      "requirement": "Keep state transition/recalculation noncausal; expose exact state identity to a separately governed claim."
+    }
+  ],
+  "productionIntegrationAuthorized": false
+}

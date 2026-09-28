@@ -217,6 +217,9 @@ jobs:
       - name: Validate governed RDS-0006 Phase 1 shadow compatibility
         run: python -m unittest discover -s tests -p "test_rds_computation_v1.py"
 
+      - name: Validate read-only aggregate RDS causal-source decision test
+        run: python -m unittest discover -s tests -p "test_rds_causal_source_decision_test.py"
+
       - name: Validate exact Technological governance materialization
         run: python -m unittest discover -s tests -p "test_technological_governance_materialization.py"
 
@@ -312,6 +315,11 @@ jobs:
           python scripts/rds_computation_v1.py --validate-repository
           git diff --exit-code -- schemas/rds-computation-profile.schema.json schemas/rds-application-binding.schema.json schemas/rds-execution-request.schema.json schemas/rds-execution-provenance.schema.json schemas/rds-execution-eligibility.schema.json data/rds-computation-v1 data/governance/post-scale-up/rds/rds-0006-phase1-compatibility.json
 
+      - name: Verify deterministic aggregate RDS causal-source decision package
+        run: |
+          python prototypes/rds-causal-source-v1/build_decision_test.py
+          git diff --exit-code -- prototypes/rds-causal-source-v1 data/governance/post-scale-up/rds-causal-source docs/governance/post-scale-up/rds-causal-source
+
       - name: Verify deterministic Informational Layer registries
         run: |
           python -c "import sys; sys.path.insert(0, 'scripts'); import informational_layer_v2 as m; m.build_reviews_and_coverage(); m.build_governance(); m.finalize()"
@@ -331,7 +339,7 @@ jobs:
         run: npm test
 
       - name: Compile Python code
-        run: python -m compileall -q scripts tests homepage/tools experiments/network-state-vnext
+        run: python -m compileall -q scripts tests homepage/tools experiments/network-state-vnext prototypes/rds-causal-source-v1
 
       - name: Parse JavaScript
         shell: bash
@@ -528,6 +536,9 @@ jobs:
       - name: Validate governed RDS-0006 Phase 1 shadow compatibility
         run: python -m unittest discover -s tests -p "test_rds_computation_v1.py"
 
+      - name: Validate read-only aggregate RDS causal-source decision test
+        run: python -m unittest discover -s tests -p "test_rds_causal_source_decision_test.py"
+
       - name: Validate exact Technological governance materialization
         run: python -m unittest discover -s tests -p "test_technological_governance_materialization.py"
 
@@ -622,6 +633,11 @@ jobs:
           python scripts/materialize_rds_computation_phase1.py
           python scripts/rds_computation_v1.py --validate-repository
           git diff --exit-code -- schemas/rds-computation-profile.schema.json schemas/rds-application-binding.schema.json schemas/rds-execution-request.schema.json schemas/rds-execution-provenance.schema.json schemas/rds-execution-eligibility.schema.json data/rds-computation-v1 data/governance/post-scale-up/rds/rds-0006-phase1-compatibility.json
+
+      - name: Verify deterministic aggregate RDS causal-source decision package
+        run: |
+          python prototypes/rds-causal-source-v1/build_decision_test.py
+          git diff --exit-code -- prototypes/rds-causal-source-v1 data/governance/post-scale-up/rds-causal-source docs/governance/post-scale-up/rds-causal-source
 
       - name: Verify deterministic Informational Layer registries
         run: |

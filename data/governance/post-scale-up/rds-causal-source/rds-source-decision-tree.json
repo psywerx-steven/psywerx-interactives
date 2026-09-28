@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "1.0.0",
+  "decisionPacket": "DP-PSG-005",
+  "default": "DERIVATION_ONLY_OR_INELIGIBLE",
+  "steps": [
+    {
+      "order": 1,
+      "gate": "EXACT_CONSTRUCT",
+      "fail": "BLOCKED_EXACT_CONSTRUCT_UNDEFINED"
+    },
+    {
+      "order": 2,
+      "gate": "COMPUTATION_MEASUREMENT_CONTRACT",
+      "fail": "BLOCKED_PROFILE_UNDEFINED_FOR_EXECUTION_ONLY"
+    },
+    {
+      "order": 3,
+      "gate": "DEFINITIONAL_TAUTOLOGICAL_OVERLAP",
+      "fail": "BLOCKED_DEFINITIONAL_OVERLAP_OR_TARGET_CONTAMINATION"
+    },
+    {
+      "order": 4,
+      "gate": "WELL_DEFINED_CAUSAL_CONTRAST",
+      "fail": "BLOCKED_MULTIPLE_VERSIONS"
+    },
+    {
+      "order": 5,
+      "gate": "CONTRIBUTION_INDEPENDENCE",
+      "fail": "BLOCKED_CONTRIBUTION_OVERLAP"
+    },
+    {
+      "order": 6,
+      "gate": "MECHANISM_DISTINCTION",
+      "fail": "BLOCKED_NO_DISTINCT_MECHANISM"
+    },
+    {
+      "order": 7,
+      "gate": "TEMPORAL_ORDER",
+      "fail": "BLOCKED_TEMPORAL_ORDER"
+    },
+    {
+      "order": 8,
+      "gate": "LEVEL_EXPOSURE",
+      "fail": "BLOCKED_EXPOSURE_MAPPING"
+    },
+    {
+      "order": 9,
+      "gate": "NETWORK_STATE",
+      "fail": "BLOCKED_NETWORK_STATE"
+    },
+    {
+      "order": 10,
+      "gate": "EMPIRICAL_IDENTIFICATION",
+      "fail": "INSUFFICIENT_CAUSAL_EVIDENCE"
+    },
+    {
+      "order": 11,
+      "gate": "SCOPE_TRANSPORT",
+      "fail": "BLOCKED_SCOPE_MISMATCH"
+    },
+    {
+      "order": 12,
+      "gate": "SPECIFIC_RELATIONSHIP_VALIDITY",
+      "fail": "RELATIONSHIP_NOT_SUPPORTED"
+    },
+    {
+      "order": 13,
+      "gate": "EXECUTION_PROFILE",
+      "fail": "NOT_EXECUTABLE_NO_PROFILE"
+    },
+    {
+      "order": 14,
+      "gate": "SEPARATE_HUMAN_GOVERNANCE",
+      "fail": "PRODUCTION_AUTHORITY_DENIED"
+    }
+  ],
+  "invariants": {
+    "causalSourceEligible": false,
+    "autoActivate": false,
+    "relationshipMutation": false
+  }
+}

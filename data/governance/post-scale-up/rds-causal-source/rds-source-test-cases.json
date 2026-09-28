@@ -1,0 +1,401 @@
+{
+  "schemaVersion": "1.0.0",
+  "cases": [
+    {
+      "caseId": "PURE_DERIVATION",
+      "input": {
+        "exactConstruct": true,
+        "derivationOnly": true,
+        "temporalOrder": true,
+        "evidenceClass": "DEFINITIONAL_CALCULATIONAL",
+        "profileAvailable": true
+      },
+      "expected": "DERIVATION_ONLY",
+      "result": {
+        "advisoryMode": "DERIVATION_ONLY",
+        "advisoryStatus": "DERIVATION_ONLY",
+        "gateFailures": [
+          "INSUFFICIENT_CAUSAL_EVIDENCE"
+        ],
+        "scientificSourceClassCoherent": true,
+        "relationshipEvidenceAdequate": false,
+        "computationallyExecutable": true,
+        "causalSourceEligible": false,
+        "executionAuthorized": false,
+        "activationAuthorized": false,
+        "humanGovernanceRequired": true
+      }
+    },
+    {
+      "caseId": "COMPUTABLE_NOT_CAUSAL",
+      "input": {
+        "exactConstruct": true,
+        "derivationOnly": true,
+        "temporalOrder": true,
+        "evidenceClass": "DEFINITIONAL_CALCULATIONAL",
+        "profileAvailable": true
+      },
+      "expected": "DERIVATION_ONLY",
+      "result": {
+        "advisoryMode": "DERIVATION_ONLY",
+        "advisoryStatus": "DERIVATION_ONLY",
+        "gateFailures": [
+          "INSUFFICIENT_CAUSAL_EVIDENCE"
+        ],
+        "scientificSourceClassCoherent": true,
+        "relationshipEvidenceAdequate": false,
+        "computationallyExecutable": true,
+        "causalSourceEligible": false,
+        "executionAuthorized": false,
+        "activationAuthorized": false,
+        "humanGovernanceRequired": true
+      }
+    },
+    {
+      "caseId": "PROFILE_ABSENT_SCIENCE_COHERENT",
+      "input": {
+        "exactConstruct": true,
+        "distinctMechanism": true,
+        "independentMechanismClaimed": true,
+        "temporalOrder": true,
+        "evidenceClass": "DIRECT_AGGREGATE_INTERVENTION",
+        "profileAvailable": false
+      },
+      "expected": "ELIGIBLE_FOR_INDEPENDENT_CAUSAL_REVIEW",
+      "result": {
+        "advisoryMode": "INDEPENDENT_AGGREGATE_CAUSAL_SOURCE",
+        "advisoryStatus": "ELIGIBLE_FOR_INDEPENDENT_CAUSAL_REVIEW",
+        "gateFailures": [],
+        "scientificSourceClassCoherent": true,
+        "relationshipEvidenceAdequate": true,
+        "computationallyExecutable": false,
+        "causalSourceEligible": false,
+        "executionAuthorized": false,
+        "activationAuthorized": false,
+        "humanGovernanceRequired": true
+      }
+    },
+    {
+      "caseId": "TARGET_CONTAMINATION",
+      "input": {
+        "exactConstruct": true,
+        "targetContaminated": true,
+        "temporalOrder": true,
+        "evidenceClass": "PROSPECTIVE_LONGITUDINAL_WITH_TEMPORAL_ORDER"
+      },
+      "expected": "BLOCKED_TARGET_CONTAMINATION",
+      "result": {
+        "advisoryMode": "INDEPENDENT_AGGREGATE_CAUSAL_SOURCE",
+        "advisoryStatus": "BLOCKED_TARGET_CONTAMINATION",
+        "gateFailures": [
+          "BLOCKED_TARGET_CONTAMINATION"
+        ],
+        "scientificSourceClassCoherent": false,
+        "relationshipEvidenceAdequate": true,
+        "computationallyExecutable": false,
+        "causalSourceEligible": false,
+        "executionAuthorized": false,
+        "activationAuthorized": false,
+        "humanGovernanceRequired": true
+      }
+    },
+    {
+      "caseId": "RATIO_MULTIPLE_VERSIONS",
+      "fixture": {
+        "versionA": {
+          "staff": 10,
+          "workload": 100,
+          "ratio": 0.1
+        },
+        "versionB": {
+          "staff": 20,
+          "workload": 200,
+          "ratio": 0.1
+        }
+      },
+      "input": {
+        "exactConstruct": true,
+        "multipleVersionsUnresolved": true,
+        "temporalOrder": true,
+        "evidenceClass": "QUASI_EXPERIMENTAL_CONTEXTUAL_EFFECT"
+      },
+      "expected": "BLOCKED_MULTIPLE_VERSIONS",
+      "result": {
+        "advisoryMode": "INDEPENDENT_AGGREGATE_CAUSAL_SOURCE",
+        "advisoryStatus": "BLOCKED_MULTIPLE_VERSIONS",
+        "gateFailures": [
+          "BLOCKED_MULTIPLE_VERSIONS"
+        ],
+        "scientificSourceClassCoherent": false,
+        "relationshipEvidenceAdequate": true,
+        "computationallyExecutable": false,
+        "causalSourceEligible": false,
+        "executionAuthorized": false,
+        "activationAuthorized": false,
+        "humanGovernanceRequired": true
+      }
+    },
+    {
+      "caseId": "DISTANCE_MULTIPLE_VERSIONS",
+      "fixture": {
+        "origin": [
+          0,
+          0
+        ],
+        "profileA": [
+          1,
+          0
+        ],
+        "profileB": [
+          0,
+          1
+        ],
+        "euclideanDistanceA": 1.0,
+        "euclideanDistanceB": 1.0
+      },
+      "input": {
+        "exactConstruct": true,
+        "multipleVersionsUnresolved": true,
+        "temporalOrder": true,
+        "evidenceClass": "MULTILEVEL_ASSOCIATIONAL"
+      },
+      "expected": "BLOCKED_MULTIPLE_VERSIONS",
+      "result": {
+        "advisoryMode": "INDEPENDENT_AGGREGATE_CAUSAL_SOURCE",
+        "advisoryStatus": "BLOCKED_MULTIPLE_VERSIONS",
+        "gateFailures": [
+          "BLOCKED_MULTIPLE_VERSIONS",
+          "INSUFFICIENT_CAUSAL_EVIDENCE"
+        ],
+        "scientificSourceClassCoherent": false,
+        "relationshipEvidenceAdequate": false,
+        "computationallyExecutable": false,
+        "causalSourceEligible": false,
+        "executionAuthorized": false,
+        "activationAuthorized": false,
+        "humanGovernanceRequired": true
+      }
+    },
+    {
+      "caseId": "NETWORK_MANY_TO_ONE",
+      "fixture": {
+        "nodes": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "graphAEdges": [
+          [
+            "A",
+            "B"
+          ],
+          [
+            "B",
+            "C"
+          ],
+          [
+            "A",
+            "C"
+          ]
+        ],
+        "graphBEdges": [
+          [
+            "A",
+            "B"
+          ],
+          [
+            "B",
+            "C"
+          ],
+          [
+            "C",
+            "D"
+          ]
+        ],
+        "densityA": 0.5,
+        "densityB": 0.5,
+        "topologyDifference": "TRIANGLE_PLUS_ISOLATE_VS_PATH"
+      },
+      "input": {
+        "exactConstruct": true,
+        "networkDerived": true,
+        "networkStateBinding": false,
+        "temporalOrder": true,
+        "evidenceClass": "GROUP_OR_CONTEXT_RANDOMIZATION"
+      },
+      "expected": "BLOCKED_NETWORK_STATE",
+      "result": {
+        "advisoryMode": "INDEPENDENT_AGGREGATE_CAUSAL_SOURCE",
+        "advisoryStatus": "BLOCKED_NETWORK_STATE",
+        "gateFailures": [
+          "BLOCKED_NETWORK_STATE"
+        ],
+        "scientificSourceClassCoherent": true,
+        "relationshipEvidenceAdequate": true,
+        "computationallyExecutable": false,
+        "causalSourceEligible": false,
+        "executionAuthorized": false,
+        "activationAuthorized": false,
+        "humanGovernanceRequired": true
+      }
+    },
+    {
+      "caseId": "CONSTITUENT_DOUBLE_COUNT",
+      "input": {
+        "exactConstruct": true,
+        "contributionOverlap": "UNRESOLVED",
+        "distinctMechanism": true,
+        "independentMechanismClaimed": true,
+        "temporalOrder": true,
+        "evidenceClass": "NATURAL_EXPERIMENT"
+      },
+      "expected": "BLOCKED_CONTRIBUTION_OVERLAP",
+      "result": {
+        "advisoryMode": "INDEPENDENT_AGGREGATE_CAUSAL_SOURCE",
+        "advisoryStatus": "BLOCKED_CONTRIBUTION_OVERLAP",
+        "gateFailures": [
+          "BLOCKED_CONTRIBUTION_OVERLAP"
+        ],
+        "scientificSourceClassCoherent": true,
+        "relationshipEvidenceAdequate": true,
+        "computationallyExecutable": false,
+        "causalSourceEligible": false,
+        "executionAuthorized": false,
+        "activationAuthorized": false,
+        "humanGovernanceRequired": true
+      }
+    },
+    {
+      "caseId": "ALTERNATE_ABSTRACTION",
+      "input": {
+        "exactConstruct": true,
+        "alternateAbstraction": true,
+        "contributionOverlap": "RESOLVED_SELECT_ONE",
+        "temporalOrder": true,
+        "evidenceClass": "PROSPECTIVE_LONGITUDINAL_WITH_TEMPORAL_ORDER"
+      },
+      "expected": "ALTERNATE_ABSTRACTION_ONLY",
+      "result": {
+        "advisoryMode": "ALTERNATE_CAUSAL_ABSTRACTION",
+        "advisoryStatus": "ALTERNATE_ABSTRACTION_ONLY",
+        "gateFailures": [],
+        "scientificSourceClassCoherent": true,
+        "relationshipEvidenceAdequate": true,
+        "computationallyExecutable": false,
+        "causalSourceEligible": false,
+        "executionAuthorized": false,
+        "activationAuthorized": false,
+        "humanGovernanceRequired": true
+      }
+    },
+    {
+      "caseId": "CONTEXTUAL_POSITIVE",
+      "input": {
+        "exactConstruct": true,
+        "contextual": true,
+        "distinctMechanism": true,
+        "independentMechanismClaimed": true,
+        "contributionOverlap": "RESOLVED_INDEPENDENT",
+        "temporalOrder": true,
+        "crossLevel": true,
+        "exposureMapping": true,
+        "evidenceClass": "GROUP_OR_CONTEXT_RANDOMIZATION",
+        "profileAvailable": true
+      },
+      "expected": "ELIGIBLE_FOR_CONTEXTUAL_CAUSAL_REVIEW",
+      "result": {
+        "advisoryMode": "CONTEXTUAL_AGGREGATE_CAUSAL_SOURCE",
+        "advisoryStatus": "ELIGIBLE_FOR_CONTEXTUAL_CAUSAL_REVIEW",
+        "gateFailures": [],
+        "scientificSourceClassCoherent": true,
+        "relationshipEvidenceAdequate": true,
+        "computationallyExecutable": true,
+        "causalSourceEligible": false,
+        "executionAuthorized": false,
+        "activationAuthorized": false,
+        "humanGovernanceRequired": true
+      }
+    },
+    {
+      "caseId": "CROSS_LEVEL_NO_MAPPING",
+      "input": {
+        "exactConstruct": true,
+        "contextual": true,
+        "distinctMechanism": true,
+        "independentMechanismClaimed": true,
+        "temporalOrder": true,
+        "crossLevel": true,
+        "exposureMapping": false,
+        "evidenceClass": "GROUP_OR_CONTEXT_RANDOMIZATION"
+      },
+      "expected": "BLOCKED_EXPOSURE_MAPPING",
+      "result": {
+        "advisoryMode": "CONTEXTUAL_AGGREGATE_CAUSAL_SOURCE",
+        "advisoryStatus": "BLOCKED_EXPOSURE_MAPPING",
+        "gateFailures": [
+          "BLOCKED_EXPOSURE_MAPPING"
+        ],
+        "scientificSourceClassCoherent": true,
+        "relationshipEvidenceAdequate": true,
+        "computationallyExecutable": false,
+        "causalSourceEligible": false,
+        "executionAuthorized": false,
+        "activationAuthorized": false,
+        "humanGovernanceRequired": true
+      }
+    },
+    {
+      "caseId": "TEMPORAL_ORDER_MISSING",
+      "input": {
+        "exactConstruct": true,
+        "distinctMechanism": true,
+        "independentMechanismClaimed": true,
+        "temporalOrder": false,
+        "evidenceClass": "NATURAL_EXPERIMENT"
+      },
+      "expected": "BLOCKED_TEMPORAL_ORDER",
+      "result": {
+        "advisoryMode": "INDEPENDENT_AGGREGATE_CAUSAL_SOURCE",
+        "advisoryStatus": "BLOCKED_TEMPORAL_ORDER",
+        "gateFailures": [
+          "BLOCKED_TEMPORAL_ORDER"
+        ],
+        "scientificSourceClassCoherent": true,
+        "relationshipEvidenceAdequate": true,
+        "computationallyExecutable": false,
+        "causalSourceEligible": false,
+        "executionAuthorized": false,
+        "activationAuthorized": false,
+        "humanGovernanceRequired": true
+      }
+    },
+    {
+      "caseId": "COHERENT_SOURCE_INSUFFICIENT_RELATIONSHIP_EVIDENCE",
+      "input": {
+        "exactConstruct": true,
+        "distinctMechanism": true,
+        "independentMechanismClaimed": true,
+        "temporalOrder": true,
+        "evidenceClass": "CROSS_SECTIONAL_ASSOCIATIONAL",
+        "profileAvailable": true
+      },
+      "expected": "INSUFFICIENT_CAUSAL_EVIDENCE",
+      "result": {
+        "advisoryMode": "INDEPENDENT_AGGREGATE_CAUSAL_SOURCE",
+        "advisoryStatus": "INSUFFICIENT_CAUSAL_EVIDENCE",
+        "gateFailures": [
+          "INSUFFICIENT_CAUSAL_EVIDENCE"
+        ],
+        "scientificSourceClassCoherent": true,
+        "relationshipEvidenceAdequate": false,
+        "computationallyExecutable": true,
+        "causalSourceEligible": false,
+        "executionAuthorized": false,
+        "activationAuthorized": false,
+        "humanGovernanceRequired": true
+      }
+    }
+  ],
+  "productionMutationAuthorized": false
+}

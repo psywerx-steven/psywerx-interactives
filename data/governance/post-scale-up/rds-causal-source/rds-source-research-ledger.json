@@ -1,0 +1,351 @@
+{
+  "schemaVersion": "1.0.0",
+  "references": [
+    {
+      "referenceId": "PLAN-METHOD-001",
+      "case": "REUSABLE_CONTRACT",
+      "question": "How should multiple aggregate versions be handled?",
+      "title": "Causal Inference Under Multiple Versions of Treatment",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4219328/",
+      "design": "AUTHORITATIVE_METHODS",
+      "accessDepth": "FULL_TEXT",
+      "finding": "An aggregate value may conceal versions with different potential outcomes; versions or their assignment distribution must be specified.",
+      "limitations": "Method does not establish case-specific causality."
+    },
+    {
+      "referenceId": "PLAN-METHOD-002",
+      "case": "COMPOSITES",
+      "question": "Can constructed measures support causal interpretation?",
+      "title": "Constructed Measures and Causal Inference",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8614532/",
+      "design": "AUTHORITATIVE_METHODS",
+      "accessDepth": "FULL_TEXT",
+      "finding": "Composite measures can sometimes receive a causal interpretation through explicit underlying versions, but unknown versions impede intervention and identification.",
+      "limitations": "Does not validate any PSYWERX composite."
+    },
+    {
+      "referenceId": "PLAN-METHOD-003",
+      "case": "CAUSAL_ABSTRACTION",
+      "question": "Can macro variables be causal?",
+      "title": "Multi-Level Cause-Effect Systems",
+      "url": "https://proceedings.mlr.press/v51/chalupka16.html",
+      "design": "CAUSAL_METHODS",
+      "accessDepth": "FULL_PAPER",
+      "finding": "Macro causal variables can be coherent when linked to experimental micro-level interventions and stable causal partitions.",
+      "limitations": "The formal result does not establish empirical evidence for repository routes."
+    },
+    {
+      "referenceId": "PLAN-METHOD-004",
+      "case": "NETWORK",
+      "question": "What is required for network interventions?",
+      "title": "Causal Inference for Social Network Data",
+      "url": "https://doi.org/10.1080/01621459.2022.2131557",
+      "design": "NETWORK_CAUSAL_METHODS",
+      "accessDepth": "FULL_PAPER",
+      "finding": "Network causal estimands require explicit interventions on treatment or network structure and handling of interference; a scalar metric alone is not the intervention.",
+      "limitations": "No PSYWERX route is identified by this methods paper."
+    },
+    {
+      "referenceId": "PLAN-BIO-001",
+      "case": "BIO-003_REL-BIO-001",
+      "question": "Does circadian phase affect sleep propensity independently of time awake?",
+      "title": "Paradoxical timing of the circadian rhythm of sleep propensity serves to consolidate sleep and wakefulness in humans",
+      "url": "https://doi.org/10.1016/0304-3940(94)90841-9",
+      "design": "FORCED_DESYNCHRONY_LAB",
+      "accessDepth": "ABSTRACT",
+      "finding": "Forced desynchrony separates circadian and homeostatic processes and supports a circadian contribution to sleep consolidation.",
+      "limitations": "Eight men; sleep propensity/consolidation is not identical to broad sleep duration."
+    },
+    {
+      "referenceId": "PLAN-BIO-002",
+      "case": "BIO-003_REL-BIO-001",
+      "question": "Does homeostatic pressure modify the circadian effect?",
+      "title": "Sleep restriction masks the influence of the circadian process on sleep propensity",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/22621352/",
+      "design": "FORCED_DESYNCHRONY_CONTROLLED",
+      "accessDepth": "ABSTRACT",
+      "finding": "Circadian modulation was pronounced under a normal sleep-wake ratio and masked under severe restriction, demonstrating version and interaction dependence.",
+      "limitations": "Male laboratory sample; does not identify the repository's broad aggregate contrast."
+    },
+    {
+      "referenceId": "PLAN-CUL-001",
+      "case": "CUL-088_REL-CUL-042",
+      "question": "Is scalar cultural distance causally interpretable?",
+      "title": "Toward a more in-depth measurement of cultural distance",
+      "url": "https://doi.org/10.1177/14705958221089192",
+      "design": "MEASUREMENT_METHODS",
+      "accessDepth": "ABSTRACT_AND_METHOD_SUMMARY",
+      "finding": "Distance magnitude alone omits dimension, direction, symmetry and context, producing ambiguous interpretations.",
+      "limitations": "Country-level international-business construct, not adjacent-generation norm entrenchment directly."
+    },
+    {
+      "referenceId": "PLAN-INS-001",
+      "case": "INS-039_INS-103",
+      "question": "Can staffing ratios identify causal effects?",
+      "title": "How do hospitals respond to input regulation? Evidence from the California nurse staffing mandate",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10712346/",
+      "design": "QUASI_EXPERIMENTAL_POLICY",
+      "accessDepth": "FULL_TEXT",
+      "finding": "A defined staffing mandate changed staffing time and multiple organizational margins, including capacity, showing that the intervention version matters beyond a scalar ratio.",
+      "limitations": "Hospital nursing does not establish territorial administrative reach or generic service capacity."
+    },
+    {
+      "referenceId": "PLAN-INS-002",
+      "case": "INS-103_REL-INS-036",
+      "question": "Do ratio changes yield uniform outcomes?",
+      "title": "The effect of a hospital nurse staffing mandate on patient health outcomes",
+      "url": "https://doi.org/10.1016/j.jhealeco.2012.01.005",
+      "design": "QUASI_EXPERIMENTAL_POLICY",
+      "accessDepth": "ABSTRACT",
+      "finding": "The mandate changed ratios but did not yield relative improvements in measured safety outcomes, cautioning against treating ratio movement as a uniform mechanism.",
+      "limitations": "Outcome and institutional setting differ from the PSYWERX target."
+    },
+    {
+      "referenceId": "PLAN-SOC-001",
+      "case": "SOC-053_REL-SOC-035",
+      "question": "Can topology affect adoption?",
+      "title": "The spread of behavior in an online social network experiment",
+      "url": "https://doi.org/10.1126/science.1185231",
+      "design": "RANDOMIZED_NETWORK_EXPERIMENT",
+      "accessDepth": "CANONICAL_SOURCE_ABSTRACT",
+      "finding": "Randomized network structures can change behavioral diffusion, supporting a topology-level causal question when the exact treatment and exposure are specified.",
+      "limitations": "The manipulation is topology, not an isolated scalar local-clustering intervention."
+    },
+    {
+      "referenceId": "PLAN-SOC-002",
+      "case": "SOC-074_REL-SOC-046",
+      "question": "Can a group-level goal condition affect cooperation or performance?",
+      "title": "The effect of group-level performance goals on group performance",
+      "url": "https://doi.org/10.1207/s15327043hup0601_3",
+      "design": "GROUP_LEVEL_EXPERIMENT",
+      "accessDepth": "ABSTRACT",
+      "finding": "Assigned group goals affected performance conditionally through coordination and action planning, supporting a bounded group-context question.",
+      "limitations": "The manipulation is an assigned group goal, not the repository's measured goal-alignment aggregate or cooperation-prevalence endpoint."
+    }
+  ],
+  "caseReviews": [
+    {
+      "caseId": "BIO-003_REL-BIO-001",
+      "question": "Can circadian alignment independently affect sleep duration rather than only summarize phase and schedule?",
+      "sourceRdsId": "BIO-003",
+      "targetId": "BIO-001",
+      "relationshipId": "REL-BIO-001",
+      "causalContrast": "A specified shift of sleep opportunity relative to measured circadian phase, holding the sleep-opportunity window and prior wake history explicit.",
+      "unitOfAnalysis": "PERSON",
+      "timeScope": "Bounded forced-desynchrony or schedule-shift episode",
+      "sourceLevel": "PERSON",
+      "targetLevel": "PERSON",
+      "candidateMechanism": "Circadian phase-dependent sleep propensity and consolidation interacting with homeostatic pressure.",
+      "constituents": [
+        "internal circadian phase",
+        "sleep/work/meal/light schedule",
+        "prior wake and sleep opportunity"
+      ],
+      "currentContributionRoutes": [
+        "REL-BIO-001"
+      ],
+      "currentEvidence": [
+        "SRC006",
+        "SRC007",
+        "SRC008"
+      ],
+      "newPlanningSources": [
+        "PLAN-BIO-001",
+        "PLAN-BIO-002"
+      ],
+      "sourceQualityAccessDepth": "Controlled forced-desynchrony studies; abstracts reviewed; small male laboratory samples.",
+      "causalDesignClass": "DIRECT_AGGREGATE_INTERVENTION_APPROXIMATION",
+      "supportingFindings": "Circadian phase has an effect separable from elapsed wake time on sleep propensity/consolidation.",
+      "nullOrContraryFindings": "Severe sleep restriction masks circadian modulation, so effects are not invariant across versions.",
+      "limitations": "The repository aggregate combines several alignment domains and the target is broad sleep duration; no exact executable contrast/profile exists.",
+      "remainingUncertainty": "Which alignment component and intervention policy defines the source without overlap or double count.",
+      "decisionTestResult": "BLOCKED_MULTIPLE_VERSIONS"
+    },
+    {
+      "caseId": "CUL-088_REL-CUL-042",
+      "question": "Can scalar adjacent-generation cultural distance act as a causal source for norm entrenchment?",
+      "sourceRdsId": "CUL-088",
+      "targetId": "CUL-061",
+      "relationshipId": "REL-CUL-042",
+      "causalContrast": "A direction- and dimension-specific change between adjacent generation profiles within one cultural community.",
+      "unitOfAnalysis": "COMMUNITY",
+      "timeScope": "Specified adjacent-generation interval",
+      "sourceLevel": "COMMUNITY",
+      "targetLevel": "COMMUNITY",
+      "candidateMechanism": "Intergenerational mismatch could alter transmission, contestation, or reinforcement of a focal norm.",
+      "constituents": [
+        "values",
+        "norms",
+        "practices",
+        "identity narratives",
+        "distance metric and direction"
+      ],
+      "currentContributionRoutes": [
+        "REL-CUL-042"
+      ],
+      "currentEvidence": [
+        "SRC276",
+        "SRC306"
+      ],
+      "newPlanningSources": [
+        "PLAN-CUL-001"
+      ],
+      "sourceQualityAccessDepth": "Measurement-methods review at abstract/method-summary depth.",
+      "causalDesignClass": "MEASUREMENT_AND_ASSOCIATIONAL",
+      "supportingFindings": "Cultural-distance measurement requires dimension, direction, symmetry, and context.",
+      "nullOrContraryFindings": "Equal scalar distance does not imply equal profile change or mechanism.",
+      "limitations": "No exact derivation or aggregate-level causal identification for the repository route.",
+      "remainingUncertainty": "Whether a dimension-specific contrast can be defined without embedding the target norm.",
+      "decisionTestResult": "BLOCKED_MULTIPLE_VERSIONS"
+    },
+    {
+      "caseId": "INS-039_REL-INS-017",
+      "question": "Can caseload pressure independently affect service-delivery capacity?",
+      "sourceRdsId": "INS-039",
+      "targetId": "INS-063",
+      "relationshipId": "REL-INS-017",
+      "causalContrast": "A specified demand change, staffing/time change, or policy that alters caseload pressure while separately defining service capacity.",
+      "unitOfAnalysis": "INSTITUTIONAL_FIELD",
+      "timeScope": "Bounded service-delivery window",
+      "sourceLevel": "INSTITUTIONAL_FIELD",
+      "targetLevel": "INSTITUTIONAL_FIELD",
+      "candidateMechanism": "Workload pressure may reduce attention, throughput, quality, or implementation reliability.",
+      "constituents": [
+        "service demand",
+        "available actor time",
+        "staffing"
+      ],
+      "currentContributionRoutes": [
+        "REL-INS-017"
+      ],
+      "currentEvidence": [
+        "SRC380",
+        "SRC381",
+        "SRC386"
+      ],
+      "newPlanningSources": [
+        "PLAN-INS-001"
+      ],
+      "sourceQualityAccessDepth": "Quasi-experimental staffing-policy study at full-text depth; canonical repository sources inspected.",
+      "causalDesignClass": "QUASI_EXPERIMENTAL_CONTEXTUAL_EFFECT",
+      "supportingFindings": "Defined staffing regulation changes multiple operational margins and demonstrates that input interventions can affect capacity.",
+      "nullOrContraryFindings": "The source and target both use staffing/capacity content, creating circular overlap in the current definitions.",
+      "limitations": "Evidence does not identify the exact caseload-pressure aggregate independently of its constituents.",
+      "remainingUncertainty": "Whether a noncontaminated target and explicit intervention version can be specified.",
+      "decisionTestResult": "BLOCKED_TARGET_CONTAMINATION"
+    },
+    {
+      "caseId": "INS-103_REL-INS-036",
+      "question": "Can staffing adequacy independently enable territorial administrative reach?",
+      "sourceRdsId": "INS-103",
+      "targetId": "INS-107",
+      "relationshipId": "REL-INS-036",
+      "causalContrast": "A specified staffing intervention, workload intervention, or skill-composition policy producing a bound adequacy change.",
+      "unitOfAnalysis": "INSTITUTIONAL_FIELD",
+      "timeScope": "Bounded administrative deployment window",
+      "sourceLevel": "INSTITUTIONAL_FIELD",
+      "targetLevel": "INSTITUTIONAL_FIELD",
+      "candidateMechanism": "Qualified deployable labor can extend the institution's consistent geographic administration.",
+      "constituents": [
+        "qualified personnel",
+        "deployable labor time",
+        "assigned workload",
+        "skill composition"
+      ],
+      "currentContributionRoutes": [
+        "REL-INS-036"
+      ],
+      "currentEvidence": [
+        "SRC380",
+        "SRC381",
+        "SRC401"
+      ],
+      "newPlanningSources": [
+        "PLAN-INS-001",
+        "PLAN-INS-002"
+      ],
+      "sourceQualityAccessDepth": "Quasi-experimental policy studies at full-text and abstract depth.",
+      "causalDesignClass": "QUASI_EXPERIMENTAL_POLICY",
+      "supportingFindings": "Mandates can move staffing ratios and organizational responses.",
+      "nullOrContraryFindings": "Ratio changes did not produce uniform downstream outcome improvements.",
+      "limitations": "Hospital staffing is not territorial administration; equal ratios can reflect different staff, workload, and skill versions.",
+      "remainingUncertainty": "The intervention policy, reference workload, skill mix, and mechanism needed for an invariant contrast.",
+      "decisionTestResult": "BLOCKED_MULTIPLE_VERSIONS"
+    },
+    {
+      "caseId": "SOC-053_REL-SOC-035",
+      "question": "Can local clustering function as a contextual source for social reinforcement multiplicity?",
+      "sourceRdsId": "SOC-053",
+      "targetId": "SOC-061",
+      "relationshipId": "REL-SOC-035",
+      "causalContrast": "An exact topology transformation on a bound graph that changes neighborhood closure while retaining state, boundary, window, and exposure semantics.",
+      "unitOfAnalysis": "SMALL_GROUP",
+      "timeScope": "Specified network-state and behavioral-response windows",
+      "sourceLevel": "SMALL_GROUP",
+      "targetLevel": "SMALL_GROUP",
+      "candidateMechanism": "Closed neighborhoods can create redundant independent reinforcement exposures.",
+      "constituents": [
+        "node set",
+        "neighbor tie set",
+        "tie type",
+        "boundary",
+        "window"
+      ],
+      "currentContributionRoutes": [
+        "REL-SOC-035"
+      ],
+      "currentEvidence": [
+        "SRC235",
+        "SRC256"
+      ],
+      "newPlanningSources": [
+        "PLAN-METHOD-004",
+        "PLAN-SOC-001"
+      ],
+      "sourceQualityAccessDepth": "Randomized network experiment and network-causal methods literature.",
+      "causalDesignClass": "RANDOMIZED_NETWORK_EXPERIMENT",
+      "supportingFindings": "Randomly assigned network topology can alter diffusion behavior.",
+      "nullOrContraryFindings": "The experiment does not isolate a scalar local-clustering intervention or the exact reinforcement-multiplicity endpoint.",
+      "limitations": "Identical clustering values can hide different topologies and actor exposures.",
+      "remainingUncertainty": "Exact state transition, exposure mapping, contribution identity, and route-specific evidence.",
+      "decisionTestResult": "BLOCKED_NETWORK_STATE"
+    },
+    {
+      "caseId": "SOC-074_REL-SOC-046",
+      "question": "Can goal alignment function as a contextual group source for cooperation prevalence?",
+      "sourceRdsId": "SOC-074",
+      "targetId": "SOC-034",
+      "relationshipId": "REL-SOC-046",
+      "causalContrast": "A specified collective-episode intervention that aligns member goals without defining cooperation as part of alignment.",
+      "unitOfAnalysis": "SMALL_GROUP",
+      "timeScope": "Specified collective episode",
+      "sourceLevel": "SMALL_GROUP",
+      "targetLevel": "SMALL_GROUP",
+      "candidateMechanism": "Shared goal direction can support coordination and reduce effort conflict.",
+      "constituents": [
+        "member stated or revealed goals",
+        "episode definition",
+        "alignment function"
+      ],
+      "currentContributionRoutes": [
+        "REL-SOC-046"
+      ],
+      "currentEvidence": [
+        "SRC261",
+        "SRC267",
+        "SRC238"
+      ],
+      "newPlanningSources": [
+        "PLAN-SOC-002"
+      ],
+      "sourceQualityAccessDepth": "Group-level experiment at abstract depth plus canonical repository evidence.",
+      "causalDesignClass": "GROUP_OR_CONTEXT_RANDOMIZATION_APPROXIMATION",
+      "supportingFindings": "Assigned group goals can affect group performance through coordination/action planning.",
+      "nullOrContraryFindings": "Effects are conditional; assigned goals are not the same construct as measured goal alignment.",
+      "limitations": "The exact alignment aggregate, contribution overlap, and cooperation-prevalence endpoint are not identified.",
+      "remainingUncertainty": "Whether an episode-specific contrast and independent contribution can be supported.",
+      "decisionTestResult": "INSUFFICIENT_CAUSAL_EVIDENCE"
+    }
+  ],
+  "newProductionSourcesRegistered": 0
+}
