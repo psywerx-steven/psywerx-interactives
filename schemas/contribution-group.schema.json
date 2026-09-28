@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://psywerx.org/schemas/contribution-group.schema.json",
+  "title": "ContributionGroup",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "groupId", "groupVersion", "objectKind", "scientificContributionDefinition", "scope", "identityDimensions", "memberRepresentations", "countingPolicy", "propagationPolicy", "selectionPolicy", "derivationPolicy", "causalIndependenceStatus", "evidenceOverlapStatus", "constituentOverlapStatus", "crossLevelRouteReferences", "stateRouteReferences", "rdsProfileReferences", "limitations", "provenance", "governanceReference", "shadowOnly", "causalEvidence", "executionAuthority", "hasWeight", "hasPolarity", "hasLifecycle", "hasActivation", "hasPropagationState"],
+  "properties": {
+    "schemaVersion": {"const": "1.0.0"},
+    "groupId": {"type": "string", "pattern": "^CONTRIB-[A-Z0-9-]+$"},
+    "groupVersion": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "objectKind": {"const": "CONTRIBUTION_IDENTITY_CONTROL"},
+    "scientificContributionDefinition": {"type": "string", "minLength": 10},
+    "scope": {"type": "object"},
+    "identityDimensions": {"$ref": "#/$defs/identityDimensions"},
+    "memberRepresentations": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/member"}},
+    "countingPolicy": {"enum": ["COUNT_ONCE", "MUTUALLY_EXCLUSIVE_REPRESENTATIONS", "RECALCULATION_ONLY_NO_CAUSAL_SUM", "DERIVATION_ONLY_NO_PROPAGATION", "INDEPENDENT_CONTRIBUTION", "BLOCKED_PENDING_CAUSAL_INDEPENDENCE", "BLOCKED_PENDING_IDENTITY_REVIEW"]},
+    "propagationPolicy": {"type": "string", "minLength": 1},
+    "selectionPolicy": {"type": "string", "minLength": 1},
+    "derivationPolicy": {"type": "string", "minLength": 1},
+    "causalIndependenceStatus": {"type": "string", "minLength": 1},
+    "evidenceOverlapStatus": {"type": "string", "minLength": 1},
+    "constituentOverlapStatus": {"type": "string", "minLength": 1},
+    "crossLevelRouteReferences": {"type": "array", "items": {"type": "object"}},
+    "stateRouteReferences": {"type": "array", "items": {"type": "object"}},
+    "rdsProfileReferences": {"type": "array", "items": {"type": "object"}},
+    "limitations": {"type": "array", "items": {"type": "string"}},
+    "provenance": {"type": "object", "additionalProperties": true, "required": ["implementationDecisionId"], "properties": {"implementationDecisionId": {"const": "GOV-CONTRIBUTION-IMPLEMENTATION-001-2026-09-27"}}},
+    "governanceReference": {"const": "GOV-CONTRIBUTION-IMPLEMENTATION-001-2026-09-27"},
+    "shadowOnly": {"const": true},
+    "causalEvidence": {"const": false},
+    "executionAuthority": {"const": false},
+    "hasWeight": {"const": false},
+    "hasPolarity": {"const": false},
+    "hasLifecycle": {"const": false},
+    "hasActivation": {"const": false},
+    "hasPropagationState": {"const": false}
+  },
+  "$defs": {
+    "identityDimensions": {
+      "type": "object", "additionalProperties": false,
+      "required": ["causalExposureOrChange", "targetChange", "causalContrast", "unitOfAnalysis", "timeScope", "pathwayScope", "intendedContribution", "underlyingRepresentedQuantity"],
+      "properties": {
+        "causalExposureOrChange": {"type": "string", "minLength": 1}, "targetChange": {"type": "string", "minLength": 1},
+        "causalContrast": {"type": "string", "minLength": 1}, "unitOfAnalysis": {"type": "string", "minLength": 1},
+        "timeScope": {"type": "string", "minLength": 1}, "pathwayScope": {"type": "string", "minLength": 1},
+        "intendedContribution": {"type": "string", "minLength": 1}, "underlyingRepresentedQuantity": {"type": "string", "minLength": 1}
+      }
+    },
+    "member": {
+      "type": "object", "additionalProperties": false,
+      "required": ["recordClass", "recordId", "recordRevision", "recordHash", "memberRole", "representationRelationship", "nativeContributionId", "nativeContributionPolicy"],
+      "properties": {
+        "recordClass": {"enum": ["RELATIONSHIP", "EFFECT_ASSERTION", "RDS_ROUTE", "RDS_PROFILE", "SCENARIO_STATE_DELTA", "DERIVATION", "CROSS_LEVEL_MAPPING", "EVIDENCE_ASSESSMENT", "INTERACTION_EFFECT"]},
+        "recordId": {"type": "string", "minLength": 1}, "recordRevision": {"type": ["integer", "string"]},
+        "recordHash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "memberRole": {"enum": ["PRIMARY_CAUSAL_CONTRIBUTION", "ALTERNATE_CAUSAL_REPRESENTATION", "MECHANISTIC_INTERMEDIATE", "CONSTITUENT_CAUSAL_ROUTE", "AGGREGATE_CAUSAL_ROUTE", "DERIVATION_ONLY", "STATE_RECALCULATION_ONLY", "EXPOSURE_ROUTING_ONLY", "EVIDENCE_ONLY", "CONTEXT_ONLY", "NONCAUSAL_REPRESENTATION"]},
+        "representationRelationship": {"type": "string", "minLength": 1},
+        "nativeContributionId": {"type": ["string", "null"]}, "nativeContributionPolicy": {"type": ["string", "null"]}
+      }
+    }
+  }
+}

@@ -22,6 +22,7 @@ CROSS_LEVEL_DECISION_PATH = DATA / "cross-level/cross-level-architecture-decisio
 CROSS_LEVEL_IMPLEMENTATION_DECISION_PATH = DATA / "cross-level/cross-level-production-implementation-decision-001.json"
 NETWORK_STATE_DECISION_PATH = DATA / "network-state/network-state-architecture-decision-001.json"
 CONTRIBUTION_DECISION_PATH = DATA / "contribution/contribution-architecture-decision-001.json"
+CONTRIBUTION_IMPLEMENTATION_DECISION_PATH = DATA / "contribution/contribution-production-implementation-decision-001.json"
 
 ROOT_IDS = {
     "RDS_DEF": "ROOT-RDS-DEFINITION-DERIVATION-001",
@@ -145,6 +146,28 @@ def contribution_direction_decision():
     assert decision["decisionOutcome"] == "APPROVED_BOUNDED_A_PLUS_B_PLUS_C_DIRECTION"
     assert decision["productionImplementationStatus"] == "NOT_AUTHORIZED_NOT_STARTED"
     return decision
+
+
+def contribution_implementation_state():
+    if not CONTRIBUTION_IMPLEMENTATION_DECISION_PATH.exists():
+        return None
+    decision = read(CONTRIBUTION_IMPLEMENTATION_DECISION_PATH)
+    assert decision["decisionPacketId"] == "DP-PSG-004-IMPLEMENTATION"
+    assert decision["workPackageId"] == "WP-PSG-004"
+    assert decision["outcome"] == "APPROVED_BOUNDED_PHASE_0_AND_SEPARATELY_GATED_REPETITION_SHADOW_PHASE_1"
+    registry_path = ROOT / "data/contribution-control-v1/groups.json"
+    if not registry_path.exists():
+        phase = "AUTHORIZED_NOT_STARTED"
+    else:
+        groups = read(registry_path)["groups"]
+        if not groups:
+            phase = "PHASE_0_COMPLETE_EMPTY_REGISTRY"
+        elif len(groups) == 1 and groups[0]["groupId"] == "CONTRIB-PSY-LAYER-REPETITION-001" and groups[0]["groupVersion"] == "1.0.0":
+            phase = "PHASE_1_REPETITION_COMPLETE_SHADOW_ONLY"
+        else:
+            raise AssertionError("Contribution implementation exceeds bounded authorization")
+    assert decision["implementationStatus"] in {"PHASE_0_IMPLEMENTATION_IN_PROGRESS", "PHASE_0_COMPLETE_EMPTY_REGISTRY", phase}
+    return {"decision": decision, "phase": phase}
 
 
 def write_json(path: Path, value):
@@ -571,6 +594,7 @@ def work_packages(roots):
     network_state_decision = network_state_direction_decision()
     contribution_decision = contribution_direction_decision()
     contribution_stage_e = ROOT / "data/governance/post-scale-up/contribution/contribution-migration-dry-run.json"
+    contribution_implementation = contribution_implementation_state()
     packages = []
     for definition in ROOT_DEFS:
         key, identifier = definition["key"], ROOT_IDS[definition["key"]]
@@ -594,15 +618,15 @@ def work_packages(roots):
             "stages": {"A_problemNormalization": "COMPLETE", "B_designAlternatives": "COMPLETE",
                        "C_skepticalArchitectureReview": "COMPLETE" if key in {"RDS_DEF", "CROSS_LEVEL", "NETWORK", "CONTRIBUTION", "RDS_CAUSAL", "ACTIVATION"} else "DEFERRED_UNTIL_SELECTED",
                        "D_humanGovernanceDecision": "COMPLETE_BOUNDED_DIRECTION_APPROVED" if direction_decision else "NOT_STARTED",
-                       "E_implementation": (implementation["phase"] if key == "RDS_DEF" and implementation else ("PRODUCTION_ARCHITECTURE_INSTALLED" if key == "CROSS_LEVEL" and cross_level_implementation else ("COMPLETE_NON_PRODUCTION_REFERENCE_PROTOTYPE" if ((key == "RDS_DEF" and prototype_complete) or (key == "CROSS_LEVEL" and cross_level_stage_e.exists()) or (key == "CONTRIBUTION" and contribution_stage_e.exists())) else "NOT_STARTED"))),
-                       "F_migrationRevalidation": ("RDS_0006_SHADOW_EQUIVALENCE_COMPLETE_OTHER_40_UNCHANGED" if key == "RDS_DEF" and implementation and implementation["phase"].startswith("PHASE_1") else ("REL_INS_040_SHADOW_COMPATIBILITY_COMPLETE_OTHER_37_UNCHANGED" if key == "CROSS_LEVEL" and cross_level_implementation and cross_level_implementation["phase"].startswith("PHASE_1") else ("DRY_RUN_ONLY_COMPLETE_PHASE_1_NOT_STARTED" if ((key == "RDS_DEF" and implementation) or (key == "CROSS_LEVEL" and cross_level_implementation)) else ("DRY_RUN_ONLY_COMPLETE_PRODUCTION_MIGRATION_NOT_AUTHORIZED" if ((key == "RDS_DEF" and prototype_complete) or (key == "CROSS_LEVEL" and cross_level_stage_e.exists()) or (key == "CONTRIBUTION" and contribution_stage_e.exists())) else "NOT_STARTED")))),
+                       "E_implementation": (implementation["phase"] if key == "RDS_DEF" and implementation else ("PRODUCTION_ARCHITECTURE_INSTALLED" if ((key == "CROSS_LEVEL" and cross_level_implementation) or (key == "CONTRIBUTION" and contribution_implementation)) else ("COMPLETE_NON_PRODUCTION_REFERENCE_PROTOTYPE" if ((key == "RDS_DEF" and prototype_complete) or (key == "CROSS_LEVEL" and cross_level_stage_e.exists()) or (key == "CONTRIBUTION" and contribution_stage_e.exists())) else "NOT_STARTED"))),
+                       "F_migrationRevalidation": ("RDS_0006_SHADOW_EQUIVALENCE_COMPLETE_OTHER_40_UNCHANGED" if key == "RDS_DEF" and implementation and implementation["phase"].startswith("PHASE_1") else ("REL_INS_040_SHADOW_COMPATIBILITY_COMPLETE_OTHER_37_UNCHANGED" if key == "CROSS_LEVEL" and cross_level_implementation and cross_level_implementation["phase"].startswith("PHASE_1") else ("REPETITION_SHADOW_COMPATIBILITY_COMPLETE_OTHER_CASES_UNCHANGED" if key == "CONTRIBUTION" and contribution_implementation and contribution_implementation["phase"].startswith("PHASE_1") else ("DRY_RUN_ONLY_COMPLETE_PHASE_1_NOT_STARTED" if ((key == "RDS_DEF" and implementation) or (key == "CROSS_LEVEL" and cross_level_implementation) or (key == "CONTRIBUTION" and contribution_implementation)) else ("DRY_RUN_ONLY_COMPLETE_PRODUCTION_MIGRATION_NOT_AUTHORIZED" if ((key == "RDS_DEF" and prototype_complete) or (key == "CROSS_LEVEL" and cross_level_stage_e.exists()) or (key == "CONTRIBUTION" and contribution_stage_e.exists())) else "NOT_STARTED"))))),
                        "G_scientificReadjudication": "NOT_STARTED"},
             "governanceDecisionId": direction_decision["decisionId"] if direction_decision else None,
             "prototypeImplementationAuthorization": "AUTHORIZED_NON_PRODUCTION_ONLY" if direction_decision else "NOT_AUTHORIZED",
-            "productionImplementationStatus": implementation["phase"] if key == "RDS_DEF" and implementation else (cross_level_implementation["phase"] if key == "CROSS_LEVEL" and cross_level_implementation else ("HUMAN_GOVERNANCE_REQUIRED_NOT_STARTED" if key == "RDS_DEF" and prototype_complete else ("NOT_AUTHORIZED_NOT_STARTED" if direction_decision else "NOT_STARTED"))),
-            "rootIssueResolutionStatus": ("BOUNDED_ARCHITECTURE_IMPLEMENTED_OTHER_RDS_PENDING_SCIENCE" if key == "RDS_DEF" and implementation and implementation["phase"].startswith("PHASE_1") else ("BOUNDED_ARCHITECTURE_IMPLEMENTED_REL_INS_040_SHADOW_ONLY" if key == "CROSS_LEVEL" and cross_level_implementation and cross_level_implementation["phase"].startswith("PHASE_1") else ("NOT_RESOLVED_PHASE_0_ONLY" if ((key == "RDS_DEF" and implementation) or (key == "CROSS_LEVEL" and cross_level_implementation)) else ("NOT_RESOLVED_PROTOTYPE_ONLY" if ((key == "RDS_DEF" and prototype_complete) or (key == "CROSS_LEVEL" and cross_level_stage_e.exists())) else ("NOT_RESOLVED_DIRECTION_ONLY" if direction_decision else "NOT_RESOLVED"))))),
-            "nextDecisionPacketId": ("DP-PSG-004-IMPLEMENTATION" if key == "CONTRIBUTION" and contribution_stage_e.exists() else (None if direction_decision or ((key == "RDS_DEF" and implementation) or (key == "CROSS_LEVEL" and cross_level_implementation)) else ("DP-PSG-001-IMPLEMENTATION" if key == "RDS_DEF" and prototype_complete else ("DP-PSG-002-IMPLEMENTATION" if key == "CROSS_LEVEL" and cross_level_stage_e.exists() else None)))),
-            "productionImplementationDecisionId": implementation["decision"]["decisionId"] if key == "RDS_DEF" and implementation else (cross_level_implementation["decision"]["decisionId"] if key == "CROSS_LEVEL" and cross_level_implementation else None),
+            "productionImplementationStatus": implementation["phase"] if key == "RDS_DEF" and implementation else (cross_level_implementation["phase"] if key == "CROSS_LEVEL" and cross_level_implementation else (contribution_implementation["phase"] if key == "CONTRIBUTION" and contribution_implementation else ("HUMAN_GOVERNANCE_REQUIRED_NOT_STARTED" if key == "RDS_DEF" and prototype_complete else ("NOT_AUTHORIZED_NOT_STARTED" if direction_decision else "NOT_STARTED")))),
+            "rootIssueResolutionStatus": ("BOUNDED_ARCHITECTURE_IMPLEMENTED_OTHER_RDS_PENDING_SCIENCE" if key == "RDS_DEF" and implementation and implementation["phase"].startswith("PHASE_1") else ("BOUNDED_ARCHITECTURE_IMPLEMENTED_REL_INS_040_SHADOW_ONLY" if key == "CROSS_LEVEL" and cross_level_implementation and cross_level_implementation["phase"].startswith("PHASE_1") else ("BOUNDED_ARCHITECTURE_IMPLEMENTED_REPETITION_SHADOW_ONLY" if key == "CONTRIBUTION" and contribution_implementation and contribution_implementation["phase"].startswith("PHASE_1") else ("NOT_RESOLVED_PHASE_0_ONLY" if ((key == "RDS_DEF" and implementation) or (key == "CROSS_LEVEL" and cross_level_implementation) or (key == "CONTRIBUTION" and contribution_implementation)) else ("NOT_RESOLVED_PROTOTYPE_ONLY" if ((key == "RDS_DEF" and prototype_complete) or (key == "CROSS_LEVEL" and cross_level_stage_e.exists())) else ("NOT_RESOLVED_DIRECTION_ONLY" if direction_decision else "NOT_RESOLVED")))))),
+            "nextDecisionPacketId": (None if key == "CONTRIBUTION" and contribution_implementation else ("DP-PSG-004-IMPLEMENTATION" if key == "CONTRIBUTION" and contribution_stage_e.exists() else (None if direction_decision or ((key == "RDS_DEF" and implementation) or (key == "CROSS_LEVEL" and cross_level_implementation)) else ("DP-PSG-001-IMPLEMENTATION" if key == "RDS_DEF" and prototype_complete else ("DP-PSG-002-IMPLEMENTATION" if key == "CROSS_LEVEL" and cross_level_stage_e.exists() else None))))),
+            "productionImplementationDecisionId": implementation["decision"]["decisionId"] if key == "RDS_DEF" and implementation else (cross_level_implementation["decision"]["decisionId"] if key == "CROSS_LEVEL" and cross_level_implementation else (contribution_implementation["decision"]["decisionId"] if key == "CONTRIBUTION" and contribution_implementation else None)),
             "recommendedSequenceBand": definition["sequenceBand"],
         }
         if key == "CROSS_LEVEL" and cross_level_test.exists():

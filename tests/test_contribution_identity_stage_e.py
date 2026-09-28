@@ -24,7 +24,11 @@ class ContributionStageE(unittest.TestCase):
   d=read(DATA/"contribution-architecture-decision-001.json")
   self.assertEqual(d["decisionId"],"GOV-CONTRIBUTION-IDENTITY-001-2026-09-27");self.assertEqual(d["decisionOutcome"],"APPROVED_BOUNDED_A_PLUS_B_PLUS_C_DIRECTION");self.assertEqual(d["wpPsg005Status"],"NOT_STARTED")
   wp=next(x for x in read(ROOT/"data/governance/post-scale-up/work-packages.json")["workPackages"] if x["workPackageId"]=="WP-PSG-004")
-  self.assertEqual(wp["stages"]["D_humanGovernanceDecision"],"COMPLETE_BOUNDED_DIRECTION_APPROVED");self.assertEqual(wp["stages"]["E_implementation"],"COMPLETE_NON_PRODUCTION_REFERENCE_PROTOTYPE");self.assertIn("DRY_RUN_ONLY",wp["stages"]["F_migrationRevalidation"]);self.assertEqual(wp["productionImplementationStatus"],"NOT_AUTHORIZED_NOT_STARTED")
+  self.assertEqual(wp["stages"]["D_humanGovernanceDecision"],"COMPLETE_BOUNDED_DIRECTION_APPROVED")
+  registry=read(ROOT/"data/contribution-control-v1/groups.json")
+  self.assertEqual(wp["stages"]["E_implementation"],"PRODUCTION_ARCHITECTURE_INSTALLED")
+  self.assertEqual(wp["productionImplementationStatus"],"PHASE_1_REPETITION_COMPLETE_SHADOW_ONLY" if registry["groups"] else "PHASE_0_COMPLETE_EMPTY_REGISTRY")
+  self.assertEqual(wp["productionImplementationDecisionId"],"GOV-CONTRIBUTION-IMPLEMENTATION-001-2026-09-27")
 
  def test_schema_and_authority_firewall(self):
   schema=read(ROOT/"prototypes/contribution-identity-v1/schemas/contribution-group.schema.json");Draft202012Validator(schema).validate(self.group)
