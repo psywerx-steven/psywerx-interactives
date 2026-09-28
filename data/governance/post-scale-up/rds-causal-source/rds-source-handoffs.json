@@ -1,0 +1,83 @@
+{
+  "schemaVersion": "1.0.0",
+  "handoffs": {
+    "WP-PSG-001": "Exact profile/binding is an execution gate, not a scientific causal gate.",
+    "WP-PSG-002": "Contextual cross-level sources require exact mapping/binding and actual exposure.",
+    "WP-PSG-003": "Network RDS require state ID/revision/hash, boundary, window, tie definition, and intervention class.",
+    "WP-PSG-004": "Alternate abstractions require select-one; independent aggregates require explicit independence resolution.",
+    "futureStageE": "Build isolated validator for the governed reusable contract.",
+    "futureStageG": [
+      "BIO/Cultural high-information cases",
+      "Institutional ratios/capacity",
+      "Social network/context aggregates"
+    ]
+  },
+  "optionResults": {
+    "A": {
+      "result": "INSUFFICIENT_ALONE",
+      "strengths": [
+        "clear contrast and mechanism"
+      ],
+      "limitations": [
+        "literal manipulability would reject legitimate contextual causes",
+        "does not itself solve cross-level exposure or double counting"
+      ]
+    },
+    "B": {
+      "result": "NECESSARY_EXCEPTION_PATH_NOT_DEFAULT",
+      "strengths": [
+        "supports group/network/institutional contexts",
+        "uses exact exposure mappings"
+      ],
+      "limitations": [
+        "ecological inference risk",
+        "depends on contribution and actual-exposure controls"
+      ]
+    },
+    "C": {
+      "result": "SAFE_DEFAULT_INCOMPLETE_AS_BLANKET_RULE",
+      "strengths": [
+        "lowest false-positive risk",
+        "simple rollback"
+      ],
+      "limitations": [
+        "would exclude identified higher-level contexts and valid causal abstractions"
+      ]
+    },
+    "A+B": {
+      "result": "NEEDS_DEFAULT_FIREWALL"
+    },
+    "A+C": {
+      "result": "MISSES_CONTEXTUAL_PATH"
+    },
+    "B+C": {
+      "result": "MISSES_SAME_LEVEL_INDEPENDENT_PATH"
+    },
+    "A+B+C": {
+      "result": "VIABLE_IF_C_IS_DEFAULT_AND_A_B_ARE_GATED_EXCEPTIONS"
+    },
+    "recommended": "C_DEFAULT_WITH_BOUNDED_A_AND_B_EXCEPTION_PATHWAYS"
+  },
+  "protectedHashes": {
+    "data/entities.json": "74f88110911280bc6d508da56af824b63db4c11d741223b694aa7ac18734cf99",
+    "data/drivers.json": "017a79d1f33230e788fe82175d74714f28e7e0af18878fa718c971a0e101534b",
+    "data/relationships.json": "759f90446ff5f6e27d496e3e3603bb44045f7f0abf4770e4c012c5e4d974ba51",
+    "data/relationship-intervention-v1/relationships.json": "ec1a4bae5fbc2b9b5868b54f64375b52f2ced6e9bb194f5431b54b277d8f163c",
+    "data/actions-events-v1/catalog.json": "9605e6a7aa046640c7c16b670c82dcf21b5ff3bcc31313ea8c58271f2ee01098",
+    "data/rds-computation-v1/profiles.json": "b45a6f63f690042008580853814758beb5b2449216301ad0977f40be291bdb3c",
+    "data/rds-computation-v1/bindings.json": "8ed2a77733ee8474ef90b3f0f52987705165a5ff1740a46e9e5dfc9f838eb9a1",
+    "data/contribution-control-v1/groups.json": "1823adbb656e1ffbb56d51c6babf5d9c6942261579ad2f38bf1671259258e199",
+    "data/relational-state-v1/catalog.json": "fcc0ed4cfe328d82286b65bdccefaf49d65d23ba6cd7e94a5b3e5c67ef924ffa",
+    "data/cross-level-exposure-v1/mappings.json": "78584ff8a7070b258d770ba420f5d44ce9a17942975786b387e3ae89f64e6940",
+    "data/cross-level-exposure-v1/bindings.json": "84f3b9544de1d980fcce9440cdaab7bb2648ff08464261173c97c8c56f161b90",
+    "data/sources.json": "f1aae4135ac049e223ae65a66a24a6dfc2c28e911add59ce11df34e9c0af3615",
+    "scripts/build_relationships.py": "525ab77af9ff27ec7f115f65f1caf70e1cb3cd5e85662c363029a8ec9030cedd",
+    "scripts/actions_events_v1.py": "1a4b78f71176e6b3ed1bdb32c09c0c9d7619b77017382a67eb7cd3bbab0fab8e",
+    "scripts/rds_computation_v1.py": "ac26630ba60a18cbc7e1e1930d67ae0b139d4f95de90a97f9be47e92b2cbe722",
+    "scripts/contribution_control_v1.py": "5403a6639acb3dea7803c6f52f12340220d3f33a14adfd459d4842ffdf489082",
+    "scripts/relational_state_v1.py": "be78cd3ccc8df098a9c4676325f706125f788bc21c700fe58e70c83ebd06fd20",
+    "scripts/cross_level_exposure_v1.py": "00f03d3e7e76e755b0cd36517ef9e873aa0401505f558b5ffd413700d54e3a57",
+    "scenario-service/src/openai-service.js": "74b32c8421fd1f2dfa0b84caf01db979dbbccc4f2ce7cf6c4527cb9cd99f8a3b"
+  },
+  "causalSourceEligibilityChanges": 0
+}

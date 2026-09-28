@@ -1,0 +1,483 @@
+{
+  "schemaVersion": "1.0.0",
+  "caseCount": 15,
+  "rootBlockers": [
+    "ASTRA-BIO-LAYER-001",
+    "ASTRA-CUL-LAYER-001",
+    "ASTRA-INS-LAYER-001",
+    "ASTRA-INS-LAYER-002",
+    "ASTRA-SOC-LAYER-001"
+  ],
+  "planningClassificationCounts": {
+    "DERIVATION_ONLY": 4,
+    "MULTIPLE_DEPENDENCIES": 6,
+    "NEEDS_CONSTITUENT_MAPPING": 8,
+    "NEEDS_CONTRIBUTION_RECONCILIATION": 4,
+    "NEEDS_EXPOSURE_MAPPING": 2,
+    "NEEDS_NETWORK_STATE_BINDING": 6,
+    "NEEDS_PROFILE_DEFINITION": 3,
+    "NEEDS_TARGETED_CAUSAL_RESEARCH": 11,
+    "READY_FOR_SOURCE_GOVERNANCE_REVIEW": 1
+  },
+  "cases": [
+    {
+      "relationshipId": "REL-BIO-001",
+      "sourceId": "BIO-003",
+      "sourceName": "Circadian Timing Alignment",
+      "rootBlockerId": "ASTRA-BIO-LAYER-001",
+      "targetId": "BIO-001",
+      "targetName": "Sleep Duration",
+      "typology": "OTHER_DERIVED_SUMMARY",
+      "sourceLevel": "PERSON",
+      "targetLevel": "PERSON",
+      "currentReviewDisposition": "REVISION_CANDIDATE",
+      "architectureFinding": "The alignment construct can support a coherent phase/schedule contrast, but the current broad aggregate does not bind one version.",
+      "scientificEvidenceFinding": "Forced-desynchrony evidence supports circadian phase effects on sleep propensity and consolidation; current Relationship sources do not isolate the exact BIO-003 to sleep-duration proposition.",
+      "executionProfileFinding": "NO_EXACT_PROFILE_BINDING",
+      "advisoryStatus": "BLOCKED_MULTIPLE_VERSIONS",
+      "planningClassifications": [
+        "NEEDS_PROFILE_DEFINITION",
+        "NEEDS_CONTRIBUTION_RECONCILIATION",
+        "NEEDS_TARGETED_CAUSAL_RESEARCH",
+        "MULTIPLE_DEPENDENCIES"
+      ],
+      "deepResearch": true,
+      "supportingEvidenceIds": [
+        "SRC006",
+        "SRC007",
+        "SRC008"
+      ],
+      "profileReferences": [],
+      "bindingReferences": [],
+      "productionDispositionChanged": false,
+      "causalSourceEligible": false
+    },
+    {
+      "relationshipId": "REL-CUL-042",
+      "sourceId": "CUL-088",
+      "sourceName": "Generational Cultural Distance",
+      "rootBlockerId": "ASTRA-CUL-LAYER-001",
+      "targetId": "CUL-061",
+      "targetName": "Cultural Norm Entrenchment",
+      "typology": "DISTANCE_OR_SIMILARITY",
+      "sourceLevel": "COMMUNITY",
+      "targetLevel": "COMMUNITY",
+      "currentReviewDisposition": "RESEARCH_NEEDED",
+      "architectureFinding": "Distance is a many-to-one summary; equal distance can encode directionally different profile changes.",
+      "scientificEvidenceFinding": "Canonical reviews support cultural dynamics generally, not the exact distance-to-entrenchment causal contrast.",
+      "executionProfileFinding": "NO_EXACT_PROFILE_BINDING",
+      "advisoryStatus": "BLOCKED_MULTIPLE_VERSIONS",
+      "planningClassifications": [
+        "NEEDS_PROFILE_DEFINITION",
+        "NEEDS_CONSTITUENT_MAPPING",
+        "NEEDS_TARGETED_CAUSAL_RESEARCH",
+        "MULTIPLE_DEPENDENCIES"
+      ],
+      "deepResearch": true,
+      "supportingEvidenceIds": [
+        "SRC276",
+        "SRC306"
+      ],
+      "profileReferences": [],
+      "bindingReferences": [],
+      "productionDispositionChanged": false,
+      "causalSourceEligible": false
+    },
+    {
+      "relationshipId": "REL-INS-017",
+      "sourceId": "INS-039",
+      "sourceName": "Caseload Pressure",
+      "rootBlockerId": "ASTRA-INS-LAYER-001",
+      "targetId": "INS-063",
+      "targetName": "Service-Delivery Capacity",
+      "typology": "RATIO_OR_RATE",
+      "sourceLevel": "INSTITUTIONAL_FIELD",
+      "targetLevel": "INSTITUTIONAL_FIELD",
+      "currentReviewDisposition": "RESEARCH_NEEDED",
+      "architectureFinding": "Caseload pressure uses staffing capacity, while the target explicitly includes staffing as part of service-delivery capacity.",
+      "scientificEvidenceFinding": "Canonical sources support workload/coping theory, but do not identify an independent aggregate effect at these exact endpoints.",
+      "executionProfileFinding": "NO_EXACT_PROFILE_BINDING",
+      "advisoryStatus": "BLOCKED_TARGET_CONTAMINATION",
+      "planningClassifications": [
+        "NEEDS_CONSTITUENT_MAPPING",
+        "NEEDS_CONTRIBUTION_RECONCILIATION",
+        "NEEDS_TARGETED_CAUSAL_RESEARCH",
+        "MULTIPLE_DEPENDENCIES"
+      ],
+      "deepResearch": true,
+      "supportingEvidenceIds": [
+        "SRC380",
+        "SRC381",
+        "SRC386"
+      ],
+      "profileReferences": [],
+      "bindingReferences": [],
+      "productionDispositionChanged": false,
+      "causalSourceEligible": false
+    },
+    {
+      "relationshipId": "REL-INS-036",
+      "sourceId": "INS-103",
+      "sourceName": "Staffing Adequacy",
+      "rootBlockerId": "ASTRA-INS-LAYER-002",
+      "targetId": "INS-107",
+      "targetName": "Territorial Administrative Reach",
+      "typology": "RATIO_OR_RATE",
+      "sourceLevel": "INSTITUTIONAL_FIELD",
+      "targetLevel": "INSTITUTIONAL_FIELD",
+      "currentReviewDisposition": "RESEARCH_NEEDED",
+      "architectureFinding": "Equal adequacy ratios can arise from more staff, less workload, or different skill/labor-time composition.",
+      "scientificEvidenceFinding": "Staffing interventions can have causal effects, but existing evidence does not identify the broad adequacy-ratio effect on territorial reach.",
+      "executionProfileFinding": "NO_EXACT_PROFILE_BINDING",
+      "advisoryStatus": "BLOCKED_MULTIPLE_VERSIONS",
+      "planningClassifications": [
+        "NEEDS_PROFILE_DEFINITION",
+        "NEEDS_CONSTITUENT_MAPPING",
+        "NEEDS_TARGETED_CAUSAL_RESEARCH",
+        "MULTIPLE_DEPENDENCIES"
+      ],
+      "deepResearch": true,
+      "supportingEvidenceIds": [
+        "SRC380",
+        "SRC381",
+        "SRC401"
+      ],
+      "profileReferences": [],
+      "bindingReferences": [],
+      "productionDispositionChanged": false,
+      "causalSourceEligible": false
+    },
+    {
+      "relationshipId": "REL-SOC-017",
+      "sourceId": "SOC-024",
+      "sourceName": "Active Personal Network Size",
+      "rootBlockerId": "ASTRA-SOC-LAYER-001",
+      "targetId": "SOC-026",
+      "targetName": "Support Provider Availability",
+      "typology": "NETWORK_TOPOLOGY_METRIC",
+      "sourceLevel": "SMALL_GROUP",
+      "targetLevel": "SMALL_GROUP",
+      "currentReviewDisposition": "RESEARCH_NEEDED",
+      "architectureFinding": "Network size and provider availability can share the same alter/provider membership and require exact Network State identity.",
+      "scientificEvidenceFinding": "No exact causal contrast separates additional eligible alters from realized support availability.",
+      "executionProfileFinding": "NO_EXACT_PROFILE_BINDING",
+      "advisoryStatus": "BLOCKED_TARGET_CONTAMINATION",
+      "planningClassifications": [
+        "NEEDS_NETWORK_STATE_BINDING",
+        "NEEDS_CONSTITUENT_MAPPING",
+        "NEEDS_TARGETED_CAUSAL_RESEARCH"
+      ],
+      "deepResearch": false,
+      "supportingEvidenceIds": [
+        "SRC222",
+        "SRC264"
+      ],
+      "profileReferences": [],
+      "bindingReferences": [],
+      "productionDispositionChanged": false,
+      "causalSourceEligible": false
+    },
+    {
+      "relationshipId": "REL-SOC-029",
+      "sourceId": "SOC-041",
+      "sourceName": "Status Hierarchy Steepness",
+      "rootBlockerId": "ASTRA-SOC-LAYER-001",
+      "targetId": "SOC-070",
+      "targetName": "Communication Participation Equality",
+      "typology": "OTHER_DERIVED_SUMMARY",
+      "sourceLevel": "SMALL_GROUP",
+      "targetLevel": "SMALL_GROUP",
+      "currentReviewDisposition": "RESEARCH_NEEDED",
+      "architectureFinding": "Hierarchy steepness and participation equality can be co-summaries of the same interaction distribution.",
+      "scientificEvidenceFinding": "General hierarchy evidence does not identify this exact aggregate-to-aggregate-like participation contrast.",
+      "executionProfileFinding": "NO_EXACT_PROFILE_BINDING",
+      "advisoryStatus": "BLOCKED_DEFINITIONAL_OVERLAP",
+      "planningClassifications": [
+        "NEEDS_CONSTITUENT_MAPPING",
+        "NEEDS_TARGETED_CAUSAL_RESEARCH"
+      ],
+      "deepResearch": false,
+      "supportingEvidenceIds": [
+        "SRC228",
+        "SRC258",
+        "SRC267"
+      ],
+      "profileReferences": [],
+      "bindingReferences": [],
+      "productionDispositionChanged": false,
+      "causalSourceEligible": false
+    },
+    {
+      "relationshipId": "REL-SOC-031",
+      "sourceId": "SOC-052",
+      "sourceName": "Network Density",
+      "rootBlockerId": "ASTRA-SOC-LAYER-001",
+      "targetId": "SOC-053",
+      "targetName": "Local Clustering",
+      "typology": "NETWORK_TOPOLOGY_METRIC",
+      "sourceLevel": "SMALL_GROUP",
+      "targetLevel": "SMALL_GROUP",
+      "currentReviewDisposition": "RETYPE_CANDIDATE",
+      "architectureFinding": "Density and clustering are same-state topology summaries; changing one statistic is not a state intervention.",
+      "scientificEvidenceFinding": "The route is already a retype candidate and lacks an independent causal mechanism.",
+      "executionProfileFinding": "NO_EXACT_PROFILE_BINDING",
+      "advisoryStatus": "DERIVATION_ONLY",
+      "planningClassifications": [
+        "DERIVATION_ONLY",
+        "NEEDS_NETWORK_STATE_BINDING"
+      ],
+      "deepResearch": false,
+      "supportingEvidenceIds": [
+        "SRC254",
+        "SRC256"
+      ],
+      "profileReferences": [],
+      "bindingReferences": [],
+      "productionDispositionChanged": false,
+      "causalSourceEligible": false
+    },
+    {
+      "relationshipId": "REL-SOC-035",
+      "sourceId": "SOC-053",
+      "sourceName": "Local Clustering",
+      "rootBlockerId": "ASTRA-SOC-LAYER-001",
+      "targetId": "SOC-061",
+      "targetName": "Social Reinforcement Multiplicity",
+      "typology": "NETWORK_TOPOLOGY_METRIC",
+      "sourceLevel": "SMALL_GROUP",
+      "targetLevel": "SMALL_GROUP",
+      "currentReviewDisposition": "REVISION_CANDIDATE",
+      "architectureFinding": "Clustering can be a contextual abstraction only after a topology transformation, exposure route, and contribution identity are exact.",
+      "scientificEvidenceFinding": "A randomized network experiment supports effects of topology on adoption, but does not isolate the current scalar clustering-to-reinforcement claim.",
+      "executionProfileFinding": "NO_EXACT_PROFILE_BINDING",
+      "advisoryStatus": "BLOCKED_NETWORK_STATE",
+      "planningClassifications": [
+        "NEEDS_NETWORK_STATE_BINDING",
+        "NEEDS_EXPOSURE_MAPPING",
+        "NEEDS_CONTRIBUTION_RECONCILIATION",
+        "NEEDS_TARGETED_CAUSAL_RESEARCH",
+        "MULTIPLE_DEPENDENCIES"
+      ],
+      "deepResearch": true,
+      "supportingEvidenceIds": [
+        "SRC235",
+        "SRC256"
+      ],
+      "profileReferences": [],
+      "bindingReferences": [],
+      "productionDispositionChanged": false,
+      "causalSourceEligible": false
+    },
+    {
+      "relationshipId": "REL-SOC-032",
+      "sourceId": "SOC-054",
+      "sourceName": "Network Assortativity",
+      "rootBlockerId": "ASTRA-SOC-LAYER-001",
+      "targetId": "SOC-057",
+      "targetName": "Network Segregation",
+      "typology": "NETWORK_TOPOLOGY_METRIC",
+      "sourceLevel": "SMALL_GROUP",
+      "targetLevel": "SMALL_GROUP",
+      "currentReviewDisposition": "RETYPE_CANDIDATE",
+      "architectureFinding": "Assortativity and segregation reuse a mixing structure and baseline; metric-to-metric causality is not identified.",
+      "scientificEvidenceFinding": "Canonical causal-inference review warns selection and influence are confounded.",
+      "executionProfileFinding": "NO_EXACT_PROFILE_BINDING",
+      "advisoryStatus": "DERIVATION_ONLY",
+      "planningClassifications": [
+        "DERIVATION_ONLY",
+        "NEEDS_NETWORK_STATE_BINDING"
+      ],
+      "deepResearch": false,
+      "supportingEvidenceIds": [
+        "SRC233",
+        "SRC260",
+        "SRC270"
+      ],
+      "profileReferences": [],
+      "bindingReferences": [],
+      "productionDispositionChanged": false,
+      "causalSourceEligible": false
+    },
+    {
+      "relationshipId": "REL-SOC-033",
+      "sourceId": "SOC-055",
+      "sourceName": "Structural Constraint",
+      "rootBlockerId": "ASTRA-SOC-LAYER-001",
+      "targetId": "SOC-056",
+      "targetName": "Cross-Cluster Tie Prevalence",
+      "typology": "NETWORK_TOPOLOGY_METRIC",
+      "sourceLevel": "SMALL_GROUP",
+      "targetLevel": "SMALL_GROUP",
+      "currentReviewDisposition": "RETYPE_CANDIDATE",
+      "architectureFinding": "Constraint and cross-cluster ties reuse adjacency/partition information.",
+      "scientificEvidenceFinding": "No separately identified aggregate mechanism is present.",
+      "executionProfileFinding": "NO_EXACT_PROFILE_BINDING",
+      "advisoryStatus": "DERIVATION_ONLY",
+      "planningClassifications": [
+        "DERIVATION_ONLY",
+        "NEEDS_NETWORK_STATE_BINDING"
+      ],
+      "deepResearch": false,
+      "supportingEvidenceIds": [
+        "SRC234",
+        "SRC269"
+      ],
+      "profileReferences": [],
+      "bindingReferences": [],
+      "productionDispositionChanged": false,
+      "causalSourceEligible": false
+    },
+    {
+      "relationshipId": "REL-SOC-034",
+      "sourceId": "SOC-056",
+      "sourceName": "Cross-Cluster Tie Prevalence",
+      "rootBlockerId": "ASTRA-SOC-LAYER-001",
+      "targetId": "SOC-057",
+      "targetName": "Network Segregation",
+      "typology": "NETWORK_TOPOLOGY_METRIC",
+      "sourceLevel": "SMALL_GROUP",
+      "targetLevel": "SMALL_GROUP",
+      "currentReviewDisposition": "RETYPE_CANDIDATE",
+      "architectureFinding": "Cross-cluster tie prevalence and segregation are alternate summaries of the same bounded graph/partition.",
+      "scientificEvidenceFinding": "No independent temporal causal proposition is supported.",
+      "executionProfileFinding": "NO_EXACT_PROFILE_BINDING",
+      "advisoryStatus": "DERIVATION_ONLY",
+      "planningClassifications": [
+        "DERIVATION_ONLY",
+        "NEEDS_NETWORK_STATE_BINDING"
+      ],
+      "deepResearch": false,
+      "supportingEvidenceIds": [
+        "SRC233",
+        "SRC234",
+        "SRC269"
+      ],
+      "profileReferences": [],
+      "bindingReferences": [],
+      "productionDispositionChanged": false,
+      "causalSourceEligible": false
+    },
+    {
+      "relationshipId": "REL-SOC-046",
+      "sourceId": "SOC-074",
+      "sourceName": "Goal Alignment",
+      "rootBlockerId": "ASTRA-SOC-LAYER-001",
+      "targetId": "SOC-034",
+      "targetName": "Cooperation Prevalence",
+      "typology": "DISTANCE_OR_SIMILARITY",
+      "sourceLevel": "SMALL_GROUP",
+      "targetLevel": "SMALL_GROUP",
+      "currentReviewDisposition": "RESEARCH_NEEDED",
+      "architectureFinding": "Goal alignment could be a contextual group state, but its versions, episode, and contribution overlap need binding.",
+      "scientificEvidenceFinding": "Team-process reviews and goal experiments support plausibility, not the exact aggregate source claim as currently represented.",
+      "executionProfileFinding": "NO_EXACT_PROFILE_BINDING",
+      "advisoryStatus": "INSUFFICIENT_CAUSAL_EVIDENCE",
+      "planningClassifications": [
+        "READY_FOR_SOURCE_GOVERNANCE_REVIEW",
+        "NEEDS_CONSTITUENT_MAPPING",
+        "NEEDS_TARGETED_CAUSAL_RESEARCH"
+      ],
+      "deepResearch": true,
+      "supportingEvidenceIds": [
+        "SRC261",
+        "SRC267",
+        "SRC238"
+      ],
+      "profileReferences": [],
+      "bindingReferences": [],
+      "productionDispositionChanged": false,
+      "causalSourceEligible": false
+    },
+    {
+      "relationshipId": "REL-SOC-075",
+      "sourceId": "SOC-076",
+      "sourceName": "Mutual Expectation Alignment",
+      "rootBlockerId": "ASTRA-SOC-LAYER-001",
+      "targetId": "SOC-077",
+      "targetName": "Collective Efficacy",
+      "typology": "DISTANCE_OR_SIMILARITY",
+      "sourceLevel": "SMALL_GROUP",
+      "targetLevel": "SMALL_GROUP",
+      "currentReviewDisposition": "RESEARCH_NEEDED",
+      "architectureFinding": "Expectation alignment and collective efficacy may share member expectation/judgment content.",
+      "scientificEvidenceFinding": "Current review evidence does not separate measurement overlap from causal effect.",
+      "executionProfileFinding": "NO_EXACT_PROFILE_BINDING",
+      "advisoryStatus": "BLOCKED_DEFINITIONAL_OVERLAP",
+      "planningClassifications": [
+        "NEEDS_CONSTITUENT_MAPPING",
+        "NEEDS_TARGETED_CAUSAL_RESEARCH"
+      ],
+      "deepResearch": false,
+      "supportingEvidenceIds": [
+        "SRC-502",
+        "SRC-514"
+      ],
+      "profileReferences": [],
+      "bindingReferences": [],
+      "productionDispositionChanged": false,
+      "causalSourceEligible": false
+    },
+    {
+      "relationshipId": "REL-SOC-060",
+      "sourceId": "SOC-096",
+      "sourceName": "Intergroup Status Inequality",
+      "rootBlockerId": "ASTRA-SOC-LAYER-001",
+      "targetId": "SOC-089",
+      "targetName": "Intergroup Contact Quality",
+      "typology": "DISTANCE_OR_SIMILARITY",
+      "sourceLevel": "SMALL_GROUP",
+      "targetLevel": "SMALL_GROUP",
+      "currentReviewDisposition": "RESEARCH_NEEDED",
+      "architectureFinding": "Status inequality could be contextual, but its difference versions and contact mechanism require exact specification.",
+      "scientificEvidenceFinding": "Current reviews support hierarchy/threat broadly, not the exact inequality-to-contact-quality effect.",
+      "executionProfileFinding": "NO_EXACT_PROFILE_BINDING",
+      "advisoryStatus": "INSUFFICIENT_CAUSAL_EVIDENCE",
+      "planningClassifications": [
+        "NEEDS_CONSTITUENT_MAPPING",
+        "NEEDS_TARGETED_CAUSAL_RESEARCH"
+      ],
+      "deepResearch": false,
+      "supportingEvidenceIds": [
+        "SRC244",
+        "SRC245",
+        "SRC268",
+        "SRC273"
+      ],
+      "profileReferences": [],
+      "bindingReferences": [],
+      "productionDispositionChanged": false,
+      "causalSourceEligible": false
+    },
+    {
+      "relationshipId": "REL-SOC-067",
+      "sourceId": "SOC-096",
+      "sourceName": "Intergroup Status Inequality",
+      "rootBlockerId": "ASTRA-SOC-LAYER-001",
+      "targetId": "PSY-022",
+      "targetName": "Perceived Fairness",
+      "typology": "DISTANCE_OR_SIMILARITY",
+      "sourceLevel": "SMALL_GROUP",
+      "targetLevel": "PERSON",
+      "currentReviewDisposition": "RESEARCH_NEEDED",
+      "architectureFinding": "Status inequality is group context; person fairness requires actual contextual exposure semantics.",
+      "scientificEvidenceFinding": "No exact contextual causal identification or production mapping exists for this route.",
+      "executionProfileFinding": "NO_EXACT_PROFILE_BINDING",
+      "advisoryStatus": "BLOCKED_EXPOSURE_MAPPING",
+      "planningClassifications": [
+        "NEEDS_EXPOSURE_MAPPING",
+        "NEEDS_CONTRIBUTION_RECONCILIATION",
+        "NEEDS_TARGETED_CAUSAL_RESEARCH",
+        "MULTIPLE_DEPENDENCIES"
+      ],
+      "deepResearch": false,
+      "supportingEvidenceIds": [
+        "SRC-500",
+        "SRC-501"
+      ],
+      "profileReferences": [],
+      "bindingReferences": [],
+      "productionDispositionChanged": false,
+      "causalSourceEligible": false
+    }
+  ]
+}
