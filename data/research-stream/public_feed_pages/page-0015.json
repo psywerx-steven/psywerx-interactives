@@ -2,8 +2,61 @@
   "schemaVersion": "psywerx-public-research-stream-v1",
   "page": 15,
   "pageSize": 24,
-  "totalItems": 455,
+  "totalItems": 459,
   "items": [
+    {
+      "itemId": "research-8461c7e016cab379454c",
+      "streamTitle": "NATO allies say they disrupted a Russian undersea sabotage rehearsal near Svalbard",
+      "streamSummary": "Reuters reports that British, Norwegian, and U.S. forces tracked and confronted Russian GUGI vessels near Svalbard after Western officials assessed that deep-sea submersibles were rehearsing how to disable critical undersea cables. No cable was damaged, and the vessels were reportedly prevented from completing the exercise. Norway says the operation was meant to show Russia that covert activity would be detected and met with consequences. The operational disruption is observable; whether the episode actually deters future Russian behavior has not been demonstrated.",
+      "attribution": "McFarlane & Slattery — Reuters",
+      "sourceUrl": "https://www.reuters.com/world/europe/nato-allies-foil-russian-subsea-cable-sabotage-plot-2026-09-10",
+      "categories": [
+        "operations-strategy",
+        "application-analysis"
+      ],
+      "sourcePublishedAt": "2026-09-10",
+      "dateAdded": "2026-09-10"
+    },
+    {
+      "itemId": "research-bfa92aa049613dd8c0d7",
+      "streamTitle": "Targeted phone tutoring worked across five countries and through government delivery",
+      "streamSummary": "Five randomized trials in India, Kenya, Nepal, the Philippines, and Uganda found that weekly targeted phone tutoring plus SMS produced sizable learning gains during school disruptions, with a pooled numeracy effect of 0.321 standard deviations. SMS alone had a much smaller and less consistent effect. In Nepal and the Philippines, government teachers achieved large gains as well as NGO instructors, addressing a common scale-up problem. Effects varied by country and implementation improved over time, so the study supports the core model without implying identical performance everywhere.",
+      "attribution": "Angrist et al. — Nature",
+      "sourceUrl": "https://doi.org/10.1038/s41586-026-10990-x",
+      "categories": [
+        "application-analysis",
+        "behavioral-science"
+      ],
+      "sourcePublishedAt": "2026-09-09",
+      "dateAdded": "2026-09-10"
+    },
+    {
+      "itemId": "research-acd74793005b1469be75",
+      "streamTitle": "Synthetic LLM surveys need an error framework, not just better prompts",
+      "streamSummary": "A new preprint introduces Total Simulated Survey Error, an end-to-end framework for identifying validity threats when LLMs are used as synthetic survey respondents. It treats error as something that can enter throughout the simulation lifecycle, not only through a bad prompt. The framework is especially useful for documenting population assumptions, design choices, measurement problems, model biases, and generalization limits. It is a methods proposal with an illustrative case study, not evidence that the framework itself eliminates those errors.",
+      "attribution": "Sen et al. — arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2609.10280",
+      "categories": [
+        "technology-modeling",
+        "application-analysis"
+      ],
+      "sourcePublishedAt": "2026-09-09",
+      "dateAdded": "2026-09-10"
+    },
+    {
+      "itemId": "research-4976506d6c24ae4af776",
+      "streamTitle": "Air Force AI experiments are measuring the human decision process, not just software performance",
+      "streamSummary": "The Department of the Air Force’s latest DASH experiment put battle managers, a Space Force operator, researchers, and software developers together to test modular AI tools that generate target-action recommendations and courses of action. AFRL and the 711th Human Performance Wing also measured operator workload and process performance. The Air Force reports faster decision processes and freed cognitive resources, while emphasizing a government-owned plug-and-play architecture for comparing vendor tools. The public account does not provide detailed effect sizes or error rates, so operational effectiveness cannot yet be independently judged.",
+      "attribution": "505th Command and Control Wing / U.S. Air Force",
+      "sourceUrl": "https://www.acc.af.mil/News/Article-Display/Article/4593256/daf-accelerates-joint-c2-with-ai-space-force-integration-in-latest-dash-experim",
+      "categories": [
+        "operations-strategy",
+        "technology-modeling",
+        "application-analysis"
+      ],
+      "sourcePublishedAt": "2026-09-09",
+      "dateAdded": "2026-09-10"
+    },
     {
       "itemId": "research-4eb6522495ce118e217e",
       "streamTitle": "U.S. agencies warn that frontier AI capabilities are being copied through industrial-scale distillation",
@@ -264,58 +317,6 @@
         "application-analysis"
       ],
       "sourcePublishedAt": "2026-09-07",
-      "dateAdded": "2026-09-08"
-    },
-    {
-      "itemId": "research-529d52b2b36b3020932b",
-      "streamTitle": "Language models appear to use confidence to decide when not to answer",
-      "streamSummary": "A new Nature Machine Intelligence study tested whether LLM confidence actually drives behavior. Across multiple models, confidence strongly predicted abstention, and researchers causally shifted answer-versus-abstain behavior by steering confidence-related internal activations. Models also adjusted when given different confidence thresholds. The result suggests uncertainty can be part of an agent’s decision policy rather than just a displayed score, but confidence still does not equal correctness and the findings should not be read as proof of human-like metacognition.",
-      "attribution": "Kumaran et al. — Nature Machine Intelligence",
-      "sourceUrl": "https://doi.org/10.1038/s42256-026-01293-x",
-      "categories": [
-        "technology-modeling",
-        "application-analysis"
-      ],
-      "sourcePublishedAt": "2026-09-07",
-      "dateAdded": "2026-09-08"
-    },
-    {
-      "itemId": "research-5582c6e75289db59d180",
-      "streamTitle": "Sharing code is not enough if nobody can rerun the full analysis",
-      "streamSummary": "A new Nature Human Behaviour Comment argues that computational reproducibility often fails for mundane reasons: unscripted steps, changing software environments, unclear documentation and fragile file storage. The authors recommend scripting the entire pipeline, capturing the computational environment, documenting code and data for human readers, and depositing materials in persistent repositories. It is a recommendations paper rather than a new experiment, but the message is practical: trustworthy computational research depends as much on workflow governance as on the statistical method itself.",
-      "attribution": "Reiss et al. — Nature Human Behaviour",
-      "sourceUrl": "https://doi.org/10.1038/s41562-026-02570-w",
-      "categories": [
-        "application-analysis",
-        "technology-modeling"
-      ],
-      "sourcePublishedAt": "2026-09-01",
-      "dateAdded": "2026-09-08"
-    },
-    {
-      "itemId": "research-b6e944d00c4d9a8b1023",
-      "streamTitle": "Cross-sectional social-science papers still used causal language beyond what their designs could identify",
-      "streamSummary": "A Nature Human Behaviour analysis examined causal wording in cross-sectional social-science research and found recurring language that exceeded what the designs could identify. The problem is not that cross-sectional studies lack value; it is that association, prediction, mediation models, and causal effects answer different questions. Reporting should preserve those distinctions explicitly.",
-      "attribution": "Nature Human Behaviour",
-      "sourceUrl": "https://doi.org/10.1038/s41562-026-02553-x",
-      "categories": [
-        "application-analysis",
-        "behavioral-science"
-      ],
-      "sourcePublishedAt": "2026-08-24",
-      "dateAdded": "2026-09-08"
-    },
-    {
-      "itemId": "research-038552d7c1868eaa9a2a",
-      "streamTitle": "Paying attention to an itch changed the body’s inflammatory response",
-      "streamSummary": "Three preregistered experiments found that healthy volunteers had smaller and faster-resolving histamine-induced skin inflammation when they focused on sensations at the irritated site instead of distracting themselves. Follow-up tests suggested both sensory feedback and parasympathetic activity may contribute. The result is a striking example of cognition affecting physiology, but it is still a small, short-term laboratory model of acute skin inflammation and should not be generalized to chronic disease or infection.",
-      "attribution": "Mizrachi, Rottem & Rozenkrantz — Nature Human Behaviour",
-      "sourceUrl": "https://doi.org/10.1038/s41562-026-02541-1",
-      "categories": [
-        "behavioral-science",
-        "application-analysis"
-      ],
-      "sourcePublishedAt": "2026-08-17",
       "dateAdded": "2026-09-08"
     }
   ],

@@ -2,8 +2,60 @@
   "schemaVersion": "psywerx-public-research-stream-v1",
   "page": 16,
   "pageSize": 24,
-  "totalItems": 455,
+  "totalItems": 459,
   "items": [
+    {
+      "itemId": "research-529d52b2b36b3020932b",
+      "streamTitle": "Language models appear to use confidence to decide when not to answer",
+      "streamSummary": "A new Nature Machine Intelligence study tested whether LLM confidence actually drives behavior. Across multiple models, confidence strongly predicted abstention, and researchers causally shifted answer-versus-abstain behavior by steering confidence-related internal activations. Models also adjusted when given different confidence thresholds. The result suggests uncertainty can be part of an agent’s decision policy rather than just a displayed score, but confidence still does not equal correctness and the findings should not be read as proof of human-like metacognition.",
+      "attribution": "Kumaran et al. — Nature Machine Intelligence",
+      "sourceUrl": "https://doi.org/10.1038/s42256-026-01293-x",
+      "categories": [
+        "technology-modeling",
+        "application-analysis"
+      ],
+      "sourcePublishedAt": "2026-09-07",
+      "dateAdded": "2026-09-08"
+    },
+    {
+      "itemId": "research-5582c6e75289db59d180",
+      "streamTitle": "Sharing code is not enough if nobody can rerun the full analysis",
+      "streamSummary": "A new Nature Human Behaviour Comment argues that computational reproducibility often fails for mundane reasons: unscripted steps, changing software environments, unclear documentation and fragile file storage. The authors recommend scripting the entire pipeline, capturing the computational environment, documenting code and data for human readers, and depositing materials in persistent repositories. It is a recommendations paper rather than a new experiment, but the message is practical: trustworthy computational research depends as much on workflow governance as on the statistical method itself.",
+      "attribution": "Reiss et al. — Nature Human Behaviour",
+      "sourceUrl": "https://doi.org/10.1038/s41562-026-02570-w",
+      "categories": [
+        "application-analysis",
+        "technology-modeling"
+      ],
+      "sourcePublishedAt": "2026-09-01",
+      "dateAdded": "2026-09-08"
+    },
+    {
+      "itemId": "research-b6e944d00c4d9a8b1023",
+      "streamTitle": "Cross-sectional social-science papers still used causal language beyond what their designs could identify",
+      "streamSummary": "A Nature Human Behaviour analysis examined causal wording in cross-sectional social-science research and found recurring language that exceeded what the designs could identify. The problem is not that cross-sectional studies lack value; it is that association, prediction, mediation models, and causal effects answer different questions. Reporting should preserve those distinctions explicitly.",
+      "attribution": "Nature Human Behaviour",
+      "sourceUrl": "https://doi.org/10.1038/s41562-026-02553-x",
+      "categories": [
+        "application-analysis",
+        "behavioral-science"
+      ],
+      "sourcePublishedAt": "2026-08-24",
+      "dateAdded": "2026-09-08"
+    },
+    {
+      "itemId": "research-038552d7c1868eaa9a2a",
+      "streamTitle": "Paying attention to an itch changed the body’s inflammatory response",
+      "streamSummary": "Three preregistered experiments found that healthy volunteers had smaller and faster-resolving histamine-induced skin inflammation when they focused on sensations at the irritated site instead of distracting themselves. Follow-up tests suggested both sensory feedback and parasympathetic activity may contribute. The result is a striking example of cognition affecting physiology, but it is still a small, short-term laboratory model of acute skin inflammation and should not be generalized to chronic disease or infection.",
+      "attribution": "Mizrachi, Rottem & Rozenkrantz — Nature Human Behaviour",
+      "sourceUrl": "https://doi.org/10.1038/s41562-026-02541-1",
+      "categories": [
+        "behavioral-science",
+        "application-analysis"
+      ],
+      "sourcePublishedAt": "2026-08-17",
+      "dateAdded": "2026-09-08"
+    },
     {
       "itemId": "research-aeb89ac07206dde0348f",
       "streamTitle": "Australia’s R U OK? campaign improved well-being, but not detectable short-run help-seeking",
@@ -264,59 +316,6 @@
       ],
       "sourcePublishedAt": null,
       "dateAdded": "2026-09-06"
-    },
-    {
-      "itemId": "research-1133040ab8629d15e8f1",
-      "streamTitle": "Causal discovery can help explain an LLM simulation before it explains society",
-      "streamSummary": "CAMO is a new framework for tracing macro-level outcomes in LLM-agent simulations back to smaller sets of simulated mechanisms. It extracts factors from simulation records, learns compact explanatory graphs, and uses simulator-internal counterfactuals to probe ambiguous relationships. That is useful for auditing complex agent systems and identifying model-internal levers. The critical boundary is external validity: a causal pathway recovered inside a simulator is evidence about how that simulator works, not proof that humans follow the same pathway.",
-      "attribution": "Yu et al. — Findings of ACL 2026",
-      "sourceUrl": "https://doi.org/10.18653/v1/2026.findings-acl.1224",
-      "categories": [
-        "technology-modeling",
-        "application-analysis"
-      ],
-      "sourcePublishedAt": null,
-      "dateAdded": "2026-09-06"
-    },
-    {
-      "itemId": "research-49362a751aa3434692aa",
-      "streamTitle": "Pacific leaders’ missile-test response shows why reassurance is part of strategic signaling",
-      "streamSummary": "Pacific Islands Forum leaders expressed concern over China’s ICBM test and called for greater transparency and at least 24 hours’ advance notification, while Nauru dissented and Beijing rejected the criticism. The episode shows that a military demonstration communicates more than capability: warning, consultation, predictability, and perceived respect shape how regional audiences interpret it. Public concern is observable, but the episode does not yet establish a durable change in alignment, deterrence, or security behavior.",
-      "attribution": "Reuters",
-      "sourceUrl": "https://www.reuters.com/world/china/pacific-summit-backs-concerns-over-china-missile-test-despite-nauru-dissent-2026-09-04",
-      "categories": [
-        "operations-strategy",
-        "application-analysis"
-      ],
-      "sourcePublishedAt": "2026-09-04",
-      "dateAdded": "2026-09-05"
-    },
-    {
-      "itemId": "research-860d77b9c226ac388c1f",
-      "streamTitle": "Movement and environmental feedback can reverse cooperation dynamics",
-      "streamSummary": "A mathematical public-goods model shows how spatial movement can reverse seemingly intuitive cooperation dynamics. Under some conditions, diffusion increased cooperation and public-good availability, while strong movement of cooperators toward resource-rich areas reduced both cooperation and environmental quality. The result is theoretical rather than a human behavioral estimate, but it illustrates an important systems lesson: changing where people cluster, connect, or move can alter the incentives and feedback that determine collective outcomes.",
-      "attribution": "Zhao et al. — Bulletin of Mathematical Biology",
-      "sourceUrl": "https://doi.org/10.1007/s11538-026-01733-0",
-      "categories": [
-        "technology-modeling",
-        "application-analysis"
-      ],
-      "sourcePublishedAt": "2026-09-03",
-      "dateAdded": "2026-09-05"
-    },
-    {
-      "itemId": "research-7d8ea4085ee614afb8ec",
-      "streamTitle": "Rich LLM digital twins still predicted individual human behavior weakly",
-      "streamSummary": "A Science Advances mega-study built individualized LLM digital twins from more than 500 prior answers per person and tested them across 19 preregistered studies, 164 outcomes, and 1,784 participants. Average twin–human prediction correlations were only about .20, with systematic problems including stereotyping, ideological bias, hyper-rationality, and overly compressed responses. The study tests current approaches rather than placing a ceiling on future systems, but it is strong evidence that rich personal context and fluent personas do not automatically produce reliable individual behavioral prediction.",
-      "attribution": "Peng et al. — Science Advances",
-      "sourceUrl": "https://doi.org/10.1126/sciadv.aeh8260",
-      "categories": [
-        "technology-modeling",
-        "application-analysis",
-        "behavioral-science"
-      ],
-      "sourcePublishedAt": "2026-09-02",
-      "dateAdded": "2026-09-05"
     }
   ],
   "nextPage": "public_feed_pages/page-0017.json"
