@@ -2,326 +2,324 @@
   "schemaVersion": "psywerx-public-research-stream-v1",
   "page": 8,
   "pageSize": 24,
-  "totalItems": 406,
+  "totalItems": 435,
   "items": [
     {
-      "itemId": "research-0e0be59ccb4489e92af8",
-      "streamTitle": "U.S. concern about AI safety is rising, with 73% prioritizing responsible development over maintaining the national lead",
-      "streamSummary": "A Reuters/Ipsos poll of 1,277 U.S. adults found that 73% think AI companies are not doing enough to prevent serious harm, while 39% now view AI’s societal impact negatively—the highest share in the poll series since March. Fifty-five percent said slowing AI development would be good, and 73% prioritized safe and responsible development over keeping the United States ahead. These are self-reported attitudes rather than observed behavior or support for a specific policy, but they show a strong current safety-oriented public climate.",
-      "attribution": "Reuters / Ipsos",
-      "sourceUrl": "https://www.reuters.com/world/three-out-four-americans-say-ai-firms-not-doing-enough-prevent-disaster-2026-09-22",
+      "itemId": "research-2bdcae1544b678eac72c",
+      "streamTitle": "Food-package claims often highlighted one nutrient while missing overall quality",
+      "streamSummary": "Products with claims sometimes had more favorable profiles in aggregate, but the pattern varied. Foods with trans-fat claims and beverages with sodium claims often scored worse than peers without them; many claim-bearing products still counted as less healthy overall. The study measured products, not how consumers interpreted labels or changed purchases. A salient attribute can be an imperfect proxy for the full outcome. Communication and evaluation should distinguish the specific true claim from the broader inference audiences may draw; behavioral effects need separate testing.",
+      "attribution": "Zhou et al. — Nature Food",
+      "sourceUrl": "https://doi.org/10.1038/s43016-026-01435-9",
+      "categories": [
+        "application-analysis",
+        "behavioral-science"
+      ],
+      "sourcePublishedAt": "2026-09-24",
+      "dateAdded": "2026-09-25"
+    },
+    {
+      "itemId": "research-08498f5f513d0af2321f",
+      "streamTitle": "Moral disengagement preceded self-interested choices in costly environmental tradeoffs",
+      "streamSummary": "Positive beliefs about greed and moral disengagement were associated with more self-interested, environmentally harmful choices. Disengagement was relatively stable before and after a choice, and shaped emotional reactions. Several studies were correlational, so the paper does not establish that changing disengagement would cause a different real-world choice. The same stated environmental concern can coexist with different norms about self-interest and different emotional responses. Assess these factors alongside actual costs; avoid assuming a post-choice justification is the only mechanism or that a vignette predicts sustained behavior.",
+      "attribution": "Yakut & Laurent — Communications Sustainability",
+      "sourceUrl": "https://doi.org/10.1038/s44458-026-00161-4",
       "categories": [
         "behavioral-science",
+        "application-analysis"
+      ],
+      "sourcePublishedAt": "2026-09-24",
+      "dateAdded": "2026-09-25"
+    },
+    {
+      "itemId": "research-05a6c43d4f54ea9d985b",
+      "streamTitle": "Spoken claims remained harder for AI to verify than the same claims in text",
+      "streamSummary": "Mazumder and colleagues built VeriSpeak, a benchmark of 3,879 spoken claims about temporal, geographic, and relational facts, balanced between true and false labels. They tested large audio-language models with retrieval and explicit claim-evidence reasoning. The authors report a persistent text-to-speech performance gap. Retrieval alone gave limited gains because models sometimes conflated evidence with the spoken claim; retrieval plus explicit reasoning performed better, with one reasoning-tuned model reaching 86.1% accuracy. The benchmark uses controlled factual claims, so these results do not establish reliability on noisy political speeches or real-time podcasts. Audio fact checking needs more than transcription plus retrieval. Test claim extraction, evidence comparison, and speech-specific errors separately before using a system to label live influence content.",
+      "attribution": "Mazumder et al. — arXiv preprint",
+      "sourceUrl": "https://arxiv.org/abs/2609.30227",
+      "categories": [
+        "technology-modeling",
+        "application-analysis"
+      ],
+      "sourcePublishedAt": "2026-09-24",
+      "dateAdded": "2026-09-25"
+    },
+    {
+      "itemId": "research-0501bc0add4a756ba45d",
+      "streamTitle": "Video-agent hallucination depended strongly on whether the right moment was retrieved",
+      "streamSummary": "In those tested systems, grounding had roughly four times the downstream causal impact of corrupted visual observations. Finding the right region mattered more than tight temporal overlap, and wrong evidence caused more harm than missing evidence. Stage benchmark scores did not consistently predict these cascading effects. The preprint's controlled interventions do not show the same proportions for every video system or field workflow. For video-based incident analysis, log which segment a model used and audit retrieval failures separately from final answer quality. A high aggregate score can hide a failure in the evidence path.",
+      "attribution": "Gong et al. — arXiv preprint",
+      "sourceUrl": "https://arxiv.org/abs/2609.28991",
+      "categories": [
         "application-analysis",
+        "technology-modeling"
+      ],
+      "sourcePublishedAt": "2026-09-24",
+      "dateAdded": "2026-09-25"
+    },
+    {
+      "itemId": "research-fa91387249cc32544604",
+      "streamTitle": "Groups improved only when people could tell which peers were actually performing well",
+      "streamSummary": "An online immersive experiment with 621 participants found that groups did not automatically outperform individuals in a dynamic tracking task. Groups performed better only when members could see others’ payoffs and selectively weight cues from peers who were doing well; location-only social information could even hurt performance, especially in fast-changing conditions. Movement models and agent-based simulations supported the same mechanism. The experiment did not show groups surpassing the best individual, and the task is artificial, but it offers a concrete lesson for collective decision systems: information quality and selective weighting matter more than social connectivity alone.",
+      "attribution": "Chirkov et al. — Nature Communications",
+      "sourceUrl": "https://doi.org/10.1038/s41467-026-77762-z",
+      "categories": [
+        "behavioral-science",
+        "technology-modeling"
+      ],
+      "sourcePublishedAt": "2026-09-23",
+      "dateAdded": "2026-09-24"
+    },
+    {
+      "itemId": "research-d738e4104f0b26410c6a",
+      "streamTitle": "Political polarization was tied much more strongly to electric-vehicle adoption than to rooftop solar in Germany",
+      "streamSummary": "A new Nature Sustainability study combined three survey waves with clean-technology and election records from more than 10,000 German municipalities. AfD supporters were much less likely to report electric-vehicle adoption or intent than Green-party supporters, while the partisan gap for rooftop solar was smaller. Municipality panel models likewise linked rising AfD support to lower subsequent adoption. An instrumental-variable analysis using wolf attacks as a source of vote-share variation pointed in the same direction, but its estimates apply to a specific subset of municipalities and were sensitive to some restrictions. The study suggests technologies can acquire different political meanings even within the same climate domain.",
+      "attribution": "Reining et al. — Nature Sustainability",
+      "sourceUrl": "https://doi.org/10.1038/s41893-026-01935-3",
+      "categories": [
+        "behavioral-science",
+        "application-analysis"
+      ],
+      "sourcePublishedAt": "2026-09-23",
+      "dateAdded": "2026-09-24"
+    },
+    {
+      "itemId": "research-c84c6174981df47ddc0f",
+      "streamTitle": "A low-barrier RAG setup made a mainstream LLM confidently present fringe science as authoritative",
+      "streamSummary": "Researchers built two Custom GPTs around GPT-5.1 and supplied each with ten fringe physics papers plus instructions to treat that material as authoritative. Without retraining or changing model weights, the resulting systems produced fluent, detailed answers that domain experts often judged seriously misleading, while the unmodified model stayed closer to mainstream science. The study is a deliberate demonstration in two narrow physics domains, not a prevalence estimate for deployed RAG systems. Its broader importance is provenance: a polished answer can remain linguistically convincing even when the retrieval corpus and instructions have quietly redirected what the model treats as knowledge.",
+      "attribution": "Collins et al. — AI and Ethics",
+      "sourceUrl": "https://doi.org/10.1007/s43681-026-01391-x",
+      "categories": [
+        "technology-modeling",
+        "application-analysis"
+      ],
+      "sourcePublishedAt": "2026-09-23",
+      "dateAdded": "2026-09-24"
+    },
+    {
+      "itemId": "research-ad33d869c3a1bc06e434",
+      "streamTitle": "First-time parents’ emotional dynamics changed with who was on leave—and with whether partners were together",
+      "streamSummary": "A Danish experience-sampling study tracked first-time parents’ emotions six times daily across maternity- and paternity-leave periods. Partners who were physically together showed synchronized valence and arousal, while randomly paired couples did not. Regulation patterns also changed with leave roles: arousal had a stronger regulatory role for the parent not on leave, and mothers’ responses to fathers differed between maternity and paternity leave. Substantial couple-level variation remained. The study is observational, so leave arrangements cannot be treated as experimentally causal, but it shows why close relationships are better modeled as interacting systems than as two isolated individuals.",
+      "attribution": "Cox et al. — Communications Psychology",
+      "sourceUrl": "https://doi.org/10.1038/s44271-026-00536-2",
+      "categories": [
+        "behavioral-science",
+        "application-analysis"
+      ],
+      "sourcePublishedAt": "2026-09-23",
+      "dateAdded": "2026-09-24"
+    },
+    {
+      "itemId": "research-54ee3033351080d2605a",
+      "streamTitle": "Banking records showed signs of severe financial instability years before many abuse disclosures",
+      "streamSummary": "A Nature study examined up to seven years of banking records for 5,428 women who disclosed domestic or financial abuse and 15,602 matched controls. Victim-survivors had lower savings and credit scores, more missed payments and debt pressure, and distinctive changes in spending and account management; many differences appeared years before disclosure. The study is observational, self-disclosure may select more severe cases, and some controls may also have experienced undisclosed abuse. The findings show the value of longitudinal administrative data for understanding vulnerability, but they do not justify turning transaction patterns directly into an automated abuse label.",
+      "attribution": "Trendl et al. — Nature",
+      "sourceUrl": "https://doi.org/10.1038/s41586-026-11049-7",
+      "categories": [
+        "application-analysis",
+        "behavioral-science"
+      ],
+      "sourcePublishedAt": "2026-09-23",
+      "dateAdded": "2026-09-24"
+    },
+    {
+      "itemId": "research-51abf747506a8c1ab695",
+      "streamTitle": "A Special Operations Chinook landed and replenished on an autonomous barge in a first publicly disclosed demonstration",
+      "streamSummary": "Naval News reports that a U.S. Army 160th Special Operations Aviation Regiment MH-47G Chinook landed and conducted replenishment operations from an autonomous Sea Machines barge. The demonstration suggests a potential way to create distributed maritime refuel or logistics nodes without a conventional crewed ship. Public reporting does not provide sea-state limits, operator-intervention rates, safety margins, throughput, or contested-environment performance, so it should not be treated as proof of operational readiness. The real value of the concept will depend on whether autonomous logistics can remain reliable, survivable, and recoverable when communications and operating conditions degrade.",
+      "attribution": "Sea Machines Robotics — via Naval News",
+      "sourceUrl": "https://www.navalnews.com/naval-news/2026/09/u-s-special-forces-operate-helicopter-from-autonomous-barge-for-the-first-time",
+      "categories": [
+        "operations-strategy",
+        "technology-modeling"
+      ],
+      "sourcePublishedAt": "2026-09-23",
+      "dateAdded": "2026-09-24"
+    },
+    {
+      "itemId": "research-18e9cd5132b57aacecc0",
+      "streamTitle": "A new behavioral-research protocol combines DAGs and nonlinear models to move from “did it work?” toward “how did it work?”",
+      "streamSummary": "BriDGE is a new methodological protocol for analyzing mechanisms inside randomized behavioral experiments. It combines explicit DAG-based assumptions, causal-discovery tools, generalized additive models for nonlinear pathways, mediation analysis, bootstrapping, sensitivity checks, and simulation-based power planning. Simulation and semi-synthetic tests show that the workflow can recover complex pathways under known data-generating conditions. The authors also emphasize the key limitation: in real trials, the true causal graph is unknown, so causal discovery cannot validate itself. The framework is therefore best used to make mechanism assumptions and tests more explicit—not to replace identification logic with an algorithm.",
+      "attribution": "Veltri & Banerjee — Behavior Research Methods",
+      "sourceUrl": "https://doi.org/10.3758/s13428-026-03146-2",
+      "categories": [
+        "application-analysis",
+        "behavioral-science",
+        "technology-modeling"
+      ],
+      "sourcePublishedAt": "2026-09-23",
+      "dateAdded": "2026-09-24"
+    },
+    {
+      "itemId": "research-791a147a766dd5fdc026",
+      "streamTitle": "The UK and U.S. paired a new AI-autonomy partnership with the first torpedo firing from a British uncrewed undersea vehicle",
+      "streamSummary": "The UK and United States announced a new defense AI and autonomy partnership between their rapid-delivery organizations, aimed at producing trusted, interoperable capabilities for areas such as critical-infrastructure protection. The announcement came alongside a concrete technical milestone: a British 12-metre Excalibur uncrewed undersea vehicle fired a U.S.-Australian heavyweight torpedo in UK waters, reportedly the first such launch by either country from an uncrewed underwater vessel. The demonstration proves integration and firing in a test, not combat effectiveness. The deeper issue is allied interoperability across software, autonomy, weapons, command, and safety controls.",
+      "attribution": "UK Prime Minister’s Office / Ministry of Defence",
+      "sourceUrl": "https://www.gov.uk/government/news/prime-minister-drives-global-work-on-artificial-intelligence-at-unga-as-uk-and-us-make-history-with-firing-from-undersea-drone",
+      "categories": [
+        "operations-strategy",
         "technology-modeling"
       ],
       "sourcePublishedAt": "2026-09-22",
-      "dateAdded": "2026-09-22"
+      "dateAdded": "2026-09-24"
     },
     {
-      "itemId": "research-e5aad6f5a9d372a486c7",
-      "streamTitle": "CoGrid and Multi-User Gymnasium bridge AI multi-agent simulations with live human experiments",
-      "streamSummary": "A new Behavior Research Methods paper releases CoGrid and Multi-User Gymnasium, two open-source tools designed to connect multi-agent AI simulation with browser-based human experiments. CoGrid provides customizable PettingZoo-compatible environments with NumPy and JAX backends, while MUG adds participant interfaces, matchmaking, data capture, AI integration, and multiplayer networking. The authors demonstrate both human–AI and human–human use cases. This is enabling infrastructure rather than proof of better scientific validity, and the current system is centered on grid environments and does not yet support explicit participant communication.",
-      "attribution": "McDonald & Gonzalez — Behavior Research Methods",
-      "sourceUrl": "https://doi.org/10.3758/s13428-026-03078-x",
-      "categories": [
-        "technology-modeling",
-        "behavioral-science",
-        "application-analysis"
-      ],
-      "sourcePublishedAt": "2026-09-21",
-      "dateAdded": "2026-09-22"
-    },
-    {
-      "itemId": "research-a154b779a4459b071f0d",
-      "streamTitle": "EU cyber-response machinery is being undermined by states not sharing incident information",
-      "streamSummary": "The European Court of Auditors says the EU’s cybersecurity response is being weakened by poor information sharing between member states. A September 2025 ransomware incident that disrupted several airports is cited as an example: affected countries did not notify the EU cybersecurity agency, and no member state has reported a “large-scale” incident through the relevant mechanism since 2016. The audit points to national-security restrictions and uneven implementation as barriers. It identifies a coordination weakness rather than proving that better reporting would have prevented specific attacks.",
-      "attribution": "European Court of Auditors — via Reuters",
-      "sourceUrl": "https://www.reuters.com/legal/government/poor-data-sharing-undermining-eu-cyber-defences-auditors-say-2026-09-21",
-      "categories": [
-        "operations-strategy",
-        "application-analysis",
-        "technology-modeling"
-      ],
-      "sourcePublishedAt": "2026-09-21",
-      "dateAdded": "2026-09-22"
-    },
-    {
-      "itemId": "research-0973ab7bfc3b32de6bc2",
-      "streamTitle": "Small-world networks of simulated stakeholders surfaced AI risks that single-LLM brainstorming missed",
-      "streamSummary": "A new arXiv preprint connects simulated stakeholder agents in small-world networks to brainstorm AI risks. In a chatbot-companion case, the approach produced risks rated more novel than single-LLM or agentic-LLM brainstorming without lowering plausibility or severity. Eleven human teams seeded with the framework’s outputs also identified more total risks and more systemic, human-computer-interaction, and environmental risks than control teams. The study is early and the human sample is small, but it suggests network structure can be used to broaden AI red-team ideation rather than merely generate more text.",
-      "attribution": "Zhou, Bogucka & Quercia — arXiv",
-      "sourceUrl": "https://arxiv.org/abs/2609.24859",
-      "categories": [
-        "technology-modeling",
-        "application-analysis"
-      ],
-      "sourcePublishedAt": "2026-09-21",
-      "dateAdded": "2026-09-22"
-    },
-    {
-      "itemId": "research-03f0fa2ae5f2ee7a02fd",
-      "streamTitle": "Scale-free networks can support reinforced social contagion under some conditions",
-      "streamSummary": "A new Scientific Reports modeling study tested whether scale-free networks can spread complex contagions that require reinforcement from multiple contacts. Using linear-threshold and leader-follower consensus models on synthetic networks, the authors found that scale-free structures can support reinforced spread under some conditions, with clustering and topology shaping the outcome. This challenges the idea that hub-heavy networks are inherently poor environments for complex contagion. The result is about simulated network dynamics, however, not observed human behavior, so real-world transfer requires empirical validation.",
-      "attribution": "Savari et al. — Scientific Reports",
-      "sourceUrl": "https://doi.org/10.1038/s41598-026-66142-8",
-      "categories": [
-        "behavioral-science",
-        "technology-modeling"
-      ],
-      "sourcePublishedAt": "2026-09-21",
-      "dateAdded": "2026-09-22"
-    },
-    {
-      "itemId": "research-f08e0b0b95f2201e5536",
-      "streamTitle": "A major platform review says recommender effects cannot be separated from user self-selection",
-      "streamSummary": "A new Nature Computational Science review argues that research and public debate often attribute harmful online outcomes too quickly to recommendation algorithms while underestimating users’ own preferences and self-selection. Reviewing both literatures, the authors find that evidence tying algorithmic curation to many problematic outcomes remains inconclusive and call for large-scale experiments that separate algorithmic exposure from what people actively choose. The key implication is a feedback-loop model: users shape what systems learn, systems shape what users see, and users respond again. The paper is a synthesis and research agenda rather than a new causal estimate.",
-      "attribution": "Hosseinmardi et al. — Nature Computational Science",
-      "sourceUrl": "https://doi.org/10.1038/s43588-026-01038-1",
-      "categories": [
-        "technology-modeling",
-        "behavioral-science",
-        "application-analysis"
-      ],
-      "sourcePublishedAt": "2026-09-21",
-      "dateAdded": "2026-09-21"
-    },
-    {
-      "itemId": "research-c9cccab862bc165a0fb9",
-      "streamTitle": "Social behavior’s genetic signals changed with age, reporter, and social context",
-      "streamSummary": "A Nature Human Behaviour study analyzed nearly 500,000 repeated social-behavior measures from 73,321 people and found that genetic associations varied with age, whether the outcome was low prosocial behavior or peer difficulties, and whether parents, teachers, or participants reported it. Common variants explained only about 2–7% of variance, and context-matched polygenic scores performed better but still added little predictive power. The study’s main lesson is measurement: “social behavior” is not one context-free trait. The discovery sample was predominantly European ancestry, which also limits generalization.",
-      "attribution": "de Hoyos et al. — Nature Human Behaviour",
-      "sourceUrl": "https://doi.org/10.1038/s41562-026-02551-z",
-      "categories": [
-        "behavioral-science",
-        "application-analysis"
-      ],
-      "sourcePublishedAt": "2026-09-21",
-      "dateAdded": "2026-09-21"
-    },
-    {
-      "itemId": "research-c097dba0d5de741e5ebe",
-      "streamTitle": "A replication rate has no obvious meaning without a defensible target rate",
-      "streamSummary": "A new Nature Human Behaviour Comment asks a deceptively simple question: if 50% of studies replicate, what should that number be compared with? Mark Rubin evaluates “optimal” and “expected” target replication rates and argues that neither provides a simple universal benchmark. Replication percentages depend on power, the mix of true and null effects, study designs, analytic choices, and how replications are selected and defined. The piece is conceptual rather than a new replication experiment. Its practical lesson is that replication rate should not be treated as a standalone quality score without a defensible model of what rate should have been expected.",
-      "attribution": "Mark Rubin — Nature Human Behaviour",
-      "sourceUrl": "https://doi.org/10.1038/s41562-026-02602-5",
-      "categories": [
-        "application-analysis"
-      ],
-      "sourcePublishedAt": "2026-09-21",
-      "dateAdded": "2026-09-21"
-    },
-    {
-      "itemId": "research-bd312583bbb9a2ec86ef",
-      "streamTitle": "China formally expelled two top generals, turning a months-long investigation into a major command-level personnel change",
-      "streamSummary": "Chinese authorities announced the formal expulsion of former Central Military Commission vice-chairman Zhang Youxia and former Joint Staff chief Liu Zhenli from the Communist Party and military on September 21. The move follows investigations opened in January and their removal from the state CMC in August. State reporting alleges extensive disciplinary, loyalty, and corruption violations; those allegations come from China’s internal disciplinary process. The strategic significance is clear at the personnel level, but the operational effect is not: command turnover may affect continuity, expertise, and incentives, yet it does not by itself demonstrate reduced PLA readiness.",
-      "attribution": "Xinhua / Reuters",
-      "sourceUrl": "https://society.people.com.cn/n1/2026/0921/c1008-40802961.html",
-      "categories": [
-        "operations-strategy",
-        "application-analysis"
-      ],
-      "sourcePublishedAt": "2026-09-21",
-      "dateAdded": "2026-09-21"
-    },
-    {
-      "itemId": "research-acc572485e79c72aaccb",
-      "streamTitle": "An instrumental-variable study estimates that PM2.5 pollution reduces high-skilled research output",
-      "streamSummary": "A Nature Human Behaviour study combined Chinese air-quality data with scholars’ publication records and used an instrumental-variable design to estimate how PM2.5 affects knowledge-work productivity. The authors estimate that each 1 μg/m³ increase in annual PM2.5 reduced publication output by about 0.23%, with larger effects in heavily polluted years and among younger and highly productive scholars. Higher pollution was also associated with fewer working hours, more hospital visits, and weaker collaboration. The design is stronger than a simple correlation, but the causal estimate still depends on instrument validity and should not be assumed to generalize unchanged beyond Chinese academia.",
-      "attribution": "Dong, Qiao & Zhou — Nature Human Behaviour",
-      "sourceUrl": "https://doi.org/10.1038/s41562-026-02576-4",
-      "categories": [
-        "application-analysis",
-        "behavioral-science"
-      ],
-      "sourcePublishedAt": "2026-09-21",
-      "dateAdded": "2026-09-21"
-    },
-    {
-      "itemId": "research-88d089cbed61c52f0df7",
-      "streamTitle": "Generative-AI use was linked to more proactive work behavior through two different workplace experiences",
-      "streamSummary": "A three-wave survey of 380 full-time knowledge workers found that heavier generative-AI use was associated with more self-reported proactive behavior. Two statistical pathways helped explain the relationship: greater flow and lower workplace objectification. Digital literacy strengthened the link between AI use and lower objectification, but did not significantly strengthen the flow pathway. The result is useful for thinking about human-AI work beyond raw productivity, but the study is observational and mostly self-reported. It therefore identifies plausible mechanisms and moderators rather than proving that increasing AI use will cause employees to become more proactive.",
-      "attribution": "Xu et al. — BMC Psychology",
-      "sourceUrl": "https://doi.org/10.1186/s40359-026-05643-7",
-      "categories": [
-        "behavioral-science",
-        "technology-modeling",
-        "application-analysis"
-      ],
-      "sourcePublishedAt": "2026-09-21",
-      "dateAdded": "2026-09-21"
-    },
-    {
-      "itemId": "research-6f9d5fdd51bdeb631898",
-      "streamTitle": "Social norms shifted climate intentions immediately in both directions, but only pro-climate shifts persisted",
-      "streamSummary": "A small EEG experiment exposed 47 Korean university students to experimentally generated peer norms about 113 pro-climate behaviors. Participants moved their stated intentions toward both pro- and anti-climate group opinions immediately, especially when the group differed more from them. One week later, however, the shift remained for pro-climate norms but not anti-climate norms. Stronger personal norms reduced conformity. The study suggests short-term compliance and longer-term internalization may differ, but the sample was small, the peer opinions were synthetic, and the outcome was behavioral intention rather than observed behavior.",
-      "attribution": "Yeon et al. — Current Psychology",
-      "sourceUrl": "https://doi.org/10.1007/s12144-026-10066-z",
-      "categories": [
-        "behavioral-science",
-        "application-analysis"
-      ],
-      "sourcePublishedAt": "2026-09-21",
-      "dateAdded": "2026-09-21"
-    },
-    {
-      "itemId": "research-69e22cacb288713471df",
-      "streamTitle": "A new privacy-risk framework scores machine-learning models by how well common attacks can extract sensitive information",
-      "streamSummary": "A Scientific Reports study proposes a 0–100 privacy-risk score built from three attack families: model inversion, membership inference, and attribute inference. Tested across multiple model architectures and five benchmark datasets, the method reported 89.3% average detection accuracy; deep neural networks had higher mean risk scores than ensemble approaches in the tested setups. The framework offers a practical way to make privacy testing more empirical, but its benchmark scores are not a legal judgment of GDPR compliance and may not transfer directly to a specific production environment. Utility, attack vulnerability, and governance still need separate assessment.",
-      "attribution": "Bing Han — Scientific Reports",
-      "sourceUrl": "https://doi.org/10.1038/s41598-026-71546-7",
-      "categories": [
-        "technology-modeling",
-        "application-analysis"
-      ],
-      "sourcePublishedAt": "2026-09-21",
-      "dateAdded": "2026-09-21"
-    },
-    {
-      "itemId": "research-30998b47277bfed8baa7",
-      "streamTitle": "A Navy practitioner proposal turns cyber data into a mission-focused AI common operational picture",
-      "streamSummary": "A September U.S. Naval Institute Proceedings article proposes an AI-enabled cyber common operational picture that fuses defensive cyber, offensive cyber, sensing, digital emulation, and human-AI decision support into a mission-focused view for naval commanders. The author argues this could translate technical cyber conditions into risks to strike groups, logistics routes, and command nodes. It is a concept, not a validated operational system, and the article itself warns about data manipulation, degraded connectivity, false positives, overreliance on AI, and escalation. The useful test is therefore decision improvement under contested conditions, not dashboard completeness.",
-      "attribution": "Lt. Nathaniel Taylor, U.S. Navy Reserve — Proceedings",
-      "sourceUrl": "https://www.usni.org/magazines/proceedings/2026/september/regain-cyberspace-superiority-ai-enabled-common-operational",
+      "itemId": "research-2efe20468b4d16f41a8e",
+      "streamTitle": "Texas froze data-center permits while regulators audit a project queue larger than five times the state’s record peak demand",
+      "streamSummary": "Texas has halted state permits for data centers until grid and water regulators complete a broader audit of the sector. ERCOT has more than 474 gigawatts of data-center interconnection requests under consideration—over five times the state’s record peak electricity demand—and state officials want projects to document power, water, infrastructure costs, and other impacts before approvals proceed. The 474-gigawatt queue is not a forecast of actual future load; it can include speculative and overlapping projects. The development shows AI infrastructure becoming a coupled policy problem spanning compute growth, grid reliability, water, cost allocation, and local resilience.",
+      "attribution": "Office of the Texas Governor",
+      "sourceUrl": "https://gov.texas.gov/news/post/governor-abbott-directs-tceq-to-halt-data-center-permits",
       "categories": [
         "operations-strategy",
         "technology-modeling",
         "application-analysis"
       ],
-      "sourcePublishedAt": null,
-      "dateAdded": "2026-09-21"
+      "sourcePublishedAt": "2026-09-21",
+      "dateAdded": "2026-09-24"
     },
     {
-      "itemId": "research-3c9dc1757657e8414782",
-      "streamTitle": "U.S.–China AI talks moved from a general agenda to a proposed incident-notification mechanism",
-      "streamSummary": "U.S. and Chinese officials concluded New York talks with a more concrete AI proposal than the agenda reported the day before. Treasury Secretary Scott Bessent said the U.S. proposed a bilateral mechanism for notifying each other about significant AI incidents, alongside a dialogue focused on national security and transparency for Presidents Donald Trump and Xi Jinping to consider. China’s public response remained vague, and no formal mechanism has been agreed. The development is therefore a proposed crisis-management tool, not an implemented safeguard. Its usefulness would depend on notification thresholds, speed, scope, verification, and mutual trust.",
-      "attribution": "Lawder & Slodkowski — Reuters",
-      "sourceUrl": "https://www.reuters.com/business/finance/us-treasurys-bessent-chinas-he-launch-talks-ai-trade-critical-minerals-2026-09-20",
-      "categories": [
-        "operations-strategy",
-        "technology-modeling"
-      ],
-      "sourcePublishedAt": "2026-09-20",
-      "dateAdded": "2026-09-20"
-    },
-    {
-      "itemId": "research-3064458326d07fdb0156",
-      "streamTitle": "Russia’s election became a simultaneous physical, cyber, and narrative contest—but disruption intent remains partly unverified",
-      "streamSummary": "Russia’s September 18–20 parliamentary election coincided with reported cyberattacks on Moscow’s online-voting system and, on September 20, the largest drone attack yet reported on the Moscow region. Russian officials said the cyberattacks were repelled; the drone strikes caused deaths and damaged an oil refinery. Moscow’s mayor said the drone attack was intended to disrupt the vote, while Ukraine had not commented on that attack and Russia did not publicly substantiate its earlier attribution of election cyber interference to Kyiv. The case shows why attack, attribution, intent, operational disruption, and political effect should be assessed separately.",
-      "attribution": "Reuters",
-      "sourceUrl": "https://www.reuters.com/world/europe/russian-election-cast-test-support-ukraine-war-enters-final-day-2026-09-20",
-      "categories": [
-        "operations-strategy",
-        "application-analysis"
-      ],
-      "sourcePublishedAt": "2026-09-20",
-      "dateAdded": "2026-09-20"
-    },
-    {
-      "itemId": "research-c83989dfd06b0f51c18c",
-      "streamTitle": "Psychotherapy outcome models lost much of their discrimination when moved to a different clinic",
-      "streamSummary": "A Scientific Reports study tested psychotherapy-remission prediction across 2,002 patients in eight German outpatient clinics. Models performed modestly within individual clinics, with mean AUC 0.67, but leave-one-clinic-out discrimination fell to about 0.53 and balanced accuracy to 0.52 in held-out clinics—near chance. Probabilistic error changed less, and the same generalization problem appeared with a different regression specification. The study is a strong transportability warning: internal validation can look acceptable while the model loses practical ranking ability in a new setting, even when training data are pooled across several clinics.",
-      "attribution": "Weller et al. — Scientific Reports",
-      "sourceUrl": "https://doi.org/10.1038/s41598-026-70047-x",
-      "categories": [
-        "application-analysis",
-        "technology-modeling"
-      ],
-      "sourcePublishedAt": "2026-09-19",
-      "dateAdded": "2026-09-20"
-    },
-    {
-      "itemId": "research-ad827ab23a333fd91881",
-      "streamTitle": "Adults strategically transmitted useful knowledge in ways younger children did not",
-      "streamSummary": "A new Scientific Reports experiment tested whether cumulative culture benefits from deliberately selecting what another person should learn. Adults preferentially passed along information that helped future learners, and this strategic transmission increased the accumulation of useful discoveries compared with randomly selected information. Younger children could perform the task but did not show the same strong benefit from intentional transmission until about ages 9–10. The study supports a role for higher-order social reasoning in cultural accumulation, but it uses an experimental task rather than a direct test of complex real-world institutions or traditions.",
-      "attribution": "Mackintosh et al. — Scientific Reports",
-      "sourceUrl": "https://doi.org/10.1038/s41598-026-62734-6",
-      "categories": [
-        "behavioral-science",
-        "application-analysis"
-      ],
-      "sourcePublishedAt": "2026-09-19",
-      "dateAdded": "2026-09-20"
-    },
-    {
-      "itemId": "research-a54fe22d509f87b603a5",
-      "streamTitle": "A behavioral avoidance measure moved early in mindfulness treatment and partially tracked anxiety improvement",
-      "streamSummary": "A randomized trial of 81 people with high emotional distress tested whether an eight-week online mindfulness intervention changes experiential avoidance early in treatment. By week 3, participants assigned to mindfulness showed lower distress, anxiety, depression, and both self-reported and reaction-time-based avoidance. Reductions in the behavioral avoidance measure statistically mediated part of the improvement in distress and anxiety, but not depression. The sample was small, and mediation requires assumptions beyond random assignment. The study is useful because it pairs a proposed mechanism with both self-report and behavioral measurement while preserving a meaningful null across outcomes.",
-      "attribution": "Xin et al. — BMC Psychology",
-      "sourceUrl": "https://doi.org/10.1186/s40359-026-05121-0",
-      "categories": [
-        "application-analysis",
-        "behavioral-science"
-      ],
-      "sourcePublishedAt": "2026-09-19",
-      "dateAdded": "2026-09-20"
-    },
-    {
-      "itemId": "research-6dd86d58a1f7cca7d68a",
-      "streamTitle": "Researchers directly manipulated internal LLM representations to create more controllable simulated participants",
-      "streamSummary": "A new npj Artificial Intelligence study moves synthetic-human simulation beyond prompt-only personas. Researchers extracted internal activation-space directions corresponding to 18 early maladaptive schemas and found that projection onto those directions tracked schema-like expression in model outputs. Directly shifting activations along a target direction also increased the corresponding expression. That provides a more mechanistic and controllable way to alter model behavior. It does not show that the internal vectors are equivalent to human psychological traits or that manipulated LLMs will reproduce human experimental responses, so human-validity testing remains a separate requirement.",
-      "attribution": "Zhang et al. — npj Artificial Intelligence",
-      "sourceUrl": "https://doi.org/10.1038/s44387-026-00160-9",
+      "itemId": "research-90e6662377c13381827b",
+      "streamTitle": "DARPA is evaluating autonomous trauma surgery as a progression from component skills to human teaming to independence",
+      "streamSummary": "DARPA has launched a $3.5 million competition for trauma-surgery robotics and held its Industry Day on September 22. The evaluation structure is notable: systems first face component gates for medical knowledge, physical capability, and rapid learning, then separate lanes test collaboration with a human surgeon and independent assessment, planning, and execution. No performance results exist yet; the scored competition is planned for March 2027. The program is therefore not evidence that autonomous surgery is ready. Its immediate value is methodological—a staged TEVV framework that distinguishes prerequisite skills, human-machine teaming, and true independent capability.",
+      "attribution": "DARPA",
+      "sourceUrl": "https://www.darpa.mil/news/2026/darpa-competition-surgical",
       "categories": [
         "technology-modeling",
-        "behavioral-science",
-        "application-analysis"
-      ],
-      "sourcePublishedAt": "2026-09-19",
-      "dateAdded": "2026-09-20"
-    },
-    {
-      "itemId": "research-c2734fc4e17c8bf6db21",
-      "streamTitle": "Action meaning explained brain activity better than low-level visual features across much of cortex",
-      "streamSummary": "A Nature Communications fMRI study compared how well different models explained brain responses while people watched 90 naturalistic action videos. Behavioral judgments about what the action was for and how social it was outperformed models based on objects, scenes, semantic embeddings, gaze, and motion energy across much of cortex. The behaviorally relevant features also explained unique variance in the action-observation network and other regions. The result suggests the brain organizes natural action perception strongly around meaning, but it is representational evidence rather than proof that those features causally determine subsequent behavior.",
-      "attribution": "Han et al. — Nature Communications",
-      "sourceUrl": "https://doi.org/10.1038/s41467-026-76599-w",
-      "categories": [
-        "behavioral-science",
-        "technology-modeling"
-      ],
-      "sourcePublishedAt": "2026-09-17",
-      "dateAdded": "2026-09-20"
-    },
-    {
-      "itemId": "research-0a05aefdf99a99d41796",
-      "streamTitle": "Army leaders are framing AI as a shift in the cognitive burden of command, not simply a way to decide faster",
-      "streamSummary": "At the 2026 Maneuver Warfighter Conference, Army leaders argued that AI will change the commander’s problem from information scarcity to information triage and judgment. Guest expert Kristin Milchanowski suggested interrogating AI outputs with three questions: what should be disregarded, what assumptions is the system making, and what would have to be true for it to be wrong. Army leaders simultaneously warned that electronic warfare can abruptly remove technological support. The framework is practitioner guidance, not a validated decision-aid experiment, but it gives concrete human-performance targets for evaluating AI-enabled command systems.",
-      "attribution": "U.S. Army Maneuver Center of Excellence",
-      "sourceUrl": "https://www.army.mil/article/295444/ai_quantum_could_reshape_command_decisions_but_human_judgment_remains_critical_expert_tells_maneuver_leaders",
-      "categories": [
         "operations-strategy",
-        "technology-modeling",
         "application-analysis"
-      ],
-      "sourcePublishedAt": "2026-09-17",
-      "dateAdded": "2026-09-20"
-    },
-    {
-      "itemId": "research-d76c697965e58247097c",
-      "streamTitle": "The mind may represent complexity as a common quantity across very different kinds of information",
-      "streamSummary": "Across 11 experiments with 1,500 participants, researchers found evidence that people represent complexity in a domain-general way. In reward-transfer tasks, learning tied to complexity generalized across very different inputs, including shapes, dot arrays, melodies, letter strings, mathematical expressions, and tactile forms. The result suggests cognition may track a common quantity related to information complexity rather than treating every domain independently. The experiments demonstrate behavioral transfer, not one confirmed neural mechanism, and they do not imply that all forms of real-world complexity have identical effects on attention, judgment, or performance.",
-      "attribution": "Boger & Firestone — Nature Human Behaviour",
-      "sourceUrl": "https://doi.org/10.1038/s41562-026-02502-8",
-      "categories": [
-        "behavioral-science",
-        "technology-modeling"
       ],
       "sourcePublishedAt": "2026-09-15",
-      "dateAdded": "2026-09-20"
+      "dateAdded": "2026-09-24"
     },
     {
-      "itemId": "research-c65b931d8d6c4cf4cf87",
-      "streamTitle": "A new FCM workflow turns simulated causal dynamics into AI-generated virtual-world scenes",
-      "streamSummary": "A new arXiv paper links fuzzy cognitive maps to LLM and video-generation agents. Users perturb an FCM, the model’s transient dynamics carry it toward an equilibrium, and those input-to-equilibrium transitions become sequenced “if-then” rules that guide an LLM-written script and generated video. The demonstration used a five-node dolphin-and-shark FCM across eight scenes with Gemini 3.1 and Veo 3.1. The approach could make causal simulations easier to inspect or communicate, but the video only visualizes causality encoded in the FCM; it does not independently validate the model’s real-world causal structure.",
-      "attribution": "Panda, Adigun & Kosko — arXiv",
-      "sourceUrl": "https://arxiv.org/abs/2609.14985",
+      "itemId": "research-d96773196ed35d76a653",
+      "streamTitle": "A multi-level school program improved several precursors of adolescent help-seeking, while actual behavior was more mixed",
+      "streamSummary": "A randomized trial with 174 Iranian high-school girls tested a six-session mental-health program built around individual, social, and ecological barriers to seeking help. The intervention group improved over time in life satisfaction, help-seeking intention, recognition of need, perceived social support, and mental-health literacy. Actual help-seeking behavior and coping showed significant group-by-time differences, but their overall between-group effects were not statistically significant. Because the program bundled several components and involved only female adolescents in one national context, the study cannot identify which ingredient drove the gains or how well the results generalize elsewhere.",
+      "attribution": "Zare et al. — Scientific Reports",
+      "sourceUrl": "https://doi.org/10.1038/s41598-026-69628-7",
+      "categories": [
+        "behavioral-science",
+        "application-analysis"
+      ],
+      "sourcePublishedAt": "2026-09-23",
+      "dateAdded": "2026-09-23"
+    },
+    {
+      "itemId": "research-b16c4c0703349835fbcb",
+      "streamTitle": "Rhesus monkeys adjusted decision control in a pattern consistent with metacognitive monitoring",
+      "streamSummary": "A new rhesus-macaque study examined accuracy, difficulty, and response time in a two-choice task. After accounting for difficulty, the monkeys were actually more accurate on faster-response trials, contrary to a simple speed–accuracy tradeoff. A computational model explained the pattern by assuming that a supervisory process weighs the cost of cognitive control against the confidence benefit of investing more effort. The result is consistent with metacognitive regulation outside humans, but it is behavioral and model-based evidence; it does not directly show subjective awareness or identify a specific neural monitoring mechanism.",
+      "attribution": "Lespart et al. — Scientific Reports",
+      "sourceUrl": "https://doi.org/10.1038/s41598-026-68629-w",
+      "categories": [
+        "behavioral-science",
+        "application-analysis"
+      ],
+      "sourcePublishedAt": "2026-09-23",
+      "dateAdded": "2026-09-23"
+    },
+    {
+      "itemId": "research-4c6df09c3a8e5f615c6a",
+      "streamTitle": "The UK is creating a National Centre for Information Defence to detect, attribute, and disrupt hostile-state influence operations",
+      "streamSummary": "The UK government has tasked security chiefs to create a National Centre for Information Defence focused on detecting, attributing, and disrupting hostile-state information attacks. Prime Minister Andy Burnham announced the center in his September 22 UN address, framing disinformation, deepfakes, cyber activity, and AI-enabled manipulation as threats to democratic and social resilience. The announcement establishes a new institutional capability, not evidence that it will reduce influence operations. Key details—including authorities, staffing, performance measures, attribution standards, and how disruption effects will be assessed—have not yet been publicly demonstrated.",
+      "attribution": "UK Prime Minister’s Office — GOV.UK",
+      "sourceUrl": "https://www.gov.uk/government/speeches/pm-speech-at-unga-22-september-2026",
+      "categories": [
+        "operations-strategy",
+        "application-analysis",
+        "technology-modeling"
+      ],
+      "sourcePublishedAt": "2026-09-23",
+      "dateAdded": "2026-09-23"
+    },
+    {
+      "itemId": "research-daf7f4cd412b00596195",
+      "streamTitle": "In simulated crowd control, agent speed mattered far more than the vote-aggregation rule",
+      "streamSummary": "Across 8,010 simulations of crowd-sourced continuous control, agent speed explained much more tracking-error variance than the method used to aggregate participant votes. In the main factorial analysis, speed accounted for 46–97% of variance versus 2–29% for aggregation method, with a median variance ratio of 6.9 to 1. Performance often followed a U-shaped curve because slow agents struggled to recover from delayed corrections while fast agents overshot on stale headings. These are simulation results under specific controller and delay assumptions, not evidence from human crowds or deployed robots.",
+      "attribution": "BongKeun Song — Scientific Reports",
+      "sourceUrl": "https://doi.org/10.1038/s41598-026-72284-6",
       "categories": [
         "technology-modeling",
         "application-analysis"
       ],
-      "sourcePublishedAt": "2026-09-14",
-      "dateAdded": "2026-09-20"
+      "sourcePublishedAt": "2026-09-22",
+      "dateAdded": "2026-09-23"
+    },
+    {
+      "itemId": "research-9563ad1345efa5af5ea6",
+      "streamTitle": "Children reached similar generalizations through different strategies as they got older",
+      "streamSummary": "A study of 84 children aged 4, 6, and 8 compared four common generalization tasks and found that performance improved with age, but the tasks did not clearly behave like one shared ability. In transitive inference, younger children often succeeded without accurate memory for the learned pairs, and computational modeling suggested a value-based reinforcement-learning strategy; 8-year-olds relied more on pair memory. The study therefore shows that the same correct answer can reflect different cognitive processes. Some tasks had floor or ceiling effects, so the degree of cross-task independence remains uncertain.",
+      "attribution": "McClary et al. — Scientific Reports",
+      "sourceUrl": "https://doi.org/10.1038/s41598-026-69464-9",
+      "categories": [
+        "behavioral-science",
+        "application-analysis"
+      ],
+      "sourcePublishedAt": "2026-09-22",
+      "dateAdded": "2026-09-23"
+    },
+    {
+      "itemId": "research-290a441ccf12b467bc20",
+      "streamTitle": "A failed switch plus a cut backup fiber exposed how nominal redundancy can still become a system-level failure",
+      "streamSummary": "A September 21 FAA telecommunications failure delayed or canceled about 9,500 U.S. flights and forced more than 100 diversions after a telecom switch failure was compounded by an accidentally severed fiber line. The disruption was not fully resolved for roughly eight hours. U.S. officials say the replacement air-traffic-control architecture will eliminate single and dual points of failure by providing multiple telecom routes into facilities. That is still a design claim rather than proven reliability. The incident is a clear resilience lesson: backup capacity helps only when the backup does not share or acquire the same failure pathway.",
+      "attribution": "David Shepardson — Reuters",
+      "sourceUrl": "https://www.reuters.com/business/media-telecom/us-says-new-air-traffic-control-system-will-prevent-future-disruptions-2026-09-22",
+      "categories": [
+        "application-analysis",
+        "operations-strategy"
+      ],
+      "sourcePublishedAt": "2026-09-22",
+      "dateAdded": "2026-09-23"
+    },
+    {
+      "itemId": "research-1fd201da6d9b1bcfce97",
+      "streamTitle": "The same formal attention parameter changed across tasks, showing that shared labels do not guarantee comparable measurements",
+      "streamSummary": "Thirty participants completed two visual-attention tasks that were both modeled with the same Theory of Visual Attention framework. Despite the shared theory and parameter definition, estimated processing speed differed between tasks and showed different variability patterns. The authors argue that future model adaptations may make the estimates more compatible, so the result is not a rejection of the theory. It is a measurement warning: a parameter that has the same name and formal interpretation in two models may still be task-dependent. Cross-task comparability should therefore be demonstrated rather than assumed.",
+      "attribution": "Biermeier & Scharlau — Scientific Reports",
+      "sourceUrl": "https://doi.org/10.1038/s41598-026-71598-9",
+      "categories": [
+        "application-analysis",
+        "behavioral-science",
+        "technology-modeling"
+      ],
+      "sourcePublishedAt": "2026-09-22",
+      "dateAdded": "2026-09-23"
+    },
+    {
+      "itemId": "research-d8de49053fca16dcc4b1",
+      "streamTitle": "U.S. and China agreed to formalize an AI-risk dialogue with an incident line",
+      "streamSummary": "U.S. and Chinese officials have moved beyond a proposed AI-safety channel and, according to Reuters, agreed to create a formal dialogue that includes an “incident line” for AI-related safety events. The next senior-level meeting is expected in Shenzhen within about two months. The channel is intended to help address risks such as uncontrollable agents and malicious non-state actors. The agreement is still only an institutional starting point: public details do not yet define what triggers notification, what evidence must be shared, how quickly either side must respond, or whether the mechanism can reduce escalation in a real crisis.",
+      "attribution": "Reuters",
+      "sourceUrl": "https://www.reuters.com/world/asia-pacific/us-china-meet-again-ai-safety-two-months-shenzhen-bessent-says-2026-09-21",
+      "categories": [
+        "operations-strategy",
+        "technology-modeling"
+      ],
+      "sourcePublishedAt": "2026-09-21",
+      "dateAdded": "2026-09-23"
+    },
+    {
+      "itemId": "research-88f7d50d157dd040121e",
+      "streamTitle": "AI-assisted auditors found more problems—but also became more reliant on the AI doing the auditing",
+      "streamSummary": "A new preprint introduces Human-Agent Audit Collaboration, a workflow for dividing generative-AI auditing between people and AI agents. In a study with 71 auditors evaluating conversational shopping agents, AI assistance increased attack success and broadened exploration, but it also shaped what auditors tried next and increased reliance on AI-generated assessments and reports. Interviews with Responsible AI practitioners highlighted the need for visible coverage, reproducible attack paths, and evaluation of the auditing agents themselves. The study is still a preprint and covers one domain, but it shows that AI-assisted auditing can introduce its own human-reliance risks.",
+      "attribution": "Park et al. — arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2609.24986",
+      "categories": [
+        "technology-modeling",
+        "application-analysis"
+      ],
+      "sourcePublishedAt": "2026-09-21",
+      "dateAdded": "2026-09-23"
+    },
+    {
+      "itemId": "research-464b71285e9d56031b72",
+      "streamTitle": "Agentic-AI security testing is concentrated on single-agent attacks while long-horizon and human-system risks remain thinner",
+      "streamSummary": "A structured review of 66 agentic-AI security studies found that empirical testing is concentrated on prompt/reasoning, memory, and tool-mediated attacks, usually in single-agent settings. Persistent threats, human–agent boundaries, complex multi-agent systems, systemic failures, and long-horizon risks received less attention in the selected corpus. The review also found inconsistent metrics, limited adaptive-defense evaluation, and incomplete capture of execution state. This does not prove those areas are unstudied everywhere, but it shows why agent security benchmarks need to specify architecture and trust boundaries rather than treating “agent safety” as one generic property.",
+      "attribution": "Baek et al. — arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2609.23894",
+      "categories": [
+        "technology-modeling",
+        "application-analysis"
+      ],
+      "sourcePublishedAt": "2026-09-20",
+      "dateAdded": "2026-09-23"
     }
   ],
   "nextPage": "public_feed_pages/page-0009.json"
