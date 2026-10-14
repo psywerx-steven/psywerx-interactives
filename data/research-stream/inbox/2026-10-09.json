@@ -1,0 +1,231 @@
+{
+  "schemaVersion": "psywerx-research-items-v1",
+  "briefDate": "2026-10-09",
+  "briefType": "daily",
+  "items": [
+    {
+      "sourceItemNumber": 1,
+      "primaryCategory": "behavioral-science",
+      "categories": [
+        "behavioral-science",
+        "application-analysis"
+      ],
+      "questionAndWhy": "How can researchers measure when one person’s behavior actually precedes similar behavior in others, rather than simply occurring at the same time? Fixed observation windows and different individual behavior rates complicate claims about social contagion.",
+      "whatTheyDid": "Straßheim and colleagues built SPREAD, an open-source R framework that compares time-stamped behavioral events against permuted sequences preserving individual event counts. They demonstrated it on 28 laughter triads (84 people, 1,032 laughter events) and 36 eating triads (108 people, 1,427 bite events), assessing response delays from 1 to 60 seconds.",
+      "whatTheyFound": "Laughter showed a relatively rapid response profile, while eating-related responses unfolded more gradually. The framework distinguishes observed clustering from a shuffled baseline and separates dyadic from broader group responses. Its pointwise latency tests do not apply a family-wise correction, and the permutation null does not automatically preserve each person’s own temporal dependence.",
+      "whatItMeans": "This gives PSYWERX a concrete tool for event-level analysis of group interaction without labeling every coincident action contagion. Researchers should still test shared external causes, temporal nonstationarity, and alternative null models before making causal transmission claims.",
+      "streamTitle": "A new open-source method separates behavioral contagion from coincidental timing",
+      "streamSummary": "SPREAD is an open-source R framework that compares observed event timing with shuffled baselines while accounting for how often each individual acts. Researchers demonstrated it using more than 1,000 laughter events and 1,400 eating events in three-person groups. Laughter and eating showed different response-time patterns, illustrating why a single fixed time window can mislead. The method quantifies temporal clustering rather than proving person-to-person causation; its pointwise tests and timestamp permutations also require attention to multiple comparisons and within-person temporal dependence.",
+      "attribution": "Straßheim et al. — Communications Psychology",
+      "sourceUrl": "https://doi.org/10.1038/s44271-026-00538-0",
+      "sourcePublishedAt": "2026-10-08",
+      "sourceKey": "10.1038/s44271-026-00538-0",
+      "sourceVerified": true,
+      "briefDate": "2026-10-09",
+      "briefType": "daily",
+      "streamDecision": "publish"
+    },
+    {
+      "sourceItemNumber": 2,
+      "primaryCategory": "behavioral-science",
+      "categories": [
+        "behavioral-science",
+        "application-analysis"
+      ],
+      "questionAndWhy": "Does exposure to alcohol-related cues predict drinking during ordinary daily life after accounting for companionship, mood, arousal, and other changing circumstances? This helps separate contextual correlates from broad explanations based only on craving or negative emotion.",
+      "whatTheyDid": "Ghadami and colleagues collected repeated smartphone assessments in two independent non-treatment-seeking cohorts: 73 adults with alcohol use disorder and 56 young adults screened for risky drinking. Within-person mixed-effects models considered cue exposure, companions, mood, energetic arousal, and event appraisal together, with lagged sensitivity checks.",
+      "whatTheyFound": "Cue exposure was associated with higher momentary drinking odds in both cohorts, including in lagged and prior-nondrinking sensitivity analyses. Companionship, drinking companions, and energetic arousal also replicated as correlates; negative mood did not consistently do so. Exploratory clusters suggested cue-reactive and socially reactive profiles, not established clinical subtypes.",
+      "whatItMeans": "Context-rich repeated measurement reveals heterogeneity that a single population-average model can conceal. But cue exposure and drinking can still influence one another; these observational results do not establish that removing cues would prevent drinking or that the preliminary profiles predict treatment response.",
+      "streamTitle": "Everyday drinking tracked alcohol cues and social context more consistently than negative mood",
+      "streamSummary": "Two smartphone-sampling cohorts—73 adults with alcohol use disorder and 56 young adults with risky drinking—found that exposure to alcohol cues tracked momentary drinking even after adjusting for companionship, affect, arousal, and event appraisal. Companions and energetic arousal also showed reproducible associations, whereas negative mood did not. Exploratory individual-level analyses suggested different cue-reactive and socially reactive profiles. Because exposure and drinking were observed rather than randomized, the findings identify useful real-world correlates and candidate profiles, not proven intervention mechanisms.",
+      "attribution": "Ghadami et al. — Translational Psychiatry",
+      "sourceUrl": "https://doi.org/10.1038/s41398-026-04506-4",
+      "sourcePublishedAt": "2026-10-08",
+      "sourceKey": "10.1038/s41398-026-04506-4",
+      "sourceVerified": true,
+      "briefDate": "2026-10-09",
+      "briefType": "daily",
+      "streamDecision": "publish"
+    },
+    {
+      "sourceItemNumber": 3,
+      "primaryCategory": "behavioral-science",
+      "categories": [
+        "behavioral-science",
+        "application-analysis"
+      ],
+      "questionAndWhy": "Do forest walks produce objectively detectable positive emotion beyond self-reported relaxation? Many physiological measures reflect arousal rather than whether an experience feels pleasant or unpleasant.",
+      "whatTheyDid": "Sato, Tokuchi, and Yoshikawa used wearable facial electromyography to track muscles associated with expression while participants walked along forest and city routes. First-person videos supported later time-resolved ratings of emotional pleasantness.",
+      "whatTheyFound": "Forest walking was associated with more positive subjective ratings and lower activity in the corrugator muscle, commonly linked to negative emotional expression. Dynamic ratings also covaried with that muscle signal. The study does not isolate which environmental feature caused the difference or establish sustained mental-health benefits.",
+      "whatItMeans": "This illustrates why measurement must align with the construct: an arousal indicator and a valence-sensitive facial signal answer different questions. Ecological sensing is valuable, but route-level contrasts still contain possible contextual confounds.",
+      "streamTitle": "Forest walks produced more positive ratings and a matching facial-muscle signal",
+      "streamSummary": "Researchers used wearable facial electromyography while people walked forest and city routes, then collected moment-by-moment emotional ratings with the aid of first-person video. Forest walking was associated with more positive reported feelings and reduced corrugator-muscle activity, a signal consistent with more positive emotional valence. The correspondence strengthens measurement beyond self-report alone, but it does not isolate trees or greenery as the causal ingredient, nor does it show lasting psychological benefit. The study is a useful example of matching physiological measurement to emotional valence rather than arousal alone.",
+      "attribution": "Sato, Tokuchi & Yoshikawa — Scientific Reports",
+      "sourceUrl": "https://doi.org/10.1038/s41598-026-75115-w",
+      "sourcePublishedAt": "2026-10-08",
+      "sourceKey": "10.1038/s41598-026-75115-w",
+      "sourceVerified": true,
+      "briefDate": "2026-10-09",
+      "briefType": "daily",
+      "streamDecision": "publish"
+    },
+    {
+      "sourceItemNumber": 4,
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling",
+        "application-analysis"
+      ],
+      "questionAndWhy": "Do complicated deep-learning generators actually produce more useful synthetic tabular training data than simple statistical methods, especially when datasets are small? The answer matters for clinical and social-science settings where data are limited.",
+      "whatTheyDid": "Shrivastava preregistered a 2,220-run benchmark of seven generators across eight public datasets sampled from 200 to 20,000 rows, plus four genuinely small clinical datasets. Synthetic data were evaluated by training classifiers and testing them on real records, with controlled tuning and repeated random seeds.",
+      "whatTheyFound": "Across 23 of 24 dataset–deep-model comparisons, no deep generator exceeded the best trivial baseline beyond seed noise; simple baselines won 40 of 49 dataset-size conditions. Contrary to the preregistered prediction, rankings did not become less stable at smaller sample sizes. In 81% of cells the top-method gap was smaller than seed variability.",
+      "whatItMeans": "For PSYWERX data enrichment, generated realism and model complexity should not replace downstream task utility, strong simple baselines, multi-seed results, and validation on genuinely small datasets. This is one preprint benchmark, not a universal impossibility result for deep generators.",
+      "streamTitle": "Simple synthetic-data generators often matched or beat deep models in 2,220 benchmark runs",
+      "streamSummary": "A preregistered benchmark compared simple statistical generators, SMOTE variants, and deep tabular generators over 2,220 runs, including small clinical datasets. Deep methods almost never beat the best simple baseline by more than random-seed noise; the simple baseline won 40 of 49 dataset-size conditions. The authors’ prediction of especially unstable rankings at small samples was not supported. Most top-two method differences were themselves smaller than seed variation. The result is preprint evidence, but it makes a strong case for evaluating synthetic data on actual downstream utility rather than algorithmic sophistication.",
+      "attribution": "Shrivastava — arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2610.03500",
+      "sourcePublishedAt": "2026-10-02",
+      "sourceKey": "10.48550/arxiv.2610.03500",
+      "sourceVerified": true,
+      "briefDate": "2026-10-09",
+      "briefType": "daily",
+      "streamDecision": "publish"
+    },
+    {
+      "sourceItemNumber": 5,
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling",
+        "application-analysis"
+      ],
+      "questionAndWhy": "Why do autonomous coding agents repeatedly edit the same code location and accept incorrect fixes, even when given more reasoning time or multiple attempts? The authors tested whether search diversity and reliable verification can be trained directly.",
+      "whatTheyDid": "Mohsin and colleagues studied repository-repair agents on SWE-bench-style tasks. They used execution feedback to diversify repair search and tested candidates against a reverted code tree, then trained models with supervised and reinforcement objectives using known correct and incorrect repairs.",
+      "whatTheyFound": "On 270 held-out training-excluded issues, pass@1 increased from 31.9% to 43.0% after the training stages; pass@8 reached 60.7%, and verifier precision rose from 26.8% to 41.7%. False acceptance was more than halved. Performance varied across out-of-distribution suites, and these are benchmark—not production—results.",
+      "whatItMeans": "Testing a patch with a test written by the same agent can reinforce mistakes. Externalized evidence, genuine counterexamples, and verifier quality deserve their own metrics instead of assuming that more candidate patches mean more reliable software.",
+      "streamTitle": "Training coding agents to verify their own fixes improved repair success and reduced false acceptance",
+      "streamSummary": "A preprint on autonomous software-repair agents found that repeated attempts often searched the same locations and self-written tests accepted incorrect patches. The researchers trained agents to diversify edits and verify fixes against stronger labeled counterexamples. On 270 held-out issues, single-attempt resolution rose from 31.9% to 43.0%, eight-attempt success reached 60.7%, and verifier precision improved from 26.8% to 41.7%. These are benchmark results with uneven transfer across test suites, but they show why verification quality should be measured separately from the number of generated fixes.",
+      "attribution": "Mohsin et al. — arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2610.03984",
+      "sourcePublishedAt": "2026-10-02",
+      "sourceKey": "10.48550/arxiv.2610.03984",
+      "sourceVerified": true,
+      "briefDate": "2026-10-09",
+      "briefType": "daily",
+      "streamDecision": "publish"
+    },
+    {
+      "sourceItemNumber": 6,
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling",
+        "operations-strategy",
+        "application-analysis"
+      ],
+      "questionAndWhy": "Can frontier AI help defenders find and repair vulnerabilities in critical infrastructure and open-source software without creating another flood of unverified findings? The key uncertainty is whether discovery translates into safe remediation.",
+      "whatTheyDid": "On October 8, Anthropic launched its Cyber Mission with a Critical Infrastructure Defense Program providing models, engineers, and threat research through industrial-security partners. It also introduced OSS Scanner, a free recurring vulnerability-scanning offer for participating open-source projects.",
+      "whatTheyFound": "The launch creates new programs and partner workflows, not a measured reduction in attacks or outages. Anthropic explicitly says finding vulnerabilities has become easier than verifying, prioritizing, and fixing them. Industrial systems often cannot be casually patched without disrupting operations.",
+      "whatItMeans": "This is a significant deployment and governance development. The useful metrics are confirmed exploitable findings, maintainer workload, time to safe repair, regression rates, and residual system risk—not the number of AI-generated bug reports.",
+      "streamTitle": "Anthropic launched critical-infrastructure and open-source cyber programs, but remediation remains the test",
+      "streamSummary": "Anthropic announced a Cyber Mission that pairs frontier AI models and on-site engineers with critical-infrastructure security providers, while offering free recurring AI vulnerability scans to participating open-source projects. The initiative targets electricity, water, transport, government systems, and shared software. It is a real program launch, not evidence that incident rates have fallen. Anthropic itself emphasizes that identifying flaws can be easier than verifying and safely fixing them, particularly in industrial environments that cannot be taken offline casually. The next meaningful outcomes are validated repairs, false-report burden, and reduced operational risk.",
+      "attribution": "Anthropic — Cyber Mission announcement",
+      "sourceUrl": "https://www.anthropic.com/news/anthropic-cyber-mission",
+      "sourcePublishedAt": "2026-10-08",
+      "sourceKey": "https://www.anthropic.com/news/anthropic-cyber-mission",
+      "sourceVerified": true,
+      "briefDate": "2026-10-09",
+      "briefType": "daily",
+      "streamDecision": "publish"
+    },
+    {
+      "sourceItemNumber": 7,
+      "primaryCategory": "operations-strategy",
+      "categories": [
+        "operations-strategy",
+        "technology-modeling",
+        "application-analysis"
+      ],
+      "questionAndWhy": "Can a multinational fleet of uncrewed maritime systems be integrated into one persistent sensing architecture across NATO operating areas, particularly the North Atlantic and Arctic?",
+      "whatTheyDid": "NATO published new details on October 8 about Portugal’s REPMUS 2026 exercise (August 31–September 25): more than 3,700 participants, 300 uncrewed systems, 60 R&D companies, and representatives from 36 navies. Task Force X-Arctic specifically assessed a mission-engineering layer and connectivity backbone ahead of a planned Norway trial.",
+      "whatTheyFound": "The exercise established a large multinational integration environment and assessed components intended to connect systems at scale. NATO has not reported public comparative detection performance, network reliability, operator burden, or adversarial resilience. This is new architectural detail on an exercise previously covered from the Royal Navy perspective.",
+      "whatItMeans": "For autonomy transition, the bottleneck is increasingly interoperability and sustainment of a shared mission network rather than whether a single craft can navigate. Norway’s follow-on trial provides a concrete opportunity to look for operational evidence.",
+      "streamTitle": "NATO reported 300 uncrewed systems at REPMUS and advanced its Arctic mission-network trials",
+      "streamSummary": "NATO’s October 8 account of REPMUS 2026 says the Portuguese-led maritime exercise involved more than 3,700 participants, 300 uncrewed systems, 60 research companies, and 36 navies. The new detail is the Task Force X-Arctic work on a common mission-engineering layer and connectivity backbone, ahead of another trial planned in Norway. Earlier accounts emphasized individual anti-submarine demonstrations; this release shows the larger integration architecture. Participation and testing do not establish effective detection or resilient operation under adversarial conditions, for which public comparative metrics remain unavailable.",
+      "attribution": "NATO — REPMUS 2026 report",
+      "sourceUrl": "https://www.nato.int/en/news-and-events/articles/news/2026/10/08/repmus-2026-in-portugal-brings-together-nato-allies-to-test-uncrewed-maritime-systems",
+      "sourcePublishedAt": "2026-10-08",
+      "sourceKey": "https://www.nato.int/en/news-and-events/articles/news/2026/10/08/repmus-2026-in-portugal-brings-together-nato-allies-to-test-uncrewed-maritime-systems",
+      "sourceVerified": true,
+      "briefDate": "2026-10-09",
+      "briefType": "daily",
+      "streamDecision": "publish"
+    },
+    {
+      "sourceItemNumber": 8,
+      "primaryCategory": "operations-strategy",
+      "categories": [
+        "operations-strategy",
+        "application-analysis"
+      ],
+      "questionAndWhy": "How does NATO sustain nuclear deterrence readiness while communicating that a recurring exercise is routine rather than a new escalation? Exercise signaling and demonstrated capability are not identical.",
+      "whatTheyDid": "NATO announced on October 8 that Steadfast Noon, its annual nuclear deterrence exercise, will begin October 13 in Italy with participation from 17 Allied nations. The exercise is intended to test procedures and readiness, does not use live nuclear weapons, and is described by NATO as long planned and not aimed at a particular country.",
+      "whatTheyFound": "The confirmed development is scheduling and scale, not a finding that nuclear forces are more effective or a demonstrated adversary response. Public officials have described the exercise as routine; interpretations of its deterrent effect remain unmeasured.",
+      "whatItMeans": "This is a clean case for separating action, declared signal, adversary interpretation, and actual deterrence. Analysts should not infer a change in opponent behavior simply from a visible readiness exercise.",
+      "streamTitle": "NATO scheduled its annual nuclear-readiness exercise with 17 nations and no live weapons",
+      "streamSummary": "NATO announced that Steadfast Noon will begin October 13 in Italy with 17 participating countries. The recurring exercise tests procedures supporting the Alliance’s nuclear deterrence posture and does not involve live nuclear weapons. NATO says it is planned in advance, unrelated to any particular current event, and not directed against a specific country. The announcement is evidence of a readiness and signaling activity, not proof of improved deterrence or a measured change in Russian behavior. It illustrates why operational exercises, declared messages, external interpretations, and strategic effects must be evaluated separately.",
+      "attribution": "NATO — Steadfast Noon announcement",
+      "sourceUrl": "https://www.nato.int/en/news-and-events/articles/news/2026/10/08/nato-holds-annual-nuclear-exercise-steadfast-noon",
+      "sourcePublishedAt": "2026-10-08",
+      "sourceKey": "https://www.nato.int/en/news-and-events/articles/news/2026/10/08/nato-holds-annual-nuclear-exercise-steadfast-noon",
+      "sourceVerified": true,
+      "briefDate": "2026-10-09",
+      "briefType": "daily",
+      "streamDecision": "publish"
+    },
+    {
+      "sourceItemNumber": 9,
+      "primaryCategory": "application-analysis",
+      "categories": [
+        "application-analysis",
+        "technology-modeling",
+        "operations-strategy"
+      ],
+      "questionAndWhy": "Are national health-technology assessment rules equipped to evaluate generative AI systems whose outputs vary, adapt, and change after deployment?",
+      "whatTheyDid": "Van Kessel and colleagues compared 56 evidence-generation guidance documents from six countries. They assessed expectations for clinical effectiveness, cost-effectiveness, social and equity effects, and uncertainty management for health AI.",
+      "whatTheyFound": "Guidelines generally favor randomized trials and cost-effectiveness analysis while increasingly acknowledging real-world and alternative designs. However, they provide little specific direction for stochastic outputs, model updates, nondeterminism, or adaptive learning. This is a comparative policy analysis, not a trial showing which governance approach improves safety.",
+      "whatItMeans": "PSYWERX evaluations should make model version, repeat-run variation, change control, external validity, equity, and post-deployment monitoring explicit. Evidence standards designed for a static intervention can mischaracterize a changing AI system.",
+      "streamTitle": "Six-country review found health-AI assessment rules poorly address generative systems that change over time",
+      "streamSummary": "A comparison of 56 health-technology assessment documents across six countries found that randomized trials and cost-effectiveness studies remain central, with growing acceptance of real-world evidence. Yet current guidance often lacks specific methods for evaluating generative AI whose responses vary between runs or whose behavior changes after updates. The study is a policy-analysis review rather than a test of regulatory effectiveness. Its practical implication is that validation should cover model versions, stochastic variability, real-world performance, equity, and continuous monitoring—not just a one-time average accuracy estimate.",
+      "attribution": "van Kessel et al. — npj Digital Medicine",
+      "sourceUrl": "https://doi.org/10.1038/s41746-026-03365-z",
+      "sourcePublishedAt": "2026-10-08",
+      "sourceKey": "10.1038/s41746-026-03365-z",
+      "sourceVerified": true,
+      "briefDate": "2026-10-09",
+      "briefType": "daily",
+      "streamDecision": "publish"
+    },
+    {
+      "sourceItemNumber": 10,
+      "primaryCategory": "application-analysis",
+      "categories": [
+        "application-analysis",
+        "behavioral-science",
+        "technology-modeling"
+      ],
+      "questionAndWhy": "What diagnostic sensitivity and specificity do people consider minimally acceptable from AI systems, and are those thresholds different for people with prior serious illness?",
+      "whatTheyDid": "Yu and colleagues surveyed 1,222 members of the general public and 106 long-term lung-cancer survivors. Respondents specified acceptable missed cases per 100 people with disease and false alarms per 100 without disease; the researchers converted these to minimum acceptable sensitivity and specificity.",
+      "whatTheyFound": "Across 1,328 respondents, mean stated minimum sensitivity and specificity were both about 0.90. Roughly 81.6% wanted sensitivity of at least 0.88, and the same share wanted specificity of at least 0.90. Cancer history was associated with stricter minimum requirements after adjustment. These are stated thresholds, not observed uptake decisions or medically optimal operating points.",
+      "whatItMeans": "System developers and communicators should present false negatives, false positives, prevalence-dependent predictive values, and practical tradeoffs, not accuracy alone. Public preferences are relevant to acceptability but cannot substitute for clinical risk-benefit assessment.",
+      "streamTitle": "Survey respondents wanted roughly 90% sensitivity and specificity from AI disease screening",
+      "streamSummary": "A nationwide survey of 1,222 people plus 106 long-term lung-cancer survivors asked how many missed diagnoses and false alarms they would tolerate from AI-based disease detection. Average minimum acceptable sensitivity and specificity were both near 90%, with respondents who had cancer histories generally demanding stronger performance. These are expressed preferences, not proof that people would reject a particular device or that 90% is clinically sufficient. Screening decisions still depend on disease prevalence, severity, treatment consequences, and the balance between missed cases and unnecessary follow-up.",
+      "attribution": "Yu et al. — npj Digital Medicine",
+      "sourceUrl": "https://doi.org/10.1038/s41746-026-03335-5",
+      "sourcePublishedAt": "2026-10-07",
+      "sourceKey": "10.1038/s41746-026-03335-5",
+      "sourceVerified": true,
+      "briefDate": "2026-10-09",
+      "briefType": "daily",
+      "streamDecision": "publish"
+    }
+  ]
+}
