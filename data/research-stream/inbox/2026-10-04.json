@@ -1,0 +1,206 @@
+{
+  "schemaVersion": "psywerx-research-items-v1",
+  "briefDate": "2026-10-04",
+  "briefType": "daily",
+  "items": [
+    {
+      "sourceItemNumber": 1,
+      "primaryCategory": "behavioral-science",
+      "categories": [
+        "behavioral-science",
+        "technology-modeling",
+        "application-analysis"
+      ],
+      "questionAndWhy": "Can multimodal social-media data predict body satisfaction similarly across cultures?",
+      "whatTheyDid": "Researchers combined image and text features and compared predictive relationships across Western and East Asian participants.",
+      "whatTheyFound": "Predictive features differed across cultural groups rather than forming one invariant body-satisfaction signature.",
+      "whatItMeans": "A model can predict the same label through different cultural signals; transportability requires subgroup-specific validation.",
+      "streamTitle": "Body-satisfaction prediction relied on different multimodal signals across cultures",
+      "streamSummary": "A Scientific Reports study modeled body satisfaction using multimodal social-media information and found that predictive features differed across Western and East Asian participants. The result shows why a single global model can hide culturally specific relationships. Predictive features are not automatically causal mechanisms, and transfer across populations requires direct testing.",
+      "attribution": "Scientific Reports",
+      "sourceUrl": "https://doi.org/10.1038/s41598-026-74109-y",
+      "sourcePublishedAt": null,
+      "sourceKey": "10.1038/s41598-026-74109-y",
+      "sourceVerified": true,
+      "briefDate": "2026-10-04",
+      "briefType": "daily",
+      "streamDecision": "publish"
+    },
+    {
+      "sourceItemNumber": 2,
+      "primaryCategory": "behavioral-science",
+      "categories": [
+        "behavioral-science",
+        "application-analysis"
+      ],
+      "questionAndWhy": "How are supervisor incivility, exhaustion, withdrawal, and power-distance orientation related in the workplace?",
+      "whatTheyDid": "Researchers used a cross-sectional employee survey and structural-equation modeling.",
+      "whatTheyFound": "Incivility correlated with exhaustion and withdrawal, with some relationships stronger among people higher in power-distance orientation.",
+      "whatItMeans": "The model suggests plausible pathways but cannot establish mediation or causal direction from same-time survey data.",
+      "streamTitle": "Supervisor incivility correlated with exhaustion and withdrawal, especially under higher power distance",
+      "streamSummary": "A cross-sectional workplace study linked supervisor incivility with emotional exhaustion and withdrawal and found stronger relationships for some employees higher in power-distance orientation. The modeled mediation is theoretically plausible but not causally identified because variables were measured at the same time. Longitudinal or experimental evidence is needed before treating the pathway as established.",
+      "attribution": "Scientific Reports",
+      "sourceUrl": "https://doi.org/10.1038/s41598-026-74006-4",
+      "sourcePublishedAt": null,
+      "sourceKey": "10.1038/s41598-026-74006-4",
+      "sourceVerified": true,
+      "briefDate": "2026-10-04",
+      "briefType": "daily",
+      "streamDecision": "publish"
+    },
+    {
+      "sourceItemNumber": 3,
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling",
+        "application-analysis"
+      ],
+      "questionAndWhy": "Do elaborate profession-specific personas improve agent accuracy enough to justify their added cost?",
+      "whatTheyDid": "A preprint compared detailed professional role prompts with simpler agent instructions across scientific tasks.",
+      "whatTheyFound": "Detailed profiles increased cost substantially without producing consistent accuracy gains.",
+      "whatItMeans": "Role prompting should earn its complexity empirically; richer persona text is not automatically better agent design.",
+      "streamTitle": "Profession-specific agent personas increased cost without consistently improving accuracy",
+      "streamSummary": "A preprint compared detailed profession-specific agent profiles with simpler instructions. The richer prompts cost roughly 2.2–4.5 times more per successful call in the reported study without delivering a consistent accuracy advantage. The result suggests that task information and tools may matter more than elaborate role-play. Generalization beyond the tested tasks remains uncertain.",
+      "attribution": "Kassis — arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2610.00084",
+      "sourcePublishedAt": null,
+      "sourceKey": "10.48550/arxiv.2610.00084",
+      "sourceVerified": true,
+      "briefDate": "2026-10-04",
+      "briefType": "daily",
+      "streamDecision": "publish"
+    },
+    {
+      "sourceItemNumber": 4,
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling",
+        "application-analysis"
+      ],
+      "questionAndWhy": "Can explicit belief and requirement state improve long-horizon agent reliability?",
+      "whatTheyDid": "PoS represented current beliefs and unresolved task requirements explicitly and tested consistency across long tasks.",
+      "whatTheyFound": "The approach improved reported execution and diagnosis benchmarks by helping agents identify stale or incomplete state.",
+      "whatItMeans": "Persistent agents need managed state rather than relying only on ever-longer conversational context.",
+      "streamTitle": "Explicit belief state improved long-horizon agent consistency in PoS benchmarks",
+      "streamSummary": "PoS is a preprint framework that maintains explicit beliefs and unresolved requirements for long-running agents. Reported benchmarks showed better execution and diagnosis than comparison methods. The result supports structured state management, but remains benchmark evidence; production reliability still depends on how accurately the state representation reflects external reality.",
+      "attribution": "Luo et al. — arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2610.01415",
+      "sourcePublishedAt": null,
+      "sourceKey": "10.48550/arxiv.2610.01415",
+      "sourceVerified": true,
+      "briefDate": "2026-10-04",
+      "briefType": "daily",
+      "streamDecision": "publish"
+    },
+    {
+      "sourceItemNumber": 5,
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling",
+        "application-analysis"
+      ],
+      "questionAndWhy": "How can scientific coding agents be graded against deterministic ground truth rather than model-written explanations?",
+      "whatTheyDid": "CompMat-Bench reproduced computational-materials calculations in advance and created executable grading tasks.",
+      "whatTheyFound": "Agent performance degraded on longer workflows and when methodological guidance was reduced; many failures were scientific rather than merely tool-use errors.",
+      "whatItMeans": "Independent executable ground truth can separate reasoning errors from software-operation errors and should be preferred over self-evaluation.",
+      "streamTitle": "CompMat-Bench used deterministic scientific calculations to expose agent reasoning failures",
+      "streamSummary": "CompMat-Bench created reproducible computational-materials tasks with known numerical ground truth. Scientific agents performed worse on longer workflows and with less guidance, and many failures reflected scientific reasoning rather than simple software misuse. The benchmark is valuable because it grades against independent calculations instead of an agent's own explanation.",
+      "attribution": "Zhang et al. — arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2610.00636",
+      "sourcePublishedAt": null,
+      "sourceKey": "10.48550/arxiv.2610.00636",
+      "sourceVerified": true,
+      "briefDate": "2026-10-04",
+      "briefType": "daily",
+      "streamDecision": "publish"
+    },
+    {
+      "sourceItemNumber": 6,
+      "primaryCategory": "operations-strategy",
+      "categories": [
+        "operations-strategy",
+        "technology-modeling"
+      ],
+      "questionAndWhy": "How is Germany expanding defense-industrial cooperation with Ukraine under sustained Russian attack?",
+      "whatTheyDid": "Reuters reported new German military aid and agreements with Ukrainian partners covering air defense, radar, drone interceptors, and broader drone/missile/software cooperation.",
+      "whatTheyFound": "The agreements establish funding and industrial commitments; they do not yet demonstrate battlefield effectiveness of the resulting systems.",
+      "whatItMeans": "Production capacity and cooperation are enabling conditions. Delivery, field performance, and sustainment should be measured separately.",
+      "streamTitle": "Germany and Ukraine expanded defense production agreements covering drones, interceptors, radar, and software",
+      "streamSummary": "During Chancellor Friedrich Merz's Kyiv visit, Germany announced additional military aid and multiple industrial agreements with Ukrainian partners, including air-defense and drone technologies. The commitments show deeper defense-industrial integration, not completed capability. Delivery timelines, production throughput, and operational performance remain the important follow-on outcomes.",
+      "attribution": "Reuters",
+      "sourceUrl": "https://www.reuters.com/world/europe/germanys-merz-arrives-kyiv-finalize-drone-deal-release-aid-2026-10-04/",
+      "sourcePublishedAt": "2026-10-04",
+      "sourceKey": "https://www.reuters.com/world/europe/germanys-merz-arrives-kyiv-finalize-drone-deal-release-aid-2026-10-04/",
+      "sourceVerified": true,
+      "briefDate": "2026-10-04",
+      "briefType": "daily",
+      "streamDecision": "publish"
+    },
+    {
+      "sourceItemNumber": 7,
+      "primaryCategory": "operations-strategy",
+      "categories": [
+        "operations-strategy",
+        "application-analysis"
+      ],
+      "questionAndWhy": "What did North Korea's hypersonic missile drill demonstrate, and which performance claims remained disputed?",
+      "whatTheyDid": "North Korea conducted an intermediate-range hypersonic missile drill under Kim Jong Un; South Korea and Japan tracked the launch and disputed Pyongyang's claims about tracking failure.",
+      "whatTheyFound": "The launch itself was observed, while claims about flight path, tracking difficulty, and interceptability remained contested.",
+      "whatItMeans": "Observed activity, state claims, opposing assessments, and demonstrated military effectiveness should be recorded separately.",
+      "streamTitle": "North Korea's hypersonic drill produced competing claims about tracking and interceptability",
+      "streamSummary": "Reuters reported a North Korean hypersonic missile drill that state media said demonstrated deterrent reliability. South Korea disputed North Korean claims that regional militaries failed to track the missile and said its defenses could detect and intercept the tested system. The launch is observed evidence; performance and deterrence claims remain contested assessments.",
+      "attribution": "Reuters",
+      "sourceUrl": "https://www.reuters.com/world/asia-pacific/north-korea-says-it-conducted-intermediate-range-strategic-missile-drill-2026-10-03/",
+      "sourcePublishedAt": "2026-10-03",
+      "sourceKey": "https://www.reuters.com/world/asia-pacific/north-korea-says-it-conducted-intermediate-range-strategic-missile-drill-2026-10-03/",
+      "sourceVerified": true,
+      "briefDate": "2026-10-04",
+      "briefType": "daily",
+      "streamDecision": "publish"
+    },
+    {
+      "sourceItemNumber": 8,
+      "primaryCategory": "application-analysis",
+      "categories": [
+        "application-analysis",
+        "technology-modeling"
+      ],
+      "questionAndWhy": "How completely do clinical SHAP studies report the information needed to reproduce explanations?",
+      "whatTheyDid": "Researchers reviewed 100 clinical studies using SHAP and coded reporting of algorithms, reference populations, and implementation details.",
+      "whatTheyFound": "Most papers omitted key details such as the SHAP computation algorithm and reference population.",
+      "whatItMeans": "Explainability is not reproducible merely because a SHAP plot is shown; implementation choices are part of the method.",
+      "streamTitle": "Most clinical SHAP studies omitted details needed to reproduce their explanations",
+      "streamSummary": "A review of 100 clinical SHAP studies found major reporting gaps: most did not specify the computation algorithm and nearly all omitted reference-population details. Those choices can materially change explanations. The result is a reproducibility warning rather than a claim that SHAP is unusable; explanation methods need the same implementation transparency expected of other analytical procedures.",
+      "attribution": "npj Digital Medicine",
+      "sourceUrl": "https://doi.org/10.1038/s41746-026-03324-8",
+      "sourcePublishedAt": null,
+      "sourceKey": "10.1038/s41746-026-03324-8",
+      "sourceVerified": true,
+      "briefDate": "2026-10-04",
+      "briefType": "daily",
+      "streamDecision": "publish"
+    },
+    {
+      "sourceItemNumber": 9,
+      "primaryCategory": "application-analysis",
+      "categories": [
+        "application-analysis",
+        "behavioral-science"
+      ],
+      "questionAndWhy": "Did a phase I lung-cancer vaccine produce objective tumor responses when immune markers changed?",
+      "whatTheyDid": "Researchers evaluated a vaccine combination in an early-phase lung-cancer trial, measuring immune markers and clinical tumor response.",
+      "whatTheyFound": "Immune measures changed, but objective tumor responses were not observed in the reported trial.",
+      "whatItMeans": "Movement in a mechanism or biomarker is not the same as movement in the clinical outcome that matters.",
+      "streamTitle": "A lung-cancer vaccine moved immune markers without producing objective tumor responses",
+      "streamSummary": "A phase I lung-cancer vaccine study reported immunological changes but no objective tumor responses. Early-phase studies can be valuable for safety and biological activity, yet those intermediate signals should not be upgraded into evidence of clinical efficacy. The result is a clear example of why proxy and final outcomes must remain distinct.",
+      "attribution": "Nature Communications",
+      "sourceUrl": "https://doi.org/10.1038/s41467-026-78130-7",
+      "sourcePublishedAt": null,
+      "sourceKey": "10.1038/s41467-026-78130-7",
+      "sourceVerified": true,
+      "briefDate": "2026-10-04",
+      "briefType": "daily",
+      "streamDecision": "publish"
+    }
+  ]
+}
