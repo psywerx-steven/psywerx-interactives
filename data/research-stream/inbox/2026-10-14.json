@@ -1,0 +1,231 @@
+{
+  "schemaVersion": "psywerx-research-items-v1",
+  "briefDate": "2026-10-14",
+  "briefType": "daily",
+  "items": [
+    {
+      "sourceItemNumber": 1,
+      "primaryCategory": "behavioral-science",
+      "categories": [
+        "behavioral-science",
+        "application-analysis"
+      ],
+      "questionAndWhy": "Are reward cues powerful because they automatically trigger learned behavior, or because people use them to infer which actions will pay off? Distinguishing the two changes how we explain habits and cue-driven decisions.",
+      "whatTheyDid": "Huseynzade, Dignath and Eder conducted three human experiments using a stock-market task. Participants learned which cues and actions predicted monetary rewards. Later experiments introduced an instruction to disregard earlier cue learning after a simulated computer crash and imposed an additional working-memory task.",
+      "whatTheyFound": "Cues biased choices toward associated rewards. The bias was stronger among participants reporting strategic use of cues; directed forgetting and memory load each reduced it. A small cue effect survived even when both manipulations discouraged deliberate cue use. The experiments cannot fully partition explicit inference from automatic association.",
+      "whatItMeans": "Cue-driven action is not necessarily automatic. Beliefs about what a cue means, available attention and residual learned associations may jointly influence responses. This is a useful experimental warning against identifying one psychological mechanism from the same visible behavior.",
+      "streamTitle": "Reward cues influenced choices less when people were told to forget them or had less working memory",
+      "streamSummary": "Three experiments tested whether reward-associated cues guide behavior automatically or through conscious expectations. Participants first learned links among cues, actions, and monetary outcomes. A simulated software failure followed by instructions to disregard earlier cue learning substantially reduced cue-driven choices; a working-memory load also weakened the effect. Some response bias persisted despite both manipulations. This suggests that cue influence includes cognitive interpretation without ruling out automatic processes. The tasks involved artificial rewards, so their results should not be equated directly with persistent real-world habits or addictions.",
+      "attribution": "Huseynzade, Dignath & Eder — Scientific Reports",
+      "sourceUrl": "https://doi.org/10.1038/s41598-026-75419-x",
+      "sourcePublishedAt": "2026-10-13",
+      "sourceKey": "10.1038/s41598-026-75419-x",
+      "sourceVerified": true,
+      "briefDate": "2026-10-14",
+      "briefType": "daily",
+      "streamDecision": "publish"
+    },
+    {
+      "sourceItemNumber": 2,
+      "primaryCategory": "behavioral-science",
+      "categories": [
+        "behavioral-science",
+        "technology-modeling"
+      ],
+      "questionAndWhy": "How can a learner pursue rewards without taking dangerous actions while learning? The standard exploration-versus-exploitation framing often neglects the damage an error can cause.",
+      "whatTheyDid": "Mahajan and Seymour reviewed reinforcement-learning algorithms alongside behavioral and systems-neuroscience research. They organized safety approaches into two families: change the optimization objective to incorporate harm, or constrain exploration so dangerous states and actions are less likely to be visited.",
+      "whatTheyFound": "The review identifies a recurring safety-versus-learning-efficiency tradeoff. Risk-sensitive objectives can make constraints explicit but require assumptions about costs or uncertainty. Safer-exploration heuristics can limit exposure but may also introduce biases. This is a conceptual synthesis, not a new head-to-head experimental benchmark.",
+      "whatItMeans": "The distinction between what is optimized and which actions are allowed during learning is useful for human behavior models and autonomous-system design. Harm avoidance should be represented explicitly rather than treated as ordinary reward maximization.",
+      "streamTitle": "Safe reinforcement learning has two different levers: change the goal or restrict dangerous exploration",
+      "streamSummary": "A new review links animal learning and neuroscience to the engineering of safe reinforcement learning. It distinguishes changing the objective so harmful outcomes count more heavily from changing exploration so a learner avoids risky actions before it has reliable knowledge. Each approach entails assumptions and a possible tradeoff between safety and efficient learning. The paper synthesizes existing evidence rather than testing a new algorithm. Its practical value is a clearer design vocabulary: an agent can fail because it pursues the wrong objective, because it explores unsafely, or because a protective heuristic becomes overly restrictive.",
+      "attribution": "Mahajan & Seymour — Communications Psychology",
+      "sourceUrl": "https://doi.org/10.1038/s44271-026-00542-4",
+      "sourcePublishedAt": "2026-10-13",
+      "sourceKey": "10.1038/s44271-026-00542-4",
+      "sourceVerified": true,
+      "briefDate": "2026-10-14",
+      "briefType": "daily",
+      "streamDecision": "publish"
+    },
+    {
+      "sourceItemNumber": 3,
+      "primaryCategory": "behavioral-science",
+      "categories": [
+        "behavioral-science",
+        "application-analysis"
+      ],
+      "questionAndWhy": "Does self-reported problematic digital use have a direct relationship with school engagement, or does the observed association depend on broader social and wellbeing measures?",
+      "whatTheyDid": "Demirtaş and colleagues surveyed 437 high-school students and applied correlation and structural-equation models to digital-addiction scores, feeling that one does not matter to others (anti-mattering), life satisfaction, and school engagement.",
+      "whatTheyFound": "Digital-addiction scores correlated with greater anti-mattering and lower life satisfaction and engagement. In the multivariable structural model, the direct relationship with engagement was not statistically significant. A serial indirect association through anti-mattering and life satisfaction was estimated at B = -0.031 (95% CI -0.051 to -0.014). These are cross-sectional self-reports.",
+      "whatItMeans": "The useful lesson is inferential: a statistically significant indirect path in a cross-sectional model does not establish a mediation mechanism or that reducing digital use will improve school participation. Longitudinal and experimental tests are needed.",
+      "streamTitle": "Digital-use scores correlated with weaker school engagement, but the modeled direct effect was null",
+      "streamSummary": "A survey of 437 high-school students found that higher scores on a digital-addiction scale coincided with feeling less important to others, lower life satisfaction, and lower school engagement. In a structural model, the direct digital-use-to-engagement path was not significant, although a small indirect association through anti-mattering and life satisfaction was. Because all measures were collected at one time, the analysis does not prove that digital use causes disengagement or that the intermediate variables transmit a causal effect. It is a useful example of why mediation diagrams require stronger evidence than correlations alone.",
+      "attribution": "Demirtaş et al. — Scientific Reports",
+      "sourceUrl": "https://doi.org/10.1038/s41598-026-71949-6",
+      "sourcePublishedAt": "2026-10-14",
+      "sourceKey": "10.1038/s41598-026-71949-6",
+      "sourceVerified": true,
+      "briefDate": "2026-10-14",
+      "briefType": "daily",
+      "streamDecision": "publish"
+    },
+    {
+      "sourceItemNumber": 4,
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling",
+        "behavioral-science",
+        "application-analysis"
+      ],
+      "questionAndWhy": "Can one agent-based model reproduce different long-run opinion patterns, including consensus, polarization and several coexisting camps, and predict which pattern will emerge?",
+      "whatTheyDid": "Jing and colleagues built a continuous-opinion agent-based model allowing assimilation, repulsion, or no interaction according to two thresholds. They developed an empirical phase criterion and a four-parameter estimate of the number of final opinion clusters, then ran systematic parameter sweeps and repeated simulations.",
+      "whatTheyFound": "Within its own simulated parameter grid, the criterion agreed with the sign of the final phase in 86.7% of cases; predicted cluster counts were within one of the modal value in 82.26% of analyzable conditions. Outcomes still varied with initialization, randomness and system size. No human behavior or external-network validation was reported.",
+      "whatItMeans": "This is a useful model-structure and sensitivity-analysis example, not evidence that real political populations follow its thresholds. Simulated prediction success should be reported as within-model recovery until parameters and outcomes are independently validated.",
+      "streamTitle": "An opinion-dynamics model predicted simulated consensus and polarization regimes, not real populations",
+      "streamSummary": "Researchers combined attraction, repulsion, and noninteraction rules in an agent-based opinion model that can generate consensus, two camps, or several persistent clusters. An empirical threshold matched the direction of simulated phase changes in 86.7% of grid conditions; cluster-count estimates were within one of the simulated modal outcome in 82.26%. The model also showed sensitivity to randomness and starting conditions. The main limitation is decisive: both the predictor and its evaluation come from the same artificial system. No claim about forecasting real-world polarization is warranted without external validation.",
+      "attribution": "Jing et al. — Humanities and Social Sciences Communications",
+      "sourceUrl": "https://doi.org/10.1057/s41599-026-09420-0",
+      "sourcePublishedAt": "2026-10-13",
+      "sourceKey": "10.1057/s41599-026-09420-0",
+      "sourceVerified": true,
+      "briefDate": "2026-10-14",
+      "briefType": "daily",
+      "streamDecision": "publish"
+    },
+    {
+      "sourceItemNumber": 5,
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling",
+        "application-analysis"
+      ],
+      "questionAndWhy": "Can expert judgments and uncertain relationships be combined into a probabilistic assessment of complex public-health emergencies, and how much confidence should such modeled likelihoods receive?",
+      "whatTheyDid": "Fu and colleagues constructed an improved fuzzy Bayesian network from governance factors and expert assessments. They used the COVID-19 emergency in Wuhan as a retrospective illustrative case and explored the sensitivity of modeled event likelihood to information sharing, coordination, and containment measures.",
+      "whatTheyFound": "The model classified the historical Wuhan outbreak as very high likelihood and identified information sharing, cross-actor coordination, and quarantine effectiveness as influential in the network. The study reports an expert-informed illustrative assessment, not prospectively calibrated outbreak probabilities or causal intervention effects.",
+      "whatItMeans": "Fuzzy Bayesian networks can make judgments and uncertainty explicit and support scenario comparisons. For decision support, elicitation provenance, sensitivity, calibration, out-of-sample prediction and causal assumptions require independent testing.",
+      "streamTitle": "A fuzzy Bayesian network organized public-health risk judgments, but did not validate outbreak forecasts",
+      "streamSummary": "A new study builds a fuzzy Bayesian network to combine uncertain expert assessments of public-health emergency risk and illustrates the approach using COVID-19 in Wuhan. The resulting model classified that retrospective case as high risk and identified information sharing, coordination, and isolation measures as influential model factors. Those outputs depend on the network structure and supplied judgments; they are not prospectively verified risk estimates or measured effects of specific interventions. The practical contribution is a structured way to record uncertainty and interrogate scenarios, provided experts, assumptions, and predictive calibration remain visible.",
+      "attribution": "Fu et al. — Humanities and Social Sciences Communications",
+      "sourceUrl": "https://doi.org/10.1057/s41599-026-09227-z",
+      "sourcePublishedAt": "2026-10-13",
+      "sourceKey": "10.1057/s41599-026-09227-z",
+      "sourceVerified": true,
+      "briefDate": "2026-10-14",
+      "briefType": "daily",
+      "streamDecision": "publish"
+    },
+    {
+      "sourceItemNumber": 6,
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling",
+        "application-analysis",
+        "operations-strategy"
+      ],
+      "questionAndWhy": "How can a deployed AI system be updated and monitored without treating each new model as safe merely because it performs well in development tests?",
+      "whatTheyDid": "Afdideh and colleagues built AEGIS, an executable change-governance architecture with data intake/retraining, drift monitoring, and deployment decisions. It separates approval of a candidate model into four categories from an independent alarm about the current deployed model; it was demonstrated on sepsis prediction and brain-tumor segmentation.",
+      "whatTheyFound": "The examples exercised approval, conditional approval, clinical review and rejection, including a reject-plus-alarm state. On the studied cross-site data, one drift-detection ROC-AUC increased from 0.82 to 1.00 with no false alarms at the reported batch trigger. The proof of concept primarily detects covariate shift, not concept drift, and does not establish field safety.",
+      "whatItMeans": "This provides a concrete template for versioned model governance: evaluate candidates and deployed versions separately, track drift and record controlled decisions. Thresholds and alarms must be validated before being treated as regulatory compliance or evidence of clinical benefit.",
+      "streamTitle": "AEGIS separated approval of new AI models from alarms about versions already in use",
+      "streamSummary": "AEGIS is an executable governance framework for adaptive medical AI, combining new-data intake, retraining, monitoring, and four possible deployment decisions. It also raises a separate alarm when the already-released model may be deteriorating, including when no acceptable replacement exists. Demonstrations used sepsis prediction and brain-tumor segmentation, and a cross-site drift test reported improved discrimination. This is a proof of concept, not evidence of safer clinical outcomes. Its drift detection mainly captures changes in input distributions, leaving changes in the relationship between inputs and outcomes for future validation.",
+      "attribution": "Afdideh et al. — npj Digital Medicine",
+      "sourceUrl": "https://doi.org/10.1038/s41746-026-03290-1",
+      "sourcePublishedAt": "2026-10-13",
+      "sourceKey": "10.1038/s41746-026-03290-1",
+      "sourceVerified": true,
+      "briefDate": "2026-10-14",
+      "briefType": "daily",
+      "streamDecision": "publish"
+    },
+    {
+      "sourceItemNumber": 7,
+      "primaryCategory": "operations-strategy",
+      "categories": [
+        "operations-strategy",
+        "technology-modeling",
+        "application-analysis"
+      ],
+      "questionAndWhy": "Can historical combat data, current conditions and weather help forecast where and when hostile drones will be used, and can models assist artillery planning?",
+      "whatTheyDid": "Ukraine's Ministry of Defence reported that NATO Allied Command Transformation and Ukrainian forces, supported by JATEC, presented Model No. 13 for predicting drone activity and Model No. 32 for evaluating artillery planning options. The models were described at a Vilnius seminar.",
+      "whatTheyFound": "The ministry said Model 13 had been tested on real-world datasets and was ready for integration into situational-awareness systems. Model 32 is a prototype transferred for testing; it filters out options violating stated constraints before ranking alternatives. No public precision, calibration, error rates, decision-time comparisons, or battlefield outcome evaluations were provided.",
+      "whatItMeans": "This is a meaningful development in forecast-to-decision workflow integration, not proof that forecasts or generated plans improve operations. The next useful evidence is prospective accuracy, uncertainty calibration and measured decision effects in realistic conditions.",
+      "streamTitle": "Ukraine and NATO presented a drone-attack forecasting model ready for integration, without public accuracy metrics",
+      "streamSummary": "Ukraine's defence ministry reported two AI tools developed with NATO: Model No. 13 forecasts the likely timing, location, intensity, and type of enemy drone activity using historical and current data, while Model No. 32 filters and ranks possible artillery plans. Officials say the forecasting model has been tested against real datasets and is ready for system integration; the planning prototype is still under testing. The release does not disclose forecast calibration, false alarms, operator use, or operational effects. It is evidence of development and transition readiness claims, not independently demonstrated battlefield advantage.",
+      "attribution": "Ukraine Ministry of Defence / NATO-Ukraine JATEC",
+      "sourceUrl": "https://mod.gov.ua/en/news/ukraine-nato-jatec-ai-predict-drone-attacks",
+      "sourcePublishedAt": "2026-10-13",
+      "sourceKey": "https://mod.gov.ua/en/news/ukraine-nato-jatec-ai-predict-drone-attacks",
+      "sourceVerified": true,
+      "briefDate": "2026-10-14",
+      "briefType": "daily",
+      "streamDecision": "publish"
+    },
+    {
+      "sourceItemNumber": 8,
+      "primaryCategory": "operations-strategy",
+      "categories": [
+        "operations-strategy",
+        "technology-modeling"
+      ],
+      "questionAndWhy": "How is NATO trying to move dual-use defense technology from promising startups into operational adoption on its eastern flank?",
+      "whatTheyDid": "The NATO Innovation Fund announced a permanent Warsaw branch and a partnership with the Polish Dual-Use Chamber. The €1 billion venture fund, backed by 24 Allied nations, appointed a regional adoption lead to work with founders, investors, industry and government organizations.",
+      "whatTheyFound": "The announcement establishes a local investment-and-adoption structure and an explicit focus on the path from pilot to procurement. It does not demonstrate that any particular drone, sensor or defensive system has been fielded more rapidly or proved effective because of this office.",
+      "whatItMeans": "The interesting change is institutional: capital and prototyping are being connected more deliberately to users and procurement. Track time to contract, successful field trials, user adoption and sustainment rather than branch opening or announced investment alone.",
+      "streamTitle": "NATO Innovation Fund opened a Warsaw branch to connect startups with defense procurement",
+      "streamSummary": "The NATO Innovation Fund, a €1 billion venture investor backed by 24 Allied countries, established a Warsaw branch and a new partnership with the Polish Dual-Use Chamber. Its regional team will identify deep-tech startups, help portfolio firms move from pilots toward procurement, and connect companies with governments and militaries on NATO's eastern flank. The announcement signals a concrete institutional investment in adoption, but it is not evidence that a new defense capability is effective or already deployed. Subsequent evaluation should examine actual contracts, field performance, integration, and sustainment.",
+      "attribution": "NATO Innovation Fund",
+      "sourceUrl": "https://www.nif.fund/news/nato-innovation-fund-deepens-presence-in-poland-to-accelerate-technology-adoption-across-central-and-eastern-europe/",
+      "sourcePublishedAt": "2026-10-13",
+      "sourceKey": "https://www.nif.fund/news/nato-innovation-fund-deepens-presence-in-poland-to-accelerate-technology-adoption-across-central-and-eastern-europe/",
+      "sourceVerified": true,
+      "briefDate": "2026-10-14",
+      "briefType": "daily",
+      "streamDecision": "publish"
+    },
+    {
+      "sourceItemNumber": 9,
+      "primaryCategory": "application-analysis",
+      "categories": [
+        "application-analysis",
+        "technology-modeling"
+      ],
+      "questionAndWhy": "Do prompt-engineering techniques improve medical-question accuracy consistently across models, or can the same instruction help one model and harm another?",
+      "whatTheyDid": "Tseng and colleagues tested 16 LLMs with seven prompting strategies on 475 questions from Taiwan's 2025 traditional Chinese medicine licensing examination. They compared paired changes from each model's baseline and examined errors in selected weaker models.",
+      "whatTheyFound": "Without prompt changes, accuracy ranged from 35.4% to 85.9%. Across models, average prompt effects were small (about -2.03 to +3.04 percentage points), but interactions were large: one model rose from 49.7% to 87.4% under an optimized prompt while others declined. No single prompt worked consistently.",
+      "whatItMeans": "Prompt quality is model- and task-dependent. Reliable deployment needs fixed test sets, prompt/version tracking, paired evaluation and protection against selecting prompts on the same data used for final assessment. Licensing questions also do not measure clinical care outcomes.",
+      "streamTitle": "The same medical prompt improved one LLM sharply and reduced accuracy in others",
+      "streamSummary": "Researchers evaluated 16 language models under seven prompting strategies using 475 questions from a Taiwanese medical-licensing examination. Baseline accuracy varied from 35.4% to 85.9%. Average prompt changes were modest, but individual model responses differed sharply: one configuration rose from 49.7% to 87.4%, while other models became less accurate. No prompt strategy consistently improved all systems. The benchmark tests examination knowledge, not clinical patient outcomes, and some subgroup comparisons involve few models. The practical lesson is to evaluate specific model–prompt pairs rather than assuming a favored prompting technique transfers reliably.",
+      "attribution": "Tseng et al. — npj Digital Medicine",
+      "sourceUrl": "https://doi.org/10.1038/s41746-026-03397-5",
+      "sourcePublishedAt": "2026-10-13",
+      "sourceKey": "10.1038/s41746-026-03397-5",
+      "sourceVerified": true,
+      "briefDate": "2026-10-14",
+      "briefType": "daily",
+      "streamDecision": "publish"
+    },
+    {
+      "sourceItemNumber": 10,
+      "primaryCategory": "application-analysis",
+      "categories": [
+        "application-analysis",
+        "behavioral-science",
+        "operations-strategy"
+      ],
+      "questionAndWhy": "Are changes in research misconduct-related retractions associated with policy reforms that reward publication performance, and can observed timing distinguish incentives from other changes in detection and publication?",
+      "whatTheyDid": "Meng, Huang and Wu examined misconduct-related retraction rates for China-affiliated research articles over 1992–2020, using publication denominators by field and multiple interrupted time-series models around research evaluation changes in 1995, 1998 and 2015.",
+      "whatTheyFound": "Level and trend shifts appeared near several policy periods. The clearest differential increase in STEM followed the 1998 reform; humanities and social sciences accelerated after 2015. The study establishes temporal associations, not that incentives caused the events; retraction detection, reporting and discipline-specific publication patterns could also change.",
+      "whatItMeans": "Research-integrity governance needs to examine the incentives attached to metrics while avoiding a simplistic causal story from retractions alone. Independent measures of misconduct and checks for concurrent institutional changes would strengthen the inference.",
+      "streamTitle": "Retraction trends shifted around research-incentive reforms, but the timing does not prove causation",
+      "streamSummary": "An interrupted time-series study of China-affiliated papers published from 1992 to 2020 examined misconduct-related retraction rates around major performance-evaluation reforms. The authors report changes in levels and trends near the 1995, 1998, and 2015 reforms, including a clearer post-1998 increase in STEM and a post-2015 acceleration in humanities and social sciences. The association raises serious questions about metric-based research incentives, but retractions are an imperfect proxy for misconduct. Changing detection, publication volumes, and other concurrent reforms mean the design does not demonstrate that the incentives themselves caused the observed shifts.",
+      "attribution": "Meng, Huang & Wu — Humanities and Social Sciences Communications",
+      "sourceUrl": "https://doi.org/10.1057/s41599-026-09307-0",
+      "sourcePublishedAt": "2026-10-13",
+      "sourceKey": "10.1057/s41599-026-09307-0",
+      "sourceVerified": true,
+      "briefDate": "2026-10-14",
+      "briefType": "daily",
+      "streamDecision": "publish"
+    }
+  ]
+}
