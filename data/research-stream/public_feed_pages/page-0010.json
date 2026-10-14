@@ -2,323 +2,322 @@
   "schemaVersion": "psywerx-public-research-stream-v1",
   "page": 10,
   "pageSize": 24,
-  "totalItems": 263,
+  "totalItems": 334,
   "items": [
     {
-      "itemId": "research-b7353635531d4bed6e22",
-      "streamTitle": "Synthetic students need to match both baseline behavior and response to intervention",
-      "streamSummary": "Microsoft’s StudentSim trains individualized LLM “students” from pooled data and sparse personal records, then evaluates two different targets: whether the simulator resembles the learner’s usual responses and whether it changes appropriately when given guidance. It outperformed a general frontier model across chess, writing, and mathematics, and improved a proof-of-concept tutor. The key methodological lesson is that baseline resemblance is not enough—simulation is more useful when intervention responsiveness is validated separately.",
-      "attribution": "Microsoft Research — StudentSim preprint",
-      "sourceUrl": "https://arxiv.org/abs/2609.01591",
+      "itemId": "research-1a13e0c9e297c5f86409",
+      "streamTitle": "Cognitive training may transfer in one direction but not the reverse",
+      "streamSummary": "A meta-analysis of 55 working-memory training studies found a small but reliable asymmetry: training that required active updating transferred to simpler span tasks, while span training did not reliably transfer back to updating. The pattern also appeared in some outcomes beyond working memory. This challenges the idea that transfer depends only on how similar two tasks are. The effects are modest, and the meta-analysis cannot determine which proposed mechanism—greater cognitive demand, broader resource recruitment, or another factor—causes the asymmetry.",
+      "attribution": "Fu et al. — Psychonomic Bulletin & Review",
+      "sourceUrl": "https://doi.org/10.3758/s13423-026-02994-5",
+      "categories": [
+        "behavioral-science",
+        "application-analysis"
+      ],
+      "sourcePublishedAt": "2026-09-08",
+      "dateAdded": "2026-09-10"
+    },
+    {
+      "itemId": "research-663d83eefc7414130c34",
+      "streamTitle": "AI advice increased acceptance of bad recommendations, but time pressure did not make it worse",
+      "streamSummary": "Military cadets and officers in a simulated drone-strike task were more likely to follow wrong or morally questionable recommendations when AI assistance was present. Unexpectedly, high time pressure did not further increase AI reliance or significantly change the moral decisions by itself. Participants also reported less responsibility when using AI, especially under pressure, while seeming to reclaim responsibility when the system was clearly wrong. The study is a controlled simulation rather than an operational test, so it should not be read as a measured battlefield effect.",
+      "attribution": "Salatino et al. — Scientific Reports",
+      "sourceUrl": "https://doi.org/10.1038/s41598-026-69263-2",
       "categories": [
         "technology-modeling",
-        "application-analysis"
+        "operations-strategy",
+        "behavioral-science"
+      ],
+      "sourcePublishedAt": "2026-09-02",
+      "dateAdded": "2026-09-10"
+    },
+    {
+      "itemId": "research-d27d5596e0979196b28a",
+      "streamTitle": "A civilian public-safety program was linked to sizable drops in reported crime at San Francisco intersections",
+      "streamSummary": "A quasi-experimental evaluation of San Francisco’s Urban Alchemy program compared 41 intersections with civilian safety practitioners against 583 untreated intersections over five years. Deployment was associated with about a 20% reduction in total reported crime and a 26.7% reduction in behavioral-health-related incidents, while property crime did not change and some other offense results depended on the model. The design is stronger than a simple before-and-after comparison, but the outcome is recorded police incidents, which can change because of reporting or police-contact patterns as well as underlying behavior.",
+      "attribution": "Stuart, Moore & Janulis — PNAS Nexus",
+      "sourceUrl": "https://doi.org/10.1093/pnasnexus/pgag275",
+      "categories": [
+        "application-analysis",
+        "behavioral-science",
+        "operations-strategy"
       ],
       "sourcePublishedAt": "2026-09-01",
-      "dateAdded": "2026-09-03"
+      "dateAdded": "2026-09-10"
     },
     {
-      "itemId": "research-727c11405bf751224b6e",
-      "streamTitle": "A nationwide RCT cut electricity modestly—but only some households responded",
-      "streamSummary": "A six-month randomized trial of 62,750 Saudi households found that peer-comparison messages combined with energy-saving tips reduced monthly electricity use by roughly 1–2%. The effect was concentrated among moderate-consumption households, with little measurable change at the lowest and highest consumption levels. Because the outcome came from smart meters, this is real behavioral evidence rather than intention. It also shows why a small average effect can conceal major differences in who has the opportunity or capacity to respond.",
-      "attribution": "Darandary — International Review of Economics & Finance",
-      "sourceUrl": "https://doi.org/10.1016/j.iref.2026.105483",
-      "categories": [
-        "behavioral-science",
-        "application-analysis"
-      ],
-      "sourcePublishedAt": "2026-09-01",
-      "dateAdded": "2026-09-03"
-    },
-    {
-      "itemId": "research-f9d8439a4ed71d65b24b",
-      "streamTitle": "A low polarization score can hide very different audience states",
-      "streamSummary": "Across three nationally representative U.S. surveys, researchers found that people with similarly low affective-polarization scores could be politically very different: some were relatively lukewarm toward both parties, while others were cold toward both. Those groups differed in trust, participation, democratic attitudes, and demographics. The study is descriptive rather than causal, but it shows how a convenient difference score can erase meaningful structure that matters for audience segmentation.",
-      "attribution": "Versteegen, Phillips & Mason — Political Behavior",
-      "sourceUrl": "https://doi.org/10.1007/s11109-026-10190-3",
-      "categories": [
-        "behavioral-science",
-        "application-analysis"
-      ],
-      "sourcePublishedAt": "2026-08-29",
-      "dateAdded": "2026-09-03"
-    },
-    {
-      "itemId": "research-aa8cf62b3c12713742ad",
-      "streamTitle": "Do not invent your agents’ belief structure when empirical data can seed it",
-      "streamSummary": "SimPol builds belief networks from survey data across 23 European countries and uses those empirically inferred structures to initialize an agent-based polarization model. The simulated dynamics then vary with parameters such as belief rigidity and susceptibility to social influence. The architecture is valuable because it separates empirical baseline structure from theory-driven update rules instead of inventing synthetic agents from scratch. It remains a preprint, and matching broad patterns is not the same as demonstrating causal or predictive validity.",
-      "attribution": "SimPol preprint",
-      "sourceUrl": "https://arxiv.org/abs/2606.27968",
+      "itemId": "research-ffca416e5f3ee33e82c7",
+      "streamTitle": "Many LLM agents miss their assigned values before the simulation even begins",
+      "streamSummary": "A World Values Survey–grounded simulation tested 1,200 LLM personas across roughly 4,000 conversations. More than half failed to express the value profiles they had been assigned at the outset, while only 2–7% showed later value drift. Removing demographic details helped some models but did not fix the broader mismatch. The result shifts a key validation question upstream: before studying how synthetic societies change over time, researchers need to verify that the agents actually represent their intended starting states. The study is a preprint, not yet peer reviewed.",
+      "attribution": "Atif, Saha & Choudhury — arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2609.05514",
       "categories": [
         "technology-modeling",
-        "application-analysis"
+        "behavioral-science"
       ],
-      "sourcePublishedAt": "2026-06-26",
-      "dateAdded": "2026-09-03"
+      "sourcePublishedAt": "2026-08-31",
+      "dateAdded": "2026-09-10"
     },
     {
-      "itemId": "research-5c18b34bf090b3738c33",
-      "streamTitle": "An FCM edge does not have to be one number",
-      "streamSummary": "KA-FCM replaces each static Fuzzy Cognitive Map edge weight with an inspectable learned function, allowing the relationship between two variables to include thresholds, saturation, or even sign reversals. In computational tests it handled nonmonotonic relationships better than conventional FCMs while keeping the edge behavior visible. The approach is still a preprint, and fitting a flexible function from data does not solve confounding or causal identification, but it offers a useful route beyond constant-sign scalar edges.",
-      "attribution": "Salmeron — KA-FCM preprint",
-      "sourceUrl": "https://arxiv.org/abs/2604.05136",
-      "categories": [
-        "technology-modeling",
-        "application-analysis"
-      ],
-      "sourcePublishedAt": "2026-04-06",
-      "dateAdded": "2026-09-03"
-    },
-    {
-      "itemId": "research-dc4f672e5e96824f0813",
-      "streamTitle": "Moral licensing largely disappeared when nobody was watching",
-      "streamSummary": "A preregistered meta-analysis of 115 experiments found that moral licensing—doing something good and then behaving less morally—was much stronger when people knew they were being observed. After adjustment for publication bias, the authors found moderate evidence for licensing under explicit observation but evidence against a meaningful effect when behavior was unobserved. The result suggests that reputation and audience presence may be central boundary conditions rather than background noise.",
-      "attribution": "Rotella et al. — Personality and Social Psychology Bulletin",
-      "sourceUrl": "https://doi.org/10.1177/01461672251345512",
+      "itemId": "research-147aaa44e375cd5e5001",
+      "streamTitle": "Why people think they were excluded changes the emotional response",
+      "streamSummary": "Four preregistered studies with 1,757 participants found that exclusion framed as a consequence of one’s own norm violation produced more guilt, shame, and self-directed anger than exclusion without that explanation. Perceived deservingness tracked these reactions most consistently, while gender-based exclusion did not produce the same self-directed pattern. The work shows that exclusion is not one uniform psychological experience. The proposed mechanism is plausible but not fully identified because key mediation measures were collected at the same time as the outcomes.",
+      "attribution": "Damp & Rudert — Journal of Experimental Social Psychology",
+      "sourceUrl": "https://doi.org/10.1016/j.jesp.2026.104960",
       "categories": [
         "behavioral-science",
         "application-analysis"
       ],
-      "sourcePublishedAt": "2025-07-08",
-      "dateAdded": "2026-09-03"
+      "sourcePublishedAt": null,
+      "dateAdded": "2026-09-10"
     },
     {
-      "itemId": "research-72d10207148175709128",
-      "streamTitle": "Moral language can help engagement—until it becomes too dense",
-      "streamSummary": "An analysis of more than 1.6 million posts across Twitter, Reddit, and 8chan found a nonlinear relationship between moral language and engagement. Overall moral relevance was associated with more engagement, but concentrating too much moral content into a message was associated with less; engagement peaked at an intermediate density. The result challenges “more is better” assumptions in message optimization, although the study is observational and does not prove that experimentally increasing moral density would cause the same change.",
-      "attribution": "Candia et al. — Nature Human Behaviour",
-      "sourceUrl": "https://doi.org/10.1038/s41562-026-02560-y",
+      "itemId": "research-eaa6db8b3d5846b8cdf1",
+      "streamTitle": "Threatening social comparison hurt performance without making people quit",
+      "streamSummary": "A randomized study of 129 students found that threatening peer-comparison feedback increased negative affect, reduced commitment, and worsened working-memory performance. Yet participants were no less likely to volunteer to repeat the task. The result suggests social comparison can change emotion, coping, and performance without changing immediate persistence. The study was not preregistered and used a university sample, so broader behavioral effects need replication.",
+      "attribution": "Meyer, Zenses & Morina — BMC Psychology",
+      "sourceUrl": "https://doi.org/10.1186/s40359-026-05536-9",
+      "categories": [
+        "behavioral-science",
+        "application-analysis"
+      ],
+      "sourcePublishedAt": "2026-09-09",
+      "dateAdded": "2026-09-09"
+    },
+    {
+      "itemId": "research-7b42ff91990b7a00b1f0",
+      "streamTitle": "Romania says it stopped a Russian-directed sabotage reconnaissance operation",
+      "streamSummary": "Romania’s SRI says it stopped a Russian-coordinated sabotage operation involving a Russian citizen allegedly tasked to photograph military sites, critical infrastructure, and Ukrainian cargo aircraft. SRI says the pattern resembles other Russian-linked networks using low-friction support tasks. The case strengthens concern about recruitment funnels, but the underlying intelligence is not fully public, so outside observers cannot independently verify the attribution.",
+      "attribution": "Romanian Intelligence Service (SRI)",
+      "sourceUrl": "https://sri.ro/articole/comunicat-de-presa-08-09-2026-1.html",
+      "categories": [
+        "operations-strategy",
+        "application-analysis"
+      ],
+      "sourcePublishedAt": "2026-09-08",
+      "dateAdded": "2026-09-09"
+    },
+    {
+      "itemId": "research-3d2c174a518572f7022a",
+      "streamTitle": "A new personalization method learns when it has enough user data",
+      "streamSummary": "A new arXiv paper proposes ENOUGH, a personalization method that adds user-history records one at a time and learns when to stop. Across six tasks, the authors report stronger personalization utility with less context than retrieval-based baselines. The idea matters for persona systems because irrelevant biography can add cost or distortion. It remains a preprint, and task performance does not establish psychological fidelity to real users.",
+      "attribution": "Liu et al. — arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2609.08180",
+      "categories": [
+        "technology-modeling",
+        "behavioral-science"
+      ],
+      "sourcePublishedAt": "2026-09-08",
+      "dateAdded": "2026-09-09"
+    },
+    {
+      "itemId": "research-d56929547f35c88efa01",
+      "streamTitle": "Stress increased deceptive behavior, with rumination emerging as one pathway",
+      "streamSummary": "A multi-study program found that experimentally induced stress increased unethical intentions and, in an incentivized task, actual deceptive reporting. Rumination rose under stress and statistically explained part of the effect; narcissism strengthened it in one study. The project also analyzed online reviews, but that field portion was correlational and used a linguistic proxy. The strongest causal evidence therefore comes from the randomized experiments.",
+      "attribution": "Tran et al. — Journal of Business Ethics",
+      "sourceUrl": "https://doi.org/10.1007/s10551-026-06449-8",
+      "categories": [
+        "behavioral-science"
+      ],
+      "sourcePublishedAt": "2026-09-03",
+      "dateAdded": "2026-09-09"
+    },
+    {
+      "itemId": "research-f148843fe7a1e66f6fe3",
+      "streamTitle": "People may judge policies as effective partly because they already find them acceptable",
+      "streamSummary": "A factorial survey experiment suggests policy acceptance and perceived effectiveness can influence each other. Effectiveness information increased support mainly among climate-policy supporters and undecided respondents, while fairer and less personally costly designs increased acceptance and were followed by higher perceived effectiveness even among opponents. The practical implication is that 'prove it works' may not persuade skeptics first. The policies were hypothetical, and mediation is less certain than the randomized design effects.",
+      "attribution": "Huttarsch & Wolf — Communications Sustainability",
+      "sourceUrl": "https://doi.org/10.1038/s44458-026-00149-0",
+      "categories": [
+        "application-analysis",
+        "behavioral-science"
+      ],
+      "sourcePublishedAt": "2026-09-02",
+      "dateAdded": "2026-09-09"
+    },
+    {
+      "itemId": "research-c609f2f260a20d747e7c",
+      "streamTitle": "Army researchers combine multiagent air-combat learning with knowledge graphs and LLM explanations",
+      "streamSummary": "A U.S. Army ERDC report combines multiagent reinforcement learning, knowledge graphs, LLMs, and explainability methods in a six-degree-of-freedom air-combat simulation. The researchers report that the hybrid maintained competitive simulated performance while making agent decisions easier to interpret. The architecture is a useful reference for explainable decision support, but it validates behavior inside a simulation—not real tactics, human decisions, or operational effectiveness.",
+      "attribution": "Salhi et al. — U.S. Army ERDC",
+      "sourceUrl": "https://doi.org/10.21079/11681/50444",
+      "categories": [
+        "technology-modeling",
+        "operations-strategy"
+      ],
+      "sourcePublishedAt": "2026-09-02",
+      "dateAdded": "2026-09-09"
+    },
+    {
+      "itemId": "research-618b5c3d16920ee72fbc",
+      "streamTitle": "Prior beliefs can bias truth processing before deliberate reasoning begins",
+      "streamSummary": "Across four experiments, people were more likely to accept false claims that matched prior beliefs and reject true claims that conflicted with them. The bias also appeared in a task designed to capture more automatic validation during comprehension. That suggests belief-consistent misinformation may gain an advantage before deliberate defense begins. The studies used controlled claims, not real-world sharing or durable belief change.",
+      "attribution": "Abendroth & Richter — Memory & Cognition",
+      "sourceUrl": "https://doi.org/10.3758/s13421-026-01911-4",
       "categories": [
         "behavioral-science",
         "application-analysis"
       ],
       "sourcePublishedAt": "2026-09-02",
-      "dateAdded": "2026-09-02"
+      "dateAdded": "2026-09-09"
     },
     {
-      "itemId": "research-878bd958502153069b1a",
-      "streamTitle": "Germany’s drone attribution moved from accusation to a cost-imposition package",
-      "streamSummary": "Germany’s attribution of the Leipzig/Halle drone incident was followed by concrete diplomatic measures and discussion of additional EU sanctions, while Russia denied responsibility. The development is useful because it shows attribution becoming an intervention package rather than remaining a statement about responsibility. The downstream effects are still open questions: imposed costs and allied endorsement do not themselves demonstrate deterrence or a change in future adversary behavior.",
-      "attribution": "Reuters",
-      "sourceUrl": "https://www.reuters.com/world/europe/germany-says-russia-responsible-drone-attack-leipzig-airport-2026-09-01",
-      "categories": [
-        "operations-strategy",
-        "application-analysis"
-      ],
-      "sourcePublishedAt": "2026-09-01",
-      "dateAdded": "2026-09-02"
-    },
-    {
-      "itemId": "research-20daf3c0d1713ef130bb",
-      "streamTitle": "LLMs can estimate average social norms well—but their errors look like a shared hivemind",
-      "streamSummary": "A benchmark of 555 everyday U.S. scenarios found that several LLMs estimated population-average social norms more accurately than individual humans. But human errors were mostly independent, so pooling people improved estimates dramatically, while errors across LLMs were much more correlated and model ensembles added little. A hybrid human-plus-LLM estimate performed best. The result supports a bounded use for models as aggregate prior estimators and warns against treating multiple LLM personas as independent evidence about population diversity.",
-      "attribution": "Eriksson et al. — Communications AI & Computing",
-      "sourceUrl": "https://doi.org/10.1038/s44488-026-00018-8",
-      "categories": [
-        "technology-modeling",
-        "behavioral-science",
-        "application-analysis"
-      ],
-      "sourcePublishedAt": "2026-09-01",
-      "dateAdded": "2026-09-02"
-    },
-    {
-      "itemId": "research-77a39cd9e369b8697d44",
-      "streamTitle": "People do not automatically model their audience—but scaffolding can help",
-      "streamSummary": "Three experiments found that people use a mix of sophisticated audience modeling and simpler heuristics when deciding what information to teach. Many participants persisted with a heuristic even after it stopped working, but a task that made it easier to infer what the learner knew substantially reduced that tendency. The finding suggests that poor audience analysis can result from cognitive demands, not just missing data, and that communication tools can improve performance by scaffolding the inference itself.",
-      "attribution": "Harootonian et al. — Nature Human Behaviour",
-      "sourceUrl": "https://doi.org/10.1038/s41562-026-02540-2",
-      "categories": [
-        "behavioral-science",
-        "application-analysis"
-      ],
-      "sourcePublishedAt": "2026-08-26",
-      "dateAdded": "2026-09-02"
-    },
-    {
-      "itemId": "research-7b2f1bba24055cb24854",
-      "streamTitle": "Coalition causal discovery needs semantic and intervention governance",
-      "streamSummary": "FLODO reframes causal discovery for settings where different agents see different variables, use different labels, and cannot simply pool all raw data. The protocol lets local agents exchange structural information while humans manage intervention strategy, semantic alignment, and disputed edges. It also treats simultaneous interventions as a source of contamination. The contribution is highly relevant to coalition and interagency analysis, although the peer-reviewed protocol remains an early framework rather than a broadly validated operational system.",
-      "attribution": "Gregorini & Meyer-Vitali — HHAI 2026",
-      "sourceUrl": "https://doi.org/10.3233/faia260522",
+      "itemId": "research-0ac8d29e1592464e265c",
+      "streamTitle": "Explainable AI helped people build better mental models of a self-driving car",
+      "streamSummary": "A Nature study tested concept-based explanations of a self-driving car’s neural planner. Experts and non-experts generally formed more accurate mental models after seeing explanations, and better mental models were associated with better counterfactual predictions. A separate 100-person study also found better situational awareness for surprising road events. The expert sample was small and the results concern one autonomous-driving architecture, so generalization remains uncertain.",
+      "attribution": "Kenny et al. — Nature",
+      "sourceUrl": "https://doi.org/10.1038/s41586-026-10950-5",
       "categories": [
         "application-analysis",
         "technology-modeling"
       ],
-      "sourcePublishedAt": "2026-08-19",
-      "dateAdded": "2026-09-02"
+      "sourcePublishedAt": "2026-09-02",
+      "dateAdded": "2026-09-09"
     },
     {
-      "itemId": "research-7a03b8c4f3c3a96ec7c9",
-      "streamTitle": "A dynamic FCM reconstructed famine-like conditions that static thresholds missed",
-      "streamSummary": "A retrospective Fuzzy Cognitive Map integrated 21 factors and 74 weighted relationships to reconstruct the 2017 Ayod County famine crisis. The model generated a famine-like trajectory during months that later survey evidence supported, even though the area was never formally classified as famine by the static IPC process. The case illustrates how a dynamic systems model can integrate sparse evidence and feedback over time, while its largely expert-defined weights remain hypotheses rather than identified causal effects.",
-      "attribution": "Matthew Day — Journal of Public Health Policy",
-      "sourceUrl": "https://doi.org/10.1057/s41271-026-00643-8",
+      "itemId": "research-89d0fc7c0d0187347b7b",
+      "streamTitle": "LLM agents can scale reproducibility checks—but exact effect recovery is still unreliable",
+      "streamSummary": "An agentic LLM pipeline reanalyzed 180 social-science studies by writing and executing statistical code from papers and datasets. Qualitative conclusions often matched the originals, but exact effect-size recovery was much weaker: only about one quarter of valid runs landed within ±0.05 Cohen’s d. In a human-comparison subset, broader recovery was similar. The authors caution that reproducing the published result is not the same as independently validating the scientific claim.",
+      "attribution": "Holtdirk et al. — arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2606.13670",
       "categories": [
         "application-analysis",
         "technology-modeling"
       ],
-      "sourcePublishedAt": "2026-08-12",
-      "dateAdded": "2026-09-02"
+      "sourcePublishedAt": "2026-06-11",
+      "dateAdded": "2026-09-09"
     },
     {
-      "itemId": "research-5c45828576b7a164dfb3",
-      "streamTitle": "ROK–U.S. I2E2 treats information effects as a coordination-system problem",
-      "streamSummary": "The inaugural ROK–U.S. I2E2 tabletop exercise organized work around countering foreign disinformation, synchronizing cyber/space/electromagnetic responses, and aligning strategic communication across agencies and coalition partners. The important shift is upstream: the exercise treats coordination architecture, timing, attribution, and cross-domain consistency as part of the information-effect system. The official report documents process and institutionalization, not evidence that the resulting communications changed audience behavior.",
-      "attribution": "DVIDS / U.S. Forces Korea",
-      "sourceUrl": "https://www.dvidshub.net/news/569599/rok-us-alliance-conducts-inaugural-communication-strategy-i2e2-ttx-with-interagency-and-coalition-partners",
+      "itemId": "research-44504328793e87f370d2",
+      "streamTitle": "A new 'assurance disruption' concept explains how uncertainty can halt intact systems",
+      "streamSummary": "A Military Review analysis argues that adversaries can create strategic effects by undermining confidence in navigation, safety, insurance, or verification systems rather than destroying infrastructure. The proposed chain is signal manipulation, verification failure, precautionary shutdown, and cascading disruption. The concept is relevant to Gulf shipping and military logistics, but it remains analytical rather than experimentally validated; the author notes no publicly reported U.S. deployment has been stopped solely this way.",
+      "attribution": "Hamzeh Abu Nowar — Military Review",
+      "sourceUrl": "https://www.armyupress.army.mil/Journals/Military-Review/English-Edition-Archives/September-October-2026/The-Assurance-War",
+      "categories": [
+        "operations-strategy",
+        "technology-modeling",
+        "application-analysis"
+      ],
+      "sourcePublishedAt": null,
+      "dateAdded": "2026-09-09"
+    },
+    {
+      "itemId": "research-f23934ac4c60b9c49bc9",
+      "streamTitle": "Philippine military says territorial narratives are part of a synchronized influence effort",
+      "streamSummary": "The Armed Forces of the Philippines says renewed claims involving Batanes should be viewed alongside narratives about Scarborough Shoal and Second Thomas Shoal as a persistent foreign malign influence effort aimed at shaping perceptions of Philippine sovereignty and government performance. The framing is operationally important because it treats narratives and coercive actions as a campaign rather than isolated incidents. But the public reporting establishes an official assessment, not independent proof of campaign coordination or measurable audience effects.",
+      "attribution": "Armed Forces of the Philippines — reported by GMA News",
+      "sourceUrl": "https://www.gmanetwork.com/news/topstories/nation/1001597/afp-china-s-batanes-claim-part-of-coordinated-malign-influence-campaign/story",
       "categories": [
         "operations-strategy",
         "application-analysis"
       ],
-      "sourcePublishedAt": "2026-07-09",
-      "dateAdded": "2026-09-02"
+      "sourcePublishedAt": "2026-09-08",
+      "dateAdded": "2026-09-08"
     },
     {
-      "itemId": "research-d852731b34eb31b3adad",
-      "streamTitle": "LLMs may be useful experiment forecasters even when they are not valid synthetic participants",
-      "streamSummary": "A Nature validation study compared GPT-4 forecasts with hundreds of treatment effects from real preregistered experiments. The model captured the relative pattern of effects surprisingly well and performed similarly to pooled human forecasts, including on some studies unavailable before its training cutoff. It also systematically overestimated effect sizes. That makes the most defensible use case a screening layer—helping prioritize what to test—rather than treating simulated responses as empirical human evidence.",
-      "attribution": "Ashokkumar et al. — Nature",
-      "sourceUrl": "https://doi.org/10.1038/s41586-026-10742-x",
+      "itemId": "research-920bf2b8dd1f7533ddb5",
+      "streamTitle": "Monthly cash transfers slowed one epigenetic ageing measure in 4-year-olds—but did not improve the study’s cognitive biomarker",
+      "streamSummary": "A randomized U.S. trial gave mothers with low income either $333 or $20 per month during their child’s first four years. Children in the higher-cash group showed a 0.17-standard-deviation slower DunedinPACE epigenetic ageing measure at age 4. The trial did not support its hypothesis that higher cash would improve an epigenetic cognition marker, and it found no clear maternal epigenetic effect. The biological result is causal within the trial, but whether it persists or translates into better health or behavior remains unknown.",
+      "attribution": "Raffington et al. — Nature Human Behaviour",
+      "sourceUrl": "https://doi.org/10.1038/s41562-026-02568-4",
+      "categories": [
+        "behavioral-science",
+        "application-analysis"
+      ],
+      "sourcePublishedAt": "2026-09-08",
+      "dateAdded": "2026-09-08"
+    },
+    {
+      "itemId": "research-30c0f5e7f58e3d462e77",
+      "streamTitle": "Causal machine learning asks a better policy question: where and for whom does this work?",
+      "streamSummary": "A new Nature Energy methods Comment explains how causal machine learning can support policy design by estimating how intervention effects vary across contexts and groups. That is different from ordinary machine learning, which may predict outcomes accurately without estimating what would change under an intervention. The approach is promising for targeted decision support, including PSYWERX-style intervention analysis, but it does not eliminate the need for a credible counterfactual, good measurement and defensible causal assumptions.",
+      "attribution": "Bosetti, Diaz Anadon & Feuerriegel — Nature Energy",
+      "sourceUrl": "https://doi.org/10.1038/s41560-026-02134-2",
       "categories": [
         "technology-modeling",
         "application-analysis"
       ],
-      "sourcePublishedAt": "2026-07-08",
-      "dateAdded": "2026-09-02"
+      "sourcePublishedAt": "2026-09-08",
+      "dateAdded": "2026-09-08"
     },
     {
-      "itemId": "research-e15cbac8366863129332",
-      "streamTitle": "A truthful norm correction can move public and private behavior in different directions",
-      "streamSummary": "A randomized experiment corrected participants’ beliefs about how many Americans support carbon taxation. The correction improved norm accuracy but did not increase average private climate donations; among people who had overestimated support, donations actually fell. At the same time, treated participants became more willing to take a publicly observable action. The study shows why norm interventions need baseline beliefs and behavior type: the same accurate information can have different—and sometimes opposite—effects across audiences and outcomes.",
-      "attribution": "Galdikiene, Jaraite & Kajackaite — Journal of Economic Behavior & Organization",
-      "sourceUrl": "https://doi.org/10.1016/j.jebo.2026.107601",
-      "categories": [
-        "behavioral-science",
-        "application-analysis"
-      ],
-      "sourcePublishedAt": "2026-07-01",
-      "dateAdded": "2026-09-02"
-    },
-    {
-      "itemId": "research-e41327873741b816f51f",
-      "streamTitle": "Physical proximity on the Senate floor measurably shifted real votes",
-      "streamSummary": "An NBER natural experiment exploits U.S. Senate seating assignments to estimate peer influence on actual legislative votes. Senators seated near one another shifted each other’s voting by an estimated 11.9 percentage points, with effects concentrated within about 20 feet; computer-vision analysis of C-SPAN footage showed more face-to-face interaction among nearby members. The study highlights physical exposure opportunity as a real influence variable, while the observed interaction process is supporting mechanism evidence rather than a separately randomized mediator.",
-      "attribution": "Cohen & Li — NBER Working Paper",
-      "sourceUrl": "https://doi.org/10.3386/w34925",
-      "categories": [
-        "behavioral-science",
-        "application-analysis"
-      ],
-      "sourcePublishedAt": "2026-03-01",
-      "dateAdded": "2026-09-02"
-    },
-    {
-      "itemId": "research-91a8f07188722de072ca",
-      "streamTitle": "Turning an algorithmic feed on changed attitudes and follow networks; turning it off did not simply reverse them",
-      "streamSummary": "A seven-week randomized field experiment among active U.S. X users found that switching people from a chronological to an algorithmic feed increased engagement, shifted some political attitudes in a conservative direction, and led participants to follow more conservative activist accounts. Moving existing algorithmic-feed users to chronological feeds did not create an equal and opposite effect. The asymmetry matters because an exposure regime can alter the follow network that determines later exposure, creating path dependence beyond the immediate feed treatment.",
-      "attribution": "Gauthier et al. — Nature",
-      "sourceUrl": "https://doi.org/10.1038/s41586-026-10098-2",
-      "categories": [
-        "behavioral-science",
-        "technology-modeling",
-        "application-analysis"
-      ],
-      "sourcePublishedAt": "2026-02-18",
-      "dateAdded": "2026-09-02"
-    },
-    {
-      "itemId": "research-69b087f9e650fdcd8543",
-      "streamTitle": "Public attribution turns an intelligence judgment into a strategic intervention",
-      "streamSummary": "German officials moved toward publicly blaming Russia for an attempted explosive-drone attack at Leipzig/Halle Airport, according to Reuters, while signaling possible consequences. The important analytical point is not only who is blamed: public attribution itself can shape allied cohesion, public threat perception, support for countermeasures, and adversary expectations. Because the underlying intelligence is not fully public and Moscow denied responsibility, the attribution claim should remain distinct from independently established ground truth.",
-      "attribution": "Reuters",
-      "sourceUrl": "https://www.reuters.com/world/germany-blame-moscow-airport-drone-incident-tuesday-bild-reports-2026-09-01",
+      "itemId": "research-dc1f3d9ad070d29c29cd",
+      "streamTitle": "NATO warning can fail after the intelligence arrives",
+      "streamSummary": "A new NATO Defense College paper argues that warning performance is a spectrum, not a pass-or-fail event. Looking at Kabul, Russia’s 2022 invasion of Ukraine and the 2023 Niger coup, it identifies a recurring problem in turning divergent allied assessments into operational consensus. The proposed fixes include rapid after-action reviews, divergence drills, contingency packages and red teaming. The analysis does not prove these measures will prevent future surprises, but it usefully shifts attention from intelligence collection to the full warning-to-action chain.",
+      "attribution": "Nikki Ikani — NATO Defense College",
+      "sourceUrl": "https://www.ndc.nato.int/heed-the-warning-how-nato-can-find-and-fill-the-gaps-in-its-warning-systems",
       "categories": [
         "operations-strategy",
         "application-analysis"
       ],
-      "sourcePublishedAt": "2026-09-01",
-      "dateAdded": "2026-09-01"
+      "sourcePublishedAt": "2026-09-07",
+      "dateAdded": "2026-09-08"
     },
     {
-      "itemId": "research-9cca4a6e107f15636d98",
-      "streamTitle": "Defensive states can change how threat and reward are weighed",
-      "streamSummary": "A high-precision neuroscience study found that threat-related cardiac slowing was associated with stronger weighting of both threat and reward during approach–avoidance decisions. Neural value signals also predicted choices before the overt response. The result complicates the simple idea that stronger defensive reactions always mean more avoidance: physiological state may change how competing information is integrated. The evidence is strong for the laboratory task but should not be generalized directly to real-world crisis or deterrence decisions.",
-      "attribution": "Klaassen et al. — Communications Biology",
-      "sourceUrl": "https://doi.org/10.1038/s42003-026-10852-2",
+      "itemId": "research-529d52b2b36b3020932b",
+      "streamTitle": "Language models appear to use confidence to decide when not to answer",
+      "streamSummary": "A new Nature Machine Intelligence study tested whether LLM confidence actually drives behavior. Across multiple models, confidence strongly predicted abstention, and researchers causally shifted answer-versus-abstain behavior by steering confidence-related internal activations. Models also adjusted when given different confidence thresholds. The result suggests uncertainty can be part of an agent’s decision policy rather than just a displayed score, but confidence still does not equal correctness and the findings should not be read as proof of human-like metacognition.",
+      "attribution": "Kumaran et al. — Nature Machine Intelligence",
+      "sourceUrl": "https://doi.org/10.1038/s42256-026-01293-x",
       "categories": [
-        "behavioral-science",
+        "technology-modeling",
         "application-analysis"
       ],
-      "sourcePublishedAt": "2026-08-31",
-      "dateAdded": "2026-09-01"
+      "sourcePublishedAt": "2026-09-07",
+      "dateAdded": "2026-09-08"
     },
     {
-      "itemId": "research-e3ca92ac166c47cebb23",
-      "streamTitle": "Behavioral theory needs a formalization layer before it becomes an agent rule",
-      "streamSummary": "MOZAIC provides a systematic way to translate verbal social-science theories into mathematical decision rules for agent-based models. The authors demonstrate the method with rational choice, bounded rationality, habit, prospect theory, and descriptive norms, producing reusable mathematical building blocks. The contribution addresses a common problem: two simulations can cite the same theory but implement it very differently. Formalization makes those choices inspectable, though it does not prove that a particular mathematical function is correct for a target population.",
-      "attribution": "Frontiers in Social Psychology",
-      "sourceUrl": "https://doi.org/10.3389/frsps.2026.1772740",
+      "itemId": "research-5582c6e75289db59d180",
+      "streamTitle": "Sharing code is not enough if nobody can rerun the full analysis",
+      "streamSummary": "A new Nature Human Behaviour Comment argues that computational reproducibility often fails for mundane reasons: unscripted steps, changing software environments, unclear documentation and fragile file storage. The authors recommend scripting the entire pipeline, capturing the computational environment, documenting code and data for human readers, and depositing materials in persistent repositories. It is a recommendations paper rather than a new experiment, but the message is practical: trustworthy computational research depends as much on workflow governance as on the statistical method itself.",
+      "attribution": "Reiss et al. — Nature Human Behaviour",
+      "sourceUrl": "https://doi.org/10.1038/s41562-026-02570-w",
       "categories": [
         "application-analysis",
-        "technology-modeling",
-        "behavioral-science"
+        "technology-modeling"
       ],
-      "sourcePublishedAt": "2026-08-12",
-      "dateAdded": "2026-09-01"
+      "sourcePublishedAt": "2026-09-01",
+      "dateAdded": "2026-09-08"
     },
     {
-      "itemId": "research-e8d855aab8405d1ec647",
-      "streamTitle": "Influence simulation needs networks and narrative dynamics—not just personas",
-      "streamSummary": "The LAND/GhostField demonstration simulated more than 314,000 cyber-social agents and human actors exchanging over half a million messages across a month-long synthetic scenario. Its central design choice is important: influence emerges from the interaction of network structure, repeated exposure, and evolving discourse rather than from persona traits alone. The scale and architecture are notable, but the scenario remains synthetic; convincing emergent agent behavior is not evidence that real populations would behave the same way.",
-      "attribution": "Ng & Carley — LAND preprint",
-      "sourceUrl": "https://arxiv.org/abs/2608.00929",
-      "categories": [
-        "technology-modeling",
-        "application-analysis"
-      ],
-      "sourcePublishedAt": "2026-08-02",
-      "dateAdded": "2026-09-01"
-    },
-    {
-      "itemId": "research-ea68d7d088db234c36d2",
-      "streamTitle": "LLM social simulation needs a protocol and an audit trail",
-      "streamSummary": "MASS turns LLM-agent role-play into a more explicit research protocol by specifying roles, information boundaries, round schedules, scenario rules, structured outputs, logs, model versions, and validation targets. The framework was demonstrated across three real-world-inspired cases and is designed to make simulations easier to audit and reproduce. Its authors appropriately frame it as mechanism rehearsal and research-design preparation rather than a replacement for experiments or causal inference.",
-      "attribution": "Hu & Shen — AI",
-      "sourceUrl": "https://doi.org/10.3390/ai7080279",
-      "categories": [
-        "technology-modeling",
-        "application-analysis"
-      ],
-      "sourcePublishedAt": "2026-07-24",
-      "dateAdded": "2026-09-01"
-    },
-    {
-      "itemId": "research-2bda4eb48b487b237787",
-      "streamTitle": "Community Notes sharply reduced later reposting—but often arrived after the viral phase",
-      "streamSummary": "A large quasi-experimental study of 237,180 fact-checked cascades on X estimated that Community Notes reduced subsequent reposting by 61.2% after display and substantially increased author deletion. The catch was timing: notes often appeared only after a post had already experienced its fastest growth. The study therefore separates treatment efficacy from system effectiveness. A correction can work once delivered and still have limited total impact if it arrives too late.",
-      "attribution": "Nature Communications",
-      "sourceUrl": "https://doi.org/10.1038/s41467-026-72597-0",
+      "itemId": "research-b6e944d00c4d9a8b1023",
+      "streamTitle": "Nearly half of cross-sectional social-science papers used causal language",
+      "streamSummary": "An analysis of 194,631 cross-sectional social-science articles found causal language in 46.3% of titles or abstracts, rising to more than 60% by 2024. In a reader experiment, clear methodological labels and associational wording reduced mistaken causal interpretations. Five LLMs sometimes amplified the problem by dropping hedges or introducing causal language, although caution prompts helped. For research databases and AI summaries, the lesson is straightforward: study design and causal-evidence strength need to be explicit metadata, not something inferred from confident prose.",
+      "attribution": "Isch et al. — Nature Human Behaviour",
+      "sourceUrl": "https://doi.org/10.1038/s41562-026-02553-x",
       "categories": [
         "application-analysis",
         "behavioral-science",
         "technology-modeling"
       ],
-      "sourcePublishedAt": "2026-05-05",
-      "dateAdded": "2026-09-01"
+      "sourcePublishedAt": "2026-08-24",
+      "dateAdded": "2026-09-08"
     },
     {
-      "itemId": "research-37f4cf6f0d2b9c0d8f8a",
-      "streamTitle": "A major influencer measurably shifted high-stakes university-major choices",
-      "streamSummary": "A natural experiment using more than 3.3 million Chinese admissions observations linked a prominent influencer’s public advice to changes in real university-major choices. A negative signal about Journalism and Communication was followed by substantially worse admission ranks, especially at elite universities, while an endorsed field saw smaller positive effects. The design includes event-study and placebo checks, making this unusually strong evidence on consequential behavior, though the specific psychological mechanism and transfer to other contexts remain less certain.",
-      "attribution": "Scientific Reports",
-      "sourceUrl": "https://doi.org/10.1038/s41598-026-47742-w",
+      "itemId": "research-038552d7c1868eaa9a2a",
+      "streamTitle": "Paying attention to an itch changed the body’s inflammatory response",
+      "streamSummary": "Three preregistered experiments found that healthy volunteers had smaller and faster-resolving histamine-induced skin inflammation when they focused on sensations at the irritated site instead of distracting themselves. Follow-up tests suggested both sensory feedback and parasympathetic activity may contribute. The result is a striking example of cognition affecting physiology, but it is still a small, short-term laboratory model of acute skin inflammation and should not be generalized to chronic disease or infection.",
+      "attribution": "Mizrachi, Rottem & Rozenkrantz — Nature Human Behaviour",
+      "sourceUrl": "https://doi.org/10.1038/s41562-026-02541-1",
       "categories": [
         "behavioral-science",
         "application-analysis"
       ],
-      "sourcePublishedAt": "2026-04-14",
-      "dateAdded": "2026-09-01"
+      "sourcePublishedAt": "2026-08-17",
+      "dateAdded": "2026-09-08"
+    },
+    {
+      "itemId": "research-aeb89ac07206dde0348f",
+      "streamTitle": "Australia’s R U OK? campaign improved well-being, but not detectable short-run help-seeking",
+      "streamSummary": "A quasi-experimental evaluation of Australia’s R U OK? Day found a modest improvement in population mental well-being as the campaign grew, with the largest estimated gains among men aged 25–49. Researchers did not detect corresponding increases in mental-health treatment plans or prescriptions, and suicide-related outcomes were too rare for precise conclusions. The study is a useful reminder that awareness, social support, well-being and behavioral follow-through are different outcomes and can move differently.",
+      "attribution": "Black et al. — Journal of Marketing",
+      "sourceUrl": "https://doi.org/10.1177/00222429261467752",
+      "categories": [
+        "behavioral-science",
+        "application-analysis"
+      ],
+      "sourcePublishedAt": "2026-06-29",
+      "dateAdded": "2026-09-08"
     }
   ],
   "nextPage": "public_feed_pages/page-0011.json"
