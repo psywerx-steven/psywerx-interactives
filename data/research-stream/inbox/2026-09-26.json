@@ -1,0 +1,185 @@
+{
+  "schemaVersion": "psywerx-research-items-v1",
+  "briefDate": "2026-09-26",
+  "briefType": "daily",
+  "items": [
+    {
+      "sourceItemNumber": 1,
+      "primaryCategory": "behavioral-science",
+      "categories": [
+        "behavioral-science",
+        "application-analysis"
+      ],
+      "questionAndWhy": "Do land acknowledgements change attitudes or behavior, rather than only signal institutional values?",
+      "whatTheyDid": "Researchers used a randomized design to test exposure to land acknowledgements and measured downstream responses.",
+      "whatTheyFound": "The study found limited and outcome-specific effects rather than a broad improvement across attitudes and behavior.",
+      "whatItMeans": "Symbolic communication should be evaluated on the exact outcome it is intended to change; visibility of a message is not evidence of behavioral effect.",
+      "streamTitle": "Land acknowledgements produced narrower effects than their symbolic prominence might imply",
+      "streamSummary": "A randomized study tested whether land acknowledgements change downstream attitudes and responses. Effects were limited and outcome-specific rather than uniformly positive. The result is useful for separating institutional signaling from measurable behavioral impact: a message can be highly visible without producing broad change, and null outcomes should remain visible when evaluating symbolic interventions.",
+      "attribution": "Nature Human Behaviour",
+      "sourceUrl": "https://doi.org/10.1038/s41562-026-02520-6",
+      "sourcePublishedAt": null,
+      "sourceKey": "10.1038/s41562-026-02520-6",
+      "sourceVerified": true,
+      "briefDate": "2026-09-26",
+      "briefType": "daily",
+      "streamDecision": "publish"
+    },
+    {
+      "sourceItemNumber": 2,
+      "primaryCategory": "behavioral-science",
+      "categories": [
+        "behavioral-science",
+        "application-analysis"
+      ],
+      "questionAndWhy": "Can socially structured exposure be summarized with an R0-like measure for a physiological outcome such as blood pressure?",
+      "whatTheyDid": "Researchers adapted a reproduction-number style framework to social-network exposure and blood-pressure data.",
+      "whatTheyFound": "The resulting measure quantified how social exposure clustered with elevated blood pressure, but it did not establish person-to-person biological transmission.",
+      "whatItMeans": "The method is a useful analogy for spread-like social processes, provided the metric is not interpreted as literal contagion or causal transmission.",
+      "streamTitle": "An R0-style social metric quantified clustered blood-pressure risk without proving contagion",
+      "streamSummary": "A study adapted an R0-style framework to social-network patterns in blood pressure. The metric summarized how risk clustered through social exposure, but the design does not show that hypertension literally spreads from person to person. The methodological value is in representing propagation-like social structure while keeping causal transmission separate from statistical clustering.",
+      "attribution": "Scientific Reports",
+      "sourceUrl": "https://doi.org/10.1038/s41598-026-49304-6",
+      "sourcePublishedAt": null,
+      "sourceKey": "10.1038/s41598-026-49304-6",
+      "sourceVerified": true,
+      "briefDate": "2026-09-26",
+      "briefType": "daily",
+      "streamDecision": "publish"
+    },
+    {
+      "sourceItemNumber": 3,
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling",
+        "application-analysis"
+      ],
+      "questionAndWhy": "Can graph adaptation improve hate-speech detection when the social or linguistic environment changes?",
+      "whatTheyDid": "AdaGraph-HATE used adaptive graph representations to transfer hate-speech classification across domains.",
+      "whatTheyFound": "The reported benchmarks improved cross-domain classification relative to tested baselines, with performance depending on the target data and graph construction.",
+      "whatItMeans": "Cross-context moderation requires explicit transfer evaluation; benchmark gains do not establish robustness to live adversarial language.",
+      "streamTitle": "Adaptive graph modeling improved cross-domain hate-speech detection in benchmark tests",
+      "streamSummary": "AdaGraph-HATE adapts graph representations to classify hate speech across changing domains. The reported experiments improved transfer relative to comparison methods, but the gains remain benchmark-specific and depend on how the graph and target domain are represented. The work is relevant to information-environment analysis because language and network context can shift together; live adversarial robustness still requires separate validation.",
+      "attribution": "Scientific Reports",
+      "sourceUrl": "https://doi.org/10.1038/s41598-026-70502-9",
+      "sourcePublishedAt": null,
+      "sourceKey": "10.1038/s41598-026-70502-9",
+      "sourceVerified": true,
+      "briefDate": "2026-09-26",
+      "briefType": "daily",
+      "streamDecision": "publish"
+    },
+    {
+      "sourceItemNumber": 4,
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling",
+        "application-analysis"
+      ],
+      "questionAndWhy": "How can a model reason over large visual or spatial structures without processing every element equally?",
+      "whatTheyDid": "NNV3 proposed a neural approach for more efficient structured visual reasoning and evaluated it on benchmark tasks.",
+      "whatTheyFound": "The preprint reported improved efficiency and task performance on the tested benchmarks, but no field deployment evidence.",
+      "whatItMeans": "Efficiency claims should be paired with task-specific accuracy and out-of-distribution testing before operational use.",
+      "streamTitle": "NNV3 targeted more efficient structured visual reasoning",
+      "streamSummary": "NNV3 is a preprint proposing a more efficient neural architecture for structured visual reasoning. Reported benchmark results suggest useful gains, but the evidence remains limited to the tested tasks and does not establish reliability in operational imagery or unfamiliar environments. The practical lesson is to evaluate efficiency and generalization together rather than treating reduced compute as a standalone capability gain.",
+      "attribution": "arXiv preprint",
+      "sourceUrl": "https://arxiv.org/abs/2609.30050",
+      "sourcePublishedAt": null,
+      "sourceKey": "10.48550/arxiv.2609.30050",
+      "sourceVerified": true,
+      "briefDate": "2026-09-26",
+      "briefType": "daily",
+      "streamDecision": "publish"
+    },
+    {
+      "sourceItemNumber": 5,
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling",
+        "application-analysis"
+      ],
+      "questionAndWhy": "Can embodied-agent simulation be accelerated without changing the underlying task behavior?",
+      "whatTheyDid": "EgoSpeedUp introduced methods to speed egocentric embodied-agent simulation and compared runtime and task outputs.",
+      "whatTheyFound": "The preprint reported substantial simulation speedups under its tested settings while attempting to preserve task fidelity.",
+      "whatItMeans": "Faster simulation can make experimentation cheaper, but fidelity checks matter because speedups that alter dynamics can invalidate downstream conclusions.",
+      "streamTitle": "EgoSpeedUp accelerated embodied-agent simulation while trying to preserve task fidelity",
+      "streamSummary": "EgoSpeedUp proposes techniques for faster egocentric embodied-agent simulation. The reported results show meaningful runtime reductions in the tested environments while preserving key task outputs. For simulation-heavy research, the important question is not speed alone but whether acceleration changes the dynamics being studied. Fidelity, determinism, and downstream policy performance should therefore accompany runtime claims.",
+      "attribution": "arXiv preprint",
+      "sourceUrl": "https://arxiv.org/abs/2609.29310",
+      "sourcePublishedAt": null,
+      "sourceKey": "10.48550/arxiv.2609.29310",
+      "sourceVerified": true,
+      "briefDate": "2026-09-26",
+      "briefType": "daily",
+      "streamDecision": "publish"
+    },
+    {
+      "sourceItemNumber": 6,
+      "primaryCategory": "operations-strategy",
+      "categories": [
+        "operations-strategy",
+        "technology-modeling",
+        "application-analysis"
+      ],
+      "questionAndWhy": "How is Ukraine using AI to turn accumulated combat data into operational planning support?",
+      "whatTheyDid": "Ukraine's Defense AI Center A1 described SPECTR, an AI platform for battlefield-data analysis, pattern detection, recommendations, and headquarters automation; several units were already testing it.",
+      "whatTheyFound": "The ministry said SPECTR is intended to help predict possible enemy actions and accelerate staff work, but it released no public accuracy or mission-effect metrics.",
+      "whatItMeans": "This is evidence of operational integration and testing, not demonstrated predictive advantage. Follow-on evaluation should measure forecast calibration, operator use, and decision quality.",
+      "streamTitle": "Ukraine began testing SPECTR to turn combat data into planning recommendations",
+      "streamSummary": "Ukraine's Defense AI Center A1 is developing SPECTR to analyze battlefield data, identify patterns, generate planning recommendations, and reduce headquarters routine work. Several combat units were already testing the system. Officials also described a goal of predicting enemy actions, but no public forecast accuracy, calibration, or mission-effect results were released. The development shows integration of AI into staff workflows rather than demonstrated battlefield superiority.",
+      "attribution": "Ukraine Ministry of Defence",
+      "sourceUrl": "https://mod.gov.ua/en/news/less-routine-for-staff-officers-spectr-ai-platform-to-analyse-combat-data-and-predict-enemy-actions",
+      "sourcePublishedAt": "2026-09-25",
+      "sourceKey": "https://mod.gov.ua/en/news/less-routine-for-staff-officers-spectr-ai-platform-to-analyse-combat-data-and-predict-enemy-actions",
+      "sourceVerified": true,
+      "briefDate": "2026-09-26",
+      "briefType": "daily",
+      "streamDecision": "publish"
+    },
+    {
+      "sourceItemNumber": 7,
+      "primaryCategory": "operations-strategy",
+      "categories": [
+        "operations-strategy",
+        "technology-modeling",
+        "application-analysis"
+      ],
+      "questionAndWhy": "Can battlefield data from Ukraine accelerate development of AI-enabled drone swarms in allied industry?",
+      "whatTheyDid": "The UK Ministry of Defence opened a competition giving selected British companies access to Ukraine's Avengers Labs datasets for autonomous swarming and collaborative drone operations.",
+      "whatTheyFound": "The program created a structured path from battlefield data to model development and later testing, but no swarm-performance results were yet available.",
+      "whatItMeans": "Access to high-value operational data is an enabling condition, not proof of effective autonomy. The key measures will be transfer, testing, safety, and field performance.",
+      "streamTitle": "UK firms gained access to Ukraine's Avengers Labs data for AI drone-swarm development",
+      "streamSummary": "The UK launched a competition allowing selected companies to use Ukraine's Avengers Labs battlefield datasets to develop AI-enabled drone swarms and collaborative autonomy. The initiative creates a concrete data-sharing and testing pathway between wartime experience and allied industry. It does not yet show that the resulting models improve swarm performance or survive contested conditions; those outcomes require later testing.",
+      "attribution": "UK Ministry of Defence",
+      "sourceUrl": "https://www.gov.uk/government/news/british-companies-to-access-prized-ukraine-data-to-develop-ai-drone-swarms",
+      "sourcePublishedAt": "2026-09-25",
+      "sourceKey": "https://www.gov.uk/government/news/british-companies-to-access-prized-ukraine-data-to-develop-ai-drone-swarms",
+      "sourceVerified": true,
+      "briefDate": "2026-09-26",
+      "briefType": "daily",
+      "streamDecision": "publish"
+    },
+    {
+      "sourceItemNumber": 8,
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling",
+        "application-analysis"
+      ],
+      "questionAndWhy": "Can backward reasoning over AND-OR structures improve complex problem solving while keeping dependencies explicit?",
+      "whatTheyDid": "Researchers developed a backward-reasoning method over AND-OR structures and evaluated it on structured decision problems.",
+      "whatTheyFound": "The method improved solution search in the reported tasks, conditional on the supplied problem representation.",
+      "whatItMeans": "Explicit decomposition can make reasoning more inspectable, but performance still depends on whether the graph captures the right alternatives and dependencies.",
+      "streamTitle": "Backward reasoning over AND-OR structures improved structured search in benchmark problems",
+      "streamSummary": "A methods paper developed backward reasoning over AND-OR structures to solve complex problems by tracing goals through explicit alternatives and dependencies. Reported results improved search on the tested problems, but the model inherits the quality of its representation. For decision support, the value is transparent decomposition rather than automatic proof that the encoded graph is complete or causally correct.",
+      "attribution": "Journal of Heuristics",
+      "sourceUrl": "https://doi.org/10.1007/s42113-026-00335-2",
+      "sourcePublishedAt": null,
+      "sourceKey": "10.1007/s42113-026-00335-2",
+      "sourceVerified": true,
+      "briefDate": "2026-09-26",
+      "briefType": "daily",
+      "streamDecision": "publish"
+    }
+  ]
+}
