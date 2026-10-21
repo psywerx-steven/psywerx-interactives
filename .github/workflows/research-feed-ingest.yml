@@ -5,6 +5,11 @@ on:
     branches: [research-data]
     paths:
       - 'data/research-stream/inbox/*.json'
+      - 'homepage/tools/research_pipeline.py'
+      - 'homepage/tests/test_research_pipeline.py'
+      - '.github/workflows/research-feed-ingest.yml'
+  schedule:
+    - cron: '23 * * * *'
   workflow_dispatch:
 
 permissions:
@@ -17,48 +22,83 @@ concurrency:
 jobs:
   ingest-and-build:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - name: Check out research data branch
         uses: actions/checkout@v4
         with:
           ref: research-data
           fetch-depth: 0
-
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-
-      - name: Validate and ingest Daily Brief handoffs
-        shell: bash
-        run: |
-          set -euo pipefail
-          shopt -s nullglob
-          files=(data/research-stream/inbox/*.json)
-          if [ ${#files[@]} -eq 0 ]; then
-            echo 'No research handoff files found.'
-            exit 0
-          fi
-          IFS=$'\n' sorted=($(printf '%s\n' "${files[@]}" | sort))
-          unset IFS
-          for file in "${sorted[@]}"; do
-            echo "Ingesting $file"
-            python homepage/tools/ingest_research_items.py --input "$file"
-          done
-
-      - name: Build live explorer data
-        run: python homepage/tools/build_research_explorer.py
-
-      - name: Commit live research data
+      - name: Test publication guards and canonical integration
+        id: tests
+        run: python -m unittest discover -s homepage/tests -p test_research_pipeline.py -v
+      - name: Reconcile, validate, and commit generated data with retries
+        id: reconcile
+        continue-on-error: true
         shell: bash
         run: |
           set -euo pipefail
           git config user.name 'PSYWERX Research Bot'
           git config user.email 'actions@users.noreply.github.com'
-          git add data/research-stream/research_items.jsonl data/research-stream/public_feed.json data/research-stream/public_feed_pages data/research-stream/explorer.json data/research-stream/briefs
-          if git diff --cached --quiet; then
-            echo 'No generated research-data changes to commit.'
-            exit 0
-          fi
-          git commit -m 'Update PSYWERX research data'
-          git push origin research-data
+          for attempt in 1 2 3 4; do
+            git fetch origin research-data
+            # Disposable runner worktree only; never reset or force-push the remote branch.
+            git reset --hard origin/research-data
+            code=0
+            python homepage/tools/research_pipeline.py reconcile --report "$RUNNER_TEMP/reconcile.json" || code=$?
+            python -c 'import json,sys; assert json.load(open(sys.argv[1])).get("safeToCommit") is True' "$RUNNER_TEMP/reconcile.json"
+            git add -A -- data/research-stream
+            python - <<'PY'
+          import subprocess
+          from pathlib import PurePosixPath
+          allowed = {'research_items.jsonl', 'archive', 'briefs', 'public_feed.json', 'public_feed_pages', 'explorer.json', 'receipts'}
+          for path in subprocess.check_output(['git', 'diff', '--cached', '--name-only'], text=True).splitlines():
+              parts = PurePosixPath(path).parts
+              assert len(parts) >= 3 and parts[:2] == ('data', 'research-stream') and parts[2] in allowed, path
+          PY
+            if git diff --cached --quiet; then
+              exit "$code"
+            fi
+            git commit -m 'Reconcile PSYWERX research data and verified ingestion receipts'
+            if git push origin HEAD:research-data; then
+              exit "$code"
+            fi
+            # Re-fetch and regenerate; never rebase stale generated projections.
+            sleep "$((attempt * 3))"
+          done
+          echo 'Generated-data push failed after four fresh-state attempts.' >&2
+          exit 1
+      - name: Verify expected publication and live explorer
+        id: health
+        continue-on-error: true
+        run: python homepage/tools/research_pipeline.py check --live --report "$RUNNER_TEMP/publication-health.json"
+      - name: Preserve machine-readable verification reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: research-publication-checks-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/reconcile.json
+            ${{ runner.temp }}/publication-health.json
+          if-no-files-found: warn
+          retention-days: 14
+      - name: Report failed checkpoints without hiding partial failures
+        if: always()
+        env:
+          TESTS: ${{ steps.tests.outcome }}
+          RECONCILE: ${{ steps.reconcile.outcome }}
+          HEALTH: ${{ steps.health.outcome }}
+        shell: bash
+        run: |
+          for report in "$RUNNER_TEMP/reconcile.json" "$RUNNER_TEMP/publication-health.json"; do
+            if [ -f "$report" ]; then
+              echo '```json' >> "$GITHUB_STEP_SUMMARY"
+              cat "$report" >> "$GITHUB_STEP_SUMMARY"
+              echo '```' >> "$GITHUB_STEP_SUMMARY"
+            fi
+          done
+          [ "$TESTS" = success ] && [ "$RECONCILE" = success ] && [ "$HEALTH" = success ]
