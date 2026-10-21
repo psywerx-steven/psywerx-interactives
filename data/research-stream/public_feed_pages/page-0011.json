@@ -2,8 +2,138 @@
   "schemaVersion": "psywerx-public-research-stream-v1",
   "page": 11,
   "pageSize": 24,
-  "totalItems": 507,
+  "totalItems": 517,
   "items": [
+    {
+      "itemId": "research-32ca6e14a406525871e5",
+      "streamTitle": "NNV3 targeted more efficient structured visual reasoning",
+      "streamSummary": "NNV3 is a preprint proposing a more efficient neural architecture for structured visual reasoning. Reported benchmark results suggest useful gains, but the evidence remains limited to the tested tasks and does not establish reliability in operational imagery or unfamiliar environments. The practical lesson is to evaluate efficiency and generalization together rather than treating reduced compute as a standalone capability gain.",
+      "attribution": "arXiv preprint",
+      "sourceUrl": "https://arxiv.org/abs/2609.30050",
+      "categories": [
+        "technology-modeling",
+        "application-analysis"
+      ],
+      "sourcePublishedAt": null,
+      "dateAdded": "2026-09-26"
+    },
+    {
+      "itemId": "research-0d5e6834605709afe780",
+      "streamTitle": "Adaptive graph modeling improved cross-domain hate-speech detection in benchmark tests",
+      "streamSummary": "AdaGraph-HATE adapts graph representations to classify hate speech across changing domains. The reported experiments improved transfer relative to comparison methods, but the gains remain benchmark-specific and depend on how the graph and target domain are represented. The work is relevant to information-environment analysis because language and network context can shift together; live adversarial robustness still requires separate validation.",
+      "attribution": "Scientific Reports",
+      "sourceUrl": "https://doi.org/10.1038/s41598-026-70502-9",
+      "categories": [
+        "technology-modeling",
+        "application-analysis"
+      ],
+      "sourcePublishedAt": null,
+      "dateAdded": "2026-09-26"
+    },
+    {
+      "itemId": "research-0bddf58ab469ffea3e8e",
+      "streamTitle": "Backward reasoning over AND-OR structures improved structured search in benchmark problems",
+      "streamSummary": "A methods paper developed backward reasoning over AND-OR structures to solve complex problems by tracing goals through explicit alternatives and dependencies. Reported results improved search on the tested problems, but the model inherits the quality of its representation. For decision support, the value is transparent decomposition rather than automatic proof that the encoded graph is complete or causally correct.",
+      "attribution": "Journal of Heuristics",
+      "sourceUrl": "https://doi.org/10.1007/s42113-026-00335-2",
+      "categories": [
+        "technology-modeling",
+        "application-analysis"
+      ],
+      "sourcePublishedAt": null,
+      "dateAdded": "2026-09-26"
+    },
+    {
+      "itemId": "research-006c048a762ced4a540f",
+      "streamTitle": "Land acknowledgements produced narrower effects than their symbolic prominence might imply",
+      "streamSummary": "A randomized study tested whether land acknowledgements change downstream attitudes and responses. Effects were limited and outcome-specific rather than uniformly positive. The result is useful for separating institutional signaling from measurable behavioral impact: a message can be highly visible without producing broad change, and null outcomes should remain visible when evaluating symbolic interventions.",
+      "attribution": "Nature Human Behaviour",
+      "sourceUrl": "https://doi.org/10.1038/s41562-026-02520-6",
+      "categories": [
+        "behavioral-science",
+        "application-analysis"
+      ],
+      "sourcePublishedAt": null,
+      "dateAdded": "2026-09-26"
+    },
+    {
+      "itemId": "research-ec02e344422728eea6f9",
+      "streamTitle": "Fair process and shared benefits mattered more than carbon-removal capacity for public support",
+      "streamSummary": "Consulting local people or experts increased support by about 1.0–1.7 points on a ten-point scale relative to no consultation. Community benefit sharing and public-service arrangements also raised support. Higher removal capacity helped, but generally did not compensate for unfair procedures or distribution. These are stated responses to hypothetical projects, not observed acceptance of built facilities. Legitimacy is part of implementation, not a communications add-on. A model of technology adoption should represent decision process, trust, and who receives benefits separately from technical performance; field settings may produce stronger conflict than these unfamiliar vignettes.",
+      "attribution": "Fritz et al. — Nature Climate Change",
+      "sourceUrl": "https://doi.org/10.1038/s41558-026-02741-7",
+      "categories": [
+        "behavioral-science",
+        "operations-strategy"
+      ],
+      "sourcePublishedAt": "2026-09-24",
+      "dateAdded": "2026-09-25"
+    },
+    {
+      "itemId": "research-e72323a482b5fc23ee46",
+      "streamTitle": "A simulated X ranking rule amplified low-credibility links through easy reactions",
+      "streamSummary": "In their model, predicted likes and reposts could substitute for replies and quotes in a weighted engagement score, favoring content that elicited quick reactions. Weight tuning had little or adverse effect in simulations; a threshold requiring predicted reflective engagement reduced the low-credibility exposure gap without reducing modeled mainstream exposure or engagement. This is an unreviewed preprint and a calibrated reimplementation, not a live platform intervention. A ranking system can shape exposure through the way it combines behavior signals, even if no single signal is explicitly labeled as misinformation. Platform-level causal claims require live validation and careful treatment of source-credibility labels.",
+      "attribution": "Li & Gao — arXiv preprint",
+      "sourceUrl": "https://arxiv.org/abs/2609.28947",
+      "categories": [
+        "technology-modeling",
+        "behavioral-science"
+      ],
+      "sourcePublishedAt": "2026-09-24",
+      "dateAdded": "2026-09-25"
+    },
+    {
+      "itemId": "research-d839e674e7e90bce75c3",
+      "streamTitle": "A Canadian climate-news corpus provides frame labels with category-level reliability",
+      "streamSummary": "On a 1,000-sentence independently double-coded reference set, the pooled macro F1 was 0.866, while mean per-category macro F1 was 0.773; categories were assigned A/B/C reliability tiers. These metrics describe annotation performance, not proof of media effects on public opinion. Coverage is Canadian and source selection matters. The corpus is a useful design pattern for PSYWERX discourse maps: publish a taxonomy, human coding reference, category-specific uncertainty, and reusable data together. Trend analyses should account for changing outlet coverage and weaker classes.",
+      "attribution": "Lemor et al. — Scientific Data",
+      "sourceUrl": "https://doi.org/10.1038/s41597-026-08330-9",
+      "categories": [
+        "application-analysis",
+        "technology-modeling"
+      ],
+      "sourcePublishedAt": "2026-09-24",
+      "dateAdded": "2026-09-25"
+    },
+    {
+      "itemId": "research-a1e9d5dd44f2b87b9c57",
+      "streamTitle": "Selective human review can make AI-assisted hypothesis tests cheaper while controlling error",
+      "streamSummary": "The authors prove finite-sample validity under their model and show near-optimal asymptotic cost as target errors tighten. Numerical studies found the largest savings when cheap AI reports and selective human checks both contributed. These are formal and simulated results, not evidence of savings or accuracy in a deployed PSYWERX review queue. Human review is most useful where the AI report changes the value of verification. A pilot with paired human and AI labels would be needed to estimate the error model and test whether the theoretical saving transfers to an actual research workflow.",
+      "attribution": "Ham et al. — arXiv preprint",
+      "sourceUrl": "https://arxiv.org/abs/2609.28859",
+      "categories": [
+        "technology-modeling",
+        "application-analysis"
+      ],
+      "sourcePublishedAt": "2026-09-24",
+      "dateAdded": "2026-09-25"
+    },
+    {
+      "itemId": "research-59ccd4ccd76136ca74f8",
+      "streamTitle": "LLM conversation judges needed anchors to make their scores comparable",
+      "streamSummary": "Pointwise scores correlated moderately with human ratings, while pairwise comparisons suffered from long transcripts and position bias. The new dataset showed a gap between current judges and human discrimination. Calibration placed judges on a shared scale and transferred to the human-AI dataset in their tests; it did not make the judges equivalent to human evaluators. Evaluation scores should carry a calibration protocol and a human reference. In PSYWERX-style human-AI assessments, compare stable anchor cases and inspect order effects before treating score differences as substantive.",
+      "attribution": "Züfle et al. — arXiv preprint",
+      "sourceUrl": "https://arxiv.org/abs/2609.29431",
+      "categories": [
+        "technology-modeling",
+        "application-analysis"
+      ],
+      "sourcePublishedAt": "2026-09-24",
+      "dateAdded": "2026-09-25"
+    },
+    {
+      "itemId": "research-3b24c399e53d38b040ca",
+      "streamTitle": "NATO framed interoperability as preparation that must precede multi-domain operations",
+      "streamSummary": "The publication lays out an operational approach and implementation logic: interoperability and resilience must be built and exercised before crisis, while nations retain authority over what they share. It reports no controlled comparison or measured advantage from a new deployment. Its discussion of the cognitive dimension is conceptual rather than an observed influence effect. For information advantage, speed is an end-to-end property of sensing, sharing, deciding, and acting, subject to governance and trust. Evaluation should test degraded communications, data-sharing permissions, and cross-national handoffs rather than count connected tools alone.",
+      "attribution": "NATO Allied Command Transformation",
+      "sourceUrl": "https://www.act.nato.int/article/why-mdo-cannot-wait",
+      "categories": [
+        "operations-strategy",
+        "technology-modeling"
+      ],
+      "sourcePublishedAt": "2026-09-24",
+      "dateAdded": "2026-09-25"
+    },
     {
       "itemId": "research-2bdcae1544b678eac72c",
       "streamTitle": "Food-package claims often highlighted one nutrient while missing overall quality",
@@ -188,138 +318,6 @@
       ],
       "sourcePublishedAt": "2026-09-15",
       "dateAdded": "2026-09-24"
-    },
-    {
-      "itemId": "research-d96773196ed35d76a653",
-      "streamTitle": "A multi-level school program improved several precursors of adolescent help-seeking, while actual behavior was more mixed",
-      "streamSummary": "A randomized trial with 174 Iranian high-school girls tested a six-session mental-health program built around individual, social, and ecological barriers to seeking help. The intervention group improved over time in life satisfaction, help-seeking intention, recognition of need, perceived social support, and mental-health literacy. Actual help-seeking behavior and coping showed significant group-by-time differences, but their overall between-group effects were not statistically significant. Because the program bundled several components and involved only female adolescents in one national context, the study cannot identify which ingredient drove the gains or how well the results generalize elsewhere.",
-      "attribution": "Zare et al. — Scientific Reports",
-      "sourceUrl": "https://doi.org/10.1038/s41598-026-69628-7",
-      "categories": [
-        "behavioral-science",
-        "application-analysis"
-      ],
-      "sourcePublishedAt": "2026-09-23",
-      "dateAdded": "2026-09-23"
-    },
-    {
-      "itemId": "research-b16c4c0703349835fbcb",
-      "streamTitle": "Rhesus monkeys adjusted decision control in a pattern consistent with metacognitive monitoring",
-      "streamSummary": "A new rhesus-macaque study examined accuracy, difficulty, and response time in a two-choice task. After accounting for difficulty, the monkeys were actually more accurate on faster-response trials, contrary to a simple speed–accuracy tradeoff. A computational model explained the pattern by assuming that a supervisory process weighs the cost of cognitive control against the confidence benefit of investing more effort. The result is consistent with metacognitive regulation outside humans, but it is behavioral and model-based evidence; it does not directly show subjective awareness or identify a specific neural monitoring mechanism.",
-      "attribution": "Lespart et al. — Scientific Reports",
-      "sourceUrl": "https://doi.org/10.1038/s41598-026-68629-w",
-      "categories": [
-        "behavioral-science",
-        "application-analysis"
-      ],
-      "sourcePublishedAt": "2026-09-23",
-      "dateAdded": "2026-09-23"
-    },
-    {
-      "itemId": "research-4c6df09c3a8e5f615c6a",
-      "streamTitle": "The UK is creating a National Centre for Information Defence to detect, attribute, and disrupt hostile-state influence operations",
-      "streamSummary": "The UK government has tasked security chiefs to create a National Centre for Information Defence focused on detecting, attributing, and disrupting hostile-state information attacks. Prime Minister Andy Burnham announced the center in his September 22 UN address, framing disinformation, deepfakes, cyber activity, and AI-enabled manipulation as threats to democratic and social resilience. The announcement establishes a new institutional capability, not evidence that it will reduce influence operations. Key details—including authorities, staffing, performance measures, attribution standards, and how disruption effects will be assessed—have not yet been publicly demonstrated.",
-      "attribution": "UK Prime Minister’s Office — GOV.UK",
-      "sourceUrl": "https://www.gov.uk/government/speeches/pm-speech-at-unga-22-september-2026",
-      "categories": [
-        "operations-strategy",
-        "application-analysis",
-        "technology-modeling"
-      ],
-      "sourcePublishedAt": "2026-09-23",
-      "dateAdded": "2026-09-23"
-    },
-    {
-      "itemId": "research-daf7f4cd412b00596195",
-      "streamTitle": "In simulated crowd control, agent speed mattered far more than the vote-aggregation rule",
-      "streamSummary": "Across 8,010 simulations of crowd-sourced continuous control, agent speed explained much more tracking-error variance than the method used to aggregate participant votes. In the main factorial analysis, speed accounted for 46–97% of variance versus 2–29% for aggregation method, with a median variance ratio of 6.9 to 1. Performance often followed a U-shaped curve because slow agents struggled to recover from delayed corrections while fast agents overshot on stale headings. These are simulation results under specific controller and delay assumptions, not evidence from human crowds or deployed robots.",
-      "attribution": "BongKeun Song — Scientific Reports",
-      "sourceUrl": "https://doi.org/10.1038/s41598-026-72284-6",
-      "categories": [
-        "technology-modeling",
-        "application-analysis"
-      ],
-      "sourcePublishedAt": "2026-09-22",
-      "dateAdded": "2026-09-23"
-    },
-    {
-      "itemId": "research-9563ad1345efa5af5ea6",
-      "streamTitle": "Children reached similar generalizations through different strategies as they got older",
-      "streamSummary": "A study of 84 children aged 4, 6, and 8 compared four common generalization tasks and found that performance improved with age, but the tasks did not clearly behave like one shared ability. In transitive inference, younger children often succeeded without accurate memory for the learned pairs, and computational modeling suggested a value-based reinforcement-learning strategy; 8-year-olds relied more on pair memory. The study therefore shows that the same correct answer can reflect different cognitive processes. Some tasks had floor or ceiling effects, so the degree of cross-task independence remains uncertain.",
-      "attribution": "McClary et al. — Scientific Reports",
-      "sourceUrl": "https://doi.org/10.1038/s41598-026-69464-9",
-      "categories": [
-        "behavioral-science",
-        "application-analysis"
-      ],
-      "sourcePublishedAt": "2026-09-22",
-      "dateAdded": "2026-09-23"
-    },
-    {
-      "itemId": "research-290a441ccf12b467bc20",
-      "streamTitle": "A failed switch plus a cut backup fiber exposed how nominal redundancy can still become a system-level failure",
-      "streamSummary": "A September 21 FAA telecommunications failure delayed or canceled about 9,500 U.S. flights and forced more than 100 diversions after a telecom switch failure was compounded by an accidentally severed fiber line. The disruption was not fully resolved for roughly eight hours. U.S. officials say the replacement air-traffic-control architecture will eliminate single and dual points of failure by providing multiple telecom routes into facilities. That is still a design claim rather than proven reliability. The incident is a clear resilience lesson: backup capacity helps only when the backup does not share or acquire the same failure pathway.",
-      "attribution": "David Shepardson — Reuters",
-      "sourceUrl": "https://www.reuters.com/business/media-telecom/us-says-new-air-traffic-control-system-will-prevent-future-disruptions-2026-09-22",
-      "categories": [
-        "application-analysis",
-        "operations-strategy"
-      ],
-      "sourcePublishedAt": "2026-09-22",
-      "dateAdded": "2026-09-23"
-    },
-    {
-      "itemId": "research-1fd201da6d9b1bcfce97",
-      "streamTitle": "The same formal attention parameter changed across tasks, showing that shared labels do not guarantee comparable measurements",
-      "streamSummary": "Thirty participants completed two visual-attention tasks that were both modeled with the same Theory of Visual Attention framework. Despite the shared theory and parameter definition, estimated processing speed differed between tasks and showed different variability patterns. The authors argue that future model adaptations may make the estimates more compatible, so the result is not a rejection of the theory. It is a measurement warning: a parameter that has the same name and formal interpretation in two models may still be task-dependent. Cross-task comparability should therefore be demonstrated rather than assumed.",
-      "attribution": "Biermeier & Scharlau — Scientific Reports",
-      "sourceUrl": "https://doi.org/10.1038/s41598-026-71598-9",
-      "categories": [
-        "application-analysis",
-        "behavioral-science",
-        "technology-modeling"
-      ],
-      "sourcePublishedAt": "2026-09-22",
-      "dateAdded": "2026-09-23"
-    },
-    {
-      "itemId": "research-d8de49053fca16dcc4b1",
-      "streamTitle": "U.S. and China agreed to formalize an AI-risk dialogue with an incident line",
-      "streamSummary": "U.S. and Chinese officials have moved beyond a proposed AI-safety channel and, according to Reuters, agreed to create a formal dialogue that includes an “incident line” for AI-related safety events. The next senior-level meeting is expected in Shenzhen within about two months. The channel is intended to help address risks such as uncontrollable agents and malicious non-state actors. The agreement is still only an institutional starting point: public details do not yet define what triggers notification, what evidence must be shared, how quickly either side must respond, or whether the mechanism can reduce escalation in a real crisis.",
-      "attribution": "Reuters",
-      "sourceUrl": "https://www.reuters.com/world/asia-pacific/us-china-meet-again-ai-safety-two-months-shenzhen-bessent-says-2026-09-21",
-      "categories": [
-        "operations-strategy",
-        "technology-modeling"
-      ],
-      "sourcePublishedAt": "2026-09-21",
-      "dateAdded": "2026-09-23"
-    },
-    {
-      "itemId": "research-88f7d50d157dd040121e",
-      "streamTitle": "AI-assisted auditors found more problems—but also became more reliant on the AI doing the auditing",
-      "streamSummary": "A new preprint introduces Human-Agent Audit Collaboration, a workflow for dividing generative-AI auditing between people and AI agents. In a study with 71 auditors evaluating conversational shopping agents, AI assistance increased attack success and broadened exploration, but it also shaped what auditors tried next and increased reliance on AI-generated assessments and reports. Interviews with Responsible AI practitioners highlighted the need for visible coverage, reproducible attack paths, and evaluation of the auditing agents themselves. The study is still a preprint and covers one domain, but it shows that AI-assisted auditing can introduce its own human-reliance risks.",
-      "attribution": "Park et al. — arXiv",
-      "sourceUrl": "https://arxiv.org/abs/2609.24986",
-      "categories": [
-        "technology-modeling",
-        "application-analysis"
-      ],
-      "sourcePublishedAt": "2026-09-21",
-      "dateAdded": "2026-09-23"
-    },
-    {
-      "itemId": "research-464b71285e9d56031b72",
-      "streamTitle": "Agentic-AI security testing is concentrated on single-agent attacks while long-horizon and human-system risks remain thinner",
-      "streamSummary": "A structured review of 66 agentic-AI security studies found that empirical testing is concentrated on prompt/reasoning, memory, and tool-mediated attacks, usually in single-agent settings. Persistent threats, human–agent boundaries, complex multi-agent systems, systemic failures, and long-horizon risks received less attention in the selected corpus. The review also found inconsistent metrics, limited adaptive-defense evaluation, and incomplete capture of execution state. This does not prove those areas are unstudied everywhere, but it shows why agent security benchmarks need to specify architecture and trust boundaries rather than treating “agent safety” as one generic property.",
-      "attribution": "Baek et al. — arXiv",
-      "sourceUrl": "https://arxiv.org/abs/2609.23894",
-      "categories": [
-        "technology-modeling",
-        "application-analysis"
-      ],
-      "sourcePublishedAt": "2026-09-20",
-      "dateAdded": "2026-09-23"
     }
   ],
   "nextPage": "public_feed_pages/page-0012.json"
