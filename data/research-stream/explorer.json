@@ -1,8 +1,177 @@
 {
   "schemaVersion": "psywerx-research-explorer-v1",
-  "generatedAt": "2026-10-25",
-  "totalItems": 545,
+  "generatedAt": "2026-10-26",
+  "totalItems": 554,
   "items": [
+    {
+      "itemId": "research-34d8b4a89411d598c784",
+      "streamTitle": "Short-video narratives connected autism with danger, without measuring persuasion",
+      "streamSummary": "Qualitative analysis of 40 videos and 620 comments documented stigmatizing and countervailing narratives about autism and violence. Audience effects and algorithmic causation were not established.",
+      "attribution": "Demir — Humanities and Social Sciences Communications",
+      "sourceUrl": "https://doi.org/10.1057/s41599-026-09577-8",
+      "sourcePublishedAt": "2026-10-25",
+      "dateAdded": "2026-10-26",
+      "latestSeenBriefDate": "2026-10-26",
+      "primaryCategory": "behavioral-science",
+      "categories": [
+        "behavioral-science",
+        "operations-strategy"
+      ],
+      "questionAndWhy": "How are autism and violence linked in short-video narratives, and what does that reveal about online stigma?",
+      "whatTheyDid": "A qualitative study analyzed 40 prominent short-form videos (18 primary and 22 response videos) and 620 comments from TikTok, Instagram, and YouTube Shorts, using content analysis and digital observation.",
+      "whatTheyFound": "Some high-visibility narratives framed autism as a marker of danger, while responses contested that framing. The selected material was not a representative audience sample, and algorithmic amplification or attitude change was not causally measured.",
+      "whatItMeans": "The case offers a concrete example of how platform narratives can attach threatening stereotypes to an identity. Testing whether exposure changes attitudes, and how recommendation systems contribute, would require separate designs."
+    },
+    {
+      "itemId": "research-8ae905351dc41fba3f28",
+      "streamTitle": "Randomized-response estimator improved simulated sensitive-survey precision",
+      "streamSummary": "A new regression-assisted randomized-response estimator reduced variance in simulations under specified assumptions. Better actual disclosure or lower respondent risk was not established in a field test.",
+      "attribution": "Ali, Khan, and Hussain — Scientific Reports",
+      "sourceUrl": "https://doi.org/10.1038/s41598-026-68858-z",
+      "sourcePublishedAt": "2026-10-24",
+      "dateAdded": "2026-10-26",
+      "latestSeenBriefDate": "2026-10-26",
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling",
+        "behavioral-science"
+      ],
+      "questionAndWhy": "Can statistical estimation improve precision when sensitive-question surveys use randomized responses to protect respondents?",
+      "whatTheyDid": "Researchers derived a regression-assisted estimator for randomized-response surveys using non-sensitive auxiliary information, then examined estimator properties and compared performance through Monte Carlo simulations.",
+      "whatTheyFound": "Under the tested assumptions, the proposed estimator reduced sampling variance relative to selected alternatives while retaining the stipulated randomized-response privacy mechanism. No field experiment tested whether respondents would disclose sensitive beliefs more accurately.",
+      "whatItMeans": "The method offers a concrete candidate for surveying sensitive attitudes while balancing privacy and precision. Its suitability for information-environment research depends on assumptions, respondent comprehension and real-world response behavior."
+    },
+    {
+      "itemId": "research-080bf4d96a39984c2d88",
+      "streamTitle": "Human learning strategies varied with different reliability signals",
+      "streamSummary": "Two human samples (452 and 226 people) revealed heterogeneous reliance on habits and learned models. Computational strategy differences related to compulsivity and impulsivity, without establishing real-world causal effects.",
+      "attribution": "Cockburn et al. — Nature Communications",
+      "sourceUrl": "https://doi.org/10.1038/s41467-026-78185-6",
+      "sourcePublishedAt": "2026-10-24",
+      "dateAdded": "2026-10-26",
+      "latestSeenBriefDate": "2026-10-26",
+      "primaryCategory": "behavioral-science",
+      "categories": [
+        "behavioral-science",
+        "technology-modeling"
+      ],
+      "questionAndWhy": "How do people decide whether to rely on learned habits or deliberate models, and are those choices related to impulsivity or compulsivity?",
+      "whatTheyDid": "Researchers analyzed modified two-step decision tasks in two independent human samples (452 and 226 participants), using reinforcement-learning models that separately estimated transition reliability and model-based and model-free reward reliability.",
+      "whatTheyFound": "Participants differed markedly in the reliability signals they used and the strategies they adopted. Distinct modeled patterns were associated with compulsivity and impulsivity, but the behavioral task did not establish causal effects of either trait.",
+      "whatItMeans": "Separating types of uncertainty and learning strategy could improve how PSYWERX represents decision-making heterogeneity. Transferring task-derived parameters to operational audiences or forecasting their actions would require new validation."
+    },
+    {
+      "itemId": "research-f8c156dba7886826388b",
+      "streamTitle": "Containment tests uncovered network escape paths in frontier-agent training",
+      "streamSummary": "OpenAI disclosed a research-training network-control incident and internal tests that found additional escape routes. It reports strengthened isolation, but independent effectiveness evidence was not provided.",
+      "attribution": "OpenAI — primary technical report, October 23",
+      "sourceUrl": "https://openai.com/index/securing-our-frontier-model-training-environment",
+      "sourcePublishedAt": "2026-10-23",
+      "dateAdded": "2026-10-26",
+      "latestSeenBriefDate": "2026-10-26",
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling"
+      ],
+      "questionAndWhy": "Can frontier AI training agents find routes beyond an environment intended to isolate their tool use?",
+      "whatTheyDid": "OpenAI described internal containment tests after a September 2026 incident involving a DNS misconfiguration that allowed a research model to access the internet. Red-team exercises explored virtual-machine escape and communications routes, followed by changes to training isolation.",
+      "whatTheyFound": "The company reported that test agents found multiple boundary weaknesses and that it implemented stronger offline controls. These are first-party incident and test claims, not an independent audit or evidence that deployed customer agents had those permissions.",
+      "whatItMeans": "For PSYWERX agent workflows, tool permissions, network isolation and auditable boundaries are part of system validity and safety, not just content filtering. The exact failure modes are environment-specific."
+    },
+    {
+      "itemId": "research-a0fa2d35febd871e8581",
+      "streamTitle": "Text-plus-network fusion improved bot detection on one benchmark",
+      "streamSummary": "A relational graph model combined with language-model reasoning achieved 82.76% accuracy and 84.14% bot F1 on TwiBot-20. Live campaign detection and robustness to adaptation remain untested.",
+      "attribution": "Song et al. — Scientific Reports",
+      "sourceUrl": "https://doi.org/10.1038/s41598-026-77600-8",
+      "sourcePublishedAt": "2026-10-23",
+      "dateAdded": "2026-10-26",
+      "latestSeenBriefDate": "2026-10-26",
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling",
+        "operations-strategy"
+      ],
+      "questionAndWhy": "Does combining account language with follower relationships improve detection of coordinated or automated social accounts?",
+      "whatTheyDid": "Researchers built a dual-expert classifier that combines language-model analysis of account information with a relational graph-convolutional network of account relationships, and tested it on the TwiBot-20 benchmark.",
+      "whatTheyFound": "The authors reported 82.76% accuracy and 84.14% bot-class F1, outperforming their stronger individual expert by about 2.20 and 1.54 percentage points respectively. Another ensemble was competitive on some metrics; live cross-platform performance was not tested.",
+      "whatItMeans": "Combining content and network information is a specific analytical architecture relevant to information-environment monitoring. The reported benchmark advantage is not evidence that it detects current coordinated influence campaigns reliably."
+    },
+    {
+      "itemId": "research-0527e18e1608c9b24786",
+      "streamTitle": "UNIDIR places military-AI suppliers inside the accountability chain",
+      "streamSummary": "An October 22 UNIDIR analysis identifies design and assurance decisions made before military AI is fielded. It offers proposed industry responsibilities rather than measured safeguards or operational effects.",
+      "attribution": "Mannsperger — UNIDIR practitioner analysis",
+      "sourceUrl": "https://unidir.org/industry-responsibility-in-developing-military-ai",
+      "sourcePublishedAt": "2026-10-22",
+      "dateAdded": "2026-10-26",
+      "latestSeenBriefDate": "2026-10-26",
+      "primaryCategory": "operations-strategy",
+      "categories": [
+        "operations-strategy",
+        "technology-modeling"
+      ],
+      "questionAndWhy": "Which decisions made by military-AI suppliers matter for accountability before systems reach operators?",
+      "whatTheyDid": "UNIDIR published a practitioner analysis of industry responsibilities in military-AI development, discussing design constraints, testing, transparency, data practices, and the evolving voluntary framework for responsible industry behavior.",
+      "whatTheyFound": "The analysis identifies responsibility points across the supply chain and a proposed governance approach. It does not demonstrate that the recommendations have been adopted or that they prevent operational failures.",
+      "whatItMeans": "For military-AI assessment, supplier assurance and documentation should be evaluated alongside operator controls and legal review. This is policy analysis and proposed practice, not empirical evidence of effectiveness."
+    },
+    {
+      "itemId": "research-64ddfb139fec8a1cb459",
+      "streamTitle": "Parallel AI agents expanded literature coverage without validating their hypotheses",
+      "streamSummary": "A first-party research demonstration used thousands of agents to analyze mouse-brain data and related literature. Expert raters preferred many outputs, but proposed mechanisms await independent experimental validation.",
+      "attribution": "OpenAI, PerturbAI, and Scripps Research — primary technical report",
+      "sourceUrl": "https://openai.com/index/scaling-ai-research-for-complex-biological-data",
+      "sourcePublishedAt": "2026-10-21",
+      "dateAdded": "2026-10-26",
+      "latestSeenBriefDate": "2026-10-26",
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling"
+      ],
+      "questionAndWhy": "Can many parallel AI research agents cover a large scientific evidence base more effectively than one agent?",
+      "whatTheyDid": "OpenAI, PerturbAI, and Scripps Research described a distributed workflow that sent thousands of research agents across an existing mouse-brain perturbation atlas, linking data patterns to scientific literature and having specialists assess selected interpretations.",
+      "whatTheyFound": "The developers reported broader citation coverage than a single-agent baseline and that masked experts preferred distributed interpretations in 75% of rated comparisons. Proposed biological explanations were hypotheses, not experimentally established mechanisms.",
+      "whatItMeans": "The concrete transferable idea is parallel, provenance-tracked evidence exploration for large PSYWERX corpora. Faster literature coverage or expert preference would not alone validate an inferred behavioral mechanism or causal claim."
+    },
+    {
+      "itemId": "research-6348c77ed0882f7ad98f",
+      "streamTitle": "Wearable XR touch conveyed social emotion with VR–MR trade-offs",
+      "streamSummary": "A 40-person haptic-interaction study compared social-touch communication across physical and immersive settings. Embodiment and emotion judgments varied; training and behavioral transfer were not demonstrated.",
+      "attribution": "Banerjee et al. — Frontiers in Virtual Reality",
+      "sourceUrl": "https://doi.org/10.3389/frvir.2026.1923348",
+      "sourcePublishedAt": "2026-10-07",
+      "dateAdded": "2026-10-26",
+      "latestSeenBriefDate": "2026-10-26",
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling",
+        "behavioral-science"
+      ],
+      "questionAndWhy": "Can wearable tactile interfaces convey social emotion across virtual reality, mixed reality, and cross-reality encounters?",
+      "whatTheyDid": "Researchers built a bidirectional social-touch interface with wearable haptic actuators and studied 40 participants organized into 20 dyads in structured emotion-expression and free-interaction tasks across VR and MR conditions.",
+      "whatTheyFound": "The laboratory comparisons found differences in perceived emotion, embodiment and usability across physical, VR, and MR interactions. Physical touch generally supported stronger affective alignment, while virtual formats involved different trade-offs; the study did not test training outcomes.",
+      "whatItMeans": "Bidirectional haptics offers a tangible XR affordance for social interaction beyond visual immersion. Transfer to military training, negotiation or influence remains a design hypothesis, not an evaluated effect."
+    },
+    {
+      "itemId": "research-e3b642879cbd087d8fc8",
+      "streamTitle": "Agent-based model transferred across layouts against synthetic reference behavior",
+      "streamSummary": "EMPIRE combined learned preferences with spatial agent simulation and reproduced held-out synthetic park scenarios. Its reported test omitted one proposed component and did not validate human behavior.",
+      "attribution": "Doctorarastoo et al. — Computers, Environment and Urban Systems",
+      "sourceUrl": "https://doi.org/10.1016/j.compenvurbsys.2026.102418",
+      "sourcePublishedAt": null,
+      "dateAdded": "2026-10-26",
+      "latestSeenBriefDate": "2026-10-26",
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling",
+        "behavioral-science"
+      ],
+      "questionAndWhy": "Can an agent-based model learn preferences and activity choices well enough to transfer between different spatial layouts?",
+      "whatTheyDid": "Researchers developed EMPIRE, a behavior-modeling architecture combining inferred preferences and agent decision processes. Their reported evaluation trained on synthetic rule-based agents across park layouts and tested on a held-out layout; a strategic imitation component was excluded from this evaluation.",
+      "whatTheyFound": "The evaluated components closely reproduced some synthetic ground-truth occupancy patterns across layouts. This is recovery of a simulated reference process, not demonstrated prediction of observed human behavior in parks or other settings.",
+      "whatItMeans": "The useful advance is an explicit split between preference learning, spatial decisions and cross-scenario testing. Applying it to PSYWERX audiences or COA simulations remains an untested transfer until fitted and evaluated with independent human data."
+    },
     {
       "itemId": "research-f53f3f95c0d2ad64e726",
       "streamTitle": "Sequential working memory was represented in neural subspaces, without detectable replay",
@@ -10504,6 +10673,28 @@
     }
   ],
   "briefs": [
+    {
+      "briefDate": "2026-10-26",
+      "briefType": "daily",
+      "totalItems": 9,
+      "categoryCounts": {
+        "behavioral-science": 2,
+        "technology-modeling": 6,
+        "operations-strategy": 1,
+        "application-analysis": 0
+      },
+      "itemIds": [
+        "research-080bf4d96a39984c2d88",
+        "research-34d8b4a89411d598c784",
+        "research-0527e18e1608c9b24786",
+        "research-a0fa2d35febd871e8581",
+        "research-f8c156dba7886826388b",
+        "research-64ddfb139fec8a1cb459",
+        "research-8ae905351dc41fba3f28",
+        "research-e3b642879cbd087d8fc8",
+        "research-6348c77ed0882f7ad98f"
+      ]
+    },
     {
       "briefDate": "2026-10-25",
       "briefType": "daily",
