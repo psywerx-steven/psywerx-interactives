@@ -1,8 +1,159 @@
 {
   "schemaVersion": "psywerx-research-explorer-v1",
-  "generatedAt": "2026-10-27",
-  "totalItems": 563,
+  "generatedAt": "2026-10-28",
+  "totalItems": 571,
   "items": [
+    {
+      "itemId": "research-d03cdaea90ed382e82f5",
+      "streamTitle": "Army planners tested an LLM-and-simulation prototype for course-of-action development",
+      "streamSummary": "An Army Research Laboratory touchpoint combined COA-generating AI, constructive simulation, and a planning interface. Three SMEs estimated a possible future 30% reduction in time and mental effort; that gain was not measured.",
+      "attribution": "Gremillion et al. — DEVCOM Army Research Laboratory, ARL-TR-10475",
+      "sourceUrl": "https://arl.devcom.army.mil/arlreport/arl-tr-10475",
+      "sourcePublishedAt": "2026-10-27",
+      "dateAdded": "2026-10-28",
+      "latestSeenBriefDate": "2026-10-28",
+      "primaryCategory": "operations-strategy",
+      "categories": [
+        "operations-strategy",
+        "technology-modeling"
+      ],
+      "questionAndWhy": "Can generative AI, constructive simulation, and an integrated interface reduce the time and cognitive effort of military course-of-action planning?",
+      "whatTheyDid": "An October 27 Army Research Laboratory report describes an SC3 prototype combining a COA-generating language model, constructive simulation, and browser interface. Three experienced military planning specialists completed three structured planning sessions and after-action reviews.",
+      "whatTheyFound": "The specialists judged the prototype promising and estimated that a mature integrated system might reduce COA development time and mental effort by about 30%. The report does not demonstrate a measured 30% gain, controlled planning accuracy, or an operational combat effect.",
+      "whatItMeans": "This is directly relevant to AI-supported wargaming and behavioral COA evaluation: track human workload, plan quality, assumption traceability, and measured decision time in future tests. An expert forecast is not an observed efficiency result."
+    },
+    {
+      "itemId": "research-9731917d8410c2c711c9",
+      "streamTitle": "Stimulus-specific amygdala activity predicted which visual experiences people remembered",
+      "streamSummary": "Human single-neuron recordings linked category-specific amygdala firing to later recognition and confidence, independent of emotional ratings. Neural association does not prove a method for improving memory.",
+      "attribution": "Xiao et al. — Nature Neuroscience",
+      "sourceUrl": "https://doi.org/10.1038/s41593-026-02493-9",
+      "sourcePublishedAt": "2026-10-27",
+      "dateAdded": "2026-10-28",
+      "latestSeenBriefDate": "2026-10-28",
+      "primaryCategory": "behavioral-science",
+      "categories": [
+        "behavioral-science"
+      ],
+      "questionAndWhy": "What makes a new visual experience stick in episodic memory, beyond its emotional intensity?",
+      "whatTheyDid": "Researchers recorded single-neuron activity as neurosurgical participants viewed unfamiliar pictures, then tested later recognition and confidence. They compared category-selective amygdala firing with hippocampal activity across two datasets.",
+      "whatTheyFound": "Amygdala neurons tuned to a picture category fired more strongly for examples later remembered, especially with high confidence. The signal preceded a weaker hippocampal effect, remained after accounting for valence and arousal, and accompanied stronger amygdala–hippocampus coordination.",
+      "whatItMeans": "Memory encoding appears partly content-specific rather than simply driven by emotional salience. This is observational neural evidence in specialist clinical participants, not proof that changing neuron activity improves memory or that the pattern predicts real-world message retention."
+    },
+    {
+      "itemId": "research-8a119982a4446a58a39d",
+      "streamTitle": "Adolescents using general-purpose AI for mental-health help often wanted further support",
+      "streamSummary": "In a survey of 24,132 students, 2.7% used general-purpose AI for mental-health support; many found it helpful yet still sought or wanted other help. Clinical effectiveness was not tested.",
+      "attribution": "Okechukwu et al. — npj Mental Health Research",
+      "sourceUrl": "https://doi.org/10.1038/s44184-026-00254-x",
+      "sourcePublishedAt": "2026-10-27",
+      "dateAdded": "2026-10-28",
+      "latestSeenBriefDate": "2026-10-28",
+      "primaryCategory": "behavioral-science",
+      "categories": [
+        "behavioral-science",
+        "technology-modeling"
+      ],
+      "questionAndWhy": "How often do adolescents turn to general-purpose AI for emotional support, and do they regard it as sufficient?",
+      "whatTheyDid": "A cross-sectional survey asked 24,132 students in England about past-year use of AI chat platforms for mental-health support, perceived helpfulness, and other help-seeking.",
+      "whatTheyFound": "Only 2.7% (662) reported using AI for this purpose. Of respondents rating it, 55.9% (324/580) considered it helpful, but 92.1% of users also sought other support and 63.2% (410/649) wanted additional help. Use was concentrated among more vulnerable groups.",
+      "whatItMeans": "For AI-mediated support, perceived usefulness and adequate assistance are different outcomes. The survey measures self-reports, not treatment effectiveness, safe counseling, or a causal effect of AI use."
+    },
+    {
+      "itemId": "research-7e18cec300264eadb71c",
+      "streamTitle": "Image-enhancement prototype combined semantic checks with limited provenance recovery",
+      "streamSummary": "A new image-enhancement model combined semantic-consistency checks with 99.8% metadata recovery on untransformed outputs. It is not C2PA-signed, tamper-proof, or validated after social-media transformations.",
+      "attribution": "Liu et al. — Scientific Reports",
+      "sourceUrl": "https://doi.org/10.1038/s41598-026-72283-7",
+      "sourcePublishedAt": "2026-10-27",
+      "dateAdded": "2026-10-28",
+      "latestSeenBriefDate": "2026-10-28",
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling",
+        "operations-strategy"
+      ],
+      "questionAndWhy": "Can AI improve image quality while constraining changes to meaning and preserving traceable provenance?",
+      "whatTheyDid": "Researchers trained a generative enhancement model with perceptual, semantic-similarity, and metadata-recovery objectives. They used 1,500 paired development images, a separate evaluation collection, and human image ratings.",
+      "whatTheyFound": "The system performed favorably on reported visual metrics, and embedded metadata was recovered in 499 of 500 untransformed test images. It did not create cryptographically signed C2PA manifests or test recovery after cropping, recompression, or tampering.",
+      "whatItMeans": "Media-verification workflows should distinguish visual appeal, semantic fidelity, and authenticated provenance. This prototype demonstrates controlled metadata recovery, not robust forensic authenticity or protection against manipulated information."
+    },
+    {
+      "itemId": "research-6a29b44e5b358db69e5b",
+      "streamTitle": "A smartphone-personalized LLM systematically overstated people's positive feelings",
+      "streamSummary": "Across 83 people and 17 weeks of smartphone traces, a personalized LLM predicted people felt happier and less distressed than they reported. Longer histories did little to resolve that bias.",
+      "attribution": "Fang et al. — npj Digital Public Health",
+      "sourceUrl": "https://doi.org/10.1038/s44482-026-00049-z",
+      "sourcePublishedAt": "2026-10-27",
+      "dateAdded": "2026-10-28",
+      "latestSeenBriefDate": "2026-10-28",
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling",
+        "behavioral-science"
+      ],
+      "questionAndWhy": "Can a language model infer individual emotional experience from long-term smartphone observations instead of asking people directly?",
+      "whatTheyDid": "Researchers personalized Gemini 2.5 Flash-Lite with 17 weeks of multimodal smartphone traces and weekly affect surveys from 83 participants, testing different amounts of history and types of emotion.",
+      "whatTheyFound": "The LLM consistently predicted more positive affect and less negative affect than participants reported. Adding longer histories produced only marginal improvements; performance differed by person, time window, and affect type.",
+      "whatItMeans": "Synthetic affect estimates can smooth over distress rather than represent lived experience. For behavioral audience research, passive-data models require calibration against real self-reports; this test of one model does not establish all LLMs behave alike."
+    },
+    {
+      "itemId": "research-1de4e5b5880db34ad0fc",
+      "streamTitle": "Amharic multimodal benchmark exposed limits in information-disorder classification",
+      "streamSummary": "An 8,053-item Amharic multimodal benchmark reported 0.68 accuracy and 0.67 F1 for information-disorder classification. Annotation uncertainty and untested field robustness remain important.",
+      "attribution": "Woldegiorgis, Abebe and Jimma — Scientific Reports",
+      "sourceUrl": "https://doi.org/10.1038/s41598-026-77743-8",
+      "sourcePublishedAt": "2026-10-27",
+      "dateAdded": "2026-10-28",
+      "latestSeenBriefDate": "2026-10-28",
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling",
+        "operations-strategy"
+      ],
+      "questionAndWhy": "Can combining text and images detect misinformation, disinformation, and maliciously framed true information in a low-resource language?",
+      "whatTheyDid": "Researchers introduced Amh3MD, an 8,053-item Amharic text-and-image social-media dataset, and evaluated multimodal deep-learning classifiers using four information-disorder labels.",
+      "whatTheyFound": "The reported multimodal system achieved approximately 0.68 accuracy and 0.67 F1, outperforming a CNN–BiLSTM comparison. The labels depend on annotation judgments, including inferred intent, and the evaluation did not establish live campaign detection.",
+      "whatItMeans": "Language- and modality-specific datasets are useful for information-environment monitoring, but automated intent classifications are not verified truth or evidence of coordinated operations. Field testing and provenance review are still necessary."
+    },
+    {
+      "itemId": "research-102a86ca8c89921c1475",
+      "streamTitle": "Reddit self-declarations made demographic inference more auditable than opaque proxies",
+      "streamSummary": "Using over 850,000 Reddit self-declarations, a transparent probabilistic approach often outperformed opaque demographic proxies. Sampling bias, privacy, and demographic inference error still constrain use.",
+      "attribution": "Cinus et al. — Scientific Reports",
+      "sourceUrl": "https://doi.org/10.1038/s41598-026-75155-2",
+      "sourcePublishedAt": "2026-10-27",
+      "dateAdded": "2026-10-28",
+      "latestSeenBriefDate": "2026-10-28",
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling",
+        "behavioral-science"
+      ],
+      "questionAndWhy": "Can researchers label online-community demographics using traceable user statements rather than assuming interests reveal identity?",
+      "whatTheyDid": "Researchers assembled more than 850,000 public Reddit self-declarations of age, gender, and partisanship, then compared simple probabilistic models with embedding-based predictors and aggregate quantification.",
+      "whatTheyFound": "On tested coarse classification tasks, Multinomial Naive Bayes often beat more complex alternatives, with ROC-AUC improvements up to 19% over an unsupervised embedding baseline and under 15% quantification error for some age/gender aggregates.",
+      "whatItMeans": "The concrete advance is auditable label provenance for computational social research. Self-declarations are selective and sensitive, so privacy, representativeness, uncertainty and demographic-category limits remain central; inferred labels are not verified personal identities."
+    },
+    {
+      "itemId": "research-3b55f9eed6d190d892a8",
+      "streamTitle": "FCM dynamics were converted into an eight-scene generated video storyboard",
+      "streamSummary": "A preprint converted a five-node fuzzy cognitive map into eight AI-generated scenes using perturbation-and-attractor rules. It demonstrates visualization, not validated causal or behavioral simulation.",
+      "attribution": "Panda, Adigun and Kosko — arXiv preprint",
+      "sourceUrl": "https://arxiv.org/abs/2609.14985",
+      "sourcePublishedAt": "2026-09-14",
+      "dateAdded": "2026-10-28",
+      "latestSeenBriefDate": "2026-10-28",
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling",
+        "behavioral-science"
+      ],
+      "questionAndWhy": "Can fuzzy cognitive map trajectories guide an intelligible visual narrative of a model's changing states?",
+      "whatTheyDid": "An arXiv preprint proposed sequencing FCM perturbation-to-attractor rules, using an LLM to write a scene script and a video model to render it. The demonstration used a five-node dolphin–shark FCM and eight generated scenes.",
+      "whatTheyFound": "The authors demonstrated a functioning model-to-storyboard pipeline, not a validation of FCM causal edges, visual fidelity to real behavior, or improved human comprehension of simulation outcomes.",
+      "whatItMeans": "For PSYWERX, the specific transferable advance is turning an executable model's state transitions into inspectable visual scenarios for analyst communication or training. Whether that improves decisions or accurately depicts humans is untested."
+    },
     {
       "itemId": "research-214fc50a2d157c4a3519",
       "streamTitle": "Ad-auction telemetry raised surveillance concerns for Starlink users",
@@ -2230,23 +2381,22 @@
     },
     {
       "itemId": "research-b65d314b2ac89f0eff31",
-      "streamTitle": "AI survey personas reproduced demographic trends better than cultural differences across 74 countries",
-      "streamSummary": "An analysis published October 12 compared LLM-generated economic-preference answers with 67,201 real respondents in 74 countries. Across 20 model and prompt configurations, simulated responses recovered many demographic trend directions but only 48.1% of tested cultural relationships; even the best model reproduced just 16 of 35 published country-level associations. The models also generated less diverse responses than people. This is unusually direct evidence that credible-looking synthetic respondents are not reliable substitutes for representative human surveys, especially in cross-national comparisons or policy evaluation.",
+      "streamTitle": "LLM-survey simulations missed much of the cultural variation across 74 countries",
+      "streamSummary": "In a 74-country comparison matched to 67,201 human respondents, LLMs reproduced many demographic directions but only 48.1% of cultural patterns. Synthetic answers were weak proxies for representative surveys.",
       "attribution": "Chen et al. — Nature Human Behaviour",
       "sourceUrl": "https://doi.org/10.1038/s41562-026-02611-4",
       "sourcePublishedAt": "2026-10-12",
       "dateAdded": "2026-10-13",
-      "latestSeenBriefDate": "2026-10-13",
-      "primaryCategory": "behavioral-science",
+      "latestSeenBriefDate": "2026-10-28",
+      "primaryCategory": "technology-modeling",
       "categories": [
-        "behavioral-science",
-        "application-analysis",
-        "technology-modeling"
+        "technology-modeling",
+        "behavioral-science"
       ],
-      "questionAndWhy": "Can AI-generated survey respondents replace human samples when estimating economic preferences around the world? The key test is not whether simulated averages look plausible, but whether individual, demographic, and cultural differences are reproduced.",
-      "whatTheyDid": "Chen and colleagues simulated six economic-preference measures for 67,201 matched human respondents in 74 countries. They tested 20 LLM configurations, creating about 27.8 million answers, and compared them with the Global Preference Survey.",
-      "whatTheyFound": "Individual-level correlations were usually positive but modest. The models recovered the direction of 77.8% of tested gender, age, and cognitive-ability associations, but only 48.1% of cultural associations. The best model replicated just 16 of 35 published country-level relationships under the original significance criterion. Synthetic responses were also less diverse than human responses.",
-      "whatItMeans": "Population-level plausibility is not enough for cross-cultural inference or policy analysis. This directly extends last week’s warning about synthetic personas: validation must match the unit of analysis, especially when nationality, culture, or subgroup disparities matter."
+      "questionAndWhy": "Can language-model respondents stand in for nationally diverse human surveys of economic preferences?",
+      "whatTheyDid": "Researchers simulated six economic preferences for 67,201 matched human survey respondents across 74 countries using 20 LLM configurations and varied prompting and demographic information.",
+      "whatTheyFound": "The models recovered the direction of 77.8% of demographic associations but only 48.1% of cultural-dimension associations. Individual alignment was modest and tended to weaken in less digitally connected or economically developed settings.",
+      "whatItMeans": "This directly limits synthetic-audience claims: group-level similarity is not nationally representative behavioral measurement. Population-specific validation is required before using synthetic survey output to estimate audience differences or assess policy."
     },
     {
       "itemId": "research-b24da7a30be4c50b81e8",
@@ -3458,22 +3608,22 @@
     },
     {
       "itemId": "research-eb38cd4cb1abe5798fed",
-      "streamTitle": "Personalized high-risk flu messages increased vaccination, while disclosing the algorithm added no extra effect",
-      "streamSummary": "Three preregistered field trials involving more than 90,000 high-risk U.S. patients tested flu-vaccination messages informed by a machine-learning risk model. Telling patients they were at high risk increased vaccination by 1.1–1.4 percentage points over a simple reminder and 1.7–3.5 points over no message. Disclosing that an algorithm identified the risk, or explaining the personalized reasons behind its prediction, did not materially change uptake. The result supports algorithm-assisted targeting and risk communication, but not the assumption that mentioning or explaining the AI itself improves behavior.",
-      "attribution": "Rosenbaum et al. — Nature Human Behaviour",
+      "streamTitle": "Personalized influenza-risk messages raised actual vaccination in three field trials",
+      "streamSummary": "Three randomized US field trials involving over 90,000 patients found modest increases in recorded influenza vaccination after personalized risk messages. Explaining or disclosing the algorithm added no clear benefit.",
+      "attribution": "Rosenbaum et al. — Nature Human Behaviour (randomized field trials)",
       "sourceUrl": "https://doi.org/10.1038/s41562-026-02603-4",
       "sourcePublishedAt": "2026-10-05",
       "dateAdded": "2026-10-07",
-      "latestSeenBriefDate": "2026-10-07",
+      "latestSeenBriefDate": "2026-10-28",
       "primaryCategory": "behavioral-science",
       "categories": [
         "behavioral-science",
-        "application-analysis"
+        "technology-modeling"
       ],
-      "questionAndWhy": "Can personalized risk communication based on a machine-learning risk score move an actual health behavior, and does telling people that an algorithm generated the risk assessment help or hurt?",
-      "whatTheyDid": "Rosenbaum and colleagues ran three preregistered randomized field trials with more than 90,000 unique U.S. healthcare-system patients identified by a previously validated machine-learning model as being at high risk for influenza and related complications. Patients received no message, a simple vaccine reminder, or messages emphasizing their high-risk status; some versions disclosed algorithm involvement or gave personalized reasons for the risk prediction.",
-      "whatTheyFound": "High-risk messages increased vaccination by 1.1–1.4 percentage points relative to a simple reminder and by 1.7–3.5 points relative to no message. Vaccination rates were similar whether messages disclosed algorithm involvement or provided personalized explanations of why the patient was considered high risk. These are randomized field effects on vaccination behavior, but only among patients already selected as high risk by the model.",
-      "whatItMeans": "The useful ingredient was actionable personal risk information, not AI branding or explainability. This is strong evidence that an algorithm can add value upstream by identifying whom to target even when mentioning the algorithm downstream does not change behavior. It also cautions against assuming that explainability will automatically improve uptake."
+      "questionAndWhy": "Does an algorithm-informed personal-risk message change observed behavior, and do explanations or AI disclosure help?",
+      "whatTheyDid": "Three preregistered randomized field trials included over 90,000 US healthcare patients flagged at high influenza risk by a previously validated model. Researchers randomized messages and tracked actual vaccination records.",
+      "whatTheyFound": "Personalized risk communication increased vaccination modestly relative to simple reminders or no message. The reported advantage was roughly 1.1–1.4 percentage points versus simple reminders and 1.7–3.5 points versus no message; adding algorithm disclosure or individualized explanations did not reliably improve the effect.",
+      "whatItMeans": "This unusually large field test shows a measurable behavioral effect, with important null findings about explanation and AI disclosure. Extending the approach to other influence or risk-communication contexts is an untested hypothesis; the trial concerns vaccination."
     },
     {
       "itemId": "research-9f41e873a440a89f3d9d",
@@ -10840,6 +10990,29 @@
   ],
   "briefs": [
     {
+      "briefDate": "2026-10-28",
+      "briefType": "daily",
+      "totalItems": 10,
+      "categoryCounts": {
+        "behavioral-science": 3,
+        "technology-modeling": 6,
+        "operations-strategy": 1,
+        "application-analysis": 0
+      },
+      "itemIds": [
+        "research-9731917d8410c2c711c9",
+        "research-8a119982a4446a58a39d",
+        "research-eb38cd4cb1abe5798fed",
+        "research-d03cdaea90ed382e82f5",
+        "research-6a29b44e5b358db69e5b",
+        "research-b65d314b2ac89f0eff31",
+        "research-1de4e5b5880db34ad0fc",
+        "research-7e18cec300264eadb71c",
+        "research-3b55f9eed6d190d892a8",
+        "research-102a86ca8c89921c1475"
+      ]
+    },
+    {
       "briefDate": "2026-10-27",
       "briefType": "daily",
       "totalItems": 9,
@@ -11114,8 +11287,8 @@
       "briefType": "daily",
       "totalItems": 10,
       "categoryCounts": {
-        "behavioral-science": 3,
-        "technology-modeling": 3,
+        "behavioral-science": 2,
+        "technology-modeling": 4,
         "operations-strategy": 2,
         "application-analysis": 2
       },
