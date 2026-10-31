@@ -1,8 +1,194 @@
 {
   "schemaVersion": "psywerx-research-explorer-v1",
-  "generatedAt": "2026-10-30",
-  "totalItems": 590,
+  "generatedAt": "2026-10-31",
+  "totalItems": 600,
   "items": [
+    {
+      "itemId": "research-a4231a1c4c814848f845",
+      "streamTitle": "Army's Project Convergence tested integrated C2 while targeting cognitive-load reductions",
+      "streamSummary": "Army officials described a large July command-and-control experiment reported October 30, including 9,700 soldiers and over 90 technologies. Faster decisions and lower cognitive load were objectives, not published results.",
+      "attribution": "Nina Borgeson — U.S. Army Futures and Autonomous Systems Command (official report)",
+      "sourceUrl": "https://www.army.mil/article/296490/tech_convergence_army_expands_transformation_evaluation_event",
+      "sourcePublishedAt": "2026-10-30",
+      "dateAdded": "2026-10-31",
+      "latestSeenBriefDate": "2026-10-31",
+      "primaryCategory": "operations-strategy",
+      "categories": [
+        "operations-strategy",
+        "technology-modeling"
+      ],
+      "questionAndWhy": "Can a shared data layer, integrated command applications, and AI support improve decisions while reducing soldiers' cognitive workload?",
+      "whatTheyDid": "An October 30 Army report described Project Convergence–Capstone 6, conducted July 20–29 at Fort Irwin. More than 9,700 soldiers exercised over 90 technologies, with more than 600 observers and 100 assessors examining Next-Generation Command and Control integration, interoperability, time-sensitive targeting, and workload objectives.",
+      "whatTheyFound": "The Army reported extensive live and simulated integration, multinational participation, and iterative feedback. It described faster targeting and lower cognitive load as objectives, but did not publish measured improvements in decision time, workload, plan quality, or mission outcomes.",
+      "whatItMeans": "The relevant practitioner advance is evaluating the combined human–data–workflow system, not counting fielded technologies. Future assessments should preregister decision-quality, workload, information provenance, and degraded-network measures. Participation in an exercise is not proof the intended effects were achieved."
+    },
+    {
+      "itemId": "research-420774bcf3f9ba6747f8",
+      "streamTitle": "New framework distinguishes AI-assisted task success from durable human learning",
+      "streamSummary": "A 2026 Perspective introduces the SYNC model separating immediate human–AI performance from durable learning and metacognitive engagement. Its proposed pitfalls and scaffolds are conceptual, not validated experimental effects.",
+      "attribution": "Fan et al. — Communications Psychology (theoretical Perspective)",
+      "sourceUrl": "https://doi.org/10.1038/s44271-026-00548-y",
+      "sourcePublishedAt": "2026-10-30",
+      "dateAdded": "2026-10-31",
+      "latestSeenBriefDate": "2026-10-31",
+      "primaryCategory": "behavioral-science",
+      "categories": [
+        "behavioral-science",
+        "technology-modeling"
+      ],
+      "questionAndWhy": "When AI produces fluent results, does apparent performance conceal reduced metacognitive engagement and durable learning?",
+      "whatTheyDid": "A peer-reviewed theoretical Perspective synthesized learning and human–AI interaction research and proposed the SYNC framework. It distinguishes metacognitive offloading from deliberate onloading and separates immediate task performance from enduring skills across four conceptual states.",
+      "whatTheyFound": "The authors propose that fluency, agreement, coherence, and apparent transparency may promote uncritical reliance; targeted, gradually faded scaffolds could preserve planning and verification. These are proposed mechanisms and design hypotheses, not findings from a newly conducted trial validating the framework.",
+      "whatItMeans": "PSYWERX practitioner education can evaluate both the quality of AI-assisted outputs and what users can later explain or accomplish without the tool. The four-state model is a useful organizing proposal, but its measures, longitudinal predictions, and intervention recommendations require direct tests."
+    },
+    {
+      "itemId": "research-af2b3fa77d334d13a854",
+      "streamTitle": "Autonomous research agent completed five reproducible papers, with AI-only quality review",
+      "streamSummary": "Five consecutive autonomous coding-agent runs produced papers whose analyses could be rerun, with cross-model critique. Outcomes depended strongly on agenda wording, and positive quality ratings came from AI judges rather than human reviewers.",
+      "attribution": "Ko Fujimura — arXiv preprint (autonomous research-agent case series)",
+      "sourceUrl": "https://arxiv.org/abs/2610.39620",
+      "sourcePublishedAt": "2026-10-29",
+      "dateAdded": "2026-10-31",
+      "latestSeenBriefDate": "2026-10-31",
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling"
+      ],
+      "questionAndWhy": "Can a general coding agent independently choose a specific research question and produce an auditable paper without humans selecting the best output?",
+      "whatTheyDid": "A newly released preprint reports 13 development runs and five consecutive reported evaluation runs using a coding agent, a different-model critic, and an independent reviewer that recomputed the analysis. The system published code, research records, and papers; one pilot was included by a disclosed preregistration amendment.",
+      "whatTheyFound": "All five reported evaluation runs reached a recomputable revised paper, and external AI reviewers rated the outputs near workshop level. Research topics were highly sensitive to brief agenda wording; AI review is not independent human peer review, and five cases cannot establish general scientific validity.",
+      "whatItMeans": "This is a concrete model-agnostic pattern for PSYWERX literature and analytical pipelines: separate question selection, critical review, computational rerun, and complete-run reporting. A reproducible process reduces some errors but does not guarantee sound questions or substantive behavioral findings."
+    },
+    {
+      "itemId": "research-38fcb134614b30d6b903",
+      "streamTitle": "Research-agent team halted a plausible experiment after uncovering measurement drift",
+      "streamSummary": "A multi-role AI laboratory found drifting reference measurements, rejected an initially positive experimental interpretation, and retested a diamond-spin prediction. One bounded demonstration does not establish general autonomous scientific reliability.",
+      "attribution": "Mansouri, Kimura, Koga and Arai — arXiv preprint (experimental AI research workflow)",
+      "sourceUrl": "https://arxiv.org/abs/2610.40589",
+      "sourcePublishedAt": "2026-10-29",
+      "dateAdded": "2026-10-31",
+      "latestSeenBriefDate": "2026-10-31",
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling"
+      ],
+      "questionAndWhy": "Can collaborating AI research agents reject their own hypotheses or experimental results when checks reveal flawed evidence?",
+      "whatTheyDid": "An October 29 preprint describes a multi-role AI laboratory with question proposers, a principal investigator agent, an independent computational checker, an experimentalist, a manager, and reviewers. Under human-configured safety limits and physical apparatus, it derived and experimentally tested a calibration law for nitrogen-vacancy spins in diamond.",
+      "whatTheyFound": "Agents rejected many proposed ideas and initially treated apparently supportive measurements as inconclusive after discovering reference-signal drift. A redesigned measurement protocol later met predefined acceptance criteria and supported the mathematical prediction. This is one bounded laboratory demonstration, not independently established general scientific autonomy.",
+      "whatItMeans": "The transferable research-workflow feature is explicit veto power for independent criticism, precommitted checks, and revision when results fail, rather than merely multi-agent output volume. Adapting that design to PSYWERX research is an engineering hypothesis; it does not validate AI-generated claims about human behavior."
+    },
+    {
+      "itemId": "research-0517b04d9b072aa9c931",
+      "streamTitle": "Strong violations of memory-based predictions recruited attention and control",
+      "streamSummary": "Two memory experiments involving 101 adults found strong prediction violations recruited greater attention-, arousal-, and control-related signals, with frontal theta related to learning. Neural mediation and field transfer remain unproven.",
+      "attribution": "Xue, Jokhani, Norcia and Wagner — eLife (EEG/pupillometry experiments)",
+      "sourceUrl": "https://doi.org/10.7554/elife.109678",
+      "sourcePublishedAt": "2026-10-21",
+      "dateAdded": "2026-10-31",
+      "latestSeenBriefDate": "2026-10-31",
+      "primaryCategory": "behavioral-science",
+      "categories": [
+        "behavioral-science"
+      ],
+      "questionAndWhy": "How do strong versus weak violations of remembered expectations affect attention, arousal, and learning?",
+      "whatTheyDid": "Across two associative-memory experiments with 101 young adults, researchers manipulated prediction strength and recorded EEG and/or pupil responses while testing memory for unexpected information.",
+      "whatTheyFound": "Strong mnemonic prediction errors elicited greater frontal theta, posterior alpha changes, and pupil responses than weak errors. Greater frontal theta during strong errors was associated with better learning of unexpected items. Neural signals provide convergent correlates, but do not uniquely establish their causal role in encoding.",
+      "whatItMeans": "The experiments support treating surprise relative to a learned expectation as different from mere novelty. For PSYWERX research on sensemaking, event boundaries and expectation violations are testable constructs; effects on persuasive messages or field learning remain untested."
+    },
+    {
+      "itemId": "research-9f4aec2e5766303b34f3",
+      "streamTitle": "Crisis-resilience review found competing definitions and measurement gaps",
+      "streamSummary": "A NATO-accredited centre's 48-page review maps civilian resilience across individuals, communities, and nations while identifying conceptual and measurement gaps. It supplies a research agenda, not a validated crisis forecast.",
+      "attribution": "Lindgren, Svenonius, Palmer and Bertolin — NATO Strategic Communications Centre of Excellence (literature review)",
+      "sourceUrl": "https://stratcomcoe.org/publications/coping-amid-disruption-lessons-on-resilience-from-crisis-and-war/348",
+      "sourcePublishedAt": "2026-10-09",
+      "dateAdded": "2026-10-31",
+      "latestSeenBriefDate": "2026-10-31",
+      "primaryCategory": "operations-strategy",
+      "categories": [
+        "operations-strategy",
+        "behavioral-science"
+      ],
+      "questionAndWhy": "Which factors characterize civilian resilience during war or crisis, and how can institutions meaningfully assess it?",
+      "whatTheyDid": "A 48-page NATO StratCom Centre of Excellence and Swedish defense-research literature review examined resilience at individual, community, and national levels, including threats, psychological distress, social ties, hope, and proposed measurement frameworks.",
+      "whatTheyFound": "The limited review identifies recurring contributors and constraints, but finds no simple, universally agreed construct or validated aggregate forecasting score. Different levels of resilience can interact or diverge, and claims about protective mechanisms are drawn from heterogeneous prior evidence, not a new intervention experiment.",
+      "whatItMeans": "For cognitive-security planning, distinguish resilience capacity, observable response, recovery, and institutional adaptation instead of using one broad 'resilience' outcome. Build context-specific measures and test them longitudinally before using them for COA comparisons. This October 9 report is included for direct practitioner relevance."
+    },
+    {
+      "itemId": "research-a68666636dbc85ade332",
+      "streamTitle": "Algebraic activation improved uncertainty and convergence in fuzzy grey cognitive maps",
+      "streamSummary": "A Neurocomputing comparison found Elliot-family activation functions reduced uncertainty measures and computation in tested fuzzy grey cognitive maps. Stable simulations do not establish valid behavioral causal predictions.",
+      "attribution": "Salmeron and Pueyo — Neurocomputing (mathematical and simulation study)",
+      "sourceUrl": "https://doi.org/10.1016/j.neucom.2026.134140",
+      "sourcePublishedAt": "2026-10-07",
+      "dateAdded": "2026-10-31",
+      "latestSeenBriefDate": "2026-10-31",
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling"
+      ],
+      "questionAndWhy": "How do activation functions affect uncertainty, convergence, computational cost, and stability in fuzzy grey cognitive maps?",
+      "whatTheyDid": "Researchers introduced Elliot and Symmetric Elliot algebraic activations into fuzzy grey cognitive maps and compared them with exponential alternatives using greyness entropy, formal stability analysis, synthetic benchmarks, and an applied engineering model.",
+      "whatTheyFound": "The paper reported lower greyness entropy and faster computation for algebraic choices, with contraction analysis relating stability to the activation derivative and retention. Elliot was favored for unipolar settings and Symmetric Elliot for bipolar settings under the tested configurations.",
+      "whatItMeans": "This supplies a specific technical choice for PSYWERX FCM experimentation: activation functions affect both simulated trajectories and uncertainty summaries, so they should be sensitivity-tested rather than fixed by habit. The benchmarks did not validate causal edges or predict human intervention effects."
+    },
+    {
+      "itemId": "research-aecfdccb1db243ee0b24",
+      "streamTitle": "LLM-society surrogate tests separated individual accuracy from collective fidelity",
+      "streamSummary": "Analysis of 9,455 LLM-agent trajectories found neighbor context improved one-step prediction, while collective forecasts and history benefits were conditional and partly nonreplicated. Human-group validity was not tested.",
+      "attribution": "Igor Itkin — arXiv preprint (LLM-agent surrogate-model evaluation)",
+      "sourceUrl": "https://arxiv.org/abs/2609.35813",
+      "sourcePublishedAt": "2026-09-20",
+      "dateAdded": "2026-10-31",
+      "latestSeenBriefDate": "2026-10-31",
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling",
+        "behavioral-science"
+      ],
+      "questionAndWhy": "Does accurately predicting each simulated agent's next opinion ensure that a cheaper surrogate reproduces group dynamics over time?",
+      "whatTheyDid": "A September preprint reanalyzed 9,455 published LLM-agent opinion trajectories and ran new forecasting tests. It compared neighborhood information, opinion history, transfer to unseen questions and networks, and 24 prospective statements across individual and collective error measures.",
+      "whatTheyFound": "Neighbor opinions improved individual predictions in all 16 public-data settings, but improvements in collective forecasts varied across transfer conditions. The 24-statement follow-up did not confirm an earlier contrast in history effects at initial state; Qwen benefited from history only after observed rounds. Simple baselines sometimes prevailed.",
+      "whatItMeans": "For PSYWERX multi-agent simulations, validating local decision rules is insufficient: measure emergent population trajectories, error propagation, and sensitivity to how much history a model can see. These are forecasts of LLM-agent behavior, not evidence that a surrogate predicts human groups."
+    },
+    {
+      "itemId": "research-c504ae6f43b90ce6b280",
+      "streamTitle": "More immersive 360-degree VR did not outperform ordinary video for decision transfer",
+      "streamSummary": "A small randomized four-week sports-training study found ordinary 2D video beat 360VR on field decision transfer. Immersion did not guarantee improved performance; non-sport transfer remains untested.",
+      "attribution": "Hoyne et al. — Psychological Research (randomized training experiment)",
+      "sourceUrl": "https://doi.org/10.1007/s00426-026-02372-9",
+      "sourcePublishedAt": "2026-09-03",
+      "dateAdded": "2026-10-31",
+      "latestSeenBriefDate": "2026-10-31",
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling",
+        "behavioral-science"
+      ],
+      "questionAndWhy": "Does greater visual immersion improve transferable decision-making skill compared with conventional two-dimensional video practice?",
+      "whatTheyDid": "An experimental sports-training study randomized 28 Australian Rules Football players to 360-degree VR training, 2D video practice, or control for four weeks, then compared simulated and field-based decision performance.",
+      "whatTheyFound": "The 2D video group performed significantly better than both the 360VR and control groups on the field-transfer test. The VR group did not show the predicted superiority; small groups and attrition limit precision and generalizability.",
+      "whatItMeans": "XR training design should prioritize the decision-relevant perceptual cues and measured transfer, not visual immersion alone. Whether the same trade-off appears in military or information-environment training remains untested; these were sport-specific tasks."
+    },
+    {
+      "itemId": "research-3bf3b2ce820d978d617c",
+      "streamTitle": "Inductive headline training improved discernment; badges weakened the benefit",
+      "streamSummary": "Three preregistered experiments (N=1,135) found feedback-based headline classification could improve true/false discernment. Adding badges weakened the effect; reversing the difficulty sequence restored stronger support. Actual sharing was not tested.",
+      "attribution": "Modirrousta-Galian et al. — Journal of Experimental Psychology: Applied (preregistered experiments)",
+      "sourceUrl": "https://doi.org/10.1037/xap0000580",
+      "sourcePublishedAt": "2026-05-11",
+      "dateAdded": "2026-10-31",
+      "latestSeenBriefDate": "2026-10-31",
+      "primaryCategory": "behavioral-science",
+      "categories": [
+        "behavioral-science",
+        "operations-strategy"
+      ],
+      "questionAndWhy": "Can practice classifying true and false news with immediate feedback improve discernment, and do game-like rewards help?",
+      "whatTheyDid": "Three preregistered experiments (N=1,135) tested inductive classification of true and false headlines with accuracy feedback. Experiment 1 involved 214 people; Experiment 2 added performance-contingent badges among 483 people; Experiment 3 reversed task difficulty from hard to easy among 438 people.",
+      "whatTheyFound": "Experiment 1 improved discernment versus control, although Bayesian evidence was weak. The badge version produced a smaller benefit. With hard-to-easy practice, Experiment 3 showed improved discernment and stronger Bayesian support. The proposed motivational explanation for the badge result was not itself experimentally isolated.",
+      "whatItMeans": "For cognitive-security education, the sequence and reward structure of verification practice may matter as much as content. This is a controlled test of headline judgments, not proof of long-term retention, actual sharing restraint, or effectiveness in other populations. Included as a useful earlier 2026 result rather than breaking news."
+    },
     {
       "itemId": "research-aadda621be9a855f50ab",
       "streamTitle": "Weibo earthquake data showed changing source and content associations with sharing",
@@ -11341,6 +11527,29 @@
     }
   ],
   "briefs": [
+    {
+      "briefDate": "2026-10-31",
+      "briefType": "daily",
+      "totalItems": 10,
+      "categoryCounts": {
+        "behavioral-science": 3,
+        "technology-modeling": 5,
+        "operations-strategy": 2,
+        "application-analysis": 0
+      },
+      "itemIds": [
+        "research-3bf3b2ce820d978d617c",
+        "research-0517b04d9b072aa9c931",
+        "research-420774bcf3f9ba6747f8",
+        "research-9f4aec2e5766303b34f3",
+        "research-a4231a1c4c814848f845",
+        "research-38fcb134614b30d6b903",
+        "research-af2b3fa77d334d13a854",
+        "research-a68666636dbc85ade332",
+        "research-aecfdccb1db243ee0b24",
+        "research-c504ae6f43b90ce6b280"
+      ]
+    },
     {
       "briefDate": "2026-10-30",
       "briefType": "daily",
