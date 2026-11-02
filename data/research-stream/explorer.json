@@ -1,8 +1,174 @@
 {
   "schemaVersion": "psywerx-research-explorer-v1",
-  "generatedAt": "2026-11-01",
-  "totalItems": 609,
+  "generatedAt": "2026-11-02",
+  "totalItems": 618,
   "items": [
+    {
+      "itemId": "research-badcddece32c5b3e2e2b",
+      "streamTitle": "Structured AI preparation improved reported consultation readiness, not clinical outcomes",
+      "streamSummary": "A randomized 802-person AI preparation study found structured workflows improved clinician-rated and self-rated consultation readiness over a general chatbot. Agreement between those ratings was weak, and actual visit outcomes were not tested.",
+      "attribution": "Tan et al. — arXiv preprint (first-party randomized AI preparation study)",
+      "sourceUrl": "https://arxiv.org/abs/2610.41437",
+      "sourcePublishedAt": "2026-10-30",
+      "dateAdded": "2026-11-02",
+      "latestSeenBriefDate": "2026-11-02",
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling",
+        "behavioral-science"
+      ],
+      "questionAndWhy": "Does an AI agent that explicitly organizes a person's questions and context help them prepare for a time-limited professional consultation better than an ordinary chatbot?",
+      "whatTheyDid": "A prospective randomized first-party study enrolled 802 US adults and analyzed 866 health-related conversations with a structured visit-preparation agent or a minimally prompted chatbot using the same underlying model. Blinded clinicians reviewed 272 sessions; 460 participants completed post-conversation surveys.",
+      "whatTheyFound": "Clinician-rated comprehensive preparation was higher with the structured agent (67.2% versus 50.6%), and surveyed participants more often felt prepared (73.8% versus 57.0%). Expert and participant ratings did not significantly correlate. The study did not measure subsequent clinic conversations, medical decisions, treatment adherence or patient outcomes.",
+      "whatItMeans": "Separating context gathering, agenda prioritization and a final summary from generic conversation is a testable AI-system design pattern. Analogous preparation for analyst interviews or planning meetings is a PSYWERX application hypothesis, not an effect demonstrated by this healthcare study. Different evaluator perspectives need separate measures."
+    },
+    {
+      "itemId": "research-7dbc2543e7cc5a5526e8",
+      "streamTitle": "Coordinated clarification policy reduced simulated delays when many AI agents shared one supervisor",
+      "streamSummary": "A dynamic-programming model and 864-case synthetic benchmark found a pairwise clarification policy nearly matched optimal cost and cut modeled delay 18–31% versus heuristics. Real human-supervisor benefits remain untested.",
+      "attribution": "Wang, Liu and Wang — arXiv preprint (multi-agent scheduling model)",
+      "sourceUrl": "https://arxiv.org/abs/2610.41129",
+      "sourcePublishedAt": "2026-10-30",
+      "dateAdded": "2026-11-02",
+      "latestSeenBriefDate": "2026-11-02",
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling"
+      ],
+      "questionAndWhy": "When several AI agents need answers from one attention-limited human, how should they decide whether to ask, search independently or keep working?",
+      "whatTheyDid": "Researchers modeled multiple delegated tasks with unresolved requirements and finite supervisor attention as a dynamic program. They proposed a Pairwise Coordination Policy based on exact single- and two-task solutions, then evaluated it on 864 synthetic cases and a small LLM-agent task study.",
+      "whatTheyFound": "The proposed policy averaged a 0.07% gap from synthetic optimal cost and lowered modeled completion cost by 18–31% relative to three tested heuristics. A bounded approximation guarantee applied under specific assumptions. In the small LLM-agent case study all tasks completed, but no controlled human workplace study measured interrupt burden or productivity.",
+      "whatItMeans": "This is a concrete scheduling and uncertainty-management method for multi-agent research operations: ask for consequential decisions when the shared human is needed, and otherwise preserve independent work. The savings are model and simulation results, not demonstrated reductions in real staff workload. PSYWERX could test the policy against actual task logs and human interruption costs."
+    },
+    {
+      "itemId": "research-e08205a8a2f3c8f6be8d",
+      "streamTitle": "HAIDL-X captured reproducible human–AI notebook interactions, but not validated learning",
+      "streamSummary": "HAIDL-X proposed a notebook interaction schema and demonstrated capture of prompts, code, feedback and execution traces in classroom workflows. It supports auditability but does not establish improved research validity or student learning.",
+      "attribution": "Taufer et al. — arXiv preprint (HAIDL-X research-workflow prototype)",
+      "sourceUrl": "https://arxiv.org/abs/2610.40006",
+      "sourcePublishedAt": "2026-10-29",
+      "dateAdded": "2026-11-02",
+      "latestSeenBriefDate": "2026-11-02",
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling"
+      ],
+      "questionAndWhy": "Can scientific notebooks preserve enough context about AI assistance to audit how researchers arrived at their code and conclusions?",
+      "whatTheyDid": "The HAIDL preprint proposed a formal interaction description language and a JupyterLab middleware extension that records user questions, prompt context, model outputs, feedback, code execution and error traces. The authors explored its use in four student assignments involving 35 students and 140 student-assignment opportunities.",
+      "whatTheyFound": "The prototype demonstrated structured, queryable interaction records rather than ephemeral chat transcripts. Classroom logs separated some forms of help-seeking and error recovery; contamination across assigned conditions and weak relationships between simple prompt counts and notebook activity limited stronger evaluation. No controlled evidence established improved understanding or scientific truthfulness.",
+      "whatItMeans": "The concrete advance for PSYWERX is preserving model identity, source context, edits, execution traces and failures alongside research outputs. That could support provenance and retrospective quality audits, but the value of particular interaction-derived indicators remains unvalidated and cannot substitute for independent replication."
+    },
+    {
+      "itemId": "research-ccfb419c9e067833545e",
+      "streamTitle": "Structured AI tutoring improved legal reasoning; programming and retention evidence remained mixed",
+      "streamSummary": "Two preregistered trials found higher immediate legal-reasoning gains with structured AI practice, but no clear four-week retention difference and no significant overall programming advantage. Attrition limits generalization.",
+      "attribution": "AI Cosmos Team / Zhou et al. — arXiv preprint (preregistered randomized learning trials)",
+      "sourceUrl": "https://arxiv.org/abs/2610.40031",
+      "sourcePublishedAt": "2026-10-29",
+      "dateAdded": "2026-11-02",
+      "latestSeenBriefDate": "2026-11-02",
+      "primaryCategory": "behavioral-science",
+      "categories": [
+        "behavioral-science",
+        "technology-modeling"
+      ],
+      "questionAndWhy": "Can structured, scenario-based AI tutoring improve durable human competence beyond what learners gain from an ordinary chatbot?",
+      "whatTheyDid": "The AI Cosmos team compared conventional LLM assistance, an LLM-as-Teacher, and a structured scenario-and-practice system using the same underlying model in two preregistered randomized trials. Legal reasoning included 131 randomized learners and 111 analyzed participants, 37 per arm. The programming trial had 140 recruited learners but only 54 completed its final assessment.",
+      "whatTheyFound": "In legal reasoning, mean immediate gains were 15.7, 18.5 and 22.8 percentage points for the conventional, teacher and structured conditions respectively. The adjusted structured-versus-conventional difference was 4.5 points (p=.018). A four-week follow-up with 54 learners did not show a statistically significant between-group difference. The programming omnibus test was nonsignificant (p=.20), with substantial attrition.",
+      "whatItMeans": "A learning workflow should be judged by subsequent independent performance, not fluent AI-assisted completion. Scenario structure may help legal-reasoning acquisition, but evidence for programming superiority and retained gains is not yet established. PSYWERX practitioner courses could test guided practice against ordinary AI help using delayed, AI-free assessments; that transfer is proposed, not demonstrated."
+    },
+    {
+      "itemId": "research-96695ed8dfcb10648fb0",
+      "streamTitle": "Competitive rewards produced withdrawal and overinvestment in a 200-agent synthetic society",
+      "streamSummary": "In 200 LLM agents across 50 rounds, low prizes yielded withdrawal while high rewards yielded modeled overcompetition. Widening eligibility changed collective cost and selection. These are synthetic dynamics, not human findings.",
+      "attribution": "Zhao et al. — arXiv preprint (LLM-agent incentive simulation)",
+      "sourceUrl": "https://arxiv.org/abs/2610.40259",
+      "sourcePublishedAt": "2026-10-29",
+      "dateAdded": "2026-11-02",
+      "latestSeenBriefDate": "2026-11-02",
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling"
+      ],
+      "questionAndWhy": "How does the size and breadth of prizes change collective investment, withdrawal and selection outcomes in a simulated competitive population?",
+      "whatTheyDid": "Researchers simulated 200 language-model agents over 50 rounds of repeated competitive investment and compared behavior with a Bayesian adaptive benchmark. They varied prize magnitude and the number of qualifying winners while observing aggregate spending, individual payoffs and stated agent rationales.",
+      "whatTheyFound": "At the smallest tested reward, modeled agents underinvested or withdrew; at the highest rewards they overinvested relative to the benchmark. Expanding prize coverage could reduce collective investment cost, but excessively broad coverage weakened ability selection. These effects varied with the modeled incentive structure.",
+      "whatItMeans": "The study illustrates how reward-allocation assumptions can yield different simulated group behaviors and trade-offs, useful for sensitivity analysis in organizational or collective-action models. It does not measure human competitive behavior, and agent-generated explanations are not independent evidence of human psychological mechanisms."
+    },
+    {
+      "itemId": "research-0595444a198f3eef3a5f",
+      "streamTitle": "UNIDIR mapped 146 arms-related information disorders, mostly false claims about weapons flows",
+      "streamSummary": "UNIDIR reviewed 146 conventional-arms information-disorder incidents from 2015–25; three quarters concerned arms flows, often using recycled media. Diplomatic and security effects are plausible but not quantified causally.",
+      "attribution": "Sarah Grand-Clément — UNIDIR (original 40-page incident analysis, October 29)",
+      "sourceUrl": "https://doi.org/10.37559/cwp/26/erc/10",
+      "sourcePublishedAt": "2026-10-29",
+      "dateAdded": "2026-11-02",
+      "latestSeenBriefDate": "2026-11-02",
+      "primaryCategory": "operations-strategy",
+      "categories": [
+        "operations-strategy"
+      ],
+      "questionAndWhy": "How does false or misleading information about conventional weapons enter security debates, and which operational or diplomatic decisions may be exposed?",
+      "whatTheyDid": "UNIDIR reviewed 146 documented misinformation, disinformation and malinformation incidents from 2015 through 2025 involving conventional arms. The 40-page research report categorized the claims, their subjects, and observed information-distribution practices, then proposed prevention and mitigation responses.",
+      "whatTheyFound": "About three quarters of cases concerned arms flows, including false allegations of weapons transfers or ownership. Recycled or out-of-context content and social media were common; high-end generative AI was not the dominant observed tool. The report discusses potential consequences for arms-control trust, diplomatic relations and escalation but does not causally estimate their prevalence or size.",
+      "whatItMeans": "Information-integrity assessment should treat arms-flow claims as possible inputs to misperception, threat assessment and interstate decisions. A specific PSYWERX application would be tracking claims, verification provenance and decision uptake separately. The case inventory establishes patterns of incidents, not measured effects of those claims on governments or publics."
+    },
+    {
+      "itemId": "research-b3c1ed222c2fcfe4eed9",
+      "streamTitle": "VR eye-and-hand tracking measured distraction costs; richer scenes did not amplify capture",
+      "streamSummary": "A 54-person VR study measured reliable distraction costs in gaze and reaching. More complex scenes increased some overall demands without significantly increasing capture effects, offering a reproducible measurement method rather than evidence of training benefits.",
+      "attribution": "Gurr, Moher, Egbert and Erb — Behavior Research Methods (VR attention experiment)",
+      "sourceUrl": "https://doi.org/10.3758/s13428-026-03177-9",
+      "sourcePublishedAt": "2026-09-24",
+      "dateAdded": "2026-11-02",
+      "latestSeenBriefDate": "2026-11-02",
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling",
+        "behavioral-science"
+      ],
+      "questionAndWhy": "Can immersive VR reveal where visual distractions affect attention and action using continuous gaze and reaching measures rather than button presses alone?",
+      "whatTheyDid": "A peer-reviewed experiment enrolled 54 people in a virtual 3D visual-search task. Participants reached for unique shape targets, with a salient color distractor on half the trials, in sparse and rich virtual scenes. Researchers collected initiation, movement and response times, hand trajectories, target attraction and eye fixations.",
+      "whatTheyFound": "Distractors delayed initiation and gaze fixation and altered reach trajectories across several measures. Richer scenes increased some overall task demands, but no significant interaction showed that scene richness increased distractor-related capture costs. Data and analysis resources were released; the study was not preregistered.",
+      "whatItMeans": "The specific enabling advance is simultaneous continuous gaze-and-action measurement for assessing attention in controlled immersive environments. PSYWERX XR training research could use these metrics to test cue competition and visual workload, but transfer to operational scenes, learning or influence outcomes remains untested."
+    },
+    {
+      "itemId": "research-206d52a024f6046949f0",
+      "streamTitle": "Dishonest AI peer norms increased human misreporting, without a significant AI-versus-human difference",
+      "streamSummary": "Two randomized die-reporting experiments (N=640) found dishonest peer cues increased misreporting; differences between AI and human peers were not significant. Effects were not monotonic with additional dishonest peers.",
+      "attribution": "Shuning Zhang et al. — arXiv preprint (randomized behavioral experiments)",
+      "sourceUrl": "https://arxiv.org/abs/2609.18060",
+      "sourcePublishedAt": "2026-09-16",
+      "dateAdded": "2026-11-02",
+      "latestSeenBriefDate": "2026-11-02",
+      "primaryCategory": "behavioral-science",
+      "categories": [
+        "behavioral-science"
+      ],
+      "questionAndWhy": "Do apparently dishonest AI peers change real people's reporting decisions, and is their normative influence different from that of human peers?",
+      "whatTheyDid": "Researchers ran two randomized online behavioral experiments with 280 and 360 participants in which people privately observed a die outcome and reported a result under monetary incentives. The studies manipulated honest or dishonest group norms and whether the other group members were AI agents or humans.",
+      "whatTheyFound": "Exposure to dishonest peer cues increased dishonest reporting relative to a baseline (reported 56.8% versus 38.0% in the relevant comparison). Honest cues did not produce a reliably different rate from baseline. Differences between AI- and human-peer conditions were not statistically significant, and adding more dishonest peers did not yield a steady dose-response pattern.",
+      "whatItMeans": "Norms expressed by AI participants may influence people's immediate conduct in collaborative settings, but the data do not show that AI peers are more influential than humans. For PSYWERX, synthetic coworkers and social agents should be treated as part of the behavioral environment, and measured outcomes should be distinguished from self-reported intentions. Transfer from incentivized die reports to consequential misconduct remains untested."
+    },
+    {
+      "itemId": "research-76c28ea02403f7872655",
+      "streamTitle": "Adversarial AI comments reduced news discernment; warnings only partly reversed the effect",
+      "streamSummary": "Two preregistered experiments (N=331) found adversarial AI comments and replies impaired news-veracity judgment. Warnings and detector cues partially helped, especially for top-level comments, but actual sharing was not observed.",
+      "attribution": "Lu, Lim and Yin — CHI 2026 (preregistered randomized experiments)",
+      "sourceUrl": "https://doi.org/10.1145/3772318.3790442",
+      "sourcePublishedAt": "2026-04-13",
+      "dateAdded": "2026-11-02",
+      "latestSeenBriefDate": "2026-11-02",
+      "primaryCategory": "behavioral-science",
+      "categories": [
+        "behavioral-science",
+        "operations-strategy"
+      ],
+      "questionAndWhy": "Can malicious AI-generated comments and replies alter how people judge the truth of news, and can warning prompts protect discernment?",
+      "whatTheyDid": "A peer-reviewed CHI study conducted two preregistered randomized online experiments with 176 and 155 participants. Participants evaluated political headlines in a simulated social-media interface containing human comments, AI-generated adversarial top-level comments or AI-generated replies. The second experiment tested general warnings and AI-content detector prompts.",
+      "whatTheyFound": "Adversarial comments or replies reduced accuracy in judging true versus false headlines and weakened intended sharing discrimination. Both warning formats improved some misinformation-detection judgments, but their benefits depended on whether manipulation appeared in top-level comments or nested replies. Effects on sharing intentions were limited and less consistent.",
+      "whatItMeans": "The surrounding comment environment can distort evidence evaluation even when the headline itself is unchanged. PSYWERX cognitive-security research could separately test comment position, apparent consensus, and warning placement. These experiments establish immediate effects in mock news judgments, not changes in actual reposting, durable beliefs or field-scale campaigns."
+    },
     {
       "itemId": "research-993e867a9ff63c515086",
       "streamTitle": "Generative road-choice inference found no single rule across 62 Roman routes",
@@ -1903,23 +2069,22 @@
     },
     {
       "itemId": "research-637e6995e59c311040bc",
-      "streamTitle": "UNIDIR released new national security-and-defence AI strategy guidance",
-      "streamSummary": "UNIDIR's 81-page October 19 guidelines distinguish strategy-development procedures from technical, legal and political requirements. The document offers governance guidance rather than evidence of policy effectiveness.",
-      "attribution": "Afina, Mannsperger and Madziwa — UNIDIR guidelines",
+      "streamTitle": "UNIDIR issued revised military-AI strategy guidelines, without demonstrating adoption effects",
+      "streamSummary": "UNIDIR's revised 81-page military-AI guidance separates procedural strategy development from technical, legal and political requirements. It is a practical governance framework, not evidence of successful national implementation.",
+      "attribution": "Afina, Mannsperger and Madziwa — UNIDIR (revised security-and-defence guidelines, October 19)",
       "sourceUrl": "https://doi.org/10.37559/sectec/2026/ai/08",
       "sourcePublishedAt": "2026-10-19",
       "dateAdded": "2026-10-21",
-      "latestSeenBriefDate": "2026-10-21",
+      "latestSeenBriefDate": "2026-11-02",
       "primaryCategory": "operations-strategy",
       "categories": [
         "operations-strategy",
-        "technology-modeling",
-        "application-analysis"
+        "technology-modeling"
       ],
-      "questionAndWhy": "What should a national strategy for military and security AI actually cover?",
-      "whatTheyDid": "UNIDIR released revised 81-page guidelines on October 19, developed from an earlier draft, government and civil-society feedback, literature review and its AI-security engagements.",
-      "whatTheyFound": "The guidance separates institutional strategy-development procedures from technical, legal and political considerations across adoption, implementation and review. It is guidance, not a tested policy intervention.",
-      "whatItMeans": "The structured lifecycle could help compare national AI governance plans; whether it improves responsible deployment remains to be evaluated."
+      "questionAndWhy": "What decisions and safeguards should governments address when developing, implementing and reviewing national strategies for AI in security and defence?",
+      "whatTheyDid": "UNIDIR's Centre of Excellence on AI, Peace and Security updated an 81-page guideline following earlier drafts, literature review and feedback from government and civil-society stakeholders. It divides the work into a procedural strategy cycle and substantive technical, legal and political considerations.",
+      "whatTheyFound": "The guidelines provide a structured process for defining priorities, assigning institutional responsibilities, evaluating technical maturity and addressing governance and security constraints. They are normative research guidance, not an evaluation showing that adopting these recommendations improves military decision quality or reduces AI-related incidents.",
+      "whatItMeans": "For operations and strategy, a national AI strategy should be assessed as a chain from stated objectives through ownership, assurance and measured implementation. PSYWERX could adapt the document into a decision-audit checklist for human-machine planning, but the checklist's effectiveness would require prospective testing. No completed policy outcome is claimed."
     },
     {
       "itemId": "research-c800d58b1b8f08f0a689",
@@ -11690,6 +11855,29 @@
     }
   ],
   "briefs": [
+    {
+      "briefDate": "2026-11-02",
+      "briefType": "daily",
+      "totalItems": 10,
+      "categoryCounts": {
+        "behavioral-science": 3,
+        "technology-modeling": 5,
+        "operations-strategy": 2,
+        "application-analysis": 0
+      },
+      "itemIds": [
+        "research-ccfb419c9e067833545e",
+        "research-206d52a024f6046949f0",
+        "research-76c28ea02403f7872655",
+        "research-0595444a198f3eef3a5f",
+        "research-637e6995e59c311040bc",
+        "research-e08205a8a2f3c8f6be8d",
+        "research-badcddece32c5b3e2e2b",
+        "research-7dbc2543e7cc5a5526e8",
+        "research-96695ed8dfcb10648fb0",
+        "research-b3c1ed222c2fcfe4eed9"
+      ]
+    },
     {
       "briefDate": "2026-11-01",
       "briefType": "daily",
