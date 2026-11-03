@@ -1,8 +1,170 @@
 {
   "schemaVersion": "psywerx-research-explorer-v1",
-  "generatedAt": "2026-11-02",
-  "totalItems": 618,
+  "generatedAt": "2026-11-03",
+  "totalItems": 627,
   "items": [
+    {
+      "itemId": "research-ff3840ba36c375f4a3fd",
+      "streamTitle": "Transferred pedestrian models preserved network hierarchy after local calibration",
+      "streamSummary": "A November 2 mobility study transferred behavior models between cities and found persistent network hierarchy after observed-count calibration. Fitted agreement is not an independent prospective test.",
+      "attribution": "Nourmohammadi, Rashidi and Saberi — npj Sustainable Mobility and Transport (transfer/calibration study)",
+      "sourceUrl": "https://doi.org/10.1038/s44333-026-00134-z",
+      "sourcePublishedAt": "2026-11-02",
+      "dateAdded": "2026-11-03",
+      "latestSeenBriefDate": "2026-11-03",
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling"
+      ],
+      "questionAndWhy": "Can a behavioral mobility model trained in one city estimate pedestrian flows in another after local calibration? The methodological question is when cross-population transfer preserves meaningful structure.",
+      "whatTheyDid": "Researchers transferred trip-generation, destination-choice and route-assignment models from Seattle and Brisbane to Sydney and New York City, then calibrated demand to observed pedestrian counts. They evaluated flow concentration and source/target structural compatibility.",
+      "whatTheyFound": "Models generated hierarchical patterns across target settings; the top 5% of origin and destination nodes accounted for roughly 50–65% of inferred movement. Calibration changed absolute volumes substantially while preserving rank hierarchy more strongly with structurally similar source networks. Since observed counts informed calibration, fitted agreement is not an independent forecast.",
+      "whatItMeans": "The specific modeling contribution is separating transfer of model structure from local parameter calibration, and assessing structural rather than only demographic similarity across settings. Applying this to PSYWERX social or influence networks is an analogy, not demonstrated human-behavior transfer. Prospective or held-out validation is needed."
+    },
+    {
+      "itemId": "research-dcbbecdbbb6215f6699f",
+      "streamTitle": "Loss and gain framing had opposing effects across retirement-savings subgroups",
+      "streamSummary": "Two retirement-savings experiments (N=22,919 and 18,288) found divergent responses to loss versus gain messages; projected personalized benefits are modeled rather than policy-trial results.",
+      "attribution": "Bösch, Müller, Weinmann and Feuerriegel — Scientific Reports (randomized field experiments)",
+      "sourceUrl": "https://doi.org/10.1038/s41598-026-76813-1",
+      "sourcePublishedAt": "2026-11-02",
+      "dateAdded": "2026-11-03",
+      "latestSeenBriefDate": "2026-11-03",
+      "primaryCategory": "behavioral-science",
+      "categories": [
+        "behavioral-science"
+      ],
+      "questionAndWhy": "How much does loss-versus-gain framing change consequential behavior, and can one framing strategy backfire for some people? The question is whether personalization improves on a supposedly universal persuasive message.",
+      "whatTheyDid": "A European retirement-savings company randomized 22,919 customers to loss- or gain-framed reminders and conducted an independent validation experiment with 18,288 more customers. Researchers used causal machine learning to estimate effects on enrollment and contribution amount across socioeconomic subgroups.",
+      "whatTheyFound": "In the validation experiment, the estimated loss-frame advantage was 9.4 percentage points among the quartile predicted to favor loss framing and 8.4 points worse among the quartile predicted to favor gain framing. Models suggested loss messages increased contributions for 64% of contributors but backfired for others. Projected targeted-policy benefits were estimates, not an executed randomized targeting-policy trial.",
+      "whatItMeans": "These field experiments support heterogeneous message effects on observed financial decisions. For PSYWERX, subgroup effect estimation and message pretesting may be more defensible than assuming one universally effective frame. Transfer to security or political messaging is untested; predicted gains from deploying a personalized policy must not be presented as observed policy-trial gains."
+    },
+    {
+      "itemId": "research-5879a7131504948fd2e5",
+      "streamTitle": "Meaningful AI versioning could make research and audits more reproducible",
+      "streamSummary": "A November 2 Nature Machine Intelligence perspective argues unannounced model changes undermine reproducibility and oversight. Its proposed stronger versioning approach has not been tested for effectiveness.",
+      "attribution": "Mavroudis, Ristea, Morlock and Mougan — Nature Machine Intelligence (Perspective)",
+      "sourceUrl": "https://doi.org/10.1038/s42256-026-01323-8",
+      "sourcePublishedAt": "2026-11-02",
+      "dateAdded": "2026-11-03",
+      "latestSeenBriefDate": "2026-11-03",
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling"
+      ],
+      "questionAndWhy": "Can auditors reproduce AI system behavior when providers update models without meaningfully changing public version identifiers? The problem is whether a nominal model identity defines a stable experimental condition.",
+      "whatTheyDid": "A November 2 peer-reviewed Nature Machine Intelligence perspective assessed provider-side model and integration changes, using the GPT-4o sycophancy episode to illustrate the limitations of coarse version labels. The authors proposed more meaningful commitments to model version identity.",
+      "whatTheyFound": "The authors identified a reproducibility and oversight problem: the same model label can designate behaviorally different deployments. Their proposal is governance analysis, not a new empirical benchmark or a demonstrated fix for AI reliability failures.",
+      "whatItMeans": "For PSYWERX AI experiments and agents, preserve model and provider labels, access dates, prompt versions, tool configurations and regression-test cases. This is a concrete provenance recommendation, not evidence that the proposed versioning requirements have been adopted or improve outcomes."
+    },
+    {
+      "itemId": "research-1b9a35b46093fa85262e",
+      "streamTitle": "Low-cost 6-DOF XR tracking sped simulated navigation in a 20-person study",
+      "streamSummary": "A 20-person proof of concept found 6-DOF XR visualization reduced simulated catheter-navigation time and path length relative to 2D guidance. Transfer to other task types remains untested.",
+      "attribution": "Annabestani et al. — npj Biomedical Innovations (engineering proof of concept with human comparison)",
+      "sourceUrl": "https://doi.org/10.1038/s44385-026-00122-5",
+      "sourcePublishedAt": "2026-11-02",
+      "dateAdded": "2026-11-03",
+      "latestSeenBriefDate": "2026-11-03",
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling"
+      ],
+      "questionAndWhy": "Can low-cost real-time six-degree-of-freedom tracking and immersive visualization improve spatial decisions versus a conventional 2D display? The technical advance is instrumented interactive 3D guidance.",
+      "whatTheyDid": "Researchers combined machine-vision 5-DOF tracking, a 3D-printed rotation encoder and a patient-specific 3D model into an XR interface. Twenty novice medical students navigated a simulated catheter to six targets using 3D or a simplified 2D cath-lab-like view.",
+      "whatTheyFound": "Mean completion times were 54.6 seconds in XR versus 263.5 seconds in 2D; mean movement distances were 1,939 mm versus 7,854 mm, roughly 4.8-fold and 4.1-fold differences. The test used static anatomy, novice subjects and a simulated comparator, not real clinical or military outcomes.",
+      "whatItMeans": "The enabling capability is inexpensive six-axis tracking joined to responsive spatial feedback, potentially useful for instrumented immersive training. That use in PSYWERX is untested: gains were measured on a simulated clinical manipulation task and do not prove XR is universally superior or delivers operational influence effects."
+    },
+    {
+      "itemId": "research-034122a068952a8cd22c",
+      "streamTitle": "Friend advice effects varied by adviser status and reciprocal interaction",
+      "streamSummary": "In 66 adult friend dyads, advice valence and adviser relationship status related to mate-choice intention, and a reciprocal model fit best. Neural synchrony was correlational.",
+      "attribution": "Huang et al. — Communications Biology (interactive behavioral study with fNIRS)",
+      "sourceUrl": "https://doi.org/10.1038/s42003-026-11186-9",
+      "sourcePublishedAt": "2026-11-02",
+      "dateAdded": "2026-11-03",
+      "latestSeenBriefDate": "2026-11-03",
+      "primaryCategory": "behavioral-science",
+      "categories": [
+        "behavioral-science"
+      ],
+      "questionAndWhy": "How do friends' positive or negative recommendations affect uncertain decisions, and does the adviser's relationship status matter? The study examines reciprocal social advice rather than one-way message exposure.",
+      "whatTheyDid": "Researchers simultaneously measured behavior and functional near-infrared spectroscopy in 66 adult friend dyads (33 female dyads) during interactive mate-choice advice. They compared computational accounts of social-information processing and measured interpersonal neural synchrony.",
+      "whatTheyFound": "A bidirectional social-information-processing model best fitted choices among the tested models. Positive advice from friends in relationships and negative advice from single friends had stronger effects in the reported contrasts. Neural synchrony in prefrontal and temporal regions was associated with measured advice influence.",
+      "whatItMeans": "Social influence can depend on the adviser, advice valence, and reciprocal interaction. For PSYWERX, separating adviser attributes from message content is a testable design choice. Neural synchrony and model fit do not demonstrate causal brain-to-brain transmission; intentions in mate-choice tasks do not establish later decisions elsewhere."
+    },
+    {
+      "itemId": "research-018e3e44547144d8d6c6",
+      "streamTitle": "Graphika found no support for claims Yandex strikes silenced Western political bots",
+      "streamSummary": "After October 7–11 Yandex data-center strikes, Graphika found no unusual loss of activity in the cited Western political communities; viral charts confused web-crawler traffic with bot accounts.",
+      "attribution": "John Kelly / Graphika — original information-environment investigation (October 13)",
+      "sourceUrl": "https://www.graphika.com/blogs/yandex-strikes-russian-influence-operations",
+      "sourcePublishedAt": "2026-10-13",
+      "dateAdded": "2026-11-03",
+      "latestSeenBriefDate": "2026-11-03",
+      "primaryCategory": "operations-strategy",
+      "categories": [
+        "operations-strategy"
+      ],
+      "questionAndWhy": "Did Yandex data-center disruptions actually silence alleged Russian influence accounts in Western political communities? The issue is inferring operational effects from unrelated metrics.",
+      "whatTheyDid": "Graphika checked viral claims following October 7–11 data-center strikes against community post counts, account activity, historical baselines and other communities. It inspected a widely shared chart of Yandex network crawler traffic.",
+      "whatTheyFound": "Yandex automated traffic fell sharply, but the chart measured crawler activity, not social-account activity. Graphika found no unusual loss of active accounts or top posters in the cited AfD, MAGA or Reform UK communities; AfD-related posts on October 11 numbered 40,365 versus 42,040 a week earlier. Some Russian-language communities declined, with uncertain causes.",
+      "whatItMeans": "An infrastructure disruption is not proof of an information-operation effect. PSYWERX assessments should link each metric to the actor or behavior it actually measures, using comparable baselines and lag-aware data. This original October 13 investigation is selected for its measurement lesson, not recency; platform coverage cannot exclude all possible covert disruptions."
+    },
+    {
+      "itemId": "research-721958fe0d5a8c2d2bef",
+      "streamTitle": "Fixed-rule scientific agent benchmark exposed failures beyond coding mistakes",
+      "streamSummary": "CompMat-Bench used 94 scientific tasks from 15 papers with precomputed simulations; agent accuracy depended on workflow length and guidance. The method has not been validated for behavioral-science automation.",
+      "attribution": "Zhang et al. — arXiv preprint (CompMat-Bench scientific-agent benchmark)",
+      "sourceUrl": "https://arxiv.org/abs/2610.00636",
+      "sourcePublishedAt": "2026-09-30",
+      "dateAdded": "2026-11-03",
+      "latestSeenBriefDate": "2026-11-03",
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling"
+      ],
+      "questionAndWhy": "Can AI research agents be tested on actual scientific steps without repeating very expensive simulations, and how does reduced guidance affect them? The question is verifiable agent competence, not fluent writing.",
+      "whatTheyDid": "CompMat-Bench converted 94 tasks from 15 published computational-materials studies into fixed-rule tests. Expensive simulations were reproduced once; agents prepared inputs or analyzed their precomputed outputs. Four agent configurations were evaluated on independent tasks and linked workflows with full or reduced methodological guidance.",
+      "whatTheyFound": "Under full guidance on single tasks, pass rates ranged from 66.0% to 90.4%. Longer workflows and reduced instructions exposed model-dependent failures, often scientific errors rather than mistakes in operating software. The results are specific to sampled materials-research tasks.",
+      "whatItMeans": "The transferable advance is independently prepared ground truth, fixed grading and stress-testing a whole workflow when guidance is incomplete. PSYWERX could adapt the approach to causal-model research, but that is an untested engineering transfer requiring different scientific ground truths. The materials benchmark does not validate autonomous behavioral research. First posted September 30, included for concrete methodology."
+    },
+    {
+      "itemId": "research-fe097995d06ea4b2e395",
+      "streamTitle": "Course-integrated AI tutoring reduced grades and engagement in a university trial",
+      "streamSummary": "A 2,379-student randomized university trial found access to an integrated AI tutor reduced grades by 0.37 SD and LMS engagement by 0.90 SD within sections. Mechanisms and generalizability remain uncertain.",
+      "attribution": "Liu et al. — University of Maryland / EdWorkingPapers (randomized university trial)",
+      "sourceUrl": "https://doi.org/10.26300/y3f8-vh05",
+      "sourcePublishedAt": null,
+      "dateAdded": "2026-11-03",
+      "latestSeenBriefDate": "2026-11-03",
+      "primaryCategory": "behavioral-science",
+      "categories": [
+        "behavioral-science"
+      ],
+      "questionAndWhy": "Does integrating an AI tutor into ordinary university coursework improve learning and participation, or displace existing engagement? The issue matters for evaluating AI-assisted practitioner education.",
+      "whatTheyDid": "A randomized field trial at a large U.S. public university offered a course-integrated generative-AI tutor across sections involving 2,379 undergraduates and 30 instructors. Researchers compared final grades and learning-management-system participation.",
+      "whatTheyFound": "Within-course-section comparisons reported final grades 0.37 standard deviations lower and LMS participation 0.90 standard deviations lower with tutor access. Estimated losses were greater among first-generation students. These are effects of access to this particular implementation, not universal effects of AI tutoring.",
+      "whatItMeans": "This is counterevidence to assuming an added AI tutor necessarily improves learning. PSYWERX courses should track engagement, AI-free competence and delayed learning, not only assisted task completion. Study-specific integration and participation changes may explain outcomes; mechanisms require further tests. Published in October 2026, selected for its large randomized real-world design."
+    },
+    {
+      "itemId": "research-685e251ccf61984eb8f4",
+      "streamTitle": "Coordinated AI comments narrowed opinion diversity without increasing average persuasion",
+      "streamSummary": "A 1,000-adult randomized study found coordinated LLM comments compressed opinion diversity by 12% but did not beat independent AI comments in mean persuasion; AI labels changed credibility more than opinion.",
+      "attribution": "Go, Potter, Kim, Ryu and Kim — EMNLP 2026 (randomized human experiment)",
+      "sourceUrl": "https://doi.org/10.18653/2026.emnlp-main.1862",
+      "sourcePublishedAt": null,
+      "dateAdded": "2026-11-03",
+      "latestSeenBriefDate": "2026-11-03",
+      "primaryCategory": "behavioral-science",
+      "categories": [
+        "behavioral-science"
+      ],
+      "questionAndWhy": "Can coordinated AI-generated comments shift readers' opinions more than independently generated AI comments, and do AI labels mitigate influence? The question concerns manufactured consensus.",
+      "whatTheyDid": "A controlled experiment randomized 1,000 U.S. adults reading articles on a Reddit-like platform to six combinations of human, independently generated AI or coordinated multi-agent LLM comments, with likely-AI labels shown or hidden.",
+      "whatTheyFound": "Coordinated LLM comments did not increase average persuasion over independent AI comments, an important null. They disproportionately moved initially disagreeing readers and narrowed expressed opinion diversity by 12%. Labels reduced perceived credibility but did not reliably reduce actual opinion shifts.",
+      "whatItMeans": "Coordinated discussions can reshape opinion distributions without increasing mean persuasion. For cognitive-security assessment, measure apparent consensus, heterogeneity and subgroup shifts rather than only the average attitude change. These were immediate controlled judgments, not measured voting or persistent field behavior. The study asks a distinct question from yesterday's experiment on warnings for adversarial comments."
+    },
     {
       "itemId": "research-badcddece32c5b3e2e2b",
       "streamTitle": "Structured AI preparation improved reported consultation readiness, not clinical outcomes",
@@ -11855,6 +12017,28 @@
     }
   ],
   "briefs": [
+    {
+      "briefDate": "2026-11-03",
+      "briefType": "daily",
+      "totalItems": 9,
+      "categoryCounts": {
+        "behavioral-science": 4,
+        "technology-modeling": 4,
+        "operations-strategy": 1,
+        "application-analysis": 0
+      },
+      "itemIds": [
+        "research-dcbbecdbbb6215f6699f",
+        "research-034122a068952a8cd22c",
+        "research-fe097995d06ea4b2e395",
+        "research-685e251ccf61984eb8f4",
+        "research-018e3e44547144d8d6c6",
+        "research-5879a7131504948fd2e5",
+        "research-721958fe0d5a8c2d2bef",
+        "research-ff3840ba36c375f4a3fd",
+        "research-1b9a35b46093fa85262e"
+      ]
+    },
     {
       "briefDate": "2026-11-02",
       "briefType": "daily",
