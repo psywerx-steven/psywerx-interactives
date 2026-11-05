@@ -1,8 +1,171 @@
 {
   "schemaVersion": "psywerx-research-explorer-v1",
-  "generatedAt": "2026-11-04",
-  "totalItems": 635,
+  "generatedAt": "2026-11-05",
+  "totalItems": 644,
   "items": [
+    {
+      "itemId": "research-f75c81c3feffe08d6efe",
+      "streamTitle": "Adaptive network rewiring improved simulated cooperation under partner failures",
+      "streamSummary": "In synthetic 50–200-node collaboration networks, a multi-agent RL approach reported 34.7–41.2% efficiency gains and retained 78.3% performance after 15% random node loss. These are simulated organizational outcomes.",
+      "attribution": "Peng, Li and Li — Scientific Reports (multi-agent reinforcement-learning simulations)",
+      "sourceUrl": "https://doi.org/10.1038/s41598-026-76242-0",
+      "sourcePublishedAt": "2026-11-04",
+      "dateAdded": "2026-11-05",
+      "latestSeenBriefDate": "2026-11-05",
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling"
+      ],
+      "questionAndWhy": "How can a collaboration network change its partnership links when members fail or conditions shift? The specific modeling problem is choosing feasible link additions, removals and weight changes under local and collective objectives.",
+      "whatTheyDid": "Researchers built a multi-agent deep Q-network with prioritized replay, attention-based coordination, feasibility masks and switching costs. They tested synthetic enterprise networks of 50–200 nodes and a supply-chain simulation calibrated with published aggregate statistics.",
+      "whatTheyFound": "Reported efficiency improvements ranged from 34.7% to 41.2% versus documented baselines; 78.3% performance remained after removal of 15% of nodes. The calibrated supply-chain simulator reported lower delivery times and higher robustness. No real organizations were assigned to policies, and finite-budget results do not establish convergence times.",
+      "whatItMeans": "Explicit link-change actions and feasibility constraints are transferable candidates for modeling organizational adaptation or influence networks. But simulated efficiencies do not establish human cooperation, and adoption would require independent observed-network calibration and prospective testing."
+    },
+    {
+      "itemId": "research-f252f24cd3bada7775b2",
+      "streamTitle": "Celebrity persona changes appealed differently to supporters and skeptics",
+      "streamSummary": "In a Chinese student study, intellectual persona reformulation improved views especially among low-preference audiences; strength-oriented cues reduced preference among existing fans. ERP signals are correlational and do not uniquely identify psychological processes.",
+      "attribution": "Zhu and Wu — Humanities and Social Sciences Communications (audience and ERP study)",
+      "sourceUrl": "https://doi.org/10.1057/s41599-026-09532-7",
+      "sourcePublishedAt": "2026-11-04",
+      "dateAdded": "2026-11-05",
+      "latestSeenBriefDate": "2026-11-05",
+      "primaryCategory": "behavioral-science",
+      "categories": [
+        "behavioral-science"
+      ],
+      "questionAndWhy": "Does emphasizing intellectual qualities instead of physical strength affect judgments of young male celebrities differently among prior supporters and skeptics? This tests how established audience expectations constrain reputational change.",
+      "whatTheyDid": "Researchers presented two persona-reformulation paths, the intellectual wen and strength-oriented wu, to student participants with differing prior preferences. They collected preference ratings and event-related potentials during exposure.",
+      "whatTheyFound": "The wen path improved preferences significantly among initially low-preference viewers but had only a nonsignificant positive trend among existing fans. The wu path significantly reduced preferences among high-preference viewers. Wu generated larger P2 and late positive potential signals; wen showed larger N4 responses. ERP components do not have unique psychological interpretations.",
+      "whatItMeans": "A message or identity shift may benefit a less committed audience while alienating an existing base. PSYWERX could pretest such effects separately by prior disposition, but this study does not demonstrate durable loyalty changes, purchases or political persuasion."
+    },
+    {
+      "itemId": "research-d83e31bcb7902aaba0cc",
+      "streamTitle": "Complex-systems researchers called for agent-accessible simulation interfaces",
+      "streamSummary": "A November 4 Perspective argues that executable complex-systems models need structured, discoverable controls and outputs for AI-agent research workflows. It offers design requirements, not an experimentally verified prediction improvement.",
+      "attribution": "Cattuto and Vespignani — npj Complexity (methodological Perspective)",
+      "sourceUrl": "https://doi.org/10.1038/s44260-026-00102-1",
+      "sourcePublishedAt": "2026-11-04",
+      "dateAdded": "2026-11-05",
+      "latestSeenBriefDate": "2026-11-05",
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling"
+      ],
+      "questionAndWhy": "What interfaces would let tool-using AI agents operate established computational simulations while preserving auditable assumptions, inputs and results? The challenge is repeatable automated experiments rather than free-form agent descriptions.",
+      "whatTheyDid": "The authors surveyed the mismatch between complex-systems simulators and text-oriented agent tools, then proposed agent-friendly model interfaces with accessible controls, outputs and experiment loops.",
+      "whatTheyFound": "They identify a practical software-interface obstacle and a set of architectural recommendations. The article is a Perspective; it reports no new controlled trial of improved causal inference, agent accuracy or simulation validity.",
+      "whatItMeans": "For PSYWERX causal modeling, programmatic interfaces could expose model graphs, parameters, initialization, interventions and diagnostic traces for reproducible COA comparisons. That engineering proposal still needs implementation and validation against actual human outcomes."
+    },
+    {
+      "itemId": "research-a1b93b451e96e888fc80",
+      "streamTitle": "Preprimary education laws were associated with later gender attitudes and decision participation",
+      "streamSummary": "Across 495 representative surveys covering almost 6.7 million women in 117 countries, eligibility for preprimary education laws was associated with later schooling, less acceptance of wife-beating and more household decision participation. Implementation and confounding remain limitations.",
+      "attribution": "Lou et al. — Nature Human Behaviour (cross-national quasi-experimental analysis)",
+      "sourceUrl": "https://doi.org/10.1038/s41562-026-02583-5",
+      "sourcePublishedAt": "2026-11-04",
+      "dateAdded": "2026-11-05",
+      "latestSeenBriefDate": "2026-11-05",
+      "primaryCategory": "behavioral-science",
+      "categories": [
+        "behavioral-science"
+      ],
+      "questionAndWhy": "Is eligibility for preprimary education under national laws associated with women's later gender attitudes, schooling and autonomy? The question concerns whether early institutional opportunities relate to behavioral outcomes decades later.",
+      "whatTheyDid": "Researchers assembled 495 nationally representative surveys from 1990–2024, covering nearly 6.7 million women in 117 low- and middle-income countries. They used matrix-completion counterfactual estimation, subgroup comparisons and sensitivity analyses around eligibility for preprimary-education legislation.",
+      "whatTheyFound": "Eligibility was associated with 1.21 percentage points higher primary enrolment, 1.04 points more disapproval of wife-beating, 3.25 points more participation in decisions about husbands' earnings, and 2.96 points more ever-use of contraception. Eligibility is not documented individual attendance; concurrent policy changes and residual confounding remain possible.",
+      "whatItMeans": "For PSYWERX, the study gives a concrete model of linking institutional opportunities to later norms and choices with cohort comparisons. It does not isolate the individual's educational mechanism or establish effects for unrelated information interventions."
+    },
+    {
+      "itemId": "research-8d2c357bdf0fdfe6c324",
+      "streamTitle": "Pure-blue quantum-dot emitters improved high-brightness XR microdisplay prospects",
+      "streamSummary": "New blue QLED devices retained 95% of peak efficiency at 50,000 cd/m² in one architecture and supported 560-pixel-per-inch patterning. These are component tests, not operational or user-experience evaluations.",
+      "attribution": "Bai et al. — Nature Photonics (quantum-dot display engineering)",
+      "sourceUrl": "https://doi.org/10.1038/s41566-026-02041-8",
+      "sourcePublishedAt": "2026-11-04",
+      "dateAdded": "2026-11-05",
+      "latestSeenBriefDate": "2026-11-05",
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling"
+      ],
+      "questionAndWhy": "Can blue quantum-dot emitters reach high brightness and pixel densities without the efficiency losses that constrain future AR and VR microdisplays? This concerns a concrete enabling component rather than an AI feature launch.",
+      "whatTheyDid": "The authors engineered CdZnSe-based core-shell dots with surface treatment, fabricated bottom- and top-emission QLEDs and patterned microdisplay pixels using photolithography.",
+      "whatTheyFound": "Bottom-emission devices achieved 23.8% peak external quantum efficiency and retained 95% efficiency at 50,000 cd/m². Top-emission devices reached the same retention threshold at 270,000 cd/m². Patterned pixels achieved 560 ppi with 16.5% peak efficiency. Full headsets and visual performance in realistic environments were not tested.",
+      "whatItMeans": "More efficient bright pixels could enable smaller, more usable XR displays for future training, spatial visualization and behavioral experiments. The study does not establish improved immersion, attention, learning or decisions; those transfers remain design hypotheses."
+    },
+    {
+      "itemId": "research-000cdf20a2c713603088",
+      "streamTitle": "Narrative analysis exposed concentrated opposition concealed by aggregate sentiment",
+      "streamSummary": "Graphika contrasted broad GLP-1 social listening with community-and-narrative analysis: overall negative stance was 25%, while the adverse-effects narrative was 94% negative. The data sources and constructs were not matched for a controlled comparison.",
+      "attribution": "Alexandra Matheny — Graphika (vendor-authored descriptive comparison)",
+      "sourceUrl": "https://www.graphika.com/blogs/narrative-intelligence-vs-social-listening",
+      "sourcePublishedAt": "2026-11-04",
+      "dateAdded": "2026-11-05",
+      "latestSeenBriefDate": "2026-11-05",
+      "primaryCategory": "operations-strategy",
+      "categories": [
+        "operations-strategy"
+      ],
+      "questionAndWhy": "When does an aggregate sentiment metric conceal strongly opposed narratives in specific online communities? Analysts need to distinguish total conversation volume from the stories communities actually use to interpret an issue.",
+      "whatTheyDid": "Graphika compared GLP-1 social-listening measures from September–October 2026 with its narrative, actor and community analyses. The listening dashboard recorded approximately 111,600 mentions over 30 days; structural analysis separated narratives, audience communities, stance and momentum.",
+      "whatTheyFound": "The broad dashboard classified about 20% of mentions negative. Graphika's own overall stance estimate was 25% negative, but stance within the adverse-effects narrative was 94% negative. Sources, queries, and sentiment-versus-stance measures differ, and the company explicitly says this was not a controlled apples-to-apples test.",
+      "whatItMeans": "For PSYWERX information-environment assessment, disaggregate a topic into narratives, actors, communities and temporal change rather than equating one sentiment mean with population belief. This vendor-authored example does not independently demonstrate that narrative analytics improve decisions."
+    },
+    {
+      "itemId": "research-3c758dca432eb7f7370a",
+      "streamTitle": "LLM self-descriptions conveyed personality cues while differing from human texts",
+      "streamSummary": "Seven language models and 70 German-speaking people provided 140 self-descriptions judged by six models and ten people. Judges inferred traits and detected text origin; linguistic resemblance is not evidence of genuine or stable AI personality.",
+      "attribution": "Koerner, Egloff and Osterholz — Scientific Reports (human and LLM text-judgment study)",
+      "sourceUrl": "https://doi.org/10.1038/s41598-026-75546-5",
+      "sourcePublishedAt": "2026-11-03",
+      "dateAdded": "2026-11-05",
+      "latestSeenBriefDate": "2026-11-05",
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling",
+        "behavioral-science"
+      ],
+      "questionAndWhy": "Do short AI-generated self-descriptions convey recognizable personality cues, and are these perceived in the same way as human self-descriptions? This directly tests how synthetic personas are judged.",
+      "whatTheyDid": "Seven specified LLMs and 70 German-speaking human participants completed Big Five, self-esteem and narcissism measures and wrote self-descriptive texts. Six model judges and ten human judges rated personality and text origin across 140 texts, half model-produced.",
+      "whatTheyFound": "Both types of judges inferred personality-consistent cues and distinguished LLM-generated from human texts, but evaluations differed by author type. The model versions and language are limited, and inferred personalities describe output style and perceived traits rather than enduring agent dispositions.",
+      "whatItMeans": "PSYWERX synthetic-audience evaluation should distinguish stylistic consistency, observer-attributed personality and prediction of actual human decisions. A model's persuasive human-like description is not behavioral validation of a synthetic respondent."
+    },
+    {
+      "itemId": "research-a6317ff2729ddc5defb6",
+      "streamTitle": "Likely deepfake candidate allegations circulated through known Storm-1516 amplifiers",
+      "streamSummary": "Graphika judged two October 20 videos very likely AI-generated and assessed that the Russia-aligned Storm-1516 network produced them, based on media and network indicators. Audience belief and electoral effects were not measured.",
+      "attribution": "Graphika Research Team — original influence-network investigation (October 21)",
+      "sourceUrl": "https://www.graphika.com/insights/storm-1516-produces-very-likely-deepfake-videos-of-student-accusing-democratic-senate-candidate",
+      "sourcePublishedAt": "2026-10-21",
+      "dateAdded": "2026-11-05",
+      "latestSeenBriefDate": "2026-11-05",
+      "primaryCategory": "operations-strategy",
+      "categories": [
+        "operations-strategy"
+      ],
+      "questionAndWhy": "How can analysts test the authenticity and likely coordination behind seemingly firsthand candidate allegations? This is a concrete attribution and provenance challenge in election information environments.",
+      "whatTheyDid": "Graphika examined two videos posted by an X account posing as a former student of Texas Senate candidate James Talarico. Analysts reviewed account identity, abnormal facial/audio synchrony, AI detection indications, posting patterns and links to known Storm-1516 amplifiers.",
+      "whatTheyFound": "Graphika assessed the videos as very likely deepfakes and attributed production to Storm-1516 with high confidence. Known amplifiers and some unrelated political accounts shared them; a prominent amplifier deleted posts after questioning authenticity. These remain investigative assessments, not judicial findings, and no voter effects were estimated.",
+      "whatItMeans": "The case demonstrates triangulating identity checks, audiovisual forensics and network history, while reporting separate confidence in authenticity, coordination, attribution and effects. A reported amplification chain does not establish persuasion. This is a still-relevant original October 21 investigation, not a new November 5 incident."
+    },
+    {
+      "itemId": "research-3272e64c8cdd478d4fce",
+      "streamTitle": "Human claustrum neurons tracked uncertainty and prediction error during avoidance learning",
+      "streamSummary": "Epilepsy-patient recordings found 31 of 110 claustrum neurons associated with model-derived uncertainty and 25 with prediction error. Claustrum and anterior-cingulate signals differed in timing; the evidence is neural correlation in a small clinical sample.",
+      "attribution": "Hu et al. — Nature Neuroscience (single-neuron observations; research briefing November 4)",
+      "sourceUrl": "https://doi.org/10.1038/s41593-026-02475-x",
+      "sourcePublishedAt": "2026-10-06",
+      "dateAdded": "2026-11-05",
+      "latestSeenBriefDate": "2026-11-05",
+      "primaryCategory": "behavioral-science",
+      "categories": [
+        "behavioral-science"
+      ],
+      "questionAndWhy": "Do neurons in the human claustrum track uncertainty and errors between expected and observed outcomes during adaptive avoidance? Distinguishing these latent computations matters for models of learning.",
+      "whatTheyDid": "Researchers recorded single neurons in claustrum, anterior cingulate and amygdala from neurosurgical epilepsy patients during a probabilistic spaceship-avoidance task. A fitted approximate Bayesian model generated trialwise uncertainty and prediction-error estimates.",
+      "whatTheyFound": "Of 110 claustrum units in the latent-variable analysis, 31 were modulated by uncertainty and 25 by prediction error. Anterior cingulate neurons carried uncertainty signals between trials, while claustrum modulation concentrated in active avoidance. The clinical sample, possible sensory confounds and model dependence limit inference; this is not a causal manipulation.",
+      "whatItMeans": "Uncertainty and expectation violation may be useful distinct behavioral-model constructs, but matching neuronal firing with estimated states does not prove the brain implements the fitted algorithm. Application to narrative response or operational behavior remains untested. The original paper is from October 6; it was newly highlighted on November 4."
+    },
     {
       "itemId": "research-f31a7e23718cc02ff99c",
       "streamTitle": "Election Day glitches and unrelated images were rapidly turned into unverified fraud narratives",
@@ -12163,6 +12326,28 @@
     }
   ],
   "briefs": [
+    {
+      "briefDate": "2026-11-05",
+      "briefType": "daily",
+      "totalItems": 9,
+      "categoryCounts": {
+        "behavioral-science": 3,
+        "technology-modeling": 4,
+        "operations-strategy": 2,
+        "application-analysis": 0
+      },
+      "itemIds": [
+        "research-a1b93b451e96e888fc80",
+        "research-f252f24cd3bada7775b2",
+        "research-3272e64c8cdd478d4fce",
+        "research-000cdf20a2c713603088",
+        "research-a6317ff2729ddc5defb6",
+        "research-3c758dca432eb7f7370a",
+        "research-d83e31bcb7902aaba0cc",
+        "research-f75c81c3feffe08d6efe",
+        "research-8d2c357bdf0fdfe6c324"
+      ]
+    },
     {
       "briefDate": "2026-11-04",
       "briefType": "daily",
