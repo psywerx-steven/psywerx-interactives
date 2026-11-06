@@ -1,8 +1,188 @@
 {
   "schemaVersion": "psywerx-research-explorer-v1",
-  "generatedAt": "2026-11-05",
-  "totalItems": 644,
+  "generatedAt": "2026-11-06",
+  "totalItems": 654,
   "items": [
+    {
+      "itemId": "research-c5a22abd6ecbe2afa9a2",
+      "streamTitle": "First-person photographs and VLMs supported richer measurement of visual exposure",
+      "streamSummary": "Across 106 adults and 2,674 photos, vision-language scene ratings aligned with reported greenness and affect/stress associations. This is exploratory measurement, not proof of causal visual effects.",
+      "attribution": "Rominger et al. — Communications AI & Computing (ecological momentary assessment and model-assisted coding, November 5)",
+      "sourceUrl": "https://doi.org/10.1038/s44488-026-00023-x",
+      "sourcePublishedAt": "2026-11-05",
+      "dateAdded": "2026-11-06",
+      "latestSeenBriefDate": "2026-11-06",
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling"
+      ],
+      "questionAndWhy": "Can a vision-language model quantify what people actually see during everyday life, rather than relying only on location proxies or retrospective descriptions?",
+      "whatTheyDid": "An ecological momentary assessment study paired 2,674 participant-taken photos with self-reports from 106 adults over seven days. Open-weight vision-language models rated scene features; a separate LLM-assisted search of over seven million publications identified nearly 1,000 potential contextual features.",
+      "whatTheyFound": "Model-derived greenness correlated with participants' own scene ratings and with momentary affect or stress measures. Across the broader exploratory feature set, up to 33% of extracted context ratings were significantly associated with affect or stress. These are correlations with multiple-testing and sample-selection concerns, not evidence that visual features caused mood.",
+      "whatItMeans": "The specific transferable advance is coupling first-person imagery, structured machine coding and time-linked human responses. PSYWERX researchers could test visual information exposures or XR environments with this architecture, while validating each label against human coding and protecting sensitive image data. Transfer beyond the studied health-related outcomes remains hypothetical."
+    },
+    {
+      "itemId": "research-ba0a6011661c0846a420",
+      "streamTitle": "Malayalam misinformation models added uncertainty-aware triage to classification",
+      "streamSummary": "A November 5 single-domain Malayalam study reported high classification accuracy and improved uncertainty calibration using ensembles, dropout and evidential methods; cross-domain and adversarial reliability remain untested.",
+      "attribution": "Likha et al. — Scientific Reports (machine-learning benchmark, November 5)",
+      "sourceUrl": "https://doi.org/10.1038/s41598-026-74619-9",
+      "sourcePublishedAt": "2026-11-05",
+      "dateAdded": "2026-11-06",
+      "latestSeenBriefDate": "2026-11-06",
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling"
+      ],
+      "questionAndWhy": "Can a misinformation classifier flag its own uncertain decisions, especially in a lower-resource language, rather than output confident labels for every item?",
+      "whatTheyDid": "Researchers compared recurrent and convolutional text classifiers for a single-domain Malayalam fake-news dataset, adding Monte Carlo dropout, ensembles, test-time augmentation and evidential uncertainty estimates, plus reliability diagrams and calibration metrics.",
+      "whatTheyFound": "The reported hybrid reached 96.51% accuracy and an exceptionally low expected calibration error (0.0067 ± 0.0023); different uncertainty methods traded off error detection and precision. The paper contains some inconsistent ensemble-member descriptions, and its single-domain evaluation did not test transfer across topics, languages or adversarial campaigns.",
+      "whatItMeans": "For cognitive-security monitoring, the operationally important feature is triaging uncertain classifications for human review, not treating a probability as verified truth. This approach warrants cross-domain tests, independent ground-truth audit and calibration checks before deployment."
+    },
+    {
+      "itemId": "research-9618099dbb7719096106",
+      "streamTitle": "Children's responsibility judgments depend on distinct counterfactual skills",
+      "streamSummary": "A new developmental-psychology review separates recognizing alternatives, simulating them and selecting relevant counterfactuals in responsibility judgments. It proposes a framework, not a new causal experiment.",
+      "attribution": "Gautam and Cushman — Nature Reviews Psychology (review, November 5)",
+      "sourceUrl": "https://doi.org/10.1038/s44159-026-00632-4",
+      "sourcePublishedAt": "2026-11-05",
+      "dateAdded": "2026-11-06",
+      "latestSeenBriefDate": "2026-11-06",
+      "primaryCategory": "behavioral-science",
+      "categories": [
+        "behavioral-science"
+      ],
+      "questionAndWhy": "How do children learn to judge responsibility by considering choices a person could have made but did not? Responsibility attribution depends on evaluating alternatives, not only observed outcomes.",
+      "whatTheyDid": "In a November 5 review of developmental and moral-psychology research, the authors distinguish three requirements: understanding that alternative choices are possible, reasoning successfully about counterfactual worlds, and selecting the relevant alternatives when judging responsibility.",
+      "whatTheyFound": "The review provides a conceptual decomposition of counterfactual responsibility judgments and synthesizes developmental evidence. It does not report a new experiment or establish that the three capacities develop independently or that a particular training intervention changes blame.",
+      "whatItMeans": "For PSYWERX, the three-part distinction offers testable constructs for attribution, accountability and retrospective assessment of decisions. Analysts should distinguish what alternatives an actor could perceive from the alternatives an analyst can construct. Applying the framework to adult operational judgment requires separate empirical tests."
+    },
+    {
+      "itemId": "research-1e4237a8c54580edb43d",
+      "streamTitle": "WHO campaigns improved recall more consistently than self-reported behavior",
+      "streamSummary": "Meta-analyses of 81 WHO campaigns found significant lift in recall and some knowledge/belief measures, but no reliable lift in self-reported behavior. Platform surveys are not observed action.",
+      "attribution": "Zhou et al. — Scientific Reports (two meta-analyses of Meta Brand Lift Studies, November 5)",
+      "sourceUrl": "https://doi.org/10.1038/s41598-026-73641-1",
+      "sourcePublishedAt": "2026-11-05",
+      "dateAdded": "2026-11-06",
+      "latestSeenBriefDate": "2026-11-06",
+      "primaryCategory": "behavioral-science",
+      "categories": [
+        "behavioral-science"
+      ],
+      "questionAndWhy": "Do WHO social-media health campaigns change recall, knowledge, beliefs and reported behavior to the same degree? Measuring exposure or awareness alone may overstate behavioral impact.",
+      "whatTheyDid": "Researchers meta-analyzed Meta Brand Lift Studies associated with 81 WHO COVID-19 campaigns conducted during 2020–2022, using age- and gender-stratified comparisons of intervention and control survey responses.",
+      "whatTheyFound": "In age-stratified analyses, lift was significant for recall (3.0%, 95% CI 2.2–3.8), knowledge (0.9%, 0.3–1.5) and beliefs (0.4%, 0.1–0.8), but not self-reported behavior (0.1%, −0.8–1.1). In gender-stratified analyses only recall had statistically significant lift (2.9%, 2.1–3.6). Meta survey responses were not independently observed actions.",
+      "whatItMeans": "PSYWERX communication assessments should distinguish recall, factual knowledge, belief and behavior, and retain null results instead of labeling exposure a success. Although the campaign context is health, outcome-measure separation is broadly useful; effects for different audiences or influence settings must be tested directly."
+    },
+    {
+      "itemId": "research-0354bec05bc8373ee7f0",
+      "streamTitle": "European flight hoaxes disrupted operations without established attribution",
+      "streamSummary": "Dozens of November 3–5 bomb threats led to flight diversions, security checks and fighter escorts; no explosives were found, and authorities had not established coordinated or state responsibility.",
+      "attribution": "Associated Press — original November 5 aviation-security reporting; statements from European authorities",
+      "sourceUrl": "https://apnews.com/article/6585ff565ee1ccb9f19b73074aa2fec4",
+      "sourcePublishedAt": "2026-11-05",
+      "dateAdded": "2026-11-06",
+      "latestSeenBriefDate": "2026-11-06",
+      "primaryCategory": "operations-strategy",
+      "categories": [
+        "operations-strategy"
+      ],
+      "questionAndWhy": "Can repeated low-credibility bomb threats impose substantial disruption even when no explosive is found, and what can be inferred about coordination or strategic intent?",
+      "whatTheyDid": "Authorities and original wire reporting documented dozens of emailed threats to passenger flights across multiple European countries during November 3–5. Police and aviation-security teams assessed alerts, diverted or escorted aircraft, conducted inspections and shared security information.",
+      "whatTheyFound": "Flights were diverted or delayed and sometimes escorted by military aircraft; inspections reported no explosives. European authorities described threats as malicious hoaxes, while noting that investigators had not established a common perpetrator, state sponsorship or linkage among cases. Reported motives and 'hybrid warfare' characterizations remain hypotheses, not attribution findings.",
+      "whatItMeans": "This is an operational case of communications triggering costly precautionary decisions through uncertainty. PSYWERX assessment could separately measure alert credibility, response protocols, disruption and fear, and independently test coordination claims. No demonstrated psychological population effect or state-directed campaign has been established."
+    },
+    {
+      "itemId": "research-cd00b8a36dad3edf3ec2",
+      "streamTitle": "Activation steering exposed trade-offs between target behavior and model competence",
+      "streamSummary": "A four-model preprint found some activation interventions improved selected AI behaviors yet degraded unrelated capabilities; frozen held-out tests exposed these trade-offs, so steering is not a universal safety knob.",
+      "attribution": "Raj — arXiv preprint (contrastive activation intervention study, November 4)",
+      "sourceUrl": "https://arxiv.org/abs/2611.06001",
+      "sourcePublishedAt": "2026-11-04",
+      "dateAdded": "2026-11-06",
+      "latestSeenBriefDate": "2026-11-06",
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling"
+      ],
+      "questionAndWhy": "How far can researchers steer an AI model toward a desired behavior while protecting other capabilities? A behavior change can be counterproductive if it damages independent tasks.",
+      "whatTheyDid": "A November 4 preprint tested contrastive activation addition in four instruction-tuned models across seven behavior dimensions, freezing steering coefficients chosen under 1%, 3% and 5% allowed capability-loss budgets, then examining separate held-out behaviors and benchmark tasks.",
+      "whatTheyFound": "Validation-selected gains correlated strongly with held-out behavioral gains (Spearman ρ=0.945), but joint success on behavior and capability checks occurred for only 37.5% of nonzero settings at a 1% budget and 72.7% at 3%. Some interventions still damaged unprotected or open-ended tasks.",
+      "whatItMeans": "AI evaluations should track both target behavior and collateral capability loss, using held-out tests after configuration is frozen. These are changes to model outputs, not demonstrations of human persuasion or human psychological mechanisms. PSYWERX agent customization should retain regression suites covering unrelated research functions."
+    },
+    {
+      "itemId": "research-8803f845fae399c8e396",
+      "streamTitle": "AgentTrustCI tested tool policy, grounding and sequence—not only agent answers",
+      "streamSummary": "A November preprint's deterministic test suite classified 55 authored agent traces correctly, including planted policy and trajectory violations; production robustness and generality are untested.",
+      "attribution": "Gupta — arXiv preprint (Java/JUnit agent-validation prototype, November 4)",
+      "sourceUrl": "https://arxiv.org/abs/2611.06674",
+      "sourcePublishedAt": "2026-11-04",
+      "dateAdded": "2026-11-06",
+      "latestSeenBriefDate": "2026-11-06",
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling"
+      ],
+      "questionAndWhy": "Can build-time tests detect when a research agent used a forbidden tool, made unsupported claims, or followed the wrong execution sequence despite producing a plausible answer?",
+      "whatTheyDid": "AgentTrustCI defines policy, evidence-grounding and trajectory checks over recorded Java-agent traces, with deterministic JUnit replay. The author tested 55 synthetic cases across seven enterprise domains, including deliberately injected violations and passing controls.",
+      "whatTheyFound": "The prototype correctly classified 30 planted failures and 25 controls in its authored fixtures, including 12 designated critical violations. One example produced a grounded final answer through a disallowed sequence. This shows coverage on the constructed regression set, not production detection accuracy; no live-agent evaluation was conducted.",
+      "whatItMeans": "For PSYWERX automated research and publication, the concrete method is to encode required tool order, permissible parameters and claim-to-source evidence as tests. Such checks complement, but do not replace, scientific peer review and end-to-end validation on real workflow traces."
+    },
+    {
+      "itemId": "research-0f8705ef77ba2b1b8ba8",
+      "streamTitle": "Observed aggression altered later behavior and inhibitory circuits in male mice",
+      "streamSummary": "A controlled Nature mouse study found that observing aggression and experiencing it produced overlapping proactive behavior and neural inhibition changes; circuit reactivation reversed part of the effect. Human transfer remains untested.",
+      "attribution": "Iravedra-García et al. — Nature (mouse behavioral and neural experiment, November 4)",
+      "sourceUrl": "https://doi.org/10.1038/s41586-026-11217-9",
+      "sourcePublishedAt": "2026-11-04",
+      "dateAdded": "2026-11-06",
+      "latestSeenBriefDate": "2026-11-06",
+      "primaryCategory": "behavioral-science",
+      "categories": [
+        "behavioral-science"
+      ],
+      "questionAndWhy": "Can observing aggression change an animal's subsequent social strategy through the same neural circuitry engaged by direct experience? This tests a mechanism of observational learning rather than assuming imitation is only verbal or conscious.",
+      "whatTheyDid": "Researchers randomly assigned male mice to aggression experience, observation of conspecific aggression, or control exposure. They conducted longitudinal cell-type-specific recordings across subcortical social-behavior networks, probed a novel conflict context and reactivated selected inhibitory circuits.",
+      "whatTheyFound": "Both experience and observation increased proactive vigilance and aggression-preparatory behavior in a new context. A shared reduction in neural inhibition was observed, and reactivating selected inhibitory areas shifted observers back toward control-like behavior. Mice observing nonaggressive social activity did not show the same pattern. Only male mice were studied.",
+      "whatItMeans": "The study supplies causal circuit evidence for a particular form of social learning in mice, relevant to foundational mechanisms of learning by observation. It does not show that humans learn aggression through the same circuit changes or justify direct predictions about media exposure or influence operations."
+    },
+    {
+      "itemId": "research-250b8bdf4419b7ca4dce",
+      "streamTitle": "SocioVerse2 separated evolving simulated populations from editable research workflows",
+      "streamSummary": "A September open-source social-simulation preprint introduced longitudinal counterfactual branching, timestamped external signals and controlled research-state versions. Case demonstrations do not validate human intervention predictions.",
+      "attribution": "Zhang et al. — arXiv preprint (SocioVerse2 simulation framework, September 21)",
+      "sourceUrl": "https://arxiv.org/abs/2609.24911",
+      "sourcePublishedAt": "2026-09-21",
+      "dateAdded": "2026-11-06",
+      "latestSeenBriefDate": "2026-11-06",
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling"
+      ],
+      "questionAndWhy": "How can simulation researchers explicitly intervene in a changing synthetic society and control the research process itself, rather than only run one static agent population?",
+      "whatTheyDid": "SocioVerse2 describes a longitudinal agent-and-environment simulation loop with counterfactual branches and a separately versioned research loop. Its platform combines five persona pools, 21 timestamped external signal sources and researcher checkpoints; the authors report three case families spanning seven case studies.",
+      "whatTheyFound": "Demonstrations include reproducing canonical agent-based behavior, policy-process simulations using records, and macro-indicator nowcasting. The reported evaluations show an integrated research architecture, not independent prospective validation that synthetic individuals respond like humans to intervention.",
+      "whatItMeans": "PSYWERX comparative COA simulations could borrow versioned interventions, timestamped exogenous inputs, saved branches and researcher checkpoints to make scenarios reproducible. The framework's substantial architecture does not itself establish behavioral causal validity; test forecasts against held-out intervention outcomes."
+    },
+    {
+      "itemId": "research-bf708434cc18d51fa3bb",
+      "streamTitle": "C2PA 2.5 specified verifiable media provenance without claiming content truth",
+      "streamSummary": "The C2PA Content Credentials specification defines signed provenance manifests, asset bindings and validation, but does not certify the factual truth of the media or show reduced misinformation exposure.",
+      "attribution": "Coalition for Content Provenance and Authenticity — Content Credentials 2.5 (official technical specification)",
+      "sourceUrl": "https://spec.c2pa.org/specifications/specifications/2.5/specs/ContentCredentials.html",
+      "sourcePublishedAt": null,
+      "dateAdded": "2026-11-06",
+      "latestSeenBriefDate": "2026-11-06",
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling"
+      ],
+      "questionAndWhy": "How can investigators verify who signed a media asset's provenance record, what transformations it records, and whether the record remained intact across publication?",
+      "whatTheyDid": "The C2PA Content Credentials 2.5 technical specification defines signed manifests containing assertions, asset bindings, signer information and update history, with validation rules and support for broader formats including structured text and linked resources.",
+      "whatTheyFound": "These are normative technical capabilities: conforming implementations can verify cryptographic bindings and claims made by a signer. A valid signature does not establish that a scene is true, a depicted event occurred or that an unsigned asset is fake. The specification is not an independent field trial of disinformation reduction.",
+      "whatItMeans": "PSYWERX media-authenticity workflows could distinguish cryptographic provenance verification from factual content assessment and source credibility. For controlled studies or case research, record manifest validity and signer identity separately from narrative claims and observed audience reactions. Adoption and effectiveness must be evaluated independently."
+    },
     {
       "itemId": "research-f75c81c3feffe08d6efe",
       "streamTitle": "Adaptive network rewiring improved simulated cooperation under partner failures",
@@ -12326,6 +12506,29 @@
     }
   ],
   "briefs": [
+    {
+      "briefDate": "2026-11-06",
+      "briefType": "daily",
+      "totalItems": 10,
+      "categoryCounts": {
+        "behavioral-science": 3,
+        "technology-modeling": 6,
+        "operations-strategy": 1,
+        "application-analysis": 0
+      },
+      "itemIds": [
+        "research-9618099dbb7719096106",
+        "research-1e4237a8c54580edb43d",
+        "research-0f8705ef77ba2b1b8ba8",
+        "research-0354bec05bc8373ee7f0",
+        "research-ba0a6011661c0846a420",
+        "research-c5a22abd6ecbe2afa9a2",
+        "research-cd00b8a36dad3edf3ec2",
+        "research-8803f845fae399c8e396",
+        "research-250b8bdf4419b7ca4dce",
+        "research-bf708434cc18d51fa3bb"
+      ]
+    },
     {
       "briefDate": "2026-11-05",
       "briefType": "daily",
