@@ -2,8 +2,48 @@
   "schemaVersion": "psywerx-public-research-stream-v1",
   "page": 12,
   "pageSize": 24,
-  "totalItems": 662,
+  "totalItems": 665,
   "items": [
+    {
+      "itemId": "research-96f64d4a5e5757ebc0e9",
+      "streamTitle": "Survey respondents wanted roughly 90% sensitivity and specificity from AI disease screening",
+      "streamSummary": "A nationwide survey of 1,222 people plus 106 long-term lung-cancer survivors asked how many missed diagnoses and false alarms they would tolerate from AI-based disease detection. Average minimum acceptable sensitivity and specificity were both near 90%, with respondents who had cancer histories generally demanding stronger performance. These are expressed preferences, not proof that people would reject a particular device or that 90% is clinically sufficient. Screening decisions still depend on disease prevalence, severity, treatment consequences, and the balance between missed cases and unnecessary follow-up.",
+      "attribution": "Yu et al. — npj Digital Medicine",
+      "sourceUrl": "https://doi.org/10.1038/s41746-026-03335-5",
+      "categories": [
+        "application-analysis",
+        "behavioral-science",
+        "technology-modeling"
+      ],
+      "sourcePublishedAt": "2026-10-07",
+      "dateAdded": "2026-10-09"
+    },
+    {
+      "itemId": "research-99d937d96b570fb681b0",
+      "streamTitle": "Simple synthetic-data generators often matched or beat deep models in 2,220 benchmark runs",
+      "streamSummary": "A preregistered benchmark compared simple statistical generators, SMOTE variants, and deep tabular generators over 2,220 runs, including small clinical datasets. Deep methods almost never beat the best simple baseline by more than random-seed noise; the simple baseline won 40 of 49 dataset-size conditions. The authors’ prediction of especially unstable rankings at small samples was not supported. Most top-two method differences were themselves smaller than seed variation. The result is preprint evidence, but it makes a strong case for evaluating synthetic data on actual downstream utility rather than algorithmic sophistication.",
+      "attribution": "Shrivastava — arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2610.03500",
+      "categories": [
+        "technology-modeling",
+        "application-analysis"
+      ],
+      "sourcePublishedAt": "2026-10-02",
+      "dateAdded": "2026-10-09"
+    },
+    {
+      "itemId": "research-8fe48c2124edeba5f965",
+      "streamTitle": "Training coding agents to verify their own fixes improved repair success and reduced false acceptance",
+      "streamSummary": "A preprint on autonomous software-repair agents found that repeated attempts often searched the same locations and self-written tests accepted incorrect patches. The researchers trained agents to diversify edits and verify fixes against stronger labeled counterexamples. On 270 held-out issues, single-attempt resolution rose from 31.9% to 43.0%, eight-attempt success reached 60.7%, and verifier precision improved from 26.8% to 41.7%. These are benchmark results with uneven transfer across test suites, but they show why verification quality should be measured separately from the number of generated fixes.",
+      "attribution": "Mohsin et al. — arXiv",
+      "sourceUrl": "https://arxiv.org/abs/2610.03984",
+      "categories": [
+        "technology-modeling",
+        "application-analysis"
+      ],
+      "sourcePublishedAt": "2026-10-02",
+      "dateAdded": "2026-10-09"
+    },
     {
       "itemId": "research-245e7c55e43490e02a6c",
       "streamTitle": "Dutch software linked multiple drone sensors and interceptors into one air-defense workflow",
@@ -281,46 +321,6 @@
       "categories": [
         "operations-strategy",
         "technology-modeling",
-        "application-analysis"
-      ],
-      "sourcePublishedAt": "2026-10-06",
-      "dateAdded": "2026-10-06"
-    },
-    {
-      "itemId": "research-a92ec63be5deb49a04fb",
-      "streamTitle": "Drone attacks on merchant ships in Bulgaria's EEZ were confirmed while attribution remained uncertain",
-      "streamSummary": "Reuters reported two merchant vessels struck by drones in Bulgaria's Black Sea exclusive economic zone, including one that sank. The incidents were confirmed, but responsibility was not independently established at the time; Ukrainian officials blamed Russia while Moscow had not commented. The case illustrates the need to preserve attribution uncertainty even when physical effects are clear.",
-      "attribution": "Reuters",
-      "sourceUrl": "https://www.reuters.com/world/drones-strike-two-ships-bulgarias-black-sea-zone-president-2026-10-06",
-      "categories": [
-        "operations-strategy",
-        "application-analysis"
-      ],
-      "sourcePublishedAt": "2026-10-06",
-      "dateAdded": "2026-10-06"
-    },
-    {
-      "itemId": "research-96d37256c0d841cd43b1",
-      "streamTitle": "Cognitive offloading made remembered information less neurally decodable",
-      "streamSummary": "An fMRI study found that information participants expected to recover from an external reminder became less decodable in brain activity, resembling deliberate-forgetting conditions in some analyses. The result supports cognitive offloading as a change in how information is maintained, not proof that memory is simply deleted. External support can alter internal representation even when task performance remains adequate.",
-      "attribution": "Scarampi et al. — Scientific Reports",
-      "sourceUrl": "https://doi.org/10.1038/s41598-026-71442-0",
-      "categories": [
-        "behavioral-science",
-        "technology-modeling",
-        "application-analysis"
-      ],
-      "sourcePublishedAt": "2026-10-06",
-      "dateAdded": "2026-10-06"
-    },
-    {
-      "itemId": "research-9425d958aeb2b2bc1a21",
-      "streamTitle": "MLB umpire count bias fit a Bayesian uncertainty model",
-      "streamSummary": "A large analysis of MLB pitch calls found that count-dependent differences were consistent with Bayesian prior expectations, especially among umpires with greater perceptual uncertainty. The result does not make every biased call optimal, but it shows that systematic judgment shifts can arise from uncertainty-sensitive inference rather than one simple heuristic. Intervention design should target the process actually producing the bias.",
-      "attribution": "Tomomura & Shinya — Communications Psychology",
-      "sourceUrl": "https://doi.org/10.1038/s44271-026-00534-4",
-      "categories": [
-        "behavioral-science",
         "application-analysis"
       ],
       "sourcePublishedAt": "2026-10-06",
