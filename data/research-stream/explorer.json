@@ -1,8 +1,170 @@
 {
   "schemaVersion": "psywerx-research-explorer-v1",
-  "generatedAt": "2026-11-08",
-  "totalItems": 665,
+  "generatedAt": "2026-11-09",
+  "totalItems": 674,
   "items": [
+    {
+      "itemId": "research-380cfba0f8ec65efd9f5",
+      "streamTitle": "A new commentary treats AI slop as a community judgment, not merely a detection label",
+      "streamSummary": "A November 9 Nature Human Behaviour Comment reframes AI slop as context-dependent unwanted content judged by communities, not synonymous with AI origin. It is conceptual, not an evaluated moderation intervention.",
+      "attribution": "So et al. — Nature Human Behaviour (Comment)",
+      "sourceUrl": "https://doi.org/10.1038/s41562-026-02639-6",
+      "sourcePublishedAt": "2026-11-09",
+      "dateAdded": "2026-11-09",
+      "latestSeenBriefDate": "2026-11-09",
+      "primaryCategory": "behavioral-science",
+      "categories": [
+        "behavioral-science"
+      ],
+      "questionAndWhy": "What makes AI-generated content objectionable to a particular community? A purely technical detector may find AI-origin material yet fail to identify content people actually consider unwanted.",
+      "whatTheyDid": "So and colleagues published a November 9 conceptual Comment synthesizing concerns about AI-generated content and arguing that 'slop' should be defined through community judgments about unwanted material rather than only through model-origin detection.",
+      "whatTheyFound": "The authors propose a social and contextual definition of AI slop and outline a measurement/governance direction. This is an argument rather than a new controlled trial; it does not measure detector failure rates or show that a proposed moderation practice improves community outcomes.",
+      "whatItMeans": "For PSYWERX information-environment research, distinguish whether material is AI-produced from whether it is harmful, unwelcome or misleading to a particular audience. A proposed measurement design would compare community judgments with source detection and content quality; no such PSYWERX validation has occurred."
+    },
+    {
+      "itemId": "research-09e49b2f03924d3fae62",
+      "streamTitle": "Culture shapes episodic remembering across personal, legal and political contexts",
+      "streamSummary": "A November 9 Nature Reviews Psychology review argues that culture shapes episodic remembering and interpersonal reconstruction, with legal and political applications. It synthesizes prior evidence; it is not a new causal experiment.",
+      "attribution": "Wang, Jobson, Mert and Vredeveldt — Nature Reviews Psychology (research review)",
+      "sourceUrl": "https://doi.org/10.1038/s44159-026-00637-z",
+      "sourcePublishedAt": "2026-11-09",
+      "dateAdded": "2026-11-09",
+      "latestSeenBriefDate": "2026-11-09",
+      "primaryCategory": "behavioral-science",
+      "categories": [
+        "behavioral-science"
+      ],
+      "questionAndWhy": "How do cultural meaning systems affect what people encode, retrieve, narrate and jointly remember? Memory informs identity, eyewitness reports and collective understandings of political events, so assuming one universal remembering style risks mistaking context for error.",
+      "whatTheyDid": "Wang and colleagues synthesized experimental, developmental and cross-cultural literature on episodic event memory, organizing the review around stages of remembering, cultural interpretation and interpersonal memory construction. They examined applications to legal, clinical and political settings.",
+      "whatTheyFound": "The review describes multiple ways cultural practices and shared meanings are related to event selection, recollection and memory-sharing. It offers a synthesis rather than a new experiment or a single quantitative cross-cultural effect; coverage and comparability of the underlying studies constrain generalization.",
+      "whatItMeans": "For PSYWERX, interviews, narrative elicitation and cultural profiles should distinguish remembering from objective event recording. An operational hypothesis is that prompts and interview settings may elicit different aspects of the same event across cultural contexts; that transfer requires direct tests."
+    },
+    {
+      "itemId": "research-824906b0b38492e02538",
+      "streamTitle": "Synthetic advertising personas performed better with fewer demographic details",
+      "streamSummary": "A November 6 preprint benchmarked simulated ad audiences against campaign records across five demographic segments. Leaner persona signals produced lower prediction error than richer prompts; validation outside the campaign remains open.",
+      "attribution": "Choi, Lee, Seo, Lee and Choi — arXiv preprint (real-campaign synthetic-persona benchmark)",
+      "sourceUrl": "https://arxiv.org/abs/2611.08840",
+      "sourcePublishedAt": "2026-11-06",
+      "dateAdded": "2026-11-09",
+      "latestSeenBriefDate": "2026-11-09",
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling"
+      ],
+      "questionAndWhy": "Do elaborate synthetic personas predict how actual audience segments respond to advertisements better than compact ones? The central problem is whether realistic-looking personas add signal or noise.",
+      "whatTheyDid": "Choi and colleagues compared LLM persona configurations with real Google Ads e-commerce campaign records across five demographic segments. They ablated the amount of demographic detail, qualitative versus quantitative banner-blindness cues and prompt wording, against non-LLM and alternate-LLM baselines.",
+      "whatTheyFound": "The best reported configuration achieved MAE 24.9 and MAPE 26.1%, with 51.3% lower MAE than the strongest tested non-LLM baseline. Minimal demographic descriptions and relative qualitative cues outperformed richer personas or numerical anchors on this campaign. Prediction errors were substantial and results are campaign-specific.",
+      "whatItMeans": "For PSYWERX synthetic-audience development, benchmark persona outputs against observed responses and compare simple prompts to elaborate profiles before trusting apparent realism. This is evidence for prediction in one advertising setting, not validation of synthetic responses to political or operational interventions."
+    },
+    {
+      "itemId": "research-73919f6dc8284e7d8be5",
+      "streamTitle": "An LLM simulation replication changed dramatically after one overlooked instruction",
+      "streamSummary": "ODD+LLM shows that one missed role instruction materially changed naming-game convergence, while a review of 28 studies found pervasive missing implementation details. It is a reproducibility advance, not human validation.",
+      "attribution": "Downes, Milletich and Hirst — arXiv preprint (ODD+LLM reporting method and replication study)",
+      "sourceUrl": "https://arxiv.org/abs/2611.08932",
+      "sourcePublishedAt": "2026-11-06",
+      "dateAdded": "2026-11-09",
+      "latestSeenBriefDate": "2026-11-09",
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling"
+      ],
+      "questionAndWhy": "Can published LLM-agent simulations be independently reconstructed when prompt assembly, role instructions, memory and output parsing are incompletely specified?",
+      "whatTheyDid": "Downes, Milletich and Hirst proposed ODD+LLM, an extension to the ODD agent-based model reporting protocol. They varied six reimplementation choices in a naming-game simulation and audited reporting sufficiency in 28 published LLM-agent simulations.",
+      "whatTheyFound": "Omitting one instruction about answering as an outside observer rather than a player shifted the proportion of runs reaching agents' favored convention from 0.35 to 1.00 and tripled convergence speed in their reimplementation. Prompt assembly and output parsing were underdetermined in 77% of reviewed papers; none fully specified its main LLM call.",
+      "whatItMeans": "PSYWERX modeling records should version role instructions, prompts, memory serialization, parsing, retry behavior, schedules and model IDs alongside causal structures. These replication results are about LLM-agent simulations; they do not validate their outputs against human group behavior."
+    },
+    {
+      "itemId": "research-6d782ad36dd0013ae9e0",
+      "streamTitle": "Randomized agent interventions enabled estimation of when human review helps",
+      "streamSummary": "A November 6 preprint estimates dynamic causal effects of randomized verification and steering within AI-agent trajectories; results vary by action and state. Benefits in deployed research workflows remain untested.",
+      "attribution": "Sawarni, Xing, Zrnic, Johari and Syrgkanis — arXiv preprint (causal agent-evaluation framework)",
+      "sourceUrl": "https://arxiv.org/abs/2611.09792",
+      "sourcePublishedAt": "2026-11-06",
+      "dateAdded": "2026-11-09",
+      "latestSeenBriefDate": "2026-11-09",
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling"
+      ],
+      "questionAndWhy": "When should a supervisor interrupt an AI agent to verify, screen or redirect it? An agent's overall success rate alone cannot reveal the causal value of a review at a particular step.",
+      "whatTheyDid": "Sawarni and colleagues developed a framework using trajectories with randomized interventions to estimate context-dependent effects of alternative oversight policies. They evaluated it on tau-bench Retail, ToolSandbox and ImpossibleBench, including action-level safety prioritization.",
+      "whatTheyFound": "Estimated intervention effects varied substantially by agent action and current state. The work provides a methodology and benchmark applications, not proof that a specific intervention policy improves real-world scientific research or that estimated effects transfer unchanged to new agents.",
+      "whatItMeans": "For PSYWERX automation, randomized auditing of selected workflow checkpoints could show where additional human review improves final artifact correctness, instead of applying an identical review to every step. This proposal needs a PSYWERX-specific, prospectively evaluated test."
+    },
+    {
+      "itemId": "research-5f8417042b7e7b58819e",
+      "streamTitle": "Deciding before seeing AI advice improved performance in a 130-person experiment",
+      "streamSummary": "A November 6 preprint reports that a human-first AI advice sequence improved decisions in a 130-person experiment versus concurrent or absent assistance. Mechanisms and operational generalization remain untested.",
+      "attribution": "Keke, Eisenhardt and Meske — arXiv preprint (human–AI decision experiment)",
+      "sourceUrl": "https://arxiv.org/abs/2611.09269",
+      "sourcePublishedAt": "2026-11-06",
+      "dateAdded": "2026-11-09",
+      "latestSeenBriefDate": "2026-11-09",
+      "primaryCategory": "behavioral-science",
+      "categories": [
+        "behavioral-science"
+      ],
+      "questionAndWhy": "Can a human-first decision sequence prompt more deliberate evaluation of AI advice instead of immediate acceptance? This matters where correct AI assistance and costly overreliance are difficult for users to distinguish.",
+      "whatTheyDid": "Keke, Eisenhardt and Meske conducted a human experiment with 130 participants solving problems under sequential human-first AI assistance, concurrent AI assistance or no AI. The sequential condition required an initial judgment before AI input, making disagreement more visible.",
+      "whatTheyFound": "The sequential condition significantly improved task decision performance and participants' use of prompts relative to the tested comparison conditions. The preprint does not establish which proposed dual-process cognitive mechanism mediated the improvement, or whether the effect persists beyond the experimental tasks.",
+      "whatItMeans": "PSYWERX analyst tools could trial an independent first-pass judgment before exposing AI recommendations and score correct revisions separately from incorrect overrides. This specific workflow has experimental support in the sampled tasks; transfer to intelligence analysis or high-stakes decisions is not yet demonstrated."
+    },
+    {
+      "itemId": "research-396b4e900c7e7e47e0c4",
+      "streamTitle": "Composable causal benchmarks isolated missingness and misleading variance shortcuts",
+      "streamSummary": "A November 6 causal-methods preprint introduced configurable time-series benchmarks with paired counterfactuals; 81 discovery and 18 effect-estimation configurations exposed missingness and variance-related failure modes.",
+      "attribution": "Ferdous and Gani — arXiv preprint (DTCD causal benchmark toolkit)",
+      "sourceUrl": "https://arxiv.org/abs/2611.08918",
+      "sourcePublishedAt": "2026-11-06",
+      "dateAdded": "2026-11-09",
+      "latestSeenBriefDate": "2026-11-09",
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling"
+      ],
+      "questionAndWhy": "How can causal-discovery and effect-estimation methods be stress-tested when real time-series data lack verified ground truth? Can researchers vary one causal or measurement assumption while holding others fixed?",
+      "whatTheyDid": "Ferdous and Gani built a configurable time-series generator separating topology, mechanisms, noise, missing-data masks and intervention policies. Their benchmark tested eight discovery algorithms in 81 configurations and four effect estimators in 18 configurations, using paired counterfactual simulations with shared random realizations.",
+      "whatTheyFound": "Controlled tests exposed failures hidden by aggregate metrics, including poor handling of missing values and a spurious ordering shortcut from differing marginal variances. The framework recovered simulated counterfactual effects to numerical precision under its known generative assumptions; this is not evidence that the assumptions hold in human populations.",
+      "whatItMeans": "For PSYWERX causal COA model development, use paired counterfactual runs and factorized sensitivity tests to reveal where inference is fragile under missingness, confounding and model structure. This is an actionable benchmarking method; prospective intervention validity still requires external human data."
+    },
+    {
+      "itemId": "research-bf0fd12a17b1ada139c6",
+      "streamTitle": "Ukraine messaging study measured coherence without claiming persuasion effects",
+      "streamSummary": "A November 2 NATO StratCom COE report applied AI-enabled coding to Ukraine's May–November 2023 official and aligned messaging. It measures cross-platform narrative coherence, not accuracy or persuasive effectiveness.",
+      "attribution": "Fredheim, Heap and Catena — NATO StratCom Centre of Excellence (40-page empirical report)",
+      "sourceUrl": "https://stratcomcoe.org/publications/unified-voices-coherence-and-restraint-in-ukraines-wartime-communication-maynovember-2023/350",
+      "sourcePublishedAt": "2026-11-02",
+      "dateAdded": "2026-11-09",
+      "latestSeenBriefDate": "2026-11-09",
+      "primaryCategory": "operations-strategy",
+      "categories": [
+        "operations-strategy"
+      ],
+      "questionAndWhy": "How consistently did official and aligned Ukrainian communicators follow shared strategic-communication positions during the 2023 counteroffensive and missile attacks? Can alignment be distinguished from persuasion or credibility?",
+      "whatTheyDid": "A 40-page NATO StratCom Centre of Excellence report used an AI-enabled method to compare posts from official and aligned accounts on Telegram, Facebook, X and YouTube with Ukraine's Coordination Staff for Strategic Communications Main Positions during May–November 2023.",
+      "whatTheyFound": "The report finds that coherence can be measured across platforms, themes and account types and varies with event constraints, platform and the presence of repeatable guidance. It measures alignment with the chosen positions—not whether those positions were accurate, believed or behaviorally effective.",
+      "whatItMeans": "PSYWERX campaign assessments should report message coherence separately from exposure, understanding, trust and action. The report supplies a useful operational coding approach, but coherent communications cannot be counted as influence success without independent outcome evidence."
+    },
+    {
+      "itemId": "research-8f2ad9264514654d3de5",
+      "streamTitle": "VR workload study found cognitive dual-task demands outweighed visual and audio clutter",
+      "streamSummary": "A 24-person immersive shopping study found a secondary arithmetic task imposed more mental workload than moving visual characters or ambient noise. Physiological differences varied across people; operational transfer is untested.",
+      "attribution": "Cucinella et al. — Applied Ergonomics (within-participant VR experiment; online May, November issue)",
+      "sourceUrl": "https://doi.org/10.1016/j.apergo.2026.104781",
+      "sourcePublishedAt": "2026-05-07",
+      "dateAdded": "2026-11-09",
+      "latestSeenBriefDate": "2026-11-09",
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling"
+      ],
+      "questionAndWhy": "Which aspects of immersive environments create the greatest mental workload during realistic tasks: animated visual distractors, background noise or an additional cognitive task?",
+      "whatTheyDid": "In a within-participant immersive shopping experiment, 24 people selected ten products while exposed to moving characters, background noise, mental arithmetic or combined distractions. Researchers recorded self-reported workload, pupil size and heart rate.",
+      "whatTheyFound": "Concurrent arithmetic elicited greater workload than visual or auditory distractions. Mean self-rated demand/effort was 4.40 for moving characters, 5.00 for background sound, 6.67 for arithmetic and 7.17 for the combined condition. Physiological signals varied substantially across individuals.",
+      "whatItMeans": "For PSYWERX XR training experiments, adding an unrelated cognitive task may burden attention more than adding environmental detail. Compare workload and task performance rather than maximizing realism; transfer from 24 virtual shoppers to operational training and durable learning is untested."
+    },
     {
       "itemId": "research-5dbbfe90841bf88aa9e0",
       "streamTitle": "New peer-reviewed evidence finds AI agents amplify modeled social contagion",
@@ -12701,6 +12863,28 @@
     }
   ],
   "briefs": [
+    {
+      "briefDate": "2026-11-09",
+      "briefType": "daily",
+      "totalItems": 9,
+      "categoryCounts": {
+        "behavioral-science": 3,
+        "technology-modeling": 5,
+        "operations-strategy": 1,
+        "application-analysis": 0
+      },
+      "itemIds": [
+        "research-09e49b2f03924d3fae62",
+        "research-5f8417042b7e7b58819e",
+        "research-380cfba0f8ec65efd9f5",
+        "research-bf0fd12a17b1ada139c6",
+        "research-824906b0b38492e02538",
+        "research-6d782ad36dd0013ae9e0",
+        "research-73919f6dc8284e7d8be5",
+        "research-396b4e900c7e7e47e0c4",
+        "research-8f2ad9264514654d3de5"
+      ]
+    },
     {
       "briefDate": "2026-11-08",
       "briefType": "daily",
