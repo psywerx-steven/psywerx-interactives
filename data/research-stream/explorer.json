@@ -1,8 +1,134 @@
 {
   "schemaVersion": "psywerx-research-explorer-v1",
-  "generatedAt": "2026-11-26",
-  "totalItems": 819,
+  "generatedAt": "2026-11-27",
+  "totalItems": 826,
   "items": [
+    {
+      "itemId": "research-b75bf819415918b421c4",
+      "streamTitle": "Eye-tracking BIDS standard specifies gaze, pupil and asynchronous event data",
+      "streamSummary": "A November 27 BIDS extension standardizes eye-tracking data, pupil measurements and asynchronous event metadata to support reproducible research.",
+      "attribution": "Szinte, Bach, Draschkow et al. — Scientific Data (technical standard; November 27, 2026)",
+      "sourceUrl": "https://doi.org/10.1038/s41597-026-08793-w",
+      "sourcePublishedAt": "2026-11-27",
+      "dateAdded": "2026-11-27",
+      "latestSeenBriefDate": "2026-11-27",
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling"
+      ],
+      "questionAndWhy": "How can eye-tracking data from different instruments and experiments be stored consistently enough for reusable behavioral analysis?",
+      "whatTheyDid": "Szinte and colleagues developed an extension of the Brain Imaging Data Structure for raw eye-tracker recordings and metadata, including gaze coordinates, pupil size and asynchronous device messages. They provide examples across experimental settings.",
+      "whatTheyFound": "The specification supports standardized organization of sensor outputs, contextual messages and triggers. It is enabling infrastructure rather than evidence that any particular attention or emotion measure is valid; device-specific calibration and timing checks remain necessary.",
+      "whatItMeans": "PSYWERX can adopt this format for consented visual-attention experiments and preserve raw measurements, event timestamps and contextual metadata for reproducible analysis. Standardization does not establish what gaze or pupil responses mean psychologically."
+    },
+    {
+      "itemId": "research-5e4052dc89c9075ba3a3",
+      "streamTitle": "Workplace incivility was associated with cynicism through two distinct perceptions",
+      "streamSummary": "A two-wave survey of 429 Chinese service workers linked incivility with cynicism through two modeled pathways; ethical climate moderated first-stage associations but not the full indirect effects.",
+      "attribution": "Qiu, Li and Choi — Frontiers in Psychology (observational survey; November 26, 2026)",
+      "sourceUrl": "https://doi.org/10.3389/fpsyg.2026.1924823",
+      "sourcePublishedAt": "2026-11-26",
+      "dateAdded": "2026-11-27",
+      "latestSeenBriefDate": "2026-11-27",
+      "primaryCategory": "behavioral-science",
+      "categories": [
+        "behavioral-science"
+      ],
+      "questionAndWhy": "Does perceived disrespect relate to cynicism through employees' sense of organizational ownership and entitlement, and does ethical climate alter those relationships?",
+      "whatTheyDid": "Qiu and colleagues analyzed two-wave survey data from 429 Chinese service-sector employees using a moderated parallel mediation model.",
+      "whatTheyFound": "Incivility correlated with greater cynicism and lower organizational ownership and entitlement. Perceived ethical climate weakened both first-stage associations, but neither moderated mediation index was significant. This observational, individual-level survey cannot establish causation or a shared organizational climate.",
+      "whatItMeans": "For PSYWERX organizational research, distinguish attachment to the organization from expectations of fair treatment, and test whether organizational-level norms predict actual conduct. Do not infer that ethical-climate training will reduce cynicism from these associations."
+    },
+    {
+      "itemId": "research-f839edadeae6d5298ea6",
+      "streamTitle": "Research-agent benchmark measured improvements over established expert solutions",
+      "streamSummary": "REE tested four agents on 100 expert-reviewed research problems; two surpassed expert-solution scores on 86% and 81% of tasks. The benchmark does not establish autonomous scientific discovery.",
+      "attribution": "Zhou, Liu, Liu et al. — arXiv preprint (November 25, 2026)",
+      "sourceUrl": "https://arxiv.org/abs/2611.34646",
+      "sourcePublishedAt": "2026-11-25",
+      "dateAdded": "2026-11-27",
+      "latestSeenBriefDate": "2026-11-27",
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling"
+      ],
+      "questionAndWhy": "Can autonomous research agents improve an existing scientific solution through iterative experimentation rather than merely answer research questions?",
+      "whatTheyDid": "REE assembled 100 expert-reviewed open-ended problems spanning five broad scientific areas and 23 domains. Four frontier agents received working starter solutions and up to 12 hours to improve benchmark performance relative to expert solutions.",
+      "whatTheyFound": "Two evaluated agents exceeded expert-solution scores on 86% and 81% of problems respectively, often by adapting or combining established methods. This preprint measures performance on defined computational research objectives, not independent scientific discovery or validity of new human-behavior theories.",
+      "whatItMeans": "PSYWERX can evaluate research automation with expert-reviewed tasks, reproducible baselines, fixed resource budgets and independent evaluation. Separate improvements on a defined metric from scientific novelty and external validity."
+    },
+    {
+      "itemId": "research-b0bb61e8ce1c88010e24",
+      "streamTitle": "Actor-aware permutation tests improved inference for network interaction counts",
+      "streamSummary": "A Poisson network-regression preprint shows how actor effects and dependence-aware permutations can control false positives in simulated interaction-count networks.",
+      "attribution": "Dekker and Krause — arXiv preprint (November 25, 2026)",
+      "sourceUrl": "https://arxiv.org/abs/2611.34219",
+      "sourcePublishedAt": "2026-11-25",
+      "dateAdded": "2026-11-27",
+      "latestSeenBriefDate": "2026-11-27",
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling"
+      ],
+      "questionAndWhy": "How can analysts assess predictors of message counts when observations share senders and receivers and are therefore statistically dependent?",
+      "whatTheyDid": "Dekker and Krause extended double semi-partialling permutation methods to Poisson network regression, derived invariance results, simulated networks of 20–100 actors and illustrated the method on the EIES message network.",
+      "whatTheyFound": "In simulated conditions ordinary normal-reference tests rejected true nulls at rates as high as 96%. With sender and receiver effects modeled, reported false-positive rates were 3.5–7.0% across tested conditions. Validity depends on how permutations preserve dependence; the simulations do not establish causal influence.",
+      "whatItMeans": "For PSYWERX communication-network analysis, model recurring actor effects and evaluate permutation assumptions before interpreting message-count associations. This method can help assess statistical evidence for associations, but does not identify the causal effect of messages."
+    },
+    {
+      "itemId": "research-7d7579fdc6c0ab3917d3",
+      "streamTitle": "Cross-lagged model comparisons explain how apparent relationships can reverse",
+      "streamSummary": "A theoretical preprint derives identification conditions for random-intercept panel models and shows when conventional lagged coefficients may reverse or cancel.",
+      "attribution": "Cao — arXiv preprint (November 25, 2026)",
+      "sourceUrl": "https://arxiv.org/abs/2611.34663",
+      "sourcePublishedAt": "2026-11-25",
+      "dateAdded": "2026-11-27",
+      "latestSeenBriefDate": "2026-11-27",
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling"
+      ],
+      "questionAndWhy": "When repeated measurements show one variable predicting another, how much of that relationship reflects stable differences between people rather than changes within a person?",
+      "whatTheyDid": "Cao developed matrix-based identification and likelihood results for the random-intercept cross-lagged panel model, and derived conventional cross-lagged coefficients under a generating random-intercept model.",
+      "whatTheyFound": "The formal results specify a rank condition for identification and conditions under which three waves suffice with fixed transitions. Conventional cross-lagged coefficients can emerge, disappear or reverse sign relative to within-person coefficients. This preprint establishes mathematical properties, not causal identification of behavioral pathways.",
+      "whatItMeans": "PSYWERX longitudinal behavioral models can compare between-person and within-person specifications before interpreting lagged associations. A reversal should prompt examination of model assumptions and stable confounding rather than automatic selection of a causal direction."
+    },
+    {
+      "itemId": "research-3ad905c2be2ca3945d4a",
+      "streamTitle": "NATO exercise integrates civilian organizations into multinational crisis training",
+      "streamSummary": "NATO's November 25 exercise announcement documents civil-military participation and new exercise-content tools; measured readiness or coordination outcomes have not been reported.",
+      "attribution": "NATO Joint Warfare Centre — official exercise announcement (November 25, 2026)",
+      "sourceUrl": "https://www.jwc.nato.int/article/steadfast-dagger-2026-begins",
+      "sourcePublishedAt": "2026-11-25",
+      "dateAdded": "2026-11-27",
+      "latestSeenBriefDate": "2026-11-27",
+      "primaryCategory": "operations-strategy",
+      "categories": [
+        "operations-strategy"
+      ],
+      "questionAndWhy": "How can a multinational headquarters rehearse coordination with civilian organizations and other commands during a complex crisis?",
+      "whatTheyDid": "NATO's Joint Warfare Centre announced STEADFAST DAGGER on November 25, after the exercise began November 24. Nearly 1,600 military and civilian personnel participate; the exercise includes a new US Africa Command response cell and a Grey Cell representing civilian organizations.",
+      "whatTheyFound": "The official account identifies civil-military cooperation and interoperability as objectives and reports use of NATO Maven and an exercise-content development hub. It does not provide measured coordination improvements or independent evidence that the tools improve readiness.",
+      "whatItMeans": "For PSYWERX training assessment, separate exercise realism, information exchange and observed coordination outcomes. A comparative evaluation of scenario-development workflows could measure preparation time and content errors; the announcement does not establish improved decision quality."
+    },
+    {
+      "itemId": "research-65ac21f022935ed2b82a",
+      "streamTitle": "Distributed AI teams lost essential information despite collectively possessing it",
+      "streamSummary": "Controlled AI experiments distinguished losses caused by insufficient messages from failures to select or use available evidence. More interaction was not always necessary.",
+      "attribution": "Chu and Shen — arXiv preprint (November 24, 2026)",
+      "sourceUrl": "https://arxiv.org/abs/2611.33318",
+      "sourcePublishedAt": "2026-11-24",
+      "dateAdded": "2026-11-27",
+      "latestSeenBriefDate": "2026-11-27",
+      "primaryCategory": "technology-modeling",
+      "categories": [
+        "technology-modeling"
+      ],
+      "questionAndWhy": "Why can a team of agents with all the necessary evidence still produce an incorrect joint prediction?",
+      "whatTheyDid": "Chu and Shen combined information-theoretic benchmarks, controlled LLM experiments and message-level analysis to distinguish information sufficiency, relevance selection and utilization.",
+      "whatTheyFound": "Local probability summaries sometimes discarded information necessary for joint predictions. Query-first interaction helped when relevant evidence depended on private queries, but compact sufficient representations could remove that advantage. Agents also sometimes failed to use information they received. Results concern constructed AI tasks, not human teams.",
+      "whatItMeans": "PSYWERX multi-agent evidence workflows can check whether transmitted records retain decision-relevant evidence and whether the receiving agent actually uses it. Benchmark alternative representations rather than assuming additional conversation improves accuracy."
+    },
     {
       "itemId": "research-f66cb1ea301a26aa31e1",
       "streamTitle": "Loneliness was associated with divergent neural segmentation of shared events",
@@ -3103,21 +3229,21 @@
     },
     {
       "itemId": "research-0f8705ef77ba2b1b8ba8",
-      "streamTitle": "Observed aggression altered later behavior and inhibitory circuits in male mice",
-      "streamSummary": "A controlled Nature mouse study found that observing aggression and experiencing it produced overlapping proactive behavior and neural inhibition changes; circuit reactivation reversed part of the effect. Human transfer remains untested.",
-      "attribution": "Iravedra-García et al. — Nature (mouse behavioral and neural experiment, November 4)",
+      "streamTitle": "Observing aggression and experiencing it produced shared neural changes in mice",
+      "streamSummary": "Mouse experiments found shared behavioral and neural adaptations after direct or observed aggression. A November 27 highlight revisited the work; human transfer remains untested.",
+      "attribution": "Iravedra-García et al. — Nature (animal circuit experiments; November 4, 2026; highlighted November 27)",
       "sourceUrl": "https://doi.org/10.1038/s41586-026-11217-9",
       "sourcePublishedAt": "2026-11-04",
       "dateAdded": "2026-11-06",
-      "latestSeenBriefDate": "2026-11-06",
+      "latestSeenBriefDate": "2026-11-27",
       "primaryCategory": "behavioral-science",
       "categories": [
         "behavioral-science"
       ],
-      "questionAndWhy": "Can observing aggression change an animal's subsequent social strategy through the same neural circuitry engaged by direct experience? This tests a mechanism of observational learning rather than assuming imitation is only verbal or conscious.",
-      "whatTheyDid": "Researchers randomly assigned male mice to aggression experience, observation of conspecific aggression, or control exposure. They conducted longitudinal cell-type-specific recordings across subcortical social-behavior networks, probed a novel conflict context and reactivated selected inhibitory circuits.",
-      "whatTheyFound": "Both experience and observation increased proactive vigilance and aggression-preparatory behavior in a new context. A shared reduction in neural inhibition was observed, and reactivating selected inhibitory areas shifted observers back toward control-like behavior. Mice observing nonaggressive social activity did not show the same pattern. Only male mice were studied.",
-      "whatItMeans": "The study supplies causal circuit evidence for a particular form of social learning in mice, relevant to foundational mechanisms of learning by observation. It does not show that humans learn aggression through the same circuit changes or justify direct predictions about media exposure or influence operations."
+      "questionAndWhy": "Can witnessing a social interaction alter later behavior through some of the same neural mechanisms as direct experience?",
+      "whatTheyDid": "Iravedra-García and colleagues recorded cell-type-specific activity across subcortical regions as mice experienced or observed aggression, then tested their behavior in a new social context. A November 27 research highlight revisited the November 4 original study.",
+      "whatTheyFound": "Both experience and observation altered later social behavior and produced persistent shared circuit changes. Modeling and circuit experiments implicated reduced inhibitory influence across the aggression network. These are animal experiments, not evidence of human aggression after media exposure.",
+      "whatItMeans": "For PSYWERX foundational learning research, distinguish direct and vicarious experience when formulating hypotheses about behavioral adaptation. Human studies would be needed to test whether comparable processes operate in human social learning; no inference about media effects is justified."
     },
     {
       "itemId": "research-250b8bdf4419b7ca4dce",
@@ -15468,6 +15594,27 @@
     }
   ],
   "briefs": [
+    {
+      "briefDate": "2026-11-27",
+      "briefType": "daily",
+      "totalItems": 8,
+      "categoryCounts": {
+        "behavioral-science": 2,
+        "technology-modeling": 5,
+        "operations-strategy": 1,
+        "application-analysis": 0
+      },
+      "itemIds": [
+        "research-5e4052dc89c9075ba3a3",
+        "research-0f8705ef77ba2b1b8ba8",
+        "research-3ad905c2be2ca3945d4a",
+        "research-f839edadeae6d5298ea6",
+        "research-65ac21f022935ed2b82a",
+        "research-7d7579fdc6c0ab3917d3",
+        "research-b0bb61e8ce1c88010e24",
+        "research-b75bf819415918b421c4"
+      ]
+    },
     {
       "briefDate": "2026-11-26",
       "briefType": "daily",
